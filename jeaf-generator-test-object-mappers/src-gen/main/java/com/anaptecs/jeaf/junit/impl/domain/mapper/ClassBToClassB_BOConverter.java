@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.junit.impl.domain.mapper;
@@ -39,7 +39,7 @@ public class ClassBToClassB_BOConverter implements ObjectMapper<ClassB, ClassB_B
 
   /**
    * Method returns an instance of this object mapper.
-   * 
+   *
    * @return {@link ObjectMapper} Instance an object mapper that is capable to map between ClassB and ClassB_BO. The
    * method never returns null.
    */
@@ -50,7 +50,7 @@ public class ClassBToClassB_BOConverter implements ObjectMapper<ClassB, ClassB_B
   /**
    * Method creates a new ClassB_BO object from the passed ClassB object and applies the defined mappings of type
    * {@link MappingType#CREATE} from the UML model.
-   * 
+   *
    * @param pSource ClassB object that should be used to create a new ClassB_BO object. The parameter must not be null.
    * @return {@link ClassB_BO} Created ClassB_BO object. The method never returns null.
    */
@@ -69,7 +69,7 @@ public class ClassBToClassB_BOConverter implements ObjectMapper<ClassB, ClassB_B
   /**
    * Method creates new ClassB_BO objects based on the passed ClassB objects. For every ClassB object a new ClassB_BO
    * object will be returned. The mappings for case {@link MappingType#CREATE} will be applied.
-   * 
+   *
    * @param pSourceObjects All ClassB objects that should be used to create ClassB_BO objects. The parameter must not be
    * null.
    * @return {@link List} List with all ClassB_BO objects that were created. The method never returns null.
@@ -90,7 +90,7 @@ public class ClassBToClassB_BOConverter implements ObjectMapper<ClassB, ClassB_B
   /**
    * Method updates an already existing persistent target object with the data of the passed source object according to
    * the mapping defined in the UML model.
-   * 
+   *
    * @param pSource ClassB object that should be used to update an existing ClassB_BO object. The parameter must not be
    * null.
    * @return {@link ClassB_BO} Updated ClassB_BO object. The method never returns null.
@@ -108,7 +108,7 @@ public class ClassBToClassB_BOConverter implements ObjectMapper<ClassB, ClassB_B
 
   /**
    * Method applies the mappings according to the passed mapping type on the passed source and target object.
-   * 
+   *
    * @param pSource Source object which should be used. The parameter must not be null. The effective type and direction
    * of the object mapping depends on parameter <code>pMappingType</code>.
    * @param pTarget Target object which should be used. The parameter must not be null. The effective type and direction
@@ -146,7 +146,7 @@ public class ClassBToClassB_BOConverter implements ObjectMapper<ClassB, ClassB_B
    * Method applies the mappings according to the passed mapping type on the passed source and target objects. The
    * entries in the list of source and target objects are matched according to their index. This also means that both
    * list must have the same amount of entries.
-   * 
+   *
    * @param pSources Source objects which should be used. The parameter must not be null. The effective type and
    * direction of the object mapping depends on parameter <code>pMappingType</code>.
    * @param pTargets Target objects which should be used. The parameter must not be null. The effective type and
@@ -170,7 +170,7 @@ public class ClassBToClassB_BOConverter implements ObjectMapper<ClassB, ClassB_B
   /**
    * Method creates a new ClassB object and applies the defined mappings of type {@link MappingType#READ} from the UML
    * model.
-   * 
+   *
    * @param pTarget ClassB_BO object that should be used to create a new ClassB object. The parameter must not be null.
    * @return {@link ClassB} Created ClassB object. The method never returns null.
    */
@@ -189,7 +189,7 @@ public class ClassBToClassB_BOConverter implements ObjectMapper<ClassB, ClassB_B
   /**
    * Method creates new ClassB objects based on the passed ClassB_BO objects. For every ClassB_BO object a new ClassB
    * object will be returned. The mappings for case {@link MappingType#READ} will be applied.
-   * 
+   *
    * @param pTargetObjects All target objects that should be used to create source objects. The parameter must not be
    * null.
    * @return {@link List} List with all source objects that were created. The method never returns null.
@@ -208,7 +208,7 @@ public class ClassBToClassB_BOConverter implements ObjectMapper<ClassB, ClassB_B
 
   /**
    * Method maps all attributes from ClassB to ClassB_BO. Mappings are applied only for case {@link MappingType#READ}.
-   * 
+   *
    * @param pSource Source object for the mapping. The parameter must not be null.
    * @param pTarget Target object for the mapping. The parameter must not be null.
    */
@@ -218,7 +218,7 @@ public class ClassBToClassB_BOConverter implements ObjectMapper<ClassB, ClassB_B
 
   /**
    * Method maps all attributes from ClassB to ClassB_BO. Mappings are applied only for case {@link MappingType#UPDATE}.
-   * 
+   *
    * @param pSource Source object for the mapping. The parameter must not be null.
    * @param pTarget Target object for the mapping. The parameter must not be null.
    */
@@ -241,7 +241,7 @@ public class ClassBToClassB_BOConverter implements ObjectMapper<ClassB, ClassB_B
 
   /**
    * Method maps all attributes from ClassB_BO to ClassB. Mappings are applied only for case {@link MappingType#READ}.
-   * 
+   *
    * @param pSource Source object for the mapping. The parameter must not be null.
    * @param pTarget Target object for the mapping. The parameter must not be null.
    */

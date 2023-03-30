@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.spring.base;
@@ -58,7 +58,7 @@ public class DirectedEdge implements Serializable {
 
   /**
    * Initialize object using the passed builder.
-   * 
+   *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected DirectedEdge( Builder pBuilder ) {
@@ -72,7 +72,7 @@ public class DirectedEdge implements Serializable {
 
   /**
    * Method returns a new builder.
-   * 
+   *
    * @return {@link Builder} New builder that can be used to create new DirectedEdge objects.
    */
   public static Builder builder( ) {
@@ -81,7 +81,7 @@ public class DirectedEdge implements Serializable {
 
   /**
    * Method creates a new builder and initialize it with the data from the passed object.
-   * 
+   *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new DirectedEdge objects. The method never returns
    * null.
@@ -136,7 +136,7 @@ public class DirectedEdge implements Serializable {
 
     /**
      * Method sets association {@link #start}.<br/>
-     * 
+     *
      * @param pStart Value to which {@link #start} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -147,7 +147,7 @@ public class DirectedEdge implements Serializable {
 
     /**
      * Method sets association {@link #end}.<br/>
-     * 
+     *
      * @param pEnd Value to which {@link #end} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -158,7 +158,7 @@ public class DirectedEdge implements Serializable {
 
     /**
      * Method sets attribute {@link #link}.<br/>
-     * 
+     *
      * @param pLink Value to which {@link #link} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -171,7 +171,7 @@ public class DirectedEdge implements Serializable {
     /**
      * Method creates a new instance of class DirectedEdge. The object will be initialized with the values of the
      * builder.
-     * 
+     *
      * @return DirectedEdge Created object. The method never returns null.
      */
     public DirectedEdge build( ) {
@@ -181,7 +181,7 @@ public class DirectedEdge implements Serializable {
     /**
      * Method creates a new validated instance of class DirectedEdge. The object will be initialized with the values of
      * the builder and validated afterwards.
-     * 
+     *
      * @return DirectedEdge Created and validated object. The method never returns null.
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
@@ -195,7 +195,7 @@ public class DirectedEdge implements Serializable {
   /**
    * Method returns association {@link #start}.<br/>
    * The start
-   * 
+   *
    * @return {@link Stop} Value to which {@link #start} is set.
    */
   public Stop getStart( ) {
@@ -205,7 +205,7 @@ public class DirectedEdge implements Serializable {
   /**
    * Method sets association {@link #start}.<br/>
    * The start
-   * 
+   *
    * @param pStart Value to which {@link #start} should be set.
    */
   public void setStart( Stop pStart ) {
@@ -222,7 +222,7 @@ public class DirectedEdge implements Serializable {
   /**
    * Method returns association {@link #end}.<br/>
    * The end
-   * 
+   *
    * @return {@link Stop} Value to which {@link #end} is set.
    */
   public Stop getEnd( ) {
@@ -232,7 +232,7 @@ public class DirectedEdge implements Serializable {
   /**
    * Method sets association {@link #end}.<br/>
    * The end
-   * 
+   *
    * @param pEnd Value to which {@link #end} should be set.
    */
   public void setEnd( Stop pEnd ) {
@@ -248,7 +248,7 @@ public class DirectedEdge implements Serializable {
 
   /**
    * Method returns attribute {@link #link}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #link} is set.
    */
   public String getLink( ) {
@@ -257,7 +257,7 @@ public class DirectedEdge implements Serializable {
 
   /**
    * Method sets attribute {@link #link}.<br/>
-   * 
+   *
    * @param pLink Value to which {@link #link} should be set.
    */
   public void setLink( String pLink ) {
@@ -286,7 +286,7 @@ public class DirectedEdge implements Serializable {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

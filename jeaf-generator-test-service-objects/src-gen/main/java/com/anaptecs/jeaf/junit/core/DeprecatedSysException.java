@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.junit.core;
@@ -12,7 +12,7 @@ import com.anaptecs.jeaf.xfun.api.info.VersionInfo;
 
 /**
  * System exception that is used in order to indicate technical problems.
- * 
+ *
  * @see com.anaptecs.jeaf.xfun.api.errorhandling.SystemException
  */
 @Deprecated
@@ -24,7 +24,7 @@ public final class DeprecatedSysException extends SystemException {
 
   /**
    * Constructor initializes this system exception with the passed error code.
-   * 
+   *
    * @param pErrorCode Error code identifying the occurred problem. Among other things the error code is used to
    * determine the corresponding error message. The parameter must not be null.
    */
@@ -34,7 +34,7 @@ public final class DeprecatedSysException extends SystemException {
 
   /**
    * Constructor initializes this system exception with the passed error code and message parameters.
-   * 
+   *
    * @param pErrorCode Error code identifying the occurred problem. Among other things the error code is used to
    * determine the corresponding error message. The parameter must not be null.
    * @param pMessageParameters String array contains all values that are used to create a parameterized error message.
@@ -48,7 +48,7 @@ public final class DeprecatedSysException extends SystemException {
   /**
    * Constructor initializes this system exception with the passed error code and Throwable object that caused this
    * exception.
-   * 
+   *
    * @param pErrorCode Error code identifying the occurred problem. Among other things the error code is used to
    * determine the corresponding error message. The parameter must not be null.
    * @param pCause Throwable object that caused this exception. The parameter may be null.
@@ -60,7 +60,7 @@ public final class DeprecatedSysException extends SystemException {
   /**
    * Constructor initializes this system exception with the passed error code, message parameters and Throwable object
    * that caused this exception.
-   * 
+   *
    * @param pErrorCode Error code identifying the occurred problem. Among other things the error code is used to
    * determine the corresponding error message. The parameter must not be null.
    * @param pMessageParameters String array contains all values that are used to create a parameterized error message.
@@ -76,7 +76,7 @@ public final class DeprecatedSysException extends SystemException {
   /**
    * Constructor initializes this system exception with the passed error code and Throwable object that caused this
    * exception.
-   * 
+   *
    * @param pErrorCode Error code identifying the occurred problem. Among other things the error code is used to
    * determine the corresponding error message. The parameter must not be null.
    * @param pTechnicalDetails Technical details about an exception. They might be helpful to solve the issue / root
@@ -93,7 +93,7 @@ public final class DeprecatedSysException extends SystemException {
 
   /**
    * Method resolves the version the JEAF framework.
-   * 
+   *
    * @return VersionInfo Information about the used JEAF version. The method never returns null.
    */
   protected VersionInfo resolveVersionInfo( ) {

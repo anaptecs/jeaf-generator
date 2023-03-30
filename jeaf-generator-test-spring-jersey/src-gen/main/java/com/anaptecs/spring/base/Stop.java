@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.spring.base;
@@ -45,7 +45,7 @@ public class Stop {
 
   /**
    * Initialize object using the passed builder.
-   * 
+   *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected Stop( Builder pBuilder ) {
@@ -61,7 +61,7 @@ public class Stop {
 
   /**
    * Method returns a new builder.
-   * 
+   *
    * @return {@link Builder} New builder that can be used to create new Stop objects.
    */
   public static Builder builder( ) {
@@ -70,7 +70,7 @@ public class Stop {
 
   /**
    * Method creates a new builder and initialize it with the data from the passed object.
-   * 
+   *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new Stop objects. The method never returns null.
    */
@@ -105,7 +105,7 @@ public class Stop {
 
     /**
      * Method sets attribute {@link #name}.<br/>
-     * 
+     *
      * @param pName Value to which {@link #name} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -117,7 +117,7 @@ public class Stop {
 
     /**
      * Method sets association {@link #links}.<br/>
-     * 
+     *
      * @param pLinks Collection to which {@link #links} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -134,7 +134,7 @@ public class Stop {
 
     /**
      * Method creates a new instance of class Stop. The object will be initialized with the values of the builder.
-     * 
+     *
      * @return Stop Created object. The method never returns null.
      */
     public Stop build( ) {
@@ -144,7 +144,7 @@ public class Stop {
 
   /**
    * Method returns attribute {@link #name}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #name} is set.
    */
   public String getName( ) {
@@ -153,7 +153,7 @@ public class Stop {
 
   /**
    * Method sets attribute {@link #name}.<br/>
-   * 
+   *
    * @param pName Value to which {@link #name} should be set.
    */
   public void setName( String pName ) {
@@ -163,7 +163,7 @@ public class Stop {
 
   /**
    * Method returns association {@link #links}.<br/>
-   * 
+   *
    * @return {@link List<LinkObject>} Value to which {@link #links} is set. The method never returns null and the
    * returned collection is unmodifiable.
    */
@@ -174,7 +174,7 @@ public class Stop {
 
   /**
    * Method adds the passed object to {@link #links}.
-   * 
+   *
    * @param pLinks Object that should be added to {@link #links}. The parameter must not be null.
    */
   public void addToLinks( LinkObject pLinks ) {
@@ -184,7 +184,7 @@ public class Stop {
 
   /**
    * Method adds all passed objects to {@link #links}.
-   * 
+   *
    * @param pLinks Collection with all objects that should be added to {@link #links}. The parameter must not be null.
    */
   public void addToLinks( Collection<LinkObject> pLinks ) {
@@ -196,7 +196,7 @@ public class Stop {
 
   /**
    * Method removes the passed object from {@link #links}.<br/>
-   * 
+   *
    * @param pLinks Object that should be removed from {@link #links}. The parameter must not be null.
    */
   public void removeFromLinks( LinkObject pLinks ) {
@@ -249,7 +249,7 @@ public class Stop {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

@@ -37,7 +37,7 @@ public abstract class FlushTestMasterBOBase extends PersistentObject {
 
   /**
    * Method returns all instance of this class including potential subclasses.
-   * 
+   *
    * @return {@link List} List with all objects of this class. The method never returns null.
    */
   public static List<FlushTestMasterBO> findAllFlushTestMasterBOs( ) {
@@ -46,7 +46,7 @@ public abstract class FlushTestMasterBOBase extends PersistentObject {
 
   /**
    * Method returns attribute {@link #requiredField}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #requiredField} is set.
    */
   public String getRequiredField( ) {
@@ -55,7 +55,7 @@ public abstract class FlushTestMasterBOBase extends PersistentObject {
 
   /**
    * Method sets attribute {@link #requiredField}.<br/>
-   * 
+   *
    * @param pRequiredField Value to which {@link #requiredField} should be set.
    */
   public void setRequiredField( String pRequiredField ) {
@@ -65,7 +65,7 @@ public abstract class FlushTestMasterBOBase extends PersistentObject {
 
   /**
    * Method returns the class id of this business object class.
-   * 
+   *
    * @return {@link ClassID} Class ID of this business object. The method never returns null.
    */
   public ClassID getClassID( ) {

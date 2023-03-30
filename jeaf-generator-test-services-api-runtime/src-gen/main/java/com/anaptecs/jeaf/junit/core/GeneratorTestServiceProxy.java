@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.junit.core;
@@ -354,7 +354,7 @@ final class ProcessSimpleDatatypes_SimpleDatatypeServiceObject_GeneratorTestServ
   /**
    * Initialize object. All parameters from method "processSimpleDatatypes" have to be passed as parameters to this
    * command object.
-   * 
+   *
    * @param pDatatypes SimpleDatatypeServiceObject
    */
   ProcessSimpleDatatypes_SimpleDatatypeServiceObject_GeneratorTestService_Command(
@@ -366,7 +366,7 @@ final class ProcessSimpleDatatypes_SimpleDatatypeServiceObject_GeneratorTestServ
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -393,7 +393,7 @@ final class ProcessSimpleDatatypes_SimpleDatatypeServiceObject_GeneratorTestServ
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -403,7 +403,7 @@ final class ProcessSimpleDatatypes_SimpleDatatypeServiceObject_GeneratorTestServ
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -458,7 +458,7 @@ final class ConvertToWrapperDatatypes_SimpleDatatypeServiceObject_GeneratorTestS
   /**
    * Initialize object. All parameters from method "convertToWrapperDatatypes" have to be passed as parameters to this
    * command object.
-   * 
+   *
    * @param pSimpleTypes SimpleDatatypeServiceObject
    */
   ConvertToWrapperDatatypes_SimpleDatatypeServiceObject_GeneratorTestService_Command(
@@ -470,7 +470,7 @@ final class ConvertToWrapperDatatypes_SimpleDatatypeServiceObject_GeneratorTestS
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -496,7 +496,7 @@ final class ConvertToWrapperDatatypes_SimpleDatatypeServiceObject_GeneratorTestS
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -506,7 +506,7 @@ final class ConvertToWrapperDatatypes_SimpleDatatypeServiceObject_GeneratorTestS
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -561,7 +561,7 @@ final class ConvertToSimpleDatatypes_WrapperDatatypeServiceObject_GeneratorTestS
   /**
    * Initialize object. All parameters from method "convertToSimpleDatatypes" have to be passed as parameters to this
    * command object.
-   * 
+   *
    * @param pWrapperTypes WrapperDatatypeServiceObject
    */
   ConvertToSimpleDatatypes_WrapperDatatypeServiceObject_GeneratorTestService_Command(
@@ -573,7 +573,7 @@ final class ConvertToSimpleDatatypes_WrapperDatatypeServiceObject_GeneratorTestS
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -599,7 +599,7 @@ final class ConvertToSimpleDatatypes_WrapperDatatypeServiceObject_GeneratorTestS
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -609,7 +609,7 @@ final class ConvertToSimpleDatatypes_WrapperDatatypeServiceObject_GeneratorTestS
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -674,7 +674,7 @@ final class TestPrimitivesAsParameter_int_byte_double_GeneratorTestService_Comma
   /**
    * Initialize object. All parameters from method "testPrimitivesAsParameter" have to be passed as parameters to this
    * command object.
-   * 
+   *
    * @param pInteger int
    * @param pByteArray byte[]
    * @param pDoubleValue double
@@ -690,7 +690,7 @@ final class TestPrimitivesAsParameter_int_byte_double_GeneratorTestService_Comma
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -716,7 +716,7 @@ final class TestPrimitivesAsParameter_int_byte_double_GeneratorTestService_Comma
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -726,7 +726,7 @@ final class TestPrimitivesAsParameter_int_byte_double_GeneratorTestService_Comma
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -780,7 +780,7 @@ final class TestGenericsAsParameter_SimpleDatatypeServiceObject_GeneratorTestSer
   /**
    * Initialize object. All parameters from method "testGenericsAsParameter" have to be passed as parameters to this
    * command object.
-   * 
+   *
    * @param pSimpleObjects Set<SimpleDatatypeServiceObject>
    */
   TestGenericsAsParameter_SimpleDatatypeServiceObject_GeneratorTestService_Command(
@@ -792,7 +792,7 @@ final class TestGenericsAsParameter_SimpleDatatypeServiceObject_GeneratorTestSer
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -819,7 +819,7 @@ final class TestGenericsAsParameter_SimpleDatatypeServiceObject_GeneratorTestSer
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -829,7 +829,7 @@ final class TestGenericsAsParameter_SimpleDatatypeServiceObject_GeneratorTestSer
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -878,8 +878,8 @@ final class TestGenericsAsResult_GeneratorTestService_Command extends Command {
   /**
    * Initialize object. All parameters from method "testGenericsAsResult" have to be passed as parameters to this
    * command object.
-   * 
-   * 
+   *
+   *
    */
   TestGenericsAsResult_GeneratorTestService_Command( ) {
     super(GeneratorTestService.class);
@@ -888,7 +888,7 @@ final class TestGenericsAsResult_GeneratorTestService_Command extends Command {
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -914,7 +914,7 @@ final class TestGenericsAsResult_GeneratorTestService_Command extends Command {
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -924,7 +924,7 @@ final class TestGenericsAsResult_GeneratorTestService_Command extends Command {
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -977,7 +977,7 @@ final class DoWhatIMean_int_GeneratorTestService_Command extends Command {
 
   /**
    * Initialize object. All parameters from method "doWhatIMean" have to be passed as parameters to this command object.
-   * 
+   *
    * @param pParam1 int
    */
   DoWhatIMean_int_GeneratorTestService_Command( int pParam1 ) {
@@ -988,7 +988,7 @@ final class DoWhatIMean_int_GeneratorTestService_Command extends Command {
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -1015,7 +1015,7 @@ final class DoWhatIMean_int_GeneratorTestService_Command extends Command {
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -1025,7 +1025,7 @@ final class DoWhatIMean_int_GeneratorTestService_Command extends Command {
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -1073,8 +1073,8 @@ final class DoWhatIMean_GeneratorTestService_Command extends Command {
 
   /**
    * Initialize object. All parameters from method "doWhatIMean" have to be passed as parameters to this command object.
-   * 
-   * 
+   *
+   *
    */
   DoWhatIMean_GeneratorTestService_Command( ) {
     super(GeneratorTestService.class);
@@ -1083,7 +1083,7 @@ final class DoWhatIMean_GeneratorTestService_Command extends Command {
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -1110,7 +1110,7 @@ final class DoWhatIMean_GeneratorTestService_Command extends Command {
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -1120,7 +1120,7 @@ final class DoWhatIMean_GeneratorTestService_Command extends Command {
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -1173,7 +1173,7 @@ final class DoWhatIMean_Double_GeneratorTestService_Command extends Command {
 
   /**
    * Initialize object. All parameters from method "doWhatIMean" have to be passed as parameters to this command object.
-   * 
+   *
    * @param pParam1 Double
    */
   DoWhatIMean_Double_GeneratorTestService_Command( Double pParam1 ) {
@@ -1184,7 +1184,7 @@ final class DoWhatIMean_Double_GeneratorTestService_Command extends Command {
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -1211,7 +1211,7 @@ final class DoWhatIMean_Double_GeneratorTestService_Command extends Command {
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -1221,7 +1221,7 @@ final class DoWhatIMean_Double_GeneratorTestService_Command extends Command {
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -1275,7 +1275,7 @@ final class DoWithObjectsFromOtherPAckages_Input_GeneratorTestService_Command ex
   /**
    * Initialize object. All parameters from method "doWithObjectsFromOtherPAckages" have to be passed as parameters to
    * this command object.
-   * 
+   *
    * @param pInput Input
    */
   DoWithObjectsFromOtherPAckages_Input_GeneratorTestService_Command( Input pInput ) {
@@ -1286,7 +1286,7 @@ final class DoWithObjectsFromOtherPAckages_Input_GeneratorTestService_Command ex
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -1312,7 +1312,7 @@ final class DoWithObjectsFromOtherPAckages_Input_GeneratorTestService_Command ex
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -1322,7 +1322,7 @@ final class DoWithObjectsFromOtherPAckages_Input_GeneratorTestService_Command ex
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -1371,8 +1371,8 @@ final class TestPrimiveIntResult_GeneratorTestService_Command extends Command {
   /**
    * Initialize object. All parameters from method "testPrimiveIntResult" have to be passed as parameters to this
    * command object.
-   * 
-   * 
+   *
+   *
    */
   TestPrimiveIntResult_GeneratorTestService_Command( ) {
     super(GeneratorTestService.class);
@@ -1381,7 +1381,7 @@ final class TestPrimiveIntResult_GeneratorTestService_Command extends Command {
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -1407,7 +1407,7 @@ final class TestPrimiveIntResult_GeneratorTestService_Command extends Command {
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -1417,7 +1417,7 @@ final class TestPrimiveIntResult_GeneratorTestService_Command extends Command {
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -1466,8 +1466,8 @@ final class TestPrimitiveBooleanResult_GeneratorTestService_Command extends Comm
   /**
    * Initialize object. All parameters from method "testPrimitiveBooleanResult" have to be passed as parameters to this
    * command object.
-   * 
-   * 
+   *
+   *
    */
   TestPrimitiveBooleanResult_GeneratorTestService_Command( ) {
     super(GeneratorTestService.class);
@@ -1476,7 +1476,7 @@ final class TestPrimitiveBooleanResult_GeneratorTestService_Command extends Comm
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -1502,7 +1502,7 @@ final class TestPrimitiveBooleanResult_GeneratorTestService_Command extends Comm
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -1512,7 +1512,7 @@ final class TestPrimitiveBooleanResult_GeneratorTestService_Command extends Comm
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -1561,8 +1561,8 @@ final class TestPrimitiveShortResult_GeneratorTestService_Command extends Comman
   /**
    * Initialize object. All parameters from method "testPrimitiveShortResult" have to be passed as parameters to this
    * command object.
-   * 
-   * 
+   *
+   *
    */
   TestPrimitiveShortResult_GeneratorTestService_Command( ) {
     super(GeneratorTestService.class);
@@ -1571,7 +1571,7 @@ final class TestPrimitiveShortResult_GeneratorTestService_Command extends Comman
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -1597,7 +1597,7 @@ final class TestPrimitiveShortResult_GeneratorTestService_Command extends Comman
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -1607,7 +1607,7 @@ final class TestPrimitiveShortResult_GeneratorTestService_Command extends Comman
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -1656,8 +1656,8 @@ final class TestPrimitveByteResult_GeneratorTestService_Command extends Command 
   /**
    * Initialize object. All parameters from method "testPrimitveByteResult" have to be passed as parameters to this
    * command object.
-   * 
-   * 
+   *
+   *
    */
   TestPrimitveByteResult_GeneratorTestService_Command( ) {
     super(GeneratorTestService.class);
@@ -1666,7 +1666,7 @@ final class TestPrimitveByteResult_GeneratorTestService_Command extends Command 
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -1692,7 +1692,7 @@ final class TestPrimitveByteResult_GeneratorTestService_Command extends Command 
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -1702,7 +1702,7 @@ final class TestPrimitveByteResult_GeneratorTestService_Command extends Command 
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -1751,8 +1751,8 @@ final class TestPrimitiveCharResult_GeneratorTestService_Command extends Command
   /**
    * Initialize object. All parameters from method "testPrimitiveCharResult" have to be passed as parameters to this
    * command object.
-   * 
-   * 
+   *
+   *
    */
   TestPrimitiveCharResult_GeneratorTestService_Command( ) {
     super(GeneratorTestService.class);
@@ -1761,7 +1761,7 @@ final class TestPrimitiveCharResult_GeneratorTestService_Command extends Command
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -1787,7 +1787,7 @@ final class TestPrimitiveCharResult_GeneratorTestService_Command extends Command
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -1797,7 +1797,7 @@ final class TestPrimitiveCharResult_GeneratorTestService_Command extends Command
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -1846,8 +1846,8 @@ final class TestPrimitiveLongResult_GeneratorTestService_Command extends Command
   /**
    * Initialize object. All parameters from method "testPrimitiveLongResult" have to be passed as parameters to this
    * command object.
-   * 
-   * 
+   *
+   *
    */
   TestPrimitiveLongResult_GeneratorTestService_Command( ) {
     super(GeneratorTestService.class);
@@ -1856,7 +1856,7 @@ final class TestPrimitiveLongResult_GeneratorTestService_Command extends Command
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -1882,7 +1882,7 @@ final class TestPrimitiveLongResult_GeneratorTestService_Command extends Command
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -1892,7 +1892,7 @@ final class TestPrimitiveLongResult_GeneratorTestService_Command extends Command
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -1941,8 +1941,8 @@ final class TestPrimitiveFloatResult_GeneratorTestService_Command extends Comman
   /**
    * Initialize object. All parameters from method "testPrimitiveFloatResult" have to be passed as parameters to this
    * command object.
-   * 
-   * 
+   *
+   *
    */
   TestPrimitiveFloatResult_GeneratorTestService_Command( ) {
     super(GeneratorTestService.class);
@@ -1951,7 +1951,7 @@ final class TestPrimitiveFloatResult_GeneratorTestService_Command extends Comman
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -1977,7 +1977,7 @@ final class TestPrimitiveFloatResult_GeneratorTestService_Command extends Comman
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -1987,7 +1987,7 @@ final class TestPrimitiveFloatResult_GeneratorTestService_Command extends Comman
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -2036,8 +2036,8 @@ final class TestPrimitveDoubleResult_GeneratorTestService_Command extends Comman
   /**
    * Initialize object. All parameters from method "testPrimitveDoubleResult" have to be passed as parameters to this
    * command object.
-   * 
-   * 
+   *
+   *
    */
   TestPrimitveDoubleResult_GeneratorTestService_Command( ) {
     super(GeneratorTestService.class);
@@ -2046,7 +2046,7 @@ final class TestPrimitveDoubleResult_GeneratorTestService_Command extends Comman
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -2072,7 +2072,7 @@ final class TestPrimitveDoubleResult_GeneratorTestService_Command extends Comman
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -2082,7 +2082,7 @@ final class TestPrimitveDoubleResult_GeneratorTestService_Command extends Comman
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -2131,8 +2131,8 @@ final class ParentServiceMethod_ParentService_Command extends Command {
   /**
    * Initialize object. All parameters from method "parentServiceMethod" have to be passed as parameters to this command
    * object.
-   * 
-   * 
+   *
+   *
    */
   ParentServiceMethod_ParentService_Command( ) {
     super(GeneratorTestService.class);
@@ -2141,7 +2141,7 @@ final class ParentServiceMethod_ParentService_Command extends Command {
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -2168,7 +2168,7 @@ final class ParentServiceMethod_ParentService_Command extends Command {
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -2178,7 +2178,7 @@ final class ParentServiceMethod_ParentService_Command extends Command {
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */

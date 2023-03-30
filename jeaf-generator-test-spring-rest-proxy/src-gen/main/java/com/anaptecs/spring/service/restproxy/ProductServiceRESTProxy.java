@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.spring.service.restproxy;
@@ -47,7 +47,7 @@ import com.anaptecs.spring.service.ProductService;
 /**
  * Class implements a proxy for REST Service {@link ProductService}. The proxy is implemented as Spring services. This
  * way to developers it looks like a plain Spring Service.
- * 
+ *
  * This implementation deals with everything that is required to call the external REST service including the following
  * things:
  * <ul>
@@ -56,7 +56,7 @@ import com.anaptecs.spring.service.ProductService;
  * <li>Proper setting of HTTP header</li>
  * <li>Circuit breaker in case of availabilities problems of the REST service</li>
  * </ul>
- * 
+ *
  * However, as an transactional context can not be propagated to another REST resource developers still have to take
  * care about proper transaction handling if needed.
  */
@@ -70,7 +70,7 @@ public class ProductServiceRESTProxy implements ProductService {
 
   /**
    * Initialize object.
-   * 
+   *
    * @param pRequestExecutor Dependency on concrete {@link RESTRequestExecutor} implementation that should be used.
    */
   public ProductServiceRESTProxy( RESTRequestExecutor pRequestExecutor ) {
@@ -79,7 +79,7 @@ public class ProductServiceRESTProxy implements ProductService {
 
   /**
    * Operation returns all available product.
-   * 
+   *
    * @return {@link List<Product>}
    */
   @Override
@@ -355,7 +355,7 @@ public class ProductServiceRESTProxy implements ProductService {
   /**
    * Please be aware that deprecations on complex bodies are not supported. Instead the whole operation needs to be set
    * to deprecated.
-   * 
+   *
    * @param pProduct <br/>
    * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    */

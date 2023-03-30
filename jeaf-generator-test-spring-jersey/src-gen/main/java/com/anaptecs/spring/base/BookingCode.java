@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.spring.base;
@@ -27,7 +27,7 @@ public class BookingCode {
 
   /**
    * Initialize object using the passed builder.
-   * 
+   *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected BookingCode( Builder pBuilder ) {
@@ -37,7 +37,7 @@ public class BookingCode {
 
   /**
    * Method returns a new builder.
-   * 
+   *
    * @return {@link Builder} New builder that can be used to create new BookingCode objects.
    */
   public static Builder builder( ) {
@@ -46,7 +46,7 @@ public class BookingCode {
 
   /**
    * Method creates a new builder and initialize it with the data from the passed object.
-   * 
+   *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new BookingCode objects. The method never returns
    * null.
@@ -60,7 +60,7 @@ public class BookingCode {
    *
    * Please be aware that this method is only intended to be used for deserialization frameworks like JAX-RS. For
    * "normal" object creation builder should be used instead.
-   * 
+   *
    * @param pCode String that should be used to create an instance of this class. The parameter must not be null.
    * @return {@link BookingCode} Instance of the class that matches to the passed string. The method never returns null.
    */
@@ -92,7 +92,7 @@ public class BookingCode {
 
     /**
      * Method sets attribute {@link #code}.<br/>
-     * 
+     *
      * @param pCode Value to which {@link #code} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -105,7 +105,7 @@ public class BookingCode {
     /**
      * Method creates a new instance of class BookingCode. The object will be initialized with the values of the
      * builder.
-     * 
+     *
      * @return BookingCode Created object. The method never returns null.
      */
     public BookingCode build( ) {
@@ -115,7 +115,7 @@ public class BookingCode {
 
   /**
    * Method returns attribute {@link #code}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #code} is set.
    */
   public String getCode( ) {
@@ -124,7 +124,7 @@ public class BookingCode {
 
   /**
    * Method sets attribute {@link #code}.<br/>
-   * 
+   *
    * @param pCode Value to which {@link #code} should be set.
    */
   public void setCode( String pCode ) {
@@ -173,7 +173,7 @@ public class BookingCode {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

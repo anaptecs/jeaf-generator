@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.accounting.impl.pojo;
@@ -61,7 +61,7 @@ public abstract class AccountBase {
 
   /**
    * Initialize object using the passed builder.
-   * 
+   *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected AccountBase( BuilderBase pBuilder ) {
@@ -113,7 +113,7 @@ public abstract class AccountBase {
 
     /**
      * Method sets attribute {@link #iban}.<br/>
-     * 
+     *
      * @param pIban Value to which {@link #iban} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -125,7 +125,7 @@ public abstract class AccountBase {
 
     /**
      * Method sets association {@link #owner}.<br/>
-     * 
+     *
      * @param pOwner Value to which {@link #owner} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -136,7 +136,7 @@ public abstract class AccountBase {
 
     /**
      * Method sets attribute {@link #currency}.<br/>
-     * 
+     *
      * @param pCurrency Value to which {@link #currency} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -148,7 +148,7 @@ public abstract class AccountBase {
 
     /**
      * Method sets association {@link #allBookings}.<br/>
-     * 
+     *
      * @param pAllBookings Collection to which {@link #allBookings} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -165,7 +165,7 @@ public abstract class AccountBase {
 
     /**
      * Method creates a new instance of class Account. The object will be initialized with the values of the builder.
-     * 
+     *
      * @return Account Created object. The method never returns null.
      */
     public Account build( ) {
@@ -175,7 +175,7 @@ public abstract class AccountBase {
     /**
      * Method creates a new validated instance of class Account. The object will be initialized with the values of the
      * builder and validated afterwards.
-     * 
+     *
      * @return Account Created and validated object. The method never returns null.
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
@@ -188,7 +188,7 @@ public abstract class AccountBase {
 
   /**
    * Method returns attribute {@link #iban}.<br/>
-   * 
+   *
    * @return int Value to which {@link #iban} is set.
    */
   public int getIban( ) {
@@ -197,7 +197,7 @@ public abstract class AccountBase {
 
   /**
    * Method sets attribute {@link #iban}.<br/>
-   * 
+   *
    * @param pIban Value to which {@link #iban} should be set.
    */
   public void setIban( int pIban ) {
@@ -207,7 +207,7 @@ public abstract class AccountBase {
 
   /**
    * Method returns association {@link #owner}.<br/>
-   * 
+   *
    * @return {@link Customer} Value to which {@link #owner} is set.
    */
   public Customer getOwner( ) {
@@ -216,7 +216,7 @@ public abstract class AccountBase {
 
   /**
    * Method sets association {@link #owner}.<br/>
-   * 
+   *
    * @param pOwner Value to which {@link #owner} should be set.
    */
   public void setOwner( Customer pOwner ) {
@@ -247,7 +247,7 @@ public abstract class AccountBase {
 
   /**
    * Method returns attribute {@link #currency}.<br/>
-   * 
+   *
    * @return {@link Currency} Value to which {@link #currency} is set.
    */
   public Currency getCurrency( ) {
@@ -256,7 +256,7 @@ public abstract class AccountBase {
 
   /**
    * Method sets attribute {@link #currency}.<br/>
-   * 
+   *
    * @param pCurrency Value to which {@link #currency} should be set.
    */
   public void setCurrency( Currency pCurrency ) {
@@ -266,7 +266,7 @@ public abstract class AccountBase {
 
   /**
    * Method returns association {@link #allBookings}.<br/>
-   * 
+   *
    * @return {@link Set<Booking>} Value to which {@link #allBookings} is set. The method never returns null and the
    * returned collection is unmodifiable.
    */
@@ -277,7 +277,7 @@ public abstract class AccountBase {
 
   /**
    * Method adds the passed object to {@link #allBookings}.
-   * 
+   *
    * @param pAllBookings Object that should be added to {@link #allBookings}. The parameter must not be null.
    */
   public void addToAllBookings( Booking pAllBookings ) {
@@ -289,7 +289,7 @@ public abstract class AccountBase {
 
   /**
    * Method adds all passed objects to {@link #allBookings}.
-   * 
+   *
    * @param pAllBookings Collection with all objects that should be added to {@link #allBookings}. The parameter must
    * not be null.
    */
@@ -304,7 +304,7 @@ public abstract class AccountBase {
 
   /**
    * Method removes the passed object from {@link #allBookings}.<br/>
-   * 
+   *
    * @param pAllBookings Object that should be removed from {@link #allBookings}. The parameter must not be null.
    */
   public void removeFromAllBookings( Booking pAllBookings ) {
@@ -352,7 +352,7 @@ public abstract class AccountBase {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

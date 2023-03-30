@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.junit.rest;
@@ -260,7 +260,7 @@ final class GetResource_String_RESTTestService_Command extends Command {
 
   /**
    * Initialize object. All parameters from method "getResource" have to be passed as parameters to this command object.
-   * 
+   *
    * @param pID String
    */
   GetResource_String_RESTTestService_Command( String pID ) {
@@ -271,7 +271,7 @@ final class GetResource_String_RESTTestService_Command extends Command {
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -297,7 +297,7 @@ final class GetResource_String_RESTTestService_Command extends Command {
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -307,7 +307,7 @@ final class GetResource_String_RESTTestService_Command extends Command {
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -356,8 +356,8 @@ final class GetTestServiceObject_RESTTestService_Command extends Command {
   /**
    * Initialize object. All parameters from method "getTestServiceObject" have to be passed as parameters to this
    * command object.
-   * 
-   * 
+   *
+   *
    */
   GetTestServiceObject_RESTTestService_Command( ) {
     super(RESTTestService.class);
@@ -366,7 +366,7 @@ final class GetTestServiceObject_RESTTestService_Command extends Command {
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -392,7 +392,7 @@ final class GetTestServiceObject_RESTTestService_Command extends Command {
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -402,7 +402,7 @@ final class GetTestServiceObject_RESTTestService_Command extends Command {
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -456,7 +456,7 @@ final class UpdateTestServiceObject_TestServiceObject_RESTTestService_Command ex
   /**
    * Initialize object. All parameters from method "updateTestServiceObject" have to be passed as parameters to this
    * command object.
-   * 
+   *
    * @param pObject TestServiceObject
    */
   UpdateTestServiceObject_TestServiceObject_RESTTestService_Command( TestServiceObject pObject ) {
@@ -467,7 +467,7 @@ final class UpdateTestServiceObject_TestServiceObject_RESTTestService_Command ex
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -493,7 +493,7 @@ final class UpdateTestServiceObject_TestServiceObject_RESTTestService_Command ex
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -503,7 +503,7 @@ final class UpdateTestServiceObject_TestServiceObject_RESTTestService_Command ex
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -552,8 +552,8 @@ final class DoSomeNotRESTThing_RESTTestService_Command extends Command {
   /**
    * Initialize object. All parameters from method "doSomeNotRESTThing" have to be passed as parameters to this command
    * object.
-   * 
-   * 
+   *
+   *
    */
   DoSomeNotRESTThing_RESTTestService_Command( ) {
     super(RESTTestService.class);
@@ -562,7 +562,7 @@ final class DoSomeNotRESTThing_RESTTestService_Command extends Command {
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -589,7 +589,7 @@ final class DoSomeNotRESTThing_RESTTestService_Command extends Command {
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -599,7 +599,7 @@ final class DoSomeNotRESTThing_RESTTestService_Command extends Command {
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -648,8 +648,8 @@ final class DoSomethingRESTy_RESTTestService_Command extends Command {
   /**
    * Initialize object. All parameters from method "doSomethingRESTy" have to be passed as parameters to this command
    * object.
-   * 
-   * 
+   *
+   *
    */
   DoSomethingRESTy_RESTTestService_Command( ) {
     super(RESTTestService.class);
@@ -658,7 +658,7 @@ final class DoSomethingRESTy_RESTTestService_Command extends Command {
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -685,7 +685,7 @@ final class DoSomethingRESTy_RESTTestService_Command extends Command {
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -695,7 +695,7 @@ final class DoSomethingRESTy_RESTTestService_Command extends Command {
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -765,7 +765,7 @@ final class YetAnotherRESTOperation_String_String_String_String_RESTTestService_
   /**
    * Initialize object. All parameters from method "yetAnotherRESTOperation" have to be passed as parameters to this
    * command object.
-   * 
+   *
    * @param pID String
    * @param pToken String
    * @param pQueryParam1 String
@@ -783,7 +783,7 @@ final class YetAnotherRESTOperation_String_String_String_String_RESTTestService_
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -809,7 +809,7 @@ final class YetAnotherRESTOperation_String_String_String_String_RESTTestService_
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -819,7 +819,7 @@ final class YetAnotherRESTOperation_String_String_String_String_RESTTestService_
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -873,7 +873,7 @@ final class HandleBeanParam1_Context_RESTTestService_Command extends Command {
   /**
    * Initialize object. All parameters from method "handleBeanParam1" have to be passed as parameters to this command
    * object.
-   * 
+   *
    * @param pContext Context
    */
   HandleBeanParam1_Context_RESTTestService_Command( Context pContext ) {
@@ -884,7 +884,7 @@ final class HandleBeanParam1_Context_RESTTestService_Command extends Command {
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -911,7 +911,7 @@ final class HandleBeanParam1_Context_RESTTestService_Command extends Command {
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -921,7 +921,7 @@ final class HandleBeanParam1_Context_RESTTestService_Command extends Command {
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -975,7 +975,7 @@ final class HandleBeanParam1_BeanParameter_RESTTestService_Command extends Comma
   /**
    * Initialize object. All parameters from method "handleBeanParam1" have to be passed as parameters to this command
    * object.
-   * 
+   *
    * @param pBeanParam BeanParameter
    */
   HandleBeanParam1_BeanParameter_RESTTestService_Command( BeanParameter pBeanParam ) {
@@ -986,7 +986,7 @@ final class HandleBeanParam1_BeanParameter_RESTTestService_Command extends Comma
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -1013,7 +1013,7 @@ final class HandleBeanParam1_BeanParameter_RESTTestService_Command extends Comma
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -1023,7 +1023,7 @@ final class HandleBeanParam1_BeanParameter_RESTTestService_Command extends Comma
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -1072,8 +1072,8 @@ final class DeprecatedOperation_RESTTestService_Command extends Command {
   /**
    * Initialize object. All parameters from method "deprecatedOperation" have to be passed as parameters to this command
    * object.
-   * 
-   * 
+   *
+   *
    */
   DeprecatedOperation_RESTTestService_Command( ) {
     super(RESTTestService.class);
@@ -1082,7 +1082,7 @@ final class DeprecatedOperation_RESTTestService_Command extends Command {
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -1109,7 +1109,7 @@ final class DeprecatedOperation_RESTTestService_Command extends Command {
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -1119,7 +1119,7 @@ final class DeprecatedOperation_RESTTestService_Command extends Command {
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -1178,7 +1178,7 @@ final class DeprecatedParameter_int_int_RESTTestService_Command extends Command 
   /**
    * Initialize object. All parameters from method "deprecatedParameter" have to be passed as parameters to this command
    * object.
-   * 
+   *
    * @param pParam1 int
    * @param pParam2 int
    */
@@ -1191,7 +1191,7 @@ final class DeprecatedParameter_int_int_RESTTestService_Command extends Command 
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -1218,7 +1218,7 @@ final class DeprecatedParameter_int_int_RESTTestService_Command extends Command 
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -1228,7 +1228,7 @@ final class DeprecatedParameter_int_int_RESTTestService_Command extends Command 
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -1282,7 +1282,7 @@ final class DeprectaedReturnValue_int_RESTTestService_Command extends Command {
   /**
    * Initialize object. All parameters from method "deprectaedReturnValue" have to be passed as parameters to this
    * command object.
-   * 
+   *
    * @param pParam1 int
    */
   DeprectaedReturnValue_int_RESTTestService_Command( int pParam1 ) {
@@ -1293,7 +1293,7 @@ final class DeprectaedReturnValue_int_RESTTestService_Command extends Command {
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -1319,7 +1319,7 @@ final class DeprectaedReturnValue_int_RESTTestService_Command extends Command {
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -1329,7 +1329,7 @@ final class DeprectaedReturnValue_int_RESTTestService_Command extends Command {
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -1383,7 +1383,7 @@ final class DeprecatedAsyncParam_int_RESTTestService_Command extends Command {
   /**
    * Initialize object. All parameters from method "deprecatedAsyncParam" have to be passed as parameters to this
    * command object.
-   * 
+   *
    * @param pParam1 int
    */
   DeprecatedAsyncParam_int_RESTTestService_Command( @Deprecated int pParam1 ) {
@@ -1394,7 +1394,7 @@ final class DeprecatedAsyncParam_int_RESTTestService_Command extends Command {
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -1420,7 +1420,7 @@ final class DeprecatedAsyncParam_int_RESTTestService_Command extends Command {
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -1430,7 +1430,7 @@ final class DeprecatedAsyncParam_int_RESTTestService_Command extends Command {
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -1484,7 +1484,7 @@ final class DeprecatedAsync_int_RESTTestService_Command extends Command {
   /**
    * Initialize object. All parameters from method "deprecatedAsync" have to be passed as parameters to this command
    * object.
-   * 
+   *
    * @param pParam1 int
    */
   DeprecatedAsync_int_RESTTestService_Command( int pParam1 ) {
@@ -1495,7 +1495,7 @@ final class DeprecatedAsync_int_RESTTestService_Command extends Command {
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -1521,7 +1521,7 @@ final class DeprecatedAsync_int_RESTTestService_Command extends Command {
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -1531,7 +1531,7 @@ final class DeprecatedAsync_int_RESTTestService_Command extends Command {
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */

@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.spring.service;
@@ -610,7 +610,7 @@ final class GetProducts_int_RESTProductService_Command extends Command {
 
   /**
    * Initialize object. All parameters from method "getProducts" have to be passed as parameters to this command object.
-   * 
+   *
    * @param pMaxResultSize int
    */
   GetProducts_int_RESTProductService_Command( int pMaxResultSize ) {
@@ -621,7 +621,7 @@ final class GetProducts_int_RESTProductService_Command extends Command {
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -647,7 +647,7 @@ final class GetProducts_int_RESTProductService_Command extends Command {
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -657,7 +657,7 @@ final class GetProducts_int_RESTProductService_Command extends Command {
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -710,7 +710,7 @@ final class GetProduct_String_RESTProductService_Command extends Command {
 
   /**
    * Initialize object. All parameters from method "getProduct" have to be passed as parameters to this command object.
-   * 
+   *
    * @param pProductID String
    */
   GetProduct_String_RESTProductService_Command( @NotEmpty String pProductID ) {
@@ -721,7 +721,7 @@ final class GetProduct_String_RESTProductService_Command extends Command {
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -747,7 +747,7 @@ final class GetProduct_String_RESTProductService_Command extends Command {
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -757,7 +757,7 @@ final class GetProduct_String_RESTProductService_Command extends Command {
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -811,7 +811,7 @@ final class CreateProduct_Product_RESTProductService_Command extends Command {
   /**
    * Initialize object. All parameters from method "createProduct" have to be passed as parameters to this command
    * object.
-   * 
+   *
    * @param pProduct Product
    */
   CreateProduct_Product_RESTProductService_Command( Product pProduct ) {
@@ -822,7 +822,7 @@ final class CreateProduct_Product_RESTProductService_Command extends Command {
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -848,7 +848,7 @@ final class CreateProduct_Product_RESTProductService_Command extends Command {
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -858,7 +858,7 @@ final class CreateProduct_Product_RESTProductService_Command extends Command {
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -912,7 +912,7 @@ final class GetSortiment_Context_RESTProductService_Command extends Command {
   /**
    * Initialize object. All parameters from method "getSortiment" have to be passed as parameters to this command
    * object.
-   * 
+   *
    * @param pContext Context
    */
   GetSortiment_Context_RESTProductService_Command( Context pContext ) {
@@ -923,7 +923,7 @@ final class GetSortiment_Context_RESTProductService_Command extends Command {
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -949,7 +949,7 @@ final class GetSortiment_Context_RESTProductService_Command extends Command {
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -959,7 +959,7 @@ final class GetSortiment_Context_RESTProductService_Command extends Command {
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -1013,7 +1013,7 @@ final class CreateChannelCode_String_RESTProductService_Command extends Command 
   /**
    * Initialize object. All parameters from method "createChannelCode" have to be passed as parameters to this command
    * object.
-   * 
+   *
    * @param pChannelCode String
    */
   CreateChannelCode_String_RESTProductService_Command( @NotBlank String pChannelCode ) {
@@ -1024,7 +1024,7 @@ final class CreateChannelCode_String_RESTProductService_Command extends Command 
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -1050,7 +1050,7 @@ final class CreateChannelCode_String_RESTProductService_Command extends Command 
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -1060,7 +1060,7 @@ final class CreateChannelCode_String_RESTProductService_Command extends Command 
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -1108,8 +1108,8 @@ final class Ping_RESTProductService_Command extends Command {
 
   /**
    * Initialize object. All parameters from method "ping" have to be passed as parameters to this command object.
-   * 
-   * 
+   *
+   *
    */
   Ping_RESTProductService_Command( ) {
     super(RESTProductService.class);
@@ -1118,7 +1118,7 @@ final class Ping_RESTProductService_Command extends Command {
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -1145,7 +1145,7 @@ final class Ping_RESTProductService_Command extends Command {
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -1155,7 +1155,7 @@ final class Ping_RESTProductService_Command extends Command {
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -1203,8 +1203,8 @@ final class TestInit_RESTProductService_Command extends Command {
 
   /**
    * Initialize object. All parameters from method "testInit" have to be passed as parameters to this command object.
-   * 
-   * 
+   *
+   *
    */
   TestInit_RESTProductService_Command( ) {
     super(RESTProductService.class);
@@ -1213,7 +1213,7 @@ final class TestInit_RESTProductService_Command extends Command {
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -1240,7 +1240,7 @@ final class TestInit_RESTProductService_Command extends Command {
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -1250,7 +1250,7 @@ final class TestInit_RESTProductService_Command extends Command {
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -1304,7 +1304,7 @@ final class GetSupportedCurrencies_ChannelCode_RESTProductService_Command extend
   /**
    * Initialize object. All parameters from method "getSupportedCurrencies" have to be passed as parameters to this
    * command object.
-   * 
+   *
    * @param pChannelCode ChannelCode
    */
   GetSupportedCurrencies_ChannelCode_RESTProductService_Command( ChannelCode pChannelCode ) {
@@ -1315,7 +1315,7 @@ final class GetSupportedCurrencies_ChannelCode_RESTProductService_Command extend
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -1341,7 +1341,7 @@ final class GetSupportedCurrencies_ChannelCode_RESTProductService_Command extend
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -1351,7 +1351,7 @@ final class GetSupportedCurrencies_ChannelCode_RESTProductService_Command extend
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -1405,7 +1405,7 @@ final class GetSupportedCurrenciesAsync_ChannelCode_RESTProductService_Command e
   /**
    * Initialize object. All parameters from method "getSupportedCurrenciesAsync" have to be passed as parameters to this
    * command object.
-   * 
+   *
    * @param pChannelCode ChannelCode
    */
   GetSupportedCurrenciesAsync_ChannelCode_RESTProductService_Command( ChannelCode pChannelCode ) {
@@ -1416,7 +1416,7 @@ final class GetSupportedCurrenciesAsync_ChannelCode_RESTProductService_Command e
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -1442,7 +1442,7 @@ final class GetSupportedCurrenciesAsync_ChannelCode_RESTProductService_Command e
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -1452,7 +1452,7 @@ final class GetSupportedCurrenciesAsync_ChannelCode_RESTProductService_Command e
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -1517,7 +1517,7 @@ final class TestParams_BigDecimal_int_Locale_RESTProductService_Command extends 
 
   /**
    * Initialize object. All parameters from method "testParams" have to be passed as parameters to this command object.
-   * 
+   *
    * @param pBigDecimalHeader BigDecimal
    * @param pIntCookieParam int
    * @param pLocaleQueryParam Locale
@@ -1533,7 +1533,7 @@ final class TestParams_BigDecimal_int_Locale_RESTProductService_Command extends 
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -1559,7 +1559,7 @@ final class TestParams_BigDecimal_int_Locale_RESTProductService_Command extends 
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -1569,7 +1569,7 @@ final class TestParams_BigDecimal_int_Locale_RESTProductService_Command extends 
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -1635,7 +1635,7 @@ final class TestEnumParams_ChannelType_TimeUnit_ExtensibleEnum_RESTProductServic
   /**
    * Initialize object. All parameters from method "testEnumParams" have to be passed as parameters to this command
    * object.
-   * 
+   *
    * @param pChannelType ChannelType
    * @param pTimeUnit TimeUnit
    * @param pExtensibleEnum ExtensibleEnum
@@ -1651,7 +1651,7 @@ final class TestEnumParams_ChannelType_TimeUnit_ExtensibleEnum_RESTProductServic
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -1678,7 +1678,7 @@ final class TestEnumParams_ChannelType_TimeUnit_ExtensibleEnum_RESTProductServic
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -1688,7 +1688,7 @@ final class TestEnumParams_ChannelType_TimeUnit_ExtensibleEnum_RESTProductServic
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -1754,7 +1754,7 @@ final class TestEnumHeaderParams_ChannelType_TimeUnit_ExtensibleEnum_RESTProduct
   /**
    * Initialize object. All parameters from method "testEnumHeaderParams" have to be passed as parameters to this
    * command object.
-   * 
+   *
    * @param pChannelType ChannelType
    * @param pTimeUnit TimeUnit
    * @param pExtensibleEnum ExtensibleEnum
@@ -1770,7 +1770,7 @@ final class TestEnumHeaderParams_ChannelType_TimeUnit_ExtensibleEnum_RESTProduct
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -1797,7 +1797,7 @@ final class TestEnumHeaderParams_ChannelType_TimeUnit_ExtensibleEnum_RESTProduct
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -1807,7 +1807,7 @@ final class TestEnumHeaderParams_ChannelType_TimeUnit_ExtensibleEnum_RESTProduct
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -1921,7 +1921,7 @@ final class TestDateQueryParams_String_OffsetDateTime_OffsetTime_LocalDateTime_L
   /**
    * Initialize object. All parameters from method "testDateQueryParams" have to be passed as parameters to this command
    * object.
-   * 
+   *
    * @param pPath String
    * @param pStartTimestamp OffsetDateTime
    * @param pStartTime OffsetTime
@@ -1958,7 +1958,7 @@ final class TestDateQueryParams_String_OffsetDateTime_OffsetTime_LocalDateTime_L
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -1986,7 +1986,7 @@ final class TestDateQueryParams_String_OffsetDateTime_OffsetTime_LocalDateTime_L
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -1996,7 +1996,7 @@ final class TestDateQueryParams_String_OffsetDateTime_OffsetTime_LocalDateTime_L
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -2056,7 +2056,7 @@ final class TestDateQueryParamsBean_String_DateQueryParamsBean_RESTProductServic
   /**
    * Initialize object. All parameters from method "testDateQueryParamsBean" have to be passed as parameters to this
    * command object.
-   * 
+   *
    * @param pPath String
    * @param pQueryParams DateQueryParamsBean
    */
@@ -2070,7 +2070,7 @@ final class TestDateQueryParamsBean_String_DateQueryParamsBean_RESTProductServic
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -2097,7 +2097,7 @@ final class TestDateQueryParamsBean_String_DateQueryParamsBean_RESTProductServic
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -2107,7 +2107,7 @@ final class TestDateQueryParamsBean_String_DateQueryParamsBean_RESTProductServic
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -2220,7 +2220,7 @@ final class TestDateHeaderParams_String_OffsetDateTime_OffsetTime_LocalDateTime_
   /**
    * Initialize object. All parameters from method "testDateHeaderParams" have to be passed as parameters to this
    * command object.
-   * 
+   *
    * @param pPath String
    * @param pOffsetDateTime OffsetDateTime
    * @param pOffsetTime OffsetTime
@@ -2257,7 +2257,7 @@ final class TestDateHeaderParams_String_OffsetDateTime_OffsetTime_LocalDateTime_
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -2285,7 +2285,7 @@ final class TestDateHeaderParams_String_OffsetDateTime_OffsetTime_LocalDateTime_
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -2295,7 +2295,7 @@ final class TestDateHeaderParams_String_OffsetDateTime_OffsetTime_LocalDateTime_
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -2355,7 +2355,7 @@ final class TestDateHeaderParamsBean_String_DateHeaderParamsBean_RESTProductServ
   /**
    * Initialize object. All parameters from method "testDateHeaderParamsBean" have to be passed as parameters to this
    * command object.
-   * 
+   *
    * @param pPath String
    * @param pHeaderParams DateHeaderParamsBean
    */
@@ -2369,7 +2369,7 @@ final class TestDateHeaderParamsBean_String_DateHeaderParamsBean_RESTProductServ
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -2396,7 +2396,7 @@ final class TestDateHeaderParamsBean_String_DateHeaderParamsBean_RESTProductServ
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -2406,7 +2406,7 @@ final class TestDateHeaderParamsBean_String_DateHeaderParamsBean_RESTProductServ
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -2466,7 +2466,7 @@ final class TestCookieParams_ChannelType_SpecialContext_RESTProductService_Comma
   /**
    * Initialize object. All parameters from method "testCookieParams" have to be passed as parameters to this command
    * object.
-   * 
+   *
    * @param pChannelTypeParam ChannelType
    * @param pContext SpecialContext
    */
@@ -2480,7 +2480,7 @@ final class TestCookieParams_ChannelType_SpecialContext_RESTProductService_Comma
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -2507,7 +2507,7 @@ final class TestCookieParams_ChannelType_SpecialContext_RESTProductService_Comma
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -2517,7 +2517,7 @@ final class TestCookieParams_ChannelType_SpecialContext_RESTProductService_Comma
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -2576,7 +2576,7 @@ final class TestOptionalQueryParams_String_int_RESTProductService_Command extend
   /**
    * Initialize object. All parameters from method "testOptionalQueryParams" have to be passed as parameters to this
    * command object.
-   * 
+   *
    * @param query1 String
    * @param query2 int
    */
@@ -2589,7 +2589,7 @@ final class TestOptionalQueryParams_String_int_RESTProductService_Command extend
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -2615,7 +2615,7 @@ final class TestOptionalQueryParams_String_int_RESTProductService_Command extend
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -2625,7 +2625,7 @@ final class TestOptionalQueryParams_String_int_RESTProductService_Command extend
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -2680,7 +2680,7 @@ final class ProcessComplexBookingID_ComplexBookingID_RESTProductService_Command 
   /**
    * Initialize object. All parameters from method "processComplexBookingID" have to be passed as parameters to this
    * command object.
-   * 
+   *
    * @param pComplextBookingID ComplexBookingID
    */
   ProcessComplexBookingID_ComplexBookingID_RESTProductService_Command( ComplexBookingID pComplextBookingID ) {
@@ -2691,7 +2691,7 @@ final class ProcessComplexBookingID_ComplexBookingID_RESTProductService_Command 
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -2717,7 +2717,7 @@ final class ProcessComplexBookingID_ComplexBookingID_RESTProductService_Command 
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -2727,7 +2727,7 @@ final class ProcessComplexBookingID_ComplexBookingID_RESTProductService_Command 
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -2793,7 +2793,7 @@ final class TestDataTypesAsHeaderParam_BookingID_BookingCode_DoubleCode_RESTProd
   /**
    * Initialize object. All parameters from method "testDataTypesAsHeaderParam" have to be passed as parameters to this
    * command object.
-   * 
+   *
    * @param pBookingID BookingID
    * @param pBookingCode BookingCode
    * @param pDoubleCode DoubleCode
@@ -2809,7 +2809,7 @@ final class TestDataTypesAsHeaderParam_BookingID_BookingCode_DoubleCode_RESTProd
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -2835,7 +2835,7 @@ final class TestDataTypesAsHeaderParam_BookingID_BookingCode_DoubleCode_RESTProd
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -2845,7 +2845,7 @@ final class TestDataTypesAsHeaderParam_BookingID_BookingCode_DoubleCode_RESTProd
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -2899,7 +2899,7 @@ final class TestDataTypesAsHeaderBeanParam_AdvancedHeader_RESTProductService_Com
   /**
    * Initialize object. All parameters from method "testDataTypesAsHeaderBeanParam" have to be passed as parameters to
    * this command object.
-   * 
+   *
    * @param pContext AdvancedHeader
    */
   TestDataTypesAsHeaderBeanParam_AdvancedHeader_RESTProductService_Command( AdvancedHeader pContext ) {
@@ -2910,7 +2910,7 @@ final class TestDataTypesAsHeaderBeanParam_AdvancedHeader_RESTProductService_Com
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -2936,7 +2936,7 @@ final class TestDataTypesAsHeaderBeanParam_AdvancedHeader_RESTProductService_Com
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -2946,7 +2946,7 @@ final class TestDataTypesAsHeaderBeanParam_AdvancedHeader_RESTProductService_Com
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -3000,7 +3000,7 @@ final class TestPrimitiveArrays_int_RESTProductService_Command extends Command {
   /**
    * Initialize object. All parameters from method "testPrimitiveArrays" have to be passed as parameters to this command
    * object.
-   * 
+   *
    * @param pIntegerArray int[]
    */
   TestPrimitiveArrays_int_RESTProductService_Command( int[] pIntegerArray ) {
@@ -3011,7 +3011,7 @@ final class TestPrimitiveArrays_int_RESTProductService_Command extends Command {
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -3037,7 +3037,7 @@ final class TestPrimitiveArrays_int_RESTProductService_Command extends Command {
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -3047,7 +3047,7 @@ final class TestPrimitiveArrays_int_RESTProductService_Command extends Command {
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -3101,7 +3101,7 @@ final class TestDataTypeAsQueryParam_BookingCode_RESTProductService_Command exte
   /**
    * Initialize object. All parameters from method "testDataTypeAsQueryParam" have to be passed as parameters to this
    * command object.
-   * 
+   *
    * @param pBookingCode BookingCode
    */
   TestDataTypeAsQueryParam_BookingCode_RESTProductService_Command( BookingCode pBookingCode ) {
@@ -3112,7 +3112,7 @@ final class TestDataTypeAsQueryParam_BookingCode_RESTProductService_Command exte
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -3138,7 +3138,7 @@ final class TestDataTypeAsQueryParam_BookingCode_RESTProductService_Command exte
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -3148,7 +3148,7 @@ final class TestDataTypeAsQueryParam_BookingCode_RESTProductService_Command exte
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -3202,7 +3202,7 @@ final class TestDataTypeAsBeanQueryParam_QueryBeanParam_RESTProductService_Comma
   /**
    * Initialize object. All parameters from method "testDataTypeAsBeanQueryParam" have to be passed as parameters to
    * this command object.
-   * 
+   *
    * @param pBeanParam QueryBeanParam
    */
   TestDataTypeAsBeanQueryParam_QueryBeanParam_RESTProductService_Command( QueryBeanParam pBeanParam ) {
@@ -3213,7 +3213,7 @@ final class TestDataTypeAsBeanQueryParam_QueryBeanParam_RESTProductService_Comma
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -3239,7 +3239,7 @@ final class TestDataTypeAsBeanQueryParam_QueryBeanParam_RESTProductService_Comma
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -3249,7 +3249,7 @@ final class TestDataTypeAsBeanQueryParam_QueryBeanParam_RESTProductService_Comma
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -3303,7 +3303,7 @@ final class TestPrimitiveArrayAsQueryParam_int_RESTProductService_Command extend
   /**
    * Initialize object. All parameters from method "testPrimitiveArrayAsQueryParam" have to be passed as parameters to
    * this command object.
-   * 
+   *
    * @param pIntValues int[]
    */
   TestPrimitiveArrayAsQueryParam_int_RESTProductService_Command( int[] pIntValues ) {
@@ -3314,7 +3314,7 @@ final class TestPrimitiveArrayAsQueryParam_int_RESTProductService_Command extend
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -3340,7 +3340,7 @@ final class TestPrimitiveArrayAsQueryParam_int_RESTProductService_Command extend
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -3350,7 +3350,7 @@ final class TestPrimitiveArrayAsQueryParam_int_RESTProductService_Command extend
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -3404,7 +3404,7 @@ final class TestSimpleTypesAsQueryParams_String_RESTProductService_Command exten
   /**
    * Initialize object. All parameters from method "testSimpleTypesAsQueryParams" have to be passed as parameters to
    * this command object.
-   * 
+   *
    * @param pStrings List<String>
    */
   TestSimpleTypesAsQueryParams_String_RESTProductService_Command( List<String> pStrings ) {
@@ -3415,7 +3415,7 @@ final class TestSimpleTypesAsQueryParams_String_RESTProductService_Command exten
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -3441,7 +3441,7 @@ final class TestSimpleTypesAsQueryParams_String_RESTProductService_Command exten
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -3451,7 +3451,7 @@ final class TestSimpleTypesAsQueryParams_String_RESTProductService_Command exten
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -3505,7 +3505,7 @@ final class TestPrimitiveWrapperArrayAsQueryParam_Integer_RESTProductService_Com
   /**
    * Initialize object. All parameters from method "testPrimitiveWrapperArrayAsQueryParam" have to be passed as
    * parameters to this command object.
-   * 
+   *
    * @param pIntegers Set<Integer>
    */
   TestPrimitiveWrapperArrayAsQueryParam_Integer_RESTProductService_Command( Set<Integer> pIntegers ) {
@@ -3516,7 +3516,7 @@ final class TestPrimitiveWrapperArrayAsQueryParam_Integer_RESTProductService_Com
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -3542,7 +3542,7 @@ final class TestPrimitiveWrapperArrayAsQueryParam_Integer_RESTProductService_Com
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -3552,7 +3552,7 @@ final class TestPrimitiveWrapperArrayAsQueryParam_Integer_RESTProductService_Com
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -3607,7 +3607,7 @@ final class TestMultivaluedQueryParamsBean_MultivaluedQueryParamsBean_RESTProduc
   /**
    * Initialize object. All parameters from method "testMultivaluedQueryParamsBean" have to be passed as parameters to
    * this command object.
-   * 
+   *
    * @param pBean MultivaluedQueryParamsBean
    */
   TestMultivaluedQueryParamsBean_MultivaluedQueryParamsBean_RESTProductService_Command(
@@ -3619,7 +3619,7 @@ final class TestMultivaluedQueryParamsBean_MultivaluedQueryParamsBean_RESTProduc
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -3645,7 +3645,7 @@ final class TestMultivaluedQueryParamsBean_MultivaluedQueryParamsBean_RESTProduc
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -3655,7 +3655,7 @@ final class TestMultivaluedQueryParamsBean_MultivaluedQueryParamsBean_RESTProduc
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -3732,7 +3732,7 @@ final class TestMulitvaluedDataTypeAsQueryParam_IntegerCodeType_LongCode_Booking
   /**
    * Initialize object. All parameters from method "testMulitvaluedDataTypeAsQueryParam" have to be passed as parameters
    * to this command object.
-   * 
+   *
    * @param pCodes List<IntegerCodeType>
    * @param pLongCodes Set<LongCode>
    * @param pBookingIDs List<BookingID>
@@ -3753,7 +3753,7 @@ final class TestMulitvaluedDataTypeAsQueryParam_IntegerCodeType_LongCode_Booking
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -3780,7 +3780,7 @@ final class TestMulitvaluedDataTypeAsQueryParam_IntegerCodeType_LongCode_Booking
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -3790,7 +3790,7 @@ final class TestMulitvaluedDataTypeAsQueryParam_IntegerCodeType_LongCode_Booking
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -3845,7 +3845,7 @@ final class TestMulitvaluedDataTypeAsBeanQueryParam_DataTypesQueryBean_RESTProdu
   /**
    * Initialize object. All parameters from method "testMulitvaluedDataTypeAsBeanQueryParam" have to be passed as
    * parameters to this command object.
-   * 
+   *
    * @param pQueryBean DataTypesQueryBean
    */
   TestMulitvaluedDataTypeAsBeanQueryParam_DataTypesQueryBean_RESTProductService_Command(
@@ -3857,7 +3857,7 @@ final class TestMulitvaluedDataTypeAsBeanQueryParam_DataTypesQueryBean_RESTProdu
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -3883,7 +3883,7 @@ final class TestMulitvaluedDataTypeAsBeanQueryParam_DataTypesQueryBean_RESTProdu
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -3893,7 +3893,7 @@ final class TestMulitvaluedDataTypeAsBeanQueryParam_DataTypesQueryBean_RESTProdu
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -3950,7 +3950,7 @@ final class TestMultiValuedHeaderFieldsInBeanParam_MultiValuedHeaderBeanParam_RE
   /**
    * Initialize object. All parameters from method "testMultiValuedHeaderFieldsInBeanParam" have to be passed as
    * parameters to this command object.
-   * 
+   *
    * @param pMultiValuedBean MultiValuedHeaderBeanParam
    */
   TestMultiValuedHeaderFieldsInBeanParam_MultiValuedHeaderBeanParam_RESTProductService_Command(
@@ -3962,7 +3962,7 @@ final class TestMultiValuedHeaderFieldsInBeanParam_MultiValuedHeaderBeanParam_RE
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -3988,7 +3988,7 @@ final class TestMultiValuedHeaderFieldsInBeanParam_MultiValuedHeaderBeanParam_RE
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -3998,7 +3998,7 @@ final class TestMultiValuedHeaderFieldsInBeanParam_MultiValuedHeaderBeanParam_RE
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -4085,7 +4085,7 @@ final class TestMultiValuedHeaderFields_String_int_Double_StringCode_OffsetDateT
   /**
    * Initialize object. All parameters from method "testMultiValuedHeaderFields" have to be passed as parameters to this
    * command object.
-   * 
+   *
    * @param pNames Set<String>
    * @param pInts int[]
    * @param pDoubles Set<Double>
@@ -4110,7 +4110,7 @@ final class TestMultiValuedHeaderFields_String_int_Double_StringCode_OffsetDateT
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -4137,7 +4137,7 @@ final class TestMultiValuedHeaderFields_String_int_Double_StringCode_OffsetDateT
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -4147,7 +4147,7 @@ final class TestMultiValuedHeaderFields_String_int_Double_StringCode_OffsetDateT
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -4201,7 +4201,7 @@ final class TestBookingIDAsPathParam_BookingID_RESTProductService_Command extend
   /**
    * Initialize object. All parameters from method "testBookingIDAsPathParam" have to be passed as parameters to this
    * command object.
-   * 
+   *
    * @param pBookingID BookingID
    */
   TestBookingIDAsPathParam_BookingID_RESTProductService_Command( BookingID pBookingID ) {
@@ -4212,7 +4212,7 @@ final class TestBookingIDAsPathParam_BookingID_RESTProductService_Command extend
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -4239,7 +4239,7 @@ final class TestBookingIDAsPathParam_BookingID_RESTProductService_Command extend
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -4249,7 +4249,7 @@ final class TestBookingIDAsPathParam_BookingID_RESTProductService_Command extend
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */
@@ -4303,7 +4303,7 @@ final class TestBookingIDAsHeaderParam_BookingID_RESTProductService_Command exte
   /**
    * Initialize object. All parameters from method "testBookingIDAsHeaderParam" have to be passed as parameters to this
    * command object.
-   * 
+   *
    * @param pBookingID BookingID
    */
   TestBookingIDAsHeaderParam_BookingID_RESTProductService_Command( BookingID pBookingID ) {
@@ -4314,7 +4314,7 @@ final class TestBookingIDAsHeaderParam_BookingID_RESTProductService_Command exte
 
   /**
    * Method executes the service call represented by this command object via JEAFs service channel.
-   * 
+   *
    * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
    * null.
    * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
@@ -4341,7 +4341,7 @@ final class TestBookingIDAsHeaderParam_BookingID_RESTProductService_Command exte
 
   /**
    * Method returns a method object describing the service method that will be called by this command object.
-   * 
+   *
    * @return {@link Method} Method object describing the called service method. The method never returns null.
    */
   @Override
@@ -4351,7 +4351,7 @@ final class TestBookingIDAsHeaderParam_BookingID_RESTProductService_Command exte
 
   /**
    * Method returns all parameters that will be passed to the service.
-   * 
+   *
    * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
    * an empty array in case that the method has no parameters.
    */

@@ -56,7 +56,7 @@ public abstract class CompanyBOBase extends CustomerBO {
 
   /**
    * Method returns all instance of this class including potential subclasses.
-   * 
+   *
    * @return {@link List} List with all objects of this class. The method never returns null.
    */
   public static List<CompanyBO> findAllCompanyBOs( ) {
@@ -65,7 +65,7 @@ public abstract class CompanyBOBase extends CustomerBO {
 
   /**
    * Method returns attribute {@link #name}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #name} is set.
    */
   public String getName( ) {
@@ -74,7 +74,7 @@ public abstract class CompanyBOBase extends CustomerBO {
 
   /**
    * Method sets attribute {@link #name}.<br/>
-   * 
+   *
    * @param pName Value to which {@link #name} should be set.
    */
   public void setName( String pName ) {
@@ -84,7 +84,7 @@ public abstract class CompanyBOBase extends CustomerBO {
 
   /**
    * Method returns attribute {@link #registrationNumber}.<br/>
-   * 
+   *
    * @return {@link Long} Value to which {@link #registrationNumber} is set.
    */
   public Long getRegistrationNumber( ) {
@@ -93,7 +93,7 @@ public abstract class CompanyBOBase extends CustomerBO {
 
   /**
    * Method sets attribute {@link #registrationNumber}.<br/>
-   * 
+   *
    * @param pRegistrationNumber Value to which {@link #registrationNumber} should be set.
    */
   public void setRegistrationNumber( Long pRegistrationNumber ) {
@@ -103,7 +103,7 @@ public abstract class CompanyBOBase extends CustomerBO {
 
   /**
    * Method returns attribute {@link #taxNumber}.<br/>
-   * 
+   *
    * @return {@link Long} Value to which {@link #taxNumber} is set.
    */
   public Long getTaxNumber( ) {
@@ -112,7 +112,7 @@ public abstract class CompanyBOBase extends CustomerBO {
 
   /**
    * Method sets attribute {@link #taxNumber}.<br/>
-   * 
+   *
    * @param pTaxNumber Value to which {@link #taxNumber} should be set.
    */
   public void setTaxNumber( Long pTaxNumber ) {
@@ -122,7 +122,7 @@ public abstract class CompanyBOBase extends CustomerBO {
 
   /**
    * Method returns the class id of this business object class.
-   * 
+   *
    * @return {@link ClassID} Class ID of this business object. The method never returns null.
    */
   public ClassID getClassID( ) {

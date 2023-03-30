@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.spring.service.restproxy;
@@ -16,7 +16,7 @@ import com.anaptecs.spring.service.PathlessService;
 /**
  * Class implements a proxy for REST Service {@link PathlessService}. The proxy is implemented as Spring services. This
  * way to developers it looks like a plain Spring Service.
- * 
+ *
  * This implementation deals with everything that is required to call the external REST service including the following
  * things:
  * <ul>
@@ -25,7 +25,7 @@ import com.anaptecs.spring.service.PathlessService;
  * <li>Proper setting of HTTP header</li>
  * <li>Circuit breaker in case of availabilities problems of the REST service</li>
  * </ul>
- * 
+ *
  * However, as an transactional context can not be propagated to another REST resource developers still have to take
  * care about proper transaction handling if needed.
  */
@@ -39,7 +39,7 @@ public class PathlessServiceRESTProxy implements PathlessService {
 
   /**
    * Initialize object.
-   * 
+   *
    * @param pRequestExecutor Dependency on concrete {@link RESTRequestExecutor} implementation that should be used.
    */
   public PathlessServiceRESTProxy( RESTRequestExecutor pRequestExecutor ) {

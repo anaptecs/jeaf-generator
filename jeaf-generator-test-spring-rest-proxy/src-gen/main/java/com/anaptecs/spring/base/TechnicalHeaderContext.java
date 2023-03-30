@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.spring.base;
@@ -31,7 +31,7 @@ public class TechnicalHeaderContext {
 
   /**
    * Initialize object using the passed builder.
-   * 
+   *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected TechnicalHeaderContext( Builder pBuilder ) {
@@ -41,7 +41,7 @@ public class TechnicalHeaderContext {
 
   /**
    * Method returns a new builder.
-   * 
+   *
    * @return {@link Builder} New builder that can be used to create new TechnicalHeaderContext objects.
    */
   public static Builder builder( ) {
@@ -50,7 +50,7 @@ public class TechnicalHeaderContext {
 
   /**
    * Method creates a new builder and initialize it with the data from the passed object.
-   * 
+   *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new TechnicalHeaderContext objects. The method never
    * returns null.
@@ -84,7 +84,7 @@ public class TechnicalHeaderContext {
 
     /**
      * Method sets attribute {@link #reseller}.<br/>
-     * 
+     *
      * @param pReseller Value to which {@link #reseller} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -97,7 +97,7 @@ public class TechnicalHeaderContext {
     /**
      * Method creates a new instance of class TechnicalHeaderContext. The object will be initialized with the values of
      * the builder.
-     * 
+     *
      * @return TechnicalHeaderContext Created object. The method never returns null.
      */
     public TechnicalHeaderContext build( ) {
@@ -107,7 +107,7 @@ public class TechnicalHeaderContext {
 
   /**
    * Method returns attribute {@link #reseller}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #reseller} is set.
    */
   public String getReseller( ) {
@@ -116,7 +116,7 @@ public class TechnicalHeaderContext {
 
   /**
    * Method sets attribute {@link #reseller}.<br/>
-   * 
+   *
    * @param pReseller Value to which {@link #reseller} should be set.
    */
   public void setReseller( String pReseller ) {
@@ -126,7 +126,7 @@ public class TechnicalHeaderContext {
 
   /**
    * Method returns map with all custom headers that were added
-   * 
+   *
    * @return {@link Map} Map with all custom headers. The method never returns null. The returned map is unmodifiable.
    */
   public Map<String, String> getCustomHeaders( ) {
@@ -136,7 +136,7 @@ public class TechnicalHeaderContext {
   /**
    * Method adds the passed values as custom headers. The passed name and value of the http header must be compliant
    * with guidelines about http headers.
-   * 
+   *
    * @param pHeaderName Name of the HTTP header. The parameter must not be null,
    * @param pHeaderValue Value of the http header the parameter may be null.
    */
@@ -170,7 +170,7 @@ public class TechnicalHeaderContext {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

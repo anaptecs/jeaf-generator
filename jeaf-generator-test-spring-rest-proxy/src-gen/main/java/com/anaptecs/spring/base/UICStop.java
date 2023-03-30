@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.spring.base;
@@ -24,7 +24,7 @@ public class UICStop extends Stop {
 
   /**
    * Initialize object using the passed builder.
-   * 
+   *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected UICStop( Builder pBuilder ) {
@@ -36,7 +36,7 @@ public class UICStop extends Stop {
 
   /**
    * Method returns a new builder.
-   * 
+   *
    * @return {@link Builder} New builder that can be used to create new UICStop objects.
    */
   public static Builder builder( ) {
@@ -45,7 +45,7 @@ public class UICStop extends Stop {
 
   /**
    * Method creates a new builder and initialize it with the data from the passed object.
-   * 
+   *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new UICStop objects. The method never returns null.
    */
@@ -79,7 +79,7 @@ public class UICStop extends Stop {
 
     /**
      * Method sets attribute {@link #name}.<br/>
-     * 
+     *
      * @param pName Value to which {@link #name} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -92,7 +92,7 @@ public class UICStop extends Stop {
 
     /**
      * Method sets association {@link #links}.<br/>
-     * 
+     *
      * @param pLinks Collection to which {@link #links} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -105,7 +105,7 @@ public class UICStop extends Stop {
 
     /**
      * Method sets attribute {@link #uicCode}.<br/>
-     * 
+     *
      * @param pUicCode Value to which {@link #uicCode} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -117,7 +117,7 @@ public class UICStop extends Stop {
 
     /**
      * Method creates a new instance of class UICStop. The object will be initialized with the values of the builder.
-     * 
+     *
      * @return UICStop Created object. The method never returns null.
      */
     public UICStop build( ) {
@@ -127,7 +127,7 @@ public class UICStop extends Stop {
 
   /**
    * Method returns attribute {@link #uicCode}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #uicCode} is set.
    */
   public String getUicCode( ) {
@@ -136,7 +136,7 @@ public class UICStop extends Stop {
 
   /**
    * Method sets attribute {@link #uicCode}.<br/>
-   * 
+   *
    * @param pUicCode Value to which {@link #uicCode} should be set.
    */
   public void setUicCode( String pUicCode ) {
@@ -162,7 +162,7 @@ public class UICStop extends Stop {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

@@ -32,48 +32,48 @@ public final class MyMessages {
   public static final ErrorCode SOURCE_BANK_ACCOUNT_LOCKED;
 
   /**
-   * 
+   *
    */
   public static final ErrorCode INVALID_TARGET_BANK_ACCOUNT;
 
   /**
-   * 
+   *
    */
   public static final MessageID TRACE_MESSAGE;
 
   /**
-   * 
+   *
    */
   @Deprecated
   public static final MessageID DEBUG_MESSAGE;
 
   /**
-   * 
+   *
    */
   public static final MessageID INFO_MESSAGE;
 
   /**
-   * 
+   *
    */
   public static final MessageID WARN_MESSAGE;
 
   /**
-   * 
+   *
    */
   public static final MessageID ERROR_MESSAGE;
 
   /**
-   * 
+   *
    */
   public static final MessageID FATAL_MESSAGE;
 
   /**
-   * 
+   *
    */
   public static final LocalizedString LOCALIZED_MESSAGE;
 
   /**
-   * 
+   *
    */
   @Deprecated
   public static final LocalizedString DEPRECATED_LOCALIZED_MESSAGE;

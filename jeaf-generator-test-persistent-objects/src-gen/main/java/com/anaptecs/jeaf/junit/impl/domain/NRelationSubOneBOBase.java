@@ -32,7 +32,7 @@ public abstract class NRelationSubOneBOBase extends NReleationBO {
 
   /**
    * Method returns all instance of this class including potential subclasses.
-   * 
+   *
    * @return {@link List} List with all objects of this class. The method never returns null.
    */
   public static List<NRelationSubOneBO> findAllNRelationSubOneBOs( ) {
@@ -41,7 +41,7 @@ public abstract class NRelationSubOneBOBase extends NReleationBO {
 
   /**
    * Method returns attribute {@link #fieldOne}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #fieldOne} is set.
    */
   public String getFieldOne( ) {
@@ -50,7 +50,7 @@ public abstract class NRelationSubOneBOBase extends NReleationBO {
 
   /**
    * Method sets attribute {@link #fieldOne}.<br/>
-   * 
+   *
    * @param pFieldOne Value to which {@link #fieldOne} should be set.
    */
   public void setFieldOne( String pFieldOne ) {
@@ -60,7 +60,7 @@ public abstract class NRelationSubOneBOBase extends NReleationBO {
 
   /**
    * Method returns the class id of this business object class.
-   * 
+   *
    * @return {@link ClassID} Class ID of this business object. The method never returns null.
    */
   public ClassID getClassID( ) {

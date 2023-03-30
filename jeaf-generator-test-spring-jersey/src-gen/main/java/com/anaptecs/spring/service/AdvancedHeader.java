@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.spring.service;
@@ -45,7 +45,7 @@ public class AdvancedHeader {
 
   /**
    * Initialize object using the passed builder.
-   * 
+   *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected AdvancedHeader( Builder pBuilder ) {
@@ -57,7 +57,7 @@ public class AdvancedHeader {
 
   /**
    * Method returns a new builder.
-   * 
+   *
    * @return {@link Builder} New builder that can be used to create new AdvancedHeader objects.
    */
   public static Builder builder( ) {
@@ -66,7 +66,7 @@ public class AdvancedHeader {
 
   /**
    * Method creates a new builder and initialize it with the data from the passed object.
-   * 
+   *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new AdvancedHeader objects. The method never returns
    * null.
@@ -105,7 +105,7 @@ public class AdvancedHeader {
 
     /**
      * Method sets attribute {@link #bookingID}.<br/>
-     * 
+     *
      * @param pBookingID Value to which {@link #bookingID} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -117,7 +117,7 @@ public class AdvancedHeader {
 
     /**
      * Method sets attribute {@link #bookingCode}.<br/>
-     * 
+     *
      * @param pBookingCode Value to which {@link #bookingCode} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -129,7 +129,7 @@ public class AdvancedHeader {
 
     /**
      * Method sets attribute {@link #doubleCode}.<br/>
-     * 
+     *
      * @param pDoubleCode Value to which {@link #doubleCode} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -142,7 +142,7 @@ public class AdvancedHeader {
     /**
      * Method creates a new instance of class AdvancedHeader. The object will be initialized with the values of the
      * builder.
-     * 
+     *
      * @return AdvancedHeader Created object. The method never returns null.
      */
     public AdvancedHeader build( ) {
@@ -152,7 +152,7 @@ public class AdvancedHeader {
 
   /**
    * Method returns attribute {@link #bookingID}.<br/>
-   * 
+   *
    * @return {@link BookingID} Value to which {@link #bookingID} is set.
    */
   public BookingID getBookingID( ) {
@@ -161,7 +161,7 @@ public class AdvancedHeader {
 
   /**
    * Method sets attribute {@link #bookingID}.<br/>
-   * 
+   *
    * @param pBookingID Value to which {@link #bookingID} should be set.
    */
   public void setBookingID( BookingID pBookingID ) {
@@ -171,7 +171,7 @@ public class AdvancedHeader {
 
   /**
    * Method returns attribute {@link #bookingCode}.<br/>
-   * 
+   *
    * @return {@link BookingCode} Value to which {@link #bookingCode} is set.
    */
   public BookingCode getBookingCode( ) {
@@ -180,7 +180,7 @@ public class AdvancedHeader {
 
   /**
    * Method sets attribute {@link #bookingCode}.<br/>
-   * 
+   *
    * @param pBookingCode Value to which {@link #bookingCode} should be set.
    */
   public void setBookingCode( BookingCode pBookingCode ) {
@@ -190,7 +190,7 @@ public class AdvancedHeader {
 
   /**
    * Method returns attribute {@link #doubleCode}.<br/>
-   * 
+   *
    * @return {@link DoubleCode} Value to which {@link #doubleCode} is set.
    */
   public DoubleCode getDoubleCode( ) {
@@ -199,7 +199,7 @@ public class AdvancedHeader {
 
   /**
    * Method sets attribute {@link #doubleCode}.<br/>
-   * 
+   *
    * @param pDoubleCode Value to which {@link #doubleCode} should be set.
    */
   public void setDoubleCode( DoubleCode pDoubleCode ) {
@@ -236,7 +236,7 @@ public class AdvancedHeader {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

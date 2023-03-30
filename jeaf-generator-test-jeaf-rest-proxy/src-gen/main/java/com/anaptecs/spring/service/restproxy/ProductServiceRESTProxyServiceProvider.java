@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.spring.service.restproxy;
@@ -43,7 +43,7 @@ import com.anaptecs.spring.service.LocalBeanParamType;
 public interface ProductServiceRESTProxyServiceProvider extends ServiceProvider {
   /**
    * Operation returns all available product.
-   * 
+   *
    * @return {@link List<Product>}
    */
   List<Product> getProducts( );
@@ -112,7 +112,7 @@ public interface ProductServiceRESTProxyServiceProvider extends ServiceProvider 
   /**
    * Please be aware that deprecations on complex bodies are not supported. Instead the whole operation needs to be set
    * to deprecated.
-   * 
+   *
    * @param pProduct <br/>
    * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    */

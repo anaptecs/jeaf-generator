@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.junit.pojo.softlink;
@@ -70,7 +70,7 @@ public class SoftLinkPartner {
 
   /**
    * Initialize object using the passed builder.
-   * 
+   *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected SoftLinkPartner( Builder pBuilder ) {
@@ -94,7 +94,7 @@ public class SoftLinkPartner {
 
   /**
    * Method returns a new builder.
-   * 
+   *
    * @return {@link Builder} New builder that can be used to create new SoftLinkPartner objects.
    */
   public static Builder builder( ) {
@@ -103,7 +103,7 @@ public class SoftLinkPartner {
 
   /**
    * Method creates a new builder and initialize it with the data from the passed object.
-   * 
+   *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new SoftLinkPartner objects. The method never
    * returns null.
@@ -157,7 +157,7 @@ public class SoftLinkPartner {
 
     /**
      * Method sets association {@link #theBackLink}.<br/>
-     * 
+     *
      * @param pTheBackLink Value to which {@link #theBackLink} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -168,7 +168,7 @@ public class SoftLinkPartner {
 
     /**
      * Method sets association {@link #childLinks}.<br/>
-     * 
+     *
      * @param pChildLinks Collection to which {@link #childLinks} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -185,7 +185,7 @@ public class SoftLinkPartner {
 
     /**
      * Method sets association {@link #longLinks}.<br/>
-     * 
+     *
      * @param pLongLinks Collection to which {@link #longLinks} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -203,7 +203,7 @@ public class SoftLinkPartner {
     /**
      * Method creates a new instance of class SoftLinkPartner. The object will be initialized with the values of the
      * builder.
-     * 
+     *
      * @return SoftLinkPartner Created object. The method never returns null.
      */
     public SoftLinkPartner build( ) {
@@ -213,7 +213,7 @@ public class SoftLinkPartner {
     /**
      * Method creates a new validated instance of class SoftLinkPartner. The object will be initialized with the values
      * of the builder and validated afterwards.
-     * 
+     *
      * @return SoftLinkPartner Created and validated object. The method never returns null.
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
@@ -229,7 +229,7 @@ public class SoftLinkPartner {
    * <p/>
    * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #theBackLink} is
    * <code>com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkParent</code><br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #theBackLink} is set.
    */
   public String getTheBackLink( ) {
@@ -238,7 +238,7 @@ public class SoftLinkPartner {
 
   /**
    * Method sets association {@link #theBackLink}.<br/>
-   * 
+   *
    * @param pTheBackLink Value to which {@link #theBackLink} should be set.
    */
   public void setTheBackLink( String pTheBackLink ) {
@@ -257,7 +257,7 @@ public class SoftLinkPartner {
    * <p/>
    * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #childLinks} is
    * <code>com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkChildA</code><br/>
-   * 
+   *
    * @return {@link Set<SoftLinkID>} Value to which {@link #childLinks} is set. The method never returns null and the
    * returned collection is unmodifiable.
    */
@@ -271,7 +271,7 @@ public class SoftLinkPartner {
    * <p/>
    * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #longLinks} is
    * <code>com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkChildA</code><br/>
-   * 
+   *
    * @return {@link List<long>} Value to which {@link #longLinks} is set. The method never returns null and the returned
    * collection is unmodifiable.
    */
@@ -282,7 +282,7 @@ public class SoftLinkPartner {
 
   /**
    * Method adds the passed object to {@link #longLinks}.
-   * 
+   *
    * @param pLongLinks Object that should be added to {@link #longLinks}. The parameter must not be null.
    */
   public void addToLongLinks( Long pLongLinks ) {
@@ -294,7 +294,7 @@ public class SoftLinkPartner {
 
   /**
    * Method adds all passed objects to {@link #longLinks}.
-   * 
+   *
    * @param pLongLinks Collection with all objects that should be added to {@link #longLinks}. The parameter must not be
    * null.
    */
@@ -309,7 +309,7 @@ public class SoftLinkPartner {
 
   /**
    * Method removes the passed object from {@link #longLinks}.
-   * 
+   *
    * @param pLongLinks Object that should be removed from {@link #longLinks}. The parameter must not be null.
    */
   public void removeFromLongLinks( Long pLongLinks ) {
@@ -344,7 +344,7 @@ public class SoftLinkPartner {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

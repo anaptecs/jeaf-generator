@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.junit.tx.impl;
@@ -61,10 +61,10 @@ abstract class TransactionHandlingServiceImplBase implements TransactionHandling
 
   /**
    * Method returns the TxMandatoryService from which this service depends.
-   * 
+   *
    * @return TxMandatoryService Reference to the TxMandatoryService. The method never returns null after the service has
    * been initialized.
-   * 
+   *
    */
   protected final TxMandatoryService getTxMandatoryService( ) {
     return this.txMandatoryService;
@@ -78,10 +78,10 @@ abstract class TransactionHandlingServiceImplBase implements TransactionHandling
 
   /**
    * Method returns the TxNeverService from which this service depends.
-   * 
+   *
    * @return TxNeverService Reference to the TxNeverService. The method never returns null after the service has been
    * initialized.
-   * 
+   *
    */
   protected final TxNeverService getTxNeverService( ) {
     return this.txNeverService;
@@ -95,10 +95,10 @@ abstract class TransactionHandlingServiceImplBase implements TransactionHandling
 
   /**
    * Method returns the TxNotSupportedService from which this service depends.
-   * 
+   *
    * @return TxNotSupportedService Reference to the TxNotSupportedService. The method never returns null after the
    * service has been initialized.
-   * 
+   *
    */
   protected final TxNotSupportedService getTxNotSupportedService( ) {
     return this.txNotSupportedService;
@@ -112,10 +112,10 @@ abstract class TransactionHandlingServiceImplBase implements TransactionHandling
 
   /**
    * Method returns the TxRequiredService from which this service depends.
-   * 
+   *
    * @return TxRequiredService Reference to the TxRequiredService. The method never returns null after the service has
    * been initialized.
-   * 
+   *
    */
   protected final TxRequiredService getTxRequiredService( ) {
     return this.txRequiredService;
@@ -129,10 +129,10 @@ abstract class TransactionHandlingServiceImplBase implements TransactionHandling
 
   /**
    * Method returns the TxRequiresNewService from which this service depends.
-   * 
+   *
    * @return TxRequiresNewService Reference to the TxRequiresNewService. The method never returns null after the service
    * has been initialized.
-   * 
+   *
    */
   protected final TxRequiresNewService getTxRequiresNewService( ) {
     return this.txRequiresNewService;
@@ -146,10 +146,10 @@ abstract class TransactionHandlingServiceImplBase implements TransactionHandling
 
   /**
    * Method returns the TxSupportedService from which this service depends.
-   * 
+   *
    * @return TxSupportedService Reference to the TxSupportedService. The method never returns null after the service has
    * been initialized.
-   * 
+   *
    */
   protected final TxSupportedService getTxSupportedService( ) {
     return this.txSupportedService;
@@ -157,10 +157,10 @@ abstract class TransactionHandlingServiceImplBase implements TransactionHandling
 
   /**
    * Method returns the class object of the service that is implemented by this service instance.
-   * 
+   *
    * @return Class Class object of the service interface that is implemented by the service instance. The method never
    * returns null.
-   * 
+   *
    * @see ServiceImplementation#getServiceType()
    */
   public final Class<? extends Service> getServiceType( ) {
@@ -169,7 +169,7 @@ abstract class TransactionHandlingServiceImplBase implements TransactionHandling
 
   /**
    * Method returns the service invocation context for the current service call.
-   * 
+   *
    * @return ServiceInvocationContext Service invocation context for the current call. The method never returns null as
    * long as it is called from within a service call.
    */

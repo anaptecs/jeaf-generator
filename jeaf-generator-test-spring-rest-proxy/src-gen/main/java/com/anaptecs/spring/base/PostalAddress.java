@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.spring.base;
@@ -43,7 +43,7 @@ public class PostalAddress {
 
   /**
    * Initialize object using the passed builder.
-   * 
+   *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected PostalAddress( Builder pBuilder ) {
@@ -56,7 +56,7 @@ public class PostalAddress {
 
   /**
    * Method returns a new builder.
-   * 
+   *
    * @return {@link Builder} New builder that can be used to create new PostalAddress objects.
    */
   public static Builder builder( ) {
@@ -65,7 +65,7 @@ public class PostalAddress {
 
   /**
    * Method creates a new builder and initialize it with the data from the passed object.
-   * 
+   *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new PostalAddress objects. The method never returns
    * null.
@@ -107,7 +107,7 @@ public class PostalAddress {
 
     /**
      * Method sets attribute {@link #street}.<br/>
-     * 
+     *
      * @param pStreet Value to which {@link #street} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -119,7 +119,7 @@ public class PostalAddress {
 
     /**
      * Method sets attribute {@link #houseNumber}.<br/>
-     * 
+     *
      * @param pHouseNumber Value to which {@link #houseNumber} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -131,7 +131,7 @@ public class PostalAddress {
 
     /**
      * Method sets attribute {@link #city}.<br/>
-     * 
+     *
      * @param pCity Value to which {@link #city} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -143,7 +143,7 @@ public class PostalAddress {
 
     /**
      * Method sets attribute {@link #postalCode}.<br/>
-     * 
+     *
      * @param pPostalCode Value to which {@link #postalCode} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -156,7 +156,7 @@ public class PostalAddress {
     /**
      * Method creates a new instance of class PostalAddress. The object will be initialized with the values of the
      * builder.
-     * 
+     *
      * @return PostalAddress Created object. The method never returns null.
      */
     public PostalAddress build( ) {
@@ -166,7 +166,7 @@ public class PostalAddress {
 
   /**
    * Method returns attribute {@link #street}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #street} is set.
    */
   public String getStreet( ) {
@@ -175,7 +175,7 @@ public class PostalAddress {
 
   /**
    * Method sets attribute {@link #street}.<br/>
-   * 
+   *
    * @param pStreet Value to which {@link #street} should be set.
    */
   public void setStreet( String pStreet ) {
@@ -185,7 +185,7 @@ public class PostalAddress {
 
   /**
    * Method returns attribute {@link #houseNumber}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #houseNumber} is set.
    */
   public String getHouseNumber( ) {
@@ -194,7 +194,7 @@ public class PostalAddress {
 
   /**
    * Method sets attribute {@link #houseNumber}.<br/>
-   * 
+   *
    * @param pHouseNumber Value to which {@link #houseNumber} should be set.
    */
   public void setHouseNumber( String pHouseNumber ) {
@@ -204,7 +204,7 @@ public class PostalAddress {
 
   /**
    * Method returns attribute {@link #city}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #city} is set.
    */
   public String getCity( ) {
@@ -213,7 +213,7 @@ public class PostalAddress {
 
   /**
    * Method sets attribute {@link #city}.<br/>
-   * 
+   *
    * @param pCity Value to which {@link #city} should be set.
    */
   public void setCity( String pCity ) {
@@ -223,7 +223,7 @@ public class PostalAddress {
 
   /**
    * Method returns attribute {@link #postalCode}.<br/>
-   * 
+   *
    * @return int Value to which {@link #postalCode} is set.
    */
   public int getPostalCode( ) {
@@ -232,7 +232,7 @@ public class PostalAddress {
 
   /**
    * Method sets attribute {@link #postalCode}.<br/>
-   * 
+   *
    * @param pPostalCode Value to which {@link #postalCode} should be set.
    */
   public void setPostalCode( int pPostalCode ) {
@@ -273,7 +273,7 @@ public class PostalAddress {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

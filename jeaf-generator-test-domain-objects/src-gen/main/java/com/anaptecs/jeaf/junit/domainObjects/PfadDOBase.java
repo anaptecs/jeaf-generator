@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.junit.domainObjects;
@@ -31,7 +31,7 @@ public abstract class PfadDOBase extends DomainObject {
 
   /**
    * Initialize object. Therefore its domain object id has to be passed.
-   * 
+   *
    * @param pDomainObjectID Id of this domain object. The parameter must not be null.
    */
   public PfadDOBase( DomainObjectID pDomainObjectID ) {
@@ -41,7 +41,7 @@ public abstract class PfadDOBase extends DomainObject {
 
   /**
    * Method returns association {@link #kantenSequenz}.<br/>
-   * 
+   *
    * @return {@link List<KanteDO>} Value to which {@link #kantenSequenz} is set. The method never returns null and the
    * returned collection is unmodifiable.
    */
@@ -52,7 +52,7 @@ public abstract class PfadDOBase extends DomainObject {
 
   /**
    * Method adds the passed object to {@link #kantenSequenz}.
-   * 
+   *
    * @param pKantenSequenz Object that should be added to {@link #kantenSequenz}. The parameter must not be null.
    */
   public void addToKantenSequenz( KanteDO pKantenSequenz ) {
@@ -64,7 +64,7 @@ public abstract class PfadDOBase extends DomainObject {
 
   /**
    * Method adds all passed objects to {@link #kantenSequenz}.
-   * 
+   *
    * @param pKantenSequenz Collection with all objects that should be added to {@link #kantenSequenz}. The parameter
    * must not be null.
    */
@@ -79,7 +79,7 @@ public abstract class PfadDOBase extends DomainObject {
 
   /**
    * Method removes the passed object from {@link #kantenSequenz}.<br/>
-   * 
+   *
    * @param pKantenSequenz Object that should be removed from {@link #kantenSequenz}. The parameter must not be null.
    */
   public void removeFromKantenSequenz( KanteDO pKantenSequenz ) {
@@ -119,7 +119,7 @@ public abstract class PfadDOBase extends DomainObject {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

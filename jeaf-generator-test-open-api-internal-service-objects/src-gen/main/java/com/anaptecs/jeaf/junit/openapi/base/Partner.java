@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2021. All rights reserved.
  */
 package com.anaptecs.jeaf.junit.openapi.base;
@@ -54,7 +54,7 @@ public class Partner implements ServiceObject, Identifiable<ServiceObjectID> {
 
   /**
    * Initialize object using the passed builder.
-   * 
+   *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected Partner( Builder pBuilder ) {
@@ -79,7 +79,7 @@ public class Partner implements ServiceObject, Identifiable<ServiceObjectID> {
 
   /**
    * Method returns a new builder.
-   * 
+   *
    * @return {@link Builder} New builder that can be used to create new Partner objects.
    */
   public static Builder builder( ) {
@@ -88,7 +88,7 @@ public class Partner implements ServiceObject, Identifiable<ServiceObjectID> {
 
   /**
    * Method creates a new builder and initialize it with the data from the passed object.
-   * 
+   *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new Partner objects. The method never returns null.
    */
@@ -135,7 +135,7 @@ public class Partner implements ServiceObject, Identifiable<ServiceObjectID> {
 
     /**
      * Method sets association {@link #postalAddresses}.<br/>
-     * 
+     *
      * @param pPostalAddresses Collection to which {@link #postalAddresses} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -152,7 +152,7 @@ public class Partner implements ServiceObject, Identifiable<ServiceObjectID> {
 
     /**
      * Method creates a new instance of class Partner. The object will be initialized with the values of the builder.
-     * 
+     *
      * @return Partner Created object. The method never returns null.
      */
     public Partner build( ) {
@@ -162,7 +162,7 @@ public class Partner implements ServiceObject, Identifiable<ServiceObjectID> {
     /**
      * Method creates a new validated instance of class Partner. The object will be initialized with the values of the
      * builder and validated afterwards.
-     * 
+     *
      * @return Partner Created and validated object. The method never returns null.
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
@@ -175,7 +175,7 @@ public class Partner implements ServiceObject, Identifiable<ServiceObjectID> {
 
   /**
    * Method returns the id of this object.
-   * 
+   *
    * @return {@link ServiceObjectID} ID of this object. Since an object must not have an id the method may also return
    * null.
    */
@@ -186,7 +186,7 @@ public class Partner implements ServiceObject, Identifiable<ServiceObjectID> {
 
   /**
    * Method returns the unversioned object id of this object.
-   * 
+   *
    * @return {@link ServiceObjectID} ID of this object. Since an object must not have an id the method may also return
    * null.
    */
@@ -204,7 +204,7 @@ public class Partner implements ServiceObject, Identifiable<ServiceObjectID> {
 
   /**
    * Method returns association {@link #postalAddresses}.<br/>
-   * 
+   *
    * @return {@link List<PostalAddress>} Value to which {@link #postalAddresses} is set. The method never returns null
    * and the returned collection is modifiable.
    */
@@ -215,7 +215,7 @@ public class Partner implements ServiceObject, Identifiable<ServiceObjectID> {
 
   /**
    * Method adds the passed object to {@link #postalAddresses}.
-   * 
+   *
    * @param pPostalAddresses Object that should be added to {@link #postalAddresses}. The parameter must not be null.
    */
   public void addToPostalAddresses( PostalAddress pPostalAddresses ) {
@@ -227,7 +227,7 @@ public class Partner implements ServiceObject, Identifiable<ServiceObjectID> {
 
   /**
    * Method adds all passed objects to {@link #postalAddresses}.
-   * 
+   *
    * @param pPostalAddresses Collection with all objects that should be added to {@link #postalAddresses}. The parameter
    * must not be null.
    */
@@ -242,7 +242,7 @@ public class Partner implements ServiceObject, Identifiable<ServiceObjectID> {
 
   /**
    * Method removes the passed object from {@link #postalAddresses}.<br/>
-   * 
+   *
    * @param pPostalAddresses Object that should be removed from {@link #postalAddresses}. The parameter must not be
    * null.
    */
@@ -294,7 +294,7 @@ public class Partner implements ServiceObject, Identifiable<ServiceObjectID> {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

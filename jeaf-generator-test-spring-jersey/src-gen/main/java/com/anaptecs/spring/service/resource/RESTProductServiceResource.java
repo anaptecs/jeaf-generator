@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.spring.service.resource;
@@ -672,7 +672,7 @@ public class RESTProductServiceResource {
   /**
    * Method is used to deserialize composite data types that are passed as some kind of parameter (not body) to this
    * class. They need to be deserialized in the generated code as this is not supported by the used REST framework.
-   * 
+   *
    * @param pCompositeDataTypeAsString String representation of the composite data type. The parameter may be null.
    * @param pType Type of which the returned objects is supposed to be. The parameter must not be null.
    * @return T Instance of the expected type or null if <code>pCompositeDataTypeAsString</code> is null.

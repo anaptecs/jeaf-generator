@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.junit.tx.test;
@@ -11,7 +11,7 @@ import com.anaptecs.jeaf.junit.tx.TransactionHandlingService;
 
 /**
  * This is the base class of the test suite of service TransactionHandlingService.
- * 
+ *
  * @version $LastChangedRevision: 931 $
  */
 public abstract class TransactionHandlingServiceTestBase extends JEAFTestCase {
@@ -23,7 +23,7 @@ public abstract class TransactionHandlingServiceTestBase extends JEAFTestCase {
 
   /**
    * Initialize test case. Therefore the name of the test that should be executed must be provided.
-   * 
+   *
    * @param pName Name of the test method that should be executed by this test. The Parameter must not be null.
    */
   public TransactionHandlingServiceTestBase( String pName ) {
@@ -33,7 +33,7 @@ public abstract class TransactionHandlingServiceTestBase extends JEAFTestCase {
   /**
    * Initialize test case. Therefore the name of the test that should be executed must be provided. The userId and the
    * password of a specific user can be given to this Constructor so this specific user can be logged in.
-   * 
+   *
    * @param pName Name of the test method that should be executed by this test. The Parameter must not be null.
    * @param pUserId UserId of the User who should be logged in for this Test.
    * @param pPassword Password of the User who should be logged in for this Test.
@@ -44,7 +44,7 @@ public abstract class TransactionHandlingServiceTestBase extends JEAFTestCase {
 
   /**
    * Method test the implementation of service method testIndirectInvocations(...)
-   * 
+   *
    * @throws Exception if the test fails.
    */
   public abstract void testTestIndirectInvocations( ) throws Exception;

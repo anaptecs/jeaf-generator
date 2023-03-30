@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.spring.base;
@@ -58,7 +58,7 @@ public class BookingID {
 
   /**
    * Initialize object using the passed builder.
-   * 
+   *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected BookingID( Builder pBuilder ) {
@@ -72,7 +72,7 @@ public class BookingID {
 
   /**
    * Method returns a new builder.
-   * 
+   *
    * @return {@link Builder} New builder that can be used to create new BookingID objects.
    */
   public static Builder builder( ) {
@@ -81,7 +81,7 @@ public class BookingID {
 
   /**
    * Method creates a new builder and initialize it with the data from the passed object.
-   * 
+   *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new BookingID objects. The method never returns
    * null.
@@ -95,7 +95,7 @@ public class BookingID {
    *
    * Please be aware that this method is only intended to be used for deserialization frameworks like JAX-RS. For
    * "normal" object creation builder should be used instead.
-   * 
+   *
    * @param pPublicBookingID String that should be used to create an instance of this class. The parameter must not be
    * null.
    * @return {@link BookingID} Instance of the class that matches to the passed string. The method never returns null.
@@ -140,7 +140,7 @@ public class BookingID {
 
     /**
      * Method sets attribute {@link #publicBookingID}.<br/>
-     * 
+     *
      * @param pPublicBookingID Value to which {@link #publicBookingID} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -152,7 +152,7 @@ public class BookingID {
 
     /**
      * Method sets attribute {@link #referenceID}.<br/>
-     * 
+     *
      * @param pReferenceID Value to which {@link #referenceID} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -164,7 +164,7 @@ public class BookingID {
 
     /**
      * Method sets attribute {@link #externalRefID}.<br/>
-     * 
+     *
      * @param pExternalRefID Value to which {@link #externalRefID} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -176,7 +176,7 @@ public class BookingID {
 
     /**
      * Method sets association {@link #inventory}.<br/>
-     * 
+     *
      * @param pInventory Value to which {@link #inventory} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -187,7 +187,7 @@ public class BookingID {
 
     /**
      * Method sets association {@link #bookingCode}.<br/>
-     * 
+     *
      * @param pBookingCode Value to which {@link #bookingCode} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -198,7 +198,7 @@ public class BookingID {
 
     /**
      * Method creates a new instance of class BookingID. The object will be initialized with the values of the builder.
-     * 
+     *
      * @return BookingID Created object. The method never returns null.
      */
     public BookingID build( ) {
@@ -208,7 +208,7 @@ public class BookingID {
 
   /**
    * Method returns attribute {@link #publicBookingID}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #publicBookingID} is set.
    */
   public String getPublicBookingID( ) {
@@ -217,7 +217,7 @@ public class BookingID {
 
   /**
    * Method returns attribute {@link #referenceID}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #referenceID} is set.
    */
   public String getReferenceID( ) {
@@ -226,7 +226,7 @@ public class BookingID {
 
   /**
    * Method returns attribute {@link #externalRefID}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #externalRefID} is set.
    */
   public String getExternalRefID( ) {
@@ -235,7 +235,7 @@ public class BookingID {
 
   /**
    * Method returns association {@link #inventory}.<br/>
-   * 
+   *
    * @return {@link InventoryType} Value to which {@link #inventory} is set.
    */
   public InventoryType getInventory( ) {
@@ -244,7 +244,7 @@ public class BookingID {
 
   /**
    * Method returns association {@link #bookingCode}.<br/>
-   * 
+   *
    * @return {@link BookingCode} Value to which {@link #bookingCode} is set.
    */
   public BookingCode getBookingCode( ) {
@@ -294,7 +294,7 @@ public class BookingID {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

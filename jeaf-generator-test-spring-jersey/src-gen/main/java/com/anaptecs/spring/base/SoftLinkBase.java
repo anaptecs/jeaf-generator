@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.spring.base;
@@ -48,7 +48,7 @@ public abstract class SoftLinkBase {
 
   /**
    * Initialize object using the passed builder.
-   * 
+   *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected SoftLinkBase( BuilderBase pBuilder ) {
@@ -93,7 +93,7 @@ public abstract class SoftLinkBase {
 
     /**
      * Method sets attribute {@link #objectID}.<br/>
-     * 
+     *
      * @param pObjectID Value to which {@link #objectID} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -105,7 +105,7 @@ public abstract class SoftLinkBase {
 
     /**
      * Method sets association {@link #dataUnit}.<br/>
-     * 
+     *
      * @param pDataUnit Value to which {@link #dataUnit} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -116,7 +116,7 @@ public abstract class SoftLinkBase {
 
     /**
      * Method sets association {@link #entity}.<br/>
-     * 
+     *
      * @param pEntity Value to which {@link #entity} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -127,7 +127,7 @@ public abstract class SoftLinkBase {
 
     /**
      * Method sets attribute {@link #refrenceID}.<br/>
-     * 
+     *
      * @param pRefrenceID Value to which {@link #refrenceID} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -139,7 +139,7 @@ public abstract class SoftLinkBase {
 
     /**
      * Method creates a new instance of class SoftLink. The object will be initialized with the values of the builder.
-     * 
+     *
      * @return SoftLink Created object. The method never returns null.
      */
     public SoftLink build( ) {
@@ -149,7 +149,7 @@ public abstract class SoftLinkBase {
 
   /**
    * Method returns attribute {@link #objectID}.<br/>
-   * 
+   *
    * @return long Value to which {@link #objectID} is set.
    */
   public long getObjectID( ) {
@@ -158,7 +158,7 @@ public abstract class SoftLinkBase {
 
   /**
    * Method returns association {@link #dataUnit}.<br/>
-   * 
+   *
    * @return {@link DataUnit} Value to which {@link #dataUnit} is set.
    */
   public DataUnit getDataUnit( ) {
@@ -167,7 +167,7 @@ public abstract class SoftLinkBase {
 
   /**
    * Method sets association {@link #dataUnit}.<br/>
-   * 
+   *
    * @param pDataUnit Value to which {@link #dataUnit} should be set.
    */
   public void setDataUnit( DataUnit pDataUnit ) {
@@ -183,7 +183,7 @@ public abstract class SoftLinkBase {
 
   /**
    * Method returns association {@link #entity}.<br/>
-   * 
+   *
    * @return {@link Entity} Value to which {@link #entity} is set.
    */
   public Entity getEntity( ) {
@@ -192,7 +192,7 @@ public abstract class SoftLinkBase {
 
   /**
    * Method sets association {@link #entity}.<br/>
-   * 
+   *
    * @param pEntity Value to which {@link #entity} should be set.
    */
   public void setEntity( Entity pEntity ) {
@@ -208,7 +208,7 @@ public abstract class SoftLinkBase {
 
   /**
    * Method returns attribute {@link #refrenceID}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #refrenceID} is set.
    */
   public String getRefrenceID( ) {
@@ -248,7 +248,7 @@ public abstract class SoftLinkBase {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

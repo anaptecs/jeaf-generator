@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.accounting;
@@ -106,7 +106,7 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
 
   /**
    * Initialize object using the passed builder.
-   * 
+   *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected AccountBase( BuilderBase pBuilder ) {
@@ -197,7 +197,7 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
 
     /**
      * Method sets attribute {@link #iban}.<br/>
-     * 
+     *
      * @param pIban Value to which {@link #iban} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -209,7 +209,7 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
 
     /**
      * Method sets attribute {@link #balance}.<br/>
-     * 
+     *
      * @param pBalance Value to which {@link #balance} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -221,7 +221,7 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
 
     /**
      * Method sets association {@link #authorizedPersons}.<br/>
-     * 
+     *
      * @param pAuthorizedPersons Collection to which {@link #authorizedPersons} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -238,7 +238,7 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
 
     /**
      * Method sets association {@link #bookings}.<br/>
-     * 
+     *
      * @param pBookings Collection to which {@link #bookings} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -255,7 +255,7 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
 
     /**
      * Method sets attribute {@link #bankID}.<br/>
-     * 
+     *
      * @param pBankID Value to which {@link #bankID} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -267,7 +267,7 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
 
     /**
      * Method creates a new instance of class Account. The object will be initialized with the values of the builder.
-     * 
+     *
      * @return Account Created object. The method never returns null.
      */
     public Account build( ) {
@@ -277,7 +277,7 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
     /**
      * Method creates a new validated instance of class Account. The object will be initialized with the values of the
      * builder and validated afterwards.
-     * 
+     *
      * @return Account Created and validated object. The method never returns null.
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
@@ -290,7 +290,7 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
 
   /**
    * Method returns the id of this object.
-   * 
+   *
    * @return {@link ServiceObjectID} ID of this object. Since an object must not have an id the method may also return
    * null.
    */
@@ -301,7 +301,7 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
 
   /**
    * Method returns the unversioned object id of this object.
-   * 
+   *
    * @return {@link ServiceObjectID} ID of this object. Since an object must not have an id the method may also return
    * null.
    */
@@ -319,7 +319,7 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
 
   /**
    * Method returns attribute {@link #iban}.<br/>
-   * 
+   *
    * @return {@link Long} Value to which {@link #iban} is set.
    */
   public Long getIban( ) {
@@ -328,7 +328,7 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
 
   /**
    * Method sets attribute {@link #iban}.<br/>
-   * 
+   *
    * @param pIban Value to which {@link #iban} should be set.
    */
   public void setIban( Long pIban ) {
@@ -338,7 +338,7 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
 
   /**
    * Method returns attribute {@link #balance}.<br/>
-   * 
+   *
    * @return {@link BigDecimal} Value to which {@link #balance} is set.
    */
   public BigDecimal getBalance( ) {
@@ -347,7 +347,7 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
 
   /**
    * Method sets attribute {@link #balance}.<br/>
-   * 
+   *
    * @param pBalance Value to which {@link #balance} should be set.
    */
   public void setBalance( BigDecimal pBalance ) {
@@ -357,7 +357,7 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
 
   /**
    * Method returns association {@link #authorizedPersons}.<br/>
-   * 
+   *
    * @return {@link Set<Person>} Value to which {@link #authorizedPersons} is set. The method never returns null and the
    * returned collection is unmodifiable.
    */
@@ -376,7 +376,7 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
 
   /**
    * Method adds the passed object to {@link #authorizedPersons}.
-   * 
+   *
    * @param pAuthorizedPersons Object that should be added to {@link #authorizedPersons}. The parameter must not be
    * null.
    */
@@ -394,7 +394,7 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
 
   /**
    * Method adds all passed objects to {@link #authorizedPersons}.
-   * 
+   *
    * @param pAuthorizedPersons Collection with all objects that should be added to {@link #authorizedPersons}. The
    * parameter must not be null.
    */
@@ -409,7 +409,7 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
 
   /**
    * Method removes the passed object from {@link #authorizedPersons}.<br/>
-   * 
+   *
    * @param pAuthorizedPersons Object that should be removed from {@link #authorizedPersons}. The parameter must not be
    * null.
    */
@@ -440,7 +440,7 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
 
   /**
    * Method returns association {@link #bookings}.<br/>
-   * 
+   *
    * @return {@link Set<Booking>} Value to which {@link #bookings} is set. The method never returns null and the
    * returned collection is unmodifiable.
    */
@@ -459,7 +459,7 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
 
   /**
    * Method adds the passed object to {@link #bookings}.
-   * 
+   *
    * @param pBookings Object that should be added to {@link #bookings}. The parameter must not be null.
    */
   public void addToBookings( Booking pBookings ) {
@@ -479,7 +479,7 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
 
   /**
    * Method adds all passed objects to {@link #bookings}.
-   * 
+   *
    * @param pBookings Collection with all objects that should be added to {@link #bookings}. The parameter must not be
    * null.
    */
@@ -494,7 +494,7 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
 
   /**
    * Method removes the passed object from {@link #bookings}.<br/>
-   * 
+   *
    * @param pBookings Object that should be removed from {@link #bookings}. The parameter must not be null.
    */
   public void removeFromBookings( Booking pBookings ) {
@@ -524,7 +524,7 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
 
   /**
    * Method returns attribute {@link #bankID}.<br/>
-   * 
+   *
    * @return {@link ServiceObjectID} Value to which {@link #bankID} is set.
    */
   public ServiceObjectID getBankID( ) {
@@ -533,7 +533,7 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
 
   /**
    * Method sets attribute {@link #bankID}.<br/>
-   * 
+   *
    * @param pBankID Value to which {@link #bankID} should be set.
    */
   public void setBankID( ServiceObjectID pBankID ) {
@@ -576,7 +576,7 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

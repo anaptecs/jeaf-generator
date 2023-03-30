@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.junit.openapi.base;
@@ -34,7 +34,7 @@ public class Company extends Partner {
 
   /**
    * Initialize object using the passed builder.
-   * 
+   *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected Company( Builder pBuilder ) {
@@ -46,7 +46,7 @@ public class Company extends Partner {
 
   /**
    * Method returns a new builder.
-   * 
+   *
    * @return {@link Builder} New builder that can be used to create new Company objects.
    */
   public static Builder builder( ) {
@@ -55,7 +55,7 @@ public class Company extends Partner {
 
   /**
    * Method creates a new builder and initialize it with the data from the passed object.
-   * 
+   *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new Company objects. The method never returns null.
    */
@@ -99,7 +99,7 @@ public class Company extends Partner {
 
     /**
      * Method sets association {@link #postalAddresses}.<br/>
-     * 
+     *
      * @param pPostalAddresses Collection to which {@link #postalAddresses} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -112,7 +112,7 @@ public class Company extends Partner {
 
     /**
      * Method sets attribute {@link #name}.<br/>
-     * 
+     *
      * @param pName Value to which {@link #name} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -124,7 +124,7 @@ public class Company extends Partner {
 
     /**
      * Method creates a new instance of class Company. The object will be initialized with the values of the builder.
-     * 
+     *
      * @return Company Created object. The method never returns null.
      */
     public Company build( ) {
@@ -134,7 +134,7 @@ public class Company extends Partner {
     /**
      * Method creates a new validated instance of class Company. The object will be initialized with the values of the
      * builder and validated afterwards.
-     * 
+     *
      * @return Company Created and validated object. The method never returns null.
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
@@ -147,7 +147,7 @@ public class Company extends Partner {
 
   /**
    * Method returns attribute {@link #name}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #name} is set.
    */
   public String getName( ) {
@@ -156,7 +156,7 @@ public class Company extends Partner {
 
   /**
    * Method sets attribute {@link #name}.<br/>
-   * 
+   *
    * @param pName Value to which {@link #name} should be set.
    */
   public void setName( String pName ) {
@@ -182,7 +182,7 @@ public class Company extends Partner {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

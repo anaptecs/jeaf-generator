@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.junit.domainObjects;
@@ -34,7 +34,7 @@ public class ReadonlyDO extends DomainObject {
 
   /**
    * Initialize object. Therefore its domain object id has to be passed.
-   * 
+   *
    * @param pDomainObjectID Id of this domain object. The parameter must not be null.
    */
   public ReadonlyDO( DomainObjectID pDomainObjectID ) {
@@ -44,7 +44,7 @@ public class ReadonlyDO extends DomainObject {
 
   /**
    * Method returns attribute {@link #readonly}.<br/>
-   * 
+   *
    * @return int Value to which {@link #readonly} is set.
    */
   public int getReadonly( ) {
@@ -72,7 +72,7 @@ public class ReadonlyDO extends DomainObject {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2021. All rights reserved.
  */
 package com.anaptecs.jeaf.junit.openapi.base;
@@ -66,7 +66,7 @@ public class Context implements ServiceObject {
 
   /**
    * Initialize object using the passed builder.
-   * 
+   *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected Context( Builder pBuilder ) {
@@ -82,7 +82,7 @@ public class Context implements ServiceObject {
 
   /**
    * Method returns a new builder.
-   * 
+   *
    * @return {@link Builder} New builder that can be used to create new Context objects.
    */
   public static Builder builder( ) {
@@ -91,7 +91,7 @@ public class Context implements ServiceObject {
 
   /**
    * Method creates a new builder and initialize it with the data from the passed object.
-   * 
+   *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new Context objects. The method never returns null.
    */
@@ -140,7 +140,7 @@ public class Context implements ServiceObject {
 
     /**
      * Method sets attribute {@link #accessToken}.<br/>
-     * 
+     *
      * @param pAccessToken Value to which {@link #accessToken} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -152,7 +152,7 @@ public class Context implements ServiceObject {
 
     /**
      * Method sets attribute {@link #language}.<br/>
-     * 
+     *
      * @param pLanguage Value to which {@link #language} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -164,7 +164,7 @@ public class Context implements ServiceObject {
 
     /**
      * Method sets attribute {@link #resellerID}.<br/>
-     * 
+     *
      * @param pResellerID Value to which {@link #resellerID} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -176,7 +176,7 @@ public class Context implements ServiceObject {
 
     /**
      * Method sets attribute {@link #pathParam}.<br/>
-     * 
+     *
      * @param pPathParam Value to which {@link #pathParam} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -188,7 +188,7 @@ public class Context implements ServiceObject {
 
     /**
      * Method sets attribute {@link #queryParam}.<br/>
-     * 
+     *
      * @param pQueryParam Value to which {@link #queryParam} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -200,7 +200,7 @@ public class Context implements ServiceObject {
 
     /**
      * Method creates a new instance of class Context. The object will be initialized with the values of the builder.
-     * 
+     *
      * @return Context Created object. The method never returns null.
      */
     public Context build( ) {
@@ -210,7 +210,7 @@ public class Context implements ServiceObject {
     /**
      * Method creates a new validated instance of class Context. The object will be initialized with the values of the
      * builder and validated afterwards.
-     * 
+     *
      * @return Context Created and validated object. The method never returns null.
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
@@ -223,7 +223,7 @@ public class Context implements ServiceObject {
 
   /**
    * Method returns attribute {@link #accessToken}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #accessToken} is set.
    */
   public String getAccessToken( ) {
@@ -232,7 +232,7 @@ public class Context implements ServiceObject {
 
   /**
    * Method sets attribute {@link #accessToken}.<br/>
-   * 
+   *
    * @param pAccessToken Value to which {@link #accessToken} should be set.
    */
   public void setAccessToken( String pAccessToken ) {
@@ -242,7 +242,7 @@ public class Context implements ServiceObject {
 
   /**
    * Method returns attribute {@link #language}.<br/>
-   * 
+   *
    * @return {@link Locale} Value to which {@link #language} is set.
    */
   public Locale getLanguage( ) {
@@ -251,7 +251,7 @@ public class Context implements ServiceObject {
 
   /**
    * Method sets attribute {@link #language}.<br/>
-   * 
+   *
    * @param pLanguage Value to which {@link #language} should be set.
    */
   public void setLanguage( Locale pLanguage ) {
@@ -261,7 +261,7 @@ public class Context implements ServiceObject {
 
   /**
    * Method returns attribute {@link #resellerID}.<br/>
-   * 
+   *
    * @return long Value to which {@link #resellerID} is set.
    */
   public long getResellerID( ) {
@@ -270,7 +270,7 @@ public class Context implements ServiceObject {
 
   /**
    * Method sets attribute {@link #resellerID}.<br/>
-   * 
+   *
    * @param pResellerID Value to which {@link #resellerID} should be set.
    */
   public void setResellerID( long pResellerID ) {
@@ -280,7 +280,7 @@ public class Context implements ServiceObject {
 
   /**
    * Method returns attribute {@link #pathParam}.<br/>
-   * 
+   *
    * @return long Value to which {@link #pathParam} is set.
    */
   public long getPathParam( ) {
@@ -289,7 +289,7 @@ public class Context implements ServiceObject {
 
   /**
    * Method sets attribute {@link #pathParam}.<br/>
-   * 
+   *
    * @param pPathParam Value to which {@link #pathParam} should be set.
    */
   public void setPathParam( long pPathParam ) {
@@ -299,7 +299,7 @@ public class Context implements ServiceObject {
 
   /**
    * Method returns attribute {@link #queryParam}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #queryParam} is set.
    */
   public String getQueryParam( ) {
@@ -308,7 +308,7 @@ public class Context implements ServiceObject {
 
   /**
    * Method sets attribute {@link #queryParam}.<br/>
-   * 
+   *
    * @param pQueryParam Value to which {@link #queryParam} should be set.
    */
   public void setQueryParam( String pQueryParam ) {
@@ -318,7 +318,7 @@ public class Context implements ServiceObject {
 
   /**
    * Method returns map with all custom headers that were added
-   * 
+   *
    * @return {@link Map} Map with all custom headers. The method never returns null. The returned map is unmodifiable.
    */
   public Map<String, String> getCustomHeaders( ) {
@@ -328,7 +328,7 @@ public class Context implements ServiceObject {
   /**
    * Method adds the passed values as custom headers. The passed name and value of the http header must be compliant
    * with guidelines about http headers.
-   * 
+   *
    * @param pHeaderName Name of the HTTP header. The parameter must not be null,
    * @param pHeaderValue Value of the http header the parameter may be null.
    */
@@ -378,7 +378,7 @@ public class Context implements ServiceObject {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

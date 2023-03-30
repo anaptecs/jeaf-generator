@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.spring.base;
@@ -44,7 +44,7 @@ public abstract class PersonBase extends Partner {
 
   /**
    * Initialize object using the passed builder.
-   * 
+   *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected PersonBase( BuilderBase pBuilder ) {
@@ -83,7 +83,7 @@ public abstract class PersonBase extends Partner {
 
     /**
      * Method sets association {@link #postalAddresses}.<br/>
-     * 
+     *
      * @param pPostalAddresses Collection to which {@link #postalAddresses} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -96,7 +96,7 @@ public abstract class PersonBase extends Partner {
 
     /**
      * Method sets attribute {@link #surname}.<br/>
-     * 
+     *
      * @param pSurname Value to which {@link #surname} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -108,7 +108,7 @@ public abstract class PersonBase extends Partner {
 
     /**
      * Method sets attribute {@link #firstName}.<br/>
-     * 
+     *
      * @param pFirstName Value to which {@link #firstName} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -120,7 +120,7 @@ public abstract class PersonBase extends Partner {
 
     /**
      * Method creates a new instance of class Person. The object will be initialized with the values of the builder.
-     * 
+     *
      * @return Person Created object. The method never returns null.
      */
     public Person build( ) {
@@ -130,7 +130,7 @@ public abstract class PersonBase extends Partner {
     /**
      * Method creates a new validated instance of class Person. The object will be initialized with the values of the
      * builder and validated afterwards.
-     * 
+     *
      * @return Person Created and validated object. The method never returns null.
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
@@ -143,7 +143,7 @@ public abstract class PersonBase extends Partner {
 
   /**
    * Method returns attribute {@link #surname}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #surname} is set.
    */
   public String getSurname( ) {
@@ -152,7 +152,7 @@ public abstract class PersonBase extends Partner {
 
   /**
    * Method sets attribute {@link #surname}.<br/>
-   * 
+   *
    * @param pSurname Value to which {@link #surname} should be set.
    */
   public void setSurname( String pSurname ) {
@@ -162,7 +162,7 @@ public abstract class PersonBase extends Partner {
 
   /**
    * Method returns attribute {@link #firstName}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #firstName} is set.
    */
   public String getFirstName( ) {
@@ -171,7 +171,7 @@ public abstract class PersonBase extends Partner {
 
   /**
    * Method sets attribute {@link #firstName}.<br/>
-   * 
+   *
    * @param pFirstName Value to which {@link #firstName} should be set.
    */
   public void setFirstName( String pFirstName ) {
@@ -206,7 +206,7 @@ public abstract class PersonBase extends Partner {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

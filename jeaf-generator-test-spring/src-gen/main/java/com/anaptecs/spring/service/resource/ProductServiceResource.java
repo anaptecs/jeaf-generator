@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.spring.service.resource;
@@ -73,7 +73,7 @@ public class ProductServiceResource {
 
   /**
    * Initialize object.
-   * 
+   *
    * @param pProductService Dependency on concrete {@link ProductService} implementation that should be used.
    */
   public ProductServiceResource( ProductService pProductService, ValidationExecutor pValidationExecutor,

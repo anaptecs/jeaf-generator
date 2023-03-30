@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.accounting;
@@ -38,7 +38,7 @@ public class SwiftAccount extends Account {
 
   /**
    * Initialize object using the passed builder.
-   * 
+   *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected SwiftAccount( Builder pBuilder ) {
@@ -50,7 +50,7 @@ public class SwiftAccount extends Account {
 
   /**
    * Method returns a new builder.
-   * 
+   *
    * @return {@link Builder} New builder that can be used to create new SwiftAccount objects.
    */
   public static Builder builder( ) {
@@ -59,7 +59,7 @@ public class SwiftAccount extends Account {
 
   /**
    * Method creates a new builder and initialize it with the data from the passed object.
-   * 
+   *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new SwiftAccount objects. The method never returns
    * null.
@@ -105,7 +105,7 @@ public class SwiftAccount extends Account {
 
     /**
      * Method sets attribute {@link #iban}.<br/>
-     * 
+     *
      * @param pIban Value to which {@link #iban} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -118,7 +118,7 @@ public class SwiftAccount extends Account {
 
     /**
      * Method sets attribute {@link #balance}.<br/>
-     * 
+     *
      * @param pBalance Value to which {@link #balance} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -131,7 +131,7 @@ public class SwiftAccount extends Account {
 
     /**
      * Method sets association {@link #authorizedPersons}.<br/>
-     * 
+     *
      * @param pAuthorizedPersons Collection to which {@link #authorizedPersons} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -144,7 +144,7 @@ public class SwiftAccount extends Account {
 
     /**
      * Method sets association {@link #bookings}.<br/>
-     * 
+     *
      * @param pBookings Collection to which {@link #bookings} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -157,7 +157,7 @@ public class SwiftAccount extends Account {
 
     /**
      * Method sets attribute {@link #bankID}.<br/>
-     * 
+     *
      * @param pBankID Value to which {@link #bankID} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -170,7 +170,7 @@ public class SwiftAccount extends Account {
 
     /**
      * Method sets attribute {@link #bic}.<br/>
-     * 
+     *
      * @param pBic Value to which {@link #bic} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -183,7 +183,7 @@ public class SwiftAccount extends Account {
     /**
      * Method creates a new instance of class SwiftAccount. The object will be initialized with the values of the
      * builder.
-     * 
+     *
      * @return SwiftAccount Created object. The method never returns null.
      */
     public SwiftAccount build( ) {
@@ -193,7 +193,7 @@ public class SwiftAccount extends Account {
     /**
      * Method creates a new validated instance of class SwiftAccount. The object will be initialized with the values of
      * the builder and validated afterwards.
-     * 
+     *
      * @return SwiftAccount Created and validated object. The method never returns null.
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
@@ -206,7 +206,7 @@ public class SwiftAccount extends Account {
 
   /**
    * Method returns attribute {@link #bic}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #bic} is set.
    */
   public String getBic( ) {
@@ -215,7 +215,7 @@ public class SwiftAccount extends Account {
 
   /**
    * Method sets attribute {@link #bic}.<br/>
-   * 
+   *
    * @param pBic Value to which {@link #bic} should be set.
    */
   public void setBic( String pBic ) {
@@ -241,7 +241,7 @@ public class SwiftAccount extends Account {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

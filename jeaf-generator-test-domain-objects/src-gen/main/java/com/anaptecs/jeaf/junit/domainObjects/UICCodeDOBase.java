@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.junit.domainObjects;
@@ -36,7 +36,7 @@ public abstract class UICCodeDOBase extends DomainObject implements Identifiable
 
   /**
    * Initialize object. Therefore its domain object id has to be passed.
-   * 
+   *
    * @param pDomainObjectID Id of this domain object. The parameter must not be null.
    */
   public UICCodeDOBase( DomainObjectID pDomainObjectID ) {
@@ -46,7 +46,7 @@ public abstract class UICCodeDOBase extends DomainObject implements Identifiable
 
   /**
    * Method returns the id of this object.
-   * 
+   *
    * @return {@link DomainObjectID} ID of this object. Since an object must not have an id the method may also return
    * null.
    */
@@ -57,7 +57,7 @@ public abstract class UICCodeDOBase extends DomainObject implements Identifiable
 
   /**
    * Method returns the unversioned object id of this object.
-   * 
+   *
    * @return {@link DomainObjectID} ID of this object. Since an object must not have an id the method may also return
    * null.
    */
@@ -75,7 +75,7 @@ public abstract class UICCodeDOBase extends DomainObject implements Identifiable
 
   /**
    * Method returns attribute {@link #code}.<br/>
-   * 
+   *
    * @return {@link Integer} Value to which {@link #code} is set.
    */
   public Integer getCode( ) {
@@ -84,7 +84,7 @@ public abstract class UICCodeDOBase extends DomainObject implements Identifiable
 
   /**
    * Method sets attribute {@link #code}.<br/>
-   * 
+   *
    * @param pCode Value to which {@link #code} should be set.
    */
   public void setCode( Integer pCode ) {
@@ -118,7 +118,7 @@ public abstract class UICCodeDOBase extends DomainObject implements Identifiable
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

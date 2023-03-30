@@ -91,6 +91,9 @@ public class ExtensibleEnumTest {
     int lHashCode2 = lUnknown2.hashCode();
     assertEquals(lHashCode1, lHashCode2);
 
+    assertNotEquals(ExtensibleEnum.BLUE, lUnknown);
+    assertNotEquals(lUnknown, ExtensibleEnum.BLUE);
+
     ExtensibleEnum lPink = ExtensibleEnum.valueOf("PINK");
     ExtensibleEnum lGrey = ExtensibleEnum.valueOf("GREY");
     assertNotEquals(lPink, lGrey);

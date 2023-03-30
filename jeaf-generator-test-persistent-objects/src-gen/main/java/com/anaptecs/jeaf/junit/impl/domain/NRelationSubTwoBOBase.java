@@ -32,7 +32,7 @@ public abstract class NRelationSubTwoBOBase extends NReleationBO {
 
   /**
    * Method returns all instance of this class including potential subclasses.
-   * 
+   *
    * @return {@link List} List with all objects of this class. The method never returns null.
    */
   public static List<NRelationSubTwoBO> findAllNRelationSubTwoBOs( ) {
@@ -41,7 +41,7 @@ public abstract class NRelationSubTwoBOBase extends NReleationBO {
 
   /**
    * Method returns attribute {@link #fieldTwo}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #fieldTwo} is set.
    */
   public String getFieldTwo( ) {
@@ -50,7 +50,7 @@ public abstract class NRelationSubTwoBOBase extends NReleationBO {
 
   /**
    * Method sets attribute {@link #fieldTwo}.<br/>
-   * 
+   *
    * @param pFieldTwo Value to which {@link #fieldTwo} should be set.
    */
   public void setFieldTwo( String pFieldTwo ) {
@@ -60,7 +60,7 @@ public abstract class NRelationSubTwoBOBase extends NReleationBO {
 
   /**
    * Method returns the class id of this business object class.
-   * 
+   *
    * @return {@link ClassID} Class ID of this business object. The method never returns null.
    */
   public ClassID getClassID( ) {

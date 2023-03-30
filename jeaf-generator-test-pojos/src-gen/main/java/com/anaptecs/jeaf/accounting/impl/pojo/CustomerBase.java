@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.accounting.impl.pojo;
@@ -65,7 +65,7 @@ public abstract class CustomerBase extends Partner {
 
   /**
    * Initialize object using the passed builder.
-   * 
+   *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected CustomerBase( BuilderBase pBuilder ) {
@@ -120,7 +120,7 @@ public abstract class CustomerBase extends Partner {
 
     /**
      * Method sets attribute {@link #name}.<br/>
-     * 
+     *
      * @param pName Value to which {@link #name} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -132,7 +132,7 @@ public abstract class CustomerBase extends Partner {
 
     /**
      * Method sets attribute {@link #firstName}.<br/>
-     * 
+     *
      * @param pFirstName Value to which {@link #firstName} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -144,7 +144,7 @@ public abstract class CustomerBase extends Partner {
 
     /**
      * Method sets attribute {@link #email}.<br/>
-     * 
+     *
      * @param pEmail Value to which {@link #email} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -156,7 +156,7 @@ public abstract class CustomerBase extends Partner {
 
     /**
      * Method sets association {@link #accounts}.<br/>
-     * 
+     *
      * @param pAccounts Collection to which {@link #accounts} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -173,7 +173,7 @@ public abstract class CustomerBase extends Partner {
 
     /**
      * Method creates a new instance of class Customer. The object will be initialized with the values of the builder.
-     * 
+     *
      * @return Customer Created object. The method never returns null.
      */
     public Customer build( ) {
@@ -183,7 +183,7 @@ public abstract class CustomerBase extends Partner {
     /**
      * Method creates a new validated instance of class Customer. The object will be initialized with the values of the
      * builder and validated afterwards.
-     * 
+     *
      * @return Customer Created and validated object. The method never returns null.
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
@@ -196,7 +196,7 @@ public abstract class CustomerBase extends Partner {
 
   /**
    * Method returns attribute {@link #name}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #name} is set.
    */
   public String getName( ) {
@@ -205,7 +205,7 @@ public abstract class CustomerBase extends Partner {
 
   /**
    * Method sets attribute {@link #name}.<br/>
-   * 
+   *
    * @param pName Value to which {@link #name} should be set.
    */
   public void setName( String pName ) {
@@ -215,7 +215,7 @@ public abstract class CustomerBase extends Partner {
 
   /**
    * Method returns attribute {@link #firstName}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #firstName} is set.
    */
   public String getFirstName( ) {
@@ -224,7 +224,7 @@ public abstract class CustomerBase extends Partner {
 
   /**
    * Method sets attribute {@link #firstName}.<br/>
-   * 
+   *
    * @param pFirstName Value to which {@link #firstName} should be set.
    */
   public void setFirstName( String pFirstName ) {
@@ -234,7 +234,7 @@ public abstract class CustomerBase extends Partner {
 
   /**
    * Method returns attribute {@link #email}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #email} is set.
    */
   public String getEmail( ) {
@@ -243,7 +243,7 @@ public abstract class CustomerBase extends Partner {
 
   /**
    * Method sets attribute {@link #email}.<br/>
-   * 
+   *
    * @param pEmail Value to which {@link #email} should be set.
    */
   public void setEmail( String pEmail ) {
@@ -253,7 +253,7 @@ public abstract class CustomerBase extends Partner {
 
   /**
    * Method returns association {@link #accounts}.<br/>
-   * 
+   *
    * @return {@link Set<Account>} Value to which {@link #accounts} is set. The method never returns null and the
    * returned collection is unmodifiable.
    */
@@ -264,7 +264,7 @@ public abstract class CustomerBase extends Partner {
 
   /**
    * Method adds the passed object to {@link #accounts}.
-   * 
+   *
    * @param pAccounts Object that should be added to {@link #accounts}. The parameter must not be null.
    */
   public void addToAccounts( Account pAccounts ) {
@@ -284,7 +284,7 @@ public abstract class CustomerBase extends Partner {
 
   /**
    * Method adds all passed objects to {@link #accounts}.
-   * 
+   *
    * @param pAccounts Collection with all objects that should be added to {@link #accounts}. The parameter must not be
    * null.
    */
@@ -299,7 +299,7 @@ public abstract class CustomerBase extends Partner {
 
   /**
    * Method removes the passed object from {@link #accounts}.<br/>
-   * 
+   *
    * @param pAccounts Object that should be removed from {@link #accounts}. The parameter must not be null.
    */
   public void removeFromAccounts( Account pAccounts ) {
@@ -358,7 +358,7 @@ public abstract class CustomerBase extends Partner {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

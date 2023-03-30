@@ -44,7 +44,7 @@ public abstract class FlushTestSlaveBOBase extends PersistentObject {
 
   /**
    * Method returns all instance of this class including potential subclasses.
-   * 
+   *
    * @return {@link List} List with all objects of this class. The method never returns null.
    */
   public static List<FlushTestSlaveBO> findAllFlushTestSlaveBOs( ) {
@@ -53,7 +53,7 @@ public abstract class FlushTestSlaveBOBase extends PersistentObject {
 
   /**
    * Method returns association {@link #masterObject}.<br/>
-   * 
+   *
    * @return {@link FlushTestMasterBO} Value to which {@link #masterObject} is set.
    */
   public FlushTestMasterBO getMasterObject( ) {
@@ -63,7 +63,7 @@ public abstract class FlushTestSlaveBOBase extends PersistentObject {
 
   /**
    * Method sets association {@link #masterObject}.<br/>
-   * 
+   *
    * @param pMasterObject Value to which {@link #masterObject} should be set.
    */
   public void setMasterObject( FlushTestMasterBO pMasterObject ) {
@@ -79,7 +79,7 @@ public abstract class FlushTestSlaveBOBase extends PersistentObject {
 
   /**
    * Method returns attribute {@link #optionalField}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #optionalField} is set.
    */
   public String getOptionalField( ) {
@@ -88,7 +88,7 @@ public abstract class FlushTestSlaveBOBase extends PersistentObject {
 
   /**
    * Method sets attribute {@link #optionalField}.<br/>
-   * 
+   *
    * @param pOptionalField Value to which {@link #optionalField} should be set.
    */
   public void setOptionalField( String pOptionalField ) {
@@ -98,7 +98,7 @@ public abstract class FlushTestSlaveBOBase extends PersistentObject {
 
   /**
    * Method returns the class id of this business object class.
-   * 
+   *
    * @return {@link ClassID} Class ID of this business object. The method never returns null.
    */
   public ClassID getClassID( ) {

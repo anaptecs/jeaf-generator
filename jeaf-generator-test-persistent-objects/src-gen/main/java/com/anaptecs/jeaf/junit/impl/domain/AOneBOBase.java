@@ -58,7 +58,7 @@ public abstract class AOneBOBase extends PersistentObject {
 
   /**
    * Method returns all instance of this class including potential subclasses.
-   * 
+   *
    * @return {@link List} List with all objects of this class. The method never returns null.
    */
   public static List<AOneBO> findAllAOneBOs( ) {
@@ -67,7 +67,7 @@ public abstract class AOneBOBase extends PersistentObject {
 
   /**
    * Method returns attribute {@link #aName}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #aName} is set.
    */
   public String getAName( ) {
@@ -76,7 +76,7 @@ public abstract class AOneBOBase extends PersistentObject {
 
   /**
    * Method sets attribute {@link #aName}.<br/>
-   * 
+   *
    * @param pAName Value to which {@link #aName} should be set.
    */
   public void setAName( String pAName ) {
@@ -86,7 +86,7 @@ public abstract class AOneBOBase extends PersistentObject {
 
   /**
    * Method returns association {@link #b}.<br/>
-   * 
+   *
    * @return {@link BOneBO} Value to which {@link #b} is set.
    */
   public BOneBO getB( ) {
@@ -96,7 +96,7 @@ public abstract class AOneBOBase extends PersistentObject {
 
   /**
    * Method sets association {@link #b}.<br/>
-   * 
+   *
    * @param pB Value to which {@link #b} should be set.
    */
   public void setB( BOneBO pB ) {
@@ -127,7 +127,7 @@ public abstract class AOneBOBase extends PersistentObject {
 
   /**
    * Method returns association {@link #cManys}.<br/>
-   * 
+   *
    * @return {@link Set<CManyBO>} Value to which {@link #cManys} is set. The method never returns null and the returned
    * collection is unmodifiable.
    */
@@ -138,7 +138,7 @@ public abstract class AOneBOBase extends PersistentObject {
 
   /**
    * Method adds the passed object to {@link #cManys}.
-   * 
+   *
    * @param pCManys Object that should be added to {@link #cManys}. The parameter must not be null.
    */
   public void addToCManys( CManyBO pCManys ) {
@@ -158,7 +158,7 @@ public abstract class AOneBOBase extends PersistentObject {
 
   /**
    * Method adds all passed objects to {@link #cManys}.
-   * 
+   *
    * @param pCManys Collection with all objects that should be added to {@link #cManys}. The parameter must not be null.
    */
   public void addToCManys( Collection<CManyBO> pCManys ) {
@@ -172,7 +172,7 @@ public abstract class AOneBOBase extends PersistentObject {
 
   /**
    * Method removes the passed object from {@link #cManys}.<br/>
-   * 
+   *
    * @param pCManys Object that should be removed from {@link #cManys}. The parameter must not be null.
    */
   public void removeFromCManys( CManyBO pCManys ) {
@@ -207,7 +207,7 @@ public abstract class AOneBOBase extends PersistentObject {
 
   /**
    * Method returns the class id of this business object class.
-   * 
+   *
    * @return {@link ClassID} Class ID of this business object. The method never returns null.
    */
   public ClassID getClassID( ) {

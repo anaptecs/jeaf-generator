@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.junit.openapi.base;
@@ -88,7 +88,7 @@ public class WeirdBooking extends WeirdParent {
 
   /**
    * Initialize object using the passed builder.
-   * 
+   *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected WeirdBooking( Builder pBuilder ) {
@@ -115,7 +115,7 @@ public class WeirdBooking extends WeirdParent {
 
   /**
    * Method returns a new builder.
-   * 
+   *
    * @return {@link Builder} New builder that can be used to create new WeirdBooking objects.
    */
   public static Builder builder( ) {
@@ -124,7 +124,7 @@ public class WeirdBooking extends WeirdParent {
 
   /**
    * Method creates a new builder and initialize it with the data from the passed object.
-   * 
+   *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new WeirdBooking objects. The method never returns
    * null.
@@ -185,7 +185,7 @@ public class WeirdBooking extends WeirdParent {
 
     /**
      * Method sets attribute {@link #someProperty}.<br/>
-     * 
+     *
      * @param pSomeProperty Value to which {@link #someProperty} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -198,7 +198,7 @@ public class WeirdBooking extends WeirdParent {
 
     /**
      * Method sets association {@link #complexBooking}.<br/>
-     * 
+     *
      * @param pComplexBooking Value to which {@link #complexBooking} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -211,7 +211,7 @@ public class WeirdBooking extends WeirdParent {
 
     /**
      * Method sets association {@link #complexBookings}.<br/>
-     * 
+     *
      * @param pComplexBookings Collection to which {@link #complexBookings} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -224,7 +224,7 @@ public class WeirdBooking extends WeirdParent {
 
     /**
      * Method sets association {@link #booking}.<br/>
-     * 
+     *
      * @param pBooking Value to which {@link #booking} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -235,7 +235,7 @@ public class WeirdBooking extends WeirdParent {
 
     /**
      * Method sets association {@link #additionalBookings}.<br/>
-     * 
+     *
      * @param pAdditionalBookings Collection to which {@link #additionalBookings} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -252,7 +252,7 @@ public class WeirdBooking extends WeirdParent {
 
     /**
      * Method sets association {@link #versionedObjectSoftLink}.<br/>
-     * 
+     *
      * @param pVersionedObjectSoftLink Value to which {@link #versionedObjectSoftLink} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -263,7 +263,7 @@ public class WeirdBooking extends WeirdParent {
 
     /**
      * Method sets attribute {@link #childProperty}.<br/>
-     * 
+     *
      * @param pChildProperty Value to which {@link #childProperty} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -275,7 +275,7 @@ public class WeirdBooking extends WeirdParent {
 
     /**
      * Method sets association {@link #realBooking}.<br/>
-     * 
+     *
      * @param pRealBooking Value to which {@link #realBooking} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -286,7 +286,7 @@ public class WeirdBooking extends WeirdParent {
 
     /**
      * Method sets association {@link #inventories}.<br/>
-     * 
+     *
      * @param pInventories Collection to which {@link #inventories} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -303,7 +303,7 @@ public class WeirdBooking extends WeirdParent {
 
     /**
      * Method sets association {@link #inventories}.<br/>
-     * 
+     *
      * @param pInventories Array with objects to which {@link #inventories} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -321,7 +321,7 @@ public class WeirdBooking extends WeirdParent {
     /**
      * Method creates a new instance of class WeirdBooking. The object will be initialized with the values of the
      * builder.
-     * 
+     *
      * @return WeirdBooking Created object. The method never returns null.
      */
     public WeirdBooking build( ) {
@@ -331,7 +331,7 @@ public class WeirdBooking extends WeirdParent {
     /**
      * Method creates a new validated instance of class WeirdBooking. The object will be initialized with the values of
      * the builder and validated afterwards.
-     * 
+     *
      * @return WeirdBooking Created and validated object. The method never returns null.
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
@@ -344,7 +344,7 @@ public class WeirdBooking extends WeirdParent {
 
   /**
    * Method returns association {@link #booking}.<br/>
-   * 
+   *
    * @return {@link ComplexBookingID} Value to which {@link #booking} is set.
    */
   public ComplexBookingID getBooking( ) {
@@ -353,7 +353,7 @@ public class WeirdBooking extends WeirdParent {
 
   /**
    * Method sets association {@link #booking}.<br/>
-   * 
+   *
    * @param pBooking Value to which {@link #booking} should be set.
    */
   public void setBooking( ComplexBookingID pBooking ) {
@@ -370,7 +370,7 @@ public class WeirdBooking extends WeirdParent {
   /**
    * Method returns association {@link #additionalBookings}.<br/>
    * additional bookings
-   * 
+   *
    * @return {@link List<ComplexBookingID>} Value to which {@link #additionalBookings} is set. The method never returns
    * null and the returned collection is unmodifiable.
    */
@@ -381,7 +381,7 @@ public class WeirdBooking extends WeirdParent {
 
   /**
    * Method adds the passed object to {@link #additionalBookings}.
-   * 
+   *
    * @param pAdditionalBookings Object that should be added to {@link #additionalBookings}. The parameter must not be
    * null.
    */
@@ -394,7 +394,7 @@ public class WeirdBooking extends WeirdParent {
 
   /**
    * Method adds all passed objects to {@link #additionalBookings}.
-   * 
+   *
    * @param pAdditionalBookings Collection with all objects that should be added to {@link #additionalBookings}. The
    * parameter must not be null.
    */
@@ -409,7 +409,7 @@ public class WeirdBooking extends WeirdParent {
 
   /**
    * Method removes the passed object from {@link #additionalBookings}.<br/>
-   * 
+   *
    * @param pAdditionalBookings Object that should be removed from {@link #additionalBookings}. The parameter must not
    * be null.
    */
@@ -433,7 +433,7 @@ public class WeirdBooking extends WeirdParent {
    * soft link<br/>
    * 2nd line<br/>
    * 3rd line
-   * 
+   *
    * @return {@link VersionedObjectSoftLink} Value to which {@link #versionedObjectSoftLink} is set.
    */
   public VersionedObjectSoftLink getVersionedObjectSoftLink( ) {
@@ -445,7 +445,7 @@ public class WeirdBooking extends WeirdParent {
    * soft link<br/>
    * 2nd line<br/>
    * 3rd line
-   * 
+   *
    * @param pVersionedObjectSoftLink Value to which {@link #versionedObjectSoftLink} should be set.
    */
   public void setVersionedObjectSoftLink( VersionedObjectSoftLink pVersionedObjectSoftLink ) {
@@ -461,7 +461,7 @@ public class WeirdBooking extends WeirdParent {
 
   /**
    * Method returns attribute {@link #childProperty}.<br/>
-   * 
+   *
    * @return int Value to which {@link #childProperty} is set.
    */
   public int getChildProperty( ) {
@@ -470,7 +470,7 @@ public class WeirdBooking extends WeirdParent {
 
   /**
    * Method sets attribute {@link #childProperty}.<br/>
-   * 
+   *
    * @param pChildProperty Value to which {@link #childProperty} should be set.
    */
   public void setChildProperty( int pChildProperty ) {
@@ -481,7 +481,7 @@ public class WeirdBooking extends WeirdParent {
   /**
    * Method returns association {@link #realBooking}.<br/>
    * the real booking
-   * 
+   *
    * @return {@link Booking} Value to which {@link #realBooking} is set.
    */
   public Booking getRealBooking( ) {
@@ -491,7 +491,7 @@ public class WeirdBooking extends WeirdParent {
   /**
    * Method sets association {@link #realBooking}.<br/>
    * the real booking
-   * 
+   *
    * @param pRealBooking Value to which {@link #realBooking} should be set.
    */
   public void setRealBooking( Booking pRealBooking ) {
@@ -507,7 +507,7 @@ public class WeirdBooking extends WeirdParent {
 
   /**
    * Method returns association {@link #inventories}.<br/>
-   * 
+   *
    * @return {@link Set<InventoryType>} Value to which {@link #inventories} is set. The method never returns null and
    * the returned collection is unmodifiable.
    */
@@ -518,7 +518,7 @@ public class WeirdBooking extends WeirdParent {
 
   /**
    * Method adds the passed object to {@link #inventories}.
-   * 
+   *
    * @param pInventories Object that should be added to {@link #inventories}. The parameter must not be null.
    */
   public void addToInventories( InventoryType pInventories ) {
@@ -530,7 +530,7 @@ public class WeirdBooking extends WeirdParent {
 
   /**
    * Method adds all passed objects to {@link #inventories}.
-   * 
+   *
    * @param pInventories Collection with all objects that should be added to {@link #inventories}. The parameter must
    * not be null.
    */
@@ -545,7 +545,7 @@ public class WeirdBooking extends WeirdParent {
 
   /**
    * Method removes the passed object from {@link #inventories}.<br/>
-   * 
+   *
    * @param pInventories Object that should be removed from {@link #inventories}. The parameter must not be null.
    */
   public void removeFromInventories( InventoryType pInventories ) {
@@ -581,7 +581,7 @@ public class WeirdBooking extends WeirdParent {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

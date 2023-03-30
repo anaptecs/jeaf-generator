@@ -5,7 +5,7 @@ package com.anaptecs.jeaf.junit.openapi.base;
  * <br/>
  * NOVA 14 Mapping<br/>
  * * nova-base.xsd.ZeitEinheit
- * 
+ *
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */

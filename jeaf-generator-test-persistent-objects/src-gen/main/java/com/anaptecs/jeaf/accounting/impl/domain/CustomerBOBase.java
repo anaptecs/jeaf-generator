@@ -66,7 +66,7 @@ public abstract class CustomerBOBase extends PersistentObject {
 
   /**
    * Method returns all instance of this class including potential subclasses.
-   * 
+   *
    * @return {@link List} List with all objects of this class. The method never returns null.
    */
   public static List<CustomerBO> findAllCustomerBOs( ) {
@@ -75,7 +75,7 @@ public abstract class CustomerBOBase extends PersistentObject {
 
   /**
    * Method returns association {@link #accounts}.<br/>
-   * 
+   *
    * @return {@link Set<AccountBO>} Value to which {@link #accounts} is set. The method never returns null and the
    * returned collection is unmodifiable.
    */
@@ -86,7 +86,7 @@ public abstract class CustomerBOBase extends PersistentObject {
 
   /**
    * Method adds the passed object to {@link #accounts}.
-   * 
+   *
    * @param pAccounts Object that should be added to {@link #accounts}. The parameter must not be null.
    */
   public void addToAccounts( AccountBO pAccounts ) {
@@ -106,7 +106,7 @@ public abstract class CustomerBOBase extends PersistentObject {
 
   /**
    * Method adds all passed objects to {@link #accounts}.
-   * 
+   *
    * @param pAccounts Collection with all objects that should be added to {@link #accounts}. The parameter must not be
    * null.
    */
@@ -121,7 +121,7 @@ public abstract class CustomerBOBase extends PersistentObject {
 
   /**
    * Method removes the passed object from {@link #accounts}.<br/>
-   * 
+   *
    * @param pAccounts Object that should be removed from {@link #accounts}. The parameter must not be null.
    */
   public void removeFromAccounts( AccountBO pAccounts ) {
@@ -151,7 +151,7 @@ public abstract class CustomerBOBase extends PersistentObject {
 
   /**
    * Method returns association {@link #attendingEmployees}.<br/>
-   * 
+   *
    * @return {@link Set<EmployeeBO>} Value to which {@link #attendingEmployees} is set. The method never returns null
    * and the returned collection is unmodifiable.
    */
@@ -162,7 +162,7 @@ public abstract class CustomerBOBase extends PersistentObject {
 
   /**
    * Method adds the passed object to {@link #attendingEmployees}.
-   * 
+   *
    * @param pAttendingEmployees Object that should be added to {@link #attendingEmployees}. The parameter must not be
    * null.
    */
@@ -180,7 +180,7 @@ public abstract class CustomerBOBase extends PersistentObject {
 
   /**
    * Method adds all passed objects to {@link #attendingEmployees}.
-   * 
+   *
    * @param pAttendingEmployees Collection with all objects that should be added to {@link #attendingEmployees}. The
    * parameter must not be null.
    */
@@ -195,7 +195,7 @@ public abstract class CustomerBOBase extends PersistentObject {
 
   /**
    * Method removes the passed object from {@link #attendingEmployees}.<br/>
-   * 
+   *
    * @param pAttendingEmployees Object that should be removed from {@link #attendingEmployees}. The parameter must not
    * be null.
    */
@@ -226,7 +226,7 @@ public abstract class CustomerBOBase extends PersistentObject {
 
   /**
    * Method returns attribute {@link #active}.<br/>
-   * 
+   *
    * @return {@link Boolean} Value to which {@link #active} is set.
    */
   public Boolean getActive( ) {
@@ -235,7 +235,7 @@ public abstract class CustomerBOBase extends PersistentObject {
 
   /**
    * Method sets attribute {@link #active}.<br/>
-   * 
+   *
    * @param pActive Value to which {@link #active} should be set.
    */
   public void setActive( Boolean pActive ) {
@@ -245,7 +245,7 @@ public abstract class CustomerBOBase extends PersistentObject {
 
   /**
    * Method returns association {@link #adress}.<br/>
-   * 
+   *
    * @return {@link MyAddressBO} Value to which {@link #adress} is set.
    */
   public MyAddressBO getAdress( ) {
@@ -255,7 +255,7 @@ public abstract class CustomerBOBase extends PersistentObject {
 
   /**
    * Method sets association {@link #adress}.<br/>
-   * 
+   *
    * @param pAdress Value to which {@link #adress} should be set.
    */
   public void setAdress( MyAddressBO pAdress ) {
@@ -271,7 +271,7 @@ public abstract class CustomerBOBase extends PersistentObject {
 
   /**
    * Method returns the class id of this business object class.
-   * 
+   *
    * @return {@link ClassID} Class ID of this business object. The method never returns null.
    */
   public ClassID getClassID( ) {

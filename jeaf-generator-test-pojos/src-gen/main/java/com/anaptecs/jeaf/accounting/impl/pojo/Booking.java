@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.accounting.impl.pojo;
@@ -64,7 +64,7 @@ public class Booking {
 
   /**
    * Initialize object using the passed builder.
-   * 
+   *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected Booking( Builder pBuilder ) {
@@ -80,7 +80,7 @@ public class Booking {
 
   /**
    * Method returns a new builder.
-   * 
+   *
    * @return {@link Builder} New builder that can be used to create new Booking objects.
    */
   public static Builder builder( ) {
@@ -89,7 +89,7 @@ public class Booking {
 
   /**
    * Method creates a new builder and initialize it with the data from the passed object.
-   * 
+   *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new Booking objects. The method never returns null.
    */
@@ -133,7 +133,7 @@ public class Booking {
 
     /**
      * Method sets association {@link #sourceAccount}.<br/>
-     * 
+     *
      * @param pSourceAccount Value to which {@link #sourceAccount} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -144,7 +144,7 @@ public class Booking {
 
     /**
      * Method sets association {@link #targetAccount}.<br/>
-     * 
+     *
      * @param pTargetAccount Value to which {@link #targetAccount} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -155,7 +155,7 @@ public class Booking {
 
     /**
      * Method sets attribute {@link #amount}.<br/>
-     * 
+     *
      * @param pAmount Value to which {@link #amount} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -167,7 +167,7 @@ public class Booking {
 
     /**
      * Method sets attribute {@link #currency}.<br/>
-     * 
+     *
      * @param pCurrency Value to which {@link #currency} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -179,7 +179,7 @@ public class Booking {
 
     /**
      * Method sets attribute {@link #executionTimestamp}.<br/>
-     * 
+     *
      * @param pExecutionTimestamp Value to which {@link #executionTimestamp} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -191,7 +191,7 @@ public class Booking {
 
     /**
      * Method creates a new instance of class Booking. The object will be initialized with the values of the builder.
-     * 
+     *
      * @return Booking Created object. The method never returns null.
      */
     public Booking build( ) {
@@ -201,7 +201,7 @@ public class Booking {
     /**
      * Method creates a new validated instance of class Booking. The object will be initialized with the values of the
      * builder and validated afterwards.
-     * 
+     *
      * @return Booking Created and validated object. The method never returns null.
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
@@ -214,7 +214,7 @@ public class Booking {
 
   /**
    * Method returns association {@link #sourceAccount}.<br/>
-   * 
+   *
    * @return {@link Account} Value to which {@link #sourceAccount} is set.
    */
   public Account getSourceAccount( ) {
@@ -223,7 +223,7 @@ public class Booking {
 
   /**
    * Method sets association {@link #sourceAccount}.<br/>
-   * 
+   *
    * @param pSourceAccount Value to which {@link #sourceAccount} should be set.
    */
   public void setSourceAccount( Account pSourceAccount ) {
@@ -239,7 +239,7 @@ public class Booking {
 
   /**
    * Method returns association {@link #targetAccount}.<br/>
-   * 
+   *
    * @return {@link Account} Value to which {@link #targetAccount} is set.
    */
   public Account getTargetAccount( ) {
@@ -248,7 +248,7 @@ public class Booking {
 
   /**
    * Method sets association {@link #targetAccount}.<br/>
-   * 
+   *
    * @param pTargetAccount Value to which {@link #targetAccount} should be set.
    */
   public void setTargetAccount( Account pTargetAccount ) {
@@ -264,7 +264,7 @@ public class Booking {
 
   /**
    * Method returns attribute {@link #amount}.<br/>
-   * 
+   *
    * @return {@link BigDecimal} Value to which {@link #amount} is set.
    */
   public BigDecimal getAmount( ) {
@@ -273,7 +273,7 @@ public class Booking {
 
   /**
    * Method sets attribute {@link #amount}.<br/>
-   * 
+   *
    * @param pAmount Value to which {@link #amount} should be set.
    */
   public void setAmount( BigDecimal pAmount ) {
@@ -283,7 +283,7 @@ public class Booking {
 
   /**
    * Method returns attribute {@link #currency}.<br/>
-   * 
+   *
    * @return {@link Currency} Value to which {@link #currency} is set.
    */
   public Currency getCurrency( ) {
@@ -292,7 +292,7 @@ public class Booking {
 
   /**
    * Method sets attribute {@link #currency}.<br/>
-   * 
+   *
    * @param pCurrency Value to which {@link #currency} should be set.
    */
   public void setCurrency( Currency pCurrency ) {
@@ -302,7 +302,7 @@ public class Booking {
 
   /**
    * Method returns attribute {@link #executionTimestamp}.<br/>
-   * 
+   *
    * @return {@link Calendar} Value to which {@link #executionTimestamp} is set.
    */
   public Calendar getExecutionTimestamp( ) {
@@ -311,7 +311,7 @@ public class Booking {
 
   /**
    * Method sets attribute {@link #executionTimestamp}.<br/>
-   * 
+   *
    * @param pExecutionTimestamp Value to which {@link #executionTimestamp} should be set.
    */
   public void setExecutionTimestamp( Calendar pExecutionTimestamp ) {
@@ -348,7 +348,7 @@ public class Booking {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

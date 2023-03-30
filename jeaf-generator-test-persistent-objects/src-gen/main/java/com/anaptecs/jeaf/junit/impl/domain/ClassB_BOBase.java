@@ -51,7 +51,7 @@ public abstract class ClassB_BOBase extends PersistentObject {
 
   /**
    * Method returns all instance of this class including potential subclasses.
-   * 
+   *
    * @return {@link List} List with all objects of this class. The method never returns null.
    */
   public static List<ClassB_BO> findAllClassB_BOs( ) {
@@ -60,7 +60,7 @@ public abstract class ClassB_BOBase extends PersistentObject {
 
   /**
    * Method returns association {@link #classAs}.<br/>
-   * 
+   *
    * @return {@link Set<ClassA_BO>} Value to which {@link #classAs} is set. The method never returns null and the
    * returned collection is unmodifiable.
    */
@@ -71,7 +71,7 @@ public abstract class ClassB_BOBase extends PersistentObject {
 
   /**
    * Method adds the passed object to {@link #classAs}.
-   * 
+   *
    * @param pClassAs Object that should be added to {@link #classAs}. The parameter must not be null.
    */
   public void addToClassAs( ClassA_BO pClassAs ) {
@@ -91,7 +91,7 @@ public abstract class ClassB_BOBase extends PersistentObject {
 
   /**
    * Method adds all passed objects to {@link #classAs}.
-   * 
+   *
    * @param pClassAs Collection with all objects that should be added to {@link #classAs}. The parameter must not be
    * null.
    */
@@ -106,7 +106,7 @@ public abstract class ClassB_BOBase extends PersistentObject {
 
   /**
    * Method removes the passed object from {@link #classAs}.<br/>
-   * 
+   *
    * @param pClassAs Object that should be removed from {@link #classAs}. The parameter must not be null.
    */
   public void removeFromClassAs( ClassA_BO pClassAs ) {
@@ -136,7 +136,7 @@ public abstract class ClassB_BOBase extends PersistentObject {
 
   /**
    * Method returns attribute {@link #intValue}.<br/>
-   * 
+   *
    * @return {@link Integer} Value to which {@link #intValue} is set.
    */
   public Integer getIntValue( ) {
@@ -145,7 +145,7 @@ public abstract class ClassB_BOBase extends PersistentObject {
 
   /**
    * Method sets attribute {@link #intValue}.<br/>
-   * 
+   *
    * @param pIntValue Value to which {@link #intValue} should be set.
    */
   public void setIntValue( Integer pIntValue ) {
@@ -155,7 +155,7 @@ public abstract class ClassB_BOBase extends PersistentObject {
 
   /**
    * Method returns the class id of this business object class.
-   * 
+   *
    * @return {@link ClassID} Class ID of this business object. The method never returns null.
    */
   public ClassID getClassID( ) {

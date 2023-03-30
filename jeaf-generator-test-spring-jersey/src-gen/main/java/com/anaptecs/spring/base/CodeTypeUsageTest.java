@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.spring.base;
@@ -53,7 +53,7 @@ public class CodeTypeUsageTest {
 
   /**
    * Initialize object using the passed builder.
-   * 
+   *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected CodeTypeUsageTest( Builder pBuilder ) {
@@ -76,7 +76,7 @@ public class CodeTypeUsageTest {
 
   /**
    * Method returns a new builder.
-   * 
+   *
    * @return {@link Builder} New builder that can be used to create new CodeTypeUsageTest objects.
    */
   public static Builder builder( ) {
@@ -85,7 +85,7 @@ public class CodeTypeUsageTest {
 
   /**
    * Method creates a new builder and initialize it with the data from the passed object.
-   * 
+   *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new CodeTypeUsageTest objects. The method never
    * returns null.
@@ -127,7 +127,7 @@ public class CodeTypeUsageTest {
 
     /**
      * Method sets attribute {@link #booleanCode}.<br/>
-     * 
+     *
      * @param pBooleanCode Value to which {@link #booleanCode} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -139,7 +139,7 @@ public class CodeTypeUsageTest {
 
     /**
      * Method sets association {@link #booleanCodeAssociation}.<br/>
-     * 
+     *
      * @param pBooleanCodeAssociation Collection to which {@link #booleanCodeAssociation} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -156,7 +156,7 @@ public class CodeTypeUsageTest {
 
     /**
      * Method sets association {@link #shortCodeTypeAssociation}.<br/>
-     * 
+     *
      * @param pShortCodeTypeAssociation Collection to which {@link #shortCodeTypeAssociation} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -173,7 +173,7 @@ public class CodeTypeUsageTest {
 
     /**
      * Method sets attribute {@link #stringCode}.<br/>
-     * 
+     *
      * @param pStringCode Value to which {@link #stringCode} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -186,7 +186,7 @@ public class CodeTypeUsageTest {
     /**
      * Method creates a new instance of class CodeTypeUsageTest. The object will be initialized with the values of the
      * builder.
-     * 
+     *
      * @return CodeTypeUsageTest Created object. The method never returns null.
      */
     public CodeTypeUsageTest build( ) {
@@ -196,7 +196,7 @@ public class CodeTypeUsageTest {
 
   /**
    * Method returns attribute {@link #booleanCode}.<br/>
-   * 
+   *
    * @return {@link BooleanCodeType} Value to which {@link #booleanCode} is set.
    */
   public BooleanCodeType getBooleanCode( ) {
@@ -205,7 +205,7 @@ public class CodeTypeUsageTest {
 
   /**
    * Method sets attribute {@link #booleanCode}.<br/>
-   * 
+   *
    * @param pBooleanCode Value to which {@link #booleanCode} should be set.
    */
   public void setBooleanCode( BooleanCodeType pBooleanCode ) {
@@ -215,7 +215,7 @@ public class CodeTypeUsageTest {
 
   /**
    * Method returns association {@link #booleanCodeAssociation}.<br/>
-   * 
+   *
    * @return {@link Set<BooleanCodeType>} Value to which {@link #booleanCodeAssociation} is set. The method never
    * returns null and the returned collection is unmodifiable.
    */
@@ -226,7 +226,7 @@ public class CodeTypeUsageTest {
 
   /**
    * Method adds the passed object to {@link #booleanCodeAssociation}.
-   * 
+   *
    * @param pBooleanCodeAssociation Object that should be added to {@link #booleanCodeAssociation}. The parameter must
    * not be null.
    */
@@ -237,7 +237,7 @@ public class CodeTypeUsageTest {
 
   /**
    * Method adds all passed objects to {@link #booleanCodeAssociation}.
-   * 
+   *
    * @param pBooleanCodeAssociation Collection with all objects that should be added to {@link #booleanCodeAssociation}.
    * The parameter must not be null.
    */
@@ -250,7 +250,7 @@ public class CodeTypeUsageTest {
 
   /**
    * Method removes the passed object from {@link #booleanCodeAssociation}.<br/>
-   * 
+   *
    * @param pBooleanCodeAssociation Object that should be removed from {@link #booleanCodeAssociation}. The parameter
    * must not be null.
    */
@@ -269,7 +269,7 @@ public class CodeTypeUsageTest {
 
   /**
    * Method returns association {@link #shortCodeTypeAssociation}.<br/>
-   * 
+   *
    * @return {@link Set<ShortCodeType>} Value to which {@link #shortCodeTypeAssociation} is set. The method never
    * returns null and the returned collection is unmodifiable.
    */
@@ -280,7 +280,7 @@ public class CodeTypeUsageTest {
 
   /**
    * Method adds the passed object to {@link #shortCodeTypeAssociation}.
-   * 
+   *
    * @param pShortCodeTypeAssociation Object that should be added to {@link #shortCodeTypeAssociation}. The parameter
    * must not be null.
    */
@@ -291,7 +291,7 @@ public class CodeTypeUsageTest {
 
   /**
    * Method adds all passed objects to {@link #shortCodeTypeAssociation}.
-   * 
+   *
    * @param pShortCodeTypeAssociation Collection with all objects that should be added to
    * {@link #shortCodeTypeAssociation}. The parameter must not be null.
    */
@@ -304,7 +304,7 @@ public class CodeTypeUsageTest {
 
   /**
    * Method removes the passed object from {@link #shortCodeTypeAssociation}.<br/>
-   * 
+   *
    * @param pShortCodeTypeAssociation Object that should be removed from {@link #shortCodeTypeAssociation}. The
    * parameter must not be null.
    */
@@ -323,7 +323,7 @@ public class CodeTypeUsageTest {
 
   /**
    * Method returns attribute {@link #stringCode}.<br/>
-   * 
+   *
    * @return {@link StringCodeType} Value to which {@link #stringCode} is set.
    */
   public StringCodeType getStringCode( ) {
@@ -332,7 +332,7 @@ public class CodeTypeUsageTest {
 
   /**
    * Method sets attribute {@link #stringCode}.<br/>
-   * 
+   *
    * @param pStringCode Value to which {@link #stringCode} should be set.
    */
   public void setStringCode( StringCodeType pStringCode ) {
@@ -397,7 +397,7 @@ public class CodeTypeUsageTest {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

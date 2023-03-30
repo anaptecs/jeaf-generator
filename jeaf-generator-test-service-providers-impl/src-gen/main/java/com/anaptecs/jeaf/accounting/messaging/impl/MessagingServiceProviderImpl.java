@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.accounting.messaging.impl;
@@ -21,7 +21,7 @@ final class MessagingServiceProviderImpl extends MessagingServiceProviderImplBas
   /**
    * This method will be called at startup by JEAF and enables the service provider to perform its specific
    * initialization routines.
-   * 
+   *
    * @throws SystemException Service provider specific exception in order to show that the initialization was not
    * successful.
    */
@@ -33,7 +33,7 @@ final class MessagingServiceProviderImpl extends MessagingServiceProviderImplBas
    * Method checks the current state of the service provider. Therefore JEAF defines three different check levels:
    * internal Checks, infrastructure checks and external checks. For further details about the check levels
    * {@see CheckLevel}.
-   * 
+   *
    * @param pLevel Check level on which the check should be performed. The parameter is never null.
    * @return {@link HealthCheckResult} Object describing the result of the check. The method may return null. This means
    * that the service does not implement any checks. In order to use as less memory as possible the method should use

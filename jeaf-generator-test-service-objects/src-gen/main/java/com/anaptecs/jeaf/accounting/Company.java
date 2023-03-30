@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.accounting;
@@ -53,7 +53,7 @@ public class Company extends Customer {
 
   /**
    * Initialize object using the passed builder.
-   * 
+   *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected Company( Builder pBuilder ) {
@@ -68,7 +68,7 @@ public class Company extends Customer {
 
   /**
    * Method returns a new builder.
-   * 
+   *
    * @return {@link Builder} New builder that can be used to create new Company objects.
    */
   public static Builder builder( ) {
@@ -77,7 +77,7 @@ public class Company extends Customer {
 
   /**
    * Method creates a new builder and initialize it with the data from the passed object.
-   * 
+   *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new Company objects. The method never returns null.
    */
@@ -130,7 +130,7 @@ public class Company extends Customer {
 
     /**
      * Method sets attribute {@link #active}.<br/>
-     * 
+     *
      * @param pActive Value to which {@link #active} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -143,7 +143,7 @@ public class Company extends Customer {
 
     /**
      * Method sets attribute {@link #street}.<br/>
-     * 
+     *
      * @param pStreet Value to which {@link #street} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -156,7 +156,7 @@ public class Company extends Customer {
 
     /**
      * Method sets attribute {@link #zipCode}.<br/>
-     * 
+     *
      * @param pZipCode Value to which {@link #zipCode} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -169,7 +169,7 @@ public class Company extends Customer {
 
     /**
      * Method sets attribute {@link #city}.<br/>
-     * 
+     *
      * @param pCity Value to which {@link #city} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -182,7 +182,7 @@ public class Company extends Customer {
 
     /**
      * Method sets attribute {@link #country}.<br/>
-     * 
+     *
      * @param pCountry Value to which {@link #country} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -195,7 +195,7 @@ public class Company extends Customer {
 
     /**
      * Method sets attribute {@link #name}.<br/>
-     * 
+     *
      * @param pName Value to which {@link #name} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -207,7 +207,7 @@ public class Company extends Customer {
 
     /**
      * Method sets attribute {@link #registrationNumber}.<br/>
-     * 
+     *
      * @param pRegistrationNumber Value to which {@link #registrationNumber} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -219,7 +219,7 @@ public class Company extends Customer {
 
     /**
      * Method sets attribute {@link #taxNumber}.<br/>
-     * 
+     *
      * @param pTaxNumber Value to which {@link #taxNumber} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -231,7 +231,7 @@ public class Company extends Customer {
 
     /**
      * Method sets attribute {@link #attendant}.<br/>
-     * 
+     *
      * @param pAttendant Value to which {@link #attendant} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -243,7 +243,7 @@ public class Company extends Customer {
 
     /**
      * Method creates a new instance of class Company. The object will be initialized with the values of the builder.
-     * 
+     *
      * @return Company Created object. The method never returns null.
      */
     public Company build( ) {
@@ -253,7 +253,7 @@ public class Company extends Customer {
     /**
      * Method creates a new validated instance of class Company. The object will be initialized with the values of the
      * builder and validated afterwards.
-     * 
+     *
      * @return Company Created and validated object. The method never returns null.
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
@@ -266,7 +266,7 @@ public class Company extends Customer {
 
   /**
    * Method returns attribute {@link #name}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #name} is set.
    */
   public String getName( ) {
@@ -275,7 +275,7 @@ public class Company extends Customer {
 
   /**
    * Method sets attribute {@link #name}.<br/>
-   * 
+   *
    * @param pName Value to which {@link #name} should be set.
    */
   public void setName( String pName ) {
@@ -285,7 +285,7 @@ public class Company extends Customer {
 
   /**
    * Method returns attribute {@link #registrationNumber}.<br/>
-   * 
+   *
    * @return {@link Long} Value to which {@link #registrationNumber} is set.
    */
   public Long getRegistrationNumber( ) {
@@ -294,7 +294,7 @@ public class Company extends Customer {
 
   /**
    * Method sets attribute {@link #registrationNumber}.<br/>
-   * 
+   *
    * @param pRegistrationNumber Value to which {@link #registrationNumber} should be set.
    */
   public void setRegistrationNumber( Long pRegistrationNumber ) {
@@ -304,7 +304,7 @@ public class Company extends Customer {
 
   /**
    * Method returns attribute {@link #taxNumber}.<br/>
-   * 
+   *
    * @return {@link Long} Value to which {@link #taxNumber} is set.
    */
   public Long getTaxNumber( ) {
@@ -313,7 +313,7 @@ public class Company extends Customer {
 
   /**
    * Method sets attribute {@link #taxNumber}.<br/>
-   * 
+   *
    * @param pTaxNumber Value to which {@link #taxNumber} should be set.
    */
   public void setTaxNumber( Long pTaxNumber ) {
@@ -323,7 +323,7 @@ public class Company extends Customer {
 
   /**
    * Method returns attribute {@link #attendant}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #attendant} is set.
    */
   public String getAttendant( ) {
@@ -332,7 +332,7 @@ public class Company extends Customer {
 
   /**
    * Method sets attribute {@link #attendant}.<br/>
-   * 
+   *
    * @param pAttendant Value to which {@link #attendant} should be set.
    */
   public void setAttendant( String pAttendant ) {
@@ -370,7 +370,7 @@ public class Company extends Customer {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

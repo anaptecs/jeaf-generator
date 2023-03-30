@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2021. All rights reserved.
  */
 package com.anaptecs.jeaf.junit.openapi.base;
@@ -54,7 +54,7 @@ public class POI extends Stop {
 
   /**
    * Initialize object using the passed builder.
-   * 
+   *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected POI( Builder pBuilder ) {
@@ -73,7 +73,7 @@ public class POI extends Stop {
 
   /**
    * Method returns a new builder.
-   * 
+   *
    * @return {@link Builder} New builder that can be used to create new POI objects.
    */
   public static Builder builder( ) {
@@ -82,7 +82,7 @@ public class POI extends Stop {
 
   /**
    * Method creates a new builder and initialize it with the data from the passed object.
-   * 
+   *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new POI objects. The method never returns null.
    */
@@ -135,7 +135,7 @@ public class POI extends Stop {
 
     /**
      * Method sets attribute {@link #name}.<br/>
-     * 
+     *
      * @param pName Value to which {@link #name} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -148,7 +148,7 @@ public class POI extends Stop {
 
     /**
      * Method sets association {@link #links}.<br/>
-     * 
+     *
      * @param pLinks Collection to which {@link #links} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -161,7 +161,7 @@ public class POI extends Stop {
 
     /**
      * Method sets attribute {@link #index}.<br/>
-     * 
+     *
      * @param pIndex Value to which {@link #index} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -174,7 +174,7 @@ public class POI extends Stop {
 
     /**
      * Method sets association {@link #theSoftLink}.<br/>
-     * 
+     *
      * @param pTheSoftLink Value to which {@link #theSoftLink} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -187,7 +187,7 @@ public class POI extends Stop {
 
     /**
      * Method sets attribute {@link #description}.<br/>
-     * 
+     *
      * @param pDescription Value to which {@link #description} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -199,7 +199,7 @@ public class POI extends Stop {
 
     /**
      * Method sets association {@link #theLink}.<br/>
-     * 
+     *
      * @param pTheLink Value to which {@link #theLink} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -211,7 +211,7 @@ public class POI extends Stop {
 
     /**
      * Method sets association {@link #evenMoreLinks}.<br/>
-     * 
+     *
      * @param pEvenMoreLinks Collection to which {@link #evenMoreLinks} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -229,7 +229,7 @@ public class POI extends Stop {
 
     /**
      * Method creates a new instance of class POI. The object will be initialized with the values of the builder.
-     * 
+     *
      * @return POI Created object. The method never returns null.
      */
     public POI build( ) {
@@ -239,7 +239,7 @@ public class POI extends Stop {
     /**
      * Method creates a new validated instance of class POI. The object will be initialized with the values of the
      * builder and validated afterwards.
-     * 
+     *
      * @return POI Created and validated object. The method never returns null.
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
@@ -252,7 +252,7 @@ public class POI extends Stop {
 
   /**
    * Method returns attribute {@link #description}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #description} is set.
    */
   public String getDescription( ) {
@@ -261,7 +261,7 @@ public class POI extends Stop {
 
   /**
    * Method sets attribute {@link #description}.<br/>
-   * 
+   *
    * @param pDescription Value to which {@link #description} should be set.
    */
   public void setDescription( String pDescription ) {
@@ -274,7 +274,7 @@ public class POI extends Stop {
    * <p/>
    * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #theLink} is
    * <code>LinkObject</code><br/>
-   * 
+   *
    * @return {@link Long} Value to which {@link #theLink} is set.
    */
   @Deprecated
@@ -284,7 +284,7 @@ public class POI extends Stop {
 
   /**
    * Method sets association {@link #theLink}.<br/>
-   * 
+   *
    * @param pTheLink Value to which {@link #theLink} should be set.
    */
   @Deprecated
@@ -305,7 +305,7 @@ public class POI extends Stop {
    * <p/>
    * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #evenMoreLinks} is
    * <code>LinkObject</code><br/>
-   * 
+   *
    * @return {@link Set<SoftLink>} Value to which {@link #evenMoreLinks} is set. The method never returns null and the
    * returned collection is modifiable.
    */
@@ -317,7 +317,7 @@ public class POI extends Stop {
 
   /**
    * Method adds the passed object to {@link #evenMoreLinks}.
-   * 
+   *
    * @param pEvenMoreLinks Object that should be added to {@link #evenMoreLinks}. The parameter must not be null.
    */
   @Deprecated
@@ -330,7 +330,7 @@ public class POI extends Stop {
 
   /**
    * Method adds all passed objects to {@link #evenMoreLinks}.
-   * 
+   *
    * @param pEvenMoreLinks Collection with all objects that should be added to {@link #evenMoreLinks}. The parameter
    * must not be null.
    */
@@ -346,7 +346,7 @@ public class POI extends Stop {
 
   /**
    * Method removes the passed object from {@link #evenMoreLinks}.
-   * 
+   *
    * @param pEvenMoreLinks Object that should be removed from {@link #evenMoreLinks}. The parameter must not be null.
    */
   @Deprecated
@@ -405,7 +405,7 @@ public class POI extends Stop {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

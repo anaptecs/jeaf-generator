@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.junit.core.test;
@@ -13,7 +13,7 @@ import junit.framework.TestSuite;
 public class MailTestServiceTest extends MailTestServiceTestBase {
   /**
    * Method creates a test suite contain all tests of this class.
-   * 
+   *
    * @return {@link TestSuite} Test suite with all tests of this class.
    */
   public static TestSuite suite( ) {
@@ -30,7 +30,7 @@ public class MailTestServiceTest extends MailTestServiceTestBase {
 
   /**
    * Initialize test case. Therefore the name of the test that should be executed must be provided.
-   * 
+   *
    * @param pName Name of the test method that should be executed by this test. The Parameter must not be null.
    */
   public MailTestServiceTest( String pName ) {
@@ -40,7 +40,7 @@ public class MailTestServiceTest extends MailTestServiceTestBase {
   /**
    * Initialize test case. Therefore the name of the test that should be executed must be provided. The userId and the
    * password of a specific user can be given to this Constructor so this specific user can be logged in.
-   * 
+   *
    * @param pName Name of the test method that should be executed by this test. The Parameter must not be null.
    * @param pUserId UserId of the User who should be logged in for this Test.
    * @param pPassword Password of the User who should be logged in for this Test.
@@ -52,7 +52,7 @@ public class MailTestServiceTest extends MailTestServiceTestBase {
   /**
    * Method performs test case specific initialization routines. If a test case implementation requires some special
    * operations at startup this method can be overridden.
-   * 
+   *
    * @throws Exception if an error occurs during initialization.
    */
   @Override
@@ -63,7 +63,7 @@ public class MailTestServiceTest extends MailTestServiceTestBase {
 
   /**
    * Method test the implementation of service method testExtendedSendMail
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -73,7 +73,7 @@ public class MailTestServiceTest extends MailTestServiceTestBase {
 
   /**
    * Method test the implementation of service method testSendMail
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -83,7 +83,7 @@ public class MailTestServiceTest extends MailTestServiceTestBase {
 
   /**
    * Method test the implementation of service method testCreateFilledMessage
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -93,7 +93,7 @@ public class MailTestServiceTest extends MailTestServiceTestBase {
 
   /**
    * Method test the implementation of service method testCreateEmptyMessage
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override

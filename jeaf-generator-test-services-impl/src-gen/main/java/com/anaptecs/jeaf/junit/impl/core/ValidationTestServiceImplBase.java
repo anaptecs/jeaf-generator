@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.junit.impl.core;
@@ -69,10 +69,10 @@ abstract class ValidationTestServiceImplBase implements ValidationTestService, S
 
   /**
    * Method returns the class object of the service that is implemented by this service instance.
-   * 
+   *
    * @return Class Class object of the service interface that is implemented by the service instance. The method never
    * returns null.
-   * 
+   *
    * @see ServiceImplementation#getServiceType()
    */
   public final Class<? extends Service> getServiceType( ) {
@@ -81,7 +81,7 @@ abstract class ValidationTestServiceImplBase implements ValidationTestService, S
 
   /**
    * Method returns the service invocation context for the current service call.
-   * 
+   *
    * @return ServiceInvocationContext Service invocation context for the current call. The method never returns null as
    * long as it is called from within a service call.
    */
@@ -91,7 +91,7 @@ abstract class ValidationTestServiceImplBase implements ValidationTestService, S
 
   /**
    * Method returns the value of the property "testProperty".
-   * 
+   *
    * @return {@link Integer} Value of the property "testProperty". The method returns null if no value for the property
    * is defined.
    */
@@ -101,7 +101,7 @@ abstract class ValidationTestServiceImplBase implements ValidationTestService, S
 
   /**
    * Method returns the value of the property "deprecatedAttribute".
-   * 
+   *
    * @return {@link Double} Value of the property "deprecatedAttribute". The method returns null if no value for the
    * property is defined.
    */

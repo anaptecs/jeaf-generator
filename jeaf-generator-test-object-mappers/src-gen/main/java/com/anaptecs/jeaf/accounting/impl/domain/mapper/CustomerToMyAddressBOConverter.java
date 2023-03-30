@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.accounting.impl.domain.mapper;
@@ -39,7 +39,7 @@ public class CustomerToMyAddressBOConverter implements ObjectMapper<Customer, My
 
   /**
    * Method returns an instance of this object mapper.
-   * 
+   *
    * @return {@link ObjectMapper} Instance an object mapper that is capable to map between Customer and MyAddressBO. The
    * method never returns null.
    */
@@ -50,7 +50,7 @@ public class CustomerToMyAddressBOConverter implements ObjectMapper<Customer, My
   /**
    * Method creates a new MyAddressBO object from the passed Customer object and applies the defined mappings of type
    * {@link MappingType#CREATE} from the UML model.
-   * 
+   *
    * @param pSource Customer object that should be used to create a new MyAddressBO object. The parameter must not be
    * null.
    * @return {@link MyAddressBO} Created MyAddressBO object. The method never returns null.
@@ -70,7 +70,7 @@ public class CustomerToMyAddressBOConverter implements ObjectMapper<Customer, My
   /**
    * Method creates new MyAddressBO objects based on the passed Customer objects. For every Customer object a new
    * MyAddressBO object will be returned. The mappings for case {@link MappingType#CREATE} will be applied.
-   * 
+   *
    * @param pSourceObjects All Customer objects that should be used to create MyAddressBO objects. The parameter must
    * not be null.
    * @return {@link List} List with all MyAddressBO objects that were created. The method never returns null.
@@ -91,7 +91,7 @@ public class CustomerToMyAddressBOConverter implements ObjectMapper<Customer, My
   /**
    * Method updates an already existing persistent target object with the data of the passed source object according to
    * the mapping defined in the UML model.
-   * 
+   *
    * @param pSource Customer object that should be used to update an existing MyAddressBO object. The parameter must not
    * be null.
    * @return {@link MyAddressBO} Updated MyAddressBO object. The method never returns null.
@@ -109,7 +109,7 @@ public class CustomerToMyAddressBOConverter implements ObjectMapper<Customer, My
 
   /**
    * Method applies the mappings according to the passed mapping type on the passed source and target object.
-   * 
+   *
    * @param pSource Source object which should be used. The parameter must not be null. The effective type and direction
    * of the object mapping depends on parameter <code>pMappingType</code>.
    * @param pTarget Target object which should be used. The parameter must not be null. The effective type and direction
@@ -147,7 +147,7 @@ public class CustomerToMyAddressBOConverter implements ObjectMapper<Customer, My
    * Method applies the mappings according to the passed mapping type on the passed source and target objects. The
    * entries in the list of source and target objects are matched according to their index. This also means that both
    * list must have the same amount of entries.
-   * 
+   *
    * @param pSources Source objects which should be used. The parameter must not be null. The effective type and
    * direction of the object mapping depends on parameter <code>pMappingType</code>.
    * @param pTargets Target objects which should be used. The parameter must not be null. The effective type and
@@ -172,7 +172,7 @@ public class CustomerToMyAddressBOConverter implements ObjectMapper<Customer, My
   /**
    * Method maps all attributes from Customer to MyAddressBO. Mappings are applied only for case
    * {@link MappingType#READ}.
-   * 
+   *
    * @param pSource Source object for the mapping. The parameter must not be null.
    * @param pTarget Target object for the mapping. The parameter must not be null.
    */
@@ -186,7 +186,7 @@ public class CustomerToMyAddressBOConverter implements ObjectMapper<Customer, My
   /**
    * Method maps all attributes from Customer to MyAddressBO. Mappings are applied only for case
    * {@link MappingType#UPDATE}.
-   * 
+   *
    * @param pSource Source object for the mapping. The parameter must not be null.
    * @param pTarget Target object for the mapping. The parameter must not be null.
    */
@@ -213,7 +213,7 @@ public class CustomerToMyAddressBOConverter implements ObjectMapper<Customer, My
   /**
    * Method maps all attributes from MyAddressBO to Customer. Mappings are applied only for case
    * {@link MappingType#READ}.
-   * 
+   *
    * @param pSource Source object for the mapping. The parameter must not be null.
    * @param pTarget Target object for the mapping. The parameter must not be null.
    */

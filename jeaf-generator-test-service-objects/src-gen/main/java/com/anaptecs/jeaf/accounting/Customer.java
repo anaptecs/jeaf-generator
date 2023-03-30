@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.accounting;
@@ -75,7 +75,7 @@ public abstract class Customer implements ServiceObject, Identifiable<ServiceObj
 
   /**
    * Initialize object using the passed builder.
-   * 
+   *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected Customer( Builder pBuilder ) {
@@ -152,7 +152,7 @@ public abstract class Customer implements ServiceObject, Identifiable<ServiceObj
 
     /**
      * Method sets attribute {@link #active}.<br/>
-     * 
+     *
      * @param pActive Value to which {@link #active} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -164,7 +164,7 @@ public abstract class Customer implements ServiceObject, Identifiable<ServiceObj
 
     /**
      * Method sets attribute {@link #street}.<br/>
-     * 
+     *
      * @param pStreet Value to which {@link #street} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -176,7 +176,7 @@ public abstract class Customer implements ServiceObject, Identifiable<ServiceObj
 
     /**
      * Method sets attribute {@link #zipCode}.<br/>
-     * 
+     *
      * @param pZipCode Value to which {@link #zipCode} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -188,7 +188,7 @@ public abstract class Customer implements ServiceObject, Identifiable<ServiceObj
 
     /**
      * Method sets attribute {@link #city}.<br/>
-     * 
+     *
      * @param pCity Value to which {@link #city} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -200,7 +200,7 @@ public abstract class Customer implements ServiceObject, Identifiable<ServiceObj
 
     /**
      * Method sets attribute {@link #country}.<br/>
-     * 
+     *
      * @param pCountry Value to which {@link #country} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -213,7 +213,7 @@ public abstract class Customer implements ServiceObject, Identifiable<ServiceObj
 
   /**
    * Method returns the id of this object.
-   * 
+   *
    * @return {@link ServiceObjectID} ID of this object. Since an object must not have an id the method may also return
    * null.
    */
@@ -224,7 +224,7 @@ public abstract class Customer implements ServiceObject, Identifiable<ServiceObj
 
   /**
    * Method returns the unversioned object id of this object.
-   * 
+   *
    * @return {@link ServiceObjectID} ID of this object. Since an object must not have an id the method may also return
    * null.
    */
@@ -242,7 +242,7 @@ public abstract class Customer implements ServiceObject, Identifiable<ServiceObj
 
   /**
    * Method returns attribute {@link #active}.<br/>
-   * 
+   *
    * @return {@link Boolean} Value to which {@link #active} is set.
    */
   public Boolean getActive( ) {
@@ -251,7 +251,7 @@ public abstract class Customer implements ServiceObject, Identifiable<ServiceObj
 
   /**
    * Method sets attribute {@link #active}.<br/>
-   * 
+   *
    * @param pActive Value to which {@link #active} should be set.
    */
   public void setActive( Boolean pActive ) {
@@ -261,7 +261,7 @@ public abstract class Customer implements ServiceObject, Identifiable<ServiceObj
 
   /**
    * Method returns attribute {@link #street}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #street} is set.
    */
   public String getStreet( ) {
@@ -270,7 +270,7 @@ public abstract class Customer implements ServiceObject, Identifiable<ServiceObj
 
   /**
    * Method sets attribute {@link #street}.<br/>
-   * 
+   *
    * @param pStreet Value to which {@link #street} should be set.
    */
   public void setStreet( String pStreet ) {
@@ -280,7 +280,7 @@ public abstract class Customer implements ServiceObject, Identifiable<ServiceObj
 
   /**
    * Method returns attribute {@link #zipCode}.<br/>
-   * 
+   *
    * @return {@link Integer} Value to which {@link #zipCode} is set.
    */
   public Integer getZipCode( ) {
@@ -289,7 +289,7 @@ public abstract class Customer implements ServiceObject, Identifiable<ServiceObj
 
   /**
    * Method sets attribute {@link #zipCode}.<br/>
-   * 
+   *
    * @param pZipCode Value to which {@link #zipCode} should be set.
    */
   public void setZipCode( Integer pZipCode ) {
@@ -299,7 +299,7 @@ public abstract class Customer implements ServiceObject, Identifiable<ServiceObj
 
   /**
    * Method returns attribute {@link #city}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #city} is set.
    */
   public String getCity( ) {
@@ -308,7 +308,7 @@ public abstract class Customer implements ServiceObject, Identifiable<ServiceObj
 
   /**
    * Method sets attribute {@link #city}.<br/>
-   * 
+   *
    * @param pCity Value to which {@link #city} should be set.
    */
   public void setCity( String pCity ) {
@@ -318,7 +318,7 @@ public abstract class Customer implements ServiceObject, Identifiable<ServiceObj
 
   /**
    * Method returns attribute {@link #country}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #country} is set.
    */
   public String getCountry( ) {
@@ -327,7 +327,7 @@ public abstract class Customer implements ServiceObject, Identifiable<ServiceObj
 
   /**
    * Method sets attribute {@link #country}.<br/>
-   * 
+   *
    * @param pCountry Value to which {@link #country} should be set.
    */
   public void setCountry( String pCountry ) {
@@ -372,7 +372,7 @@ public abstract class Customer implements ServiceObject, Identifiable<ServiceObj
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

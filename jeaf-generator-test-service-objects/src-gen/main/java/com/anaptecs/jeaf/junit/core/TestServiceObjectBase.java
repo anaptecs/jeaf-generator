@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.junit.core;
@@ -13,7 +13,7 @@ import com.anaptecs.jeaf.xfun.api.checks.Check;
 
 /**
  * This is a service object that was modeled in order to test the output of the JEAF Generator.
- * 
+ *
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */
@@ -74,7 +74,7 @@ public abstract class TestServiceObjectBase implements ServiceObject {
 
   /**
    * Initialize object using the passed builder.
-   * 
+   *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected TestServiceObjectBase( BuilderBase pBuilder ) {
@@ -129,7 +129,7 @@ public abstract class TestServiceObjectBase implements ServiceObject {
 
     /**
      * Method sets attribute {@link #key}.<br/>
-     * 
+     *
      * @param pKey Value to which {@link #key} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -141,7 +141,7 @@ public abstract class TestServiceObjectBase implements ServiceObject {
 
     /**
      * Method sets attribute {@link #info}.<br/>
-     * 
+     *
      * @param pInfo Value to which {@link #info} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -153,7 +153,7 @@ public abstract class TestServiceObjectBase implements ServiceObject {
 
     /**
      * Method sets attribute {@link #someTest}.<br/>
-     * 
+     *
      * @param pSomeTest Value to which {@link #someTest} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -165,7 +165,7 @@ public abstract class TestServiceObjectBase implements ServiceObject {
 
     /**
      * Method sets attribute {@link #dummy1}.<br/>
-     * 
+     *
      * @param pDummy1 Value to which {@link #dummy1} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -177,7 +177,7 @@ public abstract class TestServiceObjectBase implements ServiceObject {
 
     /**
      * Method sets attribute {@link #dummy2}.<br/>
-     * 
+     *
      * @param pDummy2 Collection to which {@link #dummy2} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -195,7 +195,7 @@ public abstract class TestServiceObjectBase implements ServiceObject {
 
     /**
      * Method sets attribute {@link #dummy3}.<br/>
-     * 
+     *
      * @param pDummy3 Collection to which {@link #dummy3} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -214,7 +214,7 @@ public abstract class TestServiceObjectBase implements ServiceObject {
     /**
      * Method creates a new instance of class TestServiceObject. The object will be initialized with the values of the
      * builder.
-     * 
+     *
      * @return TestServiceObject Created object. The method never returns null.
      */
     public TestServiceObject build( ) {
@@ -224,7 +224,7 @@ public abstract class TestServiceObjectBase implements ServiceObject {
     /**
      * Method creates a new validated instance of class TestServiceObject. The object will be initialized with the
      * values of the builder and validated afterwards.
-     * 
+     *
      * @return TestServiceObject Created and validated object. The method never returns null.
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
@@ -237,7 +237,7 @@ public abstract class TestServiceObjectBase implements ServiceObject {
 
   /**
    * Method returns attribute {@link #key}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #key} is set.
    */
   public String getKey( ) {
@@ -246,7 +246,7 @@ public abstract class TestServiceObjectBase implements ServiceObject {
 
   /**
    * Method sets attribute {@link #key}.<br/>
-   * 
+   *
    * @param pKey Value to which {@link #key} should be set.
    */
   public void setKey( String pKey ) {
@@ -256,7 +256,7 @@ public abstract class TestServiceObjectBase implements ServiceObject {
 
   /**
    * Method returns attribute {@link #info}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #info} is set.
    */
   public String getInfo( ) {
@@ -265,7 +265,7 @@ public abstract class TestServiceObjectBase implements ServiceObject {
 
   /**
    * Method sets attribute {@link #info}.<br/>
-   * 
+   *
    * @param pInfo Value to which {@link #info} should be set.
    */
   public void setInfo( String pInfo ) {
@@ -275,7 +275,7 @@ public abstract class TestServiceObjectBase implements ServiceObject {
 
   /**
    * Method returns attribute {@link #someTest}.<br/>
-   * 
+   *
    * @return int Value to which {@link #someTest} is set.
    */
   public int getSomeTest( ) {
@@ -284,7 +284,7 @@ public abstract class TestServiceObjectBase implements ServiceObject {
 
   /**
    * Method sets attribute {@link #someTest}.<br/>
-   * 
+   *
    * @param pSomeTest Value to which {@link #someTest} should be set.
    */
   public void setSomeTest( int pSomeTest ) {
@@ -294,7 +294,7 @@ public abstract class TestServiceObjectBase implements ServiceObject {
 
   /**
    * Method returns attribute {@link #dummy1}.<br/>
-   * 
+   *
    * @return {@link Double} Value to which {@link #dummy1} is set.
    */
   public Double getDummy1( ) {
@@ -303,7 +303,7 @@ public abstract class TestServiceObjectBase implements ServiceObject {
 
   /**
    * Method sets attribute {@link #dummy1}.<br/>
-   * 
+   *
    * @param pDummy1 Value to which {@link #dummy1} should be set.
    */
   public void setDummy1( Double pDummy1 ) {
@@ -313,7 +313,7 @@ public abstract class TestServiceObjectBase implements ServiceObject {
 
   /**
    * Method returns attribute {@link #dummy2}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #dummy2} is set.
    */
   public String[] getDummy2( ) {
@@ -330,7 +330,7 @@ public abstract class TestServiceObjectBase implements ServiceObject {
 
   /**
    * Method sets attribute {@link #dummy2}.<br/>
-   * 
+   *
    * @param pDummy2 Value to which {@link #dummy2} should be set.
    */
   public void setDummy2( String[] pDummy2 ) {
@@ -346,7 +346,7 @@ public abstract class TestServiceObjectBase implements ServiceObject {
 
   /**
    * Method returns attribute {@link #dummy3}.<br/>
-   * 
+   *
    * @return {@link Integer} Value to which {@link #dummy3} is set.
    */
   public Integer[] getDummy3( ) {
@@ -363,7 +363,7 @@ public abstract class TestServiceObjectBase implements ServiceObject {
 
   /**
    * Method sets attribute {@link #dummy3}.<br/>
-   * 
+   *
    * @param pDummy3 Value to which {@link #dummy3} should be set.
    */
   public void setDummy3( Integer[] pDummy3 ) {
@@ -410,7 +410,7 @@ public abstract class TestServiceObjectBase implements ServiceObject {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

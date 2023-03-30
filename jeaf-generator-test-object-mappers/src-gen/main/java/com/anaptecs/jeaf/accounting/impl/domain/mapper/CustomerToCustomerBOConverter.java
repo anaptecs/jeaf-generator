@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.accounting.impl.domain.mapper;
@@ -37,7 +37,7 @@ public class CustomerToCustomerBOConverter implements ObjectMapper<Customer, Cus
 
   /**
    * Method returns an instance of this object mapper.
-   * 
+   *
    * @return {@link ObjectMapper} Instance an object mapper that is capable to map between Customer and CustomerBO. The
    * method never returns null.
    */
@@ -48,7 +48,7 @@ public class CustomerToCustomerBOConverter implements ObjectMapper<Customer, Cus
   /**
    * Method updates an already existing persistent target object with the data of the passed source object according to
    * the mapping defined in the UML model.
-   * 
+   *
    * @param pSource Customer object that should be used to update an existing CustomerBO object. The parameter must not
    * be null.
    * @return {@link CustomerBO} Updated CustomerBO object. The method never returns null.
@@ -66,7 +66,7 @@ public class CustomerToCustomerBOConverter implements ObjectMapper<Customer, Cus
 
   /**
    * Method applies the mappings according to the passed mapping type on the passed source and target object.
-   * 
+   *
    * @param pSource Source object which should be used. The parameter must not be null. The effective type and direction
    * of the object mapping depends on parameter <code>pMappingType</code>.
    * @param pTarget Target object which should be used. The parameter must not be null. The effective type and direction
@@ -104,7 +104,7 @@ public class CustomerToCustomerBOConverter implements ObjectMapper<Customer, Cus
    * Method applies the mappings according to the passed mapping type on the passed source and target objects. The
    * entries in the list of source and target objects are matched according to their index. This also means that both
    * list must have the same amount of entries.
-   * 
+   *
    * @param pSources Source objects which should be used. The parameter must not be null. The effective type and
    * direction of the object mapping depends on parameter <code>pMappingType</code>.
    * @param pTargets Target objects which should be used. The parameter must not be null. The effective type and
@@ -129,7 +129,7 @@ public class CustomerToCustomerBOConverter implements ObjectMapper<Customer, Cus
   /**
    * Method maps all attributes from Customer to CustomerBO. Mappings are applied only for case
    * {@link MappingType#READ}.
-   * 
+   *
    * @param pSource Source object for the mapping. The parameter must not be null.
    * @param pTarget Target object for the mapping. The parameter must not be null.
    */
@@ -140,7 +140,7 @@ public class CustomerToCustomerBOConverter implements ObjectMapper<Customer, Cus
   /**
    * Method maps all attributes from Customer to CustomerBO. Mappings are applied only for case
    * {@link MappingType#UPDATE}.
-   * 
+   *
    * @param pSource Source object for the mapping. The parameter must not be null.
    * @param pTarget Target object for the mapping. The parameter must not be null.
    */
@@ -164,7 +164,7 @@ public class CustomerToCustomerBOConverter implements ObjectMapper<Customer, Cus
   /**
    * Method maps all attributes from CustomerBO to Customer. Mappings are applied only for case
    * {@link MappingType#READ}.
-   * 
+   *
    * @param pSource Source object for the mapping. The parameter must not be null.
    * @param pTarget Target object for the mapping. The parameter must not be null.
    */

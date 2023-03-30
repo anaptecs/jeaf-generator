@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.spring.service.resource;
@@ -30,7 +30,7 @@ public class PathlessServiceResource {
 
   /**
    * Initialize object.
-   * 
+   *
    * @param pPathlessService Dependency on concrete {@link PathlessService} implementation that should be used.
    */
   public PathlessServiceResource( PathlessService pPathlessService, ValidationExecutor pValidationExecutor ) {

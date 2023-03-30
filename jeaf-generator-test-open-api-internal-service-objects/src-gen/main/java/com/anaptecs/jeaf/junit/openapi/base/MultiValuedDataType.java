@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2021. All rights reserved.
  */
 package com.anaptecs.jeaf.junit.openapi.base;
@@ -75,7 +75,7 @@ public class MultiValuedDataType implements ServiceObject {
 
   /**
    * Initialize object using the passed builder.
-   * 
+   *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected MultiValuedDataType( Builder pBuilder ) {
@@ -106,7 +106,7 @@ public class MultiValuedDataType implements ServiceObject {
 
   /**
    * Method returns a new builder.
-   * 
+   *
    * @return {@link Builder} New builder that can be used to create new MultiValuedDataType objects.
    */
   public static Builder builder( ) {
@@ -115,7 +115,7 @@ public class MultiValuedDataType implements ServiceObject {
 
   /**
    * Method creates a new builder and initialize it with the data from the passed object.
-   * 
+   *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new MultiValuedDataType objects. The method never
    * returns null.
@@ -186,7 +186,7 @@ public class MultiValuedDataType implements ServiceObject {
 
     /**
      * Method sets association {@link #stringCodeHeader}.<br/>
-     * 
+     *
      * @param pStringCodeHeader Collection to which {@link #stringCodeHeader} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -203,7 +203,7 @@ public class MultiValuedDataType implements ServiceObject {
 
     /**
      * Method sets association {@link #longCodeQueryParam}.<br/>
-     * 
+     *
      * @param pLongCodeQueryParam Collection to which {@link #longCodeQueryParam} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -220,7 +220,7 @@ public class MultiValuedDataType implements ServiceObject {
 
     /**
      * Method sets association {@link #literals}.<br/>
-     * 
+     *
      * @param pLiterals Collection to which {@link #literals} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -237,7 +237,7 @@ public class MultiValuedDataType implements ServiceObject {
 
     /**
      * Method sets association {@link #literals}.<br/>
-     * 
+     *
      * @param pLiterals Array with objects to which {@link #literals} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -254,7 +254,7 @@ public class MultiValuedDataType implements ServiceObject {
 
     /**
      * Method sets attribute {@link #stringProperty}.<br/>
-     * 
+     *
      * @param pStringProperty Value to which {@link #stringProperty} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -266,7 +266,7 @@ public class MultiValuedDataType implements ServiceObject {
 
     /**
      * Method sets attribute {@link #longValues}.<br/>
-     * 
+     *
      * @param pLongValues Value to which {@link #longValues} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -279,7 +279,7 @@ public class MultiValuedDataType implements ServiceObject {
     /**
      * Method creates a new instance of class MultiValuedDataType. The object will be initialized with the values of the
      * builder.
-     * 
+     *
      * @return MultiValuedDataType Created object. The method never returns null.
      */
     public MultiValuedDataType build( ) {
@@ -289,7 +289,7 @@ public class MultiValuedDataType implements ServiceObject {
     /**
      * Method creates a new validated instance of class MultiValuedDataType. The object will be initialized with the
      * values of the builder and validated afterwards.
-     * 
+     *
      * @return MultiValuedDataType Created and validated object. The method never returns null.
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
@@ -303,7 +303,7 @@ public class MultiValuedDataType implements ServiceObject {
   /**
    * Method returns association {@link #stringCodeHeader}.<br/>
    * This is my multivalued test header
-   * 
+   *
    * @return {@link List<StringCode>} Value to which {@link #stringCodeHeader} is set. The method never returns null and
    * the returned collection is modifiable.
    */
@@ -314,7 +314,7 @@ public class MultiValuedDataType implements ServiceObject {
 
   /**
    * Method adds the passed object to {@link #stringCodeHeader}.
-   * 
+   *
    * @param pStringCodeHeader Object that should be added to {@link #stringCodeHeader}. The parameter must not be null.
    */
   public void addToStringCodeHeader( StringCode pStringCodeHeader ) {
@@ -326,7 +326,7 @@ public class MultiValuedDataType implements ServiceObject {
 
   /**
    * Method adds all passed objects to {@link #stringCodeHeader}.
-   * 
+   *
    * @param pStringCodeHeader Collection with all objects that should be added to {@link #stringCodeHeader}. The
    * parameter must not be null.
    */
@@ -341,7 +341,7 @@ public class MultiValuedDataType implements ServiceObject {
 
   /**
    * Method removes the passed object from {@link #stringCodeHeader}.<br/>
-   * 
+   *
    * @param pStringCodeHeader Object that should be removed from {@link #stringCodeHeader}. The parameter must not be
    * null.
    */
@@ -363,7 +363,7 @@ public class MultiValuedDataType implements ServiceObject {
   /**
    * Method returns association {@link #longCodeQueryParam}.<br/>
    * Multivalued query param
-   * 
+   *
    * @return {@link List<LongCode>} Value to which {@link #longCodeQueryParam} is set. The method never returns null and
    * the returned collection is modifiable.
    */
@@ -374,7 +374,7 @@ public class MultiValuedDataType implements ServiceObject {
 
   /**
    * Method adds the passed object to {@link #longCodeQueryParam}.
-   * 
+   *
    * @param pLongCodeQueryParam Object that should be added to {@link #longCodeQueryParam}. The parameter must not be
    * null.
    */
@@ -387,7 +387,7 @@ public class MultiValuedDataType implements ServiceObject {
 
   /**
    * Method adds all passed objects to {@link #longCodeQueryParam}.
-   * 
+   *
    * @param pLongCodeQueryParam Collection with all objects that should be added to {@link #longCodeQueryParam}. The
    * parameter must not be null.
    */
@@ -402,7 +402,7 @@ public class MultiValuedDataType implements ServiceObject {
 
   /**
    * Method removes the passed object from {@link #longCodeQueryParam}.<br/>
-   * 
+   *
    * @param pLongCodeQueryParam Object that should be removed from {@link #longCodeQueryParam}. The parameter must not
    * be null.
    */
@@ -424,7 +424,7 @@ public class MultiValuedDataType implements ServiceObject {
   /**
    * Method returns association {@link #literals}.<br/>
    * so many literals are possible
-   * 
+   *
    * @return {@link List<BooleanLiteralsEnum>} Value to which {@link #literals} is set. The method never returns null
    * and the returned collection is modifiable.
    */
@@ -435,7 +435,7 @@ public class MultiValuedDataType implements ServiceObject {
 
   /**
    * Method adds the passed object to {@link #literals}.
-   * 
+   *
    * @param pLiterals Object that should be added to {@link #literals}. The parameter must not be null.
    */
   public void addToLiterals( BooleanLiteralsEnum pLiterals ) {
@@ -447,7 +447,7 @@ public class MultiValuedDataType implements ServiceObject {
 
   /**
    * Method adds all passed objects to {@link #literals}.
-   * 
+   *
    * @param pLiterals Collection with all objects that should be added to {@link #literals}. The parameter must not be
    * null.
    */
@@ -462,7 +462,7 @@ public class MultiValuedDataType implements ServiceObject {
 
   /**
    * Method removes the passed object from {@link #literals}.<br/>
-   * 
+   *
    * @param pLiterals Object that should be removed from {@link #literals}. The parameter must not be null.
    */
   public void removeFromLiterals( BooleanLiteralsEnum pLiterals ) {
@@ -482,7 +482,7 @@ public class MultiValuedDataType implements ServiceObject {
 
   /**
    * Method returns attribute {@link #stringProperty}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #stringProperty} is set.
    */
   public String getStringProperty( ) {
@@ -491,7 +491,7 @@ public class MultiValuedDataType implements ServiceObject {
 
   /**
    * Method sets attribute {@link #stringProperty}.<br/>
-   * 
+   *
    * @param pStringProperty Value to which {@link #stringProperty} should be set.
    */
   public void setStringProperty( String pStringProperty ) {
@@ -502,7 +502,7 @@ public class MultiValuedDataType implements ServiceObject {
   /**
    * Method returns attribute {@link #longValues}.<br/>
    * long values as multivalued header
-   * 
+   *
    * @return long Value to which {@link #longValues} is set.
    */
   public long getLongValues( ) {
@@ -512,7 +512,7 @@ public class MultiValuedDataType implements ServiceObject {
   /**
    * Method sets attribute {@link #longValues}.<br/>
    * long values as multivalued header
-   * 
+   *
    * @param pLongValues Value to which {@link #longValues} should be set.
    */
   public void setLongValues( long pLongValues ) {
@@ -594,7 +594,7 @@ public class MultiValuedDataType implements ServiceObject {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

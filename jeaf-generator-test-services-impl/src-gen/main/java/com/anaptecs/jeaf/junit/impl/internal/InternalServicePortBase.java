@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.junit.impl.internal;
@@ -49,7 +49,7 @@ abstract class InternalServicePortBase implements ServiceImplementation {
 
   /**
    * Method returns reference to the persistence service provider that can be used to access the database.
-   * 
+   *
    * @return {@link PersistenceServiceProvider} Reference to persistence service provider. The method never returns
    * null.
    */
@@ -59,7 +59,7 @@ abstract class InternalServicePortBase implements ServiceImplementation {
 
   /**
    * Method returns the service invocation context for the current service call.
-   * 
+   *
    * @return ServiceInvocationContext Service invocation context for the current call. The method never returns null as
    * long as it is called from within a service call.
    */

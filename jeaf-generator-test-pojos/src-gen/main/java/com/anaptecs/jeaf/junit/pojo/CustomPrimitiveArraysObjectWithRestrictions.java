@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.junit.pojo;
@@ -23,7 +23,7 @@ public class CustomPrimitiveArraysObjectWithRestrictions extends CustomPrimitive
 
   /**
    * Method returns a new builder.
-   * 
+   *
    * @return {@link Builder} New builder that can be used to create new CustomPrimitiveArraysObjectWithRestrictions
    * objects.
    */
@@ -33,7 +33,7 @@ public class CustomPrimitiveArraysObjectWithRestrictions extends CustomPrimitive
 
   /**
    * Method creates a new builder and initialize it with the data from the passed object.
-   * 
+   *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new CustomPrimitiveArraysObjectWithRestrictions
    * objects. The method never returns null.

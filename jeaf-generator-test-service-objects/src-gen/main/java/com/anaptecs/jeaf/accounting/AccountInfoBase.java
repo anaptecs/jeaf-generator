@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.accounting;
@@ -56,7 +56,7 @@ public abstract class AccountInfoBase implements ServiceObject, Identifiable<Ser
 
   /**
    * Initialize object using the passed builder.
-   * 
+   *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected AccountInfoBase( BuilderBase pBuilder ) {
@@ -122,7 +122,7 @@ public abstract class AccountInfoBase implements ServiceObject, Identifiable<Ser
 
     /**
      * Method sets attribute {@link #iban}.<br/>
-     * 
+     *
      * @param pIban Value to which {@link #iban} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -134,7 +134,7 @@ public abstract class AccountInfoBase implements ServiceObject, Identifiable<Ser
 
     /**
      * Method sets attribute {@link #balance}.<br/>
-     * 
+     *
      * @param pBalance Value to which {@link #balance} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -146,7 +146,7 @@ public abstract class AccountInfoBase implements ServiceObject, Identifiable<Ser
 
     /**
      * Method sets attribute {@link #bankID}.<br/>
-     * 
+     *
      * @param pBankID Value to which {@link #bankID} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -159,7 +159,7 @@ public abstract class AccountInfoBase implements ServiceObject, Identifiable<Ser
     /**
      * Method creates a new instance of class AccountInfo. The object will be initialized with the values of the
      * builder.
-     * 
+     *
      * @return AccountInfo Created object. The method never returns null.
      */
     public AccountInfo build( ) {
@@ -169,7 +169,7 @@ public abstract class AccountInfoBase implements ServiceObject, Identifiable<Ser
     /**
      * Method creates a new validated instance of class AccountInfo. The object will be initialized with the values of
      * the builder and validated afterwards.
-     * 
+     *
      * @return AccountInfo Created and validated object. The method never returns null.
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
@@ -182,7 +182,7 @@ public abstract class AccountInfoBase implements ServiceObject, Identifiable<Ser
 
   /**
    * Method returns the id of this object.
-   * 
+   *
    * @return {@link ServiceObjectID} ID of this object. Since an object must not have an id the method may also return
    * null.
    */
@@ -193,7 +193,7 @@ public abstract class AccountInfoBase implements ServiceObject, Identifiable<Ser
 
   /**
    * Method returns the unversioned object id of this object.
-   * 
+   *
    * @return {@link ServiceObjectID} ID of this object. Since an object must not have an id the method may also return
    * null.
    */
@@ -211,7 +211,7 @@ public abstract class AccountInfoBase implements ServiceObject, Identifiable<Ser
 
   /**
    * Method returns attribute {@link #iban}.<br/>
-   * 
+   *
    * @return {@link Long} Value to which {@link #iban} is set.
    */
   public Long getIban( ) {
@@ -220,7 +220,7 @@ public abstract class AccountInfoBase implements ServiceObject, Identifiable<Ser
 
   /**
    * Method sets attribute {@link #iban}.<br/>
-   * 
+   *
    * @param pIban Value to which {@link #iban} should be set.
    */
   public void setIban( Long pIban ) {
@@ -230,7 +230,7 @@ public abstract class AccountInfoBase implements ServiceObject, Identifiable<Ser
 
   /**
    * Method returns attribute {@link #balance}.<br/>
-   * 
+   *
    * @return {@link Double} Value to which {@link #balance} is set.
    */
   public Double getBalance( ) {
@@ -239,7 +239,7 @@ public abstract class AccountInfoBase implements ServiceObject, Identifiable<Ser
 
   /**
    * Method sets attribute {@link #balance}.<br/>
-   * 
+   *
    * @param pBalance Value to which {@link #balance} should be set.
    */
   public void setBalance( Double pBalance ) {
@@ -249,7 +249,7 @@ public abstract class AccountInfoBase implements ServiceObject, Identifiable<Ser
 
   /**
    * Method returns attribute {@link #bankID}.<br/>
-   * 
+   *
    * @return {@link ServiceObjectID} Value to which {@link #bankID} is set.
    */
   public ServiceObjectID getBankID( ) {
@@ -258,7 +258,7 @@ public abstract class AccountInfoBase implements ServiceObject, Identifiable<Ser
 
   /**
    * Method sets attribute {@link #bankID}.<br/>
-   * 
+   *
    * @param pBankID Value to which {@link #bankID} should be set.
    */
   public void setBankID( ServiceObjectID pBankID ) {
@@ -300,7 +300,7 @@ public abstract class AccountInfoBase implements ServiceObject, Identifiable<Ser
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

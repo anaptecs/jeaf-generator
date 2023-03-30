@@ -14,7 +14,7 @@ public enum DataUnit {
 
   /**
    * Method returns attribute {@link #dataUnitID}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #dataUnitID} is set.
    */
   public String getDataUnitID( ) {

@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2021. All rights reserved.
  */
 package com.anaptecs.jeaf.junit.openapi.base.serializers;
@@ -53,7 +53,7 @@ public class ComplexBookingIDSerializer extends JsonSerializer<ComplexBookingID>
 
   /**
    * Method returns the {@link CompositeTypeConverter} that should be used to serialize objects.
-   * 
+   *
    * @return {@link CompositeTypeConverter} Serializer that should be used. The method never returns null.
    */
   private CompositeTypeConverter getSerializer( ) {

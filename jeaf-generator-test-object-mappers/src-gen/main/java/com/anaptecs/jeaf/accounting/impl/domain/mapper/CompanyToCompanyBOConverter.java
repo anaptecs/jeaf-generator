@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.accounting.impl.domain.mapper;
@@ -39,7 +39,7 @@ public class CompanyToCompanyBOConverter implements ObjectMapper<Company, Compan
 
   /**
    * Method returns an instance of this object mapper.
-   * 
+   *
    * @return {@link ObjectMapper} Instance an object mapper that is capable to map between Company and CompanyBO. The
    * method never returns null.
    */
@@ -50,7 +50,7 @@ public class CompanyToCompanyBOConverter implements ObjectMapper<Company, Compan
   /**
    * Method creates a new CompanyBO object from the passed Company object and applies the defined mappings of type
    * {@link MappingType#CREATE} from the UML model.
-   * 
+   *
    * @param pSource Company object that should be used to create a new CompanyBO object. The parameter must not be null.
    * @return {@link CompanyBO} Created CompanyBO object. The method never returns null.
    */
@@ -72,7 +72,7 @@ public class CompanyToCompanyBOConverter implements ObjectMapper<Company, Compan
   /**
    * Method creates new CompanyBO objects based on the passed Company objects. For every Company object a new CompanyBO
    * object will be returned. The mappings for case {@link MappingType#CREATE} will be applied.
-   * 
+   *
    * @param pSourceObjects All Company objects that should be used to create CompanyBO objects. The parameter must not
    * be null.
    * @return {@link List} List with all CompanyBO objects that were created. The method never returns null.
@@ -93,7 +93,7 @@ public class CompanyToCompanyBOConverter implements ObjectMapper<Company, Compan
   /**
    * Method updates an already existing persistent target object with the data of the passed source object according to
    * the mapping defined in the UML model.
-   * 
+   *
    * @param pSource Company object that should be used to update an existing CompanyBO object. The parameter must not be
    * null.
    * @return {@link CompanyBO} Updated CompanyBO object. The method never returns null.
@@ -111,7 +111,7 @@ public class CompanyToCompanyBOConverter implements ObjectMapper<Company, Compan
 
   /**
    * Method applies the mappings according to the passed mapping type on the passed source and target object.
-   * 
+   *
    * @param pSource Source object which should be used. The parameter must not be null. The effective type and direction
    * of the object mapping depends on parameter <code>pMappingType</code>.
    * @param pTarget Target object which should be used. The parameter must not be null. The effective type and direction
@@ -151,7 +151,7 @@ public class CompanyToCompanyBOConverter implements ObjectMapper<Company, Compan
    * Method applies the mappings according to the passed mapping type on the passed source and target objects. The
    * entries in the list of source and target objects are matched according to their index. This also means that both
    * list must have the same amount of entries.
-   * 
+   *
    * @param pSources Source objects which should be used. The parameter must not be null. The effective type and
    * direction of the object mapping depends on parameter <code>pMappingType</code>.
    * @param pTargets Target objects which should be used. The parameter must not be null. The effective type and
@@ -175,7 +175,7 @@ public class CompanyToCompanyBOConverter implements ObjectMapper<Company, Compan
   /**
    * Method creates a new Company object and applies the defined mappings of type {@link MappingType#READ} from the UML
    * model.
-   * 
+   *
    * @param pTarget CompanyBO object that should be used to create a new Company object. The parameter must not be null.
    * @return {@link Company} Created Company object. The method never returns null.
    */
@@ -194,7 +194,7 @@ public class CompanyToCompanyBOConverter implements ObjectMapper<Company, Compan
   /**
    * Method creates new Company objects based on the passed CompanyBO objects. For every CompanyBO object a new Company
    * object will be returned. The mappings for case {@link MappingType#READ} will be applied.
-   * 
+   *
    * @param pTargetObjects All target objects that should be used to create source objects. The parameter must not be
    * null.
    * @return {@link List} List with all source objects that were created. The method never returns null.
@@ -213,7 +213,7 @@ public class CompanyToCompanyBOConverter implements ObjectMapper<Company, Compan
 
   /**
    * Method maps all attributes from Company to CompanyBO. Mappings are applied only for case {@link MappingType#READ}.
-   * 
+   *
    * @param pSource Source object for the mapping. The parameter must not be null.
    * @param pTarget Target object for the mapping. The parameter must not be null.
    */
@@ -226,7 +226,7 @@ public class CompanyToCompanyBOConverter implements ObjectMapper<Company, Compan
   /**
    * Method maps all attributes from Company to CompanyBO. Mappings are applied only for case
    * {@link MappingType#UPDATE}.
-   * 
+   *
    * @param pSource Source object for the mapping. The parameter must not be null.
    * @param pTarget Target object for the mapping. The parameter must not be null.
    */
@@ -250,7 +250,7 @@ public class CompanyToCompanyBOConverter implements ObjectMapper<Company, Compan
 
   /**
    * Method maps all attributes from CompanyBO to Company. Mappings are applied only for case {@link MappingType#READ}.
-   * 
+   *
    * @param pSource Source object for the mapping. The parameter must not be null.
    * @param pTarget Target object for the mapping. The parameter must not be null.
    */
@@ -263,7 +263,7 @@ public class CompanyToCompanyBOConverter implements ObjectMapper<Company, Compan
   /**
    * Method applies the object mappings for all combinations of the source's parent class with the target class and all
    * of its super classes.
-   * 
+   *
    * @param pSource Source object for the mapping. The parameter must not be null.
    * @param pTarget Target object for the mapping. The parameter must not be null.
    * @param pMappingType Parameter defines which type of mapping should be applied.

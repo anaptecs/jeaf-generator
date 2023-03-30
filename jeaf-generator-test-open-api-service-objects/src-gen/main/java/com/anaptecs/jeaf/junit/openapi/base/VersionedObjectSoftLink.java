@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2021. All rights reserved.
  */
 package com.anaptecs.jeaf.junit.openapi.base;
@@ -36,7 +36,7 @@ public class VersionedObjectSoftLink implements ServiceObject {
 
   /**
    * Initialize object using the passed builder.
-   * 
+   *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected VersionedObjectSoftLink( Builder pBuilder ) {
@@ -48,7 +48,7 @@ public class VersionedObjectSoftLink implements ServiceObject {
 
   /**
    * Method returns a new builder.
-   * 
+   *
    * @return {@link Builder} New builder that can be used to create new VersionedObjectSoftLink objects.
    */
   public static Builder builder( ) {
@@ -57,7 +57,7 @@ public class VersionedObjectSoftLink implements ServiceObject {
 
   /**
    * Method creates a new builder and initialize it with the data from the passed object.
-   * 
+   *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new VersionedObjectSoftLink objects. The method
    * never returns null.
@@ -100,7 +100,7 @@ public class VersionedObjectSoftLink implements ServiceObject {
 
     /**
      * Method returns the String representation of this object.
-     * 
+     *
      * @return String String representation of this object.
      */
     public Builder setObjectID( String pObjectID ) {
@@ -111,7 +111,7 @@ public class VersionedObjectSoftLink implements ServiceObject {
     /**
      * Method creates a new instance of class VersionedObjectSoftLink. The object will be initialized with the values of
      * the builder.
-     * 
+     *
      * @return VersionedObjectSoftLink Created object. The method never returns null.
      */
     public VersionedObjectSoftLink build( ) {
@@ -121,7 +121,7 @@ public class VersionedObjectSoftLink implements ServiceObject {
     /**
      * Method creates a new validated instance of class VersionedObjectSoftLink. The object will be initialized with the
      * values of the builder and validated afterwards.
-     * 
+     *
      * @return VersionedObjectSoftLink Created and validated object. The method never returns null.
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
@@ -134,7 +134,7 @@ public class VersionedObjectSoftLink implements ServiceObject {
 
   /**
    * Method returns the String representation of this object.
-   * 
+   *
    * @return String String representation of this object.
    */
   public String getObjectID( ) {
@@ -182,7 +182,7 @@ public class VersionedObjectSoftLink implements ServiceObject {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

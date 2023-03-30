@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.accounting.resource;
@@ -29,7 +29,7 @@ import com.anaptecs.jeaf.workload.api.rest.RESTWorkloadErrorHandler;
 /**
  * This interface defines the common services that are provided by the accounting component. This interface is intended
  * to be an example to demonstrate how to use JEAF.
- * 
+ *
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */

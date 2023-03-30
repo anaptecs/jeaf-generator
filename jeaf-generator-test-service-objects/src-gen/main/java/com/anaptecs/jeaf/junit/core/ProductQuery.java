@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.junit.core;
@@ -59,7 +59,7 @@ public class ProductQuery extends QueryObject {
 
   /**
    * Method returns attribute {@link #name}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #name} is set.
    */
   public String getName( ) {
@@ -68,7 +68,7 @@ public class ProductQuery extends QueryObject {
 
   /**
    * Method sets attribute {@link #name}.<br/>
-   * 
+   *
    * @param pName Value to which {@link #name} should be set.
    */
   public void setName( String pName ) {
@@ -78,7 +78,7 @@ public class ProductQuery extends QueryObject {
 
   /**
    * Method returns attribute {@link #minAvailability}.<br/>
-   * 
+   *
    * @return {@link Integer} Value to which {@link #minAvailability} is set.
    */
   @Deprecated
@@ -88,7 +88,7 @@ public class ProductQuery extends QueryObject {
 
   /**
    * Method sets attribute {@link #minAvailability}.<br/>
-   * 
+   *
    * @param pMinAvailability Value to which {@link #minAvailability} should be set.
    */
   @Deprecated
@@ -99,7 +99,7 @@ public class ProductQuery extends QueryObject {
 
   /**
    * Method returns attribute {@link #minPrice}.<br/>
-   * 
+   *
    * @return {@link Integer} Value to which {@link #minPrice} is set.
    */
   public Integer getMinPrice( ) {
@@ -108,7 +108,7 @@ public class ProductQuery extends QueryObject {
 
   /**
    * Method sets attribute {@link #minPrice}.<br/>
-   * 
+   *
    * @param pMinPrice Value to which {@link #minPrice} should be set.
    */
   public void setMinPrice( Integer pMinPrice ) {
@@ -118,7 +118,7 @@ public class ProductQuery extends QueryObject {
 
   /**
    * Method returns attribute {@link #maxPrice}.<br/>
-   * 
+   *
    * @return {@link Integer} Value to which {@link #maxPrice} is set.
    */
   public Integer getMaxPrice( ) {
@@ -127,7 +127,7 @@ public class ProductQuery extends QueryObject {
 
   /**
    * Method sets attribute {@link #maxPrice}.<br/>
-   * 
+   *
    * @param pMaxPrice Value to which {@link #maxPrice} should be set.
    */
   public void setMaxPrice( Integer pMaxPrice ) {
@@ -137,7 +137,7 @@ public class ProductQuery extends QueryObject {
 
   /**
    * Method returns attribute {@link #manufacturer}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #manufacturer} is set.
    */
   public String getManufacturer( ) {
@@ -146,7 +146,7 @@ public class ProductQuery extends QueryObject {
 
   /**
    * Method sets attribute {@link #manufacturer}.<br/>
-   * 
+   *
    * @param pManufacturer Value to which {@link #manufacturer} should be set.
    */
   public void setManufacturer( String pManufacturer ) {
@@ -191,7 +191,7 @@ public class ProductQuery extends QueryObject {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.junit.impl.persistence;
@@ -32,7 +32,7 @@ public final class PersistenceTestComponentConfiguration {
 
   /**
    * Method returns the value of the property "booleanProperty".
-   * 
+   *
    * @return {@link Boolean} Value of the property "booleanProperty". The method returns null if no value for the
    * property is defined.
    */
@@ -42,7 +42,7 @@ public final class PersistenceTestComponentConfiguration {
 
   /**
    * Method returns the value of the property "byteProperty".
-   * 
+   *
    * @return {@link Byte} Value of the property "byteProperty". The method returns null if no value for the property is
    * defined.
    */
@@ -52,7 +52,7 @@ public final class PersistenceTestComponentConfiguration {
 
   /**
    * Method returns the value of the property "shortProperty".
-   * 
+   *
    * @return {@link Short} Value of the property "shortProperty". The method returns null if no value for the property
    * is defined.
    */
@@ -62,7 +62,7 @@ public final class PersistenceTestComponentConfiguration {
 
   /**
    * Method returns the value of the property "integerProperty".
-   * 
+   *
    * @return {@link Integer} Value of the property "integerProperty". The method returns null if no value for the
    * property is defined.
    */
@@ -72,7 +72,7 @@ public final class PersistenceTestComponentConfiguration {
 
   /**
    * Method returns the value of the property "longProperty".
-   * 
+   *
    * @return {@link Long} Value of the property "longProperty". The method returns null if no value for the property is
    * defined.
    */
@@ -82,7 +82,7 @@ public final class PersistenceTestComponentConfiguration {
 
   /**
    * Method returns the value of the property "floatProperty".
-   * 
+   *
    * @return {@link Float} Value of the property "floatProperty". The method returns null if no value for the property
    * is defined.
    */
@@ -92,7 +92,7 @@ public final class PersistenceTestComponentConfiguration {
 
   /**
    * Method returns the value of the property "doubleProperty".
-   * 
+   *
    * @return {@link Double} Value of the property "doubleProperty". The method returns null if no value for the property
    * is defined.
    */
@@ -102,7 +102,7 @@ public final class PersistenceTestComponentConfiguration {
 
   /**
    * Method returns the value of the property "stringProperty".
-   * 
+   *
    * @return {@link String} Value of the property "stringProperty". The method returns null if no value for the property
    * is defined.
    */
@@ -112,7 +112,7 @@ public final class PersistenceTestComponentConfiguration {
 
   /**
    * Method returns the value of the property "characterProperty".
-   * 
+   *
    * @return {@link Character} Value of the property "characterProperty". The method returns null if no value for the
    * property is defined.
    */
@@ -122,7 +122,7 @@ public final class PersistenceTestComponentConfiguration {
 
   /**
    * Method returns the value of the property "classProperty".
-   * 
+   *
    * @return {@link Class} Value of the property "classProperty". The method returns null if no value for the property
    * is defined.
    */
@@ -132,7 +132,7 @@ public final class PersistenceTestComponentConfiguration {
 
   /**
    * Method returns the value of the property "calendarProperty".
-   * 
+   *
    * @return {@link Calendar} Value of the property "calendarProperty". The method returns null if no value for the
    * property is defined.
    */
@@ -143,7 +143,7 @@ public final class PersistenceTestComponentConfiguration {
 
   /**
    * Method returns the value of the property "localeProperty".
-   * 
+   *
    * @return {@link Locale} Value of the property "localeProperty". The method returns null if no value for the property
    * is defined.
    */
@@ -153,7 +153,7 @@ public final class PersistenceTestComponentConfiguration {
 
   /**
    * Method returns the value of the property "deprectedAttribute".
-   * 
+   *
    * @return {@link String} Value of the property "deprectedAttribute". The method returns null if no value for the
    * property is defined.
    */

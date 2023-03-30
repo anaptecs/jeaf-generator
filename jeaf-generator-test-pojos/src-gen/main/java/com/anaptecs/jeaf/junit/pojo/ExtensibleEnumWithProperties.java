@@ -55,7 +55,7 @@ public final class ExtensibleEnumWithProperties {
 
     /**
      * Method returns attribute {@link #dataUnitID}.<br/>
-     * 
+     *
      * @return {@link String} Value to which {@link #dataUnitID} is set.
      */
     public String getDataUnitID( ) {
@@ -64,7 +64,7 @@ public final class ExtensibleEnumWithProperties {
 
     /**
      * Method returns attribute {@link #name}.<br/>
-     * 
+     *
      * @return {@link String} Value to which {@link #name} is set.
      */
     public String getName( ) {
@@ -73,7 +73,7 @@ public final class ExtensibleEnumWithProperties {
 
     /**
      * Method returns attribute {@link #order}.<br/>
-     * 
+     *
      * @return int Value to which {@link #order} is set.
      */
     public int getOrder( ) {
@@ -82,7 +82,7 @@ public final class ExtensibleEnumWithProperties {
 
     /**
      * Method returns attribute {@link #longProperty}.<br/>
-     * 
+     *
      * @return long Value to which {@link #longProperty} is set.
      */
     public long getLongProperty( ) {
@@ -91,7 +91,7 @@ public final class ExtensibleEnumWithProperties {
 
     /**
      * Method returns attribute {@link #booleanProperty}.<br/>
-     * 
+     *
      * @return boolean Value to which {@link #booleanProperty} is set.
      */
     public boolean getBooleanProperty( ) {
@@ -100,7 +100,7 @@ public final class ExtensibleEnumWithProperties {
 
     /**
      * Method returns attribute {@link #floatProperty}.<br/>
-     * 
+     *
      * @return float Value to which {@link #floatProperty} is set.
      */
     public float getFloatProperty( ) {
@@ -109,7 +109,7 @@ public final class ExtensibleEnumWithProperties {
 
     /**
      * Method returns attribute {@link #doubleProperty}.<br/>
-     * 
+     *
      * @return double Value to which {@link #doubleProperty} is set.
      */
     public double getDoubleProperty( ) {
@@ -137,7 +137,7 @@ public final class ExtensibleEnumWithProperties {
   /**
    * Method returns extensible enumeration based on the passed name. If the literal name is unknown then an instance
    * representing "unknown" will be returned.
-   * 
+   *
    * @param pLiteral Enumeration literal that should be used to initialize the extensible enumeration. The parameter
    * must not be null.
    * @return
@@ -173,7 +173,7 @@ public final class ExtensibleEnumWithProperties {
 
   /**
    * Initialize object from real enumeration literal
-   * 
+   *
    * @param pLiteral Enumeration literal that should be used to initialize the extensible enumeration. The parameter
    * must not be null.
    */
@@ -185,10 +185,10 @@ public final class ExtensibleEnumWithProperties {
 
   /**
    * Initialize object using the name of the literal.
-   * 
+   *
    * @param pLiteralName Literal name that should be used to initialize the extensible enumeration. If the parameter is
    * null or has an unknown literal name then a "unknown" version will be created.
-   * 
+   *
    * @see ExtensibleEnumWithProperties#isUnknownLiteral()
    */
   public ExtensibleEnumWithProperties( String pLiteralName ) {
@@ -205,7 +205,7 @@ public final class ExtensibleEnumWithProperties {
 
   /**
    * Method returns the literal that is represented by this object.
-   * 
+   *
    * @return {@link ExtensibleEnumWithProperties} Literal that is represented by this object. The method never returns
    * null.
    */
@@ -215,7 +215,7 @@ public final class ExtensibleEnumWithProperties {
 
   /**
    * Method checks if the represented literal is actually unknown or not.
-   * 
+   *
    * @return boolean Method returns true if this object represents an unknown literal.
    */
   public boolean isUnknownLiteral( ) {
@@ -224,7 +224,7 @@ public final class ExtensibleEnumWithProperties {
 
   /**
    * Method returns the actual name of the unknown literal
-   * 
+   *
    * @return {@link String} Name of the unknown literal or null in case that the literal is known.
    */
   public String getUnknownLiteralName( ) {

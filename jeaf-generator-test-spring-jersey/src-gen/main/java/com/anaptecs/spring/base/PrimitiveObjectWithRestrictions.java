@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.spring.base;
@@ -216,7 +216,7 @@ public class PrimitiveObjectWithRestrictions {
 
   /**
    * Initialize object using the passed builder.
-   * 
+   *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected PrimitiveObjectWithRestrictions( Builder pBuilder ) {
@@ -247,7 +247,7 @@ public class PrimitiveObjectWithRestrictions {
 
   /**
    * Method returns a new builder.
-   * 
+   *
    * @return {@link Builder} New builder that can be used to create new PrimitiveObjectWithRestrictions objects.
    */
   public static Builder builder( ) {
@@ -256,7 +256,7 @@ public class PrimitiveObjectWithRestrictions {
 
   /**
    * Method creates a new builder and initialize it with the data from the passed object.
-   * 
+   *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new PrimitiveObjectWithRestrictions objects. The
    * method never returns null.
@@ -380,7 +380,7 @@ public class PrimitiveObjectWithRestrictions {
 
     /**
      * Method sets attribute {@link #aBoolean}.<br/>
-     * 
+     *
      * @param pABoolean Value to which {@link #aBoolean} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -392,7 +392,7 @@ public class PrimitiveObjectWithRestrictions {
 
     /**
      * Method sets attribute {@link #bBoolean}.<br/>
-     * 
+     *
      * @param pBBoolean Value to which {@link #bBoolean} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -404,7 +404,7 @@ public class PrimitiveObjectWithRestrictions {
 
     /**
      * Method sets attribute {@link #cBoolean}.<br/>
-     * 
+     *
      * @param pCBoolean Value to which {@link #cBoolean} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -416,7 +416,7 @@ public class PrimitiveObjectWithRestrictions {
 
     /**
      * Method sets attribute {@link #aByte}.<br/>
-     * 
+     *
      * @param pAByte Value to which {@link #aByte} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -428,7 +428,7 @@ public class PrimitiveObjectWithRestrictions {
 
     /**
      * Method sets attribute {@link #bByte}.<br/>
-     * 
+     *
      * @param pBByte Value to which {@link #bByte} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -440,7 +440,7 @@ public class PrimitiveObjectWithRestrictions {
 
     /**
      * Method sets attribute {@link #aShort}.<br/>
-     * 
+     *
      * @param pAShort Value to which {@link #aShort} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -452,7 +452,7 @@ public class PrimitiveObjectWithRestrictions {
 
     /**
      * Method sets attribute {@link #bShort}.<br/>
-     * 
+     *
      * @param pBShort Value to which {@link #bShort} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -464,7 +464,7 @@ public class PrimitiveObjectWithRestrictions {
 
     /**
      * Method sets attribute {@link #aInteger}.<br/>
-     * 
+     *
      * @param pAInteger Value to which {@link #aInteger} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -476,7 +476,7 @@ public class PrimitiveObjectWithRestrictions {
 
     /**
      * Method sets attribute {@link #bInteger}.<br/>
-     * 
+     *
      * @param pBInteger Value to which {@link #bInteger} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -488,7 +488,7 @@ public class PrimitiveObjectWithRestrictions {
 
     /**
      * Method sets attribute {@link #cInteger}.<br/>
-     * 
+     *
      * @param pCInteger Value to which {@link #cInteger} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -500,7 +500,7 @@ public class PrimitiveObjectWithRestrictions {
 
     /**
      * Method sets attribute {@link #aLong}.<br/>
-     * 
+     *
      * @param pALong Value to which {@link #aLong} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -512,7 +512,7 @@ public class PrimitiveObjectWithRestrictions {
 
     /**
      * Method sets attribute {@link #bLong}.<br/>
-     * 
+     *
      * @param pBLong Value to which {@link #bLong} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -524,7 +524,7 @@ public class PrimitiveObjectWithRestrictions {
 
     /**
      * Method sets attribute {@link #aBigInteger}.<br/>
-     * 
+     *
      * @param pABigInteger Value to which {@link #aBigInteger} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -536,7 +536,7 @@ public class PrimitiveObjectWithRestrictions {
 
     /**
      * Method sets attribute {@link #aCharacter}.<br/>
-     * 
+     *
      * @param pACharacter Value to which {@link #aCharacter} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -548,7 +548,7 @@ public class PrimitiveObjectWithRestrictions {
 
     /**
      * Method sets attribute {@link #bCharacter}.<br/>
-     * 
+     *
      * @param pBCharacter Value to which {@link #bCharacter} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -560,7 +560,7 @@ public class PrimitiveObjectWithRestrictions {
 
     /**
      * Method sets attribute {@link #aFloat}.<br/>
-     * 
+     *
      * @param pAFloat Value to which {@link #aFloat} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -572,7 +572,7 @@ public class PrimitiveObjectWithRestrictions {
 
     /**
      * Method sets attribute {@link #bFloat}.<br/>
-     * 
+     *
      * @param pBFloat Value to which {@link #bFloat} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -584,7 +584,7 @@ public class PrimitiveObjectWithRestrictions {
 
     /**
      * Method sets attribute {@link #aDouble}.<br/>
-     * 
+     *
      * @param pADouble Value to which {@link #aDouble} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -596,7 +596,7 @@ public class PrimitiveObjectWithRestrictions {
 
     /**
      * Method sets attribute {@link #bDouble}.<br/>
-     * 
+     *
      * @param pBDouble Value to which {@link #bDouble} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -608,7 +608,7 @@ public class PrimitiveObjectWithRestrictions {
 
     /**
      * Method sets attribute {@link #aBigDecimal}.<br/>
-     * 
+     *
      * @param pABigDecimal Value to which {@link #aBigDecimal} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -620,7 +620,7 @@ public class PrimitiveObjectWithRestrictions {
 
     /**
      * Method sets attribute {@link #aString}.<br/>
-     * 
+     *
      * @param pAString Value to which {@link #aString} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -632,7 +632,7 @@ public class PrimitiveObjectWithRestrictions {
 
     /**
      * Method sets attribute {@link #bString}.<br/>
-     * 
+     *
      * @param pBString Value to which {@link #bString} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -645,7 +645,7 @@ public class PrimitiveObjectWithRestrictions {
     /**
      * Method creates a new instance of class PrimitiveObjectWithRestrictions. The object will be initialized with the
      * values of the builder.
-     * 
+     *
      * @return PrimitiveObjectWithRestrictions Created object. The method never returns null.
      */
     public PrimitiveObjectWithRestrictions build( ) {
@@ -655,7 +655,7 @@ public class PrimitiveObjectWithRestrictions {
 
   /**
    * Method returns attribute {@link #aBoolean}.<br/>
-   * 
+   *
    * @return boolean Value to which {@link #aBoolean} is set.
    */
   public boolean getABoolean( ) {
@@ -664,7 +664,7 @@ public class PrimitiveObjectWithRestrictions {
 
   /**
    * Method sets attribute {@link #aBoolean}.<br/>
-   * 
+   *
    * @param pABoolean Value to which {@link #aBoolean} should be set.
    */
   public void setABoolean( boolean pABoolean ) {
@@ -674,7 +674,7 @@ public class PrimitiveObjectWithRestrictions {
 
   /**
    * Method returns attribute {@link #bBoolean}.<br/>
-   * 
+   *
    * @return {@link Boolean} Value to which {@link #bBoolean} is set.
    */
   public Boolean getBBoolean( ) {
@@ -683,7 +683,7 @@ public class PrimitiveObjectWithRestrictions {
 
   /**
    * Method sets attribute {@link #bBoolean}.<br/>
-   * 
+   *
    * @param pBBoolean Value to which {@link #bBoolean} should be set.
    */
   public void setBBoolean( Boolean pBBoolean ) {
@@ -693,7 +693,7 @@ public class PrimitiveObjectWithRestrictions {
 
   /**
    * Method returns attribute {@link #cBoolean}.<br/>
-   * 
+   *
    * @return boolean Value to which {@link #cBoolean} is set.
    */
   public boolean getCBoolean( ) {
@@ -702,7 +702,7 @@ public class PrimitiveObjectWithRestrictions {
 
   /**
    * Method sets attribute {@link #cBoolean}.<br/>
-   * 
+   *
    * @param pCBoolean Value to which {@link #cBoolean} should be set.
    */
   public void setCBoolean( boolean pCBoolean ) {
@@ -712,7 +712,7 @@ public class PrimitiveObjectWithRestrictions {
 
   /**
    * Method returns attribute {@link #aByte}.<br/>
-   * 
+   *
    * @return byte Value to which {@link #aByte} is set.
    */
   public byte getAByte( ) {
@@ -721,7 +721,7 @@ public class PrimitiveObjectWithRestrictions {
 
   /**
    * Method sets attribute {@link #aByte}.<br/>
-   * 
+   *
    * @param pAByte Value to which {@link #aByte} should be set.
    */
   public void setAByte( byte pAByte ) {
@@ -731,7 +731,7 @@ public class PrimitiveObjectWithRestrictions {
 
   /**
    * Method returns attribute {@link #bByte}.<br/>
-   * 
+   *
    * @return {@link Byte} Value to which {@link #bByte} is set.
    */
   public Byte getBByte( ) {
@@ -740,7 +740,7 @@ public class PrimitiveObjectWithRestrictions {
 
   /**
    * Method sets attribute {@link #bByte}.<br/>
-   * 
+   *
    * @param pBByte Value to which {@link #bByte} should be set.
    */
   public void setBByte( Byte pBByte ) {
@@ -750,7 +750,7 @@ public class PrimitiveObjectWithRestrictions {
 
   /**
    * Method returns attribute {@link #aShort}.<br/>
-   * 
+   *
    * @return short Value to which {@link #aShort} is set.
    */
   public short getAShort( ) {
@@ -759,7 +759,7 @@ public class PrimitiveObjectWithRestrictions {
 
   /**
    * Method sets attribute {@link #aShort}.<br/>
-   * 
+   *
    * @param pAShort Value to which {@link #aShort} should be set.
    */
   public void setAShort( short pAShort ) {
@@ -769,7 +769,7 @@ public class PrimitiveObjectWithRestrictions {
 
   /**
    * Method returns attribute {@link #bShort}.<br/>
-   * 
+   *
    * @return {@link Short} Value to which {@link #bShort} is set.
    */
   public Short getBShort( ) {
@@ -778,7 +778,7 @@ public class PrimitiveObjectWithRestrictions {
 
   /**
    * Method sets attribute {@link #bShort}.<br/>
-   * 
+   *
    * @param pBShort Value to which {@link #bShort} should be set.
    */
   public void setBShort( Short pBShort ) {
@@ -788,7 +788,7 @@ public class PrimitiveObjectWithRestrictions {
 
   /**
    * Method returns attribute {@link #aInteger}.<br/>
-   * 
+   *
    * @return int Value to which {@link #aInteger} is set.
    */
   public int getAInteger( ) {
@@ -797,7 +797,7 @@ public class PrimitiveObjectWithRestrictions {
 
   /**
    * Method sets attribute {@link #aInteger}.<br/>
-   * 
+   *
    * @param pAInteger Value to which {@link #aInteger} should be set.
    */
   public void setAInteger( int pAInteger ) {
@@ -807,7 +807,7 @@ public class PrimitiveObjectWithRestrictions {
 
   /**
    * Method returns attribute {@link #bInteger}.<br/>
-   * 
+   *
    * @return {@link Integer} Value to which {@link #bInteger} is set.
    */
   public Integer getBInteger( ) {
@@ -816,7 +816,7 @@ public class PrimitiveObjectWithRestrictions {
 
   /**
    * Method sets attribute {@link #bInteger}.<br/>
-   * 
+   *
    * @param pBInteger Value to which {@link #bInteger} should be set.
    */
   public void setBInteger( Integer pBInteger ) {
@@ -826,7 +826,7 @@ public class PrimitiveObjectWithRestrictions {
 
   /**
    * Method returns attribute {@link #cInteger}.<br/>
-   * 
+   *
    * @return {@link Integer} Value to which {@link #cInteger} is set.
    */
   public Integer getCInteger( ) {
@@ -835,7 +835,7 @@ public class PrimitiveObjectWithRestrictions {
 
   /**
    * Method sets attribute {@link #cInteger}.<br/>
-   * 
+   *
    * @param pCInteger Value to which {@link #cInteger} should be set.
    */
   public void setCInteger( Integer pCInteger ) {
@@ -845,7 +845,7 @@ public class PrimitiveObjectWithRestrictions {
 
   /**
    * Method returns attribute {@link #aLong}.<br/>
-   * 
+   *
    * @return long Value to which {@link #aLong} is set.
    */
   public long getALong( ) {
@@ -854,7 +854,7 @@ public class PrimitiveObjectWithRestrictions {
 
   /**
    * Method sets attribute {@link #aLong}.<br/>
-   * 
+   *
    * @param pALong Value to which {@link #aLong} should be set.
    */
   public void setALong( long pALong ) {
@@ -864,7 +864,7 @@ public class PrimitiveObjectWithRestrictions {
 
   /**
    * Method returns attribute {@link #bLong}.<br/>
-   * 
+   *
    * @return {@link Long} Value to which {@link #bLong} is set.
    */
   public Long getBLong( ) {
@@ -873,7 +873,7 @@ public class PrimitiveObjectWithRestrictions {
 
   /**
    * Method sets attribute {@link #bLong}.<br/>
-   * 
+   *
    * @param pBLong Value to which {@link #bLong} should be set.
    */
   public void setBLong( Long pBLong ) {
@@ -883,7 +883,7 @@ public class PrimitiveObjectWithRestrictions {
 
   /**
    * Method returns attribute {@link #aBigInteger}.<br/>
-   * 
+   *
    * @return {@link BigInteger} Value to which {@link #aBigInteger} is set.
    */
   public BigInteger getABigInteger( ) {
@@ -892,7 +892,7 @@ public class PrimitiveObjectWithRestrictions {
 
   /**
    * Method sets attribute {@link #aBigInteger}.<br/>
-   * 
+   *
    * @param pABigInteger Value to which {@link #aBigInteger} should be set.
    */
   public void setABigInteger( BigInteger pABigInteger ) {
@@ -902,7 +902,7 @@ public class PrimitiveObjectWithRestrictions {
 
   /**
    * Method returns attribute {@link #aCharacter}.<br/>
-   * 
+   *
    * @return char Value to which {@link #aCharacter} is set.
    */
   public char getACharacter( ) {
@@ -911,7 +911,7 @@ public class PrimitiveObjectWithRestrictions {
 
   /**
    * Method sets attribute {@link #aCharacter}.<br/>
-   * 
+   *
    * @param pACharacter Value to which {@link #aCharacter} should be set.
    */
   public void setACharacter( char pACharacter ) {
@@ -921,7 +921,7 @@ public class PrimitiveObjectWithRestrictions {
 
   /**
    * Method returns attribute {@link #bCharacter}.<br/>
-   * 
+   *
    * @return {@link Character} Value to which {@link #bCharacter} is set.
    */
   public Character getBCharacter( ) {
@@ -930,7 +930,7 @@ public class PrimitiveObjectWithRestrictions {
 
   /**
    * Method sets attribute {@link #bCharacter}.<br/>
-   * 
+   *
    * @param pBCharacter Value to which {@link #bCharacter} should be set.
    */
   public void setBCharacter( Character pBCharacter ) {
@@ -940,7 +940,7 @@ public class PrimitiveObjectWithRestrictions {
 
   /**
    * Method returns attribute {@link #aFloat}.<br/>
-   * 
+   *
    * @return float Value to which {@link #aFloat} is set.
    */
   public float getAFloat( ) {
@@ -949,7 +949,7 @@ public class PrimitiveObjectWithRestrictions {
 
   /**
    * Method sets attribute {@link #aFloat}.<br/>
-   * 
+   *
    * @param pAFloat Value to which {@link #aFloat} should be set.
    */
   public void setAFloat( float pAFloat ) {
@@ -959,7 +959,7 @@ public class PrimitiveObjectWithRestrictions {
 
   /**
    * Method returns attribute {@link #bFloat}.<br/>
-   * 
+   *
    * @return {@link Float} Value to which {@link #bFloat} is set.
    */
   public Float getBFloat( ) {
@@ -968,7 +968,7 @@ public class PrimitiveObjectWithRestrictions {
 
   /**
    * Method sets attribute {@link #bFloat}.<br/>
-   * 
+   *
    * @param pBFloat Value to which {@link #bFloat} should be set.
    */
   public void setBFloat( Float pBFloat ) {
@@ -978,7 +978,7 @@ public class PrimitiveObjectWithRestrictions {
 
   /**
    * Method returns attribute {@link #aDouble}.<br/>
-   * 
+   *
    * @return double Value to which {@link #aDouble} is set.
    */
   public double getADouble( ) {
@@ -987,7 +987,7 @@ public class PrimitiveObjectWithRestrictions {
 
   /**
    * Method sets attribute {@link #aDouble}.<br/>
-   * 
+   *
    * @param pADouble Value to which {@link #aDouble} should be set.
    */
   public void setADouble( double pADouble ) {
@@ -997,7 +997,7 @@ public class PrimitiveObjectWithRestrictions {
 
   /**
    * Method returns attribute {@link #bDouble}.<br/>
-   * 
+   *
    * @return {@link Double} Value to which {@link #bDouble} is set.
    */
   public Double getBDouble( ) {
@@ -1006,7 +1006,7 @@ public class PrimitiveObjectWithRestrictions {
 
   /**
    * Method sets attribute {@link #bDouble}.<br/>
-   * 
+   *
    * @param pBDouble Value to which {@link #bDouble} should be set.
    */
   public void setBDouble( Double pBDouble ) {
@@ -1016,7 +1016,7 @@ public class PrimitiveObjectWithRestrictions {
 
   /**
    * Method returns attribute {@link #aBigDecimal}.<br/>
-   * 
+   *
    * @return {@link BigDecimal} Value to which {@link #aBigDecimal} is set.
    */
   public BigDecimal getABigDecimal( ) {
@@ -1025,7 +1025,7 @@ public class PrimitiveObjectWithRestrictions {
 
   /**
    * Method sets attribute {@link #aBigDecimal}.<br/>
-   * 
+   *
    * @param pABigDecimal Value to which {@link #aBigDecimal} should be set.
    */
   public void setABigDecimal( BigDecimal pABigDecimal ) {
@@ -1035,7 +1035,7 @@ public class PrimitiveObjectWithRestrictions {
 
   /**
    * Method returns attribute {@link #aString}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #aString} is set.
    */
   public String getAString( ) {
@@ -1044,7 +1044,7 @@ public class PrimitiveObjectWithRestrictions {
 
   /**
    * Method sets attribute {@link #aString}.<br/>
-   * 
+   *
    * @param pAString Value to which {@link #aString} should be set.
    */
   public void setAString( String pAString ) {
@@ -1054,7 +1054,7 @@ public class PrimitiveObjectWithRestrictions {
 
   /**
    * Method returns attribute {@link #bString}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #bString} is set.
    */
   public String getBString( ) {
@@ -1063,7 +1063,7 @@ public class PrimitiveObjectWithRestrictions {
 
   /**
    * Method sets attribute {@link #bString}.<br/>
-   * 
+   *
    * @param pBString Value to which {@link #bString} should be set.
    */
   public void setBString( String pBString ) {
@@ -1176,7 +1176,7 @@ public class PrimitiveObjectWithRestrictions {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.spring.base;
@@ -68,7 +68,7 @@ public abstract class ResellerBase {
 
   /**
    * Initialize object using the passed builder.
-   * 
+   *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected ResellerBase( BuilderBase pBuilder ) {
@@ -127,7 +127,7 @@ public abstract class ResellerBase {
 
     /**
      * Method sets association {@link #channels}.<br/>
-     * 
+     *
      * @param pChannels Collection to which {@link #channels} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -144,7 +144,7 @@ public abstract class ResellerBase {
 
     /**
      * Method sets association {@link #products}.<br/>
-     * 
+     *
      * @param pProducts Collection to which {@link #products} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -161,7 +161,7 @@ public abstract class ResellerBase {
 
     /**
      * Method sets attribute {@link #name}.<br/>
-     * 
+     *
      * @param pName Value to which {@link #name} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -173,7 +173,7 @@ public abstract class ResellerBase {
 
     /**
      * Method sets attribute {@link #language}.<br/>
-     * 
+     *
      * @param pLanguage Value to which {@link #language} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -185,7 +185,7 @@ public abstract class ResellerBase {
 
     /**
      * Method creates a new instance of class Reseller. The object will be initialized with the values of the builder.
-     * 
+     *
      * @return Reseller Created object. The method never returns null.
      */
     public Reseller build( ) {
@@ -195,7 +195,7 @@ public abstract class ResellerBase {
 
   /**
    * Method returns association {@link #channels}.<br/>
-   * 
+   *
    * @return {@link List<Channel>} Value to which {@link #channels} is set. The method never returns null and the
    * returned collection is unmodifiable.
    */
@@ -214,7 +214,7 @@ public abstract class ResellerBase {
 
   /**
    * Method adds the passed object to {@link #channels}.
-   * 
+   *
    * @param pChannels Object that should be added to {@link #channels}. The parameter must not be null.
    */
   public void addToChannels( Channel pChannels ) {
@@ -232,7 +232,7 @@ public abstract class ResellerBase {
 
   /**
    * Method adds all passed objects to {@link #channels}.
-   * 
+   *
    * @param pChannels Collection with all objects that should be added to {@link #channels}. The parameter must not be
    * null.
    */
@@ -245,7 +245,7 @@ public abstract class ResellerBase {
 
   /**
    * Method removes the passed object from {@link #channels}.<br/>
-   * 
+   *
    * @param pChannels Object that should be removed from {@link #channels}. The parameter must not be null.
    */
   public void removeFromChannels( Channel pChannels ) {
@@ -273,7 +273,7 @@ public abstract class ResellerBase {
 
   /**
    * Method returns association {@link #products}.<br/>
-   * 
+   *
    * @return {@link Set<Product>} Value to which {@link #products} is set. The method never returns null and the
    * returned collection is unmodifiable.
    */
@@ -284,7 +284,7 @@ public abstract class ResellerBase {
 
   /**
    * Method adds the passed object to {@link #products}.
-   * 
+   *
    * @param pProducts Object that should be added to {@link #products}. The parameter must not be null.
    */
   public void addToProducts( Product pProducts ) {
@@ -299,7 +299,7 @@ public abstract class ResellerBase {
 
   /**
    * Method adds all passed objects to {@link #products}.
-   * 
+   *
    * @param pProducts Collection with all objects that should be added to {@link #products}. The parameter must not be
    * null.
    */
@@ -312,7 +312,7 @@ public abstract class ResellerBase {
 
   /**
    * Method removes the passed object from {@link #products}.<br/>
-   * 
+   *
    * @param pProducts Object that should be removed from {@link #products}. The parameter must not be null.
    */
   public void removeFromProducts( Product pProducts ) {
@@ -340,7 +340,7 @@ public abstract class ResellerBase {
 
   /**
    * Method returns attribute {@link #name}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #name} is set.
    */
   public String getName( ) {
@@ -349,7 +349,7 @@ public abstract class ResellerBase {
 
   /**
    * Method sets attribute {@link #name}.<br/>
-   * 
+   *
    * @param pName Value to which {@link #name} should be set.
    */
   public void setName( String pName ) {
@@ -359,7 +359,7 @@ public abstract class ResellerBase {
 
   /**
    * Method returns attribute {@link #language}.<br/>
-   * 
+   *
    * @return {@link Locale} Value to which {@link #language} is set.
    */
   public Locale getLanguage( ) {
@@ -368,7 +368,7 @@ public abstract class ResellerBase {
 
   /**
    * Method sets attribute {@link #language}.<br/>
-   * 
+   *
    * @param pLanguage Value to which {@link #language} should be set.
    */
   public void setLanguage( Locale pLanguage ) {
@@ -443,7 +443,7 @@ public abstract class ResellerBase {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.junit.core;
@@ -32,7 +32,7 @@ public abstract class SubclassWithoutIDnMethodBase extends IdentifiableServiceOb
 
   /**
    * Initialize object using the passed builder.
-   * 
+   *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected SubclassWithoutIDnMethodBase( BuilderBase pBuilder ) {
@@ -80,7 +80,7 @@ public abstract class SubclassWithoutIDnMethodBase extends IdentifiableServiceOb
 
     /**
      * Method sets attribute {@link #hello}.<br/>
-     * 
+     *
      * @param pHello Value to which {@link #hello} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -93,7 +93,7 @@ public abstract class SubclassWithoutIDnMethodBase extends IdentifiableServiceOb
 
     /**
      * Method sets attribute {@link #attr}.<br/>
-     * 
+     *
      * @param pAttr Value to which {@link #attr} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -106,7 +106,7 @@ public abstract class SubclassWithoutIDnMethodBase extends IdentifiableServiceOb
     /**
      * Method creates a new instance of class SubclassWithoutIDnMethod. The object will be initialized with the values
      * of the builder.
-     * 
+     *
      * @return SubclassWithoutIDnMethod Created object. The method never returns null.
      */
     public SubclassWithoutIDnMethod build( ) {
@@ -116,7 +116,7 @@ public abstract class SubclassWithoutIDnMethodBase extends IdentifiableServiceOb
     /**
      * Method creates a new validated instance of class SubclassWithoutIDnMethod. The object will be initialized with
      * the values of the builder and validated afterwards.
-     * 
+     *
      * @return SubclassWithoutIDnMethod Created and validated object. The method never returns null.
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
@@ -129,7 +129,7 @@ public abstract class SubclassWithoutIDnMethodBase extends IdentifiableServiceOb
 
   /**
    * Method returns attribute {@link #attr}.<br/>
-   * 
+   *
    * @return {@link Boolean} Value to which {@link #attr} is set.
    */
   public Boolean getAttr( ) {
@@ -138,7 +138,7 @@ public abstract class SubclassWithoutIDnMethodBase extends IdentifiableServiceOb
 
   /**
    * Method sets attribute {@link #attr}.<br/>
-   * 
+   *
    * @param pAttr Value to which {@link #attr} should be set.
    */
   public void setAttr( Boolean pAttr ) {
@@ -168,7 +168,7 @@ public abstract class SubclassWithoutIDnMethodBase extends IdentifiableServiceOb
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.spring.base.serializers;
@@ -41,7 +41,7 @@ public class BookingIDDeserializer extends JsonDeserializer<BookingID> {
 
   /**
    * Initialize object.
-   * 
+   *
    * @param pDeserializer Implementation of {@link CompositeTypeConverter} that should be used to create a BookingID
    * object from its String representation. The parameter must not be null.
    */

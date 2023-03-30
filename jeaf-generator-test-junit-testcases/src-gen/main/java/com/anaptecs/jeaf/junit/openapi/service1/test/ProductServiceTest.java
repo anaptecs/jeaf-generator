@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.junit.openapi.service1.test;
@@ -13,7 +13,7 @@ import junit.framework.TestSuite;
 public class ProductServiceTest extends ProductServiceTestBase {
   /**
    * Method creates a test suite contain all tests of this class.
-   * 
+   *
    * @return {@link TestSuite} Test suite with all tests of this class.
    */
   public static TestSuite suite( ) {
@@ -66,7 +66,7 @@ public class ProductServiceTest extends ProductServiceTestBase {
 
   /**
    * Initialize test case. Therefore the name of the test that should be executed must be provided.
-   * 
+   *
    * @param pName Name of the test method that should be executed by this test. The Parameter must not be null.
    */
   public ProductServiceTest( String pName ) {
@@ -76,7 +76,7 @@ public class ProductServiceTest extends ProductServiceTestBase {
   /**
    * Initialize test case. Therefore the name of the test that should be executed must be provided. The userId and the
    * password of a specific user can be given to this Constructor so this specific user can be logged in.
-   * 
+   *
    * @param pName Name of the test method that should be executed by this test. The Parameter must not be null.
    * @param pUserId UserId of the User who should be logged in for this Test.
    * @param pPassword Password of the User who should be logged in for this Test.
@@ -88,7 +88,7 @@ public class ProductServiceTest extends ProductServiceTestBase {
   /**
    * Method performs test case specific initialization routines. If a test case implementation requires some special
    * operations at startup this method can be overridden.
-   * 
+   *
    * @throws Exception if an error occurs during initialization.
    */
   @Override
@@ -99,7 +99,7 @@ public class ProductServiceTest extends ProductServiceTestBase {
 
   /**
    * Method test the implementation of service method deprecatedBody
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -109,7 +109,7 @@ public class ProductServiceTest extends ProductServiceTestBase {
 
   /**
    * Method test the implementation of service method deprecatedBeanParam
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -119,7 +119,7 @@ public class ProductServiceTest extends ProductServiceTestBase {
 
   /**
    * Method test the implementation of service method testPrimitiveArrayAsQueryParam
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -129,7 +129,7 @@ public class ProductServiceTest extends ProductServiceTestBase {
 
   /**
    * Method test the implementation of service method ping
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -139,7 +139,7 @@ public class ProductServiceTest extends ProductServiceTestBase {
 
   /**
    * Method test the implementation of service method deprecatedParams
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -149,7 +149,7 @@ public class ProductServiceTest extends ProductServiceTestBase {
 
   /**
    * Method test the implementation of service method getSupportedCurrenciesAsync
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -159,7 +159,7 @@ public class ProductServiceTest extends ProductServiceTestBase {
 
   /**
    * Method test the implementation of service method testTechnicalHeaderParam
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -169,7 +169,7 @@ public class ProductServiceTest extends ProductServiceTestBase {
 
   /**
    * Method test the implementation of service method testNotInlinedBeanParam
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -179,7 +179,7 @@ public class ProductServiceTest extends ProductServiceTestBase {
 
   /**
    * Method test the implementation of service method testMultivaluedHeader
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -189,7 +189,7 @@ public class ProductServiceTest extends ProductServiceTestBase {
 
   /**
    * Method test the implementation of service method deprectedComplexRequestBody
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -199,7 +199,7 @@ public class ProductServiceTest extends ProductServiceTestBase {
 
   /**
    * Method test the implementation of service method testPrimitiveArray
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -209,7 +209,7 @@ public class ProductServiceTest extends ProductServiceTestBase {
 
   /**
    * Method test the implementation of service method testChildBeanParameter
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -219,7 +219,7 @@ public class ProductServiceTest extends ProductServiceTestBase {
 
   /**
    * Method test the implementation of service method createChannelCode
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -229,7 +229,7 @@ public class ProductServiceTest extends ProductServiceTestBase {
 
   /**
    * Method test the implementation of service method getSupportedCurrencies
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -239,7 +239,7 @@ public class ProductServiceTest extends ProductServiceTestBase {
 
   /**
    * Method test the implementation of service method testSpecialHeaderParams
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -249,7 +249,7 @@ public class ProductServiceTest extends ProductServiceTestBase {
 
   /**
    * Method test the implementation of service method getProducts
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -259,7 +259,7 @@ public class ProductServiceTest extends ProductServiceTestBase {
 
   /**
    * Method test the implementation of service method deprecatedContext
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -269,7 +269,7 @@ public class ProductServiceTest extends ProductServiceTestBase {
 
   /**
    * Method test the implementation of service method deprecatedComplexReturn
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -279,7 +279,7 @@ public class ProductServiceTest extends ProductServiceTestBase {
 
   /**
    * Method test the implementation of service method deprecatedOperation
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -289,7 +289,7 @@ public class ProductServiceTest extends ProductServiceTestBase {
 
   /**
    * Method test the implementation of service method testExternalBeanParameterType
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -299,7 +299,7 @@ public class ProductServiceTest extends ProductServiceTestBase {
 
   /**
    * Method test the implementation of service method getProduct
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -309,7 +309,7 @@ public class ProductServiceTest extends ProductServiceTestBase {
 
   /**
    * Method test the implementation of service method testDateQueryParamsBean
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -319,7 +319,7 @@ public class ProductServiceTest extends ProductServiceTestBase {
 
   /**
    * Method test the implementation of service method loadSpecificThings
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -329,7 +329,7 @@ public class ProductServiceTest extends ProductServiceTestBase {
 
   /**
    * Method test the implementation of service method testMultivaluedQueryParams
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -339,7 +339,7 @@ public class ProductServiceTest extends ProductServiceTestBase {
 
   /**
    * Method test the implementation of service method isCurrencySupported
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -349,7 +349,7 @@ public class ProductServiceTest extends ProductServiceTestBase {
 
   /**
    * Method test the implementation of service method testTechnicalHeaderBean
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -359,7 +359,7 @@ public class ProductServiceTest extends ProductServiceTestBase {
 
   /**
    * Method test the implementation of service method createProduct
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -369,7 +369,7 @@ public class ProductServiceTest extends ProductServiceTestBase {
 
   /**
    * Method test the implementation of service method createChannelCodeFromObject
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -379,7 +379,7 @@ public class ProductServiceTest extends ProductServiceTestBase {
 
   /**
    * Method test the implementation of service method testCodeTypeUsage
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -389,7 +389,7 @@ public class ProductServiceTest extends ProductServiceTestBase {
 
   /**
    * Method test the implementation of service method testDateQueryParams
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -399,7 +399,7 @@ public class ProductServiceTest extends ProductServiceTestBase {
 
   /**
    * Method test the implementation of service method testOptionalQueryParams
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -409,7 +409,7 @@ public class ProductServiceTest extends ProductServiceTestBase {
 
   /**
    * Method test the implementation of service method testMulitValuedBeanParams
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -419,7 +419,7 @@ public class ProductServiceTest extends ProductServiceTestBase {
 
   /**
    * Method test the implementation of service method getDefaultChannel
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -429,7 +429,7 @@ public class ProductServiceTest extends ProductServiceTestBase {
 
   /**
    * Method test the implementation of service method noReturnType
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -439,7 +439,7 @@ public class ProductServiceTest extends ProductServiceTestBase {
 
   /**
    * Method test the implementation of service method addCurrencies
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -449,7 +449,7 @@ public class ProductServiceTest extends ProductServiceTestBase {
 
   /**
    * Method test the implementation of service method getSortiment
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -459,7 +459,7 @@ public class ProductServiceTest extends ProductServiceTestBase {
 
   /**
    * Method test the implementation of service method checkIBAN
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -469,7 +469,7 @@ public class ProductServiceTest extends ProductServiceTestBase {
 
   /**
    * Method test the implementation of service method testLocalBeanParamType
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -479,7 +479,7 @@ public class ProductServiceTest extends ProductServiceTestBase {
 
   /**
    * Method test the implementation of service method getChannels
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override
@@ -489,7 +489,7 @@ public class ProductServiceTest extends ProductServiceTestBase {
 
   /**
    * Method test the implementation of service method deleteSomething
-   * 
+   *
    * @throws Exception if a test fails.
    */
   @Override

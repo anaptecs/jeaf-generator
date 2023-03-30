@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.junit.core.mapper;
@@ -35,7 +35,7 @@ public class POJOWithIDToClassAConverter implements ObjectMapper<POJOWithID, Cla
 
   /**
    * Method returns an instance of this object mapper.
-   * 
+   *
    * @return {@link ObjectMapper} Instance an object mapper that is capable to map between POJOWithID and ClassA. The
    * method never returns null.
    */
@@ -46,7 +46,7 @@ public class POJOWithIDToClassAConverter implements ObjectMapper<POJOWithID, Cla
   /**
    * Method creates a new ClassA object from the passed POJOWithID object and applies the defined mappings of type
    * {@link MappingType#CREATE} from the UML model.
-   * 
+   *
    * @param pSource POJOWithID object that should be used to create a new ClassA object. The parameter must not be null.
    * @return {@link ClassA} Created ClassA object. The method never returns null.
    */
@@ -64,7 +64,7 @@ public class POJOWithIDToClassAConverter implements ObjectMapper<POJOWithID, Cla
   /**
    * Method creates new ClassA objects based on the passed POJOWithID objects. For every POJOWithID object a new ClassA
    * object will be returned. The mappings for case {@link MappingType#CREATE} will be applied.
-   * 
+   *
    * @param pSourceObjects All POJOWithID objects that should be used to create ClassA objects. The parameter must not
    * be null.
    * @return {@link List} List with all ClassA objects that were created. The method never returns null.
@@ -84,7 +84,7 @@ public class POJOWithIDToClassAConverter implements ObjectMapper<POJOWithID, Cla
 
   /**
    * Method applies the mappings according to the passed mapping type on the passed source and target object.
-   * 
+   *
    * @param pSource Source object which should be used. The parameter must not be null. The effective type and direction
    * of the object mapping depends on parameter <code>pMappingType</code>.
    * @param pTarget Target object which should be used. The parameter must not be null. The effective type and direction
@@ -122,7 +122,7 @@ public class POJOWithIDToClassAConverter implements ObjectMapper<POJOWithID, Cla
    * Method applies the mappings according to the passed mapping type on the passed source and target objects. The
    * entries in the list of source and target objects are matched according to their index. This also means that both
    * list must have the same amount of entries.
-   * 
+   *
    * @param pSources Source objects which should be used. The parameter must not be null. The effective type and
    * direction of the object mapping depends on parameter <code>pMappingType</code>.
    * @param pTargets Target objects which should be used. The parameter must not be null. The effective type and
@@ -146,7 +146,7 @@ public class POJOWithIDToClassAConverter implements ObjectMapper<POJOWithID, Cla
   /**
    * Method creates a new POJOWithID object and applies the defined mappings of type {@link MappingType#READ} from the
    * UML model.
-   * 
+   *
    * @param pTarget ClassA object that should be used to create a new POJOWithID object. The parameter must not be null.
    * @return {@link POJOWithID} Created POJOWithID object. The method never returns null.
    */
@@ -165,7 +165,7 @@ public class POJOWithIDToClassAConverter implements ObjectMapper<POJOWithID, Cla
   /**
    * Method creates new POJOWithID objects based on the passed ClassA objects. For every ClassA object a new POJOWithID
    * object will be returned. The mappings for case {@link MappingType#READ} will be applied.
-   * 
+   *
    * @param pTargetObjects All target objects that should be used to create source objects. The parameter must not be
    * null.
    * @return {@link List} List with all source objects that were created. The method never returns null.
@@ -184,7 +184,7 @@ public class POJOWithIDToClassAConverter implements ObjectMapper<POJOWithID, Cla
 
   /**
    * Method maps all attributes from POJOWithID to ClassA. Mappings are applied only for case {@link MappingType#READ}.
-   * 
+   *
    * @param pSource Source object for the mapping. The parameter must not be null.
    * @param pTarget Target object for the mapping. The parameter must not be null.
    */
@@ -195,7 +195,7 @@ public class POJOWithIDToClassAConverter implements ObjectMapper<POJOWithID, Cla
   /**
    * Method maps all attributes from POJOWithID to ClassA. Mappings are applied only for case
    * {@link MappingType#UPDATE}.
-   * 
+   *
    * @param pSource Source object for the mapping. The parameter must not be null.
    * @param pTarget Target object for the mapping. The parameter must not be null.
    */
@@ -206,7 +206,7 @@ public class POJOWithIDToClassAConverter implements ObjectMapper<POJOWithID, Cla
 
   /**
    * Method maps all attributes from ClassA to POJOWithID. Mappings are applied only for case {@link MappingType#READ}.
-   * 
+   *
    * @param pSource Source object for the mapping. The parameter must not be null.
    * @param pTarget Target object for the mapping. The parameter must not be null.
    */

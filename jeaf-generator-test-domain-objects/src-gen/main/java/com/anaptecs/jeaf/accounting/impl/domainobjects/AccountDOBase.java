@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.accounting.impl.domainobjects;
@@ -48,7 +48,7 @@ public abstract class AccountDOBase extends DomainObject {
 
   /**
    * Initialize object. Therefore its domain object id has to be passed.
-   * 
+   *
    * @param pDomainObjectID Id of this domain object. The parameter must not be null.
    */
   public AccountDOBase( DomainObjectID pDomainObjectID ) {
@@ -57,7 +57,7 @@ public abstract class AccountDOBase extends DomainObject {
 
   /**
    * Method returns attribute {@link #number}.<br/>
-   * 
+   *
    * @return {@link Long} Value to which {@link #number} is set.
    */
   public Long getNumber( ) {
@@ -66,7 +66,7 @@ public abstract class AccountDOBase extends DomainObject {
 
   /**
    * Method sets attribute {@link #number}.<br/>
-   * 
+   *
    * @param pNumber Value to which {@link #number} should be set.
    */
   public void setNumber( Long pNumber ) {
@@ -76,7 +76,7 @@ public abstract class AccountDOBase extends DomainObject {
 
   /**
    * Method returns attribute {@link #interestRate}.<br/>
-   * 
+   *
    * @return {@link Float} Value to which {@link #interestRate} is set.
    */
   public Float getInterestRate( ) {
@@ -85,7 +85,7 @@ public abstract class AccountDOBase extends DomainObject {
 
   /**
    * Method sets attribute {@link #interestRate}.<br/>
-   * 
+   *
    * @param pInterestRate Value to which {@link #interestRate} should be set.
    */
   public void setInterestRate( Float pInterestRate ) {
@@ -95,7 +95,7 @@ public abstract class AccountDOBase extends DomainObject {
 
   /**
    * Method returns attribute {@link #balance}.<br/>
-   * 
+   *
    * @return {@link BigDecimal} Value to which {@link #balance} is set.
    */
   public BigDecimal getBalance( ) {
@@ -104,7 +104,7 @@ public abstract class AccountDOBase extends DomainObject {
 
   /**
    * Method sets attribute {@link #balance}.<br/>
-   * 
+   *
    * @param pBalance Value to which {@link #balance} should be set.
    */
   public void setBalance( BigDecimal pBalance ) {
@@ -147,7 +147,7 @@ public abstract class AccountDOBase extends DomainObject {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

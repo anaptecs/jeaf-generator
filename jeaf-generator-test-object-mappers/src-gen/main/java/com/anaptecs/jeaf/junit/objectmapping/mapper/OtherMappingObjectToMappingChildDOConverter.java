@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.junit.objectmapping.mapper;
@@ -36,7 +36,7 @@ public class OtherMappingObjectToMappingChildDOConverter implements ObjectMapper
 
   /**
    * Method returns an instance of this object mapper.
-   * 
+   *
    * @return {@link ObjectMapper} Instance an object mapper that is capable to map between OtherMappingObject and
    * MappingChildDO. The method never returns null.
    */
@@ -47,7 +47,7 @@ public class OtherMappingObjectToMappingChildDOConverter implements ObjectMapper
   /**
    * Method creates a new MappingChildDO object from the passed OtherMappingObject object and applies the defined
    * mappings of type {@link MappingType#CREATE} from the UML model.
-   * 
+   *
    * @param pSource OtherMappingObject object that should be used to create a new MappingChildDO object. The parameter
    * must not be null.
    * @return {@link MappingChildDO} Created MappingChildDO object. The method never returns null.
@@ -68,7 +68,7 @@ public class OtherMappingObjectToMappingChildDOConverter implements ObjectMapper
    * Method creates new MappingChildDO objects based on the passed OtherMappingObject objects. For every
    * OtherMappingObject object a new MappingChildDO object will be returned. The mappings for case
    * {@link MappingType#CREATE} will be applied.
-   * 
+   *
    * @param pSourceObjects All OtherMappingObject objects that should be used to create MappingChildDO objects. The
    * parameter must not be null.
    * @return {@link List} List with all MappingChildDO objects that were created. The method never returns null.
@@ -88,7 +88,7 @@ public class OtherMappingObjectToMappingChildDOConverter implements ObjectMapper
 
   /**
    * Method applies the mappings according to the passed mapping type on the passed source and target object.
-   * 
+   *
    * @param pSource Source object which should be used. The parameter must not be null. The effective type and direction
    * of the object mapping depends on parameter <code>pMappingType</code>.
    * @param pTarget Target object which should be used. The parameter must not be null. The effective type and direction
@@ -127,7 +127,7 @@ public class OtherMappingObjectToMappingChildDOConverter implements ObjectMapper
    * Method applies the mappings according to the passed mapping type on the passed source and target objects. The
    * entries in the list of source and target objects are matched according to their index. This also means that both
    * list must have the same amount of entries.
-   * 
+   *
    * @param pSources Source objects which should be used. The parameter must not be null. The effective type and
    * direction of the object mapping depends on parameter <code>pMappingType</code>.
    * @param pTargets Target objects which should be used. The parameter must not be null. The effective type and
@@ -152,7 +152,7 @@ public class OtherMappingObjectToMappingChildDOConverter implements ObjectMapper
   /**
    * Method creates a new OtherMappingObject object and applies the defined mappings of type {@link MappingType#READ}
    * from the UML model.
-   * 
+   *
    * @param pTarget MappingChildDO object that should be used to create a new OtherMappingObject object. The parameter
    * must not be null.
    * @return {@link OtherMappingObject} Created OtherMappingObject object. The method never returns null.
@@ -172,7 +172,7 @@ public class OtherMappingObjectToMappingChildDOConverter implements ObjectMapper
    * Method creates new OtherMappingObject objects based on the passed MappingChildDO objects. For every MappingChildDO
    * object a new OtherMappingObject object will be returned. The mappings for case {@link MappingType#READ} will be
    * applied.
-   * 
+   *
    * @param pTargetObjects All target objects that should be used to create source objects. The parameter must not be
    * null.
    * @return {@link List} List with all source objects that were created. The method never returns null.
@@ -192,7 +192,7 @@ public class OtherMappingObjectToMappingChildDOConverter implements ObjectMapper
   /**
    * Method maps all attributes from OtherMappingObject to MappingChildDO. Mappings are applied only for case
    * {@link MappingType#READ}.
-   * 
+   *
    * @param pSource Source object for the mapping. The parameter must not be null.
    * @param pTarget Target object for the mapping. The parameter must not be null.
    */
@@ -203,7 +203,7 @@ public class OtherMappingObjectToMappingChildDOConverter implements ObjectMapper
   /**
    * Method maps all attributes from OtherMappingObject to MappingChildDO. Mappings are applied only for case
    * {@link MappingType#UPDATE}.
-   * 
+   *
    * @param pSource Source object for the mapping. The parameter must not be null.
    * @param pTarget Target object for the mapping. The parameter must not be null.
    */
@@ -215,7 +215,7 @@ public class OtherMappingObjectToMappingChildDOConverter implements ObjectMapper
   /**
    * Method maps all attributes from MappingChildDO to OtherMappingObject. Mappings are applied only for case
    * {@link MappingType#READ}.
-   * 
+   *
    * @param pSource Source object for the mapping. The parameter must not be null.
    * @param pTarget Target object for the mapping. The parameter must not be null.
    */

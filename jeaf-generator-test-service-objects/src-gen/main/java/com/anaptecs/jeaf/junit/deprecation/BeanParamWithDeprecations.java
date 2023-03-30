@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.junit.deprecation;
@@ -46,7 +46,7 @@ public class BeanParamWithDeprecations implements ServiceObject {
 
   /**
    * Initialize object using the passed builder.
-   * 
+   *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected BeanParamWithDeprecations( Builder pBuilder ) {
@@ -59,7 +59,7 @@ public class BeanParamWithDeprecations implements ServiceObject {
 
   /**
    * Method returns a new builder.
-   * 
+   *
    * @return {@link Builder} New builder that can be used to create new BeanParamWithDeprecations objects.
    */
   public static Builder builder( ) {
@@ -68,7 +68,7 @@ public class BeanParamWithDeprecations implements ServiceObject {
 
   /**
    * Method creates a new builder and initialize it with the data from the passed object.
-   * 
+   *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new BeanParamWithDeprecations objects. The method
    * never returns null.
@@ -110,7 +110,7 @@ public class BeanParamWithDeprecations implements ServiceObject {
 
     /**
      * Method sets attribute {@link #header1}.<br/>
-     * 
+     *
      * @param pHeader1 Value to which {@link #header1} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -122,7 +122,7 @@ public class BeanParamWithDeprecations implements ServiceObject {
 
     /**
      * Method sets attribute {@link #deprecatedHeader}.<br/>
-     * 
+     *
      * @param pDeprecatedHeader Value to which {@link #deprecatedHeader} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      * @deprecated this header param is no longer supported. Please use "xxx" instead. (<b>since:</b> 1.2.3, <b>removed
@@ -138,7 +138,7 @@ public class BeanParamWithDeprecations implements ServiceObject {
     /**
      * Method creates a new instance of class BeanParamWithDeprecations. The object will be initialized with the values
      * of the builder.
-     * 
+     *
      * @return BeanParamWithDeprecations Created object. The method never returns null.
      */
     public BeanParamWithDeprecations build( ) {
@@ -148,7 +148,7 @@ public class BeanParamWithDeprecations implements ServiceObject {
     /**
      * Method creates a new validated instance of class BeanParamWithDeprecations. The object will be initialized with
      * the values of the builder and validated afterwards.
-     * 
+     *
      * @return BeanParamWithDeprecations Created and validated object. The method never returns null.
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
@@ -161,7 +161,7 @@ public class BeanParamWithDeprecations implements ServiceObject {
 
   /**
    * Method returns attribute {@link #header1}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #header1} is set.
    */
   public String getHeader1( ) {
@@ -170,7 +170,7 @@ public class BeanParamWithDeprecations implements ServiceObject {
 
   /**
    * Method sets attribute {@link #header1}.<br/>
-   * 
+   *
    * @param pHeader1 Value to which {@link #header1} should be set.
    */
   public void setHeader1( String pHeader1 ) {
@@ -180,7 +180,7 @@ public class BeanParamWithDeprecations implements ServiceObject {
 
   /**
    * Method returns attribute {@link #deprecatedHeader}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #deprecatedHeader} is set.
    * @deprecated this header param is no longer supported. Please use "xxx" instead. (<b>since:</b> 1.2.3, <b>removed
    * with:</b> PI.2.3)
@@ -192,7 +192,7 @@ public class BeanParamWithDeprecations implements ServiceObject {
 
   /**
    * Method sets attribute {@link #deprecatedHeader}.<br/>
-   * 
+   *
    * @param pDeprecatedHeader Value to which {@link #deprecatedHeader} should be set.
    * @deprecated this header param is no longer supported. Please use "xxx" instead. (<b>since:</b> 1.2.3, <b>removed
    * with:</b> PI.2.3)
@@ -228,7 +228,7 @@ public class BeanParamWithDeprecations implements ServiceObject {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

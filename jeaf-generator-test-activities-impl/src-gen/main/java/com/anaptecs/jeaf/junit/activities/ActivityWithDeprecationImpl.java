@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.junit.activities;
@@ -9,7 +9,7 @@ import com.anaptecs.jeaf.core.annotations.JEAFActivityImpl;
 
 /**
  * Implementation of activity ActivityWithDeprecation.
- * 
+ *
  */
 @JEAFActivityImpl(activityInterface = ActivityWithDeprecation.class)
 public class ActivityWithDeprecationImpl implements ActivityWithDeprecation {
@@ -20,8 +20,8 @@ public class ActivityWithDeprecationImpl implements ActivityWithDeprecation {
   }
 
   /**
-   * 
-   * 
+   *
+   *
    * @param pParam1
    * @param pParam2
    * @return String

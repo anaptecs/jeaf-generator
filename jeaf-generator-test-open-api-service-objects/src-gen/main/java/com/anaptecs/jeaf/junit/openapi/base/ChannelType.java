@@ -18,7 +18,7 @@ public enum ChannelType {
 
   /**
    * Method returns attribute {@link #code}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #code} is set.
    */
   public String getCode( ) {

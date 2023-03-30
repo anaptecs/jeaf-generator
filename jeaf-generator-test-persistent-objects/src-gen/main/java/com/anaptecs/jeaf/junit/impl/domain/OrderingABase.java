@@ -44,7 +44,7 @@ public abstract class OrderingABase extends PersistentObject {
 
   /**
    * Method returns all instance of this class including potential subclasses.
-   * 
+   *
    * @return {@link List} List with all objects of this class. The method never returns null.
    */
   public static List<OrderingA> findAllOrderingAs( ) {
@@ -53,7 +53,7 @@ public abstract class OrderingABase extends PersistentObject {
 
   /**
    * Method returns association {@link #orderedUnique}.<br/>
-   * 
+   *
    * @return {@link SortedSet<OrderingB>} Value to which {@link #orderedUnique} is set. The method never returns null
    * and the returned collection is unmodifiable.
    */
@@ -64,7 +64,7 @@ public abstract class OrderingABase extends PersistentObject {
 
   /**
    * Method adds the passed object to {@link #orderedUnique}.
-   * 
+   *
    * @param pOrderedUnique Object that should be added to {@link #orderedUnique}. The parameter must not be null.
    */
   public void addToOrderedUnique( OrderingB pOrderedUnique ) {
@@ -84,7 +84,7 @@ public abstract class OrderingABase extends PersistentObject {
 
   /**
    * Method adds all passed objects to {@link #orderedUnique}.
-   * 
+   *
    * @param pOrderedUnique Collection with all objects that should be added to {@link #orderedUnique}. The parameter
    * must not be null.
    */
@@ -99,7 +99,7 @@ public abstract class OrderingABase extends PersistentObject {
 
   /**
    * Method removes the passed object from {@link #orderedUnique}.<br/>
-   * 
+   *
    * @param pOrderedUnique Object that should be removed from {@link #orderedUnique}. The parameter must not be null.
    */
   public void removeFromOrderedUnique( OrderingB pOrderedUnique ) {
@@ -129,7 +129,7 @@ public abstract class OrderingABase extends PersistentObject {
 
   /**
    * Method returns association {@link #orderedNotUnique}.<br/>
-   * 
+   *
    * @return {@link List<OrderingB>} Value to which {@link #orderedNotUnique} is set. The method never returns null and
    * the returned collection is unmodifiable.
    */
@@ -140,7 +140,7 @@ public abstract class OrderingABase extends PersistentObject {
 
   /**
    * Method adds the passed object to {@link #orderedNotUnique}.
-   * 
+   *
    * @param pOrderedNotUnique Object that should be added to {@link #orderedNotUnique}. The parameter must not be null.
    */
   public void addToOrderedNotUnique( OrderingB pOrderedNotUnique ) {
@@ -160,7 +160,7 @@ public abstract class OrderingABase extends PersistentObject {
 
   /**
    * Method adds all passed objects to {@link #orderedNotUnique}.
-   * 
+   *
    * @param pOrderedNotUnique Collection with all objects that should be added to {@link #orderedNotUnique}. The
    * parameter must not be null.
    */
@@ -175,7 +175,7 @@ public abstract class OrderingABase extends PersistentObject {
 
   /**
    * Method removes the passed object from {@link #orderedNotUnique}.<br/>
-   * 
+   *
    * @param pOrderedNotUnique Object that should be removed from {@link #orderedNotUnique}. The parameter must not be
    * null.
    */
@@ -206,7 +206,7 @@ public abstract class OrderingABase extends PersistentObject {
 
   /**
    * Method returns association {@link #notOrderedUnique}.<br/>
-   * 
+   *
    * @return {@link OrderingB} Value to which {@link #notOrderedUnique} is set.
    */
   public OrderingB getNotOrderedUnique( ) {
@@ -216,7 +216,7 @@ public abstract class OrderingABase extends PersistentObject {
 
   /**
    * Method sets association {@link #notOrderedUnique}.<br/>
-   * 
+   *
    * @param pNotOrderedUnique Value to which {@link #notOrderedUnique} should be set.
    */
   public void setNotOrderedUnique( OrderingB pNotOrderedUnique ) {
@@ -247,7 +247,7 @@ public abstract class OrderingABase extends PersistentObject {
 
   /**
    * Method returns association {@link #notOrderedNotUnique}.<br/>
-   * 
+   *
    * @return {@link Collection<OrderingB>} Value to which {@link #notOrderedNotUnique} is set. The method never returns
    * null and the returned collection is unmodifiable.
    */
@@ -258,7 +258,7 @@ public abstract class OrderingABase extends PersistentObject {
 
   /**
    * Method adds the passed object to {@link #notOrderedNotUnique}.
-   * 
+   *
    * @param pNotOrderedNotUnique Object that should be added to {@link #notOrderedNotUnique}. The parameter must not be
    * null.
    */
@@ -279,7 +279,7 @@ public abstract class OrderingABase extends PersistentObject {
 
   /**
    * Method adds all passed objects to {@link #notOrderedNotUnique}.
-   * 
+   *
    * @param pNotOrderedNotUnique Collection with all objects that should be added to {@link #notOrderedNotUnique}. The
    * parameter must not be null.
    */
@@ -294,7 +294,7 @@ public abstract class OrderingABase extends PersistentObject {
 
   /**
    * Method removes the passed object from {@link #notOrderedNotUnique}.<br/>
-   * 
+   *
    * @param pNotOrderedNotUnique Object that should be removed from {@link #notOrderedNotUnique}. The parameter must not
    * be null.
    */
@@ -325,7 +325,7 @@ public abstract class OrderingABase extends PersistentObject {
 
   /**
    * Method returns the class id of this business object class.
-   * 
+   *
    * @return {@link ClassID} Class ID of this business object. The method never returns null.
    */
   public ClassID getClassID( ) {

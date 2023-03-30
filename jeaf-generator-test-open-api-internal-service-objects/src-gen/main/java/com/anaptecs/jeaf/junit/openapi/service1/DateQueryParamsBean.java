@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2021. All rights reserved.
  */
 package com.anaptecs.jeaf.junit.openapi.service1;
@@ -80,7 +80,7 @@ public class DateQueryParamsBean implements ServiceObject {
 
   /**
    * Initialize object using the passed builder.
-   * 
+   *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected DateQueryParamsBean( Builder pBuilder ) {
@@ -101,7 +101,7 @@ public class DateQueryParamsBean implements ServiceObject {
 
   /**
    * Method returns a new builder.
-   * 
+   *
    * @return {@link Builder} New builder that can be used to create new DateQueryParamsBean objects.
    */
   public static Builder builder( ) {
@@ -110,7 +110,7 @@ public class DateQueryParamsBean implements ServiceObject {
 
   /**
    * Method creates a new builder and initialize it with the data from the passed object.
-   * 
+   *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new DateQueryParamsBean objects. The method never
    * returns null.
@@ -191,7 +191,7 @@ public class DateQueryParamsBean implements ServiceObject {
 
     /**
      * Method sets attribute {@link #offsetDateTime}.<br/>
-     * 
+     *
      * @param pOffsetDateTime Value to which {@link #offsetDateTime} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -203,7 +203,7 @@ public class DateQueryParamsBean implements ServiceObject {
 
     /**
      * Method sets attribute {@link #offsetTime}.<br/>
-     * 
+     *
      * @param pOffsetTime Value to which {@link #offsetTime} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -215,7 +215,7 @@ public class DateQueryParamsBean implements ServiceObject {
 
     /**
      * Method sets attribute {@link #localDateTime}.<br/>
-     * 
+     *
      * @param pLocalDateTime Value to which {@link #localDateTime} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -227,7 +227,7 @@ public class DateQueryParamsBean implements ServiceObject {
 
     /**
      * Method sets attribute {@link #localTime}.<br/>
-     * 
+     *
      * @param pLocalTime Value to which {@link #localTime} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -239,7 +239,7 @@ public class DateQueryParamsBean implements ServiceObject {
 
     /**
      * Method sets attribute {@link #localDate}.<br/>
-     * 
+     *
      * @param pLocalDate Value to which {@link #localDate} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -251,7 +251,7 @@ public class DateQueryParamsBean implements ServiceObject {
 
     /**
      * Method sets attribute {@link #utilDate}.<br/>
-     * 
+     *
      * @param pUtilDate Value to which {@link #utilDate} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -263,7 +263,7 @@ public class DateQueryParamsBean implements ServiceObject {
 
     /**
      * Method sets attribute {@link #calendar}.<br/>
-     * 
+     *
      * @param pCalendar Value to which {@link #calendar} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -275,7 +275,7 @@ public class DateQueryParamsBean implements ServiceObject {
 
     /**
      * Method sets attribute {@link #sqlTimestamp}.<br/>
-     * 
+     *
      * @param pSqlTimestamp Value to which {@link #sqlTimestamp} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -287,7 +287,7 @@ public class DateQueryParamsBean implements ServiceObject {
 
     /**
      * Method sets attribute {@link #sqlTime}.<br/>
-     * 
+     *
      * @param pSqlTime Value to which {@link #sqlTime} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -299,7 +299,7 @@ public class DateQueryParamsBean implements ServiceObject {
 
     /**
      * Method sets attribute {@link #sqlDate}.<br/>
-     * 
+     *
      * @param pSqlDate Value to which {@link #sqlDate} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -312,7 +312,7 @@ public class DateQueryParamsBean implements ServiceObject {
     /**
      * Method creates a new instance of class DateQueryParamsBean. The object will be initialized with the values of the
      * builder.
-     * 
+     *
      * @return DateQueryParamsBean Created object. The method never returns null.
      */
     public DateQueryParamsBean build( ) {
@@ -322,7 +322,7 @@ public class DateQueryParamsBean implements ServiceObject {
     /**
      * Method creates a new validated instance of class DateQueryParamsBean. The object will be initialized with the
      * values of the builder and validated afterwards.
-     * 
+     *
      * @return DateQueryParamsBean Created and validated object. The method never returns null.
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
@@ -335,7 +335,7 @@ public class DateQueryParamsBean implements ServiceObject {
 
   /**
    * Method returns attribute {@link #offsetDateTime}.<br/>
-   * 
+   *
    * @return {@link OffsetDateTime} Value to which {@link #offsetDateTime} is set.
    */
   public OffsetDateTime getOffsetDateTime( ) {
@@ -344,7 +344,7 @@ public class DateQueryParamsBean implements ServiceObject {
 
   /**
    * Method sets attribute {@link #offsetDateTime}.<br/>
-   * 
+   *
    * @param pOffsetDateTime Value to which {@link #offsetDateTime} should be set.
    */
   public void setOffsetDateTime( OffsetDateTime pOffsetDateTime ) {
@@ -354,7 +354,7 @@ public class DateQueryParamsBean implements ServiceObject {
 
   /**
    * Method returns attribute {@link #offsetTime}.<br/>
-   * 
+   *
    * @return {@link OffsetTime} Value to which {@link #offsetTime} is set.
    */
   public OffsetTime getOffsetTime( ) {
@@ -363,7 +363,7 @@ public class DateQueryParamsBean implements ServiceObject {
 
   /**
    * Method sets attribute {@link #offsetTime}.<br/>
-   * 
+   *
    * @param pOffsetTime Value to which {@link #offsetTime} should be set.
    */
   public void setOffsetTime( OffsetTime pOffsetTime ) {
@@ -373,7 +373,7 @@ public class DateQueryParamsBean implements ServiceObject {
 
   /**
    * Method returns attribute {@link #localDateTime}.<br/>
-   * 
+   *
    * @return {@link LocalDateTime} Value to which {@link #localDateTime} is set.
    */
   public LocalDateTime getLocalDateTime( ) {
@@ -382,7 +382,7 @@ public class DateQueryParamsBean implements ServiceObject {
 
   /**
    * Method sets attribute {@link #localDateTime}.<br/>
-   * 
+   *
    * @param pLocalDateTime Value to which {@link #localDateTime} should be set.
    */
   public void setLocalDateTime( LocalDateTime pLocalDateTime ) {
@@ -392,7 +392,7 @@ public class DateQueryParamsBean implements ServiceObject {
 
   /**
    * Method returns attribute {@link #localTime}.<br/>
-   * 
+   *
    * @return {@link LocalTime} Value to which {@link #localTime} is set.
    */
   public LocalTime getLocalTime( ) {
@@ -401,7 +401,7 @@ public class DateQueryParamsBean implements ServiceObject {
 
   /**
    * Method sets attribute {@link #localTime}.<br/>
-   * 
+   *
    * @param pLocalTime Value to which {@link #localTime} should be set.
    */
   public void setLocalTime( LocalTime pLocalTime ) {
@@ -411,7 +411,7 @@ public class DateQueryParamsBean implements ServiceObject {
 
   /**
    * Method returns attribute {@link #localDate}.<br/>
-   * 
+   *
    * @return {@link LocalDate} Value to which {@link #localDate} is set.
    */
   public LocalDate getLocalDate( ) {
@@ -420,7 +420,7 @@ public class DateQueryParamsBean implements ServiceObject {
 
   /**
    * Method sets attribute {@link #localDate}.<br/>
-   * 
+   *
    * @param pLocalDate Value to which {@link #localDate} should be set.
    */
   public void setLocalDate( LocalDate pLocalDate ) {
@@ -430,7 +430,7 @@ public class DateQueryParamsBean implements ServiceObject {
 
   /**
    * Method returns attribute {@link #utilDate}.<br/>
-   * 
+   *
    * @return {@link java.util.Date} Value to which {@link #utilDate} is set.
    */
   public java.util.Date getUtilDate( ) {
@@ -439,7 +439,7 @@ public class DateQueryParamsBean implements ServiceObject {
 
   /**
    * Method sets attribute {@link #utilDate}.<br/>
-   * 
+   *
    * @param pUtilDate Value to which {@link #utilDate} should be set.
    */
   public void setUtilDate( java.util.Date pUtilDate ) {
@@ -449,7 +449,7 @@ public class DateQueryParamsBean implements ServiceObject {
 
   /**
    * Method returns attribute {@link #calendar}.<br/>
-   * 
+   *
    * @return {@link Calendar} Value to which {@link #calendar} is set.
    */
   public Calendar getCalendar( ) {
@@ -458,7 +458,7 @@ public class DateQueryParamsBean implements ServiceObject {
 
   /**
    * Method sets attribute {@link #calendar}.<br/>
-   * 
+   *
    * @param pCalendar Value to which {@link #calendar} should be set.
    */
   public void setCalendar( Calendar pCalendar ) {
@@ -468,7 +468,7 @@ public class DateQueryParamsBean implements ServiceObject {
 
   /**
    * Method returns attribute {@link #sqlTimestamp}.<br/>
-   * 
+   *
    * @return {@link Timestamp} Value to which {@link #sqlTimestamp} is set.
    */
   public Timestamp getSqlTimestamp( ) {
@@ -477,7 +477,7 @@ public class DateQueryParamsBean implements ServiceObject {
 
   /**
    * Method sets attribute {@link #sqlTimestamp}.<br/>
-   * 
+   *
    * @param pSqlTimestamp Value to which {@link #sqlTimestamp} should be set.
    */
   public void setSqlTimestamp( Timestamp pSqlTimestamp ) {
@@ -487,7 +487,7 @@ public class DateQueryParamsBean implements ServiceObject {
 
   /**
    * Method returns attribute {@link #sqlTime}.<br/>
-   * 
+   *
    * @return {@link Time} Value to which {@link #sqlTime} is set.
    */
   public Time getSqlTime( ) {
@@ -496,7 +496,7 @@ public class DateQueryParamsBean implements ServiceObject {
 
   /**
    * Method sets attribute {@link #sqlTime}.<br/>
-   * 
+   *
    * @param pSqlTime Value to which {@link #sqlTime} should be set.
    */
   public void setSqlTime( Time pSqlTime ) {
@@ -506,7 +506,7 @@ public class DateQueryParamsBean implements ServiceObject {
 
   /**
    * Method returns attribute {@link #sqlDate}.<br/>
-   * 
+   *
    * @return {@link Date} Value to which {@link #sqlDate} is set.
    */
   public Date getSqlDate( ) {
@@ -515,7 +515,7 @@ public class DateQueryParamsBean implements ServiceObject {
 
   /**
    * Method sets attribute {@link #sqlDate}.<br/>
-   * 
+   *
    * @param pSqlDate Value to which {@link #sqlDate} should be set.
    */
   public void setSqlDate( Date pSqlDate ) {
@@ -580,7 +580,7 @@ public class DateQueryParamsBean implements ServiceObject {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

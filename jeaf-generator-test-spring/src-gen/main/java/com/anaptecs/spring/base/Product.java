@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.spring.base;
@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
  * Data type represents a product definition
- * 
+ *
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */
@@ -133,7 +133,7 @@ public class Product {
 
   /**
    * Initialize object using the passed builder.
-   * 
+   *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected Product( Builder pBuilder ) {
@@ -174,7 +174,7 @@ public class Product {
 
   /**
    * Method returns a new builder.
-   * 
+   *
    * @return {@link Builder} New builder that can be used to create new Product objects.
    */
   public static Builder builder( ) {
@@ -183,7 +183,7 @@ public class Product {
 
   /**
    * Method creates a new builder and initialize it with the data from the passed object.
-   * 
+   *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new Product objects. The method never returns null.
    */
@@ -255,7 +255,7 @@ public class Product {
 
     /**
      * Method returns a new builder.
-     * 
+     *
      * @return {@link Builder} New builder that can be used to create new Product objects.
      */
     public static Builder newBuilder( ) {
@@ -264,7 +264,7 @@ public class Product {
 
     /**
      * Method creates a new builder and initialize it with the data from the passed object.
-     * 
+     *
      * @param pObject Object that should be used to initialize the builder. The parameter may be null.
      * @return {@link Builder} New builder that can be used to create new Product objects. The method never returns
      * null.
@@ -275,7 +275,7 @@ public class Product {
 
     /**
      * Method sets association {@link #resellers}.<br/>
-     * 
+     *
      * @param pResellers Collection to which {@link #resellers} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -292,7 +292,7 @@ public class Product {
 
     /**
      * Method sets attribute {@link #name}.<br/>
-     * 
+     *
      * @param pName Value to which {@link #name} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -304,7 +304,7 @@ public class Product {
 
     /**
      * Method sets attribute {@link #image}.<br/>
-     * 
+     *
      * @param pImage Value to which {@link #image} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -322,7 +322,7 @@ public class Product {
 
     /**
      * Method sets attribute {@link #link}.<br/>
-     * 
+     *
      * @param pLink Value to which {@link #link} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -334,7 +334,7 @@ public class Product {
 
     /**
      * Method sets attribute {@link #productID}.<br/>
-     * 
+     *
      * @param pProductID Value to which {@link #productID} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -346,7 +346,7 @@ public class Product {
 
     /**
      * Method sets association {@link #supportedCurrencies}.<br/>
-     * 
+     *
      * @param pSupportedCurrencies Collection to which {@link #supportedCurrencies} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -363,7 +363,7 @@ public class Product {
 
     /**
      * Method sets association {@link #productCodes}.<br/>
-     * 
+     *
      * @param pProductCodes Collection to which {@link #productCodes} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -380,7 +380,7 @@ public class Product {
 
     /**
      * Method sets attribute {@link #description}.<br/>
-     * 
+     *
      * @param pDescription Value to which {@link #description} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -393,7 +393,7 @@ public class Product {
 
     /**
      * Method sets association {@link #sortiments}.<br/>
-     * 
+     *
      * @param pSortiments Collection to which {@link #sortiments} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -410,7 +410,7 @@ public class Product {
 
     /**
      * Method sets attribute {@link #uri}.<br/>
-     * 
+     *
      * @param pUri Value to which {@link #uri} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -422,7 +422,7 @@ public class Product {
 
     /**
      * Method creates a new instance of class Product. The object will be initialized with the values of the builder.
-     * 
+     *
      * @return Product Created object. The method never returns null.
      */
     public Product build( ) {
@@ -432,7 +432,7 @@ public class Product {
 
   /**
    * Method returns association {@link #resellers}.<br/>
-   * 
+   *
    * @return {@link Set<Reseller>} Value to which {@link #resellers} is set. The method never returns null and the
    * returned collection is unmodifiable.
    */
@@ -451,7 +451,7 @@ public class Product {
 
   /**
    * Method adds the passed object to {@link #resellers}.
-   * 
+   *
    * @param pResellers Object that should be added to {@link #resellers}. The parameter must not be null.
    */
   public void addToResellers( Reseller pResellers ) {
@@ -466,7 +466,7 @@ public class Product {
 
   /**
    * Method adds all passed objects to {@link #resellers}.
-   * 
+   *
    * @param pResellers Collection with all objects that should be added to {@link #resellers}. The parameter must not be
    * null.
    */
@@ -479,7 +479,7 @@ public class Product {
 
   /**
    * Method removes the passed object from {@link #resellers}.<br/>
-   * 
+   *
    * @param pResellers Object that should be removed from {@link #resellers}. The parameter must not be null.
    */
   public void removeFromResellers( Reseller pResellers ) {
@@ -507,7 +507,7 @@ public class Product {
 
   /**
    * Method returns attribute {@link #name}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #name} is set.
    */
   public String getName( ) {
@@ -516,7 +516,7 @@ public class Product {
 
   /**
    * Method sets attribute {@link #name}.<br/>
-   * 
+   *
    * @param pName Value to which {@link #name} should be set.
    */
   public void setName( String pName ) {
@@ -527,7 +527,7 @@ public class Product {
   /**
    * Method returns attribute {@link #image}.<br/>
    * Image describing the product.
-   * 
+   *
    * @return byte Value to which {@link #image} is set.
    */
   public byte[] getImage( ) {
@@ -545,7 +545,7 @@ public class Product {
   /**
    * Method sets attribute {@link #image}.<br/>
    * Image describing the product.
-   * 
+   *
    * @param pImage Value to which {@link #image} should be set.
    */
   public void setImage( byte[] pImage ) {
@@ -561,7 +561,7 @@ public class Product {
 
   /**
    * Method returns attribute {@link #link}.<br/>
-   * 
+   *
    * @return {@link URL} Value to which {@link #link} is set.
    */
   public URL getLink( ) {
@@ -570,7 +570,7 @@ public class Product {
 
   /**
    * Method sets attribute {@link #link}.<br/>
-   * 
+   *
    * @param pLink Value to which {@link #link} should be set.
    */
   public void setLink( URL pLink ) {
@@ -580,7 +580,7 @@ public class Product {
 
   /**
    * Method returns attribute {@link #productID}.<br/>
-   * 
+   *
    * @return {@link UUID} Value to which {@link #productID} is set.
    */
   public UUID getProductID( ) {
@@ -589,7 +589,7 @@ public class Product {
 
   /**
    * Method returns association {@link #supportedCurrencies}.<br/>
-   * 
+   *
    * @return {@link Set<CurrencyCode>} Value to which {@link #supportedCurrencies} is set. The method never returns null
    * and the returned collection is unmodifiable.
    */
@@ -600,7 +600,7 @@ public class Product {
 
   /**
    * Method adds the passed object to {@link #supportedCurrencies}.
-   * 
+   *
    * @param pSupportedCurrencies Object that should be added to {@link #supportedCurrencies}. The parameter must not be
    * null.
    */
@@ -611,7 +611,7 @@ public class Product {
 
   /**
    * Method adds all passed objects to {@link #supportedCurrencies}.
-   * 
+   *
    * @param pSupportedCurrencies Collection with all objects that should be added to {@link #supportedCurrencies}. The
    * parameter must not be null.
    */
@@ -624,7 +624,7 @@ public class Product {
 
   /**
    * Method removes the passed object from {@link #supportedCurrencies}.<br/>
-   * 
+   *
    * @param pSupportedCurrencies Object that should be removed from {@link #supportedCurrencies}. The parameter must not
    * be null.
    */
@@ -643,7 +643,7 @@ public class Product {
 
   /**
    * Method returns association {@link #productCodes}.<br/>
-   * 
+   *
    * @return {@link Set<ProductCode>} Value to which {@link #productCodes} is set. The method never returns null and the
    * returned collection is unmodifiable.
    */
@@ -654,7 +654,7 @@ public class Product {
 
   /**
    * Method adds the passed object to {@link #productCodes}.
-   * 
+   *
    * @param pProductCodes Object that should be added to {@link #productCodes}. The parameter must not be null.
    */
   public void addToProductCodes( ProductCode pProductCodes ) {
@@ -664,7 +664,7 @@ public class Product {
 
   /**
    * Method adds all passed objects to {@link #productCodes}.
-   * 
+   *
    * @param pProductCodes Collection with all objects that should be added to {@link #productCodes}. The parameter must
    * not be null.
    */
@@ -677,7 +677,7 @@ public class Product {
 
   /**
    * Method removes the passed object from {@link #productCodes}.<br/>
-   * 
+   *
    * @param pProductCodes Object that should be removed from {@link #productCodes}. The parameter must not be null.
    */
   public void removeFromProductCodes( ProductCode pProductCodes ) {
@@ -695,7 +695,7 @@ public class Product {
 
   /**
    * Method returns attribute {@link #description}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #description} is set.
    */
   @Deprecated
@@ -705,7 +705,7 @@ public class Product {
 
   /**
    * Method sets attribute {@link #description}.<br/>
-   * 
+   *
    * @param pDescription Value to which {@link #description} should be set.
    */
   @Deprecated
@@ -716,7 +716,7 @@ public class Product {
 
   /**
    * Method returns association {@link #sortiments}.<br/>
-   * 
+   *
    * @return {@link Set<Sortiment>} Value to which {@link #sortiments} is set. The method never returns null and the
    * returned collection is unmodifiable.
    */
@@ -727,7 +727,7 @@ public class Product {
 
   /**
    * Method adds the passed object to {@link #sortiments}.
-   * 
+   *
    * @param pSortiments Object that should be added to {@link #sortiments}. The parameter must not be null.
    */
   public void addToSortiments( Sortiment pSortiments ) {
@@ -742,7 +742,7 @@ public class Product {
 
   /**
    * Method adds all passed objects to {@link #sortiments}.
-   * 
+   *
    * @param pSortiments Collection with all objects that should be added to {@link #sortiments}. The parameter must not
    * be null.
    */
@@ -755,7 +755,7 @@ public class Product {
 
   /**
    * Method removes the passed object from {@link #sortiments}.<br/>
-   * 
+   *
    * @param pSortiments Object that should be removed from {@link #sortiments}. The parameter must not be null.
    */
   public void removeFromSortiments( Sortiment pSortiments ) {
@@ -783,7 +783,7 @@ public class Product {
 
   /**
    * Method returns attribute {@link #uri}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #uri} is set.
    */
   public String getUri( ) {
@@ -792,7 +792,7 @@ public class Product {
 
   /**
    * Method sets attribute {@link #uri}.<br/>
-   * 
+   *
    * @param pUri Value to which {@link #uri} should be set.
    */
   public void setUri( String pUri ) {
@@ -910,7 +910,7 @@ public class Product {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

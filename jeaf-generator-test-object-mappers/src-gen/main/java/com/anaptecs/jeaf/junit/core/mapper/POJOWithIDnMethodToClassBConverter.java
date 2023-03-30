@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.junit.core.mapper;
@@ -37,7 +37,7 @@ public class POJOWithIDnMethodToClassBConverter implements ObjectMapper<POJOWith
 
   /**
    * Method returns an instance of this object mapper.
-   * 
+   *
    * @return {@link ObjectMapper} Instance an object mapper that is capable to map between POJOWithIDnMethod and ClassB.
    * The method never returns null.
    */
@@ -48,7 +48,7 @@ public class POJOWithIDnMethodToClassBConverter implements ObjectMapper<POJOWith
   /**
    * Method creates a new ClassB object from the passed POJOWithIDnMethod object and applies the defined mappings of
    * type {@link MappingType#CREATE} from the UML model.
-   * 
+   *
    * @param pSource POJOWithIDnMethod object that should be used to create a new ClassB object. The parameter must not
    * be null.
    * @return {@link ClassB} Created ClassB object. The method never returns null.
@@ -67,7 +67,7 @@ public class POJOWithIDnMethodToClassBConverter implements ObjectMapper<POJOWith
   /**
    * Method creates new ClassB objects based on the passed POJOWithIDnMethod objects. For every POJOWithIDnMethod object
    * a new ClassB object will be returned. The mappings for case {@link MappingType#CREATE} will be applied.
-   * 
+   *
    * @param pSourceObjects All POJOWithIDnMethod objects that should be used to create ClassB objects. The parameter
    * must not be null.
    * @return {@link List} List with all ClassB objects that were created. The method never returns null.
@@ -87,7 +87,7 @@ public class POJOWithIDnMethodToClassBConverter implements ObjectMapper<POJOWith
 
   /**
    * Method applies the mappings according to the passed mapping type on the passed source and target object.
-   * 
+   *
    * @param pSource Source object which should be used. The parameter must not be null. The effective type and direction
    * of the object mapping depends on parameter <code>pMappingType</code>.
    * @param pTarget Target object which should be used. The parameter must not be null. The effective type and direction
@@ -125,7 +125,7 @@ public class POJOWithIDnMethodToClassBConverter implements ObjectMapper<POJOWith
    * Method applies the mappings according to the passed mapping type on the passed source and target objects. The
    * entries in the list of source and target objects are matched according to their index. This also means that both
    * list must have the same amount of entries.
-   * 
+   *
    * @param pSources Source objects which should be used. The parameter must not be null. The effective type and
    * direction of the object mapping depends on parameter <code>pMappingType</code>.
    * @param pTargets Target objects which should be used. The parameter must not be null. The effective type and
@@ -150,7 +150,7 @@ public class POJOWithIDnMethodToClassBConverter implements ObjectMapper<POJOWith
   /**
    * Method creates a new POJOWithIDnMethod object and applies the defined mappings of type {@link MappingType#READ}
    * from the UML model.
-   * 
+   *
    * @param pTarget ClassB object that should be used to create a new POJOWithIDnMethod object. The parameter must not
    * be null.
    * @return {@link POJOWithIDnMethod} Created POJOWithIDnMethod object. The method never returns null.
@@ -170,7 +170,7 @@ public class POJOWithIDnMethodToClassBConverter implements ObjectMapper<POJOWith
   /**
    * Method creates new POJOWithIDnMethod objects based on the passed ClassB objects. For every ClassB object a new
    * POJOWithIDnMethod object will be returned. The mappings for case {@link MappingType#READ} will be applied.
-   * 
+   *
    * @param pTargetObjects All target objects that should be used to create source objects. The parameter must not be
    * null.
    * @return {@link List} List with all source objects that were created. The method never returns null.
@@ -190,7 +190,7 @@ public class POJOWithIDnMethodToClassBConverter implements ObjectMapper<POJOWith
   /**
    * Method maps all attributes from POJOWithIDnMethod to ClassB. Mappings are applied only for case
    * {@link MappingType#READ}.
-   * 
+   *
    * @param pSource Source object for the mapping. The parameter must not be null.
    * @param pTarget Target object for the mapping. The parameter must not be null.
    */
@@ -204,7 +204,7 @@ public class POJOWithIDnMethodToClassBConverter implements ObjectMapper<POJOWith
   /**
    * Method maps all attributes from POJOWithIDnMethod to ClassB. Mappings are applied only for case
    * {@link MappingType#UPDATE}.
-   * 
+   *
    * @param pSource Source object for the mapping. The parameter must not be null.
    * @param pTarget Target object for the mapping. The parameter must not be null.
    */
@@ -219,7 +219,7 @@ public class POJOWithIDnMethodToClassBConverter implements ObjectMapper<POJOWith
   /**
    * Method maps all attributes from ClassB to POJOWithIDnMethod. Mappings are applied only for case
    * {@link MappingType#READ}.
-   * 
+   *
    * @param pSource Source object for the mapping. The parameter must not be null.
    * @param pTarget Target object for the mapping. The parameter must not be null.
    */

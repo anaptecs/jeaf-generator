@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.spring.base;
@@ -24,7 +24,7 @@ public class MasterDataObject extends MasterDataObjectBase {
 
   /**
    * Method returns a new builder.
-   * 
+   *
    * @return {@link Builder} New builder that can be used to create new MasterDataObject objects.
    */
   public static Builder builder( ) {
@@ -33,7 +33,7 @@ public class MasterDataObject extends MasterDataObjectBase {
 
   /**
    * Method creates a new builder and initialize it with the data from the passed object.
-   * 
+   *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new MasterDataObject objects. The method never
    * returns null.
@@ -62,7 +62,7 @@ public class MasterDataObject extends MasterDataObjectBase {
 
     /**
      * Method returns a new builder.
-     * 
+     *
      * @return {@link Builder} New builder that can be used to create new MasterDataObject objects.
      */
     public static Builder newBuilder( ) {
@@ -71,7 +71,7 @@ public class MasterDataObject extends MasterDataObjectBase {
 
     /**
      * Method creates a new builder and initialize it with the data from the passed object.
-     * 
+     *
      * @param pObject Object that should be used to initialize the builder. The parameter may be null.
      * @return {@link Builder} New builder that can be used to create new POJOWithIDnMethod objects. The method never
      * returns null.
@@ -83,7 +83,7 @@ public class MasterDataObject extends MasterDataObjectBase {
 
   /**
    * Method returns attribute {@link #derivedProperty}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #derivedProperty} is set.
    */
   public String getDerivedProperty( ) {
@@ -93,7 +93,7 @@ public class MasterDataObject extends MasterDataObjectBase {
 
   /**
    * Method returns association {@link #derivedDataUnits}.<br/>
-   * 
+   *
    * @return {@link List<DataUnit>} Value to which {@link #derivedDataUnits} is set. The method never returns null and
    * the returned collection is unmodifiable.
    */
@@ -104,7 +104,7 @@ public class MasterDataObject extends MasterDataObjectBase {
 
   /**
    * Method returns association {@link #derivedEntity}.<br/>
-   * 
+   *
    * @return {@link Entity} Value to which {@link #derivedEntity} is set.
    */
   public Entity getDerivedEntity( ) {
@@ -114,7 +114,7 @@ public class MasterDataObject extends MasterDataObjectBase {
 
   /**
    * Method returns attribute {@link #derivedArray}.<br/>
-   * 
+   *
    * @return int Value to which {@link #derivedArray} is set.
    */
   public int[] getDerivedArray( ) {
@@ -124,7 +124,7 @@ public class MasterDataObject extends MasterDataObjectBase {
 
   /**
    * Method returns attribute {@link #derivedBoolean}.<br/>
-   * 
+   *
    * @return boolean Value to which {@link #derivedBoolean} is set.
    */
   public boolean getDerivedBoolean( ) {
@@ -134,7 +134,7 @@ public class MasterDataObject extends MasterDataObjectBase {
 
   /**
    * Method returns attribute {@link #derivedInt}.<br/>
-   * 
+   *
    * @return int Value to which {@link #derivedInt} is set.
    */
   public int getDerivedInt( ) {
@@ -144,7 +144,7 @@ public class MasterDataObject extends MasterDataObjectBase {
 
   /**
    * Method returns attribute {@link #derivedString}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #derivedString} is set.
    */
   public String getDerivedString( ) {

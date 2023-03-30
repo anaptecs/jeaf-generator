@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.spring.base;
@@ -56,7 +56,7 @@ public class Booking implements Serializable {
 
   /**
    * Initialize object using the passed builder.
-   * 
+   *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected Booking( Builder pBuilder ) {
@@ -75,7 +75,7 @@ public class Booking implements Serializable {
 
   /**
    * Method returns a new builder.
-   * 
+   *
    * @return {@link Builder} New builder that can be used to create new Booking objects.
    */
   public static Builder builder( ) {
@@ -84,7 +84,7 @@ public class Booking implements Serializable {
 
   /**
    * Method creates a new builder and initialize it with the data from the passed object.
-   * 
+   *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new Booking objects. The method never returns null.
    */
@@ -132,7 +132,7 @@ public class Booking implements Serializable {
 
     /**
      * Method sets association {@link #bookingID}.<br/>
-     * 
+     *
      * @param pBookingID Value to which {@link #bookingID} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -143,7 +143,7 @@ public class Booking implements Serializable {
 
     /**
      * Method sets attribute {@link #customerName}.<br/>
-     * 
+     *
      * @param pCustomerName Value to which {@link #customerName} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -155,7 +155,7 @@ public class Booking implements Serializable {
 
     /**
      * Method sets association {@link #inventories}.<br/>
-     * 
+     *
      * @param pInventories Collection to which {@link #inventories} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -172,7 +172,7 @@ public class Booking implements Serializable {
 
     /**
      * Method sets association {@link #inventories}.<br/>
-     * 
+     *
      * @param pInventories Array with objects to which {@link #inventories} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -189,7 +189,7 @@ public class Booking implements Serializable {
 
     /**
      * Method creates a new instance of class Booking. The object will be initialized with the values of the builder.
-     * 
+     *
      * @return Booking Created object. The method never returns null.
      */
     public Booking build( ) {
@@ -199,7 +199,7 @@ public class Booking implements Serializable {
     /**
      * Method creates a new validated instance of class Booking. The object will be initialized with the values of the
      * builder and validated afterwards.
-     * 
+     *
      * @return Booking Created and validated object. The method never returns null.
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
@@ -212,7 +212,7 @@ public class Booking implements Serializable {
 
   /**
    * Method returns association {@link #bookingID}.<br/>
-   * 
+   *
    * @return {@link BookingID} Value to which {@link #bookingID} is set.
    */
   public BookingID getBookingID( ) {
@@ -221,7 +221,7 @@ public class Booking implements Serializable {
 
   /**
    * Method sets association {@link #bookingID}.<br/>
-   * 
+   *
    * @param pBookingID Value to which {@link #bookingID} should be set.
    */
   public void setBookingID( BookingID pBookingID ) {
@@ -237,7 +237,7 @@ public class Booking implements Serializable {
 
   /**
    * Method returns attribute {@link #customerName}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #customerName} is set.
    */
   public String getCustomerName( ) {
@@ -246,7 +246,7 @@ public class Booking implements Serializable {
 
   /**
    * Method sets attribute {@link #customerName}.<br/>
-   * 
+   *
    * @param pCustomerName Value to which {@link #customerName} should be set.
    */
   public void setCustomerName( String pCustomerName ) {
@@ -256,7 +256,7 @@ public class Booking implements Serializable {
 
   /**
    * Method returns association {@link #inventories}.<br/>
-   * 
+   *
    * @return {@link List<InventoryType>} Value to which {@link #inventories} is set. The method never returns null and
    * the returned collection is unmodifiable.
    */
@@ -267,7 +267,7 @@ public class Booking implements Serializable {
 
   /**
    * Method adds the passed object to {@link #inventories}.
-   * 
+   *
    * @param pInventories Object that should be added to {@link #inventories}. The parameter must not be null.
    */
   public void addToInventories( InventoryType pInventories ) {
@@ -279,7 +279,7 @@ public class Booking implements Serializable {
 
   /**
    * Method adds all passed objects to {@link #inventories}.
-   * 
+   *
    * @param pInventories Collection with all objects that should be added to {@link #inventories}. The parameter must
    * not be null.
    */
@@ -294,7 +294,7 @@ public class Booking implements Serializable {
 
   /**
    * Method removes the passed object from {@link #inventories}.<br/>
-   * 
+   *
    * @param pInventories Object that should be removed from {@link #inventories}. The parameter must not be null.
    */
   public void removeFromInventories( InventoryType pInventories ) {
@@ -333,7 +333,7 @@ public class Booking implements Serializable {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

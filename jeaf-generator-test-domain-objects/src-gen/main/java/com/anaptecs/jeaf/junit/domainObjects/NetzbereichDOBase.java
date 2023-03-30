@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.jeaf.junit.domainObjects;
@@ -32,7 +32,7 @@ public abstract class NetzbereichDOBase extends DomainObject {
 
   /**
    * Initialize object. Therefore its domain object id has to be passed.
-   * 
+   *
    * @param pDomainObjectID Id of this domain object. The parameter must not be null.
    */
   public NetzbereichDOBase( DomainObjectID pDomainObjectID ) {
@@ -42,7 +42,7 @@ public abstract class NetzbereichDOBase extends DomainObject {
 
   /**
    * Method returns association {@link #kanten}.<br/>
-   * 
+   *
    * @return {@link Set<KanteDO>} Value to which {@link #kanten} is set. The method never returns null and the returned
    * collection is unmodifiable.
    */
@@ -53,7 +53,7 @@ public abstract class NetzbereichDOBase extends DomainObject {
 
   /**
    * Method adds the passed object to {@link #kanten}.
-   * 
+   *
    * @param pKanten Object that should be added to {@link #kanten}. The parameter must not be null.
    */
   public void addToKanten( KanteDO pKanten ) {
@@ -70,7 +70,7 @@ public abstract class NetzbereichDOBase extends DomainObject {
 
   /**
    * Method adds all passed objects to {@link #kanten}.
-   * 
+   *
    * @param pKanten Collection with all objects that should be added to {@link #kanten}. The parameter must not be null.
    */
   public void addToKanten( Collection<KanteDO> pKanten ) {
@@ -84,7 +84,7 @@ public abstract class NetzbereichDOBase extends DomainObject {
 
   /**
    * Method removes the passed object from {@link #kanten}.<br/>
-   * 
+   *
    * @param pKanten Object that should be removed from {@link #kanten}. The parameter must not be null.
    */
   public void removeFromKanten( KanteDO pKanten ) {
@@ -129,7 +129,7 @@ public abstract class NetzbereichDOBase extends DomainObject {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

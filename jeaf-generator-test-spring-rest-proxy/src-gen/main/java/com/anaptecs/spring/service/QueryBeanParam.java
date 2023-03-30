@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.spring.service;
@@ -36,7 +36,7 @@ public class QueryBeanParam {
 
   /**
    * Initialize object using the passed builder.
-   * 
+   *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected QueryBeanParam( Builder pBuilder ) {
@@ -47,7 +47,7 @@ public class QueryBeanParam {
 
   /**
    * Method returns a new builder.
-   * 
+   *
    * @return {@link Builder} New builder that can be used to create new QueryBeanParam objects.
    */
   public static Builder builder( ) {
@@ -56,7 +56,7 @@ public class QueryBeanParam {
 
   /**
    * Method creates a new builder and initialize it with the data from the passed object.
-   * 
+   *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new QueryBeanParam objects. The method never returns
    * null.
@@ -96,7 +96,7 @@ public class QueryBeanParam {
 
     /**
      * Method sets attribute {@link #bookingCode}.<br/>
-     * 
+     *
      * @param pBookingCode Value to which {@link #bookingCode} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -108,7 +108,7 @@ public class QueryBeanParam {
 
     /**
      * Method sets attribute {@link #maxResults}.<br/>
-     * 
+     *
      * @param pMaxResults Value to which {@link #maxResults} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -121,7 +121,7 @@ public class QueryBeanParam {
     /**
      * Method creates a new instance of class QueryBeanParam. The object will be initialized with the values of the
      * builder.
-     * 
+     *
      * @return QueryBeanParam Created object. The method never returns null.
      */
     public QueryBeanParam build( ) {
@@ -131,7 +131,7 @@ public class QueryBeanParam {
 
   /**
    * Method returns attribute {@link #bookingCode}.<br/>
-   * 
+   *
    * @return {@link BookingCode} Value to which {@link #bookingCode} is set.
    */
   public BookingCode getBookingCode( ) {
@@ -140,7 +140,7 @@ public class QueryBeanParam {
 
   /**
    * Method sets attribute {@link #bookingCode}.<br/>
-   * 
+   *
    * @param pBookingCode Value to which {@link #bookingCode} should be set.
    */
   public void setBookingCode( BookingCode pBookingCode ) {
@@ -150,7 +150,7 @@ public class QueryBeanParam {
 
   /**
    * Method returns attribute {@link #maxResults}.<br/>
-   * 
+   *
    * @return int Value to which {@link #maxResults} is set.
    */
   public int getMaxResults( ) {
@@ -159,7 +159,7 @@ public class QueryBeanParam {
 
   /**
    * Method sets attribute {@link #maxResults}.<br/>
-   * 
+   *
    * @param pMaxResults Value to which {@link #maxResults} should be set.
    */
   public void setMaxResults( int pMaxResults ) {
@@ -192,7 +192,7 @@ public class QueryBeanParam {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override

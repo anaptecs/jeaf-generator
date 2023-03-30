@@ -1,6 +1,6 @@
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2021. All rights reserved.
  */
 package com.anaptecs.jeaf.junit.openapi.base;
@@ -46,7 +46,7 @@ public class TheReadOnlyServiceObject implements ServiceObject {
 
   /**
    * Initialize object using the passed builder.
-   * 
+   *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
   protected TheReadOnlyServiceObject( Builder pBuilder ) {
@@ -66,7 +66,7 @@ public class TheReadOnlyServiceObject implements ServiceObject {
 
   /**
    * Method returns a new builder.
-   * 
+   *
    * @return {@link Builder} New builder that can be used to create new TheReadOnlyServiceObject objects.
    */
   public static Builder builder( ) {
@@ -75,7 +75,7 @@ public class TheReadOnlyServiceObject implements ServiceObject {
 
   /**
    * Method creates a new builder and initialize it with the data from the passed object.
-   * 
+   *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new TheReadOnlyServiceObject objects. The method
    * never returns null.
@@ -127,7 +127,7 @@ public class TheReadOnlyServiceObject implements ServiceObject {
 
     /**
      * Method sets attribute {@link #name}.<br/>
-     * 
+     *
      * @param pName Value to which {@link #name} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -139,7 +139,7 @@ public class TheReadOnlyServiceObject implements ServiceObject {
 
     /**
      * Method sets attribute {@link #bits}.<br/>
-     * 
+     *
      * @param pBits Value to which {@link #bits} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -156,7 +156,7 @@ public class TheReadOnlyServiceObject implements ServiceObject {
 
     /**
      * Method sets association {@link #bookingCodes}.<br/>
-     * 
+     *
      * @param pBookingCodes Collection to which {@link #bookingCodes} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -173,7 +173,7 @@ public class TheReadOnlyServiceObject implements ServiceObject {
 
     /**
      * Method sets association {@link #inventoryType}.<br/>
-     * 
+     *
      * @param pInventoryType Value to which {@link #inventoryType} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
@@ -185,7 +185,7 @@ public class TheReadOnlyServiceObject implements ServiceObject {
     /**
      * Method creates a new instance of class TheReadOnlyServiceObject. The object will be initialized with the values
      * of the builder.
-     * 
+     *
      * @return TheReadOnlyServiceObject Created object. The method never returns null.
      */
     public TheReadOnlyServiceObject build( ) {
@@ -195,7 +195,7 @@ public class TheReadOnlyServiceObject implements ServiceObject {
     /**
      * Method creates a new validated instance of class TheReadOnlyServiceObject. The object will be initialized with
      * the values of the builder and validated afterwards.
-     * 
+     *
      * @return TheReadOnlyServiceObject Created and validated object. The method never returns null.
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
@@ -208,7 +208,7 @@ public class TheReadOnlyServiceObject implements ServiceObject {
 
   /**
    * Method returns attribute {@link #name}.<br/>
-   * 
+   *
    * @return {@link String} Value to which {@link #name} is set.
    */
   public String getName( ) {
@@ -217,7 +217,7 @@ public class TheReadOnlyServiceObject implements ServiceObject {
 
   /**
    * Method returns attribute {@link #bits}.<br/>
-   * 
+   *
    * @return boolean Value to which {@link #bits} is set.
    */
   public boolean[] getBits( ) {
@@ -233,7 +233,7 @@ public class TheReadOnlyServiceObject implements ServiceObject {
 
   /**
    * Method returns association {@link #bookingCodes}.<br/>
-   * 
+   *
    * @return {@link Set<BookingCode>} Value to which {@link #bookingCodes} is set. The method never returns null and the
    * returned collection is modifiable.
    */
@@ -244,7 +244,7 @@ public class TheReadOnlyServiceObject implements ServiceObject {
 
   /**
    * Method returns association {@link #inventoryType}.<br/>
-   * 
+   *
    * @return {@link InventoryType} Value to which {@link #inventoryType} is set.
    */
   public InventoryType getInventoryType( ) {
@@ -301,7 +301,7 @@ public class TheReadOnlyServiceObject implements ServiceObject {
   /**
    * Method creates a new String with the values of all attributes of this class. All references to other objects will
    * be ignored.
-   * 
+   *
    * @return {@link String} String representation of this object. The method never returns null.
    */
   @Override
