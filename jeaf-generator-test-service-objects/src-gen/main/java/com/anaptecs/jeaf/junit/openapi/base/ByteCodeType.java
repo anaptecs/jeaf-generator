@@ -106,7 +106,9 @@ public class ByteCodeType implements ServiceObject {
      * @return ByteCodeType Created object. The method never returns null.
      */
     public ByteCodeType build( ) {
-      return new ByteCodeType(this);
+      ByteCodeType lObject = new ByteCodeType(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**
@@ -117,9 +119,9 @@ public class ByteCodeType implements ServiceObject {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public ByteCodeType buildValidated( ) throws ConstraintViolationException {
-      ByteCodeType lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      ByteCodeType lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

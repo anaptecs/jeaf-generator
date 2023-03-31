@@ -4,7 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 
-import com.anaptecs.jeaf.rest.resource.api.ValidationExecutor;
+import com.anaptecs.jeaf.validation.api.ValidationExecutor;
 
 @Configuration
 public class ValidationExecutorConfig {
@@ -19,6 +19,10 @@ public class ValidationExecutorConfig {
 
       @Override
       public void validateRequest( Class<?> pService, Object... pRequestParameters ) {
+      }
+
+      @Override
+      public void validateObject( Object pObject ) {
       }
     };
   }

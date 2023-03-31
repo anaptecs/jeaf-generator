@@ -120,7 +120,9 @@ public class CurrencyCode implements ServiceObject {
      * @return CurrencyCode Created object. The method never returns null.
      */
     public CurrencyCode build( ) {
-      return new CurrencyCode(this);
+      CurrencyCode lObject = new CurrencyCode(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**
@@ -131,9 +133,9 @@ public class CurrencyCode implements ServiceObject {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public CurrencyCode buildValidated( ) throws ConstraintViolationException {
-      CurrencyCode lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      CurrencyCode lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

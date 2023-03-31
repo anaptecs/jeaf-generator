@@ -11,6 +11,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -139,7 +140,9 @@ public class Sortiment {
      * @return Sortiment Created object. The method never returns null.
      */
     public Sortiment build( ) {
-      return new Sortiment(this);
+      Sortiment lObject = new Sortiment(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 

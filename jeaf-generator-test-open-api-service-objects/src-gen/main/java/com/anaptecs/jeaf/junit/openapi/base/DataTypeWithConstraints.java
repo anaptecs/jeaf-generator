@@ -118,9 +118,9 @@ public class DataTypeWithConstraints implements ServiceObject {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public DataTypeWithConstraints buildValidated( ) throws ConstraintViolationException {
-      DataTypeWithConstraints lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      DataTypeWithConstraints lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

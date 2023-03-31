@@ -107,7 +107,9 @@ public class BigDecimalCode implements ServiceObject {
      * @return BigDecimalCode Created object. The method never returns null.
      */
     public BigDecimalCode build( ) {
-      return new BigDecimalCode(this);
+      BigDecimalCode lObject = new BigDecimalCode(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**
@@ -118,9 +120,9 @@ public class BigDecimalCode implements ServiceObject {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public BigDecimalCode buildValidated( ) throws ConstraintViolationException {
-      BigDecimalCode lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      BigDecimalCode lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

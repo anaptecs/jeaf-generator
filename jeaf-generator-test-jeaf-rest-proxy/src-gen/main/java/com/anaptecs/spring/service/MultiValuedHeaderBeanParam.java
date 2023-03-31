@@ -439,9 +439,9 @@ public class MultiValuedHeaderBeanParam implements Serializable {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public MultiValuedHeaderBeanParam buildValidated( ) throws ConstraintViolationException {
-      MultiValuedHeaderBeanParam lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      MultiValuedHeaderBeanParam lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

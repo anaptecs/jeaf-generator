@@ -103,7 +103,9 @@ public class LinkObject implements ServiceObject {
      * @return LinkObject Created object. The method never returns null.
      */
     public LinkObject build( ) {
-      return new LinkObject(this);
+      LinkObject lObject = new LinkObject(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**
@@ -114,9 +116,9 @@ public class LinkObject implements ServiceObject {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public LinkObject buildValidated( ) throws ConstraintViolationException {
-      LinkObject lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      LinkObject lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

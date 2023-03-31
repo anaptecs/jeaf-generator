@@ -111,7 +111,9 @@ public class ModelWrapperArrayServiceObject implements ServiceObject {
      * @return ModelWrapperArrayServiceObject Created object. The method never returns null.
      */
     public ModelWrapperArrayServiceObject build( ) {
-      return new ModelWrapperArrayServiceObject(this);
+      ModelWrapperArrayServiceObject lObject = new ModelWrapperArrayServiceObject(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**
@@ -122,9 +124,9 @@ public class ModelWrapperArrayServiceObject implements ServiceObject {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public ModelWrapperArrayServiceObject buildValidated( ) throws ConstraintViolationException {
-      ModelWrapperArrayServiceObject lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      ModelWrapperArrayServiceObject lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

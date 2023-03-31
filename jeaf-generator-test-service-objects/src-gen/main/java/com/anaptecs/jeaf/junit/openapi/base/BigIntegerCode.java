@@ -110,7 +110,9 @@ public class BigIntegerCode implements ServiceObject {
      * @return BigIntegerCode Created object. The method never returns null.
      */
     public BigIntegerCode build( ) {
-      return new BigIntegerCode(this);
+      BigIntegerCode lObject = new BigIntegerCode(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**
@@ -121,9 +123,9 @@ public class BigIntegerCode implements ServiceObject {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public BigIntegerCode buildValidated( ) throws ConstraintViolationException {
-      BigIntegerCode lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      BigIntegerCode lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

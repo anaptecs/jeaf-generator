@@ -109,7 +109,9 @@ public class ProductCode implements ServiceObject {
      * @return ProductCode Created object. The method never returns null.
      */
     public ProductCode build( ) {
-      return new ProductCode(this);
+      ProductCode lObject = new ProductCode(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**
@@ -120,9 +122,9 @@ public class ProductCode implements ServiceObject {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public ProductCode buildValidated( ) throws ConstraintViolationException {
-      ProductCode lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      ProductCode lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

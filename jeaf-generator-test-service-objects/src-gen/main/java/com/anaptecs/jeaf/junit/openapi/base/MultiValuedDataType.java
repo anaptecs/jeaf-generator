@@ -286,7 +286,9 @@ public class MultiValuedDataType implements ServiceObject {
      * @return MultiValuedDataType Created object. The method never returns null.
      */
     public MultiValuedDataType build( ) {
-      return new MultiValuedDataType(this);
+      MultiValuedDataType lObject = new MultiValuedDataType(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**
@@ -297,9 +299,9 @@ public class MultiValuedDataType implements ServiceObject {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public MultiValuedDataType buildValidated( ) throws ConstraintViolationException {
-      MultiValuedDataType lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      MultiValuedDataType lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

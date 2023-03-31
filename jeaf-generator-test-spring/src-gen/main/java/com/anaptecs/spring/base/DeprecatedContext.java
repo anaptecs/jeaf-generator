@@ -9,6 +9,8 @@ import java.util.Locale;
 
 import javax.validation.constraints.NotEmpty;
 
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+
 @Deprecated
 public class DeprecatedContext {
   /**
@@ -196,7 +198,9 @@ public class DeprecatedContext {
      * @return DeprecatedContext Created object. The method never returns null.
      */
     public DeprecatedContext build( ) {
-      return new DeprecatedContext(this);
+      DeprecatedContext lObject = new DeprecatedContext(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 

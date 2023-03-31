@@ -202,7 +202,9 @@ public class Stop implements ServiceObject {
      * @return Stop Created object. The method never returns null.
      */
     public Stop build( ) {
-      return new Stop(this);
+      Stop lObject = new Stop(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**
@@ -213,9 +215,9 @@ public class Stop implements ServiceObject {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public Stop buildValidated( ) throws ConstraintViolationException {
-      Stop lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      Stop lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

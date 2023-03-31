@@ -327,9 +327,9 @@ public class DateQueryParamsBean implements ServiceObject {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public DateQueryParamsBean buildValidated( ) throws ConstraintViolationException {
-      DateQueryParamsBean lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      DateQueryParamsBean lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

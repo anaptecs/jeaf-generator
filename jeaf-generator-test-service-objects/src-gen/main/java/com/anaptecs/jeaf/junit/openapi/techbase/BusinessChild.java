@@ -130,7 +130,9 @@ public class BusinessChild extends BusinessParent {
      * @return BusinessChild Created object. The method never returns null.
      */
     public BusinessChild build( ) {
-      return new BusinessChild(this);
+      BusinessChild lObject = new BusinessChild(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**
@@ -141,9 +143,9 @@ public class BusinessChild extends BusinessParent {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public BusinessChild buildValidated( ) throws ConstraintViolationException {
-      BusinessChild lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      BusinessChild lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

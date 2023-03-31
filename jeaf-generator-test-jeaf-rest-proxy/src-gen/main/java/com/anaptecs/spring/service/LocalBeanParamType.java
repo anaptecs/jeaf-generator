@@ -152,9 +152,9 @@ public class LocalBeanParamType implements Serializable {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public LocalBeanParamType buildValidated( ) throws ConstraintViolationException {
-      LocalBeanParamType lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      LocalBeanParamType lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

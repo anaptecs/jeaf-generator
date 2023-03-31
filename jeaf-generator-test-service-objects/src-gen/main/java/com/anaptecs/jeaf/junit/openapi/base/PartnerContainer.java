@@ -120,7 +120,9 @@ public class PartnerContainer implements ServiceObject {
      * @return PartnerContainer Created object. The method never returns null.
      */
     public PartnerContainer build( ) {
-      return new PartnerContainer(this);
+      PartnerContainer lObject = new PartnerContainer(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**
@@ -131,9 +133,9 @@ public class PartnerContainer implements ServiceObject {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public PartnerContainer buildValidated( ) throws ConstraintViolationException {
-      PartnerContainer lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      PartnerContainer lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

@@ -107,7 +107,9 @@ public class DeprecatedServiceObject implements ServiceObject {
      * @return DeprecatedServiceObject Created object. The method never returns null.
      */
     public DeprecatedServiceObject build( ) {
-      return new DeprecatedServiceObject(this);
+      DeprecatedServiceObject lObject = new DeprecatedServiceObject(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**
@@ -118,9 +120,9 @@ public class DeprecatedServiceObject implements ServiceObject {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public DeprecatedServiceObject buildValidated( ) throws ConstraintViolationException {
-      DeprecatedServiceObject lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      DeprecatedServiceObject lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

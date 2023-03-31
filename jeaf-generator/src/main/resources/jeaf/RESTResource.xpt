@@ -55,7 +55,7 @@ public class «name»Resource {
 	             * REST Controller was generated with request / response validation enabled. The actual validation will be delegated
 	             * to the implementation of this interface.
 	             */
-	            private final com.anaptecs.jeaf.rest.resource.api.ValidationExecutor validationExecutor;
+	            private final com.anaptecs.jeaf.validation.api.ValidationExecutor validationExecutor;
             «ENDIF»
         «ENDIF»
         «IF isRESTLibraryJAXRS()»
@@ -65,7 +65,7 @@ public class «name»Resource {
 	             * to the implementation of this interface.
 	             */
 	            @org.springframework.beans.factory.annotation.Autowired
-	            private com.anaptecs.jeaf.rest.resource.api.ValidationExecutor validationExecutor;
+	            private com.anaptecs.jeaf.validation.api.ValidationExecutor validationExecutor;
             «ENDIF»
         «ENDIF»
     «ENDIF»
@@ -103,7 +103,7 @@ public class «name»Resource {
 			 * @param pCompositeTypeConverter Composite type converter is used convert types from their string representation to a real object that can be processed internally.
 			 «ENDIF -»
 			 */
-			public «name»Resource( «this.fqn()» p«name» «IF this.hasCompositeDataTypes()», com.fasterxml.jackson.databind.ObjectMapper pObjectMapper«ENDIF»«IF generateRESTRequestValidation() || generateRESTResponseValidation()», com.anaptecs.jeaf.rest.resource.api.ValidationExecutor pValidationExecutor«ENDIF»«IF this.filterCustomHeaders()», com.anaptecs.jeaf.rest.resource.api.CustomHeaderFilter pCustomHeaderFilter«ENDIF») {
+			public «name»Resource( «this.fqn()» p«name» «IF this.hasCompositeDataTypes()», com.fasterxml.jackson.databind.ObjectMapper pObjectMapper«ENDIF»«IF generateRESTRequestValidation() || generateRESTResponseValidation()», com.anaptecs.jeaf.validation.api.ValidationExecutor pValidationExecutor«ENDIF»«IF this.filterCustomHeaders()», com.anaptecs.jeaf.rest.resource.api.CustomHeaderFilter pCustomHeaderFilter«ENDIF») {
 			  «name.toFirstLower()» = p«name»;
 			  «IF this.hasCompositeDataTypes()»
 			  objectMapper = pObjectMapper;

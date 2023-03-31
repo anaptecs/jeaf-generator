@@ -129,7 +129,9 @@ public class Sortiment implements ServiceObject {
      * @return Sortiment Created object. The method never returns null.
      */
     public Sortiment build( ) {
-      return new Sortiment(this);
+      Sortiment lObject = new Sortiment(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**
@@ -140,9 +142,9 @@ public class Sortiment implements ServiceObject {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public Sortiment buildValidated( ) throws ConstraintViolationException {
-      Sortiment lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      Sortiment lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

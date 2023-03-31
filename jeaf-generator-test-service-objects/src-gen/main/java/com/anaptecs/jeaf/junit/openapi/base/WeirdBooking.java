@@ -325,7 +325,9 @@ public class WeirdBooking extends WeirdParent {
      * @return WeirdBooking Created object. The method never returns null.
      */
     public WeirdBooking build( ) {
-      return new WeirdBooking(this);
+      WeirdBooking lObject = new WeirdBooking(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**
@@ -336,9 +338,9 @@ public class WeirdBooking extends WeirdParent {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public WeirdBooking buildValidated( ) throws ConstraintViolationException {
-      WeirdBooking lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      WeirdBooking lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

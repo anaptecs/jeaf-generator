@@ -137,7 +137,9 @@ public class JustAType implements ServiceObject {
      * @return JustAType Created object. The method never returns null.
      */
     public JustAType build( ) {
-      return new JustAType(this);
+      JustAType lObject = new JustAType(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**
@@ -148,9 +150,9 @@ public class JustAType implements ServiceObject {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public JustAType buildValidated( ) throws ConstraintViolationException {
-      JustAType lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      JustAType lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

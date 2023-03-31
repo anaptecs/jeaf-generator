@@ -160,7 +160,9 @@ public class DirectedEdge implements ServiceObject {
      * @return DirectedEdge Created object. The method never returns null.
      */
     public DirectedEdge build( ) {
-      return new DirectedEdge(this);
+      DirectedEdge lObject = new DirectedEdge(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**
@@ -171,9 +173,9 @@ public class DirectedEdge implements ServiceObject {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public DirectedEdge buildValidated( ) throws ConstraintViolationException {
-      DirectedEdge lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      DirectedEdge lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

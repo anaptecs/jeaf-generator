@@ -174,9 +174,9 @@ public class MoneyAmount implements Serializable {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public MoneyAmount buildValidated( ) throws ConstraintViolationException {
-      MoneyAmount lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      MoneyAmount lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

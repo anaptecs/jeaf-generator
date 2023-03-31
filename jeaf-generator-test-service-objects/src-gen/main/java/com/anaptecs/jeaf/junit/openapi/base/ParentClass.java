@@ -221,7 +221,9 @@ public class ParentClass implements ServiceObject {
      * @return ParentClass Created object. The method never returns null.
      */
     public ParentClass build( ) {
-      return new ParentClass(this);
+      ParentClass lObject = new ParentClass(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**
@@ -232,9 +234,9 @@ public class ParentClass implements ServiceObject {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public ParentClass buildValidated( ) throws ConstraintViolationException {
-      ParentClass lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      ParentClass lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

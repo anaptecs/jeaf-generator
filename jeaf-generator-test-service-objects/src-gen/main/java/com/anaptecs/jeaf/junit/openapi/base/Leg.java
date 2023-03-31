@@ -162,7 +162,9 @@ public class Leg implements ServiceObject {
      * @return Leg Created object. The method never returns null.
      */
     public Leg build( ) {
-      return new Leg(this);
+      Leg lObject = new Leg(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**
@@ -173,9 +175,9 @@ public class Leg implements ServiceObject {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public Leg buildValidated( ) throws ConstraintViolationException {
-      Leg lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      Leg lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

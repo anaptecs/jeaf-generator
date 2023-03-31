@@ -109,7 +109,9 @@ public class BookingCode implements ServiceObject {
      * @return BookingCode Created object. The method never returns null.
      */
     public BookingCode build( ) {
-      return new BookingCode(this);
+      BookingCode lObject = new BookingCode(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**
@@ -120,9 +122,9 @@ public class BookingCode implements ServiceObject {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public BookingCode buildValidated( ) throws ConstraintViolationException {
-      BookingCode lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      BookingCode lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

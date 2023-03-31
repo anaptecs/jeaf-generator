@@ -364,9 +364,9 @@ public class DateHeaderParamsBean implements Serializable {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public DateHeaderParamsBean buildValidated( ) throws ConstraintViolationException {
-      DateHeaderParamsBean lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      DateHeaderParamsBean lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

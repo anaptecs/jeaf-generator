@@ -106,7 +106,9 @@ public class BooleanCodeType implements ServiceObject {
      * @return BooleanCodeType Created object. The method never returns null.
      */
     public BooleanCodeType build( ) {
-      return new BooleanCodeType(this);
+      BooleanCodeType lObject = new BooleanCodeType(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**
@@ -117,9 +119,9 @@ public class BooleanCodeType implements ServiceObject {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public BooleanCodeType buildValidated( ) throws ConstraintViolationException {
-      BooleanCodeType lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      BooleanCodeType lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

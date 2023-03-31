@@ -116,7 +116,9 @@ public class BusinessA extends TechParent {
      * @return BusinessA Created object. The method never returns null.
      */
     public BusinessA build( ) {
-      return new BusinessA(this);
+      BusinessA lObject = new BusinessA(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**
@@ -127,9 +129,9 @@ public class BusinessA extends TechParent {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public BusinessA buildValidated( ) throws ConstraintViolationException {
-      BusinessA lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      BusinessA lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

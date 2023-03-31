@@ -7,6 +7,7 @@ package com.anaptecs.spring.base;
 
 import java.util.Objects;
 
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -115,7 +116,9 @@ public class FloatCode {
      * @return FloatCode Created object. The method never returns null.
      */
     public FloatCode build( ) {
-      return new FloatCode(this);
+      FloatCode lObject = new FloatCode(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 

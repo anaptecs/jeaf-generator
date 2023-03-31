@@ -324,9 +324,9 @@ public class WeirdBooking extends WeirdParent {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public WeirdBooking buildValidated( ) throws ConstraintViolationException {
-      WeirdBooking lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      WeirdBooking lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

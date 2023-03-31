@@ -272,7 +272,9 @@ public class WrapperDatatypeServiceObject implements ServiceObject {
      * @return WrapperDatatypeServiceObject Created object. The method never returns null.
      */
     public WrapperDatatypeServiceObject build( ) {
-      return new WrapperDatatypeServiceObject(this);
+      WrapperDatatypeServiceObject lObject = new WrapperDatatypeServiceObject(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**
@@ -283,9 +285,9 @@ public class WrapperDatatypeServiceObject implements ServiceObject {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public WrapperDatatypeServiceObject buildValidated( ) throws ConstraintViolationException {
-      WrapperDatatypeServiceObject lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      WrapperDatatypeServiceObject lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

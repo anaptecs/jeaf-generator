@@ -5,6 +5,7 @@
  */
 package com.anaptecs.spring.base;
 
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -321,7 +322,9 @@ public class OpenAPITestObject {
      * @return OpenAPITestObject Created object. The method never returns null.
      */
     public OpenAPITestObject build( ) {
-      return new OpenAPITestObject(this);
+      OpenAPITestObject lObject = new OpenAPITestObject(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 

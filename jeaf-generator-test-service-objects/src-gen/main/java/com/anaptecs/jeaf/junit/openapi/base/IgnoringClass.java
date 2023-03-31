@@ -104,7 +104,9 @@ public class IgnoringClass implements ServiceObject {
      * @return IgnoringClass Created object. The method never returns null.
      */
     public IgnoringClass build( ) {
-      return new IgnoringClass(this);
+      IgnoringClass lObject = new IgnoringClass(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**
@@ -115,9 +117,9 @@ public class IgnoringClass implements ServiceObject {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public IgnoringClass buildValidated( ) throws ConstraintViolationException {
-      IgnoringClass lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      IgnoringClass lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

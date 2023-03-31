@@ -162,7 +162,9 @@ public class SecurityToken implements ServiceObject {
      * @return SecurityToken Created object. The method never returns null.
      */
     public SecurityToken build( ) {
-      return new SecurityToken(this);
+      SecurityToken lObject = new SecurityToken(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**
@@ -173,9 +175,9 @@ public class SecurityToken implements ServiceObject {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public SecurityToken buildValidated( ) throws ConstraintViolationException {
-      SecurityToken lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      SecurityToken lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

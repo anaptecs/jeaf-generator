@@ -174,7 +174,9 @@ public class NotInlinedBeanParam implements ServiceObject {
      * @return NotInlinedBeanParam Created object. The method never returns null.
      */
     public NotInlinedBeanParam build( ) {
-      return new NotInlinedBeanParam(this);
+      NotInlinedBeanParam lObject = new NotInlinedBeanParam(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**
@@ -185,9 +187,9 @@ public class NotInlinedBeanParam implements ServiceObject {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public NotInlinedBeanParam buildValidated( ) throws ConstraintViolationException {
-      NotInlinedBeanParam lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      NotInlinedBeanParam lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

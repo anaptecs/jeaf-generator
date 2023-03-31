@@ -139,7 +139,9 @@ public class ValidationTestObject implements ServiceObject {
      * @return ValidationTestObject Created object. The method never returns null.
      */
     public ValidationTestObject build( ) {
-      return new ValidationTestObject(this);
+      ValidationTestObject lObject = new ValidationTestObject(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**
@@ -150,9 +152,9 @@ public class ValidationTestObject implements ServiceObject {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public ValidationTestObject buildValidated( ) throws ConstraintViolationException {
-      ValidationTestObject lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      ValidationTestObject lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

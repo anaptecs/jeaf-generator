@@ -132,7 +132,9 @@ public class ChildBeanParameterType extends ParentBeanParamType {
      * @return ChildBeanParameterType Created object. The method never returns null.
      */
     public ChildBeanParameterType build( ) {
-      return new ChildBeanParameterType(this);
+      ChildBeanParameterType lObject = new ChildBeanParameterType(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**
@@ -143,9 +145,9 @@ public class ChildBeanParameterType extends ParentBeanParamType {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public ChildBeanParameterType buildValidated( ) throws ConstraintViolationException {
-      ChildBeanParameterType lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      ChildBeanParameterType lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

@@ -105,7 +105,9 @@ public class FloatCode implements ServiceObject {
      * @return FloatCode Created object. The method never returns null.
      */
     public FloatCode build( ) {
-      return new FloatCode(this);
+      FloatCode lObject = new FloatCode(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**
@@ -116,9 +118,9 @@ public class FloatCode implements ServiceObject {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public FloatCode buildValidated( ) throws ConstraintViolationException {
-      FloatCode lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      FloatCode lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

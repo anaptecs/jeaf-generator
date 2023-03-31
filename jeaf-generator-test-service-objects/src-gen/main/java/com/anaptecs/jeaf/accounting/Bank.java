@@ -196,7 +196,9 @@ public class Bank implements ServiceObject, Identifiable<ServiceObjectID> {
      * @return Bank Created object. The method never returns null.
      */
     public Bank build( ) {
-      return new Bank(this);
+      Bank lObject = new Bank(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**
@@ -207,9 +209,9 @@ public class Bank implements ServiceObject, Identifiable<ServiceObjectID> {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public Bank buildValidated( ) throws ConstraintViolationException {
-      Bank lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      Bank lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

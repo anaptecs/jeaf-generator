@@ -160,7 +160,9 @@ public class IdentifiableServiceObject implements ServiceObject, Identifiable<Se
      * @return IdentifiableServiceObject Created object. The method never returns null.
      */
     public IdentifiableServiceObject build( ) {
-      return new IdentifiableServiceObject(this);
+      IdentifiableServiceObject lObject = new IdentifiableServiceObject(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**
@@ -171,9 +173,9 @@ public class IdentifiableServiceObject implements ServiceObject, Identifiable<Se
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public IdentifiableServiceObject buildValidated( ) throws ConstraintViolationException {
-      IdentifiableServiceObject lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      IdentifiableServiceObject lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

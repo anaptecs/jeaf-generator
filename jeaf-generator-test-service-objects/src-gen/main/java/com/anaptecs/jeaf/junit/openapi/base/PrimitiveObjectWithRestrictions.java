@@ -658,7 +658,9 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
      * @return PrimitiveObjectWithRestrictions Created object. The method never returns null.
      */
     public PrimitiveObjectWithRestrictions build( ) {
-      return new PrimitiveObjectWithRestrictions(this);
+      PrimitiveObjectWithRestrictions lObject = new PrimitiveObjectWithRestrictions(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**
@@ -669,9 +671,9 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public PrimitiveObjectWithRestrictions buildValidated( ) throws ConstraintViolationException {
-      PrimitiveObjectWithRestrictions lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      PrimitiveObjectWithRestrictions lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

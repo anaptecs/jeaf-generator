@@ -128,7 +128,9 @@ public class SessionContextValues implements ServiceObject {
      * @return SessionContextValues Created object. The method never returns null.
      */
     public SessionContextValues build( ) {
-      return new SessionContextValues(this);
+      SessionContextValues lObject = new SessionContextValues(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**
@@ -139,9 +141,9 @@ public class SessionContextValues implements ServiceObject {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public SessionContextValues buildValidated( ) throws ConstraintViolationException {
-      SessionContextValues lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      SessionContextValues lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

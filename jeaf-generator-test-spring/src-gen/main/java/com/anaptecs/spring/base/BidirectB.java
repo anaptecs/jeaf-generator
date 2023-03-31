@@ -5,6 +5,7 @@
  */
 package com.anaptecs.spring.base;
 
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -127,7 +128,9 @@ public class BidirectB {
      * @return BidirectB Created object. The method never returns null.
      */
     public BidirectB build( ) {
-      return new BidirectB(this);
+      BidirectB lObject = new BidirectB(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 

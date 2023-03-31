@@ -15,7 +15,7 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
  * Jackson Object Mapper configuration that is supposed to be used in context of OSDM.
  */
 @Configuration
-public class ObjectMapperConfig {
+public class SpringConfig {
   @Bean
   @Primary
   public ObjectMapper objectMapper( ) {

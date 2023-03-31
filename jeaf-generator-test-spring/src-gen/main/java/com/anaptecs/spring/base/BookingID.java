@@ -5,6 +5,7 @@
  */
 package com.anaptecs.spring.base;
 
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -208,7 +209,9 @@ public class BookingID {
      * @return BookingID Created object. The method never returns null.
      */
     public BookingID build( ) {
-      return new BookingID(this);
+      BookingID lObject = new BookingID(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 

@@ -5,6 +5,7 @@
  */
 package com.anaptecs.spring.service;
 
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.anaptecs.spring.base.BookingCode;
 
 public class QueryBeanParam {
@@ -145,7 +146,9 @@ public class QueryBeanParam {
      * @return QueryBeanParam Created object. The method never returns null.
      */
     public QueryBeanParam build( ) {
-      return new QueryBeanParam(this);
+      QueryBeanParam lObject = new QueryBeanParam(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 

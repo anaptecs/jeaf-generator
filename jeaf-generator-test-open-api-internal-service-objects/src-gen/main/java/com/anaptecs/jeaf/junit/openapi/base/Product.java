@@ -432,9 +432,9 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public Product buildValidated( ) throws ConstraintViolationException {
-      Product lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      Product lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

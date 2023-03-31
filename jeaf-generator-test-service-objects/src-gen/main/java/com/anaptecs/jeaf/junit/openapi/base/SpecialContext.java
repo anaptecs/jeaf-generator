@@ -171,7 +171,9 @@ public class SpecialContext extends Context {
      * @return SpecialContext Created object. The method never returns null.
      */
     public SpecialContext build( ) {
-      return new SpecialContext(this);
+      SpecialContext lObject = new SpecialContext(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**
@@ -182,9 +184,9 @@ public class SpecialContext extends Context {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public SpecialContext buildValidated( ) throws ConstraintViolationException {
-      SpecialContext lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      SpecialContext lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

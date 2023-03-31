@@ -104,7 +104,9 @@ public class MappingParent implements ServiceObject {
      * @return MappingParent Created object. The method never returns null.
      */
     public MappingParent build( ) {
-      return new MappingParent(this);
+      MappingParent lObject = new MappingParent(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**
@@ -115,9 +117,9 @@ public class MappingParent implements ServiceObject {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public MappingParent buildValidated( ) throws ConstraintViolationException {
-      MappingParent lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      MappingParent lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

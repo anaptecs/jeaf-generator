@@ -156,7 +156,9 @@ public class BeanParameter implements ServiceObject {
      * @return BeanParameter Created object. The method never returns null.
      */
     public BeanParameter build( ) {
-      return new BeanParameter(this);
+      BeanParameter lObject = new BeanParameter(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**
@@ -167,9 +169,9 @@ public class BeanParameter implements ServiceObject {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public BeanParameter buildValidated( ) throws ConstraintViolationException {
-      BeanParameter lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      BeanParameter lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

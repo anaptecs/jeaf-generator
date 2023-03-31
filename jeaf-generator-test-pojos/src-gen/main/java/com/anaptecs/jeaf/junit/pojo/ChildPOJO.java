@@ -170,9 +170,9 @@ public class ChildPOJO extends ParentPOJO {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public ChildPOJO buildValidated( ) throws ConstraintViolationException {
-      ChildPOJO lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      ChildPOJO lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

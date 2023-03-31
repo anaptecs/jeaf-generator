@@ -105,7 +105,9 @@ public class DoubleCode implements ServiceObject {
      * @return DoubleCode Created object. The method never returns null.
      */
     public DoubleCode build( ) {
-      return new DoubleCode(this);
+      DoubleCode lObject = new DoubleCode(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**
@@ -116,9 +118,9 @@ public class DoubleCode implements ServiceObject {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public DoubleCode buildValidated( ) throws ConstraintViolationException {
-      DoubleCode lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      DoubleCode lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

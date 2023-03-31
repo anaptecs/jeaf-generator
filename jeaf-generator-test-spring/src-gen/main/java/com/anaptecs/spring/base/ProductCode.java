@@ -9,6 +9,7 @@ import java.util.Objects;
 
 import javax.validation.constraints.Positive;
 
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -120,7 +121,9 @@ public class ProductCode {
      * @return ProductCode Created object. The method never returns null.
      */
     public ProductCode build( ) {
-      return new ProductCode(this);
+      ProductCode lObject = new ProductCode(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 

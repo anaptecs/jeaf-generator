@@ -10,6 +10,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -210,7 +211,9 @@ public class CodeTypeUsageTest {
      * @return CodeTypeUsageTest Created object. The method never returns null.
      */
     public CodeTypeUsageTest build( ) {
-      return new CodeTypeUsageTest(this);
+      CodeTypeUsageTest lObject = new CodeTypeUsageTest(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 

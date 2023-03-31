@@ -187,7 +187,9 @@ public class SwiftAccount extends Account {
      * @return SwiftAccount Created object. The method never returns null.
      */
     public SwiftAccount build( ) {
-      return new SwiftAccount(this);
+      SwiftAccount lObject = new SwiftAccount(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**
@@ -198,9 +200,9 @@ public class SwiftAccount extends Account {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public SwiftAccount buildValidated( ) throws ConstraintViolationException {
-      SwiftAccount lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      SwiftAccount lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

@@ -93,7 +93,9 @@ public class CHStopPlace extends StopPlaceRef {
      * @return CHStopPlace Created object. The method never returns null.
      */
     public CHStopPlace build( ) {
-      return new CHStopPlace(this);
+      CHStopPlace lObject = new CHStopPlace(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**
@@ -104,9 +106,9 @@ public class CHStopPlace extends StopPlaceRef {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public CHStopPlace buildValidated( ) throws ConstraintViolationException {
-      CHStopPlace lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      CHStopPlace lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

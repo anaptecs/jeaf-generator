@@ -78,7 +78,9 @@ public class Output implements ServiceObject {
      * @return Output Created object. The method never returns null.
      */
     public Output build( ) {
-      return new Output(this);
+      Output lObject = new Output(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**
@@ -89,9 +91,9 @@ public class Output implements ServiceObject {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public Output buildValidated( ) throws ConstraintViolationException {
-      Output lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      Output lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

@@ -109,7 +109,9 @@ public class IntegerCode implements ServiceObject {
      * @return IntegerCode Created object. The method never returns null.
      */
     public IntegerCode build( ) {
-      return new IntegerCode(this);
+      IntegerCode lObject = new IntegerCode(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**
@@ -120,9 +122,9 @@ public class IntegerCode implements ServiceObject {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public IntegerCode buildValidated( ) throws ConstraintViolationException {
-      IntegerCode lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      IntegerCode lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

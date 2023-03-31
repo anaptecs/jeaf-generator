@@ -7,6 +7,7 @@ package com.anaptecs.spring.base;
 
 import java.util.Objects;
 
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -116,7 +117,9 @@ public class CharacterCode {
      * @return CharacterCode Created object. The method never returns null.
      */
     public CharacterCode build( ) {
-      return new CharacterCode(this);
+      CharacterCode lObject = new CharacterCode(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 

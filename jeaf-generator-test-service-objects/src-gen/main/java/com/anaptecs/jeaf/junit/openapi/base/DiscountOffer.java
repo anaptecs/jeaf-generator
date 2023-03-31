@@ -134,7 +134,9 @@ public class DiscountOffer implements ServiceObject {
      * @return DiscountOffer Created object. The method never returns null.
      */
     public DiscountOffer build( ) {
-      return new DiscountOffer(this);
+      DiscountOffer lObject = new DiscountOffer(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**
@@ -145,9 +147,9 @@ public class DiscountOffer implements ServiceObject {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public DiscountOffer buildValidated( ) throws ConstraintViolationException {
-      DiscountOffer lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      DiscountOffer lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

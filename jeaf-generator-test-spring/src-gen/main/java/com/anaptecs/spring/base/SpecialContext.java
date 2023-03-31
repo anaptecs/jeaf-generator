@@ -7,6 +7,8 @@ package com.anaptecs.spring.base;
 
 import java.util.Locale;
 
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+
 public class SpecialContext extends Context {
   /**
    * Constant for the name of attribute "specificHeader".
@@ -218,7 +220,9 @@ public class SpecialContext extends Context {
      * @return SpecialContext Created object. The method never returns null.
      */
     public SpecialContext build( ) {
-      return new SpecialContext(this);
+      SpecialContext lObject = new SpecialContext(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 

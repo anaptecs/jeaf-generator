@@ -138,7 +138,9 @@ public class ReadonlyServiceObject implements ServiceObject {
      * @return ReadonlyServiceObject Created object. The method never returns null.
      */
     public ReadonlyServiceObject build( ) {
-      return new ReadonlyServiceObject(this);
+      ReadonlyServiceObject lObject = new ReadonlyServiceObject(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**
@@ -149,9 +151,9 @@ public class ReadonlyServiceObject implements ServiceObject {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public ReadonlyServiceObject buildValidated( ) throws ConstraintViolationException {
-      ReadonlyServiceObject lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      ReadonlyServiceObject lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

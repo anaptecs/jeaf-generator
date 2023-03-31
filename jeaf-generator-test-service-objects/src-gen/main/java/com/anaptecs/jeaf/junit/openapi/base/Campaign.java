@@ -230,7 +230,9 @@ public class Campaign implements ServiceObject {
      * @return Campaign Created object. The method never returns null.
      */
     public Campaign build( ) {
-      return new Campaign(this);
+      Campaign lObject = new Campaign(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**
@@ -241,9 +243,9 @@ public class Campaign implements ServiceObject {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public Campaign buildValidated( ) throws ConstraintViolationException {
-      Campaign lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      Campaign lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

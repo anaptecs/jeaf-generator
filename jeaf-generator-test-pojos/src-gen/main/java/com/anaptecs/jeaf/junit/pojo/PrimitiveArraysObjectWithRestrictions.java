@@ -742,9 +742,9 @@ public class PrimitiveArraysObjectWithRestrictions {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public PrimitiveArraysObjectWithRestrictions buildValidated( ) throws ConstraintViolationException {
-      PrimitiveArraysObjectWithRestrictions lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      PrimitiveArraysObjectWithRestrictions lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

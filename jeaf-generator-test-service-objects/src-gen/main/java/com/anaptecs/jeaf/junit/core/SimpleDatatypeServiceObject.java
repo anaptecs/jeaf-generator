@@ -304,7 +304,9 @@ public class SimpleDatatypeServiceObject implements ServiceObject, Identifiable<
      * @return SimpleDatatypeServiceObject Created object. The method never returns null.
      */
     public SimpleDatatypeServiceObject build( ) {
-      return new SimpleDatatypeServiceObject(this);
+      SimpleDatatypeServiceObject lObject = new SimpleDatatypeServiceObject(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**
@@ -315,9 +317,9 @@ public class SimpleDatatypeServiceObject implements ServiceObject, Identifiable<
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public SimpleDatatypeServiceObject buildValidated( ) throws ConstraintViolationException {
-      SimpleDatatypeServiceObject lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      SimpleDatatypeServiceObject lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

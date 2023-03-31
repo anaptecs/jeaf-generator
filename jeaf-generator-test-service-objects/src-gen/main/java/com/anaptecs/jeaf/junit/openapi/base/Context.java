@@ -215,7 +215,9 @@ public class Context implements ServiceObject {
      * @return Context Created object. The method never returns null.
      */
     public Context build( ) {
-      return new Context(this);
+      Context lObject = new Context(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**
@@ -226,9 +228,9 @@ public class Context implements ServiceObject {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public Context buildValidated( ) throws ConstraintViolationException {
-      Context lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      Context lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

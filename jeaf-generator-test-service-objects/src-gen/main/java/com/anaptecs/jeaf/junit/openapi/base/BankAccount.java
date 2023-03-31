@@ -104,7 +104,9 @@ public class BankAccount implements ServiceObject {
      * @return BankAccount Created object. The method never returns null.
      */
     public BankAccount build( ) {
-      return new BankAccount(this);
+      BankAccount lObject = new BankAccount(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**
@@ -115,9 +117,9 @@ public class BankAccount implements ServiceObject {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public BankAccount buildValidated( ) throws ConstraintViolationException {
-      BankAccount lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      BankAccount lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

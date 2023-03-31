@@ -7,6 +7,7 @@ package com.anaptecs.spring.base;
 
 import java.util.List;
 
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -143,7 +144,9 @@ public class POI extends Stop {
      * @return POI Created object. The method never returns null.
      */
     public POI build( ) {
-      return new POI(this);
+      POI lObject = new POI(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 

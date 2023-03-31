@@ -7,6 +7,7 @@ package com.anaptecs.spring.base;
 
 import java.util.Objects;
 
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -116,7 +117,9 @@ public class IntegerCodeType {
      * @return IntegerCodeType Created object. The method never returns null.
      */
     public IntegerCodeType build( ) {
-      return new IntegerCodeType(this);
+      IntegerCodeType lObject = new IntegerCodeType(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 

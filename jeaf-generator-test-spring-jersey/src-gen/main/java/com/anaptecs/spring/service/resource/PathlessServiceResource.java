@@ -14,7 +14,7 @@ import javax.ws.rs.core.Response;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.anaptecs.jeaf.rest.resource.api.ValidationExecutor;
+import com.anaptecs.jeaf.validation.api.ValidationExecutor;
 import com.anaptecs.spring.service.PathlessService;
 
 @Path("/")

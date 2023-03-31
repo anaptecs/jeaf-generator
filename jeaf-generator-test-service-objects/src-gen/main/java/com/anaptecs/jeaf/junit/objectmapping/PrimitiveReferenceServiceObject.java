@@ -240,7 +240,9 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
      * @return PrimitiveReferenceServiceObject Created object. The method never returns null.
      */
     public PrimitiveReferenceServiceObject build( ) {
-      return new PrimitiveReferenceServiceObject(this);
+      PrimitiveReferenceServiceObject lObject = new PrimitiveReferenceServiceObject(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**
@@ -251,9 +253,9 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public PrimitiveReferenceServiceObject buildValidated( ) throws ConstraintViolationException {
-      PrimitiveReferenceServiceObject lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      PrimitiveReferenceServiceObject lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

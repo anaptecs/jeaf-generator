@@ -104,7 +104,9 @@ public class IBAN implements ServiceObject {
      * @return IBAN Created object. The method never returns null.
      */
     public IBAN build( ) {
-      return new IBAN(this);
+      IBAN lObject = new IBAN(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**
@@ -115,9 +117,9 @@ public class IBAN implements ServiceObject {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public IBAN buildValidated( ) throws ConstraintViolationException {
-      IBAN lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      IBAN lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

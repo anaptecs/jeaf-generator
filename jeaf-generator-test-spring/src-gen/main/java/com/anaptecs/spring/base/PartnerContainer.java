@@ -10,6 +10,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -130,7 +131,9 @@ public class PartnerContainer {
      * @return PartnerContainer Created object. The method never returns null.
      */
     public PartnerContainer build( ) {
-      return new PartnerContainer(this);
+      PartnerContainer lObject = new PartnerContainer(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 

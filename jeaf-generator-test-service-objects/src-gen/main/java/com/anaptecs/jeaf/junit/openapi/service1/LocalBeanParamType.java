@@ -150,7 +150,9 @@ public class LocalBeanParamType implements ServiceObject {
      * @return LocalBeanParamType Created object. The method never returns null.
      */
     public LocalBeanParamType build( ) {
-      return new LocalBeanParamType(this);
+      LocalBeanParamType lObject = new LocalBeanParamType(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**
@@ -161,9 +163,9 @@ public class LocalBeanParamType implements ServiceObject {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public LocalBeanParamType buildValidated( ) throws ConstraintViolationException {
-      LocalBeanParamType lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      LocalBeanParamType lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

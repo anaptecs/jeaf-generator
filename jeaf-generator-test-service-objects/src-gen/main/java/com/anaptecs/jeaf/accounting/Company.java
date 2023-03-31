@@ -247,7 +247,9 @@ public class Company extends Customer {
      * @return Company Created object. The method never returns null.
      */
     public Company build( ) {
-      return new Company(this);
+      Company lObject = new Company(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**
@@ -258,9 +260,9 @@ public class Company extends Customer {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public Company buildValidated( ) throws ConstraintViolationException {
-      Company lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      Company lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

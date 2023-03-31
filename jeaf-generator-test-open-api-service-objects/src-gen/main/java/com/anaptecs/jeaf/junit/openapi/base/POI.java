@@ -244,9 +244,9 @@ public class POI extends Stop {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public POI buildValidated( ) throws ConstraintViolationException {
-      POI lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      POI lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

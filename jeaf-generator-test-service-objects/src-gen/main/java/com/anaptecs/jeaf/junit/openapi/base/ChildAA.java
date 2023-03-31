@@ -325,7 +325,9 @@ public class ChildAA extends ChildA {
      * @return ChildAA Created object. The method never returns null.
      */
     public ChildAA build( ) {
-      return new ChildAA(this);
+      ChildAA lObject = new ChildAA(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**
@@ -336,9 +338,9 @@ public class ChildAA extends ChildA {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public ChildAA buildValidated( ) throws ConstraintViolationException {
-      ChildAA lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      ChildAA lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

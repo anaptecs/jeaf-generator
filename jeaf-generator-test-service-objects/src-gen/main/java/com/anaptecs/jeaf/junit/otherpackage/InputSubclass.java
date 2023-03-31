@@ -80,7 +80,9 @@ public class InputSubclass extends Input {
      * @return InputSubclass Created object. The method never returns null.
      */
     public InputSubclass build( ) {
-      return new InputSubclass(this);
+      InputSubclass lObject = new InputSubclass(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**
@@ -91,9 +93,9 @@ public class InputSubclass extends Input {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public InputSubclass buildValidated( ) throws ConstraintViolationException {
-      InputSubclass lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      InputSubclass lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

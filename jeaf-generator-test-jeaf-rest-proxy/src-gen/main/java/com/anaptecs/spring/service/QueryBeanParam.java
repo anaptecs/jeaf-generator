@@ -162,9 +162,9 @@ public class QueryBeanParam implements Serializable {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public QueryBeanParam buildValidated( ) throws ConstraintViolationException {
-      QueryBeanParam lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      QueryBeanParam lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

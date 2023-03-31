@@ -142,9 +142,9 @@ public class Sortiment implements Serializable {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public Sortiment buildValidated( ) throws ConstraintViolationException {
-      Sortiment lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      Sortiment lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

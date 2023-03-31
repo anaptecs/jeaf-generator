@@ -176,7 +176,9 @@ public class BookingID implements ServiceObject {
      * @return BookingID Created object. The method never returns null.
      */
     public BookingID build( ) {
-      return new BookingID(this);
+      BookingID lObject = new BookingID(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**
@@ -187,9 +189,9 @@ public class BookingID implements ServiceObject {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public BookingID buildValidated( ) throws ConstraintViolationException {
-      BookingID lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      BookingID lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

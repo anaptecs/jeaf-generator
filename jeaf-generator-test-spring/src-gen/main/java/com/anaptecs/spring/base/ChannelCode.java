@@ -9,6 +9,7 @@ import java.util.Objects;
 
 import javax.validation.constraints.NotNull;
 
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -131,7 +132,9 @@ public class ChannelCode {
      * @return ChannelCode Created object. The method never returns null.
      */
     public ChannelCode build( ) {
-      return new ChannelCode(this);
+      ChannelCode lObject = new ChannelCode(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 

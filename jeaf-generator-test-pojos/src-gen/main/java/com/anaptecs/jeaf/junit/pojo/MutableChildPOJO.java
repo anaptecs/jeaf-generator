@@ -154,9 +154,9 @@ public class MutableChildPOJO extends ImmutablePOJOParent {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public MutableChildPOJO buildValidated( ) throws ConstraintViolationException {
-      MutableChildPOJO lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      MutableChildPOJO lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

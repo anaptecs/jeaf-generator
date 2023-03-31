@@ -225,9 +225,9 @@ public class ChildAA extends ChildA {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public ChildAA buildValidated( ) throws ConstraintViolationException {
-      ChildAA lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      ChildAA lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

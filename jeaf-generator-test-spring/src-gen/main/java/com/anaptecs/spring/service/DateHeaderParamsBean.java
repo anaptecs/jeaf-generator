@@ -15,6 +15,8 @@ import java.time.OffsetDateTime;
 import java.time.OffsetTime;
 import java.util.Calendar;
 
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+
 public class DateHeaderParamsBean {
   /**
    * Constant for the name of attribute "offsetDateTime".
@@ -329,7 +331,9 @@ public class DateHeaderParamsBean {
      * @return DateHeaderParamsBean Created object. The method never returns null.
      */
     public DateHeaderParamsBean build( ) {
-      return new DateHeaderParamsBean(this);
+      DateHeaderParamsBean lObject = new DateHeaderParamsBean(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 

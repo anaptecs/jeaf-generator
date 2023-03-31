@@ -731,7 +731,9 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
      * @return PrimitiveArraysObjectWithRestrictions Created object. The method never returns null.
      */
     public PrimitiveArraysObjectWithRestrictions build( ) {
-      return new PrimitiveArraysObjectWithRestrictions(this);
+      PrimitiveArraysObjectWithRestrictions lObject = new PrimitiveArraysObjectWithRestrictions(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**
@@ -742,9 +744,9 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public PrimitiveArraysObjectWithRestrictions buildValidated( ) throws ConstraintViolationException {
-      PrimitiveArraysObjectWithRestrictions lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      PrimitiveArraysObjectWithRestrictions lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

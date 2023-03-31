@@ -105,7 +105,9 @@ public class StringCode implements ServiceObject {
      * @return StringCode Created object. The method never returns null.
      */
     public StringCode build( ) {
-      return new StringCode(this);
+      StringCode lObject = new StringCode(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**
@@ -116,9 +118,9 @@ public class StringCode implements ServiceObject {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public StringCode buildValidated( ) throws ConstraintViolationException {
-      StringCode lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      StringCode lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

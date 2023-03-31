@@ -32,7 +32,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.anaptecs.jeaf.rest.resource.api.CustomHeaderFilter;
-import com.anaptecs.jeaf.rest.resource.api.ValidationExecutor;
+import com.anaptecs.jeaf.validation.api.ValidationExecutor;
 import com.anaptecs.spring.base.BeanParameter;
 import com.anaptecs.spring.base.ChannelCode;
 import com.anaptecs.spring.base.ChannelType;

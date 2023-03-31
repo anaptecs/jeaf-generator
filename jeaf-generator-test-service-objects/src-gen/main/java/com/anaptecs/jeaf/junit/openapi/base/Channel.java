@@ -213,7 +213,9 @@ public class Channel implements ServiceObject {
      * @return Channel Created object. The method never returns null.
      */
     public Channel build( ) {
-      return new Channel(this);
+      Channel lObject = new Channel(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**
@@ -224,9 +226,9 @@ public class Channel implements ServiceObject {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public Channel buildValidated( ) throws ConstraintViolationException {
-      Channel lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      Channel lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

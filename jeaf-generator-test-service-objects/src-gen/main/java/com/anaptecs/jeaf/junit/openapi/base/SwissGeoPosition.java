@@ -119,7 +119,9 @@ public class SwissGeoPosition extends GeoPosition {
      * @return SwissGeoPosition Created object. The method never returns null.
      */
     public SwissGeoPosition build( ) {
-      return new SwissGeoPosition(this);
+      SwissGeoPosition lObject = new SwissGeoPosition(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**
@@ -130,9 +132,9 @@ public class SwissGeoPosition extends GeoPosition {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public SwissGeoPosition buildValidated( ) throws ConstraintViolationException {
-      SwissGeoPosition lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      SwissGeoPosition lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

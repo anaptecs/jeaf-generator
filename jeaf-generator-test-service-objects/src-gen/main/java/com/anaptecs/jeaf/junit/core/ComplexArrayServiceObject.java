@@ -111,7 +111,9 @@ public class ComplexArrayServiceObject implements ServiceObject {
      * @return ComplexArrayServiceObject Created object. The method never returns null.
      */
     public ComplexArrayServiceObject build( ) {
-      return new ComplexArrayServiceObject(this);
+      ComplexArrayServiceObject lObject = new ComplexArrayServiceObject(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**
@@ -122,9 +124,9 @@ public class ComplexArrayServiceObject implements ServiceObject {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public ComplexArrayServiceObject buildValidated( ) throws ConstraintViolationException {
-      ComplexArrayServiceObject lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      ComplexArrayServiceObject lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

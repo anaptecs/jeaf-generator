@@ -11,6 +11,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -183,7 +184,9 @@ public class BidirectA {
      * @return BidirectA Created object. The method never returns null.
      */
     public BidirectA build( ) {
-      return new BidirectA(this);
+      BidirectA lObject = new BidirectA(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 

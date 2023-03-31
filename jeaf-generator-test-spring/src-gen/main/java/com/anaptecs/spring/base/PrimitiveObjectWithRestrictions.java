@@ -19,6 +19,7 @@ import javax.validation.constraints.Positive;
 import javax.validation.constraints.PositiveOrZero;
 import javax.validation.constraints.Size;
 
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -669,7 +670,9 @@ public class PrimitiveObjectWithRestrictions {
      * @return PrimitiveObjectWithRestrictions Created object. The method never returns null.
      */
     public PrimitiveObjectWithRestrictions build( ) {
-      return new PrimitiveObjectWithRestrictions(this);
+      PrimitiveObjectWithRestrictions lObject = new PrimitiveObjectWithRestrictions(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 
