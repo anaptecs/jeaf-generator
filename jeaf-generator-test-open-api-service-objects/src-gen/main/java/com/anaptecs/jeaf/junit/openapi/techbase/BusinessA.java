@@ -124,9 +124,9 @@ public class BusinessA extends TechParent {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public BusinessA buildValidated( ) throws ConstraintViolationException {
-      BusinessA lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      BusinessA lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

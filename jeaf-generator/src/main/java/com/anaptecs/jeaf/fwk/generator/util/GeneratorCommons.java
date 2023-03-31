@@ -331,6 +331,8 @@ public class GeneratorCommons {
   public static final String VALIDATION_ANNOTATION_FOR_ASSOCIATIONS =
       "switch.gen.enable.validation.annotation.associations";
 
+  public static final String GENERATE_OBJECT_VALIDATION_IN_BUILDER = "switch.gen.enable.validation.in.builder";
+
   public static final String SUPPRESS_CLASSNAME_IN_OPENAPI = "switch.gen.suppress.classname.openapi";
 
   public static final String LINE_SEPARATOR = "\n";
@@ -1067,6 +1069,11 @@ public class GeneratorCommons {
   public static boolean generateValidationAnnotationsForAssociationsFromMultiplicity( ) {
     Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
     return lConfiguration.getConfigurationValue(VALIDATION_ANNOTATION_FOR_ASSOCIATIONS, Boolean.TRUE, Boolean.class);
+  }
+
+  public static boolean generateObjectValidationInBuilder( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(GENERATE_OBJECT_VALIDATION_IN_BUILDER, Boolean.TRUE, Boolean.class);
   }
 
   public static boolean suppressClassNameCommentInOpenAPISpec( ) {

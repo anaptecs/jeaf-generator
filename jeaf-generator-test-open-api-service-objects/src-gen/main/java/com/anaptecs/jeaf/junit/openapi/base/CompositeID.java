@@ -125,9 +125,9 @@ public class CompositeID implements ServiceObject {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public CompositeID buildValidated( ) throws ConstraintViolationException {
-      CompositeID lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      CompositeID lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

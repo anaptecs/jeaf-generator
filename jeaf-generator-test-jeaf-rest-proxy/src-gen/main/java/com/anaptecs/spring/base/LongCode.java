@@ -126,9 +126,9 @@ public class LongCode implements Serializable {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public LongCode buildValidated( ) throws ConstraintViolationException {
-      LongCode lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      LongCode lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

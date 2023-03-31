@@ -186,9 +186,9 @@ public class ClassB implements ServiceObject, Identifiable<ServiceObjectID> {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public ClassB buildValidated( ) throws ConstraintViolationException {
-      ClassB lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      ClassB lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

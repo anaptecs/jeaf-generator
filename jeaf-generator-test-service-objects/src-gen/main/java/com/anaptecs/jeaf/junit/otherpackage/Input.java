@@ -89,9 +89,9 @@ public class Input implements ServiceObject {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public Input buildValidated( ) throws ConstraintViolationException {
-      Input lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      Input lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

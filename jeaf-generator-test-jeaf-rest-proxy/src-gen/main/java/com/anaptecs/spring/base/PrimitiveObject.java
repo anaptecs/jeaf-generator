@@ -636,9 +636,9 @@ public class PrimitiveObject implements Serializable {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public PrimitiveObject buildValidated( ) throws ConstraintViolationException {
-      PrimitiveObject lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      PrimitiveObject lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

@@ -172,9 +172,9 @@ public class BidirectA implements ServiceObject {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public BidirectA buildValidated( ) throws ConstraintViolationException {
-      BidirectA lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      BidirectA lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

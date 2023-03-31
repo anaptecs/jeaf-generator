@@ -260,9 +260,9 @@ public class DateObject implements Serializable {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public DateObject buildValidated( ) throws ConstraintViolationException {
-      DateObject lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      DateObject lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

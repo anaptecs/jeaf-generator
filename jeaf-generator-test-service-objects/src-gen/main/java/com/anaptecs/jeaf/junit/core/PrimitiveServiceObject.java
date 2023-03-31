@@ -277,9 +277,9 @@ public class PrimitiveServiceObject implements ServiceObject {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public PrimitiveServiceObject buildValidated( ) throws ConstraintViolationException {
-      PrimitiveServiceObject lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      PrimitiveServiceObject lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

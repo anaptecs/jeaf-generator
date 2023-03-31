@@ -153,9 +153,9 @@ public class BeanParamWithDeprecations implements ServiceObject {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public BeanParamWithDeprecations buildValidated( ) throws ConstraintViolationException {
-      BeanParamWithDeprecations lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      BeanParamWithDeprecations lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

@@ -153,9 +153,9 @@ public class ParentBeanParamType implements Serializable {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public ParentBeanParamType buildValidated( ) throws ConstraintViolationException {
-      ParentBeanParamType lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      ParentBeanParamType lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

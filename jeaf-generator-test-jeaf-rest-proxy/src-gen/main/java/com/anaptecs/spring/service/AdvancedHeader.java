@@ -180,9 +180,9 @@ public class AdvancedHeader implements Serializable {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public AdvancedHeader buildValidated( ) throws ConstraintViolationException {
-      AdvancedHeader lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      AdvancedHeader lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

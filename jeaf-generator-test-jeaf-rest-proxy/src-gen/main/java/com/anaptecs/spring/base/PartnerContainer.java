@@ -133,9 +133,9 @@ public class PartnerContainer implements Serializable {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public PartnerContainer buildValidated( ) throws ConstraintViolationException {
-      PartnerContainer lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      PartnerContainer lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

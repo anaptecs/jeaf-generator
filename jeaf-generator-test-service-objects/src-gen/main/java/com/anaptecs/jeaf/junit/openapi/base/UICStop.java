@@ -254,9 +254,9 @@ public class UICStop extends Stop {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public UICStop buildValidated( ) throws ConstraintViolationException {
-      UICStop lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      UICStop lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

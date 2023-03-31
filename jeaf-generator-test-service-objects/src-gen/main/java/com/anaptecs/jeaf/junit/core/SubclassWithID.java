@@ -152,9 +152,9 @@ public class SubclassWithID extends IdentifiableServiceObject {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public SubclassWithID buildValidated( ) throws ConstraintViolationException {
-      SubclassWithID lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      SubclassWithID lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

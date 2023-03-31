@@ -143,9 +143,9 @@ public class ChildBeanParameterType extends ParentBeanParamType {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public ChildBeanParameterType buildValidated( ) throws ConstraintViolationException {
-      ChildBeanParameterType lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      ChildBeanParameterType lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

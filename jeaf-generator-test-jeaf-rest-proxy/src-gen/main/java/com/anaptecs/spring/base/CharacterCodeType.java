@@ -128,9 +128,9 @@ public class CharacterCodeType implements Serializable {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public CharacterCodeType buildValidated( ) throws ConstraintViolationException {
-      CharacterCodeType lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      CharacterCodeType lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

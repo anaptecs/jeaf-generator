@@ -298,9 +298,9 @@ public class ChildBB extends ChildB {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public ChildBB buildValidated( ) throws ConstraintViolationException {
-      ChildBB lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      ChildBB lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

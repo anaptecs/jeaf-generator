@@ -106,9 +106,9 @@ public class UICStopPlace extends StopPlaceRef {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public UICStopPlace buildValidated( ) throws ConstraintViolationException {
-      UICStopPlace lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      UICStopPlace lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

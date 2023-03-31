@@ -113,9 +113,9 @@ public class TopoRef extends PlaceRef {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public TopoRef buildValidated( ) throws ConstraintViolationException {
-      TopoRef lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      TopoRef lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

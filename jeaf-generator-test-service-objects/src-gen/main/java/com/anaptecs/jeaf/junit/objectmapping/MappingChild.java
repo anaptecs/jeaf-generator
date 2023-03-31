@@ -128,9 +128,9 @@ public class MappingChild extends MappingParent {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public MappingChild buildValidated( ) throws ConstraintViolationException {
-      MappingChild lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      MappingChild lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

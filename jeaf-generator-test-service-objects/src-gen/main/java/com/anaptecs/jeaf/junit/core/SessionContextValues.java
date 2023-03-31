@@ -139,9 +139,9 @@ public class SessionContextValues implements ServiceObject {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public SessionContextValues buildValidated( ) throws ConstraintViolationException {
-      SessionContextValues lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      SessionContextValues lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

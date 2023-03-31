@@ -126,9 +126,9 @@ public class TechParent implements Serializable {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public TechParent buildValidated( ) throws ConstraintViolationException {
-      TechParent lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      TechParent lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

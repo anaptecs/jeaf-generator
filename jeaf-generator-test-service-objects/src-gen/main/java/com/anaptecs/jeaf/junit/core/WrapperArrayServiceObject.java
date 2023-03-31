@@ -122,9 +122,9 @@ public class WrapperArrayServiceObject implements ServiceObject {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public WrapperArrayServiceObject buildValidated( ) throws ConstraintViolationException {
-      WrapperArrayServiceObject lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      WrapperArrayServiceObject lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

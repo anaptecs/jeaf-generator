@@ -126,9 +126,9 @@ public class VersionedObjectSoftLink implements ServiceObject {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public VersionedObjectSoftLink buildValidated( ) throws ConstraintViolationException {
-      VersionedObjectSoftLink lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      VersionedObjectSoftLink lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

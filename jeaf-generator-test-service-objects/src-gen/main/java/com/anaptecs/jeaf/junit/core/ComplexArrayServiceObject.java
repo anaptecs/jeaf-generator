@@ -122,9 +122,9 @@ public class ComplexArrayServiceObject implements ServiceObject {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public ComplexArrayServiceObject buildValidated( ) throws ConstraintViolationException {
-      ComplexArrayServiceObject lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      ComplexArrayServiceObject lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

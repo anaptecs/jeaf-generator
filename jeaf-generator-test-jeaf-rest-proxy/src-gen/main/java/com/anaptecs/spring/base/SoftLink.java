@@ -128,9 +128,9 @@ public class SoftLink implements Serializable {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public SoftLink buildValidated( ) throws ConstraintViolationException {
-      SoftLink lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      SoftLink lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

@@ -193,9 +193,9 @@ public class ResponsibilityType implements ServiceObject, Identifiable<ServiceOb
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public ResponsibilityType buildValidated( ) throws ConstraintViolationException {
-      ResponsibilityType lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      ResponsibilityType lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

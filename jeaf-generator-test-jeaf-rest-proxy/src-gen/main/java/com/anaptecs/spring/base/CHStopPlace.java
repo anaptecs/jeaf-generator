@@ -115,9 +115,9 @@ public class CHStopPlace extends StopPlaceRef {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public CHStopPlace buildValidated( ) throws ConstraintViolationException {
-      CHStopPlace lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      CHStopPlace lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

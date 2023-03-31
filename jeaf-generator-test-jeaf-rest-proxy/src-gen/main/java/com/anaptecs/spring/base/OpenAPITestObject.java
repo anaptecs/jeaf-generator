@@ -345,9 +345,9 @@ public class OpenAPITestObject implements Serializable {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public OpenAPITestObject buildValidated( ) throws ConstraintViolationException {
-      OpenAPITestObject lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      OpenAPITestObject lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

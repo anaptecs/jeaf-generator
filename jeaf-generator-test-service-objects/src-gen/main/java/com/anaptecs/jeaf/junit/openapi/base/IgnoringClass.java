@@ -115,9 +115,9 @@ public class IgnoringClass implements ServiceObject {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public IgnoringClass buildValidated( ) throws ConstraintViolationException {
-      IgnoringClass lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      IgnoringClass lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

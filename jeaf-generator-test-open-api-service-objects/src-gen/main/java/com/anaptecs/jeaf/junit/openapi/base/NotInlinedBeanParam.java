@@ -177,9 +177,9 @@ public class NotInlinedBeanParam implements ServiceObject {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public NotInlinedBeanParam buildValidated( ) throws ConstraintViolationException {
-      NotInlinedBeanParam lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      NotInlinedBeanParam lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

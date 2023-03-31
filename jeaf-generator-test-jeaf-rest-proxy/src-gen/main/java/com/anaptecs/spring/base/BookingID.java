@@ -129,9 +129,9 @@ public class BookingID implements Serializable {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public BookingID buildValidated( ) throws ConstraintViolationException {
-      BookingID lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      BookingID lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

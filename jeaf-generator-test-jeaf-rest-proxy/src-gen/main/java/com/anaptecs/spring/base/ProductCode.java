@@ -131,9 +131,9 @@ public class ProductCode implements Serializable {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public ProductCode buildValidated( ) throws ConstraintViolationException {
-      ProductCode lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      ProductCode lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

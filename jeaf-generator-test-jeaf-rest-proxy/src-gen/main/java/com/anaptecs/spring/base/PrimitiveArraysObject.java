@@ -765,9 +765,9 @@ public class PrimitiveArraysObject implements Serializable {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public PrimitiveArraysObject buildValidated( ) throws ConstraintViolationException {
-      PrimitiveArraysObject lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      PrimitiveArraysObject lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

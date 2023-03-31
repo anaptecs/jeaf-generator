@@ -161,9 +161,9 @@ public class Partner implements ServiceObject, Identifiable<ServiceObjectID> {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public Partner buildValidated( ) throws ConstraintViolationException {
-      Partner lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      Partner lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

@@ -143,9 +143,9 @@ public class SwissGeoPosition extends GeoPosition {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public SwissGeoPosition buildValidated( ) throws ConstraintViolationException {
-      SwissGeoPosition lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      SwissGeoPosition lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

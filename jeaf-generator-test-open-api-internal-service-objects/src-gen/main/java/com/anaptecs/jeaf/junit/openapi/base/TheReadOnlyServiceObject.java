@@ -200,9 +200,9 @@ public class TheReadOnlyServiceObject implements ServiceObject {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public TheReadOnlyServiceObject buildValidated( ) throws ConstraintViolationException {
-      TheReadOnlyServiceObject lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      TheReadOnlyServiceObject lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

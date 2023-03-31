@@ -171,9 +171,9 @@ public class IdentifiableServiceObject implements ServiceObject, Identifiable<Se
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public IdentifiableServiceObject buildValidated( ) throws ConstraintViolationException {
-      IdentifiableServiceObject lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      IdentifiableServiceObject lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

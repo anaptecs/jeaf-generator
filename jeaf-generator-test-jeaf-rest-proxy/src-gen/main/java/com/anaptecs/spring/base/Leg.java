@@ -185,9 +185,9 @@ public class Leg implements Serializable {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public Leg buildValidated( ) throws ConstraintViolationException {
-      Leg lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      Leg lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 
