@@ -245,9 +245,9 @@ public class SoftLinkChildB extends SoftLinkParent {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public SoftLinkChildB buildValidated( ) throws ConstraintViolationException {
-      SoftLinkChildB lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      SoftLinkChildB lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

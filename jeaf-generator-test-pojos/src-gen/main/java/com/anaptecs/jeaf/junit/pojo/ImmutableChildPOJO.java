@@ -178,9 +178,9 @@ public class ImmutableChildPOJO extends ImmutablePOJOParent {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public ImmutableChildPOJO buildValidated( ) throws ConstraintViolationException {
-      ImmutableChildPOJO lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      ImmutableChildPOJO lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

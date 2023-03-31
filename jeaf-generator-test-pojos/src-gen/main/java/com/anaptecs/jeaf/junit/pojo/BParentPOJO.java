@@ -118,9 +118,9 @@ public class BParentPOJO {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public BParentPOJO buildValidated( ) throws ConstraintViolationException {
-      BParentPOJO lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      BParentPOJO lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

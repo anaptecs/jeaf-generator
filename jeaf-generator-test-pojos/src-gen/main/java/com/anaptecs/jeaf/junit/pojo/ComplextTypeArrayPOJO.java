@@ -121,9 +121,9 @@ public class ComplextTypeArrayPOJO {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public ComplextTypeArrayPOJO buildValidated( ) throws ConstraintViolationException {
-      ComplextTypeArrayPOJO lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      ComplextTypeArrayPOJO lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

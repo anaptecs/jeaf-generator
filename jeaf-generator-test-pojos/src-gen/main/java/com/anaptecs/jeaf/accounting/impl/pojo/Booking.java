@@ -206,9 +206,9 @@ public class Booking {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public Booking buildValidated( ) throws ConstraintViolationException {
-      Booking lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      Booking lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 

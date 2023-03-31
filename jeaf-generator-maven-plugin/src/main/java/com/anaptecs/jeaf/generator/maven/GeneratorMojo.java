@@ -243,9 +243,9 @@ public class GeneratorMojo extends AbstractMojo {
    * 
    * <pre>
    *    &#60;dependency>
-   *        &#60;groupId>com.anaptecs.jeaf.rest&#60;/groupId>
-   *        &#60;artifactId>jeaf-rest-resource-api&#60;/artifactId>
-   *        &#60;version>${1.6.5 or higher}&#60;/version>
+   *        &#60;groupId>com.anaptecs.jeaf.validation&#60;/groupId>
+   *        &#60;artifactId>jeaf-validation-api-spring&#60;/artifactId>
+   *        &#60;version>${1.6.0 or higher}&#60;/version>
    *    &#60;/dependency><br/>
    * </pre>
    * 
@@ -253,14 +253,14 @@ public class GeneratorMojo extends AbstractMojo {
    * 
    * <pre>
    *    &#60;dependency>
-   *        &#60;groupId>com.anaptecs.jeaf.rest&#60;/groupId>
-   *        &#60;artifactId>jeaf-rest-resource-service-provider&#60;/artifactId>
-   *        &#60;version>${1.6.5 or higher}&#60;/version>
+   *        &#60;groupId>com.anaptecs.jeaf.validation&#60;/groupId>
+   *        &#60;artifactId>jeaf-validation-api-service-provider&#60;/artifactId>
+   *        &#60;version>${1.6.0 or higher}&#60;/version>
    *    &#60;/dependency><br/>
    * </pre>
    * 
-   * Depending on the implementation of class <code>com.anaptecs.jeaf.rest.resource.api.ValidationExecutor</code> if
-   * might still be possible to disable / enable request validation without changing the code.
+   * Depending on the implementation of class <code>com.anaptecs.jeaf.validation.api.ValidationExecutor</code> if might
+   * still be possible to disable / enable request validation without changing the code.
    */
   @Parameter(required = false, defaultValue = "false")
   private Boolean generateRESTRequestValidation;
@@ -273,9 +273,9 @@ public class GeneratorMojo extends AbstractMojo {
    * 
    * <pre>
    *    &#60;dependency>
-   *        &#60;groupId>com.anaptecs.jeaf.rest&#60;/groupId>
-   *        &#60;artifactId>jeaf-rest-resource-api&#60;/artifactId>
-   *        &#60;version>${1.6.5 or higher}&#60;/version>
+   *        &#60;groupId>com.anaptecs.jeaf.validation&#60;/groupId>
+   *        &#60;artifactId>jeaf-validation-api-spring&#60;/artifactId>
+   *        &#60;version>${1.6.0 or higher}&#60;/version>
    *    &#60;/dependency><br/>
    * </pre>
    * 
@@ -283,14 +283,14 @@ public class GeneratorMojo extends AbstractMojo {
    * 
    * <pre>
    *    &#60;dependency>
-   *        &#60;groupId>com.anaptecs.jeaf.rest&#60;/groupId>
-   *        &#60;artifactId>jeaf-rest-resource-service-provider&#60;/artifactId>
-   *        &#60;version>${1.6.5 or higher}&#60;/version>
+   *        &#60;groupId>com.anaptecs.jeaf.validation&#60;/groupId>
+   *        &#60;artifactId>jeaf-validation-api-service-provider&#60;/artifactId>
+   *        &#60;version>${1.6.0 or higher}&#60;/version>
    *    &#60;/dependency><br/>
    * </pre>
    * 
-   * Depending on the implementation of class <code>com.anaptecs.jeaf.rest.resource.api.ValidationExecutor</code> if
-   * might still be possible to disable / enable response validation without changing the code.
+   * Depending on the implementation of class <code>com.anaptecs.jeaf.validation.api.ValidationExecutor</code> if might
+   * still be possible to disable / enable response validation without changing the code.
    */
   @Parameter(required = false, defaultValue = "false")
   private Boolean generateRESTResponseValidation;
@@ -549,6 +549,36 @@ public class GeneratorMojo extends AbstractMojo {
    */
   @Parameter(required = false, defaultValue = "false")
   private Boolean generateValidationAnnotationsForAssociationsFromMultiplicity;
+
+  /**
+   * Switch defines if object validation should be generated in build() operation of the class builder. If it is enabled
+   * then the generated code will have a dependency on one of the following artifacts:
+   * <p/>
+   * <b>Spring Boot:</b>
+   * 
+   * <pre>
+   *    &#60;dependency>
+   *        &#60;groupId>com.anaptecs.jeaf.validation&#60;/groupId>
+   *        &#60;artifactId>jeaf-validation-api-spring&#60;/artifactId>
+   *        &#60;version>${1.6.0 or higher}&#60;/version>
+   *    &#60;/dependency><br/>
+   * </pre>
+   * 
+   * <b>JEAF:</b>
+   * 
+   * <pre>
+   *    &#60;dependency>
+   *        &#60;groupId>com.anaptecs.jeaf.validation&#60;/groupId>
+   *        &#60;artifactId>jeaf-validation-api-service-provider&#60;/artifactId>
+   *        &#60;version>${1.6.0 or higher}&#60;/version>
+   *    &#60;/dependency><br/>
+   * </pre>
+   * 
+   * Depending on the implementation of class <code>com.anaptecs.jeaf.validation.api.ValidationExecutor</code> if might
+   * still be possible to disable / enable request validation without changing the code.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean generateObjectValidationInBuilder;
 
   /**
    * Parameter defines if generated code for JSON serialization should be SemVer compliant or not.
@@ -1117,6 +1147,9 @@ public class GeneratorMojo extends AbstractMojo {
       lLog.info("Generate Validation Annotations for associations: "
           + generateValidationAnnotationsForAssociationsFromMultiplicity);
     }
+    if (generateObjectValidationInBuilder) {
+      lLog.info("Add object validation to builders:                " + generateObjectValidationInBuilder);
+    }
     if (generatePersistentObjects) {
       lLog.info("Generate Persistent Objects:                      " + generatePersistentObjects);
       lLog.info(" ");
@@ -1282,6 +1315,8 @@ public class GeneratorMojo extends AbstractMojo {
           generateValidationAnnotationsForAttributesFromMultiplicity.toString());
       System.setProperty("switch.gen.enable.validation.annotation.associations",
           generateValidationAnnotationsForAssociationsFromMultiplicity.toString());
+
+      System.setProperty("switch.gen.enable.validation.in.builder", generateObjectValidationInBuilder.toString());
 
       System.setProperty("switch.gen.public.setters.for.associations", generatePublicSettersForAssociations.toString());
       System.setProperty("switch.gen.null.checks.for.to.one.associations.of.service.objects",

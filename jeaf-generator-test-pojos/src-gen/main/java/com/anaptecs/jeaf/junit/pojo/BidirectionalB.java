@@ -184,9 +184,9 @@ public class BidirectionalB {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public BidirectionalB buildValidated( ) throws ConstraintViolationException {
-      BidirectionalB lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      BidirectionalB lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
   }
 
