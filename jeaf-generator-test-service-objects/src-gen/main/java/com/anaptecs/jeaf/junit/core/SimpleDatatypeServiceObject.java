@@ -304,7 +304,9 @@ public class SimpleDatatypeServiceObject implements ServiceObject, Identifiable<
      * @return SimpleDatatypeServiceObject Created object. The method never returns null.
      */
     public SimpleDatatypeServiceObject build( ) {
-      return new SimpleDatatypeServiceObject(this);
+      SimpleDatatypeServiceObject lObject = new SimpleDatatypeServiceObject(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

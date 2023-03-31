@@ -137,7 +137,9 @@ public class TechnicalHeaderContext implements ServiceObject {
      * @return TechnicalHeaderContext Created object. The method never returns null.
      */
     public TechnicalHeaderContext build( ) {
-      return new TechnicalHeaderContext(this);
+      TechnicalHeaderContext lObject = new TechnicalHeaderContext(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

@@ -107,7 +107,9 @@ public class DeprecatedServiceObject implements ServiceObject {
      * @return DeprecatedServiceObject Created object. The method never returns null.
      */
     public DeprecatedServiceObject build( ) {
-      return new DeprecatedServiceObject(this);
+      DeprecatedServiceObject lObject = new DeprecatedServiceObject(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

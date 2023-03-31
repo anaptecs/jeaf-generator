@@ -111,7 +111,9 @@ public class PrimitiveArrayServiceObject implements ServiceObject {
      * @return PrimitiveArrayServiceObject Created object. The method never returns null.
      */
     public PrimitiveArrayServiceObject build( ) {
-      return new PrimitiveArrayServiceObject(this);
+      PrimitiveArrayServiceObject lObject = new PrimitiveArrayServiceObject(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

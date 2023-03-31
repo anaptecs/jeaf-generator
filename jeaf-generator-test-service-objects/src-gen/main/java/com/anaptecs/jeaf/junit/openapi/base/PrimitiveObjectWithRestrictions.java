@@ -658,7 +658,9 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
      * @return PrimitiveObjectWithRestrictions Created object. The method never returns null.
      */
     public PrimitiveObjectWithRestrictions build( ) {
-      return new PrimitiveObjectWithRestrictions(this);
+      PrimitiveObjectWithRestrictions lObject = new PrimitiveObjectWithRestrictions(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

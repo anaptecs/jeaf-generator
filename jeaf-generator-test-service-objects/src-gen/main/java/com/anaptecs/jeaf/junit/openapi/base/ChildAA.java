@@ -325,7 +325,9 @@ public class ChildAA extends ChildA {
      * @return ChildAA Created object. The method never returns null.
      */
     public ChildAA build( ) {
-      return new ChildAA(this);
+      ChildAA lObject = new ChildAA(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

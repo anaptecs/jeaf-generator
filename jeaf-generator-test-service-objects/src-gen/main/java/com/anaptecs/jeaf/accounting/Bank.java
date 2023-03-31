@@ -196,7 +196,9 @@ public class Bank implements ServiceObject, Identifiable<ServiceObjectID> {
      * @return Bank Created object. The method never returns null.
      */
     public Bank build( ) {
-      return new Bank(this);
+      Bank lObject = new Bank(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

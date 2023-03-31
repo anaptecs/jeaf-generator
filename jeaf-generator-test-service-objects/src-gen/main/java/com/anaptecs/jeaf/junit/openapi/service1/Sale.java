@@ -135,7 +135,9 @@ public class Sale implements ServiceObject {
      * @return Sale Created object. The method never returns null.
      */
     public Sale build( ) {
-      return new Sale(this);
+      Sale lObject = new Sale(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

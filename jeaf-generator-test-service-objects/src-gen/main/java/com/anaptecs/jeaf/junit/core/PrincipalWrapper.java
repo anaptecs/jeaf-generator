@@ -106,7 +106,9 @@ public class PrincipalWrapper implements ServiceObject {
      * @return PrincipalWrapper Created object. The method never returns null.
      */
     public PrincipalWrapper build( ) {
-      return new PrincipalWrapper(this);
+      PrincipalWrapper lObject = new PrincipalWrapper(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

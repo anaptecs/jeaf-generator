@@ -128,7 +128,9 @@ public class ParentBeanParamType implements ServiceObject {
      * @return ParentBeanParamType Created object. The method never returns null.
      */
     public ParentBeanParamType build( ) {
-      return new ParentBeanParamType(this);
+      ParentBeanParamType lObject = new ParentBeanParamType(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

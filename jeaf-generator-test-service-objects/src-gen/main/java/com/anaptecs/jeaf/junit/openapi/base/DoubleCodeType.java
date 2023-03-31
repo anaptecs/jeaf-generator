@@ -106,7 +106,9 @@ public class DoubleCodeType implements ServiceObject {
      * @return DoubleCodeType Created object. The method never returns null.
      */
     public DoubleCodeType build( ) {
-      return new DoubleCodeType(this);
+      DoubleCodeType lObject = new DoubleCodeType(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

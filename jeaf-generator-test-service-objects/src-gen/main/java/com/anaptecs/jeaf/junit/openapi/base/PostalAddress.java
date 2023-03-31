@@ -173,7 +173,9 @@ public class PostalAddress implements ServiceObject {
      * @return PostalAddress Created object. The method never returns null.
      */
     public PostalAddress build( ) {
-      return new PostalAddress(this);
+      PostalAddress lObject = new PostalAddress(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

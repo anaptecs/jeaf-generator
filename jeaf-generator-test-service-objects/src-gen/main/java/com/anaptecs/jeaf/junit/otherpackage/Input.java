@@ -78,7 +78,9 @@ public class Input implements ServiceObject {
      * @return Input Created object. The method never returns null.
      */
     public Input build( ) {
-      return new Input(this);
+      Input lObject = new Input(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

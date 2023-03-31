@@ -215,7 +215,9 @@ public class Context implements ServiceObject {
      * @return Context Created object. The method never returns null.
      */
     public Context build( ) {
-      return new Context(this);
+      Context lObject = new Context(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

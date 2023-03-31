@@ -245,7 +245,9 @@ public class POI extends Stop {
      * @return POI Created object. The method never returns null.
      */
     public POI build( ) {
-      return new POI(this);
+      POI lObject = new POI(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

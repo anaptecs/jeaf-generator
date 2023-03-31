@@ -103,7 +103,9 @@ public class LinkObject implements ServiceObject {
      * @return LinkObject Created object. The method never returns null.
      */
     public LinkObject build( ) {
-      return new LinkObject(this);
+      LinkObject lObject = new LinkObject(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

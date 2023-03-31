@@ -162,7 +162,9 @@ public class Leg implements ServiceObject {
      * @return Leg Created object. The method never returns null.
      */
     public Leg build( ) {
-      return new Leg(this);
+      Leg lObject = new Leg(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

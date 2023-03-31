@@ -156,7 +156,9 @@ public class BeanParameter implements ServiceObject {
      * @return BeanParameter Created object. The method never returns null.
      */
     public BeanParameter build( ) {
-      return new BeanParameter(this);
+      BeanParameter lObject = new BeanParameter(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

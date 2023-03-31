@@ -80,7 +80,9 @@ public class InputSubclass extends Input {
      * @return InputSubclass Created object. The method never returns null.
      */
     public InputSubclass build( ) {
-      return new InputSubclass(this);
+      InputSubclass lObject = new InputSubclass(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

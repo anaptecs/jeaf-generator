@@ -322,7 +322,9 @@ public class DateQueryParamsBean implements ServiceObject {
      * @return DateQueryParamsBean Created object. The method never returns null.
      */
     public DateQueryParamsBean build( ) {
-      return new DateQueryParamsBean(this);
+      DateQueryParamsBean lObject = new DateQueryParamsBean(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

@@ -160,7 +160,9 @@ public class IdentifiableServiceObject implements ServiceObject, Identifiable<Se
      * @return IdentifiableServiceObject Created object. The method never returns null.
      */
     public IdentifiableServiceObject build( ) {
-      return new IdentifiableServiceObject(this);
+      IdentifiableServiceObject lObject = new IdentifiableServiceObject(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

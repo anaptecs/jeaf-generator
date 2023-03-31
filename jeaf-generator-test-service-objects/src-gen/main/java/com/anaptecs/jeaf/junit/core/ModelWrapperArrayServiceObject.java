@@ -111,7 +111,9 @@ public class ModelWrapperArrayServiceObject implements ServiceObject {
      * @return ModelWrapperArrayServiceObject Created object. The method never returns null.
      */
     public ModelWrapperArrayServiceObject build( ) {
-      return new ModelWrapperArrayServiceObject(this);
+      ModelWrapperArrayServiceObject lObject = new ModelWrapperArrayServiceObject(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

@@ -272,7 +272,9 @@ public class WrapperDatatypeServiceObject implements ServiceObject {
      * @return WrapperDatatypeServiceObject Created object. The method never returns null.
      */
     public WrapperDatatypeServiceObject build( ) {
-      return new WrapperDatatypeServiceObject(this);
+      WrapperDatatypeServiceObject lObject = new WrapperDatatypeServiceObject(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

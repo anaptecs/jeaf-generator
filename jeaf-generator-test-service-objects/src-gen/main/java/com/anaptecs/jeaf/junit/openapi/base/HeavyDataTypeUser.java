@@ -265,7 +265,9 @@ public class HeavyDataTypeUser implements ServiceObject {
      * @return HeavyDataTypeUser Created object. The method never returns null.
      */
     public HeavyDataTypeUser build( ) {
-      return new HeavyDataTypeUser(this);
+      HeavyDataTypeUser lObject = new HeavyDataTypeUser(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

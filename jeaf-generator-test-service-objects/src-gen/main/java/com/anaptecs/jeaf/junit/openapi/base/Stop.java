@@ -202,7 +202,9 @@ public class Stop implements ServiceObject {
      * @return Stop Created object. The method never returns null.
      */
     public Stop build( ) {
-      return new Stop(this);
+      Stop lObject = new Stop(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

@@ -188,7 +188,9 @@ public class DeprecatedContext implements ServiceObject {
      * @return DeprecatedContext Created object. The method never returns null.
      */
     public DeprecatedContext build( ) {
-      return new DeprecatedContext(this);
+      DeprecatedContext lObject = new DeprecatedContext(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

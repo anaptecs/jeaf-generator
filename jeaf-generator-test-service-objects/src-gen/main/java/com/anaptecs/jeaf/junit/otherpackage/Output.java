@@ -78,7 +78,9 @@ public class Output implements ServiceObject {
      * @return Output Created object. The method never returns null.
      */
     public Output build( ) {
-      return new Output(this);
+      Output lObject = new Output(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

@@ -106,7 +106,9 @@ public class LongCodeType implements ServiceObject {
      * @return LongCodeType Created object. The method never returns null.
      */
     public LongCodeType build( ) {
-      return new LongCodeType(this);
+      LongCodeType lObject = new LongCodeType(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

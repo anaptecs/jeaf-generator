@@ -141,7 +141,9 @@ public class SubclassWithoutID extends IdentifiableServiceObject {
      * @return SubclassWithoutID Created object. The method never returns null.
      */
     public SubclassWithoutID build( ) {
-      return new SubclassWithoutID(this);
+      SubclassWithoutID lObject = new SubclassWithoutID(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

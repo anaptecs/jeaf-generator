@@ -109,7 +109,9 @@ public class BookingCode implements ServiceObject {
      * @return BookingCode Created object. The method never returns null.
      */
     public BookingCode build( ) {
-      return new BookingCode(this);
+      BookingCode lObject = new BookingCode(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

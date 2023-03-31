@@ -109,7 +109,9 @@ public class ProductCode implements ServiceObject {
      * @return ProductCode Created object. The method never returns null.
      */
     public ProductCode build( ) {
-      return new ProductCode(this);
+      ProductCode lObject = new ProductCode(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

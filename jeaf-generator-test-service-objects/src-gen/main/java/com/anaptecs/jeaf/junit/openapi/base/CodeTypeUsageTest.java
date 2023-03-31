@@ -222,7 +222,9 @@ public class CodeTypeUsageTest implements ServiceObject {
      * @return CodeTypeUsageTest Created object. The method never returns null.
      */
     public CodeTypeUsageTest build( ) {
-      return new CodeTypeUsageTest(this);
+      CodeTypeUsageTest lObject = new CodeTypeUsageTest(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

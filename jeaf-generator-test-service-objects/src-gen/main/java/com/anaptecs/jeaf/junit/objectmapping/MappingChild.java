@@ -117,7 +117,9 @@ public class MappingChild extends MappingParent {
      * @return MappingChild Created object. The method never returns null.
      */
     public MappingChild build( ) {
-      return new MappingChild(this);
+      MappingChild lObject = new MappingChild(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

@@ -160,7 +160,9 @@ public class DirectedEdge implements ServiceObject {
      * @return DirectedEdge Created object. The method never returns null.
      */
     public DirectedEdge build( ) {
-      return new DirectedEdge(this);
+      DirectedEdge lObject = new DirectedEdge(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

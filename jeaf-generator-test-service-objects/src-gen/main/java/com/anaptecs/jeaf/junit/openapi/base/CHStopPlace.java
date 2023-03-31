@@ -93,7 +93,9 @@ public class CHStopPlace extends StopPlaceRef {
      * @return CHStopPlace Created object. The method never returns null.
      */
     public CHStopPlace build( ) {
-      return new CHStopPlace(this);
+      CHStopPlace lObject = new CHStopPlace(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

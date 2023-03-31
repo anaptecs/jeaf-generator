@@ -120,7 +120,9 @@ public class PartnerContainer implements ServiceObject {
      * @return PartnerContainer Created object. The method never returns null.
      */
     public PartnerContainer build( ) {
-      return new PartnerContainer(this);
+      PartnerContainer lObject = new PartnerContainer(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

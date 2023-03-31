@@ -325,7 +325,9 @@ public class WeirdBooking extends WeirdParent {
      * @return WeirdBooking Created object. The method never returns null.
      */
     public WeirdBooking build( ) {
-      return new WeirdBooking(this);
+      WeirdBooking lObject = new WeirdBooking(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

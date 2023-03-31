@@ -116,7 +116,9 @@ public class BusinessA extends TechParent {
      * @return BusinessA Created object. The method never returns null.
      */
     public BusinessA build( ) {
-      return new BusinessA(this);
+      BusinessA lObject = new BusinessA(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

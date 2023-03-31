@@ -221,7 +221,9 @@ public class ParentClass implements ServiceObject {
      * @return ParentClass Created object. The method never returns null.
      */
     public ParentClass build( ) {
-      return new ParentClass(this);
+      ParentClass lObject = new ParentClass(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

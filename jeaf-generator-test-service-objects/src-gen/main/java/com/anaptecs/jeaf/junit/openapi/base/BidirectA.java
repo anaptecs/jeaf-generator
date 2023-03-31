@@ -173,7 +173,9 @@ public class BidirectA implements ServiceObject {
      * @return BidirectA Created object. The method never returns null.
      */
     public BidirectA build( ) {
-      return new BidirectA(this);
+      BidirectA lObject = new BidirectA(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

@@ -91,7 +91,9 @@ public class TopoRef extends PlaceRef {
      * @return TopoRef Created object. The method never returns null.
      */
     public TopoRef build( ) {
-      return new TopoRef(this);
+      TopoRef lObject = new TopoRef(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

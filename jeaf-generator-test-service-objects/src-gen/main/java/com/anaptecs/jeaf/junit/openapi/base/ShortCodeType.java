@@ -106,7 +106,9 @@ public class ShortCodeType implements ServiceObject {
      * @return ShortCodeType Created object. The method never returns null.
      */
     public ShortCodeType build( ) {
-      return new ShortCodeType(this);
+      ShortCodeType lObject = new ShortCodeType(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

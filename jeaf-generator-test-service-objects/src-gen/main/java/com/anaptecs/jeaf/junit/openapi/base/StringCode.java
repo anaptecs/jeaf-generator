@@ -105,7 +105,9 @@ public class StringCode implements ServiceObject {
      * @return StringCode Created object. The method never returns null.
      */
     public StringCode build( ) {
-      return new StringCode(this);
+      StringCode lObject = new StringCode(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

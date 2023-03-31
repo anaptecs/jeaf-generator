@@ -128,7 +128,9 @@ public class SessionContextValues implements ServiceObject {
      * @return SessionContextValues Created object. The method never returns null.
      */
     public SessionContextValues build( ) {
-      return new SessionContextValues(this);
+      SessionContextValues lObject = new SessionContextValues(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

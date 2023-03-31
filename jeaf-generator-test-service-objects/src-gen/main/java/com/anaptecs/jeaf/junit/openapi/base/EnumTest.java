@@ -142,7 +142,9 @@ public class EnumTest implements ServiceObject {
      * @return EnumTest Created object. The method never returns null.
      */
     public EnumTest build( ) {
-      return new EnumTest(this);
+      EnumTest lObject = new EnumTest(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

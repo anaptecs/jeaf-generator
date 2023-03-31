@@ -197,7 +197,9 @@ public class TheReadOnlyServiceObject implements ServiceObject {
      * @return TheReadOnlyServiceObject Created object. The method never returns null.
      */
     public TheReadOnlyServiceObject build( ) {
-      return new TheReadOnlyServiceObject(this);
+      TheReadOnlyServiceObject lObject = new TheReadOnlyServiceObject(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

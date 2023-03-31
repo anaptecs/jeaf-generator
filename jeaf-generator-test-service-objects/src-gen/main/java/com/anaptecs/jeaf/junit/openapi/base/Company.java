@@ -128,7 +128,9 @@ public class Company extends Partner {
      * @return Company Created object. The method never returns null.
      */
     public Company build( ) {
-      return new Company(this);
+      Company lObject = new Company(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

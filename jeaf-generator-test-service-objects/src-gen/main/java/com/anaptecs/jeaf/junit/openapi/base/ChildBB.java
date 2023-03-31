@@ -316,7 +316,9 @@ public class ChildBB extends ChildB {
      * @return ChildBB Created object. The method never returns null.
      */
     public ChildBB build( ) {
-      return new ChildBB(this);
+      ChildBB lObject = new ChildBB(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

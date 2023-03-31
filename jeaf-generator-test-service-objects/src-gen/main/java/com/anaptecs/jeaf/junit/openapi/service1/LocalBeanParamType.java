@@ -150,7 +150,9 @@ public class LocalBeanParamType implements ServiceObject {
      * @return LocalBeanParamType Created object. The method never returns null.
      */
     public LocalBeanParamType build( ) {
-      return new LocalBeanParamType(this);
+      LocalBeanParamType lObject = new LocalBeanParamType(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

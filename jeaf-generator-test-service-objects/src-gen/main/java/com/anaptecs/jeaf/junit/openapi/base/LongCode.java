@@ -104,7 +104,9 @@ public class LongCode implements ServiceObject {
      * @return LongCode Created object. The method never returns null.
      */
     public LongCode build( ) {
-      return new LongCode(this);
+      LongCode lObject = new LongCode(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

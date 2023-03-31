@@ -171,7 +171,9 @@ public class SpecialContext extends Context {
      * @return SpecialContext Created object. The method never returns null.
      */
     public SpecialContext build( ) {
-      return new SpecialContext(this);
+      SpecialContext lObject = new SpecialContext(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

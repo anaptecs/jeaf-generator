@@ -109,7 +109,9 @@ public class IntegerCode implements ServiceObject {
      * @return IntegerCode Created object. The method never returns null.
      */
     public IntegerCode build( ) {
-      return new IntegerCode(this);
+      IntegerCode lObject = new IntegerCode(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

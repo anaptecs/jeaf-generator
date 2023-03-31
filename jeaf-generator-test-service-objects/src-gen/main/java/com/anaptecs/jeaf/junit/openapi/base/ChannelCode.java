@@ -120,7 +120,9 @@ public class ChannelCode implements ServiceObject {
      * @return ChannelCode Created object. The method never returns null.
      */
     public ChannelCode build( ) {
-      return new ChannelCode(this);
+      ChannelCode lObject = new ChannelCode(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

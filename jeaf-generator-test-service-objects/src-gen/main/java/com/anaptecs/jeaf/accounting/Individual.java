@@ -178,7 +178,9 @@ public class Individual extends Customer {
      * @return Individual Created object. The method never returns null.
      */
     public Individual build( ) {
-      return new Individual(this);
+      Individual lObject = new Individual(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

@@ -132,7 +132,9 @@ public class ChildBeanParameterType extends ParentBeanParamType {
      * @return ChildBeanParameterType Created object. The method never returns null.
      */
     public ChildBeanParameterType build( ) {
-      return new ChildBeanParameterType(this);
+      ChildBeanParameterType lObject = new ChildBeanParameterType(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

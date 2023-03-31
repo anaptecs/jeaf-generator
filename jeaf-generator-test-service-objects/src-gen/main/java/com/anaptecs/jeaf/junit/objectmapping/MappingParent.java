@@ -104,7 +104,9 @@ public class MappingParent implements ServiceObject {
      * @return MappingParent Created object. The method never returns null.
      */
     public MappingParent build( ) {
-      return new MappingParent(this);
+      MappingParent lObject = new MappingParent(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

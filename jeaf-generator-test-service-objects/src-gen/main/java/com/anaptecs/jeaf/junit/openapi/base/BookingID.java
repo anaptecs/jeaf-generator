@@ -176,7 +176,9 @@ public class BookingID implements ServiceObject {
      * @return BookingID Created object. The method never returns null.
      */
     public BookingID build( ) {
-      return new BookingID(this);
+      BookingID lObject = new BookingID(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

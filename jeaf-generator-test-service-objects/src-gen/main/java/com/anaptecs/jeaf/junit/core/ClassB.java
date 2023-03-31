@@ -175,7 +175,9 @@ public class ClassB implements ServiceObject, Identifiable<ServiceObjectID> {
      * @return ClassB Created object. The method never returns null.
      */
     public ClassB build( ) {
-      return new ClassB(this);
+      ClassB lObject = new ClassB(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

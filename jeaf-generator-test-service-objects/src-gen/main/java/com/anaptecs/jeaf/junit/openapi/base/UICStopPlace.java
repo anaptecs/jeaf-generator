@@ -93,7 +93,9 @@ public class UICStopPlace extends StopPlaceRef {
      * @return UICStopPlace Created object. The method never returns null.
      */
     public UICStopPlace build( ) {
-      return new UICStopPlace(this);
+      UICStopPlace lObject = new UICStopPlace(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

@@ -152,7 +152,9 @@ public class SchufaRequest implements ServiceObject {
      * @return SchufaRequest Created object. The method never returns null.
      */
     public SchufaRequest build( ) {
-      return new SchufaRequest(this);
+      SchufaRequest lObject = new SchufaRequest(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

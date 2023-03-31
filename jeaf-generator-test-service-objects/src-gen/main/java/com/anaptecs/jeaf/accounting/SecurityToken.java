@@ -162,7 +162,9 @@ public class SecurityToken implements ServiceObject {
      * @return SecurityToken Created object. The method never returns null.
      */
     public SecurityToken build( ) {
-      return new SecurityToken(this);
+      SecurityToken lObject = new SecurityToken(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

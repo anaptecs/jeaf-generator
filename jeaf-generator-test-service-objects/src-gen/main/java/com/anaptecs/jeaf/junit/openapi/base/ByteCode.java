@@ -104,7 +104,9 @@ public class ByteCode implements ServiceObject {
      * @return ByteCode Created object. The method never returns null.
      */
     public ByteCode build( ) {
-      return new ByteCode(this);
+      ByteCode lObject = new ByteCode(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

@@ -106,7 +106,9 @@ public class BooleanCodeType implements ServiceObject {
      * @return BooleanCodeType Created object. The method never returns null.
      */
     public BooleanCodeType build( ) {
-      return new BooleanCodeType(this);
+      BooleanCodeType lObject = new BooleanCodeType(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

@@ -150,7 +150,9 @@ public class Partner implements ServiceObject, Identifiable<ServiceObjectID> {
      * @return Partner Created object. The method never returns null.
      */
     public Partner build( ) {
-      return new Partner(this);
+      Partner lObject = new Partner(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

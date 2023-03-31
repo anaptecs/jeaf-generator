@@ -165,7 +165,9 @@ public class WeirdParent implements ServiceObject {
      * @return WeirdParent Created object. The method never returns null.
      */
     public WeirdParent build( ) {
-      return new WeirdParent(this);
+      WeirdParent lObject = new WeirdParent(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

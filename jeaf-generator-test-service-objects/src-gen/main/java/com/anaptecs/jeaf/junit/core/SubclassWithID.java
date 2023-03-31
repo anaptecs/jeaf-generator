@@ -141,7 +141,9 @@ public class SubclassWithID extends IdentifiableServiceObject {
      * @return SubclassWithID Created object. The method never returns null.
      */
     public SubclassWithID build( ) {
-      return new SubclassWithID(this);
+      SubclassWithID lObject = new SubclassWithID(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

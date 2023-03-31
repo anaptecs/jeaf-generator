@@ -120,7 +120,9 @@ public class CurrencyCode implements ServiceObject {
      * @return CurrencyCode Created object. The method never returns null.
      */
     public CurrencyCode build( ) {
-      return new CurrencyCode(this);
+      CurrencyCode lObject = new CurrencyCode(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

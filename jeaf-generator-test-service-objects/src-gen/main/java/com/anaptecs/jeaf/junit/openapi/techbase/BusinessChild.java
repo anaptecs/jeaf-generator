@@ -130,7 +130,9 @@ public class BusinessChild extends BusinessParent {
      * @return BusinessChild Created object. The method never returns null.
      */
     public BusinessChild build( ) {
-      return new BusinessChild(this);
+      BusinessChild lObject = new BusinessChild(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

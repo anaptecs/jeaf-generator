@@ -286,7 +286,9 @@ public class MultiValuedDataType implements ServiceObject {
      * @return MultiValuedDataType Created object. The method never returns null.
      */
     public MultiValuedDataType build( ) {
-      return new MultiValuedDataType(this);
+      MultiValuedDataType lObject = new MultiValuedDataType(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

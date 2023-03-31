@@ -134,7 +134,9 @@ public class DiscountOffer implements ServiceObject {
      * @return DiscountOffer Created object. The method never returns null.
      */
     public DiscountOffer build( ) {
-      return new DiscountOffer(this);
+      DiscountOffer lObject = new DiscountOffer(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

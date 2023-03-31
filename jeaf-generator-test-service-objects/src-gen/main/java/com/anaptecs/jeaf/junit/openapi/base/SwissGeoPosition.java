@@ -119,7 +119,9 @@ public class SwissGeoPosition extends GeoPosition {
      * @return SwissGeoPosition Created object. The method never returns null.
      */
     public SwissGeoPosition build( ) {
-      return new SwissGeoPosition(this);
+      SwissGeoPosition lObject = new SwissGeoPosition(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

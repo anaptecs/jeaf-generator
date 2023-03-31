@@ -243,7 +243,9 @@ public class UICStop extends Stop {
      * @return UICStop Created object. The method never returns null.
      */
     public UICStop build( ) {
-      return new UICStop(this);
+      UICStop lObject = new UICStop(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

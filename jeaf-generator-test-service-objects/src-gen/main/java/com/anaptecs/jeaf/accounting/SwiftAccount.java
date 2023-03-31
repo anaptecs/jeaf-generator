@@ -187,7 +187,9 @@ public class SwiftAccount extends Account {
      * @return SwiftAccount Created object. The method never returns null.
      */
     public SwiftAccount build( ) {
-      return new SwiftAccount(this);
+      SwiftAccount lObject = new SwiftAccount(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

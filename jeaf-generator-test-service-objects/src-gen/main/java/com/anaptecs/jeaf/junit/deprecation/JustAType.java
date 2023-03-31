@@ -137,7 +137,9 @@ public class JustAType implements ServiceObject {
      * @return JustAType Created object. The method never returns null.
      */
     public JustAType build( ) {
-      return new JustAType(this);
+      JustAType lObject = new JustAType(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

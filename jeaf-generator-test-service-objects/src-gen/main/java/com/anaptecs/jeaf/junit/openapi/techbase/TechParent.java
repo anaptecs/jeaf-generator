@@ -103,7 +103,9 @@ public class TechParent implements ServiceObject {
      * @return TechParent Created object. The method never returns null.
      */
     public TechParent build( ) {
-      return new TechParent(this);
+      TechParent lObject = new TechParent(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

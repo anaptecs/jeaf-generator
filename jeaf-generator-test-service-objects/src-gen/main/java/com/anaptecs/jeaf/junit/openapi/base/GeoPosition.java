@@ -140,7 +140,9 @@ public class GeoPosition extends PlaceRef {
      * @return GeoPosition Created object. The method never returns null.
      */
     public GeoPosition build( ) {
-      return new GeoPosition(this);
+      GeoPosition lObject = new GeoPosition(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

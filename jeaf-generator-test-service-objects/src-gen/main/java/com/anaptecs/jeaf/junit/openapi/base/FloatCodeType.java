@@ -106,7 +106,9 @@ public class FloatCodeType implements ServiceObject {
      * @return FloatCodeType Created object. The method never returns null.
      */
     public FloatCodeType build( ) {
-      return new FloatCodeType(this);
+      FloatCodeType lObject = new FloatCodeType(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

@@ -104,7 +104,9 @@ public class IgnoringClass implements ServiceObject {
      * @return IgnoringClass Created object. The method never returns null.
      */
     public IgnoringClass build( ) {
-      return new IgnoringClass(this);
+      IgnoringClass lObject = new IgnoringClass(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

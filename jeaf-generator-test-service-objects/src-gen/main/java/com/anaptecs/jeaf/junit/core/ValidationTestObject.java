@@ -139,7 +139,9 @@ public class ValidationTestObject implements ServiceObject {
      * @return ValidationTestObject Created object. The method never returns null.
      */
     public ValidationTestObject build( ) {
-      return new ValidationTestObject(this);
+      ValidationTestObject lObject = new ValidationTestObject(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

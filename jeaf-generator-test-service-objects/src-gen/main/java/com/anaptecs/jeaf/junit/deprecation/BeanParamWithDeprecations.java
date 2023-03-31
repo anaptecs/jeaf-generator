@@ -142,7 +142,9 @@ public class BeanParamWithDeprecations implements ServiceObject {
      * @return BeanParamWithDeprecations Created object. The method never returns null.
      */
     public BeanParamWithDeprecations build( ) {
-      return new BeanParamWithDeprecations(this);
+      BeanParamWithDeprecations lObject = new BeanParamWithDeprecations(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

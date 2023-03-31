@@ -230,7 +230,9 @@ public class Campaign implements ServiceObject {
      * @return Campaign Created object. The method never returns null.
      */
     public Campaign build( ) {
-      return new Campaign(this);
+      Campaign lObject = new Campaign(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

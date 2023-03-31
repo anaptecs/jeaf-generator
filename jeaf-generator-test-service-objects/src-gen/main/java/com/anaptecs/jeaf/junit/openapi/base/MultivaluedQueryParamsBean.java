@@ -169,7 +169,9 @@ public class MultivaluedQueryParamsBean implements ServiceObject {
      * @return MultivaluedQueryParamsBean Created object. The method never returns null.
      */
     public MultivaluedQueryParamsBean build( ) {
-      return new MultivaluedQueryParamsBean(this);
+      MultivaluedQueryParamsBean lObject = new MultivaluedQueryParamsBean(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

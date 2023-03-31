@@ -110,7 +110,9 @@ public class DataTypeWithConstraints implements ServiceObject {
      * @return DataTypeWithConstraints Created object. The method never returns null.
      */
     public DataTypeWithConstraints build( ) {
-      return new DataTypeWithConstraints(this);
+      DataTypeWithConstraints lObject = new DataTypeWithConstraints(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

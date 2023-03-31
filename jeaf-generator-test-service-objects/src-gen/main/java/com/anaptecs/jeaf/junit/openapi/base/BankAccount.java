@@ -104,7 +104,9 @@ public class BankAccount implements ServiceObject {
      * @return BankAccount Created object. The method never returns null.
      */
     public BankAccount build( ) {
-      return new BankAccount(this);
+      BankAccount lObject = new BankAccount(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

@@ -104,7 +104,9 @@ public class IBAN implements ServiceObject {
      * @return IBAN Created object. The method never returns null.
      */
     public IBAN build( ) {
-      return new IBAN(this);
+      IBAN lObject = new IBAN(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

@@ -174,7 +174,9 @@ public class NotInlinedBeanParam implements ServiceObject {
      * @return NotInlinedBeanParam Created object. The method never returns null.
      */
     public NotInlinedBeanParam build( ) {
-      return new NotInlinedBeanParam(this);
+      NotInlinedBeanParam lObject = new NotInlinedBeanParam(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

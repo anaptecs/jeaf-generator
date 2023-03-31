@@ -127,7 +127,9 @@ public class OtherMappingObject implements ServiceObject {
      * @return OtherMappingObject Created object. The method never returns null.
      */
     public OtherMappingObject build( ) {
-      return new OtherMappingObject(this);
+      OtherMappingObject lObject = new OtherMappingObject(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

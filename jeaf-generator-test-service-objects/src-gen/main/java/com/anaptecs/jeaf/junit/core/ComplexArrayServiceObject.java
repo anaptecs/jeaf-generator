@@ -111,7 +111,9 @@ public class ComplexArrayServiceObject implements ServiceObject {
      * @return ComplexArrayServiceObject Created object. The method never returns null.
      */
     public ComplexArrayServiceObject build( ) {
-      return new ComplexArrayServiceObject(this);
+      ComplexArrayServiceObject lObject = new ComplexArrayServiceObject(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

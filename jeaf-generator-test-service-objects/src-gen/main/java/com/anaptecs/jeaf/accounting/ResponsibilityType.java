@@ -182,7 +182,9 @@ public class ResponsibilityType implements ServiceObject, Identifiable<ServiceOb
      * @return ResponsibilityType Created object. The method never returns null.
      */
     public ResponsibilityType build( ) {
-      return new ResponsibilityType(this);
+      ResponsibilityType lObject = new ResponsibilityType(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**
