@@ -94,7 +94,7 @@
 
 
 
-## Deprecated Classes
+## Classes with Deprecations
 
 <br>
 
@@ -151,7 +151,7 @@
 <br>
 
 
-## Deprecated Enumerations
+## Enumerations with Deprecations
 
 <br>
 

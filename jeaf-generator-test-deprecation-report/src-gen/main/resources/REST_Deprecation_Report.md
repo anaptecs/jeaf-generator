@@ -51,7 +51,7 @@
 
 <br>
 
-## Deprecated OpenAPI Types
+## OpenAPI Types with Deprecations
 
 <br>
 
@@ -85,7 +85,7 @@
 <br>
 
 
-## Deprecated OpenAPI Enumerations
+## OpenAPI Enumerations with Deprecations
 
 <br>
 
