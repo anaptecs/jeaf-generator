@@ -52,10 +52,10 @@
 | Operation   |  Parameter   | Description   | Deprecated since   | Planned to be removed   |
 |-------------|--------------|---------------|:------------------:|:-----------------------:|
 «FOREACH service.getDeprecatedOperations().sortBy(e|e.name) AS operation-»
-| `«EXPAND OperationName FOR operation»` | | «operation.getDeprecationDescription()» | «operation.getDeprecatedSince()» | «operation.getDeprecationRemoval()» |
+| `«EXPAND OperationName FOR operation»` | | «operation.getDeprecationDescriptionForMarkup()» | «operation.getDeprecatedSince()» | «operation.getDeprecationRemoval()» |
     «IF operation.hasDeprecatedParameters()-»
         «FOREACH operation.getDeprecatedParameters() AS param-»
-|   | `«EXPAND OperationParamName FOR param»` | «param.getDeprecationDescription()» | «param.getDeprecatedSince()» | «param.getDeprecationRemoval()» |
+|   | `«EXPAND OperationParamName FOR param»` | «param.getDeprecationDescriptionForMarkup()» | «param.getDeprecatedSince()» | «param.getDeprecationRemoval()» |
         «ENDFOREACH-»
     «ENDIF-»
 «ENDFOREACH-»
@@ -65,17 +65,17 @@
 «ENDIF»
 «ENDFOREACH»
 
-## Deprecated Classes
+## Classes with Deprecations
 
 <br>
 
 | Type   | Attribute   | Description   | Deprecated since   | Planned to be removed   |
 |--------|-------------|---------------|:------------------:|:-----------------------:|
 «FOREACH deprecations.select(e|e.isPOJO() || e.isServiceObject() || e.isDomainObject() || e.isPersistentObject()).sortBy(e|e.fqn()) AS element-»
-| `«element.fqn()»` | | «element.getDeprecationDescription()» | «element.getDeprecatedSince()» | «element.getDeprecationRemoval()» |
+| `«element.fqn()»` | | «element.getDeprecationDescriptionForMarkup()» | «element.getDeprecatedSince()» | «element.getDeprecationRemoval()» |
     «IF element.asClass().hasDeprecatedProperties()-»
         «FOREACH element.asClass().getDeprecatedProperties() AS property-»
-|   | `«property.name»` | «property.getDeprecationDescription()» | «property.getDeprecatedSince()» | «property.getDeprecationRemoval()» |
+|   | `«property.name»` | «property.getDeprecationDescriptionForMarkup()» | «property.getDeprecatedSince()» | «property.getDeprecationRemoval()» |
         «ENDFOREACH-»
     «ENDIF-»
 «ENDFOREACH-»
@@ -86,17 +86,17 @@
 <br>
 
 
-## Deprecated Enumerations
+## Enumerations with Deprecations
 
 <br>
 
 | Enumeration   | Literal   | Description   | Deprecated since   | Planned to be removed   |
 |---------------|-----------|---------------|:------------------:|:-----------------------:|
 «FOREACH deprecations.select(e|e.isJEAFEnumeration()).select(e|e.hasDeprecation()).sortBy(e|e.fqn()) AS element-»
-| `«element.fqn()»` | | «element.getDeprecationDescription()» | «element.getDeprecatedSince()» | «element.getDeprecationRemoval()» |
+| `«element.fqn()»` | | «element.getDeprecationDescriptionForMarkup()» | «element.getDeprecatedSince()» | «element.getDeprecationRemoval()» |
     «IF element.asJEAFEnumeration().hasDeprecatedLiterals()-»
         «FOREACH element.asJEAFEnumeration().getDeprecatedLiterals() AS literal-»
-|   | `«literal.name»` | «literal.getDeprecationDescription()» | «literal.getDeprecatedSince()» | «literal.getDeprecationRemoval()» |
+|   | `«literal.name»` | «literal.getDeprecationDescriptionForMarkup()» | «literal.getDeprecatedSince()» | «literal.getDeprecationRemoval()» |
         «ENDFOREACH-»
     «ENDIF-»
 «ENDFOREACH-»

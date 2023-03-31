@@ -83,11 +83,7 @@
 | `deprecatedAsyncParam(int)` | |  |  |  |
 |   | `int pParam1` |  |  |  |
 |   | `String ` |  |  |  |
-| `deprecatedOperation()` | | Please use something else.
-
-This is not the right operation any longer.
-
-Sorry!!! | a very long time | 2023-12-13 |
+| `deprecatedOperation()` | | Please use something else.<br><br>This is not the right operation any longer.<br><br>Sorry!!! | a very long time | 2023-12-13 |
 | `deprecatedParameter(int, int)` | |  |  |  |
 |   | `int pParam2` |  |  |  |
 | `deprectaedReturnValue(int)` | |  |  |  |
@@ -98,7 +94,7 @@ Sorry!!! | a very long time | 2023-12-13 |
 
 
 
-## Deprecated Classes
+## Classes with Deprecations
 
 <br>
 
@@ -155,7 +151,7 @@ Sorry!!! | a very long time | 2023-12-13 |
 <br>
 
 
-## Deprecated Enumerations
+## Enumerations with Deprecations
 
 <br>
 

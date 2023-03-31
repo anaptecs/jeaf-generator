@@ -50,13 +50,13 @@
 | Path   | Type   | Deprecated Element   | Description   | Deprecated since   | Planned to be removed   |
 |--------|--------|----------------------|---------------|:------------------:|:-----------------------:|
 «FOREACH deprecations.typeSelect(RESTOperation).sortBy(e|e.getFullPath()) AS element-»
-| `«element.getFullPath()»` | `REST Operation` | `«EXPAND OperationName FOR element»` | «element.getDeprecationDescription()» | «element.getDeprecatedSince()» | «element.getDeprecationRemoval()» |
+| `«element.getFullPath()»` | `REST Operation` | `«EXPAND OperationName FOR element»` | «element.getDeprecationDescriptionForMarkup()» | «element.getDeprecatedSince()» | «element.getDeprecationRemoval()» |
     «IF element.hasDeprecatedParameters()-»
         «FOREACH element.getDeprecatedParameters() AS param-»
-|   | `«EXPAND RESTOperationParamType FOR param»` | `«EXPAND RESTOperationParamName FOR param»` | «param.getDeprecationDescription()» | «param.getDeprecatedSince()» | «param.getDeprecationRemoval()» |
+|   | `«EXPAND RESTOperationParamType FOR param»` | `«EXPAND RESTOperationParamName FOR param»` | «param.getDeprecationDescriptionForMarkup()» | «param.getDeprecatedSince()» | «param.getDeprecationRemoval()» |
         «ENDFOREACH-»
         «FOREACH element.getDeprecatedBeanParameters() AS param-»
-|   | `«EXPAND RESTOperationBeanParamType FOR param»` | `«EXPAND RESTOperationBeanParamName FOR param»` | «param.getDeprecationDescription()» | «param.getDeprecatedSince()» | «param.getDeprecationRemoval()» |
+|   | `«EXPAND RESTOperationBeanParamType FOR param»` | `«EXPAND RESTOperationBeanParamName FOR param»` | «param.getDeprecationDescriptionForMarkup()» | «param.getDeprecatedSince()» | «param.getDeprecationRemoval()» |
         «ENDFOREACH-»
     «ENDIF-»
 «ENDFOREACH-»
@@ -66,17 +66,17 @@
 
 <br>
 
-## Deprecated OpenAPI Types
+## OpenAPI Types with Deprecations
 
 <br>
 
 | Type   | Element   | Description   | Deprecated since   | Planned to be removed   |
 |--------|-----------|---------------|:------------------:|:-----------------------:|
 «FOREACH deprecations.select(e|e.isOpenAPIType() || e.isOpenAPIDataType()).sortBy(e|e.name) AS element-»
-| `«element.name»` | | «element.getDeprecationDescription()» | «element.getDeprecatedSince()» | «element.getDeprecationRemoval()» |
+| `«element.name»` | | «element.getDeprecationDescriptionForMarkup()» | «element.getDeprecatedSince()» | «element.getDeprecationRemoval()» |
     «IF element.asClass().hasDeprecatedProperties()-»
         «FOREACH element.asClass().getDeprecatedProperties() AS property-»
-|   | `«property.name»` | «property.getDeprecationDescription()» | «property.getDeprecatedSince()» | «property.getDeprecationRemoval()» |
+|   | `«property.name»` | «property.getDeprecationDescriptionForMarkup()» | «property.getDeprecatedSince()» | «property.getDeprecationRemoval()» |
         «ENDFOREACH-»
     «ENDIF-»
 «ENDFOREACH-»
@@ -87,17 +87,17 @@
 <br>
 
 
-## Deprecated OpenAPI Enumerations
+## OpenAPI Enumerations with Deprecations
 
 <br>
 
 | Enumeration   | Literal   | Description   | Deprecated since   | Planned to be removed   |
 |---------------|-----------|---------------|:------------------:|:-----------------------:|
 «FOREACH deprecations.select(e|e.isOpenAPIEnumeration()).select(e|e.hasDeprecation()).sortBy(e|e.name) AS element-»
-| `«element.name»` | | «element.getDeprecationDescription()» | «element.getDeprecatedSince()» | «element.getDeprecationRemoval()» |
+| `«element.name»` | | «element.getDeprecationDescriptionForMarkup()» | «element.getDeprecatedSince()» | «element.getDeprecationRemoval()» |
     «IF element.asEnumeration().hasDeprecatedLiterals()-»
         «FOREACH element.asEnumeration().getDeprecatedLiterals() AS literal-»
-|   | `«literal.name»` | «literal.getDeprecationDescription()» | «literal.getDeprecatedSince()» | «literal.getDeprecationRemoval()» |
+|   | `«literal.name»` | «literal.getDeprecationDescriptionForMarkup()» | «literal.getDeprecatedSince()» | «literal.getDeprecationRemoval()» |
         «ENDFOREACH-»
     «ENDIF-»
 «ENDFOREACH-»
