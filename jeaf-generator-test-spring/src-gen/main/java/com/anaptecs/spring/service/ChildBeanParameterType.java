@@ -5,6 +5,7 @@
  */
 package com.anaptecs.spring.service;
 
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.anaptecs.spring.base.ParentBeanParamType;
 
 public class ChildBeanParameterType extends ParentBeanParamType {
@@ -144,7 +145,9 @@ public class ChildBeanParameterType extends ParentBeanParamType {
      * @return ChildBeanParameterType Created object. The method never returns null.
      */
     public ChildBeanParameterType build( ) {
-      return new ChildBeanParameterType(this);
+      ChildBeanParameterType lObject = new ChildBeanParameterType(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 

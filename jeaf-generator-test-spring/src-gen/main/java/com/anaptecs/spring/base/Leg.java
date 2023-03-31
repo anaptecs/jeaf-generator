@@ -10,6 +10,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -171,7 +172,9 @@ public class Leg {
      * @return Leg Created object. The method never returns null.
      */
     public Leg build( ) {
-      return new Leg(this);
+      Leg lObject = new Leg(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 

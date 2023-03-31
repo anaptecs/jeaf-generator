@@ -7,6 +7,7 @@ package com.anaptecs.spring.base;
 
 import javax.validation.constraints.NotNull;
 
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -217,7 +218,9 @@ public class Problem {
      * @return Problem Created object. The method never returns null.
      */
     public Problem build( ) {
-      return new Problem(this);
+      Problem lObject = new Problem(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 

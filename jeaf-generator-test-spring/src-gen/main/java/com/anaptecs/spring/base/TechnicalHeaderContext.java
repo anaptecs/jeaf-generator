@@ -9,6 +9,8 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+
 public class TechnicalHeaderContext {
   /**
    * Constant for the name of attribute "reseller".
@@ -121,7 +123,9 @@ public class TechnicalHeaderContext {
      * @return TechnicalHeaderContext Created object. The method never returns null.
      */
     public TechnicalHeaderContext build( ) {
-      return new TechnicalHeaderContext(this);
+      TechnicalHeaderContext lObject = new TechnicalHeaderContext(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 

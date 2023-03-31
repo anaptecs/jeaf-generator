@@ -5,6 +5,7 @@
  */
 package com.anaptecs.spring.base;
 
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
@@ -153,7 +154,9 @@ public class Duration {
      * @return Duration Created object. The method never returns null.
      */
     public Duration build( ) {
-      return new Duration(this);
+      Duration lObject = new Duration(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 

@@ -5,6 +5,7 @@
  */
 package com.anaptecs.spring.base;
 
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -105,7 +106,9 @@ public class TopoRef extends PlaceRef {
      * @return TopoRef Created object. The method never returns null.
      */
     public TopoRef build( ) {
-      return new TopoRef(this);
+      TopoRef lObject = new TopoRef(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 

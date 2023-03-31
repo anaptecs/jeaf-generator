@@ -7,6 +7,7 @@ package com.anaptecs.spring.service;
 
 import java.math.BigDecimal;
 
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.anaptecs.spring.base.Channel;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -136,7 +137,9 @@ public class Sale {
      * @return Sale Created object. The method never returns null.
      */
     public Sale build( ) {
-      return new Sale(this);
+      Sale lObject = new Sale(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 

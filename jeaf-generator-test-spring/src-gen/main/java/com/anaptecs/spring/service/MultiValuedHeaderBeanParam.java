@@ -16,6 +16,7 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.anaptecs.spring.base.StringCode;
 
 public class MultiValuedHeaderBeanParam {
@@ -425,7 +426,9 @@ public class MultiValuedHeaderBeanParam {
      * @return MultiValuedHeaderBeanParam Created object. The method never returns null.
      */
     public MultiValuedHeaderBeanParam build( ) {
-      return new MultiValuedHeaderBeanParam(this);
+      MultiValuedHeaderBeanParam lObject = new MultiValuedHeaderBeanParam(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 

@@ -5,6 +5,7 @@
  */
 package com.anaptecs.spring.base.techbase;
 
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -135,7 +136,9 @@ public class BusinessParent extends TechParent {
      * @return BusinessParent Created object. The method never returns null.
      */
     public BusinessParent build( ) {
-      return new BusinessParent(this);
+      BusinessParent lObject = new BusinessParent(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 

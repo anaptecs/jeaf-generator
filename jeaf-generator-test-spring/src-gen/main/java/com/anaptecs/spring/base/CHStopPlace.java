@@ -5,6 +5,7 @@
  */
 package com.anaptecs.spring.base;
 
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -107,7 +108,9 @@ public class CHStopPlace extends StopPlaceRef {
      * @return CHStopPlace Created object. The method never returns null.
      */
     public CHStopPlace build( ) {
-      return new CHStopPlace(this);
+      CHStopPlace lObject = new CHStopPlace(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 

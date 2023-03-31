@@ -5,6 +5,7 @@
  */
 package com.anaptecs.spring.base;
 
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -152,7 +153,9 @@ public class EnumTest {
      * @return EnumTest Created object. The method never returns null.
      */
     public EnumTest build( ) {
-      return new EnumTest(this);
+      EnumTest lObject = new EnumTest(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 

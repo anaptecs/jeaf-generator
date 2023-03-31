@@ -17,6 +17,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.anaptecs.spring.base.BookingID;
 import com.anaptecs.spring.base.DoubleCode;
 import com.anaptecs.spring.base.IntegerCodeType;
@@ -448,7 +449,9 @@ public class DataTypesQueryBean {
      * @return DataTypesQueryBean Created object. The method never returns null.
      */
     public DataTypesQueryBean build( ) {
-      return new DataTypesQueryBean(this);
+      DataTypesQueryBean lObject = new DataTypesQueryBean(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 

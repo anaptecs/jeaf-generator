@@ -12,6 +12,8 @@ import java.util.Map;
 
 import javax.validation.constraints.NotEmpty;
 
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+
 public class Context {
   /**
    * Constant for the name of attribute "accessToken".
@@ -246,7 +248,9 @@ public class Context {
      * @return Context Created object. The method never returns null.
      */
     public Context build( ) {
-      return new Context(this);
+      Context lObject = new Context(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 

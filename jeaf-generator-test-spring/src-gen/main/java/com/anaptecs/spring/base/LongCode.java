@@ -7,6 +7,7 @@ package com.anaptecs.spring.base;
 
 import java.util.Objects;
 
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -114,7 +115,9 @@ public class LongCode {
      * @return LongCode Created object. The method never returns null.
      */
     public LongCode build( ) {
-      return new LongCode(this);
+      LongCode lObject = new LongCode(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 

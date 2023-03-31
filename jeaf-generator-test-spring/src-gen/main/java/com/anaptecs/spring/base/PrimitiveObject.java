@@ -8,6 +8,7 @@ package com.anaptecs.spring.base;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -600,7 +601,9 @@ public class PrimitiveObject {
      * @return PrimitiveObject Created object. The method never returns null.
      */
     public PrimitiveObject build( ) {
-      return new PrimitiveObject(this);
+      PrimitiveObject lObject = new PrimitiveObject(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 

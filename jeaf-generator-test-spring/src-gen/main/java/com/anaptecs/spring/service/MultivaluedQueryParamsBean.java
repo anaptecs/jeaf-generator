@@ -7,6 +7,8 @@ package com.anaptecs.spring.service;
 
 import java.util.Arrays;
 
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+
 public class MultivaluedQueryParamsBean {
   /**
    * Constant for the name of attribute "intArray".
@@ -178,7 +180,9 @@ public class MultivaluedQueryParamsBean {
      * @return MultivaluedQueryParamsBean Created object. The method never returns null.
      */
     public MultivaluedQueryParamsBean build( ) {
-      return new MultivaluedQueryParamsBean(this);
+      MultivaluedQueryParamsBean lObject = new MultivaluedQueryParamsBean(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 

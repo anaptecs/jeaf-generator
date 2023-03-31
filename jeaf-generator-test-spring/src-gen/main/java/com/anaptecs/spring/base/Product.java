@@ -16,6 +16,7 @@ import java.util.UUID;
 
 import javax.validation.constraints.Size;
 
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
@@ -426,7 +427,9 @@ public class Product {
      * @return Product Created object. The method never returns null.
      */
     public Product build( ) {
-      return new Product(this);
+      Product lObject = new Product(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 

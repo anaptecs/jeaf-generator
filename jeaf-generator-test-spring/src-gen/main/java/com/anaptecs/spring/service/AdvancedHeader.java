@@ -5,6 +5,7 @@
  */
 package com.anaptecs.spring.service;
 
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.anaptecs.spring.base.BookingCode;
 import com.anaptecs.spring.base.BookingID;
 import com.anaptecs.spring.base.DoubleCode;
@@ -161,7 +162,9 @@ public class AdvancedHeader {
      * @return AdvancedHeader Created object. The method never returns null.
      */
     public AdvancedHeader build( ) {
-      return new AdvancedHeader(this);
+      AdvancedHeader lObject = new AdvancedHeader(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 

@@ -9,6 +9,7 @@ import java.math.BigDecimal;
 
 import javax.validation.constraints.NotNull;
 
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
@@ -162,7 +163,9 @@ public class MoneyAmount {
      * @return MoneyAmount Created object. The method never returns null.
      */
     public MoneyAmount build( ) {
-      return new MoneyAmount(this);
+      MoneyAmount lObject = new MoneyAmount(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 

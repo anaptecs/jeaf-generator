@@ -9,6 +9,7 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Arrays;
 
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -763,7 +764,9 @@ public class PrimitiveArraysObject {
      * @return PrimitiveArraysObject Created object. The method never returns null.
      */
     public PrimitiveArraysObject build( ) {
-      return new PrimitiveArraysObject(this);
+      PrimitiveArraysObject lObject = new PrimitiveArraysObject(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 

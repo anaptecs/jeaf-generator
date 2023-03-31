@@ -7,6 +7,7 @@ package com.anaptecs.spring.base;
 
 import java.util.Locale;
 
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -166,7 +167,9 @@ public class BeanParameter {
      * @return BeanParameter Created object. The method never returns null.
      */
     public BeanParameter build( ) {
-      return new BeanParameter(this);
+      BeanParameter lObject = new BeanParameter(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 

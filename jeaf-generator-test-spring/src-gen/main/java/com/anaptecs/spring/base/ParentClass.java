@@ -5,6 +5,7 @@
  */
 package com.anaptecs.spring.base;
 
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -121,7 +122,9 @@ public class ParentClass {
      * @return ParentClass Created object. The method never returns null.
      */
     public ParentClass build( ) {
-      return new ParentClass(this);
+      ParentClass lObject = new ParentClass(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 

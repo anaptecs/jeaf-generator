@@ -13,6 +13,7 @@ import java.util.Set;
 
 import javax.validation.constraints.Size;
 
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
@@ -199,7 +200,9 @@ public class ChildB extends ParentClass {
      * @return ChildB Created object. The method never returns null.
      */
     public ChildB build( ) {
-      return new ChildB(this);
+      ChildB lObject = new ChildB(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 

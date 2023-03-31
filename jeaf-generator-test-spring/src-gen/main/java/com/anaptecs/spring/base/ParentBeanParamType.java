@@ -5,6 +5,8 @@
  */
 package com.anaptecs.spring.base;
 
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+
 public class ParentBeanParamType {
   /**
    * Constant for the name of attribute "novaKey".
@@ -135,7 +137,9 @@ public class ParentBeanParamType {
      * @return ParentBeanParamType Created object. The method never returns null.
      */
     public ParentBeanParamType build( ) {
-      return new ParentBeanParamType(this);
+      ParentBeanParamType lObject = new ParentBeanParamType(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 

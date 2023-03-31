@@ -10,6 +10,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -152,7 +153,9 @@ public class WeirdBooking {
      * @return WeirdBooking Created object. The method never returns null.
      */
     public WeirdBooking build( ) {
-      return new WeirdBooking(this);
+      WeirdBooking lObject = new WeirdBooking(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 

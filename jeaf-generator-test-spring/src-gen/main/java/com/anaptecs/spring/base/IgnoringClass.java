@@ -5,6 +5,7 @@
  */
 package com.anaptecs.spring.base;
 
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -114,7 +115,9 @@ public class IgnoringClass {
      * @return IgnoringClass Created object. The method never returns null.
      */
     public IgnoringClass build( ) {
-      return new IgnoringClass(this);
+      IgnoringClass lObject = new IgnoringClass(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 

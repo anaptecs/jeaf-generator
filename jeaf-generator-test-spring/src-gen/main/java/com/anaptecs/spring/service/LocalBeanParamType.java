@@ -5,6 +5,8 @@
  */
 package com.anaptecs.spring.service;
 
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+
 public class LocalBeanParamType {
   /**
    * Constant for the name of attribute "localKey".
@@ -134,7 +136,9 @@ public class LocalBeanParamType {
      * @return LocalBeanParamType Created object. The method never returns null.
      */
     public LocalBeanParamType build( ) {
-      return new LocalBeanParamType(this);
+      LocalBeanParamType lObject = new LocalBeanParamType(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 

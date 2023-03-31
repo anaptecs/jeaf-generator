@@ -9,6 +9,7 @@ import java.util.Arrays;
 
 import javax.validation.constraints.Size;
 
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Deprecated
@@ -218,7 +219,9 @@ public class ChildAA extends ChildA {
      * @return ChildAA Created object. The method never returns null.
      */
     public ChildAA build( ) {
-      return new ChildAA(this);
+      ChildAA lObject = new ChildAA(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 

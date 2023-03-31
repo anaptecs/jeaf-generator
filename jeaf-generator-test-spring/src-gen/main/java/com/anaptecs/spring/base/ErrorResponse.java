@@ -5,6 +5,7 @@
  */
 package com.anaptecs.spring.base;
 
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
@@ -96,7 +97,9 @@ public class ErrorResponse {
      * @return ErrorResponse Created object. The method never returns null.
      */
     public ErrorResponse build( ) {
-      return new ErrorResponse(this);
+      ErrorResponse lObject = new ErrorResponse(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 

@@ -7,6 +7,7 @@ package com.anaptecs.spring.base;
 
 import java.util.List;
 
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -131,7 +132,9 @@ public class Company extends Partner {
      * @return Company Created object. The method never returns null.
      */
     public Company build( ) {
-      return new Company(this);
+      Company lObject = new Company(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 

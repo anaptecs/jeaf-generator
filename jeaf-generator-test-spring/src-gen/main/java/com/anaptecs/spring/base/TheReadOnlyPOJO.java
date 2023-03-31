@@ -10,6 +10,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -224,7 +225,9 @@ public class TheReadOnlyPOJO {
      * @return TheReadOnlyPOJO Created object. The method never returns null.
      */
     public TheReadOnlyPOJO build( ) {
-      return new TheReadOnlyPOJO(this);
+      TheReadOnlyPOJO lObject = new TheReadOnlyPOJO(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 

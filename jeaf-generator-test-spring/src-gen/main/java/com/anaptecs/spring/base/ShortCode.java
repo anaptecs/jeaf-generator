@@ -7,6 +7,7 @@ package com.anaptecs.spring.base;
 
 import java.util.Objects;
 
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -115,7 +116,9 @@ public class ShortCode {
      * @return ShortCode Created object. The method never returns null.
      */
     public ShortCode build( ) {
-      return new ShortCode(this);
+      ShortCode lObject = new ShortCode(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 
