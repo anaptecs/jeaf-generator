@@ -27,11 +27,7 @@
 |   | `Body` | `int pParam1` |  |  |  |
 |   | `Response` | `String ` |  |  |  |
 | `/api/dep/async [POST]` | `REST Operation` | `RESTTestService.deprecatedAsync(int)` |  |  |  |
-| `/api/deprcation/dep1 [GET]` | `REST Operation` | `RESTTestService.deprecatedOperation()` | Please use something else.
-
-This is not the right operation any longer.
-
-Sorry!!! | a very long time | 2023-12-13 |
+| `/api/deprcation/dep1 [GET]` | `REST Operation` | `RESTTestService.deprecatedOperation()` | Please use something else.<br><br>This is not the right operation any longer.<br><br>Sorry!!! | a very long time | 2023-12-13 |
 | `/api/deprecation/dep2 [GET]` | `REST Operation` | `RESTTestService.deprecatedParameter(int, int)` |  |  |  |
 |   | `Header Param` | `int pParam2` |  |  |  |
 | `/api/deprecation/dep3 [GET]` | `REST Operation` | `RESTTestService.deprectaedReturnValue(int)` |  |  |  |
@@ -72,7 +68,7 @@ Sorry!!! | a very long time | 2023-12-13 |
 |   | `deprecatedParent` |  |  |  |
 |   | `deprecatedArray` |  |  |  |
 | `DataTypeWithDeprecation` | |  |  |  |
-|   | `code` | Time to say goodbye | just recently | Next version |
+|   | `code` | Time to say goodbye ...<br><br>... blub, blub, blub<br> | just recently | Next version |
 | `DeprecatedDataType` | |  |  |  |
 | `DeprecatedType` | | This type will be replaced with .... |  |  |
 | `DiscountOffer` | |  |  |  |
