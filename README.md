@@ -1,7 +1,6 @@
 ![Latest Version](https://maven-badges.herokuapp.com/maven-central/com.anaptecs.jeaf.generator/jeaf-generator-project/badge.svg)
 
 
-
 # JEAF Generator README #
 
 This repository contains the source code for JEAF Generator. JEAF Generator can be used for code generation based on UML models. Besides the code of the generator itself the repository also contains lot's of test projects that are used to ensure quality. 
