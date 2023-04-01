@@ -719,6 +719,18 @@ components:
           format: double
           nullable: false
 
+    # com.anaptecs.jeaf.junit.openapi.base.IgnoringClass
+    IgnoringClass:
+      type: object
+      additionalProperties: false
+      required:
+        - age
+      properties:
+        age:
+          type: integer
+          format: int32
+          nullable: false
+
     # com.anaptecs.jeaf.junit.openapi.base.InventoryType
     InventoryType:
       type: string

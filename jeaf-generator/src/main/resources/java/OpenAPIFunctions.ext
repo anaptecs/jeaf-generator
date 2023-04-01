@@ -229,7 +229,7 @@ cached boolean isRequiredProperty(uml::Property property):
    property.isStereotypeApplied("NotNull") || property.isStereotypeApplied("NotEmpty") || property.isStereotypeApplied("NotBlank") || (property.lower > 0) || (property.association != null && property.lower > 0) || (property.isMultivalued() && property.lower > 0);
    
 cached List[uml::Property] getRequiredProperties(uml::Class class):
-    class.ownedAttribute.select(e|e.isRequiredProperty() && e.isTransient() == false);
+    class.ownedAttribute.select(e|e.isRequiredProperty() && e.isTransient() == false && e.ignore() == false);
     
 cached boolean hasRequiredProperties(uml::Class class):
     getRequiredProperties(class).size > 0;
