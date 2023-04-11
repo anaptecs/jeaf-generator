@@ -7,6 +7,7 @@ package com.anaptecs.spring.impl;
 
 import org.springframework.stereotype.Service;
 
+import com.anaptecs.spring.service.MultiValuedHeaderBeanParam;
 import com.anaptecs.spring.service.PathlessService;
 
 @Service
@@ -15,5 +16,9 @@ public class PathlessServiceImpl implements PathlessService {
   @Override
   public String getSomething( ) {
     return "Something";
+  }
+
+  @Override
+  public void processTechParam( MultiValuedHeaderBeanParam pHeaderBean ) {
   }
 }

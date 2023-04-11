@@ -17,6 +17,9 @@ import org.eclipse.uml2.uml.NamedElement;
  */
 public class NamedElementComparator implements Comparator<NamedElement> {
   public int compare( NamedElement pFirstNamedElement, NamedElement pSecondNamedElement ) {
-    return pFirstNamedElement.getName().compareTo(pSecondNamedElement.getLabel());
+
+    String lFirstName = Naming.getFullyQualifiedName(pFirstNamedElement);
+    String lSecondName = Naming.getFullyQualifiedName(pSecondNamedElement);
+    return lFirstName.compareTo(lSecondName);
   }
 }

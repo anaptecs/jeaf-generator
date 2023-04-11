@@ -5,8 +5,10 @@
  */
 package com.anaptecs.spring.service.resource;
 
+import javax.ws.rs.BeanParam;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
@@ -15,6 +17,7 @@ import javax.ws.rs.core.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.anaptecs.jeaf.validation.api.ValidationExecutor;
+import com.anaptecs.spring.service.MultiValuedHeaderBeanParam;
 import com.anaptecs.spring.service.PathlessService;
 
 @Path("/")
@@ -45,5 +48,16 @@ public class PathlessServiceResource {
     // Validate response and return it.
     validationExecutor.validateResponse(PathlessService.class, lResult);
     return Response.status(Response.Status.OK).entity(lResult).build();
+  }
+
+  /**
+   * {@link PathlessService#processTechParam()}
+   */
+  @Path("processTechParam")
+  @POST
+  public Response processTechParam( @BeanParam MultiValuedHeaderBeanParam pHeaderBean ) {
+    // Delegate request to service.
+    pathlessService.processTechParam(pHeaderBean);
+    return Response.status(Response.Status.NO_CONTENT).build();
   }
 }

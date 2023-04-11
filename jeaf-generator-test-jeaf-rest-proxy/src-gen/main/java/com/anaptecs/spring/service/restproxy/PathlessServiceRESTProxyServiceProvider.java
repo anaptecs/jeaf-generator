@@ -6,6 +6,7 @@
 package com.anaptecs.spring.service.restproxy;
 
 import com.anaptecs.jeaf.core.api.ServiceProvider;
+import com.anaptecs.spring.service.MultiValuedHeaderBeanParam;
 
 /**
  * Service Provider Interface is generated so that a proxy for a REST Resource can be provided as JEAF Service Provider.
@@ -15,4 +16,10 @@ public interface PathlessServiceRESTProxyServiceProvider extends ServiceProvider
    * @return {@link String}
    */
   String getSomething( );
+
+  /**
+   * @param pHeaderBean
+   * @param pTechContext
+   */
+  void processTechParam( MultiValuedHeaderBeanParam pHeaderBean );
 }

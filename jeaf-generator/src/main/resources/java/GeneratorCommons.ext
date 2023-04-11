@@ -546,7 +546,7 @@ cached boolean suppressTechnicalHttpHeaders():
 	JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.suppressTechnicalHttpHeaders();
 	
 cached boolean isParameterSuppressed(uml::Parameter param):
-	suppressTechnicalHttpHeaders() && param.isTechnicalHeaderParameter();
+	suppressTechnicalHttpHeaders() && (param.isTechnicalHeaderParameter() || (param.isBeanParamater() && param.type.getAllAttributesFromHierarchy().select(e|e.isPropertySuppressed() == false).size == 0 ));
 
 cached boolean isPropertySuppressed(uml::Property property):
 	(suppressTechnicalHttpHeaders() && property.isTechnicalHeaderProperty()) || property.isDerived  || property.isStereotypeApplied("Ignore");

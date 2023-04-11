@@ -5,14 +5,17 @@
  */
 package com.anaptecs.spring.service.resource;
 
+import javax.ws.rs.BeanParam;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import com.anaptecs.jeaf.core.api.JEAF;
+import com.anaptecs.spring.service.MultiValuedHeaderBeanParam;
 import com.anaptecs.spring.service.PathlessService;
 
 @Path("/")
@@ -29,6 +32,18 @@ public class PathlessServiceResource {
     PathlessService lService = this.getPathlessService();
     String lResult = lService.getSomething();
     return Response.status(Response.Status.OK).entity(lResult).build();
+  }
+
+  /**
+   * {@link PathlessService#processTechParam()}
+   */
+  @Path("processTechParam")
+  @POST
+  public Response processTechParam( @BeanParam MultiValuedHeaderBeanParam pHeaderBean ) {
+    // Delegate request to service.
+    PathlessService lService = this.getPathlessService();
+    lService.processTechParam(pHeaderBean);
+    return Response.status(Response.Status.NO_CONTENT).build();
   }
 
   /**

@@ -12,4 +12,10 @@ public interface PathlessService extends Service {
    * @return {@link String}
    */
   String getSomething( );
+
+  /**
+   * @param pHeaderBean
+   * @param pTechContext
+   */
+  void processTechParam( MultiValuedHeaderBeanParam pHeaderBean );
 }
