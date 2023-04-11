@@ -22,6 +22,7 @@ import com.anaptecs.jeaf.rest.executor.api.ContentType;
 import com.anaptecs.jeaf.rest.executor.api.HttpMethod;
 import com.anaptecs.jeaf.rest.executor.api.RESTRequest;
 import com.anaptecs.jeaf.rest.executor.api.RESTRequestExecutor;
+import com.anaptecs.jeaf.validation.api.ValidationExecutor;
 import com.anaptecs.spring.base.StringCode;
 import com.anaptecs.spring.service.MultiValuedHeaderBeanParam;
 import com.anaptecs.spring.service.PathlessService;
@@ -51,12 +52,19 @@ public class PathlessServiceRESTProxy implements PathlessService {
   private final RESTRequestExecutor requestExecutor;
 
   /**
+   * REST Service Proxy was generated with request / response validation enabled. The actual validation will be
+   * delegated to the implementation of this interface.
+   */
+  private final ValidationExecutor validationExecutor;
+
+  /**
    * Initialize object.
    *
    * @param pRequestExecutor Dependency on concrete {@link RESTRequestExecutor} implementation that should be used.
    */
-  public PathlessServiceRESTProxy( RESTRequestExecutor pRequestExecutor ) {
+  public PathlessServiceRESTProxy( RESTRequestExecutor pRequestExecutor, ValidationExecutor pValidationExecutor ) {
     requestExecutor = pRequestExecutor;
+    validationExecutor = pValidationExecutor;
   }
 
   /**
@@ -73,7 +81,10 @@ public class PathlessServiceRESTProxy implements PathlessService {
     lRequestBuilder.setPath(lPathBuilder.toString());
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
-    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+    String lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+    // Validate response and return it.
+    validationExecutor.validateResponse(PathlessService.class, lResult);
+    return lResult;
   }
 
   /**
@@ -82,6 +93,8 @@ public class PathlessServiceRESTProxy implements PathlessService {
    */
   @Override
   public void processTechParam( MultiValuedHeaderBeanParam pHeaderBean ) {
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(PathlessService.class, pHeaderBean);
     // Create builder for POST request
     RESTRequest.Builder lRequestBuilder = RESTRequest.builder(PathlessService.class, HttpMethod.POST, ContentType.JSON);
     // Build path of request

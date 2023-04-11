@@ -153,13 +153,23 @@ public class «name»RESTProxy implements «this.fqn()» {
    */
   private final com.anaptecs.jeaf.rest.executor.api.RESTRequestExecutor requestExecutor;
 
+  «IF generateRESTRequestValidation() || generateRESTResponseValidation()»
+    /**
+     * REST Service Proxy was generated with request / response validation enabled. The actual validation will be delegated to the implementation of this interface.
+     */
+    private final com.anaptecs.jeaf.validation.api.ValidationExecutor validationExecutor;
+  «ENDIF»
+  
   /**
    * Initialize object.
    * 
    * @param pRequestExecutor Dependency on concrete {@link RESTRequestExecutor} implementation that should be used.
    */
-  public «name»RESTProxy( com.anaptecs.jeaf.rest.executor.api.RESTRequestExecutor pRequestExecutor ) {
+  public «name»RESTProxy( com.anaptecs.jeaf.rest.executor.api.RESTRequestExecutor pRequestExecutor «IF generateRESTRequestValidation() || generateRESTResponseValidation()», com.anaptecs.jeaf.validation.api.ValidationExecutor pValidationExecutor«ENDIF» ) {
     requestExecutor = pRequestExecutor;
+    «IF generateRESTRequestValidation() || generateRESTResponseValidation()»
+      validationExecutor = pValidationExecutor;
+    «ENDIF»
   }
 
   «EXPAND RESTProxyOperationOperation(this) FOREACH ownedOperation.typeSelect(RESTOperation)»
@@ -174,6 +184,13 @@ public class «name»RESTProxy implements «this.fqn()» {
     «EXPAND java::Helper::GenerateDeprecationAnnotation FOR this.getReturnResult() -»
     @Override
 	«visibility» «getReturnTypeName()» «name» («EXPAND jeaf::JEAFOperation::ParameterSignatureNoValidationAnnotation»)«getThrownExceptionsAsString()» {
+        «IF generateRESTRequestValidation() && this.getInputParameters().select(e|e.isParameterSuppressed() == false).isEmpty == false»
+            «IF isTargetRuntimeSpring()»
+                // Validate request parameter(s).
+                validationExecutor.validateRequest(«((NamedElement)owner).fqn()».class, «this.asParameterListNames()»);
+            «ENDIF»
+        «ENDIF»
+
 		// Create builder for «this.httpMethods.selectFirst(e|e!=null)» request
 		com.anaptecs.jeaf.rest.executor.api.RESTRequest.Builder lRequestBuilder = com.anaptecs.jeaf.rest.executor.api.RESTRequest.builder(«service.fqn()».class, com.anaptecs.jeaf.rest.executor.api.HttpMethod.«this.httpMethods.selectFirst(e|e!=null)», com.anaptecs.jeaf.rest.executor.api.ContentType.JSON);
 		
@@ -398,12 +415,24 @@ public class «name»RESTProxy implements «this.fqn()» {
 		
 		«IF getReturnTypeName() != "void"»
 			«IF this.getReturnResult().isMultivalued() == false»
-			return requestExecutor.executeSingleObjectResultRequest(lRequest, «this.getHTTPStatusCode()», «this.getReturnResult().type.fqn()».class);
+	            «IF generateRESTResponseValidation()»
+	                «getReturnTypeName()» lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, «this.getHTTPStatusCode()», «this.getReturnResult().type.fqn()».class);
+	                // Validate response and return it.
+	                validationExecutor.validateResponse(«((NamedElement)owner).fqn()».class, lResult);
+	                return lResult;
+	            «ELSE»
+				return requestExecutor.executeSingleObjectResultRequest(lRequest, «this.getHTTPStatusCode()», «this.getReturnResult().type.fqn()».class);
+	            «ENDIF»
 			«ELSE»
 		    «getReturnTypeName()» lResult = requestExecutor.executeCollectionResultRequest(lRequest, «this.getHTTPStatusCode()», «this.getReturnResult().getCollectionType()».class, «this.getReturnResult().type.fqn()».class);
 		    if (lResult == null) {
 		      lResult = «this.getReturnResult().getEmptyCollectionOperation()»;
 		    }
+
+			«IF generateRESTResponseValidation()»
+				// Validate response and return it.
+				validationExecutor.validateResponse(«((NamedElement)owner).fqn()».class, lResult);
+			«ENDIF»
 		    return lResult;
 			«ENDIF»
 		«ELSE»

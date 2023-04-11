@@ -13,6 +13,12 @@
 
 	<dependencies>
 		<dependency>
+			<groupId>com.anaptecs.jeaf.validation</groupId>
+			<artifactId>jeaf-validation-api-spring</artifactId>
+			<version>${jeaf.validation.api.version}</version>
+		</dependency>
+
+		<dependency>
 		    <groupId>org.springframework.boot</groupId>
 		    <artifactId>spring-boot-starter-validation</artifactId>
 		    <version>${spring.boot.version}</version>
@@ -158,6 +164,9 @@
 					<generateRESTServiceProxies>true</generateRESTServiceProxies>
 					<generateRESTServiceProxyConfigFile>true</generateRESTServiceProxyConfigFile>
 					<suppressTechnicalHeaders>true</suppressTechnicalHeaders>
+					
+					<generateRESTRequestValidation>true</generateRESTRequestValidation>
+					<generateRESTResponseValidation>true</generateRESTResponseValidation>
 
 					<!-- Define information that are written to file headers -->
 					<fileHeaderCompany>anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany</fileHeaderCompany>
