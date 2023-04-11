@@ -16,8 +16,10 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.Nulls;
 
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
@@ -46,6 +48,7 @@ public class SoftLinkParent {
    * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #partners} is
    * <code>com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkPartner</code><br/>
    */
+  @JsonSetter(nulls = Nulls.SKIP)
   private Set<SoftLinkID> partners;
 
   /**

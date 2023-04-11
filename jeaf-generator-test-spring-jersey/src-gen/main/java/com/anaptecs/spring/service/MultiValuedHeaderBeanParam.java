@@ -19,6 +19,8 @@ import java.util.Set;
 import javax.ws.rs.HeaderParam;
 
 import com.anaptecs.spring.base.StringCode;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 
 public class MultiValuedHeaderBeanParam {
   /**
@@ -89,6 +91,7 @@ public class MultiValuedHeaderBeanParam {
   private StringCode[] codes;
 
   @HeaderParam("stringCodeList")
+  @JsonSetter(nulls = Nulls.SKIP)
   private Set<StringCode> stringCodeList;
 
   @HeaderParam("startDate")
@@ -98,6 +101,7 @@ public class MultiValuedHeaderBeanParam {
   private LocalDate[] dates;
 
   @HeaderParam("timestamps")
+  @JsonSetter(nulls = Nulls.SKIP)
   private Set<LocalDateTime> timestamps;
 
   @HeaderParam("calendars")

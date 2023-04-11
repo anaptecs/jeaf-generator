@@ -12,8 +12,10 @@ import java.util.List;
 
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.Nulls;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "objectType", visible = true)
@@ -25,6 +27,7 @@ public class Partner {
    */
   public static final String POSTALADDRESSES = "postalAddresses";
 
+  @JsonSetter(nulls = Nulls.SKIP)
   private List<PostalAddress> postalAddresses;
 
   /**

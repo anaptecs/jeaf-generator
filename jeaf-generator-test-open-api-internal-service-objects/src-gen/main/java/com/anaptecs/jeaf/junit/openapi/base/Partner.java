@@ -20,8 +20,10 @@ import com.anaptecs.jeaf.xfun.api.common.Identifiable;
 import com.anaptecs.jeaf.xfun.api.common.ObjectIdentity;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.Nulls;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators.PropertyGenerator;
 
 @Valid
@@ -41,6 +43,7 @@ public class Partner implements ServiceObject, Identifiable<ServiceObjectID> {
    */
   private final ServiceObjectID objectID;
 
+  @JsonSetter(nulls = Nulls.SKIP)
   private List<PostalAddress> postalAddresses;
 
   /**

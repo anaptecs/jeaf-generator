@@ -15,6 +15,8 @@ import javax.validation.constraints.Size;
 
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 
 /**
  * Multi<br/>
@@ -46,6 +48,7 @@ public class ChildB extends ParentClass {
   /**
    * the composition
    */
+  @JsonSetter(nulls = Nulls.SKIP)
   private Set<ParentClass> composition;
 
   /**

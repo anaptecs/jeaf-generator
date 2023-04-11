@@ -56,6 +56,9 @@
         «EXPAND java::Jackson::JSONAlias»
         «EXPAND Validation::ValidationAnnotation»
         «IF isMultivalued()»
+            «IF generateJacksonAnnotations() && isTransient() == false»
+            @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SKIP)
+            «ENDIF»
             «IF generateValidationAnnotationsForAssociationsFromMultiplicity() && isStatic == false && isTransient() == false && this.hasValidationStereotype() == false && lower > 0»@javax.validation.constraints.Size(min = «lower»)«ENDIF»
             «IF generateValidationAnnotationsForAssociationsFromMultiplicity() && isStatic == false && isTransient() == false && this.requiresNotNullAnnotation() && lower > 0»@javax.validation.constraints.NotNull«ENDIF»
             «visibility» «IF isReadOnly()»final «ENDIF» «IF isTransient()»transient «ENDIF» «this.getCollectionType()»<«this.getMultivaluedSoftLinkType()»> «asInstanceVar()»;
@@ -86,6 +89,9 @@
 		«EXPAND java::Jackson::JSONAlias»
 		«EXPAND Validation::ValidationAnnotation»
 		«IF isMultivalued()»
+            «IF generateJacksonAnnotations() && isTransient() == false»
+            @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SKIP)
+            «ENDIF»
 			«IF generateValidationAnnotationsForAssociationsFromMultiplicity() && isStatic == false && isTransient() == false && this.hasValidationStereotype() == false && lower > 0»@javax.validation.constraints.Size(min = «lower»)«ENDIF»
 			«IF generateValidationAnnotationsForAssociationsFromMultiplicity() && isStatic == false && isTransient() == false && this.requiresNotNullAnnotation() && lower > 0»@javax.validation.constraints.NotNull«ENDIF»
 			«visibility» «IF isReadOnly()»final «ENDIF» «IF isTransient()»transient «ENDIF» «this.fqn()» «asInstanceVar()»;

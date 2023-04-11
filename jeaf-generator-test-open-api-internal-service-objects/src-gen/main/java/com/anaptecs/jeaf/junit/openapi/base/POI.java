@@ -16,6 +16,8 @@ import javax.validation.constraints.NotNull;
 
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 
 @Valid
 public class POI extends Stop {
@@ -42,6 +44,7 @@ public class POI extends Stop {
    * <code>LinkObject</code><br/>
    */
   @Deprecated
+  @JsonSetter(nulls = Nulls.SKIP)
   private Set<SoftLink> evenMoreLinks;
 
   /**

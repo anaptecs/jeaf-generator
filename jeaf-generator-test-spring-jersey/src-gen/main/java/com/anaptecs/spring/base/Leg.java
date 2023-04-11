@@ -11,6 +11,8 @@ import java.util.Collections;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Leg {
@@ -33,6 +35,7 @@ public class Leg {
 
   private PlaceRef stop;
 
+  @JsonSetter(nulls = Nulls.SKIP)
   private List<PlaceRef> stopovers;
 
   /**

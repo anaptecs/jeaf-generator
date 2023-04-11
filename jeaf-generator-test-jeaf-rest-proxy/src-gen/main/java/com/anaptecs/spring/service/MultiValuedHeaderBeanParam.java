@@ -22,6 +22,8 @@ import javax.ws.rs.HeaderParam;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.anaptecs.spring.base.StringCode;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 
 public class MultiValuedHeaderBeanParam implements Serializable {
   /**
@@ -97,6 +99,7 @@ public class MultiValuedHeaderBeanParam implements Serializable {
   private StringCode[] codes;
 
   @HeaderParam("stringCodeList")
+  @JsonSetter(nulls = Nulls.SKIP)
   private Set<StringCode> stringCodeList;
 
   @HeaderParam("startDate")
@@ -106,6 +109,7 @@ public class MultiValuedHeaderBeanParam implements Serializable {
   private LocalDate[] dates;
 
   @HeaderParam("timestamps")
+  @JsonSetter(nulls = Nulls.SKIP)
   private Set<LocalDateTime> timestamps;
 
   @HeaderParam("calendars")

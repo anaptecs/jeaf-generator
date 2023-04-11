@@ -25,6 +25,8 @@ import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.anaptecs.jeaf.xfun.api.common.Identifiable;
 import com.anaptecs.jeaf.xfun.api.common.ObjectIdentity;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 
 @Valid
 public abstract class ResellerBase implements ServiceObject, Identifiable<ServiceObjectID> {
@@ -38,6 +40,7 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
    */
   private final ServiceObjectID objectID;
 
+  @JsonSetter(nulls = Nulls.SKIP)
   @Size(min = 1)
   @NotNull
   private List<Channel> channels;

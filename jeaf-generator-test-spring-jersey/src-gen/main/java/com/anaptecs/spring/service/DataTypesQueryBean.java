@@ -23,6 +23,8 @@ import com.anaptecs.spring.base.BookingID;
 import com.anaptecs.spring.base.DoubleCode;
 import com.anaptecs.spring.base.IntegerCodeType;
 import com.anaptecs.spring.base.LongCode;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 
 public class DataTypesQueryBean {
   /**
@@ -92,9 +94,11 @@ public class DataTypesQueryBean {
   private IntegerCodeType[] codes;
 
   @QueryParam("doubleCodes")
+  @JsonSetter(nulls = Nulls.SKIP)
   private Set<DoubleCode> doubleCodes;
 
   @QueryParam("bookingIDs")
+  @JsonSetter(nulls = Nulls.SKIP)
   private Set<BookingID> bookingIDs;
 
   @QueryParam("bookingIDsArray")
@@ -113,9 +117,11 @@ public class DataTypesQueryBean {
   private LocalTime localTime;
 
   @QueryParam("timestamps")
+  @JsonSetter(nulls = Nulls.SKIP)
   private List<LocalDateTime> timestamps;
 
   @QueryParam("times")
+  @JsonSetter(nulls = Nulls.SKIP)
   private Set<OffsetTime> times;
 
   @QueryParam("startTimestamps")

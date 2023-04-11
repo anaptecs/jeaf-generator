@@ -16,6 +16,8 @@ import javax.validation.constraints.Size;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ChildBB extends ChildB {
@@ -59,6 +61,7 @@ public class ChildBB extends ChildB {
   private int deprecatedAttribute;
 
   @Deprecated
+  @JsonSetter(nulls = Nulls.SKIP)
   private Set<ChildB> deprecatedBs;
 
   @Deprecated

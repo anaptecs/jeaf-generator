@@ -17,6 +17,8 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public abstract class MasterDataObjectBase implements Serializable {
@@ -45,6 +47,7 @@ public abstract class MasterDataObjectBase implements Serializable {
    */
   public static final String INTERNALPROPERTY = "internalProperty";
 
+  @JsonSetter(nulls = Nulls.SKIP)
   private List<DataUnit> dataUnits;
 
   private Entity entity;

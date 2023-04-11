@@ -12,6 +12,8 @@ import java.util.Collections;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public abstract class MasterDataObjectBase {
@@ -35,6 +37,7 @@ public abstract class MasterDataObjectBase {
    */
   public static final String INTERNALPROPERTY = "internalProperty";
 
+  @JsonSetter(nulls = Nulls.SKIP)
   private List<DataUnit> dataUnits;
 
   private Entity entity;
