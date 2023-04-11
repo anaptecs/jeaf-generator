@@ -19,6 +19,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 
 @Valid
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -43,6 +45,7 @@ public abstract class ResellerBase {
    */
   public static final String LANGUAGE = "language";
 
+  @JsonSetter(nulls = Nulls.SKIP)
   private List<Channel> channels;
 
   /**

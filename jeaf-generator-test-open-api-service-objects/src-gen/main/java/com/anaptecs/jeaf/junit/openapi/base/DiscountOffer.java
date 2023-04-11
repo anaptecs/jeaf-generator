@@ -15,6 +15,8 @@ import javax.validation.Valid;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 
 @Valid
 public class DiscountOffer implements ServiceObject {
@@ -29,6 +31,7 @@ public class DiscountOffer implements ServiceObject {
    * <code>com.anaptecs.jeaf.junit.openapi.base.Campaign</code><br/>
    */
   @Deprecated
+  @JsonSetter(nulls = Nulls.SKIP)
   private Set<SoftLink> campaigns;
 
   /**

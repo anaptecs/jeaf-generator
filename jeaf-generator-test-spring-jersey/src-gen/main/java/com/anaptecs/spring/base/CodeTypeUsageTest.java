@@ -11,6 +11,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CodeTypeUsageTest {
@@ -36,8 +38,10 @@ public class CodeTypeUsageTest {
 
   private BooleanCodeType booleanCode;
 
+  @JsonSetter(nulls = Nulls.SKIP)
   private Set<BooleanCodeType> booleanCodeAssociation;
 
+  @JsonSetter(nulls = Nulls.SKIP)
   private Set<ShortCodeType> shortCodeTypeAssociation;
 
   private StringCodeType stringCode;

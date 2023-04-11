@@ -20,8 +20,10 @@ import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.Nulls;
 
 @Valid
 @JsonIgnoreProperties(value = "objectType")
@@ -38,6 +40,7 @@ public class Stop implements ServiceObject {
   private String name;
 
   @JsonProperty("_links")
+  @JsonSetter(nulls = Nulls.SKIP)
   private List<LinkObject> links;
 
   @Max(value = 32)

@@ -18,6 +18,8 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
@@ -33,6 +35,7 @@ public class BidirectionalB {
    */
   public static final String THEAS = "theAs";
 
+  @JsonSetter(nulls = Nulls.SKIP)
   private List<BidirectionalA> as;
 
   /**
@@ -40,6 +43,7 @@ public class BidirectionalB {
    */
   private transient boolean asBackReferenceInitialized;
 
+  @JsonSetter(nulls = Nulls.SKIP)
   private List<BidirectionalA> theAs;
 
   /**

@@ -16,6 +16,8 @@ import javax.validation.constraints.NotNull;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 
 @Valid
 public class TheReadOnlyServiceObject implements ServiceObject {
@@ -29,6 +31,7 @@ public class TheReadOnlyServiceObject implements ServiceObject {
 
   private final boolean[] bits;
 
+  @JsonSetter(nulls = Nulls.SKIP)
   private final Set<BookingCode> bookingCodes;
 
   private final InventoryType inventoryType;

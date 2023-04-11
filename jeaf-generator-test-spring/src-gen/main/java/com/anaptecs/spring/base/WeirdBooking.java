@@ -12,6 +12,8 @@ import java.util.List;
 
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class WeirdBooking {
@@ -27,6 +29,7 @@ public class WeirdBooking {
 
   private ComplexBookingID booking;
 
+  @JsonSetter(nulls = Nulls.SKIP)
   private List<ComplexBookingID> additionalBookings;
 
   /**

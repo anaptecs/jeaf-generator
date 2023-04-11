@@ -12,6 +12,8 @@ import java.util.Collections;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public abstract class ComplexBookingIDBase {
@@ -49,6 +51,7 @@ public abstract class ComplexBookingIDBase {
 
   private String referenceID;
 
+  @JsonSetter(nulls = Nulls.SKIP)
   private List<BookingID> bookingIDs;
 
   private ComplexBookingType complexBookingType;

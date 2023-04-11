@@ -23,6 +23,8 @@ import javax.validation.constraints.Size;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 
 @Valid
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -52,6 +54,7 @@ public abstract class ResellerBase implements Serializable {
    */
   public static final String LANGUAGE = "language";
 
+  @JsonSetter(nulls = Nulls.SKIP)
   private List<Channel> channels;
 
   /**

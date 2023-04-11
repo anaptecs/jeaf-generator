@@ -18,6 +18,8 @@ import java.util.Set;
 
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.anaptecs.spring.base.StringCode;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 
 public class MultiValuedHeaderBeanParam {
   /**
@@ -83,12 +85,14 @@ public class MultiValuedHeaderBeanParam {
 
   private StringCode[] codes;
 
+  @JsonSetter(nulls = Nulls.SKIP)
   private Set<StringCode> stringCodeList;
 
   public LocalDate startDate;
 
   private LocalDate[] dates;
 
+  @JsonSetter(nulls = Nulls.SKIP)
   private Set<LocalDateTime> timestamps;
 
   private Calendar[] calendars;

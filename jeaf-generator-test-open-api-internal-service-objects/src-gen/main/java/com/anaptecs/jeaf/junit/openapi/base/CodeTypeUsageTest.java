@@ -17,6 +17,8 @@ import javax.validation.constraints.Size;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 
 @Valid
 public class CodeTypeUsageTest implements ServiceObject {
@@ -28,8 +30,10 @@ public class CodeTypeUsageTest implements ServiceObject {
   @NotNull
   private BooleanCodeType booleanCode;
 
+  @JsonSetter(nulls = Nulls.SKIP)
   private Set<BooleanCodeType> booleanCodeAssociation;
 
+  @JsonSetter(nulls = Nulls.SKIP)
   @Size(min = 1)
   @NotNull
   private Set<ShortCodeType> shortCodeTypeAssociation;

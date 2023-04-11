@@ -25,6 +25,8 @@ import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.anaptecs.jeaf.xfun.api.common.Identifiable;
 import com.anaptecs.jeaf.xfun.api.common.ObjectIdentity;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators.PropertyGenerator;
 
 /**
@@ -46,6 +48,7 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
    */
   private final ServiceObjectID objectID;
 
+  @JsonSetter(nulls = Nulls.SKIP)
   private Set<Reseller> resellers;
 
   /**
@@ -73,9 +76,11 @@ public class Product implements ServiceObject, Identifiable<ServiceObjectID> {
   private final UUID productID;
 
   @Size(min = 7, max = 42)
+  @JsonSetter(nulls = Nulls.SKIP)
   @NotNull
   private Set<CurrencyCode> supportedCurrencies;
 
+  @JsonSetter(nulls = Nulls.SKIP)
   @Size(min = 1)
   @NotNull
   private Set<ProductCode> productCodes;

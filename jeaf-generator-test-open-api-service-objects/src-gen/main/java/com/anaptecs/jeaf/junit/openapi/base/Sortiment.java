@@ -16,6 +16,8 @@ import javax.validation.Valid;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 
 @Valid
 public class Sortiment implements ServiceObject {
@@ -24,6 +26,7 @@ public class Sortiment implements ServiceObject {
    */
   private static final long serialVersionUID = 1L;
 
+  @JsonSetter(nulls = Nulls.SKIP)
   private Set<Product> products;
 
   /**

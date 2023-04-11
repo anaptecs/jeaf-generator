@@ -20,6 +20,8 @@ import javax.validation.constraints.Size;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 
 /**
  * Data type represents a product definition
@@ -85,6 +87,7 @@ public class Product implements Serializable {
    */
   public static final String URI = "uri";
 
+  @JsonSetter(nulls = Nulls.SKIP)
   private Set<Reseller> resellers;
 
   /**
@@ -109,8 +112,10 @@ public class Product implements Serializable {
   private final UUID productID;
 
   @Size(min = 7, max = 42)
+  @JsonSetter(nulls = Nulls.SKIP)
   private Set<CurrencyCode> supportedCurrencies;
 
+  @JsonSetter(nulls = Nulls.SKIP)
   private Set<ProductCode> productCodes;
 
   @Deprecated

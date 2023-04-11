@@ -18,6 +18,8 @@ import javax.validation.constraints.NotNull;
 
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 
 @Valid
 public class WeirdBooking extends WeirdParent {
@@ -32,6 +34,7 @@ public class WeirdBooking extends WeirdParent {
   /**
    * additional bookings
    */
+  @JsonSetter(nulls = Nulls.SKIP)
   private List<ComplexBookingID> additionalBookings;
 
   /**
@@ -49,6 +52,7 @@ public class WeirdBooking extends WeirdParent {
    */
   private Booking realBooking;
 
+  @JsonSetter(nulls = Nulls.SKIP)
   private Set<InventoryType> inventories;
 
   /**
