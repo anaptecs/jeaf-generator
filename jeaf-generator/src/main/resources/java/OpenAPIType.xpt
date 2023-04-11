@@ -58,14 +58,14 @@
         - «property.getAttributeName()»
         «ENDFOREACH-»
       «ENDIF-»
-      «IF this.ownedAttribute.size > 0 || this.isTopOfClassHierarchy() -»
+      «IF this.getPropertiesForOpenAPI().size > 0 || this.isTopOfClassHierarchy() -»
       properties:
         «IF this.isTopOfClassHierarchy() -»
         objectType:
           description: Attribute is used as discriminator for inheritance between data types.
           type: string
         «ENDIF-»
-        «FOREACH this.ownedAttribute.select(e | e.isTransient() == false && e.ignore() == false) AS attribute-»
+        «FOREACH this.getPropertiesForOpenAPI() AS attribute-»
         «attribute.getAttributeName()»:
           «IF attribute.type.isOpenAPIDataType() && ((OpenAPIDataType) attribute.type).inline == true -»
           «EXPAND java::OpenAPIDataType::GenerateOpenAPIDataType(spec, attribute, "", true) FOR (OpenAPIDataType) attribute.type -»
@@ -222,7 +222,7 @@
       «ENDIF-»
       «IF this.ownedAttribute.size > 0 -»
           properties:
-        «FOREACH this.ownedAttribute.select(e | e.isTransient() == false && e.ignore() == false) AS attribute-»
+        «FOREACH this.getPropertiesForOpenAPI() AS attribute-»
             «attribute.getAttributeName()»:
           «IF attribute.type.isOpenAPIDataType() && ((OpenAPIDataType) attribute.type).inline == true -»
           «EXPAND java::OpenAPIDataType::GenerateOpenAPIDataType(spec, attribute, "    ", true) FOR (OpenAPIDataType) attribute.type -»
