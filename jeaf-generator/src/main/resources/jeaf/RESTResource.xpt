@@ -52,8 +52,7 @@ public class «name»Resource {
         «IF isRESTLibrarySpringWebMVC()»
             «IF generateRESTRequestValidation() || generateRESTResponseValidation()»
 	            /**
-	             * REST Controller was generated with request / response validation enabled. The actual validation will be delegated
-	             * to the implementation of this interface.
+	             * REST Controller was generated with request / response validation enabled. The actual validation will be delegated to the implementation of this interface.
 	             */
 	            private final com.anaptecs.jeaf.validation.api.ValidationExecutor validationExecutor;
             «ENDIF»

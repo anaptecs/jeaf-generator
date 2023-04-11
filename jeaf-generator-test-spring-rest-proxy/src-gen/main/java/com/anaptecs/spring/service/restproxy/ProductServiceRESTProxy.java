@@ -26,6 +26,7 @@ import com.anaptecs.jeaf.rest.executor.api.ContentType;
 import com.anaptecs.jeaf.rest.executor.api.HttpMethod;
 import com.anaptecs.jeaf.rest.executor.api.RESTRequest;
 import com.anaptecs.jeaf.rest.executor.api.RESTRequestExecutor;
+import com.anaptecs.jeaf.validation.api.ValidationExecutor;
 import com.anaptecs.spring.base.BeanParameter;
 import com.anaptecs.spring.base.ChannelCode;
 import com.anaptecs.spring.base.Context;
@@ -69,12 +70,19 @@ public class ProductServiceRESTProxy implements ProductService {
   private final RESTRequestExecutor requestExecutor;
 
   /**
+   * REST Service Proxy was generated with request / response validation enabled. The actual validation will be
+   * delegated to the implementation of this interface.
+   */
+  private final ValidationExecutor validationExecutor;
+
+  /**
    * Initialize object.
    *
    * @param pRequestExecutor Dependency on concrete {@link RESTRequestExecutor} implementation that should be used.
    */
-  public ProductServiceRESTProxy( RESTRequestExecutor pRequestExecutor ) {
+  public ProductServiceRESTProxy( RESTRequestExecutor pRequestExecutor, ValidationExecutor pValidationExecutor ) {
     requestExecutor = pRequestExecutor;
+    validationExecutor = pValidationExecutor;
   }
 
   /**
@@ -96,6 +104,8 @@ public class ProductServiceRESTProxy implements ProductService {
     if (lResult == null) {
       lResult = Collections.emptyList();
     }
+    // Validate response and return it.
+    validationExecutor.validateResponse(ProductService.class, lResult);
     return lResult;
   }
 
@@ -105,6 +115,8 @@ public class ProductServiceRESTProxy implements ProductService {
    */
   @Override
   public Product getProduct( String pProductID ) {
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(ProductService.class, pProductID);
     // Create builder for GET request
     RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
     // Build path of request
@@ -115,7 +127,10 @@ public class ProductServiceRESTProxy implements ProductService {
     lRequestBuilder.setPath(lPathBuilder.toString());
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
-    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, Product.class);
+    Product lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, Product.class);
+    // Validate response and return it.
+    validationExecutor.validateResponse(ProductService.class, lResult);
+    return lResult;
   }
 
   /**
@@ -124,6 +139,8 @@ public class ProductServiceRESTProxy implements ProductService {
    */
   @Override
   public boolean createProduct( Product pProduct ) {
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(ProductService.class, pProduct);
     // Create builder for POST request
     RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.POST, ContentType.JSON);
     // Build path of request
@@ -134,7 +151,10 @@ public class ProductServiceRESTProxy implements ProductService {
     lRequestBuilder.setBody(pProduct);
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
-    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, Boolean.class);
+    boolean lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, Boolean.class);
+    // Validate response and return it.
+    validationExecutor.validateResponse(ProductService.class, lResult);
+    return lResult;
   }
 
   /**
@@ -143,6 +163,8 @@ public class ProductServiceRESTProxy implements ProductService {
    */
   @Override
   public Sortiment getSortiment( Context pContext ) {
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(ProductService.class, pContext);
     // Create builder for GET request
     RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
     // Build path of request
@@ -177,7 +199,10 @@ public class ProductServiceRESTProxy implements ProductService {
     }
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
-    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, Sortiment.class);
+    Sortiment lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, Sortiment.class);
+    // Validate response and return it.
+    validationExecutor.validateResponse(ProductService.class, lResult);
+    return lResult;
   }
 
   /**
@@ -186,6 +211,8 @@ public class ProductServiceRESTProxy implements ProductService {
    */
   @Override
   public ChannelCode createChannelCode( String pChannelCode ) {
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(ProductService.class, pChannelCode);
     // Create builder for POST request
     RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.POST, ContentType.JSON);
     // Build path of request
@@ -198,7 +225,10 @@ public class ProductServiceRESTProxy implements ProductService {
     lRequestBuilder.setBody(pChannelCode);
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
-    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, ChannelCode.class);
+    ChannelCode lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, ChannelCode.class);
+    // Validate response and return it.
+    validationExecutor.validateResponse(ProductService.class, lResult);
+    return lResult;
   }
 
   /**
@@ -232,7 +262,10 @@ public class ProductServiceRESTProxy implements ProductService {
     lRequestBuilder.setPath(lPathBuilder.toString());
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
-    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+    String lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+    // Validate response and return it.
+    validationExecutor.validateResponse(ProductService.class, lResult);
+    return lResult;
   }
 
   /**
@@ -241,6 +274,8 @@ public class ProductServiceRESTProxy implements ProductService {
    */
   @Override
   public String deprecatedContext( DeprecatedContext pContext ) {
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(ProductService.class, pContext);
     // Create builder for POST request
     RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.POST, ContentType.JSON);
     // Build path of request
@@ -270,7 +305,10 @@ public class ProductServiceRESTProxy implements ProductService {
     }
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
-    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+    String lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+    // Validate response and return it.
+    validationExecutor.validateResponse(ProductService.class, lResult);
+    return lResult;
   }
 
   /**
@@ -278,6 +316,8 @@ public class ProductServiceRESTProxy implements ProductService {
    */
   @Override
   public void deprecatedBeanParam( BeanParameter pBeanParam ) {
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(ProductService.class, pBeanParam);
     // Create builder for POST request
     RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.POST, ContentType.JSON);
     // Build path of request
@@ -315,6 +355,8 @@ public class ProductServiceRESTProxy implements ProductService {
   @Deprecated
   @Override
   public String deprecatedParams( @Deprecated int pParam1 ) {
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(ProductService.class, pParam1);
     // Create builder for POST request
     RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.POST, ContentType.JSON);
     // Build path of request
@@ -327,7 +369,10 @@ public class ProductServiceRESTProxy implements ProductService {
     lRequestBuilder.setHeader("param1", pParam1);
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
-    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+    String lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+    // Validate response and return it.
+    validationExecutor.validateResponse(ProductService.class, lResult);
+    return lResult;
   }
 
   /**
@@ -337,6 +382,8 @@ public class ProductServiceRESTProxy implements ProductService {
    */
   @Override
   public String deprecatedBody( @Deprecated String pBody ) {
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(ProductService.class, pBody);
     // Create builder for POST request
     RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.POST, ContentType.JSON);
     // Build path of request
@@ -349,7 +396,10 @@ public class ProductServiceRESTProxy implements ProductService {
     lRequestBuilder.setBody(pBody);
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
-    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+    String lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+    // Validate response and return it.
+    validationExecutor.validateResponse(ProductService.class, lResult);
+    return lResult;
   }
 
   /**
@@ -361,6 +411,8 @@ public class ProductServiceRESTProxy implements ProductService {
    */
   @Override
   public void deprectedComplexRequestBody( @Deprecated Product pProduct ) {
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(ProductService.class, pProduct);
     // Create builder for POST request
     RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.POST, ContentType.JSON);
     // Build path of request
@@ -393,7 +445,10 @@ public class ProductServiceRESTProxy implements ProductService {
     lRequestBuilder.setPath(lPathBuilder.toString());
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
-    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, Product.class);
+    Product lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, Product.class);
+    // Validate response and return it.
+    validationExecutor.validateResponse(ProductService.class, lResult);
+    return lResult;
   }
 
   /**
@@ -401,6 +456,8 @@ public class ProductServiceRESTProxy implements ProductService {
    */
   @Override
   public void loadSpecificThings( SpecialContext pContext ) {
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(ProductService.class, pContext);
     // Create builder for PATCH request
     RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.PATCH, ContentType.JSON);
     // Build path of request
@@ -450,6 +507,8 @@ public class ProductServiceRESTProxy implements ProductService {
    */
   @Override
   public ChannelCode createChannelCodeFromObject( ChannelCode pChannelCode ) {
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(ProductService.class, pChannelCode);
     // Create builder for POST request
     RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.POST, ContentType.JSON);
     // Build path of request
@@ -462,7 +521,10 @@ public class ProductServiceRESTProxy implements ProductService {
     lRequestBuilder.setBody(pChannelCode);
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
-    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, ChannelCode.class);
+    ChannelCode lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, ChannelCode.class);
+    // Validate response and return it.
+    validationExecutor.validateResponse(ProductService.class, lResult);
+    return lResult;
   }
 
   /**
@@ -471,6 +533,8 @@ public class ProductServiceRESTProxy implements ProductService {
    */
   @Override
   public List<CurrencyCode> addCurrencies( List<CurrencyCode> pCurrencies ) {
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(ProductService.class, pCurrencies);
     // Create builder for POST request
     RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.POST, ContentType.JSON);
     // Build path of request
@@ -488,6 +552,8 @@ public class ProductServiceRESTProxy implements ProductService {
     if (lResult == null) {
       lResult = Collections.emptyList();
     }
+    // Validate response and return it.
+    validationExecutor.validateResponse(ProductService.class, lResult);
     return lResult;
   }
 
@@ -497,6 +563,8 @@ public class ProductServiceRESTProxy implements ProductService {
    */
   @Override
   public CurrencyCode isCurrencySupported( CurrencyCode pCurrency ) {
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(ProductService.class, pCurrency);
     // Create builder for POST request
     RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.POST, ContentType.JSON);
     // Build path of request
@@ -509,7 +577,10 @@ public class ProductServiceRESTProxy implements ProductService {
     lRequestBuilder.setBody(pCurrency);
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
-    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, CurrencyCode.class);
+    CurrencyCode lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, CurrencyCode.class);
+    // Validate response and return it.
+    validationExecutor.validateResponse(ProductService.class, lResult);
+    return lResult;
   }
 
   /**
@@ -518,6 +589,8 @@ public class ProductServiceRESTProxy implements ProductService {
    */
   @Override
   public IntegerCodeType testCodeTypeUsage( StringCodeType pStringCode ) {
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(ProductService.class, pStringCode);
     // Create builder for POST request
     RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.POST, ContentType.JSON);
     // Build path of request
@@ -530,7 +603,10 @@ public class ProductServiceRESTProxy implements ProductService {
     lRequestBuilder.setBody(pStringCode);
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
-    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, IntegerCodeType.class);
+    IntegerCodeType lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, IntegerCodeType.class);
+    // Validate response and return it.
+    validationExecutor.validateResponse(ProductService.class, lResult);
+    return lResult;
   }
 
   /**
@@ -539,6 +615,8 @@ public class ProductServiceRESTProxy implements ProductService {
    */
   @Override
   public String testLocalBeanParamType( LocalBeanParamType pBeanParam ) {
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(ProductService.class, pBeanParam);
     // Create builder for GET request
     RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
     // Build path of request
@@ -558,7 +636,10 @@ public class ProductServiceRESTProxy implements ProductService {
     }
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
-    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+    String lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+    // Validate response and return it.
+    validationExecutor.validateResponse(ProductService.class, lResult);
+    return lResult;
   }
 
   /**
@@ -567,6 +648,8 @@ public class ProductServiceRESTProxy implements ProductService {
    */
   @Override
   public String testExternalBeanParameterType( ParentBeanParamType pParent ) {
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(ProductService.class, pParent);
     // Create builder for GET request
     RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
     // Build path of request
@@ -586,7 +669,10 @@ public class ProductServiceRESTProxy implements ProductService {
     }
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
-    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+    String lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+    // Validate response and return it.
+    validationExecutor.validateResponse(ProductService.class, lResult);
+    return lResult;
   }
 
   /**
@@ -595,6 +681,8 @@ public class ProductServiceRESTProxy implements ProductService {
    */
   @Override
   public String testChildBeanParameter( ChildBeanParameterType pChild ) {
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(ProductService.class, pChild);
     // Create builder for GET request
     RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
     // Build path of request
@@ -617,7 +705,10 @@ public class ProductServiceRESTProxy implements ProductService {
     }
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
-    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+    String lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+    // Validate response and return it.
+    validationExecutor.validateResponse(ProductService.class, lResult);
+    return lResult;
   }
 
   /**
@@ -637,6 +728,9 @@ public class ProductServiceRESTProxy implements ProductService {
   public void testDateQueryParams( String pPath, OffsetDateTime pStartTimestamp, OffsetTime pStartTime,
       LocalDateTime pLocalStartTimestamp, LocalTime pLocalStartTime, LocalDate pLocalStartDate, Calendar pCalendar,
       java.util.Date pUtilDate, Timestamp pSQLTimestamp, Time pSQLTime, Date pSQLDate ) {
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(ProductService.class, pPath, pStartTimestamp, pStartTime, pLocalStartTimestamp,
+        pLocalStartTime, pLocalStartDate, pCalendar, pUtilDate, pSQLTimestamp, pSQLTime, pSQLDate);
     // Create builder for GET request
     RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
     // Build path of request
@@ -692,6 +786,8 @@ public class ProductServiceRESTProxy implements ProductService {
    */
   @Override
   public void testDateQueryParamsBean( String pPath, DateQueryParamsBean pQueryParams ) {
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(ProductService.class, pPath, pQueryParams);
     // Create builder for GET request
     RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
     // Build path of request
@@ -761,6 +857,9 @@ public class ProductServiceRESTProxy implements ProductService {
   public void testDateHeaderParams( String pPath, OffsetDateTime pOffsetDateTime, OffsetTime pOffsetTime,
       LocalDateTime pLocalDateTime, LocalTime pLocalTime, LocalDate pLocalDate, Calendar pCalendar,
       java.util.Date pUtilDate, Timestamp pSQLTimestamp, Time pSQLTime, Date pSQLDate ) {
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(ProductService.class, pPath, pOffsetDateTime, pOffsetTime, pLocalDateTime,
+        pLocalTime, pLocalDate, pCalendar, pUtilDate, pSQLTimestamp, pSQLTime, pSQLDate);
     // Create builder for GET request
     RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
     // Build path of request
@@ -813,6 +912,8 @@ public class ProductServiceRESTProxy implements ProductService {
    */
   @Override
   public void testDateHeaderParamsBean( String pPath, DateHeaderParamsBean pHeaderParams ) {
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(ProductService.class, pPath, pHeaderParams);
     // Create builder for GET request
     RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
     // Build path of request
@@ -872,6 +973,8 @@ public class ProductServiceRESTProxy implements ProductService {
    */
   @Override
   public String testTechnicalHeaderParam( String pReseller ) {
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(ProductService.class, pReseller);
     // Create builder for GET request
     RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
     // Build path of request
@@ -886,7 +989,10 @@ public class ProductServiceRESTProxy implements ProductService {
     }
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
-    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+    String lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+    // Validate response and return it.
+    validationExecutor.validateResponse(ProductService.class, lResult);
+    return lResult;
   }
 
   /**
@@ -895,6 +1001,8 @@ public class ProductServiceRESTProxy implements ProductService {
    */
   @Override
   public String testTechnicalHeaderBean( TechnicalHeaderContext pContext ) {
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(ProductService.class, pContext);
     // Create builder for GET request
     RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
     // Build path of request
@@ -915,6 +1023,9 @@ public class ProductServiceRESTProxy implements ProductService {
     }
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
-    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+    String lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+    // Validate response and return it.
+    validationExecutor.validateResponse(ProductService.class, lResult);
+    return lResult;
   }
 }

@@ -236,8 +236,9 @@ public class GeneratorMojo extends AbstractMojo {
   private Boolean generateRESTResources;
 
   /**
-   * Switch defines if request validation for REST Resources / Controllers should be generated. If it is enabled then
-   * the generated code will have a dependency on one of the following artifacts:
+   * Switch defines if request validation for REST Resources / Controllers or REST Clients (aka REST Service Proxies)
+   * should be generated. If it is enabled then the generated code will have a dependency on one of the following
+   * artifacts:
    * <p/>
    * <b>Spring Boot:</b>
    * 
@@ -266,8 +267,9 @@ public class GeneratorMojo extends AbstractMojo {
   private Boolean generateRESTRequestValidation;
 
   /**
-   * Switch defines if request validation for REST Resources / Controllers should be generated. If it is enabled then
-   * the generated code will have a dependency on one of the following artifacts:
+   * Switch defines if request validation for REST Resources / Controllers or REST Clients (aka REST Service Proxies)
+   * should be generated. If it is enabled then the generated code will have a dependency on one of the following
+   * artifacts:
    * <p/>
    * <b>Spring Boot:</b>
    * 
