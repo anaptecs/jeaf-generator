@@ -1,0 +1,9 @@
+extension functions::TypeChecks;
+
+cached boolean isProperty(uml::Element element):
+    element.isInstanceOf("org.eclipse.uml2.uml.Property");
+    
+cached uml::Property asProperty(uml::Element element):
+    (uml::Property) element;
+    
+

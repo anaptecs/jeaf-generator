@@ -11,6 +11,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.validation.ConstraintViolationException;
+import javax.validation.Valid;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
@@ -51,6 +52,7 @@ public class CodeTypeUsageTest implements ServiceObject {
 
   private Set<BooleanCodeType> booleanCodeAssociation;
 
+  @Valid
   private Set<ShortCodeType> shortCodeTypeAssociation;
 
   private StringCodeType stringCode;

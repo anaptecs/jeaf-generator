@@ -33,6 +33,7 @@ public class CodeTypeUsageTest implements ServiceObject {
   @JsonSetter(nulls = Nulls.SKIP)
   private Set<BooleanCodeType> booleanCodeAssociation;
 
+  @Valid
   @JsonSetter(nulls = Nulls.SKIP)
   @Size(min = 1)
   @NotNull
