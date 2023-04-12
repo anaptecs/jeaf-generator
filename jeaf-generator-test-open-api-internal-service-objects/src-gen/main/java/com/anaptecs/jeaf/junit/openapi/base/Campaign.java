@@ -38,6 +38,7 @@ public class Campaign implements ServiceObject {
    * @deprecated Please use "moreLinks" instead. (<b>since:</b> 2.3.1, <b>removed with:</b> 2.4)
    */
   @Deprecated
+  @Valid
   private long theLink;
 
   /**
@@ -48,6 +49,7 @@ public class Campaign implements ServiceObject {
    * @deprecated No good any more (<b>since:</b> 1.2, <b>removed with:</b> 3.0)
    */
   @Deprecated
+  @Valid
   @JsonSetter(nulls = Nulls.SKIP)
   @Size(min = 1)
   @NotNull
@@ -59,6 +61,7 @@ public class Campaign implements ServiceObject {
    * <code>com.anaptecs.jeaf.junit.openapi.base.DiscountOffer</code><br/>
    */
   @Deprecated
+  @Valid
   @JsonSetter(nulls = Nulls.SKIP)
   private List<String> discountOffers;
 
@@ -127,6 +130,7 @@ public class Campaign implements ServiceObject {
      * @deprecated Please use "moreLinks" instead. (<b>since:</b> 2.3.1, <b>removed with:</b> 2.4)
      */
     @Deprecated
+    @Valid
     private long theLink;
 
     /**
@@ -137,6 +141,7 @@ public class Campaign implements ServiceObject {
      * @deprecated No good any more (<b>since:</b> 1.2, <b>removed with:</b> 3.0)
      */
     @Deprecated
+    @Valid
     @Size(min = 1)
     @NotNull
     private Set<Long> moreLinks;
@@ -147,6 +152,7 @@ public class Campaign implements ServiceObject {
      * <code>com.anaptecs.jeaf.junit.openapi.base.DiscountOffer</code><br/>
      */
     @Deprecated
+    @Valid
     private List<String> discountOffers;
 
     /**

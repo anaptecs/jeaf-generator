@@ -43,11 +43,14 @@ public class ChildAA extends ChildA {
   @Size(min = 1)
   private String[] requiredArray;
 
+  @Valid
   @NotNull
   private BigIntegerCode bigIntegerCode;
 
+  @Valid
   private IntegerCodeType integerCode;
 
+  @Valid
   private IntegerCode[] codes;
 
   /**
@@ -123,10 +126,12 @@ public class ChildAA extends ChildA {
 
     private String[] requiredArray;
 
+    @Valid
     private BigIntegerCode bigIntegerCode;
 
     private IntegerCodeType integerCode;
 
+    @Valid
     private IntegerCode[] codes;
 
     /**

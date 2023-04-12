@@ -40,6 +40,7 @@ public class ParentClass implements ServiceObject {
   @NotNull
   private String parentAttribute;
 
+  @Valid
   @JsonSetter(nulls = Nulls.SKIP)
   private Set<IBAN> ibans;
 
@@ -47,12 +48,14 @@ public class ParentClass implements ServiceObject {
    * I would like to document references to other types.
    */
   @Deprecated
+  @Valid
   private BankAccount theBankAccount;
 
   /**
    * Association is still there be SemVer compliant.
    */
   @Deprecated
+  @Valid
   @JsonSetter(nulls = Nulls.SKIP)
   private List<BankAccount> legacyBankAccounts;
 

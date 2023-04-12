@@ -31,6 +31,7 @@ public class DiscountOffer implements ServiceObject {
    * <code>com.anaptecs.jeaf.junit.openapi.base.Campaign</code><br/>
    */
   @Deprecated
+  @Valid
   @JsonSetter(nulls = Nulls.SKIP)
   private Set<SoftLink> campaigns;
 
@@ -89,6 +90,7 @@ public class DiscountOffer implements ServiceObject {
      * <code>com.anaptecs.jeaf.junit.openapi.base.Campaign</code><br/>
      */
     @Deprecated
+    @Valid
     private Set<SoftLink> campaigns;
 
     /**

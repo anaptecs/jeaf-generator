@@ -45,6 +45,7 @@ public class ChildB extends ParentClass {
   /**
    * the composition
    */
+  @Valid
   @JsonSetter(nulls = Nulls.SKIP)
   private Set<ParentClass> composition;
 

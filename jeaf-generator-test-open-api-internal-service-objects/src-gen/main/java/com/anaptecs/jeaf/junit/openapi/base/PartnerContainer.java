@@ -25,6 +25,7 @@ public class PartnerContainer implements ServiceObject {
    */
   private static final long serialVersionUID = 1L;
 
+  @Valid
   @JsonSetter(nulls = Nulls.SKIP)
   private List<Partner> partners;
 

@@ -31,6 +31,7 @@ public class TheReadOnlyServiceObject implements ServiceObject {
 
   private final boolean[] bits;
 
+  @Valid
   @JsonSetter(nulls = Nulls.SKIP)
   private final Set<BookingCode> bookingCodes;
 

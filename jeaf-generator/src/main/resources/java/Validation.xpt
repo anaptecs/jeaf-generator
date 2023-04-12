@@ -3,6 +3,7 @@
 «EXTENSION java::Naming»
 «EXTENSION java::GeneratorCommons»
 «EXTENSION java::CustomValidationCommons»
+«EXTENSION functions::Property»
 «EXTENSION org::openarchitectureware::util::stdlib::io»
 
 «DEFINE GenerateCustomValidation FOR CustomConstraint»
@@ -137,6 +138,9 @@ public @interface «validationClass» {
 	«IF generateValidAnnotationsForClasses() &&(this.isStereotypeApplied("POJO") || this.isStereotypeApplied("ServiceObject") || this.isStereotypeApplied("DomainObject") || this.isStereotypeApplied("PersistentObject")) && this.isStereotypeApplied("Valid")==false »
 	@javax.validation.Valid
 	«ENDIF»
+    «IF generateValidAnnotationsForAssociations() && this.isProperty() &&(this.asProperty().type.isStereotypeApplied("POJO") || this.asProperty().type.isStereotypeApplied("ServiceObject") || this.asProperty().type.isStereotypeApplied("DomainObject") || this.asProperty().type.isStereotypeApplied("PersistentObject")) && this.isStereotypeApplied("Valid")==false »
+    @javax.validation.Valid
+    «ENDIF»
 «ENDDEFINE»
 
 

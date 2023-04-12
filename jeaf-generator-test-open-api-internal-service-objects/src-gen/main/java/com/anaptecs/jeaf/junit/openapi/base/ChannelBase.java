@@ -29,6 +29,7 @@ public abstract class ChannelBase implements ServiceObject {
   /**
    * The business code of the channel
    */
+  @Valid
   @NotNull
   private ChannelCode channelCode;
 
@@ -40,6 +41,7 @@ public abstract class ChannelBase implements ServiceObject {
    */
   private final boolean selfServiceChannel;
 
+  @Valid
   private transient Reseller reseller;
 
   /**

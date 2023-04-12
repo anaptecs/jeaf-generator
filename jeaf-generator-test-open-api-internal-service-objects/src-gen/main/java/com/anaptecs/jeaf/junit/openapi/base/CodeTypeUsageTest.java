@@ -27,20 +27,25 @@ public class CodeTypeUsageTest implements ServiceObject {
    */
   private static final long serialVersionUID = 1L;
 
+  @Valid
   @NotNull
   private BooleanCodeType booleanCode;
 
+  @Valid
   @JsonSetter(nulls = Nulls.SKIP)
   private Set<BooleanCodeType> booleanCodeAssociation;
 
+  @Valid
   @JsonSetter(nulls = Nulls.SKIP)
   @Size(min = 1)
   @NotNull
   private Set<ShortCodeType> shortCodeTypeAssociation;
 
+  @Valid
   @NotNull
   private StringCodeType stringCode;
 
+  @Valid
   @NotNull
   private ShortCode shortCode;
 
@@ -114,12 +119,14 @@ public class CodeTypeUsageTest implements ServiceObject {
    * Class implements builder to create a new instance of class <code>CodeTypeUsageTest</code>.
    */
   public static class Builder {
+    @Valid
     private BooleanCodeType booleanCode;
 
     private Set<BooleanCodeType> booleanCodeAssociation;
 
     private Set<ShortCodeType> shortCodeTypeAssociation;
 
+    @Valid
     private StringCodeType stringCode;
 
     private ShortCode shortCode;
