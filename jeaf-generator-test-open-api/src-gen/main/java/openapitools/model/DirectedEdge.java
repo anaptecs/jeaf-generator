@@ -30,8 +30,9 @@ import openapitools.JSON;
 
 
 /**
- * DirectedEdge
+ * Just a simple comment. 
  */
+@ApiModel(description = "Just a simple comment. ")
 @JsonPropertyOrder({
   DirectedEdge.JSON_PROPERTY_START,
   DirectedEdge.JSON_PROPERTY_END,
@@ -109,11 +110,11 @@ public class DirectedEdge {
   }
 
    /**
-   * Get previousName
+   * Another simple comment. Java Property Name: &#39;link&#39;  
    * @return previousName
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "Another simple comment. Java Property Name: 'link'  ")
   @JsonProperty(JSON_PROPERTY_PREVIOUS_NAME)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 

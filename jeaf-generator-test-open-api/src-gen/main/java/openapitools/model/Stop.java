@@ -137,11 +137,11 @@ public class Stop {
   }
 
    /**
-   * Get links
+   *  Java Property Name: &#39;links&#39;  
    * @return links
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = " Java Property Name: 'links'  ")
   @JsonProperty(JSON_PROPERTY_LINKS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 

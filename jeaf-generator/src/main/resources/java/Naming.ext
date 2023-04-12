@@ -1,4 +1,5 @@
 extension java::GeneratorCommons;
+extension java::OpenAPIFunctions;
 extension functions::JEAFDeprecated;
 
 // Function returns the name of the parameter for a java method accoring to the anaptecs code styleguide. For the 
@@ -115,7 +116,7 @@ String getComment(uml::Comment comment):
     comment.body;
     
 boolean hasComment(uml::Element element):
-    getComment(element).length > 0 || (element.isJEAFDeprecated() && ((uml::NamedElement) element).hasMeaningfulDeprecationInfo());
+    getComment(element).length > 0 || (element.isJEAFDeprecated() && ((uml::NamedElement) element).hasMeaningfulDeprecationInfo()) || element.hasAliasAttributeName();
 
 String getComment(Object this): "";
 
