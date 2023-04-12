@@ -28,12 +28,14 @@ public class WeirdBooking extends WeirdParent {
    */
   private static final long serialVersionUID = 1L;
 
+  @Valid
   @NotNull
   private ComplexBookingID booking;
 
   /**
    * additional bookings
    */
+  @Valid
   @JsonSetter(nulls = Nulls.SKIP)
   private List<ComplexBookingID> additionalBookings;
 
@@ -42,6 +44,7 @@ public class WeirdBooking extends WeirdParent {
    * 2nd line<br/>
    * 3rd line
    */
+  @Valid
   @NotNull
   private VersionedObjectSoftLink versionedObjectSoftLink;
 
@@ -50,6 +53,7 @@ public class WeirdBooking extends WeirdParent {
   /**
    * the real booking
    */
+  @Valid
   private Booking realBooking;
 
   @JsonSetter(nulls = Nulls.SKIP)

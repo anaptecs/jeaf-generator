@@ -20,27 +20,35 @@ public class HeavyDataTypeUser implements ServiceObject {
    */
   private static final long serialVersionUID = 1L;
 
+  @Valid
   @NotNull
   private BooleanCode booleanCode;
 
+  @Valid
   @NotNull
   private ByteCode byteCode;
 
+  @Valid
   @NotNull
   private ShortCode shortCode;
 
+  @Valid
   @NotNull
   private IntegerCode integerCode;
 
+  @Valid
   @NotNull
   private FloatCode floatCode;
 
+  @Valid
   @NotNull
   private DoubleCode doubleCode;
 
+  @Valid
   @NotNull
   private BigIntegerCode bigInegerCode;
 
+  @Valid
   @NotNull
   private BigDecimalCode bigDecimalCode;
 
@@ -112,20 +120,28 @@ public class HeavyDataTypeUser implements ServiceObject {
    * Class implements builder to create a new instance of class <code>HeavyDataTypeUser</code>.
    */
   public static class Builder {
+    @Valid
     private BooleanCode booleanCode;
 
+    @Valid
     private ByteCode byteCode;
 
+    @Valid
     private ShortCode shortCode;
 
+    @Valid
     private IntegerCode integerCode;
 
+    @Valid
     private FloatCode floatCode;
 
+    @Valid
     private DoubleCode doubleCode;
 
+    @Valid
     private BigIntegerCode bigInegerCode;
 
+    @Valid
     private BigDecimalCode bigDecimalCode;
 
     /**

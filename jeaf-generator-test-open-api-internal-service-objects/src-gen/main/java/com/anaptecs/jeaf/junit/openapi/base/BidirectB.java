@@ -23,6 +23,7 @@ public class BidirectB implements ServiceObject {
   /**
    * the A
    */
+  @Valid
   @NotNull
   private BidirectA a;
 

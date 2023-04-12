@@ -35,6 +35,7 @@ public class BookingID implements ServiceObject {
   @NotNull
   private InventoryType inventory;
 
+  @Valid
   @NotNull
   private BookingCode bookingCode;
 

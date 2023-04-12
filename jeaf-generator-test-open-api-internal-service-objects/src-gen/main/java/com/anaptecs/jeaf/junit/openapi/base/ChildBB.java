@@ -35,10 +35,12 @@ public class ChildBB extends ChildB {
   private int deprecatedAttribute;
 
   @Deprecated
+  @Valid
   @JsonSetter(nulls = Nulls.SKIP)
   private Set<ChildB> deprecatedBs;
 
   @Deprecated
+  @Valid
   private ParentClass deprecatedParent;
 
   @Deprecated

@@ -43,6 +43,7 @@ public class Partner implements ServiceObject, Identifiable<ServiceObjectID> {
    */
   private final ServiceObjectID objectID;
 
+  @Valid
   @JsonSetter(nulls = Nulls.SKIP)
   private List<PostalAddress> postalAddresses;
 

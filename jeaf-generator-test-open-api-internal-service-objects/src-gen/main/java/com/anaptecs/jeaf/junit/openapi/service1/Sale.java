@@ -34,6 +34,7 @@ public class Sale implements ServiceObject {
   @NotNull
   private BigDecimal transactionAmount;
 
+  @Valid
   private Channel sale;
 
   /**

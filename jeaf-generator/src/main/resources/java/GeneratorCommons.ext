@@ -182,6 +182,9 @@ cached String getGeneratedAnnotation():
 cached boolean generateValidAnnotationsForClasses() :
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateValidAnnotationsForClasses();
     
+cached boolean generateValidAnnotationsForAssociations() :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateValidAnnotationsForAssociations();
+    
 cached boolean generateValidationAnnotationsForAttributesFromMultiplicity() :
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateValidationAnnotationsForAttributesFromMultiplicity();
     

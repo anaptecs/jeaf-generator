@@ -35,6 +35,7 @@ public class POI extends Stop {
    * <code>LinkObject</code><br/>
    */
   @Deprecated
+  @Valid
   @NotNull
   private Long theLink;
 
@@ -44,6 +45,7 @@ public class POI extends Stop {
    * <code>LinkObject</code><br/>
    */
   @Deprecated
+  @Valid
   @JsonSetter(nulls = Nulls.SKIP)
   private Set<SoftLink> evenMoreLinks;
 
@@ -119,6 +121,7 @@ public class POI extends Stop {
      * <code>LinkObject</code><br/>
      */
     @Deprecated
+    @Valid
     @NotNull
     private Long theLink;
 
@@ -128,6 +131,7 @@ public class POI extends Stop {
      * <code>LinkObject</code><br/>
      */
     @Deprecated
+    @Valid
     private Set<SoftLink> evenMoreLinks;
 
     /**

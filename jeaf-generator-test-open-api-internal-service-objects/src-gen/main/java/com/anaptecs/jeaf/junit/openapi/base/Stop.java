@@ -40,6 +40,7 @@ public class Stop implements ServiceObject {
   private String name;
 
   @JsonProperty("_links")
+  @Valid
   @JsonSetter(nulls = Nulls.SKIP)
   private List<LinkObject> links;
 
@@ -52,6 +53,7 @@ public class Stop implements ServiceObject {
    * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #theSoftLink} is
    * <code>LinkObject</code><br/>
    */
+  @Valid
   @NotNull
   private SoftLink theSoftLink;
 
@@ -130,6 +132,7 @@ public class Stop implements ServiceObject {
      * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #theSoftLink} is
      * <code>LinkObject</code><br/>
      */
+    @Valid
     @NotNull
     private SoftLink theSoftLink;
 

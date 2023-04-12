@@ -25,8 +25,10 @@ public class BidirectA implements ServiceObject {
    */
   private static final long serialVersionUID = 1L;
 
+  @Valid
   private transient Set<BidirectB> transientBs;
 
+  @Valid
   @NotNull
   private BidirectA parent;
 
@@ -35,6 +37,7 @@ public class BidirectA implements ServiceObject {
    */
   private transient boolean parentBackReferenceInitialized;
 
+  @Valid
   private transient BidirectA transientChild;
 
   /**

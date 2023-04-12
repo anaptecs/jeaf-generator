@@ -40,6 +40,7 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
    */
   private final ServiceObjectID objectID;
 
+  @Valid
   @JsonSetter(nulls = Nulls.SKIP)
   @Size(min = 1)
   @NotNull
@@ -50,6 +51,7 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
    */
   private transient boolean channelsBackReferenceInitialized;
 
+  @Valid
   private transient Set<Product> products;
 
   @NotBlank

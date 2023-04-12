@@ -26,12 +26,15 @@ public class Leg implements ServiceObject {
    */
   private static final long serialVersionUID = 1L;
 
+  @Valid
   @NotNull
   private PlaceRef start;
 
+  @Valid
   @NotNull
   private PlaceRef stop;
 
+  @Valid
   @JsonSetter(nulls = Nulls.SKIP)
   private List<PlaceRef> stopovers;
 

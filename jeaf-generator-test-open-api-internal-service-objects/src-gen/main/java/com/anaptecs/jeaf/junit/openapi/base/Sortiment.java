@@ -26,6 +26,7 @@ public class Sortiment implements ServiceObject {
    */
   private static final long serialVersionUID = 1L;
 
+  @Valid
   @JsonSetter(nulls = Nulls.SKIP)
   private Set<Product> products;
 

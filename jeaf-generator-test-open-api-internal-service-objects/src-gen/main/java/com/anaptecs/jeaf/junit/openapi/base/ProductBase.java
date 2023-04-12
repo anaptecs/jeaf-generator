@@ -45,6 +45,7 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
    */
   private final ServiceObjectID objectID;
 
+  @Valid
   @JsonSetter(nulls = Nulls.SKIP)
   private Set<Reseller> resellers;
 
@@ -73,10 +74,12 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
   private final UUID productID;
 
   @Size(min = 7, max = 42)
+  @Valid
   @JsonSetter(nulls = Nulls.SKIP)
   @NotNull
   private Set<CurrencyCode> supportedCurrencies;
 
+  @Valid
   @JsonSetter(nulls = Nulls.SKIP)
   @Size(min = 1)
   @NotNull
@@ -86,6 +89,7 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
   @NotNull
   private String description;
 
+  @Valid
   private transient Set<Sortiment> sortiments;
 
   /**
