@@ -40,6 +40,11 @@ public class PostalAddress implements Serializable {
    */
   public static final String POSTALCODE = "postalCode";
 
+  /**
+   * Constant for the name of attribute "country".
+   */
+  public static final String COUNTRY = "country";
+
   private String street;
 
   private String houseNumber;
@@ -49,10 +54,17 @@ public class PostalAddress implements Serializable {
   private int postalCode;
 
   /**
+   * <br/>
+   * <b>Default Value:</b> <code>"Germany"</code>
+   */
+  private String country;
+
+  /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   protected PostalAddress( ) {
+    country = "Germany";
   }
 
   /**
@@ -68,6 +80,7 @@ public class PostalAddress implements Serializable {
     houseNumber = pBuilder.houseNumber;
     city = pBuilder.city;
     postalCode = pBuilder.postalCode;
+    country = pBuilder.country;
   }
 
   /**
@@ -93,12 +106,13 @@ public class PostalAddress implements Serializable {
   /**
    * Method creates a new builder and initializes it with the passed attributes.
    */
-  public static Builder builder( String pStreet, String pHouseNumber, String pCity, int pPostalCode ) {
+  public static Builder builder( String pStreet, String pHouseNumber, String pCity, int pPostalCode, String pCountry ) {
     Builder lBuilder = builder();
     lBuilder.setStreet(pStreet);
     lBuilder.setHouseNumber(pHouseNumber);
     lBuilder.setCity(pCity);
     lBuilder.setPostalCode(pPostalCode);
+    lBuilder.setCountry(pCountry);
     return lBuilder;
   }
 
@@ -113,6 +127,12 @@ public class PostalAddress implements Serializable {
     private String city;
 
     private int postalCode;
+
+    /**
+     * <br/>
+     * <b>Default Value:</b> <code>"Germany"</code>
+     */
+    private String country = "Germany";
 
     /**
      * Use {@link PostalAddress#builder()} instead of private constructor to create new builder.
@@ -130,6 +150,7 @@ public class PostalAddress implements Serializable {
         houseNumber = pObject.houseNumber;
         city = pObject.city;
         postalCode = pObject.postalCode;
+        country = pObject.country;
       }
     }
 
@@ -178,6 +199,18 @@ public class PostalAddress implements Serializable {
     public Builder setPostalCode( int pPostalCode ) {
       // Assign value to attribute
       postalCode = pPostalCode;
+      return this;
+    }
+
+    /**
+     * Method sets attribute {@link #country}.<br/>
+     *
+     * @param pCountry Value to which {@link #country} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    public Builder setCountry( String pCountry ) {
+      // Assign value to attribute
+      country = pCountry;
       return this;
     }
 
@@ -282,6 +315,25 @@ public class PostalAddress implements Serializable {
   }
 
   /**
+   * Method returns attribute {@link #country}.<br/>
+   *
+   * @return {@link String} Value to which {@link #country} is set.
+   */
+  public String getCountry( ) {
+    return country;
+  }
+
+  /**
+   * Method sets attribute {@link #country}.<br/>
+   *
+   * @param pCountry Value to which {@link #country} should be set.
+   */
+  public void setCountry( String pCountry ) {
+    // Assign value to attribute
+    country = pCountry;
+  }
+
+  /**
    * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
@@ -307,6 +359,10 @@ public class PostalAddress implements Serializable {
     lBuilder.append(pIndent);
     lBuilder.append("postalCode: ");
     lBuilder.append(postalCode);
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("country: ");
+    lBuilder.append(country);
     lBuilder.append(System.lineSeparator());
     return lBuilder;
   }

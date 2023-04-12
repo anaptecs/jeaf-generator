@@ -1486,4 +1486,18 @@ public class GeneratorCommons {
     }
     return "[" + pErrorCode + "] " + lMessage + " (Model element: " + lElementName + ")     ";
   }
+
+  public static String getJavaDefaultValue( Property pProperty ) {
+    String lStringValue = pProperty.getDefaultValue().stringValue();
+    String lTypeName = Naming.getFullyQualifiedName(pProperty);
+    if ("java.lang.String".equals(lTypeName) || "String".equals(lTypeName)) {
+      if (lStringValue.startsWith("\"") == false) {
+        lStringValue = "\"" + lStringValue;
+      }
+      if (lStringValue.endsWith("\"") == false) {
+        lStringValue = lStringValue + "\"";
+      }
+    }
+    return lStringValue;
+  }
 }

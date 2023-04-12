@@ -22,7 +22,8 @@ String getCommentBody(Comment c) : c.body;
 
 boolean hasInitValue(Property p) : !p.ownedElement.isEmpty;
 
-String initValue(Property p) : p.defaultValue.stringValue();
+String initValue(Property p) : 
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getJavaDefaultValue(org.eclipse.uml2.uml.Property);
 
 List getSubclasses(Class e) :
    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.getSubclasses(org.eclipse.uml2.uml.Class);
