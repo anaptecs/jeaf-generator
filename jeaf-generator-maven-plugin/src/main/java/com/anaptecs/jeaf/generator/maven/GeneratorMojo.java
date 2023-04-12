@@ -535,6 +535,7 @@ public class GeneratorMojo extends AbstractMojo {
    * Switch defines if Java Validation Annotation @Valid will be generated for all generated POJO, ServiceObjects,
    * DomainObject and PersistentObjects even in cases when it is not defined in the UML model.
    */
+  @Deprecated
   @Parameter(required = false, defaultValue = "false")
   private Boolean generateValidAnnotationForClasses;
 
@@ -1140,6 +1141,8 @@ public class GeneratorMojo extends AbstractMojo {
     }
     if (generateValidAnnotationForClasses) {
       lLog.info("Generate @Valid Annotations for classes:          " + generateValidAnnotationForClasses);
+      lLog.warn(
+          "Please remove 'generateValidAnnotationForClasses' from your configuration. This flag will not be supported in the near future as it is not really required.");
     }
     if (generateValidationAnnotationsForAttributesFromMultiplicity) {
       lLog.info("Generate Validation Annotations for attributes:   "
