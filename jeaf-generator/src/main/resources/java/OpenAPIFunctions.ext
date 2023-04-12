@@ -55,9 +55,14 @@ cached String getYAMLStyleComment(uml::Element element, String indentation):
     element.ownedComment.get(0).body.replaceAll("\n", "\r\n" + indentation + "# ");
 
 cached String getCommentForOpenAPIDescription(uml::Element element, String indentation):
-    if(element.ownedComment.size > 0)
-     then element.ownedComment.first().body.replaceAll("\n", "\r\n" + indentation) + ((uml::NamedElement) element).getInternalDeprecationDescription(indentation)
-     else ((uml::NamedElement) element).getInternalDeprecationDescription(indentation);
+    if element.ownedComment.size > 0
+    then element.ownedComment.first().body.replaceAll("\n", "\r\n" + indentation) + element.getAliasDocs(indentation) + ((uml::NamedElement) element).getInternalDeprecationDescription(indentation)
+    else element.getAliasDocs(indentation) + ((uml::NamedElement) element).getInternalDeprecationDescription(indentation);
+
+private cached String getAliasDocs(uml::Element property, String indentation):
+    if property.hasAliasAttributeName()
+    then "\r\n" + indentation + "Java Property Name: '" + ((uml::Property) property).name + "' " 
+    else "";
     
 private cached String getInternalDeprecationDescription(uml::NamedElement element, String indentation):
     if element.isJEAFDeprecated() && element.hasMeaningfulDeprecationInfo()
@@ -382,8 +387,8 @@ cached boolean hasDefaultLiteral(JMM::OpenAPIEnumeration enum) :
 cached JMM::OpenAPIAliasName asAlias(uml::Property property):
   (JMM::OpenAPIAliasName) property;
   
-cached boolean hasAliasAttributeName(uml::Property property) :
-   isStereotypeApplied(property, "OpenAPIAliasName");
+cached boolean hasAliasAttributeName(uml::Element element) :
+   element.isStereotypeApplied("OpenAPIAliasName");
 
 cached String getAttributeName(uml::Property property) :
    if property.hasAliasAttributeName() == true

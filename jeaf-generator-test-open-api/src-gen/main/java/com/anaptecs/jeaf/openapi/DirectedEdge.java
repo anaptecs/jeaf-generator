@@ -20,9 +20,9 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 /**
- * DirectedEdge
+ * Just a simple comment. 
  */
-
+@Schema(description = "Just a simple comment. ")
 
 public class DirectedEdge {
   @JsonProperty("start")
@@ -76,10 +76,10 @@ public class DirectedEdge {
   }
 
    /**
-   * Get previousName
+   * Another simple comment. Java Property Name: &#x27;link&#x27;  
    * @return previousName
   **/
-  @Schema(required = true, description = "")
+  @Schema(required = true, description = "Another simple comment. Java Property Name: 'link'  ")
   public String getPreviousName() {
     return previousName;
   }

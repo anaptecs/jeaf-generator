@@ -11,6 +11,12 @@ import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
+/**
+ * Just a simple comment.
+ *
+ * @author JEAF Generator
+ * @version JEAF Release 1.4.x
+ */
 public class DirectedEdge implements ServiceObject {
   /**
    * Default serial version uid.
@@ -42,6 +48,9 @@ public class DirectedEdge implements ServiceObject {
    */
   private Stop end;
 
+  /**
+   * Another simple comment.
+   */
   private String link;
 
   /**
@@ -99,6 +108,9 @@ public class DirectedEdge implements ServiceObject {
      */
     private Stop end;
 
+    /**
+     * Another simple comment.
+     */
     private String link;
 
     /**
@@ -235,6 +247,7 @@ public class DirectedEdge implements ServiceObject {
 
   /**
    * Method returns attribute {@link #link}.<br/>
+   * Another simple comment.
    *
    * @return {@link String} Value to which {@link #link} is set.
    */
@@ -244,6 +257,7 @@ public class DirectedEdge implements ServiceObject {
 
   /**
    * Method sets attribute {@link #link}.<br/>
+   * Another simple comment.
    *
    * @param pLink Value to which {@link #link} should be set.
    */
