@@ -601,6 +601,8 @@ components:
     DirectedEdge:
       type: object
       additionalProperties: false
+      description: >-
+        Just a simple comment.
       required:
         - end
         - previousName
@@ -610,6 +612,9 @@ components:
         end:
           $ref: '#/components/schemas/Stop'
         previousName:
+          description: >-
+            Another simple comment.
+            Java Property Name: 'link' 
           type: string
           nullable: false
 
@@ -1598,6 +1603,9 @@ components:
           type: string
           nullable: false
         _links:
+          description: >-
+            
+            Java Property Name: 'links' 
           type: array
           items:
             $ref: '#/components/schemas/LinkObject'
