@@ -7,6 +7,7 @@ package com.anaptecs.spring.base;
 
 import java.util.Objects;
 
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -145,7 +146,9 @@ public abstract class SoftLinkBase {
      * @return SoftLink Created object. The method never returns null.
      */
     public SoftLink build( ) {
-      return new SoftLink(this);
+      SoftLink lObject = new SoftLink(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 

@@ -202,7 +202,9 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
      * @return ComplexBookingID Created object. The method never returns null.
      */
     public ComplexBookingID build( ) {
-      return new ComplexBookingID(this);
+      ComplexBookingID lObject = new ComplexBookingID(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

@@ -428,7 +428,9 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
      * @return Product Created object. The method never returns null.
      */
     public Product build( ) {
-      return new Product(this);
+      Product lObject = new Product(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

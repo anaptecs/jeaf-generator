@@ -135,7 +135,9 @@ public abstract class PersonBase extends Partner {
      * @return Person Created object. The method never returns null.
      */
     public Person build( ) {
-      return new Person(this);
+      Person lObject = new Person(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

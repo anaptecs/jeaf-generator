@@ -129,7 +129,9 @@ public class ImmutablePOJO {
      * @return ImmutablePOJO Created object. The method never returns null.
      */
     public ImmutablePOJO build( ) {
-      return new ImmutablePOJO(this);
+      ImmutablePOJO lObject = new ImmutablePOJO(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

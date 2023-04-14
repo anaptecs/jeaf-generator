@@ -218,7 +218,9 @@ public abstract class TestServiceObjectBase implements ServiceObject {
      * @return TestServiceObject Created object. The method never returns null.
      */
     public TestServiceObject build( ) {
-      return new TestServiceObject(this);
+      TestServiceObject lObject = new TestServiceObject(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

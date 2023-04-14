@@ -214,7 +214,9 @@ public abstract class PartiallyDeprecatedServiceObjectBase implements ServiceObj
      * @return PartiallyDeprecatedServiceObject Created object. The method never returns null.
      */
     public PartiallyDeprecatedServiceObject build( ) {
-      return new PartiallyDeprecatedServiceObject(this);
+      PartiallyDeprecatedServiceObject lObject = new PartiallyDeprecatedServiceObject(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

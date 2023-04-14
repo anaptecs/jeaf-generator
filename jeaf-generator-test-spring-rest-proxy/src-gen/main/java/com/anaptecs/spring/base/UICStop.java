@@ -7,6 +7,8 @@ package com.anaptecs.spring.base;
 
 import java.util.List;
 
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+
 public class UICStop extends Stop {
   /**
    * Constant for the name of attribute "uicCode".
@@ -121,7 +123,9 @@ public class UICStop extends Stop {
      * @return UICStop Created object. The method never returns null.
      */
     public UICStop build( ) {
-      return new UICStop(this);
+      UICStop lObject = new UICStop(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 

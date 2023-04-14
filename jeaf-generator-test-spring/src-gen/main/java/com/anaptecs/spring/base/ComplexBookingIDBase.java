@@ -12,6 +12,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.annotation.Nulls;
@@ -216,7 +217,9 @@ public abstract class ComplexBookingIDBase {
      * @return ComplexBookingID Created object. The method never returns null.
      */
     public ComplexBookingID build( ) {
-      return new ComplexBookingID(this);
+      ComplexBookingID lObject = new ComplexBookingID(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 

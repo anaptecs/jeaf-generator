@@ -108,7 +108,9 @@ public abstract class CompositeIDBase implements ServiceObject {
      * @return CompositeID Created object. The method never returns null.
      */
     public CompositeID build( ) {
-      return new CompositeID(this);
+      CompositeID lObject = new CompositeID(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

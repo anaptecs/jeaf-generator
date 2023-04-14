@@ -271,7 +271,9 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
      * @return Account Created object. The method never returns null.
      */
     public Account build( ) {
-      return new Account(this);
+      Account lObject = new Account(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

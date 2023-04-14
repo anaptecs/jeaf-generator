@@ -195,7 +195,9 @@ public abstract class ChannelBase implements ServiceObject {
      * @return Channel Created object. The method never returns null.
      */
     public Channel build( ) {
-      return new Channel(this);
+      Channel lObject = new Channel(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

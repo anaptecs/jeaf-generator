@@ -138,7 +138,9 @@ public abstract class ClassABase implements ServiceObject, Identifiable<ServiceO
      * @return ClassA Created object. The method never returns null.
      */
     public ClassA build( ) {
-      return new ClassA(this);
+      ClassA lObject = new ClassA(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

@@ -462,34 +462,34 @@ cached boolean isCompositeDataType(uml::Type class):
   then false
   else 
 	  if class.isStereotypeApplied("POJO")
-	  then ((JMM::ServiceObject) class).compositeDataType
+	  then ((JMM::POJO) class).compositeDataType
 	  else 
 	  		if class.isStereotypeApplied("ServiceObject")
-	  		then ((JMM::POJO) class).compositeDataType
+	  		then ((JMM::ServiceObject) class).compositeDataType
 	  		else false;
  
 cached String getCompositeDateTypePublicFieldName(uml::Type class):
   if class.isStereotypeApplied("POJO")
-  then ((JMM::ServiceObject) class).compositeDataTypePublicFieldName
+  then ((JMM::POJO) class).compositeDataTypePublicFieldName
   else 
   		if class.isStereotypeApplied("ServiceObject")
-  		then ((JMM::POJO) class).compositeDataTypePublicFieldName
+  		then ((JMM::ServiceObject) class).compositeDataTypePublicFieldName
   		else false;
  
- cached boolean isCompositeDataTypeReadonly(uml::Type class):
+cached boolean isCompositeDataTypeReadonly(uml::Type class):
   if class.isStereotypeApplied("POJO")
-  then ((JMM::ServiceObject) class).compositeDataTypeReadonly
+  then ((JMM::POJO) class).compositeDataTypeReadonly
   else 
   		if class.isStereotypeApplied("ServiceObject")
-  		then ((JMM::POJO) class).compositeDataTypeReadonly
+  		then ((JMM::ServiceObject) class).compositeDataTypeReadonly
   		else false;
  
 cached boolean hasCompositeDateTypeCustomSerialization(uml::Type class):
   if class.isStereotypeApplied("POJO")
-  then ((JMM::ServiceObject) class).compositeDataTypeCustomSerialization
+  then ((JMM::POJO) class).compositeDataTypeCustomSerialization
   else 
   		if class.isStereotypeApplied("ServiceObject")
-  		then ((JMM::POJO) class).compositeDataTypeCustomSerialization
+  		then ((JMM::ServiceObject) class).compositeDataTypeCustomSerialization
   		else false;
  
 cached boolean generateInternalViewOfCompositeDataType(uml::Type class):
@@ -497,10 +497,10 @@ cached boolean generateInternalViewOfCompositeDataType(uml::Type class):
   then false
   else 
 	  if class.isStereotypeApplied("POJO")
-	  then ((JMM::ServiceObject) class).compositeDataType
+	  then ((JMM::POJO) class).compositeDataType
 	  else 
 	  		if class.isStereotypeApplied("ServiceObject")
-	  		then ((JMM::POJO) class).compositeDataType
+	  		then ((JMM::ServiceObject) class).compositeDataType
 	  		else false;
 
 cached List[uml::Property] getCompositePublicFieldProperties(uml::Type type):
@@ -531,6 +531,16 @@ cached boolean hasHierarchyCustomHeaders(JMM::BeanParam class):
 		then class.superClass.typeSelect(JMM::BeanParam).first().hasHierarchyCustomHeaders()
 		else false;
 	  		
+
+cached boolean validateOnBuild(uml::Class class):
+  if class.isStereotypeApplied("POJO")
+  then ((JMM::POJO) class).validateOnBuild
+  else 
+        if class.isStereotypeApplied("ServiceObject")
+        then ((JMM::ServiceObject) class).validateOnBuild
+        else false;
+ 
+    
 
 cached int getMetaModelVersion(uml::Element element):
   element.getModel().getAllAppliedProfiles().allOwnedElements().typeSelect(JMM::ModelVersion).get(0).revision;

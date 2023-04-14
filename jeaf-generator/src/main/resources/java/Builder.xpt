@@ -131,7 +131,7 @@ public static «IF isAbstract == true» abstract «ENDIF»class Builder «IF sup
 	 * @return «this.name» Created object. The method never returns null.
 	 */
 	public «this.name» build( ) {
-	  «IF generateObjectValidationInBuilder()»
+	  «IF this.validateOnBuild() || generateObjectValidationInBuilder()»
 	       «this.name» lObject = new «this.name»(this);
 	       «IF isTargetRuntimeJEAF()»
 	       com.anaptecs.jeaf.tools.api.validation.ValidationTools.getValidationTools().enforceObjectValidation(lObject);
@@ -265,9 +265,20 @@ public static abstract class BuilderBase «IF superClass.isEmpty == false»exten
 	 * 
 	 * @return «this.name» Created object. The method never returns null.
 	 */
-	public «this.name» build( ) {
-	  return new «this.name»(this);
-	}
+    public «this.name» build( ) {
+      «IF this.validateOnBuild() || generateObjectValidationInBuilder()»
+           «this.name» lObject = new «this.name»(this);
+           «IF isTargetRuntimeJEAF()»
+           com.anaptecs.jeaf.tools.api.validation.ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+           «ENDIF»
+           «IF isTargetRuntimeSpring()»
+           com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+           «ENDIF»
+           return lObject;
+      «ELSE»
+      return new «this.name»(this);
+      «ENDIF»
+    }
 
 	«IF isTargetRuntimeJEAF()»
 	/**

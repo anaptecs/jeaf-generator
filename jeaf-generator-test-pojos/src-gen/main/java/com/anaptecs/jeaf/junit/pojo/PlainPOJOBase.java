@@ -111,7 +111,9 @@ public abstract class PlainPOJOBase {
      * @return PlainPOJO Created object. The method never returns null.
      */
     public PlainPOJO build( ) {
-      return new PlainPOJO(this);
+      PlainPOJO lObject = new PlainPOJO(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

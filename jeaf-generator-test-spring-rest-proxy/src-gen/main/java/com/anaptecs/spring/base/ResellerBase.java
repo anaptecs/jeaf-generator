@@ -18,6 +18,8 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+
 @Valid
 public abstract class ResellerBase {
   /**
@@ -189,7 +191,9 @@ public abstract class ResellerBase {
      * @return Reseller Created object. The method never returns null.
      */
     public Reseller build( ) {
-      return new Reseller(this);
+      Reseller lObject = new Reseller(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 

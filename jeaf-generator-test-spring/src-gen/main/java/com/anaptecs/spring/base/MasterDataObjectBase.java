@@ -12,6 +12,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.annotation.Nulls;
@@ -181,7 +182,9 @@ public abstract class MasterDataObjectBase {
      * @return MasterDataObject Created object. The method never returns null.
      */
     public MasterDataObject build( ) {
-      return new MasterDataObject(this);
+      MasterDataObject lObject = new MasterDataObject(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 

@@ -5,6 +5,8 @@
  */
 package com.anaptecs.spring.base;
 
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+
 public class DirectedEdge {
   /**
    * Constant for the name of attribute "start".
@@ -147,7 +149,9 @@ public class DirectedEdge {
      * @return DirectedEdge Created object. The method never returns null.
      */
     public DirectedEdge build( ) {
-      return new DirectedEdge(this);
+      DirectedEdge lObject = new DirectedEdge(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 

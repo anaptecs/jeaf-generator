@@ -119,7 +119,9 @@ public abstract class IdentifiableServiceObjectWithMethodBase implements Service
      * @return IdentifiableServiceObjectWithMethod Created object. The method never returns null.
      */
     public IdentifiableServiceObjectWithMethod build( ) {
-      return new IdentifiableServiceObjectWithMethod(this);
+      IdentifiableServiceObjectWithMethod lObject = new IdentifiableServiceObjectWithMethod(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

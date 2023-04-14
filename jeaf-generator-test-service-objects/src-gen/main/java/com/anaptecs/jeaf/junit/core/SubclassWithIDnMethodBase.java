@@ -110,7 +110,9 @@ public abstract class SubclassWithIDnMethodBase extends IdentifiableServiceObjec
      * @return SubclassWithIDnMethod Created object. The method never returns null.
      */
     public SubclassWithIDnMethod build( ) {
-      return new SubclassWithIDnMethod(this);
+      SubclassWithIDnMethod lObject = new SubclassWithIDnMethod(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

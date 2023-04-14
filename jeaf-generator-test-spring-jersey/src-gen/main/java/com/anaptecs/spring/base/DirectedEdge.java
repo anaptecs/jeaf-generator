@@ -5,6 +5,7 @@
  */
 package com.anaptecs.spring.base;
 
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -152,7 +153,9 @@ public class DirectedEdge {
      * @return DirectedEdge Created object. The method never returns null.
      */
     public DirectedEdge build( ) {
-      return new DirectedEdge(this);
+      DirectedEdge lObject = new DirectedEdge(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 

@@ -10,6 +10,7 @@ import java.util.Objects;
 
 import javax.validation.Valid;
 
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Valid
@@ -118,7 +119,9 @@ public abstract class PersonBase extends Partner {
      * @return Person Created object. The method never returns null.
      */
     public Person build( ) {
-      return new Person(this);
+      Person lObject = new Person(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 

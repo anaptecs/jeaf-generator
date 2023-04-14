@@ -233,7 +233,9 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
      * @return Reseller Created object. The method never returns null.
      */
     public Reseller build( ) {
-      return new Reseller(this);
+      Reseller lObject = new Reseller(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**

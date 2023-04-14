@@ -137,7 +137,9 @@ public abstract class VersionedObjectSoftLinkBase implements ServiceObject {
      * @return VersionedObjectSoftLink Created object. The method never returns null.
      */
     public VersionedObjectSoftLink build( ) {
-      return new VersionedObjectSoftLink(this);
+      VersionedObjectSoftLink lObject = new VersionedObjectSoftLink(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
     }
 
     /**
