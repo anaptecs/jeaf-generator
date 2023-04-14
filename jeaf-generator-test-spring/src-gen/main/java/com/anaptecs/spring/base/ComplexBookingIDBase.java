@@ -10,6 +10,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSetter;
@@ -384,6 +385,41 @@ public abstract class ComplexBookingIDBase {
     else {
       strings = null;
     }
+  }
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = 1;
+    lResult = lPrime * lResult + Long.hashCode(internalID);
+    lResult = lPrime * lResult + Objects.hashCode(referenceID);
+    lResult = lPrime * lResult + Objects.hashCode(bookingIDs);
+    lResult = lPrime * lResult + Objects.hashCode(complexBookingType);
+    lResult = lPrime * lResult + Objects.hashCode(anotherID);
+    lResult = lPrime * lResult + Arrays.hashCode(strings);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      ComplexBookingIDBase lOther = (ComplexBookingIDBase) pObject;
+      lEquals = internalID == lOther.internalID && Objects.equals(referenceID, lOther.referenceID)
+          && Objects.equals(bookingIDs, lOther.bookingIDs)
+          && Objects.equals(complexBookingType, lOther.complexBookingType)
+          && Objects.equals(anotherID, lOther.anotherID) && Arrays.equals(strings, lOther.strings);
+    }
+    return lEquals;
   }
 
   /**

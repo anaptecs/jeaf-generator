@@ -8,6 +8,7 @@ package com.anaptecs.jeaf.accounting.impl.pojo;
 import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.Currency;
+import java.util.Objects;
 
 import javax.annotation.Generated;
 import javax.validation.ConstraintViolationException;
@@ -317,6 +318,39 @@ public class Booking {
   public void setExecutionTimestamp( Calendar pExecutionTimestamp ) {
     // Assign value to attribute
     executionTimestamp = pExecutionTimestamp;
+  }
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = 1;
+    lResult = lPrime * lResult + Objects.hashCode(sourceAccount);
+    lResult = lPrime * lResult + Objects.hashCode(targetAccount);
+    lResult = lPrime * lResult + Objects.hashCode(amount);
+    lResult = lPrime * lResult + Objects.hashCode(currency);
+    lResult = lPrime * lResult + Objects.hashCode(executionTimestamp);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      Booking lOther = (Booking) pObject;
+      lEquals = Objects.equals(sourceAccount, lOther.sourceAccount)
+          && Objects.equals(targetAccount, lOther.targetAccount) && Objects.equals(amount, lOther.amount)
+          && Objects.equals(currency, lOther.currency) && Objects.equals(executionTimestamp, lOther.executionTimestamp);
+    }
+    return lEquals;
   }
 
   /**

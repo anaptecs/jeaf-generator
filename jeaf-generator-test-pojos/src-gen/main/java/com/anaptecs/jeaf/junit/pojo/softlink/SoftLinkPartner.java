@@ -10,6 +10,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 import javax.annotation.Generated;
@@ -329,6 +330,36 @@ public class SoftLinkPartner {
   public void clearLongLinks( ) {
     // Remove all objects from association "longLinks".
     longLinks.clear();
+  }
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = 1;
+    lResult = lPrime * lResult + Objects.hashCode(theBackLink);
+    lResult = lPrime * lResult + Objects.hashCode(childLinks);
+    lResult = lPrime * lResult + Objects.hashCode(longLinks);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      SoftLinkPartner lOther = (SoftLinkPartner) pObject;
+      lEquals = Objects.equals(theBackLink, lOther.theBackLink) && Objects.equals(childLinks, lOther.childLinks)
+          && Objects.equals(longLinks, lOther.longLinks);
+    }
+    return lEquals;
   }
 
   /**

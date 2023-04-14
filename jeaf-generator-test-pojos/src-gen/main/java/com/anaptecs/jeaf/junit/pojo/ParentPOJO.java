@@ -5,6 +5,8 @@
  */
 package com.anaptecs.jeaf.junit.pojo;
 
+import java.util.Objects;
+
 import javax.annotation.Generated;
 import javax.validation.ConstraintViolationException;
 
@@ -230,6 +232,36 @@ public class ParentPOJO {
   public void setHello( String pHello ) {
     // Assign value to attribute
     hello = pHello;
+  }
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = 1;
+    lResult = lPrime * lResult + Objects.hashCode(parentAttribute);
+    lResult = lPrime * lResult + weirdAttribute;
+    lResult = lPrime * lResult + Objects.hashCode(hello);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      ParentPOJO lOther = (ParentPOJO) pObject;
+      lEquals = Objects.equals(parentAttribute, lOther.parentAttribute) && weirdAttribute == lOther.weirdAttribute
+          && Objects.equals(hello, lOther.hello);
+    }
+    return lEquals;
   }
 
   /**

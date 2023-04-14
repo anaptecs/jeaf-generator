@@ -14,6 +14,7 @@ import java.time.LocalTime;
 import java.time.OffsetDateTime;
 import java.time.OffsetTime;
 import java.util.Calendar;
+import java.util.Objects;
 
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 
@@ -525,6 +526,46 @@ public class DateQueryParamsBean {
   public void setSqlDate( Date pSqlDate ) {
     // Assign value to attribute
     sqlDate = pSqlDate;
+  }
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = 1;
+    lResult = lPrime * lResult + Objects.hashCode(offsetDateTime);
+    lResult = lPrime * lResult + Objects.hashCode(offsetTime);
+    lResult = lPrime * lResult + Objects.hashCode(localDateTime);
+    lResult = lPrime * lResult + Objects.hashCode(localTime);
+    lResult = lPrime * lResult + Objects.hashCode(localDate);
+    lResult = lPrime * lResult + Objects.hashCode(utilDate);
+    lResult = lPrime * lResult + Objects.hashCode(calendar);
+    lResult = lPrime * lResult + Objects.hashCode(sqlTimestamp);
+    lResult = lPrime * lResult + Objects.hashCode(sqlTime);
+    lResult = lPrime * lResult + Objects.hashCode(sqlDate);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      DateQueryParamsBean lOther = (DateQueryParamsBean) pObject;
+      lEquals = Objects.equals(offsetDateTime, lOther.offsetDateTime) && Objects.equals(offsetTime, lOther.offsetTime)
+          && Objects.equals(localDateTime, lOther.localDateTime) && Objects.equals(localTime, lOther.localTime)
+          && Objects.equals(localDate, lOther.localDate) && Objects.equals(utilDate, lOther.utilDate)
+          && Objects.equals(calendar, lOther.calendar) && Objects.equals(sqlTimestamp, lOther.sqlTimestamp)
+          && Objects.equals(sqlTime, lOther.sqlTime) && Objects.equals(sqlDate, lOther.sqlDate);
+    }
+    return lEquals;
   }
 
   /**

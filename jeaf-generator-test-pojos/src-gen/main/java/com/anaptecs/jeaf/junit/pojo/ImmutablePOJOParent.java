@@ -5,6 +5,8 @@
  */
 package com.anaptecs.jeaf.junit.pojo;
 
+import java.util.Objects;
+
 import javax.annotation.Generated;
 import javax.validation.ConstraintViolationException;
 
@@ -185,6 +187,38 @@ public class ImmutablePOJOParent extends AbstractPOJO {
   public void setAnotherParentAttribute( Integer pAnotherParentAttribute ) {
     // Assign value to attribute
     anotherParentAttribute = pAnotherParentAttribute;
+  }
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = super.hashCode();
+    lResult = lPrime * lResult + Objects.hashCode(parentAttribute);
+    lResult = lPrime * lResult + Objects.hashCode(anotherParentAttribute);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (!super.equals(pObject)) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      ImmutablePOJOParent lOther = (ImmutablePOJOParent) pObject;
+      lEquals = Objects.equals(parentAttribute, lOther.parentAttribute)
+          && Objects.equals(anotherParentAttribute, lOther.anotherParentAttribute);
+    }
+    return lEquals;
   }
 
   /**

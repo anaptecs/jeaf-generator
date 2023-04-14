@@ -5,6 +5,8 @@
  */
 package com.anaptecs.spring.base;
 
+import java.util.Objects;
+
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -516,6 +518,50 @@ public class OpenAPITestObject {
   public void setNotNullableArray( double pNotNullableArray ) {
     // Assign value to attribute
     notNullableArray = pNotNullableArray;
+  }
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = 1;
+    lResult = lPrime * lResult + Objects.hashCode(readOnlyAttribute);
+    lResult = lPrime * lResult + Objects.hashCode(readWriteAttribute);
+    lResult = lPrime * lResult + writeOnlyAttribute;
+    lResult = lPrime * lResult + Objects.hashCode(nullableAttribute);
+    lResult = lPrime * lResult + Double.hashCode(notNullableAttribute);
+    lResult = lPrime * lResult + Objects.hashCode(readOnlyArray);
+    lResult = lPrime * lResult + Objects.hashCode(readWriteArray);
+    lResult = lPrime * lResult + writeOnlyArray;
+    lResult = lPrime * lResult + Double.hashCode(nullableArray);
+    lResult = lPrime * lResult + Double.hashCode(notNullableArray);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      OpenAPITestObject lOther = (OpenAPITestObject) pObject;
+      lEquals = Objects.equals(readOnlyAttribute, lOther.readOnlyAttribute)
+          && Objects.equals(readWriteAttribute, lOther.readWriteAttribute)
+          && writeOnlyAttribute == lOther.writeOnlyAttribute
+          && Objects.equals(nullableAttribute, lOther.nullableAttribute)
+          && Double.compare(notNullableAttribute, lOther.notNullableAttribute) == 0
+          && Objects.equals(readOnlyArray, lOther.readOnlyArray)
+          && Objects.equals(readWriteArray, lOther.readWriteArray) && writeOnlyArray == lOther.writeOnlyArray
+          && Double.compare(nullableArray, lOther.nullableArray) == 0
+          && Double.compare(notNullableArray, lOther.notNullableArray) == 0;
+    }
+    return lEquals;
   }
 
   /**

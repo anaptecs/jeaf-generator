@@ -8,6 +8,7 @@ package com.anaptecs.jeaf.junit.pojo;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
@@ -372,6 +373,41 @@ public class ImmutableAssociationPOJO {
   @Deprecated
   public final void unsetDeprecatedRef( ) {
     deprecatedRef = null;
+  }
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = 1;
+    lResult = lPrime * lResult + Boolean.hashCode(yetAnotherAttribute);
+    lResult = lPrime * lResult + Objects.hashCode(readonlyAssociation);
+    lResult = lPrime * lResult + Objects.hashCode(immutableChildPOJO);
+    lResult = lPrime * lResult + Objects.hashCode(deprecatedRefs);
+    lResult = lPrime * lResult + Objects.hashCode(deprecatedRef);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      ImmutableAssociationPOJO lOther = (ImmutableAssociationPOJO) pObject;
+      lEquals = yetAnotherAttribute == lOther.yetAnotherAttribute
+          && Objects.equals(readonlyAssociation, lOther.readonlyAssociation)
+          && Objects.equals(immutableChildPOJO, lOther.immutableChildPOJO)
+          && Objects.equals(deprecatedRefs, lOther.deprecatedRefs)
+          && Objects.equals(deprecatedRef, lOther.deprecatedRef);
+    }
+    return lEquals;
   }
 
   /**

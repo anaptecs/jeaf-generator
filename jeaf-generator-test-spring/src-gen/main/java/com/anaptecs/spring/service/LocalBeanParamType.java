@@ -5,6 +5,8 @@
  */
 package com.anaptecs.spring.service;
 
+import java.util.Objects;
+
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 
 public class LocalBeanParamType {
@@ -178,6 +180,34 @@ public class LocalBeanParamType {
   public void setLocalID( String pLocalID ) {
     // Assign value to attribute
     localID = pLocalID;
+  }
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = 1;
+    lResult = lPrime * lResult + Objects.hashCode(localKey);
+    lResult = lPrime * lResult + Objects.hashCode(localID);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      LocalBeanParamType lOther = (LocalBeanParamType) pObject;
+      lEquals = Objects.equals(localKey, lOther.localKey) && Objects.equals(localID, lOther.localID);
+    }
+    return lEquals;
   }
 
   /**

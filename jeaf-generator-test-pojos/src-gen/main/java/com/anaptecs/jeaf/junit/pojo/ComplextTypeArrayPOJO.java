@@ -5,6 +5,8 @@
  */
 package com.anaptecs.jeaf.junit.pojo;
 
+import java.util.Arrays;
+
 import javax.annotation.Generated;
 import javax.validation.ConstraintViolationException;
 
@@ -158,6 +160,33 @@ public class ComplextTypeArrayPOJO {
     else {
       plainPOJOs = null;
     }
+  }
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = 1;
+    lResult = lPrime * lResult + Arrays.hashCode(plainPOJOs);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      ComplextTypeArrayPOJO lOther = (ComplextTypeArrayPOJO) pObject;
+      lEquals = Arrays.equals(plainPOJOs, lOther.plainPOJOs);
+    }
+    return lEquals;
   }
 
   /**

@@ -8,6 +8,7 @@ package com.anaptecs.spring.base;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
@@ -365,6 +366,39 @@ public class CodeTypeUsageTest {
   public void setStringCode( StringCodeType pStringCode ) {
     // Assign value to attribute
     stringCode = pStringCode;
+  }
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = 1;
+    lResult = lPrime * lResult + Objects.hashCode(booleanCode);
+    lResult = lPrime * lResult + Objects.hashCode(booleanCodeAssociation);
+    lResult = lPrime * lResult + Objects.hashCode(shortCodeTypeAssociation);
+    lResult = lPrime * lResult + Objects.hashCode(stringCode);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      CodeTypeUsageTest lOther = (CodeTypeUsageTest) pObject;
+      lEquals = Objects.equals(booleanCode, lOther.booleanCode)
+          && Objects.equals(booleanCodeAssociation, lOther.booleanCodeAssociation)
+          && Objects.equals(shortCodeTypeAssociation, lOther.shortCodeTypeAssociation)
+          && Objects.equals(stringCode, lOther.stringCode);
+    }
+    return lEquals;
   }
 
   /**

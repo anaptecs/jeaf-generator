@@ -35,8 +35,20 @@ cached List getAssociatedUseCases(uml::Actor actor) :
 cached boolean generateServiceObjects() :    
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateServiceObjects();
     
-cached boolean generatePOJOs() :    
+cached boolean generatePOJOs() :
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generatePOJOs();    
+    
+cached boolean generateEqualsAndHashCode() :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateEqualsAndHashCode();
+    
+cached boolean generateEqualsAndHashCodeForStandardClasses() :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateEqualsAndHashCodeForStandardClasses();
+    
+cached boolean generateEqualsAndHashCodeForCompositeDataTypes() :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateEqualsAndHashCodeForCompositeDataTypes();
+    
+cached boolean generateEqualsAndHashCodeForOpenAPIDataTypes() :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateEqualsAndHashCodeForOpenAPIDataTypes();
     
 cached boolean makePOJOsSerializable() :
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.makePOJOsSerializable(); 

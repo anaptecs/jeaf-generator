@@ -2,6 +2,8 @@
 «EXTENSION java::Naming»
 «EXTENSION java::Helper»
 «EXTENSION java::OpenAPIFunctions»
+«EXTENSION functions::Class»
+«EXTENSION functions::Property»
 
 
 «DEFINE GenerateToStringMethod FOR uml::Class»
@@ -154,8 +156,8 @@
   «ENDIF»
 «ENDDEFINE»
 
-«DEFINE GenerateEqualsHashCode FOR uml::Class»
-	«IF this.isCompositeDataType()»
+«DEFINE GenerateEqualsHashCode(String className) FOR uml::Class»
+	«IF this.isCompositeDataType() && (generateEqualsAndHashCode() || generateEqualsAndHashCodeForCompositeDataTypes())»
 		@Override
 		public int hashCode( ) {
 		  return java.util.Objects.hash(«this.getCompositeDateTypePublicFieldName()»);
@@ -175,8 +177,7 @@
 		  }
 		  return lEquals;
 		}
-	«ELSE»
-		«IF this.isOpenAPIDataType() && this.getAllAttributesFromHierarchy().select(e|e.isPropertySuppressed() == false).size == 1 && this.getAllAttributesFromHierarchy().first().isMultivalued() == false»
+	«ELSEIF this.isOpenAPIDataType() && this.getAllAttributesFromHierarchy().select(e|e.isPropertySuppressed() == false).size == 1 && this.getAllAttributesFromHierarchy().first().isMultivalued() == false && (generateEqualsAndHashCode() || generateEqualsAndHashCodeForOpenAPIDataTypes())»
 		@Override
 		public int hashCode( ) {
 		  return java.util.Objects.hash(«this.getAllAttributesFromHierarchy().select(e|e.isPropertySuppressed() == false).first().name»);
@@ -196,7 +197,8 @@
 		  }
 		  return lEquals;
 		}
-		«ENDIF»
+	«ELSEIF generateEqualsAndHashCode() || generateEqualsAndHashCodeForStandardClasses()»
+	   «EXPAND GenerateEqualsAndHashCode(className)»
 	«ENDIF»
 «ENDDEFINE»
 
@@ -290,4 +292,100 @@
 			«ENDLET»
 		«ENDIF»
 	«ENDIF»
+«ENDDEFINE»
+
+«DEFINE GenerateEqualsAndHashCode(String className) FOR uml::Class»
+  «REM»equals() and hashCode() can only be generated in case of non bi-directional assocations«ENDREM»
+  «IF this.hasBidirectionalAssociation() == false»
+	  @Override
+	  public int hashCode( ) {
+	    «IF ownedAttribute.select(e|e.isPropertySuppressed() == false && e.isTransient() == false).isEmpty == false»
+		    final int lPrime = 31;
+		    «IF parents().isEmpty»
+		    int lResult = 1;
+		    «ELSE»
+		    int lResult = super.hashCode();
+		    «ENDIF»
+		    
+		    «FOREACH ownedAttribute.select(e|e.isPropertySuppressed() == false && e.isTransient() == false) AS property»
+		        «IF property.type.isPrimitiveType() && property.isMultivalued() == false»
+		            «IF property.type.isBooleanType()»
+		                lResult = lPrime * lResult + Boolean.hashCode(«property.name»);
+		            «ELSEIF property.type.isLongType()»
+		                lResult = lPrime * lResult + Long.hashCode(«property.name»);
+		            «ELSEIF property.type.isFloatType()»
+		                lResult = lPrime * lResult + Float.hashCode(«property.name»);
+		            «ELSEIF property.type.isDoubleType()»
+		                lResult = lPrime * lResult + Double.hashCode(«property.name»);
+		            «ELSE»
+		                lResult = lPrime * lResult + «property.name»;
+		            «ENDIF»
+		        «REM»Handle arrays«ENDREM»
+		        «ELSEIF property.isMultivalued() && property.association == null»
+		            lResult = lPrime * lResult + java.util.Arrays.hashCode(«property.name»);
+		        «ELSE»
+		            lResult = lPrime * lResult + java.util.Objects.hashCode(«property.name»);
+		        «ENDIF»
+		    «ENDFOREACH»
+	        «IF this.hasCustomHeaders()»
+	          lResult = lPrime * lResult + java.util.Objects.hashCode(customHeaders);
+	        «ENDIF»
+		    
+		    return lResult;
+	    «ELSE»
+	        «IF parents().isEmpty»
+	        return 1;
+	        «ELSE»
+	        return super.hashCode();
+	        «ENDIF»
+	    «ENDIF»
+	  }
+	
+	  @Override
+	  public boolean equals( Object pObject ) {
+	    boolean lEquals;
+	    if (this == pObject) {
+	      lEquals = true;
+	    }
+	    else if (pObject == null) {
+	      lEquals = false;
+	    }
+	    «IF parents().isEmpty == false»
+        else if (!super.equals(pObject)) {
+          lEquals = false;
+        }
+	    «ENDIF»
+        else if (this.getClass() != pObject.getClass()) {
+          lEquals = false;
+        }
+	    else {
+	      «IF ownedAttribute.select(e|e.isPropertySuppressed() == false && e.isTransient() == false).isEmpty == false»
+	          «className» lOther = («className») pObject;
+		      lEquals =
+		      «FOREACH ownedAttribute.select(e|e.isPropertySuppressed() == false && e.isTransient() == false) AS property SEPARATOR " && "»
+		        «IF property.type.isPrimitiveType() && property.isMultivalued() == false»
+                    «IF property.type.isDoubleType()»
+                      Double.compare(«property.name», lOther.«property.name») == 0
+                    «ELSEIF property.type.isFloatType()»
+                      Float.compare(«property.name», lOther.«property.name») == 0
+                    «ELSE»
+		              «property.name» == lOther.«property.name»
+		            «ENDIF»
+		        «ELSEIF property.isMultivalued() && property.association == null»
+		            java.util.Arrays.equals(«property.name», lOther.«property.name»)
+		        «ELSE»
+	                java.util.Objects.equals(«property.name», lOther.«property.name»)
+		        «ENDIF»
+		      «ENDFOREACH»
+		      «IF this.hasCustomHeaders()»
+		          && java.util.Objects.equals(customHeaders, lOther.customHeaders)
+		      «ENDIF»
+	          ;
+	      «ELSE»
+	          lEquals = true;
+	      «ENDIF»
+	    }
+	    return lEquals;
+	  }
+  «ENDIF»
 «ENDDEFINE»

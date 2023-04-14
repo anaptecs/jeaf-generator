@@ -5,6 +5,8 @@
  */
 package com.anaptecs.spring.base;
 
+import java.util.Objects;
+
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 
 public class ParentBeanParamType {
@@ -179,6 +181,34 @@ public class ParentBeanParamType {
   public void setTkID( String pTkID ) {
     // Assign value to attribute
     tkID = pTkID;
+  }
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = 1;
+    lResult = lPrime * lResult + Objects.hashCode(novaKey);
+    lResult = lPrime * lResult + Objects.hashCode(tkID);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      ParentBeanParamType lOther = (ParentBeanParamType) pObject;
+      lEquals = Objects.equals(novaKey, lOther.novaKey) && Objects.equals(tkID, lOther.tkID);
+    }
+    return lEquals;
   }
 
   /**

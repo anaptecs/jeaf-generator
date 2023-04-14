@@ -8,6 +8,7 @@ package com.anaptecs.jeaf.junit.pojo.softlink;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 import javax.annotation.Generated;
@@ -318,6 +319,36 @@ public class SoftLinkParent {
    */
   public SoftLinkID getReadonlyPartner( ) {
     return readonlyPartner;
+  }
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = 1;
+    lResult = lPrime * lResult + Objects.hashCode(partners);
+    lResult = lPrime * lResult + Objects.hashCode(thePartner);
+    lResult = lPrime * lResult + Objects.hashCode(readonlyPartner);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      SoftLinkParent lOther = (SoftLinkParent) pObject;
+      lEquals = Objects.equals(partners, lOther.partners) && Objects.equals(thePartner, lOther.thePartner)
+          && Objects.equals(readonlyPartner, lOther.readonlyPartner);
+    }
+    return lEquals;
   }
 
   /**

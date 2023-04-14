@@ -6,6 +6,7 @@
 package com.anaptecs.spring.service;
 
 import java.math.BigDecimal;
+import java.util.Objects;
 
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.anaptecs.spring.base.Channel;
@@ -185,6 +186,34 @@ public class Sale {
    */
   public final void unsetSale( ) {
     sale = null;
+  }
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = 1;
+    lResult = lPrime * lResult + Objects.hashCode(transactionAmount);
+    lResult = lPrime * lResult + Objects.hashCode(sale);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      Sale lOther = (Sale) pObject;
+      lEquals = Objects.equals(transactionAmount, lOther.transactionAmount) && Objects.equals(sale, lOther.sale);
+    }
+    return lEquals;
   }
 
   /**

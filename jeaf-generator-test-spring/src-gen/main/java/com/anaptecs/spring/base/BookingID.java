@@ -5,6 +5,8 @@
  */
 package com.anaptecs.spring.base;
 
+import java.util.Objects;
+
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -258,6 +260,37 @@ public class BookingID {
    */
   public BookingCode getBookingCode( ) {
     return bookingCode;
+  }
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = 1;
+    lResult = lPrime * lResult + Objects.hashCode(referenceID);
+    lResult = lPrime * lResult + Objects.hashCode(externalRefID);
+    lResult = lPrime * lResult + Objects.hashCode(inventory);
+    lResult = lPrime * lResult + Objects.hashCode(bookingCode);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      BookingID lOther = (BookingID) pObject;
+      lEquals = Objects.equals(referenceID, lOther.referenceID) && Objects.equals(externalRefID, lOther.externalRefID)
+          && Objects.equals(inventory, lOther.inventory) && Objects.equals(bookingCode, lOther.bookingCode);
+    }
+    return lEquals;
   }
 
   /**

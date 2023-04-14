@@ -10,6 +10,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Calendar;
+import java.util.Objects;
 
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -361,6 +362,40 @@ public class DateObject {
   public void setUtilDate( java.util.Date pUtilDate ) {
     // Assign value to attribute
     utilDate = pUtilDate;
+  }
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = 1;
+    lResult = lPrime * lResult + Objects.hashCode(localTime);
+    lResult = lPrime * lResult + Objects.hashCode(localDate);
+    lResult = lPrime * lResult + Objects.hashCode(localDateTime);
+    lResult = lPrime * lResult + Objects.hashCode(calendar);
+    lResult = lPrime * lResult + Objects.hashCode(sqlDate);
+    lResult = lPrime * lResult + Objects.hashCode(utilDate);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      DateObject lOther = (DateObject) pObject;
+      lEquals = Objects.equals(localTime, lOther.localTime) && Objects.equals(localDate, lOther.localDate)
+          && Objects.equals(localDateTime, lOther.localDateTime) && Objects.equals(calendar, lOther.calendar)
+          && Objects.equals(sqlDate, lOther.sqlDate) && Objects.equals(utilDate, lOther.utilDate);
+    }
+    return lEquals;
   }
 
   /**

@@ -6,6 +6,7 @@
 package com.anaptecs.spring.base;
 
 import java.math.BigDecimal;
+import java.util.Objects;
 
 import javax.validation.constraints.NotNull;
 
@@ -186,6 +187,34 @@ public class MoneyAmount {
    */
   public CurrencyCode getCurrencyCode( ) {
     return currencyCode;
+  }
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = 1;
+    lResult = lPrime * lResult + Objects.hashCode(amount);
+    lResult = lPrime * lResult + Objects.hashCode(currencyCode);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      MoneyAmount lOther = (MoneyAmount) pObject;
+      lEquals = Objects.equals(amount, lOther.amount) && Objects.equals(currencyCode, lOther.currencyCode);
+    }
+    return lEquals;
   }
 
   /**

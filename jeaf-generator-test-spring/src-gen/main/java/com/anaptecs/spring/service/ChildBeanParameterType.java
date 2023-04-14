@@ -5,6 +5,8 @@
  */
 package com.anaptecs.spring.service;
 
+import java.util.Objects;
+
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.anaptecs.spring.base.ParentBeanParamType;
 
@@ -168,6 +170,36 @@ public class ChildBeanParameterType extends ParentBeanParamType {
   public void setChildProperty( String pChildProperty ) {
     // Assign value to attribute
     childProperty = pChildProperty;
+  }
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = super.hashCode();
+    lResult = lPrime * lResult + Objects.hashCode(childProperty);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (!super.equals(pObject)) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      ChildBeanParameterType lOther = (ChildBeanParameterType) pObject;
+      lEquals = Objects.equals(childProperty, lOther.childProperty);
+    }
+    return lEquals;
   }
 
   /**

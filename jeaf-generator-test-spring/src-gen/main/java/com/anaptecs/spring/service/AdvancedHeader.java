@@ -5,6 +5,8 @@
  */
 package com.anaptecs.spring.service;
 
+import java.util.Objects;
+
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.anaptecs.spring.base.BookingCode;
 import com.anaptecs.spring.base.BookingID;
@@ -223,6 +225,36 @@ public class AdvancedHeader {
   public void setDoubleCode( DoubleCode pDoubleCode ) {
     // Assign value to attribute
     doubleCode = pDoubleCode;
+  }
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = 1;
+    lResult = lPrime * lResult + Objects.hashCode(bookingID);
+    lResult = lPrime * lResult + Objects.hashCode(bookingCode);
+    lResult = lPrime * lResult + Objects.hashCode(doubleCode);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      AdvancedHeader lOther = (AdvancedHeader) pObject;
+      lEquals = Objects.equals(bookingID, lOther.bookingID) && Objects.equals(bookingCode, lOther.bookingCode)
+          && Objects.equals(doubleCode, lOther.doubleCode);
+    }
+    return lEquals;
   }
 
   /**

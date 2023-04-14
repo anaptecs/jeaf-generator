@@ -6,6 +6,7 @@
 package com.anaptecs.spring.base;
 
 import java.util.List;
+import java.util.Objects;
 
 import javax.validation.Valid;
 
@@ -163,6 +164,37 @@ public abstract class PersonBase extends Partner {
    * @return {@link String}
    */
   public abstract String getDisplayName( );
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = super.hashCode();
+    lResult = lPrime * lResult + Objects.hashCode(surname);
+    lResult = lPrime * lResult + Objects.hashCode(firstName);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (!super.equals(pObject)) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      PersonBase lOther = (PersonBase) pObject;
+      lEquals = Objects.equals(surname, lOther.surname) && Objects.equals(firstName, lOther.firstName);
+    }
+    return lEquals;
+  }
 
   /**
    * Method returns a StringBuilder that can be used to create a String representation of this object. The returned

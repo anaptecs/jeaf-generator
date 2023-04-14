@@ -5,6 +5,8 @@
  */
 package com.anaptecs.jeaf.junit.pojo;
 
+import java.util.Objects;
+
 import javax.annotation.Generated;
 import javax.validation.ConstraintViolationException;
 import javax.validation.constraints.PositiveOrZero;
@@ -178,6 +180,34 @@ public abstract class PlainPOJOBase {
    */
   @Deprecated
   public abstract String doSomething( @Deprecated int pParam1, int pParam2 );
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = 1;
+    lResult = lPrime * lResult + Objects.hashCode(hello);
+    lResult = lPrime * lResult + Objects.hashCode(world);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      PlainPOJOBase lOther = (PlainPOJOBase) pObject;
+      lEquals = Objects.equals(hello, lOther.hello) && Objects.equals(world, lOther.world);
+    }
+    return lEquals;
+  }
 
   /**
    * Method returns a StringBuilder that can be used to create a String representation of this object. The returned

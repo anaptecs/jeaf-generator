@@ -161,6 +161,36 @@ public class BusinessParent extends TechParent {
     parentAttribute = pParentAttribute;
   }
 
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = super.hashCode();
+    lResult = lPrime * lResult + Long.hashCode(parentAttribute);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (!super.equals(pObject)) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      BusinessParent lOther = (BusinessParent) pObject;
+      lEquals = parentAttribute == lOther.parentAttribute;
+    }
+    return lEquals;
+  }
+
   /**
    * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.

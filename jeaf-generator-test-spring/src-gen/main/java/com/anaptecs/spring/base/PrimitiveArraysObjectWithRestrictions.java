@@ -1476,6 +1476,66 @@ public class PrimitiveArraysObjectWithRestrictions {
     }
   }
 
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = 1;
+    lResult = lPrime * lResult + Arrays.hashCode(aBooleanArray);
+    lResult = lPrime * lResult + Arrays.hashCode(bBooleanArray);
+    lResult = lPrime * lResult + Arrays.hashCode(cBooleanArray);
+    lResult = lPrime * lResult + Arrays.hashCode(aByteArray);
+    lResult = lPrime * lResult + Arrays.hashCode(bByteArray);
+    lResult = lPrime * lResult + Arrays.hashCode(aShortArray);
+    lResult = lPrime * lResult + Arrays.hashCode(bShortArray);
+    lResult = lPrime * lResult + Arrays.hashCode(aIntegerArray);
+    lResult = lPrime * lResult + Arrays.hashCode(bIntegerArray);
+    lResult = lPrime * lResult + Arrays.hashCode(cIntegerArray);
+    lResult = lPrime * lResult + Arrays.hashCode(aLongArray);
+    lResult = lPrime * lResult + Arrays.hashCode(bLongArray);
+    lResult = lPrime * lResult + Arrays.hashCode(aBigIntegerArray);
+    lResult = lPrime * lResult + Arrays.hashCode(aCharacterArray);
+    lResult = lPrime * lResult + Arrays.hashCode(bCharacterArray);
+    lResult = lPrime * lResult + Arrays.hashCode(aFloatArray);
+    lResult = lPrime * lResult + Arrays.hashCode(bFloatArray);
+    lResult = lPrime * lResult + Arrays.hashCode(aDoubleArray);
+    lResult = lPrime * lResult + Arrays.hashCode(bDoubleArray);
+    lResult = lPrime * lResult + Arrays.hashCode(aBigDecimalArray);
+    lResult = lPrime * lResult + Arrays.hashCode(aStringArray);
+    lResult = lPrime * lResult + Arrays.hashCode(bStringArray);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      PrimitiveArraysObjectWithRestrictions lOther = (PrimitiveArraysObjectWithRestrictions) pObject;
+      lEquals = Arrays.equals(aBooleanArray, lOther.aBooleanArray) && Arrays.equals(bBooleanArray, lOther.bBooleanArray)
+          && Arrays.equals(cBooleanArray, lOther.cBooleanArray) && Arrays.equals(aByteArray, lOther.aByteArray)
+          && Arrays.equals(bByteArray, lOther.bByteArray) && Arrays.equals(aShortArray, lOther.aShortArray)
+          && Arrays.equals(bShortArray, lOther.bShortArray) && Arrays.equals(aIntegerArray, lOther.aIntegerArray)
+          && Arrays.equals(bIntegerArray, lOther.bIntegerArray) && Arrays.equals(cIntegerArray, lOther.cIntegerArray)
+          && Arrays.equals(aLongArray, lOther.aLongArray) && Arrays.equals(bLongArray, lOther.bLongArray)
+          && Arrays.equals(aBigIntegerArray, lOther.aBigIntegerArray)
+          && Arrays.equals(aCharacterArray, lOther.aCharacterArray)
+          && Arrays.equals(bCharacterArray, lOther.bCharacterArray) && Arrays.equals(aFloatArray, lOther.aFloatArray)
+          && Arrays.equals(bFloatArray, lOther.bFloatArray) && Arrays.equals(aDoubleArray, lOther.aDoubleArray)
+          && Arrays.equals(bDoubleArray, lOther.bDoubleArray)
+          && Arrays.equals(aBigDecimalArray, lOther.aBigDecimalArray)
+          && Arrays.equals(aStringArray, lOther.aStringArray) && Arrays.equals(bStringArray, lOther.bStringArray);
+    }
+    return lEquals;
+  }
+
   /**
    * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.

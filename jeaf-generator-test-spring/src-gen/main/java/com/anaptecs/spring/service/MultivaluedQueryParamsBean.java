@@ -285,6 +285,36 @@ public class MultivaluedQueryParamsBean {
     }
   }
 
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = 1;
+    lResult = lPrime * lResult + Arrays.hashCode(intArray);
+    lResult = lPrime * lResult + Arrays.hashCode(strings);
+    lResult = lPrime * lResult + Arrays.hashCode(integers);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      MultivaluedQueryParamsBean lOther = (MultivaluedQueryParamsBean) pObject;
+      lEquals = Arrays.equals(intArray, lOther.intArray) && Arrays.equals(strings, lOther.strings)
+          && Arrays.equals(integers, lOther.integers);
+    }
+    return lEquals;
+  }
+
   /**
    * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.

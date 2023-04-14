@@ -5,6 +5,8 @@
  */
 package com.anaptecs.spring.base.techbase;
 
+import java.util.Objects;
+
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -137,6 +139,33 @@ public class TechParent {
   public void setTechAttribute( String pTechAttribute ) {
     // Assign value to attribute
     techAttribute = pTechAttribute;
+  }
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = 1;
+    lResult = lPrime * lResult + Objects.hashCode(techAttribute);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      TechParent lOther = (TechParent) pObject;
+      lEquals = Objects.equals(techAttribute, lOther.techAttribute);
+    }
+    return lEquals;
   }
 
   /**

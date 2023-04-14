@@ -126,6 +126,14 @@ public class GeneratorCommons {
    */
   public static final String POJO_PROPERTY = "switch.gen.pojos";
 
+  public static final String GENERATE_EQUALS_ALL = "switch.gen.equalsAndHashCode.all";
+
+  public static final String GENERATE_EQUALS_STANDARD = "switch.gen.equalsAndHashCode.standard";
+
+  public static final String GENERATE_EQUALS_COMPOSITE = "switch.gen.equalsAndHashCode.composite.datatype";
+
+  public static final String GENERATE_EQUALS_OPENAPI = "switch.gen.equalsAndHashCode.openapi.datatype";
+
   /**
    * Constant defines the name of the system property which enables the generation of serializable POJOs from the model.
    */
@@ -757,6 +765,26 @@ public class GeneratorCommons {
   public static boolean generatePOJOs( ) {
     Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
     return lConfiguration.getConfigurationValue(POJO_PROPERTY, Boolean.TRUE, Boolean.class);
+  }
+
+  public static boolean generateEqualsAndHashCode( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(GENERATE_EQUALS_ALL, Boolean.TRUE, Boolean.class);
+  }
+
+  public static boolean generateEqualsAndHashCodeForStandardClasses( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(GENERATE_EQUALS_STANDARD, Boolean.TRUE, Boolean.class);
+  }
+
+  public static boolean generateEqualsAndHashCodeForCompositeDataTypes( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(GENERATE_EQUALS_COMPOSITE, Boolean.TRUE, Boolean.class);
+  }
+
+  public static boolean generateEqualsAndHashCodeForOpenAPIDataTypes( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(GENERATE_EQUALS_OPENAPI, Boolean.TRUE, Boolean.class);
   }
 
   /**

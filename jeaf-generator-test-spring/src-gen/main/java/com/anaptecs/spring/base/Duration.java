@@ -5,6 +5,8 @@
  */
 package com.anaptecs.spring.base;
 
+import java.util.Objects;
+
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -196,6 +198,34 @@ public class Duration {
   public void setTimeUnit( TimeUnit pTimeUnit ) {
     // Assign value to attribute
     timeUnit = pTimeUnit;
+  }
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = 1;
+    lResult = lPrime * lResult + value;
+    lResult = lPrime * lResult + Objects.hashCode(timeUnit);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      Duration lOther = (Duration) pObject;
+      lEquals = value == lOther.value && Objects.equals(timeUnit, lOther.timeUnit);
+    }
+    return lEquals;
   }
 
   /**

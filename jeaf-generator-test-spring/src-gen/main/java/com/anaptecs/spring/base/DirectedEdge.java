@@ -5,6 +5,8 @@
  */
 package com.anaptecs.spring.base;
 
+import java.util.Objects;
+
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -250,6 +252,36 @@ public class DirectedEdge {
   public void setLink( String pLink ) {
     // Assign value to attribute
     link = pLink;
+  }
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = 1;
+    lResult = lPrime * lResult + Objects.hashCode(start);
+    lResult = lPrime * lResult + Objects.hashCode(end);
+    lResult = lPrime * lResult + Objects.hashCode(link);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      DirectedEdge lOther = (DirectedEdge) pObject;
+      lEquals =
+          Objects.equals(start, lOther.start) && Objects.equals(end, lOther.end) && Objects.equals(link, lOther.link);
+    }
+    return lEquals;
   }
 
   /**

@@ -10,6 +10,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSetter;
@@ -348,6 +349,37 @@ public abstract class MasterDataObjectBase {
    * @return {@link String} Value to which {@link #derivedString} is set.
    */
   public abstract String getDerivedString( );
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = 1;
+    lResult = lPrime * lResult + Objects.hashCode(dataUnits);
+    lResult = lPrime * lResult + Objects.hashCode(entity);
+    lResult = lPrime * lResult + Objects.hashCode(objectID);
+    lResult = lPrime * lResult + Objects.hashCode(internalProperty);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      MasterDataObjectBase lOther = (MasterDataObjectBase) pObject;
+      lEquals = Objects.equals(dataUnits, lOther.dataUnits) && Objects.equals(entity, lOther.entity)
+          && Objects.equals(objectID, lOther.objectID) && Objects.equals(internalProperty, lOther.internalProperty);
+    }
+    return lEquals;
+  }
 
   /**
    * Method returns a StringBuilder that can be used to create a String representation of this object. The returned

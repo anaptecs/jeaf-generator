@@ -9,6 +9,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 import javax.validation.constraints.Size;
@@ -295,6 +296,38 @@ public class ChildB extends ParentClass {
   public void clearComposition( ) {
     // Remove all objects from association "composition".
     composition.clear();
+  }
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = super.hashCode();
+    lResult = lPrime * lResult + Arrays.hashCode(childBAttribute);
+    lResult = lPrime * lResult + Objects.hashCode(composition);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (!super.equals(pObject)) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      ChildB lOther = (ChildB) pObject;
+      lEquals =
+          Arrays.equals(childBAttribute, lOther.childBAttribute) && Objects.equals(composition, lOther.composition);
+    }
+    return lEquals;
   }
 
   /**

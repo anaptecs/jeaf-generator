@@ -10,6 +10,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -295,6 +296,36 @@ public class Booking {
   public void clearInventories( ) {
     // Remove all objects from association "inventories".
     inventories.clear();
+  }
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = 1;
+    lResult = lPrime * lResult + Objects.hashCode(bookingID);
+    lResult = lPrime * lResult + Objects.hashCode(customerName);
+    lResult = lPrime * lResult + Objects.hashCode(inventories);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      Booking lOther = (Booking) pObject;
+      lEquals = Objects.equals(bookingID, lOther.bookingID) && Objects.equals(customerName, lOther.customerName)
+          && Objects.equals(inventories, lOther.inventories);
+    }
+    return lEquals;
   }
 
   /**

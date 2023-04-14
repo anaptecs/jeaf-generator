@@ -132,6 +132,33 @@ public abstract class AdvancedPOJOBase {
    */
   public abstract int returnPrimitive( );
 
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = 1;
+    lResult = lPrime * lResult + readonlyDefault;
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      AdvancedPOJOBase lOther = (AdvancedPOJOBase) pObject;
+      lEquals = readonlyDefault == lOther.readonlyDefault;
+    }
+    return lEquals;
+  }
+
   /**
    * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.

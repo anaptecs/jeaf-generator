@@ -5,6 +5,8 @@
  */
 package com.anaptecs.spring.base;
 
+import java.util.Objects;
+
 import javax.validation.constraints.NotNull;
 
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
@@ -267,6 +269,38 @@ public class Problem {
    */
   public String getInstance( ) {
     return instance;
+  }
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = 1;
+    lResult = lPrime * lResult + Objects.hashCode(title);
+    lResult = lPrime * lResult + status;
+    lResult = lPrime * lResult + Objects.hashCode(type);
+    lResult = lPrime * lResult + Objects.hashCode(detail);
+    lResult = lPrime * lResult + Objects.hashCode(instance);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      Problem lOther = (Problem) pObject;
+      lEquals = Objects.equals(title, lOther.title) && status == lOther.status && Objects.equals(type, lOther.type)
+          && Objects.equals(detail, lOther.detail) && Objects.equals(instance, lOther.instance);
+    }
+    return lEquals;
   }
 
   /**

@@ -53,6 +53,12 @@
 			<scope>test</scope>
 		</dependency>
 
+		<dependency>
+		    <groupId>nl.jqno.equalsverifier</groupId>
+		    <artifactId>equalsverifier</artifactId>
+		    <version>${equalsverifier.version}</version>
+		    <scope>test</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -90,6 +96,7 @@
 
 					<!-- Define what should be generated. By default nothing is generated. -->
 					<generatePOJOs>true</generatePOJOs>
+					<generateEqualsAndHashCode>true</generateEqualsAndHashCode>
 					<generateJacksonAnnotations>true</generateJacksonAnnotations>
 					<enableSemVerForJSON>true</enableSemVerForJSON>
 					<generateHeavyExtensibleEnums>true</generateHeavyExtensibleEnums>

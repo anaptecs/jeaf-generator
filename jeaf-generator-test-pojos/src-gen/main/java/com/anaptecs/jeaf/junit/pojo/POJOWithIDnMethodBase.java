@@ -5,6 +5,8 @@
  */
 package com.anaptecs.jeaf.junit.pojo;
 
+import java.util.Objects;
+
 import javax.annotation.Generated;
 import javax.validation.ConstraintViolationException;
 
@@ -186,6 +188,33 @@ public abstract class POJOWithIDnMethodBase implements Identifiable<ObjectID> {
    * @return boolean
    */
   public abstract boolean doSomethingFunny( );
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = 1;
+    lResult = lPrime * lResult + Objects.hashCode(attr);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      POJOWithIDnMethodBase lOther = (POJOWithIDnMethodBase) pObject;
+      lEquals = Objects.equals(attr, lOther.attr);
+    }
+    return lEquals;
+  }
 
   /**
    * Method returns a StringBuilder that can be used to create a String representation of this object. The returned

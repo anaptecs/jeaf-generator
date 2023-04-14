@@ -126,6 +126,8 @@
 
 					<!-- Define what should be generated. By default nothing is generated. -->
 					<generateServiceObjects>true</generateServiceObjects>
+					<generateEqualsAndHashCodeForCompositeDataTypes>true</generateEqualsAndHashCodeForCompositeDataTypes>
+					<generateEqualsAndHashCodeForOpenAPIDataTypes>true</generateEqualsAndHashCodeForOpenAPIDataTypes>
 					<generateServiceInterfaces>true</generateServiceInterfaces>
 					<generateRESTResources>true</generateRESTResources>
 					<generateJAXRSAnnotations>true</generateJAXRSAnnotations>

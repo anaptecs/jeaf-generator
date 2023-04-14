@@ -8,6 +8,7 @@ package com.anaptecs.jeaf.junit.pojo.softlink;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 import javax.annotation.Generated;
@@ -370,6 +371,39 @@ public class SoftLinkChildB extends SoftLinkParent {
    */
   public final void unsetOneLink( ) {
     oneLink = null;
+  }
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = super.hashCode();
+    lResult = lPrime * lResult + Objects.hashCode(heyBrother);
+    lResult = lPrime * lResult + Objects.hashCode(softLinkPartners);
+    lResult = lPrime * lResult + Objects.hashCode(oneLink);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (!super.equals(pObject)) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      SoftLinkChildB lOther = (SoftLinkChildB) pObject;
+      lEquals = Objects.equals(heyBrother, lOther.heyBrother)
+          && Objects.equals(softLinkPartners, lOther.softLinkPartners) && Objects.equals(oneLink, lOther.oneLink);
+    }
+    return lEquals;
   }
 
   /**

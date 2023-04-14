@@ -1,4 +1,6 @@
 extension functions::TypeChecks;
+extension functions::Property;
+extension java::GeneratorCommons;
 
 cached boolean isClass(uml::Element element):
     element.isInstanceOf("org.eclipse.uml2.uml.Class");
@@ -11,3 +13,6 @@ cached boolean hasDerivedProperties(uml::Class class):
     
 cached List[uml::Property] getDerivedProperties(uml::Class class):
     class.ownedAttribute.select(e|e.isDerived == true);
+    
+cached boolean hasBidirectionalAssociation(uml::Class class):
+    class.ownedAttribute.select(e|e.isPropertySuppressed() == false && e.belongsToBidirectionalAssociation()).isEmpty == false;

@@ -15,6 +15,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
@@ -880,6 +881,50 @@ public class DataTypesQueryBean {
     else {
       startTimestamps = null;
     }
+  }
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = 1;
+    lResult = lPrime * lResult + Arrays.hashCode(longCodes);
+    lResult = lPrime * lResult + Arrays.hashCode(codes);
+    lResult = lPrime * lResult + Objects.hashCode(doubleCodes);
+    lResult = lPrime * lResult + Objects.hashCode(bookingIDs);
+    lResult = lPrime * lResult + Arrays.hashCode(bookingIDsArray);
+    lResult = lPrime * lResult + Objects.hashCode(offsetDateTime);
+    lResult = lPrime * lResult + Objects.hashCode(offsetTime);
+    lResult = lPrime * lResult + Objects.hashCode(localDateTime);
+    lResult = lPrime * lResult + Objects.hashCode(localTime);
+    lResult = lPrime * lResult + Objects.hashCode(timestamps);
+    lResult = lPrime * lResult + Objects.hashCode(times);
+    lResult = lPrime * lResult + Arrays.hashCode(startTimestamps);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      DataTypesQueryBean lOther = (DataTypesQueryBean) pObject;
+      lEquals = Arrays.equals(longCodes, lOther.longCodes) && Arrays.equals(codes, lOther.codes)
+          && Objects.equals(doubleCodes, lOther.doubleCodes) && Objects.equals(bookingIDs, lOther.bookingIDs)
+          && Arrays.equals(bookingIDsArray, lOther.bookingIDsArray)
+          && Objects.equals(offsetDateTime, lOther.offsetDateTime) && Objects.equals(offsetTime, lOther.offsetTime)
+          && Objects.equals(localDateTime, lOther.localDateTime) && Objects.equals(localTime, lOther.localTime)
+          && Objects.equals(timestamps, lOther.timestamps) && Objects.equals(times, lOther.times)
+          && Arrays.equals(startTimestamps, lOther.startTimestamps);
+    }
+    return lEquals;
   }
 
   /**

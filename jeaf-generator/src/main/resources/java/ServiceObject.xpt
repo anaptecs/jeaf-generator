@@ -124,7 +124,7 @@
 			«EXPAND Attribute::PropertyAccessors FOREACH ownedAttribute.select(e|e.isPropertySuppressed() == false)»
 		«ENDIF»
 		«EXPAND java::Helper::GenerateCustomHeadersOperations»
-		«EXPAND java::Helper::GenerateEqualsHashCode»
+		«EXPAND java::Helper::GenerateEqualsHashCode(name)»
 		«EXPAND java::Helper::GenerateToStringMethod»
 	}
 	«ENDFILE»
@@ -239,7 +239,7 @@
         «EXPAND java::Attribute::AbstractGetterForDerivedProperty FOREACH this.getDerivedProperties()»
         «EXPAND jeaf::JEAFOperation::PersistentObjectOperation FOREACH ownedOperation»
         «EXPAND java::Helper::GenerateCustomHeadersOperations»
-        «EXPAND java::Helper::GenerateEqualsHashCode»
+        «EXPAND java::Helper::GenerateEqualsHashCode(name + "Base")»
         «EXPAND java::Helper::GenerateToStringMethod»
       }
       «ENDFILE»

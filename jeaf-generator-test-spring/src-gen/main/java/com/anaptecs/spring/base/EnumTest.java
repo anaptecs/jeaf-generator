@@ -5,6 +5,8 @@
  */
 package com.anaptecs.spring.base;
 
+import java.util.Objects;
+
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -201,6 +203,34 @@ public class EnumTest {
    */
   public final void unsetEnumRef( ) {
     enumRef = null;
+  }
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = 1;
+    lResult = lPrime * lResult + Objects.hashCode(property);
+    lResult = lPrime * lResult + Objects.hashCode(enumRef);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      EnumTest lOther = (EnumTest) pObject;
+      lEquals = Objects.equals(property, lOther.property) && Objects.equals(enumRef, lOther.enumRef);
+    }
+    return lEquals;
   }
 
   /**

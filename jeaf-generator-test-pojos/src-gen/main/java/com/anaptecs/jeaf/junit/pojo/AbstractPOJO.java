@@ -5,6 +5,8 @@
  */
 package com.anaptecs.jeaf.junit.pojo;
 
+import java.util.Objects;
+
 import javax.annotation.Generated;
 
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -98,6 +100,33 @@ public abstract class AbstractPOJO {
   public void setAbtractAttr( String pAbtractAttr ) {
     // Assign value to attribute
     abtractAttr = pAbtractAttr;
+  }
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = 1;
+    lResult = lPrime * lResult + Objects.hashCode(abtractAttr);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      AbstractPOJO lOther = (AbstractPOJO) pObject;
+      lEquals = Objects.equals(abtractAttr, lOther.abtractAttr);
+    }
+    return lEquals;
   }
 
   /**

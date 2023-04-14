@@ -5,6 +5,8 @@
  */
 package com.anaptecs.spring.base;
 
+import java.util.Objects;
+
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -315,6 +317,39 @@ public class PostalAddress {
   public void setCountry( String pCountry ) {
     // Assign value to attribute
     country = pCountry;
+  }
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = 1;
+    lResult = lPrime * lResult + Objects.hashCode(street);
+    lResult = lPrime * lResult + Objects.hashCode(houseNumber);
+    lResult = lPrime * lResult + Objects.hashCode(city);
+    lResult = lPrime * lResult + postalCode;
+    lResult = lPrime * lResult + Objects.hashCode(country);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      PostalAddress lOther = (PostalAddress) pObject;
+      lEquals = Objects.equals(street, lOther.street) && Objects.equals(houseNumber, lOther.houseNumber)
+          && Objects.equals(city, lOther.city) && postalCode == lOther.postalCode
+          && Objects.equals(country, lOther.country);
+    }
+    return lEquals;
   }
 
   /**

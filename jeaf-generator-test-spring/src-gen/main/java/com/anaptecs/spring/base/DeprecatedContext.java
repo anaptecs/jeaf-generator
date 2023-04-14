@@ -6,6 +6,7 @@
 package com.anaptecs.spring.base;
 
 import java.util.Locale;
+import java.util.Objects;
 
 import javax.validation.constraints.NotEmpty;
 
@@ -278,6 +279,37 @@ public class DeprecatedContext {
   public void setQueryParam( String pQueryParam ) {
     // Assign value to attribute
     queryParam = pQueryParam;
+  }
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = 1;
+    lResult = lPrime * lResult + Objects.hashCode(accessToken);
+    lResult = lPrime * lResult + Objects.hashCode(language);
+    lResult = lPrime * lResult + Long.hashCode(resellerID);
+    lResult = lPrime * lResult + Objects.hashCode(queryParam);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      DeprecatedContext lOther = (DeprecatedContext) pObject;
+      lEquals = Objects.equals(accessToken, lOther.accessToken) && Objects.equals(language, lOther.language)
+          && resellerID == lOther.resellerID && Objects.equals(queryParam, lOther.queryParam);
+    }
+    return lEquals;
   }
 
   /**

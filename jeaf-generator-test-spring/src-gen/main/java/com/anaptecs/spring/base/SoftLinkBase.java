@@ -5,6 +5,8 @@
  */
 package com.anaptecs.spring.base;
 
+import java.util.Objects;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -213,6 +215,37 @@ public abstract class SoftLinkBase {
    */
   public String getRefrenceID( ) {
     return refrenceID;
+  }
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = 1;
+    lResult = lPrime * lResult + Long.hashCode(objectID);
+    lResult = lPrime * lResult + Objects.hashCode(dataUnit);
+    lResult = lPrime * lResult + Objects.hashCode(entity);
+    lResult = lPrime * lResult + Objects.hashCode(refrenceID);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      SoftLinkBase lOther = (SoftLinkBase) pObject;
+      lEquals = objectID == lOther.objectID && Objects.equals(dataUnit, lOther.dataUnit)
+          && Objects.equals(entity, lOther.entity) && Objects.equals(refrenceID, lOther.refrenceID);
+    }
+    return lEquals;
   }
 
   /**

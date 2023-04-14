@@ -5,6 +5,8 @@
  */
 package com.anaptecs.jeaf.junit.pojo;
 
+import java.util.Objects;
+
 import javax.annotation.Generated;
 import javax.validation.ConstraintViolationException;
 
@@ -170,6 +172,34 @@ public class ImmutablePOJO {
   public void setSomething( Integer pSomething ) {
     // Assign value to attribute
     something = pSomething;
+  }
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = 1;
+    lResult = lPrime * lResult + Objects.hashCode(name);
+    lResult = lPrime * lResult + Objects.hashCode(something);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      ImmutablePOJO lOther = (ImmutablePOJO) pObject;
+      lEquals = Objects.equals(name, lOther.name) && Objects.equals(something, lOther.something);
+    }
+    return lEquals;
   }
 
   /**

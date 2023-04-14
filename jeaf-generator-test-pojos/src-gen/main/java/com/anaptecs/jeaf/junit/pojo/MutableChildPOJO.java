@@ -5,6 +5,8 @@
  */
 package com.anaptecs.jeaf.junit.pojo;
 
+import java.util.Objects;
+
 import javax.annotation.Generated;
 import javax.validation.ConstraintViolationException;
 
@@ -177,6 +179,36 @@ public class MutableChildPOJO extends ImmutablePOJOParent {
   public void setWriteable( Integer pWriteable ) {
     // Assign value to attribute
     writeable = pWriteable;
+  }
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = super.hashCode();
+    lResult = lPrime * lResult + Objects.hashCode(writeable);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (!super.equals(pObject)) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      MutableChildPOJO lOther = (MutableChildPOJO) pObject;
+      lEquals = Objects.equals(writeable, lOther.writeable);
+    }
+    return lEquals;
   }
 
   /**

@@ -6,6 +6,7 @@
 package com.anaptecs.spring.base;
 
 import java.util.Locale;
+import java.util.Objects;
 
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -230,6 +231,36 @@ public class BeanParameter {
   public void setOldStyle( String pOldStyle ) {
     // Assign value to attribute
     oldStyle = pOldStyle;
+  }
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = 1;
+    lResult = lPrime * lResult + Objects.hashCode(accessToken);
+    lResult = lPrime * lResult + Objects.hashCode(language);
+    lResult = lPrime * lResult + Objects.hashCode(oldStyle);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      BeanParameter lOther = (BeanParameter) pObject;
+      lEquals = Objects.equals(accessToken, lOther.accessToken) && Objects.equals(language, lOther.language)
+          && Objects.equals(oldStyle, lOther.oldStyle);
+    }
+    return lEquals;
   }
 
   /**

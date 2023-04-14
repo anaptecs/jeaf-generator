@@ -364,6 +364,34 @@ public class GeneratorMojo extends AbstractMojo {
   private Boolean generatePOJOs;
 
   /**
+   * Switch defines if <code>equals()</code> and <code>hashCode()</code> should be generated for all kinds of POJOs and
+   * ServiceObjects.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean generateEqualsAndHashCode;
+
+  /**
+   * Switch defines if <code>equals()</code> and <code>hashCode()</code> should be generated for "normal" POJOs and
+   * ServiceObjects.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean generateEqualsAndHashCodeForStandardClasses;
+
+  /**
+   * Switch defines if <code>equals()</code> and <code>hashCode()</code> should be generated for composite data type
+   * POJOs and ServiceObjects.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean generateEqualsAndHashCodeForCompositeDataTypes;
+
+  /**
+   * Switch defines if <code>equals()</code> and <code>hashCode()</code> should be generated for OpenAPI data type POJOs
+   * and ServiceObjects.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean generateEqualsAndHashCodeForOpenAPIDataTypes;
+
+  /**
    * Switch defines whether POJO's should be serializable or not.
    */
   @Parameter(required = false, defaultValue = "false")
@@ -1061,6 +1089,23 @@ public class GeneratorMojo extends AbstractMojo {
       lLog.info("Generate Constants for Attribute Names:           " + generateConstantsForAttributeNames);
       lLog.info("Generate valueOf(...) for OpenAPI Data Types:     " + generateValueOfForOpenAPIDataTypes);
     }
+
+    if (generateEqualsAndHashCode) {
+      lLog.info("Generate equals() and hashCode():                 " + generateEqualsAndHashCode);
+    }
+    if (generateEqualsAndHashCodeForStandardClasses) {
+      lLog.info("Generate equals() and hashCode() for 'normal'     ");
+      lLog.info("classes:                                          " + generateEqualsAndHashCodeForStandardClasses);
+    }
+    if (generateEqualsAndHashCodeForCompositeDataTypes) {
+      lLog.info("Generate equals() and hashCode() for composite");
+      lLog.info("data types:                                       " + generateEqualsAndHashCodeForCompositeDataTypes);
+    }
+    if (generateEqualsAndHashCodeForOpenAPIDataTypes) {
+      lLog.info("Generate equals() and hashCode() for OpenAPI");
+      lLog.info("data types:                                       " + generateEqualsAndHashCodeForOpenAPIDataTypes);
+    }
+
     if (generateDomainObjects) {
       lLog.info("Generate Domain Objects:                          " + generateDomainObjects);
       lLog.info("Generate Constants for Attribute Names:           " + generateConstantsForAttributeNames);
@@ -1278,6 +1323,15 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty("switch.gen.service.objects", generateServiceObjects.toString());
       System.setProperty("switch.gen.exception.classes", generateExceptionClasses.toString());
       System.setProperty("switch.gen.pojos", generatePOJOs.toString());
+
+      System.setProperty("switch.gen.equalsAndHashCode.all", generateEqualsAndHashCode.toString());
+      System.setProperty("switch.gen.equalsAndHashCode.standard",
+          generateEqualsAndHashCodeForStandardClasses.toString());
+      System.setProperty("switch.gen.equalsAndHashCode.composite.datatype",
+          generateEqualsAndHashCodeForCompositeDataTypes.toString());
+      System.setProperty("switch.gen.equalsAndHashCode.openapi.datatype",
+          generateEqualsAndHashCodeForOpenAPIDataTypes.toString());
+
       System.setProperty("switch.gen.immutable.classes", generateImmutableClasses.toString());
       System.setProperty("switch.gen.serializable.pojos", makePOJOsSerializable.toString());
       System.setProperty("switch.gen.heavy.extensible.enums", generateHeavyExtensibleEnums.toString());

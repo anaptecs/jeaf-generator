@@ -6,4 +6,11 @@ cached boolean isProperty(uml::Element element):
 cached uml::Property asProperty(uml::Element element):
     (uml::Property) element;
     
+cached boolean belongsToBidirectionalAssociation(uml::Property property):
+    if property.association != null && property.association.getAllAttributes().select(e|e.isNavigable()).size > 1
+    then true
+    else false;
+    
+
+    
 

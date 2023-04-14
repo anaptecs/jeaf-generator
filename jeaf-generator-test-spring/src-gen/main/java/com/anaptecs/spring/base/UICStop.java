@@ -6,6 +6,7 @@
 package com.anaptecs.spring.base;
 
 import java.util.List;
+import java.util.Objects;
 
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -168,6 +169,36 @@ public class UICStop extends Stop {
   public void setUicCode( String pUicCode ) {
     // Assign value to attribute
     uicCode = pUicCode;
+  }
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = super.hashCode();
+    lResult = lPrime * lResult + Objects.hashCode(uicCode);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (!super.equals(pObject)) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      UICStop lOther = (UICStop) pObject;
+      lEquals = Objects.equals(uicCode, lOther.uicCode);
+    }
+    return lEquals;
   }
 
   /**

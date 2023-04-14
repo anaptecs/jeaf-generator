@@ -316,6 +316,39 @@ public class ChildAA extends ChildA {
     }
   }
 
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = super.hashCode();
+    lResult = lPrime * lResult + childAAAttribute;
+    lResult = lPrime * lResult + Arrays.hashCode(sizedArray);
+    lResult = lPrime * lResult + Arrays.hashCode(requiredArray);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (!super.equals(pObject)) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      ChildAA lOther = (ChildAA) pObject;
+      lEquals = childAAAttribute == lOther.childAAAttribute && Arrays.equals(sizedArray, lOther.sizedArray)
+          && Arrays.equals(requiredArray, lOther.requiredArray);
+    }
+    return lEquals;
+  }
+
   /**
    * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.

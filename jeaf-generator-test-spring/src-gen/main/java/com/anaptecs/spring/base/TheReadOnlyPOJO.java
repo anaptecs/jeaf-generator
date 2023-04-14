@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -278,6 +279,37 @@ public class TheReadOnlyPOJO {
   public List<Entity> getEntities( ) {
     // Return all Entity objects as unmodifiable collection.
     return Collections.unmodifiableList(entities);
+  }
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = 1;
+    lResult = lPrime * lResult + Objects.hashCode(dataUnit);
+    lResult = lPrime * lResult + Objects.hashCode(name);
+    lResult = lPrime * lResult + Arrays.hashCode(ints);
+    lResult = lPrime * lResult + Objects.hashCode(entities);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      TheReadOnlyPOJO lOther = (TheReadOnlyPOJO) pObject;
+      lEquals = Objects.equals(dataUnit, lOther.dataUnit) && Objects.equals(name, lOther.name)
+          && Arrays.equals(ints, lOther.ints) && Objects.equals(entities, lOther.entities);
+    }
+    return lEquals;
   }
 
   /**

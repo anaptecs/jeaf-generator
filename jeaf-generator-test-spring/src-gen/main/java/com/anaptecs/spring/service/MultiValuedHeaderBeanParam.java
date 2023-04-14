@@ -14,6 +14,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
@@ -821,6 +822,48 @@ public class MultiValuedHeaderBeanParam {
     else {
       sqlTimestamps = null;
     }
+  }
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = 1;
+    lResult = lPrime * lResult + Arrays.hashCode(names);
+    lResult = lPrime * lResult + Arrays.hashCode(ints);
+    lResult = lPrime * lResult + Arrays.hashCode(doubles);
+    lResult = lPrime * lResult + Arrays.hashCode(codes);
+    lResult = lPrime * lResult + Objects.hashCode(stringCodeList);
+    lResult = lPrime * lResult + Objects.hashCode(startDate);
+    lResult = lPrime * lResult + Arrays.hashCode(dates);
+    lResult = lPrime * lResult + Objects.hashCode(timestamps);
+    lResult = lPrime * lResult + Arrays.hashCode(calendars);
+    lResult = lPrime * lResult + Arrays.hashCode(utilDates);
+    lResult = lPrime * lResult + Arrays.hashCode(sqlTimestamps);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      MultiValuedHeaderBeanParam lOther = (MultiValuedHeaderBeanParam) pObject;
+      lEquals = Arrays.equals(names, lOther.names) && Arrays.equals(ints, lOther.ints)
+          && Arrays.equals(doubles, lOther.doubles) && Arrays.equals(codes, lOther.codes)
+          && Objects.equals(stringCodeList, lOther.stringCodeList) && Objects.equals(startDate, lOther.startDate)
+          && Arrays.equals(dates, lOther.dates) && Objects.equals(timestamps, lOther.timestamps)
+          && Arrays.equals(calendars, lOther.calendars) && Arrays.equals(utilDates, lOther.utilDates)
+          && Arrays.equals(sqlTimestamps, lOther.sqlTimestamps);
+    }
+    return lEquals;
   }
 
   /**
