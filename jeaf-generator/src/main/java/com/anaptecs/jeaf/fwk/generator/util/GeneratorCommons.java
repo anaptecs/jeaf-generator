@@ -589,9 +589,20 @@ public class GeneratorCommons {
           for (String lNextWhitelistEntry : lPackageNames) {
             // Get next white list entry and check if it matches with the passed package
             if (lPackageName.startsWith(lNextWhitelistEntry) == true) {
-              // White list entry and package match.
-              lIsInWhitelist = true;
-              break;
+              // Check for real package match and not only same beginning.
+              if (lPackageName.length() > lNextWhitelistEntry.length()) {
+                if ('.' == lPackageName.charAt(lNextWhitelistEntry.length())) {
+                  lIsInWhitelist = true;
+                }
+                else {
+                  lIsInWhitelist = false;
+                }
+              }
+              // White list entry and package match exactly.
+              else {
+                lIsInWhitelist = true;
+                break;
+              }
             }
           }
         }
