@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.anaptecs.jeaf.generator</groupId>
+		<artifactId>jeaf-generator-project</artifactId>
+		<version>1.8.3-SNAPSHOT</version>
+	</parent>
+
+	<name>JEAF Generator Test Spring Boot 3</name>
+	<artifactId>jeaf-generator-test-spring-boot3</artifactId>
+	<packaging>jar</packaging>
+
+	<dependencies>
+		<!-- https://mvnrepository.com/artifact/jakarta.platform/jakarta.jakartaee-api -->
+		<dependency>
+		    <groupId>jakarta.platform</groupId>
+		    <artifactId>jakarta.jakartaee-api</artifactId>
+		    <version>${jakartaee-api.version}</version>
+		    <scope>provided</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.anaptecs.jeaf.validation</groupId>
+			<artifactId>jeaf-validation-api-spring</artifactId>
+			<version>${jeaf.validation.api.version}</version>
+		</dependency>
+
+		<!--
+		<dependency>
+			<groupId>com.anaptecs.jeaf.validation</groupId>
+			<artifactId>jeaf-validation-api-spring</artifactId>
+			<version>${jeaf.validation.api.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.anaptecs.jeaf.rest</groupId>
+			<artifactId>jeaf-rest-resource-api</artifactId>
+			<version>${jeaf.rest.api.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.anaptecs.jeaf.rest</groupId>
+			<artifactId>jeaf-rest-composite-type-api</artifactId>
+			<version>${jeaf.rest.api.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.anaptecs.jeaf.rest</groupId>
+			<artifactId>jeaf-rest-composite-type-impl-kryo</artifactId>
+			<version>${jeaf.rest.impl.version}</version>
+		</dependency>
+
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-web</artifactId>
+		    <version>${spring.boot.version}</version>
+		</dependency>
+
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-validation</artifactId>
+		    <version>${spring.boot.version}</version>
+		</dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <version>${spring.boot.version}</version>
+            <scope>test</scope>            
+        </dependency>
+
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+			<version>${validation-api.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>${javaee-api.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-databind</artifactId>
+		    <version>${jackson.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<version>${junit.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.httpcomponents.client5</groupId>
+			<artifactId>httpclient5</artifactId>
+			<version>${apache.httpclient5.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+		    <groupId>nl.jqno.equalsverifier</groupId>
+		    <artifactId>equalsverifier</artifactId>
+		    <version>${equalsverifier.version}</version>
+		    <scope>test</scope>
+		</dependency>
+		-->
+
+		<dependency>
+			<groupId>com.anaptecs.jeaf.x-fun</groupId>
+			<artifactId>jeaf-x-fun-default-runtime</artifactId>
+			<version>${jeaf.x-fun.impl.version}</version>
+			<type>pom</type>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.anaptecs.jeaf.uml</groupId>
+			<artifactId>jeaf-uml-test-model</artifactId>
+			<version>${jeaf.test.model.version}</version>
+			<type>zip</type>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>com.anaptecs.jeaf.generator</groupId>
+				<artifactId>jeaf-generator-maven-plugin</artifactId>
+				<version>${project.version}</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>Generator</goal>
+						</goals>
+						<phase>generate-sources</phase>
+					</execution>
+				</executions>
+				<configuration>
+					<!-- Define input files and directories where output should be write to. -->
+					<modelArtifactGroupID>com.anaptecs.jeaf.uml</modelArtifactGroupID>
+					<modelArtifactArtifactID>jeaf-uml-test-model</modelArtifactArtifactID>
+					<modelArtifactXMIPath>xmi</modelArtifactXMIPath>
+
+					<umlModelFile>JEAF_Test.uml</umlModelFile>
+					<sourceDirectory>${project.basedir}/src-gen/main/java</sourceDirectory>
+					<sourceGenDirectory>${project.basedir}/src-gen/main/java</sourceGenDirectory>
+					<resourceDirectory>${project.basedir}/src-gen/main/resources</resourceDirectory>
+					<resourceGenDirectory>${project.basedir}/src-gen/main/resources</resourceGenDirectory>
+
+					<!-- Configure behavior concerning existing files in src-gen and res-gen directory. It is strongly recommended to clean directories before generating new files. -->
+					<cleanSourceGen>true</cleanSourceGen>
+					<cleanResourceGen>true</cleanResourceGen>
+					
+
+					<!-- Define whitelist of package in UML model generator should take care when generating code. -->
+					<packages>
+						<package>com.anaptecs.spring</package>
+					</packages>
+
+					<!-- Define what should be generated. By default nothing is generated. -->
+					<targetRuntime>SPRING</targetRuntime>
+					<restLibrary>SPRING_WEB_MVC</restLibrary>
+					<enterpriseJavaType>JAKARTA_EE</enterpriseJavaType>
+					
+					<!--
+					<generateRESTResources>true</generateRESTResources>
+					<generateRESTRequestValidation>true</generateRESTRequestValidation>
+					<generateRESTResponseValidation>true</generateRESTResponseValidation>
+					<restPathPrefix>/nova/prefix</restPathPrefix>
+					<generateServiceInterfaces>true</generateServiceInterfaces>
+					-->
+					<generatePOJOs>true</generatePOJOs>
+					<generateEqualsAndHashCode>true</generateEqualsAndHashCode>
+					<enableDetailedToStringMethod>true</enableDetailedToStringMethod>
+					
+					<!--
+					<generateObjectValidationInBuilder>true</generateObjectValidationInBuilder>
+					<generateHeavyExtensibleEnums>false</generateHeavyExtensibleEnums>
+					<generateJSONSerializers>true</generateJSONSerializers>
+					<generateJacksonAnnotations>true</generateJacksonAnnotations>
+					<enableLegacyBuilderStyle>true</enableLegacyBuilderStyle>
+					-->
+					<suppressTechnicalHeaders>true</suppressTechnicalHeaders>
+
+					<!-- Define information that are written to file headers -->
+					<fileHeaderCompany>anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany</fileHeaderCompany>
+					<fileHeaderAuthor>JEAF Generator</fileHeaderAuthor>
+					<fileHeaderCopyright>Copyright 2004 - 2019. All rights reserved.</fileHeaderCopyright>
+					<fileHeaderVersion>JEAF Release 1.4.x</fileHeaderVersion>
+					
+					<!-- Define code formatting style -->
+					<!-- <conventionFile>anaptecs_code_guideline.xml</conventionFile> -->
+				</configuration>
+			</plugin>
+		</plugins>
+		<pluginManagement>
+			<plugins>
+				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>com.anaptecs.jeaf.generator</groupId>
+										<artifactId>jeaf-generator-maven-plugin</artifactId>
+										<versionRange>[1.5.1,)</versionRange>
+										<goals>
+											<goal>Generator</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore />
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+</project>

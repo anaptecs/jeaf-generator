@@ -435,6 +435,9 @@ cached boolean isBigDecimal(uml::Type type) :
 
 cached boolean isEnumeration(uml::Element element):
   JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.isEnumeration(org.eclipse.uml2.uml.Element);  
+  
+cached String getEnterpriseJavaPackage():
+  JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getEnterpriseJavaPackage();
 
 cached boolean isTargetRuntimeJEAF():
   JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.isTargetRuntimeJEAF();

@@ -323,6 +323,8 @@ public class GeneratorCommons {
 
   public static final String TARGET_RUNTIME = "switch.gen.target.runtime";
 
+  public static final String ENTERPRISE_JAVA_TYPE = "switch.gen.enterprise.java";
+
   public static final String REST_LIBRARY = "switch.gen.target.rest.library";
 
   public static final String REST_DEFAULT_SUCCESS_STATUS_CODE = "switch.gen.target.rest.success.status.code";
@@ -1438,6 +1440,39 @@ public class GeneratorCommons {
     }
 
     return lTargetRuntime;
+  }
+
+  public static EnterpriseJavaType getEnterpriseJavaType( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    String lValue = lConfiguration.getConfigurationValue(ENTERPRISE_JAVA_TYPE, false, String.class);
+    EnterpriseJavaType lEnterpriseJavaType;
+    if (lValue != null) {
+      lEnterpriseJavaType = EnterpriseJavaType.valueOf(lValue.toUpperCase());
+    }
+    else {
+      lEnterpriseJavaType = EnterpriseJavaType.JAVA_EE;
+    }
+
+    return lEnterpriseJavaType;
+  }
+
+  public static String getEnterpriseJavaPackage( ) {
+    EnterpriseJavaType lEnterpriseJavaType = GeneratorCommons.getEnterpriseJavaType();
+    String lPackage;
+    switch (lEnterpriseJavaType) {
+      case JAVA_EE:
+        lPackage = "javax";
+        break;
+
+      case JAKARTA_EE:
+        lPackage = "jakarta";
+        break;
+
+      default:
+        Assert.internalError("Unexpected literal for enum EnterpriseJavaType: " + lEnterpriseJavaType.name());
+        lPackage = "error";
+    }
+    return lPackage;
   }
 
   public static boolean isTargetRuntimeJEAF( ) {

@@ -24,8 +24,8 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
-import javax.validation.Constraint;
-import javax.validation.Payload;
+import «getEnterpriseJavaPackage()».validation.Constraint;
+import «getEnterpriseJavaPackage()».validation.Payload;
 
 
 @Target({ FIELD, METHOD, PARAMETER, ANNOTATION_TYPE, TYPE_USE })
@@ -136,104 +136,104 @@ public @interface «validationClass» {
 	    «ENDIF»
 	«ENDFOREACH»
 	«IF generateValidAnnotationsForClasses() &&(this.isStereotypeApplied("POJO") || this.isStereotypeApplied("ServiceObject") || this.isStereotypeApplied("DomainObject") || this.isStereotypeApplied("PersistentObject")) && this.isStereotypeApplied("Valid")==false »
-	@javax.validation.Valid
+	@«getEnterpriseJavaPackage()».validation.Valid
 	«ENDIF»
     «IF generateValidAnnotationsForAssociations() && this.isProperty() &&(this.asProperty().type.isStereotypeApplied("POJO") || this.asProperty().type.isStereotypeApplied("ServiceObject") || this.asProperty().type.isStereotypeApplied("DomainObject") || this.asProperty().type.isStereotypeApplied("PersistentObject")) && this.isStereotypeApplied("Valid")==false »
-    @javax.validation.Valid
+    @«getEnterpriseJavaPackage()».validation.Valid
     «ENDIF»
 «ENDDEFINE»
 
 
 «DEFINE DecimalMinAnnotation FOR DecimalMin»
-   @javax.validation.constraints.DecimalMin(value = "«this.minValue»", inclusive = «this.inclusive» «EXPAND ValidationAnnotationBasics» )
+   @«getEnterpriseJavaPackage()».validation.constraints.DecimalMin(value = "«this.minValue»", inclusive = «this.inclusive» «EXPAND ValidationAnnotationBasics» )
 «ENDDEFINE»
 
 «DEFINE DecimalMaxAnnotation FOR DecimalMax»
-   @javax.validation.constraints.DecimalMax(value = "«this.maxValue»", inclusive = «this.inclusive» «EXPAND ValidationAnnotationBasics» )
+   @«getEnterpriseJavaPackage()».validation.constraints.DecimalMax(value = "«this.maxValue»", inclusive = «this.inclusive» «EXPAND ValidationAnnotationBasics» )
 «ENDDEFINE»
 
 «DEFINE MinAnnotation FOR Min»
-   @javax.validation.constraints.Min(value = «this.minValue» «EXPAND ValidationAnnotationBasics»)
+   @«getEnterpriseJavaPackage()».validation.constraints.Min(value = «this.minValue» «EXPAND ValidationAnnotationBasics»)
 «ENDDEFINE»
 
 «DEFINE MaxAnnotation FOR Max»
-   @javax.validation.constraints.Max(value = «this.maxValue» «EXPAND ValidationAnnotationBasics»)
+   @«getEnterpriseJavaPackage()».validation.constraints.Max(value = «this.maxValue» «EXPAND ValidationAnnotationBasics»)
 «ENDDEFINE»
 
 «DEFINE DigitsAnnotation FOR Digits»
-   @javax.validation.constraints.Digits(integer = «integer», fraction = «fraction» «EXPAND ValidationAnnotationBasics»)
+   @«getEnterpriseJavaPackage()».validation.constraints.Digits(integer = «integer», fraction = «fraction» «EXPAND ValidationAnnotationBasics»)
 «ENDDEFINE»
 
 «DEFINE NegativeAnnotation FOR Negative»
-   @javax.validation.constraints.Negative«IF this.hasErrorCodeOrSeverity()»(«EXPAND ValidationAnnotationBasicsEmptyValidation»)«ENDIF»
+   @«getEnterpriseJavaPackage()».validation.constraints.Negative«IF this.hasErrorCodeOrSeverity()»(«EXPAND ValidationAnnotationBasicsEmptyValidation»)«ENDIF»
 «ENDDEFINE»
 
 «DEFINE NegativeOrZeroAnnotation FOR NegativeOrZero»
-   @javax.validation.constraints.NegativeOrZero«IF this.hasErrorCodeOrSeverity()»(«EXPAND ValidationAnnotationBasicsEmptyValidation»)«ENDIF»
+   @«getEnterpriseJavaPackage()».validation.constraints.NegativeOrZero«IF this.hasErrorCodeOrSeverity()»(«EXPAND ValidationAnnotationBasicsEmptyValidation»)«ENDIF»
 «ENDDEFINE»
 
 «DEFINE PositiveOrZeroAnnotation FOR PositiveOrZero»
-   @javax.validation.constraints.PositiveOrZero«IF this.hasErrorCodeOrSeverity()»(«EXPAND ValidationAnnotationBasicsEmptyValidation»)«ENDIF»
+   @«getEnterpriseJavaPackage()».validation.constraints.PositiveOrZero«IF this.hasErrorCodeOrSeverity()»(«EXPAND ValidationAnnotationBasicsEmptyValidation»)«ENDIF»
 «ENDDEFINE»
 
 «DEFINE PositiveAnnotation FOR Positive»
-   @javax.validation.constraints.Positive«IF this.hasErrorCodeOrSeverity()»(«EXPAND ValidationAnnotationBasicsEmptyValidation»)«ENDIF»
+   @«getEnterpriseJavaPackage()».validation.constraints.Positive«IF this.hasErrorCodeOrSeverity()»(«EXPAND ValidationAnnotationBasicsEmptyValidation»)«ENDIF»
 «ENDDEFINE»
 
 «DEFINE SizeAnnotation FOR Size»
-   @javax.validation.constraints.Size(min = «IF min != -1»«min»«ELSE»0«ENDIF», max = «IF max != -1»«max»«ELSE»Integer.MAX_VALUE«ENDIF»«EXPAND ValidationAnnotationBasics»)
+   @«getEnterpriseJavaPackage()».validation.constraints.Size(min = «IF min != -1»«min»«ELSE»0«ENDIF», max = «IF max != -1»«max»«ELSE»Integer.MAX_VALUE«ENDIF»«EXPAND ValidationAnnotationBasics»)
 «ENDDEFINE»
 
 «DEFINE PatternAnnotation FOR Pattern»
-   @javax.validation.constraints.Pattern(«IF regexp.length > 0»regexp = "«regexp»"«ENDIF»«IF regexp.length > 0 && flags.size > 0», «ENDIF»«IF flags.size > 0»flags = {javax.validation.constraints.Pattern.Flag.«flags.toString(", javax.validation.constraints.Pattern.Flag.")»}«ENDIF» «EXPAND ValidationAnnotationBasics»)
+   @«getEnterpriseJavaPackage()».validation.constraints.Pattern(«IF regexp.length > 0»regexp = "«regexp»"«ENDIF»«IF regexp.length > 0 && flags.size > 0», «ENDIF»«IF flags.size > 0»flags = {«FOREACH flags AS flag SEPARATOR ", "»«getEnterpriseJavaPackage()».validation.constraints.Pattern.Flag.«flag»«ENDFOREACH»}«ENDIF» «EXPAND ValidationAnnotationBasics»)
 «ENDDEFINE»
 
 «DEFINE EmailAnnotation FOR Email»
-   @javax.validation.constraints.Email(«IF regexp.length > 0»regexp = "«regexp»"«ENDIF»«IF regexp.length > 0 && flags.size > 0», «ENDIF»«IF flags.size > 0»flags = {javax.validation.constraints.Pattern.Flag.«flags.toString(", javax.validation.constraints.Pattern.Flag.")»}«ENDIF» «EXPAND ValidationAnnotationBasics»)
+   @«getEnterpriseJavaPackage()».validation.constraints.Email(«IF regexp.length > 0»regexp = "«regexp»"«ENDIF»«IF regexp.length > 0 && flags.size > 0», «ENDIF»«IF flags.size > 0»flags = {«FOREACH flags AS flag SEPARATOR ", "»«getEnterpriseJavaPackage()».validation.constraints.Pattern.Flag.«flag»«ENDFOREACH»}«ENDIF» «EXPAND ValidationAnnotationBasics»)
 «ENDDEFINE»
 
 «DEFINE NotEmptyAnnotation FOR NotEmpty»
-   @javax.validation.constraints.NotEmpty«IF this.hasErrorCodeOrSeverity()»(«EXPAND ValidationAnnotationBasicsEmptyValidation»)«ENDIF»
+   @«getEnterpriseJavaPackage()».validation.constraints.NotEmpty«IF this.hasErrorCodeOrSeverity()»(«EXPAND ValidationAnnotationBasicsEmptyValidation»)«ENDIF»
 «ENDDEFINE»
 
 «DEFINE NullAnnotation FOR Null»
-   @javax.validation.constraints.Null«IF this.hasErrorCodeOrSeverity()»(«EXPAND ValidationAnnotationBasicsEmptyValidation»)«ENDIF»
+   @«getEnterpriseJavaPackage()».validation.constraints.Null«IF this.hasErrorCodeOrSeverity()»(«EXPAND ValidationAnnotationBasicsEmptyValidation»)«ENDIF»
 «ENDDEFINE»
 
 «DEFINE NotNullAnnotation FOR NotNull»
-   @javax.validation.constraints.NotNull«IF this.hasErrorCodeOrSeverity()»(«EXPAND ValidationAnnotationBasicsEmptyValidation»)«ENDIF»
+   @«getEnterpriseJavaPackage()».validation.constraints.NotNull«IF this.hasErrorCodeOrSeverity()»(«EXPAND ValidationAnnotationBasicsEmptyValidation»)«ENDIF»
 «ENDDEFINE»
 
 «DEFINE AssertTrueAnnotation FOR AssertTrue»
-   @javax.validation.constraints.AssertTrue«IF this.hasErrorCodeOrSeverity()»(«EXPAND ValidationAnnotationBasicsEmptyValidation»)«ENDIF»
+   @«getEnterpriseJavaPackage()».validation.constraints.AssertTrue«IF this.hasErrorCodeOrSeverity()»(«EXPAND ValidationAnnotationBasicsEmptyValidation»)«ENDIF»
 «ENDDEFINE»
 
 «DEFINE AssertFalseAnnotation FOR AssertFalse»
-   @javax.validation.constraints.AssertFalse«IF this.hasErrorCodeOrSeverity()»(«EXPAND ValidationAnnotationBasicsEmptyValidation»)«ENDIF»
+   @«getEnterpriseJavaPackage()».validation.constraints.AssertFalse«IF this.hasErrorCodeOrSeverity()»(«EXPAND ValidationAnnotationBasicsEmptyValidation»)«ENDIF»
 «ENDDEFINE»
 
 «DEFINE NotBlankAnnotation FOR NotBlank»
-   @javax.validation.constraints.NotBlank«IF this.hasErrorCodeOrSeverity()»(«EXPAND ValidationAnnotationBasicsEmptyValidation»)«ENDIF»
+   @«getEnterpriseJavaPackage()».validation.constraints.NotBlank«IF this.hasErrorCodeOrSeverity()»(«EXPAND ValidationAnnotationBasicsEmptyValidation»)«ENDIF»
 «ENDDEFINE»
 
 «DEFINE PastAnnotation FOR Past»
-   @javax.validation.constraints.Past«IF this.hasErrorCodeOrSeverity()»(«EXPAND ValidationAnnotationBasicsEmptyValidation»)«ENDIF»
+   @«getEnterpriseJavaPackage()».validation.constraints.Past«IF this.hasErrorCodeOrSeverity()»(«EXPAND ValidationAnnotationBasicsEmptyValidation»)«ENDIF»
 «ENDDEFINE»
 
 «DEFINE PastOrPresentAnnotation FOR PastOrPresent»
-   @javax.validation.constraints.PastOrPresent«IF this.hasErrorCodeOrSeverity()»(«EXPAND ValidationAnnotationBasicsEmptyValidation»)«ENDIF»
+   @«getEnterpriseJavaPackage()».validation.constraints.PastOrPresent«IF this.hasErrorCodeOrSeverity()»(«EXPAND ValidationAnnotationBasicsEmptyValidation»)«ENDIF»
 «ENDDEFINE»
 
 «DEFINE FutureOrPresentAnnotation FOR FutureOrPresent»
-   @javax.validation.constraints.FutureOrPresent«IF this.hasErrorCodeOrSeverity()»(«EXPAND ValidationAnnotationBasicsEmptyValidation»)«ENDIF»
+   @«getEnterpriseJavaPackage()».validation.constraints.FutureOrPresent«IF this.hasErrorCodeOrSeverity()»(«EXPAND ValidationAnnotationBasicsEmptyValidation»)«ENDIF»
 «ENDDEFINE»
 
 «DEFINE FutureAnnotation FOR Future»
-   @javax.validation.constraints.Future«IF this.hasErrorCodeOrSeverity()»(«EXPAND ValidationAnnotationBasicsEmptyValidation»)«ENDIF»
+   @«getEnterpriseJavaPackage()».validation.constraints.Future«IF this.hasErrorCodeOrSeverity()»(«EXPAND ValidationAnnotationBasicsEmptyValidation»)«ENDIF»
 «ENDDEFINE»
 
 «DEFINE ValidAnnotation FOR Valid -»
-   @javax.validation.Valid«IF this.hasErrorCodeOrSeverity()»(«EXPAND ValidationAnnotationBasicsEmptyValidation»)«ENDIF»
+   @«getEnterpriseJavaPackage()».validation.Valid«IF this.hasErrorCodeOrSeverity()»(«EXPAND ValidationAnnotationBasicsEmptyValidation»)«ENDIF»
 «ENDDEFINE»
 
 «DEFINE CustomValidationAnnotation(Stereotype stereotype) FOR Element»

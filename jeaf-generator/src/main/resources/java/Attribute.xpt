@@ -43,8 +43,8 @@
 	«EXPAND RESTParamAnnotation»
 	«EXPAND java::Jackson::JSONAlias»
 	«EXPAND Validation::ValidationAnnotation»
-    «IF generateValidationAnnotationsForAttributesFromMultiplicity() && isStatic == false && isTransient() == false && isMultivalued() == true && isStereotypeApplied("Size") == false && lower > 0»@javax.validation.constraints.Size(min = «lower»)«ENDIF»
-    «IF generateValidationAnnotationsForAttributesFromMultiplicity() && isStatic == false && isTransient() == false && isMultivalued() == false && type.isPrimitiveType() == false && this.requiresNotNullAnnotation() && lower > 0»@javax.validation.constraints.NotNull«ENDIF»
+    «IF generateValidationAnnotationsForAttributesFromMultiplicity() && isStatic == false && isTransient() == false && isMultivalued() == true && isStereotypeApplied("Size") == false && lower > 0»@«getEnterpriseJavaPackage()».validation.constraints.Size(min = «lower»)«ENDIF»
+    «IF generateValidationAnnotationsForAttributesFromMultiplicity() && isStatic == false && isTransient() == false && isMultivalued() == false && type.isPrimitiveType() == false && this.requiresNotNullAnnotation() && lower > 0»@«getEnterpriseJavaPackage()».validation.constraints.NotNull«ENDIF»
 	«visibility» «IF isStatic» static «ENDIF» «IF isReadOnly()»final «ENDIF» «IF isTransient()»transient «ENDIF» «this.fqn()»«IF isMultivalued()»[]«ENDIF» «name»«IF this.isRealInitValue() && this.isMultivalued()== false && this.isStatic == true» = «this.initValue()»«ENDIF»;
 «ENDDEFINE»
 
@@ -59,11 +59,11 @@
             «IF generateJacksonAnnotations() && isTransient() == false»
             @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SKIP)
             «ENDIF»
-            «IF generateValidationAnnotationsForAssociationsFromMultiplicity() && isStatic == false && isTransient() == false && isStereotypeApplied("Size") == false && lower > 0»@javax.validation.constraints.Size(min = «lower»)«ENDIF»
-            «IF generateValidationAnnotationsForAssociationsFromMultiplicity() && isStatic == false && isTransient() == false && this.requiresNotNullAnnotation() && lower > 0»@javax.validation.constraints.NotNull«ENDIF»
+            «IF generateValidationAnnotationsForAssociationsFromMultiplicity() && isStatic == false && isTransient() == false && isStereotypeApplied("Size") == false && lower > 0»@«getEnterpriseJavaPackage()».validation.constraints.Size(min = «lower»)«ENDIF»
+            «IF generateValidationAnnotationsForAssociationsFromMultiplicity() && isStatic == false && isTransient() == false && this.requiresNotNullAnnotation() && lower > 0»@«getEnterpriseJavaPackage()».validation.constraints.NotNull«ENDIF»
             «visibility» «IF isReadOnly()»final «ENDIF» «IF isTransient()»transient «ENDIF» «this.getCollectionType()»<«this.getMultivaluedSoftLinkType()»> «asInstanceVar()»;
         «ELSE»
-            «IF generateValidationAnnotationsForAssociationsFromMultiplicity() && isStatic == false && isTransient() == false && this.requiresNotNullAnnotation() && lower > 0»@javax.validation.constraints.NotNull«ENDIF»
+            «IF generateValidationAnnotationsForAssociationsFromMultiplicity() && isStatic == false && isTransient() == false && this.requiresNotNullAnnotation() && lower > 0»@«getEnterpriseJavaPackage()».validation.constraints.NotNull«ENDIF»
             «visibility» «IF isReadOnly()»final «ENDIF» «IF isTransient()»transient «ENDIF» «this.getSoftLinkType()» «asInstanceVar()»;
         «ENDIF»
 «ENDDEFINE»
@@ -92,11 +92,11 @@
             «IF generateJacksonAnnotations() && isTransient() == false»
             @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SKIP)
             «ENDIF»
-			«IF generateValidationAnnotationsForAssociationsFromMultiplicity() && isStatic == false && isTransient() == false && isStereotypeApplied("Size") == false && lower > 0»@javax.validation.constraints.Size(min = «lower»)«ENDIF»
-			«IF generateValidationAnnotationsForAssociationsFromMultiplicity() && isStatic == false && isTransient() == false && this.requiresNotNullAnnotation() && lower > 0»@javax.validation.constraints.NotNull«ENDIF»
+			«IF generateValidationAnnotationsForAssociationsFromMultiplicity() && isStatic == false && isTransient() == false && isStereotypeApplied("Size") == false && lower > 0»@«getEnterpriseJavaPackage()».validation.constraints.Size(min = «lower»)«ENDIF»
+			«IF generateValidationAnnotationsForAssociationsFromMultiplicity() && isStatic == false && isTransient() == false && this.requiresNotNullAnnotation() && lower > 0»@«getEnterpriseJavaPackage()».validation.constraints.NotNull«ENDIF»
 			«visibility» «IF isReadOnly()»final «ENDIF» «IF isTransient()»transient «ENDIF» «this.fqn()» «asInstanceVar()»;
 		«ELSE»
-			«IF generateValidationAnnotationsForAssociationsFromMultiplicity() && isStatic == false && isTransient() == false && this.requiresNotNullAnnotation() && lower > 0»@javax.validation.constraints.NotNull«ENDIF»
+			«IF generateValidationAnnotationsForAssociationsFromMultiplicity() && isStatic == false && isTransient() == false && this.requiresNotNullAnnotation() && lower > 0»@«getEnterpriseJavaPackage()».validation.constraints.NotNull«ENDIF»
 			«visibility» «IF isReadOnly()»final «ENDIF» «IF isTransient()»transient «ENDIF» «type.fqn()» «asInstanceVar()»;
 		«ENDIF»
 		
@@ -609,22 +609,22 @@
 «DEFINE RESTParamAnnotation FOR Property»
   «IF generateJAXRSAnnotations() == true -»
   «IF this.isStereotypeApplied("PathParam") -»
-  @javax.ws.rs.PathParam("«EXPAND java::OpenAPI::RESTParamName FOR this»")
+  @«getEnterpriseJavaPackage()».ws.rs.PathParam("«EXPAND java::OpenAPI::RESTParamName FOR this»")
   «ENDIF-»
   «IF this.isStereotypeApplied("HeaderParam") -»
-  @javax.ws.rs.HeaderParam("«EXPAND java::OpenAPI::RESTParamName FOR this»")
+  @«getEnterpriseJavaPackage()».ws.rs.HeaderParam("«EXPAND java::OpenAPI::RESTParamName FOR this»")
   «ENDIF-»
   «IF this.isStereotypeApplied("QueryParam") -»
-  @javax.ws.rs.QueryParam("«EXPAND java::OpenAPI::RESTParamName FOR this»")
+  @«getEnterpriseJavaPackage()».ws.rs.QueryParam("«EXPAND java::OpenAPI::RESTParamName FOR this»")
   «ENDIF-»
   «IF this.isStereotypeApplied("CookieParam") -»
-  @javax.ws.rs.CookieParam("«EXPAND java::OpenAPI::RESTParamName FOR this»")
+  @«getEnterpriseJavaPackage()».ws.rs.CookieParam("«EXPAND java::OpenAPI::RESTParamName FOR this»")
   «ENDIF-»
   «IF this.isStereotypeApplied("BeanParam") -»
-  @javax.ws.rs.BeanParam 
+  @«getEnterpriseJavaPackage()».ws.rs.BeanParam 
   «ENDIF-»
   «IF this.type.isStereotypeApplied("BeanParam") -»
-  @javax.ws.rs.BeanParam
+  @«getEnterpriseJavaPackage()».ws.rs.BeanParam
   «ENDIF-»
   «ENDIF-»
 «ENDDEFINE»

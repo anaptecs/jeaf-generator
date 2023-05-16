@@ -143,7 +143,7 @@
 
 «DEFINE GenerateGeneratedAnnotation FOR uml::NamedElement»
   «IF addGeneratedAnnotation()»
-     @javax.annotation.Generated(«getGeneratedAnnotation()»)
+     @«getEnterpriseJavaPackage()».annotation.Generated(«getGeneratedAnnotation()»)
   «ENDIF»
 «ENDDEFINE»
 

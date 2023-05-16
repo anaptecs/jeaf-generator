@@ -47,6 +47,7 @@ import org.twdata.maven.mojoexecutor.MojoExecutor;
 import org.twdata.maven.mojoexecutor.MojoExecutor.Element;
 import org.twdata.maven.mojoexecutor.MojoExecutor.ExecutionEnvironment;
 
+import com.anaptecs.jeaf.fwk.generator.util.EnterpriseJavaType;
 import com.anaptecs.jeaf.fwk.generator.util.ModelingTool;
 import com.anaptecs.jeaf.fwk.generator.util.RESTLibrary;
 import com.anaptecs.jeaf.fwk.generator.util.ReportFormat;
@@ -90,6 +91,15 @@ public class GeneratorMojo extends AbstractMojo {
    */
   @Parameter(required = false, defaultValue = "MAGIC_DRAW")
   private ModelingTool umlModelingTool;
+
+  /**
+   * Parameter defines the type of Enterprise Java that should be used for code generation. By default JavaEE (aka JEE)
+   * is used.
+   * 
+   * Supported values are: JAVA_EE, JAKARTA_EE
+   */
+  @Parameter(required = false, defaultValue = "JAVA_EE")
+  private EnterpriseJavaType enterpriseJavaType;
 
   /**
    * Directory which contains all XMI files. The files have to be exported from MagicDraw UML using its Eclipse UML2
@@ -1010,6 +1020,7 @@ public class GeneratorMojo extends AbstractMojo {
       lLog.info(" ");
       lLog.info("UML Modeling Tool:                                " + umlModelingTool.getDisplayName());
       lLog.info("Target Runtime:                                   " + targetRuntime.name());
+      lLog.info("Enterprise Java Type:                             " + enterpriseJavaType.name());
     }
     if (restLibrary != null) {
       lLog.info("REST Library:                                     " + restLibrary.name());
@@ -1359,6 +1370,7 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty("switch.gen.json.serializers", generateJSONSerializers.toString());
       System.setProperty("switch.gen.enable.name.constants", generateConstantsForAttributeNames.toString());
       System.setProperty("switch.gen.target.runtime", targetRuntime.name());
+      System.setProperty("switch.gen.enterprise.java", enterpriseJavaType.name());
       if (restLibrary != null) {
         System.setProperty("switch.gen.target.rest.library", restLibrary.name());
       }

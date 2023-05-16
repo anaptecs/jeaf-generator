@@ -48,6 +48,7 @@
 		<!-- Please be aware that Spring Boot and Spring core versions must match together -->
 		<spring.boot.version>2.7.10</spring.boot.version>
 		<spring.core.version>5.3.25</spring.core.version>
+		<jakartaee-api.version>9.1.0</jakartaee-api.version>
 		
 		<log4j-to-slf4j.version>2.20.0</log4j-to-slf4j.version>
 		<equalsverifier.version>3.14.1</equalsverifier.version>
@@ -66,6 +67,7 @@
 		<module>jeaf-generator-test-message-constants</module>
 		<module>jeaf-generator-test-model</module>
 		<module>jeaf-generator-test-service-objects</module>
+		<module>jeaf-generator-test-service-objects-jakarta</module>
 		<module>jeaf-generator-test-pojos</module>
 		<module>jeaf-generator-test-services-api</module>
 		<module>jeaf-generator-test-rest</module>
@@ -90,6 +92,7 @@
 		-->
 		
 		<module>jeaf-generator-test-jeaf-rest-proxy</module>
+		<module>jeaf-generator-test-spring-boot3</module>
 		<module>jeaf-generator-test-spring</module>
 		<module>jeaf-generator-test-spring-jersey</module>
 		<module>jeaf-generator-test-spring-rest-proxy</module>

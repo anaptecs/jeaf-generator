@@ -155,7 +155,7 @@ public static «IF isAbstract == true» abstract «ENDIF»class Builder«this.ge
 	 * @return «this.name» Created and validated object. The method never returns null.
 	 * @throws ConstraintViolationException in case that one or more validations for the created object failed.
 	 */
-	public «this.name»«this.getTemplateParams()» buildValidated( ) throws javax.validation.ConstraintViolationException {
+	public «this.name»«this.getTemplateParams()» buildValidated( ) throws «getEnterpriseJavaPackage()».validation.ConstraintViolationException {
       «this.name»«this.getTemplateParams()» lObject = this.build();
       com.anaptecs.jeaf.tools.api.validation.ValidationTools.getValidationTools().enforceObjectValidation(lObject);
       return lObject;
@@ -290,7 +290,7 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
 	 * @return «this.name» Created and validated object. The method never returns null.
 	 * @throws ConstraintViolationException in case that one or more validations for the created object failed.
 	 */
-	public «this.name»«this.getTemplateParams()» buildValidated( ) throws javax.validation.ConstraintViolationException {
+	public «this.name»«this.getTemplateParams()» buildValidated( ) throws «getEnterpriseJavaPackage()».validation.ConstraintViolationException {
       «this.name»«this.getTemplateParams()» lPOJO = this.build();
       com.anaptecs.jeaf.tools.api.validation.ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
       return lPOJO;
@@ -336,11 +336,11 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
         «EXPAND java::Helper::GenerateDeprecationAnnotation-»
         «EXPAND Validation::ValidationAnnotation»
         «IF isMultivalued()»
-            «IF generateValidationAnnotationsForAssociationsFromMultiplicity() && isStatic == false && isTransient() == false && this.hasValidationStereotype() == false && lower > 0»@javax.validation.constraints.Size(min = «lower»)«ENDIF»
-            «IF generateValidationAnnotationsForAssociationsFromMultiplicity() && isStatic == false && isTransient() == false && this.requiresNotNullAnnotation() && lower > 0»@javax.validation.constraints.NotNull«ENDIF»
+            «IF generateValidationAnnotationsForAssociationsFromMultiplicity() && isStatic == false && isTransient() == false && this.hasValidationStereotype() == false && lower > 0»@«getEnterpriseJavaPackage()».validation.constraints.Size(min = «lower»)«ENDIF»
+            «IF generateValidationAnnotationsForAssociationsFromMultiplicity() && isStatic == false && isTransient() == false && this.requiresNotNullAnnotation() && lower > 0»@«getEnterpriseJavaPackage()».validation.constraints.NotNull«ENDIF»
             «visibility» «IF isTransient()»transient «ENDIF» «this.getCollectionType()»<«this.getMultivaluedSoftLinkType()»> «asInstanceVar()»;
         «ELSE»
-            «IF generateValidationAnnotationsForAssociationsFromMultiplicity() && isStatic == false && isTransient() == false && this.requiresNotNullAnnotation() && lower > 0»@javax.validation.constraints.NotNull«ENDIF»
+            «IF generateValidationAnnotationsForAssociationsFromMultiplicity() && isStatic == false && isTransient() == false && this.requiresNotNullAnnotation() && lower > 0»@«getEnterpriseJavaPackage()».validation.constraints.NotNull«ENDIF»
             «visibility» «IF isTransient()»transient «ENDIF» «this.getSoftLinkType()» «asInstanceVar()»;
         «ENDIF»
 «ENDDEFINE»
