@@ -5,10 +5,14 @@
  */
 package com.anaptecs.jeaf.junit.rest;
 
+import java.util.List;
+
 import com.anaptecs.jeaf.core.api.Service;
 import com.anaptecs.jeaf.junit.core.TestServiceObject;
 import com.anaptecs.jeaf.junit.openapi.base.BeanParameter;
 import com.anaptecs.jeaf.junit.openapi.base.Context;
+import com.anaptecs.jeaf.junit.rest.generics.BusinessServiceObject;
+import com.anaptecs.jeaf.junit.rest.generics.GenericSingleValuedReponse;
 
 public interface RESTTestService extends Service {
   /**
@@ -95,4 +99,9 @@ public interface RESTTestService extends Service {
    */
   @Deprecated
   String deprecatedAsync( int pParam1 );
+
+  /**
+   * @return {@link List<GenericSingleValuedReponse<BusinessServiceObject>>}
+   */
+  List<GenericSingleValuedReponse<BusinessServiceObject>> provideGenericResponse( );
 }

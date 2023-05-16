@@ -3,6 +3,8 @@
 «EXTENSION java::GeneratorCommons»
 «EXTENSION entity::ModelProperties»
 «EXTENSION functions::Class»
+«EXTENSION functions::NamedElement»
+«EXTENSION functions::TemplateParameter»
 «EXTENSION org::openarchitectureware::util::stdlib::io»
 
 «IMPORT JMM»
@@ -28,7 +30,7 @@
 	«EXPAND java::Validation::ValidationAnnotation»
 	«EXPAND java::Helper::GenerateDeprecationAnnotation -»
 	«EXPAND java::Jackson::JacksonClassAnnotations -»
-	public «IF isAbstract»abstract«ENDIF» class «name» «EXPAND SuperClassDeclaration» «EXPAND InterfaceDeclarations» {
+	public «IF isAbstract»abstract«ENDIF» class «name»«this.getTemplateParams()» «EXPAND SuperClassDeclaration» «EXPAND InterfaceDeclarations» {
 		/**
 		 * Default serial version uid.
 		 */
@@ -67,7 +69,7 @@
 		 * 
 		 * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
 		 */
-		protected «name»(Builder pBuilder) {
+		protected «name»(Builder«this.getTemplateParams()» pBuilder) {
 			«IF superClass.isEmpty == false»        
 			// Call constructor of super class.
 			super(pBuilder);
@@ -142,7 +144,7 @@
 	  «EXPAND java::Helper::GenerateSuppressWarningsAnnotation»
       «EXPAND java::Validation::ValidationAnnotation -»      
       «EXPAND java::Helper::GenerateDeprecationAnnotation-»
-      public abstract class «name»Base «EXPAND SuperClassDeclaration» «EXPAND InterfaceDeclarations» {
+      public abstract class «name»Base«this.getTemplateParams()» «EXPAND SuperClassDeclaration» «EXPAND InterfaceDeclarations» {
         /**
          * Default serial version uid.
          */
@@ -181,7 +183,7 @@
 		 * 
 		 * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
 		 */
-		protected «name»Base(BuilderBase pBuilder) {
+		protected «name»Base(BuilderBase«this.getTemplateParams()» pBuilder) {
 		«IF superClass.isEmpty == false»        
 		// Call constructor of super class.
 		super(pBuilder);
@@ -253,7 +255,7 @@
 	  «EXPAND java::Validation::ValidationAnnotation»
 	  «EXPAND java::Helper::GenerateDeprecationAnnotation -»
 	  «EXPAND java::Jackson::JacksonClassAnnotations -»
-	  public «IF isAbstract»abstract«ENDIF» class «name» extends «name»Base {
+	  public «IF isAbstract»abstract«ENDIF» class «name»«this.getTemplateParams()» extends «name»Base«this.getTemplateParams()» {
 	    /**
 	     * Default serial version uid.
 	     */
@@ -268,7 +270,7 @@
 		/**
 		 * Initialize object. Nothing special to do.
 		 */
-		protected «name»( «name».BuilderBase pBuilder ) {
+		protected «name»( «name».BuilderBase«this.getTemplateParams()» pBuilder ) {
 		  super(pBuilder);
 		}
 		  

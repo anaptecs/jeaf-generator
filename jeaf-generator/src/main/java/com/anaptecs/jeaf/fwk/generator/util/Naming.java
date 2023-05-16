@@ -20,6 +20,8 @@ import org.eclipse.uml2.uml.Parameter;
 import org.eclipse.uml2.uml.Port;
 import org.eclipse.uml2.uml.PrimitiveType;
 import org.eclipse.uml2.uml.Property;
+import org.eclipse.uml2.uml.TemplateBinding;
+import org.eclipse.uml2.uml.TemplateParameterSubstitution;
 import org.eclipse.uml2.uml.Type;
 
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -46,12 +48,26 @@ public class Naming {
       }
       else if (pNamedElement instanceof Class || pNamedElement instanceof Interface
           || pNamedElement instanceof Enumeration) {
-        String lPackageName = Naming.getFullyQualifiedName((NamedElement) pNamedElement.getOwner());
-        if (lPackageName != null && lPackageName.length() > 0) {
-          lQualifiedName = lPackageName + '.' + pNamedElement.getName();
+
+        // Generate FQN for class with template binding
+        if (pNamedElement instanceof Class && ((Class) pNamedElement).getTemplateBindings().isEmpty() == false) {
+          lQualifiedName = Naming.getTemplateBindingFQN((Class) pNamedElement);
         }
         else {
-          lQualifiedName = pNamedElement.getName();
+          Element lOwner = pNamedElement.getOwner();
+          if (lOwner instanceof NamedElement) {
+            String lPackageName = Naming.getFullyQualifiedName((NamedElement) lOwner);
+            if (lPackageName != null && lPackageName.length() > 0) {
+              lQualifiedName = lPackageName + '.' + pNamedElement.getName();
+            }
+            else {
+              lQualifiedName = pNamedElement.getName();
+            }
+          }
+          // In case of template types no package is present.
+          else {
+            lQualifiedName = pNamedElement.getName();
+          }
         }
       }
       // Get type of port.
@@ -91,6 +107,26 @@ public class Naming {
     }
 
     return lQualifiedName;
+  }
+
+  public static String getTemplateBindingFQN( Class pTemplateClass ) {
+    StringBuilder lTemplateParameter = new StringBuilder();
+    Class lClass = (Class) pTemplateClass;
+
+    TemplateBinding lTemplateBinding = lClass.getTemplateBindings().get(0);
+    Class lGenericClass = (Class) lTemplateBinding.getTargets().get(0).getOwner();
+
+    lTemplateParameter.append(Naming.getFullyQualifiedName(lGenericClass.getPackage()));
+    lTemplateParameter.append(".");
+    lTemplateParameter.append(lGenericClass.getName());
+
+    TemplateParameterSubstitution lParameterSubstitution = lTemplateBinding.getParameterSubstitutions().get(0);
+    Class lTypeParameterClass = (Class) lParameterSubstitution.getActuals().get(0);
+    lTemplateParameter.append("<");
+    lTemplateParameter.append(Naming.getFullyQualifiedName(lTypeParameterClass));
+    lTemplateParameter.append(">");
+
+    return lTemplateParameter.toString();
   }
 
   public static String getFullyQualifiedNameForXML( org.eclipse.uml2.uml.NamedElement pNamedElement ) {

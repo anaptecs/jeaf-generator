@@ -133,8 +133,8 @@ cached String getPatternForParam(uml::Parameter parameter):
 cached boolean hasPatternForParam(uml::Parameter parameter):
   parameter.isStereotypeApplied("OpenAPIPattern");
     
-cached boolean isBasicOpenAPIType(uml::Type type):
-    JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.isBasicOpenAPIType(org.eclipse.uml2.uml.Type);
+cached boolean isBasicOpenAPIType(uml::Element type):
+    JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.isBasicOpenAPIType(org.eclipse.uml2.uml.Element);
     
 cached boolean isOpenAPIDataType(uml::Type type):
    isStereotypeApplied(type, "OpenAPIDataType");

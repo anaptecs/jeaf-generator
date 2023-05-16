@@ -31,6 +31,8 @@ import com.anaptecs.jeaf.junit.core.TestServiceObject;
 import com.anaptecs.jeaf.junit.openapi.base.BeanParameter;
 import com.anaptecs.jeaf.junit.openapi.base.Context;
 import com.anaptecs.jeaf.junit.rest.RESTTestService;
+import com.anaptecs.jeaf.junit.rest.generics.BusinessServiceObject;
+import com.anaptecs.jeaf.junit.rest.generics.GenericSingleValuedReponse;
 import com.anaptecs.jeaf.workload.api.Workload;
 import com.anaptecs.jeaf.workload.api.WorkloadManager;
 import com.anaptecs.jeaf.workload.api.rest.RESTRequestType;
@@ -252,6 +254,18 @@ public class RESTTestServiceResource {
                 }
             }
         });
+    }
+
+    /**
+     * {@link RESTTestService#provideGenericResponse()}
+     */
+    @Path("generic-response")
+    @GET
+    public Response provideGenericResponse( ) {
+        // Delegate request to service.
+        RESTTestService lService = this.getRESTTestService();
+        List<GenericSingleValuedReponse<BusinessServiceObject>> lResult = lService.provideGenericResponse();
+        return Response.status(Response.Status.OK).entity(lResult).build();
     }
 
     /**

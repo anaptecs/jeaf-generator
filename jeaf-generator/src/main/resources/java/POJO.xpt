@@ -4,6 +4,8 @@
 «EXTENSION java::OpenAPIFunctions»
 «EXTENSION entity::ModelProperties»
 «EXTENSION functions::Class»
+«EXTENSION functions::NamedElement»
+«EXTENSION functions::TemplateParameter»
 
 «IMPORT JMM»
 
@@ -28,7 +30,7 @@
 				«EXPAND java::Validation::ValidationAnnotation»
 				«EXPAND java::Helper::GenerateDeprecationAnnotation-»
 				«EXPAND java::Jackson::JacksonClassAnnotations -»				
-				public «IF isAbstract»abstract«ENDIF» class «name» «EXPAND SuperClassDeclaration» «EXPAND InterfaceDeclarations» {
+				public «IF isAbstract»abstract«ENDIF» class «name»«this.getTemplateParams()» «EXPAND SuperClassDeclaration» «EXPAND InterfaceDeclarations» {
 					«IF makePOJOsSerializable()»
                     /**
                      * Default serial version UID.
@@ -68,7 +70,7 @@
 					 * 
 					 * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
 					 */
-					protected «name»(Builder pBuilder) {
+					protected «name»(Builder«this.getTemplateParams()» pBuilder) {
 						«IF superClass.isEmpty == false»        
 						// Call constructor of super class.
 						super(pBuilder);
@@ -97,7 +99,7 @@
 					«REM»Generate builder«ENDREM»
 					«EXPAND java::Builder::StaticBuilderMethods FOR this»
 					«EXPAND java::Helper::GenerateValueOfForOpenAPIDataType FOR this»
-					«EXPAND java::Builder::GenerateBuilder (this.getObjectIDClassName())»
+					«EXPAND java::Builder::GenerateBuilder(this.getObjectIDClassName())»
 					
 					«IF this.isCompositeDataType()»
 						/**
@@ -149,7 +151,7 @@
 		        «EXPAND java::Validation::ValidationAnnotation -»      
 			    «EXPAND java::Helper::GenerateDeprecationAnnotation-»
 			    «EXPAND java::Jackson::JacksonClassAnnotations -»
-				public abstract class «name»Base «EXPAND SuperClassDeclaration» «EXPAND InterfaceDeclarations» {
+				public abstract class «name»Base«this.getTemplateParams()» «EXPAND SuperClassDeclaration» «EXPAND InterfaceDeclarations» {
 					«IF makePOJOsSerializable()»
                     /**
                      * Default serial version UID.
@@ -190,7 +192,7 @@
 					 * 
 					 * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
 					 */
-					protected «name»Base(BuilderBase pBuilder) {
+					protected «name»Base(BuilderBase«this.getTemplateParams()» pBuilder) {
 					«IF superClass.isEmpty == false»        
 					// Call constructor of super class.
 					super(pBuilder);
@@ -264,7 +266,7 @@
 				«EXPAND functions::Javadoc::JavadocForType»
 				«EXPAND java::Validation::ValidationAnnotation»
 				«EXPAND java::Helper::GenerateDeprecationAnnotation -»
-				public «IF isAbstract»abstract«ENDIF» class «name» extends «name»Base {
+				public «IF isAbstract»abstract«ENDIF» class «name»«this.getTemplateParams()» extends «name»Base«this.getTemplateParams()» {
 					«IF makePOJOsSerializable()»
                     /**
                      * Default serial version UID.
@@ -281,7 +283,7 @@
 					/**
 					 * Initialize object. Nothing special to do.
 					 */
-					protected «name»( «name».BuilderBase pBuilder ) {
+					protected «name»( «name».BuilderBase«this.getTemplateParams()» pBuilder ) {
 					  super(pBuilder);
 					}
 					  

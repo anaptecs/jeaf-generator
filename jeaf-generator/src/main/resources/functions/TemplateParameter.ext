@@ -1,0 +1,17 @@
+extension functions::TypeChecks;
+extension functions::NamedElement;
+extension functions::ClassifierTemplateParameter;
+
+cached boolean isTemplateParameter(uml::Element element):
+    element.isInstanceOf("org.eclipse.uml2.uml.TemplateParameter");
+    
+
+cached String getTemplateParameterName(uml::TemplateParameter templateParameter):
+    templateParameter.ownedParameteredElement.asNamedElement().name;
+    
+cached boolean hasTemplateParameterBaseType(uml::TemplateParameter templateParameter):
+    templateParameter.asClassifierTemplateParameter().hasTemplateParameterBaseType();
+    
+cached String getTemplateParameterBaseType(uml::TemplateParameter templateParameter):
+    templateParameter.asClassifierTemplateParameter().getTemplateParameterBaseType();
+    

@@ -87,10 +87,11 @@
 					<!-- Configure behavior concerning existing files in src-gen and res-gen directory. It is strongly recommended to clean directories before generating new files. -->
 					<cleanSourceGen>true</cleanSourceGen>
 					<cleanResourceGen>true</cleanResourceGen>
-
+					
 					<!-- Define whitelist of package in UML model generator should take care when generating code. -->
 					<packages>
 						<package>com.anaptecs.jeaf.junit.pojo</package>
+						<package>com.anaptecs.jeaf.junit.generics</package>
 						<package>com.anaptecs.jeaf.accounting</package>
 					</packages>
 

@@ -1,0 +1,22 @@
+extension functions::TypeChecks;
+extension functions::NamedElement;
+extension java::Naming;
+
+
+cached boolean isClassifierTemplateParameter(uml::Element element):
+    element.isInstanceOf("org.eclipse.uml2.uml.ClassifierTemplateParameter");
+    
+
+cached uml::ClassifierTemplateParameter asClassifierTemplateParameter(uml::Element element):
+    (uml::ClassifierTemplateParameter) element;
+    
+cached boolean hasTemplateParameterBaseType(uml::ClassifierTemplateParameter parameter):
+    parameter.constrainingClassifier != null;
+
+cached String getTemplateParameterBaseType(uml::ClassifierTemplateParameter parameter):
+    if parameter.constrainingClassifier != null
+    then parameter.constrainingClassifier.package.fqn() + "." + parameter.constrainingClassifier.name
+    else null;
+    
+    
+    

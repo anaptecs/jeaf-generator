@@ -211,28 +211,33 @@ public class ClassUtil {
     Type lType = pTypedElement.getType();
     String lFQN;
     if (lType != null) {
-      String lTypePackage = getPackageName(lType);
-
-      // Generate default type name.
-      String lTypeName = pTypedElement.getType().getName();
-      if (lTypePackage != null && lTypePackage.length() > 0) {
-        lFQN = lTypePackage + "." + lTypeName;
+      if (lType instanceof Class && ((Class) lType).getTemplateBindings().isEmpty() == false) {
+        lFQN = Naming.getTemplateBindingFQN((Class) lType);
       }
       else {
-        lFQN = lTypeName;
-      }
+        String lTypePackage = getPackageName(lType);
 
-      // Special handling for primitive types
-      if (ClassUtil.isPrimitive(pTypedElement.getType()) == true) {
-        lFQN = lFQN.toLowerCase();
-      }
-      // Handle return type void.
-      else if ("MagicDraw Profile.datatypes.void".equals(lFQN)) {
-        lFQN = "void";
-      }
-      // Default type name is already created.
-      else if ("java.lang.Class".equals(lFQN) || lFQN.equals("Class")) {
-        lFQN = "Class<?>";
+        // Generate default type name.
+        String lTypeName = pTypedElement.getType().getName();
+        if (lTypePackage != null && lTypePackage.length() > 0) {
+          lFQN = lTypePackage + "." + lTypeName;
+        }
+        else {
+          lFQN = lTypeName;
+        }
+
+        // Special handling for primitive types
+        if (ClassUtil.isPrimitive(pTypedElement.getType()) == true) {
+          lFQN = lFQN.toLowerCase();
+        }
+        // Handle return type void.
+        else if ("MagicDraw Profile.datatypes.void".equals(lFQN)) {
+          lFQN = "void";
+        }
+        // Default type name is already created.
+        else if ("java.lang.Class".equals(lFQN) || lFQN.equals("Class")) {
+          lFQN = "Class<?>";
+        }
       }
 
       // Find out if passed element is modeled as association or not.
@@ -284,7 +289,8 @@ public class ClassUtil {
           lArrayRequired = false;
         }
       }
-      // In case of all other type of model elements we will work with collections only depending on their multiplicity.
+      // In case of all other type of model elements we will work with collections only depending on their
+      // multiplicity.
       else {
         lCollectionRequired = lMultiplicityElement.isMultivalued();
         lArrayRequired = false;
@@ -296,6 +302,7 @@ public class ClassUtil {
       else if (lArrayRequired) {
         lFQN = lFQN + "[]";
       }
+
     }
     // Property has no type set
     else {

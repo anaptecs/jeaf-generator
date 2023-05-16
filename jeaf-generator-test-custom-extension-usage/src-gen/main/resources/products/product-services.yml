@@ -2,7 +2,7 @@ openapi: 3.0.3
 
 info:
   title: Product Services
-  version: 1.8.2-SNAPSHOT
+  version: 1.8.3-SNAPSHOT
   description: >-
     This component represents the OpenAPI interface of the accounting service.
     
@@ -1590,6 +1590,18 @@ components:
 
 
   schemas:
+    # com.anaptecs.jeaf.junit.rest.generics.BusinessServiceObject
+    BusinessServiceObject:
+      type: object
+      additionalProperties: false
+    # com.anaptecs.jeaf.junit.rest.generics.Message
+    Message:
+      type: object
+      additionalProperties: false
+    # com.anaptecs.jeaf.junit.rest.generics.GenericSingleValuedReponse<com.anaptecs.jeaf.junit.rest.generics.BusinessServiceObject>
+    MyGenericRESTResponse:
+      type: object
+      additionalProperties: false
     # com.anaptecs.jeaf.junit.openapi.service1.Sale
     Sale:
       type: object

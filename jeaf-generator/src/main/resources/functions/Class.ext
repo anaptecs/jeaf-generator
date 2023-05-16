@@ -16,3 +16,6 @@ cached List[uml::Property] getDerivedProperties(uml::Class class):
     
 cached boolean hasBidirectionalAssociation(uml::Class class):
     class.ownedAttribute.select(e|e.isPropertySuppressed() == false && e.belongsToBidirectionalAssociation()).isEmpty == false;
+    
+cached boolean hasTemplateParameter(uml::Class class):
+    class.ownedTemplateSignature.ownedParameter.isEmpty == false;

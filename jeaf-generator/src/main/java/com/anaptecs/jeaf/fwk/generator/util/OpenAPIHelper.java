@@ -422,8 +422,15 @@ public class OpenAPIHelper {
     return lTypeName;
   }
 
-  public static boolean isBasicOpenAPIType( org.eclipse.uml2.uml.Type pType ) {
-    return basicTypes.containsKey(Naming.getFullyQualifiedName(pType));
+  public static boolean isBasicOpenAPIType( org.eclipse.uml2.uml.Element pType ) {
+    boolean lBasicType;
+    if (pType instanceof NamedElement) {
+      lBasicType = basicTypes.containsKey(Naming.getFullyQualifiedName((NamedElement) pType));
+    }
+    else {
+      lBasicType = false;
+    }
+    return lBasicType;
   }
 
   public static String toOpenAPIContentType( String pContentTypeID ) {

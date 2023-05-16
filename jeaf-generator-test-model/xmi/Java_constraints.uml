@@ -1,78 +1,78 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:MagicDrawProfile="http://UML_Standard_Profile/MagicDraw_Profile/_be00301_1073394351331_445580_2" xmlns:ValidationProfile="http://UML_Standard_Profile/Validation_Profile/_11_5_f720368_1159529670215_231387_1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/2.0.0/UML" xsi:schemaLocation="http://UML_Standard_Profile/MagicDraw_Profile/_be00301_1073394351331_445580_2 UML_Standard_Profile.MagicDraw_Profile.profile.uml#_23my-trJEe2Sd4CV7bBEtw http://UML_Standard_Profile/Validation_Profile/_11_5_f720368_1159529670215_231387_1 UML_Standard_Profile.Validation_Profile.profile.uml#_23p2DtrJEe2Sd4CV7bBEtw">
-  <uml:Model xmi:id="_23p4HdrJEe2Sd4CV7bBEtw" name="Model" viewpoint="">
-    <packageImport xmi:id="_23p4HtrJEe2Sd4CV7bBEtw">
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:MagicDrawProfile="http://UML_Standard_Profile/MagicDraw_Profile/_be00301_1073394351331_445580_2" xmlns:ValidationProfile="http://UML_Standard_Profile/Validation_Profile/_11_5_f720368_1159529670215_231387_1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/2.0.0/UML" xsi:schemaLocation="http://UML_Standard_Profile/MagicDraw_Profile/_be00301_1073394351331_445580_2 UML_Standard_Profile.MagicDraw_Profile.profile.uml#_EyF3gPMtEe2QUcEbfIgkAg http://UML_Standard_Profile/Validation_Profile/_11_5_f720368_1159529670215_231387_1 UML_Standard_Profile.Validation_Profile.profile.uml#_Ex9OuvMtEe2QUcEbfIgkAg">
+  <uml:Model xmi:id="_EyGehfMtEe2QUcEbfIgkAg" name="Model" viewpoint="">
+    <packageImport xmi:id="_EyGehvMtEe2QUcEbfIgkAg">
       <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
     </packageImport>
-    <packageImport xmi:id="_23p4H9rJEe2Sd4CV7bBEtw">
+    <packageImport xmi:id="_EyGeh_MtEe2QUcEbfIgkAg">
       <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#_0"/>
     </packageImport>
-    <packagedElement xmi:type="uml:Package" xmi:id="_23p4INrJEe2Sd4CV7bBEtw" name="Java constraints">
-      <ownedRule xmi:id="_23p4IdrJEe2Sd4CV7bBEtw" name="Property Type">
-        <ownedComment xmi:id="_23p4ItrJEe2Sd4CV7bBEtw" body="Types should be set on property" annotatedElement="_23p4IdrJEe2Sd4CV7bBEtw"/>
+    <packagedElement xmi:type="uml:Package" xmi:id="_EyGeiPMtEe2QUcEbfIgkAg" name="Java constraints">
+      <ownedRule xmi:id="_EyGeifMtEe2QUcEbfIgkAg" name="Property Type">
+        <ownedComment xmi:id="_EyGeivMtEe2QUcEbfIgkAg" body="Types should be set on property" annotatedElement="_EyGeifMtEe2QUcEbfIgkAg"/>
         <constrainedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
-        <specification xmi:type="uml:OpaqueExpression" xmi:id="_23p4I9rJEe2Sd4CV7bBEtw" name="">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_EyGei_MtEe2QUcEbfIgkAg" name="">
           <language>OCL2.0</language>
           <body>not type.oclIsUndefined()  </body>
         </specification>
       </ownedRule>
-      <ownedRule xmi:id="_23p4JNrJEe2Sd4CV7bBEtw" name="Parameter Type">
-        <ownedComment xmi:id="_23p4JdrJEe2Sd4CV7bBEtw" body="Types should be set on parameters" annotatedElement="_23p4JNrJEe2Sd4CV7bBEtw"/>
+      <ownedRule xmi:id="_EyGejPMtEe2QUcEbfIgkAg" name="Parameter Type">
+        <ownedComment xmi:id="_EyGejfMtEe2QUcEbfIgkAg" body="Types should be set on parameters" annotatedElement="_EyGejPMtEe2QUcEbfIgkAg"/>
         <constrainedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Parameter"/>
-        <specification xmi:type="uml:OpaqueExpression" xmi:id="_23p4JtrJEe2Sd4CV7bBEtw" name="">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_EyGejvMtEe2QUcEbfIgkAg" name="">
           <language>OCL2.0</language>
           <body>(direction&lt;>ParameterDirectionKind::return) implies (not type.oclIsUndefined())</body>
         </specification>
       </ownedRule>
-      <ownedRule xmi:id="_23p4J9rJEe2Sd4CV7bBEtw" name="Multiple Inheritance">
-        <ownedComment xmi:id="_23p4KNrJEe2Sd4CV7bBEtw" body="There should be no multiple inheritance in Java." annotatedElement="_23p4J9rJEe2Sd4CV7bBEtw"/>
+      <ownedRule xmi:id="_EyGej_MtEe2QUcEbfIgkAg" name="Multiple Inheritance">
+        <ownedComment xmi:id="_EyGekPMtEe2QUcEbfIgkAg" body="There should be no multiple inheritance in Java." annotatedElement="_EyGej_MtEe2QUcEbfIgkAg"/>
         <constrainedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
-        <specification xmi:type="uml:OpaqueExpression" xmi:id="_23p4KdrJEe2Sd4CV7bBEtw" name="">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_EyGekfMtEe2QUcEbfIgkAg" name="">
           <language>OCL2.0</language>
           <body>generalization->collect(g | g.general)->asSet()->size() &lt;= 1</body>
         </specification>
       </ownedRule>
-      <ownedRule xmi:id="_23p4KtrJEe2Sd4CV7bBEtw" name="Deflault Final Attribute Value">
-        <ownedComment xmi:id="_23p4K9rJEe2Sd4CV7bBEtw" body="Final attribute (isReadOnly) must have default value." annotatedElement="_23p4KtrJEe2Sd4CV7bBEtw"/>
+      <ownedRule xmi:id="_EyGekvMtEe2QUcEbfIgkAg" name="Deflault Final Attribute Value">
+        <ownedComment xmi:id="_EyGek_MtEe2QUcEbfIgkAg" body="Final attribute (isReadOnly) must have default value." annotatedElement="_EyGekvMtEe2QUcEbfIgkAg"/>
         <constrainedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
-        <specification xmi:type="uml:OpaqueExpression" xmi:id="_23p4LNrJEe2Sd4CV7bBEtw" name="">
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_EyGelPMtEe2QUcEbfIgkAg" name="">
           <language>OCL2.0</language>
           <body>isReadOnly implies not defaultValue.oclIsUndefined()</body>
         </specification>
       </ownedRule>
-      <ownedRule xmi:id="_23p4LdrJEe2Sd4CV7bBEtw" name="Abstract Constructor">
-        <ownedComment xmi:id="_23p4LtrJEe2Sd4CV7bBEtw" body="Constructor should not be abstract." annotatedElement="_23p4LdrJEe2Sd4CV7bBEtw"/>
-        <constrainedElement xmi:type="uml:Stereotype" href="UML_Standard_Profile.MagicDraw_Profile.profile.uml#_23nXctrJEe2Sd4CV7bBEtw"/>
-        <specification xmi:type="uml:OpaqueExpression" xmi:id="_23p4L9rJEe2Sd4CV7bBEtw" name="">
+      <ownedRule xmi:id="_EyGelfMtEe2QUcEbfIgkAg" name="Abstract Constructor">
+        <ownedComment xmi:id="_EyGelvMtEe2QUcEbfIgkAg" body="Constructor should not be abstract." annotatedElement="_EyGelfMtEe2QUcEbfIgkAg"/>
+        <constrainedElement xmi:type="uml:Stereotype" href="UML_Standard_Profile.MagicDraw_Profile.profile.uml#_EyGZjvMtEe2QUcEbfIgkAg"/>
+        <specification xmi:type="uml:OpaqueExpression" xmi:id="_EyGel_MtEe2QUcEbfIgkAg" name="">
           <language>OCL2.0</language>
           <body>not isAbstract</body>
         </specification>
       </ownedRule>
     </packagedElement>
-    <profileApplication xmi:id="_24hU_9rJEe2Sd4CV7bBEtw">
-      <eAnnotations xmi:id="_24hVANrJEe2Sd4CV7bBEtw" source="http://www.eclipse.org/uml2/2.0.0/UML">
-        <references xmi:type="ecore:EPackage" href="UML_Standard_Profile.Validation_Profile.profile.uml#_23p2DtrJEe2Sd4CV7bBEtw"/>
+    <profileApplication xmi:id="_EymHQfMtEe2QUcEbfIgkAg">
+      <eAnnotations xmi:id="_EymHQvMtEe2QUcEbfIgkAg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="UML_Standard_Profile.Validation_Profile.profile.uml#_Ex9OuvMtEe2QUcEbfIgkAg"/>
       </eAnnotations>
-      <appliedProfile href="UML_Standard_Profile.Validation_Profile.profile.uml#_23p2DNrJEe2Sd4CV7bBEtw"/>
+      <appliedProfile href="UML_Standard_Profile.Validation_Profile.profile.uml#_Ex9OuPMtEe2QUcEbfIgkAg"/>
     </profileApplication>
-    <profileApplication xmi:id="_25Gjt9rJEe2Sd4CV7bBEtw">
-      <eAnnotations xmi:id="_25GjuNrJEe2Sd4CV7bBEtw" source="http://www.eclipse.org/uml2/2.0.0/UML">
-        <references xmi:type="ecore:EPackage" href="UML_Standard_Profile.MagicDraw_Profile.profile.uml#_23my-trJEe2Sd4CV7bBEtw"/>
+    <profileApplication xmi:id="_EzrsYPMtEe2QUcEbfIgkAg">
+      <eAnnotations xmi:id="_EzrsYfMtEe2QUcEbfIgkAg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="UML_Standard_Profile.MagicDraw_Profile.profile.uml#_EyF3gPMtEe2QUcEbfIgkAg"/>
       </eAnnotations>
-      <appliedProfile href="UML_Standard_Profile.MagicDraw_Profile.profile.uml#_23my-NrJEe2Sd4CV7bBEtw"/>
+      <appliedProfile href="UML_Standard_Profile.MagicDraw_Profile.profile.uml#_EyF3fvMtEe2QUcEbfIgkAg"/>
     </profileApplication>
   </uml:Model>
-  <ValidationProfile:validationSuite xmi:id="_24hVAdrJEe2Sd4CV7bBEtw" base_Package="_23p4INrJEe2Sd4CV7bBEtw"/>
-  <ValidationProfile:validationRule xmi:id="_24h7-drJEe2Sd4CV7bBEtw" base_Constraint="_23p4IdrJEe2Sd4CV7bBEtw" abbreviation="PrpTpIsDef" errorMessage="Types should be set on property."/>
-  <ValidationProfile:validationRule xmi:id="_24h7-trJEe2Sd4CV7bBEtw" base_Constraint="_23p4LdrJEe2Sd4CV7bBEtw" abbreviation="CnstNotAbst" errorMessage="Constructor should not be abstract."/>
-  <ValidationProfile:validationRule xmi:id="_24h7-9rJEe2Sd4CV7bBEtw" base_Constraint="_23p4KtrJEe2Sd4CV7bBEtw" abbreviation="DefVlForFnl" errorMessage="Final attribute (isReadOnly) must have default value."/>
-  <ValidationProfile:validationRule xmi:id="_24h7_NrJEe2Sd4CV7bBEtw" base_Constraint="_23p4J9rJEe2Sd4CV7bBEtw" abbreviation="NoMultInh" errorMessage="There should be no multiple inheritance in Java."/>
-  <ValidationProfile:validationRule xmi:id="_24h7_drJEe2Sd4CV7bBEtw" base_Constraint="_23p4JNrJEe2Sd4CV7bBEtw" abbreviation="PrmTpIsDef" errorMessage="Types should be set on parameters."/>
-  <MagicDrawProfile:auxiliaryResource xmi:id="_25GjudrJEe2Sd4CV7bBEtw" base_Element="_23p4HdrJEe2Sd4CV7bBEtw"/>
-  <MagicDrawProfile:auxiliaryResource xmi:id="_25Sw89rJEe2Sd4CV7bBEtw" base_Element="_23p4INrJEe2Sd4CV7bBEtw"/>
-  <MagicDrawProfile:InvisibleStereotype xmi:id="_25Sw-NrJEe2Sd4CV7bBEtw" base_Element="_23p4IdrJEe2Sd4CV7bBEtw"/>
-  <MagicDrawProfile:InvisibleStereotype xmi:id="_25Sw-drJEe2Sd4CV7bBEtw" base_Element="_23p4LdrJEe2Sd4CV7bBEtw"/>
-  <MagicDrawProfile:InvisibleStereotype xmi:id="_25Sw-trJEe2Sd4CV7bBEtw" base_Element="_23p4KtrJEe2Sd4CV7bBEtw"/>
-  <MagicDrawProfile:InvisibleStereotype xmi:id="_25Sw-9rJEe2Sd4CV7bBEtw" base_Element="_23p4J9rJEe2Sd4CV7bBEtw"/>
-  <MagicDrawProfile:InvisibleStereotype xmi:id="_25Sw_NrJEe2Sd4CV7bBEtw" base_Element="_23p4JNrJEe2Sd4CV7bBEtw"/>
+  <ValidationProfile:validationSuite xmi:id="_EymHQ_MtEe2QUcEbfIgkAg" base_Package="_EyGeiPMtEe2QUcEbfIgkAg"/>
+  <ValidationProfile:validationRule xmi:id="_EymuWPMtEe2QUcEbfIgkAg" base_Constraint="_EyGeifMtEe2QUcEbfIgkAg" abbreviation="PrpTpIsDef" errorMessage="Types should be set on property."/>
+  <ValidationProfile:validationRule xmi:id="_EymuWfMtEe2QUcEbfIgkAg" base_Constraint="_EyGelfMtEe2QUcEbfIgkAg" abbreviation="CnstNotAbst" errorMessage="Constructor should not be abstract."/>
+  <ValidationProfile:validationRule xmi:id="_EymuWvMtEe2QUcEbfIgkAg" base_Constraint="_EyGekvMtEe2QUcEbfIgkAg" abbreviation="DefVlForFnl" errorMessage="Final attribute (isReadOnly) must have default value."/>
+  <ValidationProfile:validationRule xmi:id="_EymuW_MtEe2QUcEbfIgkAg" base_Constraint="_EyGej_MtEe2QUcEbfIgkAg" abbreviation="NoMultInh" errorMessage="There should be no multiple inheritance in Java."/>
+  <ValidationProfile:validationRule xmi:id="_EymuXPMtEe2QUcEbfIgkAg" base_Constraint="_EyGejPMtEe2QUcEbfIgkAg" abbreviation="PrmTpIsDef" errorMessage="Types should be set on parameters."/>
+  <MagicDrawProfile:auxiliaryResource xmi:id="_EzrsYvMtEe2QUcEbfIgkAg" base_Element="_EyGehfMtEe2QUcEbfIgkAg"/>
+  <MagicDrawProfile:auxiliaryResource xmi:id="_Ez35pPMtEe2QUcEbfIgkAg" base_Element="_EyGeiPMtEe2QUcEbfIgkAg"/>
+  <MagicDrawProfile:InvisibleStereotype xmi:id="_Ez-AQvMtEe2QUcEbfIgkAg" base_Element="_EyGeifMtEe2QUcEbfIgkAg"/>
+  <MagicDrawProfile:InvisibleStereotype xmi:id="_Ez-AQ_MtEe2QUcEbfIgkAg" base_Element="_EyGelfMtEe2QUcEbfIgkAg"/>
+  <MagicDrawProfile:InvisibleStereotype xmi:id="_Ez-ARPMtEe2QUcEbfIgkAg" base_Element="_EyGekvMtEe2QUcEbfIgkAg"/>
+  <MagicDrawProfile:InvisibleStereotype xmi:id="_Ez-ARfMtEe2QUcEbfIgkAg" base_Element="_EyGej_MtEe2QUcEbfIgkAg"/>
+  <MagicDrawProfile:InvisibleStereotype xmi:id="_Ez-ARvMtEe2QUcEbfIgkAg" base_Element="_EyGejPMtEe2QUcEbfIgkAg"/>
 </xmi:XMI>

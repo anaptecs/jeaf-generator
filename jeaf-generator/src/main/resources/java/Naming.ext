@@ -1,6 +1,8 @@
 extension java::GeneratorCommons;
 extension java::OpenAPIFunctions;
 extension functions::JEAFDeprecated;
+extension functions::Class;
+extension functions::TemplateParameter;
 
 // Function returns the name of the parameter for a java method accoring to the anaptecs code styleguide. For the 
 // element "name" the function will return "pName".
@@ -93,7 +95,37 @@ cached String getTestCaseName(uml::NamedElement element) :
 // For "normale" Typen wird einfach der Name als qualifizierter Name geliefert
 // Blob wird von OAW nicht als Klasse anerkannt, deswegen muss sie hier behandelt werden.
 cached String fqn (uml::NamedElement element) :
+    if element.isClass()
+    then element.asClass().internalFQNForClass()
+    else element.internalFQN();
+
+private cached String internalFQNForClass(uml::Class class):
+    if class.templateBinding.isEmpty
+    then class.internalFQN() + class.getTemplateParams()
+    else class.fqnForTemplateClass();
+    
+cached String getTemplateParams(uml::Class class):
+    if class.hasTemplateParameter()
+    then "<" + class.ownedTemplateSignature.ownedParameter.getTemplateParameterName().toString(", ") + ">"
+    else "";
+
+private cached String fqnForTemplateClass(uml::Class class):
+    class.getGenericTypeForTemplate() + "<" + class.getTypeParameterName() + ">";
+    
+private cached String getTypeParameterName(uml::Class class):
+    class.templateBinding.first().parameterSubstitution.first().actual.first().asClass().fqn();
+    
+private cached String getGenericTypeForTemplate(uml::Class class):
+    class.getGenericClass().package.fqn() + "." + class.getGenericClass().name; 
+    
+private cached uml::Class getGenericClass(uml::Class class):
+    class.templateBinding.first().target.first().owner.asClass();
+//    «IF hasTemplateParameter()»<«FOREACH ownedTemplateSignature.ownedParameter AS param SEPARATOR ", "»«param.getTemplateParameterName()» «IF param.hasTemplateParameterBaseType()» extends «param.getTemplateParameterBaseType()»«ENDIF»«ENDFOREACH»>«ENDIF»
+
+private cached String internalFQN(uml::NamedElement element) :
     JAVA com.anaptecs.jeaf.fwk.generator.util.Naming.getFullyQualifiedName( org.eclipse.uml2.uml.NamedElement);
+
+
 
 // For "normale" Typen wird einfach der Name als qualifizierter Name geliefert
 // Blob wird von OAW nicht als Klasse anerkannt, deswegen muss sie hier behandelt werden.
