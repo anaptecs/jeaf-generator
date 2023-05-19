@@ -14,12 +14,38 @@ package com.anaptecs.jeaf.openapi;
 
 import java.util.Objects;
 import java.util.Arrays;
+import com.anaptecs.jeaf.openapi.BusinessServiceObject;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+import io.swagger.v3.oas.annotations.media.Schema;
 /**
  * MyGenericRESTResponse
  */
 
 
 public class MyGenericRESTResponse {
+  @JsonProperty("value")
+  private BusinessServiceObject value = null;
+
+  public MyGenericRESTResponse value(BusinessServiceObject value) {
+    this.value = value;
+    return this;
+  }
+
+   /**
+   * Get value
+   * @return value
+  **/
+  @Schema(required = true, description = "")
+  public BusinessServiceObject getValue() {
+    return value;
+  }
+
+  public void setValue(BusinessServiceObject value) {
+    this.value = value;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -29,12 +55,13 @@ public class MyGenericRESTResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    return true;
+    MyGenericRESTResponse myGenericRESTResponse = (MyGenericRESTResponse) o;
+    return Objects.equals(this.value, myGenericRESTResponse.value);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash();
+    return Objects.hash(value);
   }
 
 
@@ -43,6 +70,7 @@ public class MyGenericRESTResponse {
     StringBuilder sb = new StringBuilder();
     sb.append("class MyGenericRESTResponse {\n");
     
+    sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("}");
     return sb.toString();
   }

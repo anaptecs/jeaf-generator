@@ -38,6 +38,9 @@ import com.anaptecs.jeaf.junit.openapi.service1.ChildBeanParameterType;
 import com.anaptecs.jeaf.junit.openapi.service1.DateQueryParamsBean;
 import com.anaptecs.jeaf.junit.openapi.service1.LocalBeanParamType;
 import com.anaptecs.jeaf.junit.openapi.service1.TechnicalHeaderContext;
+import com.anaptecs.jeaf.junit.rest.generics.BusinessServiceObject;
+import com.anaptecs.jeaf.junit.rest.generics.GenericPageableResponse;
+import com.anaptecs.jeaf.junit.rest.generics.GenericSingleValuedReponse;
 import com.anaptecs.jeaf.xfun.api.health.CheckLevel;
 import com.anaptecs.jeaf.xfun.api.health.HealthCheckResult;
 
@@ -461,5 +464,23 @@ final class ProductServiceImpl extends ProductServiceImplBase {
    */
   @Override
   public void deleteSomething( String pID ) {
+  }
+
+  /**
+   * @return {@link GenericSingleValuedReponse<BusinessServiceObject>}
+   */
+  @Override
+  public GenericSingleValuedReponse<BusinessServiceObject> genericSingleValueResponse( ) {
+    // TODO Implement method and return real result
+    return null;
+  }
+
+  /**
+   * @return {@link GenericPageableResponse<BusinessServiceObject>}
+   */
+  @Override
+  public GenericPageableResponse<BusinessServiceObject> genericMultiValueResponse( ) {
+    // TODO Implement method and return real result
+    return null;
   }
 }

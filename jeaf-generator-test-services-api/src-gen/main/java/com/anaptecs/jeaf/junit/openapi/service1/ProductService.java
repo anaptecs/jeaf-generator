@@ -37,6 +37,9 @@ import com.anaptecs.jeaf.junit.openapi.base.Product;
 import com.anaptecs.jeaf.junit.openapi.base.Sortiment;
 import com.anaptecs.jeaf.junit.openapi.base.SpecialContext;
 import com.anaptecs.jeaf.junit.openapi.base.StringCodeType;
+import com.anaptecs.jeaf.junit.rest.generics.BusinessServiceObject;
+import com.anaptecs.jeaf.junit.rest.generics.GenericPageableResponse;
+import com.anaptecs.jeaf.junit.rest.generics.GenericSingleValuedReponse;
 
 public interface ProductService extends Service {
   /**
@@ -297,4 +300,14 @@ public interface ProductService extends Service {
    * @param pID
    */
   void deleteSomething( String pID );
+
+  /**
+   * @return {@link GenericSingleValuedReponse<BusinessServiceObject>}
+   */
+  GenericSingleValuedReponse<BusinessServiceObject> genericSingleValueResponse( );
+
+  /**
+   * @return {@link GenericPageableResponse<BusinessServiceObject>}
+   */
+  GenericPageableResponse<BusinessServiceObject> genericMultiValueResponse( );
 }

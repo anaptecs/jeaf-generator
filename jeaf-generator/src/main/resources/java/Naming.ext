@@ -112,13 +112,13 @@ cached String getTemplateParams(uml::Class class):
 private cached String fqnForTemplateClass(uml::Class class):
     class.getGenericTypeForTemplate() + "<" + class.getTypeParameterName() + ">";
     
-private cached String getTypeParameterName(uml::Class class):
+cached String getTypeParameterName(uml::Class class):
     class.templateBinding.first().parameterSubstitution.first().actual.first().asClass().fqn();
     
 private cached String getGenericTypeForTemplate(uml::Class class):
     class.getGenericClass().package.fqn() + "." + class.getGenericClass().name; 
     
-private cached uml::Class getGenericClass(uml::Class class):
+cached uml::Class getGenericClass(uml::Class class):
     class.templateBinding.first().target.first().owner.asClass();
 //    «IF hasTemplateParameter()»<«FOREACH ownedTemplateSignature.ownedParameter AS param SEPARATOR ", "»«param.getTemplateParameterName()» «IF param.hasTemplateParameterBaseType()» extends «param.getTemplateParameterBaseType()»«ENDIF»«ENDFOREACH»>«ENDIF»
 
@@ -133,7 +133,7 @@ cached String fqnForXML (uml::NamedElement element) :
     JAVA com.anaptecs.jeaf.fwk.generator.util.Naming.getFullyQualifiedNameForXML( org.eclipse.uml2.uml.NamedElement);
 
 // *** HILFSFUNKTIONEN ***
-// mit private gekennzeichnete Extensions sind nicht au�erhalb des Extension Files sichtbar
+// mit private gekennzeichnete Extensions sind nicht ausserhalb des Extension Files sichtbar
 // Diese Funktion ermittelt rekursiv den qualifizierten Packagenamen eines Packages.
 private cached String packageName (uml::Package pck) :
     JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.getPackageName(org.eclipse.uml2.uml.Package);
@@ -350,3 +350,4 @@ cached boolean requiresInitValue(uml::Property property):
      
 cached boolean requiresAttributeInitValue(uml::Class class):
      !class.ownedAttribute.select(p|p.requiresInitValue()).isEmpty;
+

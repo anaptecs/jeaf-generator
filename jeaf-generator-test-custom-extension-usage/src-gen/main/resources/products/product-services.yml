@@ -1504,6 +1504,50 @@ paths:
         '409':
           $ref: '#/components/responses/ConflictResponse'
     
+  /products/generic-single-value:
+    get:
+      operationId: genericSingleValueResponse
+      responses:
+        '201':
+          description: >-
+            TODO: Please add comment for response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MyGenericRESTResponse'
+          headers:
+            X-Global-Response-Header:
+              schema:
+                type: string
+                default: 'Hello World'
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+    
+  /products/generic-multi-value:
+    get:
+      operationId: genericMultiValueResponse
+      responses:
+        '201':
+          description: >-
+            TODO: Please add comment for response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MyGenericListResponse'
+          headers:
+            X-Global-Response-Header:
+              schema:
+                type: string
+                default: 'Hello World'
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+    
 
 security:
   - {}
@@ -1598,10 +1642,32 @@ components:
     Message:
       type: object
       additionalProperties: false
+    # com.anaptecs.jeaf.junit.rest.generics.GenericPageableResponse<com.anaptecs.jeaf.junit.rest.generics.BusinessServiceObject>
+    MyGenericListResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Message'
+        warnings:
+          type: array
+          items:
+            $ref: '#/components/schemas/Message'
+        values:
+          type: array
+          items:
+            $ref: '#/components/schemas/BusinessServiceObject'
     # com.anaptecs.jeaf.junit.rest.generics.GenericSingleValuedReponse<com.anaptecs.jeaf.junit.rest.generics.BusinessServiceObject>
     MyGenericRESTResponse:
       type: object
       additionalProperties: false
+      required:
+        - value
+      properties:
+        value:
+          $ref: '#/components/schemas/BusinessServiceObject'
     # com.anaptecs.jeaf.junit.openapi.service1.Sale
     Sale:
       type: object

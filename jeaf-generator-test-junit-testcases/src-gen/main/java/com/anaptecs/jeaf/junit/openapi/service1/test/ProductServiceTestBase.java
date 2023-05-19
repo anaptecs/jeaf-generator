@@ -99,6 +99,13 @@ public abstract class ProductServiceTestBase extends JEAFTestCase {
   public abstract void testTestNotInlinedBeanParam( ) throws Exception;
 
   /**
+   * Method test the implementation of service method genericSingleValueResponse(...)
+   *
+   * @throws Exception if the test fails.
+   */
+  public abstract void testGenericSingleValueResponse( ) throws Exception;
+
+  /**
    * Method test the implementation of service method testMultivaluedHeader(...)
    *
    * @throws Exception if the test fails.
@@ -300,6 +307,13 @@ public abstract class ProductServiceTestBase extends JEAFTestCase {
    * @throws Exception if the test fails.
    */
   public abstract void testCheckIBAN( ) throws Exception;
+
+  /**
+   * Method test the implementation of service method genericMultiValueResponse(...)
+   *
+   * @throws Exception if the test fails.
+   */
+  public abstract void testGenericMultiValueResponse( ) throws Exception;
 
   /**
    * Method test the implementation of service method testLocalBeanParamType(...)

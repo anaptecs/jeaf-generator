@@ -28,6 +28,7 @@ public class ProductServiceTest extends ProductServiceTestBase {
     lSuite.addTest(new ProductServiceTest("testGetSupportedCurrenciesAsync"));
     lSuite.addTest(new ProductServiceTest("testTestTechnicalHeaderParam"));
     lSuite.addTest(new ProductServiceTest("testTestNotInlinedBeanParam"));
+    lSuite.addTest(new ProductServiceTest("testGenericSingleValueResponse"));
     lSuite.addTest(new ProductServiceTest("testTestMultivaluedHeader"));
     lSuite.addTest(new ProductServiceTest("testDeprectedComplexRequestBody"));
     lSuite.addTest(new ProductServiceTest("testTestPrimitiveArray"));
@@ -57,6 +58,7 @@ public class ProductServiceTest extends ProductServiceTestBase {
     lSuite.addTest(new ProductServiceTest("testAddCurrencies"));
     lSuite.addTest(new ProductServiceTest("testGetSortiment"));
     lSuite.addTest(new ProductServiceTest("testCheckIBAN"));
+    lSuite.addTest(new ProductServiceTest("testGenericMultiValueResponse"));
     lSuite.addTest(new ProductServiceTest("testTestLocalBeanParamType"));
     lSuite.addTest(new ProductServiceTest("testGetChannels"));
     lSuite.addTest(new ProductServiceTest("testDeleteSomething"));
@@ -175,6 +177,16 @@ public class ProductServiceTest extends ProductServiceTestBase {
   @Override
   public void testTestNotInlinedBeanParam( ) throws Exception {
     // TODO Implement test for service method testNotInlinedBeanParam(...)
+  }
+
+  /**
+   * Method test the implementation of service method genericSingleValueResponse
+   *
+   * @throws Exception if a test fails.
+   */
+  @Override
+  public void testGenericSingleValueResponse( ) throws Exception {
+    // TODO Implement test for service method genericSingleValueResponse(...)
   }
 
   /**
@@ -465,6 +477,16 @@ public class ProductServiceTest extends ProductServiceTestBase {
   @Override
   public void testCheckIBAN( ) throws Exception {
     // TODO Implement test for service method checkIBAN(...)
+  }
+
+  /**
+   * Method test the implementation of service method genericMultiValueResponse
+   *
+   * @throws Exception if a test fails.
+   */
+  @Override
+  public void testGenericMultiValueResponse( ) throws Exception {
+    // TODO Implement test for service method genericMultiValueResponse(...)
   }
 
   /**

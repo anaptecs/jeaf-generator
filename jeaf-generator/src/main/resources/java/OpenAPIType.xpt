@@ -167,7 +167,11 @@
             - $ref: «subclass.getOpenAPIType(spec)»
                 «ENDFOREACH-»
               «ELSE-»
+		        «IF this.isTemplateProperty(attribute) -»
+          $ref: «this.getTemplateBindingType().getOpenAPIType(spec)»
+		        «ELSE-»
           $ref: «attribute.type.getOpenAPIType(spec)»
+                «ENDIF-»
               «ENDIF-»
             «ELSE-»
               «IF attribute.isDeprecated() -»
@@ -184,7 +188,11 @@
               - $ref: «subclass.getOpenAPIType(spec)»
                 «ENDFOREACH-»
               «ELSE-»
+                «IF this.isTemplateProperty(attribute) -»
+            $ref: «this.getTemplateBindingType().getOpenAPIType(spec)»
+                «ELSE-»
             $ref: «attribute.type.getOpenAPIType(spec)»
+                «ENDIF-»
               «ENDIF-»
           «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("    ") FOR attribute-»
             «ENDIF-»

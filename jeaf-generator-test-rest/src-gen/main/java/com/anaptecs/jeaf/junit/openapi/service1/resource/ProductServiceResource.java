@@ -63,6 +63,9 @@ import com.anaptecs.jeaf.junit.openapi.service1.DateQueryParamsBean;
 import com.anaptecs.jeaf.junit.openapi.service1.LocalBeanParamType;
 import com.anaptecs.jeaf.junit.openapi.service1.ProductService;
 import com.anaptecs.jeaf.junit.openapi.service1.TechnicalHeaderContext;
+import com.anaptecs.jeaf.junit.rest.generics.BusinessServiceObject;
+import com.anaptecs.jeaf.junit.rest.generics.GenericPageableResponse;
+import com.anaptecs.jeaf.junit.rest.generics.GenericSingleValuedReponse;
 import com.anaptecs.jeaf.workload.api.Workload;
 import com.anaptecs.jeaf.workload.api.WorkloadManager;
 import com.anaptecs.jeaf.workload.api.rest.RESTRequestType;
@@ -655,6 +658,30 @@ public class ProductServiceResource {
         ProductService lService = this.getProductService();
         lService.deleteSomething(pID);
         return Response.status(Response.Status.NO_CONTENT).build();
+    }
+
+    /**
+     * {@link ProductService#genericSingleValueResponse()}
+     */
+    @Path("generic-single-value")
+    @GET
+    public Response genericSingleValueResponse( ) {
+        // Delegate request to service.
+        ProductService lService = this.getProductService();
+        GenericSingleValuedReponse<BusinessServiceObject> lResult = lService.genericSingleValueResponse();
+        return Response.status(Response.Status.OK).entity(lResult).build();
+    }
+
+    /**
+     * {@link ProductService#genericMultiValueResponse()}
+     */
+    @Path("generic-multi-value")
+    @GET
+    public Response genericMultiValueResponse( ) {
+        // Delegate request to service.
+        ProductService lService = this.getProductService();
+        GenericPageableResponse<BusinessServiceObject> lResult = lService.genericMultiValueResponse();
+        return Response.status(Response.Status.OK).entity(lResult).build();
     }
 
     /**
