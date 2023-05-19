@@ -45,6 +45,7 @@ public static «IF isAbstract == true» abstract «ENDIF»class Builder«this.ge
      */
     protected Builder( «this.name»«this.getTemplateParams()» pObject ) {
       «IF superClass.isEmpty == false»super(pObject);«ENDIF»
+      «IF needsToImplementIdentifiable() || this.isCompositeDataType() || this.ownedAttribute.select(e|e.isPropertySuppressed() == false).isEmpty == false»
       if (pObject != null) {
         // Read attribute values from passed object.
 		«IF needsToImplementIdentifiable() == true»
@@ -58,6 +59,7 @@ public static «IF isAbstract == true» abstract «ENDIF»class Builder«this.ge
 	        «ENDFOREACH»
         «ENDIF»
       }
+      «ENDIF»
     }
 
    «IF isAbstract == false && enableLegacyBuilderStyle()»

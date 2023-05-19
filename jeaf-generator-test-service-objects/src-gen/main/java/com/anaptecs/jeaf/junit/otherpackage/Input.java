@@ -67,9 +67,6 @@ public class Input implements ServiceObject {
      * Use {@link Input#builder(Input)} instead of private constructor to create new builder.
      */
     protected Builder( Input pObject ) {
-      if (pObject != null) {
-        // Read attribute values from passed object.
-      }
     }
 
     /**

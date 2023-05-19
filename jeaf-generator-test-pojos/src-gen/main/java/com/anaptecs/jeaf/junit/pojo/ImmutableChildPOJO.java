@@ -252,6 +252,7 @@ public class ImmutableChildPOJO extends ImmutablePOJOParent {
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.
    */
+  @Override
   public StringBuilder toStringBuilder( String pIndent ) {
     StringBuilder lBuilder = super.toStringBuilder(pIndent);
     lBuilder.append(pIndent);

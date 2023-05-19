@@ -58,9 +58,6 @@ public class TopoRef extends PlaceRef {
      */
     protected Builder( TopoRef pObject ) {
       super(pObject);
-      if (pObject != null) {
-        // Read attribute values from passed object.
-      }
     }
 
     /**
@@ -110,27 +107,5 @@ public class TopoRef extends PlaceRef {
       lEquals = true;
     }
     return lEquals;
-  }
-
-  /**
-   * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
-   * StringBuilder also takes care about attributes of super classes.
-   *
-   * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.
-   */
-  public StringBuilder toStringBuilder( String pIndent ) {
-    StringBuilder lBuilder = super.toStringBuilder(pIndent);
-    return lBuilder;
-  }
-
-  /**
-   * Method creates a new String with the values of all attributes of this class. All references to other objects will
-   * be ignored.
-   *
-   * @return {@link String} String representation of this object. The method never returns null.
-   */
-  @Override
-  public String toString( ) {
-    return this.toStringBuilder("").toString();
   }
 }

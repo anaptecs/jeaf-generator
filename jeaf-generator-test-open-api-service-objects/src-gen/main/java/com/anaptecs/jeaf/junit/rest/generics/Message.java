@@ -69,9 +69,6 @@ public class Message implements ServiceObject {
      * Use {@link Message#builder(Message)} instead of private constructor to create new builder.
      */
     protected Builder( Message pObject ) {
-      if (pObject != null) {
-        // Read attribute values from passed object.
-      }
     }
 
     /**

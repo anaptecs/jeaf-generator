@@ -7,11 +7,15 @@
 
 
 «DEFINE GenerateToStringMethod FOR uml::Class»
+  «IF this.isCompositeDataType() || this.superClass.isEmpty == true || this.getToStringProperties().select(e|e.isPropertySuppressed() == false).isEmpty == false»
   /**
    * Method returns a StringBuilder that can be used to create a String representation of this object. The returned StringBuilder also takes care about attributes of super classes.
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.
    */
+  «IF this.superClass.isEmpty == false»
+  @Override
+  «ENDIF»
   public StringBuilder toStringBuilder( String pIndent) {
     «IF this.isCompositeDataType()»
         StringBuilder lBuilder = new StringBuilder();
@@ -49,6 +53,7 @@
   public String toString( ) {
     return this.toStringBuilder("").toString();
   }
+  «ENDIF»
 «ENDDEFINE»
 
 «DEFINE ToStringValue FOR uml::Property»

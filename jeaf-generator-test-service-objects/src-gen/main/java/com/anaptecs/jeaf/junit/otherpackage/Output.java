@@ -67,9 +67,6 @@ public class Output implements ServiceObject {
      * Use {@link Output#builder(Output)} instead of private constructor to create new builder.
      */
     protected Builder( Output pObject ) {
-      if (pObject != null) {
-        // Read attribute values from passed object.
-      }
     }
 
     /**

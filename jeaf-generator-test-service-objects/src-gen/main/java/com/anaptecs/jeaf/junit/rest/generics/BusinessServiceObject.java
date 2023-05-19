@@ -69,9 +69,6 @@ public class BusinessServiceObject implements ServiceObject {
      * builder.
      */
     protected Builder( BusinessServiceObject pObject ) {
-      if (pObject != null) {
-        // Read attribute values from passed object.
-      }
     }
 
     /**

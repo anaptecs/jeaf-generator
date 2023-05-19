@@ -77,9 +77,6 @@ public class ErrorResponse implements Serializable {
      * Use {@link ErrorResponse#builder(ErrorResponse)} instead of private constructor to create new builder.
      */
     protected Builder( ErrorResponse pObject ) {
-      if (pObject != null) {
-        // Read attribute values from passed object.
-      }
     }
 
     /**

@@ -58,9 +58,6 @@ public class TechOnlyBeanParam {
      * Use {@link TechOnlyBeanParam#builder(TechOnlyBeanParam)} instead of private constructor to create new builder.
      */
     protected Builder( TechOnlyBeanParam pObject ) {
-      if (pObject != null) {
-        // Read attribute values from passed object.
-      }
     }
 
     /**
