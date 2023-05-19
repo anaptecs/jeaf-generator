@@ -306,6 +306,7 @@ components:
           type: integer
           format: int64
           deprecated: true
+          nullable: true
         moreLinks:
           description: |
             
@@ -321,6 +322,7 @@ components:
           items:
             type: string
           deprecated: true
+          nullable: true
 
     # com.anaptecs.jeaf.junit.openapi.base.Channel
     Channel:
@@ -416,6 +418,7 @@ components:
                 format: int32
               minItems: 10
               maxItems: 100
+              nullable: true
             requiredArray:
               type: array
               items:
@@ -435,6 +438,7 @@ components:
                 type: integer
                 format: int32
                 minimum: 1234
+              nullable: true
 
     # com.anaptecs.jeaf.junit.openapi.base.ChildB
     ChildB:
@@ -456,6 +460,7 @@ components:
                 type: boolean
               minItems: 11
               maxItems: 42
+              nullable: true
             composition:
               description: |
                 the composition
@@ -494,6 +499,7 @@ components:
               type: string
               format: byte
               maxLength: 4711
+              nullable: true
 
     # com.anaptecs.jeaf.junit.openapi.base.CodeTypeUsageTest
     CodeTypeUsageTest:
@@ -628,6 +634,7 @@ components:
           items:
             type: string
           deprecated: true
+          nullable: true
 
     # com.anaptecs.jeaf.junit.openapi.base.Duration
     Duration:
@@ -817,29 +824,37 @@ components:
       properties:
         readOnlyAttribute:
           type: string
+          nullable: true
         readWriteAttribute:
           type: string
+          nullable: true
         writeOnlyAttribute:
           type: integer
           format: int32
+          nullable: true
           writeOnly: true
         nullableAttribute:
           type: boolean
+          nullable: true
         notNullableAttribute:
           type: number
           format: double
           nullable: false
         readOnlyArray:
           type: string
+          nullable: true
         readWriteArray:
           type: string
+          nullable: true
         writeOnlyArray:
           type: integer
           format: int32
+          nullable: true
           writeOnly: true
         nullableArray:
           type: number
           format: double
+          nullable: true
         notNullableArray:
           type: number
           format: double
@@ -868,6 +883,7 @@ components:
               items:
                 type: string
               deprecated: true
+              nullable: true
 
     # com.anaptecs.jeaf.junit.openapi.base.ParentClass
     ParentClass:
@@ -890,6 +906,7 @@ components:
           items:
             type: string
             pattern: '^DE\d{2}\s?([0-9a-zA-Z]{4}\s?){4}[0-9a-zA-Z]{2}$'
+          nullable: true
         theBankAccount:
           # Property "theBankAccount" is marked as deprecated. However OpenAPI does not support to mark references to complex types as deprecated.
           $ref: '#/components/schemas/BankAccount'
@@ -997,101 +1014,123 @@ components:
           type: array
           items:
             type: boolean
+          nullable: true
         bBooleanArray:
           type: array
           items:
             type: boolean
+          nullable: true
         cBooleanArray:
           type: array
           items:
             type: boolean
+          nullable: true
         aByteArray:
           type: string
           format: byte
+          nullable: true
         bByteArray:
           type: string
           format: byte
+          nullable: true
         aShortArray:
           type: array
           items:
             type: integer
             format: int32
+          nullable: true
         bShortArray:
           type: array
           items:
             type: integer
             format: int32
+          nullable: true
         aIntegerArray:
           type: array
           items:
             type: integer
             format: int32
+          nullable: true
         bIntegerArray:
           type: array
           items:
             type: integer
             format: int32
+          nullable: true
         cIntegerArray:
           type: array
           items:
             type: integer
             format: int32
+          nullable: true
         aLongArray:
           type: array
           items:
             type: integer
             format: int64
+          nullable: true
         bLongArray:
           type: array
           items:
             type: integer
             format: int64
+          nullable: true
         aBigIntegerArray:
           type: array
           items:
             type: integer
             format: int64
+          nullable: true
         aCharacterArray:
           type: array
           items:
             type: string
+          nullable: true
         bCharacterArray:
           type: array
           items:
             type: string
+          nullable: true
         aFloatArray:
           type: array
           items:
             type: number
             format: float
+          nullable: true
         bFloatArray:
           type: array
           items:
             type: number
             format: float
+          nullable: true
         aDoubleArray:
           type: array
           items:
             type: number
             format: double
+          nullable: true
         bDoubleArray:
           type: array
           items:
             type: number
             format: double
+          nullable: true
         aBigDecimalArray:
           type: array
           items:
             type: number
             format: double
+          nullable: true
         aStringArray:
           type: array
           items:
             type: string
+          nullable: true
         bStringArray:
           type: array
           items:
             type: string
+          nullable: true
         cStringArray:
           type: array
           items:
@@ -1110,79 +1149,96 @@ components:
           type: array
           items:
             type: boolean
+          nullable: true
         bBooleanArray:
           type: array
           items:
             type: boolean
+          nullable: true
         cBooleanArray:
           type: array
           items:
             type: boolean
+          nullable: true
         aByteArray:
           type: string
           format: byte
+          nullable: true
         bByteArray:
           type: string
           format: byte
+          nullable: true
         aShortArray:
           type: array
           items:
             type: integer
             format: int32
+          nullable: true
         bShortArray:
           type: array
           items:
             type: integer
             format: int32
+          nullable: true
         aIntegerArray:
           type: array
           items:
             type: integer
             format: int32
+          nullable: true
         bIntegerArray:
           type: array
           items:
             type: integer
             format: int32
+          nullable: true
         cIntegerArray:
           type: array
           items:
             type: integer
             format: int32
+          nullable: true
         aLongArray:
           type: array
           items:
             type: integer
             format: int64
           minItems: 1
+          nullable: true
         bLongArray:
           type: array
           items:
             type: integer
             format: int64
+          nullable: true
         aBigIntegerArray:
           type: array
           items:
             type: integer
             format: int64
+          nullable: true
         aCharacterArray:
           type: array
           items:
             type: string
+          nullable: true
         bCharacterArray:
           type: array
           items:
             type: string
+          nullable: true
         aFloatArray:
           type: array
           items:
             type: number
             format: float
+          nullable: true
         bFloatArray:
           type: array
           items:
             type: number
             format: float
+          nullable: true
         aDoubleArray:
           type: array
           items:
@@ -1190,24 +1246,29 @@ components:
             format: double
           minItems: 4
           maxItems: 12
+          nullable: true
         bDoubleArray:
           type: array
           items:
             type: number
             format: double
+          nullable: true
         aBigDecimalArray:
           type: array
           items:
             type: number
             format: double
+          nullable: true
         aStringArray:
           type: array
           items:
             type: string
+          nullable: true
         bStringArray:
           type: array
           items:
             type: string
+          nullable: true
 
     # com.anaptecs.jeaf.junit.openapi.base.PrimitiveObject
     PrimitiveObject:
@@ -1510,6 +1571,7 @@ components:
             Image describing the product.
           type: string
           format: byte
+          nullable: true
         link:
           type: string
           nullable: false
@@ -1740,6 +1802,7 @@ components:
               type: array
               items:
                 type: string
+              nullable: true
             versionedObjectSoftLink:
               description: |
                 soft link

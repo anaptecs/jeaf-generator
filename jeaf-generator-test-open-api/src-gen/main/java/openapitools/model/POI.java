@@ -31,6 +31,10 @@ import java.util.List;
 import openapitools.model.LinkObject;
 import openapitools.model.POIAllOf;
 import openapitools.model.Stop;
+import org.openapitools.jackson.nullable.JsonNullable;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import openapitools.JSON;
 
@@ -54,7 +58,7 @@ public class POI extends Stop {
   private Long theLink;
 
   public static final String JSON_PROPERTY_EVEN_MORE_LINKS = "evenMoreLinks";
-  private List<String> evenMoreLinks = null;
+  private JsonNullable<List<String>> evenMoreLinks = JsonNullable.<List<String>>undefined();
 
   public POI() { 
   }
@@ -114,15 +118,19 @@ public class POI extends Stop {
 
 
   public POI evenMoreLinks(List<String> evenMoreLinks) {
-    this.evenMoreLinks = evenMoreLinks;
+    this.evenMoreLinks = JsonNullable.<List<String>>of(evenMoreLinks);
     return this;
   }
 
   public POI addEvenMoreLinksItem(String evenMoreLinksItem) {
-    if (this.evenMoreLinks == null) {
-      this.evenMoreLinks = new ArrayList<>();
+    if (this.evenMoreLinks == null || !this.evenMoreLinks.isPresent()) {
+      this.evenMoreLinks = JsonNullable.<List<String>>of(new ArrayList<>());
     }
-    this.evenMoreLinks.add(evenMoreLinksItem);
+    try {
+      this.evenMoreLinks.get().add(evenMoreLinksItem);
+    } catch (java.util.NoSuchElementException e) {
+      // this can never happen, as we make sure above that the value is present
+    }
     return this;
   }
 
@@ -134,18 +142,26 @@ public class POI extends Stop {
   @Deprecated
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_EVEN_MORE_LINKS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public List<String> getEvenMoreLinks() {
-    return evenMoreLinks;
+        return evenMoreLinks.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_EVEN_MORE_LINKS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEvenMoreLinks(List<String> evenMoreLinks) {
+
+  public JsonNullable<List<String>> getEvenMoreLinks_JsonNullable() {
+    return evenMoreLinks;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_EVEN_MORE_LINKS)
+  public void setEvenMoreLinks_JsonNullable(JsonNullable<List<String>> evenMoreLinks) {
     this.evenMoreLinks = evenMoreLinks;
+  }
+
+  public void setEvenMoreLinks(List<String> evenMoreLinks) {
+    this.evenMoreLinks = JsonNullable.<List<String>>of(evenMoreLinks);
   }
 
 
@@ -163,13 +179,24 @@ public class POI extends Stop {
     POI POI = (POI) o;
     return Objects.equals(this.description, POI.description) &&
         Objects.equals(this.theLink, POI.theLink) &&
-        Objects.equals(this.evenMoreLinks, POI.evenMoreLinks) &&
+        equalsNullable(this.evenMoreLinks, POI.evenMoreLinks) &&
         super.equals(o);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(description, theLink, evenMoreLinks, super.hashCode());
+    return Objects.hash(description, theLink, hashCodeNullable(evenMoreLinks), super.hashCode());
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

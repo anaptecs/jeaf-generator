@@ -26,6 +26,10 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import openapitools.JSON;
 
@@ -41,19 +45,19 @@ import openapitools.JSON;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Campaign {
   public static final String JSON_PROPERTY_THE_LINK = "theLink";
-  private Long theLink;
+  private JsonNullable<Long> theLink = JsonNullable.<Long>undefined();
 
   public static final String JSON_PROPERTY_MORE_LINKS = "moreLinks";
   private List<Long> moreLinks = new ArrayList<>();
 
   public static final String JSON_PROPERTY_DISCOUNT_OFFERS = "discountOffers";
-  private List<String> discountOffers = null;
+  private JsonNullable<List<String>> discountOffers = JsonNullable.<List<String>>undefined();
 
   public Campaign() { 
   }
 
   public Campaign theLink(Long theLink) {
-    this.theLink = theLink;
+    this.theLink = JsonNullable.<Long>of(theLink);
     return this;
   }
 
@@ -65,18 +69,26 @@ public class Campaign {
   @Deprecated
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_THE_LINK)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public Long getTheLink() {
-    return theLink;
+        return theLink.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_THE_LINK)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTheLink(Long theLink) {
+
+  public JsonNullable<Long> getTheLink_JsonNullable() {
+    return theLink;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_THE_LINK)
+  public void setTheLink_JsonNullable(JsonNullable<Long> theLink) {
     this.theLink = theLink;
+  }
+
+  public void setTheLink(Long theLink) {
+    this.theLink = JsonNullable.<Long>of(theLink);
   }
 
 
@@ -114,15 +126,19 @@ public class Campaign {
 
 
   public Campaign discountOffers(List<String> discountOffers) {
-    this.discountOffers = discountOffers;
+    this.discountOffers = JsonNullable.<List<String>>of(discountOffers);
     return this;
   }
 
   public Campaign addDiscountOffersItem(String discountOffersItem) {
-    if (this.discountOffers == null) {
-      this.discountOffers = new ArrayList<>();
+    if (this.discountOffers == null || !this.discountOffers.isPresent()) {
+      this.discountOffers = JsonNullable.<List<String>>of(new ArrayList<>());
     }
-    this.discountOffers.add(discountOffersItem);
+    try {
+      this.discountOffers.get().add(discountOffersItem);
+    } catch (java.util.NoSuchElementException e) {
+      // this can never happen, as we make sure above that the value is present
+    }
     return this;
   }
 
@@ -134,18 +150,26 @@ public class Campaign {
   @Deprecated
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_DISCOUNT_OFFERS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public List<String> getDiscountOffers() {
-    return discountOffers;
+        return discountOffers.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_DISCOUNT_OFFERS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDiscountOffers(List<String> discountOffers) {
+
+  public JsonNullable<List<String>> getDiscountOffers_JsonNullable() {
+    return discountOffers;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_DISCOUNT_OFFERS)
+  public void setDiscountOffers_JsonNullable(JsonNullable<List<String>> discountOffers) {
     this.discountOffers = discountOffers;
+  }
+
+  public void setDiscountOffers(List<String> discountOffers) {
+    this.discountOffers = JsonNullable.<List<String>>of(discountOffers);
   }
 
 
@@ -161,14 +185,25 @@ public class Campaign {
       return false;
     }
     Campaign campaign = (Campaign) o;
-    return Objects.equals(this.theLink, campaign.theLink) &&
+    return equalsNullable(this.theLink, campaign.theLink) &&
         Objects.equals(this.moreLinks, campaign.moreLinks) &&
-        Objects.equals(this.discountOffers, campaign.discountOffers);
+        equalsNullable(this.discountOffers, campaign.discountOffers);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(theLink, moreLinks, discountOffers);
+    return Objects.hash(hashCodeNullable(theLink), moreLinks, hashCodeNullable(discountOffers));
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

@@ -26,6 +26,10 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import openapitools.JSON;
 
@@ -47,7 +51,7 @@ public class POIAllOf {
   private Long theLink;
 
   public static final String JSON_PROPERTY_EVEN_MORE_LINKS = "evenMoreLinks";
-  private List<String> evenMoreLinks = null;
+  private JsonNullable<List<String>> evenMoreLinks = JsonNullable.<List<String>>undefined();
 
   public POIAllOf() { 
   }
@@ -107,15 +111,19 @@ public class POIAllOf {
 
 
   public POIAllOf evenMoreLinks(List<String> evenMoreLinks) {
-    this.evenMoreLinks = evenMoreLinks;
+    this.evenMoreLinks = JsonNullable.<List<String>>of(evenMoreLinks);
     return this;
   }
 
   public POIAllOf addEvenMoreLinksItem(String evenMoreLinksItem) {
-    if (this.evenMoreLinks == null) {
-      this.evenMoreLinks = new ArrayList<>();
+    if (this.evenMoreLinks == null || !this.evenMoreLinks.isPresent()) {
+      this.evenMoreLinks = JsonNullable.<List<String>>of(new ArrayList<>());
     }
-    this.evenMoreLinks.add(evenMoreLinksItem);
+    try {
+      this.evenMoreLinks.get().add(evenMoreLinksItem);
+    } catch (java.util.NoSuchElementException e) {
+      // this can never happen, as we make sure above that the value is present
+    }
     return this;
   }
 
@@ -127,18 +135,26 @@ public class POIAllOf {
   @Deprecated
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_EVEN_MORE_LINKS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public List<String> getEvenMoreLinks() {
-    return evenMoreLinks;
+        return evenMoreLinks.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_EVEN_MORE_LINKS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEvenMoreLinks(List<String> evenMoreLinks) {
+
+  public JsonNullable<List<String>> getEvenMoreLinks_JsonNullable() {
+    return evenMoreLinks;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_EVEN_MORE_LINKS)
+  public void setEvenMoreLinks_JsonNullable(JsonNullable<List<String>> evenMoreLinks) {
     this.evenMoreLinks = evenMoreLinks;
+  }
+
+  public void setEvenMoreLinks(List<String> evenMoreLinks) {
+    this.evenMoreLinks = JsonNullable.<List<String>>of(evenMoreLinks);
   }
 
 
@@ -156,12 +172,23 @@ public class POIAllOf {
     POIAllOf poIAllOf = (POIAllOf) o;
     return Objects.equals(this.description, poIAllOf.description) &&
         Objects.equals(this.theLink, poIAllOf.theLink) &&
-        Objects.equals(this.evenMoreLinks, poIAllOf.evenMoreLinks);
+        equalsNullable(this.evenMoreLinks, poIAllOf.evenMoreLinks);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(description, theLink, evenMoreLinks);
+    return Objects.hash(description, theLink, hashCodeNullable(evenMoreLinks));
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

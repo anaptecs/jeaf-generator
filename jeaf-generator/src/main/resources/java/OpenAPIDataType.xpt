@@ -74,9 +74,7 @@
               «ENDIF-»
             «ENDIF-»
           «ENDIF-»
-          «IF ownerAttribute.isNullable() == false -»
 «indentation»          nullable: «ownerAttribute.isNullable()»
-          «ENDIF-»  
           «IF ownerAttribute.isReadOnly() && true == false -»
 «indentation»          readOnly: «ownerAttribute.isReadOnly()»
           «ENDIF-»  
@@ -117,9 +115,7 @@
       «IF attribute.isDeprecated() -»
       deprecated: true
       «ENDIF-»
-      «IF attribute.isNullable() == false -»
       nullable: «attribute.isNullable()»
-      «ENDIF-»  
       «IF attribute.isReadOnly() && true == false -»
       readOnly: «attribute.isReadOnly()»
       «ENDIF-»  
@@ -197,9 +193,7 @@
                   «ENDIF-»
                 «ENDIF-»
                 «ENDIF-»
-                «IF param.isNullableForParam() == false -»
 «indent»            nullable: «param.isNullableForParam()»
-                «ENDIF-»  
                 «IF param.hasExample()-»
                 «IF ((Example) param).exampleValue.length > 0-»
 «indent»            example: «((Example) param).exampleValue»

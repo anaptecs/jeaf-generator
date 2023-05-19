@@ -87,7 +87,7 @@ public class OpenAPITestObject {
    * Get readOnlyAttribute
    * @return readOnlyAttribute
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_READ_ONLY_ATTRIBUTE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -113,7 +113,7 @@ public class OpenAPITestObject {
    * Get readWriteAttribute
    * @return readWriteAttribute
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_READ_WRITE_ATTRIBUTE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -139,7 +139,7 @@ public class OpenAPITestObject {
    * Get writeOnlyAttribute
    * @return writeOnlyAttribute
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_WRITE_ONLY_ATTRIBUTE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -165,7 +165,7 @@ public class OpenAPITestObject {
    * Get nullableAttribute
    * @return nullableAttribute
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_NULLABLE_ATTRIBUTE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -217,7 +217,7 @@ public class OpenAPITestObject {
    * Get readOnlyArray
    * @return readOnlyArray
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_READ_ONLY_ARRAY)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -243,7 +243,7 @@ public class OpenAPITestObject {
    * Get readWriteArray
    * @return readWriteArray
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_READ_WRITE_ARRAY)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -269,7 +269,7 @@ public class OpenAPITestObject {
    * Get writeOnlyArray
    * @return writeOnlyArray
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_WRITE_ONLY_ARRAY)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -295,7 +295,7 @@ public class OpenAPITestObject {
    * Get nullableArray
    * @return nullableArray
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_NULLABLE_ARRAY)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
