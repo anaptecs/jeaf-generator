@@ -26,6 +26,10 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import openapitools.JSON;
 
@@ -61,70 +65,70 @@ import openapitools.JSON;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class PrimitiveArraysObject {
   public static final String JSON_PROPERTY_A_BOOLEAN_ARRAY = "aBooleanArray";
-  private List<Boolean> aBooleanArray = null;
+  private JsonNullable<List<Boolean>> aBooleanArray = JsonNullable.<List<Boolean>>undefined();
 
   public static final String JSON_PROPERTY_B_BOOLEAN_ARRAY = "bBooleanArray";
-  private List<Boolean> bBooleanArray = null;
+  private JsonNullable<List<Boolean>> bBooleanArray = JsonNullable.<List<Boolean>>undefined();
 
   public static final String JSON_PROPERTY_C_BOOLEAN_ARRAY = "cBooleanArray";
-  private List<Boolean> cBooleanArray = null;
+  private JsonNullable<List<Boolean>> cBooleanArray = JsonNullable.<List<Boolean>>undefined();
 
   public static final String JSON_PROPERTY_A_BYTE_ARRAY = "aByteArray";
-  private byte[] aByteArray;
+  private JsonNullable<byte[]> aByteArray = JsonNullable.<byte[]>undefined();
 
   public static final String JSON_PROPERTY_B_BYTE_ARRAY = "bByteArray";
-  private byte[] bByteArray;
+  private JsonNullable<byte[]> bByteArray = JsonNullable.<byte[]>undefined();
 
   public static final String JSON_PROPERTY_A_SHORT_ARRAY = "aShortArray";
-  private List<Integer> aShortArray = null;
+  private JsonNullable<List<Integer>> aShortArray = JsonNullable.<List<Integer>>undefined();
 
   public static final String JSON_PROPERTY_B_SHORT_ARRAY = "bShortArray";
-  private List<Integer> bShortArray = null;
+  private JsonNullable<List<Integer>> bShortArray = JsonNullable.<List<Integer>>undefined();
 
   public static final String JSON_PROPERTY_A_INTEGER_ARRAY = "aIntegerArray";
-  private List<Integer> aIntegerArray = null;
+  private JsonNullable<List<Integer>> aIntegerArray = JsonNullable.<List<Integer>>undefined();
 
   public static final String JSON_PROPERTY_B_INTEGER_ARRAY = "bIntegerArray";
-  private List<Integer> bIntegerArray = null;
+  private JsonNullable<List<Integer>> bIntegerArray = JsonNullable.<List<Integer>>undefined();
 
   public static final String JSON_PROPERTY_C_INTEGER_ARRAY = "cIntegerArray";
-  private List<Integer> cIntegerArray = null;
+  private JsonNullable<List<Integer>> cIntegerArray = JsonNullable.<List<Integer>>undefined();
 
   public static final String JSON_PROPERTY_A_LONG_ARRAY = "aLongArray";
-  private List<Long> aLongArray = null;
+  private JsonNullable<List<Long>> aLongArray = JsonNullable.<List<Long>>undefined();
 
   public static final String JSON_PROPERTY_B_LONG_ARRAY = "bLongArray";
-  private List<Long> bLongArray = null;
+  private JsonNullable<List<Long>> bLongArray = JsonNullable.<List<Long>>undefined();
 
   public static final String JSON_PROPERTY_A_BIG_INTEGER_ARRAY = "aBigIntegerArray";
-  private List<Long> aBigIntegerArray = null;
+  private JsonNullable<List<Long>> aBigIntegerArray = JsonNullable.<List<Long>>undefined();
 
   public static final String JSON_PROPERTY_A_CHARACTER_ARRAY = "aCharacterArray";
-  private List<String> aCharacterArray = null;
+  private JsonNullable<List<String>> aCharacterArray = JsonNullable.<List<String>>undefined();
 
   public static final String JSON_PROPERTY_B_CHARACTER_ARRAY = "bCharacterArray";
-  private List<String> bCharacterArray = null;
+  private JsonNullable<List<String>> bCharacterArray = JsonNullable.<List<String>>undefined();
 
   public static final String JSON_PROPERTY_A_FLOAT_ARRAY = "aFloatArray";
-  private List<Float> aFloatArray = null;
+  private JsonNullable<List<Float>> aFloatArray = JsonNullable.<List<Float>>undefined();
 
   public static final String JSON_PROPERTY_B_FLOAT_ARRAY = "bFloatArray";
-  private List<Float> bFloatArray = null;
+  private JsonNullable<List<Float>> bFloatArray = JsonNullable.<List<Float>>undefined();
 
   public static final String JSON_PROPERTY_A_DOUBLE_ARRAY = "aDoubleArray";
-  private List<Double> aDoubleArray = null;
+  private JsonNullable<List<Double>> aDoubleArray = JsonNullable.<List<Double>>undefined();
 
   public static final String JSON_PROPERTY_B_DOUBLE_ARRAY = "bDoubleArray";
-  private List<Double> bDoubleArray = null;
+  private JsonNullable<List<Double>> bDoubleArray = JsonNullable.<List<Double>>undefined();
 
   public static final String JSON_PROPERTY_A_BIG_DECIMAL_ARRAY = "aBigDecimalArray";
-  private List<Double> aBigDecimalArray = null;
+  private JsonNullable<List<Double>> aBigDecimalArray = JsonNullable.<List<Double>>undefined();
 
   public static final String JSON_PROPERTY_A_STRING_ARRAY = "aStringArray";
-  private List<String> aStringArray = null;
+  private JsonNullable<List<String>> aStringArray = JsonNullable.<List<String>>undefined();
 
   public static final String JSON_PROPERTY_B_STRING_ARRAY = "bStringArray";
-  private List<String> bStringArray = null;
+  private JsonNullable<List<String>> bStringArray = JsonNullable.<List<String>>undefined();
 
   public static final String JSON_PROPERTY_C_STRING_ARRAY = "cStringArray";
   private List<String> cStringArray = new ArrayList<>();
@@ -133,15 +137,19 @@ public class PrimitiveArraysObject {
   }
 
   public PrimitiveArraysObject aBooleanArray(List<Boolean> aBooleanArray) {
-    this.aBooleanArray = aBooleanArray;
+    this.aBooleanArray = JsonNullable.<List<Boolean>>of(aBooleanArray);
     return this;
   }
 
   public PrimitiveArraysObject addABooleanArrayItem(Boolean aBooleanArrayItem) {
-    if (this.aBooleanArray == null) {
-      this.aBooleanArray = new ArrayList<>();
+    if (this.aBooleanArray == null || !this.aBooleanArray.isPresent()) {
+      this.aBooleanArray = JsonNullable.<List<Boolean>>of(new ArrayList<>());
     }
-    this.aBooleanArray.add(aBooleanArrayItem);
+    try {
+      this.aBooleanArray.get().add(aBooleanArrayItem);
+    } catch (java.util.NoSuchElementException e) {
+      // this can never happen, as we make sure above that the value is present
+    }
     return this;
   }
 
@@ -151,31 +159,43 @@ public class PrimitiveArraysObject {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_A_BOOLEAN_ARRAY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public List<Boolean> getaBooleanArray() {
-    return aBooleanArray;
+        return aBooleanArray.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_A_BOOLEAN_ARRAY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setaBooleanArray(List<Boolean> aBooleanArray) {
+
+  public JsonNullable<List<Boolean>> getaBooleanArray_JsonNullable() {
+    return aBooleanArray;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_A_BOOLEAN_ARRAY)
+  public void setaBooleanArray_JsonNullable(JsonNullable<List<Boolean>> aBooleanArray) {
     this.aBooleanArray = aBooleanArray;
+  }
+
+  public void setaBooleanArray(List<Boolean> aBooleanArray) {
+    this.aBooleanArray = JsonNullable.<List<Boolean>>of(aBooleanArray);
   }
 
 
   public PrimitiveArraysObject bBooleanArray(List<Boolean> bBooleanArray) {
-    this.bBooleanArray = bBooleanArray;
+    this.bBooleanArray = JsonNullable.<List<Boolean>>of(bBooleanArray);
     return this;
   }
 
   public PrimitiveArraysObject addBBooleanArrayItem(Boolean bBooleanArrayItem) {
-    if (this.bBooleanArray == null) {
-      this.bBooleanArray = new ArrayList<>();
+    if (this.bBooleanArray == null || !this.bBooleanArray.isPresent()) {
+      this.bBooleanArray = JsonNullable.<List<Boolean>>of(new ArrayList<>());
     }
-    this.bBooleanArray.add(bBooleanArrayItem);
+    try {
+      this.bBooleanArray.get().add(bBooleanArrayItem);
+    } catch (java.util.NoSuchElementException e) {
+      // this can never happen, as we make sure above that the value is present
+    }
     return this;
   }
 
@@ -185,31 +205,43 @@ public class PrimitiveArraysObject {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_B_BOOLEAN_ARRAY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public List<Boolean> getbBooleanArray() {
-    return bBooleanArray;
+        return bBooleanArray.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_B_BOOLEAN_ARRAY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setbBooleanArray(List<Boolean> bBooleanArray) {
+
+  public JsonNullable<List<Boolean>> getbBooleanArray_JsonNullable() {
+    return bBooleanArray;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_B_BOOLEAN_ARRAY)
+  public void setbBooleanArray_JsonNullable(JsonNullable<List<Boolean>> bBooleanArray) {
     this.bBooleanArray = bBooleanArray;
+  }
+
+  public void setbBooleanArray(List<Boolean> bBooleanArray) {
+    this.bBooleanArray = JsonNullable.<List<Boolean>>of(bBooleanArray);
   }
 
 
   public PrimitiveArraysObject cBooleanArray(List<Boolean> cBooleanArray) {
-    this.cBooleanArray = cBooleanArray;
+    this.cBooleanArray = JsonNullable.<List<Boolean>>of(cBooleanArray);
     return this;
   }
 
   public PrimitiveArraysObject addCBooleanArrayItem(Boolean cBooleanArrayItem) {
-    if (this.cBooleanArray == null) {
-      this.cBooleanArray = new ArrayList<>();
+    if (this.cBooleanArray == null || !this.cBooleanArray.isPresent()) {
+      this.cBooleanArray = JsonNullable.<List<Boolean>>of(new ArrayList<>());
     }
-    this.cBooleanArray.add(cBooleanArrayItem);
+    try {
+      this.cBooleanArray.get().add(cBooleanArrayItem);
+    } catch (java.util.NoSuchElementException e) {
+      // this can never happen, as we make sure above that the value is present
+    }
     return this;
   }
 
@@ -219,23 +251,31 @@ public class PrimitiveArraysObject {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_C_BOOLEAN_ARRAY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public List<Boolean> getcBooleanArray() {
-    return cBooleanArray;
+        return cBooleanArray.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_C_BOOLEAN_ARRAY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setcBooleanArray(List<Boolean> cBooleanArray) {
+
+  public JsonNullable<List<Boolean>> getcBooleanArray_JsonNullable() {
+    return cBooleanArray;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_C_BOOLEAN_ARRAY)
+  public void setcBooleanArray_JsonNullable(JsonNullable<List<Boolean>> cBooleanArray) {
     this.cBooleanArray = cBooleanArray;
+  }
+
+  public void setcBooleanArray(List<Boolean> cBooleanArray) {
+    this.cBooleanArray = JsonNullable.<List<Boolean>>of(cBooleanArray);
   }
 
 
   public PrimitiveArraysObject aByteArray(byte[] aByteArray) {
-    this.aByteArray = aByteArray;
+    this.aByteArray = JsonNullable.<byte[]>of(aByteArray);
     return this;
   }
 
@@ -245,23 +285,31 @@ public class PrimitiveArraysObject {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_A_BYTE_ARRAY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public byte[] getaByteArray() {
-    return aByteArray;
+        return aByteArray.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_A_BYTE_ARRAY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setaByteArray(byte[] aByteArray) {
+
+  public JsonNullable<byte[]> getaByteArray_JsonNullable() {
+    return aByteArray;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_A_BYTE_ARRAY)
+  public void setaByteArray_JsonNullable(JsonNullable<byte[]> aByteArray) {
     this.aByteArray = aByteArray;
+  }
+
+  public void setaByteArray(byte[] aByteArray) {
+    this.aByteArray = JsonNullable.<byte[]>of(aByteArray);
   }
 
 
   public PrimitiveArraysObject bByteArray(byte[] bByteArray) {
-    this.bByteArray = bByteArray;
+    this.bByteArray = JsonNullable.<byte[]>of(bByteArray);
     return this;
   }
 
@@ -271,31 +319,43 @@ public class PrimitiveArraysObject {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_B_BYTE_ARRAY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public byte[] getbByteArray() {
-    return bByteArray;
+        return bByteArray.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_B_BYTE_ARRAY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setbByteArray(byte[] bByteArray) {
+
+  public JsonNullable<byte[]> getbByteArray_JsonNullable() {
+    return bByteArray;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_B_BYTE_ARRAY)
+  public void setbByteArray_JsonNullable(JsonNullable<byte[]> bByteArray) {
     this.bByteArray = bByteArray;
+  }
+
+  public void setbByteArray(byte[] bByteArray) {
+    this.bByteArray = JsonNullable.<byte[]>of(bByteArray);
   }
 
 
   public PrimitiveArraysObject aShortArray(List<Integer> aShortArray) {
-    this.aShortArray = aShortArray;
+    this.aShortArray = JsonNullable.<List<Integer>>of(aShortArray);
     return this;
   }
 
   public PrimitiveArraysObject addAShortArrayItem(Integer aShortArrayItem) {
-    if (this.aShortArray == null) {
-      this.aShortArray = new ArrayList<>();
+    if (this.aShortArray == null || !this.aShortArray.isPresent()) {
+      this.aShortArray = JsonNullable.<List<Integer>>of(new ArrayList<>());
     }
-    this.aShortArray.add(aShortArrayItem);
+    try {
+      this.aShortArray.get().add(aShortArrayItem);
+    } catch (java.util.NoSuchElementException e) {
+      // this can never happen, as we make sure above that the value is present
+    }
     return this;
   }
 
@@ -305,31 +365,43 @@ public class PrimitiveArraysObject {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_A_SHORT_ARRAY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public List<Integer> getaShortArray() {
-    return aShortArray;
+        return aShortArray.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_A_SHORT_ARRAY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setaShortArray(List<Integer> aShortArray) {
+
+  public JsonNullable<List<Integer>> getaShortArray_JsonNullable() {
+    return aShortArray;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_A_SHORT_ARRAY)
+  public void setaShortArray_JsonNullable(JsonNullable<List<Integer>> aShortArray) {
     this.aShortArray = aShortArray;
+  }
+
+  public void setaShortArray(List<Integer> aShortArray) {
+    this.aShortArray = JsonNullable.<List<Integer>>of(aShortArray);
   }
 
 
   public PrimitiveArraysObject bShortArray(List<Integer> bShortArray) {
-    this.bShortArray = bShortArray;
+    this.bShortArray = JsonNullable.<List<Integer>>of(bShortArray);
     return this;
   }
 
   public PrimitiveArraysObject addBShortArrayItem(Integer bShortArrayItem) {
-    if (this.bShortArray == null) {
-      this.bShortArray = new ArrayList<>();
+    if (this.bShortArray == null || !this.bShortArray.isPresent()) {
+      this.bShortArray = JsonNullable.<List<Integer>>of(new ArrayList<>());
     }
-    this.bShortArray.add(bShortArrayItem);
+    try {
+      this.bShortArray.get().add(bShortArrayItem);
+    } catch (java.util.NoSuchElementException e) {
+      // this can never happen, as we make sure above that the value is present
+    }
     return this;
   }
 
@@ -339,31 +411,43 @@ public class PrimitiveArraysObject {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_B_SHORT_ARRAY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public List<Integer> getbShortArray() {
-    return bShortArray;
+        return bShortArray.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_B_SHORT_ARRAY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setbShortArray(List<Integer> bShortArray) {
+
+  public JsonNullable<List<Integer>> getbShortArray_JsonNullable() {
+    return bShortArray;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_B_SHORT_ARRAY)
+  public void setbShortArray_JsonNullable(JsonNullable<List<Integer>> bShortArray) {
     this.bShortArray = bShortArray;
+  }
+
+  public void setbShortArray(List<Integer> bShortArray) {
+    this.bShortArray = JsonNullable.<List<Integer>>of(bShortArray);
   }
 
 
   public PrimitiveArraysObject aIntegerArray(List<Integer> aIntegerArray) {
-    this.aIntegerArray = aIntegerArray;
+    this.aIntegerArray = JsonNullable.<List<Integer>>of(aIntegerArray);
     return this;
   }
 
   public PrimitiveArraysObject addAIntegerArrayItem(Integer aIntegerArrayItem) {
-    if (this.aIntegerArray == null) {
-      this.aIntegerArray = new ArrayList<>();
+    if (this.aIntegerArray == null || !this.aIntegerArray.isPresent()) {
+      this.aIntegerArray = JsonNullable.<List<Integer>>of(new ArrayList<>());
     }
-    this.aIntegerArray.add(aIntegerArrayItem);
+    try {
+      this.aIntegerArray.get().add(aIntegerArrayItem);
+    } catch (java.util.NoSuchElementException e) {
+      // this can never happen, as we make sure above that the value is present
+    }
     return this;
   }
 
@@ -373,31 +457,43 @@ public class PrimitiveArraysObject {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_A_INTEGER_ARRAY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public List<Integer> getaIntegerArray() {
-    return aIntegerArray;
+        return aIntegerArray.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_A_INTEGER_ARRAY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setaIntegerArray(List<Integer> aIntegerArray) {
+
+  public JsonNullable<List<Integer>> getaIntegerArray_JsonNullable() {
+    return aIntegerArray;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_A_INTEGER_ARRAY)
+  public void setaIntegerArray_JsonNullable(JsonNullable<List<Integer>> aIntegerArray) {
     this.aIntegerArray = aIntegerArray;
+  }
+
+  public void setaIntegerArray(List<Integer> aIntegerArray) {
+    this.aIntegerArray = JsonNullable.<List<Integer>>of(aIntegerArray);
   }
 
 
   public PrimitiveArraysObject bIntegerArray(List<Integer> bIntegerArray) {
-    this.bIntegerArray = bIntegerArray;
+    this.bIntegerArray = JsonNullable.<List<Integer>>of(bIntegerArray);
     return this;
   }
 
   public PrimitiveArraysObject addBIntegerArrayItem(Integer bIntegerArrayItem) {
-    if (this.bIntegerArray == null) {
-      this.bIntegerArray = new ArrayList<>();
+    if (this.bIntegerArray == null || !this.bIntegerArray.isPresent()) {
+      this.bIntegerArray = JsonNullable.<List<Integer>>of(new ArrayList<>());
     }
-    this.bIntegerArray.add(bIntegerArrayItem);
+    try {
+      this.bIntegerArray.get().add(bIntegerArrayItem);
+    } catch (java.util.NoSuchElementException e) {
+      // this can never happen, as we make sure above that the value is present
+    }
     return this;
   }
 
@@ -407,31 +503,43 @@ public class PrimitiveArraysObject {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_B_INTEGER_ARRAY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public List<Integer> getbIntegerArray() {
-    return bIntegerArray;
+        return bIntegerArray.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_B_INTEGER_ARRAY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setbIntegerArray(List<Integer> bIntegerArray) {
+
+  public JsonNullable<List<Integer>> getbIntegerArray_JsonNullable() {
+    return bIntegerArray;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_B_INTEGER_ARRAY)
+  public void setbIntegerArray_JsonNullable(JsonNullable<List<Integer>> bIntegerArray) {
     this.bIntegerArray = bIntegerArray;
+  }
+
+  public void setbIntegerArray(List<Integer> bIntegerArray) {
+    this.bIntegerArray = JsonNullable.<List<Integer>>of(bIntegerArray);
   }
 
 
   public PrimitiveArraysObject cIntegerArray(List<Integer> cIntegerArray) {
-    this.cIntegerArray = cIntegerArray;
+    this.cIntegerArray = JsonNullable.<List<Integer>>of(cIntegerArray);
     return this;
   }
 
   public PrimitiveArraysObject addCIntegerArrayItem(Integer cIntegerArrayItem) {
-    if (this.cIntegerArray == null) {
-      this.cIntegerArray = new ArrayList<>();
+    if (this.cIntegerArray == null || !this.cIntegerArray.isPresent()) {
+      this.cIntegerArray = JsonNullable.<List<Integer>>of(new ArrayList<>());
     }
-    this.cIntegerArray.add(cIntegerArrayItem);
+    try {
+      this.cIntegerArray.get().add(cIntegerArrayItem);
+    } catch (java.util.NoSuchElementException e) {
+      // this can never happen, as we make sure above that the value is present
+    }
     return this;
   }
 
@@ -441,31 +549,43 @@ public class PrimitiveArraysObject {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_C_INTEGER_ARRAY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public List<Integer> getcIntegerArray() {
-    return cIntegerArray;
+        return cIntegerArray.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_C_INTEGER_ARRAY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setcIntegerArray(List<Integer> cIntegerArray) {
+
+  public JsonNullable<List<Integer>> getcIntegerArray_JsonNullable() {
+    return cIntegerArray;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_C_INTEGER_ARRAY)
+  public void setcIntegerArray_JsonNullable(JsonNullable<List<Integer>> cIntegerArray) {
     this.cIntegerArray = cIntegerArray;
+  }
+
+  public void setcIntegerArray(List<Integer> cIntegerArray) {
+    this.cIntegerArray = JsonNullable.<List<Integer>>of(cIntegerArray);
   }
 
 
   public PrimitiveArraysObject aLongArray(List<Long> aLongArray) {
-    this.aLongArray = aLongArray;
+    this.aLongArray = JsonNullable.<List<Long>>of(aLongArray);
     return this;
   }
 
   public PrimitiveArraysObject addALongArrayItem(Long aLongArrayItem) {
-    if (this.aLongArray == null) {
-      this.aLongArray = new ArrayList<>();
+    if (this.aLongArray == null || !this.aLongArray.isPresent()) {
+      this.aLongArray = JsonNullable.<List<Long>>of(new ArrayList<>());
     }
-    this.aLongArray.add(aLongArrayItem);
+    try {
+      this.aLongArray.get().add(aLongArrayItem);
+    } catch (java.util.NoSuchElementException e) {
+      // this can never happen, as we make sure above that the value is present
+    }
     return this;
   }
 
@@ -475,31 +595,43 @@ public class PrimitiveArraysObject {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_A_LONG_ARRAY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public List<Long> getaLongArray() {
-    return aLongArray;
+        return aLongArray.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_A_LONG_ARRAY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setaLongArray(List<Long> aLongArray) {
+
+  public JsonNullable<List<Long>> getaLongArray_JsonNullable() {
+    return aLongArray;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_A_LONG_ARRAY)
+  public void setaLongArray_JsonNullable(JsonNullable<List<Long>> aLongArray) {
     this.aLongArray = aLongArray;
+  }
+
+  public void setaLongArray(List<Long> aLongArray) {
+    this.aLongArray = JsonNullable.<List<Long>>of(aLongArray);
   }
 
 
   public PrimitiveArraysObject bLongArray(List<Long> bLongArray) {
-    this.bLongArray = bLongArray;
+    this.bLongArray = JsonNullable.<List<Long>>of(bLongArray);
     return this;
   }
 
   public PrimitiveArraysObject addBLongArrayItem(Long bLongArrayItem) {
-    if (this.bLongArray == null) {
-      this.bLongArray = new ArrayList<>();
+    if (this.bLongArray == null || !this.bLongArray.isPresent()) {
+      this.bLongArray = JsonNullable.<List<Long>>of(new ArrayList<>());
     }
-    this.bLongArray.add(bLongArrayItem);
+    try {
+      this.bLongArray.get().add(bLongArrayItem);
+    } catch (java.util.NoSuchElementException e) {
+      // this can never happen, as we make sure above that the value is present
+    }
     return this;
   }
 
@@ -509,31 +641,43 @@ public class PrimitiveArraysObject {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_B_LONG_ARRAY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public List<Long> getbLongArray() {
-    return bLongArray;
+        return bLongArray.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_B_LONG_ARRAY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setbLongArray(List<Long> bLongArray) {
+
+  public JsonNullable<List<Long>> getbLongArray_JsonNullable() {
+    return bLongArray;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_B_LONG_ARRAY)
+  public void setbLongArray_JsonNullable(JsonNullable<List<Long>> bLongArray) {
     this.bLongArray = bLongArray;
+  }
+
+  public void setbLongArray(List<Long> bLongArray) {
+    this.bLongArray = JsonNullable.<List<Long>>of(bLongArray);
   }
 
 
   public PrimitiveArraysObject aBigIntegerArray(List<Long> aBigIntegerArray) {
-    this.aBigIntegerArray = aBigIntegerArray;
+    this.aBigIntegerArray = JsonNullable.<List<Long>>of(aBigIntegerArray);
     return this;
   }
 
   public PrimitiveArraysObject addABigIntegerArrayItem(Long aBigIntegerArrayItem) {
-    if (this.aBigIntegerArray == null) {
-      this.aBigIntegerArray = new ArrayList<>();
+    if (this.aBigIntegerArray == null || !this.aBigIntegerArray.isPresent()) {
+      this.aBigIntegerArray = JsonNullable.<List<Long>>of(new ArrayList<>());
     }
-    this.aBigIntegerArray.add(aBigIntegerArrayItem);
+    try {
+      this.aBigIntegerArray.get().add(aBigIntegerArrayItem);
+    } catch (java.util.NoSuchElementException e) {
+      // this can never happen, as we make sure above that the value is present
+    }
     return this;
   }
 
@@ -543,31 +687,43 @@ public class PrimitiveArraysObject {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_A_BIG_INTEGER_ARRAY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public List<Long> getaBigIntegerArray() {
-    return aBigIntegerArray;
+        return aBigIntegerArray.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_A_BIG_INTEGER_ARRAY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setaBigIntegerArray(List<Long> aBigIntegerArray) {
+
+  public JsonNullable<List<Long>> getaBigIntegerArray_JsonNullable() {
+    return aBigIntegerArray;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_A_BIG_INTEGER_ARRAY)
+  public void setaBigIntegerArray_JsonNullable(JsonNullable<List<Long>> aBigIntegerArray) {
     this.aBigIntegerArray = aBigIntegerArray;
+  }
+
+  public void setaBigIntegerArray(List<Long> aBigIntegerArray) {
+    this.aBigIntegerArray = JsonNullable.<List<Long>>of(aBigIntegerArray);
   }
 
 
   public PrimitiveArraysObject aCharacterArray(List<String> aCharacterArray) {
-    this.aCharacterArray = aCharacterArray;
+    this.aCharacterArray = JsonNullable.<List<String>>of(aCharacterArray);
     return this;
   }
 
   public PrimitiveArraysObject addACharacterArrayItem(String aCharacterArrayItem) {
-    if (this.aCharacterArray == null) {
-      this.aCharacterArray = new ArrayList<>();
+    if (this.aCharacterArray == null || !this.aCharacterArray.isPresent()) {
+      this.aCharacterArray = JsonNullable.<List<String>>of(new ArrayList<>());
     }
-    this.aCharacterArray.add(aCharacterArrayItem);
+    try {
+      this.aCharacterArray.get().add(aCharacterArrayItem);
+    } catch (java.util.NoSuchElementException e) {
+      // this can never happen, as we make sure above that the value is present
+    }
     return this;
   }
 
@@ -577,31 +733,43 @@ public class PrimitiveArraysObject {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_A_CHARACTER_ARRAY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public List<String> getaCharacterArray() {
-    return aCharacterArray;
+        return aCharacterArray.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_A_CHARACTER_ARRAY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setaCharacterArray(List<String> aCharacterArray) {
+
+  public JsonNullable<List<String>> getaCharacterArray_JsonNullable() {
+    return aCharacterArray;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_A_CHARACTER_ARRAY)
+  public void setaCharacterArray_JsonNullable(JsonNullable<List<String>> aCharacterArray) {
     this.aCharacterArray = aCharacterArray;
+  }
+
+  public void setaCharacterArray(List<String> aCharacterArray) {
+    this.aCharacterArray = JsonNullable.<List<String>>of(aCharacterArray);
   }
 
 
   public PrimitiveArraysObject bCharacterArray(List<String> bCharacterArray) {
-    this.bCharacterArray = bCharacterArray;
+    this.bCharacterArray = JsonNullable.<List<String>>of(bCharacterArray);
     return this;
   }
 
   public PrimitiveArraysObject addBCharacterArrayItem(String bCharacterArrayItem) {
-    if (this.bCharacterArray == null) {
-      this.bCharacterArray = new ArrayList<>();
+    if (this.bCharacterArray == null || !this.bCharacterArray.isPresent()) {
+      this.bCharacterArray = JsonNullable.<List<String>>of(new ArrayList<>());
     }
-    this.bCharacterArray.add(bCharacterArrayItem);
+    try {
+      this.bCharacterArray.get().add(bCharacterArrayItem);
+    } catch (java.util.NoSuchElementException e) {
+      // this can never happen, as we make sure above that the value is present
+    }
     return this;
   }
 
@@ -611,31 +779,43 @@ public class PrimitiveArraysObject {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_B_CHARACTER_ARRAY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public List<String> getbCharacterArray() {
-    return bCharacterArray;
+        return bCharacterArray.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_B_CHARACTER_ARRAY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setbCharacterArray(List<String> bCharacterArray) {
+
+  public JsonNullable<List<String>> getbCharacterArray_JsonNullable() {
+    return bCharacterArray;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_B_CHARACTER_ARRAY)
+  public void setbCharacterArray_JsonNullable(JsonNullable<List<String>> bCharacterArray) {
     this.bCharacterArray = bCharacterArray;
+  }
+
+  public void setbCharacterArray(List<String> bCharacterArray) {
+    this.bCharacterArray = JsonNullable.<List<String>>of(bCharacterArray);
   }
 
 
   public PrimitiveArraysObject aFloatArray(List<Float> aFloatArray) {
-    this.aFloatArray = aFloatArray;
+    this.aFloatArray = JsonNullable.<List<Float>>of(aFloatArray);
     return this;
   }
 
   public PrimitiveArraysObject addAFloatArrayItem(Float aFloatArrayItem) {
-    if (this.aFloatArray == null) {
-      this.aFloatArray = new ArrayList<>();
+    if (this.aFloatArray == null || !this.aFloatArray.isPresent()) {
+      this.aFloatArray = JsonNullable.<List<Float>>of(new ArrayList<>());
     }
-    this.aFloatArray.add(aFloatArrayItem);
+    try {
+      this.aFloatArray.get().add(aFloatArrayItem);
+    } catch (java.util.NoSuchElementException e) {
+      // this can never happen, as we make sure above that the value is present
+    }
     return this;
   }
 
@@ -645,31 +825,43 @@ public class PrimitiveArraysObject {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_A_FLOAT_ARRAY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public List<Float> getaFloatArray() {
-    return aFloatArray;
+        return aFloatArray.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_A_FLOAT_ARRAY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setaFloatArray(List<Float> aFloatArray) {
+
+  public JsonNullable<List<Float>> getaFloatArray_JsonNullable() {
+    return aFloatArray;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_A_FLOAT_ARRAY)
+  public void setaFloatArray_JsonNullable(JsonNullable<List<Float>> aFloatArray) {
     this.aFloatArray = aFloatArray;
+  }
+
+  public void setaFloatArray(List<Float> aFloatArray) {
+    this.aFloatArray = JsonNullable.<List<Float>>of(aFloatArray);
   }
 
 
   public PrimitiveArraysObject bFloatArray(List<Float> bFloatArray) {
-    this.bFloatArray = bFloatArray;
+    this.bFloatArray = JsonNullable.<List<Float>>of(bFloatArray);
     return this;
   }
 
   public PrimitiveArraysObject addBFloatArrayItem(Float bFloatArrayItem) {
-    if (this.bFloatArray == null) {
-      this.bFloatArray = new ArrayList<>();
+    if (this.bFloatArray == null || !this.bFloatArray.isPresent()) {
+      this.bFloatArray = JsonNullable.<List<Float>>of(new ArrayList<>());
     }
-    this.bFloatArray.add(bFloatArrayItem);
+    try {
+      this.bFloatArray.get().add(bFloatArrayItem);
+    } catch (java.util.NoSuchElementException e) {
+      // this can never happen, as we make sure above that the value is present
+    }
     return this;
   }
 
@@ -679,31 +871,43 @@ public class PrimitiveArraysObject {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_B_FLOAT_ARRAY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public List<Float> getbFloatArray() {
-    return bFloatArray;
+        return bFloatArray.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_B_FLOAT_ARRAY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setbFloatArray(List<Float> bFloatArray) {
+
+  public JsonNullable<List<Float>> getbFloatArray_JsonNullable() {
+    return bFloatArray;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_B_FLOAT_ARRAY)
+  public void setbFloatArray_JsonNullable(JsonNullable<List<Float>> bFloatArray) {
     this.bFloatArray = bFloatArray;
+  }
+
+  public void setbFloatArray(List<Float> bFloatArray) {
+    this.bFloatArray = JsonNullable.<List<Float>>of(bFloatArray);
   }
 
 
   public PrimitiveArraysObject aDoubleArray(List<Double> aDoubleArray) {
-    this.aDoubleArray = aDoubleArray;
+    this.aDoubleArray = JsonNullable.<List<Double>>of(aDoubleArray);
     return this;
   }
 
   public PrimitiveArraysObject addADoubleArrayItem(Double aDoubleArrayItem) {
-    if (this.aDoubleArray == null) {
-      this.aDoubleArray = new ArrayList<>();
+    if (this.aDoubleArray == null || !this.aDoubleArray.isPresent()) {
+      this.aDoubleArray = JsonNullable.<List<Double>>of(new ArrayList<>());
     }
-    this.aDoubleArray.add(aDoubleArrayItem);
+    try {
+      this.aDoubleArray.get().add(aDoubleArrayItem);
+    } catch (java.util.NoSuchElementException e) {
+      // this can never happen, as we make sure above that the value is present
+    }
     return this;
   }
 
@@ -713,31 +917,43 @@ public class PrimitiveArraysObject {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_A_DOUBLE_ARRAY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public List<Double> getaDoubleArray() {
-    return aDoubleArray;
+        return aDoubleArray.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_A_DOUBLE_ARRAY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setaDoubleArray(List<Double> aDoubleArray) {
+
+  public JsonNullable<List<Double>> getaDoubleArray_JsonNullable() {
+    return aDoubleArray;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_A_DOUBLE_ARRAY)
+  public void setaDoubleArray_JsonNullable(JsonNullable<List<Double>> aDoubleArray) {
     this.aDoubleArray = aDoubleArray;
+  }
+
+  public void setaDoubleArray(List<Double> aDoubleArray) {
+    this.aDoubleArray = JsonNullable.<List<Double>>of(aDoubleArray);
   }
 
 
   public PrimitiveArraysObject bDoubleArray(List<Double> bDoubleArray) {
-    this.bDoubleArray = bDoubleArray;
+    this.bDoubleArray = JsonNullable.<List<Double>>of(bDoubleArray);
     return this;
   }
 
   public PrimitiveArraysObject addBDoubleArrayItem(Double bDoubleArrayItem) {
-    if (this.bDoubleArray == null) {
-      this.bDoubleArray = new ArrayList<>();
+    if (this.bDoubleArray == null || !this.bDoubleArray.isPresent()) {
+      this.bDoubleArray = JsonNullable.<List<Double>>of(new ArrayList<>());
     }
-    this.bDoubleArray.add(bDoubleArrayItem);
+    try {
+      this.bDoubleArray.get().add(bDoubleArrayItem);
+    } catch (java.util.NoSuchElementException e) {
+      // this can never happen, as we make sure above that the value is present
+    }
     return this;
   }
 
@@ -747,31 +963,43 @@ public class PrimitiveArraysObject {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_B_DOUBLE_ARRAY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public List<Double> getbDoubleArray() {
-    return bDoubleArray;
+        return bDoubleArray.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_B_DOUBLE_ARRAY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setbDoubleArray(List<Double> bDoubleArray) {
+
+  public JsonNullable<List<Double>> getbDoubleArray_JsonNullable() {
+    return bDoubleArray;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_B_DOUBLE_ARRAY)
+  public void setbDoubleArray_JsonNullable(JsonNullable<List<Double>> bDoubleArray) {
     this.bDoubleArray = bDoubleArray;
+  }
+
+  public void setbDoubleArray(List<Double> bDoubleArray) {
+    this.bDoubleArray = JsonNullable.<List<Double>>of(bDoubleArray);
   }
 
 
   public PrimitiveArraysObject aBigDecimalArray(List<Double> aBigDecimalArray) {
-    this.aBigDecimalArray = aBigDecimalArray;
+    this.aBigDecimalArray = JsonNullable.<List<Double>>of(aBigDecimalArray);
     return this;
   }
 
   public PrimitiveArraysObject addABigDecimalArrayItem(Double aBigDecimalArrayItem) {
-    if (this.aBigDecimalArray == null) {
-      this.aBigDecimalArray = new ArrayList<>();
+    if (this.aBigDecimalArray == null || !this.aBigDecimalArray.isPresent()) {
+      this.aBigDecimalArray = JsonNullable.<List<Double>>of(new ArrayList<>());
     }
-    this.aBigDecimalArray.add(aBigDecimalArrayItem);
+    try {
+      this.aBigDecimalArray.get().add(aBigDecimalArrayItem);
+    } catch (java.util.NoSuchElementException e) {
+      // this can never happen, as we make sure above that the value is present
+    }
     return this;
   }
 
@@ -781,31 +1009,43 @@ public class PrimitiveArraysObject {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_A_BIG_DECIMAL_ARRAY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public List<Double> getaBigDecimalArray() {
-    return aBigDecimalArray;
+        return aBigDecimalArray.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_A_BIG_DECIMAL_ARRAY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setaBigDecimalArray(List<Double> aBigDecimalArray) {
+
+  public JsonNullable<List<Double>> getaBigDecimalArray_JsonNullable() {
+    return aBigDecimalArray;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_A_BIG_DECIMAL_ARRAY)
+  public void setaBigDecimalArray_JsonNullable(JsonNullable<List<Double>> aBigDecimalArray) {
     this.aBigDecimalArray = aBigDecimalArray;
+  }
+
+  public void setaBigDecimalArray(List<Double> aBigDecimalArray) {
+    this.aBigDecimalArray = JsonNullable.<List<Double>>of(aBigDecimalArray);
   }
 
 
   public PrimitiveArraysObject aStringArray(List<String> aStringArray) {
-    this.aStringArray = aStringArray;
+    this.aStringArray = JsonNullable.<List<String>>of(aStringArray);
     return this;
   }
 
   public PrimitiveArraysObject addAStringArrayItem(String aStringArrayItem) {
-    if (this.aStringArray == null) {
-      this.aStringArray = new ArrayList<>();
+    if (this.aStringArray == null || !this.aStringArray.isPresent()) {
+      this.aStringArray = JsonNullable.<List<String>>of(new ArrayList<>());
     }
-    this.aStringArray.add(aStringArrayItem);
+    try {
+      this.aStringArray.get().add(aStringArrayItem);
+    } catch (java.util.NoSuchElementException e) {
+      // this can never happen, as we make sure above that the value is present
+    }
     return this;
   }
 
@@ -815,31 +1055,43 @@ public class PrimitiveArraysObject {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_A_STRING_ARRAY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public List<String> getaStringArray() {
-    return aStringArray;
+        return aStringArray.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_A_STRING_ARRAY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setaStringArray(List<String> aStringArray) {
+
+  public JsonNullable<List<String>> getaStringArray_JsonNullable() {
+    return aStringArray;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_A_STRING_ARRAY)
+  public void setaStringArray_JsonNullable(JsonNullable<List<String>> aStringArray) {
     this.aStringArray = aStringArray;
+  }
+
+  public void setaStringArray(List<String> aStringArray) {
+    this.aStringArray = JsonNullable.<List<String>>of(aStringArray);
   }
 
 
   public PrimitiveArraysObject bStringArray(List<String> bStringArray) {
-    this.bStringArray = bStringArray;
+    this.bStringArray = JsonNullable.<List<String>>of(bStringArray);
     return this;
   }
 
   public PrimitiveArraysObject addBStringArrayItem(String bStringArrayItem) {
-    if (this.bStringArray == null) {
-      this.bStringArray = new ArrayList<>();
+    if (this.bStringArray == null || !this.bStringArray.isPresent()) {
+      this.bStringArray = JsonNullable.<List<String>>of(new ArrayList<>());
     }
-    this.bStringArray.add(bStringArrayItem);
+    try {
+      this.bStringArray.get().add(bStringArrayItem);
+    } catch (java.util.NoSuchElementException e) {
+      // this can never happen, as we make sure above that the value is present
+    }
     return this;
   }
 
@@ -849,18 +1101,26 @@ public class PrimitiveArraysObject {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_B_STRING_ARRAY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public List<String> getbStringArray() {
-    return bStringArray;
+        return bStringArray.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_B_STRING_ARRAY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setbStringArray(List<String> bStringArray) {
+
+  public JsonNullable<List<String>> getbStringArray_JsonNullable() {
+    return bStringArray;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_B_STRING_ARRAY)
+  public void setbStringArray_JsonNullable(JsonNullable<List<String>> bStringArray) {
     this.bStringArray = bStringArray;
+  }
+
+  public void setbStringArray(List<String> bStringArray) {
+    this.bStringArray = JsonNullable.<List<String>>of(bStringArray);
   }
 
 
@@ -907,34 +1167,45 @@ public class PrimitiveArraysObject {
       return false;
     }
     PrimitiveArraysObject primitiveArraysObject = (PrimitiveArraysObject) o;
-    return Objects.equals(this.aBooleanArray, primitiveArraysObject.aBooleanArray) &&
-        Objects.equals(this.bBooleanArray, primitiveArraysObject.bBooleanArray) &&
-        Objects.equals(this.cBooleanArray, primitiveArraysObject.cBooleanArray) &&
-        Arrays.equals(this.aByteArray, primitiveArraysObject.aByteArray) &&
-        Arrays.equals(this.bByteArray, primitiveArraysObject.bByteArray) &&
-        Objects.equals(this.aShortArray, primitiveArraysObject.aShortArray) &&
-        Objects.equals(this.bShortArray, primitiveArraysObject.bShortArray) &&
-        Objects.equals(this.aIntegerArray, primitiveArraysObject.aIntegerArray) &&
-        Objects.equals(this.bIntegerArray, primitiveArraysObject.bIntegerArray) &&
-        Objects.equals(this.cIntegerArray, primitiveArraysObject.cIntegerArray) &&
-        Objects.equals(this.aLongArray, primitiveArraysObject.aLongArray) &&
-        Objects.equals(this.bLongArray, primitiveArraysObject.bLongArray) &&
-        Objects.equals(this.aBigIntegerArray, primitiveArraysObject.aBigIntegerArray) &&
-        Objects.equals(this.aCharacterArray, primitiveArraysObject.aCharacterArray) &&
-        Objects.equals(this.bCharacterArray, primitiveArraysObject.bCharacterArray) &&
-        Objects.equals(this.aFloatArray, primitiveArraysObject.aFloatArray) &&
-        Objects.equals(this.bFloatArray, primitiveArraysObject.bFloatArray) &&
-        Objects.equals(this.aDoubleArray, primitiveArraysObject.aDoubleArray) &&
-        Objects.equals(this.bDoubleArray, primitiveArraysObject.bDoubleArray) &&
-        Objects.equals(this.aBigDecimalArray, primitiveArraysObject.aBigDecimalArray) &&
-        Objects.equals(this.aStringArray, primitiveArraysObject.aStringArray) &&
-        Objects.equals(this.bStringArray, primitiveArraysObject.bStringArray) &&
+    return equalsNullable(this.aBooleanArray, primitiveArraysObject.aBooleanArray) &&
+        equalsNullable(this.bBooleanArray, primitiveArraysObject.bBooleanArray) &&
+        equalsNullable(this.cBooleanArray, primitiveArraysObject.cBooleanArray) &&
+        equalsNullable(this.aByteArray, primitiveArraysObject.aByteArray) &&
+        equalsNullable(this.bByteArray, primitiveArraysObject.bByteArray) &&
+        equalsNullable(this.aShortArray, primitiveArraysObject.aShortArray) &&
+        equalsNullable(this.bShortArray, primitiveArraysObject.bShortArray) &&
+        equalsNullable(this.aIntegerArray, primitiveArraysObject.aIntegerArray) &&
+        equalsNullable(this.bIntegerArray, primitiveArraysObject.bIntegerArray) &&
+        equalsNullable(this.cIntegerArray, primitiveArraysObject.cIntegerArray) &&
+        equalsNullable(this.aLongArray, primitiveArraysObject.aLongArray) &&
+        equalsNullable(this.bLongArray, primitiveArraysObject.bLongArray) &&
+        equalsNullable(this.aBigIntegerArray, primitiveArraysObject.aBigIntegerArray) &&
+        equalsNullable(this.aCharacterArray, primitiveArraysObject.aCharacterArray) &&
+        equalsNullable(this.bCharacterArray, primitiveArraysObject.bCharacterArray) &&
+        equalsNullable(this.aFloatArray, primitiveArraysObject.aFloatArray) &&
+        equalsNullable(this.bFloatArray, primitiveArraysObject.bFloatArray) &&
+        equalsNullable(this.aDoubleArray, primitiveArraysObject.aDoubleArray) &&
+        equalsNullable(this.bDoubleArray, primitiveArraysObject.bDoubleArray) &&
+        equalsNullable(this.aBigDecimalArray, primitiveArraysObject.aBigDecimalArray) &&
+        equalsNullable(this.aStringArray, primitiveArraysObject.aStringArray) &&
+        equalsNullable(this.bStringArray, primitiveArraysObject.bStringArray) &&
         Objects.equals(this.cStringArray, primitiveArraysObject.cStringArray);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(aBooleanArray, bBooleanArray, cBooleanArray, Arrays.hashCode(aByteArray), Arrays.hashCode(bByteArray), aShortArray, bShortArray, aIntegerArray, bIntegerArray, cIntegerArray, aLongArray, bLongArray, aBigIntegerArray, aCharacterArray, bCharacterArray, aFloatArray, bFloatArray, aDoubleArray, bDoubleArray, aBigDecimalArray, aStringArray, bStringArray, cStringArray);
+    return Objects.hash(hashCodeNullable(aBooleanArray), hashCodeNullable(bBooleanArray), hashCodeNullable(cBooleanArray), hashCodeNullable(aByteArray), hashCodeNullable(bByteArray), hashCodeNullable(aShortArray), hashCodeNullable(bShortArray), hashCodeNullable(aIntegerArray), hashCodeNullable(bIntegerArray), hashCodeNullable(cIntegerArray), hashCodeNullable(aLongArray), hashCodeNullable(bLongArray), hashCodeNullable(aBigIntegerArray), hashCodeNullable(aCharacterArray), hashCodeNullable(bCharacterArray), hashCodeNullable(aFloatArray), hashCodeNullable(bFloatArray), hashCodeNullable(aDoubleArray), hashCodeNullable(bDoubleArray), hashCodeNullable(aBigDecimalArray), hashCodeNullable(aStringArray), hashCodeNullable(bStringArray), cStringArray);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

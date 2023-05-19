@@ -874,6 +874,7 @@ paths:
                   minLength: 3
                   maxLength: 3
                   example: CHF
+                nullable: true
           headers:
             X-Global-Response-Header:
               schema:
@@ -912,6 +913,7 @@ paths:
                   minLength: 3
                   maxLength: 3
                   example: CHF
+                nullable: true
           headers:
             X-Global-Response-Header:
               schema:
@@ -1276,6 +1278,7 @@ paths:
             items:
               type: number
               format: double
+            nullable: true
       responses:
         '200':
           description: |
@@ -1306,6 +1309,7 @@ paths:
             items:
               type: number
               format: double
+            nullable: true
         - name: pEnums
           in: query
           schema:
@@ -1343,6 +1347,7 @@ paths:
             type: array
             items:
               type: string
+            nullable: true
         - name: longCodeQueryParam
           in: query
           description: |
@@ -1352,6 +1357,7 @@ paths:
             items:
               type: integer
               format: int64
+            nullable: true
         - name: literals
           in: query
           description: |
@@ -1415,6 +1421,7 @@ paths:
             type: array
             items:
               type: string
+            nullable: true
         - name: longCodeQueryParam
           in: query
           description: |
@@ -1424,6 +1431,7 @@ paths:
             items:
               type: integer
               format: int64
+            nullable: true
         - name: literals
           in: query
           description: |

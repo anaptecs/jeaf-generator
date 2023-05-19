@@ -28,6 +28,10 @@ import java.util.ArrayList;
 import java.util.List;
 import openapitools.model.ChildB;
 import openapitools.model.ParentClass;
+import org.openapitools.jackson.nullable.JsonNullable;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import openapitools.JSON;
 
@@ -57,7 +61,7 @@ public class ChildBBAllOf {
   private ParentClass deprecatedParent;
 
   public static final String JSON_PROPERTY_DEPRECATED_ARRAY = "deprecatedArray";
-  private byte[] deprecatedArray;
+  private JsonNullable<byte[]> deprecatedArray = JsonNullable.<byte[]>undefined();
 
   public ChildBBAllOf() { 
   }
@@ -179,7 +183,7 @@ public class ChildBBAllOf {
 
 
   public ChildBBAllOf deprecatedArray(byte[] deprecatedArray) {
-    this.deprecatedArray = deprecatedArray;
+    this.deprecatedArray = JsonNullable.<byte[]>of(deprecatedArray);
     return this;
   }
 
@@ -189,18 +193,26 @@ public class ChildBBAllOf {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_DEPRECATED_ARRAY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public byte[] getDeprecatedArray() {
-    return deprecatedArray;
+        return deprecatedArray.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_DEPRECATED_ARRAY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDeprecatedArray(byte[] deprecatedArray) {
+
+  public JsonNullable<byte[]> getDeprecatedArray_JsonNullable() {
+    return deprecatedArray;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_DEPRECATED_ARRAY)
+  public void setDeprecatedArray_JsonNullable(JsonNullable<byte[]> deprecatedArray) {
     this.deprecatedArray = deprecatedArray;
+  }
+
+  public void setDeprecatedArray(byte[] deprecatedArray) {
+    this.deprecatedArray = JsonNullable.<byte[]>of(deprecatedArray);
   }
 
 
@@ -220,12 +232,23 @@ public class ChildBBAllOf {
         Objects.equals(this.deprecatedAttribute, childBBAllOf.deprecatedAttribute) &&
         Objects.equals(this.deprecatedBs, childBBAllOf.deprecatedBs) &&
         Objects.equals(this.deprecatedParent, childBBAllOf.deprecatedParent) &&
-        Arrays.equals(this.deprecatedArray, childBBAllOf.deprecatedArray);
+        equalsNullable(this.deprecatedArray, childBBAllOf.deprecatedArray);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(childBBAttribute, deprecatedAttribute, deprecatedBs, deprecatedParent, Arrays.hashCode(deprecatedArray));
+    return Objects.hash(childBBAttribute, deprecatedAttribute, deprecatedBs, deprecatedParent, hashCodeNullable(deprecatedArray));
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

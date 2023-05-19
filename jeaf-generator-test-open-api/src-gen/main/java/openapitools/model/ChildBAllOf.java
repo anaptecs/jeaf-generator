@@ -27,6 +27,10 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
 import openapitools.model.ParentClass;
+import org.openapitools.jackson.nullable.JsonNullable;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import openapitools.JSON;
 
@@ -41,7 +45,7 @@ import openapitools.JSON;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ChildBAllOf {
   public static final String JSON_PROPERTY_CHILD_B_ATTRIBUTE = "childBAttribute";
-  private List<Boolean> childBAttribute = null;
+  private JsonNullable<List<Boolean>> childBAttribute = JsonNullable.<List<Boolean>>undefined();
 
   public static final String JSON_PROPERTY_COMPOSITION = "composition";
   private List<ParentClass> composition = null;
@@ -50,15 +54,19 @@ public class ChildBAllOf {
   }
 
   public ChildBAllOf childBAttribute(List<Boolean> childBAttribute) {
-    this.childBAttribute = childBAttribute;
+    this.childBAttribute = JsonNullable.<List<Boolean>>of(childBAttribute);
     return this;
   }
 
   public ChildBAllOf addChildBAttributeItem(Boolean childBAttributeItem) {
-    if (this.childBAttribute == null) {
-      this.childBAttribute = new ArrayList<>();
+    if (this.childBAttribute == null || !this.childBAttribute.isPresent()) {
+      this.childBAttribute = JsonNullable.<List<Boolean>>of(new ArrayList<>());
     }
-    this.childBAttribute.add(childBAttributeItem);
+    try {
+      this.childBAttribute.get().add(childBAttributeItem);
+    } catch (java.util.NoSuchElementException e) {
+      // this can never happen, as we make sure above that the value is present
+    }
     return this;
   }
 
@@ -68,18 +76,26 @@ public class ChildBAllOf {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "A child attribute ")
-  @JsonProperty(JSON_PROPERTY_CHILD_B_ATTRIBUTE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public List<Boolean> getChildBAttribute() {
-    return childBAttribute;
+        return childBAttribute.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_CHILD_B_ATTRIBUTE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setChildBAttribute(List<Boolean> childBAttribute) {
+
+  public JsonNullable<List<Boolean>> getChildBAttribute_JsonNullable() {
+    return childBAttribute;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_CHILD_B_ATTRIBUTE)
+  public void setChildBAttribute_JsonNullable(JsonNullable<List<Boolean>> childBAttribute) {
     this.childBAttribute = childBAttribute;
+  }
+
+  public void setChildBAttribute(List<Boolean> childBAttribute) {
+    this.childBAttribute = JsonNullable.<List<Boolean>>of(childBAttribute);
   }
 
 
@@ -129,13 +145,24 @@ public class ChildBAllOf {
       return false;
     }
     ChildBAllOf childBAllOf = (ChildBAllOf) o;
-    return Objects.equals(this.childBAttribute, childBAllOf.childBAttribute) &&
+    return equalsNullable(this.childBAttribute, childBAllOf.childBAttribute) &&
         Objects.equals(this.composition, childBAllOf.composition);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(childBAttribute, composition);
+    return Objects.hash(hashCodeNullable(childBAttribute), composition);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

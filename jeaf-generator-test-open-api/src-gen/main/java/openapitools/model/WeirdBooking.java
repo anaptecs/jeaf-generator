@@ -32,6 +32,10 @@ import openapitools.model.Booking;
 import openapitools.model.InventoryType;
 import openapitools.model.WeirdBookingAllOf;
 import openapitools.model.WeirdParent;
+import org.openapitools.jackson.nullable.JsonNullable;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import openapitools.JSON;
 
@@ -55,7 +59,7 @@ public class WeirdBooking extends WeirdParent {
   private String booking;
 
   public static final String JSON_PROPERTY_ADDITIONAL_BOOKINGS = "additionalBookings";
-  private List<String> additionalBookings = null;
+  private JsonNullable<List<String>> additionalBookings = JsonNullable.<List<String>>undefined();
 
   public static final String JSON_PROPERTY_VERSIONED_OBJECT_SOFT_LINK = "versionedObjectSoftLink";
   private String versionedObjectSoftLink;
@@ -99,15 +103,19 @@ public class WeirdBooking extends WeirdParent {
 
 
   public WeirdBooking additionalBookings(List<String> additionalBookings) {
-    this.additionalBookings = additionalBookings;
+    this.additionalBookings = JsonNullable.<List<String>>of(additionalBookings);
     return this;
   }
 
   public WeirdBooking addAdditionalBookingsItem(String additionalBookingsItem) {
-    if (this.additionalBookings == null) {
-      this.additionalBookings = new ArrayList<>();
+    if (this.additionalBookings == null || !this.additionalBookings.isPresent()) {
+      this.additionalBookings = JsonNullable.<List<String>>of(new ArrayList<>());
     }
-    this.additionalBookings.add(additionalBookingsItem);
+    try {
+      this.additionalBookings.get().add(additionalBookingsItem);
+    } catch (java.util.NoSuchElementException e) {
+      // this can never happen, as we make sure above that the value is present
+    }
     return this;
   }
 
@@ -117,18 +125,26 @@ public class WeirdBooking extends WeirdParent {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "additional bookings ")
-  @JsonProperty(JSON_PROPERTY_ADDITIONAL_BOOKINGS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public List<String> getAdditionalBookings() {
-    return additionalBookings;
+        return additionalBookings.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_ADDITIONAL_BOOKINGS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAdditionalBookings(List<String> additionalBookings) {
+
+  public JsonNullable<List<String>> getAdditionalBookings_JsonNullable() {
+    return additionalBookings;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_ADDITIONAL_BOOKINGS)
+  public void setAdditionalBookings_JsonNullable(JsonNullable<List<String>> additionalBookings) {
     this.additionalBookings = additionalBookings;
+  }
+
+  public void setAdditionalBookings(List<String> additionalBookings) {
+    this.additionalBookings = JsonNullable.<List<String>>of(additionalBookings);
   }
 
 
@@ -257,7 +273,7 @@ public class WeirdBooking extends WeirdParent {
     }
     WeirdBooking weirdBooking = (WeirdBooking) o;
     return Objects.equals(this.booking, weirdBooking.booking) &&
-        Objects.equals(this.additionalBookings, weirdBooking.additionalBookings) &&
+        equalsNullable(this.additionalBookings, weirdBooking.additionalBookings) &&
         Objects.equals(this.versionedObjectSoftLink, weirdBooking.versionedObjectSoftLink) &&
         Objects.equals(this.childProperty, weirdBooking.childProperty) &&
         Objects.equals(this.realBooking, weirdBooking.realBooking) &&
@@ -265,9 +281,20 @@ public class WeirdBooking extends WeirdParent {
         super.equals(o);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
-    return Objects.hash(booking, additionalBookings, versionedObjectSoftLink, childProperty, realBooking, inventories, super.hashCode());
+    return Objects.hash(booking, hashCodeNullable(additionalBookings), versionedObjectSoftLink, childProperty, realBooking, inventories, super.hashCode());
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

@@ -28,6 +28,10 @@ import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 import openapitools.model.Reseller;
+import org.openapitools.jackson.nullable.JsonNullable;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import openapitools.JSON;
 
@@ -56,7 +60,7 @@ public class Product {
   private String name;
 
   public static final String JSON_PROPERTY_IMAGE = "image";
-  private byte[] image;
+  private JsonNullable<byte[]> image = JsonNullable.<byte[]>undefined();
 
   public static final String JSON_PROPERTY_LINK = "link";
   private String link;
@@ -140,7 +144,7 @@ public class Product {
 
 
   public Product image(byte[] image) {
-    this.image = image;
+    this.image = JsonNullable.<byte[]>of(image);
     return this;
   }
 
@@ -150,18 +154,26 @@ public class Product {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Image describing the product. ")
-  @JsonProperty(JSON_PROPERTY_IMAGE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public byte[] getImage() {
-    return image;
+        return image.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_IMAGE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setImage(byte[] image) {
+
+  public JsonNullable<byte[]> getImage_JsonNullable() {
+    return image;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_IMAGE)
+  public void setImage_JsonNullable(JsonNullable<byte[]> image) {
     this.image = image;
+  }
+
+  public void setImage(byte[] image) {
+    this.image = JsonNullable.<byte[]>of(image);
   }
 
 
@@ -347,7 +359,7 @@ public class Product {
     Product product = (Product) o;
     return Objects.equals(this.resellers, product.resellers) &&
         Objects.equals(this.name, product.name) &&
-        Arrays.equals(this.image, product.image) &&
+        equalsNullable(this.image, product.image) &&
         Objects.equals(this.link, product.link) &&
         Objects.equals(this.productID, product.productID) &&
         Objects.equals(this.supportedCurrencies, product.supportedCurrencies) &&
@@ -356,9 +368,20 @@ public class Product {
         Objects.equals(this.uri, product.uri);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
-    return Objects.hash(resellers, name, Arrays.hashCode(image), link, productID, supportedCurrencies, productCodes, description, uri);
+    return Objects.hash(resellers, name, hashCodeNullable(image), link, productID, supportedCurrencies, productCodes, description, uri);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

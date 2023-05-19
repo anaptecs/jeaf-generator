@@ -31,6 +31,10 @@ import java.util.List;
 import openapitools.model.BankAccount;
 import openapitools.model.ChildA;
 import openapitools.model.ChildAAAllOf;
+import org.openapitools.jackson.nullable.JsonNullable;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import openapitools.JSON;
 
@@ -57,7 +61,7 @@ public class ChildAA extends ChildA {
   private Integer childAAAttribute;
 
   public static final String JSON_PROPERTY_SIZED_ARRAY = "sizedArray";
-  private List<Integer> sizedArray = null;
+  private JsonNullable<List<Integer>> sizedArray = JsonNullable.<List<Integer>>undefined();
 
   public static final String JSON_PROPERTY_REQUIRED_ARRAY = "requiredArray";
   private List<String> requiredArray = new ArrayList<>();
@@ -69,7 +73,7 @@ public class ChildAA extends ChildA {
   private Integer integerCode;
 
   public static final String JSON_PROPERTY_CODES = "codes";
-  private List<Integer> codes = null;
+  private JsonNullable<List<Integer>> codes = JsonNullable.<List<Integer>>undefined();
 
   public ChildAA() { 
   }
@@ -101,15 +105,19 @@ public class ChildAA extends ChildA {
 
 
   public ChildAA sizedArray(List<Integer> sizedArray) {
-    this.sizedArray = sizedArray;
+    this.sizedArray = JsonNullable.<List<Integer>>of(sizedArray);
     return this;
   }
 
   public ChildAA addSizedArrayItem(Integer sizedArrayItem) {
-    if (this.sizedArray == null) {
-      this.sizedArray = new ArrayList<>();
+    if (this.sizedArray == null || !this.sizedArray.isPresent()) {
+      this.sizedArray = JsonNullable.<List<Integer>>of(new ArrayList<>());
     }
-    this.sizedArray.add(sizedArrayItem);
+    try {
+      this.sizedArray.get().add(sizedArrayItem);
+    } catch (java.util.NoSuchElementException e) {
+      // this can never happen, as we make sure above that the value is present
+    }
     return this;
   }
 
@@ -119,18 +127,26 @@ public class ChildAA extends ChildA {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_SIZED_ARRAY)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public List<Integer> getSizedArray() {
-    return sizedArray;
+        return sizedArray.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_SIZED_ARRAY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSizedArray(List<Integer> sizedArray) {
+
+  public JsonNullable<List<Integer>> getSizedArray_JsonNullable() {
+    return sizedArray;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_SIZED_ARRAY)
+  public void setSizedArray_JsonNullable(JsonNullable<List<Integer>> sizedArray) {
     this.sizedArray = sizedArray;
+  }
+
+  public void setSizedArray(List<Integer> sizedArray) {
+    this.sizedArray = JsonNullable.<List<Integer>>of(sizedArray);
   }
 
 
@@ -219,15 +235,19 @@ public class ChildAA extends ChildA {
 
 
   public ChildAA codes(List<Integer> codes) {
-    this.codes = codes;
+    this.codes = JsonNullable.<List<Integer>>of(codes);
     return this;
   }
 
   public ChildAA addCodesItem(Integer codesItem) {
-    if (this.codes == null) {
-      this.codes = new ArrayList<>();
+    if (this.codes == null || !this.codes.isPresent()) {
+      this.codes = JsonNullable.<List<Integer>>of(new ArrayList<>());
     }
-    this.codes.add(codesItem);
+    try {
+      this.codes.get().add(codesItem);
+    } catch (java.util.NoSuchElementException e) {
+      // this can never happen, as we make sure above that the value is present
+    }
     return this;
   }
 
@@ -237,18 +257,26 @@ public class ChildAA extends ChildA {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_CODES)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public List<Integer> getCodes() {
-    return codes;
+        return codes.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_CODES)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCodes(List<Integer> codes) {
+
+  public JsonNullable<List<Integer>> getCodes_JsonNullable() {
+    return codes;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_CODES)
+  public void setCodes_JsonNullable(JsonNullable<List<Integer>> codes) {
     this.codes = codes;
+  }
+
+  public void setCodes(List<Integer> codes) {
+    this.codes = JsonNullable.<List<Integer>>of(codes);
   }
 
 
@@ -265,17 +293,28 @@ public class ChildAA extends ChildA {
     }
     ChildAA childAA = (ChildAA) o;
     return Objects.equals(this.childAAAttribute, childAA.childAAAttribute) &&
-        Objects.equals(this.sizedArray, childAA.sizedArray) &&
+        equalsNullable(this.sizedArray, childAA.sizedArray) &&
         Objects.equals(this.requiredArray, childAA.requiredArray) &&
         Objects.equals(this.bigIntegerCode, childAA.bigIntegerCode) &&
         Objects.equals(this.integerCode, childAA.integerCode) &&
-        Objects.equals(this.codes, childAA.codes) &&
+        equalsNullable(this.codes, childAA.codes) &&
         super.equals(o);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(childAAAttribute, sizedArray, requiredArray, bigIntegerCode, integerCode, codes, super.hashCode());
+    return Objects.hash(childAAAttribute, hashCodeNullable(sizedArray), requiredArray, bigIntegerCode, integerCode, hashCodeNullable(codes), super.hashCode());
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

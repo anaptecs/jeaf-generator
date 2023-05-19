@@ -26,6 +26,10 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import openapitools.JSON;
 
@@ -39,21 +43,25 @@ import openapitools.JSON;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class DiscountOffer {
   public static final String JSON_PROPERTY_CAMPAIGNS = "campaigns";
-  private List<String> campaigns = null;
+  private JsonNullable<List<String>> campaigns = JsonNullable.<List<String>>undefined();
 
   public DiscountOffer() { 
   }
 
   public DiscountOffer campaigns(List<String> campaigns) {
-    this.campaigns = campaigns;
+    this.campaigns = JsonNullable.<List<String>>of(campaigns);
     return this;
   }
 
   public DiscountOffer addCampaignsItem(String campaignsItem) {
-    if (this.campaigns == null) {
-      this.campaigns = new ArrayList<>();
+    if (this.campaigns == null || !this.campaigns.isPresent()) {
+      this.campaigns = JsonNullable.<List<String>>of(new ArrayList<>());
     }
-    this.campaigns.add(campaignsItem);
+    try {
+      this.campaigns.get().add(campaignsItem);
+    } catch (java.util.NoSuchElementException e) {
+      // this can never happen, as we make sure above that the value is present
+    }
     return this;
   }
 
@@ -65,18 +73,26 @@ public class DiscountOffer {
   @Deprecated
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_CAMPAIGNS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public List<String> getCampaigns() {
-    return campaigns;
+        return campaigns.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_CAMPAIGNS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCampaigns(List<String> campaigns) {
+
+  public JsonNullable<List<String>> getCampaigns_JsonNullable() {
+    return campaigns;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_CAMPAIGNS)
+  public void setCampaigns_JsonNullable(JsonNullable<List<String>> campaigns) {
     this.campaigns = campaigns;
+  }
+
+  public void setCampaigns(List<String> campaigns) {
+    this.campaigns = JsonNullable.<List<String>>of(campaigns);
   }
 
 
@@ -92,12 +108,23 @@ public class DiscountOffer {
       return false;
     }
     DiscountOffer discountOffer = (DiscountOffer) o;
-    return Objects.equals(this.campaigns, discountOffer.campaigns);
+    return equalsNullable(this.campaigns, discountOffer.campaigns);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(campaigns);
+    return Objects.hash(hashCodeNullable(campaigns));
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

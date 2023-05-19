@@ -33,6 +33,10 @@ import openapitools.model.ChildA;
 import openapitools.model.ChildAA;
 import openapitools.model.ChildB;
 import openapitools.model.ChildBB;
+import org.openapitools.jackson.nullable.JsonNullable;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import openapitools.JSON;
 
@@ -64,7 +68,7 @@ public class ParentClass {
   private String parentAttribute;
 
   public static final String JSON_PROPERTY_IBANS = "ibans";
-  private List<String> ibans = null;
+  private JsonNullable<List<String>> ibans = JsonNullable.<List<String>>undefined();
 
   public static final String JSON_PROPERTY_THE_BANK_ACCOUNT = "theBankAccount";
   private BankAccount theBankAccount;
@@ -128,15 +132,19 @@ public class ParentClass {
 
 
   public ParentClass ibans(List<String> ibans) {
-    this.ibans = ibans;
+    this.ibans = JsonNullable.<List<String>>of(ibans);
     return this;
   }
 
   public ParentClass addIbansItem(String ibansItem) {
-    if (this.ibans == null) {
-      this.ibans = new ArrayList<>();
+    if (this.ibans == null || !this.ibans.isPresent()) {
+      this.ibans = JsonNullable.<List<String>>of(new ArrayList<>());
     }
-    this.ibans.add(ibansItem);
+    try {
+      this.ibans.get().add(ibansItem);
+    } catch (java.util.NoSuchElementException e) {
+      // this can never happen, as we make sure above that the value is present
+    }
     return this;
   }
 
@@ -146,18 +154,26 @@ public class ParentClass {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
-  @JsonProperty(JSON_PROPERTY_IBANS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
 
   public List<String> getIbans() {
-    return ibans;
+        return ibans.orElse(null);
   }
-
 
   @JsonProperty(JSON_PROPERTY_IBANS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIbans(List<String> ibans) {
+
+  public JsonNullable<List<String>> getIbans_JsonNullable() {
+    return ibans;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_IBANS)
+  public void setIbans_JsonNullable(JsonNullable<List<String>> ibans) {
     this.ibans = ibans;
+  }
+
+  public void setIbans(List<String> ibans) {
+    this.ibans = JsonNullable.<List<String>>of(ibans);
   }
 
 
@@ -237,14 +253,25 @@ public class ParentClass {
     ParentClass parentClass = (ParentClass) o;
     return Objects.equals(this.objectType, parentClass.objectType) &&
         Objects.equals(this.parentAttribute, parentClass.parentAttribute) &&
-        Objects.equals(this.ibans, parentClass.ibans) &&
+        equalsNullable(this.ibans, parentClass.ibans) &&
         Objects.equals(this.theBankAccount, parentClass.theBankAccount) &&
         Objects.equals(this.legacyBankAccounts, parentClass.legacyBankAccounts);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
-    return Objects.hash(objectType, parentAttribute, ibans, theBankAccount, legacyBankAccounts);
+    return Objects.hash(objectType, parentAttribute, hashCodeNullable(ibans), theBankAccount, legacyBankAccounts);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
