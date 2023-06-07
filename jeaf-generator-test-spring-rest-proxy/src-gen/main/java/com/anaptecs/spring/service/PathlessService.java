@@ -16,4 +16,10 @@ public interface PathlessService {
    * @param pTechContext
    */
   void processTechParam( MultiValuedHeaderBeanParam pHeaderBean );
+
+  /**
+   * @param pQuery
+   * @return {@link String}
+   */
+  String testQueryBeanParam( DataTypesQueryBean pQuery );
 }

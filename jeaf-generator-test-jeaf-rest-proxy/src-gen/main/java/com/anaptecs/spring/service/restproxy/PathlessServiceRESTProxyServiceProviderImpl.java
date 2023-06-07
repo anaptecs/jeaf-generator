@@ -9,6 +9,9 @@ import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.OffsetDateTime;
+import java.time.OffsetTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -25,7 +28,12 @@ import com.anaptecs.jeaf.rest.executor.api.jeaf.RESTRequestExecutorServiceProvid
 import com.anaptecs.jeaf.xfun.api.XFun;
 import com.anaptecs.jeaf.xfun.api.health.CheckLevel;
 import com.anaptecs.jeaf.xfun.api.health.HealthCheckResult;
+import com.anaptecs.spring.base.BookingID;
+import com.anaptecs.spring.base.DoubleCode;
+import com.anaptecs.spring.base.IntegerCodeType;
+import com.anaptecs.spring.base.LongCode;
 import com.anaptecs.spring.base.StringCode;
+import com.anaptecs.spring.service.DataTypesQueryBean;
 import com.anaptecs.spring.service.MultiValuedHeaderBeanParam;
 import com.anaptecs.spring.service.PathlessService;
 
@@ -157,5 +165,98 @@ public final class PathlessServiceRESTProxyServiceProviderImpl
     // Execute request.
     RESTRequest lRequest = lRequestBuilder.build();
     requestExecutor.executeNoResultRequest(lRequest, 204);
+  }
+
+  /**
+   * @param pQuery
+   * @return {@link String}
+   */
+  @Override
+  public String testQueryBeanParam( DataTypesQueryBean pQuery ) {
+    // Create builder for GET request
+    RESTRequest.Builder lRequestBuilder = RESTRequest.builder(PathlessService.class, HttpMethod.GET, ContentType.JSON);
+    // Build path of request
+    StringBuilder lPathBuilder = new StringBuilder();
+    lPathBuilder.append('/');
+    lPathBuilder.append("test-query-bean-param");
+    lRequestBuilder.setPath(lPathBuilder.toString());
+    // Add query parameter(s) to request
+    if (pQuery != null) {
+      if (pQuery.getLongCodes() != null) {
+        List<Object> lValues = new ArrayList<Object>();
+        for (LongCode lNext : pQuery.getLongCodes()) {
+          lValues.add(lNext.getCode().toString());
+        }
+        lRequestBuilder.setQueryParameter("longCodes", lValues);
+      }
+      if (pQuery.getCodes() != null) {
+        List<Object> lValues = new ArrayList<Object>();
+        for (IntegerCodeType lNext : pQuery.getCodes()) {
+          lValues.add(String.valueOf(lNext.getCode()));
+        }
+        lRequestBuilder.setQueryParameter("codes", lValues);
+      }
+      if (pQuery.getDoubleCodes() != null) {
+        List<Object> lValues = new ArrayList<Object>();
+        for (DoubleCode lNext : pQuery.getDoubleCodes()) {
+          lValues.add(lNext.getCode().toString());
+        }
+        lRequestBuilder.setQueryParameter("doubleCodes", lValues);
+      }
+      if (pQuery.getBookingIDs() != null) {
+        List<Object> lValues = new ArrayList<Object>();
+        for (BookingID lNext : pQuery.getBookingIDs()) {
+          lValues.add(lNext.getBookingID());
+        }
+        lRequestBuilder.setQueryParameter("bookingIDs", lValues);
+      }
+      if (pQuery.getBookingIDsArray() != null) {
+        List<Object> lValues = new ArrayList<Object>();
+        for (BookingID lNext : pQuery.getBookingIDsArray()) {
+          lValues.add(lNext.getBookingID());
+        }
+        lRequestBuilder.setQueryParameter("bookingIDsArray", lValues);
+      }
+      if (pQuery.getOffsetDateTime() != null) {
+        lRequestBuilder.setQueryParameter("offsetDateTime", XFun.getDatatypeConverterRegistry()
+            .getConverter(OffsetDateTime.class, String.class).convert(pQuery.getOffsetDateTime()));
+      }
+      if (pQuery.getOffsetTime() != null) {
+        lRequestBuilder.setQueryParameter("offsetTime", XFun.getDatatypeConverterRegistry()
+            .getConverter(OffsetTime.class, String.class).convert(pQuery.getOffsetTime()));
+      }
+      if (pQuery.getLocalDateTime() != null) {
+        lRequestBuilder.setQueryParameter("localDateTime", XFun.getDatatypeConverterRegistry()
+            .getConverter(LocalDateTime.class, String.class).convert(pQuery.getLocalDateTime()));
+      }
+      if (pQuery.getLocalTime() != null) {
+        lRequestBuilder.setQueryParameter("localTime", XFun.getDatatypeConverterRegistry()
+            .getConverter(LocalTime.class, String.class).convert(pQuery.getLocalTime()));
+      }
+      if (pQuery.getTimestamps() != null) {
+        List<Object> lValues = new ArrayList<Object>();
+        for (LocalDateTime lNext : pQuery.getTimestamps()) {
+          lValues.add(DateTimeFormatter.ISO_DATE_TIME.format(lNext));
+        }
+        lRequestBuilder.setQueryParameter("timestamps", lValues);
+      }
+      if (pQuery.getTimes() != null) {
+        List<Object> lValues = new ArrayList<Object>();
+        for (OffsetTime lNext : pQuery.getTimes()) {
+          lValues.add(DateTimeFormatter.ISO_OFFSET_TIME.format(lNext));
+        }
+        lRequestBuilder.setQueryParameter("times", lValues);
+      }
+      if (pQuery.getStartTimestamps() != null) {
+        List<Object> lValues = new ArrayList<Object>();
+        for (OffsetDateTime lNext : pQuery.getStartTimestamps()) {
+          lValues.add(DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(lNext));
+        }
+        lRequestBuilder.setQueryParameter("startTimestamps", lValues);
+      }
+    }
+    // Execute request and return result.
+    RESTRequest lRequest = lRequestBuilder.build();
+    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
   }
 }

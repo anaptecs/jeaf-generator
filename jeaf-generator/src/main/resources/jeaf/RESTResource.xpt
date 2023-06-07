@@ -155,6 +155,7 @@ public class «name»Resource {
 			  }
 			}
 		«ENDIF»
+        «REM»
         «IF isTargetRuntimeJEAF()»
             /**
              * Method is used to deserialize composite data types that are passed as some kind of parameter (not body) to this class. They need to be deserialized in the generated code as this is not supported by the used REST framework.
@@ -178,6 +179,7 @@ public class «name»Resource {
                 return lObject;
             }
         «ENDIF»
+        «ENDREM»
 	«ENDIF»
 	
 	«IF isTargetRuntimeJEAF()»
