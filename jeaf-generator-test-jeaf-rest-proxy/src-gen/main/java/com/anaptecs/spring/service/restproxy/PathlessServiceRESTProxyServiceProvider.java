@@ -6,6 +6,7 @@
 package com.anaptecs.spring.service.restproxy;
 
 import com.anaptecs.jeaf.core.api.ServiceProvider;
+import com.anaptecs.spring.service.DataTypesQueryBean;
 import com.anaptecs.spring.service.MultiValuedHeaderBeanParam;
 
 /**
@@ -22,4 +23,10 @@ public interface PathlessServiceRESTProxyServiceProvider extends ServiceProvider
    * @param pTechContext
    */
   void processTechParam( MultiValuedHeaderBeanParam pHeaderBean );
+
+  /**
+   * @param pQuery
+   * @return {@link String}
+   */
+  String testQueryBeanParam( DataTypesQueryBean pQuery );
 }

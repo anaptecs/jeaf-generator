@@ -15,6 +15,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import com.anaptecs.jeaf.core.api.JEAF;
+import com.anaptecs.spring.service.DataTypesQueryBean;
 import com.anaptecs.spring.service.MultiValuedHeaderBeanParam;
 import com.anaptecs.spring.service.PathlessService;
 
@@ -44,6 +45,18 @@ public class PathlessServiceResource {
     PathlessService lService = this.getPathlessService();
     lService.processTechParam(pHeaderBean);
     return Response.status(Response.Status.NO_CONTENT).build();
+  }
+
+  /**
+   * {@link PathlessService#testQueryBeanParam()}
+   */
+  @Path("test-query-bean-param")
+  @GET
+  public Response testQueryBeanParam( @BeanParam DataTypesQueryBean pQuery ) {
+    // Delegate request to service.
+    PathlessService lService = this.getPathlessService();
+    String lResult = lService.testQueryBeanParam(pQuery);
+    return Response.status(Response.Status.OK).entity(lResult).build();
   }
 
   /**
