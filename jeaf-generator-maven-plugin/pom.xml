@@ -69,7 +69,13 @@
 			<version>${maven.core.jar.version}</version>
 		</dependency>
 
-		<!-- Dependency is required so that all output of JEAF Genertator ends up in corect logger of Maven. -->
+        <dependency>
+            <groupId>io.swagger.parser.v3</groupId>
+            <artifactId>swagger-parser</artifactId>
+            <version>${swagger-parser.version}</version>
+        </dependency>
+
+		<!-- Dependency is required so that all output of JEAF Generator ends up in corect logger of Maven. -->
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-to-slf4j</artifactId>
