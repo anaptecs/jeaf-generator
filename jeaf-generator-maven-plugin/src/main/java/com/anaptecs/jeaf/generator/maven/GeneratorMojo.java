@@ -20,9 +20,11 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.StringJoiner;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -67,6 +69,11 @@ import com.anaptecs.jeaf.xfun.api.checks.Assert;
 import com.anaptecs.jeaf.xfun.api.checks.VerificationResult;
 import com.anaptecs.jeaf.xfun.api.errorhandling.ApplicationException;
 import com.anaptecs.jeaf.xfun.api.trace.Trace;
+
+import io.swagger.parser.OpenAPIParser;
+import io.swagger.v3.parser.core.models.AuthorizationValue;
+import io.swagger.v3.parser.core.models.ParseOptions;
+import io.swagger.v3.parser.core.models.SwaggerParseResult;
 
 @Mojo(
     name = "Generator",
@@ -512,6 +519,18 @@ public class GeneratorMojo extends AbstractMojo {
   private Boolean generateOpenAPISpec;
 
   /**
+   * Switch defines if a generated OpenAPI specification should be validated.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean validateOpenAPISpec;
+
+  @Parameter(required = false, defaultValue = "*.yaml,*.yml")
+  private List<String> openAPIExtensions = new ArrayList<>();
+
+  @Parameter(required = false)
+  private List<Dependency> openAPISpecDependencies = new ArrayList<>();
+
+  /**
    * Switch defines whether YAML 1.1 compatibility mode for OpenAPI should be enabled. In YAML 1.1 there is a big
    * difference compared to YAML 1.2 when it comes to boolean values. In YAML 1.1 besides <code>true</code> and
    * <code>false</code> also <code>yes</code>, <code>no</code>, <code>y</code>, <code>n</code>, <code>on</code> and
@@ -947,6 +966,11 @@ public class GeneratorMojo extends AbstractMojo {
       if (lSuccessful == true) {
         // Format generated sources and resources
         this.runFormatter();
+
+        // Validate OpenAPI specification
+        if (generateOpenAPISpec && validateOpenAPISpec) {
+          this.validateOpenAPISpec();
+        }
       }
       // Error during code generation from UML model
       else {
@@ -968,7 +992,7 @@ public class GeneratorMojo extends AbstractMojo {
       Log lLog = this.getLog();
       lLog.info("--------------------------------------------------------------------------------------");
       lLog.info("Starting JEAF Generator " + XFun.getVersionInfo().getVersionString());
-      lLog.info("Skipping code generation as there is no configuration present.");
+      lLog.info("Skipping code generation. According to Maven Plugin configuration nothing should be generated.");
       lLog.info("--------------------------------------------------------------------------------------");
     }
   }
@@ -1154,6 +1178,8 @@ public class GeneratorMojo extends AbstractMojo {
 
     if (generateOpenAPISpec) {
       lLog.info("Generate OpenAPI Specification:                   " + generateOpenAPISpec);
+      lLog.info("Validate OpenAPI Specification:                   " + validateOpenAPISpec);
+      lLog.info("OpenAPI Specification file extensions:            " + openAPIExtensions.toString());
       lLog.info("Enable YAML 1.1 compatibility mode:               " + enableYAML11Compatibility);
       lLog.info("OpenAPI YAML multi-line comment style:            " + openAPICommentStyle);
       lLog.info("Add ignored header fields to OpenAPI spec:        " + addIgnoredHeadersToOpenAPISpec);
@@ -1924,6 +1950,48 @@ public class GeneratorMojo extends AbstractMojo {
   }
 
   /**
+   * Method copies all declared dependent openAPI specs to res-gen directory.
+   * 
+   * @throws MojoExecutionException
+   */
+  private void copyOpenAPISpecDependencies( ) throws MojoExecutionException {
+    this.getLog().info("Copying dependent OpenAPI specs.");
+    if (openAPISpecDependencies.isEmpty() == false) {
+      Plugin lDependencyPlugin = plugin("org.apache.maven.plugins", "maven-dependency-plugin");
+      String lUnpackGoal = goal("unpack");
+
+      // Create elements for spec dependencies.
+      List<Element> lElements = new ArrayList<>();
+      for (Dependency lNext : openAPISpecDependencies) {
+        lElements.add(element("artifactItem", element("groupId", lNext.getGroupId()),
+            element("artifactId", lNext.getArtifactId()), element("outputDirectory", resourceGenDirectory)));
+      }
+      Element[] lDependencyElements = lElements.toArray(new Element[] {});
+
+      StringJoiner lJoiner = new StringJoiner(",");
+      for (String lExtension : openAPIExtensions) {
+        StringBuilder lBuilder = new StringBuilder();
+        lBuilder.append("**/");
+        if (lExtension.startsWith("*") == false) {
+          lBuilder.append("*");
+        }
+        lBuilder.append(lExtension);
+        lJoiner.add(lBuilder.toString());
+      }
+      String lIncludes = lJoiner.toString();
+
+      Xpp3Dom lConfiguration =
+          configuration(element("artifactItems", lDependencyElements), element("includes", lIncludes));
+
+      ExecutionEnvironment lExecutionEnvironment = executionEnvironment(mavenProject, mavenSession, pluginManager);
+      executeMojo(lDependencyPlugin, lUnpackGoal, lConfiguration, lExecutionEnvironment);
+    }
+    else {
+      this.getLog().info("No dependent OpenAPI specs defined.");
+    }
+  }
+
+  /**
    * Method creates the directory configuration for called Maven plugins depending on the configured formatter settings.
    * 
    * @return {@link Element} Configuration element for the directories that should be formatted.
@@ -1945,5 +2013,74 @@ public class GeneratorMojo extends AbstractMojo {
       Assert.internalError("Method must not be called if formatting is disabled completely.");
     }
     return lElement;
+  }
+
+  private void validateOpenAPISpec( ) throws MojoExecutionException {
+    this.getLog().info("");
+    List<String> lInvalidSpecs = new ArrayList<>();
+    try {
+      // Copy dependent OpenAPI specs
+      this.copyOpenAPISpecDependencies();
+
+      // Run validation
+      for (String lNextOpenAPISpec : this.resolveOpenAPISpecs(resourceGenDirectory)) {
+        this.getLog().info("");
+        this.getLog().info("Validating OpenAPI specification " + lNextOpenAPISpec);
+
+        // Validate OpenAPI spec.
+        List<String> lErrorMessages = this.validateOpenAPISpec(lNextOpenAPISpec);
+
+        if (lErrorMessages.isEmpty() == false) {
+          lInvalidSpecs.add(lNextOpenAPISpec);
+        }
+        else {
+          this.getLog().info("No issues detected.");
+        }
+
+        // Trace error message.
+        for (String lNextMessage : lErrorMessages) {
+          this.getLog().error(lNextMessage);
+        }
+      }
+    }
+    catch (IOException e) {
+      throw new MojoExecutionException(
+          "Unable to search for OpenAPI specifications in directory " + resourceGenDirectory, e);
+    }
+
+    if (lInvalidSpecs.isEmpty() == false) {
+      throw new MojoExecutionException("Validation of the following OpenAPI specification(s) failed: "
+          + Arrays.toString(lInvalidSpecs.toArray()) + "\nPlease check error messages above for more details.");
+    }
+  }
+
+  private List<String> validateOpenAPISpec( String pFileName ) {
+    ParseOptions lOptions = new ParseOptions();
+    lOptions.setResolve(true);
+    SwaggerParseResult lResult = new OpenAPIParser().readLocation(pFileName, (List<AuthorizationValue>) null, lOptions);
+
+    List<String> lErrorMessages;
+    if (lResult == null) {
+      lErrorMessages = List.of("Parsing of OpenAPI Specification in file " + pFileName + " failed for unknown reason.");
+    }
+    else {
+      lErrorMessages = lResult.getMessages();
+    }
+    return lErrorMessages;
+  }
+
+  private List<String> resolveOpenAPISpecs( String pDirectory ) throws IOException {
+    FilenameFilter lFilter = FileTools.getFileTools().createExtensionFilenameFilter(List.of("*.yaml", "*.yml"), null);
+    return this.resolveFiles(pDirectory, lFilter);
+  }
+
+  private List<String> resolveFiles( String pDirectory, FilenameFilter pFilter ) throws IOException {
+    List<String> lFiles = FileTools.getFileTools().listFiles(pDirectory, pFilter);
+    for (File lNextFile : FileTools.getFileTools().listFiles(new File(pDirectory))) {
+      if (lNextFile.isDirectory()) {
+        lFiles.addAll(this.resolveFiles(lNextFile.getCanonicalPath(), pFilter));
+      }
+    }
+    return lFiles;
   }
 }
