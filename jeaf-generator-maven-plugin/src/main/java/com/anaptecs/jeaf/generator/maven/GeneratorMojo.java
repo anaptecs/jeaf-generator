@@ -24,6 +24,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.StringJoiner;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -525,6 +526,9 @@ public class GeneratorMojo extends AbstractMojo {
 
   @Parameter(required = false, defaultValue = "*.yaml,*.yml")
   private List<String> openAPIExtensions = new ArrayList<>();
+
+  @Parameter(required = false)
+  private List<Dependency> openAPISpecDependencies = new ArrayList<>();
 
   /**
    * Switch defines whether YAML 1.1 compatibility mode for OpenAPI should be enabled. In YAML 1.1 there is a big
@@ -1946,6 +1950,48 @@ public class GeneratorMojo extends AbstractMojo {
   }
 
   /**
+   * Method copies all declared dependent openAPI specs to res-gen directory.
+   * 
+   * @throws MojoExecutionException
+   */
+  private void copyOpenAPISpecDependencies( ) throws MojoExecutionException {
+    this.getLog().info("Copying dependent OpenAPI specs.");
+    if (openAPISpecDependencies.isEmpty() == false) {
+      Plugin lDependencyPlugin = plugin("org.apache.maven.plugins", "maven-dependency-plugin");
+      String lUnpackGoal = goal("unpack");
+
+      // Create elements for spec dependencies.
+      List<Element> lElements = new ArrayList<>();
+      for (Dependency lNext : openAPISpecDependencies) {
+        lElements.add(element("artifactItem", element("groupId", lNext.getGroupId()),
+            element("artifactId", lNext.getArtifactId()), element("outputDirectory", resourceGenDirectory)));
+      }
+      Element[] lDependencyElements = lElements.toArray(new Element[] {});
+
+      StringJoiner lJoiner = new StringJoiner(",");
+      for (String lExtension : openAPIExtensions) {
+        StringBuilder lBuilder = new StringBuilder();
+        lBuilder.append("**/");
+        if (lExtension.startsWith("*") == false) {
+          lBuilder.append("*");
+        }
+        lBuilder.append(lExtension);
+        lJoiner.add(lBuilder.toString());
+      }
+      String lIncludes = lJoiner.toString();
+
+      Xpp3Dom lConfiguration =
+          configuration(element("artifactItems", lDependencyElements), element("includes", lIncludes));
+
+      ExecutionEnvironment lExecutionEnvironment = executionEnvironment(mavenProject, mavenSession, pluginManager);
+      executeMojo(lDependencyPlugin, lUnpackGoal, lConfiguration, lExecutionEnvironment);
+    }
+    else {
+      this.getLog().info("No dependent OpenAPI specs defined.");
+    }
+  }
+
+  /**
    * Method creates the directory configuration for called Maven plugins depending on the configured formatter settings.
    * 
    * @return {@link Element} Configuration element for the directories that should be formatted.
@@ -1973,7 +2019,12 @@ public class GeneratorMojo extends AbstractMojo {
     this.getLog().info("");
     List<String> lInvalidSpecs = new ArrayList<>();
     try {
+      // Copy dependent OpenAPI specs
+      this.copyOpenAPISpecDependencies();
+
+      // Run validation
       for (String lNextOpenAPISpec : this.resolveOpenAPISpecs(resourceGenDirectory)) {
+        this.getLog().info("");
         this.getLog().info("Validating OpenAPI specification " + lNextOpenAPISpec);
 
         // Validate OpenAPI spec.

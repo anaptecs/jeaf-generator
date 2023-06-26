@@ -13,6 +13,12 @@
 
 	<dependencies>
 		<dependency>
+			<groupId>com.anaptecs.jeaf.generator</groupId>
+			<artifactId>jeaf-generator-test-open-api-dependent-spec</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		
+		<dependency>
 			<groupId>com.anaptecs.jeaf.uml</groupId>
 			<artifactId>jeaf-uml-test-model</artifactId>
 			<version>${jeaf.test.model.version}</version>
@@ -139,6 +145,13 @@
 					<generateOpenAPISpec>true</generateOpenAPISpec>
 					<validateOpenAPISpec>true</validateOpenAPISpec>
 					<enableYAML11Compatibility>true</enableYAML11Compatibility>
+					
+					<openAPISpecDependencies>
+						<dependency>
+							<groupId>com.anaptecs.jeaf.generator</groupId>
+							<artifactId>jeaf-generator-test-open-api-dependent-spec</artifactId>
+						</dependency>
+					</openAPISpecDependencies>
 
 					<!-- Define information that are written to file headers -->
 					<fileHeaderCompany>anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany</fileHeaderCompany>
@@ -279,7 +292,6 @@
 								<dateLibrary>java8</dateLibrary>
 								<java8>true</java8>
 								<hideGenerationTimestamp>true</hideGenerationTimestamp>
-								
 							</configOptions>
 						</configuration>
 					</execution>
