@@ -122,6 +122,16 @@
 «ENDDEFINE»
 
 
+«DEFINE JavadocForBuilderAddTo(String builderClassName) FOR uml::Property»
+/**
+ * Method adds the passed objects to association {@link #«asInstanceVar()»}.<br/>
+ * @param «asParameter()» Array of objects that should be added to {@link #«asInstanceVar()»}. The parameter may be null.
+ * @return {@link «builderClassName»} Instance of this builder to support chaining. Method never returns null.
+ «EXPAND DeprecatedJavadoc -»
+ */
+«ENDDEFINE»
+
+
 «DEFINE JavadocForBuilderVarArgsSetter(String builderClassName) FOR uml::Property»
 /**
  * Method sets «IF this.association == null»attribute«ELSE»association«ENDIF» {@link #«asInstanceVar()»}.<br/>
