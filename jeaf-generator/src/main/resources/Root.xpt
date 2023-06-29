@@ -25,6 +25,11 @@
        «EXPAND jeaf::JavaDeprecation::JavaDeprecationReport»
     «ENDIF»
     
+    «IF generateJavaDeprecationReport() || generateRESTDeprecationReport()»
+       «info("Generating Breaking Changes Report")»
+       «EXPAND jeaf::BreakingChangesReport::BreakingChangesReport»
+    «ENDIF»
+    
     «IF generateGlobalParts() == true»
 		«EXPAND jeaf::JeafClassId::ClassId»
 		«EXPAND jeaf::AuthorizationData::AuthorizationTypes»

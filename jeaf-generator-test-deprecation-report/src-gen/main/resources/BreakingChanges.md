@@ -2,7 +2,7 @@
 
 <br>
 
-| Element  | Owner   | Element Type |Description   | Activation Planned with Version |
+| Element  | Owner   | Element Type |Description   | Activation Planned with |
 |----------|---------|:------------:|--------------|:---------------:|
 | `pQueryParam` | `com.anaptecs.jeaf.junit.deprecation.ServiceWithDeprecations.createSomething` | Parameter | Parameter will be mandatory. | PI 13 | 
 | `stops` | `com.anaptecs.jeaf.junit.openapi.base.POI` | Property | New mandatory association is required to support upcoming features. | PI 15 | 
