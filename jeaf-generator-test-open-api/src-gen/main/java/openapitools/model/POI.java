@@ -47,7 +47,8 @@ import openapitools.JSON;
   POI.JSON_PROPERTY_DESCRIPTION,
   POI.JSON_PROPERTY_THE_LINK,
   POI.JSON_PROPERTY_EVEN_MORE_LINKS,
-  POI.JSON_PROPERTY_STOPS
+  POI.JSON_PROPERTY_STOPS,
+  POI.JSON_PROPERTY_BOOKING_CODES
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.EXISTING_PROPERTY, property = "objectType", visible = true)
@@ -64,6 +65,9 @@ public class POI extends Stop {
 
   public static final String JSON_PROPERTY_STOPS = "stops";
   private List<UICStop> stops = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_BOOKING_CODES = "bookingCodes";
+  private List<String> bookingCodes = new ArrayList<>();
 
   public POI() { 
   }
@@ -201,6 +205,37 @@ public class POI extends Stop {
   }
 
 
+  public POI bookingCodes(List<String> bookingCodes) {
+    this.bookingCodes = bookingCodes;
+    return this;
+  }
+
+  public POI addBookingCodesItem(String bookingCodesItem) {
+    this.bookingCodes.add(bookingCodesItem);
+    return this;
+  }
+
+   /**
+   * Get bookingCodes
+   * @return bookingCodes
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty(JSON_PROPERTY_BOOKING_CODES)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public List<String> getBookingCodes() {
+    return bookingCodes;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_BOOKING_CODES)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setBookingCodes(List<String> bookingCodes) {
+    this.bookingCodes = bookingCodes;
+  }
+
+
   /**
    * Return true if this POI object is equal to o.
    */
@@ -217,6 +252,7 @@ public class POI extends Stop {
         Objects.equals(this.theLink, POI.theLink) &&
         equalsNullable(this.evenMoreLinks, POI.evenMoreLinks) &&
         Objects.equals(this.stops, POI.stops) &&
+        Objects.equals(this.bookingCodes, POI.bookingCodes) &&
         super.equals(o);
   }
 
@@ -226,7 +262,7 @@ public class POI extends Stop {
 
   @Override
   public int hashCode() {
-    return Objects.hash(description, theLink, hashCodeNullable(evenMoreLinks), stops, super.hashCode());
+    return Objects.hash(description, theLink, hashCodeNullable(evenMoreLinks), stops, bookingCodes, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -245,6 +281,7 @@ public class POI extends Stop {
     sb.append("    theLink: ").append(toIndentedString(theLink)).append("\n");
     sb.append("    evenMoreLinks: ").append(toIndentedString(evenMoreLinks)).append("\n");
     sb.append("    stops: ").append(toIndentedString(stops)).append("\n");
+    sb.append("    bookingCodes: ").append(toIndentedString(bookingCodes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

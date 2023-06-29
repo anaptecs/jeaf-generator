@@ -46,6 +46,11 @@ public class POI extends Stop {
    */
   public static final String STOPS = "stops";
 
+  /**
+   * Constant for the name of attribute "bookingCodes".
+   */
+  public static final String BOOKINGCODES = "bookingCodes";
+
   private String description;
 
   /**
@@ -67,6 +72,8 @@ public class POI extends Stop {
   @Size(min = 2, max = 42)
   private Set<UICStop> stops;
 
+  private Set<BookingCode> bookingCodes;
+
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
@@ -74,6 +81,7 @@ public class POI extends Stop {
   protected POI( ) {
     evenMoreLinks = new HashSet<SoftLink>();
     stops = new HashSet<UICStop>();
+    bookingCodes = new HashSet<BookingCode>();
   }
 
   /**
@@ -98,6 +106,12 @@ public class POI extends Stop {
     }
     else {
       stops = new HashSet<UICStop>();
+    }
+    if (pBuilder.bookingCodes != null) {
+      bookingCodes = pBuilder.bookingCodes;
+    }
+    else {
+      bookingCodes = new HashSet<BookingCode>();
     }
   }
 
@@ -144,6 +158,8 @@ public class POI extends Stop {
 
     private Set<UICStop> stops;
 
+    private Set<BookingCode> bookingCodes;
+
     /**
      * Use {@link POI#builder()} instead of private constructor to create new builder.
      */
@@ -162,6 +178,7 @@ public class POI extends Stop {
         theLink = pObject.theLink;
         evenMoreLinks = pObject.evenMoreLinks;
         stops = pObject.stops;
+        bookingCodes = pObject.bookingCodes;
       }
     }
 
@@ -288,6 +305,39 @@ public class POI extends Stop {
           stops = new HashSet<UICStop>();
         }
         stops.addAll(Arrays.asList(pStops));
+      }
+      return this;
+    }
+
+    /**
+     * Method sets association {@link #bookingCodes}.<br/>
+     *
+     * @param pBookingCodes Collection to which {@link #bookingCodes} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    public Builder setBookingCodes( Set<BookingCode> pBookingCodes ) {
+      // To ensure immutability we have to copy the content of the passed collection.
+      if (pBookingCodes != null) {
+        bookingCodes = new HashSet<BookingCode>(pBookingCodes);
+      }
+      else {
+        bookingCodes = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method adds the passed objects to association {@link #bookingCodes}.<br/>
+     *
+     * @param pBookingCodes Array of objects that should be added to {@link #bookingCodes}. The parameter may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToBookingCodes( BookingCode... pBookingCodes ) {
+      if (pBookingCodes != null) {
+        if (bookingCodes == null) {
+          bookingCodes = new HashSet<BookingCode>();
+        }
+        bookingCodes.addAll(Arrays.asList(pBookingCodes));
       }
       return this;
     }
@@ -488,6 +538,64 @@ public class POI extends Stop {
   public void clearStops( ) {
     // Remove all objects from association "stops".
     stops.clear();
+  }
+
+  /**
+   * Method returns association {@link #bookingCodes}.<br/>
+   *
+   * @return {@link Set<BookingCode>} Value to which {@link #bookingCodes} is set. The method never returns null and the
+   * returned collection is unmodifiable.
+   */
+  public Set<BookingCode> getBookingCodes( ) {
+    // Return all BookingCode objects as unmodifiable collection.
+    return Collections.unmodifiableSet(bookingCodes);
+  }
+
+  /**
+   * Method adds the passed object to {@link #bookingCodes}.
+   *
+   * @param pBookingCodes Object that should be added to {@link #bookingCodes}. The parameter must not be null.
+   */
+  public void addToBookingCodes( BookingCode pBookingCodes ) {
+    // Check parameter "pBookingCodes" for invalid value null.
+    Check.checkInvalidParameterNull(pBookingCodes, "pBookingCodes");
+    // Add passed object to collection of associated BookingCode objects.
+    bookingCodes.add(pBookingCodes);
+  }
+
+  /**
+   * Method adds all passed objects to {@link #bookingCodes}.
+   *
+   * @param pBookingCodes Collection with all objects that should be added to {@link #bookingCodes}. The parameter must
+   * not be null.
+   */
+  public void addToBookingCodes( Collection<BookingCode> pBookingCodes ) {
+    // Check parameter "pBookingCodes" for invalid value null.
+    Check.checkInvalidParameterNull(pBookingCodes, "pBookingCodes");
+    // Add all passed objects.
+    for (BookingCode lNextObject : pBookingCodes) {
+      this.addToBookingCodes(lNextObject);
+    }
+  }
+
+  /**
+   * Method removes the passed object from {@link #bookingCodes}.<br/>
+   *
+   * @param pBookingCodes Object that should be removed from {@link #bookingCodes}. The parameter must not be null.
+   */
+  public void removeFromBookingCodes( BookingCode pBookingCodes ) {
+    // Check parameter for invalid value null.
+    Check.checkInvalidParameterNull(pBookingCodes, "pBookingCodes");
+    // Remove passed object from collection of associated BookingCode objects.
+    bookingCodes.remove(pBookingCodes);
+  }
+
+  /**
+   * Method removes all objects from {@link #bookingCodes}.
+   */
+  public void clearBookingCodes( ) {
+    // Remove all objects from association "bookingCodes".
+    bookingCodes.clear();
   }
 
   /**
