@@ -26,6 +26,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
+import openapitools.model.UICStop;
 import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -40,7 +41,8 @@ import openapitools.JSON;
 @JsonPropertyOrder({
   POIAllOf.JSON_PROPERTY_DESCRIPTION,
   POIAllOf.JSON_PROPERTY_THE_LINK,
-  POIAllOf.JSON_PROPERTY_EVEN_MORE_LINKS
+  POIAllOf.JSON_PROPERTY_EVEN_MORE_LINKS,
+  POIAllOf.JSON_PROPERTY_STOPS
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class POIAllOf {
@@ -52,6 +54,9 @@ public class POIAllOf {
 
   public static final String JSON_PROPERTY_EVEN_MORE_LINKS = "evenMoreLinks";
   private JsonNullable<List<String>> evenMoreLinks = JsonNullable.<List<String>>undefined();
+
+  public static final String JSON_PROPERTY_STOPS = "stops";
+  private List<UICStop> stops = new ArrayList<>();
 
   public POIAllOf() { 
   }
@@ -158,6 +163,37 @@ public class POIAllOf {
   }
 
 
+  public POIAllOf stops(List<UICStop> stops) {
+    this.stops = stops;
+    return this;
+  }
+
+  public POIAllOf addStopsItem(UICStop stopsItem) {
+    this.stops.add(stopsItem);
+    return this;
+  }
+
+   /**
+   * Get stops
+   * @return stops
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty(JSON_PROPERTY_STOPS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public List<UICStop> getStops() {
+    return stops;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_STOPS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setStops(List<UICStop> stops) {
+    this.stops = stops;
+  }
+
+
   /**
    * Return true if this POI_allOf object is equal to o.
    */
@@ -172,7 +208,8 @@ public class POIAllOf {
     POIAllOf poIAllOf = (POIAllOf) o;
     return Objects.equals(this.description, poIAllOf.description) &&
         Objects.equals(this.theLink, poIAllOf.theLink) &&
-        equalsNullable(this.evenMoreLinks, poIAllOf.evenMoreLinks);
+        equalsNullable(this.evenMoreLinks, poIAllOf.evenMoreLinks) &&
+        Objects.equals(this.stops, poIAllOf.stops);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -181,7 +218,7 @@ public class POIAllOf {
 
   @Override
   public int hashCode() {
-    return Objects.hash(description, theLink, hashCodeNullable(evenMoreLinks));
+    return Objects.hash(description, theLink, hashCodeNullable(evenMoreLinks), stops);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -198,6 +235,7 @@ public class POIAllOf {
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    theLink: ").append(toIndentedString(theLink)).append("\n");
     sb.append("    evenMoreLinks: ").append(toIndentedString(evenMoreLinks)).append("\n");
+    sb.append("    stops: ").append(toIndentedString(stops)).append("\n");
     sb.append("}");
     return sb.toString();
   }
