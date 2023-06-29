@@ -41,6 +41,9 @@ public class POI extends Stop {
   @JsonProperty("stops")
   private List<UICStop> stops = new ArrayList<>();
 
+  @JsonProperty("bookingCodes")
+  private List<String> bookingCodes = new ArrayList<>();
+
   public POI description(String description) {
     this.description = description;
     return this;
@@ -126,6 +129,29 @@ public class POI extends Stop {
     this.stops = stops;
   }
 
+  public POI bookingCodes(List<String> bookingCodes) {
+    this.bookingCodes = bookingCodes;
+    return this;
+  }
+
+  public POI addBookingCodesItem(String bookingCodesItem) {
+    this.bookingCodes.add(bookingCodesItem);
+    return this;
+  }
+
+   /**
+   * Get bookingCodes
+   * @return bookingCodes
+  **/
+  @Schema(required = true, description = "")
+  public List<String> getBookingCodes() {
+    return bookingCodes;
+  }
+
+  public void setBookingCodes(List<String> bookingCodes) {
+    this.bookingCodes = bookingCodes;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -140,12 +166,13 @@ public class POI extends Stop {
         Objects.equals(this.theLink, POI.theLink) &&
         Objects.equals(this.evenMoreLinks, POI.evenMoreLinks) &&
         Objects.equals(this.stops, POI.stops) &&
+        Objects.equals(this.bookingCodes, POI.bookingCodes) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(description, theLink, evenMoreLinks, stops, super.hashCode());
+    return Objects.hash(description, theLink, evenMoreLinks, stops, bookingCodes, super.hashCode());
   }
 
 
@@ -158,6 +185,7 @@ public class POI extends Stop {
     sb.append("    theLink: ").append(toIndentedString(theLink)).append("\n");
     sb.append("    evenMoreLinks: ").append(toIndentedString(evenMoreLinks)).append("\n");
     sb.append("    stops: ").append(toIndentedString(stops)).append("\n");
+    sb.append("    bookingCodes: ").append(toIndentedString(bookingCodes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

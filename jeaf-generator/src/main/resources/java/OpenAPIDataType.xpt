@@ -68,7 +68,7 @@
 «indentation»            example: «((Example) attribute).exampleValue»
               «ENDIF-»
             «ENDIF-»
-            «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("    ") FOR ownerAttribute-»
+            «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions(indentation + "    ") FOR ownerAttribute-»
               «IF attribute.isDeprecated() || ownerAttribute.isDeprecated() -»
 «indentation»            deprecated: true
               «ENDIF-»

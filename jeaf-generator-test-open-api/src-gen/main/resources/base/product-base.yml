@@ -870,6 +870,7 @@ components:
             - description
             - theLink
             - stops
+            - bookingCodes
           properties:
             description:
               type: string
@@ -891,6 +892,14 @@ components:
                 $ref: '#/components/schemas/UICStop'
               minItems: 2
               maxItems: 42
+            bookingCodes:
+              type: array
+              items:
+                type: string
+                minLength: 3
+                maxLength: 5
+              minItems: 1
+              nullable: false
 
     # com.anaptecs.jeaf.junit.openapi.base.ParentClass
     ParentClass:
