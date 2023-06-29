@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>com.anaptecs.jeaf</groupId>
 		<artifactId>jeaf-plugin-project-parent</artifactId>
-		<version>1.8.0</version>
+		<version>1.8.1-SNAPSHOT</version>
 	</parent>
 
 	<groupId>com.anaptecs.jeaf.generator</groupId>
@@ -49,13 +49,13 @@
 		<jeaf.generator.messages.version>1.6.7</jeaf.generator.messages.version>
 		
 		<!-- Please be aware that Spring Boot and Spring core versions must match together -->
-		<spring.boot.version>2.7.12</spring.boot.version>
-		<spring.core.version>5.3.27</spring.core.version>
+		<spring.boot.version>2.7.13</spring.boot.version>
+		<spring.core.version>5.3.28</spring.core.version>
 		<jakartaee-api.version>9.1.0</jakartaee-api.version>
 		
-		<swagger-parser.version>2.1.5</swagger-parser.version>
+		<swagger-parser.version>2.1.16</swagger-parser.version>
 		<log4j-to-slf4j.version>2.20.0</log4j-to-slf4j.version>
-		<equalsverifier.version>3.14.1</equalsverifier.version>
+		<equalsverifier.version>3.14.3</equalsverifier.version>
 	</properties>
 
 	<modules>
