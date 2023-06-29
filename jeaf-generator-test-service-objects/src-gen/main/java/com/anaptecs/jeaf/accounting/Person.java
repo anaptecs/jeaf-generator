@@ -5,6 +5,7 @@
  */
 package com.anaptecs.jeaf.accounting;
 
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.Collections;
@@ -259,6 +260,22 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
       }
       else {
         accounts = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method adds the passed objects to association {@link #accounts}.<br/>
+     *
+     * @param pAccounts Array of objects that should be added to {@link #accounts}. The parameter may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToAccounts( Account... pAccounts ) {
+      if (pAccounts != null) {
+        if (accounts == null) {
+          accounts = new HashSet<Account>();
+        }
+        accounts.addAll(Arrays.asList(pAccounts));
       }
       return this;
     }

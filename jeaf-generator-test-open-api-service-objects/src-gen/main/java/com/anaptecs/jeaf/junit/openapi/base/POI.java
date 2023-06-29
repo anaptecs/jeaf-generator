@@ -5,6 +5,7 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
@@ -13,6 +14,7 @@ import java.util.Set;
 import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -47,12 +49,18 @@ public class POI extends Stop {
   @JsonSetter(nulls = Nulls.SKIP)
   private Set<SoftLink> evenMoreLinks;
 
+  @Size(min = 2, max = 42)
+  @JsonSetter(nulls = Nulls.SKIP)
+  @NotNull
+  private Set<UICStop> stops;
+
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   protected POI( ) {
     evenMoreLinks = new HashSet<SoftLink>();
+    stops = new HashSet<UICStop>();
   }
 
   /**
@@ -71,6 +79,12 @@ public class POI extends Stop {
     }
     else {
       evenMoreLinks = new HashSet<SoftLink>();
+    }
+    if (pBuilder.stops != null) {
+      stops = pBuilder.stops;
+    }
+    else {
+      stops = new HashSet<UICStop>();
     }
   }
 
@@ -116,6 +130,8 @@ public class POI extends Stop {
     @Deprecated
     private Set<SoftLink> evenMoreLinks;
 
+    private Set<UICStop> stops;
+
     /**
      * Use {@link POI#builder()} instead of private constructor to create new builder.
      */
@@ -133,6 +149,7 @@ public class POI extends Stop {
         description = pObject.description;
         theLink = pObject.theLink;
         evenMoreLinks = pObject.evenMoreLinks;
+        stops = pObject.stops;
       }
     }
 
@@ -226,6 +243,39 @@ public class POI extends Stop {
       }
       else {
         evenMoreLinks = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method sets association {@link #stops}.<br/>
+     *
+     * @param pStops Collection to which {@link #stops} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    public Builder setStops( Set<UICStop> pStops ) {
+      // To ensure immutability we have to copy the content of the passed collection.
+      if (pStops != null) {
+        stops = new HashSet<UICStop>(pStops);
+      }
+      else {
+        stops = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method adds the passed objects to association {@link #stops}.<br/>
+     *
+     * @param pStops Array of objects that should be added to {@link #stops}. The parameter may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToStops( UICStop... pStops ) {
+      if (pStops != null) {
+        if (stops == null) {
+          stops = new HashSet<UICStop>();
+        }
+        stops.addAll(Arrays.asList(pStops));
       }
       return this;
     }
@@ -370,6 +420,63 @@ public class POI extends Stop {
   }
 
   /**
+   * Method returns association {@link #stops}.<br/>
+   *
+   * @return {@link Set<UICStop>} Value to which {@link #stops} is set. The method never returns null and the returned
+   * collection is modifiable.
+   */
+  public Set<UICStop> getStops( ) {
+    // Return all UICStop objects directly without any protection against modification.
+    return stops;
+  }
+
+  /**
+   * Method adds the passed object to {@link #stops}.
+   *
+   * @param pStops Object that should be added to {@link #stops}. The parameter must not be null.
+   */
+  public void addToStops( UICStop pStops ) {
+    // Check parameter "pStops" for invalid value null.
+    Check.checkInvalidParameterNull(pStops, "pStops");
+    // Add passed object to collection of associated UICStop objects.
+    stops.add(pStops);
+  }
+
+  /**
+   * Method adds all passed objects to {@link #stops}.
+   *
+   * @param pStops Collection with all objects that should be added to {@link #stops}. The parameter must not be null.
+   */
+  public void addToStops( Collection<UICStop> pStops ) {
+    // Check parameter "pStops" for invalid value null.
+    Check.checkInvalidParameterNull(pStops, "pStops");
+    // Add all passed objects.
+    for (UICStop lNextObject : pStops) {
+      this.addToStops(lNextObject);
+    }
+  }
+
+  /**
+   * Method removes the passed object from {@link #stops}.<br/>
+   *
+   * @param pStops Object that should be removed from {@link #stops}. The parameter must not be null.
+   */
+  public void removeFromStops( UICStop pStops ) {
+    // Check parameter for invalid value null.
+    Check.checkInvalidParameterNull(pStops, "pStops");
+    // Remove passed object from collection of associated UICStop objects.
+    stops.remove(pStops);
+  }
+
+  /**
+   * Method removes all objects from {@link #stops}.
+   */
+  public void clearStops( ) {
+    // Remove all objects from association "stops".
+    stops.clear();
+  }
+
+  /**
    * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
@@ -400,6 +507,22 @@ public class POI extends Stop {
       for (SoftLink lNext : evenMoreLinks) {
         lBuilder.append(pIndent + "    ");
         lBuilder.append(lNext.toString());
+        lBuilder.append(System.lineSeparator());
+      }
+    }
+    lBuilder.append(pIndent);
+    lBuilder.append("stops: ");
+    if (stops != null) {
+      lBuilder.append(stops.size());
+      lBuilder.append(" element(s)");
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    if (stops != null) {
+      for (UICStop lNext : stops) {
+        lBuilder.append(lNext.toStringBuilder(pIndent + "    "));
         lBuilder.append(System.lineSeparator());
       }
     }

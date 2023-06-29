@@ -178,6 +178,22 @@ public class TheReadOnlyPOJO {
     }
 
     /**
+     * Method adds the passed objects to association {@link #entities}.<br/>
+     *
+     * @param pEntities Array of objects that should be added to {@link #entities}. The parameter may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToEntities( Entity... pEntities ) {
+      if (pEntities != null) {
+        if (entities == null) {
+          entities = new ArrayList<Entity>();
+        }
+        entities.addAll(Arrays.asList(pEntities));
+      }
+      return this;
+    }
+
+    /**
      * Method sets association {@link #entities}.<br/>
      *
      * @param pEntities Array with objects to which {@link #entities} should be set.

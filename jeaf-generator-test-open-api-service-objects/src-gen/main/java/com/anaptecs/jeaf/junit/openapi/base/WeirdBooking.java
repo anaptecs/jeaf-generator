@@ -229,6 +229,23 @@ public class WeirdBooking extends WeirdParent {
     }
 
     /**
+     * Method adds the passed objects to association {@link #additionalBookings}.<br/>
+     *
+     * @param pAdditionalBookings Array of objects that should be added to {@link #additionalBookings}. The parameter
+     * may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToAdditionalBookings( ComplexBookingID... pAdditionalBookings ) {
+      if (pAdditionalBookings != null) {
+        if (additionalBookings == null) {
+          additionalBookings = new ArrayList<ComplexBookingID>();
+        }
+        additionalBookings.addAll(Arrays.asList(pAdditionalBookings));
+      }
+      return this;
+    }
+
+    /**
      * Method sets association {@link #versionedObjectSoftLink}.<br/>
      *
      * @param pVersionedObjectSoftLink Value to which {@link #versionedObjectSoftLink} should be set.
@@ -275,6 +292,22 @@ public class WeirdBooking extends WeirdParent {
       }
       else {
         inventories = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method adds the passed objects to association {@link #inventories}.<br/>
+     *
+     * @param pInventories Array of objects that should be added to {@link #inventories}. The parameter may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToInventories( InventoryType... pInventories ) {
+      if (pInventories != null) {
+        if (inventories == null) {
+          inventories = new HashSet<InventoryType>();
+        }
+        inventories.addAll(Arrays.asList(pInventories));
       }
       return this;
     }

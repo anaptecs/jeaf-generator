@@ -411,6 +411,18 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
 			    }
 			    return this;
 			}
+
+	        «EXPAND functions::Javadoc::JavadocForBuilderAddTo(builderClassName)»
+	        «EXPAND java::Helper::GenerateDeprecationAnnotation-»
+            public «builderClassName»«owner.asClass().getTemplateParams()» addTo«name.toFirstUpper()»(«type.fqn()»... «asParameter()») {
+                if(«asParameter()» != null) {
+	                if(«asInstanceVar()» == null) {
+	                  «asInstanceVar()» = new «this.getCollectionImplType()»<«type.fqn()»>();
+	                }
+	                «asInstanceVar()».addAll(java.util.Arrays.asList(«asParameter()»));
+	            }
+                return this;
+            }
 		«ELSE»
 			public «builderClassName»«owner.asClass().getTemplateParams()» «asSetter()» («type.fqn()» «asParameter()») {
 				«asInstanceVar()» = «asParameter()»;

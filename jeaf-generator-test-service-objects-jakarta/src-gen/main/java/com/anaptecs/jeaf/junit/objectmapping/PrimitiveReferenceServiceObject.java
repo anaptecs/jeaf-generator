@@ -5,6 +5,7 @@
  */
 package com.anaptecs.jeaf.junit.objectmapping;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
@@ -182,6 +183,22 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
     }
 
     /**
+     * Method adds the passed objects to association {@link #booleanSet}.<br/>
+     *
+     * @param pBooleanSet Array of objects that should be added to {@link #booleanSet}. The parameter may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToBooleanSet( Boolean... pBooleanSet ) {
+      if (pBooleanSet != null) {
+        if (booleanSet == null) {
+          booleanSet = new HashSet<Boolean>();
+        }
+        booleanSet.addAll(Arrays.asList(pBooleanSet));
+      }
+      return this;
+    }
+
+    /**
      * Method sets association {@link #buffers}.<br/>
      *
      * @param pBuffers Collection to which {@link #buffers} should be set.
@@ -199,6 +216,22 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
     }
 
     /**
+     * Method adds the passed objects to association {@link #buffers}.<br/>
+     *
+     * @param pBuffers Array of objects that should be added to {@link #buffers}. The parameter may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToBuffers( StringBuffer... pBuffers ) {
+      if (pBuffers != null) {
+        if (buffers == null) {
+          buffers = new HashSet<StringBuffer>();
+        }
+        buffers.addAll(Arrays.asList(pBuffers));
+      }
+      return this;
+    }
+
+    /**
      * Method sets association {@link #strings}.<br/>
      *
      * @param pStrings Collection to which {@link #strings} should be set.
@@ -211,6 +244,22 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
       }
       else {
         strings = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method adds the passed objects to association {@link #strings}.<br/>
+     *
+     * @param pStrings Array of objects that should be added to {@link #strings}. The parameter may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToStrings( String... pStrings ) {
+      if (pStrings != null) {
+        if (strings == null) {
+          strings = new HashSet<String>();
+        }
+        strings.addAll(Arrays.asList(pStrings));
       }
       return this;
     }

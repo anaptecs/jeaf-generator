@@ -6,6 +6,7 @@
 package com.anaptecs.jeaf.accounting;
 
 import java.math.BigDecimal;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
@@ -237,6 +238,23 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
     }
 
     /**
+     * Method adds the passed objects to association {@link #authorizedPersons}.<br/>
+     *
+     * @param pAuthorizedPersons Array of objects that should be added to {@link #authorizedPersons}. The parameter may
+     * be null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining. Method never returns null.
+     */
+    public BuilderBase addToAuthorizedPersons( Person... pAuthorizedPersons ) {
+      if (pAuthorizedPersons != null) {
+        if (authorizedPersons == null) {
+          authorizedPersons = new HashSet<Person>();
+        }
+        authorizedPersons.addAll(Arrays.asList(pAuthorizedPersons));
+      }
+      return this;
+    }
+
+    /**
      * Method sets association {@link #bookings}.<br/>
      *
      * @param pBookings Collection to which {@link #bookings} should be set.
@@ -249,6 +267,22 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
       }
       else {
         bookings = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method adds the passed objects to association {@link #bookings}.<br/>
+     *
+     * @param pBookings Array of objects that should be added to {@link #bookings}. The parameter may be null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining. Method never returns null.
+     */
+    public BuilderBase addToBookings( Booking... pBookings ) {
+      if (pBookings != null) {
+        if (bookings == null) {
+          bookings = new HashSet<Booking>();
+        }
+        bookings.addAll(Arrays.asList(pBookings));
       }
       return this;
     }

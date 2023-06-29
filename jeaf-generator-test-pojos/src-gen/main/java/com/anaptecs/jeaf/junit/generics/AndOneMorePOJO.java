@@ -5,6 +5,7 @@
  */
 package com.anaptecs.jeaf.junit.generics;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
@@ -135,6 +136,23 @@ public class AndOneMorePOJO {
       }
       else {
         genericResponses = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method adds the passed objects to association {@link #genericResponses}.<br/>
+     *
+     * @param pGenericResponses Array of objects that should be added to {@link #genericResponses}. The parameter may be
+     * null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToGenericResponses( GenericResponsePOJO<MyBusinessObject>... pGenericResponses ) {
+      if (pGenericResponses != null) {
+        if (genericResponses == null) {
+          genericResponses = new HashSet<GenericResponsePOJO<MyBusinessObject>>();
+        }
+        genericResponses.addAll(Arrays.asList(pGenericResponses));
       }
       return this;
     }

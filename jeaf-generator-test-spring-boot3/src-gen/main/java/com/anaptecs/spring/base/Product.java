@@ -268,6 +268,22 @@ public class Product {
     }
 
     /**
+     * Method adds the passed objects to association {@link #resellers}.<br/>
+     *
+     * @param pResellers Array of objects that should be added to {@link #resellers}. The parameter may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToResellers( Reseller... pResellers ) {
+      if (pResellers != null) {
+        if (resellers == null) {
+          resellers = new HashSet<Reseller>();
+        }
+        resellers.addAll(Arrays.asList(pResellers));
+      }
+      return this;
+    }
+
+    /**
      * Method sets attribute {@link #name}.<br/>
      *
      * @param pName Value to which {@link #name} should be set.
@@ -339,6 +355,23 @@ public class Product {
     }
 
     /**
+     * Method adds the passed objects to association {@link #supportedCurrencies}.<br/>
+     *
+     * @param pSupportedCurrencies Array of objects that should be added to {@link #supportedCurrencies}. The parameter
+     * may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToSupportedCurrencies( CurrencyCode... pSupportedCurrencies ) {
+      if (pSupportedCurrencies != null) {
+        if (supportedCurrencies == null) {
+          supportedCurrencies = new HashSet<CurrencyCode>();
+        }
+        supportedCurrencies.addAll(Arrays.asList(pSupportedCurrencies));
+      }
+      return this;
+    }
+
+    /**
      * Method sets association {@link #productCodes}.<br/>
      *
      * @param pProductCodes Collection to which {@link #productCodes} should be set.
@@ -351,6 +384,22 @@ public class Product {
       }
       else {
         productCodes = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method adds the passed objects to association {@link #productCodes}.<br/>
+     *
+     * @param pProductCodes Array of objects that should be added to {@link #productCodes}. The parameter may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToProductCodes( ProductCode... pProductCodes ) {
+      if (pProductCodes != null) {
+        if (productCodes == null) {
+          productCodes = new HashSet<ProductCode>();
+        }
+        productCodes.addAll(Arrays.asList(pProductCodes));
       }
       return this;
     }
@@ -381,6 +430,22 @@ public class Product {
       }
       else {
         sortiments = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method adds the passed objects to association {@link #sortiments}.<br/>
+     *
+     * @param pSortiments Array of objects that should be added to {@link #sortiments}. The parameter may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToSortiments( Sortiment... pSortiments ) {
+      if (pSortiments != null) {
+        if (sortiments == null) {
+          sortiments = new HashSet<Sortiment>();
+        }
+        sortiments.addAll(Arrays.asList(pSortiments));
       }
       return this;
     }

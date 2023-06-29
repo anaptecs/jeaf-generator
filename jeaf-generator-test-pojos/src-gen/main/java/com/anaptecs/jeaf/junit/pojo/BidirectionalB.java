@@ -6,6 +6,7 @@
 package com.anaptecs.jeaf.junit.pojo;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
@@ -154,6 +155,22 @@ public class BidirectionalB {
     }
 
     /**
+     * Method adds the passed objects to association {@link #as}.<br/>
+     *
+     * @param pAs Array of objects that should be added to {@link #as}. The parameter may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToAs( BidirectionalA... pAs ) {
+      if (pAs != null) {
+        if (as == null) {
+          as = new ArrayList<BidirectionalA>();
+        }
+        as.addAll(Arrays.asList(pAs));
+      }
+      return this;
+    }
+
+    /**
      * Method sets association {@link #theAs}.<br/>
      *
      * @param pTheAs Collection to which {@link #theAs} should be set.
@@ -166,6 +183,22 @@ public class BidirectionalB {
       }
       else {
         theAs = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method adds the passed objects to association {@link #theAs}.<br/>
+     *
+     * @param pTheAs Array of objects that should be added to {@link #theAs}. The parameter may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToTheAs( BidirectionalA... pTheAs ) {
+      if (pTheAs != null) {
+        if (theAs == null) {
+          theAs = new ArrayList<BidirectionalA>();
+        }
+        theAs.addAll(Arrays.asList(pTheAs));
       }
       return this;
     }

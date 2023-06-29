@@ -5,6 +5,7 @@
  */
 package com.anaptecs.jeaf.junit.core;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
@@ -153,6 +154,22 @@ public class ClassB implements ServiceObject, Identifiable<ServiceObjectID> {
       }
       else {
         manyAs = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method adds the passed objects to association {@link #manyAs}.<br/>
+     *
+     * @param pManyAs Array of objects that should be added to {@link #manyAs}. The parameter may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToManyAs( ClassA... pManyAs ) {
+      if (pManyAs != null) {
+        if (manyAs == null) {
+          manyAs = new TreeSet<ClassA>();
+        }
+        manyAs.addAll(Arrays.asList(pManyAs));
       }
       return this;
     }

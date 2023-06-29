@@ -6,6 +6,7 @@
 package com.anaptecs.jeaf.junit.generics;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -128,6 +129,22 @@ public abstract class GenericResponsePOJOBase<T> {
     }
 
     /**
+     * Method adds the passed objects to association {@link #errors}.<br/>
+     *
+     * @param pErrors Array of objects that should be added to {@link #errors}. The parameter may be null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining. Method never returns null.
+     */
+    public BuilderBase<T> addToErrors( Message... pErrors ) {
+      if (pErrors != null) {
+        if (errors == null) {
+          errors = new ArrayList<Message>();
+        }
+        errors.addAll(Arrays.asList(pErrors));
+      }
+      return this;
+    }
+
+    /**
      * Method sets association {@link #warnings}.<br/>
      *
      * @param pWarnings Collection to which {@link #warnings} should be set.
@@ -140,6 +157,22 @@ public abstract class GenericResponsePOJOBase<T> {
       }
       else {
         warnings = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method adds the passed objects to association {@link #warnings}.<br/>
+     *
+     * @param pWarnings Array of objects that should be added to {@link #warnings}. The parameter may be null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining. Method never returns null.
+     */
+    public BuilderBase<T> addToWarnings( Message... pWarnings ) {
+      if (pWarnings != null) {
+        if (warnings == null) {
+          warnings = new ArrayList<Message>();
+        }
+        warnings.addAll(Arrays.asList(pWarnings));
       }
       return this;
     }

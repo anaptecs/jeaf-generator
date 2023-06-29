@@ -298,6 +298,23 @@ public class MultiValuedHeaderBeanParam {
     }
 
     /**
+     * Method adds the passed objects to association {@link #stringCodeList}.<br/>
+     *
+     * @param pStringCodeList Array of objects that should be added to {@link #stringCodeList}. The parameter may be
+     * null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToStringCodeList( StringCode... pStringCodeList ) {
+      if (pStringCodeList != null) {
+        if (stringCodeList == null) {
+          stringCodeList = new HashSet<StringCode>();
+        }
+        stringCodeList.addAll(Arrays.asList(pStringCodeList));
+      }
+      return this;
+    }
+
+    /**
      * Method sets attribute {@link #startDate}.<br/>
      *
      * @param pStartDate Value to which {@link #startDate} should be set.
@@ -340,6 +357,22 @@ public class MultiValuedHeaderBeanParam {
       }
       else {
         timestamps = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method adds the passed objects to association {@link #timestamps}.<br/>
+     *
+     * @param pTimestamps Array of objects that should be added to {@link #timestamps}. The parameter may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToTimestamps( LocalDateTime... pTimestamps ) {
+      if (pTimestamps != null) {
+        if (timestamps == null) {
+          timestamps = new HashSet<LocalDateTime>();
+        }
+        timestamps.addAll(Arrays.asList(pTimestamps));
       }
       return this;
     }

@@ -6,6 +6,7 @@
 package com.anaptecs.jeaf.junit.openapi.base;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -168,6 +169,22 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
       }
       else {
         bookingIDs = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method adds the passed objects to association {@link #bookingIDs}.<br/>
+     *
+     * @param pBookingIDs Array of objects that should be added to {@link #bookingIDs}. The parameter may be null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining. Method never returns null.
+     */
+    public BuilderBase addToBookingIDs( BookingID... pBookingIDs ) {
+      if (pBookingIDs != null) {
+        if (bookingIDs == null) {
+          bookingIDs = new ArrayList<BookingID>();
+        }
+        bookingIDs.addAll(Arrays.asList(pBookingIDs));
       }
       return this;
     }

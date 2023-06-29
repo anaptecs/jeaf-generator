@@ -6,6 +6,7 @@
 package com.anaptecs.spring.base;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -152,6 +153,22 @@ public class Stop {
       }
       else {
         links = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method adds the passed objects to association {@link #links}.<br/>
+     *
+     * @param pLinks Array of objects that should be added to {@link #links}. The parameter may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToLinks( LinkObject... pLinks ) {
+      if (pLinks != null) {
+        if (links == null) {
+          links = new ArrayList<LinkObject>();
+        }
+        links.addAll(Arrays.asList(pLinks));
       }
       return this;
     }

@@ -170,6 +170,22 @@ public abstract class ComplexBookingIDBase {
     }
 
     /**
+     * Method adds the passed objects to association {@link #bookingIDs}.<br/>
+     *
+     * @param pBookingIDs Array of objects that should be added to {@link #bookingIDs}. The parameter may be null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining. Method never returns null.
+     */
+    public BuilderBase addToBookingIDs( BookingID... pBookingIDs ) {
+      if (pBookingIDs != null) {
+        if (bookingIDs == null) {
+          bookingIDs = new ArrayList<BookingID>();
+        }
+        bookingIDs.addAll(Arrays.asList(pBookingIDs));
+      }
+      return this;
+    }
+
+    /**
      * Method sets association {@link #complexBookingType}.<br/>
      *
      * @param pComplexBookingType Value to which {@link #complexBookingType} should be set.

@@ -6,6 +6,7 @@
 package com.anaptecs.jeaf.accounting.impl.pojo;
 
 import java.math.BigDecimal;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Currency;
@@ -162,6 +163,22 @@ public abstract class AccountBase {
       }
       else {
         allBookings = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method adds the passed objects to association {@link #allBookings}.<br/>
+     *
+     * @param pAllBookings Array of objects that should be added to {@link #allBookings}. The parameter may be null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining. Method never returns null.
+     */
+    public BuilderBase addToAllBookings( Booking... pAllBookings ) {
+      if (pAllBookings != null) {
+        if (allBookings == null) {
+          allBookings = new HashSet<Booking>();
+        }
+        allBookings.addAll(Arrays.asList(pAllBookings));
       }
       return this;
     }

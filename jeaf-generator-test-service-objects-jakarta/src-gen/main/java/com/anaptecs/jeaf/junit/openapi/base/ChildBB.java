@@ -5,6 +5,7 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
@@ -275,6 +276,23 @@ public class ChildBB extends ChildB {
       }
       else {
         deprecatedBs = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method adds the passed objects to association {@link #deprecatedBs}.<br/>
+     *
+     * @param pDeprecatedBs Array of objects that should be added to {@link #deprecatedBs}. The parameter may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    @Deprecated
+    public Builder addToDeprecatedBs( ChildB... pDeprecatedBs ) {
+      if (pDeprecatedBs != null) {
+        if (deprecatedBs == null) {
+          deprecatedBs = new HashSet<ChildB>();
+        }
+        deprecatedBs.addAll(Arrays.asList(pDeprecatedBs));
       }
       return this;
     }

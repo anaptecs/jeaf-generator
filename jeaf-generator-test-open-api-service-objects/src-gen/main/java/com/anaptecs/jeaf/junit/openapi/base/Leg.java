@@ -6,6 +6,7 @@
 package com.anaptecs.jeaf.junit.openapi.base;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
@@ -144,6 +145,22 @@ public class Leg implements ServiceObject {
       }
       else {
         stopovers = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method adds the passed objects to association {@link #stopovers}.<br/>
+     *
+     * @param pStopovers Array of objects that should be added to {@link #stopovers}. The parameter may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToStopovers( PlaceRef... pStopovers ) {
+      if (pStopovers != null) {
+        if (stopovers == null) {
+          stopovers = new ArrayList<PlaceRef>();
+        }
+        stopovers.addAll(Arrays.asList(pStopovers));
       }
       return this;
     }

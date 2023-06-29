@@ -152,6 +152,22 @@ public class Booking {
     }
 
     /**
+     * Method adds the passed objects to association {@link #inventories}.<br/>
+     *
+     * @param pInventories Array of objects that should be added to {@link #inventories}. The parameter may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToInventories( InventoryType... pInventories ) {
+      if (pInventories != null) {
+        if (inventories == null) {
+          inventories = new ArrayList<InventoryType>();
+        }
+        inventories.addAll(Arrays.asList(pInventories));
+      }
+      return this;
+    }
+
+    /**
      * Method sets association {@link #inventories}.<br/>
      *
      * @param pInventories Array with objects to which {@link #inventories} should be set.

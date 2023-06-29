@@ -16,6 +16,7 @@ import java.util.Objects;
 import java.util.Arrays;
 import com.anaptecs.jeaf.openapi.LinkObject;
 import com.anaptecs.jeaf.openapi.Stop;
+import com.anaptecs.jeaf.openapi.UICStop;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -36,6 +37,9 @@ public class POI extends Stop {
 
   @JsonProperty("evenMoreLinks")
   private List<String> evenMoreLinks = null;
+
+  @JsonProperty("stops")
+  private List<UICStop> stops = new ArrayList<>();
 
   public POI description(String description) {
     this.description = description;
@@ -99,6 +103,29 @@ public class POI extends Stop {
     this.evenMoreLinks = evenMoreLinks;
   }
 
+  public POI stops(List<UICStop> stops) {
+    this.stops = stops;
+    return this;
+  }
+
+  public POI addStopsItem(UICStop stopsItem) {
+    this.stops.add(stopsItem);
+    return this;
+  }
+
+   /**
+   * Get stops
+   * @return stops
+  **/
+  @Schema(required = true, description = "")
+  public List<UICStop> getStops() {
+    return stops;
+  }
+
+  public void setStops(List<UICStop> stops) {
+    this.stops = stops;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -112,12 +139,13 @@ public class POI extends Stop {
     return Objects.equals(this.description, POI.description) &&
         Objects.equals(this.theLink, POI.theLink) &&
         Objects.equals(this.evenMoreLinks, POI.evenMoreLinks) &&
+        Objects.equals(this.stops, POI.stops) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(description, theLink, evenMoreLinks, super.hashCode());
+    return Objects.hash(description, theLink, evenMoreLinks, stops, super.hashCode());
   }
 
 
@@ -129,6 +157,7 @@ public class POI extends Stop {
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    theLink: ").append(toIndentedString(theLink)).append("\n");
     sb.append("    evenMoreLinks: ").append(toIndentedString(evenMoreLinks)).append("\n");
+    sb.append("    stops: ").append(toIndentedString(stops)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -869,6 +869,7 @@ components:
           required:
             - description
             - theLink
+            - stops
           properties:
             description:
               type: string
@@ -884,6 +885,12 @@ components:
                 type: string
               deprecated: true
               nullable: true
+            stops:
+              type: array
+              items:
+                $ref: '#/components/schemas/UICStop'
+              minItems: 2
+              maxItems: 42
 
     # com.anaptecs.jeaf.junit.openapi.base.ParentClass
     ParentClass:

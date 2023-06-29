@@ -7,6 +7,7 @@ package com.anaptecs.spring.base;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -114,6 +115,22 @@ public class PartnerContainer implements Serializable {
       }
       else {
         partners = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method adds the passed objects to association {@link #partners}.<br/>
+     *
+     * @param pPartners Array of objects that should be added to {@link #partners}. The parameter may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToPartners( Partner... pPartners ) {
+      if (pPartners != null) {
+        if (partners == null) {
+          partners = new ArrayList<Partner>();
+        }
+        partners.addAll(Arrays.asList(pPartners));
       }
       return this;
     }

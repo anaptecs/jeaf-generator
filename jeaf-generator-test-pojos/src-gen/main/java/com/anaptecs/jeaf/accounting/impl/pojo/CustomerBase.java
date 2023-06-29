@@ -5,6 +5,7 @@
  */
 package com.anaptecs.jeaf.accounting.impl.pojo;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
@@ -170,6 +171,22 @@ public abstract class CustomerBase extends Partner {
       }
       else {
         accounts = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method adds the passed objects to association {@link #accounts}.<br/>
+     *
+     * @param pAccounts Array of objects that should be added to {@link #accounts}. The parameter may be null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining. Method never returns null.
+     */
+    public BuilderBase addToAccounts( Account... pAccounts ) {
+      if (pAccounts != null) {
+        if (accounts == null) {
+          accounts = new HashSet<Account>();
+        }
+        accounts.addAll(Arrays.asList(pAccounts));
       }
       return this;
     }

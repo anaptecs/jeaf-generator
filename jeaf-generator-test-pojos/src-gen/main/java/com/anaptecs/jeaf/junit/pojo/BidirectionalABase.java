@@ -5,6 +5,7 @@
  */
 package com.anaptecs.jeaf.junit.pojo;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
@@ -165,6 +166,22 @@ public abstract class BidirectionalABase {
       }
       else {
         transientBs = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method adds the passed objects to association {@link #transientBs}.<br/>
+     *
+     * @param pTransientBs Array of objects that should be added to {@link #transientBs}. The parameter may be null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining. Method never returns null.
+     */
+    public BuilderBase addToTransientBs( BidirectionalB... pTransientBs ) {
+      if (pTransientBs != null) {
+        if (transientBs == null) {
+          transientBs = new HashSet<BidirectionalB>();
+        }
+        transientBs.addAll(Arrays.asList(pTransientBs));
       }
       return this;
     }

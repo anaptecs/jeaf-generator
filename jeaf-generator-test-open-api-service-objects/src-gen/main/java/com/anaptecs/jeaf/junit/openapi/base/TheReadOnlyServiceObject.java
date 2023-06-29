@@ -166,6 +166,22 @@ public class TheReadOnlyServiceObject implements ServiceObject {
     }
 
     /**
+     * Method adds the passed objects to association {@link #bookingCodes}.<br/>
+     *
+     * @param pBookingCodes Array of objects that should be added to {@link #bookingCodes}. The parameter may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToBookingCodes( BookingCode... pBookingCodes ) {
+      if (pBookingCodes != null) {
+        if (bookingCodes == null) {
+          bookingCodes = new HashSet<BookingCode>();
+        }
+        bookingCodes.addAll(Arrays.asList(pBookingCodes));
+      }
+      return this;
+    }
+
+    /**
      * Method sets association {@link #inventoryType}.<br/>
      *
      * @param pInventoryType Value to which {@link #inventoryType} should be set.
