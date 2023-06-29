@@ -205,6 +205,23 @@ public class MultiValuedDataType implements ServiceObject {
     }
 
     /**
+     * Method adds the passed objects to association {@link #stringCodeHeader}.<br/>
+     *
+     * @param pStringCodeHeader Array of objects that should be added to {@link #stringCodeHeader}. The parameter may be
+     * null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToStringCodeHeader( StringCode... pStringCodeHeader ) {
+      if (pStringCodeHeader != null) {
+        if (stringCodeHeader == null) {
+          stringCodeHeader = new ArrayList<StringCode>();
+        }
+        stringCodeHeader.addAll(Arrays.asList(pStringCodeHeader));
+      }
+      return this;
+    }
+
+    /**
      * Method sets association {@link #longCodeQueryParam}.<br/>
      *
      * @param pLongCodeQueryParam Collection to which {@link #longCodeQueryParam} should be set.
@@ -222,6 +239,23 @@ public class MultiValuedDataType implements ServiceObject {
     }
 
     /**
+     * Method adds the passed objects to association {@link #longCodeQueryParam}.<br/>
+     *
+     * @param pLongCodeQueryParam Array of objects that should be added to {@link #longCodeQueryParam}. The parameter
+     * may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToLongCodeQueryParam( LongCode... pLongCodeQueryParam ) {
+      if (pLongCodeQueryParam != null) {
+        if (longCodeQueryParam == null) {
+          longCodeQueryParam = new ArrayList<LongCode>();
+        }
+        longCodeQueryParam.addAll(Arrays.asList(pLongCodeQueryParam));
+      }
+      return this;
+    }
+
+    /**
      * Method sets association {@link #literals}.<br/>
      *
      * @param pLiterals Collection to which {@link #literals} should be set.
@@ -234,6 +268,22 @@ public class MultiValuedDataType implements ServiceObject {
       }
       else {
         literals = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method adds the passed objects to association {@link #literals}.<br/>
+     *
+     * @param pLiterals Array of objects that should be added to {@link #literals}. The parameter may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToLiterals( BooleanLiteralsEnum... pLiterals ) {
+      if (pLiterals != null) {
+        if (literals == null) {
+          literals = new ArrayList<BooleanLiteralsEnum>();
+        }
+        literals.addAll(Arrays.asList(pLiterals));
       }
       return this;
     }

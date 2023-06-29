@@ -6,6 +6,7 @@
 package com.anaptecs.jeaf.junit.rest.generics;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
@@ -115,6 +116,22 @@ public abstract class GenericPageableResponseBase<T> extends AbstractResponse<T>
       }
       else {
         values = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method adds the passed objects to association {@link #values}.<br/>
+     *
+     * @param pValues Array of objects that should be added to {@link #values}. The parameter may be null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining. Method never returns null.
+     */
+    public BuilderBase<T> addToValues( T... pValues ) {
+      if (pValues != null) {
+        if (values == null) {
+          values = new ArrayList<T>();
+        }
+        values.addAll(Arrays.asList(pValues));
       }
       return this;
     }

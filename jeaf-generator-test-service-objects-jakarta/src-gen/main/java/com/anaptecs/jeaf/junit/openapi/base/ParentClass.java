@@ -6,6 +6,7 @@
 package com.anaptecs.jeaf.junit.openapi.base;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
@@ -185,6 +186,22 @@ public class ParentClass implements ServiceObject {
     }
 
     /**
+     * Method adds the passed objects to association {@link #ibans}.<br/>
+     *
+     * @param pIbans Array of objects that should be added to {@link #ibans}. The parameter may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToIbans( IBAN... pIbans ) {
+      if (pIbans != null) {
+        if (ibans == null) {
+          ibans = new HashSet<IBAN>();
+        }
+        ibans.addAll(Arrays.asList(pIbans));
+      }
+      return this;
+    }
+
+    /**
      * Method sets association {@link #theBankAccount}.<br/>
      *
      * @param pTheBankAccount Value to which {@link #theBankAccount} should be set.
@@ -210,6 +227,24 @@ public class ParentClass implements ServiceObject {
       }
       else {
         legacyBankAccounts = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method adds the passed objects to association {@link #legacyBankAccounts}.<br/>
+     *
+     * @param pLegacyBankAccounts Array of objects that should be added to {@link #legacyBankAccounts}. The parameter
+     * may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    @Deprecated
+    public Builder addToLegacyBankAccounts( BankAccount... pLegacyBankAccounts ) {
+      if (pLegacyBankAccounts != null) {
+        if (legacyBankAccounts == null) {
+          legacyBankAccounts = new ArrayList<BankAccount>();
+        }
+        legacyBankAccounts.addAll(Arrays.asList(pLegacyBankAccounts));
       }
       return this;
     }

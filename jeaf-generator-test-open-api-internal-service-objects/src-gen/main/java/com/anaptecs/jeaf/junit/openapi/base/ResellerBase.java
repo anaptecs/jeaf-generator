@@ -6,6 +6,7 @@
 package com.anaptecs.jeaf.junit.openapi.base;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -175,6 +176,22 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
     }
 
     /**
+     * Method adds the passed objects to association {@link #channels}.<br/>
+     *
+     * @param pChannels Array of objects that should be added to {@link #channels}. The parameter may be null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining. Method never returns null.
+     */
+    public BuilderBase addToChannels( Channel... pChannels ) {
+      if (pChannels != null) {
+        if (channels == null) {
+          channels = new ArrayList<Channel>();
+        }
+        channels.addAll(Arrays.asList(pChannels));
+      }
+      return this;
+    }
+
+    /**
      * Method sets association {@link #products}.<br/>
      *
      * @param pProducts Collection to which {@link #products} should be set.
@@ -187,6 +204,22 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
       }
       else {
         products = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method adds the passed objects to association {@link #products}.<br/>
+     *
+     * @param pProducts Array of objects that should be added to {@link #products}. The parameter may be null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining. Method never returns null.
+     */
+    public BuilderBase addToProducts( Product... pProducts ) {
+      if (pProducts != null) {
+        if (products == null) {
+          products = new HashSet<Product>();
+        }
+        products.addAll(Arrays.asList(pProducts));
       }
       return this;
     }

@@ -5,6 +5,7 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
@@ -154,6 +155,23 @@ public class WeirdParent implements ServiceObject {
       }
       else {
         complexBookings = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method adds the passed objects to association {@link #complexBookings}.<br/>
+     *
+     * @param pComplexBookings Array of objects that should be added to {@link #complexBookings}. The parameter may be
+     * null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToComplexBookings( ComplexBookingID... pComplexBookings ) {
+      if (pComplexBookings != null) {
+        if (complexBookings == null) {
+          complexBookings = new HashSet<ComplexBookingID>();
+        }
+        complexBookings.addAll(Arrays.asList(pComplexBookings));
       }
       return this;
     }

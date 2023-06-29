@@ -5,6 +5,7 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
@@ -217,6 +218,22 @@ public class ChildB extends ParentClass {
       }
       else {
         composition = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method adds the passed objects to association {@link #composition}.<br/>
+     *
+     * @param pComposition Array of objects that should be added to {@link #composition}. The parameter may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToComposition( ParentClass... pComposition ) {
+      if (pComposition != null) {
+        if (composition == null) {
+          composition = new HashSet<ParentClass>();
+        }
+        composition.addAll(Arrays.asList(pComposition));
       }
       return this;
     }

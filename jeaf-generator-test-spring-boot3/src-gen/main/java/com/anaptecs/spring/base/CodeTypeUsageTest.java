@@ -5,6 +5,7 @@
  */
 package com.anaptecs.spring.base;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
@@ -153,6 +154,23 @@ public class CodeTypeUsageTest {
     }
 
     /**
+     * Method adds the passed objects to association {@link #booleanCodeAssociation}.<br/>
+     *
+     * @param pBooleanCodeAssociation Array of objects that should be added to {@link #booleanCodeAssociation}. The
+     * parameter may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToBooleanCodeAssociation( BooleanCodeType... pBooleanCodeAssociation ) {
+      if (pBooleanCodeAssociation != null) {
+        if (booleanCodeAssociation == null) {
+          booleanCodeAssociation = new HashSet<BooleanCodeType>();
+        }
+        booleanCodeAssociation.addAll(Arrays.asList(pBooleanCodeAssociation));
+      }
+      return this;
+    }
+
+    /**
      * Method sets association {@link #shortCodeTypeAssociation}.<br/>
      *
      * @param pShortCodeTypeAssociation Collection to which {@link #shortCodeTypeAssociation} should be set.
@@ -165,6 +183,23 @@ public class CodeTypeUsageTest {
       }
       else {
         shortCodeTypeAssociation = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method adds the passed objects to association {@link #shortCodeTypeAssociation}.<br/>
+     *
+     * @param pShortCodeTypeAssociation Array of objects that should be added to {@link #shortCodeTypeAssociation}. The
+     * parameter may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToShortCodeTypeAssociation( ShortCodeType... pShortCodeTypeAssociation ) {
+      if (pShortCodeTypeAssociation != null) {
+        if (shortCodeTypeAssociation == null) {
+          shortCodeTypeAssociation = new HashSet<ShortCodeType>();
+        }
+        shortCodeTypeAssociation.addAll(Arrays.asList(pShortCodeTypeAssociation));
       }
       return this;
     }

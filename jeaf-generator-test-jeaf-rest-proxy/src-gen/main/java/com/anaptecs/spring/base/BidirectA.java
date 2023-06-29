@@ -6,6 +6,7 @@
 package com.anaptecs.spring.base;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
@@ -153,6 +154,22 @@ public class BidirectA implements Serializable {
       }
       else {
         transientBs = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method adds the passed objects to association {@link #transientBs}.<br/>
+     *
+     * @param pTransientBs Array of objects that should be added to {@link #transientBs}. The parameter may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToTransientBs( BidirectB... pTransientBs ) {
+      if (pTransientBs != null) {
+        if (transientBs == null) {
+          transientBs = new HashSet<BidirectB>();
+        }
+        transientBs.addAll(Arrays.asList(pTransientBs));
       }
       return this;
     }

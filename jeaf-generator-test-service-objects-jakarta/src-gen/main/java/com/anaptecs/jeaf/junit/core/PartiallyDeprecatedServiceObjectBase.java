@@ -5,6 +5,7 @@
  */
 package com.anaptecs.jeaf.junit.core;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
@@ -191,6 +192,24 @@ public abstract class PartiallyDeprecatedServiceObjectBase implements ServiceObj
       }
       else {
         deprecatedRefs = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method adds the passed objects to association {@link #deprecatedRefs}.<br/>
+     *
+     * @param pDeprecatedRefs Array of objects that should be added to {@link #deprecatedRefs}. The parameter may be
+     * null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining. Method never returns null.
+     */
+    @Deprecated
+    public BuilderBase addToDeprecatedRefs( ValidationTestObject... pDeprecatedRefs ) {
+      if (pDeprecatedRefs != null) {
+        if (deprecatedRefs == null) {
+          deprecatedRefs = new HashSet<ValidationTestObject>();
+        }
+        deprecatedRefs.addAll(Arrays.asList(pDeprecatedRefs));
       }
       return this;
     }

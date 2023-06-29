@@ -5,6 +5,7 @@
  */
 package com.anaptecs.jeaf.accounting;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
@@ -219,6 +220,22 @@ public class Booking implements ServiceObject {
       }
       else {
         remitters = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method adds the passed objects to association {@link #remitters}.<br/>
+     *
+     * @param pRemitters Array of objects that should be added to {@link #remitters}. The parameter may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToRemitters( Person... pRemitters ) {
+      if (pRemitters != null) {
+        if (remitters == null) {
+          remitters = new HashSet<Person>();
+        }
+        remitters.addAll(Arrays.asList(pRemitters));
       }
       return this;
     }

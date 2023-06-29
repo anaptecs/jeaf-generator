@@ -5,6 +5,7 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
@@ -175,6 +176,22 @@ public class TheReadOnlyServiceObject implements ServiceObject {
       }
       else {
         bookingCodes = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method adds the passed objects to association {@link #bookingCodes}.<br/>
+     *
+     * @param pBookingCodes Array of objects that should be added to {@link #bookingCodes}. The parameter may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToBookingCodes( BookingCode... pBookingCodes ) {
+      if (pBookingCodes != null) {
+        if (bookingCodes == null) {
+          bookingCodes = new HashSet<BookingCode>();
+        }
+        bookingCodes.addAll(Arrays.asList(pBookingCodes));
       }
       return this;
     }

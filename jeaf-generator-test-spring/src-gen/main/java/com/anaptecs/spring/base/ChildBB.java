@@ -258,6 +258,23 @@ public class ChildBB extends ChildB {
     }
 
     /**
+     * Method adds the passed objects to association {@link #deprecatedBs}.<br/>
+     *
+     * @param pDeprecatedBs Array of objects that should be added to {@link #deprecatedBs}. The parameter may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    @Deprecated
+    public Builder addToDeprecatedBs( ChildB... pDeprecatedBs ) {
+      if (pDeprecatedBs != null) {
+        if (deprecatedBs == null) {
+          deprecatedBs = new HashSet<ChildB>();
+        }
+        deprecatedBs.addAll(Arrays.asList(pDeprecatedBs));
+      }
+      return this;
+    }
+
+    /**
      * Method sets association {@link #deprecatedParent}.<br/>
      *
      * @param pDeprecatedParent Value to which {@link #deprecatedParent} should be set.

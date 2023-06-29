@@ -7,6 +7,7 @@ package com.anaptecs.spring.base;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -145,6 +146,23 @@ public class WeirdBooking implements Serializable {
       }
       else {
         additionalBookings = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method adds the passed objects to association {@link #additionalBookings}.<br/>
+     *
+     * @param pAdditionalBookings Array of objects that should be added to {@link #additionalBookings}. The parameter
+     * may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToAdditionalBookings( ComplexBookingID... pAdditionalBookings ) {
+      if (pAdditionalBookings != null) {
+        if (additionalBookings == null) {
+          additionalBookings = new ArrayList<ComplexBookingID>();
+        }
+        additionalBookings.addAll(Arrays.asList(pAdditionalBookings));
       }
       return this;
     }

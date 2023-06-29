@@ -5,6 +5,7 @@
  */
 package com.anaptecs.spring.base;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
@@ -133,6 +134,22 @@ public class Sortiment {
       }
       else {
         products = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method adds the passed objects to association {@link #products}.<br/>
+     *
+     * @param pProducts Array of objects that should be added to {@link #products}. The parameter may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToProducts( Product... pProducts ) {
+      if (pProducts != null) {
+        if (products == null) {
+          products = new HashSet<Product>();
+        }
+        products.addAll(Arrays.asList(pProducts));
       }
       return this;
     }

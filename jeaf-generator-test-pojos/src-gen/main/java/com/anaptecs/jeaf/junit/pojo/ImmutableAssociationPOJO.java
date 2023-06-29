@@ -5,6 +5,7 @@
  */
 package com.anaptecs.jeaf.junit.pojo;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
@@ -191,6 +192,23 @@ public class ImmutableAssociationPOJO {
     }
 
     /**
+     * Method adds the passed objects to association {@link #readonlyAssociation}.<br/>
+     *
+     * @param pReadonlyAssociation Array of objects that should be added to {@link #readonlyAssociation}. The parameter
+     * may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToReadonlyAssociation( ImmutablePOJO... pReadonlyAssociation ) {
+      if (pReadonlyAssociation != null) {
+        if (readonlyAssociation == null) {
+          readonlyAssociation = new TreeSet<ImmutablePOJO>();
+        }
+        readonlyAssociation.addAll(Arrays.asList(pReadonlyAssociation));
+      }
+      return this;
+    }
+
+    /**
      * Method sets association {@link #immutableChildPOJO}.<br/>
      *
      * @param pImmutableChildPOJO Value to which {@link #immutableChildPOJO} should be set.
@@ -215,6 +233,24 @@ public class ImmutableAssociationPOJO {
       }
       else {
         deprecatedRefs = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method adds the passed objects to association {@link #deprecatedRefs}.<br/>
+     *
+     * @param pDeprecatedRefs Array of objects that should be added to {@link #deprecatedRefs}. The parameter may be
+     * null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    @Deprecated
+    public Builder addToDeprecatedRefs( ImmutableChildPOJO... pDeprecatedRefs ) {
+      if (pDeprecatedRefs != null) {
+        if (deprecatedRefs == null) {
+          deprecatedRefs = new HashSet<ImmutableChildPOJO>();
+        }
+        deprecatedRefs.addAll(Arrays.asList(pDeprecatedRefs));
       }
       return this;
     }

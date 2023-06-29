@@ -289,6 +289,22 @@ public class DataTypesQueryBean {
     }
 
     /**
+     * Method adds the passed objects to association {@link #doubleCodes}.<br/>
+     *
+     * @param pDoubleCodes Array of objects that should be added to {@link #doubleCodes}. The parameter may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToDoubleCodes( DoubleCode... pDoubleCodes ) {
+      if (pDoubleCodes != null) {
+        if (doubleCodes == null) {
+          doubleCodes = new HashSet<DoubleCode>();
+        }
+        doubleCodes.addAll(Arrays.asList(pDoubleCodes));
+      }
+      return this;
+    }
+
+    /**
      * Method sets association {@link #bookingIDs}.<br/>
      *
      * @param pBookingIDs Collection to which {@link #bookingIDs} should be set.
@@ -301,6 +317,22 @@ public class DataTypesQueryBean {
       }
       else {
         bookingIDs = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method adds the passed objects to association {@link #bookingIDs}.<br/>
+     *
+     * @param pBookingIDs Array of objects that should be added to {@link #bookingIDs}. The parameter may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToBookingIDs( BookingID... pBookingIDs ) {
+      if (pBookingIDs != null) {
+        if (bookingIDs == null) {
+          bookingIDs = new HashSet<BookingID>();
+        }
+        bookingIDs.addAll(Arrays.asList(pBookingIDs));
       }
       return this;
     }
@@ -388,6 +420,22 @@ public class DataTypesQueryBean {
     }
 
     /**
+     * Method adds the passed objects to association {@link #timestamps}.<br/>
+     *
+     * @param pTimestamps Array of objects that should be added to {@link #timestamps}. The parameter may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToTimestamps( LocalDateTime... pTimestamps ) {
+      if (pTimestamps != null) {
+        if (timestamps == null) {
+          timestamps = new ArrayList<LocalDateTime>();
+        }
+        timestamps.addAll(Arrays.asList(pTimestamps));
+      }
+      return this;
+    }
+
+    /**
      * Method sets association {@link #times}.<br/>
      *
      * @param pTimes Collection to which {@link #times} should be set.
@@ -400,6 +448,22 @@ public class DataTypesQueryBean {
       }
       else {
         times = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method adds the passed objects to association {@link #times}.<br/>
+     *
+     * @param pTimes Array of objects that should be added to {@link #times}. The parameter may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToTimes( OffsetTime... pTimes ) {
+      if (pTimes != null) {
+        if (times == null) {
+          times = new HashSet<OffsetTime>();
+        }
+        times.addAll(Arrays.asList(pTimes));
       }
       return this;
     }

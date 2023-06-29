@@ -124,6 +124,22 @@ public abstract class MasterDataObjectBase {
     }
 
     /**
+     * Method adds the passed objects to association {@link #dataUnits}.<br/>
+     *
+     * @param pDataUnits Array of objects that should be added to {@link #dataUnits}. The parameter may be null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining. Method never returns null.
+     */
+    public BuilderBase addToDataUnits( DataUnit... pDataUnits ) {
+      if (pDataUnits != null) {
+        if (dataUnits == null) {
+          dataUnits = new ArrayList<DataUnit>();
+        }
+        dataUnits.addAll(Arrays.asList(pDataUnits));
+      }
+      return this;
+    }
+
+    /**
      * Method sets association {@link #dataUnits}.<br/>
      *
      * @param pDataUnits Array with objects to which {@link #dataUnits} should be set.

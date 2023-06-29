@@ -199,6 +199,22 @@ public class ChildB extends ParentClass {
     }
 
     /**
+     * Method adds the passed objects to association {@link #composition}.<br/>
+     *
+     * @param pComposition Array of objects that should be added to {@link #composition}. The parameter may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToComposition( ParentClass... pComposition ) {
+      if (pComposition != null) {
+        if (composition == null) {
+          composition = new HashSet<ParentClass>();
+        }
+        composition.addAll(Arrays.asList(pComposition));
+      }
+      return this;
+    }
+
+    /**
      * Method creates a new instance of class ChildB. The object will be initialized with the values of the builder.
      *
      * @return ChildB Created object. The method never returns null.
