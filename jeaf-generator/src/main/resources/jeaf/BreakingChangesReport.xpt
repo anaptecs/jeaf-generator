@@ -32,14 +32,14 @@
 <br>
 
 | Element  | Owner   | Element Type |Description   | Active with |
-|----------|---------|:------------:|--------------|:---------------:|
+|----------|---------|:------------:|--------------|:-----------:|
 «IF this.getAllBreakingChanges().isEmpty == false -»
 	«FOREACH this.getAllBreakingChanges() AS change -»
 | `«change.name»` | `«((uml::NamedElement) change.owner).fqn()»` | «IF change.isProperty()»Property«ELSE»Parameter«ENDIF» | «change.getBreakingChangeDescription()» | «change.getBreakingChangeActiveWith()» | 
 	«ENDFOREACH -»
-«ELSE»
+«ELSE-»
 | No breaking changes declared. |
-«ENDIF»
+«ENDIF-»
 
 «ENDFILE»
 «ENDDEFINE»
