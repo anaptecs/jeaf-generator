@@ -1,0 +1,49 @@
+«IMPORT uml»
+«IMPORT JMM»
+«EXTENSION java::Naming»
+«EXTENSION jeaf::Deprecation»
+
+«EXTENSION functions::TypeChecks»
+
+«EXTENSION functions::Class»
+«EXTENSION functions::POJO»
+«EXTENSION functions::ServiceObject»
+«EXTENSION functions::DomainObject»
+«EXTENSION functions::PersistentObject»
+«EXTENSION functions::JEAFEnumeration»
+«EXTENSION functions::Element»
+«EXTENSION functions::Operation»
+«EXTENSION functions::HeaderParam»
+«EXTENSION functions::QueryParam»
+«EXTENSION functions::BeanParam»
+«EXTENSION functions::JEAFDeprecated»
+
+«EXTENSION org::openarchitectureware::util::stdlib::io»
+
+«EXTENSION java::GeneratorCommons»
+«EXTENSION functions::BreakingChange»
+«EXTENSION functions::Property»
+
+
+«DEFINE BreakingChangesReport FOR Model»
+«FILE getBreakingChangesReportFileName() res_gen-»
+# «getBreakingChangesReportName()»
+
+<br>
+
+| Element  | Owner   | Element Type |Description   | Active with |
+|----------|---------|:------------:|--------------|:---------------:|
+«IF this.getAllBreakingChanges().isEmpty == false -»
+	«FOREACH this.getAllBreakingChanges() AS change -»
+| `«change.name»` | `«((uml::NamedElement) change.owner).fqn()»` | «IF change.isProperty()»Property«ELSE»Parameter«ENDIF» | «change.getBreakingChangeDescription()» | «change.getBreakingChangeActiveWith()» | 
+	«ENDFOREACH -»
+«ELSE»
+| No breaking changes declared. |
+«ENDIF»
+
+«ENDFILE»
+«ENDDEFINE»
+
+
+
+

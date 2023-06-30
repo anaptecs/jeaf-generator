@@ -122,6 +122,18 @@ cached boolean generateCustomConstraints() :
 cached boolean generateJUnitTests() :    
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateJUnitTests();
 
+cached boolean generateBreakingChangesReport():    
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateBreakingChangesReport();
+    
+cached String getBreakingChangesReportName():    
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getBreakingChangesReportName();
+    
+cached String getBreakingChangesReportFileName():
+    getBreakingChangesReportFileNameProperty() + getDeprecationReportFileExtension();   
+
+private cached String getBreakingChangesReportFileNameProperty():    
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getBreakingChangesReportFileName();
+    
 cached boolean generateRESTDeprecationReport():    
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateRESTDeprecationReport();
     
