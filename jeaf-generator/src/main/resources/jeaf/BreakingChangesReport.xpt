@@ -26,12 +26,12 @@
 
 
 «DEFINE BreakingChangesReport FOR Model»
-«FILE "BreakingChanges.md" res_gen-»
-# Planned Breaking Changes
+«FILE getBreakingChangesReportFileName() res_gen-»
+# «getBreakingChangesReportName()»
 
 <br>
 
-| Element  | Owner   | Element Type |Description   | Activation Planned with |
+| Element  | Owner   | Element Type |Description   | Active with |
 |----------|---------|:------------:|--------------|:---------------:|
 «IF this.getAllBreakingChanges().isEmpty == false -»
 	«FOREACH this.getAllBreakingChanges() AS change -»

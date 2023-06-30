@@ -466,6 +466,26 @@ public class GeneratorMojo extends AbstractMojo {
   private Boolean generateJUnitTests;
 
   /**
+   * Switch enables the generation of a breaking changes report about the model parts which are configured to be
+   * processed. Breaking changes report is based an model elements that are tagged with stereotype "BreakingChange".
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean generateBreakingChangesReport;
+
+  /**
+   * Name of the breaking changes report.
+   */
+  @Parameter(required = false, defaultValue = "Planned Breaking Changes")
+  private String breakingChangesReportName;
+
+  /**
+   * Name of the file that contains the breaking changes report. The file extension will be chosen based on the report
+   * format.
+   */
+  @Parameter(required = false, defaultValue = "Breaking_Changes")
+  private String breakingChangesReportFileName;
+
+  /**
    * Switch enables the generation of a REST / OpenAPI deprecation report about the model parts which are configured to
    * be processed.
    */
@@ -1160,12 +1180,23 @@ public class GeneratorMojo extends AbstractMojo {
     if (generateJUnitTests) {
       lLog.info("Generate JUnit Test Cases:                        " + generateJUnitTests);
     }
+
+    if (generateBreakingChangesReport) {
+      lLog.info("Generate Breaking Changes Report                  " + generateBreakingChangesReport);
+      lLog.info("Breaking Changes Report Name                      " + breakingChangesReportName);
+      lLog.info("Breaking Changes Report File Name                 " + breakingChangesReportFileName
+          + deprecationReportFormat.getExtension());
+      lLog.info("Breaking Changes Report Format                    " + deprecationReportFormat);
+      lLog.info(" ");
+    }
+
     if (generateRESTDeprecationReport) {
       lLog.info("Generate REST Deprecation Report                  " + generateRESTDeprecationReport);
       lLog.info("REST Deprecation Report Name                      " + restDeprecationReportName);
       lLog.info("REST Deprecation Report File Name                 " + restDeprecationReportFileName
           + deprecationReportFormat.getExtension());
       lLog.info("REST Deprecation Report Format                    " + deprecationReportFormat);
+      lLog.info(" ");
     }
 
     if (generateJavaDeprecationReport) {
@@ -1375,6 +1406,9 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty("switch.gen.domain.objects", generateDomainObjects.toString());
       System.setProperty("switch.gen.junits", generateJUnitTests.toString());
 
+      System.setProperty("switch.gen.breaking.changes.report", generateBreakingChangesReport.toString());
+      System.setProperty("switch.gen.breaking.changes.report.name", breakingChangesReportName.toString());
+      System.setProperty("switch.gen.breaking.changes.report.filename", breakingChangesReportFileName.toString());
       System.setProperty("switch.gen.rest.deprecation.report", generateRESTDeprecationReport.toString());
       System.setProperty("switch.gen.rest.deprecation.report.name", restDeprecationReportName.toString());
       System.setProperty("switch.gen.rest.deprecation.report.filename", restDeprecationReportFileName.toString());
@@ -1677,8 +1711,8 @@ public class GeneratorMojo extends AbstractMojo {
         | generateRESTServiceProxies | generateRESTServiceProxyConfigFile | generateActivityInterfaces
         | generateActivityImpls | generateServiceObjects | generatePOJOs | generateDomainObjects | generateObjectMappers
         | generatePersistentObjects | generateComponentImpls | generateComponentRuntimeClasses | generateGlobalParts
-        | generateExceptionClasses | generateJUnitTests | generateRESTDeprecationReport | generateJavaDeprecationReport
-        | generateOpenAPISpec | generateJSONSerializers;
+        | generateExceptionClasses | generateJUnitTests | generateBreakingChangesReport | generateRESTDeprecationReport
+        | generateJavaDeprecationReport | generateOpenAPISpec | generateJSONSerializers;
   }
 
   private boolean isMessageConstantsGenerationRequested( ) {

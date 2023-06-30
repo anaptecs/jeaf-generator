@@ -249,6 +249,12 @@ public class GeneratorCommons {
    */
   public static final String JUNIT_PROPERTY = "switch.gen.junits";
 
+  public static final String GENERATE_BREAKING_CHANGES_REPORT = "switch.gen.breaking.changes.report";
+
+  public static final String BREAKING_CHANGES_REPORT_NAME = "switch.gen.breaking.changes.report.name";
+
+  public static final String BREAKING_CHANGES_REPORT_FILE_NAME = "switch.gen.breaking.changes.report.filename";
+
   public static final String GENERATE_REST_DEPRECATION_REPORT = "switch.gen.rest.deprecation.report";
 
   public static final String REST_DEPRECATION_REPORT_NAME = "switch.gen.rest.deprecation.report.name";
@@ -906,6 +912,21 @@ public class GeneratorCommons {
   public static boolean generateJUnitTests( ) {
     Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
     return lConfiguration.getConfigurationValue(JUNIT_PROPERTY, Boolean.TRUE, Boolean.class);
+  }
+
+  public static boolean generateBreakingChangesReport( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(GENERATE_BREAKING_CHANGES_REPORT, Boolean.TRUE, Boolean.class);
+  }
+
+  public static String getBreakingChangesReportName( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(BREAKING_CHANGES_REPORT_NAME, true, String.class);
+  }
+
+  public static String getBreakingChangesReportFileName( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(BREAKING_CHANGES_REPORT_FILE_NAME, true, String.class);
   }
 
   public static boolean generateRESTDeprecationReport( ) {

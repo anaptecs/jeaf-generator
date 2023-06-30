@@ -15,6 +15,11 @@
 		«info ("Using JEAF Meta Model (JMM) revision " + version.revision)»
 	«ENDFOREACH»
 	
+    «IF generateBreakingChangesReport()»
+       «info("Generating Breaking Changes Report")»
+       «EXPAND jeaf::BreakingChangesReport::BreakingChangesReport»
+    «ENDIF»
+    
 	«IF generateRESTDeprecationReport()»
 	   «info("Generating REST Deprecation Report")»
 	   «EXPAND jeaf::RESTDeprecation::RESTDeprecationReport»
@@ -23,11 +28,6 @@
     «IF generateJavaDeprecationReport()»
        «info("Generating Java Deprecation Report")»
        «EXPAND jeaf::JavaDeprecation::JavaDeprecationReport»
-    «ENDIF»
-    
-    «IF generateJavaDeprecationReport() || generateRESTDeprecationReport()»
-       «info("Generating Breaking Changes Report")»
-       «EXPAND jeaf::BreakingChangesReport::BreakingChangesReport»
     «ENDIF»
     
     «IF generateGlobalParts() == true»
