@@ -18,11 +18,11 @@
 
 <br>
 
-## Model Elements
+## Types
 
 <br>
 
-| Element  |«IF showAliasInTypesReport()» «getAliasRowName()» |«ENDIF»«IF showPackageInTypesReport()» Package |«ENDIF» Description  |
+| Type     |«IF showAliasInTypesReport()» «getAliasRowName()» |«ENDIF»«IF showPackageInTypesReport()» Package |«ENDIF» Description  |
 |----------|«IF showAliasInTypesReport()»---------------------|«ENDIF»«IF showPackageInTypesReport()»-----------|«ENDIF»------------|
 «FOREACH elements.sortBy(e|e.name) AS nextElement-»
 «nextElement.name» | «IF showAliasInTypesReport()» «IF nextElement.isAlias()»«nextElement.asAlias().getAlternateNameForMarkup()»«ENDIF» |«ENDIF»«IF showPackageInTypesReport()» «nextElement.owner.asNamedElement().qualifiedName()» |«ENDIF» «nextElement.getDescriptionForMarkup()» |

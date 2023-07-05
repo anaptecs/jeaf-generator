@@ -2,11 +2,11 @@
 
 <br>
 
-## Model Elements
+## Types
 
 <br>
 
-| Element  | Legacy Name | Package | Description  |
+| Type     | Legacy Name | Package | Description  |
 |----------|---------------------|-----------|------------|
 AbstractPOJO |   | com.anaptecs.jeaf.junit.pojo |  |
 AbstractResponse |   | com.anaptecs.jeaf.junit.rest.generics |  |
