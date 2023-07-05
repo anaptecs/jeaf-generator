@@ -57,6 +57,13 @@
 					</packages>
 
 					<!-- Define what should be generated. By default nothing is generated. -->
+					<generateTypesReport>true</generateTypesReport>
+					<typesReportName>Hello Reports</typesReportName>
+					<typesReportShowAlias>true</typesReportShowAlias>
+					<typesReportAliasRowName>Legacy Name</typesReportAliasRowName>
+					<typesReportShowPackage>true</typesReportShowPackage>
+					<typesReportStereotypes>POJO; ServiceObject</typesReportStereotypes>
+					
 					<generateBreakingChangesReport>true</generateBreakingChangesReport>
 					<generateRESTDeprecationReport>true</generateRESTDeprecationReport>
 					<generateJavaDeprecationReport>true</generateJavaDeprecationReport>

@@ -1,8 +1,12 @@
 extension functions::TypeChecks;
+extension java::Naming;
 
 cached boolean isNamedElement(uml::Element element):
     element.isInstanceOf("org.eclipse.uml2.uml.NamedElement");
 
 cached uml::NamedElement asNamedElement(uml::Element element):
     (uml::NamedElement) element;
+    
+cached String qualifiedName(uml::NamedElement element):
+    element.fqn();
     

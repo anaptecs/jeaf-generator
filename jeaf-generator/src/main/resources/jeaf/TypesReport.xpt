@@ -1,0 +1,37 @@
+«IMPORT uml»
+«IMPORT JMM»
+
+«EXTENSION functions::TypesReport»
+«EXTENSION functions::Alias»
+«EXTENSION functions::NamedElement»
+
+
+«EXTENSION org::openarchitectureware::util::stdlib::io»
+
+«EXTENSION java::GeneratorCommons»
+
+
+«DEFINE TypesReport FOR Model»
+«LET this.getAllElementsForTypesReport() AS elements»
+«FILE getTypesReportFileName() res_gen-»
+# «getTypesReportName()»
+
+<br>
+
+## Model Elements
+
+<br>
+
+| Element  |«IF showAliasInTypesReport()» «getAliasRowName()» |«ENDIF»«IF showPackageInTypesReport()» Package |«ENDIF» Description  |
+|----------|«IF showAliasInTypesReport()»---------------------|«ENDIF»«IF showPackageInTypesReport()»-----------|«ENDIF»------------|
+«FOREACH elements.sortBy(e|e.name) AS nextElement-»
+«nextElement.name» | «IF showAliasInTypesReport()» «IF nextElement.isAlias()»«nextElement.asAlias().getAlternateNameForMarkup()»«ENDIF» |«ENDIF»«IF showPackageInTypesReport()» «nextElement.owner.asNamedElement().qualifiedName()» |«ENDIF» «nextElement.getDescriptionForMarkup()» |
+«ENDFOREACH»
+
+<br>
+
+«ENDFILE»
+«ENDLET»
+«ENDDEFINE»
+
+

@@ -249,6 +249,24 @@ public class GeneratorCommons {
    */
   public static final String JUNIT_PROPERTY = "switch.gen.junits";
 
+  public static final String GENERATE_TYPES_REPORT = "switch.gen.types.report";
+
+  public static final String TYPES_REPORT_NAME = "switch.gen.types.report.name";
+
+  public static final String TYPES_REPORT_FILE_NAME = "switch.gen.types.report.filename";
+
+  public static final String TYPES_REPORT_FILE_SHOW_ALIAS = "switch.gen.types.report.showAlias";
+
+  public static final String TYPES_REPORT_FILE_ALIAS_ROW_NAME = "switch.gen.types.report.aliasRowName";
+
+  public static final String TYPES_REPORT_FILE_SHOW_PACKAGE = "switch.gen.types.report.showPackage";
+
+  public static final String TYPES_REPORT_FILE_SHOW_PROPERTIES = "switch.gen.types.report.showProperties";
+
+  public static final String TYPES_REPORT_FILE_GROUP_BY_PACKAGES = "switch.gen.types.report.typesReportGroupByPackage";
+
+  public static final String TYPES_REPORT_FILE_STEREOTYPES = "switch.gen.types.report.stereotypes";
+
   public static final String GENERATE_BREAKING_CHANGES_REPORT = "switch.gen.breaking.changes.report";
 
   public static final String BREAKING_CHANGES_REPORT_NAME = "switch.gen.breaking.changes.report.name";
@@ -912,6 +930,51 @@ public class GeneratorCommons {
   public static boolean generateJUnitTests( ) {
     Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
     return lConfiguration.getConfigurationValue(JUNIT_PROPERTY, Boolean.TRUE, Boolean.class);
+  }
+
+  public static boolean generateTypesReport( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(GENERATE_TYPES_REPORT, Boolean.TRUE, Boolean.class);
+  }
+
+  public static String getTypesReportName( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(TYPES_REPORT_NAME, true, String.class);
+  }
+
+  public static String getTypesReportFileName( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(TYPES_REPORT_FILE_NAME, true, String.class);
+  }
+
+  public static boolean showAliasInTypesReport( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(TYPES_REPORT_FILE_SHOW_ALIAS, true, Boolean.class);
+  }
+
+  public static String getAliasRowName( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(TYPES_REPORT_FILE_ALIAS_ROW_NAME, true, String.class);
+  }
+
+  public static boolean showPackageInTypesReport( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(TYPES_REPORT_FILE_SHOW_PACKAGE, true, Boolean.class);
+  }
+
+  public static boolean showPropertiesInTypesReport( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(TYPES_REPORT_FILE_SHOW_PROPERTIES, true, Boolean.class);
+  }
+
+  public static boolean groupTypesReportByPackage( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(TYPES_REPORT_FILE_GROUP_BY_PACKAGES, true, Boolean.class);
+  }
+
+  public static List<String> getTypesReportStereotypes( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValueList(TYPES_REPORT_FILE_STEREOTYPES, true, String.class);
   }
 
   public static boolean generateBreakingChangesReport( ) {
