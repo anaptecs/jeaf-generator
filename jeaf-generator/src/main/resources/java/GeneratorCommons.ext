@@ -122,6 +122,36 @@ cached boolean generateCustomConstraints() :
 cached boolean generateJUnitTests() :    
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateJUnitTests();
 
+cached boolean generateTypesReport( ):
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateTypesReport();
+
+cached String getTypesReportName( ):
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getTypesReportName();
+    
+cached String getTypesReportFileName( ):
+    getTypesReportFileNameProperty() + getDeprecationReportFileExtension();   
+    
+private cached String getTypesReportFileNameProperty():    
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getTypesReportFileName();
+
+cached boolean showAliasInTypesReport( ):
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.showAliasInTypesReport();
+    
+cached String getAliasRowName( ):
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getAliasRowName();
+    
+cached boolean showPackageInTypesReport( ):
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.showPackageInTypesReport();
+    
+cached boolean showPropertiesInTypesReport( ):
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.showPropertiesInTypesReport();
+    
+cached boolean groupTypesReportByPackage( ):
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.groupTypesReportByPackage();
+    
+cached List[String] getTypesReportStereotypes( ):
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getTypesReportStereotypes();
+
 cached boolean generateBreakingChangesReport():    
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateBreakingChangesReport();
     

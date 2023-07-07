@@ -466,6 +466,64 @@ public class GeneratorMojo extends AbstractMojo {
   private Boolean generateJUnitTests;
 
   /**
+   * Switch enables the generation of a model types report about the model parts which are configured to be processed.
+   * Types report is based an model elements that are tagged with the configured stereotypes
+   * {@link #typesReportStereotypes}.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean generateTypesReport;
+
+  /**
+   * Name of the breaking changes report.
+   */
+  @Parameter(required = false, defaultValue = "Model Types")
+  private String typesReportName;
+
+  /**
+   * Name of the file that contains the breaking changes report. The file extension will be chosen based on the report
+   * format.
+   */
+  @Parameter(required = false, defaultValue = "Model_Types")
+  private String typesReportFileName;
+
+  /**
+   * Name of the stereotypes that should be considered when creating types report. Multiple stereotypes have to be
+   * separated using ';'.
+   */
+  @Parameter(required = false)
+  private String typesReportStereotypes = "";
+
+  /**
+   * Switch defines if within the types report also a row for alias names should be added.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean typesReportShowAlias;
+
+  /**
+   * Switch defines the name of the alias row.
+   */
+  @Parameter(required = false, defaultValue = "Alias")
+  private String typesReportAliasRowName;
+
+  /**
+   * Switch defines if for types report also the package of every type should be shown.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean typesReportShowPackage;
+
+  /**
+   * Switch defines if for types report also properties of every type should be added.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean typesReportShowProperties;
+
+  /**
+   * Switch defines if for types report content should be grouped by package.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean typesReportGroupByPackage;
+
+  /**
    * Switch enables the generation of a breaking changes report about the model parts which are configured to be
    * processed. Breaking changes report is based an model elements that are tagged with stereotype "BreakingChange".
    */
@@ -1181,6 +1239,21 @@ public class GeneratorMojo extends AbstractMojo {
       lLog.info("Generate JUnit Test Cases:                        " + generateJUnitTests);
     }
 
+    if (generateTypesReport) {
+      lLog.info(" ");
+      lLog.info("Generate Types Report                             " + generateTypesReport);
+      lLog.info("Types Report Name                                 " + typesReportName);
+      lLog.info("Types Report File Name                            " + typesReportFileName
+          + deprecationReportFormat.getExtension());
+      lLog.info("Types Report Stereotypes                          " + typesReportStereotypes);
+      lLog.info("Types Report Show Alias                           " + typesReportShowAlias);
+      lLog.info("Types Report Alias Row Name                       " + typesReportAliasRowName);
+      lLog.info("Types Report Show Package                         " + typesReportShowPackage);
+      lLog.info("Types Report Show Properties                      " + typesReportShowProperties);
+      lLog.info("Types Report Group by Package                     " + typesReportGroupByPackage);
+      lLog.info(" ");
+    }
+
     if (generateBreakingChangesReport) {
       lLog.info("Generate Breaking Changes Report                  " + generateBreakingChangesReport);
       lLog.info("Breaking Changes Report Name                      " + breakingChangesReportName);
@@ -1405,6 +1478,16 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty("switch.gen.heavy.extensible.enums", generateHeavyExtensibleEnums.toString());
       System.setProperty("switch.gen.domain.objects", generateDomainObjects.toString());
       System.setProperty("switch.gen.junits", generateJUnitTests.toString());
+
+      System.setProperty("switch.gen.types.report", generateTypesReport.toString());
+      System.setProperty("switch.gen.types.report.name", typesReportName.toString());
+      System.setProperty("switch.gen.types.report.filename", typesReportFileName.toString());
+      System.setProperty("switch.gen.types.report.showAlias", typesReportShowAlias.toString());
+      System.setProperty("switch.gen.types.report.aliasRowName", typesReportAliasRowName);
+      System.setProperty("switch.gen.types.report.showPackage", typesReportShowPackage.toString());
+      System.setProperty("switch.gen.types.report.showProperties", typesReportShowProperties.toString());
+      System.setProperty("switch.gen.types.report.groupByPackage", typesReportGroupByPackage.toString());
+      System.setProperty("switch.gen.types.report.stereotypes", typesReportStereotypes);
 
       System.setProperty("switch.gen.breaking.changes.report", generateBreakingChangesReport.toString());
       System.setProperty("switch.gen.breaking.changes.report.name", breakingChangesReportName.toString());
@@ -1711,8 +1794,8 @@ public class GeneratorMojo extends AbstractMojo {
         | generateRESTServiceProxies | generateRESTServiceProxyConfigFile | generateActivityInterfaces
         | generateActivityImpls | generateServiceObjects | generatePOJOs | generateDomainObjects | generateObjectMappers
         | generatePersistentObjects | generateComponentImpls | generateComponentRuntimeClasses | generateGlobalParts
-        | generateExceptionClasses | generateJUnitTests | generateBreakingChangesReport | generateRESTDeprecationReport
-        | generateJavaDeprecationReport | generateOpenAPISpec | generateJSONSerializers;
+        | generateExceptionClasses | generateJUnitTests | generateTypesReport | generateBreakingChangesReport
+        | generateRESTDeprecationReport | generateJavaDeprecationReport | generateOpenAPISpec | generateJSONSerializers;
   }
 
   private boolean isMessageConstantsGenerationRequested( ) {

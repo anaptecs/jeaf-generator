@@ -1,0 +1,10 @@
+extension java::GeneratorCommons;
+
+cached List[uml::NamedElement] getAllElementsForTypesReport(uml::Model model):
+    model.allOwnedElements().typeSelect(uml::NamedElement).select(e|e.isInGeneratorWhitelist()).select(e|e.hasStereotypeForTypesReport());
+    
+private boolean hasStereotypeForTypesReport(uml::NamedElement element):
+    getTypesReportStereotypes().exists(e|element.isStereotypeApplied(e));
+    
+cached String getDescriptionForMarkup(uml::NamedElement element): 
+    element.ownedComment.first().body.replaceAll("\n", "<br>");

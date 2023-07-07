@@ -165,23 +165,6 @@
 			</plugin>
 
 			<plugin>
-				<groupId>it.traeck.tools.openapi</groupId>
-				<artifactId>openapi-validator-maven-plugin</artifactId>
-				<version>${openapi-validator-plugin}</version>
-				<executions>
-					  <execution>
-					    <goals>
-					      	<goal>validate</goal>
-					    </goals>
-					    <phase>generate-sources</phase>
-					    <configuration>
-					      <inputSpec>${project.basedir}/src-gen/main/resources/products/product-services.yml</inputSpec>
-					    </configuration>
-					  </execution>
-				</executions>			
-			</plugin>
-
-			<plugin>
 				<groupId>io.swagger.codegen.v3</groupId>
 				<artifactId>swagger-codegen-maven-plugin</artifactId>
 				<version>${swagger.codegen.plugin.version}</version>
