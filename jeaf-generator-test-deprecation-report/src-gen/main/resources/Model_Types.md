@@ -2,9 +2,6 @@
 
 <br>
 
-## Types
-
-<br>
 
 | Type     | Legacy Name | Package | Description  |
 |----------|---------------------|-----------|------------|

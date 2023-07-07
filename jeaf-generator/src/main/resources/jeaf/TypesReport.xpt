@@ -18,9 +18,11 @@
 
 <br>
 
+«IF showPropertiesInTypesReport() -»
 ## Types
 
 <br>
+«ENDIF-»
 
 | Type     |«IF showAliasInTypesReport()» «getAliasRowName()» |«ENDIF»«IF showPackageInTypesReport()» Package |«ENDIF» Description  |
 |----------|«IF showAliasInTypesReport()»---------------------|«ENDIF»«IF showPackageInTypesReport()»-----------|«ENDIF»------------|
