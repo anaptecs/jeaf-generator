@@ -1,137 +1,137 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uml:Profile xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/2.0.0/UML" xmi:id="_IXJ1oBZ4Ee6sm8aJ1R1Bog" name="deployment" metamodelReference="_IXJ1uRZ4Ee6sm8aJ1R1Bog">
-  <eAnnotations xmi:id="_IXJ1oRZ4Ee6sm8aJ1R1Bog" source="http://www.eclipse.org/uml2/2.0.0/UML">
-    <contents xmi:type="ecore:EPackage" xmi:id="_IXJ1ohZ4Ee6sm8aJ1R1Bog" name="deployment" nsURI="http://UML_Profile_for_Java/deployment/_9_0_622020d_1108465332701_602548_6762" nsPrefix="deployment">
-      <eClassifiers xmi:type="ecore:EClass" xmi:id="_IXJ1oxZ4Ee6sm8aJ1R1Bog" name="JARInclude">
-        <eAnnotations xmi:id="_IXJ1pBZ4Ee6sm8aJ1R1Bog" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_IXJ1vBZ4Ee6sm8aJ1R1Bog"/>
-        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_IXJ1pRZ4Ee6sm8aJ1R1Bog" name="base_Dependency" ordered="false" lowerBound="1">
+<uml:Profile xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/2.0.0/UML" xmi:id="0faf926f-e455-4957-a958-13742c2fc621" name="deployment" metamodelReference="db10c39e-0937-4e9d-97a3-f96e61f1fb48">
+  <eAnnotations xmi:id="_SHvK8RyDEe674-w3YAal2g" source="http://www.eclipse.org/uml2/2.0.0/UML">
+    <contents xmi:type="ecore:EPackage" xmi:id="_SHvK8hyDEe674-w3YAal2g" name="deployment" nsURI="http://UML_Profile_for_Java/deployment/_9_0_622020d_1108465332701_602548_6762" nsPrefix="deployment">
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_SHvK8xyDEe674-w3YAal2g" name="JARInclude">
+        <eAnnotations xmi:id="_SHvK9ByDEe674-w3YAal2g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="72982302-b459-4c01-89dc-b6ec24aeb30f"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_SHvK9RyDEe674-w3YAal2g" name="base_Dependency" ordered="false" lowerBound="1">
           <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.0.0/UML#//Dependency"/>
         </eStructuralFeatures>
       </eClassifiers>
-      <eClassifiers xmi:type="ecore:EClass" xmi:id="_IXJ1phZ4Ee6sm8aJ1R1Bog" name="JARReference">
-        <eAnnotations xmi:id="_IXJ1pxZ4Ee6sm8aJ1R1Bog" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_IXJ1yxZ4Ee6sm8aJ1R1Bog"/>
-        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_IXJ1qBZ4Ee6sm8aJ1R1Bog" name="base_Usage" ordered="false" lowerBound="1">
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_SHvK9hyDEe674-w3YAal2g" name="JARReference">
+        <eAnnotations xmi:id="_SHvK9xyDEe674-w3YAal2g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="3b97e311-f344-4fb2-8c18-2275a5f54929"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_SHvK-ByDEe674-w3YAal2g" name="base_Usage" ordered="false" lowerBound="1">
           <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.0.0/UML#//Usage"/>
         </eStructuralFeatures>
       </eClassifiers>
-      <eClassifiers xmi:type="ecore:EClass" xmi:id="_IXJ1qRZ4Ee6sm8aJ1R1Bog" name="JAR">
-        <eAnnotations xmi:id="_IXJ1qhZ4Ee6sm8aJ1R1Bog" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_IXJ1zhZ4Ee6sm8aJ1R1Bog"/>
-        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_IXJ1qxZ4Ee6sm8aJ1R1Bog" name="JARFileList" ordered="false" lowerBound="1">
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_SHvK-RyDEe674-w3YAal2g" name="JAR">
+        <eAnnotations xmi:id="_SHvK-hyDEe674-w3YAal2g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="8c72adb0-e5c3-454c-9338-b1323c898473"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_SHvK-xyDEe674-w3YAal2g" name="JARFileList" ordered="false" lowerBound="1">
           <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
         </eStructuralFeatures>
-        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_IXJ1rBZ4Ee6sm8aJ1R1Bog" name="base_Artifact" ordered="false" lowerBound="1">
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_SHvK_ByDEe674-w3YAal2g" name="base_Artifact" ordered="false" lowerBound="1">
           <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.0.0/UML#//Artifact"/>
         </eStructuralFeatures>
       </eClassifiers>
-      <eClassifiers xmi:type="ecore:EClass" xmi:id="_IXJ1rRZ4Ee6sm8aJ1R1Bog" name="JavaArchiveFile">
-        <eAnnotations xmi:id="_IXJ1rhZ4Ee6sm8aJ1R1Bog" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_IXJ10hZ4Ee6sm8aJ1R1Bog"/>
-        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_IXJ1rxZ4Ee6sm8aJ1R1Bog" name="base_Package" ordered="false" lowerBound="1">
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_SHvK_RyDEe674-w3YAal2g" name="JavaArchiveFile">
+        <eAnnotations xmi:id="_SHvK_hyDEe674-w3YAal2g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="b7121bfa-821d-4194-9476-4e029e5058ee"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_SHvK_xyDEe674-w3YAal2g" name="base_Package" ordered="false" lowerBound="1">
           <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.0.0/UML#//Package"/>
         </eStructuralFeatures>
       </eClassifiers>
-      <eClassifiers xmi:type="ecore:EClass" xmi:id="_IXJ1sBZ4Ee6sm8aJ1R1Bog" name="JavaSourceFile" eSuperTypes="_IXJ1thZ4Ee6sm8aJ1R1Bog">
-        <eAnnotations xmi:id="_IXJ1sRZ4Ee6sm8aJ1R1Bog" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_IXJ12RZ4Ee6sm8aJ1R1Bog"/>
-        <eAnnotations xmi:id="_IXJ1shZ4Ee6sm8aJ1R1Bog" source="duplicates">
-          <contents xmi:type="ecore:EReference" xmi:id="_IXJ1sxZ4Ee6sm8aJ1R1Bog" name="base_Artifact" ordered="false" lowerBound="1">
-            <eAnnotations xmi:id="_IXJ1tBZ4Ee6sm8aJ1R1Bog" source="redefines" references="_IXJ1uBZ4Ee6sm8aJ1R1Bog"/>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_SHvLAByDEe674-w3YAal2g" name="JavaSourceFile" eSuperTypes="_SHvLBhyDEe674-w3YAal2g">
+        <eAnnotations xmi:id="_SHvLARyDEe674-w3YAal2g" source="http://www.eclipse.org/uml2/2.0.0/UML" references="79c533a2-d511-4db6-990d-4d80356f1a09"/>
+        <eAnnotations xmi:id="_SHvLAhyDEe674-w3YAal2g" source="duplicates">
+          <contents xmi:type="ecore:EReference" xmi:id="_SHvLAxyDEe674-w3YAal2g" name="base_Artifact" ordered="false" lowerBound="1">
+            <eAnnotations xmi:id="_SHvLBByDEe674-w3YAal2g" source="redefines" references="_SHvLCByDEe674-w3YAal2g"/>
             <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.0.0/UML#//Artifact"/>
           </contents>
         </eAnnotations>
-        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_IXJ1tRZ4Ee6sm8aJ1R1Bog" name="base_Component" ordered="false" lowerBound="1">
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_SHvLBRyDEe674-w3YAal2g" name="base_Component" ordered="false" lowerBound="1">
           <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.0.0/UML#//Component"/>
         </eStructuralFeatures>
       </eClassifiers>
-      <eClassifiers xmi:type="ecore:EClass" xmi:id="_IXJ1thZ4Ee6sm8aJ1R1Bog" name="Standard_File">
-        <eAnnotations xmi:id="_IXJ1txZ4Ee6sm8aJ1R1Bog" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_SHvLBhyDEe674-w3YAal2g" name="Standard_File">
+        <eAnnotations xmi:id="_SHvLBxyDEe674-w3YAal2g" source="http://www.eclipse.org/uml2/2.0.0/UML">
           <references xmi:type="uml:Stereotype" href="pathmap://UML_PROFILES/Standard.profile.uml#File"/>
         </eAnnotations>
-        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_IXJ1uBZ4Ee6sm8aJ1R1Bog" name="base_Artifact" ordered="false" lowerBound="1">
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_SHvLCByDEe674-w3YAal2g" name="base_Artifact" ordered="false" lowerBound="1">
           <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.0.0/UML#//Artifact"/>
         </eStructuralFeatures>
       </eClassifiers>
     </contents>
   </eAnnotations>
-  <packageImport xmi:id="_IXJ1uRZ4Ee6sm8aJ1R1Bog">
+  <packageImport xmi:id="db10c39e-0937-4e9d-97a3-f96e61f1fb48">
     <importedPackage xmi:type="uml:Model" href="pathmap://UML_METAMODELS/UML.metamodel.uml#_0"/>
   </packageImport>
-  <packageImport xmi:id="_IXJ1uhZ4Ee6sm8aJ1R1Bog">
+  <packageImport xmi:id="_0primitiveTypesdeployment">
     <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
   </packageImport>
-  <packageImport xmi:id="_IXJ1uxZ4Ee6sm8aJ1R1Bog">
+  <packageImport xmi:id="_0javaPrimitiveTypesdeployment">
     <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#_0"/>
   </packageImport>
-  <packagedElement xmi:type="uml:Stereotype" xmi:id="_IXJ1vBZ4Ee6sm8aJ1R1Bog" name="JARInclude">
-    <ownedComment xmi:id="_IXJ1vRZ4Ee6sm8aJ1R1Bog" body="Indicates that the supplier of the Dependency, a JAR , Java .class file, or other file, is included “by value�? (i.e., copied into) the JAR that is the client of the Dependency" annotatedElement="_IXJ1vBZ4Ee6sm8aJ1R1Bog"/>
-    <ownedAttribute xmi:id="_IXJ1vhZ4Ee6sm8aJ1R1Bog" name="base_Dependency" visibility="private" association="_IXJ1wxZ4Ee6sm8aJ1R1Bog">
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="72982302-b459-4c01-89dc-b6ec24aeb30f" name="JARInclude">
+    <ownedComment xmi:id="683b9f53-9db3-473d-ab08-edd21f8e1231" body="Indicates that the supplier of the Dependency, a JAR , Java .class file, or other file, is included “by value�? (i.e., copied into) the JAR that is the client of the Dependency" annotatedElement="72982302-b459-4c01-89dc-b6ec24aeb30f"/>
+    <ownedAttribute xmi:id="f6d49449-9605-4f95-afc0-eaf15bd964af" name="base_Dependency" visibility="private" association="2824a249-6c6f-45c4-b4e9-83f623be9096">
       <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Dependency"/>
     </ownedAttribute>
   </packagedElement>
-  <packagedElement xmi:type="uml:Extension" xmi:id="_IXJ1vxZ4Ee6sm8aJ1R1Bog" name="" memberEnd="_IXJ1wBZ4Ee6sm8aJ1R1Bog _IXJ1zRZ4Ee6sm8aJ1R1Bog" navigableOwnedEnd="_IXJ1wBZ4Ee6sm8aJ1R1Bog">
-    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_IXJ1wBZ4Ee6sm8aJ1R1Bog" name="extension_JARReference" visibility="private" type="_IXJ1yxZ4Ee6sm8aJ1R1Bog" aggregation="composite" association="_IXJ1vxZ4Ee6sm8aJ1R1Bog">
-      <upperValue xmi:type="uml:LiteralInteger" xmi:id="_IXJ1wRZ4Ee6sm8aJ1R1Bog" name="" value="1"/>
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_IXJ1whZ4Ee6sm8aJ1R1Bog" name=""/>
+  <packagedElement xmi:type="uml:Extension" xmi:id="7cfd1003-bb80-43be-b9a9-b491fdaf7d2e" name="" memberEnd="eab21e51-bd0a-4f38-8eca-776308f21127 0d8637f5-970c-4b49-9495-4b5e3dc2d4b7" navigableOwnedEnd="eab21e51-bd0a-4f38-8eca-776308f21127">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="eab21e51-bd0a-4f38-8eca-776308f21127" name="extension_JARReference" visibility="private" type="3b97e311-f344-4fb2-8c18-2275a5f54929" aggregation="composite" association="7cfd1003-bb80-43be-b9a9-b491fdaf7d2e">
+      <upperValue xmi:type="uml:LiteralInteger" xmi:id="98450817-5e15-4800-816b-8b9f155a2b38" name="" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="1411a6ba-0e69-43c8-bb2c-f56fe496a7c1" name=""/>
     </ownedEnd>
   </packagedElement>
-  <packagedElement xmi:type="uml:Extension" xmi:id="_IXJ1wxZ4Ee6sm8aJ1R1Bog" name="" memberEnd="_IXJ1xBZ4Ee6sm8aJ1R1Bog _IXJ1vhZ4Ee6sm8aJ1R1Bog" navigableOwnedEnd="_IXJ1xBZ4Ee6sm8aJ1R1Bog">
-    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_IXJ1xBZ4Ee6sm8aJ1R1Bog" name="extension_JARInclude" visibility="private" type="_IXJ1vBZ4Ee6sm8aJ1R1Bog" aggregation="composite" association="_IXJ1wxZ4Ee6sm8aJ1R1Bog">
-      <upperValue xmi:type="uml:LiteralInteger" xmi:id="_IXJ1xRZ4Ee6sm8aJ1R1Bog" name="" value="1"/>
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_IXJ1xhZ4Ee6sm8aJ1R1Bog" name=""/>
+  <packagedElement xmi:type="uml:Extension" xmi:id="2824a249-6c6f-45c4-b4e9-83f623be9096" name="" memberEnd="b380add0-7c2e-48ab-a35b-b172c4ca671a f6d49449-9605-4f95-afc0-eaf15bd964af" navigableOwnedEnd="b380add0-7c2e-48ab-a35b-b172c4ca671a">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="b380add0-7c2e-48ab-a35b-b172c4ca671a" name="extension_JARInclude" visibility="private" type="72982302-b459-4c01-89dc-b6ec24aeb30f" aggregation="composite" association="2824a249-6c6f-45c4-b4e9-83f623be9096">
+      <upperValue xmi:type="uml:LiteralInteger" xmi:id="ea04e189-d6ef-4c97-96dc-bea41005675b" name="" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="d3c82788-12a8-4a62-a683-aa320b213972" name=""/>
     </ownedEnd>
   </packagedElement>
-  <packagedElement xmi:type="uml:Extension" xmi:id="_IXJ1xxZ4Ee6sm8aJ1R1Bog" name="" memberEnd="_IXJ1yBZ4Ee6sm8aJ1R1Bog _IXJ12xZ4Ee6sm8aJ1R1Bog" navigableOwnedEnd="_IXJ1yBZ4Ee6sm8aJ1R1Bog">
-    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_IXJ1yBZ4Ee6sm8aJ1R1Bog" name="extension_JavaSourceFile" visibility="private" type="_IXJ12RZ4Ee6sm8aJ1R1Bog" aggregation="composite" association="_IXJ1xxZ4Ee6sm8aJ1R1Bog">
-      <upperValue xmi:type="uml:LiteralInteger" xmi:id="_IXJ1yRZ4Ee6sm8aJ1R1Bog" name="" value="1"/>
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_IXJ1yhZ4Ee6sm8aJ1R1Bog" name=""/>
+  <packagedElement xmi:type="uml:Extension" xmi:id="5f3310bd-bc3c-4168-97f3-57338eca01a1" name="" memberEnd="b8f62790-10fa-4fb1-9b99-23a3f9ca24b7 88ac5853-5cb2-40c7-a223-35c287219e31" navigableOwnedEnd="b8f62790-10fa-4fb1-9b99-23a3f9ca24b7">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="b8f62790-10fa-4fb1-9b99-23a3f9ca24b7" name="extension_JavaSourceFile" visibility="private" type="79c533a2-d511-4db6-990d-4d80356f1a09" aggregation="composite" association="5f3310bd-bc3c-4168-97f3-57338eca01a1">
+      <upperValue xmi:type="uml:LiteralInteger" xmi:id="9775fde2-424c-486b-bd1e-d7f45887f6f4" name="" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="543711cc-ee4e-4853-80cb-7f4f0dda9b01" name=""/>
     </ownedEnd>
   </packagedElement>
-  <packagedElement xmi:type="uml:Stereotype" xmi:id="_IXJ1yxZ4Ee6sm8aJ1R1Bog" name="JARReference">
-    <ownedComment xmi:id="_IXJ1zBZ4Ee6sm8aJ1R1Bog" body="Indicates that the supplier is a model element that is not contained in the archive but is referenced by it in the META-INF/MANIFEST.MF file" annotatedElement="_IXJ1yxZ4Ee6sm8aJ1R1Bog"/>
-    <ownedAttribute xmi:id="_IXJ1zRZ4Ee6sm8aJ1R1Bog" name="base_Usage" visibility="private" association="_IXJ1vxZ4Ee6sm8aJ1R1Bog">
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="3b97e311-f344-4fb2-8c18-2275a5f54929" name="JARReference">
+    <ownedComment xmi:id="18ba6cd9-c797-4e47-9bc2-8d498b05dda4" body="Indicates that the supplier is a model element that is not contained in the archive but is referenced by it in the META-INF/MANIFEST.MF file" annotatedElement="3b97e311-f344-4fb2-8c18-2275a5f54929"/>
+    <ownedAttribute xmi:id="0d8637f5-970c-4b49-9495-4b5e3dc2d4b7" name="base_Usage" visibility="private" association="7cfd1003-bb80-43be-b9a9-b491fdaf7d2e">
       <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Usage"/>
     </ownedAttribute>
   </packagedElement>
-  <packagedElement xmi:type="uml:Stereotype" xmi:id="_IXJ1zhZ4Ee6sm8aJ1R1Bog" name="JAR">
-    <ownedComment xmi:id="_IXJ1zxZ4Ee6sm8aJ1R1Bog" body="Specializes the standard UML Stereotype «file». Indicates that the Artifact represents a JAR." annotatedElement="_IXJ1zhZ4Ee6sm8aJ1R1Bog"/>
-    <ownedAttribute xmi:id="_IXJ10BZ4Ee6sm8aJ1R1Bog" name="JARFileList" visibility="private">
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="8c72adb0-e5c3-454c-9338-b1323c898473" name="JAR">
+    <ownedComment xmi:id="8b297c75-181f-41c8-8888-dc6dc3c375d7" body="Specializes the standard UML Stereotype «file». Indicates that the Artifact represents a JAR." annotatedElement="8c72adb0-e5c3-454c-9338-b1323c898473"/>
+    <ownedAttribute xmi:id="1bf09900-b3dd-4b48-a016-aa91ec1fc761" name="JARFileList" visibility="private">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
     </ownedAttribute>
-    <ownedAttribute xmi:id="_IXJ10RZ4Ee6sm8aJ1R1Bog" name="base_Artifact" visibility="private" association="_IXJ11RZ4Ee6sm8aJ1R1Bog">
+    <ownedAttribute xmi:id="5f1f93a6-30b4-49c0-a903-62f55ae7c90e" name="base_Artifact" visibility="private" association="447724eb-f5ad-458b-ba3d-e68c07bd1907">
       <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Artifact"/>
     </ownedAttribute>
   </packagedElement>
-  <packagedElement xmi:type="uml:Stereotype" xmi:id="_IXJ10hZ4Ee6sm8aJ1R1Bog" name="JavaArchiveFile">
-    <ownedComment xmi:id="_IXJ10xZ4Ee6sm8aJ1R1Bog" body="Indicates that the Package represents a JAR." annotatedElement="_IXJ10hZ4Ee6sm8aJ1R1Bog"/>
-    <ownedAttribute xmi:id="_IXJ11BZ4Ee6sm8aJ1R1Bog" name="base_Package" visibility="private" association="_IXJ13RZ4Ee6sm8aJ1R1Bog">
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="b7121bfa-821d-4194-9476-4e029e5058ee" name="JavaArchiveFile">
+    <ownedComment xmi:id="3346439e-58df-4dfb-a438-e08aeac1e3cd" body="Indicates that the Package represents a JAR." annotatedElement="b7121bfa-821d-4194-9476-4e029e5058ee"/>
+    <ownedAttribute xmi:id="d49b7c0f-3825-41b2-abdc-3b9642e3fc5c" name="base_Package" visibility="private" association="ffa61c3f-8fe5-47a4-8ae7-2e9f4761bedb">
       <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Package"/>
     </ownedAttribute>
   </packagedElement>
-  <packagedElement xmi:type="uml:Extension" xmi:id="_IXJ11RZ4Ee6sm8aJ1R1Bog" name="" memberEnd="_IXJ11hZ4Ee6sm8aJ1R1Bog _IXJ10RZ4Ee6sm8aJ1R1Bog" navigableOwnedEnd="_IXJ11hZ4Ee6sm8aJ1R1Bog">
-    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_IXJ11hZ4Ee6sm8aJ1R1Bog" name="extension_JAR" visibility="private" type="_IXJ1zhZ4Ee6sm8aJ1R1Bog" aggregation="composite" association="_IXJ11RZ4Ee6sm8aJ1R1Bog">
-      <upperValue xmi:type="uml:LiteralInteger" xmi:id="_IXJ11xZ4Ee6sm8aJ1R1Bog" name="" value="1"/>
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_IXJ12BZ4Ee6sm8aJ1R1Bog" name=""/>
+  <packagedElement xmi:type="uml:Extension" xmi:id="447724eb-f5ad-458b-ba3d-e68c07bd1907" name="" memberEnd="b548b6f2-b597-4143-9622-7cb3ae8f63ce 5f1f93a6-30b4-49c0-a903-62f55ae7c90e" navigableOwnedEnd="b548b6f2-b597-4143-9622-7cb3ae8f63ce">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="b548b6f2-b597-4143-9622-7cb3ae8f63ce" name="extension_JAR" visibility="private" type="8c72adb0-e5c3-454c-9338-b1323c898473" aggregation="composite" association="447724eb-f5ad-458b-ba3d-e68c07bd1907">
+      <upperValue xmi:type="uml:LiteralInteger" xmi:id="e81f27a1-062c-47eb-8b3b-e47c203f3337" name="" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="63fcd384-983c-4c15-9cae-8b7f6f1245bd" name=""/>
     </ownedEnd>
   </packagedElement>
-  <packagedElement xmi:type="uml:Stereotype" xmi:id="_IXJ12RZ4Ee6sm8aJ1R1Bog" name="JavaSourceFile">
-    <generalization xmi:id="_IXJ12hZ4Ee6sm8aJ1R1Bog" isSubstitutable="true">
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="79c533a2-d511-4db6-990d-4d80356f1a09" name="JavaSourceFile">
+    <generalization xmi:id="4808551c-baf2-447a-bf5c-e05a71720b9d" isSubstitutable="true">
       <general xmi:type="uml:Stereotype" href="pathmap://UML_PROFILES/Standard.profile.uml#File"/>
     </generalization>
-    <ownedAttribute xmi:id="_IXJ12xZ4Ee6sm8aJ1R1Bog" name="base_Artifact" visibility="private" association="_IXJ1xxZ4Ee6sm8aJ1R1Bog">
+    <ownedAttribute xmi:id="88ac5853-5cb2-40c7-a223-35c287219e31" name="base_Artifact" visibility="private" association="5f3310bd-bc3c-4168-97f3-57338eca01a1">
       <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Artifact"/>
     </ownedAttribute>
-    <ownedAttribute xmi:id="_IXJ13BZ4Ee6sm8aJ1R1Bog" name="base_Component" visibility="private" association="_IXJ14RZ4Ee6sm8aJ1R1Bog">
+    <ownedAttribute xmi:id="6590c484-0b2a-42de-ae2e-4e5f38806b95" name="base_Component" visibility="private" association="21ca9ae6-6382-4040-a756-624f4d07607f">
       <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Component"/>
     </ownedAttribute>
   </packagedElement>
-  <packagedElement xmi:type="uml:Extension" xmi:id="_IXJ13RZ4Ee6sm8aJ1R1Bog" name="" memberEnd="_IXJ13hZ4Ee6sm8aJ1R1Bog _IXJ11BZ4Ee6sm8aJ1R1Bog" navigableOwnedEnd="_IXJ13hZ4Ee6sm8aJ1R1Bog">
-    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_IXJ13hZ4Ee6sm8aJ1R1Bog" name="extension_JavaArchiveFile" visibility="private" type="_IXJ10hZ4Ee6sm8aJ1R1Bog" aggregation="composite" association="_IXJ13RZ4Ee6sm8aJ1R1Bog">
-      <upperValue xmi:type="uml:LiteralInteger" xmi:id="_IXJ13xZ4Ee6sm8aJ1R1Bog" name="" value="1"/>
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_IXJ14BZ4Ee6sm8aJ1R1Bog" name=""/>
+  <packagedElement xmi:type="uml:Extension" xmi:id="ffa61c3f-8fe5-47a4-8ae7-2e9f4761bedb" name="" memberEnd="ff80e74e-383d-4bad-b59a-8226d75a43b5 d49b7c0f-3825-41b2-abdc-3b9642e3fc5c" navigableOwnedEnd="ff80e74e-383d-4bad-b59a-8226d75a43b5">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="ff80e74e-383d-4bad-b59a-8226d75a43b5" name="extension_JavaArchiveFile" visibility="private" type="b7121bfa-821d-4194-9476-4e029e5058ee" aggregation="composite" association="ffa61c3f-8fe5-47a4-8ae7-2e9f4761bedb">
+      <upperValue xmi:type="uml:LiteralInteger" xmi:id="1b9f0f97-f496-4617-9106-e1c246d39f66" name="" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="85cc506b-863e-4ce5-87b5-f95d5d92054c" name=""/>
     </ownedEnd>
   </packagedElement>
-  <packagedElement xmi:type="uml:Extension" xmi:id="_IXJ14RZ4Ee6sm8aJ1R1Bog" name="" memberEnd="_IXJ14hZ4Ee6sm8aJ1R1Bog _IXJ13BZ4Ee6sm8aJ1R1Bog" navigableOwnedEnd="_IXJ14hZ4Ee6sm8aJ1R1Bog">
-    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_IXJ14hZ4Ee6sm8aJ1R1Bog" name="extension_JavaSourceFile" visibility="private" type="_IXJ12RZ4Ee6sm8aJ1R1Bog" aggregation="composite" association="_IXJ14RZ4Ee6sm8aJ1R1Bog">
-      <upperValue xmi:type="uml:LiteralInteger" xmi:id="_IXJ14xZ4Ee6sm8aJ1R1Bog" name="" value="1"/>
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_IXJ15BZ4Ee6sm8aJ1R1Bog" name=""/>
+  <packagedElement xmi:type="uml:Extension" xmi:id="21ca9ae6-6382-4040-a756-624f4d07607f" name="" memberEnd="8461e45e-5936-4775-be11-297857a2c4fd 6590c484-0b2a-42de-ae2e-4e5f38806b95" navigableOwnedEnd="8461e45e-5936-4775-be11-297857a2c4fd">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="8461e45e-5936-4775-be11-297857a2c4fd" name="extension_JavaSourceFile" visibility="private" type="79c533a2-d511-4db6-990d-4d80356f1a09" aggregation="composite" association="21ca9ae6-6382-4040-a756-624f4d07607f">
+      <upperValue xmi:type="uml:LiteralInteger" xmi:id="4b3edfa2-913b-45c1-8718-56cb7cec21a0" name="" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="15fbc75b-42cc-4aef-a1d0-14d3327565a4" name=""/>
     </ownedEnd>
   </packagedElement>
 </uml:Profile>
