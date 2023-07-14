@@ -49,12 +49,12 @@
 
 «DEFINE DecimalMinAnnotation(String indent) FOR DecimalMin -»
 «indent»      minimum: «this.minValue»
-«indent»      exclusiveMinimum: «this.inclusive -»
+«indent»      exclusiveMinimum: «!this.inclusive -»
 «ENDDEFINE»
 
 «DEFINE DecimalMaxAnnotation(String indent) FOR DecimalMax -»
 «indent»      maximum: «this.maxValue»
-«indent»      exclusiveMaximum: «this.inclusive -»
+«indent»      exclusiveMaximum: «!this.inclusive -»
 «ENDDEFINE»
 
 «DEFINE MinValueAnnotation(String indent) FOR Min-»

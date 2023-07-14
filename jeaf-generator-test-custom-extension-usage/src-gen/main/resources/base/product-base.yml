@@ -1480,15 +1480,15 @@ components:
           type: integer
           format: int64
           maximum: 299792458
-          exclusiveMaximum: false
+          exclusiveMaximum: true
           nullable: false
         aBigInteger:
           type: integer
           format: int64
           maximum: 3.14159265359
-          exclusiveMaximum: true
+          exclusiveMaximum: false
           minimum: -3.14159265359
-          exclusiveMinimum: true
+          exclusiveMinimum: false
           nullable: false
         aCharacter:
           type: string
@@ -1517,7 +1517,7 @@ components:
           type: number
           format: double
           minimum: 4711.0815
-          exclusiveMinimum: true
+          exclusiveMinimum: false
           nullable: false
         aString:
           type: string
@@ -1774,9 +1774,9 @@ components:
               type: integer
               format: int32
               maximum: 32.777
-              exclusiveMaximum: true
+              exclusiveMaximum: false
               minimum: 1.025
-              exclusiveMinimum: true
+              exclusiveMinimum: false
               nullable: false
             code:
               type: integer
