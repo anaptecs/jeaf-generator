@@ -35,7 +35,7 @@
 |----------|---------|:------------:|--------------|:-----------:|
 «IF this.getAllBreakingChanges().isEmpty == false -»
 	«FOREACH this.getAllBreakingChanges() AS change -»
-| `«change.name»` | `«((uml::NamedElement) change.owner).fqn()»` | «IF change.isProperty()»Property«ELSE»Parameter«ENDIF» | «change.getBreakingChangeDescription()» | «change.getBreakingChangeActiveWith()» | 
+| `«change.name»` | `«((uml::NamedElement) change.owner).fqn()»` | «IF change.isProperty()»Property«ELSEIF change.isParameter()»Parameter«ELSE»Type«ENDIF» | «change.getBreakingChangeDescription()» | «change.getBreakingChangeActiveWith()» | 
 	«ENDFOREACH -»
 «ELSE-»
 | No breaking changes declared. |
