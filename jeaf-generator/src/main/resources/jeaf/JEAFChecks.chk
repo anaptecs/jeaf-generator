@@ -30,7 +30,7 @@ context ServiceObject if runChecks("ServiceObject") && ignore() == false && comp
 context Property if isNavigable() && class != null && class.isStereotypeApplied("ServiceObject") && runChecks() && ignore() == false ERROR this.getErrorMessage("9135", {class.name, type.name}):	!isUnnamed();
 context CompositeDataTypePublicField if ((NamedElement) owner).runChecks("ServiceObject") && ignore() == false ERROR this.getErrorMessage("9157", {((NamedElement)owner).name + "." + name}): this.type.isStringType();
 context ServiceObject if runChecks("ServiceObject") && ignore() == false WARNING this.getWarningMessage("9122", {"ServiceObject", name}): ownedComment.size  > 0;
-context SoftLink if softLinkType.name == "CustomGenericType" && ((NamedElement) owner).runChecks("ServiceObject") && ignore() == false ERROR this.getErrorMessage("9158", {((NamedElement)owner).name + "." + name}): getCustomGenericSoftLinkType().length > 0;
+context SoftLink if softLinkType.name == "CustomGenericType" && ((NamedElement) owner).runChecks("ServiceObject") && ignore() == false ERROR this.getErrorMessage("9158", {((NamedElement)owner).name + "." + name}): getJavaGenericSoftLinkType().length > 0;
 context SoftLink if ((NamedElement) owner).runChecks("ServiceObject") && ignore() == false ERROR this.getErrorMessage("9164", {name, ((NamedElement)owner).name}): this.belongsToBidirectionalAssociation() == false;
 
 // Checks for stereotype POJO
@@ -48,7 +48,7 @@ context POJO if runChecks("POJO") && ignore() == false && (generateEqualsAndHash
 context Property if isNavigable() && class != null && class.isStereotypeApplied("POJO") && runChecks() && ignore() == false ERROR this.getErrorMessage("9135", {class.name, type.name}):	!isUnnamed();
 context CompositeDataTypePublicField if ((NamedElement) owner).runChecks("POJO") && ignore() == false ERROR this.getErrorMessage("9157", {((NamedElement)owner).name + "." + name}): this.type.isStringType();
 context POJO if runChecks("POJO") && ignore() == false WARNING this.getWarningMessage("9122", {"POJO", name}): ownedComment.size  > 0;
-context SoftLink if softLinkType.name == "CustomGenericType" && ((NamedElement) owner).runChecks("POJO") && ignore() == false ERROR this.getErrorMessage("9158", {((NamedElement)owner).name + "." + name}): getCustomGenericSoftLinkType().length > 0;
+context SoftLink if softLinkType.name == "CustomGenericType" && ((NamedElement) owner).runChecks("POJO") && ignore() == false ERROR this.getErrorMessage("9158", {((NamedElement)owner).name + "." + name}): getJavaGenericSoftLinkType().length > 0;
 context SoftLink if ((NamedElement) owner).runChecks("POJO") && ignore() == false ERROR this.getErrorMessage("9164", {name, ((NamedElement)owner).name}): this.belongsToBidirectionalAssociation() == false;
 
 

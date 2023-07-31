@@ -61,10 +61,10 @@
             «ENDIF»
             «IF generateValidationAnnotationsForAssociationsFromMultiplicity() && isStatic == false && isTransient() == false && isStereotypeApplied("Size") == false && lower > 0»@«getEnterpriseJavaPackage()».validation.constraints.Size(min = «lower»)«ENDIF»
             «IF generateValidationAnnotationsForAssociationsFromMultiplicity() && isStatic == false && isTransient() == false && this.requiresNotNullAnnotation() && lower > 0»@«getEnterpriseJavaPackage()».validation.constraints.NotNull«ENDIF»
-            «visibility» «IF isReadOnly()»final «ENDIF» «IF isTransient()»transient «ENDIF» «this.getCollectionType()»<«this.getMultivaluedSoftLinkType()»> «asInstanceVar()»;
+            «visibility» «IF isReadOnly()»final «ENDIF» «IF isTransient()»transient «ENDIF» «this.getCollectionType()»<«this.getMultivaluedJavaSoftLinkType()»> «asInstanceVar()»;
         «ELSE»
             «IF generateValidationAnnotationsForAssociationsFromMultiplicity() && isStatic == false && isTransient() == false && this.requiresNotNullAnnotation() && lower > 0»@«getEnterpriseJavaPackage()».validation.constraints.NotNull«ENDIF»
-            «visibility» «IF isReadOnly()»final «ENDIF» «IF isTransient()»transient «ENDIF» «this.getSoftLinkType()» «asInstanceVar()»;
+            «visibility» «IF isReadOnly()»final «ENDIF» «IF isTransient()»transient «ENDIF» «this.getJavaSoftLinkType()» «asInstanceVar()»;
         «ENDIF»
 «ENDDEFINE»
 
@@ -207,7 +207,7 @@
 «DEFINE SoftLinkToOneAccessorMethods FOR SoftLink»
     «EXPAND functions::Javadoc::JavadocForPropertyGetter»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
-    public «this.getSoftLinkType()» «asGetter()» () {
+    public «this.getJavaSoftLinkType()» «asGetter()» () {
     «IF ((NamedElement)this.owner).isPersistentObject()»
     «asInstanceVar()» = this.unproxy(«asInstanceVar()»);«ENDIF»
         «IF this.isTransientBidirectionalBackReference()»
@@ -227,8 +227,8 @@
     «IF isReadOnly() == false»
     «EXPAND functions::Javadoc::JavadocForPropertySetter»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
-    public void «asSetter()» («this.getSoftLinkType()» «asParameter()») {
-        «IF generateNullChecksForToOneAssociationsOfServiceObjects() && this.getSoftLinkType() != "long"»
+    public void «asSetter()» («this.getJavaSoftLinkType()» «asParameter()») {
+        «IF generateNullChecksForToOneAssociationsOfServiceObjects() && this.getJavaSoftLinkType() != "long"»
         // «asParameter()» must not be null. To unset an association the unset method has to be called.
         com.anaptecs.jeaf.xfun.api.checks.Check.checkInvalidParameterNull(«asParameter()», "«asParameter()»");
         «ENDIF»
@@ -236,7 +236,7 @@
         «asInstanceVar()» = «asParameter()»;
     }
     
-    «IF this.getSoftLinkType() != "long"»
+    «IF this.getJavaSoftLinkType() != "long"»
     «EXPAND functions::Javadoc::JavadocForPropertyUnset»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
     public final void «asUnset()» () {
@@ -253,7 +253,7 @@
 «DEFINE SoftLinkToManyAccessorMethods FOR SoftLink»
     «EXPAND functions::Javadoc::JavadocForPropertyGetter»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
-    public «this.getCollectionType()»<«this.getMultivaluedSoftLinkType()»> «asGetter()» () {
+    public «this.getCollectionType()»<«this.getMultivaluedJavaSoftLinkType()»> «asGetter()» () {
         «IF this.isTransientBidirectionalBackReference()»
         // Due to restrictions in JSON serialization / deserialization bi-directional associations need a special handling after an object was deserialized.
         if («this.asInstanceVar()»BackReferenceInitialized == false) {
@@ -284,7 +284,7 @@
      * @param «asParameter()» Collection with objects to which {@link #«asInstanceVar()»} should be set. The parameter may be null. In this case {@link #«asInstanceVar()»} is just unset.
      */
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
-    public void set«name.toFirstUpper()»(«this.getCollectionType()»<«this.getMultivaluedSoftLinkType()»> «asParameter()») {
+    public void set«name.toFirstUpper()»(«this.getCollectionType()»<«this.getMultivaluedJavaSoftLinkType()»> «asParameter()») {
         // Check of parameter is not required.
         
         // Remove all objects from association "«asInstanceVar()»".
@@ -299,7 +299,7 @@
 
     «EXPAND functions::Javadoc::JavadocForPropertyAdd»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
-    public void addTo«name.toFirstUpper()» («this.getMultivaluedSoftLinkType()» «asParameter()») {
+    public void addTo«name.toFirstUpper()» («this.getMultivaluedJavaSoftLinkType()» «asParameter()») {
         «IF isTargetRuntimeJEAF()»
         // Check parameter "«asParameter()»" for invalid value null.
         com.anaptecs.jeaf.xfun.api.checks.Check.checkInvalidParameterNull(«asParameter()», "«asParameter()»");
@@ -321,14 +321,14 @@
     
   «EXPAND functions::Javadoc::JavadocForPropertyAddAll»
   «EXPAND java::Helper::GenerateDeprecationAnnotation-»
-  public void addTo«name.toFirstUpper()» (java.util.Collection<«this.getMultivaluedSoftLinkType()»> «asParameter()») {
+  public void addTo«name.toFirstUpper()» (java.util.Collection<«this.getMultivaluedJavaSoftLinkType()»> «asParameter()») {
         «IF isTargetRuntimeJEAF()»
         // Check parameter "«asParameter()»" for invalid value null.
         com.anaptecs.jeaf.xfun.api.checks.Check.checkInvalidParameterNull(«asParameter()», "«asParameter()»");
         «ENDIF»
         
         // Add all passed objects.
-        for («this.getMultivaluedSoftLinkType()» lNextObject : «asParameter()») {
+        for («this.getMultivaluedJavaSoftLinkType()» lNextObject : «asParameter()») {
           this.addTo«name.toFirstUpper()»(lNextObject);
         }
   }
@@ -339,7 +339,7 @@
      * @param «asParameter()» Object that should be removed from {@link #«asInstanceVar()»}. The parameter must not be null.
      */
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
-    public void removeFrom«name.toFirstUpper()» («this.getMultivaluedSoftLinkType()» «asParameter()») {
+    public void removeFrom«name.toFirstUpper()» («this.getMultivaluedJavaSoftLinkType()» «asParameter()») {
         «IF isTargetRuntimeJEAF()»
         // Check parameter for invalid value null.
         com.anaptecs.jeaf.xfun.api.checks.Check.checkInvalidParameterNull(«asParameter()», "«asParameter()»");
@@ -358,8 +358,8 @@
     public void clear«name.toFirstUpper()» () {
       «IF opposite != null && opposite.isNavigable() == true»
       // Remove all objects from association "«asInstanceVar()»".
-      java.util.Collection<«this.getMultivaluedSoftLinkType()»> «asLocalVar()» = new java.util.HashSet<«this.getMultivaluedSoftLinkType()»>(«asInstanceVar()»);
-      java.util.Iterator<«this.getMultivaluedSoftLinkType()»> lIterator = «asLocalVar()».iterator();
+      java.util.Collection<«this.getMultivaluedJavaSoftLinkType()»> «asLocalVar()» = new java.util.HashSet<«this.getMultivaluedJavaSoftLinkType()»>(«asInstanceVar()»);
+      java.util.Iterator<«this.getMultivaluedJavaSoftLinkType()»> lIterator = «asLocalVar()».iterator();
       while(lIterator.hasNext()) {
           // As association is bidirectional we have to clear it in both directions.
           this.removeFrom«name.toFirstUpper()»(lIterator.next());

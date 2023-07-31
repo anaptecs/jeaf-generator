@@ -84,7 +84,9 @@ cached String getOpenAPIType(uml::Type type, JMM::OpenAPI3Specification spec):
 cached String getOpenAPISoftLinkType(JMM::SoftLink softLink):
 	if (softLink.softLinkType.name == "long" || softLink.softLinkType.name == "Long")
 	then "integer"
-	else "string";
+	else if getOpenAPIGenericSoftLinkType() != null
+	   then getOpenAPIGenericSoftLinkType()
+	   else "string";
     
 cached String getOpenAPISoftLinkFormat(JMM::SoftLink softLink):
 	if (softLink.softLinkType.name == "long" || softLink.softLinkType.name == "Long")

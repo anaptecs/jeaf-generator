@@ -739,11 +739,27 @@ public class GeneratorMojo extends AbstractMojo {
 
   /**
    * When working with soft links in your UML model then you can define there that a custom generic type should be used
-   * for the soft link. The concrete type (its fully qualified class name) that should be used can be defined through
-   * this parameter.
+   * for the soft link. The concrete java type (its fully qualified class name) that should be used can be defined
+   * through this parameter.
    */
   @Parameter(required = false)
-  private String customGenericSoftLinkType = "";
+  private String javaGenericSoftLinkType = "";
+
+  /**
+   * When working with soft links in your UML model then you can define there that a custom generic type should be used
+   * for the soft link. The concrete OpenAPI type that should be used can be defined through this parameter.
+   * <p/>
+   * In case that the parameter is not defined then it is assumed that the softlink is a string type in OpenAPI.
+   * <p/>
+   * In case that the type is defined within the same OpenAPI spec then local naming should be used. If type is defined
+   * within another OpenAPI spec the standard naming for external types should be used.
+   * <p/>
+   * <b>Examples:</b>
+   * <li><code>#/components/schemas/Softlink</code></li>
+   * <li><code>../base/product-base.yml#/components/schemas/Softlink</code></li>
+   */
+  @Parameter(required = false)
+  private String openAPIGenericSoftLinkType = "";
 
   /**
    * Parameter can be used to suppress link to model element in generated OpenAPI specification. By default fully
@@ -1310,8 +1326,12 @@ public class GeneratorMojo extends AbstractMojo {
       lLog.info("Generate JSON serializers:                        " + generateJSONSerializers);
     }
 
-    if (customGenericSoftLinkType.isEmpty() == false) {
-      lLog.info("Custom generic soft link type:                    " + customGenericSoftLinkType);
+    if (javaGenericSoftLinkType.isEmpty() == false) {
+      lLog.info("Java generic soft link type:                      " + javaGenericSoftLinkType);
+    }
+
+    if (openAPIGenericSoftLinkType.isEmpty() == false) {
+      lLog.info("OpenAPI generic soft link type:                   " + openAPIGenericSoftLinkType);
     }
 
     if (suppressAllWarnings) {
@@ -1526,7 +1546,8 @@ public class GeneratorMojo extends AbstractMojo {
 
       System.setProperty("switch.gen.value.of.data.types", generateValueOfForOpenAPIDataTypes.toString());
 
-      System.setProperty("switch.gen.custom.generic.soft.link.type", customGenericSoftLinkType);
+      System.setProperty("switch.gen.java.generic.soft.link.type", javaGenericSoftLinkType);
+      System.setProperty("switch.gen.openapi.generic.soft.link.type", openAPIGenericSoftLinkType);
 
       System.setProperty("switch.gen.suppress.warnings", suppressWarnings.stream().collect(Collectors.joining("; ")));
       System.setProperty("switch.gen.suppress.all.warnings", suppressAllWarnings.toString());

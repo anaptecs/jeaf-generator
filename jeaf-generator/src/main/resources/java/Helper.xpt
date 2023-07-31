@@ -96,7 +96,7 @@
 		    if («name» != null) {
 		      «IF this.isSoftLink()»
 		      «LET ((JMM::SoftLink) this) AS softLink»
-              for («softLink.getMultivaluedSoftLinkType()» lNext : «name») {
+              for («softLink.getMultivaluedJavaSoftLinkType()» lNext : «name») {
                 lBuilder.append(pIndent + "    ");
                 lBuilder.append(lNext.toString());
                 lBuilder.append(System.lineSeparator());

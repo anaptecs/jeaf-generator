@@ -335,7 +335,9 @@ public class GeneratorCommons {
 
   public static final String NAME_CONSTANTS_FOR_ATTRIBUTES = "switch.gen.enable.name.constants";
 
-  public static final String CUSTOM_GENERIC_SOFT_LINK_TYPE = "switch.gen.custom.generic.soft.link.type";
+  public static final String JAVA_GENERIC_SOFT_LINK_TYPE = "switch.gen.java.generic.soft.link.type";
+
+  public static final String OPENAPI_GENERIC_SOFT_LINK_TYPE = "switch.gen.openapi.generic.soft.link.type";
 
   public static final String SUPPRESS_WARNINGS_LIST = "switch.gen.suppress.warnings";
 
@@ -1128,9 +1130,14 @@ public class GeneratorCommons {
     return lConfiguration.getConfigurationValueList(SUPPRESS_WARNINGS_LIST, String.class);
   }
 
-  public static String getCustomGenericSoftLinkType( ) {
+  public static String getJavaGenericSoftLinkType( ) {
     Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(CUSTOM_GENERIC_SOFT_LINK_TYPE, String.class);
+    return lConfiguration.getConfigurationValue(JAVA_GENERIC_SOFT_LINK_TYPE, String.class);
+  }
+
+  public static String getOpenAPIGenericSoftLinkType( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(OPENAPI_GENERIC_SOFT_LINK_TYPE, String.class);
   }
 
   public static boolean suppressAllWarnings( ) {

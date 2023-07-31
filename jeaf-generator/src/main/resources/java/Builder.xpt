@@ -340,10 +340,10 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
         «IF isMultivalued()»
             «IF generateValidationAnnotationsForAssociationsFromMultiplicity() && isStatic == false && isTransient() == false && this.hasValidationStereotype() == false && lower > 0»@«getEnterpriseJavaPackage()».validation.constraints.Size(min = «lower»)«ENDIF»
             «IF generateValidationAnnotationsForAssociationsFromMultiplicity() && isStatic == false && isTransient() == false && this.requiresNotNullAnnotation() && lower > 0»@«getEnterpriseJavaPackage()».validation.constraints.NotNull«ENDIF»
-            «visibility» «IF isTransient()»transient «ENDIF» «this.getCollectionType()»<«this.getMultivaluedSoftLinkType()»> «asInstanceVar()»;
+            «visibility» «IF isTransient()»transient «ENDIF» «this.getCollectionType()»<«this.getMultivaluedJavaSoftLinkType()»> «asInstanceVar()»;
         «ELSE»
             «IF generateValidationAnnotationsForAssociationsFromMultiplicity() && isStatic == false && isTransient() == false && this.requiresNotNullAnnotation() && lower > 0»@«getEnterpriseJavaPackage()».validation.constraints.NotNull«ENDIF»
-            «visibility» «IF isTransient()»transient «ENDIF» «this.getSoftLinkType()» «asInstanceVar()»;
+            «visibility» «IF isTransient()»transient «ENDIF» «this.getJavaSoftLinkType()» «asInstanceVar()»;
         «ENDIF»
 «ENDDEFINE»
 
@@ -437,10 +437,10 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
         «EXPAND functions::Javadoc::JavadocForBuilderSetter(builderClassName)»
         «EXPAND java::Helper::GenerateDeprecationAnnotation-»
         «IF isMultivalued()»
-            public «builderClassName»«owner.asClass().getTemplateParams()» set«name.toFirstUpper()»(«this.getCollectionType()»<«this.getMultivaluedSoftLinkType()»> «asParameter()») {
+            public «builderClassName»«owner.asClass().getTemplateParams()» set«name.toFirstUpper()»(«this.getCollectionType()»<«this.getMultivaluedJavaSoftLinkType()»> «asParameter()») {
                 // To ensure immutability we have to copy the content of the passed collection.
                 if(«asParameter()» != null) {
-                  «asInstanceVar()» = new «this.getCollectionImplType()»<«this.getMultivaluedSoftLinkType()»>(«asParameter()»);
+                  «asInstanceVar()» = new «this.getCollectionImplType()»<«this.getMultivaluedJavaSoftLinkType()»>(«asParameter()»);
                 }
                 else {
                   «asInstanceVar()» = null;
@@ -448,7 +448,7 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
                 return this;
             }
         «ELSE»
-            public «builderClassName»«owner.asClass().getTemplateParams()» «asSetter()» («this.getSoftLinkType()» «asParameter()») {
+            public «builderClassName»«owner.asClass().getTemplateParams()» «asSetter()» («this.getJavaSoftLinkType()» «asParameter()») {
                 «asInstanceVar()» = «asParameter()»;
                 return this;
             }
@@ -539,14 +539,14 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
 	    «EXPAND java::Helper::GenerateDeprecationAnnotation-»
         «IF isMultivalued()»
             @Override
-            public «builderClassName»«owner.asClass().getTemplateParams()» set«name.toFirstUpper()»(«this.getCollectionType()»<«this.getMultivaluedSoftLinkType()»> «asParameter()») {
+            public «builderClassName»«owner.asClass().getTemplateParams()» set«name.toFirstUpper()»(«this.getCollectionType()»<«this.getMultivaluedJavaSoftLinkType()»> «asParameter()») {
                 // Call super class implementation.
                 super.set«name.toFirstUpper()»(«asParameter()»);
                 return this;
             }
         «ELSE»
             @Override
-            public «builderClassName»«owner.asClass().getTemplateParams()» «asSetter()» («this.getSoftLinkType()» «asParameter()») {
+            public «builderClassName»«owner.asClass().getTemplateParams()» «asSetter()» («this.getJavaSoftLinkType()» «asParameter()») {
                 // Call super class implementation.
                 super.«asSetter()»(«asParameter()»);
                 return this;
@@ -624,7 +624,7 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
    /**
     * Method creates a new builder and initializes it with the passed attributes.
     */
-    public static «this.getTemplateParams()» Builder«this.getTemplateParams()» builder(«FOREACH this.getRequiredPropertiesForBuilder() AS property SEPARATOR ", "» «IF property.isSoftLink()»«((SoftLink) property).getSoftLinkType()» «ELSE»«property.type.fqn()» «ENDIF»p«property.name.toFirstUpper()»«ENDFOREACH») {
+    public static «this.getTemplateParams()» Builder«this.getTemplateParams()» builder(«FOREACH this.getRequiredPropertiesForBuilder() AS property SEPARATOR ", "» «IF property.isSoftLink()»«((SoftLink) property).getJavaSoftLinkType()» «ELSE»«property.type.fqn()» «ENDIF»p«property.name.toFirstUpper()»«ENDFOREACH») {
       Builder lBuilder = builder( );
       «FOREACH this.getRequiredPropertiesForBuilder() AS property-»
 			lBuilder.«property.asSetter()»(p«property.name.toFirstUpper()»);

@@ -100,7 +100,11 @@
 					<generateHeavyExtensibleEnums>true</generateHeavyExtensibleEnums>
 					<generateObjectValidationInBuilder>true</generateObjectValidationInBuilder>
 					
-					<customGenericSoftLinkType>com.anaptecs.jeaf.junit.openapi.base.SoftLink</customGenericSoftLinkType>
+					<javaGenericSoftLinkType>com.anaptecs.jeaf.junit.openapi.base.SoftLink</javaGenericSoftLinkType>
+
+					<generateOpenAPISpec>true</generateOpenAPISpec>
+					<validateOpenAPISpec>true</validateOpenAPISpec>
+					<openAPIGenericSoftLinkType>#/components/schemas/StringCodeType</openAPIGenericSoftLinkType>
 
 					<!-- Define information that are written to file headers -->
 					<fileHeaderCompany>anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany</fileHeaderCompany>
