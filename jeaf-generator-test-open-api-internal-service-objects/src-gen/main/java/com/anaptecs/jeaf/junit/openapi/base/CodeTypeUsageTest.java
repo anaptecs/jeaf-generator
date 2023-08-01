@@ -117,6 +117,33 @@ public class CodeTypeUsageTest implements ServiceObject {
   }
 
   /**
+   * Convenience method to create new instance of class CodeTypeUsageTest.
+   *
+   *
+   * @param pBooleanCode Value to which {@link #booleanCode} should be set.
+   *
+   * @param pBooleanCodeAssociation Value to which {@link #booleanCodeAssociation} should be set.
+   *
+   * @param pShortCodeTypeAssociation Value to which {@link #shortCodeTypeAssociation} should be set.
+   *
+   * @param pStringCode Value to which {@link #stringCode} should be set.
+   *
+   * @param pShortCode Value to which {@link #shortCode} should be set.
+   *
+   * @return {@link CodeTypeUsageTest}
+   */
+  public static CodeTypeUsageTest of( BooleanCodeType pBooleanCode, Set<BooleanCodeType> pBooleanCodeAssociation,
+      Set<ShortCodeType> pShortCodeTypeAssociation, StringCodeType pStringCode, ShortCode pShortCode ) {
+    CodeTypeUsageTest.Builder lBuilder = CodeTypeUsageTest.builder();
+    lBuilder.setBooleanCode(pBooleanCode);
+    lBuilder.setBooleanCodeAssociation(pBooleanCodeAssociation);
+    lBuilder.setShortCodeTypeAssociation(pShortCodeTypeAssociation);
+    lBuilder.setStringCode(pStringCode);
+    lBuilder.setShortCode(pShortCode);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>CodeTypeUsageTest</code>.
    */
   public static class Builder {

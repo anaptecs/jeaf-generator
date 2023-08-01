@@ -104,6 +104,23 @@ public class Stop implements Serializable {
   }
 
   /**
+   * Convenience method to create new instance of class Stop.
+   *
+   *
+   * @param pName Value to which {@link #name} should be set.
+   *
+   * @param pLinks Value to which {@link #links} should be set.
+   *
+   * @return {@link Stop}
+   */
+  public static Stop of( String pName, List<LinkObject> pLinks ) {
+    Stop.Builder lBuilder = Stop.builder();
+    lBuilder.setName(pName);
+    lBuilder.setLinks(pLinks);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>Stop</code>.
    */
   public static class Builder {

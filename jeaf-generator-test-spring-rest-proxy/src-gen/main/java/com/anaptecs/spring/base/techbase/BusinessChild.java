@@ -53,6 +53,26 @@ public class BusinessChild extends BusinessParent {
   }
 
   /**
+   * Convenience method to create new instance of class BusinessChild.
+   *
+   *
+   * @param pTechAttribute Value to which {@link #techAttribute} should be set.
+   *
+   * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
+   *
+   * @param pChildAttribute Value to which {@link #childAttribute} should be set.
+   *
+   * @return {@link BusinessChild}
+   */
+  public static BusinessChild of( String pTechAttribute, long pParentAttribute, String pChildAttribute ) {
+    BusinessChild.Builder lBuilder = BusinessChild.builder();
+    lBuilder.setTechAttribute(pTechAttribute);
+    lBuilder.setParentAttribute(pParentAttribute);
+    lBuilder.setChildAttribute(pChildAttribute);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>BusinessChild</code>.
    */
   public static class Builder extends BusinessParent.Builder {

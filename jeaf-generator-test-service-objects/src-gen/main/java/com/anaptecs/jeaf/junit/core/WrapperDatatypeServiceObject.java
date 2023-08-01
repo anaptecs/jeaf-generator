@@ -120,6 +120,42 @@ public class WrapperDatatypeServiceObject implements ServiceObject {
   }
 
   /**
+   * Convenience method to create new instance of class WrapperDatatypeServiceObject.
+   *
+   *
+   * @param pMyBoolean Value to which {@link #myBoolean} should be set.
+   *
+   * @param pMyByte Value to which {@link #myByte} should be set.
+   *
+   * @param pMyCharacter Value to which {@link #myCharacter} should be set.
+   *
+   * @param pMyDouble Value to which {@link #myDouble} should be set.
+   *
+   * @param pMyFloat Value to which {@link #myFloat} should be set.
+   *
+   * @param pMyLong Value to which {@link #myLong} should be set.
+   *
+   * @param pMyShort Value to which {@link #myShort} should be set.
+   *
+   * @param pMyByteArray Value to which {@link #myByteArray} should be set.
+   *
+   * @return {@link WrapperDatatypeServiceObject}
+   */
+  public static WrapperDatatypeServiceObject of( Boolean pMyBoolean, Byte pMyByte, Character pMyCharacter,
+      Double pMyDouble, Float pMyFloat, Long pMyLong, Short pMyShort, byte[] pMyByteArray ) {
+    WrapperDatatypeServiceObject.Builder lBuilder = WrapperDatatypeServiceObject.builder();
+    lBuilder.setMyBoolean(pMyBoolean);
+    lBuilder.setMyByte(pMyByte);
+    lBuilder.setMyCharacter(pMyCharacter);
+    lBuilder.setMyDouble(pMyDouble);
+    lBuilder.setMyFloat(pMyFloat);
+    lBuilder.setMyLong(pMyLong);
+    lBuilder.setMyShort(pMyShort);
+    lBuilder.setMyByteArray(pMyByteArray);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>WrapperDatatypeServiceObject</code>.
    */
   public static class Builder {

@@ -63,6 +63,42 @@ public class SpecialContext extends Context {
   }
 
   /**
+   * Convenience method to create new instance of class SpecialContext.
+   *
+   *
+   * @param pAccessToken Value to which {@link #accessToken} should be set.
+   *
+   * @param pLanguage Value to which {@link #language} should be set.
+   *
+   * @param pResellerID Value to which {@link #resellerID} should be set.
+   *
+   * @param pPathParam Value to which {@link #pathParam} should be set.
+   *
+   * @param pQueryParam Value to which {@link #queryParam} should be set.
+   *
+   * @param pLang Value to which {@link #lang} should be set.
+   *
+   * @param pSpecificHeader Value to which {@link #specificHeader} should be set.
+   *
+   * @param pChannelType Value to which {@link #channelType} should be set.
+   *
+   * @return {@link SpecialContext}
+   */
+  public static SpecialContext of( String pAccessToken, Locale pLanguage, long pResellerID, long pPathParam,
+      String pQueryParam, String pLang, String pSpecificHeader, ChannelType pChannelType ) {
+    SpecialContext.Builder lBuilder = SpecialContext.builder();
+    lBuilder.setAccessToken(pAccessToken);
+    lBuilder.setLanguage(pLanguage);
+    lBuilder.setResellerID(pResellerID);
+    lBuilder.setPathParam(pPathParam);
+    lBuilder.setQueryParam(pQueryParam);
+    lBuilder.setLang(pLang);
+    lBuilder.setSpecificHeader(pSpecificHeader);
+    lBuilder.setChannelType(pChannelType);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>SpecialContext</code>.
    */
   public static class Builder extends Context.Builder {

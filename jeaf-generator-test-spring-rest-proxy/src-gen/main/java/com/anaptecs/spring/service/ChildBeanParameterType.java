@@ -55,6 +55,26 @@ public class ChildBeanParameterType extends ParentBeanParamType {
   }
 
   /**
+   * Convenience method to create new instance of class ChildBeanParameterType.
+   *
+   *
+   * @param pNovaKey Value to which {@link #novaKey} should be set.
+   *
+   * @param pTkID Value to which {@link #tkID} should be set.
+   *
+   * @param pChildProperty Value to which {@link #childProperty} should be set.
+   *
+   * @return {@link ChildBeanParameterType}
+   */
+  public static ChildBeanParameterType of( String pNovaKey, String pTkID, String pChildProperty ) {
+    ChildBeanParameterType.Builder lBuilder = ChildBeanParameterType.builder();
+    lBuilder.setNovaKey(pNovaKey);
+    lBuilder.setTkID(pTkID);
+    lBuilder.setChildProperty(pChildProperty);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>ChildBeanParameterType</code>.
    */
   public static class Builder extends ParentBeanParamType.Builder {

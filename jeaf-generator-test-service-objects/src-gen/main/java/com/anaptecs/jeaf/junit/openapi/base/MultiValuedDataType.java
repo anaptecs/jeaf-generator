@@ -138,6 +138,33 @@ public class MultiValuedDataType implements ServiceObject {
   }
 
   /**
+   * Convenience method to create new instance of class MultiValuedDataType.
+   *
+   *
+   * @param pStringCodeHeader Value to which {@link #stringCodeHeader} should be set.
+   *
+   * @param pLongCodeQueryParam Value to which {@link #longCodeQueryParam} should be set.
+   *
+   * @param pLiterals Value to which {@link #literals} should be set.
+   *
+   * @param pStringProperty Value to which {@link #stringProperty} should be set.
+   *
+   * @param pLongValues Value to which {@link #longValues} should be set.
+   *
+   * @return {@link MultiValuedDataType}
+   */
+  public static MultiValuedDataType of( List<StringCode> pStringCodeHeader, List<LongCode> pLongCodeQueryParam,
+      List<BooleanLiteralsEnum> pLiterals, String pStringProperty, long pLongValues ) {
+    MultiValuedDataType.Builder lBuilder = MultiValuedDataType.builder();
+    lBuilder.setStringCodeHeader(pStringCodeHeader);
+    lBuilder.setLongCodeQueryParam(pLongCodeQueryParam);
+    lBuilder.setLiterals(pLiterals);
+    lBuilder.setStringProperty(pStringProperty);
+    lBuilder.setLongValues(pLongValues);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>MultiValuedDataType</code>.
    */
   public static class Builder {

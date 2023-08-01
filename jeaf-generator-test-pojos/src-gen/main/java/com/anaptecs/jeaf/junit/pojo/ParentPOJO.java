@@ -87,6 +87,26 @@ public class ParentPOJO {
   }
 
   /**
+   * Convenience method to create new instance of class ParentPOJO.
+   *
+   *
+   * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
+   *
+   * @param pWeirdAttribute Value to which {@link #weirdAttribute} should be set.
+   *
+   * @param pHello Value to which {@link #hello} should be set.
+   *
+   * @return {@link ParentPOJO}
+   */
+  public static ParentPOJO of( String pParentAttribute, byte pWeirdAttribute, String pHello ) {
+    ParentPOJO.Builder lBuilder = ParentPOJO.builder();
+    lBuilder.setParentAttribute(pParentAttribute);
+    lBuilder.setWeirdAttribute(pWeirdAttribute);
+    lBuilder.setHello(pHello);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>ParentPOJO</code>.
    */
   public static class Builder {

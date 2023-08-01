@@ -1,6 +1,7 @@
 extension functions::TypeChecks;
 extension functions::Property;
 extension java::GeneratorCommons;
+extension java::OpenAPIFunctions;
 
 cached boolean isClass(uml::Element element):
     element.isInstanceOf("org.eclipse.uml2.uml.Class");
@@ -19,3 +20,10 @@ cached boolean hasBidirectionalAssociation(uml::Class class):
     
 cached boolean hasTemplateParameter(uml::Class class):
     class.ownedTemplateSignature.ownedParameter.isEmpty == false;
+    
+cached boolean generateOfOperationForClass(uml::Class class):
+    true;
+    
+cached List[uml::Property] getAllAttributesForOfOperation(uml::Class class):
+    class.getAllAttributesFromHierarchy().select(e|e.isPropertySuppressed() == false && e.isStatic == false);
+    //class.getAllAttributes().select(e|e.isPropertySuppressed() == false);

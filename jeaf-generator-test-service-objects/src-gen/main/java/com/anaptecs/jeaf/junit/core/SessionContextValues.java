@@ -72,6 +72,23 @@ public class SessionContextValues implements ServiceObject {
   }
 
   /**
+   * Convenience method to create new instance of class SessionContextValues.
+   *
+   *
+   * @param pTimestamp Value to which {@link #timestamp} should be set.
+   *
+   * @param pCounter Value to which {@link #counter} should be set.
+   *
+   * @return {@link SessionContextValues}
+   */
+  public static SessionContextValues of( String pTimestamp, Integer pCounter ) {
+    SessionContextValues.Builder lBuilder = SessionContextValues.builder();
+    lBuilder.setTimestamp(pTimestamp);
+    lBuilder.setCounter(pCounter);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>SessionContextValues</code>.
    */
   public static class Builder {

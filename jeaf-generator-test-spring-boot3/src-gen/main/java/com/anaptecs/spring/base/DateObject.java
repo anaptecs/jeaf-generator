@@ -102,6 +102,36 @@ public class DateObject {
   }
 
   /**
+   * Convenience method to create new instance of class DateObject.
+   *
+   *
+   * @param pLocalTime Value to which {@link #localTime} should be set.
+   *
+   * @param pLocalDate Value to which {@link #localDate} should be set.
+   *
+   * @param pLocalDateTime Value to which {@link #localDateTime} should be set.
+   *
+   * @param pCalendar Value to which {@link #calendar} should be set.
+   *
+   * @param pSqlDate Value to which {@link #sqlDate} should be set.
+   *
+   * @param pUtilDate Value to which {@link #utilDate} should be set.
+   *
+   * @return {@link DateObject}
+   */
+  public static DateObject of( LocalTime pLocalTime, LocalDate pLocalDate, LocalDateTime pLocalDateTime,
+      Calendar pCalendar, Date pSqlDate, java.util.Date pUtilDate ) {
+    DateObject.Builder lBuilder = DateObject.builder();
+    lBuilder.setLocalTime(pLocalTime);
+    lBuilder.setLocalDate(pLocalDate);
+    lBuilder.setLocalDateTime(pLocalDateTime);
+    lBuilder.setCalendar(pCalendar);
+    lBuilder.setSqlDate(pSqlDate);
+    lBuilder.setUtilDate(pUtilDate);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>DateObject</code>.
    */
   public static class Builder {

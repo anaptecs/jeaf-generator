@@ -89,6 +89,23 @@ public class IdentifiableServiceObject implements ServiceObject, Identifiable<Se
   }
 
   /**
+   * Convenience method to create new instance of class IdentifiableServiceObject.
+   *
+   *
+   * @param pHello Value to which {@link #hello} should be set.
+   *
+   * @param pCountry Value to which {@link #country} should be set.
+   *
+   * @return {@link IdentifiableServiceObject}
+   */
+  public static IdentifiableServiceObject of( Integer pHello, String pCountry ) {
+    IdentifiableServiceObject.Builder lBuilder = IdentifiableServiceObject.builder();
+    lBuilder.setHello(pHello);
+    lBuilder.setCountry(pCountry);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>IdentifiableServiceObject</code>.
    */
   public static class Builder {

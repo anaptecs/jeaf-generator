@@ -98,6 +98,30 @@ public class TheReadOnlyServiceObject implements ServiceObject {
   }
 
   /**
+   * Convenience method to create new instance of class TheReadOnlyServiceObject.
+   *
+   *
+   * @param pName Value to which {@link #name} should be set.
+   *
+   * @param pBits Value to which {@link #bits} should be set.
+   *
+   * @param pBookingCodes Value to which {@link #bookingCodes} should be set.
+   *
+   * @param pInventoryType Value to which {@link #inventoryType} should be set.
+   *
+   * @return {@link TheReadOnlyServiceObject}
+   */
+  public static TheReadOnlyServiceObject of( String pName, boolean[] pBits, Set<BookingCode> pBookingCodes,
+      InventoryType pInventoryType ) {
+    TheReadOnlyServiceObject.Builder lBuilder = TheReadOnlyServiceObject.builder();
+    lBuilder.setName(pName);
+    lBuilder.setBits(pBits);
+    lBuilder.setBookingCodes(pBookingCodes);
+    lBuilder.setInventoryType(pInventoryType);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>TheReadOnlyServiceObject</code>.
    */
   public static class Builder {

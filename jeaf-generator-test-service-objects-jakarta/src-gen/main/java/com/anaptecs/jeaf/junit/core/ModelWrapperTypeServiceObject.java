@@ -72,6 +72,23 @@ public class ModelWrapperTypeServiceObject implements ServiceObject {
   }
 
   /**
+   * Convenience method to create new instance of class ModelWrapperTypeServiceObject.
+   *
+   *
+   * @param pABoolean Value to which {@link #aBoolean} should be set.
+   *
+   * @param pAInt Value to which {@link #aInt} should be set.
+   *
+   * @return {@link ModelWrapperTypeServiceObject}
+   */
+  public static ModelWrapperTypeServiceObject of( boolean pABoolean, Integer pAInt ) {
+    ModelWrapperTypeServiceObject.Builder lBuilder = ModelWrapperTypeServiceObject.builder();
+    lBuilder.setABoolean(pABoolean);
+    lBuilder.setAInt(pAInt);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>ModelWrapperTypeServiceObject</code>.
    */
   public static class Builder {

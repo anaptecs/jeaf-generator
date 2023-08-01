@@ -57,6 +57,17 @@ public class BusinessServiceObject implements ServiceObject {
   }
 
   /**
+   * Convenience method to create new instance of class BusinessServiceObject.
+   *
+   *
+   * @return {@link BusinessServiceObject}
+   */
+  public static BusinessServiceObject of( ) {
+    BusinessServiceObject.Builder lBuilder = BusinessServiceObject.builder();
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>BusinessServiceObject</code>.
    */
   public static class Builder {

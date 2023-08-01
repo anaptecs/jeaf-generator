@@ -1442,6 +1442,89 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
     }
   }
 
+  /**
+   * Convenience method to create new instance of class CustomPrimitiveArraysObjectWithRestrictions.
+   *
+   *
+   * @param pABooleanArray Value to which {@link #aBooleanArray} should be set.
+   *
+   * @param pBBooleanArray Value to which {@link #bBooleanArray} should be set.
+   *
+   * @param pCBooleanArray Value to which {@link #cBooleanArray} should be set.
+   *
+   * @param pAByteArray Value to which {@link #aByteArray} should be set.
+   *
+   * @param pBByteArray Value to which {@link #bByteArray} should be set.
+   *
+   * @param pAShortArray Value to which {@link #aShortArray} should be set.
+   *
+   * @param pBShortArray Value to which {@link #bShortArray} should be set.
+   *
+   * @param pAIntegerArray Value to which {@link #aIntegerArray} should be set.
+   *
+   * @param pBIntegerArray Value to which {@link #bIntegerArray} should be set.
+   *
+   * @param pCIntegerArray Value to which {@link #cIntegerArray} should be set.
+   *
+   * @param pALongArray Value to which {@link #aLongArray} should be set.
+   *
+   * @param pBLongArray Value to which {@link #bLongArray} should be set.
+   *
+   * @param pABigIntegerArray Value to which {@link #aBigIntegerArray} should be set.
+   *
+   * @param pACharacterArray Value to which {@link #aCharacterArray} should be set.
+   *
+   * @param pBCharacterArray Value to which {@link #bCharacterArray} should be set.
+   *
+   * @param pAFloatArray Value to which {@link #aFloatArray} should be set.
+   *
+   * @param pBFloatArray Value to which {@link #bFloatArray} should be set.
+   *
+   * @param pADoubleArray Value to which {@link #aDoubleArray} should be set.
+   *
+   * @param pBDoubleArray Value to which {@link #bDoubleArray} should be set.
+   *
+   * @param pABigDecimalArray Value to which {@link #aBigDecimalArray} should be set.
+   *
+   * @param pAStringArray Value to which {@link #aStringArray} should be set.
+   *
+   * @param pBStringArray Value to which {@link #bStringArray} should be set.
+   *
+   * @return {@link com.anaptecs.jeaf.junit.pojo.CustomPrimitiveArraysObjectWithRestrictions}
+   */
+  public static CustomPrimitiveArraysObjectWithRestrictions of( boolean[] pABooleanArray, Boolean[] pBBooleanArray,
+      boolean[] pCBooleanArray, byte[] pAByteArray, Byte[] pBByteArray, short[] pAShortArray, Short[] pBShortArray,
+      int[] pAIntegerArray, Integer[] pBIntegerArray, Integer[] pCIntegerArray, long[] pALongArray, Long[] pBLongArray,
+      BigInteger[] pABigIntegerArray, char[] pACharacterArray, Character[] pBCharacterArray, float[] pAFloatArray,
+      Float[] pBFloatArray, double[] pADoubleArray, Double[] pBDoubleArray, BigDecimal[] pABigDecimalArray,
+      String[] pAStringArray, String[] pBStringArray ) {
+    CustomPrimitiveArraysObjectWithRestrictions.Builder lBuilder =
+        CustomPrimitiveArraysObjectWithRestrictions.builder();
+    lBuilder.setABooleanArray(pABooleanArray);
+    lBuilder.setBBooleanArray(pBBooleanArray);
+    lBuilder.setCBooleanArray(pCBooleanArray);
+    lBuilder.setAByteArray(pAByteArray);
+    lBuilder.setBByteArray(pBByteArray);
+    lBuilder.setAShortArray(pAShortArray);
+    lBuilder.setBShortArray(pBShortArray);
+    lBuilder.setAIntegerArray(pAIntegerArray);
+    lBuilder.setBIntegerArray(pBIntegerArray);
+    lBuilder.setCIntegerArray(pCIntegerArray);
+    lBuilder.setALongArray(pALongArray);
+    lBuilder.setBLongArray(pBLongArray);
+    lBuilder.setABigIntegerArray(pABigIntegerArray);
+    lBuilder.setACharacterArray(pACharacterArray);
+    lBuilder.setBCharacterArray(pBCharacterArray);
+    lBuilder.setAFloatArray(pAFloatArray);
+    lBuilder.setBFloatArray(pBFloatArray);
+    lBuilder.setADoubleArray(pADoubleArray);
+    lBuilder.setBDoubleArray(pBDoubleArray);
+    lBuilder.setABigDecimalArray(pABigDecimalArray);
+    lBuilder.setAStringArray(pAStringArray);
+    lBuilder.setBStringArray(pBStringArray);
+    return lBuilder.build();
+  }
+
   @Override
   public int hashCode( ) {
     final int lPrime = 31;

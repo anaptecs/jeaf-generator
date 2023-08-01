@@ -64,6 +64,20 @@ public class CHStopPlace extends StopPlaceRef {
   }
 
   /**
+   * Convenience method to create new instance of class CHStopPlace.
+   *
+   *
+   * @param pName Value to which {@link #name} should be set.
+   *
+   * @return {@link CHStopPlace}
+   */
+  public static CHStopPlace of( String pName ) {
+    CHStopPlace.Builder lBuilder = CHStopPlace.builder();
+    lBuilder.setName(pName);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>CHStopPlace</code>.
    */
   public static class Builder extends StopPlaceRef.Builder {

@@ -95,6 +95,29 @@ public class TheReadOnlyPOJO {
   }
 
   /**
+   * Convenience method to create new instance of class TheReadOnlyPOJO.
+   *
+   *
+   * @param pDataUnit Value to which {@link #dataUnit} should be set.
+   *
+   * @param pName Value to which {@link #name} should be set.
+   *
+   * @param pInts Value to which {@link #ints} should be set.
+   *
+   * @param pEntities Value to which {@link #entities} should be set.
+   *
+   * @return {@link TheReadOnlyPOJO}
+   */
+  public static TheReadOnlyPOJO of( DataUnit pDataUnit, String pName, int[] pInts, List<Entity> pEntities ) {
+    TheReadOnlyPOJO.Builder lBuilder = TheReadOnlyPOJO.builder();
+    lBuilder.setDataUnit(pDataUnit);
+    lBuilder.setName(pName);
+    lBuilder.setInts(pInts);
+    lBuilder.setEntities(pEntities);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>TheReadOnlyPOJO</code>.
    */
   public static class Builder {

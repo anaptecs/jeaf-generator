@@ -55,6 +55,26 @@ public class POI extends Stop {
   }
 
   /**
+   * Convenience method to create new instance of class POI.
+   *
+   *
+   * @param pName Value to which {@link #name} should be set.
+   *
+   * @param pLinks Value to which {@link #links} should be set.
+   *
+   * @param pDescription Value to which {@link #description} should be set.
+   *
+   * @return {@link POI}
+   */
+  public static POI of( String pName, List<LinkObject> pLinks, String pDescription ) {
+    POI.Builder lBuilder = POI.builder();
+    lBuilder.setName(pName);
+    lBuilder.setLinks(pLinks);
+    lBuilder.setDescription(pDescription);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>POI</code>.
    */
   public static class Builder extends Stop.Builder {

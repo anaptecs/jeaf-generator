@@ -105,6 +105,27 @@ public class WeirdParent implements ServiceObject {
   }
 
   /**
+   * Convenience method to create new instance of class WeirdParent.
+   *
+   *
+   * @param pSomeProperty Value to which {@link #someProperty} should be set.
+   *
+   * @param pComplexBooking Value to which {@link #complexBooking} should be set.
+   *
+   * @param pComplexBookings Value to which {@link #complexBookings} should be set.
+   *
+   * @return {@link WeirdParent}
+   */
+  public static WeirdParent of( String pSomeProperty, ComplexBookingID pComplexBooking,
+      Set<ComplexBookingID> pComplexBookings ) {
+    WeirdParent.Builder lBuilder = WeirdParent.builder();
+    lBuilder.setSomeProperty(pSomeProperty);
+    lBuilder.setComplexBooking(pComplexBooking);
+    lBuilder.setComplexBookings(pComplexBookings);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>WeirdParent</code>.
    */
   public static class Builder {

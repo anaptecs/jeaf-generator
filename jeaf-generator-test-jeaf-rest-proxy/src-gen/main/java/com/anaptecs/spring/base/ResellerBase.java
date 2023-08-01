@@ -454,6 +454,29 @@ public abstract class ResellerBase implements Serializable {
   }
 
   /**
+   * Convenience method to create new instance of class Reseller.
+   *
+   *
+   * @param pChannels Value to which {@link #channels} should be set.
+   *
+   * @param pProducts Value to which {@link #products} should be set.
+   *
+   * @param pName Value to which {@link #name} should be set.
+   *
+   * @param pLanguage Value to which {@link #language} should be set.
+   *
+   * @return {@link Reseller}
+   */
+  public static Reseller of( List<Channel> pChannels, Set<Product> pProducts, String pName, Locale pLanguage ) {
+    Reseller.Builder lBuilder = Reseller.builder();
+    lBuilder.setChannels(pChannels);
+    lBuilder.setProducts(pProducts);
+    lBuilder.setName(pName);
+    lBuilder.setLanguage(pLanguage);
+    return lBuilder.build();
+  }
+
+  /**
    * @return {@link Integer}
    */
   public abstract Integer doSomething( );

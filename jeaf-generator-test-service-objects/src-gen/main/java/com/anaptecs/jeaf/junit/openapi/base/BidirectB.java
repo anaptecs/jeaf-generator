@@ -76,6 +76,20 @@ public class BidirectB implements ServiceObject {
   }
 
   /**
+   * Convenience method to create new instance of class BidirectB.
+   *
+   *
+   * @param pA Value to which {@link #a} should be set.
+   *
+   * @return {@link BidirectB}
+   */
+  public static BidirectB of( BidirectA pA ) {
+    BidirectB.Builder lBuilder = BidirectB.builder();
+    lBuilder.setA(pA);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>BidirectB</code>.
    */
   public static class Builder {

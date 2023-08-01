@@ -62,6 +62,26 @@ public class GeoPosition extends PlaceRef {
   }
 
   /**
+   * Convenience method to create new instance of class GeoPosition.
+   *
+   *
+   * @param pName Value to which {@link #name} should be set.
+   *
+   * @param pLongitude Value to which {@link #longitude} should be set.
+   *
+   * @param pLatitude Value to which {@link #latitude} should be set.
+   *
+   * @return {@link GeoPosition}
+   */
+  public static GeoPosition of( String pName, int pLongitude, int pLatitude ) {
+    GeoPosition.Builder lBuilder = GeoPosition.builder();
+    lBuilder.setName(pName);
+    lBuilder.setLongitude(pLongitude);
+    lBuilder.setLatitude(pLatitude);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>GeoPosition</code>.
    */
   public static class Builder extends PlaceRef.Builder {

@@ -169,6 +169,23 @@ public abstract class PlainPOJOBase {
   }
 
   /**
+   * Convenience method to create new instance of class PlainPOJO.
+   *
+   *
+   * @param pHello Value to which {@link #hello} should be set.
+   *
+   * @param pWorld Value to which {@link #world} should be set.
+   *
+   * @return {@link com.anaptecs.jeaf.junit.pojo.PlainPOJO}
+   */
+  public static PlainPOJO of( String pHello, Integer pWorld ) {
+    PlainPOJO.Builder lBuilder = PlainPOJO.builder();
+    lBuilder.setHello(pHello);
+    lBuilder.setWorld(pWorld);
+    return lBuilder.build();
+  }
+
+  /**
    */
   @Deprecated
   public abstract void doDeprectedStuff( );

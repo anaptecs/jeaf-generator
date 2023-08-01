@@ -61,6 +61,20 @@ public class ParentClass {
   }
 
   /**
+   * Convenience method to create new instance of class ParentClass.
+   *
+   *
+   * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
+   *
+   * @return {@link ParentClass}
+   */
+  public static ParentClass of( String pParentAttribute ) {
+    ParentClass.Builder lBuilder = ParentClass.builder();
+    lBuilder.setParentAttribute(pParentAttribute);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>ParentClass</code>.
    */
   public static class Builder {

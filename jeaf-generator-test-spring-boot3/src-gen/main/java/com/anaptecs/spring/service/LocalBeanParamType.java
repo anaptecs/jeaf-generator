@@ -61,6 +61,23 @@ public class LocalBeanParamType {
   }
 
   /**
+   * Convenience method to create new instance of class LocalBeanParamType.
+   *
+   *
+   * @param pLocalKey Value to which {@link #localKey} should be set.
+   *
+   * @param pLocalID Value to which {@link #localID} should be set.
+   *
+   * @return {@link LocalBeanParamType}
+   */
+  public static LocalBeanParamType of( String pLocalKey, String pLocalID ) {
+    LocalBeanParamType.Builder lBuilder = LocalBeanParamType.builder();
+    lBuilder.setLocalKey(pLocalKey);
+    lBuilder.setLocalID(pLocalID);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>LocalBeanParamType</code>.
    */
   public static class Builder {

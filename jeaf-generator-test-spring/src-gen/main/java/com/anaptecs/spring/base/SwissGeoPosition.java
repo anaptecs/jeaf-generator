@@ -48,6 +48,26 @@ public class SwissGeoPosition extends GeoPosition {
   }
 
   /**
+   * Convenience method to create new instance of class SwissGeoPosition.
+   *
+   *
+   * @param pName Value to which {@link #name} should be set.
+   *
+   * @param pLongitude Value to which {@link #longitude} should be set.
+   *
+   * @param pLatitude Value to which {@link #latitude} should be set.
+   *
+   * @return {@link SwissGeoPosition}
+   */
+  public static SwissGeoPosition of( String pName, int pLongitude, int pLatitude ) {
+    SwissGeoPosition.Builder lBuilder = SwissGeoPosition.builder();
+    lBuilder.setName(pName);
+    lBuilder.setLongitude(pLongitude);
+    lBuilder.setLatitude(pLatitude);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>SwissGeoPosition</code>.
    */
   public static class Builder extends GeoPosition.Builder {

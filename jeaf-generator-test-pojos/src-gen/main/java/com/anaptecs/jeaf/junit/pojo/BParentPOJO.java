@@ -69,6 +69,20 @@ public class BParentPOJO {
   }
 
   /**
+   * Convenience method to create new instance of class BParentPOJO.
+   *
+   *
+   * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
+   *
+   * @return {@link BParentPOJO}
+   */
+  public static BParentPOJO of( String pParentAttribute ) {
+    BParentPOJO.Builder lBuilder = BParentPOJO.builder();
+    lBuilder.setParentAttribute(pParentAttribute);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>BParentPOJO</code>.
    */
   public static class Builder {

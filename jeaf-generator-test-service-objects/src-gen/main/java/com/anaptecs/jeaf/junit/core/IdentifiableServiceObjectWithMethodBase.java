@@ -187,6 +187,20 @@ public abstract class IdentifiableServiceObjectWithMethodBase implements Service
   }
 
   /**
+   * Convenience method to create new instance of class IdentifiableServiceObjectWithMethod.
+   *
+   *
+   * @param pHello Value to which {@link #hello} should be set.
+   *
+   * @return {@link com.anaptecs.jeaf.junit.core.IdentifiableServiceObjectWithMethod}
+   */
+  public static IdentifiableServiceObjectWithMethod of( Integer pHello ) {
+    IdentifiableServiceObjectWithMethod.Builder lBuilder = IdentifiableServiceObjectWithMethod.builder();
+    lBuilder.setHello(pHello);
+    return lBuilder.build();
+  }
+
+  /**
    */
   public abstract void doSomething( );
 

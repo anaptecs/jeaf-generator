@@ -82,6 +82,26 @@ public class SchufaRequest implements ServiceObject {
   }
 
   /**
+   * Convenience method to create new instance of class SchufaRequest.
+   *
+   *
+   * @param pName Value to which {@link #name} should be set.
+   *
+   * @param pFirstName Value to which {@link #firstName} should be set.
+   *
+   * @param pDateOfBirth Value to which {@link #dateOfBirth} should be set.
+   *
+   * @return {@link SchufaRequest}
+   */
+  public static SchufaRequest of( String pName, String pFirstName, Calendar pDateOfBirth ) {
+    SchufaRequest.Builder lBuilder = SchufaRequest.builder();
+    lBuilder.setName(pName);
+    lBuilder.setFirstName(pFirstName);
+    lBuilder.setDateOfBirth(pDateOfBirth);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>SchufaRequest</code>.
    */
   public static class Builder {

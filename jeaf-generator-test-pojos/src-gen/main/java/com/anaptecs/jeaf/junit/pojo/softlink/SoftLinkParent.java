@@ -115,6 +115,26 @@ public class SoftLinkParent {
   }
 
   /**
+   * Convenience method to create new instance of class SoftLinkParent.
+   *
+   *
+   * @param pPartners Value to which {@link #partners} should be set.
+   *
+   * @param pThePartner Value to which {@link #thePartner} should be set.
+   *
+   * @param pReadonlyPartner Value to which {@link #readonlyPartner} should be set.
+   *
+   * @return {@link SoftLinkParent}
+   */
+  public static SoftLinkParent of( Set<SoftLinkID> pPartners, SoftLinkID pThePartner, SoftLinkID pReadonlyPartner ) {
+    SoftLinkParent.Builder lBuilder = SoftLinkParent.builder();
+    lBuilder.setPartners(pPartners);
+    lBuilder.setThePartner(pThePartner);
+    lBuilder.setReadonlyPartner(pReadonlyPartner);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>SoftLinkParent</code>.
    */
   public static class Builder {

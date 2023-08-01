@@ -69,6 +69,36 @@ public class SwiftAccount extends Account {
   }
 
   /**
+   * Convenience method to create new instance of class SwiftAccount.
+   *
+   *
+   * @param pIban Value to which {@link #iban} should be set.
+   *
+   * @param pBalance Value to which {@link #balance} should be set.
+   *
+   * @param pAuthorizedPersons Value to which {@link #authorizedPersons} should be set.
+   *
+   * @param pBookings Value to which {@link #bookings} should be set.
+   *
+   * @param pBankID Value to which {@link #bankID} should be set.
+   *
+   * @param pBic Value to which {@link #bic} should be set.
+   *
+   * @return {@link SwiftAccount}
+   */
+  public static SwiftAccount of( Long pIban, BigDecimal pBalance, Set<Person> pAuthorizedPersons,
+      Set<Booking> pBookings, ServiceObjectID pBankID, String pBic ) {
+    SwiftAccount.Builder lBuilder = SwiftAccount.builder();
+    lBuilder.setIban(pIban);
+    lBuilder.setBalance(pBalance);
+    lBuilder.setAuthorizedPersons(pAuthorizedPersons);
+    lBuilder.setBookings(pBookings);
+    lBuilder.setBankID(pBankID);
+    lBuilder.setBic(pBic);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>SwiftAccount</code>.
    */
   public static class Builder extends Account.Builder {

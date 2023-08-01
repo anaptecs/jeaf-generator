@@ -56,6 +56,17 @@ public class Message implements ServiceObject {
   }
 
   /**
+   * Convenience method to create new instance of class Message.
+   *
+   *
+   * @return {@link Message}
+   */
+  public static Message of( ) {
+    Message.Builder lBuilder = Message.builder();
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>Message</code>.
    */
   public static class Builder {

@@ -94,6 +94,33 @@ public class PostalAddress {
   }
 
   /**
+   * Convenience method to create new instance of class PostalAddress.
+   *
+   *
+   * @param pStreet Value to which {@link #street} should be set.
+   *
+   * @param pHouseNumber Value to which {@link #houseNumber} should be set.
+   *
+   * @param pCity Value to which {@link #city} should be set.
+   *
+   * @param pPostalCode Value to which {@link #postalCode} should be set.
+   *
+   * @param pCountry Value to which {@link #country} should be set.
+   *
+   * @return {@link PostalAddress}
+   */
+  public static PostalAddress of( String pStreet, String pHouseNumber, String pCity, int pPostalCode,
+      String pCountry ) {
+    PostalAddress.Builder lBuilder = PostalAddress.builder();
+    lBuilder.setStreet(pStreet);
+    lBuilder.setHouseNumber(pHouseNumber);
+    lBuilder.setCity(pCity);
+    lBuilder.setPostalCode(pPostalCode);
+    lBuilder.setCountry(pCountry);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>PostalAddress</code>.
    */
   public static class Builder {

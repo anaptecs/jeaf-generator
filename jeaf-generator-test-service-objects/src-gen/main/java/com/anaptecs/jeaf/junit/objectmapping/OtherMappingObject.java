@@ -72,6 +72,23 @@ public class OtherMappingObject implements ServiceObject {
   }
 
   /**
+   * Convenience method to create new instance of class OtherMappingObject.
+   *
+   *
+   * @param pValue Value to which {@link #value} should be set.
+   *
+   * @param pName Value to which {@link #name} should be set.
+   *
+   * @return {@link OtherMappingObject}
+   */
+  public static OtherMappingObject of( int pValue, String pName ) {
+    OtherMappingObject.Builder lBuilder = OtherMappingObject.builder();
+    lBuilder.setValue(pValue);
+    lBuilder.setName(pName);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>OtherMappingObject</code>.
    */
   public static class Builder {

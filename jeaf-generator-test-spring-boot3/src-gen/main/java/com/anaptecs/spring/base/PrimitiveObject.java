@@ -223,6 +223,86 @@ public class PrimitiveObject {
   }
 
   /**
+   * Convenience method to create new instance of class PrimitiveObject.
+   *
+   *
+   * @param pABoolean Value to which {@link #aBoolean} should be set.
+   *
+   * @param pBBoolean Value to which {@link #bBoolean} should be set.
+   *
+   * @param pCBoolean Value to which {@link #cBoolean} should be set.
+   *
+   * @param pAByte Value to which {@link #aByte} should be set.
+   *
+   * @param pBByte Value to which {@link #bByte} should be set.
+   *
+   * @param pAShort Value to which {@link #aShort} should be set.
+   *
+   * @param pBShort Value to which {@link #bShort} should be set.
+   *
+   * @param pAInteger Value to which {@link #aInteger} should be set.
+   *
+   * @param pBInteger Value to which {@link #bInteger} should be set.
+   *
+   * @param pCInteger Value to which {@link #cInteger} should be set.
+   *
+   * @param pALong Value to which {@link #aLong} should be set.
+   *
+   * @param pBLong Value to which {@link #bLong} should be set.
+   *
+   * @param pABigInteger Value to which {@link #aBigInteger} should be set.
+   *
+   * @param pACharacter Value to which {@link #aCharacter} should be set.
+   *
+   * @param pBCharacter Value to which {@link #bCharacter} should be set.
+   *
+   * @param pAFloat Value to which {@link #aFloat} should be set.
+   *
+   * @param pBFloat Value to which {@link #bFloat} should be set.
+   *
+   * @param pADouble Value to which {@link #aDouble} should be set.
+   *
+   * @param pBDouble Value to which {@link #bDouble} should be set.
+   *
+   * @param pABigDecimal Value to which {@link #aBigDecimal} should be set.
+   *
+   * @param pAString Value to which {@link #aString} should be set.
+   *
+   * @param pBString Value to which {@link #bString} should be set.
+   *
+   * @return {@link PrimitiveObject}
+   */
+  public static PrimitiveObject of( boolean pABoolean, Boolean pBBoolean, boolean pCBoolean, byte pAByte, Byte pBByte,
+      short pAShort, Short pBShort, int pAInteger, Integer pBInteger, Integer pCInteger, long pALong, Long pBLong,
+      BigInteger pABigInteger, char pACharacter, Character pBCharacter, float pAFloat, Float pBFloat, double pADouble,
+      Double pBDouble, BigDecimal pABigDecimal, String pAString, String pBString ) {
+    PrimitiveObject.Builder lBuilder = PrimitiveObject.builder();
+    lBuilder.setABoolean(pABoolean);
+    lBuilder.setBBoolean(pBBoolean);
+    lBuilder.setCBoolean(pCBoolean);
+    lBuilder.setAByte(pAByte);
+    lBuilder.setBByte(pBByte);
+    lBuilder.setAShort(pAShort);
+    lBuilder.setBShort(pBShort);
+    lBuilder.setAInteger(pAInteger);
+    lBuilder.setBInteger(pBInteger);
+    lBuilder.setCInteger(pCInteger);
+    lBuilder.setALong(pALong);
+    lBuilder.setBLong(pBLong);
+    lBuilder.setABigInteger(pABigInteger);
+    lBuilder.setACharacter(pACharacter);
+    lBuilder.setBCharacter(pBCharacter);
+    lBuilder.setAFloat(pAFloat);
+    lBuilder.setBFloat(pBFloat);
+    lBuilder.setADouble(pADouble);
+    lBuilder.setBDouble(pBDouble);
+    lBuilder.setABigDecimal(pABigDecimal);
+    lBuilder.setAString(pAString);
+    lBuilder.setBString(pBString);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>PrimitiveObject</code>.
    */
   public static class Builder {

@@ -63,6 +63,26 @@ public class SubclassWithoutID extends IdentifiableServiceObject {
   }
 
   /**
+   * Convenience method to create new instance of class SubclassWithoutID.
+   *
+   *
+   * @param pHello Value to which {@link #hello} should be set.
+   *
+   * @param pCountry Value to which {@link #country} should be set.
+   *
+   * @param pAttr Value to which {@link #attr} should be set.
+   *
+   * @return {@link SubclassWithoutID}
+   */
+  public static SubclassWithoutID of( Integer pHello, String pCountry, Boolean pAttr ) {
+    SubclassWithoutID.Builder lBuilder = SubclassWithoutID.builder();
+    lBuilder.setHello(pHello);
+    lBuilder.setCountry(pCountry);
+    lBuilder.setAttr(pAttr);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>SubclassWithoutID</code>.
    */
   public static class Builder extends IdentifiableServiceObject.Builder {

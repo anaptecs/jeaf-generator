@@ -45,6 +45,17 @@ public class TechOnlyBeanParam {
   }
 
   /**
+   * Convenience method to create new instance of class TechOnlyBeanParam.
+   *
+   *
+   * @return {@link TechOnlyBeanParam}
+   */
+  public static TechOnlyBeanParam of( ) {
+    TechOnlyBeanParam.Builder lBuilder = TechOnlyBeanParam.builder();
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>TechOnlyBeanParam</code>.
    */
   public static class Builder {

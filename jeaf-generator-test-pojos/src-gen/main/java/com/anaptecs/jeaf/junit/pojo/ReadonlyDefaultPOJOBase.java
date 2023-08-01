@@ -122,6 +122,20 @@ public abstract class ReadonlyDefaultPOJOBase {
     return readonlyDefault;
   }
 
+  /**
+   * Convenience method to create new instance of class ReadonlyDefaultPOJO.
+   *
+   *
+   * @param pReadonlyDefault Value to which {@link #readonlyDefault} should be set.
+   *
+   * @return {@link com.anaptecs.jeaf.junit.pojo.ReadonlyDefaultPOJO}
+   */
+  public static ReadonlyDefaultPOJO of( int pReadonlyDefault ) {
+    ReadonlyDefaultPOJO.Builder lBuilder = ReadonlyDefaultPOJO.builder();
+    lBuilder.setReadonlyDefault(pReadonlyDefault);
+    return lBuilder.build();
+  }
+
   @Override
   public int hashCode( ) {
     final int lPrime = 31;

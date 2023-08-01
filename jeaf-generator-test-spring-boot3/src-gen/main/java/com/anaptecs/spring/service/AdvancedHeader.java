@@ -73,6 +73,26 @@ public class AdvancedHeader {
   }
 
   /**
+   * Convenience method to create new instance of class AdvancedHeader.
+   *
+   *
+   * @param pBookingID Value to which {@link #bookingID} should be set.
+   *
+   * @param pBookingCode Value to which {@link #bookingCode} should be set.
+   *
+   * @param pDoubleCode Value to which {@link #doubleCode} should be set.
+   *
+   * @return {@link AdvancedHeader}
+   */
+  public static AdvancedHeader of( BookingID pBookingID, BookingCode pBookingCode, DoubleCode pDoubleCode ) {
+    AdvancedHeader.Builder lBuilder = AdvancedHeader.builder();
+    lBuilder.setBookingID(pBookingID);
+    lBuilder.setBookingCode(pBookingCode);
+    lBuilder.setDoubleCode(pDoubleCode);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>AdvancedHeader</code>.
    */
   public static class Builder {

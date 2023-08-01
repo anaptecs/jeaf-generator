@@ -54,6 +54,17 @@ public class Output implements ServiceObject {
   }
 
   /**
+   * Convenience method to create new instance of class Output.
+   *
+   *
+   * @return {@link Output}
+   */
+  public static Output of( ) {
+    Output.Builder lBuilder = Output.builder();
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>Output</code>.
    */
   public static class Builder {

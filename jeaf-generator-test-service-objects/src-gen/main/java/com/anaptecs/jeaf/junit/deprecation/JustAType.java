@@ -77,6 +77,23 @@ public class JustAType implements ServiceObject {
   }
 
   /**
+   * Convenience method to create new instance of class JustAType.
+   *
+   *
+   * @param pAttribute Value to which {@link #attribute} should be set.
+   *
+   * @param pLegacy Value to which {@link #legacy} should be set.
+   *
+   * @return {@link JustAType}
+   */
+  public static JustAType of( int pAttribute, double pLegacy ) {
+    JustAType.Builder lBuilder = JustAType.builder();
+    lBuilder.setAttribute(pAttribute);
+    lBuilder.setLegacy(pLegacy);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>JustAType</code>.
    */
   public static class Builder {

@@ -78,6 +78,23 @@ public class BeanParamWithDeprecations implements ServiceObject {
   }
 
   /**
+   * Convenience method to create new instance of class BeanParamWithDeprecations.
+   *
+   *
+   * @param pHeader1 Value to which {@link #header1} should be set.
+   *
+   * @param pDeprecatedHeader Value to which {@link #deprecatedHeader} should be set.
+   *
+   * @return {@link BeanParamWithDeprecations}
+   */
+  public static BeanParamWithDeprecations of( String pHeader1, String pDeprecatedHeader ) {
+    BeanParamWithDeprecations.Builder lBuilder = BeanParamWithDeprecations.builder();
+    lBuilder.setHeader1(pHeader1);
+    lBuilder.setDeprecatedHeader(pDeprecatedHeader);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>BeanParamWithDeprecations</code>.
    */
   public static class Builder {

@@ -149,6 +149,23 @@ public abstract class SubclassWithIDnMethodBase extends IdentifiableServiceObjec
   }
 
   /**
+   * Convenience method to create new instance of class SubclassWithIDnMethod.
+   *
+   *
+   * @param pHello Value to which {@link #hello} should be set.
+   *
+   * @param pAttr Value to which {@link #attr} should be set.
+   *
+   * @return {@link com.anaptecs.jeaf.junit.core.SubclassWithIDnMethod}
+   */
+  public static SubclassWithIDnMethod of( Integer pHello, boolean pAttr ) {
+    SubclassWithIDnMethod.Builder lBuilder = SubclassWithIDnMethod.builder();
+    lBuilder.setHello(pHello);
+    lBuilder.setAttr(pAttr);
+    return lBuilder.build();
+  }
+
+  /**
    */
   public abstract void doMore( );
 

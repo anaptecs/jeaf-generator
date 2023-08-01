@@ -86,6 +86,26 @@ public class Leg {
   }
 
   /**
+   * Convenience method to create new instance of class Leg.
+   *
+   *
+   * @param pStart Value to which {@link #start} should be set.
+   *
+   * @param pStop Value to which {@link #stop} should be set.
+   *
+   * @param pStopovers Value to which {@link #stopovers} should be set.
+   *
+   * @return {@link Leg}
+   */
+  public static Leg of( PlaceRef pStart, PlaceRef pStop, List<PlaceRef> pStopovers ) {
+    Leg.Builder lBuilder = Leg.builder();
+    lBuilder.setStart(pStart);
+    lBuilder.setStop(pStop);
+    lBuilder.setStopovers(pStopovers);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>Leg</code>.
    */
   public static class Builder {

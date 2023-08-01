@@ -74,6 +74,23 @@ public class ImmutablePOJO {
   }
 
   /**
+   * Convenience method to create new instance of class ImmutablePOJO.
+   *
+   *
+   * @param pName Value to which {@link #name} should be set.
+   *
+   * @param pSomething Value to which {@link #something} should be set.
+   *
+   * @return {@link ImmutablePOJO}
+   */
+  public static ImmutablePOJO of( String pName, Integer pSomething ) {
+    ImmutablePOJO.Builder lBuilder = ImmutablePOJO.builder();
+    lBuilder.setName(pName);
+    lBuilder.setSomething(pSomething);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>ImmutablePOJO</code>.
    */
   public static class Builder {

@@ -63,6 +63,20 @@ public class BankAccount implements ServiceObject {
   }
 
   /**
+   * Convenience method to create new instance of class BankAccount.
+   *
+   *
+   * @param pIban Value to which {@link #iban} should be set.
+   *
+   * @return {@link BankAccount}
+   */
+  public static BankAccount of( String pIban ) {
+    BankAccount.Builder lBuilder = BankAccount.builder();
+    lBuilder.setIban(pIban);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>BankAccount</code>.
    */
   public static class Builder {

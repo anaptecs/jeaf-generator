@@ -64,6 +64,20 @@ public class MappingParent implements ServiceObject {
   }
 
   /**
+   * Convenience method to create new instance of class MappingParent.
+   *
+   *
+   * @param pName Value to which {@link #name} should be set.
+   *
+   * @return {@link MappingParent}
+   */
+  public static MappingParent of( String pName ) {
+    MappingParent.Builder lBuilder = MappingParent.builder();
+    lBuilder.setName(pName);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>MappingParent</code>.
    */
   public static class Builder {

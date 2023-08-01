@@ -51,6 +51,20 @@ public class LinkObject {
   }
 
   /**
+   * Convenience method to create new instance of class LinkObject.
+   *
+   *
+   * @param pHref Value to which {@link #href} should be set.
+   *
+   * @return {@link LinkObject}
+   */
+  public static LinkObject of( String pHref ) {
+    LinkObject.Builder lBuilder = LinkObject.builder();
+    lBuilder.setHref(pHref);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>LinkObject</code>.
    */
   public static class Builder {

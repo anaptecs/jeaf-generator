@@ -64,6 +64,20 @@ public class PrimitiveArrayServiceObject implements ServiceObject {
   }
 
   /**
+   * Convenience method to create new instance of class PrimitiveArrayServiceObject.
+   *
+   *
+   * @param pBooleanArray Value to which {@link #booleanArray} should be set.
+   *
+   * @return {@link PrimitiveArrayServiceObject}
+   */
+  public static PrimitiveArrayServiceObject of( boolean[] pBooleanArray ) {
+    PrimitiveArrayServiceObject.Builder lBuilder = PrimitiveArrayServiceObject.builder();
+    lBuilder.setBooleanArray(pBooleanArray);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>PrimitiveArrayServiceObject</code>.
    */
   public static class Builder {

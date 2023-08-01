@@ -348,6 +348,29 @@ public abstract class CustomerBase extends Partner {
   }
 
   /**
+   * Convenience method to create new instance of class Customer.
+   *
+   *
+   * @param pName Value to which {@link #name} should be set.
+   *
+   * @param pFirstName Value to which {@link #firstName} should be set.
+   *
+   * @param pEmail Value to which {@link #email} should be set.
+   *
+   * @param pAccounts Value to which {@link #accounts} should be set.
+   *
+   * @return {@link Customer}
+   */
+  public static Customer of( String pName, String pFirstName, String pEmail, Set<Account> pAccounts ) {
+    Customer.Builder lBuilder = Customer.builder();
+    lBuilder.setName(pName);
+    lBuilder.setFirstName(pFirstName);
+    lBuilder.setEmail(pEmail);
+    lBuilder.setAccounts(pAccounts);
+    return lBuilder.build();
+  }
+
+  /**
    * @return {@link String}
    */
   public abstract String getDisplayName( );

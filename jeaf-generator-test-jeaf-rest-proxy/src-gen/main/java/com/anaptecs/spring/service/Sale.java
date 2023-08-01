@@ -85,6 +85,23 @@ public class Sale implements Serializable {
   }
 
   /**
+   * Convenience method to create new instance of class Sale.
+   *
+   *
+   * @param pTransactionAmount Value to which {@link #transactionAmount} should be set.
+   *
+   * @param pSale Value to which {@link #sale} should be set.
+   *
+   * @return {@link Sale}
+   */
+  public static Sale of( BigDecimal pTransactionAmount, Channel pSale ) {
+    Sale.Builder lBuilder = Sale.builder();
+    lBuilder.setTransactionAmount(pTransactionAmount);
+    lBuilder.setSale(pSale);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>Sale</code>.
    */
   public static class Builder {

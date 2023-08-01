@@ -116,6 +116,36 @@ public class Context {
   }
 
   /**
+   * Convenience method to create new instance of class Context.
+   *
+   *
+   * @param pAccessToken Value to which {@link #accessToken} should be set.
+   *
+   * @param pLanguage Value to which {@link #language} should be set.
+   *
+   * @param pResellerID Value to which {@link #resellerID} should be set.
+   *
+   * @param pPathParam Value to which {@link #pathParam} should be set.
+   *
+   * @param pQueryParam Value to which {@link #queryParam} should be set.
+   *
+   * @param pLang Value to which {@link #lang} should be set.
+   *
+   * @return {@link Context}
+   */
+  public static Context of( String pAccessToken, Locale pLanguage, long pResellerID, long pPathParam,
+      String pQueryParam, String pLang ) {
+    Context.Builder lBuilder = Context.builder();
+    lBuilder.setAccessToken(pAccessToken);
+    lBuilder.setLanguage(pLanguage);
+    lBuilder.setResellerID(pResellerID);
+    lBuilder.setPathParam(pPathParam);
+    lBuilder.setQueryParam(pQueryParam);
+    lBuilder.setLang(pLang);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>Context</code>.
    */
   public static class Builder {

@@ -75,6 +75,20 @@ public class Booking implements ServiceObject {
   }
 
   /**
+   * Convenience method to create new instance of class Booking.
+   *
+   *
+   * @param pBookingID Value to which {@link #bookingID} should be set.
+   *
+   * @return {@link Booking}
+   */
+  public static Booking of( BookingID pBookingID ) {
+    Booking.Builder lBuilder = Booking.builder();
+    lBuilder.setBookingID(pBookingID);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>Booking</code>.
    */
   public static class Builder {

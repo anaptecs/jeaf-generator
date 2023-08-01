@@ -120,6 +120,42 @@ public class WrapperTypesServiceObject implements ServiceObject {
   }
 
   /**
+   * Convenience method to create new instance of class WrapperTypesServiceObject.
+   *
+   *
+   * @param pABoolean Value to which {@link #aBoolean} should be set.
+   *
+   * @param pAByte Value to which {@link #aByte} should be set.
+   *
+   * @param pAShort Value to which {@link #aShort} should be set.
+   *
+   * @param pAInt Value to which {@link #aInt} should be set.
+   *
+   * @param pALong Value to which {@link #aLong} should be set.
+   *
+   * @param pAFloat Value to which {@link #aFloat} should be set.
+   *
+   * @param pADouble Value to which {@link #aDouble} should be set.
+   *
+   * @param pAChar Value to which {@link #aChar} should be set.
+   *
+   * @return {@link WrapperTypesServiceObject}
+   */
+  public static WrapperTypesServiceObject of( Boolean pABoolean, Byte pAByte, Short pAShort, Integer pAInt, Long pALong,
+      Float pAFloat, Double pADouble, Character pAChar ) {
+    WrapperTypesServiceObject.Builder lBuilder = WrapperTypesServiceObject.builder();
+    lBuilder.setABoolean(pABoolean);
+    lBuilder.setAByte(pAByte);
+    lBuilder.setAShort(pAShort);
+    lBuilder.setAInt(pAInt);
+    lBuilder.setALong(pALong);
+    lBuilder.setAFloat(pAFloat);
+    lBuilder.setADouble(pADouble);
+    lBuilder.setAChar(pAChar);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>WrapperTypesServiceObject</code>.
    */
   public static class Builder {

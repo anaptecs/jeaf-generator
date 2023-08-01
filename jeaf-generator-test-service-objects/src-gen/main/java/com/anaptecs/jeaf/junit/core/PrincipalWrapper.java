@@ -66,6 +66,20 @@ public class PrincipalWrapper implements ServiceObject {
   }
 
   /**
+   * Convenience method to create new instance of class PrincipalWrapper.
+   *
+   *
+   * @param pLPrincipal Value to which {@link #lPrincipal} should be set.
+   *
+   * @return {@link PrincipalWrapper}
+   */
+  public static PrincipalWrapper of( Principal pLPrincipal ) {
+    PrincipalWrapper.Builder lBuilder = PrincipalWrapper.builder();
+    lBuilder.setLPrincipal(pLPrincipal);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>PrincipalWrapper</code>.
    */
   public static class Builder {

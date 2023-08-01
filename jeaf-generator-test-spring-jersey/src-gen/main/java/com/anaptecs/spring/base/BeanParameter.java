@@ -80,6 +80,26 @@ public class BeanParameter {
   }
 
   /**
+   * Convenience method to create new instance of class BeanParameter.
+   *
+   *
+   * @param pAccessToken Value to which {@link #accessToken} should be set.
+   *
+   * @param pLanguage Value to which {@link #language} should be set.
+   *
+   * @param pOldStyle Value to which {@link #oldStyle} should be set.
+   *
+   * @return {@link BeanParameter}
+   */
+  public static BeanParameter of( String pAccessToken, Locale pLanguage, String pOldStyle ) {
+    BeanParameter.Builder lBuilder = BeanParameter.builder();
+    lBuilder.setAccessToken(pAccessToken);
+    lBuilder.setLanguage(pLanguage);
+    lBuilder.setOldStyle(pOldStyle);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>BeanParameter</code>.
    */
   public static class Builder {

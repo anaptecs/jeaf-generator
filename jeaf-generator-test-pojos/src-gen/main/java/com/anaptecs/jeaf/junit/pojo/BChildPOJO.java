@@ -73,6 +73,26 @@ public class BChildPOJO extends BParentPOJO {
   }
 
   /**
+   * Convenience method to create new instance of class BChildPOJO.
+   *
+   *
+   * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
+   *
+   * @param pWeirdAttribute Value to which {@link #weirdAttribute} should be set.
+   *
+   * @param pChildAttribute Value to which {@link #childAttribute} should be set.
+   *
+   * @return {@link BChildPOJO}
+   */
+  public static BChildPOJO of( String pParentAttribute, byte pWeirdAttribute, Integer pChildAttribute ) {
+    BChildPOJO.Builder lBuilder = BChildPOJO.builder();
+    lBuilder.setParentAttribute(pParentAttribute);
+    lBuilder.setWeirdAttribute(pWeirdAttribute);
+    lBuilder.setChildAttribute(pChildAttribute);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>BChildPOJO</code>.
    */
   @Deprecated
