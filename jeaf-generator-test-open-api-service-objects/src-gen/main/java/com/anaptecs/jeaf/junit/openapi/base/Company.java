@@ -24,6 +24,8 @@ public class Company extends Partner {
   @NotNull
   private String name;
 
+  private StringCode code;
+
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
@@ -41,6 +43,7 @@ public class Company extends Partner {
     super(pBuilder);
     // Read attribute values from builder.
     name = pBuilder.name;
+    code = pBuilder.code;
   }
 
   /**
@@ -68,6 +71,8 @@ public class Company extends Partner {
   public static class Builder extends Partner.Builder {
     private String name;
 
+    private StringCode code;
+
     /**
      * Use {@link Company#builder()} instead of private constructor to create new builder.
      */
@@ -83,6 +88,7 @@ public class Company extends Partner {
       if (pObject != null) {
         // Read attribute values from passed object.
         name = pObject.name;
+        code = pObject.code;
       }
     }
 
@@ -118,6 +124,17 @@ public class Company extends Partner {
     public Builder setName( String pName ) {
       // Assign value to attribute
       name = pName;
+      return this;
+    }
+
+    /**
+     * Method sets association {@link #code}.<br/>
+     *
+     * @param pCode Value to which {@link #code} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    public Builder setCode( StringCode pCode ) {
+      code = pCode;
       return this;
     }
 
@@ -164,6 +181,31 @@ public class Company extends Partner {
   }
 
   /**
+   * Method returns association {@link #code}.<br/>
+   *
+   * @return {@link StringCode} Value to which {@link #code} is set.
+   */
+  public StringCode getCode( ) {
+    return code;
+  }
+
+  /**
+   * Method sets association {@link #code}.<br/>
+   *
+   * @param pCode Value to which {@link #code} should be set.
+   */
+  public void setCode( StringCode pCode ) {
+    code = pCode;
+  }
+
+  /**
+   * Method unsets {@link #code}.
+   */
+  public final void unsetCode( ) {
+    code = null;
+  }
+
+  /**
    * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
@@ -176,6 +218,16 @@ public class Company extends Partner {
     lBuilder.append("name: ");
     lBuilder.append(name);
     lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("code: ");
+    if (code != null) {
+      lBuilder.append(System.lineSeparator());
+      lBuilder.append(code.toStringBuilder(pIndent + "    "));
+    }
+    else {
+      lBuilder.append(" null");
+      lBuilder.append(System.lineSeparator());
+    }
     return lBuilder;
   }
 

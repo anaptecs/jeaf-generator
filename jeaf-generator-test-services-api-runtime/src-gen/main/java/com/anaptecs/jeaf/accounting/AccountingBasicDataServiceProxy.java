@@ -231,7 +231,7 @@ final class CreateBank_Bank_AccountingBasicDataService_Command extends Command {
    *
    * @param pBank Bank
    */
-  CreateBank_Bank_AccountingBasicDataService_Command( @Valid @NotNull Bank pBank ) {
+  CreateBank_Bank_AccountingBasicDataService_Command( Bank pBank ) {
     super(AccountingBasicDataService.class);
     bank = pBank;
     parameters = new Object[] { bank };

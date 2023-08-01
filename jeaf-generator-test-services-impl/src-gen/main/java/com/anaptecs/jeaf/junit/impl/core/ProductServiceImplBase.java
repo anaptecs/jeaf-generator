@@ -103,6 +103,9 @@ abstract class ProductServiceImplBase implements ProductService, ServiceImplemen
   public static final String TESTCODETYPEUSAGE_AUTH_TYPE =
       "testCodeTypeUsage.com.anaptecs.jeaf.junit.openapi.service1.ProductService";
 
+  public static final String TESTDATATYPEWITHRESTRITION_AUTH_TYPE =
+      "testDataTypeWithRestrition.com.anaptecs.jeaf.junit.openapi.service1.ProductService";
+
   public static final String TESTDATEQUERYPARAMSBEAN_AUTH_TYPE =
       "testDateQueryParamsBean.com.anaptecs.jeaf.junit.openapi.service1.ProductService";
 

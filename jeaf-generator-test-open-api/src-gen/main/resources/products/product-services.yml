@@ -1347,6 +1347,8 @@ paths:
             type: array
             items:
               type: string
+              minLength: 32
+              maxLength: 128
             nullable: true
         - name: longCodeQueryParam
           in: query
@@ -1421,6 +1423,8 @@ paths:
             type: array
             items:
               type: string
+              minLength: 32
+              maxLength: 128
             nullable: true
         - name: longCodeQueryParam
           in: query
@@ -1533,6 +1537,44 @@ paths:
               schema:
                 type: string
                 default: 'Hello World'
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+    
+  /products/test-string-code-with-restriction/{string-code}:
+    post:
+      operationId: testDataTypeWithRestrition
+      parameters:
+        - name: string-code
+          in: path
+          required: true
+          schema:
+            type: string
+            minLength: 32
+            maxLength: 128
+            nullable: false
+        - name: short-codes
+          in: query
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int32
+              maximum: 4711
+            nullable: true
+        - name: byte-code
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int32
+            minimum: 32
+      responses:
+        '204':
+          description: |
+            In case that a request was successful only status code 204 will be returned but no response content will be provided (aka as return type 'void' in many programming languages).
     
         '400':
           $ref: '#/components/responses/CustomErrorResponse'

@@ -316,6 +316,13 @@ public abstract class ProductServiceTestBase extends JEAFTestCase {
   public abstract void testGenericMultiValueResponse( ) throws Exception;
 
   /**
+   * Method test the implementation of service method testDataTypeWithRestrition(...)
+   *
+   * @throws Exception if the test fails.
+   */
+  public abstract void testTestDataTypeWithRestrition( ) throws Exception;
+
+  /**
    * Method test the implementation of service method testLocalBeanParamType(...)
    *
    * @throws Exception if the test fails.

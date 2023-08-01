@@ -947,7 +947,7 @@ final class CreatePerson_Person_AccountingService_Command extends Command {
    *
    * @param pPerson Person
    */
-  CreatePerson_Person_AccountingService_Command( @Valid Person pPerson ) {
+  CreatePerson_Person_AccountingService_Command( Person pPerson ) {
     super(AccountingService.class);
     person = pPerson;
     parameters = new Object[] { person };

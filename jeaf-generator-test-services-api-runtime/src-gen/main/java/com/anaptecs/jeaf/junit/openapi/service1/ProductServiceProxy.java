@@ -17,7 +17,9 @@ import java.time.OffsetDateTime;
 import java.time.OffsetTime;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Set;
 
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 
@@ -40,8 +42,10 @@ import com.anaptecs.jeaf.junit.openapi.base.MultiValuedDataType;
 import com.anaptecs.jeaf.junit.openapi.base.NotInlinedBeanParam;
 import com.anaptecs.jeaf.junit.openapi.base.ParentBeanParamType;
 import com.anaptecs.jeaf.junit.openapi.base.Product;
+import com.anaptecs.jeaf.junit.openapi.base.ShortCode;
 import com.anaptecs.jeaf.junit.openapi.base.Sortiment;
 import com.anaptecs.jeaf.junit.openapi.base.SpecialContext;
+import com.anaptecs.jeaf.junit.openapi.base.StringCode;
 import com.anaptecs.jeaf.junit.openapi.base.StringCodeType;
 import com.anaptecs.jeaf.junit.rest.generics.BusinessServiceObject;
 import com.anaptecs.jeaf.junit.rest.generics.GenericPageableResponse;
@@ -671,6 +675,22 @@ public final class ProductServiceProxy extends ServiceProxy implements ProductSe
       throw new JEAFSystemException(e.getErrorCode(), e, e.getMessageParameters());
     }
   }
+
+  /**
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.jeaf.junit.openapi.service1.ProductService#testDataTypeWithRestrition}
+   */
+  public void testDataTypeWithRestrition( StringCode pStringCode, Set<ShortCode> pShortCodes,
+      @Min(value = 32) Byte pJustAByte ) {
+    try {
+      Command lCommand = new TestDataTypeWithRestrition_StringCode_ShortCode_Byte_ProductService_Command(pStringCode,
+          pShortCodes, pJustAByte);
+      this.executeCommand(lCommand);
+    }
+    catch (ApplicationException e) {
+      throw new JEAFSystemException(e.getErrorCode(), e, e.getMessageParameters());
+    }
+  }
 }
 
 /**
@@ -813,7 +833,7 @@ final class GetProduct_String_ProductService_Command extends Command {
    *
    * @param pProductID String
    */
-  GetProduct_String_ProductService_Command( @NotEmpty String pProductID ) {
+  GetProduct_String_ProductService_Command( String pProductID ) {
     super(ProductService.class);
     productID = pProductID;
     parameters = new Object[] { productID };
@@ -1116,7 +1136,7 @@ final class CreateChannelCode_String_ProductService_Command extends Command {
    *
    * @param pChannelCode String
    */
-  CreateChannelCode_String_ProductService_Command( @NotBlank String pChannelCode ) {
+  CreateChannelCode_String_ProductService_Command( String pChannelCode ) {
     super(ProductService.class);
     channelCode = pChannelCode;
     parameters = new Object[] { channelCode };
@@ -4998,6 +5018,124 @@ final class GenericMultiValueResponse_ProductService_Command extends Command {
     // Trace result of service call.
     lTrace.write(MessageConstants.RETURNING_FROM_SERVICE_CALL, this.getCalledServiceMethod(), lDuration);
     return lResult;
+  }
+
+  /**
+   * Method returns a method object describing the service method that will be called by this command object.
+   *
+   * @return {@link Method} Method object describing the called service method. The method never returns null.
+   */
+  @Override
+  public final Method getServiceMethod( ) {
+    return SERVICE_METHOD;
+  }
+
+  /**
+   * Method returns all parameters that will be passed to the service.
+   *
+   * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
+   * an empty array in case that the method has no parameters.
+   */
+  @Override
+  public Object[] getParameters( ) {
+    return parameters;
+  }
+}
+
+/**
+ * Generated command class for service method "testDataTypeWithRestrition".
+ */
+final class TestDataTypeWithRestrition_StringCode_ShortCode_Byte_ProductService_Command extends Command {
+  /**
+   * Default serial version uid.
+   */
+  private static final long serialVersionUID = 1L;
+
+  /**
+   * Constant for factor to convert nano seconds to milliseconds.
+   */
+  private static final int MILLISECONDS = 1000 * 1000;
+
+  /**
+   * Constant describes the service method that is called by this proxy class.
+   */
+  private static final Method SERVICE_METHOD;
+
+  /**
+   * Object array with all parameters that are passed to the service.
+   */
+  private final Object[] parameters;
+  /**
+   * Initializer is used to get the method object describing the called service method only once.
+   */
+  static {
+    try {
+      SERVICE_METHOD =
+          ProductService.class.getMethod("testDataTypeWithRestrition", StringCode.class, Set.class, Byte.class);
+    }
+    catch (NoSuchMethodException e) {
+      throw new JEAFSystemException(MessageConstants.SERVICE_METHOD_DOES_NOT_EXIST, e, ProductService.class.getName(),
+          "testDataTypeWithRestrition(StringCode.class, Set.class, Byte.class)");
+    }
+  }
+
+  /**
+   * Attribute transports the method parameter "pStringCode" to the service implementation via the service channel.
+   */
+  private final StringCode stringCode;
+
+  /**
+   * Attribute transports the method parameter "pShortCodes" to the service implementation via the service channel.
+   */
+  private final Set<ShortCode> shortCodes;
+
+  /**
+   * Attribute transports the method parameter "pJustAByte" to the service implementation via the service channel.
+   */
+  private final Byte justAByte;
+
+  /**
+   * Initialize object. All parameters from method "testDataTypeWithRestrition" have to be passed as parameters to this
+   * command object.
+   *
+   * @param pStringCode StringCode
+   * @param pShortCodes Set<ShortCode>
+   * @param pJustAByte Byte
+   */
+  TestDataTypeWithRestrition_StringCode_ShortCode_Byte_ProductService_Command( StringCode pStringCode,
+      Set<ShortCode> pShortCodes, Byte pJustAByte ) {
+    super(ProductService.class);
+    stringCode = pStringCode;
+    shortCodes = pShortCodes;
+    justAByte = pJustAByte;
+    parameters = new Object[] { stringCode, shortCodes, justAByte };
+  }
+
+  /**
+   * Method executes the service call represented by this command object via JEAFs service channel.
+   *
+   * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
+   * null.
+   * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
+   * in Java (EJBs e.g.) have to be serializable services always have to return serializable objects no matter if it
+   * will be serialized or not. If a service method has no return type (void) then the method returns null. Service
+   * methods also may return null as return value.
+   */
+  @Override
+  public Serializable execute( Service pTargetService ) {
+    // Execute service call.
+    ProductService lService = (ProductService) pTargetService;
+    // Trace service call.
+    Trace lTrace = XFun.getTrace();
+    lTrace.write(MessageConstants.EXECUTING_SERVICE_CALL, this.getCalledServiceMethod());
+    long lStartTime = System.nanoTime();
+    lService.testDataTypeWithRestrition(stringCode, shortCodes, justAByte);
+    // Calculate duration of service call in milliseconds
+    String lDuration = Long.toString((System.nanoTime() - lStartTime) / MILLISECONDS);
+    // Trace result of service call.
+    lTrace.write(MessageConstants.RETURNING_FROM_SERVICE_CALL, this.getCalledServiceMethod(), lDuration);
+    // Method has no return type thus the method returns null.
+    return null;
   }
 
   /**

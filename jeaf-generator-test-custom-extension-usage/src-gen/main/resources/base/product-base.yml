@@ -143,6 +143,7 @@ components:
     # com.anaptecs.jeaf.junit.openapi.base.StringCodeType
     StringCodeType:
       type: string
+      maxLength: 256
       nullable: false
 
     # com.anaptecs.jeaf.junit.openapi.base.ByteCodeType
@@ -542,6 +543,11 @@ components:
             name:
               type: string
               nullable: false
+            code:
+              type: string
+              minLength: 32
+              maxLength: 128
+              nullable: true
 
     # com.anaptecs.jeaf.junit.openapi.base.ComplexBookingType
     ComplexBookingType:

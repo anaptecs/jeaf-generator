@@ -23,7 +23,14 @@ public class Company extends Partner {
    */
   public static final String NAME = "name";
 
+  /**
+   * Constant for the name of attribute "code".
+   */
+  public static final String CODE = "code";
+
   private String name;
+
+  private StringCode code;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
@@ -42,6 +49,7 @@ public class Company extends Partner {
     super(pBuilder);
     // Read attribute values from builder.
     name = pBuilder.name;
+    code = pBuilder.code;
   }
 
   /**
@@ -69,6 +77,8 @@ public class Company extends Partner {
   public static class Builder extends Partner.Builder {
     private String name;
 
+    private StringCode code;
+
     /**
      * Use {@link Company#builder()} instead of private constructor to create new builder.
      */
@@ -84,6 +94,7 @@ public class Company extends Partner {
       if (pObject != null) {
         // Read attribute values from passed object.
         name = pObject.name;
+        code = pObject.code;
       }
     }
 
@@ -119,6 +130,17 @@ public class Company extends Partner {
     public Builder setName( String pName ) {
       // Assign value to attribute
       name = pName;
+      return this;
+    }
+
+    /**
+     * Method sets association {@link #code}.<br/>
+     *
+     * @param pCode Value to which {@link #code} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    public Builder setCode( StringCode pCode ) {
+      code = pCode;
       return this;
     }
 
@@ -164,6 +186,31 @@ public class Company extends Partner {
   public void setName( String pName ) {
     // Assign value to attribute
     name = pName;
+  }
+
+  /**
+   * Method returns association {@link #code}.<br/>
+   *
+   * @return {@link StringCode} Value to which {@link #code} is set.
+   */
+  public StringCode getCode( ) {
+    return code;
+  }
+
+  /**
+   * Method sets association {@link #code}.<br/>
+   *
+   * @param pCode Value to which {@link #code} should be set.
+   */
+  public void setCode( StringCode pCode ) {
+    code = pCode;
+  }
+
+  /**
+   * Method unsets {@link #code}.
+   */
+  public final void unsetCode( ) {
+    code = null;
   }
 
   /**

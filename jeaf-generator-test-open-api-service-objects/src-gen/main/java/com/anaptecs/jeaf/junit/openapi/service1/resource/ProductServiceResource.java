@@ -17,8 +17,10 @@ import java.time.OffsetTime;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.BeanParam;
@@ -55,8 +57,10 @@ import com.anaptecs.jeaf.junit.openapi.base.MultiValuedDataType;
 import com.anaptecs.jeaf.junit.openapi.base.NotInlinedBeanParam;
 import com.anaptecs.jeaf.junit.openapi.base.ParentBeanParamType;
 import com.anaptecs.jeaf.junit.openapi.base.Product;
+import com.anaptecs.jeaf.junit.openapi.base.ShortCode;
 import com.anaptecs.jeaf.junit.openapi.base.Sortiment;
 import com.anaptecs.jeaf.junit.openapi.base.SpecialContext;
+import com.anaptecs.jeaf.junit.openapi.base.StringCode;
 import com.anaptecs.jeaf.junit.openapi.base.StringCodeType;
 import com.anaptecs.jeaf.junit.openapi.service1.ChildBeanParameterType;
 import com.anaptecs.jeaf.junit.openapi.service1.DateQueryParamsBean;
@@ -678,6 +682,31 @@ public class ProductServiceResource {
     ProductService lService = this.getProductService();
     GenericPageableResponse<BusinessServiceObject> lResult = lService.genericMultiValueResponse();
     return Response.status(Response.Status.OK).entity(lResult).build();
+  }
+
+  /**
+   * {@link ProductService#testDataTypeWithRestrition()}
+   */
+  @Path("test-string-code-with-restriction/{string-code}")
+  @POST
+  public Response testDataTypeWithRestrition( @PathParam("string-code") String pStringCodeAsBasicType,
+      @QueryParam("short-codes") short[] pShortCodesAsBasicType, @QueryParam("byte-code") Byte pJustAByte ) {
+    // Convert basic type parameters into "real" objects.
+    StringCode pStringCode = StringCode.builder().setCode(pStringCodeAsBasicType).build();
+    Set<ShortCode> pShortCodes;
+    if (pShortCodesAsBasicType != null) {
+      pShortCodes = new HashSet<ShortCode>();
+      for (short lNext : pShortCodesAsBasicType) {
+        pShortCodes.add(ShortCode.builder().setCode(lNext).build());
+      }
+    }
+    else {
+      pShortCodes = Collections.emptySet();
+    }
+    // Delegate request to service.
+    ProductService lService = this.getProductService();
+    lService.testDataTypeWithRestrition(pStringCode, pShortCodes, pJustAByte);
+    return Response.status(Response.Status.NO_CONTENT).build();
   }
 
   /**

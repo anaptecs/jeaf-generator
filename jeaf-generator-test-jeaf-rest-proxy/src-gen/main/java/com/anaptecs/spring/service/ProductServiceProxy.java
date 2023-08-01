@@ -578,7 +578,7 @@ final class GetProduct_String_ProductService_Command extends Command {
    *
    * @param pProductID String
    */
-  GetProduct_String_ProductService_Command( @NotEmpty String pProductID ) {
+  GetProduct_String_ProductService_Command( String pProductID ) {
     super(ProductService.class);
     productID = pProductID;
     parameters = new Object[] { productID };
@@ -881,7 +881,7 @@ final class CreateChannelCode_String_ProductService_Command extends Command {
    *
    * @param pChannelCode String
    */
-  CreateChannelCode_String_ProductService_Command( @NotBlank String pChannelCode ) {
+  CreateChannelCode_String_ProductService_Command( String pChannelCode ) {
     super(ProductService.class);
     channelCode = pChannelCode;
     parameters = new Object[] { channelCode };

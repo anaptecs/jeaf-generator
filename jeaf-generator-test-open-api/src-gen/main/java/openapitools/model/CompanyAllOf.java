@@ -24,6 +24,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import org.openapitools.jackson.nullable.JsonNullable;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import openapitools.JSON;
 
@@ -32,12 +36,16 @@ import openapitools.JSON;
  * CompanyAllOf
  */
 @JsonPropertyOrder({
-  CompanyAllOf.JSON_PROPERTY_NAME
+  CompanyAllOf.JSON_PROPERTY_NAME,
+  CompanyAllOf.JSON_PROPERTY_CODE
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CompanyAllOf {
   public static final String JSON_PROPERTY_NAME = "name";
   private String name;
+
+  public static final String JSON_PROPERTY_CODE = "code";
+  private JsonNullable<String> code = JsonNullable.<String>undefined();
 
   public CompanyAllOf() { 
   }
@@ -68,6 +76,40 @@ public class CompanyAllOf {
   }
 
 
+  public CompanyAllOf code(String code) {
+    this.code = JsonNullable.<String>of(code);
+    return this;
+  }
+
+   /**
+   * Get code
+   * @return code
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+  @JsonIgnore
+
+  public String getCode() {
+        return code.orElse(null);
+  }
+
+  @JsonProperty(JSON_PROPERTY_CODE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public JsonNullable<String> getCode_JsonNullable() {
+    return code;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_CODE)
+  public void setCode_JsonNullable(JsonNullable<String> code) {
+    this.code = code;
+  }
+
+  public void setCode(String code) {
+    this.code = JsonNullable.<String>of(code);
+  }
+
+
   /**
    * Return true if this Company_allOf object is equal to o.
    */
@@ -80,12 +122,24 @@ public class CompanyAllOf {
       return false;
     }
     CompanyAllOf companyAllOf = (CompanyAllOf) o;
-    return Objects.equals(this.name, companyAllOf.name);
+    return Objects.equals(this.name, companyAllOf.name) &&
+        equalsNullable(this.code, companyAllOf.code);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name);
+    return Objects.hash(name, hashCodeNullable(code));
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -93,6 +147,7 @@ public class CompanyAllOf {
     StringBuilder sb = new StringBuilder();
     sb.append("class CompanyAllOf {\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -178,7 +178,7 @@ final class ValidateInNOutput_String_String_ValidationTestService_Command extend
    * @param pString1 String
    * @param pString2 String
    */
-  ValidateInNOutput_String_String_ValidationTestService_Command( @NotNull String pString1, @NotEmpty String pString2 ) {
+  ValidateInNOutput_String_String_ValidationTestService_Command( String pString1, String pString2 ) {
     super(ValidationTestService.class);
     string1 = pString1;
     string2 = pString2;
@@ -286,7 +286,7 @@ final class NotValidOutput_String_String_ValidationTestService_Command extends C
    * @param pString1 String
    * @param pString2 String
    */
-  NotValidOutput_String_String_ValidationTestService_Command( String pString1, @NotEmpty String pString2 ) {
+  NotValidOutput_String_String_ValidationTestService_Command( String pString1, String pString2 ) {
     super(ValidationTestService.class);
     string1 = pString1;
     string2 = pString2;
@@ -502,7 +502,7 @@ final class ValidateInputOnly_String_int_ValidationTestService_Command extends C
    * @param pString1 String
    * @param pInteger int
    */
-  ValidateInputOnly_String_int_ValidationTestService_Command( String pString1, @Min(value = 4711) int pInteger ) {
+  ValidateInputOnly_String_int_ValidationTestService_Command( String pString1, int pInteger ) {
     super(ValidationTestService.class);
     string1 = pString1;
     integer = pInteger;
@@ -712,8 +712,7 @@ final class CreateValidationTestObject_ValidationTestObject_ValidationTestServic
    *
    * @param pTestObject ValidationTestObject
    */
-  CreateValidationTestObject_ValidationTestObject_ValidationTestService_Command(
-      @Valid ValidationTestObject pTestObject ) {
+  CreateValidationTestObject_ValidationTestObject_ValidationTestService_Command( ValidationTestObject pTestObject ) {
     super(ValidationTestService.class);
     testObject = pTestObject;
     parameters = new Object[] { testObject };

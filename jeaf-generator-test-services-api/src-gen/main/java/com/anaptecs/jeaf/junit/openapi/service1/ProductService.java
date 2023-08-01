@@ -15,7 +15,9 @@ import java.time.OffsetDateTime;
 import java.time.OffsetTime;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Set;
 
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 
@@ -34,8 +36,10 @@ import com.anaptecs.jeaf.junit.openapi.base.MultiValuedDataType;
 import com.anaptecs.jeaf.junit.openapi.base.NotInlinedBeanParam;
 import com.anaptecs.jeaf.junit.openapi.base.ParentBeanParamType;
 import com.anaptecs.jeaf.junit.openapi.base.Product;
+import com.anaptecs.jeaf.junit.openapi.base.ShortCode;
 import com.anaptecs.jeaf.junit.openapi.base.Sortiment;
 import com.anaptecs.jeaf.junit.openapi.base.SpecialContext;
+import com.anaptecs.jeaf.junit.openapi.base.StringCode;
 import com.anaptecs.jeaf.junit.openapi.base.StringCodeType;
 import com.anaptecs.jeaf.junit.rest.generics.BusinessServiceObject;
 import com.anaptecs.jeaf.junit.rest.generics.GenericPageableResponse;
@@ -310,4 +314,12 @@ public interface ProductService extends Service {
    * @return {@link GenericPageableResponse<BusinessServiceObject>}
    */
   GenericPageableResponse<BusinessServiceObject> genericMultiValueResponse( );
+
+  /**
+   * @param pStringCode
+   * @param pShortCodes
+   * @param pJustAByte
+   */
+  void testDataTypeWithRestrition( StringCode pStringCode, Set<ShortCode> pShortCodes,
+      @Min(value = 32) Byte pJustAByte );
 }

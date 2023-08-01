@@ -30,6 +30,9 @@ public class Company extends Partner {
   @JsonProperty("name")
   private String name = null;
 
+  @JsonProperty("code")
+  private String code = null;
+
   public Company name(String name) {
     this.name = name;
     return this;
@@ -48,6 +51,24 @@ public class Company extends Partner {
     this.name = name;
   }
 
+  public Company code(String code) {
+    this.code = code;
+    return this;
+  }
+
+   /**
+   * Get code
+   * @return code
+  **/
+  @Schema(description = "")
+  public String getCode() {
+    return code;
+  }
+
+  public void setCode(String code) {
+    this.code = code;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -59,12 +80,13 @@ public class Company extends Partner {
     }
     Company company = (Company) o;
     return Objects.equals(this.name, company.name) &&
+        Objects.equals(this.code, company.code) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, super.hashCode());
+    return Objects.hash(name, code, super.hashCode());
   }
 
 
@@ -74,6 +96,7 @@ public class Company extends Partner {
     sb.append("class Company {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -59,6 +59,7 @@ public class ProductServiceTest extends ProductServiceTestBase {
     lSuite.addTest(new ProductServiceTest("testGetSortiment"));
     lSuite.addTest(new ProductServiceTest("testCheckIBAN"));
     lSuite.addTest(new ProductServiceTest("testGenericMultiValueResponse"));
+    lSuite.addTest(new ProductServiceTest("testTestDataTypeWithRestrition"));
     lSuite.addTest(new ProductServiceTest("testTestLocalBeanParamType"));
     lSuite.addTest(new ProductServiceTest("testGetChannels"));
     lSuite.addTest(new ProductServiceTest("testDeleteSomething"));
@@ -487,6 +488,16 @@ public class ProductServiceTest extends ProductServiceTestBase {
   @Override
   public void testGenericMultiValueResponse( ) throws Exception {
     // TODO Implement test for service method genericMultiValueResponse(...)
+  }
+
+  /**
+   * Method test the implementation of service method testDataTypeWithRestrition
+   *
+   * @throws Exception if a test fails.
+   */
+  @Override
+  public void testTestDataTypeWithRestrition( ) throws Exception {
+    // TODO Implement test for service method testDataTypeWithRestrition(...)
   }
 
   /**

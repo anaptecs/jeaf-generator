@@ -155,7 +155,7 @@
                   «IF attribute.defaultValue != null -»
 «indent»            default: «attribute.defaultValue.stringValue().replaceAll("\"", "'")»
                   «ENDIF-»
-                «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("          ") FOR attribute-»    
+                «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions(indent + "      ") FOR attribute-»    
                   «IF attribute.isDeprecated() || param.isDeprecated() -»
 «indent»            deprecated: true
                   «ENDIF-»
@@ -181,7 +181,7 @@
                   «IF attribute.hasPatternForProperty() -»
 «indent»              pattern: '«attribute.getPatternForProperty()»'
                   «ENDIF-»
-                  «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("            ") FOR attribute-»
+                  «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions(indent + "        ") FOR attribute-»
                   «IF attribute.hasExample()-»
                   «IF ((Example) attribute).exampleValue.length > 0-»
 «indent»              example: «((Example) attribute).exampleValue»
