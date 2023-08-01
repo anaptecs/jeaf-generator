@@ -120,6 +120,32 @@ public class Problem implements Serializable {
   }
 
   /**
+   * Convenience method to create new instance of class Problem.
+   *
+   *
+   * @param pTitle Value to which {@link #title} should be set.
+   *
+   * @param pStatus Value to which {@link #status} should be set.
+   *
+   * @param pType Value to which {@link #type} should be set.
+   *
+   * @param pDetail Value to which {@link #detail} should be set.
+   *
+   * @param pInstance Value to which {@link #instance} should be set.
+   *
+   * @return {@link Problem}
+   */
+  public static Problem of( String pTitle, int pStatus, String pType, String pDetail, String pInstance ) {
+    Problem.Builder lBuilder = Problem.builder();
+    lBuilder.setTitle(pTitle);
+    lBuilder.setStatus(pStatus);
+    lBuilder.setType(pType);
+    lBuilder.setDetail(pDetail);
+    lBuilder.setInstance(pInstance);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>Problem</code>.
    */
   public static class Builder {

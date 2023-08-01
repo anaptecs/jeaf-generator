@@ -66,6 +66,26 @@ public class Company extends Partner {
   }
 
   /**
+   * Convenience method to create new instance of class Company.
+   *
+   *
+   * @param pPostalAddresses Value to which {@link #postalAddresses} should be set.
+   *
+   * @param pName Value to which {@link #name} should be set.
+   *
+   * @param pCode Value to which {@link #code} should be set.
+   *
+   * @return {@link Company}
+   */
+  public static Company of( List<PostalAddress> pPostalAddresses, String pName, StringCode pCode ) {
+    Company.Builder lBuilder = Company.builder();
+    lBuilder.setPostalAddresses(pPostalAddresses);
+    lBuilder.setName(pName);
+    lBuilder.setCode(pCode);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>Company</code>.
    */
   public static class Builder extends Partner.Builder {

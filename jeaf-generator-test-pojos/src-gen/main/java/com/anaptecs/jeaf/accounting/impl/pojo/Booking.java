@@ -99,6 +99,33 @@ public class Booking {
   }
 
   /**
+   * Convenience method to create new instance of class Booking.
+   *
+   *
+   * @param pSourceAccount Value to which {@link #sourceAccount} should be set.
+   *
+   * @param pTargetAccount Value to which {@link #targetAccount} should be set.
+   *
+   * @param pAmount Value to which {@link #amount} should be set.
+   *
+   * @param pCurrency Value to which {@link #currency} should be set.
+   *
+   * @param pExecutionTimestamp Value to which {@link #executionTimestamp} should be set.
+   *
+   * @return {@link Booking}
+   */
+  public static Booking of( Account pSourceAccount, Account pTargetAccount, BigDecimal pAmount, Currency pCurrency,
+      Calendar pExecutionTimestamp ) {
+    Booking.Builder lBuilder = Booking.builder();
+    lBuilder.setSourceAccount(pSourceAccount);
+    lBuilder.setTargetAccount(pTargetAccount);
+    lBuilder.setAmount(pAmount);
+    lBuilder.setCurrency(pCurrency);
+    lBuilder.setExecutionTimestamp(pExecutionTimestamp);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>Booking</code>.
    */
   public static class Builder {

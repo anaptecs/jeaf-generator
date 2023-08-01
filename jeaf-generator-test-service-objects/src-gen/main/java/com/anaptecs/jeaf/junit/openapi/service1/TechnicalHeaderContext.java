@@ -81,6 +81,23 @@ public class TechnicalHeaderContext implements ServiceObject {
   }
 
   /**
+   * Convenience method to create new instance of class TechnicalHeaderContext.
+   *
+   *
+   * @param pReseller Value to which {@link #reseller} should be set.
+   *
+   * @param pAuthenticationToken Value to which {@link #authenticationToken} should be set.
+   *
+   * @return {@link TechnicalHeaderContext}
+   */
+  public static TechnicalHeaderContext of( String pReseller, String pAuthenticationToken ) {
+    TechnicalHeaderContext.Builder lBuilder = TechnicalHeaderContext.builder();
+    lBuilder.setReseller(pReseller);
+    lBuilder.setAuthenticationToken(pAuthenticationToken);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>TechnicalHeaderContext</code>.
    */
   public static class Builder {

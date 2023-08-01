@@ -124,6 +124,30 @@ public class ParentClass implements ServiceObject {
   }
 
   /**
+   * Convenience method to create new instance of class ParentClass.
+   *
+   *
+   * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
+   *
+   * @param pIbans Value to which {@link #ibans} should be set.
+   *
+   * @param pTheBankAccount Value to which {@link #theBankAccount} should be set.
+   *
+   * @param pLegacyBankAccounts Value to which {@link #legacyBankAccounts} should be set.
+   *
+   * @return {@link ParentClass}
+   */
+  public static ParentClass of( String pParentAttribute, Set<IBAN> pIbans, BankAccount pTheBankAccount,
+      List<BankAccount> pLegacyBankAccounts ) {
+    ParentClass.Builder lBuilder = ParentClass.builder();
+    lBuilder.setParentAttribute(pParentAttribute);
+    lBuilder.setIbans(pIbans);
+    lBuilder.setTheBankAccount(pTheBankAccount);
+    lBuilder.setLegacyBankAccounts(pLegacyBankAccounts);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>ParentClass</code>.
    */
   public static class Builder {

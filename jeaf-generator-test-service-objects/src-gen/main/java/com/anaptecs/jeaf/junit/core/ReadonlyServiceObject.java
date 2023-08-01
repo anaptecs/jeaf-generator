@@ -78,6 +78,23 @@ public class ReadonlyServiceObject implements ServiceObject {
   }
 
   /**
+   * Convenience method to create new instance of class ReadonlyServiceObject.
+   *
+   *
+   * @param pReadonly Value to which {@link #readonly} should be set.
+   *
+   * @param pReadonlyDefault Value to which {@link #readonlyDefault} should be set.
+   *
+   * @return {@link ReadonlyServiceObject}
+   */
+  public static ReadonlyServiceObject of( String pReadonly, int pReadonlyDefault ) {
+    ReadonlyServiceObject.Builder lBuilder = ReadonlyServiceObject.builder();
+    lBuilder.setReadonly(pReadonly);
+    lBuilder.setReadonlyDefault(pReadonlyDefault);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>ReadonlyServiceObject</code>.
    */
   public static class Builder {

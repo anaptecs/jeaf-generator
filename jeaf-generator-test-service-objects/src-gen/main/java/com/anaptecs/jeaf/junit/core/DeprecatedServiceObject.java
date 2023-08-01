@@ -65,6 +65,20 @@ public class DeprecatedServiceObject implements ServiceObject {
   }
 
   /**
+   * Convenience method to create new instance of class DeprecatedServiceObject.
+   *
+   *
+   * @param pName Value to which {@link #name} should be set.
+   *
+   * @return {@link DeprecatedServiceObject}
+   */
+  public static DeprecatedServiceObject of( String pName ) {
+    DeprecatedServiceObject.Builder lBuilder = DeprecatedServiceObject.builder();
+    lBuilder.setName(pName);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>DeprecatedServiceObject</code>.
    */
   @Deprecated

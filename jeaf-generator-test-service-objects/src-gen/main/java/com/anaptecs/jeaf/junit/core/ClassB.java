@@ -102,6 +102,23 @@ public class ClassB implements ServiceObject, Identifiable<ServiceObjectID> {
   }
 
   /**
+   * Convenience method to create new instance of class ClassB.
+   *
+   *
+   * @param pManyAs Value to which {@link #manyAs} should be set.
+   *
+   * @param pIntValue Value to which {@link #intValue} should be set.
+   *
+   * @return {@link ClassB}
+   */
+  public static ClassB of( SortedSet<ClassA> pManyAs, Integer pIntValue ) {
+    ClassB.Builder lBuilder = ClassB.builder();
+    lBuilder.setManyAs(pManyAs);
+    lBuilder.setIntValue(pIntValue);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>ClassB</code>.
    */
   public static class Builder {

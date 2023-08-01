@@ -269,6 +269,26 @@ public abstract class AccountInfoBase implements ServiceObject, Identifiable<Ser
   }
 
   /**
+   * Convenience method to create new instance of class AccountInfo.
+   *
+   *
+   * @param pIban Value to which {@link #iban} should be set.
+   *
+   * @param pBalance Value to which {@link #balance} should be set.
+   *
+   * @param pBankID Value to which {@link #bankID} should be set.
+   *
+   * @return {@link com.anaptecs.jeaf.accounting.AccountInfo}
+   */
+  public static AccountInfo of( Long pIban, Double pBalance, ServiceObjectID pBankID ) {
+    AccountInfo.Builder lBuilder = AccountInfo.builder();
+    lBuilder.setIban(pIban);
+    lBuilder.setBalance(pBalance);
+    lBuilder.setBankID(pBankID);
+    return lBuilder.build();
+  }
+
+  /**
    * @return {@link Double}
    */
   public abstract Double calclulateBalance( );

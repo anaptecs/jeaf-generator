@@ -85,6 +85,29 @@ public class DeprecatedContext {
   }
 
   /**
+   * Convenience method to create new instance of class DeprecatedContext.
+   *
+   *
+   * @param pAccessToken Value to which {@link #accessToken} should be set.
+   *
+   * @param pLanguage Value to which {@link #language} should be set.
+   *
+   * @param pResellerID Value to which {@link #resellerID} should be set.
+   *
+   * @param pQueryParam Value to which {@link #queryParam} should be set.
+   *
+   * @return {@link DeprecatedContext}
+   */
+  public static DeprecatedContext of( String pAccessToken, Locale pLanguage, long pResellerID, String pQueryParam ) {
+    DeprecatedContext.Builder lBuilder = DeprecatedContext.builder();
+    lBuilder.setAccessToken(pAccessToken);
+    lBuilder.setLanguage(pLanguage);
+    lBuilder.setResellerID(pResellerID);
+    lBuilder.setQueryParam(pQueryParam);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>DeprecatedContext</code>.
    */
   @Deprecated

@@ -95,6 +95,30 @@ public class NotInlinedBeanParam implements ServiceObject {
   }
 
   /**
+   * Convenience method to create new instance of class NotInlinedBeanParam.
+   *
+   *
+   * @param pHeader Value to which {@link #header} should be set.
+   *
+   * @param pDoubleCode Value to which {@link #doubleCode} should be set.
+   *
+   * @param pExtensibleEnum Value to which {@link #extensibleEnum} should be set.
+   *
+   * @param pBookingID Value to which {@link #bookingID} should be set.
+   *
+   * @return {@link NotInlinedBeanParam}
+   */
+  public static NotInlinedBeanParam of( String pHeader, DoubleCode pDoubleCode, ExtensibleEnum pExtensibleEnum,
+      BookingID pBookingID ) {
+    NotInlinedBeanParam.Builder lBuilder = NotInlinedBeanParam.builder();
+    lBuilder.setHeader(pHeader);
+    lBuilder.setDoubleCode(pDoubleCode);
+    lBuilder.setExtensibleEnum(pExtensibleEnum);
+    lBuilder.setBookingID(pBookingID);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>NotInlinedBeanParam</code>.
    */
   public static class Builder {

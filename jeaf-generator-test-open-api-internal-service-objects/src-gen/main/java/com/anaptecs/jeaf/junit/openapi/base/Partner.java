@@ -102,6 +102,20 @@ public class Partner implements ServiceObject, Identifiable<ServiceObjectID> {
   }
 
   /**
+   * Convenience method to create new instance of class Partner.
+   *
+   *
+   * @param pPostalAddresses Value to which {@link #postalAddresses} should be set.
+   *
+   * @return {@link Partner}
+   */
+  public static Partner of( List<PostalAddress> pPostalAddresses ) {
+    Partner.Builder lBuilder = Partner.builder();
+    lBuilder.setPostalAddresses(pPostalAddresses);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>Partner</code>.
    */
   public static class Builder {

@@ -84,6 +84,20 @@ public class TechnicalHeaderContext implements Serializable {
   }
 
   /**
+   * Convenience method to create new instance of class TechnicalHeaderContext.
+   *
+   *
+   * @param pReseller Value to which {@link #reseller} should be set.
+   *
+   * @return {@link TechnicalHeaderContext}
+   */
+  public static TechnicalHeaderContext of( String pReseller ) {
+    TechnicalHeaderContext.Builder lBuilder = TechnicalHeaderContext.builder();
+    lBuilder.setReseller(pReseller);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>TechnicalHeaderContext</code>.
    */
   public static class Builder {

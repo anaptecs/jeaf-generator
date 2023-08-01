@@ -87,6 +87,24 @@ public class AndOneMorePOJO {
   }
 
   /**
+   * Convenience method to create new instance of class AndOneMorePOJO.
+   *
+   *
+   * @param pGenericProperty Value to which {@link #genericProperty} should be set.
+   *
+   * @param pGenericResponses Value to which {@link #genericResponses} should be set.
+   *
+   * @return {@link AndOneMorePOJO}
+   */
+  public static AndOneMorePOJO of( GenericResponsePOJO<MyBusinessObject> pGenericProperty,
+      Set<GenericResponsePOJO<MyBusinessObject>> pGenericResponses ) {
+    AndOneMorePOJO.Builder lBuilder = AndOneMorePOJO.builder();
+    lBuilder.setGenericProperty(pGenericProperty);
+    lBuilder.setGenericResponses(pGenericResponses);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>AndOneMorePOJO</code>.
    */
   public static class Builder {

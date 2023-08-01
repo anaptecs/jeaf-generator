@@ -122,6 +122,20 @@ public abstract class AdvancedPOJOBase {
   }
 
   /**
+   * Convenience method to create new instance of class AdvancedPOJO.
+   *
+   *
+   * @param pReadonlyDefault Value to which {@link #readonlyDefault} should be set.
+   *
+   * @return {@link com.anaptecs.jeaf.junit.pojo.AdvancedPOJO}
+   */
+  public static AdvancedPOJO of( int pReadonlyDefault ) {
+    AdvancedPOJO.Builder lBuilder = AdvancedPOJO.builder();
+    lBuilder.setReadonlyDefault(pReadonlyDefault);
+    return lBuilder.build();
+  }
+
+  /**
    * @param pName
    * @return boolean
    */

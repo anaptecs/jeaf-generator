@@ -69,6 +69,23 @@ public class QueryBeanParam {
   }
 
   /**
+   * Convenience method to create new instance of class QueryBeanParam.
+   *
+   *
+   * @param pBookingCode Value to which {@link #bookingCode} should be set.
+   *
+   * @param pMaxResults Value to which {@link #maxResults} should be set.
+   *
+   * @return {@link QueryBeanParam}
+   */
+  public static QueryBeanParam of( BookingCode pBookingCode, int pMaxResults ) {
+    QueryBeanParam.Builder lBuilder = QueryBeanParam.builder();
+    lBuilder.setBookingCode(pBookingCode);
+    lBuilder.setMaxResults(pMaxResults);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>QueryBeanParam</code>.
    */
   public static class Builder {

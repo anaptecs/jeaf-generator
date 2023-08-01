@@ -47,6 +47,20 @@ public class UICStopPlace extends StopPlaceRef {
   }
 
   /**
+   * Convenience method to create new instance of class UICStopPlace.
+   *
+   *
+   * @param pName Value to which {@link #name} should be set.
+   *
+   * @return {@link UICStopPlace}
+   */
+  public static UICStopPlace of( String pName ) {
+    UICStopPlace.Builder lBuilder = UICStopPlace.builder();
+    lBuilder.setName(pName);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>UICStopPlace</code>.
    */
   public static class Builder extends StopPlaceRef.Builder {

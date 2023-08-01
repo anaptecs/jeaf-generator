@@ -126,6 +126,49 @@ public class OpenAPITestObject {
   }
 
   /**
+   * Convenience method to create new instance of class OpenAPITestObject.
+   *
+   *
+   * @param pReadOnlyAttribute Value to which {@link #readOnlyAttribute} should be set.
+   *
+   * @param pReadWriteAttribute Value to which {@link #readWriteAttribute} should be set.
+   *
+   * @param pWriteOnlyAttribute Value to which {@link #writeOnlyAttribute} should be set.
+   *
+   * @param pNullableAttribute Value to which {@link #nullableAttribute} should be set.
+   *
+   * @param pNotNullableAttribute Value to which {@link #notNullableAttribute} should be set.
+   *
+   * @param pReadOnlyArray Value to which {@link #readOnlyArray} should be set.
+   *
+   * @param pReadWriteArray Value to which {@link #readWriteArray} should be set.
+   *
+   * @param pWriteOnlyArray Value to which {@link #writeOnlyArray} should be set.
+   *
+   * @param pNullableArray Value to which {@link #nullableArray} should be set.
+   *
+   * @param pNotNullableArray Value to which {@link #notNullableArray} should be set.
+   *
+   * @return {@link OpenAPITestObject}
+   */
+  public static OpenAPITestObject of( String pReadOnlyAttribute, String pReadWriteAttribute, int pWriteOnlyAttribute,
+      Boolean pNullableAttribute, double pNotNullableAttribute, String pReadOnlyArray, String pReadWriteArray,
+      int pWriteOnlyArray, double pNullableArray, double pNotNullableArray ) {
+    OpenAPITestObject.Builder lBuilder = OpenAPITestObject.builder();
+    lBuilder.setReadOnlyAttribute(pReadOnlyAttribute);
+    lBuilder.setReadWriteAttribute(pReadWriteAttribute);
+    lBuilder.setWriteOnlyAttribute(pWriteOnlyAttribute);
+    lBuilder.setNullableAttribute(pNullableAttribute);
+    lBuilder.setNotNullableAttribute(pNotNullableAttribute);
+    lBuilder.setReadOnlyArray(pReadOnlyArray);
+    lBuilder.setReadWriteArray(pReadWriteArray);
+    lBuilder.setWriteOnlyArray(pWriteOnlyArray);
+    lBuilder.setNullableArray(pNullableArray);
+    lBuilder.setNotNullableArray(pNotNullableArray);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>OpenAPITestObject</code>.
    */
   public static class Builder {

@@ -299,6 +299,45 @@
 	«ENDIF»
 «ENDDEFINE»
 
+«DEFINE GenerateOfForClass FOR uml::Class»
+    «IF this.generateOfOperationForClass() && this.isOpenAPIDataType() == false && this.isCompositeDataType() == false && isAbstract == false && getTemplateParams().length == 0»
+	  /**
+	   * Convenience method to create new instance of class «name».
+	   * 
+       * «FOREACH this.getAllAttributesForOfOperation() AS attr»
+       *    @param «attr.asParameter()» Value to which {@link #«attr.name»} should be set. 
+       * «ENDFOREACH»
+	   * @return {@link «this.fqn()»}
+	   */
+	   public static «name» of(
+		   «FOREACH this.getAllAttributesForOfOperation() AS attr SEPARATOR ", "»
+			   «IF attr.isSoftLink()»
+			     «IF attr.isMultivalued()»
+			         «attr.getCollectionType()»<«((JMM::SoftLink)attr).getMultivaluedJavaSoftLinkType()»>
+			     «ELSE»
+			         «((JMM::SoftLink)attr).getJavaSoftLinkType()»
+			     «ENDIF»
+			   «ELSEIF attr.association != null»
+				   «IF attr.isMultivalued()»
+				   «attr.fqn()»
+				   «ELSE»
+				   «attr.type.fqn()»
+				   «ENDIF»
+			   «ELSE»
+			       «attr.fqn()»«IF attr.isMultivalued()»[]«ENDIF»
+			   «ENDIF» 
+			   «attr.asParameter()»
+		   «ENDFOREACH») {
+	
+		    «name».Builder lBuilder = «name».builder();
+           «FOREACH this.getAllAttributesForOfOperation() AS attr»
+           lBuilder.«attr.asSetter()»(«attr.asParameter()»);
+           «ENDFOREACH»
+		    return lBuilder.build();
+	  }
+    «ENDIF»
+«ENDDEFINE»
+
 «DEFINE GenerateEqualsAndHashCode(String className) FOR uml::Class»
   «REM»equals() and hashCode() can only be generated in case of non bi-directional assocations«ENDREM»
   «IF this.hasBidirectionalAssociation() == false»

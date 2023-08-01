@@ -137,6 +137,42 @@ public class SimpleDatatypeServiceObject implements ServiceObject, Identifiable<
   }
 
   /**
+   * Convenience method to create new instance of class SimpleDatatypeServiceObject.
+   *
+   *
+   * @param pMyBoolean Value to which {@link #myBoolean} should be set.
+   *
+   * @param pMyByte Value to which {@link #myByte} should be set.
+   *
+   * @param pMyChar Value to which {@link #myChar} should be set.
+   *
+   * @param pMyDouble Value to which {@link #myDouble} should be set.
+   *
+   * @param pMyFloat Value to which {@link #myFloat} should be set.
+   *
+   * @param pMyLong Value to which {@link #myLong} should be set.
+   *
+   * @param pMyShort Value to which {@link #myShort} should be set.
+   *
+   * @param pMyByteArray Value to which {@link #myByteArray} should be set.
+   *
+   * @return {@link SimpleDatatypeServiceObject}
+   */
+  public static SimpleDatatypeServiceObject of( boolean pMyBoolean, byte pMyByte, char pMyChar, double pMyDouble,
+      float pMyFloat, long pMyLong, short pMyShort, byte[] pMyByteArray ) {
+    SimpleDatatypeServiceObject.Builder lBuilder = SimpleDatatypeServiceObject.builder();
+    lBuilder.setMyBoolean(pMyBoolean);
+    lBuilder.setMyByte(pMyByte);
+    lBuilder.setMyChar(pMyChar);
+    lBuilder.setMyDouble(pMyDouble);
+    lBuilder.setMyFloat(pMyFloat);
+    lBuilder.setMyLong(pMyLong);
+    lBuilder.setMyShort(pMyShort);
+    lBuilder.setMyByteArray(pMyByteArray);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>SimpleDatatypeServiceObject</code>.
    */
   public static class Builder {

@@ -149,6 +149,23 @@ public abstract class SubclassWithoutIDnMethodBase extends IdentifiableServiceOb
   }
 
   /**
+   * Convenience method to create new instance of class SubclassWithoutIDnMethod.
+   *
+   *
+   * @param pHello Value to which {@link #hello} should be set.
+   *
+   * @param pAttr Value to which {@link #attr} should be set.
+   *
+   * @return {@link com.anaptecs.jeaf.junit.core.SubclassWithoutIDnMethod}
+   */
+  public static SubclassWithoutIDnMethod of( Integer pHello, Boolean pAttr ) {
+    SubclassWithoutIDnMethod.Builder lBuilder = SubclassWithoutIDnMethod.builder();
+    lBuilder.setHello(pHello);
+    lBuilder.setAttr(pAttr);
+    return lBuilder.build();
+  }
+
+  /**
    */
   public abstract void doLess( );
 

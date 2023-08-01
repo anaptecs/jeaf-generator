@@ -185,6 +185,20 @@ public abstract class POJOWithIDnMethodBase implements Identifiable<ObjectID> {
   }
 
   /**
+   * Convenience method to create new instance of class POJOWithIDnMethod.
+   *
+   *
+   * @param pAttr Value to which {@link #attr} should be set.
+   *
+   * @return {@link com.anaptecs.jeaf.junit.pojo.POJOWithIDnMethod}
+   */
+  public static POJOWithIDnMethod of( Double pAttr ) {
+    POJOWithIDnMethod.Builder lBuilder = POJOWithIDnMethod.builder();
+    lBuilder.setAttr(pAttr);
+    return lBuilder.build();
+  }
+
+  /**
    * @return boolean
    */
   public abstract boolean doSomethingFunny( );

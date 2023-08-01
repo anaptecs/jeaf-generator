@@ -136,6 +136,49 @@ public class DateHeaderParamsBean {
   }
 
   /**
+   * Convenience method to create new instance of class DateHeaderParamsBean.
+   *
+   *
+   * @param pOffsetDateTime Value to which {@link #offsetDateTime} should be set.
+   *
+   * @param pOffsetTime Value to which {@link #offsetTime} should be set.
+   *
+   * @param pLocalDateTime Value to which {@link #localDateTime} should be set.
+   *
+   * @param pLocalTime Value to which {@link #localTime} should be set.
+   *
+   * @param pLocalDate Value to which {@link #localDate} should be set.
+   *
+   * @param pUtilDate Value to which {@link #utilDate} should be set.
+   *
+   * @param pCalendar Value to which {@link #calendar} should be set.
+   *
+   * @param pSqlTimestamp Value to which {@link #sqlTimestamp} should be set.
+   *
+   * @param pSqlTime Value to which {@link #sqlTime} should be set.
+   *
+   * @param pSqlDate Value to which {@link #sqlDate} should be set.
+   *
+   * @return {@link DateHeaderParamsBean}
+   */
+  public static DateHeaderParamsBean of( OffsetDateTime pOffsetDateTime, OffsetTime pOffsetTime,
+      LocalDateTime pLocalDateTime, LocalTime pLocalTime, LocalDate pLocalDate, java.util.Date pUtilDate,
+      Calendar pCalendar, Timestamp pSqlTimestamp, Time pSqlTime, Date pSqlDate ) {
+    DateHeaderParamsBean.Builder lBuilder = DateHeaderParamsBean.builder();
+    lBuilder.setOffsetDateTime(pOffsetDateTime);
+    lBuilder.setOffsetTime(pOffsetTime);
+    lBuilder.setLocalDateTime(pLocalDateTime);
+    lBuilder.setLocalTime(pLocalTime);
+    lBuilder.setLocalDate(pLocalDate);
+    lBuilder.setUtilDate(pUtilDate);
+    lBuilder.setCalendar(pCalendar);
+    lBuilder.setSqlTimestamp(pSqlTimestamp);
+    lBuilder.setSqlTime(pSqlTime);
+    lBuilder.setSqlDate(pSqlDate);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>DateHeaderParamsBean</code>.
    */
   public static class Builder {

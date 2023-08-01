@@ -79,6 +79,23 @@ public class WeirdBooking {
   }
 
   /**
+   * Convenience method to create new instance of class WeirdBooking.
+   *
+   *
+   * @param pBooking Value to which {@link #booking} should be set.
+   *
+   * @param pAdditionalBookings Value to which {@link #additionalBookings} should be set.
+   *
+   * @return {@link WeirdBooking}
+   */
+  public static WeirdBooking of( ComplexBookingID pBooking, List<ComplexBookingID> pAdditionalBookings ) {
+    WeirdBooking.Builder lBuilder = WeirdBooking.builder();
+    lBuilder.setBooking(pBooking);
+    lBuilder.setAdditionalBookings(pAdditionalBookings);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>WeirdBooking</code>.
    */
   public static class Builder {

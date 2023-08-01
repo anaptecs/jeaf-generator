@@ -61,6 +61,23 @@ public class ParentBeanParamType {
   }
 
   /**
+   * Convenience method to create new instance of class ParentBeanParamType.
+   *
+   *
+   * @param pNovaKey Value to which {@link #novaKey} should be set.
+   *
+   * @param pTkID Value to which {@link #tkID} should be set.
+   *
+   * @return {@link ParentBeanParamType}
+   */
+  public static ParentBeanParamType of( String pNovaKey, String pTkID ) {
+    ParentBeanParamType.Builder lBuilder = ParentBeanParamType.builder();
+    lBuilder.setNovaKey(pNovaKey);
+    lBuilder.setTkID(pTkID);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>ParentBeanParamType</code>.
    */
   public static class Builder {

@@ -96,6 +96,26 @@ public class ChildB extends ParentClass {
   }
 
   /**
+   * Convenience method to create new instance of class ChildB.
+   *
+   *
+   * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
+   *
+   * @param pChildBAttribute Value to which {@link #childBAttribute} should be set.
+   *
+   * @param pComposition Value to which {@link #composition} should be set.
+   *
+   * @return {@link ChildB}
+   */
+  public static ChildB of( String pParentAttribute, boolean[] pChildBAttribute, Set<ParentClass> pComposition ) {
+    ChildB.Builder lBuilder = ChildB.builder();
+    lBuilder.setParentAttribute(pParentAttribute);
+    lBuilder.setChildBAttribute(pChildBAttribute);
+    lBuilder.setComposition(pComposition);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>ChildB</code>.
    */
   public static class Builder extends ParentClass.Builder {

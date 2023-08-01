@@ -80,6 +80,23 @@ public class ValidationTestObject implements ServiceObject {
   }
 
   /**
+   * Convenience method to create new instance of class ValidationTestObject.
+   *
+   *
+   * @param pMyEMail Value to which {@link #myEMail} should be set.
+   *
+   * @param pDateOfBirth Value to which {@link #dateOfBirth} should be set.
+   *
+   * @return {@link ValidationTestObject}
+   */
+  public static ValidationTestObject of( String pMyEMail, Calendar pDateOfBirth ) {
+    ValidationTestObject.Builder lBuilder = ValidationTestObject.builder();
+    lBuilder.setMyEMail(pMyEMail);
+    lBuilder.setDateOfBirth(pDateOfBirth);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>ValidationTestObject</code>.
    */
   public static class Builder {

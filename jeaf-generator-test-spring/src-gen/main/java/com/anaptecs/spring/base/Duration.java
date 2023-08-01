@@ -78,6 +78,23 @@ public class Duration {
   }
 
   /**
+   * Convenience method to create new instance of class Duration.
+   *
+   *
+   * @param pValue Value to which {@link #value} should be set.
+   *
+   * @param pTimeUnit Value to which {@link #timeUnit} should be set.
+   *
+   * @return {@link Duration}
+   */
+  public static Duration of( int pValue, TimeUnit pTimeUnit ) {
+    Duration.Builder lBuilder = Duration.builder();
+    lBuilder.setValue(pValue);
+    lBuilder.setTimeUnit(pTimeUnit);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>Duration</code>.
    */
   public static class Builder {

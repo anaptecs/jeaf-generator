@@ -69,6 +69,23 @@ public class BusinessA extends TechParent {
   }
 
   /**
+   * Convenience method to create new instance of class BusinessA.
+   *
+   *
+   * @param pTechAttribute Value to which {@link #techAttribute} should be set.
+   *
+   * @param pBusinessAttribute Value to which {@link #businessAttribute} should be set.
+   *
+   * @return {@link BusinessA}
+   */
+  public static BusinessA of( String pTechAttribute, int pBusinessAttribute ) {
+    BusinessA.Builder lBuilder = BusinessA.builder();
+    lBuilder.setTechAttribute(pTechAttribute);
+    lBuilder.setBusinessAttribute(pBusinessAttribute);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>BusinessA</code>.
    */
   public static class Builder extends TechParent.Builder {

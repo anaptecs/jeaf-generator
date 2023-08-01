@@ -94,6 +94,52 @@ public class ChildAA extends ChildA {
   }
 
   /**
+   * Convenience method to create new instance of class ChildAA.
+   *
+   *
+   * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
+   *
+   * @param pIbans Value to which {@link #ibans} should be set.
+   *
+   * @param pTheBankAccount Value to which {@link #theBankAccount} should be set.
+   *
+   * @param pLegacyBankAccounts Value to which {@link #legacyBankAccounts} should be set.
+   *
+   * @param pChildAAttribute Value to which {@link #childAAttribute} should be set.
+   *
+   * @param pChildAAAttribute Value to which {@link #childAAAttribute} should be set.
+   *
+   * @param pSizedArray Value to which {@link #sizedArray} should be set.
+   *
+   * @param pRequiredArray Value to which {@link #requiredArray} should be set.
+   *
+   * @param pBigIntegerCode Value to which {@link #bigIntegerCode} should be set.
+   *
+   * @param pIntegerCode Value to which {@link #integerCode} should be set.
+   *
+   * @param pCodes Value to which {@link #codes} should be set.
+   *
+   * @return {@link ChildAA}
+   */
+  public static ChildAA of( String pParentAttribute, Set<IBAN> pIbans, BankAccount pTheBankAccount,
+      List<BankAccount> pLegacyBankAccounts, int pChildAAttribute, byte pChildAAAttribute, int[] pSizedArray,
+      String[] pRequiredArray, BigIntegerCode pBigIntegerCode, IntegerCodeType pIntegerCode, IntegerCode[] pCodes ) {
+    ChildAA.Builder lBuilder = ChildAA.builder();
+    lBuilder.setParentAttribute(pParentAttribute);
+    lBuilder.setIbans(pIbans);
+    lBuilder.setTheBankAccount(pTheBankAccount);
+    lBuilder.setLegacyBankAccounts(pLegacyBankAccounts);
+    lBuilder.setChildAAttribute(pChildAAttribute);
+    lBuilder.setChildAAAttribute(pChildAAAttribute);
+    lBuilder.setSizedArray(pSizedArray);
+    lBuilder.setRequiredArray(pRequiredArray);
+    lBuilder.setBigIntegerCode(pBigIntegerCode);
+    lBuilder.setIntegerCode(pIntegerCode);
+    lBuilder.setCodes(pCodes);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>ChildAA</code>.
    */
   @Deprecated

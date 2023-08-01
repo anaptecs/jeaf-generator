@@ -73,6 +73,33 @@ public class ImmutableChildPOJO extends ImmutablePOJOParent {
   }
 
   /**
+   * Convenience method to create new instance of class ImmutableChildPOJO.
+   *
+   *
+   * @param pAbtractAttr Value to which {@link #abtractAttr} should be set.
+   *
+   * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
+   *
+   * @param pAnotherParentAttribute Value to which {@link #anotherParentAttribute} should be set.
+   *
+   * @param pChildAttribute Value to which {@link #childAttribute} should be set.
+   *
+   * @param pAnotherChildAttribute Value to which {@link #anotherChildAttribute} should be set.
+   *
+   * @return {@link ImmutableChildPOJO}
+   */
+  public static ImmutableChildPOJO of( String pAbtractAttr, String pParentAttribute, Integer pAnotherParentAttribute,
+      String pChildAttribute, Double pAnotherChildAttribute ) {
+    ImmutableChildPOJO.Builder lBuilder = ImmutableChildPOJO.builder();
+    lBuilder.setAbtractAttr(pAbtractAttr);
+    lBuilder.setParentAttribute(pParentAttribute);
+    lBuilder.setAnotherParentAttribute(pAnotherParentAttribute);
+    lBuilder.setChildAttribute(pChildAttribute);
+    lBuilder.setAnotherChildAttribute(pAnotherChildAttribute);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>ImmutableChildPOJO</code>.
    */
   public static class Builder extends ImmutablePOJOParent.Builder {

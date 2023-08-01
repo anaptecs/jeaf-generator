@@ -84,6 +84,23 @@ public class MoneyAmount {
   }
 
   /**
+   * Convenience method to create new instance of class MoneyAmount.
+   *
+   *
+   * @param pAmount Value to which {@link #amount} should be set.
+   *
+   * @param pCurrencyCode Value to which {@link #currencyCode} should be set.
+   *
+   * @return {@link MoneyAmount}
+   */
+  public static MoneyAmount of( BigDecimal pAmount, CurrencyCode pCurrencyCode ) {
+    MoneyAmount.Builder lBuilder = MoneyAmount.builder();
+    lBuilder.setAmount(pAmount);
+    lBuilder.setCurrencyCode(pCurrencyCode);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>MoneyAmount</code>.
    */
   public static class Builder {

@@ -99,6 +99,42 @@ public class UICStop extends Stop {
   }
 
   /**
+   * Convenience method to create new instance of class UICStop.
+   *
+   *
+   * @param pName Value to which {@link #name} should be set.
+   *
+   * @param pLinks Value to which {@link #links} should be set.
+   *
+   * @param pIndex Value to which {@link #index} should be set.
+   *
+   * @param pTheSoftLink Value to which {@link #theSoftLink} should be set.
+   *
+   * @param pUicCode Value to which {@link #uicCode} should be set.
+   *
+   * @param pPriority Value to which {@link #priority} should be set.
+   *
+   * @param pCode Value to which {@link #code} should be set.
+   *
+   * @param pIndex2 Value to which {@link #index2} should be set.
+   *
+   * @return {@link UICStop}
+   */
+  public static UICStop of( String pName, List<LinkObject> pLinks, byte pIndex, SoftLink pTheSoftLink, String pUicCode,
+      int pPriority, long pCode, byte pIndex2 ) {
+    UICStop.Builder lBuilder = UICStop.builder();
+    lBuilder.setName(pName);
+    lBuilder.setLinks(pLinks);
+    lBuilder.setIndex(pIndex);
+    lBuilder.setTheSoftLink(pTheSoftLink);
+    lBuilder.setUicCode(pUicCode);
+    lBuilder.setPriority(pPriority);
+    lBuilder.setCode(pCode);
+    lBuilder.setIndex2(pIndex2);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>UICStop</code>.
    */
   public static class Builder extends Stop.Builder {

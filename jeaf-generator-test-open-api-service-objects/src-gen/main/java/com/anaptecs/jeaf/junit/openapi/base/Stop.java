@@ -104,6 +104,29 @@ public class Stop implements ServiceObject {
   }
 
   /**
+   * Convenience method to create new instance of class Stop.
+   *
+   *
+   * @param pName Value to which {@link #name} should be set.
+   *
+   * @param pLinks Value to which {@link #links} should be set.
+   *
+   * @param pIndex Value to which {@link #index} should be set.
+   *
+   * @param pTheSoftLink Value to which {@link #theSoftLink} should be set.
+   *
+   * @return {@link Stop}
+   */
+  public static Stop of( String pName, List<LinkObject> pLinks, byte pIndex, SoftLink pTheSoftLink ) {
+    Stop.Builder lBuilder = Stop.builder();
+    lBuilder.setName(pName);
+    lBuilder.setLinks(pLinks);
+    lBuilder.setIndex(pIndex);
+    lBuilder.setTheSoftLink(pTheSoftLink);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>Stop</code>.
    */
   public static class Builder {

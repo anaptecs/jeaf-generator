@@ -97,6 +97,26 @@ public class ResponsibilityType implements ServiceObject, Identifiable<ServiceOb
   }
 
   /**
+   * Convenience method to create new instance of class ResponsibilityType.
+   *
+   *
+   * @param pType Value to which {@link #type} should be set.
+   *
+   * @param pTypeChar Value to which {@link #typeChar} should be set.
+   *
+   * @param pSortorder Value to which {@link #sortorder} should be set.
+   *
+   * @return {@link ResponsibilityType}
+   */
+  public static ResponsibilityType of( String pType, Character pTypeChar, Byte pSortorder ) {
+    ResponsibilityType.Builder lBuilder = ResponsibilityType.builder();
+    lBuilder.setType(pType);
+    lBuilder.setTypeChar(pTypeChar);
+    lBuilder.setSortorder(pSortorder);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>ResponsibilityType</code>.
    */
   public static class Builder {

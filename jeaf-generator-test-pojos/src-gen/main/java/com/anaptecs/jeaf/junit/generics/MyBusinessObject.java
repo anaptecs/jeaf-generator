@@ -63,6 +63,20 @@ public class MyBusinessObject {
   }
 
   /**
+   * Convenience method to create new instance of class MyBusinessObject.
+   *
+   *
+   * @param pMyBusinessAttribute Value to which {@link #myBusinessAttribute} should be set.
+   *
+   * @return {@link MyBusinessObject}
+   */
+  public static MyBusinessObject of( int pMyBusinessAttribute ) {
+    MyBusinessObject.Builder lBuilder = MyBusinessObject.builder();
+    lBuilder.setMyBusinessAttribute(pMyBusinessAttribute);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>MyBusinessObject</code>.
    */
   public static class Builder {

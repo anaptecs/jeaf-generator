@@ -94,6 +94,33 @@ public class Channel {
   }
 
   /**
+   * Convenience method to create new instance of class Channel.
+   *
+   *
+   * @param pChannelType Value to which {@link #channelType} should be set.
+   *
+   * @param pChannelCode Value to which {@link #channelCode} should be set.
+   *
+   * @param pCode Value to which {@link #code} should be set.
+   *
+   * @param pSelfServiceChannel Value to which {@link #selfServiceChannel} should be set.
+   *
+   * @param pReseller Value to which {@link #reseller} should be set.
+   *
+   * @return {@link Channel}
+   */
+  public static Channel of( ChannelType pChannelType, ChannelCode pChannelCode, int pCode, boolean pSelfServiceChannel,
+      Reseller pReseller ) {
+    Channel.Builder lBuilder = Channel.builder();
+    lBuilder.setChannelType(pChannelType);
+    lBuilder.setChannelCode(pChannelCode);
+    lBuilder.setCode(pCode);
+    lBuilder.setSelfServiceChannel(pSelfServiceChannel);
+    lBuilder.setReseller(pReseller);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>Channel</code>.
    */
   public static class Builder {

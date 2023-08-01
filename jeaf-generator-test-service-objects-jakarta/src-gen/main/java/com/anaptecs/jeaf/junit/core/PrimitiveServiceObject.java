@@ -120,6 +120,42 @@ public class PrimitiveServiceObject implements ServiceObject {
   }
 
   /**
+   * Convenience method to create new instance of class PrimitiveServiceObject.
+   *
+   *
+   * @param pABoolean Value to which {@link #aBoolean} should be set.
+   *
+   * @param pAByte Value to which {@link #aByte} should be set.
+   *
+   * @param pAShort Value to which {@link #aShort} should be set.
+   *
+   * @param pAInt Value to which {@link #aInt} should be set.
+   *
+   * @param pALong Value to which {@link #aLong} should be set.
+   *
+   * @param pAFloat Value to which {@link #aFloat} should be set.
+   *
+   * @param pADouble Value to which {@link #aDouble} should be set.
+   *
+   * @param pAChar Value to which {@link #aChar} should be set.
+   *
+   * @return {@link PrimitiveServiceObject}
+   */
+  public static PrimitiveServiceObject of( boolean pABoolean, byte pAByte, short pAShort, int pAInt, long pALong,
+      float pAFloat, double pADouble, char pAChar ) {
+    PrimitiveServiceObject.Builder lBuilder = PrimitiveServiceObject.builder();
+    lBuilder.setABoolean(pABoolean);
+    lBuilder.setAByte(pAByte);
+    lBuilder.setAShort(pAShort);
+    lBuilder.setAInt(pAInt);
+    lBuilder.setALong(pALong);
+    lBuilder.setAFloat(pAFloat);
+    lBuilder.setADouble(pADouble);
+    lBuilder.setAChar(pAChar);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>PrimitiveServiceObject</code>.
    */
   public static class Builder {

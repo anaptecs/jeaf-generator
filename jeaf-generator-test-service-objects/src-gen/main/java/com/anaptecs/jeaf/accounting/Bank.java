@@ -112,6 +112,26 @@ public class Bank implements ServiceObject, Identifiable<ServiceObjectID> {
   }
 
   /**
+   * Convenience method to create new instance of class Bank.
+   *
+   *
+   * @param pName Value to which {@link #name} should be set.
+   *
+   * @param pCode Value to which {@link #code} should be set.
+   *
+   * @param pType Value to which {@link #type} should be set.
+   *
+   * @return {@link Bank}
+   */
+  public static Bank of( String pName, Long pCode, BankType pType ) {
+    Bank.Builder lBuilder = Bank.builder();
+    lBuilder.setName(pName);
+    lBuilder.setCode(pCode);
+    lBuilder.setType(pType);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>Bank</code>.
    */
   public static class Builder {

@@ -53,6 +53,17 @@ public class InputSubclass extends Input {
   }
 
   /**
+   * Convenience method to create new instance of class InputSubclass.
+   *
+   *
+   * @return {@link InputSubclass}
+   */
+  public static InputSubclass of( ) {
+    InputSubclass.Builder lBuilder = InputSubclass.builder();
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>InputSubclass</code>.
    */
   public static class Builder extends Input.Builder {

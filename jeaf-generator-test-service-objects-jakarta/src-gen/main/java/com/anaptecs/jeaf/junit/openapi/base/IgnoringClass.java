@@ -64,6 +64,20 @@ public class IgnoringClass implements ServiceObject {
   }
 
   /**
+   * Convenience method to create new instance of class IgnoringClass.
+   *
+   *
+   * @param pAge Value to which {@link #age} should be set.
+   *
+   * @return {@link IgnoringClass}
+   */
+  public static IgnoringClass of( Integer pAge ) {
+    IgnoringClass.Builder lBuilder = IgnoringClass.builder();
+    lBuilder.setAge(pAge);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>IgnoringClass</code>.
    */
   public static class Builder {

@@ -78,6 +78,17 @@ public abstract class YetAnotherPOJOBase {
   }
 
   /**
+   * Convenience method to create new instance of class YetAnotherPOJO.
+   *
+   *
+   * @return {@link com.anaptecs.jeaf.junit.generics.YetAnotherPOJO}
+   */
+  public static YetAnotherPOJO of( ) {
+    YetAnotherPOJO.Builder lBuilder = YetAnotherPOJO.builder();
+    return lBuilder.build();
+  }
+
+  /**
    * @return {@link GenericResponsePOJO<MyBusinessObject>}
    */
   public abstract GenericResponsePOJO<MyBusinessObject> getResponse( );

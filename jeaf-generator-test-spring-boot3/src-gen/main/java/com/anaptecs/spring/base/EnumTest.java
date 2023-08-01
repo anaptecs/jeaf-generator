@@ -70,6 +70,23 @@ public class EnumTest {
   }
 
   /**
+   * Convenience method to create new instance of class EnumTest.
+   *
+   *
+   * @param pProperty Value to which {@link #property} should be set.
+   *
+   * @param pEnumRef Value to which {@link #enumRef} should be set.
+   *
+   * @return {@link EnumTest}
+   */
+  public static EnumTest of( ExtensibleEnum pProperty, ExtensibleEnum pEnumRef ) {
+    EnumTest.Builder lBuilder = EnumTest.builder();
+    lBuilder.setProperty(pProperty);
+    lBuilder.setEnumRef(pEnumRef);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>EnumTest</code>.
    */
   public static class Builder {

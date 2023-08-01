@@ -78,6 +78,29 @@ public class ChildPOJO extends ParentPOJO {
   }
 
   /**
+   * Convenience method to create new instance of class ChildPOJO.
+   *
+   *
+   * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
+   *
+   * @param pWeirdAttribute Value to which {@link #weirdAttribute} should be set.
+   *
+   * @param pHello Value to which {@link #hello} should be set.
+   *
+   * @param pChildAttribute Value to which {@link #childAttribute} should be set.
+   *
+   * @return {@link ChildPOJO}
+   */
+  public static ChildPOJO of( String pParentAttribute, byte pWeirdAttribute, String pHello, Integer pChildAttribute ) {
+    ChildPOJO.Builder lBuilder = ChildPOJO.builder();
+    lBuilder.setParentAttribute(pParentAttribute);
+    lBuilder.setWeirdAttribute(pWeirdAttribute);
+    lBuilder.setHello(pHello);
+    lBuilder.setChildAttribute(pChildAttribute);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>ChildPOJO</code>.
    */
   @Deprecated

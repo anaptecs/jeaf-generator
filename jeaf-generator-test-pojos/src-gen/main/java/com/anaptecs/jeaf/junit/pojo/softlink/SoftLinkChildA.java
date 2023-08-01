@@ -55,6 +55,26 @@ public class SoftLinkChildA extends SoftLinkParent {
   }
 
   /**
+   * Convenience method to create new instance of class SoftLinkChildA.
+   *
+   *
+   * @param pPartners Value to which {@link #partners} should be set.
+   *
+   * @param pThePartner Value to which {@link #thePartner} should be set.
+   *
+   * @param pReadonlyPartner Value to which {@link #readonlyPartner} should be set.
+   *
+   * @return {@link SoftLinkChildA}
+   */
+  public static SoftLinkChildA of( Set<SoftLinkID> pPartners, SoftLinkID pThePartner, SoftLinkID pReadonlyPartner ) {
+    SoftLinkChildA.Builder lBuilder = SoftLinkChildA.builder();
+    lBuilder.setPartners(pPartners);
+    lBuilder.setThePartner(pThePartner);
+    lBuilder.setReadonlyPartner(pReadonlyPartner);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>SoftLinkChildA</code>.
    */
   public static class Builder extends SoftLinkParent.Builder {

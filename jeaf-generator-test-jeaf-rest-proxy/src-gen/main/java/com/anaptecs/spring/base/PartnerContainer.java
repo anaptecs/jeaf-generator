@@ -81,6 +81,20 @@ public class PartnerContainer implements Serializable {
   }
 
   /**
+   * Convenience method to create new instance of class PartnerContainer.
+   *
+   *
+   * @param pPartners Value to which {@link #partners} should be set.
+   *
+   * @return {@link PartnerContainer}
+   */
+  public static PartnerContainer of( List<Partner> pPartners ) {
+    PartnerContainer.Builder lBuilder = PartnerContainer.builder();
+    lBuilder.setPartners(pPartners);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>PartnerContainer</code>.
    */
   public static class Builder {

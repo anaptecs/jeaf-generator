@@ -91,6 +91,43 @@ public class HeavyDataTypeUser implements ServiceObject {
   }
 
   /**
+   * Convenience method to create new instance of class HeavyDataTypeUser.
+   *
+   *
+   * @param pBooleanCode Value to which {@link #booleanCode} should be set.
+   *
+   * @param pByteCode Value to which {@link #byteCode} should be set.
+   *
+   * @param pShortCode Value to which {@link #shortCode} should be set.
+   *
+   * @param pIntegerCode Value to which {@link #integerCode} should be set.
+   *
+   * @param pFloatCode Value to which {@link #floatCode} should be set.
+   *
+   * @param pDoubleCode Value to which {@link #doubleCode} should be set.
+   *
+   * @param pBigInegerCode Value to which {@link #bigInegerCode} should be set.
+   *
+   * @param pBigDecimalCode Value to which {@link #bigDecimalCode} should be set.
+   *
+   * @return {@link HeavyDataTypeUser}
+   */
+  public static HeavyDataTypeUser of( BooleanCode pBooleanCode, ByteCode pByteCode, ShortCode pShortCode,
+      IntegerCode pIntegerCode, FloatCode pFloatCode, DoubleCode pDoubleCode, BigIntegerCode pBigInegerCode,
+      BigDecimalCode pBigDecimalCode ) {
+    HeavyDataTypeUser.Builder lBuilder = HeavyDataTypeUser.builder();
+    lBuilder.setBooleanCode(pBooleanCode);
+    lBuilder.setByteCode(pByteCode);
+    lBuilder.setShortCode(pShortCode);
+    lBuilder.setIntegerCode(pIntegerCode);
+    lBuilder.setFloatCode(pFloatCode);
+    lBuilder.setDoubleCode(pDoubleCode);
+    lBuilder.setBigInegerCode(pBigInegerCode);
+    lBuilder.setBigDecimalCode(pBigDecimalCode);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>HeavyDataTypeUser</code>.
    */
   public static class Builder {

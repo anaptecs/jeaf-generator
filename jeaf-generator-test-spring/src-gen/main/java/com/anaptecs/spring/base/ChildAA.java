@@ -83,6 +83,33 @@ public class ChildAA extends ChildA {
   }
 
   /**
+   * Convenience method to create new instance of class ChildAA.
+   *
+   *
+   * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
+   *
+   * @param pChildAAttribute Value to which {@link #childAAttribute} should be set.
+   *
+   * @param pChildAAAttribute Value to which {@link #childAAAttribute} should be set.
+   *
+   * @param pSizedArray Value to which {@link #sizedArray} should be set.
+   *
+   * @param pRequiredArray Value to which {@link #requiredArray} should be set.
+   *
+   * @return {@link ChildAA}
+   */
+  public static ChildAA of( String pParentAttribute, int pChildAAttribute, byte pChildAAAttribute, int[] pSizedArray,
+      String[] pRequiredArray ) {
+    ChildAA.Builder lBuilder = ChildAA.builder();
+    lBuilder.setParentAttribute(pParentAttribute);
+    lBuilder.setChildAAttribute(pChildAAttribute);
+    lBuilder.setChildAAAttribute(pChildAAAttribute);
+    lBuilder.setSizedArray(pSizedArray);
+    lBuilder.setRequiredArray(pRequiredArray);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>ChildAA</code>.
    */
   @Deprecated

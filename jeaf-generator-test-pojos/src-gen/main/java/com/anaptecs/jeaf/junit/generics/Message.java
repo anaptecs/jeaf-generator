@@ -64,6 +64,20 @@ public class Message {
   }
 
   /**
+   * Convenience method to create new instance of class Message.
+   *
+   *
+   * @param pText Value to which {@link #text} should be set.
+   *
+   * @return {@link Message}
+   */
+  public static Message of( String pText ) {
+    Message.Builder lBuilder = Message.builder();
+    lBuilder.setText(pText);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>Message</code>.
    */
   public static class Builder {

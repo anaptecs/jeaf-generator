@@ -109,6 +109,36 @@ public class SoftLinkChildB extends SoftLinkParent {
   }
 
   /**
+   * Convenience method to create new instance of class SoftLinkChildB.
+   *
+   *
+   * @param pPartners Value to which {@link #partners} should be set.
+   *
+   * @param pThePartner Value to which {@link #thePartner} should be set.
+   *
+   * @param pReadonlyPartner Value to which {@link #readonlyPartner} should be set.
+   *
+   * @param pHeyBrother Value to which {@link #heyBrother} should be set.
+   *
+   * @param pSoftLinkPartners Value to which {@link #softLinkPartners} should be set.
+   *
+   * @param pOneLink Value to which {@link #oneLink} should be set.
+   *
+   * @return {@link SoftLinkChildB}
+   */
+  public static SoftLinkChildB of( Set<SoftLinkID> pPartners, SoftLinkID pThePartner, SoftLinkID pReadonlyPartner,
+      String pHeyBrother, Set<String> pSoftLinkPartners, SoftLinkID pOneLink ) {
+    SoftLinkChildB.Builder lBuilder = SoftLinkChildB.builder();
+    lBuilder.setPartners(pPartners);
+    lBuilder.setThePartner(pThePartner);
+    lBuilder.setReadonlyPartner(pReadonlyPartner);
+    lBuilder.setHeyBrother(pHeyBrother);
+    lBuilder.setSoftLinkPartners(pSoftLinkPartners);
+    lBuilder.setOneLink(pOneLink);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>SoftLinkChildB</code>.
    */
   public static class Builder extends SoftLinkParent.Builder {

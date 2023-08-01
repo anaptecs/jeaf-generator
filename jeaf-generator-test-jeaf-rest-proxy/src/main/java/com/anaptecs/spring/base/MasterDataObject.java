@@ -7,7 +7,6 @@
 package com.anaptecs.spring.base;
 
 public class MasterDataObject extends MasterDataObjectBase {
-
   /**
    * Default serial version UID.
    */
@@ -43,7 +42,7 @@ public class MasterDataObject extends MasterDataObjectBase {
    * @return {@link Builder} New builder that can be used to create new MasterDataObject objects. The method never
    * returns null.
    */
-  public static Builder builder( MasterDataObject pObject ) {
+  public static Builder builder( com.anaptecs.spring.base.MasterDataObject pObject ) {
     return new Builder(pObject);
   }
 
@@ -83,6 +82,7 @@ public class MasterDataObject extends MasterDataObjectBase {
    * 
    * @return {@link String} Value to which {@link #derivedProperty} is set.
    */
+
   public String getDerivedProperty( ) {
     // TODO Implement method for derived property "derivedProperty".
     return null;
@@ -94,6 +94,7 @@ public class MasterDataObject extends MasterDataObjectBase {
    * @return {@link java.util.List<com.anaptecs.spring.base.DataUnit>} Value to which {@link #derivedDataUnits} is set.
    * The method never returns null and the returned collection is unmodifiable.
    */
+
   public java.util.List<com.anaptecs.spring.base.DataUnit> getDerivedDataUnits( ) {
     // TODO Implement method for derived property "derivedDataUnits".
     return null;
@@ -104,6 +105,7 @@ public class MasterDataObject extends MasterDataObjectBase {
    * 
    * @return {@link com.anaptecs.spring.base.Entity} Value to which {@link #derivedEntity} is set.
    */
+
   public com.anaptecs.spring.base.Entity getDerivedEntity( ) {
     // TODO Implement method for derived property "derivedEntity".
     return null;
@@ -114,6 +116,7 @@ public class MasterDataObject extends MasterDataObjectBase {
    * 
    * @return int Value to which {@link #derivedArray} is set.
    */
+
   public int[] getDerivedArray( ) {
     // TODO Implement method for derived property "derivedArray".
     return null;
@@ -135,6 +138,7 @@ public class MasterDataObject extends MasterDataObjectBase {
    * 
    * @return int Value to which {@link #derivedInt} is set.
    */
+
   public int getDerivedInt( ) {
     // TODO Implement method for derived property "derivedInt".
     return 0;
@@ -145,8 +149,10 @@ public class MasterDataObject extends MasterDataObjectBase {
    * 
    * @return {@link String} Value to which {@link #derivedString} is set.
    */
+
   public String getDerivedString( ) {
     // TODO Implement method for derived property "derivedString".
+
     return null;
   }
 }

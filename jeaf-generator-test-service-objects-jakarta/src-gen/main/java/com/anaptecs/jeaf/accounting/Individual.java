@@ -63,6 +63,36 @@ public class Individual extends Customer {
   }
 
   /**
+   * Convenience method to create new instance of class Individual.
+   *
+   *
+   * @param pActive Value to which {@link #active} should be set.
+   *
+   * @param pStreet Value to which {@link #street} should be set.
+   *
+   * @param pZipCode Value to which {@link #zipCode} should be set.
+   *
+   * @param pCity Value to which {@link #city} should be set.
+   *
+   * @param pCountry Value to which {@link #country} should be set.
+   *
+   * @param pPerson Value to which {@link #person} should be set.
+   *
+   * @return {@link Individual}
+   */
+  public static Individual of( Boolean pActive, String pStreet, Integer pZipCode, String pCity, String pCountry,
+      Person pPerson ) {
+    Individual.Builder lBuilder = Individual.builder();
+    lBuilder.setActive(pActive);
+    lBuilder.setStreet(pStreet);
+    lBuilder.setZipCode(pZipCode);
+    lBuilder.setCity(pCity);
+    lBuilder.setCountry(pCountry);
+    lBuilder.setPerson(pPerson);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>Individual</code>.
    */
   public static class Builder extends Customer.Builder {

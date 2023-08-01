@@ -54,6 +54,20 @@ public class TopoRef extends PlaceRef {
   }
 
   /**
+   * Convenience method to create new instance of class TopoRef.
+   *
+   *
+   * @param pName Value to which {@link #name} should be set.
+   *
+   * @return {@link TopoRef}
+   */
+  public static TopoRef of( String pName ) {
+    TopoRef.Builder lBuilder = TopoRef.builder();
+    lBuilder.setName(pName);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>TopoRef</code>.
    */
   public static class Builder extends PlaceRef.Builder {

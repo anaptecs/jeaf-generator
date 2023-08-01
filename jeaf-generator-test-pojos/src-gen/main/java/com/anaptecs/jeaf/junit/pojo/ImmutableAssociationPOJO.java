@@ -126,6 +126,34 @@ public class ImmutableAssociationPOJO {
   }
 
   /**
+   * Convenience method to create new instance of class ImmutableAssociationPOJO.
+   *
+   *
+   * @param pYetAnotherAttribute Value to which {@link #yetAnotherAttribute} should be set.
+   *
+   * @param pReadonlyAssociation Value to which {@link #readonlyAssociation} should be set.
+   *
+   * @param pImmutableChildPOJO Value to which {@link #immutableChildPOJO} should be set.
+   *
+   * @param pDeprecatedRefs Value to which {@link #deprecatedRefs} should be set.
+   *
+   * @param pDeprecatedRef Value to which {@link #deprecatedRef} should be set.
+   *
+   * @return {@link ImmutableAssociationPOJO}
+   */
+  public static ImmutableAssociationPOJO of( boolean pYetAnotherAttribute,
+      SortedSet<ImmutablePOJO> pReadonlyAssociation, ImmutableChildPOJO pImmutableChildPOJO,
+      Set<ImmutableChildPOJO> pDeprecatedRefs, ChildPOJO pDeprecatedRef ) {
+    ImmutableAssociationPOJO.Builder lBuilder = ImmutableAssociationPOJO.builder();
+    lBuilder.setYetAnotherAttribute(pYetAnotherAttribute);
+    lBuilder.setReadonlyAssociation(pReadonlyAssociation);
+    lBuilder.setImmutableChildPOJO(pImmutableChildPOJO);
+    lBuilder.setDeprecatedRefs(pDeprecatedRefs);
+    lBuilder.setDeprecatedRef(pDeprecatedRef);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>ImmutableAssociationPOJO</code>.
    */
   public static class Builder {

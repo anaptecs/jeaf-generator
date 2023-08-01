@@ -54,6 +54,20 @@ public class TechParent {
   }
 
   /**
+   * Convenience method to create new instance of class TechParent.
+   *
+   *
+   * @param pTechAttribute Value to which {@link #techAttribute} should be set.
+   *
+   * @return {@link TechParent}
+   */
+  public static TechParent of( String pTechAttribute ) {
+    TechParent.Builder lBuilder = TechParent.builder();
+    lBuilder.setTechAttribute(pTechAttribute);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>TechParent</code>.
    */
   public static class Builder {

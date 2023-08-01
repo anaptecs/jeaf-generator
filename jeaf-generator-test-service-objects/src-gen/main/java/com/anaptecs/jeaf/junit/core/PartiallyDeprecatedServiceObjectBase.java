@@ -393,6 +393,33 @@ public abstract class PartiallyDeprecatedServiceObjectBase implements ServiceObj
   }
 
   /**
+   * Convenience method to create new instance of class PartiallyDeprecatedServiceObject.
+   *
+   *
+   * @param pName Value to which {@link #name} should be set.
+   *
+   * @param pOutdated Value to which {@link #outdated} should be set.
+   *
+   * @param pDeprecatedRef Value to which {@link #deprecatedRef} should be set.
+   *
+   * @param pDeprecatedRefs Value to which {@link #deprecatedRefs} should be set.
+   *
+   * @param pReadonlyDefault Value to which {@link #readonlyDefault} should be set.
+   *
+   * @return {@link com.anaptecs.jeaf.junit.core.PartiallyDeprecatedServiceObject}
+   */
+  public static PartiallyDeprecatedServiceObject of( String pName, boolean pOutdated,
+      DeprecatedServiceObject pDeprecatedRef, Set<ValidationTestObject> pDeprecatedRefs, int pReadonlyDefault ) {
+    PartiallyDeprecatedServiceObject.Builder lBuilder = PartiallyDeprecatedServiceObject.builder();
+    lBuilder.setName(pName);
+    lBuilder.setOutdated(pOutdated);
+    lBuilder.setDeprecatedRef(pDeprecatedRef);
+    lBuilder.setDeprecatedRefs(pDeprecatedRefs);
+    lBuilder.setReadonlyDefault(pReadonlyDefault);
+    return lBuilder.build();
+  }
+
+  /**
    */
   @Deprecated
   public abstract void doSomethingDeprecated( );

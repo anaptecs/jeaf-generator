@@ -64,6 +64,17 @@ public class ErrorResponse implements Serializable {
   }
 
   /**
+   * Convenience method to create new instance of class ErrorResponse.
+   *
+   *
+   * @return {@link ErrorResponse}
+   */
+  public static ErrorResponse of( ) {
+    ErrorResponse.Builder lBuilder = ErrorResponse.builder();
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>ErrorResponse</code>.
    */
   public static class Builder {

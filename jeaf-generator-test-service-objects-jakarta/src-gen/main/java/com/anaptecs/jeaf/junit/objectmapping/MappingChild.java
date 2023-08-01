@@ -62,6 +62,23 @@ public class MappingChild extends MappingParent {
   }
 
   /**
+   * Convenience method to create new instance of class MappingChild.
+   *
+   *
+   * @param pName Value to which {@link #name} should be set.
+   *
+   * @param pValue Value to which {@link #value} should be set.
+   *
+   * @return {@link MappingChild}
+   */
+  public static MappingChild of( String pName, int pValue ) {
+    MappingChild.Builder lBuilder = MappingChild.builder();
+    lBuilder.setName(pName);
+    lBuilder.setValue(pValue);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>MappingChild</code>.
    */
   public static class Builder extends MappingParent.Builder {

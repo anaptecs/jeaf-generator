@@ -80,6 +80,26 @@ public class LocalBeanParamType implements ServiceObject {
   }
 
   /**
+   * Convenience method to create new instance of class LocalBeanParamType.
+   *
+   *
+   * @param pLocalKey Value to which {@link #localKey} should be set.
+   *
+   * @param pLocalID Value to which {@link #localID} should be set.
+   *
+   * @param pAuthorization Value to which {@link #authorization} should be set.
+   *
+   * @return {@link LocalBeanParamType}
+   */
+  public static LocalBeanParamType of( String pLocalKey, String pLocalID, String pAuthorization ) {
+    LocalBeanParamType.Builder lBuilder = LocalBeanParamType.builder();
+    lBuilder.setLocalKey(pLocalKey);
+    lBuilder.setLocalID(pLocalID);
+    lBuilder.setAuthorization(pAuthorization);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>LocalBeanParamType</code>.
    */
   public static class Builder {

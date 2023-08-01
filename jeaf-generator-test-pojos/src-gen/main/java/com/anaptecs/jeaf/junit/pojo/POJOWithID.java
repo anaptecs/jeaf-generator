@@ -93,6 +93,23 @@ public class POJOWithID implements Identifiable<ObjectID> {
   }
 
   /**
+   * Convenience method to create new instance of class POJOWithID.
+   *
+   *
+   * @param pAttr Value to which {@link #attr} should be set.
+   *
+   * @param pName Value to which {@link #name} should be set.
+   *
+   * @return {@link POJOWithID}
+   */
+  public static POJOWithID of( Double pAttr, String pName ) {
+    POJOWithID.Builder lBuilder = POJOWithID.builder();
+    lBuilder.setAttr(pAttr);
+    lBuilder.setName(pName);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>POJOWithID</code>.
    */
   public static class Builder {

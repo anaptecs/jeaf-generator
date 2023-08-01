@@ -152,6 +152,39 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
   }
 
   /**
+   * Convenience method to create new instance of class Person.
+   *
+   *
+   * @param pName Value to which {@link #name} should be set.
+   *
+   * @param pFirstName Value to which {@link #firstName} should be set.
+   *
+   * @param pDateOfBirth Value to which {@link #dateOfBirth} should be set.
+   *
+   * @param pAccounts Value to which {@link #accounts} should be set.
+   *
+   * @param pCustomer Value to which {@link #customer} should be set.
+   *
+   * @param pAge Value to which {@link #age} should be set.
+   *
+   * @param pDisplayName Value to which {@link #displayName} should be set.
+   *
+   * @return {@link Person}
+   */
+  public static Person of( String pName, String pFirstName, Calendar pDateOfBirth, Set<Account> pAccounts,
+      Individual pCustomer, Integer pAge, String pDisplayName ) {
+    Person.Builder lBuilder = Person.builder();
+    lBuilder.setName(pName);
+    lBuilder.setFirstName(pFirstName);
+    lBuilder.setDateOfBirth(pDateOfBirth);
+    lBuilder.setAccounts(pAccounts);
+    lBuilder.setCustomer(pCustomer);
+    lBuilder.setAge(pAge);
+    lBuilder.setDisplayName(pDisplayName);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>Person</code>.
    */
   public static class Builder {

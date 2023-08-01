@@ -122,6 +122,36 @@ public class Booking implements ServiceObject {
   }
 
   /**
+   * Convenience method to create new instance of class Booking.
+   *
+   *
+   * @param pAmount Value to which {@link #amount} should be set.
+   *
+   * @param pSource Value to which {@link #source} should be set.
+   *
+   * @param pTarget Value to which {@link #target} should be set.
+   *
+   * @param pToken Value to which {@link #token} should be set.
+   *
+   * @param pRemitters Value to which {@link #remitters} should be set.
+   *
+   * @param pAccount Value to which {@link #account} should be set.
+   *
+   * @return {@link Booking}
+   */
+  public static Booking of( Double pAmount, Account pSource, Account pTarget, SecurityToken pToken,
+      Set<Person> pRemitters, Account pAccount ) {
+    Booking.Builder lBuilder = Booking.builder();
+    lBuilder.setAmount(pAmount);
+    lBuilder.setSource(pSource);
+    lBuilder.setTarget(pTarget);
+    lBuilder.setToken(pToken);
+    lBuilder.setRemitters(pRemitters);
+    lBuilder.setAccount(pAccount);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>Booking</code>.
    */
   public static class Builder {

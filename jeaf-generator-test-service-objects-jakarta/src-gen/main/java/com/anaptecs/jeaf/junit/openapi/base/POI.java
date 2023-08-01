@@ -135,6 +135,45 @@ public class POI extends Stop {
   }
 
   /**
+   * Convenience method to create new instance of class POI.
+   *
+   *
+   * @param pName Value to which {@link #name} should be set.
+   *
+   * @param pLinks Value to which {@link #links} should be set.
+   *
+   * @param pIndex Value to which {@link #index} should be set.
+   *
+   * @param pTheSoftLink Value to which {@link #theSoftLink} should be set.
+   *
+   * @param pDescription Value to which {@link #description} should be set.
+   *
+   * @param pTheLink Value to which {@link #theLink} should be set.
+   *
+   * @param pEvenMoreLinks Value to which {@link #evenMoreLinks} should be set.
+   *
+   * @param pStops Value to which {@link #stops} should be set.
+   *
+   * @param pBookingCodes Value to which {@link #bookingCodes} should be set.
+   *
+   * @return {@link POI}
+   */
+  public static POI of( String pName, List<LinkObject> pLinks, byte pIndex, SoftLink pTheSoftLink, String pDescription,
+      Long pTheLink, Set<SoftLink> pEvenMoreLinks, Set<UICStop> pStops, Set<BookingCode> pBookingCodes ) {
+    POI.Builder lBuilder = POI.builder();
+    lBuilder.setName(pName);
+    lBuilder.setLinks(pLinks);
+    lBuilder.setIndex(pIndex);
+    lBuilder.setTheSoftLink(pTheSoftLink);
+    lBuilder.setDescription(pDescription);
+    lBuilder.setTheLink(pTheLink);
+    lBuilder.setEvenMoreLinks(pEvenMoreLinks);
+    lBuilder.setStops(pStops);
+    lBuilder.setBookingCodes(pBookingCodes);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>POI</code>.
    */
   public static class Builder extends Stop.Builder {

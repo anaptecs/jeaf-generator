@@ -106,6 +106,26 @@ public class Booking implements Serializable {
   }
 
   /**
+   * Convenience method to create new instance of class Booking.
+   *
+   *
+   * @param pBookingID Value to which {@link #bookingID} should be set.
+   *
+   * @param pCustomerName Value to which {@link #customerName} should be set.
+   *
+   * @param pInventories Value to which {@link #inventories} should be set.
+   *
+   * @return {@link Booking}
+   */
+  public static Booking of( BookingID pBookingID, String pCustomerName, List<InventoryType> pInventories ) {
+    Booking.Builder lBuilder = Booking.builder();
+    lBuilder.setBookingID(pBookingID);
+    lBuilder.setCustomerName(pCustomerName);
+    lBuilder.setInventories(pInventories);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>Booking</code>.
    */
   public static class Builder {

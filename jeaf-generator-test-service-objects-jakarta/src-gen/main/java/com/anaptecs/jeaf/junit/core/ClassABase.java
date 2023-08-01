@@ -246,6 +246,23 @@ public abstract class ClassABase implements ServiceObject, Identifiable<ServiceO
   }
 
   /**
+   * Convenience method to create new instance of class ClassA.
+   *
+   *
+   * @param pName Value to which {@link #name} should be set.
+   *
+   * @param pOneB Value to which {@link #oneB} should be set.
+   *
+   * @return {@link ClassA}
+   */
+  public static ClassA of( String pName, ClassB pOneB ) {
+    ClassA.Builder lBuilder = ClassA.builder();
+    lBuilder.setName(pName);
+    lBuilder.setOneB(pOneB);
+    return lBuilder.build();
+  }
+
+  /**
    * @return {@link Double}
    */
   public abstract Double calculate( );

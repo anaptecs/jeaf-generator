@@ -410,6 +410,30 @@ public abstract class BidirectionalABase {
   }
 
   /**
+   * Convenience method to create new instance of class BidirectionalA.
+   *
+   *
+   * @param pTransientB Value to which {@link #transientB} should be set.
+   *
+   * @param pTransientParent Value to which {@link #transientParent} should be set.
+   *
+   * @param pChild Value to which {@link #child} should be set.
+   *
+   * @param pTransientBs Value to which {@link #transientBs} should be set.
+   *
+   * @return {@link BidirectionalA}
+   */
+  public static BidirectionalA of( BidirectionalB pTransientB, BidirectionalA pTransientParent, BidirectionalA pChild,
+      Set<BidirectionalB> pTransientBs ) {
+    BidirectionalA.Builder lBuilder = BidirectionalA.builder();
+    lBuilder.setTransientB(pTransientB);
+    lBuilder.setTransientParent(pTransientParent);
+    lBuilder.setChild(pChild);
+    lBuilder.setTransientBs(pTransientBs);
+    return lBuilder.build();
+  }
+
+  /**
    * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *

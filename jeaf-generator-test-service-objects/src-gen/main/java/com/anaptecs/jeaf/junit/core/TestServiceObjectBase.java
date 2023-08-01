@@ -380,6 +380,36 @@ public abstract class TestServiceObjectBase implements ServiceObject {
   }
 
   /**
+   * Convenience method to create new instance of class TestServiceObject.
+   *
+   *
+   * @param pKey Value to which {@link #key} should be set.
+   *
+   * @param pInfo Value to which {@link #info} should be set.
+   *
+   * @param pSomeTest Value to which {@link #someTest} should be set.
+   *
+   * @param pDummy1 Value to which {@link #dummy1} should be set.
+   *
+   * @param pDummy2 Value to which {@link #dummy2} should be set.
+   *
+   * @param pDummy3 Value to which {@link #dummy3} should be set.
+   *
+   * @return {@link com.anaptecs.jeaf.junit.core.TestServiceObject}
+   */
+  public static TestServiceObject of( String pKey, String pInfo, int pSomeTest, Double pDummy1, String[] pDummy2,
+      Integer[] pDummy3 ) {
+    TestServiceObject.Builder lBuilder = TestServiceObject.builder();
+    lBuilder.setKey(pKey);
+    lBuilder.setInfo(pInfo);
+    lBuilder.setSomeTest(pSomeTest);
+    lBuilder.setDummy1(pDummy1);
+    lBuilder.setDummy2(pDummy2);
+    lBuilder.setDummy3(pDummy3);
+    return lBuilder.build();
+  }
+
+  /**
    * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *

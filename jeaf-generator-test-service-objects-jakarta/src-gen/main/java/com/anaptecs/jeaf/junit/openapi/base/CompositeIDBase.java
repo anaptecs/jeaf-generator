@@ -166,6 +166,23 @@ public abstract class CompositeIDBase implements ServiceObject {
   }
 
   /**
+   * Convenience method to create new instance of class CompositeID.
+   *
+   *
+   * @param pPrimaryCode Value to which {@link #primaryCode} should be set.
+   *
+   * @param pSecondaryCode Value to which {@link #secondaryCode} should be set.
+   *
+   * @return {@link com.anaptecs.jeaf.junit.openapi.base.CompositeID}
+   */
+  public static CompositeID of( long pPrimaryCode, long pSecondaryCode ) {
+    CompositeID.Builder lBuilder = CompositeID.builder();
+    lBuilder.setPrimaryCode(pPrimaryCode);
+    lBuilder.setSecondaryCode(pSecondaryCode);
+    return lBuilder.build();
+  }
+
+  /**
    * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
