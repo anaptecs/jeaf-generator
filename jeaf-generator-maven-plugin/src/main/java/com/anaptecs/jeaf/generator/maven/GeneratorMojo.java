@@ -842,8 +842,19 @@ public class GeneratorMojo extends AbstractMojo {
   private String restDefaultVoidStatusCode;
 
   /**
+   * Switch defines if an <code>of(...)</code> operation should be generated for POJOs or ServiceObjects. This switch
+   * does not have any impact on so called Data Type. POJOs / ServiceObjects that are also modeled to be an Data Type
+   * will not have an <code>of(...)</code> operation. Instead please use configured parameter
+   * {@link #generateValueOfForOpenAPIDataTypes}.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean generateOfOperation;
+
+  /**
    * Switch defines whether for the Java representation of OpenAPI Data Types as valueOf method should be generated or
-   * not. If this is required depends on the framework that is used for your REST implementation. Currently (Spring Boot
+   * not.
+   * 
+   * If this is required depends on the framework that is used for your REST implementation. Currently (Spring Boot
    * 2.7.* and Jersey 2.35) it is only required in case of Jersey. Default Spring Boot REST implementation does not
    * require that.
    */
@@ -1159,14 +1170,13 @@ public class GeneratorMojo extends AbstractMojo {
     }
     if (generateServiceObjects) {
       lLog.info("Generate Service Objects:                         " + generateServiceObjects);
-      lLog.info("Generate Constants for Attribute Names:           " + generateConstantsForAttributeNames);
-      lLog.info("Generate valueOf(...) for OpenAPI Data Types:     " + generateValueOfForOpenAPIDataTypes);
       lLog.info("Make ServiceObjects immutable:                    " + generateImmutableClasses);
 
       if (generateHeavyExtensibleEnums) {
         lLog.info("Generate heavy style extensible enums:            " + generateHeavyExtensibleEnums);
       }
       lLog.info("Generate Constants for Attribute Names:           " + generateConstantsForAttributeNames);
+      lLog.info("Generate of(...):                                 " + generateOfOperation);
       lLog.info("Generate valueOf(...) for OpenAPI Data Types:     " + generateValueOfForOpenAPIDataTypes);
     }
     if (generateExceptionClasses) {
@@ -1216,6 +1226,7 @@ public class GeneratorMojo extends AbstractMojo {
         lLog.info("Generate heavy style extensible enums:            " + generateHeavyExtensibleEnums);
       }
       lLog.info("Generate Constants for Attribute Names:           " + generateConstantsForAttributeNames);
+      lLog.info("Generate of(...):                                 " + generateOfOperation);
       lLog.info("Generate valueOf(...) for OpenAPI Data Types:     " + generateValueOfForOpenAPIDataTypes);
     }
 
@@ -1544,6 +1555,7 @@ public class GeneratorMojo extends AbstractMojo {
         System.setProperty("switch.gen.target.rest.void.status.code", restDefaultVoidStatusCode.toString());
       }
 
+      System.setProperty("switch.gen.of.operation", generateOfOperation.toString());
       System.setProperty("switch.gen.value.of.data.types", generateValueOfForOpenAPIDataTypes.toString());
 
       System.setProperty("switch.gen.java.generic.soft.link.type", javaGenericSoftLinkType);

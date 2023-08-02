@@ -22,7 +22,7 @@ cached boolean hasTemplateParameter(uml::Class class):
     class.ownedTemplateSignature.ownedParameter.isEmpty == false;
     
 cached boolean generateOfOperationForClass(uml::Class class):
-    true;
+    generateOfOperation();
     
 cached List[uml::Property] getAllAttributesForOfOperation(uml::Class class):
     class.getAllAttributesFromHierarchy().select(e|e.isPropertySuppressed() == false && e.isStatic == false);

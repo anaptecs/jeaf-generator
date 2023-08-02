@@ -266,6 +266,9 @@ cached String getVersionLabelRowName(uml::Class class) :
 cached boolean generatePublicSettersForAssociations() :
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generatePublicSettersForAssociations();
     
+cached boolean generateOfOperation() :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateOfOperation();
+    
 cached boolean generateValueOfForOpenAPIDataTypes() :
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateValueOfForOpenAPIDataTypes();
     
