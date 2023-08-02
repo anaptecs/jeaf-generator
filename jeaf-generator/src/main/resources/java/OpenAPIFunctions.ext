@@ -85,7 +85,7 @@ cached String getOpenAPISoftLinkType(JMM::SoftLink softLink):
 	if (softLink.softLinkType.name == "long" || softLink.softLinkType.name == "Long")
 	then "integer"
 	else if getOpenAPIGenericSoftLinkType() != null
-	   then getOpenAPIGenericSoftLinkType()
+	   then "'" +getOpenAPIGenericSoftLinkType() + "'"
 	   else "string";
     
 cached String getOpenAPISoftLinkFormat(JMM::SoftLink softLink):
