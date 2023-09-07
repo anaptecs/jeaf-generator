@@ -93,18 +93,21 @@ public class SpecialContext extends Context {
    *
    * @param pQueryParam Value to which {@link #queryParam} should be set.
    *
+   * @param pIntCode Value to which {@link #intCode} should be set.
+   *
    * @param pSpecificHeader Value to which {@link #specificHeader} should be set.
    *
    * @return {@link SpecialContext}
    */
   public static SpecialContext of( String pAccessToken, Locale pLanguage, long pResellerID, long pPathParam,
-      String pQueryParam, String pSpecificHeader ) {
+      String pQueryParam, IntegerCodeType pIntCode, String pSpecificHeader ) {
     SpecialContext.Builder lBuilder = SpecialContext.builder();
     lBuilder.setAccessToken(pAccessToken);
     lBuilder.setLanguage(pLanguage);
     lBuilder.setResellerID(pResellerID);
     lBuilder.setPathParam(pPathParam);
     lBuilder.setQueryParam(pQueryParam);
+    lBuilder.setIntCode(pIntCode);
     lBuilder.setSpecificHeader(pSpecificHeader);
     return lBuilder.build();
   }
@@ -195,6 +198,19 @@ public class SpecialContext extends Context {
     public Builder setQueryParam( String pQueryParam ) {
       // Call super class implementation.
       super.setQueryParam(pQueryParam);
+      return this;
+    }
+
+    /**
+     * Method sets attribute {@link #intCode}.<br/>
+     *
+     * @param pIntCode Value to which {@link #intCode} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    @Override
+    public Builder setIntCode( IntegerCodeType pIntCode ) {
+      // Call super class implementation.
+      super.setIntCode(pIntCode);
       return this;
     }
 

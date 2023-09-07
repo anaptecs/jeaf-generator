@@ -46,6 +46,11 @@ public class Context {
    */
   public static final String LANG = "lang";
 
+  /**
+   * Constant for the name of attribute "intCode".
+   */
+  public static final String INTCODE = "intCode";
+
   @NotEmpty
   private String accessToken;
 
@@ -62,6 +67,8 @@ public class Context {
   private String queryParam;
 
   private String lang;
+
+  private IntegerCodeType intCode;
 
   /**
    * Map contains all custom headers that were set on the object.
@@ -88,6 +95,7 @@ public class Context {
     pathParam = pBuilder.pathParam;
     queryParam = pBuilder.queryParam;
     lang = pBuilder.lang;
+    intCode = pBuilder.intCode;
   }
 
   /**
@@ -125,10 +133,12 @@ public class Context {
    *
    * @param pLang Value to which {@link #lang} should be set.
    *
+   * @param pIntCode Value to which {@link #intCode} should be set.
+   *
    * @return {@link Context}
    */
   public static Context of( String pAccessToken, Locale pLanguage, long pResellerID, long pPathParam,
-      String pQueryParam, String pLang ) {
+      String pQueryParam, String pLang, IntegerCodeType pIntCode ) {
     Context.Builder lBuilder = Context.builder();
     lBuilder.setAccessToken(pAccessToken);
     lBuilder.setLanguage(pLanguage);
@@ -136,6 +146,7 @@ public class Context {
     lBuilder.setPathParam(pPathParam);
     lBuilder.setQueryParam(pQueryParam);
     lBuilder.setLang(pLang);
+    lBuilder.setIntCode(pIntCode);
     return lBuilder.build();
   }
 
@@ -160,6 +171,8 @@ public class Context {
 
     private String lang;
 
+    private IntegerCodeType intCode;
+
     /**
      * Use {@link Context#builder()} instead of private constructor to create new builder.
      */
@@ -178,6 +191,7 @@ public class Context {
         pathParam = pObject.pathParam;
         queryParam = pObject.queryParam;
         lang = pObject.lang;
+        intCode = pObject.intCode;
       }
     }
 
@@ -270,6 +284,18 @@ public class Context {
     public Builder setLang( String pLang ) {
       // Assign value to attribute
       lang = pLang;
+      return this;
+    }
+
+    /**
+     * Method sets attribute {@link #intCode}.<br/>
+     *
+     * @param pIntCode Value to which {@link #intCode} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    public Builder setIntCode( IntegerCodeType pIntCode ) {
+      // Assign value to attribute
+      intCode = pIntCode;
       return this;
     }
 
@@ -400,6 +426,25 @@ public class Context {
   }
 
   /**
+   * Method returns attribute {@link #intCode}.<br/>
+   *
+   * @return {@link IntegerCodeType} Value to which {@link #intCode} is set.
+   */
+  public IntegerCodeType getIntCode( ) {
+    return intCode;
+  }
+
+  /**
+   * Method sets attribute {@link #intCode}.<br/>
+   *
+   * @param pIntCode Value to which {@link #intCode} should be set.
+   */
+  public void setIntCode( IntegerCodeType pIntCode ) {
+    // Assign value to attribute
+    intCode = pIntCode;
+  }
+
+  /**
    * Method returns map with all custom headers that were added
    *
    * @return {@link Map} Map with all custom headers. The method never returns null. The returned map is unmodifiable.
@@ -434,6 +479,7 @@ public class Context {
     lResult = lPrime * lResult + Long.hashCode(pathParam);
     lResult = lPrime * lResult + Objects.hashCode(queryParam);
     lResult = lPrime * lResult + Objects.hashCode(lang);
+    lResult = lPrime * lResult + Objects.hashCode(intCode);
     lResult = lPrime * lResult + Objects.hashCode(customHeaders);
     return lResult;
   }
@@ -455,7 +501,7 @@ public class Context {
       lEquals = Objects.equals(accessToken, lOther.accessToken) && Objects.equals(language, lOther.language)
           && resellerID == lOther.resellerID && pathParam == lOther.pathParam
           && Objects.equals(queryParam, lOther.queryParam) && Objects.equals(lang, lOther.lang)
-          && Objects.equals(customHeaders, lOther.customHeaders);
+          && Objects.equals(intCode, lOther.intCode) && Objects.equals(customHeaders, lOther.customHeaders);
     }
     return lEquals;
   }
@@ -494,6 +540,10 @@ public class Context {
     lBuilder.append(pIndent);
     lBuilder.append("lang: ");
     lBuilder.append(lang);
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("intCode: ");
+    lBuilder.append(intCode);
     lBuilder.append(System.lineSeparator());
     return lBuilder;
   }

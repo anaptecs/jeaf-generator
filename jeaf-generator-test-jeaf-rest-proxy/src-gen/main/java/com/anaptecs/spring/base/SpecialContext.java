@@ -79,7 +79,7 @@ public class SpecialContext extends Context {
    * Method creates a new builder and initializes it with the passed attributes.
    */
   public static Builder builder( String pAccessToken, Locale pLanguage, long pResellerID, long pPathParam,
-      String pQueryParam, String pLang, String pSpecificHeader, ChannelType pChannelType ) {
+      String pQueryParam, String pLang, IntegerCodeType pIntCode, String pSpecificHeader, ChannelType pChannelType ) {
     Builder lBuilder = builder();
     lBuilder.setAccessToken(pAccessToken);
     lBuilder.setLanguage(pLanguage);
@@ -87,6 +87,7 @@ public class SpecialContext extends Context {
     lBuilder.setPathParam(pPathParam);
     lBuilder.setQueryParam(pQueryParam);
     lBuilder.setLang(pLang);
+    lBuilder.setIntCode(pIntCode);
     lBuilder.setSpecificHeader(pSpecificHeader);
     lBuilder.setChannelType(pChannelType);
     return lBuilder;
@@ -108,6 +109,8 @@ public class SpecialContext extends Context {
    *
    * @param pLang Value to which {@link #lang} should be set.
    *
+   * @param pIntCode Value to which {@link #intCode} should be set.
+   *
    * @param pSpecificHeader Value to which {@link #specificHeader} should be set.
    *
    * @param pChannelType Value to which {@link #channelType} should be set.
@@ -115,7 +118,7 @@ public class SpecialContext extends Context {
    * @return {@link SpecialContext}
    */
   public static SpecialContext of( String pAccessToken, Locale pLanguage, long pResellerID, long pPathParam,
-      String pQueryParam, String pLang, String pSpecificHeader, ChannelType pChannelType ) {
+      String pQueryParam, String pLang, IntegerCodeType pIntCode, String pSpecificHeader, ChannelType pChannelType ) {
     SpecialContext.Builder lBuilder = SpecialContext.builder();
     lBuilder.setAccessToken(pAccessToken);
     lBuilder.setLanguage(pLanguage);
@@ -123,6 +126,7 @@ public class SpecialContext extends Context {
     lBuilder.setPathParam(pPathParam);
     lBuilder.setQueryParam(pQueryParam);
     lBuilder.setLang(pLang);
+    lBuilder.setIntCode(pIntCode);
     lBuilder.setSpecificHeader(pSpecificHeader);
     lBuilder.setChannelType(pChannelType);
     return lBuilder.build();
@@ -230,6 +234,19 @@ public class SpecialContext extends Context {
     public Builder setLang( String pLang ) {
       // Call super class implementation.
       super.setLang(pLang);
+      return this;
+    }
+
+    /**
+     * Method sets attribute {@link #intCode}.<br/>
+     *
+     * @param pIntCode Value to which {@link #intCode} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    @Override
+    public Builder setIntCode( IntegerCodeType pIntCode ) {
+      // Call super class implementation.
+      super.setIntCode(pIntCode);
       return this;
     }
 

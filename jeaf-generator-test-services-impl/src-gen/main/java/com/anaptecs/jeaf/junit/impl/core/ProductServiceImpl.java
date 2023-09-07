@@ -495,4 +495,11 @@ final class ProductServiceImpl extends ProductServiceImplBase {
   @Override
   public void testDataTypeWithRestrition( StringCode pStringCode, Set<ShortCode> pShortCodes, Byte pJustAByte ) {
   }
+
+  /**
+   * @param pContext
+   */
+  @Override
+  public void testContext( Context pContext ) {
+  }
 }

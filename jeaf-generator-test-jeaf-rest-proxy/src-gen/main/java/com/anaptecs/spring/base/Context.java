@@ -57,6 +57,11 @@ public class Context implements Serializable {
    */
   public static final String LANG = "lang";
 
+  /**
+   * Constant for the name of attribute "intCode".
+   */
+  public static final String INTCODE = "intCode";
+
   @HeaderParam("token")
   @NotEmpty
   private String accessToken;
@@ -78,6 +83,9 @@ public class Context implements Serializable {
   private String queryParam;
 
   private String lang;
+
+  @HeaderParam("intCode")
+  private IntegerCodeType intCode;
 
   /**
    * Map contains all custom headers that were set on the object.
@@ -106,6 +114,7 @@ public class Context implements Serializable {
     pathParam = pBuilder.pathParam;
     queryParam = pBuilder.queryParam;
     lang = pBuilder.lang;
+    intCode = pBuilder.intCode;
   }
 
   /**
@@ -131,7 +140,7 @@ public class Context implements Serializable {
    * Method creates a new builder and initializes it with the passed attributes.
    */
   public static Builder builder( String pAccessToken, Locale pLanguage, long pResellerID, long pPathParam,
-      String pQueryParam, String pLang ) {
+      String pQueryParam, String pLang, IntegerCodeType pIntCode ) {
     Builder lBuilder = builder();
     lBuilder.setAccessToken(pAccessToken);
     lBuilder.setLanguage(pLanguage);
@@ -139,6 +148,7 @@ public class Context implements Serializable {
     lBuilder.setPathParam(pPathParam);
     lBuilder.setQueryParam(pQueryParam);
     lBuilder.setLang(pLang);
+    lBuilder.setIntCode(pIntCode);
     return lBuilder;
   }
 
@@ -158,10 +168,12 @@ public class Context implements Serializable {
    *
    * @param pLang Value to which {@link #lang} should be set.
    *
+   * @param pIntCode Value to which {@link #intCode} should be set.
+   *
    * @return {@link Context}
    */
   public static Context of( String pAccessToken, Locale pLanguage, long pResellerID, long pPathParam,
-      String pQueryParam, String pLang ) {
+      String pQueryParam, String pLang, IntegerCodeType pIntCode ) {
     Context.Builder lBuilder = Context.builder();
     lBuilder.setAccessToken(pAccessToken);
     lBuilder.setLanguage(pLanguage);
@@ -169,6 +181,7 @@ public class Context implements Serializable {
     lBuilder.setPathParam(pPathParam);
     lBuilder.setQueryParam(pQueryParam);
     lBuilder.setLang(pLang);
+    lBuilder.setIntCode(pIntCode);
     return lBuilder.build();
   }
 
@@ -193,6 +206,8 @@ public class Context implements Serializable {
 
     private String lang;
 
+    private IntegerCodeType intCode;
+
     /**
      * Use {@link Context#builder()} instead of private constructor to create new builder.
      */
@@ -211,6 +226,7 @@ public class Context implements Serializable {
         pathParam = pObject.pathParam;
         queryParam = pObject.queryParam;
         lang = pObject.lang;
+        intCode = pObject.intCode;
       }
     }
 
@@ -283,6 +299,18 @@ public class Context implements Serializable {
     public Builder setLang( String pLang ) {
       // Assign value to attribute
       lang = pLang;
+      return this;
+    }
+
+    /**
+     * Method sets attribute {@link #intCode}.<br/>
+     *
+     * @param pIntCode Value to which {@link #intCode} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    public Builder setIntCode( IntegerCodeType pIntCode ) {
+      // Assign value to attribute
+      intCode = pIntCode;
       return this;
     }
 
@@ -424,6 +452,25 @@ public class Context implements Serializable {
   }
 
   /**
+   * Method returns attribute {@link #intCode}.<br/>
+   *
+   * @return {@link IntegerCodeType} Value to which {@link #intCode} is set.
+   */
+  public IntegerCodeType getIntCode( ) {
+    return intCode;
+  }
+
+  /**
+   * Method sets attribute {@link #intCode}.<br/>
+   *
+   * @param pIntCode Value to which {@link #intCode} should be set.
+   */
+  public void setIntCode( IntegerCodeType pIntCode ) {
+    // Assign value to attribute
+    intCode = pIntCode;
+  }
+
+  /**
    * Method returns map with all custom headers that were added
    *
    * @return {@link Map} Map with all custom headers. The method never returns null. The returned map is unmodifiable.
@@ -482,6 +529,10 @@ public class Context implements Serializable {
     lBuilder.append(pIndent);
     lBuilder.append("lang: ");
     lBuilder.append(lang);
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("intCode: ");
+    lBuilder.append(intCode);
     lBuilder.append(System.lineSeparator());
     return lBuilder;
   }

@@ -274,6 +274,13 @@ public abstract class ProductServiceTestBase extends JEAFTestCase {
   public abstract void testTestMulitValuedBeanParams( ) throws Exception;
 
   /**
+   * Method test the implementation of service method testContext(...)
+   *
+   * @throws Exception if the test fails.
+   */
+  public abstract void testTestContext( ) throws Exception;
+
+  /**
    * Method test the implementation of service method getDefaultChannel(...)
    *
    * @throws Exception if the test fails.

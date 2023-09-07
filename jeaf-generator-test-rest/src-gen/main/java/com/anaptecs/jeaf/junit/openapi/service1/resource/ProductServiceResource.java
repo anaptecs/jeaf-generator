@@ -727,6 +727,22 @@ public class ProductServiceResource {
     }
 
     /**
+     * {@link ProductService#testContext()}
+     */
+    @Path("testContext")
+    @GET
+    public Response testContext( @BeanParam Context pContext, @javax.ws.rs.core.Context HttpHeaders pHeaders ) {
+        // Add custom headers.
+        for (Map.Entry<String, List<String>> lNextEntry : pHeaders.getRequestHeaders().entrySet()) {
+            pContext.addCustomHeader(lNextEntry.getKey(), lNextEntry.getValue().get(0));
+        }
+        // Delegate request to service.
+        ProductService lService = this.getProductService();
+        lService.testContext(pContext);
+        return Response.status(Response.Status.NO_CONTENT).build();
+    }
+
+    /**
      * Method returns reference to service to which all REST requests will be delegated.
      *
      * @return ProductService Service instance to which all requests will be delegated.

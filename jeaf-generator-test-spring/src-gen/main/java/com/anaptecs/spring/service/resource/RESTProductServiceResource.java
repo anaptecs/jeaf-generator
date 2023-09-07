@@ -162,6 +162,7 @@ public class RESTProductServiceResource {
       @CookieValue(name = "reseller", required = true) long pResellerID,
       @PathVariable(name = "id", required = true) long pPathParam,
       @RequestParam(name = "q1", required = true) String pQueryParam, String pLang,
+      @RequestHeader(name = "intCode", required = true) int pIntCodeAsBasicType,
       @RequestHeader Map<String, String> pHeaders ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
@@ -172,6 +173,8 @@ public class RESTProductServiceResource {
     lContextBuilder.setPathParam(pPathParam);
     lContextBuilder.setQueryParam(pQueryParam);
     lContextBuilder.setLang(pLang);
+    // Handle bean parameter pContext.intCode
+    lContextBuilder.setIntCode(IntegerCodeType.builder().setCode(pIntCodeAsBasicType).build());
     Context pContext = lContextBuilder.build();
     // Add custom headers.
     for (Map.Entry<String, String> lNextEntry : pHeaders.entrySet()) {
@@ -742,6 +745,7 @@ public class RESTProductServiceResource {
       @CookieValue(name = "reseller", required = true) long pResellerID,
       @PathVariable(name = "id", required = true) long pPathParam,
       @RequestParam(name = "q1", required = true) String pQueryParam, String pLang,
+      @RequestHeader(name = "intCode", required = true) int pIntCodeAsBasicType,
       @RequestHeader(name = "specificHeader", required = true) String pSpecificHeader,
       @CookieValue(name = "Channel-Type", required = true) ChannelType pChannelType,
       @RequestHeader Map<String, String> pHeaders ) {
@@ -754,6 +758,8 @@ public class RESTProductServiceResource {
     lContextBuilder.setPathParam(pPathParam);
     lContextBuilder.setQueryParam(pQueryParam);
     lContextBuilder.setLang(pLang);
+    // Handle bean parameter pContext.intCode
+    lContextBuilder.setIntCode(IntegerCodeType.builder().setCode(pIntCodeAsBasicType).build());
     lContextBuilder.setSpecificHeader(pSpecificHeader);
     lContextBuilder.setChannelType(pChannelType);
     SpecialContext pContext = lContextBuilder.build();
@@ -794,13 +800,8 @@ public class RESTProductServiceResource {
   public boolean processComplexBookingID(
       @PathVariable(name = "bookingID", required = true) String pComplextBookingIDAsBasicType ) {
     // Convert basic type parameters into "real" objects.
-    ComplexBookingID pComplextBookingID;
-    if (pComplextBookingIDAsBasicType != null) {
-      pComplextBookingID = this.deserializeCompositeDataType(pComplextBookingIDAsBasicType, ComplexBookingID.class);
-    }
-    else {
-      pComplextBookingID = null;
-    }
+    ComplexBookingID pComplextBookingID =
+        this.deserializeCompositeDataType(pComplextBookingIDAsBasicType, ComplexBookingID.class);
     // Validate request parameter(s).
     validationExecutor.validateRequest(RESTProductService.class, pComplextBookingID);
     // Delegate request to service.
@@ -820,13 +821,7 @@ public class RESTProductServiceResource {
       @RequestHeader(name = "BookingCode", required = true) String pBookingCodeAsBasicType,
       @RequestHeader(name = "DoubleCode", required = true) Double pDoubleCodeAsBasicType ) {
     // Convert basic type parameters into "real" objects.
-    BookingID pBookingID;
-    if (pBookingIDAsBasicType != null) {
-      pBookingID = this.deserializeCompositeDataType(pBookingIDAsBasicType, BookingID.class);
-    }
-    else {
-      pBookingID = null;
-    }
+    BookingID pBookingID = this.deserializeCompositeDataType(pBookingIDAsBasicType, BookingID.class);
     BookingCode pBookingCode;
     if (pBookingCodeAsBasicType != null) {
       pBookingCode = BookingCode.builder().setCode(pBookingCodeAsBasicType).build();
@@ -1386,13 +1381,7 @@ public class RESTProductServiceResource {
   public void testBookingIDAsPathParam(
       @PathVariable(name = "bookingID", required = true) String pBookingIDAsBasicType ) {
     // Convert basic type parameters into "real" objects.
-    BookingID pBookingID;
-    if (pBookingIDAsBasicType != null) {
-      pBookingID = this.deserializeCompositeDataType(pBookingIDAsBasicType, BookingID.class);
-    }
-    else {
-      pBookingID = null;
-    }
+    BookingID pBookingID = this.deserializeCompositeDataType(pBookingIDAsBasicType, BookingID.class);
     // Validate request parameter(s).
     validationExecutor.validateRequest(RESTProductService.class, pBookingID);
     // Delegate request to service.
@@ -1407,13 +1396,7 @@ public class RESTProductServiceResource {
   public void testBookingIDAsHeaderParam(
       @RequestHeader(name = "bookingID", required = false) String pBookingIDAsBasicType ) {
     // Convert basic type parameters into "real" objects.
-    BookingID pBookingID;
-    if (pBookingIDAsBasicType != null) {
-      pBookingID = this.deserializeCompositeDataType(pBookingIDAsBasicType, BookingID.class);
-    }
-    else {
-      pBookingID = null;
-    }
+    BookingID pBookingID = this.deserializeCompositeDataType(pBookingIDAsBasicType, BookingID.class);
     // Validate request parameter(s).
     validationExecutor.validateRequest(RESTProductService.class, pBookingID);
     // Delegate request to service.

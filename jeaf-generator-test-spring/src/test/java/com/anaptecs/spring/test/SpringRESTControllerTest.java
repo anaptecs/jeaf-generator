@@ -97,6 +97,7 @@ public class SpringRESTControllerTest {
     lBuilder.setUri(template.getRootUri() + PREFIX + "/products/sortiment/4711");
     lBuilder.addHeader("token", "12345");
     lBuilder.addHeader("lang", "DE");
+    lBuilder.addHeader("intCode", "4711");
     lBuilder.addParameter("q1", "QUERY_ME");
     lRequest = lBuilder.build();
 
@@ -149,8 +150,8 @@ public class SpringRESTControllerTest {
         "AAyDDQAPUkVGVU5EX0NPRMWTRVhUXyPDpMO2w58_IsKnJMKnIiQiJSQCWFhZWVraD0JPT0tJTkdfQ09ExUVYVC0wOTg3NjU0MzKxATEyMzQ1tgKqtN51UkVGLTEyswA=";
 
     CloseableHttpClient lHttpClient = HttpClientBuilder.create().build();
-    ClassicRequestBuilder lRequest = ClassicRequestBuilder.get(template.getRootUri() + PREFIX
-        + "/rest-products/complex/" + lComplexBookingIDAsString);
+    ClassicRequestBuilder lRequest = ClassicRequestBuilder
+        .get(template.getRootUri() + PREFIX + "/rest-products/complex/" + lComplexBookingIDAsString);
     CloseableHttpResponse lResponse = lHttpClient.execute(lRequest.build());
     assertEquals("true", Tools.getStreamTools().getStreamContentAsString(lResponse.getEntity().getContent()));
     assertEquals(200, lResponse.getCode());
@@ -163,33 +164,30 @@ public class SpringRESTControllerTest {
     DoubleCode lDoubleCode = DoubleCode.builder().setCode(3.14159).build();
 
     CloseableHttpClient lHttpClient = HttpClientBuilder.create().build();
-    ClassicRequestBuilder lRequest = ClassicRequestBuilder.get(template.getRootUri() + PREFIX
-        + "/rest-products/dataTypesInHeader");
+    ClassicRequestBuilder lRequest =
+        ClassicRequestBuilder.get(template.getRootUri() + PREFIX + "/rest-products/dataTypesInHeader");
     lRequest.addHeader("bookingID", lBookingIDString);
     lRequest.addHeader("bookingCode", lBookingCode.getCode());
     lRequest.addHeader("DoubleCode", Double.toString(lDoubleCode.getCode()));
     CloseableHttpResponse lResponse = lHttpClient.execute(lRequest.build());
-    assertEquals("123456_EXT-0987654321_4711-0815_3.14159", Tools.getStreamTools().getStreamContentAsString(lResponse
-        .getEntity().getContent()));
+    assertEquals("123456_EXT-0987654321_4711-0815_3.14159",
+        Tools.getStreamTools().getStreamContentAsString(lResponse.getEntity().getContent()));
     assertEquals(200, lResponse.getCode());
 
-    lRequest = ClassicRequestBuilder.get(template.getRootUri() + PREFIX
-        + "/rest-products/dataTypesInBeanHeader");
+    lRequest = ClassicRequestBuilder.get(template.getRootUri() + PREFIX + "/rest-products/dataTypesInBeanHeader");
     lRequest.addHeader("bookingID", lBookingIDString);
     lRequest.addHeader("bookingCode", lBookingCode.getCode());
     lRequest.addHeader("DoubleCode", Double.toString(lDoubleCode.getCode()));
     lResponse = lHttpClient.execute(lRequest.build());
-    assertEquals("Bean-Header: 123456_EXT-0987654321_4711-0815_3.14159", Tools.getStreamTools()
-        .getStreamContentAsString(lResponse
-            .getEntity().getContent()));
+    assertEquals("Bean-Header: 123456_EXT-0987654321_4711-0815_3.14159",
+        Tools.getStreamTools().getStreamContentAsString(lResponse.getEntity().getContent()));
     assertEquals(200, lResponse.getCode());
   }
 
   @Test
   void testPathlessRESTController( ) throws IOException {
     CloseableHttpClient lHttpClient = HttpClientBuilder.create().build();
-    ClassicRequestBuilder lRequest = ClassicRequestBuilder.get(template.getRootUri() + PREFIX
-        + "/doSomething");
+    ClassicRequestBuilder lRequest = ClassicRequestBuilder.get(template.getRootUri() + PREFIX + "/doSomething");
 
     CloseableHttpResponse lResponse = lHttpClient.execute(lRequest.build());
     assertEquals("Something", Tools.getStreamTools().getStreamContentAsString(lResponse.getEntity().getContent()));
@@ -199,99 +197,98 @@ public class SpringRESTControllerTest {
   @Test
   void testCustomHeaders( ) throws IOException {
     CloseableHttpClient lHttpClient = HttpClientBuilder.create().build();
-    ClassicRequestBuilder lRequest = ClassicRequestBuilder.get(template.getRootUri() + PREFIX
-        + "/products/technicalHeaderBeanParam");
+    ClassicRequestBuilder lRequest =
+        ClassicRequestBuilder.get(template.getRootUri() + PREFIX + "/products/technicalHeaderBeanParam");
 
     lRequest.addHeader("Reseller", "Fancy Company");
     lRequest.addHeader("Custom-Header", "MyCustomHeaderValue");
 
     CloseableHttpResponse lResponse = lHttpClient.execute(lRequest.build());
-    assertEquals("MyCustomHeaderValue", Tools.getStreamTools().getStreamContentAsString(lResponse.getEntity()
-        .getContent()));
+    assertEquals("MyCustomHeaderValue",
+        Tools.getStreamTools().getStreamContentAsString(lResponse.getEntity().getContent()));
     assertEquals(200, lResponse.getCode());
   }
 
   @Test
   void testDataTypesAsQueryParams( ) throws IOException {
     CloseableHttpClient lHttpClient = HttpClientBuilder.create().build();
-    ClassicRequestBuilder lRequest = ClassicRequestBuilder.get(template.getRootUri() + PREFIX
-        + "/rest-products/testDataTypeAsQueryParam");
+    ClassicRequestBuilder lRequest =
+        ClassicRequestBuilder.get(template.getRootUri() + PREFIX + "/rest-products/testDataTypeAsQueryParam");
     lRequest.addParameter("bookingCode", "Just-a-Booking-Code");
     CloseableHttpResponse lResponse = lHttpClient.execute(lRequest.build());
-    assertEquals("Just-a-Booking-Code", Tools.getStreamTools().getStreamContentAsString(lResponse.getEntity()
-        .getContent()));
+    assertEquals("Just-a-Booking-Code",
+        Tools.getStreamTools().getStreamContentAsString(lResponse.getEntity().getContent()));
     assertEquals(200, lResponse.getCode());
 
-    lRequest = ClassicRequestBuilder.get(template.getRootUri() + PREFIX
-        + "/rest-products/testDataTypeAsBeanQueryParam");
+    lRequest =
+        ClassicRequestBuilder.get(template.getRootUri() + PREFIX + "/rest-products/testDataTypeAsBeanQueryParam");
     lRequest.addParameter("bookingCode", "Just-a-Booking-Code");
     lResponse = lHttpClient.execute(lRequest.build());
-    assertEquals("Bean: Just-a-Booking-Code", Tools.getStreamTools().getStreamContentAsString(lResponse.getEntity()
-        .getContent()));
+    assertEquals("Bean: Just-a-Booking-Code",
+        Tools.getStreamTools().getStreamContentAsString(lResponse.getEntity().getContent()));
     assertEquals(200, lResponse.getCode());
   }
 
   @Test
   void testMultivaluedQueryParams( ) throws IOException {
     CloseableHttpClient lHttpClient = HttpClientBuilder.create().build();
-    ClassicRequestBuilder lRequest = ClassicRequestBuilder.get(template.getRootUri() + PREFIX
-        + "/rest-products/testPrimitiveArrayAsQueryParam");
+    ClassicRequestBuilder lRequest =
+        ClassicRequestBuilder.get(template.getRootUri() + PREFIX + "/rest-products/testPrimitiveArrayAsQueryParam");
     lRequest.addParameter("intValues", "1,2,4711,9");
     CloseableHttpResponse lResponse = lHttpClient.execute(lRequest.build());
-    assertEquals("[1, 2, 4711, 9]", Tools.getStreamTools().getStreamContentAsString(lResponse.getEntity()
-        .getContent()));
+    assertEquals("[1, 2, 4711, 9]",
+        Tools.getStreamTools().getStreamContentAsString(lResponse.getEntity().getContent()));
     assertEquals(200, lResponse.getCode());
 
-    lRequest = ClassicRequestBuilder.get(template.getRootUri() + PREFIX
-        + "/rest-products/testSimpleTypesAsQueryParams");
+    lRequest =
+        ClassicRequestBuilder.get(template.getRootUri() + PREFIX + "/rest-products/testSimpleTypesAsQueryParams");
     lRequest.addParameter("strings", "Hello,World,!,XYZ ");
     lResponse = lHttpClient.execute(lRequest.build());
-    assertEquals("[XYZ, !, World, Hello]", Tools.getStreamTools().getStreamContentAsString(lResponse.getEntity()
-        .getContent()));
+    assertEquals("[XYZ, !, World, Hello]",
+        Tools.getStreamTools().getStreamContentAsString(lResponse.getEntity().getContent()));
     assertEquals(200, lResponse.getCode());
 
-    lRequest = ClassicRequestBuilder.get(template.getRootUri() + PREFIX
-        + "/rest-products/testPrimitiveWrapperArrayAsQueryParam");
+    lRequest = ClassicRequestBuilder
+        .get(template.getRootUri() + PREFIX + "/rest-products/testPrimitiveWrapperArrayAsQueryParam");
     lRequest.addParameter("integers", "1, 3, 2, 47,-21");
     lResponse = lHttpClient.execute(lRequest.build());
-    assertEquals("[-21, 1, 2, 3, 47]", Tools.getStreamTools().getStreamContentAsString(lResponse.getEntity()
-        .getContent()));
+    assertEquals("[-21, 1, 2, 3, 47]",
+        Tools.getStreamTools().getStreamContentAsString(lResponse.getEntity().getContent()));
     assertEquals(200, lResponse.getCode());
   }
 
   @Test
   void testMultivaluedQueryParamsBean( ) throws IOException {
     CloseableHttpClient lHttpClient = HttpClientBuilder.create().build();
-    ClassicRequestBuilder lRequest = ClassicRequestBuilder.get(template.getRootUri() + PREFIX
-        + "/rest-products/testMultivaluedQueryParamsBean");
+    ClassicRequestBuilder lRequest =
+        ClassicRequestBuilder.get(template.getRootUri() + PREFIX + "/rest-products/testMultivaluedQueryParamsBean");
     lRequest.addParameter("intArray", "1,4,2");
     lRequest.addParameter("integers", "10 , 40 ,  20 ");
     lRequest.addParameter("strings", " Hello , World ,  of REST ");
     CloseableHttpResponse lResponse = lHttpClient.execute(lRequest.build());
-    assertEquals("[1, 4, 2]_[10, 40, 20]_[Hello, World, of REST]", Tools.getStreamTools().getStreamContentAsString(
-        lResponse.getEntity()
-            .getContent()));
+    assertEquals("[1, 4, 2]_[10, 40, 20]_[Hello, World, of REST]",
+        Tools.getStreamTools().getStreamContentAsString(lResponse.getEntity().getContent()));
     assertEquals(200, lResponse.getCode());
   }
 
   @Test
   void testMulitvaluedDataTypeAsQueryParam( ) throws IOException {
     CloseableHttpClient lHttpClient = HttpClientBuilder.create().build();
-    ClassicRequestBuilder lRequest = ClassicRequestBuilder.get(template.getRootUri() + PREFIX
-        + "/rest-products/testMulitvaluedDataTypeAsQueryParam");
+    ClassicRequestBuilder lRequest = ClassicRequestBuilder
+        .get(template.getRootUri() + PREFIX + "/rest-products/testMulitvaluedDataTypeAsQueryParam");
     lRequest.addParameter("codes", "1,4,2");
     lRequest.addParameter("longCodes", String.valueOf(Long.MAX_VALUE));
     CloseableHttpResponse lResponse = lHttpClient.execute(lRequest.build());
-    assertEquals("1.4.2.9223372036854775807", Tools.getStreamTools().getStreamContentAsString(lResponse.getEntity()
-        .getContent()));
+    assertEquals("1.4.2.9223372036854775807",
+        Tools.getStreamTools().getStreamContentAsString(lResponse.getEntity().getContent()));
     assertEquals(200, lResponse.getCode());
   }
 
   @Test
   void testMulitvaluedDataTypeAsBeanQueryParam( ) throws IOException {
     CloseableHttpClient lHttpClient = HttpClientBuilder.create().build();
-    ClassicRequestBuilder lRequest = ClassicRequestBuilder.get(template.getRootUri() + PREFIX
-        + "/rest-products/testMulitvaluedDataTypeAsBeanQueryParam");
+    ClassicRequestBuilder lRequest = ClassicRequestBuilder
+        .get(template.getRootUri() + PREFIX + "/rest-products/testMulitvaluedDataTypeAsBeanQueryParam");
     lRequest.addParameter("codes", "1");
     lRequest.addParameter("codes", "4");
     lRequest.addParameter("codes", "2");
@@ -307,17 +304,15 @@ public class SpringRESTControllerTest {
     CloseableHttpResponse lResponse = lHttpClient.execute(lRequest.build());
     assertEquals(
         "1.4.2.9223372036854775807_3.1415_47.11_2022-03-17T13:22:12.453+01:00_2022-03-17T13:22:12.453_13:22:12.453_13:22:12.453+01:00_[14:22:12.453+01:00, 13:22:12.453+01:00]",
-        Tools.getStreamTools().getStreamContentAsString(lResponse
-            .getEntity()
-            .getContent()));
+        Tools.getStreamTools().getStreamContentAsString(lResponse.getEntity().getContent()));
     assertEquals(200, lResponse.getCode());
   }
 
   @Test
   void testMultiValuedHeaderFieldsInBeanParam( ) throws IOException {
     CloseableHttpClient lHttpClient = HttpClientBuilder.create().build();
-    ClassicRequestBuilder lRequest = ClassicRequestBuilder.get(template.getRootUri() + PREFIX
-        + "/rest-products/testMultiValuedHeaderFieldsInBeanParam");
+    ClassicRequestBuilder lRequest = ClassicRequestBuilder
+        .get(template.getRootUri() + PREFIX + "/rest-products/testMultiValuedHeaderFieldsInBeanParam");
     lRequest.addHeader("names", "Hello, World!");
     lRequest.addHeader("ints", "1,2,3  ,  4, 5");
     lRequest.addHeader("doubles", "3.1415, 47.11");
@@ -336,8 +331,8 @@ public class SpringRESTControllerTest {
   @Test
   void testMultiValuedHeaderFields( ) throws IOException {
     CloseableHttpClient lHttpClient = HttpClientBuilder.create().build();
-    ClassicRequestBuilder lRequest = ClassicRequestBuilder.get(template.getRootUri() + PREFIX
-        + "/rest-products/testMultiValuedHeaderFields");
+    ClassicRequestBuilder lRequest =
+        ClassicRequestBuilder.get(template.getRootUri() + PREFIX + "/rest-products/testMultiValuedHeaderFields");
     lRequest.addHeader("names", "Hello, World!");
     lRequest.addHeader("ints", "1,2,3  ,  4, 5");
     lRequest.addHeader("doubles", "3.1415, 47.11");
@@ -355,8 +350,8 @@ public class SpringRESTControllerTest {
   @Test
   void testDateQueryParams( ) throws IOException {
     CloseableHttpClient lHttpClient = HttpClientBuilder.create().build();
-    ClassicRequestBuilder lRequest = ClassicRequestBuilder.get(template.getRootUri() + PREFIX
-        + "/rest-products/test-date-query-params/2");
+    ClassicRequestBuilder lRequest =
+        ClassicRequestBuilder.get(template.getRootUri() + PREFIX + "/rest-products/test-date-query-params/2");
     lRequest.addParameter("startTimestamp", "2022-03-17T13:22:12.453+01:00");
     lRequest.addParameter("startTime", "13:22:12.453+01:00");
     lRequest.addParameter("localStartTimestamp", "2022-03-17T13:22:12.453");
@@ -374,8 +369,8 @@ public class SpringRESTControllerTest {
   @Test
   void testDateQueryParamsBean( ) throws IOException {
     CloseableHttpClient lHttpClient = HttpClientBuilder.create().build();
-    ClassicRequestBuilder lRequest = ClassicRequestBuilder.get(template.getRootUri() + PREFIX
-        + "/rest-products/test-date-query-params-beans/1");
+    ClassicRequestBuilder lRequest =
+        ClassicRequestBuilder.get(template.getRootUri() + PREFIX + "/rest-products/test-date-query-params-beans/1");
     lRequest.addParameter("offsetDateTime", "2022-03-17T13:22:12.453+01:00");
     lRequest.addParameter("offsetTime", "13:22:12.453+01:00");
     lRequest.addParameter("localDateTime", "2022-03-17T13:22:12.453");
@@ -393,8 +388,8 @@ public class SpringRESTControllerTest {
   @Test
   void testDateHeaderParamsBean( ) throws IOException {
     CloseableHttpClient lHttpClient = HttpClientBuilder.create().build();
-    ClassicRequestBuilder lRequest = ClassicRequestBuilder.get(template.getRootUri() + PREFIX
-        + "/rest-products/test-date-header-params-beans/1");
+    ClassicRequestBuilder lRequest =
+        ClassicRequestBuilder.get(template.getRootUri() + PREFIX + "/rest-products/test-date-header-params-beans/1");
     lRequest.addHeader("Offset-Date-Time", "2022-03-17T13:22:12.453+01:00");
     lRequest.addHeader("Offset-Time", "13:22:12.453+01:00");
     lRequest.addHeader("Local-Date-Time", "2022-03-17T13:22:12.453");
@@ -423,8 +418,8 @@ public class SpringRESTControllerTest {
     assertEquals(204, lResponse.getCode());
 
     // Test request with invalid path param
-    lRequest = ClassicRequestBuilder.patch(template.getRootUri() + PREFIX
-        + "/rest-products/booking-id-as-path-param/XXXYYYZZZ");
+    lRequest = ClassicRequestBuilder
+        .patch(template.getRootUri() + PREFIX + "/rest-products/booking-id-as-path-param/XXXYYYZZZ");
     lResponse = lHttpClient.execute(lRequest.build());
     assertEquals(500, lResponse.getCode());
   }
@@ -432,22 +427,22 @@ public class SpringRESTControllerTest {
   @Test
   void testBookingIDAsHeaderParam( ) throws IOException {
     CloseableHttpClient lHttpClient = HttpClientBuilder.create().build();
-    ClassicRequestBuilder lRequest = ClassicRequestBuilder.patch(template.getRootUri() + PREFIX
-        + "/rest-products/booking-id-as-header-param");
+    ClassicRequestBuilder lRequest =
+        ClassicRequestBuilder.patch(template.getRootUri() + PREFIX + "/rest-products/booking-id-as-header-param");
     lRequest.setHeader("bookingID", "DTQ3MTEtMDgxtUVYVC0xMjMtOTi3AVJFRi01NTU5Obk=");
     CloseableHttpResponse lResponse = lHttpClient.execute(lRequest.build());
     assertEquals(204, lResponse.getCode());
 
     // Test request with invalid path param
-    lRequest = ClassicRequestBuilder.patch(template.getRootUri() + PREFIX
-        + "/rest-products/booking-id-as-header-param");
+    lRequest =
+        ClassicRequestBuilder.patch(template.getRootUri() + PREFIX + "/rest-products/booking-id-as-header-param");
     lRequest.setHeader("bookingID", "XXXYYYZZZ");
     lResponse = lHttpClient.execute(lRequest.build());
     assertEquals(500, lResponse.getCode());
 
     // Test request where bookingID is null (header not set at all).
-    lRequest = ClassicRequestBuilder.patch(template.getRootUri() + PREFIX
-        + "/rest-products/booking-id-as-header-param");
+    lRequest =
+        ClassicRequestBuilder.patch(template.getRootUri() + PREFIX + "/rest-products/booking-id-as-header-param");
 
     lResponse = lHttpClient.execute(lRequest.build());
     assertEquals(204, lResponse.getCode());

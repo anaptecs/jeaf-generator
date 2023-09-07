@@ -199,6 +199,10 @@ paths:
           required: true
           schema:
             type: string
+        - name: intCode
+          in: header
+          schema:
+            $ref: '../base/product-base.yml#/components/schemas/IntegerCodeType' 
       responses:
         '201':
           description: >-
@@ -502,6 +506,10 @@ paths:
           required: true
           schema:
             type: string
+        - name: intCode
+          in: header
+          schema:
+            $ref: '../base/product-base.yml#/components/schemas/IntegerCodeType' 
         - name: specificHeader
           in: header
           required: true
@@ -1588,6 +1596,53 @@ paths:
             type: integer
             format: int32
             minimum: 32
+      responses:
+        '202':
+          description: >-
+            In case that a request was successful only status code 202 will be returned but no response content will be provided (aka as return type 'void' in many programming languages).
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+    
+  /products/testContext:
+    get:
+      operationId: testContext
+      parameters:
+        - name: token
+          in: header
+          required: true
+          schema:
+            type: string
+            minLength: 1
+        - name: lang
+          in: header
+          required: true
+          schema:
+            type: string
+            example: en
+        - name: reseller
+          in: cookie
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: q1
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: intCode
+          in: header
+          schema:
+            $ref: '../base/product-base.yml#/components/schemas/IntegerCodeType' 
       responses:
         '202':
           description: >-

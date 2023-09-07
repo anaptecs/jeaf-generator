@@ -413,13 +413,8 @@ public class RESTProductServiceResource {
   @GET
   public Response processComplexBookingID( @PathParam("bookingID") String pComplextBookingIDAsBasicType ) {
     // Convert basic type parameters into "real" objects.
-    ComplexBookingID pComplextBookingID;
-    if (pComplextBookingIDAsBasicType != null) {
-      pComplextBookingID = this.deserializeCompositeDataType(pComplextBookingIDAsBasicType, ComplexBookingID.class);
-    }
-    else {
-      pComplextBookingID = null;
-    }
+    ComplexBookingID pComplextBookingID =
+        this.deserializeCompositeDataType(pComplextBookingIDAsBasicType, ComplexBookingID.class);
     // Delegate request to service.
     boolean lResult = rESTProductService.processComplexBookingID(pComplextBookingID);
     // Validate response and return it.
@@ -436,13 +431,7 @@ public class RESTProductServiceResource {
       @HeaderParam("BookingCode") String pBookingCodeAsBasicType,
       @HeaderParam("DoubleCode") Double pDoubleCodeAsBasicType ) {
     // Convert basic type parameters into "real" objects.
-    BookingID pBookingID;
-    if (pBookingIDAsBasicType != null) {
-      pBookingID = this.deserializeCompositeDataType(pBookingIDAsBasicType, BookingID.class);
-    }
-    else {
-      pBookingID = null;
-    }
+    BookingID pBookingID = this.deserializeCompositeDataType(pBookingIDAsBasicType, BookingID.class);
     BookingCode pBookingCode;
     if (pBookingCodeAsBasicType != null) {
       pBookingCode = BookingCode.builder().setCode(pBookingCodeAsBasicType).build();
@@ -685,13 +674,7 @@ public class RESTProductServiceResource {
   @PATCH
   public Response testBookingIDAsPathParam( @PathParam("bookingID") String pBookingIDAsBasicType ) {
     // Convert basic type parameters into "real" objects.
-    BookingID pBookingID;
-    if (pBookingIDAsBasicType != null) {
-      pBookingID = this.deserializeCompositeDataType(pBookingIDAsBasicType, BookingID.class);
-    }
-    else {
-      pBookingID = null;
-    }
+    BookingID pBookingID = this.deserializeCompositeDataType(pBookingIDAsBasicType, BookingID.class);
     // Delegate request to service.
     rESTProductService.testBookingIDAsPathParam(pBookingID);
     return Response.status(Response.Status.NO_CONTENT).build();
@@ -704,13 +687,7 @@ public class RESTProductServiceResource {
   @PATCH
   public Response testBookingIDAsHeaderParam( @HeaderParam("bookingID") String pBookingIDAsBasicType ) {
     // Convert basic type parameters into "real" objects.
-    BookingID pBookingID;
-    if (pBookingIDAsBasicType != null) {
-      pBookingID = this.deserializeCompositeDataType(pBookingIDAsBasicType, BookingID.class);
-    }
-    else {
-      pBookingID = null;
-    }
+    BookingID pBookingID = this.deserializeCompositeDataType(pBookingIDAsBasicType, BookingID.class);
     // Delegate request to service.
     rESTProductService.testBookingIDAsHeaderParam(pBookingID);
     return Response.status(Response.Status.NO_CONTENT).build();
