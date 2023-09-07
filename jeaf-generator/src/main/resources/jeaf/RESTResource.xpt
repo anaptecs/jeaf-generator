@@ -251,17 +251,7 @@ public class «name»Resource {
 					«ENDIF»
 	    		«ELSE»
 	    			«IF basicParam.isMultivalued() == false»
-		    			«IF basicParam.type.isPrimitiveType() == false»
-		    			«basicParam.type.fqn()» «basicParam.name»;
-		    			if («basicParam.name»AsBasicType != null) {
-		    			  «basicParam.name» = this.deserializeCompositeDataType(«basicParam.name»AsBasicType, «basicParam.type.fqn()».class);
-		    			}
-                        else {
-                          «basicParam.name» = null;
-                        }
-                        «ELSE»
-                            «basicParam.type.fqn()» «basicParam.name» = this.deserializeCompositeDataType(«basicParam.name»AsBasicType, «basicParam.type.fqn()».class);
-                        «ENDIF»
+                        «basicParam.type.fqn()» «basicParam.name» = this.deserializeCompositeDataType(«basicParam.name»AsBasicType, «basicParam.type.fqn()».class);
 			    	«ELSE»
 		    			«basicParam.getCollectionType()»<«basicParam.type.fqn()»> «basicParam.name»;
 					    if («basicParam.name»AsBasicType != null) {
@@ -400,7 +390,7 @@ public class «name»Resource {
 		  				}
 		  			«ELSE»
 		  				«IF attribute.isMultivalued() == false»
-		  					«IF attribute.type.isPrimitiveType() == false»
+		  					«IF attribute.type.attribute().first().type.isPrimitiveType() == false»
 			  					if(«attribute.asParameter()»AsBasicType != null) {
 			  					  «beanParam.name.toLocalVar()»Builder.«attribute.asSetter()»(«attribute.type.fqn()».builder().set«attribute.type.attribute().first().name.toFirstUpper()»(«attribute.asParameter()»AsBasicType).build());
 			  					}
@@ -546,17 +536,7 @@ public class «name»Resource {
                     «ENDIF»
 	    		«ELSE»
 	    			«IF basicParam.isMultivalued() == false»
-	    				«IF basicParam.type.isPrimitiveType() == false»
-		    				«basicParam.type.fqn()» «basicParam.name»;
-		    				if («basicParam.name»AsBasicType != null) {
-		    				  «basicParam.name» = this.deserializeCompositeDataType(«basicParam.name»AsBasicType, «basicParam.type.fqn()».class);
-		    				}
-		    				else {
-		    				  «basicParam.name» = null;
-		    				}
-	    				«ELSE»
-	    				     «basicParam.type.fqn()» «basicParam.name» = this.deserializeCompositeDataType(«basicParam.name»AsBasicType, «basicParam.type.fqn()».class);
-	    				«ENDIF»
+    				     «basicParam.type.fqn()» «basicParam.name» = this.deserializeCompositeDataType(«basicParam.name»AsBasicType, «basicParam.type.fqn()».class);
 	    			«ELSE»
 					    «basicParam.getCollectionType()»<«basicParam.type.fqn()»> «basicParam.name»;
 					    if («basicParam.name»AsBasicType != null) {
