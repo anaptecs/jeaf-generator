@@ -231,7 +231,13 @@ public class RESTProductServiceResource {
   public List<CurrencyCode> getSupportedCurrencies(
       @PathVariable(name = "channelCode", required = true) String pChannelCodeAsBasicType ) {
     // Convert basic type parameters into "real" objects.
-    ChannelCode pChannelCode = ChannelCode.builder().setCode(pChannelCodeAsBasicType).build();
+    ChannelCode pChannelCode;
+    if (pChannelCodeAsBasicType != null) {
+      pChannelCode = ChannelCode.builder().setCode(pChannelCodeAsBasicType).build();
+    }
+    else {
+      pChannelCode = null;
+    }
     // Validate request parameter(s).
     validationExecutor.validateRequest(RESTProductService.class, pChannelCode);
     // Delegate request to service.
@@ -249,7 +255,13 @@ public class RESTProductServiceResource {
   public List<CurrencyCode> getSupportedCurrenciesAsync(
       @PathVariable(name = "channelCode", required = true) String pChannelCodeAsBasicType ) {
     // Convert basic type parameters into "real" objects.
-    ChannelCode pChannelCode = ChannelCode.builder().setCode(pChannelCodeAsBasicType).build();
+    ChannelCode pChannelCode;
+    if (pChannelCodeAsBasicType != null) {
+      pChannelCode = ChannelCode.builder().setCode(pChannelCodeAsBasicType).build();
+    }
+    else {
+      pChannelCode = null;
+    }
     // Validate request parameter(s).
     validationExecutor.validateRequest(RESTProductService.class, pChannelCode);
     // Delegate request to service.
@@ -782,8 +794,13 @@ public class RESTProductServiceResource {
   public boolean processComplexBookingID(
       @PathVariable(name = "bookingID", required = true) String pComplextBookingIDAsBasicType ) {
     // Convert basic type parameters into "real" objects.
-    ComplexBookingID pComplextBookingID =
-        this.deserializeCompositeDataType(pComplextBookingIDAsBasicType, ComplexBookingID.class);
+    ComplexBookingID pComplextBookingID;
+    if (pComplextBookingIDAsBasicType != null) {
+      pComplextBookingID = this.deserializeCompositeDataType(pComplextBookingIDAsBasicType, ComplexBookingID.class);
+    }
+    else {
+      pComplextBookingID = null;
+    }
     // Validate request parameter(s).
     validationExecutor.validateRequest(RESTProductService.class, pComplextBookingID);
     // Delegate request to service.
@@ -803,9 +820,27 @@ public class RESTProductServiceResource {
       @RequestHeader(name = "BookingCode", required = true) String pBookingCodeAsBasicType,
       @RequestHeader(name = "DoubleCode", required = true) Double pDoubleCodeAsBasicType ) {
     // Convert basic type parameters into "real" objects.
-    BookingID pBookingID = this.deserializeCompositeDataType(pBookingIDAsBasicType, BookingID.class);
-    BookingCode pBookingCode = BookingCode.builder().setCode(pBookingCodeAsBasicType).build();
-    DoubleCode pDoubleCode = DoubleCode.builder().setCode(pDoubleCodeAsBasicType).build();
+    BookingID pBookingID;
+    if (pBookingIDAsBasicType != null) {
+      pBookingID = this.deserializeCompositeDataType(pBookingIDAsBasicType, BookingID.class);
+    }
+    else {
+      pBookingID = null;
+    }
+    BookingCode pBookingCode;
+    if (pBookingCodeAsBasicType != null) {
+      pBookingCode = BookingCode.builder().setCode(pBookingCodeAsBasicType).build();
+    }
+    else {
+      pBookingCode = null;
+    }
+    DoubleCode pDoubleCode;
+    if (pDoubleCodeAsBasicType != null) {
+      pDoubleCode = DoubleCode.builder().setCode(pDoubleCodeAsBasicType).build();
+    }
+    else {
+      pDoubleCode = null;
+    }
     // Validate request parameter(s).
     validationExecutor.validateRequest(RESTProductService.class, pBookingID, pBookingCode, pDoubleCode);
     // Delegate request to service.
@@ -832,9 +867,13 @@ public class RESTProductServiceResource {
       lContextBuilder.setBookingID(this.deserializeCompositeDataType(pBookingIDAsBasicType, BookingID.class));
     }
     // Handle bean parameter pContext.bookingCode
-    lContextBuilder.setBookingCode(BookingCode.builder().setCode(pBookingCodeAsBasicType).build());
+    if (pBookingCodeAsBasicType != null) {
+      lContextBuilder.setBookingCode(BookingCode.builder().setCode(pBookingCodeAsBasicType).build());
+    }
     // Handle bean parameter pContext.doubleCode
-    lContextBuilder.setDoubleCode(DoubleCode.builder().setCode(pDoubleCodeAsBasicType).build());
+    if (pDoubleCodeAsBasicType != null) {
+      lContextBuilder.setDoubleCode(DoubleCode.builder().setCode(pDoubleCodeAsBasicType).build());
+    }
     AdvancedHeader pContext = lContextBuilder.build();
     // Validate request parameter(s).
     validationExecutor.validateRequest(RESTProductService.class, pContext);
@@ -868,7 +907,13 @@ public class RESTProductServiceResource {
   public String testDataTypeAsQueryParam(
       @RequestParam(name = "bookingCode", required = true) String pBookingCodeAsBasicType ) {
     // Convert basic type parameters into "real" objects.
-    BookingCode pBookingCode = BookingCode.builder().setCode(pBookingCodeAsBasicType).build();
+    BookingCode pBookingCode;
+    if (pBookingCodeAsBasicType != null) {
+      pBookingCode = BookingCode.builder().setCode(pBookingCodeAsBasicType).build();
+    }
+    else {
+      pBookingCode = null;
+    }
     // Validate request parameter(s).
     validationExecutor.validateRequest(RESTProductService.class, pBookingCode);
     // Delegate request to service.
@@ -890,7 +935,9 @@ public class RESTProductServiceResource {
     // service interface but "only" our REST controller.
     QueryBeanParam.Builder lBeanParamBuilder = QueryBeanParam.builder();
     // Handle bean parameter pBeanParam.bookingCode
-    lBeanParamBuilder.setBookingCode(BookingCode.builder().setCode(pBookingCodeAsBasicType).build());
+    if (pBookingCodeAsBasicType != null) {
+      lBeanParamBuilder.setBookingCode(BookingCode.builder().setCode(pBookingCodeAsBasicType).build());
+    }
     lBeanParamBuilder.setMaxResults(pMaxResults);
     QueryBeanParam pBeanParam = lBeanParamBuilder.build();
     // Validate request parameter(s).
@@ -1339,7 +1386,13 @@ public class RESTProductServiceResource {
   public void testBookingIDAsPathParam(
       @PathVariable(name = "bookingID", required = true) String pBookingIDAsBasicType ) {
     // Convert basic type parameters into "real" objects.
-    BookingID pBookingID = this.deserializeCompositeDataType(pBookingIDAsBasicType, BookingID.class);
+    BookingID pBookingID;
+    if (pBookingIDAsBasicType != null) {
+      pBookingID = this.deserializeCompositeDataType(pBookingIDAsBasicType, BookingID.class);
+    }
+    else {
+      pBookingID = null;
+    }
     // Validate request parameter(s).
     validationExecutor.validateRequest(RESTProductService.class, pBookingID);
     // Delegate request to service.
@@ -1354,7 +1407,13 @@ public class RESTProductServiceResource {
   public void testBookingIDAsHeaderParam(
       @RequestHeader(name = "bookingID", required = false) String pBookingIDAsBasicType ) {
     // Convert basic type parameters into "real" objects.
-    BookingID pBookingID = this.deserializeCompositeDataType(pBookingIDAsBasicType, BookingID.class);
+    BookingID pBookingID;
+    if (pBookingIDAsBasicType != null) {
+      pBookingID = this.deserializeCompositeDataType(pBookingIDAsBasicType, BookingID.class);
+    }
+    else {
+      pBookingID = null;
+    }
     // Validate request parameter(s).
     validationExecutor.validateRequest(RESTProductService.class, pBookingID);
     // Delegate request to service.
