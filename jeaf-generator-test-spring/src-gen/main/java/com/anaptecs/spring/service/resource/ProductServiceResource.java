@@ -136,6 +136,7 @@ public class ProductServiceResource {
       @CookieValue(name = "reseller", required = true) long pResellerID,
       @PathVariable(name = "id", required = true) long pPathParam,
       @RequestParam(name = "q1", required = true) String pQueryParam, String pLang,
+      @RequestHeader(name = "intCode", required = true) int pIntCodeAsBasicType,
       @RequestHeader Map<String, String> pHeaders ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
@@ -146,6 +147,8 @@ public class ProductServiceResource {
     lContextBuilder.setPathParam(pPathParam);
     lContextBuilder.setQueryParam(pQueryParam);
     lContextBuilder.setLang(pLang);
+    // Handle bean parameter pContext.intCode
+    lContextBuilder.setIntCode(IntegerCodeType.builder().setCode(pIntCodeAsBasicType).build());
     Context pContext = lContextBuilder.build();
     // Add custom headers.
     for (Map.Entry<String, String> lNextEntry : pHeaders.entrySet()) {
@@ -319,6 +322,7 @@ public class ProductServiceResource {
       @CookieValue(name = "reseller", required = true) long pResellerID,
       @PathVariable(name = "id", required = true) long pPathParam,
       @RequestParam(name = "q1", required = true) String pQueryParam, String pLang,
+      @RequestHeader(name = "intCode", required = true) int pIntCodeAsBasicType,
       @RequestHeader(name = "specificHeader", required = true) String pSpecificHeader,
       @CookieValue(name = "Channel-Type", required = true) ChannelType pChannelType,
       @RequestHeader Map<String, String> pHeaders ) {
@@ -331,6 +335,8 @@ public class ProductServiceResource {
     lContextBuilder.setPathParam(pPathParam);
     lContextBuilder.setQueryParam(pQueryParam);
     lContextBuilder.setLang(pLang);
+    // Handle bean parameter pContext.intCode
+    lContextBuilder.setIntCode(IntegerCodeType.builder().setCode(pIntCodeAsBasicType).build());
     lContextBuilder.setSpecificHeader(pSpecificHeader);
     lContextBuilder.setChannelType(pChannelType);
     SpecialContext pContext = lContextBuilder.build();

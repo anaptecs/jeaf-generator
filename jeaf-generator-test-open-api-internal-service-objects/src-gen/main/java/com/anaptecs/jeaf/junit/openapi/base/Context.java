@@ -52,6 +52,10 @@ public class Context implements ServiceObject {
   @NotNull
   private String queryParam;
 
+  @HeaderParam("intCode")
+  @Valid
+  private IntegerCodeType intCode;
+
   /**
    * Map contains all custom headers that were set on the object.
    */
@@ -78,6 +82,7 @@ public class Context implements ServiceObject {
     resellerID = pBuilder.resellerID;
     pathParam = pBuilder.pathParam;
     queryParam = pBuilder.queryParam;
+    intCode = pBuilder.intCode;
   }
 
   /**
@@ -127,16 +132,19 @@ public class Context implements ServiceObject {
    *
    * @param pQueryParam Value to which {@link #queryParam} should be set.
    *
+   * @param pIntCode Value to which {@link #intCode} should be set.
+   *
    * @return {@link Context}
    */
   public static Context of( String pAccessToken, Locale pLanguage, long pResellerID, long pPathParam,
-      String pQueryParam ) {
+      String pQueryParam, IntegerCodeType pIntCode ) {
     Context.Builder lBuilder = Context.builder();
     lBuilder.setAccessToken(pAccessToken);
     lBuilder.setLanguage(pLanguage);
     lBuilder.setResellerID(pResellerID);
     lBuilder.setPathParam(pPathParam);
     lBuilder.setQueryParam(pQueryParam);
+    lBuilder.setIntCode(pIntCode);
     return lBuilder.build();
   }
 
@@ -159,6 +167,9 @@ public class Context implements ServiceObject {
 
     private String queryParam;
 
+    @Valid
+    private IntegerCodeType intCode;
+
     /**
      * Use {@link Context#builder()} instead of private constructor to create new builder.
      */
@@ -176,6 +187,7 @@ public class Context implements ServiceObject {
         resellerID = pObject.resellerID;
         pathParam = pObject.pathParam;
         queryParam = pObject.queryParam;
+        intCode = pObject.intCode;
       }
     }
 
@@ -236,6 +248,18 @@ public class Context implements ServiceObject {
     public Builder setQueryParam( String pQueryParam ) {
       // Assign value to attribute
       queryParam = pQueryParam;
+      return this;
+    }
+
+    /**
+     * Method sets attribute {@link #intCode}.<br/>
+     *
+     * @param pIntCode Value to which {@link #intCode} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    public Builder setIntCode( IntegerCodeType pIntCode ) {
+      // Assign value to attribute
+      intCode = pIntCode;
       return this;
     }
 
@@ -358,6 +382,25 @@ public class Context implements ServiceObject {
   }
 
   /**
+   * Method returns attribute {@link #intCode}.<br/>
+   *
+   * @return {@link IntegerCodeType} Value to which {@link #intCode} is set.
+   */
+  public IntegerCodeType getIntCode( ) {
+    return intCode;
+  }
+
+  /**
+   * Method sets attribute {@link #intCode}.<br/>
+   *
+   * @param pIntCode Value to which {@link #intCode} should be set.
+   */
+  public void setIntCode( IntegerCodeType pIntCode ) {
+    // Assign value to attribute
+    intCode = pIntCode;
+  }
+
+  /**
    * Method returns map with all custom headers that were added
    *
    * @return {@link Map} Map with all custom headers. The method never returns null. The returned map is unmodifiable.
@@ -412,6 +455,10 @@ public class Context implements ServiceObject {
     lBuilder.append(pIndent);
     lBuilder.append("queryParam: ");
     lBuilder.append(queryParam);
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("intCode: ");
+    lBuilder.append(intCode);
     lBuilder.append(System.lineSeparator());
     return lBuilder;
   }

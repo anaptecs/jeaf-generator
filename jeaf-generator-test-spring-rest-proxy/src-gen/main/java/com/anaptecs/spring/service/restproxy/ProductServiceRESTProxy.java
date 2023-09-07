@@ -192,6 +192,9 @@ public class ProductServiceRESTProxy implements ProductService {
       if (pContext.getLanguage() != null) {
         lRequestBuilder.setHeader("lang", pContext.getLanguage().toString());
       }
+      if (pContext.getIntCode() != null) {
+        lRequestBuilder.setHeader("intCode", pContext.getIntCode().getCode());
+      }
     }
     // Handle cookie parameters
     if (pContext != null) {
@@ -484,6 +487,9 @@ public class ProductServiceRESTProxy implements ProductService {
       }
       if (pContext.getLanguage() != null) {
         lRequestBuilder.setHeader("lang", pContext.getLanguage().toString());
+      }
+      if (pContext.getIntCode() != null) {
+        lRequestBuilder.setHeader("intCode", pContext.getIntCode().getCode());
       }
       if (pContext.getSpecificHeader() != null) {
         lRequestBuilder.setHeader("specificHeader", pContext.getSpecificHeader());

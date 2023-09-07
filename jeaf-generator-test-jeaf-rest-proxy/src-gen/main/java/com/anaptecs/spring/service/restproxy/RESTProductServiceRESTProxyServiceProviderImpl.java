@@ -191,6 +191,9 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
         lRequestBuilder.setHeader("lang", XFun.getDatatypeConverterRegistry().getConverter(Locale.class, String.class)
             .convert(pContext.getLanguage()));
       }
+      if (pContext.getIntCode() != null) {
+        lRequestBuilder.setHeader("intCode", pContext.getIntCode().getCode());
+      }
     }
     // Handle cookie parameters
     if (pContext != null) {
@@ -732,6 +735,9 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
       if (pContext.getLanguage() != null) {
         lRequestBuilder.setHeader("lang", XFun.getDatatypeConverterRegistry().getConverter(Locale.class, String.class)
             .convert(pContext.getLanguage()));
+      }
+      if (pContext.getIntCode() != null) {
+        lRequestBuilder.setHeader("intCode", pContext.getIntCode().getCode());
       }
       if (pContext.getSpecificHeader() != null) {
         lRequestBuilder.setHeader("specificHeader", pContext.getSpecificHeader());

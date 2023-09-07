@@ -322,4 +322,9 @@ public interface ProductService extends Service {
    */
   void testDataTypeWithRestrition( StringCode pStringCode, Set<ShortCode> pShortCodes,
       @Min(value = 32) Byte pJustAByte );
+
+  /**
+   * @param pContext
+   */
+  void testContext( Context pContext );
 }
