@@ -6,6 +6,7 @@
 «EXTENSION java::OpenAPIFunctions»
 
 «EXTENSION functions::RESTResource»
+«EXTENSION functions::Operation»
 
 
 «IMPORT uml»
@@ -346,6 +347,9 @@ public class «name»Resource {
 	/**
 	 * {@link «this.getOwningClass().fqn()»#«name»()}
 	 */
+	«IF isTargetRuntimeSpring() && generateSecurityAnnotation() && hasSecurityRoles()»
+	@org.springframework.security.access.annotation.Secured({«FOREACH getSecurityRoles() AS role SEPARATOR ", " » "«role»" «ENDFOREACH»})
+	«ENDIF»
 	@org.springframework.web.bind.annotation.ResponseStatus(org.springframework.http.HttpStatus.«getJAXRSStatusCodeName(this.getStatusCodeName())»)
 	@org.springframework.web.bind.annotation.RequestMapping(
 	«IF path.length > 0»path = "«path»",«ENDIF»
