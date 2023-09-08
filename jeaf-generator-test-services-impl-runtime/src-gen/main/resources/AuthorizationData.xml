@@ -202,6 +202,48 @@
         <UseCaseDefinitionRef ucRef="ID_Searchcustomer" />
     </RoleDefinition>
 
+    <RoleDefinition name="Customer">
+        <AuthorizationTypeRef authRef="getProducts.com.anaptecs.spring.service.RESTProductService" />
+        <AuthorizationTypeRef authRef="ping.com.anaptecs.spring.service.RESTProductService" />
+    </RoleDefinition>
+
+    <RoleDefinition name="Sales Agent">
+        <AuthorizationTypeRef authRef="createChannelCode.com.anaptecs.spring.service.RESTProductService" />
+        <AuthorizationTypeRef authRef="createProduct.com.anaptecs.spring.service.RESTProductService" />
+        <AuthorizationTypeRef authRef="getProduct.com.anaptecs.spring.service.RESTProductService" />
+        <AuthorizationTypeRef authRef="getProducts.com.anaptecs.spring.service.RESTProductService" />
+        <AuthorizationTypeRef authRef="getSortiment.com.anaptecs.spring.service.RESTProductService" />
+        <AuthorizationTypeRef authRef="getSupportedCurrencies.com.anaptecs.spring.service.RESTProductService" />
+        <AuthorizationTypeRef authRef="getSupportedCurrenciesAsync.com.anaptecs.spring.service.RESTProductService" />
+        <AuthorizationTypeRef authRef="ping.com.anaptecs.spring.service.RESTProductService" />
+        <AuthorizationTypeRef authRef="processComplexBookingID.com.anaptecs.spring.service.RESTProductService" />
+        <AuthorizationTypeRef authRef="testBookingIDAsHeaderParam.com.anaptecs.spring.service.RESTProductService" />
+        <AuthorizationTypeRef authRef="testBookingIDAsPathParam.com.anaptecs.spring.service.RESTProductService" />
+        <AuthorizationTypeRef authRef="testCookieParams.com.anaptecs.spring.service.RESTProductService" />
+        <AuthorizationTypeRef authRef="testDataTypeAsBeanQueryParam.com.anaptecs.spring.service.RESTProductService" />
+        <AuthorizationTypeRef authRef="testDataTypeAsQueryParam.com.anaptecs.spring.service.RESTProductService" />
+        <AuthorizationTypeRef authRef="testDataTypesAsHeaderBeanParam.com.anaptecs.spring.service.RESTProductService" />
+        <AuthorizationTypeRef authRef="testDataTypesAsHeaderParam.com.anaptecs.spring.service.RESTProductService" />
+        <AuthorizationTypeRef authRef="testDateHeaderParams.com.anaptecs.spring.service.RESTProductService" />
+        <AuthorizationTypeRef authRef="testDateHeaderParamsBean.com.anaptecs.spring.service.RESTProductService" />
+        <AuthorizationTypeRef authRef="testDateQueryParams.com.anaptecs.spring.service.RESTProductService" />
+        <AuthorizationTypeRef authRef="testDateQueryParamsBean.com.anaptecs.spring.service.RESTProductService" />
+        <AuthorizationTypeRef authRef="testEnumHeaderParams.com.anaptecs.spring.service.RESTProductService" />
+        <AuthorizationTypeRef authRef="testEnumParams.com.anaptecs.spring.service.RESTProductService" />
+        <AuthorizationTypeRef authRef="testInit.com.anaptecs.spring.service.RESTProductService" />
+        <AuthorizationTypeRef authRef="testMulitvaluedDataTypeAsBeanQueryParam.com.anaptecs.spring.service.RESTProductService" />
+        <AuthorizationTypeRef authRef="testMulitvaluedDataTypeAsQueryParam.com.anaptecs.spring.service.RESTProductService" />
+        <AuthorizationTypeRef authRef="testMultiValuedHeaderFields.com.anaptecs.spring.service.RESTProductService" />
+        <AuthorizationTypeRef authRef="testMultiValuedHeaderFieldsInBeanParam.com.anaptecs.spring.service.RESTProductService" />
+        <AuthorizationTypeRef authRef="testMultivaluedQueryParamsBean.com.anaptecs.spring.service.RESTProductService" />
+        <AuthorizationTypeRef authRef="testOptionalQueryParams.com.anaptecs.spring.service.RESTProductService" />
+        <AuthorizationTypeRef authRef="testParams.com.anaptecs.spring.service.RESTProductService" />
+        <AuthorizationTypeRef authRef="testPrimitiveArrayAsQueryParam.com.anaptecs.spring.service.RESTProductService" />
+        <AuthorizationTypeRef authRef="testPrimitiveArrays.com.anaptecs.spring.service.RESTProductService" />
+        <AuthorizationTypeRef authRef="testPrimitiveWrapperArrayAsQueryParam.com.anaptecs.spring.service.RESTProductService" />
+        <AuthorizationTypeRef authRef="testSimpleTypesAsQueryParams.com.anaptecs.spring.service.RESTProductService" />
+    </RoleDefinition>
+
     <RoleDefinition name="Standard User">
         <AuthorizationTypeRef authRef="checkCurrentAnonymousUser.com.anaptecs.jeaf.junit.core.JEAFSecurityTestService" />
         <AuthorizationTypeRef authRef="checkCurrentUser.com.anaptecs.jeaf.junit.core.JEAFSecurityTestService" />

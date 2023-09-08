@@ -111,7 +111,6 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#getProducts()}
    */
-  // [Customer, Sales Agent]
   @Secured({ "Customer", "Sales Agent" })
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(method = { RequestMethod.GET })
@@ -128,7 +127,6 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#getProduct()}
    */
-  // [Sales Agent]
   @Secured({ "Sales Agent" })
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "{id}", method = { RequestMethod.GET })
@@ -145,7 +143,6 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#createProduct()}
    */
-  // [Sales Agent]
   @Secured({ "Sales Agent" })
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(method = { RequestMethod.POST })
@@ -162,7 +159,6 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#getSortiment()}
    */
-  // [Sales Agent]
   @Secured({ "Sales Agent" })
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "sortiment/{id}", method = { RequestMethod.GET })
@@ -203,7 +199,6 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#createChannelCode()}
    */
-  // [Sales Agent]
   @Secured({ "Sales Agent" })
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "ChannelCode", method = { RequestMethod.POST })
@@ -220,7 +215,6 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#ping()}
    */
-  // [Customer, Sales Agent]
   @Secured({ "Customer", "Sales Agent" })
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(method = { RequestMethod.HEAD })
@@ -232,7 +226,6 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testInit()}
    */
-  // [Sales Agent]
   @Secured({ "Sales Agent" })
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(path = "test-init", method = { RequestMethod.GET })
@@ -244,7 +237,6 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#getSupportedCurrencies()}
    */
-  // [Sales Agent]
   @Secured({ "Sales Agent" })
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "currencies/{channelCode}", method = { RequestMethod.GET })
@@ -270,7 +262,6 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#getSupportedCurrenciesAsync()}
    */
-  // [Sales Agent]
   @Secured({ "Sales Agent" })
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "async-currencies/{channelCode}", method = { RequestMethod.GET })
@@ -296,7 +287,6 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testParams()}
    */
-  // [Sales Agent]
   @Secured({ "Sales Agent" })
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "test-params", method = { RequestMethod.GET })
@@ -315,7 +305,6 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testEnumParams()}
    */
-  // [Sales Agent]
   @Secured({ "Sales Agent" })
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(path = "test-enum-params/{channelType}", method = { RequestMethod.GET })
@@ -331,7 +320,6 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testEnumHeaderParams()}
    */
-  // [Sales Agent]
   @Secured({ "Sales Agent" })
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(path = "test-enum-header-params", method = { RequestMethod.GET })
@@ -347,7 +335,6 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testDateQueryParams()}
    */
-  // [Sales Agent]
   @Secured({ "Sales Agent" })
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(path = "test-date-query-params/{path}", method = { RequestMethod.GET })
@@ -477,7 +464,6 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testDateQueryParamsBean()}
    */
-  // [Sales Agent]
   @Secured({ "Sales Agent" })
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(path = "test-date-query-params-beans/{path}", method = { RequestMethod.GET })
@@ -559,7 +545,6 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testDateHeaderParams()}
    */
-  // [Sales Agent]
   @Secured({ "Sales Agent" })
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(path = "test-date-header-params/{path}", method = { RequestMethod.GET })
@@ -686,7 +671,6 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testDateHeaderParamsBean()}
    */
-  // [Sales Agent]
   @Secured({ "Sales Agent" })
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(path = "test-date-header-params-beans/{path}", method = { RequestMethod.GET })
@@ -768,7 +752,6 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testCookieParams()}
    */
-  // [Sales Agent]
   @Secured({ "Sales Agent" })
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(path = "cookies", method = { RequestMethod.GET })
@@ -813,7 +796,6 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testOptionalQueryParams()}
    */
-  // [Sales Agent]
   @Secured({ "Sales Agent" })
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "test-optional-query-params", method = { RequestMethod.GET })
@@ -832,7 +814,6 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#processComplexBookingID()}
    */
-  // [Sales Agent]
   @Secured({ "Sales Agent" })
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "complex/{bookingID}", method = { RequestMethod.GET })
@@ -853,7 +834,6 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testDataTypesAsHeaderParam()}
    */
-  // [Sales Agent]
   @Secured({ "Sales Agent" })
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "dataTypesInHeader", method = { RequestMethod.GET })
@@ -889,7 +869,6 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testDataTypesAsHeaderBeanParam()}
    */
-  // [Sales Agent]
   @Secured({ "Sales Agent" })
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "dataTypesInBeanHeader", method = { RequestMethod.GET })
@@ -925,7 +904,6 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testPrimitiveArrays()}
    */
-  // [Sales Agent]
   @Secured({ "Sales Agent" })
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "testPrimitiveArrayAsBody", method = { RequestMethod.POST })
@@ -942,7 +920,6 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testDataTypeAsQueryParam()}
    */
-  // [Sales Agent]
   @Secured({ "Sales Agent" })
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "testDataTypeAsQueryParam", method = { RequestMethod.GET })
@@ -968,7 +945,6 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testDataTypeAsBeanQueryParam()}
    */
-  // [Sales Agent]
   @Secured({ "Sales Agent" })
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "testDataTypeAsBeanQueryParam", method = { RequestMethod.GET })
@@ -996,7 +972,6 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testPrimitiveArrayAsQueryParam()}
    */
-  // [Sales Agent]
   @Secured({ "Sales Agent" })
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "testPrimitiveArrayAsQueryParam", method = { RequestMethod.GET })
@@ -1013,7 +988,6 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testSimpleTypesAsQueryParams()}
    */
-  // [Sales Agent]
   @Secured({ "Sales Agent" })
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "testSimpleTypesAsQueryParams", method = { RequestMethod.GET })
@@ -1031,7 +1005,6 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testPrimitiveWrapperArrayAsQueryParam()}
    */
-  // [Sales Agent]
   @Secured({ "Sales Agent" })
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "testPrimitiveWrapperArrayAsQueryParam", method = { RequestMethod.GET })
@@ -1049,7 +1022,6 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testMultivaluedQueryParamsBean()}
    */
-  // [Sales Agent]
   @Secured({ "Sales Agent" })
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "testMultivaluedQueryParamsBean", method = { RequestMethod.GET })
@@ -1075,7 +1047,6 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testMulitvaluedDataTypeAsQueryParam()}
    */
-  // [Sales Agent]
   @Secured({ "Sales Agent" })
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "testMulitvaluedDataTypeAsQueryParam", method = { RequestMethod.GET })
@@ -1151,7 +1122,6 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testMulitvaluedDataTypeAsBeanQueryParam()}
    */
-  // [Sales Agent]
   @Secured({ "Sales Agent" })
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "testMulitvaluedDataTypeAsBeanQueryParam", method = { RequestMethod.GET })
@@ -1266,7 +1236,6 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testMultiValuedHeaderFieldsInBeanParam()}
    */
-  // [Sales Agent]
   @Secured({ "Sales Agent" })
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "testMultiValuedHeaderFieldsInBeanParam", method = { RequestMethod.GET })
@@ -1377,7 +1346,6 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testMultiValuedHeaderFields()}
    */
-  // [Sales Agent]
   @Secured({ "Sales Agent" })
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "testMultiValuedHeaderFields", method = { RequestMethod.GET })
@@ -1441,7 +1409,6 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testBookingIDAsPathParam()}
    */
-  // [Sales Agent]
   @Secured({ "Sales Agent" })
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(path = "booking-id-as-path-param/{bookingID}", method = { RequestMethod.PATCH })
@@ -1458,7 +1425,6 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testBookingIDAsHeaderParam()}
    */
-  // [Sales Agent]
   @Secured({ "Sales Agent" })
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(path = "booking-id-as-header-param", method = { RequestMethod.PATCH })
