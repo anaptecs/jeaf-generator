@@ -78,6 +78,7 @@ public class PathlessServiceResource {
   /**
    * {@link PathlessService#getSomething()}
    */
+  // []
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "doSomething", method = { RequestMethod.GET })
   public String getSomething( ) {
@@ -91,6 +92,7 @@ public class PathlessServiceResource {
   /**
    * {@link PathlessService#processTechParam()}
    */
+  // []
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(path = "processTechParam", method = { RequestMethod.POST })
   public void processTechParam( @RequestHeader(name = "names", required = false) String[] pNames,
@@ -198,6 +200,7 @@ public class PathlessServiceResource {
   /**
    * {@link PathlessService#testQueryBeanParam()}
    */
+  // []
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "test-query-bean-param", method = { RequestMethod.GET })
   public String testQueryBeanParam( @RequestParam(name = "longCodes", required = false) Long[] pLongCodesAsBasicType,
