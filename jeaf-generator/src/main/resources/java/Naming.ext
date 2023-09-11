@@ -3,6 +3,7 @@ extension java::OpenAPIFunctions;
 extension functions::JEAFDeprecated;
 extension functions::Class;
 extension functions::TemplateParameter;
+extension functions::Operation;
 
 // Function returns the name of the parameter for a java method accoring to the anaptecs code styleguide. For the 
 // element "name" the function will return "pName".
@@ -148,7 +149,7 @@ String getComment(uml::Comment comment):
     comment.body;
     
 boolean hasComment(uml::Element element):
-    getComment(element).length > 0 || (element.isJEAFDeprecated() && ((uml::NamedElement) element).hasMeaningfulDeprecationInfo()) || element.hasAliasAttributeName();
+    getComment(element).length > 0 || (element.isOperation() && element.asOperation().hasSecurityRoles()) || (element.isJEAFDeprecated() && ((uml::NamedElement) element).hasMeaningfulDeprecationInfo()) || element.hasAliasAttributeName();
 
 String getComment(Object this): "";
 

@@ -77,6 +77,9 @@ cached boolean generateServiceProviderImpls() :
 cached boolean generateRESTResources() :    
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateRESTResources();
     
+cached boolean generateSecurityAnnotation() :    
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateSecurityAnnotation();
+    
 cached boolean generateRESTRequestValidation() :    
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateRESTRequestValidation();
     

@@ -82,6 +82,8 @@ public class GeneratorCommons {
    */
   public static final String REST_RESOURCES_PROPERTY = "switch.gen.rest.resources";
 
+  public static final String SECURITY_ANNOTATION_PROPERTY = "switch.gen.rest.security.annotation";
+
   public static final String REST_REQUEST_VALIDATION_PROPERTY = "switch.gen.rest.validation.request";
 
   public static final String REST_RESPONSE_VALIDATION_PROPERTY = "switch.gen.rest.validation.response";
@@ -718,6 +720,11 @@ public class GeneratorCommons {
   public static boolean generateRESTResources( ) {
     Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
     return lConfiguration.getConfigurationValue(REST_RESOURCES_PROPERTY, Boolean.TRUE, Boolean.class);
+  }
+
+  public static boolean generateSecurityAnnotation( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(SECURITY_ANNOTATION_PROPERTY, Boolean.TRUE, Boolean.class);
   }
 
   public static boolean generateRESTRequestValidation( ) {
