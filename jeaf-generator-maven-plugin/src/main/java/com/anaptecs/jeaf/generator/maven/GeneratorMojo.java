@@ -253,6 +253,13 @@ public class GeneratorMojo extends AbstractMojo {
   private Boolean generateRESTResources;
 
   /**
+   * Switch defines if target runtime specific security annotations (e.g. @RolesAllowed from JSR-250 or @Secured from
+   * Spring Security) should be generated or not.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean generateSecurityAnnotation;
+
+  /**
    * Switch defines if request validation for REST Resources / Controllers or REST Clients (aka REST Service Proxies)
    * should be generated. If it is enabled then the generated code will have a dependency on one of the following
    * artifacts:
@@ -1196,6 +1203,7 @@ public class GeneratorMojo extends AbstractMojo {
     }
     if (generateRESTResources) {
       lLog.info("Generate REST Resources:                          " + generateRESTResources);
+      lLog.info("Generate REST Security Annotation:                " + generateSecurityAnnotation);
       lLog.info("Generate REST Request Validation:                 " + generateRESTRequestValidation);
       lLog.info("Generate REST Response Validation:                " + generateRESTResponseValidation);
     }
@@ -1486,6 +1494,7 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty("switch.gen.component.impls", generateComponentImpls.toString());
       System.setProperty("switch.gen.service.provider.impls", generateServiceProviderImpls.toString());
       System.setProperty("switch.gen.rest.resources", generateRESTResources.toString());
+      System.setProperty("switch.gen.rest.security.annotation", generateSecurityAnnotation.toString());
       System.setProperty("switch.gen.rest.validation.request", generateRESTRequestValidation.toString());
       System.setProperty("switch.gen.rest.validation.response", generateRESTResponseValidation.toString());
       System.setProperty("switch.gen.rest.filter.custom.headers", filterCustomHeaders.toString());

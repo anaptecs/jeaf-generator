@@ -1,7 +1,17 @@
 extension functions::TypeChecks;
+extension functions::JEAFActor;
 
 cached boolean isOperation(uml::Element element):
     element.isInstanceOf("org.eclipse.uml2.uml.Operation");
     
 cached uml::Operation asOperation(uml::Element element):
     (uml::Operation) element;
+    
+cached boolean hasSecurityRoles(uml::Operation operation):
+    !operation.getSecurityRoles().isEmpty;
+
+cached List[String] getSecurityRoles(uml::Operation operation):
+    operation.getAssociatedActors().addAll(operation.owner.getAssociatedActors()).toSet().name.sortBy(e|e);
+
+
+
