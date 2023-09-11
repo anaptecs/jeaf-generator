@@ -1,8 +1,10 @@
 «EXTENSION functions::Javadoc»
 «EXTENSION functions::JEAFDeprecated»
+«EXTENSION functions::Operation»
 «EXTENSION java::Naming»
 «EXTENSION entity::ModelProperties»
 «EXTENSION java::GeneratorCommons»
+
 
 
 
@@ -21,6 +23,7 @@
 «DEFINE JavadocForOperation FOR uml::Operation»
 /**
     «EXPAND AddComment -»
+    «EXPAND SecurityRolesComment -»
     «FOREACH this.getInputParameters() AS param -»
  * @param «param.name» «param.ownedComment.first().body.replaceAll("\n", "<br/>")» «IF param.isJEAFDeprecated()»<br/><b>Deprecated. </b> <i>«param.getDeprecationDescriptionForJavadoc()» (<b>since:</b> «param.getDeprecatedSince()», <b>removed with:</b> «param.getDeprecationRemoval()»)«ENDIF»    
     «ENDFOREACH -»
@@ -156,6 +159,12 @@
     «FOREACH ownedComment AS comment SEPARATOR "<p/>" -»
  «comment.body.replaceAll("\n", "<br/>")»
     «ENDFOREACH -»«ENDDEFINE»
+
+«DEFINE SecurityRolesComment FOR uml::Operation -»
+    «IF generateSecurityAnnotation() && hasSecurityRoles() -»
+    <p/><b>Authorized Roles:</b> «FOREACH this.getSecurityRoles() AS role SEPARATOR ", "»«role»«ENDFOREACH»
+    «ENDIF -» 
+«ENDDEFINE»
 
 «DEFINE DeprecatedJavadoc FOR uml::NamedElement -»
     «IF this.isJEAFDeprecated() && this.hasMeaningfulDeprecationInfo() -»
