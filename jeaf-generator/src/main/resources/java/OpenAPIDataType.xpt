@@ -187,7 +187,7 @@
 «indent»              example: «((Example) attribute).exampleValue»
                   «ENDIF-»
                   «ENDIF-»
-                  «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("          ") FOR param-»
+                  «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions(indent + "      ") FOR param-»
                   «IF attribute.isDeprecated() || param.isDeprecated() -»
 «indent»            deprecated: true
                   «ENDIF-»
