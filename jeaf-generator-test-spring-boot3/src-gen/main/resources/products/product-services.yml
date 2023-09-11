@@ -1135,6 +1135,7 @@ paths:
     get:
       description: |
         Operation returns all available product.
+        Authorized Roles: Customer, Sales Agent
       operationId: rest.getProducts
       externalDocs:
         url: https://jeaf.anaptecs.de/link2
@@ -1163,6 +1164,9 @@ paths:
           $ref: '#/components/responses/CustomErrorResponse'
     
     post:
+      description: |
+        
+        Authorized Roles: Sales Agent
       operationId: rest.createProduct
       requestBody:
         required: true
@@ -1186,6 +1190,9 @@ paths:
           $ref: '#/components/responses/CustomErrorResponse'
     
     head:
+      description: |
+        
+        Authorized Roles: Customer, Sales Agent
       operationId: rest.ping
       responses:
         '204':
@@ -1199,6 +1206,9 @@ paths:
     
   /rest-products/{id}:
     get:
+      description: |
+        
+        Authorized Roles: Sales Agent
       operationId: rest.getProduct
       parameters:
         - name: id
@@ -1224,6 +1234,9 @@ paths:
     
   /rest-products/sortiment/{id}:
     get:
+      description: |
+        
+        Authorized Roles: Sales Agent
       operationId: rest.getSortiment
       parameters:
         - name: token
@@ -1276,6 +1289,9 @@ paths:
     
   /rest-products/ChannelCode:
     post:
+      description: |
+        
+        Authorized Roles: Sales Agent
       operationId: rest.createChannelCode
       requestBody:
         required: true
@@ -1303,6 +1319,9 @@ paths:
     
   /rest-products/test-init:
     get:
+      description: |
+        
+        Authorized Roles: Sales Agent
       operationId: testInit
       responses:
         '204':
@@ -1316,6 +1335,9 @@ paths:
     
   /rest-products/currencies/{channelCode}:
     get:
+      description: |
+        
+        Authorized Roles: Sales Agent
       operationId: getSupportedCurrencies
       parameters:
         - name: channelCode
@@ -1350,6 +1372,9 @@ paths:
     
   /rest-products/async-currencies/{channelCode}:
     get:
+      description: |
+        
+        Authorized Roles: Sales Agent
       operationId: getSupportedCurrenciesAsync
       parameters:
         - name: channelCode
@@ -1384,6 +1409,9 @@ paths:
     
   /rest-products/test-params:
     get:
+      description: |
+        
+        Authorized Roles: Sales Agent
       operationId: testParams
       parameters:
         - name: Big-Header
@@ -1419,6 +1447,9 @@ paths:
     
   /rest-products/test-enum-params/{channelType}:
     get:
+      description: |
+        
+        Authorized Roles: Sales Agent
       operationId: testEnumParams
       parameters:
         - name: channelType
@@ -1448,6 +1479,9 @@ paths:
     
   /rest-products/test-enum-header-params:
     get:
+      description: |
+        
+        Authorized Roles: Sales Agent
       operationId: testEnumHeaderParams
       parameters:
         - name: Channel-Type
@@ -1477,6 +1511,9 @@ paths:
     
   /rest-products/test-date-query-params/{path}:
     get:
+      description: |
+        
+        Authorized Roles: Sales Agent
       operationId: rest.testDateQueryParams
       parameters:
         - name: path
@@ -1563,6 +1600,9 @@ paths:
     
   /rest-products/test-date-query-params-beans/{path}:
     get:
+      description: |
+        
+        Authorized Roles: Sales Agent
       operationId: rest.testDateQueryParamsBean
       parameters:
         - name: offsetDateTime
@@ -1642,6 +1682,9 @@ paths:
     
   /rest-products/test-date-header-params/{path}:
     get:
+      description: |
+        
+        Authorized Roles: Sales Agent
       operationId: rest.testDateHeaderParams
       parameters:
         - name: path
@@ -1728,6 +1771,9 @@ paths:
     
   /rest-products/test-date-header-params-beans/{path}:
     get:
+      description: |
+        
+        Authorized Roles: Sales Agent
       operationId: rest.testDateHeaderParamsBean
       parameters:
         - name: Offset-Date-Time
@@ -1807,6 +1853,9 @@ paths:
     
   /rest-products/cookies:
     get:
+      description: |
+        
+        Authorized Roles: Sales Agent
       operationId: testCookieParams
       parameters:
         - name: token
@@ -1870,6 +1919,9 @@ paths:
     
   /rest-products/test-optional-query-params:
     get:
+      description: |
+        
+        Authorized Roles: Sales Agent
       operationId: testOptionalQueryParams
       parameters:
         - name: query1
@@ -1899,6 +1951,9 @@ paths:
     
   /rest-products/complex/{bookingID}:
     get:
+      description: |
+        
+        Authorized Roles: Sales Agent
       operationId: processComplexBookingID
       parameters:
         - name: bookingID
@@ -1923,6 +1978,9 @@ paths:
     
   /rest-products/dataTypesInHeader:
     get:
+      description: |
+        
+        Authorized Roles: Sales Agent
       operationId: testDataTypesAsHeaderParam
       parameters:
         - name: BookingID
@@ -1960,6 +2018,9 @@ paths:
     
   /rest-products/dataTypesInBeanHeader:
     get:
+      description: |
+        
+        Authorized Roles: Sales Agent
       operationId: testDataTypesAsHeaderBeanParam
       parameters:
         - name: bookingID
@@ -1997,6 +2058,9 @@ paths:
     
   /rest-products/testPrimitiveArrayAsBody:
     post:
+      description: |
+        
+        Authorized Roles: Sales Agent
       operationId: testPrimitiveArrays
       requestBody:
         required: true
@@ -2023,6 +2087,9 @@ paths:
     
   /rest-products/testDataTypeAsQueryParam:
     get:
+      description: |
+        
+        Authorized Roles: Sales Agent
       operationId: testDataTypeAsQueryParam
       parameters:
         - name: bookingCode
@@ -2047,6 +2114,9 @@ paths:
     
   /rest-products/testDataTypeAsBeanQueryParam:
     get:
+      description: |
+        
+        Authorized Roles: Sales Agent
       operationId: testDataTypeAsBeanQueryParam
       parameters:
         - name: bookingCode
@@ -2078,6 +2148,9 @@ paths:
     
   /rest-products/testPrimitiveArrayAsQueryParam:
     get:
+      description: |
+        
+        Authorized Roles: Sales Agent
       operationId: testPrimitiveArrayAsQueryParam
       parameters:
         - name: intValues
@@ -2104,6 +2177,9 @@ paths:
     
   /rest-products/testSimpleTypesAsQueryParams:
     get:
+      description: |
+        
+        Authorized Roles: Sales Agent
       operationId: testSimpleTypesAsQueryParams
       parameters:
         - name: strings
@@ -2128,6 +2204,9 @@ paths:
     
   /rest-products/testPrimitiveWrapperArrayAsQueryParam:
     get:
+      description: |
+        
+        Authorized Roles: Sales Agent
       operationId: testPrimitiveWrapperArrayAsQueryParam
       parameters:
         - name: integers
@@ -2155,6 +2234,9 @@ paths:
     
   /rest-products/testMultivaluedQueryParamsBean:
     get:
+      description: |
+        
+        Authorized Roles: Sales Agent
       operationId: testMultivaluedQueryParamsBean
       parameters:
         - name: intArray
@@ -2193,6 +2275,9 @@ paths:
     
   /rest-products/testMulitvaluedDataTypeAsQueryParam:
     get:
+      description: |
+        
+        Authorized Roles: Sales Agent
       operationId: testMulitvaluedDataTypeAsQueryParam
       parameters:
         - name: codes
@@ -2248,6 +2333,9 @@ paths:
     
   /rest-products/testMulitvaluedDataTypeAsBeanQueryParam:
     get:
+      description: |
+        
+        Authorized Roles: Sales Agent
       operationId: testMulitvaluedDataTypeAsBeanQueryParam
       parameters:
         - name: longCodes
@@ -2347,6 +2435,9 @@ paths:
     
   /rest-products/testMultiValuedHeaderFieldsInBeanParam:
     get:
+      description: |
+        
+        Authorized Roles: Sales Agent
       operationId: testMultiValuedHeaderFieldsInBeanParam
       parameters:
         - name: names
@@ -2441,6 +2532,9 @@ paths:
     
   /rest-products/testMultiValuedHeaderFields:
     get:
+      description: |
+        
+        Authorized Roles: Sales Agent
       operationId: testMultiValuedHeaderFields
       parameters:
         - name: names
@@ -2506,6 +2600,9 @@ paths:
     
   /rest-products/booking-id-as-path-param/{bookingID}:
     patch:
+      description: |
+        
+        Authorized Roles: Sales Agent
       operationId: testBookingIDAsPathParam
       parameters:
         - name: bookingID
@@ -2526,6 +2623,9 @@ paths:
     
   /rest-products/booking-id-as-header-param:
     patch:
+      description: |
+        
+        Authorized Roles: Sales Agent
       operationId: testBookingIDAsHeaderParam
       parameters:
         - name: bookingID
