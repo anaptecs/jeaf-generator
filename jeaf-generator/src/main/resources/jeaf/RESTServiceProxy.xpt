@@ -2,6 +2,7 @@
 «EXTENSION java::Naming»
 «EXTENSION jeaf::RESTFunctions»
 «EXTENSION java::OpenAPIFunctions»
+«EXTENSION functions::Property»
 
 «IMPORT uml»
 «IMPORT JMM»
@@ -515,8 +516,12 @@ public class «name»RESTProxy implements «this.fqn()» {
 					«ELSE»
 						«IF this.isMultivalued() == false»
 							«beanParam.name».«this.asGetter()»().toString()
-						«ELSE»
-							java.util.Arrays.asList(«beanParam.name».«this.asGetter()»())
+						«ELSE»							
+							«IF this.asProperty().association == null»
+							  java.util.Arrays.asList(«beanParam.name».«this.asGetter()»())
+							«ELSE»
+							  «beanParam.name».«this.asGetter()»()
+							«ENDIF»
 						«ENDIF»
 					«ENDIF»
 				«ENDIF»
