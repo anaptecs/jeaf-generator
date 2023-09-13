@@ -504,9 +504,9 @@ public class «name»RESTProxy implements «this.fqn()» {
 			«ELSE»
 				«IF isTargetRuntimeJEAF()»
 					«IF this.isMultivalued() == false»
-					com.anaptecs.jeaf.xfun.api.XFun.getDatatypeConverterRegistry().getConverter(«type.fqn()».class, String.class).convert(«beanParam.name».«this.asGetter()»())
+					  com.anaptecs.jeaf.xfun.api.XFun.getDatatypeConverterRegistry().getConverter(«type.fqn()».class, String.class).convert(«beanParam.name».«this.asGetter()»())
 					«ELSE»
-					java.util.Arrays.asList(«beanParam.name».«this.asGetter()»())
+					  java.util.Arrays.asList(«beanParam.name».«this.asGetter()»())
 					«ENDIF»
 				«ENDIF»
 				«IF isTargetRuntimeSpring()»
@@ -541,14 +541,14 @@ public class «name»RESTProxy implements «this.fqn()» {
 				«ENDIF»
 			«ELSE»
 				«IF isTargetRuntimeJEAF()»
-				com.anaptecs.jeaf.xfun.api.XFun.getDatatypeConverterRegistry().getConverter(«type.fqn()».class, String.class).convert(«name»)
+				  com.anaptecs.jeaf.xfun.api.XFun.getDatatypeConverterRegistry().getConverter(«type.fqn()».class, String.class).convert(«name»)
 				«ENDIF»
 				«IF isTargetRuntimeSpring()»
-				«IF type.isAnyDateType()»
-				«EXPAND DateConversion FOR this»
-				«ELSE»
-				«name».toString()
-				«ENDIF»
+				  «IF type.isAnyDateType()»
+				    «EXPAND DateConversion FOR this»
+				  «ELSE»
+				    «name».toString()
+				  «ENDIF»
 				«ENDIF»
 			«ENDIF»
 		«ENDIF»
@@ -575,14 +575,14 @@ public class «name»RESTProxy implements «this.fqn()» {
 			«ELSE»
 				«IF this.isMultivalued() == false»
 					«IF isTargetRuntimeJEAF()»
-					com.anaptecs.jeaf.xfun.api.XFun.getDatatypeConverterRegistry().getConverter(«type.fqn()».class, String.class).convert(«beanParam.name».«this.asGetter()»())
+					  com.anaptecs.jeaf.xfun.api.XFun.getDatatypeConverterRegistry().getConverter(«type.fqn()».class, String.class).convert(«beanParam.name».«this.asGetter()»())
 					«ENDIF»
 					«IF isTargetRuntimeSpring()»
-					«IF type.isAnyDateType()»
-					«EXPAND DateConversionForBeanParam(beanParam) FOR this»
-					«ELSE»
-					«beanParam.name».«this.asGetter()»().toString()
-					«ENDIF»
+					  «IF type.isAnyDateType()»
+					    «EXPAND DateConversionForBeanParam(beanParam) FOR this»
+					  «ELSE»
+					    «beanParam.name».«this.asGetter()»().toString()
+					  «ENDIF»
 					«ENDIF»
 				«ENDIF»
 			«ENDIF»
@@ -604,11 +604,11 @@ public class «name»RESTProxy implements «this.fqn()» {
 				com.anaptecs.jeaf.xfun.api.XFun.getDatatypeConverterRegistry().getConverter(«type.fqn()».class, String.class).convert(«name»)
 				«ENDIF»
 				«IF isTargetRuntimeSpring()»
-				«IF type.isAnyDateType()»
-				«EXPAND DateConversion FOR this»
-				«ELSE»
-				«name».toString()
-				«ENDIF»
+				  «IF type.isAnyDateType()»
+				    «EXPAND DateConversion FOR this»
+				  «ELSE»
+				    «name».toString()
+				  «ENDIF»
 				«ENDIF»
 			«ENDIF»
 		«ENDIF»
@@ -629,15 +629,15 @@ public class «name»RESTProxy implements «this.fqn()» {
 				com.anaptecs.jeaf.xfun.api.XFun.getDatatypeConverterRegistry().getConverter(«type.fqn()».class, String.class).convert(«beanParam.name».«this.asGetter()»())
 				«ENDIF»
 				«IF isTargetRuntimeSpring()»
-				«IF type.isAnyDateType()»
-				«EXPAND DateConversionForBeanParam(beanParam) FOR this»
-				«ELSE»
+				  «IF type.isAnyDateType()»
+				    «EXPAND DateConversionForBeanParam(beanParam) FOR this»
+				  «ELSE»
 					«IF type.isAnyDateType()»
 						«EXPAND DateConversionForBeanParam(beanParam) FOR this»
 					«ELSE»
 						«beanParam.name».«this.asGetter()»().toString()
 					«ENDIF»
-				«ENDIF»
+				  «ENDIF»
 				«ENDIF»
 			«ENDIF»
 		«ENDIF»
