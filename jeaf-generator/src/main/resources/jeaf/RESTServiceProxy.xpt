@@ -485,7 +485,7 @@ public class «name»RESTProxy implements «this.fqn()» {
 «ENDDEFINE»
 
 «DEFINE QueryParamValueAccessorForBeanParam(uml::Parameter beanParam) FOR QueryParam»
-	«IF type.fqn() == "java.lang.String" || type.fqn() == "String"»
+	«IF type.isStringType()»
 		«beanParam.name».«this.asGetter()»()
 	«ELSE»
 		«IF type.isPrimitiveType()»
@@ -591,7 +591,7 @@ public class «name»RESTProxy implements «this.fqn()» {
 «ENDDEFINE»
 
 «DEFINE CookieParamValueAccessor FOR CookieParam»
-	«IF type.fqn() == "java.lang.String"»
+	«IF type.isStringType()»
 		«name»
 	«ELSE»
 		«IF type.isPrimitiveType()»
@@ -616,7 +616,7 @@ public class «name»RESTProxy implements «this.fqn()» {
 «ENDDEFINE»
 
 «DEFINE CookieParamValueAccessorForBeanParam(uml::Parameter beanParam) FOR CookieParam»
-	«IF type.fqn() == "java.lang.String"»
+	«IF type.isStringType()»
 		«beanParam.name».«this.asGetter()»()
 	«ELSE»
 		«IF type.isPrimitiveType()»
