@@ -6,6 +6,12 @@
 package com.anaptecs.spring.service;
 
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
+
+import com.anaptecs.spring.base.TimeUnit;
 
 public class MultivaluedQueryParamsBean {
   /**
@@ -23,17 +29,32 @@ public class MultivaluedQueryParamsBean {
    */
   public static final String INTEGERS = "integers";
 
+  /**
+   * Constant for the name of attribute "timeUnits".
+   */
+  public static final String TIMEUNITS = "timeUnits";
+
+  /**
+   * Constant for the name of attribute "timeUnitArray".
+   */
+  public static final String TIMEUNITARRAY = "timeUnitArray";
+
   private int[] intArray;
 
   private String[] strings;
 
   private Integer[] integers;
 
+  private Set<TimeUnit> timeUnits;
+
+  private TimeUnit[] timeUnitArray;
+
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   public MultivaluedQueryParamsBean( ) {
+    timeUnits = new HashSet<TimeUnit>();
   }
 
   /**
@@ -46,6 +67,13 @@ public class MultivaluedQueryParamsBean {
     intArray = pBuilder.intArray;
     strings = pBuilder.strings;
     integers = pBuilder.integers;
+    if (pBuilder.timeUnits != null) {
+      timeUnits = pBuilder.timeUnits;
+    }
+    else {
+      timeUnits = new HashSet<TimeUnit>();
+    }
+    timeUnitArray = pBuilder.timeUnitArray;
   }
 
   /**
@@ -78,13 +106,20 @@ public class MultivaluedQueryParamsBean {
    *
    * @param pIntegers Value to which {@link #integers} should be set.
    *
+   * @param pTimeUnits Value to which {@link #timeUnits} should be set.
+   *
+   * @param pTimeUnitArray Value to which {@link #timeUnitArray} should be set.
+   *
    * @return {@link MultivaluedQueryParamsBean}
    */
-  public static MultivaluedQueryParamsBean of( int[] pIntArray, String[] pStrings, Integer[] pIntegers ) {
+  public static MultivaluedQueryParamsBean of( int[] pIntArray, String[] pStrings, Integer[] pIntegers,
+      Set<TimeUnit> pTimeUnits, TimeUnit[] pTimeUnitArray ) {
     MultivaluedQueryParamsBean.Builder lBuilder = MultivaluedQueryParamsBean.builder();
     lBuilder.setIntArray(pIntArray);
     lBuilder.setStrings(pStrings);
     lBuilder.setIntegers(pIntegers);
+    lBuilder.setTimeUnits(pTimeUnits);
+    lBuilder.setTimeUnitArray(pTimeUnitArray);
     return lBuilder.build();
   }
 
@@ -97,6 +132,10 @@ public class MultivaluedQueryParamsBean {
     private String[] strings;
 
     private Integer[] integers;
+
+    private Set<TimeUnit> timeUnits;
+
+    private TimeUnit[] timeUnitArray;
 
     /**
      * Use {@link MultivaluedQueryParamsBean#builder()} instead of private constructor to create new builder.
@@ -114,6 +153,8 @@ public class MultivaluedQueryParamsBean {
         intArray = pObject.intArray;
         strings = pObject.strings;
         integers = pObject.integers;
+        timeUnits = pObject.timeUnits;
+        timeUnitArray = pObject.timeUnitArray;
       }
     }
 
@@ -167,6 +208,74 @@ public class MultivaluedQueryParamsBean {
       }
       else {
         integers = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method sets association {@link #timeUnits}.<br/>
+     *
+     * @param pTimeUnits Collection to which {@link #timeUnits} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    public Builder setTimeUnits( Set<TimeUnit> pTimeUnits ) {
+      // To ensure immutability we have to copy the content of the passed collection.
+      if (pTimeUnits != null) {
+        timeUnits = new HashSet<TimeUnit>(pTimeUnits);
+      }
+      else {
+        timeUnits = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method adds the passed objects to association {@link #timeUnits}.<br/>
+     *
+     * @param pTimeUnits Array of objects that should be added to {@link #timeUnits}. The parameter may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToTimeUnits( TimeUnit... pTimeUnits ) {
+      if (pTimeUnits != null) {
+        if (timeUnits == null) {
+          timeUnits = new HashSet<TimeUnit>();
+        }
+        timeUnits.addAll(Arrays.asList(pTimeUnits));
+      }
+      return this;
+    }
+
+    /**
+     * Method sets association {@link #timeUnits}.<br/>
+     *
+     * @param pTimeUnits Array with objects to which {@link #timeUnits} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    public Builder setTimeUnits( TimeUnit... pTimeUnits ) {
+      // To ensure immutability we have to copy the content of the passed array.
+      if (pTimeUnits != null) {
+        timeUnits = new HashSet<TimeUnit>(Arrays.asList(pTimeUnits));
+      }
+      else {
+        timeUnits = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method sets attribute {@link #timeUnitArray}.<br/>
+     *
+     * @param pTimeUnitArray Collection to which {@link #timeUnitArray} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    public Builder setTimeUnitArray( TimeUnit[] pTimeUnitArray ) {
+      // Assign value to attribute
+      if (pTimeUnitArray != null) {
+        timeUnitArray = new TimeUnit[pTimeUnitArray.length];
+        System.arraycopy(pTimeUnitArray, 0, timeUnitArray, 0, pTimeUnitArray.length);
+      }
+      else {
+        timeUnitArray = null;
       }
       return this;
     }
@@ -282,6 +391,91 @@ public class MultivaluedQueryParamsBean {
   }
 
   /**
+   * Method returns association {@link #timeUnits}.<br/>
+   *
+   * @return {@link Set<TimeUnit>} Value to which {@link #timeUnits} is set. The method never returns null and the
+   * returned collection is unmodifiable.
+   */
+  public Set<TimeUnit> getTimeUnits( ) {
+    // Return all TimeUnit objects as unmodifiable collection.
+    return Collections.unmodifiableSet(timeUnits);
+  }
+
+  /**
+   * Method adds the passed object to {@link #timeUnits}.
+   *
+   * @param pTimeUnits Object that should be added to {@link #timeUnits}. The parameter must not be null.
+   */
+  public void addToTimeUnits( TimeUnit pTimeUnits ) {
+    // Add passed object to collection of associated TimeUnit objects.
+    timeUnits.add(pTimeUnits);
+  }
+
+  /**
+   * Method adds all passed objects to {@link #timeUnits}.
+   *
+   * @param pTimeUnits Collection with all objects that should be added to {@link #timeUnits}. The parameter must not be
+   * null.
+   */
+  public void addToTimeUnits( Collection<TimeUnit> pTimeUnits ) {
+    // Add all passed objects.
+    for (TimeUnit lNextObject : pTimeUnits) {
+      this.addToTimeUnits(lNextObject);
+    }
+  }
+
+  /**
+   * Method removes the passed object from {@link #timeUnits}.<br/>
+   *
+   * @param pTimeUnits Object that should be removed from {@link #timeUnits}. The parameter must not be null.
+   */
+  public void removeFromTimeUnits( TimeUnit pTimeUnits ) {
+    // Remove passed object from collection of associated TimeUnit objects.
+    timeUnits.remove(pTimeUnits);
+  }
+
+  /**
+   * Method removes all objects from {@link #timeUnits}.
+   */
+  public void clearTimeUnits( ) {
+    // Remove all objects from association "timeUnits".
+    timeUnits.clear();
+  }
+
+  /**
+   * Method returns attribute {@link #timeUnitArray}.<br/>
+   *
+   * @return {@link TimeUnit} Value to which {@link #timeUnitArray} is set.
+   */
+  public TimeUnit[] getTimeUnitArray( ) {
+    TimeUnit[] lReturnValue;
+    if (timeUnitArray != null) {
+      lReturnValue = new TimeUnit[timeUnitArray.length];
+      System.arraycopy(timeUnitArray, 0, lReturnValue, 0, timeUnitArray.length);
+    }
+    else {
+      lReturnValue = null;
+    }
+    return lReturnValue;
+  }
+
+  /**
+   * Method sets attribute {@link #timeUnitArray}.<br/>
+   *
+   * @param pTimeUnitArray Value to which {@link #timeUnitArray} should be set.
+   */
+  public void setTimeUnitArray( TimeUnit[] pTimeUnitArray ) {
+    // Assign value to attribute
+    if (pTimeUnitArray != null) {
+      timeUnitArray = new TimeUnit[pTimeUnitArray.length];
+      System.arraycopy(pTimeUnitArray, 0, timeUnitArray, 0, pTimeUnitArray.length);
+    }
+    else {
+      timeUnitArray = null;
+    }
+  }
+
+  /**
    * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
@@ -314,6 +508,32 @@ public class MultivaluedQueryParamsBean {
     lBuilder.append("integers: ");
     if (integers != null) {
       lBuilder.append(Arrays.toString(integers));
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("timeUnits: ");
+    if (timeUnits != null) {
+      lBuilder.append(timeUnits.size());
+      lBuilder.append(" element(s)");
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    if (timeUnits != null) {
+      for (TimeUnit lNext : timeUnits) {
+        lBuilder.append(pIndent + "    ");
+        lBuilder.append(lNext.toString());
+        lBuilder.append(System.lineSeparator());
+      }
+    }
+    lBuilder.append(pIndent);
+    lBuilder.append("timeUnitArray: ");
+    if (timeUnitArray != null) {
+      lBuilder.append(Arrays.toString(timeUnitArray));
     }
     else {
       lBuilder.append(" null");

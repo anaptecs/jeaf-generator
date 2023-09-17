@@ -357,7 +357,7 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
 	    «ELSE»
 	        «EXPAND CreateBuilderAssociationSetter(builderClassName)»
 	    «ENDIF»
-	    «IF this.isMultivalued() && this.type.isEnumeration()»
+	    «IF this.isMultivalued() && this.type.isEnumeration() && this.association != null»
 	    	«EXPAND CreateBuilderVarArgsSetter(builderClassName)»
 	    «ENDIF»
     «ENDIF»

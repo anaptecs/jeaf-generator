@@ -1027,13 +1027,17 @@ public class RESTProductServiceResource {
   @RequestMapping(path = "testMultivaluedQueryParamsBean", method = { RequestMethod.GET })
   public String testMultivaluedQueryParamsBean( @RequestParam(name = "intArray", required = false) int[] pIntArray,
       @RequestParam(name = "strings", required = false) String[] pStrings,
-      @RequestParam(name = "integers", required = false) Integer[] pIntegers ) {
+      @RequestParam(name = "integers", required = false) Integer[] pIntegers,
+      @RequestParam(name = "timeUnits", required = false) Set<TimeUnit> pTimeUnits,
+      @RequestParam(name = "timeUnitArray", required = false) TimeUnit[] pTimeUnitArray ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
     MultivaluedQueryParamsBean.Builder lBeanBuilder = MultivaluedQueryParamsBean.builder();
     lBeanBuilder.setIntArray(pIntArray);
     lBeanBuilder.setStrings(pStrings);
     lBeanBuilder.setIntegers(pIntegers);
+    lBeanBuilder.setTimeUnits(pTimeUnits);
+    lBeanBuilder.setTimeUnitArray(pTimeUnitArray);
     MultivaluedQueryParamsBean pBean = lBeanBuilder.build();
     // Validate request parameter(s).
     validationExecutor.validateRequest(RESTProductService.class, pBean);
@@ -1250,7 +1254,9 @@ public class RESTProductServiceResource {
       @RequestHeader(name = "timestamps", required = false) String[] pTimestampsAsBasicType,
       @RequestHeader(name = "calendars", required = false) String[] pCalendarsAsBasicType,
       @RequestHeader(name = "utilDates", required = false) String[] pUtilDatesAsBasicType,
-      @RequestHeader(name = "sqlTimestamps", required = false) String[] pSqlTimestampsAsBasicType ) {
+      @RequestHeader(name = "sqlTimestamps", required = false) String[] pSqlTimestampsAsBasicType,
+      @RequestHeader(name = "timeUnits", required = false) Set<TimeUnit> pTimeUnits,
+      @RequestHeader(name = "timeUnitArray", required = false) TimeUnit[] pTimeUnitArray ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
     MultiValuedHeaderBeanParam.Builder lMultiValuedBeanBuilder = MultiValuedHeaderBeanParam.builder();
@@ -1333,6 +1339,8 @@ public class RESTProductServiceResource {
       }
       lMultiValuedBeanBuilder.setSqlTimestamps(lSqlTimestamps);
     }
+    lMultiValuedBeanBuilder.setTimeUnits(pTimeUnits);
+    lMultiValuedBeanBuilder.setTimeUnitArray(pTimeUnitArray);
     MultiValuedHeaderBeanParam pMultiValuedBean = lMultiValuedBeanBuilder.build();
     // Validate request parameter(s).
     validationExecutor.validateRequest(RESTProductService.class, pMultiValuedBean);

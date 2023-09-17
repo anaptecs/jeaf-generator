@@ -17,7 +17,6 @@ import java.time.OffsetDateTime;
 import java.time.OffsetTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
@@ -1118,7 +1117,13 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
         lRequestBuilder.setQueryParameter("strings", pBean.getStrings());
       }
       if (pBean.getIntegers() != null) {
-        lRequestBuilder.setQueryParameter("integers", Arrays.asList(pBean.getIntegers()));
+        lRequestBuilder.setQueryParameter("integers", pBean.getIntegers());
+      }
+      if (pBean.getTimeUnits() != null) {
+        lRequestBuilder.setQueryParameter("timeUnits", pBean.getTimeUnits());
+      }
+      if (pBean.getTimeUnitArray() != null) {
+        lRequestBuilder.setQueryParameter("timeUnitArray", pBean.getTimeUnitArray());
       }
     }
     // Execute request and return result.
@@ -1321,7 +1326,7 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
         lRequestBuilder.setHeader("ints", pMultiValuedBean.getInts());
       }
       if (pMultiValuedBean.getDoubles() != null) {
-        lRequestBuilder.setHeader("doubles", Arrays.asList(pMultiValuedBean.getDoubles()));
+        lRequestBuilder.setHeader("doubles", pMultiValuedBean.getDoubles());
       }
       if (pMultiValuedBean.getCodes() != null) {
         List<Object> lValues = new ArrayList<Object>();
@@ -1374,6 +1379,20 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
           lValues.add(lNext.toString());
         }
         lRequestBuilder.setHeader("sqlTimestamps", lValues);
+      }
+      if (pMultiValuedBean.getTimeUnits() != null) {
+        List<Object> lValues = new ArrayList<Object>();
+        for (TimeUnit lNext : pMultiValuedBean.getTimeUnits()) {
+          lValues.add(lNext);
+        }
+        lRequestBuilder.setHeader("timeUnits", lValues);
+      }
+      if (pMultiValuedBean.getTimeUnitArray() != null) {
+        List<Object> lValues = new ArrayList<Object>();
+        for (TimeUnit lNext : pMultiValuedBean.getTimeUnitArray()) {
+          lValues.add(lNext);
+        }
+        lRequestBuilder.setHeader("timeUnitArray", lValues);
       }
     }
     // Execute request and return result.

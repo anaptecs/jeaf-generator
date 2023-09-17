@@ -14,7 +14,6 @@ import java.time.OffsetDateTime;
 import java.time.OffsetTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -33,6 +32,7 @@ import com.anaptecs.spring.base.DoubleCode;
 import com.anaptecs.spring.base.IntegerCodeType;
 import com.anaptecs.spring.base.LongCode;
 import com.anaptecs.spring.base.StringCode;
+import com.anaptecs.spring.base.TimeUnit;
 import com.anaptecs.spring.service.DataTypesQueryBean;
 import com.anaptecs.spring.service.MultiValuedHeaderBeanParam;
 import com.anaptecs.spring.service.PathlessService;
@@ -106,7 +106,7 @@ public final class PathlessServiceRESTProxyServiceProviderImpl
         lRequestBuilder.setHeader("ints", pHeaderBean.getInts());
       }
       if (pHeaderBean.getDoubles() != null) {
-        lRequestBuilder.setHeader("doubles", Arrays.asList(pHeaderBean.getDoubles()));
+        lRequestBuilder.setHeader("doubles", pHeaderBean.getDoubles());
       }
       if (pHeaderBean.getCodes() != null) {
         List<Object> lValues = new ArrayList<Object>();
@@ -160,6 +160,20 @@ public final class PathlessServiceRESTProxyServiceProviderImpl
           lValues.add(lNext.toString());
         }
         lRequestBuilder.setHeader("sqlTimestamps", lValues);
+      }
+      if (pHeaderBean.getTimeUnits() != null) {
+        List<Object> lValues = new ArrayList<Object>();
+        for (TimeUnit lNext : pHeaderBean.getTimeUnits()) {
+          lValues.add(lNext);
+        }
+        lRequestBuilder.setHeader("timeUnits", lValues);
+      }
+      if (pHeaderBean.getTimeUnitArray() != null) {
+        List<Object> lValues = new ArrayList<Object>();
+        for (TimeUnit lNext : pHeaderBean.getTimeUnitArray()) {
+          lValues.add(lNext);
+        }
+        lRequestBuilder.setHeader("timeUnitArray", lValues);
       }
     }
     // Execute request.
