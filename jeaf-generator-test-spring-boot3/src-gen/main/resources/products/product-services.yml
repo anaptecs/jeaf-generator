@@ -2259,6 +2259,18 @@ paths:
             items:
               type: integer
               format: int32
+        - name: timeUnits
+          in: query
+          schema:
+            type: array
+            items:
+              $ref: '../base/product-base.yml#/components/schemas/TimeUnit'
+        - name: timeUnitArray
+          in: query
+          schema:
+            type: array
+            items:
+              $ref: '../base/product-base.yml#/components/schemas/TimeUnit'
       responses:
         '200':
           description: |
@@ -2516,6 +2528,18 @@ paths:
             items:
               type: string
               format: date-time
+        - name: timeUnits
+          in: header
+          schema:
+            type: array
+            items:
+              $ref: '../base/product-base.yml#/components/schemas/TimeUnit'
+        - name: timeUnitArray
+          in: header
+          schema:
+            type: array
+            items:
+              $ref: '../base/product-base.yml#/components/schemas/TimeUnit'
       responses:
         '200':
           description: |

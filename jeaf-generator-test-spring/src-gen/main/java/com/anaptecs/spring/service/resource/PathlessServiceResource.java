@@ -34,6 +34,7 @@ import com.anaptecs.spring.base.DoubleCode;
 import com.anaptecs.spring.base.IntegerCodeType;
 import com.anaptecs.spring.base.LongCode;
 import com.anaptecs.spring.base.StringCode;
+import com.anaptecs.spring.base.TimeUnit;
 import com.anaptecs.spring.service.DataTypesQueryBean;
 import com.anaptecs.spring.service.MultiValuedHeaderBeanParam;
 import com.anaptecs.spring.service.PathlessService;
@@ -103,7 +104,9 @@ public class PathlessServiceResource {
       @RequestHeader(name = "timestamps", required = false) String[] pTimestampsAsBasicType,
       @RequestHeader(name = "calendars", required = false) String[] pCalendarsAsBasicType,
       @RequestHeader(name = "utilDates", required = false) String[] pUtilDatesAsBasicType,
-      @RequestHeader(name = "sqlTimestamps", required = false) String[] pSqlTimestampsAsBasicType ) {
+      @RequestHeader(name = "sqlTimestamps", required = false) String[] pSqlTimestampsAsBasicType,
+      @RequestHeader(name = "timeUnits", required = false) Set<TimeUnit> pTimeUnits,
+      @RequestHeader(name = "timeUnitArray", required = false) TimeUnit[] pTimeUnitArray ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
     MultiValuedHeaderBeanParam.Builder lHeaderBeanBuilder = MultiValuedHeaderBeanParam.builder();
@@ -186,6 +189,8 @@ public class PathlessServiceResource {
       }
       lHeaderBeanBuilder.setSqlTimestamps(lSqlTimestamps);
     }
+    lHeaderBeanBuilder.setTimeUnits(pTimeUnits);
+    lHeaderBeanBuilder.setTimeUnitArray(pTimeUnitArray);
     MultiValuedHeaderBeanParam pHeaderBean = lHeaderBeanBuilder.build();
     TechOnlyBeanParam.Builder lTechContextBuilder = TechOnlyBeanParam.builder();
     TechOnlyBeanParam pTechContext = lTechContextBuilder.build();

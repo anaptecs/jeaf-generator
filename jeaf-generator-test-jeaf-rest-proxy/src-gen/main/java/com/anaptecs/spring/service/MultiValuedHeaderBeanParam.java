@@ -23,6 +23,7 @@ import javax.ws.rs.HeaderParam;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.anaptecs.spring.base.StringCode;
+import com.anaptecs.spring.base.TimeUnit;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.annotation.Nulls;
 
@@ -87,6 +88,16 @@ public class MultiValuedHeaderBeanParam implements Serializable {
    */
   public static final String SQLTIMESTAMPS = "sqlTimestamps";
 
+  /**
+   * Constant for the name of attribute "timeUnits".
+   */
+  public static final String TIMEUNITS = "timeUnits";
+
+  /**
+   * Constant for the name of attribute "timeUnitArray".
+   */
+  public static final String TIMEUNITARRAY = "timeUnitArray";
+
   @HeaderParam("names")
   private String[] names;
 
@@ -122,6 +133,13 @@ public class MultiValuedHeaderBeanParam implements Serializable {
   @HeaderParam("sqlTimestamps")
   private Timestamp[] sqlTimestamps;
 
+  @HeaderParam("timeUnits")
+  @JsonSetter(nulls = Nulls.SKIP)
+  private Set<TimeUnit> timeUnits;
+
+  @HeaderParam("timeUnitArray")
+  private TimeUnit[] timeUnitArray;
+
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
@@ -129,6 +147,7 @@ public class MultiValuedHeaderBeanParam implements Serializable {
   public MultiValuedHeaderBeanParam( ) {
     stringCodeList = new HashSet<StringCode>();
     timestamps = new HashSet<LocalDateTime>();
+    timeUnits = new HashSet<TimeUnit>();
   }
 
   /**
@@ -161,6 +180,13 @@ public class MultiValuedHeaderBeanParam implements Serializable {
     calendars = pBuilder.calendars;
     utilDates = pBuilder.utilDates;
     sqlTimestamps = pBuilder.sqlTimestamps;
+    if (pBuilder.timeUnits != null) {
+      timeUnits = pBuilder.timeUnits;
+    }
+    else {
+      timeUnits = new HashSet<TimeUnit>();
+    }
+    timeUnitArray = pBuilder.timeUnitArray;
   }
 
   /**
@@ -209,11 +235,16 @@ public class MultiValuedHeaderBeanParam implements Serializable {
    *
    * @param pSqlTimestamps Value to which {@link #sqlTimestamps} should be set.
    *
+   * @param pTimeUnits Value to which {@link #timeUnits} should be set.
+   *
+   * @param pTimeUnitArray Value to which {@link #timeUnitArray} should be set.
+   *
    * @return {@link MultiValuedHeaderBeanParam}
    */
   public static MultiValuedHeaderBeanParam of( String[] pNames, int[] pInts, Double[] pDoubles, StringCode[] pCodes,
       Set<StringCode> pStringCodeList, LocalDate pStartDate, LocalDate[] pDates, Set<LocalDateTime> pTimestamps,
-      Calendar[] pCalendars, Date[] pUtilDates, Timestamp[] pSqlTimestamps ) {
+      Calendar[] pCalendars, Date[] pUtilDates, Timestamp[] pSqlTimestamps, Set<TimeUnit> pTimeUnits,
+      TimeUnit[] pTimeUnitArray ) {
     MultiValuedHeaderBeanParam.Builder lBuilder = MultiValuedHeaderBeanParam.builder();
     lBuilder.setNames(pNames);
     lBuilder.setInts(pInts);
@@ -226,6 +257,8 @@ public class MultiValuedHeaderBeanParam implements Serializable {
     lBuilder.setCalendars(pCalendars);
     lBuilder.setUtilDates(pUtilDates);
     lBuilder.setSqlTimestamps(pSqlTimestamps);
+    lBuilder.setTimeUnits(pTimeUnits);
+    lBuilder.setTimeUnitArray(pTimeUnitArray);
     return lBuilder.build();
   }
 
@@ -255,6 +288,10 @@ public class MultiValuedHeaderBeanParam implements Serializable {
 
     private Timestamp[] sqlTimestamps;
 
+    private Set<TimeUnit> timeUnits;
+
+    private TimeUnit[] timeUnitArray;
+
     /**
      * Use {@link MultiValuedHeaderBeanParam#builder()} instead of private constructor to create new builder.
      */
@@ -279,6 +316,8 @@ public class MultiValuedHeaderBeanParam implements Serializable {
         calendars = pObject.calendars;
         utilDates = pObject.utilDates;
         sqlTimestamps = pObject.sqlTimestamps;
+        timeUnits = pObject.timeUnits;
+        timeUnitArray = pObject.timeUnitArray;
       }
     }
 
@@ -501,6 +540,74 @@ public class MultiValuedHeaderBeanParam implements Serializable {
       }
       else {
         sqlTimestamps = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method sets association {@link #timeUnits}.<br/>
+     *
+     * @param pTimeUnits Collection to which {@link #timeUnits} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    public Builder setTimeUnits( Set<TimeUnit> pTimeUnits ) {
+      // To ensure immutability we have to copy the content of the passed collection.
+      if (pTimeUnits != null) {
+        timeUnits = new HashSet<TimeUnit>(pTimeUnits);
+      }
+      else {
+        timeUnits = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method adds the passed objects to association {@link #timeUnits}.<br/>
+     *
+     * @param pTimeUnits Array of objects that should be added to {@link #timeUnits}. The parameter may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToTimeUnits( TimeUnit... pTimeUnits ) {
+      if (pTimeUnits != null) {
+        if (timeUnits == null) {
+          timeUnits = new HashSet<TimeUnit>();
+        }
+        timeUnits.addAll(Arrays.asList(pTimeUnits));
+      }
+      return this;
+    }
+
+    /**
+     * Method sets association {@link #timeUnits}.<br/>
+     *
+     * @param pTimeUnits Array with objects to which {@link #timeUnits} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    public Builder setTimeUnits( TimeUnit... pTimeUnits ) {
+      // To ensure immutability we have to copy the content of the passed array.
+      if (pTimeUnits != null) {
+        timeUnits = new HashSet<TimeUnit>(Arrays.asList(pTimeUnits));
+      }
+      else {
+        timeUnits = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method sets attribute {@link #timeUnitArray}.<br/>
+     *
+     * @param pTimeUnitArray Collection to which {@link #timeUnitArray} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    public Builder setTimeUnitArray( TimeUnit[] pTimeUnitArray ) {
+      // Assign value to attribute
+      if (pTimeUnitArray != null) {
+        timeUnitArray = new TimeUnit[pTimeUnitArray.length];
+        System.arraycopy(pTimeUnitArray, 0, timeUnitArray, 0, pTimeUnitArray.length);
+      }
+      else {
+        timeUnitArray = null;
       }
       return this;
     }
@@ -925,6 +1032,97 @@ public class MultiValuedHeaderBeanParam implements Serializable {
     }
     else {
       sqlTimestamps = null;
+    }
+  }
+
+  /**
+   * Method returns association {@link #timeUnits}.<br/>
+   *
+   * @return {@link Set<TimeUnit>} Value to which {@link #timeUnits} is set. The method never returns null and the
+   * returned collection is unmodifiable.
+   */
+  public Set<TimeUnit> getTimeUnits( ) {
+    // Return all TimeUnit objects as unmodifiable collection.
+    return Collections.unmodifiableSet(timeUnits);
+  }
+
+  /**
+   * Method adds the passed object to {@link #timeUnits}.
+   *
+   * @param pTimeUnits Object that should be added to {@link #timeUnits}. The parameter must not be null.
+   */
+  public void addToTimeUnits( TimeUnit pTimeUnits ) {
+    // Check parameter "pTimeUnits" for invalid value null.
+    Check.checkInvalidParameterNull(pTimeUnits, "pTimeUnits");
+    // Add passed object to collection of associated TimeUnit objects.
+    timeUnits.add(pTimeUnits);
+  }
+
+  /**
+   * Method adds all passed objects to {@link #timeUnits}.
+   *
+   * @param pTimeUnits Collection with all objects that should be added to {@link #timeUnits}. The parameter must not be
+   * null.
+   */
+  public void addToTimeUnits( Collection<TimeUnit> pTimeUnits ) {
+    // Check parameter "pTimeUnits" for invalid value null.
+    Check.checkInvalidParameterNull(pTimeUnits, "pTimeUnits");
+    // Add all passed objects.
+    for (TimeUnit lNextObject : pTimeUnits) {
+      this.addToTimeUnits(lNextObject);
+    }
+  }
+
+  /**
+   * Method removes the passed object from {@link #timeUnits}.<br/>
+   *
+   * @param pTimeUnits Object that should be removed from {@link #timeUnits}. The parameter must not be null.
+   */
+  public void removeFromTimeUnits( TimeUnit pTimeUnits ) {
+    // Check parameter for invalid value null.
+    Check.checkInvalidParameterNull(pTimeUnits, "pTimeUnits");
+    // Remove passed object from collection of associated TimeUnit objects.
+    timeUnits.remove(pTimeUnits);
+  }
+
+  /**
+   * Method removes all objects from {@link #timeUnits}.
+   */
+  public void clearTimeUnits( ) {
+    // Remove all objects from association "timeUnits".
+    timeUnits.clear();
+  }
+
+  /**
+   * Method returns attribute {@link #timeUnitArray}.<br/>
+   *
+   * @return {@link TimeUnit} Value to which {@link #timeUnitArray} is set.
+   */
+  public TimeUnit[] getTimeUnitArray( ) {
+    TimeUnit[] lReturnValue;
+    if (timeUnitArray != null) {
+      lReturnValue = new TimeUnit[timeUnitArray.length];
+      System.arraycopy(timeUnitArray, 0, lReturnValue, 0, timeUnitArray.length);
+    }
+    else {
+      lReturnValue = null;
+    }
+    return lReturnValue;
+  }
+
+  /**
+   * Method sets attribute {@link #timeUnitArray}.<br/>
+   *
+   * @param pTimeUnitArray Value to which {@link #timeUnitArray} should be set.
+   */
+  public void setTimeUnitArray( TimeUnit[] pTimeUnitArray ) {
+    // Assign value to attribute
+    if (pTimeUnitArray != null) {
+      timeUnitArray = new TimeUnit[pTimeUnitArray.length];
+      System.arraycopy(pTimeUnitArray, 0, timeUnitArray, 0, pTimeUnitArray.length);
+    }
+    else {
+      timeUnitArray = null;
     }
   }
 
