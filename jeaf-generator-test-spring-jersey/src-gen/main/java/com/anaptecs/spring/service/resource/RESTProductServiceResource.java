@@ -647,7 +647,8 @@ public class RESTProductServiceResource {
   public Response testMultiValuedHeaderFields( @HeaderParam("names") Set<String> pNames,
       @HeaderParam("ints") int[] pInts, @HeaderParam("doubles") Set<Double> pDoubles,
       @HeaderParam("codes") String[] pCodesAsBasicType, @HeaderParam("startDate") OffsetDateTime pStartDate,
-      @HeaderParam("timestamps") Set<OffsetDateTime> pTimestamps, @HeaderParam("times") Set<OffsetTime> pTimes ) {
+      @HeaderParam("timestamps") Set<OffsetDateTime> pTimestamps, @HeaderParam("times") Set<OffsetTime> pTimes,
+      @HeaderParam("BASE_64") byte[] pBase64 ) {
     // Convert basic type parameters into "real" objects.
     Set<StringCode> pCodes;
     if (pCodesAsBasicType != null) {
@@ -661,7 +662,7 @@ public class RESTProductServiceResource {
     }
     // Delegate request to service.
     String lResult = rESTProductService.testMultiValuedHeaderFields(pNames, pInts, pDoubles, pCodes, pStartDate,
-        pTimestamps, pTimes);
+        pTimestamps, pTimes, pBase64);
     // Validate response and return it.
     validationExecutor.validateResponse(RESTProductService.class, lResult);
     return Response.status(Response.Status.OK).entity(lResult).build();

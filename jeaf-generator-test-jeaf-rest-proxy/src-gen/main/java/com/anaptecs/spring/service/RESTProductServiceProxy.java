@@ -526,11 +526,12 @@ public final class RESTProductServiceProxy extends ServiceProxy implements RESTP
    * {@link com.anaptecs.spring.service.RESTProductService#testMultiValuedHeaderFields}
    */
   public String testMultiValuedHeaderFields( Set<String> pNames, int[] pInts, Set<Double> pDoubles,
-      Set<StringCode> pCodes, OffsetDateTime pStartDate, Set<OffsetDateTime> pTimestamps, Set<OffsetTime> pTimes ) {
+      Set<StringCode> pCodes, OffsetDateTime pStartDate, Set<OffsetDateTime> pTimestamps, Set<OffsetTime> pTimes,
+      byte[] pBase64 ) {
     try {
       Command lCommand =
-          new TestMultiValuedHeaderFields_String_int_Double_StringCode_OffsetDateTime_OffsetDateTime_OffsetTime_RESTProductService_Command(
-              pNames, pInts, pDoubles, pCodes, pStartDate, pTimestamps, pTimes);
+          new TestMultiValuedHeaderFields_String_int_Double_StringCode_OffsetDateTime_OffsetDateTime_OffsetTime_byte_RESTProductService_Command(
+              pNames, pInts, pDoubles, pCodes, pStartDate, pTimestamps, pTimes, pBase64);
       return (String) this.executeCommand(lCommand);
     }
     catch (ApplicationException e) {
@@ -4011,7 +4012,7 @@ final class TestMultiValuedHeaderFieldsInBeanParam_MultiValuedHeaderBeanParam_RE
 /**
  * Generated command class for service method "testMultiValuedHeaderFields".
  */
-final class TestMultiValuedHeaderFields_String_int_Double_StringCode_OffsetDateTime_OffsetDateTime_OffsetTime_RESTProductService_Command
+final class TestMultiValuedHeaderFields_String_int_Double_StringCode_OffsetDateTime_OffsetDateTime_OffsetTime_byte_RESTProductService_Command
     extends Command {
   /**
    * Default serial version uid.
@@ -4038,12 +4039,12 @@ final class TestMultiValuedHeaderFields_String_int_Double_StringCode_OffsetDateT
   static {
     try {
       SERVICE_METHOD = RESTProductService.class.getMethod("testMultiValuedHeaderFields", Set.class, int[].class,
-          Set.class, Set.class, OffsetDateTime.class, Set.class, Set.class);
+          Set.class, Set.class, OffsetDateTime.class, Set.class, Set.class, byte[].class);
     }
     catch (NoSuchMethodException e) {
       throw new JEAFSystemException(MessageConstants.SERVICE_METHOD_DOES_NOT_EXIST, e,
           RESTProductService.class.getName(),
-          "testMultiValuedHeaderFields(Set.class, int[].class, Set.class, Set.class, OffsetDateTime.class, Set.class, Set.class)");
+          "testMultiValuedHeaderFields(Set.class, int[].class, Set.class, Set.class, OffsetDateTime.class, Set.class, Set.class, byte[].class)");
     }
   }
 
@@ -4083,6 +4084,11 @@ final class TestMultiValuedHeaderFields_String_int_Double_StringCode_OffsetDateT
   private final Set<OffsetTime> times;
 
   /**
+   * Attribute transports the method parameter "pBase64" to the service implementation via the service channel.
+   */
+  private final byte[] base64;
+
+  /**
    * Initialize object. All parameters from method "testMultiValuedHeaderFields" have to be passed as parameters to this
    * command object.
    *
@@ -4093,10 +4099,11 @@ final class TestMultiValuedHeaderFields_String_int_Double_StringCode_OffsetDateT
    * @param pStartDate OffsetDateTime
    * @param pTimestamps Set<OffsetDateTime>
    * @param pTimes Set<OffsetTime>
+   * @param pBase64 byte[]
    */
-  TestMultiValuedHeaderFields_String_int_Double_StringCode_OffsetDateTime_OffsetDateTime_OffsetTime_RESTProductService_Command(
+  TestMultiValuedHeaderFields_String_int_Double_StringCode_OffsetDateTime_OffsetDateTime_OffsetTime_byte_RESTProductService_Command(
       Set<String> pNames, int[] pInts, Set<Double> pDoubles, Set<StringCode> pCodes, OffsetDateTime pStartDate,
-      Set<OffsetDateTime> pTimestamps, Set<OffsetTime> pTimes ) {
+      Set<OffsetDateTime> pTimestamps, Set<OffsetTime> pTimes, byte[] pBase64 ) {
     super(RESTProductService.class);
     names = pNames;
     ints = pInts;
@@ -4105,7 +4112,8 @@ final class TestMultiValuedHeaderFields_String_int_Double_StringCode_OffsetDateT
     startDate = pStartDate;
     timestamps = pTimestamps;
     times = pTimes;
-    parameters = new Object[] { names, ints, doubles, codes, startDate, timestamps, times };
+    base64 = pBase64;
+    parameters = new Object[] { names, ints, doubles, codes, startDate, timestamps, times, base64 };
   }
 
   /**
@@ -4126,8 +4134,8 @@ final class TestMultiValuedHeaderFields_String_int_Double_StringCode_OffsetDateT
     Trace lTrace = XFun.getTrace();
     lTrace.write(MessageConstants.EXECUTING_SERVICE_CALL, this.getCalledServiceMethod());
     long lStartTime = System.nanoTime();
-    Serializable lResult =
-        (Serializable) lService.testMultiValuedHeaderFields(names, ints, doubles, codes, startDate, timestamps, times);
+    Serializable lResult = (Serializable) lService.testMultiValuedHeaderFields(names, ints, doubles, codes, startDate,
+        timestamps, times, base64);
     // Calculate duration of service call in milliseconds
     String lDuration = Long.toString((System.nanoTime() - lStartTime) / MILLISECONDS);
     // Trace result of service call.

@@ -305,7 +305,8 @@ final class RESTProductServiceImpl extends RESTProductServiceImplBase {
 
   @Override
   public String testMultiValuedHeaderFields( Set<String> pNames, int[] pInts, Set<Double> pDoubles,
-      Set<StringCode> pCodes, OffsetDateTime pStartDate, Set<OffsetDateTime> pTimestamps, Set<OffsetTime> pTimes ) {
+      Set<StringCode> pCodes, OffsetDateTime pStartDate, Set<OffsetDateTime> pTimestamps, Set<OffsetTime> pTimes,
+      byte[] pBase64 ) {
     return null;
   }
 

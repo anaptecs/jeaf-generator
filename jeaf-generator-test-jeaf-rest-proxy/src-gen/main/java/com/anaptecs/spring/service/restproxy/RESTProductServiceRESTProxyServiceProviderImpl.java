@@ -1302,6 +1302,9 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
         }
         lRequestBuilder.setHeader("timeUnitArray", lValues);
       }
+      if (pMultiValuedBean.getBase64() != null) {
+        lRequestBuilder.setHeader("base64", pMultiValuedBean.getBase64());
+      }
     }
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
@@ -1316,11 +1319,13 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
    * @param pStartDate
    * @param pTimestamps
    * @param pTimes
+   * @param pBase64
    * @return {@link String}
    */
   @Override
   public String testMultiValuedHeaderFields( Set<String> pNames, int[] pInts, Set<Double> pDoubles,
-      Set<StringCode> pCodes, OffsetDateTime pStartDate, Set<OffsetDateTime> pTimestamps, Set<OffsetTime> pTimes ) {
+      Set<StringCode> pCodes, OffsetDateTime pStartDate, Set<OffsetDateTime> pTimestamps, Set<OffsetTime> pTimes,
+      byte[] pBase64 ) {
     // Create builder for GET request
     RESTRequest.Builder lRequestBuilder =
         RESTRequest.builder(RESTProductService.class, HttpMethod.GET, ContentType.JSON);
@@ -1364,6 +1369,9 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
         lValues.add(DateTimeFormatter.ISO_OFFSET_TIME.format(lNext));
       }
       lRequestBuilder.setHeader("times", lValues);
+    }
+    if (pBase64 != null) {
+      lRequestBuilder.setHeader("BASE_64", pBase64);
     }
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();

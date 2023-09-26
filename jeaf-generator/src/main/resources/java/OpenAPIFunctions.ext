@@ -238,7 +238,7 @@ cached List[uml::Property] getAllAttributesFromHierarchy(uml::Element class):
   JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.getAllAttributesFromHierarchy(org.eclipse.uml2.uml.Element);   
    
 cached boolean isRequired(uml::Parameter param):
-   param.isStereotypeApplied("NotNull") || param.isStereotypeApplied("NotEmpty") || param.isStereotypeApplied("NotBlank") || param.type.isPrimitiveType()|| param.lower > 0;
+   param.isStereotypeApplied("NotNull") || param.isStereotypeApplied("NotEmpty") || param.isStereotypeApplied("NotBlank") || (param.type.isPrimitiveType() && param.lower > 0) || param.lower > 0;
 
 cached boolean isRequiredProperty(uml::Property property):
    property.isStereotypeApplied("NotNull") || property.isStereotypeApplied("NotEmpty") || property.isStereotypeApplied("NotBlank") || (property.lower > 0) || (property.association != null && property.lower > 0) || (property.isMultivalued() && property.lower > 0);

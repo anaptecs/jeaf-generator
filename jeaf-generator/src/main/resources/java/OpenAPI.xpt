@@ -297,7 +297,10 @@ components:
           «REM»Only basic types are supported as parameters«ENDREM -»
           schema:
             «IF property.type.isBasicOpenAPIType() == true -»
-            	«IF property.isMultivalued() == false -»
+            	«IF property.isMultivalued() && property.type.isByteType() -» 
+            type: string
+            format: byte
+            	«ELSEIF property.isMultivalued() == false -»
             type: «property.type.getOpenAPIType(this)»
             		«IF property.hasOpenAPIFormatForProperty()-»
             format: «property.getOpenAPIFormatForProperty()»
@@ -367,7 +370,10 @@ components:
           «ENDIF-»
           schema:
             «IF param.type.isBasicOpenAPIType() == true-»
-            	«IF param.isMultivalued() == false-»
+                «IF param.isMultivalued() && param.type.isByteType() -» 
+            type: string
+            format: byte
+            	«ELSEIF param.isMultivalued() == false-»
             type: «param.type.getOpenAPIType(this)»
             		«IF param.hasOpenAPIFormatForParam()-»
             format: «param.getOpenAPIFormatForParam()»

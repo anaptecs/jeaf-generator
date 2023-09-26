@@ -98,6 +98,11 @@ public class MultiValuedHeaderBeanParam implements Serializable {
    */
   public static final String TIMEUNITARRAY = "timeUnitArray";
 
+  /**
+   * Constant for the name of attribute "base64".
+   */
+  public static final String BASE64 = "base64";
+
   @HeaderParam("names")
   private String[] names;
 
@@ -139,6 +144,9 @@ public class MultiValuedHeaderBeanParam implements Serializable {
 
   @HeaderParam("timeUnitArray")
   private TimeUnit[] timeUnitArray;
+
+  @HeaderParam("base64")
+  private byte[] base64;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
@@ -187,6 +195,7 @@ public class MultiValuedHeaderBeanParam implements Serializable {
       timeUnits = new HashSet<TimeUnit>();
     }
     timeUnitArray = pBuilder.timeUnitArray;
+    base64 = pBuilder.base64;
   }
 
   /**
@@ -239,12 +248,14 @@ public class MultiValuedHeaderBeanParam implements Serializable {
    *
    * @param pTimeUnitArray Value to which {@link #timeUnitArray} should be set.
    *
+   * @param pBase64 Value to which {@link #base64} should be set.
+   *
    * @return {@link MultiValuedHeaderBeanParam}
    */
   public static MultiValuedHeaderBeanParam of( String[] pNames, int[] pInts, Double[] pDoubles, StringCode[] pCodes,
       Set<StringCode> pStringCodeList, LocalDate pStartDate, LocalDate[] pDates, Set<LocalDateTime> pTimestamps,
       Calendar[] pCalendars, Date[] pUtilDates, Timestamp[] pSqlTimestamps, Set<TimeUnit> pTimeUnits,
-      TimeUnit[] pTimeUnitArray ) {
+      TimeUnit[] pTimeUnitArray, byte[] pBase64 ) {
     MultiValuedHeaderBeanParam.Builder lBuilder = MultiValuedHeaderBeanParam.builder();
     lBuilder.setNames(pNames);
     lBuilder.setInts(pInts);
@@ -259,6 +270,7 @@ public class MultiValuedHeaderBeanParam implements Serializable {
     lBuilder.setSqlTimestamps(pSqlTimestamps);
     lBuilder.setTimeUnits(pTimeUnits);
     lBuilder.setTimeUnitArray(pTimeUnitArray);
+    lBuilder.setBase64(pBase64);
     return lBuilder.build();
   }
 
@@ -292,6 +304,8 @@ public class MultiValuedHeaderBeanParam implements Serializable {
 
     private TimeUnit[] timeUnitArray;
 
+    private byte[] base64;
+
     /**
      * Use {@link MultiValuedHeaderBeanParam#builder()} instead of private constructor to create new builder.
      */
@@ -318,6 +332,7 @@ public class MultiValuedHeaderBeanParam implements Serializable {
         sqlTimestamps = pObject.sqlTimestamps;
         timeUnits = pObject.timeUnits;
         timeUnitArray = pObject.timeUnitArray;
+        base64 = pObject.base64;
       }
     }
 
@@ -608,6 +623,24 @@ public class MultiValuedHeaderBeanParam implements Serializable {
       }
       else {
         timeUnitArray = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method sets attribute {@link #base64}.<br/>
+     *
+     * @param pBase64 Value to which {@link #base64} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    public Builder setBase64( byte[] pBase64 ) {
+      // Assign value to attribute
+      if (pBase64 != null) {
+        base64 = new byte[pBase64.length];
+        System.arraycopy(pBase64, 0, base64, 0, pBase64.length);
+      }
+      else {
+        base64 = null;
       }
       return this;
     }
@@ -1123,6 +1156,39 @@ public class MultiValuedHeaderBeanParam implements Serializable {
     }
     else {
       timeUnitArray = null;
+    }
+  }
+
+  /**
+   * Method returns attribute {@link #base64}.<br/>
+   *
+   * @return byte Value to which {@link #base64} is set.
+   */
+  public byte[] getBase64( ) {
+    byte[] lReturnValue;
+    if (base64 != null) {
+      lReturnValue = new byte[base64.length];
+      System.arraycopy(base64, 0, lReturnValue, 0, base64.length);
+    }
+    else {
+      lReturnValue = null;
+    }
+    return lReturnValue;
+  }
+
+  /**
+   * Method sets attribute {@link #base64}.<br/>
+   *
+   * @param pBase64 Value to which {@link #base64} should be set.
+   */
+  public void setBase64( byte[] pBase64 ) {
+    // Assign value to attribute
+    if (pBase64 != null) {
+      base64 = new byte[pBase64.length];
+      System.arraycopy(pBase64, 0, base64, 0, pBase64.length);
+    }
+    else {
+      base64 = null;
     }
   }
 

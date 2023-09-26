@@ -76,7 +76,8 @@ public class RESTProductServiceImpl implements RESTProductService {
   }
 
   @Override
-  public Product getProduct( @NotEmpty String pProductID ) {
+  public Product getProduct( @NotEmpty
+  String pProductID ) {
     Product lProduct;
     if (pProductID.endsWith("12345")) {
       lProduct = Product.builder().setName("Cool Product").setUri("https://products.anaptecs.de/123456789").build();
@@ -101,7 +102,8 @@ public class RESTProductServiceImpl implements RESTProductService {
   }
 
   @Override
-  public ChannelCode createChannelCode( @NotBlank String pChannelCode ) {
+  public ChannelCode createChannelCode( @NotBlank
+  String pChannelCode ) {
     return ChannelCode.builder().setCode(pChannelCode).build();
   }
 
@@ -133,8 +135,8 @@ public class RESTProductServiceImpl implements RESTProductService {
   @Override
   public String testParams( BigDecimal pBigDecimalHeader, int pIntCookieParam, Locale pLocaleQueryParam ) {
     // BigDecimal.valueOf(3.1423), 9999, Locale.GERMANY
-    if (BigDecimal.valueOf(3.1423).equals(pBigDecimalHeader) && pIntCookieParam == 9999 && Locale.GERMANY.equals(
-        pLocaleQueryParam)) {
+    if (BigDecimal.valueOf(3.1423).equals(pBigDecimalHeader) && pIntCookieParam == 9999
+        && Locale.GERMANY.equals(pLocaleQueryParam)) {
       return "Hello World of REST!";
     }
     else {
@@ -156,8 +158,8 @@ public class RESTProductServiceImpl implements RESTProductService {
       Date pUtilDate, Timestamp pSQLTimestamp, Time pSQLTime, java.sql.Date pSQLDate, Set<Calendar> pCalendars ) {
 
     if (pPath.equals("2")) {
-      assertEquals("2022-03-17T13:22:12.453+01:00", new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(
-          pCalendar.getTime()));
+      assertEquals("2022-03-17T13:22:12.453+01:00",
+          new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(pCalendar.getTime()));
       assertEquals("2022-03-17", pLocalStartDate.toString());
       assertEquals("2022-03-17T13:22:12.453", pLocalStartTimestamp.toString());
       assertEquals("13:22:12.453", pLocalStartTime.toString());
@@ -176,8 +178,8 @@ public class RESTProductServiceImpl implements RESTProductService {
   @Override
   public void testDateQueryParamsBean( String pPath, DateQueryParamsBean pQueryParams ) {
     if (pPath.equals("1")) {
-      assertEquals("2022-03-17T13:22:12.453+01:00", new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(
-          pQueryParams.getCalendar().getTime()));
+      assertEquals("2022-03-17T13:22:12.453+01:00",
+          new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(pQueryParams.getCalendar().getTime()));
       assertEquals("2022-03-17", pQueryParams.getLocalDate().toString());
       assertEquals("2022-03-17T13:22:12.453", pQueryParams.getLocalDateTime().toString());
       assertEquals("13:22:12.453", pQueryParams.getLocalTime().toString());
@@ -202,8 +204,8 @@ public class RESTProductServiceImpl implements RESTProductService {
   @Override
   public void testDateHeaderParamsBean( String pPath, DateHeaderParamsBean pHeaderParams ) {
     if (pPath.equals("1")) {
-      assertEquals("2022-03-17T13:22:12.453+01:00", new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(
-          pHeaderParams.getCalendar().getTime()));
+      assertEquals("2022-03-17T13:22:12.453+01:00",
+          new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(pHeaderParams.getCalendar().getTime()));
       assertEquals("2022-03-17", pHeaderParams.getLocalDate().toString());
       assertEquals("2022-03-17T13:22:12.453", pHeaderParams.getLocalDateTime().toString());
       assertEquals("13:22:12.453", pHeaderParams.getLocalTime().toString());
@@ -310,8 +312,8 @@ public class RESTProductServiceImpl implements RESTProductService {
     for (DoubleCode lNext : pQueryBean.getDoubleCodes()) {
       lResult = lResult + lNext.getCode() + "_";
     }
-    return lResult + pQueryBean.getOffsetDateTime() + "_" + pQueryBean.getLocalDateTime() + "_" + pQueryBean
-        .getLocalTime() + "_" + pQueryBean.getOffsetTime() + "_" + pQueryBean.getTimes();
+    return lResult + pQueryBean.getOffsetDateTime() + "_" + pQueryBean.getLocalDateTime() + "_"
+        + pQueryBean.getLocalTime() + "_" + pQueryBean.getOffsetTime() + "_" + pQueryBean.getTimes();
   }
 
   @Override
@@ -332,20 +334,21 @@ public class RESTProductServiceImpl implements RESTProductService {
       }
     }
     return Arrays.toString(pMultiValuedBean.getNames()) + "_" + Arrays.toString(pMultiValuedBean.getInts()) + "_"
-        + Arrays.toString(pMultiValuedBean.getDoubles()) + "_"
-        + lCodes + "_" + lStringCodeList + "_" + pMultiValuedBean.getStartDate() + "_" + lDates;
+        + Arrays.toString(pMultiValuedBean.getDoubles()) + "_" + lCodes + "_" + lStringCodeList + "_"
+        + pMultiValuedBean.getStartDate() + "_" + lDates;
   }
 
   @Override
   public String testMultiValuedHeaderFields( Set<String> pNames, int[] pInts, Set<Double> pDoubles,
-      Set<StringCode> pCodes, OffsetDateTime pStartDate, Set<OffsetDateTime> pTimestamps, Set<OffsetTime> pTimes ) {
+      Set<StringCode> pCodes, OffsetDateTime pStartDate, Set<OffsetDateTime> pTimestamps, Set<OffsetTime> pTimes,
+      byte[] pBase64 ) {
     String lCodes = "";
     for (StringCode lNext : pCodes) {
       lCodes = lCodes + "-" + lNext.getCode();
     }
 
-    return pNames.toString() + "_" + Arrays.toString(pInts) + "_"
-        + pDoubles.toString() + "_" + lCodes + "_" + pTimestamps.toString() + "_" + pTimes.toString();
+    return pNames.toString() + "_" + Arrays.toString(pInts) + "_" + pDoubles.toString() + "_" + lCodes + "_"
+        + pTimestamps.toString() + "_" + pTimes.toString();
   }
 
   @Override

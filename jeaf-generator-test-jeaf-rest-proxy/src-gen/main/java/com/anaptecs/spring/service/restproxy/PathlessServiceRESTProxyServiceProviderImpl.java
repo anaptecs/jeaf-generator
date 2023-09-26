@@ -175,6 +175,9 @@ public final class PathlessServiceRESTProxyServiceProviderImpl
         }
         lRequestBuilder.setHeader("timeUnitArray", lValues);
       }
+      if (pHeaderBean.getBase64() != null) {
+        lRequestBuilder.setHeader("base64", pHeaderBean.getBase64());
+      }
     }
     // Execute request.
     RESTRequest lRequest = lRequestBuilder.build();

@@ -114,7 +114,7 @@ public class RESTProductServiceResource {
   @Secured({ "Customer", "Sales Agent" })
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(method = { RequestMethod.GET })
-  public List<Product> getProducts( @RequestParam(name = "maxResult", required = true) int pMaxResultSize ) {
+  public List<Product> getProducts( @RequestParam(name = "maxResult", required = false) int pMaxResultSize ) {
     // Validate request parameter(s).
     validationExecutor.validateRequest(RESTProductService.class, pMaxResultSize);
     // Delegate request to service.
@@ -801,7 +801,7 @@ public class RESTProductServiceResource {
   @RequestMapping(path = "test-optional-query-params", method = { RequestMethod.GET })
   public String testOptionalQueryParams(
       @RequestParam(name = "query1", required = false, defaultValue = "Just a default value") String query1,
-      @RequestParam(name = "query2", required = true) int query2 ) {
+      @RequestParam(name = "query2", required = false) int query2 ) {
     // Validate request parameter(s).
     validationExecutor.validateRequest(RESTProductService.class, query1, query2);
     // Delegate request to service.
@@ -907,7 +907,7 @@ public class RESTProductServiceResource {
   @Secured({ "Sales Agent" })
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "testPrimitiveArrayAsBody", method = { RequestMethod.POST })
-  public String testPrimitiveArrays( @RequestBody(required = true) int[] pIntegerArray ) {
+  public String testPrimitiveArrays( @RequestBody(required = false) int[] pIntegerArray ) {
     // Validate request parameter(s).
     validationExecutor.validateRequest(RESTProductService.class, pIntegerArray);
     // Delegate request to service.
@@ -975,7 +975,7 @@ public class RESTProductServiceResource {
   @Secured({ "Sales Agent" })
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "testPrimitiveArrayAsQueryParam", method = { RequestMethod.GET })
-  public String testPrimitiveArrayAsQueryParam( @RequestParam(name = "intValues", required = true) int[] pIntValues ) {
+  public String testPrimitiveArrayAsQueryParam( @RequestParam(name = "intValues", required = false) int[] pIntValues ) {
     // Validate request parameter(s).
     validationExecutor.validateRequest(RESTProductService.class, pIntValues);
     // Delegate request to service.
@@ -1256,7 +1256,8 @@ public class RESTProductServiceResource {
       @RequestHeader(name = "utilDates", required = false) String[] pUtilDatesAsBasicType,
       @RequestHeader(name = "sqlTimestamps", required = false) String[] pSqlTimestampsAsBasicType,
       @RequestHeader(name = "timeUnits", required = false) Set<TimeUnit> pTimeUnits,
-      @RequestHeader(name = "timeUnitArray", required = false) TimeUnit[] pTimeUnitArray ) {
+      @RequestHeader(name = "timeUnitArray", required = false) TimeUnit[] pTimeUnitArray,
+      @RequestHeader(name = "base64", required = false) byte[] pBase64 ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
     MultiValuedHeaderBeanParam.Builder lMultiValuedBeanBuilder = MultiValuedHeaderBeanParam.builder();
@@ -1341,6 +1342,7 @@ public class RESTProductServiceResource {
     }
     lMultiValuedBeanBuilder.setTimeUnits(pTimeUnits);
     lMultiValuedBeanBuilder.setTimeUnitArray(pTimeUnitArray);
+    lMultiValuedBeanBuilder.setBase64(pBase64);
     MultiValuedHeaderBeanParam pMultiValuedBean = lMultiValuedBeanBuilder.build();
     // Validate request parameter(s).
     validationExecutor.validateRequest(RESTProductService.class, pMultiValuedBean);
@@ -1363,7 +1365,8 @@ public class RESTProductServiceResource {
       @RequestHeader(name = "codes", required = false) String[] pCodesAsBasicType,
       @RequestHeader(name = "startDate", required = false) String pStartDateAsBasicType,
       @RequestHeader(name = "timestamps", required = false) String[] pTimestampsAsBasicType,
-      @RequestHeader(name = "times", required = false) String[] pTimesAsBasicType ) {
+      @RequestHeader(name = "times", required = false) String[] pTimesAsBasicType,
+      @RequestHeader(name = "BASE_64", required = false) byte[] pBase64 ) {
     // Convert basic type parameters into "real" objects.
     Set<StringCode> pCodes;
     if (pCodesAsBasicType != null) {
@@ -1405,10 +1408,10 @@ public class RESTProductServiceResource {
     }
     // Validate request parameter(s).
     validationExecutor.validateRequest(RESTProductService.class, pNames, pInts, pDoubles, pCodes, pStartDate,
-        pTimestamps, pTimes);
+        pTimestamps, pTimes, pBase64);
     // Delegate request to service.
     String lResponse = rESTProductService.testMultiValuedHeaderFields(pNames, pInts, pDoubles, pCodes, pStartDate,
-        pTimestamps, pTimes);
+        pTimestamps, pTimes, pBase64);
     // Validate response and return it.
     validationExecutor.validateResponse(RESTProductService.class, lResponse);
     return lResponse;

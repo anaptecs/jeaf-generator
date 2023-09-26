@@ -2,7 +2,7 @@ openapi: 3.0.3
 
 info:
   title: Product Services
-  version: 1.11.9-SNAPSHOT
+  version: 1.12.1-SNAPSHOT
   description: |
     This component represents the OpenAPI interface of the accounting service.
     
@@ -1102,7 +1102,6 @@ paths:
             default: Just a default value
         - name: query2
           in: query
-          required: true
           schema:
             type: integer
             format: int32
@@ -1250,7 +1249,6 @@ paths:
       parameters:
         - name: intValues
           in: query
-          required: true
           schema:
             type: array
             items:

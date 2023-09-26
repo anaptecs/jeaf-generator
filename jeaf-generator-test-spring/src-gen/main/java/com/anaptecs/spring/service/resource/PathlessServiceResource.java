@@ -106,7 +106,8 @@ public class PathlessServiceResource {
       @RequestHeader(name = "utilDates", required = false) String[] pUtilDatesAsBasicType,
       @RequestHeader(name = "sqlTimestamps", required = false) String[] pSqlTimestampsAsBasicType,
       @RequestHeader(name = "timeUnits", required = false) Set<TimeUnit> pTimeUnits,
-      @RequestHeader(name = "timeUnitArray", required = false) TimeUnit[] pTimeUnitArray ) {
+      @RequestHeader(name = "timeUnitArray", required = false) TimeUnit[] pTimeUnitArray,
+      @RequestHeader(name = "base64", required = false) byte[] pBase64 ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
     MultiValuedHeaderBeanParam.Builder lHeaderBeanBuilder = MultiValuedHeaderBeanParam.builder();
@@ -191,6 +192,7 @@ public class PathlessServiceResource {
     }
     lHeaderBeanBuilder.setTimeUnits(pTimeUnits);
     lHeaderBeanBuilder.setTimeUnitArray(pTimeUnitArray);
+    lHeaderBeanBuilder.setBase64(pBase64);
     MultiValuedHeaderBeanParam pHeaderBean = lHeaderBeanBuilder.build();
     TechOnlyBeanParam.Builder lTechContextBuilder = TechOnlyBeanParam.builder();
     TechOnlyBeanParam pTechContext = lTechContextBuilder.build();

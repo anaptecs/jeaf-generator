@@ -81,6 +81,13 @@
 			<artifactId>log4j-to-slf4j</artifactId>
 			<version>${log4j-to-slf4j.version}</version>
 		</dependency>
+
+		<dependency>
+		    <groupId>com.vladsch.flexmark</groupId>
+		    <artifactId>flexmark-all</artifactId>
+		    <version>0.64.8</version>
+		    <scope>test</scope>
+		</dependency>		
 	</dependencies>
 
 	<build>

@@ -269,10 +269,11 @@ public interface RESTProductService {
    * @param pStartDate
    * @param pTimestamps
    * @param pTimes
+   * @param pBase64
    * @return {@link String}
    */
   String testMultiValuedHeaderFields( Set<String> pNames, int[] pInts, Set<Double> pDoubles, Set<StringCode> pCodes,
-      OffsetDateTime pStartDate, Set<OffsetDateTime> pTimestamps, Set<OffsetTime> pTimes );
+      OffsetDateTime pStartDate, Set<OffsetDateTime> pTimestamps, Set<OffsetTime> pTimes, byte[] pBase64 );
 
   /**
    * @param pBookingID

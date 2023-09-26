@@ -2,7 +2,7 @@ openapi: 3.0.3
 
 info:
   title: Product Services
-  version: 1.11.9-SNAPSHOT
+  version: 1.12.1-SNAPSHOT
   description: |
     This component represents the OpenAPI interface of the accounting service.
     
@@ -1142,7 +1142,6 @@ paths:
       parameters:
         - name: maxResult
           in: query
-          required: true
           schema:
             type: integer
             format: int32
@@ -1931,7 +1930,6 @@ paths:
             default: Just a default value
         - name: query2
           in: query
-          required: true
           schema:
             type: integer
             format: int32
@@ -2063,7 +2061,6 @@ paths:
         Authorized Roles: Sales Agent
       operationId: testPrimitiveArrays
       requestBody:
-        required: true
         content:
           application/json:
             schema:
@@ -2155,7 +2152,6 @@ paths:
       parameters:
         - name: intValues
           in: query
-          required: true
           schema:
             type: array
             items:
@@ -2540,6 +2536,11 @@ paths:
             type: array
             items:
               $ref: '../base/product-base.yml#/components/schemas/TimeUnit'
+        - name: base64
+          in: header
+          schema:
+            type: string
+            format: byte
       responses:
         '200':
           description: |
@@ -2575,6 +2576,7 @@ paths:
             items:
               type: integer
               format: int32
+              minItems: 1
         - name: doubles
           in: header
           schema:
@@ -2608,6 +2610,11 @@ paths:
             items:
               type: string
               format: time
+        - name: BASE_64
+          in: header
+          schema:
+            type: string
+            format: byte
       responses:
         '200':
           description: |

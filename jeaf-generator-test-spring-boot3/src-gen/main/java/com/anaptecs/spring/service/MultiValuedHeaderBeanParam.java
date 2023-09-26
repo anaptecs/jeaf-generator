@@ -86,6 +86,11 @@ public class MultiValuedHeaderBeanParam {
    */
   public static final String TIMEUNITARRAY = "timeUnitArray";
 
+  /**
+   * Constant for the name of attribute "base64".
+   */
+  public static final String BASE64 = "base64";
+
   private String[] names;
 
   private int[] ints;
@@ -111,6 +116,8 @@ public class MultiValuedHeaderBeanParam {
   private Set<TimeUnit> timeUnits;
 
   private TimeUnit[] timeUnitArray;
+
+  private byte[] base64;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
@@ -157,6 +164,7 @@ public class MultiValuedHeaderBeanParam {
       timeUnits = new HashSet<TimeUnit>();
     }
     timeUnitArray = pBuilder.timeUnitArray;
+    base64 = pBuilder.base64;
   }
 
   /**
@@ -209,12 +217,14 @@ public class MultiValuedHeaderBeanParam {
    *
    * @param pTimeUnitArray Value to which {@link #timeUnitArray} should be set.
    *
+   * @param pBase64 Value to which {@link #base64} should be set.
+   *
    * @return {@link MultiValuedHeaderBeanParam}
    */
   public static MultiValuedHeaderBeanParam of( String[] pNames, int[] pInts, Double[] pDoubles, StringCode[] pCodes,
       Set<StringCode> pStringCodeList, LocalDate pStartDate, LocalDate[] pDates, Set<LocalDateTime> pTimestamps,
       Calendar[] pCalendars, Date[] pUtilDates, Timestamp[] pSqlTimestamps, Set<TimeUnit> pTimeUnits,
-      TimeUnit[] pTimeUnitArray ) {
+      TimeUnit[] pTimeUnitArray, byte[] pBase64 ) {
     MultiValuedHeaderBeanParam.Builder lBuilder = MultiValuedHeaderBeanParam.builder();
     lBuilder.setNames(pNames);
     lBuilder.setInts(pInts);
@@ -229,6 +239,7 @@ public class MultiValuedHeaderBeanParam {
     lBuilder.setSqlTimestamps(pSqlTimestamps);
     lBuilder.setTimeUnits(pTimeUnits);
     lBuilder.setTimeUnitArray(pTimeUnitArray);
+    lBuilder.setBase64(pBase64);
     return lBuilder.build();
   }
 
@@ -262,6 +273,8 @@ public class MultiValuedHeaderBeanParam {
 
     private TimeUnit[] timeUnitArray;
 
+    private byte[] base64;
+
     /**
      * Use {@link MultiValuedHeaderBeanParam#builder()} instead of private constructor to create new builder.
      */
@@ -288,6 +301,7 @@ public class MultiValuedHeaderBeanParam {
         sqlTimestamps = pObject.sqlTimestamps;
         timeUnits = pObject.timeUnits;
         timeUnitArray = pObject.timeUnitArray;
+        base64 = pObject.base64;
       }
     }
 
@@ -578,6 +592,24 @@ public class MultiValuedHeaderBeanParam {
       }
       else {
         timeUnitArray = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method sets attribute {@link #base64}.<br/>
+     *
+     * @param pBase64 Value to which {@link #base64} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    public Builder setBase64( byte[] pBase64 ) {
+      // Assign value to attribute
+      if (pBase64 != null) {
+        base64 = new byte[pBase64.length];
+        System.arraycopy(pBase64, 0, base64, 0, pBase64.length);
+      }
+      else {
+        base64 = null;
       }
       return this;
     }
@@ -1065,6 +1097,39 @@ public class MultiValuedHeaderBeanParam {
     }
   }
 
+  /**
+   * Method returns attribute {@link #base64}.<br/>
+   *
+   * @return byte Value to which {@link #base64} is set.
+   */
+  public byte[] getBase64( ) {
+    byte[] lReturnValue;
+    if (base64 != null) {
+      lReturnValue = new byte[base64.length];
+      System.arraycopy(base64, 0, lReturnValue, 0, base64.length);
+    }
+    else {
+      lReturnValue = null;
+    }
+    return lReturnValue;
+  }
+
+  /**
+   * Method sets attribute {@link #base64}.<br/>
+   *
+   * @param pBase64 Value to which {@link #base64} should be set.
+   */
+  public void setBase64( byte[] pBase64 ) {
+    // Assign value to attribute
+    if (pBase64 != null) {
+      base64 = new byte[pBase64.length];
+      System.arraycopy(pBase64, 0, base64, 0, pBase64.length);
+    }
+    else {
+      base64 = null;
+    }
+  }
+
   @Override
   public int hashCode( ) {
     final int lPrime = 31;
@@ -1082,6 +1147,7 @@ public class MultiValuedHeaderBeanParam {
     lResult = lPrime * lResult + Arrays.hashCode(sqlTimestamps);
     lResult = lPrime * lResult + Objects.hashCode(timeUnits);
     lResult = lPrime * lResult + Arrays.hashCode(timeUnitArray);
+    lResult = lPrime * lResult + Arrays.hashCode(base64);
     return lResult;
   }
 
@@ -1105,7 +1171,7 @@ public class MultiValuedHeaderBeanParam {
           && Arrays.equals(dates, lOther.dates) && Objects.equals(timestamps, lOther.timestamps)
           && Arrays.equals(calendars, lOther.calendars) && Arrays.equals(utilDates, lOther.utilDates)
           && Arrays.equals(sqlTimestamps, lOther.sqlTimestamps) && Objects.equals(timeUnits, lOther.timeUnits)
-          && Arrays.equals(timeUnitArray, lOther.timeUnitArray);
+          && Arrays.equals(timeUnitArray, lOther.timeUnitArray) && Arrays.equals(base64, lOther.base64);
     }
     return lEquals;
   }
@@ -1251,6 +1317,15 @@ public class MultiValuedHeaderBeanParam {
     lBuilder.append("timeUnitArray: ");
     if (timeUnitArray != null) {
       lBuilder.append(Arrays.toString(timeUnitArray));
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("base64: ");
+    if (base64 != null) {
+      lBuilder.append(Arrays.toString(base64));
     }
     else {
       lBuilder.append(" null");
