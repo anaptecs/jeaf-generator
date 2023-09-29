@@ -504,7 +504,12 @@ public class «name»Resource {
 							}			  			
 			  			«ENDIF»
 		  			«ELSE»
-		  				«beanParam.name.toLocalVar()»Builder.«attribute.asSetter()»(«attribute.asParameter()»);
+		  				«IF attribute.type.isPrimitiveType() && attribute.type.isByteType() && attribute.isMultivalued()»
+		  				    // Decode base64 encoded String back to byte[]
+		  				    «beanParam.name.toLocalVar()»Builder.«attribute.asSetter()»(java.util.Base64.getDecoder().decode(«attribute.asParameter()»));
+		  				«ELSE»
+		  				    «beanParam.name.toLocalVar()»Builder.«attribute.asSetter()»(«attribute.asParameter()»);
+		  				«ENDIF»
 		  			«ENDIF»
 		  		«ENDIF»
 		  «ENDFOREACH»
@@ -651,6 +656,18 @@ public class «name»Resource {
   				}
   			«ENDIF»
 	  	«ENDFOREACH»
+	  «ENDIF»
+	  
+	  «IF this.hasByteArrayHeaderParameters()»
+	       «FOREACH this.getByteArrayHeaderParameters() AS byteArrayParam»
+	       byte[] «byteArrayParam.name»;
+	       if(«byteArrayParam.name»AsString != null) {
+	           «byteArrayParam.name» = java.util.Base64.getDecoder().decode(«byteArrayParam.name»AsString);
+	       }
+	       else {
+	           «byteArrayParam.name» = null;
+	       }	       
+	       «ENDFOREACH»
 	  «ENDIF»
 	  
 	  «IF generateRESTRequestValidation() && this.getInputParameters().select(e|e.isParameterSuppressed() == false).isEmpty == false»
@@ -835,7 +852,12 @@ public class «name»Resource {
 	  	«IF this.type.isAnyDateType()»
 	  		String«IF this.isMultivalued()»[]«ENDIF» «name»AsBasicType
 	  	«ELSE»
-	  		«this.getTypeName()» «name»
+	  		«REM»byte[] are transfered as base64 encoded Strings«ENDREM»
+	  		«IF type.isPrimitiveType() && type.isByteType() && this.isMultivalued()»
+	  		   String «name»AsString
+	  		«ELSE»
+	  		   «this.getTypeName()» «name»
+	  		«ENDIF»
 	  	«ENDIF»
 	  «ENDIF»
   «ENDIF»
@@ -870,7 +892,12 @@ public class «name»Resource {
 	  	«IF this.type.isAnyDateType()»
 	  		String«IF this.isMultivalued()»[]«ENDIF» «this.asParameter()»AsBasicType
 	  	«ELSE»
-	  		«this.fqn()»«IF this.association == null && this.isMultivalued()»[]«ENDIF» «this.asParameter()»
+            «REM»byte[] are transfered as base64 encoded Strings«ENDREM»
+            «IF type.isPrimitiveType() && type.isByteType() && this.isMultivalued()»
+               String «this.asParameter()»
+            «ELSE»
+	  		   «this.fqn()»«IF this.association == null && this.isMultivalued()»[]«ENDIF» «this.asParameter()»
+	  		«ENDIF»
 	  	«ENDIF»
 	  «ENDIF»
 «ENDDEFINE»

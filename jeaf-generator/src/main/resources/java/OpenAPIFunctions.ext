@@ -160,6 +160,12 @@ cached List[uml::Parameter] getDateParameters(uml::Operation operation):
 
 cached boolean hasDateParameters(uml::Operation operation):
 	operation.getDateParameters().size > 0;
+	
+cached List[uml::Parameter] getByteArrayHeaderParameters(uml::Operation operation):
+   operation.ownedParameter.select(e|e.type.isPrimitiveType() && e.type.isByteType() && e.isHeaderParam() && e.isMultivalued() && e.isInputParameter() && e.isRequestBody() == false && e.isParameterSuppressed() == false);
+
+cached boolean hasByteArrayHeaderParameters(uml::Operation operation):
+   operation.getByteArrayHeaderParameters().size > 0;
    
 Void registerLocalType(uml::NamedElement localClass, JMM::OpenAPI3Specification spec):
     JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.registerLocalType(org.eclipse.uml2.uml.NamedElement, org.eclipse.uml2.uml.Component);

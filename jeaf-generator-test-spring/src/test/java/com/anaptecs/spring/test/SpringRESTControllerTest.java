@@ -10,6 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Base64;
 
 import javax.inject.Inject;
 
@@ -321,9 +322,10 @@ public class SpringRESTControllerTest {
     lRequest.addHeader("startDate", DateTimeFormatter.ISO_DATE.format(LocalDate.of(2022, 12, 24)));
     lRequest.addHeader("dates", DateTimeFormatter.ISO_DATE.format(LocalDate.of(2022, 12, 24)) + ", "
         + DateTimeFormatter.ISO_DATE.format(LocalDate.of(2022, 12, 31)));
+    lRequest.addHeader("base64", Base64.getEncoder().encodeToString("Hello World!".getBytes()));
     CloseableHttpResponse lResponse = lHttpClient.execute(lRequest.build());
     assertEquals(
-        "[Hello, World!]_[1, 2, 3, 4, 5]_[3.1415, 47.11]_-StringCode1-StringCode2_-StringCode3-StringCode4_2022-12-24_2022-12-24,2022-12-31,",
+        "[Hello, World!]_[1, 2, 3, 4, 5]_[3.1415, 47.11]_-StringCode1-StringCode2_-StringCode3-StringCode4_2022-12-24_2022-12-24,2022-12-31,_Hello World!",
         Tools.getStreamTools().getStreamContentAsString(lResponse.getEntity().getContent()));
     assertEquals(200, lResponse.getCode());
   }
@@ -340,9 +342,10 @@ public class SpringRESTControllerTest {
     lRequest.addHeader("stringCodeList", "StringCode3, StringCode4");
     lRequest.addHeader("timestamps", "2022-03-17T13:22:12.453+01:00");
     lRequest.addHeader("times", "13:22:12.453+01:00, 14:22:12.453+01:00");
+    lRequest.addHeader("BASE_64", Base64.getEncoder().encodeToString("Hello World!".getBytes()));
     CloseableHttpResponse lResponse = lHttpClient.execute(lRequest.build());
     assertEquals(
-        "[Hello, World!]_[1, 2, 3, 4, 5]_[3.1415, 47.11]_-StringCode1-StringCode2_[2022-03-17T13:22:12.453+01:00]_[14:22:12.453+01:00, 13:22:12.453+01:00]",
+        "[Hello, World!]_[1, 2, 3, 4, 5]_[3.1415, 47.11]_-StringCode1-StringCode2_[2022-03-17T13:22:12.453+01:00]_[14:22:12.453+01:00, 13:22:12.453+01:00]_Hello World!",
         Tools.getStreamTools().getStreamContentAsString(lResponse.getEntity().getContent()));
     assertEquals(200, lResponse.getCode());
   }

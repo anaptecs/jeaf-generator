@@ -318,7 +318,7 @@ public class RESTProductServiceImpl implements RESTProductService {
     }
     return Arrays.toString(pMultiValuedBean.getNames()) + "_" + Arrays.toString(pMultiValuedBean.getInts()) + "_"
         + Arrays.toString(pMultiValuedBean.getDoubles()) + "_" + lCodes + "_" + lStringCodeList + "_"
-        + pMultiValuedBean.getStartDate() + "_" + lDates;
+        + pMultiValuedBean.getStartDate() + "_" + lDates + "_" + new String(pMultiValuedBean.getBase64());
   }
 
   @Override
@@ -331,7 +331,7 @@ public class RESTProductServiceImpl implements RESTProductService {
     }
 
     return pNames.toString() + "_" + Arrays.toString(pInts) + "_" + pDoubles.toString() + "_" + lCodes + "_"
-        + pTimestamps.toString() + "_" + pTimes.toString();
+        + pTimestamps.toString() + "_" + pTimes.toString() + "_" + new String(pBase64);
   }
 
   @Override

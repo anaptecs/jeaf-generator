@@ -17,6 +17,7 @@ import java.time.LocalTime;
 import java.time.OffsetDateTime;
 import java.time.OffsetTime;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.HashSet;
@@ -1257,7 +1258,7 @@ public class RESTProductServiceResource {
       @RequestHeader(name = "sqlTimestamps", required = false) String[] pSqlTimestampsAsBasicType,
       @RequestHeader(name = "timeUnits", required = false) Set<TimeUnit> pTimeUnits,
       @RequestHeader(name = "timeUnitArray", required = false) TimeUnit[] pTimeUnitArray,
-      @RequestHeader(name = "base64", required = false) byte[] pBase64 ) {
+      @RequestHeader(name = "base64", required = false) String pBase64 ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
     MultiValuedHeaderBeanParam.Builder lMultiValuedBeanBuilder = MultiValuedHeaderBeanParam.builder();
@@ -1342,7 +1343,8 @@ public class RESTProductServiceResource {
     }
     lMultiValuedBeanBuilder.setTimeUnits(pTimeUnits);
     lMultiValuedBeanBuilder.setTimeUnitArray(pTimeUnitArray);
-    lMultiValuedBeanBuilder.setBase64(pBase64);
+    // Decode base64 encoded String back to byte[]
+    lMultiValuedBeanBuilder.setBase64(Base64.getDecoder().decode(pBase64));
     MultiValuedHeaderBeanParam pMultiValuedBean = lMultiValuedBeanBuilder.build();
     // Validate request parameter(s).
     validationExecutor.validateRequest(RESTProductService.class, pMultiValuedBean);
@@ -1366,7 +1368,7 @@ public class RESTProductServiceResource {
       @RequestHeader(name = "startDate", required = false) String pStartDateAsBasicType,
       @RequestHeader(name = "timestamps", required = false) String[] pTimestampsAsBasicType,
       @RequestHeader(name = "times", required = false) String[] pTimesAsBasicType,
-      @RequestHeader(name = "BASE_64", required = false) byte[] pBase64 ) {
+      @RequestHeader(name = "BASE_64", required = false) String pBase64AsString ) {
     // Convert basic type parameters into "real" objects.
     Set<StringCode> pCodes;
     if (pCodesAsBasicType != null) {
@@ -1405,6 +1407,13 @@ public class RESTProductServiceResource {
     }
     else {
       pTimes = Collections.emptySet();
+    }
+    byte[] pBase64;
+    if (pBase64AsString != null) {
+      pBase64 = Base64.getDecoder().decode(pBase64AsString);
+    }
+    else {
+      pBase64 = null;
     }
     // Validate request parameter(s).
     validationExecutor.validateRequest(RESTProductService.class, pNames, pInts, pDoubles, pCodes, pStartDate,

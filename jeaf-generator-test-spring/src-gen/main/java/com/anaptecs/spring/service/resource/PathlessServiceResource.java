@@ -14,6 +14,7 @@ import java.time.LocalTime;
 import java.time.OffsetDateTime;
 import java.time.OffsetTime;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
@@ -107,7 +108,7 @@ public class PathlessServiceResource {
       @RequestHeader(name = "sqlTimestamps", required = false) String[] pSqlTimestampsAsBasicType,
       @RequestHeader(name = "timeUnits", required = false) Set<TimeUnit> pTimeUnits,
       @RequestHeader(name = "timeUnitArray", required = false) TimeUnit[] pTimeUnitArray,
-      @RequestHeader(name = "base64", required = false) byte[] pBase64 ) {
+      @RequestHeader(name = "base64", required = false) String pBase64 ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
     MultiValuedHeaderBeanParam.Builder lHeaderBeanBuilder = MultiValuedHeaderBeanParam.builder();
@@ -192,7 +193,8 @@ public class PathlessServiceResource {
     }
     lHeaderBeanBuilder.setTimeUnits(pTimeUnits);
     lHeaderBeanBuilder.setTimeUnitArray(pTimeUnitArray);
-    lHeaderBeanBuilder.setBase64(pBase64);
+    // Decode base64 encoded String back to byte[]
+    lHeaderBeanBuilder.setBase64(Base64.getDecoder().decode(pBase64));
     MultiValuedHeaderBeanParam pHeaderBean = lHeaderBeanBuilder.build();
     TechOnlyBeanParam.Builder lTechContextBuilder = TechOnlyBeanParam.builder();
     TechOnlyBeanParam pTechContext = lTechContextBuilder.build();
