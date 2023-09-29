@@ -1344,7 +1344,9 @@ public class RESTProductServiceResource {
     lMultiValuedBeanBuilder.setTimeUnits(pTimeUnits);
     lMultiValuedBeanBuilder.setTimeUnitArray(pTimeUnitArray);
     // Decode base64 encoded String back to byte[]
-    lMultiValuedBeanBuilder.setBase64(Base64.getDecoder().decode(pBase64));
+    if (pBase64 != null) {
+      lMultiValuedBeanBuilder.setBase64(Base64.getDecoder().decode(pBase64));
+    }
     MultiValuedHeaderBeanParam pMultiValuedBean = lMultiValuedBeanBuilder.build();
     // Validate request parameter(s).
     validationExecutor.validateRequest(RESTProductService.class, pMultiValuedBean);

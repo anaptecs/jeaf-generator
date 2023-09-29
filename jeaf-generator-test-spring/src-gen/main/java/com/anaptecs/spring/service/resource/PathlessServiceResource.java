@@ -194,7 +194,9 @@ public class PathlessServiceResource {
     lHeaderBeanBuilder.setTimeUnits(pTimeUnits);
     lHeaderBeanBuilder.setTimeUnitArray(pTimeUnitArray);
     // Decode base64 encoded String back to byte[]
-    lHeaderBeanBuilder.setBase64(Base64.getDecoder().decode(pBase64));
+    if (pBase64 != null) {
+      lHeaderBeanBuilder.setBase64(Base64.getDecoder().decode(pBase64));
+    }
     MultiValuedHeaderBeanParam pHeaderBean = lHeaderBeanBuilder.build();
     TechOnlyBeanParam.Builder lTechContextBuilder = TechOnlyBeanParam.builder();
     TechOnlyBeanParam pTechContext = lTechContextBuilder.build();

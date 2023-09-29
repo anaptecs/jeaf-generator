@@ -506,7 +506,9 @@ public class «name»Resource {
 		  			«ELSE»
 		  				«IF attribute.type.isPrimitiveType() && attribute.type.isByteType() && attribute.isMultivalued()»
 		  				    // Decode base64 encoded String back to byte[]
-		  				    «beanParam.name.toLocalVar()»Builder.«attribute.asSetter()»(java.util.Base64.getDecoder().decode(«attribute.asParameter()»));
+		  				    if(«attribute.asParameter()» != null) {
+		  				       «beanParam.name.toLocalVar()»Builder.«attribute.asSetter()»(java.util.Base64.getDecoder().decode(«attribute.asParameter()»));
+		  				    }
 		  				«ELSE»
 		  				    «beanParam.name.toLocalVar()»Builder.«attribute.asSetter()»(«attribute.asParameter()»);
 		  				«ENDIF»
