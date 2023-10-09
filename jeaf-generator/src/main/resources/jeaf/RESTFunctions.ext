@@ -208,6 +208,6 @@ cached boolean hasCompositeDataTypes(JMM::RESTResource resource):
 cached boolean isCompositeDataTypeForRESTResource(uml::Type type):
    isStereotypeApplied(type, "OpenAPIDataType") && ((JMM::OpenAPIDataType) type).compositeDataType;
    
-
-	
-    
+cached List[String] getAllRESTPathParamNames(uml::Operation operation):
+    operation.getPathParams().getRESTPathParamName().addAll(operation.getBeanPathParams().getRESTPathParamName());
+   

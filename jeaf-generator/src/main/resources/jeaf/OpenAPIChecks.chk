@@ -22,8 +22,12 @@ context RESTOperation if runChecks("RESTOperation") && ignore() == false ERROR  
 context RESTOperation if runChecks("RESTOperation") && ignore() == false ERROR   this.getErrorMessage("9111", {((NamedElement)owner).name + "." + name}): this.areAllInputParametersNamed() == true;
 context RESTOperation if runChecks("RESTOperation") && ignore() == false ERROR   this.getErrorMessage("9112", {((NamedElement)owner).name + "." + name, this.getBodyParamNames().toString()}): this.getBodyParamNames().size < 2 ;
 context RESTOperation if runChecks("RESTOperation") && ignore() == false ERROR   this.getErrorMessage("9113", {((NamedElement)owner).name + "." + name, httpMethods.toString()}): this.hasUnsupportedRequestBody() == false ;
+context RESTOperation if runChecks("RESTOperation") && ignore() == false ERROR   this.getErrorMessage("9165", {this.detectMissingRESTPathParams().toString(", "), this.path, ((NamedElement)owner).name + "." + name}): this.detectMissingRESTPathParams().isEmpty == true ;
+
 
 context RESTOperation if runChecks("RESTOperation") && ignore() == false WARNING this.getWarningMessage("9101", {((NamedElement)owner).name + "." + name, this.getOpenAPIIncomaptibleParameterTypes().asParamErrorMessage().toString()}): this.getOpenAPIIncomaptibleParameterTypes().size == 0;
+
+context RESTOperation if runChecks("RESTOperation") && ignore() == false WARNING this.getWarningMessage("9166", {((NamedElement)owner).name + "." + name, this.path, this.detectDeadRESTPathParams().toString(", ")}): this.detectDeadRESTPathParams().isEmpty == true ;
 
 
 // Global checks for OpenAPI3Specification

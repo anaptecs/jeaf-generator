@@ -1,6 +1,5 @@
 package com.anaptecs.jeaf.fwk.generator.test;
 
-import java.util.Arrays;
 import java.util.List;
 
 import junit.framework.TestCase;
@@ -32,8 +31,8 @@ public class PathSplitTest {
 
   @Test
   void testListBasedSplit( ) {
-    List<String> lParamNames = Arrays.asList(new String[] { "id", "productID" });
-    List<String> lVariableNames = Arrays.asList(new String[] { "pTheID", "pProductID" });
+    List<String> lParamNames = java.util.Arrays.asList(new String[] { "id", "productID" });
+    List<String> lVariableNames = java.util.Arrays.asList(new String[] { "pTheID", "pProductID" });
     List<String> lParts =
         OpenAPIHelper.splitRESTPath("{id}sortiment/{id}/something/{productID}/more", lParamNames, lVariableNames);
     System.out.println(lParts);
@@ -45,4 +44,34 @@ public class PathSplitTest {
     TestCase.assertEquals("\"/more\"", lParts.get(5));
     TestCase.assertEquals(6, lParts.size());
   }
+
+  @Test
+  void testRESTPathParamsDetection( ) {
+    String lTest = "/path/{abc_123}/{xyz}-hello/{abc-2}";
+    List<String> lParamNames = OpenAPIHelper.extractRESTParamsFromPath(lTest);
+    TestCase.assertEquals(3, lParamNames.size());
+    TestCase.assertEquals("abc_123", lParamNames.get(0));
+    TestCase.assertEquals("xyz", lParamNames.get(1));
+    TestCase.assertEquals("abc-2", lParamNames.get(2));
+  }
+
+  @Test
+  void testDetectMissingRESTParams( ) {
+    java.util.List<String> lMissingPathParams =
+        OpenAPIHelper.detectMissingRESTPathParams("/path/{abc_123}/{xyz}-hello/{abc-2}", java.util.Arrays
+            .asList("abc_123"));
+    TestCase.assertEquals(2, lMissingPathParams.size());
+    TestCase.assertEquals("xyz", lMissingPathParams.get(0));
+    TestCase.assertEquals("abc-2", lMissingPathParams.get(1));
+  }
+
+  @Test
+  void testDetectDeadRESTParams( ) {
+    java.util.List<String> lMissingPathParams =
+        OpenAPIHelper.detectDeadRESTPathParams("/path/{abc_123}/{xyz}-hello/{abc-2}", java.util.Arrays
+            .asList(new String[] { "abc_12", "abc_123", "xyz" }));
+    TestCase.assertEquals(1, lMissingPathParams.size());
+    TestCase.assertEquals("abc_12", lMissingPathParams.get(0));
+  }
+
 }

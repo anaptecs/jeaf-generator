@@ -5,7 +5,6 @@ import java.math.BigInteger;
 import java.net.URI;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
@@ -25,6 +24,9 @@ import com.anaptecs.jeaf.xfun.api.XFun;
 import com.anaptecs.jeaf.xfun.api.checks.Assert;
 
 public class OpenAPIHelper {
+  public static final java.util.regex.Pattern PATH_PARAM_PATTERN =
+      java.util.regex.Pattern.compile("\\{[a-zA-Z0-9_-]+}*");
+
   public static final Map<String, String> basicTypes = new HashMap<String, String>();
 
   public static final Map<String, String> formatMapping = new HashMap<String, String>();
@@ -528,7 +530,7 @@ public class OpenAPIHelper {
     Assert.assertTrue(pPathParams.size() == pVariableNames.size(),
         "Internal error amount of path params and variables names must be the same");
 
-    List<String> lSplitResult = Arrays.asList(splitRESTPath(pRESTPath, pPathParams.toArray(new String[] {})));
+    List<String> lSplitResult = java.util.Arrays.asList(splitRESTPath(pRESTPath, pPathParams.toArray(new String[] {})));
     List<String> lParts = new ArrayList<String>(lSplitResult.size());
     if (pPathParams.isEmpty() == false) {
       for (String lNextPart : lSplitResult) {
@@ -561,7 +563,7 @@ public class OpenAPIHelper {
         lBuilder.append(pPathParams[i]);
         lBuilder.append("\\}");
         if (i < pPathParams.length - 1) {
-          lBuilder.append('|');
+          lBuilder.append("|");
         }
       }
       String lPattern = String.format(WITH_DELIMITER, lBuilder.toString());
@@ -571,5 +573,47 @@ public class OpenAPIHelper {
       lSplitResult = new String[] { pRESTPath };
     }
     return lSplitResult;
+  }
+
+  public static java.util.List<String> extractRESTParamsFromPath( String pPath ) {
+    java.util.List<String> lPathParams = new ArrayList();
+    if (pPath != null) {
+      java.util.regex.Matcher lMatcher = PATH_PARAM_PATTERN.matcher(pPath);
+      while (lMatcher.find()) {
+        String lParam = lMatcher.group();
+        lPathParams.add(lParam.substring(1, lParam.length() - 1));
+      }
+    }
+    return lPathParams;
+  }
+
+  public static java.util.List<String> detectMissingRESTPathParams( String pRESTPath,
+      java.util.List<String> pPathVariableNames ) {
+
+    java.util.List<String> lMissingPathParams = new ArrayList();
+    if (pRESTPath != null) {
+      java.util.List<String> lPathParams = extractRESTParamsFromPath(pRESTPath);
+      for (String lNextPathParam : lPathParams) {
+        if (pPathVariableNames.contains(lNextPathParam) == false) {
+          lMissingPathParams.add(lNextPathParam);
+        }
+      }
+    }
+    return lMissingPathParams;
+  }
+
+  public static java.util.List<String> detectDeadRESTPathParams( String pRESTPath,
+      java.util.List<String> pPathVariableNames ) {
+    java.util.List<String> lDeadPathParams = new ArrayList();
+
+    if (pPathVariableNames != null) {
+      java.util.List<String> lPathParams = extractRESTParamsFromPath(pRESTPath);
+      for (String lNextPathParam : pPathVariableNames) {
+        if (lPathParams.contains(lNextPathParam) == false) {
+          lDeadPathParams.add(lNextPathParam);
+        }
+      }
+    }
+    return lDeadPathParams;
   }
 }
