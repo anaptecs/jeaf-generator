@@ -18,6 +18,8 @@
 «EXTENSION functions::BeanParam»
 «EXTENSION functions::JEAFDeprecated»
 
+«EXTENSION functions::EnumerationLiteral»
+
 «EXTENSION org::openarchitectureware::util::stdlib::io»
 
 «EXTENSION java::GeneratorCommons»
@@ -31,11 +33,15 @@
 
 <br>
 
-| Element  | Owner   | Element Type |Description   | Active with |
-|----------|---------|:------------:|--------------|:-----------:|
+| Type     | Property   | Description  | Active with |
+|----------|------------|--------------|:-----------:|
 «IF this.getAllBreakingChanges().isEmpty == false -»
 	«FOREACH this.getAllBreakingChanges() AS change -»
-| `«change.name»` | `«((uml::NamedElement) change.owner).fqn()»` | «IF change.isProperty()»Property«ELSEIF change.isParameter()»Parameter«ELSE»Type«ENDIF» | «change.getBreakingChangeDescription()» | «change.getBreakingChangeActiveWith()» | 
+	    «IF change.isProperty() || change.isEnumerationLiteral() -»
+| `«((uml::NamedElement) change.owner).fqn()»` | `«change.name»` | «change.getBreakingChangeDescription()» | «change.getBreakingChangeActiveWith()» | 
+	   «ELSE»
+| `«((uml::NamedElement) change).fqn()»` | | «change.getBreakingChangeDescription()» | «change.getBreakingChangeActiveWith()» | 
+	   «ENDIF-»
 	«ENDFOREACH -»
 «ELSE-»
 | No breaking changes declared. |
