@@ -93,15 +93,12 @@ public class Leg {
    *
    * @param pStop Value to which {@link #stop} should be set.
    *
-   * @param pStopovers Value to which {@link #stopovers} should be set.
-   *
    * @return {@link Leg}
    */
-  public static Leg of( PlaceRef pStart, PlaceRef pStop, List<PlaceRef> pStopovers ) {
+  public static Leg of( PlaceRef pStart, PlaceRef pStop ) {
     Leg.Builder lBuilder = Leg.builder();
     lBuilder.setStart(pStart);
     lBuilder.setStop(pStop);
-    lBuilder.setStopovers(pStopovers);
     return lBuilder.build();
   }
 

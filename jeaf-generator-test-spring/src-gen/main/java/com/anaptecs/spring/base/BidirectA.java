@@ -96,17 +96,14 @@ public class BidirectA {
    * Convenience method to create new instance of class BidirectA.
    *
    *
-   * @param pTransientBs Value to which {@link #transientBs} should be set.
-   *
    * @param pParent Value to which {@link #parent} should be set.
    *
    * @param pTransientChild Value to which {@link #transientChild} should be set.
    *
    * @return {@link BidirectA}
    */
-  public static BidirectA of( Set<BidirectB> pTransientBs, BidirectA pParent, BidirectA pTransientChild ) {
+  public static BidirectA of( BidirectA pParent, BidirectA pTransientChild ) {
     BidirectA.Builder lBuilder = BidirectA.builder();
-    lBuilder.setTransientBs(pTransientBs);
     lBuilder.setParent(pParent);
     lBuilder.setTransientChild(pTransientChild);
     return lBuilder.build();

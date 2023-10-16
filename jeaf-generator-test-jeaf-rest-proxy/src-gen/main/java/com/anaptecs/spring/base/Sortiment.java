@@ -94,13 +94,10 @@ public class Sortiment implements Serializable {
    * Convenience method to create new instance of class Sortiment.
    *
    *
-   * @param pProducts Value to which {@link #products} should be set.
-   *
    * @return {@link Sortiment}
    */
-  public static Sortiment of( Set<Product> pProducts ) {
+  public static Sortiment of( ) {
     Sortiment.Builder lBuilder = Sortiment.builder();
-    lBuilder.setProducts(pProducts);
     return lBuilder.build();
   }
 

@@ -76,14 +76,11 @@ public class Stop {
    *
    * @param pName Value to which {@link #name} should be set.
    *
-   * @param pLinks Value to which {@link #links} should be set.
-   *
    * @return {@link Stop}
    */
-  public static Stop of( String pName, List<LinkObject> pLinks ) {
+  public static Stop of( String pName ) {
     Stop.Builder lBuilder = Stop.builder();
     lBuilder.setName(pName);
-    lBuilder.setLinks(pLinks);
     return lBuilder.build();
   }
 

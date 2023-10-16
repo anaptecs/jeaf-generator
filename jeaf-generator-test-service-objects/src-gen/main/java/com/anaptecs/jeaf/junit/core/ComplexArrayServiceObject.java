@@ -67,13 +67,10 @@ public class ComplexArrayServiceObject implements ServiceObject {
    * Convenience method to create new instance of class ComplexArrayServiceObject.
    *
    *
-   * @param pClassBs Value to which {@link #classBs} should be set.
-   *
    * @return {@link ComplexArrayServiceObject}
    */
-  public static ComplexArrayServiceObject of( ClassB[] pClassBs ) {
+  public static ComplexArrayServiceObject of( ) {
     ComplexArrayServiceObject.Builder lBuilder = ComplexArrayServiceObject.builder();
-    lBuilder.setClassBs(pClassBs);
     return lBuilder.build();
   }
 

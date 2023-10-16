@@ -352,16 +352,13 @@ public abstract class AccountBase {
    *
    * @param pCurrency Value to which {@link #currency} should be set.
    *
-   * @param pAllBookings Value to which {@link #allBookings} should be set.
-   *
    * @return {@link Account}
    */
-  public static Account of( int pIban, Customer pOwner, Currency pCurrency, Set<Booking> pAllBookings ) {
+  public static Account of( int pIban, Customer pOwner, Currency pCurrency ) {
     Account.Builder lBuilder = Account.builder();
     lBuilder.setIban(pIban);
     lBuilder.setOwner(pOwner);
     lBuilder.setCurrency(pCurrency);
-    lBuilder.setAllBookings(pAllBookings);
     return lBuilder.build();
   }
 

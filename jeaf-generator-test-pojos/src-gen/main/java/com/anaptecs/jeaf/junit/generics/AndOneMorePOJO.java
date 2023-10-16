@@ -92,15 +92,11 @@ public class AndOneMorePOJO {
    *
    * @param pGenericProperty Value to which {@link #genericProperty} should be set.
    *
-   * @param pGenericResponses Value to which {@link #genericResponses} should be set.
-   *
    * @return {@link AndOneMorePOJO}
    */
-  public static AndOneMorePOJO of( GenericResponsePOJO<MyBusinessObject> pGenericProperty,
-      Set<GenericResponsePOJO<MyBusinessObject>> pGenericResponses ) {
+  public static AndOneMorePOJO of( GenericResponsePOJO<MyBusinessObject> pGenericProperty ) {
     AndOneMorePOJO.Builder lBuilder = AndOneMorePOJO.builder();
     lBuilder.setGenericProperty(pGenericProperty);
-    lBuilder.setGenericResponses(pGenericResponses);
     return lBuilder.build();
   }
 

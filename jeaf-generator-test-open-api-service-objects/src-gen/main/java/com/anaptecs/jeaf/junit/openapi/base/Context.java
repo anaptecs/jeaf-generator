@@ -117,19 +117,16 @@ public class Context implements ServiceObject {
    *
    * @param pQueryParam Value to which {@link #queryParam} should be set.
    *
-   * @param pIntCode Value to which {@link #intCode} should be set.
-   *
    * @return {@link Context}
    */
   public static Context of( String pAccessToken, Locale pLanguage, long pResellerID, long pPathParam,
-      String pQueryParam, IntegerCodeType pIntCode ) {
+      String pQueryParam ) {
     Context.Builder lBuilder = Context.builder();
     lBuilder.setAccessToken(pAccessToken);
     lBuilder.setLanguage(pLanguage);
     lBuilder.setResellerID(pResellerID);
     lBuilder.setPathParam(pPathParam);
     lBuilder.setQueryParam(pQueryParam);
-    lBuilder.setIntCode(pIntCode);
     return lBuilder.build();
   }
 

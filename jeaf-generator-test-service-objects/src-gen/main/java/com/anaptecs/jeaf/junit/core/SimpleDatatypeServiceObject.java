@@ -154,12 +154,10 @@ public class SimpleDatatypeServiceObject implements ServiceObject, Identifiable<
    *
    * @param pMyShort Value to which {@link #myShort} should be set.
    *
-   * @param pMyByteArray Value to which {@link #myByteArray} should be set.
-   *
    * @return {@link SimpleDatatypeServiceObject}
    */
   public static SimpleDatatypeServiceObject of( boolean pMyBoolean, byte pMyByte, char pMyChar, double pMyDouble,
-      float pMyFloat, long pMyLong, short pMyShort, byte[] pMyByteArray ) {
+      float pMyFloat, long pMyLong, short pMyShort ) {
     SimpleDatatypeServiceObject.Builder lBuilder = SimpleDatatypeServiceObject.builder();
     lBuilder.setMyBoolean(pMyBoolean);
     lBuilder.setMyByte(pMyByte);
@@ -168,7 +166,6 @@ public class SimpleDatatypeServiceObject implements ServiceObject, Identifiable<
     lBuilder.setMyFloat(pMyFloat);
     lBuilder.setMyLong(pMyLong);
     lBuilder.setMyShort(pMyShort);
-    lBuilder.setMyByteArray(pMyByteArray);
     return lBuilder.build();
   }
 

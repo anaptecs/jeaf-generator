@@ -69,14 +69,11 @@ public class Sale {
    *
    * @param pTransactionAmount Value to which {@link #transactionAmount} should be set.
    *
-   * @param pSale Value to which {@link #sale} should be set.
-   *
    * @return {@link Sale}
    */
-  public static Sale of( BigDecimal pTransactionAmount, Channel pSale ) {
+  public static Sale of( BigDecimal pTransactionAmount ) {
     Sale.Builder lBuilder = Sale.builder();
     lBuilder.setTransactionAmount(pTransactionAmount);
-    lBuilder.setSale(pSale);
     return lBuilder.build();
   }
 

@@ -99,27 +99,11 @@ public class ChildB extends ParentClass {
    *
    * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
    *
-   * @param pIbans Value to which {@link #ibans} should be set.
-   *
-   * @param pTheBankAccount Value to which {@link #theBankAccount} should be set.
-   *
-   * @param pLegacyBankAccounts Value to which {@link #legacyBankAccounts} should be set.
-   *
-   * @param pChildBAttribute Value to which {@link #childBAttribute} should be set.
-   *
-   * @param pComposition Value to which {@link #composition} should be set.
-   *
    * @return {@link ChildB}
    */
-  public static ChildB of( String pParentAttribute, Set<IBAN> pIbans, BankAccount pTheBankAccount,
-      List<BankAccount> pLegacyBankAccounts, boolean[] pChildBAttribute, Set<ParentClass> pComposition ) {
+  public static ChildB of( String pParentAttribute ) {
     ChildB.Builder lBuilder = ChildB.builder();
     lBuilder.setParentAttribute(pParentAttribute);
-    lBuilder.setIbans(pIbans);
-    lBuilder.setTheBankAccount(pTheBankAccount);
-    lBuilder.setLegacyBankAccounts(pLegacyBankAccounts);
-    lBuilder.setChildBAttribute(pChildBAttribute);
-    lBuilder.setComposition(pComposition);
     return lBuilder.build();
   }
 

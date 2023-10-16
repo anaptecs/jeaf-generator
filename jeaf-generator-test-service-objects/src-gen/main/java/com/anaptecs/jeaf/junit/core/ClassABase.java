@@ -251,14 +251,11 @@ public abstract class ClassABase implements ServiceObject, Identifiable<ServiceO
    *
    * @param pName Value to which {@link #name} should be set.
    *
-   * @param pOneB Value to which {@link #oneB} should be set.
-   *
    * @return {@link ClassA}
    */
-  public static ClassA of( String pName, ClassB pOneB ) {
+  public static ClassA of( String pName ) {
     ClassA.Builder lBuilder = ClassA.builder();
     lBuilder.setName(pName);
-    lBuilder.setOneB(pOneB);
     return lBuilder.build();
   }
 

@@ -123,32 +123,22 @@ public class WeirdBooking extends WeirdParent {
    *
    * @param pBooking Value to which {@link #booking} should be set.
    *
-   * @param pAdditionalBookings Value to which {@link #additionalBookings} should be set.
-   *
    * @param pVersionedObjectSoftLink Value to which {@link #versionedObjectSoftLink} should be set.
    *
    * @param pChildProperty Value to which {@link #childProperty} should be set.
    *
-   * @param pRealBooking Value to which {@link #realBooking} should be set.
-   *
-   * @param pInventories Value to which {@link #inventories} should be set.
-   *
    * @return {@link WeirdBooking}
    */
   public static WeirdBooking of( String pSomeProperty, ComplexBookingID pComplexBooking,
-      Set<ComplexBookingID> pComplexBookings, ComplexBookingID pBooking, List<ComplexBookingID> pAdditionalBookings,
-      VersionedObjectSoftLink pVersionedObjectSoftLink, int pChildProperty, Booking pRealBooking,
-      Set<InventoryType> pInventories ) {
+      Set<ComplexBookingID> pComplexBookings, ComplexBookingID pBooking,
+      VersionedObjectSoftLink pVersionedObjectSoftLink, int pChildProperty ) {
     WeirdBooking.Builder lBuilder = WeirdBooking.builder();
     lBuilder.setSomeProperty(pSomeProperty);
     lBuilder.setComplexBooking(pComplexBooking);
     lBuilder.setComplexBookings(pComplexBookings);
     lBuilder.setBooking(pBooking);
-    lBuilder.setAdditionalBookings(pAdditionalBookings);
     lBuilder.setVersionedObjectSoftLink(pVersionedObjectSoftLink);
     lBuilder.setChildProperty(pChildProperty);
-    lBuilder.setRealBooking(pRealBooking);
-    lBuilder.setInventories(pInventories);
     return lBuilder.build();
   }
 

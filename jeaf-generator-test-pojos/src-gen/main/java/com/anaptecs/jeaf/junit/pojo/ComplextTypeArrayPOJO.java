@@ -68,13 +68,10 @@ public class ComplextTypeArrayPOJO {
    * Convenience method to create new instance of class ComplextTypeArrayPOJO.
    *
    *
-   * @param pPlainPOJOs Value to which {@link #plainPOJOs} should be set.
-   *
    * @return {@link ComplextTypeArrayPOJO}
    */
-  public static ComplextTypeArrayPOJO of( PlainPOJO[] pPlainPOJOs ) {
+  public static ComplextTypeArrayPOJO of( ) {
     ComplextTypeArrayPOJO.Builder lBuilder = ComplextTypeArrayPOJO.builder();
-    lBuilder.setPlainPOJOs(pPlainPOJOs);
     return lBuilder.build();
   }
 

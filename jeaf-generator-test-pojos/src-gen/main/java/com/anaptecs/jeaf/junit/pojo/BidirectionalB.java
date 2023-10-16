@@ -116,16 +116,10 @@ public class BidirectionalB {
    * Convenience method to create new instance of class BidirectionalB.
    *
    *
-   * @param pAs Value to which {@link #as} should be set.
-   *
-   * @param pTheAs Value to which {@link #theAs} should be set.
-   *
    * @return {@link BidirectionalB}
    */
-  public static BidirectionalB of( List<BidirectionalA> pAs, List<BidirectionalA> pTheAs ) {
+  public static BidirectionalB of( ) {
     BidirectionalB.Builder lBuilder = BidirectionalB.builder();
-    lBuilder.setAs(pAs);
-    lBuilder.setTheAs(pTheAs);
     return lBuilder.build();
   }
 

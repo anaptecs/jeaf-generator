@@ -79,13 +79,10 @@ public class PartnerContainer implements ServiceObject {
    * Convenience method to create new instance of class PartnerContainer.
    *
    *
-   * @param pPartners Value to which {@link #partners} should be set.
-   *
    * @return {@link PartnerContainer}
    */
-  public static PartnerContainer of( List<Partner> pPartners ) {
+  public static PartnerContainer of( ) {
     PartnerContainer.Builder lBuilder = PartnerContainer.builder();
-    lBuilder.setPartners(pPartners);
     return lBuilder.build();
   }
 

@@ -100,26 +100,10 @@ public class MultivaluedQueryParamsBean {
    * Convenience method to create new instance of class MultivaluedQueryParamsBean.
    *
    *
-   * @param pIntArray Value to which {@link #intArray} should be set.
-   *
-   * @param pStrings Value to which {@link #strings} should be set.
-   *
-   * @param pIntegers Value to which {@link #integers} should be set.
-   *
-   * @param pTimeUnits Value to which {@link #timeUnits} should be set.
-   *
-   * @param pTimeUnitArray Value to which {@link #timeUnitArray} should be set.
-   *
    * @return {@link MultivaluedQueryParamsBean}
    */
-  public static MultivaluedQueryParamsBean of( int[] pIntArray, String[] pStrings, Integer[] pIntegers,
-      Set<TimeUnit> pTimeUnits, TimeUnit[] pTimeUnitArray ) {
+  public static MultivaluedQueryParamsBean of( ) {
     MultivaluedQueryParamsBean.Builder lBuilder = MultivaluedQueryParamsBean.builder();
-    lBuilder.setIntArray(pIntArray);
-    lBuilder.setStrings(pStrings);
-    lBuilder.setIntegers(pIntegers);
-    lBuilder.setTimeUnits(pTimeUnits);
-    lBuilder.setTimeUnitArray(pTimeUnitArray);
     return lBuilder.build();
   }
 

@@ -85,13 +85,10 @@ public class DiscountOffer implements ServiceObject {
    * Convenience method to create new instance of class DiscountOffer.
    *
    *
-   * @param pCampaigns Value to which {@link #campaigns} should be set.
-   *
    * @return {@link DiscountOffer}
    */
-  public static DiscountOffer of( Set<SoftLink> pCampaigns ) {
+  public static DiscountOffer of( ) {
     DiscountOffer.Builder lBuilder = DiscountOffer.builder();
-    lBuilder.setCampaigns(pCampaigns);
     return lBuilder.build();
   }
 

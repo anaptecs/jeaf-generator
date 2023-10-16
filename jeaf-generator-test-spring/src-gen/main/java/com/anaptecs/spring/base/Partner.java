@@ -78,13 +78,10 @@ public class Partner {
    * Convenience method to create new instance of class Partner.
    *
    *
-   * @param pPostalAddresses Value to which {@link #postalAddresses} should be set.
-   *
    * @return {@link Partner}
    */
-  public static Partner of( List<PostalAddress> pPostalAddresses ) {
+  public static Partner of( ) {
     Partner.Builder lBuilder = Partner.builder();
-    lBuilder.setPostalAddresses(pPostalAddresses);
     return lBuilder.build();
   }
 

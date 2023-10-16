@@ -5,3 +5,8 @@ cached boolean isPOJO(uml::Element element):
     
 cached JMM::POJO asPOJO(uml::Element element):
     (JMM::POJO) element;
+    
+cached boolean generateOfOperationForPOJO(uml::Class class):
+    if class.isPOJO()
+    then class.asPOJO().ofMethod.name != "NONE"
+    else false;

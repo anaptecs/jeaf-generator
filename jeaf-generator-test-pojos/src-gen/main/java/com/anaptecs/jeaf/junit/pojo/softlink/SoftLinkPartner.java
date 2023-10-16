@@ -121,18 +121,12 @@ public class SoftLinkPartner {
    * Convenience method to create new instance of class SoftLinkPartner.
    *
    *
-   * @param pTheBackLink Value to which {@link #theBackLink} should be set.
-   *
-   * @param pChildLinks Value to which {@link #childLinks} should be set.
-   *
    * @param pLongLinks Value to which {@link #longLinks} should be set.
    *
    * @return {@link SoftLinkPartner}
    */
-  public static SoftLinkPartner of( String pTheBackLink, Set<SoftLinkID> pChildLinks, List<Long> pLongLinks ) {
+  public static SoftLinkPartner of( List<Long> pLongLinks ) {
     SoftLinkPartner.Builder lBuilder = SoftLinkPartner.builder();
-    lBuilder.setTheBackLink(pTheBackLink);
-    lBuilder.setChildLinks(pChildLinks);
     lBuilder.setLongLinks(pLongLinks);
     return lBuilder.build();
   }

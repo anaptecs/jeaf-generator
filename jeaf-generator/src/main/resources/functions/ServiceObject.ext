@@ -5,3 +5,9 @@ cached boolean isServiceObject(uml::Element element):
     
 cached JMM::ServiceObject asServiceObject(uml::Element element):
     (JMM::ServiceObject) element;
+
+cached boolean generateOfOperationForServiceObject(uml::Class class):
+    if class.isServiceObject()
+    then class.asServiceObject().ofMethod.name != "NONE"
+    else false;
+    
