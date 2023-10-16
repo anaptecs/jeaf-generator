@@ -17,6 +17,7 @@ BChildPOJO |   | com.anaptecs.jeaf.junit.pojo |  |
 BParentPOJO |   | com.anaptecs.jeaf.junit.pojo |  |
 Bank |   | com.anaptecs.jeaf.accounting |  |
 BankAccount |   | com.anaptecs.jeaf.junit.openapi.base |  |
+BankType |   | com.anaptecs.jeaf.accounting |  |
 BeanParamWithDeprecations |   | com.anaptecs.jeaf.junit.deprecation |  |
 BeanParameter |   | com.anaptecs.jeaf.junit.openapi.base |  |
 BidirectA |   | com.anaptecs.jeaf.junit.openapi.base |  |
@@ -32,6 +33,7 @@ BookingCode |   | com.anaptecs.jeaf.junit.openapi.base |  |
 BookingID |   | com.anaptecs.jeaf.junit.openapi.base | Type represents a booking ID. |
 BooleanCode |   | com.anaptecs.jeaf.junit.openapi.base |  |
 BooleanCodeType |   | com.anaptecs.jeaf.junit.openapi.base |  |
+BooleanLiteralsEnum |   | com.anaptecs.jeaf.junit.openapi.base |  |
 BusinessA |   | com.anaptecs.jeaf.junit.openapi.techbase |  |
 BusinessChild |   | com.anaptecs.jeaf.junit.openapi.techbase |  |
 BusinessParent |   | com.anaptecs.jeaf.junit.openapi.techbase |  |
@@ -42,6 +44,7 @@ CHStopPlace |   | com.anaptecs.jeaf.junit.openapi.base |  |
 Campaign |   | com.anaptecs.jeaf.junit.openapi.base |  |
 Channel |   | com.anaptecs.jeaf.junit.openapi.base |  |
 ChannelCode |   | com.anaptecs.jeaf.junit.openapi.base |  |
+ChannelType |   | com.anaptecs.jeaf.junit.openapi.base |  |
 ChildA |   | com.anaptecs.jeaf.junit.openapi.base | single line class comment |
 ChildAA |   | com.anaptecs.jeaf.junit.openapi.base |  |
 ChildB |   | com.anaptecs.jeaf.junit.openapi.base | Multi<br>line<br>class<br>comment |
@@ -51,18 +54,22 @@ ChildPOJO |   | com.anaptecs.jeaf.junit.pojo | This is the first line of the fir
 ClassA |   | com.anaptecs.jeaf.junit.core |  |
 ClassB |   | com.anaptecs.jeaf.junit.core |  |
 CodeTypeUsageTest |   | com.anaptecs.jeaf.junit.openapi.base |  |
+Color |   | com.anaptecs.jeaf.junit.core | There are so many colors. |
 Company |   | com.anaptecs.jeaf.junit.openapi.base |  |
 Company |   | com.anaptecs.jeaf.accounting |  |
 ComplexArrayServiceObject |   | com.anaptecs.jeaf.junit.core |  |
 ComplexBookingID |   | com.anaptecs.jeaf.junit.openapi.base |  |
+ComplexBookingType |   | com.anaptecs.jeaf.junit.openapi.base |  |
 ComplextTypeArrayPOJO |   | com.anaptecs.jeaf.junit.pojo |  |
 CompositeID |   | com.anaptecs.jeaf.junit.openapi.base |  |
 Context |   | com.anaptecs.jeaf.junit.openapi.base |  |
 CurrencyCode |   | com.anaptecs.jeaf.junit.openapi.base |  |
+CustomEnum |   | com.anaptecs.jeaf.accounting.validation |  |
 CustomPrimitiveArraysObjectWithRestrictions |   | com.anaptecs.jeaf.junit.pojo |  |
 Customer |   | com.anaptecs.jeaf.accounting |  |
 Customer |   | com.anaptecs.jeaf.accounting.impl.pojo |  |
 DataTypeWithConstraints |   | com.anaptecs.jeaf.junit.openapi.base |  |
+DataUnit |   | com.anaptecs.jeaf.junit.openapi.base |  |
 DateQueryParamsBean |   | com.anaptecs.jeaf.junit.openapi.service1 |  |
 DeprecatedContext |   | com.anaptecs.jeaf.junit.openapi.base |  |
 DeprecatedServiceObject |   | com.anaptecs.jeaf.junit.core |  |
@@ -70,7 +77,12 @@ DirectedEdge |   | com.anaptecs.jeaf.junit.openapi.base | Just a simple comment.
 DiscountOffer |   | com.anaptecs.jeaf.junit.openapi.base |  |
 DoubleCode |   | com.anaptecs.jeaf.junit.openapi.base |  |
 DoubleCodeType |   | com.anaptecs.jeaf.junit.openapi.base |  |
+Entity |   | com.anaptecs.jeaf.junit.openapi.base |  |
 EnumTest |   | com.anaptecs.jeaf.junit.openapi.base |  |
+EnumWithProperties |   | com.anaptecs.jeaf.junit.pojo |  |
+ExtensibleEnum |   | com.anaptecs.jeaf.junit.openapi.base |  |
+ExtensibleEnumWithProperties |   | com.anaptecs.jeaf.junit.pojo |  |
+Farbe |   | com.anaptecs.jeaf.junit.core |  |
 FloatCode |   | com.anaptecs.jeaf.junit.openapi.base |  |
 FloatCodeType |   | com.anaptecs.jeaf.junit.openapi.base |  |
 GenericPageableResponse |   | com.anaptecs.jeaf.junit.rest.generics |  |
@@ -91,6 +103,7 @@ Input |   | com.anaptecs.jeaf.junit.otherpackage |  |
 InputSubclass |   | com.anaptecs.jeaf.junit.otherpackage |  |
 IntegerCode |   | com.anaptecs.jeaf.junit.openapi.base |  |
 IntegerCodeType |   | com.anaptecs.jeaf.junit.openapi.base |  |
+InventoryType |   | com.anaptecs.jeaf.junit.openapi.base |  |
 JustAType |   | com.anaptecs.jeaf.junit.deprecation |  |
 Leg |   | com.anaptecs.jeaf.junit.openapi.base |  |
 LinkObject |   | com.anaptecs.jeaf.junit.openapi.base |  |
@@ -136,6 +149,7 @@ PrimitiveServiceObject |   | com.anaptecs.jeaf.junit.core |  |
 PrincipalWrapper |   | com.anaptecs.jeaf.junit.core |  |
 Product |   | com.anaptecs.jeaf.junit.product.pojo |  |
 Product |   | com.anaptecs.jeaf.junit.openapi.base | Data type represents a product definition |
+ProductCategory |   | com.anaptecs.jeaf.junit.product |  |
 ProductCode |   | com.anaptecs.jeaf.junit.openapi.base |  |
 ReadonlyDefaultPOJO |   | com.anaptecs.jeaf.junit.pojo |  |
 ReadonlyServiceObject |   | com.anaptecs.jeaf.junit.core |  |
@@ -168,11 +182,13 @@ TechParent |   | com.anaptecs.jeaf.junit.openapi.techbase |  |
 TechnicalHeaderContext |   | com.anaptecs.jeaf.junit.openapi.service1 |  |
 TestServiceObject |   | com.anaptecs.jeaf.junit.core | This is a service object that was modeled in order to test the output of the JEAF Generator. |
 TheReadOnlyServiceObject |   | com.anaptecs.jeaf.junit.openapi.base |  |
+TimeUnit |  Zeiteinheit | com.anaptecs.jeaf.junit.openapi.base | Enumeration represents time units.<br>     <br>NOVA 14 Mapping<br>* nova-base.xsd.ZeitEinheit |
 TopoRef |   | com.anaptecs.jeaf.junit.openapi.base |  |
 UICStop |  Haltestelle | com.anaptecs.jeaf.junit.openapi.base |  |
 UICStopPlace |   | com.anaptecs.jeaf.junit.openapi.base |  |
 VAT |   | com.anaptecs.jeaf.junit.product.pojo |  |
 ValidationTestObject |   | com.anaptecs.jeaf.junit.core |  |
+VerkehrsmittelTyp |   | com.anaptecs.jeaf.junit.domainObjects |  |
 VersionedObjectSoftLink |   | com.anaptecs.jeaf.junit.openapi.base |  |
 WeirdBooking |   | com.anaptecs.jeaf.junit.openapi.base |  |
 WeirdParent |   | com.anaptecs.jeaf.junit.openapi.base |  |
