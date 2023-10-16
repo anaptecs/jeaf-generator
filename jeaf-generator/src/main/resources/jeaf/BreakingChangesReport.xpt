@@ -33,13 +33,13 @@
 
 <br>
 
-| Type     | Property   | Description  | Active with |
+| Type     | Details    | Description  | Active with |
 |----------|------------|--------------|:-----------:|
 «IF this.getAllBreakingChanges().isEmpty == false -»
 	«FOREACH this.getAllBreakingChanges() AS change -»
-	    «IF change.isProperty() || change.isEnumerationLiteral() -»
+	    «IF change.isProperty() || change.isEnumerationLiteral() || change.isParameter() -»
 | `«((uml::NamedElement) change.owner).fqn()»` | `«change.name»` | «change.getBreakingChangeDescription()» | «change.getBreakingChangeActiveWith()» | 
-	   «ELSE»
+	   «ELSE -»
 | `«((uml::NamedElement) change).fqn()»` | | «change.getBreakingChangeDescription()» | «change.getBreakingChangeActiveWith()» | 
 	   «ENDIF-»
 	«ENDFOREACH -»
