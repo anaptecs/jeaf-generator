@@ -67,13 +67,10 @@ public class WrapperArrayServiceObject implements ServiceObject {
    * Convenience method to create new instance of class WrapperArrayServiceObject.
    *
    *
-   * @param pBooleanArray Value to which {@link #booleanArray} should be set.
-   *
    * @return {@link WrapperArrayServiceObject}
    */
-  public static WrapperArrayServiceObject of( Boolean[] pBooleanArray ) {
+  public static WrapperArrayServiceObject of( ) {
     WrapperArrayServiceObject.Builder lBuilder = WrapperArrayServiceObject.builder();
-    lBuilder.setBooleanArray(pBooleanArray);
     return lBuilder.build();
   }
 

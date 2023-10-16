@@ -222,55 +222,13 @@ public class MultiValuedHeaderBeanParam implements Serializable {
    * Convenience method to create new instance of class MultiValuedHeaderBeanParam.
    *
    *
-   * @param pNames Value to which {@link #names} should be set.
-   *
    * @param pInts Value to which {@link #ints} should be set.
-   *
-   * @param pDoubles Value to which {@link #doubles} should be set.
-   *
-   * @param pCodes Value to which {@link #codes} should be set.
-   *
-   * @param pStringCodeList Value to which {@link #stringCodeList} should be set.
-   *
-   * @param pStartDate Value to which {@link #startDate} should be set.
-   *
-   * @param pDates Value to which {@link #dates} should be set.
-   *
-   * @param pTimestamps Value to which {@link #timestamps} should be set.
-   *
-   * @param pCalendars Value to which {@link #calendars} should be set.
-   *
-   * @param pUtilDates Value to which {@link #utilDates} should be set.
-   *
-   * @param pSqlTimestamps Value to which {@link #sqlTimestamps} should be set.
-   *
-   * @param pTimeUnits Value to which {@link #timeUnits} should be set.
-   *
-   * @param pTimeUnitArray Value to which {@link #timeUnitArray} should be set.
-   *
-   * @param pBase64 Value to which {@link #base64} should be set.
    *
    * @return {@link MultiValuedHeaderBeanParam}
    */
-  public static MultiValuedHeaderBeanParam of( String[] pNames, int[] pInts, Double[] pDoubles, StringCode[] pCodes,
-      Set<StringCode> pStringCodeList, LocalDate pStartDate, LocalDate[] pDates, Set<LocalDateTime> pTimestamps,
-      Calendar[] pCalendars, Date[] pUtilDates, Timestamp[] pSqlTimestamps, Set<TimeUnit> pTimeUnits,
-      TimeUnit[] pTimeUnitArray, byte[] pBase64 ) {
+  public static MultiValuedHeaderBeanParam of( int[] pInts ) {
     MultiValuedHeaderBeanParam.Builder lBuilder = MultiValuedHeaderBeanParam.builder();
-    lBuilder.setNames(pNames);
     lBuilder.setInts(pInts);
-    lBuilder.setDoubles(pDoubles);
-    lBuilder.setCodes(pCodes);
-    lBuilder.setStringCodeList(pStringCodeList);
-    lBuilder.setStartDate(pStartDate);
-    lBuilder.setDates(pDates);
-    lBuilder.setTimestamps(pTimestamps);
-    lBuilder.setCalendars(pCalendars);
-    lBuilder.setUtilDates(pUtilDates);
-    lBuilder.setSqlTimestamps(pSqlTimestamps);
-    lBuilder.setTimeUnits(pTimeUnits);
-    lBuilder.setTimeUnitArray(pTimeUnitArray);
-    lBuilder.setBase64(pBase64);
     return lBuilder.build();
   }
 

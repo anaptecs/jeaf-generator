@@ -357,16 +357,13 @@ public abstract class CustomerBase extends Partner {
    *
    * @param pEmail Value to which {@link #email} should be set.
    *
-   * @param pAccounts Value to which {@link #accounts} should be set.
-   *
    * @return {@link Customer}
    */
-  public static Customer of( String pName, String pFirstName, String pEmail, Set<Account> pAccounts ) {
+  public static Customer of( String pName, String pFirstName, String pEmail ) {
     Customer.Builder lBuilder = Customer.builder();
     lBuilder.setName(pName);
     lBuilder.setFirstName(pFirstName);
     lBuilder.setEmail(pEmail);
-    lBuilder.setAccounts(pAccounts);
     return lBuilder.build();
   }
 

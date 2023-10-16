@@ -87,17 +87,14 @@ public class SecurityToken implements ServiceObject {
    * Convenience method to create new instance of class SecurityToken.
    *
    *
-   * @param pSessionKey Value to which {@link #sessionKey} should be set.
-   *
    * @param pBooking Value to which {@link #booking} should be set.
    *
    * @param pValue Value to which {@link #value} should be set.
    *
    * @return {@link SecurityToken}
    */
-  public static SecurityToken of( byte[] pSessionKey, Booking pBooking, Integer pValue ) {
+  public static SecurityToken of( Booking pBooking, Integer pValue ) {
     SecurityToken.Builder lBuilder = SecurityToken.builder();
-    lBuilder.setSessionKey(pSessionKey);
     lBuilder.setBooking(pBooking);
     lBuilder.setValue(pValue);
     return lBuilder.build();

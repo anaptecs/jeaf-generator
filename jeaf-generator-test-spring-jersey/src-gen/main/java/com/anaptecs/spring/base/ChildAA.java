@@ -91,19 +91,16 @@ public class ChildAA extends ChildA {
    *
    * @param pChildAAAttribute Value to which {@link #childAAAttribute} should be set.
    *
-   * @param pSizedArray Value to which {@link #sizedArray} should be set.
-   *
    * @param pRequiredArray Value to which {@link #requiredArray} should be set.
    *
    * @return {@link ChildAA}
    */
-  public static ChildAA of( String pParentAttribute, int pChildAAttribute, byte pChildAAAttribute, int[] pSizedArray,
+  public static ChildAA of( String pParentAttribute, int pChildAAttribute, byte pChildAAAttribute,
       String[] pRequiredArray ) {
     ChildAA.Builder lBuilder = ChildAA.builder();
     lBuilder.setParentAttribute(pParentAttribute);
     lBuilder.setChildAAttribute(pChildAAttribute);
     lBuilder.setChildAAAttribute(pChildAAAttribute);
-    lBuilder.setSizedArray(pSizedArray);
     lBuilder.setRequiredArray(pRequiredArray);
     return lBuilder.build();
   }

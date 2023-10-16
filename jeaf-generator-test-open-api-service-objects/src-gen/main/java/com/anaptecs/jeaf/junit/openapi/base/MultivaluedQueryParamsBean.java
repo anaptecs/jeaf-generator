@@ -76,19 +76,10 @@ public class MultivaluedQueryParamsBean implements ServiceObject {
    * Convenience method to create new instance of class MultivaluedQueryParamsBean.
    *
    *
-   * @param pIntArray Value to which {@link #intArray} should be set.
-   *
-   * @param pStrings Value to which {@link #strings} should be set.
-   *
-   * @param pIntegers Value to which {@link #integers} should be set.
-   *
    * @return {@link MultivaluedQueryParamsBean}
    */
-  public static MultivaluedQueryParamsBean of( int[] pIntArray, String[] pStrings, Integer[] pIntegers ) {
+  public static MultivaluedQueryParamsBean of( ) {
     MultivaluedQueryParamsBean.Builder lBuilder = MultivaluedQueryParamsBean.builder();
-    lBuilder.setIntArray(pIntArray);
-    lBuilder.setStrings(pStrings);
-    lBuilder.setIntegers(pIntegers);
     return lBuilder.build();
   }
 

@@ -191,16 +191,6 @@ public class DataTypesQueryBean {
    * Convenience method to create new instance of class DataTypesQueryBean.
    *
    *
-   * @param pLongCodes Value to which {@link #longCodes} should be set.
-   *
-   * @param pCodes Value to which {@link #codes} should be set.
-   *
-   * @param pDoubleCodes Value to which {@link #doubleCodes} should be set.
-   *
-   * @param pBookingIDs Value to which {@link #bookingIDs} should be set.
-   *
-   * @param pBookingIDsArray Value to which {@link #bookingIDsArray} should be set.
-   *
    * @param pOffsetDateTime Value to which {@link #offsetDateTime} should be set.
    *
    * @param pOffsetTime Value to which {@link #offsetTime} should be set.
@@ -209,31 +199,15 @@ public class DataTypesQueryBean {
    *
    * @param pLocalTime Value to which {@link #localTime} should be set.
    *
-   * @param pTimestamps Value to which {@link #timestamps} should be set.
-   *
-   * @param pTimes Value to which {@link #times} should be set.
-   *
-   * @param pStartTimestamps Value to which {@link #startTimestamps} should be set.
-   *
    * @return {@link DataTypesQueryBean}
    */
-  public static DataTypesQueryBean of( LongCode[] pLongCodes, IntegerCodeType[] pCodes, Set<DoubleCode> pDoubleCodes,
-      Set<BookingID> pBookingIDs, BookingID[] pBookingIDsArray, OffsetDateTime pOffsetDateTime, OffsetTime pOffsetTime,
-      LocalDateTime pLocalDateTime, LocalTime pLocalTime, List<LocalDateTime> pTimestamps, Set<OffsetTime> pTimes,
-      OffsetDateTime[] pStartTimestamps ) {
+  public static DataTypesQueryBean of( OffsetDateTime pOffsetDateTime, OffsetTime pOffsetTime,
+      LocalDateTime pLocalDateTime, LocalTime pLocalTime ) {
     DataTypesQueryBean.Builder lBuilder = DataTypesQueryBean.builder();
-    lBuilder.setLongCodes(pLongCodes);
-    lBuilder.setCodes(pCodes);
-    lBuilder.setDoubleCodes(pDoubleCodes);
-    lBuilder.setBookingIDs(pBookingIDs);
-    lBuilder.setBookingIDsArray(pBookingIDsArray);
     lBuilder.setOffsetDateTime(pOffsetDateTime);
     lBuilder.setOffsetTime(pOffsetTime);
     lBuilder.setLocalDateTime(pLocalDateTime);
     lBuilder.setLocalTime(pLocalTime);
-    lBuilder.setTimestamps(pTimestamps);
-    lBuilder.setTimes(pTimes);
-    lBuilder.setStartTimestamps(pStartTimestamps);
     return lBuilder.build();
   }
 

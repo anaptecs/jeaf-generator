@@ -82,17 +82,14 @@ public class DirectedEdge {
    * Convenience method to create new instance of class DirectedEdge.
    *
    *
-   * @param pStart Value to which {@link #start} should be set.
-   *
    * @param pEnd Value to which {@link #end} should be set.
    *
    * @param pLink Value to which {@link #link} should be set.
    *
    * @return {@link DirectedEdge}
    */
-  public static DirectedEdge of( Stop pStart, Stop pEnd, String pLink ) {
+  public static DirectedEdge of( Stop pEnd, String pLink ) {
     DirectedEdge.Builder lBuilder = DirectedEdge.builder();
-    lBuilder.setStart(pStart);
     lBuilder.setEnd(pEnd);
     lBuilder.setLink(pLink);
     return lBuilder.build();

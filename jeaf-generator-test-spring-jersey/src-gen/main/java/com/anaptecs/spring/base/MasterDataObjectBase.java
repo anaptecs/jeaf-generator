@@ -319,8 +319,6 @@ public abstract class MasterDataObjectBase {
    * Convenience method to create new instance of class MasterDataObject.
    *
    *
-   * @param pDataUnits Value to which {@link #dataUnits} should be set.
-   *
    * @param pEntity Value to which {@link #entity} should be set.
    *
    * @param pObjectID Value to which {@link #objectID} should be set.
@@ -329,10 +327,8 @@ public abstract class MasterDataObjectBase {
    *
    * @return {@link com.anaptecs.spring.base.MasterDataObject}
    */
-  public static MasterDataObject of( List<DataUnit> pDataUnits, Entity pEntity, String pObjectID,
-      String pInternalProperty ) {
+  public static MasterDataObject of( Entity pEntity, String pObjectID, String pInternalProperty ) {
     MasterDataObject.Builder lBuilder = MasterDataObject.builder();
-    lBuilder.setDataUnits(pDataUnits);
     lBuilder.setEntity(pEntity);
     lBuilder.setObjectID(pObjectID);
     lBuilder.setInternalProperty(pInternalProperty);

@@ -122,15 +122,12 @@ public class SoftLinkParent {
    *
    * @param pThePartner Value to which {@link #thePartner} should be set.
    *
-   * @param pReadonlyPartner Value to which {@link #readonlyPartner} should be set.
-   *
    * @return {@link SoftLinkParent}
    */
-  public static SoftLinkParent of( Set<SoftLinkID> pPartners, SoftLinkID pThePartner, SoftLinkID pReadonlyPartner ) {
+  public static SoftLinkParent of( Set<SoftLinkID> pPartners, SoftLinkID pThePartner ) {
     SoftLinkParent.Builder lBuilder = SoftLinkParent.builder();
     lBuilder.setPartners(pPartners);
     lBuilder.setThePartner(pThePartner);
-    lBuilder.setReadonlyPartner(pReadonlyPartner);
     return lBuilder.build();
   }
 

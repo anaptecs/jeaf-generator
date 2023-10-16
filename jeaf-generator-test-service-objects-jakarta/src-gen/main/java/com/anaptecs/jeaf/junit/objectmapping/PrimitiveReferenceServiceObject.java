@@ -123,26 +123,10 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
    * Convenience method to create new instance of class PrimitiveReferenceServiceObject.
    *
    *
-   * @param pABoolean Value to which {@link #aBoolean} should be set.
-   *
-   * @param pBooleanSet Value to which {@link #booleanSet} should be set.
-   *
-   * @param pBuffers Value to which {@link #buffers} should be set.
-   *
-   * @param pStrings Value to which {@link #strings} should be set.
-   *
-   * @param pStringArray Value to which {@link #stringArray} should be set.
-   *
    * @return {@link PrimitiveReferenceServiceObject}
    */
-  public static PrimitiveReferenceServiceObject of( Boolean pABoolean, Set<Boolean> pBooleanSet,
-      Set<StringBuffer> pBuffers, Set<String> pStrings, String[] pStringArray ) {
+  public static PrimitiveReferenceServiceObject of( ) {
     PrimitiveReferenceServiceObject.Builder lBuilder = PrimitiveReferenceServiceObject.builder();
-    lBuilder.setABoolean(pABoolean);
-    lBuilder.setBooleanSet(pBooleanSet);
-    lBuilder.setBuffers(pBuffers);
-    lBuilder.setStrings(pStrings);
-    lBuilder.setStringArray(pStringArray);
     return lBuilder.build();
   }
 

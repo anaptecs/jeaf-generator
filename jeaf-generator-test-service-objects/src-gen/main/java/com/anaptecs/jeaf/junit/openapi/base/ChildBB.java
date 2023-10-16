@@ -122,44 +122,17 @@ public class ChildBB extends ChildB {
    *
    * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
    *
-   * @param pIbans Value to which {@link #ibans} should be set.
-   *
-   * @param pTheBankAccount Value to which {@link #theBankAccount} should be set.
-   *
-   * @param pLegacyBankAccounts Value to which {@link #legacyBankAccounts} should be set.
-   *
-   * @param pChildBAttribute Value to which {@link #childBAttribute} should be set.
-   *
-   * @param pComposition Value to which {@link #composition} should be set.
-   *
    * @param pChildBBAttribute Value to which {@link #childBBAttribute} should be set.
    *
    * @param pDeprecatedAttribute Value to which {@link #deprecatedAttribute} should be set.
    *
-   * @param pDeprecatedBs Value to which {@link #deprecatedBs} should be set.
-   *
-   * @param pDeprecatedParent Value to which {@link #deprecatedParent} should be set.
-   *
-   * @param pDeprecatedArray Value to which {@link #deprecatedArray} should be set.
-   *
    * @return {@link ChildBB}
    */
-  public static ChildBB of( String pParentAttribute, Set<IBAN> pIbans, BankAccount pTheBankAccount,
-      List<BankAccount> pLegacyBankAccounts, boolean[] pChildBAttribute, Set<ParentClass> pComposition,
-      Long pChildBBAttribute, int pDeprecatedAttribute, Set<ChildB> pDeprecatedBs, ParentClass pDeprecatedParent,
-      byte[] pDeprecatedArray ) {
+  public static ChildBB of( String pParentAttribute, Long pChildBBAttribute, int pDeprecatedAttribute ) {
     ChildBB.Builder lBuilder = ChildBB.builder();
     lBuilder.setParentAttribute(pParentAttribute);
-    lBuilder.setIbans(pIbans);
-    lBuilder.setTheBankAccount(pTheBankAccount);
-    lBuilder.setLegacyBankAccounts(pLegacyBankAccounts);
-    lBuilder.setChildBAttribute(pChildBAttribute);
-    lBuilder.setComposition(pComposition);
     lBuilder.setChildBBAttribute(pChildBBAttribute);
     lBuilder.setDeprecatedAttribute(pDeprecatedAttribute);
-    lBuilder.setDeprecatedBs(pDeprecatedBs);
-    lBuilder.setDeprecatedParent(pDeprecatedParent);
-    lBuilder.setDeprecatedArray(pDeprecatedArray);
     return lBuilder.build();
   }
 

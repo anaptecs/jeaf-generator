@@ -587,19 +587,15 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
    *
    * @param pAuthorizedPersons Value to which {@link #authorizedPersons} should be set.
    *
-   * @param pBookings Value to which {@link #bookings} should be set.
-   *
    * @param pBankID Value to which {@link #bankID} should be set.
    *
    * @return {@link Account}
    */
-  public static Account of( Long pIban, BigDecimal pBalance, Set<Person> pAuthorizedPersons, Set<Booking> pBookings,
-      ServiceObjectID pBankID ) {
+  public static Account of( Long pIban, BigDecimal pBalance, Set<Person> pAuthorizedPersons, ServiceObjectID pBankID ) {
     Account.Builder lBuilder = Account.builder();
     lBuilder.setIban(pIban);
     lBuilder.setBalance(pBalance);
     lBuilder.setAuthorizedPersons(pAuthorizedPersons);
-    lBuilder.setBookings(pBookings);
     lBuilder.setBankID(pBankID);
     return lBuilder.build();
   }

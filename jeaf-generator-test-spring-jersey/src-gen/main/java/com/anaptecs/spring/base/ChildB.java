@@ -101,17 +101,11 @@ public class ChildB extends ParentClass {
    *
    * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
    *
-   * @param pChildBAttribute Value to which {@link #childBAttribute} should be set.
-   *
-   * @param pComposition Value to which {@link #composition} should be set.
-   *
    * @return {@link ChildB}
    */
-  public static ChildB of( String pParentAttribute, boolean[] pChildBAttribute, Set<ParentClass> pComposition ) {
+  public static ChildB of( String pParentAttribute ) {
     ChildB.Builder lBuilder = ChildB.builder();
     lBuilder.setParentAttribute(pParentAttribute);
-    lBuilder.setChildBAttribute(pChildBAttribute);
-    lBuilder.setComposition(pComposition);
     return lBuilder.build();
   }
 

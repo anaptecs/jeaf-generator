@@ -137,12 +137,10 @@ public class WrapperDatatypeServiceObject implements ServiceObject {
    *
    * @param pMyShort Value to which {@link #myShort} should be set.
    *
-   * @param pMyByteArray Value to which {@link #myByteArray} should be set.
-   *
    * @return {@link WrapperDatatypeServiceObject}
    */
   public static WrapperDatatypeServiceObject of( Boolean pMyBoolean, Byte pMyByte, Character pMyCharacter,
-      Double pMyDouble, Float pMyFloat, Long pMyLong, Short pMyShort, byte[] pMyByteArray ) {
+      Double pMyDouble, Float pMyFloat, Long pMyLong, Short pMyShort ) {
     WrapperDatatypeServiceObject.Builder lBuilder = WrapperDatatypeServiceObject.builder();
     lBuilder.setMyBoolean(pMyBoolean);
     lBuilder.setMyByte(pMyByte);
@@ -151,7 +149,6 @@ public class WrapperDatatypeServiceObject implements ServiceObject {
     lBuilder.setMyFloat(pMyFloat);
     lBuilder.setMyLong(pMyLong);
     lBuilder.setMyShort(pMyShort);
-    lBuilder.setMyByteArray(pMyByteArray);
     return lBuilder.build();
   }
 

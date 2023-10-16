@@ -122,18 +122,15 @@ public class Stop implements ServiceObject {
    *
    * @param pName Value to which {@link #name} should be set.
    *
-   * @param pLinks Value to which {@link #links} should be set.
-   *
    * @param pIndex Value to which {@link #index} should be set.
    *
    * @param pTheSoftLink Value to which {@link #theSoftLink} should be set.
    *
    * @return {@link Stop}
    */
-  public static Stop of( String pName, List<LinkObject> pLinks, byte pIndex, SoftLink pTheSoftLink ) {
+  public static Stop of( String pName, byte pIndex, SoftLink pTheSoftLink ) {
     Stop.Builder lBuilder = Stop.builder();
     lBuilder.setName(pName);
-    lBuilder.setLinks(pLinks);
     lBuilder.setIndex(pIndex);
     lBuilder.setTheSoftLink(pTheSoftLink);
     return lBuilder.build();

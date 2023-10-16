@@ -413,23 +413,10 @@ public abstract class BidirectionalABase {
    * Convenience method to create new instance of class BidirectionalA.
    *
    *
-   * @param pTransientB Value to which {@link #transientB} should be set.
-   *
-   * @param pTransientParent Value to which {@link #transientParent} should be set.
-   *
-   * @param pChild Value to which {@link #child} should be set.
-   *
-   * @param pTransientBs Value to which {@link #transientBs} should be set.
-   *
    * @return {@link BidirectionalA}
    */
-  public static BidirectionalA of( BidirectionalB pTransientB, BidirectionalA pTransientParent, BidirectionalA pChild,
-      Set<BidirectionalB> pTransientBs ) {
+  public static BidirectionalA of( ) {
     BidirectionalA.Builder lBuilder = BidirectionalA.builder();
-    lBuilder.setTransientB(pTransientB);
-    lBuilder.setTransientParent(pTransientParent);
-    lBuilder.setChild(pChild);
-    lBuilder.setTransientBs(pTransientBs);
     return lBuilder.build();
   }
 

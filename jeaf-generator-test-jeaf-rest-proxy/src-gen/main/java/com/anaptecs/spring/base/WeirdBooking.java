@@ -103,14 +103,11 @@ public class WeirdBooking implements Serializable {
    *
    * @param pBooking Value to which {@link #booking} should be set.
    *
-   * @param pAdditionalBookings Value to which {@link #additionalBookings} should be set.
-   *
    * @return {@link WeirdBooking}
    */
-  public static WeirdBooking of( ComplexBookingID pBooking, List<ComplexBookingID> pAdditionalBookings ) {
+  public static WeirdBooking of( ComplexBookingID pBooking ) {
     WeirdBooking.Builder lBuilder = WeirdBooking.builder();
     lBuilder.setBooking(pBooking);
-    lBuilder.setAdditionalBookings(pAdditionalBookings);
     return lBuilder.build();
   }
 

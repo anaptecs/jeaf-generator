@@ -80,16 +80,13 @@ public class POI extends Stop {
    *
    * @param pName Value to which {@link #name} should be set.
    *
-   * @param pLinks Value to which {@link #links} should be set.
-   *
    * @param pDescription Value to which {@link #description} should be set.
    *
    * @return {@link POI}
    */
-  public static POI of( String pName, List<LinkObject> pLinks, String pDescription ) {
+  public static POI of( String pName, String pDescription ) {
     POI.Builder lBuilder = POI.builder();
     lBuilder.setName(pName);
-    lBuilder.setLinks(pLinks);
     lBuilder.setDescription(pDescription);
     return lBuilder.build();
   }

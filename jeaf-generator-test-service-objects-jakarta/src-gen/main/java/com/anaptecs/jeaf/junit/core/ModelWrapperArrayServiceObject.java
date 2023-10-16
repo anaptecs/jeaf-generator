@@ -67,13 +67,10 @@ public class ModelWrapperArrayServiceObject implements ServiceObject {
    * Convenience method to create new instance of class ModelWrapperArrayServiceObject.
    *
    *
-   * @param pBooleanArray Value to which {@link #booleanArray} should be set.
-   *
    * @return {@link ModelWrapperArrayServiceObject}
    */
-  public static ModelWrapperArrayServiceObject of( boolean[] pBooleanArray ) {
+  public static ModelWrapperArrayServiceObject of( ) {
     ModelWrapperArrayServiceObject.Builder lBuilder = ModelWrapperArrayServiceObject.builder();
-    lBuilder.setBooleanArray(pBooleanArray);
     return lBuilder.build();
   }
 

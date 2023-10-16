@@ -940,11 +940,7 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
    * Convenience method to create new instance of class Product.
    *
    *
-   * @param pResellers Value to which {@link #resellers} should be set.
-   *
    * @param pName Value to which {@link #name} should be set.
-   *
-   * @param pImage Value to which {@link #image} should be set.
    *
    * @param pLink Value to which {@link #link} should be set.
    *
@@ -956,25 +952,19 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
    *
    * @param pDescription Value to which {@link #description} should be set.
    *
-   * @param pSortiments Value to which {@link #sortiments} should be set.
-   *
    * @param pUri Value to which {@link #uri} should be set.
    *
    * @return {@link Product}
    */
-  public static Product of( Set<Reseller> pResellers, String pName, byte[] pImage, URL pLink, UUID pProductID,
-      Set<CurrencyCode> pSupportedCurrencies, Set<ProductCode> pProductCodes, String pDescription,
-      Set<Sortiment> pSortiments, String pUri ) {
+  public static Product of( String pName, URL pLink, UUID pProductID, Set<CurrencyCode> pSupportedCurrencies,
+      Set<ProductCode> pProductCodes, String pDescription, String pUri ) {
     Product.Builder lBuilder = Product.builder();
-    lBuilder.setResellers(pResellers);
     lBuilder.setName(pName);
-    lBuilder.setImage(pImage);
     lBuilder.setLink(pLink);
     lBuilder.setProductID(pProductID);
     lBuilder.setSupportedCurrencies(pSupportedCurrencies);
     lBuilder.setProductCodes(pProductCodes);
     lBuilder.setDescription(pDescription);
-    lBuilder.setSortiments(pSortiments);
     lBuilder.setUri(pUri);
     return lBuilder.build();
   }

@@ -64,16 +64,13 @@ public class UICStop extends Stop {
    *
    * @param pName Value to which {@link #name} should be set.
    *
-   * @param pLinks Value to which {@link #links} should be set.
-   *
    * @param pUicCode Value to which {@link #uicCode} should be set.
    *
    * @return {@link UICStop}
    */
-  public static UICStop of( String pName, List<LinkObject> pLinks, String pUicCode ) {
+  public static UICStop of( String pName, String pUicCode ) {
     UICStop.Builder lBuilder = UICStop.builder();
     lBuilder.setName(pName);
-    lBuilder.setLinks(pLinks);
     lBuilder.setUicCode(pUicCode);
     return lBuilder.build();
   }

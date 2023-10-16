@@ -127,19 +127,13 @@ public class Campaign implements ServiceObject {
    * Convenience method to create new instance of class Campaign.
    *
    *
-   * @param pTheLink Value to which {@link #theLink} should be set.
-   *
    * @param pMoreLinks Value to which {@link #moreLinks} should be set.
-   *
-   * @param pDiscountOffers Value to which {@link #discountOffers} should be set.
    *
    * @return {@link Campaign}
    */
-  public static Campaign of( long pTheLink, Set<Long> pMoreLinks, List<String> pDiscountOffers ) {
+  public static Campaign of( Set<Long> pMoreLinks ) {
     Campaign.Builder lBuilder = Campaign.builder();
-    lBuilder.setTheLink(pTheLink);
     lBuilder.setMoreLinks(pMoreLinks);
-    lBuilder.setDiscountOffers(pDiscountOffers);
     return lBuilder.build();
   }
 

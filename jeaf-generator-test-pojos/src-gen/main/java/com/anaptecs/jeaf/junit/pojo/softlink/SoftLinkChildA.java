@@ -62,15 +62,12 @@ public class SoftLinkChildA extends SoftLinkParent {
    *
    * @param pThePartner Value to which {@link #thePartner} should be set.
    *
-   * @param pReadonlyPartner Value to which {@link #readonlyPartner} should be set.
-   *
    * @return {@link SoftLinkChildA}
    */
-  public static SoftLinkChildA of( Set<SoftLinkID> pPartners, SoftLinkID pThePartner, SoftLinkID pReadonlyPartner ) {
+  public static SoftLinkChildA of( Set<SoftLinkID> pPartners, SoftLinkID pThePartner ) {
     SoftLinkChildA.Builder lBuilder = SoftLinkChildA.builder();
     lBuilder.setPartners(pPartners);
     lBuilder.setThePartner(pThePartner);
-    lBuilder.setReadonlyPartner(pReadonlyPartner);
     return lBuilder.build();
   }
 

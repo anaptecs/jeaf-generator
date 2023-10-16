@@ -161,17 +161,14 @@ public abstract class PersonBase extends Partner {
    * Convenience method to create new instance of class Person.
    *
    *
-   * @param pPostalAddresses Value to which {@link #postalAddresses} should be set.
-   *
    * @param pSurname Value to which {@link #surname} should be set.
    *
    * @param pFirstName Value to which {@link #firstName} should be set.
    *
    * @return {@link com.anaptecs.spring.base.Person}
    */
-  public static Person of( List<PostalAddress> pPostalAddresses, String pSurname, String pFirstName ) {
+  public static Person of( String pSurname, String pFirstName ) {
     Person.Builder lBuilder = Person.builder();
-    lBuilder.setPostalAddresses(pPostalAddresses);
     lBuilder.setSurname(pSurname);
     lBuilder.setFirstName(pFirstName);
     return lBuilder.build();
