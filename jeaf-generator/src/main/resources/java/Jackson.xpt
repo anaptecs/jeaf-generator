@@ -4,6 +4,7 @@
 «EXTENSION org::openarchitectureware::util::stdlib::io»
 «EXTENSION entity::ModelProperties»
 «EXTENSION java::OpenAPIFunctions»
+«EXTENSION functions::Class»
 
 «IMPORT uml»
 «IMPORT JMM»
@@ -20,9 +21,11 @@
 		@com.fasterxml.jackson.annotation.JsonIgnoreProperties(value = "objectType")
 		  «ENDIF»
 		@com.fasterxml.jackson.annotation.JsonTypeInfo(use = com.fasterxml.jackson.annotation.JsonTypeInfo.Id.NAME, include = com.fasterxml.jackson.annotation.JsonTypeInfo.As.PROPERTY, property = "objectType", visible = true)
+		«IF this.suppressSubtypesMapping() == false»
 		@com.fasterxml.jackson.annotation.JsonSubTypes({
 		  «EXPAND SubtypesAnnotation -»
 		 })
+		 «ENDIF»
 		«ENDIF»
 		«IF needsToImplementIdentifiable() == true»
 		@com.fasterxml.jackson.annotation.JsonIdentityInfo(property = "objectID", generator = com.fasterxml.jackson.annotation.ObjectIdGenerators.PropertyGenerator.class)

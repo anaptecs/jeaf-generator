@@ -45,3 +45,13 @@ private String getOfMethodType(uml::Class class):
         if class.isServiceObject()
         then class.asServiceObject().ofMethod.name;
         
+cached boolean suppressSubtypesMapping(uml::Class class):
+  if class.isStereotypeApplied("POJO")
+  then ((JMM::POJO) class).suppressSubtypesMapping
+  else 
+        if class.isStereotypeApplied("ServiceObject")
+        then ((JMM::ServiceObject) class).suppressSubtypesMapping
+        else false;
+ 
+        
+        
