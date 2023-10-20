@@ -326,7 +326,17 @@ public class PrimitiveServiceObject implements ServiceObject {
    *
    * @return boolean Value to which {@link #aBoolean} is set.
    */
+  @Deprecated
   public boolean getABoolean( ) {
+    return aBoolean;
+  }
+
+  /**
+   * Method returns attribute {@link #aBoolean}.<br/>
+   *
+   * @return boolean Value to which {@link #aBoolean} is set.
+   */
+  public boolean isABoolean( ) {
     return aBoolean;
   }
 

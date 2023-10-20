@@ -736,7 +736,17 @@ public class PrimitiveObjectWithRestrictions {
    *
    * @return boolean Value to which {@link #aBoolean} is set.
    */
+  @Deprecated
   public boolean getABoolean( ) {
+    return aBoolean;
+  }
+
+  /**
+   * Method returns attribute {@link #aBoolean}.<br/>
+   *
+   * @return boolean Value to which {@link #aBoolean} is set.
+   */
+  public boolean isABoolean( ) {
     return aBoolean;
   }
 
@@ -774,7 +784,17 @@ public class PrimitiveObjectWithRestrictions {
    *
    * @return boolean Value to which {@link #cBoolean} is set.
    */
+  @Deprecated
   public boolean getCBoolean( ) {
+    return cBoolean;
+  }
+
+  /**
+   * Method returns attribute {@link #cBoolean}.<br/>
+   *
+   * @return boolean Value to which {@link #cBoolean} is set.
+   */
+  public boolean isCBoolean( ) {
     return cBoolean;
   }
 

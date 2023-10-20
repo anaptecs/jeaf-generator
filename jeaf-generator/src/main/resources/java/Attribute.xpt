@@ -126,6 +126,9 @@
 «DEFINE Getter FOR Property»
 	«EXPAND functions::Javadoc::JavadocForPropertyGetter»
 	«EXPAND java::Helper::GenerateDeprecationAnnotation-»
+	«IF this.isDeprecated() == false && type.isPrimitiveType() && type.isBooleanType() && this.isMultivalued() == false-»
+    @Deprecated
+    «ENDIF-»	
 	«IF this.isInternalProperty() == false»public«ENDIF» «this.fqn()»«IF isMultivalued()»[]«ENDIF» «asGetter()»() {
 	    «IF this.isMultivalued() == false»return «asInstanceVar()»;«ELSE»«this.fqn()»[] lReturnValue;
 	    if(«asInstanceVar()» != null) {
@@ -151,6 +154,13 @@
 	    return lReturnValue;
 		«ENDIF»
     }
+    «IF type.isPrimitiveType() && type.isBooleanType() && this.isMultivalued() == false» 
+        «EXPAND functions::Javadoc::JavadocForPropertyGetter»
+        «EXPAND java::Helper::GenerateDeprecationAnnotation-»
+       «IF this.isInternalProperty() == false»public«ENDIF» boolean is«name.toFirstUpper()»() {
+           return «name»;
+       }
+    «ENDIF»    
 «ENDDEFINE»
 
 «DEFINE AbstractGetterForDerivedProperty FOR Property»

@@ -38,6 +38,7 @@ public class Channel implements Serializable {
   /**
    * Constant for the name of attribute "selfServiceChannel".
    */
+  @Deprecated
   public static final String SELFSERVICECHANNEL = "selfServiceChannel";
 
   /**
@@ -61,6 +62,7 @@ public class Channel implements Serializable {
    * <br/>
    * <b>Default Value:</b> <code>true</code>
    */
+  @Deprecated
   private final boolean selfServiceChannel;
 
   private transient Reseller reseller;
@@ -170,6 +172,7 @@ public class Channel implements Serializable {
      * <br/>
      * <b>Default Value:</b> <code>true</code>
      */
+    @Deprecated
     private boolean selfServiceChannel = true;
 
     private Reseller reseller;
@@ -234,6 +237,7 @@ public class Channel implements Serializable {
      * @param pSelfServiceChannel Value to which {@link #selfServiceChannel} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @Deprecated
     public Builder setSelfServiceChannel( boolean pSelfServiceChannel ) {
       // Assign value to attribute
       selfServiceChannel = pSelfServiceChannel;
@@ -342,7 +346,18 @@ public class Channel implements Serializable {
    *
    * @return boolean Value to which {@link #selfServiceChannel} is set.
    */
+  @Deprecated
   public boolean getSelfServiceChannel( ) {
+    return selfServiceChannel;
+  }
+
+  /**
+   * Method returns attribute {@link #selfServiceChannel}.<br/>
+   *
+   * @return boolean Value to which {@link #selfServiceChannel} is set.
+   */
+  @Deprecated
+  public boolean isSelfServiceChannel( ) {
     return selfServiceChannel;
   }
 

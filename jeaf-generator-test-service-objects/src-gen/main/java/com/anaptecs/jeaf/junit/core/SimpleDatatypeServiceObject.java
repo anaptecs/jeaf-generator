@@ -390,7 +390,17 @@ public class SimpleDatatypeServiceObject implements ServiceObject, Identifiable<
    *
    * @return boolean Value to which {@link #myBoolean} is set.
    */
+  @Deprecated
   public boolean getMyBoolean( ) {
+    return myBoolean;
+  }
+
+  /**
+   * Method returns attribute {@link #myBoolean}.<br/>
+   *
+   * @return boolean Value to which {@link #myBoolean} is set.
+   */
+  public boolean isMyBoolean( ) {
     return myBoolean;
   }
 
