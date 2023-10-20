@@ -14,7 +14,7 @@ public interface MailTestService extends Service {
   void testCreateEmptyMessage( );
 
   /**
-   * Test of method createMessage( String pContent, String pSubject, Set<Address> pRecipients ). <br/>
+   * Test of method createMessage( String pContent, String pSubject, Set<Address> pRecipients ).<br/>
    * Creates a MimeMessage filled with the content, subject and recipients specified within the parameters.
    *
    * @param pAddress
@@ -26,7 +26,7 @@ public interface MailTestService extends Service {
   void testCreateFilledMessage( String pAddress, String pPersonal, String pCharSet, String pContent, String pSubject );
 
   /**
-   * Test of method sendMail( Message pMessage ). <br/>
+   * Test of method sendMail( Message pMessage ).<br/>
    * Starts a local SMTPServer, creates a MimeMessage and tries to send it to the SMTPServer.
    *
    * @param pAddress
@@ -38,7 +38,7 @@ public interface MailTestService extends Service {
   void testSendMail( String pAddress, String pPersonal, String pCharSet, String pContent, String pSubject );
 
   /**
-   * Test of method sendMail( String pContent, String pSubject, Set<Address> pRecipients ). <br/>
+   * Test of method sendMail( String pContent, String pSubject, Set<Address> pRecipients ).<br/>
    * Starts a local SMTPServer and tries to send a Message to the SMTPServer using the given parameters.
    *
    * @param pAddress

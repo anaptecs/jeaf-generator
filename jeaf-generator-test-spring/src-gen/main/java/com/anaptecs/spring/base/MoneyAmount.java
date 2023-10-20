@@ -16,8 +16,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 /**
  * Type represents an amount of money.<br/>
  * <br/>
- * NOVA 14 Mapping<br/>
- * * nova-base.xsd.GeldBetrag
+ * NOVA 14 Mapping
+ * </p>
+ * <ul>
+ * <li>nova-base.xsd.GeldBetrag</li>
+ * </ul>
  *
  * @author JEAF Generator
  * @version JEAF Release 1.4.x

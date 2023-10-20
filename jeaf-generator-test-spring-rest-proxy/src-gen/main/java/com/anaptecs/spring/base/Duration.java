@@ -8,8 +8,11 @@ package com.anaptecs.spring.base;
 /**
  * Type represents a duration.<br/>
  * <br/>
- * NOVA 14 Mapping<br/>
- * * nova-base.xsd.Dauer
+ * NOVA 14 Mapping
+ * </p>
+ * <ul>
+ * <li>nova-base.xsd.Dauer</li>
+ * </ul>
  *
  * @author JEAF Generator
  * @version JEAF Release 1.4.x

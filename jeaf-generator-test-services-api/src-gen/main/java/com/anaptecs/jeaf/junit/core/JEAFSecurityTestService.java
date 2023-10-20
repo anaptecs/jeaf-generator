@@ -15,7 +15,7 @@ import com.anaptecs.jeaf.core.api.Service;
  */
 public interface JEAFSecurityTestService extends Service {
   /**
-   * Method returns the currently user who is loged in. <br/>
+   * Method returns the currently user who is loged in.<br/>
    * <br/>
    * @return loged in User.
    */

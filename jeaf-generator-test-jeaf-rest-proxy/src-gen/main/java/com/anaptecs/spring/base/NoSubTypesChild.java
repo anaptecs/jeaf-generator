@@ -22,6 +22,35 @@ public class NoSubTypesChild extends NoSubTypesParent {
    */
   public static final String MYPROPERTY = "myProperty";
 
+  /**
+   * Hello World!<br/>
+   * <img src="https://raw.githubusercontent.com/anaptecs/emoji-images/master/imgs/1f428.png" alt="emoji github:koala"
+   * height="20" width="20" align="absmiddle" />
+   * </p>
+   * <table>
+   * <thead>
+   * <tr>
+   * <th>Syntax</th>
+   * <th>Description</th>
+   * </tr>
+   * </thead> <tbody>
+   * <tr>
+   * <td>Header</td>
+   * <td>Title</td>
+   * </tr>
+   * <tr>
+   * <td>Paragraph</td>
+   * <td>Text</td>
+   * </tr>
+   * </tbody>
+   * </table>
+   * <p>
+   * Let's have an additional discussion about how much sense it makes to add
+   * <img src="https://raw.githubusercontent.com/anaptecs/emoji-images/master/imgs/1f428.png" alt="emoji github:koala"
+   * height="20" width="20" align="absmiddle" /> to your documentation.<br/>
+   * <br/>
+   * So far I think it is at least funny.
+   */
   private String myProperty;
 
   /**
@@ -90,6 +119,35 @@ public class NoSubTypesChild extends NoSubTypesParent {
    * Class implements builder to create a new instance of class <code>NoSubTypesChild</code>.
    */
   public static class Builder extends NoSubTypesParent.Builder {
+    /**
+     * Hello World!<br/>
+     * <img src="https://raw.githubusercontent.com/anaptecs/emoji-images/master/imgs/1f428.png" alt="emoji github:koala"
+     * height="20" width="20" align="absmiddle" />
+     * </p>
+     * <table>
+     * <thead>
+     * <tr>
+     * <th>Syntax</th>
+     * <th>Description</th>
+     * </tr>
+     * </thead> <tbody>
+     * <tr>
+     * <td>Header</td>
+     * <td>Title</td>
+     * </tr>
+     * <tr>
+     * <td>Paragraph</td>
+     * <td>Text</td>
+     * </tr>
+     * </tbody>
+     * </table>
+     * <p>
+     * Let's have an additional discussion about how much sense it makes to add
+     * <img src="https://raw.githubusercontent.com/anaptecs/emoji-images/master/imgs/1f428.png" alt="emoji github:koala"
+     * height="20" width="20" align="absmiddle" /> to your documentation.<br/>
+     * <br/>
+     * So far I think it is at least funny.
+     */
     private String myProperty;
 
     /**
@@ -148,6 +206,33 @@ public class NoSubTypesChild extends NoSubTypesParent {
 
   /**
    * Method returns attribute {@link #myProperty}.<br/>
+   * Hello World!<br/>
+   * <img src="https://raw.githubusercontent.com/anaptecs/emoji-images/master/imgs/1f428.png" alt="emoji github:koala"
+   * height="20" width="20" align="absmiddle" />
+   * </p>
+   * <table>
+   * <thead>
+   * <tr>
+   * <th>Syntax</th>
+   * <th>Description</th>
+   * </tr>
+   * </thead> <tbody>
+   * <tr>
+   * <td>Header</td>
+   * <td>Title</td>
+   * </tr>
+   * <tr>
+   * <td>Paragraph</td>
+   * <td>Text</td>
+   * </tr>
+   * </tbody>
+   * </table>
+   * <p>
+   * Let's have an additional discussion about how much sense it makes to add
+   * <img src="https://raw.githubusercontent.com/anaptecs/emoji-images/master/imgs/1f428.png" alt="emoji github:koala"
+   * height="20" width="20" align="absmiddle" /> to your documentation.<br/>
+   * <br/>
+   * So far I think it is at least funny.
    *
    * @return {@link String} Value to which {@link #myProperty} is set.
    */
@@ -157,6 +242,33 @@ public class NoSubTypesChild extends NoSubTypesParent {
 
   /**
    * Method sets attribute {@link #myProperty}.<br/>
+   * Hello World!<br/>
+   * <img src="https://raw.githubusercontent.com/anaptecs/emoji-images/master/imgs/1f428.png" alt="emoji github:koala"
+   * height="20" width="20" align="absmiddle" />
+   * </p>
+   * <table>
+   * <thead>
+   * <tr>
+   * <th>Syntax</th>
+   * <th>Description</th>
+   * </tr>
+   * </thead> <tbody>
+   * <tr>
+   * <td>Header</td>
+   * <td>Title</td>
+   * </tr>
+   * <tr>
+   * <td>Paragraph</td>
+   * <td>Text</td>
+   * </tr>
+   * </tbody>
+   * </table>
+   * <p>
+   * Let's have an additional discussion about how much sense it makes to add
+   * <img src="https://raw.githubusercontent.com/anaptecs/emoji-images/master/imgs/1f428.png" alt="emoji github:koala"
+   * height="20" width="20" align="absmiddle" /> to your documentation.<br/>
+   * <br/>
+   * So far I think it is at least funny.
    *
    * @param pMyProperty Value to which {@link #myProperty} should be set.
    */

@@ -5,6 +5,32 @@
  */
 package com.anaptecs.spring.base;
 
+/**
+ * Hello World!<br/>
+ * <img src="https://raw.githubusercontent.com/anaptecs/emoji-images/master/imgs/1f428.png" alt="emoji github:koala"
+ * height="20" width="20" align="absmiddle" />
+ * </p>
+ * <table>
+ * <thead>
+ * <tr>
+ * <th>Syntax</th>
+ * <th>Description</th>
+ * </tr>
+ * </thead> <tbody>
+ * <tr>
+ * <td>Header</td>
+ * <td>Title</td>
+ * </tr>
+ * <tr>
+ * <td>Paragraph</td>
+ * <td>Text</td>
+ * </tr>
+ * </tbody>
+ * </table>
+ *
+ * @author JEAF Generator
+ * @version JEAF Release 1.4.x
+ */
 public class NoSubTypesParent {
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"

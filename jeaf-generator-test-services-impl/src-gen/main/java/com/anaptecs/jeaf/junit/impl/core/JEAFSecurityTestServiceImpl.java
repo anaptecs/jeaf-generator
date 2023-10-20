@@ -35,7 +35,7 @@ final class JEAFSecurityTestServiceImpl extends JEAFSecurityTestServiceImplBase 
   }
 
   /**
-   * Method returns the currently user who is loged in. <br/>
+   * Method returns the currently user who is loged in.<br/>
    * <br/>
    * @return loged in User.
    */

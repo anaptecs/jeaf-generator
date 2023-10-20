@@ -49,7 +49,7 @@ final class AccountingServiceImpl extends AccountingServiceImplBase {
    * <br/>
    * @param pCustomer Customer for which the account will be created. The parameter must not be null.<br/>
    * @param pAuthorizedPerson Person who will be authorized for the passed account. The parameter must not be null.<br/>
-   * @return {@link Account} Created account object. The method never returns null.<br/>
+   * @return {@link Account} Created account object. The method never returns null.
    *
    * @param pCustomer
    * @param pAuthorizedPerson
@@ -65,7 +65,7 @@ final class AccountingServiceImpl extends AccountingServiceImplBase {
    * Method returns the account with the passed account id.<br/>
    * <br/>
    * @param pAccountID ID of the account that should be returned. The parameter must not be null.<br/>
-   * @return {@link Account} Account service object with the passed id. The method never returns null.<br/>
+   * @return {@link Account} Account service object with the passed id. The method never returns null.
    *
    * @param pAccountID
    * @return {@link Account}
@@ -79,7 +79,7 @@ final class AccountingServiceImpl extends AccountingServiceImplBase {
   /**
    * Method locks the passed account. If the account is already locked, nothing will happen.<br/>
    * <br/>
-   * @param pAccount Account that should be locked. The parameter must not be null.<br/>
+   * @param pAccount Account that should be locked. The parameter must not be null.
    *
    * @param pAccount
    */
@@ -90,7 +90,7 @@ final class AccountingServiceImpl extends AccountingServiceImplBase {
   /**
    * Method unlocks the passed account. If the account is already unlocked, nothing will happen.<br/>
    * <br/>
-   * @param pAccount Account that should be unlocked. The parameter must not be null.<br/>
+   * @param pAccount Account that should be unlocked. The parameter must not be null.
    *
    * @param pAccount
    */
@@ -104,7 +104,7 @@ final class AccountingServiceImpl extends AccountingServiceImplBase {
    * <br/>
    * @param pBooking Booking that should be performed. The parameter must not be null and both, the source and target
    * account have to be set.<br/>
-   * @param pSecurityToken Current security token of the caller. The parameter must not be null.<br/>
+   * @param pSecurityToken Current security token of the caller. The parameter must not be null.
    *
    * @param pBooking
    * @param pSecurityToken
@@ -121,7 +121,7 @@ final class AccountingServiceImpl extends AccountingServiceImplBase {
    * @param pAttendingEmployeeID ID of the employee that will be the attendant for the created customer. The parameter
    * must not be null.<br/>
    * @return {@link Customer} Customer object describing the created customer. The method never returns null and the
-   * returned object is not same instance as the passed one.<br/>
+   * returned object is not same instance as the passed one.
    *
    * @param pNewCustomer
    * @param pAttendingEmployeeID
@@ -155,7 +155,7 @@ final class AccountingServiceImpl extends AccountingServiceImplBase {
    * @param pPerson Person service object whose data should be used to create a new persistent Person object. The
    * parameter must not be null.<br/>
    * @return {@link Person} Person service object describing the created person. The object is not the same instance as
-   * the passed one. The method never returns null.<br/>
+   * the passed one. The method never returns null.
    *
    * @param pPerson
    * @return {@link Person}

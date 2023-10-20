@@ -42,7 +42,7 @@ final class MailTestServiceImpl extends MailTestServiceImplBase {
   }
 
   /**
-   * Test of method createMessage( String pContent, String pSubject, Set<Address> pRecipients ). <br/>
+   * Test of method createMessage( String pContent, String pSubject, Set<Address> pRecipients ).<br/>
    * Creates a MimeMessage filled with the content, subject and recipients specified within the parameters.
    *
    * @param pAddress
@@ -57,7 +57,7 @@ final class MailTestServiceImpl extends MailTestServiceImplBase {
   }
 
   /**
-   * Test of method sendMail( Message pMessage ). <br/>
+   * Test of method sendMail( Message pMessage ).<br/>
    * Starts a local SMTPServer, creates a MimeMessage and tries to send it to the SMTPServer.
    *
    * @param pAddress
@@ -71,7 +71,7 @@ final class MailTestServiceImpl extends MailTestServiceImplBase {
   }
 
   /**
-   * Test of method sendMail( String pContent, String pSubject, Set<Address> pRecipients ). <br/>
+   * Test of method sendMail( String pContent, String pSubject, Set<Address> pRecipients ).<br/>
    * Starts a local SMTPServer and tries to send a Message to the SMTPServer using the given parameters.
    *
    * @param pAddress

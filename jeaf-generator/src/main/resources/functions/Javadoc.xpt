@@ -157,7 +157,7 @@
 
 «DEFINE AddComment FOR uml::NamedElement -»
     «FOREACH ownedComment AS comment SEPARATOR "<p/>" -»
- «comment.body.replaceAll("\n", "<br/>")»
+ «comment.body.convertCommentForJavadoc()»
     «ENDFOREACH -»«ENDDEFINE»
 
 «DEFINE SecurityRolesComment FOR uml::Operation -»
