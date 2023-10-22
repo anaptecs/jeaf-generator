@@ -20,8 +20,8 @@ cached String getStereotypeValue(uml::Element element, String stereotype, String
 cached List getAllAuthorizationTypes(uml::Model model) :
     JAVA com.anaptecs.jeaf.fwk.generator.util.AuthorizationHelper.getAllAuthorizationTypes(org.eclipse.uml2.uml.Model);
    
-cached List getAllJEAFActors(uml::Model model) :
-    JAVA com.anaptecs.jeaf.fwk.generator.util.AuthorizationHelper.getAllJEAFActors(org.eclipse.uml2.uml.Model);
+cached List[JMM::SecurityRole] getAllSecurityRoles(uml::Model model) :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.AuthorizationHelper.getAllSecurityRoles(org.eclipse.uml2.uml.Model);
 
 cached List getAllUseCases(uml::Model model) :
     JAVA com.anaptecs.jeaf.fwk.generator.util.AuthorizationHelper.getAllUseCases(org.eclipse.uml2.uml.Model);
@@ -197,6 +197,24 @@ cached String getDeprecationReportFormat():
 private cached String getDeprecationReportFileExtension():    
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getDeprecationReportFileExtension();
    
+cached boolean generateSecurityRolesReport():    
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateSecurityRolesReport();
+    
+cached String getSecurityRolesReportName():    
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getSecurityRolesReportName();
+    
+cached String getSecurityRolesReportFileName():
+    getSecurityRolesReportFileNameProperty() + getSecurityRolesReportFileExtension();
+    
+private cached String getSecurityRolesReportFileNameProperty():    
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getSecurityRolesReportFileName();
+    
+cached String getSecurityRolesReportFormat():    
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getSecurityRolesReportFormat();
+    
+private cached String getSecurityRolesReportFileExtension():    
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getSecurityRolesReportFileExtension();
+
 cached boolean generateOpenAPISpec() :    
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateOpenAPISpec();
     

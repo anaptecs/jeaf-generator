@@ -598,6 +598,33 @@ public class GeneratorMojo extends AbstractMojo {
   private ReportFormat deprecationReportFormat;
 
   /**
+   * Switch enables the generation of a security roles report about the model parts which are configured to be
+   * processed.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean generateSecurityRolesReport;
+
+  /**
+   * Name of the security roles report.
+   */
+  @Parameter(required = false, defaultValue = "Security Roles Report")
+  private String securityRolesReportName;
+
+  /**
+   * Name of the file that contains the security roles report. The file extension will be chosen based on the report
+   * format.
+   */
+  @Parameter(required = false, defaultValue = "Security_Roles_Report")
+  private String securityRolesReportFileName;
+
+  /**
+   * Parameter defines the format of the security roles report. Supported formats are <code>MARKDOWN</code>,
+   * <code>HTML</code> and <code>XML</code>.
+   */
+  @Parameter(required = false, defaultValue = "MARKDOWN")
+  private ReportFormat securityRolesReportFormat;
+
+  /**
    * Switch defines whether an OpenAPI specification should be generated or not.
    */
   @Parameter(required = false, defaultValue = "false")
@@ -1313,6 +1340,15 @@ public class GeneratorMojo extends AbstractMojo {
       lLog.info("Java Deprecation Report File Name                 " + javaDeprecationReportFileName
           + deprecationReportFormat.getExtension());
       lLog.info("Java Deprecation Report Format                    " + deprecationReportFormat);
+      lLog.info(" ");
+    }
+
+    if (generateSecurityRolesReport) {
+      lLog.info("Generate Security Roles Report                    " + generateSecurityRolesReport);
+      lLog.info("Security Roles Report Name                        " + securityRolesReportName);
+      lLog.info("Security Roles Report File Name                   " + securityRolesReportFileName
+          + securityRolesReportFormat.getExtension());
+      lLog.info("Security Roles Report Format                      " + securityRolesReportFormat);
     }
 
     if (generateOpenAPISpec) {
@@ -1539,6 +1575,10 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty("switch.gen.java.deprecation.report.name", javaDeprecationReportName.toString());
       System.setProperty("switch.gen.java.deprecation.report.filename", javaDeprecationReportFileName.toString());
       System.setProperty("switch.gen.deprecation.report.format", deprecationReportFormat.name());
+      System.setProperty("switch.gen.security.roles.report", generateSecurityRolesReport.toString());
+      System.setProperty("switch.gen.security.roles.report.name", securityRolesReportName.toString());
+      System.setProperty("switch.gen.security.roles.report.filename", securityRolesReportFileName.toString());
+      System.setProperty("switch.gen.security.roles.report.format", securityRolesReportFormat.name());
 
       System.setProperty("switch.gen.openapispec", generateOpenAPISpec.toString());
       System.setProperty("switch.gen.openapi.yaml.11.comapitibility", enableYAML11Compatibility.toString());

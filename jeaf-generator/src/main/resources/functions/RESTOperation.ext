@@ -1,5 +1,12 @@
+extension java::GeneratorCommons;
 extension functions::BeanParam;
 
+cached boolean isRESTOperation(uml::Element element):
+    element.isStereotypeApplied("RESTOperation");
+    
+cached JMM::RESTOperation asRESTOperation(uml::Element element):
+    (JMM::RESTOperation) element;
+    
 cached String getFullPath(JMM::RESTOperation operation):
     if operation.path.length > 0
     then ((JMM::RESTResource) operation.owner).path + "/" + operation.path + " " + operation.httpMethods

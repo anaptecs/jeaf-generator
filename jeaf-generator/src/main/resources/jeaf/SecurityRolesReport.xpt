@@ -1,0 +1,25 @@
+«IMPORT uml»
+«IMPORT JMM»
+
+«EXTENSION org::openarchitectureware::util::stdlib::io»
+«EXTENSION java::GeneratorCommons»
+«EXTENSION java::Naming»
+«EXTENSION functions::SecurityRole»
+«EXTENSION functions::RESTOperation»
+
+«DEFINE SecurityRolesReport FOR Model»
+«FILE getSecurityRolesReportFileName() res_gen-»
+# «getSecurityRolesReportName()»
+«FOREACH this.getAllSecurityRoles().select(e|e.excludeFromDocumentation == false).sortBy(e|e.name) AS securityRole-»
+## Role `«securityRole.name»`
+«FOREACH securityRole.getAuthorizedServices() AS service-»
+### Service `«service.name»`
+«FOREACH securityRole.getAuthorizedOperations(service) AS operation»
+| Operation        | REST Resource Path |
+|------------------|---------------|
+| `«operation.name»(«FOREACH operation.ownedParameter.select(e|e.isInputParameter()) AS param SEPARATOR ", "»«param.type.name»«ENDFOREACH»)` | «IF operation.isRESTOperation()»`«operation.asRESTOperation().getFullPath()»`«ENDIF» |
+«ENDFOREACH»
+«ENDFOREACH-»
+«ENDFOREACH-»
+«ENDFILE-»
+«ENDDEFINE»

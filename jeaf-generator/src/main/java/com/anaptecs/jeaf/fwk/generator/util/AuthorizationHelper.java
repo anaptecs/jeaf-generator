@@ -122,7 +122,7 @@ public class AuthorizationHelper {
    * @param pModel UML model for which all JEAF Actors should be returned. The parameter must not be null.
    * @return Set Set containing all actors. The method never returns null.
    */
-  public static List<Actor> getAllJEAFActors( Model pModel ) {
+  public static List<Actor> getAllSecurityRoles( Model pModel ) {
     // Check parameter for null
     Check.checkInvalidParameterNull(pModel, "pModel");
 
@@ -130,7 +130,7 @@ public class AuthorizationHelper {
     Set<Actor> lActors = new HashSet<Actor>();
 
     for (Element lNextElement : lAllOwnedElements) {
-      if (lNextElement instanceof Actor && ClassUtil.isStereotypeApplied(lNextElement, "JEAF Actor")) {
+      if (lNextElement instanceof Actor && ClassUtil.isStereotypeApplied(lNextElement, "SecurityRole")) {
         lActors.add((Actor) lNextElement);
       }
     }

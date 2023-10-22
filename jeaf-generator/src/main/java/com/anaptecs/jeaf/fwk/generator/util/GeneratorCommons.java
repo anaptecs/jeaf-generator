@@ -294,6 +294,14 @@ public class GeneratorCommons {
 
   public static final String DEPRECATION_REPORT_FORMAT = "switch.gen.deprecation.report.format";
 
+  public static final String GENERATE_SECURITY_ROLES_REPORT = "switch.gen.security.roles.report";
+
+  public static final String SECURITY_ROLES_REPORT_NAME = "switch.gen.security.roles.report.name";
+
+  public static final String SECURITY_ROLES_REPORT_FILE_NAME = "switch.gen.security.roles.report.filename";
+
+  public static final String SECURITY_ROLES_REPORT_FORMAT = "switch.gen.security.roles.report.format";
+
   /**
    * Constant defines the name of the system property which enables the generation of OpenAPI specifications.
    */
@@ -1051,6 +1059,38 @@ public class GeneratorCommons {
 
   public static String getDeprecationReportFileExtension( ) {
     return getDeprecationReportFormat().getExtension();
+  }
+
+  public static boolean generateSecurityRolesReport( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(GENERATE_SECURITY_ROLES_REPORT, Boolean.TRUE, Boolean.class);
+  }
+
+  public static String getSecurityRolesReportName( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(SECURITY_ROLES_REPORT_NAME, true, String.class);
+  }
+
+  public static String getSecurityRolesReportFileName( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(SECURITY_ROLES_REPORT_FILE_NAME, true, String.class);
+  }
+
+  public static ReportFormat getSecurityRolesReportFormat( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    String lReportFormatName = lConfiguration.getConfigurationValue(SECURITY_ROLES_REPORT_FORMAT, null, String.class);
+    ReportFormat lReportFormat;
+    if (lReportFormatName != null) {
+      lReportFormat = ReportFormat.valueOf(lReportFormatName);
+    }
+    else {
+      lReportFormat = ReportFormat.MARKDOWN;
+    }
+    return lReportFormat;
+  }
+
+  public static String getSecurityRolesReportFileExtension( ) {
+    return getSecurityRolesReportFormat().getExtension();
   }
 
   /**

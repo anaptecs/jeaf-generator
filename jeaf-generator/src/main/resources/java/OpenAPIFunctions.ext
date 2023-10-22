@@ -69,7 +69,7 @@ private cached String getAliasDocs(uml::Element property, String indentation):
     
 private cached String getAuthorizedRoles(uml::Element element, String indentation):
     if element.isOperation() && element.asOperation().hasSecurityRoles()
-    then "\r\n" + indentation + "Authorized Roles: " + element.asOperation().getSecurityRoles().toString(", ")
+    then "\r\n" + indentation + "Authorized Roles: " + element.asOperation().getSecurityRolesForDocumentation().toString(", ")
     else "";
     
 private cached String getInternalDeprecationDescription(uml::NamedElement element, String indentation):

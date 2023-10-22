@@ -1,0 +1,21 @@
+extension java::GeneratorCommons;
+
+cached boolean isSecurityRole(uml::Element element):
+    element.isStereotypeApplied("SecurityRole");
+    
+cached uml::Actor asActor(uml::Element element):
+    (uml::Actor) element;
+    
+cached JMM::SecurityRole asSecurityRole(uml::Element element):
+    (JMM::SecurityRole) element;
+    
+cached List[JMM::SecurityRole] getAssociatedSecurityRoles(uml::Element element):
+    element.getRelationships().typeSelect(uml::Dependency).source.select(e|e.isSecurityRole()).asSecurityRole();
+    
+cached List[JMM::JEAFService] getAuthorizedServices(JMM::SecurityRole role):
+    role.getRelationships().typeSelect(uml::Dependency).target.typeSelect(JMM::JEAFService).addAll(role.getRelationships().typeSelect(uml::Dependency).target.typeSelect(uml::Operation).owner);
+    
+cached List[uml::Operation] getAuthorizedOperations(JMM::SecurityRole role, uml::Interface service):
+    role.getRelationships().typeSelect(uml::Dependency).target.typeSelect(JMM::JEAFService).ownedOperation.addAll(role.getRelationships().typeSelect(uml::Dependency).target.typeSelect(uml::Operation).select(e|e.owner == service).sortBy(e|e.name));
+    
+    

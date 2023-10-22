@@ -10,7 +10,6 @@
 «DEFINE Root FOR Model»
 	«clearCaches()»
 	
-	
 	«FOREACH this.getAllAppliedProfiles().allOwnedElements().typeSelect(ModelVersion) AS version»
 		«info ("Using JEAF Meta Model (JMM) revision " + version.revision)»
 	«ENDFOREACH»
@@ -33,6 +32,11 @@
     «IF generateJavaDeprecationReport()»
        «info("Generating Java Deprecation Report")»
        «EXPAND jeaf::JavaDeprecation::JavaDeprecationReport»
+    «ENDIF»
+    
+    «IF generateSecurityRolesReport()»
+       «info("Generating Security Roles Report")»
+        «EXPAND jeaf::SecurityRolesReport::SecurityRolesReport»
     «ENDIF»
     
     «IF generateGlobalParts() == true»
