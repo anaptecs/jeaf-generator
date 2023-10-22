@@ -213,6 +213,18 @@ public class ChildBB extends ChildB {
     }
 
     /**
+     * Method adds the passed objects to association {@link #composition}.<br/>
+     *
+     * @param pComposition Array of objects that should be added to {@link #composition}. The parameter may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToComposition( ParentClass... pComposition ) {
+      // Call super class implementation.
+      super.addToComposition(pComposition);
+      return this;
+    }
+
+    /**
      * Method sets attribute {@link #childBBAttribute}.<br/>
      *
      * @param pChildBBAttribute Value to which {@link #childBBAttribute} should be set.

@@ -136,6 +136,19 @@ public class Company extends Partner {
     }
 
     /**
+     * Method adds the passed objects to association {@link #postalAddresses}.<br/>
+     *
+     * @param pPostalAddresses Array of objects that should be added to {@link #postalAddresses}. The parameter may be
+     * null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToPostalAddresses( PostalAddress... pPostalAddresses ) {
+      // Call super class implementation.
+      super.addToPostalAddresses(pPostalAddresses);
+      return this;
+    }
+
+    /**
      * Method sets attribute {@link #name}.<br/>
      *
      * @param pName Value to which {@link #name} should be set.

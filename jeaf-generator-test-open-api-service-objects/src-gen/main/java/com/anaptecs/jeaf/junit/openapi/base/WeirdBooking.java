@@ -232,6 +232,19 @@ public class WeirdBooking extends WeirdParent {
     }
 
     /**
+     * Method adds the passed objects to association {@link #complexBookings}.<br/>
+     *
+     * @param pComplexBookings Array of objects that should be added to {@link #complexBookings}. The parameter may be
+     * null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToComplexBookings( ComplexBookingID... pComplexBookings ) {
+      // Call super class implementation.
+      super.addToComplexBookings(pComplexBookings);
+      return this;
+    }
+
+    /**
      * Method sets association {@link #booking}.<br/>
      *
      * @param pBooking Value to which {@link #booking} should be set.

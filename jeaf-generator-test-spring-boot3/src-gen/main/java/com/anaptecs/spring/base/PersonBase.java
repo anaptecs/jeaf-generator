@@ -86,6 +86,19 @@ public abstract class PersonBase extends Partner {
     }
 
     /**
+     * Method adds the passed objects to association {@link #postalAddresses}.<br/>
+     *
+     * @param pPostalAddresses Array of objects that should be added to {@link #postalAddresses}. The parameter may be
+     * null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining. Method never returns null.
+     */
+    public BuilderBase addToPostalAddresses( PostalAddress... pPostalAddresses ) {
+      // Call super class implementation.
+      super.addToPostalAddresses(pPostalAddresses);
+      return this;
+    }
+
+    /**
      * Method sets attribute {@link #surname}.<br/>
      *
      * @param pSurname Value to which {@link #surname} should be set.

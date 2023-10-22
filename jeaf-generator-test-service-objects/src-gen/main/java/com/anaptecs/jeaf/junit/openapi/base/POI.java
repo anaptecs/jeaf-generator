@@ -242,6 +242,18 @@ public class POI extends Stop {
     }
 
     /**
+     * Method adds the passed objects to association {@link #links}.<br/>
+     *
+     * @param pLinks Array of objects that should be added to {@link #links}. The parameter may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToLinks( LinkObject... pLinks ) {
+      // Call super class implementation.
+      super.addToLinks(pLinks);
+      return this;
+    }
+
+    /**
      * Method sets attribute {@link #index}.<br/>
      *
      * @param pIndex Value to which {@link #index} should be set.

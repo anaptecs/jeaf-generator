@@ -193,6 +193,18 @@ public class ChildAA extends ChildA {
     }
 
     /**
+     * Method adds the passed objects to association {@link #ibans}.<br/>
+     *
+     * @param pIbans Array of objects that should be added to {@link #ibans}. The parameter may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToIbans( IBAN... pIbans ) {
+      // Call super class implementation.
+      super.addToIbans(pIbans);
+      return this;
+    }
+
+    /**
      * Method sets association {@link #theBankAccount}.<br/>
      *
      * @param pTheBankAccount Value to which {@link #theBankAccount} should be set.
@@ -217,6 +229,20 @@ public class ChildAA extends ChildA {
     public Builder setLegacyBankAccounts( List<BankAccount> pLegacyBankAccounts ) {
       // Call super class implementation.
       super.setLegacyBankAccounts(pLegacyBankAccounts);
+      return this;
+    }
+
+    /**
+     * Method adds the passed objects to association {@link #legacyBankAccounts}.<br/>
+     *
+     * @param pLegacyBankAccounts Array of objects that should be added to {@link #legacyBankAccounts}. The parameter
+     * may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    @Deprecated
+    public Builder addToLegacyBankAccounts( BankAccount... pLegacyBankAccounts ) {
+      // Call super class implementation.
+      super.addToLegacyBankAccounts(pLegacyBankAccounts);
       return this;
     }
 

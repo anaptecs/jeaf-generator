@@ -110,6 +110,18 @@ public class GenericSingleValuedReponse<T> extends AbstractResponse<T> {
     }
 
     /**
+     * Method adds the passed objects to association {@link #errors}.<br/>
+     *
+     * @param pErrors Array of objects that should be added to {@link #errors}. The parameter may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder<T> addToErrors( Message... pErrors ) {
+      // Call super class implementation.
+      super.addToErrors(pErrors);
+      return this;
+    }
+
+    /**
      * Method sets association {@link #warnings}.<br/>
      *
      * @param pWarnings Collection to which {@link #warnings} should be set.
@@ -119,6 +131,18 @@ public class GenericSingleValuedReponse<T> extends AbstractResponse<T> {
     public Builder<T> setWarnings( List<Message> pWarnings ) {
       // Call super class implementation.
       super.setWarnings(pWarnings);
+      return this;
+    }
+
+    /**
+     * Method adds the passed objects to association {@link #warnings}.<br/>
+     *
+     * @param pWarnings Array of objects that should be added to {@link #warnings}. The parameter may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder<T> addToWarnings( Message... pWarnings ) {
+      // Call super class implementation.
+      super.addToWarnings(pWarnings);
       return this;
     }
 

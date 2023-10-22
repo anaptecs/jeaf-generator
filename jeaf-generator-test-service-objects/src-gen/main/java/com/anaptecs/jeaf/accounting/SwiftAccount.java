@@ -170,6 +170,19 @@ public class SwiftAccount extends Account {
     }
 
     /**
+     * Method adds the passed objects to association {@link #authorizedPersons}.<br/>
+     *
+     * @param pAuthorizedPersons Array of objects that should be added to {@link #authorizedPersons}. The parameter may
+     * be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToAuthorizedPersons( Person... pAuthorizedPersons ) {
+      // Call super class implementation.
+      super.addToAuthorizedPersons(pAuthorizedPersons);
+      return this;
+    }
+
+    /**
      * Method sets association {@link #bookings}.<br/>
      *
      * @param pBookings Collection to which {@link #bookings} should be set.
@@ -179,6 +192,18 @@ public class SwiftAccount extends Account {
     public Builder setBookings( Set<Booking> pBookings ) {
       // Call super class implementation.
       super.setBookings(pBookings);
+      return this;
+    }
+
+    /**
+     * Method adds the passed objects to association {@link #bookings}.<br/>
+     *
+     * @param pBookings Array of objects that should be added to {@link #bookings}. The parameter may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToBookings( Booking... pBookings ) {
+      // Call super class implementation.
+      super.addToBookings(pBookings);
       return this;
     }
 

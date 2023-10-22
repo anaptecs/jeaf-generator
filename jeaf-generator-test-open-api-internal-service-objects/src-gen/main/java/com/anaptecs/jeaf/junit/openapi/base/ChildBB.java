@@ -194,6 +194,18 @@ public class ChildBB extends ChildB {
     }
 
     /**
+     * Method adds the passed objects to association {@link #ibans}.<br/>
+     *
+     * @param pIbans Array of objects that should be added to {@link #ibans}. The parameter may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToIbans( IBAN... pIbans ) {
+      // Call super class implementation.
+      super.addToIbans(pIbans);
+      return this;
+    }
+
+    /**
      * Method sets association {@link #theBankAccount}.<br/>
      *
      * @param pTheBankAccount Value to which {@link #theBankAccount} should be set.
@@ -222,6 +234,20 @@ public class ChildBB extends ChildB {
     }
 
     /**
+     * Method adds the passed objects to association {@link #legacyBankAccounts}.<br/>
+     *
+     * @param pLegacyBankAccounts Array of objects that should be added to {@link #legacyBankAccounts}. The parameter
+     * may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    @Deprecated
+    public Builder addToLegacyBankAccounts( BankAccount... pLegacyBankAccounts ) {
+      // Call super class implementation.
+      super.addToLegacyBankAccounts(pLegacyBankAccounts);
+      return this;
+    }
+
+    /**
      * Method sets attribute {@link #childBAttribute}.<br/>
      *
      * @param pChildBAttribute Value to which {@link #childBAttribute} should be set.
@@ -244,6 +270,18 @@ public class ChildBB extends ChildB {
     public Builder setComposition( Set<ParentClass> pComposition ) {
       // Call super class implementation.
       super.setComposition(pComposition);
+      return this;
+    }
+
+    /**
+     * Method adds the passed objects to association {@link #composition}.<br/>
+     *
+     * @param pComposition Array of objects that should be added to {@link #composition}. The parameter may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToComposition( ParentClass... pComposition ) {
+      // Call super class implementation.
+      super.addToComposition(pComposition);
       return this;
     }
 
