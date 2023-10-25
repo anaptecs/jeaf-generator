@@ -27,6 +27,7 @@ import javax.validation.constraints.NotEmpty;
 
 import org.springframework.stereotype.Service;
 
+import com.anaptecs.spring.base.AnotherDataType;
 import com.anaptecs.spring.base.BeanParameter;
 import com.anaptecs.spring.base.ChannelCode;
 import com.anaptecs.spring.base.Context;
@@ -61,7 +62,8 @@ public class ProductServiceImpl implements ProductService {
   }
 
   @Override
-  public Product getProduct( @NotEmpty String pProductID ) {
+  public Product getProduct( @NotEmpty
+  String pProductID ) {
     assertEquals("12345", pProductID);
     return null;
   }
@@ -84,7 +86,8 @@ public class ProductServiceImpl implements ProductService {
   }
 
   @Override
-  public ChannelCode createChannelCode( @NotBlank String pChannelCode ) {
+  public ChannelCode createChannelCode( @NotBlank
+  String pChannelCode ) {
     assertEquals("MyMobile", pChannelCode);
     return ChannelCode.builder().setCode(pChannelCode).build();
   }
@@ -198,4 +201,8 @@ public class ProductServiceImpl implements ProductService {
     return lCustomHeaders.get("custom-header");
   }
 
+  @Override
+  public String processDataTypes( List<AnotherDataType> pCodes ) {
+    return null;
+  }
 }

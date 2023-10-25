@@ -7,6 +7,7 @@ package com.anaptecs.spring.base.serializers;
 
 import com.anaptecs.jeaf.json.annotations.ModuleFactory;
 import com.anaptecs.jeaf.json.api.ObjectMapperModuleFactory;
+import com.anaptecs.spring.base.AnotherDataType;
 import com.anaptecs.spring.base.BookingCode;
 import com.anaptecs.spring.base.BookingID;
 import com.anaptecs.spring.base.BooleanCode;
@@ -52,6 +53,8 @@ public class BaseModuleFactory implements ObjectMapperModuleFactory {
     // Create module for serializers / deserializers that are located in this package
     SimpleModule lModule = new SimpleModule(BaseModuleFactory.class.getName());
     // Add serializers and deserializers for datatypes
+    lModule.addSerializer(AnotherDataType.class, new AnotherDataTypeSerializer());
+    lModule.addDeserializer(AnotherDataType.class, new AnotherDataTypeDeserializer());
     lModule.addSerializer(BookingCode.class, new BookingCodeSerializer());
     lModule.addDeserializer(BookingCode.class, new BookingCodeDeserializer());
     lModule.addSerializer(BookingID.class, new BookingIDSerializer());
@@ -122,6 +125,8 @@ public class BaseModuleFactory implements ObjectMapperModuleFactory {
     // Create module for serializers / deserializers that are located in this package
     SimpleModule lModule = new SimpleModule("DataTypeSerializerModule." + BaseModuleFactory.class.getName());
     // Add serializers and deserializers for data types
+    lModule.addSerializer(AnotherDataType.class, new AnotherDataTypeSerializer());
+    lModule.addDeserializer(AnotherDataType.class, new AnotherDataTypeDeserializer());
     lModule.addSerializer(BookingCode.class, new BookingCodeSerializer());
     lModule.addDeserializer(BookingCode.class, new BookingCodeDeserializer());
     lModule.addSerializer(BookingID.class, new BookingIDSerializer());

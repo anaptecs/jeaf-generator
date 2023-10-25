@@ -13,7 +13,9 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.OffsetDateTime;
 import java.time.OffsetTime;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -41,6 +43,7 @@ import com.anaptecs.jeaf.workload.api.Workload;
 import com.anaptecs.jeaf.workload.api.WorkloadManager;
 import com.anaptecs.jeaf.workload.api.rest.RESTRequestType;
 import com.anaptecs.jeaf.workload.api.rest.RESTWorkloadErrorHandler;
+import com.anaptecs.spring.base.AnotherDataType;
 import com.anaptecs.spring.base.BeanParameter;
 import com.anaptecs.spring.base.ChannelCode;
 import com.anaptecs.spring.base.Context;
@@ -439,6 +442,29 @@ public class ProductServiceResource {
     // Delegate request to service.
     ProductService lService = this.getProductService();
     String lResult = lService.testTechnicalHeaderBean(pContext);
+    return Response.status(Response.Status.OK).entity(lResult).build();
+  }
+
+  /**
+   * {@link ProductService#processDataTypes()}
+   */
+  @Path("product-codes")
+  @GET
+  public Response processDataTypes( @QueryParam("pCodes") String[] pCodesAsBasicType ) {
+    // Convert basic type parameters into "real" objects.
+    List<AnotherDataType> pCodes;
+    if (pCodesAsBasicType != null) {
+      pCodes = new ArrayList<AnotherDataType>();
+      for (String lNext : pCodesAsBasicType) {
+        pCodes.add(AnotherDataType.builder().setData(lNext).build());
+      }
+    }
+    else {
+      pCodes = Collections.emptyList();
+    }
+    // Delegate request to service.
+    ProductService lService = this.getProductService();
+    String lResult = lService.processDataTypes(pCodes);
     return Response.status(Response.Status.OK).entity(lResult).build();
   }
 

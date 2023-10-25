@@ -481,14 +481,13 @@ public class GeneratorMojo extends AbstractMojo {
   private Boolean generateTypesReport;
 
   /**
-   * Name of the breaking changes report.
+   * Title of the types report.
    */
   @Parameter(required = false, defaultValue = "Model Types")
   private String typesReportName;
 
   /**
-   * Name of the file that contains the breaking changes report. The file extension will be chosen based on the report
-   * format.
+   * Name of the file that contains the types report. The file extension will be chosen based on the report format.
    */
   @Parameter(required = false, defaultValue = "Model_Types")
   private String typesReportFileName;
@@ -538,7 +537,7 @@ public class GeneratorMojo extends AbstractMojo {
   private Boolean generateBreakingChangesReport;
 
   /**
-   * Name of the breaking changes report.
+   * Title of the breaking changes report.
    */
   @Parameter(required = false, defaultValue = "Planned Breaking Changes")
   private String breakingChangesReportName;
@@ -558,7 +557,7 @@ public class GeneratorMojo extends AbstractMojo {
   private Boolean generateRESTDeprecationReport;
 
   /**
-   * Name of the REST deprecation report.
+   * Title of the REST deprecation report.
    */
   @Parameter(required = false, defaultValue = "REST Deprecation Report")
   private String restDeprecationReportName;
@@ -571,14 +570,14 @@ public class GeneratorMojo extends AbstractMojo {
   private String restDeprecationReportFileName;
 
   /**
-   * Switch enables the generation of a REST / OpenAPI deprecation report about the model parts which are configured to
-   * be processed.
+   * Switch enables the generation of a Java deprecation report about the model parts which are configured to be
+   * processed.
    */
   @Parameter(required = false, defaultValue = "false")
   private Boolean generateJavaDeprecationReport;
 
   /**
-   * Name of the Java deprecation report.
+   * Title of the Java deprecation report.
    */
   @Parameter(required = false, defaultValue = "Java Deprecation Report")
   private String javaDeprecationReportName;
@@ -605,7 +604,7 @@ public class GeneratorMojo extends AbstractMojo {
   private Boolean generateSecurityRolesReport;
 
   /**
-   * Name of the security roles report.
+   * Title of the security roles report.
    */
   @Parameter(required = false, defaultValue = "Security Roles Report")
   private String securityRolesReportName;

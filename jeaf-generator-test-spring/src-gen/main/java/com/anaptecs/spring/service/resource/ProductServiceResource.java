@@ -15,7 +15,9 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.OffsetDateTime;
 import java.time.OffsetTime;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -33,6 +35,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.anaptecs.jeaf.rest.resource.api.CustomHeaderFilter;
 import com.anaptecs.jeaf.validation.api.ValidationExecutor;
+import com.anaptecs.spring.base.AnotherDataType;
 import com.anaptecs.spring.base.BeanParameter;
 import com.anaptecs.spring.base.ChannelCode;
 import com.anaptecs.spring.base.ChannelType;
@@ -891,6 +894,32 @@ public class ProductServiceResource {
     validationExecutor.validateRequest(ProductService.class, pContext);
     // Delegate request to service.
     String lResponse = productService.testTechnicalHeaderBean(pContext);
+    // Validate response and return it.
+    validationExecutor.validateResponse(ProductService.class, lResponse);
+    return lResponse;
+  }
+
+  /**
+   * {@link ProductService#processDataTypes()}
+   */
+  @ResponseStatus(HttpStatus.OK)
+  @RequestMapping(path = "product-codes", method = { RequestMethod.GET })
+  public String processDataTypes( @RequestParam(name = "pCodes", required = false) String[] pCodesAsBasicType ) {
+    // Convert basic type parameters into "real" objects.
+    List<AnotherDataType> pCodes;
+    if (pCodesAsBasicType != null) {
+      pCodes = new ArrayList<AnotherDataType>();
+      for (String lNext : pCodesAsBasicType) {
+        pCodes.add(AnotherDataType.builder().setData(lNext).build());
+      }
+    }
+    else {
+      pCodes = Collections.emptyList();
+    }
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(ProductService.class, pCodes);
+    // Delegate request to service.
+    String lResponse = productService.processDataTypes(pCodes);
     // Validate response and return it.
     validationExecutor.validateResponse(ProductService.class, lResponse);
     return lResponse;

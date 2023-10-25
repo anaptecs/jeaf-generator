@@ -19,6 +19,7 @@ import java.util.List;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 
+import com.anaptecs.spring.base.AnotherDataType;
 import com.anaptecs.spring.base.BeanParameter;
 import com.anaptecs.spring.base.ChannelCode;
 import com.anaptecs.spring.base.Context;
@@ -222,4 +223,10 @@ public interface ProductService {
    * @return {@link String}
    */
   String testTechnicalHeaderBean( TechnicalHeaderContext pContext );
+
+  /**
+   * @param pCodes
+   * @return {@link String}
+   */
+  String processDataTypes( List<AnotherDataType> pCodes );
 }

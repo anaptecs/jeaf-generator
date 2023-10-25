@@ -5,6 +5,7 @@
  */
 package com.anaptecs.spring.base.serializers;
 
+import com.anaptecs.spring.base.AnotherDataType;
 import com.anaptecs.spring.base.BookingCode;
 import com.anaptecs.spring.base.BookingID;
 import com.anaptecs.spring.base.BooleanCode;
@@ -48,6 +49,8 @@ public class BaseModuleFactory {
     // Create module for serializers / deserializers that are located in this package
     SimpleModule lModule = new SimpleModule("DataTypeSerializerModule." + BaseModuleFactory.class.getName());
     // Add serializers and deserializers for data types
+    lModule.addSerializer(AnotherDataType.class, new AnotherDataTypeSerializer());
+    lModule.addDeserializer(AnotherDataType.class, new AnotherDataTypeDeserializer());
     lModule.addSerializer(BookingCode.class, new BookingCodeSerializer());
     lModule.addDeserializer(BookingCode.class, new BookingCodeDeserializer());
     lModule.addSerializer(BookingID.class, new BookingIDSerializer());

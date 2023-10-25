@@ -15,6 +15,7 @@ import java.time.LocalTime;
 import java.time.OffsetDateTime;
 import java.time.OffsetTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
@@ -27,6 +28,7 @@ import com.anaptecs.jeaf.rest.executor.api.HttpMethod;
 import com.anaptecs.jeaf.rest.executor.api.RESTRequest;
 import com.anaptecs.jeaf.rest.executor.api.RESTRequestExecutor;
 import com.anaptecs.jeaf.validation.api.ValidationExecutor;
+import com.anaptecs.spring.base.AnotherDataType;
 import com.anaptecs.spring.base.BeanParameter;
 import com.anaptecs.spring.base.ChannelCode;
 import com.anaptecs.spring.base.Context;
@@ -1026,6 +1028,38 @@ public class ProductServiceRESTProxy implements ProductService {
       if (pContext.getReseller() != null) {
         lRequestBuilder.setHeader("Reseller", pContext.getReseller());
       }
+    }
+    // Execute request and return result.
+    RESTRequest lRequest = lRequestBuilder.build();
+    String lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+    // Validate response and return it.
+    validationExecutor.validateResponse(ProductService.class, lResult);
+    return lResult;
+  }
+
+  /**
+   * @param pCodes
+   * @return {@link String}
+   */
+  @Override
+  public String processDataTypes( List<AnotherDataType> pCodes ) {
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(ProductService.class, pCodes);
+    // Create builder for GET request
+    RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
+    // Build path of request
+    StringBuilder lPathBuilder = new StringBuilder();
+    lPathBuilder.append("/products");
+    lPathBuilder.append('/');
+    lPathBuilder.append("product-codes");
+    lRequestBuilder.setPath(lPathBuilder.toString());
+    // Add query parameter(s) to request
+    if (pCodes != null) {
+      List<Object> lValues = new ArrayList<Object>();
+      for (AnotherDataType lNext : pCodes) {
+        lValues.add(lNext.getData());
+      }
+      lRequestBuilder.setQueryParameter("pCodes", lValues);
     }
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();

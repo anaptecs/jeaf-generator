@@ -284,7 +284,7 @@ public class «name»Resource {
 				    if («basicParam.name»AsBasicType != null) {
 				      «basicParam.name» = new «basicParam.getCollectionImplType()»<«basicParam.type.fqn()»>();
 				      for («basicParam.type.attribute().first().fqn()» lNext : «basicParam.name»AsBasicType) {
-				        «basicParam.name».add(«basicParam.type.fqn()».builder().setCode(lNext).build());
+				        «basicParam.name».add(«basicParam.type.fqn()».builder().«basicParam.type.attribute().first().asSetter()»(lNext).build());
 				      }
 				    }
 				    else {
@@ -579,7 +579,7 @@ public class «name»Resource {
 				    if («basicParam.name»AsBasicType != null) {
 				      «basicParam.name» = new «basicParam.getCollectionImplType()»<«basicParam.type.fqn()»>();
 				      for («basicParam.type.attribute().first().fqn()» lNext : «basicParam.name»AsBasicType) {
-				        «basicParam.name».add(«basicParam.type.fqn()».builder().setCode(lNext).build());
+				        «basicParam.name».add(«basicParam.type.fqn()».builder().«basicParam.type.attribute().first().asSetter()»(lNext).build());
 				      }
 				    }
 				    else {

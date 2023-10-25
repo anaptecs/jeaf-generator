@@ -13,6 +13,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.OffsetDateTime;
 import java.time.OffsetTime;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
@@ -28,6 +29,7 @@ import com.anaptecs.jeaf.rest.executor.api.jeaf.RESTRequestExecutorServiceProvid
 import com.anaptecs.jeaf.xfun.api.XFun;
 import com.anaptecs.jeaf.xfun.api.health.CheckLevel;
 import com.anaptecs.jeaf.xfun.api.health.HealthCheckResult;
+import com.anaptecs.spring.base.AnotherDataType;
 import com.anaptecs.spring.base.BeanParameter;
 import com.anaptecs.spring.base.ChannelCode;
 import com.anaptecs.spring.base.ChannelType;
@@ -948,6 +950,33 @@ public final class ProductServiceRESTProxyServiceProviderImpl
       if (pContext.getReseller() != null) {
         lRequestBuilder.setHeader("Reseller", pContext.getReseller());
       }
+    }
+    // Execute request and return result.
+    RESTRequest lRequest = lRequestBuilder.build();
+    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+  }
+
+  /**
+   * @param pCodes
+   * @return {@link String}
+   */
+  @Override
+  public String processDataTypes( List<AnotherDataType> pCodes ) {
+    // Create builder for GET request
+    RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
+    // Build path of request
+    StringBuilder lPathBuilder = new StringBuilder();
+    lPathBuilder.append("/products");
+    lPathBuilder.append('/');
+    lPathBuilder.append("product-codes");
+    lRequestBuilder.setPath(lPathBuilder.toString());
+    // Add query parameter(s) to request
+    if (pCodes != null) {
+      List<Object> lValues = new ArrayList<Object>();
+      for (AnotherDataType lNext : pCodes) {
+        lValues.add(lNext.getData());
+      }
+      lRequestBuilder.setQueryParameter("pCodes", lValues);
     }
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
