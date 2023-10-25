@@ -5,4 +5,4 @@ pipelines:
     master:
       - step:
           script:
-            - git push --all git@github.com:anaptecs/jeaf-generator.git
+            - git push --all --force git@github.com:anaptecs/jeaf-generator.git
