@@ -57,6 +57,20 @@ public class DoubleCode {
   }
 
   /**
+   * Convenience method to create new instance of class DoubleCode.
+   *
+   *
+   * @param pCode Value to which {@link #code} should be set.
+   *
+   * @return {@link DoubleCode}
+   */
+  public static DoubleCode of( Double pCode ) {
+    DoubleCode.Builder lBuilder = DoubleCode.builder();
+    lBuilder.setCode(pCode);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>DoubleCode</code>.
    */
   public static class Builder {

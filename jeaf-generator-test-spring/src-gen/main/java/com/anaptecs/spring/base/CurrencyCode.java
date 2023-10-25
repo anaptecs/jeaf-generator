@@ -66,6 +66,20 @@ public class CurrencyCode {
   }
 
   /**
+   * Convenience method to create new instance of class CurrencyCode.
+   *
+   *
+   * @param pCode Value to which {@link #code} should be set.
+   *
+   * @return {@link CurrencyCode}
+   */
+  public static CurrencyCode of( String pCode ) {
+    CurrencyCode.Builder lBuilder = CurrencyCode.builder();
+    lBuilder.setCode(pCode);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>CurrencyCode</code>.
    */
   public static class Builder {

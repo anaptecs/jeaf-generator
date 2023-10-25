@@ -57,6 +57,20 @@ public class CharacterCodeType {
   }
 
   /**
+   * Convenience method to create new instance of class CharacterCodeType.
+   *
+   *
+   * @param pCode Value to which {@link #code} should be set.
+   *
+   * @return {@link CharacterCodeType}
+   */
+  public static CharacterCodeType of( char pCode ) {
+    CharacterCodeType.Builder lBuilder = CharacterCodeType.builder();
+    lBuilder.setCode(pCode);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>CharacterCodeType</code>.
    */
   public static class Builder {

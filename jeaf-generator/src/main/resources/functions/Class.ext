@@ -24,7 +24,7 @@ cached boolean hasTemplateParameter(uml::Class class):
     class.ownedTemplateSignature.ownedParameter.isEmpty == false;
     
 cached boolean generateOfOperationForClass(uml::Class class):
-    generateOfOperation() && (class.generateOfOperationForServiceObject() || class.generateOfOperationForPOJO());
+    generateOfOperation() && (class.generateOfOperationForServiceObject() || class.generateOfOperationForPOJO() || generateOfOperationForOpenAPIDataType());
     
 cached List[uml::Property] getAllAttributesForOfOperation(uml::Class class):
     if class.useOnlyRequiredPropertiesForOfMethod()

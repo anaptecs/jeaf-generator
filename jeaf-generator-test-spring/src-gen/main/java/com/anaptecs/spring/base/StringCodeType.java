@@ -57,6 +57,20 @@ public class StringCodeType {
   }
 
   /**
+   * Convenience method to create new instance of class StringCodeType.
+   *
+   *
+   * @param pCode Value to which {@link #code} should be set.
+   *
+   * @return {@link StringCodeType}
+   */
+  public static StringCodeType of( String pCode ) {
+    StringCodeType.Builder lBuilder = StringCodeType.builder();
+    lBuilder.setCode(pCode);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>StringCodeType</code>.
    */
   public static class Builder {

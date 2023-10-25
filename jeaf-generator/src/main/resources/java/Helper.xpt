@@ -300,7 +300,7 @@
 «ENDDEFINE»
 
 «DEFINE GenerateOfForClass FOR uml::Class»
-    «IF this.generateOfOperationForClass() && this.isOpenAPIDataType() == false && this.isCompositeDataType() == false && isAbstract == false && getTemplateParams().length == 0»
+    «IF this.generateOfOperationForClass() && this.isCompositeDataType() == false && isAbstract == false && getTemplateParams().length == 0»
 	  /**
 	   * Convenience method to create new instance of class «name».
 	   * 

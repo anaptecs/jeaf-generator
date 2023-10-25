@@ -201,6 +201,12 @@ public class GeneratorCommons {
   public static final String GENERATE_OF_OPERATION = "switch.gen.of.operation";
 
   /**
+   * Constant defines the name of the system property which enables code generation for of(...) operation for OpenAPI
+   * Data Types
+   */
+  public static final String GENERATE_OF_OPERATION_FOR_OPENAPI_DATATYPE = "switch.gen.of.operation.openapi.datatype";
+
+  /**
    * Constant defines the name of the system property which enables the generation of valueOf method for OpenAPI Data
    * Types in Java.
    */
@@ -1280,6 +1286,12 @@ public class GeneratorCommons {
   public static boolean generateOfOperation( ) {
     Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
     return lConfiguration.getConfigurationValue(GENERATE_OF_OPERATION, Boolean.FALSE, Boolean.class);
+  }
+
+  public static boolean generateOfOperationForOpenAPIDataType( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(GENERATE_OF_OPERATION_FOR_OPENAPI_DATATYPE, Boolean.FALSE,
+        Boolean.class);
   }
 
   public static boolean generateValueOfForOpenAPIDataTypes( ) {

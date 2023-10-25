@@ -1,4 +1,5 @@
 extension java::GeneratorCommons;
+extension functions::OpenAPIDataType;
 
 cached boolean isServiceObject(uml::Element element):
     element.isStereotypeApplied("ServiceObject");
@@ -7,7 +8,7 @@ cached JMM::ServiceObject asServiceObject(uml::Element element):
     (JMM::ServiceObject) element;
 
 cached boolean generateOfOperationForServiceObject(uml::Class class):
-    if class.isServiceObject()
+    if class.isServiceObject() && class.isOpenAPIDataType() == false
     then class.asServiceObject().ofMethod.name != "NONE"
     else false;
     

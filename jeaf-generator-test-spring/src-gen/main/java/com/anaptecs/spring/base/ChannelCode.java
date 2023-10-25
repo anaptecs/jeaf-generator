@@ -66,6 +66,20 @@ public class ChannelCode {
   }
 
   /**
+   * Convenience method to create new instance of class ChannelCode.
+   *
+   *
+   * @param pCode Value to which {@link #code} should be set.
+   *
+   * @return {@link ChannelCode}
+   */
+  public static ChannelCode of( String pCode ) {
+    ChannelCode.Builder lBuilder = ChannelCode.builder();
+    lBuilder.setCode(pCode);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>ChannelCode</code>.
    */
   public static class Builder {

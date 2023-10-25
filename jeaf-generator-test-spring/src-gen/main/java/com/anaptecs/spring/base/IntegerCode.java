@@ -57,6 +57,20 @@ public class IntegerCode {
   }
 
   /**
+   * Convenience method to create new instance of class IntegerCode.
+   *
+   *
+   * @param pCode Value to which {@link #code} should be set.
+   *
+   * @return {@link IntegerCode}
+   */
+  public static IntegerCode of( Integer pCode ) {
+    IntegerCode.Builder lBuilder = IntegerCode.builder();
+    lBuilder.setCode(pCode);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>IntegerCode</code>.
    */
   public static class Builder {

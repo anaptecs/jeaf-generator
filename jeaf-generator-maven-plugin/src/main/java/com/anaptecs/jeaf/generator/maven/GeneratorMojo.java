@@ -876,12 +876,20 @@ public class GeneratorMojo extends AbstractMojo {
 
   /**
    * Switch defines if an <code>of(...)</code> operation should be generated for POJOs or ServiceObjects. This switch
-   * does not have any impact on so called Data Type. POJOs / ServiceObjects that are also modeled to be an Data Type
-   * will not have an <code>of(...)</code> operation. Instead please use configured parameter
-   * {@link #generateValueOfForOpenAPIDataTypes}.
+   * does not have any impact on so called OpenAPI Data Type. POJOs / ServiceObjects that are also modeled to be an Data
+   * Type will not have an <code>of(...)</code> operation. Instead please use configured parameter
+   * {@link #generateOfOperationForOpenAPIDataType}.
    */
   @Parameter(required = false, defaultValue = "false")
   private Boolean generateOfOperation;
+
+  /**
+   * Switch defines if an <code>of(...)</code> operation should be generated for OpenAPI Data Types. This switch does
+   * not have any impact on so standard POJOs / ServiceObjects. For them no <code>of(...)</code> operation will be
+   * generated. Instead please use configured parameter {@link #generateOfOperation}.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean generateOfOperationForOpenAPIDataType;
 
   /**
    * Switch defines whether for the Java representation of OpenAPI Data Types as valueOf method should be generated or
@@ -1210,6 +1218,7 @@ public class GeneratorMojo extends AbstractMojo {
       }
       lLog.info("Generate Constants for Attribute Names:           " + generateConstantsForAttributeNames);
       lLog.info("Generate of(...):                                 " + generateOfOperation);
+      lLog.info("Generate of(...) for OpenAPI Data Types:          " + generateOfOperationForOpenAPIDataType);
       lLog.info("Generate valueOf(...) for OpenAPI Data Types:     " + generateValueOfForOpenAPIDataTypes);
     }
     if (generateExceptionClasses) {
@@ -1604,6 +1613,7 @@ public class GeneratorMojo extends AbstractMojo {
       }
 
       System.setProperty("switch.gen.of.operation", generateOfOperation.toString());
+      System.setProperty("switch.gen.of.operation.openapi.datatype", generateOfOperationForOpenAPIDataType.toString());
       System.setProperty("switch.gen.value.of.data.types", generateValueOfForOpenAPIDataTypes.toString());
 
       System.setProperty("switch.gen.java.generic.soft.link.type", javaGenericSoftLinkType);

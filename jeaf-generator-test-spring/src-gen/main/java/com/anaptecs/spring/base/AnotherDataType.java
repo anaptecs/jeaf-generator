@@ -57,6 +57,20 @@ public class AnotherDataType {
   }
 
   /**
+   * Convenience method to create new instance of class AnotherDataType.
+   *
+   *
+   * @param pData Value to which {@link #data} should be set.
+   *
+   * @return {@link AnotherDataType}
+   */
+  public static AnotherDataType of( String pData ) {
+    AnotherDataType.Builder lBuilder = AnotherDataType.builder();
+    lBuilder.setData(pData);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>AnotherDataType</code>.
    */
   public static class Builder {

@@ -57,6 +57,20 @@ public class DoubleCodeType {
   }
 
   /**
+   * Convenience method to create new instance of class DoubleCodeType.
+   *
+   *
+   * @param pCode Value to which {@link #code} should be set.
+   *
+   * @return {@link DoubleCodeType}
+   */
+  public static DoubleCodeType of( double pCode ) {
+    DoubleCodeType.Builder lBuilder = DoubleCodeType.builder();
+    lBuilder.setCode(pCode);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>DoubleCodeType</code>.
    */
   public static class Builder {

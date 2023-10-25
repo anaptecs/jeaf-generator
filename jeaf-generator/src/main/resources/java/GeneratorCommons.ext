@@ -290,6 +290,9 @@ cached boolean generatePublicSettersForAssociations() :
 cached boolean generateOfOperation() :
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateOfOperation();
     
+cached boolean generateOfOperationForOpenAPIDataType() :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateOfOperationForOpenAPIDataType();
+    
 cached boolean generateValueOfForOpenAPIDataTypes() :
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateValueOfForOpenAPIDataTypes();
     

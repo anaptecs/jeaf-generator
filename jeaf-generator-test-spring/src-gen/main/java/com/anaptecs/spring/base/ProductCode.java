@@ -60,6 +60,20 @@ public class ProductCode {
   }
 
   /**
+   * Convenience method to create new instance of class ProductCode.
+   *
+   *
+   * @param pCode Value to which {@link #code} should be set.
+   *
+   * @return {@link ProductCode}
+   */
+  public static ProductCode of( int pCode ) {
+    ProductCode.Builder lBuilder = ProductCode.builder();
+    lBuilder.setCode(pCode);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>ProductCode</code>.
    */
   public static class Builder {

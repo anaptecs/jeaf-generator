@@ -57,6 +57,20 @@ public class BookingCode {
   }
 
   /**
+   * Convenience method to create new instance of class BookingCode.
+   *
+   *
+   * @param pCode Value to which {@link #code} should be set.
+   *
+   * @return {@link BookingCode}
+   */
+  public static BookingCode of( String pCode ) {
+    BookingCode.Builder lBuilder = BookingCode.builder();
+    lBuilder.setCode(pCode);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>BookingCode</code>.
    */
   public static class Builder {

@@ -57,6 +57,20 @@ public class ShortCode {
   }
 
   /**
+   * Convenience method to create new instance of class ShortCode.
+   *
+   *
+   * @param pCode Value to which {@link #code} should be set.
+   *
+   * @return {@link ShortCode}
+   */
+  public static ShortCode of( Short pCode ) {
+    ShortCode.Builder lBuilder = ShortCode.builder();
+    lBuilder.setCode(pCode);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>ShortCode</code>.
    */
   public static class Builder {

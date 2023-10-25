@@ -56,6 +56,20 @@ public class LongCode {
   }
 
   /**
+   * Convenience method to create new instance of class LongCode.
+   *
+   *
+   * @param pCode Value to which {@link #code} should be set.
+   *
+   * @return {@link LongCode}
+   */
+  public static LongCode of( Long pCode ) {
+    LongCode.Builder lBuilder = LongCode.builder();
+    lBuilder.setCode(pCode);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>LongCode</code>.
    */
   public static class Builder {

@@ -57,6 +57,20 @@ public class BooleanCodeType {
   }
 
   /**
+   * Convenience method to create new instance of class BooleanCodeType.
+   *
+   *
+   * @param pCode Value to which {@link #code} should be set.
+   *
+   * @return {@link BooleanCodeType}
+   */
+  public static BooleanCodeType of( boolean pCode ) {
+    BooleanCodeType.Builder lBuilder = BooleanCodeType.builder();
+    lBuilder.setCode(pCode);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>BooleanCodeType</code>.
    */
   public static class Builder {

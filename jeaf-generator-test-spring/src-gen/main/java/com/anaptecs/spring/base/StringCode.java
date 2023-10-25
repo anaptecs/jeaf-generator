@@ -57,6 +57,20 @@ public class StringCode {
   }
 
   /**
+   * Convenience method to create new instance of class StringCode.
+   *
+   *
+   * @param pCode Value to which {@link #code} should be set.
+   *
+   * @return {@link StringCode}
+   */
+  public static StringCode of( String pCode ) {
+    StringCode.Builder lBuilder = StringCode.builder();
+    lBuilder.setCode(pCode);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>StringCode</code>.
    */
   public static class Builder {

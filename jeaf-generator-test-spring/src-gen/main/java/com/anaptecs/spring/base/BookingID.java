@@ -94,6 +94,33 @@ public class BookingID {
   }
 
   /**
+   * Convenience method to create new instance of class BookingID.
+   *
+   *
+   * @param pPublicBookingID Value to which {@link #publicBookingID} should be set.
+   *
+   * @param pReferenceID Value to which {@link #referenceID} should be set.
+   *
+   * @param pExternalRefID Value to which {@link #externalRefID} should be set.
+   *
+   * @param pInventory Value to which {@link #inventory} should be set.
+   *
+   * @param pBookingCode Value to which {@link #bookingCode} should be set.
+   *
+   * @return {@link BookingID}
+   */
+  public static BookingID of( String pPublicBookingID, String pReferenceID, String pExternalRefID,
+      InventoryType pInventory, BookingCode pBookingCode ) {
+    BookingID.Builder lBuilder = BookingID.builder();
+    lBuilder.setPublicBookingID(pPublicBookingID);
+    lBuilder.setReferenceID(pReferenceID);
+    lBuilder.setExternalRefID(pExternalRefID);
+    lBuilder.setInventory(pInventory);
+    lBuilder.setBookingCode(pBookingCode);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>BookingID</code>.
    */
   public static class Builder {

@@ -220,6 +220,29 @@ public abstract class SoftLinkBase {
     return refrenceID;
   }
 
+  /**
+   * Convenience method to create new instance of class SoftLink.
+   *
+   *
+   * @param pObjectID Value to which {@link #objectID} should be set.
+   *
+   * @param pDataUnit Value to which {@link #dataUnit} should be set.
+   *
+   * @param pEntity Value to which {@link #entity} should be set.
+   *
+   * @param pRefrenceID Value to which {@link #refrenceID} should be set.
+   *
+   * @return {@link com.anaptecs.spring.base.SoftLink}
+   */
+  public static SoftLink of( long pObjectID, DataUnit pDataUnit, Entity pEntity, String pRefrenceID ) {
+    SoftLink.Builder lBuilder = SoftLink.builder();
+    lBuilder.setObjectID(pObjectID);
+    lBuilder.setDataUnit(pDataUnit);
+    lBuilder.setEntity(pEntity);
+    lBuilder.setRefrenceID(pRefrenceID);
+    return lBuilder.build();
+  }
+
   @Override
   public int hashCode( ) {
     final int lPrime = 31;

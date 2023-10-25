@@ -1,4 +1,5 @@
 extension java::GeneratorCommons;
+extension functions::OpenAPIDataType;
 
 cached boolean isPOJO(uml::Element element):
     element.isStereotypeApplied("POJO");
@@ -7,6 +8,6 @@ cached JMM::POJO asPOJO(uml::Element element):
     (JMM::POJO) element;
     
 cached boolean generateOfOperationForPOJO(uml::Class class):
-    if class.isPOJO()
+    if class.isPOJO() && class.isOpenAPIDataType() == false
     then class.asPOJO().ofMethod.name != "NONE"
     else false;

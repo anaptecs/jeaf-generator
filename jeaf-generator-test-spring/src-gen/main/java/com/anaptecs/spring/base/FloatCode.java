@@ -57,6 +57,20 @@ public class FloatCode {
   }
 
   /**
+   * Convenience method to create new instance of class FloatCode.
+   *
+   *
+   * @param pCode Value to which {@link #code} should be set.
+   *
+   * @return {@link FloatCode}
+   */
+  public static FloatCode of( Float pCode ) {
+    FloatCode.Builder lBuilder = FloatCode.builder();
+    lBuilder.setCode(pCode);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>FloatCode</code>.
    */
   public static class Builder {

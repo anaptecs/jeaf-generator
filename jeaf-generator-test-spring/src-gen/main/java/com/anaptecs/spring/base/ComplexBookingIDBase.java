@@ -406,6 +406,33 @@ public abstract class ComplexBookingIDBase {
     }
   }
 
+  /**
+   * Convenience method to create new instance of class ComplexBookingID.
+   *
+   *
+   * @param pInternalID Value to which {@link #internalID} should be set.
+   *
+   * @param pReferenceID Value to which {@link #referenceID} should be set.
+   *
+   * @param pBookingIDs Value to which {@link #bookingIDs} should be set.
+   *
+   * @param pComplexBookingType Value to which {@link #complexBookingType} should be set.
+   *
+   * @param pAnotherID Value to which {@link #anotherID} should be set.
+   *
+   * @return {@link com.anaptecs.spring.base.ComplexBookingID}
+   */
+  public static ComplexBookingID of( long pInternalID, String pReferenceID, List<BookingID> pBookingIDs,
+      ComplexBookingType pComplexBookingType, Integer pAnotherID ) {
+    ComplexBookingID.Builder lBuilder = ComplexBookingID.builder();
+    lBuilder.setInternalID(pInternalID);
+    lBuilder.setReferenceID(pReferenceID);
+    lBuilder.setBookingIDs(pBookingIDs);
+    lBuilder.setComplexBookingType(pComplexBookingType);
+    lBuilder.setAnotherID(pAnotherID);
+    return lBuilder.build();
+  }
+
   @Override
   public int hashCode( ) {
     final int lPrime = 31;

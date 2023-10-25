@@ -56,6 +56,20 @@ public class ByteCode {
   }
 
   /**
+   * Convenience method to create new instance of class ByteCode.
+   *
+   *
+   * @param pCode Value to which {@link #code} should be set.
+   *
+   * @return {@link ByteCode}
+   */
+  public static ByteCode of( Byte pCode ) {
+    ByteCode.Builder lBuilder = ByteCode.builder();
+    lBuilder.setCode(pCode);
+    return lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>ByteCode</code>.
    */
   public static class Builder {
