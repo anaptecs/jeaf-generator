@@ -129,6 +129,7 @@
 		«EXPAND java::Helper::GenerateCustomHeadersOperations»
 		«EXPAND java::Helper::GenerateEqualsHashCode(name)»
 		«EXPAND java::Helper::GenerateToStringMethod»
+		«EXPAND java::Builder::ToBuilderMethod»
 	}
 	«ENDFILE»
 	«REM»ServiceObject has own custom implementation«ENDREM»
@@ -245,6 +246,7 @@
         «EXPAND java::Helper::GenerateCustomHeadersOperations»
         «EXPAND java::Helper::GenerateEqualsHashCode(name + "Base")»
         «EXPAND java::Helper::GenerateToStringMethod»
+        «EXPAND java::Builder::ToBuilderMethodForBaseClass»
       }
       «ENDFILE»
 

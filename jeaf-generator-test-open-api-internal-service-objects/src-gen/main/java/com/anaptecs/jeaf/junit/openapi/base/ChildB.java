@@ -85,11 +85,13 @@ public class ChildB extends ParentClass {
   }
 
   /**
-   * Method creates a new builder and initialize it with the data from the passed object.
+   * Method creates a new builder and initializes it with the data from the passed object.
    *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new ChildB objects. The method never returns null.
+   * @deprecated Please use {@link #toBuilder()} instead.
    */
+  @Deprecated
   public static Builder builder( ChildB pObject ) {
     return new Builder(pObject);
   }
@@ -146,8 +148,8 @@ public class ChildB extends ParentClass {
       super(pObject);
       if (pObject != null) {
         // Read attribute values from passed object.
-        childBAttribute = pObject.childBAttribute;
-        composition = pObject.composition;
+        this.setChildBAttribute(pObject.childBAttribute);
+        this.setComposition(pObject.composition);
       }
     }
 
@@ -442,5 +444,14 @@ public class ChildB extends ParentClass {
   @Override
   public String toString( ) {
     return this.toStringBuilder("").toString();
+  }
+
+  /**
+   * Method creates a new builder and initializes it with the data of this object.
+   *
+   * @return {@link Builder} New builder that can be used to create new ChildB objects. The method never returns null.
+   */
+  public Builder toBuilder( ) {
+    return new Builder(this);
   }
 }

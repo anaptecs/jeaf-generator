@@ -36,11 +36,13 @@ public class TopoRef extends PlaceRef {
   }
 
   /**
-   * Method creates a new builder and initialize it with the data from the passed object.
+   * Method creates a new builder and initializes it with the data from the passed object.
    *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new TopoRef objects. The method never returns null.
+   * @deprecated Please use {@link #toBuilder()} instead.
    */
+  @Deprecated
   public static Builder builder( TopoRef pObject ) {
     return new Builder(pObject);
   }
@@ -98,5 +100,14 @@ public class TopoRef extends PlaceRef {
     public TopoRef build( ) {
       return new TopoRef(this);
     }
+  }
+
+  /**
+   * Method creates a new builder and initializes it with the data of this object.
+   *
+   * @return {@link Builder} New builder that can be used to create new TopoRef objects. The method never returns null.
+   */
+  public Builder toBuilder( ) {
+    return new Builder(this);
   }
 }

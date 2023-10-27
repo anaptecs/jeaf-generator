@@ -80,12 +80,14 @@ public class PostalAddress {
   }
 
   /**
-   * Method creates a new builder and initialize it with the data from the passed object.
+   * Method creates a new builder and initializes it with the data from the passed object.
    *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new PostalAddress objects. The method never returns
    * null.
+   * @deprecated Please use {@link #toBuilder()} instead.
    */
+  @Deprecated
   public static Builder builder( PostalAddress pObject ) {
     return new Builder(pObject);
   }
@@ -147,11 +149,11 @@ public class PostalAddress {
     protected Builder( PostalAddress pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
-        street = pObject.street;
-        houseNumber = pObject.houseNumber;
-        city = pObject.city;
-        postalCode = pObject.postalCode;
-        country = pObject.country;
+        this.setStreet(pObject.street);
+        this.setHouseNumber(pObject.houseNumber);
+        this.setCity(pObject.city);
+        this.setPostalCode(pObject.postalCode);
+        this.setCountry(pObject.country);
       }
     }
 
@@ -364,5 +366,15 @@ public class PostalAddress {
   @Override
   public String toString( ) {
     return this.toStringBuilder("").toString();
+  }
+
+  /**
+   * Method creates a new builder and initializes it with the data of this object.
+   *
+   * @return {@link Builder} New builder that can be used to create new PostalAddress objects. The method never returns
+   * null.
+   */
+  public Builder toBuilder( ) {
+    return new Builder(this);
   }
 }

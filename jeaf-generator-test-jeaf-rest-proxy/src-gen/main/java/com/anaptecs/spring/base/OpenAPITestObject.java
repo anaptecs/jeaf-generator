@@ -128,12 +128,14 @@ public class OpenAPITestObject implements Serializable {
   }
 
   /**
-   * Method creates a new builder and initialize it with the data from the passed object.
+   * Method creates a new builder and initializes it with the data from the passed object.
    *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new OpenAPITestObject objects. The method never
    * returns null.
+   * @deprecated Please use {@link #toBuilder()} instead.
    */
+  @Deprecated
   public static Builder builder( OpenAPITestObject pObject ) {
     return new Builder(pObject);
   }
@@ -237,16 +239,16 @@ public class OpenAPITestObject implements Serializable {
     protected Builder( OpenAPITestObject pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
-        readOnlyAttribute = pObject.readOnlyAttribute;
-        readWriteAttribute = pObject.readWriteAttribute;
-        writeOnlyAttribute = pObject.writeOnlyAttribute;
-        nullableAttribute = pObject.nullableAttribute;
-        notNullableAttribute = pObject.notNullableAttribute;
-        readOnlyArray = pObject.readOnlyArray;
-        readWriteArray = pObject.readWriteArray;
-        writeOnlyArray = pObject.writeOnlyArray;
-        nullableArray = pObject.nullableArray;
-        notNullableArray = pObject.notNullableArray;
+        this.setReadOnlyAttribute(pObject.readOnlyAttribute);
+        this.setReadWriteAttribute(pObject.readWriteAttribute);
+        this.setWriteOnlyAttribute(pObject.writeOnlyAttribute);
+        this.setNullableAttribute(pObject.nullableAttribute);
+        this.setNotNullableAttribute(pObject.notNullableAttribute);
+        this.setReadOnlyArray(pObject.readOnlyArray);
+        this.setReadWriteArray(pObject.readWriteArray);
+        this.setWriteOnlyArray(pObject.writeOnlyArray);
+        this.setNullableArray(pObject.nullableArray);
+        this.setNotNullableArray(pObject.notNullableArray);
       }
     }
 
@@ -647,5 +649,15 @@ public class OpenAPITestObject implements Serializable {
   @Override
   public String toString( ) {
     return this.toStringBuilder("").toString();
+  }
+
+  /**
+   * Method creates a new builder and initializes it with the data of this object.
+   *
+   * @return {@link Builder} New builder that can be used to create new OpenAPITestObject objects. The method never
+   * returns null.
+   */
+  public Builder toBuilder( ) {
+    return new Builder(this);
   }
 }

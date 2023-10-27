@@ -98,12 +98,14 @@ public class SoftLinkChildB extends SoftLinkParent {
   }
 
   /**
-   * Method creates a new builder and initialize it with the data from the passed object.
+   * Method creates a new builder and initializes it with the data from the passed object.
    *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new SoftLinkChildB objects. The method never returns
    * null.
+   * @deprecated Please use {@link #toBuilder()} instead.
    */
+  @Deprecated
   public static Builder builder( SoftLinkChildB pObject ) {
     return new Builder(pObject);
   }
@@ -167,9 +169,9 @@ public class SoftLinkChildB extends SoftLinkParent {
       super(pObject);
       if (pObject != null) {
         // Read attribute values from passed object.
-        heyBrother = pObject.heyBrother;
-        softLinkPartners = pObject.softLinkPartners;
-        oneLink = pObject.oneLink;
+        this.setHeyBrother(pObject.heyBrother);
+        this.setSoftLinkPartners(pObject.softLinkPartners);
+        this.setOneLink(pObject.oneLink);
       }
     }
 
@@ -424,5 +426,15 @@ public class SoftLinkChildB extends SoftLinkParent {
           && Objects.equals(softLinkPartners, lOther.softLinkPartners) && Objects.equals(oneLink, lOther.oneLink);
     }
     return lEquals;
+  }
+
+  /**
+   * Method creates a new builder and initializes it with the data of this object.
+   *
+   * @return {@link Builder} New builder that can be used to create new SoftLinkChildB objects. The method never returns
+   * null.
+   */
+  public Builder toBuilder( ) {
+    return new Builder(this);
   }
 }

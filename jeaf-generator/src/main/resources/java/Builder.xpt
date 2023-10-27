@@ -52,10 +52,12 @@ public static «IF isAbstract == true» abstract «ENDIF»class Builder«this.ge
 		objectID = pObject.objectID;
 		«ENDIF»
         «IF this.isCompositeDataType()»
-        	«this.getCompositeDateTypePublicFieldName()» = pObject.«this.getCompositeDateTypePublicFieldName()»;
+        	this.set«this.getCompositeDateTypePublicFieldName().toFirstUpper()»(pObject.«this.getCompositeDateTypePublicFieldName()»);
         «ELSE»
 	        «FOREACH this.ownedAttribute.select(e|e.isPropertySuppressed() == false) AS attr»
-	        «IF attr.isStatic == false»«attr.name» = pObject.«attr.name»;«ENDIF»
+	           «IF attr.isStatic == false»
+	               this.«attr.asSetter()»(pObject.«attr.name»);
+	           «ENDIF»
 	        «ENDFOREACH»
         «ENDIF»
       }
@@ -596,8 +598,7 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
 	   * Method creates a new builder and initialize it with the data from the passed object.
 	   * 
 	   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-	   * @return {@link Builder} New builder that can be used to create new POJOWithIDnMethod objects. The method never
-	   * returns null.
+	   * @return {@link Builder} New builder that can be used to create new POJOWithIDnMethod objects. The method never returns null.
 	   */
 	  public static «this.getTemplateParams()» Builder«this.getTemplateParams()» newBuilder( «this.name»«this.getTemplateParams()» pObject ) {
 	    return new Builder(pObject);
@@ -618,12 +619,13 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
     }
 
     /**
-     * Method creates a new builder and initialize it with the data from the passed object.
+     * Method creates a new builder and initializes it with the data from the passed object.
      * 
      * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new «this.name» objects. The method never
-     * returns null.
+     * @return {@link Builder} New builder that can be used to create new «this.name» objects. The method never returns null.
+     * @deprecated Please use {@link #toBuilder()} instead.
      */
+    @Deprecated
     public static «this.getTemplateParams()» Builder«this.getTemplateParams()» builder( «this.fqn()» pObject ) {
       return new Builder«this.getTemplateParams()»(pObject);
     }
@@ -649,6 +651,30 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
     }
     «ENDIF»
     «ENDIF»
+«ENDDEFINE»
+
+«DEFINE ToBuilderMethod FOR uml::Class»
+  «IF this.isAbstract == false»
+	  /**
+	   * Method creates a new builder and initializes it with the data of this object.
+	   * @return {@link Builder} New builder that can be used to create new «this.name» objects. The method never returns null.
+	   */
+	  public Builder toBuilder( ) {
+	    return new Builder(this);
+	  }
+  «ENDIF»
+«ENDDEFINE»
+
+«DEFINE ToBuilderMethodForBaseClass FOR uml::Class»
+  «IF this.isAbstract == false»
+	  /**
+	   * Method creates a new builder and initializes it with the data of this object.
+	   * @return {@link Builder} New builder that can be used to create new «this.name» objects. The method never returns null.
+	   */
+	  public «name».Builder toBuilder( ) {
+	    return new «name».Builder((«name»)this);
+	  }
+  «ENDIF»
 «ENDDEFINE»
 
 

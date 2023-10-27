@@ -329,4 +329,14 @@ public abstract class AccountInfoBase implements ServiceObject, Identifiable<Ser
   public String toString( ) {
     return this.toStringBuilder("").toString();
   }
+
+  /**
+   * Method creates a new builder and initializes it with the data of this object.
+   *
+   * @return {@link Builder} New builder that can be used to create new AccountInfo objects. The method never returns
+   * null.
+   */
+  public AccountInfo.Builder toBuilder( ) {
+    return new AccountInfo.Builder((AccountInfo) this);
+  }
 }

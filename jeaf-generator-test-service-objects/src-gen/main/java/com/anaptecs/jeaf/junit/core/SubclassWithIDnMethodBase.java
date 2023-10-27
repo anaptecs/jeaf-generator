@@ -205,4 +205,14 @@ public abstract class SubclassWithIDnMethodBase extends IdentifiableServiceObjec
   public String toString( ) {
     return this.toStringBuilder("").toString();
   }
+
+  /**
+   * Method creates a new builder and initializes it with the data of this object.
+   *
+   * @return {@link Builder} New builder that can be used to create new SubclassWithIDnMethod objects. The method never
+   * returns null.
+   */
+  public SubclassWithIDnMethod.Builder toBuilder( ) {
+    return new SubclassWithIDnMethod.Builder((SubclassWithIDnMethod) this);
+  }
 }

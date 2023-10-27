@@ -53,12 +53,14 @@ public class WrapperArrayServiceObject implements ServiceObject {
   }
 
   /**
-   * Method creates a new builder and initialize it with the data from the passed object.
+   * Method creates a new builder and initializes it with the data from the passed object.
    *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new WrapperArrayServiceObject objects. The method
    * never returns null.
+   * @deprecated Please use {@link #toBuilder()} instead.
    */
+  @Deprecated
   public static Builder builder( WrapperArrayServiceObject pObject ) {
     return new Builder(pObject);
   }
@@ -93,7 +95,7 @@ public class WrapperArrayServiceObject implements ServiceObject {
     protected Builder( WrapperArrayServiceObject pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
-        booleanArray = pObject.booleanArray;
+        this.setBooleanArray(pObject.booleanArray);
       }
     }
 
@@ -197,5 +199,15 @@ public class WrapperArrayServiceObject implements ServiceObject {
   @Override
   public String toString( ) {
     return this.toStringBuilder("").toString();
+  }
+
+  /**
+   * Method creates a new builder and initializes it with the data of this object.
+   *
+   * @return {@link Builder} New builder that can be used to create new WrapperArrayServiceObject objects. The method
+   * never returns null.
+   */
+  public Builder toBuilder( ) {
+    return new Builder(this);
   }
 }

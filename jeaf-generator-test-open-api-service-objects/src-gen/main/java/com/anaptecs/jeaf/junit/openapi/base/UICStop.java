@@ -73,11 +73,13 @@ public class UICStop extends Stop {
   }
 
   /**
-   * Method creates a new builder and initialize it with the data from the passed object.
+   * Method creates a new builder and initializes it with the data from the passed object.
    *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new UICStop objects. The method never returns null.
+   * @deprecated Please use {@link #toBuilder()} instead.
    */
+  @Deprecated
   public static Builder builder( UICStop pObject ) {
     return new Builder(pObject);
   }
@@ -147,10 +149,10 @@ public class UICStop extends Stop {
       super(pObject);
       if (pObject != null) {
         // Read attribute values from passed object.
-        uicCode = pObject.uicCode;
-        priority = pObject.priority;
-        code = pObject.code;
-        index2 = pObject.index2;
+        this.setUicCode(pObject.uicCode);
+        this.setPriority(pObject.priority);
+        this.setCode(pObject.code);
+        this.setIndex2(pObject.index2);
       }
     }
 
@@ -402,5 +404,14 @@ public class UICStop extends Stop {
   @Override
   public String toString( ) {
     return this.toStringBuilder("").toString();
+  }
+
+  /**
+   * Method creates a new builder and initializes it with the data of this object.
+   *
+   * @return {@link Builder} New builder that can be used to create new UICStop objects. The method never returns null.
+   */
+  public Builder toBuilder( ) {
+    return new Builder(this);
   }
 }

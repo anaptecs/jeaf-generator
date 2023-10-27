@@ -183,12 +183,14 @@ public class MultiValuedHeaderBeanParam {
   }
 
   /**
-   * Method creates a new builder and initialize it with the data from the passed object.
+   * Method creates a new builder and initializes it with the data from the passed object.
    *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new MultiValuedHeaderBeanParam objects. The method
    * never returns null.
+   * @deprecated Please use {@link #toBuilder()} instead.
    */
+  @Deprecated
   public static Builder builder( MultiValuedHeaderBeanParam pObject ) {
     return new Builder(pObject);
   }
@@ -252,20 +254,20 @@ public class MultiValuedHeaderBeanParam {
     protected Builder( MultiValuedHeaderBeanParam pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
-        names = pObject.names;
-        ints = pObject.ints;
-        doubles = pObject.doubles;
-        codes = pObject.codes;
-        stringCodeList = pObject.stringCodeList;
-        startDate = pObject.startDate;
-        dates = pObject.dates;
-        timestamps = pObject.timestamps;
-        calendars = pObject.calendars;
-        utilDates = pObject.utilDates;
-        sqlTimestamps = pObject.sqlTimestamps;
-        timeUnits = pObject.timeUnits;
-        timeUnitArray = pObject.timeUnitArray;
-        base64 = pObject.base64;
+        this.setNames(pObject.names);
+        this.setInts(pObject.ints);
+        this.setDoubles(pObject.doubles);
+        this.setCodes(pObject.codes);
+        this.setStringCodeList(pObject.stringCodeList);
+        this.setStartDate(pObject.startDate);
+        this.setDates(pObject.dates);
+        this.setTimestamps(pObject.timestamps);
+        this.setCalendars(pObject.calendars);
+        this.setUtilDates(pObject.utilDates);
+        this.setSqlTimestamps(pObject.sqlTimestamps);
+        this.setTimeUnits(pObject.timeUnits);
+        this.setTimeUnitArray(pObject.timeUnitArray);
+        this.setBase64(pObject.base64);
       }
     }
 
@@ -1329,5 +1331,15 @@ public class MultiValuedHeaderBeanParam {
   @Override
   public String toString( ) {
     return this.toStringBuilder("").toString();
+  }
+
+  /**
+   * Method creates a new builder and initializes it with the data of this object.
+   *
+   * @return {@link Builder} New builder that can be used to create new MultiValuedHeaderBeanParam objects. The method
+   * never returns null.
+   */
+  public Builder toBuilder( ) {
+    return new Builder(this);
   }
 }

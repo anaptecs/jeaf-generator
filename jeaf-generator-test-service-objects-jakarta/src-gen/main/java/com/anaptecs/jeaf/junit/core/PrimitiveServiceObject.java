@@ -109,12 +109,14 @@ public class PrimitiveServiceObject implements ServiceObject {
   }
 
   /**
-   * Method creates a new builder and initialize it with the data from the passed object.
+   * Method creates a new builder and initializes it with the data from the passed object.
    *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new PrimitiveServiceObject objects. The method never
    * returns null.
+   * @deprecated Please use {@link #toBuilder()} instead.
    */
+  @Deprecated
   public static Builder builder( PrimitiveServiceObject pObject ) {
     return new Builder(pObject);
   }
@@ -188,14 +190,14 @@ public class PrimitiveServiceObject implements ServiceObject {
     protected Builder( PrimitiveServiceObject pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
-        aBoolean = pObject.aBoolean;
-        aByte = pObject.aByte;
-        aShort = pObject.aShort;
-        aInt = pObject.aInt;
-        aLong = pObject.aLong;
-        aFloat = pObject.aFloat;
-        aDouble = pObject.aDouble;
-        aChar = pObject.aChar;
+        this.setABoolean(pObject.aBoolean);
+        this.setAByte(pObject.aByte);
+        this.setAShort(pObject.aShort);
+        this.setAInt(pObject.aInt);
+        this.setALong(pObject.aLong);
+        this.setAFloat(pObject.aFloat);
+        this.setADouble(pObject.aDouble);
+        this.setAChar(pObject.aChar);
       }
     }
 
@@ -538,5 +540,15 @@ public class PrimitiveServiceObject implements ServiceObject {
   @Override
   public String toString( ) {
     return this.toStringBuilder("").toString();
+  }
+
+  /**
+   * Method creates a new builder and initializes it with the data of this object.
+   *
+   * @return {@link Builder} New builder that can be used to create new PrimitiveServiceObject objects. The method never
+   * returns null.
+   */
+  public Builder toBuilder( ) {
+    return new Builder(this);
   }
 }

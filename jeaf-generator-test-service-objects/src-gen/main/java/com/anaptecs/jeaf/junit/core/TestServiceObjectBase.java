@@ -442,4 +442,14 @@ public abstract class TestServiceObjectBase implements ServiceObject {
   public String toString( ) {
     return this.toStringBuilder("").toString();
   }
+
+  /**
+   * Method creates a new builder and initializes it with the data of this object.
+   *
+   * @return {@link Builder} New builder that can be used to create new TestServiceObject objects. The method never
+   * returns null.
+   */
+  public TestServiceObject.Builder toBuilder( ) {
+    return new TestServiceObject.Builder((TestServiceObject) this);
+  }
 }

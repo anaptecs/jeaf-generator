@@ -66,7 +66,7 @@ public abstract class AbstractPOJO {
     protected Builder( AbstractPOJO pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
-        abtractAttr = pObject.abtractAttr;
+        this.setAbtractAttr(pObject.abtractAttr);
       }
     }
 

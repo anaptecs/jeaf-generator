@@ -133,11 +133,11 @@ public abstract class Customer implements ServiceObject, Identifiable<ServiceObj
       if (pObject != null) {
         // Read attribute values from passed object.
         objectID = pObject.objectID;
-        active = pObject.active;
-        street = pObject.street;
-        zipCode = pObject.zipCode;
-        city = pObject.city;
-        country = pObject.country;
+        this.setActive(pObject.active);
+        this.setStreet(pObject.street);
+        this.setZipCode(pObject.zipCode);
+        this.setCity(pObject.city);
+        this.setCountry(pObject.country);
       }
     }
 

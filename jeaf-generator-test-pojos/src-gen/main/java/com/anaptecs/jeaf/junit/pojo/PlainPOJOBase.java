@@ -260,4 +260,14 @@ public abstract class PlainPOJOBase {
   public String toString( ) {
     return this.toStringBuilder("").toString();
   }
+
+  /**
+   * Method creates a new builder and initializes it with the data of this object.
+   *
+   * @return {@link Builder} New builder that can be used to create new PlainPOJO objects. The method never returns
+   * null.
+   */
+  public PlainPOJO.Builder toBuilder( ) {
+    return new PlainPOJO.Builder((PlainPOJO) this);
+  }
 }

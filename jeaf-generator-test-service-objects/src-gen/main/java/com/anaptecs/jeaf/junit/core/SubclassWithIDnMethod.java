@@ -35,12 +35,14 @@ public class SubclassWithIDnMethod extends SubclassWithIDnMethodBase {
   }
 
   /**
-   * Method creates a new builder and initialize it with the data from the passed object.
+   * Method creates a new builder and initializes it with the data from the passed object.
    *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new SubclassWithIDnMethod objects. The method never
    * returns null.
+   * @deprecated Please use {@link #toBuilder()} instead.
    */
+  @Deprecated
   public static Builder builder( SubclassWithIDnMethod pObject ) {
     return new Builder(pObject);
   }

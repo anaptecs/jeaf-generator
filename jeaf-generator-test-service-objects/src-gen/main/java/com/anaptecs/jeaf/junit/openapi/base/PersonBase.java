@@ -257,4 +257,13 @@ public abstract class PersonBase extends Partner {
   public String toString( ) {
     return this.toStringBuilder("").toString();
   }
+
+  /**
+   * Method creates a new builder and initializes it with the data of this object.
+   *
+   * @return {@link Builder} New builder that can be used to create new Person objects. The method never returns null.
+   */
+  public Person.Builder toBuilder( ) {
+    return new Person.Builder((Person) this);
+  }
 }

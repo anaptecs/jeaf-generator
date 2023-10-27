@@ -70,7 +70,7 @@ public abstract class PlaceRef implements Serializable {
     protected Builder( PlaceRef pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
-        name = pObject.name;
+        this.setName(pObject.name);
       }
     }
 

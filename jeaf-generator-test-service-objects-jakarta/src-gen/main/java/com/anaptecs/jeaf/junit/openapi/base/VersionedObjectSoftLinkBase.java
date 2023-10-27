@@ -244,4 +244,14 @@ public abstract class VersionedObjectSoftLinkBase implements ServiceObject {
   public String toString( ) {
     return this.toStringBuilder("").toString();
   }
+
+  /**
+   * Method creates a new builder and initializes it with the data of this object.
+   *
+   * @return {@link Builder} New builder that can be used to create new VersionedObjectSoftLink objects. The method
+   * never returns null.
+   */
+  public VersionedObjectSoftLink.Builder toBuilder( ) {
+    return new VersionedObjectSoftLink.Builder((VersionedObjectSoftLink) this);
+  }
 }

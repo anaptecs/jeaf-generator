@@ -226,12 +226,14 @@ public class PrimitiveObject implements Serializable {
   }
 
   /**
-   * Method creates a new builder and initialize it with the data from the passed object.
+   * Method creates a new builder and initializes it with the data from the passed object.
    *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new PrimitiveObject objects. The method never
    * returns null.
+   * @deprecated Please use {@link #toBuilder()} instead.
    */
+  @Deprecated
   public static Builder builder( PrimitiveObject pObject ) {
     return new Builder(pObject);
   }
@@ -409,28 +411,28 @@ public class PrimitiveObject implements Serializable {
     protected Builder( PrimitiveObject pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
-        aBoolean = pObject.aBoolean;
-        bBoolean = pObject.bBoolean;
-        cBoolean = pObject.cBoolean;
-        aByte = pObject.aByte;
-        bByte = pObject.bByte;
-        aShort = pObject.aShort;
-        bShort = pObject.bShort;
-        aInteger = pObject.aInteger;
-        bInteger = pObject.bInteger;
-        cInteger = pObject.cInteger;
-        aLong = pObject.aLong;
-        bLong = pObject.bLong;
-        aBigInteger = pObject.aBigInteger;
-        aCharacter = pObject.aCharacter;
-        bCharacter = pObject.bCharacter;
-        aFloat = pObject.aFloat;
-        bFloat = pObject.bFloat;
-        aDouble = pObject.aDouble;
-        bDouble = pObject.bDouble;
-        aBigDecimal = pObject.aBigDecimal;
-        aString = pObject.aString;
-        bString = pObject.bString;
+        this.setABoolean(pObject.aBoolean);
+        this.setBBoolean(pObject.bBoolean);
+        this.setCBoolean(pObject.cBoolean);
+        this.setAByte(pObject.aByte);
+        this.setBByte(pObject.bByte);
+        this.setAShort(pObject.aShort);
+        this.setBShort(pObject.bShort);
+        this.setAInteger(pObject.aInteger);
+        this.setBInteger(pObject.bInteger);
+        this.setCInteger(pObject.cInteger);
+        this.setALong(pObject.aLong);
+        this.setBLong(pObject.bLong);
+        this.setABigInteger(pObject.aBigInteger);
+        this.setACharacter(pObject.aCharacter);
+        this.setBCharacter(pObject.bCharacter);
+        this.setAFloat(pObject.aFloat);
+        this.setBFloat(pObject.bFloat);
+        this.setADouble(pObject.aDouble);
+        this.setBDouble(pObject.bDouble);
+        this.setABigDecimal(pObject.aBigDecimal);
+        this.setAString(pObject.aString);
+        this.setBString(pObject.bString);
       }
     }
 
@@ -1271,5 +1273,15 @@ public class PrimitiveObject implements Serializable {
   @Override
   public String toString( ) {
     return this.toStringBuilder("").toString();
+  }
+
+  /**
+   * Method creates a new builder and initializes it with the data of this object.
+   *
+   * @return {@link Builder} New builder that can be used to create new PrimitiveObject objects. The method never
+   * returns null.
+   */
+  public Builder toBuilder( ) {
+    return new Builder(this);
   }
 }

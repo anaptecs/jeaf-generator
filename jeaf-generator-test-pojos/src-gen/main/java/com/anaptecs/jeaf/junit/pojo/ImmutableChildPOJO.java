@@ -62,12 +62,14 @@ public class ImmutableChildPOJO extends ImmutablePOJOParent {
   }
 
   /**
-   * Method creates a new builder and initialize it with the data from the passed object.
+   * Method creates a new builder and initializes it with the data from the passed object.
    *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new ImmutableChildPOJO objects. The method never
    * returns null.
+   * @deprecated Please use {@link #toBuilder()} instead.
    */
+  @Deprecated
   public static Builder builder( ImmutableChildPOJO pObject ) {
     return new Builder(pObject);
   }
@@ -121,8 +123,8 @@ public class ImmutableChildPOJO extends ImmutablePOJOParent {
       super(pObject);
       if (pObject != null) {
         // Read attribute values from passed object.
-        childAttribute = pObject.childAttribute;
-        anotherChildAttribute = pObject.anotherChildAttribute;
+        this.setChildAttribute(pObject.childAttribute);
+        this.setAnotherChildAttribute(pObject.anotherChildAttribute);
       }
     }
 
@@ -302,5 +304,15 @@ public class ImmutableChildPOJO extends ImmutablePOJOParent {
   @Override
   public String toString( ) {
     return this.toStringBuilder("").toString();
+  }
+
+  /**
+   * Method creates a new builder and initializes it with the data of this object.
+   *
+   * @return {@link Builder} New builder that can be used to create new ImmutableChildPOJO objects. The method never
+   * returns null.
+   */
+  public Builder toBuilder( ) {
+    return new Builder(this);
   }
 }

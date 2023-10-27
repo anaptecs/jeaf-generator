@@ -105,12 +105,14 @@ public class DateObject implements Serializable {
   }
 
   /**
-   * Method creates a new builder and initialize it with the data from the passed object.
+   * Method creates a new builder and initializes it with the data from the passed object.
    *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new DateObject objects. The method never returns
    * null.
+   * @deprecated Please use {@link #toBuilder()} instead.
    */
+  @Deprecated
   public static Builder builder( DateObject pObject ) {
     return new Builder(pObject);
   }
@@ -192,12 +194,12 @@ public class DateObject implements Serializable {
     protected Builder( DateObject pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
-        localTime = pObject.localTime;
-        localDate = pObject.localDate;
-        localDateTime = pObject.localDateTime;
-        calendar = pObject.calendar;
-        sqlDate = pObject.sqlDate;
-        utilDate = pObject.utilDate;
+        this.setLocalTime(pObject.localTime);
+        this.setLocalDate(pObject.localDate);
+        this.setLocalDateTime(pObject.localDateTime);
+        this.setCalendar(pObject.calendar);
+        this.setSqlDate(pObject.sqlDate);
+        this.setUtilDate(pObject.utilDate);
       }
     }
 
@@ -457,5 +459,15 @@ public class DateObject implements Serializable {
   @Override
   public String toString( ) {
     return this.toStringBuilder("").toString();
+  }
+
+  /**
+   * Method creates a new builder and initializes it with the data of this object.
+   *
+   * @return {@link Builder} New builder that can be used to create new DateObject objects. The method never returns
+   * null.
+   */
+  public Builder toBuilder( ) {
+    return new Builder(this);
   }
 }

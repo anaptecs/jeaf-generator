@@ -112,11 +112,13 @@ public class Booking implements ServiceObject {
   }
 
   /**
-   * Method creates a new builder and initialize it with the data from the passed object.
+   * Method creates a new builder and initializes it with the data from the passed object.
    *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new Booking objects. The method never returns null.
+   * @deprecated Please use {@link #toBuilder()} instead.
    */
+  @Deprecated
   public static Builder builder( Booking pObject ) {
     return new Builder(pObject);
   }
@@ -183,12 +185,12 @@ public class Booking implements ServiceObject {
     protected Builder( Booking pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
-        amount = pObject.amount;
-        source = pObject.source;
-        target = pObject.target;
-        token = pObject.token;
-        remitters = pObject.remitters;
-        account = pObject.account;
+        this.setAmount(pObject.amount);
+        this.setSource(pObject.source);
+        this.setTarget(pObject.target);
+        this.setToken(pObject.token);
+        this.setRemitters(pObject.remitters);
+        this.setAccount(pObject.account);
       }
     }
 
@@ -542,5 +544,14 @@ public class Booking implements ServiceObject {
   @Override
   public String toString( ) {
     return this.toStringBuilder("").toString();
+  }
+
+  /**
+   * Method creates a new builder and initializes it with the data of this object.
+   *
+   * @return {@link Builder} New builder that can be used to create new Booking objects. The method never returns null.
+   */
+  public Builder toBuilder( ) {
+    return new Builder(this);
   }
 }

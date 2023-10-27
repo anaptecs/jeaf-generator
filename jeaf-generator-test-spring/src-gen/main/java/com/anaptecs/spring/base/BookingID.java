@@ -83,12 +83,14 @@ public class BookingID {
   }
 
   /**
-   * Method creates a new builder and initialize it with the data from the passed object.
+   * Method creates a new builder and initializes it with the data from the passed object.
    *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new BookingID objects. The method never returns
    * null.
+   * @deprecated Please use {@link #toBuilder()} instead.
    */
+  @Deprecated
   public static Builder builder( BookingID pObject ) {
     return new Builder(pObject);
   }
@@ -146,11 +148,11 @@ public class BookingID {
     protected Builder( BookingID pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
-        publicBookingID = pObject.publicBookingID;
-        referenceID = pObject.referenceID;
-        externalRefID = pObject.externalRefID;
-        inventory = pObject.inventory;
-        bookingCode = pObject.bookingCode;
+        this.setPublicBookingID(pObject.publicBookingID);
+        this.setReferenceID(pObject.referenceID);
+        this.setExternalRefID(pObject.externalRefID);
+        this.setInventory(pObject.inventory);
+        this.setBookingCode(pObject.bookingCode);
       }
     }
 
@@ -369,5 +371,15 @@ public class BookingID {
   @Override
   public String toString( ) {
     return this.toStringBuilder("").toString();
+  }
+
+  /**
+   * Method creates a new builder and initializes it with the data of this object.
+   *
+   * @return {@link Builder} New builder that can be used to create new BookingID objects. The method never returns
+   * null.
+   */
+  public Builder toBuilder( ) {
+    return new Builder(this);
   }
 }

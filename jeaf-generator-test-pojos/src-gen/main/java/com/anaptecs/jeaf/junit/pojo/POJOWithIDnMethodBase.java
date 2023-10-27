@@ -258,4 +258,14 @@ public abstract class POJOWithIDnMethodBase implements Identifiable<ObjectID> {
   public String toString( ) {
     return this.toStringBuilder("").toString();
   }
+
+  /**
+   * Method creates a new builder and initializes it with the data of this object.
+   *
+   * @return {@link Builder} New builder that can be used to create new POJOWithIDnMethod objects. The method never
+   * returns null.
+   */
+  public POJOWithIDnMethod.Builder toBuilder( ) {
+    return new POJOWithIDnMethod.Builder((POJOWithIDnMethod) this);
+  }
 }

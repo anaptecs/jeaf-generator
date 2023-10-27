@@ -82,12 +82,14 @@ public class POJOWithID implements Identifiable<ObjectID> {
   }
 
   /**
-   * Method creates a new builder and initialize it with the data from the passed object.
+   * Method creates a new builder and initializes it with the data from the passed object.
    *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new POJOWithID objects. The method never returns
    * null.
+   * @deprecated Please use {@link #toBuilder()} instead.
    */
+  @Deprecated
   public static Builder builder( POJOWithID pObject ) {
     return new Builder(pObject);
   }
@@ -135,8 +137,8 @@ public class POJOWithID implements Identifiable<ObjectID> {
       if (pObject != null) {
         // Read attribute values from passed object.
         objectID = pObject.objectID;
-        attr = pObject.attr;
-        name = pObject.name;
+        this.setAttr(pObject.attr);
+        this.setName(pObject.name);
       }
     }
 
@@ -320,5 +322,15 @@ public class POJOWithID implements Identifiable<ObjectID> {
   @Override
   public String toString( ) {
     return this.toStringBuilder("").toString();
+  }
+
+  /**
+   * Method creates a new builder and initializes it with the data of this object.
+   *
+   * @return {@link Builder} New builder that can be used to create new POJOWithID objects. The method never returns
+   * null.
+   */
+  public Builder toBuilder( ) {
+    return new Builder(this);
   }
 }

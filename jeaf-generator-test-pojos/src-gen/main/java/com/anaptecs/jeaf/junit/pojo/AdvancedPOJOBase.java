@@ -201,4 +201,14 @@ public abstract class AdvancedPOJOBase {
   public String toString( ) {
     return this.toStringBuilder("").toString();
   }
+
+  /**
+   * Method creates a new builder and initializes it with the data of this object.
+   *
+   * @return {@link Builder} New builder that can be used to create new AdvancedPOJO objects. The method never returns
+   * null.
+   */
+  public AdvancedPOJO.Builder toBuilder( ) {
+    return new AdvancedPOJO.Builder((AdvancedPOJO) this);
+  }
 }

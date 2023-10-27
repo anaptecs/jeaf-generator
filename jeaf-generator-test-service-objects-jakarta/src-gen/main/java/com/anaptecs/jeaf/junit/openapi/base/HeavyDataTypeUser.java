@@ -109,12 +109,14 @@ public class HeavyDataTypeUser implements ServiceObject {
   }
 
   /**
-   * Method creates a new builder and initialize it with the data from the passed object.
+   * Method creates a new builder and initializes it with the data from the passed object.
    *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new HeavyDataTypeUser objects. The method never
    * returns null.
+   * @deprecated Please use {@link #toBuilder()} instead.
    */
+  @Deprecated
   public static Builder builder( HeavyDataTypeUser pObject ) {
     return new Builder(pObject);
   }
@@ -188,14 +190,14 @@ public class HeavyDataTypeUser implements ServiceObject {
     protected Builder( HeavyDataTypeUser pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
-        booleanCode = pObject.booleanCode;
-        byteCode = pObject.byteCode;
-        shortCode = pObject.shortCode;
-        integerCode = pObject.integerCode;
-        floatCode = pObject.floatCode;
-        doubleCode = pObject.doubleCode;
-        bigInegerCode = pObject.bigInegerCode;
-        bigDecimalCode = pObject.bigDecimalCode;
+        this.setBooleanCode(pObject.booleanCode);
+        this.setByteCode(pObject.byteCode);
+        this.setShortCode(pObject.shortCode);
+        this.setIntegerCode(pObject.integerCode);
+        this.setFloatCode(pObject.floatCode);
+        this.setDoubleCode(pObject.doubleCode);
+        this.setBigInegerCode(pObject.bigInegerCode);
+        this.setBigDecimalCode(pObject.bigDecimalCode);
       }
     }
 
@@ -528,5 +530,15 @@ public class HeavyDataTypeUser implements ServiceObject {
   @Override
   public String toString( ) {
     return this.toStringBuilder("").toString();
+  }
+
+  /**
+   * Method creates a new builder and initializes it with the data of this object.
+   *
+   * @return {@link Builder} New builder that can be used to create new HeavyDataTypeUser objects. The method never
+   * returns null.
+   */
+  public Builder toBuilder( ) {
+    return new Builder(this);
   }
 }

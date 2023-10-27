@@ -109,12 +109,14 @@ public class WrapperDatatypeServiceObject implements ServiceObject {
   }
 
   /**
-   * Method creates a new builder and initialize it with the data from the passed object.
+   * Method creates a new builder and initializes it with the data from the passed object.
    *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new WrapperDatatypeServiceObject objects. The method
    * never returns null.
+   * @deprecated Please use {@link #toBuilder()} instead.
    */
+  @Deprecated
   public static Builder builder( WrapperDatatypeServiceObject pObject ) {
     return new Builder(pObject);
   }
@@ -185,14 +187,14 @@ public class WrapperDatatypeServiceObject implements ServiceObject {
     protected Builder( WrapperDatatypeServiceObject pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
-        myBoolean = pObject.myBoolean;
-        myByte = pObject.myByte;
-        myCharacter = pObject.myCharacter;
-        myDouble = pObject.myDouble;
-        myFloat = pObject.myFloat;
-        myLong = pObject.myLong;
-        myShort = pObject.myShort;
-        myByteArray = pObject.myByteArray;
+        this.setMyBoolean(pObject.myBoolean);
+        this.setMyByte(pObject.myByte);
+        this.setMyCharacter(pObject.myCharacter);
+        this.setMyDouble(pObject.myDouble);
+        this.setMyFloat(pObject.myFloat);
+        this.setMyLong(pObject.myLong);
+        this.setMyShort(pObject.myShort);
+        this.setMyByteArray(pObject.myByteArray);
       }
     }
 
@@ -541,5 +543,15 @@ public class WrapperDatatypeServiceObject implements ServiceObject {
   @Override
   public String toString( ) {
     return this.toStringBuilder("").toString();
+  }
+
+  /**
+   * Method creates a new builder and initializes it with the data of this object.
+   *
+   * @return {@link Builder} New builder that can be used to create new WrapperDatatypeServiceObject objects. The method
+   * never returns null.
+   */
+  public Builder toBuilder( ) {
+    return new Builder(this);
   }
 }

@@ -191,4 +191,14 @@ public abstract class ReadonlyDefaultPOJOBase {
   public String toString( ) {
     return this.toStringBuilder("").toString();
   }
+
+  /**
+   * Method creates a new builder and initializes it with the data of this object.
+   *
+   * @return {@link Builder} New builder that can be used to create new ReadonlyDefaultPOJO objects. The method never
+   * returns null.
+   */
+  public ReadonlyDefaultPOJO.Builder toBuilder( ) {
+    return new ReadonlyDefaultPOJO.Builder((ReadonlyDefaultPOJO) this);
+  }
 }

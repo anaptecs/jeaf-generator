@@ -47,11 +47,13 @@ public class Company extends Partner {
   }
 
   /**
-   * Method creates a new builder and initialize it with the data from the passed object.
+   * Method creates a new builder and initializes it with the data from the passed object.
    *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new Company objects. The method never returns null.
+   * @deprecated Please use {@link #toBuilder()} instead.
    */
+  @Deprecated
   public static Builder builder( Company pObject ) {
     return new Builder(pObject);
   }
@@ -76,7 +78,7 @@ public class Company extends Partner {
       super(pObject);
       if (pObject != null) {
         // Read attribute values from passed object.
-        name = pObject.name;
+        this.setName(pObject.name);
       }
     }
 
@@ -172,5 +174,14 @@ public class Company extends Partner {
   @Override
   public String toString( ) {
     return this.toStringBuilder("").toString();
+  }
+
+  /**
+   * Method creates a new builder and initializes it with the data of this object.
+   *
+   * @return {@link Builder} New builder that can be used to create new Company objects. The method never returns null.
+   */
+  public Builder toBuilder( ) {
+    return new Builder(this);
   }
 }

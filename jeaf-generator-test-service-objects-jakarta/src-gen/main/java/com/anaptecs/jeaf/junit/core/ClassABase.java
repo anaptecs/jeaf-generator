@@ -292,4 +292,13 @@ public abstract class ClassABase implements ServiceObject, Identifiable<ServiceO
   public String toString( ) {
     return this.toStringBuilder("").toString();
   }
+
+  /**
+   * Method creates a new builder and initializes it with the data of this object.
+   *
+   * @return {@link Builder} New builder that can be used to create new ClassA objects. The method never returns null.
+   */
+  public ClassA.Builder toBuilder( ) {
+    return new ClassA.Builder((ClassA) this);
+  }
 }

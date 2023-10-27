@@ -86,8 +86,8 @@ public abstract class AbstractResponse<T> implements ServiceObject {
     protected Builder( AbstractResponse<T> pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
-        errors = pObject.errors;
-        warnings = pObject.warnings;
+        this.setErrors(pObject.errors);
+        this.setWarnings(pObject.warnings);
       }
     }
 

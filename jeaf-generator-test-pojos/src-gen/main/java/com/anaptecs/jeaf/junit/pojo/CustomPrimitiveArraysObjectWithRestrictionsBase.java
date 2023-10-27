@@ -1542,4 +1542,14 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
   public String toString( ) {
     return this.toStringBuilder("").toString();
   }
+
+  /**
+   * Method creates a new builder and initializes it with the data of this object.
+   *
+   * @return {@link Builder} New builder that can be used to create new CustomPrimitiveArraysObjectWithRestrictions
+   * objects. The method never returns null.
+   */
+  public CustomPrimitiveArraysObjectWithRestrictions.Builder toBuilder( ) {
+    return new CustomPrimitiveArraysObjectWithRestrictions.Builder((CustomPrimitiveArraysObjectWithRestrictions) this);
+  }
 }

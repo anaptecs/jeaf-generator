@@ -64,12 +64,14 @@ public class TechnicalHeaderContext implements Serializable {
   }
 
   /**
-   * Method creates a new builder and initialize it with the data from the passed object.
+   * Method creates a new builder and initializes it with the data from the passed object.
    *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new TechnicalHeaderContext objects. The method never
    * returns null.
+   * @deprecated Please use {@link #toBuilder()} instead.
    */
+  @Deprecated
   public static Builder builder( TechnicalHeaderContext pObject ) {
     return new Builder(pObject);
   }
@@ -116,7 +118,7 @@ public class TechnicalHeaderContext implements Serializable {
     protected Builder( TechnicalHeaderContext pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
-        reseller = pObject.reseller;
+        this.setReseller(pObject.reseller);
       }
     }
 
@@ -227,5 +229,15 @@ public class TechnicalHeaderContext implements Serializable {
   @Override
   public String toString( ) {
     return this.toStringBuilder("").toString();
+  }
+
+  /**
+   * Method creates a new builder and initializes it with the data of this object.
+   *
+   * @return {@link Builder} New builder that can be used to create new TechnicalHeaderContext objects. The method never
+   * returns null.
+   */
+  public Builder toBuilder( ) {
+    return new Builder(this);
   }
 }

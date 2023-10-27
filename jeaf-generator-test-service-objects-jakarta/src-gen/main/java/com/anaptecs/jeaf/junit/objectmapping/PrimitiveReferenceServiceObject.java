@@ -109,12 +109,14 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
   }
 
   /**
-   * Method creates a new builder and initialize it with the data from the passed object.
+   * Method creates a new builder and initializes it with the data from the passed object.
    *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new PrimitiveReferenceServiceObject objects. The
    * method never returns null.
+   * @deprecated Please use {@link #toBuilder()} instead.
    */
+  @Deprecated
   public static Builder builder( PrimitiveReferenceServiceObject pObject ) {
     return new Builder(pObject);
   }
@@ -157,11 +159,11 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
     protected Builder( PrimitiveReferenceServiceObject pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
-        aBoolean = pObject.aBoolean;
-        booleanSet = pObject.booleanSet;
-        buffers = pObject.buffers;
-        strings = pObject.strings;
-        stringArray = pObject.stringArray;
+        this.setABoolean(pObject.aBoolean);
+        this.setBooleanSet(pObject.booleanSet);
+        this.setBuffers(pObject.buffers);
+        this.setStrings(pObject.strings);
+        this.setStringArray(pObject.stringArray);
       }
     }
 
@@ -574,5 +576,15 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
   @Override
   public String toString( ) {
     return this.toStringBuilder("").toString();
+  }
+
+  /**
+   * Method creates a new builder and initializes it with the data of this object.
+   *
+   * @return {@link Builder} New builder that can be used to create new PrimitiveReferenceServiceObject objects. The
+   * method never returns null.
+   */
+  public Builder toBuilder( ) {
+    return new Builder(this);
   }
 }

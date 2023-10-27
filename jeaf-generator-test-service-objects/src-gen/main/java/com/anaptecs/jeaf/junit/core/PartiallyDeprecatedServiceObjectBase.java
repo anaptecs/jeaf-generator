@@ -473,4 +473,14 @@ public abstract class PartiallyDeprecatedServiceObjectBase implements ServiceObj
   public String toString( ) {
     return this.toStringBuilder("").toString();
   }
+
+  /**
+   * Method creates a new builder and initializes it with the data of this object.
+   *
+   * @return {@link Builder} New builder that can be used to create new PartiallyDeprecatedServiceObject objects. The
+   * method never returns null.
+   */
+  public PartiallyDeprecatedServiceObject.Builder toBuilder( ) {
+    return new PartiallyDeprecatedServiceObject.Builder((PartiallyDeprecatedServiceObject) this);
+  }
 }

@@ -142,11 +142,13 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
   }
 
   /**
-   * Method creates a new builder and initialize it with the data from the passed object.
+   * Method creates a new builder and initializes it with the data from the passed object.
    *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new Person objects. The method never returns null.
+   * @deprecated Please use {@link #toBuilder()} instead.
    */
+  @Deprecated
   public static Builder builder( Person pObject ) {
     return new Builder(pObject);
   }
@@ -218,13 +220,13 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
       if (pObject != null) {
         // Read attribute values from passed object.
         objectID = pObject.objectID;
-        name = pObject.name;
-        firstName = pObject.firstName;
-        dateOfBirth = pObject.dateOfBirth;
-        accounts = pObject.accounts;
-        customer = pObject.customer;
-        age = pObject.age;
-        displayName = pObject.displayName;
+        this.setName(pObject.name);
+        this.setFirstName(pObject.firstName);
+        this.setDateOfBirth(pObject.dateOfBirth);
+        this.setAccounts(pObject.accounts);
+        this.setCustomer(pObject.customer);
+        this.setAge(pObject.age);
+        this.setDisplayName(pObject.displayName);
       }
     }
 
@@ -646,5 +648,14 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
   @Override
   public String toString( ) {
     return this.toStringBuilder("").toString();
+  }
+
+  /**
+   * Method creates a new builder and initializes it with the data of this object.
+   *
+   * @return {@link Builder} New builder that can be used to create new Person objects. The method never returns null.
+   */
+  public Builder toBuilder( ) {
+    return new Builder(this);
   }
 }

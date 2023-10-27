@@ -105,12 +105,14 @@ public class WeirdBooking extends WeirdParent {
   }
 
   /**
-   * Method creates a new builder and initialize it with the data from the passed object.
+   * Method creates a new builder and initializes it with the data from the passed object.
    *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new WeirdBooking objects. The method never returns
    * null.
+   * @deprecated Please use {@link #toBuilder()} instead.
    */
+  @Deprecated
   public static Builder builder( WeirdBooking pObject ) {
     return new Builder(pObject);
   }
@@ -201,12 +203,12 @@ public class WeirdBooking extends WeirdParent {
       super(pObject);
       if (pObject != null) {
         // Read attribute values from passed object.
-        booking = pObject.booking;
-        additionalBookings = pObject.additionalBookings;
-        versionedObjectSoftLink = pObject.versionedObjectSoftLink;
-        childProperty = pObject.childProperty;
-        realBooking = pObject.realBooking;
-        inventories = pObject.inventories;
+        this.setBooking(pObject.booking);
+        this.setAdditionalBookings(pObject.additionalBookings);
+        this.setVersionedObjectSoftLink(pObject.versionedObjectSoftLink);
+        this.setChildProperty(pObject.childProperty);
+        this.setRealBooking(pObject.realBooking);
+        this.setInventories(pObject.inventories);
       }
     }
 
@@ -724,5 +726,15 @@ public class WeirdBooking extends WeirdParent {
   @Override
   public String toString( ) {
     return this.toStringBuilder("").toString();
+  }
+
+  /**
+   * Method creates a new builder and initializes it with the data of this object.
+   *
+   * @return {@link Builder} New builder that can be used to create new WeirdBooking objects. The method never returns
+   * null.
+   */
+  public Builder toBuilder( ) {
+    return new Builder(this);
   }
 }

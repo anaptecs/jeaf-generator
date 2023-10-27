@@ -444,4 +444,14 @@ public abstract class BidirectionalABase {
   public String toString( ) {
     return this.toStringBuilder("").toString();
   }
+
+  /**
+   * Method creates a new builder and initializes it with the data of this object.
+   *
+   * @return {@link Builder} New builder that can be used to create new BidirectionalA objects. The method never returns
+   * null.
+   */
+  public BidirectionalA.Builder toBuilder( ) {
+    return new BidirectionalA.Builder((BidirectionalA) this);
+  }
 }

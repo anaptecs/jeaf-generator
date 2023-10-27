@@ -533,4 +533,14 @@ public abstract class ComplexBookingIDBase {
   public String toString( ) {
     return this.toStringBuilder("").toString();
   }
+
+  /**
+   * Method creates a new builder and initializes it with the data of this object.
+   *
+   * @return {@link Builder} New builder that can be used to create new ComplexBookingID objects. The method never
+   * returns null.
+   */
+  public ComplexBookingID.Builder toBuilder( ) {
+    return new ComplexBookingID.Builder((ComplexBookingID) this);
+  }
 }

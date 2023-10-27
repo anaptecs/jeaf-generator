@@ -198,11 +198,13 @@ public class Product implements Serializable {
   }
 
   /**
-   * Method creates a new builder and initialize it with the data from the passed object.
+   * Method creates a new builder and initializes it with the data from the passed object.
    *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new Product objects. The method never returns null.
+   * @deprecated Please use {@link #toBuilder()} instead.
    */
+  @Deprecated
   public static Builder builder( Product pObject ) {
     return new Builder(pObject);
   }
@@ -302,16 +304,16 @@ public class Product implements Serializable {
     protected Builder( Product pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
-        resellers = pObject.resellers;
-        name = pObject.name;
-        image = pObject.image;
-        link = pObject.link;
-        productID = pObject.productID;
-        supportedCurrencies = pObject.supportedCurrencies;
-        productCodes = pObject.productCodes;
-        description = pObject.description;
-        sortiments = pObject.sortiments;
-        uri = pObject.uri;
+        this.setResellers(pObject.resellers);
+        this.setName(pObject.name);
+        this.setImage(pObject.image);
+        this.setLink(pObject.link);
+        this.setProductID(pObject.productID);
+        this.setSupportedCurrencies(pObject.supportedCurrencies);
+        this.setProductCodes(pObject.productCodes);
+        this.setDescription(pObject.description);
+        this.setSortiments(pObject.sortiments);
+        this.setUri(pObject.uri);
       }
     }
 
@@ -987,5 +989,14 @@ public class Product implements Serializable {
   @Override
   public String toString( ) {
     return this.toStringBuilder("").toString();
+  }
+
+  /**
+   * Method creates a new builder and initializes it with the data of this object.
+   *
+   * @return {@link Builder} New builder that can be used to create new Product objects. The method never returns null.
+   */
+  public Builder toBuilder( ) {
+    return new Builder(this);
   }
 }

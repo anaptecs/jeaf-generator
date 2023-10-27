@@ -104,12 +104,14 @@ public class SoftLinkParent {
   }
 
   /**
-   * Method creates a new builder and initialize it with the data from the passed object.
+   * Method creates a new builder and initializes it with the data from the passed object.
    *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new SoftLinkParent objects. The method never returns
    * null.
+   * @deprecated Please use {@link #toBuilder()} instead.
    */
+  @Deprecated
   public static Builder builder( SoftLinkParent pObject ) {
     return new Builder(pObject);
   }
@@ -168,9 +170,9 @@ public class SoftLinkParent {
     protected Builder( SoftLinkParent pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
-        partners = pObject.partners;
-        thePartner = pObject.thePartner;
-        readonlyPartner = pObject.readonlyPartner;
+        this.setPartners(pObject.partners);
+        this.setThePartner(pObject.thePartner);
+        this.setReadonlyPartner(pObject.readonlyPartner);
       }
     }
 
@@ -391,5 +393,15 @@ public class SoftLinkParent {
   @Override
   public String toString( ) {
     return this.toStringBuilder("").toString();
+  }
+
+  /**
+   * Method creates a new builder and initializes it with the data of this object.
+   *
+   * @return {@link Builder} New builder that can be used to create new SoftLinkParent objects. The method never returns
+   * null.
+   */
+  public Builder toBuilder( ) {
+    return new Builder(this);
   }
 }

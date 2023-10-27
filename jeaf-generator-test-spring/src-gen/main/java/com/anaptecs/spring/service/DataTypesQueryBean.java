@@ -177,12 +177,14 @@ public class DataTypesQueryBean {
   }
 
   /**
-   * Method creates a new builder and initialize it with the data from the passed object.
+   * Method creates a new builder and initializes it with the data from the passed object.
    *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new DataTypesQueryBean objects. The method never
    * returns null.
+   * @deprecated Please use {@link #toBuilder()} instead.
    */
+  @Deprecated
   public static Builder builder( DataTypesQueryBean pObject ) {
     return new Builder(pObject);
   }
@@ -251,18 +253,18 @@ public class DataTypesQueryBean {
     protected Builder( DataTypesQueryBean pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
-        longCodes = pObject.longCodes;
-        codes = pObject.codes;
-        doubleCodes = pObject.doubleCodes;
-        bookingIDs = pObject.bookingIDs;
-        bookingIDsArray = pObject.bookingIDsArray;
-        offsetDateTime = pObject.offsetDateTime;
-        offsetTime = pObject.offsetTime;
-        localDateTime = pObject.localDateTime;
-        localTime = pObject.localTime;
-        timestamps = pObject.timestamps;
-        times = pObject.times;
-        startTimestamps = pObject.startTimestamps;
+        this.setLongCodes(pObject.longCodes);
+        this.setCodes(pObject.codes);
+        this.setDoubleCodes(pObject.doubleCodes);
+        this.setBookingIDs(pObject.bookingIDs);
+        this.setBookingIDsArray(pObject.bookingIDsArray);
+        this.setOffsetDateTime(pObject.offsetDateTime);
+        this.setOffsetTime(pObject.offsetTime);
+        this.setLocalDateTime(pObject.localDateTime);
+        this.setLocalTime(pObject.localTime);
+        this.setTimestamps(pObject.timestamps);
+        this.setTimes(pObject.times);
+        this.setStartTimestamps(pObject.startTimestamps);
       }
     }
 
@@ -1156,5 +1158,15 @@ public class DataTypesQueryBean {
   @Override
   public String toString( ) {
     return this.toStringBuilder("").toString();
+  }
+
+  /**
+   * Method creates a new builder and initializes it with the data of this object.
+   *
+   * @return {@link Builder} New builder that can be used to create new DataTypesQueryBean objects. The method never
+   * returns null.
+   */
+  public Builder toBuilder( ) {
+    return new Builder(this);
   }
 }

@@ -406,4 +406,13 @@ public abstract class CustomerBase extends Partner {
   public String toString( ) {
     return this.toStringBuilder("").toString();
   }
+
+  /**
+   * Method creates a new builder and initializes it with the data of this object.
+   *
+   * @return {@link Builder} New builder that can be used to create new Customer objects. The method never returns null.
+   */
+  public Customer.Builder toBuilder( ) {
+    return new Customer.Builder((Customer) this);
+  }
 }

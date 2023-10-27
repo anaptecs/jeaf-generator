@@ -73,12 +73,14 @@ public class BeanParameter implements ServiceObject {
   }
 
   /**
-   * Method creates a new builder and initialize it with the data from the passed object.
+   * Method creates a new builder and initializes it with the data from the passed object.
    *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new BeanParameter objects. The method never returns
    * null.
+   * @deprecated Please use {@link #toBuilder()} instead.
    */
+  @Deprecated
   public static Builder builder( BeanParameter pObject ) {
     return new Builder(pObject);
   }
@@ -126,9 +128,9 @@ public class BeanParameter implements ServiceObject {
     protected Builder( BeanParameter pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
-        accessToken = pObject.accessToken;
-        language = pObject.language;
-        oldStyle = pObject.oldStyle;
+        this.setAccessToken(pObject.accessToken);
+        this.setLanguage(pObject.language);
+        this.setOldStyle(pObject.oldStyle);
       }
     }
 
@@ -289,5 +291,15 @@ public class BeanParameter implements ServiceObject {
   @Override
   public String toString( ) {
     return this.toStringBuilder("").toString();
+  }
+
+  /**
+   * Method creates a new builder and initializes it with the data of this object.
+   *
+   * @return {@link Builder} New builder that can be used to create new BeanParameter objects. The method never returns
+   * null.
+   */
+  public Builder toBuilder( ) {
+    return new Builder(this);
   }
 }

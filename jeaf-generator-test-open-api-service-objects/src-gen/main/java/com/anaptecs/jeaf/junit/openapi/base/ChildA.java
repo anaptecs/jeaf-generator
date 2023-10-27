@@ -64,7 +64,7 @@ public abstract class ChildA extends ParentClass {
       super(pObject);
       if (pObject != null) {
         // Read attribute values from passed object.
-        childAAttribute = pObject.childAAttribute;
+        this.setChildAAttribute(pObject.childAAttribute);
       }
     }
 

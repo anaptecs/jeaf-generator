@@ -127,11 +127,13 @@ public class Context implements Serializable {
   }
 
   /**
-   * Method creates a new builder and initialize it with the data from the passed object.
+   * Method creates a new builder and initializes it with the data from the passed object.
    *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new Context objects. The method never returns null.
+   * @deprecated Please use {@link #toBuilder()} instead.
    */
+  @Deprecated
   public static Builder builder( Context pObject ) {
     return new Builder(pObject);
   }
@@ -220,13 +222,13 @@ public class Context implements Serializable {
     protected Builder( Context pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
-        accessToken = pObject.accessToken;
-        language = pObject.language;
-        resellerID = pObject.resellerID;
-        pathParam = pObject.pathParam;
-        queryParam = pObject.queryParam;
-        lang = pObject.lang;
-        intCode = pObject.intCode;
+        this.setAccessToken(pObject.accessToken);
+        this.setLanguage(pObject.language);
+        this.setResellerID(pObject.resellerID);
+        this.setPathParam(pObject.pathParam);
+        this.setQueryParam(pObject.queryParam);
+        this.setLang(pObject.lang);
+        this.setIntCode(pObject.intCode);
       }
     }
 
@@ -546,5 +548,14 @@ public class Context implements Serializable {
   @Override
   public String toString( ) {
     return this.toStringBuilder("").toString();
+  }
+
+  /**
+   * Method creates a new builder and initializes it with the data of this object.
+   *
+   * @return {@link Builder} New builder that can be used to create new Context objects. The method never returns null.
+   */
+  public Builder toBuilder( ) {
+    return new Builder(this);
   }
 }

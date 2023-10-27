@@ -285,4 +285,13 @@ public abstract class SoftLinkBase {
   public String toString( ) {
     return this.toStringBuilder("").toString();
   }
+
+  /**
+   * Method creates a new builder and initializes it with the data of this object.
+   *
+   * @return {@link Builder} New builder that can be used to create new SoftLink objects. The method never returns null.
+   */
+  public SoftLink.Builder toBuilder( ) {
+    return new SoftLink.Builder((SoftLink) this);
+  }
 }
