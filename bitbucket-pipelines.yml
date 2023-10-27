@@ -5,4 +5,4 @@ pipelines:
     master:
       - step:
           script:
-            - git push --sync git@github.com:anaptecs-internal/jeaf-generator.git
+            - git push --mirror git@github.com:anaptecs-internal/jeaf-generator.git
