@@ -29,7 +29,7 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -112,7 +112,7 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#getProducts()}
    */
-  @Secured({ "Customer", "Sales Agent" })
+  @PreAuthorize("hasAnyRole('Customer', 'Sales Agent')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(method = { RequestMethod.GET })
   public List<Product> getProducts( @RequestParam(name = "maxResult", required = false) int pMaxResultSize ) {
@@ -128,7 +128,7 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#getProduct()}
    */
-  @Secured({ "Sales Agent" })
+  @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "{id}", method = { RequestMethod.GET })
   public Product getProduct( @PathVariable(name = "id", required = true) String pProductID ) {
@@ -144,7 +144,7 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#createProduct()}
    */
-  @Secured({ "Sales Agent" })
+  @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(method = { RequestMethod.POST })
   public boolean createProduct( @RequestBody(required = true) Product pProduct ) {
@@ -160,7 +160,7 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#getSortiment()}
    */
-  @Secured({ "Sales Agent" })
+  @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "sortiment/{id}", method = { RequestMethod.GET })
   public Sortiment getSortiment( @RequestHeader(name = "token", required = true) String pAccessToken,
@@ -200,7 +200,7 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#createChannelCode()}
    */
-  @Secured({ "Sales Agent" })
+  @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "ChannelCode", method = { RequestMethod.POST })
   public ChannelCode createChannelCode( @RequestBody(required = true) String pChannelCode ) {
@@ -216,7 +216,7 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#ping()}
    */
-  @Secured({ "Customer", "Sales Agent" })
+  @PreAuthorize("hasAnyRole('Customer', 'Sales Agent')")
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(method = { RequestMethod.HEAD })
   public void ping( ) {
@@ -227,7 +227,7 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testInit()}
    */
-  @Secured({ "Sales Agent" })
+  @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(path = "test-init", method = { RequestMethod.GET })
   public void testInit( ) {
@@ -238,7 +238,7 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#getSupportedCurrencies()}
    */
-  @Secured({ "Sales Agent" })
+  @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "currencies/{channelCode}", method = { RequestMethod.GET })
   public List<CurrencyCode> getSupportedCurrencies(
@@ -263,7 +263,7 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#getSupportedCurrenciesAsync()}
    */
-  @Secured({ "Sales Agent" })
+  @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "async-currencies/{channelCode}", method = { RequestMethod.GET })
   public List<CurrencyCode> getSupportedCurrenciesAsync(
@@ -288,7 +288,7 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testParams()}
    */
-  @Secured({ "Sales Agent" })
+  @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "test-params", method = { RequestMethod.GET })
   public String testParams( @RequestHeader(name = "Big-Header", required = true) BigDecimal pBigDecimalHeader,
@@ -306,7 +306,7 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testEnumParams()}
    */
-  @Secured({ "Sales Agent" })
+  @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(path = "test-enum-params/{channelType}", method = { RequestMethod.GET })
   public void testEnumParams( @PathVariable(name = "channelType", required = true) ChannelType pChannelType,
@@ -321,7 +321,7 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testEnumHeaderParams()}
    */
-  @Secured({ "Sales Agent" })
+  @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(path = "test-enum-header-params", method = { RequestMethod.GET })
   public void testEnumHeaderParams( @RequestHeader(name = "Channel-Type", required = true) ChannelType pChannelType,
@@ -336,7 +336,7 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testDateQueryParams()}
    */
-  @Secured({ "Sales Agent" })
+  @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(path = "test-date-query-params/{path}", method = { RequestMethod.GET })
   public void testDateQueryParams( @PathVariable(name = "path", required = true) String pPath,
@@ -465,7 +465,7 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testDateQueryParamsBean()}
    */
-  @Secured({ "Sales Agent" })
+  @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(path = "test-date-query-params-beans/{path}", method = { RequestMethod.GET })
   public void testDateQueryParamsBean( @PathVariable(name = "path", required = true) String pPath,
@@ -546,7 +546,7 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testDateHeaderParams()}
    */
-  @Secured({ "Sales Agent" })
+  @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(path = "test-date-header-params/{path}", method = { RequestMethod.GET })
   public void testDateHeaderParams( @PathVariable(name = "path", required = true) String pPath,
@@ -672,7 +672,7 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testDateHeaderParamsBean()}
    */
-  @Secured({ "Sales Agent" })
+  @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(path = "test-date-header-params-beans/{path}", method = { RequestMethod.GET })
   public void testDateHeaderParamsBean( @PathVariable(name = "path", required = true) String pPath,
@@ -753,7 +753,7 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testCookieParams()}
    */
-  @Secured({ "Sales Agent" })
+  @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(path = "cookies", method = { RequestMethod.GET })
   public void testCookieParams(
@@ -797,7 +797,7 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testOptionalQueryParams()}
    */
-  @Secured({ "Sales Agent" })
+  @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "test-optional-query-params", method = { RequestMethod.GET })
   public String testOptionalQueryParams(
@@ -815,7 +815,7 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#processComplexBookingID()}
    */
-  @Secured({ "Sales Agent" })
+  @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "complex/{bookingID}", method = { RequestMethod.GET })
   public boolean processComplexBookingID(
@@ -835,7 +835,7 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testDataTypesAsHeaderParam()}
    */
-  @Secured({ "Sales Agent" })
+  @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "dataTypesInHeader", method = { RequestMethod.GET })
   public String testDataTypesAsHeaderParam(
@@ -870,7 +870,7 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testDataTypesAsHeaderBeanParam()}
    */
-  @Secured({ "Sales Agent" })
+  @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "dataTypesInBeanHeader", method = { RequestMethod.GET })
   public String testDataTypesAsHeaderBeanParam(
@@ -905,7 +905,7 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testPrimitiveArrays()}
    */
-  @Secured({ "Sales Agent" })
+  @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "testPrimitiveArrayAsBody", method = { RequestMethod.POST })
   public String testPrimitiveArrays( @RequestBody(required = false) int[] pIntegerArray ) {
@@ -921,7 +921,7 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testDataTypeAsQueryParam()}
    */
-  @Secured({ "Sales Agent" })
+  @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "testDataTypeAsQueryParam", method = { RequestMethod.GET })
   public String testDataTypeAsQueryParam(
@@ -946,7 +946,7 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testDataTypeAsBeanQueryParam()}
    */
-  @Secured({ "Sales Agent" })
+  @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "testDataTypeAsBeanQueryParam", method = { RequestMethod.GET })
   public String testDataTypeAsBeanQueryParam(
@@ -973,7 +973,7 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testPrimitiveArrayAsQueryParam()}
    */
-  @Secured({ "Sales Agent" })
+  @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "testPrimitiveArrayAsQueryParam", method = { RequestMethod.GET })
   public String testPrimitiveArrayAsQueryParam( @RequestParam(name = "intValues", required = false) int[] pIntValues ) {
@@ -989,7 +989,7 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testSimpleTypesAsQueryParams()}
    */
-  @Secured({ "Sales Agent" })
+  @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "testSimpleTypesAsQueryParams", method = { RequestMethod.GET })
   public String testSimpleTypesAsQueryParams(
@@ -1006,7 +1006,7 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testPrimitiveWrapperArrayAsQueryParam()}
    */
-  @Secured({ "Sales Agent" })
+  @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "testPrimitiveWrapperArrayAsQueryParam", method = { RequestMethod.GET })
   public String testPrimitiveWrapperArrayAsQueryParam(
@@ -1023,7 +1023,7 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testMultivaluedQueryParamsBean()}
    */
-  @Secured({ "Sales Agent" })
+  @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "testMultivaluedQueryParamsBean", method = { RequestMethod.GET })
   public String testMultivaluedQueryParamsBean( @RequestParam(name = "intArray", required = false) int[] pIntArray,
@@ -1052,7 +1052,7 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testMulitvaluedDataTypeAsQueryParam()}
    */
-  @Secured({ "Sales Agent" })
+  @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "testMulitvaluedDataTypeAsQueryParam", method = { RequestMethod.GET })
   public String testMulitvaluedDataTypeAsQueryParam(
@@ -1127,7 +1127,7 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testMulitvaluedDataTypeAsBeanQueryParam()}
    */
-  @Secured({ "Sales Agent" })
+  @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "testMulitvaluedDataTypeAsBeanQueryParam", method = { RequestMethod.GET })
   public String testMulitvaluedDataTypeAsBeanQueryParam(
@@ -1241,7 +1241,7 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testMultiValuedHeaderFieldsInBeanParam()}
    */
-  @Secured({ "Sales Agent" })
+  @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "testMultiValuedHeaderFieldsInBeanParam", method = { RequestMethod.GET })
   public String testMultiValuedHeaderFieldsInBeanParam(
@@ -1360,7 +1360,7 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testMultiValuedHeaderFields()}
    */
-  @Secured({ "Sales Agent" })
+  @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "testMultiValuedHeaderFields", method = { RequestMethod.GET })
   public String testMultiValuedHeaderFields( @RequestHeader(name = "names", required = false) Set<String> pNames,
@@ -1431,7 +1431,7 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testBookingIDAsPathParam()}
    */
-  @Secured({ "Sales Agent" })
+  @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(path = "booking-id-as-path-param/{bookingID}", method = { RequestMethod.PATCH })
   public void testBookingIDAsPathParam(
@@ -1447,7 +1447,7 @@ public class RESTProductServiceResource {
   /**
    * {@link RESTProductService#testBookingIDAsHeaderParam()}
    */
-  @Secured({ "Sales Agent" })
+  @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(path = "booking-id-as-header-param", method = { RequestMethod.PATCH })
   public void testBookingIDAsHeaderParam(

@@ -80,6 +80,9 @@ cached boolean generateRESTResources() :
 cached boolean generateSecurityAnnotation() :    
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateSecurityAnnotation();
     
+cached boolean useDeprecatedSpringSecuredAnnotation() :    
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.useDeprecatedSpringSecuredAnnotation();
+    
 cached boolean generateRESTRequestValidation() :    
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generateRESTRequestValidation();
     

@@ -84,6 +84,9 @@ public class GeneratorCommons {
 
   public static final String SECURITY_ANNOTATION_PROPERTY = "switch.gen.rest.security.annotation";
 
+  public static final String USE_DEPRECATED_SECURED_PROPERTY =
+      "switch.gen.rest.security.useDeprecatedSpringSecuredAnnotation";
+
   public static final String REST_REQUEST_VALIDATION_PROPERTY = "switch.gen.rest.validation.request";
 
   public static final String REST_RESPONSE_VALIDATION_PROPERTY = "switch.gen.rest.validation.response";
@@ -739,6 +742,11 @@ public class GeneratorCommons {
   public static boolean generateSecurityAnnotation( ) {
     Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
     return lConfiguration.getConfigurationValue(SECURITY_ANNOTATION_PROPERTY, Boolean.TRUE, Boolean.class);
+  }
+
+  public static boolean useDeprecatedSpringSecuredAnnotation( ) {
+    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
+    return lConfiguration.getConfigurationValue(USE_DEPRECATED_SECURED_PROPERTY, Boolean.FALSE, Boolean.class);
   }
 
   public static boolean generateRESTRequestValidation( ) {
