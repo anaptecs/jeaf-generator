@@ -3,6 +3,7 @@
 «EXTENSION jeaf::RESTFunctions»
 «EXTENSION java::OpenAPIFunctions»
 «EXTENSION functions::Property»
+«EXTENSION functions::Class»
 
 «IMPORT uml»
 «IMPORT JMM»
@@ -411,17 +412,23 @@ public class «name»RESTProxy implements «this.fqn()» {
 		com.anaptecs.jeaf.rest.executor.api.RESTRequest lRequest = lRequestBuilder.build();
 		
 		«IF getReturnTypeName() != "void"»
+            com.anaptecs.jeaf.rest.executor.api.ObjectType lObjectType = 
+            «IF getReturnType().type.isClass() && getReturnType().type.asClass().templateBinding.isEmpty == false»
+            ObjectType.createGenericsObjectType(«getReturnType().type.asClass().getGenericClass().name».class, «getReturnType().type.asClass().getTypeParameterName()».class);
+            «ELSE»
+            ObjectType.createObjectType(«getReturnType().type.fqn()».class);                
+            «ENDIF»
 			«IF this.getReturnResult().isMultivalued() == false»
 	            «IF generateRESTResponseValidation()»
-	                «getReturnTypeName()» lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, «this.getHTTPStatusCode()», «this.getReturnResult().type.fqn()».class);
+	                «getReturnTypeName()» lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, «this.getHTTPStatusCode()», lObjectType);
 	                // Validate response and return it.
 	                validationExecutor.validateResponse(«((NamedElement)owner).fqn()».class, lResult);
 	                return lResult;
 	            «ELSE»
-				return requestExecutor.executeSingleObjectResultRequest(lRequest, «this.getHTTPStatusCode()», «this.getReturnResult().type.fqn()».class);
+				return requestExecutor.executeSingleObjectResultRequest(lRequest, «this.getHTTPStatusCode()», lObjectType);
 	            «ENDIF»
 			«ELSE»
-		    «getReturnTypeName()» lResult = requestExecutor.executeCollectionResultRequest(lRequest, «this.getHTTPStatusCode()», «this.getReturnResult().getCollectionType()».class, «this.getReturnResult().type.fqn()».class);
+		    «getReturnTypeName()» lResult = requestExecutor.executeCollectionResultRequest(lRequest, «this.getHTTPStatusCode()», «this.getReturnResult().getCollectionType()».class, lObjectType);
 		    if (lResult == null) {
 		      lResult = «this.getReturnResult().getEmptyCollectionOperation()»;
 		    }

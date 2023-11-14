@@ -24,6 +24,7 @@ import com.anaptecs.jeaf.core.annotations.JEAFServiceProvider;
 import com.anaptecs.jeaf.core.spi.ServiceProviderImplementation;
 import com.anaptecs.jeaf.rest.executor.api.ContentType;
 import com.anaptecs.jeaf.rest.executor.api.HttpMethod;
+import com.anaptecs.jeaf.rest.executor.api.ObjectType;
 import com.anaptecs.jeaf.rest.executor.api.RESTRequest;
 import com.anaptecs.jeaf.rest.executor.api.jeaf.RESTRequestExecutorServiceProvider;
 import com.anaptecs.jeaf.xfun.api.XFun;
@@ -94,7 +95,8 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     lRequestBuilder.setPath(lPathBuilder.toString());
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
-    List<Product> lResult = requestExecutor.executeCollectionResultRequest(lRequest, 200, List.class, Product.class);
+    ObjectType lObjectType = ObjectType.createObjectType(Product.class);
+    List<Product> lResult = requestExecutor.executeCollectionResultRequest(lRequest, 200, List.class, lObjectType);
     if (lResult == null) {
       lResult = Collections.emptyList();
     }
@@ -117,7 +119,8 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     lRequestBuilder.setPath(lPathBuilder.toString());
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
-    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, Product.class);
+    ObjectType lObjectType = ObjectType.createObjectType(Product.class);
+    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
   }
 
   /**
@@ -136,7 +139,8 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     lRequestBuilder.setBody(pProduct);
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
-    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, Boolean.class);
+    ObjectType lObjectType = ObjectType.createObjectType(Boolean.class);
+    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
   }
 
   /**
@@ -183,7 +187,8 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     }
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
-    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, Sortiment.class);
+    ObjectType lObjectType = ObjectType.createObjectType(Sortiment.class);
+    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
   }
 
   /**
@@ -204,7 +209,8 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     lRequestBuilder.setBody(pChannelCode);
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
-    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, ChannelCode.class);
+    ObjectType lObjectType = ObjectType.createObjectType(ChannelCode.class);
+    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
   }
 
   /**
@@ -238,7 +244,8 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     lRequestBuilder.setPath(lPathBuilder.toString());
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
-    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+    ObjectType lObjectType = ObjectType.createObjectType(String.class);
+    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
   }
 
   /**
@@ -277,7 +284,8 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     }
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
-    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+    ObjectType lObjectType = ObjectType.createObjectType(String.class);
+    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
   }
 
   /**
@@ -335,7 +343,8 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     lRequestBuilder.setHeader("param1", pParam1);
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
-    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+    ObjectType lObjectType = ObjectType.createObjectType(String.class);
+    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
   }
 
   /**
@@ -357,7 +366,8 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     lRequestBuilder.setBody(pBody);
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
-    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+    ObjectType lObjectType = ObjectType.createObjectType(String.class);
+    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
   }
 
   /**
@@ -401,7 +411,8 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     lRequestBuilder.setPath(lPathBuilder.toString());
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
-    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, Product.class);
+    ObjectType lObjectType = ObjectType.createObjectType(Product.class);
+    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
   }
 
   /**
@@ -475,7 +486,8 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     lRequestBuilder.setBody(pChannelCode);
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
-    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, ChannelCode.class);
+    ObjectType lObjectType = ObjectType.createObjectType(ChannelCode.class);
+    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
   }
 
   /**
@@ -496,8 +508,8 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     lRequestBuilder.setBody(pCurrencies);
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
-    List<CurrencyCode> lResult =
-        requestExecutor.executeCollectionResultRequest(lRequest, 200, List.class, CurrencyCode.class);
+    ObjectType lObjectType = ObjectType.createObjectType(CurrencyCode.class);
+    List<CurrencyCode> lResult = requestExecutor.executeCollectionResultRequest(lRequest, 200, List.class, lObjectType);
     if (lResult == null) {
       lResult = Collections.emptyList();
     }
@@ -522,7 +534,8 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     lRequestBuilder.setBody(pCurrency);
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
-    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, CurrencyCode.class);
+    ObjectType lObjectType = ObjectType.createObjectType(CurrencyCode.class);
+    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
   }
 
   /**
@@ -543,7 +556,8 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     lRequestBuilder.setBody(pStringCode);
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
-    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, IntegerCodeType.class);
+    ObjectType lObjectType = ObjectType.createObjectType(IntegerCodeType.class);
+    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
   }
 
   /**
@@ -571,7 +585,8 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     }
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
-    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+    ObjectType lObjectType = ObjectType.createObjectType(String.class);
+    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
   }
 
   /**
@@ -599,7 +614,8 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     }
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
-    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+    ObjectType lObjectType = ObjectType.createObjectType(String.class);
+    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
   }
 
   /**
@@ -630,7 +646,8 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     }
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
-    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+    ObjectType lObjectType = ObjectType.createObjectType(String.class);
+    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
   }
 
   /**
@@ -924,7 +941,8 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     }
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
-    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+    ObjectType lObjectType = ObjectType.createObjectType(String.class);
+    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
   }
 
   /**
@@ -953,7 +971,8 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     }
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
-    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+    ObjectType lObjectType = ObjectType.createObjectType(String.class);
+    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
   }
 
   /**
@@ -980,6 +999,7 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     }
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
-    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+    ObjectType lObjectType = ObjectType.createObjectType(String.class);
+    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
   }
 }

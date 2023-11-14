@@ -29,6 +29,7 @@ import org.springframework.stereotype.Service;
 
 import com.anaptecs.jeaf.rest.executor.api.ContentType;
 import com.anaptecs.jeaf.rest.executor.api.HttpMethod;
+import com.anaptecs.jeaf.rest.executor.api.ObjectType;
 import com.anaptecs.jeaf.rest.executor.api.RESTRequest;
 import com.anaptecs.jeaf.rest.executor.api.RESTRequestExecutor;
 import com.anaptecs.jeaf.validation.api.ValidationExecutor;
@@ -118,7 +119,8 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     lRequestBuilder.setQueryParameter("maxResult", String.valueOf(pMaxResultSize));
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
-    List<Product> lResult = requestExecutor.executeCollectionResultRequest(lRequest, 200, List.class, Product.class);
+    ObjectType lObjectType = ObjectType.createObjectType(Product.class);
+    List<Product> lResult = requestExecutor.executeCollectionResultRequest(lRequest, 200, List.class, lObjectType);
     if (lResult == null) {
       lResult = Collections.emptyList();
     }
@@ -146,7 +148,8 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     lRequestBuilder.setPath(lPathBuilder.toString());
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
-    Product lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, Product.class);
+    ObjectType lObjectType = ObjectType.createObjectType(Product.class);
+    Product lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
     // Validate response and return it.
     validationExecutor.validateResponse(RESTProductService.class, lResult);
     return lResult;
@@ -171,7 +174,8 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     lRequestBuilder.setBody(pProduct);
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
-    boolean lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, Boolean.class);
+    ObjectType lObjectType = ObjectType.createObjectType(Boolean.class);
+    boolean lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
     // Validate response and return it.
     validationExecutor.validateResponse(RESTProductService.class, lResult);
     return lResult;
@@ -223,7 +227,8 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     }
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
-    Sortiment lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, Sortiment.class);
+    ObjectType lObjectType = ObjectType.createObjectType(Sortiment.class);
+    Sortiment lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
     // Validate response and return it.
     validationExecutor.validateResponse(RESTProductService.class, lResult);
     return lResult;
@@ -250,7 +255,8 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     lRequestBuilder.setBody(pChannelCode);
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
-    ChannelCode lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, ChannelCode.class);
+    ObjectType lObjectType = ObjectType.createObjectType(ChannelCode.class);
+    ChannelCode lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
     // Validate response and return it.
     validationExecutor.validateResponse(RESTProductService.class, lResult);
     return lResult;
@@ -310,8 +316,8 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     lRequestBuilder.setPath(lPathBuilder.toString());
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
-    List<CurrencyCode> lResult =
-        requestExecutor.executeCollectionResultRequest(lRequest, 200, List.class, CurrencyCode.class);
+    ObjectType lObjectType = ObjectType.createObjectType(CurrencyCode.class);
+    List<CurrencyCode> lResult = requestExecutor.executeCollectionResultRequest(lRequest, 200, List.class, lObjectType);
     if (lResult == null) {
       lResult = Collections.emptyList();
     }
@@ -340,8 +346,8 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     lRequestBuilder.setPath(lPathBuilder.toString());
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
-    List<CurrencyCode> lResult =
-        requestExecutor.executeCollectionResultRequest(lRequest, 200, List.class, CurrencyCode.class);
+    ObjectType lObjectType = ObjectType.createObjectType(CurrencyCode.class);
+    List<CurrencyCode> lResult = requestExecutor.executeCollectionResultRequest(lRequest, 200, List.class, lObjectType);
     if (lResult == null) {
       lResult = Collections.emptyList();
     }
@@ -381,7 +387,8 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     lRequestBuilder.setCookie("giveMeMoreCookies", String.valueOf(pIntCookieParam));
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
-    String lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+    ObjectType lObjectType = ObjectType.createObjectType(String.class);
+    String lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
     // Validate response and return it.
     validationExecutor.validateResponse(RESTProductService.class, lResult);
     return lResult;
@@ -810,7 +817,8 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     lRequestBuilder.setQueryParameter("query2", String.valueOf(query2));
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
-    String lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+    ObjectType lObjectType = ObjectType.createObjectType(String.class);
+    String lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
     // Validate response and return it.
     validationExecutor.validateResponse(RESTProductService.class, lResult);
     return lResult;
@@ -836,7 +844,8 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     lRequestBuilder.setPath(lPathBuilder.toString());
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
-    boolean lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, Boolean.class);
+    ObjectType lObjectType = ObjectType.createObjectType(Boolean.class);
+    boolean lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
     // Validate response and return it.
     validationExecutor.validateResponse(RESTProductService.class, lResult);
     return lResult;
@@ -873,7 +882,8 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     }
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
-    String lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+    ObjectType lObjectType = ObjectType.createObjectType(String.class);
+    String lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
     // Validate response and return it.
     validationExecutor.validateResponse(RESTProductService.class, lResult);
     return lResult;
@@ -910,7 +920,8 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     }
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
-    String lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+    ObjectType lObjectType = ObjectType.createObjectType(String.class);
+    String lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
     // Validate response and return it.
     validationExecutor.validateResponse(RESTProductService.class, lResult);
     return lResult;
@@ -937,7 +948,8 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     lRequestBuilder.setBody(pIntegerArray);
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
-    String lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+    ObjectType lObjectType = ObjectType.createObjectType(String.class);
+    String lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
     // Validate response and return it.
     validationExecutor.validateResponse(RESTProductService.class, lResult);
     return lResult;
@@ -966,7 +978,8 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     }
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
-    String lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+    ObjectType lObjectType = ObjectType.createObjectType(String.class);
+    String lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
     // Validate response and return it.
     validationExecutor.validateResponse(RESTProductService.class, lResult);
     return lResult;
@@ -998,7 +1011,8 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     }
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
-    String lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+    ObjectType lObjectType = ObjectType.createObjectType(String.class);
+    String lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
     // Validate response and return it.
     validationExecutor.validateResponse(RESTProductService.class, lResult);
     return lResult;
@@ -1027,7 +1041,8 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     }
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
-    String lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+    ObjectType lObjectType = ObjectType.createObjectType(String.class);
+    String lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
     // Validate response and return it.
     validationExecutor.validateResponse(RESTProductService.class, lResult);
     return lResult;
@@ -1056,7 +1071,8 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     }
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
-    String lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+    ObjectType lObjectType = ObjectType.createObjectType(String.class);
+    String lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
     // Validate response and return it.
     validationExecutor.validateResponse(RESTProductService.class, lResult);
     return lResult;
@@ -1085,7 +1101,8 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     }
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
-    String lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+    ObjectType lObjectType = ObjectType.createObjectType(String.class);
+    String lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
     // Validate response and return it.
     validationExecutor.validateResponse(RESTProductService.class, lResult);
     return lResult;
@@ -1128,7 +1145,8 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     }
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
-    String lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+    ObjectType lObjectType = ObjectType.createObjectType(String.class);
+    String lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
     // Validate response and return it.
     validationExecutor.validateResponse(RESTProductService.class, lResult);
     return lResult;
@@ -1195,7 +1213,8 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     }
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
-    String lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+    ObjectType lObjectType = ObjectType.createObjectType(String.class);
+    String lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
     // Validate response and return it.
     validationExecutor.validateResponse(RESTProductService.class, lResult);
     return lResult;
@@ -1294,7 +1313,8 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     }
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
-    String lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+    ObjectType lObjectType = ObjectType.createObjectType(String.class);
+    String lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
     // Validate response and return it.
     validationExecutor.validateResponse(RESTProductService.class, lResult);
     return lResult;
@@ -1400,7 +1420,8 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     }
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
-    String lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+    ObjectType lObjectType = ObjectType.createObjectType(String.class);
+    String lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
     // Validate response and return it.
     validationExecutor.validateResponse(RESTProductService.class, lResult);
     return lResult;
@@ -1472,7 +1493,8 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     }
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
-    String lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+    ObjectType lObjectType = ObjectType.createObjectType(String.class);
+    String lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
     // Validate response and return it.
     validationExecutor.validateResponse(RESTProductService.class, lResult);
     return lResult;
