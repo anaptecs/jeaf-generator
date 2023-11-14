@@ -22,6 +22,7 @@ import com.anaptecs.jeaf.core.annotations.JEAFServiceProvider;
 import com.anaptecs.jeaf.core.spi.ServiceProviderImplementation;
 import com.anaptecs.jeaf.rest.executor.api.ContentType;
 import com.anaptecs.jeaf.rest.executor.api.HttpMethod;
+import com.anaptecs.jeaf.rest.executor.api.ObjectType;
 import com.anaptecs.jeaf.rest.executor.api.RESTRequest;
 import com.anaptecs.jeaf.rest.executor.api.jeaf.RESTRequestExecutorServiceProvider;
 import com.anaptecs.jeaf.xfun.api.XFun;
@@ -81,7 +82,8 @@ public final class PathlessServiceRESTProxyServiceProviderImpl
     lRequestBuilder.setPath(lPathBuilder.toString());
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
-    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+    ObjectType lObjectType = ObjectType.createObjectType(String.class);
+    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
   }
 
   /**
@@ -274,6 +276,7 @@ public final class PathlessServiceRESTProxyServiceProviderImpl
     }
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
-    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+    ObjectType lObjectType = ObjectType.createObjectType(String.class);
+    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
   }
 }

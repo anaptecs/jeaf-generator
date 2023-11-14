@@ -21,6 +21,7 @@ import org.springframework.stereotype.Service;
 
 import com.anaptecs.jeaf.rest.executor.api.ContentType;
 import com.anaptecs.jeaf.rest.executor.api.HttpMethod;
+import com.anaptecs.jeaf.rest.executor.api.ObjectType;
 import com.anaptecs.jeaf.rest.executor.api.RESTRequest;
 import com.anaptecs.jeaf.rest.executor.api.RESTRequestExecutor;
 import com.anaptecs.jeaf.validation.api.ValidationExecutor;
@@ -88,7 +89,8 @@ public class PathlessServiceRESTProxy implements PathlessService {
     lRequestBuilder.setPath(lPathBuilder.toString());
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
-    String lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+    ObjectType lObjectType = ObjectType.createObjectType(String.class);
+    String lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
     // Validate response and return it.
     validationExecutor.validateResponse(PathlessService.class, lResult);
     return lResult;
@@ -286,7 +288,8 @@ public class PathlessServiceRESTProxy implements PathlessService {
     }
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
-    String lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, String.class);
+    ObjectType lObjectType = ObjectType.createObjectType(String.class);
+    String lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
     // Validate response and return it.
     validationExecutor.validateResponse(PathlessService.class, lResult);
     return lResult;

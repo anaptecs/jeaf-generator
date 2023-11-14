@@ -38,6 +38,18 @@
 		</dependency>
 
 		<dependency>
+			<groupId>com.anaptecs.jeaf.rest</groupId>
+			<artifactId>jeaf-rest-request-executor-service-provider</artifactId>
+			<version>${jeaf.rest.api.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.anaptecs.jeaf.rest</groupId>
+			<artifactId>jeaf-rest-request-executor-apache-jeaf</artifactId>
+			<version>${jeaf.rest.impl.version}</version>
+		</dependency>
+
+		<dependency>
 		    <groupId>com.fasterxml.jackson.core</groupId>
 		    <artifactId>jackson-databind</artifactId>
 		    <version>${jackson.version}</version>
@@ -143,6 +155,7 @@
 					<generateEqualsAndHashCodeForOpenAPIDataTypes>true</generateEqualsAndHashCodeForOpenAPIDataTypes>
 					<generateServiceInterfaces>true</generateServiceInterfaces>
 					<generateRESTResources>true</generateRESTResources>
+					<generateRESTServiceProxies>true</generateRESTServiceProxies>
 					<generateJAXRSAnnotations>true</generateJAXRSAnnotations>
 					<generateJacksonAnnotations>true</generateJacksonAnnotations>
 					<enableSemVerForJSON>false</enableSemVerForJSON>
