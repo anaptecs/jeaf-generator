@@ -26,15 +26,15 @@ public class JavadocHelper {
     lOptions.set(HtmlRenderer.SOFT_BREAK, "<br/>");
     lOptions.set(HtmlRenderer.SUPPRESS_HTML_BLOCKS, true);
     lOptions.set(EmojiExtension.USE_UNICODE_FILE_NAMES, true);
-    lOptions.set(EmojiExtension.ROOT_IMAGE_PATH,
-        "https://raw.githubusercontent.com/anaptecs/emoji-images/master/imgs/");
+    lOptions
+        .set(EmojiExtension.ROOT_IMAGE_PATH, "https://raw.githubusercontent.com/anaptecs/emoji-images/master/imgs/");
 
     markdownParser = Parser.builder(lOptions).build();
     renderer = HtmlRenderer.builder(lOptions).build();
   }
 
   public static String convertCommentForJavadoc( String pComment ) {
-    Node lDocument = markdownParser.parse(pComment);
+    Node lDocument = markdownParser.parse(pComment.trim());
     String lJavadoc = renderer.render(lDocument).trim();
     if (lJavadoc.startsWith("<p>")) {
       lJavadoc = lJavadoc.substring(3);

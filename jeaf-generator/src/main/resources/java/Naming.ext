@@ -146,7 +146,7 @@ String getComment(List commentList):
     commentList.size > 0 ? getComment(commentList.get(0)) : "";
                   
 String getComment(uml::Comment comment):
-    comment.body;
+    comment.body.trim();
     
 boolean hasComment(uml::Element element):
     getComment(element).length > 0 || (element.isOperation() && element.asOperation().hasSecurityRoles()) || (element.isJEAFDeprecated() && ((uml::NamedElement) element).hasMeaningfulDeprecationInfo()) || element.hasAliasAttributeName();

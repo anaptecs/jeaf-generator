@@ -18,7 +18,7 @@ List[Comment] comment (Class c) : c.ownedAttribute.select(a|Comment.isInstance(a
 
 List[Property] associationEnd (Class c) : c.ownedAttribute.select(a|Class.isInstance(a.type));
 
-String getCommentBody(Comment c) : c.body;
+String getCommentBody(Comment c) : c.body.trim();
 
 boolean hasInitValue(Property p) : !p.ownedElement.isEmpty;
 
