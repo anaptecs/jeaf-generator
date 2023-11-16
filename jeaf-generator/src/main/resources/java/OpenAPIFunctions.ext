@@ -55,11 +55,11 @@ cached Set[String] getPaths(JMM::RESTResource service):
    service.ownedOperation.typeSelect(JMM::RESTOperation).path.toSet();
 	
 cached String getYAMLStyleComment(uml::Element element, String indentation):
-    element.ownedComment.get(0).body.replaceAll("\n", "\r\n" + indentation + "# ");
+    element.ownedComment.get(0).body.trim().replaceAll("\n", "\r\n" + indentation + "# ");
 
 cached String getCommentForOpenAPIDescription(uml::Element element, String indentation):
     if element.ownedComment.size > 0
-    then element.ownedComment.first().body.replaceAll("\n", "\r\n" + indentation) + element.getAliasDocs(indentation) + element.getAuthorizedRoles(indentation) + ((uml::NamedElement) element).getInternalDeprecationDescription(indentation)
+    then element.ownedComment.first().body.trim().replaceAll("\n", "\r\n" + indentation) + element.getAliasDocs(indentation) + element.getAuthorizedRoles(indentation) + ((uml::NamedElement) element).getInternalDeprecationDescription(indentation)
     else element.getAliasDocs(indentation) + element.getAuthorizedRoles(indentation) + ((uml::NamedElement) element).getInternalDeprecationDescription(indentation);
 
 private cached String getAliasDocs(uml::Element property, String indentation):

@@ -7,4 +7,4 @@ private boolean hasStereotypeForTypesReport(uml::NamedElement element):
     getTypesReportStereotypes().exists(e|element.isStereotypeApplied(e));
     
 cached String getDescriptionForMarkup(uml::NamedElement element): 
-    element.ownedComment.first().body.replaceAll("\n", "<br>");
+    element.ownedComment.first().body.trim().replaceAll("\n", "<br>");
