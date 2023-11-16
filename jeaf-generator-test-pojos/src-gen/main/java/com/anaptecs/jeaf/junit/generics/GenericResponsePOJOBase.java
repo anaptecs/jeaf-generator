@@ -412,7 +412,7 @@ public abstract class GenericResponsePOJOBase<T> {
    * @return {@link Builder} New builder that can be used to create new GenericResponsePOJO objects. The method never
    * returns null.
    */
-  public GenericResponsePOJO.Builder toBuilder( ) {
-    return new GenericResponsePOJO.Builder((GenericResponsePOJO) this);
+  public GenericResponsePOJO.Builder<T> toBuilder( ) {
+    return new GenericResponsePOJO.Builder<T>((GenericResponsePOJO<T>) this);
   }
 }

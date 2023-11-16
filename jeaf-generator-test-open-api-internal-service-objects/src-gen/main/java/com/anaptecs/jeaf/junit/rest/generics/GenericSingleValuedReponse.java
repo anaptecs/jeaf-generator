@@ -68,7 +68,7 @@ public class GenericSingleValuedReponse<T> extends AbstractResponse<T> {
    * Method creates a new builder and initializes it with the passed attributes.
    */
   public static <T> Builder<T> builder( T pValue ) {
-    Builder lBuilder = builder();
+    Builder<T> lBuilder = builder();
     lBuilder.setValue(pValue);
     return lBuilder;
   }
@@ -102,7 +102,7 @@ public class GenericSingleValuedReponse<T> extends AbstractResponse<T> {
      * Method sets association {@link #errors}.<br/>
      *
      * @param pErrors Collection to which {@link #errors} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder<T>} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder<T> setErrors( List<Message> pErrors ) {
@@ -115,7 +115,7 @@ public class GenericSingleValuedReponse<T> extends AbstractResponse<T> {
      * Method adds the passed objects to association {@link #errors}.<br/>
      *
      * @param pErrors Array of objects that should be added to {@link #errors}. The parameter may be null.
-     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     * @return {@link Builder<T>} Instance of this builder to support chaining. Method never returns null.
      */
     public Builder<T> addToErrors( Message... pErrors ) {
       // Call super class implementation.
@@ -127,7 +127,7 @@ public class GenericSingleValuedReponse<T> extends AbstractResponse<T> {
      * Method sets association {@link #warnings}.<br/>
      *
      * @param pWarnings Collection to which {@link #warnings} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder<T>} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public Builder<T> setWarnings( List<Message> pWarnings ) {
@@ -140,7 +140,7 @@ public class GenericSingleValuedReponse<T> extends AbstractResponse<T> {
      * Method adds the passed objects to association {@link #warnings}.<br/>
      *
      * @param pWarnings Array of objects that should be added to {@link #warnings}. The parameter may be null.
-     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     * @return {@link Builder<T>} Instance of this builder to support chaining. Method never returns null.
      */
     public Builder<T> addToWarnings( Message... pWarnings ) {
       // Call super class implementation.
@@ -236,7 +236,7 @@ public class GenericSingleValuedReponse<T> extends AbstractResponse<T> {
    * @return {@link Builder} New builder that can be used to create new GenericSingleValuedReponse objects. The method
    * never returns null.
    */
-  public Builder toBuilder( ) {
-    return new Builder(this);
+  public Builder<T> toBuilder( ) {
+    return new Builder<T>(this);
   }
 }

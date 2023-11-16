@@ -81,7 +81,7 @@ public abstract class GenericPageableResponseBase<T> extends AbstractResponse<T>
      * Method sets association {@link #errors}.<br/>
      *
      * @param pErrors Collection to which {@link #errors} should be set.
-     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link BuilderBase<T>} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public BuilderBase<T> setErrors( List<Message> pErrors ) {
@@ -94,7 +94,7 @@ public abstract class GenericPageableResponseBase<T> extends AbstractResponse<T>
      * Method adds the passed objects to association {@link #errors}.<br/>
      *
      * @param pErrors Array of objects that should be added to {@link #errors}. The parameter may be null.
-     * @return {@link BuilderBase} Instance of this builder to support chaining. Method never returns null.
+     * @return {@link BuilderBase<T>} Instance of this builder to support chaining. Method never returns null.
      */
     public BuilderBase<T> addToErrors( Message... pErrors ) {
       // Call super class implementation.
@@ -106,7 +106,7 @@ public abstract class GenericPageableResponseBase<T> extends AbstractResponse<T>
      * Method sets association {@link #warnings}.<br/>
      *
      * @param pWarnings Collection to which {@link #warnings} should be set.
-     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link BuilderBase<T>} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
     public BuilderBase<T> setWarnings( List<Message> pWarnings ) {
@@ -119,7 +119,7 @@ public abstract class GenericPageableResponseBase<T> extends AbstractResponse<T>
      * Method adds the passed objects to association {@link #warnings}.<br/>
      *
      * @param pWarnings Array of objects that should be added to {@link #warnings}. The parameter may be null.
-     * @return {@link BuilderBase} Instance of this builder to support chaining. Method never returns null.
+     * @return {@link BuilderBase<T>} Instance of this builder to support chaining. Method never returns null.
      */
     public BuilderBase<T> addToWarnings( Message... pWarnings ) {
       // Call super class implementation.
@@ -150,7 +150,7 @@ public abstract class GenericPageableResponseBase<T> extends AbstractResponse<T>
      * @param pValues Array of objects that should be added to {@link #values}. The parameter may be null.
      * @return {@link BuilderBase} Instance of this builder to support chaining. Method never returns null.
      */
-    public BuilderBase<T> addToValues( T... pValues ) {
+    public BuilderBase<T> addToValues( @SuppressWarnings("unchecked") T... pValues ) {
       if (pValues != null) {
         if (values == null) {
           values = new ArrayList<T>();
@@ -287,7 +287,7 @@ public abstract class GenericPageableResponseBase<T> extends AbstractResponse<T>
    * @return {@link Builder} New builder that can be used to create new GenericPageableResponse objects. The method
    * never returns null.
    */
-  public GenericPageableResponse.Builder toBuilder( ) {
-    return new GenericPageableResponse.Builder((GenericPageableResponse) this);
+  public GenericPageableResponse.Builder<T> toBuilder( ) {
+    return new GenericPageableResponse.Builder<T>((GenericPageableResponse<T>) this);
   }
 }
