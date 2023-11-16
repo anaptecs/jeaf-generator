@@ -647,7 +647,7 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
     * Method creates a new builder and initializes it with the passed attributes.
     */
     public static «this.getTemplateParams()» Builder«this.getTemplateParams()» builder(«FOREACH this.getRequiredPropertiesForBuilder() AS property SEPARATOR ", "» «IF property.isSoftLink()»«((SoftLink) property).getJavaSoftLinkType()» «ELSE»«property.type.fqn()» «ENDIF»p«property.name.toFirstUpper()»«ENDFOREACH») {
-      Builder«this.getTemplateParams()» lBuilder = new Builder«this.getTemplateParams()»();
+      Builder«this.getTemplateParams()» lBuilder = builder();
       «FOREACH this.getRequiredPropertiesForBuilder() AS property-»
 			lBuilder.«property.asSetter()»(p«property.name.toFirstUpper()»);
 		«ENDFOREACH -»

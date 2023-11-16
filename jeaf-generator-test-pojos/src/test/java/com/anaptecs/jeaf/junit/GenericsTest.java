@@ -11,7 +11,7 @@ import com.anaptecs.jeaf.junit.generics.MyBusinessObject;
 public class GenericsTest {
   @Test
   void testGenericBuilders( ) {
-    Builder<MyBusinessObject> lBuilder = GenericResponsePOJO.builder();
+    Builder<MyBusinessObject> lBuilder = GenericResponsePOJO.builder(MyBusinessObject.class);
     lBuilder.setValue(MyBusinessObject.builder().build());
     GenericResponsePOJO<MyBusinessObject> lObject = lBuilder.build();
     assertNotNull(lObject);

@@ -30,6 +30,15 @@ public class GenericResponsePOJO<T> extends GenericResponsePOJOBase<T> {
   }
 
   /**
+   * Method returns a new builder.
+   *
+   * @return {@link Builder} New builder that can be used to create new GenericResponsePOJO objects.
+   */
+  public static <T> Builder<T> builder( Class<T> pClass ) {
+    return new Builder<T>();
+  }
+
+  /**
    * Method creates a new builder and initializes it with the data from the passed object.
    *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
