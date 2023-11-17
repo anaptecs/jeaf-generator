@@ -48,7 +48,7 @@ public class Campaign implements ServiceObject {
    * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #theLink} is
    * <code>com.anaptecs.jeaf.junit.openapi.base.LinkObject</code><br/>
    *
-   * @deprecated Please use "moreLinks" instead. (<b>since:</b> 2.3.1, <b>removed with:</b> 2.4)
+   * @deprecated Please use &quot;moreLinks&quot; instead. (<b>since:</b> 2.3.1, <b>removed with:</b> 2.4)
    */
   @Deprecated
   private long theLink;
@@ -149,7 +149,7 @@ public class Campaign implements ServiceObject {
      * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #theLink} is
      * <code>com.anaptecs.jeaf.junit.openapi.base.LinkObject</code><br/>
      *
-     * @deprecated Please use "moreLinks" instead. (<b>since:</b> 2.3.1, <b>removed with:</b> 2.4)
+     * @deprecated Please use &quot;moreLinks&quot; instead. (<b>since:</b> 2.3.1, <b>removed with:</b> 2.4)
      */
     @Deprecated
     private long theLink;
@@ -195,7 +195,7 @@ public class Campaign implements ServiceObject {
      *
      * @param pTheLink Value to which {@link #theLink} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
-     * @deprecated Please use "moreLinks" instead. (<b>since:</b> 2.3.1, <b>removed with:</b> 2.4)
+     * @deprecated Please use &quot;moreLinks&quot; instead. (<b>since:</b> 2.3.1, <b>removed with:</b> 2.4)
      */
     @Deprecated
     public Builder setTheLink( long pTheLink ) {
@@ -273,7 +273,7 @@ public class Campaign implements ServiceObject {
    * The magic link.
    *
    * @return {@link long} Value to which {@link #theLink} is set.
-   * @deprecated Please use "moreLinks" instead. (<b>since:</b> 2.3.1, <b>removed with:</b> 2.4)
+   * @deprecated Please use &quot;moreLinks&quot; instead. (<b>since:</b> 2.3.1, <b>removed with:</b> 2.4)
    */
   @Deprecated
   public long getTheLink( ) {
@@ -285,7 +285,7 @@ public class Campaign implements ServiceObject {
    * The magic link.
    *
    * @param pTheLink Value to which {@link #theLink} should be set.
-   * @deprecated Please use "moreLinks" instead. (<b>since:</b> 2.3.1, <b>removed with:</b> 2.4)
+   * @deprecated Please use &quot;moreLinks&quot; instead. (<b>since:</b> 2.3.1, <b>removed with:</b> 2.4)
    */
   @Deprecated
   public void setTheLink( long pTheLink ) {

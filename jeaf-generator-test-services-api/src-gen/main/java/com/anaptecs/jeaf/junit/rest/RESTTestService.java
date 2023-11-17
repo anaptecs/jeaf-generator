@@ -60,10 +60,10 @@ public interface RESTTestService extends Service {
   void handleBeanParam1( BeanParameter pBeanParam );
 
   /**
-   * @deprecated Please use something else.</br>
-   * </br>
-   * This is not the right operation any longer.</br>
-   * </br>
+   * @deprecated Please use something else.<br/>
+   * <br/>
+   * This is not the right operation any longer.<br/>
+   * <br/>
    * Sorry!!! (<b>since:</b> a very long time, <b>removed with:</b> 2023-12-13)
    */
   @Deprecated
