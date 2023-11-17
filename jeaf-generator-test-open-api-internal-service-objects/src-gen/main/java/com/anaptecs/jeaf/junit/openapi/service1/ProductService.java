@@ -73,6 +73,8 @@ public interface ProductService extends Service {
 
   /**
    * @param pChannelCode
+   * <p/>
+   * <b>Breaking Change with 2.0:</b> Parameter will be mandatory
    * @return {@link ChannelCode}
    */
   ChannelCode createChannelCode( @NotBlank String pChannelCode );

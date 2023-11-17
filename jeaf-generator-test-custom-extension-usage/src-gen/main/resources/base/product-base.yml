@@ -551,6 +551,9 @@ components:
 
     # com.anaptecs.jeaf.junit.openapi.base.ComplexBookingType
     ComplexBookingType:
+      description: >-
+        
+        Breaking Change with PI 17: Class was changed to an extensible enum. New literals will not be introduced before PI 17.
       type: string
       x-extensible-enum:
         - COMPLEX
@@ -751,6 +754,12 @@ components:
 
     # com.anaptecs.jeaf.junit.openapi.base.InventoryType
     InventoryType:
+      description: >-
+        Valid Values:
+        - SBB
+        - SNCF
+        - DB: 
+            Breaking Change with 3.x: New literal will occur
       type: string
       enum:
         - SBB
@@ -893,6 +902,9 @@ components:
               deprecated: true
               nullable: true
             stops:
+              description: >-
+                
+                Breaking Change with PI 15: New mandatory association is required to support upcoming features.
               type: array
               items:
                 $ref: '#/components/schemas/UICStop'
@@ -1650,6 +1662,9 @@ components:
             $ref: '#/components/schemas/Channel'
           minItems: 1
         name:
+          description: >-
+            
+            Breaking Change with 1.1: Maximum size will be increased.
           type: string
           minLength: 1
           maxLength: 32
@@ -1839,6 +1854,9 @@ components:
             realBooking:
               $ref: '#/components/schemas/Booking'
             inventories:
+              description: >-
+                
+                Breaking Change with 2.1: Association will required at least 1 object.
               type: array
               items:
                 $ref: '#/components/schemas/InventoryType'

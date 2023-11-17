@@ -2,6 +2,7 @@ extension java::Naming;
 extension java::GeneratorCommons;
 extension jeaf::RESTFunctions;
 extension functions::JEAFDeprecated;
+extension functions::BreakingChange;
 extension functions::Class;
 extension functions::TemplateParameter;
 extension functions::Operation;
@@ -59,8 +60,8 @@ cached String getYAMLStyleComment(uml::Element element, String indentation):
 
 cached String getCommentForOpenAPIDescription(uml::Element element, String indentation):
     if element.ownedComment.size > 0
-    then element.ownedComment.first().body.trim().replaceAll("\n", "\r\n" + indentation) + element.getAliasDocs(indentation) + element.getAuthorizedRoles(indentation) + ((uml::NamedElement) element).getInternalDeprecationDescription(indentation)
-    else element.getAliasDocs(indentation) + element.getAuthorizedRoles(indentation) + ((uml::NamedElement) element).getInternalDeprecationDescription(indentation);
+    then element.ownedComment.first().body.trim().replaceAll("\n", "\r\n" + indentation) + element.getAliasDocs(indentation) + ((uml::NamedElement) element).getBreakingChangeDescriptionInternal(indentation) + element.getAuthorizedRoles(indentation) + ((uml::NamedElement) element).getInternalDeprecationDescription(indentation)
+    else element.getAliasDocs(indentation) + ((uml::NamedElement) element).getBreakingChangeDescriptionInternal(indentation) + element.getAuthorizedRoles(indentation) + ((uml::NamedElement) element).getInternalDeprecationDescription(indentation);
 
 private cached String getAliasDocs(uml::Element property, String indentation):
     if property.hasAliasAttributeName()
@@ -76,6 +77,12 @@ private cached String getInternalDeprecationDescription(uml::NamedElement elemen
     if element.isJEAFDeprecated() && element.hasMeaningfulDeprecationInfo()
     then "\r\n" + indentation + "Deprecated: " + element.getDeprecationDescriptionForJavadoc() + " (since: " + element.getDeprecatedSince() + ", removed with: " + element.getDeprecationRemoval() + ")"
     else "";
+    
+private cached String getBreakingChangeDescriptionInternal(uml::NamedElement element, String indentation):
+    if element.isBreakingChange()
+    then "\r\n" + indentation + "Breaking Change with " + element.getBreakingChangeActiveWith() +  ": " + element.getBreakingChangeDescription()
+    else "";
+
     
 cached boolean hasMultiLineComment(uml::Element element) :
     //element.ownedComment.get(0).body.contains("\n");

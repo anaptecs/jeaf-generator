@@ -159,6 +159,8 @@ public class TheReadOnlyServiceObject implements ServiceObject {
 
     /**
      * Method sets attribute {@link #bits}.<br/>
+     * <p/>
+     * <b>Breaking Change with PI 16:</b> At least one bit will be expected.
      *
      * @param pBits Value to which {@link #bits} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
@@ -253,6 +255,8 @@ public class TheReadOnlyServiceObject implements ServiceObject {
 
   /**
    * Method returns attribute {@link #bits}.<br/>
+   * <p/>
+   * <b>Breaking Change with PI 16:</b> At least one bit will be expected.
    *
    * @return boolean Value to which {@link #bits} is set.
    */

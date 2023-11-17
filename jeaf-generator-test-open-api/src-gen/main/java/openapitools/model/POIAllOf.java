@@ -178,11 +178,11 @@ public class POIAllOf {
   }
 
    /**
-   * Get stops
+   *  Breaking Change with PI 15: New mandatory association is required to support upcoming features. 
    * @return stops
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = " Breaking Change with PI 15: New mandatory association is required to support upcoming features. ")
   @JsonProperty(JSON_PROPERTY_STOPS)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 

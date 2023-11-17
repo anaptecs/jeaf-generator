@@ -226,6 +226,9 @@ paths:
     post:
       operationId: createChannelCode
       requestBody:
+        description: >-
+          
+          Breaking Change with 2.0: Parameter will be mandatory
         required: true
         content:
           application/json:
@@ -1031,6 +1034,9 @@ paths:
             format: time
         - name: localDateTime
           in: query
+          description: >-
+            
+            Breaking Change with 2.0: Has to be in the past
           required: true
           schema:
             type: string

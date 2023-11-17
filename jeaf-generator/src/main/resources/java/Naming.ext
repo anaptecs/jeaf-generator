@@ -1,6 +1,7 @@
 extension java::GeneratorCommons;
 extension java::OpenAPIFunctions;
 extension functions::JEAFDeprecated;
+extension functions::BreakingChange;
 extension functions::Class;
 extension functions::TemplateParameter;
 extension functions::Operation;
@@ -149,7 +150,7 @@ String getComment(uml::Comment comment):
     comment.body.trim();
     
 boolean hasComment(uml::Element element):
-    getComment(element).length > 0 || (element.isOperation() && element.asOperation().hasSecurityRoles()) || (element.isJEAFDeprecated() && ((uml::NamedElement) element).hasMeaningfulDeprecationInfo()) || element.hasAliasAttributeName();
+    getComment(element).length > 0 || (element.isOperation() && element.asOperation().hasSecurityRoles()) || (element.isJEAFDeprecated() && ((uml::NamedElement) element).hasMeaningfulDeprecationInfo()) || element.hasAliasAttributeName() || element.isBreakingChange();
 
 String getComment(Object this): "";
 

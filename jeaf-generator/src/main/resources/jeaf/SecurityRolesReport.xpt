@@ -12,7 +12,7 @@
 # «getSecurityRolesReportName()»
 «FOREACH this.getAllSecurityRoles().select(e|e.excludeFromDocumentation == false).sortBy(e|e.name) AS securityRole-»
 ## Role `«securityRole.name»`
-«FOREACH securityRole.getAuthorizedServices() AS service-»
+«FOREACH securityRole.getAuthorizedServices().sortBy(e|e.name) AS service-»
 ### Service `«service.name»`
 «FOREACH securityRole.getAuthorizedOperations(service) AS operation»
 | Operation        | REST Resource Path |

@@ -1,5 +1,6 @@
 «EXTENSION functions::Javadoc»
 «EXTENSION functions::JEAFDeprecated»
+«EXTENSION functions::BreakingChange»
 «EXTENSION functions::Operation»
 «EXTENSION java::Naming»
 «EXTENSION entity::ModelProperties»
@@ -24,12 +25,15 @@
 /**
     «EXPAND AddComment -»
     «EXPAND SecurityRolesComment -»
+    «EXPAND BreakingChangeJavadoc -»
     «FOREACH this.getInputParameters() AS param -»
  * @param «param.name» «param.ownedComment.first().body.trim().replaceAll("\n", "<br/>")» «IF param.isJEAFDeprecated()»<br/><b>Deprecated. </b> <i>«param.getDeprecationDescriptionForJavadoc()» (<b>since:</b> «param.getDeprecatedSince()», <b>removed with:</b> «param.getDeprecationRemoval()»)«ENDIF»    
+«EXPAND BreakingChangeJavadoc FOR param-»
     «ENDFOREACH -»
     «IF this.hasReturnType() && this.getReturnTypeName() != "void" -»
     «LET this.getReturnType() AS returnType -»
  * @return «IF this.returnsPrimitiveType() == false»{@link «ENDIF»«this.getReturnTypeName()»«IF this.returnsPrimitiveType() == false»}«ENDIF» «returnType.ownedComment.first().body.trim().replaceAll("\n", "<br/>")» «IF returnType.isJEAFDeprecated()»<br/><b>Deprecated. </b> <i>«returnType.getDeprecationDescriptionForJavadoc()» (<b>since:</b> «returnType.getDeprecatedSince()», <b>removed with:</b> «returnType.getDeprecationRemoval()»)«ENDIF»
+«EXPAND BreakingChangeJavadoc FOR returnType -»
     «ENDLET-»
     «ENDIF -»
     «EXPAND DeprecatedJavadoc -»
@@ -52,6 +56,7 @@
     <br/><b>Example:</b> <code>«((JMM::Example) this).exampleValue»</code>
     «ENDIF -»
     «ENDIF -»
+    «EXPAND BreakingChangeJavadoc -»
     «EXPAND DeprecatedJavadoc -»
  */
 «ENDIF»
@@ -65,6 +70,7 @@
  * <p/>This class uses so called soft links for decoupling. The actual type that is hidden by {@link #«asInstanceVar()»} is <code>«type.fqn()»</code><br/>
     «ENDIF -»
     «EXPAND AddComment -»
+    «EXPAND BreakingChangeJavadoc -»
     «IF this.isSoftLink() == false -»
  * @return «IF type.isPrimitiveType() == false»{@link «this.fqn()»}«ELSE»«this.fqn()»«ENDIF» Value to which {@link #«asInstanceVar()»} is set.
     «ELSE -»
@@ -88,6 +94,7 @@
 «DEFINE JavadocForPropertyAdd FOR uml::Property»
     /**
      * Method adds the passed object to {@link #«asInstanceVar()»}.     
+    «EXPAND BreakingChangeJavadoc -»
      * 
      * @param «asParameter()» Object that should be added to {@link #«asInstanceVar()»}. The parameter must not be null.
     «EXPAND DeprecatedJavadoc -»
@@ -98,6 +105,7 @@
 «DEFINE JavadocForPropertyAddAll FOR uml::Property»
     /**
      * Method adds all passed objects to {@link #«asInstanceVar()»}.     
+    «EXPAND BreakingChangeJavadoc -»
      * 
      * @param «asParameter()» Collection with all objects that should be added to {@link #«asInstanceVar()»}. The parameter must not be null.
     «EXPAND DeprecatedJavadoc -»
@@ -109,6 +117,7 @@
 /**
  * Method sets «IF this.association == null»attribute«ELSE»association«ENDIF» {@link #«asInstanceVar()»}.<br/>
  «EXPAND functions::Javadoc::AddComment -»
+    «EXPAND BreakingChangeJavadoc -»
  * @param «asParameter()» Value to which {@link #«asInstanceVar()»} should be set.
  «EXPAND DeprecatedJavadoc -»
  */
@@ -118,6 +127,7 @@
 «DEFINE JavadocForBuilderSetter(String builderClassName) FOR uml::Property»
 /**
  * Method sets «IF this.association == null»attribute«ELSE»association«ENDIF» {@link #«asInstanceVar()»}.<br/>
+    «EXPAND BreakingChangeJavadoc -»
  * @param «asParameter()» «IF type.isPrimitiveType() || this.isMultivalued() == false»Value«ELSE»Collection«ENDIF» to which {@link #«asInstanceVar()»} should be set.
  * @return {@link «builderClassName»} Instance of this builder to support chaining setters. Method never returns null.
  «EXPAND DeprecatedJavadoc -»
@@ -128,6 +138,7 @@
 «DEFINE JavadocForBuilderAddTo(String builderClassName) FOR uml::Property»
 /**
  * Method adds the passed objects to association {@link #«asInstanceVar()»}.<br/>
+    «EXPAND BreakingChangeJavadoc -»
  * @param «asParameter()» Array of objects that should be added to {@link #«asInstanceVar()»}. The parameter may be null.
  * @return {@link «builderClassName»} Instance of this builder to support chaining. Method never returns null.
  «EXPAND DeprecatedJavadoc -»
@@ -138,6 +149,7 @@
 «DEFINE JavadocForBuilderVarArgsSetter(String builderClassName) FOR uml::Property»
 /**
  * Method sets «IF this.association == null»attribute«ELSE»association«ENDIF» {@link #«asInstanceVar()»}.<br/>
+    «EXPAND BreakingChangeJavadoc -»
  * @param «asParameter()» Array with objects to which {@link #«asInstanceVar()»} should be set.
  * @return {@link «builderClassName»} Instance of this builder to support chaining setters. Method never returns null.
  «EXPAND DeprecatedJavadoc -»
@@ -149,6 +161,7 @@
 «IF this.hasMeaningfulJavadoc()»
 /**
     «EXPAND AddComment -»
+    «EXPAND BreakingChangeJavadoc -»
     «EXPAND DeprecatedJavadoc -»
  */
 «ENDIF»
@@ -171,3 +184,10 @@
  * @deprecated «this.getDeprecationDescriptionForJavadoc()» (<b>since:</b> «IF this.getDeprecatedSince().length > 0»«this.getDeprecatedSince()»«ELSE»TBD«ENDIF», <b>removed with:</b> «IF this.getDeprecationRemoval().length > 0»«this.getDeprecationRemoval()»«ELSE»TBD«ENDIF»)   
     «ENDIF-»
 «ENDDEFINE»
+
+«DEFINE BreakingChangeJavadoc FOR uml::NamedElement -»
+    «IF this.isBreakingChange()-»
+    <p/><b>Breaking Change with «this.getBreakingChangeActiveWith()»:</b> «this.getBreakingChangeDescription()»   
+    «ENDIF-»
+«ENDDEFINE»
+

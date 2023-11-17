@@ -90,11 +90,11 @@ public class Reseller {
   }
 
    /**
-   * Get name
+   *  Breaking Change with 1.1: Maximum size will be increased. 
    * @return name
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = " Breaking Change with 1.1: Maximum size will be increased. ")
   @JsonProperty(JSON_PROPERTY_NAME)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 

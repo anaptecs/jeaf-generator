@@ -65,10 +65,10 @@ public class Reseller {
   }
 
    /**
-   * Get name
+   *  Breaking Change with 1.1: Maximum size will be increased. 
    * @return name
   **/
-  @Schema(required = true, description = "")
+  @Schema(required = true, description = " Breaking Change with 1.1: Maximum size will be increased. ")
   public String getName() {
     return name;
   }

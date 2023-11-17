@@ -21,6 +21,8 @@ public interface ServiceWithDeprecations extends Service {
    * (<b>since:</b> , <b>removed with:</b> )
    * @param pQueryParam <br/>
    * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
+   * <p/>
+   * <b>Breaking Change with PI 13:</b> Parameter will be mandatory.
    * @param pContext
    */
   void createSomething( JustAType pBody, @Deprecated String pHeader, @Deprecated String pQueryParam,

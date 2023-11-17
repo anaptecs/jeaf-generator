@@ -58,18 +58,6 @@
 
 | Operation        | REST Resource Path |
 |------------------|---------------|
-| `createResponsibilityType(ResponsibilityType)` |  |
-
-| Operation        | REST Resource Path |
-|------------------|---------------|
-| `createBank(Bank)` |  |
-
-| Operation        | REST Resource Path |
-|------------------|---------------|
-| `createEmployee(Person, ResponsibilityType, Bank)` |  |
-
-| Operation        | REST Resource Path |
-|------------------|---------------|
 | `createAccount(Customer, Person)` |  |
 
 | Operation        | REST Resource Path |
@@ -103,23 +91,23 @@
 | Operation        | REST Resource Path |
 |------------------|---------------|
 | `searchCustomers(CustomerQuery)` |  |
+
+| Operation        | REST Resource Path |
+|------------------|---------------|
+| `createResponsibilityType(ResponsibilityType)` |  |
+
+| Operation        | REST Resource Path |
+|------------------|---------------|
+| `createBank(Bank)` |  |
+
+| Operation        | REST Resource Path |
+|------------------|---------------|
+| `createEmployee(Person, ResponsibilityType, Bank)` |  |
 
 ### Service `AccountingService`
 
 | Operation        | REST Resource Path |
 |------------------|---------------|
-| `createResponsibilityType(ResponsibilityType)` |  |
-
-| Operation        | REST Resource Path |
-|------------------|---------------|
-| `createBank(Bank)` |  |
-
-| Operation        | REST Resource Path |
-|------------------|---------------|
-| `createEmployee(Person, ResponsibilityType, Bank)` |  |
-
-| Operation        | REST Resource Path |
-|------------------|---------------|
 | `createAccount(Customer, Person)` |  |
 
 | Operation        | REST Resource Path |
@@ -153,6 +141,18 @@
 | Operation        | REST Resource Path |
 |------------------|---------------|
 | `searchCustomers(CustomerQuery)` |  |
+
+| Operation        | REST Resource Path |
+|------------------|---------------|
+| `createResponsibilityType(ResponsibilityType)` |  |
+
+| Operation        | REST Resource Path |
+|------------------|---------------|
+| `createBank(Bank)` |  |
+
+| Operation        | REST Resource Path |
+|------------------|---------------|
+| `createEmployee(Person, ResponsibilityType, Bank)` |  |
 
 ## Role `Customer`
 ### Service `RESTProductService`
@@ -315,6 +315,50 @@
 | `testBookingIDAsHeaderParam(BookingID)` | `/rest-products/booking-id-as-header-param [PATCH]` |
 
 ## Role `Standard User`
+### Service `AccountingService`
+
+| Operation        | REST Resource Path |
+|------------------|---------------|
+| `checkCurrentUser()` |  |
+
+| Operation        | REST Resource Path |
+|------------------|---------------|
+| `checkInvalidServiceAccess()` |  |
+
+| Operation        | REST Resource Path |
+|------------------|---------------|
+| `checkCurrentAnonymousUser()` |  |
+
+| Operation        | REST Resource Path |
+|------------------|---------------|
+| `performBooking(Booking, SecurityToken)` | `/api/v1/accounting/bookings [PUT]` |
+
+| Operation        | REST Resource Path |
+|------------------|---------------|
+| `searchCustomers(CustomerQuery)` |  |
+
+### Service `AccountingService`
+
+| Operation        | REST Resource Path |
+|------------------|---------------|
+| `checkCurrentUser()` |  |
+
+| Operation        | REST Resource Path |
+|------------------|---------------|
+| `checkInvalidServiceAccess()` |  |
+
+| Operation        | REST Resource Path |
+|------------------|---------------|
+| `checkCurrentAnonymousUser()` |  |
+
+| Operation        | REST Resource Path |
+|------------------|---------------|
+| `performBooking(Booking, SecurityToken)` | `/api/v1/accounting/bookings [PUT]` |
+
+| Operation        | REST Resource Path |
+|------------------|---------------|
+| `searchCustomers(CustomerQuery)` |  |
+
 ### Service `JEAFSecurityTestService`
 
 | Operation        | REST Resource Path |
@@ -328,50 +372,6 @@
 | Operation        | REST Resource Path |
 |------------------|---------------|
 | `checkCurrentAnonymousUser()` |  |
-
-### Service `AccountingService`
-
-| Operation        | REST Resource Path |
-|------------------|---------------|
-| `checkCurrentUser()` |  |
-
-| Operation        | REST Resource Path |
-|------------------|---------------|
-| `checkInvalidServiceAccess()` |  |
-
-| Operation        | REST Resource Path |
-|------------------|---------------|
-| `checkCurrentAnonymousUser()` |  |
-
-| Operation        | REST Resource Path |
-|------------------|---------------|
-| `performBooking(Booking, SecurityToken)` | `/api/v1/accounting/bookings [PUT]` |
-
-| Operation        | REST Resource Path |
-|------------------|---------------|
-| `searchCustomers(CustomerQuery)` |  |
-
-### Service `AccountingService`
-
-| Operation        | REST Resource Path |
-|------------------|---------------|
-| `checkCurrentUser()` |  |
-
-| Operation        | REST Resource Path |
-|------------------|---------------|
-| `checkInvalidServiceAccess()` |  |
-
-| Operation        | REST Resource Path |
-|------------------|---------------|
-| `checkCurrentAnonymousUser()` |  |
-
-| Operation        | REST Resource Path |
-|------------------|---------------|
-| `performBooking(Booking, SecurityToken)` | `/api/v1/accounting/bookings [PUT]` |
-
-| Operation        | REST Resource Path |
-|------------------|---------------|
-| `searchCustomers(CustomerQuery)` |  |
 
 ## Role `Support User`
 ### Service `AccountingService`

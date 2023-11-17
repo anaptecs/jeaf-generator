@@ -240,11 +240,11 @@ public class WeirdBooking extends WeirdParent {
   }
 
    /**
-   * Get inventories
+   *  Breaking Change with 2.1: Association will required at least 1 object. 
    * @return inventories
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = " Breaking Change with 2.1: Association will required at least 1 object. ")
   @JsonProperty(JSON_PROPERTY_INVENTORIES)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 

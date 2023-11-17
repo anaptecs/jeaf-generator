@@ -260,6 +260,8 @@ public class DateQueryParamsBean implements ServiceObject {
 
     /**
      * Method sets attribute {@link #localDateTime}.<br/>
+     * <p/>
+     * <b>Breaking Change with 2.0:</b> Has to be in the past
      *
      * @param pLocalDateTime Value to which {@link #localDateTime} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
@@ -418,6 +420,8 @@ public class DateQueryParamsBean implements ServiceObject {
 
   /**
    * Method returns attribute {@link #localDateTime}.<br/>
+   * <p/>
+   * <b>Breaking Change with 2.0:</b> Has to be in the past
    *
    * @return {@link LocalDateTime} Value to which {@link #localDateTime} is set.
    */
@@ -427,6 +431,8 @@ public class DateQueryParamsBean implements ServiceObject {
 
   /**
    * Method sets attribute {@link #localDateTime}.<br/>
+   * <p/>
+   * <b>Breaking Change with 2.0:</b> Has to be in the past
    *
    * @param pLocalDateTime Value to which {@link #localDateTime} should be set.
    */

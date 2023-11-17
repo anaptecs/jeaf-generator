@@ -224,6 +224,8 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
 
     /**
      * Method sets attribute {@link #name}.<br/>
+     * <p/>
+     * <b>Breaking Change with 1.1:</b> Maximum size will be increased.
      *
      * @param pName Value to which {@link #name} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
@@ -457,6 +459,8 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
 
   /**
    * Method returns attribute {@link #name}.<br/>
+   * <p/>
+   * <b>Breaking Change with 1.1:</b> Maximum size will be increased.
    *
    * @return {@link String} Value to which {@link #name} is set.
    */
@@ -466,6 +470,8 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
 
   /**
    * Method sets attribute {@link #name}.<br/>
+   * <p/>
+   * <b>Breaking Change with 1.1:</b> Maximum size will be increased.
    *
    * @param pName Value to which {@link #name} should be set.
    */
