@@ -6,12 +6,14 @@
 «IMPORT JMM»
 
 «DEFINE GenerateOpenAPIDataType(OpenAPI3Specification spec, Property ownerAttribute, String indentation, boolean addDescription) FOR OpenAPIDataType -»
-  «LET this.ownedAttribute.get(0) AS attribute -»
+  «LET this.ownedAttribute.first() AS attribute -»
     «IF this.inline == true -»
-          «IF addDescription && (ownerAttribute.hasComment() || (this.compositeDataType && this.hasComment()))-»
+          «IF addDescription && (ownerAttribute.hasComment() || (this.compositeDataType && this.hasComment()) || this.ownedAttribute.first().hasComment())-»
 «indentation»          description: «getOpenAPICommentStyle()»
           «IF ownerAttribute.hasComment() -»
 «indentation»            «ownerAttribute.getCommentForOpenAPIDescription(indentation + "            ")»
+          «ELSEIF this.ownedAttribute.first().hasComment() -»
+«indentation»            «this.ownedAttribute.first().getCommentForOpenAPIDescription(indentation + "            ")»
           «ELSE-»
 «indentation»            «this.getCommentForOpenAPIDescription(indentation + "            ")»
           «ENDIF-»

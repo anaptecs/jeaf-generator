@@ -79,11 +79,11 @@ public class MoneyAmount {
   }
 
    /**
-   * Get currencyCode
+   * ISO 4217 currency code. 
    * @return currencyCode
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(example = "CHF", required = true, value = "")
+  @ApiModelProperty(example = "CHF", required = true, value = "ISO 4217 currency code. ")
   @JsonProperty(JSON_PROPERTY_CURRENCY_CODE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 

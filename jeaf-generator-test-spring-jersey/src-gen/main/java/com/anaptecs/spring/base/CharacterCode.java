@@ -16,6 +16,9 @@ public class CharacterCode {
    */
   public static final String CODE = "code";
 
+  /**
+   * Just a character
+   */
   private Character code;
 
   /**
@@ -75,6 +78,9 @@ public class CharacterCode {
    * Class implements builder to create a new instance of class <code>CharacterCode</code>.
    */
   public static class Builder {
+    /**
+     * Just a character
+     */
     private Character code;
 
     /**
@@ -118,6 +124,7 @@ public class CharacterCode {
 
   /**
    * Method returns attribute {@link #code}.<br/>
+   * Just a character
    *
    * @return {@link Character} Value to which {@link #code} is set.
    */
@@ -127,6 +134,7 @@ public class CharacterCode {
 
   /**
    * Method sets attribute {@link #code}.<br/>
+   * Just a character
    *
    * @param pCode Value to which {@link #code} should be set.
    */

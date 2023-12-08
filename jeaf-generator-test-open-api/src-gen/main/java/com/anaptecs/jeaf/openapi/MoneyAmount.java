@@ -54,10 +54,10 @@ public class MoneyAmount {
   }
 
    /**
-   * Get currencyCode
+   * ISO 4217 currency code. 
    * @return currencyCode
   **/
-  @Schema(example = "CHF", required = true, description = "")
+  @Schema(example = "CHF", required = true, description = "ISO 4217 currency code. ")
   public String getCurrencyCode() {
     return currencyCode;
   }

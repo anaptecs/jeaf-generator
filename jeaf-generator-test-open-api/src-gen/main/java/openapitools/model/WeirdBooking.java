@@ -82,11 +82,11 @@ public class WeirdBooking extends WeirdParent {
   }
 
    /**
-   * Get booking
+   * Internal ID 2nd line 3rd line 
    * @return booking
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "Internal ID 2nd line 3rd line ")
   @JsonProperty(JSON_PROPERTY_BOOKING)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 

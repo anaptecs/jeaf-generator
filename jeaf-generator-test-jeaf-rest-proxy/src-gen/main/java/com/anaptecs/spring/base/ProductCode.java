@@ -27,6 +27,9 @@ public class ProductCode implements Serializable {
    */
   public static final String CODE = "code";
 
+  /**
+   * the product code.
+   */
   @Positive
   private int code;
 
@@ -84,6 +87,9 @@ public class ProductCode implements Serializable {
    * Class implements builder to create a new instance of class <code>ProductCode</code>.
    */
   public static class Builder {
+    /**
+     * the product code.
+     */
     @Positive
     private int code;
 
@@ -141,6 +147,7 @@ public class ProductCode implements Serializable {
 
   /**
    * Method returns attribute {@link #code}.<br/>
+   * the product code.
    *
    * @return int Value to which {@link #code} is set.
    */
@@ -150,6 +157,7 @@ public class ProductCode implements Serializable {
 
   /**
    * Method sets attribute {@link #code}.<br/>
+   * the product code.
    *
    * @param pCode Value to which {@link #code} should be set.
    */

@@ -37,6 +37,11 @@ public class CodeTypeUsageTest {
    */
   public static final String STRINGCODE = "stringCode";
 
+  /**
+   * Constant for the name of attribute "characterCode".
+   */
+  public static final String CHARACTERCODE = "characterCode";
+
   private BooleanCodeType booleanCode;
 
   @JsonSetter(nulls = Nulls.SKIP)
@@ -46,6 +51,8 @@ public class CodeTypeUsageTest {
   private Set<ShortCodeType> shortCodeTypeAssociation;
 
   private StringCodeType stringCode;
+
+  private CharacterCode characterCode;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
@@ -77,6 +84,7 @@ public class CodeTypeUsageTest {
       shortCodeTypeAssociation = new HashSet<ShortCodeType>();
     }
     stringCode = pBuilder.stringCode;
+    characterCode = pBuilder.characterCode;
   }
 
   /**
@@ -134,6 +142,8 @@ public class CodeTypeUsageTest {
 
     private StringCodeType stringCode;
 
+    private CharacterCode characterCode;
+
     /**
      * Use {@link CodeTypeUsageTest#builder()} instead of private constructor to create new builder.
      */
@@ -150,6 +160,7 @@ public class CodeTypeUsageTest {
         this.setBooleanCodeAssociation(pObject.booleanCodeAssociation);
         this.setShortCodeTypeAssociation(pObject.shortCodeTypeAssociation);
         this.setStringCode(pObject.stringCode);
+        this.setCharacterCode(pObject.characterCode);
       }
     }
 
@@ -242,6 +253,17 @@ public class CodeTypeUsageTest {
     public Builder setStringCode( StringCodeType pStringCode ) {
       // Assign value to attribute
       stringCode = pStringCode;
+      return this;
+    }
+
+    /**
+     * Method sets association {@link #characterCode}.<br/>
+     *
+     * @param pCharacterCode Value to which {@link #characterCode} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    public Builder setCharacterCode( CharacterCode pCharacterCode ) {
+      characterCode = pCharacterCode;
       return this;
     }
 
@@ -403,6 +425,31 @@ public class CodeTypeUsageTest {
   }
 
   /**
+   * Method returns association {@link #characterCode}.<br/>
+   *
+   * @return {@link CharacterCode} Value to which {@link #characterCode} is set.
+   */
+  public CharacterCode getCharacterCode( ) {
+    return characterCode;
+  }
+
+  /**
+   * Method sets association {@link #characterCode}.<br/>
+   *
+   * @param pCharacterCode Value to which {@link #characterCode} should be set.
+   */
+  public void setCharacterCode( CharacterCode pCharacterCode ) {
+    characterCode = pCharacterCode;
+  }
+
+  /**
+   * Method unsets {@link #characterCode}.
+   */
+  public final void unsetCharacterCode( ) {
+    characterCode = null;
+  }
+
+  /**
    * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
@@ -453,6 +500,16 @@ public class CodeTypeUsageTest {
     lBuilder.append("stringCode: ");
     lBuilder.append(stringCode);
     lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("characterCode: ");
+    if (characterCode != null) {
+      lBuilder.append(System.lineSeparator());
+      lBuilder.append(characterCode.toStringBuilder(pIndent + "    "));
+    }
+    else {
+      lBuilder.append(" null");
+      lBuilder.append(System.lineSeparator());
+    }
     return lBuilder;
   }
 

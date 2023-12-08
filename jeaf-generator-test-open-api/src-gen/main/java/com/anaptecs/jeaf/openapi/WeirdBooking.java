@@ -53,10 +53,10 @@ public class WeirdBooking extends WeirdParent {
   }
 
    /**
-   * Get booking
+   * Internal ID 2nd line 3rd line 
    * @return booking
   **/
-  @Schema(required = true, description = "")
+  @Schema(required = true, description = "Internal ID 2nd line 3rd line ")
   public String getBooking() {
     return booking;
   }

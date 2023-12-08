@@ -47,6 +47,11 @@ public class CodeTypeUsageTest implements Serializable {
    */
   public static final String STRINGCODE = "stringCode";
 
+  /**
+   * Constant for the name of attribute "characterCode".
+   */
+  public static final String CHARACTERCODE = "characterCode";
+
   private BooleanCodeType booleanCode;
 
   @JsonSetter(nulls = Nulls.SKIP)
@@ -56,6 +61,8 @@ public class CodeTypeUsageTest implements Serializable {
   private Set<ShortCodeType> shortCodeTypeAssociation;
 
   private StringCodeType stringCode;
+
+  private CharacterCode characterCode;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
@@ -89,6 +96,7 @@ public class CodeTypeUsageTest implements Serializable {
       shortCodeTypeAssociation = new HashSet<ShortCodeType>();
     }
     stringCode = pBuilder.stringCode;
+    characterCode = pBuilder.characterCode;
   }
 
   /**
@@ -156,6 +164,8 @@ public class CodeTypeUsageTest implements Serializable {
 
     private StringCodeType stringCode;
 
+    private CharacterCode characterCode;
+
     /**
      * Use {@link CodeTypeUsageTest#builder()} instead of private constructor to create new builder.
      */
@@ -172,6 +182,7 @@ public class CodeTypeUsageTest implements Serializable {
         this.setBooleanCodeAssociation(pObject.booleanCodeAssociation);
         this.setShortCodeTypeAssociation(pObject.shortCodeTypeAssociation);
         this.setStringCode(pObject.stringCode);
+        this.setCharacterCode(pObject.characterCode);
       }
     }
 
@@ -264,6 +275,17 @@ public class CodeTypeUsageTest implements Serializable {
     public Builder setStringCode( StringCodeType pStringCode ) {
       // Assign value to attribute
       stringCode = pStringCode;
+      return this;
+    }
+
+    /**
+     * Method sets association {@link #characterCode}.<br/>
+     *
+     * @param pCharacterCode Value to which {@link #characterCode} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    public Builder setCharacterCode( CharacterCode pCharacterCode ) {
+      characterCode = pCharacterCode;
       return this;
     }
 
@@ -447,6 +469,31 @@ public class CodeTypeUsageTest implements Serializable {
   public void setStringCode( StringCodeType pStringCode ) {
     // Assign value to attribute
     stringCode = pStringCode;
+  }
+
+  /**
+   * Method returns association {@link #characterCode}.<br/>
+   *
+   * @return {@link CharacterCode} Value to which {@link #characterCode} is set.
+   */
+  public CharacterCode getCharacterCode( ) {
+    return characterCode;
+  }
+
+  /**
+   * Method sets association {@link #characterCode}.<br/>
+   *
+   * @param pCharacterCode Value to which {@link #characterCode} should be set.
+   */
+  public void setCharacterCode( CharacterCode pCharacterCode ) {
+    characterCode = pCharacterCode;
+  }
+
+  /**
+   * Method unsets {@link #characterCode}.
+   */
+  public final void unsetCharacterCode( ) {
+    characterCode = null;
   }
 
   /**

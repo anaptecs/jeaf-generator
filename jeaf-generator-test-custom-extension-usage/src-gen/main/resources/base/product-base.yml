@@ -814,6 +814,8 @@ components:
           format: double
           nullable: false
         currencyCode:
+          description: >-
+            ISO 4217 currency code.
           type: string
           default: 'CHF'
           minLength: 3
@@ -1614,6 +1616,8 @@ components:
           type: string
           nullable: false
         supportedCurrencies:
+          description: >-
+            ISO 4217 currency code.
           type: array
           items:
             type: string
@@ -1831,6 +1835,10 @@ components:
             - childProperty
           properties:
             booking:
+              description: >-
+                Internal ID
+                2nd line
+                3rd line
               type: string
               nullable: false
             additionalBookings:
@@ -1880,9 +1888,17 @@ components:
           type: string
           nullable: false
         complexBooking:
+          description: >-
+            Internal ID
+            2nd line
+            3rd line
           type: string
           nullable: false
         complexBookings:
+          description: >-
+            Internal ID
+            2nd line
+            3rd line
           type: array
           items:
             type: string

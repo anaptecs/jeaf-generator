@@ -163,10 +163,10 @@ public class Product {
   }
 
    /**
-   * Get supportedCurrencies
+   * ISO 4217 currency code. 
    * @return supportedCurrencies
   **/
-  @Schema(required = true, description = "")
+  @Schema(required = true, description = "ISO 4217 currency code. ")
   public List<String> getSupportedCurrencies() {
     return supportedCurrencies;
   }

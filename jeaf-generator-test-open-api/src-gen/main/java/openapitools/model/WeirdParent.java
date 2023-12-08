@@ -122,11 +122,11 @@ public class WeirdParent {
   }
 
    /**
-   * Get complexBooking
+   * Internal ID 2nd line 3rd line 
    * @return complexBooking
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "Internal ID 2nd line 3rd line ")
   @JsonProperty(JSON_PROPERTY_COMPLEX_BOOKING)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -153,11 +153,11 @@ public class WeirdParent {
   }
 
    /**
-   * Get complexBookings
+   * Internal ID 2nd line 3rd line 
    * @return complexBookings
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "Internal ID 2nd line 3rd line ")
   @JsonProperty(JSON_PROPERTY_COMPLEX_BOOKINGS)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 

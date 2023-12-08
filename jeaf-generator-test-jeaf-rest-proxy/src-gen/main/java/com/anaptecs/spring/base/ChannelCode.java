@@ -28,7 +28,7 @@ public class ChannelCode implements Serializable {
   public static final String CODE = "code";
 
   /**
-   * <br/>
+   * channel code <br/>
    * <b>Default Value:</b> <code>"WEBSHOP"</code> <br/>
    * <b>Example:</b> <code>MOBILE_APP</code>
    */
@@ -91,7 +91,7 @@ public class ChannelCode implements Serializable {
    */
   public static class Builder {
     /**
-     * <br/>
+     * channel code <br/>
      * <b>Default Value:</b> <code>"WEBSHOP"</code> <br/>
      * <b>Example:</b> <code>MOBILE_APP</code>
      */
@@ -152,6 +152,7 @@ public class ChannelCode implements Serializable {
 
   /**
    * Method returns attribute {@link #code}.<br/>
+   * channel code
    *
    * @return {@link String} Value to which {@link #code} is set.
    */
@@ -161,6 +162,7 @@ public class ChannelCode implements Serializable {
 
   /**
    * Method sets attribute {@link #code}.<br/>
+   * channel code
    *
    * @param pCode Value to which {@link #code} should be set.
    */
