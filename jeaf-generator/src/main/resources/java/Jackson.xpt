@@ -103,7 +103,7 @@
 				«ENDFOREACH»
 				
 				// Add serializers and deserializers for enumerations				
-				«FOREACH this.clientDependency.supplier.typeSelect(uml::Package).allOwnedElements().typeSelect(JEAFEnumeration).select(e|e.extensibleEnum).sortBy(e|e.name) AS enum»
+				«FOREACH this.clientDependency.supplier.typeSelect(uml::Package).allOwnedElements().typeSelect(JEAFEnumeration).select(e|e.extensibleEnum && e.ignore() == false).sortBy(e|e.name) AS enum»
 				lModule.addSerializer(«enum.fqn()».class, new «enum.packageName()».serializers.«enum.name»Serializer());
 				lModule.addDeserializer(«enum.fqn()».class, new «enum.packageName()».serializers.«enum.name»Deserializer());
 				«ENDFOREACH»
@@ -168,7 +168,7 @@
 				com.fasterxml.jackson.databind.module.SimpleModule lModule = new com.fasterxml.jackson.databind.module.SimpleModule("EnumSerializerModule." + «fqn()».class.getName());
 				
 				// Add serializers and deserializers for enumerations				
-				«FOREACH this.clientDependency.supplier.typeSelect(uml::Package).allOwnedElements().typeSelect(JEAFEnumeration).select(e|e.extensibleEnum).sortBy(e|e.name) AS enum»
+				«FOREACH this.clientDependency.supplier.typeSelect(uml::Package).allOwnedElements().typeSelect(JEAFEnumeration).select(e|e.extensibleEnum && e.ignore() == false).sortBy(e|e.name) AS enum»
 				lModule.addSerializer(«enum.fqn()».class, new «enum.packageName()».serializers.«enum.name»Serializer());
 				lModule.addDeserializer(«enum.fqn()».class, new «enum.packageName()».serializers.«enum.name»Deserializer());
 				«ENDFOREACH»
