@@ -412,11 +412,12 @@ public class «name»RESTProxy implements «this.fqn()» {
 		com.anaptecs.jeaf.rest.executor.api.RESTRequest lRequest = lRequestBuilder.build();
 		
 		«IF getReturnTypeName() != "void"»
-            com.anaptecs.jeaf.rest.executor.api.ObjectType lObjectType = 
+            
             «IF getReturnType().type.isClass() && getReturnType().type.asClass().templateBinding.isEmpty == false»
-            ObjectType.createGenericsObjectType(«getReturnType().type.asClass().getGenericClass().name».class, «getReturnType().type.asClass().getTypeParameterName()».class);
+            com.anaptecs.jeaf.rest.executor.api.TypeReference<«getReturnTypeName()»> lTypeReference = new TypeReference<«getReturnTypeName()»>() { };
+            com.anaptecs.jeaf.rest.executor.api.ObjectType lObjectType = ObjectType.createTypeReferenceObjectType(lTypeReference);
             «ELSE»
-            ObjectType.createObjectType(«getReturnType().type.fqn()».class);                
+            com.anaptecs.jeaf.rest.executor.api.ObjectType lObjectType = ObjectType.createObjectType(«getReturnType().type.fqn()».class);                
             «ENDIF»
 			«IF this.getReturnResult().isMultivalued() == false»
 	            «IF generateRESTResponseValidation()»

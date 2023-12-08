@@ -44,6 +44,9 @@ import com.anaptecs.jeaf.junit.openapi.service1.TechnicalHeaderContext;
 import com.anaptecs.jeaf.junit.rest.generics.BusinessServiceObject;
 import com.anaptecs.jeaf.junit.rest.generics.GenericPageableResponse;
 import com.anaptecs.jeaf.junit.rest.generics.GenericSingleValuedReponse;
+import com.anaptecs.jeaf.junit.rest.generics.Offer;
+import com.anaptecs.jeaf.junit.rest.generics.Pageable;
+import com.anaptecs.jeaf.junit.rest.generics.Response;
 import com.anaptecs.jeaf.xfun.api.health.CheckLevel;
 import com.anaptecs.jeaf.xfun.api.health.HealthCheckResult;
 
@@ -503,5 +506,23 @@ final class ProductServiceImpl extends ProductServiceImplBase {
    */
   @Override
   public void testContext( Context pContext ) {
+  }
+
+  /**
+   * @return {@link Response<Pageable<BusinessServiceObject>>}
+   */
+  @Override
+  public Response<Pageable<BusinessServiceObject>> testNestedGenericsResponse( ) {
+    // TODO Implement method and return real result
+    return null;
+  }
+
+  /**
+   * @return {@link Response<List<Offer>>}
+   */
+  @Override
+  public Response<List<Offer>> testNestedMultivaluedResponse( ) {
+    // TODO Implement method and return real result
+    return null;
   }
 }

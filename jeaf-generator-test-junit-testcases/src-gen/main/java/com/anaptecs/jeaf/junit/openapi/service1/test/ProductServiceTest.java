@@ -33,6 +33,7 @@ public class ProductServiceTest extends ProductServiceTestBase {
     lSuite.addTest(new ProductServiceTest("testDeprectedComplexRequestBody"));
     lSuite.addTest(new ProductServiceTest("testTestPrimitiveArray"));
     lSuite.addTest(new ProductServiceTest("testTestChildBeanParameter"));
+    lSuite.addTest(new ProductServiceTest("testTestNestedGenericsResponse"));
     lSuite.addTest(new ProductServiceTest("testCreateChannelCode"));
     lSuite.addTest(new ProductServiceTest("testGetSupportedCurrencies"));
     lSuite.addTest(new ProductServiceTest("testTestSpecialHeaderParams"));
@@ -45,6 +46,7 @@ public class ProductServiceTest extends ProductServiceTestBase {
     lSuite.addTest(new ProductServiceTest("testTestDateQueryParamsBean"));
     lSuite.addTest(new ProductServiceTest("testLoadSpecificThings"));
     lSuite.addTest(new ProductServiceTest("testTestMultivaluedQueryParams"));
+    lSuite.addTest(new ProductServiceTest("testTestNestedMultivaluedResponse"));
     lSuite.addTest(new ProductServiceTest("testIsCurrencySupported"));
     lSuite.addTest(new ProductServiceTest("testTestTechnicalHeaderBean"));
     lSuite.addTest(new ProductServiceTest("testCreateProduct"));
@@ -232,6 +234,16 @@ public class ProductServiceTest extends ProductServiceTestBase {
   }
 
   /**
+   * Method test the implementation of service method testNestedGenericsResponse
+   *
+   * @throws Exception if a test fails.
+   */
+  @Override
+  public void testTestNestedGenericsResponse( ) throws Exception {
+    // TODO Implement test for service method testNestedGenericsResponse(...)
+  }
+
+  /**
    * Method test the implementation of service method createChannelCode
    *
    * @throws Exception if a test fails.
@@ -349,6 +361,16 @@ public class ProductServiceTest extends ProductServiceTestBase {
   @Override
   public void testTestMultivaluedQueryParams( ) throws Exception {
     // TODO Implement test for service method testMultivaluedQueryParams(...)
+  }
+
+  /**
+   * Method test the implementation of service method testNestedMultivaluedResponse
+   *
+   * @throws Exception if a test fails.
+   */
+  @Override
+  public void testTestNestedMultivaluedResponse( ) throws Exception {
+    // TODO Implement test for service method testNestedMultivaluedResponse(...)
   }
 
   /**

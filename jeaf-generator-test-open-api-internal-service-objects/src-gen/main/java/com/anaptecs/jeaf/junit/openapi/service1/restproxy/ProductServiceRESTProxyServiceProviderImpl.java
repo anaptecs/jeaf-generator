@@ -52,10 +52,14 @@ import com.anaptecs.jeaf.junit.openapi.service1.TechnicalHeaderContext;
 import com.anaptecs.jeaf.junit.rest.generics.BusinessServiceObject;
 import com.anaptecs.jeaf.junit.rest.generics.GenericPageableResponse;
 import com.anaptecs.jeaf.junit.rest.generics.GenericSingleValuedReponse;
+import com.anaptecs.jeaf.junit.rest.generics.Offer;
+import com.anaptecs.jeaf.junit.rest.generics.Pageable;
+import com.anaptecs.jeaf.junit.rest.generics.Response;
 import com.anaptecs.jeaf.rest.executor.api.ContentType;
 import com.anaptecs.jeaf.rest.executor.api.HttpMethod;
 import com.anaptecs.jeaf.rest.executor.api.ObjectType;
 import com.anaptecs.jeaf.rest.executor.api.RESTRequest;
+import com.anaptecs.jeaf.rest.executor.api.TypeReference;
 import com.anaptecs.jeaf.rest.executor.api.jeaf.RESTRequestExecutorServiceProvider;
 import com.anaptecs.jeaf.xfun.api.XFun;
 import com.anaptecs.jeaf.xfun.api.health.CheckLevel;
@@ -1306,8 +1310,10 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     lRequestBuilder.setPath(lPathBuilder.toString());
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
-    ObjectType lObjectType =
-        ObjectType.createGenericsObjectType(GenericSingleValuedReponse.class, BusinessServiceObject.class);
+    TypeReference<GenericSingleValuedReponse<BusinessServiceObject>> lTypeReference =
+        new TypeReference<GenericSingleValuedReponse<BusinessServiceObject>>() {
+        };
+    ObjectType lObjectType = ObjectType.createTypeReferenceObjectType(lTypeReference);
     return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
   }
 
@@ -1326,8 +1332,10 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     lRequestBuilder.setPath(lPathBuilder.toString());
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
-    ObjectType lObjectType =
-        ObjectType.createGenericsObjectType(GenericPageableResponse.class, BusinessServiceObject.class);
+    TypeReference<GenericPageableResponse<BusinessServiceObject>> lTypeReference =
+        new TypeReference<GenericPageableResponse<BusinessServiceObject>>() {
+        };
+    ObjectType lObjectType = ObjectType.createTypeReferenceObjectType(lTypeReference);
     return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
   }
 
@@ -1407,5 +1415,48 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     // Execute request.
     RESTRequest lRequest = lRequestBuilder.build();
     requestExecutor.executeNoResultRequest(lRequest, 204);
+  }
+
+  /**
+   * @return {@link Response<Pageable<BusinessServiceObject>>}
+   */
+  @Override
+  public Response<Pageable<BusinessServiceObject>> testNestedGenericsResponse( ) {
+    // Create builder for GET request
+    RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
+    // Build path of request
+    StringBuilder lPathBuilder = new StringBuilder();
+    lPathBuilder.append("/products");
+    lPathBuilder.append('/');
+    lPathBuilder.append("nested-generics");
+    lRequestBuilder.setPath(lPathBuilder.toString());
+    // Execute request and return result.
+    RESTRequest lRequest = lRequestBuilder.build();
+    TypeReference<Response<Pageable<BusinessServiceObject>>> lTypeReference =
+        new TypeReference<Response<Pageable<BusinessServiceObject>>>() {
+        };
+    ObjectType lObjectType = ObjectType.createTypeReferenceObjectType(lTypeReference);
+    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
+  }
+
+  /**
+   * @return {@link Response<List<Offer>>}
+   */
+  @Override
+  public Response<List<Offer>> testNestedMultivaluedResponse( ) {
+    // Create builder for GET request
+    RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
+    // Build path of request
+    StringBuilder lPathBuilder = new StringBuilder();
+    lPathBuilder.append("/products");
+    lPathBuilder.append('/');
+    lPathBuilder.append("multivalued-generics");
+    lRequestBuilder.setPath(lPathBuilder.toString());
+    // Execute request and return result.
+    RESTRequest lRequest = lRequestBuilder.build();
+    TypeReference<Response<List<Offer>>> lTypeReference = new TypeReference<Response<List<Offer>>>() {
+    };
+    ObjectType lObjectType = ObjectType.createTypeReferenceObjectType(lTypeReference);
+    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
   }
 }

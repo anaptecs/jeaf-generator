@@ -487,6 +487,14 @@ cached boolean isTemplateProperty(uml::Class class, uml::Property property):
 cached uml::Class getTemplateBindingType(uml::Class class):
     class.templateBinding.first().parameterSubstitution.first().actual.first().asClass();
     
+cached boolean hasMultivaluedTemplateBinding(uml::Class class, uml::Property property):
+    isTemplateProperty(class, property) && class.hasMultivaluedTemplateBinding();
+    
+private cached boolean hasMultivaluedTemplateBinding(uml::Class class):
+    if class.templateBinding.first().isStereotypeApplied("TemplateBindingMultiplicity")
+    then ((JMM::TemplateBindingMultiplicity) class.templateBinding.first()).multivalued
+    else false;
+    
 List[String] detectMissingRESTPathParams(JMM::RESTOperation operation):
     javaDetectMissingRESTPathParams(operation.path,  operation.getAllRESTPathParamNames());
 

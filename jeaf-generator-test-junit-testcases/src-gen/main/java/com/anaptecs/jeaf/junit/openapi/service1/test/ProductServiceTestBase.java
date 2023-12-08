@@ -134,6 +134,13 @@ public abstract class ProductServiceTestBase extends JEAFTestCase {
   public abstract void testTestChildBeanParameter( ) throws Exception;
 
   /**
+   * Method test the implementation of service method testNestedGenericsResponse(...)
+   *
+   * @throws Exception if the test fails.
+   */
+  public abstract void testTestNestedGenericsResponse( ) throws Exception;
+
+  /**
    * Method test the implementation of service method createChannelCode(...)
    *
    * @throws Exception if the test fails.
@@ -216,6 +223,13 @@ public abstract class ProductServiceTestBase extends JEAFTestCase {
    * @throws Exception if the test fails.
    */
   public abstract void testTestMultivaluedQueryParams( ) throws Exception;
+
+  /**
+   * Method test the implementation of service method testNestedMultivaluedResponse(...)
+   *
+   * @throws Exception if the test fails.
+   */
+  public abstract void testTestNestedMultivaluedResponse( ) throws Exception;
 
   /**
    * Method test the implementation of service method isCurrencySupported(...)

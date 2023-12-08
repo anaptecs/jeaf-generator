@@ -152,7 +152,7 @@
             «ENDIF-»
           «REM»Handling complex types«ENDREM-»
           «ELSE-»
-            «IF attribute.isMultivalued() == false-»
+            «IF attribute.isMultivalued() == false && this.hasMultivaluedTemplateBinding(attribute) == false -»
               «IF attribute.isDeprecated() -»
           # Property "«attribute.getAttributeName()»" is marked as deprecated. However OpenAPI does not support to mark references to complex types as deprecated.
               «ENDIF-»

@@ -5,14 +5,17 @@
  */
 package com.anaptecs.jeaf.fwk.generator.util;
 
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.SortedSet;
 
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Enumeration;
 import org.eclipse.uml2.uml.Interface;
+import org.eclipse.uml2.uml.MultiplicityElement;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Package;
@@ -110,23 +113,67 @@ public class Naming {
   }
 
   public static String getTemplateBindingFQN( Class pTemplateClass ) {
-    StringBuilder lTemplateParameter = new StringBuilder();
     Class lClass = (Class) pTemplateClass;
 
     TemplateBinding lTemplateBinding = lClass.getTemplateBindings().get(0);
+
+    boolean lMultivalued;
+    boolean lOrdered;
+    boolean lUnique;
+    if (ClassUtil.isStereotypeApplied(lTemplateBinding, "TemplateBindingMultiplicity")) {
+      lMultivalued =
+          Boolean.valueOf(ClassUtil.getStereotypeValue(lTemplateBinding, "TemplateBindingMultiplicity", "multivalued"));
+      lOrdered =
+          Boolean.valueOf(ClassUtil.getStereotypeValue(lTemplateBinding, "TemplateBindingMultiplicity", "ordered"));
+      lUnique =
+          Boolean.valueOf(ClassUtil.getStereotypeValue(lTemplateBinding, "TemplateBindingMultiplicity", "unique"));
+    }
+    else {
+      lMultivalued = false;
+      lOrdered = false;
+      lUnique = false;
+    }
     Class lGenericClass = (Class) lTemplateBinding.getTargets().get(0).getOwner();
 
+    StringBuilder lTemplateParameter = new StringBuilder();
     lTemplateParameter.append(Naming.getFullyQualifiedName(lGenericClass.getPackage()));
     lTemplateParameter.append(".");
     lTemplateParameter.append(lGenericClass.getName());
+    lTemplateParameter.append("<");
+
+    if (lMultivalued == true) {
+      lTemplateParameter.append(Naming.getCollectionType(lOrdered, lUnique));
+      lTemplateParameter.append("<");
+    }
 
     TemplateParameterSubstitution lParameterSubstitution = lTemplateBinding.getParameterSubstitutions().get(0);
     Class lTypeParameterClass = (Class) lParameterSubstitution.getActuals().get(0);
-    lTemplateParameter.append("<");
     lTemplateParameter.append(Naming.getFullyQualifiedName(lTypeParameterClass));
+
+    if (lMultivalued == true) {
+      lTemplateParameter.append(">");
+    }
     lTemplateParameter.append(">");
 
     return lTemplateParameter.toString();
+  }
+
+  public static String getCollectionType( boolean pOrdered, boolean pUnique ) {
+    String lCollectionType;
+    if (pOrdered == false && pUnique == false) {
+      // Type is not unique and not ordered -> Collection
+      lCollectionType = Collection.class.getName();
+    }
+    else if (pOrdered == false && pUnique == true) {
+      lCollectionType = Set.class.getName();
+    }
+    else if (pOrdered == true && pUnique == false) {
+      lCollectionType = List.class.getName();
+    }
+    else {
+      lCollectionType = SortedSet.class.getName();
+    }
+    return lCollectionType;
   }
 
   public static String getFullyQualifiedNameForXML( org.eclipse.uml2.uml.NamedElement pNamedElement ) {

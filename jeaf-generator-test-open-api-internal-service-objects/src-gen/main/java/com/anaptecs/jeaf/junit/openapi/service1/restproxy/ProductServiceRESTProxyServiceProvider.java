@@ -48,6 +48,9 @@ import com.anaptecs.jeaf.junit.openapi.service1.TechnicalHeaderContext;
 import com.anaptecs.jeaf.junit.rest.generics.BusinessServiceObject;
 import com.anaptecs.jeaf.junit.rest.generics.GenericPageableResponse;
 import com.anaptecs.jeaf.junit.rest.generics.GenericSingleValuedReponse;
+import com.anaptecs.jeaf.junit.rest.generics.Offer;
+import com.anaptecs.jeaf.junit.rest.generics.Pageable;
+import com.anaptecs.jeaf.junit.rest.generics.Response;
 
 /**
  * Service Provider Interface is generated so that a proxy for a REST Resource can be provided as JEAF Service Provider.
@@ -336,4 +339,14 @@ public interface ProductServiceRESTProxyServiceProvider extends ServiceProvider 
    * @param pContext
    */
   void testContext( Context pContext );
+
+  /**
+   * @return {@link Response<Pageable<BusinessServiceObject>>}
+   */
+  Response<Pageable<BusinessServiceObject>> testNestedGenericsResponse( );
+
+  /**
+   * @return {@link Response<List<Offer>>}
+   */
+  Response<List<Offer>> testNestedMultivaluedResponse( );
 }

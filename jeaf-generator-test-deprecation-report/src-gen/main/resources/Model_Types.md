@@ -121,11 +121,13 @@ MultivaluedQueryParamsBean |   | com.anaptecs.jeaf.junit.openapi.base |  |
 MutableChildPOJO |   | com.anaptecs.jeaf.junit.pojo |  |
 MyBusinessObject |   | com.anaptecs.jeaf.junit.generics |  |
 NotInlinedBeanParam |   | com.anaptecs.jeaf.junit.openapi.base |  |
+Offer |   | com.anaptecs.jeaf.junit.rest.generics |  |
 OtherMappingObject |   | com.anaptecs.jeaf.junit.objectmapping |  |
 Output |   | com.anaptecs.jeaf.junit.otherpackage |  |
 POI |   | com.anaptecs.jeaf.junit.openapi.base |  |
 POJOWithID |   | com.anaptecs.jeaf.junit.pojo |  |
 POJOWithIDnMethod |   | com.anaptecs.jeaf.junit.pojo |  |
+Pageable |   | com.anaptecs.jeaf.junit.rest.generics |  |
 ParentBeanParamType |   | com.anaptecs.jeaf.junit.openapi.base |  |
 ParentClass |   | com.anaptecs.jeaf.junit.openapi.base |  |
 ParentPOJO |   | com.anaptecs.jeaf.junit.pojo |  |
@@ -154,6 +156,7 @@ ProductCode |   | com.anaptecs.jeaf.junit.openapi.base |  |
 ReadonlyDefaultPOJO |   | com.anaptecs.jeaf.junit.pojo |  |
 ReadonlyServiceObject |   | com.anaptecs.jeaf.junit.core |  |
 Reseller |   | com.anaptecs.jeaf.junit.openapi.base |  |
+Response |   | com.anaptecs.jeaf.junit.rest.generics |  |
 ResponsibilityType |   | com.anaptecs.jeaf.accounting |  |
 Sale |   | com.anaptecs.jeaf.junit.openapi.service1 | Chännel<br>€<br>Ö |
 SchufaRequest |   | com.anaptecs.jeaf.accounting.impl |  |

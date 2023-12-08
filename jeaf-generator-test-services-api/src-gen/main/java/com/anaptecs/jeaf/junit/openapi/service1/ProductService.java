@@ -44,6 +44,9 @@ import com.anaptecs.jeaf.junit.openapi.base.StringCodeType;
 import com.anaptecs.jeaf.junit.rest.generics.BusinessServiceObject;
 import com.anaptecs.jeaf.junit.rest.generics.GenericPageableResponse;
 import com.anaptecs.jeaf.junit.rest.generics.GenericSingleValuedReponse;
+import com.anaptecs.jeaf.junit.rest.generics.Offer;
+import com.anaptecs.jeaf.junit.rest.generics.Pageable;
+import com.anaptecs.jeaf.junit.rest.generics.Response;
 
 public interface ProductService extends Service {
   /**
@@ -329,4 +332,14 @@ public interface ProductService extends Service {
    * @param pContext
    */
   void testContext( Context pContext );
+
+  /**
+   * @return {@link Response<Pageable<BusinessServiceObject>>}
+   */
+  Response<Pageable<BusinessServiceObject>> testNestedGenericsResponse( );
+
+  /**
+   * @return {@link Response<List<Offer>>}
+   */
+  Response<List<Offer>> testNestedMultivaluedResponse( );
 }

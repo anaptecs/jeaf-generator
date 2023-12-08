@@ -40,7 +40,6 @@ import javax.ws.rs.container.AsyncResponse;
 import javax.ws.rs.container.Suspended;
 import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
 
 import com.anaptecs.jeaf.core.api.JEAF;
 import com.anaptecs.jeaf.junit.openapi.base.BeanParameter;
@@ -70,6 +69,9 @@ import com.anaptecs.jeaf.junit.openapi.service1.TechnicalHeaderContext;
 import com.anaptecs.jeaf.junit.rest.generics.BusinessServiceObject;
 import com.anaptecs.jeaf.junit.rest.generics.GenericPageableResponse;
 import com.anaptecs.jeaf.junit.rest.generics.GenericSingleValuedReponse;
+import com.anaptecs.jeaf.junit.rest.generics.Offer;
+import com.anaptecs.jeaf.junit.rest.generics.Pageable;
+import com.anaptecs.jeaf.junit.rest.generics.Response;
 import com.anaptecs.jeaf.workload.api.Workload;
 import com.anaptecs.jeaf.workload.api.WorkloadManager;
 import com.anaptecs.jeaf.workload.api.rest.RESTRequestType;
@@ -99,7 +101,8 @@ public class ProductServiceResource {
       public void run( ) {
         try {
           List<Product> lResult = lService.getProducts();
-          Response lResponseObject = Response.status(Response.Status.OK).entity(lResult).build();
+          javax.ws.rs.core.Response lResponseObject =
+              javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.OK).entity(lResult).build();
           // Due to the asynchronous processing of the requests, the response can not be returned as return value.
           // Therefore we make use of the defined JAX-RS mechanisms.
           pAsyncResponse.resume(lResponseObject);
@@ -118,22 +121,22 @@ public class ProductServiceResource {
    */
   @Path("{id}")
   @GET
-  public Response getProduct( @PathParam("id") @DefaultValue("4711") String pProductID ) {
+  public javax.ws.rs.core.Response getProduct( @PathParam("id") @DefaultValue("4711") String pProductID ) {
     // Delegate request to service.
     ProductService lService = this.getProductService();
     Product lResult = lService.getProduct(pProductID);
-    return Response.status(Response.Status.OK).entity(lResult).build();
+    return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.OK).entity(lResult).build();
   }
 
   /**
    * {@link ProductService#createProduct()}
    */
   @POST
-  public Response createProduct( Product pProduct ) {
+  public javax.ws.rs.core.Response createProduct( Product pProduct ) {
     // Delegate request to service.
     ProductService lService = this.getProductService();
     boolean lResult = lService.createProduct(pProduct);
-    return Response.status(Response.Status.OK).entity(lResult).build();
+    return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.OK).entity(lResult).build();
   }
 
   /**
@@ -141,7 +144,8 @@ public class ProductServiceResource {
    */
   @Path("sortiment/{id}")
   @GET
-  public Response getSortiment( @BeanParam Context pContext, @javax.ws.rs.core.Context HttpHeaders pHeaders ) {
+  public javax.ws.rs.core.Response getSortiment( @BeanParam Context pContext,
+      @javax.ws.rs.core.Context HttpHeaders pHeaders ) {
     // Add custom headers.
     for (Map.Entry<String, List<String>> lNextEntry : pHeaders.getRequestHeaders().entrySet()) {
       pContext.addCustomHeader(lNextEntry.getKey(), lNextEntry.getValue().get(0));
@@ -149,7 +153,7 @@ public class ProductServiceResource {
     // Delegate request to service.
     ProductService lService = this.getProductService();
     Sortiment lResult = lService.getSortiment(pContext);
-    return Response.status(Response.Status.OK).entity(lResult).build();
+    return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.OK).entity(lResult).build();
   }
 
   /**
@@ -159,22 +163,22 @@ public class ProductServiceResource {
   @POST
   @Consumes(MediaType.APPLICATION_XML)
   @Produces(MediaType.APPLICATION_XML)
-  public Response createChannelCode( String pChannelCode ) {
+  public javax.ws.rs.core.Response createChannelCode( String pChannelCode ) {
     // Delegate request to service.
     ProductService lService = this.getProductService();
     ChannelCode lResult = lService.createChannelCode(pChannelCode);
-    return Response.status(Response.Status.OK).entity(lResult).build();
+    return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.OK).entity(lResult).build();
   }
 
   /**
    * {@link ProductService#ping()}
    */
   @HEAD
-  public Response ping( ) {
+  public javax.ws.rs.core.Response ping( ) {
     // Delegate request to service.
     ProductService lService = this.getProductService();
     lService.ping();
-    return Response.status(Response.Status.ACCEPTED).build();
+    return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.ACCEPTED).build();
   }
 
   /**
@@ -183,11 +187,11 @@ public class ProductServiceResource {
   @Path("deprecated/operation")
   @GET
   @Deprecated
-  public Response deprecatedOperation( ) {
+  public javax.ws.rs.core.Response deprecatedOperation( ) {
     // Delegate request to service.
     ProductService lService = this.getProductService();
     String lResult = lService.deprecatedOperation();
-    return Response.status(Response.Status.OK).entity(lResult).build();
+    return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.OK).entity(lResult).build();
   }
 
   /**
@@ -195,11 +199,11 @@ public class ProductServiceResource {
    */
   @Path("deprecated/context")
   @POST
-  public Response deprecatedContext( @BeanParam DeprecatedContext pContext ) {
+  public javax.ws.rs.core.Response deprecatedContext( @BeanParam DeprecatedContext pContext ) {
     // Delegate request to service.
     ProductService lService = this.getProductService();
     String lResult = lService.deprecatedContext(pContext);
-    return Response.status(Response.Status.OK).entity(lResult).build();
+    return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.OK).entity(lResult).build();
   }
 
   /**
@@ -207,11 +211,11 @@ public class ProductServiceResource {
    */
   @Path("deprecated/beanParams")
   @POST
-  public Response deprecatedBeanParam( @BeanParam BeanParameter pBeanParam ) {
+  public javax.ws.rs.core.Response deprecatedBeanParam( @BeanParam BeanParameter pBeanParam ) {
     // Delegate request to service.
     ProductService lService = this.getProductService();
     lService.deprecatedBeanParam(pBeanParam);
-    return Response.status(Response.Status.NO_CONTENT).build();
+    return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.NO_CONTENT).build();
   }
 
   /**
@@ -220,11 +224,11 @@ public class ProductServiceResource {
   @Path("deprecated/params")
   @POST
   @Deprecated
-  public Response deprecatedParams( @HeaderParam("param1") @Deprecated int pParam1 ) {
+  public javax.ws.rs.core.Response deprecatedParams( @HeaderParam("param1") @Deprecated int pParam1 ) {
     // Delegate request to service.
     ProductService lService = this.getProductService();
     String lResult = lService.deprecatedParams(pParam1);
-    return Response.status(Response.Status.OK).entity(lResult).build();
+    return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.OK).entity(lResult).build();
   }
 
   /**
@@ -232,11 +236,11 @@ public class ProductServiceResource {
    */
   @Path("deprecated/body")
   @POST
-  public Response deprecatedBody( @DefaultValue("Hello World!") @Deprecated String pBody ) {
+  public javax.ws.rs.core.Response deprecatedBody( @DefaultValue("Hello World!") @Deprecated String pBody ) {
     // Delegate request to service.
     ProductService lService = this.getProductService();
     String lResult = lService.deprecatedBody(pBody);
-    return Response.status(Response.Status.OK).entity(lResult).build();
+    return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.OK).entity(lResult).build();
   }
 
   /**
@@ -244,11 +248,11 @@ public class ProductServiceResource {
    */
   @Path("deprecated/complexBody")
   @POST
-  public Response deprectedComplexRequestBody( @Deprecated Product pProduct ) {
+  public javax.ws.rs.core.Response deprectedComplexRequestBody( @Deprecated Product pProduct ) {
     // Delegate request to service.
     ProductService lService = this.getProductService();
     lService.deprectedComplexRequestBody(pProduct);
-    return Response.status(Response.Status.NO_CONTENT).build();
+    return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.NO_CONTENT).build();
   }
 
   /**
@@ -257,11 +261,11 @@ public class ProductServiceResource {
   @Path("deprecated/complexReturn")
   @GET
   @Deprecated
-  public Response deprecatedComplexReturn( ) {
+  public javax.ws.rs.core.Response deprecatedComplexReturn( ) {
     // Delegate request to service.
     ProductService lService = this.getProductService();
     Product lResult = lService.deprecatedComplexReturn();
-    return Response.status(Response.Status.OK).entity(lResult).build();
+    return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.OK).entity(lResult).build();
   }
 
   /**
@@ -269,7 +273,7 @@ public class ProductServiceResource {
    */
   @Path("specific/{id}")
   @PATCH
-  public Response loadSpecificThings( @BeanParam SpecialContext pContext,
+  public javax.ws.rs.core.Response loadSpecificThings( @BeanParam SpecialContext pContext,
       @javax.ws.rs.core.Context HttpHeaders pHeaders ) {
     // Add custom headers.
     for (Map.Entry<String, List<String>> lNextEntry : pHeaders.getRequestHeaders().entrySet()) {
@@ -278,7 +282,7 @@ public class ProductServiceResource {
     // Delegate request to service.
     ProductService lService = this.getProductService();
     lService.loadSpecificThings(pContext);
-    return Response.status(Response.Status.NO_CONTENT).build();
+    return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.NO_CONTENT).build();
   }
 
   /**
@@ -286,11 +290,11 @@ public class ProductServiceResource {
    */
   @Path("ChannelCodeObject")
   @POST
-  public Response createChannelCodeFromObject( ChannelCode pChannelCode ) {
+  public javax.ws.rs.core.Response createChannelCodeFromObject( ChannelCode pChannelCode ) {
     // Delegate request to service.
     ProductService lService = this.getProductService();
     ChannelCode lResult = lService.createChannelCodeFromObject(pChannelCode);
-    return Response.status(Response.Status.OK).entity(lResult).build();
+    return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.OK).entity(lResult).build();
   }
 
   /**
@@ -298,11 +302,11 @@ public class ProductServiceResource {
    */
   @Path("currencies")
   @POST
-  public Response addCurrencies( List<CurrencyCode> pCurrencies ) {
+  public javax.ws.rs.core.Response addCurrencies( List<CurrencyCode> pCurrencies ) {
     // Delegate request to service.
     ProductService lService = this.getProductService();
     List<CurrencyCode> lResult = lService.addCurrencies(pCurrencies);
-    return Response.status(Response.Status.OK).entity(lResult).build();
+    return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.OK).entity(lResult).build();
   }
 
   /**
@@ -310,11 +314,11 @@ public class ProductServiceResource {
    */
   @Path("currencies/valid")
   @POST
-  public Response isCurrencySupported( CurrencyCode pCurrency ) {
+  public javax.ws.rs.core.Response isCurrencySupported( CurrencyCode pCurrency ) {
     // Delegate request to service.
     ProductService lService = this.getProductService();
     CurrencyCode lResult = lService.isCurrencySupported(pCurrency);
-    return Response.status(Response.Status.OK).entity(lResult).build();
+    return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.OK).entity(lResult).build();
   }
 
   /**
@@ -322,11 +326,11 @@ public class ProductServiceResource {
    */
   @Path("codeTypeUsages")
   @POST
-  public Response testCodeTypeUsage( StringCodeType pStringCode ) {
+  public javax.ws.rs.core.Response testCodeTypeUsage( StringCodeType pStringCode ) {
     // Delegate request to service.
     ProductService lService = this.getProductService();
     IntegerCodeType lResult = lService.testCodeTypeUsage(pStringCode);
-    return Response.status(Response.Status.ACCEPTED).entity(lResult).build();
+    return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.ACCEPTED).entity(lResult).build();
   }
 
   /**
@@ -334,11 +338,11 @@ public class ProductServiceResource {
    */
   @Path("LocalBeanParam")
   @GET
-  public Response testLocalBeanParamType( @BeanParam LocalBeanParamType pBeanParam ) {
+  public javax.ws.rs.core.Response testLocalBeanParamType( @BeanParam LocalBeanParamType pBeanParam ) {
     // Delegate request to service.
     ProductService lService = this.getProductService();
     String lResult = lService.testLocalBeanParamType(pBeanParam);
-    return Response.status(Response.Status.OK).entity(lResult).build();
+    return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.OK).entity(lResult).build();
   }
 
   /**
@@ -346,11 +350,11 @@ public class ProductServiceResource {
    */
   @Path("ExternalBeanParam")
   @GET
-  public Response testExternalBeanParameterType( @BeanParam ParentBeanParamType pParent ) {
+  public javax.ws.rs.core.Response testExternalBeanParameterType( @BeanParam ParentBeanParamType pParent ) {
     // Delegate request to service.
     ProductService lService = this.getProductService();
     String lResult = lService.testExternalBeanParameterType(pParent);
-    return Response.status(Response.Status.OK).entity(lResult).build();
+    return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.OK).entity(lResult).build();
   }
 
   /**
@@ -358,11 +362,11 @@ public class ProductServiceResource {
    */
   @Path("ChildBeanParam")
   @GET
-  public Response testChildBeanParameter( @BeanParam ChildBeanParameterType pChild ) {
+  public javax.ws.rs.core.Response testChildBeanParameter( @BeanParam ChildBeanParameterType pChild ) {
     // Delegate request to service.
     ProductService lService = this.getProductService();
     String lResult = lService.testChildBeanParameter(pChild);
-    return Response.status(Response.Status.OK).entity(lResult).build();
+    return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.OK).entity(lResult).build();
   }
 
   /**
@@ -370,11 +374,11 @@ public class ProductServiceResource {
    */
   @Path("IBAN")
   @POST
-  public Response checkIBAN( String pIBAN ) {
+  public javax.ws.rs.core.Response checkIBAN( String pIBAN ) {
     // Delegate request to service.
     ProductService lService = this.getProductService();
     boolean lResult = lService.checkIBAN(pIBAN);
-    return Response.status(Response.Status.OK).entity(lResult).build();
+    return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.OK).entity(lResult).build();
   }
 
   /**
@@ -382,11 +386,12 @@ public class ProductServiceResource {
    */
   @Path("channels")
   @GET
-  public Response getChannels( @QueryParam("channelTypes") @DefaultValue("MOBILE") List<ChannelType> pChannelTypes ) {
+  public javax.ws.rs.core.Response getChannels(
+      @QueryParam("channelTypes") @DefaultValue("MOBILE") List<ChannelType> pChannelTypes ) {
     // Delegate request to service.
     ProductService lService = this.getProductService();
     List<Channel> lResult = lService.getChannels(pChannelTypes);
-    return Response.status(Response.Status.OK).entity(lResult).build();
+    return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.OK).entity(lResult).build();
   }
 
   /**
@@ -394,11 +399,12 @@ public class ProductServiceResource {
    */
   @Path("DefaultChannel")
   @GET
-  public Response getDefaultChannel( @QueryParam("channelType") @DefaultValue("COUNTER") ChannelType pChannelType ) {
+  public javax.ws.rs.core.Response getDefaultChannel(
+      @QueryParam("channelType") @DefaultValue("COUNTER") ChannelType pChannelType ) {
     // Delegate request to service.
     ProductService lService = this.getProductService();
     Channel lResult = lService.getDefaultChannel(pChannelType);
-    return Response.status(Response.Status.OK).entity(lResult).build();
+    return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.OK).entity(lResult).build();
   }
 
   /**
@@ -406,7 +412,7 @@ public class ProductServiceResource {
    */
   @Path("currencies/{channelCode}")
   @GET
-  public Response getSupportedCurrencies( @PathParam("channelCode") String pChannelCodeAsBasicType ) {
+  public javax.ws.rs.core.Response getSupportedCurrencies( @PathParam("channelCode") String pChannelCodeAsBasicType ) {
     // Convert basic type parameters into "real" objects.
     ChannelCode pChannelCode;
     if (pChannelCodeAsBasicType != null) {
@@ -418,7 +424,7 @@ public class ProductServiceResource {
     // Delegate request to service.
     ProductService lService = this.getProductService();
     List<CurrencyCode> lResult = lService.getSupportedCurrencies(pChannelCode);
-    return Response.status(Response.Status.OK).entity(lResult).build();
+    return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.OK).entity(lResult).build();
   }
 
   /**
@@ -445,7 +451,8 @@ public class ProductServiceResource {
           // Convert basic type parameters into "real" objects.
           ChannelCode pChannelCode = ChannelCode.builder().setCode(pChannelCodeAsBasicType).build();
           List<CurrencyCode> lResult = lService.getSupportedCurrenciesAsync(pChannelCode);
-          Response lResponseObject = Response.status(Response.Status.OK).entity(lResult).build();
+          javax.ws.rs.core.Response lResponseObject =
+              javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.OK).entity(lResult).build();
           // Due to the asynchronous processing of the requests, the response can not be returned as return value.
           // Therefore we make use of the defined JAX-RS mechanisms.
           pAsyncResponse.resume(lResponseObject);
@@ -464,7 +471,7 @@ public class ProductServiceResource {
    */
   @Path("test-date-query-params/{path}")
   @GET
-  public Response testDateQueryParams( @PathParam("path") String pPath,
+  public javax.ws.rs.core.Response testDateQueryParams( @PathParam("path") String pPath,
       @QueryParam("startTimestamp") OffsetDateTime pStartTimestamp, @QueryParam("startTime") OffsetTime pStartTime,
       @QueryParam("localStartTimestamp") LocalDateTime pLocalStartTimestamp,
       @QueryParam("localStartTime") LocalTime pLocalStartTime, @QueryParam("localStartDate") LocalDate pLocalStartDate,
@@ -475,7 +482,7 @@ public class ProductServiceResource {
     ProductService lService = this.getProductService();
     lService.testDateQueryParams(pPath, pStartTimestamp, pStartTime, pLocalStartTimestamp, pLocalStartTime,
         pLocalStartDate, pCalendar, pUtilDate, pSQLTimestamp, pSQLTime, pSQLDate);
-    return Response.status(Response.Status.NO_CONTENT).build();
+    return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.NO_CONTENT).build();
   }
 
   /**
@@ -483,12 +490,12 @@ public class ProductServiceResource {
    */
   @Path("test-date-query-params-beans/{path}")
   @GET
-  public Response testDateQueryParamsBean( @PathParam("path") String pPath,
+  public javax.ws.rs.core.Response testDateQueryParamsBean( @PathParam("path") String pPath,
       @BeanParam DateQueryParamsBean pQueryParams ) {
     // Delegate request to service.
     ProductService lService = this.getProductService();
     lService.testDateQueryParamsBean(pPath, pQueryParams);
-    return Response.status(Response.Status.NO_CONTENT).build();
+    return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.NO_CONTENT).build();
   }
 
   /**
@@ -496,12 +503,12 @@ public class ProductServiceResource {
    */
   @Path("test-optional-query-params")
   @GET
-  public Response testOptionalQueryParams( @QueryParam("query1") @DefaultValue("Just a default value") String query1,
-      @QueryParam("query2") int query2 ) {
+  public javax.ws.rs.core.Response testOptionalQueryParams(
+      @QueryParam("query1") @DefaultValue("Just a default value") String query1, @QueryParam("query2") int query2 ) {
     // Delegate request to service.
     ProductService lService = this.getProductService();
     String lResult = lService.testOptionalQueryParams(query1, query2);
-    return Response.status(Response.Status.OK).entity(lResult).build();
+    return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.OK).entity(lResult).build();
   }
 
   /**
@@ -509,12 +516,12 @@ public class ProductServiceResource {
    */
   @Path("special-header-params")
   @GET
-  public Response testSpecialHeaderParams( @HeaderParam("authorization") String authorization,
+  public javax.ws.rs.core.Response testSpecialHeaderParams( @HeaderParam("authorization") String authorization,
       @HeaderParam("content-type") String pContentType, @HeaderParam("ACCEPT") String pAccept ) {
     // Delegate request to service.
     ProductService lService = this.getProductService();
     lService.testSpecialHeaderParams(authorization, pContentType, pAccept);
-    return Response.status(Response.Status.NO_CONTENT).build();
+    return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.NO_CONTENT).build();
   }
 
   /**
@@ -522,7 +529,7 @@ public class ProductServiceResource {
    */
   @Path("technicalHeaderBeanParam")
   @GET
-  public Response testTechnicalHeaderBean( @BeanParam TechnicalHeaderContext pContext,
+  public javax.ws.rs.core.Response testTechnicalHeaderBean( @BeanParam TechnicalHeaderContext pContext,
       @javax.ws.rs.core.Context HttpHeaders pHeaders ) {
     // Add custom headers.
     for (Map.Entry<String, List<String>> lNextEntry : pHeaders.getRequestHeaders().entrySet()) {
@@ -531,7 +538,7 @@ public class ProductServiceResource {
     // Delegate request to service.
     ProductService lService = this.getProductService();
     String lResult = lService.testTechnicalHeaderBean(pContext);
-    return Response.status(Response.Status.OK).entity(lResult).build();
+    return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.OK).entity(lResult).build();
   }
 
   /**
@@ -539,11 +546,11 @@ public class ProductServiceResource {
    */
   @Path("technicalHeaderParam")
   @GET
-  public Response testTechnicalHeaderParam( @HeaderParam("Reseller") String pReseller ) {
+  public javax.ws.rs.core.Response testTechnicalHeaderParam( @HeaderParam("Reseller") String pReseller ) {
     // Delegate request to service.
     ProductService lService = this.getProductService();
     String lResult = lService.testTechnicalHeaderParam(pReseller);
-    return Response.status(Response.Status.OK).entity(lResult).build();
+    return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.OK).entity(lResult).build();
   }
 
   /**
@@ -551,11 +558,11 @@ public class ProductServiceResource {
    */
   @Path("testNotInlinedBeanParam")
   @POST
-  public Response testNotInlinedBeanParam( @BeanParam NotInlinedBeanParam pInlinedBeanParam ) {
+  public javax.ws.rs.core.Response testNotInlinedBeanParam( @BeanParam NotInlinedBeanParam pInlinedBeanParam ) {
     // Delegate request to service.
     ProductService lService = this.getProductService();
     lService.testNotInlinedBeanParam(pInlinedBeanParam);
-    return Response.status(Response.Status.NO_CONTENT).build();
+    return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.NO_CONTENT).build();
   }
 
   /**
@@ -563,11 +570,11 @@ public class ProductServiceResource {
    */
   @Path("testStringArray")
   @POST
-  public Response testPrimitiveArray( int[] pIntegerArray ) {
+  public javax.ws.rs.core.Response testPrimitiveArray( int[] pIntegerArray ) {
     // Delegate request to service.
     ProductService lService = this.getProductService();
     lService.testPrimitiveArray(pIntegerArray);
-    return Response.status(Response.Status.NO_CONTENT).build();
+    return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.NO_CONTENT).build();
   }
 
   /**
@@ -575,11 +582,11 @@ public class ProductServiceResource {
    */
   @Path("testPrimitiveArrayAsQueryParam")
   @GET
-  public Response testPrimitiveArrayAsQueryParam( @QueryParam("intValues") int[] pIntValues ) {
+  public javax.ws.rs.core.Response testPrimitiveArrayAsQueryParam( @QueryParam("intValues") int[] pIntValues ) {
     // Delegate request to service.
     ProductService lService = this.getProductService();
     String lResult = lService.testPrimitiveArrayAsQueryParam(pIntValues);
-    return Response.status(Response.Status.OK).entity(lResult).build();
+    return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.OK).entity(lResult).build();
   }
 
   /**
@@ -587,7 +594,7 @@ public class ProductServiceResource {
    */
   @Path("big-decimal-codes-header")
   @GET
-  public Response testMultivaluedHeader( @HeaderParam("pCodes") BigDecimal[] pCodesAsBasicType ) {
+  public javax.ws.rs.core.Response testMultivaluedHeader( @HeaderParam("pCodes") BigDecimal[] pCodesAsBasicType ) {
     // Convert basic type parameters into "real" objects.
     List<BigDecimalCode> pCodes;
     if (pCodesAsBasicType != null) {
@@ -602,7 +609,7 @@ public class ProductServiceResource {
     // Delegate request to service.
     ProductService lService = this.getProductService();
     String lResult = lService.testMultivaluedHeader(pCodes);
-    return Response.status(Response.Status.OK).entity(lResult).build();
+    return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.OK).entity(lResult).build();
   }
 
   /**
@@ -610,7 +617,7 @@ public class ProductServiceResource {
    */
   @Path("big-decimal-codes-query")
   @GET
-  public Response testMultivaluedQueryParams( @QueryParam("pCodes") BigDecimal[] pCodesAsBasicType,
+  public javax.ws.rs.core.Response testMultivaluedQueryParams( @QueryParam("pCodes") BigDecimal[] pCodesAsBasicType,
       @QueryParam("pEnums") List<BooleanLiteralsEnum> pEnums ) {
     // Convert basic type parameters into "real" objects.
     List<BigDecimalCode> pCodes;
@@ -626,7 +633,7 @@ public class ProductServiceResource {
     // Delegate request to service.
     ProductService lService = this.getProductService();
     String lResult = lService.testMultivaluedQueryParams(pCodes, pEnums);
-    return Response.status(Response.Status.OK).entity(lResult).build();
+    return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.OK).entity(lResult).build();
   }
 
   /**
@@ -634,12 +641,12 @@ public class ProductServiceResource {
    */
   @Path("testMulitValuedBeanParams")
   @GET
-  public Response testMulitValuedBeanParams( @BeanParam MultiValuedDataType pBeanParam,
+  public javax.ws.rs.core.Response testMulitValuedBeanParams( @BeanParam MultiValuedDataType pBeanParam,
       @QueryParam("pTheEnum") BooleanLiteralsEnum pTheEnum ) {
     // Delegate request to service.
     ProductService lService = this.getProductService();
     String lResult = lService.testMulitValuedBeanParams(pBeanParam, pTheEnum);
-    return Response.status(Response.Status.OK).entity(lResult).build();
+    return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.OK).entity(lResult).build();
   }
 
   /**
@@ -647,11 +654,12 @@ public class ProductServiceResource {
    */
   @Path("no-return-type")
   @POST
-  public Response noReturnType( @HeaderParam("The-Header") String pHeader, @BeanParam MultiValuedDataType pContext ) {
+  public javax.ws.rs.core.Response noReturnType( @HeaderParam("The-Header") String pHeader,
+      @BeanParam MultiValuedDataType pContext ) {
     // Delegate request to service.
     ProductService lService = this.getProductService();
     lService.noReturnType(pHeader, pContext);
-    return Response.status(Response.Status.NO_CONTENT).build();
+    return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.NO_CONTENT).build();
   }
 
   /**
@@ -659,11 +667,11 @@ public class ProductServiceResource {
    */
   @Path("delete-something/{id}")
   @DELETE
-  public Response deleteSomething( @PathParam("id") String pID ) {
+  public javax.ws.rs.core.Response deleteSomething( @PathParam("id") String pID ) {
     // Delegate request to service.
     ProductService lService = this.getProductService();
     lService.deleteSomething(pID);
-    return Response.status(Response.Status.NO_CONTENT).build();
+    return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.NO_CONTENT).build();
   }
 
   /**
@@ -671,11 +679,11 @@ public class ProductServiceResource {
    */
   @Path("generic-single-value")
   @GET
-  public Response genericSingleValueResponse( ) {
+  public javax.ws.rs.core.Response genericSingleValueResponse( ) {
     // Delegate request to service.
     ProductService lService = this.getProductService();
     GenericSingleValuedReponse<BusinessServiceObject> lResult = lService.genericSingleValueResponse();
-    return Response.status(Response.Status.OK).entity(lResult).build();
+    return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.OK).entity(lResult).build();
   }
 
   /**
@@ -683,11 +691,11 @@ public class ProductServiceResource {
    */
   @Path("generic-multi-value")
   @GET
-  public Response genericMultiValueResponse( ) {
+  public javax.ws.rs.core.Response genericMultiValueResponse( ) {
     // Delegate request to service.
     ProductService lService = this.getProductService();
     GenericPageableResponse<BusinessServiceObject> lResult = lService.genericMultiValueResponse();
-    return Response.status(Response.Status.OK).entity(lResult).build();
+    return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.OK).entity(lResult).build();
   }
 
   /**
@@ -695,7 +703,7 @@ public class ProductServiceResource {
    */
   @Path("test-string-code-with-restriction/{string-code}")
   @POST
-  public Response testDataTypeWithRestrition( @PathParam("string-code") String pStringCodeAsBasicType,
+  public javax.ws.rs.core.Response testDataTypeWithRestrition( @PathParam("string-code") String pStringCodeAsBasicType,
       @QueryParam("short-codes") short[] pShortCodesAsBasicType, @QueryParam("byte-code") Byte pJustAByte ) {
     // Convert basic type parameters into "real" objects.
     StringCode pStringCode;
@@ -718,7 +726,7 @@ public class ProductServiceResource {
     // Delegate request to service.
     ProductService lService = this.getProductService();
     lService.testDataTypeWithRestrition(pStringCode, pShortCodes, pJustAByte);
-    return Response.status(Response.Status.NO_CONTENT).build();
+    return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.NO_CONTENT).build();
   }
 
   /**
@@ -726,7 +734,8 @@ public class ProductServiceResource {
    */
   @Path("testContext")
   @GET
-  public Response testContext( @BeanParam Context pContext, @javax.ws.rs.core.Context HttpHeaders pHeaders ) {
+  public javax.ws.rs.core.Response testContext( @BeanParam Context pContext,
+      @javax.ws.rs.core.Context HttpHeaders pHeaders ) {
     // Add custom headers.
     for (Map.Entry<String, List<String>> lNextEntry : pHeaders.getRequestHeaders().entrySet()) {
       pContext.addCustomHeader(lNextEntry.getKey(), lNextEntry.getValue().get(0));
@@ -734,7 +743,31 @@ public class ProductServiceResource {
     // Delegate request to service.
     ProductService lService = this.getProductService();
     lService.testContext(pContext);
-    return Response.status(Response.Status.NO_CONTENT).build();
+    return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.NO_CONTENT).build();
+  }
+
+  /**
+   * {@link ProductService#testNestedGenericsResponse()}
+   */
+  @Path("nested-generics")
+  @GET
+  public javax.ws.rs.core.Response testNestedGenericsResponse( ) {
+    // Delegate request to service.
+    ProductService lService = this.getProductService();
+    Response<Pageable<BusinessServiceObject>> lResult = lService.testNestedGenericsResponse();
+    return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.OK).entity(lResult).build();
+  }
+
+  /**
+   * {@link ProductService#testNestedMultivaluedResponse()}
+   */
+  @Path("multivalued-generics")
+  @GET
+  public javax.ws.rs.core.Response testNestedMultivaluedResponse( ) {
+    // Delegate request to service.
+    ProductService lService = this.getProductService();
+    Response<List<Offer>> lResult = lService.testNestedMultivaluedResponse();
+    return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.OK).entity(lResult).build();
   }
 
   /**
