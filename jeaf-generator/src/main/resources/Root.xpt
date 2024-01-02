@@ -69,6 +69,16 @@
 	    «ENDFOREACH»	    
     «ENDIF»
     
+    «FOREACH this.getAllAppliedProfiles().select(e|e.name == "JMM") AS profile»
+        «info(profile.name)»
+        «FOREACH profile.ownedStereotype AS stereotype»
+            «IF stereotype.isStereotypeApplied("JEAFStereotype")»
+			    «info("Processing «JEAFStereotype» " + stereotype.name + " (" + (this.fqn()) + ")")»
+			    «EXPAND jeaf::JEAFStereotype::StereotypeTemplate FOR (JEAFStereotype)stereotype»
+            «ENDIF»
+        «ENDFOREACH»
+    «ENDFOREACH»
+    
 	«EXPAND Root FOREACH ownedElement»
 «ENDDEFINE» 
 
@@ -246,6 +256,11 @@
     «ENDIF»
 «ENDDEFINE»
 
+«DEFINE Root FOR JEAFStereotype»
+    «info("Processing «JEAFStereotype» " + this.name + " (" + (this.fqn()) + ")")»
+    «EXPAND jeaf::JEAFStereotype::StereotypeTemplate»
+«ENDDEFINE»
+
 «DEFINE Root FOR Object»
 «ENDDEFINE»
 
@@ -257,4 +272,5 @@
 	«ENDIF»
 	«ENDFOREACH»
 «ENDDEFINE»
+
 
