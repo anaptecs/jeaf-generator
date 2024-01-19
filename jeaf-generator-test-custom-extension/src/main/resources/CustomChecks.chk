@@ -1,6 +1,8 @@
 import uml;
 import JMM;
-
+extension Custom;
 
 
 context Model if this.getAllAppliedProfiles().allOwnedElements().typeSelect(ModelVersion).size > 0 WARNING "Fake-Error: Custom check failed." : this.getAllAppliedProfiles().allOwnedElements().typeSelect(ModelVersion).get(0).revision >= 99;
+
+context Model ERROR "Property for custom template is missing": getProperty("jeaf.test") == "Hello Custom Template";

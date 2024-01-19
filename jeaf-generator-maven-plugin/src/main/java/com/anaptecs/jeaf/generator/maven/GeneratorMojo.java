@@ -24,6 +24,8 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.StringJoiner;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -158,6 +160,13 @@ public class GeneratorMojo extends AbstractMojo {
    */
   @Parameter(required = false, defaultValue = "CustomRoot::Root")
   private String customRootTemplate;
+
+  /**
+   * Element can be used to pass parameters to custom templates as key value pairs. The parameters are available for the
+   * template as system properties.
+   */
+  @Parameter(required = false)
+  private Map<String, String> customTemplateParameters;
 
   /**
    * List of custom check files that will be used to run customer specific checks of the UML model.
@@ -1668,6 +1677,13 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty("name.oid.row", peristentObjectsOIDRowName);
       System.setProperty("name.version.label.row", peristentObjectsVersionLabelRowName);
 
+      // Add parameters for custom templates also as system properties.
+      if (customTemplateParameters != null) {
+        for (Entry<String, String> lNext : customTemplateParameters.entrySet()) {
+          System.setProperty(lNext.getKey(), lNext.getValue());
+        }
+      }
+
       String lXMIDirectory = this.getXMIDirectoryLocation();
 
       // Check if UML model file and profile file exist
@@ -1898,7 +1914,8 @@ public class GeneratorMojo extends AbstractMojo {
         | generateActivityImpls | generateServiceObjects | generatePOJOs | generateDomainObjects | generateObjectMappers
         | generatePersistentObjects | generateComponentImpls | generateComponentRuntimeClasses | generateGlobalParts
         | generateExceptionClasses | generateJUnitTests | generateTypesReport | generateBreakingChangesReport
-        | generateRESTDeprecationReport | generateJavaDeprecationReport | generateOpenAPISpec | generateJSONSerializers;
+        | generateRESTDeprecationReport | generateJavaDeprecationReport | generateOpenAPISpec | generateJSONSerializers
+        | customRootTemplate.equals("CustomRoot::Root") == false;
   }
 
   private boolean isMessageConstantsGenerationRequested( ) {
