@@ -55,6 +55,10 @@
 		<outlet name="src" path="${path.src}/" overwrite="false"/>
 		<outlet name="res_gen"  path="${path.res.gen}/" overwrite="true"/>
 		<outlet name="res"  path="${path.res}/" overwrite="false"/>
+        <outlet name="src_test_gen" path="${path.src.test.gen}/" overwrite="true"/>
+        <outlet name="src_test" path="${path.src.test}/" overwrite="false"/>
+        <outlet name="res_test_gen"  path="${path.res.test.gen}/" overwrite="true"/>
+        <outlet name="res_test"  path="${path.res.test}/" overwrite="false"/>
 		<outlet path="error" />
     </component>
     
@@ -70,6 +74,10 @@
 		<outlet name="src" path="${path.src}/" overwrite="false"/>
 		<outlet name="res_gen"  path="${path.res.gen}/" overwrite="true"/>
 		<outlet name="res"  path="${path.res}/" overwrite="false"/>
+        <outlet name="src_test_gen" path="${path.src.test.gen}/" overwrite="true"/>
+        <outlet name="src_test" path="${path.src.test}/" overwrite="false"/>
+        <outlet name="res_test_gen"  path="${path.res.test.gen}/" overwrite="true"/>
+        <outlet name="res_test"  path="${path.res.test}/" overwrite="false"/>
 		<outlet path="error" />
     </component>
 
@@ -85,6 +93,10 @@
 		<outlet name="src" path="${path.src}/" overwrite="false"/>
 		<outlet name="res_gen"  path="${path.res.gen}/" overwrite="true"/>
 		<outlet name="res"  path="${path.res}/" overwrite="false"/>
+        <outlet name="src_test_gen" path="${path.src.test.gen}/" overwrite="true"/>
+        <outlet name="src_test" path="${path.src.test}/" overwrite="false"/>
+        <outlet name="res_test_gen"  path="${path.res.test.gen}/" overwrite="true"/>
+        <outlet name="res_test"  path="${path.res.test}/" overwrite="false"/>
 		<outlet path="error" />
     </component>
     
