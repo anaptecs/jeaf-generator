@@ -213,6 +213,44 @@ public class GeneratorMojo extends AbstractMojo {
   private boolean cleanResourceGen;
 
   /**
+   * Directory where all files that belong to the "src-test" directory will be written to.
+   */
+  @Parameter(required = false)
+  private String sourceTestDirectory;
+
+  /**
+   * Directory where all files that belong to the "src-test-gen" directory will be written to.
+   */
+  @Parameter(required = false)
+  private String sourceTestGenDirectory;
+
+  /**
+   * Parameter defines if src-test-gen directory should be cleaned before the generator runs. Cleaning means that all
+   * existing files will be deleted. Cleaning src-gen directory is the proposed way to go.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private boolean cleanSourceTestGen;
+
+  /**
+   * Directory where all files that belong to the "res-test" directory will be written to.
+   */
+  @Parameter(required = false)
+  private String resourceTestDirectory;
+
+  /**
+   * Directory where all files that belong to the "res-test-gen" directory will be written to.
+   */
+  @Parameter(required = false)
+  private String resourceTestGenDirectory;
+
+  /**
+   * Parameter defines if res-test-gen directory should be cleaned before the generator runs. Cleaning means that all
+   * existing files will be deleted. Cleaning res-gen directory is the proposed way to go.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private boolean cleanResourceTestGen;
+
+  /**
    * Whitelist of packages for the JEAF Generator. Model elements of all packages that match with the white list will be
    * handled by JEAF Generator.
    */
@@ -1113,6 +1151,7 @@ public class GeneratorMojo extends AbstractMojo {
   @Override
   public void execute( ) throws MojoExecutionException, MojoFailureException {
     if (this.isGenerationRequested()) {
+      this.setDefaults();
       // Show startup info.
       this.showStartupInfo();
 
@@ -1159,6 +1198,21 @@ public class GeneratorMojo extends AbstractMojo {
     }
   }
 
+  private void setDefaults( ) {
+    if (sourceTestDirectory == null) {
+      sourceTestDirectory = sourceDirectory;
+    }
+    if (sourceTestGenDirectory == null) {
+      sourceTestGenDirectory = sourceGenDirectory;
+    }
+    if (resourceTestDirectory == null) {
+      resourceTestDirectory = resourceDirectory;
+    }
+    if (resourceTestGenDirectory == null) {
+      resourceTestGenDirectory = resourceGenDirectory;
+    }
+  }
+
   private String getPackageWhitelist( ) {
     return packages.stream().collect(Collectors.joining("; "));
   }
@@ -1194,6 +1248,10 @@ public class GeneratorMojo extends AbstractMojo {
     lLog.info("src-gen:                                          " + sourceGenDirectory);
     lLog.info("res:                                              " + resourceDirectory);
     lLog.info("res-gen:                                          " + resourceGenDirectory);
+    lLog.info("src-test:                                         " + sourceTestDirectory);
+    lLog.info("src-test-gen:                                     " + sourceTestGenDirectory);
+    lLog.info("res-test:                                         " + resourceTestDirectory);
+    lLog.info("res-test-gen:                                     " + resourceTestGenDirectory);
 
     if (breakBuildOnGeneratorError == false) {
       lLog.warn("");
@@ -1520,6 +1578,16 @@ public class GeneratorMojo extends AbstractMojo {
       lFileTools.tryDeleteRecursive(resourceGenDirectory, true);
       lFileTools.createDirectory(resourceGenDirectory);
     }
+    if (cleanSourceTestGen == true) {
+      this.getLog().info("Cleaning src-tes-gen directory '" + sourceTestGenDirectory + "'.");
+      lFileTools.tryDeleteRecursive(sourceTestGenDirectory, true);
+      lFileTools.createDirectory(sourceTestGenDirectory);
+    }
+    if (cleanResourceTestGen == true) {
+      this.getLog().info("Cleaning res-test-gen directory '" + resourceTestGenDirectory + "'.");
+      lFileTools.tryDeleteRecursive(resourceTestGenDirectory, true);
+      lFileTools.createDirectory(resourceTestGenDirectory);
+    }
   }
 
   /**
@@ -1716,6 +1784,10 @@ public class GeneratorMojo extends AbstractMojo {
         lParams.put("path.src", sourceDirectory);
         lParams.put("path.res.gen", resourceGenDirectory);
         lParams.put("path.res", resourceDirectory);
+        lParams.put("path.src.test.gen", sourceTestGenDirectory);
+        lParams.put("path.src.test", sourceTestDirectory);
+        lParams.put("path.res.test.gen", resourceTestGenDirectory);
+        lParams.put("path.res.test", resourceTestDirectory);
 
         // Execute oAW Workflow Runner. This will cause the UML generation to be executed.
         this.getLog().info("Starting code generation from UML model " + umlModelFile);
@@ -2237,13 +2309,16 @@ public class GeneratorMojo extends AbstractMojo {
     Element lElement;
     if (disableSourceFormatting == false && disableResourceFormatting == false) {
       lElement =
-          element("directories", element("directory", sourceGenDirectory), element("directory", resourceGenDirectory));
+          element("directories", element("directory", sourceGenDirectory), element("directory", resourceGenDirectory),
+              element("directory", sourceTestGenDirectory), element("directory", resourceTestGenDirectory));
     }
     else if (disableSourceFormatting == true) {
-      lElement = element("directories", element("directory", resourceGenDirectory));
+      lElement = element("directories", element("directory", resourceGenDirectory),
+          element("directory", resourceTestGenDirectory));
     }
     else if (disableResourceFormatting == true) {
-      lElement = element("directories", element("directory", sourceGenDirectory));
+      lElement = element("directories", element("directory", sourceGenDirectory),
+          element("directory", sourceTestGenDirectory));
     }
     else {
       lElement = null;

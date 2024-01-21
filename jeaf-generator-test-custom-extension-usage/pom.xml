@@ -55,6 +55,10 @@
 					<sourceGenDirectory>${project.basedir}/src-gen/main/java</sourceGenDirectory>
 					<resourceDirectory>${project.basedir}/src-gen/main/resources</resourceDirectory>
 					<resourceGenDirectory>${project.basedir}/src-gen/main/resources</resourceGenDirectory>
+					<sourceTestDirectory>${project.basedir}/src-gen/test/java</sourceTestDirectory>
+					<sourceTestGenDirectory>${project.basedir}/src-gen/test/java</sourceTestGenDirectory>
+					<resourceTestDirectory>${project.basedir}/src-gen/test/resources</resourceTestDirectory>
+					<resourceTestGenDirectory>${project.basedir}/src-gen/test/resources</resourceTestGenDirectory>
 
 					<!-- Configure behavior concerning existing files in src-gen and res-gen directory. It is strongly recommended to clean directories before generating new files. -->
 					<cleanSourceGen>true</cleanSourceGen>
