@@ -1554,6 +1554,18 @@ public class GeneratorMojo extends AbstractMojo {
       lLog.info("Enable detailed toString():                       " + enableDetailedToStringMethod);
     }
 
+    if (customRootTemplate.equals("CustomRoot::Root") == false) {
+      lLog.info(" ");
+      lLog.info("Custom Root Template:                             " + customRootTemplate);
+      if (customTemplateParameters.isEmpty() == false) {
+        lLog.info("Custom Template Parameters:                       ");
+        for (Entry<String, String> lNext : customTemplateParameters.entrySet()) {
+          lLog.info("                                                  \"" + lNext.getKey() + "\":\"" + lNext.getValue()
+              + "\"");
+        }
+      }
+    }
+
     lLog.info(" ");
     lLog.info("Javadoc Company Tag:                              " + fileHeaderCompany);
     lLog.info("Javadoc Author Tag:                               " + fileHeaderAuthor);
@@ -1748,7 +1760,9 @@ public class GeneratorMojo extends AbstractMojo {
       // Add parameters for custom templates also as system properties.
       if (customTemplateParameters != null) {
         for (Entry<String, String> lNext : customTemplateParameters.entrySet()) {
-          System.setProperty(lNext.getKey(), lNext.getValue());
+          if (lNext.getValue() != null) {
+            System.setProperty(lNext.getKey(), lNext.getValue());
+          }
         }
       }
 
