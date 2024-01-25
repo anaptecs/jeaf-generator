@@ -1,7 +1,11 @@
 ![Latest Version](https://maven-badges.herokuapp.com/maven-central/com.anaptecs.jeaf.generator/jeaf-generator-project/badge.svg)
 
 
-# JEAF Generator README #
+# JEAF Generator #
+
+Use UML models to generate code for Spring, REST, OpenAPI, Java and others. 
+
+Boost your software development efficiency and time-to-market. Bye bye handwritten boiler blade code. Let your developers concentrate on what is really important: delivering business features
 
 This repository contains the source code for JEAF Generator. JEAF Generator can be used for code generation based on UML models. Besides the code of the generator itself the repository also contains lot's of test projects that are used to ensure quality. 
 
@@ -9,11 +13,8 @@ This repository contains the source code for JEAF Generator. JEAF Generator can 
 ## Links ##
 For further information please refer to our documentation:
 
-* [JEAF Generator](https://anaptecs.atlassian.net/l/cp/roLu4d09)
-* [JEAF Modelling Guide](https://anaptecs.atlassian.net/l/c/1B2ci31g)
+* [JEAF Generator](https://www.jeaf-generator.io/)
+* [UML Modeling Guide](https://www.jeaf-generator.io/uml-modeling-guide/)
+* [Developer Guide](https://www.jeaf-generator.io/developer-guide/)
+* [Quickstart Guide](https://www.jeaf-generator.io/developer-guide/quickstart/)
 
-## How do I get set up? ##
-
-* Create a clone of this repository on your local machine.
-* You will find a top level Maven project and lot's of sub projects. Each of them shows the specific output for one topic as it will be created by JEAF Generator 
-* To build the project simply execute Maven on the top level project `maven clean install`
