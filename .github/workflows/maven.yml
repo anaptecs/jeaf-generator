@@ -11,7 +11,7 @@ name: Maven Build
 on:
   push:
     branches:
-      - master
+      - main
       - 'feature/**'
   pull_request:
     branches: [ "main" ]
