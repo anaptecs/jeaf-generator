@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Base64;
+import java.util.TimeZone;
 
 import javax.inject.Inject;
 
@@ -390,6 +391,8 @@ public class SpringRESTControllerTest {
 
   @Test
   void testDateHeaderParamsBean( ) throws IOException {
+    assertEquals("Europe/Berlin", TimeZone.getDefault().getID(), "Invalid default timezone");
+
     CloseableHttpClient lHttpClient = HttpClientBuilder.create().build();
     ClassicRequestBuilder lRequest =
         ClassicRequestBuilder.get(template.getRootUri() + PREFIX + "/rest-products/test-date-header-params-beans/1");

@@ -30,7 +30,7 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven (Java 17)
-      run: mvn -Duser.country=DE -Duser.language=de -Duser.timezone="Europe/Germany" -B clean install --file pom.xml
+      run: mvn -Duser.country=DE -Duser.language=de -Duser.timezone="Europe/Berlin" -B clean install --file pom.xml
 
 
     - uses: actions/checkout@v3
