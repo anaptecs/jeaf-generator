@@ -2,7 +2,7 @@ openapi: 3.0.3
 
 info:
   title: Product Services
-  version: 1.14.1-SNAPSHOT
+  version: 1.16.3-SNAPSHOT
   description: >-
     This component represents the OpenAPI interface of the accounting service.
     
@@ -1657,6 +1657,50 @@ paths:
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
     
+  /products/nested-generics:
+    get:
+      operationId: testNestedGenericsResponse
+      responses:
+        '201':
+          description: >-
+            TODO: Please add comment for response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedBusinessObjectsResponse'
+          headers:
+            X-Global-Response-Header:
+              schema:
+                type: string
+                default: 'Hello World'
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+    
+  /products/multivalued-generics:
+    get:
+      operationId: testNestedMultivaluedResponse
+      responses:
+        '201':
+          description: >-
+            TODO: Please add comment for response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OffersResponse'
+          headers:
+            X-Global-Response-Header:
+              schema:
+                type: string
+                default: 'Hello World'
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+    
 
 security:
   - {}
@@ -1777,6 +1821,49 @@ components:
       properties:
         value:
           $ref: '#/components/schemas/BusinessServiceObject'
+    # com.anaptecs.jeaf.junit.rest.generics.Offer
+    Offer:
+      type: object
+      additionalProperties: false
+    # com.anaptecs.jeaf.junit.rest.generics.Response<com.anaptecs.jeaf.junit.rest.generics.Offer>
+    OffersResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        messages:
+          type: array
+          items:
+            $ref: '#/components/schemas/Message'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Offer'
+    # com.anaptecs.jeaf.junit.rest.generics.Pageable<com.anaptecs.jeaf.junit.rest.generics.BusinessServiceObject>
+    PagedBusinessObjects:
+      type: object
+      additionalProperties: false
+      required:
+        - size
+      properties:
+        objects:
+          type: array
+          items:
+            $ref: '#/components/schemas/BusinessServiceObject'
+        size:
+          type: integer
+          format: int32
+          nullable: false
+    # com.anaptecs.jeaf.junit.rest.generics.Response<com.anaptecs.jeaf.junit.rest.generics.Pageable<com.anaptecs.jeaf.junit.rest.generics.BusinessServiceObject>>
+    PagedBusinessObjectsResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        messages:
+          type: array
+          items:
+            $ref: '#/components/schemas/Message'
+        data:
+          $ref: '#/components/schemas/PagedBusinessObjects'
     # com.anaptecs.jeaf.junit.openapi.service1.Sale
     Sale:
       type: object
