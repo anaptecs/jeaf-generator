@@ -17,4 +17,5 @@ For further information please refer to our documentation:
 * [UML Modeling Guide](https://www.jeaf-generator.io/uml-modeling-guide/)
 * [Developer Guide](https://www.jeaf-generator.io/developer-guide/)
 * [Quickstart Guide](https://www.jeaf-generator.io/developer-guide/quickstart/)
+* [Releases](https://github.com/anaptecs/jeaf-generator/releases)
 
