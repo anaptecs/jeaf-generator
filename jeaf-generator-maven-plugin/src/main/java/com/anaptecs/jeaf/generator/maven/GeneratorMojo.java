@@ -2245,7 +2245,7 @@ public class GeneratorMojo extends AbstractMojo {
       // Execute Maven plugin to format sources.
       List<Dependency> lDependencies = MojoExecutor.dependencies(MojoExecutor.dependency("com.anaptecs.jeaf.generator",
           "jeaf-generator-code-styles", XFun.getVersionInfo().getVersionString()));
-      Plugin lFormatterPlugin = plugin("net.revelc.code.formatter", "formatter-maven-plugin", "2.22.0", lDependencies);
+      Plugin lFormatterPlugin = plugin("net.revelc.code.formatter", "formatter-maven-plugin", "2.23.0", lDependencies);
       String lFormatterGoal = goal("format");
       Xpp3Dom lFormatterConfiguration = configuration(element("configFile", javaFormatterStyleFile),
           element("configXmlFile", xmlFormatterStyleFile), this.createDirectoryElementConfiguration());
@@ -2262,7 +2262,7 @@ public class GeneratorMojo extends AbstractMojo {
    */
   private void executeImportSorterPlugin( ) throws MojoExecutionException {
     this.getLog().info("Sorting imports.");
-    Plugin lFormatterPlugin = plugin("net.revelc.code", "impsort-maven-plugin", "1.8.0");
+    Plugin lFormatterPlugin = plugin("net.revelc.code", "impsort-maven-plugin", "1.9.0");
     String lFormatterGoal = goal("sort");
     Xpp3Dom lFormatterConfiguration =
         configuration(element("groups", importGroups), element("staticGroups", staticImportGroups),
