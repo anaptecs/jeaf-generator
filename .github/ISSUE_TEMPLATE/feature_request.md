@@ -4,7 +4,7 @@ about: Suggest an idea for this project
 title: ''
 labels: feature, unassigned
 assignees: jeaf-anaptecs
-
+projects: 'JEAF Generator'
 ---
 
 **Is your feature request related to a problem? Please describe.**
