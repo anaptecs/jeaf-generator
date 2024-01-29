@@ -4,7 +4,7 @@ about: Create a report to help us improve
 title: ''
 labels: bug, unassigned
 assignees: jeaf-anaptecs
-projects: 'JEAF Generator'
+projects: JEAF Generator
 ---
 
 **Describe the bug**
