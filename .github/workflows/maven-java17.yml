@@ -28,6 +28,5 @@ jobs:
       with:
         java-version: '17'
         distribution: 'temurin'
-        cache: maven
     - name: Build with Maven (Java 17)
       run: mvn -Duser.country=DE -Duser.language=de -Duser.timezone="Europe/Berlin" -B --update-snapshots clean install
