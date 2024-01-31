@@ -69,6 +69,7 @@ import com.anaptecs.spring.base.SpecialContext;
 import com.anaptecs.spring.base.StringCode;
 import com.anaptecs.spring.base.TimeUnit;
 import com.anaptecs.spring.service.AdvancedHeader;
+import com.anaptecs.spring.service.ContextWithPrimitives;
 import com.anaptecs.spring.service.DataTypesQueryBean;
 import com.anaptecs.spring.service.DateHeaderParamsBean;
 import com.anaptecs.spring.service.DateQueryParamsBean;
@@ -692,6 +693,36 @@ public class RESTProductServiceResource {
     // Delegate request to service.
     rESTProductService.testBookingIDAsHeaderParam(pBookingID);
     return Response.status(Response.Status.NO_CONTENT).build();
+  }
+
+  /**
+   * {@link RESTProductService#testContextWithPrimitives()}
+   */
+  @Path("test-context-with-primitives")
+  @GET
+  public Response testContextWithPrimitives( @BeanParam ContextWithPrimitives pContext ) {
+    // Delegate request to service.
+    String lResult = rESTProductService.testContextWithPrimitives(pContext);
+    // Validate response and return it.
+    validationExecutor.validateResponse(RESTProductService.class, lResult);
+    return Response.status(Response.Status.OK).entity(lResult).build();
+  }
+
+  /**
+   * {@link RESTProductService#testPrimitivesAsParams()}
+   */
+  @Path("test-primitives-as-params")
+  @GET
+  public Response testPrimitivesAsParams( @HeaderParam("pAnInt") int pAnInt,
+      @HeaderParam("pAnInteger") Integer pAnInteger, @HeaderParam("pABoolean") boolean pABoolean,
+      @HeaderParam("pBooleanWrapper") Boolean pBooleanWrapper, @QueryParam("pALong") long pALong,
+      @QueryParam("pVeryLong") Long pVeryLong ) {
+    // Delegate request to service.
+    String lResult =
+        rESTProductService.testPrimitivesAsParams(pAnInt, pAnInteger, pABoolean, pBooleanWrapper, pALong, pVeryLong);
+    // Validate response and return it.
+    validationExecutor.validateResponse(RESTProductService.class, lResult);
+    return Response.status(Response.Status.OK).entity(lResult).build();
   }
 
   /**

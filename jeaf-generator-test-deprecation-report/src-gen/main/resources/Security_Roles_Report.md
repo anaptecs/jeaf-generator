@@ -314,6 +314,14 @@
 |------------------|---------------|
 | `testBookingIDAsHeaderParam(BookingID)` | `/rest-products/booking-id-as-header-param [PATCH]` |
 
+| Operation        | REST Resource Path |
+|------------------|---------------|
+| `testContextWithPrimitives(ContextWithPrimitives)` | `/rest-products/test-context-with-primitives [GET]` |
+
+| Operation        | REST Resource Path |
+|------------------|---------------|
+| `testPrimitivesAsParams(int, Integer, Boolean, Boolean, long, Long)` | `/rest-products/test-primitives-as-params [GET]` |
+
 ## Role `Standard User`
 ### Service `AccountingService`
 

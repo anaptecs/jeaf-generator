@@ -2716,6 +2716,116 @@ paths:
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
     
+  /rest-products/test-context-with-primitives:
+    get:
+      description: |
+        
+        Authorized Roles: Sales Agent
+      operationId: testContextWithPrimitives
+      parameters:
+        - name: aBoolean
+          in: header
+          required: true
+          schema:
+            type: boolean
+        - name: aBooleanWrapper
+          in: header
+          required: true
+          schema:
+            type: boolean
+        - name: anInt
+          in: header
+          required: true
+          schema:
+            type: integer
+            format: int32
+        - name: anInteger
+          in: header
+          required: true
+          schema:
+            type: integer
+            format: int32
+        - name: aLong
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: aVeryLong
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: |
+            TODO: Please add comment for response
+          content:
+            application/json:
+              schema:
+                type: string
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+    
+  /rest-products/test-primitives-as-params:
+    get:
+      description: |
+        
+        Authorized Roles: Sales Agent
+      operationId: testPrimitivesAsParams
+      parameters:
+        - name: pAnInt
+          in: header
+          required: true
+          schema:
+            type: integer
+            format: int32
+        - name: pAnInteger
+          in: header
+          required: true
+          schema:
+            type: integer
+            format: int32
+        - name: pABoolean
+          in: header
+          required: true
+          schema:
+            type: boolean
+        - name: pBooleanWrapper
+          in: header
+          required: true
+          schema:
+            type: boolean
+        - name: pALong
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: pVeryLong
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: |
+            TODO: Please add comment for response
+          content:
+            application/json:
+              schema:
+                type: string
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+    
 
 security:
   - {}
