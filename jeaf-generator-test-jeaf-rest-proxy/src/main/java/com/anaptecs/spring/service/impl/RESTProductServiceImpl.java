@@ -43,6 +43,7 @@ import com.anaptecs.spring.base.SpecialContext;
 import com.anaptecs.spring.base.StringCode;
 import com.anaptecs.spring.base.TimeUnit;
 import com.anaptecs.spring.service.AdvancedHeader;
+import com.anaptecs.spring.service.ContextWithPrimitives;
 import com.anaptecs.spring.service.DataTypesQueryBean;
 import com.anaptecs.spring.service.DateHeaderParamsBean;
 import com.anaptecs.spring.service.DateQueryParamsBean;
@@ -318,4 +319,14 @@ final class RESTProductServiceImpl extends RESTProductServiceImplBase {
   public void testBookingIDAsHeaderParam( BookingID pBookingID ) {
   }
 
+  @Override
+  public String testContextWithPrimitives( ContextWithPrimitives pContext ) {
+    return null;
+  }
+
+  @Override
+  public String testPrimitivesAsParams( int pInt, Integer pInteger, boolean pBoolean, Boolean pBooleanWrapper,
+      long pLong, Long pVeryLong ) {
+    return null;
+  }
 }

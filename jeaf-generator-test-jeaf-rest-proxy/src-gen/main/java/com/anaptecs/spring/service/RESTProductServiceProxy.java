@@ -566,6 +566,36 @@ public final class RESTProductServiceProxy extends ServiceProxy implements RESTP
       throw new JEAFSystemException(e.getErrorCode(), e, e.getMessageParameters());
     }
   }
+
+  /**
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.spring.service.RESTProductService#testContextWithPrimitives}
+   */
+  public String testContextWithPrimitives( ContextWithPrimitives pContext ) {
+    try {
+      Command lCommand = new TestContextWithPrimitives_ContextWithPrimitives_RESTProductService_Command(pContext);
+      return (String) this.executeCommand(lCommand);
+    }
+    catch (ApplicationException e) {
+      throw new JEAFSystemException(e.getErrorCode(), e, e.getMessageParameters());
+    }
+  }
+
+  /**
+   * Generated proxy implementation for method
+   * {@link com.anaptecs.spring.service.RESTProductService#testPrimitivesAsParams}
+   */
+  public String testPrimitivesAsParams( int pAnInt, Integer pAnInteger, boolean pABoolean, Boolean pBooleanWrapper,
+      long pALong, Long pVeryLong ) {
+    try {
+      Command lCommand = new TestPrimitivesAsParams_int_Integer_Boolean_Boolean_long_Long_RESTProductService_Command(
+          pAnInt, pAnInteger, pABoolean, pBooleanWrapper, pALong, pVeryLong);
+      return (String) this.executeCommand(lCommand);
+    }
+    catch (ApplicationException e) {
+      throw new JEAFSystemException(e.getErrorCode(), e, e.getMessageParameters());
+    }
+  }
 }
 
 /**
@@ -4345,6 +4375,247 @@ final class TestBookingIDAsHeaderParam_BookingID_RESTProductService_Command exte
     lTrace.write(MessageConstants.RETURNING_FROM_SERVICE_CALL, this.getCalledServiceMethod(), lDuration);
     // Method has no return type thus the method returns null.
     return null;
+  }
+
+  /**
+   * Method returns a method object describing the service method that will be called by this command object.
+   *
+   * @return {@link Method} Method object describing the called service method. The method never returns null.
+   */
+  @Override
+  public final Method getServiceMethod( ) {
+    return SERVICE_METHOD;
+  }
+
+  /**
+   * Method returns all parameters that will be passed to the service.
+   *
+   * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
+   * an empty array in case that the method has no parameters.
+   */
+  @Override
+  public Object[] getParameters( ) {
+    return parameters;
+  }
+}
+
+/**
+ * Generated command class for service method "testContextWithPrimitives".
+ */
+final class TestContextWithPrimitives_ContextWithPrimitives_RESTProductService_Command extends Command {
+  /**
+   * Default serial version uid.
+   */
+  private static final long serialVersionUID = 1L;
+
+  /**
+   * Constant for factor to convert nano seconds to milliseconds.
+   */
+  private static final int MILLISECONDS = 1000 * 1000;
+
+  /**
+   * Constant describes the service method that is called by this proxy class.
+   */
+  private static final Method SERVICE_METHOD;
+
+  /**
+   * Object array with all parameters that are passed to the service.
+   */
+  private final Object[] parameters;
+  /**
+   * Initializer is used to get the method object describing the called service method only once.
+   */
+  static {
+    try {
+      SERVICE_METHOD = RESTProductService.class.getMethod("testContextWithPrimitives", ContextWithPrimitives.class);
+    }
+    catch (NoSuchMethodException e) {
+      throw new JEAFSystemException(MessageConstants.SERVICE_METHOD_DOES_NOT_EXIST, e,
+          RESTProductService.class.getName(), "testContextWithPrimitives(ContextWithPrimitives.class)");
+    }
+  }
+
+  /**
+   * Attribute transports the method parameter "pContext" to the service implementation via the service channel.
+   */
+  private final ContextWithPrimitives context;
+
+  /**
+   * Initialize object. All parameters from method "testContextWithPrimitives" have to be passed as parameters to this
+   * command object.
+   *
+   * @param pContext ContextWithPrimitives
+   */
+  TestContextWithPrimitives_ContextWithPrimitives_RESTProductService_Command( ContextWithPrimitives pContext ) {
+    super(RESTProductService.class);
+    context = pContext;
+    parameters = new Object[] { context };
+  }
+
+  /**
+   * Method executes the service call represented by this command object via JEAFs service channel.
+   *
+   * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
+   * null.
+   * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
+   * in Java (EJBs e.g.) have to be serializable services always have to return serializable objects no matter if it
+   * will be serialized or not. If a service method has no return type (void) then the method returns null. Service
+   * methods also may return null as return value.
+   */
+  @Override
+  public Serializable execute( Service pTargetService ) {
+    // Execute service call.
+    RESTProductService lService = (RESTProductService) pTargetService;
+    // Trace service call.
+    Trace lTrace = XFun.getTrace();
+    lTrace.write(MessageConstants.EXECUTING_SERVICE_CALL, this.getCalledServiceMethod());
+    long lStartTime = System.nanoTime();
+    Serializable lResult = (Serializable) lService.testContextWithPrimitives(context);
+    // Calculate duration of service call in milliseconds
+    String lDuration = Long.toString((System.nanoTime() - lStartTime) / MILLISECONDS);
+    // Trace result of service call.
+    lTrace.write(MessageConstants.RETURNING_FROM_SERVICE_CALL, this.getCalledServiceMethod(), lDuration);
+    return lResult;
+  }
+
+  /**
+   * Method returns a method object describing the service method that will be called by this command object.
+   *
+   * @return {@link Method} Method object describing the called service method. The method never returns null.
+   */
+  @Override
+  public final Method getServiceMethod( ) {
+    return SERVICE_METHOD;
+  }
+
+  /**
+   * Method returns all parameters that will be passed to the service.
+   *
+   * @return {@link Object} Object array with all parameters that will be passed to the service. The method may return
+   * an empty array in case that the method has no parameters.
+   */
+  @Override
+  public Object[] getParameters( ) {
+    return parameters;
+  }
+}
+
+/**
+ * Generated command class for service method "testPrimitivesAsParams".
+ */
+final class TestPrimitivesAsParams_int_Integer_Boolean_Boolean_long_Long_RESTProductService_Command extends Command {
+  /**
+   * Default serial version uid.
+   */
+  private static final long serialVersionUID = 1L;
+
+  /**
+   * Constant for factor to convert nano seconds to milliseconds.
+   */
+  private static final int MILLISECONDS = 1000 * 1000;
+
+  /**
+   * Constant describes the service method that is called by this proxy class.
+   */
+  private static final Method SERVICE_METHOD;
+
+  /**
+   * Object array with all parameters that are passed to the service.
+   */
+  private final Object[] parameters;
+  /**
+   * Initializer is used to get the method object describing the called service method only once.
+   */
+  static {
+    try {
+      SERVICE_METHOD = RESTProductService.class.getMethod("testPrimitivesAsParams", int.class, Integer.class,
+          boolean.class, Boolean.class, long.class, Long.class);
+    }
+    catch (NoSuchMethodException e) {
+      throw new JEAFSystemException(MessageConstants.SERVICE_METHOD_DOES_NOT_EXIST, e,
+          RESTProductService.class.getName(),
+          "testPrimitivesAsParams(int.class, Integer.class, boolean.class, Boolean.class, long.class, Long.class)");
+    }
+  }
+
+  /**
+   * Attribute transports the method parameter "pAnInt" to the service implementation via the service channel.
+   */
+  private final int anInt;
+
+  /**
+   * Attribute transports the method parameter "pAnInteger" to the service implementation via the service channel.
+   */
+  private final Integer anInteger;
+
+  /**
+   * Attribute transports the method parameter "pABoolean" to the service implementation via the service channel.
+   */
+  private final boolean aBoolean;
+
+  /**
+   * Attribute transports the method parameter "pBooleanWrapper" to the service implementation via the service channel.
+   */
+  private final Boolean booleanWrapper;
+
+  /**
+   * Attribute transports the method parameter "pALong" to the service implementation via the service channel.
+   */
+  private final long aLong;
+
+  /**
+   * Attribute transports the method parameter "pVeryLong" to the service implementation via the service channel.
+   */
+  private final Long veryLong;
+
+  /**
+   * Initialize object. All parameters from method "testPrimitivesAsParams" have to be passed as parameters to this
+   * command object.
+   *
+   * @param pAnInt int
+   * @param pAnInteger Integer
+   * @param pABoolean boolean
+   * @param pBooleanWrapper Boolean
+   * @param pALong long
+   * @param pVeryLong Long
+   */
+  TestPrimitivesAsParams_int_Integer_Boolean_Boolean_long_Long_RESTProductService_Command( int pAnInt,
+      Integer pAnInteger, boolean pABoolean, Boolean pBooleanWrapper, long pALong, Long pVeryLong ) {
+    super(RESTProductService.class);
+    anInt = pAnInt;
+    anInteger = pAnInteger;
+    aBoolean = pABoolean;
+    booleanWrapper = pBooleanWrapper;
+    aLong = pALong;
+    veryLong = pVeryLong;
+    parameters = new Object[] { anInt, anInteger, aBoolean, booleanWrapper, aLong, veryLong };
+  }
+
+  /**
+   * Method executes the service call represented by this command object via JEAFs service channel.
+   *
+   * @param pTargetService Reference to the service which should be called by this command. The parameter must not be
+   * null.
+   * @return Serializable Result object of the service call. Due to the fact that all returned objects of remote calls
+   * in Java (EJBs e.g.) have to be serializable services always have to return serializable objects no matter if it
+   * will be serialized or not. If a service method has no return type (void) then the method returns null. Service
+   * methods also may return null as return value.
+   */
+  @Override
+  public Serializable execute( Service pTargetService ) {
+    // Execute service call.
+    RESTProductService lService = (RESTProductService) pTargetService;
+    // Trace service call.
+    Trace lTrace = XFun.getTrace();
+    lTrace.write(MessageConstants.EXECUTING_SERVICE_CALL, this.getCalledServiceMethod());
+    long lStartTime = System.nanoTime();
+    Serializable lResult =
+        (Serializable) lService.testPrimitivesAsParams(anInt, anInteger, aBoolean, booleanWrapper, aLong, veryLong);
+    // Calculate duration of service call in milliseconds
+    String lDuration = Long.toString((System.nanoTime() - lStartTime) / MILLISECONDS);
+    // Trace result of service call.
+    lTrace.write(MessageConstants.RETURNING_FROM_SERVICE_CALL, this.getCalledServiceMethod(), lDuration);
+    return lResult;
   }
 
   /**

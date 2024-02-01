@@ -1220,6 +1220,9 @@ public final class ProductServiceRESTProxyServiceProviderImpl
         }
         lRequestBuilder.setHeader("stringCodeHeader", lValues);
       }
+      if (pBeanParam.getLongValues() != null) {
+        lRequestBuilder.setHeader("longValues", pBeanParam.getLongValues());
+      }
     }
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
@@ -1268,6 +1271,9 @@ public final class ProductServiceRESTProxyServiceProviderImpl
           lValues.add(lNext.getCode());
         }
         lRequestBuilder.setHeader("stringCodeHeader", lValues);
+      }
+      if (pContext.getLongValues() != null) {
+        lRequestBuilder.setHeader("longValues", pContext.getLongValues());
       }
     }
     // Execute request.

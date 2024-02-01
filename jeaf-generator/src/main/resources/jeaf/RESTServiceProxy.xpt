@@ -361,6 +361,12 @@ public class «name»RESTProxy implements «this.fqn()» {
 						«ENDIF»
 					}
 					«ENDIF»
+				«ELSE»
+				    «IF headerParam.type.isBooleanType() && headerParam.type.isPrimitiveType()»
+                    lRequestBuilder.setHeader("«headerParam.getRESTHeaderParamName()»", «beanParam.name».is«headerParam.name.toFirstUpper()»());
+				    «ELSE»
+				    lRequestBuilder.setHeader("«headerParam.getRESTHeaderParamName()»", «beanParam.name».«headerParam.asGetter()»());
+				    «ENDIF»
 				«ENDIF»
     		«ENDFOREACH»
     		«IF beanParam.type.getAllAttributesFromHierarchy().typeSelect(JMM::HeaderParam).select(e|e.isPropertySuppressed() == false).size > 0»

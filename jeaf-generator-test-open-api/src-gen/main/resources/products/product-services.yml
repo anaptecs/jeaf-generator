@@ -1393,12 +1393,13 @@ paths:
           in: header
           description: |
             long values as multivalued  header
-          required: true
           schema:
-            type: integer
-            format: int64
+            type: array
             minimum: 3270
             maximum: 4711
+            items:
+              type: integer
+              format: int64
         - name: pTheEnum
           in: query
           required: true
@@ -1469,12 +1470,13 @@ paths:
           in: header
           description: |
             long values as multivalued  header
-          required: true
           schema:
-            type: integer
-            format: int64
+            type: array
             minimum: 3270
             maximum: 4711
+            items:
+              type: integer
+              format: int64
         - name: The-Header
           in: header
           required: true

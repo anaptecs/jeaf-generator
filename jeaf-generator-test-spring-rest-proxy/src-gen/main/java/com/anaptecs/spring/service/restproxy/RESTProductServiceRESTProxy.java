@@ -50,6 +50,7 @@ import com.anaptecs.spring.base.SpecialContext;
 import com.anaptecs.spring.base.StringCode;
 import com.anaptecs.spring.base.TimeUnit;
 import com.anaptecs.spring.service.AdvancedHeader;
+import com.anaptecs.spring.service.ContextWithPrimitives;
 import com.anaptecs.spring.service.DataTypesQueryBean;
 import com.anaptecs.spring.service.DateHeaderParamsBean;
 import com.anaptecs.spring.service.DateQueryParamsBean;
@@ -1545,5 +1546,96 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     // Execute request.
     RESTRequest lRequest = lRequestBuilder.build();
     requestExecutor.executeNoResultRequest(lRequest, 204);
+  }
+
+  /**
+   * @param pContext
+   * @return {@link String}
+   */
+  @Override
+  public String testContextWithPrimitives( ContextWithPrimitives pContext ) {
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(RESTProductService.class, pContext);
+    // Create builder for GET request
+    RESTRequest.Builder lRequestBuilder =
+        RESTRequest.builder(RESTProductService.class, HttpMethod.GET, ContentType.JSON);
+    // Build path of request
+    StringBuilder lPathBuilder = new StringBuilder();
+    lPathBuilder.append("/rest-products");
+    lPathBuilder.append('/');
+    lPathBuilder.append("test-context-with-primitives");
+    lRequestBuilder.setPath(lPathBuilder.toString());
+    // Add query parameter(s) to request
+    if (pContext != null) {
+      lRequestBuilder.setQueryParameter("aLong", String.valueOf(pContext.getALong()));
+      if (pContext.getAVeryLong() != null) {
+        lRequestBuilder.setQueryParameter("aVeryLong", pContext.getAVeryLong().toString());
+      }
+    }
+    // Set HTTP header(s)
+    if (pContext != null) {
+      lRequestBuilder.setHeader("aBoolean", pContext.isABoolean());
+      if (pContext.getABooleanWrapper() != null) {
+        lRequestBuilder.setHeader("aBooleanWrapper", pContext.getABooleanWrapper().toString());
+      }
+      lRequestBuilder.setHeader("anInt", pContext.getAnInt());
+      if (pContext.getAnInteger() != null) {
+        lRequestBuilder.setHeader("anInteger", pContext.getAnInteger().toString());
+      }
+    }
+    // Execute request and return result.
+    RESTRequest lRequest = lRequestBuilder.build();
+    ObjectType lObjectType = ObjectType.createObjectType(String.class);
+    String lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
+    // Validate response and return it.
+    validationExecutor.validateResponse(RESTProductService.class, lResult);
+    return lResult;
+  }
+
+  /**
+   * @param pAnInt
+   * @param pAnInteger
+   * @param pABoolean
+   * @param pBooleanWrapper
+   * @param pALong
+   * @param pVeryLong
+   * @return {@link String}
+   */
+  @Override
+  public String testPrimitivesAsParams( int pAnInt, Integer pAnInteger, boolean pABoolean, Boolean pBooleanWrapper,
+      long pALong, Long pVeryLong ) {
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(RESTProductService.class, pAnInt, pAnInteger, pABoolean, pBooleanWrapper, pALong,
+        pVeryLong);
+    // Create builder for GET request
+    RESTRequest.Builder lRequestBuilder =
+        RESTRequest.builder(RESTProductService.class, HttpMethod.GET, ContentType.JSON);
+    // Build path of request
+    StringBuilder lPathBuilder = new StringBuilder();
+    lPathBuilder.append("/rest-products");
+    lPathBuilder.append('/');
+    lPathBuilder.append("test-primitives-as-params");
+    lRequestBuilder.setPath(lPathBuilder.toString());
+    // Add query parameter(s) to request
+    lRequestBuilder.setQueryParameter("pALong", String.valueOf(pALong));
+    if (pVeryLong != null) {
+      lRequestBuilder.setQueryParameter("pVeryLong", pVeryLong.toString());
+    }
+    // Set HTTP header(s)
+    lRequestBuilder.setHeader("pAnInt", pAnInt);
+    if (pAnInteger != null) {
+      lRequestBuilder.setHeader("pAnInteger", pAnInteger.toString());
+    }
+    lRequestBuilder.setHeader("pABoolean", pABoolean);
+    if (pBooleanWrapper != null) {
+      lRequestBuilder.setHeader("pBooleanWrapper", pBooleanWrapper.toString());
+    }
+    // Execute request and return result.
+    RESTRequest lRequest = lRequestBuilder.build();
+    ObjectType lObjectType = ObjectType.createObjectType(String.class);
+    String lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
+    // Validate response and return it.
+    validationExecutor.validateResponse(RESTProductService.class, lResult);
+    return lResult;
   }
 }
