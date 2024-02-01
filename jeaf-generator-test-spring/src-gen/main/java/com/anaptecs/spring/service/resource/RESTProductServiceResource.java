@@ -59,6 +59,7 @@ import com.anaptecs.spring.base.SpecialContext;
 import com.anaptecs.spring.base.StringCode;
 import com.anaptecs.spring.base.TimeUnit;
 import com.anaptecs.spring.service.AdvancedHeader;
+import com.anaptecs.spring.service.ContextWithPrimitives;
 import com.anaptecs.spring.service.DataTypesQueryBean;
 import com.anaptecs.spring.service.DateHeaderParamsBean;
 import com.anaptecs.spring.service.DateQueryParamsBean;
@@ -1458,6 +1459,60 @@ public class RESTProductServiceResource {
     validationExecutor.validateRequest(RESTProductService.class, pBookingID);
     // Delegate request to service.
     rESTProductService.testBookingIDAsHeaderParam(pBookingID);
+  }
+
+  /**
+   * {@link RESTProductService#testContextWithPrimitives()}
+   */
+  @PreAuthorize("hasAnyRole('Sales Agent')")
+  @ResponseStatus(HttpStatus.OK)
+  @RequestMapping(path = "test-context-with-primitives", method = { RequestMethod.GET })
+  public String testContextWithPrimitives( @RequestHeader(name = "aBoolean", required = true) boolean pABoolean,
+      @RequestHeader(name = "aBooleanWrapper", required = true) Boolean pABooleanWrapper,
+      @RequestHeader(name = "anInt", required = true) int pAnInt,
+      @RequestHeader(name = "anInteger", required = true) Integer pAnInteger,
+      @RequestParam(name = "aLong", required = true) long pALong,
+      @RequestParam(name = "aVeryLong", required = true) Long pAVeryLong ) {
+    // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
+    // service interface but "only" our REST controller.
+    ContextWithPrimitives.Builder lContextBuilder = ContextWithPrimitives.builder();
+    lContextBuilder.setABoolean(pABoolean);
+    lContextBuilder.setABooleanWrapper(pABooleanWrapper);
+    lContextBuilder.setAnInt(pAnInt);
+    lContextBuilder.setAnInteger(pAnInteger);
+    lContextBuilder.setALong(pALong);
+    lContextBuilder.setAVeryLong(pAVeryLong);
+    ContextWithPrimitives pContext = lContextBuilder.build();
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(RESTProductService.class, pContext);
+    // Delegate request to service.
+    String lResponse = rESTProductService.testContextWithPrimitives(pContext);
+    // Validate response and return it.
+    validationExecutor.validateResponse(RESTProductService.class, lResponse);
+    return lResponse;
+  }
+
+  /**
+   * {@link RESTProductService#testPrimitivesAsParams()}
+   */
+  @PreAuthorize("hasAnyRole('Sales Agent')")
+  @ResponseStatus(HttpStatus.OK)
+  @RequestMapping(path = "test-primitives-as-params", method = { RequestMethod.GET })
+  public String testPrimitivesAsParams( @RequestHeader(name = "pAnInt", required = true) int pAnInt,
+      @RequestHeader(name = "pAnInteger", required = true) Integer pAnInteger,
+      @RequestHeader(name = "pABoolean", required = true) boolean pABoolean,
+      @RequestHeader(name = "pBooleanWrapper", required = true) Boolean pBooleanWrapper,
+      @RequestParam(name = "pALong", required = true) long pALong,
+      @RequestParam(name = "pVeryLong", required = true) Long pVeryLong ) {
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(RESTProductService.class, pAnInt, pAnInteger, pABoolean, pBooleanWrapper, pALong,
+        pVeryLong);
+    // Delegate request to service.
+    String lResponse =
+        rESTProductService.testPrimitivesAsParams(pAnInt, pAnInteger, pABoolean, pBooleanWrapper, pALong, pVeryLong);
+    // Validate response and return it.
+    validationExecutor.validateResponse(RESTProductService.class, lResponse);
+    return lResponse;
   }
 
   /**

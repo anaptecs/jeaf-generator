@@ -49,6 +49,9 @@ abstract class RESTProductServiceImplBase implements RESTProductService, Service
   public static final String TESTBOOKINGIDASPATHPARAM_AUTH_TYPE =
       "testBookingIDAsPathParam.com.anaptecs.spring.service.RESTProductService";
 
+  public static final String TESTCONTEXTWITHPRIMITIVES_AUTH_TYPE =
+      "testContextWithPrimitives.com.anaptecs.spring.service.RESTProductService";
+
   public static final String TESTCOOKIEPARAMS_AUTH_TYPE =
       "testCookieParams.com.anaptecs.spring.service.RESTProductService";
 
@@ -108,6 +111,9 @@ abstract class RESTProductServiceImplBase implements RESTProductService, Service
 
   public static final String TESTPRIMITIVEARRAYS_AUTH_TYPE =
       "testPrimitiveArrays.com.anaptecs.spring.service.RESTProductService";
+
+  public static final String TESTPRIMITIVESASPARAMS_AUTH_TYPE =
+      "testPrimitivesAsParams.com.anaptecs.spring.service.RESTProductService";
 
   public static final String TESTPRIMITIVEWRAPPERARRAYASQUERYPARAM_AUTH_TYPE =
       "testPrimitiveWrapperArrayAsQueryParam.com.anaptecs.spring.service.RESTProductService";

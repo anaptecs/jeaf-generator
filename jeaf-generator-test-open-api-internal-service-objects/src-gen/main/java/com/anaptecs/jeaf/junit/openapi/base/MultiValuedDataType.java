@@ -68,7 +68,7 @@ public class MultiValuedDataType implements ServiceObject {
   @HeaderParam("longValues")
   @Min(value = 3270)
   @Max(value = 4711)
-  private long longValues;
+  private long[] longValues;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
@@ -136,10 +136,9 @@ public class MultiValuedDataType implements ServiceObject {
   /**
    * Method creates a new builder and initializes it with the passed attributes.
    */
-  public static Builder builder( String pStringProperty, long pLongValues ) {
+  public static Builder builder( String pStringProperty ) {
     Builder lBuilder = builder();
     lBuilder.setStringProperty(pStringProperty);
-    lBuilder.setLongValues(pLongValues);
     return lBuilder;
   }
 
@@ -151,16 +150,12 @@ public class MultiValuedDataType implements ServiceObject {
    *
    * @param pStringProperty Value to which {@link #stringProperty} should be set.
    *
-   * @param pLongValues Value to which {@link #longValues} should be set.
-   *
    * @return {@link MultiValuedDataType}
    */
-  public static MultiValuedDataType of( List<BooleanLiteralsEnum> pLiterals, String pStringProperty,
-      long pLongValues ) {
+  public static MultiValuedDataType of( List<BooleanLiteralsEnum> pLiterals, String pStringProperty ) {
     MultiValuedDataType.Builder lBuilder = MultiValuedDataType.builder();
     lBuilder.setLiterals(pLiterals);
     lBuilder.setStringProperty(pStringProperty);
-    lBuilder.setLongValues(pLongValues);
     return lBuilder.build();
   }
 
@@ -191,7 +186,7 @@ public class MultiValuedDataType implements ServiceObject {
      */
     @Min(value = 3270)
     @Max(value = 4711)
-    private long longValues;
+    private long[] longValues;
 
     /**
      * Use {@link MultiValuedDataType#builder()} instead of private constructor to create new builder.
@@ -350,9 +345,14 @@ public class MultiValuedDataType implements ServiceObject {
      * @param pLongValues Value to which {@link #longValues} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setLongValues( long pLongValues ) {
+    public Builder setLongValues( long[] pLongValues ) {
       // Assign value to attribute
-      longValues = pLongValues;
+      if (pLongValues != null) {
+        longValues = pLongValues;
+      }
+      else {
+        longValues = null;
+      }
       return this;
     }
 
@@ -585,8 +585,15 @@ public class MultiValuedDataType implements ServiceObject {
    *
    * @return long Value to which {@link #longValues} is set.
    */
-  public long getLongValues( ) {
-    return longValues;
+  public long[] getLongValues( ) {
+    long[] lReturnValue;
+    if (longValues != null) {
+      lReturnValue = longValues;
+    }
+    else {
+      lReturnValue = null;
+    }
+    return lReturnValue;
   }
 
   /**
@@ -595,9 +602,14 @@ public class MultiValuedDataType implements ServiceObject {
    *
    * @param pLongValues Value to which {@link #longValues} should be set.
    */
-  public void setLongValues( long pLongValues ) {
+  public void setLongValues( long[] pLongValues ) {
     // Assign value to attribute
-    longValues = pLongValues;
+    if (pLongValues != null) {
+      longValues = pLongValues;
+    }
+    else {
+      longValues = null;
+    }
   }
 
   /**
@@ -666,7 +678,12 @@ public class MultiValuedDataType implements ServiceObject {
     lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("longValues: ");
-    lBuilder.append(longValues);
+    if (longValues != null) {
+      lBuilder.append(Arrays.toString(longValues));
+    }
+    else {
+      lBuilder.append(" null");
+    }
     lBuilder.append(System.lineSeparator());
     return lBuilder;
   }

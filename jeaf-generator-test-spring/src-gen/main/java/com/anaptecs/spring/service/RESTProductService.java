@@ -383,4 +383,28 @@ public interface RESTProductService {
    * @param pBookingID
    */
   void testBookingIDAsHeaderParam( BookingID pBookingID );
+
+  /**
+   * <p/>
+   * <b>Authorized Roles:</b> Sales Agent
+   *
+   * @param pContext
+   * @return {@link String}
+   */
+  String testContextWithPrimitives( ContextWithPrimitives pContext );
+
+  /**
+   * <p/>
+   * <b>Authorized Roles:</b> Sales Agent
+   *
+   * @param pAnInt
+   * @param pAnInteger
+   * @param pABoolean
+   * @param pBooleanWrapper
+   * @param pALong
+   * @param pVeryLong
+   * @return {@link String}
+   */
+  String testPrimitivesAsParams( int pAnInt, Integer pAnInteger, boolean pABoolean, Boolean pBooleanWrapper,
+      long pALong, Long pVeryLong );
 }

@@ -221,6 +221,7 @@
         <AuthorizationTypeRef authRef="processComplexBookingID.com.anaptecs.spring.service.RESTProductService" />
         <AuthorizationTypeRef authRef="testBookingIDAsHeaderParam.com.anaptecs.spring.service.RESTProductService" />
         <AuthorizationTypeRef authRef="testBookingIDAsPathParam.com.anaptecs.spring.service.RESTProductService" />
+        <AuthorizationTypeRef authRef="testContextWithPrimitives.com.anaptecs.spring.service.RESTProductService" />
         <AuthorizationTypeRef authRef="testCookieParams.com.anaptecs.spring.service.RESTProductService" />
         <AuthorizationTypeRef authRef="testDataTypeAsBeanQueryParam.com.anaptecs.spring.service.RESTProductService" />
         <AuthorizationTypeRef authRef="testDataTypeAsQueryParam.com.anaptecs.spring.service.RESTProductService" />
@@ -243,6 +244,7 @@
         <AuthorizationTypeRef authRef="testPrimitiveArrayAsQueryParam.com.anaptecs.spring.service.RESTProductService" />
         <AuthorizationTypeRef authRef="testPrimitiveArrays.com.anaptecs.spring.service.RESTProductService" />
         <AuthorizationTypeRef authRef="testPrimitiveWrapperArrayAsQueryParam.com.anaptecs.spring.service.RESTProductService" />
+        <AuthorizationTypeRef authRef="testPrimitivesAsParams.com.anaptecs.spring.service.RESTProductService" />
         <AuthorizationTypeRef authRef="testSimpleTypesAsQueryParams.com.anaptecs.spring.service.RESTProductService" />
     </RoleDefinition>
 

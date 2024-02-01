@@ -41,6 +41,7 @@ import com.anaptecs.spring.base.SpecialContext;
 import com.anaptecs.spring.base.StringCode;
 import com.anaptecs.spring.base.TimeUnit;
 import com.anaptecs.spring.service.AdvancedHeader;
+import com.anaptecs.spring.service.ContextWithPrimitives;
 import com.anaptecs.spring.service.DataTypesQueryBean;
 import com.anaptecs.spring.service.DateHeaderParamsBean;
 import com.anaptecs.spring.service.DateQueryParamsBean;
@@ -295,4 +296,22 @@ public interface RESTProductServiceRESTProxyServiceProvider extends ServiceProvi
    * @param pBookingID
    */
   void testBookingIDAsHeaderParam( BookingID pBookingID );
+
+  /**
+   * @param pContext
+   * @return {@link String}
+   */
+  String testContextWithPrimitives( ContextWithPrimitives pContext );
+
+  /**
+   * @param pAnInt
+   * @param pAnInteger
+   * @param pABoolean
+   * @param pBooleanWrapper
+   * @param pALong
+   * @param pVeryLong
+   * @return {@link String}
+   */
+  String testPrimitivesAsParams( int pAnInt, Integer pAnInteger, boolean pABoolean, Boolean pBooleanWrapper,
+      long pALong, Long pVeryLong );
 }
