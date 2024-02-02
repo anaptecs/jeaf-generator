@@ -35,12 +35,16 @@ import openapitools.JSON;
  * Sortiment
  */
 @JsonPropertyOrder({
-  Sortiment.JSON_PROPERTY_PRODUCTS
+  Sortiment.JSON_PROPERTY_PRODUCTS,
+  Sortiment.JSON_PROPERTY_VALUE
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Sortiment {
   public static final String JSON_PROPERTY_PRODUCTS = "products";
   private List<Product> products = null;
+
+  public static final String JSON_PROPERTY_VALUE = "value";
+  private Integer value = 4711;
 
   public Sortiment() { 
   }
@@ -79,6 +83,32 @@ public class Sortiment {
   }
 
 
+  public Sortiment value(Integer value) {
+    this.value = value;
+    return this;
+  }
+
+   /**
+   * Get value
+   * @return value
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty(JSON_PROPERTY_VALUE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public Integer getValue() {
+    return value;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_VALUE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setValue(Integer value) {
+    this.value = value;
+  }
+
+
   /**
    * Return true if this Sortiment object is equal to o.
    */
@@ -91,12 +121,13 @@ public class Sortiment {
       return false;
     }
     Sortiment sortiment = (Sortiment) o;
-    return Objects.equals(this.products, sortiment.products);
+    return Objects.equals(this.products, sortiment.products) &&
+        Objects.equals(this.value, sortiment.value);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(products);
+    return Objects.hash(products, value);
   }
 
   @Override
@@ -104,6 +135,7 @@ public class Sortiment {
     StringBuilder sb = new StringBuilder();
     sb.append("class Sortiment {\n");
     sb.append("    products: ").append(toIndentedString(products)).append("\n");
+    sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("}");
     return sb.toString();
   }

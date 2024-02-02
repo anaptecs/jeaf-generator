@@ -33,7 +33,7 @@ public class MutableChildPOJO extends ImmutablePOJOParent {
    * <br/>
    * <b>Default Value:</b> <code>true</code>
    */
-  private Boolean booleanDefault;
+  private final Boolean booleanDefault;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
@@ -249,16 +249,6 @@ public class MutableChildPOJO extends ImmutablePOJOParent {
    */
   public Boolean getBooleanDefault( ) {
     return booleanDefault;
-  }
-
-  /**
-   * Method sets attribute {@link #booleanDefault}.<br/>
-   *
-   * @param pBooleanDefault Value to which {@link #booleanDefault} should be set.
-   */
-  public void setBooleanDefault( Boolean pBooleanDefault ) {
-    // Assign value to attribute
-    booleanDefault = pBooleanDefault;
   }
 
   @Override

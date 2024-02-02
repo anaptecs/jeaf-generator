@@ -30,6 +30,9 @@ public class Sortiment {
   @JsonProperty("products")
   private List<Product> products = null;
 
+  @JsonProperty("value")
+  private Integer value = 4711;
+
   public Sortiment products(List<Product> products) {
     this.products = products;
     return this;
@@ -56,6 +59,24 @@ public class Sortiment {
     this.products = products;
   }
 
+  public Sortiment value(Integer value) {
+    this.value = value;
+    return this;
+  }
+
+   /**
+   * Get value
+   * @return value
+  **/
+  @Schema(required = true, description = "")
+  public Integer getValue() {
+    return value;
+  }
+
+  public void setValue(Integer value) {
+    this.value = value;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -66,12 +87,13 @@ public class Sortiment {
       return false;
     }
     Sortiment sortiment = (Sortiment) o;
-    return Objects.equals(this.products, sortiment.products);
+    return Objects.equals(this.products, sortiment.products) &&
+        Objects.equals(this.value, sortiment.value);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(products);
+    return Objects.hash(products, value);
   }
 
 
@@ -81,6 +103,7 @@ public class Sortiment {
     sb.append("class Sortiment {\n");
     
     sb.append("    products: ").append(toIndentedString(products)).append("\n");
+    sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("}");
     return sb.toString();
   }
