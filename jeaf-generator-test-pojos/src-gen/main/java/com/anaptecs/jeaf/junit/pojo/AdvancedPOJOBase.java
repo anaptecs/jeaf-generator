@@ -5,6 +5,8 @@
  */
 package com.anaptecs.jeaf.junit.pojo;
 
+import java.util.Objects;
+
 import javax.annotation.Generated;
 import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
@@ -24,10 +26,21 @@ public abstract class AdvancedPOJOBase {
   public static final String READONLYDEFAULT = "readonlyDefault";
 
   /**
+   * Constant for the name of attribute "intWithDefault".
+   */
+  public static final String INTWITHDEFAULT = "intWithDefault";
+
+  /**
    * <br/>
    * <b>Default Value:</b> <code>4711</code>
    */
   private final int readonlyDefault;
+
+  /**
+   * <br/>
+   * <b>Default Value:</b> <code>42</code>
+   */
+  private Integer intWithDefault;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
@@ -35,6 +48,7 @@ public abstract class AdvancedPOJOBase {
    */
   protected AdvancedPOJOBase( ) {
     readonlyDefault = 4711;
+    intWithDefault = 42;
   }
 
   /**
@@ -47,6 +61,7 @@ public abstract class AdvancedPOJOBase {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     readonlyDefault = pBuilder.readonlyDefault;
+    intWithDefault = pBuilder.intWithDefault;
   }
 
   /**
@@ -61,6 +76,12 @@ public abstract class AdvancedPOJOBase {
     private int readonlyDefault = 4711;
 
     /**
+     * <br/>
+     * <b>Default Value:</b> <code>42</code>
+     */
+    private Integer intWithDefault = 42;
+
+    /**
      * Use {@link AdvancedPOJO.builder()} instead of protected constructor to create new builder.
      */
     protected BuilderBase( ) {
@@ -73,6 +94,7 @@ public abstract class AdvancedPOJOBase {
       if (pObject != null) {
         // Read attribute values from passed object.
         readonlyDefault = pObject.readonlyDefault;
+        intWithDefault = pObject.intWithDefault;
       }
     }
 
@@ -85,6 +107,18 @@ public abstract class AdvancedPOJOBase {
     public BuilderBase setReadonlyDefault( int pReadonlyDefault ) {
       // Assign value to attribute
       readonlyDefault = pReadonlyDefault;
+      return this;
+    }
+
+    /**
+     * Method sets attribute {@link #intWithDefault}.<br/>
+     *
+     * @param pIntWithDefault Value to which {@link #intWithDefault} should be set.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    public BuilderBase setIntWithDefault( Integer pIntWithDefault ) {
+      // Assign value to attribute
+      intWithDefault = pIntWithDefault;
       return this;
     }
 
@@ -122,16 +156,38 @@ public abstract class AdvancedPOJOBase {
   }
 
   /**
+   * Method returns attribute {@link #intWithDefault}.<br/>
+   *
+   * @return {@link Integer} Value to which {@link #intWithDefault} is set.
+   */
+  public Integer getIntWithDefault( ) {
+    return intWithDefault;
+  }
+
+  /**
+   * Method sets attribute {@link #intWithDefault}.<br/>
+   *
+   * @param pIntWithDefault Value to which {@link #intWithDefault} should be set.
+   */
+  public void setIntWithDefault( Integer pIntWithDefault ) {
+    // Assign value to attribute
+    intWithDefault = pIntWithDefault;
+  }
+
+  /**
    * Convenience method to create new instance of class AdvancedPOJO.
    *
    *
    * @param pReadonlyDefault Value to which {@link #readonlyDefault} should be set.
    *
+   * @param pIntWithDefault Value to which {@link #intWithDefault} should be set.
+   *
    * @return {@link com.anaptecs.jeaf.junit.pojo.AdvancedPOJO}
    */
-  public static AdvancedPOJO of( int pReadonlyDefault ) {
+  public static AdvancedPOJO of( int pReadonlyDefault, Integer pIntWithDefault ) {
     AdvancedPOJO.Builder lBuilder = AdvancedPOJO.builder();
     lBuilder.setReadonlyDefault(pReadonlyDefault);
+    lBuilder.setIntWithDefault(pIntWithDefault);
     return lBuilder.build();
   }
 
@@ -151,6 +207,7 @@ public abstract class AdvancedPOJOBase {
     final int lPrime = 31;
     int lResult = 1;
     lResult = lPrime * lResult + readonlyDefault;
+    lResult = lPrime * lResult + Objects.hashCode(intWithDefault);
     return lResult;
   }
 
@@ -168,7 +225,7 @@ public abstract class AdvancedPOJOBase {
     }
     else {
       AdvancedPOJOBase lOther = (AdvancedPOJOBase) pObject;
-      lEquals = readonlyDefault == lOther.readonlyDefault;
+      lEquals = readonlyDefault == lOther.readonlyDefault && Objects.equals(intWithDefault, lOther.intWithDefault);
     }
     return lEquals;
   }
@@ -187,6 +244,10 @@ public abstract class AdvancedPOJOBase {
     lBuilder.append(pIndent);
     lBuilder.append("readonlyDefault: ");
     lBuilder.append(readonlyDefault);
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("intWithDefault: ");
+    lBuilder.append(intWithDefault);
     lBuilder.append(System.lineSeparator());
     return lBuilder;
   }

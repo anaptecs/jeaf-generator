@@ -22,13 +22,25 @@ public class MutableChildPOJO extends ImmutablePOJOParent {
    */
   public static final String WRITEABLE = "writeable";
 
+  /**
+   * Constant for the name of attribute "booleanDefault".
+   */
+  public static final String BOOLEANDEFAULT = "booleanDefault";
+
   private Integer writeable;
+
+  /**
+   * <br/>
+   * <b>Default Value:</b> <code>true</code>
+   */
+  private Boolean booleanDefault;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   protected MutableChildPOJO( ) {
+    booleanDefault = true;
   }
 
   /**
@@ -41,6 +53,7 @@ public class MutableChildPOJO extends ImmutablePOJOParent {
     super(pBuilder);
     // Read attribute values from builder.
     writeable = pBuilder.writeable;
+    booleanDefault = pBuilder.booleanDefault;
   }
 
   /**
@@ -77,15 +90,18 @@ public class MutableChildPOJO extends ImmutablePOJOParent {
    *
    * @param pWriteable Value to which {@link #writeable} should be set.
    *
+   * @param pBooleanDefault Value to which {@link #booleanDefault} should be set.
+   *
    * @return {@link MutableChildPOJO}
    */
   public static MutableChildPOJO of( String pAbtractAttr, String pParentAttribute, Integer pAnotherParentAttribute,
-      Integer pWriteable ) {
+      Integer pWriteable, Boolean pBooleanDefault ) {
     MutableChildPOJO.Builder lBuilder = MutableChildPOJO.builder();
     lBuilder.setAbtractAttr(pAbtractAttr);
     lBuilder.setParentAttribute(pParentAttribute);
     lBuilder.setAnotherParentAttribute(pAnotherParentAttribute);
     lBuilder.setWriteable(pWriteable);
+    lBuilder.setBooleanDefault(pBooleanDefault);
     return lBuilder.build();
   }
 
@@ -94,6 +110,12 @@ public class MutableChildPOJO extends ImmutablePOJOParent {
    */
   public static class Builder extends ImmutablePOJOParent.Builder {
     private Integer writeable;
+
+    /**
+     * <br/>
+     * <b>Default Value:</b> <code>true</code>
+     */
+    private Boolean booleanDefault = true;
 
     /**
      * Use {@link MutableChildPOJO#builder()} instead of private constructor to create new builder.
@@ -110,6 +132,7 @@ public class MutableChildPOJO extends ImmutablePOJOParent {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setWriteable(pObject.writeable);
+        this.setBooleanDefault(pObject.booleanDefault);
       }
     }
 
@@ -165,6 +188,18 @@ public class MutableChildPOJO extends ImmutablePOJOParent {
     }
 
     /**
+     * Method sets attribute {@link #booleanDefault}.<br/>
+     *
+     * @param pBooleanDefault Value to which {@link #booleanDefault} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    public Builder setBooleanDefault( Boolean pBooleanDefault ) {
+      // Assign value to attribute
+      booleanDefault = pBooleanDefault;
+      return this;
+    }
+
+    /**
      * Method creates a new instance of class MutableChildPOJO. The object will be initialized with the values of the
      * builder.
      *
@@ -207,11 +242,31 @@ public class MutableChildPOJO extends ImmutablePOJOParent {
     writeable = pWriteable;
   }
 
+  /**
+   * Method returns attribute {@link #booleanDefault}.<br/>
+   *
+   * @return {@link Boolean} Value to which {@link #booleanDefault} is set.
+   */
+  public Boolean getBooleanDefault( ) {
+    return booleanDefault;
+  }
+
+  /**
+   * Method sets attribute {@link #booleanDefault}.<br/>
+   *
+   * @param pBooleanDefault Value to which {@link #booleanDefault} should be set.
+   */
+  public void setBooleanDefault( Boolean pBooleanDefault ) {
+    // Assign value to attribute
+    booleanDefault = pBooleanDefault;
+  }
+
   @Override
   public int hashCode( ) {
     final int lPrime = 31;
     int lResult = super.hashCode();
     lResult = lPrime * lResult + Objects.hashCode(writeable);
+    lResult = lPrime * lResult + Objects.hashCode(booleanDefault);
     return lResult;
   }
 
@@ -232,7 +287,7 @@ public class MutableChildPOJO extends ImmutablePOJOParent {
     }
     else {
       MutableChildPOJO lOther = (MutableChildPOJO) pObject;
-      lEquals = Objects.equals(writeable, lOther.writeable);
+      lEquals = Objects.equals(writeable, lOther.writeable) && Objects.equals(booleanDefault, lOther.booleanDefault);
     }
     return lEquals;
   }
@@ -249,6 +304,10 @@ public class MutableChildPOJO extends ImmutablePOJOParent {
     lBuilder.append(pIndent);
     lBuilder.append("writeable: ");
     lBuilder.append(writeable);
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("booleanDefault: ");
+    lBuilder.append(booleanDefault);
     lBuilder.append(System.lineSeparator());
     return lBuilder;
   }

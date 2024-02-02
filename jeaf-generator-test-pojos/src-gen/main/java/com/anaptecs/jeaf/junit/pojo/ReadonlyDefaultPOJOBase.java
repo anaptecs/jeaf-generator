@@ -5,6 +5,8 @@
  */
 package com.anaptecs.jeaf.junit.pojo;
 
+import java.util.Objects;
+
 import javax.annotation.Generated;
 import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
@@ -24,10 +26,21 @@ public abstract class ReadonlyDefaultPOJOBase {
   public static final String READONLYDEFAULT = "readonlyDefault";
 
   /**
+   * Constant for the name of attribute "booleanDefault".
+   */
+  public static final String BOOLEANDEFAULT = "booleanDefault";
+
+  /**
    * <br/>
    * <b>Default Value:</b> <code>4711</code>
    */
   private final int readonlyDefault;
+
+  /**
+   * <br/>
+   * <b>Default Value:</b> <code>true</code>
+   */
+  private Boolean booleanDefault;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
@@ -35,6 +48,7 @@ public abstract class ReadonlyDefaultPOJOBase {
    */
   protected ReadonlyDefaultPOJOBase( ) {
     readonlyDefault = 4711;
+    booleanDefault = true;
   }
 
   /**
@@ -47,6 +61,7 @@ public abstract class ReadonlyDefaultPOJOBase {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     readonlyDefault = pBuilder.readonlyDefault;
+    booleanDefault = pBuilder.booleanDefault;
   }
 
   /**
@@ -59,6 +74,12 @@ public abstract class ReadonlyDefaultPOJOBase {
      * <b>Default Value:</b> <code>4711</code>
      */
     private int readonlyDefault = 4711;
+
+    /**
+     * <br/>
+     * <b>Default Value:</b> <code>true</code>
+     */
+    private Boolean booleanDefault = true;
 
     /**
      * Use {@link ReadonlyDefaultPOJO.builder()} instead of protected constructor to create new builder.
@@ -74,6 +95,7 @@ public abstract class ReadonlyDefaultPOJOBase {
       if (pObject != null) {
         // Read attribute values from passed object.
         readonlyDefault = pObject.readonlyDefault;
+        booleanDefault = pObject.booleanDefault;
       }
     }
 
@@ -86,6 +108,18 @@ public abstract class ReadonlyDefaultPOJOBase {
     public BuilderBase setReadonlyDefault( int pReadonlyDefault ) {
       // Assign value to attribute
       readonlyDefault = pReadonlyDefault;
+      return this;
+    }
+
+    /**
+     * Method sets attribute {@link #booleanDefault}.<br/>
+     *
+     * @param pBooleanDefault Value to which {@link #booleanDefault} should be set.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    public BuilderBase setBooleanDefault( Boolean pBooleanDefault ) {
+      // Assign value to attribute
+      booleanDefault = pBooleanDefault;
       return this;
     }
 
@@ -123,16 +157,38 @@ public abstract class ReadonlyDefaultPOJOBase {
   }
 
   /**
+   * Method returns attribute {@link #booleanDefault}.<br/>
+   *
+   * @return {@link Boolean} Value to which {@link #booleanDefault} is set.
+   */
+  public Boolean getBooleanDefault( ) {
+    return booleanDefault;
+  }
+
+  /**
+   * Method sets attribute {@link #booleanDefault}.<br/>
+   *
+   * @param pBooleanDefault Value to which {@link #booleanDefault} should be set.
+   */
+  public void setBooleanDefault( Boolean pBooleanDefault ) {
+    // Assign value to attribute
+    booleanDefault = pBooleanDefault;
+  }
+
+  /**
    * Convenience method to create new instance of class ReadonlyDefaultPOJO.
    *
    *
    * @param pReadonlyDefault Value to which {@link #readonlyDefault} should be set.
    *
+   * @param pBooleanDefault Value to which {@link #booleanDefault} should be set.
+   *
    * @return {@link com.anaptecs.jeaf.junit.pojo.ReadonlyDefaultPOJO}
    */
-  public static ReadonlyDefaultPOJO of( int pReadonlyDefault ) {
+  public static ReadonlyDefaultPOJO of( int pReadonlyDefault, Boolean pBooleanDefault ) {
     ReadonlyDefaultPOJO.Builder lBuilder = ReadonlyDefaultPOJO.builder();
     lBuilder.setReadonlyDefault(pReadonlyDefault);
+    lBuilder.setBooleanDefault(pBooleanDefault);
     return lBuilder.build();
   }
 
@@ -141,6 +197,7 @@ public abstract class ReadonlyDefaultPOJOBase {
     final int lPrime = 31;
     int lResult = 1;
     lResult = lPrime * lResult + readonlyDefault;
+    lResult = lPrime * lResult + Objects.hashCode(booleanDefault);
     return lResult;
   }
 
@@ -158,7 +215,7 @@ public abstract class ReadonlyDefaultPOJOBase {
     }
     else {
       ReadonlyDefaultPOJOBase lOther = (ReadonlyDefaultPOJOBase) pObject;
-      lEquals = readonlyDefault == lOther.readonlyDefault;
+      lEquals = readonlyDefault == lOther.readonlyDefault && Objects.equals(booleanDefault, lOther.booleanDefault);
     }
     return lEquals;
   }
@@ -177,6 +234,10 @@ public abstract class ReadonlyDefaultPOJOBase {
     lBuilder.append(pIndent);
     lBuilder.append("readonlyDefault: ");
     lBuilder.append(readonlyDefault);
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("booleanDefault: ");
+    lBuilder.append(booleanDefault);
     lBuilder.append(System.lineSeparator());
     return lBuilder;
   }
