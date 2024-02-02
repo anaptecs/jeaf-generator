@@ -35,6 +35,11 @@ public class POJOWithID implements Identifiable<ObjectID> {
   public static final String NAME = "name";
 
   /**
+   * Constant for the name of attribute "integerWithDefault".
+   */
+  public static final String INTEGERWITHDEFAULT = "integerWithDefault";
+
+  /**
    * Reference to the identifier of this object. The reference may be null since an id is not mandatory.
    */
   private final ObjectID objectID;
@@ -44,11 +49,18 @@ public class POJOWithID implements Identifiable<ObjectID> {
   private String name;
 
   /**
+   * <br/>
+   * <b>Default Value:</b> <code>47110815</code>
+   */
+  private Integer integerWithDefault;
+
+  /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   protected POJOWithID( ) {
     objectID = null;
+    integerWithDefault = 47110815;
   }
 
   /**
@@ -70,6 +82,7 @@ public class POJOWithID implements Identifiable<ObjectID> {
     // Read attribute values from builder.
     attr = pBuilder.attr;
     name = pBuilder.name;
+    integerWithDefault = pBuilder.integerWithDefault;
   }
 
   /**
@@ -102,12 +115,15 @@ public class POJOWithID implements Identifiable<ObjectID> {
    *
    * @param pName Value to which {@link #name} should be set.
    *
+   * @param pIntegerWithDefault Value to which {@link #integerWithDefault} should be set.
+   *
    * @return {@link POJOWithID}
    */
-  public static POJOWithID of( Double pAttr, String pName ) {
+  public static POJOWithID of( Double pAttr, String pName, Integer pIntegerWithDefault ) {
     POJOWithID.Builder lBuilder = POJOWithID.builder();
     lBuilder.setAttr(pAttr);
     lBuilder.setName(pName);
+    lBuilder.setIntegerWithDefault(pIntegerWithDefault);
     return lBuilder.build();
   }
 
@@ -125,6 +141,12 @@ public class POJOWithID implements Identifiable<ObjectID> {
     private String name;
 
     /**
+     * <br/>
+     * <b>Default Value:</b> <code>47110815</code>
+     */
+    private Integer integerWithDefault = 47110815;
+
+    /**
      * Use {@link POJOWithID#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
@@ -139,6 +161,7 @@ public class POJOWithID implements Identifiable<ObjectID> {
         objectID = pObject.objectID;
         this.setAttr(pObject.attr);
         this.setName(pObject.name);
+        this.setIntegerWithDefault(pObject.integerWithDefault);
       }
     }
 
@@ -172,6 +195,18 @@ public class POJOWithID implements Identifiable<ObjectID> {
     public Builder setName( String pName ) {
       // Assign value to attribute
       name = pName;
+      return this;
+    }
+
+    /**
+     * Method sets attribute {@link #integerWithDefault}.<br/>
+     *
+     * @param pIntegerWithDefault Value to which {@link #integerWithDefault} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    public Builder setIntegerWithDefault( Integer pIntegerWithDefault ) {
+      // Assign value to attribute
+      integerWithDefault = pIntegerWithDefault;
       return this;
     }
 
@@ -263,12 +298,32 @@ public class POJOWithID implements Identifiable<ObjectID> {
     name = pName;
   }
 
+  /**
+   * Method returns attribute {@link #integerWithDefault}.<br/>
+   *
+   * @return {@link Integer} Value to which {@link #integerWithDefault} is set.
+   */
+  public Integer getIntegerWithDefault( ) {
+    return integerWithDefault;
+  }
+
+  /**
+   * Method sets attribute {@link #integerWithDefault}.<br/>
+   *
+   * @param pIntegerWithDefault Value to which {@link #integerWithDefault} should be set.
+   */
+  public void setIntegerWithDefault( Integer pIntegerWithDefault ) {
+    // Assign value to attribute
+    integerWithDefault = pIntegerWithDefault;
+  }
+
   @Override
   public int hashCode( ) {
     final int lPrime = 31;
     int lResult = 1;
     lResult = lPrime * lResult + Objects.hashCode(attr);
     lResult = lPrime * lResult + Objects.hashCode(name);
+    lResult = lPrime * lResult + Objects.hashCode(integerWithDefault);
     return lResult;
   }
 
@@ -286,7 +341,8 @@ public class POJOWithID implements Identifiable<ObjectID> {
     }
     else {
       POJOWithID lOther = (POJOWithID) pObject;
-      lEquals = Objects.equals(attr, lOther.attr) && Objects.equals(name, lOther.name);
+      lEquals = Objects.equals(attr, lOther.attr) && Objects.equals(name, lOther.name)
+          && Objects.equals(integerWithDefault, lOther.integerWithDefault);
     }
     return lEquals;
   }
@@ -309,6 +365,10 @@ public class POJOWithID implements Identifiable<ObjectID> {
     lBuilder.append(pIndent);
     lBuilder.append("name: ");
     lBuilder.append(name);
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("integerWithDefault: ");
+    lBuilder.append(integerWithDefault);
     lBuilder.append(System.lineSeparator());
     return lBuilder;
   }
