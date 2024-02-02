@@ -135,8 +135,7 @@
 				return lModule;
 			}
 			
-			«IF this.getOpenAPIDataTypes().select(e|e.generateInternalViewOfCompositeDataType()).isEmpty == false»
-				«IF isTargetRuntimeJEAF() == false && hasCompositeDateTypeCustomSerialization() == false»
+			«IF this.requiresCompositeDataTypeConverter()»
 			/**
 			 * Method creates a module that consists of all serializers / deserializers for composite data types.
 			 */
@@ -157,7 +156,6 @@
 				// Return created module.
 				return lModule;
 			}
-				«ENDIF»
 			«ENDIF»
 			
 			/**
