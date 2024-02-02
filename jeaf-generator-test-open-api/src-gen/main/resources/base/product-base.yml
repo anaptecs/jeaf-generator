@@ -1681,11 +1681,18 @@ components:
     Sortiment:
       type: object
       additionalProperties: false
+      required:
+        - value
       properties:
         products:
           type: array
           items:
             $ref: '#/components/schemas/Product'
+        value:
+          type: integer
+          format: int32
+          nullable: false
+          default: 4711
 
     # com.anaptecs.jeaf.junit.openapi.base.Stop
     Stop:

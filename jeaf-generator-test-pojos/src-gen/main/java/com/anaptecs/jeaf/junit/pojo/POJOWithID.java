@@ -52,7 +52,7 @@ public class POJOWithID implements Identifiable<ObjectID> {
    * <br/>
    * <b>Default Value:</b> <code>47110815</code>
    */
-  private Integer integerWithDefault;
+  private final Integer integerWithDefault;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
@@ -305,16 +305,6 @@ public class POJOWithID implements Identifiable<ObjectID> {
    */
   public Integer getIntegerWithDefault( ) {
     return integerWithDefault;
-  }
-
-  /**
-   * Method sets attribute {@link #integerWithDefault}.<br/>
-   *
-   * @param pIntegerWithDefault Value to which {@link #integerWithDefault} should be set.
-   */
-  public void setIntegerWithDefault( Integer pIntegerWithDefault ) {
-    // Assign value to attribute
-    integerWithDefault = pIntegerWithDefault;
   }
 
   @Override

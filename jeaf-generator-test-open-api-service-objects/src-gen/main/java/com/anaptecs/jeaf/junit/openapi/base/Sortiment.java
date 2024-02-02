@@ -13,6 +13,7 @@ import java.util.Set;
 
 import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
@@ -36,6 +37,13 @@ public class Sortiment implements ServiceObject {
   private transient boolean productsBackReferenceInitialized;
 
   /**
+   * <br/>
+   * <b>Default Value:</b> <code>4711</code>
+   */
+  @NotNull
+  private final Integer value;
+
+  /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
@@ -43,6 +51,7 @@ public class Sortiment implements ServiceObject {
     products = new HashSet<Product>();
     // Bidirectional back reference is not yet set up correctly
     productsBackReferenceInitialized = false;
+    value = 4711;
   }
 
   /**
@@ -62,6 +71,7 @@ public class Sortiment implements ServiceObject {
     }
     // Bidirectional back reference is set up correctly as a builder is used.
     productsBackReferenceInitialized = true;
+    value = pBuilder.value;
   }
 
   /**
@@ -90,10 +100,13 @@ public class Sortiment implements ServiceObject {
    * Convenience method to create new instance of class Sortiment.
    *
    *
+   * @param pValue Value to which {@link #value} should be set.
+   *
    * @return {@link Sortiment}
    */
-  public static Sortiment of( ) {
+  public static Sortiment of( Integer pValue ) {
     Sortiment.Builder lBuilder = Sortiment.builder();
+    lBuilder.setValue(pValue);
     return lBuilder.build();
   }
 
@@ -102,6 +115,12 @@ public class Sortiment implements ServiceObject {
    */
   public static class Builder {
     private Set<Product> products;
+
+    /**
+     * <br/>
+     * <b>Default Value:</b> <code>4711</code>
+     */
+    private Integer value = 4711;
 
     /**
      * Use {@link Sortiment#builder()} instead of private constructor to create new builder.
@@ -116,6 +135,7 @@ public class Sortiment implements ServiceObject {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setProducts(pObject.products);
+        this.setValue(pObject.value);
       }
     }
 
@@ -149,6 +169,18 @@ public class Sortiment implements ServiceObject {
         }
         products.addAll(Arrays.asList(pProducts));
       }
+      return this;
+    }
+
+    /**
+     * Method sets attribute {@link #value}.<br/>
+     *
+     * @param pValue Value to which {@link #value} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    public Builder setValue( Integer pValue ) {
+      // Assign value to attribute
+      value = pValue;
       return this;
     }
 
@@ -257,6 +289,15 @@ public class Sortiment implements ServiceObject {
   }
 
   /**
+   * Method returns attribute {@link #value}.<br/>
+   *
+   * @return {@link Integer} Value to which {@link #value} is set.
+   */
+  public Integer getValue( ) {
+    return value;
+  }
+
+  /**
    * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
@@ -283,6 +324,10 @@ public class Sortiment implements ServiceObject {
         lBuilder.append(System.lineSeparator());
       }
     }
+    lBuilder.append(pIndent);
+    lBuilder.append("value: ");
+    lBuilder.append(value);
+    lBuilder.append(System.lineSeparator());
     return lBuilder;
   }
 

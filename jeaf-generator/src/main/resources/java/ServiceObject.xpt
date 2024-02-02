@@ -361,7 +361,11 @@
 							«ENDIF»
 						«ENDIF»
 					«ELSE»
-						«attr.name» = null;
+                        «IF attr.isRealInitValue() »
+                            «attr.name» = «IF attr.isJEAFEnumeration()»«attr.type.name».«ENDIF»«attr.initValue()»;
+                        «ELSE»
+                            «attr.name» = null;
+                        «ENDIF»
 					«ENDIF»
 				«ENDIF»
 			«ELSE»
