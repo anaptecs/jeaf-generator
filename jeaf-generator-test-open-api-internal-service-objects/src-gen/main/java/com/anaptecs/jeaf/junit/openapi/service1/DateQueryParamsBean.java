@@ -39,6 +39,10 @@ public class DateQueryParamsBean implements ServiceObject {
   @NotNull
   private OffsetTime offsetTime;
 
+  /**
+   * <p/>
+   * <b>Breaking Change with 2.0:</b> Has to be in the past
+   */
   @QueryParam("localDateTime")
   @NotNull
   private LocalDateTime localDateTime;
@@ -192,6 +196,10 @@ public class DateQueryParamsBean implements ServiceObject {
 
     private OffsetTime offsetTime;
 
+    /**
+     * <p/>
+     * <b>Breaking Change with 2.0:</b> Has to be in the past
+     */
     private LocalDateTime localDateTime;
 
     private LocalTime localTime;

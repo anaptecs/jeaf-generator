@@ -37,9 +37,9 @@ import openapitools.JSON;
 
 
 /**
- * Data type represents a product definition 
+ * Data type represents a product definition Alternate Name: Produkt 
  */
-@ApiModel(description = "Data type represents a product definition ")
+@ApiModel(description = "Data type represents a product definition Alternate Name: Produkt ")
 @JsonPropertyOrder({
   Product.JSON_PROPERTY_RESELLERS,
   Product.JSON_PROPERTY_NAME,

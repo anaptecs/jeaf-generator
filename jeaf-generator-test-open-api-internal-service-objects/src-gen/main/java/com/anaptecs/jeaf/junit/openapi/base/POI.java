@@ -51,6 +51,10 @@ public class POI extends Stop {
   @JsonSetter(nulls = Nulls.SKIP)
   private Set<SoftLink> evenMoreLinks;
 
+  /**
+   * <p/>
+   * <b>Breaking Change with PI 15:</b> New mandatory association is required to support upcoming features.
+   */
   @Size(min = 2, max = 42)
   @Valid
   @JsonSetter(nulls = Nulls.SKIP)
@@ -197,6 +201,10 @@ public class POI extends Stop {
     @Valid
     private Set<SoftLink> evenMoreLinks;
 
+    /**
+     * <p/>
+     * <b>Breaking Change with PI 15:</b> New mandatory association is required to support upcoming features.
+     */
     private Set<UICStop> stops;
 
     private Set<BookingCode> bookingCodes;

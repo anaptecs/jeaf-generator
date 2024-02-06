@@ -29,6 +29,8 @@ import com.fasterxml.jackson.annotation.Nulls;
 
 /**
  * Data type represents a product definition
+ * <p/>
+ * <b>Alternate Name:</b> Produkt
  *
  * @author JEAF Generator
  * @version JEAF Release 1.6.x

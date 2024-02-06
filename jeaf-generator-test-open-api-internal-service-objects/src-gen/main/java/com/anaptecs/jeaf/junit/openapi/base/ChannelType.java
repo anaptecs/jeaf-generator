@@ -2,8 +2,25 @@ package com.anaptecs.jeaf.junit.openapi.base;
 
 import javax.validation.constraints.NotNull;
 
+/**
+ * <p/>
+ * <b>Alternate Name:</b> Kanal
+ *
+ * @author JEAF Generator
+ * @version JEAF Release 1.6.x
+ */
 public enum ChannelType {
-  COUNTER("CNT"), CALL_CENTER("CC"), MOBILE("MOB"), TVM("TVM"), WEB("WEB"),
+  /**
+   * counter
+   * <p/>
+   * <b>Alternate Name:</b> BEDIENT
+   */
+  COUNTER("CNT"), CALL_CENTER("CC"), MOBILE("MOB"), TVM("TVM"),
+  /**
+   * <p/>
+   * <b>Breaking Change with 1.47.11:</b> Added new literal
+   */
+  WEB("WEB"),
   /**
    * @deprecated I'm <code>DEPRECATED</code>. (<b>since:</b> TBD, <b>removed with:</b> TBD)
    */

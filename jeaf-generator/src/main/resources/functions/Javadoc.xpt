@@ -2,6 +2,7 @@
 «EXTENSION functions::JEAFDeprecated»
 «EXTENSION functions::BreakingChange»
 «EXTENSION functions::Operation»
+«EXTENSION functions::Alias»
 «EXTENSION java::Naming»
 «EXTENSION entity::ModelProperties»
 «EXTENSION java::GeneratorCommons»
@@ -13,6 +14,8 @@
 «IF this.hasMeaningfulJavadoc()»
 /**
     «EXPAND AddComment -»
+    «EXPAND AliasJavadoc -»
+    «EXPAND BreakingChangeJavadoc -»
  * @author «getAuthor()»
  * @version «getVersion()»
     «EXPAND DeprecatedJavadoc -»
@@ -56,6 +59,7 @@
     <br/><b>Example:</b> <code>«((JMM::Example) this).exampleValue»</code>
     «ENDIF -»
     «ENDIF -»
+    «EXPAND AliasJavadoc -»
     «EXPAND BreakingChangeJavadoc -»
     «EXPAND DeprecatedJavadoc -»
  */
@@ -161,6 +165,7 @@
 «IF this.hasMeaningfulJavadoc()»
 /**
     «EXPAND AddComment -»
+    «EXPAND AliasJavadoc -»
     «EXPAND BreakingChangeJavadoc -»
     «EXPAND DeprecatedJavadoc -»
  */
@@ -190,4 +195,11 @@
     <p/><b>Breaking Change with «this.getBreakingChangeActiveWith()»:</b> «this.getBreakingChangeDescription().convertCommentForJavadoc()»   
     «ENDIF-»
 «ENDDEFINE»
+
+«DEFINE AliasJavadoc FOR uml::NamedElement -»
+    «IF this.isAlias()-»
+    <p/><b>Alternate Name:</b> «this.asAlias().getAlternateNameForJavadoc()»   
+    «ENDIF-»
+«ENDDEFINE»
+
 

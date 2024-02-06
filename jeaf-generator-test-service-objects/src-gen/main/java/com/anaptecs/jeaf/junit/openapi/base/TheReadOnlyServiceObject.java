@@ -44,6 +44,10 @@ public class TheReadOnlyServiceObject implements ServiceObject {
 
   private final String name;
 
+  /**
+   * <p/>
+   * <b>Breaking Change with PI 16:</b> At least one bit will be expected.
+   */
   private final boolean[] bits;
 
   private final Set<BookingCode> bookingCodes;
@@ -123,6 +127,10 @@ public class TheReadOnlyServiceObject implements ServiceObject {
   public static class Builder {
     private String name;
 
+    /**
+     * <p/>
+     * <b>Breaking Change with PI 16:</b> At least one bit will be expected.
+     */
     private boolean[] bits;
 
     private Set<BookingCode> bookingCodes;

@@ -39,10 +39,10 @@ public class Person extends Partner {
   }
 
    /**
-   * Get surname
+   *  Alternate Name: Vorname 
    * @return surname
   **/
-  @Schema(required = true, description = "")
+  @Schema(required = true, description = " Alternate Name: Vorname ")
   public String getSurname() {
     return surname;
   }

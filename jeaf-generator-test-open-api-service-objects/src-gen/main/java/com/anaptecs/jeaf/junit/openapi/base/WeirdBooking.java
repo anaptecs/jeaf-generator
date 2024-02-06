@@ -54,6 +54,10 @@ public class WeirdBooking extends WeirdParent {
    */
   private Booking realBooking;
 
+  /**
+   * <p/>
+   * <b>Breaking Change with 2.1:</b> Association will required at least 1 object.
+   */
   @JsonSetter(nulls = Nulls.SKIP)
   private Set<InventoryType> inventories;
 
@@ -173,6 +177,10 @@ public class WeirdBooking extends WeirdParent {
      */
     private Booking realBooking;
 
+    /**
+     * <p/>
+     * <b>Breaking Change with 2.1:</b> Association will required at least 1 object.
+     */
     private Set<InventoryType> inventories;
 
     /**

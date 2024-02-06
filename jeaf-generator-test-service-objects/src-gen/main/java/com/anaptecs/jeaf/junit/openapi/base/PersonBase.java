@@ -30,6 +30,10 @@ public abstract class PersonBase extends Partner {
    */
   public static final String FIRSTNAME = "firstName";
 
+  /**
+   * <p/>
+   * <b>Alternate Name:</b> Vorname
+   */
   private String surname;
 
   private String firstName;
@@ -59,6 +63,10 @@ public abstract class PersonBase extends Partner {
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static abstract class BuilderBase extends Partner.Builder {
+    /**
+     * <p/>
+     * <b>Alternate Name:</b> Vorname
+     */
     private String surname;
 
     private String firstName;

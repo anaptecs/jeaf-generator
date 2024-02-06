@@ -22,9 +22,9 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.List;
 /**
- * UICStop
+ *  Alternate Name: Haltestelle 
  */
-
+@Schema(description = " Alternate Name: Haltestelle ")
 
 public class UICStop extends Stop {
   @JsonProperty("uicCode")
