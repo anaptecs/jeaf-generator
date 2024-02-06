@@ -30,6 +30,12 @@ public class Booking implements ServiceObject {
   private BookingID bookingID;
 
   /**
+   * <br/>
+   * <b>Default Value:</b> <code>42</code>
+   */
+  private static final int MAGIC_NUMER = 42;
+
+  /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */

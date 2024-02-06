@@ -72,6 +72,12 @@ public abstract class ResellerBase implements Serializable {
   private Locale language;
 
   /**
+   * <br/>
+   * <b>Default Value:</b> <code>42</code>
+   */
+  public static final Integer MAGIC = 42;
+
+  /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */

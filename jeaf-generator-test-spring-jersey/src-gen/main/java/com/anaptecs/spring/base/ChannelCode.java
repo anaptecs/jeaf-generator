@@ -27,6 +27,12 @@ public class ChannelCode {
   private String code;
 
   /**
+   * <br/>
+   * <b>Default Value:</b> <code>"MY_MAGIC_CHANNEL"</code>
+   */
+  public static final String DEFAULT_CHANNEL_CODE = "MY_MAGIC_CHANNEL";
+
+  /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */

@@ -35,7 +35,7 @@
 	    «ELSE»
 		    StringBuilder lBuilder = super.toStringBuilder(pIndent);
 	    «ENDIF»
-	    «FOREACH this.getToStringProperties().select(e|e.isPropertySuppressed() == false) AS attribute»
+	    «FOREACH this.getToStringProperties().select(e|e.isPropertySuppressed() == false && e.isStatic == false) AS attribute»
 			lBuilder.append(pIndent);
 			lBuilder.append("«attribute.name»: ");
 		    «EXPAND ToStringValue FOR attribute»
@@ -182,10 +182,10 @@
 		  }
 		  return lEquals;
 		}
-	«ELSEIF this.isOpenAPIDataType() && this.getAllAttributesFromHierarchy().select(e|e.isPropertySuppressed() == false).size == 1 && this.getAllAttributesFromHierarchy().first().isMultivalued() == false && (generateEqualsAndHashCode() || generateEqualsAndHashCodeForOpenAPIDataTypes())»
+	«ELSEIF this.isOpenAPIDataType() && this.getAllAttributesFromHierarchy().select(e|e.isPropertySuppressed() == false && e.isStatic == false).size == 1 && this.getAllAttributesFromHierarchy().select(e|e.isPropertySuppressed() == false && e.isStatic == false).first().isMultivalued() == false && (generateEqualsAndHashCode() || generateEqualsAndHashCodeForOpenAPIDataTypes())»
 		@Override
 		public int hashCode( ) {
-		  return java.util.Objects.hash(«this.getAllAttributesFromHierarchy().select(e|e.isPropertySuppressed() == false).first().name»);
+		  return java.util.Objects.hash(«this.getAllAttributesFromHierarchy().select(e|e.isPropertySuppressed() == false && e.isStatic == false).first().name»);
 		}
 		
 		@Override
@@ -198,7 +198,7 @@
 		    lEquals = false;
 		  }
 		  else {
-		    lEquals = java.util.Objects.equals(«this.getAllAttributesFromHierarchy().select(e|e.isPropertySuppressed() == false).first().name», ((«this.fqn()») pOtherObject).«this.getAllAttributesFromHierarchy().select(e|e.isPropertySuppressed() == false).first().asGetter()»());
+		    lEquals = java.util.Objects.equals(«this.getAllAttributesFromHierarchy().select(e|e.isPropertySuppressed() == false && e.isStatic == false).first().name», ((«this.fqn()») pOtherObject).«this.getAllAttributesFromHierarchy().select(e|e.isPropertySuppressed() == false).first().asGetter()»());
 		  }
 		  return lEquals;
 		}
@@ -343,7 +343,7 @@
   «IF this.hasBidirectionalAssociation() == false»
 	  @Override
 	  public int hashCode( ) {
-	    «IF ownedAttribute.select(e|e.isPropertySuppressed() == false && e.isTransient() == false).isEmpty == false»
+	    «IF ownedAttribute.select(e|e.isPropertySuppressed() == false && e.isTransient() == false && e.isStatic == false).isEmpty == false»
 		    final int lPrime = 31;
 		    «IF parents().isEmpty»
 		    int lResult = 1;
@@ -351,7 +351,7 @@
 		    int lResult = super.hashCode();
 		    «ENDIF»
 		    
-		    «FOREACH ownedAttribute.select(e|e.isPropertySuppressed() == false && e.isTransient() == false) AS property»
+		    «FOREACH ownedAttribute.select(e|e.isPropertySuppressed() == false && e.isTransient() == false && e.isStatic == false) AS property»
 		        «IF property.type.isPrimitiveType() && property.isMultivalued() == false»
 		            «IF property.type.isBooleanType()»
 		                lResult = lPrime * lResult + Boolean.hashCode(«property.name»);
@@ -403,10 +403,10 @@
           lEquals = false;
         }
 	    else {
-	      «IF ownedAttribute.select(e|e.isPropertySuppressed() == false && e.isTransient() == false).isEmpty == false»
+	      «IF ownedAttribute.select(e|e.isPropertySuppressed() == false && e.isTransient() == false && e.isStatic == false).isEmpty == false»
 	          «className»«IF this.hasTemplateParameter()»<?>«ENDIF» lOther = («className»«IF this.hasTemplateParameter()»<?>«ENDIF») pObject;
 		      lEquals =
-		      «FOREACH ownedAttribute.select(e|e.isPropertySuppressed() == false && e.isTransient() == false) AS property SEPARATOR " && "»
+		      «FOREACH ownedAttribute.select(e|e.isPropertySuppressed() == false && e.isTransient() == false && e.isStatic == false) AS property SEPARATOR " && "»
 		        «IF property.type.isPrimitiveType() && property.isMultivalued() == false»
                     «IF property.type.isDoubleType()»
                       Double.compare(«property.name», lOther.«property.name») == 0
