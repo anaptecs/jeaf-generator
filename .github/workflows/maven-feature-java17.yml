@@ -6,15 +6,12 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Maven Build (Java 17)
+name: Maven Feature Branch Build (Java 17)
 
 on:
   push:
     branches:
-      - main
       - 'feature/**'
-  pull_request:
-    branches: [ "main" ]
 
 jobs:
   build:
@@ -28,5 +25,6 @@ jobs:
       with:
         java-version: '17'
         distribution: 'temurin'
+
     - name: Build with Maven (Java 17)
       run: mvn -Duser.country=DE -Duser.language=de -Duser.timezone="Europe/Berlin" -B --update-snapshots clean install
