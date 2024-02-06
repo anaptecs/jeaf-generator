@@ -150,7 +150,7 @@ String getComment(uml::Comment comment):
     comment.body.trim();
     
 boolean hasComment(uml::Element element):
-    getComment(element).length > 0 || (element.isOperation() && element.asOperation().hasSecurityRoles()) || (element.isJEAFDeprecated() && ((uml::NamedElement) element).hasMeaningfulDeprecationInfo()) || element.hasAliasAttributeName() || element.isBreakingChange();
+    getComment(element).length > 0 || (element.isOperation() && element.asOperation().hasSecurityRoles()) || (element.isJEAFDeprecated() && ((uml::NamedElement) element).hasMeaningfulDeprecationInfo()) || element.hasAliasAttributeName() || element.isBreakingChange() || element.hasAlternateName();
 
 String getComment(Object this): "";
 
