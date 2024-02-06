@@ -5,6 +5,8 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
+import java.util.Objects;
+
 import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -202,6 +204,36 @@ public abstract class VersionedObjectSoftLinkBase implements ServiceObject {
    */
   public final void unsetEntity( ) {
     entity = null;
+  }
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = 1;
+    lResult = lPrime * lResult + Long.hashCode(objectID);
+    lResult = lPrime * lResult + Objects.hashCode(dataUnit);
+    lResult = lPrime * lResult + Objects.hashCode(entity);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      VersionedObjectSoftLinkBase lOther = (VersionedObjectSoftLinkBase) pObject;
+      lEquals = objectID == lOther.objectID && Objects.equals(dataUnit, lOther.dataUnit)
+          && Objects.equals(entity, lOther.entity);
+    }
+    return lEquals;
   }
 
   /**

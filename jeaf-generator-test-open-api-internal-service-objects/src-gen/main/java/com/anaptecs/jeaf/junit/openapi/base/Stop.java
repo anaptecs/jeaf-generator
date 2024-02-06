@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 
 import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
@@ -390,6 +391,37 @@ public class Stop implements ServiceObject {
    */
   public final void unsetTheSoftLink( ) {
     theSoftLink = null;
+  }
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = 1;
+    lResult = lPrime * lResult + Objects.hashCode(name);
+    lResult = lPrime * lResult + Objects.hashCode(links);
+    lResult = lPrime * lResult + index;
+    lResult = lPrime * lResult + Objects.hashCode(theSoftLink);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      Stop lOther = (Stop) pObject;
+      lEquals = Objects.equals(name, lOther.name) && Objects.equals(links, lOther.links) && index == lOther.index
+          && Objects.equals(theSoftLink, lOther.theSoftLink);
+    }
+    return lEquals;
   }
 
   /**

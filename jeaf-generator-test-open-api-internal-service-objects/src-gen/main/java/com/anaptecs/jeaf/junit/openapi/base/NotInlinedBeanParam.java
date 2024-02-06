@@ -5,6 +5,8 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
+import java.util.Objects;
+
 import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -300,6 +302,37 @@ public class NotInlinedBeanParam implements ServiceObject {
   public void setBookingID( BookingID pBookingID ) {
     // Assign value to attribute
     bookingID = pBookingID;
+  }
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = 1;
+    lResult = lPrime * lResult + Objects.hashCode(header);
+    lResult = lPrime * lResult + Objects.hashCode(doubleCode);
+    lResult = lPrime * lResult + Objects.hashCode(extensibleEnum);
+    lResult = lPrime * lResult + Objects.hashCode(bookingID);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      NotInlinedBeanParam lOther = (NotInlinedBeanParam) pObject;
+      lEquals = Objects.equals(header, lOther.header) && Objects.equals(doubleCode, lOther.doubleCode)
+          && Objects.equals(extensibleEnum, lOther.extensibleEnum) && Objects.equals(bookingID, lOther.bookingID);
+    }
+    return lEquals;
   }
 
   /**

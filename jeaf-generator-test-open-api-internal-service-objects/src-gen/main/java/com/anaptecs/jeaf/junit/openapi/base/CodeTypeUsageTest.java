@@ -8,6 +8,7 @@ package com.anaptecs.jeaf.junit.openapi.base;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 import javax.validation.ConstraintViolationException;
@@ -486,6 +487,40 @@ public class CodeTypeUsageTest implements ServiceObject {
    */
   public final void unsetShortCode( ) {
     shortCode = null;
+  }
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = 1;
+    lResult = lPrime * lResult + Objects.hashCode(booleanCode);
+    lResult = lPrime * lResult + Objects.hashCode(booleanCodeAssociation);
+    lResult = lPrime * lResult + Objects.hashCode(shortCodeTypeAssociation);
+    lResult = lPrime * lResult + Objects.hashCode(stringCode);
+    lResult = lPrime * lResult + Objects.hashCode(shortCode);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      CodeTypeUsageTest lOther = (CodeTypeUsageTest) pObject;
+      lEquals = Objects.equals(booleanCode, lOther.booleanCode)
+          && Objects.equals(booleanCodeAssociation, lOther.booleanCodeAssociation)
+          && Objects.equals(shortCodeTypeAssociation, lOther.shortCodeTypeAssociation)
+          && Objects.equals(stringCode, lOther.stringCode) && Objects.equals(shortCode, lOther.shortCode);
+    }
+    return lEquals;
   }
 
   /**

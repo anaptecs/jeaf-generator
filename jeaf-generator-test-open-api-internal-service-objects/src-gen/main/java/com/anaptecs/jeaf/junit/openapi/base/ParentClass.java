@@ -10,6 +10,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 import javax.validation.ConstraintViolationException;
@@ -465,6 +466,38 @@ public class ParentClass implements ServiceObject {
   public void clearLegacyBankAccounts( ) {
     // Remove all objects from association "legacyBankAccounts".
     legacyBankAccounts.clear();
+  }
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = 1;
+    lResult = lPrime * lResult + Objects.hashCode(parentAttribute);
+    lResult = lPrime * lResult + Objects.hashCode(ibans);
+    lResult = lPrime * lResult + Objects.hashCode(theBankAccount);
+    lResult = lPrime * lResult + Objects.hashCode(legacyBankAccounts);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      ParentClass lOther = (ParentClass) pObject;
+      lEquals = Objects.equals(parentAttribute, lOther.parentAttribute) && Objects.equals(ibans, lOther.ibans)
+          && Objects.equals(theBankAccount, lOther.theBankAccount)
+          && Objects.equals(legacyBankAccounts, lOther.legacyBankAccounts);
+    }
+    return lEquals;
   }
 
   /**

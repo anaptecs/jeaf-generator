@@ -5,6 +5,8 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
+import java.util.Objects;
+
 import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -287,6 +289,37 @@ public class PostalAddress implements ServiceObject {
   public void setPostalCode( int pPostalCode ) {
     // Assign value to attribute
     postalCode = pPostalCode;
+  }
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = 1;
+    lResult = lPrime * lResult + Objects.hashCode(street);
+    lResult = lPrime * lResult + Objects.hashCode(houseNumber);
+    lResult = lPrime * lResult + Objects.hashCode(city);
+    lResult = lPrime * lResult + postalCode;
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      PostalAddress lOther = (PostalAddress) pObject;
+      lEquals = Objects.equals(street, lOther.street) && Objects.equals(houseNumber, lOther.houseNumber)
+          && Objects.equals(city, lOther.city) && postalCode == lOther.postalCode;
+    }
+    return lEquals;
   }
 
   /**

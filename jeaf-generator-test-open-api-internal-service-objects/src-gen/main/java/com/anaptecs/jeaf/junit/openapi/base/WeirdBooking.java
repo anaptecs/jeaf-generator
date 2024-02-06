@@ -10,6 +10,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 import javax.validation.ConstraintViolationException;
@@ -666,6 +667,44 @@ public class WeirdBooking extends WeirdParent {
   public void clearInventories( ) {
     // Remove all objects from association "inventories".
     inventories.clear();
+  }
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = super.hashCode();
+    lResult = lPrime * lResult + Objects.hashCode(booking);
+    lResult = lPrime * lResult + Objects.hashCode(additionalBookings);
+    lResult = lPrime * lResult + Objects.hashCode(versionedObjectSoftLink);
+    lResult = lPrime * lResult + childProperty;
+    lResult = lPrime * lResult + Objects.hashCode(realBooking);
+    lResult = lPrime * lResult + Objects.hashCode(inventories);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (!super.equals(pObject)) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      WeirdBooking lOther = (WeirdBooking) pObject;
+      lEquals = Objects.equals(booking, lOther.booking) && Objects.equals(additionalBookings, lOther.additionalBookings)
+          && Objects.equals(versionedObjectSoftLink, lOther.versionedObjectSoftLink)
+          && childProperty == lOther.childProperty && Objects.equals(realBooking, lOther.realBooking)
+          && Objects.equals(inventories, lOther.inventories);
+    }
+    return lEquals;
   }
 
   /**

@@ -9,6 +9,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Objects;
 
 import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
@@ -422,6 +423,42 @@ public class Context implements ServiceObject {
     else {
       throw new IllegalArgumentException("Parameter 'pHeaderName' must not be null.");
     }
+  }
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = 1;
+    lResult = lPrime * lResult + Objects.hashCode(accessToken);
+    lResult = lPrime * lResult + Objects.hashCode(language);
+    lResult = lPrime * lResult + Long.hashCode(resellerID);
+    lResult = lPrime * lResult + Long.hashCode(pathParam);
+    lResult = lPrime * lResult + Objects.hashCode(queryParam);
+    lResult = lPrime * lResult + Objects.hashCode(intCode);
+    lResult = lPrime * lResult + Objects.hashCode(customHeaders);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      Context lOther = (Context) pObject;
+      lEquals = Objects.equals(accessToken, lOther.accessToken) && Objects.equals(language, lOther.language)
+          && resellerID == lOther.resellerID && pathParam == lOther.pathParam
+          && Objects.equals(queryParam, lOther.queryParam) && Objects.equals(intCode, lOther.intCode)
+          && Objects.equals(customHeaders, lOther.customHeaders);
+    }
+    return lEquals;
   }
 
   /**

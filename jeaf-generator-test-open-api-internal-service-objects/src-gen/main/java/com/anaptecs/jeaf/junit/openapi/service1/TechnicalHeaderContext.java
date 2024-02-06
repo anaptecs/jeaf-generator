@@ -8,6 +8,7 @@ package com.anaptecs.jeaf.junit.openapi.service1;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
@@ -199,6 +200,34 @@ public class TechnicalHeaderContext implements ServiceObject {
     else {
       throw new IllegalArgumentException("Parameter 'pHeaderName' must not be null.");
     }
+  }
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = 1;
+    lResult = lPrime * lResult + Objects.hashCode(reseller);
+    lResult = lPrime * lResult + Objects.hashCode(customHeaders);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      TechnicalHeaderContext lOther = (TechnicalHeaderContext) pObject;
+      lEquals = Objects.equals(reseller, lOther.reseller) && Objects.equals(customHeaders, lOther.customHeaders);
+    }
+    return lEquals;
   }
 
   /**

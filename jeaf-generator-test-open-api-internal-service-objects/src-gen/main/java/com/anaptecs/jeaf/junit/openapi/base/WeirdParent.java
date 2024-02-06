@@ -8,6 +8,7 @@ package com.anaptecs.jeaf.junit.openapi.base;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 import javax.validation.ConstraintViolationException;
@@ -337,6 +338,37 @@ public class WeirdParent implements ServiceObject {
   public void clearComplexBookings( ) {
     // Remove all objects from association "complexBookings".
     complexBookings.clear();
+  }
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = 1;
+    lResult = lPrime * lResult + Objects.hashCode(someProperty);
+    lResult = lPrime * lResult + Objects.hashCode(complexBooking);
+    lResult = lPrime * lResult + Objects.hashCode(complexBookings);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      WeirdParent lOther = (WeirdParent) pObject;
+      lEquals =
+          Objects.equals(someProperty, lOther.someProperty) && Objects.equals(complexBooking, lOther.complexBooking)
+              && Objects.equals(complexBookings, lOther.complexBookings);
+    }
+    return lEquals;
   }
 
   /**

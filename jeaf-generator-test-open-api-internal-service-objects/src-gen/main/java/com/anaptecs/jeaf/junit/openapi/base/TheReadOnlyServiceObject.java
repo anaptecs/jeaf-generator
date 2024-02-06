@@ -7,6 +7,7 @@ package com.anaptecs.jeaf.junit.openapi.base;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 import javax.validation.ConstraintViolationException;
@@ -297,6 +298,37 @@ public class TheReadOnlyServiceObject implements ServiceObject {
    */
   public InventoryType getInventoryType( ) {
     return inventoryType;
+  }
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = 1;
+    lResult = lPrime * lResult + Objects.hashCode(name);
+    lResult = lPrime * lResult + Arrays.hashCode(bits);
+    lResult = lPrime * lResult + Objects.hashCode(bookingCodes);
+    lResult = lPrime * lResult + Objects.hashCode(inventoryType);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      TheReadOnlyServiceObject lOther = (TheReadOnlyServiceObject) pObject;
+      lEquals = Objects.equals(name, lOther.name) && Arrays.equals(bits, lOther.bits)
+          && Objects.equals(bookingCodes, lOther.bookingCodes) && Objects.equals(inventoryType, lOther.inventoryType);
+    }
+    return lEquals;
   }
 
   /**

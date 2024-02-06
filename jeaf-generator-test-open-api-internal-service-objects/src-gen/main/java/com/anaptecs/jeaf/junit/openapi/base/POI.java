@@ -9,6 +9,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 import javax.validation.ConstraintViolationException;
@@ -665,6 +666,42 @@ public class POI extends Stop {
   public void clearBookingCodes( ) {
     // Remove all objects from association "bookingCodes".
     bookingCodes.clear();
+  }
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = super.hashCode();
+    lResult = lPrime * lResult + Objects.hashCode(description);
+    lResult = lPrime * lResult + Objects.hashCode(theLink);
+    lResult = lPrime * lResult + Objects.hashCode(evenMoreLinks);
+    lResult = lPrime * lResult + Objects.hashCode(stops);
+    lResult = lPrime * lResult + Objects.hashCode(bookingCodes);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (!super.equals(pObject)) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      POI lOther = (POI) pObject;
+      lEquals = Objects.equals(description, lOther.description) && Objects.equals(theLink, lOther.theLink)
+          && Objects.equals(evenMoreLinks, lOther.evenMoreLinks) && Objects.equals(stops, lOther.stops)
+          && Objects.equals(bookingCodes, lOther.bookingCodes);
+    }
+    return lEquals;
   }
 
   /**
