@@ -5,6 +5,7 @@
 | Element  | Details    | Description  | Active with |
 |----------|------------|--------------|:-----------:|
 | `com.anaptecs.jeaf.junit.openapi.base.Reseller` | `name` | Maximum size will be increased. | 1.1 | 
+| `com.anaptecs.jeaf.junit.openapi.base.ChannelType` | `WEB` | Added new literal | 1.47.11 | 
 | `com.anaptecs.jeaf.junit.openapi.base.WeirdBooking` | `realBooking` | Association will be mandatory. | 2.0 | 
 | `com.anaptecs.jeaf.junit.openapi.service1.ProductService.createChannelCode` | `pChannelCode` | Parameter will be mandatory | 2.0 | 
 | `com.anaptecs.jeaf.junit.openapi.service1.DateQueryParamsBean` | `localDateTime` | Has to be in the past | 2.0 | 

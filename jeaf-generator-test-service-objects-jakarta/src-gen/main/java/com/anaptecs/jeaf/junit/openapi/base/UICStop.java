@@ -17,6 +17,13 @@ import javax.validation.constraints.Size;
 
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 
+/**
+ * <p/>
+ * <b>Alternate Name:</b> Haltestelle
+ *
+ * @author JEAF Generator
+ * @version JEAF Release 1.4.x
+ */
 public class UICStop extends Stop {
   /**
    * Default serial version uid.

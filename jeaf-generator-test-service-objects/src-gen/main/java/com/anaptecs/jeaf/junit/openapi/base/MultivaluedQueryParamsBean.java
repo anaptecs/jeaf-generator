@@ -32,6 +32,10 @@ public class MultivaluedQueryParamsBean implements ServiceObject {
    */
   public static final String INTEGERS = "integers";
 
+  /**
+   * <p/>
+   * <b>Breaking Change with 47.11:</b> At least one will become mandatory
+   */
   private int[] intArray;
 
   private String[] strings;
@@ -96,6 +100,10 @@ public class MultivaluedQueryParamsBean implements ServiceObject {
    * Class implements builder to create a new instance of class <code>MultivaluedQueryParamsBean</code>.
    */
   public static class Builder {
+    /**
+     * <p/>
+     * <b>Breaking Change with 47.11:</b> At least one will become mandatory
+     */
     private int[] intArray;
 
     private String[] strings;

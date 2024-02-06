@@ -68,6 +68,10 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
 
   private transient Set<Product> products;
 
+  /**
+   * <p/>
+   * <b>Breaking Change with 1.1:</b> Maximum size will be increased.
+   */
   @NotBlank
   @Size(min = 0, max = 32)
   private String name;
@@ -135,6 +139,10 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
 
     private Set<Product> products;
 
+    /**
+     * <p/>
+     * <b>Breaking Change with 1.1:</b> Maximum size will be increased.
+     */
     @NotBlank
     @Size(min = 0, max = 32)
     private String name;

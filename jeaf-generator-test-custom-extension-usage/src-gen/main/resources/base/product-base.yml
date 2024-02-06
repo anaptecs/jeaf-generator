@@ -364,7 +364,8 @@ components:
         - CALL_CENTER
         - MOBILE
         - TVM
-        - WEB
+        - WEB: 
+            Breaking Change with 1.47.11: Added new literal
         - @Deprecated LEGACY_POS: 
             Deprecated: I'm `DEPRECATED`. (since: , removed with: )
       type: string

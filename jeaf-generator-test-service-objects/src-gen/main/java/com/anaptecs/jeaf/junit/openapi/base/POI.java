@@ -69,6 +69,10 @@ public class POI extends Stop {
   @Deprecated
   private Set<SoftLink> evenMoreLinks;
 
+  /**
+   * <p/>
+   * <b>Breaking Change with PI 15:</b> New mandatory association is required to support upcoming features.
+   */
   @Size(min = 2, max = 42)
   private Set<UICStop> stops;
 
@@ -191,6 +195,10 @@ public class POI extends Stop {
     @Deprecated
     private Set<SoftLink> evenMoreLinks;
 
+    /**
+     * <p/>
+     * <b>Breaking Change with PI 15:</b> New mandatory association is required to support upcoming features.
+     */
     private Set<UICStop> stops;
 
     private Set<BookingCode> bookingCodes;
