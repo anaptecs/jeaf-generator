@@ -126,9 +126,9 @@
 |   | `theLink` | Please use "moreLinks" instead. | 2.3.1 | 2.4 |
 |   | `moreLinks` | No good any more | 1.2 | 3.0 |
 |   | `discountOffers` |  |  |  |
-| `com.anaptecs.jeaf.junit.openapi.base.ChildAA` | | Please do not use this class any longer. There are better alternatives but I do not tell you which ones. | 0.5 | 2.0 |
+| `com.anaptecs.jeaf.junit.openapi.base.ChildAA` | | Please do not use this class any longer. There are better alternatives but I do not tell you which ones. May be `java.lang.Nothing` | 0.5 | 2.0 |
 | `com.anaptecs.jeaf.junit.openapi.base.ChildBB` | |  |  |  |
-|   | `deprecatedAttribute` |  |  |  |
+|   | `deprecatedAttribute` | Please  keep `hands off`. |  |  |
 |   | `deprecatedBs` |  |  |  |
 |   | `deprecatedParent` |  |  |  |
 |   | `deprecatedArray` |  |  |  |
@@ -161,7 +161,7 @@
 |   | `LightGreen` | We do not like this color any more. |  |  |
 | `com.anaptecs.jeaf.junit.core.Farbe` | |  |  |  |
 | `com.anaptecs.jeaf.junit.openapi.base.ChannelType` | |  |  |  |
-|   | `LEGACY_POS` |  |  |  |
+|   | `LEGACY_POS` | I'm `DEPRECATED`. |  |  |
 
 <br>
 

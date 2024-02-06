@@ -104,13 +104,13 @@ public class ChildBB extends ChildB {
   }
 
    /**
-   * Get deprecatedAttribute
+   *  Deprecated: Please  keep &#x60;hands off&#x60;. (since: , removed with: ) 
    * @return deprecatedAttribute
    * @deprecated
   **/
   @Deprecated
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = " Deprecated: Please  keep `hands off`. (since: , removed with: ) ")
   @JsonProperty(JSON_PROPERTY_DEPRECATED_ATTRIBUTE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
