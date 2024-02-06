@@ -7,7 +7,6 @@ cached boolean isAlias(uml::Element element) :
 cached JMM::Alias asAlias(uml::Element element):
     (JMM::Alias) element;
     
-
 cached String getAlternateName(uml::NamedElement element):
     if element.isAlias()
     then element.getStereotypeValue("Alias", "alternateName")

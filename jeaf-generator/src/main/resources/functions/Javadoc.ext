@@ -1,4 +1,5 @@
 extension functions::JEAFDeprecated;
+extension functions::Alias;
 extension java::GeneratorCommons;
 
 cached String getAuthor():
@@ -11,10 +12,10 @@ cached boolean hasMeaningfulComment(uml::NamedElement element):
     !element.ownedComment.select(e|e.body.trim().length > 0).isEmpty;    
     
 cached boolean hasMeaningfulJavadoc(uml::NamedElement element):
-    element.hasMeaningfulComment() || element.hasMeaningfulDeprecationInfo();
+    element.hasMeaningfulComment() || element.hasMeaningfulDeprecationInfo() || element.isAlias();
 
 cached boolean hasMeaningfulJavadocForProperty(uml::Property property):
-    property.hasMeaningfulComment() || property.hasMeaningfulDeprecationInfo() || property.hasExample() || property.defaultValue != null || property.isSoftLink();
+    property.hasMeaningfulComment() || property.hasMeaningfulDeprecationInfo() || property.hasExample() || property.defaultValue != null || property.isSoftLink() || property.isAlias();
     
 cached String convertCommentForJavadoc(String comment):
     javaConvertCommentForJavadoc(comment);

@@ -44,7 +44,7 @@ CHStopPlace |   | com.anaptecs.jeaf.junit.openapi.base |  |
 Campaign |   | com.anaptecs.jeaf.junit.openapi.base |  |
 Channel |   | com.anaptecs.jeaf.junit.openapi.base |  |
 ChannelCode |   | com.anaptecs.jeaf.junit.openapi.base |  |
-ChannelType |   | com.anaptecs.jeaf.junit.openapi.base |  |
+ChannelType |  Kanal | com.anaptecs.jeaf.junit.openapi.base |  |
 ChildA |   | com.anaptecs.jeaf.junit.openapi.base | single line class comment |
 ChildAA |   | com.anaptecs.jeaf.junit.openapi.base |  |
 ChildB |   | com.anaptecs.jeaf.junit.openapi.base | Multi<br>line<br>class<br>comment |
@@ -150,7 +150,7 @@ PrimitiveReferenceServiceObject |   | com.anaptecs.jeaf.junit.objectmapping |  |
 PrimitiveServiceObject |   | com.anaptecs.jeaf.junit.core |  |
 PrincipalWrapper |   | com.anaptecs.jeaf.junit.core |  |
 Product |   | com.anaptecs.jeaf.junit.product.pojo |  |
-Product |   | com.anaptecs.jeaf.junit.openapi.base | Data type represents a product definition |
+Product |  Produkt | com.anaptecs.jeaf.junit.openapi.base | Data type represents a product definition |
 ProductCategory |   | com.anaptecs.jeaf.junit.product |  |
 ProductCode |   | com.anaptecs.jeaf.junit.openapi.base |  |
 ReadonlyDefaultPOJO |   | com.anaptecs.jeaf.junit.pojo |  |
