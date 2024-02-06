@@ -356,8 +356,11 @@ components:
     # com.anaptecs.jeaf.junit.openapi.base.ChannelType
     ChannelType:
       description: |
+        
+        Alternate Name: Kanal
         Valid Values:
-        - COUNTER
+        - COUNTER: counter
+            Alternate Name: BEDIENT
         - CALL_CENTER
         - MOBILE
         - TVM
@@ -999,6 +1002,9 @@ components:
             - firstName
           properties:
             surname:
+              description: |
+                
+                Alternate Name: Vorname
               type: string
               nullable: false
             firstName:
@@ -1592,6 +1598,7 @@ components:
       additionalProperties: false
       description: |
         Data type represents a product definition
+        Alternate Name: Produkt
       required:
         - name
         - link
@@ -1768,6 +1775,7 @@ components:
              
         NOVA 14 Mapping
         * nova-base.xsd.ZeitEinheit
+        Alternate Name: Zeiteinheit
         Valid Values:
         - MINUTE: Literal represents time unit "minutes".
         - HOUR
@@ -1794,6 +1802,9 @@ components:
 
     # com.anaptecs.jeaf.junit.openapi.base.UICStop
     UICStop:
+      description: |
+        
+        Alternate Name: Haltestelle
       allOf:
         - $ref: '#/components/schemas/Stop'
         - type: object

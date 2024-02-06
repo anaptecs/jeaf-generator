@@ -6,6 +6,7 @@ extension functions::BreakingChange;
 extension functions::Class;
 extension functions::TemplateParameter;
 extension functions::Operation;
+extension functions::Alias;
 
 cached boolean hasOpenAPITypes(JMM::OpenAPI3Specification spec):
 	getOpenAPITypes(spec).size > 0;
@@ -60,8 +61,18 @@ cached String getYAMLStyleComment(uml::Element element, String indentation):
 
 cached String getCommentForOpenAPIDescription(uml::Element element, String indentation):
     if element.ownedComment.size > 0
-    then element.ownedComment.first().body.trim().replaceAll("\n", "\r\n" + indentation) + element.getAliasDocs(indentation) + ((uml::NamedElement) element).getBreakingChangeDescriptionInternal(indentation) + element.getAuthorizedRoles(indentation) + ((uml::NamedElement) element).getInternalDeprecationDescription(indentation)
-    else element.getAliasDocs(indentation) + ((uml::NamedElement) element).getBreakingChangeDescriptionInternal(indentation) + element.getAuthorizedRoles(indentation) + ((uml::NamedElement) element).getInternalDeprecationDescription(indentation);
+    then element.ownedComment.first().body.trim().replaceAll("\n", "\r\n" + indentation) + element.getAlternateNameForOpenAPI(indentation) + element.getAliasDocs(indentation) + ((uml::NamedElement) element).getBreakingChangeDescriptionInternal(indentation) + element.getAuthorizedRoles(indentation) + ((uml::NamedElement) element).getInternalDeprecationDescription(indentation)
+    else element.getAlternateNameForOpenAPI(indentation) + element.getAliasDocs(indentation) + ((uml::NamedElement) element).getBreakingChangeDescriptionInternal(indentation) + element.getAuthorizedRoles(indentation) + ((uml::NamedElement) element).getInternalDeprecationDescription(indentation);
+
+private cached String getAlternateNameForOpenAPI(uml::Element element, String indentation):
+    if element.hasAlternateName()
+    then "\r\n" + indentation + "Alternate Name: " + element.asAlias().getAlternateName()
+    else "";
+    
+cached boolean hasAlternateName(uml::Element element) :
+   element.isStereotypeApplied("Alias");
+
+
 
 private cached String getAliasDocs(uml::Element property, String indentation):
     if property.hasAliasAttributeName()

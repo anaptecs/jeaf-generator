@@ -36,8 +36,9 @@ import openapitools.JSON;
 
 
 /**
- * UICStop
+ *  Alternate Name: Haltestelle 
  */
+@ApiModel(description = " Alternate Name: Haltestelle ")
 @JsonPropertyOrder({
   UICStop.JSON_PROPERTY_UIC_CODE,
   UICStop.JSON_PROPERTY_PRIORITY,

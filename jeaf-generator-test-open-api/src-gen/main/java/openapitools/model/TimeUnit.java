@@ -26,7 +26,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * Enumeration represents time units.       NOVA 14 Mapping * nova-base.xsd.ZeitEinheit Valid Values: - MINUTE: Literal represents time unit \&quot;minutes\&quot;. - HOUR - DAY - WEEK: Literal represents time unit \&quot;weeks\&quot;.     This is the comments second line ;-) - MONTH - YEAR 
+ * Enumeration represents time units.       NOVA 14 Mapping * nova-base.xsd.ZeitEinheit Alternate Name: Zeiteinheit Valid Values: - MINUTE: Literal represents time unit \&quot;minutes\&quot;. - HOUR - DAY - WEEK: Literal represents time unit \&quot;weeks\&quot;.     This is the comments second line ;-) - MONTH - YEAR 
  */
 public enum TimeUnit {
   

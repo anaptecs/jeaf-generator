@@ -22,9 +22,9 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 /**
- * Data type represents a product definition 
+ * Data type represents a product definition Alternate Name: Produkt 
  */
-@Schema(description = "Data type represents a product definition ")
+@Schema(description = "Data type represents a product definition Alternate Name: Produkt ")
 
 public class Product {
   @JsonProperty("resellers")

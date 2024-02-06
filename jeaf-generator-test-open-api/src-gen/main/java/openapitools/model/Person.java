@@ -61,11 +61,11 @@ public class Person extends Partner {
   }
 
    /**
-   * Get surname
+   *  Alternate Name: Vorname 
    * @return surname
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = " Alternate Name: Vorname ")
   @JsonProperty(JSON_PROPERTY_SURNAME)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
