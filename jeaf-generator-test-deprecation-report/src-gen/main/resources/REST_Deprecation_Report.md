@@ -61,9 +61,9 @@
 |   | `theLink` | Please use "moreLinks" instead. | 2.3.1 | 2.4 |
 |   | `moreLinks` | No good any more | 1.2 | 3.0 |
 |   | `discountOffers` |  |  |  |
-| `ChildAA` | | Please do not use this class any longer. There are better alternatives but I do not tell you which ones. | 0.5 | 2.0 |
+| `ChildAA` | | Please do not use this class any longer. There are better alternatives but I do not tell you which ones. May be `java.lang.Nothing` | 0.5 | 2.0 |
 | `ChildBB` | |  |  |  |
-|   | `deprecatedAttribute` |  |  |  |
+|   | `deprecatedAttribute` | Please  keep `hands off`. |  |  |
 |   | `deprecatedBs` |  |  |  |
 |   | `deprecatedParent` |  |  |  |
 |   | `deprecatedArray` |  |  |  |
@@ -92,8 +92,8 @@
 | Enumeration   | Literal   | Description   | Deprecated since   | Planned to be removed   |
 |---------------|-----------|---------------|:------------------:|:-----------------------:|
 | `ChannelType` | |  |  |  |
-|   | `LEGACY_POS` |  |  |  |
-| `DeprecatedEnum` | |  |  |  |
+|   | `LEGACY_POS` | I'm `DEPRECATED`. |  |  |
+| `DeprecatedEnum` | | Hello `World`. |  |  |
 | `DeprecatedEnum` | |  |  |  |
 | `EnumWithDeprecation` | |  |  |  |
 |   | `EGG` | Eggs do not belong to apples. | 0.9 | 1.2 |

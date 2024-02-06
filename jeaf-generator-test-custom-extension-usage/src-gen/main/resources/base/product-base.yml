@@ -362,7 +362,8 @@ components:
         - MOBILE
         - TVM
         - WEB
-        - @Deprecated LEGACY_POS
+        - @Deprecated LEGACY_POS: 
+            Deprecated: I'm `DEPRECATED`. (since: , removed with: )
       type: string
       enum:
         - COUNTER
@@ -393,7 +394,7 @@ components:
     ChildAA:
       description: >-
         
-        Deprecated: Please do not use this class any longer. There are better alternatives but I do not tell you which ones. (since: 0.5, removed with: 2.0)
+        Deprecated: Please do not use this class any longer. There are better alternatives but I do not tell you which ones. May be `java.lang.Nothing` (since: 0.5, removed with: 2.0)
       deprecated: true
       allOf:
         - $ref: '#/components/schemas/ChildA'
@@ -484,6 +485,9 @@ components:
               format: int64
               nullable: false
             deprecatedAttribute:
+              description: >-
+                
+                Deprecated: Please  keep `hands off`. (since: , removed with: )
               type: integer
               format: int32
               deprecated: true
@@ -605,6 +609,9 @@ components:
 
     # com.anaptecs.jeaf.junit.openapi.base.DeprecatedEnum
     DeprecatedEnum:
+      description: >-
+        
+        Deprecated: Hello `World`. (since: , removed with: )
       type: string
       deprecated: true
       enum:

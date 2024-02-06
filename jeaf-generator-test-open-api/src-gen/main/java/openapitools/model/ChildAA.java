@@ -40,11 +40,11 @@ import openapitools.JSON;
 
 
 /**
- *  Deprecated: Please do not use this class any longer. There are better alternatives but I do not tell you which ones. (since: 0.5, removed with: 2.0) 
+ *  Deprecated: Please do not use this class any longer. There are better alternatives but I do not tell you which ones. May be &#x60;java.lang.Nothing&#x60; (since: 0.5, removed with: 2.0) 
  * @deprecated
  */
 @Deprecated
-@ApiModel(description = " Deprecated: Please do not use this class any longer. There are better alternatives but I do not tell you which ones. (since: 0.5, removed with: 2.0) ")
+@ApiModel(description = " Deprecated: Please do not use this class any longer. There are better alternatives but I do not tell you which ones. May be `java.lang.Nothing` (since: 0.5, removed with: 2.0) ")
 @JsonPropertyOrder({
   ChildAA.JSON_PROPERTY_CHILD_A_A_ATTRIBUTE,
   ChildAA.JSON_PROPERTY_SIZED_ARRAY,

@@ -3,7 +3,11 @@ package com.anaptecs.jeaf.junit.openapi.base;
 import javax.validation.constraints.NotNull;
 
 public enum ChannelType {
-  COUNTER("CNT"), CALL_CENTER("CC"), MOBILE("MOB"), TVM("TVM"), WEB("WEB"), @Deprecated
+  COUNTER("CNT"), CALL_CENTER("CC"), MOBILE("MOB"), TVM("TVM"), WEB("WEB"),
+  /**
+   * @deprecated I'm <code>DEPRECATED</code>. (<b>since:</b> TBD, <b>removed with:</b> TBD)
+   */
+  @Deprecated
   LEGACY_POS("PRISMA");
 
   /**

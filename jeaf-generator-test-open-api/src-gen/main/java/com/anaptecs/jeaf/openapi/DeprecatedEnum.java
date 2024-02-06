@@ -14,11 +14,12 @@ package com.anaptecs.jeaf.openapi;
 
 import java.util.Objects;
 import java.util.Arrays;
+import io.swagger.v3.oas.annotations.media.Schema;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * Gets or Sets DeprecatedEnum
+ *  Deprecated: Hello &#x60;World&#x60;. (since: , removed with: ) 
  */
 public enum DeprecatedEnum {
   ONE("ONE"),
