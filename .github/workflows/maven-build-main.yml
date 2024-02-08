@@ -6,12 +6,12 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Maven Feature Branch Build (Java 11)
+name: Maven Build Main (Java 11)
 
 on:
   push:
     branches:
-      - 'feature/**'
+      - main
 
 jobs:
   build:
@@ -26,7 +26,12 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
         cache: maven
+        server-id: ossrh
+        server-username: MAVEN_USERNAME
+        server-password: MAVEN_PASSWORD
 
-    - name: Build with Maven (Java 11)
-      run: mvn -Duser.country=DE -Duser.language=de -Duser.timezone="Europe/Berlin" -B clean install
-      
+    - name: Build and Publish packages
+      run: mvn -Duser.country=DE -Duser.language=de -Duser.timezone="Europe/Berlin" --batch-mode clean deploy
+      env:
+        MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
+        MAVEN_PASSWORD: ${{ secrets.OSSRH_TOKEN }}      
