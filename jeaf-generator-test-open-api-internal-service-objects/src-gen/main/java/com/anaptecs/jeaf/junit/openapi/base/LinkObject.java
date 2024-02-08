@@ -5,6 +5,8 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
+import java.util.Objects;
+
 import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -161,6 +163,33 @@ public class LinkObject implements ServiceObject {
   public void setHref( String pHref ) {
     // Assign value to attribute
     href = pHref;
+  }
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = 1;
+    lResult = lPrime * lResult + Objects.hashCode(href);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      LinkObject lOther = (LinkObject) pObject;
+      lEquals = Objects.equals(href, lOther.href);
+    }
+    return lEquals;
   }
 
   /**

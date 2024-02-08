@@ -132,6 +132,32 @@ public class TopoRef extends PlaceRef {
     }
   }
 
+  @Override
+  public int hashCode( ) {
+    return super.hashCode();
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (!super.equals(pObject)) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      lEquals = true;
+    }
+    return lEquals;
+  }
+
   /**
    * Method creates a new builder and initializes it with the data of this object.
    *

@@ -5,6 +5,8 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
+import java.util.Objects;
+
 import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -162,6 +164,33 @@ public class IgnoringClass implements ServiceObject {
   public void setAge( Integer pAge ) {
     // Assign value to attribute
     age = pAge;
+  }
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = 1;
+    lResult = lPrime * lResult + Objects.hashCode(age);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      IgnoringClass lOther = (IgnoringClass) pObject;
+      lEquals = Objects.equals(age, lOther.age);
+    }
+    return lEquals;
   }
 
   /**

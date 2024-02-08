@@ -65,6 +65,12 @@ public abstract class ResellerBase implements Serializable {
 
   private transient Set<Product> products;
 
+  /**
+   * <br/>
+   * <b>Default Value:</b> <code>42</code>
+   */
+  public static final Integer MAGIC = 42;
+
   @NotBlank
   @Size(min = 0, max = 32)
   private String name;

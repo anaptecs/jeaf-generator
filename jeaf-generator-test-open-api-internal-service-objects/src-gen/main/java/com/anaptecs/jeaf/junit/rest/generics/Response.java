@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 
 import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
@@ -261,6 +262,34 @@ public class Response<T> implements ServiceObject {
    */
   public final void unsetData( ) {
     data = null;
+  }
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = 1;
+    lResult = lPrime * lResult + Objects.hashCode(messages);
+    lResult = lPrime * lResult + Objects.hashCode(data);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      Response<?> lOther = (Response<?>) pObject;
+      lEquals = Objects.equals(messages, lOther.messages) && Objects.equals(data, lOther.data);
+    }
+    return lEquals;
   }
 
   /**

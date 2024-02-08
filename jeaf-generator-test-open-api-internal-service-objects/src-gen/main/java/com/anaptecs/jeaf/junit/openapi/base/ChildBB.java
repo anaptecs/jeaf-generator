@@ -9,6 +9,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 import javax.validation.ConstraintViolationException;
@@ -571,6 +572,43 @@ public class ChildBB extends ChildB {
     else {
       deprecatedArray = null;
     }
+  }
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = super.hashCode();
+    lResult = lPrime * lResult + Objects.hashCode(childBBAttribute);
+    lResult = lPrime * lResult + deprecatedAttribute;
+    lResult = lPrime * lResult + Objects.hashCode(deprecatedBs);
+    lResult = lPrime * lResult + Objects.hashCode(deprecatedParent);
+    lResult = lPrime * lResult + Arrays.hashCode(deprecatedArray);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (!super.equals(pObject)) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      ChildBB lOther = (ChildBB) pObject;
+      lEquals = Objects.equals(childBBAttribute, lOther.childBBAttribute)
+          && deprecatedAttribute == lOther.deprecatedAttribute && Objects.equals(deprecatedBs, lOther.deprecatedBs)
+          && Objects.equals(deprecatedParent, lOther.deprecatedParent)
+          && Arrays.equals(deprecatedArray, lOther.deprecatedArray);
+    }
+    return lEquals;
   }
 
   /**

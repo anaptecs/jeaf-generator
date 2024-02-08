@@ -5,6 +5,8 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
+import java.util.Objects;
+
 import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -476,6 +478,44 @@ public class HeavyDataTypeUser implements ServiceObject {
   public void setBigDecimalCode( BigDecimalCode pBigDecimalCode ) {
     // Assign value to attribute
     bigDecimalCode = pBigDecimalCode;
+  }
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = 1;
+    lResult = lPrime * lResult + Objects.hashCode(booleanCode);
+    lResult = lPrime * lResult + Objects.hashCode(byteCode);
+    lResult = lPrime * lResult + Objects.hashCode(shortCode);
+    lResult = lPrime * lResult + Objects.hashCode(integerCode);
+    lResult = lPrime * lResult + Objects.hashCode(floatCode);
+    lResult = lPrime * lResult + Objects.hashCode(doubleCode);
+    lResult = lPrime * lResult + Objects.hashCode(bigInegerCode);
+    lResult = lPrime * lResult + Objects.hashCode(bigDecimalCode);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      HeavyDataTypeUser lOther = (HeavyDataTypeUser) pObject;
+      lEquals = Objects.equals(booleanCode, lOther.booleanCode) && Objects.equals(byteCode, lOther.byteCode)
+          && Objects.equals(shortCode, lOther.shortCode) && Objects.equals(integerCode, lOther.integerCode)
+          && Objects.equals(floatCode, lOther.floatCode) && Objects.equals(doubleCode, lOther.doubleCode)
+          && Objects.equals(bigInegerCode, lOther.bigInegerCode)
+          && Objects.equals(bigDecimalCode, lOther.bigDecimalCode);
+    }
+    return lEquals;
   }
 
   /**

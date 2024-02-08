@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 
 import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
@@ -610,6 +611,39 @@ public class MultiValuedDataType implements ServiceObject {
     else {
       longValues = null;
     }
+  }
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = 1;
+    lResult = lPrime * lResult + Objects.hashCode(stringCodeHeader);
+    lResult = lPrime * lResult + Objects.hashCode(longCodeQueryParam);
+    lResult = lPrime * lResult + Objects.hashCode(literals);
+    lResult = lPrime * lResult + Objects.hashCode(stringProperty);
+    lResult = lPrime * lResult + Arrays.hashCode(longValues);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      MultiValuedDataType lOther = (MultiValuedDataType) pObject;
+      lEquals = Objects.equals(stringCodeHeader, lOther.stringCodeHeader)
+          && Objects.equals(longCodeQueryParam, lOther.longCodeQueryParam) && Objects.equals(literals, lOther.literals)
+          && Objects.equals(stringProperty, lOther.stringProperty) && Arrays.equals(longValues, lOther.longValues);
+    }
+    return lEquals;
   }
 
   /**

@@ -7,6 +7,7 @@ package com.anaptecs.jeaf.junit.openapi.base;
 
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 import javax.validation.ConstraintViolationException;
@@ -228,6 +229,33 @@ public class DiscountOffer implements ServiceObject {
   public void clearCampaigns( ) {
     // Remove all objects from association "campaigns".
     campaigns.clear();
+  }
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = 1;
+    lResult = lPrime * lResult + Objects.hashCode(campaigns);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      DiscountOffer lOther = (DiscountOffer) pObject;
+      lEquals = Objects.equals(campaigns, lOther.campaigns);
+    }
+    return lEquals;
   }
 
   /**

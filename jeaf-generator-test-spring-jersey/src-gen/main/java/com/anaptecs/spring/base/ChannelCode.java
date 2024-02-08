@@ -19,6 +19,12 @@ public class ChannelCode {
   public static final String CODE = "code";
 
   /**
+   * <br/>
+   * <b>Default Value:</b> <code>"MY_MAGIC_CHANNEL"</code>
+   */
+  public static final String DEFAULT_CHANNEL_CODE = "MY_MAGIC_CHANNEL";
+
+  /**
    * channel code <br/>
    * <b>Default Value:</b> <code>"WEBSHOP"</code> <br/>
    * <b>Example:</b> <code>MOBILE_APP</code>

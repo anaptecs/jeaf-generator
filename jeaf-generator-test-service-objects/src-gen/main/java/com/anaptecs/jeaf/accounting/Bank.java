@@ -335,14 +335,6 @@ public class Bank implements ServiceObject, Identifiable<ServiceObjectID> {
     lBuilder.append(this.getClass().getName());
     lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
-    lBuilder.append("MUTUAL_SAVINGS: ");
-    lBuilder.append(MUTUAL_SAVINGS);
-    lBuilder.append(System.lineSeparator());
-    lBuilder.append(pIndent);
-    lBuilder.append("PRIVATE_BANK: ");
-    lBuilder.append(PRIVATE_BANK);
-    lBuilder.append(System.lineSeparator());
-    lBuilder.append(pIndent);
     lBuilder.append("name: ");
     lBuilder.append(name);
     lBuilder.append(System.lineSeparator());

@@ -474,8 +474,8 @@ cached boolean requiresCompositeDataTypeConverter(JMM::ModuleFactory factory):
 	
 cached List[uml::Property] getPropertiesForOpenAPI(uml::Class class):
     if class.hasTemplateClassProperties()
-    then class.ownedAttribute.addAll(class.getTemplateClassProperties()).select(e | e.isTransient() == false && e.ignore() == false && e.isDerived == false)
-    else class.ownedAttribute.select(e | e.isTransient() == false && e.ignore() == false && e.isDerived == false);
+    then class.ownedAttribute.addAll(class.getTemplateClassProperties()).select(e | e.isTransient() == false && e.ignore() == false && e.isDerived == false && e.isStatic == false)
+    else class.ownedAttribute.select(e | e.isTransient() == false && e.ignore() == false && e.isDerived == false && e.isStatic == false);
     
 cached String getTemplateParamName(uml::Class class):
     if class.templateBinding.isEmpty == false

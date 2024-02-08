@@ -7,6 +7,7 @@ package com.anaptecs.jeaf.junit.openapi.base;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.util.Objects;
 
 import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
@@ -1131,6 +1132,63 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
   public void setBString( String pBString ) {
     // Assign value to attribute
     bString = pBString;
+  }
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = 1;
+    lResult = lPrime * lResult + Boolean.hashCode(aBoolean);
+    lResult = lPrime * lResult + Objects.hashCode(bBoolean);
+    lResult = lPrime * lResult + Boolean.hashCode(cBoolean);
+    lResult = lPrime * lResult + aByte;
+    lResult = lPrime * lResult + Objects.hashCode(bByte);
+    lResult = lPrime * lResult + aShort;
+    lResult = lPrime * lResult + Objects.hashCode(bShort);
+    lResult = lPrime * lResult + aInteger;
+    lResult = lPrime * lResult + Objects.hashCode(bInteger);
+    lResult = lPrime * lResult + Objects.hashCode(cInteger);
+    lResult = lPrime * lResult + Long.hashCode(aLong);
+    lResult = lPrime * lResult + Objects.hashCode(bLong);
+    lResult = lPrime * lResult + Objects.hashCode(aBigInteger);
+    lResult = lPrime * lResult + aCharacter;
+    lResult = lPrime * lResult + Objects.hashCode(bCharacter);
+    lResult = lPrime * lResult + Float.hashCode(aFloat);
+    lResult = lPrime * lResult + Objects.hashCode(bFloat);
+    lResult = lPrime * lResult + Double.hashCode(aDouble);
+    lResult = lPrime * lResult + Objects.hashCode(bDouble);
+    lResult = lPrime * lResult + Objects.hashCode(aBigDecimal);
+    lResult = lPrime * lResult + Objects.hashCode(aString);
+    lResult = lPrime * lResult + Objects.hashCode(bString);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      PrimitiveObjectWithRestrictions lOther = (PrimitiveObjectWithRestrictions) pObject;
+      lEquals = aBoolean == lOther.aBoolean && Objects.equals(bBoolean, lOther.bBoolean) && cBoolean == lOther.cBoolean
+          && aByte == lOther.aByte && Objects.equals(bByte, lOther.bByte) && aShort == lOther.aShort
+          && Objects.equals(bShort, lOther.bShort) && aInteger == lOther.aInteger
+          && Objects.equals(bInteger, lOther.bInteger) && Objects.equals(cInteger, lOther.cInteger)
+          && aLong == lOther.aLong && Objects.equals(bLong, lOther.bLong)
+          && Objects.equals(aBigInteger, lOther.aBigInteger) && aCharacter == lOther.aCharacter
+          && Objects.equals(bCharacter, lOther.bCharacter) && Float.compare(aFloat, lOther.aFloat) == 0
+          && Objects.equals(bFloat, lOther.bFloat) && Double.compare(aDouble, lOther.aDouble) == 0
+          && Objects.equals(bDouble, lOther.bDouble) && Objects.equals(aBigDecimal, lOther.aBigDecimal)
+          && Objects.equals(aString, lOther.aString) && Objects.equals(bString, lOther.bString);
+    }
+    return lEquals;
   }
 
   /**

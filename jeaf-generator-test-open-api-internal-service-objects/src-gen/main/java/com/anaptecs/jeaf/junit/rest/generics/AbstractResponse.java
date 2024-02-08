@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 
 import javax.validation.Valid;
 
@@ -276,6 +277,34 @@ public abstract class AbstractResponse<T> implements ServiceObject {
   public void clearWarnings( ) {
     // Remove all objects from association "warnings".
     warnings.clear();
+  }
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = 1;
+    lResult = lPrime * lResult + Objects.hashCode(errors);
+    lResult = lPrime * lResult + Objects.hashCode(warnings);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      AbstractResponse<?> lOther = (AbstractResponse<?>) pObject;
+      lEquals = Objects.equals(errors, lOther.errors) && Objects.equals(warnings, lOther.warnings);
+    }
+    return lEquals;
   }
 
   /**

@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 import javax.validation.ConstraintViolationException;
@@ -422,6 +423,36 @@ public class Campaign implements ServiceObject {
   public void clearDiscountOffers( ) {
     // Remove all objects from association "discountOffers".
     discountOffers.clear();
+  }
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = 1;
+    lResult = lPrime * lResult + Objects.hashCode(theLink);
+    lResult = lPrime * lResult + Objects.hashCode(moreLinks);
+    lResult = lPrime * lResult + Objects.hashCode(discountOffers);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      Campaign lOther = (Campaign) pObject;
+      lEquals = Objects.equals(theLink, lOther.theLink) && Objects.equals(moreLinks, lOther.moreLinks)
+          && Objects.equals(discountOffers, lOther.discountOffers);
+    }
+    return lEquals;
   }
 
   /**

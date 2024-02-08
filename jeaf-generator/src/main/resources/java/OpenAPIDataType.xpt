@@ -6,14 +6,14 @@
 «IMPORT JMM»
 
 «DEFINE GenerateOpenAPIDataType(OpenAPI3Specification spec, Property ownerAttribute, String indentation, boolean addDescription) FOR OpenAPIDataType -»
-  «LET this.ownedAttribute.first() AS attribute -»
+  «LET this.ownedAttribute.select(e|e.isStatic == false).first() AS attribute -»
     «IF this.inline == true -»
-          «IF addDescription && (ownerAttribute.hasComment() || (this.compositeDataType && this.hasComment()) || this.ownedAttribute.first().hasComment())-»
+          «IF addDescription && (ownerAttribute.hasComment() || (this.compositeDataType && this.hasComment()) || this.ownedAttribute.select(e|e.isStatic == false).first().hasComment())-»
 «indentation»          description: «getOpenAPICommentStyle()»
           «IF ownerAttribute.hasComment() -»
 «indentation»            «ownerAttribute.getCommentForOpenAPIDescription(indentation + "            ")»
-          «ELSEIF this.ownedAttribute.first().hasComment() -»
-«indentation»            «this.ownedAttribute.first().getCommentForOpenAPIDescription(indentation + "            ")»
+          «ELSEIF this.ownedAttribute.select(e|e.isStatic == false).first().hasComment() -»
+«indentation»            «this.ownedAttribute.select(e|e.isStatic == false).first().getCommentForOpenAPIDescription(indentation + "            ")»
           «ELSE-»
 «indentation»            «this.getCommentForOpenAPIDescription(indentation + "            ")»
           «ENDIF-»
@@ -135,7 +135,7 @@
 «ENDDEFINE»
 
 «DEFINE GenerateOpenAPIDataTypeForPath(OpenAPI3Specification spec, Parameter param, String indent) FOR OpenAPIDataType -»
-«indent»            «LET this.ownedAttribute.get(0) AS attribute -»
+«indent»            «LET this.ownedAttribute.select(e|e.isStatic == false).first() AS attribute -»
                 «IF attribute.hasComment()-»
 «indent»            description: «getOpenAPICommentStyle()»
 «indent»              «attribute.getCommentForOpenAPIDescription("                  ")»
@@ -263,7 +263,7 @@
 					«ENDIF»
 			  	«ENDIF»
 			  «ELSE»
-				  «LET this.ownedAttribute.get(0) AS attr»
+				  «LET this.ownedAttribute.select(e|e.isStatic == false).first() AS attr»
 				    // Write value directly to JSON and avoid nesting object structures
 				    «IF attr.type.isStringType()»
 				    pGenerator.writeString(pObject.«attr.asGetter()»());
@@ -380,7 +380,7 @@
 						«ENDIF»
 					«ENDIF»
 				«ELSE»
-				    «LET this.ownedAttribute.get(0) AS attr»
+				    «LET this.ownedAttribute.select(e|e.isStatic == false).first() AS attr»
 					    «IF attr.type.isBooleanType()»
 					    if (lNode instanceof com.fasterxml.jackson.databind.node.BooleanNode) {
 				        return «this.fqn()».builder().«attr.asSetter()»(lNode.asBoolean()).build();

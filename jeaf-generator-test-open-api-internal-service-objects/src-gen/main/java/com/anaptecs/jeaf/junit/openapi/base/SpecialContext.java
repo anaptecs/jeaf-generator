@@ -6,6 +6,7 @@
 package com.anaptecs.jeaf.junit.openapi.base;
 
 import java.util.Locale;
+import java.util.Objects;
 
 import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
@@ -266,6 +267,36 @@ public class SpecialContext extends Context {
   public void setSpecificHeader( String pSpecificHeader ) {
     // Assign value to attribute
     specificHeader = pSpecificHeader;
+  }
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = super.hashCode();
+    lResult = lPrime * lResult + Objects.hashCode(specificHeader);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (!super.equals(pObject)) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      SpecialContext lOther = (SpecialContext) pObject;
+      lEquals = Objects.equals(specificHeader, lOther.specificHeader);
+    }
+    return lEquals;
   }
 
   /**

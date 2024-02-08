@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 
 import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
@@ -326,6 +327,36 @@ public class Leg implements ServiceObject {
   public void clearStopovers( ) {
     // Remove all objects from association "stopovers".
     stopovers.clear();
+  }
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = 1;
+    lResult = lPrime * lResult + Objects.hashCode(start);
+    lResult = lPrime * lResult + Objects.hashCode(stop);
+    lResult = lPrime * lResult + Objects.hashCode(stopovers);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      Leg lOther = (Leg) pObject;
+      lEquals = Objects.equals(start, lOther.start) && Objects.equals(stop, lOther.stop)
+          && Objects.equals(stopovers, lOther.stopovers);
+    }
+    return lEquals;
   }
 
   /**

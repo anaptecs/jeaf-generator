@@ -58,6 +58,18 @@
 
 | Operation        | REST Resource Path |
 |------------------|---------------|
+| `createResponsibilityType(ResponsibilityType)` |  |
+
+| Operation        | REST Resource Path |
+|------------------|---------------|
+| `createBank(Bank)` |  |
+
+| Operation        | REST Resource Path |
+|------------------|---------------|
+| `createEmployee(Person, ResponsibilityType, Bank)` |  |
+
+| Operation        | REST Resource Path |
+|------------------|---------------|
 | `createAccount(Customer, Person)` |  |
 
 | Operation        | REST Resource Path |
@@ -91,23 +103,23 @@
 | Operation        | REST Resource Path |
 |------------------|---------------|
 | `searchCustomers(CustomerQuery)` |  |
-
-| Operation        | REST Resource Path |
-|------------------|---------------|
-| `createResponsibilityType(ResponsibilityType)` |  |
-
-| Operation        | REST Resource Path |
-|------------------|---------------|
-| `createBank(Bank)` |  |
-
-| Operation        | REST Resource Path |
-|------------------|---------------|
-| `createEmployee(Person, ResponsibilityType, Bank)` |  |
 
 ### Service `AccountingService`
 
 | Operation        | REST Resource Path |
 |------------------|---------------|
+| `createResponsibilityType(ResponsibilityType)` |  |
+
+| Operation        | REST Resource Path |
+|------------------|---------------|
+| `createBank(Bank)` |  |
+
+| Operation        | REST Resource Path |
+|------------------|---------------|
+| `createEmployee(Person, ResponsibilityType, Bank)` |  |
+
+| Operation        | REST Resource Path |
+|------------------|---------------|
 | `createAccount(Customer, Person)` |  |
 
 | Operation        | REST Resource Path |
@@ -141,18 +153,6 @@
 | Operation        | REST Resource Path |
 |------------------|---------------|
 | `searchCustomers(CustomerQuery)` |  |
-
-| Operation        | REST Resource Path |
-|------------------|---------------|
-| `createResponsibilityType(ResponsibilityType)` |  |
-
-| Operation        | REST Resource Path |
-|------------------|---------------|
-| `createBank(Bank)` |  |
-
-| Operation        | REST Resource Path |
-|------------------|---------------|
-| `createEmployee(Person, ResponsibilityType, Bank)` |  |
 
 ## Role `Customer`
 ### Service `RESTProductService`
