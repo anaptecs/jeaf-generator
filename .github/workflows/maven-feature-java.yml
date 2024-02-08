@@ -6,8 +6,6 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Maven Feature Branch Build (Java 11)
-
 on:
   push:
     branches:
@@ -17,16 +15,20 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        java: [ '11', '17', '21' ]
 
+    name: Maven Feature Branch Build (Java ${{ matrix.java }})
     steps:
     - uses: actions/checkout@v4
-    - name: Set up JDK 11
+    - name: Set up JDK (Java ${{ matrix.java }})
       uses: actions/setup-java@v4
       with:
-        java-version: '11'
+        java-version: ${{ matrix.java }}
         distribution: 'temurin'
         cache: maven
 
-    - name: Build with Maven (Java 11)
+    - name: Build with Maven (Java architecture)
       run: mvn -Duser.country=DE -Duser.language=de -Duser.timezone="Europe/Berlin" -B clean install
       
