@@ -5,31 +5,33 @@
 # They are provided by a third-party and are governed by
 # separate terms of service, privacy policy, and support
 # documentation.
-name: Maven Feature Branch Build
+
+name: Maven Build Main (Java 11)
 
 on:
   push:
     branches:
-      - 'feature/**'
+      - main
 
 jobs:
   build:
 
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        java: [ '11', '17', '21' ]
 
-    name: Maven Feature Branch Build (Java ${{ matrix.java }})
     steps:
     - uses: actions/checkout@v4
-    - name: Set up JDK (Java ${{ matrix.java }})
+    - name: Set up JDK 11
       uses: actions/setup-java@v4
       with:
-        java-version: ${{ matrix.java }}
+        java-version: '11'
         distribution: 'temurin'
         cache: maven
+        server-id: ossrh
+        server-username: MAVEN_USERNAME
+        server-password: MAVEN_PASSWORD
 
-    - name: Build with Maven (Java architecture)
-      run: mvn -Duser.country=DE -Duser.language=de -Duser.timezone="Europe/Berlin" -B clean install
-      
+    - name: Build and Publish packages
+      run: mvn -Duser.country=DE -Duser.language=de -Duser.timezone="Europe/Berlin" --batch-mode clean deploy
+      env:
+        MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
+        MAVEN_PASSWORD: ${{ secrets.OSSRH_TOKEN }}      
