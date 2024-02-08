@@ -220,12 +220,12 @@ public class «name»RESTProxy implements «this.fqn()» {
 			    java.util.List<Object> lValues = new java.util.ArrayList<Object>();
 			    for («queryParam.type.fqn()» lNext : «queryParam.name») {
 				«IF queryParam.type.isOpenAPIDataType()»
-				    «IF queryParam.type.getAllAttributesFromHierarchy().first().type.isPrimitiveType()»
-				    	lValues.add(String.valueOf(lNext.«queryParam.type.getAllAttributesFromHierarchy().first().asGetter()»()));
+				    «IF queryParam.type.getAllAttributesFromHierarchy().select(e|e.isStatic == false).first().type.isPrimitiveType()»
+				    	lValues.add(String.valueOf(lNext.«queryParam.type.getAllAttributesFromHierarchy().select(e|e.isStatic == false).first().asGetter()»()));
 				    «ELSE» «IF queryParam.type.isCompositeDataType()»
 				    	lValues.add(lNext.get«queryParam.type.getCompositeDateTypePublicFieldName().toFirstUpper()»());
 					«ELSE»
-				        lValues.add(lNext.«queryParam.type.getAllAttributesFromHierarchy().first().asGetter()»());
+				        lValues.add(lNext.«queryParam.type.getAllAttributesFromHierarchy().select(e|e.isStatic == false).first().asGetter()»());
 				    «ENDIF»«ENDIF»
 			    «ELSE»
 			    	lValues.add(«EXPAND DateConversionForElement("lNext") FOR queryParam»);
@@ -255,10 +255,10 @@ public class «name»RESTProxy implements «this.fqn()» {
 		    			«IF queryParam.type.isCompositeDataType()»
 		    				lValues.add(lNext.get«queryParam.type.getCompositeDateTypePublicFieldName().toFirstUpper()»());
 		    			«ELSE»
-			    			«IF queryParam.type.getAllAttributesFromHierarchy().first().type.isPrimitiveType()»
-			    				lValues.add(String.valueOf(lNext.«queryParam.type.getAllAttributesFromHierarchy().first().asGetter()»()));
+			    			«IF queryParam.type.getAllAttributesFromHierarchy().select(e|e.isStatic == false).first().type.isPrimitiveType()»
+			    				lValues.add(String.valueOf(lNext.«queryParam.type.getAllAttributesFromHierarchy().select(e|e.isStatic == false).first().asGetter()»()));
 			    			«ELSE»
-			    				lValues.add(lNext.«queryParam.type.getAllAttributesFromHierarchy().first().asGetter()»().toString());
+			    				lValues.add(lNext.«queryParam.type.getAllAttributesFromHierarchy().select(e|e.isStatic == false).first().asGetter()»().toString());
 			    			«ENDIF»
 			    		«ENDIF»
 			    	«ELSE»
@@ -296,7 +296,7 @@ public class «name»RESTProxy implements «this.fqn()» {
 								«IF headerParam.type.isCompositeDataType()»
 									lValues.add(lNext.get«headerParam.type.getCompositeDateTypePublicFieldName().toFirstUpper()»());
 								«ELSE»
-									lValues.add(lNext.«headerParam.type.getAllAttributesFromHierarchy().first().asGetter()»());
+									lValues.add(lNext.«headerParam.type.getAllAttributesFromHierarchy().select(e|e.isStatic == false).first().asGetter()»());
 								«ENDIF»
 							«ELSE»
 								«IF headerParam.type.isAnyDateType()»
@@ -346,7 +346,7 @@ public class «name»RESTProxy implements «this.fqn()» {
 										«IF headerParam.type.isCompositeDataType()»
 											lValues.add(lNext.get«headerParam.type.getCompositeDateTypePublicFieldName().toFirstUpper()»());
 										«ELSE»
-											lValues.add(lNext.«headerParam.type.getAllAttributesFromHierarchy().first().asGetter()»());
+											lValues.add(lNext.«headerParam.type.getAllAttributesFromHierarchy().select(e|e.isStatic == false).first().asGetter()»());
 										«ENDIF»
 									«ELSE»
 										«IF headerParam.type.isAnyDateType()»
@@ -469,7 +469,7 @@ public class «name»RESTProxy implements «this.fqn()» {
 				«IF type.isCompositeDataType()»
 					«name».get«type.getCompositeDateTypePublicFieldName().toFirstUpper()»()
 				«ELSE»
-					«name».«type.getAllAttributesFromHierarchy().first().asGetter()»()
+					«name».«type.getAllAttributesFromHierarchy().select(e|e.isStatic == false).first().asGetter()»()
 				«ENDIF»
 			«ELSE»
 				«IF isTargetRuntimeJEAF()»
@@ -510,7 +510,7 @@ public class «name»RESTProxy implements «this.fqn()» {
 				«IF type.isCompositeDataType()»
 					«beanParam.name».«this.asGetter()»().get«type.getCompositeDateTypePublicFieldName().toFirstUpper()»()
 				«ELSE»
-					«beanParam.name».«this.asGetter()»().«type.getAllAttributesFromHierarchy().first().asGetter()»()
+					«beanParam.name».«this.asGetter()»().«type.getAllAttributesFromHierarchy().select(e|e.isStatic == false).first().asGetter()»()
 				«ENDIF»
 			«ELSE»
 				«IF isTargetRuntimeJEAF()»
@@ -548,7 +548,7 @@ public class «name»RESTProxy implements «this.fqn()» {
 				«IF type.isCompositeDataType()»
 					«name».get«type.getCompositeDateTypePublicFieldName().toFirstUpper()»()
 				«ELSE»
-					«name».«type.getAllAttributesFromHierarchy().first().asGetter()»()
+					«name».«type.getAllAttributesFromHierarchy().select(e|e.isStatic == false).first().asGetter()»()
 				«ENDIF»
 			«ELSE»
 				«IF isTargetRuntimeJEAF()»
@@ -589,7 +589,7 @@ public class «name»RESTProxy implements «this.fqn()» {
 				«IF type.isCompositeDataType()»
 					«beanParam.name».«this.asGetter()»().get«type.getCompositeDateTypePublicFieldName().toFirstUpper()»()
 				«ELSE»
-					«beanParam.name».«this.asGetter()»().«type.getAllAttributesFromHierarchy().first().asGetter()»()
+					«beanParam.name».«this.asGetter()»().«type.getAllAttributesFromHierarchy().select(e|e.isStatic == false).first().asGetter()»()
 				«ENDIF»
 			«ELSE»
 				«IF this.isMultivalued() == false»
@@ -619,7 +619,7 @@ public class «name»RESTProxy implements «this.fqn()» {
 			String.valueOf(«name»)
 		«ELSE»
 			«IF type.isOpenAPIDataType()»
-				«name».«type.getAllAttributesFromHierarchy().first().asGetter()»()
+				«name».«type.getAllAttributesFromHierarchy().select(e|e.isStatic == false).first().asGetter()»()
 			«ELSE»
 				«IF isTargetRuntimeJEAF()»
 				com.anaptecs.jeaf.xfun.api.XFun.getDatatypeConverterRegistry().getConverter(«type.fqn()».class, String.class).convert(«name»)
@@ -644,7 +644,7 @@ public class «name»RESTProxy implements «this.fqn()» {
 			String.valueOf(«beanParam.name».«this.asGetter()»())
 		«ELSE»
 			«IF type.isOpenAPIDataType()»
-				«beanParam.name».«this.asGetter()»().«type.getAllAttributesFromHierarchy().first().asGetter()»()
+				«beanParam.name».«this.asGetter()»().«type.getAllAttributesFromHierarchy().select(e|e.isStatic == false).first().asGetter()»()
 			«ELSE»
 				«IF isTargetRuntimeJEAF()»
 				com.anaptecs.jeaf.xfun.api.XFun.getDatatypeConverterRegistry().getConverter(«type.fqn()».class, String.class).convert(«beanParam.name».«this.asGetter()»())

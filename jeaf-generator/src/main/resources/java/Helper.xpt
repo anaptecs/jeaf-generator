@@ -198,7 +198,7 @@
 		    lEquals = false;
 		  }
 		  else {
-		    lEquals = java.util.Objects.equals(«this.getAllAttributesFromHierarchy().select(e|e.isPropertySuppressed() == false && e.isStatic == false).first().name», ((«this.fqn()») pOtherObject).«this.getAllAttributesFromHierarchy().select(e|e.isPropertySuppressed() == false).first().asGetter()»());
+		    lEquals = java.util.Objects.equals(«this.getAllAttributesFromHierarchy().select(e|e.isPropertySuppressed() == false && e.isStatic == false).first().name», ((«this.fqn()») pOtherObject).«this.getAllAttributesFromHierarchy().select(e|e.isPropertySuppressed() == false && e.isStatic == false).first().asGetter()»());
 		  }
 		  return lEquals;
 		}
@@ -248,7 +248,7 @@
 «DEFINE GenerateValueOfForOpenAPIDataType FOR uml::Class»
 	«IF generateValueOfForOpenAPIDataTypes() && this.isOpenAPIDataType()»
 		«IF this.isCompositeDataType() == false»				
-			«LET this.ownedAttribute.get(0) AS theAttribute»
+			«LET this.ownedAttribute.select(e|e.isStatic == false).first() AS theAttribute»
 			«LET "p" + theAttribute.name.toFirstUpper() AS theParam»
 				/**
 				 * Method converts the passed {@link String} into an instance of this object.

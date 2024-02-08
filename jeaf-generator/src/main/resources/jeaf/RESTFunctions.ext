@@ -93,7 +93,7 @@ cached String getPathVariableNameForDataType(JMM::PathParam pathParam):
       if ((JMM::ServiceObject) pathParam.type).compositeDataType then
 	    pathParam.name + ".get" + ((JMM::ServiceObject) pathParam.type).compositeDataTypePublicFieldName.toFirstUpper() + "()"
       else
-       pathParam.name + "." + pathParam.type.getAllAttributesFromHierarchy().first().asGetter() + "()";
+       pathParam.name + "." + pathParam.type.getAllAttributesFromHierarchy().select(e|e.isStatic == false).first().asGetter() + "()";
     
 
 cached String getRESTPathParamName(JMM::PathParam param):

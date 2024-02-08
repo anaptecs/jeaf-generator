@@ -34,6 +34,12 @@ public class BookingID {
    */
   public static final String BOOKINGCODE = "bookingCode";
 
+  /**
+   * <br/>
+   * <b>Default Value:</b> <code>42</code>
+   */
+  public static final int MAGIC = 42;
+
   private final transient String publicBookingID;
 
   private final String referenceID;
