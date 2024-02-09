@@ -5,6 +5,7 @@
 # They are provided by a third-party and are governed by
 # separate terms of service, privacy policy, and support
 # documentation.
+
 name: Maven Build Feature Branch
 
 on:
@@ -14,22 +15,4 @@ on:
 
 jobs:
   build:
-
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        java: [ '11', '17', '21' ]
-
-    name: Maven Feature Branch Build (Java ${{ matrix.java }})
-    steps:
-    - uses: actions/checkout@v4
-    - name: Set up JDK (Java ${{ matrix.java }})
-      uses: actions/setup-java@v4
-      with:
-        java-version: ${{ matrix.java }}
-        distribution: 'temurin'
-        cache: maven
-
-    - name: Build with Maven (Java ${{ matrix.java }})
-      run: mvn -Duser.country=DE -Duser.language=de -Duser.timezone="Europe/Berlin" -B clean install
-      
+    uses: anaptecs/jeaf-project-parent/.github/workflows/maven-build-feature-template.yml@main
