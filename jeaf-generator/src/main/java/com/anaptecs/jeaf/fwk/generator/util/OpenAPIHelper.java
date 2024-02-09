@@ -308,7 +308,7 @@ public class OpenAPIHelper {
   }
 
   public static String getOpenAPIType( org.eclipse.uml2.uml.Type pClass, Component pSpec ) {
-    String lFQN = Naming.getFullyQualifiedName(pClass);
+    String lFQN = Naming.getUMLQualifiedName(pClass);
     String lTypeName;
     if (basicTypes.containsKey(lFQN) == true) {
       lTypeName = basicTypes.get(lFQN);
@@ -338,7 +338,7 @@ public class OpenAPIHelper {
   }
 
   public static String getResponseType( org.eclipse.uml2.uml.Type pClass, Component pSpec ) {
-    String lFQN = Naming.getFullyQualifiedName(pClass);
+    String lFQN = Naming.getUMLQualifiedName(pClass);
     String lTypeName;
     if (basicTypes.containsKey(lFQN) == true) {
       lTypeName = basicTypes.get(lFQN);
@@ -368,7 +368,7 @@ public class OpenAPIHelper {
   }
 
   public static String getOpenAPIFormat( org.eclipse.uml2.uml.Type pClass ) {
-    return formatMapping.get(Naming.getFullyQualifiedName(pClass));
+    return formatMapping.get(Naming.getUMLQualifiedName(pClass));
   }
 
   public static void registerSpecDependency( Component pSource, Component pTarget, String pReference ) {
@@ -381,24 +381,24 @@ public class OpenAPIHelper {
   }
 
   private static String createSpecDependencyKey( Component pSource, Component pTarget ) {
-    return Naming.getFullyQualifiedName(pSource) + "::" + Naming.getFullyQualifiedName(pTarget);
+    return Naming.getUMLQualifiedName(pSource) + "::" + Naming.getUMLQualifiedName(pTarget);
   }
 
   public static void registerLocalType( org.eclipse.uml2.uml.NamedElement pClass, Component pSpec ) {
-    String lFQN = Naming.getFullyQualifiedName(pClass);
+    String lFQN = Naming.getUMLQualifiedName(pClass);
     XFun.getTrace().debug("Registering local type " + lFQN + " with " + pSpec.getName() + ":" + pClass.getName());
     complexTypes.put(lFQN, new OpenAPIType(pClass, pSpec, lFQN));
   }
 
   public static void registerLocalParameter( org.eclipse.uml2.uml.Property pProperty, Component pSpec ) {
-    String lFQN = Naming.getFullyQualifiedName(pProperty.getClass_()) + "." + pProperty.getName();
+    String lFQN = Naming.getUMLQualifiedName(pProperty.getClass_()) + "." + pProperty.getName();
     XFun.getTrace().debug(
         "Registering local parameter " + lFQN + " with " + pSpec.getName() + ":" + pProperty.getName());
     parameterTypes.put(lFQN, new OpenAPIType(pProperty, pSpec, lFQN));
   }
 
   public static String getOpenAPIParameter( org.eclipse.uml2.uml.Property pProperty, Component pSpec ) {
-    String lFQN = Naming.getFullyQualifiedName(pProperty.getClass_()) + "." + pProperty.getName();
+    String lFQN = Naming.getUMLQualifiedName(pProperty.getClass_()) + "." + pProperty.getName();
     String lTypeName;
     if (parameterTypes.containsKey(lFQN) == true) {
       OpenAPIType lOpenAPIType = parameterTypes.get(lFQN);
@@ -427,7 +427,7 @@ public class OpenAPIHelper {
   public static boolean isBasicOpenAPIType( org.eclipse.uml2.uml.Element pType ) {
     boolean lBasicType;
     if (pType instanceof NamedElement) {
-      lBasicType = basicTypes.containsKey(Naming.getFullyQualifiedName((NamedElement) pType));
+      lBasicType = basicTypes.containsKey(Naming.getUMLQualifiedName((NamedElement) pType));
     }
     else {
       lBasicType = false;

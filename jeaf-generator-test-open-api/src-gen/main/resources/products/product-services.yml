@@ -1686,6 +1686,50 @@ paths:
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
     
+  /products/testDuplicateGenerics1:
+    get:
+      operationId: testDuplicateGenerics1
+      responses:
+        '200':
+          description: |
+            TODO: Please add comment for response
+          content:
+            application/json:
+              schema:
+                $ref: '../base/product-base.yml#/components/schemas/MyFirstResponse'
+          headers:
+            X-Global-Response-Header:
+              schema:
+                type: string
+                default: 'Hello World'
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+    
+  /products/testDuplicateGenerics2:
+    get:
+      operationId: testDuplicateGenerics2
+      responses:
+        '200':
+          description: |
+            TODO: Please add comment for response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MySecondResponse'
+          headers:
+            X-Global-Response-Header:
+              schema:
+                type: string
+                default: 'Hello World'
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+    
 
 security:
   - {}
@@ -1772,7 +1816,7 @@ components:
     Message:
       type: object
       additionalProperties: false
-    # com.anaptecs.jeaf.junit.rest.generics.GenericPageableResponse<com.anaptecs.jeaf.junit.rest.generics.BusinessServiceObject>
+    # com.anaptecs.jeaf.junit.rest.generics.MyGenericListResponse
     MyGenericListResponse:
       type: object
       additionalProperties: false
@@ -1789,7 +1833,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/BusinessServiceObject'
-    # com.anaptecs.jeaf.junit.rest.generics.GenericSingleValuedReponse<com.anaptecs.jeaf.junit.rest.generics.BusinessServiceObject>
+    # com.anaptecs.jeaf.junit.rest.generics.MyGenericRESTResponse
     MyGenericRESTResponse:
       type: object
       additionalProperties: false
@@ -1798,11 +1842,22 @@ components:
       properties:
         value:
           $ref: '#/components/schemas/BusinessServiceObject'
+    # com.anaptecs.jeaf.junit.rest.generics.MySecondResponse
+    MySecondResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        messages:
+          type: array
+          items:
+            $ref: '#/components/schemas/Message'
+        data:
+          $ref: '#/components/schemas/Offer'
     # com.anaptecs.jeaf.junit.rest.generics.Offer
     Offer:
       type: object
       additionalProperties: false
-    # com.anaptecs.jeaf.junit.rest.generics.Response<com.anaptecs.jeaf.junit.rest.generics.Offer>
+    # com.anaptecs.jeaf.junit.rest.generics.OffersResponse
     OffersResponse:
       type: object
       additionalProperties: false
@@ -1815,7 +1870,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Offer'
-    # com.anaptecs.jeaf.junit.rest.generics.Pageable<com.anaptecs.jeaf.junit.rest.generics.BusinessServiceObject>
+    # com.anaptecs.jeaf.junit.rest.generics.PagedBusinessObjects
     PagedBusinessObjects:
       type: object
       additionalProperties: false
@@ -1830,7 +1885,7 @@ components:
           type: integer
           format: int32
           nullable: false
-    # com.anaptecs.jeaf.junit.rest.generics.Response<com.anaptecs.jeaf.junit.rest.generics.Pageable<com.anaptecs.jeaf.junit.rest.generics.BusinessServiceObject>>
+    # com.anaptecs.jeaf.junit.rest.generics.PagedBusinessObjectsResponse
     PagedBusinessObjectsResponse:
       type: object
       additionalProperties: false

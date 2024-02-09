@@ -95,6 +95,13 @@ cached String getTestCaseBaseName(uml::NamedElement element) :
 cached String getTestCaseName(uml::NamedElement element) :
     element.name + "Test";
     
+
+cached String javaFQN(uml::NamedElement element):
+    element.fqn();
+    
+cached String umlFQN(uml::NamedElement element):
+    JAVA com.anaptecs.jeaf.fwk.generator.util.Naming.getUMLQualifiedName( org.eclipse.uml2.uml.NamedElement);
+     
 // For "normale" Typen wird einfach der Name als qualifizierter Name geliefert
 // Blob wird von OAW nicht als Klasse anerkannt, deswegen muss sie hier behandelt werden.
 cached String fqn (uml::NamedElement element) :

@@ -246,6 +246,13 @@ public abstract class ProductServiceTestBase extends JEAFTestCase {
   public abstract void testTestTechnicalHeaderBean( ) throws Exception;
 
   /**
+   * Method test the implementation of service method testDuplicateGenerics2(...)
+   *
+   * @throws Exception if the test fails.
+   */
+  public abstract void testTestDuplicateGenerics2( ) throws Exception;
+
+  /**
    * Method test the implementation of service method createProduct(...)
    *
    * @throws Exception if the test fails.
@@ -265,6 +272,13 @@ public abstract class ProductServiceTestBase extends JEAFTestCase {
    * @throws Exception if the test fails.
    */
   public abstract void testTestCodeTypeUsage( ) throws Exception;
+
+  /**
+   * Method test the implementation of service method testDuplicateGenerics1(...)
+   *
+   * @throws Exception if the test fails.
+   */
+  public abstract void testTestDuplicateGenerics1( ) throws Exception;
 
   /**
    * Method test the implementation of service method testDateQueryParams(...)

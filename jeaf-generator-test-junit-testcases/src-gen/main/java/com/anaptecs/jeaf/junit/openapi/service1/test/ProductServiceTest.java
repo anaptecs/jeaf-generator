@@ -49,9 +49,11 @@ public class ProductServiceTest extends ProductServiceTestBase {
     lSuite.addTest(new ProductServiceTest("testTestNestedMultivaluedResponse"));
     lSuite.addTest(new ProductServiceTest("testIsCurrencySupported"));
     lSuite.addTest(new ProductServiceTest("testTestTechnicalHeaderBean"));
+    lSuite.addTest(new ProductServiceTest("testTestDuplicateGenerics2"));
     lSuite.addTest(new ProductServiceTest("testCreateProduct"));
     lSuite.addTest(new ProductServiceTest("testCreateChannelCodeFromObject"));
     lSuite.addTest(new ProductServiceTest("testTestCodeTypeUsage"));
+    lSuite.addTest(new ProductServiceTest("testTestDuplicateGenerics1"));
     lSuite.addTest(new ProductServiceTest("testTestDateQueryParams"));
     lSuite.addTest(new ProductServiceTest("testTestOptionalQueryParams"));
     lSuite.addTest(new ProductServiceTest("testTestMulitValuedBeanParams"));
@@ -394,6 +396,16 @@ public class ProductServiceTest extends ProductServiceTestBase {
   }
 
   /**
+   * Method test the implementation of service method testDuplicateGenerics2
+   *
+   * @throws Exception if a test fails.
+   */
+  @Override
+  public void testTestDuplicateGenerics2( ) throws Exception {
+    // TODO Implement test for service method testDuplicateGenerics2(...)
+  }
+
+  /**
    * Method test the implementation of service method createProduct
    *
    * @throws Exception if a test fails.
@@ -421,6 +433,16 @@ public class ProductServiceTest extends ProductServiceTestBase {
   @Override
   public void testTestCodeTypeUsage( ) throws Exception {
     // TODO Implement test for service method testCodeTypeUsage(...)
+  }
+
+  /**
+   * Method test the implementation of service method testDuplicateGenerics1
+   *
+   * @throws Exception if a test fails.
+   */
+  @Override
+  public void testTestDuplicateGenerics1( ) throws Exception {
+    // TODO Implement test for service method testDuplicateGenerics1(...)
   }
 
   /**

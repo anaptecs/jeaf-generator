@@ -349,4 +349,14 @@ public interface ProductServiceRESTProxyServiceProvider extends ServiceProvider 
    * @return {@link Response<List<Offer>>}
    */
   Response<List<Offer>> testNestedMultivaluedResponse( );
+
+  /**
+   * @return {@link Response<Offer>}
+   */
+  Response<Offer> testDuplicateGenerics1( );
+
+  /**
+   * @return {@link Response<Offer>}
+   */
+  Response<Offer> testDuplicateGenerics2( );
 }

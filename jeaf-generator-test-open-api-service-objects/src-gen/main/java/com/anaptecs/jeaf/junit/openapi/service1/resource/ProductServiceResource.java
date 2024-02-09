@@ -771,6 +771,30 @@ public class ProductServiceResource {
   }
 
   /**
+   * {@link ProductService#testDuplicateGenerics1()}
+   */
+  @Path("testDuplicateGenerics1")
+  @GET
+  public javax.ws.rs.core.Response testDuplicateGenerics1( ) {
+    // Delegate request to service.
+    ProductService lService = this.getProductService();
+    Response<Offer> lResult = lService.testDuplicateGenerics1();
+    return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.OK).entity(lResult).build();
+  }
+
+  /**
+   * {@link ProductService#testDuplicateGenerics2()}
+   */
+  @Path("testDuplicateGenerics2")
+  @GET
+  public javax.ws.rs.core.Response testDuplicateGenerics2( ) {
+    // Delegate request to service.
+    ProductService lService = this.getProductService();
+    Response<Offer> lResult = lService.testDuplicateGenerics2();
+    return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.OK).entity(lResult).build();
+  }
+
+  /**
    * Method returns reference to service to which all REST requests will be delegated.
    *
    * @return ProductService Service instance to which all requests will be delegated.
