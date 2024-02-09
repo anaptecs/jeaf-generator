@@ -18,7 +18,7 @@
 
 «DEFINE GenerateOpenAPIBaseType(OpenAPI3Specification spec) FOR OpenAPIType -»
     «IF suppressClassNameCommentInOpenAPISpec() == false -»
-    # «this.fqn()»
+    # «this.umlFQN()»
     «ENDIF-»
     «this.name»:
       type: object
@@ -202,7 +202,7 @@
 
 «DEFINE GenerateOpenAPISubType(OpenAPI3Specification spec) FOR OpenAPIType -»
     «IF suppressClassNameCommentInOpenAPISpec() == false -»
-    # «this.fqn()»
+    # «this.umlFQN()»
     «ENDIF-»
     «this.name»:
       «IF this.hasComment()-»

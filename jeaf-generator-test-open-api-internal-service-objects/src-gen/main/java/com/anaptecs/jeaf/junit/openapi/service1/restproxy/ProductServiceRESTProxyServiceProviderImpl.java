@@ -1465,4 +1465,46 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     ObjectType lObjectType = ObjectType.createTypeReferenceObjectType(lTypeReference);
     return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
   }
+
+  /**
+   * @return {@link Response<Offer>}
+   */
+  @Override
+  public Response<Offer> testDuplicateGenerics1( ) {
+    // Create builder for GET request
+    RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
+    // Build path of request
+    StringBuilder lPathBuilder = new StringBuilder();
+    lPathBuilder.append("/products");
+    lPathBuilder.append('/');
+    lPathBuilder.append("testDuplicateGenerics1");
+    lRequestBuilder.setPath(lPathBuilder.toString());
+    // Execute request and return result.
+    RESTRequest lRequest = lRequestBuilder.build();
+    TypeReference<Response<Offer>> lTypeReference = new TypeReference<Response<Offer>>() {
+    };
+    ObjectType lObjectType = ObjectType.createTypeReferenceObjectType(lTypeReference);
+    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
+  }
+
+  /**
+   * @return {@link Response<Offer>}
+   */
+  @Override
+  public Response<Offer> testDuplicateGenerics2( ) {
+    // Create builder for GET request
+    RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
+    // Build path of request
+    StringBuilder lPathBuilder = new StringBuilder();
+    lPathBuilder.append("/products");
+    lPathBuilder.append('/');
+    lPathBuilder.append("testDuplicateGenerics2");
+    lRequestBuilder.setPath(lPathBuilder.toString());
+    // Execute request and return result.
+    RESTRequest lRequest = lRequestBuilder.build();
+    TypeReference<Response<Offer>> lTypeReference = new TypeReference<Response<Offer>>() {
+    };
+    ObjectType lObjectType = ObjectType.createTypeReferenceObjectType(lTypeReference);
+    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
+  }
 }

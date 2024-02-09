@@ -41,7 +41,16 @@ public class Naming {
 
   public static final char COMMAND_CLASS_NAME_SEPERATOR = '_';
 
+  public static String getUMLQualifiedName( org.eclipse.uml2.uml.NamedElement pNamedElement ) {
+    return Naming.getFullyQualifiedName(pNamedElement, true);
+  }
+
   public static String getFullyQualifiedName( org.eclipse.uml2.uml.NamedElement pNamedElement ) {
+    return Naming.getFullyQualifiedName(pNamedElement, false);
+  }
+
+  private static String getFullyQualifiedName( org.eclipse.uml2.uml.NamedElement pNamedElement,
+      boolean pIgnoreTemplateBinding ) {
     // Check parameter.
     String lQualifiedName;
     if (pNamedElement != null) {
@@ -53,7 +62,8 @@ public class Naming {
           || pNamedElement instanceof Enumeration) {
 
         // Generate FQN for class with template binding
-        if (pNamedElement instanceof Class && ((Class) pNamedElement).getTemplateBindings().isEmpty() == false) {
+        if (pNamedElement instanceof Class && ((Class) pNamedElement).getTemplateBindings().isEmpty() == false
+            && pIgnoreTemplateBinding == false) {
           lQualifiedName = Naming.getTemplateBindingFQN((Class) pNamedElement);
         }
         else {

@@ -342,4 +342,14 @@ public interface ProductService extends Service {
    * @return {@link Response<List<Offer>>}
    */
   Response<List<Offer>> testNestedMultivaluedResponse( );
+
+  /**
+   * @return {@link Response<Offer>}
+   */
+  Response<Offer> testDuplicateGenerics1( );
+
+  /**
+   * @return {@link Response<Offer>}
+   */
+  Response<Offer> testDuplicateGenerics2( );
 }

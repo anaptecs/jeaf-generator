@@ -834,6 +834,18 @@ components:
           example: CHF
           nullable: false
 
+    # com.anaptecs.jeaf.junit.openapi.base.MyFirstResponse
+    MyFirstResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        messages:
+          type: array
+          items:
+            $ref: '../products/product-services.yml#/components/schemas/Message'
+        data:
+          $ref: '../products/product-services.yml#/components/schemas/Offer'
+
     # com.anaptecs.jeaf.junit.openapi.base.OpenAPITestObject
     OpenAPITestObject:
       type: object

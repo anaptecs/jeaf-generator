@@ -525,4 +525,22 @@ final class ProductServiceImpl extends ProductServiceImplBase {
     // TODO Implement method and return real result
     return null;
   }
+
+  /**
+   * @return {@link Response<Offer>}
+   */
+  @Override
+  public Response<Offer> testDuplicateGenerics1( ) {
+    // TODO Implement method and return real result
+    return null;
+  }
+
+  /**
+   * @return {@link Response<Offer>}
+   */
+  @Override
+  public Response<Offer> testDuplicateGenerics2( ) {
+    // TODO Implement method and return real result
+    return null;
+  }
 }
