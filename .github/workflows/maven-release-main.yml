@@ -6,15 +6,24 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Maven Build Feature Branch
+name: Maven Release Build
 
 on:
   workflow_dispatch:
-  
-  push:
-    branches:
-      - 'feature/**'
+    inputs:
+      releaseVersion:
+        description: 'Release version'
+        required: true
+        type: string
+      tagName:
+        description: 'Release tag'
+        required: true
+        type: string
 
 jobs:
   build:
-    uses: anaptecs/jeaf-project-parent/.github/workflows/maven-build-feature-template.yml@main
+    uses: anaptecs/jeaf-project-parent/.github/workflows/maven-release-main-template.yml@main
+    with:
+      releaseVersion: ${{ inputs.releaseVersion }}
+      tagName: ${{ inputs.tagName }}
+    secrets: inherit
