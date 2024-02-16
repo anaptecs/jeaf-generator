@@ -14,7 +14,6 @@
 package openapitools.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import java.util.Map;
 import java.util.HashMap;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -22,8 +21,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import openapitools.JSON;
 
@@ -136,7 +134,6 @@ public class PrimitiveObjectWithRestrictions {
    * @return aBoolean
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_A_BOOLEAN)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -162,7 +159,6 @@ public class PrimitiveObjectWithRestrictions {
    * @return bBoolean
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_B_BOOLEAN)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -188,7 +184,6 @@ public class PrimitiveObjectWithRestrictions {
    * @return cBoolean
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_C_BOOLEAN)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -215,7 +210,6 @@ public class PrimitiveObjectWithRestrictions {
    * @return aByte
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_A_BYTE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -242,7 +236,6 @@ public class PrimitiveObjectWithRestrictions {
    * @return bByte
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_B_BYTE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -269,7 +262,6 @@ public class PrimitiveObjectWithRestrictions {
    * @return aShort
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_A_SHORT)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -296,7 +288,6 @@ public class PrimitiveObjectWithRestrictions {
    * @return bShort
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_B_SHORT)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -323,7 +314,6 @@ public class PrimitiveObjectWithRestrictions {
    * @return aInteger
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_A_INTEGER)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -350,7 +340,6 @@ public class PrimitiveObjectWithRestrictions {
    * @return bInteger
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_B_INTEGER)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -378,7 +367,6 @@ public class PrimitiveObjectWithRestrictions {
    * @return cInteger
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_C_INTEGER)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -404,7 +392,6 @@ public class PrimitiveObjectWithRestrictions {
    * @return aLong
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_A_LONG)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -431,7 +418,6 @@ public class PrimitiveObjectWithRestrictions {
    * @return bLong
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_B_LONG)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -459,7 +445,6 @@ public class PrimitiveObjectWithRestrictions {
    * @return aBigInteger
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_A_BIG_INTEGER)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -485,7 +470,6 @@ public class PrimitiveObjectWithRestrictions {
    * @return aCharacter
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_A_CHARACTER)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -511,7 +495,6 @@ public class PrimitiveObjectWithRestrictions {
    * @return bCharacter
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_B_CHARACTER)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -537,7 +520,6 @@ public class PrimitiveObjectWithRestrictions {
    * @return aFloat
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_A_FLOAT)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -563,7 +545,6 @@ public class PrimitiveObjectWithRestrictions {
    * @return bFloat
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_B_FLOAT)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -589,7 +570,6 @@ public class PrimitiveObjectWithRestrictions {
    * @return aDouble
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_A_DOUBLE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -615,7 +595,6 @@ public class PrimitiveObjectWithRestrictions {
    * @return bDouble
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_B_DOUBLE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -642,7 +621,6 @@ public class PrimitiveObjectWithRestrictions {
    * @return aBigDecimal
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_A_BIG_DECIMAL)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -668,7 +646,6 @@ public class PrimitiveObjectWithRestrictions {
    * @return aString
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_A_STRING)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -694,7 +671,6 @@ public class PrimitiveObjectWithRestrictions {
    * @return bString
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_B_STRING)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 

@@ -14,7 +14,6 @@
 package openapitools.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import java.util.Map;
 import java.util.HashMap;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -22,8 +21,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import java.util.Arrays;
 import openapitools.model.ChannelType;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import openapitools.JSON;
@@ -65,7 +63,6 @@ public class Channel {
    * @return channelType
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_CHANNEL_TYPE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -91,7 +88,6 @@ public class Channel {
    * @return channelCode
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(example = "MOBILE_APP", required = true, value = "The business code of the channel ")
   @JsonProperty(JSON_PROPERTY_CHANNEL_CODE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -117,7 +113,6 @@ public class Channel {
    * @return code
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_CODE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -143,7 +138,6 @@ public class Channel {
    * @return selfServiceChannel
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_SELF_SERVICE_CHANNEL)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 

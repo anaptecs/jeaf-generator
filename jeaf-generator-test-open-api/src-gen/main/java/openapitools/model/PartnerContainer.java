@@ -14,7 +14,6 @@
 package openapitools.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import java.util.Map;
 import java.util.HashMap;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -22,9 +21,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import openapitools.model.Partner;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -40,7 +38,7 @@ import openapitools.JSON;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class PartnerContainer {
   public static final String JSON_PROPERTY_PARTNERS = "partners";
-  private List<Partner> partners = null;
+  private List<Partner> partners;
 
   public PartnerContainer() { 
   }
@@ -63,7 +61,6 @@ public class PartnerContainer {
    * @return partners
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
   @JsonProperty(JSON_PROPERTY_PARTNERS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 

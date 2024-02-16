@@ -14,7 +14,6 @@
 package openapitools.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import java.util.Map;
 import java.util.HashMap;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -22,9 +21,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import openapitools.JSON;
@@ -46,7 +44,7 @@ public class CodeTypeUsageTest {
   private Boolean booleanCode;
 
   public static final String JSON_PROPERTY_BOOLEAN_CODE_ASSOCIATION = "booleanCodeAssociation";
-  private List<Boolean> booleanCodeAssociation = null;
+  private List<Boolean> booleanCodeAssociation;
 
   public static final String JSON_PROPERTY_SHORT_CODE_TYPE_ASSOCIATION = "shortCodeTypeAssociation";
   private List<Integer> shortCodeTypeAssociation = new ArrayList<>();
@@ -70,7 +68,6 @@ public class CodeTypeUsageTest {
    * @return booleanCode
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_BOOLEAN_CODE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -104,7 +101,6 @@ public class CodeTypeUsageTest {
    * @return booleanCodeAssociation
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
   @JsonProperty(JSON_PROPERTY_BOOLEAN_CODE_ASSOCIATION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -126,6 +122,9 @@ public class CodeTypeUsageTest {
   }
 
   public CodeTypeUsageTest addShortCodeTypeAssociationItem(Integer shortCodeTypeAssociationItem) {
+    if (this.shortCodeTypeAssociation == null) {
+      this.shortCodeTypeAssociation = new ArrayList<>();
+    }
     this.shortCodeTypeAssociation.add(shortCodeTypeAssociationItem);
     return this;
   }
@@ -135,7 +134,6 @@ public class CodeTypeUsageTest {
    * @return shortCodeTypeAssociation
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_SHORT_CODE_TYPE_ASSOCIATION)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -161,7 +159,6 @@ public class CodeTypeUsageTest {
    * @return stringCode
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_STRING_CODE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -188,7 +185,6 @@ public class CodeTypeUsageTest {
    * @return shortCode
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_SHORT_CODE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 

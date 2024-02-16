@@ -14,7 +14,6 @@
 package openapitools.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import java.util.Map;
 import java.util.HashMap;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -22,9 +21,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -68,7 +66,6 @@ public class Campaign {
   **/
   @Deprecated
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
   @JsonIgnore
 
   public Long getTheLink() {
@@ -98,6 +95,9 @@ public class Campaign {
   }
 
   public Campaign addMoreLinksItem(Long moreLinksItem) {
+    if (this.moreLinks == null) {
+      this.moreLinks = new ArrayList<>();
+    }
     this.moreLinks.add(moreLinksItem);
     return this;
   }
@@ -109,7 +109,6 @@ public class Campaign {
   **/
   @Deprecated
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = " Deprecated: No good any more (since: 1.2, removed with: 3.0) ")
   @JsonProperty(JSON_PROPERTY_MORE_LINKS)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -149,7 +148,6 @@ public class Campaign {
   **/
   @Deprecated
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
   @JsonIgnore
 
   public List<String> getDiscountOffers() {

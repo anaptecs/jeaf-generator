@@ -14,7 +14,6 @@
 package openapitools.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import java.util.Map;
 import java.util.HashMap;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -22,8 +21,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import openapitools.JSON;
 
@@ -80,7 +78,6 @@ public class HeavyDataTypeUser {
    * @return booleanCode
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_BOOLEAN_CODE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -106,7 +103,6 @@ public class HeavyDataTypeUser {
    * @return byteCode
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_BYTE_CODE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -133,7 +129,6 @@ public class HeavyDataTypeUser {
    * @return shortCode
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_SHORT_CODE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -160,7 +155,6 @@ public class HeavyDataTypeUser {
    * @return integerCode
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_INTEGER_CODE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -186,7 +180,6 @@ public class HeavyDataTypeUser {
    * @return floatCode
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_FLOAT_CODE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -212,7 +205,6 @@ public class HeavyDataTypeUser {
    * @return doubleCode
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_DOUBLE_CODE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -239,7 +231,6 @@ public class HeavyDataTypeUser {
    * @return bigInegerCode
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_BIG_INEGER_CODE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -265,7 +256,6 @@ public class HeavyDataTypeUser {
    * @return bigDecimalCode
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_BIG_DECIMAL_CODE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 

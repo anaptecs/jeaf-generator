@@ -14,7 +14,6 @@
 package openapitools.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import java.util.Map;
 import java.util.HashMap;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -22,8 +21,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import java.util.Arrays;
 import openapitools.model.TimeUnit;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import openapitools.JSON;
@@ -32,7 +30,6 @@ import openapitools.JSON;
 /**
  * Type represents a duration.   NOVA 14 Mapping * nova-base.xsd.Dauer 
  */
-@ApiModel(description = "Type represents a duration.   NOVA 14 Mapping * nova-base.xsd.Dauer ")
 @JsonPropertyOrder({
   Duration.JSON_PROPERTY_VALUE,
   Duration.JSON_PROPERTY_TIME_UNIT
@@ -58,7 +55,6 @@ public class Duration {
    * @return value
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_VALUE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -84,7 +80,6 @@ public class Duration {
    * @return timeUnit
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_TIME_UNIT)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 

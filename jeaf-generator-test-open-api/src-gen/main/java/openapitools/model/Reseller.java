@@ -14,7 +14,6 @@
 package openapitools.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import java.util.Map;
 import java.util.HashMap;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -22,9 +21,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import openapitools.model.Channel;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -59,6 +57,9 @@ public class Reseller {
   }
 
   public Reseller addChannelsItem(Channel channelsItem) {
+    if (this.channels == null) {
+      this.channels = new ArrayList<>();
+    }
     this.channels.add(channelsItem);
     return this;
   }
@@ -68,7 +69,6 @@ public class Reseller {
    * @return channels
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_CHANNELS)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -94,7 +94,6 @@ public class Reseller {
    * @return name
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = " Breaking Change with 1.1: Maximum size will be increased. ")
   @JsonProperty(JSON_PROPERTY_NAME)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -120,7 +119,6 @@ public class Reseller {
    * @return language
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_LANGUAGE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
