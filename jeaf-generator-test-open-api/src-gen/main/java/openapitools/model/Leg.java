@@ -14,7 +14,6 @@
 package openapitools.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import java.util.Map;
 import java.util.HashMap;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -22,9 +21,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import openapitools.model.PlaceRef;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -48,7 +46,7 @@ public class Leg {
   private PlaceRef stop;
 
   public static final String JSON_PROPERTY_STOPOVERS = "stopovers";
-  private List<PlaceRef> stopovers = null;
+  private List<PlaceRef> stopovers;
 
   public Leg() { 
   }
@@ -63,7 +61,6 @@ public class Leg {
    * @return start
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_START)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -89,7 +86,6 @@ public class Leg {
    * @return stop
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_STOP)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -123,7 +119,6 @@ public class Leg {
    * @return stopovers
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
   @JsonProperty(JSON_PROPERTY_STOPOVERS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 

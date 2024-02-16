@@ -14,7 +14,6 @@
 package openapitools.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import java.util.Map;
 import java.util.HashMap;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -22,10 +21,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
+import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import openapitools.JSON;
 
@@ -44,10 +42,10 @@ import openapitools.JSON;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class DateObject {
   public static final String JSON_PROPERTY_LOCAL_TIME = "localTime";
-  private String localTime;
+  private String _localTime;
 
   public static final String JSON_PROPERTY_LOCAL_DATE = "localDate";
-  private LocalDate localDate;
+  private LocalDate _localDate;
 
   public static final String JSON_PROPERTY_LOCAL_DATE_TIME = "localDateTime";
   private OffsetDateTime localDateTime;
@@ -64,55 +62,53 @@ public class DateObject {
   public DateObject() { 
   }
 
-  public DateObject localTime(String localTime) {
-    this.localTime = localTime;
+  public DateObject _localTime(String _localTime) {
+    this._localTime = _localTime;
     return this;
   }
 
    /**
-   * Get localTime
-   * @return localTime
+   * Get _localTime
+   * @return _localTime
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(example = "12:07", required = true, value = "")
   @JsonProperty(JSON_PROPERTY_LOCAL_TIME)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getLocalTime() {
-    return localTime;
+    return _localTime;
   }
 
 
   @JsonProperty(JSON_PROPERTY_LOCAL_TIME)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setLocalTime(String localTime) {
-    this.localTime = localTime;
+  public void setLocalTime(String _localTime) {
+    this._localTime = _localTime;
   }
 
 
-  public DateObject localDate(LocalDate localDate) {
-    this.localDate = localDate;
+  public DateObject _localDate(LocalDate _localDate) {
+    this._localDate = _localDate;
     return this;
   }
 
    /**
-   * Get localDate
-   * @return localDate
+   * Get _localDate
+   * @return _localDate
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_LOCAL_DATE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public LocalDate getLocalDate() {
-    return localDate;
+    return _localDate;
   }
 
 
   @JsonProperty(JSON_PROPERTY_LOCAL_DATE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setLocalDate(LocalDate localDate) {
-    this.localDate = localDate;
+  public void setLocalDate(LocalDate _localDate) {
+    this._localDate = _localDate;
   }
 
 
@@ -126,7 +122,6 @@ public class DateObject {
    * @return localDateTime
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_LOCAL_DATE_TIME)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -152,7 +147,6 @@ public class DateObject {
    * @return calendar
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_CALENDAR)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -178,7 +172,6 @@ public class DateObject {
    * @return sqlDate
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_SQL_DATE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -204,7 +197,6 @@ public class DateObject {
    * @return utilDate
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_UTIL_DATE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -232,8 +224,8 @@ public class DateObject {
       return false;
     }
     DateObject dateObject = (DateObject) o;
-    return Objects.equals(this.localTime, dateObject.localTime) &&
-        Objects.equals(this.localDate, dateObject.localDate) &&
+    return Objects.equals(this._localTime, dateObject._localTime) &&
+        Objects.equals(this._localDate, dateObject._localDate) &&
         Objects.equals(this.localDateTime, dateObject.localDateTime) &&
         Objects.equals(this.calendar, dateObject.calendar) &&
         Objects.equals(this.sqlDate, dateObject.sqlDate) &&
@@ -242,15 +234,15 @@ public class DateObject {
 
   @Override
   public int hashCode() {
-    return Objects.hash(localTime, localDate, localDateTime, calendar, sqlDate, utilDate);
+    return Objects.hash(_localTime, _localDate, localDateTime, calendar, sqlDate, utilDate);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class DateObject {\n");
-    sb.append("    localTime: ").append(toIndentedString(localTime)).append("\n");
-    sb.append("    localDate: ").append(toIndentedString(localDate)).append("\n");
+    sb.append("    _localTime: ").append(toIndentedString(_localTime)).append("\n");
+    sb.append("    _localDate: ").append(toIndentedString(_localDate)).append("\n");
     sb.append("    localDateTime: ").append(toIndentedString(localDateTime)).append("\n");
     sb.append("    calendar: ").append(toIndentedString(calendar)).append("\n");
     sb.append("    sqlDate: ").append(toIndentedString(sqlDate)).append("\n");

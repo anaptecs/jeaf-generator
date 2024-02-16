@@ -14,7 +14,6 @@
 package openapitools.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import java.util.Map;
 import java.util.HashMap;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -22,9 +21,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -158,7 +156,6 @@ public class PrimitiveArraysObject {
    * @return aBooleanArray
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
   @JsonIgnore
 
   public List<Boolean> getaBooleanArray() {
@@ -204,7 +201,6 @@ public class PrimitiveArraysObject {
    * @return bBooleanArray
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
   @JsonIgnore
 
   public List<Boolean> getbBooleanArray() {
@@ -250,7 +246,6 @@ public class PrimitiveArraysObject {
    * @return cBooleanArray
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
   @JsonIgnore
 
   public List<Boolean> getcBooleanArray() {
@@ -284,7 +279,6 @@ public class PrimitiveArraysObject {
    * @return aByteArray
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
   @JsonIgnore
 
   public byte[] getaByteArray() {
@@ -318,7 +312,6 @@ public class PrimitiveArraysObject {
    * @return bByteArray
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
   @JsonIgnore
 
   public byte[] getbByteArray() {
@@ -364,7 +357,6 @@ public class PrimitiveArraysObject {
    * @return aShortArray
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
   @JsonIgnore
 
   public List<Integer> getaShortArray() {
@@ -410,7 +402,6 @@ public class PrimitiveArraysObject {
    * @return bShortArray
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
   @JsonIgnore
 
   public List<Integer> getbShortArray() {
@@ -456,7 +447,6 @@ public class PrimitiveArraysObject {
    * @return aIntegerArray
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
   @JsonIgnore
 
   public List<Integer> getaIntegerArray() {
@@ -502,7 +492,6 @@ public class PrimitiveArraysObject {
    * @return bIntegerArray
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
   @JsonIgnore
 
   public List<Integer> getbIntegerArray() {
@@ -548,7 +537,6 @@ public class PrimitiveArraysObject {
    * @return cIntegerArray
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
   @JsonIgnore
 
   public List<Integer> getcIntegerArray() {
@@ -594,7 +582,6 @@ public class PrimitiveArraysObject {
    * @return aLongArray
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
   @JsonIgnore
 
   public List<Long> getaLongArray() {
@@ -640,7 +627,6 @@ public class PrimitiveArraysObject {
    * @return bLongArray
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
   @JsonIgnore
 
   public List<Long> getbLongArray() {
@@ -686,7 +672,6 @@ public class PrimitiveArraysObject {
    * @return aBigIntegerArray
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
   @JsonIgnore
 
   public List<Long> getaBigIntegerArray() {
@@ -732,7 +717,6 @@ public class PrimitiveArraysObject {
    * @return aCharacterArray
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
   @JsonIgnore
 
   public List<String> getaCharacterArray() {
@@ -778,7 +762,6 @@ public class PrimitiveArraysObject {
    * @return bCharacterArray
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
   @JsonIgnore
 
   public List<String> getbCharacterArray() {
@@ -824,7 +807,6 @@ public class PrimitiveArraysObject {
    * @return aFloatArray
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
   @JsonIgnore
 
   public List<Float> getaFloatArray() {
@@ -870,7 +852,6 @@ public class PrimitiveArraysObject {
    * @return bFloatArray
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
   @JsonIgnore
 
   public List<Float> getbFloatArray() {
@@ -916,7 +897,6 @@ public class PrimitiveArraysObject {
    * @return aDoubleArray
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
   @JsonIgnore
 
   public List<Double> getaDoubleArray() {
@@ -962,7 +942,6 @@ public class PrimitiveArraysObject {
    * @return bDoubleArray
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
   @JsonIgnore
 
   public List<Double> getbDoubleArray() {
@@ -1008,7 +987,6 @@ public class PrimitiveArraysObject {
    * @return aBigDecimalArray
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
   @JsonIgnore
 
   public List<Double> getaBigDecimalArray() {
@@ -1054,7 +1032,6 @@ public class PrimitiveArraysObject {
    * @return aStringArray
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
   @JsonIgnore
 
   public List<String> getaStringArray() {
@@ -1100,7 +1077,6 @@ public class PrimitiveArraysObject {
    * @return bStringArray
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
   @JsonIgnore
 
   public List<String> getbStringArray() {
@@ -1130,6 +1106,9 @@ public class PrimitiveArraysObject {
   }
 
   public PrimitiveArraysObject addCStringArrayItem(String cStringArrayItem) {
+    if (this.cStringArray == null) {
+      this.cStringArray = new ArrayList<>();
+    }
     this.cStringArray.add(cStringArrayItem);
     return this;
   }
@@ -1139,7 +1118,6 @@ public class PrimitiveArraysObject {
    * @return cStringArray
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_C_STRING_ARRAY)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 

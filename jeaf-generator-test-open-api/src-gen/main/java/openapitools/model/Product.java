@@ -14,7 +14,6 @@
 package openapitools.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import java.util.Map;
 import java.util.HashMap;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -22,10 +21,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.net.URI;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import openapitools.model.Reseller;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -39,7 +37,6 @@ import openapitools.JSON;
 /**
  * Data type represents a product definition Alternate Name: Produkt 
  */
-@ApiModel(description = "Data type represents a product definition Alternate Name: Produkt ")
 @JsonPropertyOrder({
   Product.JSON_PROPERTY_RESELLERS,
   Product.JSON_PROPERTY_NAME,
@@ -54,7 +51,7 @@ import openapitools.JSON;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Product {
   public static final String JSON_PROPERTY_RESELLERS = "resellers";
-  private List<Reseller> resellers = null;
+  private List<Reseller> resellers;
 
   public static final String JSON_PROPERTY_NAME = "name";
   private String name;
@@ -101,7 +98,6 @@ public class Product {
    * @return resellers
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
   @JsonProperty(JSON_PROPERTY_RESELLERS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -127,7 +123,6 @@ public class Product {
    * @return name
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_NAME)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -153,7 +148,6 @@ public class Product {
    * @return image
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Image describing the product. ")
   @JsonIgnore
 
   public byte[] getImage() {
@@ -187,7 +181,6 @@ public class Product {
    * @return link
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(example = "https://www.company.com/products/1345-345", required = true, value = "")
   @JsonProperty(JSON_PROPERTY_LINK)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -213,7 +206,6 @@ public class Product {
    * @return productID
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_PRODUCT_I_D)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -235,6 +227,9 @@ public class Product {
   }
 
   public Product addSupportedCurrenciesItem(String supportedCurrenciesItem) {
+    if (this.supportedCurrencies == null) {
+      this.supportedCurrencies = new ArrayList<>();
+    }
     this.supportedCurrencies.add(supportedCurrenciesItem);
     return this;
   }
@@ -244,7 +239,6 @@ public class Product {
    * @return supportedCurrencies
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "ISO 4217 currency code. ")
   @JsonProperty(JSON_PROPERTY_SUPPORTED_CURRENCIES)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -266,6 +260,9 @@ public class Product {
   }
 
   public Product addProductCodesItem(Integer productCodesItem) {
+    if (this.productCodes == null) {
+      this.productCodes = new ArrayList<>();
+    }
     this.productCodes.add(productCodesItem);
     return this;
   }
@@ -275,7 +272,6 @@ public class Product {
    * @return productCodes
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_PRODUCT_CODES)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -303,7 +299,6 @@ public class Product {
   **/
   @Deprecated
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_DESCRIPTION)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -329,7 +324,6 @@ public class Product {
    * @return uri
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_URI)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 

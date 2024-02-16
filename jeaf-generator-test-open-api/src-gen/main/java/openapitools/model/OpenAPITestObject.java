@@ -14,7 +14,6 @@
 package openapitools.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import java.util.Map;
 import java.util.HashMap;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -22,8 +21,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import openapitools.JSON;
 
@@ -88,7 +86,6 @@ public class OpenAPITestObject {
    * @return readOnlyAttribute
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_READ_ONLY_ATTRIBUTE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -114,7 +111,6 @@ public class OpenAPITestObject {
    * @return readWriteAttribute
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_READ_WRITE_ATTRIBUTE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -140,7 +136,6 @@ public class OpenAPITestObject {
    * @return writeOnlyAttribute
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_WRITE_ONLY_ATTRIBUTE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -166,7 +161,6 @@ public class OpenAPITestObject {
    * @return nullableAttribute
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_NULLABLE_ATTRIBUTE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -192,7 +186,6 @@ public class OpenAPITestObject {
    * @return notNullableAttribute
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_NOT_NULLABLE_ATTRIBUTE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -218,7 +211,6 @@ public class OpenAPITestObject {
    * @return readOnlyArray
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_READ_ONLY_ARRAY)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -244,7 +236,6 @@ public class OpenAPITestObject {
    * @return readWriteArray
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_READ_WRITE_ARRAY)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -270,7 +261,6 @@ public class OpenAPITestObject {
    * @return writeOnlyArray
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_WRITE_ONLY_ARRAY)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -296,7 +286,6 @@ public class OpenAPITestObject {
    * @return nullableArray
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_NULLABLE_ARRAY)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -322,7 +311,6 @@ public class OpenAPITestObject {
    * @return notNullableArray
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
   @JsonProperty(JSON_PROPERTY_NOT_NULLABLE_ARRAY)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
