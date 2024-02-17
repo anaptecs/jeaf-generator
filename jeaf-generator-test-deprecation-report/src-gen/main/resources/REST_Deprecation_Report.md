@@ -71,6 +71,7 @@
 | `DataTypeWithDeprecation` | |  |  |  |
 |   | `code` | Time to say goodbye ...<br><br>... blub, blub, blub<br> | just recently | Next version |
 | `DeprecatedDataType` | |  |  |  |
+| `DeprecatedType` | |  |  |  |
 | `DeprecatedType` | | This type will be replaced with .... |  |  |
 | `DiscountOffer` | |  |  |  |
 |   | `campaigns` |  |  |  |

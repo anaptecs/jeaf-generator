@@ -35,6 +35,8 @@ import com.anaptecs.jeaf.junit.openapi.base.serializers.DataTypeWithConstraintsD
 import com.anaptecs.jeaf.junit.openapi.base.serializers.DataTypeWithConstraintsSerializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.DataUnitDeserializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.DataUnitSerializer;
+import com.anaptecs.jeaf.junit.openapi.base.serializers.DeprecatedTypeDeserializer;
+import com.anaptecs.jeaf.junit.openapi.base.serializers.DeprecatedTypeSerializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.DoubleCodeDeserializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.DoubleCodeSerializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.DoubleCodeTypeDeserializer;
@@ -109,6 +111,8 @@ public class BaseModuleFactory implements ObjectMapperModuleFactory {
     lModule.addDeserializer(CurrencyCode.class, new CurrencyCodeDeserializer());
     lModule.addSerializer(DataTypeWithConstraints.class, new DataTypeWithConstraintsSerializer());
     lModule.addDeserializer(DataTypeWithConstraints.class, new DataTypeWithConstraintsDeserializer());
+    lModule.addSerializer(DeprecatedType.class, new DeprecatedTypeSerializer());
+    lModule.addDeserializer(DeprecatedType.class, new DeprecatedTypeDeserializer());
     lModule.addSerializer(DoubleCode.class, new DoubleCodeSerializer());
     lModule.addDeserializer(DoubleCode.class, new DoubleCodeDeserializer());
     lModule.addSerializer(DoubleCodeType.class, new DoubleCodeTypeSerializer());
@@ -183,6 +187,8 @@ public class BaseModuleFactory implements ObjectMapperModuleFactory {
     lModule.addDeserializer(CurrencyCode.class, new CurrencyCodeDeserializer());
     lModule.addSerializer(DataTypeWithConstraints.class, new DataTypeWithConstraintsSerializer());
     lModule.addDeserializer(DataTypeWithConstraints.class, new DataTypeWithConstraintsDeserializer());
+    lModule.addSerializer(DeprecatedType.class, new DeprecatedTypeSerializer());
+    lModule.addDeserializer(DeprecatedType.class, new DeprecatedTypeDeserializer());
     lModule.addSerializer(DoubleCode.class, new DoubleCodeSerializer());
     lModule.addDeserializer(DoubleCode.class, new DoubleCodeDeserializer());
     lModule.addSerializer(DoubleCodeType.class, new DoubleCodeTypeSerializer());

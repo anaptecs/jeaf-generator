@@ -133,6 +133,7 @@
 |   | `deprecatedParent` |  |  |  |
 |   | `deprecatedArray` |  |  |  |
 | `com.anaptecs.jeaf.junit.openapi.base.DeprecatedContext` | |  |  |  |
+| `com.anaptecs.jeaf.junit.openapi.base.DeprecatedType` | |  |  |  |
 | `com.anaptecs.jeaf.junit.openapi.base.DiscountOffer` | |  |  |  |
 |   | `campaigns` |  |  |  |
 | `com.anaptecs.jeaf.junit.openapi.base.POI` | |  |  |  |
