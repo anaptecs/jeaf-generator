@@ -518,6 +518,15 @@ paths:
           required: true
           schema:
             type: string
+        - name: deprecatedHeader
+          in: header
+          required: true
+          deprecated: true
+          schema:
+            type: integer
+            format: int32
+            minimum: 1234
+            nullable: false
       responses:
         '204':
           description: |

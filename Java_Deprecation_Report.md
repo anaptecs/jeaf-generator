@@ -141,6 +141,8 @@
 | `com.anaptecs.jeaf.junit.openapi.base.ParentClass` | |  |  |  |
 |   | `theBankAccount` |  |  |  |
 |   | `legacyBankAccounts` |  |  |  |
+| `com.anaptecs.jeaf.junit.openapi.base.SpecialContext` | |  |  |  |
+|   | `deprecatedHeader` |  |  |  |
 | `com.anaptecs.jeaf.junit.pojo.BChildPOJO` | |  |  |  |
 | `com.anaptecs.jeaf.junit.pojo.ChildPOJO` | | We do not like this class any more. | Big bang | Last X-Mas |
 | `com.anaptecs.jeaf.junit.pojo.ImmutableAssociationPOJO` | |  |  |  |

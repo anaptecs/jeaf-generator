@@ -25,6 +25,11 @@ public class SpecialContext extends Context {
   @NotNull
   private String specificHeader;
 
+  @Deprecated
+  @HeaderParam("deprecatedHeader")
+  @NotNull
+  private IntegerCode deprecatedHeader;
+
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
@@ -42,6 +47,7 @@ public class SpecialContext extends Context {
     super(pBuilder);
     // Read attribute values from builder.
     specificHeader = pBuilder.specificHeader;
+    deprecatedHeader = pBuilder.deprecatedHeader;
   }
 
   /**
@@ -82,10 +88,12 @@ public class SpecialContext extends Context {
    *
    * @param pSpecificHeader Value to which {@link #specificHeader} should be set.
    *
+   * @param pDeprecatedHeader Value to which {@link #deprecatedHeader} should be set.
+   *
    * @return {@link SpecialContext}
    */
   public static SpecialContext of( String pAccessToken, Locale pLanguage, long pResellerID, long pPathParam,
-      String pQueryParam, String pSpecificHeader ) {
+      String pQueryParam, String pSpecificHeader, IntegerCode pDeprecatedHeader ) {
     SpecialContext.Builder lBuilder = SpecialContext.builder();
     lBuilder.setAccessToken(pAccessToken);
     lBuilder.setLanguage(pLanguage);
@@ -93,6 +101,7 @@ public class SpecialContext extends Context {
     lBuilder.setPathParam(pPathParam);
     lBuilder.setQueryParam(pQueryParam);
     lBuilder.setSpecificHeader(pSpecificHeader);
+    lBuilder.setDeprecatedHeader(pDeprecatedHeader);
     return lBuilder.build();
   }
 
@@ -101,6 +110,9 @@ public class SpecialContext extends Context {
    */
   public static class Builder extends Context.Builder {
     private String specificHeader;
+
+    @Deprecated
+    private IntegerCode deprecatedHeader;
 
     /**
      * Use {@link SpecialContext#builder()} instead of private constructor to create new builder.
@@ -117,6 +129,7 @@ public class SpecialContext extends Context {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setSpecificHeader(pObject.specificHeader);
+        this.setDeprecatedHeader(pObject.deprecatedHeader);
       }
     }
 
@@ -211,6 +224,19 @@ public class SpecialContext extends Context {
     }
 
     /**
+     * Method sets attribute {@link #deprecatedHeader}.<br/>
+     *
+     * @param pDeprecatedHeader Value to which {@link #deprecatedHeader} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    @Deprecated
+    public Builder setDeprecatedHeader( IntegerCode pDeprecatedHeader ) {
+      // Assign value to attribute
+      deprecatedHeader = pDeprecatedHeader;
+      return this;
+    }
+
+    /**
      * Method creates a new instance of class SpecialContext. The object will be initialized with the values of the
      * builder.
      *
@@ -254,6 +280,27 @@ public class SpecialContext extends Context {
   }
 
   /**
+   * Method returns attribute {@link #deprecatedHeader}.<br/>
+   *
+   * @return {@link IntegerCode} Value to which {@link #deprecatedHeader} is set.
+   */
+  @Deprecated
+  public IntegerCode getDeprecatedHeader( ) {
+    return deprecatedHeader;
+  }
+
+  /**
+   * Method sets attribute {@link #deprecatedHeader}.<br/>
+   *
+   * @param pDeprecatedHeader Value to which {@link #deprecatedHeader} should be set.
+   */
+  @Deprecated
+  public void setDeprecatedHeader( IntegerCode pDeprecatedHeader ) {
+    // Assign value to attribute
+    deprecatedHeader = pDeprecatedHeader;
+  }
+
+  /**
    * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
@@ -265,6 +312,10 @@ public class SpecialContext extends Context {
     lBuilder.append(pIndent);
     lBuilder.append("specificHeader: ");
     lBuilder.append(specificHeader);
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("deprecatedHeader: ");
+    lBuilder.append(deprecatedHeader);
     lBuilder.append(System.lineSeparator());
     return lBuilder;
   }
