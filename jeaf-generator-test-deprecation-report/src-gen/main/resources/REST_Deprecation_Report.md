@@ -43,6 +43,7 @@
 | `/products/deprecated/params [POST]` | `REST Operation` | `ProductService.deprecatedParams(int)` |  |  |  |
 |   | `Header Param` | `int param1` |  |  |  |
 |   | `Response` | `String ` |  |  |  |
+| `/products/specific/{id} [PATCH]` | `REST Operation` | `ProductService.loadSpecificThings(SpecialContext)` |  |  |  |
 | `/with-deprecations [POST]` | `REST Operation` | `ServiceWithDeprecations.createSomething()` | Resources can no longer be explicitly be created. | 0.9 | 1.2.3 |
 | `/with-deprecations [POST]` | `REST Operation` | `ServiceWithDeprecations.createSomething(JustAType, String, String, BeanParamWithDeprecations)` |  |  |  |
 |   | `Header Param` | `String header-xxx` | Please do not use this header any longer. No matter what you pass here it will be ignored. |  |  |
@@ -70,6 +71,7 @@
 | `DataTypeWithDeprecation` | |  |  |  |
 |   | `code` | Time to say goodbye ...<br><br>... blub, blub, blub<br> | just recently | Next version |
 | `DeprecatedDataType` | |  |  |  |
+| `DeprecatedType` | |  |  |  |
 | `DeprecatedType` | | This type will be replaced with .... |  |  |
 | `DiscountOffer` | |  |  |  |
 |   | `campaigns` |  |  |  |

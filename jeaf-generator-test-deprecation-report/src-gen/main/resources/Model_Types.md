@@ -73,6 +73,7 @@ DataUnit |   | com.anaptecs.jeaf.junit.openapi.base |  |
 DateQueryParamsBean |   | com.anaptecs.jeaf.junit.openapi.service1 |  |
 DeprecatedContext |   | com.anaptecs.jeaf.junit.openapi.base |  |
 DeprecatedServiceObject |   | com.anaptecs.jeaf.junit.core |  |
+DeprecatedType |   | com.anaptecs.jeaf.junit.openapi.base |  |
 DirectedEdge |   | com.anaptecs.jeaf.junit.openapi.base | Just a simple comment. |
 DiscountOffer |   | com.anaptecs.jeaf.junit.openapi.base |  |
 DoubleCode |   | com.anaptecs.jeaf.junit.openapi.base |  |

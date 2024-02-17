@@ -133,6 +133,7 @@
 |   | `deprecatedParent` |  |  |  |
 |   | `deprecatedArray` |  |  |  |
 | `com.anaptecs.jeaf.junit.openapi.base.DeprecatedContext` | |  |  |  |
+| `com.anaptecs.jeaf.junit.openapi.base.DeprecatedType` | |  |  |  |
 | `com.anaptecs.jeaf.junit.openapi.base.DiscountOffer` | |  |  |  |
 |   | `campaigns` |  |  |  |
 | `com.anaptecs.jeaf.junit.openapi.base.POI` | |  |  |  |
@@ -141,6 +142,8 @@
 | `com.anaptecs.jeaf.junit.openapi.base.ParentClass` | |  |  |  |
 |   | `theBankAccount` |  |  |  |
 |   | `legacyBankAccounts` |  |  |  |
+| `com.anaptecs.jeaf.junit.openapi.base.SpecialContext` | |  |  |  |
+|   | `deprecatedHeader` |  |  |  |
 | `com.anaptecs.jeaf.junit.pojo.BChildPOJO` | |  |  |  |
 | `com.anaptecs.jeaf.junit.pojo.ChildPOJO` | | We do not like this class any more. | Big bang | Last X-Mas |
 | `com.anaptecs.jeaf.junit.pojo.ImmutableAssociationPOJO` | |  |  |  |

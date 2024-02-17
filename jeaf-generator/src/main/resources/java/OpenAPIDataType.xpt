@@ -21,7 +21,7 @@
           «IF ownerAttribute.isMultivalued() == false-»
           «IF this.compositeDataType == true -»
 «indentation»          type: string
-              «IF ownerAttribute.isDeprecated() -»
+              «IF ownerAttribute.type.isDeprecated() -»
 «indentation»          deprecated: true
               «ENDIF-»
           «ELSE-»
@@ -36,7 +36,7 @@
 «indentation»          default: «attribute.defaultValue.stringValue().replaceAll("\"", "'")»
           «ENDIF-»
           «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions(indentation + "    ") FOR attribute-»    
-              «IF attribute.isDeprecated() || ownerAttribute.isDeprecated() -»
+              «IF attribute.isDeprecated() || ownerAttribute.type.isDeprecated() -»
 «indentation»          deprecated: true
               «ENDIF-»
               «IF attribute.hasExample()-»
@@ -50,7 +50,7 @@
 «indentation»          items:
             «IF this.compositeDataType == true -»
 «indentation»            type: string
-                «IF ownerAttribute.isDeprecated() -»
+                «IF ownerAttribute.type.isDeprecated() -»
 «indentation»            deprecated: true
                 «ENDIF-»
             «ELSE-»
@@ -71,7 +71,7 @@
               «ENDIF-»
             «ENDIF-»
             «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions(indentation + "    ") FOR ownerAttribute-»
-              «IF attribute.isDeprecated() || ownerAttribute.isDeprecated() -»
+              «IF attribute.isDeprecated() || ownerAttribute.type.isDeprecated() -»
 «indentation»            deprecated: true
               «ENDIF-»
             «ENDIF-»

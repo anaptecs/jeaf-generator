@@ -472,6 +472,12 @@ public final class ProductServiceRESTProxyServiceProviderImpl
       if (pContext.getSpecificHeader() != null) {
         lRequestBuilder.setHeader("specificHeader", pContext.getSpecificHeader());
       }
+      if (pContext.getDeprecatedHeader() != null) {
+        lRequestBuilder.setHeader("deprecatedHeader", pContext.getDeprecatedHeader().getCode());
+      }
+      if (pContext.getDeprecatedType() != null) {
+        lRequestBuilder.setHeader("deprecatedType", pContext.getDeprecatedType().getCode());
+      }
     }
     // Handle cookie parameters
     if (pContext != null) {
