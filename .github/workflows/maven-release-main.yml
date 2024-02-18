@@ -24,6 +24,7 @@ jobs:
   build:
     uses: anaptecs/jeaf-project-parent/.github/workflows/maven-release-main-template.yml@main
     with:
+      runner: 'linux-runner-8-core'
       releaseVersion: ${{ inputs.releaseVersion }}
       tagName: ${{ inputs.tagName }}
     secrets: inherit
