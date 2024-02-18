@@ -19,3 +19,5 @@ on:
 jobs:
   build:
     uses: anaptecs/jeaf-project-parent/.github/workflows/maven-build-feature-template.yml@main
+    with:
+      runner: 'linux-runner-8-core'
