@@ -470,7 +470,7 @@ cached boolean isCompositeDataTypeConverterRequiredForObjectMapperFactory(JMM::O
 	else false;
 		
 cached boolean requiresCompositeDataTypeConverter(JMM::ModuleFactory factory):
-	factory.getOpenAPIDataTypes().select(e|e.generateInternalViewOfCompositeDataType() && e.hasCompositeDateTypeCustomSerialization()).size > 0 && isTargetRuntimeJEAF() == false;
+	factory.getOpenAPIDataTypes().select(e|e.generateInternalViewOfCompositeDataType() && e.hasCompositeDateTypeCustomSerialization() == false).size > 0 && isTargetRuntimeJEAF() == false;
 	
 cached List[uml::Property] getPropertiesForOpenAPI(uml::Class class):
     if class.hasTemplateClassProperties()
