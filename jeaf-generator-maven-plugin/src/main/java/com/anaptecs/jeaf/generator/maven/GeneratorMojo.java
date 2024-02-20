@@ -1557,7 +1557,7 @@ public class GeneratorMojo extends AbstractMojo {
     if (customRootTemplate.equals("CustomRoot::Root") == false) {
       lLog.info(" ");
       lLog.info("Custom Root Template:                             " + customRootTemplate);
-      if (customTemplateParameters.isEmpty() == false) {
+      if (customTemplateParameters != null &&  customTemplateParameters.isEmpty() == false) {
         lLog.info("Custom Template Parameters:                       ");
         for (Entry<String, String> lNext : customTemplateParameters.entrySet()) {
           lLog.info("                                                  \"" + lNext.getKey() + "\":\"" + lNext.getValue()
