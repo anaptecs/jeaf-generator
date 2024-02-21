@@ -12,8 +12,8 @@ import org.junit.jupiter.api.Test;
 import com.anaptecs.jeaf.json.api.JSON;
 import com.anaptecs.jeaf.junit.openapi.base.Booking;
 import com.anaptecs.jeaf.junit.openapi.base.BookingID;
-import com.anaptecs.jeaf.junit.openapi.base.ComplexBookingID;
 import com.anaptecs.jeaf.junit.openapi.base.WeirdBooking;
+import com.anaptecs.jeaf.junit.openapi.composite.ComplexBookingID;
 import com.anaptecs.jeaf.xfun.api.XFun;
 
 public class PublicViewCompositeDataTypeTest {
@@ -59,13 +59,13 @@ public class PublicViewCompositeDataTypeTest {
         "complexBooking:  null" + System.lineSeparator() +
         "complexBookings: 0 element(s)" + System.lineSeparator() +
         "booking: " + System.lineSeparator() +
-        "    com.anaptecs.jeaf.junit.openapi.base.ComplexBookingID" + System.lineSeparator() +
+        "    com.anaptecs.jeaf.junit.openapi.composite.ComplexBookingID" + System.lineSeparator() +
         "    bookingID: XYZ-1234567" + System.lineSeparator() +
         "additionalBookings: 2 element(s)" + System.lineSeparator() +
-        "    com.anaptecs.jeaf.junit.openapi.base.ComplexBookingID" + System.lineSeparator() +
+        "    com.anaptecs.jeaf.junit.openapi.composite.ComplexBookingID" + System.lineSeparator() +
         "    bookingID: ADD-123-1" + System.lineSeparator() +
         System.lineSeparator() +
-        "    com.anaptecs.jeaf.junit.openapi.base.ComplexBookingID" + System.lineSeparator() +
+        "    com.anaptecs.jeaf.junit.openapi.composite.ComplexBookingID" + System.lineSeparator() +
         "    bookingID: ADD-123-2" + System.lineSeparator() +
         System.lineSeparator() +
         "versionedObjectSoftLink:  null" + System.lineSeparator() +

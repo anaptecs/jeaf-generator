@@ -15,10 +15,10 @@ import com.anaptecs.jeaf.json.api.JSON;
 import com.anaptecs.jeaf.junit.openapi.base.Booking;
 import com.anaptecs.jeaf.junit.openapi.base.BookingCode;
 import com.anaptecs.jeaf.junit.openapi.base.BookingID;
-import com.anaptecs.jeaf.junit.openapi.base.ComplexBookingID;
 import com.anaptecs.jeaf.junit.openapi.base.ComplexBookingType;
 import com.anaptecs.jeaf.junit.openapi.base.InventoryType;
 import com.anaptecs.jeaf.junit.openapi.base.WeirdBooking;
+import com.anaptecs.jeaf.junit.openapi.composite.ComplexBookingID;
 import com.anaptecs.jeaf.xfun.api.XFun;
 
 public class InternalViewCompositeDataTypeTest {
@@ -115,7 +115,7 @@ public class InternalViewCompositeDataTypeTest {
         "complexBooking:  null" + System.lineSeparator() +
         "complexBookings: 0 element(s)" + System.lineSeparator() +
         "booking: " + System.lineSeparator() +
-        "    com.anaptecs.jeaf.junit.openapi.base.ComplexBookingID" + System.lineSeparator() +
+        "    com.anaptecs.jeaf.junit.openapi.composite.ComplexBookingID" + System.lineSeparator() +
         "    internalID: 123456789" + System.lineSeparator() +
         "    referenceID: REF-123" + System.lineSeparator() +
         "    bookingIDs: 2 element(s)" + System.lineSeparator() +
@@ -138,7 +138,7 @@ public class InternalViewCompositeDataTypeTest {
         "    complexBookingType: VERY_COMPLEX" + System.lineSeparator() +
         "    anotherID: null" + System.lineSeparator() +
         "additionalBookings: 2 element(s)" + System.lineSeparator() +
-        "    com.anaptecs.jeaf.junit.openapi.base.ComplexBookingID" + System.lineSeparator() +
+        "    com.anaptecs.jeaf.junit.openapi.composite.ComplexBookingID" + System.lineSeparator() +
         "    internalID: 9991234" + System.lineSeparator() +
         "    referenceID: REF-123-1" + System.lineSeparator() +
         "    bookingIDs: 2 element(s)" + System.lineSeparator() +
@@ -161,7 +161,7 @@ public class InternalViewCompositeDataTypeTest {
         "    complexBookingType: VERY_COMPLEX" + System.lineSeparator() +
         "    anotherID: null" + System.lineSeparator() +
         System.lineSeparator() +
-        "    com.anaptecs.jeaf.junit.openapi.base.ComplexBookingID" + System.lineSeparator() +
+        "    com.anaptecs.jeaf.junit.openapi.composite.ComplexBookingID" + System.lineSeparator() +
         "    internalID: 123456789" + System.lineSeparator() +
         "    referenceID: REF-123-2" + System.lineSeparator() +
         "    bookingIDs: 1 element(s)" + System.lineSeparator() +
