@@ -12,6 +12,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
+import com.anaptecs.spring.composite.ComplexBookingID;
+
 public class WeirdBooking {
   /**
    * Constant for the name of attribute "booking".

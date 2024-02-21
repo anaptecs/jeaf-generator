@@ -14,7 +14,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.anaptecs.jeaf.xfun.api.XFun;
 import com.anaptecs.spring.base.Booking;
 import com.anaptecs.spring.base.BookingID;
-import com.anaptecs.spring.base.ComplexBookingID;
+import com.anaptecs.spring.composite.ComplexBookingID;
 import com.anaptecs.spring.base.InventoryType;
 import com.anaptecs.spring.base.WeirdBooking;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -65,7 +65,7 @@ public class PublicViewCompositeDataTypeTest {
     XFun.getTrace().info(System.lineSeparator() + lWeirdBooking.toString());
     assertEquals("com.anaptecs.spring.base.WeirdBooking" + System.lineSeparator() +
         "booking: " + System.lineSeparator() +
-        "    com.anaptecs.spring.base.ComplexBookingID" + System.lineSeparator() +
+        "    com.anaptecs.spring.composite.ComplexBookingID" + System.lineSeparator() +
         "    bookingID: XYZ-1234567" + System.lineSeparator() +
         "additionalBookings: 0 element(s)" + System.lineSeparator(), lWeirdBooking.toString());
 

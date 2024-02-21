@@ -58,7 +58,7 @@ Color |   | com.anaptecs.jeaf.junit.core | There are so many colors. |
 Company |   | com.anaptecs.jeaf.junit.openapi.base |  |
 Company |   | com.anaptecs.jeaf.accounting |  |
 ComplexArrayServiceObject |   | com.anaptecs.jeaf.junit.core |  |
-ComplexBookingID |   | com.anaptecs.jeaf.junit.openapi.base |  |
+ComplexBookingID |   | com.anaptecs.jeaf.junit.openapi.composite |  |
 ComplexBookingType |   | com.anaptecs.jeaf.junit.openapi.base |  |
 ComplextTypeArrayPOJO |   | com.anaptecs.jeaf.junit.pojo |  |
 CompositeID |   | com.anaptecs.jeaf.junit.openapi.base |  |

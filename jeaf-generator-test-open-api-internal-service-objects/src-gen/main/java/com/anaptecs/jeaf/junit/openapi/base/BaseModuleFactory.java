@@ -25,8 +25,6 @@ import com.anaptecs.jeaf.junit.openapi.base.serializers.ByteCodeTypeDeserializer
 import com.anaptecs.jeaf.junit.openapi.base.serializers.ByteCodeTypeSerializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.ChannelCodeDeserializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.ChannelCodeSerializer;
-import com.anaptecs.jeaf.junit.openapi.base.serializers.ComplexBookingIDDeserializer;
-import com.anaptecs.jeaf.junit.openapi.base.serializers.ComplexBookingIDSerializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.ComplexBookingTypeDeserializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.ComplexBookingTypeSerializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.CurrencyCodeDeserializer;
@@ -105,8 +103,6 @@ public class BaseModuleFactory implements ObjectMapperModuleFactory {
     lModule.addDeserializer(ByteCodeType.class, new ByteCodeTypeDeserializer());
     lModule.addSerializer(ChannelCode.class, new ChannelCodeSerializer());
     lModule.addDeserializer(ChannelCode.class, new ChannelCodeDeserializer());
-    lModule.addSerializer(ComplexBookingID.class, new ComplexBookingIDSerializer());
-    lModule.addDeserializer(ComplexBookingID.class, new ComplexBookingIDDeserializer());
     lModule.addSerializer(CurrencyCode.class, new CurrencyCodeSerializer());
     lModule.addDeserializer(CurrencyCode.class, new CurrencyCodeDeserializer());
     lModule.addSerializer(DataTypeWithConstraints.class, new DataTypeWithConstraintsSerializer());
@@ -181,8 +177,6 @@ public class BaseModuleFactory implements ObjectMapperModuleFactory {
     lModule.addDeserializer(ByteCodeType.class, new ByteCodeTypeDeserializer());
     lModule.addSerializer(ChannelCode.class, new ChannelCodeSerializer());
     lModule.addDeserializer(ChannelCode.class, new ChannelCodeDeserializer());
-    lModule.addSerializer(ComplexBookingID.class, new ComplexBookingIDSerializer());
-    lModule.addDeserializer(ComplexBookingID.class, new ComplexBookingIDDeserializer());
     lModule.addSerializer(CurrencyCode.class, new CurrencyCodeSerializer());
     lModule.addDeserializer(CurrencyCode.class, new CurrencyCodeDeserializer());
     lModule.addSerializer(DataTypeWithConstraints.class, new DataTypeWithConstraintsSerializer());

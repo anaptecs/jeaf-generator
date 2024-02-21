@@ -18,7 +18,7 @@ import com.anaptecs.jeaf.xfun.api.XFun;
 import com.anaptecs.spring.base.Booking;
 import com.anaptecs.spring.base.BookingCode;
 import com.anaptecs.spring.base.BookingID;
-import com.anaptecs.spring.base.ComplexBookingID;
+import com.anaptecs.spring.composite.ComplexBookingID;
 import com.anaptecs.spring.base.ComplexBookingType;
 import com.anaptecs.spring.base.DoubleCode;
 import com.anaptecs.spring.base.InventoryType;
@@ -101,7 +101,7 @@ public class InternalViewCompositeDataTypeTest {
     XFun.getTrace().info("\n" + lWeirdBooking);
     assertEquals("com.anaptecs.spring.base.WeirdBooking" + System.lineSeparator() +
         "booking: " + System.lineSeparator() +
-        "    com.anaptecs.spring.base.ComplexBookingID" + System.lineSeparator() +
+        "    com.anaptecs.spring.composite.ComplexBookingID" + System.lineSeparator() +
         "    internalID: 123456789" + System.lineSeparator() +
         "    referenceID: REF-123" + System.lineSeparator() +
         "    bookingIDs: 2 element(s)" + System.lineSeparator() +
@@ -127,7 +127,7 @@ public class InternalViewCompositeDataTypeTest {
         "    anotherID: null" + System.lineSeparator() +
         "    strings:  null" + System.lineSeparator() +
         "additionalBookings: 2 element(s)" + System.lineSeparator() +
-        "    com.anaptecs.spring.base.ComplexBookingID" + System.lineSeparator() +
+        "    com.anaptecs.spring.composite.ComplexBookingID" + System.lineSeparator() +
         "    internalID: 9991234" + System.lineSeparator() +
         "    referenceID: REF-123-1" + System.lineSeparator() +
         "    bookingIDs: 2 element(s)" + System.lineSeparator() +
@@ -153,7 +153,7 @@ public class InternalViewCompositeDataTypeTest {
         "    anotherID: null" + System.lineSeparator() +
         "    strings: [Hello, World!]" + System.lineSeparator() +
         System.lineSeparator() +
-        "    com.anaptecs.spring.base.ComplexBookingID" + System.lineSeparator() +
+        "    com.anaptecs.spring.composite.ComplexBookingID" + System.lineSeparator() +
         "    internalID: 123456789" + System.lineSeparator() +
         "    referenceID: REF-123-2" + System.lineSeparator() +
         "    bookingIDs: 1 element(s)" + System.lineSeparator() +

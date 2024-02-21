@@ -16,7 +16,6 @@ import com.anaptecs.spring.base.ByteCodeType;
 import com.anaptecs.spring.base.ChannelCode;
 import com.anaptecs.spring.base.CharacterCode;
 import com.anaptecs.spring.base.CharacterCodeType;
-import com.anaptecs.spring.base.ComplexBookingID;
 import com.anaptecs.spring.base.ComplexBookingType;
 import com.anaptecs.spring.base.CurrencyCode;
 import com.anaptecs.spring.base.DataUnit;
@@ -111,8 +110,6 @@ public class BaseModuleFactory {
     // Add serializers and deserializers for composite data types
     lModule.addSerializer(BookingID.class, new BookingIDSerializer(pCompositeTypeConverter));
     lModule.addDeserializer(BookingID.class, new BookingIDDeserializer(pCompositeTypeConverter));
-    lModule.addSerializer(ComplexBookingID.class, new ComplexBookingIDSerializer(pCompositeTypeConverter));
-    lModule.addDeserializer(ComplexBookingID.class, new ComplexBookingIDDeserializer(pCompositeTypeConverter));
     // Return created module.
     return lModule;
   }
