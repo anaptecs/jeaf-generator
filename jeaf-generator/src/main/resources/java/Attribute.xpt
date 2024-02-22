@@ -445,19 +445,7 @@
 			com.anaptecs.jeaf.xfun.api.checks.Check.checkInvalidParameterNull(«asParameter()», "«asParameter()»");
 			«ENDIF»
 	
-			«IF opposite != null && opposite.isNavigable() == true»
-				// Release already referenced object before setting a new association.
-				if(«asInstanceVar()» != null) {
-				«IF opposite.isMultivalued() == true»
-					«asInstanceVar()».removeFrom«opposite.name.toFirstUpper()»( («opposite.type.fqn()») this);
-				«ELSE»
-					«asInstanceVar()».«opposite.asUnset()»();
-				«ENDIF»
-				}
-			«ENDIF»
-	
 			«asInstanceVar()» = «asParameter()»;
-		    «EXPAND GenerateInitOpposite»
 		}
     «ENDIF»
 «ENDDEFINE»
@@ -589,18 +577,8 @@
 	        com.anaptecs.jeaf.xfun.api.checks.Check.checkInvalidParameterNull(«asParameter()», "«asParameter()»");
 	        «ENDIF»
 	        
-		    «IF opposite != null && opposite.isNavigable() == true»
-		        «IF opposite.isMultivalued() == false»
-		            // Since this is not a many-to-many association the association to which the passed object belongs, has to 
-		            // be released.
-		            «asParameter()».«opposite.asUnset()»();
-		        «ENDIF»
-		    «ENDIF»
-		    
 			// Add passed object to collection of associated «this.type.name» objects.
 			«asInstanceVar()».add(«asParameter()»);
-			
-	        «EXPAND GenerateInitOpposite»
 		}
     «ENDIF»
 «ENDDEFINE»

@@ -10,6 +10,7 @@
 «EXTENSION functions::ServiceObject»
 «EXTENSION functions::DomainObject»
 «EXTENSION functions::PersistentObject»
+«EXTENSION functions::Enumeration»
 «EXTENSION functions::JEAFEnumeration»
 «EXTENSION functions::Element»
 «EXTENSION functions::Operation»
@@ -94,8 +95,8 @@
 |---------------|-----------|---------------|:------------------:|:-----------------------:|
 «FOREACH deprecations.select(e|e.isJEAFEnumeration()).select(e|e.hasDeprecation()).sortBy(e|e.fqn()) AS element-»
 | `«element.fqn()»` | | «element.getDeprecationDescriptionForMarkup()» | «element.getDeprecatedSince()» | «element.getDeprecationRemoval()» |
-    «IF element.asJEAFEnumeration().hasDeprecatedLiterals()-»
-        «FOREACH element.asJEAFEnumeration().getDeprecatedLiterals() AS literal-»
+    «IF element.asEnumeration().hasDeprecatedLiterals()-»
+        «FOREACH element.asEnumeration().getDeprecatedLiterals() AS literal-»
 |   | `«literal.name»` | «literal.getDeprecationDescriptionForMarkup()» | «literal.getDeprecatedSince()» | «literal.getDeprecationRemoval()» |
         «ENDFOREACH-»
     «ENDIF-»
