@@ -28,8 +28,8 @@ cached boolean generateOfOperationForClass(uml::Class class):
     
 cached List[uml::Property] getAllAttributesForOfOperation(uml::Class class):
     if class.useOnlyRequiredPropertiesForOfMethod()
-    then class.getAllAttributesFromHierarchy().select(e|e.isPropertySuppressed() == false && e.isStatic == false && e.isRequiredProperty())
-    else class.getAllAttributesFromHierarchy().select(e|e.isPropertySuppressed() == false && e.isStatic == false);
+    then class.getAllAttributesFromHierarchy().select(e|e.isPropertySuppressed() == false && e.belongsToTransientBidirectionalBackReference() == false && e.isStatic == false && e.isRequiredProperty())
+    else class.getAllAttributesFromHierarchy().select(e|e.isPropertySuppressed() == false && e.belongsToTransientBidirectionalBackReference() == false && e.isStatic == false);
     //class.getAllAttributes().select(e|e.isPropertySuppressed() == false);
     
 private boolean useOnlyRequiredPropertiesForOfMethod(uml::Class class):
