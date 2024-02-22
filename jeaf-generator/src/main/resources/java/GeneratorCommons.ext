@@ -415,6 +415,9 @@ boolean hasExample(uml::NamedElement element):
 cached boolean isTransientBidirectionalBackReference(uml::Property property) :
   property.opposite != null && property.opposite.isNavigable() && property.opposite.isTransient();
   
+cached boolean belongsToTransientBidirectionalBackReference(uml::Property property) :
+  property.opposite != null && property.isNavigable() && property.isTransient();
+  
 cached boolean isBooleanType(uml::Type type) :
   type.fqn() == "java.lang.Boolean" || type.fqn() == "Boolean" ||type.fqn() == "boolean"; 
 
