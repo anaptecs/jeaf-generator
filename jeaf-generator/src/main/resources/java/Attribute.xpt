@@ -45,7 +45,7 @@
 	«EXPAND Validation::ValidationAnnotation»
     «IF generateValidationAnnotationsForAttributesFromMultiplicity() && isStatic == false && isTransient() == false && isMultivalued() == true && isStereotypeApplied("Size") == false && lower > 0»@«getEnterpriseJavaPackage()».validation.constraints.Size(min = «lower»)«ENDIF»
     «IF generateValidationAnnotationsForAttributesFromMultiplicity() && isStatic == false && isTransient() == false && isMultivalued() == false && type.isPrimitiveType() == false && this.requiresNotNullAnnotation() && lower > 0»@«getEnterpriseJavaPackage()».validation.constraints.NotNull«ENDIF»
-	«visibility» «IF isStatic» static «ENDIF» «IF isReadOnly()»final «ENDIF» «IF isTransient()»transient «ENDIF» «this.fqn()»«IF isMultivalued()»[]«ENDIF» «name»«IF this.isRealInitValue() && this.isMultivalued()== false && this.isStatic == true» = «this.initValue()»«ENDIF»;
+	«visibility» «IF isStatic» static «ENDIF» «IF isReadOnly() && belongsToTransientBidirectionalBackReference() == false»final «ENDIF» «IF isTransient()»transient «ENDIF» «this.fqn()»«IF isMultivalued()»[]«ENDIF» «name»«IF this.isRealInitValue() && this.isMultivalued()== false && this.isStatic == true» = «this.initValue()»«ENDIF»;
 «ENDDEFINE»
 
 // processing the properties
@@ -97,7 +97,7 @@
 			«visibility» «IF isReadOnly()»final «ENDIF» «IF isTransient()»transient «ENDIF» «this.fqn()» «asInstanceVar()»;
 		«ELSE»
 			«IF generateValidationAnnotationsForAssociationsFromMultiplicity() && isStatic == false && isTransient() == false && this.requiresNotNullAnnotation() && lower > 0»@«getEnterpriseJavaPackage()».validation.constraints.NotNull«ENDIF»
-			«visibility» «IF isReadOnly()»final «ENDIF» «IF isTransient()»transient «ENDIF» «type.fqn()» «asInstanceVar()»;
+			«visibility» «IF isReadOnly() && belongsToTransientBidirectionalBackReference() == false»final «ENDIF» «IF isTransient()»transient «ENDIF» «type.fqn()» «asInstanceVar()»;
 		«ENDIF»
 		
 		
