@@ -31,12 +31,12 @@ If applicable, add screenshots to help explain your problem.
 
 <br>
 
-##Runtime Environment
- - OS: [e.g. iOS]
+## Runtime Environment
+- OS: [e.g. iOS]
 - Maven Verison:
 - JDK Version:
 - UML Modeling Tool (incl. version)
- - Version [e.g. 1.15.0]:
+- Version [e.g. 1.15.0]:
 
 <br>
 
