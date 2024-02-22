@@ -435,6 +435,30 @@
           «asInstanceVar()» = null;
         «ENDIF»
     }
+    «REM»Even though class is readonly it is still required to set transient back reference«ENDREM»
+    «ELSEIF belongsToTransientBidirectionalBackReference()»
+	    «EXPAND functions::Javadoc::JavadocForPropertySetter»
+	    «EXPAND java::Helper::GenerateDeprecationAnnotation-»
+		void «asSetter()» («type.fqn()» «asParameter()») {
+			«IF generateNullChecksForToOneAssociationsOfServiceObjects()»
+			// «asParameter()» must not be null. To unset an association the unset method has to be called.
+			com.anaptecs.jeaf.xfun.api.checks.Check.checkInvalidParameterNull(«asParameter()», "«asParameter()»");
+			«ENDIF»
+	
+			«IF opposite != null && opposite.isNavigable() == true»
+				// Release already referenced object before setting a new association.
+				if(«asInstanceVar()» != null) {
+				«IF opposite.isMultivalued() == true»
+					«asInstanceVar()».removeFrom«opposite.name.toFirstUpper()»( («opposite.type.fqn()») this);
+				«ELSE»
+					«asInstanceVar()».«opposite.asUnset()»();
+				«ENDIF»
+				}
+			«ENDIF»
+	
+			«asInstanceVar()» = «asParameter()»;
+		    «EXPAND GenerateInitOpposite»
+		}
     «ENDIF»
 «ENDDEFINE»
 
@@ -555,8 +579,30 @@
       «asInstanceVar()».clear();
       «ENDIF»
     }
+    «REM»Even though class is readonly it is still required to set transient back reference«ENDREM»
+    «ELSEIF belongsToTransientBidirectionalBackReference()»
+	    «EXPAND functions::Javadoc::JavadocForPropertyAdd»
+	    «EXPAND java::Helper::GenerateDeprecationAnnotation-»
+		void addTo«name.toFirstUpper()» («this.type.fqn()» «asParameter()») {
+	        «IF isTargetRuntimeJEAF()»
+	        // Check parameter "«asParameter()»" for invalid value null.
+	        com.anaptecs.jeaf.xfun.api.checks.Check.checkInvalidParameterNull(«asParameter()», "«asParameter()»");
+	        «ENDIF»
+	        
+		    «IF opposite != null && opposite.isNavigable() == true»
+		        «IF opposite.isMultivalued() == false»
+		            // Since this is not a many-to-many association the association to which the passed object belongs, has to 
+		            // be released.
+		            «asParameter()».«opposite.asUnset()»();
+		        «ENDIF»
+		    «ENDIF»
+		    
+			// Add passed object to collection of associated «this.type.name» objects.
+			«asInstanceVar()».add(«asParameter()»);
+			
+	        «EXPAND GenerateInitOpposite»
+		}
     «ENDIF»
-    
 «ENDDEFINE»
 
 // Template generates the code that will be generated if the association is bidirectional.
