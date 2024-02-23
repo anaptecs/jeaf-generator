@@ -144,6 +144,8 @@
 |   | `legacyBankAccounts` |  |  |  |
 | `com.anaptecs.jeaf.junit.openapi.base.SpecialContext` | |  |  |  |
 |   | `deprecatedHeader` |  |  |  |
+| `com.anaptecs.jeaf.junit.openapi.base.TheReadOnlyServiceObject` | |  |  |  |
+|   | `inventoryType` | Let's reproduce #65 | not too long | 99.9 |
 | `com.anaptecs.jeaf.junit.pojo.BChildPOJO` | |  |  |  |
 | `com.anaptecs.jeaf.junit.pojo.ChildPOJO` | | We do not like this class any more. | Big bang | Last X-Mas |
 | `com.anaptecs.jeaf.junit.pojo.ImmutableAssociationPOJO` | |  |  |  |

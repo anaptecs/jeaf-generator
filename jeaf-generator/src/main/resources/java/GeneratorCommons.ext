@@ -362,7 +362,7 @@ cached boolean isPOJO(uml::Element element):
 cached boolean isServiceObject(uml::Element element):
     element.isStereotypeApplied("ServiceObject");
     
-boolean isJEAFEnumeration(uml::Property property) : 
+boolean isJEAFEnumerationProperty(uml::Property property) : 
     isStereotypeApplied(property.type, "JEAFEnumeration");   
     
 boolean isParamJEAFEnumeration(uml::Parameter parameter) : 

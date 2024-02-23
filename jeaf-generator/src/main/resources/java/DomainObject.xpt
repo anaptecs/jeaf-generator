@@ -205,7 +205,7 @@
 				«attr.name» = new «attr.getCollectionImplType()»<«attr.type.fqn()»>();
 			«ELSE»
 				«IF attr.isRealInitValue() && attr.isStatic == false »
-					«attr.name» = «IF attr.isJEAFEnumeration()»«attr.type.name».«ENDIF»«attr.initValue()»;
+					«attr.name» = «IF attr.isJEAFEnumerationProperty()»«attr.type.name».«ENDIF»«attr.initValue()»;
 				«ENDIF»
 			«ENDIF»
 		«ENDIF»

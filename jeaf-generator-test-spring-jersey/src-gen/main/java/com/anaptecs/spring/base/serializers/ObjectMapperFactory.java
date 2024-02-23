@@ -47,11 +47,11 @@ public class ObjectMapperFactory {
     lBuilder.addModule(CompositeModuleFactory.createDataTypeSerializerModule());
     lBuilder.addModule(CompositeModuleFactory.createCompositeDataTypeSerializerModule(pCompositeTypeConverter));
     lBuilder.addModule(CompositeModuleFactory.createEnumSerializerModule());
-    lBuilder.addModule(TechBaseModuleFactory.createDataTypeSerializerModule());
-    lBuilder.addModule(TechBaseModuleFactory.createEnumSerializerModule());
     lBuilder.addModule(BaseModuleFactory.createDataTypeSerializerModule());
     lBuilder.addModule(BaseModuleFactory.createCompositeDataTypeSerializerModule(pCompositeTypeConverter));
     lBuilder.addModule(BaseModuleFactory.createEnumSerializerModule());
+    lBuilder.addModule(TechBaseModuleFactory.createDataTypeSerializerModule());
+    lBuilder.addModule(TechBaseModuleFactory.createEnumSerializerModule());
     // Create object mapper and return it
     JsonMapper lObjectMapper = lBuilder.build();
     lObjectMapper.setDefaultPropertyInclusion(Include.NON_EMPTY);
