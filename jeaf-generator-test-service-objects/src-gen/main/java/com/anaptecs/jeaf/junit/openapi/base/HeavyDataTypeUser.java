@@ -109,19 +109,6 @@ public class HeavyDataTypeUser implements ServiceObject {
   }
 
   /**
-   * Method creates a new builder and initializes it with the data from the passed object.
-   *
-   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-   * @return {@link Builder} New builder that can be used to create new HeavyDataTypeUser objects. The method never
-   * returns null.
-   * @deprecated Please use {@link #toBuilder()} instead.
-   */
-  @Deprecated
-  public static Builder builder( HeavyDataTypeUser pObject ) {
-    return new Builder(pObject);
-  }
-
-  /**
    * Convenience method to create new instance of class HeavyDataTypeUser.
    *
    *
@@ -141,7 +128,7 @@ public class HeavyDataTypeUser implements ServiceObject {
    *
    * @param pBigDecimalCode Value to which {@link #bigDecimalCode} should be set.
    *
-   * @return {@link HeavyDataTypeUser}
+   * @return {@link com.anaptecs.jeaf.junit.openapi.base.HeavyDataTypeUser}
    */
   public static HeavyDataTypeUser of( BooleanCode pBooleanCode, ByteCode pByteCode, ShortCode pShortCode,
       IntegerCode pIntegerCode, FloatCode pFloatCode, DoubleCode pDoubleCode, BigIntegerCode pBigInegerCode,

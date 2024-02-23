@@ -62,19 +62,6 @@ public class BChildPOJO extends BParentPOJO {
   }
 
   /**
-   * Method creates a new builder and initializes it with the data from the passed object.
-   *
-   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-   * @return {@link Builder} New builder that can be used to create new BChildPOJO objects. The method never returns
-   * null.
-   * @deprecated Please use {@link #toBuilder()} instead.
-   */
-  @Deprecated
-  public static Builder builder( BChildPOJO pObject ) {
-    return new Builder(pObject);
-  }
-
-  /**
    * Convenience method to create new instance of class BChildPOJO.
    *
    *
@@ -84,7 +71,7 @@ public class BChildPOJO extends BParentPOJO {
    *
    * @param pChildAttribute Value to which {@link #childAttribute} should be set.
    *
-   * @return {@link BChildPOJO}
+   * @return {@link com.anaptecs.jeaf.junit.pojo.BChildPOJO}
    */
   public static BChildPOJO of( String pParentAttribute, byte pWeirdAttribute, Integer pChildAttribute ) {
     BChildPOJO.Builder lBuilder = BChildPOJO.builder();

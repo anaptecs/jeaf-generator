@@ -66,18 +66,6 @@ public class EnumTest implements ServiceObject {
   }
 
   /**
-   * Method creates a new builder and initializes it with the data from the passed object.
-   *
-   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-   * @return {@link Builder} New builder that can be used to create new EnumTest objects. The method never returns null.
-   * @deprecated Please use {@link #toBuilder()} instead.
-   */
-  @Deprecated
-  public static Builder builder( EnumTest pObject ) {
-    return new Builder(pObject);
-  }
-
-  /**
    * Convenience method to create new instance of class EnumTest.
    *
    *
@@ -85,7 +73,7 @@ public class EnumTest implements ServiceObject {
    *
    * @param pEnumRef Value to which {@link #enumRef} should be set.
    *
-   * @return {@link EnumTest}
+   * @return {@link com.anaptecs.jeaf.junit.openapi.base.EnumTest}
    */
   public static EnumTest of( ExtensibleEnum pProperty, ExtensibleEnum pEnumRef ) {
     EnumTest.Builder lBuilder = EnumTest.builder();

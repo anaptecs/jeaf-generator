@@ -53,23 +53,10 @@ public class ModelWrapperArrayServiceObject implements ServiceObject {
   }
 
   /**
-   * Method creates a new builder and initializes it with the data from the passed object.
-   *
-   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-   * @return {@link Builder} New builder that can be used to create new ModelWrapperArrayServiceObject objects. The
-   * method never returns null.
-   * @deprecated Please use {@link #toBuilder()} instead.
-   */
-  @Deprecated
-  public static Builder builder( ModelWrapperArrayServiceObject pObject ) {
-    return new Builder(pObject);
-  }
-
-  /**
    * Convenience method to create new instance of class ModelWrapperArrayServiceObject.
    *
    *
-   * @return {@link ModelWrapperArrayServiceObject}
+   * @return {@link com.anaptecs.jeaf.junit.core.ModelWrapperArrayServiceObject}
    */
   public static ModelWrapperArrayServiceObject of( ) {
     ModelWrapperArrayServiceObject.Builder lBuilder = ModelWrapperArrayServiceObject.builder();

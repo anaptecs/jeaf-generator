@@ -53,23 +53,10 @@ public class PartnerContainer {
   }
 
   /**
-   * Method creates a new builder and initializes it with the data from the passed object.
-   *
-   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-   * @return {@link Builder} New builder that can be used to create new PartnerContainer objects. The method never
-   * returns null.
-   * @deprecated Please use {@link #toBuilder()} instead.
-   */
-  @Deprecated
-  public static Builder builder( PartnerContainer pObject ) {
-    return new Builder(pObject);
-  }
-
-  /**
    * Convenience method to create new instance of class PartnerContainer.
    *
    *
-   * @return {@link PartnerContainer}
+   * @return {@link com.anaptecs.spring.base.PartnerContainer}
    */
   public static PartnerContainer of( ) {
     PartnerContainer.Builder lBuilder = PartnerContainer.builder();

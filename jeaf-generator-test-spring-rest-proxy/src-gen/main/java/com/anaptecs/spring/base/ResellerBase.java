@@ -90,12 +90,7 @@ public abstract class ResellerBase {
     }
     // Bidirectional back reference is set up correctly as a builder is used.
     channelsBackReferenceInitialized = true;
-    if (pBuilder.products != null) {
-      products = pBuilder.products;
-    }
-    else {
-      products = new HashSet<Product>();
-    }
+    products = new HashSet<Product>();
     name = pBuilder.name;
     language = pBuilder.language;
   }
@@ -106,8 +101,6 @@ public abstract class ResellerBase {
    */
   public static abstract class BuilderBase {
     private List<Channel> channels;
-
-    private Set<Product> products;
 
     @NotBlank
     @Size(min = 0, max = 32)
@@ -128,7 +121,6 @@ public abstract class ResellerBase {
       if (pObject != null) {
         // Read attribute values from passed object.
         channels = pObject.channels;
-        products = pObject.products;
         name = pObject.name;
         language = pObject.language;
       }
@@ -163,39 +155,6 @@ public abstract class ResellerBase {
           channels = new ArrayList<Channel>();
         }
         channels.addAll(Arrays.asList(pChannels));
-      }
-      return this;
-    }
-
-    /**
-     * Method sets association {@link #products}.<br/>
-     *
-     * @param pProducts Collection to which {@link #products} should be set.
-     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
-     */
-    public BuilderBase setProducts( Set<Product> pProducts ) {
-      // To ensure immutability we have to copy the content of the passed collection.
-      if (pProducts != null) {
-        products = new HashSet<Product>(pProducts);
-      }
-      else {
-        products = null;
-      }
-      return this;
-    }
-
-    /**
-     * Method adds the passed objects to association {@link #products}.<br/>
-     *
-     * @param pProducts Array of objects that should be added to {@link #products}. The parameter may be null.
-     * @return {@link BuilderBase} Instance of this builder to support chaining. Method never returns null.
-     */
-    public BuilderBase addToProducts( Product... pProducts ) {
-      if (pProducts != null) {
-        if (products == null) {
-          products = new HashSet<Product>();
-        }
-        products.addAll(Arrays.asList(pProducts));
       }
       return this;
     }
@@ -425,18 +384,15 @@ public abstract class ResellerBase {
    *
    * @param pChannels Value to which {@link #channels} should be set.
    *
-   * @param pProducts Value to which {@link #products} should be set.
-   *
    * @param pName Value to which {@link #name} should be set.
    *
    * @param pLanguage Value to which {@link #language} should be set.
    *
    * @return {@link Reseller}
    */
-  public static Reseller of( List<Channel> pChannels, Set<Product> pProducts, String pName, Locale pLanguage ) {
+  public static Reseller of( List<Channel> pChannels, String pName, Locale pLanguage ) {
     Reseller.Builder lBuilder = Reseller.builder();
     lBuilder.setChannels(pChannels);
-    lBuilder.setProducts(pProducts);
     lBuilder.setName(pName);
     lBuilder.setLanguage(pLanguage);
     return lBuilder.build();

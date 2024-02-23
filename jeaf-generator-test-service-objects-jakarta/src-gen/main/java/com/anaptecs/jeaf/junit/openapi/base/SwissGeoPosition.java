@@ -42,19 +42,6 @@ public class SwissGeoPosition extends GeoPosition {
   }
 
   /**
-   * Method creates a new builder and initializes it with the data from the passed object.
-   *
-   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-   * @return {@link Builder} New builder that can be used to create new SwissGeoPosition objects. The method never
-   * returns null.
-   * @deprecated Please use {@link #toBuilder()} instead.
-   */
-  @Deprecated
-  public static Builder builder( SwissGeoPosition pObject ) {
-    return new Builder(pObject);
-  }
-
-  /**
    * Convenience method to create new instance of class SwissGeoPosition.
    *
    *
@@ -64,7 +51,7 @@ public class SwissGeoPosition extends GeoPosition {
    *
    * @param pLatitude Value to which {@link #latitude} should be set.
    *
-   * @return {@link SwissGeoPosition}
+   * @return {@link com.anaptecs.jeaf.junit.openapi.base.SwissGeoPosition}
    */
   public static SwissGeoPosition of( String pName, int pLongitude, int pLatitude ) {
     SwissGeoPosition.Builder lBuilder = SwissGeoPosition.builder();

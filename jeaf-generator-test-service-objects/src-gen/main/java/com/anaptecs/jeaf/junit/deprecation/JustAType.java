@@ -66,19 +66,6 @@ public class JustAType implements ServiceObject {
   }
 
   /**
-   * Method creates a new builder and initializes it with the data from the passed object.
-   *
-   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-   * @return {@link Builder} New builder that can be used to create new JustAType objects. The method never returns
-   * null.
-   * @deprecated Please use {@link #toBuilder()} instead.
-   */
-  @Deprecated
-  public static Builder builder( JustAType pObject ) {
-    return new Builder(pObject);
-  }
-
-  /**
    * Convenience method to create new instance of class JustAType.
    *
    *
@@ -86,7 +73,7 @@ public class JustAType implements ServiceObject {
    *
    * @param pLegacy Value to which {@link #legacy} should be set.
    *
-   * @return {@link JustAType}
+   * @return {@link com.anaptecs.jeaf.junit.deprecation.JustAType}
    */
   public static JustAType of( int pAttribute, double pLegacy ) {
     JustAType.Builder lBuilder = JustAType.builder();

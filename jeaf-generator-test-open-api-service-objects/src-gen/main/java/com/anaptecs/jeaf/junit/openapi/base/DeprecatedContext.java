@@ -78,19 +78,6 @@ public class DeprecatedContext implements ServiceObject {
   }
 
   /**
-   * Method creates a new builder and initializes it with the data from the passed object.
-   *
-   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-   * @return {@link Builder} New builder that can be used to create new DeprecatedContext objects. The method never
-   * returns null.
-   * @deprecated Please use {@link #toBuilder()} instead.
-   */
-  @Deprecated
-  public static Builder builder( DeprecatedContext pObject ) {
-    return new Builder(pObject);
-  }
-
-  /**
    * Convenience method to create new instance of class DeprecatedContext.
    *
    *
@@ -102,7 +89,7 @@ public class DeprecatedContext implements ServiceObject {
    *
    * @param pQueryParam Value to which {@link #queryParam} should be set.
    *
-   * @return {@link DeprecatedContext}
+   * @return {@link com.anaptecs.jeaf.junit.openapi.base.DeprecatedContext}
    */
   public static DeprecatedContext of( String pAccessToken, Locale pLanguage, long pResellerID, String pQueryParam ) {
     DeprecatedContext.Builder lBuilder = DeprecatedContext.builder();

@@ -68,19 +68,6 @@ public class SpecialContext extends Context {
   }
 
   /**
-   * Method creates a new builder and initializes it with the data from the passed object.
-   *
-   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-   * @return {@link Builder} New builder that can be used to create new SpecialContext objects. The method never returns
-   * null.
-   * @deprecated Please use {@link #toBuilder()} instead.
-   */
-  @Deprecated
-  public static Builder builder( SpecialContext pObject ) {
-    return new Builder(pObject);
-  }
-
-  /**
    * Method creates a new builder and initializes it with the passed attributes.
    */
   public static Builder builder( String pAccessToken, Locale pLanguage, long pResellerID, long pPathParam,
@@ -117,7 +104,7 @@ public class SpecialContext extends Context {
    *
    * @param pDeprecatedType Value to which {@link #deprecatedType} should be set.
    *
-   * @return {@link SpecialContext}
+   * @return {@link com.anaptecs.jeaf.junit.openapi.base.SpecialContext}
    */
   public static SpecialContext of( String pAccessToken, Locale pLanguage, long pResellerID, long pPathParam,
       String pQueryParam, String pSpecificHeader, IntegerCode pDeprecatedHeader, DeprecatedType pDeprecatedType ) {

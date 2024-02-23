@@ -5,7 +5,6 @@
  */
 package com.anaptecs.jeaf.junit.pojo;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
@@ -75,17 +74,10 @@ public abstract class BidirectionalABase {
     // Ensure that builder is not null.
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
-    transientB = pBuilder.transientB;
-    transientParent = pBuilder.transientParent;
     child = pBuilder.child;
     // Bidirectional back reference is set up correctly as a builder is used.
     childBackReferenceInitialized = true;
-    if (pBuilder.transientBs != null) {
-      transientBs = pBuilder.transientBs;
-    }
-    else {
-      transientBs = new HashSet<BidirectionalB>();
-    }
+    transientBs = new HashSet<BidirectionalB>();
   }
 
   /**
@@ -93,13 +85,7 @@ public abstract class BidirectionalABase {
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static abstract class BuilderBase {
-    private BidirectionalB transientB;
-
-    private BidirectionalA transientParent;
-
     private BidirectionalA child;
-
-    private Set<BidirectionalB> transientBs;
 
     /**
      * Use {@link BidirectionalA.builder()} instead of protected constructor to create new builder.
@@ -113,33 +99,8 @@ public abstract class BidirectionalABase {
     protected BuilderBase( BidirectionalABase pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
-        transientB = pObject.transientB;
-        transientParent = pObject.transientParent;
         child = pObject.child;
-        transientBs = pObject.transientBs;
       }
-    }
-
-    /**
-     * Method sets association {@link #transientB}.<br/>
-     *
-     * @param pTransientB Value to which {@link #transientB} should be set.
-     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
-     */
-    public BuilderBase setTransientB( BidirectionalB pTransientB ) {
-      transientB = pTransientB;
-      return this;
-    }
-
-    /**
-     * Method sets association {@link #transientParent}.<br/>
-     *
-     * @param pTransientParent Value to which {@link #transientParent} should be set.
-     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
-     */
-    public BuilderBase setTransientParent( BidirectionalA pTransientParent ) {
-      transientParent = pTransientParent;
-      return this;
     }
 
     /**
@@ -150,39 +111,6 @@ public abstract class BidirectionalABase {
      */
     public BuilderBase setChild( BidirectionalA pChild ) {
       child = pChild;
-      return this;
-    }
-
-    /**
-     * Method sets association {@link #transientBs}.<br/>
-     *
-     * @param pTransientBs Collection to which {@link #transientBs} should be set.
-     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
-     */
-    public BuilderBase setTransientBs( Set<BidirectionalB> pTransientBs ) {
-      // To ensure immutability we have to copy the content of the passed collection.
-      if (pTransientBs != null) {
-        transientBs = new HashSet<BidirectionalB>(pTransientBs);
-      }
-      else {
-        transientBs = null;
-      }
-      return this;
-    }
-
-    /**
-     * Method adds the passed objects to association {@link #transientBs}.<br/>
-     *
-     * @param pTransientBs Array of objects that should be added to {@link #transientBs}. The parameter may be null.
-     * @return {@link BuilderBase} Instance of this builder to support chaining. Method never returns null.
-     */
-    public BuilderBase addToTransientBs( BidirectionalB... pTransientBs ) {
-      if (pTransientBs != null) {
-        if (transientBs == null) {
-          transientBs = new HashSet<BidirectionalB>();
-        }
-        transientBs.addAll(Arrays.asList(pTransientBs));
-      }
       return this;
     }
 

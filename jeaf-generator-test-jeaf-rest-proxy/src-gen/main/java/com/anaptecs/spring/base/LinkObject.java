@@ -56,19 +56,6 @@ public class LinkObject implements Serializable {
   }
 
   /**
-   * Method creates a new builder and initializes it with the data from the passed object.
-   *
-   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-   * @return {@link Builder} New builder that can be used to create new LinkObject objects. The method never returns
-   * null.
-   * @deprecated Please use {@link #toBuilder()} instead.
-   */
-  @Deprecated
-  public static Builder builder( LinkObject pObject ) {
-    return new Builder(pObject);
-  }
-
-  /**
    * Method creates a new builder and initializes it with the passed attributes.
    */
   public static Builder builder( String pHref ) {
@@ -83,7 +70,7 @@ public class LinkObject implements Serializable {
    *
    * @param pHref Value to which {@link #href} should be set.
    *
-   * @return {@link LinkObject}
+   * @return {@link com.anaptecs.spring.base.LinkObject}
    */
   public static LinkObject of( String pHref ) {
     LinkObject.Builder lBuilder = LinkObject.builder();

@@ -67,19 +67,6 @@ public class ReadonlyServiceObject implements ServiceObject {
   }
 
   /**
-   * Method creates a new builder and initializes it with the data from the passed object.
-   *
-   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-   * @return {@link Builder} New builder that can be used to create new ReadonlyServiceObject objects. The method never
-   * returns null.
-   * @deprecated Please use {@link #toBuilder()} instead.
-   */
-  @Deprecated
-  public static Builder builder( ReadonlyServiceObject pObject ) {
-    return new Builder(pObject);
-  }
-
-  /**
    * Convenience method to create new instance of class ReadonlyServiceObject.
    *
    *
@@ -87,7 +74,7 @@ public class ReadonlyServiceObject implements ServiceObject {
    *
    * @param pReadonlyDefault Value to which {@link #readonlyDefault} should be set.
    *
-   * @return {@link ReadonlyServiceObject}
+   * @return {@link com.anaptecs.jeaf.junit.core.ReadonlyServiceObject}
    */
   public static ReadonlyServiceObject of( String pReadonly, int pReadonlyDefault ) {
     ReadonlyServiceObject.Builder lBuilder = ReadonlyServiceObject.builder();

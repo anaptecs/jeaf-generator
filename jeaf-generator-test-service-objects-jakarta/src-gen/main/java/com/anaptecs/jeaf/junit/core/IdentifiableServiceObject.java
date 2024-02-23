@@ -78,19 +78,6 @@ public class IdentifiableServiceObject implements ServiceObject, Identifiable<Se
   }
 
   /**
-   * Method creates a new builder and initializes it with the data from the passed object.
-   *
-   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-   * @return {@link Builder} New builder that can be used to create new IdentifiableServiceObject objects. The method
-   * never returns null.
-   * @deprecated Please use {@link #toBuilder()} instead.
-   */
-  @Deprecated
-  public static Builder builder( IdentifiableServiceObject pObject ) {
-    return new Builder(pObject);
-  }
-
-  /**
    * Convenience method to create new instance of class IdentifiableServiceObject.
    *
    *
@@ -98,7 +85,7 @@ public class IdentifiableServiceObject implements ServiceObject, Identifiable<Se
    *
    * @param pCountry Value to which {@link #country} should be set.
    *
-   * @return {@link IdentifiableServiceObject}
+   * @return {@link com.anaptecs.jeaf.junit.core.IdentifiableServiceObject}
    */
   public static IdentifiableServiceObject of( Integer pHello, String pCountry ) {
     IdentifiableServiceObject.Builder lBuilder = IdentifiableServiceObject.builder();

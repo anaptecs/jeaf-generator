@@ -52,19 +52,6 @@ public class DoubleCode implements ServiceObject {
   }
 
   /**
-   * Method creates a new builder and initializes it with the data from the passed object.
-   *
-   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-   * @return {@link Builder} New builder that can be used to create new DoubleCode objects. The method never returns
-   * null.
-   * @deprecated Please use {@link #toBuilder()} instead.
-   */
-  @Deprecated
-  public static Builder builder( DoubleCode pObject ) {
-    return new Builder(pObject);
-  }
-
-  /**
    * Class implements builder to create a new instance of class <code>DoubleCode</code>.
    */
   public static class Builder {

@@ -99,7 +99,6 @@ public class Booking implements ServiceObject {
     else {
       remitters = new HashSet<Person>();
     }
-    account = pBuilder.account;
   }
 
   /**
@@ -109,18 +108,6 @@ public class Booking implements ServiceObject {
    */
   public static Builder builder( ) {
     return new Builder();
-  }
-
-  /**
-   * Method creates a new builder and initializes it with the data from the passed object.
-   *
-   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-   * @return {@link Builder} New builder that can be used to create new Booking objects. The method never returns null.
-   * @deprecated Please use {@link #toBuilder()} instead.
-   */
-  @Deprecated
-  public static Builder builder( Booking pObject ) {
-    return new Builder(pObject);
   }
 
   /**
@@ -137,19 +124,16 @@ public class Booking implements ServiceObject {
    *
    * @param pRemitters Value to which {@link #remitters} should be set.
    *
-   * @param pAccount Value to which {@link #account} should be set.
-   *
    * @return {@link Booking}
    */
   public static Booking of( Double pAmount, Account pSource, Account pTarget, SecurityToken pToken,
-      Set<Person> pRemitters, Account pAccount ) {
+      Set<Person> pRemitters ) {
     Booking.Builder lBuilder = Booking.builder();
     lBuilder.setAmount(pAmount);
     lBuilder.setSource(pSource);
     lBuilder.setTarget(pTarget);
     lBuilder.setToken(pToken);
     lBuilder.setRemitters(pRemitters);
-    lBuilder.setAccount(pAccount);
     return lBuilder.build();
   }
 
@@ -171,8 +155,6 @@ public class Booking implements ServiceObject {
 
     private Set<Person> remitters;
 
-    private Account account;
-
     /**
      * Use {@link Booking#builder()} instead of private constructor to create new builder.
      */
@@ -190,7 +172,6 @@ public class Booking implements ServiceObject {
         this.setTarget(pObject.target);
         this.setToken(pObject.token);
         this.setRemitters(pObject.remitters);
-        this.setAccount(pObject.account);
       }
     }
 
@@ -269,17 +250,6 @@ public class Booking implements ServiceObject {
         }
         remitters.addAll(Arrays.asList(pRemitters));
       }
-      return this;
-    }
-
-    /**
-     * Method sets association {@link #account}.<br/>
-     *
-     * @param pAccount Value to which {@link #account} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
-     */
-    public Builder setAccount( Account pAccount ) {
-      account = pAccount;
       return this;
     }
 

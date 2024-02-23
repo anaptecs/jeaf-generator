@@ -81,18 +81,6 @@ public class Duration implements Serializable {
   }
 
   /**
-   * Method creates a new builder and initializes it with the data from the passed object.
-   *
-   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-   * @return {@link Builder} New builder that can be used to create new Duration objects. The method never returns null.
-   * @deprecated Please use {@link #toBuilder()} instead.
-   */
-  @Deprecated
-  public static Builder builder( Duration pObject ) {
-    return new Builder(pObject);
-  }
-
-  /**
    * Method creates a new builder and initializes it with the passed attributes.
    */
   public static Builder builder( int pValue, TimeUnit pTimeUnit ) {
@@ -110,7 +98,7 @@ public class Duration implements Serializable {
    *
    * @param pTimeUnit Value to which {@link #timeUnit} should be set.
    *
-   * @return {@link Duration}
+   * @return {@link com.anaptecs.spring.base.Duration}
    */
   public static Duration of( int pValue, TimeUnit pTimeUnit ) {
     Duration.Builder lBuilder = Duration.builder();

@@ -86,19 +86,6 @@ public class WeirdParent implements ServiceObject {
   }
 
   /**
-   * Method creates a new builder and initializes it with the data from the passed object.
-   *
-   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-   * @return {@link Builder} New builder that can be used to create new WeirdParent objects. The method never returns
-   * null.
-   * @deprecated Please use {@link #toBuilder()} instead.
-   */
-  @Deprecated
-  public static Builder builder( WeirdParent pObject ) {
-    return new Builder(pObject);
-  }
-
-  /**
    * Method creates a new builder and initializes it with the passed attributes.
    */
   public static Builder builder( String pSomeProperty, ComplexBookingID pComplexBooking ) {
@@ -118,7 +105,7 @@ public class WeirdParent implements ServiceObject {
    *
    * @param pComplexBookings Value to which {@link #complexBookings} should be set.
    *
-   * @return {@link WeirdParent}
+   * @return {@link com.anaptecs.jeaf.junit.openapi.base.WeirdParent}
    */
   public static WeirdParent of( String pSomeProperty, ComplexBookingID pComplexBooking,
       Set<ComplexBookingID> pComplexBookings ) {

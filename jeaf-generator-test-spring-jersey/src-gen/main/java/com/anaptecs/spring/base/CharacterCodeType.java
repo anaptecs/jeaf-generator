@@ -45,19 +45,6 @@ public class CharacterCodeType {
   }
 
   /**
-   * Method creates a new builder and initializes it with the data from the passed object.
-   *
-   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-   * @return {@link Builder} New builder that can be used to create new CharacterCodeType objects. The method never
-   * returns null.
-   * @deprecated Please use {@link #toBuilder()} instead.
-   */
-  @Deprecated
-  public static Builder builder( CharacterCodeType pObject ) {
-    return new Builder(pObject);
-  }
-
-  /**
    * Method converts the passed {@link String} into an instance of this object.
    *
    * Please be aware that this method is only intended to be used for deserialization frameworks like JAX-RS. For

@@ -59,19 +59,6 @@ public class ParentBeanParamType implements ServiceObject {
   }
 
   /**
-   * Method creates a new builder and initializes it with the data from the passed object.
-   *
-   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-   * @return {@link Builder} New builder that can be used to create new ParentBeanParamType objects. The method never
-   * returns null.
-   * @deprecated Please use {@link #toBuilder()} instead.
-   */
-  @Deprecated
-  public static Builder builder( ParentBeanParamType pObject ) {
-    return new Builder(pObject);
-  }
-
-  /**
    * Convenience method to create new instance of class ParentBeanParamType.
    *
    *
@@ -79,7 +66,7 @@ public class ParentBeanParamType implements ServiceObject {
    *
    * @param pTkID Value to which {@link #tkID} should be set.
    *
-   * @return {@link ParentBeanParamType}
+   * @return {@link com.anaptecs.jeaf.junit.openapi.base.ParentBeanParamType}
    */
   public static ParentBeanParamType of( String pNovaKey, String pTkID ) {
     ParentBeanParamType.Builder lBuilder = ParentBeanParamType.builder();

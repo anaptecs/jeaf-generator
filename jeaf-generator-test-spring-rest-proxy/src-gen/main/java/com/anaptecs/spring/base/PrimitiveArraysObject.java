@@ -220,25 +220,12 @@ public class PrimitiveArraysObject {
   }
 
   /**
-   * Method creates a new builder and initializes it with the data from the passed object.
-   *
-   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-   * @return {@link Builder} New builder that can be used to create new PrimitiveArraysObject objects. The method never
-   * returns null.
-   * @deprecated Please use {@link #toBuilder()} instead.
-   */
-  @Deprecated
-  public static Builder builder( PrimitiveArraysObject pObject ) {
-    return new Builder(pObject);
-  }
-
-  /**
    * Convenience method to create new instance of class PrimitiveArraysObject.
    *
    *
    * @param pCStringArray Value to which {@link #cStringArray} should be set.
    *
-   * @return {@link PrimitiveArraysObject}
+   * @return {@link com.anaptecs.spring.base.PrimitiveArraysObject}
    */
   public static PrimitiveArraysObject of( String[] pCStringArray ) {
     PrimitiveArraysObject.Builder lBuilder = PrimitiveArraysObject.builder();

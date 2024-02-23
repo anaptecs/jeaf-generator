@@ -52,25 +52,12 @@ public class MyBusinessObject {
   }
 
   /**
-   * Method creates a new builder and initializes it with the data from the passed object.
-   *
-   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-   * @return {@link Builder} New builder that can be used to create new MyBusinessObject objects. The method never
-   * returns null.
-   * @deprecated Please use {@link #toBuilder()} instead.
-   */
-  @Deprecated
-  public static Builder builder( MyBusinessObject pObject ) {
-    return new Builder(pObject);
-  }
-
-  /**
    * Convenience method to create new instance of class MyBusinessObject.
    *
    *
    * @param pMyBusinessAttribute Value to which {@link #myBusinessAttribute} should be set.
    *
-   * @return {@link MyBusinessObject}
+   * @return {@link com.anaptecs.jeaf.junit.generics.MyBusinessObject}
    */
   public static MyBusinessObject of( int pMyBusinessAttribute ) {
     MyBusinessObject.Builder lBuilder = MyBusinessObject.builder();
