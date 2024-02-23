@@ -642,7 +642,7 @@ cached boolean ignore(uml::Element element):
 	element.isStereotypeApplied("Ignore") || element.owner.isStereotypeApplied("Ignore");
 	
 cached List[uml::Property] getRequiredPropertiesForBuilder(uml::Class class):
-	class.getAllAttributesFromHierarchy().select(e|e.isMultivalued() == false && e.isStatic == false && e.lower > 0 && e.isPropertySuppressed() == false);
+	class.getAllAttributesFromHierarchy().select(e|e.isMultivalued() == false && e.isStatic == false && e.lower > 0 && e.isPropertySuppressed() == false && e.belongsToTransientBidirectionalBackReference() == false);
 	
 	
 cached boolean suppressTechnicalHttpHeaders():

@@ -115,25 +115,12 @@ public class ImmutableAssociationPOJO {
   }
 
   /**
-   * Method creates a new builder and initializes it with the data from the passed object.
-   *
-   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-   * @return {@link Builder} New builder that can be used to create new ImmutableAssociationPOJO objects. The method
-   * never returns null.
-   * @deprecated Please use {@link #toBuilder()} instead.
-   */
-  @Deprecated
-  public static Builder builder( ImmutableAssociationPOJO pObject ) {
-    return new Builder(pObject);
-  }
-
-  /**
    * Convenience method to create new instance of class ImmutableAssociationPOJO.
    *
    *
    * @param pYetAnotherAttribute Value to which {@link #yetAnotherAttribute} should be set.
    *
-   * @return {@link ImmutableAssociationPOJO}
+   * @return {@link com.anaptecs.jeaf.junit.pojo.ImmutableAssociationPOJO}
    */
   public static ImmutableAssociationPOJO of( boolean pYetAnotherAttribute ) {
     ImmutableAssociationPOJO.Builder lBuilder = ImmutableAssociationPOJO.builder();

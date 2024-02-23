@@ -44,22 +44,10 @@ public class Output implements ServiceObject {
   }
 
   /**
-   * Method creates a new builder and initializes it with the data from the passed object.
-   *
-   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-   * @return {@link Builder} New builder that can be used to create new Output objects. The method never returns null.
-   * @deprecated Please use {@link #toBuilder()} instead.
-   */
-  @Deprecated
-  public static Builder builder( Output pObject ) {
-    return new Builder(pObject);
-  }
-
-  /**
    * Convenience method to create new instance of class Output.
    *
    *
-   * @return {@link Output}
+   * @return {@link com.anaptecs.jeaf.junit.otherpackage.Output}
    */
   public static Output of( ) {
     Output.Builder lBuilder = Output.builder();

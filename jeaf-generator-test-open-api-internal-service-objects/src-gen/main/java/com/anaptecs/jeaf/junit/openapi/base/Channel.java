@@ -38,28 +38,15 @@ public class Channel extends ChannelBase {
   }
 
   /**
-   * Method creates a new builder and initializes it with the data from the passed object.
-   *
-   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-   * @return {@link Builder} New builder that can be used to create new Channel objects. The method never returns null.
-   * @deprecated Please use {@link #toBuilder()} instead.
-   */
-  @Deprecated
-  public static Builder builder( Channel pObject ) {
-    return new Builder(pObject);
-  }
-
-  /**
    * Method creates a new builder and initializes it with the passed attributes.
    */
   public static Builder builder( ChannelType pChannelType, ChannelCode pChannelCode, int pCode,
-      Boolean pSelfServiceChannel, Reseller pReseller ) {
+      Boolean pSelfServiceChannel ) {
     Builder lBuilder = builder();
     lBuilder.setChannelType(pChannelType);
     lBuilder.setChannelCode(pChannelCode);
     lBuilder.setCode(pCode);
     lBuilder.setSelfServiceChannel(pSelfServiceChannel);
-    lBuilder.setReseller(pReseller);
     return lBuilder;
   }
 

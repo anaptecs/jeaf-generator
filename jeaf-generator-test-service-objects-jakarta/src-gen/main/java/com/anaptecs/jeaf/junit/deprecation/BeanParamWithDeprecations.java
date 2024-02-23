@@ -67,19 +67,6 @@ public class BeanParamWithDeprecations implements ServiceObject {
   }
 
   /**
-   * Method creates a new builder and initializes it with the data from the passed object.
-   *
-   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-   * @return {@link Builder} New builder that can be used to create new BeanParamWithDeprecations objects. The method
-   * never returns null.
-   * @deprecated Please use {@link #toBuilder()} instead.
-   */
-  @Deprecated
-  public static Builder builder( BeanParamWithDeprecations pObject ) {
-    return new Builder(pObject);
-  }
-
-  /**
    * Convenience method to create new instance of class BeanParamWithDeprecations.
    *
    *
@@ -87,7 +74,7 @@ public class BeanParamWithDeprecations implements ServiceObject {
    *
    * @param pDeprecatedHeader Value to which {@link #deprecatedHeader} should be set.
    *
-   * @return {@link BeanParamWithDeprecations}
+   * @return {@link com.anaptecs.jeaf.junit.deprecation.BeanParamWithDeprecations}
    */
   public static BeanParamWithDeprecations of( String pHeader1, String pDeprecatedHeader ) {
     BeanParamWithDeprecations.Builder lBuilder = BeanParamWithDeprecations.builder();

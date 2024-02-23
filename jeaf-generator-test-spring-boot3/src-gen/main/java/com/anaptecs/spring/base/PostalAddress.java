@@ -79,19 +79,6 @@ public class PostalAddress {
   }
 
   /**
-   * Method creates a new builder and initializes it with the data from the passed object.
-   *
-   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-   * @return {@link Builder} New builder that can be used to create new PostalAddress objects. The method never returns
-   * null.
-   * @deprecated Please use {@link #toBuilder()} instead.
-   */
-  @Deprecated
-  public static Builder builder( PostalAddress pObject ) {
-    return new Builder(pObject);
-  }
-
-  /**
    * Convenience method to create new instance of class PostalAddress.
    *
    *
@@ -105,7 +92,7 @@ public class PostalAddress {
    *
    * @param pCountry Value to which {@link #country} should be set.
    *
-   * @return {@link PostalAddress}
+   * @return {@link com.anaptecs.spring.base.PostalAddress}
    */
   public static PostalAddress of( String pStreet, String pHouseNumber, String pCity, int pPostalCode,
       String pCountry ) {

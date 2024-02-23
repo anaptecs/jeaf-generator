@@ -107,25 +107,12 @@ public class SoftLinkPartner {
   }
 
   /**
-   * Method creates a new builder and initializes it with the data from the passed object.
-   *
-   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-   * @return {@link Builder} New builder that can be used to create new SoftLinkPartner objects. The method never
-   * returns null.
-   * @deprecated Please use {@link #toBuilder()} instead.
-   */
-  @Deprecated
-  public static Builder builder( SoftLinkPartner pObject ) {
-    return new Builder(pObject);
-  }
-
-  /**
    * Convenience method to create new instance of class SoftLinkPartner.
    *
    *
    * @param pLongLinks Value to which {@link #longLinks} should be set.
    *
-   * @return {@link SoftLinkPartner}
+   * @return {@link com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkPartner}
    */
   public static SoftLinkPartner of( List<Long> pLongLinks ) {
     SoftLinkPartner.Builder lBuilder = SoftLinkPartner.builder();

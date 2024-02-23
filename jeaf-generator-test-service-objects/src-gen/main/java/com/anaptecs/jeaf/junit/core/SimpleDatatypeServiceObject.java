@@ -126,19 +126,6 @@ public class SimpleDatatypeServiceObject implements ServiceObject, Identifiable<
   }
 
   /**
-   * Method creates a new builder and initializes it with the data from the passed object.
-   *
-   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-   * @return {@link Builder} New builder that can be used to create new SimpleDatatypeServiceObject objects. The method
-   * never returns null.
-   * @deprecated Please use {@link #toBuilder()} instead.
-   */
-  @Deprecated
-  public static Builder builder( SimpleDatatypeServiceObject pObject ) {
-    return new Builder(pObject);
-  }
-
-  /**
    * Convenience method to create new instance of class SimpleDatatypeServiceObject.
    *
    *
@@ -156,7 +143,7 @@ public class SimpleDatatypeServiceObject implements ServiceObject, Identifiable<
    *
    * @param pMyShort Value to which {@link #myShort} should be set.
    *
-   * @return {@link SimpleDatatypeServiceObject}
+   * @return {@link com.anaptecs.jeaf.junit.core.SimpleDatatypeServiceObject}
    */
   public static SimpleDatatypeServiceObject of( boolean pMyBoolean, byte pMyByte, char pMyChar, double pMyDouble,
       float pMyFloat, long pMyLong, short pMyShort ) {

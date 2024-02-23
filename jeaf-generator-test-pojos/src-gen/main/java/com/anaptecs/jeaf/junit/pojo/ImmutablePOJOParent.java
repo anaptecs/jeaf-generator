@@ -62,19 +62,6 @@ public class ImmutablePOJOParent extends AbstractPOJO {
   }
 
   /**
-   * Method creates a new builder and initializes it with the data from the passed object.
-   *
-   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-   * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects. The method never
-   * returns null.
-   * @deprecated Please use {@link #toBuilder()} instead.
-   */
-  @Deprecated
-  public static Builder builder( ImmutablePOJOParent pObject ) {
-    return new Builder(pObject);
-  }
-
-  /**
    * Convenience method to create new instance of class ImmutablePOJOParent.
    *
    *
@@ -84,7 +71,7 @@ public class ImmutablePOJOParent extends AbstractPOJO {
    *
    * @param pAnotherParentAttribute Value to which {@link #anotherParentAttribute} should be set.
    *
-   * @return {@link ImmutablePOJOParent}
+   * @return {@link com.anaptecs.jeaf.junit.pojo.ImmutablePOJOParent}
    */
   public static ImmutablePOJOParent of( String pAbtractAttr, String pParentAttribute,
       Integer pAnotherParentAttribute ) {

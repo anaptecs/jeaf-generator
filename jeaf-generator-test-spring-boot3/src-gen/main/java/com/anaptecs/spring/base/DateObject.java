@@ -91,19 +91,6 @@ public class DateObject {
   }
 
   /**
-   * Method creates a new builder and initializes it with the data from the passed object.
-   *
-   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-   * @return {@link Builder} New builder that can be used to create new DateObject objects. The method never returns
-   * null.
-   * @deprecated Please use {@link #toBuilder()} instead.
-   */
-  @Deprecated
-  public static Builder builder( DateObject pObject ) {
-    return new Builder(pObject);
-  }
-
-  /**
    * Convenience method to create new instance of class DateObject.
    *
    *
@@ -119,7 +106,7 @@ public class DateObject {
    *
    * @param pUtilDate Value to which {@link #utilDate} should be set.
    *
-   * @return {@link DateObject}
+   * @return {@link com.anaptecs.spring.base.DateObject}
    */
   public static DateObject of( LocalTime pLocalTime, LocalDate pLocalDate, LocalDateTime pLocalDateTime,
       Calendar pCalendar, Date pSqlDate, java.util.Date pUtilDate ) {

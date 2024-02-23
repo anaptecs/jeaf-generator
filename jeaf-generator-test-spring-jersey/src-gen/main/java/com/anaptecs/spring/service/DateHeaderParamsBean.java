@@ -134,19 +134,6 @@ public class DateHeaderParamsBean {
   }
 
   /**
-   * Method creates a new builder and initializes it with the data from the passed object.
-   *
-   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-   * @return {@link Builder} New builder that can be used to create new DateHeaderParamsBean objects. The method never
-   * returns null.
-   * @deprecated Please use {@link #toBuilder()} instead.
-   */
-  @Deprecated
-  public static Builder builder( DateHeaderParamsBean pObject ) {
-    return new Builder(pObject);
-  }
-
-  /**
    * Convenience method to create new instance of class DateHeaderParamsBean.
    *
    *
@@ -170,7 +157,7 @@ public class DateHeaderParamsBean {
    *
    * @param pSqlDate Value to which {@link #sqlDate} should be set.
    *
-   * @return {@link DateHeaderParamsBean}
+   * @return {@link com.anaptecs.spring.service.DateHeaderParamsBean}
    */
   public static DateHeaderParamsBean of( OffsetDateTime pOffsetDateTime, OffsetTime pOffsetTime,
       LocalDateTime pLocalDateTime, LocalTime pLocalTime, LocalDate pLocalDate, java.util.Date pUtilDate,

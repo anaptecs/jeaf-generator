@@ -58,19 +58,6 @@ public class SwiftAccount extends Account {
   }
 
   /**
-   * Method creates a new builder and initializes it with the data from the passed object.
-   *
-   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-   * @return {@link Builder} New builder that can be used to create new SwiftAccount objects. The method never returns
-   * null.
-   * @deprecated Please use {@link #toBuilder()} instead.
-   */
-  @Deprecated
-  public static Builder builder( SwiftAccount pObject ) {
-    return new Builder(pObject);
-  }
-
-  /**
    * Convenience method to create new instance of class SwiftAccount.
    *
    *
@@ -84,7 +71,7 @@ public class SwiftAccount extends Account {
    *
    * @param pBic Value to which {@link #bic} should be set.
    *
-   * @return {@link SwiftAccount}
+   * @return {@link com.anaptecs.jeaf.accounting.SwiftAccount}
    */
   public static SwiftAccount of( Long pIban, BigDecimal pBalance, Set<Person> pAuthorizedPersons,
       ServiceObjectID pBankID, String pBic ) {

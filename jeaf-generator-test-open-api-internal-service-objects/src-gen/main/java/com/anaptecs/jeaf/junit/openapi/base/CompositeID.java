@@ -38,19 +38,6 @@ public class CompositeID extends CompositeIDBase {
   }
 
   /**
-   * Method creates a new builder and initializes it with the data from the passed object.
-   *
-   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-   * @return {@link Builder} New builder that can be used to create new CompositeID objects. The method never returns
-   * null.
-   * @deprecated Please use {@link #toBuilder()} instead.
-   */
-  @Deprecated
-  public static Builder builder( CompositeID pObject ) {
-    return new Builder(pObject);
-  }
-
-  /**
    * Method creates a new builder and initializes it with the passed attributes.
    */
   public static Builder builder( long pPrimaryCode, long pSecondaryCode ) {

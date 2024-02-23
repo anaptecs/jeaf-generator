@@ -55,25 +55,12 @@ public class PrincipalWrapper implements ServiceObject {
   }
 
   /**
-   * Method creates a new builder and initializes it with the data from the passed object.
-   *
-   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-   * @return {@link Builder} New builder that can be used to create new PrincipalWrapper objects. The method never
-   * returns null.
-   * @deprecated Please use {@link #toBuilder()} instead.
-   */
-  @Deprecated
-  public static Builder builder( PrincipalWrapper pObject ) {
-    return new Builder(pObject);
-  }
-
-  /**
    * Convenience method to create new instance of class PrincipalWrapper.
    *
    *
    * @param pLPrincipal Value to which {@link #lPrincipal} should be set.
    *
-   * @return {@link PrincipalWrapper}
+   * @return {@link com.anaptecs.jeaf.junit.core.PrincipalWrapper}
    */
   public static PrincipalWrapper of( Principal pLPrincipal ) {
     PrincipalWrapper.Builder lBuilder = PrincipalWrapper.builder();

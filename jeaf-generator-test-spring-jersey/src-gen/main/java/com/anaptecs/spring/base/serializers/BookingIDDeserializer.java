@@ -57,7 +57,13 @@ public class BookingIDDeserializer extends JsonDeserializer<BookingID> {
       // Convert public string representation of BookingID into real object.
       BookingID lDeserializedObject =
           deserializer.deserializeObject(lNode.asText(), BookingID.class, SERIALIZED_CLASSES);
-      BookingID.Builder lBuilder = BookingID.builder(lDeserializedObject);
+      BookingID.Builder lBuilder;
+      if (lDeserializedObject != null) {
+        lBuilder = lDeserializedObject.toBuilder();
+      }
+      else {
+        lBuilder = BookingID.builder();
+      }
       lBuilder.setPublicBookingID(lNode.asText());
       return lBuilder.build();
     }

@@ -63,19 +63,6 @@ public class AdvancedHeader {
   }
 
   /**
-   * Method creates a new builder and initializes it with the data from the passed object.
-   *
-   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-   * @return {@link Builder} New builder that can be used to create new AdvancedHeader objects. The method never returns
-   * null.
-   * @deprecated Please use {@link #toBuilder()} instead.
-   */
-  @Deprecated
-  public static Builder builder( AdvancedHeader pObject ) {
-    return new Builder(pObject);
-  }
-
-  /**
    * Convenience method to create new instance of class AdvancedHeader.
    *
    *
@@ -85,7 +72,7 @@ public class AdvancedHeader {
    *
    * @param pDoubleCode Value to which {@link #doubleCode} should be set.
    *
-   * @return {@link AdvancedHeader}
+   * @return {@link com.anaptecs.spring.service.AdvancedHeader}
    */
   public static AdvancedHeader of( BookingID pBookingID, BookingCode pBookingCode, DoubleCode pDoubleCode ) {
     AdvancedHeader.Builder lBuilder = AdvancedHeader.builder();

@@ -5,7 +5,6 @@
  */
 package com.anaptecs.jeaf.accounting;
 
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.Collections;
@@ -121,12 +120,7 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
     name = pBuilder.name;
     firstName = pBuilder.firstName;
     dateOfBirth = pBuilder.dateOfBirth;
-    if (pBuilder.accounts != null) {
-      accounts = pBuilder.accounts;
-    }
-    else {
-      accounts = new HashSet<Account>();
-    }
+    accounts = new HashSet<Account>();
     customer = pBuilder.customer;
     age = pBuilder.age;
     displayName = pBuilder.displayName;
@@ -139,18 +133,6 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
    */
   public static Builder builder( ) {
     return new Builder();
-  }
-
-  /**
-   * Method creates a new builder and initializes it with the data from the passed object.
-   *
-   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-   * @return {@link Builder} New builder that can be used to create new Person objects. The method never returns null.
-   * @deprecated Please use {@link #toBuilder()} instead.
-   */
-  @Deprecated
-  public static Builder builder( Person pObject ) {
-    return new Builder(pObject);
   }
 
   /**
@@ -197,8 +179,6 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
     @PastOrPresent
     private Calendar dateOfBirth;
 
-    private Set<Account> accounts;
-
     private Individual customer;
 
     @PositiveOrZero
@@ -223,7 +203,6 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
         this.setName(pObject.name);
         this.setFirstName(pObject.firstName);
         this.setDateOfBirth(pObject.dateOfBirth);
-        this.setAccounts(pObject.accounts);
         this.setCustomer(pObject.customer);
         this.setAge(pObject.age);
         this.setDisplayName(pObject.displayName);
@@ -272,39 +251,6 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
     public Builder setDateOfBirth( Calendar pDateOfBirth ) {
       // Assign value to attribute
       dateOfBirth = pDateOfBirth;
-      return this;
-    }
-
-    /**
-     * Method sets association {@link #accounts}.<br/>
-     *
-     * @param pAccounts Collection to which {@link #accounts} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
-     */
-    public Builder setAccounts( Set<Account> pAccounts ) {
-      // To ensure immutability we have to copy the content of the passed collection.
-      if (pAccounts != null) {
-        accounts = new HashSet<Account>(pAccounts);
-      }
-      else {
-        accounts = null;
-      }
-      return this;
-    }
-
-    /**
-     * Method adds the passed objects to association {@link #accounts}.<br/>
-     *
-     * @param pAccounts Array of objects that should be added to {@link #accounts}. The parameter may be null.
-     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
-     */
-    public Builder addToAccounts( Account... pAccounts ) {
-      if (pAccounts != null) {
-        if (accounts == null) {
-          accounts = new HashSet<Account>();
-        }
-        accounts.addAll(Arrays.asList(pAccounts));
-      }
       return this;
     }
 

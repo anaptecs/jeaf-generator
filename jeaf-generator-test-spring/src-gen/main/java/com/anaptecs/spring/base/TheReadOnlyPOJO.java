@@ -86,25 +86,12 @@ public class TheReadOnlyPOJO {
   }
 
   /**
-   * Method creates a new builder and initializes it with the data from the passed object.
-   *
-   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-   * @return {@link Builder} New builder that can be used to create new TheReadOnlyPOJO objects. The method never
-   * returns null.
-   * @deprecated Please use {@link #toBuilder()} instead.
-   */
-  @Deprecated
-  public static Builder builder( TheReadOnlyPOJO pObject ) {
-    return new Builder(pObject);
-  }
-
-  /**
    * Convenience method to create new instance of class TheReadOnlyPOJO.
    *
    *
    * @param pName Value to which {@link #name} should be set.
    *
-   * @return {@link TheReadOnlyPOJO}
+   * @return {@link com.anaptecs.spring.base.TheReadOnlyPOJO}
    */
   public static TheReadOnlyPOJO of( String pName ) {
     TheReadOnlyPOJO.Builder lBuilder = TheReadOnlyPOJO.builder();

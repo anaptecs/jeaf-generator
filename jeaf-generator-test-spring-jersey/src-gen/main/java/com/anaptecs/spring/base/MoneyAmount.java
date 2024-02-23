@@ -74,19 +74,6 @@ public class MoneyAmount {
   }
 
   /**
-   * Method creates a new builder and initializes it with the data from the passed object.
-   *
-   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-   * @return {@link Builder} New builder that can be used to create new MoneyAmount objects. The method never returns
-   * null.
-   * @deprecated Please use {@link #toBuilder()} instead.
-   */
-  @Deprecated
-  public static Builder builder( MoneyAmount pObject ) {
-    return new Builder(pObject);
-  }
-
-  /**
    * Convenience method to create new instance of class MoneyAmount.
    *
    *
@@ -94,7 +81,7 @@ public class MoneyAmount {
    *
    * @param pCurrencyCode Value to which {@link #currencyCode} should be set.
    *
-   * @return {@link MoneyAmount}
+   * @return {@link com.anaptecs.spring.base.MoneyAmount}
    */
   public static MoneyAmount of( BigDecimal pAmount, CurrencyCode pCurrencyCode ) {
     MoneyAmount.Builder lBuilder = MoneyAmount.builder();

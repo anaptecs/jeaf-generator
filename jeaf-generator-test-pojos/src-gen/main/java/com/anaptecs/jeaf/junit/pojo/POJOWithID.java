@@ -95,19 +95,6 @@ public class POJOWithID implements Identifiable<ObjectID> {
   }
 
   /**
-   * Method creates a new builder and initializes it with the data from the passed object.
-   *
-   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-   * @return {@link Builder} New builder that can be used to create new POJOWithID objects. The method never returns
-   * null.
-   * @deprecated Please use {@link #toBuilder()} instead.
-   */
-  @Deprecated
-  public static Builder builder( POJOWithID pObject ) {
-    return new Builder(pObject);
-  }
-
-  /**
    * Convenience method to create new instance of class POJOWithID.
    *
    *
@@ -117,7 +104,7 @@ public class POJOWithID implements Identifiable<ObjectID> {
    *
    * @param pIntegerWithDefault Value to which {@link #integerWithDefault} should be set.
    *
-   * @return {@link POJOWithID}
+   * @return {@link com.anaptecs.jeaf.junit.pojo.POJOWithID}
    */
   public static POJOWithID of( Double pAttr, String pName, Integer pIntegerWithDefault ) {
     POJOWithID.Builder lBuilder = POJOWithID.builder();

@@ -55,19 +55,6 @@ public class QueryBeanParam {
   }
 
   /**
-   * Method creates a new builder and initializes it with the data from the passed object.
-   *
-   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-   * @return {@link Builder} New builder that can be used to create new QueryBeanParam objects. The method never returns
-   * null.
-   * @deprecated Please use {@link #toBuilder()} instead.
-   */
-  @Deprecated
-  public static Builder builder( QueryBeanParam pObject ) {
-    return new Builder(pObject);
-  }
-
-  /**
    * Convenience method to create new instance of class QueryBeanParam.
    *
    *
@@ -75,7 +62,7 @@ public class QueryBeanParam {
    *
    * @param pMaxResults Value to which {@link #maxResults} should be set.
    *
-   * @return {@link QueryBeanParam}
+   * @return {@link com.anaptecs.spring.service.QueryBeanParam}
    */
   public static QueryBeanParam of( BookingCode pBookingCode, int pMaxResults ) {
     QueryBeanParam.Builder lBuilder = QueryBeanParam.builder();

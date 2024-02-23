@@ -253,19 +253,6 @@ public class PrimitiveObjectWithRestrictions {
   }
 
   /**
-   * Method creates a new builder and initializes it with the data from the passed object.
-   *
-   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-   * @return {@link Builder} New builder that can be used to create new PrimitiveObjectWithRestrictions objects. The
-   * method never returns null.
-   * @deprecated Please use {@link #toBuilder()} instead.
-   */
-  @Deprecated
-  public static Builder builder( PrimitiveObjectWithRestrictions pObject ) {
-    return new Builder(pObject);
-  }
-
-  /**
    * Convenience method to create new instance of class PrimitiveObjectWithRestrictions.
    *
    *
@@ -313,7 +300,7 @@ public class PrimitiveObjectWithRestrictions {
    *
    * @param pBString Value to which {@link #bString} should be set.
    *
-   * @return {@link PrimitiveObjectWithRestrictions}
+   * @return {@link com.anaptecs.spring.base.PrimitiveObjectWithRestrictions}
    */
   public static PrimitiveObjectWithRestrictions of( boolean pABoolean, Boolean pBBoolean, boolean pCBoolean,
       byte pAByte, Byte pBByte, short pAShort, Short pBShort, int pAInteger, Integer pBInteger, Integer pCInteger,

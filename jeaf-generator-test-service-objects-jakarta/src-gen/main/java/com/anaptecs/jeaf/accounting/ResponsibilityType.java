@@ -86,19 +86,6 @@ public class ResponsibilityType implements ServiceObject, Identifiable<ServiceOb
   }
 
   /**
-   * Method creates a new builder and initializes it with the data from the passed object.
-   *
-   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-   * @return {@link Builder} New builder that can be used to create new ResponsibilityType objects. The method never
-   * returns null.
-   * @deprecated Please use {@link #toBuilder()} instead.
-   */
-  @Deprecated
-  public static Builder builder( ResponsibilityType pObject ) {
-    return new Builder(pObject);
-  }
-
-  /**
    * Convenience method to create new instance of class ResponsibilityType.
    *
    *
@@ -108,7 +95,7 @@ public class ResponsibilityType implements ServiceObject, Identifiable<ServiceOb
    *
    * @param pSortorder Value to which {@link #sortorder} should be set.
    *
-   * @return {@link ResponsibilityType}
+   * @return {@link com.anaptecs.jeaf.accounting.ResponsibilityType}
    */
   public static ResponsibilityType of( String pType, Character pTypeChar, Byte pSortorder ) {
     ResponsibilityType.Builder lBuilder = ResponsibilityType.builder();

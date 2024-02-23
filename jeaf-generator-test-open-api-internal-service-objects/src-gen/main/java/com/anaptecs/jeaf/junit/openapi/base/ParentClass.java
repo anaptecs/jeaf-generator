@@ -105,19 +105,6 @@ public class ParentClass implements ServiceObject {
   }
 
   /**
-   * Method creates a new builder and initializes it with the data from the passed object.
-   *
-   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-   * @return {@link Builder} New builder that can be used to create new ParentClass objects. The method never returns
-   * null.
-   * @deprecated Please use {@link #toBuilder()} instead.
-   */
-  @Deprecated
-  public static Builder builder( ParentClass pObject ) {
-    return new Builder(pObject);
-  }
-
-  /**
    * Method creates a new builder and initializes it with the passed attributes.
    */
   public static Builder builder( String pParentAttribute ) {
@@ -132,7 +119,7 @@ public class ParentClass implements ServiceObject {
    *
    * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
    *
-   * @return {@link ParentClass}
+   * @return {@link com.anaptecs.jeaf.junit.openapi.base.ParentClass}
    */
   public static ParentClass of( String pParentAttribute ) {
     ParentClass.Builder lBuilder = ParentClass.builder();

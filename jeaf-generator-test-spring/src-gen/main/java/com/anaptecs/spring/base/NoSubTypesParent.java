@@ -63,23 +63,10 @@ public class NoSubTypesParent {
   }
 
   /**
-   * Method creates a new builder and initializes it with the data from the passed object.
-   *
-   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-   * @return {@link Builder} New builder that can be used to create new NoSubTypesParent objects. The method never
-   * returns null.
-   * @deprecated Please use {@link #toBuilder()} instead.
-   */
-  @Deprecated
-  public static Builder builder( NoSubTypesParent pObject ) {
-    return new Builder(pObject);
-  }
-
-  /**
    * Convenience method to create new instance of class NoSubTypesParent.
    *
    *
-   * @return {@link NoSubTypesParent}
+   * @return {@link com.anaptecs.spring.base.NoSubTypesParent}
    */
   public static NoSubTypesParent of( ) {
     NoSubTypesParent.Builder lBuilder = NoSubTypesParent.builder();

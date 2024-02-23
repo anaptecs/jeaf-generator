@@ -66,7 +66,6 @@ public abstract class ChannelBase implements ServiceObject {
     channelCode = pBuilder.channelCode;
     code = pBuilder.code;
     selfServiceChannel = pBuilder.selfServiceChannel;
-    reseller = pBuilder.reseller;
   }
 
   /**
@@ -92,8 +91,6 @@ public abstract class ChannelBase implements ServiceObject {
      */
     private boolean selfServiceChannel = true;
 
-    private Reseller reseller;
-
     /**
      * Use {@link Channel.builder()} instead of protected constructor to create new builder.
      */
@@ -110,7 +107,6 @@ public abstract class ChannelBase implements ServiceObject {
         channelCode = pObject.channelCode;
         code = pObject.code;
         selfServiceChannel = pObject.selfServiceChannel;
-        reseller = pObject.reseller;
       }
     }
 
@@ -157,17 +153,6 @@ public abstract class ChannelBase implements ServiceObject {
     public BuilderBase setSelfServiceChannel( boolean pSelfServiceChannel ) {
       // Assign value to attribute
       selfServiceChannel = pSelfServiceChannel;
-      return this;
-    }
-
-    /**
-     * Method sets association {@link #reseller}.<br/>
-     *
-     * @param pReseller Value to which {@link #reseller} should be set.
-     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
-     */
-    public BuilderBase setReseller( Reseller pReseller ) {
-      reseller = pReseller;
       return this;
     }
 
@@ -328,18 +313,15 @@ public abstract class ChannelBase implements ServiceObject {
    *
    * @param pSelfServiceChannel Value to which {@link #selfServiceChannel} should be set.
    *
-   * @param pReseller Value to which {@link #reseller} should be set.
-   *
    * @return {@link Channel}
    */
-  public static Channel of( ChannelType pChannelType, ChannelCode pChannelCode, int pCode, boolean pSelfServiceChannel,
-      Reseller pReseller ) {
+  public static Channel of( ChannelType pChannelType, ChannelCode pChannelCode, int pCode,
+      boolean pSelfServiceChannel ) {
     Channel.Builder lBuilder = Channel.builder();
     lBuilder.setChannelType(pChannelType);
     lBuilder.setChannelCode(pChannelCode);
     lBuilder.setCode(pCode);
     lBuilder.setSelfServiceChannel(pSelfServiceChannel);
-    lBuilder.setReseller(pReseller);
     return lBuilder.build();
   }
 
