@@ -76,18 +76,6 @@ public class Company extends Customer {
   }
 
   /**
-   * Method creates a new builder and initializes it with the data from the passed object.
-   *
-   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-   * @return {@link Builder} New builder that can be used to create new Company objects. The method never returns null.
-   * @deprecated Please use {@link #toBuilder()} instead.
-   */
-  @Deprecated
-  public static Builder builder( Company pObject ) {
-    return new Builder(pObject);
-  }
-
-  /**
    * Convenience method to create new instance of class Company.
    *
    *
@@ -109,7 +97,7 @@ public class Company extends Customer {
    *
    * @param pAttendant Value to which {@link #attendant} should be set.
    *
-   * @return {@link Company}
+   * @return {@link com.anaptecs.jeaf.accounting.Company}
    */
   public static Company of( Boolean pActive, String pStreet, Integer pZipCode, String pCity, String pCountry,
       String pName, Long pRegistrationNumber, Long pTaxNumber, String pAttendant ) {

@@ -44,23 +44,10 @@ public class BusinessServiceObject implements ServiceObject {
   }
 
   /**
-   * Method creates a new builder and initializes it with the data from the passed object.
-   *
-   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-   * @return {@link Builder} New builder that can be used to create new BusinessServiceObject objects. The method never
-   * returns null.
-   * @deprecated Please use {@link #toBuilder()} instead.
-   */
-  @Deprecated
-  public static Builder builder( BusinessServiceObject pObject ) {
-    return new Builder(pObject);
-  }
-
-  /**
    * Convenience method to create new instance of class BusinessServiceObject.
    *
    *
-   * @return {@link BusinessServiceObject}
+   * @return {@link com.anaptecs.jeaf.junit.rest.generics.BusinessServiceObject}
    */
   public static BusinessServiceObject of( ) {
     BusinessServiceObject.Builder lBuilder = BusinessServiceObject.builder();

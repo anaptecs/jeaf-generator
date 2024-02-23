@@ -200,19 +200,6 @@ public class DataTypesQueryBean implements Serializable {
   }
 
   /**
-   * Method creates a new builder and initializes it with the data from the passed object.
-   *
-   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-   * @return {@link Builder} New builder that can be used to create new DataTypesQueryBean objects. The method never
-   * returns null.
-   * @deprecated Please use {@link #toBuilder()} instead.
-   */
-  @Deprecated
-  public static Builder builder( DataTypesQueryBean pObject ) {
-    return new Builder(pObject);
-  }
-
-  /**
    * Method creates a new builder and initializes it with the passed attributes.
    */
   public static Builder builder( OffsetDateTime pOffsetDateTime, OffsetTime pOffsetTime, LocalDateTime pLocalDateTime,
@@ -237,7 +224,7 @@ public class DataTypesQueryBean implements Serializable {
    *
    * @param pLocalTime Value to which {@link #localTime} should be set.
    *
-   * @return {@link DataTypesQueryBean}
+   * @return {@link com.anaptecs.spring.service.DataTypesQueryBean}
    */
   public static DataTypesQueryBean of( OffsetDateTime pOffsetDateTime, OffsetTime pOffsetTime,
       LocalDateTime pLocalDateTime, LocalTime pLocalTime ) {

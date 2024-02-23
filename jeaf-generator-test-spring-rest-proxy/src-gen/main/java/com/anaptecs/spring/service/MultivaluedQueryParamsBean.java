@@ -86,23 +86,10 @@ public class MultivaluedQueryParamsBean {
   }
 
   /**
-   * Method creates a new builder and initializes it with the data from the passed object.
-   *
-   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-   * @return {@link Builder} New builder that can be used to create new MultivaluedQueryParamsBean objects. The method
-   * never returns null.
-   * @deprecated Please use {@link #toBuilder()} instead.
-   */
-  @Deprecated
-  public static Builder builder( MultivaluedQueryParamsBean pObject ) {
-    return new Builder(pObject);
-  }
-
-  /**
    * Convenience method to create new instance of class MultivaluedQueryParamsBean.
    *
    *
-   * @return {@link MultivaluedQueryParamsBean}
+   * @return {@link com.anaptecs.spring.service.MultivaluedQueryParamsBean}
    */
   public static MultivaluedQueryParamsBean of( ) {
     MultivaluedQueryParamsBean.Builder lBuilder = MultivaluedQueryParamsBean.builder();

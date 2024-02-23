@@ -46,22 +46,10 @@ public class Offer implements ServiceObject {
   }
 
   /**
-   * Method creates a new builder and initializes it with the data from the passed object.
-   *
-   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-   * @return {@link Builder} New builder that can be used to create new Offer objects. The method never returns null.
-   * @deprecated Please use {@link #toBuilder()} instead.
-   */
-  @Deprecated
-  public static Builder builder( Offer pObject ) {
-    return new Builder(pObject);
-  }
-
-  /**
    * Convenience method to create new instance of class Offer.
    *
    *
-   * @return {@link Offer}
+   * @return {@link com.anaptecs.jeaf.junit.rest.generics.Offer}
    */
   public static Offer of( ) {
     Offer.Builder lBuilder = Offer.builder();

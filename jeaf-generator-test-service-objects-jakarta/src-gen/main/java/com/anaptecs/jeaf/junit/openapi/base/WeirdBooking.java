@@ -130,19 +130,6 @@ public class WeirdBooking extends WeirdParent {
   }
 
   /**
-   * Method creates a new builder and initializes it with the data from the passed object.
-   *
-   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-   * @return {@link Builder} New builder that can be used to create new WeirdBooking objects. The method never returns
-   * null.
-   * @deprecated Please use {@link #toBuilder()} instead.
-   */
-  @Deprecated
-  public static Builder builder( WeirdBooking pObject ) {
-    return new Builder(pObject);
-  }
-
-  /**
    * Convenience method to create new instance of class WeirdBooking.
    *
    *
@@ -158,7 +145,7 @@ public class WeirdBooking extends WeirdParent {
    *
    * @param pChildProperty Value to which {@link #childProperty} should be set.
    *
-   * @return {@link WeirdBooking}
+   * @return {@link com.anaptecs.jeaf.junit.openapi.base.WeirdBooking}
    */
   public static WeirdBooking of( String pSomeProperty, ComplexBookingID pComplexBooking,
       Set<ComplexBookingID> pComplexBookings, ComplexBookingID pBooking,

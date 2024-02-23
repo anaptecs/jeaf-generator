@@ -52,19 +52,6 @@ public class SubclassWithID extends IdentifiableServiceObject {
   }
 
   /**
-   * Method creates a new builder and initializes it with the data from the passed object.
-   *
-   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-   * @return {@link Builder} New builder that can be used to create new SubclassWithID objects. The method never returns
-   * null.
-   * @deprecated Please use {@link #toBuilder()} instead.
-   */
-  @Deprecated
-  public static Builder builder( SubclassWithID pObject ) {
-    return new Builder(pObject);
-  }
-
-  /**
    * Convenience method to create new instance of class SubclassWithID.
    *
    *
@@ -74,7 +61,7 @@ public class SubclassWithID extends IdentifiableServiceObject {
    *
    * @param pAttr Value to which {@link #attr} should be set.
    *
-   * @return {@link SubclassWithID}
+   * @return {@link com.anaptecs.jeaf.junit.core.SubclassWithID}
    */
   public static SubclassWithID of( Integer pHello, String pCountry, boolean pAttr ) {
     SubclassWithID.Builder lBuilder = SubclassWithID.builder();

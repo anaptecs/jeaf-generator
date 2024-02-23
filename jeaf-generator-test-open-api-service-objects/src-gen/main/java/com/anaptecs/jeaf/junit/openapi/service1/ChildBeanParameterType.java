@@ -53,19 +53,6 @@ public class ChildBeanParameterType extends ParentBeanParamType {
   }
 
   /**
-   * Method creates a new builder and initializes it with the data from the passed object.
-   *
-   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-   * @return {@link Builder} New builder that can be used to create new ChildBeanParameterType objects. The method never
-   * returns null.
-   * @deprecated Please use {@link #toBuilder()} instead.
-   */
-  @Deprecated
-  public static Builder builder( ChildBeanParameterType pObject ) {
-    return new Builder(pObject);
-  }
-
-  /**
    * Convenience method to create new instance of class ChildBeanParameterType.
    *
    *
@@ -75,7 +62,7 @@ public class ChildBeanParameterType extends ParentBeanParamType {
    *
    * @param pChildProperty Value to which {@link #childProperty} should be set.
    *
-   * @return {@link ChildBeanParameterType}
+   * @return {@link com.anaptecs.jeaf.junit.openapi.service1.ChildBeanParameterType}
    */
   public static ChildBeanParameterType of( String pNovaKey, String pTkID, String pChildProperty ) {
     ChildBeanParameterType.Builder lBuilder = ChildBeanParameterType.builder();

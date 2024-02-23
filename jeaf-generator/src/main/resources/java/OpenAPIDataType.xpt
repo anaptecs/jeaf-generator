@@ -366,7 +366,13 @@
 							«ELSE»						
 								«this.fqn()» lDeserializedObject = deserializer.deserializeObject(lNode.asText(), «this.fqn()».class, SERIALIZED_CLASSES);
 							«ENDIF»
-							«this.fqn()».Builder lBuilder = «this.fqn()».builder(lDeserializedObject);
+							«this.fqn()».Builder lBuilder;
+							if(lDeserializedObject != null) {
+							  lBuilder = lDeserializedObject.toBuilder();
+							}
+							else {
+							  lBuilder = «this.fqn()».builder();
+							}
 							«FOREACH this.getCompositePublicFieldProperties() AS property»
 							lBuilder.«property.asSetter()»(lNode.asText());
 							«ENDFOREACH»

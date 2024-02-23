@@ -82,22 +82,10 @@ public class Partner implements ServiceObject, Identifiable<ServiceObjectID> {
   }
 
   /**
-   * Method creates a new builder and initializes it with the data from the passed object.
-   *
-   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-   * @return {@link Builder} New builder that can be used to create new Partner objects. The method never returns null.
-   * @deprecated Please use {@link #toBuilder()} instead.
-   */
-  @Deprecated
-  public static Builder builder( Partner pObject ) {
-    return new Builder(pObject);
-  }
-
-  /**
    * Convenience method to create new instance of class Partner.
    *
    *
-   * @return {@link Partner}
+   * @return {@link com.anaptecs.jeaf.junit.openapi.base.Partner}
    */
   public static Partner of( ) {
     Partner.Builder lBuilder = Partner.builder();

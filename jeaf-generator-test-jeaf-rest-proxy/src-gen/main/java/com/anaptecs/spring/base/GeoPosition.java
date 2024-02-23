@@ -61,19 +61,6 @@ public class GeoPosition extends PlaceRef {
   }
 
   /**
-   * Method creates a new builder and initializes it with the data from the passed object.
-   *
-   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-   * @return {@link Builder} New builder that can be used to create new GeoPosition objects. The method never returns
-   * null.
-   * @deprecated Please use {@link #toBuilder()} instead.
-   */
-  @Deprecated
-  public static Builder builder( GeoPosition pObject ) {
-    return new Builder(pObject);
-  }
-
-  /**
    * Method creates a new builder and initializes it with the passed attributes.
    */
   public static Builder builder( String pName, int pLongitude, int pLatitude ) {
@@ -94,7 +81,7 @@ public class GeoPosition extends PlaceRef {
    *
    * @param pLatitude Value to which {@link #latitude} should be set.
    *
-   * @return {@link GeoPosition}
+   * @return {@link com.anaptecs.spring.base.GeoPosition}
    */
   public static GeoPosition of( String pName, int pLongitude, int pLatitude ) {
     GeoPosition.Builder lBuilder = GeoPosition.builder();

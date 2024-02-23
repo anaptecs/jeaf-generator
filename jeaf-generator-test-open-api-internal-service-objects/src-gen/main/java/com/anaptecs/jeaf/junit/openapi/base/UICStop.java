@@ -81,18 +81,6 @@ public class UICStop extends Stop {
   }
 
   /**
-   * Method creates a new builder and initializes it with the data from the passed object.
-   *
-   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-   * @return {@link Builder} New builder that can be used to create new UICStop objects. The method never returns null.
-   * @deprecated Please use {@link #toBuilder()} instead.
-   */
-  @Deprecated
-  public static Builder builder( UICStop pObject ) {
-    return new Builder(pObject);
-  }
-
-  /**
    * Method creates a new builder and initializes it with the passed attributes.
    */
   public static Builder builder( String pName, byte pIndex, SoftLink pTheSoftLink, String pUicCode, int pPriority,
@@ -126,7 +114,7 @@ public class UICStop extends Stop {
    *
    * @param pIndex2 Value to which {@link #index2} should be set.
    *
-   * @return {@link UICStop}
+   * @return {@link com.anaptecs.jeaf.junit.openapi.base.UICStop}
    */
   public static UICStop of( String pName, byte pIndex, SoftLink pTheSoftLink, String pUicCode, int pPriority,
       long pCode, byte pIndex2 ) {

@@ -82,19 +82,6 @@ public class NoSubTypesChild extends NoSubTypesParent {
   }
 
   /**
-   * Method creates a new builder and initializes it with the data from the passed object.
-   *
-   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-   * @return {@link Builder} New builder that can be used to create new NoSubTypesChild objects. The method never
-   * returns null.
-   * @deprecated Please use {@link #toBuilder()} instead.
-   */
-  @Deprecated
-  public static Builder builder( NoSubTypesChild pObject ) {
-    return new Builder(pObject);
-  }
-
-  /**
    * Method creates a new builder and initializes it with the passed attributes.
    */
   public static Builder builder( String pMyProperty ) {
@@ -109,7 +96,7 @@ public class NoSubTypesChild extends NoSubTypesParent {
    *
    * @param pMyProperty Value to which {@link #myProperty} should be set.
    *
-   * @return {@link NoSubTypesChild}
+   * @return {@link com.anaptecs.spring.base.NoSubTypesChild}
    */
   public static NoSubTypesChild of( String pMyProperty ) {
     NoSubTypesChild.Builder lBuilder = NoSubTypesChild.builder();

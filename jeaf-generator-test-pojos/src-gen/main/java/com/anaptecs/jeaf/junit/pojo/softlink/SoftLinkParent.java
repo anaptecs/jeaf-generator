@@ -104,19 +104,6 @@ public class SoftLinkParent {
   }
 
   /**
-   * Method creates a new builder and initializes it with the data from the passed object.
-   *
-   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-   * @return {@link Builder} New builder that can be used to create new SoftLinkParent objects. The method never returns
-   * null.
-   * @deprecated Please use {@link #toBuilder()} instead.
-   */
-  @Deprecated
-  public static Builder builder( SoftLinkParent pObject ) {
-    return new Builder(pObject);
-  }
-
-  /**
    * Convenience method to create new instance of class SoftLinkParent.
    *
    *
@@ -124,7 +111,7 @@ public class SoftLinkParent {
    *
    * @param pThePartner Value to which {@link #thePartner} should be set.
    *
-   * @return {@link SoftLinkParent}
+   * @return {@link com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkParent}
    */
   public static SoftLinkParent of( Set<SoftLinkID> pPartners, SoftLinkID pThePartner ) {
     SoftLinkParent.Builder lBuilder = SoftLinkParent.builder();

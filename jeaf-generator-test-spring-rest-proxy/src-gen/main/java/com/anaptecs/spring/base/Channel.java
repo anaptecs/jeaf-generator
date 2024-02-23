@@ -73,7 +73,6 @@ public class Channel {
     channelCode = pBuilder.channelCode;
     code = pBuilder.code;
     selfServiceChannel = pBuilder.selfServiceChannel;
-    reseller = pBuilder.reseller;
   }
 
   /**
@@ -83,18 +82,6 @@ public class Channel {
    */
   public static Builder builder( ) {
     return new Builder();
-  }
-
-  /**
-   * Method creates a new builder and initializes it with the data from the passed object.
-   *
-   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-   * @return {@link Builder} New builder that can be used to create new Channel objects. The method never returns null.
-   * @deprecated Please use {@link #toBuilder()} instead.
-   */
-  @Deprecated
-  public static Builder builder( Channel pObject ) {
-    return new Builder(pObject);
   }
 
   /**
@@ -109,18 +96,15 @@ public class Channel {
    *
    * @param pSelfServiceChannel Value to which {@link #selfServiceChannel} should be set.
    *
-   * @param pReseller Value to which {@link #reseller} should be set.
-   *
    * @return {@link Channel}
    */
-  public static Channel of( ChannelType pChannelType, ChannelCode pChannelCode, int pCode, boolean pSelfServiceChannel,
-      Reseller pReseller ) {
+  public static Channel of( ChannelType pChannelType, ChannelCode pChannelCode, int pCode,
+      boolean pSelfServiceChannel ) {
     Channel.Builder lBuilder = Channel.builder();
     lBuilder.setChannelType(pChannelType);
     lBuilder.setChannelCode(pChannelCode);
     lBuilder.setCode(pCode);
     lBuilder.setSelfServiceChannel(pSelfServiceChannel);
-    lBuilder.setReseller(pReseller);
     return lBuilder.build();
   }
 
@@ -147,8 +131,6 @@ public class Channel {
     @Deprecated
     private boolean selfServiceChannel = true;
 
-    private Reseller reseller;
-
     /**
      * Use {@link Channel#builder()} instead of private constructor to create new builder.
      */
@@ -165,7 +147,6 @@ public class Channel {
         this.setChannelCode(pObject.channelCode);
         this.setCode(pObject.code);
         this.setSelfServiceChannel(pObject.selfServiceChannel);
-        this.setReseller(pObject.reseller);
       }
     }
 
@@ -213,17 +194,6 @@ public class Channel {
     public Builder setSelfServiceChannel( boolean pSelfServiceChannel ) {
       // Assign value to attribute
       selfServiceChannel = pSelfServiceChannel;
-      return this;
-    }
-
-    /**
-     * Method sets association {@link #reseller}.<br/>
-     *
-     * @param pReseller Value to which {@link #reseller} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
-     */
-    public Builder setReseller( Reseller pReseller ) {
-      reseller = pReseller;
       return this;
     }
 

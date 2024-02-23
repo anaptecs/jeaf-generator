@@ -77,18 +77,6 @@ public class Leg implements ServiceObject {
   }
 
   /**
-   * Method creates a new builder and initializes it with the data from the passed object.
-   *
-   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-   * @return {@link Builder} New builder that can be used to create new Leg objects. The method never returns null.
-   * @deprecated Please use {@link #toBuilder()} instead.
-   */
-  @Deprecated
-  public static Builder builder( Leg pObject ) {
-    return new Builder(pObject);
-  }
-
-  /**
    * Method creates a new builder and initializes it with the passed attributes.
    */
   public static Builder builder( PlaceRef pStart, PlaceRef pStop ) {
@@ -106,7 +94,7 @@ public class Leg implements ServiceObject {
    *
    * @param pStop Value to which {@link #stop} should be set.
    *
-   * @return {@link Leg}
+   * @return {@link com.anaptecs.jeaf.junit.openapi.base.Leg}
    */
   public static Leg of( PlaceRef pStart, PlaceRef pStop ) {
     Leg.Builder lBuilder = Leg.builder();

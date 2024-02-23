@@ -69,19 +69,6 @@ public class BeanParameter implements ServiceObject {
   }
 
   /**
-   * Method creates a new builder and initializes it with the data from the passed object.
-   *
-   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-   * @return {@link Builder} New builder that can be used to create new BeanParameter objects. The method never returns
-   * null.
-   * @deprecated Please use {@link #toBuilder()} instead.
-   */
-  @Deprecated
-  public static Builder builder( BeanParameter pObject ) {
-    return new Builder(pObject);
-  }
-
-  /**
    * Method creates a new builder and initializes it with the passed attributes.
    */
   public static Builder builder( String pAccessToken, Locale pLanguage, String pOldStyle ) {
@@ -102,7 +89,7 @@ public class BeanParameter implements ServiceObject {
    *
    * @param pOldStyle Value to which {@link #oldStyle} should be set.
    *
-   * @return {@link BeanParameter}
+   * @return {@link com.anaptecs.jeaf.junit.openapi.base.BeanParameter}
    */
   public static BeanParameter of( String pAccessToken, Locale pLanguage, String pOldStyle ) {
     BeanParameter.Builder lBuilder = BeanParameter.builder();

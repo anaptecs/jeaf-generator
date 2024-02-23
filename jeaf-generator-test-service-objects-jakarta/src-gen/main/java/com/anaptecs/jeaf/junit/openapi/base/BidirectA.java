@@ -5,7 +5,6 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
@@ -69,16 +68,10 @@ public class BidirectA implements ServiceObject {
     // Ensure that builder is not null.
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
-    if (pBuilder.transientBs != null) {
-      transientBs = pBuilder.transientBs;
-    }
-    else {
-      transientBs = new HashSet<BidirectB>();
-    }
+    transientBs = new HashSet<BidirectB>();
     parent = pBuilder.parent;
     // Bidirectional back reference is set up correctly as a builder is used.
     parentBackReferenceInitialized = true;
-    transientChild = pBuilder.transientChild;
   }
 
   /**
@@ -91,32 +84,16 @@ public class BidirectA implements ServiceObject {
   }
 
   /**
-   * Method creates a new builder and initializes it with the data from the passed object.
-   *
-   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-   * @return {@link Builder} New builder that can be used to create new BidirectA objects. The method never returns
-   * null.
-   * @deprecated Please use {@link #toBuilder()} instead.
-   */
-  @Deprecated
-  public static Builder builder( BidirectA pObject ) {
-    return new Builder(pObject);
-  }
-
-  /**
    * Convenience method to create new instance of class BidirectA.
    *
    *
    * @param pParent Value to which {@link #parent} should be set.
    *
-   * @param pTransientChild Value to which {@link #transientChild} should be set.
-   *
    * @return {@link BidirectA}
    */
-  public static BidirectA of( BidirectA pParent, BidirectA pTransientChild ) {
+  public static BidirectA of( BidirectA pParent ) {
     BidirectA.Builder lBuilder = BidirectA.builder();
     lBuilder.setParent(pParent);
-    lBuilder.setTransientChild(pTransientChild);
     return lBuilder.build();
   }
 
@@ -124,11 +101,7 @@ public class BidirectA implements ServiceObject {
    * Class implements builder to create a new instance of class <code>BidirectA</code>.
    */
   public static class Builder {
-    private Set<BidirectB> transientBs;
-
     private BidirectA parent;
-
-    private BidirectA transientChild;
 
     /**
      * Use {@link BidirectA#builder()} instead of private constructor to create new builder.
@@ -142,43 +115,8 @@ public class BidirectA implements ServiceObject {
     protected Builder( BidirectA pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
-        this.setTransientBs(pObject.transientBs);
         this.setParent(pObject.parent);
-        this.setTransientChild(pObject.transientChild);
       }
-    }
-
-    /**
-     * Method sets association {@link #transientBs}.<br/>
-     *
-     * @param pTransientBs Collection to which {@link #transientBs} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
-     */
-    public Builder setTransientBs( Set<BidirectB> pTransientBs ) {
-      // To ensure immutability we have to copy the content of the passed collection.
-      if (pTransientBs != null) {
-        transientBs = new HashSet<BidirectB>(pTransientBs);
-      }
-      else {
-        transientBs = null;
-      }
-      return this;
-    }
-
-    /**
-     * Method adds the passed objects to association {@link #transientBs}.<br/>
-     *
-     * @param pTransientBs Array of objects that should be added to {@link #transientBs}. The parameter may be null.
-     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
-     */
-    public Builder addToTransientBs( BidirectB... pTransientBs ) {
-      if (pTransientBs != null) {
-        if (transientBs == null) {
-          transientBs = new HashSet<BidirectB>();
-        }
-        transientBs.addAll(Arrays.asList(pTransientBs));
-      }
-      return this;
     }
 
     /**
@@ -189,17 +127,6 @@ public class BidirectA implements ServiceObject {
      */
     public Builder setParent( BidirectA pParent ) {
       parent = pParent;
-      return this;
-    }
-
-    /**
-     * Method sets association {@link #transientChild}.<br/>
-     *
-     * @param pTransientChild Value to which {@link #transientChild} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
-     */
-    public Builder setTransientChild( BidirectA pTransientChild ) {
-      transientChild = pTransientChild;
       return this;
     }
 

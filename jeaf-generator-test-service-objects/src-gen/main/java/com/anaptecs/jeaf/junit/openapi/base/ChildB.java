@@ -90,24 +90,12 @@ public class ChildB extends ParentClass {
   }
 
   /**
-   * Method creates a new builder and initializes it with the data from the passed object.
-   *
-   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-   * @return {@link Builder} New builder that can be used to create new ChildB objects. The method never returns null.
-   * @deprecated Please use {@link #toBuilder()} instead.
-   */
-  @Deprecated
-  public static Builder builder( ChildB pObject ) {
-    return new Builder(pObject);
-  }
-
-  /**
    * Convenience method to create new instance of class ChildB.
    *
    *
    * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
    *
-   * @return {@link ChildB}
+   * @return {@link com.anaptecs.jeaf.junit.openapi.base.ChildB}
    */
   public static ChildB of( String pParentAttribute ) {
     ChildB.Builder lBuilder = ChildB.builder();

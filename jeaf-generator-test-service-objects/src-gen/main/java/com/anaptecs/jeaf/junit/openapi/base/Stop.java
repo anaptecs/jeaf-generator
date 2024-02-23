@@ -98,18 +98,6 @@ public class Stop implements ServiceObject {
   }
 
   /**
-   * Method creates a new builder and initializes it with the data from the passed object.
-   *
-   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-   * @return {@link Builder} New builder that can be used to create new Stop objects. The method never returns null.
-   * @deprecated Please use {@link #toBuilder()} instead.
-   */
-  @Deprecated
-  public static Builder builder( Stop pObject ) {
-    return new Builder(pObject);
-  }
-
-  /**
    * Convenience method to create new instance of class Stop.
    *
    *
@@ -119,7 +107,7 @@ public class Stop implements ServiceObject {
    *
    * @param pTheSoftLink Value to which {@link #theSoftLink} should be set.
    *
-   * @return {@link Stop}
+   * @return {@link com.anaptecs.jeaf.junit.openapi.base.Stop}
    */
   public static Stop of( String pName, byte pIndex, SoftLink pTheSoftLink ) {
     Stop.Builder lBuilder = Stop.builder();

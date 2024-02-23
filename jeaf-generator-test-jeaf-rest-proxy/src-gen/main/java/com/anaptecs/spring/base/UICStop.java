@@ -55,18 +55,6 @@ public class UICStop extends Stop {
   }
 
   /**
-   * Method creates a new builder and initializes it with the data from the passed object.
-   *
-   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-   * @return {@link Builder} New builder that can be used to create new UICStop objects. The method never returns null.
-   * @deprecated Please use {@link #toBuilder()} instead.
-   */
-  @Deprecated
-  public static Builder builder( UICStop pObject ) {
-    return new Builder(pObject);
-  }
-
-  /**
    * Method creates a new builder and initializes it with the passed attributes.
    */
   public static Builder builder( String pName, String pUicCode ) {
@@ -84,7 +72,7 @@ public class UICStop extends Stop {
    *
    * @param pUicCode Value to which {@link #uicCode} should be set.
    *
-   * @return {@link UICStop}
+   * @return {@link com.anaptecs.spring.base.UICStop}
    */
   public static UICStop of( String pName, String pUicCode ) {
     UICStop.Builder lBuilder = UICStop.builder();

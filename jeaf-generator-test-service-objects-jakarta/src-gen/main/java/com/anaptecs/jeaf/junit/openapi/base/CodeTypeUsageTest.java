@@ -105,19 +105,6 @@ public class CodeTypeUsageTest implements ServiceObject {
   }
 
   /**
-   * Method creates a new builder and initializes it with the data from the passed object.
-   *
-   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-   * @return {@link Builder} New builder that can be used to create new CodeTypeUsageTest objects. The method never
-   * returns null.
-   * @deprecated Please use {@link #toBuilder()} instead.
-   */
-  @Deprecated
-  public static Builder builder( CodeTypeUsageTest pObject ) {
-    return new Builder(pObject);
-  }
-
-  /**
    * Convenience method to create new instance of class CodeTypeUsageTest.
    *
    *
@@ -129,7 +116,7 @@ public class CodeTypeUsageTest implements ServiceObject {
    *
    * @param pShortCode Value to which {@link #shortCode} should be set.
    *
-   * @return {@link CodeTypeUsageTest}
+   * @return {@link com.anaptecs.jeaf.junit.openapi.base.CodeTypeUsageTest}
    */
   public static CodeTypeUsageTest of( BooleanCodeType pBooleanCode, Set<ShortCodeType> pShortCodeTypeAssociation,
       StringCodeType pStringCode, ShortCode pShortCode ) {

@@ -97,18 +97,6 @@ public class Problem implements Serializable {
   }
 
   /**
-   * Method creates a new builder and initializes it with the data from the passed object.
-   *
-   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-   * @return {@link Builder} New builder that can be used to create new Problem objects. The method never returns null.
-   * @deprecated Please use {@link #toBuilder()} instead.
-   */
-  @Deprecated
-  public static Builder builder( Problem pObject ) {
-    return new Builder(pObject);
-  }
-
-  /**
    * Method creates a new builder and initializes it with the passed attributes.
    */
   public static Builder builder( String pTitle, int pStatus, String pType, String pDetail, String pInstance ) {
@@ -135,7 +123,7 @@ public class Problem implements Serializable {
    *
    * @param pInstance Value to which {@link #instance} should be set.
    *
-   * @return {@link Problem}
+   * @return {@link com.anaptecs.spring.base.Problem}
    */
   public static Problem of( String pTitle, int pStatus, String pType, String pDetail, String pInstance ) {
     Problem.Builder lBuilder = Problem.builder();

@@ -159,12 +159,7 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
       productCodes = new HashSet<ProductCode>();
     }
     description = pBuilder.description;
-    if (pBuilder.sortiments != null) {
-      sortiments = pBuilder.sortiments;
-    }
-    else {
-      sortiments = new HashSet<Sortiment>();
-    }
+    sortiments = new HashSet<Sortiment>();
     uri = pBuilder.uri;
   }
 
@@ -203,8 +198,6 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
     @Deprecated
     private String description;
 
-    private Set<Sortiment> sortiments;
-
     /**
      * <br/>
      * <b>Default Value:</b> <code>"https://products.anaptecs.de/123456789"</code>
@@ -232,7 +225,6 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
         supportedCurrencies = pObject.supportedCurrencies;
         productCodes = pObject.productCodes;
         description = pObject.description;
-        sortiments = pObject.sortiments;
         uri = pObject.uri;
       }
     }
@@ -409,39 +401,6 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
     public BuilderBase setDescription( String pDescription ) {
       // Assign value to attribute
       description = pDescription;
-      return this;
-    }
-
-    /**
-     * Method sets association {@link #sortiments}.<br/>
-     *
-     * @param pSortiments Collection to which {@link #sortiments} should be set.
-     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
-     */
-    public BuilderBase setSortiments( Set<Sortiment> pSortiments ) {
-      // To ensure immutability we have to copy the content of the passed collection.
-      if (pSortiments != null) {
-        sortiments = new HashSet<Sortiment>(pSortiments);
-      }
-      else {
-        sortiments = null;
-      }
-      return this;
-    }
-
-    /**
-     * Method adds the passed objects to association {@link #sortiments}.<br/>
-     *
-     * @param pSortiments Array of objects that should be added to {@link #sortiments}. The parameter may be null.
-     * @return {@link BuilderBase} Instance of this builder to support chaining. Method never returns null.
-     */
-    public BuilderBase addToSortiments( Sortiment... pSortiments ) {
-      if (pSortiments != null) {
-        if (sortiments == null) {
-          sortiments = new HashSet<Sortiment>();
-        }
-        sortiments.addAll(Arrays.asList(pSortiments));
-      }
       return this;
     }
 

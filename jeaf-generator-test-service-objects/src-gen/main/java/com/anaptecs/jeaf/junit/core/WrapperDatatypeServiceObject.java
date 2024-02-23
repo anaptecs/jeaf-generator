@@ -109,19 +109,6 @@ public class WrapperDatatypeServiceObject implements ServiceObject {
   }
 
   /**
-   * Method creates a new builder and initializes it with the data from the passed object.
-   *
-   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-   * @return {@link Builder} New builder that can be used to create new WrapperDatatypeServiceObject objects. The method
-   * never returns null.
-   * @deprecated Please use {@link #toBuilder()} instead.
-   */
-  @Deprecated
-  public static Builder builder( WrapperDatatypeServiceObject pObject ) {
-    return new Builder(pObject);
-  }
-
-  /**
    * Convenience method to create new instance of class WrapperDatatypeServiceObject.
    *
    *
@@ -139,7 +126,7 @@ public class WrapperDatatypeServiceObject implements ServiceObject {
    *
    * @param pMyShort Value to which {@link #myShort} should be set.
    *
-   * @return {@link WrapperDatatypeServiceObject}
+   * @return {@link com.anaptecs.jeaf.junit.core.WrapperDatatypeServiceObject}
    */
   public static WrapperDatatypeServiceObject of( Boolean pMyBoolean, Byte pMyByte, Character pMyCharacter,
       Double pMyDouble, Float pMyFloat, Long pMyLong, Short pMyShort ) {

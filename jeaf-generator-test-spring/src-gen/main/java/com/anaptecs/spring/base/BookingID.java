@@ -89,19 +89,6 @@ public class BookingID {
   }
 
   /**
-   * Method creates a new builder and initializes it with the data from the passed object.
-   *
-   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-   * @return {@link Builder} New builder that can be used to create new BookingID objects. The method never returns
-   * null.
-   * @deprecated Please use {@link #toBuilder()} instead.
-   */
-  @Deprecated
-  public static Builder builder( BookingID pObject ) {
-    return new Builder(pObject);
-  }
-
-  /**
    * Convenience method to create new instance of class BookingID.
    *
    *
@@ -115,7 +102,7 @@ public class BookingID {
    *
    * @param pBookingCode Value to which {@link #bookingCode} should be set.
    *
-   * @return {@link BookingID}
+   * @return {@link com.anaptecs.spring.base.BookingID}
    */
   public static BookingID of( String pPublicBookingID, String pReferenceID, String pExternalRefID,
       InventoryType pInventory, BookingCode pBookingCode ) {

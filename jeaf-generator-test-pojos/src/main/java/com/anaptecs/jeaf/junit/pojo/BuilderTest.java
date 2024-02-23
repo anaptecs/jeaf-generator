@@ -14,7 +14,7 @@ public class BuilderTest {
     ImmutablePOJO lPOJO = lBuilder.setName("Hello").setSomething(4711).build();
     lPOJO = lBuilder.setName("Hello").setSomething(4711).buildValidated();
 
-    lBuilder = ImmutablePOJO.builder(lPOJO);
+    lBuilder = lPOJO.toBuilder();
 
     Builder lNewBuilder = POJOWithIDnMethod.builder();
     POJOWithIDnMethod lPOJOwithIDnMethod = lNewBuilder.setID(null).build();

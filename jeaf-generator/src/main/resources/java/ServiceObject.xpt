@@ -402,19 +402,27 @@
 			«ELSE»
 				«IF attr.isMultivalued()»
 					«IF attr.isStatic == false»
-						if(pBuilder.«attr.name» != null) {
-						«attr.name» = pBuilder.«attr.name»;
-						}
-						else {
-						«IF attr.isSoftLink()»
-						  «attr.name» = new «attr.getCollectionImplType()»<«((SoftLink)attr).getMultivaluedJavaSoftLinkType()»>();
-						«ELSE»
-						  «attr.name» = new «attr.getCollectionImplType()»<«attr.type.fqn()»>();
-						«ENDIF»
-						}
+						«IF attr.belongsToTransientBidirectionalBackReference() == false»
+							if(pBuilder.«attr.name» != null) {
+							«attr.name» = pBuilder.«attr.name»;
+							}
+							else {
+							«IF attr.isSoftLink()»
+							  «attr.name» = new «attr.getCollectionImplType()»<«((SoftLink)attr).getMultivaluedJavaSoftLinkType()»>();
+							«ELSE»
+							  «attr.name» = new «attr.getCollectionImplType()»<«attr.type.fqn()»>();
+							«ENDIF»
+							}
+					    «ELSE»
+                            «IF attr.isSoftLink()»
+                              «attr.name» = new «attr.getCollectionImplType()»<«((SoftLink)attr).getMultivaluedJavaSoftLinkType()»>();
+                            «ELSE»
+                              «attr.name» = new «attr.getCollectionImplType()»<«attr.type.fqn()»>();
+                            «ENDIF»
+					    «ENDIF»
 					«ENDIF»
 				«ELSE»
-					«IF attr.isStatic == false»
+					«IF attr.isStatic == false && attr.belongsToTransientBidirectionalBackReference() == false»
 						«attr.name» = pBuilder.«attr.name»;
 					«ENDIF»			  	
 				«ENDIF»

@@ -87,18 +87,6 @@ public class ChildBB extends ChildB {
   }
 
   /**
-   * Method creates a new builder and initializes it with the data from the passed object.
-   *
-   * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-   * @return {@link Builder} New builder that can be used to create new ChildBB objects. The method never returns null.
-   * @deprecated Please use {@link #toBuilder()} instead.
-   */
-  @Deprecated
-  public static Builder builder( ChildBB pObject ) {
-    return new Builder(pObject);
-  }
-
-  /**
    * Convenience method to create new instance of class ChildBB.
    *
    *
@@ -108,7 +96,7 @@ public class ChildBB extends ChildB {
    *
    * @param pDeprecatedAttribute Value to which {@link #deprecatedAttribute} should be set.
    *
-   * @return {@link ChildBB}
+   * @return {@link com.anaptecs.jeaf.junit.openapi.base.ChildBB}
    */
   public static ChildBB of( String pParentAttribute, Long pChildBBAttribute, int pDeprecatedAttribute ) {
     ChildBB.Builder lBuilder = ChildBB.builder();
