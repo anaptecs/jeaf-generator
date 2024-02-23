@@ -323,7 +323,7 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
 «DEFINE DoBuilderPropertyDeclaration FOR Property»
 	«EXPAND java::Helper::GenerateDeprecationAnnotation-»
     «EXPAND Validation::ValidationAnnotation»
-	private «this.fqn()»«IF isMultivalued()»[]«ENDIF» «name»«IF this.isRealInitValue() && this.isMultivalued()== false » = «IF this.isJEAFEnumeration()»«this.type.name».«ENDIF»«this.initValue()»«ENDIF»;
+	private «this.fqn()»«IF isMultivalued()»[]«ENDIF» «name»«IF this.isRealInitValue() && this.isMultivalued()== false » = «IF this.isJEAFEnumerationProperty()»«this.type.name».«ENDIF»«this.initValue()»«ENDIF»;
 «ENDDEFINE»
 
 «DEFINE DoBuilderAssociationPropertyDeclaration FOR Property»
@@ -332,7 +332,7 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
 		«IF isMultivalued()»
 			private «this.fqn()» «asInstanceVar()»;
 		«ELSE»
-			private «type.fqn()» «asInstanceVar()»«IF this.isRealInitValue() && this.isMultivalued()== false » = «IF this.isJEAFEnumeration()»«this.type.name».«ENDIF»«this.initValue()»«ENDIF»;
+			private «type.fqn()» «asInstanceVar()»«IF this.isRealInitValue() && this.isMultivalued()== false » = «IF this.isJEAFEnumerationProperty()»«this.type.name».«ENDIF»«this.initValue()»«ENDIF»;
 		«ENDIF»
 	«ENDIF»
 «ENDDEFINE»

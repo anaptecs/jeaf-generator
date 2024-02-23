@@ -40,6 +40,10 @@ public class TheReadOnlyServiceObject implements ServiceObject {
   @JsonSetter(nulls = Nulls.SKIP)
   private final Set<BookingCode> bookingCodes;
 
+  /**
+   * @deprecated Let's reproduce #65 (<b>since:</b> not too long, <b>removed with:</b> 99.9)
+   */
+  @Deprecated
   private final InventoryType inventoryType;
 
   /**
@@ -132,6 +136,10 @@ public class TheReadOnlyServiceObject implements ServiceObject {
 
     private Set<BookingCode> bookingCodes;
 
+    /**
+     * @deprecated Let's reproduce #65 (<b>since:</b> not too long, <b>removed with:</b> 99.9)
+     */
+    @Deprecated
     private InventoryType inventoryType;
 
     /**
@@ -223,7 +231,9 @@ public class TheReadOnlyServiceObject implements ServiceObject {
      *
      * @param pInventoryType Value to which {@link #inventoryType} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @deprecated Let's reproduce #65 (<b>since:</b> not too long, <b>removed with:</b> 99.9)
      */
+    @Deprecated
     public Builder setInventoryType( InventoryType pInventoryType ) {
       inventoryType = pInventoryType;
       return this;
@@ -295,7 +305,9 @@ public class TheReadOnlyServiceObject implements ServiceObject {
    * Method returns association {@link #inventoryType}.<br/>
    *
    * @return {@link InventoryType} Value to which {@link #inventoryType} is set.
+   * @deprecated Let's reproduce #65 (<b>since:</b> not too long, <b>removed with:</b> 99.9)
    */
+  @Deprecated
   public InventoryType getInventoryType( ) {
     return inventoryType;
   }
