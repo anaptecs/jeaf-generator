@@ -29,11 +29,15 @@ public class TransientBackReferenceTest {
     assertEquals(lMaster, lClient1.getTransientMaster());
     assertEquals(lMaster, lClient2.getTransientMaster());
 
-    String lAsString = lMaster.toString();
-    assertEquals("com.anaptecs.jeaf.junit.openapi.transientback.MasterClass\r\n" + "clients: 2 element(s)\r\n"
-        + "    com.anaptecs.jeaf.junit.openapi.transientback.ClientClass\r\n" + "    name: Client 1\r\n" + "\r\n"
-        + "    com.anaptecs.jeaf.junit.openapi.transientback.ClientClass\r\n" + "    name: Client 2\r\n" + "\r\n"
-        + "name: Master 1\r\n" + "singleClient:  null\r\n", lAsString);
+    String lAsString = lMaster.toString().trim();
+    assertEquals(
+        "com.anaptecs.jeaf.junit.openapi.transientback.MasterClass" + System.lineSeparator() + "clients: 2 element(s)"
+            + System.lineSeparator() + "    com.anaptecs.jeaf.junit.openapi.transientback.ClientClass"
+            + System.lineSeparator() + "    name: Client 1" + System.lineSeparator() + System.lineSeparator()
+            + "    com.anaptecs.jeaf.junit.openapi.transientback.ClientClass" + System.lineSeparator()
+            + "    name: Client 2" + System.lineSeparator() + System.lineSeparator() + "name: Master 1"
+            + System.lineSeparator() + "singleClient:  null",
+        lAsString);
 
     String lJSON = lJSONTools.writeObjectToString(lMaster);
     assertEquals("{\"clients\":[{\"name\":\"Client 1\"},{\"name\":\"Client 2\"}],\"name\":\"Master 1\"}", lJSON);
@@ -43,11 +47,15 @@ public class TransientBackReferenceTest {
     assertEquals(lMaster, lClient1.getTransientMaster());
     assertEquals(lMaster, lClient2.getTransientMaster());
 
-    lAsString = lMaster.toString();
-    assertEquals("com.anaptecs.jeaf.junit.openapi.transientback.MasterClass\r\n" + "clients: 2 element(s)\r\n"
-        + "    com.anaptecs.jeaf.junit.openapi.transientback.ClientClass\r\n" + "    name: Client 1\r\n" + "\r\n"
-        + "    com.anaptecs.jeaf.junit.openapi.transientback.ClientClass\r\n" + "    name: Client 2\r\n" + "\r\n"
-        + "name: null\r\n" + "singleClient:  null\r\n", lAsString);
+    lAsString = lMaster.toString().trim();
+    assertEquals(
+        "com.anaptecs.jeaf.junit.openapi.transientback.MasterClass" + System.lineSeparator() + "clients: 2 element(s)"
+            + System.lineSeparator() + "    com.anaptecs.jeaf.junit.openapi.transientback.ClientClass"
+            + System.lineSeparator() + "    name: Client 1" + System.lineSeparator() + System.lineSeparator()
+            + "    com.anaptecs.jeaf.junit.openapi.transientback.ClientClass" + System.lineSeparator()
+            + "    name: Client 2" + System.lineSeparator() + System.lineSeparator() + "name: null"
+            + System.lineSeparator() + "singleClient:  null",
+        lAsString);
 
     lJSON = lJSONTools.writeObjectToString(lMaster);
     assertEquals("{\"clients\":[{\"name\":\"Client 1\"},{\"name\":\"Client 2\"}]}", lJSON);
@@ -76,13 +84,16 @@ public class TransientBackReferenceTest {
     assertEquals(lMaster, lClient1.getManyMasters().get(0));
     assertEquals(0, lClient2.getManyMasters().size());
 
-    lAsString = lMaster.toString();
+    lAsString = lMaster.toString().trim();
     assertEquals(
-        "com.anaptecs.jeaf.junit.openapi.transientback.MasterClass\r\n" + "clients: 2 element(s)\r\n"
-            + "    com.anaptecs.jeaf.junit.openapi.transientback.ClientClass\r\n" + "    name: Client 1\r\n" + "\r\n"
-            + "    com.anaptecs.jeaf.junit.openapi.transientback.ClientClass\r\n" + "    name: Client 2\r\n" + "\r\n"
-            + "name: Master 1\r\n" + "singleClient: \r\n"
-            + "    com.anaptecs.jeaf.junit.openapi.transientback.ClientClass\r\n" + "    name: Client 1\r\n",
+        "com.anaptecs.jeaf.junit.openapi.transientback.MasterClass" + System.lineSeparator() + "clients: 2 element(s)"
+            + System.lineSeparator() + "    com.anaptecs.jeaf.junit.openapi.transientback.ClientClass"
+            + System.lineSeparator() + "    name: Client 1" + System.lineSeparator() + System.lineSeparator()
+            + "    com.anaptecs.jeaf.junit.openapi.transientback.ClientClass" + System.lineSeparator()
+            + "    name: Client 2" + System.lineSeparator() + System.lineSeparator() + "name: Master 1"
+            + System.lineSeparator() + "singleClient: " + System.lineSeparator()
+            + "    com.anaptecs.jeaf.junit.openapi.transientback.ClientClass" + System.lineSeparator()
+            + "    name: Client 1",
         lAsString);
 
     lJSON = lJSONTools.writeObjectToString(lMaster);
@@ -113,11 +124,13 @@ public class TransientBackReferenceTest {
     assertEquals(lMaster, lClient1.getTransientMaster());
     assertEquals(lMaster, lClient2.getTransientMaster());
 
-    String lAsString = lMaster.toString();
-    assertEquals("com.anaptecs.jeaf.junit.openapi.transientback.ReadOnlyMaster\r\n" + "name: Master 1\r\n"
-        + "clients: 2 element(s)\r\n" + "    com.anaptecs.jeaf.junit.openapi.transientback.ReadOnlyClient\r\n"
-        + "    name: Client 1\r\n" + "\r\n" + "    com.anaptecs.jeaf.junit.openapi.transientback.ReadOnlyClient\r\n"
-        + "    name: Client 2\r\n" + "\r\n", lAsString);
+    String lAsString = lMaster.toString().trim();
+    assertEquals("com.anaptecs.jeaf.junit.openapi.transientback.ReadOnlyMaster" + System.lineSeparator()
+        + "name: Master 1" + System.lineSeparator() + "clients: 2 element(s)" + System.lineSeparator()
+        + "    com.anaptecs.jeaf.junit.openapi.transientback.ReadOnlyClient" + System.lineSeparator()
+        + "    name: Client 1" + System.lineSeparator() + System.lineSeparator()
+        + "    com.anaptecs.jeaf.junit.openapi.transientback.ReadOnlyClient" + System.lineSeparator()
+        + "    name: Client 2", lAsString);
 
     String lJSON = lJSONTools.writeObjectToString(lMaster);
     assertEquals("{\"name\":\"Master 1\",\"clients\":[{\"name\":\"Client 1\"},{\"name\":\"Client 2\"}]}", lJSON);
