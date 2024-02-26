@@ -76,6 +76,10 @@ public class BidirectionalB {
     // Read attribute values from builder.
     if (pBuilder.as != null) {
       as = pBuilder.as;
+      // As association is bidirectional we also have to set it in the other direction.
+      for (BidirectionalA lNext : as) {
+        lNext.setTransientB((BidirectionalB) this);
+      }
     }
     else {
       as = new ArrayList<BidirectionalA>();
@@ -84,6 +88,10 @@ public class BidirectionalB {
     asBackReferenceInitialized = true;
     if (pBuilder.theAs != null) {
       theAs = pBuilder.theAs;
+      // As association is bidirectional we also have to set it in the other direction.
+      for (BidirectionalA lNext : theAs) {
+        lNext.addToTransientBs((BidirectionalB) this);
+      }
     }
     else {
       theAs = new ArrayList<BidirectionalA>();
@@ -254,8 +262,8 @@ public class BidirectionalB {
   public void addToAs( BidirectionalA pAs ) {
     // Check parameter "pAs" for invalid value null.
     Check.checkInvalidParameterNull(pAs, "pAs");
-    // Since this is not a many-to-many association the association to which the passed object belongs, has to
-    // be released.
+    // Since this is not a many-to-many association the association to which the passed object belongs, has to be
+    // released.
     pAs.unsetTransientB();
     // Add passed object to collection of associated BidirectionalA objects.
     as.add(pAs);
@@ -401,6 +409,38 @@ public class BidirectionalB {
     lBuilder.append(pIndent);
     lBuilder.append(this.getClass().getName());
     lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("as: ");
+    if (as != null) {
+      lBuilder.append(as.size());
+      lBuilder.append(" element(s)");
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    if (as != null) {
+      for (BidirectionalA lNext : as) {
+        lBuilder.append(lNext.toStringBuilder(pIndent + "    "));
+        lBuilder.append(System.lineSeparator());
+      }
+    }
+    lBuilder.append(pIndent);
+    lBuilder.append("theAs: ");
+    if (theAs != null) {
+      lBuilder.append(theAs.size());
+      lBuilder.append(" element(s)");
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    if (theAs != null) {
+      for (BidirectionalA lNext : theAs) {
+        lBuilder.append(lNext.toStringBuilder(pIndent + "    "));
+        lBuilder.append(System.lineSeparator());
+      }
+    }
     return lBuilder;
   }
 

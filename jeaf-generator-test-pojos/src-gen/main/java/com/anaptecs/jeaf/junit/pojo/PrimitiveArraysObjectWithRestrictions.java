@@ -1533,6 +1533,204 @@ public class PrimitiveArraysObjectWithRestrictions {
     lBuilder.append(pIndent);
     lBuilder.append(this.getClass().getName());
     lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("aBooleanArray: ");
+    if (aBooleanArray != null) {
+      lBuilder.append(Arrays.toString(aBooleanArray));
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("bBooleanArray: ");
+    if (bBooleanArray != null) {
+      lBuilder.append(Arrays.toString(bBooleanArray));
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("cBooleanArray: ");
+    if (cBooleanArray != null) {
+      lBuilder.append(Arrays.toString(cBooleanArray));
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("aByteArray: ");
+    if (aByteArray != null) {
+      lBuilder.append(Arrays.toString(aByteArray));
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("bByteArray: ");
+    if (bByteArray != null) {
+      lBuilder.append(Arrays.toString(bByteArray));
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("aShortArray: ");
+    if (aShortArray != null) {
+      lBuilder.append(Arrays.toString(aShortArray));
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("bShortArray: ");
+    if (bShortArray != null) {
+      lBuilder.append(Arrays.toString(bShortArray));
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("aIntegerArray: ");
+    if (aIntegerArray != null) {
+      lBuilder.append(Arrays.toString(aIntegerArray));
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("bIntegerArray: ");
+    if (bIntegerArray != null) {
+      lBuilder.append(Arrays.toString(bIntegerArray));
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("cIntegerArray: ");
+    if (cIntegerArray != null) {
+      lBuilder.append(Arrays.toString(cIntegerArray));
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("aLongArray: ");
+    if (aLongArray != null) {
+      lBuilder.append(Arrays.toString(aLongArray));
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("bLongArray: ");
+    if (bLongArray != null) {
+      lBuilder.append(Arrays.toString(bLongArray));
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("aBigIntegerArray: ");
+    if (aBigIntegerArray != null) {
+      lBuilder.append(Arrays.toString(aBigIntegerArray));
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("aCharacterArray: ");
+    if (aCharacterArray != null) {
+      lBuilder.append(Arrays.toString(aCharacterArray));
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("bCharacterArray: ");
+    if (bCharacterArray != null) {
+      lBuilder.append(Arrays.toString(bCharacterArray));
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("aFloatArray: ");
+    if (aFloatArray != null) {
+      lBuilder.append(Arrays.toString(aFloatArray));
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("bFloatArray: ");
+    if (bFloatArray != null) {
+      lBuilder.append(Arrays.toString(bFloatArray));
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("aDoubleArray: ");
+    if (aDoubleArray != null) {
+      lBuilder.append(Arrays.toString(aDoubleArray));
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("bDoubleArray: ");
+    if (bDoubleArray != null) {
+      lBuilder.append(Arrays.toString(bDoubleArray));
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("aBigDecimalArray: ");
+    if (aBigDecimalArray != null) {
+      lBuilder.append(Arrays.toString(aBigDecimalArray));
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("aStringArray: ");
+    if (aStringArray != null) {
+      lBuilder.append(Arrays.toString(aStringArray));
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("bStringArray: ");
+    if (bStringArray != null) {
+      lBuilder.append(Arrays.toString(bStringArray));
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
     return lBuilder;
   }
 

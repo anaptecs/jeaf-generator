@@ -306,6 +306,23 @@ public class AndOneMorePOJO {
     lBuilder.append("genericProperty: ");
     lBuilder.append(genericProperty);
     lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("genericResponses: ");
+    if (genericResponses != null) {
+      lBuilder.append(genericResponses.size());
+      lBuilder.append(" element(s)");
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    if (genericResponses != null) {
+      for (GenericResponsePOJO<MyBusinessObject> lNext : genericResponses) {
+        lBuilder.append(pIndent + "    ");
+        lBuilder.append(lNext.toString());
+        lBuilder.append(System.lineSeparator());
+      }
+    }
     return lBuilder;
   }
 

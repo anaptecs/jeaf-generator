@@ -416,6 +416,54 @@ public class SoftLinkChildB extends SoftLinkParent {
   }
 
   /**
+   * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
+   * StringBuilder also takes care about attributes of super classes.
+   *
+   * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.
+   */
+  @Override
+  public StringBuilder toStringBuilder( String pIndent ) {
+    StringBuilder lBuilder = super.toStringBuilder(pIndent);
+    lBuilder.append(pIndent);
+    lBuilder.append("heyBrother: ");
+    lBuilder.append(heyBrother);
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("softLinkPartners: ");
+    if (softLinkPartners != null) {
+      lBuilder.append(softLinkPartners.size());
+      lBuilder.append(" element(s)");
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    if (softLinkPartners != null) {
+      for (String lNext : softLinkPartners) {
+        lBuilder.append(pIndent + "    ");
+        lBuilder.append(lNext.toString());
+        lBuilder.append(System.lineSeparator());
+      }
+    }
+    lBuilder.append(pIndent);
+    lBuilder.append("oneLink: ");
+    lBuilder.append(oneLink);
+    lBuilder.append(System.lineSeparator());
+    return lBuilder;
+  }
+
+  /**
+   * Method creates a new String with the values of all attributes of this class. All references to other objects will
+   * be ignored.
+   *
+   * @return {@link String} String representation of this object. The method never returns null.
+   */
+  @Override
+  public String toString( ) {
+    return this.toStringBuilder("").toString();
+  }
+
+  /**
    * Method creates a new builder and initializes it with the data of this object.
    *
    * @return {@link Builder} New builder that can be used to create new SoftLinkChildB objects. The method never returns

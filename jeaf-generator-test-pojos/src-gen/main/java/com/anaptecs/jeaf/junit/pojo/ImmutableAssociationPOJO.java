@@ -474,6 +474,58 @@ public class ImmutableAssociationPOJO {
     lBuilder.append("yetAnotherAttribute: ");
     lBuilder.append(yetAnotherAttribute);
     lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("readonlyAssociation: ");
+    if (readonlyAssociation != null) {
+      lBuilder.append(readonlyAssociation.size());
+      lBuilder.append(" element(s)");
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    if (readonlyAssociation != null) {
+      for (ImmutablePOJO lNext : readonlyAssociation) {
+        lBuilder.append(lNext.toStringBuilder(pIndent + "    "));
+        lBuilder.append(System.lineSeparator());
+      }
+    }
+    lBuilder.append(pIndent);
+    lBuilder.append("immutableChildPOJO: ");
+    if (immutableChildPOJO != null) {
+      lBuilder.append(System.lineSeparator());
+      lBuilder.append(immutableChildPOJO.toStringBuilder(pIndent + "    "));
+    }
+    else {
+      lBuilder.append(" null");
+      lBuilder.append(System.lineSeparator());
+    }
+    lBuilder.append(pIndent);
+    lBuilder.append("deprecatedRefs: ");
+    if (deprecatedRefs != null) {
+      lBuilder.append(deprecatedRefs.size());
+      lBuilder.append(" element(s)");
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    if (deprecatedRefs != null) {
+      for (ImmutableChildPOJO lNext : deprecatedRefs) {
+        lBuilder.append(lNext.toStringBuilder(pIndent + "    "));
+        lBuilder.append(System.lineSeparator());
+      }
+    }
+    lBuilder.append(pIndent);
+    lBuilder.append("deprecatedRef: ");
+    if (deprecatedRef != null) {
+      lBuilder.append(System.lineSeparator());
+      lBuilder.append(deprecatedRef.toStringBuilder(pIndent + "    "));
+    }
+    else {
+      lBuilder.append(" null");
+      lBuilder.append(System.lineSeparator());
+    }
     return lBuilder;
   }
 

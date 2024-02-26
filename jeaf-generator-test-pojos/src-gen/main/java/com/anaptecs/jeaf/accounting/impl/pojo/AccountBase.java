@@ -74,6 +74,10 @@ public abstract class AccountBase {
     // Read attribute values from builder.
     iban = pBuilder.iban;
     owner = pBuilder.owner;
+    if (owner != null) {
+      // As association is bidirectional we also have to set it in the other direction.
+      owner.addToAccounts((Account) this);
+    }
     currency = pBuilder.currency;
     if (pBuilder.allBookings != null) {
       allBookings = pBuilder.allBookings;
@@ -383,9 +387,35 @@ public abstract class AccountBase {
     lBuilder.append(iban);
     lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
+    lBuilder.append("owner: ");
+    if (owner != null) {
+      lBuilder.append(System.lineSeparator());
+      lBuilder.append(owner.toStringBuilder(pIndent + "    "));
+    }
+    else {
+      lBuilder.append(" null");
+      lBuilder.append(System.lineSeparator());
+    }
+    lBuilder.append(pIndent);
     lBuilder.append("currency: ");
     lBuilder.append(currency);
     lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("allBookings: ");
+    if (allBookings != null) {
+      lBuilder.append(allBookings.size());
+      lBuilder.append(" element(s)");
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    if (allBookings != null) {
+      for (Booking lNext : allBookings) {
+        lBuilder.append(lNext.toStringBuilder(pIndent + "    "));
+        lBuilder.append(System.lineSeparator());
+      }
+    }
     return lBuilder;
   }
 

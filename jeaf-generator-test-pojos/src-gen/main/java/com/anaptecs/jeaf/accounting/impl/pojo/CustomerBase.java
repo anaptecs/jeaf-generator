@@ -81,6 +81,10 @@ public abstract class CustomerBase extends Partner {
     email = pBuilder.email;
     if (pBuilder.accounts != null) {
       accounts = pBuilder.accounts;
+      // As association is bidirectional we also have to set it in the other direction.
+      for (Account lNext : accounts) {
+        lNext.setOwner((Customer) this);
+      }
     }
     else {
       accounts = new HashSet<Account>();
@@ -290,8 +294,8 @@ public abstract class CustomerBase extends Partner {
   public void addToAccounts( Account pAccounts ) {
     // Check parameter "pAccounts" for invalid value null.
     Check.checkInvalidParameterNull(pAccounts, "pAccounts");
-    // Since this is not a many-to-many association the association to which the passed object belongs, has to
-    // be released.
+    // Since this is not a many-to-many association the association to which the passed object belongs, has to be
+    // released.
     pAccounts.unsetOwner();
     // Add passed object to collection of associated Account objects.
     accounts.add(pAccounts);
@@ -393,6 +397,22 @@ public abstract class CustomerBase extends Partner {
     lBuilder.append("email: ");
     lBuilder.append(email);
     lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("accounts: ");
+    if (accounts != null) {
+      lBuilder.append(accounts.size());
+      lBuilder.append(" element(s)");
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    if (accounts != null) {
+      for (Account lNext : accounts) {
+        lBuilder.append(lNext.toStringBuilder(pIndent + "    "));
+        lBuilder.append(System.lineSeparator());
+      }
+    }
     return lBuilder;
   }
 
