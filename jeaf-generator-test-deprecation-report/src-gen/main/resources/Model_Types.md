@@ -53,6 +53,7 @@ ChildBeanParameterType |   | com.anaptecs.jeaf.junit.openapi.service1 |  |
 ChildPOJO |   | com.anaptecs.jeaf.junit.pojo | This is the first line of the first comment<br>2nd line |
 ClassA |   | com.anaptecs.jeaf.junit.core |  |
 ClassB |   | com.anaptecs.jeaf.junit.core |  |
+ClientClass |   | com.anaptecs.jeaf.junit.pojo.transientback |  |
 ClientClass |   | com.anaptecs.jeaf.junit.openapi.transientback |  |
 CodeTypeUsageTest |   | com.anaptecs.jeaf.junit.openapi.base |  |
 Color |   | com.anaptecs.jeaf.junit.core | There are so many colors. |
@@ -114,6 +115,7 @@ LongCode |   | com.anaptecs.jeaf.junit.openapi.base |  |
 LongCodeType |   | com.anaptecs.jeaf.junit.openapi.base |  |
 MappingChild |   | com.anaptecs.jeaf.junit.objectmapping |  |
 MappingParent |   | com.anaptecs.jeaf.junit.objectmapping |  |
+MasterClass |   | com.anaptecs.jeaf.junit.pojo.transientback |  |
 MasterClass |   | com.anaptecs.jeaf.junit.openapi.transientback |  |
 Message |   | com.anaptecs.jeaf.junit.rest.generics |  |
 Message |   | com.anaptecs.jeaf.junit.generics |  |
@@ -156,7 +158,9 @@ Product |   | com.anaptecs.jeaf.junit.product.pojo |  |
 Product |  Produkt | com.anaptecs.jeaf.junit.openapi.base | Data type represents a product definition |
 ProductCategory |   | com.anaptecs.jeaf.junit.product |  |
 ProductCode |   | com.anaptecs.jeaf.junit.openapi.base |  |
+ReadOnlyClient |   | com.anaptecs.jeaf.junit.pojo.transientback |  |
 ReadOnlyClient |   | com.anaptecs.jeaf.junit.openapi.transientback |  |
+ReadOnlyMaster |   | com.anaptecs.jeaf.junit.pojo.transientback |  |
 ReadOnlyMaster |   | com.anaptecs.jeaf.junit.openapi.transientback |  |
 ReadonlyDefaultPOJO |   | com.anaptecs.jeaf.junit.pojo |  |
 ReadonlyServiceObject |   | com.anaptecs.jeaf.junit.core |  |
