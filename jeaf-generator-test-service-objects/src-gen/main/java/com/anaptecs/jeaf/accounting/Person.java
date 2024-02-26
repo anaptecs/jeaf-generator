@@ -122,6 +122,10 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
     dateOfBirth = pBuilder.dateOfBirth;
     accounts = new HashSet<Account>();
     customer = pBuilder.customer;
+    if (customer != null) {
+      // As association is bidirectional we also have to set it in the other direction.
+      customer.setPerson((Person) this);
+    }
     age = pBuilder.age;
     displayName = pBuilder.displayName;
   }
@@ -416,16 +420,11 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
    *
    * @param pAccounts Object that should be added to {@link #accounts}. The parameter must not be null.
    */
-  public void addToAccounts( Account pAccounts ) {
+  void addToAccounts( Account pAccounts ) {
     // Check parameter "pAccounts" for invalid value null.
     Check.checkInvalidParameterNull(pAccounts, "pAccounts");
     // Add passed object to collection of associated Account objects.
     accounts.add(pAccounts);
-    // The association is set in both directions because within the UML model it is defined to be bidirectional.
-    // In case that one side will be removed from the association the other side will also be removed.
-    if (pAccounts != null && pAccounts.getAuthorizedPersons().contains(this) == false) {
-      pAccounts.addToAuthorizedPersons((Person) this);
-    }
   }
 
   /**
@@ -434,7 +433,7 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
    * @param pAccounts Collection with all objects that should be added to {@link #accounts}. The parameter must not be
    * null.
    */
-  public void addToAccounts( Collection<Account> pAccounts ) {
+  void addToAccounts( Collection<Account> pAccounts ) {
     // Check parameter "pAccounts" for invalid value null.
     Check.checkInvalidParameterNull(pAccounts, "pAccounts");
     // Add all passed objects.
@@ -448,22 +447,17 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
    *
    * @param pAccounts Object that should be removed from {@link #accounts}. The parameter must not be null.
    */
-  public void removeFromAccounts( Account pAccounts ) {
+  void removeFromAccounts( Account pAccounts ) {
     // Check parameter for invalid value null.
     Check.checkInvalidParameterNull(pAccounts, "pAccounts");
     // Remove passed object from collection of associated Account objects.
     accounts.remove(pAccounts);
-    // The association is set in both directions because within the UML model it is defined to be bidirectional.
-    // In case that one side will be removed from the association the other side will also be removed.
-    if (pAccounts.getAuthorizedPersons().contains(this) == true) {
-      pAccounts.removeFromAuthorizedPersons((Person) this);
-    }
   }
 
   /**
    * Method removes all objects from {@link #accounts}.
    */
-  public void clearAccounts( ) {
+  void clearAccounts( ) {
     // Remove all objects from association "accounts".
     Collection<Account> lAccounts = new HashSet<Account>(accounts);
     Iterator<Account> lIterator = lAccounts.iterator();

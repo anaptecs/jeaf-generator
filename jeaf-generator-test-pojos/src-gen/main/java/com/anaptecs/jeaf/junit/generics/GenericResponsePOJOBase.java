@@ -389,6 +389,38 @@ public abstract class GenericResponsePOJOBase<T> {
     lBuilder.append(this.getClass().getName());
     lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
+    lBuilder.append("errors: ");
+    if (errors != null) {
+      lBuilder.append(errors.size());
+      lBuilder.append(" element(s)");
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    if (errors != null) {
+      for (Message lNext : errors) {
+        lBuilder.append(lNext.toStringBuilder(pIndent + "    "));
+        lBuilder.append(System.lineSeparator());
+      }
+    }
+    lBuilder.append(pIndent);
+    lBuilder.append("warnings: ");
+    if (warnings != null) {
+      lBuilder.append(warnings.size());
+      lBuilder.append(" element(s)");
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    if (warnings != null) {
+      for (Message lNext : warnings) {
+        lBuilder.append(lNext.toStringBuilder(pIndent + "    "));
+        lBuilder.append(System.lineSeparator());
+      }
+    }
+    lBuilder.append(pIndent);
     lBuilder.append("value: ");
     lBuilder.append(value);
     lBuilder.append(System.lineSeparator());

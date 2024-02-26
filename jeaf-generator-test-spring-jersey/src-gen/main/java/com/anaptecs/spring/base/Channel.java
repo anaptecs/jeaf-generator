@@ -307,30 +307,19 @@ public class Channel {
    *
    * @param pReseller Value to which {@link #reseller} should be set.
    */
-  public void setReseller( Reseller pReseller ) {
+  void setReseller( Reseller pReseller ) {
     // Release already referenced object before setting a new association.
     if (reseller != null) {
       reseller.removeFromChannels((Channel) this);
     }
     reseller = pReseller;
-    // The association is set in both directions because within the UML model it is defined to be bidirectional.
-    // In case that one side will be removed from the association the other side will also be removed.
-    if (pReseller != null && pReseller.getChannels().contains(this) == false) {
-      pReseller.addToChannels((Channel) this);
-    }
   }
 
   /**
    * Method unsets {@link #reseller}.
    */
-  public final void unsetReseller( ) {
-    // The association is set in both directions because within the UML model it is defined to be bidirectional.
-    // In case that one side will be removed from the association the other side will also be removed.
-    Reseller lReseller = reseller;
+  final void unsetReseller( ) {
     reseller = null;
-    if (lReseller != null && lReseller.getChannels().contains(this) == true) {
-      lReseller.removeFromChannels((Channel) this);
-    }
   }
 
   /**
@@ -366,16 +355,6 @@ public class Channel {
     lBuilder.append("selfServiceChannel: ");
     lBuilder.append(selfServiceChannel);
     lBuilder.append(System.lineSeparator());
-    lBuilder.append(pIndent);
-    lBuilder.append("reseller: ");
-    if (reseller != null) {
-      lBuilder.append(System.lineSeparator());
-      lBuilder.append(reseller.toStringBuilder(pIndent + "    "));
-    }
-    else {
-      lBuilder.append(" null");
-      lBuilder.append(System.lineSeparator());
-    }
     return lBuilder;
   }
 

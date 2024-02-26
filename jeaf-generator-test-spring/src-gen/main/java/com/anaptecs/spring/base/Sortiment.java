@@ -51,6 +51,10 @@ public class Sortiment {
     // Read attribute values from builder.
     if (pBuilder.products != null) {
       products = pBuilder.products;
+      // As association is bidirectional we also have to set it in the other direction.
+      for (Product lNext : products) {
+        lNext.addToSortiments((Sortiment) this);
+      }
     }
     else {
       products = new HashSet<Product>();

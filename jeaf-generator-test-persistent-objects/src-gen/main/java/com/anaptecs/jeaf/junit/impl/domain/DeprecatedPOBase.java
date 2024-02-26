@@ -143,8 +143,8 @@ public abstract class DeprecatedPOBase extends PersistentObject {
   public void addToBaseClasses( BaseClassBO pBaseClasses ) {
     // Check parameter "pBaseClasses" for invalid value null.
     Check.checkInvalidParameterNull(pBaseClasses, "pBaseClasses");
-    // Since this is not a many-to-many association the association to which the passed object belongs, has to
-    // be released.
+    // Since this is not a many-to-many association the association to which the passed object belongs, has to be
+    // released.
     pBaseClasses.unsetDeprecatedPO();
     // Add passed object to collection of associated BaseClassBO objects.
     baseClasses.add(pBaseClasses);

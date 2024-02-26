@@ -40,6 +40,10 @@ public class Individual extends Customer {
     super(pBuilder);
     // Read attribute values from builder.
     person = pBuilder.person;
+    if (person != null) {
+      // As association is bidirectional we also have to set it in the other direction.
+      person.setCustomer((Individual) this);
+    }
   }
 
   /**

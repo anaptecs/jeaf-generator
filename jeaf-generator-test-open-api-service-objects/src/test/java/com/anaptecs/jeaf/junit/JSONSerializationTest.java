@@ -59,8 +59,8 @@ public class JSONSerializationTest {
     ChannelCode lDeserializedChannelCode = lTools.read(lJSONString, ChannelCode.class);
     assertEquals("POS", lDeserializedChannelCode.getCode());
 
-    Channel lChannel = Channel.builder().setChannelCode(lChannelCode).setChannelType(ChannelType.COUNTER)
-        .setCode(47).setSelfServiceChannel(false).build();
+    Channel lChannel = Channel.builder().setChannelCode(lChannelCode).setChannelType(ChannelType.COUNTER).setCode(47)
+        .setSelfServiceChannel(false).build();
 
     lJSONString = lTools.writeObjectToString(lChannel);
     assertEquals("{\"channelType\":\"COUNTER\",\"channelCode\":\"POS\",\"code\":47,\"selfServiceChannel\":false}",
@@ -70,9 +70,8 @@ public class JSONSerializationTest {
     assertEquals("POS", lDeserilaizedChannel.getChannelCode().getCode());
     assertEquals(ChannelType.COUNTER, lDeserilaizedChannel.getChannelType());
 
-    Channel lChannel2 =
-        Channel.builder().setChannelCode(ChannelCode.builder().setCode("MOBILE_APP").build())
-            .setChannelType(ChannelType.MOBILE).setCode(42).setSelfServiceChannel(true).build();
+    Channel lChannel2 = Channel.builder().setChannelCode(ChannelCode.builder().setCode("MOBILE_APP").build())
+        .setChannelType(ChannelType.MOBILE).setCode(42).setSelfServiceChannel(true).build();
     List<Channel> lChannels = new ArrayList<>();
     lChannels.add(lChannel);
     lChannels.add(lChannel2);
@@ -104,9 +103,7 @@ public class JSONSerializationTest {
 
     ChildBB lChildBB = ChildBB.builder().setChildBBAttribute(123456789l).build();
     lValue = lTools.writeObjectToString(lChildBB);
-    assertEquals(
-        "{\"objectType\":\"ChildBB\",\"childBBAttribute\":123456789,\"deprecatedAttribute\":0}",
-        lValue);
+    assertEquals("{\"objectType\":\"ChildBB\",\"childBBAttribute\":123456789,\"deprecatedAttribute\":0}", lValue);
 
     lDeserializedParent = lTools.read(lValue, ParentClass.class);
     assert (lDeserializedParent instanceof ChildBB);
@@ -134,8 +131,8 @@ public class JSONSerializationTest {
     ServiceObjectID lProductID1 = new ServiceObjectID("12", 0);
     ServiceObjectID lProductID2 = new ServiceObjectID("4", 1);
     ServiceObjectID lResellerID = new ServiceObjectID("1234", 5);
-    Reseller lReseller = Reseller.builder().setID(lResellerID).setName("Good Guys Inc.").setLanguage(Locale.GERMAN)
-        .build();
+    Reseller lReseller =
+        Reseller.builder().setID(lResellerID).setName("Good Guys Inc.").setLanguage(Locale.GERMAN).build();
 
     // Create 1st product
     Builder lProductBuilder = Product.builder();
@@ -203,13 +200,12 @@ public class JSONSerializationTest {
   @Test
   void testInheritance( ) throws JsonProcessingException {
     JSONTools lTools = JSON.getJSONTools();
-    Company lCompany =
-        Company.builder().setID(new ServiceObjectID("123456", 2)).setName("anaptecs GmbH").build();
+    Company lCompany = Company.builder().setID(new ServiceObjectID("123456", 2)).setName("anaptecs GmbH").build();
     String lJSON = lTools.writeObjectToString(lCompany);
     assertEquals("{\"objectType\":\"Company\",\"objectID\":\"123456|2\",\"name\":\"anaptecs GmbH\"}", lJSON);
 
-    Person lDonald = Person.builder().setID(new ServiceObjectID("9876", 5)).setFirstName("Donald")
-        .setSurname("Duck").build();
+    Person lDonald =
+        Person.builder().setID(new ServiceObjectID("9876", 5)).setFirstName("Donald").setSurname("Duck").build();
 
     Partner lPartner = Partner.builder().setID(new ServiceObjectID("4711", 0)).build();
 
@@ -291,30 +287,29 @@ public class JSONSerializationTest {
   }
 
   @Test
-  void testBidirectionalAssociationsforServiceObjects( ) {
+  void testBidirectionalAssociationsforServiceObjects( ) throws JsonProcessingException {
     BidirectA lBidirectA = BidirectA.builder().build();
     BidirectA lChild = BidirectA.builder().build();
     BidirectB lBidirectB = BidirectB.builder().build();
 
-    lBidirectA.addToTransientBs(lBidirectB);
-    lBidirectA.setTransientChild(lChild);
+    lBidirectB.setA(lBidirectA);
+    lChild.setParent(lBidirectA);
 
     assertEquals(lBidirectA, lChild.getParent());
-    JSONTools lTools = JSON.getJSONTools();
-    String lJSON = lTools.writeObjectToString(lBidirectA);
+    String lJSON = JSON.getJSONTools().writeObjectToString(lBidirectA);
     assertEquals("{}", lJSON);
-    lJSON = lTools.writeObjectToString(lChild);
+    lJSON = JSON.getJSONTools().writeObjectToString(lChild);
     assertEquals("{\"parent\":{}}", lJSON);
 
-    BidirectA lDeserializedA = lTools.read(lJSON, BidirectA.class);
+    BidirectA lDeserializedA = JSONTools.getJSONTools().read(lJSON, BidirectA.class);
     BidirectA lParent = lDeserializedA.getParent();
     assertNotNull(lParent);
     assertEquals(lDeserializedA, lParent.getTransientChild());
 
-    lJSON = lTools.writeObjectToString(lBidirectB);
+    lJSON = JSON.getJSONTools().writeObjectToString(lBidirectB);
     assertEquals("{\"a\":{}}", lJSON);
 
-    BidirectB lDeserializedB = lTools.read(lJSON, BidirectB.class);
+    BidirectB lDeserializedB = JSONTools.getJSONTools().read(lJSON, BidirectB.class);
     BidirectA lA = lDeserializedB.getA();
     assertNotNull(lA);
     assertEquals(lDeserializedB, lA.getTransientBs().iterator().next());

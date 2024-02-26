@@ -93,6 +93,10 @@ public class Booking implements ServiceObject {
     source = pBuilder.source;
     target = pBuilder.target;
     token = pBuilder.token;
+    if (token != null) {
+      // As association is bidirectional we also have to set it in the other direction.
+      token.setBooking((Booking) this);
+    }
     if (pBuilder.remitters != null) {
       remitters = pBuilder.remitters;
     }
@@ -461,30 +465,19 @@ public class Booking implements ServiceObject {
    *
    * @param pAccount Value to which {@link #account} should be set.
    */
-  public void setAccount( Account pAccount ) {
+  void setAccount( Account pAccount ) {
     // Release already referenced object before setting a new association.
     if (account != null) {
       account.removeFromBookings((Booking) this);
     }
     account = pAccount;
-    // The association is set in both directions because within the UML model it is defined to be bidirectional.
-    // In case that one side will be removed from the association the other side will also be removed.
-    if (pAccount != null && pAccount.getBookings().contains(this) == false) {
-      pAccount.addToBookings((Booking) this);
-    }
   }
 
   /**
    * Method unsets {@link #account}.
    */
-  public final void unsetAccount( ) {
-    // The association is set in both directions because within the UML model it is defined to be bidirectional.
-    // In case that one side will be removed from the association the other side will also be removed.
-    Account lAccount = account;
+  final void unsetAccount( ) {
     account = null;
-    if (lAccount != null && lAccount.getBookings().contains(this) == true) {
-      lAccount.removeFromBookings((Booking) this);
-    }
   }
 
   /**

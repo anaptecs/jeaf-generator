@@ -70,8 +70,8 @@ public abstract class OrderingABase extends PersistentObject {
   public void addToOrderedUnique( OrderingB pOrderedUnique ) {
     // Check parameter "pOrderedUnique" for invalid value null.
     Check.checkInvalidParameterNull(pOrderedUnique, "pOrderedUnique");
-    // Since this is not a many-to-many association the association to which the passed object belongs, has to
-    // be released.
+    // Since this is not a many-to-many association the association to which the passed object belongs, has to be
+    // released.
     pOrderedUnique.unsetA1();
     // Add passed object to collection of associated OrderingB objects.
     orderedUnique.add(pOrderedUnique);
@@ -146,8 +146,8 @@ public abstract class OrderingABase extends PersistentObject {
   public void addToOrderedNotUnique( OrderingB pOrderedNotUnique ) {
     // Check parameter "pOrderedNotUnique" for invalid value null.
     Check.checkInvalidParameterNull(pOrderedNotUnique, "pOrderedNotUnique");
-    // Since this is not a many-to-many association the association to which the passed object belongs, has to
-    // be released.
+    // Since this is not a many-to-many association the association to which the passed object belongs, has to be
+    // released.
     pOrderedNotUnique.unsetA2();
     // Add passed object to collection of associated OrderingB objects.
     orderedNotUnique.add(pOrderedNotUnique);
@@ -265,8 +265,8 @@ public abstract class OrderingABase extends PersistentObject {
   public void addToNotOrderedNotUnique( OrderingB pNotOrderedNotUnique ) {
     // Check parameter "pNotOrderedNotUnique" for invalid value null.
     Check.checkInvalidParameterNull(pNotOrderedNotUnique, "pNotOrderedNotUnique");
-    // Since this is not a many-to-many association the association to which the passed object belongs, has to
-    // be released.
+    // Since this is not a many-to-many association the association to which the passed object belongs, has to be
+    // released.
     pNotOrderedNotUnique.unsetA4();
     // Add passed object to collection of associated OrderingB objects.
     notOrderedNotUnique.add(pNotOrderedNotUnique);

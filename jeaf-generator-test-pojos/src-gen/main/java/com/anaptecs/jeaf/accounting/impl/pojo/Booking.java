@@ -382,6 +382,26 @@ public class Booking {
     lBuilder.append(this.getClass().getName());
     lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
+    lBuilder.append("sourceAccount: ");
+    if (sourceAccount != null) {
+      lBuilder.append(System.lineSeparator());
+      lBuilder.append(sourceAccount.toStringBuilder(pIndent + "    "));
+    }
+    else {
+      lBuilder.append(" null");
+      lBuilder.append(System.lineSeparator());
+    }
+    lBuilder.append(pIndent);
+    lBuilder.append("targetAccount: ");
+    if (targetAccount != null) {
+      lBuilder.append(System.lineSeparator());
+      lBuilder.append(targetAccount.toStringBuilder(pIndent + "    "));
+    }
+    else {
+      lBuilder.append(" null");
+      lBuilder.append(System.lineSeparator());
+    }
+    lBuilder.append(pIndent);
     lBuilder.append("amount: ");
     lBuilder.append(amount);
     lBuilder.append(System.lineSeparator());

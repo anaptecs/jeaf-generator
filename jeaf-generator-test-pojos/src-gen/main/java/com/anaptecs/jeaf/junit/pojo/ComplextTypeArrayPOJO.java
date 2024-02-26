@@ -200,6 +200,15 @@ public class ComplextTypeArrayPOJO {
     lBuilder.append(pIndent);
     lBuilder.append(this.getClass().getName());
     lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("plainPOJOs: ");
+    if (plainPOJOs != null) {
+      lBuilder.append(Arrays.toString(plainPOJOs));
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
     return lBuilder;
   }
 

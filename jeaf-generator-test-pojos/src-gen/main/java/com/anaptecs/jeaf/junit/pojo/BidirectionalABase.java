@@ -75,6 +75,10 @@ public abstract class BidirectionalABase {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     child = pBuilder.child;
+    if (child != null) {
+      // As association is bidirectional we also have to set it in the other direction.
+      child.setTransientParent((BidirectionalA) this);
+    }
     // Bidirectional back reference is set up correctly as a builder is used.
     childBackReferenceInitialized = true;
     transientBs = new HashSet<BidirectionalB>();
@@ -152,30 +156,19 @@ public abstract class BidirectionalABase {
    *
    * @param pTransientB Value to which {@link #transientB} should be set.
    */
-  public void setTransientB( BidirectionalB pTransientB ) {
+  void setTransientB( BidirectionalB pTransientB ) {
     // Release already referenced object before setting a new association.
     if (transientB != null) {
       transientB.removeFromAs((BidirectionalA) this);
     }
     transientB = pTransientB;
-    // The association is set in both directions because within the UML model it is defined to be bidirectional.
-    // In case that one side will be removed from the association the other side will also be removed.
-    if (pTransientB != null && pTransientB.getAs().contains(this) == false) {
-      pTransientB.addToAs((BidirectionalA) this);
-    }
   }
 
   /**
    * Method unsets {@link #transientB}.
    */
-  public final void unsetTransientB( ) {
-    // The association is set in both directions because within the UML model it is defined to be bidirectional.
-    // In case that one side will be removed from the association the other side will also be removed.
-    BidirectionalB lBidirectionalB = transientB;
+  final void unsetTransientB( ) {
     transientB = null;
-    if (lBidirectionalB != null && lBidirectionalB.getAs().contains(this) == true) {
-      lBidirectionalB.removeFromAs((BidirectionalA) this);
-    }
   }
 
   /**
@@ -192,30 +185,19 @@ public abstract class BidirectionalABase {
    *
    * @param pTransientParent Value to which {@link #transientParent} should be set.
    */
-  public void setTransientParent( BidirectionalA pTransientParent ) {
+  void setTransientParent( BidirectionalA pTransientParent ) {
     // Release already referenced object before setting a new association.
     if (transientParent != null) {
       transientParent.unsetChild();
     }
     transientParent = pTransientParent;
-    // The association is set in both directions because within the UML model it is defined to be bidirectional.
-    // In case that one side will be removed from the association the other side will also be removed.
-    if (pTransientParent != null && this.equals(pTransientParent.getChild()) == false) {
-      pTransientParent.setChild((BidirectionalA) this);
-    }
   }
 
   /**
    * Method unsets {@link #transientParent}.
    */
-  public final void unsetTransientParent( ) {
-    // The association is set in both directions because within the UML model it is defined to be bidirectional.
-    // In case that one side will be removed from the association the other side will also be removed.
-    BidirectionalA lBidirectionalA = transientParent;
+  final void unsetTransientParent( ) {
     transientParent = null;
-    if (lBidirectionalA != null && this.equals(lBidirectionalA.getChild()) == true) {
-      lBidirectionalA.unsetChild();
-    }
   }
 
   /**
@@ -280,16 +262,11 @@ public abstract class BidirectionalABase {
    *
    * @param pTransientBs Object that should be added to {@link #transientBs}. The parameter must not be null.
    */
-  public void addToTransientBs( BidirectionalB pTransientBs ) {
+  void addToTransientBs( BidirectionalB pTransientBs ) {
     // Check parameter "pTransientBs" for invalid value null.
     Check.checkInvalidParameterNull(pTransientBs, "pTransientBs");
     // Add passed object to collection of associated BidirectionalB objects.
     transientBs.add(pTransientBs);
-    // The association is set in both directions because within the UML model it is defined to be bidirectional.
-    // In case that one side will be removed from the association the other side will also be removed.
-    if (pTransientBs != null && pTransientBs.getTheAs().contains(this) == false) {
-      pTransientBs.addToTheAs((BidirectionalA) this);
-    }
   }
 
   /**
@@ -298,7 +275,7 @@ public abstract class BidirectionalABase {
    * @param pTransientBs Collection with all objects that should be added to {@link #transientBs}. The parameter must
    * not be null.
    */
-  public void addToTransientBs( Collection<BidirectionalB> pTransientBs ) {
+  void addToTransientBs( Collection<BidirectionalB> pTransientBs ) {
     // Check parameter "pTransientBs" for invalid value null.
     Check.checkInvalidParameterNull(pTransientBs, "pTransientBs");
     // Add all passed objects.
@@ -312,22 +289,17 @@ public abstract class BidirectionalABase {
    *
    * @param pTransientBs Object that should be removed from {@link #transientBs}. The parameter must not be null.
    */
-  public void removeFromTransientBs( BidirectionalB pTransientBs ) {
+  void removeFromTransientBs( BidirectionalB pTransientBs ) {
     // Check parameter for invalid value null.
     Check.checkInvalidParameterNull(pTransientBs, "pTransientBs");
     // Remove passed object from collection of associated BidirectionalB objects.
     transientBs.remove(pTransientBs);
-    // The association is set in both directions because within the UML model it is defined to be bidirectional.
-    // In case that one side will be removed from the association the other side will also be removed.
-    if (pTransientBs.getTheAs().contains(this) == true) {
-      pTransientBs.removeFromTheAs((BidirectionalA) this);
-    }
   }
 
   /**
    * Method removes all objects from {@link #transientBs}.
    */
-  public void clearTransientBs( ) {
+  void clearTransientBs( ) {
     // Remove all objects from association "transientBs".
     Collection<BidirectionalB> lTransientBs = new HashSet<BidirectionalB>(transientBs);
     Iterator<BidirectionalB> lIterator = lTransientBs.iterator();
@@ -359,6 +331,16 @@ public abstract class BidirectionalABase {
     lBuilder.append(pIndent);
     lBuilder.append(this.getClass().getName());
     lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("child: ");
+    if (child != null) {
+      lBuilder.append(System.lineSeparator());
+      lBuilder.append(child.toStringBuilder(pIndent + "    "));
+    }
+    else {
+      lBuilder.append(" null");
+      lBuilder.append(System.lineSeparator());
+    }
     return lBuilder;
   }
 

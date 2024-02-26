@@ -145,6 +145,10 @@ public class Product {
     // Read attribute values from builder.
     if (pBuilder.resellers != null) {
       resellers = pBuilder.resellers;
+      // As association is bidirectional we also have to set it in the other direction.
+      for (Reseller lNext : resellers) {
+        lNext.addToProducts((Product) this);
+      }
     }
     else {
       resellers = new HashSet<Reseller>();
@@ -762,14 +766,9 @@ public class Product {
    *
    * @param pSortiments Object that should be added to {@link #sortiments}. The parameter must not be null.
    */
-  public void addToSortiments( Sortiment pSortiments ) {
+  void addToSortiments( Sortiment pSortiments ) {
     // Add passed object to collection of associated Sortiment objects.
     sortiments.add(pSortiments);
-    // The association is set in both directions because within the UML model it is defined to be bidirectional.
-    // In case that one side will be removed from the association the other side will also be removed.
-    if (pSortiments != null && pSortiments.getProducts().contains(this) == false) {
-      pSortiments.addToProducts((Product) this);
-    }
   }
 
   /**
@@ -778,7 +777,7 @@ public class Product {
    * @param pSortiments Collection with all objects that should be added to {@link #sortiments}. The parameter must not
    * be null.
    */
-  public void addToSortiments( Collection<Sortiment> pSortiments ) {
+  void addToSortiments( Collection<Sortiment> pSortiments ) {
     // Add all passed objects.
     for (Sortiment lNextObject : pSortiments) {
       this.addToSortiments(lNextObject);
@@ -790,20 +789,15 @@ public class Product {
    *
    * @param pSortiments Object that should be removed from {@link #sortiments}. The parameter must not be null.
    */
-  public void removeFromSortiments( Sortiment pSortiments ) {
+  void removeFromSortiments( Sortiment pSortiments ) {
     // Remove passed object from collection of associated Sortiment objects.
     sortiments.remove(pSortiments);
-    // The association is set in both directions because within the UML model it is defined to be bidirectional.
-    // In case that one side will be removed from the association the other side will also be removed.
-    if (pSortiments.getProducts().contains(this) == true) {
-      pSortiments.removeFromProducts((Product) this);
-    }
   }
 
   /**
    * Method removes all objects from {@link #sortiments}.
    */
-  public void clearSortiments( ) {
+  void clearSortiments( ) {
     // Remove all objects from association "sortiments".
     Collection<Sortiment> lSortiments = new HashSet<Sortiment>(sortiments);
     Iterator<Sortiment> lIterator = lSortiments.iterator();
@@ -916,22 +910,6 @@ public class Product {
     lBuilder.append("description: ");
     lBuilder.append(description);
     lBuilder.append(System.lineSeparator());
-    lBuilder.append(pIndent);
-    lBuilder.append("sortiments: ");
-    if (sortiments != null) {
-      lBuilder.append(sortiments.size());
-      lBuilder.append(" element(s)");
-    }
-    else {
-      lBuilder.append(" null");
-    }
-    lBuilder.append(System.lineSeparator());
-    if (sortiments != null) {
-      for (Sortiment lNext : sortiments) {
-        lBuilder.append(lNext.toStringBuilder(pIndent + "    "));
-        lBuilder.append(System.lineSeparator());
-      }
-    }
     lBuilder.append(pIndent);
     lBuilder.append("uri: ");
     lBuilder.append(uri);

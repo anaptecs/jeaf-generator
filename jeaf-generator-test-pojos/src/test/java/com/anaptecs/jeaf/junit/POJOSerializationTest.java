@@ -18,11 +18,11 @@ public class POJOSerializationTest {
     BidirectionalA lChild = BidirectionalA.builder().build();
     BidirectionalB lBidirectB = BidirectionalB.builder().build();
 
-    lBidirectA.setTransientB(lBidirectB);
-    assertEquals(lBidirectA, lBidirectB.getAs().iterator().next());
+    lBidirectB.addToAs(lBidirectA);
+    assertEquals(lBidirectB, lBidirectA.getTransientB());
 
-    lBidirectA.addToTransientBs(lBidirectB);
-    assertEquals(lBidirectA, lBidirectB.getTheAs().iterator().next());
+    lBidirectB.addToTheAs(lBidirectA);
+    assertEquals(lBidirectB, lBidirectA.getTransientBs().iterator().next());
 
     lBidirectA.setChild(lChild);
     assertEquals(lBidirectA, lChild.getTransientParent());

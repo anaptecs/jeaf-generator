@@ -77,8 +77,8 @@ public abstract class ClassB_BOBase extends PersistentObject {
   public void addToClassAs( ClassA_BO pClassAs ) {
     // Check parameter "pClassAs" for invalid value null.
     Check.checkInvalidParameterNull(pClassAs, "pClassAs");
-    // Since this is not a many-to-many association the association to which the passed object belongs, has to
-    // be released.
+    // Since this is not a many-to-many association the association to which the passed object belongs, has to be
+    // released.
     pClassAs.unsetClassB();
     // Add passed object to collection of associated ClassA_BO objects.
     classAs.add(pClassAs);

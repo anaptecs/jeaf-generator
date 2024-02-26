@@ -416,6 +416,17 @@
 						«IF attr.belongsToTransientBidirectionalBackReference() == false»
 							if(pBuilder.«attr.name» != null) {
 							«attr.name» = pBuilder.«attr.name»;
+
+                            «IF attr.opposite != null && attr.opposite.isNavigable() == true»
+                               // As association is bidirectional we also have to set it in the other direction.
+                               for(«attr.type.fqn()» lNext : «attr.name») {
+                                   «IF attr.opposite.isMultivalued()»
+                                       lNext.addTo«attr.opposite.name.toFirstUpper()»((«attr.opposite.type.fqn()») this);
+                                   «ELSE»
+                                       lNext.«attr.opposite.asSetter()»((«attr.opposite.type.fqn()») this);
+                                   «ENDIF»
+                               } 
+                            «ENDIF»
 							}
 							else {
 	                        «IF attr.isSoftLink()»
@@ -435,6 +446,16 @@
 				«ELSE»
 					«IF attr.isStatic == false && attr.belongsToTransientBidirectionalBackReference() == false»
 						«attr.name» = pBuilder.«attr.name»;
+                        «IF attr.opposite != null && attr.opposite.isNavigable() == true»
+                            if(«attr.name» != null) {
+                               // As association is bidirectional we also have to set it in the other direction.
+                               «IF attr.opposite.isMultivalued()»
+                                   «attr.name».addTo«attr.opposite.name.toFirstUpper()»((«attr.opposite.type.fqn()») this);
+                               «ELSE»
+                                   «attr.name».«attr.opposite.asSetter()»((«attr.opposite.type.fqn()») this);
+                               «ENDIF»
+                            }
+                        «ENDIF»
 					«ENDIF»			  	
 				«ENDIF»
 			«ENDIF»			  
