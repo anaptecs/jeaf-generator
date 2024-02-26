@@ -406,7 +406,7 @@
     «IF isReadOnly() == false»
     «EXPAND functions::Javadoc::JavadocForPropertySetter»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
-	«IF this.isInternalProperty() == false»public«ENDIF» void «asSetter()» («type.fqn()» «asParameter()») {
+	«IF this.isInternalProperty() == false && this.belongsToTransientBidirectionalBackReference() == false»public«ENDIF» void «asSetter()» («type.fqn()» «asParameter()») {
 		«IF generateNullChecksForToOneAssociationsOfServiceObjects()»
 		// «asParameter()» must not be null. To unset an association the unset method has to be called.
 		com.anaptecs.jeaf.xfun.api.checks.Check.checkInvalidParameterNull(«asParameter()», "«asParameter()»");
@@ -429,9 +429,9 @@
 	
     «EXPAND functions::Javadoc::JavadocForPropertyUnset»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
-    «IF this.isInternalProperty() == false»public«ENDIF» final void «asUnset()» () {
+    «IF this.isInternalProperty() == false && this.belongsToTransientBidirectionalBackReference() == false»public«ENDIF» final void «asUnset()» () {
         «EXPAND GenerateRemoveOpposite»
-        «IF opposite == null || opposite.isNavigable() == false»
+        «IF opposite == null || opposite.isNavigable() == false || this.belongsToTransientBidirectionalBackReference()»
           «asInstanceVar()» = null;
         «ENDIF»
     }
@@ -481,7 +481,7 @@
     «IF generatePublicSettersForAssociations()»
     «EXPAND functions::Javadoc::JavadocForPropertySetter»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
-    «IF this.isInternalProperty() == false»public«ENDIF» void set«name.toFirstUpper()»(«this.fqn()» «asParameter()») {
+    «IF this.isInternalProperty() == false && this.belongsToTransientBidirectionalBackReference() == false»public«ENDIF» void set«name.toFirstUpper()»(«this.fqn()» «asParameter()») {
         // Check of parameter is not required.
         
         // Remove all objects from association "«asInstanceVar()»".
@@ -496,16 +496,15 @@
 
     «EXPAND functions::Javadoc::JavadocForPropertyAdd»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
-	«IF this.isInternalProperty() == false»public«ENDIF» void addTo«name.toFirstUpper()» («this.type.fqn()» «asParameter()») {
+	«IF this.isInternalProperty() == false && this.belongsToTransientBidirectionalBackReference() == false»public«ENDIF» void addTo«name.toFirstUpper()» («this.type.fqn()» «asParameter()») {
         «IF isTargetRuntimeJEAF()»
         // Check parameter "«asParameter()»" for invalid value null.
         com.anaptecs.jeaf.xfun.api.checks.Check.checkInvalidParameterNull(«asParameter()», "«asParameter()»");
         «ENDIF»
         
 	    «IF opposite != null && opposite.isNavigable() == true»
-	        «IF opposite.isMultivalued() == false»
-	            // Since this is not a many-to-many association the association to which the passed object belongs, has to 
-	            // be released.
+	        «IF opposite.isMultivalued() == false && this.belongsToTransientBidirectionalBackReference() == false»
+	            // Since this is not a many-to-many association the association to which the passed object belongs, has to be released.
 	            «asParameter()».«opposite.asUnset()»();
 	        «ENDIF»
 	    «ENDIF»
@@ -518,7 +517,7 @@
 	
   «EXPAND functions::Javadoc::JavadocForPropertyAddAll»
   «EXPAND java::Helper::GenerateDeprecationAnnotation-»
-  «IF this.isInternalProperty() == false»public«ENDIF» void addTo«name.toFirstUpper()» (java.util.Collection<«this.type.fqn()»> «asParameter()») {
+  «IF this.isInternalProperty() == false && this.belongsToTransientBidirectionalBackReference() == false»public«ENDIF» void addTo«name.toFirstUpper()» (java.util.Collection<«this.type.fqn()»> «asParameter()») {
         «IF isTargetRuntimeJEAF()»
         // Check parameter "«asParameter()»" for invalid value null.
         com.anaptecs.jeaf.xfun.api.checks.Check.checkInvalidParameterNull(«asParameter()», "«asParameter()»");
@@ -537,7 +536,7 @@
      * @param «asParameter()» Object that should be removed from {@link #«asInstanceVar()»}. The parameter must not be null.
      */
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
-	«IF this.isInternalProperty() == false»public«ENDIF» void removeFrom«name.toFirstUpper()» («type.fqn()» «asParameter()») {
+	«IF this.isInternalProperty() == false && this.belongsToTransientBidirectionalBackReference() == false»public«ENDIF» void removeFrom«name.toFirstUpper()» («type.fqn()» «asParameter()») {
         «IF isTargetRuntimeJEAF()»
         // Check parameter for invalid value null.
         com.anaptecs.jeaf.xfun.api.checks.Check.checkInvalidParameterNull(«asParameter()», "«asParameter()»");
@@ -553,7 +552,7 @@
      * Method removes all objects from {@link #«asInstanceVar()»}.
      */
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
-    «IF this.isInternalProperty() == false»public«ENDIF» void clear«name.toFirstUpper()» () {
+    «IF this.isInternalProperty() == false && this.belongsToTransientBidirectionalBackReference() == false»public«ENDIF» void clear«name.toFirstUpper()» () {
       «IF opposite != null && opposite.isNavigable() == true»
       // Remove all objects from association "«asInstanceVar()»".
       java.util.Collection<«type.fqn()»> «asLocalVar()» = new java.util.HashSet<«type.fqn()»>(«asInstanceVar()»);
@@ -585,7 +584,7 @@
 
 // Template generates the code that will be generated if the association is bidirectional.
 «DEFINE GenerateInitOpposite FOR Property»
-    «IF opposite != null && opposite.isNavigable() == true»
+    «IF opposite != null && opposite.isNavigable() == true  && this.belongsToTransientBidirectionalBackReference() == false»
         «IF opposite.isMultivalued() == true»
 	        // The association is set in both directions because within the UML model it is defined to be bidirectional.
 	        // In case that one side will be removed from the association the other side will also be removed.
@@ -603,7 +602,7 @@
 «ENDDEFINE»
 
 «DEFINE GenerateRemoveOpposite FOR Property»
-    «IF opposite != null && opposite.isNavigable() == true»
+    «IF opposite != null && opposite.isNavigable() == true && this.belongsToTransientBidirectionalBackReference() == false»
         // The association is set in both directions because within the UML model it is defined to be bidirectional.
         // In case that one side will be removed from the association the other side will also be removed.
         «IF isMultivalued() == true»

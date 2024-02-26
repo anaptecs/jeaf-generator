@@ -66,6 +66,10 @@ public abstract class ClassABase implements ServiceObject, Identifiable<ServiceO
     // Read attribute values from builder.
     name = pBuilder.name;
     oneB = pBuilder.oneB;
+    if (oneB != null) {
+      // As association is bidirectional we also have to set it in the other direction.
+      oneB.addToManyAs((ClassA) this);
+    }
   }
 
   /**

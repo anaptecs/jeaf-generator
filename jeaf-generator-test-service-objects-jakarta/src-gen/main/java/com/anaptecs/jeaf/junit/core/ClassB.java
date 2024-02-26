@@ -75,6 +75,10 @@ public class ClassB implements ServiceObject, Identifiable<ServiceObjectID> {
     // Read attribute values from builder.
     if (pBuilder.manyAs != null) {
       manyAs = pBuilder.manyAs;
+      // As association is bidirectional we also have to set it in the other direction.
+      for (ClassA lNext : manyAs) {
+        lNext.setOneB((ClassB) this);
+      }
     }
     else {
       manyAs = new TreeSet<ClassA>();
@@ -263,8 +267,8 @@ public class ClassB implements ServiceObject, Identifiable<ServiceObjectID> {
   public void addToManyAs( ClassA pManyAs ) {
     // Check parameter "pManyAs" for invalid value null.
     Check.checkInvalidParameterNull(pManyAs, "pManyAs");
-    // Since this is not a many-to-many association the association to which the passed object belongs, has to
-    // be released.
+    // Since this is not a many-to-many association the association to which the passed object belongs, has to be
+    // released.
     pManyAs.unsetOneB();
     // Add passed object to collection of associated ClassA objects.
     manyAs.add(pManyAs);

@@ -121,8 +121,8 @@ public abstract class BankBOBase extends PersistentObject {
   public void addToEmployees( EmployeeBO pEmployees ) {
     // Check parameter "pEmployees" for invalid value null.
     Check.checkInvalidParameterNull(pEmployees, "pEmployees");
-    // Since this is not a many-to-many association the association to which the passed object belongs, has to
-    // be released.
+    // Since this is not a many-to-many association the association to which the passed object belongs, has to be
+    // released.
     pEmployees.unsetBank();
     // Add passed object to collection of associated EmployeeBO objects.
     employees.add(pEmployees);
@@ -197,8 +197,8 @@ public abstract class BankBOBase extends PersistentObject {
   public void addToAccounts( AccountBO pAccounts ) {
     // Check parameter "pAccounts" for invalid value null.
     Check.checkInvalidParameterNull(pAccounts, "pAccounts");
-    // Since this is not a many-to-many association the association to which the passed object belongs, has to
-    // be released.
+    // Since this is not a many-to-many association the association to which the passed object belongs, has to be
+    // released.
     pAccounts.unsetBank();
     // Add passed object to collection of associated AccountBO objects.
     accounts.add(pAccounts);

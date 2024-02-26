@@ -144,8 +144,8 @@ public abstract class AOneBOBase extends PersistentObject {
   public void addToCManys( CManyBO pCManys ) {
     // Check parameter "pCManys" for invalid value null.
     Check.checkInvalidParameterNull(pCManys, "pCManys");
-    // Since this is not a many-to-many association the association to which the passed object belongs, has to
-    // be released.
+    // Since this is not a many-to-many association the association to which the passed object belongs, has to be
+    // released.
     pCManys.unsetAOne();
     // Add passed object to collection of associated CManyBO objects.
     cManys.add(pCManys);

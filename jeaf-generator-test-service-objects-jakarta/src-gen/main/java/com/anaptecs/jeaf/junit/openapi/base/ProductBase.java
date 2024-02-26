@@ -168,6 +168,10 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
     // Read attribute values from builder.
     if (pBuilder.resellers != null) {
       resellers = pBuilder.resellers;
+      // As association is bidirectional we also have to set it in the other direction.
+      for (Reseller lNext : resellers) {
+        lNext.addToProducts((Product) this);
+      }
     }
     else {
       resellers = new HashSet<Reseller>();
@@ -821,16 +825,11 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
    *
    * @param pSortiments Object that should be added to {@link #sortiments}. The parameter must not be null.
    */
-  public void addToSortiments( Sortiment pSortiments ) {
+  void addToSortiments( Sortiment pSortiments ) {
     // Check parameter "pSortiments" for invalid value null.
     Check.checkInvalidParameterNull(pSortiments, "pSortiments");
     // Add passed object to collection of associated Sortiment objects.
     sortiments.add(pSortiments);
-    // The association is set in both directions because within the UML model it is defined to be bidirectional.
-    // In case that one side will be removed from the association the other side will also be removed.
-    if (pSortiments != null && pSortiments.getProducts().contains(this) == false) {
-      pSortiments.addToProducts((Product) this);
-    }
   }
 
   /**
@@ -839,7 +838,7 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
    * @param pSortiments Collection with all objects that should be added to {@link #sortiments}. The parameter must not
    * be null.
    */
-  public void addToSortiments( Collection<Sortiment> pSortiments ) {
+  void addToSortiments( Collection<Sortiment> pSortiments ) {
     // Check parameter "pSortiments" for invalid value null.
     Check.checkInvalidParameterNull(pSortiments, "pSortiments");
     // Add all passed objects.
@@ -853,22 +852,17 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
    *
    * @param pSortiments Object that should be removed from {@link #sortiments}. The parameter must not be null.
    */
-  public void removeFromSortiments( Sortiment pSortiments ) {
+  void removeFromSortiments( Sortiment pSortiments ) {
     // Check parameter for invalid value null.
     Check.checkInvalidParameterNull(pSortiments, "pSortiments");
     // Remove passed object from collection of associated Sortiment objects.
     sortiments.remove(pSortiments);
-    // The association is set in both directions because within the UML model it is defined to be bidirectional.
-    // In case that one side will be removed from the association the other side will also be removed.
-    if (pSortiments.getProducts().contains(this) == true) {
-      pSortiments.removeFromProducts((Product) this);
-    }
   }
 
   /**
    * Method removes all objects from {@link #sortiments}.
    */
-  public void clearSortiments( ) {
+  void clearSortiments( ) {
     // Remove all objects from association "sortiments".
     Collection<Sortiment> lSortiments = new HashSet<Sortiment>(sortiments);
     Iterator<Sortiment> lIterator = lSortiments.iterator();

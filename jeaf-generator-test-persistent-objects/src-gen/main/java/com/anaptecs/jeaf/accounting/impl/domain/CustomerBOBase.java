@@ -92,8 +92,8 @@ public abstract class CustomerBOBase extends PersistentObject {
   public void addToAccounts( AccountBO pAccounts ) {
     // Check parameter "pAccounts" for invalid value null.
     Check.checkInvalidParameterNull(pAccounts, "pAccounts");
-    // Since this is not a many-to-many association the association to which the passed object belongs, has to
-    // be released.
+    // Since this is not a many-to-many association the association to which the passed object belongs, has to be
+    // released.
     pAccounts.unsetCustomer();
     // Add passed object to collection of associated AccountBO objects.
     accounts.add(pAccounts);

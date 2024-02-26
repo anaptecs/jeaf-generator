@@ -213,8 +213,8 @@ public abstract class AccountBOBase extends PersistentObject {
   public void addToBookings( BookingBO pBookings ) {
     // Check parameter "pBookings" for invalid value null.
     Check.checkInvalidParameterNull(pBookings, "pBookings");
-    // Since this is not a many-to-many association the association to which the passed object belongs, has to
-    // be released.
+    // Since this is not a many-to-many association the association to which the passed object belongs, has to be
+    // released.
     pBookings.unsetAccount();
     // Add passed object to collection of associated BookingBO objects.
     bookings.add(pBookings);

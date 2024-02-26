@@ -61,6 +61,10 @@ public class BidirectA {
     // Read attribute values from builder.
     transientBs = new HashSet<BidirectB>();
     parent = pBuilder.parent;
+    if (parent != null) {
+      // As association is bidirectional we also have to set it in the other direction.
+      parent.setTransientChild((BidirectA) this);
+    }
     // Bidirectional back reference is set up correctly as a builder is used.
     parentBackReferenceInitialized = true;
   }
@@ -169,17 +173,9 @@ public class BidirectA {
    *
    * @param pTransientBs Object that should be added to {@link #transientBs}. The parameter must not be null.
    */
-  public void addToTransientBs( BidirectB pTransientBs ) {
-    // Since this is not a many-to-many association the association to which the passed object belongs, has to
-    // be released.
-    pTransientBs.unsetA();
+  void addToTransientBs( BidirectB pTransientBs ) {
     // Add passed object to collection of associated BidirectB objects.
     transientBs.add(pTransientBs);
-    // The association is set in both directions because within the UML model it is defined to be bidirectional.
-    // In case that one side will be removed from the association the other side will also be removed.
-    if (pTransientBs != null && this.equals(pTransientBs.getA()) == false) {
-      pTransientBs.setA((BidirectA) this);
-    }
   }
 
   /**
@@ -188,7 +184,7 @@ public class BidirectA {
    * @param pTransientBs Collection with all objects that should be added to {@link #transientBs}. The parameter must
    * not be null.
    */
-  public void addToTransientBs( Collection<BidirectB> pTransientBs ) {
+  void addToTransientBs( Collection<BidirectB> pTransientBs ) {
     // Add all passed objects.
     for (BidirectB lNextObject : pTransientBs) {
       this.addToTransientBs(lNextObject);
@@ -200,20 +196,15 @@ public class BidirectA {
    *
    * @param pTransientBs Object that should be removed from {@link #transientBs}. The parameter must not be null.
    */
-  public void removeFromTransientBs( BidirectB pTransientBs ) {
+  void removeFromTransientBs( BidirectB pTransientBs ) {
     // Remove passed object from collection of associated BidirectB objects.
     transientBs.remove(pTransientBs);
-    // The association is set in both directions because within the UML model it is defined to be bidirectional.
-    // In case that one side will be removed from the association the other side will also be removed.
-    if (this.equals(pTransientBs.getA()) == true) {
-      pTransientBs.unsetA();
-    }
   }
 
   /**
    * Method removes all objects from {@link #transientBs}.
    */
-  public void clearTransientBs( ) {
+  void clearTransientBs( ) {
     // Remove all objects from association "transientBs".
     Collection<BidirectB> lTransientBs = new HashSet<BidirectB>(transientBs);
     Iterator<BidirectB> lIterator = lTransientBs.iterator();
@@ -283,30 +274,19 @@ public class BidirectA {
    *
    * @param pTransientChild Value to which {@link #transientChild} should be set.
    */
-  public void setTransientChild( BidirectA pTransientChild ) {
+  void setTransientChild( BidirectA pTransientChild ) {
     // Release already referenced object before setting a new association.
     if (transientChild != null) {
       transientChild.unsetParent();
     }
     transientChild = pTransientChild;
-    // The association is set in both directions because within the UML model it is defined to be bidirectional.
-    // In case that one side will be removed from the association the other side will also be removed.
-    if (pTransientChild != null && this.equals(pTransientChild.getParent()) == false) {
-      pTransientChild.setParent((BidirectA) this);
-    }
   }
 
   /**
    * Method unsets {@link #transientChild}.
    */
-  public final void unsetTransientChild( ) {
-    // The association is set in both directions because within the UML model it is defined to be bidirectional.
-    // In case that one side will be removed from the association the other side will also be removed.
-    BidirectA lBidirectA = transientChild;
+  final void unsetTransientChild( ) {
     transientChild = null;
-    if (lBidirectA != null && this.equals(lBidirectA.getParent()) == true) {
-      lBidirectA.unsetParent();
-    }
   }
 
   /**
@@ -321,36 +301,10 @@ public class BidirectA {
     lBuilder.append(this.getClass().getName());
     lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
-    lBuilder.append("transientBs: ");
-    if (transientBs != null) {
-      lBuilder.append(transientBs.size());
-      lBuilder.append(" element(s)");
-    }
-    else {
-      lBuilder.append(" null");
-    }
-    lBuilder.append(System.lineSeparator());
-    if (transientBs != null) {
-      for (BidirectB lNext : transientBs) {
-        lBuilder.append(lNext.toStringBuilder(pIndent + "    "));
-        lBuilder.append(System.lineSeparator());
-      }
-    }
-    lBuilder.append(pIndent);
     lBuilder.append("parent: ");
     if (parent != null) {
       lBuilder.append(System.lineSeparator());
       lBuilder.append(parent.toStringBuilder(pIndent + "    "));
-    }
-    else {
-      lBuilder.append(" null");
-      lBuilder.append(System.lineSeparator());
-    }
-    lBuilder.append(pIndent);
-    lBuilder.append("transientChild: ");
-    if (transientChild != null) {
-      lBuilder.append(System.lineSeparator());
-      lBuilder.append(transientChild.toStringBuilder(pIndent + "    "));
     }
     else {
       lBuilder.append(" null");

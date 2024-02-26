@@ -60,6 +60,10 @@ public class SecurityToken implements ServiceObject {
     // Read attribute values from builder.
     sessionKey = pBuilder.sessionKey;
     booking = pBuilder.booking;
+    if (booking != null) {
+      // As association is bidirectional we also have to set it in the other direction.
+      booking.setToken((SecurityToken) this);
+    }
     value = pBuilder.value;
   }
 

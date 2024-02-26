@@ -35,7 +35,7 @@
 	    «ELSE»
 		    StringBuilder lBuilder = super.toStringBuilder(pIndent);
 	    «ENDIF»
-	    «FOREACH this.getToStringProperties().select(e|e.isPropertySuppressed() == false && e.isStatic == false) AS attribute»
+	    «FOREACH this.getToStringProperties().select(e|e.isPropertySuppressed() == false && e.isStatic == false && e.belongsToTransientBidirectionalBackReference() == false) AS attribute»
 			lBuilder.append(pIndent);
 			lBuilder.append("«attribute.name»: ");
 		    «EXPAND ToStringValue FOR attribute»

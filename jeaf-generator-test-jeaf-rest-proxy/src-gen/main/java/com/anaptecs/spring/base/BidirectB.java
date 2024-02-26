@@ -54,6 +54,10 @@ public class BidirectB implements Serializable {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     a = pBuilder.a;
+    if (a != null) {
+      // As association is bidirectional we also have to set it in the other direction.
+      a.addToTransientBs((BidirectB) this);
+    }
     // Bidirectional back reference is set up correctly as a builder is used.
     aBackReferenceInitialized = true;
   }

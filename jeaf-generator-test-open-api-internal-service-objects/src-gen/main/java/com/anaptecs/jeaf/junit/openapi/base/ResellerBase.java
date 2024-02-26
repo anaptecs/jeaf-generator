@@ -97,6 +97,10 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
     // Read attribute values from builder.
     if (pBuilder.channels != null) {
       channels = pBuilder.channels;
+      // As association is bidirectional we also have to set it in the other direction.
+      for (Channel lNext : channels) {
+        lNext.setReseller((Reseller) this);
+      }
     }
     else {
       channels = new ArrayList<Channel>();
@@ -296,8 +300,8 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
   public void addToChannels( Channel pChannels ) {
     // Check parameter "pChannels" for invalid value null.
     Check.checkInvalidParameterNull(pChannels, "pChannels");
-    // Since this is not a many-to-many association the association to which the passed object belongs, has to
-    // be released.
+    // Since this is not a many-to-many association the association to which the passed object belongs, has to be
+    // released.
     pChannels.unsetReseller();
     // Add passed object to collection of associated Channel objects.
     channels.add(pChannels);
@@ -369,16 +373,11 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
    *
    * @param pProducts Object that should be added to {@link #products}. The parameter must not be null.
    */
-  public void addToProducts( Product pProducts ) {
+  void addToProducts( Product pProducts ) {
     // Check parameter "pProducts" for invalid value null.
     Check.checkInvalidParameterNull(pProducts, "pProducts");
     // Add passed object to collection of associated Product objects.
     products.add(pProducts);
-    // The association is set in both directions because within the UML model it is defined to be bidirectional.
-    // In case that one side will be removed from the association the other side will also be removed.
-    if (pProducts != null && pProducts.getResellers().contains(this) == false) {
-      pProducts.addToResellers((Reseller) this);
-    }
   }
 
   /**
@@ -387,7 +386,7 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
    * @param pProducts Collection with all objects that should be added to {@link #products}. The parameter must not be
    * null.
    */
-  public void addToProducts( Collection<Product> pProducts ) {
+  void addToProducts( Collection<Product> pProducts ) {
     // Check parameter "pProducts" for invalid value null.
     Check.checkInvalidParameterNull(pProducts, "pProducts");
     // Add all passed objects.
@@ -401,22 +400,17 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
    *
    * @param pProducts Object that should be removed from {@link #products}. The parameter must not be null.
    */
-  public void removeFromProducts( Product pProducts ) {
+  void removeFromProducts( Product pProducts ) {
     // Check parameter for invalid value null.
     Check.checkInvalidParameterNull(pProducts, "pProducts");
     // Remove passed object from collection of associated Product objects.
     products.remove(pProducts);
-    // The association is set in both directions because within the UML model it is defined to be bidirectional.
-    // In case that one side will be removed from the association the other side will also be removed.
-    if (pProducts.getResellers().contains(this) == true) {
-      pProducts.removeFromResellers((Reseller) this);
-    }
   }
 
   /**
    * Method removes all objects from {@link #products}.
    */
-  public void clearProducts( ) {
+  void clearProducts( ) {
     // Remove all objects from association "products".
     Collection<Product> lProducts = new HashSet<Product>(products);
     Iterator<Product> lIterator = lProducts.iterator();
@@ -521,22 +515,6 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
     lBuilder.append(System.lineSeparator());
     if (channels != null) {
       for (Channel lNext : channels) {
-        lBuilder.append(lNext.toStringBuilder(pIndent + "    "));
-        lBuilder.append(System.lineSeparator());
-      }
-    }
-    lBuilder.append(pIndent);
-    lBuilder.append("products: ");
-    if (products != null) {
-      lBuilder.append(products.size());
-      lBuilder.append(" element(s)");
-    }
-    else {
-      lBuilder.append(" null");
-    }
-    lBuilder.append(System.lineSeparator());
-    if (products != null) {
-      for (Product lNext : products) {
         lBuilder.append(lNext.toStringBuilder(pIndent + "    "));
         lBuilder.append(System.lineSeparator());
       }

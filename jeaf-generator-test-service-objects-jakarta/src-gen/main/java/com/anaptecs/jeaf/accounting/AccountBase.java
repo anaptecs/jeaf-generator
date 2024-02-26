@@ -126,6 +126,10 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
     balance = pBuilder.balance;
     if (pBuilder.authorizedPersons != null) {
       authorizedPersons = pBuilder.authorizedPersons;
+      // As association is bidirectional we also have to set it in the other direction.
+      for (Person lNext : authorizedPersons) {
+        lNext.addToAccounts((Account) this);
+      }
     }
     else {
       authorizedPersons = new HashSet<Person>();
@@ -134,6 +138,10 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
     authorizedPersonsBackReferenceInitialized = true;
     if (pBuilder.bookings != null) {
       bookings = pBuilder.bookings;
+      // As association is bidirectional we also have to set it in the other direction.
+      for (Booking lNext : bookings) {
+        lNext.setAccount((Account) this);
+      }
     }
     else {
       bookings = new HashSet<Booking>();
@@ -501,8 +509,8 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
   public void addToBookings( Booking pBookings ) {
     // Check parameter "pBookings" for invalid value null.
     Check.checkInvalidParameterNull(pBookings, "pBookings");
-    // Since this is not a many-to-many association the association to which the passed object belongs, has to
-    // be released.
+    // Since this is not a many-to-many association the association to which the passed object belongs, has to be
+    // released.
     pBookings.unsetAccount();
     // Add passed object to collection of associated Booking objects.
     bookings.add(pBookings);
