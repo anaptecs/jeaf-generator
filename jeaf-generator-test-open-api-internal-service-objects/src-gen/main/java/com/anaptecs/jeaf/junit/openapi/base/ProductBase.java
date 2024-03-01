@@ -10,6 +10,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
 
@@ -894,6 +895,46 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
    * returned collection is modifiable.
    */
   public abstract Set<Channel> getTheChannels( );
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = 1;
+    lResult = lPrime * lResult + Objects.hashCode(resellers);
+    lResult = lPrime * lResult + Objects.hashCode(name);
+    lResult = lPrime * lResult + Arrays.hashCode(image);
+    lResult = lPrime * lResult + Objects.hashCode(link);
+    lResult = lPrime * lResult + Objects.hashCode(productID);
+    lResult = lPrime * lResult + Objects.hashCode(supportedCurrencies);
+    lResult = lPrime * lResult + Objects.hashCode(productCodes);
+    lResult = lPrime * lResult + Objects.hashCode(description);
+    lResult = lPrime * lResult + Objects.hashCode(uri);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      ProductBase lOther = (ProductBase) pObject;
+      lEquals = Objects.equals(resellers, lOther.resellers) && Objects.equals(name, lOther.name)
+          && Arrays.equals(image, lOther.image) && Objects.equals(link, lOther.link)
+          && Objects.equals(productID, lOther.productID)
+          && Objects.equals(supportedCurrencies, lOther.supportedCurrencies)
+          && Objects.equals(productCodes, lOther.productCodes) && Objects.equals(description, lOther.description)
+          && Objects.equals(uri, lOther.uri);
+    }
+    return lEquals;
+  }
 
   /**
    * Method returns a StringBuilder that can be used to create a String representation of this object. The returned

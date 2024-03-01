@@ -340,7 +340,7 @@
 
 «DEFINE GenerateEqualsAndHashCode(String className) FOR uml::Class»
   «REM»equals() and hashCode() can only be generated in case of non bi-directional assocations«ENDREM»
-  «IF this.hasBidirectionalAssociation() == false»
+  «IF this.hasBidirectionalAssociations() == false || this.hasOnlyTransientBidirectionalAssociations()»
 	  @Override
 	  public int hashCode( ) {
 	    «IF ownedAttribute.select(e|e.isPropertySuppressed() == false && e.isTransient() == false && e.isStatic == false).isEmpty == false»

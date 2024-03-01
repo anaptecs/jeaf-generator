@@ -1,4 +1,5 @@
 extension functions::TypeChecks;
+extension java::GeneratorCommons;
 
 cached boolean isProperty(uml::Element element):
     element.isInstanceOf("org.eclipse.uml2.uml.Property");
@@ -6,10 +7,14 @@ cached boolean isProperty(uml::Element element):
 cached uml::Property asProperty(uml::Element element):
     (uml::Property) element;
     
+boolean isTransient(uml::Property property):
+  property.isStereotypeApplied("Transient") || property.isStereotypeApplied("CompositeDataTypePublicField");
+
 cached boolean belongsToBidirectionalAssociation(uml::Property property):
-    if property.association != null && property.association.getAllAttributes().select(e|e.isNavigable()).size > 1
-    then true
-    else false;
+    property.association != null && property.association.getAllAttributes().select(e|e.isNavigable()).size > 1;
+    
+cached boolean belongsToTransientBidirectionalAssociation(uml::Property property):
+    property.belongsToBidirectionalAssociation() && property.association.getAllAttributes().selectFirst(e|e.isTransient()) != null;
     
 
     

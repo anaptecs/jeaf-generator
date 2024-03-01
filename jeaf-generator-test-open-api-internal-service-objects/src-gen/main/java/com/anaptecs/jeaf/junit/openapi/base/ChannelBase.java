@@ -5,6 +5,8 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
+import java.util.Objects;
+
 import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -320,6 +322,37 @@ public abstract class ChannelBase implements ServiceObject {
    * @return {@link String} Value to which {@link #derivedSomething} is set.
    */
   public abstract String getDerivedSomething( );
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = 1;
+    lResult = lPrime * lResult + Objects.hashCode(channelType);
+    lResult = lPrime * lResult + Objects.hashCode(channelCode);
+    lResult = lPrime * lResult + code;
+    lResult = lPrime * lResult + Boolean.hashCode(selfServiceChannel);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      ChannelBase lOther = (ChannelBase) pObject;
+      lEquals = Objects.equals(channelType, lOther.channelType) && Objects.equals(channelCode, lOther.channelCode)
+          && code == lOther.code && selfServiceChannel == lOther.selfServiceChannel;
+    }
+    return lEquals;
+  }
 
   /**
    * Method returns a StringBuilder that can be used to create a String representation of this object. The returned

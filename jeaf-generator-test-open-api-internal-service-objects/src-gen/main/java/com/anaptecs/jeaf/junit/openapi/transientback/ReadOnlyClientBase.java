@@ -5,6 +5,8 @@
  */
 package com.anaptecs.jeaf.junit.openapi.transientback;
 
+import java.util.Objects;
+
 import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -145,6 +147,33 @@ public abstract class ReadOnlyClientBase implements ServiceObject {
     ReadOnlyClient.Builder lBuilder = ReadOnlyClient.builder();
     lBuilder.setName(pName);
     return lBuilder.build();
+  }
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = 1;
+    lResult = lPrime * lResult + Objects.hashCode(name);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      ReadOnlyClientBase lOther = (ReadOnlyClientBase) pObject;
+      lEquals = Objects.equals(name, lOther.name);
+    }
+    return lEquals;
   }
 
   /**
