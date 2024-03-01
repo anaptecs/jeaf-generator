@@ -5,6 +5,8 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
+import java.util.Objects;
+
 import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -196,6 +198,33 @@ public class BidirectB implements ServiceObject {
     if (lBidirectA != null && lBidirectA.getTransientBs().contains(this) == true) {
       lBidirectA.removeFromTransientBs((BidirectB) this);
     }
+  }
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = 1;
+    lResult = lPrime * lResult + Objects.hashCode(a);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      BidirectB lOther = (BidirectB) pObject;
+      lEquals = Objects.equals(a, lOther.a);
+    }
+    return lEquals;
   }
 
   /**

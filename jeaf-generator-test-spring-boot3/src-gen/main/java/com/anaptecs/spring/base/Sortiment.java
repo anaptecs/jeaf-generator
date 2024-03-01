@@ -10,6 +10,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Objects;
 import java.util.Set;
 
 public class Sortiment {
@@ -214,6 +215,33 @@ public class Sortiment {
       // As association is bidirectional we have to clear it in both directions.
       this.removeFromProducts(lIterator.next());
     }
+  }
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = 1;
+    lResult = lPrime * lResult + Objects.hashCode(products);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      Sortiment lOther = (Sortiment) pObject;
+      lEquals = Objects.equals(products, lOther.products);
+    }
+    return lEquals;
   }
 
   /**

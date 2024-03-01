@@ -12,6 +12,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Objects;
 
 import javax.annotation.Generated;
 import javax.validation.ConstraintViolationException;
@@ -379,6 +380,36 @@ public class MasterClass {
     if (lClientClass != null && lClientClass.getManyMasters().contains(this) == true) {
       lClientClass.removeFromManyMasters((MasterClass) this);
     }
+  }
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = 1;
+    lResult = lPrime * lResult + Objects.hashCode(clients);
+    lResult = lPrime * lResult + Objects.hashCode(name);
+    lResult = lPrime * lResult + Objects.hashCode(singleClient);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      MasterClass lOther = (MasterClass) pObject;
+      lEquals = Objects.equals(clients, lOther.clients) && Objects.equals(name, lOther.name)
+          && Objects.equals(singleClient, lOther.singleClient);
+    }
+    return lEquals;
   }
 
   /**

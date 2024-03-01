@@ -9,6 +9,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Objects;
 import java.util.Set;
 
 import javax.annotation.Generated;
@@ -318,6 +319,33 @@ public abstract class BidirectionalABase {
   public static BidirectionalA of( ) {
     BidirectionalA.Builder lBuilder = BidirectionalA.builder();
     return lBuilder.build();
+  }
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = 1;
+    lResult = lPrime * lResult + Objects.hashCode(child);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      BidirectionalABase lOther = (BidirectionalABase) pObject;
+      lEquals = Objects.equals(child, lOther.child);
+    }
+    return lEquals;
   }
 
   /**

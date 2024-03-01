@@ -12,6 +12,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Objects;
 
 import javax.annotation.Generated;
 import javax.validation.ConstraintViolationException;
@@ -396,6 +397,34 @@ public class BidirectionalB {
       // As association is bidirectional we have to clear it in both directions.
       this.removeFromTheAs(lIterator.next());
     }
+  }
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = 1;
+    lResult = lPrime * lResult + Objects.hashCode(as);
+    lResult = lPrime * lResult + Objects.hashCode(theAs);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      BidirectionalB lOther = (BidirectionalB) pObject;
+      lEquals = Objects.equals(as, lOther.as) && Objects.equals(theAs, lOther.theAs);
+    }
+    return lEquals;
   }
 
   /**

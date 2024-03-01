@@ -8,6 +8,7 @@ package com.anaptecs.jeaf.junit.openapi.base;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Objects;
 import java.util.Set;
 
 import javax.validation.ConstraintViolationException;
@@ -293,6 +294,33 @@ public class BidirectA implements ServiceObject {
    */
   final void unsetTransientChild( ) {
     transientChild = null;
+  }
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = 1;
+    lResult = lPrime * lResult + Objects.hashCode(parent);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      BidirectA lOther = (BidirectA) pObject;
+      lEquals = Objects.equals(parent, lOther.parent);
+    }
+    return lEquals;
   }
 
   /**

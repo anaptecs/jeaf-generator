@@ -43,7 +43,7 @@ context POJO if runChecks("POJO") && ignore() == false ERROR this.getErrorMessag
 context POJO if runChecks("POJO") && ignore() == false ERROR this.getErrorMessage("9130", {"POJO", name}): ownedOperation.forAll( e | e.hasOnlySupportedParamaterTypes());
 context POJO if runChecks("POJO") && ignore() == false ERROR this.getErrorMessage("9160", {name}): this.isStereotypeApplied("ServiceObject") == false;
 context POJO if runChecks("POJO") && ignore() == false && compositeDataType ERROR this.getErrorMessage("9162", {this.fqn()}): compositeDataTypePublicFieldName.length > 0;
-context POJO if runChecks("POJO") && ignore() == false && (generateEqualsAndHashCode() || generateEqualsAndHashCodeForStandardClasses()) WARNING this.getWarningMessage("9163", {this.fqn()}): this.hasBidirectionalAssociation() == false;
+context POJO if runChecks("POJO") && ignore() == false && (generateEqualsAndHashCode() || generateEqualsAndHashCodeForStandardClasses()) WARNING this.getWarningMessage("9163", {this.fqn()}): this.hasBidirectionalAssociations() == false || this.hasOnlyTransientBidirectionalAssociations();
 
 context Property if isNavigable() && class != null && class.isStereotypeApplied("POJO") && runChecks() && ignore() == false ERROR this.getErrorMessage("9135", {class.name, type.name}):	!isUnnamed();
 context CompositeDataTypePublicField if ((NamedElement) owner).runChecks("POJO") && ignore() == false ERROR this.getErrorMessage("9157", {((NamedElement)owner).name + "." + name}): this.type.isStringType();

@@ -17,8 +17,14 @@ cached boolean hasDerivedProperties(uml::Class class):
 cached List[uml::Property] getDerivedProperties(uml::Class class):
     class.ownedAttribute.select(e|e.isDerived == true);
     
-cached boolean hasBidirectionalAssociation(uml::Class class):
-    class.ownedAttribute.select(e|e.isPropertySuppressed() == false && e.belongsToBidirectionalAssociation()).isEmpty == false;
+cached boolean hasBidirectionalAssociations(uml::Class class):
+    class.getBidirectionalProperties().isEmpty == false;
+    
+cached List[uml::Property] getBidirectionalProperties(uml::Class class):
+    class.ownedAttribute.select(e|e.isPropertySuppressed() == false && e.belongsToBidirectionalAssociation());
+    
+cached boolean hasOnlyTransientBidirectionalAssociations(uml::Class class):
+    class.getBidirectionalProperties().select(e|e.belongsToTransientBidirectionalAssociation() == false).isEmpty == true;
     
 cached boolean hasTemplateParameter(uml::Class class):
     class.ownedTemplateSignature.ownedParameter.isEmpty == false;
