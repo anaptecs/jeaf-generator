@@ -5,6 +5,7 @@
  */
 package com.anaptecs.spring.base;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
@@ -14,6 +15,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * @version JEAF Release 1.4.x
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JsonAutoDetect(
+    fieldVisibility = JsonAutoDetect.Visibility.ANY,
+    getterVisibility = JsonAutoDetect.Visibility.NONE,
+    isGetterVisibility = JsonAutoDetect.Visibility.NONE,
+    setterVisibility = JsonAutoDetect.Visibility.NONE)
 public abstract class ChildA extends ParentClass {
   /**
    * Constant for the name of attribute "childAAttribute".

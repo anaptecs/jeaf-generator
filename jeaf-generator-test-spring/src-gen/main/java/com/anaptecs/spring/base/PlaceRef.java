@@ -7,6 +7,7 @@ package com.anaptecs.spring.base;
 
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -19,6 +20,11 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
   @JsonSubTypes.Type(value = CHStopPlace.class, name = "CHStopPlace"),
   @JsonSubTypes.Type(value = UICStopPlace.class, name = "UICStopPlace"),
   @JsonSubTypes.Type(value = TopoRef.class, name = "TopoRef") })
+@JsonAutoDetect(
+    fieldVisibility = JsonAutoDetect.Visibility.ANY,
+    getterVisibility = JsonAutoDetect.Visibility.NONE,
+    isGetterVisibility = JsonAutoDetect.Visibility.NONE,
+    setterVisibility = JsonAutoDetect.Visibility.NONE)
 public abstract class PlaceRef {
   /**
    * Constant for the name of attribute "name".
