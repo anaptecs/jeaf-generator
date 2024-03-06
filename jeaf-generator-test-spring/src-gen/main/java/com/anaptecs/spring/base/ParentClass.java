@@ -8,6 +8,7 @@ package com.anaptecs.spring.base;
 import java.util.Objects;
 
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -18,6 +19,11 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
   @JsonSubTypes.Type(value = ChildAA.class, name = "ChildAA"),
   @JsonSubTypes.Type(value = ChildB.class, name = "ChildB"),
   @JsonSubTypes.Type(value = ChildBB.class, name = "ChildBB") })
+@JsonAutoDetect(
+    fieldVisibility = JsonAutoDetect.Visibility.ANY,
+    getterVisibility = JsonAutoDetect.Visibility.NONE,
+    isGetterVisibility = JsonAutoDetect.Visibility.NONE,
+    setterVisibility = JsonAutoDetect.Visibility.NONE)
 public class ParentClass {
   /**
    * Constant for the name of attribute "parentAttribute".

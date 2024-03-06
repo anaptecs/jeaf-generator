@@ -754,6 +754,17 @@ public class GeneratorMojo extends AbstractMojo {
   private Boolean generateJacksonAnnotations;
 
   /**
+   * Switch is used to generate @JsonAutoDetect annotation directly on generated classes. This annotation is required
+   * for proper JSON serialization of POJOs and ServiceObjects. However, by default it is assumed that this
+   * configuration is done on the Jackson ObjectMapperFactory. If you prefer to have it directly on the generated
+   * classes for whatever reason then you need to set this parameter to <code>true</code>.
+   * 
+   * This switch only is active in combination with {@link #generateJacksonAnnotations}.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean generateJSONAutoDetectAnnotationOnClass;
+
+  /**
    * Switch defines if Java Validation Annotation @Valid will be generated for all generated POJO, ServiceObjects,
    * DomainObject and PersistentObjects even in cases when it is not defined in the UML model.
    */
@@ -1459,6 +1470,7 @@ public class GeneratorMojo extends AbstractMojo {
     }
     if (generateJacksonAnnotations) {
       lLog.info("Generate Jackson annotations:                     " + generateJacksonAnnotations);
+      lLog.info("Generate @JsonAutoDetect on class:                " + generateJSONAutoDetectAnnotationOnClass);
       lLog.info("Enable SemVer for JSON serialization:             " + enableSemVerForJSON);
     }
 
@@ -1557,7 +1569,7 @@ public class GeneratorMojo extends AbstractMojo {
     if (customRootTemplate.equals("CustomRoot::Root") == false) {
       lLog.info(" ");
       lLog.info("Custom Root Template:                             " + customRootTemplate);
-      if (customTemplateParameters != null &&  customTemplateParameters.isEmpty() == false) {
+      if (customTemplateParameters != null && customTemplateParameters.isEmpty() == false) {
         lLog.info("Custom Template Parameters:                       ");
         for (Entry<String, String> lNext : customTemplateParameters.entrySet()) {
           lLog.info("                                                  \"" + lNext.getKey() + "\":\"" + lNext.getValue()
@@ -1698,6 +1710,8 @@ public class GeneratorMojo extends AbstractMojo {
 
       System.setProperty("switch.gen.jaxrs.annotations", generateJAXRSAnnotations.toString());
       System.setProperty("switch.gen.jackson.annotations", generateJacksonAnnotations.toString());
+      System.setProperty("switch.gen.jackson.jsonautodetect.on.class",
+          generateJSONAutoDetectAnnotationOnClass.toString());
       System.setProperty("switch.gen.enable.json.semver", enableSemVerForJSON.toString());
       System.setProperty("switch.gen.json.serializers", generateJSONSerializers.toString());
       System.setProperty("switch.gen.enable.name.constants", generateConstantsForAttributeNames.toString());

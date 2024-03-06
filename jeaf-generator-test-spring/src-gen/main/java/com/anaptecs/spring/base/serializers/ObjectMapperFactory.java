@@ -6,7 +6,6 @@
 package com.anaptecs.spring.base.serializers;
 
 import com.anaptecs.jeaf.rest.composite.api.CompositeTypeConverter;
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.MapperFeature;
@@ -34,11 +33,11 @@ public class ObjectMapperFactory {
     // Set default visibilities so that they match to the generated classes that are intended to be serialized using
     // Jackson
     VisibilityChecker<?> lVisibilityChecker = VisibilityChecker.Std.defaultInstance();
-    lVisibilityChecker = lVisibilityChecker.withFieldVisibility(JsonAutoDetect.Visibility.ANY);
-    lVisibilityChecker = lVisibilityChecker.withGetterVisibility(JsonAutoDetect.Visibility.NONE);
-    lVisibilityChecker = lVisibilityChecker.withIsGetterVisibility(JsonAutoDetect.Visibility.NONE);
-    lVisibilityChecker = lVisibilityChecker.withSetterVisibility(JsonAutoDetect.Visibility.NONE);
-    lVisibilityChecker = lVisibilityChecker.withCreatorVisibility(JsonAutoDetect.Visibility.ANY);
+    // lVisibilityChecker = lVisibilityChecker.withFieldVisibility(JsonAutoDetect.Visibility.ANY);
+    // lVisibilityChecker = lVisibilityChecker.withGetterVisibility(JsonAutoDetect.Visibility.NONE);
+    // lVisibilityChecker = lVisibilityChecker.withIsGetterVisibility(JsonAutoDetect.Visibility.NONE);
+    // lVisibilityChecker = lVisibilityChecker.withSetterVisibility(JsonAutoDetect.Visibility.NONE);
+    // lVisibilityChecker = lVisibilityChecker.withCreatorVisibility(JsonAutoDetect.Visibility.ANY);
     lBuilder.visibility(lVisibilityChecker);
     // Configure mapper features
     lBuilder.enable(MapperFeature.PROPAGATE_TRANSIENT_MARKER);
