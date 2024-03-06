@@ -5,6 +5,7 @@
 «EXTENSION entity::ModelProperties»
 «EXTENSION java::OpenAPIFunctions»
 «EXTENSION functions::Class»
+«EXTENSION functions::SystemProperties»
 
 «IMPORT uml»
 «IMPORT JMM»
@@ -29,6 +30,13 @@
 		«ENDIF»
 		«IF needsToImplementIdentifiable() == true»
 		@com.fasterxml.jackson.annotation.JsonIdentityInfo(property = "objectID", generator = com.fasterxml.jackson.annotation.ObjectIdGenerators.PropertyGenerator.class)
+		«ENDIF»
+		«IF generateJSONAutoDetectAnnotationOnClass()»
+		@com.fasterxml.jackson.annotation.JsonAutoDetect(
+		     fieldVisibility = com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.ANY,
+		     getterVisibility = com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.NONE,
+		     isGetterVisibility = com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.NONE,
+		     setterVisibility = com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.NONE)
 		«ENDIF»
 	«ENDIF»
 «ENDDEFINE»

@@ -1,0 +1,14 @@
+
+
+private cached String getSystemProperty(String propertyName, String defaultValue):
+   JAVA java.lang.System.getProperty(java.lang.String, java.lang.String);
+
+
+private cached boolean getBooleanSystemProperty(String propertyName, boolean defaultValue):
+    if getSystemProperty(propertyName, defaultValue.toString()) == "true"
+    then true
+    else false;
+    
+cached boolean generateJSONAutoDetectAnnotationOnClass():
+   getBooleanSystemProperty("switch.gen.jackson.jsonautodetect.on.class", false);
+
