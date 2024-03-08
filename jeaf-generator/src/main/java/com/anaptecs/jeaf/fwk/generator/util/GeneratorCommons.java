@@ -1441,6 +1441,10 @@ public class GeneratorCommons {
         || "CookieParam".equals(pStereotype)) {
       lRunChecks = generateRESTResources() | generateOpenAPISpec();
     }
+    // In case of reports selected here, there is no filtering based on stereotype
+    else if (generateRESTDeprecationReport() || generateJavaDeprecationReport() || generateBreakingChangesReport()) {
+      lRunChecks = true;
+    }
     else {
       lRunChecks = true;
     }
