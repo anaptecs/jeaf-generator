@@ -7,13 +7,15 @@ package com.anaptecs.jeaf.fwk.generator.util;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 import java.util.Set;
 
 import org.eclipse.uml2.uml.Activity;
@@ -35,16 +37,17 @@ import org.eclipse.uml2.uml.Slot;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.ValueSpecification;
 
-import com.anaptecs.jeaf.tools.api.Tools;
-import com.anaptecs.jeaf.tools.api.date.DateTools;
-import com.anaptecs.jeaf.xfun.api.XFun;
-import com.anaptecs.jeaf.xfun.api.checks.Assert;
-import com.anaptecs.jeaf.xfun.api.checks.Check;
-import com.anaptecs.jeaf.xfun.api.config.Configuration;
-import com.anaptecs.jeaf.xfun.api.errorhandling.ErrorCode;
 import com.anaptecs.jeaf.xfun.api.messages.MessageRepository;
+import com.anaptecs.jeaf.xfun.api.errorhandling.ErrorCode;
 
 public class GeneratorCommons {
+  /**
+   * Constant defines the pattern that is used to convert time stamps in string format to java objects. The string
+   * representation of a time stamp has to have the following structure: "yyyy-MM-dd HH:mm:ss.SSS" (e.g. "2004-11-28
+   * 13:31:17.098")
+   */
+  public static final String TIMESTAMP_PATTERN = "yyyy-MM-dd HH:mm:ss.SSS";
+
   /**
    * Constant defines the name of the system property which contains the package white list of the generator.
    */
@@ -562,15 +565,12 @@ public class GeneratorCommons {
     Check.checkInvalidParameterNull(pPackage, "pPackage");
 
     // Check if system property is defined.
-    // TODO Move this check to class ResourceAccessProvider.
-    String lPropertyTest = System.getProperty(GENERATOR_WHITELIST_PROPERTY);
+    String lPropertyTest = SystemProperties.getProperty(GENERATOR_WHITELIST_PROPERTY);
     boolean lIsInWhitelist;
 
     // Get white list as it is defined as system property
     if (lPropertyTest != null) {
-      Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-      List<String> lPackageNames =
-          lConfiguration.getConfigurationValueList(GENERATOR_WHITELIST_PROPERTY, false, String.class);
+      List<String> lPackageNames = SystemProperties.getPropertiesList(GENERATOR_WHITELIST_PROPERTY);
 
       // Check if white list is empty. This means that all packages should be generated.
       if (lPackageNames.size() > 0) {
@@ -622,14 +622,11 @@ public class GeneratorCommons {
     }
     else {
       // Check if system property is defined.
-      // TODO Move this check to class ResourceAccessProvider.
       String lPropertyTest = System.getProperty(GENERATOR_WHITELIST_PROPERTY);
 
       // Get white list as it is defined as system property
       if (lPropertyTest != null) {
-        Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-        List<String> lPackageNames =
-            lConfiguration.getConfigurationValueList(GENERATOR_WHITELIST_PROPERTY, false, String.class);
+        List<String> lPackageNames = SystemProperties.getPropertiesList(GENERATOR_WHITELIST_PROPERTY);
 
         // Check if white list is empty. This means that all packages should be generated.
         if (lPackageNames.size() > 0) {
@@ -680,8 +677,7 @@ public class GeneratorCommons {
    * cases.
    */
   public static boolean generateCustomConstraints( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(CUSTOM_CONSTRAINTS_PROPERTY, Boolean.TRUE, Boolean.class);
+    return SystemProperties.getBooleanProperty(CUSTOM_CONSTRAINTS_PROPERTY, true);
   }
 
   /**
@@ -691,8 +687,7 @@ public class GeneratorCommons {
    * cases.
    */
   public static boolean generateServices( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(SERVICES_PROPERTY, Boolean.TRUE, Boolean.class);
+    return SystemProperties.getBooleanProperty(SERVICES_PROPERTY, true);
   }
 
   /**
@@ -702,8 +697,7 @@ public class GeneratorCommons {
    * cases.
    */
   public static boolean generateServiceProxies( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(SERVICE_PROXIES_PROPERTY, Boolean.TRUE, Boolean.class);
+    return SystemProperties.getBooleanProperty(SERVICE_PROXIES_PROPERTY, true);
   }
 
   /**
@@ -713,8 +707,7 @@ public class GeneratorCommons {
    * all other cases.
    */
   public static boolean generateServiceProviderInterfaces( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(SERVICE_PROVIDER_INTERFACES_PROPERTY, Boolean.TRUE, Boolean.class);
+    return SystemProperties.getBooleanProperty(SERVICE_PROVIDER_INTERFACES_PROPERTY, true);
   }
 
   /**
@@ -724,8 +717,7 @@ public class GeneratorCommons {
    * all other cases.
    */
   public static boolean generateServiceProviderImpls( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(SERVICE_PROVIDER_IMPLS_PROPERTY, Boolean.TRUE, Boolean.class);
+    return SystemProperties.getBooleanProperty(SERVICE_PROVIDER_IMPLS_PROPERTY, true);
   }
 
   /**
@@ -735,33 +727,27 @@ public class GeneratorCommons {
    * all other cases.
    */
   public static boolean generateRESTResources( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(REST_RESOURCES_PROPERTY, Boolean.TRUE, Boolean.class);
+    return SystemProperties.getBooleanProperty(REST_RESOURCES_PROPERTY, true);
   }
 
   public static boolean generateSecurityAnnotation( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(SECURITY_ANNOTATION_PROPERTY, Boolean.TRUE, Boolean.class);
+    return SystemProperties.getBooleanProperty(SECURITY_ANNOTATION_PROPERTY, true);
   }
 
   public static boolean useDeprecatedSpringSecuredAnnotation( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(USE_DEPRECATED_SECURED_PROPERTY, Boolean.FALSE, Boolean.class);
+    return SystemProperties.getBooleanProperty(USE_DEPRECATED_SECURED_PROPERTY, false);
   }
 
   public static boolean generateRESTRequestValidation( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(REST_REQUEST_VALIDATION_PROPERTY, Boolean.TRUE, Boolean.class);
+    return SystemProperties.getBooleanProperty(REST_REQUEST_VALIDATION_PROPERTY, true);
   }
 
   public static boolean generateRESTResponseValidation( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(REST_RESPONSE_VALIDATION_PROPERTY, Boolean.TRUE, Boolean.class);
+    return SystemProperties.getBooleanProperty(REST_RESPONSE_VALIDATION_PROPERTY, true);
   }
 
   public static boolean filterCustomHeaders( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(FILTER_CUSTOM_HEADERS, Boolean.TRUE, Boolean.class);
+    return SystemProperties.getBooleanProperty(FILTER_CUSTOM_HEADERS, true);
   }
 
   /**
@@ -771,8 +757,7 @@ public class GeneratorCommons {
    * all other cases.
    */
   public static String getRESTPathPrefix( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(REST_PATH_PREFIX_PROPERTY, "", String.class);
+    return SystemProperties.getProperty(REST_PATH_PREFIX_PROPERTY, "");
   }
 
   /**
@@ -782,8 +767,7 @@ public class GeneratorCommons {
    * all other cases.
    */
   public static boolean generateRESTServiceProxies( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(REST_SERVICE_PROXY_PROPERTY, Boolean.TRUE, Boolean.class);
+    return SystemProperties.getBooleanProperty(REST_SERVICE_PROXY_PROPERTY, true);
   }
 
   /**
@@ -793,8 +777,7 @@ public class GeneratorCommons {
    * all other cases.
    */
   public static boolean generateRESTServiceProxyConfigFile( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(REST_SERVICE_PROXY_CONFIG_FILE_PROPERTY, Boolean.TRUE, Boolean.class);
+    return SystemProperties.getBooleanProperty(REST_SERVICE_PROXY_CONFIG_FILE_PROPERTY, true);
   }
 
   /**
@@ -804,8 +787,7 @@ public class GeneratorCommons {
    * other cases.
    */
   public static boolean generateActivityInterfaces( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(ACTIVITY_INTERFACES_PROPERTY, Boolean.TRUE, Boolean.class);
+    return SystemProperties.getBooleanProperty(ACTIVITY_INTERFACES_PROPERTY, true);
   }
 
   /**
@@ -815,8 +797,7 @@ public class GeneratorCommons {
    * other cases.
    */
   public static boolean generateActivityImpls( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(ACTIVITY_IMPLS_PROPERTY, Boolean.TRUE, Boolean.class);
+    return SystemProperties.getBooleanProperty(ACTIVITY_IMPLS_PROPERTY, true);
   }
 
   /**
@@ -826,8 +807,7 @@ public class GeneratorCommons {
    * cases.
    */
   public static boolean generateServiceObjects( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(SERVICE_OBJECTS_PROPERTY, Boolean.TRUE, Boolean.class);
+    return SystemProperties.getBooleanProperty(SERVICE_OBJECTS_PROPERTY, true);
   }
 
   /**
@@ -836,28 +816,23 @@ public class GeneratorCommons {
    * @return boolean Method returns true if POJOs should be generated from the model and false in all other cases.
    */
   public static boolean generatePOJOs( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(POJO_PROPERTY, Boolean.TRUE, Boolean.class);
+    return SystemProperties.getBooleanProperty(POJO_PROPERTY, true);
   }
 
   public static boolean generateEqualsAndHashCode( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(GENERATE_EQUALS_ALL, Boolean.TRUE, Boolean.class);
+    return SystemProperties.getBooleanProperty(GENERATE_EQUALS_ALL, true);
   }
 
   public static boolean generateEqualsAndHashCodeForStandardClasses( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(GENERATE_EQUALS_STANDARD, Boolean.TRUE, Boolean.class);
+    return SystemProperties.getBooleanProperty(GENERATE_EQUALS_STANDARD, true);
   }
 
   public static boolean generateEqualsAndHashCodeForCompositeDataTypes( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(GENERATE_EQUALS_COMPOSITE, Boolean.TRUE, Boolean.class);
+    return SystemProperties.getBooleanProperty(GENERATE_EQUALS_COMPOSITE, true);
   }
 
   public static boolean generateEqualsAndHashCodeForOpenAPIDataTypes( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(GENERATE_EQUALS_OPENAPI, Boolean.TRUE, Boolean.class);
+    return SystemProperties.getBooleanProperty(GENERATE_EQUALS_OPENAPI, true);
   }
 
   /**
@@ -866,19 +841,15 @@ public class GeneratorCommons {
    * @return boolean Method returns true if POJOs should be serializable.
    */
   public static boolean makePOJOsSerializable( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(MAKE_POJO_SERIALIZABLE_PROPERTY, Boolean.FALSE, Boolean.class);
+    return SystemProperties.getBooleanProperty(MAKE_POJO_SERIALIZABLE_PROPERTY, false);
   }
 
   public static boolean generateImmutableClasses( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(GENERATE_IMMUTABLE_CLASSES, Boolean.FALSE, Boolean.class);
+    return SystemProperties.getBooleanProperty(GENERATE_IMMUTABLE_CLASSES, false);
   }
 
   public static boolean generateHeavyStyleExtensibleEnums( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(GENERATE_HEAVY_STLYE_EXTENSBLE_ENUMS_PROPERTY, Boolean.FALSE,
-        Boolean.class);
+    return SystemProperties.getBooleanProperty(GENERATE_HEAVY_STLYE_EXTENSBLE_ENUMS_PROPERTY, false);
   }
 
   /**
@@ -888,8 +859,7 @@ public class GeneratorCommons {
    * cases.
    */
   public static boolean generateExceptionClasses( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(EXCEPTION_CLASSES_PROPERTY, Boolean.TRUE, Boolean.class);
+    return SystemProperties.getBooleanProperty(EXCEPTION_CLASSES_PROPERTY, true);
   }
 
   /**
@@ -899,8 +869,7 @@ public class GeneratorCommons {
    * cases.
    */
   public static boolean generateDomainObjects( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(DOMAIN_OBJECTS_PROPERTY, Boolean.TRUE, Boolean.class);
+    return SystemProperties.getBooleanProperty(DOMAIN_OBJECTS_PROPERTY, true);
   }
 
   /**
@@ -910,8 +879,7 @@ public class GeneratorCommons {
    * cases.
    */
   public static boolean generateObjectMappers( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(OBJECT_MAPPERS_PROPERTY, Boolean.TRUE, Boolean.class);
+    return SystemProperties.getBooleanProperty(OBJECT_MAPPERS_PROPERTY, true);
   }
 
   /**
@@ -921,8 +889,7 @@ public class GeneratorCommons {
    * false in all other cases.
    */
   public static boolean generateComponentImplClasses( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(COMPONENT_IMPLS_PROPERTY, Boolean.TRUE, Boolean.class);
+    return SystemProperties.getBooleanProperty(COMPONENT_IMPLS_PROPERTY, true);
   }
 
   /**
@@ -932,8 +899,7 @@ public class GeneratorCommons {
    * all other cases.
    */
   public static boolean generateComponentRuntimeClasses( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(COMPONENT_RUNTIME_PROPERTY, Boolean.TRUE, Boolean.class);
+    return SystemProperties.getBooleanProperty(COMPONENT_RUNTIME_PROPERTY, true);
   }
 
   /**
@@ -943,19 +909,17 @@ public class GeneratorCommons {
    * cases.
    */
   public static boolean generatePersistentObjects( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(PERSISTENT_OBJECTS_PROPERTY, Boolean.TRUE, Boolean.class);
+    return SystemProperties.getBooleanProperty(PERSISTENT_OBJECTS_PROPERTY, true);
   }
 
   /**
    * Method checks whether the global parts from the UML model should be generated or not.
    * 
-   * @return boolean Method returns true if gloabal parts should be generated from the model and false in all other
+   * @return boolean Method returns true if global parts should be generated from the model and false in all other
    * cases.
    */
   public static boolean generateGlobalParts( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(GLOBAL_PARTS_PROPERTY, Boolean.TRUE, Boolean.class);
+    return SystemProperties.getBooleanProperty(GLOBAL_PARTS_PROPERTY, true);
   }
 
   /**
@@ -964,103 +928,83 @@ public class GeneratorCommons {
    * @return boolean Method returns true if JUnit tests should be generated from the model and false in all other cases.
    */
   public static boolean generateJUnitTests( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(JUNIT_PROPERTY, Boolean.TRUE, Boolean.class);
+    return SystemProperties.getBooleanProperty(JUNIT_PROPERTY, true);
   }
 
   public static boolean generateTypesReport( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(GENERATE_TYPES_REPORT, Boolean.TRUE, Boolean.class);
+    return SystemProperties.getBooleanProperty(GENERATE_TYPES_REPORT, true);
   }
 
   public static String getTypesReportName( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(TYPES_REPORT_NAME, true, String.class);
+    return SystemProperties.getProperty(TYPES_REPORT_NAME, "Types Report");
   }
 
   public static String getTypesReportFileName( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(TYPES_REPORT_FILE_NAME, true, String.class);
+    return SystemProperties.getProperty(TYPES_REPORT_FILE_NAME, "TypesReport.md");
   }
 
   public static boolean showAliasInTypesReport( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(TYPES_REPORT_FILE_SHOW_ALIAS, true, Boolean.class);
+    return SystemProperties.getBooleanProperty(TYPES_REPORT_FILE_SHOW_ALIAS, true);
   }
 
   public static String getAliasRowName( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(TYPES_REPORT_FILE_ALIAS_ROW_NAME, true, String.class);
+    return SystemProperties.getProperty(TYPES_REPORT_FILE_ALIAS_ROW_NAME, "");
   }
 
   public static boolean showPackageInTypesReport( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(TYPES_REPORT_FILE_SHOW_PACKAGE, true, Boolean.class);
+    return SystemProperties.getBooleanProperty(TYPES_REPORT_FILE_SHOW_PACKAGE, true);
   }
 
   public static boolean showPropertiesInTypesReport( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(TYPES_REPORT_FILE_SHOW_PROPERTIES, true, Boolean.class);
+    return SystemProperties.getBooleanProperty(TYPES_REPORT_FILE_SHOW_PROPERTIES, true);
   }
 
   public static boolean groupTypesReportByPackage( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(TYPES_REPORT_FILE_GROUP_BY_PACKAGES, true, Boolean.class);
+    return SystemProperties.getBooleanProperty(TYPES_REPORT_FILE_GROUP_BY_PACKAGES, true);
   }
 
   public static List<String> getTypesReportStereotypes( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValueList(TYPES_REPORT_FILE_STEREOTYPES, true, String.class);
+    return SystemProperties.getPropertiesList(TYPES_REPORT_FILE_STEREOTYPES);
   }
 
   public static boolean generateBreakingChangesReport( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(GENERATE_BREAKING_CHANGES_REPORT, Boolean.TRUE, Boolean.class);
+    return SystemProperties.getBooleanProperty(GENERATE_BREAKING_CHANGES_REPORT, true);
   }
 
   public static String getBreakingChangesReportName( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(BREAKING_CHANGES_REPORT_NAME, true, String.class);
+    return SystemProperties.getProperty(BREAKING_CHANGES_REPORT_NAME, "Breaking Changes Report");
   }
 
   public static String getBreakingChangesReportFileName( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(BREAKING_CHANGES_REPORT_FILE_NAME, true, String.class);
+    return SystemProperties.getProperty(BREAKING_CHANGES_REPORT_FILE_NAME, "BreakingChanges.md");
   }
 
   public static boolean generateRESTDeprecationReport( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(GENERATE_REST_DEPRECATION_REPORT, Boolean.TRUE, Boolean.class);
+    return SystemProperties.getBooleanProperty(GENERATE_REST_DEPRECATION_REPORT, true);
   }
 
   public static String getRESTDeprecationReportName( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(REST_DEPRECATION_REPORT_NAME, true, String.class);
+    return SystemProperties.getProperty(REST_DEPRECATION_REPORT_NAME, "REST Deprecation Report");
   }
 
   public static String getRESTDeprecationReportFileName( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(REST_DEPRECATION_REPORT_FILE_NAME, true, String.class);
+    return SystemProperties.getProperty(REST_DEPRECATION_REPORT_FILE_NAME, "RESTDeprecationReport.md");
   }
 
   public static boolean generateJavaDeprecationReport( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(GENERATE_JAVA_DEPRECATION_REPORT, Boolean.TRUE, Boolean.class);
+    return SystemProperties.getBooleanProperty(GENERATE_JAVA_DEPRECATION_REPORT, true);
   }
 
   public static String getJavaDeprecationReportName( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(JAVA_DEPRECATION_REPORT_NAME, true, String.class);
+    return SystemProperties.getProperty(JAVA_DEPRECATION_REPORT_NAME, "Java Deprecation Report");
   }
 
   public static String getJavaDeprecationReportFileName( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(JAVA_DEPRECATION_REPORT_FILE_NAME, true, String.class);
+    return SystemProperties.getProperty(JAVA_DEPRECATION_REPORT_FILE_NAME, "JavaDeprecationReport.md");
   }
 
   public static ReportFormat getDeprecationReportFormat( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    String lReportFormatName = lConfiguration.getConfigurationValue(DEPRECATION_REPORT_FORMAT, null, String.class);
+    String lReportFormatName = SystemProperties.getProperty(DEPRECATION_REPORT_FORMAT, null);
     ReportFormat lReportFormat;
     if (lReportFormatName != null) {
       lReportFormat = ReportFormat.valueOf(lReportFormatName);
@@ -1076,23 +1020,19 @@ public class GeneratorCommons {
   }
 
   public static boolean generateSecurityRolesReport( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(GENERATE_SECURITY_ROLES_REPORT, Boolean.TRUE, Boolean.class);
+    return SystemProperties.getBooleanProperty(GENERATE_SECURITY_ROLES_REPORT, true);
   }
 
   public static String getSecurityRolesReportName( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(SECURITY_ROLES_REPORT_NAME, true, String.class);
+    return SystemProperties.getProperty(SECURITY_ROLES_REPORT_NAME, "Security Report");
   }
 
   public static String getSecurityRolesReportFileName( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(SECURITY_ROLES_REPORT_FILE_NAME, true, String.class);
+    return SystemProperties.getProperty(SECURITY_ROLES_REPORT_FILE_NAME, "SecurityReport.md");
   }
 
   public static ReportFormat getSecurityRolesReportFormat( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    String lReportFormatName = lConfiguration.getConfigurationValue(SECURITY_ROLES_REPORT_FORMAT, null, String.class);
+    String lReportFormatName = SystemProperties.getProperty(SECURITY_ROLES_REPORT_FORMAT, null);
     ReportFormat lReportFormat;
     if (lReportFormatName != null) {
       lReportFormat = ReportFormat.valueOf(lReportFormatName);
@@ -1114,8 +1054,7 @@ public class GeneratorCommons {
    * cases.
    */
   public static boolean generateOpenAPISpec( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(OPEN_API_SPEC_PROPERTY, Boolean.TRUE, Boolean.class);
+    return SystemProperties.getBooleanProperty(OPEN_API_SPEC_PROPERTY, true);
   }
 
   /**
@@ -1124,8 +1063,7 @@ public class GeneratorCommons {
    * @return boolean Method returns true if YAML 1.1 compatibility mode should be enabled and false in all other cases.
    */
   public static boolean enableYAML11Compatibility( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(OPEN_API_YAML_11_COMPATIBILITY, Boolean.TRUE, Boolean.class);
+    return SystemProperties.getBooleanProperty(OPEN_API_YAML_11_COMPATIBILITY, true);
   }
 
   /**
@@ -1134,24 +1072,21 @@ public class GeneratorCommons {
    * @return boolean Method returns true if YAML 1.1 compatibility mode should be enabled and false in all other cases.
    */
   public static String getOpenAPICommentStyle( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(OPEN_API_YAML_COMMENT_STYLE, true, String.class);
+    return SystemProperties.getProperty(OPEN_API_YAML_COMMENT_STYLE);
   }
 
   /**
    * Method checks if technical http headers should be suppressed.
    */
   public static boolean suppressTechnicalHttpHeaders( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(SUPPRESS_TECHNICAL_HTTP_HEADERS, Boolean.FALSE, Boolean.class);
+    return SystemProperties.getBooleanProperty(SUPPRESS_TECHNICAL_HTTP_HEADERS, false);
   }
 
   /**
    * Method checks if ignorable http headers should anyways be added to the OpenAPI spec.
    */
   public static boolean addIgnorableHeadersToOpenAPISpec( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(ADD_IGNORED_HEADER_TO_OPEN_API_SPEC, Boolean.TRUE, Boolean.class);
+    return SystemProperties.getBooleanProperty(ADD_IGNORED_HEADER_TO_OPEN_API_SPEC, true);
   }
 
   /**
@@ -1161,8 +1096,7 @@ public class GeneratorCommons {
    * cases.
    */
   public static boolean generateJAXRSAnnotations( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(JAX_RS_ANNOTATIONS_PROPERTY, Boolean.TRUE, Boolean.class);
+    return SystemProperties.getBooleanProperty(JAX_RS_ANNOTATIONS_PROPERTY, true);
   }
 
   /**
@@ -1172,58 +1106,47 @@ public class GeneratorCommons {
    * other cases.
    */
   public static boolean generateJacksonAnnotations( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(JACKSON_ANNOTATIONS_PROPERTY, Boolean.TRUE, Boolean.class);
+    return SystemProperties.getBooleanProperty(JACKSON_ANNOTATIONS_PROPERTY, true);
   }
 
   public static boolean enableSemVerForJSON( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(ENABLE_SEMVER_FOR_JSON, Boolean.TRUE, Boolean.class);
+    return SystemProperties.getBooleanProperty(ENABLE_SEMVER_FOR_JSON, true);
   }
 
   public static boolean generateJSONSerializers( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(JSON_SERIALIZERS, Boolean.TRUE, Boolean.class);
+    return SystemProperties.getBooleanProperty(JSON_SERIALIZERS, true);
   }
 
   public static boolean generateConstantsForAttributeNames( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(NAME_CONSTANTS_FOR_ATTRIBUTES, Boolean.TRUE, Boolean.class);
+    return SystemProperties.getBooleanProperty(NAME_CONSTANTS_FOR_ATTRIBUTES, true);
   }
 
   public static List<String> getSuppressedWarnings( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValueList(SUPPRESS_WARNINGS_LIST, String.class);
+    return SystemProperties.getPropertiesList(SUPPRESS_WARNINGS_LIST);
   }
 
   public static String getJavaGenericSoftLinkType( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(JAVA_GENERIC_SOFT_LINK_TYPE, String.class);
+    return SystemProperties.getProperty(JAVA_GENERIC_SOFT_LINK_TYPE);
   }
 
   public static String getOpenAPIGenericSoftLinkType( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(OPENAPI_GENERIC_SOFT_LINK_TYPE, String.class);
+    return SystemProperties.getProperty(OPENAPI_GENERIC_SOFT_LINK_TYPE, "string");
   }
 
   public static boolean suppressAllWarnings( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(SUPPRESS_ALL_WARNINGS, Boolean.TRUE, Boolean.class);
+    return SystemProperties.getBooleanProperty(SUPPRESS_ALL_WARNINGS, true);
   }
 
   public static boolean addGeneratedAnnotation( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(ADD_GENERATED_ANNOTATION, Boolean.TRUE, Boolean.class);
+    return SystemProperties.getBooleanProperty(ADD_GENERATED_ANNOTATION, true);
   }
 
   public static boolean addGenerationTimestamp( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(ADD_GENERATION_TIMESTAMP, Boolean.TRUE, Boolean.class);
+    return SystemProperties.getBooleanProperty(ADD_GENERATION_TIMESTAMP, true);
   }
 
   public static String getGenerationComment( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(GENERATION_COMMENT, "", String.class);
+    return SystemProperties.getProperty(GENERATION_COMMENT, "");
   }
 
   public static String getGeneratedAnnotation( ) {
@@ -1232,10 +1155,9 @@ public class GeneratorCommons {
       lBuilder.append("value = \"com.anaptecs.jeaf.generator.JEAFGenerator\", ");
 
       if (addGenerationTimestamp()) {
-        DateTools lDateTools = Tools.getDateTools();
-        Calendar lTimestamp = lDateTools.newCalendar();
+        SimpleDateFormat lDateFormat = new SimpleDateFormat(TIMESTAMP_PATTERN);
         lBuilder.append("date = \"");
-        lBuilder.append(lDateTools.toTimestampString(lTimestamp));
+        lBuilder.append(lDateFormat.format(new Date()));
         lBuilder.append("\"");
 
         if (getGenerationComment().isEmpty() == false) {
@@ -1257,121 +1179,95 @@ public class GeneratorCommons {
   }
 
   public static boolean generateValidAnnotationsForClasses( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(VALID_ANNOTATION_FOR_CLASSES, Boolean.TRUE, Boolean.class);
+    return SystemProperties.getBooleanProperty(VALID_ANNOTATION_FOR_CLASSES, true);
   }
 
   public static boolean generateValidAnnotationsForAssociations( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(VALID_ANNOTATION_FOR_ASSOCIATIONS, Boolean.TRUE, Boolean.class);
+    return SystemProperties.getBooleanProperty(VALID_ANNOTATION_FOR_ASSOCIATIONS, true);
   }
 
   public static boolean generateValidationAnnotationsForAttributesFromMultiplicity( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(VALIDATION_ANNOTATION_FOR_ATTRIBUTES, Boolean.TRUE, Boolean.class);
+    return SystemProperties.getBooleanProperty(VALIDATION_ANNOTATION_FOR_ATTRIBUTES, true);
   }
 
   public static boolean generateValidationAnnotationsForAssociationsFromMultiplicity( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(VALIDATION_ANNOTATION_FOR_ASSOCIATIONS, Boolean.TRUE, Boolean.class);
+    return SystemProperties.getBooleanProperty(VALIDATION_ANNOTATION_FOR_ASSOCIATIONS, true);
   }
 
   public static boolean generateObjectValidationInBuilder( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(GENERATE_OBJECT_VALIDATION_IN_BUILDER, Boolean.TRUE, Boolean.class);
+    return SystemProperties.getBooleanProperty(GENERATE_OBJECT_VALIDATION_IN_BUILDER, true);
   }
 
   public static boolean suppressClassNameCommentInOpenAPISpec( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(SUPPRESS_CLASSNAME_IN_OPENAPI, Boolean.TRUE, Boolean.class);
+    return SystemProperties.getBooleanProperty(SUPPRESS_CLASSNAME_IN_OPENAPI, true);
   }
 
   public static boolean generatePublicSettersForAssociations( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(GENERATE_PUBLIC_SETTERS, Boolean.FALSE, Boolean.class);
+    return SystemProperties.getBooleanProperty(GENERATE_PUBLIC_SETTERS, false);
   }
 
   public static boolean generateOfOperation( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(GENERATE_OF_OPERATION, Boolean.FALSE, Boolean.class);
+    return SystemProperties.getBooleanProperty(GENERATE_OF_OPERATION, false);
   }
 
   public static boolean generateOfOperationForOpenAPIDataType( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(GENERATE_OF_OPERATION_FOR_OPENAPI_DATATYPE, Boolean.FALSE,
-        Boolean.class);
+    return SystemProperties.getBooleanProperty(GENERATE_OF_OPERATION_FOR_OPENAPI_DATATYPE, false);
   }
 
   public static boolean generateValueOfForOpenAPIDataTypes( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(GENERATE_VALUE_OF, Boolean.FALSE, Boolean.class);
+    return SystemProperties.getBooleanProperty(GENERATE_VALUE_OF, false);
   }
 
   public static boolean generateNullChecksForToOneAssociationsOfServiceObjects( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(GENERATE_NULL_CHECKS_FOR_TO_ONE_ASSOCIATIONS_OF_SERVICE_OBJECTS,
-        Boolean.TRUE, Boolean.class);
+    return SystemProperties.getBooleanProperty(GENERATE_NULL_CHECKS_FOR_TO_ONE_ASSOCIATIONS_OF_SERVICE_OBJECTS, true);
   }
 
   public static boolean generatePublicObjectView( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(GENERATE_PUBLIC_OBJECT_VIEW, Boolean.TRUE, Boolean.class);
+    return SystemProperties.getBooleanProperty(GENERATE_PUBLIC_OBJECT_VIEW, true);
   }
 
   public static boolean disableCollectionImmutability( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(DISABLE_COLLECTION_IMMUTABILITY, Boolean.FALSE, Boolean.class);
+    return SystemProperties.getBooleanProperty(DISABLE_COLLECTION_IMMUTABILITY, false);
   }
 
   public static boolean disableArrayImmutability( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(DISABLE_ARRAY_IMMUTABILITY, Boolean.FALSE, Boolean.class);
+    return SystemProperties.getBooleanProperty(DISABLE_ARRAY_IMMUTABILITY, false);
   }
 
   public static boolean disableBinaryDataImmutability( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(DISABLE_BINRAY_DATA_IMMUTABILITY, Boolean.FALSE, Boolean.class);
+    return SystemProperties.getBooleanProperty(DISABLE_BINRAY_DATA_IMMUTABILITY, false);
   }
 
   public static boolean enableDetailedToString( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(ENABLE_DETAILED_TO_STRING, Boolean.FALSE, Boolean.class);
+    return SystemProperties.getBooleanProperty(ENABLE_DETAILED_TO_STRING, false);
   }
 
   public static boolean enableLegacyBuilderStyle( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(ENABLE_LEGACY_BUILDER_STYLE, Boolean.FALSE, Boolean.class);
+    return SystemProperties.getBooleanProperty(ENABLE_LEGACY_BUILDER_STYLE, false);
   }
 
   public static boolean generateBuilderMethodWithAllManadatoryFields( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(GENERATE_BUILDER_METHOD_WITH_ALL_MANDATORY_FIELDS, Boolean.FALSE,
-        Boolean.class);
+    return SystemProperties.getBooleanProperty(GENERATE_BUILDER_METHOD_WITH_ALL_MANDATORY_FIELDS, false);
   }
 
   public static String getMavenVersion( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(MAVEN_VERSION_PROPERTY, true, String.class);
+    return SystemProperties.getProperty(MAVEN_VERSION_PROPERTY, "unknown");
   }
 
   public static String getVersion( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(VERSION_PROPERTY, true, String.class);
+    return SystemProperties.getProperty(VERSION_PROPERTY, "unknown");
   }
 
   public static String getCompanyInfo( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(COMPANY_INFO_PROPERTY, true, String.class);
+    return SystemProperties.getProperty(COMPANY_INFO_PROPERTY, "");
   }
 
   public static String getAuthor( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(AUTHOR_PROPERTY, true, String.class);
+    return SystemProperties.getProperty(AUTHOR_PROPERTY, "");
   }
 
   public static String getCopyrightTag( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(COPYRIGHT_PROPERTY, true, String.class);
+    return SystemProperties.getProperty(COPYRIGHT_PROPERTY, "");
   }
 
   public static String getFileHeader( ) {
@@ -1490,17 +1386,6 @@ public class GeneratorCommons {
           lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "PastOrPresent");
           lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "FutureOrPresent");
           lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "Future");
-
-          if (lRunChecks == false) {
-            XFun.getTrace().debug("Ignoring " + lFQN);
-          }
-          else {
-            XFun.getTrace().debug("Checking " + lFQN);
-          }
-        }
-        else {
-          XFun.getTrace().debug(
-              "Ignoring " + lFQN + " due to not supported type: " + pElement.getClass().getSimpleName());
         }
       }
       else {
@@ -1597,8 +1482,7 @@ public class GeneratorCommons {
   }
 
   public static TargetRuntime getTargetRuntime( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    String lValue = lConfiguration.getConfigurationValue(TARGET_RUNTIME, false, String.class);
+    String lValue = SystemProperties.getProperty(TARGET_RUNTIME, null);
     TargetRuntime lTargetRuntime;
     if (lValue != null) {
       lTargetRuntime = TargetRuntime.valueOf(lValue.toUpperCase());
@@ -1611,8 +1495,7 @@ public class GeneratorCommons {
   }
 
   public static EnterpriseJavaType getEnterpriseJavaType( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    String lValue = lConfiguration.getConfigurationValue(ENTERPRISE_JAVA_TYPE, false, String.class);
+    String lValue = SystemProperties.getProperty(ENTERPRISE_JAVA_TYPE, null);
     EnterpriseJavaType lEnterpriseJavaType;
     if (lValue != null) {
       lEnterpriseJavaType = EnterpriseJavaType.valueOf(lValue.toUpperCase());
@@ -1656,8 +1539,7 @@ public class GeneratorCommons {
   }
 
   public static RESTLibrary getRESTLibrary( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    String lValue = lConfiguration.getConfigurationValue(REST_LIBRARY, false, String.class);
+    String lValue = SystemProperties.getProperty(REST_LIBRARY, null);
     RESTLibrary lRESTLibrary;
     if (lValue != null) {
       lRESTLibrary = RESTLibrary.valueOf(lValue.toUpperCase());
@@ -1683,13 +1565,11 @@ public class GeneratorCommons {
   }
 
   public static Integer getRESTDefaultSuccessStatusCode( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(REST_DEFAULT_SUCCESS_STATUS_CODE, 200, Integer.class);
+    return Integer.valueOf(SystemProperties.getProperty(REST_DEFAULT_SUCCESS_STATUS_CODE, "200"));
   }
 
   public static Integer getRESTDefaultVoidStatusCode( ) {
-    Configuration lConfiguration = XFun.getConfigurationProvider().getSystemPropertiesConfiguration();
-    return lConfiguration.getConfigurationValue(REST_DEFAULT_VOID_STATUS_CODE, 204, Integer.class);
+    return Integer.valueOf(SystemProperties.getProperty(REST_DEFAULT_VOID_STATUS_CODE, "204"));
   }
 
   public static boolean isEnumeration( Element pElement ) {
@@ -1717,7 +1597,7 @@ public class GeneratorCommons {
   }
 
   public static String getMessage( NamedElement pElement, String pErrorCode, List<String> pParams ) {
-    MessageRepository lMessageRepository = XFun.getMessageRepository();
+    MessageRepository lMessageRepository = MessageRepository.getMessageRepository();
     ErrorCode lErrorCode = lMessageRepository.getErrorCode(Integer.valueOf(pErrorCode));
     String lMessage = lErrorCode.toString(pParams.toArray(new String[] {}));
     String lElementName = Naming.getFullyQualifiedName(pElement);
