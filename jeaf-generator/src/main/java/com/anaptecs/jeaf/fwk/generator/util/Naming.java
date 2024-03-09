@@ -156,9 +156,14 @@ public class Naming {
       lTemplateParameter.append("<");
     }
 
-    TemplateParameterSubstitution lParameterSubstitution = lTemplateBinding.getParameterSubstitutions().get(0);
-    Class lTypeParameterClass = (Class) lParameterSubstitution.getActuals().get(0);
-    lTemplateParameter.append(Naming.getFullyQualifiedName(lTypeParameterClass));
+    if (lTemplateBinding.getParameterSubstitutions().isEmpty() == false) {
+      TemplateParameterSubstitution lParameterSubstitution = lTemplateBinding.getParameterSubstitutions().get(0);
+      Class lTypeParameterClass = (Class) lParameterSubstitution.getActuals().get(0);
+      lTemplateParameter.append(Naming.getFullyQualifiedName(lTypeParameterClass));
+    }
+    else {
+      lTemplateParameter.append("???");
+    }
 
     if (lMultivalued == true) {
       lTemplateParameter.append(">");

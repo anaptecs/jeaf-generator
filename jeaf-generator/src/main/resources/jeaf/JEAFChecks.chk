@@ -27,6 +27,7 @@ context ServiceObject if runChecks("ServiceObject") && ignore() == false ERROR t
 context ServiceObject if runChecks("ServiceObject") && ignore() == false && compositeDataType ERROR this.getErrorMessage("9162", {this.fqn()}): compositeDataTypePublicFieldName.length > 0;
 
 
+
 context Property if isNavigable() && class != null && class.isStereotypeApplied("ServiceObject") && runChecks() && ignore() == false ERROR this.getErrorMessage("9135", {class.name, type.name}):	!isUnnamed();
 context CompositeDataTypePublicField if ((NamedElement) owner).runChecks("ServiceObject") && ignore() == false ERROR this.getErrorMessage("9157", {((NamedElement)owner).name + "." + name}): this.type.isStringType();
 context ServiceObject if runChecks("ServiceObject") && ignore() == false WARNING this.getWarningMessage("9122", {"ServiceObject", name}): ownedComment.size  > 0;
@@ -44,6 +45,9 @@ context POJO if runChecks("POJO") && ignore() == false ERROR this.getErrorMessag
 context POJO if runChecks("POJO") && ignore() == false ERROR this.getErrorMessage("9160", {name}): this.isStereotypeApplied("ServiceObject") == false;
 context POJO if runChecks("POJO") && ignore() == false && compositeDataType ERROR this.getErrorMessage("9162", {this.fqn()}): compositeDataTypePublicFieldName.length > 0;
 context POJO if runChecks("POJO") && ignore() == false && (generateEqualsAndHashCode() || generateEqualsAndHashCodeForStandardClasses()) WARNING this.getWarningMessage("9163", {this.fqn()}): this.hasBidirectionalAssociations() == false || this.hasOnlyTransientBidirectionalAssociations();
+
+context POJO if runChecks("POJO") && ignore() == false && templateBinding.isEmpty == false ERROR this.getErrorMessage("9167", {owner.asNamedElement().fqn() + "." + name}): templateBinding.first().parameterSubstitution.isEmpty == false && templateBinding.first().parameterSubstitution.first().actual != null;
+context POJO if runChecks("POJO") && ignore() == false && templateBinding.isEmpty == false ERROR this.getErrorMessage("9168", {this.fqn()}): templateBinding.size > 1;
 
 context Property if isNavigable() && class != null && class.isStereotypeApplied("POJO") && runChecks() && ignore() == false ERROR this.getErrorMessage("9135", {class.name, type.name}):	!isUnnamed();
 context CompositeDataTypePublicField if ((NamedElement) owner).runChecks("POJO") && ignore() == false ERROR this.getErrorMessage("9157", {((NamedElement)owner).name + "." + name}): this.type.isStringType();

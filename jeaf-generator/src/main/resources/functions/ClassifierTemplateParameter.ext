@@ -4,7 +4,9 @@ extension java::Naming;
 
 
 cached boolean isClassifierTemplateParameter(uml::Element element):
-    element.isInstanceOf("org.eclipse.uml2.uml.ClassifierTemplateParameter");
+    if element != null
+    then element.isInstanceOf("org.eclipse.uml2.uml.ClassifierTemplateParameter")
+    else false;
 
 cached uml::ClassifierTemplateParameter asClassifierTemplateParameter(uml::Element element):
     (uml::ClassifierTemplateParameter) element;
