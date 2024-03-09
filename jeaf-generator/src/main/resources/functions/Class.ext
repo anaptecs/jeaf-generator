@@ -6,7 +6,9 @@ extension java::GeneratorCommons;
 extension java::OpenAPIFunctions;
 
 cached boolean isClass(uml::Element element):
-    element.isInstanceOf("org.eclipse.uml2.uml.Class");
+	if element != null
+    then element.isInstanceOf("org.eclipse.uml2.uml.Class")
+    else false;
 
 cached uml::Class asClass(uml::Element element):
     (uml::Class) element;
