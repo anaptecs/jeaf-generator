@@ -23,9 +23,11 @@ public class ChildBeanParameterType extends ParentBeanParamType {
    */
   public static final String CHILDPROPERTY = "childProperty";
 
+  // "String"
   @ClassPropertyDeclaration
   private String childProperty;
 
+  // "String"
   private int childPropertyXYZ = 0;
 
   /**
@@ -45,6 +47,7 @@ public class ChildBeanParameterType extends ParentBeanParamType {
     super(pBuilder);
     // Read attribute values from builder.
     childProperty = pBuilder.childProperty;
+    // "String"
     childPropertyXYZ = pBuilder.childPropertyXYZ;
   }
 
@@ -61,9 +64,11 @@ public class ChildBeanParameterType extends ParentBeanParamType {
    * Class implements builder to create a new instance of class <code>ChildBeanParameterType</code>.
    */
   public static class Builder extends ParentBeanParamType.Builder {
+    // "String"
     @BuilderPropertyDeclaration
     private String childProperty;
 
+    // "String"
     private int childPropertyXYZ = 0;
 
     /**
@@ -124,6 +129,7 @@ public class ChildBeanParameterType extends ParentBeanParamType {
     }
 
     public Builder setChildPropertyXYZ( int value ) {
+      // "String"
       childPropertyXYZ = value;
       return this;
     }
@@ -172,6 +178,7 @@ public class ChildBeanParameterType extends ParentBeanParamType {
   }
 
   public int getChildPropertyXYZ( ) {
+    // "String"
     return childPropertyXYZ;
   }
 

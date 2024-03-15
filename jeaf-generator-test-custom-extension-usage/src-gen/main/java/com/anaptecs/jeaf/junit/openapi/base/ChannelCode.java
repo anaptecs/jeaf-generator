@@ -25,6 +25,7 @@ public class ChannelCode implements ServiceObject {
    */
   public static final String CODE = "code";
 
+  // "String"
   @ClassPropertyDeclaration
   /**
    * <br/>
@@ -34,6 +35,7 @@ public class ChannelCode implements ServiceObject {
   @NotNull
   private String code;
 
+  // "String"
   private int codeXYZ = 0;
 
   /**
@@ -54,6 +56,7 @@ public class ChannelCode implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     code = pBuilder.code;
+    // "String"
     codeXYZ = pBuilder.codeXYZ;
   }
 
@@ -75,10 +78,12 @@ public class ChannelCode implements ServiceObject {
      * <b>Default Value:</b> <code>"WEBSHOP"</code> <br/>
      * <b>Example:</b> <code>MOBILE_APP</code>
      */
+    // "String"
     @BuilderPropertyDeclaration
     @NotNull
     private String code = "WEBSHOP";
 
+    // "String"
     private int codeXYZ = 0;
 
     /**
@@ -110,6 +115,7 @@ public class ChannelCode implements ServiceObject {
     }
 
     public Builder setCodeXYZ( int value ) {
+      // "String"
       codeXYZ = value;
       return this;
     }
@@ -158,6 +164,7 @@ public class ChannelCode implements ServiceObject {
   }
 
   public int getCodeXYZ( ) {
+    // "String"
     return codeXYZ;
   }
 

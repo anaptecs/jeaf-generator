@@ -25,6 +25,7 @@ public class CurrencyCode implements ServiceObject {
    */
   public static final String CODE = "code";
 
+  // "String"
   @ClassPropertyDeclaration
   /**
    * ISO 4217 currency code. <br/>
@@ -34,6 +35,7 @@ public class CurrencyCode implements ServiceObject {
   @Size(min = 3, max = 3)
   private String code;
 
+  // "String"
   private int codeXYZ = 0;
 
   /**
@@ -54,6 +56,7 @@ public class CurrencyCode implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     code = pBuilder.code;
+    // "String"
     codeXYZ = pBuilder.codeXYZ;
   }
 
@@ -75,10 +78,12 @@ public class CurrencyCode implements ServiceObject {
      * <b>Default Value:</b> <code>"CHF"</code> <br/>
      * <b>Example:</b> <code>CHF</code>
      */
+    // "String"
     @BuilderPropertyDeclaration
     @Size(min = 3, max = 3)
     private String code = "CHF";
 
+    // "String"
     private int codeXYZ = 0;
 
     /**
@@ -110,6 +115,7 @@ public class CurrencyCode implements ServiceObject {
     }
 
     public Builder setCodeXYZ( int value ) {
+      // "String"
       codeXYZ = value;
       return this;
     }
@@ -160,6 +166,7 @@ public class CurrencyCode implements ServiceObject {
   }
 
   public int getCodeXYZ( ) {
+    // "String"
     return codeXYZ;
   }
 

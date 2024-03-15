@@ -33,14 +33,18 @@ public class TechnicalHeaderContext implements ServiceObject {
    */
   public static final String AUTHENTICATIONTOKEN = "authenticationToken";
 
+  // "String"
   @ClassPropertyDeclaration
   private String reseller;
 
+  // "String"
   private int resellerXYZ = 0;
 
+  // "String"
   @ClassPropertyDeclaration
   private String authenticationToken;
 
+  // "String"
   private int authenticationTokenXYZ = 0;
 
   /**
@@ -65,8 +69,10 @@ public class TechnicalHeaderContext implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     reseller = pBuilder.reseller;
+    // "String"
     resellerXYZ = pBuilder.resellerXYZ;
     authenticationToken = pBuilder.authenticationToken;
+    // "String"
     authenticationTokenXYZ = pBuilder.authenticationTokenXYZ;
   }
 
@@ -83,14 +89,18 @@ public class TechnicalHeaderContext implements ServiceObject {
    * Class implements builder to create a new instance of class <code>TechnicalHeaderContext</code>.
    */
   public static class Builder {
+    // "String"
     @BuilderPropertyDeclaration
     private String reseller;
 
+    // "String"
     private int resellerXYZ = 0;
 
+    // "String"
     @BuilderPropertyDeclaration
     private String authenticationToken;
 
+    // "String"
     private int authenticationTokenXYZ = 0;
 
     /**
@@ -124,6 +134,7 @@ public class TechnicalHeaderContext implements ServiceObject {
     }
 
     public Builder setResellerXYZ( int value ) {
+      // "String"
       resellerXYZ = value;
       return this;
     }
@@ -141,6 +152,7 @@ public class TechnicalHeaderContext implements ServiceObject {
     }
 
     public Builder setAuthenticationTokenXYZ( int value ) {
+      // "String"
       authenticationTokenXYZ = value;
       return this;
     }
@@ -189,6 +201,7 @@ public class TechnicalHeaderContext implements ServiceObject {
   }
 
   public int getResellerXYZ( ) {
+    // "String"
     return resellerXYZ;
   }
 
@@ -216,6 +229,7 @@ public class TechnicalHeaderContext implements ServiceObject {
   }
 
   public int getAuthenticationTokenXYZ( ) {
+    // "String"
     return authenticationTokenXYZ;
   }
 

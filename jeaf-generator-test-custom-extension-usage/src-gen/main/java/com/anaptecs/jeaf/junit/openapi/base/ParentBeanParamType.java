@@ -29,14 +29,18 @@ public class ParentBeanParamType implements ServiceObject {
    */
   public static final String TKID = "tkID";
 
+  // "String"
   @ClassPropertyDeclaration
   private String novaKey;
 
+  // "String"
   private int novaKeyXYZ = 0;
 
+  // "String"
   @ClassPropertyDeclaration
   private String tkID;
 
+  // "String"
   private int tkIDXYZ = 0;
 
   /**
@@ -56,8 +60,10 @@ public class ParentBeanParamType implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     novaKey = pBuilder.novaKey;
+    // "String"
     novaKeyXYZ = pBuilder.novaKeyXYZ;
     tkID = pBuilder.tkID;
+    // "String"
     tkIDXYZ = pBuilder.tkIDXYZ;
   }
 
@@ -74,14 +80,18 @@ public class ParentBeanParamType implements ServiceObject {
    * Class implements builder to create a new instance of class <code>ParentBeanParamType</code>.
    */
   public static class Builder {
+    // "String"
     @BuilderPropertyDeclaration
     private String novaKey;
 
+    // "String"
     private int novaKeyXYZ = 0;
 
+    // "String"
     @BuilderPropertyDeclaration
     private String tkID;
 
+    // "String"
     private int tkIDXYZ = 0;
 
     /**
@@ -115,6 +125,7 @@ public class ParentBeanParamType implements ServiceObject {
     }
 
     public Builder setNovaKeyXYZ( int value ) {
+      // "String"
       novaKeyXYZ = value;
       return this;
     }
@@ -132,6 +143,7 @@ public class ParentBeanParamType implements ServiceObject {
     }
 
     public Builder setTkIDXYZ( int value ) {
+      // "String"
       tkIDXYZ = value;
       return this;
     }
@@ -180,6 +192,7 @@ public class ParentBeanParamType implements ServiceObject {
   }
 
   public int getNovaKeyXYZ( ) {
+    // "String"
     return novaKeyXYZ;
   }
 
@@ -207,6 +220,7 @@ public class ParentBeanParamType implements ServiceObject {
   }
 
   public int getTkIDXYZ( ) {
+    // "String"
     return tkIDXYZ;
   }
 

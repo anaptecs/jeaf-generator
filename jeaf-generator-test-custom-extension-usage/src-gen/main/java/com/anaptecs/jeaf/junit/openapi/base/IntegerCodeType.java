@@ -24,9 +24,11 @@ public class IntegerCodeType implements ServiceObject {
    */
   public static final String CODE = "code";
 
+  // "int"
   @ClassPropertyDeclaration
   private int code;
 
+  // "int"
   private int codeXYZ = 0;
 
   /**
@@ -46,6 +48,7 @@ public class IntegerCodeType implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     code = pBuilder.code;
+    // "int"
     codeXYZ = pBuilder.codeXYZ;
   }
 
@@ -62,9 +65,11 @@ public class IntegerCodeType implements ServiceObject {
    * Class implements builder to create a new instance of class <code>IntegerCodeType</code>.
    */
   public static class Builder {
+    // "int"
     @BuilderPropertyDeclaration
     private int code;
 
+    // "int"
     private int codeXYZ = 0;
 
     /**
@@ -96,6 +101,7 @@ public class IntegerCodeType implements ServiceObject {
     }
 
     public Builder setCodeXYZ( int value ) {
+      // "int"
       codeXYZ = value;
       return this;
     }
@@ -144,6 +150,7 @@ public class IntegerCodeType implements ServiceObject {
   }
 
   public int getCodeXYZ( ) {
+    // "int"
     return codeXYZ;
   }
 

@@ -24,9 +24,11 @@ public class BankAccount implements ServiceObject {
    */
   public static final String IBAN = "iban";
 
+  // "String"
   @ClassPropertyDeclaration
   private String iban;
 
+  // "String"
   private int ibanXYZ = 0;
 
   /**
@@ -46,6 +48,7 @@ public class BankAccount implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     iban = pBuilder.iban;
+    // "String"
     ibanXYZ = pBuilder.ibanXYZ;
   }
 
@@ -62,9 +65,11 @@ public class BankAccount implements ServiceObject {
    * Class implements builder to create a new instance of class <code>BankAccount</code>.
    */
   public static class Builder {
+    // "String"
     @BuilderPropertyDeclaration
     private String iban;
 
+    // "String"
     private int ibanXYZ = 0;
 
     /**
@@ -96,6 +101,7 @@ public class BankAccount implements ServiceObject {
     }
 
     public Builder setIbanXYZ( int value ) {
+      // "String"
       ibanXYZ = value;
       return this;
     }
@@ -144,6 +150,7 @@ public class BankAccount implements ServiceObject {
   }
 
   public int getIbanXYZ( ) {
+    // "String"
     return ibanXYZ;
   }
 

@@ -32,6 +32,7 @@ public abstract class PersonBase extends Partner {
    */
   public static final String FIRSTNAME = "firstName";
 
+  // "java.lang.String"
   @ClassPropertyDeclaration
   /**
    * <p/>
@@ -39,11 +40,14 @@ public abstract class PersonBase extends Partner {
    */
   private String surname;
 
+  // "java.lang.String"
   private int surnameXYZ = 0;
 
+  // "java.lang.String"
   @ClassPropertyDeclaration
   private String firstName;
 
+  // "java.lang.String"
   private int firstNameXYZ = 0;
 
   /**
@@ -63,8 +67,10 @@ public abstract class PersonBase extends Partner {
     super(pBuilder);
     // Read attribute values from builder.
     surname = pBuilder.surname;
+    // "java.lang.String"
     surnameXYZ = pBuilder.surnameXYZ;
     firstName = pBuilder.firstName;
+    // "java.lang.String"
     firstNameXYZ = pBuilder.firstNameXYZ;
   }
 
@@ -77,14 +83,18 @@ public abstract class PersonBase extends Partner {
      * <p/>
      * <b>Alternate Name:</b> Vorname
      */
+    // "java.lang.String"
     @BuilderPropertyDeclaration
     private String surname;
 
+    // "java.lang.String"
     private int surnameXYZ = 0;
 
+    // "java.lang.String"
     @BuilderPropertyDeclaration
     private String firstName;
 
+    // "java.lang.String"
     private int firstNameXYZ = 0;
 
     /**
@@ -155,6 +165,7 @@ public abstract class PersonBase extends Partner {
     }
 
     public BuilderBase setSurnameXYZ( int value ) {
+      // "java.lang.String"
       surnameXYZ = value;
       return this;
     }
@@ -172,6 +183,7 @@ public abstract class PersonBase extends Partner {
     }
 
     public BuilderBase setFirstNameXYZ( int value ) {
+      // "java.lang.String"
       firstNameXYZ = value;
       return this;
     }
@@ -219,6 +231,7 @@ public abstract class PersonBase extends Partner {
   }
 
   public int getSurnameXYZ( ) {
+    // "java.lang.String"
     return surnameXYZ;
   }
 
@@ -246,6 +259,7 @@ public abstract class PersonBase extends Partner {
   }
 
   public int getFirstNameXYZ( ) {
+    // "java.lang.String"
     return firstNameXYZ;
   }
 

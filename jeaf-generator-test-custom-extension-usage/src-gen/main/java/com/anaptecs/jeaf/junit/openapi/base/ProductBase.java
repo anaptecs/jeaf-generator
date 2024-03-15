@@ -96,6 +96,7 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
    */
   private final ServiceObjectID objectID;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.Reseller"
   @ClassPropertyDeclaration
   private Set<Reseller> resellers;
 
@@ -104,22 +105,28 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
    */
   private transient boolean resellersBackReferenceInitialized;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.Reseller"
   private int resellersXYZ = 0;
 
+  // "java.lang.String"
   @ClassPropertyDeclaration
   @Size(min = 12, max = Integer.MAX_VALUE)
   private String name;
 
+  // "java.lang.String"
   private int nameXYZ = 0;
 
+  // "byte"
   @ClassPropertyDeclaration
   /**
    * Image describing the product.
    */
   private byte[] image;
 
+  // "byte"
   private int imageXYZ = 0;
 
+  // "java.net.URL"
   @ClassPropertyDeclaration
   /**
    * <br/>
@@ -127,35 +134,47 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
    */
   private URL link;
 
+  // "java.net.URL"
   private int linkXYZ = 0;
 
+  // "java.util.UUID"
   @ClassPropertyDeclaration
   private final UUID productID;
 
+  // "java.util.UUID"
   private int productIDXYZ = 0;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.CurrencyCode"
   @ClassPropertyDeclaration
   @Size(min = 7, max = 42)
   private Set<CurrencyCode> supportedCurrencies;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.CurrencyCode"
   private int supportedCurrenciesXYZ = 0;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.ProductCode"
   @ClassPropertyDeclaration
   private Set<ProductCode> productCodes;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.ProductCode"
   private int productCodesXYZ = 0;
 
+  // "String"
   @ClassPropertyDeclaration
   @Deprecated
   private String description;
 
+  // "String"
   private int descriptionXYZ = 0;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.Sortiment"
   @ClassPropertyDeclaration
   private transient Set<Sortiment> sortiments;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.Sortiment"
   private int sortimentsXYZ = 0;
 
+  // "String"
   @ClassPropertyDeclaration
   /**
    * <br/>
@@ -163,6 +182,7 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
    */
   private String uri;
 
+  // "String"
   private int uriXYZ = 0;
 
   /**
@@ -210,14 +230,19 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
     }
     // Bidirectional back reference is set up correctly as a builder is used.
     resellersBackReferenceInitialized = true;
+    // "com.anaptecs.jeaf.junit.openapi.base.Reseller"
     resellersXYZ = pBuilder.resellersXYZ;
     name = pBuilder.name;
+    // "java.lang.String"
     nameXYZ = pBuilder.nameXYZ;
     image = pBuilder.image;
+    // "byte"
     imageXYZ = pBuilder.imageXYZ;
     link = pBuilder.link;
+    // "java.net.URL"
     linkXYZ = pBuilder.linkXYZ;
     productID = pBuilder.productID;
+    // "java.util.UUID"
     productIDXYZ = pBuilder.productIDXYZ;
     if (pBuilder.supportedCurrencies != null) {
       supportedCurrencies = pBuilder.supportedCurrencies;
@@ -225,6 +250,7 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
     else {
       supportedCurrencies = new HashSet<CurrencyCode>();
     }
+    // "com.anaptecs.jeaf.junit.openapi.base.CurrencyCode"
     supportedCurrenciesXYZ = pBuilder.supportedCurrenciesXYZ;
     if (pBuilder.productCodes != null) {
       productCodes = pBuilder.productCodes;
@@ -232,11 +258,14 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
     else {
       productCodes = new HashSet<ProductCode>();
     }
+    // "com.anaptecs.jeaf.junit.openapi.base.ProductCode"
     productCodesXYZ = pBuilder.productCodesXYZ;
     description = pBuilder.description;
+    // "String"
     descriptionXYZ = pBuilder.descriptionXYZ;
     sortiments = new HashSet<Sortiment>();
     uri = pBuilder.uri;
+    // "String"
     uriXYZ = pBuilder.uriXYZ;
   }
 
@@ -250,62 +279,80 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
      */
     private ObjectIdentity<?> objectID;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.Reseller"
     @BuilderPropertyDeclaration
     private Set<Reseller> resellers;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.Reseller"
     private int resellersXYZ = 0;
 
+    // "java.lang.String"
     @BuilderPropertyDeclaration
     @Size(min = 12, max = Integer.MAX_VALUE)
     private String name;
 
+    // "java.lang.String"
     private int nameXYZ = 0;
 
     /**
      * Image describing the product.
      */
+    // "byte"
     @BuilderPropertyDeclaration
     private byte[] image;
 
+    // "byte"
     private int imageXYZ = 0;
 
     /**
      * <br/>
      * <b>Example:</b> <code>https://www.company.com/products/1345-345</code>
      */
+    // "java.net.URL"
     @BuilderPropertyDeclaration
     private URL link;
 
+    // "java.net.URL"
     private int linkXYZ = 0;
 
+    // "java.util.UUID"
     @BuilderPropertyDeclaration
     private UUID productID;
 
+    // "java.util.UUID"
     private int productIDXYZ = 0;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.CurrencyCode"
     @BuilderPropertyDeclaration
     private Set<CurrencyCode> supportedCurrencies;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.CurrencyCode"
     private int supportedCurrenciesXYZ = 0;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.ProductCode"
     @BuilderPropertyDeclaration
     private Set<ProductCode> productCodes;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.ProductCode"
     private int productCodesXYZ = 0;
 
+    // "String"
     @BuilderPropertyDeclaration
     @Deprecated
     private String description;
 
+    // "String"
     private int descriptionXYZ = 0;
 
     /**
      * <br/>
      * <b>Default Value:</b> <code>"https://products.anaptecs.de/123456789"</code>
      */
+    // "String"
     @BuilderPropertyDeclaration
     private String uri = "https://products.anaptecs.de/123456789";
 
+    // "String"
     private int uriXYZ = 0;
 
     /**
@@ -376,6 +423,7 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
     }
 
     public BuilderBase setResellersXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.Reseller"
       resellersXYZ = value;
       return this;
     }
@@ -393,6 +441,7 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
     }
 
     public BuilderBase setNameXYZ( int value ) {
+      // "java.lang.String"
       nameXYZ = value;
       return this;
     }
@@ -416,6 +465,7 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
     }
 
     public BuilderBase setImageXYZ( int value ) {
+      // "byte"
       imageXYZ = value;
       return this;
     }
@@ -433,6 +483,7 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
     }
 
     public BuilderBase setLinkXYZ( int value ) {
+      // "java.net.URL"
       linkXYZ = value;
       return this;
     }
@@ -450,6 +501,7 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
     }
 
     public BuilderBase setProductIDXYZ( int value ) {
+      // "java.util.UUID"
       productIDXYZ = value;
       return this;
     }
@@ -489,6 +541,7 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
     }
 
     public BuilderBase setSupportedCurrenciesXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.CurrencyCode"
       supportedCurrenciesXYZ = value;
       return this;
     }
@@ -527,6 +580,7 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
     }
 
     public BuilderBase setProductCodesXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.ProductCode"
       productCodesXYZ = value;
       return this;
     }
@@ -545,6 +599,7 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
     }
 
     public BuilderBase setDescriptionXYZ( int value ) {
+      // "String"
       descriptionXYZ = value;
       return this;
     }
@@ -562,6 +617,7 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
     }
 
     public BuilderBase setUriXYZ( int value ) {
+      // "String"
       uriXYZ = value;
       return this;
     }
@@ -700,6 +756,7 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
   }
 
   public int getResellersXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.Reseller"
     return resellersXYZ;
   }
 
@@ -727,6 +784,7 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
   }
 
   public int getNameXYZ( ) {
+    // "java.lang.String"
     return nameXYZ;
   }
 
@@ -770,6 +828,7 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
   }
 
   public int getImageXYZ( ) {
+    // "byte"
     return imageXYZ;
   }
 
@@ -797,6 +856,7 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
   }
 
   public int getLinkXYZ( ) {
+    // "java.net.URL"
     return linkXYZ;
   }
 
@@ -814,6 +874,7 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
   }
 
   public int getProductIDXYZ( ) {
+    // "java.util.UUID"
     return productIDXYZ;
   }
 
@@ -882,6 +943,7 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
   }
 
   public int getSupportedCurrenciesXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.CurrencyCode"
     return supportedCurrenciesXYZ;
   }
 
@@ -948,6 +1010,7 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
   }
 
   public int getProductCodesXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.ProductCode"
     return productCodesXYZ;
   }
 
@@ -977,6 +1040,7 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
   }
 
   public int getDescriptionXYZ( ) {
+    // "String"
     return descriptionXYZ;
   }
 
@@ -1048,6 +1112,7 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
   }
 
   public int getSortimentsXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.Sortiment"
     return sortimentsXYZ;
   }
 
@@ -1075,6 +1140,7 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
   }
 
   public int getUriXYZ( ) {
+    // "String"
     return uriXYZ;
   }
 

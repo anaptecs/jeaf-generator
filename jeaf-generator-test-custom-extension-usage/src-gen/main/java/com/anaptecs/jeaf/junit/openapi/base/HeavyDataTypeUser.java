@@ -59,44 +59,60 @@ public class HeavyDataTypeUser implements ServiceObject {
    */
   public static final String BIGDECIMALCODE = "bigDecimalCode";
 
+  // "com.anaptecs.jeaf.junit.openapi.base.BooleanCode"
   @ClassPropertyDeclaration
   private BooleanCode booleanCode;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.BooleanCode"
   private int booleanCodeXYZ = 0;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.ByteCode"
   @ClassPropertyDeclaration
   private ByteCode byteCode;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.ByteCode"
   private int byteCodeXYZ = 0;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.ShortCode"
   @ClassPropertyDeclaration
   private ShortCode shortCode;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.ShortCode"
   private int shortCodeXYZ = 0;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.IntegerCode"
   @ClassPropertyDeclaration
   private IntegerCode integerCode;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.IntegerCode"
   private int integerCodeXYZ = 0;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.FloatCode"
   @ClassPropertyDeclaration
   private FloatCode floatCode;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.FloatCode"
   private int floatCodeXYZ = 0;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.DoubleCode"
   @ClassPropertyDeclaration
   private DoubleCode doubleCode;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.DoubleCode"
   private int doubleCodeXYZ = 0;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.BigIntegerCode"
   @ClassPropertyDeclaration
   private BigIntegerCode bigInegerCode;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.BigIntegerCode"
   private int bigInegerCodeXYZ = 0;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.BigDecimalCode"
   @ClassPropertyDeclaration
   private BigDecimalCode bigDecimalCode;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.BigDecimalCode"
   private int bigDecimalCodeXYZ = 0;
 
   /**
@@ -116,20 +132,28 @@ public class HeavyDataTypeUser implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     booleanCode = pBuilder.booleanCode;
+    // "com.anaptecs.jeaf.junit.openapi.base.BooleanCode"
     booleanCodeXYZ = pBuilder.booleanCodeXYZ;
     byteCode = pBuilder.byteCode;
+    // "com.anaptecs.jeaf.junit.openapi.base.ByteCode"
     byteCodeXYZ = pBuilder.byteCodeXYZ;
     shortCode = pBuilder.shortCode;
+    // "com.anaptecs.jeaf.junit.openapi.base.ShortCode"
     shortCodeXYZ = pBuilder.shortCodeXYZ;
     integerCode = pBuilder.integerCode;
+    // "com.anaptecs.jeaf.junit.openapi.base.IntegerCode"
     integerCodeXYZ = pBuilder.integerCodeXYZ;
     floatCode = pBuilder.floatCode;
+    // "com.anaptecs.jeaf.junit.openapi.base.FloatCode"
     floatCodeXYZ = pBuilder.floatCodeXYZ;
     doubleCode = pBuilder.doubleCode;
+    // "com.anaptecs.jeaf.junit.openapi.base.DoubleCode"
     doubleCodeXYZ = pBuilder.doubleCodeXYZ;
     bigInegerCode = pBuilder.bigInegerCode;
+    // "com.anaptecs.jeaf.junit.openapi.base.BigIntegerCode"
     bigInegerCodeXYZ = pBuilder.bigInegerCodeXYZ;
     bigDecimalCode = pBuilder.bigDecimalCode;
+    // "com.anaptecs.jeaf.junit.openapi.base.BigDecimalCode"
     bigDecimalCodeXYZ = pBuilder.bigDecimalCodeXYZ;
   }
 
@@ -146,44 +170,60 @@ public class HeavyDataTypeUser implements ServiceObject {
    * Class implements builder to create a new instance of class <code>HeavyDataTypeUser</code>.
    */
   public static class Builder {
+    // "com.anaptecs.jeaf.junit.openapi.base.BooleanCode"
     @BuilderPropertyDeclaration
     private BooleanCode booleanCode;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.BooleanCode"
     private int booleanCodeXYZ = 0;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.ByteCode"
     @BuilderPropertyDeclaration
     private ByteCode byteCode;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.ByteCode"
     private int byteCodeXYZ = 0;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.ShortCode"
     @BuilderPropertyDeclaration
     private ShortCode shortCode;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.ShortCode"
     private int shortCodeXYZ = 0;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.IntegerCode"
     @BuilderPropertyDeclaration
     private IntegerCode integerCode;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.IntegerCode"
     private int integerCodeXYZ = 0;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.FloatCode"
     @BuilderPropertyDeclaration
     private FloatCode floatCode;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.FloatCode"
     private int floatCodeXYZ = 0;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.DoubleCode"
     @BuilderPropertyDeclaration
     private DoubleCode doubleCode;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.DoubleCode"
     private int doubleCodeXYZ = 0;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.BigIntegerCode"
     @BuilderPropertyDeclaration
     private BigIntegerCode bigInegerCode;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.BigIntegerCode"
     private int bigInegerCodeXYZ = 0;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.BigDecimalCode"
     @BuilderPropertyDeclaration
     private BigDecimalCode bigDecimalCode;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.BigDecimalCode"
     private int bigDecimalCodeXYZ = 0;
 
     /**
@@ -222,6 +262,7 @@ public class HeavyDataTypeUser implements ServiceObject {
     }
 
     public Builder setBooleanCodeXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.BooleanCode"
       booleanCodeXYZ = value;
       return this;
     }
@@ -239,6 +280,7 @@ public class HeavyDataTypeUser implements ServiceObject {
     }
 
     public Builder setByteCodeXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.ByteCode"
       byteCodeXYZ = value;
       return this;
     }
@@ -256,6 +298,7 @@ public class HeavyDataTypeUser implements ServiceObject {
     }
 
     public Builder setShortCodeXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.ShortCode"
       shortCodeXYZ = value;
       return this;
     }
@@ -273,6 +316,7 @@ public class HeavyDataTypeUser implements ServiceObject {
     }
 
     public Builder setIntegerCodeXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.IntegerCode"
       integerCodeXYZ = value;
       return this;
     }
@@ -290,6 +334,7 @@ public class HeavyDataTypeUser implements ServiceObject {
     }
 
     public Builder setFloatCodeXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.FloatCode"
       floatCodeXYZ = value;
       return this;
     }
@@ -307,6 +352,7 @@ public class HeavyDataTypeUser implements ServiceObject {
     }
 
     public Builder setDoubleCodeXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.DoubleCode"
       doubleCodeXYZ = value;
       return this;
     }
@@ -324,6 +370,7 @@ public class HeavyDataTypeUser implements ServiceObject {
     }
 
     public Builder setBigInegerCodeXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.BigIntegerCode"
       bigInegerCodeXYZ = value;
       return this;
     }
@@ -341,6 +388,7 @@ public class HeavyDataTypeUser implements ServiceObject {
     }
 
     public Builder setBigDecimalCodeXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.BigDecimalCode"
       bigDecimalCodeXYZ = value;
       return this;
     }
@@ -389,6 +437,7 @@ public class HeavyDataTypeUser implements ServiceObject {
   }
 
   public int getBooleanCodeXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.BooleanCode"
     return booleanCodeXYZ;
   }
 
@@ -416,6 +465,7 @@ public class HeavyDataTypeUser implements ServiceObject {
   }
 
   public int getByteCodeXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.ByteCode"
     return byteCodeXYZ;
   }
 
@@ -443,6 +493,7 @@ public class HeavyDataTypeUser implements ServiceObject {
   }
 
   public int getShortCodeXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.ShortCode"
     return shortCodeXYZ;
   }
 
@@ -470,6 +521,7 @@ public class HeavyDataTypeUser implements ServiceObject {
   }
 
   public int getIntegerCodeXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.IntegerCode"
     return integerCodeXYZ;
   }
 
@@ -497,6 +549,7 @@ public class HeavyDataTypeUser implements ServiceObject {
   }
 
   public int getFloatCodeXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.FloatCode"
     return floatCodeXYZ;
   }
 
@@ -524,6 +577,7 @@ public class HeavyDataTypeUser implements ServiceObject {
   }
 
   public int getDoubleCodeXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.DoubleCode"
     return doubleCodeXYZ;
   }
 
@@ -551,6 +605,7 @@ public class HeavyDataTypeUser implements ServiceObject {
   }
 
   public int getBigInegerCodeXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.BigIntegerCode"
     return bigInegerCodeXYZ;
   }
 
@@ -578,6 +633,7 @@ public class HeavyDataTypeUser implements ServiceObject {
   }
 
   public int getBigDecimalCodeXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.BigDecimalCode"
     return bigDecimalCodeXYZ;
   }
 

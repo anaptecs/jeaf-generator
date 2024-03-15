@@ -51,30 +51,40 @@ public class CodeTypeUsageTest implements ServiceObject {
    */
   public static final String SHORTCODE = "shortCode";
 
+  // "com.anaptecs.jeaf.junit.openapi.base.BooleanCodeType"
   @ClassPropertyDeclaration
   private BooleanCodeType booleanCode;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.BooleanCodeType"
   private int booleanCodeXYZ = 0;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.BooleanCodeType"
   @ClassPropertyDeclaration
   private Set<BooleanCodeType> booleanCodeAssociation;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.BooleanCodeType"
   private int booleanCodeAssociationXYZ = 0;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.ShortCodeType"
   @ClassPropertyDeclaration
   @Valid
   private Set<ShortCodeType> shortCodeTypeAssociation;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.ShortCodeType"
   private int shortCodeTypeAssociationXYZ = 0;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.StringCodeType"
   @ClassPropertyDeclaration
   private StringCodeType stringCode;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.StringCodeType"
   private int stringCodeXYZ = 0;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.ShortCode"
   @ClassPropertyDeclaration
   private ShortCode shortCode;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.ShortCode"
   private int shortCodeXYZ = 0;
 
   /**
@@ -96,6 +106,7 @@ public class CodeTypeUsageTest implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     booleanCode = pBuilder.booleanCode;
+    // "com.anaptecs.jeaf.junit.openapi.base.BooleanCodeType"
     booleanCodeXYZ = pBuilder.booleanCodeXYZ;
     if (pBuilder.booleanCodeAssociation != null) {
       booleanCodeAssociation = pBuilder.booleanCodeAssociation;
@@ -103,6 +114,7 @@ public class CodeTypeUsageTest implements ServiceObject {
     else {
       booleanCodeAssociation = new HashSet<BooleanCodeType>();
     }
+    // "com.anaptecs.jeaf.junit.openapi.base.BooleanCodeType"
     booleanCodeAssociationXYZ = pBuilder.booleanCodeAssociationXYZ;
     if (pBuilder.shortCodeTypeAssociation != null) {
       shortCodeTypeAssociation = pBuilder.shortCodeTypeAssociation;
@@ -110,10 +122,13 @@ public class CodeTypeUsageTest implements ServiceObject {
     else {
       shortCodeTypeAssociation = new HashSet<ShortCodeType>();
     }
+    // "com.anaptecs.jeaf.junit.openapi.base.ShortCodeType"
     shortCodeTypeAssociationXYZ = pBuilder.shortCodeTypeAssociationXYZ;
     stringCode = pBuilder.stringCode;
+    // "com.anaptecs.jeaf.junit.openapi.base.StringCodeType"
     stringCodeXYZ = pBuilder.stringCodeXYZ;
     shortCode = pBuilder.shortCode;
+    // "com.anaptecs.jeaf.junit.openapi.base.ShortCode"
     shortCodeXYZ = pBuilder.shortCodeXYZ;
   }
 
@@ -130,29 +145,39 @@ public class CodeTypeUsageTest implements ServiceObject {
    * Class implements builder to create a new instance of class <code>CodeTypeUsageTest</code>.
    */
   public static class Builder {
+    // "com.anaptecs.jeaf.junit.openapi.base.BooleanCodeType"
     @BuilderPropertyDeclaration
     private BooleanCodeType booleanCode;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.BooleanCodeType"
     private int booleanCodeXYZ = 0;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.BooleanCodeType"
     @BuilderPropertyDeclaration
     private Set<BooleanCodeType> booleanCodeAssociation;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.BooleanCodeType"
     private int booleanCodeAssociationXYZ = 0;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.ShortCodeType"
     @BuilderPropertyDeclaration
     private Set<ShortCodeType> shortCodeTypeAssociation;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.ShortCodeType"
     private int shortCodeTypeAssociationXYZ = 0;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.StringCodeType"
     @BuilderPropertyDeclaration
     private StringCodeType stringCode;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.StringCodeType"
     private int stringCodeXYZ = 0;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.ShortCode"
     @BuilderPropertyDeclaration
     private ShortCode shortCode;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.ShortCode"
     private int shortCodeXYZ = 0;
 
     /**
@@ -188,6 +213,7 @@ public class CodeTypeUsageTest implements ServiceObject {
     }
 
     public Builder setBooleanCodeXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.BooleanCodeType"
       booleanCodeXYZ = value;
       return this;
     }
@@ -227,6 +253,7 @@ public class CodeTypeUsageTest implements ServiceObject {
     }
 
     public Builder setBooleanCodeAssociationXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.BooleanCodeType"
       booleanCodeAssociationXYZ = value;
       return this;
     }
@@ -266,6 +293,7 @@ public class CodeTypeUsageTest implements ServiceObject {
     }
 
     public Builder setShortCodeTypeAssociationXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.ShortCodeType"
       shortCodeTypeAssociationXYZ = value;
       return this;
     }
@@ -283,6 +311,7 @@ public class CodeTypeUsageTest implements ServiceObject {
     }
 
     public Builder setStringCodeXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.StringCodeType"
       stringCodeXYZ = value;
       return this;
     }
@@ -299,6 +328,7 @@ public class CodeTypeUsageTest implements ServiceObject {
     }
 
     public Builder setShortCodeXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.ShortCode"
       shortCodeXYZ = value;
       return this;
     }
@@ -347,6 +377,7 @@ public class CodeTypeUsageTest implements ServiceObject {
   }
 
   public int getBooleanCodeXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.BooleanCodeType"
     return booleanCodeXYZ;
   }
 
@@ -415,6 +446,7 @@ public class CodeTypeUsageTest implements ServiceObject {
   }
 
   public int getBooleanCodeAssociationXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.BooleanCodeType"
     return booleanCodeAssociationXYZ;
   }
 
@@ -483,6 +515,7 @@ public class CodeTypeUsageTest implements ServiceObject {
   }
 
   public int getShortCodeTypeAssociationXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.ShortCodeType"
     return shortCodeTypeAssociationXYZ;
   }
 
@@ -510,6 +543,7 @@ public class CodeTypeUsageTest implements ServiceObject {
   }
 
   public int getStringCodeXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.StringCodeType"
     return stringCodeXYZ;
   }
 
@@ -543,6 +577,7 @@ public class CodeTypeUsageTest implements ServiceObject {
   }
 
   public int getShortCodeXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.ShortCode"
     return shortCodeXYZ;
   }
 

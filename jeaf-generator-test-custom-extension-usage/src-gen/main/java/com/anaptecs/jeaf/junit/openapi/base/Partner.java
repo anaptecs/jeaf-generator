@@ -38,9 +38,11 @@ public class Partner implements ServiceObject, Identifiable<ServiceObjectID> {
    */
   private final ServiceObjectID objectID;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.PostalAddress"
   @ClassPropertyDeclaration
   private List<PostalAddress> postalAddresses;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.PostalAddress"
   private int postalAddressesXYZ = 0;
 
   /**
@@ -75,6 +77,7 @@ public class Partner implements ServiceObject, Identifiable<ServiceObjectID> {
     else {
       postalAddresses = new ArrayList<PostalAddress>();
     }
+    // "com.anaptecs.jeaf.junit.openapi.base.PostalAddress"
     postalAddressesXYZ = pBuilder.postalAddressesXYZ;
   }
 
@@ -96,9 +99,11 @@ public class Partner implements ServiceObject, Identifiable<ServiceObjectID> {
      */
     private ObjectIdentity<?> objectID;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.PostalAddress"
     @BuilderPropertyDeclaration
     private List<PostalAddress> postalAddresses;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.PostalAddress"
     private int postalAddressesXYZ = 0;
 
     /**
@@ -162,6 +167,7 @@ public class Partner implements ServiceObject, Identifiable<ServiceObjectID> {
     }
 
     public Builder setPostalAddressesXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.PostalAddress"
       postalAddressesXYZ = value;
       return this;
     }
@@ -278,6 +284,7 @@ public class Partner implements ServiceObject, Identifiable<ServiceObjectID> {
   }
 
   public int getPostalAddressesXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.PostalAddress"
     return postalAddressesXYZ;
   }
 

@@ -45,6 +45,7 @@ public class ChildB extends ParentClass {
    */
   public static final String COMPOSITION = "composition";
 
+  // "Boolean"
   @ClassPropertyDeclaration
   /**
    * A child attribute
@@ -52,14 +53,17 @@ public class ChildB extends ParentClass {
   @Size(min = 11, max = 42)
   private boolean[] childBAttribute;
 
+  // "Boolean"
   private int childBAttributeXYZ = 0;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.ParentClass"
   @ClassPropertyDeclaration
   /**
    * the composition
    */
   private Set<ParentClass> composition;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.ParentClass"
   private int compositionXYZ = 0;
 
   /**
@@ -80,6 +84,7 @@ public class ChildB extends ParentClass {
     super(pBuilder);
     // Read attribute values from builder.
     childBAttribute = pBuilder.childBAttribute;
+    // "Boolean"
     childBAttributeXYZ = pBuilder.childBAttributeXYZ;
     if (pBuilder.composition != null) {
       composition = pBuilder.composition;
@@ -87,6 +92,7 @@ public class ChildB extends ParentClass {
     else {
       composition = new HashSet<ParentClass>();
     }
+    // "com.anaptecs.jeaf.junit.openapi.base.ParentClass"
     compositionXYZ = pBuilder.compositionXYZ;
   }
 
@@ -106,18 +112,22 @@ public class ChildB extends ParentClass {
     /**
      * A child attribute
      */
+    // "Boolean"
     @BuilderPropertyDeclaration
     @Size(min = 11, max = 42)
     private boolean[] childBAttribute;
 
+    // "Boolean"
     private int childBAttributeXYZ = 0;
 
     /**
      * the composition
      */
+    // "com.anaptecs.jeaf.junit.openapi.base.ParentClass"
     @BuilderPropertyDeclaration
     private Set<ParentClass> composition;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.ParentClass"
     private int compositionXYZ = 0;
 
     /**
@@ -238,6 +248,7 @@ public class ChildB extends ParentClass {
     }
 
     public Builder setChildBAttributeXYZ( int value ) {
+      // "Boolean"
       childBAttributeXYZ = value;
       return this;
     }
@@ -276,6 +287,7 @@ public class ChildB extends ParentClass {
     }
 
     public Builder setCompositionXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.ParentClass"
       compositionXYZ = value;
       return this;
     }
@@ -339,6 +351,7 @@ public class ChildB extends ParentClass {
   }
 
   public int getChildBAttributeXYZ( ) {
+    // "Boolean"
     return childBAttributeXYZ;
   }
 
@@ -406,6 +419,7 @@ public class ChildB extends ParentClass {
   }
 
   public int getCompositionXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.ParentClass"
     return compositionXYZ;
   }
 

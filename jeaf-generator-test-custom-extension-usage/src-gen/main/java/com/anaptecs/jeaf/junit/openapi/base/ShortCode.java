@@ -25,10 +25,12 @@ public class ShortCode implements ServiceObject {
    */
   public static final String CODE = "code";
 
+  // "short"
   @ClassPropertyDeclaration
   @Max(value = 4711)
   private short code;
 
+  // "short"
   private int codeXYZ = 0;
 
   /**
@@ -48,6 +50,7 @@ public class ShortCode implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     code = pBuilder.code;
+    // "short"
     codeXYZ = pBuilder.codeXYZ;
   }
 
@@ -64,10 +67,12 @@ public class ShortCode implements ServiceObject {
    * Class implements builder to create a new instance of class <code>ShortCode</code>.
    */
   public static class Builder {
+    // "short"
     @BuilderPropertyDeclaration
     @Max(value = 4711)
     private short code;
 
+    // "short"
     private int codeXYZ = 0;
 
     /**
@@ -99,6 +104,7 @@ public class ShortCode implements ServiceObject {
     }
 
     public Builder setCodeXYZ( int value ) {
+      // "short"
       codeXYZ = value;
       return this;
     }
@@ -146,6 +152,7 @@ public class ShortCode implements ServiceObject {
   }
 
   public int getCodeXYZ( ) {
+    // "short"
     return codeXYZ;
   }
 

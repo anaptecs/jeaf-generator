@@ -55,12 +55,15 @@ public class Context implements ServiceObject {
    */
   public static final String INTCODE = "intCode";
 
+  // "java.lang.String"
   @ClassPropertyDeclaration
   @NotEmpty
   private String accessToken;
 
+  // "java.lang.String"
   private int accessTokenXYZ = 0;
 
+  // "java.util.Locale"
   @ClassPropertyDeclaration
   /**
    * <br/>
@@ -68,26 +71,35 @@ public class Context implements ServiceObject {
    */
   private Locale language;
 
+  // "java.util.Locale"
   private int languageXYZ = 0;
 
+  // "long"
   @ClassPropertyDeclaration
   private long resellerID;
 
+  // "long"
   private int resellerIDXYZ = 0;
 
+  // "long"
   @ClassPropertyDeclaration
   private long pathParam;
 
+  // "long"
   private int pathParamXYZ = 0;
 
+  // "java.lang.String"
   @ClassPropertyDeclaration
   private String queryParam;
 
+  // "java.lang.String"
   private int queryParamXYZ = 0;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.IntegerCodeType"
   @ClassPropertyDeclaration
   private IntegerCodeType intCode;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.IntegerCodeType"
   private int intCodeXYZ = 0;
 
   /**
@@ -112,16 +124,22 @@ public class Context implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     accessToken = pBuilder.accessToken;
+    // "java.lang.String"
     accessTokenXYZ = pBuilder.accessTokenXYZ;
     language = pBuilder.language;
+    // "java.util.Locale"
     languageXYZ = pBuilder.languageXYZ;
     resellerID = pBuilder.resellerID;
+    // "long"
     resellerIDXYZ = pBuilder.resellerIDXYZ;
     pathParam = pBuilder.pathParam;
+    // "long"
     pathParamXYZ = pBuilder.pathParamXYZ;
     queryParam = pBuilder.queryParam;
+    // "java.lang.String"
     queryParamXYZ = pBuilder.queryParamXYZ;
     intCode = pBuilder.intCode;
+    // "com.anaptecs.jeaf.junit.openapi.base.IntegerCodeType"
     intCodeXYZ = pBuilder.intCodeXYZ;
   }
 
@@ -138,39 +156,51 @@ public class Context implements ServiceObject {
    * Class implements builder to create a new instance of class <code>Context</code>.
    */
   public static class Builder {
+    // "java.lang.String"
     @BuilderPropertyDeclaration
     @NotEmpty
     private String accessToken;
 
+    // "java.lang.String"
     private int accessTokenXYZ = 0;
 
     /**
      * <br/>
      * <b>Example:</b> <code>en</code>
      */
+    // "java.util.Locale"
     @BuilderPropertyDeclaration
     private Locale language;
 
+    // "java.util.Locale"
     private int languageXYZ = 0;
 
+    // "long"
     @BuilderPropertyDeclaration
     private long resellerID;
 
+    // "long"
     private int resellerIDXYZ = 0;
 
+    // "long"
     @BuilderPropertyDeclaration
     private long pathParam;
 
+    // "long"
     private int pathParamXYZ = 0;
 
+    // "java.lang.String"
     @BuilderPropertyDeclaration
     private String queryParam;
 
+    // "java.lang.String"
     private int queryParamXYZ = 0;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.IntegerCodeType"
     @BuilderPropertyDeclaration
     private IntegerCodeType intCode;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.IntegerCodeType"
     private int intCodeXYZ = 0;
 
     /**
@@ -207,6 +237,7 @@ public class Context implements ServiceObject {
     }
 
     public Builder setAccessTokenXYZ( int value ) {
+      // "java.lang.String"
       accessTokenXYZ = value;
       return this;
     }
@@ -224,6 +255,7 @@ public class Context implements ServiceObject {
     }
 
     public Builder setLanguageXYZ( int value ) {
+      // "java.util.Locale"
       languageXYZ = value;
       return this;
     }
@@ -241,6 +273,7 @@ public class Context implements ServiceObject {
     }
 
     public Builder setResellerIDXYZ( int value ) {
+      // "long"
       resellerIDXYZ = value;
       return this;
     }
@@ -258,6 +291,7 @@ public class Context implements ServiceObject {
     }
 
     public Builder setPathParamXYZ( int value ) {
+      // "long"
       pathParamXYZ = value;
       return this;
     }
@@ -275,6 +309,7 @@ public class Context implements ServiceObject {
     }
 
     public Builder setQueryParamXYZ( int value ) {
+      // "java.lang.String"
       queryParamXYZ = value;
       return this;
     }
@@ -292,6 +327,7 @@ public class Context implements ServiceObject {
     }
 
     public Builder setIntCodeXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.IntegerCodeType"
       intCodeXYZ = value;
       return this;
     }
@@ -339,6 +375,7 @@ public class Context implements ServiceObject {
   }
 
   public int getAccessTokenXYZ( ) {
+    // "java.lang.String"
     return accessTokenXYZ;
   }
 
@@ -366,6 +403,7 @@ public class Context implements ServiceObject {
   }
 
   public int getLanguageXYZ( ) {
+    // "java.util.Locale"
     return languageXYZ;
   }
 
@@ -393,6 +431,7 @@ public class Context implements ServiceObject {
   }
 
   public int getResellerIDXYZ( ) {
+    // "long"
     return resellerIDXYZ;
   }
 
@@ -420,6 +459,7 @@ public class Context implements ServiceObject {
   }
 
   public int getPathParamXYZ( ) {
+    // "long"
     return pathParamXYZ;
   }
 
@@ -447,6 +487,7 @@ public class Context implements ServiceObject {
   }
 
   public int getQueryParamXYZ( ) {
+    // "java.lang.String"
     return queryParamXYZ;
   }
 
@@ -474,6 +515,7 @@ public class Context implements ServiceObject {
   }
 
   public int getIntCodeXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.IntegerCodeType"
     return intCodeXYZ;
   }
 

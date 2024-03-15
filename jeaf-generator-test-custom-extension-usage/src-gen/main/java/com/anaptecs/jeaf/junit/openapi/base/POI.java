@@ -53,11 +53,14 @@ public class POI extends Stop {
    */
   public static final String BOOKINGCODES = "bookingCodes";
 
+  // "String"
   @ClassPropertyDeclaration
   private String description;
 
+  // "String"
   private int descriptionXYZ = 0;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
   @ClassPropertyDeclaration
   /**
    * <p/>
@@ -67,8 +70,10 @@ public class POI extends Stop {
   @Deprecated
   private Long theLink;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
   private int theLinkXYZ = 0;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
   @ClassPropertyDeclaration
   /**
    * <p/>
@@ -78,8 +83,10 @@ public class POI extends Stop {
   @Deprecated
   private Set<SoftLink> evenMoreLinks;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
   private int evenMoreLinksXYZ = 0;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.UICStop"
   @ClassPropertyDeclaration
   /**
    * <p/>
@@ -88,11 +95,14 @@ public class POI extends Stop {
   @Size(min = 2, max = 42)
   private Set<UICStop> stops;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.UICStop"
   private int stopsXYZ = 0;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.BookingCode"
   @ClassPropertyDeclaration
   private Set<BookingCode> bookingCodes;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.BookingCode"
   private int bookingCodesXYZ = 0;
 
   /**
@@ -115,8 +125,10 @@ public class POI extends Stop {
     super(pBuilder);
     // Read attribute values from builder.
     description = pBuilder.description;
+    // "String"
     descriptionXYZ = pBuilder.descriptionXYZ;
     theLink = pBuilder.theLink;
+    // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
     theLinkXYZ = pBuilder.theLinkXYZ;
     if (pBuilder.evenMoreLinks != null) {
       evenMoreLinks = pBuilder.evenMoreLinks;
@@ -124,6 +136,7 @@ public class POI extends Stop {
     else {
       evenMoreLinks = new HashSet<SoftLink>();
     }
+    // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
     evenMoreLinksXYZ = pBuilder.evenMoreLinksXYZ;
     if (pBuilder.stops != null) {
       stops = pBuilder.stops;
@@ -131,6 +144,7 @@ public class POI extends Stop {
     else {
       stops = new HashSet<UICStop>();
     }
+    // "com.anaptecs.jeaf.junit.openapi.base.UICStop"
     stopsXYZ = pBuilder.stopsXYZ;
     if (pBuilder.bookingCodes != null) {
       bookingCodes = pBuilder.bookingCodes;
@@ -138,6 +152,7 @@ public class POI extends Stop {
     else {
       bookingCodes = new HashSet<BookingCode>();
     }
+    // "com.anaptecs.jeaf.junit.openapi.base.BookingCode"
     bookingCodesXYZ = pBuilder.bookingCodesXYZ;
   }
 
@@ -154,9 +169,11 @@ public class POI extends Stop {
    * Class implements builder to create a new instance of class <code>POI</code>.
    */
   public static class Builder extends Stop.Builder {
+    // "String"
     @BuilderPropertyDeclaration
     private String description;
 
+    // "String"
     private int descriptionXYZ = 0;
 
     /**
@@ -164,10 +181,12 @@ public class POI extends Stop {
      * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #theLink} is
      * <code>LinkObject</code><br/>
      */
+    // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
     @BuilderPropertyDeclaration
     @Deprecated
     private Long theLink;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
     private int theLinkXYZ = 0;
 
     /**
@@ -175,24 +194,30 @@ public class POI extends Stop {
      * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #evenMoreLinks} is
      * <code>LinkObject</code><br/>
      */
+    // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
     @BuilderPropertyDeclaration
     @Deprecated
     private Set<SoftLink> evenMoreLinks;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
     private int evenMoreLinksXYZ = 0;
 
     /**
      * <p/>
      * <b>Breaking Change with PI 15:</b> New mandatory association is required to support upcoming features.
      */
+    // "com.anaptecs.jeaf.junit.openapi.base.UICStop"
     @BuilderPropertyDeclaration
     private Set<UICStop> stops;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.UICStop"
     private int stopsXYZ = 0;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.BookingCode"
     @BuilderPropertyDeclaration
     private Set<BookingCode> bookingCodes;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.BookingCode"
     private int bookingCodesXYZ = 0;
 
     /**
@@ -294,6 +319,7 @@ public class POI extends Stop {
     }
 
     public Builder setDescriptionXYZ( int value ) {
+      // "String"
       descriptionXYZ = value;
       return this;
     }
@@ -311,6 +337,7 @@ public class POI extends Stop {
     }
 
     public Builder setTheLinkXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
       theLinkXYZ = value;
       return this;
     }
@@ -334,6 +361,7 @@ public class POI extends Stop {
     }
 
     public Builder setEvenMoreLinksXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
       evenMoreLinksXYZ = value;
       return this;
     }
@@ -376,6 +404,7 @@ public class POI extends Stop {
     }
 
     public Builder setStopsXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.UICStop"
       stopsXYZ = value;
       return this;
     }
@@ -414,6 +443,7 @@ public class POI extends Stop {
     }
 
     public Builder setBookingCodesXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.BookingCode"
       bookingCodesXYZ = value;
       return this;
     }
@@ -461,6 +491,7 @@ public class POI extends Stop {
   }
 
   public int getDescriptionXYZ( ) {
+    // "String"
     return descriptionXYZ;
   }
 
@@ -500,6 +531,7 @@ public class POI extends Stop {
   }
 
   public int getTheLinkXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
     return theLinkXYZ;
   }
 
@@ -574,6 +606,7 @@ public class POI extends Stop {
   }
 
   public int getEvenMoreLinksXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
     return evenMoreLinksXYZ;
   }
 
@@ -645,6 +678,7 @@ public class POI extends Stop {
   }
 
   public int getStopsXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.UICStop"
     return stopsXYZ;
   }
 
@@ -711,6 +745,7 @@ public class POI extends Stop {
   }
 
   public int getBookingCodesXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.BookingCode"
     return bookingCodesXYZ;
   }
 

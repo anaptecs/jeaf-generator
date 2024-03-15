@@ -24,9 +24,11 @@ public class IgnoringClass implements ServiceObject {
    */
   public static final String AGE = "age";
 
+  // "Integer"
   @ClassPropertyDeclaration
   private Integer age;
 
+  // "Integer"
   private int ageXYZ = 0;
 
   /**
@@ -46,6 +48,7 @@ public class IgnoringClass implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     age = pBuilder.age;
+    // "Integer"
     ageXYZ = pBuilder.ageXYZ;
   }
 
@@ -62,9 +65,11 @@ public class IgnoringClass implements ServiceObject {
    * Class implements builder to create a new instance of class <code>IgnoringClass</code>.
    */
   public static class Builder {
+    // "Integer"
     @BuilderPropertyDeclaration
     private Integer age;
 
+    // "Integer"
     private int ageXYZ = 0;
 
     /**
@@ -96,6 +101,7 @@ public class IgnoringClass implements ServiceObject {
     }
 
     public Builder setAgeXYZ( int value ) {
+      // "Integer"
       ageXYZ = value;
       return this;
     }
@@ -144,6 +150,7 @@ public class IgnoringClass implements ServiceObject {
   }
 
   public int getAgeXYZ( ) {
+    // "Integer"
     return ageXYZ;
   }
 

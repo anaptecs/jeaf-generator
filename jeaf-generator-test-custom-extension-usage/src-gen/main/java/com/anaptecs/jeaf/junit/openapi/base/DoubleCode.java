@@ -24,9 +24,11 @@ public class DoubleCode implements ServiceObject {
    */
   public static final String CODE = "code";
 
+  // "double"
   @ClassPropertyDeclaration
   private double code;
 
+  // "double"
   private int codeXYZ = 0;
 
   /**
@@ -46,6 +48,7 @@ public class DoubleCode implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     code = pBuilder.code;
+    // "double"
     codeXYZ = pBuilder.codeXYZ;
   }
 
@@ -62,9 +65,11 @@ public class DoubleCode implements ServiceObject {
    * Class implements builder to create a new instance of class <code>DoubleCode</code>.
    */
   public static class Builder {
+    // "double"
     @BuilderPropertyDeclaration
     private double code;
 
+    // "double"
     private int codeXYZ = 0;
 
     /**
@@ -96,6 +101,7 @@ public class DoubleCode implements ServiceObject {
     }
 
     public Builder setCodeXYZ( int value ) {
+      // "double"
       codeXYZ = value;
       return this;
     }
@@ -143,6 +149,7 @@ public class DoubleCode implements ServiceObject {
   }
 
   public int getCodeXYZ( ) {
+    // "double"
     return codeXYZ;
   }
 

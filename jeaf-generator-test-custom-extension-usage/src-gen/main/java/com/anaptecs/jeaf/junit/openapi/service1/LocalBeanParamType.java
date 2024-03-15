@@ -34,19 +34,25 @@ public class LocalBeanParamType implements ServiceObject {
    */
   public static final String AUTHORIZATION = "authorization";
 
+  // "String"
   @ClassPropertyDeclaration
   private String localKey;
 
+  // "String"
   private int localKeyXYZ = 0;
 
+  // "String"
   @ClassPropertyDeclaration
   private String localID;
 
+  // "String"
   private int localIDXYZ = 0;
 
+  // "String"
   @ClassPropertyDeclaration
   private String authorization;
 
+  // "String"
   private int authorizationXYZ = 0;
 
   /**
@@ -66,10 +72,13 @@ public class LocalBeanParamType implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     localKey = pBuilder.localKey;
+    // "String"
     localKeyXYZ = pBuilder.localKeyXYZ;
     localID = pBuilder.localID;
+    // "String"
     localIDXYZ = pBuilder.localIDXYZ;
     authorization = pBuilder.authorization;
+    // "String"
     authorizationXYZ = pBuilder.authorizationXYZ;
   }
 
@@ -86,19 +95,25 @@ public class LocalBeanParamType implements ServiceObject {
    * Class implements builder to create a new instance of class <code>LocalBeanParamType</code>.
    */
   public static class Builder {
+    // "String"
     @BuilderPropertyDeclaration
     private String localKey;
 
+    // "String"
     private int localKeyXYZ = 0;
 
+    // "String"
     @BuilderPropertyDeclaration
     private String localID;
 
+    // "String"
     private int localIDXYZ = 0;
 
+    // "String"
     @BuilderPropertyDeclaration
     private String authorization;
 
+    // "String"
     private int authorizationXYZ = 0;
 
     /**
@@ -132,6 +147,7 @@ public class LocalBeanParamType implements ServiceObject {
     }
 
     public Builder setLocalKeyXYZ( int value ) {
+      // "String"
       localKeyXYZ = value;
       return this;
     }
@@ -149,6 +165,7 @@ public class LocalBeanParamType implements ServiceObject {
     }
 
     public Builder setLocalIDXYZ( int value ) {
+      // "String"
       localIDXYZ = value;
       return this;
     }
@@ -166,6 +183,7 @@ public class LocalBeanParamType implements ServiceObject {
     }
 
     public Builder setAuthorizationXYZ( int value ) {
+      // "String"
       authorizationXYZ = value;
       return this;
     }
@@ -214,6 +232,7 @@ public class LocalBeanParamType implements ServiceObject {
   }
 
   public int getLocalKeyXYZ( ) {
+    // "String"
     return localKeyXYZ;
   }
 
@@ -241,6 +260,7 @@ public class LocalBeanParamType implements ServiceObject {
   }
 
   public int getLocalIDXYZ( ) {
+    // "String"
     return localIDXYZ;
   }
 
@@ -268,6 +288,7 @@ public class LocalBeanParamType implements ServiceObject {
   }
 
   public int getAuthorizationXYZ( ) {
+    // "String"
     return authorizationXYZ;
   }
 

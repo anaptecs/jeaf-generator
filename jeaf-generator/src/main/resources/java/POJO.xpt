@@ -465,7 +465,7 @@
 			«ENDIF»
 			
             «IF attr.isTransient() == false && attr.isStatic == false»
-                «EXPAND jeafgenerator::api::ClassExtensionHook::AfterBuilderConstructorPropertyInit("pBuilder") FOR attr»
+                «EXPAND jeafgenerator::api::ClassExtensionHook::AfterBuilderConstructorPropertyInit(attr.type.fqn(), "pBuilder") FOR attr»
             «ENDIF»
 		«ENDFOREACH»
 	«ENDIF»

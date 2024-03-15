@@ -34,11 +34,14 @@ public class ReadOnlyMaster implements ServiceObject {
    */
   public static final String CLIENTS = "clients";
 
+  // "String"
   @ClassPropertyDeclaration
   private final String name;
 
+  // "String"
   private int nameXYZ = 0;
 
+  // "com.anaptecs.jeaf.junit.openapi.transientback.ReadOnlyClient"
   @ClassPropertyDeclaration
   private final List<ReadOnlyClient> clients;
 
@@ -47,6 +50,7 @@ public class ReadOnlyMaster implements ServiceObject {
    */
   private transient boolean clientsBackReferenceInitialized;
 
+  // "com.anaptecs.jeaf.junit.openapi.transientback.ReadOnlyClient"
   private int clientsXYZ = 0;
 
   /**
@@ -70,6 +74,7 @@ public class ReadOnlyMaster implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     name = pBuilder.name;
+    // "String"
     nameXYZ = pBuilder.nameXYZ;
     if (pBuilder.clients != null) {
       clients = pBuilder.clients;
@@ -83,6 +88,7 @@ public class ReadOnlyMaster implements ServiceObject {
     }
     // Bidirectional back reference is set up correctly as a builder is used.
     clientsBackReferenceInitialized = true;
+    // "com.anaptecs.jeaf.junit.openapi.transientback.ReadOnlyClient"
     clientsXYZ = pBuilder.clientsXYZ;
   }
 
@@ -99,14 +105,18 @@ public class ReadOnlyMaster implements ServiceObject {
    * Class implements builder to create a new instance of class <code>ReadOnlyMaster</code>.
    */
   public static class Builder {
+    // "String"
     @BuilderPropertyDeclaration
     private String name;
 
+    // "String"
     private int nameXYZ = 0;
 
+    // "com.anaptecs.jeaf.junit.openapi.transientback.ReadOnlyClient"
     @BuilderPropertyDeclaration
     private List<ReadOnlyClient> clients;
 
+    // "com.anaptecs.jeaf.junit.openapi.transientback.ReadOnlyClient"
     private int clientsXYZ = 0;
 
     /**
@@ -139,6 +149,7 @@ public class ReadOnlyMaster implements ServiceObject {
     }
 
     public Builder setNameXYZ( int value ) {
+      // "String"
       nameXYZ = value;
       return this;
     }
@@ -177,6 +188,7 @@ public class ReadOnlyMaster implements ServiceObject {
     }
 
     public Builder setClientsXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.transientback.ReadOnlyClient"
       clientsXYZ = value;
       return this;
     }
@@ -215,6 +227,7 @@ public class ReadOnlyMaster implements ServiceObject {
   }
 
   public int getNameXYZ( ) {
+    // "String"
     return nameXYZ;
   }
 
@@ -242,6 +255,7 @@ public class ReadOnlyMaster implements ServiceObject {
   }
 
   public int getClientsXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.transientback.ReadOnlyClient"
     return clientsXYZ;
   }
 

@@ -29,14 +29,18 @@ public abstract class CompositeIDBase implements ServiceObject {
    */
   public static final String SECONDARYCODE = "secondaryCode";
 
+  // "long"
   @ClassPropertyDeclaration
   private long primaryCode;
 
+  // "long"
   private int primaryCodeXYZ = 0;
 
+  // "long"
   @ClassPropertyDeclaration
   private long secondaryCode;
 
+  // "long"
   private int secondaryCodeXYZ = 0;
 
   /**
@@ -56,8 +60,10 @@ public abstract class CompositeIDBase implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     primaryCode = pBuilder.primaryCode;
+    // "long"
     primaryCodeXYZ = pBuilder.primaryCodeXYZ;
     secondaryCode = pBuilder.secondaryCode;
+    // "long"
     secondaryCodeXYZ = pBuilder.secondaryCodeXYZ;
   }
 
@@ -66,14 +72,18 @@ public abstract class CompositeIDBase implements ServiceObject {
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static abstract class BuilderBase {
+    // "long"
     @BuilderPropertyDeclaration
     private long primaryCode;
 
+    // "long"
     private int primaryCodeXYZ = 0;
 
+    // "long"
     @BuilderPropertyDeclaration
     private long secondaryCode;
 
+    // "long"
     private int secondaryCodeXYZ = 0;
 
     /**
@@ -106,6 +116,7 @@ public abstract class CompositeIDBase implements ServiceObject {
     }
 
     public BuilderBase setPrimaryCodeXYZ( int value ) {
+      // "long"
       primaryCodeXYZ = value;
       return this;
     }
@@ -123,6 +134,7 @@ public abstract class CompositeIDBase implements ServiceObject {
     }
 
     public BuilderBase setSecondaryCodeXYZ( int value ) {
+      // "long"
       secondaryCodeXYZ = value;
       return this;
     }
@@ -171,6 +183,7 @@ public abstract class CompositeIDBase implements ServiceObject {
   }
 
   public int getPrimaryCodeXYZ( ) {
+    // "long"
     return primaryCodeXYZ;
   }
 
@@ -198,6 +211,7 @@ public abstract class CompositeIDBase implements ServiceObject {
   }
 
   public int getSecondaryCodeXYZ( ) {
+    // "long"
     return secondaryCodeXYZ;
   }
 

@@ -22,9 +22,11 @@ public class BusinessParent extends TechParent {
    */
   public static final String PARENTATTRIBUTE = "parentAttribute";
 
+  // "long"
   @ClassPropertyDeclaration
   private long parentAttribute;
 
+  // "long"
   private int parentAttributeXYZ = 0;
 
   /**
@@ -44,6 +46,7 @@ public class BusinessParent extends TechParent {
     super(pBuilder);
     // Read attribute values from builder.
     parentAttribute = pBuilder.parentAttribute;
+    // "long"
     parentAttributeXYZ = pBuilder.parentAttributeXYZ;
   }
 
@@ -60,9 +63,11 @@ public class BusinessParent extends TechParent {
    * Class implements builder to create a new instance of class <code>BusinessParent</code>.
    */
   public static class Builder extends TechParent.Builder {
+    // "long"
     @BuilderPropertyDeclaration
     private long parentAttribute;
 
+    // "long"
     private int parentAttributeXYZ = 0;
 
     /**
@@ -109,6 +114,7 @@ public class BusinessParent extends TechParent {
     }
 
     public Builder setParentAttributeXYZ( int value ) {
+      // "long"
       parentAttributeXYZ = value;
       return this;
     }
@@ -157,6 +163,7 @@ public class BusinessParent extends TechParent {
   }
 
   public int getParentAttributeXYZ( ) {
+    // "long"
     return parentAttributeXYZ;
   }
 

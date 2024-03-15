@@ -35,20 +35,26 @@ public class SpecialContext extends Context {
    */
   public static final String DEPRECATEDTYPE = "deprecatedType";
 
+  // "String"
   @ClassPropertyDeclaration
   private String specificHeader;
 
+  // "String"
   private int specificHeaderXYZ = 0;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.IntegerCode"
   @ClassPropertyDeclaration
   @Deprecated
   private IntegerCode deprecatedHeader;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.IntegerCode"
   private int deprecatedHeaderXYZ = 0;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.DeprecatedType"
   @ClassPropertyDeclaration
   private DeprecatedType deprecatedType;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.DeprecatedType"
   private int deprecatedTypeXYZ = 0;
 
   /**
@@ -68,10 +74,13 @@ public class SpecialContext extends Context {
     super(pBuilder);
     // Read attribute values from builder.
     specificHeader = pBuilder.specificHeader;
+    // "String"
     specificHeaderXYZ = pBuilder.specificHeaderXYZ;
     deprecatedHeader = pBuilder.deprecatedHeader;
+    // "com.anaptecs.jeaf.junit.openapi.base.IntegerCode"
     deprecatedHeaderXYZ = pBuilder.deprecatedHeaderXYZ;
     deprecatedType = pBuilder.deprecatedType;
+    // "com.anaptecs.jeaf.junit.openapi.base.DeprecatedType"
     deprecatedTypeXYZ = pBuilder.deprecatedTypeXYZ;
   }
 
@@ -88,20 +97,26 @@ public class SpecialContext extends Context {
    * Class implements builder to create a new instance of class <code>SpecialContext</code>.
    */
   public static class Builder extends Context.Builder {
+    // "String"
     @BuilderPropertyDeclaration
     private String specificHeader;
 
+    // "String"
     private int specificHeaderXYZ = 0;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.IntegerCode"
     @BuilderPropertyDeclaration
     @Deprecated
     private IntegerCode deprecatedHeader;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.IntegerCode"
     private int deprecatedHeaderXYZ = 0;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.DeprecatedType"
     @BuilderPropertyDeclaration
     private DeprecatedType deprecatedType;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.DeprecatedType"
     private int deprecatedTypeXYZ = 0;
 
     /**
@@ -215,6 +230,7 @@ public class SpecialContext extends Context {
     }
 
     public Builder setSpecificHeaderXYZ( int value ) {
+      // "String"
       specificHeaderXYZ = value;
       return this;
     }
@@ -233,6 +249,7 @@ public class SpecialContext extends Context {
     }
 
     public Builder setDeprecatedHeaderXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.IntegerCode"
       deprecatedHeaderXYZ = value;
       return this;
     }
@@ -250,6 +267,7 @@ public class SpecialContext extends Context {
     }
 
     public Builder setDeprecatedTypeXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.DeprecatedType"
       deprecatedTypeXYZ = value;
       return this;
     }
@@ -298,6 +316,7 @@ public class SpecialContext extends Context {
   }
 
   public int getSpecificHeaderXYZ( ) {
+    // "String"
     return specificHeaderXYZ;
   }
 
@@ -327,6 +346,7 @@ public class SpecialContext extends Context {
   }
 
   public int getDeprecatedHeaderXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.IntegerCode"
     return deprecatedHeaderXYZ;
   }
 
@@ -354,6 +374,7 @@ public class SpecialContext extends Context {
   }
 
   public int getDeprecatedTypeXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.DeprecatedType"
     return deprecatedTypeXYZ;
   }
 

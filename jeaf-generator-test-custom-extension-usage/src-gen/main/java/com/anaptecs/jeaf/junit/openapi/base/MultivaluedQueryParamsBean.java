@@ -34,6 +34,7 @@ public class MultivaluedQueryParamsBean implements ServiceObject {
    */
   public static final String INTEGERS = "integers";
 
+  // "int"
   @ClassPropertyDeclaration
   /**
    * <p/>
@@ -41,16 +42,21 @@ public class MultivaluedQueryParamsBean implements ServiceObject {
    */
   private int[] intArray;
 
+  // "int"
   private int intArrayXYZ = 0;
 
+  // "String"
   @ClassPropertyDeclaration
   private String[] strings;
 
+  // "String"
   private int stringsXYZ = 0;
 
+  // "Integer"
   @ClassPropertyDeclaration
   private Integer[] integers;
 
+  // "Integer"
   private int integersXYZ = 0;
 
   /**
@@ -70,10 +76,13 @@ public class MultivaluedQueryParamsBean implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     intArray = pBuilder.intArray;
+    // "int"
     intArrayXYZ = pBuilder.intArrayXYZ;
     strings = pBuilder.strings;
+    // "String"
     stringsXYZ = pBuilder.stringsXYZ;
     integers = pBuilder.integers;
+    // "Integer"
     integersXYZ = pBuilder.integersXYZ;
   }
 
@@ -94,19 +103,25 @@ public class MultivaluedQueryParamsBean implements ServiceObject {
      * <p/>
      * <b>Breaking Change with 47.11:</b> At least one will become mandatory
      */
+    // "int"
     @BuilderPropertyDeclaration
     private int[] intArray;
 
+    // "int"
     private int intArrayXYZ = 0;
 
+    // "String"
     @BuilderPropertyDeclaration
     private String[] strings;
 
+    // "String"
     private int stringsXYZ = 0;
 
+    // "Integer"
     @BuilderPropertyDeclaration
     private Integer[] integers;
 
+    // "Integer"
     private int integersXYZ = 0;
 
     /**
@@ -149,6 +164,7 @@ public class MultivaluedQueryParamsBean implements ServiceObject {
     }
 
     public Builder setIntArrayXYZ( int value ) {
+      // "int"
       intArrayXYZ = value;
       return this;
     }
@@ -172,6 +188,7 @@ public class MultivaluedQueryParamsBean implements ServiceObject {
     }
 
     public Builder setStringsXYZ( int value ) {
+      // "String"
       stringsXYZ = value;
       return this;
     }
@@ -195,6 +212,7 @@ public class MultivaluedQueryParamsBean implements ServiceObject {
     }
 
     public Builder setIntegersXYZ( int value ) {
+      // "Integer"
       integersXYZ = value;
       return this;
     }
@@ -261,6 +279,7 @@ public class MultivaluedQueryParamsBean implements ServiceObject {
   }
 
   public int getIntArrayXYZ( ) {
+    // "int"
     return intArrayXYZ;
   }
 
@@ -302,6 +321,7 @@ public class MultivaluedQueryParamsBean implements ServiceObject {
   }
 
   public int getStringsXYZ( ) {
+    // "String"
     return stringsXYZ;
   }
 
@@ -343,6 +363,7 @@ public class MultivaluedQueryParamsBean implements ServiceObject {
   }
 
   public int getIntegersXYZ( ) {
+    // "Integer"
     return integersXYZ;
   }
 

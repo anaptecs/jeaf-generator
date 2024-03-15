@@ -39,24 +39,32 @@ public class NotInlinedBeanParam implements ServiceObject {
    */
   public static final String BOOKINGID = "bookingID";
 
+  // "String"
   @ClassPropertyDeclaration
   private String header;
 
+  // "String"
   private int headerXYZ = 0;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.DoubleCode"
   @ClassPropertyDeclaration
   private DoubleCode doubleCode;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.DoubleCode"
   private int doubleCodeXYZ = 0;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.ExtensibleEnum"
   @ClassPropertyDeclaration
   private ExtensibleEnum extensibleEnum;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.ExtensibleEnum"
   private int extensibleEnumXYZ = 0;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.BookingID"
   @ClassPropertyDeclaration
   private BookingID bookingID;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.BookingID"
   private int bookingIDXYZ = 0;
 
   /**
@@ -76,12 +84,16 @@ public class NotInlinedBeanParam implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     header = pBuilder.header;
+    // "String"
     headerXYZ = pBuilder.headerXYZ;
     doubleCode = pBuilder.doubleCode;
+    // "com.anaptecs.jeaf.junit.openapi.base.DoubleCode"
     doubleCodeXYZ = pBuilder.doubleCodeXYZ;
     extensibleEnum = pBuilder.extensibleEnum;
+    // "com.anaptecs.jeaf.junit.openapi.base.ExtensibleEnum"
     extensibleEnumXYZ = pBuilder.extensibleEnumXYZ;
     bookingID = pBuilder.bookingID;
+    // "com.anaptecs.jeaf.junit.openapi.base.BookingID"
     bookingIDXYZ = pBuilder.bookingIDXYZ;
   }
 
@@ -98,24 +110,32 @@ public class NotInlinedBeanParam implements ServiceObject {
    * Class implements builder to create a new instance of class <code>NotInlinedBeanParam</code>.
    */
   public static class Builder {
+    // "String"
     @BuilderPropertyDeclaration
     private String header;
 
+    // "String"
     private int headerXYZ = 0;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.DoubleCode"
     @BuilderPropertyDeclaration
     private DoubleCode doubleCode;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.DoubleCode"
     private int doubleCodeXYZ = 0;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.ExtensibleEnum"
     @BuilderPropertyDeclaration
     private ExtensibleEnum extensibleEnum;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.ExtensibleEnum"
     private int extensibleEnumXYZ = 0;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.BookingID"
     @BuilderPropertyDeclaration
     private BookingID bookingID;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.BookingID"
     private int bookingIDXYZ = 0;
 
     /**
@@ -151,6 +171,7 @@ public class NotInlinedBeanParam implements ServiceObject {
     }
 
     public Builder setHeaderXYZ( int value ) {
+      // "String"
       headerXYZ = value;
       return this;
     }
@@ -168,6 +189,7 @@ public class NotInlinedBeanParam implements ServiceObject {
     }
 
     public Builder setDoubleCodeXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.DoubleCode"
       doubleCodeXYZ = value;
       return this;
     }
@@ -185,6 +207,7 @@ public class NotInlinedBeanParam implements ServiceObject {
     }
 
     public Builder setExtensibleEnumXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.ExtensibleEnum"
       extensibleEnumXYZ = value;
       return this;
     }
@@ -202,6 +225,7 @@ public class NotInlinedBeanParam implements ServiceObject {
     }
 
     public Builder setBookingIDXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.BookingID"
       bookingIDXYZ = value;
       return this;
     }
@@ -250,6 +274,7 @@ public class NotInlinedBeanParam implements ServiceObject {
   }
 
   public int getHeaderXYZ( ) {
+    // "String"
     return headerXYZ;
   }
 
@@ -277,6 +302,7 @@ public class NotInlinedBeanParam implements ServiceObject {
   }
 
   public int getDoubleCodeXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.DoubleCode"
     return doubleCodeXYZ;
   }
 
@@ -304,6 +330,7 @@ public class NotInlinedBeanParam implements ServiceObject {
   }
 
   public int getExtensibleEnumXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.ExtensibleEnum"
     return extensibleEnumXYZ;
   }
 
@@ -331,6 +358,7 @@ public class NotInlinedBeanParam implements ServiceObject {
   }
 
   public int getBookingIDXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.BookingID"
     return bookingIDXYZ;
   }
 

@@ -45,11 +45,14 @@ public class TheReadOnlyServiceObject implements ServiceObject {
   @Deprecated
   public static final String INVENTORYTYPE = "inventoryType";
 
+  // "String"
   @ClassPropertyDeclaration
   private final String name;
 
+  // "String"
   private int nameXYZ = 0;
 
+  // "Boolean"
   @ClassPropertyDeclaration
   /**
    * <p/>
@@ -57,13 +60,17 @@ public class TheReadOnlyServiceObject implements ServiceObject {
    */
   private final boolean[] bits;
 
+  // "Boolean"
   private int bitsXYZ = 0;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.BookingCode"
   @ClassPropertyDeclaration
   private final Set<BookingCode> bookingCodes;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.BookingCode"
   private int bookingCodesXYZ = 0;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.InventoryType"
   @ClassPropertyDeclaration
   /**
    * @deprecated Let's reproduce #65 (<b>since:</b> not too long, <b>removed with:</b> 99.9)
@@ -71,6 +78,7 @@ public class TheReadOnlyServiceObject implements ServiceObject {
   @Deprecated
   private final InventoryType inventoryType;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.InventoryType"
   private int inventoryTypeXYZ = 0;
 
   /**
@@ -94,8 +102,10 @@ public class TheReadOnlyServiceObject implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     name = pBuilder.name;
+    // "String"
     nameXYZ = pBuilder.nameXYZ;
     bits = pBuilder.bits;
+    // "Boolean"
     bitsXYZ = pBuilder.bitsXYZ;
     if (pBuilder.bookingCodes != null) {
       bookingCodes = pBuilder.bookingCodes;
@@ -103,8 +113,10 @@ public class TheReadOnlyServiceObject implements ServiceObject {
     else {
       bookingCodes = new HashSet<BookingCode>();
     }
+    // "com.anaptecs.jeaf.junit.openapi.base.BookingCode"
     bookingCodesXYZ = pBuilder.bookingCodesXYZ;
     inventoryType = pBuilder.inventoryType;
+    // "com.anaptecs.jeaf.junit.openapi.base.InventoryType"
     inventoryTypeXYZ = pBuilder.inventoryTypeXYZ;
   }
 
@@ -121,32 +133,40 @@ public class TheReadOnlyServiceObject implements ServiceObject {
    * Class implements builder to create a new instance of class <code>TheReadOnlyServiceObject</code>.
    */
   public static class Builder {
+    // "String"
     @BuilderPropertyDeclaration
     private String name;
 
+    // "String"
     private int nameXYZ = 0;
 
     /**
      * <p/>
      * <b>Breaking Change with PI 16:</b> At least one bit will be expected.
      */
+    // "Boolean"
     @BuilderPropertyDeclaration
     private boolean[] bits;
 
+    // "Boolean"
     private int bitsXYZ = 0;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.BookingCode"
     @BuilderPropertyDeclaration
     private Set<BookingCode> bookingCodes;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.BookingCode"
     private int bookingCodesXYZ = 0;
 
     /**
      * @deprecated Let's reproduce #65 (<b>since:</b> not too long, <b>removed with:</b> 99.9)
      */
+    // "com.anaptecs.jeaf.junit.openapi.base.InventoryType"
     @BuilderPropertyDeclaration
     @Deprecated
     private InventoryType inventoryType;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.InventoryType"
     private int inventoryTypeXYZ = 0;
 
     /**
@@ -182,6 +202,7 @@ public class TheReadOnlyServiceObject implements ServiceObject {
     }
 
     public Builder setNameXYZ( int value ) {
+      // "String"
       nameXYZ = value;
       return this;
     }
@@ -207,6 +228,7 @@ public class TheReadOnlyServiceObject implements ServiceObject {
     }
 
     public Builder setBitsXYZ( int value ) {
+      // "Boolean"
       bitsXYZ = value;
       return this;
     }
@@ -245,6 +267,7 @@ public class TheReadOnlyServiceObject implements ServiceObject {
     }
 
     public Builder setBookingCodesXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.BookingCode"
       bookingCodesXYZ = value;
       return this;
     }
@@ -263,6 +286,7 @@ public class TheReadOnlyServiceObject implements ServiceObject {
     }
 
     public Builder setInventoryTypeXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.InventoryType"
       inventoryTypeXYZ = value;
       return this;
     }
@@ -301,6 +325,7 @@ public class TheReadOnlyServiceObject implements ServiceObject {
   }
 
   public int getNameXYZ( ) {
+    // "String"
     return nameXYZ;
   }
 
@@ -328,6 +353,7 @@ public class TheReadOnlyServiceObject implements ServiceObject {
   }
 
   public int getBitsXYZ( ) {
+    // "Boolean"
     return bitsXYZ;
   }
 
@@ -347,6 +373,7 @@ public class TheReadOnlyServiceObject implements ServiceObject {
   }
 
   public int getBookingCodesXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.BookingCode"
     return bookingCodesXYZ;
   }
 
@@ -366,6 +393,7 @@ public class TheReadOnlyServiceObject implements ServiceObject {
   }
 
   public int getInventoryTypeXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.InventoryType"
     return inventoryTypeXYZ;
   }
 

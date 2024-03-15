@@ -53,36 +53,45 @@ public class MultiValuedDataType implements ServiceObject {
    */
   public static final String LONGVALUES = "longValues";
 
+  // "com.anaptecs.jeaf.junit.openapi.base.StringCode"
   @ClassPropertyDeclaration
   /**
    * This is my multivalued test header
    */
   private List<StringCode> stringCodeHeader;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.StringCode"
   private int stringCodeHeaderXYZ = 0;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.LongCode"
   @ClassPropertyDeclaration
   /**
    * Multivalued query param
    */
   private List<LongCode> longCodeQueryParam;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.LongCode"
   private int longCodeQueryParamXYZ = 0;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.BooleanLiteralsEnum"
   @ClassPropertyDeclaration
   /**
    * so many literals are possible
    */
   private List<BooleanLiteralsEnum> literals;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.BooleanLiteralsEnum"
   private int literalsXYZ = 0;
 
+  // "String"
   @ClassPropertyDeclaration
   @Size(min = 32, max = 64)
   private String stringProperty;
 
+  // "String"
   private int stringPropertyXYZ = 0;
 
+  // "long"
   @ClassPropertyDeclaration
   /**
    * long values as multivalued header
@@ -91,6 +100,7 @@ public class MultiValuedDataType implements ServiceObject {
   @Max(value = 4711)
   private long[] longValues;
 
+  // "long"
   private int longValuesXYZ = 0;
 
   /**
@@ -118,6 +128,7 @@ public class MultiValuedDataType implements ServiceObject {
     else {
       stringCodeHeader = new ArrayList<StringCode>();
     }
+    // "com.anaptecs.jeaf.junit.openapi.base.StringCode"
     stringCodeHeaderXYZ = pBuilder.stringCodeHeaderXYZ;
     if (pBuilder.longCodeQueryParam != null) {
       longCodeQueryParam = pBuilder.longCodeQueryParam;
@@ -125,6 +136,7 @@ public class MultiValuedDataType implements ServiceObject {
     else {
       longCodeQueryParam = new ArrayList<LongCode>();
     }
+    // "com.anaptecs.jeaf.junit.openapi.base.LongCode"
     longCodeQueryParamXYZ = pBuilder.longCodeQueryParamXYZ;
     if (pBuilder.literals != null) {
       literals = pBuilder.literals;
@@ -132,10 +144,13 @@ public class MultiValuedDataType implements ServiceObject {
     else {
       literals = new ArrayList<BooleanLiteralsEnum>();
     }
+    // "com.anaptecs.jeaf.junit.openapi.base.BooleanLiteralsEnum"
     literalsXYZ = pBuilder.literalsXYZ;
     stringProperty = pBuilder.stringProperty;
+    // "String"
     stringPropertyXYZ = pBuilder.stringPropertyXYZ;
     longValues = pBuilder.longValues;
+    // "long"
     longValuesXYZ = pBuilder.longValuesXYZ;
   }
 
@@ -155,41 +170,51 @@ public class MultiValuedDataType implements ServiceObject {
     /**
      * This is my multivalued test header
      */
+    // "com.anaptecs.jeaf.junit.openapi.base.StringCode"
     @BuilderPropertyDeclaration
     private List<StringCode> stringCodeHeader;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.StringCode"
     private int stringCodeHeaderXYZ = 0;
 
     /**
      * Multivalued query param
      */
+    // "com.anaptecs.jeaf.junit.openapi.base.LongCode"
     @BuilderPropertyDeclaration
     private List<LongCode> longCodeQueryParam;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.LongCode"
     private int longCodeQueryParamXYZ = 0;
 
     /**
      * so many literals are possible
      */
+    // "com.anaptecs.jeaf.junit.openapi.base.BooleanLiteralsEnum"
     @BuilderPropertyDeclaration
     private List<BooleanLiteralsEnum> literals;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.BooleanLiteralsEnum"
     private int literalsXYZ = 0;
 
+    // "String"
     @BuilderPropertyDeclaration
     @Size(min = 32, max = 64)
     private String stringProperty;
 
+    // "String"
     private int stringPropertyXYZ = 0;
 
     /**
      * long values as multivalued header
      */
+    // "long"
     @BuilderPropertyDeclaration
     @Min(value = 3270)
     @Max(value = 4711)
     private long[] longValues;
 
+    // "long"
     private int longValuesXYZ = 0;
 
     /**
@@ -248,6 +273,7 @@ public class MultiValuedDataType implements ServiceObject {
     }
 
     public Builder setStringCodeHeaderXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.StringCode"
       stringCodeHeaderXYZ = value;
       return this;
     }
@@ -287,6 +313,7 @@ public class MultiValuedDataType implements ServiceObject {
     }
 
     public Builder setLongCodeQueryParamXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.LongCode"
       longCodeQueryParamXYZ = value;
       return this;
     }
@@ -342,6 +369,7 @@ public class MultiValuedDataType implements ServiceObject {
     }
 
     public Builder setLiteralsXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.BooleanLiteralsEnum"
       literalsXYZ = value;
       return this;
     }
@@ -359,6 +387,7 @@ public class MultiValuedDataType implements ServiceObject {
     }
 
     public Builder setStringPropertyXYZ( int value ) {
+      // "String"
       stringPropertyXYZ = value;
       return this;
     }
@@ -382,6 +411,7 @@ public class MultiValuedDataType implements ServiceObject {
     }
 
     public Builder setLongValuesXYZ( int value ) {
+      // "long"
       longValuesXYZ = value;
       return this;
     }
@@ -471,6 +501,7 @@ public class MultiValuedDataType implements ServiceObject {
   }
 
   public int getStringCodeHeaderXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.StringCode"
     return stringCodeHeaderXYZ;
   }
 
@@ -540,6 +571,7 @@ public class MultiValuedDataType implements ServiceObject {
   }
 
   public int getLongCodeQueryParamXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.LongCode"
     return longCodeQueryParamXYZ;
   }
 
@@ -607,6 +639,7 @@ public class MultiValuedDataType implements ServiceObject {
   }
 
   public int getLiteralsXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.BooleanLiteralsEnum"
     return literalsXYZ;
   }
 
@@ -634,6 +667,7 @@ public class MultiValuedDataType implements ServiceObject {
   }
 
   public int getStringPropertyXYZ( ) {
+    // "String"
     return stringPropertyXYZ;
   }
 
@@ -677,6 +711,7 @@ public class MultiValuedDataType implements ServiceObject {
   }
 
   public int getLongValuesXYZ( ) {
+    // "long"
     return longValuesXYZ;
   }
 

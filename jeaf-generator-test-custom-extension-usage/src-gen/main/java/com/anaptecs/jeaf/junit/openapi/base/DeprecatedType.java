@@ -25,9 +25,11 @@ public class DeprecatedType implements ServiceObject {
    */
   public static final String CODE = "code";
 
+  // "java.lang.Integer"
   @ClassPropertyDeclaration
   private Integer code;
 
+  // "java.lang.Integer"
   private int codeXYZ = 0;
 
   /**
@@ -47,6 +49,7 @@ public class DeprecatedType implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     code = pBuilder.code;
+    // "java.lang.Integer"
     codeXYZ = pBuilder.codeXYZ;
   }
 
@@ -64,9 +67,11 @@ public class DeprecatedType implements ServiceObject {
    */
   @Deprecated
   public static class Builder {
+    // "java.lang.Integer"
     @BuilderPropertyDeclaration
     private Integer code;
 
+    // "java.lang.Integer"
     private int codeXYZ = 0;
 
     /**
@@ -98,6 +103,7 @@ public class DeprecatedType implements ServiceObject {
     }
 
     public Builder setCodeXYZ( int value ) {
+      // "java.lang.Integer"
       codeXYZ = value;
       return this;
     }
@@ -146,6 +152,7 @@ public class DeprecatedType implements ServiceObject {
   }
 
   public int getCodeXYZ( ) {
+    // "java.lang.Integer"
     return codeXYZ;
   }
 

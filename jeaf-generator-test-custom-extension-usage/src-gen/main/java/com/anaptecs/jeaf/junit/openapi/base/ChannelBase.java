@@ -44,27 +44,34 @@ public abstract class ChannelBase implements ServiceObject {
    */
   public static final String RESELLER = "reseller";
 
+  // "com.anaptecs.jeaf.junit.openapi.base.ChannelType"
   @ClassPropertyDeclaration
   /**
    * Type of the channel
    */
   private ChannelType channelType;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.ChannelType"
   private int channelTypeXYZ = 0;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.ChannelCode"
   @ClassPropertyDeclaration
   /**
    * The business code of the channel
    */
   private ChannelCode channelCode;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.ChannelCode"
   private int channelCodeXYZ = 0;
 
+  // "int"
   @ClassPropertyDeclaration
   private final int code;
 
+  // "int"
   private int codeXYZ = 0;
 
+  // "Boolean"
   @ClassPropertyDeclaration
   /**
    * <br/>
@@ -72,11 +79,14 @@ public abstract class ChannelBase implements ServiceObject {
    */
   private final boolean selfServiceChannel;
 
+  // "Boolean"
   private int selfServiceChannelXYZ = 0;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.Reseller"
   @ClassPropertyDeclaration
   private transient Reseller reseller;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.Reseller"
   private int resellerXYZ = 0;
 
   /**
@@ -98,12 +108,16 @@ public abstract class ChannelBase implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     channelType = pBuilder.channelType;
+    // "com.anaptecs.jeaf.junit.openapi.base.ChannelType"
     channelTypeXYZ = pBuilder.channelTypeXYZ;
     channelCode = pBuilder.channelCode;
+    // "com.anaptecs.jeaf.junit.openapi.base.ChannelCode"
     channelCodeXYZ = pBuilder.channelCodeXYZ;
     code = pBuilder.code;
+    // "int"
     codeXYZ = pBuilder.codeXYZ;
     selfServiceChannel = pBuilder.selfServiceChannel;
+    // "Boolean"
     selfServiceChannelXYZ = pBuilder.selfServiceChannelXYZ;
   }
 
@@ -115,31 +129,39 @@ public abstract class ChannelBase implements ServiceObject {
     /**
      * Type of the channel
      */
+    // "com.anaptecs.jeaf.junit.openapi.base.ChannelType"
     @BuilderPropertyDeclaration
     private ChannelType channelType;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.ChannelType"
     private int channelTypeXYZ = 0;
 
     /**
      * The business code of the channel
      */
+    // "com.anaptecs.jeaf.junit.openapi.base.ChannelCode"
     @BuilderPropertyDeclaration
     private ChannelCode channelCode;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.ChannelCode"
     private int channelCodeXYZ = 0;
 
+    // "int"
     @BuilderPropertyDeclaration
     private int code;
 
+    // "int"
     private int codeXYZ = 0;
 
     /**
      * <br/>
      * <b>Default Value:</b> <code>true</code>
      */
+    // "Boolean"
     @BuilderPropertyDeclaration
     private boolean selfServiceChannel = true;
 
+    // "Boolean"
     private int selfServiceChannelXYZ = 0;
 
     /**
@@ -173,6 +195,7 @@ public abstract class ChannelBase implements ServiceObject {
     }
 
     public BuilderBase setChannelTypeXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.ChannelType"
       channelTypeXYZ = value;
       return this;
     }
@@ -189,6 +212,7 @@ public abstract class ChannelBase implements ServiceObject {
     }
 
     public BuilderBase setChannelCodeXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.ChannelCode"
       channelCodeXYZ = value;
       return this;
     }
@@ -206,6 +230,7 @@ public abstract class ChannelBase implements ServiceObject {
     }
 
     public BuilderBase setCodeXYZ( int value ) {
+      // "int"
       codeXYZ = value;
       return this;
     }
@@ -223,6 +248,7 @@ public abstract class ChannelBase implements ServiceObject {
     }
 
     public BuilderBase setSelfServiceChannelXYZ( int value ) {
+      // "Boolean"
       selfServiceChannelXYZ = value;
       return this;
     }
@@ -278,6 +304,7 @@ public abstract class ChannelBase implements ServiceObject {
   }
 
   public int getChannelTypeXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.ChannelType"
     return channelTypeXYZ;
   }
 
@@ -313,6 +340,7 @@ public abstract class ChannelBase implements ServiceObject {
   }
 
   public int getChannelCodeXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.ChannelCode"
     return channelCodeXYZ;
   }
 
@@ -330,6 +358,7 @@ public abstract class ChannelBase implements ServiceObject {
   }
 
   public int getCodeXYZ( ) {
+    // "int"
     return codeXYZ;
   }
 
@@ -357,6 +386,7 @@ public abstract class ChannelBase implements ServiceObject {
   }
 
   public int getSelfServiceChannelXYZ( ) {
+    // "Boolean"
     return selfServiceChannelXYZ;
   }
 
@@ -394,6 +424,7 @@ public abstract class ChannelBase implements ServiceObject {
   }
 
   public int getResellerXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.Reseller"
     return resellerXYZ;
   }
 

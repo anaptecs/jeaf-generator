@@ -37,20 +37,26 @@ public class BeanParameter implements ServiceObject {
   @Deprecated
   public static final String OLDSTYLE = "oldStyle";
 
+  // "java.lang.String"
   @ClassPropertyDeclaration
   private String accessToken;
 
+  // "java.lang.String"
   private int accessTokenXYZ = 0;
 
+  // "java.util.Locale"
   @ClassPropertyDeclaration
   private Locale language;
 
+  // "java.util.Locale"
   private int languageXYZ = 0;
 
+  // "java.lang.String"
   @ClassPropertyDeclaration
   @Deprecated
   private String oldStyle;
 
+  // "java.lang.String"
   private int oldStyleXYZ = 0;
 
   /**
@@ -70,10 +76,13 @@ public class BeanParameter implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     accessToken = pBuilder.accessToken;
+    // "java.lang.String"
     accessTokenXYZ = pBuilder.accessTokenXYZ;
     language = pBuilder.language;
+    // "java.util.Locale"
     languageXYZ = pBuilder.languageXYZ;
     oldStyle = pBuilder.oldStyle;
+    // "java.lang.String"
     oldStyleXYZ = pBuilder.oldStyleXYZ;
   }
 
@@ -90,20 +99,26 @@ public class BeanParameter implements ServiceObject {
    * Class implements builder to create a new instance of class <code>BeanParameter</code>.
    */
   public static class Builder {
+    // "java.lang.String"
     @BuilderPropertyDeclaration
     private String accessToken;
 
+    // "java.lang.String"
     private int accessTokenXYZ = 0;
 
+    // "java.util.Locale"
     @BuilderPropertyDeclaration
     private Locale language;
 
+    // "java.util.Locale"
     private int languageXYZ = 0;
 
+    // "java.lang.String"
     @BuilderPropertyDeclaration
     @Deprecated
     private String oldStyle;
 
+    // "java.lang.String"
     private int oldStyleXYZ = 0;
 
     /**
@@ -137,6 +152,7 @@ public class BeanParameter implements ServiceObject {
     }
 
     public Builder setAccessTokenXYZ( int value ) {
+      // "java.lang.String"
       accessTokenXYZ = value;
       return this;
     }
@@ -154,6 +170,7 @@ public class BeanParameter implements ServiceObject {
     }
 
     public Builder setLanguageXYZ( int value ) {
+      // "java.util.Locale"
       languageXYZ = value;
       return this;
     }
@@ -172,6 +189,7 @@ public class BeanParameter implements ServiceObject {
     }
 
     public Builder setOldStyleXYZ( int value ) {
+      // "java.lang.String"
       oldStyleXYZ = value;
       return this;
     }
@@ -220,6 +238,7 @@ public class BeanParameter implements ServiceObject {
   }
 
   public int getAccessTokenXYZ( ) {
+    // "java.lang.String"
     return accessTokenXYZ;
   }
 
@@ -247,6 +266,7 @@ public class BeanParameter implements ServiceObject {
   }
 
   public int getLanguageXYZ( ) {
+    // "java.util.Locale"
     return languageXYZ;
   }
 
@@ -276,6 +296,7 @@ public class BeanParameter implements ServiceObject {
   }
 
   public int getOldStyleXYZ( ) {
+    // "java.lang.String"
     return oldStyleXYZ;
   }
 

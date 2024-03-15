@@ -36,6 +36,7 @@ public class Sortiment implements ServiceObject {
    */
   public static final String VALUE = "value";
 
+  // "com.anaptecs.jeaf.junit.openapi.base.Product"
   @ClassPropertyDeclaration
   private Set<Product> products;
 
@@ -44,8 +45,10 @@ public class Sortiment implements ServiceObject {
    */
   private transient boolean productsBackReferenceInitialized;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.Product"
   private int productsXYZ = 0;
 
+  // "java.lang.Integer"
   @ClassPropertyDeclaration
   /**
    * <br/>
@@ -53,6 +56,7 @@ public class Sortiment implements ServiceObject {
    */
   private final Integer value;
 
+  // "java.lang.Integer"
   private int valueXYZ = 0;
 
   /**
@@ -87,8 +91,10 @@ public class Sortiment implements ServiceObject {
     }
     // Bidirectional back reference is set up correctly as a builder is used.
     productsBackReferenceInitialized = true;
+    // "com.anaptecs.jeaf.junit.openapi.base.Product"
     productsXYZ = pBuilder.productsXYZ;
     value = pBuilder.value;
+    // "java.lang.Integer"
     valueXYZ = pBuilder.valueXYZ;
   }
 
@@ -105,18 +111,22 @@ public class Sortiment implements ServiceObject {
    * Class implements builder to create a new instance of class <code>Sortiment</code>.
    */
   public static class Builder {
+    // "com.anaptecs.jeaf.junit.openapi.base.Product"
     @BuilderPropertyDeclaration
     private Set<Product> products;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.Product"
     private int productsXYZ = 0;
 
     /**
      * <br/>
      * <b>Default Value:</b> <code>4711</code>
      */
+    // "java.lang.Integer"
     @BuilderPropertyDeclaration
     private Integer value = 4711;
 
+    // "java.lang.Integer"
     private int valueXYZ = 0;
 
     /**
@@ -170,6 +180,7 @@ public class Sortiment implements ServiceObject {
     }
 
     public Builder setProductsXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.Product"
       productsXYZ = value;
       return this;
     }
@@ -187,6 +198,7 @@ public class Sortiment implements ServiceObject {
     }
 
     public Builder setValueXYZ( int value ) {
+      // "java.lang.Integer"
       valueXYZ = value;
       return this;
     }
@@ -296,6 +308,7 @@ public class Sortiment implements ServiceObject {
   }
 
   public int getProductsXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.Product"
     return productsXYZ;
   }
 
@@ -313,6 +326,7 @@ public class Sortiment implements ServiceObject {
   }
 
   public int getValueXYZ( ) {
+    // "java.lang.Integer"
     return valueXYZ;
   }
 

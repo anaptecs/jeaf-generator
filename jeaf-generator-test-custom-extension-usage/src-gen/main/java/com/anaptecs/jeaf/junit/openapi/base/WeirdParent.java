@@ -41,19 +41,25 @@ public class WeirdParent implements ServiceObject {
    */
   public static final String COMPLEXBOOKINGS = "complexBookings";
 
+  // "String"
   @ClassPropertyDeclaration
   private String someProperty;
 
+  // "String"
   private int somePropertyXYZ = 0;
 
+  // "com.anaptecs.jeaf.junit.openapi.composite.ComplexBookingID"
   @ClassPropertyDeclaration
   private ComplexBookingID complexBooking;
 
+  // "com.anaptecs.jeaf.junit.openapi.composite.ComplexBookingID"
   private int complexBookingXYZ = 0;
 
+  // "com.anaptecs.jeaf.junit.openapi.composite.ComplexBookingID"
   @ClassPropertyDeclaration
   private Set<ComplexBookingID> complexBookings;
 
+  // "com.anaptecs.jeaf.junit.openapi.composite.ComplexBookingID"
   private int complexBookingsXYZ = 0;
 
   /**
@@ -74,8 +80,10 @@ public class WeirdParent implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     someProperty = pBuilder.someProperty;
+    // "String"
     somePropertyXYZ = pBuilder.somePropertyXYZ;
     complexBooking = pBuilder.complexBooking;
+    // "com.anaptecs.jeaf.junit.openapi.composite.ComplexBookingID"
     complexBookingXYZ = pBuilder.complexBookingXYZ;
     if (pBuilder.complexBookings != null) {
       complexBookings = pBuilder.complexBookings;
@@ -83,6 +91,7 @@ public class WeirdParent implements ServiceObject {
     else {
       complexBookings = new HashSet<ComplexBookingID>();
     }
+    // "com.anaptecs.jeaf.junit.openapi.composite.ComplexBookingID"
     complexBookingsXYZ = pBuilder.complexBookingsXYZ;
   }
 
@@ -99,19 +108,25 @@ public class WeirdParent implements ServiceObject {
    * Class implements builder to create a new instance of class <code>WeirdParent</code>.
    */
   public static class Builder {
+    // "String"
     @BuilderPropertyDeclaration
     private String someProperty;
 
+    // "String"
     private int somePropertyXYZ = 0;
 
+    // "com.anaptecs.jeaf.junit.openapi.composite.ComplexBookingID"
     @BuilderPropertyDeclaration
     private ComplexBookingID complexBooking;
 
+    // "com.anaptecs.jeaf.junit.openapi.composite.ComplexBookingID"
     private int complexBookingXYZ = 0;
 
+    // "com.anaptecs.jeaf.junit.openapi.composite.ComplexBookingID"
     @BuilderPropertyDeclaration
     private Set<ComplexBookingID> complexBookings;
 
+    // "com.anaptecs.jeaf.junit.openapi.composite.ComplexBookingID"
     private int complexBookingsXYZ = 0;
 
     /**
@@ -145,6 +160,7 @@ public class WeirdParent implements ServiceObject {
     }
 
     public Builder setSomePropertyXYZ( int value ) {
+      // "String"
       somePropertyXYZ = value;
       return this;
     }
@@ -161,6 +177,7 @@ public class WeirdParent implements ServiceObject {
     }
 
     public Builder setComplexBookingXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.composite.ComplexBookingID"
       complexBookingXYZ = value;
       return this;
     }
@@ -200,6 +217,7 @@ public class WeirdParent implements ServiceObject {
     }
 
     public Builder setComplexBookingsXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.composite.ComplexBookingID"
       complexBookingsXYZ = value;
       return this;
     }
@@ -248,6 +266,7 @@ public class WeirdParent implements ServiceObject {
   }
 
   public int getSomePropertyXYZ( ) {
+    // "String"
     return somePropertyXYZ;
   }
 
@@ -281,6 +300,7 @@ public class WeirdParent implements ServiceObject {
   }
 
   public int getComplexBookingXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.composite.ComplexBookingID"
     return complexBookingXYZ;
   }
 
@@ -348,6 +368,7 @@ public class WeirdParent implements ServiceObject {
   }
 
   public int getComplexBookingsXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.composite.ComplexBookingID"
     return complexBookingsXYZ;
   }
 

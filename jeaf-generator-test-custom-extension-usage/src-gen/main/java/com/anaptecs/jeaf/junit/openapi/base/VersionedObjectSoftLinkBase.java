@@ -34,22 +34,28 @@ public abstract class VersionedObjectSoftLinkBase implements ServiceObject {
    */
   public static final String ENTITY = "entity";
 
+  // "long"
   @ClassPropertyDeclaration
   /**
    * Internal ID of a versioned object
    */
   private final long objectID;
 
+  // "long"
   private int objectIDXYZ = 0;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.DataUnit"
   @ClassPropertyDeclaration
   private DataUnit dataUnit;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.DataUnit"
   private int dataUnitXYZ = 0;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.Entity"
   @ClassPropertyDeclaration
   private Entity entity;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.Entity"
   private int entityXYZ = 0;
 
   /**
@@ -70,10 +76,13 @@ public abstract class VersionedObjectSoftLinkBase implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     objectID = pBuilder.objectID;
+    // "long"
     objectIDXYZ = pBuilder.objectIDXYZ;
     dataUnit = pBuilder.dataUnit;
+    // "com.anaptecs.jeaf.junit.openapi.base.DataUnit"
     dataUnitXYZ = pBuilder.dataUnitXYZ;
     entity = pBuilder.entity;
+    // "com.anaptecs.jeaf.junit.openapi.base.Entity"
     entityXYZ = pBuilder.entityXYZ;
   }
 
@@ -85,19 +94,25 @@ public abstract class VersionedObjectSoftLinkBase implements ServiceObject {
     /**
      * Internal ID of a versioned object
      */
+    // "long"
     @BuilderPropertyDeclaration
     private long objectID;
 
+    // "long"
     private int objectIDXYZ = 0;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.DataUnit"
     @BuilderPropertyDeclaration
     private DataUnit dataUnit;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.DataUnit"
     private int dataUnitXYZ = 0;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.Entity"
     @BuilderPropertyDeclaration
     private Entity entity;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.Entity"
     private int entityXYZ = 0;
 
     /**
@@ -132,6 +147,7 @@ public abstract class VersionedObjectSoftLinkBase implements ServiceObject {
     }
 
     public BuilderBase setObjectIDXYZ( int value ) {
+      // "long"
       objectIDXYZ = value;
       return this;
     }
@@ -148,6 +164,7 @@ public abstract class VersionedObjectSoftLinkBase implements ServiceObject {
     }
 
     public BuilderBase setDataUnitXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.DataUnit"
       dataUnitXYZ = value;
       return this;
     }
@@ -164,6 +181,7 @@ public abstract class VersionedObjectSoftLinkBase implements ServiceObject {
     }
 
     public BuilderBase setEntityXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.Entity"
       entityXYZ = value;
       return this;
     }
@@ -203,6 +221,7 @@ public abstract class VersionedObjectSoftLinkBase implements ServiceObject {
   }
 
   public int getObjectIDXYZ( ) {
+    // "long"
     return objectIDXYZ;
   }
 
@@ -236,6 +255,7 @@ public abstract class VersionedObjectSoftLinkBase implements ServiceObject {
   }
 
   public int getDataUnitXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.DataUnit"
     return dataUnitXYZ;
   }
 
@@ -269,6 +289,7 @@ public abstract class VersionedObjectSoftLinkBase implements ServiceObject {
   }
 
   public int getEntityXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.Entity"
     return entityXYZ;
   }
 

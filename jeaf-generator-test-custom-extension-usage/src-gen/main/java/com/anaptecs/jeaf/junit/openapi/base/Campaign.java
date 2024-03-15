@@ -44,6 +44,7 @@ public class Campaign implements ServiceObject {
   @Deprecated
   public static final String DISCOUNTOFFERS = "discountOffers";
 
+  // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
   @ClassPropertyDeclaration
   /**
    * The magic link.
@@ -56,8 +57,10 @@ public class Campaign implements ServiceObject {
   @Deprecated
   private long theLink;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
   private int theLinkXYZ = 0;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
   @ClassPropertyDeclaration
   /**
    * <p/>
@@ -69,8 +72,10 @@ public class Campaign implements ServiceObject {
   @Deprecated
   private Set<Long> moreLinks;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
   private int moreLinksXYZ = 0;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.DiscountOffer"
   @ClassPropertyDeclaration
   /**
    * <p/>
@@ -80,6 +85,7 @@ public class Campaign implements ServiceObject {
   @Deprecated
   private List<String> discountOffers;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.DiscountOffer"
   private int discountOffersXYZ = 0;
 
   /**
@@ -101,6 +107,7 @@ public class Campaign implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     theLink = pBuilder.theLink;
+    // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
     theLinkXYZ = pBuilder.theLinkXYZ;
     if (pBuilder.moreLinks != null) {
       moreLinks = pBuilder.moreLinks;
@@ -108,6 +115,7 @@ public class Campaign implements ServiceObject {
     else {
       moreLinks = new HashSet<Long>();
     }
+    // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
     moreLinksXYZ = pBuilder.moreLinksXYZ;
     if (pBuilder.discountOffers != null) {
       discountOffers = pBuilder.discountOffers;
@@ -115,6 +123,7 @@ public class Campaign implements ServiceObject {
     else {
       discountOffers = new ArrayList<String>();
     }
+    // "com.anaptecs.jeaf.junit.openapi.base.DiscountOffer"
     discountOffersXYZ = pBuilder.discountOffersXYZ;
   }
 
@@ -139,10 +148,12 @@ public class Campaign implements ServiceObject {
      *
      * @deprecated Please use &quot;moreLinks&quot; instead. (<b>since:</b> 2.3.1, <b>removed with:</b> 2.4)
      */
+    // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
     @BuilderPropertyDeclaration
     @Deprecated
     private long theLink;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
     private int theLinkXYZ = 0;
 
     /**
@@ -152,10 +163,12 @@ public class Campaign implements ServiceObject {
      *
      * @deprecated No good any more (<b>since:</b> 1.2, <b>removed with:</b> 3.0)
      */
+    // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
     @BuilderPropertyDeclaration
     @Deprecated
     private Set<Long> moreLinks;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
     private int moreLinksXYZ = 0;
 
     /**
@@ -163,10 +176,12 @@ public class Campaign implements ServiceObject {
      * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #discountOffers} is
      * <code>com.anaptecs.jeaf.junit.openapi.base.DiscountOffer</code><br/>
      */
+    // "com.anaptecs.jeaf.junit.openapi.base.DiscountOffer"
     @BuilderPropertyDeclaration
     @Deprecated
     private List<String> discountOffers;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.DiscountOffer"
     private int discountOffersXYZ = 0;
 
     /**
@@ -201,6 +216,7 @@ public class Campaign implements ServiceObject {
     }
 
     public Builder setTheLinkXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
       theLinkXYZ = value;
       return this;
     }
@@ -225,6 +241,7 @@ public class Campaign implements ServiceObject {
     }
 
     public Builder setMoreLinksXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
       moreLinksXYZ = value;
       return this;
     }
@@ -248,6 +265,7 @@ public class Campaign implements ServiceObject {
     }
 
     public Builder setDiscountOffersXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.DiscountOffer"
       discountOffersXYZ = value;
       return this;
     }
@@ -303,6 +321,7 @@ public class Campaign implements ServiceObject {
   }
 
   public int getTheLinkXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
     return theLinkXYZ;
   }
 
@@ -380,6 +399,7 @@ public class Campaign implements ServiceObject {
   }
 
   public int getMoreLinksXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
     return moreLinksXYZ;
   }
 
@@ -454,6 +474,7 @@ public class Campaign implements ServiceObject {
   }
 
   public int getDiscountOffersXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.DiscountOffer"
     return discountOffersXYZ;
   }
 

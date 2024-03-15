@@ -25,10 +25,12 @@ public class ProductCode implements ServiceObject {
    */
   public static final String CODE = "code";
 
+  // "int"
   @ClassPropertyDeclaration
   @Positive
   private int code;
 
+  // "int"
   private int codeXYZ = 0;
 
   /**
@@ -48,6 +50,7 @@ public class ProductCode implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     code = pBuilder.code;
+    // "int"
     codeXYZ = pBuilder.codeXYZ;
   }
 
@@ -64,10 +67,12 @@ public class ProductCode implements ServiceObject {
    * Class implements builder to create a new instance of class <code>ProductCode</code>.
    */
   public static class Builder {
+    // "int"
     @BuilderPropertyDeclaration
     @Positive
     private int code;
 
+    // "int"
     private int codeXYZ = 0;
 
     /**
@@ -99,6 +104,7 @@ public class ProductCode implements ServiceObject {
     }
 
     public Builder setCodeXYZ( int value ) {
+      // "int"
       codeXYZ = value;
       return this;
     }
@@ -147,6 +153,7 @@ public class ProductCode implements ServiceObject {
   }
 
   public int getCodeXYZ( ) {
+    // "int"
     return codeXYZ;
   }
 

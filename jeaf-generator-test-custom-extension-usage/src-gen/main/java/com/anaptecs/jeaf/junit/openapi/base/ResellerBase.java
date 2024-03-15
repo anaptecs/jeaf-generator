@@ -61,6 +61,7 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
    */
   private final ServiceObjectID objectID;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.Channel"
   @ClassPropertyDeclaration
   private List<Channel> channels;
 
@@ -69,13 +70,17 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
    */
   private transient boolean channelsBackReferenceInitialized;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.Channel"
   private int channelsXYZ = 0;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.Product"
   @ClassPropertyDeclaration
   private transient Set<Product> products;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.Product"
   private int productsXYZ = 0;
 
+  // "java.lang.String"
   @ClassPropertyDeclaration
   /**
    * <p/>
@@ -85,11 +90,14 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
   @Size(min = 0, max = 32)
   private String name;
 
+  // "java.lang.String"
   private int nameXYZ = 0;
 
+  // "java.util.Locale"
   @ClassPropertyDeclaration
   private Locale language;
 
+  // "java.util.Locale"
   private int languageXYZ = 0;
 
   /**
@@ -133,11 +141,14 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
     }
     // Bidirectional back reference is set up correctly as a builder is used.
     channelsBackReferenceInitialized = true;
+    // "com.anaptecs.jeaf.junit.openapi.base.Channel"
     channelsXYZ = pBuilder.channelsXYZ;
     products = new HashSet<Product>();
     name = pBuilder.name;
+    // "java.lang.String"
     nameXYZ = pBuilder.nameXYZ;
     language = pBuilder.language;
+    // "java.util.Locale"
     languageXYZ = pBuilder.languageXYZ;
   }
 
@@ -151,25 +162,31 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
      */
     private ObjectIdentity<?> objectID;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.Channel"
     @BuilderPropertyDeclaration
     private List<Channel> channels;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.Channel"
     private int channelsXYZ = 0;
 
     /**
      * <p/>
      * <b>Breaking Change with 1.1:</b> Maximum size will be increased.
      */
+    // "java.lang.String"
     @BuilderPropertyDeclaration
     @NotBlank
     @Size(min = 0, max = 32)
     private String name;
 
+    // "java.lang.String"
     private int nameXYZ = 0;
 
+    // "java.util.Locale"
     @BuilderPropertyDeclaration
     private Locale language;
 
+    // "java.util.Locale"
     private int languageXYZ = 0;
 
     /**
@@ -234,6 +251,7 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
     }
 
     public BuilderBase setChannelsXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.Channel"
       channelsXYZ = value;
       return this;
     }
@@ -253,6 +271,7 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
     }
 
     public BuilderBase setNameXYZ( int value ) {
+      // "java.lang.String"
       nameXYZ = value;
       return this;
     }
@@ -270,6 +289,7 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
     }
 
     public BuilderBase setLanguageXYZ( int value ) {
+      // "java.util.Locale"
       languageXYZ = value;
       return this;
     }
@@ -411,6 +431,7 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
   }
 
   public int getChannelsXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.Channel"
     return channelsXYZ;
   }
 
@@ -482,6 +503,7 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
   }
 
   public int getProductsXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.Product"
     return productsXYZ;
   }
 
@@ -513,6 +535,7 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
   }
 
   public int getNameXYZ( ) {
+    // "java.lang.String"
     return nameXYZ;
   }
 
@@ -540,6 +563,7 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
   }
 
   public int getLanguageXYZ( ) {
+    // "java.util.Locale"
     return languageXYZ;
   }
 

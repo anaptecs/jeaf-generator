@@ -49,16 +49,21 @@ public class ParentClass implements ServiceObject {
   @Deprecated
   public static final String LEGACYBANKACCOUNTS = "legacyBankAccounts";
 
+  // "java.lang.String"
   @ClassPropertyDeclaration
   private String parentAttribute;
 
+  // "java.lang.String"
   private int parentAttributeXYZ = 0;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.IBAN"
   @ClassPropertyDeclaration
   private Set<IBAN> ibans;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.IBAN"
   private int ibansXYZ = 0;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.BankAccount"
   @ClassPropertyDeclaration
   /**
    * I would like to document references to other types.
@@ -66,8 +71,10 @@ public class ParentClass implements ServiceObject {
   @Deprecated
   private BankAccount theBankAccount;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.BankAccount"
   private int theBankAccountXYZ = 0;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.BankAccount"
   @ClassPropertyDeclaration
   /**
    * Association is still there be SemVer compliant.
@@ -75,6 +82,7 @@ public class ParentClass implements ServiceObject {
   @Deprecated
   private List<BankAccount> legacyBankAccounts;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.BankAccount"
   private int legacyBankAccountsXYZ = 0;
 
   /**
@@ -96,6 +104,7 @@ public class ParentClass implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     parentAttribute = pBuilder.parentAttribute;
+    // "java.lang.String"
     parentAttributeXYZ = pBuilder.parentAttributeXYZ;
     if (pBuilder.ibans != null) {
       ibans = pBuilder.ibans;
@@ -103,8 +112,10 @@ public class ParentClass implements ServiceObject {
     else {
       ibans = new HashSet<IBAN>();
     }
+    // "com.anaptecs.jeaf.junit.openapi.base.IBAN"
     ibansXYZ = pBuilder.ibansXYZ;
     theBankAccount = pBuilder.theBankAccount;
+    // "com.anaptecs.jeaf.junit.openapi.base.BankAccount"
     theBankAccountXYZ = pBuilder.theBankAccountXYZ;
     if (pBuilder.legacyBankAccounts != null) {
       legacyBankAccounts = pBuilder.legacyBankAccounts;
@@ -112,6 +123,7 @@ public class ParentClass implements ServiceObject {
     else {
       legacyBankAccounts = new ArrayList<BankAccount>();
     }
+    // "com.anaptecs.jeaf.junit.openapi.base.BankAccount"
     legacyBankAccountsXYZ = pBuilder.legacyBankAccountsXYZ;
   }
 
@@ -128,32 +140,40 @@ public class ParentClass implements ServiceObject {
    * Class implements builder to create a new instance of class <code>ParentClass</code>.
    */
   public static class Builder {
+    // "java.lang.String"
     @BuilderPropertyDeclaration
     private String parentAttribute;
 
+    // "java.lang.String"
     private int parentAttributeXYZ = 0;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.IBAN"
     @BuilderPropertyDeclaration
     private Set<IBAN> ibans;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.IBAN"
     private int ibansXYZ = 0;
 
     /**
      * I would like to document references to other types.
      */
+    // "com.anaptecs.jeaf.junit.openapi.base.BankAccount"
     @BuilderPropertyDeclaration
     @Deprecated
     private BankAccount theBankAccount;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.BankAccount"
     private int theBankAccountXYZ = 0;
 
     /**
      * Association is still there be SemVer compliant.
      */
+    // "com.anaptecs.jeaf.junit.openapi.base.BankAccount"
     @BuilderPropertyDeclaration
     @Deprecated
     private List<BankAccount> legacyBankAccounts;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.BankAccount"
     private int legacyBankAccountsXYZ = 0;
 
     /**
@@ -188,6 +208,7 @@ public class ParentClass implements ServiceObject {
     }
 
     public Builder setParentAttributeXYZ( int value ) {
+      // "java.lang.String"
       parentAttributeXYZ = value;
       return this;
     }
@@ -226,6 +247,7 @@ public class ParentClass implements ServiceObject {
     }
 
     public Builder setIbansXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.IBAN"
       ibansXYZ = value;
       return this;
     }
@@ -243,6 +265,7 @@ public class ParentClass implements ServiceObject {
     }
 
     public Builder setTheBankAccountXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.BankAccount"
       theBankAccountXYZ = value;
       return this;
     }
@@ -284,6 +307,7 @@ public class ParentClass implements ServiceObject {
     }
 
     public Builder setLegacyBankAccountsXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.BankAccount"
       legacyBankAccountsXYZ = value;
       return this;
     }
@@ -332,6 +356,7 @@ public class ParentClass implements ServiceObject {
   }
 
   public int getParentAttributeXYZ( ) {
+    // "java.lang.String"
     return parentAttributeXYZ;
   }
 
@@ -397,6 +422,7 @@ public class ParentClass implements ServiceObject {
   }
 
   public int getIbansXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.IBAN"
     return ibansXYZ;
   }
 
@@ -435,6 +461,7 @@ public class ParentClass implements ServiceObject {
   }
 
   public int getTheBankAccountXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.BankAccount"
     return theBankAccountXYZ;
   }
 
@@ -509,6 +536,7 @@ public class ParentClass implements ServiceObject {
   }
 
   public int getLegacyBankAccountsXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.BankAccount"
     return legacyBankAccountsXYZ;
   }
 

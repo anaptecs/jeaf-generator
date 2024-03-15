@@ -45,24 +45,32 @@ public class BookingID implements ServiceObject {
    */
   public static final String BOOKINGCODE = "bookingCode";
 
+  // "String"
   @ClassPropertyDeclaration
   private String referenceID;
 
+  // "String"
   private int referenceIDXYZ = 0;
 
+  // "String"
   @ClassPropertyDeclaration
   private String externalRefID;
 
+  // "String"
   private int externalRefIDXYZ = 0;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.InventoryType"
   @ClassPropertyDeclaration
   private InventoryType inventory;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.InventoryType"
   private int inventoryXYZ = 0;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.BookingCode"
   @ClassPropertyDeclaration
   private BookingCode bookingCode;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.BookingCode"
   private int bookingCodeXYZ = 0;
 
   /**
@@ -82,12 +90,16 @@ public class BookingID implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     referenceID = pBuilder.referenceID;
+    // "String"
     referenceIDXYZ = pBuilder.referenceIDXYZ;
     externalRefID = pBuilder.externalRefID;
+    // "String"
     externalRefIDXYZ = pBuilder.externalRefIDXYZ;
     inventory = pBuilder.inventory;
+    // "com.anaptecs.jeaf.junit.openapi.base.InventoryType"
     inventoryXYZ = pBuilder.inventoryXYZ;
     bookingCode = pBuilder.bookingCode;
+    // "com.anaptecs.jeaf.junit.openapi.base.BookingCode"
     bookingCodeXYZ = pBuilder.bookingCodeXYZ;
   }
 
@@ -104,24 +116,32 @@ public class BookingID implements ServiceObject {
    * Class implements builder to create a new instance of class <code>BookingID</code>.
    */
   public static class Builder {
+    // "String"
     @BuilderPropertyDeclaration
     private String referenceID;
 
+    // "String"
     private int referenceIDXYZ = 0;
 
+    // "String"
     @BuilderPropertyDeclaration
     private String externalRefID;
 
+    // "String"
     private int externalRefIDXYZ = 0;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.InventoryType"
     @BuilderPropertyDeclaration
     private InventoryType inventory;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.InventoryType"
     private int inventoryXYZ = 0;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.BookingCode"
     @BuilderPropertyDeclaration
     private BookingCode bookingCode;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.BookingCode"
     private int bookingCodeXYZ = 0;
 
     /**
@@ -156,6 +176,7 @@ public class BookingID implements ServiceObject {
     }
 
     public Builder setReferenceIDXYZ( int value ) {
+      // "String"
       referenceIDXYZ = value;
       return this;
     }
@@ -173,6 +194,7 @@ public class BookingID implements ServiceObject {
     }
 
     public Builder setExternalRefIDXYZ( int value ) {
+      // "String"
       externalRefIDXYZ = value;
       return this;
     }
@@ -189,6 +211,7 @@ public class BookingID implements ServiceObject {
     }
 
     public Builder setInventoryXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.InventoryType"
       inventoryXYZ = value;
       return this;
     }
@@ -205,6 +228,7 @@ public class BookingID implements ServiceObject {
     }
 
     public Builder setBookingCodeXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.BookingCode"
       bookingCodeXYZ = value;
       return this;
     }
@@ -252,6 +276,7 @@ public class BookingID implements ServiceObject {
   }
 
   public int getReferenceIDXYZ( ) {
+    // "String"
     return referenceIDXYZ;
   }
 
@@ -279,6 +304,7 @@ public class BookingID implements ServiceObject {
   }
 
   public int getExternalRefIDXYZ( ) {
+    // "String"
     return externalRefIDXYZ;
   }
 
@@ -312,6 +338,7 @@ public class BookingID implements ServiceObject {
   }
 
   public int getInventoryXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.InventoryType"
     return inventoryXYZ;
   }
 
@@ -345,6 +372,7 @@ public class BookingID implements ServiceObject {
   }
 
   public int getBookingCodeXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.BookingCode"
     return bookingCodeXYZ;
   }
 

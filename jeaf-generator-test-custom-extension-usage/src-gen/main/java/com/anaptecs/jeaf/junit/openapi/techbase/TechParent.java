@@ -24,9 +24,11 @@ public class TechParent implements ServiceObject {
    */
   public static final String TECHATTRIBUTE = "techAttribute";
 
+  // "String"
   @ClassPropertyDeclaration
   private String techAttribute;
 
+  // "String"
   private int techAttributeXYZ = 0;
 
   /**
@@ -46,6 +48,7 @@ public class TechParent implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     techAttribute = pBuilder.techAttribute;
+    // "String"
     techAttributeXYZ = pBuilder.techAttributeXYZ;
   }
 
@@ -62,9 +65,11 @@ public class TechParent implements ServiceObject {
    * Class implements builder to create a new instance of class <code>TechParent</code>.
    */
   public static class Builder {
+    // "String"
     @BuilderPropertyDeclaration
     private String techAttribute;
 
+    // "String"
     private int techAttributeXYZ = 0;
 
     /**
@@ -96,6 +101,7 @@ public class TechParent implements ServiceObject {
     }
 
     public Builder setTechAttributeXYZ( int value ) {
+      // "String"
       techAttributeXYZ = value;
       return this;
     }
@@ -143,6 +149,7 @@ public class TechParent implements ServiceObject {
   }
 
   public int getTechAttributeXYZ( ) {
+    // "String"
     return techAttributeXYZ;
   }
 

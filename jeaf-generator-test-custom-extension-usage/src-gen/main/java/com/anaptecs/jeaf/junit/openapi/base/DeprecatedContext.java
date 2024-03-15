@@ -43,12 +43,15 @@ public class DeprecatedContext implements ServiceObject {
    */
   public static final String QUERYPARAM = "queryParam";
 
+  // "java.lang.String"
   @ClassPropertyDeclaration
   @NotEmpty
   private String accessToken;
 
+  // "java.lang.String"
   private int accessTokenXYZ = 0;
 
+  // "java.util.Locale"
   @ClassPropertyDeclaration
   /**
    * <br/>
@@ -56,16 +59,21 @@ public class DeprecatedContext implements ServiceObject {
    */
   private Locale language;
 
+  // "java.util.Locale"
   private int languageXYZ = 0;
 
+  // "long"
   @ClassPropertyDeclaration
   private long resellerID;
 
+  // "long"
   private int resellerIDXYZ = 0;
 
+  // "java.lang.String"
   @ClassPropertyDeclaration
   private String queryParam;
 
+  // "java.lang.String"
   private int queryParamXYZ = 0;
 
   /**
@@ -85,12 +93,16 @@ public class DeprecatedContext implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     accessToken = pBuilder.accessToken;
+    // "java.lang.String"
     accessTokenXYZ = pBuilder.accessTokenXYZ;
     language = pBuilder.language;
+    // "java.util.Locale"
     languageXYZ = pBuilder.languageXYZ;
     resellerID = pBuilder.resellerID;
+    // "long"
     resellerIDXYZ = pBuilder.resellerIDXYZ;
     queryParam = pBuilder.queryParam;
+    // "java.lang.String"
     queryParamXYZ = pBuilder.queryParamXYZ;
   }
 
@@ -108,29 +120,37 @@ public class DeprecatedContext implements ServiceObject {
    */
   @Deprecated
   public static class Builder {
+    // "java.lang.String"
     @BuilderPropertyDeclaration
     @NotEmpty
     private String accessToken;
 
+    // "java.lang.String"
     private int accessTokenXYZ = 0;
 
     /**
      * <br/>
      * <b>Example:</b> <code>en</code>
      */
+    // "java.util.Locale"
     @BuilderPropertyDeclaration
     private Locale language;
 
+    // "java.util.Locale"
     private int languageXYZ = 0;
 
+    // "long"
     @BuilderPropertyDeclaration
     private long resellerID;
 
+    // "long"
     private int resellerIDXYZ = 0;
 
+    // "java.lang.String"
     @BuilderPropertyDeclaration
     private String queryParam;
 
+    // "java.lang.String"
     private int queryParamXYZ = 0;
 
     /**
@@ -165,6 +185,7 @@ public class DeprecatedContext implements ServiceObject {
     }
 
     public Builder setAccessTokenXYZ( int value ) {
+      // "java.lang.String"
       accessTokenXYZ = value;
       return this;
     }
@@ -182,6 +203,7 @@ public class DeprecatedContext implements ServiceObject {
     }
 
     public Builder setLanguageXYZ( int value ) {
+      // "java.util.Locale"
       languageXYZ = value;
       return this;
     }
@@ -199,6 +221,7 @@ public class DeprecatedContext implements ServiceObject {
     }
 
     public Builder setResellerIDXYZ( int value ) {
+      // "long"
       resellerIDXYZ = value;
       return this;
     }
@@ -216,6 +239,7 @@ public class DeprecatedContext implements ServiceObject {
     }
 
     public Builder setQueryParamXYZ( int value ) {
+      // "java.lang.String"
       queryParamXYZ = value;
       return this;
     }
@@ -264,6 +288,7 @@ public class DeprecatedContext implements ServiceObject {
   }
 
   public int getAccessTokenXYZ( ) {
+    // "java.lang.String"
     return accessTokenXYZ;
   }
 
@@ -291,6 +316,7 @@ public class DeprecatedContext implements ServiceObject {
   }
 
   public int getLanguageXYZ( ) {
+    // "java.util.Locale"
     return languageXYZ;
   }
 
@@ -318,6 +344,7 @@ public class DeprecatedContext implements ServiceObject {
   }
 
   public int getResellerIDXYZ( ) {
+    // "long"
     return resellerIDXYZ;
   }
 
@@ -345,6 +372,7 @@ public class DeprecatedContext implements ServiceObject {
   }
 
   public int getQueryParamXYZ( ) {
+    // "java.lang.String"
     return queryParamXYZ;
   }
 

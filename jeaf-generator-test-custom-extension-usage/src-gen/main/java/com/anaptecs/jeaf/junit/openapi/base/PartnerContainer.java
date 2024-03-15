@@ -30,9 +30,11 @@ public class PartnerContainer implements ServiceObject {
    */
   public static final String PARTNERS = "partners";
 
+  // "com.anaptecs.jeaf.junit.openapi.base.Partner"
   @ClassPropertyDeclaration
   private List<Partner> partners;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.Partner"
   private int partnersXYZ = 0;
 
   /**
@@ -58,6 +60,7 @@ public class PartnerContainer implements ServiceObject {
     else {
       partners = new ArrayList<Partner>();
     }
+    // "com.anaptecs.jeaf.junit.openapi.base.Partner"
     partnersXYZ = pBuilder.partnersXYZ;
   }
 
@@ -74,9 +77,11 @@ public class PartnerContainer implements ServiceObject {
    * Class implements builder to create a new instance of class <code>PartnerContainer</code>.
    */
   public static class Builder {
+    // "com.anaptecs.jeaf.junit.openapi.base.Partner"
     @BuilderPropertyDeclaration
     private List<Partner> partners;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.Partner"
     private int partnersXYZ = 0;
 
     /**
@@ -129,6 +134,7 @@ public class PartnerContainer implements ServiceObject {
     }
 
     public Builder setPartnersXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.Partner"
       partnersXYZ = value;
       return this;
     }
@@ -216,6 +222,7 @@ public class PartnerContainer implements ServiceObject {
   }
 
   public int getPartnersXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.Partner"
     return partnersXYZ;
   }
 

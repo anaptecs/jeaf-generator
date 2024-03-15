@@ -25,10 +25,12 @@ public class DataTypeWithConstraints implements ServiceObject {
    */
   public static final String INTVALUE = "intValue";
 
+  // "int"
   @ClassPropertyDeclaration
   @Max(value = 9999)
   private int intValue;
 
+  // "int"
   private int intValueXYZ = 0;
 
   /**
@@ -48,6 +50,7 @@ public class DataTypeWithConstraints implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     intValue = pBuilder.intValue;
+    // "int"
     intValueXYZ = pBuilder.intValueXYZ;
   }
 
@@ -64,10 +67,12 @@ public class DataTypeWithConstraints implements ServiceObject {
    * Class implements builder to create a new instance of class <code>DataTypeWithConstraints</code>.
    */
   public static class Builder {
+    // "int"
     @BuilderPropertyDeclaration
     @Max(value = 9999)
     private int intValue;
 
+    // "int"
     private int intValueXYZ = 0;
 
     /**
@@ -100,6 +105,7 @@ public class DataTypeWithConstraints implements ServiceObject {
     }
 
     public Builder setIntValueXYZ( int value ) {
+      // "int"
       intValueXYZ = value;
       return this;
     }
@@ -148,6 +154,7 @@ public class DataTypeWithConstraints implements ServiceObject {
   }
 
   public int getIntValueXYZ( ) {
+    // "int"
     return intValueXYZ;
   }
 

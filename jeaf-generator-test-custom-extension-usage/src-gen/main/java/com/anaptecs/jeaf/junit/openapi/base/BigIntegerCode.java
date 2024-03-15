@@ -27,10 +27,12 @@ public class BigIntegerCode implements ServiceObject {
    */
   public static final String CODE = "code";
 
+  // "java.math.BigInteger"
   @ClassPropertyDeclaration
   @Max(value = 4711)
   private BigInteger code;
 
+  // "java.math.BigInteger"
   private int codeXYZ = 0;
 
   /**
@@ -50,6 +52,7 @@ public class BigIntegerCode implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     code = pBuilder.code;
+    // "java.math.BigInteger"
     codeXYZ = pBuilder.codeXYZ;
   }
 
@@ -66,10 +69,12 @@ public class BigIntegerCode implements ServiceObject {
    * Class implements builder to create a new instance of class <code>BigIntegerCode</code>.
    */
   public static class Builder {
+    // "java.math.BigInteger"
     @BuilderPropertyDeclaration
     @Max(value = 4711)
     private BigInteger code;
 
+    // "java.math.BigInteger"
     private int codeXYZ = 0;
 
     /**
@@ -101,6 +106,7 @@ public class BigIntegerCode implements ServiceObject {
     }
 
     public Builder setCodeXYZ( int value ) {
+      // "java.math.BigInteger"
       codeXYZ = value;
       return this;
     }
@@ -149,6 +155,7 @@ public class BigIntegerCode implements ServiceObject {
   }
 
   public int getCodeXYZ( ) {
+    // "java.math.BigInteger"
     return codeXYZ;
   }
 

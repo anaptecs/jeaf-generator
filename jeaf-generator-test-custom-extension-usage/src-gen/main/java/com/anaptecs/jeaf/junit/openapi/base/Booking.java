@@ -24,14 +24,17 @@ public class Booking implements ServiceObject {
    */
   public static final String BOOKINGID = "bookingID";
 
+  // "com.anaptecs.jeaf.junit.openapi.base.BookingID"
   @ClassPropertyDeclaration
   /**
    * ID of the booking
    */
   private BookingID bookingID;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.BookingID"
   private int bookingIDXYZ = 0;
 
+  // "int"
   @ClassPropertyDeclaration
   /**
    * <br/>
@@ -39,6 +42,7 @@ public class Booking implements ServiceObject {
    */
   private static final int MAGIC_NUMER = 42;
 
+  // "int"
   private int MAGIC_NUMERXYZ = 0;
 
   /**
@@ -58,6 +62,7 @@ public class Booking implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     bookingID = pBuilder.bookingID;
+    // "com.anaptecs.jeaf.junit.openapi.base.BookingID"
     bookingIDXYZ = pBuilder.bookingIDXYZ;
   }
 
@@ -77,9 +82,11 @@ public class Booking implements ServiceObject {
     /**
      * ID of the booking
      */
+    // "com.anaptecs.jeaf.junit.openapi.base.BookingID"
     @BuilderPropertyDeclaration
     private BookingID bookingID;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.BookingID"
     private int bookingIDXYZ = 0;
 
     /**
@@ -110,6 +117,7 @@ public class Booking implements ServiceObject {
     }
 
     public Builder setBookingIDXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.BookingID"
       bookingIDXYZ = value;
       return this;
     }
@@ -165,6 +173,7 @@ public class Booking implements ServiceObject {
   }
 
   public int getBookingIDXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.BookingID"
     return bookingIDXYZ;
   }
 
@@ -173,6 +182,7 @@ public class Booking implements ServiceObject {
   }
 
   public int getMAGIC_NUMERXYZ( ) {
+    // "int"
     return MAGIC_NUMERXYZ;
   }
 

@@ -24,9 +24,11 @@ public class FloatCodeType implements ServiceObject {
    */
   public static final String CODE = "code";
 
+  // "float"
   @ClassPropertyDeclaration
   private float code;
 
+  // "float"
   private int codeXYZ = 0;
 
   /**
@@ -46,6 +48,7 @@ public class FloatCodeType implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     code = pBuilder.code;
+    // "float"
     codeXYZ = pBuilder.codeXYZ;
   }
 
@@ -62,9 +65,11 @@ public class FloatCodeType implements ServiceObject {
    * Class implements builder to create a new instance of class <code>FloatCodeType</code>.
    */
   public static class Builder {
+    // "float"
     @BuilderPropertyDeclaration
     private float code;
 
+    // "float"
     private int codeXYZ = 0;
 
     /**
@@ -96,6 +101,7 @@ public class FloatCodeType implements ServiceObject {
     }
 
     public Builder setCodeXYZ( int value ) {
+      // "float"
       codeXYZ = value;
       return this;
     }
@@ -144,6 +150,7 @@ public class FloatCodeType implements ServiceObject {
   }
 
   public int getCodeXYZ( ) {
+    // "float"
     return codeXYZ;
   }
 

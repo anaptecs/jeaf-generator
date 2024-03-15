@@ -142,6 +142,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
    */
   public static final String BSTRING = "bString";
 
+  // "Boolean"
   @ClassPropertyDeclaration
   /**
    * <br/>
@@ -149,99 +150,133 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
    */
   private boolean aBoolean;
 
+  // "Boolean"
   private int aBooleanXYZ = 0;
 
+  // "java.lang.Boolean"
   @ClassPropertyDeclaration
   private Boolean bBoolean;
 
+  // "java.lang.Boolean"
   private int bBooleanXYZ = 0;
 
+  // "Boolean"
   @ClassPropertyDeclaration
   private boolean cBoolean;
 
+  // "Boolean"
   private int cBooleanXYZ = 0;
 
+  // "byte"
   @ClassPropertyDeclaration
   @Negative
   private byte aByte;
 
+  // "byte"
   private int aByteXYZ = 0;
 
+  // "java.lang.Byte"
   @ClassPropertyDeclaration
   @NegativeOrZero
   private Byte bByte;
 
+  // "java.lang.Byte"
   private int bByteXYZ = 0;
 
+  // "short"
   @ClassPropertyDeclaration
   @Min(value = -237)
   private short aShort;
 
+  // "short"
   private int aShortXYZ = 0;
 
+  // "java.lang.Short"
   @ClassPropertyDeclaration
   @Positive
   private Short bShort;
 
+  // "java.lang.Short"
   private int bShortXYZ = 0;
 
+  // "int"
   @ClassPropertyDeclaration
   @PositiveOrZero
   private int aInteger;
 
+  // "int"
   private int aIntegerXYZ = 0;
 
+  // "java.lang.Integer"
   @ClassPropertyDeclaration
   @Min(value = 4711)
   private Integer bInteger;
 
+  // "java.lang.Integer"
   private int bIntegerXYZ = 0;
 
+  // "Integer"
   @ClassPropertyDeclaration
   @Min(value = 100)
   @Max(value = 1000)
   private Integer cInteger;
 
+  // "Integer"
   private int cIntegerXYZ = 0;
 
+  // "long"
   @ClassPropertyDeclaration
   private long aLong;
 
+  // "long"
   private int aLongXYZ = 0;
 
+  // "java.lang.Long"
   @ClassPropertyDeclaration
   @DecimalMax(value = "299792458", inclusive = false)
   private Long bLong;
 
+  // "java.lang.Long"
   private int bLongXYZ = 0;
 
+  // "java.math.BigInteger"
   @ClassPropertyDeclaration
   @DecimalMax(value = "3.14159265359", inclusive = true)
   @DecimalMin(value = "-3.14159265359", inclusive = true)
   private BigInteger aBigInteger;
 
+  // "java.math.BigInteger"
   private int aBigIntegerXYZ = 0;
 
+  // "char"
   @ClassPropertyDeclaration
   private char aCharacter;
 
+  // "char"
   private int aCharacterXYZ = 0;
 
+  // "java.lang.Character"
   @ClassPropertyDeclaration
   private Character bCharacter;
 
+  // "java.lang.Character"
   private int bCharacterXYZ = 0;
 
+  // "float"
   @ClassPropertyDeclaration
   private float aFloat;
 
+  // "float"
   private int aFloatXYZ = 0;
 
+  // "java.lang.Float"
   @ClassPropertyDeclaration
   private Float bFloat;
 
+  // "java.lang.Float"
   private int bFloatXYZ = 0;
 
+  // "double"
   @ClassPropertyDeclaration
   /**
    * <br/>
@@ -249,19 +284,25 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
    */
   private double aDouble;
 
+  // "double"
   private int aDoubleXYZ = 0;
 
+  // "java.lang.Double"
   @ClassPropertyDeclaration
   private Double bDouble;
 
+  // "java.lang.Double"
   private int bDoubleXYZ = 0;
 
+  // "java.math.BigDecimal"
   @ClassPropertyDeclaration
   @DecimalMin(value = "4711.0815", inclusive = true)
   private BigDecimal aBigDecimal;
 
+  // "java.math.BigDecimal"
   private int aBigDecimalXYZ = 0;
 
+  // "String"
   @ClassPropertyDeclaration
   /**
    * <br/>
@@ -270,13 +311,16 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
   @Size(min = 8, max = 32)
   private String aString;
 
+  // "String"
   private int aStringXYZ = 0;
 
+  // "String"
   @ClassPropertyDeclaration
   @NotEmpty
   @Size(min = 0, max = 128)
   private String bString;
 
+  // "String"
   private int bStringXYZ = 0;
 
   /**
@@ -299,48 +343,70 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     aBoolean = pBuilder.aBoolean;
+    // "Boolean"
     aBooleanXYZ = pBuilder.aBooleanXYZ;
     bBoolean = pBuilder.bBoolean;
+    // "java.lang.Boolean"
     bBooleanXYZ = pBuilder.bBooleanXYZ;
     cBoolean = pBuilder.cBoolean;
+    // "Boolean"
     cBooleanXYZ = pBuilder.cBooleanXYZ;
     aByte = pBuilder.aByte;
+    // "byte"
     aByteXYZ = pBuilder.aByteXYZ;
     bByte = pBuilder.bByte;
+    // "java.lang.Byte"
     bByteXYZ = pBuilder.bByteXYZ;
     aShort = pBuilder.aShort;
+    // "short"
     aShortXYZ = pBuilder.aShortXYZ;
     bShort = pBuilder.bShort;
+    // "java.lang.Short"
     bShortXYZ = pBuilder.bShortXYZ;
     aInteger = pBuilder.aInteger;
+    // "int"
     aIntegerXYZ = pBuilder.aIntegerXYZ;
     bInteger = pBuilder.bInteger;
+    // "java.lang.Integer"
     bIntegerXYZ = pBuilder.bIntegerXYZ;
     cInteger = pBuilder.cInteger;
+    // "Integer"
     cIntegerXYZ = pBuilder.cIntegerXYZ;
     aLong = pBuilder.aLong;
+    // "long"
     aLongXYZ = pBuilder.aLongXYZ;
     bLong = pBuilder.bLong;
+    // "java.lang.Long"
     bLongXYZ = pBuilder.bLongXYZ;
     aBigInteger = pBuilder.aBigInteger;
+    // "java.math.BigInteger"
     aBigIntegerXYZ = pBuilder.aBigIntegerXYZ;
     aCharacter = pBuilder.aCharacter;
+    // "char"
     aCharacterXYZ = pBuilder.aCharacterXYZ;
     bCharacter = pBuilder.bCharacter;
+    // "java.lang.Character"
     bCharacterXYZ = pBuilder.bCharacterXYZ;
     aFloat = pBuilder.aFloat;
+    // "float"
     aFloatXYZ = pBuilder.aFloatXYZ;
     bFloat = pBuilder.bFloat;
+    // "java.lang.Float"
     bFloatXYZ = pBuilder.bFloatXYZ;
     aDouble = pBuilder.aDouble;
+    // "double"
     aDoubleXYZ = pBuilder.aDoubleXYZ;
     bDouble = pBuilder.bDouble;
+    // "java.lang.Double"
     bDoubleXYZ = pBuilder.bDoubleXYZ;
     aBigDecimal = pBuilder.aBigDecimal;
+    // "java.math.BigDecimal"
     aBigDecimalXYZ = pBuilder.aBigDecimalXYZ;
     aString = pBuilder.aString;
+    // "String"
     aStringXYZ = pBuilder.aStringXYZ;
     bString = pBuilder.bString;
+    // "String"
     bStringXYZ = pBuilder.bStringXYZ;
   }
 
@@ -361,137 +427,181 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
      * <br/>
      * <b>Default Value:</b> <code>true</code>
      */
+    // "Boolean"
     @BuilderPropertyDeclaration
     private boolean aBoolean = true;
 
+    // "Boolean"
     private int aBooleanXYZ = 0;
 
+    // "java.lang.Boolean"
     @BuilderPropertyDeclaration
     private Boolean bBoolean;
 
+    // "java.lang.Boolean"
     private int bBooleanXYZ = 0;
 
+    // "Boolean"
     @BuilderPropertyDeclaration
     private boolean cBoolean;
 
+    // "Boolean"
     private int cBooleanXYZ = 0;
 
+    // "byte"
     @BuilderPropertyDeclaration
     @Negative
     private byte aByte;
 
+    // "byte"
     private int aByteXYZ = 0;
 
+    // "java.lang.Byte"
     @BuilderPropertyDeclaration
     @NegativeOrZero
     private Byte bByte;
 
+    // "java.lang.Byte"
     private int bByteXYZ = 0;
 
+    // "short"
     @BuilderPropertyDeclaration
     @Min(value = -237)
     private short aShort;
 
+    // "short"
     private int aShortXYZ = 0;
 
+    // "java.lang.Short"
     @BuilderPropertyDeclaration
     @Positive
     private Short bShort;
 
+    // "java.lang.Short"
     private int bShortXYZ = 0;
 
+    // "int"
     @BuilderPropertyDeclaration
     @PositiveOrZero
     private int aInteger;
 
+    // "int"
     private int aIntegerXYZ = 0;
 
+    // "java.lang.Integer"
     @BuilderPropertyDeclaration
     @Min(value = 4711)
     private Integer bInteger;
 
+    // "java.lang.Integer"
     private int bIntegerXYZ = 0;
 
+    // "Integer"
     @BuilderPropertyDeclaration
     @Min(value = 100)
     @Max(value = 1000)
     private Integer cInteger;
 
+    // "Integer"
     private int cIntegerXYZ = 0;
 
+    // "long"
     @BuilderPropertyDeclaration
     private long aLong;
 
+    // "long"
     private int aLongXYZ = 0;
 
+    // "java.lang.Long"
     @BuilderPropertyDeclaration
     @DecimalMax(value = "299792458", inclusive = false)
     private Long bLong;
 
+    // "java.lang.Long"
     private int bLongXYZ = 0;
 
+    // "java.math.BigInteger"
     @BuilderPropertyDeclaration
     @DecimalMax(value = "3.14159265359", inclusive = true)
     @DecimalMin(value = "-3.14159265359", inclusive = true)
     private BigInteger aBigInteger;
 
+    // "java.math.BigInteger"
     private int aBigIntegerXYZ = 0;
 
+    // "char"
     @BuilderPropertyDeclaration
     private char aCharacter;
 
+    // "char"
     private int aCharacterXYZ = 0;
 
+    // "java.lang.Character"
     @BuilderPropertyDeclaration
     private Character bCharacter;
 
+    // "java.lang.Character"
     private int bCharacterXYZ = 0;
 
+    // "float"
     @BuilderPropertyDeclaration
     private float aFloat;
 
+    // "float"
     private int aFloatXYZ = 0;
 
+    // "java.lang.Float"
     @BuilderPropertyDeclaration
     private Float bFloat;
 
+    // "java.lang.Float"
     private int bFloatXYZ = 0;
 
     /**
      * <br/>
      * <b>Default Value:</b> <code>42.0</code>
      */
+    // "double"
     @BuilderPropertyDeclaration
     private double aDouble = 42.0;
 
+    // "double"
     private int aDoubleXYZ = 0;
 
+    // "java.lang.Double"
     @BuilderPropertyDeclaration
     private Double bDouble;
 
+    // "java.lang.Double"
     private int bDoubleXYZ = 0;
 
+    // "java.math.BigDecimal"
     @BuilderPropertyDeclaration
     @DecimalMin(value = "4711.0815", inclusive = true)
     private BigDecimal aBigDecimal;
 
+    // "java.math.BigDecimal"
     private int aBigDecimalXYZ = 0;
 
     /**
      * <br/>
      * <b>Default Value:</b> <code>"Hello OpenAPI"</code>
      */
+    // "String"
     @BuilderPropertyDeclaration
     @Size(min = 8, max = 32)
     private String aString = "Hello OpenAPI";
 
+    // "String"
     private int aStringXYZ = 0;
 
+    // "String"
     @BuilderPropertyDeclaration
     @NotEmpty
     @Size(min = 0, max = 128)
     private String bString;
 
+    // "String"
     private int bStringXYZ = 0;
 
     /**
@@ -545,6 +655,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
     }
 
     public Builder setABooleanXYZ( int value ) {
+      // "Boolean"
       aBooleanXYZ = value;
       return this;
     }
@@ -562,6 +673,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
     }
 
     public Builder setBBooleanXYZ( int value ) {
+      // "java.lang.Boolean"
       bBooleanXYZ = value;
       return this;
     }
@@ -579,6 +691,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
     }
 
     public Builder setCBooleanXYZ( int value ) {
+      // "Boolean"
       cBooleanXYZ = value;
       return this;
     }
@@ -596,6 +709,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
     }
 
     public Builder setAByteXYZ( int value ) {
+      // "byte"
       aByteXYZ = value;
       return this;
     }
@@ -613,6 +727,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
     }
 
     public Builder setBByteXYZ( int value ) {
+      // "java.lang.Byte"
       bByteXYZ = value;
       return this;
     }
@@ -630,6 +745,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
     }
 
     public Builder setAShortXYZ( int value ) {
+      // "short"
       aShortXYZ = value;
       return this;
     }
@@ -647,6 +763,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
     }
 
     public Builder setBShortXYZ( int value ) {
+      // "java.lang.Short"
       bShortXYZ = value;
       return this;
     }
@@ -664,6 +781,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
     }
 
     public Builder setAIntegerXYZ( int value ) {
+      // "int"
       aIntegerXYZ = value;
       return this;
     }
@@ -681,6 +799,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
     }
 
     public Builder setBIntegerXYZ( int value ) {
+      // "java.lang.Integer"
       bIntegerXYZ = value;
       return this;
     }
@@ -698,6 +817,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
     }
 
     public Builder setCIntegerXYZ( int value ) {
+      // "Integer"
       cIntegerXYZ = value;
       return this;
     }
@@ -715,6 +835,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
     }
 
     public Builder setALongXYZ( int value ) {
+      // "long"
       aLongXYZ = value;
       return this;
     }
@@ -732,6 +853,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
     }
 
     public Builder setBLongXYZ( int value ) {
+      // "java.lang.Long"
       bLongXYZ = value;
       return this;
     }
@@ -749,6 +871,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
     }
 
     public Builder setABigIntegerXYZ( int value ) {
+      // "java.math.BigInteger"
       aBigIntegerXYZ = value;
       return this;
     }
@@ -766,6 +889,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
     }
 
     public Builder setACharacterXYZ( int value ) {
+      // "char"
       aCharacterXYZ = value;
       return this;
     }
@@ -783,6 +907,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
     }
 
     public Builder setBCharacterXYZ( int value ) {
+      // "java.lang.Character"
       bCharacterXYZ = value;
       return this;
     }
@@ -800,6 +925,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
     }
 
     public Builder setAFloatXYZ( int value ) {
+      // "float"
       aFloatXYZ = value;
       return this;
     }
@@ -817,6 +943,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
     }
 
     public Builder setBFloatXYZ( int value ) {
+      // "java.lang.Float"
       bFloatXYZ = value;
       return this;
     }
@@ -834,6 +961,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
     }
 
     public Builder setADoubleXYZ( int value ) {
+      // "double"
       aDoubleXYZ = value;
       return this;
     }
@@ -851,6 +979,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
     }
 
     public Builder setBDoubleXYZ( int value ) {
+      // "java.lang.Double"
       bDoubleXYZ = value;
       return this;
     }
@@ -868,6 +997,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
     }
 
     public Builder setABigDecimalXYZ( int value ) {
+      // "java.math.BigDecimal"
       aBigDecimalXYZ = value;
       return this;
     }
@@ -885,6 +1015,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
     }
 
     public Builder setAStringXYZ( int value ) {
+      // "String"
       aStringXYZ = value;
       return this;
     }
@@ -902,6 +1033,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
     }
 
     public Builder setBStringXYZ( int value ) {
+      // "String"
       bStringXYZ = value;
       return this;
     }
@@ -960,6 +1092,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
   }
 
   public int getABooleanXYZ( ) {
+    // "Boolean"
     return aBooleanXYZ;
   }
 
@@ -987,6 +1120,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
   }
 
   public int getBBooleanXYZ( ) {
+    // "java.lang.Boolean"
     return bBooleanXYZ;
   }
 
@@ -1024,6 +1158,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
   }
 
   public int getCBooleanXYZ( ) {
+    // "Boolean"
     return cBooleanXYZ;
   }
 
@@ -1051,6 +1186,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
   }
 
   public int getAByteXYZ( ) {
+    // "byte"
     return aByteXYZ;
   }
 
@@ -1078,6 +1214,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
   }
 
   public int getBByteXYZ( ) {
+    // "java.lang.Byte"
     return bByteXYZ;
   }
 
@@ -1105,6 +1242,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
   }
 
   public int getAShortXYZ( ) {
+    // "short"
     return aShortXYZ;
   }
 
@@ -1132,6 +1270,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
   }
 
   public int getBShortXYZ( ) {
+    // "java.lang.Short"
     return bShortXYZ;
   }
 
@@ -1159,6 +1298,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
   }
 
   public int getAIntegerXYZ( ) {
+    // "int"
     return aIntegerXYZ;
   }
 
@@ -1186,6 +1326,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
   }
 
   public int getBIntegerXYZ( ) {
+    // "java.lang.Integer"
     return bIntegerXYZ;
   }
 
@@ -1213,6 +1354,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
   }
 
   public int getCIntegerXYZ( ) {
+    // "Integer"
     return cIntegerXYZ;
   }
 
@@ -1240,6 +1382,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
   }
 
   public int getALongXYZ( ) {
+    // "long"
     return aLongXYZ;
   }
 
@@ -1267,6 +1410,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
   }
 
   public int getBLongXYZ( ) {
+    // "java.lang.Long"
     return bLongXYZ;
   }
 
@@ -1294,6 +1438,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
   }
 
   public int getABigIntegerXYZ( ) {
+    // "java.math.BigInteger"
     return aBigIntegerXYZ;
   }
 
@@ -1321,6 +1466,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
   }
 
   public int getACharacterXYZ( ) {
+    // "char"
     return aCharacterXYZ;
   }
 
@@ -1348,6 +1494,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
   }
 
   public int getBCharacterXYZ( ) {
+    // "java.lang.Character"
     return bCharacterXYZ;
   }
 
@@ -1375,6 +1522,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
   }
 
   public int getAFloatXYZ( ) {
+    // "float"
     return aFloatXYZ;
   }
 
@@ -1402,6 +1550,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
   }
 
   public int getBFloatXYZ( ) {
+    // "java.lang.Float"
     return bFloatXYZ;
   }
 
@@ -1429,6 +1578,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
   }
 
   public int getADoubleXYZ( ) {
+    // "double"
     return aDoubleXYZ;
   }
 
@@ -1456,6 +1606,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
   }
 
   public int getBDoubleXYZ( ) {
+    // "java.lang.Double"
     return bDoubleXYZ;
   }
 
@@ -1483,6 +1634,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
   }
 
   public int getABigDecimalXYZ( ) {
+    // "java.math.BigDecimal"
     return aBigDecimalXYZ;
   }
 
@@ -1510,6 +1662,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
   }
 
   public int getAStringXYZ( ) {
+    // "String"
     return aStringXYZ;
   }
 
@@ -1537,6 +1690,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
   }
 
   public int getBStringXYZ( ) {
+    // "String"
     return bStringXYZ;
   }
 

@@ -42,6 +42,7 @@ public class MasterClass implements ServiceObject {
    */
   public static final String SINGLECLIENT = "singleClient";
 
+  // "com.anaptecs.jeaf.junit.openapi.transientback.ClientClass"
   @ClassPropertyDeclaration
   private List<ClientClass> clients;
 
@@ -50,13 +51,17 @@ public class MasterClass implements ServiceObject {
    */
   private transient boolean clientsBackReferenceInitialized;
 
+  // "com.anaptecs.jeaf.junit.openapi.transientback.ClientClass"
   private int clientsXYZ = 0;
 
+  // "String"
   @ClassPropertyDeclaration
   private String name;
 
+  // "String"
   private int nameXYZ = 0;
 
+  // "com.anaptecs.jeaf.junit.openapi.transientback.ClientClass"
   @ClassPropertyDeclaration
   private ClientClass singleClient;
 
@@ -65,6 +70,7 @@ public class MasterClass implements ServiceObject {
    */
   private transient boolean singleClientBackReferenceInitialized;
 
+  // "com.anaptecs.jeaf.junit.openapi.transientback.ClientClass"
   private int singleClientXYZ = 0;
 
   /**
@@ -100,8 +106,10 @@ public class MasterClass implements ServiceObject {
     }
     // Bidirectional back reference is set up correctly as a builder is used.
     clientsBackReferenceInitialized = true;
+    // "com.anaptecs.jeaf.junit.openapi.transientback.ClientClass"
     clientsXYZ = pBuilder.clientsXYZ;
     name = pBuilder.name;
+    // "String"
     nameXYZ = pBuilder.nameXYZ;
     singleClient = pBuilder.singleClient;
     if (singleClient != null) {
@@ -110,6 +118,7 @@ public class MasterClass implements ServiceObject {
     }
     // Bidirectional back reference is set up correctly as a builder is used.
     singleClientBackReferenceInitialized = true;
+    // "com.anaptecs.jeaf.junit.openapi.transientback.ClientClass"
     singleClientXYZ = pBuilder.singleClientXYZ;
   }
 
@@ -126,19 +135,25 @@ public class MasterClass implements ServiceObject {
    * Class implements builder to create a new instance of class <code>MasterClass</code>.
    */
   public static class Builder {
+    // "com.anaptecs.jeaf.junit.openapi.transientback.ClientClass"
     @BuilderPropertyDeclaration
     private List<ClientClass> clients;
 
+    // "com.anaptecs.jeaf.junit.openapi.transientback.ClientClass"
     private int clientsXYZ = 0;
 
+    // "String"
     @BuilderPropertyDeclaration
     private String name;
 
+    // "String"
     private int nameXYZ = 0;
 
+    // "com.anaptecs.jeaf.junit.openapi.transientback.ClientClass"
     @BuilderPropertyDeclaration
     private ClientClass singleClient;
 
+    // "com.anaptecs.jeaf.junit.openapi.transientback.ClientClass"
     private int singleClientXYZ = 0;
 
     /**
@@ -193,6 +208,7 @@ public class MasterClass implements ServiceObject {
     }
 
     public Builder setClientsXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.transientback.ClientClass"
       clientsXYZ = value;
       return this;
     }
@@ -210,6 +226,7 @@ public class MasterClass implements ServiceObject {
     }
 
     public Builder setNameXYZ( int value ) {
+      // "String"
       nameXYZ = value;
       return this;
     }
@@ -226,6 +243,7 @@ public class MasterClass implements ServiceObject {
     }
 
     public Builder setSingleClientXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.transientback.ClientClass"
       singleClientXYZ = value;
       return this;
     }
@@ -339,6 +357,7 @@ public class MasterClass implements ServiceObject {
   }
 
   public int getClientsXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.transientback.ClientClass"
     return clientsXYZ;
   }
 
@@ -366,6 +385,7 @@ public class MasterClass implements ServiceObject {
   }
 
   public int getNameXYZ( ) {
+    // "String"
     return nameXYZ;
   }
 
@@ -420,6 +440,7 @@ public class MasterClass implements ServiceObject {
   }
 
   public int getSingleClientXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.transientback.ClientClass"
     return singleClientXYZ;
   }
 

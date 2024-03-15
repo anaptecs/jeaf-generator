@@ -55,11 +55,14 @@ public class ChildBB extends ChildB {
   @Deprecated
   public static final String DEPRECATEDARRAY = "deprecatedArray";
 
+  // "java.lang.Long"
   @ClassPropertyDeclaration
   private Long childBBAttribute;
 
+  // "java.lang.Long"
   private int childBBAttributeXYZ = 0;
 
+  // "int"
   @ClassPropertyDeclaration
   /**
    * @deprecated Please keep <code>hands off</code>. (<b>since:</b> TBD, <b>removed with:</b> TBD)
@@ -67,25 +70,32 @@ public class ChildBB extends ChildB {
   @Deprecated
   private int deprecatedAttribute;
 
+  // "int"
   private int deprecatedAttributeXYZ = 0;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.ChildB"
   @ClassPropertyDeclaration
   @Deprecated
   private Set<ChildB> deprecatedBs;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.ChildB"
   private int deprecatedBsXYZ = 0;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.ParentClass"
   @ClassPropertyDeclaration
   @Deprecated
   private ParentClass deprecatedParent;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.ParentClass"
   private int deprecatedParentXYZ = 0;
 
+  // "byte"
   @ClassPropertyDeclaration
   @Deprecated
   @Size(min = 0, max = 4711)
   private byte[] deprecatedArray;
 
+  // "byte"
   private int deprecatedArrayXYZ = 0;
 
   /**
@@ -106,8 +116,10 @@ public class ChildBB extends ChildB {
     super(pBuilder);
     // Read attribute values from builder.
     childBBAttribute = pBuilder.childBBAttribute;
+    // "java.lang.Long"
     childBBAttributeXYZ = pBuilder.childBBAttributeXYZ;
     deprecatedAttribute = pBuilder.deprecatedAttribute;
+    // "int"
     deprecatedAttributeXYZ = pBuilder.deprecatedAttributeXYZ;
     if (pBuilder.deprecatedBs != null) {
       deprecatedBs = pBuilder.deprecatedBs;
@@ -115,10 +127,13 @@ public class ChildBB extends ChildB {
     else {
       deprecatedBs = new HashSet<ChildB>();
     }
+    // "com.anaptecs.jeaf.junit.openapi.base.ChildB"
     deprecatedBsXYZ = pBuilder.deprecatedBsXYZ;
     deprecatedParent = pBuilder.deprecatedParent;
+    // "com.anaptecs.jeaf.junit.openapi.base.ParentClass"
     deprecatedParentXYZ = pBuilder.deprecatedParentXYZ;
     deprecatedArray = pBuilder.deprecatedArray;
+    // "byte"
     deprecatedArrayXYZ = pBuilder.deprecatedArrayXYZ;
   }
 
@@ -135,37 +150,47 @@ public class ChildBB extends ChildB {
    * Class implements builder to create a new instance of class <code>ChildBB</code>.
    */
   public static class Builder extends ChildB.Builder {
+    // "java.lang.Long"
     @BuilderPropertyDeclaration
     private Long childBBAttribute;
 
+    // "java.lang.Long"
     private int childBBAttributeXYZ = 0;
 
     /**
      * @deprecated Please keep <code>hands off</code>. (<b>since:</b> TBD, <b>removed with:</b> TBD)
      */
+    // "int"
     @BuilderPropertyDeclaration
     @Deprecated
     private int deprecatedAttribute;
 
+    // "int"
     private int deprecatedAttributeXYZ = 0;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.ChildB"
     @BuilderPropertyDeclaration
     @Deprecated
     private Set<ChildB> deprecatedBs;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.ChildB"
     private int deprecatedBsXYZ = 0;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.ParentClass"
     @BuilderPropertyDeclaration
     @Deprecated
     private ParentClass deprecatedParent;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.ParentClass"
     private int deprecatedParentXYZ = 0;
 
+    // "byte"
     @BuilderPropertyDeclaration
     @Deprecated
     @Size(min = 0, max = 4711)
     private byte[] deprecatedArray;
 
+    // "byte"
     private int deprecatedArrayXYZ = 0;
 
     /**
@@ -321,6 +346,7 @@ public class ChildBB extends ChildB {
     }
 
     public Builder setChildBBAttributeXYZ( int value ) {
+      // "java.lang.Long"
       childBBAttributeXYZ = value;
       return this;
     }
@@ -340,6 +366,7 @@ public class ChildBB extends ChildB {
     }
 
     public Builder setDeprecatedAttributeXYZ( int value ) {
+      // "int"
       deprecatedAttributeXYZ = value;
       return this;
     }
@@ -380,6 +407,7 @@ public class ChildBB extends ChildB {
     }
 
     public Builder setDeprecatedBsXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.ChildB"
       deprecatedBsXYZ = value;
       return this;
     }
@@ -397,6 +425,7 @@ public class ChildBB extends ChildB {
     }
 
     public Builder setDeprecatedParentXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.ParentClass"
       deprecatedParentXYZ = value;
       return this;
     }
@@ -421,6 +450,7 @@ public class ChildBB extends ChildB {
     }
 
     public Builder setDeprecatedArrayXYZ( int value ) {
+      // "byte"
       deprecatedArrayXYZ = value;
       return this;
     }
@@ -468,6 +498,7 @@ public class ChildBB extends ChildB {
   }
 
   public int getChildBBAttributeXYZ( ) {
+    // "java.lang.Long"
     return childBBAttributeXYZ;
   }
 
@@ -499,6 +530,7 @@ public class ChildBB extends ChildB {
   }
 
   public int getDeprecatedAttributeXYZ( ) {
+    // "int"
     return deprecatedAttributeXYZ;
   }
 
@@ -570,6 +602,7 @@ public class ChildBB extends ChildB {
   }
 
   public int getDeprecatedBsXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.ChildB"
     return deprecatedBsXYZ;
   }
 
@@ -606,6 +639,7 @@ public class ChildBB extends ChildB {
   }
 
   public int getDeprecatedParentXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.ParentClass"
     return deprecatedParentXYZ;
   }
 
@@ -649,6 +683,7 @@ public class ChildBB extends ChildB {
   }
 
   public int getDeprecatedArrayXYZ( ) {
+    // "byte"
     return deprecatedArrayXYZ;
   }
 

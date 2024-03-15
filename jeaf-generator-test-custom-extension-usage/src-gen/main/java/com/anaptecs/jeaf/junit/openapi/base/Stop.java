@@ -47,23 +47,30 @@ public class Stop implements ServiceObject {
    */
   public static final String THESOFTLINK = "theSoftLink";
 
+  // "String"
   @ClassPropertyDeclaration
   private String name;
 
+  // "String"
   private int nameXYZ = 0;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
   @ClassPropertyDeclaration
   private List<LinkObject> links;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
   private int linksXYZ = 0;
 
+  // "byte"
   @ClassPropertyDeclaration
   @Max(value = 32)
   @PositiveOrZero
   private byte index;
 
+  // "byte"
   private int indexXYZ = 0;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
   @ClassPropertyDeclaration
   /**
    * <p/>
@@ -72,6 +79,7 @@ public class Stop implements ServiceObject {
    */
   private SoftLink theSoftLink;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
   private int theSoftLinkXYZ = 0;
 
   /**
@@ -92,6 +100,7 @@ public class Stop implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     name = pBuilder.name;
+    // "String"
     nameXYZ = pBuilder.nameXYZ;
     if (pBuilder.links != null) {
       links = pBuilder.links;
@@ -99,10 +108,13 @@ public class Stop implements ServiceObject {
     else {
       links = new ArrayList<LinkObject>();
     }
+    // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
     linksXYZ = pBuilder.linksXYZ;
     index = pBuilder.index;
+    // "byte"
     indexXYZ = pBuilder.indexXYZ;
     theSoftLink = pBuilder.theSoftLink;
+    // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
     theSoftLinkXYZ = pBuilder.theSoftLinkXYZ;
   }
 
@@ -119,21 +131,27 @@ public class Stop implements ServiceObject {
    * Class implements builder to create a new instance of class <code>Stop</code>.
    */
   public static class Builder {
+    // "String"
     @BuilderPropertyDeclaration
     private String name;
 
+    // "String"
     private int nameXYZ = 0;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
     @BuilderPropertyDeclaration
     private List<LinkObject> links;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
     private int linksXYZ = 0;
 
+    // "byte"
     @BuilderPropertyDeclaration
     @Max(value = 32)
     @PositiveOrZero
     private byte index;
 
+    // "byte"
     private int indexXYZ = 0;
 
     /**
@@ -141,9 +159,11 @@ public class Stop implements ServiceObject {
      * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #theSoftLink} is
      * <code>LinkObject</code><br/>
      */
+    // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
     @BuilderPropertyDeclaration
     private SoftLink theSoftLink;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
     private int theSoftLinkXYZ = 0;
 
     /**
@@ -178,6 +198,7 @@ public class Stop implements ServiceObject {
     }
 
     public Builder setNameXYZ( int value ) {
+      // "String"
       nameXYZ = value;
       return this;
     }
@@ -216,6 +237,7 @@ public class Stop implements ServiceObject {
     }
 
     public Builder setLinksXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
       linksXYZ = value;
       return this;
     }
@@ -233,6 +255,7 @@ public class Stop implements ServiceObject {
     }
 
     public Builder setIndexXYZ( int value ) {
+      // "byte"
       indexXYZ = value;
       return this;
     }
@@ -249,6 +272,7 @@ public class Stop implements ServiceObject {
     }
 
     public Builder setTheSoftLinkXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
       theSoftLinkXYZ = value;
       return this;
     }
@@ -296,6 +320,7 @@ public class Stop implements ServiceObject {
   }
 
   public int getNameXYZ( ) {
+    // "String"
     return nameXYZ;
   }
 
@@ -361,6 +386,7 @@ public class Stop implements ServiceObject {
   }
 
   public int getLinksXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
     return linksXYZ;
   }
 
@@ -388,6 +414,7 @@ public class Stop implements ServiceObject {
   }
 
   public int getIndexXYZ( ) {
+    // "byte"
     return indexXYZ;
   }
 
@@ -424,6 +451,7 @@ public class Stop implements ServiceObject {
   }
 
   public int getTheSoftLinkXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
     return theSoftLinkXYZ;
   }
 

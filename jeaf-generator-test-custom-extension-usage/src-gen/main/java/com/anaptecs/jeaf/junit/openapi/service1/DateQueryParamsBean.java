@@ -79,16 +79,21 @@ public class DateQueryParamsBean implements ServiceObject {
    */
   public static final String SQLDATE = "sqlDate";
 
+  // "java.time.OffsetDateTime"
   @ClassPropertyDeclaration
   private OffsetDateTime offsetDateTime;
 
+  // "java.time.OffsetDateTime"
   private int offsetDateTimeXYZ = 0;
 
+  // "java.time.OffsetTime"
   @ClassPropertyDeclaration
   private OffsetTime offsetTime;
 
+  // "java.time.OffsetTime"
   private int offsetTimeXYZ = 0;
 
+  // "java.time.LocalDateTime"
   @ClassPropertyDeclaration
   /**
    * <p/>
@@ -96,41 +101,56 @@ public class DateQueryParamsBean implements ServiceObject {
    */
   private LocalDateTime localDateTime;
 
+  // "java.time.LocalDateTime"
   private int localDateTimeXYZ = 0;
 
+  // "java.time.LocalTime"
   @ClassPropertyDeclaration
   private LocalTime localTime;
 
+  // "java.time.LocalTime"
   private int localTimeXYZ = 0;
 
+  // "java.time.LocalDate"
   @ClassPropertyDeclaration
   private LocalDate localDate;
 
+  // "java.time.LocalDate"
   private int localDateXYZ = 0;
 
+  // "java.util.Date"
   @ClassPropertyDeclaration
   private java.util.Date utilDate;
 
+  // "java.util.Date"
   private int utilDateXYZ = 0;
 
+  // "java.util.Calendar"
   @ClassPropertyDeclaration
   private Calendar calendar;
 
+  // "java.util.Calendar"
   private int calendarXYZ = 0;
 
+  // "java.sql.Timestamp"
   @ClassPropertyDeclaration
   private Timestamp sqlTimestamp;
 
+  // "java.sql.Timestamp"
   private int sqlTimestampXYZ = 0;
 
+  // "java.sql.Time"
   @ClassPropertyDeclaration
   private Time sqlTime;
 
+  // "java.sql.Time"
   private int sqlTimeXYZ = 0;
 
+  // "java.sql.Date"
   @ClassPropertyDeclaration
   private Date sqlDate;
 
+  // "java.sql.Date"
   private int sqlDateXYZ = 0;
 
   /**
@@ -150,24 +170,34 @@ public class DateQueryParamsBean implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     offsetDateTime = pBuilder.offsetDateTime;
+    // "java.time.OffsetDateTime"
     offsetDateTimeXYZ = pBuilder.offsetDateTimeXYZ;
     offsetTime = pBuilder.offsetTime;
+    // "java.time.OffsetTime"
     offsetTimeXYZ = pBuilder.offsetTimeXYZ;
     localDateTime = pBuilder.localDateTime;
+    // "java.time.LocalDateTime"
     localDateTimeXYZ = pBuilder.localDateTimeXYZ;
     localTime = pBuilder.localTime;
+    // "java.time.LocalTime"
     localTimeXYZ = pBuilder.localTimeXYZ;
     localDate = pBuilder.localDate;
+    // "java.time.LocalDate"
     localDateXYZ = pBuilder.localDateXYZ;
     utilDate = pBuilder.utilDate;
+    // "java.util.Date"
     utilDateXYZ = pBuilder.utilDateXYZ;
     calendar = pBuilder.calendar;
+    // "java.util.Calendar"
     calendarXYZ = pBuilder.calendarXYZ;
     sqlTimestamp = pBuilder.sqlTimestamp;
+    // "java.sql.Timestamp"
     sqlTimestampXYZ = pBuilder.sqlTimestampXYZ;
     sqlTime = pBuilder.sqlTime;
+    // "java.sql.Time"
     sqlTimeXYZ = pBuilder.sqlTimeXYZ;
     sqlDate = pBuilder.sqlDate;
+    // "java.sql.Date"
     sqlDateXYZ = pBuilder.sqlDateXYZ;
   }
 
@@ -184,58 +214,78 @@ public class DateQueryParamsBean implements ServiceObject {
    * Class implements builder to create a new instance of class <code>DateQueryParamsBean</code>.
    */
   public static class Builder {
+    // "java.time.OffsetDateTime"
     @BuilderPropertyDeclaration
     private OffsetDateTime offsetDateTime;
 
+    // "java.time.OffsetDateTime"
     private int offsetDateTimeXYZ = 0;
 
+    // "java.time.OffsetTime"
     @BuilderPropertyDeclaration
     private OffsetTime offsetTime;
 
+    // "java.time.OffsetTime"
     private int offsetTimeXYZ = 0;
 
     /**
      * <p/>
      * <b>Breaking Change with 2.0:</b> Has to be in the past
      */
+    // "java.time.LocalDateTime"
     @BuilderPropertyDeclaration
     private LocalDateTime localDateTime;
 
+    // "java.time.LocalDateTime"
     private int localDateTimeXYZ = 0;
 
+    // "java.time.LocalTime"
     @BuilderPropertyDeclaration
     private LocalTime localTime;
 
+    // "java.time.LocalTime"
     private int localTimeXYZ = 0;
 
+    // "java.time.LocalDate"
     @BuilderPropertyDeclaration
     private LocalDate localDate;
 
+    // "java.time.LocalDate"
     private int localDateXYZ = 0;
 
+    // "java.util.Date"
     @BuilderPropertyDeclaration
     private java.util.Date utilDate;
 
+    // "java.util.Date"
     private int utilDateXYZ = 0;
 
+    // "java.util.Calendar"
     @BuilderPropertyDeclaration
     private Calendar calendar;
 
+    // "java.util.Calendar"
     private int calendarXYZ = 0;
 
+    // "java.sql.Timestamp"
     @BuilderPropertyDeclaration
     private Timestamp sqlTimestamp;
 
+    // "java.sql.Timestamp"
     private int sqlTimestampXYZ = 0;
 
+    // "java.sql.Time"
     @BuilderPropertyDeclaration
     private Time sqlTime;
 
+    // "java.sql.Time"
     private int sqlTimeXYZ = 0;
 
+    // "java.sql.Date"
     @BuilderPropertyDeclaration
     private Date sqlDate;
 
+    // "java.sql.Date"
     private int sqlDateXYZ = 0;
 
     /**
@@ -277,6 +327,7 @@ public class DateQueryParamsBean implements ServiceObject {
     }
 
     public Builder setOffsetDateTimeXYZ( int value ) {
+      // "java.time.OffsetDateTime"
       offsetDateTimeXYZ = value;
       return this;
     }
@@ -294,6 +345,7 @@ public class DateQueryParamsBean implements ServiceObject {
     }
 
     public Builder setOffsetTimeXYZ( int value ) {
+      // "java.time.OffsetTime"
       offsetTimeXYZ = value;
       return this;
     }
@@ -313,6 +365,7 @@ public class DateQueryParamsBean implements ServiceObject {
     }
 
     public Builder setLocalDateTimeXYZ( int value ) {
+      // "java.time.LocalDateTime"
       localDateTimeXYZ = value;
       return this;
     }
@@ -330,6 +383,7 @@ public class DateQueryParamsBean implements ServiceObject {
     }
 
     public Builder setLocalTimeXYZ( int value ) {
+      // "java.time.LocalTime"
       localTimeXYZ = value;
       return this;
     }
@@ -347,6 +401,7 @@ public class DateQueryParamsBean implements ServiceObject {
     }
 
     public Builder setLocalDateXYZ( int value ) {
+      // "java.time.LocalDate"
       localDateXYZ = value;
       return this;
     }
@@ -364,6 +419,7 @@ public class DateQueryParamsBean implements ServiceObject {
     }
 
     public Builder setUtilDateXYZ( int value ) {
+      // "java.util.Date"
       utilDateXYZ = value;
       return this;
     }
@@ -381,6 +437,7 @@ public class DateQueryParamsBean implements ServiceObject {
     }
 
     public Builder setCalendarXYZ( int value ) {
+      // "java.util.Calendar"
       calendarXYZ = value;
       return this;
     }
@@ -398,6 +455,7 @@ public class DateQueryParamsBean implements ServiceObject {
     }
 
     public Builder setSqlTimestampXYZ( int value ) {
+      // "java.sql.Timestamp"
       sqlTimestampXYZ = value;
       return this;
     }
@@ -415,6 +473,7 @@ public class DateQueryParamsBean implements ServiceObject {
     }
 
     public Builder setSqlTimeXYZ( int value ) {
+      // "java.sql.Time"
       sqlTimeXYZ = value;
       return this;
     }
@@ -432,6 +491,7 @@ public class DateQueryParamsBean implements ServiceObject {
     }
 
     public Builder setSqlDateXYZ( int value ) {
+      // "java.sql.Date"
       sqlDateXYZ = value;
       return this;
     }
@@ -480,6 +540,7 @@ public class DateQueryParamsBean implements ServiceObject {
   }
 
   public int getOffsetDateTimeXYZ( ) {
+    // "java.time.OffsetDateTime"
     return offsetDateTimeXYZ;
   }
 
@@ -507,6 +568,7 @@ public class DateQueryParamsBean implements ServiceObject {
   }
 
   public int getOffsetTimeXYZ( ) {
+    // "java.time.OffsetTime"
     return offsetTimeXYZ;
   }
 
@@ -538,6 +600,7 @@ public class DateQueryParamsBean implements ServiceObject {
   }
 
   public int getLocalDateTimeXYZ( ) {
+    // "java.time.LocalDateTime"
     return localDateTimeXYZ;
   }
 
@@ -565,6 +628,7 @@ public class DateQueryParamsBean implements ServiceObject {
   }
 
   public int getLocalTimeXYZ( ) {
+    // "java.time.LocalTime"
     return localTimeXYZ;
   }
 
@@ -592,6 +656,7 @@ public class DateQueryParamsBean implements ServiceObject {
   }
 
   public int getLocalDateXYZ( ) {
+    // "java.time.LocalDate"
     return localDateXYZ;
   }
 
@@ -619,6 +684,7 @@ public class DateQueryParamsBean implements ServiceObject {
   }
 
   public int getUtilDateXYZ( ) {
+    // "java.util.Date"
     return utilDateXYZ;
   }
 
@@ -646,6 +712,7 @@ public class DateQueryParamsBean implements ServiceObject {
   }
 
   public int getCalendarXYZ( ) {
+    // "java.util.Calendar"
     return calendarXYZ;
   }
 
@@ -673,6 +740,7 @@ public class DateQueryParamsBean implements ServiceObject {
   }
 
   public int getSqlTimestampXYZ( ) {
+    // "java.sql.Timestamp"
     return sqlTimestampXYZ;
   }
 
@@ -700,6 +768,7 @@ public class DateQueryParamsBean implements ServiceObject {
   }
 
   public int getSqlTimeXYZ( ) {
+    // "java.sql.Time"
     return sqlTimeXYZ;
   }
 
@@ -727,6 +796,7 @@ public class DateQueryParamsBean implements ServiceObject {
   }
 
   public int getSqlDateXYZ( ) {
+    // "java.sql.Date"
     return sqlDateXYZ;
   }
 

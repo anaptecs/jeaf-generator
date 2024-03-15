@@ -39,24 +39,32 @@ public class PostalAddress implements ServiceObject {
    */
   public static final String POSTALCODE = "postalCode";
 
+  // "java.lang.String"
   @ClassPropertyDeclaration
   private String street;
 
+  // "java.lang.String"
   private int streetXYZ = 0;
 
+  // "java.lang.String"
   @ClassPropertyDeclaration
   private String houseNumber;
 
+  // "java.lang.String"
   private int houseNumberXYZ = 0;
 
+  // "java.lang.String"
   @ClassPropertyDeclaration
   private String city;
 
+  // "java.lang.String"
   private int cityXYZ = 0;
 
+  // "int"
   @ClassPropertyDeclaration
   private int postalCode;
 
+  // "int"
   private int postalCodeXYZ = 0;
 
   /**
@@ -76,12 +84,16 @@ public class PostalAddress implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     street = pBuilder.street;
+    // "java.lang.String"
     streetXYZ = pBuilder.streetXYZ;
     houseNumber = pBuilder.houseNumber;
+    // "java.lang.String"
     houseNumberXYZ = pBuilder.houseNumberXYZ;
     city = pBuilder.city;
+    // "java.lang.String"
     cityXYZ = pBuilder.cityXYZ;
     postalCode = pBuilder.postalCode;
+    // "int"
     postalCodeXYZ = pBuilder.postalCodeXYZ;
   }
 
@@ -98,24 +110,32 @@ public class PostalAddress implements ServiceObject {
    * Class implements builder to create a new instance of class <code>PostalAddress</code>.
    */
   public static class Builder {
+    // "java.lang.String"
     @BuilderPropertyDeclaration
     private String street;
 
+    // "java.lang.String"
     private int streetXYZ = 0;
 
+    // "java.lang.String"
     @BuilderPropertyDeclaration
     private String houseNumber;
 
+    // "java.lang.String"
     private int houseNumberXYZ = 0;
 
+    // "java.lang.String"
     @BuilderPropertyDeclaration
     private String city;
 
+    // "java.lang.String"
     private int cityXYZ = 0;
 
+    // "int"
     @BuilderPropertyDeclaration
     private int postalCode;
 
+    // "int"
     private int postalCodeXYZ = 0;
 
     /**
@@ -150,6 +170,7 @@ public class PostalAddress implements ServiceObject {
     }
 
     public Builder setStreetXYZ( int value ) {
+      // "java.lang.String"
       streetXYZ = value;
       return this;
     }
@@ -167,6 +188,7 @@ public class PostalAddress implements ServiceObject {
     }
 
     public Builder setHouseNumberXYZ( int value ) {
+      // "java.lang.String"
       houseNumberXYZ = value;
       return this;
     }
@@ -184,6 +206,7 @@ public class PostalAddress implements ServiceObject {
     }
 
     public Builder setCityXYZ( int value ) {
+      // "java.lang.String"
       cityXYZ = value;
       return this;
     }
@@ -201,6 +224,7 @@ public class PostalAddress implements ServiceObject {
     }
 
     public Builder setPostalCodeXYZ( int value ) {
+      // "int"
       postalCodeXYZ = value;
       return this;
     }
@@ -249,6 +273,7 @@ public class PostalAddress implements ServiceObject {
   }
 
   public int getStreetXYZ( ) {
+    // "java.lang.String"
     return streetXYZ;
   }
 
@@ -276,6 +301,7 @@ public class PostalAddress implements ServiceObject {
   }
 
   public int getHouseNumberXYZ( ) {
+    // "java.lang.String"
     return houseNumberXYZ;
   }
 
@@ -303,6 +329,7 @@ public class PostalAddress implements ServiceObject {
   }
 
   public int getCityXYZ( ) {
+    // "java.lang.String"
     return cityXYZ;
   }
 
@@ -330,6 +357,7 @@ public class PostalAddress implements ServiceObject {
   }
 
   public int getPostalCodeXYZ( ) {
+    // "int"
     return postalCodeXYZ;
   }
 

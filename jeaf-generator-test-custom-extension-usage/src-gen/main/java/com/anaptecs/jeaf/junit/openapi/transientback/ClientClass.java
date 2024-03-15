@@ -41,19 +41,25 @@ public class ClientClass implements ServiceObject {
    */
   public static final String MANYMASTERS = "manyMasters";
 
+  // "com.anaptecs.jeaf.junit.openapi.transientback.MasterClass"
   @ClassPropertyDeclaration
   private transient MasterClass transientMaster;
 
+  // "com.anaptecs.jeaf.junit.openapi.transientback.MasterClass"
   private int transientMasterXYZ = 0;
 
+  // "String"
   @ClassPropertyDeclaration
   private String name;
 
+  // "String"
   private int nameXYZ = 0;
 
+  // "com.anaptecs.jeaf.junit.openapi.transientback.MasterClass"
   @ClassPropertyDeclaration
   private transient List<MasterClass> manyMasters;
 
+  // "com.anaptecs.jeaf.junit.openapi.transientback.MasterClass"
   private int manyMastersXYZ = 0;
 
   /**
@@ -74,6 +80,7 @@ public class ClientClass implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     name = pBuilder.name;
+    // "String"
     nameXYZ = pBuilder.nameXYZ;
     manyMasters = new ArrayList<MasterClass>();
   }
@@ -91,9 +98,11 @@ public class ClientClass implements ServiceObject {
    * Class implements builder to create a new instance of class <code>ClientClass</code>.
    */
   public static class Builder {
+    // "String"
     @BuilderPropertyDeclaration
     private String name;
 
+    // "String"
     private int nameXYZ = 0;
 
     /**
@@ -125,6 +134,7 @@ public class ClientClass implements ServiceObject {
     }
 
     public Builder setNameXYZ( int value ) {
+      // "String"
       nameXYZ = value;
       return this;
     }
@@ -183,6 +193,7 @@ public class ClientClass implements ServiceObject {
   }
 
   public int getTransientMasterXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.transientback.MasterClass"
     return transientMasterXYZ;
   }
 
@@ -210,6 +221,7 @@ public class ClientClass implements ServiceObject {
   }
 
   public int getNameXYZ( ) {
+    // "String"
     return nameXYZ;
   }
 
@@ -281,6 +293,7 @@ public class ClientClass implements ServiceObject {
   }
 
   public int getManyMastersXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.transientback.MasterClass"
     return manyMastersXYZ;
   }
 

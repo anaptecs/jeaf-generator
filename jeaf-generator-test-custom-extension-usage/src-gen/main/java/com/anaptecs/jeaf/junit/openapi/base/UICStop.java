@@ -52,30 +52,38 @@ public class UICStop extends Stop {
    */
   public static final String INDEX2 = "index2";
 
+  // "String"
   @ClassPropertyDeclaration
   @Size(min = 32, max = 255)
   private String uicCode;
 
+  // "String"
   private int uicCodeXYZ = 0;
 
+  // "int"
   @ClassPropertyDeclaration
   @DecimalMax(value = "32.777", inclusive = true)
   @DecimalMin(value = "1.025", inclusive = true)
   private int priority;
 
+  // "int"
   private int priorityXYZ = 0;
 
+  // "long"
   @ClassPropertyDeclaration
   @Min(value = 1000)
   @Max(value = 9999)
   private long code;
 
+  // "long"
   private int codeXYZ = 0;
 
+  // "byte"
   @ClassPropertyDeclaration
   @Positive
   private byte index2;
 
+  // "byte"
   private int index2XYZ = 0;
 
   /**
@@ -95,12 +103,16 @@ public class UICStop extends Stop {
     super(pBuilder);
     // Read attribute values from builder.
     uicCode = pBuilder.uicCode;
+    // "String"
     uicCodeXYZ = pBuilder.uicCodeXYZ;
     priority = pBuilder.priority;
+    // "int"
     priorityXYZ = pBuilder.priorityXYZ;
     code = pBuilder.code;
+    // "long"
     codeXYZ = pBuilder.codeXYZ;
     index2 = pBuilder.index2;
+    // "byte"
     index2XYZ = pBuilder.index2XYZ;
   }
 
@@ -117,30 +129,38 @@ public class UICStop extends Stop {
    * Class implements builder to create a new instance of class <code>UICStop</code>.
    */
   public static class Builder extends Stop.Builder {
+    // "String"
     @BuilderPropertyDeclaration
     @Size(min = 32, max = 255)
     private String uicCode;
 
+    // "String"
     private int uicCodeXYZ = 0;
 
+    // "int"
     @BuilderPropertyDeclaration
     @DecimalMax(value = "32.777", inclusive = true)
     @DecimalMin(value = "1.025", inclusive = true)
     private int priority;
 
+    // "int"
     private int priorityXYZ = 0;
 
+    // "long"
     @BuilderPropertyDeclaration
     @Min(value = 1000)
     @Max(value = 9999)
     private long code;
 
+    // "long"
     private int codeXYZ = 0;
 
+    // "byte"
     @BuilderPropertyDeclaration
     @Positive
     private byte index2;
 
+    // "byte"
     private int index2XYZ = 0;
 
     /**
@@ -241,6 +261,7 @@ public class UICStop extends Stop {
     }
 
     public Builder setUicCodeXYZ( int value ) {
+      // "String"
       uicCodeXYZ = value;
       return this;
     }
@@ -258,6 +279,7 @@ public class UICStop extends Stop {
     }
 
     public Builder setPriorityXYZ( int value ) {
+      // "int"
       priorityXYZ = value;
       return this;
     }
@@ -275,6 +297,7 @@ public class UICStop extends Stop {
     }
 
     public Builder setCodeXYZ( int value ) {
+      // "long"
       codeXYZ = value;
       return this;
     }
@@ -292,6 +315,7 @@ public class UICStop extends Stop {
     }
 
     public Builder setIndex2XYZ( int value ) {
+      // "byte"
       index2XYZ = value;
       return this;
     }
@@ -339,6 +363,7 @@ public class UICStop extends Stop {
   }
 
   public int getUicCodeXYZ( ) {
+    // "String"
     return uicCodeXYZ;
   }
 
@@ -366,6 +391,7 @@ public class UICStop extends Stop {
   }
 
   public int getPriorityXYZ( ) {
+    // "int"
     return priorityXYZ;
   }
 
@@ -393,6 +419,7 @@ public class UICStop extends Stop {
   }
 
   public int getCodeXYZ( ) {
+    // "long"
     return codeXYZ;
   }
 
@@ -420,6 +447,7 @@ public class UICStop extends Stop {
   }
 
   public int getIndex2XYZ( ) {
+    // "byte"
     return index2XYZ;
   }
 

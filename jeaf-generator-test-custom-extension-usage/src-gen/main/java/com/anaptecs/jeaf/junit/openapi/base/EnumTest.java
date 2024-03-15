@@ -29,6 +29,7 @@ public class EnumTest implements ServiceObject {
    */
   public static final String ENUMREF = "enumRef";
 
+  // "com.anaptecs.jeaf.junit.openapi.base.ExtensibleEnum"
   @ClassPropertyDeclaration
   /**
    * <br/>
@@ -36,8 +37,10 @@ public class EnumTest implements ServiceObject {
    */
   private ExtensibleEnum property;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.ExtensibleEnum"
   private int propertyXYZ = 0;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.ExtensibleEnum"
   @ClassPropertyDeclaration
   /**
    * <br/>
@@ -45,6 +48,7 @@ public class EnumTest implements ServiceObject {
    */
   private ExtensibleEnum enumRef;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.ExtensibleEnum"
   private int enumRefXYZ = 0;
 
   /**
@@ -66,8 +70,10 @@ public class EnumTest implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     property = pBuilder.property;
+    // "com.anaptecs.jeaf.junit.openapi.base.ExtensibleEnum"
     propertyXYZ = pBuilder.propertyXYZ;
     enumRef = pBuilder.enumRef;
+    // "com.anaptecs.jeaf.junit.openapi.base.ExtensibleEnum"
     enumRefXYZ = pBuilder.enumRefXYZ;
   }
 
@@ -88,18 +94,22 @@ public class EnumTest implements ServiceObject {
      * <br/>
      * <b>Default Value:</b> <code>GREEN</code>
      */
+    // "com.anaptecs.jeaf.junit.openapi.base.ExtensibleEnum"
     @BuilderPropertyDeclaration
     private ExtensibleEnum property = ExtensibleEnum.GREEN;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.ExtensibleEnum"
     private int propertyXYZ = 0;
 
     /**
      * <br/>
      * <b>Default Value:</b> <code>RED</code>
      */
+    // "com.anaptecs.jeaf.junit.openapi.base.ExtensibleEnum"
     @BuilderPropertyDeclaration
     private ExtensibleEnum enumRef = ExtensibleEnum.RED;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.ExtensibleEnum"
     private int enumRefXYZ = 0;
 
     /**
@@ -132,6 +142,7 @@ public class EnumTest implements ServiceObject {
     }
 
     public Builder setPropertyXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.ExtensibleEnum"
       propertyXYZ = value;
       return this;
     }
@@ -148,6 +159,7 @@ public class EnumTest implements ServiceObject {
     }
 
     public Builder setEnumRefXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.ExtensibleEnum"
       enumRefXYZ = value;
       return this;
     }
@@ -195,6 +207,7 @@ public class EnumTest implements ServiceObject {
   }
 
   public int getPropertyXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.ExtensibleEnum"
     return propertyXYZ;
   }
 
@@ -228,6 +241,7 @@ public class EnumTest implements ServiceObject {
   }
 
   public int getEnumRefXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.ExtensibleEnum"
     return enumRefXYZ;
   }
 

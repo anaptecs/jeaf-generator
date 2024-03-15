@@ -52,6 +52,7 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
    */
   public static final String ANOTHERID = "anotherID";
 
+  // "long"
   @ClassPropertyDeclaration
   /**
    * Internal ID<br/>
@@ -60,26 +61,35 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
    */
   private long internalID;
 
+  // "long"
   private int internalIDXYZ = 0;
 
+  // "String"
   @ClassPropertyDeclaration
   private String referenceID;
 
+  // "String"
   private int referenceIDXYZ = 0;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.BookingID"
   @ClassPropertyDeclaration
   private List<BookingID> bookingIDs;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.BookingID"
   private int bookingIDsXYZ = 0;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.ComplexBookingType"
   @ClassPropertyDeclaration
   private ComplexBookingType complexBookingType;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.ComplexBookingType"
   private int complexBookingTypeXYZ = 0;
 
+  // "java.lang.Integer"
   @ClassPropertyDeclaration
   private Integer anotherID;
 
+  // "java.lang.Integer"
   private int anotherIDXYZ = 0;
 
   /**
@@ -100,8 +110,10 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     internalID = pBuilder.internalID;
+    // "long"
     internalIDXYZ = pBuilder.internalIDXYZ;
     referenceID = pBuilder.referenceID;
+    // "String"
     referenceIDXYZ = pBuilder.referenceIDXYZ;
     if (pBuilder.bookingIDs != null) {
       bookingIDs = pBuilder.bookingIDs;
@@ -109,10 +121,13 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
     else {
       bookingIDs = new ArrayList<BookingID>();
     }
+    // "com.anaptecs.jeaf.junit.openapi.base.BookingID"
     bookingIDsXYZ = pBuilder.bookingIDsXYZ;
     complexBookingType = pBuilder.complexBookingType;
+    // "com.anaptecs.jeaf.junit.openapi.base.ComplexBookingType"
     complexBookingTypeXYZ = pBuilder.complexBookingTypeXYZ;
     anotherID = pBuilder.anotherID;
+    // "java.lang.Integer"
     anotherIDXYZ = pBuilder.anotherIDXYZ;
   }
 
@@ -126,29 +141,39 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
      * 2nd line<br/>
      * 3rd line
      */
+    // "long"
     @BuilderPropertyDeclaration
     private long internalID;
 
+    // "long"
     private int internalIDXYZ = 0;
 
+    // "String"
     @BuilderPropertyDeclaration
     private String referenceID;
 
+    // "String"
     private int referenceIDXYZ = 0;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.BookingID"
     @BuilderPropertyDeclaration
     private List<BookingID> bookingIDs;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.BookingID"
     private int bookingIDsXYZ = 0;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.ComplexBookingType"
     @BuilderPropertyDeclaration
     private ComplexBookingType complexBookingType;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.ComplexBookingType"
     private int complexBookingTypeXYZ = 0;
 
+    // "java.lang.Integer"
     @BuilderPropertyDeclaration
     private Integer anotherID;
 
+    // "java.lang.Integer"
     private int anotherIDXYZ = 0;
 
     /**
@@ -184,6 +209,7 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
     }
 
     public BuilderBase setInternalIDXYZ( int value ) {
+      // "long"
       internalIDXYZ = value;
       return this;
     }
@@ -201,6 +227,7 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
     }
 
     public BuilderBase setReferenceIDXYZ( int value ) {
+      // "String"
       referenceIDXYZ = value;
       return this;
     }
@@ -239,6 +266,7 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
     }
 
     public BuilderBase setBookingIDsXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.BookingID"
       bookingIDsXYZ = value;
       return this;
     }
@@ -255,6 +283,7 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
     }
 
     public BuilderBase setComplexBookingTypeXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.ComplexBookingType"
       complexBookingTypeXYZ = value;
       return this;
     }
@@ -272,6 +301,7 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
     }
 
     public BuilderBase setAnotherIDXYZ( int value ) {
+      // "java.lang.Integer"
       anotherIDXYZ = value;
       return this;
     }
@@ -326,6 +356,7 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
   }
 
   public int getInternalIDXYZ( ) {
+    // "long"
     return internalIDXYZ;
   }
 
@@ -353,6 +384,7 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
   }
 
   public int getReferenceIDXYZ( ) {
+    // "String"
     return referenceIDXYZ;
   }
 
@@ -419,6 +451,7 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
   }
 
   public int getBookingIDsXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.BookingID"
     return bookingIDsXYZ;
   }
 
@@ -452,6 +485,7 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
   }
 
   public int getComplexBookingTypeXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.ComplexBookingType"
     return complexBookingTypeXYZ;
   }
 
@@ -479,6 +513,7 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
   }
 
   public int getAnotherIDXYZ( ) {
+    // "java.lang.Integer"
     return anotherIDXYZ;
   }
 

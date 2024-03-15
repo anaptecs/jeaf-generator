@@ -24,9 +24,11 @@ public class ByteCodeType implements ServiceObject {
    */
   public static final String CODE = "code";
 
+  // "byte"
   @ClassPropertyDeclaration
   private byte code;
 
+  // "byte"
   private int codeXYZ = 0;
 
   /**
@@ -46,6 +48,7 @@ public class ByteCodeType implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     code = pBuilder.code;
+    // "byte"
     codeXYZ = pBuilder.codeXYZ;
   }
 
@@ -62,9 +65,11 @@ public class ByteCodeType implements ServiceObject {
    * Class implements builder to create a new instance of class <code>ByteCodeType</code>.
    */
   public static class Builder {
+    // "byte"
     @BuilderPropertyDeclaration
     private byte code;
 
+    // "byte"
     private int codeXYZ = 0;
 
     /**
@@ -96,6 +101,7 @@ public class ByteCodeType implements ServiceObject {
     }
 
     public Builder setCodeXYZ( int value ) {
+      // "byte"
       codeXYZ = value;
       return this;
     }
@@ -144,6 +150,7 @@ public class ByteCodeType implements ServiceObject {
   }
 
   public int getCodeXYZ( ) {
+    // "byte"
     return codeXYZ;
   }
 

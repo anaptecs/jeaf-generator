@@ -40,14 +40,18 @@ public class Sale implements ServiceObject {
    */
   public static final String SALE = "sale";
 
+  // "java.math.BigDecimal"
   @ClassPropertyDeclaration
   private BigDecimal transactionAmount;
 
+  // "java.math.BigDecimal"
   private int transactionAmountXYZ = 0;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.Channel"
   @ClassPropertyDeclaration
   private Channel sale;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.Channel"
   private int saleXYZ = 0;
 
   /**
@@ -67,8 +71,10 @@ public class Sale implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     transactionAmount = pBuilder.transactionAmount;
+    // "java.math.BigDecimal"
     transactionAmountXYZ = pBuilder.transactionAmountXYZ;
     sale = pBuilder.sale;
+    // "com.anaptecs.jeaf.junit.openapi.base.Channel"
     saleXYZ = pBuilder.saleXYZ;
   }
 
@@ -85,14 +91,18 @@ public class Sale implements ServiceObject {
    * Class implements builder to create a new instance of class <code>Sale</code>.
    */
   public static class Builder {
+    // "java.math.BigDecimal"
     @BuilderPropertyDeclaration
     private BigDecimal transactionAmount;
 
+    // "java.math.BigDecimal"
     private int transactionAmountXYZ = 0;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.Channel"
     @BuilderPropertyDeclaration
     private Channel sale;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.Channel"
     private int saleXYZ = 0;
 
     /**
@@ -125,6 +135,7 @@ public class Sale implements ServiceObject {
     }
 
     public Builder setTransactionAmountXYZ( int value ) {
+      // "java.math.BigDecimal"
       transactionAmountXYZ = value;
       return this;
     }
@@ -141,6 +152,7 @@ public class Sale implements ServiceObject {
     }
 
     public Builder setSaleXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.Channel"
       saleXYZ = value;
       return this;
     }
@@ -188,6 +200,7 @@ public class Sale implements ServiceObject {
   }
 
   public int getTransactionAmountXYZ( ) {
+    // "java.math.BigDecimal"
     return transactionAmountXYZ;
   }
 
@@ -221,6 +234,7 @@ public class Sale implements ServiceObject {
   }
 
   public int getSaleXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.Channel"
     return saleXYZ;
   }
 

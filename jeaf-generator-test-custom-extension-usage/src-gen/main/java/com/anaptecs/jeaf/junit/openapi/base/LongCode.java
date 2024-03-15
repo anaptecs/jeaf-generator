@@ -24,9 +24,11 @@ public class LongCode implements ServiceObject {
    */
   public static final String CODE = "code";
 
+  // "java.lang.Long"
   @ClassPropertyDeclaration
   private Long code;
 
+  // "java.lang.Long"
   private int codeXYZ = 0;
 
   /**
@@ -46,6 +48,7 @@ public class LongCode implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     code = pBuilder.code;
+    // "java.lang.Long"
     codeXYZ = pBuilder.codeXYZ;
   }
 
@@ -62,9 +65,11 @@ public class LongCode implements ServiceObject {
    * Class implements builder to create a new instance of class <code>LongCode</code>.
    */
   public static class Builder {
+    // "java.lang.Long"
     @BuilderPropertyDeclaration
     private Long code;
 
+    // "java.lang.Long"
     private int codeXYZ = 0;
 
     /**
@@ -96,6 +101,7 @@ public class LongCode implements ServiceObject {
     }
 
     public Builder setCodeXYZ( int value ) {
+      // "java.lang.Long"
       codeXYZ = value;
       return this;
     }
@@ -143,6 +149,7 @@ public class LongCode implements ServiceObject {
   }
 
   public int getCodeXYZ( ) {
+    // "java.lang.Long"
     return codeXYZ;
   }
 

@@ -134,117 +134,161 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
    */
   public static final String BSTRINGARRAY = "bStringArray";
 
+  // "Boolean"
   @ClassPropertyDeclaration
   private boolean[] aBooleanArray;
 
+  // "Boolean"
   private int aBooleanArrayXYZ = 0;
 
+  // "java.lang.Boolean"
   @ClassPropertyDeclaration
   private Boolean[] bBooleanArray;
 
+  // "java.lang.Boolean"
   private int bBooleanArrayXYZ = 0;
 
+  // "Boolean"
   @ClassPropertyDeclaration
   private boolean[] cBooleanArray;
 
+  // "Boolean"
   private int cBooleanArrayXYZ = 0;
 
+  // "byte"
   @ClassPropertyDeclaration
   @Size(min = 0, max = 32768)
   private byte[] aByteArray;
 
+  // "byte"
   private int aByteArrayXYZ = 0;
 
+  // "java.lang.Byte"
   @ClassPropertyDeclaration
   private Byte[] bByteArray;
 
+  // "java.lang.Byte"
   private int bByteArrayXYZ = 0;
 
+  // "short"
   @ClassPropertyDeclaration
   private short[] aShortArray;
 
+  // "short"
   private int aShortArrayXYZ = 0;
 
+  // "java.lang.Short"
   @ClassPropertyDeclaration
   private Short[] bShortArray;
 
+  // "java.lang.Short"
   private int bShortArrayXYZ = 0;
 
+  // "int"
   @ClassPropertyDeclaration
   private int[] aIntegerArray;
 
+  // "int"
   private int aIntegerArrayXYZ = 0;
 
+  // "java.lang.Integer"
   @ClassPropertyDeclaration
   private Integer[] bIntegerArray;
 
+  // "java.lang.Integer"
   private int bIntegerArrayXYZ = 0;
 
+  // "Integer"
   @ClassPropertyDeclaration
   private Integer[] cIntegerArray;
 
+  // "Integer"
   private int cIntegerArrayXYZ = 0;
 
+  // "long"
   @ClassPropertyDeclaration
   @NotEmpty
   private long[] aLongArray;
 
+  // "long"
   private int aLongArrayXYZ = 0;
 
+  // "java.lang.Long"
   @ClassPropertyDeclaration
   private Long[] bLongArray;
 
+  // "java.lang.Long"
   private int bLongArrayXYZ = 0;
 
+  // "java.math.BigInteger"
   @ClassPropertyDeclaration
   private BigInteger[] aBigIntegerArray;
 
+  // "java.math.BigInteger"
   private int aBigIntegerArrayXYZ = 0;
 
+  // "char"
   @ClassPropertyDeclaration
   private char[] aCharacterArray;
 
+  // "char"
   private int aCharacterArrayXYZ = 0;
 
+  // "java.lang.Character"
   @ClassPropertyDeclaration
   private Character[] bCharacterArray;
 
+  // "java.lang.Character"
   private int bCharacterArrayXYZ = 0;
 
+  // "float"
   @ClassPropertyDeclaration
   private float[] aFloatArray;
 
+  // "float"
   private int aFloatArrayXYZ = 0;
 
+  // "java.lang.Float"
   @ClassPropertyDeclaration
   private Float[] bFloatArray;
 
+  // "java.lang.Float"
   private int bFloatArrayXYZ = 0;
 
+  // "double"
   @ClassPropertyDeclaration
   @Size(min = 4, max = 12)
   private double[] aDoubleArray;
 
+  // "double"
   private int aDoubleArrayXYZ = 0;
 
+  // "java.lang.Double"
   @ClassPropertyDeclaration
   private Double[] bDoubleArray;
 
+  // "java.lang.Double"
   private int bDoubleArrayXYZ = 0;
 
+  // "java.math.BigDecimal"
   @ClassPropertyDeclaration
   private BigDecimal[] aBigDecimalArray;
 
+  // "java.math.BigDecimal"
   private int aBigDecimalArrayXYZ = 0;
 
+  // "String"
   @ClassPropertyDeclaration
   private String[] aStringArray;
 
+  // "String"
   private int aStringArrayXYZ = 0;
 
+  // "String"
   @ClassPropertyDeclaration
   private String[] bStringArray;
 
+  // "String"
   private int bStringArrayXYZ = 0;
 
   /**
@@ -264,48 +308,70 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     aBooleanArray = pBuilder.aBooleanArray;
+    // "Boolean"
     aBooleanArrayXYZ = pBuilder.aBooleanArrayXYZ;
     bBooleanArray = pBuilder.bBooleanArray;
+    // "java.lang.Boolean"
     bBooleanArrayXYZ = pBuilder.bBooleanArrayXYZ;
     cBooleanArray = pBuilder.cBooleanArray;
+    // "Boolean"
     cBooleanArrayXYZ = pBuilder.cBooleanArrayXYZ;
     aByteArray = pBuilder.aByteArray;
+    // "byte"
     aByteArrayXYZ = pBuilder.aByteArrayXYZ;
     bByteArray = pBuilder.bByteArray;
+    // "java.lang.Byte"
     bByteArrayXYZ = pBuilder.bByteArrayXYZ;
     aShortArray = pBuilder.aShortArray;
+    // "short"
     aShortArrayXYZ = pBuilder.aShortArrayXYZ;
     bShortArray = pBuilder.bShortArray;
+    // "java.lang.Short"
     bShortArrayXYZ = pBuilder.bShortArrayXYZ;
     aIntegerArray = pBuilder.aIntegerArray;
+    // "int"
     aIntegerArrayXYZ = pBuilder.aIntegerArrayXYZ;
     bIntegerArray = pBuilder.bIntegerArray;
+    // "java.lang.Integer"
     bIntegerArrayXYZ = pBuilder.bIntegerArrayXYZ;
     cIntegerArray = pBuilder.cIntegerArray;
+    // "Integer"
     cIntegerArrayXYZ = pBuilder.cIntegerArrayXYZ;
     aLongArray = pBuilder.aLongArray;
+    // "long"
     aLongArrayXYZ = pBuilder.aLongArrayXYZ;
     bLongArray = pBuilder.bLongArray;
+    // "java.lang.Long"
     bLongArrayXYZ = pBuilder.bLongArrayXYZ;
     aBigIntegerArray = pBuilder.aBigIntegerArray;
+    // "java.math.BigInteger"
     aBigIntegerArrayXYZ = pBuilder.aBigIntegerArrayXYZ;
     aCharacterArray = pBuilder.aCharacterArray;
+    // "char"
     aCharacterArrayXYZ = pBuilder.aCharacterArrayXYZ;
     bCharacterArray = pBuilder.bCharacterArray;
+    // "java.lang.Character"
     bCharacterArrayXYZ = pBuilder.bCharacterArrayXYZ;
     aFloatArray = pBuilder.aFloatArray;
+    // "float"
     aFloatArrayXYZ = pBuilder.aFloatArrayXYZ;
     bFloatArray = pBuilder.bFloatArray;
+    // "java.lang.Float"
     bFloatArrayXYZ = pBuilder.bFloatArrayXYZ;
     aDoubleArray = pBuilder.aDoubleArray;
+    // "double"
     aDoubleArrayXYZ = pBuilder.aDoubleArrayXYZ;
     bDoubleArray = pBuilder.bDoubleArray;
+    // "java.lang.Double"
     bDoubleArrayXYZ = pBuilder.bDoubleArrayXYZ;
     aBigDecimalArray = pBuilder.aBigDecimalArray;
+    // "java.math.BigDecimal"
     aBigDecimalArrayXYZ = pBuilder.aBigDecimalArrayXYZ;
     aStringArray = pBuilder.aStringArray;
+    // "String"
     aStringArrayXYZ = pBuilder.aStringArrayXYZ;
     bStringArray = pBuilder.bStringArray;
+    // "String"
     bStringArrayXYZ = pBuilder.bStringArrayXYZ;
   }
 
@@ -322,117 +388,161 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
    * Class implements builder to create a new instance of class <code>PrimitiveArraysObjectWithRestrictions</code>.
    */
   public static class Builder {
+    // "Boolean"
     @BuilderPropertyDeclaration
     private boolean[] aBooleanArray;
 
+    // "Boolean"
     private int aBooleanArrayXYZ = 0;
 
+    // "java.lang.Boolean"
     @BuilderPropertyDeclaration
     private Boolean[] bBooleanArray;
 
+    // "java.lang.Boolean"
     private int bBooleanArrayXYZ = 0;
 
+    // "Boolean"
     @BuilderPropertyDeclaration
     private boolean[] cBooleanArray;
 
+    // "Boolean"
     private int cBooleanArrayXYZ = 0;
 
+    // "byte"
     @BuilderPropertyDeclaration
     @Size(min = 0, max = 32768)
     private byte[] aByteArray;
 
+    // "byte"
     private int aByteArrayXYZ = 0;
 
+    // "java.lang.Byte"
     @BuilderPropertyDeclaration
     private Byte[] bByteArray;
 
+    // "java.lang.Byte"
     private int bByteArrayXYZ = 0;
 
+    // "short"
     @BuilderPropertyDeclaration
     private short[] aShortArray;
 
+    // "short"
     private int aShortArrayXYZ = 0;
 
+    // "java.lang.Short"
     @BuilderPropertyDeclaration
     private Short[] bShortArray;
 
+    // "java.lang.Short"
     private int bShortArrayXYZ = 0;
 
+    // "int"
     @BuilderPropertyDeclaration
     private int[] aIntegerArray;
 
+    // "int"
     private int aIntegerArrayXYZ = 0;
 
+    // "java.lang.Integer"
     @BuilderPropertyDeclaration
     private Integer[] bIntegerArray;
 
+    // "java.lang.Integer"
     private int bIntegerArrayXYZ = 0;
 
+    // "Integer"
     @BuilderPropertyDeclaration
     private Integer[] cIntegerArray;
 
+    // "Integer"
     private int cIntegerArrayXYZ = 0;
 
+    // "long"
     @BuilderPropertyDeclaration
     @NotEmpty
     private long[] aLongArray;
 
+    // "long"
     private int aLongArrayXYZ = 0;
 
+    // "java.lang.Long"
     @BuilderPropertyDeclaration
     private Long[] bLongArray;
 
+    // "java.lang.Long"
     private int bLongArrayXYZ = 0;
 
+    // "java.math.BigInteger"
     @BuilderPropertyDeclaration
     private BigInteger[] aBigIntegerArray;
 
+    // "java.math.BigInteger"
     private int aBigIntegerArrayXYZ = 0;
 
+    // "char"
     @BuilderPropertyDeclaration
     private char[] aCharacterArray;
 
+    // "char"
     private int aCharacterArrayXYZ = 0;
 
+    // "java.lang.Character"
     @BuilderPropertyDeclaration
     private Character[] bCharacterArray;
 
+    // "java.lang.Character"
     private int bCharacterArrayXYZ = 0;
 
+    // "float"
     @BuilderPropertyDeclaration
     private float[] aFloatArray;
 
+    // "float"
     private int aFloatArrayXYZ = 0;
 
+    // "java.lang.Float"
     @BuilderPropertyDeclaration
     private Float[] bFloatArray;
 
+    // "java.lang.Float"
     private int bFloatArrayXYZ = 0;
 
+    // "double"
     @BuilderPropertyDeclaration
     @Size(min = 4, max = 12)
     private double[] aDoubleArray;
 
+    // "double"
     private int aDoubleArrayXYZ = 0;
 
+    // "java.lang.Double"
     @BuilderPropertyDeclaration
     private Double[] bDoubleArray;
 
+    // "java.lang.Double"
     private int bDoubleArrayXYZ = 0;
 
+    // "java.math.BigDecimal"
     @BuilderPropertyDeclaration
     private BigDecimal[] aBigDecimalArray;
 
+    // "java.math.BigDecimal"
     private int aBigDecimalArrayXYZ = 0;
 
+    // "String"
     @BuilderPropertyDeclaration
     private String[] aStringArray;
 
+    // "String"
     private int aStringArrayXYZ = 0;
 
+    // "String"
     @BuilderPropertyDeclaration
     private String[] bStringArray;
 
+    // "String"
     private int bStringArrayXYZ = 0;
 
     /**
@@ -492,6 +602,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
     }
 
     public Builder setABooleanArrayXYZ( int value ) {
+      // "Boolean"
       aBooleanArrayXYZ = value;
       return this;
     }
@@ -515,6 +626,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
     }
 
     public Builder setBBooleanArrayXYZ( int value ) {
+      // "java.lang.Boolean"
       bBooleanArrayXYZ = value;
       return this;
     }
@@ -538,6 +650,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
     }
 
     public Builder setCBooleanArrayXYZ( int value ) {
+      // "Boolean"
       cBooleanArrayXYZ = value;
       return this;
     }
@@ -561,6 +674,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
     }
 
     public Builder setAByteArrayXYZ( int value ) {
+      // "byte"
       aByteArrayXYZ = value;
       return this;
     }
@@ -584,6 +698,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
     }
 
     public Builder setBByteArrayXYZ( int value ) {
+      // "java.lang.Byte"
       bByteArrayXYZ = value;
       return this;
     }
@@ -607,6 +722,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
     }
 
     public Builder setAShortArrayXYZ( int value ) {
+      // "short"
       aShortArrayXYZ = value;
       return this;
     }
@@ -630,6 +746,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
     }
 
     public Builder setBShortArrayXYZ( int value ) {
+      // "java.lang.Short"
       bShortArrayXYZ = value;
       return this;
     }
@@ -653,6 +770,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
     }
 
     public Builder setAIntegerArrayXYZ( int value ) {
+      // "int"
       aIntegerArrayXYZ = value;
       return this;
     }
@@ -676,6 +794,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
     }
 
     public Builder setBIntegerArrayXYZ( int value ) {
+      // "java.lang.Integer"
       bIntegerArrayXYZ = value;
       return this;
     }
@@ -699,6 +818,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
     }
 
     public Builder setCIntegerArrayXYZ( int value ) {
+      // "Integer"
       cIntegerArrayXYZ = value;
       return this;
     }
@@ -722,6 +842,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
     }
 
     public Builder setALongArrayXYZ( int value ) {
+      // "long"
       aLongArrayXYZ = value;
       return this;
     }
@@ -745,6 +866,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
     }
 
     public Builder setBLongArrayXYZ( int value ) {
+      // "java.lang.Long"
       bLongArrayXYZ = value;
       return this;
     }
@@ -768,6 +890,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
     }
 
     public Builder setABigIntegerArrayXYZ( int value ) {
+      // "java.math.BigInteger"
       aBigIntegerArrayXYZ = value;
       return this;
     }
@@ -791,6 +914,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
     }
 
     public Builder setACharacterArrayXYZ( int value ) {
+      // "char"
       aCharacterArrayXYZ = value;
       return this;
     }
@@ -814,6 +938,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
     }
 
     public Builder setBCharacterArrayXYZ( int value ) {
+      // "java.lang.Character"
       bCharacterArrayXYZ = value;
       return this;
     }
@@ -837,6 +962,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
     }
 
     public Builder setAFloatArrayXYZ( int value ) {
+      // "float"
       aFloatArrayXYZ = value;
       return this;
     }
@@ -860,6 +986,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
     }
 
     public Builder setBFloatArrayXYZ( int value ) {
+      // "java.lang.Float"
       bFloatArrayXYZ = value;
       return this;
     }
@@ -883,6 +1010,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
     }
 
     public Builder setADoubleArrayXYZ( int value ) {
+      // "double"
       aDoubleArrayXYZ = value;
       return this;
     }
@@ -906,6 +1034,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
     }
 
     public Builder setBDoubleArrayXYZ( int value ) {
+      // "java.lang.Double"
       bDoubleArrayXYZ = value;
       return this;
     }
@@ -929,6 +1058,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
     }
 
     public Builder setABigDecimalArrayXYZ( int value ) {
+      // "java.math.BigDecimal"
       aBigDecimalArrayXYZ = value;
       return this;
     }
@@ -952,6 +1082,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
     }
 
     public Builder setAStringArrayXYZ( int value ) {
+      // "String"
       aStringArrayXYZ = value;
       return this;
     }
@@ -975,6 +1106,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
     }
 
     public Builder setBStringArrayXYZ( int value ) {
+      // "String"
       bStringArrayXYZ = value;
       return this;
     }
@@ -1037,6 +1169,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   }
 
   public int getABooleanArrayXYZ( ) {
+    // "Boolean"
     return aBooleanArrayXYZ;
   }
 
@@ -1078,6 +1211,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   }
 
   public int getBBooleanArrayXYZ( ) {
+    // "java.lang.Boolean"
     return bBooleanArrayXYZ;
   }
 
@@ -1119,6 +1253,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   }
 
   public int getCBooleanArrayXYZ( ) {
+    // "Boolean"
     return cBooleanArrayXYZ;
   }
 
@@ -1160,6 +1295,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   }
 
   public int getAByteArrayXYZ( ) {
+    // "byte"
     return aByteArrayXYZ;
   }
 
@@ -1201,6 +1337,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   }
 
   public int getBByteArrayXYZ( ) {
+    // "java.lang.Byte"
     return bByteArrayXYZ;
   }
 
@@ -1242,6 +1379,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   }
 
   public int getAShortArrayXYZ( ) {
+    // "short"
     return aShortArrayXYZ;
   }
 
@@ -1283,6 +1421,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   }
 
   public int getBShortArrayXYZ( ) {
+    // "java.lang.Short"
     return bShortArrayXYZ;
   }
 
@@ -1324,6 +1463,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   }
 
   public int getAIntegerArrayXYZ( ) {
+    // "int"
     return aIntegerArrayXYZ;
   }
 
@@ -1365,6 +1505,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   }
 
   public int getBIntegerArrayXYZ( ) {
+    // "java.lang.Integer"
     return bIntegerArrayXYZ;
   }
 
@@ -1406,6 +1547,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   }
 
   public int getCIntegerArrayXYZ( ) {
+    // "Integer"
     return cIntegerArrayXYZ;
   }
 
@@ -1447,6 +1589,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   }
 
   public int getALongArrayXYZ( ) {
+    // "long"
     return aLongArrayXYZ;
   }
 
@@ -1488,6 +1631,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   }
 
   public int getBLongArrayXYZ( ) {
+    // "java.lang.Long"
     return bLongArrayXYZ;
   }
 
@@ -1529,6 +1673,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   }
 
   public int getABigIntegerArrayXYZ( ) {
+    // "java.math.BigInteger"
     return aBigIntegerArrayXYZ;
   }
 
@@ -1570,6 +1715,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   }
 
   public int getACharacterArrayXYZ( ) {
+    // "char"
     return aCharacterArrayXYZ;
   }
 
@@ -1611,6 +1757,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   }
 
   public int getBCharacterArrayXYZ( ) {
+    // "java.lang.Character"
     return bCharacterArrayXYZ;
   }
 
@@ -1652,6 +1799,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   }
 
   public int getAFloatArrayXYZ( ) {
+    // "float"
     return aFloatArrayXYZ;
   }
 
@@ -1693,6 +1841,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   }
 
   public int getBFloatArrayXYZ( ) {
+    // "java.lang.Float"
     return bFloatArrayXYZ;
   }
 
@@ -1734,6 +1883,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   }
 
   public int getADoubleArrayXYZ( ) {
+    // "double"
     return aDoubleArrayXYZ;
   }
 
@@ -1775,6 +1925,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   }
 
   public int getBDoubleArrayXYZ( ) {
+    // "java.lang.Double"
     return bDoubleArrayXYZ;
   }
 
@@ -1816,6 +1967,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   }
 
   public int getABigDecimalArrayXYZ( ) {
+    // "java.math.BigDecimal"
     return aBigDecimalArrayXYZ;
   }
 
@@ -1857,6 +2009,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   }
 
   public int getAStringArrayXYZ( ) {
+    // "String"
     return aStringArrayXYZ;
   }
 
@@ -1898,6 +2051,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   }
 
   public int getBStringArrayXYZ( ) {
+    // "String"
     return bStringArrayXYZ;
   }
 

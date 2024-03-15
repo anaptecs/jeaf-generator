@@ -22,9 +22,11 @@ public class BusinessChild extends BusinessParent {
    */
   public static final String CHILDATTRIBUTE = "childAttribute";
 
+  // "String"
   @ClassPropertyDeclaration
   private String childAttribute;
 
+  // "String"
   private int childAttributeXYZ = 0;
 
   /**
@@ -44,6 +46,7 @@ public class BusinessChild extends BusinessParent {
     super(pBuilder);
     // Read attribute values from builder.
     childAttribute = pBuilder.childAttribute;
+    // "String"
     childAttributeXYZ = pBuilder.childAttributeXYZ;
   }
 
@@ -60,9 +63,11 @@ public class BusinessChild extends BusinessParent {
    * Class implements builder to create a new instance of class <code>BusinessChild</code>.
    */
   public static class Builder extends BusinessParent.Builder {
+    // "String"
     @BuilderPropertyDeclaration
     private String childAttribute;
 
+    // "String"
     private int childAttributeXYZ = 0;
 
     /**
@@ -122,6 +127,7 @@ public class BusinessChild extends BusinessParent {
     }
 
     public Builder setChildAttributeXYZ( int value ) {
+      // "String"
       childAttributeXYZ = value;
       return this;
     }
@@ -170,6 +176,7 @@ public class BusinessChild extends BusinessParent {
   }
 
   public int getChildAttributeXYZ( ) {
+    // "String"
     return childAttributeXYZ;
   }
 

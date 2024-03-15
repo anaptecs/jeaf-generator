@@ -26,9 +26,11 @@ public class BigDecimalCode implements ServiceObject {
    */
   public static final String CODE = "code";
 
+  // "java.math.BigDecimal"
   @ClassPropertyDeclaration
   private BigDecimal code;
 
+  // "java.math.BigDecimal"
   private int codeXYZ = 0;
 
   /**
@@ -48,6 +50,7 @@ public class BigDecimalCode implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     code = pBuilder.code;
+    // "java.math.BigDecimal"
     codeXYZ = pBuilder.codeXYZ;
   }
 
@@ -64,9 +67,11 @@ public class BigDecimalCode implements ServiceObject {
    * Class implements builder to create a new instance of class <code>BigDecimalCode</code>.
    */
   public static class Builder {
+    // "java.math.BigDecimal"
     @BuilderPropertyDeclaration
     private BigDecimal code;
 
+    // "java.math.BigDecimal"
     private int codeXYZ = 0;
 
     /**
@@ -98,6 +103,7 @@ public class BigDecimalCode implements ServiceObject {
     }
 
     public Builder setCodeXYZ( int value ) {
+      // "java.math.BigDecimal"
       codeXYZ = value;
       return this;
     }
@@ -146,6 +152,7 @@ public class BigDecimalCode implements ServiceObject {
   }
 
   public int getCodeXYZ( ) {
+    // "java.math.BigDecimal"
     return codeXYZ;
   }
 

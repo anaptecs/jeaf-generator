@@ -24,6 +24,7 @@ public class BidirectB implements ServiceObject {
    */
   public static final String A = "a";
 
+  // "com.anaptecs.jeaf.junit.openapi.base.BidirectA"
   @ClassPropertyDeclaration
   /**
    * the A
@@ -35,6 +36,7 @@ public class BidirectB implements ServiceObject {
    */
   private transient boolean aBackReferenceInitialized;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.BidirectA"
   private int aXYZ = 0;
 
   /**
@@ -62,6 +64,7 @@ public class BidirectB implements ServiceObject {
     }
     // Bidirectional back reference is set up correctly as a builder is used.
     aBackReferenceInitialized = true;
+    // "com.anaptecs.jeaf.junit.openapi.base.BidirectA"
     aXYZ = pBuilder.aXYZ;
   }
 
@@ -81,9 +84,11 @@ public class BidirectB implements ServiceObject {
     /**
      * the A
      */
+    // "com.anaptecs.jeaf.junit.openapi.base.BidirectA"
     @BuilderPropertyDeclaration
     private BidirectA a;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.BidirectA"
     private int aXYZ = 0;
 
     /**
@@ -114,6 +119,7 @@ public class BidirectB implements ServiceObject {
     }
 
     public Builder setAXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.BidirectA"
       aXYZ = value;
       return this;
     }
@@ -190,6 +196,7 @@ public class BidirectB implements ServiceObject {
   }
 
   public int getAXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.BidirectA"
     return aXYZ;
   }
 

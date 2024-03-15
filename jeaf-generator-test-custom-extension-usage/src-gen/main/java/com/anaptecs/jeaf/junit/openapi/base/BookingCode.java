@@ -25,10 +25,12 @@ public class BookingCode implements ServiceObject {
    */
   public static final String CODE = "code";
 
+  // "String"
   @ClassPropertyDeclaration
   @Size(min = 3, max = 5)
   private String code;
 
+  // "String"
   private int codeXYZ = 0;
 
   /**
@@ -48,6 +50,7 @@ public class BookingCode implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     code = pBuilder.code;
+    // "String"
     codeXYZ = pBuilder.codeXYZ;
   }
 
@@ -64,10 +67,12 @@ public class BookingCode implements ServiceObject {
    * Class implements builder to create a new instance of class <code>BookingCode</code>.
    */
   public static class Builder {
+    // "String"
     @BuilderPropertyDeclaration
     @Size(min = 3, max = 5)
     private String code;
 
+    // "String"
     private int codeXYZ = 0;
 
     /**
@@ -99,6 +104,7 @@ public class BookingCode implements ServiceObject {
     }
 
     public Builder setCodeXYZ( int value ) {
+      // "String"
       codeXYZ = value;
       return this;
     }
@@ -147,6 +153,7 @@ public class BookingCode implements ServiceObject {
   }
 
   public int getCodeXYZ( ) {
+    // "String"
     return codeXYZ;
   }
 

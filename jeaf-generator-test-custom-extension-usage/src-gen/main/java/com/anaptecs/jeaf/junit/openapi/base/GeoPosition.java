@@ -27,14 +27,18 @@ public class GeoPosition extends PlaceRef {
    */
   public static final String LATITUDE = "latitude";
 
+  // "int"
   @ClassPropertyDeclaration
   private int longitude;
 
+  // "int"
   private int longitudeXYZ = 0;
 
+  // "int"
   @ClassPropertyDeclaration
   private int latitude;
 
+  // "int"
   private int latitudeXYZ = 0;
 
   /**
@@ -54,8 +58,10 @@ public class GeoPosition extends PlaceRef {
     super(pBuilder);
     // Read attribute values from builder.
     longitude = pBuilder.longitude;
+    // "int"
     longitudeXYZ = pBuilder.longitudeXYZ;
     latitude = pBuilder.latitude;
+    // "int"
     latitudeXYZ = pBuilder.latitudeXYZ;
   }
 
@@ -72,14 +78,18 @@ public class GeoPosition extends PlaceRef {
    * Class implements builder to create a new instance of class <code>GeoPosition</code>.
    */
   public static class Builder extends PlaceRef.Builder {
+    // "int"
     @BuilderPropertyDeclaration
     private int longitude;
 
+    // "int"
     private int longitudeXYZ = 0;
 
+    // "int"
     @BuilderPropertyDeclaration
     private int latitude;
 
+    // "int"
     private int latitudeXYZ = 0;
 
     /**
@@ -127,6 +137,7 @@ public class GeoPosition extends PlaceRef {
     }
 
     public Builder setLongitudeXYZ( int value ) {
+      // "int"
       longitudeXYZ = value;
       return this;
     }
@@ -144,6 +155,7 @@ public class GeoPosition extends PlaceRef {
     }
 
     public Builder setLatitudeXYZ( int value ) {
+      // "int"
       latitudeXYZ = value;
       return this;
     }
@@ -192,6 +204,7 @@ public class GeoPosition extends PlaceRef {
   }
 
   public int getLongitudeXYZ( ) {
+    // "int"
     return longitudeXYZ;
   }
 
@@ -219,6 +232,7 @@ public class GeoPosition extends PlaceRef {
   }
 
   public int getLatitudeXYZ( ) {
+    // "int"
     return latitudeXYZ;
   }
 

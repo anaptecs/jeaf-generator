@@ -40,11 +40,14 @@ public class BidirectA implements ServiceObject {
    */
   public static final String TRANSIENTCHILD = "transientChild";
 
+  // "com.anaptecs.jeaf.junit.openapi.base.BidirectB"
   @ClassPropertyDeclaration
   private transient Set<BidirectB> transientBs;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.BidirectB"
   private int transientBsXYZ = 0;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.BidirectA"
   @ClassPropertyDeclaration
   private BidirectA parent;
 
@@ -53,11 +56,14 @@ public class BidirectA implements ServiceObject {
    */
   private transient boolean parentBackReferenceInitialized;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.BidirectA"
   private int parentXYZ = 0;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.BidirectA"
   @ClassPropertyDeclaration
   private transient BidirectA transientChild;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.BidirectA"
   private int transientChildXYZ = 0;
 
   /**
@@ -87,6 +93,7 @@ public class BidirectA implements ServiceObject {
     }
     // Bidirectional back reference is set up correctly as a builder is used.
     parentBackReferenceInitialized = true;
+    // "com.anaptecs.jeaf.junit.openapi.base.BidirectA"
     parentXYZ = pBuilder.parentXYZ;
   }
 
@@ -103,9 +110,11 @@ public class BidirectA implements ServiceObject {
    * Class implements builder to create a new instance of class <code>BidirectA</code>.
    */
   public static class Builder {
+    // "com.anaptecs.jeaf.junit.openapi.base.BidirectA"
     @BuilderPropertyDeclaration
     private BidirectA parent;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.BidirectA"
     private int parentXYZ = 0;
 
     /**
@@ -136,6 +145,7 @@ public class BidirectA implements ServiceObject {
     }
 
     public Builder setParentXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.BidirectA"
       parentXYZ = value;
       return this;
     }
@@ -227,6 +237,7 @@ public class BidirectA implements ServiceObject {
   }
 
   public int getTransientBsXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.BidirectB"
     return transientBsXYZ;
   }
 
@@ -281,6 +292,7 @@ public class BidirectA implements ServiceObject {
   }
 
   public int getParentXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.BidirectA"
     return parentXYZ;
   }
 
@@ -318,6 +330,7 @@ public class BidirectA implements ServiceObject {
   }
 
   public int getTransientChildXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.BidirectA"
     return transientChildXYZ;
   }
 

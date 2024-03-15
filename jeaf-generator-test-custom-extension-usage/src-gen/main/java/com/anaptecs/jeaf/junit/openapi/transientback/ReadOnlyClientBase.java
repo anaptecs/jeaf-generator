@@ -29,14 +29,18 @@ public abstract class ReadOnlyClientBase implements ServiceObject {
    */
   public static final String TRANSIENTMASTER = "transientMaster";
 
+  // "String"
   @ClassPropertyDeclaration
   private final String name;
 
+  // "String"
   private int nameXYZ = 0;
 
+  // "com.anaptecs.jeaf.junit.openapi.transientback.ReadOnlyMaster"
   @ClassPropertyDeclaration
   private transient ReadOnlyMaster transientMaster;
 
+  // "com.anaptecs.jeaf.junit.openapi.transientback.ReadOnlyMaster"
   private int transientMasterXYZ = 0;
 
   /**
@@ -58,6 +62,7 @@ public abstract class ReadOnlyClientBase implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     name = pBuilder.name;
+    // "String"
     nameXYZ = pBuilder.nameXYZ;
   }
 
@@ -66,9 +71,11 @@ public abstract class ReadOnlyClientBase implements ServiceObject {
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static abstract class BuilderBase {
+    // "String"
     @BuilderPropertyDeclaration
     private String name;
 
+    // "String"
     private int nameXYZ = 0;
 
     /**
@@ -100,6 +107,7 @@ public abstract class ReadOnlyClientBase implements ServiceObject {
     }
 
     public BuilderBase setNameXYZ( int value ) {
+      // "String"
       nameXYZ = value;
       return this;
     }
@@ -138,6 +146,7 @@ public abstract class ReadOnlyClientBase implements ServiceObject {
   }
 
   public int getNameXYZ( ) {
+    // "String"
     return nameXYZ;
   }
 
@@ -164,6 +173,7 @@ public abstract class ReadOnlyClientBase implements ServiceObject {
   }
 
   public int getTransientMasterXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.transientback.ReadOnlyMaster"
     return transientMasterXYZ;
   }
 

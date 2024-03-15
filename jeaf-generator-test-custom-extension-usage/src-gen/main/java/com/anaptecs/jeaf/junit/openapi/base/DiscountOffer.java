@@ -30,6 +30,7 @@ public class DiscountOffer implements ServiceObject {
   @Deprecated
   public static final String CAMPAIGNS = "campaigns";
 
+  // "com.anaptecs.jeaf.junit.openapi.base.Campaign"
   @ClassPropertyDeclaration
   /**
    * <p/>
@@ -39,6 +40,7 @@ public class DiscountOffer implements ServiceObject {
   @Deprecated
   private Set<SoftLink> campaigns;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.Campaign"
   private int campaignsXYZ = 0;
 
   /**
@@ -64,6 +66,7 @@ public class DiscountOffer implements ServiceObject {
     else {
       campaigns = new HashSet<SoftLink>();
     }
+    // "com.anaptecs.jeaf.junit.openapi.base.Campaign"
     campaignsXYZ = pBuilder.campaignsXYZ;
   }
 
@@ -85,10 +88,12 @@ public class DiscountOffer implements ServiceObject {
      * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #campaigns} is
      * <code>com.anaptecs.jeaf.junit.openapi.base.Campaign</code><br/>
      */
+    // "com.anaptecs.jeaf.junit.openapi.base.Campaign"
     @BuilderPropertyDeclaration
     @Deprecated
     private Set<SoftLink> campaigns;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.Campaign"
     private int campaignsXYZ = 0;
 
     /**
@@ -126,6 +131,7 @@ public class DiscountOffer implements ServiceObject {
     }
 
     public Builder setCampaignsXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.Campaign"
       campaignsXYZ = value;
       return this;
     }
@@ -221,6 +227,7 @@ public class DiscountOffer implements ServiceObject {
   }
 
   public int getCampaignsXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.Campaign"
     return campaignsXYZ;
   }
 

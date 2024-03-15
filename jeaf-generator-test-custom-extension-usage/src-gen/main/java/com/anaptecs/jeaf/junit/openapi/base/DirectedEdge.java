@@ -40,28 +40,34 @@ public class DirectedEdge implements ServiceObject {
    */
   public static final String LINK = "link";
 
+  // "com.anaptecs.jeaf.junit.openapi.base.Stop"
   @ClassPropertyDeclaration
   /**
    * The start
    */
   private Stop start;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.Stop"
   private int startXYZ = 0;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.Stop"
   @ClassPropertyDeclaration
   /**
    * The end
    */
   private Stop end;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.Stop"
   private int endXYZ = 0;
 
+  // "String"
   @ClassPropertyDeclaration
   /**
    * Another simple comment.
    */
   private String link;
 
+  // "String"
   private int linkXYZ = 0;
 
   /**
@@ -81,10 +87,13 @@ public class DirectedEdge implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     start = pBuilder.start;
+    // "com.anaptecs.jeaf.junit.openapi.base.Stop"
     startXYZ = pBuilder.startXYZ;
     end = pBuilder.end;
+    // "com.anaptecs.jeaf.junit.openapi.base.Stop"
     endXYZ = pBuilder.endXYZ;
     link = pBuilder.link;
+    // "String"
     linkXYZ = pBuilder.linkXYZ;
   }
 
@@ -104,25 +113,31 @@ public class DirectedEdge implements ServiceObject {
     /**
      * The start
      */
+    // "com.anaptecs.jeaf.junit.openapi.base.Stop"
     @BuilderPropertyDeclaration
     private Stop start;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.Stop"
     private int startXYZ = 0;
 
     /**
      * The end
      */
+    // "com.anaptecs.jeaf.junit.openapi.base.Stop"
     @BuilderPropertyDeclaration
     private Stop end;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.Stop"
     private int endXYZ = 0;
 
     /**
      * Another simple comment.
      */
+    // "String"
     @BuilderPropertyDeclaration
     private String link;
 
+    // "String"
     private int linkXYZ = 0;
 
     /**
@@ -155,6 +170,7 @@ public class DirectedEdge implements ServiceObject {
     }
 
     public Builder setStartXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.Stop"
       startXYZ = value;
       return this;
     }
@@ -171,6 +187,7 @@ public class DirectedEdge implements ServiceObject {
     }
 
     public Builder setEndXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.Stop"
       endXYZ = value;
       return this;
     }
@@ -188,6 +205,7 @@ public class DirectedEdge implements ServiceObject {
     }
 
     public Builder setLinkXYZ( int value ) {
+      // "String"
       linkXYZ = value;
       return this;
     }
@@ -244,6 +262,7 @@ public class DirectedEdge implements ServiceObject {
   }
 
   public int getStartXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.Stop"
     return startXYZ;
   }
 
@@ -279,6 +298,7 @@ public class DirectedEdge implements ServiceObject {
   }
 
   public int getEndXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.Stop"
     return endXYZ;
   }
 
@@ -308,6 +328,7 @@ public class DirectedEdge implements ServiceObject {
   }
 
   public int getLinkXYZ( ) {
+    // "String"
     return linkXYZ;
   }
 

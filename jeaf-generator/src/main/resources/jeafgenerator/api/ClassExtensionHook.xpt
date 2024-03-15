@@ -2,26 +2,26 @@
 «IMPORT JMM»
 
 
-«DEFINE BeforeClassPropertyDeclaration FOR Property»
+«DEFINE BeforeClassPropertyDeclaration(String fqn) FOR Property»
 «ENDDEFINE»
 
-«DEFINE AfterClassPropertyDeclaration FOR Property»
+«DEFINE AfterClassPropertyDeclaration(String fqn) FOR Property»
 «ENDDEFINE»
 
-«DEFINE AfterBuilderConstructorPropertyInit(String builderParamName) FOR Property»
+«DEFINE AfterBuilderConstructorPropertyInit(String fqn, String builderParamName) FOR Property»
 «ENDDEFINE»
 
-«DEFINE AfterClassPropertyAccessors FOR Property»
+«DEFINE AfterClassPropertyAccessors(String fqn) FOR Property»
 «ENDDEFINE»
 
 // Property handling inside builders
-«DEFINE BeforeBuilderPropertyDeclaration FOR Property»
+«DEFINE BeforeBuilderPropertyDeclaration(String fqn) FOR Property»
 «ENDDEFINE»
 
-«DEFINE AfterBuilderPropertyDeclaration FOR Property»
+«DEFINE AfterBuilderPropertyDeclaration(String fqn) FOR Property»
 «ENDDEFINE»
 
-«DEFINE AfterBuilderPropertyAccessors(String builderClassName) FOR Property»
+«DEFINE AfterBuilderPropertyAccessors(String fqn, String builderClassName) FOR Property»
 «ENDDEFINE»
 
 

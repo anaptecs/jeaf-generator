@@ -2,20 +2,24 @@
 «IMPORT JMM»
 
 
-«DEFINE BeforeClassPropertyDeclaration FOR Property»
+«DEFINE BeforeClassPropertyDeclaration(String fqn) FOR Property»
+// "«fqn»"
 @com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration
 «ENDDEFINE»
 
-«DEFINE AfterClassPropertyDeclaration FOR Property»
+«DEFINE AfterClassPropertyDeclaration(String fqn) FOR Property»
+// "«fqn»"
 private int «this.name»XYZ = 0;
 «ENDDEFINE»
 
-«DEFINE AfterBuilderConstructorPropertyInit(String builderParamName) FOR Property»
+«DEFINE AfterBuilderConstructorPropertyInit(String fqn, String builderParamName) FOR Property»
+// "«fqn»"
 «this.name»XYZ = «builderParamName».«this.name»XYZ;
 «ENDDEFINE»
 
-«DEFINE AfterClassPropertyAccessors FOR Property»
+«DEFINE AfterClassPropertyAccessors(String fqn) FOR Property»
 public int get«name.toFirstUpper()»XYZ() {
+  // "«fqn»"
   return «this.name»XYZ;
 }
 
@@ -26,16 +30,19 @@ public void set«name.toFirstUpper()»XYZ(int value) {
 
 
 // Property handling inside builders
-«DEFINE BeforeBuilderPropertyDeclaration FOR Property»
+«DEFINE BeforeBuilderPropertyDeclaration(String fqn) FOR Property»
+// "«fqn»"
 @com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration
 «ENDDEFINE»
 
-«DEFINE AfterBuilderPropertyDeclaration FOR Property»
+«DEFINE AfterBuilderPropertyDeclaration(String fqn) FOR Property»
+// "«fqn»"
 private int «this.name»XYZ = 0;
 «ENDDEFINE»
 
-«DEFINE AfterBuilderPropertyAccessors(String builderClassName) FOR Property»
+«DEFINE AfterBuilderPropertyAccessors(String fqn, String builderClassName) FOR Property»
 public «builderClassName» set«name.toFirstUpper()»XYZ(int value) {
+  // "«fqn»"
   «this.name»XYZ = value;
   return this;
 }

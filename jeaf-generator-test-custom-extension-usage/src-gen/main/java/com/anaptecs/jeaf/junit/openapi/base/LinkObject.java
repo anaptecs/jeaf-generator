@@ -24,9 +24,11 @@ public class LinkObject implements ServiceObject {
    */
   public static final String HREF = "href";
 
+  // "String"
   @ClassPropertyDeclaration
   private String href;
 
+  // "String"
   private int hrefXYZ = 0;
 
   /**
@@ -46,6 +48,7 @@ public class LinkObject implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     href = pBuilder.href;
+    // "String"
     hrefXYZ = pBuilder.hrefXYZ;
   }
 
@@ -62,9 +65,11 @@ public class LinkObject implements ServiceObject {
    * Class implements builder to create a new instance of class <code>LinkObject</code>.
    */
   public static class Builder {
+    // "String"
     @BuilderPropertyDeclaration
     private String href;
 
+    // "String"
     private int hrefXYZ = 0;
 
     /**
@@ -96,6 +101,7 @@ public class LinkObject implements ServiceObject {
     }
 
     public Builder setHrefXYZ( int value ) {
+      // "String"
       hrefXYZ = value;
       return this;
     }
@@ -143,6 +149,7 @@ public class LinkObject implements ServiceObject {
   }
 
   public int getHrefXYZ( ) {
+    // "String"
     return hrefXYZ;
   }
 

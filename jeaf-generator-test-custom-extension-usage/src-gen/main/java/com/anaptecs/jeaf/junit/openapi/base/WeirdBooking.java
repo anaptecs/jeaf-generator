@@ -57,19 +57,24 @@ public class WeirdBooking extends WeirdParent {
    */
   public static final String INVENTORIES = "inventories";
 
+  // "com.anaptecs.jeaf.junit.openapi.composite.ComplexBookingID"
   @ClassPropertyDeclaration
   private ComplexBookingID booking;
 
+  // "com.anaptecs.jeaf.junit.openapi.composite.ComplexBookingID"
   private int bookingXYZ = 0;
 
+  // "com.anaptecs.jeaf.junit.openapi.composite.ComplexBookingID"
   @ClassPropertyDeclaration
   /**
    * additional bookings
    */
   private List<ComplexBookingID> additionalBookings;
 
+  // "com.anaptecs.jeaf.junit.openapi.composite.ComplexBookingID"
   private int additionalBookingsXYZ = 0;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.VersionedObjectSoftLink"
   @ClassPropertyDeclaration
   /**
    * soft link<br/>
@@ -78,13 +83,17 @@ public class WeirdBooking extends WeirdParent {
    */
   private VersionedObjectSoftLink versionedObjectSoftLink;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.VersionedObjectSoftLink"
   private int versionedObjectSoftLinkXYZ = 0;
 
+  // "int"
   @ClassPropertyDeclaration
   private int childProperty;
 
+  // "int"
   private int childPropertyXYZ = 0;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.Booking"
   @ClassPropertyDeclaration
   /**
    * the real booking
@@ -93,8 +102,10 @@ public class WeirdBooking extends WeirdParent {
    */
   private Booking realBooking;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.Booking"
   private int realBookingXYZ = 0;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.InventoryType"
   @ClassPropertyDeclaration
   /**
    * <p/>
@@ -102,6 +113,7 @@ public class WeirdBooking extends WeirdParent {
    */
   private Set<InventoryType> inventories;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.InventoryType"
   private int inventoriesXYZ = 0;
 
   /**
@@ -123,6 +135,7 @@ public class WeirdBooking extends WeirdParent {
     super(pBuilder);
     // Read attribute values from builder.
     booking = pBuilder.booking;
+    // "com.anaptecs.jeaf.junit.openapi.composite.ComplexBookingID"
     bookingXYZ = pBuilder.bookingXYZ;
     if (pBuilder.additionalBookings != null) {
       additionalBookings = pBuilder.additionalBookings;
@@ -130,12 +143,16 @@ public class WeirdBooking extends WeirdParent {
     else {
       additionalBookings = new ArrayList<ComplexBookingID>();
     }
+    // "com.anaptecs.jeaf.junit.openapi.composite.ComplexBookingID"
     additionalBookingsXYZ = pBuilder.additionalBookingsXYZ;
     versionedObjectSoftLink = pBuilder.versionedObjectSoftLink;
+    // "com.anaptecs.jeaf.junit.openapi.base.VersionedObjectSoftLink"
     versionedObjectSoftLinkXYZ = pBuilder.versionedObjectSoftLinkXYZ;
     childProperty = pBuilder.childProperty;
+    // "int"
     childPropertyXYZ = pBuilder.childPropertyXYZ;
     realBooking = pBuilder.realBooking;
+    // "com.anaptecs.jeaf.junit.openapi.base.Booking"
     realBookingXYZ = pBuilder.realBookingXYZ;
     if (pBuilder.inventories != null) {
       inventories = pBuilder.inventories;
@@ -143,6 +160,7 @@ public class WeirdBooking extends WeirdParent {
     else {
       inventories = new HashSet<InventoryType>();
     }
+    // "com.anaptecs.jeaf.junit.openapi.base.InventoryType"
     inventoriesXYZ = pBuilder.inventoriesXYZ;
   }
 
@@ -159,17 +177,21 @@ public class WeirdBooking extends WeirdParent {
    * Class implements builder to create a new instance of class <code>WeirdBooking</code>.
    */
   public static class Builder extends WeirdParent.Builder {
+    // "com.anaptecs.jeaf.junit.openapi.composite.ComplexBookingID"
     @BuilderPropertyDeclaration
     private ComplexBookingID booking;
 
+    // "com.anaptecs.jeaf.junit.openapi.composite.ComplexBookingID"
     private int bookingXYZ = 0;
 
     /**
      * additional bookings
      */
+    // "com.anaptecs.jeaf.junit.openapi.composite.ComplexBookingID"
     @BuilderPropertyDeclaration
     private List<ComplexBookingID> additionalBookings;
 
+    // "com.anaptecs.jeaf.junit.openapi.composite.ComplexBookingID"
     private int additionalBookingsXYZ = 0;
 
     /**
@@ -177,14 +199,18 @@ public class WeirdBooking extends WeirdParent {
      * 2nd line<br/>
      * 3rd line
      */
+    // "com.anaptecs.jeaf.junit.openapi.base.VersionedObjectSoftLink"
     @BuilderPropertyDeclaration
     private VersionedObjectSoftLink versionedObjectSoftLink;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.VersionedObjectSoftLink"
     private int versionedObjectSoftLinkXYZ = 0;
 
+    // "int"
     @BuilderPropertyDeclaration
     private int childProperty;
 
+    // "int"
     private int childPropertyXYZ = 0;
 
     /**
@@ -192,18 +218,22 @@ public class WeirdBooking extends WeirdParent {
      * <p/>
      * <b>Breaking Change with 2.0:</b> Association will be mandatory.
      */
+    // "com.anaptecs.jeaf.junit.openapi.base.Booking"
     @BuilderPropertyDeclaration
     private Booking realBooking;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.Booking"
     private int realBookingXYZ = 0;
 
     /**
      * <p/>
      * <b>Breaking Change with 2.1:</b> Association will required at least 1 object.
      */
+    // "com.anaptecs.jeaf.junit.openapi.base.InventoryType"
     @BuilderPropertyDeclaration
     private Set<InventoryType> inventories;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.InventoryType"
     private int inventoriesXYZ = 0;
 
     /**
@@ -293,6 +323,7 @@ public class WeirdBooking extends WeirdParent {
     }
 
     public Builder setBookingXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.composite.ComplexBookingID"
       bookingXYZ = value;
       return this;
     }
@@ -332,6 +363,7 @@ public class WeirdBooking extends WeirdParent {
     }
 
     public Builder setAdditionalBookingsXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.composite.ComplexBookingID"
       additionalBookingsXYZ = value;
       return this;
     }
@@ -348,6 +380,7 @@ public class WeirdBooking extends WeirdParent {
     }
 
     public Builder setVersionedObjectSoftLinkXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.VersionedObjectSoftLink"
       versionedObjectSoftLinkXYZ = value;
       return this;
     }
@@ -365,6 +398,7 @@ public class WeirdBooking extends WeirdParent {
     }
 
     public Builder setChildPropertyXYZ( int value ) {
+      // "int"
       childPropertyXYZ = value;
       return this;
     }
@@ -383,6 +417,7 @@ public class WeirdBooking extends WeirdParent {
     }
 
     public Builder setRealBookingXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.Booking"
       realBookingXYZ = value;
       return this;
     }
@@ -444,6 +479,7 @@ public class WeirdBooking extends WeirdParent {
     }
 
     public Builder setInventoriesXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.InventoryType"
       inventoriesXYZ = value;
       return this;
     }
@@ -498,6 +534,7 @@ public class WeirdBooking extends WeirdParent {
   }
 
   public int getBookingXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.composite.ComplexBookingID"
     return bookingXYZ;
   }
 
@@ -567,6 +604,7 @@ public class WeirdBooking extends WeirdParent {
   }
 
   public int getAdditionalBookingsXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.composite.ComplexBookingID"
     return additionalBookingsXYZ;
   }
 
@@ -606,6 +644,7 @@ public class WeirdBooking extends WeirdParent {
   }
 
   public int getVersionedObjectSoftLinkXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.VersionedObjectSoftLink"
     return versionedObjectSoftLinkXYZ;
   }
 
@@ -633,6 +672,7 @@ public class WeirdBooking extends WeirdParent {
   }
 
   public int getChildPropertyXYZ( ) {
+    // "int"
     return childPropertyXYZ;
   }
 
@@ -672,6 +712,7 @@ public class WeirdBooking extends WeirdParent {
   }
 
   public int getRealBookingXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.Booking"
     return realBookingXYZ;
   }
 
@@ -744,6 +785,7 @@ public class WeirdBooking extends WeirdParent {
   }
 
   public int getInventoriesXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.InventoryType"
     return inventoriesXYZ;
   }
 

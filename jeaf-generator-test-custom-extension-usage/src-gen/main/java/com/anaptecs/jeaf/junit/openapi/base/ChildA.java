@@ -28,9 +28,11 @@ public abstract class ChildA extends ParentClass {
    */
   public static final String CHILDAATTRIBUTE = "childAAttribute";
 
+  // "int"
   @ClassPropertyDeclaration
   private int childAAttribute;
 
+  // "int"
   private int childAAttributeXYZ = 0;
 
   /**
@@ -50,6 +52,7 @@ public abstract class ChildA extends ParentClass {
     super(pBuilder);
     // Read attribute values from builder.
     childAAttribute = pBuilder.childAAttribute;
+    // "int"
     childAAttributeXYZ = pBuilder.childAAttributeXYZ;
   }
 
@@ -57,9 +60,11 @@ public abstract class ChildA extends ParentClass {
    * Class implements builder to create a new instance of class <code>ChildA</code>.
    */
   public static abstract class Builder extends ParentClass.Builder {
+    // "int"
     @BuilderPropertyDeclaration
     private int childAAttribute;
 
+    // "int"
     private int childAAttributeXYZ = 0;
 
     /**
@@ -173,6 +178,7 @@ public abstract class ChildA extends ParentClass {
     }
 
     public Builder setChildAAttributeXYZ( int value ) {
+      // "int"
       childAAttributeXYZ = value;
       return this;
     }
@@ -198,6 +204,7 @@ public abstract class ChildA extends ParentClass {
   }
 
   public int getChildAAttributeXYZ( ) {
+    // "int"
     return childAAttributeXYZ;
   }
 

@@ -40,19 +40,25 @@ public class Leg implements ServiceObject {
    */
   public static final String STOPOVERS = "stopovers";
 
+  // "com.anaptecs.jeaf.junit.openapi.base.PlaceRef"
   @ClassPropertyDeclaration
   private PlaceRef start;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.PlaceRef"
   private int startXYZ = 0;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.PlaceRef"
   @ClassPropertyDeclaration
   private PlaceRef stop;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.PlaceRef"
   private int stopXYZ = 0;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.PlaceRef"
   @ClassPropertyDeclaration
   private List<PlaceRef> stopovers;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.PlaceRef"
   private int stopoversXYZ = 0;
 
   /**
@@ -73,8 +79,10 @@ public class Leg implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     start = pBuilder.start;
+    // "com.anaptecs.jeaf.junit.openapi.base.PlaceRef"
     startXYZ = pBuilder.startXYZ;
     stop = pBuilder.stop;
+    // "com.anaptecs.jeaf.junit.openapi.base.PlaceRef"
     stopXYZ = pBuilder.stopXYZ;
     if (pBuilder.stopovers != null) {
       stopovers = pBuilder.stopovers;
@@ -82,6 +90,7 @@ public class Leg implements ServiceObject {
     else {
       stopovers = new ArrayList<PlaceRef>();
     }
+    // "com.anaptecs.jeaf.junit.openapi.base.PlaceRef"
     stopoversXYZ = pBuilder.stopoversXYZ;
   }
 
@@ -98,19 +107,25 @@ public class Leg implements ServiceObject {
    * Class implements builder to create a new instance of class <code>Leg</code>.
    */
   public static class Builder {
+    // "com.anaptecs.jeaf.junit.openapi.base.PlaceRef"
     @BuilderPropertyDeclaration
     private PlaceRef start;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.PlaceRef"
     private int startXYZ = 0;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.PlaceRef"
     @BuilderPropertyDeclaration
     private PlaceRef stop;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.PlaceRef"
     private int stopXYZ = 0;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.PlaceRef"
     @BuilderPropertyDeclaration
     private List<PlaceRef> stopovers;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.PlaceRef"
     private int stopoversXYZ = 0;
 
     /**
@@ -143,6 +158,7 @@ public class Leg implements ServiceObject {
     }
 
     public Builder setStartXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.PlaceRef"
       startXYZ = value;
       return this;
     }
@@ -159,6 +175,7 @@ public class Leg implements ServiceObject {
     }
 
     public Builder setStopXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.PlaceRef"
       stopXYZ = value;
       return this;
     }
@@ -197,6 +214,7 @@ public class Leg implements ServiceObject {
     }
 
     public Builder setStopoversXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.PlaceRef"
       stopoversXYZ = value;
       return this;
     }
@@ -250,6 +268,7 @@ public class Leg implements ServiceObject {
   }
 
   public int getStartXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.PlaceRef"
     return startXYZ;
   }
 
@@ -283,6 +302,7 @@ public class Leg implements ServiceObject {
   }
 
   public int getStopXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.PlaceRef"
     return stopXYZ;
   }
 
@@ -349,6 +369,7 @@ public class Leg implements ServiceObject {
   }
 
   public int getStopoversXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.PlaceRef"
     return stopoversXYZ;
   }
 

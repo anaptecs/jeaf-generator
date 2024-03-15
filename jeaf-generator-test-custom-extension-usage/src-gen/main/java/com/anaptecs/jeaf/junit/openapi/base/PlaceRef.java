@@ -21,9 +21,11 @@ public abstract class PlaceRef implements ServiceObject {
    */
   public static final String NAME = "name";
 
+  // "String"
   @ClassPropertyDeclaration
   private String name;
 
+  // "String"
   private int nameXYZ = 0;
 
   /**
@@ -43,6 +45,7 @@ public abstract class PlaceRef implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     name = pBuilder.name;
+    // "String"
     nameXYZ = pBuilder.nameXYZ;
   }
 
@@ -50,9 +53,11 @@ public abstract class PlaceRef implements ServiceObject {
    * Class implements builder to create a new instance of class <code>PlaceRef</code>.
    */
   public static abstract class Builder {
+    // "String"
     @BuilderPropertyDeclaration
     private String name;
 
+    // "String"
     private int nameXYZ = 0;
 
     /**
@@ -84,6 +89,7 @@ public abstract class PlaceRef implements ServiceObject {
     }
 
     public Builder setNameXYZ( int value ) {
+      // "String"
       nameXYZ = value;
       return this;
     }
@@ -109,6 +115,7 @@ public abstract class PlaceRef implements ServiceObject {
   }
 
   public int getNameXYZ( ) {
+    // "String"
     return nameXYZ;
   }
 

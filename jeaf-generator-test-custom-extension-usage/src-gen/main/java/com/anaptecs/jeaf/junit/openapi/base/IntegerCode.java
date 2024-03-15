@@ -25,10 +25,12 @@ public class IntegerCode implements ServiceObject {
    */
   public static final String CODE = "code";
 
+  // "Integer"
   @ClassPropertyDeclaration
   @Min(value = 1234)
   private Integer code;
 
+  // "Integer"
   private int codeXYZ = 0;
 
   /**
@@ -48,6 +50,7 @@ public class IntegerCode implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     code = pBuilder.code;
+    // "Integer"
     codeXYZ = pBuilder.codeXYZ;
   }
 
@@ -64,10 +67,12 @@ public class IntegerCode implements ServiceObject {
    * Class implements builder to create a new instance of class <code>IntegerCode</code>.
    */
   public static class Builder {
+    // "Integer"
     @BuilderPropertyDeclaration
     @Min(value = 1234)
     private Integer code;
 
+    // "Integer"
     private int codeXYZ = 0;
 
     /**
@@ -99,6 +104,7 @@ public class IntegerCode implements ServiceObject {
     }
 
     public Builder setCodeXYZ( int value ) {
+      // "Integer"
       codeXYZ = value;
       return this;
     }
@@ -147,6 +153,7 @@ public class IntegerCode implements ServiceObject {
   }
 
   public int getCodeXYZ( ) {
+    // "Integer"
     return codeXYZ;
   }
 

@@ -58,6 +58,7 @@ public class ChildAA extends ChildA {
    */
   public static final String CODES = "codes";
 
+  // "byte"
   @ClassPropertyDeclaration
   /**
    * Multi<br/>
@@ -66,32 +67,43 @@ public class ChildAA extends ChildA {
    */
   private byte childAAAttribute;
 
+  // "byte"
   private int childAAAttributeXYZ = 0;
 
+  // "int"
   @ClassPropertyDeclaration
   @Size(min = 10, max = 100)
   private int[] sizedArray;
 
+  // "int"
   private int sizedArrayXYZ = 0;
 
+  // "String"
   @ClassPropertyDeclaration
   private String[] requiredArray;
 
+  // "String"
   private int requiredArrayXYZ = 0;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.BigIntegerCode"
   @ClassPropertyDeclaration
   private BigIntegerCode bigIntegerCode;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.BigIntegerCode"
   private int bigIntegerCodeXYZ = 0;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.IntegerCodeType"
   @ClassPropertyDeclaration
   private IntegerCodeType integerCode;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.IntegerCodeType"
   private int integerCodeXYZ = 0;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.IntegerCode"
   @ClassPropertyDeclaration
   private IntegerCode[] codes;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.IntegerCode"
   private int codesXYZ = 0;
 
   /**
@@ -111,16 +123,22 @@ public class ChildAA extends ChildA {
     super(pBuilder);
     // Read attribute values from builder.
     childAAAttribute = pBuilder.childAAAttribute;
+    // "byte"
     childAAAttributeXYZ = pBuilder.childAAAttributeXYZ;
     sizedArray = pBuilder.sizedArray;
+    // "int"
     sizedArrayXYZ = pBuilder.sizedArrayXYZ;
     requiredArray = pBuilder.requiredArray;
+    // "String"
     requiredArrayXYZ = pBuilder.requiredArrayXYZ;
     bigIntegerCode = pBuilder.bigIntegerCode;
+    // "com.anaptecs.jeaf.junit.openapi.base.BigIntegerCode"
     bigIntegerCodeXYZ = pBuilder.bigIntegerCodeXYZ;
     integerCode = pBuilder.integerCode;
+    // "com.anaptecs.jeaf.junit.openapi.base.IntegerCodeType"
     integerCodeXYZ = pBuilder.integerCodeXYZ;
     codes = pBuilder.codes;
+    // "com.anaptecs.jeaf.junit.openapi.base.IntegerCode"
     codesXYZ = pBuilder.codesXYZ;
   }
 
@@ -143,35 +161,47 @@ public class ChildAA extends ChildA {
      * line<br/>
      * docs
      */
+    // "byte"
     @BuilderPropertyDeclaration
     private byte childAAAttribute;
 
+    // "byte"
     private int childAAAttributeXYZ = 0;
 
+    // "int"
     @BuilderPropertyDeclaration
     @Size(min = 10, max = 100)
     private int[] sizedArray;
 
+    // "int"
     private int sizedArrayXYZ = 0;
 
+    // "String"
     @BuilderPropertyDeclaration
     private String[] requiredArray;
 
+    // "String"
     private int requiredArrayXYZ = 0;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.BigIntegerCode"
     @BuilderPropertyDeclaration
     private BigIntegerCode bigIntegerCode;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.BigIntegerCode"
     private int bigIntegerCodeXYZ = 0;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.IntegerCodeType"
     @BuilderPropertyDeclaration
     private IntegerCodeType integerCode;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.IntegerCodeType"
     private int integerCodeXYZ = 0;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.IntegerCode"
     @BuilderPropertyDeclaration
     private IntegerCode[] codes;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.IntegerCode"
     private int codesXYZ = 0;
 
     /**
@@ -303,6 +333,7 @@ public class ChildAA extends ChildA {
     }
 
     public Builder setChildAAAttributeXYZ( int value ) {
+      // "byte"
       childAAAttributeXYZ = value;
       return this;
     }
@@ -326,6 +357,7 @@ public class ChildAA extends ChildA {
     }
 
     public Builder setSizedArrayXYZ( int value ) {
+      // "int"
       sizedArrayXYZ = value;
       return this;
     }
@@ -349,6 +381,7 @@ public class ChildAA extends ChildA {
     }
 
     public Builder setRequiredArrayXYZ( int value ) {
+      // "String"
       requiredArrayXYZ = value;
       return this;
     }
@@ -366,6 +399,7 @@ public class ChildAA extends ChildA {
     }
 
     public Builder setBigIntegerCodeXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.BigIntegerCode"
       bigIntegerCodeXYZ = value;
       return this;
     }
@@ -382,6 +416,7 @@ public class ChildAA extends ChildA {
     }
 
     public Builder setIntegerCodeXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.IntegerCodeType"
       integerCodeXYZ = value;
       return this;
     }
@@ -405,6 +440,7 @@ public class ChildAA extends ChildA {
     }
 
     public Builder setCodesXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.IntegerCode"
       codesXYZ = value;
       return this;
     }
@@ -458,6 +494,7 @@ public class ChildAA extends ChildA {
   }
 
   public int getChildAAAttributeXYZ( ) {
+    // "byte"
     return childAAAttributeXYZ;
   }
 
@@ -499,6 +536,7 @@ public class ChildAA extends ChildA {
   }
 
   public int getSizedArrayXYZ( ) {
+    // "int"
     return sizedArrayXYZ;
   }
 
@@ -540,6 +578,7 @@ public class ChildAA extends ChildA {
   }
 
   public int getRequiredArrayXYZ( ) {
+    // "String"
     return requiredArrayXYZ;
   }
 
@@ -567,6 +606,7 @@ public class ChildAA extends ChildA {
   }
 
   public int getBigIntegerCodeXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.BigIntegerCode"
     return bigIntegerCodeXYZ;
   }
 
@@ -600,6 +640,7 @@ public class ChildAA extends ChildA {
   }
 
   public int getIntegerCodeXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.IntegerCodeType"
     return integerCodeXYZ;
   }
 
@@ -641,6 +682,7 @@ public class ChildAA extends ChildA {
   }
 
   public int getCodesXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.IntegerCode"
     return codesXYZ;
   }
 

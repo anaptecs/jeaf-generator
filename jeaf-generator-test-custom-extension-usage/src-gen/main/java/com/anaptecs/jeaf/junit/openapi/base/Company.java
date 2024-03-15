@@ -30,14 +30,18 @@ public class Company extends Partner {
    */
   public static final String CODE = "code";
 
+  // "java.lang.String"
   @ClassPropertyDeclaration
   private String name;
 
+  // "java.lang.String"
   private int nameXYZ = 0;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.StringCode"
   @ClassPropertyDeclaration
   private StringCode code;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.StringCode"
   private int codeXYZ = 0;
 
   /**
@@ -57,8 +61,10 @@ public class Company extends Partner {
     super(pBuilder);
     // Read attribute values from builder.
     name = pBuilder.name;
+    // "java.lang.String"
     nameXYZ = pBuilder.nameXYZ;
     code = pBuilder.code;
+    // "com.anaptecs.jeaf.junit.openapi.base.StringCode"
     codeXYZ = pBuilder.codeXYZ;
   }
 
@@ -75,14 +81,18 @@ public class Company extends Partner {
    * Class implements builder to create a new instance of class <code>Company</code>.
    */
   public static class Builder extends Partner.Builder {
+    // "java.lang.String"
     @BuilderPropertyDeclaration
     private String name;
 
+    // "java.lang.String"
     private int nameXYZ = 0;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.StringCode"
     @BuilderPropertyDeclaration
     private StringCode code;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.StringCode"
     private int codeXYZ = 0;
 
     /**
@@ -153,6 +163,7 @@ public class Company extends Partner {
     }
 
     public Builder setNameXYZ( int value ) {
+      // "java.lang.String"
       nameXYZ = value;
       return this;
     }
@@ -169,6 +180,7 @@ public class Company extends Partner {
     }
 
     public Builder setCodeXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.StringCode"
       codeXYZ = value;
       return this;
     }
@@ -216,6 +228,7 @@ public class Company extends Partner {
   }
 
   public int getNameXYZ( ) {
+    // "java.lang.String"
     return nameXYZ;
   }
 
@@ -249,6 +262,7 @@ public class Company extends Partner {
   }
 
   public int getCodeXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.StringCode"
     return codeXYZ;
   }
 
