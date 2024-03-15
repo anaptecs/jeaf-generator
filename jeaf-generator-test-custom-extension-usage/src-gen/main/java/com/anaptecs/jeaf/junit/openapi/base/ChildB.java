@@ -15,6 +15,7 @@ import java.util.Set;
 import javax.validation.ConstraintViolationException;
 import javax.validation.constraints.Size;
 
+import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -103,13 +104,19 @@ public class ChildB extends ParentClass {
     /**
      * A child attribute
      */
+    @BuilderPropertyDeclaration
     @Size(min = 11, max = 42)
     private boolean[] childBAttribute;
+
+    private int childBAttributeXYZ = 0;
 
     /**
      * the composition
      */
+    @BuilderPropertyDeclaration
     private Set<ParentClass> composition;
+
+    private int compositionXYZ = 0;
 
     /**
      * Use {@link ChildB#builder()} instead of private constructor to create new builder.
@@ -228,6 +235,11 @@ public class ChildB extends ParentClass {
       return this;
     }
 
+    public Builder setChildBAttributeXYZ( int value ) {
+      childBAttributeXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets association {@link #composition}.<br/>
      *
@@ -258,6 +270,11 @@ public class ChildB extends ParentClass {
         }
         composition.addAll(Arrays.asList(pComposition));
       }
+      return this;
+    }
+
+    public Builder setCompositionXYZ( int value ) {
+      compositionXYZ = value;
       return this;
     }
 

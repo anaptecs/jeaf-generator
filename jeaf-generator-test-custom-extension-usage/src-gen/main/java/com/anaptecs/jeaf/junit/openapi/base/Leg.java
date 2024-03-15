@@ -14,6 +14,7 @@ import java.util.List;
 import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
+import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -94,11 +95,20 @@ public class Leg implements ServiceObject {
    * Class implements builder to create a new instance of class <code>Leg</code>.
    */
   public static class Builder {
+    @BuilderPropertyDeclaration
     private PlaceRef start;
 
+    private int startXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private PlaceRef stop;
 
+    private int stopXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private List<PlaceRef> stopovers;
+
+    private int stopoversXYZ = 0;
 
     /**
      * Use {@link Leg#builder()} instead of private constructor to create new builder.
@@ -129,6 +139,11 @@ public class Leg implements ServiceObject {
       return this;
     }
 
+    public Builder setStartXYZ( int value ) {
+      startXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets association {@link #stop}.<br/>
      *
@@ -137,6 +152,11 @@ public class Leg implements ServiceObject {
      */
     public Builder setStop( PlaceRef pStop ) {
       stop = pStop;
+      return this;
+    }
+
+    public Builder setStopXYZ( int value ) {
+      stopXYZ = value;
       return this;
     }
 
@@ -170,6 +190,11 @@ public class Leg implements ServiceObject {
         }
         stopovers.addAll(Arrays.asList(pStopovers));
       }
+      return this;
+    }
+
+    public Builder setStopoversXYZ( int value ) {
+      stopoversXYZ = value;
       return this;
     }
 

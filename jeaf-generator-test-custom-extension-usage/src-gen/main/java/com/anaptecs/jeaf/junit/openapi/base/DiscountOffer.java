@@ -13,6 +13,7 @@ import java.util.Set;
 import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
+import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -83,8 +84,11 @@ public class DiscountOffer implements ServiceObject {
      * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #campaigns} is
      * <code>com.anaptecs.jeaf.junit.openapi.base.Campaign</code><br/>
      */
+    @BuilderPropertyDeclaration
     @Deprecated
     private Set<SoftLink> campaigns;
+
+    private int campaignsXYZ = 0;
 
     /**
      * Use {@link DiscountOffer#builder()} instead of private constructor to create new builder.
@@ -117,6 +121,11 @@ public class DiscountOffer implements ServiceObject {
       else {
         campaigns = null;
       }
+      return this;
+    }
+
+    public Builder setCampaignsXYZ( int value ) {
+      campaignsXYZ = value;
       return this;
     }
 

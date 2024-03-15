@@ -9,6 +9,7 @@ import javax.validation.ConstraintViolationException;
 import javax.validation.constraints.Max;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
+import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -62,8 +63,11 @@ public class DataTypeWithConstraints implements ServiceObject {
    * Class implements builder to create a new instance of class <code>DataTypeWithConstraints</code>.
    */
   public static class Builder {
+    @BuilderPropertyDeclaration
     @Max(value = 9999)
     private int intValue;
+
+    private int intValueXYZ = 0;
 
     /**
      * Use {@link DataTypeWithConstraints#builder()} instead of private constructor to create new builder.
@@ -91,6 +95,11 @@ public class DataTypeWithConstraints implements ServiceObject {
     public Builder setIntValue( int pIntValue ) {
       // Assign value to attribute
       intValue = pIntValue;
+      return this;
+    }
+
+    public Builder setIntValueXYZ( int value ) {
+      intValueXYZ = value;
       return this;
     }
 

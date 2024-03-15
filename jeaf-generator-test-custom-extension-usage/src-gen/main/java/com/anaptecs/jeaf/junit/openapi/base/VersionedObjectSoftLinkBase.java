@@ -8,6 +8,7 @@ package com.anaptecs.jeaf.junit.openapi.base;
 import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
+import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -81,11 +82,20 @@ public abstract class VersionedObjectSoftLinkBase implements ServiceObject {
     /**
      * Internal ID of a versioned object
      */
+    @BuilderPropertyDeclaration
     private long objectID;
 
+    private int objectIDXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private DataUnit dataUnit;
 
+    private int dataUnitXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private Entity entity;
+
+    private int entityXYZ = 0;
 
     /**
      * Use {@link VersionedObjectSoftLink.builder()} instead of protected constructor to create new builder.
@@ -118,6 +128,11 @@ public abstract class VersionedObjectSoftLinkBase implements ServiceObject {
       return this;
     }
 
+    public BuilderBase setObjectIDXYZ( int value ) {
+      objectIDXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets association {@link #dataUnit}.<br/>
      *
@@ -129,6 +144,11 @@ public abstract class VersionedObjectSoftLinkBase implements ServiceObject {
       return this;
     }
 
+    public BuilderBase setDataUnitXYZ( int value ) {
+      dataUnitXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets association {@link #entity}.<br/>
      *
@@ -137,6 +157,11 @@ public abstract class VersionedObjectSoftLinkBase implements ServiceObject {
      */
     public BuilderBase setEntity( Entity pEntity ) {
       entity = pEntity;
+      return this;
+    }
+
+    public BuilderBase setEntityXYZ( int value ) {
+      entityXYZ = value;
       return this;
     }
 

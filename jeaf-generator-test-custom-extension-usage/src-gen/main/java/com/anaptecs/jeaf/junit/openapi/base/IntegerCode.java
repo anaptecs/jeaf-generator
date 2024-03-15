@@ -9,6 +9,7 @@ import javax.validation.ConstraintViolationException;
 import javax.validation.constraints.Min;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
+import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -62,8 +63,11 @@ public class IntegerCode implements ServiceObject {
    * Class implements builder to create a new instance of class <code>IntegerCode</code>.
    */
   public static class Builder {
+    @BuilderPropertyDeclaration
     @Min(value = 1234)
     private Integer code;
+
+    private int codeXYZ = 0;
 
     /**
      * Use {@link IntegerCode#builder()} instead of private constructor to create new builder.
@@ -90,6 +94,11 @@ public class IntegerCode implements ServiceObject {
     public Builder setCode( Integer pCode ) {
       // Assign value to attribute
       code = pCode;
+      return this;
+    }
+
+    public Builder setCodeXYZ( int value ) {
+      codeXYZ = value;
       return this;
     }
 

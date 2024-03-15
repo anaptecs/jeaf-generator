@@ -15,6 +15,7 @@ import java.util.Set;
 import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
+import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -135,8 +136,11 @@ public class Campaign implements ServiceObject {
      *
      * @deprecated Please use &quot;moreLinks&quot; instead. (<b>since:</b> 2.3.1, <b>removed with:</b> 2.4)
      */
+    @BuilderPropertyDeclaration
     @Deprecated
     private long theLink;
+
+    private int theLinkXYZ = 0;
 
     /**
      * <p/>
@@ -145,16 +149,22 @@ public class Campaign implements ServiceObject {
      *
      * @deprecated No good any more (<b>since:</b> 1.2, <b>removed with:</b> 3.0)
      */
+    @BuilderPropertyDeclaration
     @Deprecated
     private Set<Long> moreLinks;
+
+    private int moreLinksXYZ = 0;
 
     /**
      * <p/>
      * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #discountOffers} is
      * <code>com.anaptecs.jeaf.junit.openapi.base.DiscountOffer</code><br/>
      */
+    @BuilderPropertyDeclaration
     @Deprecated
     private List<String> discountOffers;
+
+    private int discountOffersXYZ = 0;
 
     /**
      * Use {@link Campaign#builder()} instead of private constructor to create new builder.
@@ -187,6 +197,11 @@ public class Campaign implements ServiceObject {
       return this;
     }
 
+    public Builder setTheLinkXYZ( int value ) {
+      theLinkXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets association {@link #moreLinks}.<br/>
      *
@@ -206,6 +221,11 @@ public class Campaign implements ServiceObject {
       return this;
     }
 
+    public Builder setMoreLinksXYZ( int value ) {
+      moreLinksXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets association {@link #discountOffers}.<br/>
      *
@@ -221,6 +241,11 @@ public class Campaign implements ServiceObject {
       else {
         discountOffers = null;
       }
+      return this;
+    }
+
+    public Builder setDiscountOffersXYZ( int value ) {
+      discountOffersXYZ = value;
       return this;
     }
 

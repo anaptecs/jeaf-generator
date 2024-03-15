@@ -13,6 +13,7 @@ import java.util.List;
 import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
+import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -96,9 +97,15 @@ public class ReadOnlyMaster implements ServiceObject {
    * Class implements builder to create a new instance of class <code>ReadOnlyMaster</code>.
    */
   public static class Builder {
+    @BuilderPropertyDeclaration
     private String name;
 
+    private int nameXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private List<ReadOnlyClient> clients;
+
+    private int clientsXYZ = 0;
 
     /**
      * Use {@link ReadOnlyMaster#builder()} instead of private constructor to create new builder.
@@ -126,6 +133,11 @@ public class ReadOnlyMaster implements ServiceObject {
     public Builder setName( String pName ) {
       // Assign value to attribute
       name = pName;
+      return this;
+    }
+
+    public Builder setNameXYZ( int value ) {
+      nameXYZ = value;
       return this;
     }
 
@@ -159,6 +171,11 @@ public class ReadOnlyMaster implements ServiceObject {
         }
         clients.addAll(Arrays.asList(pClients));
       }
+      return this;
+    }
+
+    public Builder setClientsXYZ( int value ) {
+      clientsXYZ = value;
       return this;
     }
 

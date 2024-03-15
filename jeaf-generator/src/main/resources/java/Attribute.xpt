@@ -36,7 +36,7 @@
     «ELSE»
         «EXPAND DoAssociationAccessors»
     «ENDIF»
-    «EXPAND jeafgenerator::api::ClassExtensionHook::AfterPropertyAccessors»
+    «EXPAND jeafgenerator::api::ClassExtensionHook::AfterClassPropertyAccessors»
 «ENDDEFINE»
 
 // processing the properties

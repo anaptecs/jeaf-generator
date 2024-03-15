@@ -22,6 +22,7 @@ import javax.validation.constraints.Size;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.core.api.ServiceObjectID;
+import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -147,17 +148,26 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
      */
     private ObjectIdentity<?> objectID;
 
+    @BuilderPropertyDeclaration
     private List<Channel> channels;
+
+    private int channelsXYZ = 0;
 
     /**
      * <p/>
      * <b>Breaking Change with 1.1:</b> Maximum size will be increased.
      */
+    @BuilderPropertyDeclaration
     @NotBlank
     @Size(min = 0, max = 32)
     private String name;
 
+    private int nameXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private Locale language;
+
+    private int languageXYZ = 0;
 
     /**
      * Use {@link Reseller.builder()} instead of protected constructor to create new builder.
@@ -220,6 +230,11 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
       return this;
     }
 
+    public BuilderBase setChannelsXYZ( int value ) {
+      channelsXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets attribute {@link #name}.<br/>
      * <p/>
@@ -234,6 +249,11 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
       return this;
     }
 
+    public BuilderBase setNameXYZ( int value ) {
+      nameXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets attribute {@link #language}.<br/>
      *
@@ -243,6 +263,11 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
     public BuilderBase setLanguage( Locale pLanguage ) {
       // Assign value to attribute
       language = pLanguage;
+      return this;
+    }
+
+    public BuilderBase setLanguageXYZ( int value ) {
+      languageXYZ = value;
       return this;
     }
 

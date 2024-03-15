@@ -14,6 +14,7 @@ import java.util.Set;
 import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
+import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.junit.openapi.composite.ComplexBookingID;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
@@ -95,11 +96,20 @@ public class WeirdParent implements ServiceObject {
    * Class implements builder to create a new instance of class <code>WeirdParent</code>.
    */
   public static class Builder {
+    @BuilderPropertyDeclaration
     private String someProperty;
 
+    private int somePropertyXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private ComplexBookingID complexBooking;
 
+    private int complexBookingXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private Set<ComplexBookingID> complexBookings;
+
+    private int complexBookingsXYZ = 0;
 
     /**
      * Use {@link WeirdParent#builder()} instead of private constructor to create new builder.
@@ -131,6 +141,11 @@ public class WeirdParent implements ServiceObject {
       return this;
     }
 
+    public Builder setSomePropertyXYZ( int value ) {
+      somePropertyXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets association {@link #complexBooking}.<br/>
      *
@@ -139,6 +154,11 @@ public class WeirdParent implements ServiceObject {
      */
     public Builder setComplexBooking( ComplexBookingID pComplexBooking ) {
       complexBooking = pComplexBooking;
+      return this;
+    }
+
+    public Builder setComplexBookingXYZ( int value ) {
+      complexBookingXYZ = value;
       return this;
     }
 
@@ -173,6 +193,11 @@ public class WeirdParent implements ServiceObject {
         }
         complexBookings.addAll(Arrays.asList(pComplexBookings));
       }
+      return this;
+    }
+
+    public Builder setComplexBookingsXYZ( int value ) {
+      complexBookingsXYZ = value;
       return this;
     }
 

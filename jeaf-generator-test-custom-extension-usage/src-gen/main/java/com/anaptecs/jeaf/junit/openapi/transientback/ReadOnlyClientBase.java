@@ -8,6 +8,7 @@ package com.anaptecs.jeaf.junit.openapi.transientback;
 import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
+import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -64,7 +65,10 @@ public abstract class ReadOnlyClientBase implements ServiceObject {
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static abstract class BuilderBase {
+    @BuilderPropertyDeclaration
     private String name;
+
+    private int nameXYZ = 0;
 
     /**
      * Use {@link ReadOnlyClient.builder()} instead of protected constructor to create new builder.
@@ -91,6 +95,11 @@ public abstract class ReadOnlyClientBase implements ServiceObject {
     public BuilderBase setName( String pName ) {
       // Assign value to attribute
       name = pName;
+      return this;
+    }
+
+    public BuilderBase setNameXYZ( int value ) {
+      nameXYZ = value;
       return this;
     }
 

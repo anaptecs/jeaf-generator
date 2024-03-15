@@ -8,6 +8,7 @@ package com.anaptecs.jeaf.junit.openapi.base;
 import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
+import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -93,13 +94,25 @@ public class PostalAddress implements ServiceObject {
    * Class implements builder to create a new instance of class <code>PostalAddress</code>.
    */
   public static class Builder {
+    @BuilderPropertyDeclaration
     private String street;
 
+    private int streetXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private String houseNumber;
 
+    private int houseNumberXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private String city;
 
+    private int cityXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private int postalCode;
+
+    private int postalCodeXYZ = 0;
 
     /**
      * Use {@link PostalAddress#builder()} instead of private constructor to create new builder.
@@ -132,6 +145,11 @@ public class PostalAddress implements ServiceObject {
       return this;
     }
 
+    public Builder setStreetXYZ( int value ) {
+      streetXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets attribute {@link #houseNumber}.<br/>
      *
@@ -141,6 +159,11 @@ public class PostalAddress implements ServiceObject {
     public Builder setHouseNumber( String pHouseNumber ) {
       // Assign value to attribute
       houseNumber = pHouseNumber;
+      return this;
+    }
+
+    public Builder setHouseNumberXYZ( int value ) {
+      houseNumberXYZ = value;
       return this;
     }
 
@@ -156,6 +179,11 @@ public class PostalAddress implements ServiceObject {
       return this;
     }
 
+    public Builder setCityXYZ( int value ) {
+      cityXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets attribute {@link #postalCode}.<br/>
      *
@@ -165,6 +193,11 @@ public class PostalAddress implements ServiceObject {
     public Builder setPostalCode( int pPostalCode ) {
       // Assign value to attribute
       postalCode = pPostalCode;
+      return this;
+    }
+
+    public Builder setPostalCodeXYZ( int value ) {
+      postalCodeXYZ = value;
       return this;
     }
 

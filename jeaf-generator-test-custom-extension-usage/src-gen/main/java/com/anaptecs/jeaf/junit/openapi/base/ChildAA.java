@@ -11,6 +11,7 @@ import java.util.Set;
 import javax.validation.ConstraintViolationException;
 import javax.validation.constraints.Size;
 
+import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 
@@ -136,18 +137,36 @@ public class ChildAA extends ChildA {
      * line<br/>
      * docs
      */
+    @BuilderPropertyDeclaration
     private byte childAAAttribute;
 
+    private int childAAAttributeXYZ = 0;
+
+    @BuilderPropertyDeclaration
     @Size(min = 10, max = 100)
     private int[] sizedArray;
 
+    private int sizedArrayXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private String[] requiredArray;
 
+    private int requiredArrayXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private BigIntegerCode bigIntegerCode;
 
+    private int bigIntegerCodeXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private IntegerCodeType integerCode;
 
+    private int integerCodeXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private IntegerCode[] codes;
+
+    private int codesXYZ = 0;
 
     /**
      * Use {@link ChildAA#builder()} instead of private constructor to create new builder.
@@ -277,6 +296,11 @@ public class ChildAA extends ChildA {
       return this;
     }
 
+    public Builder setChildAAAttributeXYZ( int value ) {
+      childAAAttributeXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets attribute {@link #sizedArray}.<br/>
      *
@@ -292,6 +316,11 @@ public class ChildAA extends ChildA {
       else {
         sizedArray = null;
       }
+      return this;
+    }
+
+    public Builder setSizedArrayXYZ( int value ) {
+      sizedArrayXYZ = value;
       return this;
     }
 
@@ -313,6 +342,11 @@ public class ChildAA extends ChildA {
       return this;
     }
 
+    public Builder setRequiredArrayXYZ( int value ) {
+      requiredArrayXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets attribute {@link #bigIntegerCode}.<br/>
      *
@@ -325,6 +359,11 @@ public class ChildAA extends ChildA {
       return this;
     }
 
+    public Builder setBigIntegerCodeXYZ( int value ) {
+      bigIntegerCodeXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets association {@link #integerCode}.<br/>
      *
@@ -333,6 +372,11 @@ public class ChildAA extends ChildA {
      */
     public Builder setIntegerCode( IntegerCodeType pIntegerCode ) {
       integerCode = pIntegerCode;
+      return this;
+    }
+
+    public Builder setIntegerCodeXYZ( int value ) {
+      integerCodeXYZ = value;
       return this;
     }
 
@@ -351,6 +395,11 @@ public class ChildAA extends ChildA {
       else {
         codes = null;
       }
+      return this;
+    }
+
+    public Builder setCodesXYZ( int value ) {
+      codesXYZ = value;
       return this;
     }
 

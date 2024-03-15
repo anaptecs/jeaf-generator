@@ -13,6 +13,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
+import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -299,52 +300,118 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
    * Class implements builder to create a new instance of class <code>PrimitiveArraysObjectWithRestrictions</code>.
    */
   public static class Builder {
+    @BuilderPropertyDeclaration
     private boolean[] aBooleanArray;
 
+    private int aBooleanArrayXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private Boolean[] bBooleanArray;
 
+    private int bBooleanArrayXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private boolean[] cBooleanArray;
 
+    private int cBooleanArrayXYZ = 0;
+
+    @BuilderPropertyDeclaration
     @Size(min = 0, max = 32768)
     private byte[] aByteArray;
 
+    private int aByteArrayXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private Byte[] bByteArray;
 
+    private int bByteArrayXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private short[] aShortArray;
 
+    private int aShortArrayXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private Short[] bShortArray;
 
+    private int bShortArrayXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private int[] aIntegerArray;
 
+    private int aIntegerArrayXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private Integer[] bIntegerArray;
 
+    private int bIntegerArrayXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private Integer[] cIntegerArray;
 
+    private int cIntegerArrayXYZ = 0;
+
+    @BuilderPropertyDeclaration
     @NotEmpty
     private long[] aLongArray;
 
+    private int aLongArrayXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private Long[] bLongArray;
 
+    private int bLongArrayXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private BigInteger[] aBigIntegerArray;
 
+    private int aBigIntegerArrayXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private char[] aCharacterArray;
 
+    private int aCharacterArrayXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private Character[] bCharacterArray;
 
+    private int bCharacterArrayXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private float[] aFloatArray;
 
+    private int aFloatArrayXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private Float[] bFloatArray;
 
+    private int bFloatArrayXYZ = 0;
+
+    @BuilderPropertyDeclaration
     @Size(min = 4, max = 12)
     private double[] aDoubleArray;
 
+    private int aDoubleArrayXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private Double[] bDoubleArray;
 
+    private int bDoubleArrayXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private BigDecimal[] aBigDecimalArray;
 
+    private int aBigDecimalArrayXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private String[] aStringArray;
 
+    private int aStringArrayXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private String[] bStringArray;
+
+    private int bStringArrayXYZ = 0;
 
     /**
      * Use {@link PrimitiveArraysObjectWithRestrictions#builder()} instead of private constructor to create new builder.
@@ -402,6 +469,11 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
       return this;
     }
 
+    public Builder setABooleanArrayXYZ( int value ) {
+      aBooleanArrayXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets attribute {@link #bBooleanArray}.<br/>
      *
@@ -417,6 +489,11 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
       else {
         bBooleanArray = null;
       }
+      return this;
+    }
+
+    public Builder setBBooleanArrayXYZ( int value ) {
+      bBooleanArrayXYZ = value;
       return this;
     }
 
@@ -438,6 +515,11 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
       return this;
     }
 
+    public Builder setCBooleanArrayXYZ( int value ) {
+      cBooleanArrayXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets attribute {@link #aByteArray}.<br/>
      *
@@ -453,6 +535,11 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
       else {
         aByteArray = null;
       }
+      return this;
+    }
+
+    public Builder setAByteArrayXYZ( int value ) {
+      aByteArrayXYZ = value;
       return this;
     }
 
@@ -474,6 +561,11 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
       return this;
     }
 
+    public Builder setBByteArrayXYZ( int value ) {
+      bByteArrayXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets attribute {@link #aShortArray}.<br/>
      *
@@ -489,6 +581,11 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
       else {
         aShortArray = null;
       }
+      return this;
+    }
+
+    public Builder setAShortArrayXYZ( int value ) {
+      aShortArrayXYZ = value;
       return this;
     }
 
@@ -510,6 +607,11 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
       return this;
     }
 
+    public Builder setBShortArrayXYZ( int value ) {
+      bShortArrayXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets attribute {@link #aIntegerArray}.<br/>
      *
@@ -525,6 +627,11 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
       else {
         aIntegerArray = null;
       }
+      return this;
+    }
+
+    public Builder setAIntegerArrayXYZ( int value ) {
+      aIntegerArrayXYZ = value;
       return this;
     }
 
@@ -546,6 +653,11 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
       return this;
     }
 
+    public Builder setBIntegerArrayXYZ( int value ) {
+      bIntegerArrayXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets attribute {@link #cIntegerArray}.<br/>
      *
@@ -561,6 +673,11 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
       else {
         cIntegerArray = null;
       }
+      return this;
+    }
+
+    public Builder setCIntegerArrayXYZ( int value ) {
+      cIntegerArrayXYZ = value;
       return this;
     }
 
@@ -582,6 +699,11 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
       return this;
     }
 
+    public Builder setALongArrayXYZ( int value ) {
+      aLongArrayXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets attribute {@link #bLongArray}.<br/>
      *
@@ -597,6 +719,11 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
       else {
         bLongArray = null;
       }
+      return this;
+    }
+
+    public Builder setBLongArrayXYZ( int value ) {
+      bLongArrayXYZ = value;
       return this;
     }
 
@@ -618,6 +745,11 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
       return this;
     }
 
+    public Builder setABigIntegerArrayXYZ( int value ) {
+      aBigIntegerArrayXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets attribute {@link #aCharacterArray}.<br/>
      *
@@ -633,6 +765,11 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
       else {
         aCharacterArray = null;
       }
+      return this;
+    }
+
+    public Builder setACharacterArrayXYZ( int value ) {
+      aCharacterArrayXYZ = value;
       return this;
     }
 
@@ -654,6 +791,11 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
       return this;
     }
 
+    public Builder setBCharacterArrayXYZ( int value ) {
+      bCharacterArrayXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets attribute {@link #aFloatArray}.<br/>
      *
@@ -669,6 +811,11 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
       else {
         aFloatArray = null;
       }
+      return this;
+    }
+
+    public Builder setAFloatArrayXYZ( int value ) {
+      aFloatArrayXYZ = value;
       return this;
     }
 
@@ -690,6 +837,11 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
       return this;
     }
 
+    public Builder setBFloatArrayXYZ( int value ) {
+      bFloatArrayXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets attribute {@link #aDoubleArray}.<br/>
      *
@@ -705,6 +857,11 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
       else {
         aDoubleArray = null;
       }
+      return this;
+    }
+
+    public Builder setADoubleArrayXYZ( int value ) {
+      aDoubleArrayXYZ = value;
       return this;
     }
 
@@ -726,6 +883,11 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
       return this;
     }
 
+    public Builder setBDoubleArrayXYZ( int value ) {
+      bDoubleArrayXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets attribute {@link #aBigDecimalArray}.<br/>
      *
@@ -741,6 +903,11 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
       else {
         aBigDecimalArray = null;
       }
+      return this;
+    }
+
+    public Builder setABigDecimalArrayXYZ( int value ) {
+      aBigDecimalArrayXYZ = value;
       return this;
     }
 
@@ -762,6 +929,11 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
       return this;
     }
 
+    public Builder setAStringArrayXYZ( int value ) {
+      aStringArrayXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets attribute {@link #bStringArray}.<br/>
      *
@@ -777,6 +949,11 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
       else {
         bStringArray = null;
       }
+      return this;
+    }
+
+    public Builder setBStringArrayXYZ( int value ) {
+      bStringArrayXYZ = value;
       return this;
     }
 

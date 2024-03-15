@@ -15,6 +15,7 @@ import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.core.api.ServiceObjectID;
+import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -94,7 +95,10 @@ public class Partner implements ServiceObject, Identifiable<ServiceObjectID> {
      */
     private ObjectIdentity<?> objectID;
 
+    @BuilderPropertyDeclaration
     private List<PostalAddress> postalAddresses;
+
+    private int postalAddressesXYZ = 0;
 
     /**
      * Use {@link Partner#builder()} instead of private constructor to create new builder.
@@ -153,6 +157,11 @@ public class Partner implements ServiceObject, Identifiable<ServiceObjectID> {
         }
         postalAddresses.addAll(Arrays.asList(pPostalAddresses));
       }
+      return this;
+    }
+
+    public Builder setPostalAddressesXYZ( int value ) {
+      postalAddressesXYZ = value;
       return this;
     }
 

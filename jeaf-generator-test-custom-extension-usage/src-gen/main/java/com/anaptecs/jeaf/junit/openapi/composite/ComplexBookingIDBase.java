@@ -14,6 +14,7 @@ import java.util.List;
 import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
+import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.junit.openapi.base.BookingID;
 import com.anaptecs.jeaf.junit.openapi.base.ComplexBookingType;
@@ -120,15 +121,30 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
      * 2nd line<br/>
      * 3rd line
      */
+    @BuilderPropertyDeclaration
     private long internalID;
 
+    private int internalIDXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private String referenceID;
 
+    private int referenceIDXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private List<BookingID> bookingIDs;
 
+    private int bookingIDsXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private ComplexBookingType complexBookingType;
 
+    private int complexBookingTypeXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private Integer anotherID;
+
+    private int anotherIDXYZ = 0;
 
     /**
      * Use {@link ComplexBookingID.builder()} instead of protected constructor to create new builder.
@@ -162,6 +178,11 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
       return this;
     }
 
+    public BuilderBase setInternalIDXYZ( int value ) {
+      internalIDXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets attribute {@link #referenceID}.<br/>
      *
@@ -171,6 +192,11 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
     public BuilderBase setReferenceID( String pReferenceID ) {
       // Assign value to attribute
       referenceID = pReferenceID;
+      return this;
+    }
+
+    public BuilderBase setReferenceIDXYZ( int value ) {
+      referenceIDXYZ = value;
       return this;
     }
 
@@ -207,6 +233,11 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
       return this;
     }
 
+    public BuilderBase setBookingIDsXYZ( int value ) {
+      bookingIDsXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets association {@link #complexBookingType}.<br/>
      *
@@ -215,6 +246,11 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
      */
     public BuilderBase setComplexBookingType( ComplexBookingType pComplexBookingType ) {
       complexBookingType = pComplexBookingType;
+      return this;
+    }
+
+    public BuilderBase setComplexBookingTypeXYZ( int value ) {
+      complexBookingTypeXYZ = value;
       return this;
     }
 
@@ -227,6 +263,11 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
     public BuilderBase setAnotherID( Integer pAnotherID ) {
       // Assign value to attribute
       anotherID = pAnotherID;
+      return this;
+    }
+
+    public BuilderBase setAnotherIDXYZ( int value ) {
+      anotherIDXYZ = value;
       return this;
     }
 

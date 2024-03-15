@@ -8,6 +8,7 @@ package com.anaptecs.jeaf.junit.openapi.service1;
 import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
+import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -82,11 +83,20 @@ public class LocalBeanParamType implements ServiceObject {
    * Class implements builder to create a new instance of class <code>LocalBeanParamType</code>.
    */
   public static class Builder {
+    @BuilderPropertyDeclaration
     private String localKey;
 
+    private int localKeyXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private String localID;
 
+    private int localIDXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private String authorization;
+
+    private int authorizationXYZ = 0;
 
     /**
      * Use {@link LocalBeanParamType#builder()} instead of private constructor to create new builder.
@@ -118,6 +128,11 @@ public class LocalBeanParamType implements ServiceObject {
       return this;
     }
 
+    public Builder setLocalKeyXYZ( int value ) {
+      localKeyXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets attribute {@link #localID}.<br/>
      *
@@ -130,6 +145,11 @@ public class LocalBeanParamType implements ServiceObject {
       return this;
     }
 
+    public Builder setLocalIDXYZ( int value ) {
+      localIDXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets attribute {@link #authorization}.<br/>
      *
@@ -139,6 +159,11 @@ public class LocalBeanParamType implements ServiceObject {
     public Builder setAuthorization( String pAuthorization ) {
       // Assign value to attribute
       authorization = pAuthorization;
+      return this;
+    }
+
+    public Builder setAuthorizationXYZ( int value ) {
+      authorizationXYZ = value;
       return this;
     }
 

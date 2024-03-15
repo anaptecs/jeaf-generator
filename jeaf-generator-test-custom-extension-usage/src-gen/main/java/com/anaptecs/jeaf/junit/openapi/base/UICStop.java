@@ -15,6 +15,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
 
+import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 
@@ -112,19 +113,31 @@ public class UICStop extends Stop {
    * Class implements builder to create a new instance of class <code>UICStop</code>.
    */
   public static class Builder extends Stop.Builder {
+    @BuilderPropertyDeclaration
     @Size(min = 32, max = 255)
     private String uicCode;
 
+    private int uicCodeXYZ = 0;
+
+    @BuilderPropertyDeclaration
     @DecimalMax(value = "32.777", inclusive = true)
     @DecimalMin(value = "1.025", inclusive = true)
     private int priority;
 
+    private int priorityXYZ = 0;
+
+    @BuilderPropertyDeclaration
     @Min(value = 1000)
     @Max(value = 9999)
     private long code;
 
+    private int codeXYZ = 0;
+
+    @BuilderPropertyDeclaration
     @Positive
     private byte index2;
+
+    private int index2XYZ = 0;
 
     /**
      * Use {@link UICStop#builder()} instead of private constructor to create new builder.
@@ -223,6 +236,11 @@ public class UICStop extends Stop {
       return this;
     }
 
+    public Builder setUicCodeXYZ( int value ) {
+      uicCodeXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets attribute {@link #priority}.<br/>
      *
@@ -232,6 +250,11 @@ public class UICStop extends Stop {
     public Builder setPriority( int pPriority ) {
       // Assign value to attribute
       priority = pPriority;
+      return this;
+    }
+
+    public Builder setPriorityXYZ( int value ) {
+      priorityXYZ = value;
       return this;
     }
 
@@ -247,6 +270,11 @@ public class UICStop extends Stop {
       return this;
     }
 
+    public Builder setCodeXYZ( int value ) {
+      codeXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets attribute {@link #index2}.<br/>
      *
@@ -256,6 +284,11 @@ public class UICStop extends Stop {
     public Builder setIndex2( byte pIndex2 ) {
       // Assign value to attribute
       index2 = pIndex2;
+      return this;
+    }
+
+    public Builder setIndex2XYZ( int value ) {
+      index2XYZ = value;
       return this;
     }
 

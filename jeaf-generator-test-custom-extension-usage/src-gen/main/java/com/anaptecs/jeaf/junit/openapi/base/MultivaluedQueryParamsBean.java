@@ -8,6 +8,7 @@ package com.anaptecs.jeaf.junit.openapi.base;
 import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
+import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -90,11 +91,20 @@ public class MultivaluedQueryParamsBean implements ServiceObject {
      * <p/>
      * <b>Breaking Change with 47.11:</b> At least one will become mandatory
      */
+    @BuilderPropertyDeclaration
     private int[] intArray;
 
+    private int intArrayXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private String[] strings;
 
+    private int stringsXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private Integer[] integers;
+
+    private int integersXYZ = 0;
 
     /**
      * Use {@link MultivaluedQueryParamsBean#builder()} instead of private constructor to create new builder.
@@ -135,6 +145,11 @@ public class MultivaluedQueryParamsBean implements ServiceObject {
       return this;
     }
 
+    public Builder setIntArrayXYZ( int value ) {
+      intArrayXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets attribute {@link #strings}.<br/>
      *
@@ -153,6 +168,11 @@ public class MultivaluedQueryParamsBean implements ServiceObject {
       return this;
     }
 
+    public Builder setStringsXYZ( int value ) {
+      stringsXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets attribute {@link #integers}.<br/>
      *
@@ -168,6 +188,11 @@ public class MultivaluedQueryParamsBean implements ServiceObject {
       else {
         integers = null;
       }
+      return this;
+    }
+
+    public Builder setIntegersXYZ( int value ) {
+      integersXYZ = value;
       return this;
     }
 

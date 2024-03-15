@@ -9,6 +9,7 @@ import javax.validation.ConstraintViolationException;
 import javax.validation.constraints.Size;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
+import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -62,8 +63,11 @@ public class BookingCode implements ServiceObject {
    * Class implements builder to create a new instance of class <code>BookingCode</code>.
    */
   public static class Builder {
+    @BuilderPropertyDeclaration
     @Size(min = 3, max = 5)
     private String code;
+
+    private int codeXYZ = 0;
 
     /**
      * Use {@link BookingCode#builder()} instead of private constructor to create new builder.
@@ -90,6 +94,11 @@ public class BookingCode implements ServiceObject {
     public Builder setCode( String pCode ) {
       // Assign value to attribute
       code = pCode;
+      return this;
+    }
+
+    public Builder setCodeXYZ( int value ) {
+      codeXYZ = value;
       return this;
     }
 

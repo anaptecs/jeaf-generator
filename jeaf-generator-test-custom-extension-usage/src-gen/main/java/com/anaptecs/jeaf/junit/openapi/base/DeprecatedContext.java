@@ -11,6 +11,7 @@ import javax.validation.ConstraintViolationException;
 import javax.validation.constraints.NotEmpty;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
+import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -103,18 +104,30 @@ public class DeprecatedContext implements ServiceObject {
    */
   @Deprecated
   public static class Builder {
+    @BuilderPropertyDeclaration
     @NotEmpty
     private String accessToken;
+
+    private int accessTokenXYZ = 0;
 
     /**
      * <br/>
      * <b>Example:</b> <code>en</code>
      */
+    @BuilderPropertyDeclaration
     private Locale language;
 
+    private int languageXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private long resellerID;
 
+    private int resellerIDXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private String queryParam;
+
+    private int queryParamXYZ = 0;
 
     /**
      * Use {@link DeprecatedContext#builder()} instead of private constructor to create new builder.
@@ -147,6 +160,11 @@ public class DeprecatedContext implements ServiceObject {
       return this;
     }
 
+    public Builder setAccessTokenXYZ( int value ) {
+      accessTokenXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets attribute {@link #language}.<br/>
      *
@@ -156,6 +174,11 @@ public class DeprecatedContext implements ServiceObject {
     public Builder setLanguage( Locale pLanguage ) {
       // Assign value to attribute
       language = pLanguage;
+      return this;
+    }
+
+    public Builder setLanguageXYZ( int value ) {
+      languageXYZ = value;
       return this;
     }
 
@@ -171,6 +194,11 @@ public class DeprecatedContext implements ServiceObject {
       return this;
     }
 
+    public Builder setResellerIDXYZ( int value ) {
+      resellerIDXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets attribute {@link #queryParam}.<br/>
      *
@@ -180,6 +208,11 @@ public class DeprecatedContext implements ServiceObject {
     public Builder setQueryParam( String pQueryParam ) {
       // Assign value to attribute
       queryParam = pQueryParam;
+      return this;
+    }
+
+    public Builder setQueryParamXYZ( int value ) {
+      queryParamXYZ = value;
       return this;
     }
 

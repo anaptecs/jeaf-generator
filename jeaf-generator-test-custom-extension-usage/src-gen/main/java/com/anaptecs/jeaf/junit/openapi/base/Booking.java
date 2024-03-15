@@ -8,6 +8,7 @@ package com.anaptecs.jeaf.junit.openapi.base;
 import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
+import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -75,7 +76,10 @@ public class Booking implements ServiceObject {
     /**
      * ID of the booking
      */
+    @BuilderPropertyDeclaration
     private BookingID bookingID;
+
+    private int bookingIDXYZ = 0;
 
     /**
      * Use {@link Booking#builder()} instead of private constructor to create new builder.
@@ -101,6 +105,11 @@ public class Booking implements ServiceObject {
      */
     public Builder setBookingID( BookingID pBookingID ) {
       bookingID = pBookingID;
+      return this;
+    }
+
+    public Builder setBookingIDXYZ( int value ) {
+      bookingIDXYZ = value;
       return this;
     }
 

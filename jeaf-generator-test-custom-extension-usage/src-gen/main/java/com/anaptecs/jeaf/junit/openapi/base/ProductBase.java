@@ -19,6 +19,7 @@ import javax.validation.constraints.Size;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.core.api.ServiceObjectID;
+import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -240,36 +241,63 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
      */
     private ObjectIdentity<?> objectID;
 
+    @BuilderPropertyDeclaration
     private Set<Reseller> resellers;
 
+    private int resellersXYZ = 0;
+
+    @BuilderPropertyDeclaration
     @Size(min = 12, max = Integer.MAX_VALUE)
     private String name;
+
+    private int nameXYZ = 0;
 
     /**
      * Image describing the product.
      */
+    @BuilderPropertyDeclaration
     private byte[] image;
+
+    private int imageXYZ = 0;
 
     /**
      * <br/>
      * <b>Example:</b> <code>https://www.company.com/products/1345-345</code>
      */
+    @BuilderPropertyDeclaration
     private URL link;
 
+    private int linkXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private UUID productID;
 
+    private int productIDXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private Set<CurrencyCode> supportedCurrencies;
 
+    private int supportedCurrenciesXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private Set<ProductCode> productCodes;
 
+    private int productCodesXYZ = 0;
+
+    @BuilderPropertyDeclaration
     @Deprecated
     private String description;
+
+    private int descriptionXYZ = 0;
 
     /**
      * <br/>
      * <b>Default Value:</b> <code>"https://products.anaptecs.de/123456789"</code>
      */
+    @BuilderPropertyDeclaration
     private String uri = "https://products.anaptecs.de/123456789";
+
+    private int uriXYZ = 0;
 
     /**
      * Use {@link Product.builder()} instead of protected constructor to create new builder.
@@ -338,6 +366,11 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
       return this;
     }
 
+    public BuilderBase setResellersXYZ( int value ) {
+      resellersXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets attribute {@link #name}.<br/>
      *
@@ -347,6 +380,11 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
     public BuilderBase setName( String pName ) {
       // Assign value to attribute
       name = pName;
+      return this;
+    }
+
+    public BuilderBase setNameXYZ( int value ) {
+      nameXYZ = value;
       return this;
     }
 
@@ -368,6 +406,11 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
       return this;
     }
 
+    public BuilderBase setImageXYZ( int value ) {
+      imageXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets attribute {@link #link}.<br/>
      *
@@ -380,6 +423,11 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
       return this;
     }
 
+    public BuilderBase setLinkXYZ( int value ) {
+      linkXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets attribute {@link #productID}.<br/>
      *
@@ -389,6 +437,11 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
     public BuilderBase setProductID( UUID pProductID ) {
       // Assign value to attribute
       productID = pProductID;
+      return this;
+    }
+
+    public BuilderBase setProductIDXYZ( int value ) {
+      productIDXYZ = value;
       return this;
     }
 
@@ -426,6 +479,11 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
       return this;
     }
 
+    public BuilderBase setSupportedCurrenciesXYZ( int value ) {
+      supportedCurrenciesXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets association {@link #productCodes}.<br/>
      *
@@ -459,6 +517,11 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
       return this;
     }
 
+    public BuilderBase setProductCodesXYZ( int value ) {
+      productCodesXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets attribute {@link #description}.<br/>
      *
@@ -472,6 +535,11 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
       return this;
     }
 
+    public BuilderBase setDescriptionXYZ( int value ) {
+      descriptionXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets attribute {@link #uri}.<br/>
      *
@@ -481,6 +549,11 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
     public BuilderBase setUri( String pUri ) {
       // Assign value to attribute
       uri = pUri;
+      return this;
+    }
+
+    public BuilderBase setUriXYZ( int value ) {
+      uriXYZ = value;
       return this;
     }
 

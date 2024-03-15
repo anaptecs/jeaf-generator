@@ -16,6 +16,7 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.PositiveOrZero;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
+import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -114,20 +115,32 @@ public class Stop implements ServiceObject {
    * Class implements builder to create a new instance of class <code>Stop</code>.
    */
   public static class Builder {
+    @BuilderPropertyDeclaration
     private String name;
 
+    private int nameXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private List<LinkObject> links;
 
+    private int linksXYZ = 0;
+
+    @BuilderPropertyDeclaration
     @Max(value = 32)
     @PositiveOrZero
     private byte index;
+
+    private int indexXYZ = 0;
 
     /**
      * <p/>
      * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #theSoftLink} is
      * <code>LinkObject</code><br/>
      */
+    @BuilderPropertyDeclaration
     private SoftLink theSoftLink;
+
+    private int theSoftLinkXYZ = 0;
 
     /**
      * Use {@link Stop#builder()} instead of private constructor to create new builder.
@@ -157,6 +170,11 @@ public class Stop implements ServiceObject {
     public Builder setName( String pName ) {
       // Assign value to attribute
       name = pName;
+      return this;
+    }
+
+    public Builder setNameXYZ( int value ) {
+      nameXYZ = value;
       return this;
     }
 
@@ -193,6 +211,11 @@ public class Stop implements ServiceObject {
       return this;
     }
 
+    public Builder setLinksXYZ( int value ) {
+      linksXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets attribute {@link #index}.<br/>
      *
@@ -205,6 +228,11 @@ public class Stop implements ServiceObject {
       return this;
     }
 
+    public Builder setIndexXYZ( int value ) {
+      indexXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets association {@link #theSoftLink}.<br/>
      *
@@ -213,6 +241,11 @@ public class Stop implements ServiceObject {
      */
     public Builder setTheSoftLink( SoftLink pTheSoftLink ) {
       theSoftLink = pTheSoftLink;
+      return this;
+    }
+
+    public Builder setTheSoftLinkXYZ( int value ) {
+      theSoftLinkXYZ = value;
       return this;
     }
 

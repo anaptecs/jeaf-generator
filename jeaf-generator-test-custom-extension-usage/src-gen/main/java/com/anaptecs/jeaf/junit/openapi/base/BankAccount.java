@@ -8,6 +8,7 @@ package com.anaptecs.jeaf.junit.openapi.base;
 import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
+import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -60,7 +61,10 @@ public class BankAccount implements ServiceObject {
    * Class implements builder to create a new instance of class <code>BankAccount</code>.
    */
   public static class Builder {
+    @BuilderPropertyDeclaration
     private String iban;
+
+    private int ibanXYZ = 0;
 
     /**
      * Use {@link BankAccount#builder()} instead of private constructor to create new builder.
@@ -87,6 +91,11 @@ public class BankAccount implements ServiceObject {
     public Builder setIban( String pIban ) {
       // Assign value to attribute
       iban = pIban;
+      return this;
+    }
+
+    public Builder setIbanXYZ( int value ) {
+      ibanXYZ = value;
       return this;
     }
 

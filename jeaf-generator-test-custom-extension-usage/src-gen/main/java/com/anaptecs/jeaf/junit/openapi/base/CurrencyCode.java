@@ -9,6 +9,7 @@ import javax.validation.ConstraintViolationException;
 import javax.validation.constraints.Size;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
+import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -73,8 +74,11 @@ public class CurrencyCode implements ServiceObject {
      * <b>Default Value:</b> <code>"CHF"</code> <br/>
      * <b>Example:</b> <code>CHF</code>
      */
+    @BuilderPropertyDeclaration
     @Size(min = 3, max = 3)
     private String code = "CHF";
+
+    private int codeXYZ = 0;
 
     /**
      * Use {@link CurrencyCode#builder()} instead of private constructor to create new builder.
@@ -101,6 +105,11 @@ public class CurrencyCode implements ServiceObject {
     public Builder setCode( String pCode ) {
       // Assign value to attribute
       code = pCode;
+      return this;
+    }
+
+    public Builder setCodeXYZ( int value ) {
+      codeXYZ = value;
       return this;
     }
 

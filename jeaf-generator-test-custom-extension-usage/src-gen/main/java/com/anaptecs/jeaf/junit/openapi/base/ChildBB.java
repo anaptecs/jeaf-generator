@@ -15,6 +15,7 @@ import java.util.Set;
 import javax.validation.ConstraintViolationException;
 import javax.validation.constraints.Size;
 
+import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -129,23 +130,38 @@ public class ChildBB extends ChildB {
    * Class implements builder to create a new instance of class <code>ChildBB</code>.
    */
   public static class Builder extends ChildB.Builder {
+    @BuilderPropertyDeclaration
     private Long childBBAttribute;
+
+    private int childBBAttributeXYZ = 0;
 
     /**
      * @deprecated Please keep <code>hands off</code>. (<b>since:</b> TBD, <b>removed with:</b> TBD)
      */
+    @BuilderPropertyDeclaration
     @Deprecated
     private int deprecatedAttribute;
 
+    private int deprecatedAttributeXYZ = 0;
+
+    @BuilderPropertyDeclaration
     @Deprecated
     private Set<ChildB> deprecatedBs;
 
+    private int deprecatedBsXYZ = 0;
+
+    @BuilderPropertyDeclaration
     @Deprecated
     private ParentClass deprecatedParent;
 
+    private int deprecatedParentXYZ = 0;
+
+    @BuilderPropertyDeclaration
     @Deprecated
     @Size(min = 0, max = 4711)
     private byte[] deprecatedArray;
+
+    private int deprecatedArrayXYZ = 0;
 
     /**
      * Use {@link ChildBB#builder()} instead of private constructor to create new builder.
@@ -299,6 +315,11 @@ public class ChildBB extends ChildB {
       return this;
     }
 
+    public Builder setChildBBAttributeXYZ( int value ) {
+      childBBAttributeXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets attribute {@link #deprecatedAttribute}.<br/>
      *
@@ -310,6 +331,11 @@ public class ChildBB extends ChildB {
     public Builder setDeprecatedAttribute( int pDeprecatedAttribute ) {
       // Assign value to attribute
       deprecatedAttribute = pDeprecatedAttribute;
+      return this;
+    }
+
+    public Builder setDeprecatedAttributeXYZ( int value ) {
+      deprecatedAttributeXYZ = value;
       return this;
     }
 
@@ -348,6 +374,11 @@ public class ChildBB extends ChildB {
       return this;
     }
 
+    public Builder setDeprecatedBsXYZ( int value ) {
+      deprecatedBsXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets association {@link #deprecatedParent}.<br/>
      *
@@ -357,6 +388,11 @@ public class ChildBB extends ChildB {
     @Deprecated
     public Builder setDeprecatedParent( ParentClass pDeprecatedParent ) {
       deprecatedParent = pDeprecatedParent;
+      return this;
+    }
+
+    public Builder setDeprecatedParentXYZ( int value ) {
+      deprecatedParentXYZ = value;
       return this;
     }
 
@@ -376,6 +412,11 @@ public class ChildBB extends ChildB {
       else {
         deprecatedArray = null;
       }
+      return this;
+    }
+
+    public Builder setDeprecatedArrayXYZ( int value ) {
+      deprecatedArrayXYZ = value;
       return this;
     }
 

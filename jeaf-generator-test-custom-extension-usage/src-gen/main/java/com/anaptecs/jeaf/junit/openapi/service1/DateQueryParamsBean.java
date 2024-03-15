@@ -18,6 +18,7 @@ import java.util.Calendar;
 import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
+import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -173,29 +174,59 @@ public class DateQueryParamsBean implements ServiceObject {
    * Class implements builder to create a new instance of class <code>DateQueryParamsBean</code>.
    */
   public static class Builder {
+    @BuilderPropertyDeclaration
     private OffsetDateTime offsetDateTime;
 
+    private int offsetDateTimeXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private OffsetTime offsetTime;
+
+    private int offsetTimeXYZ = 0;
 
     /**
      * <p/>
      * <b>Breaking Change with 2.0:</b> Has to be in the past
      */
+    @BuilderPropertyDeclaration
     private LocalDateTime localDateTime;
 
+    private int localDateTimeXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private LocalTime localTime;
 
+    private int localTimeXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private LocalDate localDate;
 
+    private int localDateXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private java.util.Date utilDate;
 
+    private int utilDateXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private Calendar calendar;
 
+    private int calendarXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private Timestamp sqlTimestamp;
 
+    private int sqlTimestampXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private Time sqlTime;
 
+    private int sqlTimeXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private Date sqlDate;
+
+    private int sqlDateXYZ = 0;
 
     /**
      * Use {@link DateQueryParamsBean#builder()} instead of private constructor to create new builder.
@@ -235,6 +266,11 @@ public class DateQueryParamsBean implements ServiceObject {
       return this;
     }
 
+    public Builder setOffsetDateTimeXYZ( int value ) {
+      offsetDateTimeXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets attribute {@link #offsetTime}.<br/>
      *
@@ -244,6 +280,11 @@ public class DateQueryParamsBean implements ServiceObject {
     public Builder setOffsetTime( OffsetTime pOffsetTime ) {
       // Assign value to attribute
       offsetTime = pOffsetTime;
+      return this;
+    }
+
+    public Builder setOffsetTimeXYZ( int value ) {
+      offsetTimeXYZ = value;
       return this;
     }
 
@@ -261,6 +302,11 @@ public class DateQueryParamsBean implements ServiceObject {
       return this;
     }
 
+    public Builder setLocalDateTimeXYZ( int value ) {
+      localDateTimeXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets attribute {@link #localTime}.<br/>
      *
@@ -270,6 +316,11 @@ public class DateQueryParamsBean implements ServiceObject {
     public Builder setLocalTime( LocalTime pLocalTime ) {
       // Assign value to attribute
       localTime = pLocalTime;
+      return this;
+    }
+
+    public Builder setLocalTimeXYZ( int value ) {
+      localTimeXYZ = value;
       return this;
     }
 
@@ -285,6 +336,11 @@ public class DateQueryParamsBean implements ServiceObject {
       return this;
     }
 
+    public Builder setLocalDateXYZ( int value ) {
+      localDateXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets attribute {@link #utilDate}.<br/>
      *
@@ -294,6 +350,11 @@ public class DateQueryParamsBean implements ServiceObject {
     public Builder setUtilDate( java.util.Date pUtilDate ) {
       // Assign value to attribute
       utilDate = pUtilDate;
+      return this;
+    }
+
+    public Builder setUtilDateXYZ( int value ) {
+      utilDateXYZ = value;
       return this;
     }
 
@@ -309,6 +370,11 @@ public class DateQueryParamsBean implements ServiceObject {
       return this;
     }
 
+    public Builder setCalendarXYZ( int value ) {
+      calendarXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets attribute {@link #sqlTimestamp}.<br/>
      *
@@ -318,6 +384,11 @@ public class DateQueryParamsBean implements ServiceObject {
     public Builder setSqlTimestamp( Timestamp pSqlTimestamp ) {
       // Assign value to attribute
       sqlTimestamp = pSqlTimestamp;
+      return this;
+    }
+
+    public Builder setSqlTimestampXYZ( int value ) {
+      sqlTimestampXYZ = value;
       return this;
     }
 
@@ -333,6 +404,11 @@ public class DateQueryParamsBean implements ServiceObject {
       return this;
     }
 
+    public Builder setSqlTimeXYZ( int value ) {
+      sqlTimeXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets attribute {@link #sqlDate}.<br/>
      *
@@ -342,6 +418,11 @@ public class DateQueryParamsBean implements ServiceObject {
     public Builder setSqlDate( Date pSqlDate ) {
       // Assign value to attribute
       sqlDate = pSqlDate;
+      return this;
+    }
+
+    public Builder setSqlDateXYZ( int value ) {
+      sqlDateXYZ = value;
       return this;
     }
 

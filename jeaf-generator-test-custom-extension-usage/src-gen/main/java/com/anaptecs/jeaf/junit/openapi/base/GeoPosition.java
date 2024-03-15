@@ -7,6 +7,7 @@ package com.anaptecs.jeaf.junit.openapi.base;
 
 import javax.validation.ConstraintViolationException;
 
+import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 
@@ -69,9 +70,15 @@ public class GeoPosition extends PlaceRef {
    * Class implements builder to create a new instance of class <code>GeoPosition</code>.
    */
   public static class Builder extends PlaceRef.Builder {
+    @BuilderPropertyDeclaration
     private int longitude;
 
+    private int longitudeXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private int latitude;
+
+    private int latitudeXYZ = 0;
 
     /**
      * Use {@link GeoPosition#builder()} instead of private constructor to create new builder.
@@ -117,6 +124,11 @@ public class GeoPosition extends PlaceRef {
       return this;
     }
 
+    public Builder setLongitudeXYZ( int value ) {
+      longitudeXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets attribute {@link #latitude}.<br/>
      *
@@ -126,6 +138,11 @@ public class GeoPosition extends PlaceRef {
     public Builder setLatitude( int pLatitude ) {
       // Assign value to attribute
       latitude = pLatitude;
+      return this;
+    }
+
+    public Builder setLatitudeXYZ( int value ) {
+      latitudeXYZ = value;
       return this;
     }
 

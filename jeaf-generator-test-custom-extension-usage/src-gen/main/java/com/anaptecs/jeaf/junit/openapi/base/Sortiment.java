@@ -15,6 +15,7 @@ import java.util.Set;
 import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
+import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -102,13 +103,19 @@ public class Sortiment implements ServiceObject {
    * Class implements builder to create a new instance of class <code>Sortiment</code>.
    */
   public static class Builder {
+    @BuilderPropertyDeclaration
     private Set<Product> products;
+
+    private int productsXYZ = 0;
 
     /**
      * <br/>
      * <b>Default Value:</b> <code>4711</code>
      */
+    @BuilderPropertyDeclaration
     private Integer value = 4711;
+
+    private int valueXYZ = 0;
 
     /**
      * Use {@link Sortiment#builder()} instead of private constructor to create new builder.
@@ -160,6 +167,11 @@ public class Sortiment implements ServiceObject {
       return this;
     }
 
+    public Builder setProductsXYZ( int value ) {
+      productsXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets attribute {@link #value}.<br/>
      *
@@ -169,6 +181,11 @@ public class Sortiment implements ServiceObject {
     public Builder setValue( Integer pValue ) {
       // Assign value to attribute
       value = pValue;
+      return this;
+    }
+
+    public Builder setValueXYZ( int value ) {
+      valueXYZ = value;
       return this;
     }
 

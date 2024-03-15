@@ -15,6 +15,7 @@ import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
+import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -124,15 +125,30 @@ public class CodeTypeUsageTest implements ServiceObject {
    * Class implements builder to create a new instance of class <code>CodeTypeUsageTest</code>.
    */
   public static class Builder {
+    @BuilderPropertyDeclaration
     private BooleanCodeType booleanCode;
 
+    private int booleanCodeXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private Set<BooleanCodeType> booleanCodeAssociation;
 
+    private int booleanCodeAssociationXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private Set<ShortCodeType> shortCodeTypeAssociation;
 
+    private int shortCodeTypeAssociationXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private StringCodeType stringCode;
 
+    private int stringCodeXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private ShortCode shortCode;
+
+    private int shortCodeXYZ = 0;
 
     /**
      * Use {@link CodeTypeUsageTest#builder()} instead of private constructor to create new builder.
@@ -163,6 +179,11 @@ public class CodeTypeUsageTest implements ServiceObject {
     public Builder setBooleanCode( BooleanCodeType pBooleanCode ) {
       // Assign value to attribute
       booleanCode = pBooleanCode;
+      return this;
+    }
+
+    public Builder setBooleanCodeXYZ( int value ) {
+      booleanCodeXYZ = value;
       return this;
     }
 
@@ -200,6 +221,11 @@ public class CodeTypeUsageTest implements ServiceObject {
       return this;
     }
 
+    public Builder setBooleanCodeAssociationXYZ( int value ) {
+      booleanCodeAssociationXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets association {@link #shortCodeTypeAssociation}.<br/>
      *
@@ -234,6 +260,11 @@ public class CodeTypeUsageTest implements ServiceObject {
       return this;
     }
 
+    public Builder setShortCodeTypeAssociationXYZ( int value ) {
+      shortCodeTypeAssociationXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets attribute {@link #stringCode}.<br/>
      *
@@ -246,6 +277,11 @@ public class CodeTypeUsageTest implements ServiceObject {
       return this;
     }
 
+    public Builder setStringCodeXYZ( int value ) {
+      stringCodeXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets association {@link #shortCode}.<br/>
      *
@@ -254,6 +290,11 @@ public class CodeTypeUsageTest implements ServiceObject {
      */
     public Builder setShortCode( ShortCode pShortCode ) {
       shortCode = pShortCode;
+      return this;
+    }
+
+    public Builder setShortCodeXYZ( int value ) {
+      shortCodeXYZ = value;
       return this;
     }
 

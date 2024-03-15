@@ -8,6 +8,7 @@ package com.anaptecs.jeaf.junit.openapi.base;
 import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
+import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -99,13 +100,25 @@ public class BookingID implements ServiceObject {
    * Class implements builder to create a new instance of class <code>BookingID</code>.
    */
   public static class Builder {
+    @BuilderPropertyDeclaration
     private String referenceID;
 
+    private int referenceIDXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private String externalRefID;
 
+    private int externalRefIDXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private InventoryType inventory;
 
+    private int inventoryXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private BookingCode bookingCode;
+
+    private int bookingCodeXYZ = 0;
 
     /**
      * Use {@link BookingID#builder()} instead of private constructor to create new builder.
@@ -138,6 +151,11 @@ public class BookingID implements ServiceObject {
       return this;
     }
 
+    public Builder setReferenceIDXYZ( int value ) {
+      referenceIDXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets attribute {@link #externalRefID}.<br/>
      *
@@ -147,6 +165,11 @@ public class BookingID implements ServiceObject {
     public Builder setExternalRefID( String pExternalRefID ) {
       // Assign value to attribute
       externalRefID = pExternalRefID;
+      return this;
+    }
+
+    public Builder setExternalRefIDXYZ( int value ) {
+      externalRefIDXYZ = value;
       return this;
     }
 
@@ -161,6 +184,11 @@ public class BookingID implements ServiceObject {
       return this;
     }
 
+    public Builder setInventoryXYZ( int value ) {
+      inventoryXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets association {@link #bookingCode}.<br/>
      *
@@ -169,6 +197,11 @@ public class BookingID implements ServiceObject {
      */
     public Builder setBookingCode( BookingCode pBookingCode ) {
       bookingCode = pBookingCode;
+      return this;
+    }
+
+    public Builder setBookingCodeXYZ( int value ) {
+      bookingCodeXYZ = value;
       return this;
     }
 

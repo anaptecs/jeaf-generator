@@ -12,6 +12,7 @@ import java.util.Map;
 import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
+import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -80,9 +81,15 @@ public class TechnicalHeaderContext implements ServiceObject {
    * Class implements builder to create a new instance of class <code>TechnicalHeaderContext</code>.
    */
   public static class Builder {
+    @BuilderPropertyDeclaration
     private String reseller;
 
+    private int resellerXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private String authenticationToken;
+
+    private int authenticationTokenXYZ = 0;
 
     /**
      * Use {@link TechnicalHeaderContext#builder()} instead of private constructor to create new builder.
@@ -114,6 +121,11 @@ public class TechnicalHeaderContext implements ServiceObject {
       return this;
     }
 
+    public Builder setResellerXYZ( int value ) {
+      resellerXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets attribute {@link #authenticationToken}.<br/>
      *
@@ -123,6 +135,11 @@ public class TechnicalHeaderContext implements ServiceObject {
     public Builder setAuthenticationToken( String pAuthenticationToken ) {
       // Assign value to attribute
       authenticationToken = pAuthenticationToken;
+      return this;
+    }
+
+    public Builder setAuthenticationTokenXYZ( int value ) {
+      authenticationTokenXYZ = value;
       return this;
     }
 

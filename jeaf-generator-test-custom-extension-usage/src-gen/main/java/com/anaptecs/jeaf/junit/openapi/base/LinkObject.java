@@ -8,6 +8,7 @@ package com.anaptecs.jeaf.junit.openapi.base;
 import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
+import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -60,7 +61,10 @@ public class LinkObject implements ServiceObject {
    * Class implements builder to create a new instance of class <code>LinkObject</code>.
    */
   public static class Builder {
+    @BuilderPropertyDeclaration
     private String href;
+
+    private int hrefXYZ = 0;
 
     /**
      * Use {@link LinkObject#builder()} instead of private constructor to create new builder.
@@ -87,6 +91,11 @@ public class LinkObject implements ServiceObject {
     public Builder setHref( String pHref ) {
       // Assign value to attribute
       href = pHref;
+      return this;
+    }
+
+    public Builder setHrefXYZ( int value ) {
+      hrefXYZ = value;
       return this;
     }
 

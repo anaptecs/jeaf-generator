@@ -8,6 +8,7 @@ package com.anaptecs.jeaf.junit.openapi.base;
 import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
+import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -110,20 +111,32 @@ public abstract class ChannelBase implements ServiceObject {
     /**
      * Type of the channel
      */
+    @BuilderPropertyDeclaration
     private ChannelType channelType;
+
+    private int channelTypeXYZ = 0;
 
     /**
      * The business code of the channel
      */
+    @BuilderPropertyDeclaration
     private ChannelCode channelCode;
 
+    private int channelCodeXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private int code;
+
+    private int codeXYZ = 0;
 
     /**
      * <br/>
      * <b>Default Value:</b> <code>true</code>
      */
+    @BuilderPropertyDeclaration
     private boolean selfServiceChannel = true;
+
+    private int selfServiceChannelXYZ = 0;
 
     /**
      * Use {@link Channel.builder()} instead of protected constructor to create new builder.
@@ -155,6 +168,11 @@ public abstract class ChannelBase implements ServiceObject {
       return this;
     }
 
+    public BuilderBase setChannelTypeXYZ( int value ) {
+      channelTypeXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets association {@link #channelCode}.<br/>
      *
@@ -163,6 +181,11 @@ public abstract class ChannelBase implements ServiceObject {
      */
     public BuilderBase setChannelCode( ChannelCode pChannelCode ) {
       channelCode = pChannelCode;
+      return this;
+    }
+
+    public BuilderBase setChannelCodeXYZ( int value ) {
+      channelCodeXYZ = value;
       return this;
     }
 
@@ -178,6 +201,11 @@ public abstract class ChannelBase implements ServiceObject {
       return this;
     }
 
+    public BuilderBase setCodeXYZ( int value ) {
+      codeXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets attribute {@link #selfServiceChannel}.<br/>
      *
@@ -187,6 +215,11 @@ public abstract class ChannelBase implements ServiceObject {
     public BuilderBase setSelfServiceChannel( boolean pSelfServiceChannel ) {
       // Assign value to attribute
       selfServiceChannel = pSelfServiceChannel;
+      return this;
+    }
+
+    public BuilderBase setSelfServiceChannelXYZ( int value ) {
+      selfServiceChannelXYZ = value;
       return this;
     }
 

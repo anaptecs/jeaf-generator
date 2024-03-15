@@ -8,6 +8,7 @@ package com.anaptecs.jeaf.junit.openapi.base;
 import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
+import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -137,21 +138,45 @@ public class HeavyDataTypeUser implements ServiceObject {
    * Class implements builder to create a new instance of class <code>HeavyDataTypeUser</code>.
    */
   public static class Builder {
+    @BuilderPropertyDeclaration
     private BooleanCode booleanCode;
 
+    private int booleanCodeXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private ByteCode byteCode;
 
+    private int byteCodeXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private ShortCode shortCode;
 
+    private int shortCodeXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private IntegerCode integerCode;
 
+    private int integerCodeXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private FloatCode floatCode;
 
+    private int floatCodeXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private DoubleCode doubleCode;
 
+    private int doubleCodeXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private BigIntegerCode bigInegerCode;
 
+    private int bigInegerCodeXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private BigDecimalCode bigDecimalCode;
+
+    private int bigDecimalCodeXYZ = 0;
 
     /**
      * Use {@link HeavyDataTypeUser#builder()} instead of private constructor to create new builder.
@@ -188,6 +213,11 @@ public class HeavyDataTypeUser implements ServiceObject {
       return this;
     }
 
+    public Builder setBooleanCodeXYZ( int value ) {
+      booleanCodeXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets attribute {@link #byteCode}.<br/>
      *
@@ -197,6 +227,11 @@ public class HeavyDataTypeUser implements ServiceObject {
     public Builder setByteCode( ByteCode pByteCode ) {
       // Assign value to attribute
       byteCode = pByteCode;
+      return this;
+    }
+
+    public Builder setByteCodeXYZ( int value ) {
+      byteCodeXYZ = value;
       return this;
     }
 
@@ -212,6 +247,11 @@ public class HeavyDataTypeUser implements ServiceObject {
       return this;
     }
 
+    public Builder setShortCodeXYZ( int value ) {
+      shortCodeXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets attribute {@link #integerCode}.<br/>
      *
@@ -221,6 +261,11 @@ public class HeavyDataTypeUser implements ServiceObject {
     public Builder setIntegerCode( IntegerCode pIntegerCode ) {
       // Assign value to attribute
       integerCode = pIntegerCode;
+      return this;
+    }
+
+    public Builder setIntegerCodeXYZ( int value ) {
+      integerCodeXYZ = value;
       return this;
     }
 
@@ -236,6 +281,11 @@ public class HeavyDataTypeUser implements ServiceObject {
       return this;
     }
 
+    public Builder setFloatCodeXYZ( int value ) {
+      floatCodeXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets attribute {@link #doubleCode}.<br/>
      *
@@ -245,6 +295,11 @@ public class HeavyDataTypeUser implements ServiceObject {
     public Builder setDoubleCode( DoubleCode pDoubleCode ) {
       // Assign value to attribute
       doubleCode = pDoubleCode;
+      return this;
+    }
+
+    public Builder setDoubleCodeXYZ( int value ) {
+      doubleCodeXYZ = value;
       return this;
     }
 
@@ -260,6 +315,11 @@ public class HeavyDataTypeUser implements ServiceObject {
       return this;
     }
 
+    public Builder setBigInegerCodeXYZ( int value ) {
+      bigInegerCodeXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets attribute {@link #bigDecimalCode}.<br/>
      *
@@ -269,6 +329,11 @@ public class HeavyDataTypeUser implements ServiceObject {
     public Builder setBigDecimalCode( BigDecimalCode pBigDecimalCode ) {
       // Assign value to attribute
       bigDecimalCode = pBigDecimalCode;
+      return this;
+    }
+
+    public Builder setBigDecimalCodeXYZ( int value ) {
+      bigDecimalCodeXYZ = value;
       return this;
     }
 

@@ -8,6 +8,7 @@ package com.anaptecs.jeaf.junit.openapi.base;
 import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
+import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -79,7 +80,10 @@ public class BidirectB implements ServiceObject {
     /**
      * the A
      */
+    @BuilderPropertyDeclaration
     private BidirectA a;
+
+    private int aXYZ = 0;
 
     /**
      * Use {@link BidirectB#builder()} instead of private constructor to create new builder.
@@ -105,6 +109,11 @@ public class BidirectB implements ServiceObject {
      */
     public Builder setA( BidirectA pA ) {
       a = pA;
+      return this;
+    }
+
+    public Builder setAXYZ( int value ) {
+      aXYZ = value;
       return this;
     }
 

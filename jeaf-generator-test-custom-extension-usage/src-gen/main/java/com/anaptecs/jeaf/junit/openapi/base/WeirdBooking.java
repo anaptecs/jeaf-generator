@@ -15,6 +15,7 @@ import java.util.Set;
 
 import javax.validation.ConstraintViolationException;
 
+import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.junit.openapi.composite.ComplexBookingID;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
@@ -152,34 +153,52 @@ public class WeirdBooking extends WeirdParent {
    * Class implements builder to create a new instance of class <code>WeirdBooking</code>.
    */
   public static class Builder extends WeirdParent.Builder {
+    @BuilderPropertyDeclaration
     private ComplexBookingID booking;
+
+    private int bookingXYZ = 0;
 
     /**
      * additional bookings
      */
+    @BuilderPropertyDeclaration
     private List<ComplexBookingID> additionalBookings;
+
+    private int additionalBookingsXYZ = 0;
 
     /**
      * soft link<br/>
      * 2nd line<br/>
      * 3rd line
      */
+    @BuilderPropertyDeclaration
     private VersionedObjectSoftLink versionedObjectSoftLink;
 
+    private int versionedObjectSoftLinkXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private int childProperty;
+
+    private int childPropertyXYZ = 0;
 
     /**
      * the real booking
      * <p/>
      * <b>Breaking Change with 2.0:</b> Association will be mandatory.
      */
+    @BuilderPropertyDeclaration
     private Booking realBooking;
+
+    private int realBookingXYZ = 0;
 
     /**
      * <p/>
      * <b>Breaking Change with 2.1:</b> Association will required at least 1 object.
      */
+    @BuilderPropertyDeclaration
     private Set<InventoryType> inventories;
+
+    private int inventoriesXYZ = 0;
 
     /**
      * Use {@link WeirdBooking#builder()} instead of private constructor to create new builder.
@@ -267,6 +286,11 @@ public class WeirdBooking extends WeirdParent {
       return this;
     }
 
+    public Builder setBookingXYZ( int value ) {
+      bookingXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets association {@link #additionalBookings}.<br/>
      *
@@ -301,6 +325,11 @@ public class WeirdBooking extends WeirdParent {
       return this;
     }
 
+    public Builder setAdditionalBookingsXYZ( int value ) {
+      additionalBookingsXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets association {@link #versionedObjectSoftLink}.<br/>
      *
@@ -309,6 +338,11 @@ public class WeirdBooking extends WeirdParent {
      */
     public Builder setVersionedObjectSoftLink( VersionedObjectSoftLink pVersionedObjectSoftLink ) {
       versionedObjectSoftLink = pVersionedObjectSoftLink;
+      return this;
+    }
+
+    public Builder setVersionedObjectSoftLinkXYZ( int value ) {
+      versionedObjectSoftLinkXYZ = value;
       return this;
     }
 
@@ -324,6 +358,11 @@ public class WeirdBooking extends WeirdParent {
       return this;
     }
 
+    public Builder setChildPropertyXYZ( int value ) {
+      childPropertyXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets association {@link #realBooking}.<br/>
      * <p/>
@@ -334,6 +373,11 @@ public class WeirdBooking extends WeirdParent {
      */
     public Builder setRealBooking( Booking pRealBooking ) {
       realBooking = pRealBooking;
+      return this;
+    }
+
+    public Builder setRealBookingXYZ( int value ) {
+      realBookingXYZ = value;
       return this;
     }
 
@@ -390,6 +434,11 @@ public class WeirdBooking extends WeirdParent {
       else {
         inventories = null;
       }
+      return this;
+    }
+
+    public Builder setInventoriesXYZ( int value ) {
+      inventoriesXYZ = value;
       return this;
     }
 

@@ -6,6 +6,7 @@
 package com.anaptecs.jeaf.junit.openapi.base;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
+import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
@@ -48,7 +49,10 @@ public abstract class PlaceRef implements ServiceObject {
    * Class implements builder to create a new instance of class <code>PlaceRef</code>.
    */
   public static abstract class Builder {
+    @BuilderPropertyDeclaration
     private String name;
+
+    private int nameXYZ = 0;
 
     /**
      * Use {@link PlaceRef#builder()} instead of private constructor to create new builder.
@@ -75,6 +79,11 @@ public abstract class PlaceRef implements ServiceObject {
     public Builder setName( String pName ) {
       // Assign value to attribute
       name = pName;
+      return this;
+    }
+
+    public Builder setNameXYZ( int value ) {
+      nameXYZ = value;
       return this;
     }
   }

@@ -9,6 +9,7 @@ import javax.validation.ConstraintViolationException;
 import javax.validation.constraints.Max;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
+import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -62,8 +63,11 @@ public class ShortCode implements ServiceObject {
    * Class implements builder to create a new instance of class <code>ShortCode</code>.
    */
   public static class Builder {
+    @BuilderPropertyDeclaration
     @Max(value = 4711)
     private short code;
+
+    private int codeXYZ = 0;
 
     /**
      * Use {@link ShortCode#builder()} instead of private constructor to create new builder.
@@ -90,6 +94,11 @@ public class ShortCode implements ServiceObject {
     public Builder setCode( short pCode ) {
       // Assign value to attribute
       code = pCode;
+      return this;
+    }
+
+    public Builder setCodeXYZ( int value ) {
+      codeXYZ = value;
       return this;
     }
 

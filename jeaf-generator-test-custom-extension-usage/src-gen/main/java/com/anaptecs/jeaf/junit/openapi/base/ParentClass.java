@@ -16,6 +16,7 @@ import java.util.Set;
 import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
+import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -123,21 +124,33 @@ public class ParentClass implements ServiceObject {
    * Class implements builder to create a new instance of class <code>ParentClass</code>.
    */
   public static class Builder {
+    @BuilderPropertyDeclaration
     private String parentAttribute;
 
+    private int parentAttributeXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private Set<IBAN> ibans;
+
+    private int ibansXYZ = 0;
 
     /**
      * I would like to document references to other types.
      */
+    @BuilderPropertyDeclaration
     @Deprecated
     private BankAccount theBankAccount;
+
+    private int theBankAccountXYZ = 0;
 
     /**
      * Association is still there be SemVer compliant.
      */
+    @BuilderPropertyDeclaration
     @Deprecated
     private List<BankAccount> legacyBankAccounts;
+
+    private int legacyBankAccountsXYZ = 0;
 
     /**
      * Use {@link ParentClass#builder()} instead of private constructor to create new builder.
@@ -167,6 +180,11 @@ public class ParentClass implements ServiceObject {
     public Builder setParentAttribute( String pParentAttribute ) {
       // Assign value to attribute
       parentAttribute = pParentAttribute;
+      return this;
+    }
+
+    public Builder setParentAttributeXYZ( int value ) {
+      parentAttributeXYZ = value;
       return this;
     }
 
@@ -203,6 +221,11 @@ public class ParentClass implements ServiceObject {
       return this;
     }
 
+    public Builder setIbansXYZ( int value ) {
+      ibansXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets association {@link #theBankAccount}.<br/>
      *
@@ -212,6 +235,11 @@ public class ParentClass implements ServiceObject {
     @Deprecated
     public Builder setTheBankAccount( BankAccount pTheBankAccount ) {
       theBankAccount = pTheBankAccount;
+      return this;
+    }
+
+    public Builder setTheBankAccountXYZ( int value ) {
+      theBankAccountXYZ = value;
       return this;
     }
 
@@ -248,6 +276,11 @@ public class ParentClass implements ServiceObject {
         }
         legacyBankAccounts.addAll(Arrays.asList(pLegacyBankAccounts));
       }
+      return this;
+    }
+
+    public Builder setLegacyBankAccountsXYZ( int value ) {
+      legacyBankAccountsXYZ = value;
       return this;
     }
 

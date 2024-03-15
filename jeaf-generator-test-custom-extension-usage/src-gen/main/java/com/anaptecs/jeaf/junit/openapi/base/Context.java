@@ -14,6 +14,7 @@ import javax.validation.ConstraintViolationException;
 import javax.validation.constraints.NotEmpty;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
+import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -131,22 +132,40 @@ public class Context implements ServiceObject {
    * Class implements builder to create a new instance of class <code>Context</code>.
    */
   public static class Builder {
+    @BuilderPropertyDeclaration
     @NotEmpty
     private String accessToken;
+
+    private int accessTokenXYZ = 0;
 
     /**
      * <br/>
      * <b>Example:</b> <code>en</code>
      */
+    @BuilderPropertyDeclaration
     private Locale language;
 
+    private int languageXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private long resellerID;
 
+    private int resellerIDXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private long pathParam;
 
+    private int pathParamXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private String queryParam;
 
+    private int queryParamXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private IntegerCodeType intCode;
+
+    private int intCodeXYZ = 0;
 
     /**
      * Use {@link Context#builder()} instead of private constructor to create new builder.
@@ -181,6 +200,11 @@ public class Context implements ServiceObject {
       return this;
     }
 
+    public Builder setAccessTokenXYZ( int value ) {
+      accessTokenXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets attribute {@link #language}.<br/>
      *
@@ -190,6 +214,11 @@ public class Context implements ServiceObject {
     public Builder setLanguage( Locale pLanguage ) {
       // Assign value to attribute
       language = pLanguage;
+      return this;
+    }
+
+    public Builder setLanguageXYZ( int value ) {
+      languageXYZ = value;
       return this;
     }
 
@@ -205,6 +234,11 @@ public class Context implements ServiceObject {
       return this;
     }
 
+    public Builder setResellerIDXYZ( int value ) {
+      resellerIDXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets attribute {@link #pathParam}.<br/>
      *
@@ -214,6 +248,11 @@ public class Context implements ServiceObject {
     public Builder setPathParam( long pPathParam ) {
       // Assign value to attribute
       pathParam = pPathParam;
+      return this;
+    }
+
+    public Builder setPathParamXYZ( int value ) {
+      pathParamXYZ = value;
       return this;
     }
 
@@ -229,6 +268,11 @@ public class Context implements ServiceObject {
       return this;
     }
 
+    public Builder setQueryParamXYZ( int value ) {
+      queryParamXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets attribute {@link #intCode}.<br/>
      *
@@ -238,6 +282,11 @@ public class Context implements ServiceObject {
     public Builder setIntCode( IntegerCodeType pIntCode ) {
       // Assign value to attribute
       intCode = pIntCode;
+      return this;
+    }
+
+    public Builder setIntCodeXYZ( int value ) {
+      intCodeXYZ = value;
       return this;
     }
 

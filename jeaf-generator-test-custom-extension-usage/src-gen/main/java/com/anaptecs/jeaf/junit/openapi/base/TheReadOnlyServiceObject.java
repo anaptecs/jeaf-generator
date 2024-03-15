@@ -13,6 +13,7 @@ import java.util.Set;
 import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
+import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -116,21 +117,33 @@ public class TheReadOnlyServiceObject implements ServiceObject {
    * Class implements builder to create a new instance of class <code>TheReadOnlyServiceObject</code>.
    */
   public static class Builder {
+    @BuilderPropertyDeclaration
     private String name;
+
+    private int nameXYZ = 0;
 
     /**
      * <p/>
      * <b>Breaking Change with PI 16:</b> At least one bit will be expected.
      */
+    @BuilderPropertyDeclaration
     private boolean[] bits;
 
+    private int bitsXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private Set<BookingCode> bookingCodes;
+
+    private int bookingCodesXYZ = 0;
 
     /**
      * @deprecated Let's reproduce #65 (<b>since:</b> not too long, <b>removed with:</b> 99.9)
      */
+    @BuilderPropertyDeclaration
     @Deprecated
     private InventoryType inventoryType;
+
+    private int inventoryTypeXYZ = 0;
 
     /**
      * Use {@link TheReadOnlyServiceObject#builder()} instead of private constructor to create new builder.
@@ -164,6 +177,11 @@ public class TheReadOnlyServiceObject implements ServiceObject {
       return this;
     }
 
+    public Builder setNameXYZ( int value ) {
+      nameXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets attribute {@link #bits}.<br/>
      * <p/>
@@ -181,6 +199,11 @@ public class TheReadOnlyServiceObject implements ServiceObject {
       else {
         bits = null;
       }
+      return this;
+    }
+
+    public Builder setBitsXYZ( int value ) {
+      bitsXYZ = value;
       return this;
     }
 
@@ -217,6 +240,11 @@ public class TheReadOnlyServiceObject implements ServiceObject {
       return this;
     }
 
+    public Builder setBookingCodesXYZ( int value ) {
+      bookingCodesXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets association {@link #inventoryType}.<br/>
      *
@@ -227,6 +255,11 @@ public class TheReadOnlyServiceObject implements ServiceObject {
     @Deprecated
     public Builder setInventoryType( InventoryType pInventoryType ) {
       inventoryType = pInventoryType;
+      return this;
+    }
+
+    public Builder setInventoryTypeXYZ( int value ) {
+      inventoryTypeXYZ = value;
       return this;
     }
 

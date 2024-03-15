@@ -10,12 +10,32 @@
 private int «this.name»XYZ = 0;
 «ENDDEFINE»
 
-«DEFINE AfterPropertyAccessors FOR Property»
+«DEFINE AfterBuilderConstructorPropertyInit FOR Property»
+«ENDDEFINE»
+
+«DEFINE AfterClassPropertyAccessors FOR Property»
 public int get«name.toFirstUpper()»XYZ() {
   return «this.name»XYZ;
 }
 
 public void set«name.toFirstUpper()»XYZ(int value) {
   «this.name»XYZ = value;
+}
+«ENDDEFINE»
+
+
+// Property handling inside builders
+«DEFINE BeforeBuilderPropertyDeclaration FOR Property»
+@com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration
+«ENDDEFINE»
+
+«DEFINE AfterBuilderPropertyDeclaration FOR Property»
+private int «this.name»XYZ = 0;
+«ENDDEFINE»
+
+«DEFINE AfterBuilderPropertyAccessors(String builderClassName) FOR Property»
+public «builderClassName» set«name.toFirstUpper()»XYZ(int value) {
+  «this.name»XYZ = value;
+  return this;
 }
 «ENDDEFINE»

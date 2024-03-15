@@ -8,6 +8,7 @@ package com.anaptecs.jeaf.junit.openapi.base;
 import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
+import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -85,13 +86,19 @@ public class EnumTest implements ServiceObject {
      * <br/>
      * <b>Default Value:</b> <code>GREEN</code>
      */
+    @BuilderPropertyDeclaration
     private ExtensibleEnum property = ExtensibleEnum.GREEN;
+
+    private int propertyXYZ = 0;
 
     /**
      * <br/>
      * <b>Default Value:</b> <code>RED</code>
      */
+    @BuilderPropertyDeclaration
     private ExtensibleEnum enumRef = ExtensibleEnum.RED;
+
+    private int enumRefXYZ = 0;
 
     /**
      * Use {@link EnumTest#builder()} instead of private constructor to create new builder.
@@ -122,6 +129,11 @@ public class EnumTest implements ServiceObject {
       return this;
     }
 
+    public Builder setPropertyXYZ( int value ) {
+      propertyXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets association {@link #enumRef}.<br/>
      *
@@ -130,6 +142,11 @@ public class EnumTest implements ServiceObject {
      */
     public Builder setEnumRef( ExtensibleEnum pEnumRef ) {
       enumRef = pEnumRef;
+      return this;
+    }
+
+    public Builder setEnumRefXYZ( int value ) {
+      enumRefXYZ = value;
       return this;
     }
 

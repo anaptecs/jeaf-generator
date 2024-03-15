@@ -8,6 +8,7 @@ package com.anaptecs.jeaf.junit.openapi.base;
 import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
+import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -100,17 +101,26 @@ public class DirectedEdge implements ServiceObject {
     /**
      * The start
      */
+    @BuilderPropertyDeclaration
     private Stop start;
+
+    private int startXYZ = 0;
 
     /**
      * The end
      */
+    @BuilderPropertyDeclaration
     private Stop end;
+
+    private int endXYZ = 0;
 
     /**
      * Another simple comment.
      */
+    @BuilderPropertyDeclaration
     private String link;
+
+    private int linkXYZ = 0;
 
     /**
      * Use {@link DirectedEdge#builder()} instead of private constructor to create new builder.
@@ -141,6 +151,11 @@ public class DirectedEdge implements ServiceObject {
       return this;
     }
 
+    public Builder setStartXYZ( int value ) {
+      startXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets association {@link #end}.<br/>
      *
@@ -149,6 +164,11 @@ public class DirectedEdge implements ServiceObject {
      */
     public Builder setEnd( Stop pEnd ) {
       end = pEnd;
+      return this;
+    }
+
+    public Builder setEndXYZ( int value ) {
+      endXYZ = value;
       return this;
     }
 
@@ -161,6 +181,11 @@ public class DirectedEdge implements ServiceObject {
     public Builder setLink( String pLink ) {
       // Assign value to attribute
       link = pLink;
+      return this;
+    }
+
+    public Builder setLinkXYZ( int value ) {
+      linkXYZ = value;
       return this;
     }
 

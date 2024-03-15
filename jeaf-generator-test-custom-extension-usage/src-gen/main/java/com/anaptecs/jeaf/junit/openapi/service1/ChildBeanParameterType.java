@@ -7,6 +7,7 @@ package com.anaptecs.jeaf.junit.openapi.service1;
 
 import javax.validation.ConstraintViolationException;
 
+import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.junit.openapi.base.ParentBeanParamType;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
@@ -59,7 +60,10 @@ public class ChildBeanParameterType extends ParentBeanParamType {
    * Class implements builder to create a new instance of class <code>ChildBeanParameterType</code>.
    */
   public static class Builder extends ParentBeanParamType.Builder {
+    @BuilderPropertyDeclaration
     private String childProperty;
+
+    private int childPropertyXYZ = 0;
 
     /**
      * Use {@link ChildBeanParameterType#builder()} instead of private constructor to create new builder.
@@ -115,6 +119,11 @@ public class ChildBeanParameterType extends ParentBeanParamType {
     public Builder setChildProperty( String pChildProperty ) {
       // Assign value to attribute
       childProperty = pChildProperty;
+      return this;
+    }
+
+    public Builder setChildPropertyXYZ( int value ) {
+      childPropertyXYZ = value;
       return this;
     }
 

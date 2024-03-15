@@ -8,6 +8,7 @@ package com.anaptecs.jeaf.junit.openapi.base;
 import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
+import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -93,13 +94,25 @@ public class NotInlinedBeanParam implements ServiceObject {
    * Class implements builder to create a new instance of class <code>NotInlinedBeanParam</code>.
    */
   public static class Builder {
+    @BuilderPropertyDeclaration
     private String header;
 
+    private int headerXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private DoubleCode doubleCode;
 
+    private int doubleCodeXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private ExtensibleEnum extensibleEnum;
 
+    private int extensibleEnumXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private BookingID bookingID;
+
+    private int bookingIDXYZ = 0;
 
     /**
      * Use {@link NotInlinedBeanParam#builder()} instead of private constructor to create new builder.
@@ -133,6 +146,11 @@ public class NotInlinedBeanParam implements ServiceObject {
       return this;
     }
 
+    public Builder setHeaderXYZ( int value ) {
+      headerXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets attribute {@link #doubleCode}.<br/>
      *
@@ -142,6 +160,11 @@ public class NotInlinedBeanParam implements ServiceObject {
     public Builder setDoubleCode( DoubleCode pDoubleCode ) {
       // Assign value to attribute
       doubleCode = pDoubleCode;
+      return this;
+    }
+
+    public Builder setDoubleCodeXYZ( int value ) {
+      doubleCodeXYZ = value;
       return this;
     }
 
@@ -157,6 +180,11 @@ public class NotInlinedBeanParam implements ServiceObject {
       return this;
     }
 
+    public Builder setExtensibleEnumXYZ( int value ) {
+      extensibleEnumXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets attribute {@link #bookingID}.<br/>
      *
@@ -166,6 +194,11 @@ public class NotInlinedBeanParam implements ServiceObject {
     public Builder setBookingID( BookingID pBookingID ) {
       // Assign value to attribute
       bookingID = pBookingID;
+      return this;
+    }
+
+    public Builder setBookingIDXYZ( int value ) {
+      bookingIDXYZ = value;
       return this;
     }
 

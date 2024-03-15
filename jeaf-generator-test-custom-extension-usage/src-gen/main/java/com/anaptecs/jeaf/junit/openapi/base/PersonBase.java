@@ -10,6 +10,7 @@ import java.util.List;
 import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 
+import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.common.ObjectIdentity;
@@ -74,9 +75,15 @@ public abstract class PersonBase extends Partner {
      * <p/>
      * <b>Alternate Name:</b> Vorname
      */
+    @BuilderPropertyDeclaration
     private String surname;
 
+    private int surnameXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private String firstName;
+
+    private int firstNameXYZ = 0;
 
     /**
      * Use {@link Person.builder()} instead of protected constructor to create new builder.
@@ -145,6 +152,11 @@ public abstract class PersonBase extends Partner {
       return this;
     }
 
+    public BuilderBase setSurnameXYZ( int value ) {
+      surnameXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets attribute {@link #firstName}.<br/>
      *
@@ -154,6 +166,11 @@ public abstract class PersonBase extends Partner {
     public BuilderBase setFirstName( String pFirstName ) {
       // Assign value to attribute
       firstName = pFirstName;
+      return this;
+    }
+
+    public BuilderBase setFirstNameXYZ( int value ) {
+      firstNameXYZ = value;
       return this;
     }
 

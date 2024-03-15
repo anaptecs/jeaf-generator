@@ -8,6 +8,7 @@ package com.anaptecs.jeaf.junit.openapi.base;
 import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
+import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -60,7 +61,10 @@ public class LongCodeType implements ServiceObject {
    * Class implements builder to create a new instance of class <code>LongCodeType</code>.
    */
   public static class Builder {
+    @BuilderPropertyDeclaration
     private long code;
+
+    private int codeXYZ = 0;
 
     /**
      * Use {@link LongCodeType#builder()} instead of private constructor to create new builder.
@@ -87,6 +91,11 @@ public class LongCodeType implements ServiceObject {
     public Builder setCode( long pCode ) {
       // Assign value to attribute
       code = pCode;
+      return this;
+    }
+
+    public Builder setCodeXYZ( int value ) {
+      codeXYZ = value;
       return this;
     }
 

@@ -17,6 +17,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
+import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -149,27 +150,42 @@ public class MultiValuedDataType implements ServiceObject {
     /**
      * This is my multivalued test header
      */
+    @BuilderPropertyDeclaration
     private List<StringCode> stringCodeHeader;
+
+    private int stringCodeHeaderXYZ = 0;
 
     /**
      * Multivalued query param
      */
+    @BuilderPropertyDeclaration
     private List<LongCode> longCodeQueryParam;
+
+    private int longCodeQueryParamXYZ = 0;
 
     /**
      * so many literals are possible
      */
+    @BuilderPropertyDeclaration
     private List<BooleanLiteralsEnum> literals;
 
+    private int literalsXYZ = 0;
+
+    @BuilderPropertyDeclaration
     @Size(min = 32, max = 64)
     private String stringProperty;
+
+    private int stringPropertyXYZ = 0;
 
     /**
      * long values as multivalued header
      */
+    @BuilderPropertyDeclaration
     @Min(value = 3270)
     @Max(value = 4711)
     private long[] longValues;
+
+    private int longValuesXYZ = 0;
 
     /**
      * Use {@link MultiValuedDataType#builder()} instead of private constructor to create new builder.
@@ -226,6 +242,11 @@ public class MultiValuedDataType implements ServiceObject {
       return this;
     }
 
+    public Builder setStringCodeHeaderXYZ( int value ) {
+      stringCodeHeaderXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets association {@link #longCodeQueryParam}.<br/>
      *
@@ -257,6 +278,11 @@ public class MultiValuedDataType implements ServiceObject {
         }
         longCodeQueryParam.addAll(Arrays.asList(pLongCodeQueryParam));
       }
+      return this;
+    }
+
+    public Builder setLongCodeQueryParamXYZ( int value ) {
+      longCodeQueryParamXYZ = value;
       return this;
     }
 
@@ -310,6 +336,11 @@ public class MultiValuedDataType implements ServiceObject {
       return this;
     }
 
+    public Builder setLiteralsXYZ( int value ) {
+      literalsXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets attribute {@link #stringProperty}.<br/>
      *
@@ -319,6 +350,11 @@ public class MultiValuedDataType implements ServiceObject {
     public Builder setStringProperty( String pStringProperty ) {
       // Assign value to attribute
       stringProperty = pStringProperty;
+      return this;
+    }
+
+    public Builder setStringPropertyXYZ( int value ) {
+      stringPropertyXYZ = value;
       return this;
     }
 
@@ -337,6 +373,11 @@ public class MultiValuedDataType implements ServiceObject {
       else {
         longValues = null;
       }
+      return this;
+    }
+
+    public Builder setLongValuesXYZ( int value ) {
+      longValuesXYZ = value;
       return this;
     }
 

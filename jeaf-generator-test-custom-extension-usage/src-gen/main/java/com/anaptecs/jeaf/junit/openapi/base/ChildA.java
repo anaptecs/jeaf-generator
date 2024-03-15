@@ -8,6 +8,7 @@ package com.anaptecs.jeaf.junit.openapi.base;
 import java.util.List;
 import java.util.Set;
 
+import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 
 /**
@@ -55,7 +56,10 @@ public abstract class ChildA extends ParentClass {
    * Class implements builder to create a new instance of class <code>ChildA</code>.
    */
   public static abstract class Builder extends ParentClass.Builder {
+    @BuilderPropertyDeclaration
     private int childAAttribute;
+
+    private int childAAttributeXYZ = 0;
 
     /**
      * Use {@link ChildA#builder()} instead of private constructor to create new builder.
@@ -164,6 +168,11 @@ public abstract class ChildA extends ParentClass {
     public Builder setChildAAttribute( int pChildAAttribute ) {
       // Assign value to attribute
       childAAttribute = pChildAAttribute;
+      return this;
+    }
+
+    public Builder setChildAAttributeXYZ( int value ) {
+      childAAttributeXYZ = value;
       return this;
     }
   }

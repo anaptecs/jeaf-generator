@@ -9,6 +9,7 @@ import javax.validation.ConstraintViolationException;
 import javax.validation.constraints.NotNull;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
+import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -73,8 +74,11 @@ public class ChannelCode implements ServiceObject {
      * <b>Default Value:</b> <code>"WEBSHOP"</code> <br/>
      * <b>Example:</b> <code>MOBILE_APP</code>
      */
+    @BuilderPropertyDeclaration
     @NotNull
     private String code = "WEBSHOP";
+
+    private int codeXYZ = 0;
 
     /**
      * Use {@link ChannelCode#builder()} instead of private constructor to create new builder.
@@ -101,6 +105,11 @@ public class ChannelCode implements ServiceObject {
     public Builder setCode( String pCode ) {
       // Assign value to attribute
       code = pCode;
+      return this;
+    }
+
+    public Builder setCodeXYZ( int value ) {
+      codeXYZ = value;
       return this;
     }
 

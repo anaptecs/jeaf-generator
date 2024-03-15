@@ -16,6 +16,7 @@ import java.util.List;
 import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
+import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -122,11 +123,20 @@ public class MasterClass implements ServiceObject {
    * Class implements builder to create a new instance of class <code>MasterClass</code>.
    */
   public static class Builder {
+    @BuilderPropertyDeclaration
     private List<ClientClass> clients;
 
+    private int clientsXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private String name;
 
+    private int nameXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private ClientClass singleClient;
+
+    private int singleClientXYZ = 0;
 
     /**
      * Use {@link MasterClass#builder()} instead of private constructor to create new builder.
@@ -179,6 +189,11 @@ public class MasterClass implements ServiceObject {
       return this;
     }
 
+    public Builder setClientsXYZ( int value ) {
+      clientsXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets attribute {@link #name}.<br/>
      *
@@ -191,6 +206,11 @@ public class MasterClass implements ServiceObject {
       return this;
     }
 
+    public Builder setNameXYZ( int value ) {
+      nameXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets association {@link #singleClient}.<br/>
      *
@@ -199,6 +219,11 @@ public class MasterClass implements ServiceObject {
      */
     public Builder setSingleClient( ClientClass pSingleClient ) {
       singleClient = pSingleClient;
+      return this;
+    }
+
+    public Builder setSingleClientXYZ( int value ) {
+      singleClientXYZ = value;
       return this;
     }
 

@@ -15,6 +15,7 @@ import java.util.Set;
 import javax.validation.ConstraintViolationException;
 import javax.validation.constraints.Size;
 
+import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -148,31 +149,46 @@ public class POI extends Stop {
    * Class implements builder to create a new instance of class <code>POI</code>.
    */
   public static class Builder extends Stop.Builder {
+    @BuilderPropertyDeclaration
     private String description;
+
+    private int descriptionXYZ = 0;
 
     /**
      * <p/>
      * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #theLink} is
      * <code>LinkObject</code><br/>
      */
+    @BuilderPropertyDeclaration
     @Deprecated
     private Long theLink;
+
+    private int theLinkXYZ = 0;
 
     /**
      * <p/>
      * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #evenMoreLinks} is
      * <code>LinkObject</code><br/>
      */
+    @BuilderPropertyDeclaration
     @Deprecated
     private Set<SoftLink> evenMoreLinks;
+
+    private int evenMoreLinksXYZ = 0;
 
     /**
      * <p/>
      * <b>Breaking Change with PI 15:</b> New mandatory association is required to support upcoming features.
      */
+    @BuilderPropertyDeclaration
     private Set<UICStop> stops;
 
+    private int stopsXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private Set<BookingCode> bookingCodes;
+
+    private int bookingCodesXYZ = 0;
 
     /**
      * Use {@link POI#builder()} instead of private constructor to create new builder.
@@ -272,6 +288,11 @@ public class POI extends Stop {
       return this;
     }
 
+    public Builder setDescriptionXYZ( int value ) {
+      descriptionXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets association {@link #theLink}.<br/>
      *
@@ -281,6 +302,11 @@ public class POI extends Stop {
     @Deprecated
     public Builder setTheLink( Long pTheLink ) {
       theLink = pTheLink;
+      return this;
+    }
+
+    public Builder setTheLinkXYZ( int value ) {
+      theLinkXYZ = value;
       return this;
     }
 
@@ -299,6 +325,11 @@ public class POI extends Stop {
       else {
         evenMoreLinks = null;
       }
+      return this;
+    }
+
+    public Builder setEvenMoreLinksXYZ( int value ) {
+      evenMoreLinksXYZ = value;
       return this;
     }
 
@@ -339,6 +370,11 @@ public class POI extends Stop {
       return this;
     }
 
+    public Builder setStopsXYZ( int value ) {
+      stopsXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets association {@link #bookingCodes}.<br/>
      *
@@ -369,6 +405,11 @@ public class POI extends Stop {
         }
         bookingCodes.addAll(Arrays.asList(pBookingCodes));
       }
+      return this;
+    }
+
+    public Builder setBookingCodesXYZ( int value ) {
+      bookingCodesXYZ = value;
       return this;
     }
 

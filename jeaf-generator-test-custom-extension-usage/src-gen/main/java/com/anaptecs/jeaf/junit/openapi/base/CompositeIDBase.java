@@ -8,6 +8,7 @@ package com.anaptecs.jeaf.junit.openapi.base;
 import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
+import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -63,9 +64,15 @@ public abstract class CompositeIDBase implements ServiceObject {
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
   public static abstract class BuilderBase {
+    @BuilderPropertyDeclaration
     private long primaryCode;
 
+    private int primaryCodeXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private long secondaryCode;
+
+    private int secondaryCodeXYZ = 0;
 
     /**
      * Use {@link CompositeID.builder()} instead of protected constructor to create new builder.
@@ -96,6 +103,11 @@ public abstract class CompositeIDBase implements ServiceObject {
       return this;
     }
 
+    public BuilderBase setPrimaryCodeXYZ( int value ) {
+      primaryCodeXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets attribute {@link #secondaryCode}.<br/>
      *
@@ -105,6 +117,11 @@ public abstract class CompositeIDBase implements ServiceObject {
     public BuilderBase setSecondaryCode( long pSecondaryCode ) {
       // Assign value to attribute
       secondaryCode = pSecondaryCode;
+      return this;
+    }
+
+    public BuilderBase setSecondaryCodeXYZ( int value ) {
+      secondaryCodeXYZ = value;
       return this;
     }
 

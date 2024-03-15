@@ -7,6 +7,7 @@ package com.anaptecs.jeaf.junit.openapi.techbase;
 
 import javax.validation.ConstraintViolationException;
 
+import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 
@@ -58,7 +59,10 @@ public class BusinessParent extends TechParent {
    * Class implements builder to create a new instance of class <code>BusinessParent</code>.
    */
   public static class Builder extends TechParent.Builder {
+    @BuilderPropertyDeclaration
     private long parentAttribute;
+
+    private int parentAttributeXYZ = 0;
 
     /**
      * Use {@link BusinessParent#builder()} instead of private constructor to create new builder.
@@ -100,6 +104,11 @@ public class BusinessParent extends TechParent {
     public Builder setParentAttribute( long pParentAttribute ) {
       // Assign value to attribute
       parentAttribute = pParentAttribute;
+      return this;
+    }
+
+    public Builder setParentAttributeXYZ( int value ) {
+      parentAttributeXYZ = value;
       return this;
     }
 

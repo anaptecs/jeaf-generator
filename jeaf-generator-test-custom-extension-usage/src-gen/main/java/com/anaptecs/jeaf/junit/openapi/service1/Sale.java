@@ -10,6 +10,7 @@ import java.math.BigDecimal;
 import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
+import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.junit.openapi.base.Channel;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
@@ -82,9 +83,15 @@ public class Sale implements ServiceObject {
    * Class implements builder to create a new instance of class <code>Sale</code>.
    */
   public static class Builder {
+    @BuilderPropertyDeclaration
     private BigDecimal transactionAmount;
 
+    private int transactionAmountXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private Channel sale;
+
+    private int saleXYZ = 0;
 
     /**
      * Use {@link Sale#builder()} instead of private constructor to create new builder.
@@ -115,6 +122,11 @@ public class Sale implements ServiceObject {
       return this;
     }
 
+    public Builder setTransactionAmountXYZ( int value ) {
+      transactionAmountXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets association {@link #sale}.<br/>
      *
@@ -123,6 +135,11 @@ public class Sale implements ServiceObject {
      */
     public Builder setSale( Channel pSale ) {
       sale = pSale;
+      return this;
+    }
+
+    public Builder setSaleXYZ( int value ) {
+      saleXYZ = value;
       return this;
     }
 

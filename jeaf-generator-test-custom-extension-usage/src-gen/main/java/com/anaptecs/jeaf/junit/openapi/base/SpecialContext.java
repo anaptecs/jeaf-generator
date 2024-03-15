@@ -9,6 +9,7 @@ import java.util.Locale;
 
 import javax.validation.ConstraintViolationException;
 
+import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 
@@ -84,12 +85,21 @@ public class SpecialContext extends Context {
    * Class implements builder to create a new instance of class <code>SpecialContext</code>.
    */
   public static class Builder extends Context.Builder {
+    @BuilderPropertyDeclaration
     private String specificHeader;
 
+    private int specificHeaderXYZ = 0;
+
+    @BuilderPropertyDeclaration
     @Deprecated
     private IntegerCode deprecatedHeader;
 
+    private int deprecatedHeaderXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private DeprecatedType deprecatedType;
+
+    private int deprecatedTypeXYZ = 0;
 
     /**
      * Use {@link SpecialContext#builder()} instead of private constructor to create new builder.
@@ -201,6 +211,11 @@ public class SpecialContext extends Context {
       return this;
     }
 
+    public Builder setSpecificHeaderXYZ( int value ) {
+      specificHeaderXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets attribute {@link #deprecatedHeader}.<br/>
      *
@@ -214,6 +229,11 @@ public class SpecialContext extends Context {
       return this;
     }
 
+    public Builder setDeprecatedHeaderXYZ( int value ) {
+      deprecatedHeaderXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets attribute {@link #deprecatedType}.<br/>
      *
@@ -223,6 +243,11 @@ public class SpecialContext extends Context {
     public Builder setDeprecatedType( DeprecatedType pDeprecatedType ) {
       // Assign value to attribute
       deprecatedType = pDeprecatedType;
+      return this;
+    }
+
+    public Builder setDeprecatedTypeXYZ( int value ) {
+      deprecatedTypeXYZ = value;
       return this;
     }
 

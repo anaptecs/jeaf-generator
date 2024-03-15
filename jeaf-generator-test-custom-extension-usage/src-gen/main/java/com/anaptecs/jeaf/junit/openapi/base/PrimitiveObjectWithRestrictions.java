@@ -21,6 +21,7 @@ import javax.validation.constraints.PositiveOrZero;
 import javax.validation.constraints.Size;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
+import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -338,72 +339,138 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
      * <br/>
      * <b>Default Value:</b> <code>true</code>
      */
+    @BuilderPropertyDeclaration
     private boolean aBoolean = true;
 
+    private int aBooleanXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private Boolean bBoolean;
 
+    private int bBooleanXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private boolean cBoolean;
 
+    private int cBooleanXYZ = 0;
+
+    @BuilderPropertyDeclaration
     @Negative
     private byte aByte;
 
+    private int aByteXYZ = 0;
+
+    @BuilderPropertyDeclaration
     @NegativeOrZero
     private Byte bByte;
 
+    private int bByteXYZ = 0;
+
+    @BuilderPropertyDeclaration
     @Min(value = -237)
     private short aShort;
 
+    private int aShortXYZ = 0;
+
+    @BuilderPropertyDeclaration
     @Positive
     private Short bShort;
 
+    private int bShortXYZ = 0;
+
+    @BuilderPropertyDeclaration
     @PositiveOrZero
     private int aInteger;
 
+    private int aIntegerXYZ = 0;
+
+    @BuilderPropertyDeclaration
     @Min(value = 4711)
     private Integer bInteger;
 
+    private int bIntegerXYZ = 0;
+
+    @BuilderPropertyDeclaration
     @Min(value = 100)
     @Max(value = 1000)
     private Integer cInteger;
 
+    private int cIntegerXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private long aLong;
 
+    private int aLongXYZ = 0;
+
+    @BuilderPropertyDeclaration
     @DecimalMax(value = "299792458", inclusive = false)
     private Long bLong;
 
+    private int bLongXYZ = 0;
+
+    @BuilderPropertyDeclaration
     @DecimalMax(value = "3.14159265359", inclusive = true)
     @DecimalMin(value = "-3.14159265359", inclusive = true)
     private BigInteger aBigInteger;
 
+    private int aBigIntegerXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private char aCharacter;
 
+    private int aCharacterXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private Character bCharacter;
 
+    private int bCharacterXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private float aFloat;
 
+    private int aFloatXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private Float bFloat;
+
+    private int bFloatXYZ = 0;
 
     /**
      * <br/>
      * <b>Default Value:</b> <code>42.0</code>
      */
+    @BuilderPropertyDeclaration
     private double aDouble = 42.0;
 
+    private int aDoubleXYZ = 0;
+
+    @BuilderPropertyDeclaration
     private Double bDouble;
 
+    private int bDoubleXYZ = 0;
+
+    @BuilderPropertyDeclaration
     @DecimalMin(value = "4711.0815", inclusive = true)
     private BigDecimal aBigDecimal;
+
+    private int aBigDecimalXYZ = 0;
 
     /**
      * <br/>
      * <b>Default Value:</b> <code>"Hello OpenAPI"</code>
      */
+    @BuilderPropertyDeclaration
     @Size(min = 8, max = 32)
     private String aString = "Hello OpenAPI";
 
+    private int aStringXYZ = 0;
+
+    @BuilderPropertyDeclaration
     @NotEmpty
     @Size(min = 0, max = 128)
     private String bString;
+
+    private int bStringXYZ = 0;
 
     /**
      * Use {@link PrimitiveObjectWithRestrictions#builder()} instead of private constructor to create new builder.
@@ -455,6 +522,11 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
       return this;
     }
 
+    public Builder setABooleanXYZ( int value ) {
+      aBooleanXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets attribute {@link #bBoolean}.<br/>
      *
@@ -464,6 +536,11 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
     public Builder setBBoolean( Boolean pBBoolean ) {
       // Assign value to attribute
       bBoolean = pBBoolean;
+      return this;
+    }
+
+    public Builder setBBooleanXYZ( int value ) {
+      bBooleanXYZ = value;
       return this;
     }
 
@@ -479,6 +556,11 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
       return this;
     }
 
+    public Builder setCBooleanXYZ( int value ) {
+      cBooleanXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets attribute {@link #aByte}.<br/>
      *
@@ -488,6 +570,11 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
     public Builder setAByte( byte pAByte ) {
       // Assign value to attribute
       aByte = pAByte;
+      return this;
+    }
+
+    public Builder setAByteXYZ( int value ) {
+      aByteXYZ = value;
       return this;
     }
 
@@ -503,6 +590,11 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
       return this;
     }
 
+    public Builder setBByteXYZ( int value ) {
+      bByteXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets attribute {@link #aShort}.<br/>
      *
@@ -512,6 +604,11 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
     public Builder setAShort( short pAShort ) {
       // Assign value to attribute
       aShort = pAShort;
+      return this;
+    }
+
+    public Builder setAShortXYZ( int value ) {
+      aShortXYZ = value;
       return this;
     }
 
@@ -527,6 +624,11 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
       return this;
     }
 
+    public Builder setBShortXYZ( int value ) {
+      bShortXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets attribute {@link #aInteger}.<br/>
      *
@@ -536,6 +638,11 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
     public Builder setAInteger( int pAInteger ) {
       // Assign value to attribute
       aInteger = pAInteger;
+      return this;
+    }
+
+    public Builder setAIntegerXYZ( int value ) {
+      aIntegerXYZ = value;
       return this;
     }
 
@@ -551,6 +658,11 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
       return this;
     }
 
+    public Builder setBIntegerXYZ( int value ) {
+      bIntegerXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets attribute {@link #cInteger}.<br/>
      *
@@ -560,6 +672,11 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
     public Builder setCInteger( Integer pCInteger ) {
       // Assign value to attribute
       cInteger = pCInteger;
+      return this;
+    }
+
+    public Builder setCIntegerXYZ( int value ) {
+      cIntegerXYZ = value;
       return this;
     }
 
@@ -575,6 +692,11 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
       return this;
     }
 
+    public Builder setALongXYZ( int value ) {
+      aLongXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets attribute {@link #bLong}.<br/>
      *
@@ -584,6 +706,11 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
     public Builder setBLong( Long pBLong ) {
       // Assign value to attribute
       bLong = pBLong;
+      return this;
+    }
+
+    public Builder setBLongXYZ( int value ) {
+      bLongXYZ = value;
       return this;
     }
 
@@ -599,6 +726,11 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
       return this;
     }
 
+    public Builder setABigIntegerXYZ( int value ) {
+      aBigIntegerXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets attribute {@link #aCharacter}.<br/>
      *
@@ -608,6 +740,11 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
     public Builder setACharacter( char pACharacter ) {
       // Assign value to attribute
       aCharacter = pACharacter;
+      return this;
+    }
+
+    public Builder setACharacterXYZ( int value ) {
+      aCharacterXYZ = value;
       return this;
     }
 
@@ -623,6 +760,11 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
       return this;
     }
 
+    public Builder setBCharacterXYZ( int value ) {
+      bCharacterXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets attribute {@link #aFloat}.<br/>
      *
@@ -632,6 +774,11 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
     public Builder setAFloat( float pAFloat ) {
       // Assign value to attribute
       aFloat = pAFloat;
+      return this;
+    }
+
+    public Builder setAFloatXYZ( int value ) {
+      aFloatXYZ = value;
       return this;
     }
 
@@ -647,6 +794,11 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
       return this;
     }
 
+    public Builder setBFloatXYZ( int value ) {
+      bFloatXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets attribute {@link #aDouble}.<br/>
      *
@@ -656,6 +808,11 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
     public Builder setADouble( double pADouble ) {
       // Assign value to attribute
       aDouble = pADouble;
+      return this;
+    }
+
+    public Builder setADoubleXYZ( int value ) {
+      aDoubleXYZ = value;
       return this;
     }
 
@@ -671,6 +828,11 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
       return this;
     }
 
+    public Builder setBDoubleXYZ( int value ) {
+      bDoubleXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets attribute {@link #aBigDecimal}.<br/>
      *
@@ -680,6 +842,11 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
     public Builder setABigDecimal( BigDecimal pABigDecimal ) {
       // Assign value to attribute
       aBigDecimal = pABigDecimal;
+      return this;
+    }
+
+    public Builder setABigDecimalXYZ( int value ) {
+      aBigDecimalXYZ = value;
       return this;
     }
 
@@ -695,6 +862,11 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
       return this;
     }
 
+    public Builder setAStringXYZ( int value ) {
+      aStringXYZ = value;
+      return this;
+    }
+
     /**
      * Method sets attribute {@link #bString}.<br/>
      *
@@ -704,6 +876,11 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
     public Builder setBString( String pBString ) {
       // Assign value to attribute
       bString = pBString;
+      return this;
+    }
+
+    public Builder setBStringXYZ( int value ) {
+      bStringXYZ = value;
       return this;
     }
 
