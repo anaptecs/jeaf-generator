@@ -1,0 +1,27 @@
+«IMPORT uml»
+«IMPORT JMM»
+
+
+«DEFINE BeforeClassPropertyDeclaration(String fqn) FOR Property»
+«ENDDEFINE»
+
+«DEFINE AfterClassPropertyDeclaration(String fqn) FOR Property»
+«ENDDEFINE»
+
+«DEFINE AfterBuilderConstructorPropertyInit(String fqn, String builderParamName) FOR Property»
+«ENDDEFINE»
+
+«DEFINE AfterClassPropertyAccessors(String fqn) FOR Property»
+«ENDDEFINE»
+
+// Property handling inside builders
+«DEFINE BeforeBuilderPropertyDeclaration(String fqn) FOR Property»
+«ENDDEFINE»
+
+«DEFINE AfterBuilderPropertyDeclaration(String fqn) FOR Property»
+«ENDDEFINE»
+
+«DEFINE AfterBuilderPropertyAccessors(String fqn, String builderClassName) FOR Property»
+«ENDDEFINE»
+
+

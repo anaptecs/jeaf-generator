@@ -463,6 +463,10 @@
 				// Bidirectional back reference is set up correctly as a builder is used.
 				«attr.asInstanceVar()»BackReferenceInitialized = true;
 			«ENDIF»
+			
+            «IF attr.isTransient() == false && attr.isStatic == false»
+                «EXPAND jeafgenerator::api::ClassExtensionHook::AfterBuilderConstructorPropertyInit(attr.type.fqn(), "pBuilder") FOR attr»
+            «ENDIF»
 		«ENDFOREACH»
 	«ENDIF»
 «ENDDEFINE»

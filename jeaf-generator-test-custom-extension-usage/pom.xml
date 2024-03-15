@@ -13,6 +13,12 @@
 
 	<dependencies>
 		<dependency>
+			<groupId>com.anaptecs.jeaf.core</groupId>
+			<artifactId>jeaf-core-api</artifactId>
+			<version>${jeaf.core.api.version}</version>
+		</dependency>
+
+		<dependency>
 			<groupId>com.anaptecs.jeaf.uml</groupId>
 			<artifactId>jeaf-uml-test-model</artifactId>
 			<version>${jeaf.test.model.version}</version>
@@ -79,6 +85,10 @@
 					</packages>
 
 					<!-- Define what should be generated. By default nothing is generated. -->
+					<generateServiceObjects>true</generateServiceObjects>
+					<javaGenericSoftLinkType>com.anaptecs.jeaf.junit.openapi.base.SoftLink</javaGenericSoftLinkType>
+					<generateHeavyExtensibleEnums>true</generateHeavyExtensibleEnums>
+					
 					<generateOpenAPISpec>true</generateOpenAPISpec>
 					<addIgnoredHeadersToOpenAPISpec>true</addIgnoredHeadersToOpenAPISpec>
 					<openAPICommentStyle>&gt;-</openAPICommentStyle>

@@ -308,6 +308,7 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
 «DEFINE BuilderPropertyDeclaration FOR Property»
     «IF this.isStatic == false»
 	    «EXPAND functions::Javadoc::JavadocForProperty»
+        «EXPAND jeafgenerator::api::ClassExtensionHook::BeforeBuilderPropertyDeclaration(this.type.fqn())»
 	    «IF this.isSoftLink()»
 	       «EXPAND SoftLinkBuilderPropertyDeclaration FOR ((SoftLink) this)»
 	    «ELSEIF this.association == null»
@@ -315,6 +316,7 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
 	    «ELSE»
 	        «EXPAND DoBuilderAssociationPropertyDeclaration»
 	    «ENDIF»
+	    «EXPAND jeafgenerator::api::ClassExtensionHook::AfterBuilderPropertyDeclaration(this.type.fqn())»
     «ENDIF»
 «ENDDEFINE»
 
@@ -363,6 +365,7 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
 	    «IF this.isMultivalued() && this.type.isEnumeration() && this.association != null»
 	    	«EXPAND CreateBuilderVarArgsSetter(builderClassName)»
 	    «ENDIF»
+	    «EXPAND jeafgenerator::api::ClassExtensionHook::AfterBuilderPropertyAccessors(this.type.fqn(), builderClassName)»
     «ENDIF»
 «ENDDEFINE»
 
