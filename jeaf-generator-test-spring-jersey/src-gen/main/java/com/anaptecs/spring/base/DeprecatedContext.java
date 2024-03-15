@@ -41,6 +41,8 @@ public class DeprecatedContext {
   /**
    * <br/>
    * <b>Example:</b> <code>en</code>
+   * <p/>
+   * <b>Header-Param:</b> lang
    */
   @HeaderParam("lang")
   private Locale language;
@@ -114,6 +116,8 @@ public class DeprecatedContext {
     /**
      * <br/>
      * <b>Example:</b> <code>en</code>
+     * <p/>
+     * <b>Header-Param:</b> lang
      */
     private Locale language;
 
