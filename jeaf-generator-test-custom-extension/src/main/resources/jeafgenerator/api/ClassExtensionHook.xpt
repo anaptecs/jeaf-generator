@@ -1,0 +1,21 @@
+«IMPORT uml»
+«IMPORT JMM»
+
+
+«DEFINE BeforeClassPropertyDeclaration FOR Property»
+@com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration
+«ENDDEFINE»
+
+«DEFINE AfterClassPropertyDeclaration FOR Property»
+private int «this.name»XYZ = 0;
+«ENDDEFINE»
+
+«DEFINE AfterPropertyAccessors FOR Property»
+public int get«name.toFirstUpper()»XYZ() {
+  return «this.name»XYZ;
+}
+
+public void set«name.toFirstUpper()»XYZ(int value) {
+  «this.name»XYZ = value;
+}
+«ENDDEFINE»
