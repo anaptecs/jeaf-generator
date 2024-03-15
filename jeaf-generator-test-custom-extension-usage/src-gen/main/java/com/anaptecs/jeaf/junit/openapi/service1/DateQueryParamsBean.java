@@ -150,15 +150,25 @@ public class DateQueryParamsBean implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     offsetDateTime = pBuilder.offsetDateTime;
+    offsetDateTimeXYZ = pBuilder.offsetDateTimeXYZ;
     offsetTime = pBuilder.offsetTime;
+    offsetTimeXYZ = pBuilder.offsetTimeXYZ;
     localDateTime = pBuilder.localDateTime;
+    localDateTimeXYZ = pBuilder.localDateTimeXYZ;
     localTime = pBuilder.localTime;
+    localTimeXYZ = pBuilder.localTimeXYZ;
     localDate = pBuilder.localDate;
+    localDateXYZ = pBuilder.localDateXYZ;
     utilDate = pBuilder.utilDate;
+    utilDateXYZ = pBuilder.utilDateXYZ;
     calendar = pBuilder.calendar;
+    calendarXYZ = pBuilder.calendarXYZ;
     sqlTimestamp = pBuilder.sqlTimestamp;
+    sqlTimestampXYZ = pBuilder.sqlTimestampXYZ;
     sqlTime = pBuilder.sqlTime;
+    sqlTimeXYZ = pBuilder.sqlTimeXYZ;
     sqlDate = pBuilder.sqlDate;
+    sqlDateXYZ = pBuilder.sqlDateXYZ;
   }
 
   /**

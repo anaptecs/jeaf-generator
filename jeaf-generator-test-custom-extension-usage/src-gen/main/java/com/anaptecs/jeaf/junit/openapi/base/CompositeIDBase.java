@@ -56,7 +56,9 @@ public abstract class CompositeIDBase implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     primaryCode = pBuilder.primaryCode;
+    primaryCodeXYZ = pBuilder.primaryCodeXYZ;
     secondaryCode = pBuilder.secondaryCode;
+    secondaryCodeXYZ = pBuilder.secondaryCodeXYZ;
   }
 
   /**

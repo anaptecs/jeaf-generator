@@ -58,6 +58,7 @@ public class PartnerContainer implements ServiceObject {
     else {
       partners = new ArrayList<Partner>();
     }
+    partnersXYZ = pBuilder.partnersXYZ;
   }
 
   /**

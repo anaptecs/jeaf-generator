@@ -68,8 +68,11 @@ public class SpecialContext extends Context {
     super(pBuilder);
     // Read attribute values from builder.
     specificHeader = pBuilder.specificHeader;
+    specificHeaderXYZ = pBuilder.specificHeaderXYZ;
     deprecatedHeader = pBuilder.deprecatedHeader;
+    deprecatedHeaderXYZ = pBuilder.deprecatedHeaderXYZ;
     deprecatedType = pBuilder.deprecatedType;
+    deprecatedTypeXYZ = pBuilder.deprecatedTypeXYZ;
   }
 
   /**

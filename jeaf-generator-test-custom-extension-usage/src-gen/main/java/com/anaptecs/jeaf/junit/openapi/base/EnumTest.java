@@ -66,7 +66,9 @@ public class EnumTest implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     property = pBuilder.property;
+    propertyXYZ = pBuilder.propertyXYZ;
     enumRef = pBuilder.enumRef;
+    enumRefXYZ = pBuilder.enumRefXYZ;
   }
 
   /**

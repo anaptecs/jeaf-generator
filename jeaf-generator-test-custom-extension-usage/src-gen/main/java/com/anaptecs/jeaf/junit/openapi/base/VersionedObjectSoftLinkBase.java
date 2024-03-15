@@ -70,8 +70,11 @@ public abstract class VersionedObjectSoftLinkBase implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     objectID = pBuilder.objectID;
+    objectIDXYZ = pBuilder.objectIDXYZ;
     dataUnit = pBuilder.dataUnit;
+    dataUnitXYZ = pBuilder.dataUnitXYZ;
     entity = pBuilder.entity;
+    entityXYZ = pBuilder.entityXYZ;
   }
 
   /**

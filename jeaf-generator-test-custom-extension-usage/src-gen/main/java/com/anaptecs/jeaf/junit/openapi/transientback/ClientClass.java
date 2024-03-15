@@ -74,6 +74,7 @@ public class ClientClass implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     name = pBuilder.name;
+    nameXYZ = pBuilder.nameXYZ;
     manyMasters = new ArrayList<MasterClass>();
   }
 

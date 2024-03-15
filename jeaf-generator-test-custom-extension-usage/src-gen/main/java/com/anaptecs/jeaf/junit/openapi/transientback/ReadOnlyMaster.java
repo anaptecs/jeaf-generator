@@ -70,6 +70,7 @@ public class ReadOnlyMaster implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     name = pBuilder.name;
+    nameXYZ = pBuilder.nameXYZ;
     if (pBuilder.clients != null) {
       clients = pBuilder.clients;
       // As association is bidirectional we also have to set it in the other direction.
@@ -82,6 +83,7 @@ public class ReadOnlyMaster implements ServiceObject {
     }
     // Bidirectional back reference is set up correctly as a builder is used.
     clientsBackReferenceInitialized = true;
+    clientsXYZ = pBuilder.clientsXYZ;
   }
 
   /**

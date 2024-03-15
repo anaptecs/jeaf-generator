@@ -299,27 +299,49 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     aBoolean = pBuilder.aBoolean;
+    aBooleanXYZ = pBuilder.aBooleanXYZ;
     bBoolean = pBuilder.bBoolean;
+    bBooleanXYZ = pBuilder.bBooleanXYZ;
     cBoolean = pBuilder.cBoolean;
+    cBooleanXYZ = pBuilder.cBooleanXYZ;
     aByte = pBuilder.aByte;
+    aByteXYZ = pBuilder.aByteXYZ;
     bByte = pBuilder.bByte;
+    bByteXYZ = pBuilder.bByteXYZ;
     aShort = pBuilder.aShort;
+    aShortXYZ = pBuilder.aShortXYZ;
     bShort = pBuilder.bShort;
+    bShortXYZ = pBuilder.bShortXYZ;
     aInteger = pBuilder.aInteger;
+    aIntegerXYZ = pBuilder.aIntegerXYZ;
     bInteger = pBuilder.bInteger;
+    bIntegerXYZ = pBuilder.bIntegerXYZ;
     cInteger = pBuilder.cInteger;
+    cIntegerXYZ = pBuilder.cIntegerXYZ;
     aLong = pBuilder.aLong;
+    aLongXYZ = pBuilder.aLongXYZ;
     bLong = pBuilder.bLong;
+    bLongXYZ = pBuilder.bLongXYZ;
     aBigInteger = pBuilder.aBigInteger;
+    aBigIntegerXYZ = pBuilder.aBigIntegerXYZ;
     aCharacter = pBuilder.aCharacter;
+    aCharacterXYZ = pBuilder.aCharacterXYZ;
     bCharacter = pBuilder.bCharacter;
+    bCharacterXYZ = pBuilder.bCharacterXYZ;
     aFloat = pBuilder.aFloat;
+    aFloatXYZ = pBuilder.aFloatXYZ;
     bFloat = pBuilder.bFloat;
+    bFloatXYZ = pBuilder.bFloatXYZ;
     aDouble = pBuilder.aDouble;
+    aDoubleXYZ = pBuilder.aDoubleXYZ;
     bDouble = pBuilder.bDouble;
+    bDoubleXYZ = pBuilder.bDoubleXYZ;
     aBigDecimal = pBuilder.aBigDecimal;
+    aBigDecimalXYZ = pBuilder.aBigDecimalXYZ;
     aString = pBuilder.aString;
+    aStringXYZ = pBuilder.aStringXYZ;
     bString = pBuilder.bString;
+    bStringXYZ = pBuilder.bStringXYZ;
   }
 
   /**

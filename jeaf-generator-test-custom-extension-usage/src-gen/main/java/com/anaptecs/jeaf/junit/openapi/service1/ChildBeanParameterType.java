@@ -45,6 +45,7 @@ public class ChildBeanParameterType extends ParentBeanParamType {
     super(pBuilder);
     // Read attribute values from builder.
     childProperty = pBuilder.childProperty;
+    childPropertyXYZ = pBuilder.childPropertyXYZ;
   }
 
   /**

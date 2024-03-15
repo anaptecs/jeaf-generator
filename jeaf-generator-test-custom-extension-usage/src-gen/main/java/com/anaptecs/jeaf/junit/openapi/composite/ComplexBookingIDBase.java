@@ -100,15 +100,20 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     internalID = pBuilder.internalID;
+    internalIDXYZ = pBuilder.internalIDXYZ;
     referenceID = pBuilder.referenceID;
+    referenceIDXYZ = pBuilder.referenceIDXYZ;
     if (pBuilder.bookingIDs != null) {
       bookingIDs = pBuilder.bookingIDs;
     }
     else {
       bookingIDs = new ArrayList<BookingID>();
     }
+    bookingIDsXYZ = pBuilder.bookingIDsXYZ;
     complexBookingType = pBuilder.complexBookingType;
+    complexBookingTypeXYZ = pBuilder.complexBookingTypeXYZ;
     anotherID = pBuilder.anotherID;
+    anotherIDXYZ = pBuilder.anotherIDXYZ;
   }
 
   /**

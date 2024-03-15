@@ -57,7 +57,9 @@ public class Company extends Partner {
     super(pBuilder);
     // Read attribute values from builder.
     name = pBuilder.name;
+    nameXYZ = pBuilder.nameXYZ;
     code = pBuilder.code;
+    codeXYZ = pBuilder.codeXYZ;
   }
 
   /**

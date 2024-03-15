@@ -43,6 +43,7 @@ public abstract class PlaceRef implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     name = pBuilder.name;
+    nameXYZ = pBuilder.nameXYZ;
   }
 
   /**

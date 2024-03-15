@@ -44,6 +44,7 @@ public class BusinessA extends TechParent {
     super(pBuilder);
     // Read attribute values from builder.
     businessAttribute = pBuilder.businessAttribute;
+    businessAttributeXYZ = pBuilder.businessAttributeXYZ;
   }
 
   /**

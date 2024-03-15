@@ -75,6 +75,7 @@ public class Partner implements ServiceObject, Identifiable<ServiceObjectID> {
     else {
       postalAddresses = new ArrayList<PostalAddress>();
     }
+    postalAddressesXYZ = pBuilder.postalAddressesXYZ;
   }
 
   /**

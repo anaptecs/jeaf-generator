@@ -48,6 +48,7 @@ public class DataTypeWithConstraints implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     intValue = pBuilder.intValue;
+    intValueXYZ = pBuilder.intValueXYZ;
   }
 
   /**

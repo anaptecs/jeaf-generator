@@ -100,7 +100,9 @@ public class MasterClass implements ServiceObject {
     }
     // Bidirectional back reference is set up correctly as a builder is used.
     clientsBackReferenceInitialized = true;
+    clientsXYZ = pBuilder.clientsXYZ;
     name = pBuilder.name;
+    nameXYZ = pBuilder.nameXYZ;
     singleClient = pBuilder.singleClient;
     if (singleClient != null) {
       // As association is bidirectional we also have to set it in the other direction.
@@ -108,6 +110,7 @@ public class MasterClass implements ServiceObject {
     }
     // Bidirectional back reference is set up correctly as a builder is used.
     singleClientBackReferenceInitialized = true;
+    singleClientXYZ = pBuilder.singleClientXYZ;
   }
 
   /**

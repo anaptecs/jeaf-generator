@@ -94,14 +94,18 @@ public class TheReadOnlyServiceObject implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     name = pBuilder.name;
+    nameXYZ = pBuilder.nameXYZ;
     bits = pBuilder.bits;
+    bitsXYZ = pBuilder.bitsXYZ;
     if (pBuilder.bookingCodes != null) {
       bookingCodes = pBuilder.bookingCodes;
     }
     else {
       bookingCodes = new HashSet<BookingCode>();
     }
+    bookingCodesXYZ = pBuilder.bookingCodesXYZ;
     inventoryType = pBuilder.inventoryType;
+    inventoryTypeXYZ = pBuilder.inventoryTypeXYZ;
   }
 
   /**

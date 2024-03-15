@@ -76,9 +76,13 @@ public class PostalAddress implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     street = pBuilder.street;
+    streetXYZ = pBuilder.streetXYZ;
     houseNumber = pBuilder.houseNumber;
+    houseNumberXYZ = pBuilder.houseNumberXYZ;
     city = pBuilder.city;
+    cityXYZ = pBuilder.cityXYZ;
     postalCode = pBuilder.postalCode;
+    postalCodeXYZ = pBuilder.postalCodeXYZ;
   }
 
   /**

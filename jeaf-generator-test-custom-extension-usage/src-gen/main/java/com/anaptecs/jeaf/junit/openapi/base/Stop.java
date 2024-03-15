@@ -92,14 +92,18 @@ public class Stop implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     name = pBuilder.name;
+    nameXYZ = pBuilder.nameXYZ;
     if (pBuilder.links != null) {
       links = pBuilder.links;
     }
     else {
       links = new ArrayList<LinkObject>();
     }
+    linksXYZ = pBuilder.linksXYZ;
     index = pBuilder.index;
+    indexXYZ = pBuilder.indexXYZ;
     theSoftLink = pBuilder.theSoftLink;
+    theSoftLinkXYZ = pBuilder.theSoftLinkXYZ;
   }
 
   /**

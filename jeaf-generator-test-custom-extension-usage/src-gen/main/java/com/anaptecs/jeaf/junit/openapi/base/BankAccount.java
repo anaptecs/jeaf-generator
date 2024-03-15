@@ -46,6 +46,7 @@ public class BankAccount implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     iban = pBuilder.iban;
+    ibanXYZ = pBuilder.ibanXYZ;
   }
 
   /**

@@ -123,21 +123,27 @@ public class WeirdBooking extends WeirdParent {
     super(pBuilder);
     // Read attribute values from builder.
     booking = pBuilder.booking;
+    bookingXYZ = pBuilder.bookingXYZ;
     if (pBuilder.additionalBookings != null) {
       additionalBookings = pBuilder.additionalBookings;
     }
     else {
       additionalBookings = new ArrayList<ComplexBookingID>();
     }
+    additionalBookingsXYZ = pBuilder.additionalBookingsXYZ;
     versionedObjectSoftLink = pBuilder.versionedObjectSoftLink;
+    versionedObjectSoftLinkXYZ = pBuilder.versionedObjectSoftLinkXYZ;
     childProperty = pBuilder.childProperty;
+    childPropertyXYZ = pBuilder.childPropertyXYZ;
     realBooking = pBuilder.realBooking;
+    realBookingXYZ = pBuilder.realBookingXYZ;
     if (pBuilder.inventories != null) {
       inventories = pBuilder.inventories;
     }
     else {
       inventories = new HashSet<InventoryType>();
     }
+    inventoriesXYZ = pBuilder.inventoriesXYZ;
   }
 
   /**

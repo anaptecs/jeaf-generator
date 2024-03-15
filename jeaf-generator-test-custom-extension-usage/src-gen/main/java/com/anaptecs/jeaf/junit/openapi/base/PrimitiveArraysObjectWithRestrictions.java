@@ -264,27 +264,49 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     aBooleanArray = pBuilder.aBooleanArray;
+    aBooleanArrayXYZ = pBuilder.aBooleanArrayXYZ;
     bBooleanArray = pBuilder.bBooleanArray;
+    bBooleanArrayXYZ = pBuilder.bBooleanArrayXYZ;
     cBooleanArray = pBuilder.cBooleanArray;
+    cBooleanArrayXYZ = pBuilder.cBooleanArrayXYZ;
     aByteArray = pBuilder.aByteArray;
+    aByteArrayXYZ = pBuilder.aByteArrayXYZ;
     bByteArray = pBuilder.bByteArray;
+    bByteArrayXYZ = pBuilder.bByteArrayXYZ;
     aShortArray = pBuilder.aShortArray;
+    aShortArrayXYZ = pBuilder.aShortArrayXYZ;
     bShortArray = pBuilder.bShortArray;
+    bShortArrayXYZ = pBuilder.bShortArrayXYZ;
     aIntegerArray = pBuilder.aIntegerArray;
+    aIntegerArrayXYZ = pBuilder.aIntegerArrayXYZ;
     bIntegerArray = pBuilder.bIntegerArray;
+    bIntegerArrayXYZ = pBuilder.bIntegerArrayXYZ;
     cIntegerArray = pBuilder.cIntegerArray;
+    cIntegerArrayXYZ = pBuilder.cIntegerArrayXYZ;
     aLongArray = pBuilder.aLongArray;
+    aLongArrayXYZ = pBuilder.aLongArrayXYZ;
     bLongArray = pBuilder.bLongArray;
+    bLongArrayXYZ = pBuilder.bLongArrayXYZ;
     aBigIntegerArray = pBuilder.aBigIntegerArray;
+    aBigIntegerArrayXYZ = pBuilder.aBigIntegerArrayXYZ;
     aCharacterArray = pBuilder.aCharacterArray;
+    aCharacterArrayXYZ = pBuilder.aCharacterArrayXYZ;
     bCharacterArray = pBuilder.bCharacterArray;
+    bCharacterArrayXYZ = pBuilder.bCharacterArrayXYZ;
     aFloatArray = pBuilder.aFloatArray;
+    aFloatArrayXYZ = pBuilder.aFloatArrayXYZ;
     bFloatArray = pBuilder.bFloatArray;
+    bFloatArrayXYZ = pBuilder.bFloatArrayXYZ;
     aDoubleArray = pBuilder.aDoubleArray;
+    aDoubleArrayXYZ = pBuilder.aDoubleArrayXYZ;
     bDoubleArray = pBuilder.bDoubleArray;
+    bDoubleArrayXYZ = pBuilder.bDoubleArrayXYZ;
     aBigDecimalArray = pBuilder.aBigDecimalArray;
+    aBigDecimalArrayXYZ = pBuilder.aBigDecimalArrayXYZ;
     aStringArray = pBuilder.aStringArray;
+    aStringArrayXYZ = pBuilder.aStringArrayXYZ;
     bStringArray = pBuilder.bStringArray;
+    bStringArrayXYZ = pBuilder.bStringArrayXYZ;
   }
 
   /**

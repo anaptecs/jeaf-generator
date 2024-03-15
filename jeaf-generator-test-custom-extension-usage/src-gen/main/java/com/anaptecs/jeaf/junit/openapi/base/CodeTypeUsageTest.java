@@ -96,20 +96,25 @@ public class CodeTypeUsageTest implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     booleanCode = pBuilder.booleanCode;
+    booleanCodeXYZ = pBuilder.booleanCodeXYZ;
     if (pBuilder.booleanCodeAssociation != null) {
       booleanCodeAssociation = pBuilder.booleanCodeAssociation;
     }
     else {
       booleanCodeAssociation = new HashSet<BooleanCodeType>();
     }
+    booleanCodeAssociationXYZ = pBuilder.booleanCodeAssociationXYZ;
     if (pBuilder.shortCodeTypeAssociation != null) {
       shortCodeTypeAssociation = pBuilder.shortCodeTypeAssociation;
     }
     else {
       shortCodeTypeAssociation = new HashSet<ShortCodeType>();
     }
+    shortCodeTypeAssociationXYZ = pBuilder.shortCodeTypeAssociationXYZ;
     stringCode = pBuilder.stringCode;
+    stringCodeXYZ = pBuilder.stringCodeXYZ;
     shortCode = pBuilder.shortCode;
+    shortCodeXYZ = pBuilder.shortCodeXYZ;
   }
 
   /**

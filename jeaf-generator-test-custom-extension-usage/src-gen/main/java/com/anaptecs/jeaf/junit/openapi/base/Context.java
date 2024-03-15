@@ -112,11 +112,17 @@ public class Context implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     accessToken = pBuilder.accessToken;
+    accessTokenXYZ = pBuilder.accessTokenXYZ;
     language = pBuilder.language;
+    languageXYZ = pBuilder.languageXYZ;
     resellerID = pBuilder.resellerID;
+    resellerIDXYZ = pBuilder.resellerIDXYZ;
     pathParam = pBuilder.pathParam;
+    pathParamXYZ = pBuilder.pathParamXYZ;
     queryParam = pBuilder.queryParam;
+    queryParamXYZ = pBuilder.queryParamXYZ;
     intCode = pBuilder.intCode;
+    intCodeXYZ = pBuilder.intCodeXYZ;
   }
 
   /**

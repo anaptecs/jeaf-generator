@@ -56,7 +56,9 @@ public class ParentBeanParamType implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     novaKey = pBuilder.novaKey;
+    novaKeyXYZ = pBuilder.novaKeyXYZ;
     tkID = pBuilder.tkID;
+    tkIDXYZ = pBuilder.tkIDXYZ;
   }
 
   /**

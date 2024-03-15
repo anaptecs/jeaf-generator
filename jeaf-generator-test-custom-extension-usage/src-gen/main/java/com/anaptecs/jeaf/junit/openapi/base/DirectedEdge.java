@@ -81,8 +81,11 @@ public class DirectedEdge implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     start = pBuilder.start;
+    startXYZ = pBuilder.startXYZ;
     end = pBuilder.end;
+    endXYZ = pBuilder.endXYZ;
     link = pBuilder.link;
+    linkXYZ = pBuilder.linkXYZ;
   }
 
   /**

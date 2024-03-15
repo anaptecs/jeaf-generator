@@ -98,9 +98,13 @@ public abstract class ChannelBase implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     channelType = pBuilder.channelType;
+    channelTypeXYZ = pBuilder.channelTypeXYZ;
     channelCode = pBuilder.channelCode;
+    channelCodeXYZ = pBuilder.channelCodeXYZ;
     code = pBuilder.code;
+    codeXYZ = pBuilder.codeXYZ;
     selfServiceChannel = pBuilder.selfServiceChannel;
+    selfServiceChannelXYZ = pBuilder.selfServiceChannelXYZ;
   }
 
   /**

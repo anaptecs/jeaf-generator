@@ -87,7 +87,9 @@ public class Sortiment implements ServiceObject {
     }
     // Bidirectional back reference is set up correctly as a builder is used.
     productsBackReferenceInitialized = true;
+    productsXYZ = pBuilder.productsXYZ;
     value = pBuilder.value;
+    valueXYZ = pBuilder.valueXYZ;
   }
 
   /**

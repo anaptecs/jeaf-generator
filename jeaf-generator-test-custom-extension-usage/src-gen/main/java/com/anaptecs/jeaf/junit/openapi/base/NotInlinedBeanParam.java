@@ -76,9 +76,13 @@ public class NotInlinedBeanParam implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     header = pBuilder.header;
+    headerXYZ = pBuilder.headerXYZ;
     doubleCode = pBuilder.doubleCode;
+    doubleCodeXYZ = pBuilder.doubleCodeXYZ;
     extensibleEnum = pBuilder.extensibleEnum;
+    extensibleEnumXYZ = pBuilder.extensibleEnumXYZ;
     bookingID = pBuilder.bookingID;
+    bookingIDXYZ = pBuilder.bookingIDXYZ;
   }
 
   /**

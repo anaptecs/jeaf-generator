@@ -46,6 +46,7 @@ public class IgnoringClass implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     age = pBuilder.age;
+    ageXYZ = pBuilder.ageXYZ;
   }
 
   /**

@@ -54,7 +54,9 @@ public class GeoPosition extends PlaceRef {
     super(pBuilder);
     // Read attribute values from builder.
     longitude = pBuilder.longitude;
+    longitudeXYZ = pBuilder.longitudeXYZ;
     latitude = pBuilder.latitude;
+    latitudeXYZ = pBuilder.latitudeXYZ;
   }
 
   /**

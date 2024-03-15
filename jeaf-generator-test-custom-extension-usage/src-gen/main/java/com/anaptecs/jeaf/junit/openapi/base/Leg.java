@@ -73,13 +73,16 @@ public class Leg implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     start = pBuilder.start;
+    startXYZ = pBuilder.startXYZ;
     stop = pBuilder.stop;
+    stopXYZ = pBuilder.stopXYZ;
     if (pBuilder.stopovers != null) {
       stopovers = pBuilder.stopovers;
     }
     else {
       stopovers = new ArrayList<PlaceRef>();
     }
+    stopoversXYZ = pBuilder.stopoversXYZ;
   }
 
   /**

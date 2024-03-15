@@ -118,20 +118,25 @@ public class MultiValuedDataType implements ServiceObject {
     else {
       stringCodeHeader = new ArrayList<StringCode>();
     }
+    stringCodeHeaderXYZ = pBuilder.stringCodeHeaderXYZ;
     if (pBuilder.longCodeQueryParam != null) {
       longCodeQueryParam = pBuilder.longCodeQueryParam;
     }
     else {
       longCodeQueryParam = new ArrayList<LongCode>();
     }
+    longCodeQueryParamXYZ = pBuilder.longCodeQueryParamXYZ;
     if (pBuilder.literals != null) {
       literals = pBuilder.literals;
     }
     else {
       literals = new ArrayList<BooleanLiteralsEnum>();
     }
+    literalsXYZ = pBuilder.literalsXYZ;
     stringProperty = pBuilder.stringProperty;
+    stringPropertyXYZ = pBuilder.stringPropertyXYZ;
     longValues = pBuilder.longValues;
+    longValuesXYZ = pBuilder.longValuesXYZ;
   }
 
   /**

@@ -85,9 +85,13 @@ public class DeprecatedContext implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     accessToken = pBuilder.accessToken;
+    accessTokenXYZ = pBuilder.accessTokenXYZ;
     language = pBuilder.language;
+    languageXYZ = pBuilder.languageXYZ;
     resellerID = pBuilder.resellerID;
+    resellerIDXYZ = pBuilder.resellerIDXYZ;
     queryParam = pBuilder.queryParam;
+    queryParamXYZ = pBuilder.queryParamXYZ;
   }
 
   /**

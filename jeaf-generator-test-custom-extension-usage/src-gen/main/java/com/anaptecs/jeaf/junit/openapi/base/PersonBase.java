@@ -63,7 +63,9 @@ public abstract class PersonBase extends Partner {
     super(pBuilder);
     // Read attribute values from builder.
     surname = pBuilder.surname;
+    surnameXYZ = pBuilder.surnameXYZ;
     firstName = pBuilder.firstName;
+    firstNameXYZ = pBuilder.firstNameXYZ;
   }
 
   /**

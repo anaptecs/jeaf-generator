@@ -70,8 +70,11 @@ public class MultivaluedQueryParamsBean implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     intArray = pBuilder.intArray;
+    intArrayXYZ = pBuilder.intArrayXYZ;
     strings = pBuilder.strings;
+    stringsXYZ = pBuilder.stringsXYZ;
     integers = pBuilder.integers;
+    integersXYZ = pBuilder.integersXYZ;
   }
 
   /**

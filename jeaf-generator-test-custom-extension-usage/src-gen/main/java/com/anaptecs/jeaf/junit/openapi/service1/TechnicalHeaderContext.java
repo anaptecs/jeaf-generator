@@ -65,7 +65,9 @@ public class TechnicalHeaderContext implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     reseller = pBuilder.reseller;
+    resellerXYZ = pBuilder.resellerXYZ;
     authenticationToken = pBuilder.authenticationToken;
+    authenticationTokenXYZ = pBuilder.authenticationTokenXYZ;
   }
 
   /**

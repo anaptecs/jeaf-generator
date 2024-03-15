@@ -70,8 +70,11 @@ public class BeanParameter implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     accessToken = pBuilder.accessToken;
+    accessTokenXYZ = pBuilder.accessTokenXYZ;
     language = pBuilder.language;
+    languageXYZ = pBuilder.languageXYZ;
     oldStyle = pBuilder.oldStyle;
+    oldStyleXYZ = pBuilder.oldStyleXYZ;
   }
 
   /**

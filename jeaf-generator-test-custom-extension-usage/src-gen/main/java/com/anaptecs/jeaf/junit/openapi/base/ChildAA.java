@@ -111,11 +111,17 @@ public class ChildAA extends ChildA {
     super(pBuilder);
     // Read attribute values from builder.
     childAAAttribute = pBuilder.childAAAttribute;
+    childAAAttributeXYZ = pBuilder.childAAAttributeXYZ;
     sizedArray = pBuilder.sizedArray;
+    sizedArrayXYZ = pBuilder.sizedArrayXYZ;
     requiredArray = pBuilder.requiredArray;
+    requiredArrayXYZ = pBuilder.requiredArrayXYZ;
     bigIntegerCode = pBuilder.bigIntegerCode;
+    bigIntegerCodeXYZ = pBuilder.bigIntegerCodeXYZ;
     integerCode = pBuilder.integerCode;
+    integerCodeXYZ = pBuilder.integerCodeXYZ;
     codes = pBuilder.codes;
+    codesXYZ = pBuilder.codesXYZ;
   }
 
   /**

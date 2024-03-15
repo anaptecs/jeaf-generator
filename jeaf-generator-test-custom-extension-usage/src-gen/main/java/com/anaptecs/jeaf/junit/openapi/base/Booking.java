@@ -58,6 +58,7 @@ public class Booking implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     bookingID = pBuilder.bookingID;
+    bookingIDXYZ = pBuilder.bookingIDXYZ;
   }
 
   /**

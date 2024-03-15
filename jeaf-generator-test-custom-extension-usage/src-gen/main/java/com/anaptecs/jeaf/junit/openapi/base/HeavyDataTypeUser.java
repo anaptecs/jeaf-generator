@@ -116,13 +116,21 @@ public class HeavyDataTypeUser implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     booleanCode = pBuilder.booleanCode;
+    booleanCodeXYZ = pBuilder.booleanCodeXYZ;
     byteCode = pBuilder.byteCode;
+    byteCodeXYZ = pBuilder.byteCodeXYZ;
     shortCode = pBuilder.shortCode;
+    shortCodeXYZ = pBuilder.shortCodeXYZ;
     integerCode = pBuilder.integerCode;
+    integerCodeXYZ = pBuilder.integerCodeXYZ;
     floatCode = pBuilder.floatCode;
+    floatCodeXYZ = pBuilder.floatCodeXYZ;
     doubleCode = pBuilder.doubleCode;
+    doubleCodeXYZ = pBuilder.doubleCodeXYZ;
     bigInegerCode = pBuilder.bigInegerCode;
+    bigInegerCodeXYZ = pBuilder.bigInegerCodeXYZ;
     bigDecimalCode = pBuilder.bigDecimalCode;
+    bigDecimalCodeXYZ = pBuilder.bigDecimalCodeXYZ;
   }
 
   /**

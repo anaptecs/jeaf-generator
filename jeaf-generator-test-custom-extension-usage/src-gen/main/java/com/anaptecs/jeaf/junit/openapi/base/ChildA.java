@@ -50,6 +50,7 @@ public abstract class ChildA extends ParentClass {
     super(pBuilder);
     // Read attribute values from builder.
     childAAttribute = pBuilder.childAAttribute;
+    childAAttributeXYZ = pBuilder.childAAttributeXYZ;
   }
 
   /**

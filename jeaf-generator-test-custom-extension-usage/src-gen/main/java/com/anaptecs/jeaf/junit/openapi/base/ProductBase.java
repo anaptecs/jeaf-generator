@@ -210,25 +210,34 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
     }
     // Bidirectional back reference is set up correctly as a builder is used.
     resellersBackReferenceInitialized = true;
+    resellersXYZ = pBuilder.resellersXYZ;
     name = pBuilder.name;
+    nameXYZ = pBuilder.nameXYZ;
     image = pBuilder.image;
+    imageXYZ = pBuilder.imageXYZ;
     link = pBuilder.link;
+    linkXYZ = pBuilder.linkXYZ;
     productID = pBuilder.productID;
+    productIDXYZ = pBuilder.productIDXYZ;
     if (pBuilder.supportedCurrencies != null) {
       supportedCurrencies = pBuilder.supportedCurrencies;
     }
     else {
       supportedCurrencies = new HashSet<CurrencyCode>();
     }
+    supportedCurrenciesXYZ = pBuilder.supportedCurrenciesXYZ;
     if (pBuilder.productCodes != null) {
       productCodes = pBuilder.productCodes;
     }
     else {
       productCodes = new HashSet<ProductCode>();
     }
+    productCodesXYZ = pBuilder.productCodesXYZ;
     description = pBuilder.description;
+    descriptionXYZ = pBuilder.descriptionXYZ;
     sortiments = new HashSet<Sortiment>();
     uri = pBuilder.uri;
+    uriXYZ = pBuilder.uriXYZ;
   }
 
   /**

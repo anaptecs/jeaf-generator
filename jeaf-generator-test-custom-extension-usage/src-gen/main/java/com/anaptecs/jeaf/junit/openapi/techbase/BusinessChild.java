@@ -44,6 +44,7 @@ public class BusinessChild extends BusinessParent {
     super(pBuilder);
     // Read attribute values from builder.
     childAttribute = pBuilder.childAttribute;
+    childAttributeXYZ = pBuilder.childAttributeXYZ;
   }
 
   /**

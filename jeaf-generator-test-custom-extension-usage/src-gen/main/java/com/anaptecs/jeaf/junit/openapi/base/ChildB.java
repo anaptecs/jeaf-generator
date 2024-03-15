@@ -80,12 +80,14 @@ public class ChildB extends ParentClass {
     super(pBuilder);
     // Read attribute values from builder.
     childBAttribute = pBuilder.childBAttribute;
+    childBAttributeXYZ = pBuilder.childBAttributeXYZ;
     if (pBuilder.composition != null) {
       composition = pBuilder.composition;
     }
     else {
       composition = new HashSet<ParentClass>();
     }
+    compositionXYZ = pBuilder.compositionXYZ;
   }
 
   /**

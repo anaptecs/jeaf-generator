@@ -62,6 +62,7 @@ public class BidirectB implements ServiceObject {
     }
     // Bidirectional back reference is set up correctly as a builder is used.
     aBackReferenceInitialized = true;
+    aXYZ = pBuilder.aXYZ;
   }
 
   /**

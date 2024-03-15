@@ -96,19 +96,23 @@ public class ParentClass implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     parentAttribute = pBuilder.parentAttribute;
+    parentAttributeXYZ = pBuilder.parentAttributeXYZ;
     if (pBuilder.ibans != null) {
       ibans = pBuilder.ibans;
     }
     else {
       ibans = new HashSet<IBAN>();
     }
+    ibansXYZ = pBuilder.ibansXYZ;
     theBankAccount = pBuilder.theBankAccount;
+    theBankAccountXYZ = pBuilder.theBankAccountXYZ;
     if (pBuilder.legacyBankAccounts != null) {
       legacyBankAccounts = pBuilder.legacyBankAccounts;
     }
     else {
       legacyBankAccounts = new ArrayList<BankAccount>();
     }
+    legacyBankAccountsXYZ = pBuilder.legacyBankAccountsXYZ;
   }
 
   /**

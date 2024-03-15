@@ -10,7 +10,8 @@
 private int «this.name»XYZ = 0;
 «ENDDEFINE»
 
-«DEFINE AfterBuilderConstructorPropertyInit FOR Property»
+«DEFINE AfterBuilderConstructorPropertyInit(String builderParamName) FOR Property»
+«this.name»XYZ = «builderParamName».«this.name»XYZ;
 «ENDDEFINE»
 
 «DEFINE AfterClassPropertyAccessors FOR Property»

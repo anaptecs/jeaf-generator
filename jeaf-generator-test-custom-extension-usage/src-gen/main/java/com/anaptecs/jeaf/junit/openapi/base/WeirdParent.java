@@ -74,13 +74,16 @@ public class WeirdParent implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     someProperty = pBuilder.someProperty;
+    somePropertyXYZ = pBuilder.somePropertyXYZ;
     complexBooking = pBuilder.complexBooking;
+    complexBookingXYZ = pBuilder.complexBookingXYZ;
     if (pBuilder.complexBookings != null) {
       complexBookings = pBuilder.complexBookings;
     }
     else {
       complexBookings = new HashSet<ComplexBookingID>();
     }
+    complexBookingsXYZ = pBuilder.complexBookingsXYZ;
   }
 
   /**

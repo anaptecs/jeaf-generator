@@ -66,8 +66,11 @@ public class LocalBeanParamType implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     localKey = pBuilder.localKey;
+    localKeyXYZ = pBuilder.localKeyXYZ;
     localID = pBuilder.localID;
+    localIDXYZ = pBuilder.localIDXYZ;
     authorization = pBuilder.authorization;
+    authorizationXYZ = pBuilder.authorizationXYZ;
   }
 
   /**

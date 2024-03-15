@@ -46,6 +46,7 @@ public class TechParent implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     techAttribute = pBuilder.techAttribute;
+    techAttributeXYZ = pBuilder.techAttributeXYZ;
   }
 
   /**

@@ -46,6 +46,7 @@ public class LinkObject implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     href = pBuilder.href;
+    hrefXYZ = pBuilder.hrefXYZ;
   }
 
   /**

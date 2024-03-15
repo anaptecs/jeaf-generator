@@ -133,9 +133,12 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
     }
     // Bidirectional back reference is set up correctly as a builder is used.
     channelsBackReferenceInitialized = true;
+    channelsXYZ = pBuilder.channelsXYZ;
     products = new HashSet<Product>();
     name = pBuilder.name;
+    nameXYZ = pBuilder.nameXYZ;
     language = pBuilder.language;
+    languageXYZ = pBuilder.languageXYZ;
   }
 
   /**

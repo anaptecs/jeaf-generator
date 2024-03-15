@@ -106,15 +106,20 @@ public class ChildBB extends ChildB {
     super(pBuilder);
     // Read attribute values from builder.
     childBBAttribute = pBuilder.childBBAttribute;
+    childBBAttributeXYZ = pBuilder.childBBAttributeXYZ;
     deprecatedAttribute = pBuilder.deprecatedAttribute;
+    deprecatedAttributeXYZ = pBuilder.deprecatedAttributeXYZ;
     if (pBuilder.deprecatedBs != null) {
       deprecatedBs = pBuilder.deprecatedBs;
     }
     else {
       deprecatedBs = new HashSet<ChildB>();
     }
+    deprecatedBsXYZ = pBuilder.deprecatedBsXYZ;
     deprecatedParent = pBuilder.deprecatedParent;
+    deprecatedParentXYZ = pBuilder.deprecatedParentXYZ;
     deprecatedArray = pBuilder.deprecatedArray;
+    deprecatedArrayXYZ = pBuilder.deprecatedArrayXYZ;
   }
 
   /**

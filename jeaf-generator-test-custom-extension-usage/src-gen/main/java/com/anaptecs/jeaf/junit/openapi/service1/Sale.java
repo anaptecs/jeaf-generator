@@ -67,7 +67,9 @@ public class Sale implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     transactionAmount = pBuilder.transactionAmount;
+    transactionAmountXYZ = pBuilder.transactionAmountXYZ;
     sale = pBuilder.sale;
+    saleXYZ = pBuilder.saleXYZ;
   }
 
   /**

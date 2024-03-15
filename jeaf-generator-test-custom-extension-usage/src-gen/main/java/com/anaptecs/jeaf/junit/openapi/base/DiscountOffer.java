@@ -64,6 +64,7 @@ public class DiscountOffer implements ServiceObject {
     else {
       campaigns = new HashSet<SoftLink>();
     }
+    campaignsXYZ = pBuilder.campaignsXYZ;
   }
 
   /**

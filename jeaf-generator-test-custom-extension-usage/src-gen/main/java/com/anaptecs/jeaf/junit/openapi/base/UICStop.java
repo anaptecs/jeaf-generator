@@ -95,9 +95,13 @@ public class UICStop extends Stop {
     super(pBuilder);
     // Read attribute values from builder.
     uicCode = pBuilder.uicCode;
+    uicCodeXYZ = pBuilder.uicCodeXYZ;
     priority = pBuilder.priority;
+    priorityXYZ = pBuilder.priorityXYZ;
     code = pBuilder.code;
+    codeXYZ = pBuilder.codeXYZ;
     index2 = pBuilder.index2;
+    index2XYZ = pBuilder.index2XYZ;
   }
 
   /**

@@ -54,6 +54,7 @@ public class CurrencyCode implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     code = pBuilder.code;
+    codeXYZ = pBuilder.codeXYZ;
   }
 
   /**
