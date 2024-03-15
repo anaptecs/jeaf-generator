@@ -54,6 +54,8 @@ public class Context {
   /**
    * <br/>
    * <b>Example:</b> <code>en</code>
+   * <p/>
+   * <b>Header-Param:</b> lang
    */
   private Locale language;
 
@@ -147,6 +149,8 @@ public class Context {
     /**
      * <br/>
      * <b>Example:</b> <code>en</code>
+     * <p/>
+     * <b>Header-Param:</b> lang
      */
     private Locale language;
 

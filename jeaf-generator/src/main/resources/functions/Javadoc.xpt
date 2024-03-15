@@ -60,6 +60,7 @@
     «ENDIF -»
     «ENDIF -»
     «EXPAND AliasJavadoc -»
+    «EXPAND RESTDocs -»
     «EXPAND BreakingChangeJavadoc -»
     «EXPAND DeprecatedJavadoc -»
  */
@@ -200,6 +201,17 @@
     «IF this.isAlias()-»
     <p/><b>Alternate Name:</b> «this.asAlias().getAlternateNameForJavadoc()»   
     «ENDIF-»
+«ENDDEFINE»
+
+«DEFINE RESTDocs FOR uml::Property -»
+    «IF isTargetRuntimeSpring() -»
+	    «IF this.isStereotypeApplied("PathParam") -»
+	    <p/><b>Path-Param:</b> «EXPAND java::OpenAPI::RESTParamName»
+	    «ENDIF -»
+	    «IF this.isStereotypeApplied("HeaderParam") -»
+	    <p/><b>Header-Param:</b> «EXPAND java::OpenAPI::RESTParamName»
+	    «ENDIF -»
+    «ENDIF -»
 «ENDDEFINE»
 
 
