@@ -1,7 +1,5 @@
 package com.anaptecs.jeaf.junit.openapi.base;
 
-import javax.validation.constraints.NotNull;
-
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
 public final class Entity {
@@ -24,10 +22,8 @@ public final class Entity {
       dataUnit = pDataUnit;
     }
 
-    @NotNull
     private final String entityID;
 
-    @NotNull
     private DataUnit dataUnit;
 
     /**
