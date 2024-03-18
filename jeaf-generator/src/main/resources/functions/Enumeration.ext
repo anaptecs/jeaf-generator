@@ -29,7 +29,7 @@ cached boolean isFloatTypeSlot(uml::Slot slot):
 cached List[uml::Slot] getOrderedSlots(uml::EnumerationLiteral literal):
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getOrderedSlots(org.eclipse.uml2.uml.EnumerationLiteral);
     
- cached String getSlotValue(uml::Slot slot):
+cached String getSlotValue(uml::Slot slot):
     if slot == null
     then "null"
     else if slot.isEnumTypeSlot()
@@ -39,5 +39,12 @@ cached List[uml::Slot] getOrderedSlots(uml::EnumerationLiteral literal):
     else if slot.isFloatTypeSlot()
     then slot.value.first().stringValue() + "f"
     else slot.value.first().stringValue(); 
-  
+    
+    
+cached String getMissingMandatorySlots(uml::EnumerationLiteral literal):
+    literal.javaGetMissingMandatorySlots().toString(", ");
+    
+private List[String] javaGetMissingMandatorySlots(uml::EnumerationLiteral literal):
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getMissingMandatorySlots(org.eclipse.uml2.uml.EnumerationLiteral);
+
     

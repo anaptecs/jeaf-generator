@@ -10,6 +10,7 @@ extension functions::JEAFDeprecated;
 extension functions::NamedElement;
 extension functions::Class;
 extension functions::Property;
+extension functions::Enumeration;
 
 
 // Checks for stereotype JEAFComponent
@@ -77,6 +78,8 @@ context JEAFService if runChecks("JEAFService") && ignore() == false WARNING thi
 
 // Checks for stereotype JEAFEnumeration
 context JEAFEnumeration if runChecks("JEAFEnumeration") && ignore() == false WARNING this.getWarningMessage("9122", {"JEAFEnumeration", name}): ownedComment.size  > 0;
+
+context EnumerationLiteral if runChecks("JEAFEnumeration") && ignore() == false ERROR this.getErrorMessage("9169", {this.getMissingMandatorySlots(), name, owner.asNamedElement().name}): this.getMissingMandatorySlots().length == 0;
 
 
 // Checks for stereotype QueryObject

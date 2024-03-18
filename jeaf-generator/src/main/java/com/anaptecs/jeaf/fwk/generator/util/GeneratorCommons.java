@@ -9,6 +9,7 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -1328,13 +1329,16 @@ public class GeneratorCommons {
       // Check for stereotypes
       if (pStereotype.length() > 0) {
         if (pElement instanceof Class || pElement instanceof Interface || pElement instanceof Component
-            || pElement instanceof Enumeration || pElement instanceof Activity || pElement instanceof Dependency
-            || pElement instanceof Operation || pElement instanceof Property || pElement instanceof Parameter) {
+            || pElement instanceof Enumeration || pElement instanceof EnumerationLiteral
+            || pElement instanceof Activity || pElement instanceof Dependency || pElement instanceof Operation
+            || pElement instanceof Property || pElement instanceof Parameter) {
           lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, ClassUtil.STEREOTYPE_ACTIVITY);
           lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, ClassUtil.STEREOTYPE_APPLICATION_EXCEPTION);
           // lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(lOwner, ClassUtil.STEREOTYPE_COMPONENT);
           lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, ClassUtil.STEREOTYPE_DOMAIN_OBJECT);
           lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, ClassUtil.STEREOTYPE_JEAF_ENUMERATION);
+          lRunChecks =
+              lRunChecks | ClassUtil.isStereotypeApplied(pElement.getOwner(), ClassUtil.STEREOTYPE_JEAF_ENUMERATION);
           lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, ClassUtil.STEREOTYPE_JEAF_SERVICE);
           lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, ClassUtil.STEREOTYPE_LOAD_STRATEGY);
           lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, ClassUtil.STEREOTYPE_PERSISTENT_OBJECT);
@@ -1596,6 +1600,24 @@ public class GeneratorCommons {
       lOrderdSlots.add(lSlot);
     }
     return lOrderdSlots;
+  }
+
+  public static List<String> getMissingMandatorySlots( EnumerationLiteral pLiteral ) {
+    List<String> lMandatoryAttributes = new ArrayList<String>();
+    Enumeration lEnumeration = (Enumeration) pLiteral.getOwner();
+    Iterator<Property> lPropertyIterator = lEnumeration.getAttributes().iterator();
+    while (lPropertyIterator.hasNext()) {
+      Property lProperty = lPropertyIterator.next();
+      if (lProperty.getLower() > 0) {
+        lMandatoryAttributes.add(lProperty.getName());
+      }
+    }
+
+    Iterator<Slot> lSlotIterator = pLiteral.getSlots().iterator();
+    while (lSlotIterator.hasNext()) {
+      lMandatoryAttributes.remove(lSlotIterator.next().getDefiningFeature().getName());
+    }
+    return lMandatoryAttributes;
   }
 
   public static String getMessage( NamedElement pElement, String pErrorCode, List<String> pParams ) {
