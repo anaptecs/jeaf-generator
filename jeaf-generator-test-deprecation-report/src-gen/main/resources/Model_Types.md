@@ -125,6 +125,7 @@ MultiValuedDataType |   | com.anaptecs.jeaf.junit.openapi.base |  |
 MultivaluedQueryParamsBean |   | com.anaptecs.jeaf.junit.openapi.base |  |
 MutableChildPOJO |   | com.anaptecs.jeaf.junit.pojo |  |
 MyBusinessObject |   | com.anaptecs.jeaf.junit.generics |  |
+MyType |   | com.anaptecs.jeaf.junit.pojo |  |
 NotInlinedBeanParam |   | com.anaptecs.jeaf.junit.openapi.base |  |
 Offer |   | com.anaptecs.jeaf.junit.rest.generics |  |
 OtherMappingObject |   | com.anaptecs.jeaf.junit.objectmapping |  |

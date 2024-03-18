@@ -1,4 +1,7 @@
 extension functions::TypeChecks;
+extension java::GeneratorCommons;
+extension java::Naming;
+
 
 //cached boolean isEnumeration(uml::Element element):
 //    element.isInstanceOf("org.eclipse.uml2.uml.Enumeration");
@@ -13,3 +16,28 @@ cached List[uml::EnumerationLiteral] getPulicLiterals(JMM::OpenAPIEnumeration en
     if enum.extensibleEnum 
     then enum.ownedLiteral.select(e|e.name != "UNKNOWN")
     else enum.ownedLiteral;
+
+cached boolean isEnumTypeSlot(uml::Slot slot):
+    slot.definingFeature.type.isEnumeration(); 
+    
+cached boolean isStringTypeSlot(uml::Slot slot):
+    slot.definingFeature.type.isStringType(); 
+    
+cached boolean isFloatTypeSlot(uml::Slot slot):
+    slot.definingFeature.type.isFloatType(); 
+    
+cached List[uml::Slot] getOrderedSlots(uml::EnumerationLiteral literal):
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getOrderedSlots(org.eclipse.uml2.uml.EnumerationLiteral);
+    
+ cached String getSlotValue(uml::Slot slot):
+    if slot == null
+    then "null"
+    else if slot.isEnumTypeSlot()
+    then slot.definingFeature.type.fqn() + "." + slot.value.first().stringValue()
+    else if slot.isStringTypeSlot()
+    then "\"" +  slot.value.first().stringValue() + "\""
+    else if slot.isFloatTypeSlot()
+    then slot.value.first().stringValue() + "f"
+    else slot.value.first().stringValue(); 
+  
+    

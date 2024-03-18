@@ -19,7 +19,7 @@ package «packageName()»;
 	  «EXPAND functions::Javadoc::JavadocForLiteral FOR literal»
 	  «EXPAND java::Helper::GenerateDeprecationAnnotation FOR literal -»  
 	  «literal.name»«IF literal.slot.size > 0»( 
-	  	«FOREACH literal.getOrderedSlots() AS slot SEPARATOR ", "»«IF slot.isEnumTypeSlot()»«slot.definingFeature.type.fqn()».«ENDIF»«IF slot.isStringTypeSlot()»"«ENDIF»«slot.value.first().stringValue()»«IF slot.isStringTypeSlot()»"«ENDIF»«IF slot.isFloatTypeSlot()»f«ENDIF»«ENDFOREACH»	  
+	  	«FOREACH literal.getOrderedSlots() AS slot SEPARATOR ", "»«slot.getSlotValue()»«ENDFOREACH»	  
 	  )«ENDIF»	  
 	«ENDFOREACH»
 	«IF extensibleEnum && this.hasUnknownLiteral() == false»

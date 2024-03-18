@@ -1593,9 +1593,7 @@ public class GeneratorCommons {
     while (lAttrIter.hasNext()) {
       Property lProperty = lAttrIter.next();
       Slot lSlot = lSlotsByProperty.get(lProperty);
-      if (lSlot != null) {
-        lOrderdSlots.add(lSlot);
-      }
+      lOrderdSlots.add(lSlot);
     }
     return lOrderdSlots;
   }
