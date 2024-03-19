@@ -82,11 +82,13 @@ context JEAFService if runChecks("JEAFService") && ignore() == false ERROR this.
 context JEAFService if runChecks("JEAFService") && ignore() == false ERROR this.getErrorMessage("9127", {"JEAFService", name}): ownedOperation.forAll( e | e.areAllInputParametersNamed() == true);
 context JEAFService if runChecks("JEAFService") && ignore() == false ERROR this.getErrorMessage("9130", {"JEAFService", name}): ownedOperation.forAll( e | e.hasOnlySupportedParamaterTypes());
 context JEAFService if runChecks("JEAFService") && ignore() == false WARNING this.getWarningMessage("9122", {"JEAFService", name}): ownedComment.size  > 0;
-
+context JEAFService if runChecks("JEAFService") && ignore() == false ERROR this.getErrorMessage("9170", {name, "interface", this.fqn()}): this.isValidIdentifierName();
 
 
 // Checks for stereotype JEAFEnumeration
 context JEAFEnumeration if runChecks("JEAFEnumeration") && ignore() == false WARNING this.getWarningMessage("9122", {"JEAFEnumeration", name}): ownedComment.size  > 0;
+context JEAFEnumeration if runChecks("JEAFEnumeration") && ignore() == false ERROR this.getErrorMessage("9170", {name, "enumeration", this.fqn()}): this.isValidIdentifierName();
+context Property if owner.asNamedElement().runChecks("JEAFEnumeration") && owner.isStereotypeApplied("JEAFEnumeration") && ignore() == false ERROR this.getErrorMessage("9170", {name, "property", owner.asNamedElement().fqn()}): this.isValidIdentifierName();
 
 context EnumerationLiteral if runChecks("JEAFEnumeration") && ignore() == false ERROR this.getErrorMessage("9169", {this.getMissingMandatorySlots(), name, owner.asNamedElement().name}): this.getMissingMandatorySlots().length == 0;
 
