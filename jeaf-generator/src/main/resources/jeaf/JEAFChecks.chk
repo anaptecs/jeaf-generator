@@ -26,6 +26,7 @@ context ServiceObject if runChecks("ServiceObject") && ignore() == false ERROR t
 context ServiceObject if runChecks("ServiceObject") && ignore() == false ERROR this.getErrorMessage("9130", {"ServiceObject", name}): ownedOperation.forAll( e | e.hasOnlySupportedParamaterTypes());
 context ServiceObject if runChecks("ServiceObject") && ignore() == false ERROR this.getErrorMessage("9160", {name}): this.isStereotypeApplied("POJO") == false;
 context ServiceObject if runChecks("ServiceObject") && ignore() == false && compositeDataType ERROR this.getErrorMessage("9162", {this.fqn()}): compositeDataTypePublicFieldName.length > 0;
+context Operation if owner.asNamedElement().runChecks("ServiceObject") && owner.isStereotypeApplied("ServiceObject") && ignore() == false ERROR this.getErrorMessage("9170", {name, "operation", owner.asNamedElement().fqn()}): this.isValidIdentifierName();
 
 
 
@@ -62,6 +63,8 @@ context SoftLink if ((NamedElement) owner).runChecks("POJO") && ignore() == fals
 
 context POJO if runChecks("POJO") && ignore() == false ERROR this.getErrorMessage("9170", {name, "class", this.fqn()}): this.isValidIdentifierName();
 context Property if owner.asNamedElement().runChecks("POJO") && owner.isStereotypeApplied("POJO") && ignore() == false  ERROR this.getErrorMessage("9170", {name, "property", owner.asNamedElement().fqn()}): this.isValidIdentifierName();
+context Operation if owner.asNamedElement().runChecks("POJO") && owner.isStereotypeApplied("POJO") && ignore() == false ERROR this.getErrorMessage("9170", {name, "operation", owner.asNamedElement().fqn()}): this.isValidIdentifierName();
+
 
 // Checks for stereotype DomainObject
 context DomainObject if runChecks("DomainObject") && ignore() == false ERROR this.getErrorMessage("9124", {"DomainObject", name}): ownedAttribute.select(e|e.isPropertySuppressed() == false).forAll( a | a.type != null);
@@ -76,6 +79,8 @@ context DomainObject if runChecks("DomainObject") && ignore() == false WARNING t
 
 context DomainObject if runChecks("DomainObject") && ignore() == false ERROR this.getErrorMessage("9170", {name, "class", this.fqn()}): this.isValidIdentifierName();
 context Property if owner.asNamedElement().runChecks("DomainObject") && owner.isStereotypeApplied("DomainObject") && ignore() == false ERROR this.getErrorMessage("9170", {name, "property", owner.asNamedElement().fqn()}): this.isValidIdentifierName();
+context Operation if owner.asNamedElement().runChecks("DomainObject") && owner.isStereotypeApplied("DomainObject") && ignore() == false ERROR this.getErrorMessage("9170", {name, "operation", owner.asNamedElement().fqn()}): this.isValidIdentifierName();
+
 
 // Checks for stereotype JEAFService
 context JEAFService if runChecks("JEAFService") && ignore() == false ERROR this.getErrorMessage("9126", {name}): ownedOperation.forAll( e | e.isSupportedReturnType() == true);
@@ -83,6 +88,7 @@ context JEAFService if runChecks("JEAFService") && ignore() == false ERROR this.
 context JEAFService if runChecks("JEAFService") && ignore() == false ERROR this.getErrorMessage("9130", {"JEAFService", name}): ownedOperation.forAll( e | e.hasOnlySupportedParamaterTypes());
 context JEAFService if runChecks("JEAFService") && ignore() == false WARNING this.getWarningMessage("9122", {"JEAFService", name}): ownedComment.size  > 0;
 context JEAFService if runChecks("JEAFService") && ignore() == false ERROR this.getErrorMessage("9170", {name, "interface", this.fqn()}): this.isValidIdentifierName();
+context Operation if owner.asNamedElement().runChecks("JEAFService") && owner.isStereotypeApplied("JEAFService") && ignore() == false ERROR this.getErrorMessage("9170", {name, "operation", owner.asNamedElement().fqn()}): this.isValidIdentifierName();
 
 
 // Checks for stereotype JEAFEnumeration
@@ -91,6 +97,7 @@ context JEAFEnumeration if runChecks("JEAFEnumeration") && ignore() == false ERR
 context Property if owner.asNamedElement().runChecks("JEAFEnumeration") && owner.isStereotypeApplied("JEAFEnumeration") && ignore() == false ERROR this.getErrorMessage("9170", {name, "property", owner.asNamedElement().fqn()}): this.isValidIdentifierName();
 
 context EnumerationLiteral if runChecks("JEAFEnumeration") && ignore() == false ERROR this.getErrorMessage("9169", {this.getMissingMandatorySlots(), name, owner.asNamedElement().name}): this.getMissingMandatorySlots().length == 0;
+context EnumerationLiteral if runChecks("JEAFEnumeration") && owner.isStereotypeApplied("JEAFEnumeration") && ignore() == false ERROR this.getErrorMessage("9170", {name, "literal", this.fqn()}): this.isValidIdentifierName();
 
 
 // Checks for stereotype QueryObject
