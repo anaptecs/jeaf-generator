@@ -68,7 +68,7 @@ public class ClassUtil {
 
   public static final String STEREOTYPE_JEAF_ENUMERATION = "JEAFEnumeration";
 
-  public static final String STEREOTYPE_DOMAIN_OBJECT = "JMM::DomainObject";
+  public static final String STEREOTYPE_DOMAIN_OBJECT = "DomainObject";
 
   public static final String STEREOTYPE_PERSISTENT_OBJECT = "JMM::PersistentObject";
 

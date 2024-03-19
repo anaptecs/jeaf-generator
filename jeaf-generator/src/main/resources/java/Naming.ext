@@ -361,3 +361,7 @@ cached boolean requiresInitValue(uml::Property property):
 cached boolean requiresAttributeInitValue(uml::Class class):
      !class.ownedAttribute.select(p|p.requiresInitValue()).isEmpty;
 
+cached boolean isValidIdentifierName(uml::NamedElement namedElement):
+    if namedElement.name == null
+    then false
+    else namedElement.name.matches("^([a-zA-Z_$][a-zA-Z\\d_$]*)$");

@@ -35,6 +35,10 @@ context ServiceObject if runChecks("ServiceObject") && ignore() == false WARNING
 context SoftLink if softLinkType.name == "CustomGenericType" && ((NamedElement) owner).runChecks("ServiceObject") && ignore() == false ERROR this.getErrorMessage("9158", {((NamedElement)owner).name + "." + name}): getJavaGenericSoftLinkType().length > 0;
 context SoftLink if ((NamedElement) owner).runChecks("ServiceObject") && ignore() == false ERROR this.getErrorMessage("9164", {name, ((NamedElement)owner).name}): this.belongsToBidirectionalAssociation() == false;
 
+context ServiceObject if runChecks("ServiceObject") && ignore() == false ERROR this.getErrorMessage("9170", {name, "class", this.fqn()}): this.isValidIdentifierName();
+context Property if owner.asNamedElement().runChecks("ServiceObject") && owner.isStereotypeApplied("ServiceObject") && ignore() == false ERROR this.getErrorMessage("9170", {name, "property", owner.asNamedElement().fqn()}): this.isValidIdentifierName();
+
+
 // Checks for stereotype POJO
 context POJO if runChecks("POJO") && ignore() == false ERROR this.getErrorMessage("9124", {"POJO", name}): ownedAttribute.select(e|e.isPropertySuppressed() == false).forAll( a | a.type != null);
 context POJO if runChecks("POJO") && ignore() == false ERROR this.getErrorMessage("9125", {"POJO", name}): ownedAttribute.select(e|e.isPropertySuppressed() == false).forAll( a | a.name.length > 0);
@@ -56,6 +60,8 @@ context POJO if runChecks("POJO") && ignore() == false WARNING this.getWarningMe
 context SoftLink if softLinkType.name == "CustomGenericType" && ((NamedElement) owner).runChecks("POJO") && ignore() == false ERROR this.getErrorMessage("9158", {((NamedElement)owner).name + "." + name}): getJavaGenericSoftLinkType().length > 0;
 context SoftLink if ((NamedElement) owner).runChecks("POJO") && ignore() == false ERROR this.getErrorMessage("9164", {name, ((NamedElement)owner).name}): this.belongsToBidirectionalAssociation() == false;
 
+context POJO if runChecks("POJO") && ignore() == false ERROR this.getErrorMessage("9170", {name, "class", this.fqn()}): this.isValidIdentifierName();
+context Property if owner.asNamedElement().runChecks("POJO") && owner.isStereotypeApplied("POJO") && ignore() == false  ERROR this.getErrorMessage("9170", {name, "property", owner.asNamedElement().fqn()}): this.isValidIdentifierName();
 
 // Checks for stereotype DomainObject
 context DomainObject if runChecks("DomainObject") && ignore() == false ERROR this.getErrorMessage("9124", {"DomainObject", name}): ownedAttribute.select(e|e.isPropertySuppressed() == false).forAll( a | a.type != null);
@@ -68,12 +74,15 @@ context Property if isNavigable() && class != null && class.isStereotypeApplied(
 
 context DomainObject if runChecks("DomainObject") && ignore() == false WARNING this.getWarningMessage("9122", {"DomainObject", name}): ownedComment.size  > 0;
 
+context DomainObject if runChecks("DomainObject") && ignore() == false ERROR this.getErrorMessage("9170", {name, "class", this.fqn()}): this.isValidIdentifierName();
+context Property if owner.asNamedElement().runChecks("DomainObject") && owner.isStereotypeApplied("DomainObject") && ignore() == false ERROR this.getErrorMessage("9170", {name, "property", owner.asNamedElement().fqn()}): this.isValidIdentifierName();
 
 // Checks for stereotype JEAFService
 context JEAFService if runChecks("JEAFService") && ignore() == false ERROR this.getErrorMessage("9126", {name}): ownedOperation.forAll( e | e.isSupportedReturnType() == true);
 context JEAFService if runChecks("JEAFService") && ignore() == false ERROR this.getErrorMessage("9127", {"JEAFService", name}): ownedOperation.forAll( e | e.areAllInputParametersNamed() == true);
 context JEAFService if runChecks("JEAFService") && ignore() == false ERROR this.getErrorMessage("9130", {"JEAFService", name}): ownedOperation.forAll( e | e.hasOnlySupportedParamaterTypes());
 context JEAFService if runChecks("JEAFService") && ignore() == false WARNING this.getWarningMessage("9122", {"JEAFService", name}): ownedComment.size  > 0;
+
 
 
 // Checks for stereotype JEAFEnumeration
