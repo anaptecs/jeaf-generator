@@ -41,12 +41,12 @@ public class ObjectMapperFactory {
     lBuilder.enable(MapperFeature.PROPAGATE_TRANSIENT_MARKER);
     lBuilder.disable(DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES);
     // Create configured modules and add them as well.
+    lBuilder.addModule(CompositeModuleFactory.createDataTypeSerializerModule());
+    lBuilder.addModule(CompositeModuleFactory.createEnumSerializerModule());
     lBuilder.addModule(BaseModuleFactory.createDataTypeSerializerModule());
     lBuilder.addModule(BaseModuleFactory.createEnumSerializerModule());
     lBuilder.addModule(TechBaseModuleFactory.createDataTypeSerializerModule());
     lBuilder.addModule(TechBaseModuleFactory.createEnumSerializerModule());
-    lBuilder.addModule(CompositeModuleFactory.createDataTypeSerializerModule());
-    lBuilder.addModule(CompositeModuleFactory.createEnumSerializerModule());
     // Create object mapper and return it
     JsonMapper lObjectMapper = lBuilder.build();
     lObjectMapper.setDefaultPropertyInclusion(Include.NON_EMPTY);

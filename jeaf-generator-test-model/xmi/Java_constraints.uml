@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:MagicDrawProfile="http://UML_Standard_Profile/MagicDraw_Profile/_be00301_1073394351331_445580_2" xmlns:ValidationProfile="http://UML_Standard_Profile/Validation_Profile/_11_5_f720368_1159529670215_231387_1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/2.0.0/UML" xsi:schemaLocation="http://UML_Standard_Profile/MagicDraw_Profile/_be00301_1073394351331_445580_2 UML_Standard_Profile.MagicDraw_Profile.profile.uml#_nvkzo-UCEe6hD8Sll14pPQ http://UML_Standard_Profile/Validation_Profile/_11_5_f720368_1159529670215_231387_1 UML_Standard_Profile.Validation_Profile.profile.uml#_nvmAKOUCEe6hD8Sll14pPQ">
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:MagicDrawProfile="http://UML_Standard_Profile/MagicDraw_Profile/_be00301_1073394351331_445580_2" xmlns:ValidationProfile="http://UML_Standard_Profile/Validation_Profile/_11_5_f720368_1159529670215_231387_1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/2.0.0/UML" xsi:schemaLocation="http://UML_Standard_Profile/MagicDraw_Profile/_be00301_1073394351331_445580_2 UML_Standard_Profile.MagicDraw_Profile.profile.uml#_pkfkdeW-Ee62JoGvgAg_tg http://UML_Standard_Profile/Validation_Profile/_11_5_f720368_1159529670215_231387_1 UML_Standard_Profile.Validation_Profile.profile.uml#_pkoyPuW-Ee62JoGvgAg_tg">
   <uml:Model xmi:id="9c90d599-5ff3-49ba-9c06-a770a8a81870" name="Model" viewpoint="">
     <packageImport xmi:id="_0primitiveTypesModel">
       <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
@@ -49,30 +49,30 @@
         </specification>
       </ownedRule>
     </packagedElement>
-    <profileApplication xmi:id="2e5a4ec5-982e-49da-b5bb-50cc0e12800cprofileApplicationModel">
-      <eAnnotations xmi:id="_nwqUM-UCEe6hD8Sll14pPQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
-        <references xmi:type="ecore:EPackage" href="UML_Standard_Profile.Validation_Profile.profile.uml#_nvmAKOUCEe6hD8Sll14pPQ"/>
-      </eAnnotations>
-      <appliedProfile href="UML_Standard_Profile.Validation_Profile.profile.uml#2e5a4ec5-982e-49da-b5bb-50cc0e12800c"/>
-    </profileApplication>
     <profileApplication xmi:id="260e7aed-b398-45c1-851a-2a54415cd2fbprofileApplicationModel">
-      <eAnnotations xmi:id="_nw9PIeUCEe6hD8Sll14pPQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
-        <references xmi:type="ecore:EPackage" href="UML_Standard_Profile.MagicDraw_Profile.profile.uml#_nvkzo-UCEe6hD8Sll14pPQ"/>
+      <eAnnotations xmi:id="_pnudEeW-Ee62JoGvgAg_tg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="UML_Standard_Profile.MagicDraw_Profile.profile.uml#_pkfkdeW-Ee62JoGvgAg_tg"/>
       </eAnnotations>
       <appliedProfile href="UML_Standard_Profile.MagicDraw_Profile.profile.uml#260e7aed-b398-45c1-851a-2a54415cd2fb"/>
     </profileApplication>
+    <profileApplication xmi:id="2e5a4ec5-982e-49da-b5bb-50cc0e12800cprofileApplicationModel">
+      <eAnnotations xmi:id="_poWvMeW-Ee62JoGvgAg_tg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="UML_Standard_Profile.Validation_Profile.profile.uml#_pkoyPuW-Ee62JoGvgAg_tg"/>
+      </eAnnotations>
+      <appliedProfile href="UML_Standard_Profile.Validation_Profile.profile.uml#2e5a4ec5-982e-49da-b5bb-50cc0e12800c"/>
+    </profileApplication>
   </uml:Model>
-  <ValidationProfile:validationSuite xmi:id="_nwqUNOUCEe6hD8Sll14pPQ" base_Package="ef354dd2-a37f-43e6-99a2-4217443bec75"/>
-  <ValidationProfile:validationRule xmi:id="_nwqUQOUCEe6hD8Sll14pPQ" base_Constraint="3ec15ec5-c9d4-4d0f-bfb6-77dba64e381c" abbreviation="PrpTpIsDef" errorMessage="Types should be set on property."/>
-  <ValidationProfile:validationRule xmi:id="_nwqUQeUCEe6hD8Sll14pPQ" base_Constraint="5a551630-bf17-4c68-9cdd-b2b0875d627a" abbreviation="CnstNotAbst" errorMessage="Constructor should not be abstract."/>
-  <ValidationProfile:validationRule xmi:id="_nwqUQuUCEe6hD8Sll14pPQ" base_Constraint="f6f14fe7-7a3b-4751-a957-5715906e1222" abbreviation="DefVlForFnl" errorMessage="Final attribute (isReadOnly) must have default value."/>
-  <ValidationProfile:validationRule xmi:id="_nwqUQ-UCEe6hD8Sll14pPQ" base_Constraint="209a0dc8-e314-4a04-801e-b9f6f635446b" abbreviation="NoMultInh" errorMessage="There should be no multiple inheritance in Java."/>
-  <ValidationProfile:validationRule xmi:id="_nwqUROUCEe6hD8Sll14pPQ" base_Constraint="a17c6c27-6c5b-4913-a1cd-9b26fb5058a3" abbreviation="PrmTpIsDef" errorMessage="Types should be set on parameters."/>
-  <MagicDrawProfile:auxiliaryResource xmi:id="_nw9PIuUCEe6hD8Sll14pPQ" base_Element="9c90d599-5ff3-49ba-9c06-a770a8a81870"/>
-  <MagicDrawProfile:auxiliaryResource xmi:id="_nxHAJOUCEe6hD8Sll14pPQ" base_Element="ef354dd2-a37f-43e6-99a2-4217443bec75"/>
-  <MagicDrawProfile:InvisibleStereotype xmi:id="_nxHnNOUCEe6hD8Sll14pPQ" base_Element="3ec15ec5-c9d4-4d0f-bfb6-77dba64e381c"/>
-  <MagicDrawProfile:InvisibleStereotype xmi:id="_nxHnNeUCEe6hD8Sll14pPQ" base_Element="5a551630-bf17-4c68-9cdd-b2b0875d627a"/>
-  <MagicDrawProfile:InvisibleStereotype xmi:id="_nxHnNuUCEe6hD8Sll14pPQ" base_Element="f6f14fe7-7a3b-4751-a957-5715906e1222"/>
-  <MagicDrawProfile:InvisibleStereotype xmi:id="_nxHnN-UCEe6hD8Sll14pPQ" base_Element="209a0dc8-e314-4a04-801e-b9f6f635446b"/>
-  <MagicDrawProfile:InvisibleStereotype xmi:id="_nxHnOOUCEe6hD8Sll14pPQ" base_Element="a17c6c27-6c5b-4913-a1cd-9b26fb5058a3"/>
+  <MagicDrawProfile:auxiliaryResource xmi:id="_pnudEuW-Ee62JoGvgAg_tg" base_Element="9c90d599-5ff3-49ba-9c06-a770a8a81870"/>
+  <MagicDrawProfile:auxiliaryResource xmi:id="_poAw9OW-Ee62JoGvgAg_tg" base_Element="ef354dd2-a37f-43e6-99a2-4217443bec75"/>
+  <MagicDrawProfile:InvisibleStereotype xmi:id="_poAw-eW-Ee62JoGvgAg_tg" base_Element="3ec15ec5-c9d4-4d0f-bfb6-77dba64e381c"/>
+  <MagicDrawProfile:InvisibleStereotype xmi:id="_poAw-uW-Ee62JoGvgAg_tg" base_Element="5a551630-bf17-4c68-9cdd-b2b0875d627a"/>
+  <MagicDrawProfile:InvisibleStereotype xmi:id="_poAw--W-Ee62JoGvgAg_tg" base_Element="f6f14fe7-7a3b-4751-a957-5715906e1222"/>
+  <MagicDrawProfile:InvisibleStereotype xmi:id="_poAw_OW-Ee62JoGvgAg_tg" base_Element="209a0dc8-e314-4a04-801e-b9f6f635446b"/>
+  <MagicDrawProfile:InvisibleStereotype xmi:id="_poAw_eW-Ee62JoGvgAg_tg" base_Element="a17c6c27-6c5b-4913-a1cd-9b26fb5058a3"/>
+  <ValidationProfile:validationSuite xmi:id="_poWvMuW-Ee62JoGvgAg_tg" base_Package="ef354dd2-a37f-43e6-99a2-4217443bec75"/>
+  <ValidationProfile:validationRule xmi:id="_poX9WeW-Ee62JoGvgAg_tg" base_Constraint="3ec15ec5-c9d4-4d0f-bfb6-77dba64e381c" abbreviation="PrpTpIsDef" errorMessage="Types should be set on property."/>
+  <ValidationProfile:validationRule xmi:id="_poX9WuW-Ee62JoGvgAg_tg" base_Constraint="5a551630-bf17-4c68-9cdd-b2b0875d627a" abbreviation="CnstNotAbst" errorMessage="Constructor should not be abstract."/>
+  <ValidationProfile:validationRule xmi:id="_poX9W-W-Ee62JoGvgAg_tg" base_Constraint="f6f14fe7-7a3b-4751-a957-5715906e1222" abbreviation="DefVlForFnl" errorMessage="Final attribute (isReadOnly) must have default value."/>
+  <ValidationProfile:validationRule xmi:id="_poX9XOW-Ee62JoGvgAg_tg" base_Constraint="209a0dc8-e314-4a04-801e-b9f6f635446b" abbreviation="NoMultInh" errorMessage="There should be no multiple inheritance in Java."/>
+  <ValidationProfile:validationRule xmi:id="_poX9XeW-Ee62JoGvgAg_tg" base_Constraint="a17c6c27-6c5b-4913-a1cd-9b26fb5058a3" abbreviation="PrmTpIsDef" errorMessage="Types should be set on parameters."/>
 </xmi:XMI>
