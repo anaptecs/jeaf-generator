@@ -1,4 +1,5 @@
 extension java::GeneratorCommons;
+extension functions::SystemProperties;
 
 cached boolean isSoftLink(uml::Element element):
     element.isStereotypeApplied("Softlink");
@@ -20,10 +21,10 @@ cached String getMultivaluedJavaSoftLinkType(JMM::SoftLink softLink):
     else softLink.softLinkType.name.toFirstUpper();
 
 cached String getJavaGenericSoftLinkType():
-    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getJavaGenericSoftLinkType();
+    getSystemProperty("switch.gen.java.generic.soft.link.type");
     
 cached String getOpenAPIGenericSoftLinkType():
-    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getOpenAPIGenericSoftLinkType();
+    getSystemProperty("switch.gen.openapi.generic.soft.link.type", "string");
     
 
     
