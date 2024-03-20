@@ -648,25 +648,6 @@ cached boolean isTechnicalHeaderParameter(uml::Parameter param):
 cached boolean isTechnicalHeaderProperty(uml::Property property):
 	property.isStereotypeApplied("HeaderParam") && ((JMM::HeaderParam) property).technicalHeader;
 
-cached boolean isSoftLink(uml::Property property):
-	property.isStereotypeApplied("SoftLink");
-	
-cached String getJavaSoftLinkType(JMM::SoftLink softLink):
-    if (softLink.softLinkType.name == "CustomGenericType")
-    then getJavaGenericSoftLinkType()
-    else softLink.softLinkType.name;
-
-cached String getMultivaluedJavaSoftLinkType(JMM::SoftLink softLink):
-    if (softLink.softLinkType.name == "CustomGenericType")
-    then getJavaGenericSoftLinkType()
-    else softLink.softLinkType.name.toFirstUpper();
-
-cached String getJavaGenericSoftLinkType():
-    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getJavaGenericSoftLinkType();
-    
-cached String getOpenAPIGenericSoftLinkType():
-    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getOpenAPIGenericSoftLinkType();
-    
 cached boolean isTechnicalBaseClass(uml::Class class):
     if class.isStereotypeApplied("POJO")
     then ((JMM::POJO) class).technicalBaseClass
