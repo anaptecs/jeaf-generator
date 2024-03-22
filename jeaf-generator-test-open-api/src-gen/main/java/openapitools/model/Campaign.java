@@ -40,7 +40,7 @@ import openapitools.JSON;
   Campaign.JSON_PROPERTY_MORE_LINKS,
   Campaign.JSON_PROPERTY_DISCOUNT_OFFERS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.4.0")
 public class Campaign {
   public static final String JSON_PROPERTY_THE_LINK = "theLink";
   private JsonNullable<Long> theLink = JsonNullable.<Long>undefined();

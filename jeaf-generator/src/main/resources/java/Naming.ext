@@ -12,6 +12,9 @@ extension functions::Alias;
 cached String asParameter (uml::NamedElement element) :
     JAVA com.anaptecs.jeaf.fwk.generator.util.Naming.asParameterName( org.eclipse.uml2.uml.NamedElement );
     
+cached String asParameter (String name) :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.Naming.asParameterName( java.lang.String );
+
 
 // Function returns the name of the java set method for this named element. For the element "name" the function will 
 // return "setName".

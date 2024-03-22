@@ -35,7 +35,7 @@ import openapitools.JSON;
 @JsonPropertyOrder({
   PartnerContainer.JSON_PROPERTY_PARTNERS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.4.0")
 public class PartnerContainer {
   public static final String JSON_PROPERTY_PARTNERS = "partners";
   private List<Partner> partners;

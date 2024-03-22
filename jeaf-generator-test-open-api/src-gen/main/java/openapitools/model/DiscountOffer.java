@@ -38,7 +38,7 @@ import openapitools.JSON;
 @JsonPropertyOrder({
   DiscountOffer.JSON_PROPERTY_CAMPAIGNS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.4.0")
 public class DiscountOffer {
   public static final String JSON_PROPERTY_CAMPAIGNS = "campaigns";
   private JsonNullable<List<String>> campaigns = JsonNullable.<List<String>>undefined();

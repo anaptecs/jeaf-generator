@@ -50,29 +50,29 @@ public class SoftLinkParent {
    * <code>com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkPartner</code><br/>
    */
   @JsonSetter(nulls = Nulls.SKIP)
-  private Set<SoftLinkID> partners;
+  private Set<SoftLinkID> partnerIDs;
 
   /**
    * <p/>
    * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #thePartner} is
    * <code>com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkPartner</code><br/>
    */
-  private SoftLinkID thePartner;
+  private SoftLinkID thePartnerID;
 
   /**
    * <p/>
    * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #readonlyPartner} is
    * <code>com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkPartner</code><br/>
    */
-  private final SoftLinkID readonlyPartner;
+  private final SoftLinkID readonlyPartnerID;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   protected SoftLinkParent( ) {
-    partners = new HashSet<SoftLinkID>();
-    readonlyPartner = null;
+    partnerIDs = new HashSet<SoftLinkID>();
+    readonlyPartnerID = null;
   }
 
   /**
@@ -84,14 +84,14 @@ public class SoftLinkParent {
     // Ensure that builder is not null.
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
-    if (pBuilder.partners != null) {
-      partners = pBuilder.partners;
+    if (pBuilder.partnerIDs != null) {
+      partnerIDs = pBuilder.partnerIDs;
     }
     else {
-      partners = new HashSet<SoftLinkID>();
+      partnerIDs = new HashSet<SoftLinkID>();
     }
-    thePartner = pBuilder.thePartner;
-    readonlyPartner = pBuilder.readonlyPartner;
+    thePartnerID = pBuilder.thePartnerID;
+    readonlyPartnerID = pBuilder.readonlyPartnerID;
   }
 
   /**
@@ -113,10 +113,10 @@ public class SoftLinkParent {
    *
    * @return {@link com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkParent}
    */
-  public static SoftLinkParent of( Set<SoftLinkID> pPartners, SoftLinkID pThePartner ) {
+  public static SoftLinkParent of( Set<SoftLinkID> pPartnerIDs, SoftLinkID pThePartnerID ) {
     SoftLinkParent.Builder lBuilder = SoftLinkParent.builder();
-    lBuilder.setPartners(pPartners);
-    lBuilder.setThePartner(pThePartner);
+    lBuilder.setPartnerIDs(pPartnerIDs);
+    lBuilder.setThePartnerID(pThePartnerID);
     return lBuilder.build();
   }
 
@@ -129,21 +129,21 @@ public class SoftLinkParent {
      * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #partners} is
      * <code>com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkPartner</code><br/>
      */
-    private Set<SoftLinkID> partners;
+    private Set<SoftLinkID> partnerIDs;
 
     /**
      * <p/>
      * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #thePartner} is
      * <code>com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkPartner</code><br/>
      */
-    private SoftLinkID thePartner;
+    private SoftLinkID thePartnerID;
 
     /**
      * <p/>
      * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #readonlyPartner}
      * is <code>com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkPartner</code><br/>
      */
-    private SoftLinkID readonlyPartner;
+    private SoftLinkID readonlyPartnerID;
 
     /**
      * Use {@link SoftLinkParent#builder()} instead of private constructor to create new builder.
@@ -157,9 +157,9 @@ public class SoftLinkParent {
     protected Builder( SoftLinkParent pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
-        this.setPartners(pObject.partners);
-        this.setThePartner(pObject.thePartner);
-        this.setReadonlyPartner(pObject.readonlyPartner);
+        this.setPartnerIDs(pObject.partnerIDs);
+        this.setThePartnerID(pObject.thePartnerID);
+        this.setReadonlyPartnerID(pObject.readonlyPartnerID);
       }
     }
 
@@ -169,13 +169,13 @@ public class SoftLinkParent {
      * @param pPartners Collection to which {@link #partners} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setPartners( Set<SoftLinkID> pPartners ) {
+    public Builder setPartnerIDs( Set<SoftLinkID> pPartners ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pPartners != null) {
-        partners = new HashSet<SoftLinkID>(pPartners);
+        partnerIDs = new HashSet<SoftLinkID>(pPartners);
       }
       else {
-        partners = null;
+        partnerIDs = null;
       }
       return this;
     }
@@ -186,8 +186,8 @@ public class SoftLinkParent {
      * @param pThePartner Value to which {@link #thePartner} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setThePartner( SoftLinkID pThePartner ) {
-      thePartner = pThePartner;
+    public Builder setThePartnerID( SoftLinkID pThePartner ) {
+      thePartnerID = pThePartner;
       return this;
     }
 
@@ -197,8 +197,8 @@ public class SoftLinkParent {
      * @param pReadonlyPartner Value to which {@link #readonlyPartner} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setReadonlyPartner( SoftLinkID pReadonlyPartner ) {
-      readonlyPartner = pReadonlyPartner;
+    public Builder setReadonlyPartnerID( SoftLinkID pReadonlyPartner ) {
+      readonlyPartnerID = pReadonlyPartner;
       return this;
     }
 
@@ -235,9 +235,9 @@ public class SoftLinkParent {
    * @return {@link Set<SoftLinkID>} Value to which {@link #partners} is set. The method never returns null and the
    * returned collection is unmodifiable.
    */
-  public Set<SoftLinkID> getPartners( ) {
+  public Set<SoftLinkID> getPartnerIDs( ) {
     // Return all SoftLinkPartner objects as unmodifiable collection.
-    return Collections.unmodifiableSet(partners);
+    return Collections.unmodifiableSet(partnerIDs);
   }
 
   /**
@@ -245,11 +245,11 @@ public class SoftLinkParent {
    *
    * @param pPartners Object that should be added to {@link #partners}. The parameter must not be null.
    */
-  public void addToPartners( SoftLinkID pPartners ) {
+  public void addToPartnerIDs( SoftLinkID pPartners ) {
     // Check parameter "pPartners" for invalid value null.
     Check.checkInvalidParameterNull(pPartners, "pPartners");
     // Add passed object to collection of associated SoftLinkPartner objects.
-    partners.add(pPartners);
+    partnerIDs.add(pPartners);
   }
 
   /**
@@ -258,12 +258,12 @@ public class SoftLinkParent {
    * @param pPartners Collection with all objects that should be added to {@link #partners}. The parameter must not be
    * null.
    */
-  public void addToPartners( Collection<SoftLinkID> pPartners ) {
+  public void addToPartnerIDs( Collection<SoftLinkID> pPartners ) {
     // Check parameter "pPartners" for invalid value null.
     Check.checkInvalidParameterNull(pPartners, "pPartners");
     // Add all passed objects.
     for (SoftLinkID lNextObject : pPartners) {
-      this.addToPartners(lNextObject);
+      this.addToPartnerIDs(lNextObject);
     }
   }
 
@@ -272,19 +272,19 @@ public class SoftLinkParent {
    *
    * @param pPartners Object that should be removed from {@link #partners}. The parameter must not be null.
    */
-  public void removeFromPartners( SoftLinkID pPartners ) {
+  public void removeFromPartnerIDs( SoftLinkID pPartners ) {
     // Check parameter for invalid value null.
     Check.checkInvalidParameterNull(pPartners, "pPartners");
     // Remove passed object from collection of associated SoftLinkPartner objects.
-    partners.remove(pPartners);
+    partnerIDs.remove(pPartners);
   }
 
   /**
    * Method removes all objects from {@link #partners}.
    */
-  public void clearPartners( ) {
+  public void clearPartnerIDs( ) {
     // Remove all objects from association "partners".
-    partners.clear();
+    partnerIDs.clear();
   }
 
   /**
@@ -295,8 +295,8 @@ public class SoftLinkParent {
    *
    * @return {@link SoftLinkID} Value to which {@link #thePartner} is set.
    */
-  public SoftLinkID getThePartner( ) {
-    return thePartner;
+  public SoftLinkID getThePartnerID( ) {
+    return thePartnerID;
   }
 
   /**
@@ -304,15 +304,15 @@ public class SoftLinkParent {
    *
    * @param pThePartner Value to which {@link #thePartner} should be set.
    */
-  public void setThePartner( SoftLinkID pThePartner ) {
-    thePartner = pThePartner;
+  public void setThePartnerID( SoftLinkID pThePartner ) {
+    thePartnerID = pThePartner;
   }
 
   /**
    * Method unsets {@link #thePartner}.
    */
-  public final void unsetThePartner( ) {
-    thePartner = null;
+  public final void unsetThePartnerID( ) {
+    thePartnerID = null;
   }
 
   /**
@@ -323,17 +323,17 @@ public class SoftLinkParent {
    *
    * @return {@link SoftLinkID} Value to which {@link #readonlyPartner} is set.
    */
-  public SoftLinkID getReadonlyPartner( ) {
-    return readonlyPartner;
+  public SoftLinkID getReadonlyPartnerID( ) {
+    return readonlyPartnerID;
   }
 
   @Override
   public int hashCode( ) {
     final int lPrime = 31;
     int lResult = 1;
-    lResult = lPrime * lResult + Objects.hashCode(partners);
-    lResult = lPrime * lResult + Objects.hashCode(thePartner);
-    lResult = lPrime * lResult + Objects.hashCode(readonlyPartner);
+    lResult = lPrime * lResult + Objects.hashCode(partnerIDs);
+    lResult = lPrime * lResult + Objects.hashCode(thePartnerID);
+    lResult = lPrime * lResult + Objects.hashCode(readonlyPartnerID);
     return lResult;
   }
 
@@ -351,8 +351,8 @@ public class SoftLinkParent {
     }
     else {
       SoftLinkParent lOther = (SoftLinkParent) pObject;
-      lEquals = Objects.equals(partners, lOther.partners) && Objects.equals(thePartner, lOther.thePartner)
-          && Objects.equals(readonlyPartner, lOther.readonlyPartner);
+      lEquals = Objects.equals(partnerIDs, lOther.partnerIDs) && Objects.equals(thePartnerID, lOther.thePartnerID)
+          && Objects.equals(readonlyPartnerID, lOther.readonlyPartnerID);
     }
     return lEquals;
   }
@@ -370,16 +370,16 @@ public class SoftLinkParent {
     lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("partners: ");
-    if (partners != null) {
-      lBuilder.append(partners.size());
+    if (partnerIDs != null) {
+      lBuilder.append(partnerIDs.size());
       lBuilder.append(" element(s)");
     }
     else {
       lBuilder.append(" null");
     }
     lBuilder.append(System.lineSeparator());
-    if (partners != null) {
-      for (SoftLinkID lNext : partners) {
+    if (partnerIDs != null) {
+      for (SoftLinkID lNext : partnerIDs) {
         lBuilder.append(pIndent + "    ");
         lBuilder.append(lNext.toString());
         lBuilder.append(System.lineSeparator());
@@ -387,11 +387,11 @@ public class SoftLinkParent {
     }
     lBuilder.append(pIndent);
     lBuilder.append("thePartner: ");
-    lBuilder.append(thePartner);
+    lBuilder.append(thePartnerID);
     lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("readonlyPartner: ");
-    lBuilder.append(readonlyPartner);
+    lBuilder.append(readonlyPartnerID);
     lBuilder.append(System.lineSeparator());
     return lBuilder;
   }
