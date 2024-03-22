@@ -54,7 +54,7 @@ public class Stop implements ServiceObject {
    * <code>LinkObject</code><br/>
    */
   @NotNull
-  private SoftLink theSoftLink;
+  private SoftLink theSoftLinkID;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
@@ -81,7 +81,7 @@ public class Stop implements ServiceObject {
       links = new ArrayList<LinkObject>();
     }
     index = pBuilder.index;
-    theSoftLink = pBuilder.theSoftLink;
+    theSoftLinkID = pBuilder.theSoftLinkID;
   }
 
   /**
@@ -105,11 +105,11 @@ public class Stop implements ServiceObject {
    *
    * @return {@link com.anaptecs.jeaf.junit.openapi.base.Stop}
    */
-  public static Stop of( String pName, byte pIndex, SoftLink pTheSoftLink ) {
+  public static Stop of( String pName, byte pIndex, SoftLink pTheSoftLinkID ) {
     Stop.Builder lBuilder = Stop.builder();
     lBuilder.setName(pName);
     lBuilder.setIndex(pIndex);
-    lBuilder.setTheSoftLink(pTheSoftLink);
+    lBuilder.setTheSoftLinkID(pTheSoftLinkID);
     return lBuilder.build();
   }
 
@@ -131,7 +131,7 @@ public class Stop implements ServiceObject {
      * <code>LinkObject</code><br/>
      */
     @NotNull
-    private SoftLink theSoftLink;
+    private SoftLink theSoftLinkID;
 
     /**
      * Use {@link Stop#builder()} instead of private constructor to create new builder.
@@ -148,7 +148,7 @@ public class Stop implements ServiceObject {
         this.setName(pObject.name);
         this.setLinks(pObject.links);
         this.setIndex(pObject.index);
-        this.setTheSoftLink(pObject.theSoftLink);
+        this.setTheSoftLinkID(pObject.theSoftLinkID);
       }
     }
 
@@ -215,8 +215,8 @@ public class Stop implements ServiceObject {
      * @param pTheSoftLink Value to which {@link #theSoftLink} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setTheSoftLink( SoftLink pTheSoftLink ) {
-      theSoftLink = pTheSoftLink;
+    public Builder setTheSoftLinkID( SoftLink pTheSoftLink ) {
+      theSoftLinkID = pTheSoftLink;
       return this;
     }
 
@@ -346,8 +346,8 @@ public class Stop implements ServiceObject {
    *
    * @return {@link SoftLink} Value to which {@link #theSoftLink} is set.
    */
-  public SoftLink getTheSoftLink( ) {
-    return theSoftLink;
+  public SoftLink getTheSoftLinkID( ) {
+    return theSoftLinkID;
   }
 
   /**
@@ -355,15 +355,15 @@ public class Stop implements ServiceObject {
    *
    * @param pTheSoftLink Value to which {@link #theSoftLink} should be set.
    */
-  public void setTheSoftLink( SoftLink pTheSoftLink ) {
-    theSoftLink = pTheSoftLink;
+  public void setTheSoftLinkID( SoftLink pTheSoftLink ) {
+    theSoftLinkID = pTheSoftLink;
   }
 
   /**
    * Method unsets {@link #theSoftLink}.
    */
-  public final void unsetTheSoftLink( ) {
-    theSoftLink = null;
+  public final void unsetTheSoftLinkID( ) {
+    theSoftLinkID = null;
   }
 
   /**
@@ -403,7 +403,7 @@ public class Stop implements ServiceObject {
     lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("theSoftLink: ");
-    lBuilder.append(theSoftLink);
+    lBuilder.append(theSoftLinkID);
     lBuilder.append(System.lineSeparator());
     return lBuilder;
   }

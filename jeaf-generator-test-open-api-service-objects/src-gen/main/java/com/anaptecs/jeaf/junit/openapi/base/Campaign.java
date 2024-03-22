@@ -38,7 +38,7 @@ public class Campaign implements ServiceObject {
    * @deprecated Please use &quot;moreLinks&quot; instead. (<b>since:</b> 2.3.1, <b>removed with:</b> 2.4)
    */
   @Deprecated
-  private long theLink;
+  private long theLinkID;
 
   /**
    * <p/>
@@ -51,7 +51,7 @@ public class Campaign implements ServiceObject {
   @JsonSetter(nulls = Nulls.SKIP)
   @Size(min = 1)
   @NotNull
-  private Set<Long> moreLinks;
+  private Set<Long> moreLinkIDs;
 
   /**
    * <p/>
@@ -60,15 +60,15 @@ public class Campaign implements ServiceObject {
    */
   @Deprecated
   @JsonSetter(nulls = Nulls.SKIP)
-  private List<String> discountOffers;
+  private List<String> discountOfferIDs;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   protected Campaign( ) {
-    moreLinks = new HashSet<Long>();
-    discountOffers = new ArrayList<String>();
+    moreLinkIDs = new HashSet<Long>();
+    discountOfferIDs = new ArrayList<String>();
   }
 
   /**
@@ -80,18 +80,18 @@ public class Campaign implements ServiceObject {
     // Ensure that builder is not null.
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
-    theLink = pBuilder.theLink;
-    if (pBuilder.moreLinks != null) {
-      moreLinks = pBuilder.moreLinks;
+    theLinkID = pBuilder.theLinkID;
+    if (pBuilder.moreLinkIDs != null) {
+      moreLinkIDs = pBuilder.moreLinkIDs;
     }
     else {
-      moreLinks = new HashSet<Long>();
+      moreLinkIDs = new HashSet<Long>();
     }
-    if (pBuilder.discountOffers != null) {
-      discountOffers = pBuilder.discountOffers;
+    if (pBuilder.discountOfferIDs != null) {
+      discountOfferIDs = pBuilder.discountOfferIDs;
     }
     else {
-      discountOffers = new ArrayList<String>();
+      discountOfferIDs = new ArrayList<String>();
     }
   }
 
@@ -112,9 +112,9 @@ public class Campaign implements ServiceObject {
    *
    * @return {@link com.anaptecs.jeaf.junit.openapi.base.Campaign}
    */
-  public static Campaign of( Set<Long> pMoreLinks ) {
+  public static Campaign of( Set<Long> pMoreLinkIDs ) {
     Campaign.Builder lBuilder = Campaign.builder();
-    lBuilder.setMoreLinks(pMoreLinks);
+    lBuilder.setMoreLinkIDs(pMoreLinkIDs);
     return lBuilder.build();
   }
 
@@ -131,7 +131,7 @@ public class Campaign implements ServiceObject {
      * @deprecated Please use &quot;moreLinks&quot; instead. (<b>since:</b> 2.3.1, <b>removed with:</b> 2.4)
      */
     @Deprecated
-    private long theLink;
+    private long theLinkID;
 
     /**
      * <p/>
@@ -143,7 +143,7 @@ public class Campaign implements ServiceObject {
     @Deprecated
     @Size(min = 1)
     @NotNull
-    private Set<Long> moreLinks;
+    private Set<Long> moreLinkIDs;
 
     /**
      * <p/>
@@ -151,7 +151,7 @@ public class Campaign implements ServiceObject {
      * <code>com.anaptecs.jeaf.junit.openapi.base.DiscountOffer</code><br/>
      */
     @Deprecated
-    private List<String> discountOffers;
+    private List<String> discountOfferIDs;
 
     /**
      * Use {@link Campaign#builder()} instead of private constructor to create new builder.
@@ -165,9 +165,9 @@ public class Campaign implements ServiceObject {
     protected Builder( Campaign pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
-        this.setTheLink(pObject.theLink);
-        this.setMoreLinks(pObject.moreLinks);
-        this.setDiscountOffers(pObject.discountOffers);
+        this.setTheLinkID(pObject.theLinkID);
+        this.setMoreLinkIDs(pObject.moreLinkIDs);
+        this.setDiscountOfferIDs(pObject.discountOfferIDs);
       }
     }
 
@@ -179,8 +179,8 @@ public class Campaign implements ServiceObject {
      * @deprecated Please use &quot;moreLinks&quot; instead. (<b>since:</b> 2.3.1, <b>removed with:</b> 2.4)
      */
     @Deprecated
-    public Builder setTheLink( long pTheLink ) {
-      theLink = pTheLink;
+    public Builder setTheLinkID( long pTheLink ) {
+      theLinkID = pTheLink;
       return this;
     }
 
@@ -192,13 +192,13 @@ public class Campaign implements ServiceObject {
      * @deprecated No good any more (<b>since:</b> 1.2, <b>removed with:</b> 3.0)
      */
     @Deprecated
-    public Builder setMoreLinks( Set<Long> pMoreLinks ) {
+    public Builder setMoreLinkIDs( Set<Long> pMoreLinks ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pMoreLinks != null) {
-        moreLinks = new HashSet<Long>(pMoreLinks);
+        moreLinkIDs = new HashSet<Long>(pMoreLinks);
       }
       else {
-        moreLinks = null;
+        moreLinkIDs = null;
       }
       return this;
     }
@@ -210,13 +210,13 @@ public class Campaign implements ServiceObject {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
-    public Builder setDiscountOffers( List<String> pDiscountOffers ) {
+    public Builder setDiscountOfferIDs( List<String> pDiscountOffers ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pDiscountOffers != null) {
-        discountOffers = new ArrayList<String>(pDiscountOffers);
+        discountOfferIDs = new ArrayList<String>(pDiscountOffers);
       }
       else {
-        discountOffers = null;
+        discountOfferIDs = null;
       }
       return this;
     }
@@ -255,8 +255,8 @@ public class Campaign implements ServiceObject {
    * @deprecated Please use &quot;moreLinks&quot; instead. (<b>since:</b> 2.3.1, <b>removed with:</b> 2.4)
    */
   @Deprecated
-  public long getTheLink( ) {
-    return theLink;
+  public long getTheLinkID( ) {
+    return theLinkID;
   }
 
   /**
@@ -267,8 +267,8 @@ public class Campaign implements ServiceObject {
    * @deprecated Please use &quot;moreLinks&quot; instead. (<b>since:</b> 2.3.1, <b>removed with:</b> 2.4)
    */
   @Deprecated
-  public void setTheLink( long pTheLink ) {
-    theLink = pTheLink;
+  public void setTheLinkID( long pTheLink ) {
+    theLinkID = pTheLink;
   }
 
   /**
@@ -282,9 +282,9 @@ public class Campaign implements ServiceObject {
    * @deprecated No good any more (<b>since:</b> 1.2, <b>removed with:</b> 3.0)
    */
   @Deprecated
-  public Set<Long> getMoreLinks( ) {
+  public Set<Long> getMoreLinkIDs( ) {
     // Return all LinkObject objects directly without any protection against modification.
-    return moreLinks;
+    return moreLinkIDs;
   }
 
   /**
@@ -294,11 +294,11 @@ public class Campaign implements ServiceObject {
    * @deprecated No good any more (<b>since:</b> 1.2, <b>removed with:</b> 3.0)
    */
   @Deprecated
-  public void addToMoreLinks( Long pMoreLinks ) {
+  public void addToMoreLinkIDs( Long pMoreLinks ) {
     // Check parameter "pMoreLinks" for invalid value null.
     Check.checkInvalidParameterNull(pMoreLinks, "pMoreLinks");
     // Add passed object to collection of associated LinkObject objects.
-    moreLinks.add(pMoreLinks);
+    moreLinkIDs.add(pMoreLinks);
   }
 
   /**
@@ -309,12 +309,12 @@ public class Campaign implements ServiceObject {
    * @deprecated No good any more (<b>since:</b> 1.2, <b>removed with:</b> 3.0)
    */
   @Deprecated
-  public void addToMoreLinks( Collection<Long> pMoreLinks ) {
+  public void addToMoreLinkIDs( Collection<Long> pMoreLinks ) {
     // Check parameter "pMoreLinks" for invalid value null.
     Check.checkInvalidParameterNull(pMoreLinks, "pMoreLinks");
     // Add all passed objects.
     for (Long lNextObject : pMoreLinks) {
-      this.addToMoreLinks(lNextObject);
+      this.addToMoreLinkIDs(lNextObject);
     }
   }
 
@@ -324,20 +324,20 @@ public class Campaign implements ServiceObject {
    * @param pMoreLinks Object that should be removed from {@link #moreLinks}. The parameter must not be null.
    */
   @Deprecated
-  public void removeFromMoreLinks( Long pMoreLinks ) {
+  public void removeFromMoreLinkIDs( Long pMoreLinks ) {
     // Check parameter for invalid value null.
     Check.checkInvalidParameterNull(pMoreLinks, "pMoreLinks");
     // Remove passed object from collection of associated LinkObject objects.
-    moreLinks.remove(pMoreLinks);
+    moreLinkIDs.remove(pMoreLinks);
   }
 
   /**
    * Method removes all objects from {@link #moreLinks}.
    */
   @Deprecated
-  public void clearMoreLinks( ) {
+  public void clearMoreLinkIDs( ) {
     // Remove all objects from association "moreLinks".
-    moreLinks.clear();
+    moreLinkIDs.clear();
   }
 
   /**
@@ -350,9 +350,9 @@ public class Campaign implements ServiceObject {
    * returned collection is modifiable.
    */
   @Deprecated
-  public List<String> getDiscountOffers( ) {
+  public List<String> getDiscountOfferIDs( ) {
     // Return all DiscountOffer objects directly without any protection against modification.
-    return discountOffers;
+    return discountOfferIDs;
   }
 
   /**
@@ -361,11 +361,11 @@ public class Campaign implements ServiceObject {
    * @param pDiscountOffers Object that should be added to {@link #discountOffers}. The parameter must not be null.
    */
   @Deprecated
-  public void addToDiscountOffers( String pDiscountOffers ) {
+  public void addToDiscountOfferIDs( String pDiscountOffers ) {
     // Check parameter "pDiscountOffers" for invalid value null.
     Check.checkInvalidParameterNull(pDiscountOffers, "pDiscountOffers");
     // Add passed object to collection of associated DiscountOffer objects.
-    discountOffers.add(pDiscountOffers);
+    discountOfferIDs.add(pDiscountOffers);
   }
 
   /**
@@ -375,12 +375,12 @@ public class Campaign implements ServiceObject {
    * must not be null.
    */
   @Deprecated
-  public void addToDiscountOffers( Collection<String> pDiscountOffers ) {
+  public void addToDiscountOfferIDs( Collection<String> pDiscountOffers ) {
     // Check parameter "pDiscountOffers" for invalid value null.
     Check.checkInvalidParameterNull(pDiscountOffers, "pDiscountOffers");
     // Add all passed objects.
     for (String lNextObject : pDiscountOffers) {
-      this.addToDiscountOffers(lNextObject);
+      this.addToDiscountOfferIDs(lNextObject);
     }
   }
 
@@ -390,20 +390,20 @@ public class Campaign implements ServiceObject {
    * @param pDiscountOffers Object that should be removed from {@link #discountOffers}. The parameter must not be null.
    */
   @Deprecated
-  public void removeFromDiscountOffers( String pDiscountOffers ) {
+  public void removeFromDiscountOfferIDs( String pDiscountOffers ) {
     // Check parameter for invalid value null.
     Check.checkInvalidParameterNull(pDiscountOffers, "pDiscountOffers");
     // Remove passed object from collection of associated DiscountOffer objects.
-    discountOffers.remove(pDiscountOffers);
+    discountOfferIDs.remove(pDiscountOffers);
   }
 
   /**
    * Method removes all objects from {@link #discountOffers}.
    */
   @Deprecated
-  public void clearDiscountOffers( ) {
+  public void clearDiscountOfferIDs( ) {
     // Remove all objects from association "discountOffers".
-    discountOffers.clear();
+    discountOfferIDs.clear();
   }
 
   /**
@@ -419,20 +419,20 @@ public class Campaign implements ServiceObject {
     lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("theLink: ");
-    lBuilder.append(theLink);
+    lBuilder.append(theLinkID);
     lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("moreLinks: ");
-    if (moreLinks != null) {
-      lBuilder.append(moreLinks.size());
+    if (moreLinkIDs != null) {
+      lBuilder.append(moreLinkIDs.size());
       lBuilder.append(" element(s)");
     }
     else {
       lBuilder.append(" null");
     }
     lBuilder.append(System.lineSeparator());
-    if (moreLinks != null) {
-      for (Long lNext : moreLinks) {
+    if (moreLinkIDs != null) {
+      for (Long lNext : moreLinkIDs) {
         lBuilder.append(pIndent + "    ");
         lBuilder.append(lNext.toString());
         lBuilder.append(System.lineSeparator());
@@ -440,16 +440,16 @@ public class Campaign implements ServiceObject {
     }
     lBuilder.append(pIndent);
     lBuilder.append("discountOffers: ");
-    if (discountOffers != null) {
-      lBuilder.append(discountOffers.size());
+    if (discountOfferIDs != null) {
+      lBuilder.append(discountOfferIDs.size());
       lBuilder.append(" element(s)");
     }
     else {
       lBuilder.append(" null");
     }
     lBuilder.append(System.lineSeparator());
-    if (discountOffers != null) {
-      for (String lNext : discountOffers) {
+    if (discountOfferIDs != null) {
+      for (String lNext : discountOfferIDs) {
         lBuilder.append(pIndent + "    ");
         lBuilder.append(lNext.toString());
         lBuilder.append(System.lineSeparator());
