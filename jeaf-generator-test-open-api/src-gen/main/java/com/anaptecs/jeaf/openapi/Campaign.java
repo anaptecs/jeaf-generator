@@ -26,80 +26,80 @@ import java.util.List;
 
 
 public class Campaign {
-  @JsonProperty("theLink")
-  private Long theLink = null;
+  @JsonProperty("theLinkID")
+  private Long theLinkID = null;
 
-  @JsonProperty("moreLinks")
-  private List<Long> moreLinks = new ArrayList<>();
+  @JsonProperty("moreLinkIDs")
+  private List<Long> moreLinkIDs = new ArrayList<>();
 
-  @JsonProperty("discountOffers")
-  private List<String> discountOffers = null;
+  @JsonProperty("discountOfferIDs")
+  private List<String> discountOfferIDs = null;
 
-  public Campaign theLink(Long theLink) {
-    this.theLink = theLink;
+  public Campaign theLinkID(Long theLinkID) {
+    this.theLinkID = theLinkID;
     return this;
   }
 
    /**
-   * Get theLink
-   * @return theLink
+   * Get theLinkID
+   * @return theLinkID
   **/
   @Schema(description = "")
-  public Long getTheLink() {
-    return theLink;
+  public Long getTheLinkID() {
+    return theLinkID;
   }
 
-  public void setTheLink(Long theLink) {
-    this.theLink = theLink;
+  public void setTheLinkID(Long theLinkID) {
+    this.theLinkID = theLinkID;
   }
 
-  public Campaign moreLinks(List<Long> moreLinks) {
-    this.moreLinks = moreLinks;
+  public Campaign moreLinkIDs(List<Long> moreLinkIDs) {
+    this.moreLinkIDs = moreLinkIDs;
     return this;
   }
 
-  public Campaign addMoreLinksItem(Long moreLinksItem) {
-    this.moreLinks.add(moreLinksItem);
+  public Campaign addMoreLinkIDsItem(Long moreLinkIDsItem) {
+    this.moreLinkIDs.add(moreLinkIDsItem);
     return this;
   }
 
    /**
    *  Deprecated: No good any more (since: 1.2, removed with: 3.0) 
-   * @return moreLinks
+   * @return moreLinkIDs
   **/
   @Schema(required = true, description = " Deprecated: No good any more (since: 1.2, removed with: 3.0) ")
-  public List<Long> getMoreLinks() {
-    return moreLinks;
+  public List<Long> getMoreLinkIDs() {
+    return moreLinkIDs;
   }
 
-  public void setMoreLinks(List<Long> moreLinks) {
-    this.moreLinks = moreLinks;
+  public void setMoreLinkIDs(List<Long> moreLinkIDs) {
+    this.moreLinkIDs = moreLinkIDs;
   }
 
-  public Campaign discountOffers(List<String> discountOffers) {
-    this.discountOffers = discountOffers;
+  public Campaign discountOfferIDs(List<String> discountOfferIDs) {
+    this.discountOfferIDs = discountOfferIDs;
     return this;
   }
 
-  public Campaign addDiscountOffersItem(String discountOffersItem) {
-    if (this.discountOffers == null) {
-      this.discountOffers = new ArrayList<>();
+  public Campaign addDiscountOfferIDsItem(String discountOfferIDsItem) {
+    if (this.discountOfferIDs == null) {
+      this.discountOfferIDs = new ArrayList<>();
     }
-    this.discountOffers.add(discountOffersItem);
+    this.discountOfferIDs.add(discountOfferIDsItem);
     return this;
   }
 
    /**
-   * Get discountOffers
-   * @return discountOffers
+   * Get discountOfferIDs
+   * @return discountOfferIDs
   **/
   @Schema(description = "")
-  public List<String> getDiscountOffers() {
-    return discountOffers;
+  public List<String> getDiscountOfferIDs() {
+    return discountOfferIDs;
   }
 
-  public void setDiscountOffers(List<String> discountOffers) {
-    this.discountOffers = discountOffers;
+  public void setDiscountOfferIDs(List<String> discountOfferIDs) {
+    this.discountOfferIDs = discountOfferIDs;
   }
 
 
@@ -112,14 +112,14 @@ public class Campaign {
       return false;
     }
     Campaign campaign = (Campaign) o;
-    return Objects.equals(this.theLink, campaign.theLink) &&
-        Objects.equals(this.moreLinks, campaign.moreLinks) &&
-        Objects.equals(this.discountOffers, campaign.discountOffers);
+    return Objects.equals(this.theLinkID, campaign.theLinkID) &&
+        Objects.equals(this.moreLinkIDs, campaign.moreLinkIDs) &&
+        Objects.equals(this.discountOfferIDs, campaign.discountOfferIDs);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(theLink, moreLinks, discountOffers);
+    return Objects.hash(theLinkID, moreLinkIDs, discountOfferIDs);
   }
 
 
@@ -128,9 +128,9 @@ public class Campaign {
     StringBuilder sb = new StringBuilder();
     sb.append("class Campaign {\n");
     
-    sb.append("    theLink: ").append(toIndentedString(theLink)).append("\n");
-    sb.append("    moreLinks: ").append(toIndentedString(moreLinks)).append("\n");
-    sb.append("    discountOffers: ").append(toIndentedString(discountOffers)).append("\n");
+    sb.append("    theLinkID: ").append(toIndentedString(theLinkID)).append("\n");
+    sb.append("    moreLinkIDs: ").append(toIndentedString(moreLinkIDs)).append("\n");
+    sb.append("    discountOfferIDs: ").append(toIndentedString(discountOfferIDs)).append("\n");
     sb.append("}");
     return sb.toString();
   }

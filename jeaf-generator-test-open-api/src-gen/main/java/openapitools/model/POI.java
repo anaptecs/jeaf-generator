@@ -43,8 +43,8 @@ import openapitools.JSON;
  */
 @JsonPropertyOrder({
   POI.JSON_PROPERTY_DESCRIPTION,
-  POI.JSON_PROPERTY_THE_LINK,
-  POI.JSON_PROPERTY_EVEN_MORE_LINKS,
+  POI.JSON_PROPERTY_THE_LINK_I_D,
+  POI.JSON_PROPERTY_EVEN_MORE_LINK_I_DS,
   POI.JSON_PROPERTY_STOPS,
   POI.JSON_PROPERTY_BOOKING_CODES
 })
@@ -59,11 +59,11 @@ public class POI extends Stop {
   public static final String JSON_PROPERTY_DESCRIPTION = "description";
   private String description;
 
-  public static final String JSON_PROPERTY_THE_LINK = "theLink";
-  private Long theLink;
+  public static final String JSON_PROPERTY_THE_LINK_I_D = "theLinkID";
+  private Long theLinkID;
 
-  public static final String JSON_PROPERTY_EVEN_MORE_LINKS = "evenMoreLinks";
-  private JsonNullable<List<String>> evenMoreLinks = JsonNullable.<List<String>>undefined();
+  public static final String JSON_PROPERTY_EVEN_MORE_LINK_I_DS = "evenMoreLinkIDs";
+  private JsonNullable<List<String>> evenMoreLinkIDs = JsonNullable.<List<String>>undefined();
 
   public static final String JSON_PROPERTY_STOPS = "stops";
   private List<UICStop> stops = new ArrayList<>();
@@ -99,44 +99,44 @@ public class POI extends Stop {
   }
 
 
-  public POI theLink(Long theLink) {
-    this.theLink = theLink;
+  public POI theLinkID(Long theLinkID) {
+    this.theLinkID = theLinkID;
     return this;
   }
 
    /**
-   * Get theLink
-   * @return theLink
+   * Get theLinkID
+   * @return theLinkID
    * @deprecated
   **/
   @Deprecated
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_THE_LINK)
+  @JsonProperty(JSON_PROPERTY_THE_LINK_I_D)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public Long getTheLink() {
-    return theLink;
+  public Long getTheLinkID() {
+    return theLinkID;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_THE_LINK)
+  @JsonProperty(JSON_PROPERTY_THE_LINK_I_D)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setTheLink(Long theLink) {
-    this.theLink = theLink;
+  public void setTheLinkID(Long theLinkID) {
+    this.theLinkID = theLinkID;
   }
 
 
-  public POI evenMoreLinks(List<String> evenMoreLinks) {
-    this.evenMoreLinks = JsonNullable.<List<String>>of(evenMoreLinks);
+  public POI evenMoreLinkIDs(List<String> evenMoreLinkIDs) {
+    this.evenMoreLinkIDs = JsonNullable.<List<String>>of(evenMoreLinkIDs);
     return this;
   }
 
-  public POI addEvenMoreLinksItem(String evenMoreLinksItem) {
-    if (this.evenMoreLinks == null || !this.evenMoreLinks.isPresent()) {
-      this.evenMoreLinks = JsonNullable.<List<String>>of(new ArrayList<>());
+  public POI addEvenMoreLinkIDsItem(String evenMoreLinkIDsItem) {
+    if (this.evenMoreLinkIDs == null || !this.evenMoreLinkIDs.isPresent()) {
+      this.evenMoreLinkIDs = JsonNullable.<List<String>>of(new ArrayList<>());
     }
     try {
-      this.evenMoreLinks.get().add(evenMoreLinksItem);
+      this.evenMoreLinkIDs.get().add(evenMoreLinkIDsItem);
     } catch (java.util.NoSuchElementException e) {
       // this can never happen, as we make sure above that the value is present
     }
@@ -144,32 +144,32 @@ public class POI extends Stop {
   }
 
    /**
-   * Get evenMoreLinks
-   * @return evenMoreLinks
+   * Get evenMoreLinkIDs
+   * @return evenMoreLinkIDs
    * @deprecated
   **/
   @Deprecated
   @javax.annotation.Nullable
   @JsonIgnore
 
-  public List<String> getEvenMoreLinks() {
-        return evenMoreLinks.orElse(null);
+  public List<String> getEvenMoreLinkIDs() {
+        return evenMoreLinkIDs.orElse(null);
   }
 
-  @JsonProperty(JSON_PROPERTY_EVEN_MORE_LINKS)
+  @JsonProperty(JSON_PROPERTY_EVEN_MORE_LINK_I_DS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public JsonNullable<List<String>> getEvenMoreLinks_JsonNullable() {
-    return evenMoreLinks;
+  public JsonNullable<List<String>> getEvenMoreLinkIDs_JsonNullable() {
+    return evenMoreLinkIDs;
   }
   
-  @JsonProperty(JSON_PROPERTY_EVEN_MORE_LINKS)
-  public void setEvenMoreLinks_JsonNullable(JsonNullable<List<String>> evenMoreLinks) {
-    this.evenMoreLinks = evenMoreLinks;
+  @JsonProperty(JSON_PROPERTY_EVEN_MORE_LINK_I_DS)
+  public void setEvenMoreLinkIDs_JsonNullable(JsonNullable<List<String>> evenMoreLinkIDs) {
+    this.evenMoreLinkIDs = evenMoreLinkIDs;
   }
 
-  public void setEvenMoreLinks(List<String> evenMoreLinks) {
-    this.evenMoreLinks = JsonNullable.<List<String>>of(evenMoreLinks);
+  public void setEvenMoreLinkIDs(List<String> evenMoreLinkIDs) {
+    this.evenMoreLinkIDs = JsonNullable.<List<String>>of(evenMoreLinkIDs);
   }
 
 
@@ -252,8 +252,8 @@ public class POI extends Stop {
     }
     POI POI = (POI) o;
     return Objects.equals(this.description, POI.description) &&
-        Objects.equals(this.theLink, POI.theLink) &&
-        equalsNullable(this.evenMoreLinks, POI.evenMoreLinks) &&
+        Objects.equals(this.theLinkID, POI.theLinkID) &&
+        equalsNullable(this.evenMoreLinkIDs, POI.evenMoreLinkIDs) &&
         Objects.equals(this.stops, POI.stops) &&
         Objects.equals(this.bookingCodes, POI.bookingCodes) &&
         super.equals(o);
@@ -265,7 +265,7 @@ public class POI extends Stop {
 
   @Override
   public int hashCode() {
-    return Objects.hash(description, theLink, hashCodeNullable(evenMoreLinks), stops, bookingCodes, super.hashCode());
+    return Objects.hash(description, theLinkID, hashCodeNullable(evenMoreLinkIDs), stops, bookingCodes, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -281,8 +281,8 @@ public class POI extends Stop {
     sb.append("class POI {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    theLink: ").append(toIndentedString(theLink)).append("\n");
-    sb.append("    evenMoreLinks: ").append(toIndentedString(evenMoreLinks)).append("\n");
+    sb.append("    theLinkID: ").append(toIndentedString(theLinkID)).append("\n");
+    sb.append("    evenMoreLinkIDs: ").append(toIndentedString(evenMoreLinkIDs)).append("\n");
     sb.append("    stops: ").append(toIndentedString(stops)).append("\n");
     sb.append("    bookingCodes: ").append(toIndentedString(bookingCodes)).append("\n");
     sb.append("}");

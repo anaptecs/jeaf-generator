@@ -26,33 +26,33 @@ import java.util.List;
 
 
 public class DiscountOffer {
-  @JsonProperty("campaigns")
-  private List<String> campaigns = null;
+  @JsonProperty("campaignIDs")
+  private List<String> campaignIDs = null;
 
-  public DiscountOffer campaigns(List<String> campaigns) {
-    this.campaigns = campaigns;
+  public DiscountOffer campaignIDs(List<String> campaignIDs) {
+    this.campaignIDs = campaignIDs;
     return this;
   }
 
-  public DiscountOffer addCampaignsItem(String campaignsItem) {
-    if (this.campaigns == null) {
-      this.campaigns = new ArrayList<>();
+  public DiscountOffer addCampaignIDsItem(String campaignIDsItem) {
+    if (this.campaignIDs == null) {
+      this.campaignIDs = new ArrayList<>();
     }
-    this.campaigns.add(campaignsItem);
+    this.campaignIDs.add(campaignIDsItem);
     return this;
   }
 
    /**
-   * Get campaigns
-   * @return campaigns
+   * Get campaignIDs
+   * @return campaignIDs
   **/
   @Schema(description = "")
-  public List<String> getCampaigns() {
-    return campaigns;
+  public List<String> getCampaignIDs() {
+    return campaignIDs;
   }
 
-  public void setCampaigns(List<String> campaigns) {
-    this.campaigns = campaigns;
+  public void setCampaignIDs(List<String> campaignIDs) {
+    this.campaignIDs = campaignIDs;
   }
 
 
@@ -65,12 +65,12 @@ public class DiscountOffer {
       return false;
     }
     DiscountOffer discountOffer = (DiscountOffer) o;
-    return Objects.equals(this.campaigns, discountOffer.campaigns);
+    return Objects.equals(this.campaignIDs, discountOffer.campaignIDs);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(campaigns);
+    return Objects.hash(campaignIDs);
   }
 
 
@@ -79,7 +79,7 @@ public class DiscountOffer {
     StringBuilder sb = new StringBuilder();
     sb.append("class DiscountOffer {\n");
     
-    sb.append("    campaigns: ").append(toIndentedString(campaigns)).append("\n");
+    sb.append("    campaignIDs: ").append(toIndentedString(campaignIDs)).append("\n");
     sb.append("}");
     return sb.toString();
   }
