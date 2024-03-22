@@ -7,6 +7,7 @@ extension functions::Class;
 extension functions::TemplateParameter;
 extension functions::Operation;
 extension functions::Alias;
+extension functions::SoftLink;
 
 cached boolean hasOpenAPITypes(JMM::OpenAPI3Specification spec):
 	getOpenAPITypes(spec).size > 0;
@@ -423,7 +424,7 @@ cached boolean hasAliasAttributeName(uml::Element element) :
 cached String getAttributeName(uml::Property property) :
    if property.hasAliasAttributeName() == true
    then ((JMM::OpenAPIAliasName) property).openAPIPropertyName
-   else property.name;
+   else property.getSoftLinkAwarePropertyName();
 
 cached boolean isOpenAPIEnum(uml::Parameter paramater):
   paramater.type.isStereotypeApplied("OpenAPIEnumeration");  

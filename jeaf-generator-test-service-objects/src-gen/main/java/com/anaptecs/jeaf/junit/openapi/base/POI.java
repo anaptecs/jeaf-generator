@@ -59,7 +59,7 @@ public class POI extends Stop {
    * <code>LinkObject</code><br/>
    */
   @Deprecated
-  private Long theLink;
+  private Long theLinkLink;
 
   /**
    * <p/>
@@ -67,7 +67,7 @@ public class POI extends Stop {
    * <code>LinkObject</code><br/>
    */
   @Deprecated
-  private Set<SoftLink> evenMoreLinks;
+  private Set<SoftLink> evenMoreLinkLinks;
 
   /**
    * <p/>
@@ -83,7 +83,7 @@ public class POI extends Stop {
    * object creation builder should be used instead.
    */
   protected POI( ) {
-    evenMoreLinks = new HashSet<SoftLink>();
+    evenMoreLinkLinks = new HashSet<SoftLink>();
     stops = new HashSet<UICStop>();
     bookingCodes = new HashSet<BookingCode>();
   }
@@ -98,12 +98,12 @@ public class POI extends Stop {
     super(pBuilder);
     // Read attribute values from builder.
     description = pBuilder.description;
-    theLink = pBuilder.theLink;
-    if (pBuilder.evenMoreLinks != null) {
-      evenMoreLinks = pBuilder.evenMoreLinks;
+    theLinkLink = pBuilder.theLinkLink;
+    if (pBuilder.evenMoreLinkLinks != null) {
+      evenMoreLinkLinks = pBuilder.evenMoreLinkLinks;
     }
     else {
-      evenMoreLinks = new HashSet<SoftLink>();
+      evenMoreLinkLinks = new HashSet<SoftLink>();
     }
     if (pBuilder.stops != null) {
       stops = pBuilder.stops;
@@ -148,14 +148,14 @@ public class POI extends Stop {
    *
    * @return {@link com.anaptecs.jeaf.junit.openapi.base.POI}
    */
-  public static POI of( String pName, byte pIndex, SoftLink pTheSoftLink, String pDescription, Long pTheLink,
+  public static POI of( String pName, byte pIndex, SoftLink pTheSoftLinkLink, String pDescription, Long pTheLinkLink,
       Set<UICStop> pStops, Set<BookingCode> pBookingCodes ) {
     POI.Builder lBuilder = POI.builder();
     lBuilder.setName(pName);
     lBuilder.setIndex(pIndex);
-    lBuilder.setTheSoftLink(pTheSoftLink);
+    lBuilder.setTheSoftLinkLink(pTheSoftLinkLink);
     lBuilder.setDescription(pDescription);
-    lBuilder.setTheLink(pTheLink);
+    lBuilder.setTheLinkLink(pTheLinkLink);
     lBuilder.setStops(pStops);
     lBuilder.setBookingCodes(pBookingCodes);
     return lBuilder.build();
@@ -173,7 +173,7 @@ public class POI extends Stop {
      * <code>LinkObject</code><br/>
      */
     @Deprecated
-    private Long theLink;
+    private Long theLinkLink;
 
     /**
      * <p/>
@@ -181,7 +181,7 @@ public class POI extends Stop {
      * <code>LinkObject</code><br/>
      */
     @Deprecated
-    private Set<SoftLink> evenMoreLinks;
+    private Set<SoftLink> evenMoreLinkLinks;
 
     /**
      * <p/>
@@ -206,8 +206,8 @@ public class POI extends Stop {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setDescription(pObject.description);
-        this.setTheLink(pObject.theLink);
-        this.setEvenMoreLinks(pObject.evenMoreLinks);
+        this.setTheLinkLink(pObject.theLinkLink);
+        this.setEvenMoreLinkLinks(pObject.evenMoreLinkLinks);
         this.setStops(pObject.stops);
         this.setBookingCodes(pObject.bookingCodes);
       }
@@ -271,9 +271,9 @@ public class POI extends Stop {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
-    public Builder setTheSoftLink( SoftLink pTheSoftLink ) {
+    public Builder setTheSoftLinkLink( SoftLink pTheSoftLink ) {
       // Call super class implementation.
-      super.setTheSoftLink(pTheSoftLink);
+      super.setTheSoftLinkLink(pTheSoftLink);
       return this;
     }
 
@@ -296,8 +296,8 @@ public class POI extends Stop {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
-    public Builder setTheLink( Long pTheLink ) {
-      theLink = pTheLink;
+    public Builder setTheLinkLink( Long pTheLink ) {
+      theLinkLink = pTheLink;
       return this;
     }
 
@@ -308,13 +308,13 @@ public class POI extends Stop {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
-    public Builder setEvenMoreLinks( Set<SoftLink> pEvenMoreLinks ) {
+    public Builder setEvenMoreLinkLinks( Set<SoftLink> pEvenMoreLinks ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pEvenMoreLinks != null) {
-        evenMoreLinks = new HashSet<SoftLink>(pEvenMoreLinks);
+        evenMoreLinkLinks = new HashSet<SoftLink>(pEvenMoreLinks);
       }
       else {
-        evenMoreLinks = null;
+        evenMoreLinkLinks = null;
       }
       return this;
     }
@@ -442,8 +442,8 @@ public class POI extends Stop {
    * @return {@link Long} Value to which {@link #theLink} is set.
    */
   @Deprecated
-  public Long getTheLink( ) {
-    return theLink;
+  public Long getTheLinkLink( ) {
+    return theLinkLink;
   }
 
   /**
@@ -452,16 +452,16 @@ public class POI extends Stop {
    * @param pTheLink Value to which {@link #theLink} should be set.
    */
   @Deprecated
-  public void setTheLink( Long pTheLink ) {
-    theLink = pTheLink;
+  public void setTheLinkLink( Long pTheLink ) {
+    theLinkLink = pTheLink;
   }
 
   /**
    * Method unsets {@link #theLink}.
    */
   @Deprecated
-  public final void unsetTheLink( ) {
-    theLink = null;
+  public final void unsetTheLinkLink( ) {
+    theLinkLink = null;
   }
 
   /**
@@ -474,9 +474,9 @@ public class POI extends Stop {
    * returned collection is unmodifiable.
    */
   @Deprecated
-  public Set<SoftLink> getEvenMoreLinks( ) {
+  public Set<SoftLink> getEvenMoreLinkLinks( ) {
     // Return all LinkObject objects as unmodifiable collection.
-    return Collections.unmodifiableSet(evenMoreLinks);
+    return Collections.unmodifiableSet(evenMoreLinkLinks);
   }
 
   /**
@@ -485,11 +485,11 @@ public class POI extends Stop {
    * @param pEvenMoreLinks Object that should be added to {@link #evenMoreLinks}. The parameter must not be null.
    */
   @Deprecated
-  public void addToEvenMoreLinks( SoftLink pEvenMoreLinks ) {
+  public void addToEvenMoreLinkLinks( SoftLink pEvenMoreLinks ) {
     // Check parameter "pEvenMoreLinks" for invalid value null.
     Check.checkInvalidParameterNull(pEvenMoreLinks, "pEvenMoreLinks");
     // Add passed object to collection of associated LinkObject objects.
-    evenMoreLinks.add(pEvenMoreLinks);
+    evenMoreLinkLinks.add(pEvenMoreLinks);
   }
 
   /**
@@ -499,12 +499,12 @@ public class POI extends Stop {
    * must not be null.
    */
   @Deprecated
-  public void addToEvenMoreLinks( Collection<SoftLink> pEvenMoreLinks ) {
+  public void addToEvenMoreLinkLinks( Collection<SoftLink> pEvenMoreLinks ) {
     // Check parameter "pEvenMoreLinks" for invalid value null.
     Check.checkInvalidParameterNull(pEvenMoreLinks, "pEvenMoreLinks");
     // Add all passed objects.
     for (SoftLink lNextObject : pEvenMoreLinks) {
-      this.addToEvenMoreLinks(lNextObject);
+      this.addToEvenMoreLinkLinks(lNextObject);
     }
   }
 
@@ -514,20 +514,20 @@ public class POI extends Stop {
    * @param pEvenMoreLinks Object that should be removed from {@link #evenMoreLinks}. The parameter must not be null.
    */
   @Deprecated
-  public void removeFromEvenMoreLinks( SoftLink pEvenMoreLinks ) {
+  public void removeFromEvenMoreLinkLinks( SoftLink pEvenMoreLinks ) {
     // Check parameter for invalid value null.
     Check.checkInvalidParameterNull(pEvenMoreLinks, "pEvenMoreLinks");
     // Remove passed object from collection of associated LinkObject objects.
-    evenMoreLinks.remove(pEvenMoreLinks);
+    evenMoreLinkLinks.remove(pEvenMoreLinks);
   }
 
   /**
    * Method removes all objects from {@link #evenMoreLinks}.
    */
   @Deprecated
-  public void clearEvenMoreLinks( ) {
+  public void clearEvenMoreLinkLinks( ) {
     // Remove all objects from association "evenMoreLinks".
-    evenMoreLinks.clear();
+    evenMoreLinkLinks.clear();
   }
 
   /**

@@ -6,6 +6,8 @@
 «EXTENSION entity::ModelProperties»
 «EXTENSION functions::Class»
 «EXTENSION functions::ClassifierTemplateParameter»
+«EXTENSION functions::SoftLink»
+
 
 «IMPORT uml»
 «IMPORT JMM»
@@ -57,7 +59,11 @@ public static «IF isAbstract == true» abstract «ENDIF»class Builder«this.ge
         «ELSE»
 	        «FOREACH this.ownedAttribute.select(e|e.isPropertySuppressed() == false && e.belongsToTransientBidirectionalBackReference() == false) AS attr»
 	           «IF attr.isStatic == false»
-	               this.«attr.asSetter()»(pObject.«attr.name»);
+	               «IF attr.isSoftLink()»
+	                   this.set«attr.getSoftLinkPropertyName().toFirstUpper()»(pObject.«attr.getSoftLinkPropertyName()»);
+	               «ELSE»
+	                   this.«attr.asSetter()»(pObject.«attr.name»);
+	               «ENDIF»
 	           «ENDIF»
 	        «ENDFOREACH»
         «ENDIF»
@@ -345,10 +351,10 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
         «IF isMultivalued()»
             «IF generateValidationAnnotationsForAssociationsFromMultiplicity() && isStatic == false && isTransient() == false && this.hasValidationStereotype() == false && lower > 0»@«getEnterpriseJavaPackage()».validation.constraints.Size(min = «lower»)«ENDIF»
             «IF generateValidationAnnotationsForAssociationsFromMultiplicity() && isStatic == false && isTransient() == false && this.requiresNotNullAnnotation() && lower > 0»@«getEnterpriseJavaPackage()».validation.constraints.NotNull«ENDIF»
-            «visibility» «IF isTransient()»transient «ENDIF» «this.getCollectionType()»<«this.getMultivaluedJavaSoftLinkType()»> «asInstanceVar()»;
+            «visibility» «IF isTransient()»transient «ENDIF» «this.getCollectionType()»<«this.getMultivaluedJavaSoftLinkType()»> «this.getSoftLinkPropertyName()»;
         «ELSE»
             «IF generateValidationAnnotationsForAssociationsFromMultiplicity() && isStatic == false && isTransient() == false && this.requiresNotNullAnnotation() && lower > 0»@«getEnterpriseJavaPackage()».validation.constraints.NotNull«ENDIF»
-            «visibility» «IF isTransient()»transient «ENDIF» «this.getJavaSoftLinkType()» «asInstanceVar()»;
+            «visibility» «IF isTransient()»transient «ENDIF» «this.getJavaSoftLinkType()» «this.getSoftLinkPropertyName()»;
         «ENDIF»
 «ENDDEFINE»
 
@@ -443,19 +449,19 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
         «EXPAND functions::Javadoc::JavadocForBuilderSetter(builderClassName)»
         «EXPAND java::Helper::GenerateDeprecationAnnotation-»
         «IF isMultivalued()»
-            public «builderClassName»«owner.asClass().getTemplateParams()» set«name.toFirstUpper()»(«this.getCollectionType()»<«this.getMultivaluedJavaSoftLinkType()»> «asParameter()») {
+            public «builderClassName»«owner.asClass().getTemplateParams()» set«this.getSoftLinkPropertyName().toFirstUpper()»(«this.getCollectionType()»<«this.getMultivaluedJavaSoftLinkType()»> «asParameter()») {
                 // To ensure immutability we have to copy the content of the passed collection.
                 if(«asParameter()» != null) {
-                  «asInstanceVar()» = new «this.getCollectionImplType()»<«this.getMultivaluedJavaSoftLinkType()»>(«asParameter()»);
+                  «this.getSoftLinkPropertyName()» = new «this.getCollectionImplType()»<«this.getMultivaluedJavaSoftLinkType()»>(«asParameter()»);
                 }
                 else {
-                  «asInstanceVar()» = null;
+                  «this.getSoftLinkPropertyName()» = null;
                 }
                 return this;
             }
         «ELSE»
-            public «builderClassName»«owner.asClass().getTemplateParams()» «asSetter()» («this.getJavaSoftLinkType()» «asParameter()») {
-                «asInstanceVar()» = «asParameter()»;
+            public «builderClassName»«owner.asClass().getTemplateParams()» set«this.getSoftLinkPropertyName().toFirstUpper()» («this.getJavaSoftLinkType()» «asParameter()») {
+                «this.getSoftLinkPropertyName()» = «asParameter()»;
                 return this;
             }
         «ENDIF»
@@ -553,16 +559,16 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
 	    «EXPAND java::Helper::GenerateDeprecationAnnotation-»
         «IF isMultivalued()»
             @Override
-            public «builderClassName» set«name.toFirstUpper()»(«this.getCollectionType()»<«this.getMultivaluedJavaSoftLinkType()»> «asParameter()») {
+            public «builderClassName» set«this.getSoftLinkPropertyName().toFirstUpper()»(«this.getCollectionType()»<«this.getMultivaluedJavaSoftLinkType()»> «asParameter()») {
                 // Call super class implementation.
-                super.set«name.toFirstUpper()»(«asParameter()»);
+                super.set«this.getSoftLinkPropertyName().toFirstUpper()»(«asParameter()»);
                 return this;
             }
         «ELSE»
             @Override
-            public «builderClassName» «asSetter()» («this.getJavaSoftLinkType()» «asParameter()») {
+            public «builderClassName» set«this.getSoftLinkPropertyName().toFirstUpper()» («this.getJavaSoftLinkType()» «asParameter()») {
                 // Call super class implementation.
-                super.«asSetter()»(«asParameter()»);
+                super.set«this.getSoftLinkPropertyName().toFirstUpper()»(«asParameter()»);
                 return this;
             }
         «ENDIF»

@@ -44,7 +44,7 @@ public class SoftLinkChildB extends SoftLinkParent {
    * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #heyBrother} is
    * <code>com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkChildA</code><br/>
    */
-  private String heyBrother;
+  private String heyBrotherID;
 
   /**
    * <p/>
@@ -52,21 +52,21 @@ public class SoftLinkChildB extends SoftLinkParent {
    * <code>com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkPartner</code><br/>
    */
   @JsonSetter(nulls = Nulls.SKIP)
-  private Set<String> softLinkPartners;
+  private Set<String> softLinkPartnerIDs;
 
   /**
    * <p/>
    * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #oneLink} is
    * <code>com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkPartner</code><br/>
    */
-  private SoftLinkID oneLink;
+  private SoftLinkID oneLinkID;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   protected SoftLinkChildB( ) {
-    softLinkPartners = new HashSet<String>();
+    softLinkPartnerIDs = new HashSet<String>();
   }
 
   /**
@@ -78,14 +78,14 @@ public class SoftLinkChildB extends SoftLinkParent {
     // Call constructor of super class.
     super(pBuilder);
     // Read attribute values from builder.
-    heyBrother = pBuilder.heyBrother;
-    if (pBuilder.softLinkPartners != null) {
-      softLinkPartners = pBuilder.softLinkPartners;
+    heyBrotherID = pBuilder.heyBrotherID;
+    if (pBuilder.softLinkPartnerIDs != null) {
+      softLinkPartnerIDs = pBuilder.softLinkPartnerIDs;
     }
     else {
-      softLinkPartners = new HashSet<String>();
+      softLinkPartnerIDs = new HashSet<String>();
     }
-    oneLink = pBuilder.oneLink;
+    oneLinkID = pBuilder.oneLinkID;
   }
 
   /**
@@ -109,11 +109,11 @@ public class SoftLinkChildB extends SoftLinkParent {
    *
    * @return {@link com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkChildB}
    */
-  public static SoftLinkChildB of( Set<SoftLinkID> pPartners, SoftLinkID pThePartner, SoftLinkID pOneLink ) {
+  public static SoftLinkChildB of( Set<SoftLinkID> pPartnerIDs, SoftLinkID pThePartnerID, SoftLinkID pOneLinkID ) {
     SoftLinkChildB.Builder lBuilder = SoftLinkChildB.builder();
-    lBuilder.setPartners(pPartners);
-    lBuilder.setThePartner(pThePartner);
-    lBuilder.setOneLink(pOneLink);
+    lBuilder.setPartnerIDs(pPartnerIDs);
+    lBuilder.setThePartnerID(pThePartnerID);
+    lBuilder.setOneLinkID(pOneLinkID);
     return lBuilder.build();
   }
 
@@ -126,21 +126,21 @@ public class SoftLinkChildB extends SoftLinkParent {
      * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #heyBrother} is
      * <code>com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkChildA</code><br/>
      */
-    private String heyBrother;
+    private String heyBrotherID;
 
     /**
      * <p/>
      * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #softLinkPartners}
      * is <code>com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkPartner</code><br/>
      */
-    private Set<String> softLinkPartners;
+    private Set<String> softLinkPartnerIDs;
 
     /**
      * <p/>
      * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #oneLink} is
      * <code>com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkPartner</code><br/>
      */
-    private SoftLinkID oneLink;
+    private SoftLinkID oneLinkID;
 
     /**
      * Use {@link SoftLinkChildB#builder()} instead of private constructor to create new builder.
@@ -156,9 +156,9 @@ public class SoftLinkChildB extends SoftLinkParent {
       super(pObject);
       if (pObject != null) {
         // Read attribute values from passed object.
-        this.setHeyBrother(pObject.heyBrother);
-        this.setSoftLinkPartners(pObject.softLinkPartners);
-        this.setOneLink(pObject.oneLink);
+        this.setHeyBrotherID(pObject.heyBrotherID);
+        this.setSoftLinkPartnerIDs(pObject.softLinkPartnerIDs);
+        this.setOneLinkID(pObject.oneLinkID);
       }
     }
 
@@ -169,9 +169,9 @@ public class SoftLinkChildB extends SoftLinkParent {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
-    public Builder setPartners( Set<SoftLinkID> pPartners ) {
+    public Builder setPartnerIDs( Set<SoftLinkID> pPartners ) {
       // Call super class implementation.
-      super.setPartners(pPartners);
+      super.setPartnerIDs(pPartners);
       return this;
     }
 
@@ -182,9 +182,9 @@ public class SoftLinkChildB extends SoftLinkParent {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
-    public Builder setThePartner( SoftLinkID pThePartner ) {
+    public Builder setThePartnerID( SoftLinkID pThePartner ) {
       // Call super class implementation.
-      super.setThePartner(pThePartner);
+      super.setThePartnerID(pThePartner);
       return this;
     }
 
@@ -195,9 +195,9 @@ public class SoftLinkChildB extends SoftLinkParent {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
-    public Builder setReadonlyPartner( SoftLinkID pReadonlyPartner ) {
+    public Builder setReadonlyPartnerID( SoftLinkID pReadonlyPartner ) {
       // Call super class implementation.
-      super.setReadonlyPartner(pReadonlyPartner);
+      super.setReadonlyPartnerID(pReadonlyPartner);
       return this;
     }
 
@@ -207,8 +207,8 @@ public class SoftLinkChildB extends SoftLinkParent {
      * @param pHeyBrother Value to which {@link #heyBrother} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setHeyBrother( String pHeyBrother ) {
-      heyBrother = pHeyBrother;
+    public Builder setHeyBrotherID( String pHeyBrother ) {
+      heyBrotherID = pHeyBrother;
       return this;
     }
 
@@ -218,13 +218,13 @@ public class SoftLinkChildB extends SoftLinkParent {
      * @param pSoftLinkPartners Collection to which {@link #softLinkPartners} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setSoftLinkPartners( Set<String> pSoftLinkPartners ) {
+    public Builder setSoftLinkPartnerIDs( Set<String> pSoftLinkPartners ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pSoftLinkPartners != null) {
-        softLinkPartners = new HashSet<String>(pSoftLinkPartners);
+        softLinkPartnerIDs = new HashSet<String>(pSoftLinkPartners);
       }
       else {
-        softLinkPartners = null;
+        softLinkPartnerIDs = null;
       }
       return this;
     }
@@ -235,8 +235,8 @@ public class SoftLinkChildB extends SoftLinkParent {
      * @param pOneLink Value to which {@link #oneLink} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setOneLink( SoftLinkID pOneLink ) {
-      oneLink = pOneLink;
+    public Builder setOneLinkID( SoftLinkID pOneLink ) {
+      oneLinkID = pOneLink;
       return this;
     }
 
@@ -272,8 +272,8 @@ public class SoftLinkChildB extends SoftLinkParent {
    *
    * @return {@link String} Value to which {@link #heyBrother} is set.
    */
-  public String getHeyBrother( ) {
-    return heyBrother;
+  public String getHeyBrotherID( ) {
+    return heyBrotherID;
   }
 
   /**
@@ -281,15 +281,15 @@ public class SoftLinkChildB extends SoftLinkParent {
    *
    * @param pHeyBrother Value to which {@link #heyBrother} should be set.
    */
-  public void setHeyBrother( String pHeyBrother ) {
-    heyBrother = pHeyBrother;
+  public void setHeyBrotherID( String pHeyBrother ) {
+    heyBrotherID = pHeyBrother;
   }
 
   /**
    * Method unsets {@link #heyBrother}.
    */
-  public final void unsetHeyBrother( ) {
-    heyBrother = null;
+  public final void unsetHeyBrotherID( ) {
+    heyBrotherID = null;
   }
 
   /**
@@ -301,9 +301,9 @@ public class SoftLinkChildB extends SoftLinkParent {
    * @return {@link Set<String>} Value to which {@link #softLinkPartners} is set. The method never returns null and the
    * returned collection is unmodifiable.
    */
-  public Set<String> getSoftLinkPartners( ) {
+  public Set<String> getSoftLinkPartnerIDs( ) {
     // Return all SoftLinkPartner objects as unmodifiable collection.
-    return Collections.unmodifiableSet(softLinkPartners);
+    return Collections.unmodifiableSet(softLinkPartnerIDs);
   }
 
   /**
@@ -311,11 +311,11 @@ public class SoftLinkChildB extends SoftLinkParent {
    *
    * @param pSoftLinkPartners Object that should be added to {@link #softLinkPartners}. The parameter must not be null.
    */
-  public void addToSoftLinkPartners( String pSoftLinkPartners ) {
+  public void addToSoftLinkPartnerIDs( String pSoftLinkPartners ) {
     // Check parameter "pSoftLinkPartners" for invalid value null.
     Check.checkInvalidParameterNull(pSoftLinkPartners, "pSoftLinkPartners");
     // Add passed object to collection of associated SoftLinkPartner objects.
-    softLinkPartners.add(pSoftLinkPartners);
+    softLinkPartnerIDs.add(pSoftLinkPartners);
   }
 
   /**
@@ -324,12 +324,12 @@ public class SoftLinkChildB extends SoftLinkParent {
    * @param pSoftLinkPartners Collection with all objects that should be added to {@link #softLinkPartners}. The
    * parameter must not be null.
    */
-  public void addToSoftLinkPartners( Collection<String> pSoftLinkPartners ) {
+  public void addToSoftLinkPartnerIDs( Collection<String> pSoftLinkPartners ) {
     // Check parameter "pSoftLinkPartners" for invalid value null.
     Check.checkInvalidParameterNull(pSoftLinkPartners, "pSoftLinkPartners");
     // Add all passed objects.
     for (String lNextObject : pSoftLinkPartners) {
-      this.addToSoftLinkPartners(lNextObject);
+      this.addToSoftLinkPartnerIDs(lNextObject);
     }
   }
 
@@ -339,19 +339,19 @@ public class SoftLinkChildB extends SoftLinkParent {
    * @param pSoftLinkPartners Object that should be removed from {@link #softLinkPartners}. The parameter must not be
    * null.
    */
-  public void removeFromSoftLinkPartners( String pSoftLinkPartners ) {
+  public void removeFromSoftLinkPartnerIDs( String pSoftLinkPartners ) {
     // Check parameter for invalid value null.
     Check.checkInvalidParameterNull(pSoftLinkPartners, "pSoftLinkPartners");
     // Remove passed object from collection of associated SoftLinkPartner objects.
-    softLinkPartners.remove(pSoftLinkPartners);
+    softLinkPartnerIDs.remove(pSoftLinkPartners);
   }
 
   /**
    * Method removes all objects from {@link #softLinkPartners}.
    */
-  public void clearSoftLinkPartners( ) {
+  public void clearSoftLinkPartnerIDs( ) {
     // Remove all objects from association "softLinkPartners".
-    softLinkPartners.clear();
+    softLinkPartnerIDs.clear();
   }
 
   /**
@@ -362,8 +362,8 @@ public class SoftLinkChildB extends SoftLinkParent {
    *
    * @return {@link SoftLinkID} Value to which {@link #oneLink} is set.
    */
-  public SoftLinkID getOneLink( ) {
-    return oneLink;
+  public SoftLinkID getOneLinkID( ) {
+    return oneLinkID;
   }
 
   /**
@@ -371,24 +371,24 @@ public class SoftLinkChildB extends SoftLinkParent {
    *
    * @param pOneLink Value to which {@link #oneLink} should be set.
    */
-  public void setOneLink( SoftLinkID pOneLink ) {
-    oneLink = pOneLink;
+  public void setOneLinkID( SoftLinkID pOneLink ) {
+    oneLinkID = pOneLink;
   }
 
   /**
    * Method unsets {@link #oneLink}.
    */
-  public final void unsetOneLink( ) {
-    oneLink = null;
+  public final void unsetOneLinkID( ) {
+    oneLinkID = null;
   }
 
   @Override
   public int hashCode( ) {
     final int lPrime = 31;
     int lResult = super.hashCode();
-    lResult = lPrime * lResult + Objects.hashCode(heyBrother);
-    lResult = lPrime * lResult + Objects.hashCode(softLinkPartners);
-    lResult = lPrime * lResult + Objects.hashCode(oneLink);
+    lResult = lPrime * lResult + Objects.hashCode(heyBrotherID);
+    lResult = lPrime * lResult + Objects.hashCode(softLinkPartnerIDs);
+    lResult = lPrime * lResult + Objects.hashCode(oneLinkID);
     return lResult;
   }
 
@@ -409,8 +409,9 @@ public class SoftLinkChildB extends SoftLinkParent {
     }
     else {
       SoftLinkChildB lOther = (SoftLinkChildB) pObject;
-      lEquals = Objects.equals(heyBrother, lOther.heyBrother)
-          && Objects.equals(softLinkPartners, lOther.softLinkPartners) && Objects.equals(oneLink, lOther.oneLink);
+      lEquals = Objects.equals(heyBrotherID, lOther.heyBrotherID)
+          && Objects.equals(softLinkPartnerIDs, lOther.softLinkPartnerIDs)
+          && Objects.equals(oneLinkID, lOther.oneLinkID);
     }
     return lEquals;
   }
@@ -426,20 +427,20 @@ public class SoftLinkChildB extends SoftLinkParent {
     StringBuilder lBuilder = super.toStringBuilder(pIndent);
     lBuilder.append(pIndent);
     lBuilder.append("heyBrother: ");
-    lBuilder.append(heyBrother);
+    lBuilder.append(heyBrotherID);
     lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("softLinkPartners: ");
-    if (softLinkPartners != null) {
-      lBuilder.append(softLinkPartners.size());
+    if (softLinkPartnerIDs != null) {
+      lBuilder.append(softLinkPartnerIDs.size());
       lBuilder.append(" element(s)");
     }
     else {
       lBuilder.append(" null");
     }
     lBuilder.append(System.lineSeparator());
-    if (softLinkPartners != null) {
-      for (String lNext : softLinkPartners) {
+    if (softLinkPartnerIDs != null) {
+      for (String lNext : softLinkPartnerIDs) {
         lBuilder.append(pIndent + "    ");
         lBuilder.append(lNext.toString());
         lBuilder.append(System.lineSeparator());
@@ -447,7 +448,7 @@ public class SoftLinkChildB extends SoftLinkParent {
     }
     lBuilder.append(pIndent);
     lBuilder.append("oneLink: ");
-    lBuilder.append(oneLink);
+    lBuilder.append(oneLinkID);
     lBuilder.append(System.lineSeparator());
     return lBuilder;
   }

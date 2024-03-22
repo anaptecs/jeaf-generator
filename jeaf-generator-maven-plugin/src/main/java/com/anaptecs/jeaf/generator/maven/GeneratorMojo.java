@@ -860,6 +860,13 @@ public class GeneratorMojo extends AbstractMojo {
   private String openAPIGenericSoftLinkType = "";
 
   /**
+   * When working with soft links it might be a requirement to append a suffix to the name of a property from the UML
+   * model. This can be done using this configuration parameter.
+   */
+  @Parameter(required = false)
+  private String softLinkSuffix = "";
+
+  /**
    * Parameter can be used to suppress link to model element in generated OpenAPI specification. By default fully
    * qualified name of the type is added as comment above the type definition.
    */
@@ -1486,6 +1493,10 @@ public class GeneratorMojo extends AbstractMojo {
       lLog.info("OpenAPI generic soft link type:                   " + openAPIGenericSoftLinkType);
     }
 
+    if (softLinkSuffix.isEmpty() == false) {
+      lLog.info("Soft link suffix:                                 " + softLinkSuffix);
+    }
+
     if (suppressAllWarnings) {
       lLog.info("Suppress all warnings:                            " + suppressAllWarnings);
     }
@@ -1733,6 +1744,7 @@ public class GeneratorMojo extends AbstractMojo {
 
       System.setProperty("switch.gen.java.generic.soft.link.type", javaGenericSoftLinkType);
       System.setProperty("switch.gen.openapi.generic.soft.link.type", openAPIGenericSoftLinkType);
+      System.setProperty("switch.gen.openapi.generic.soft.link.suffix", softLinkSuffix);
 
       System.setProperty("switch.gen.suppress.warnings", suppressWarnings.stream().collect(Collectors.joining("; ")));
       System.setProperty("switch.gen.suppress.all.warnings", suppressAllWarnings.toString());

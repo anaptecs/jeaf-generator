@@ -38,7 +38,7 @@ public class POI extends Stop {
    */
   @Deprecated
   @NotNull
-  private Long theLink;
+  private Long theLinkID;
 
   /**
    * <p/>
@@ -47,7 +47,7 @@ public class POI extends Stop {
    */
   @Deprecated
   @JsonSetter(nulls = Nulls.SKIP)
-  private Set<SoftLink> evenMoreLinks;
+  private Set<SoftLink> evenMoreLinkIDs;
 
   /**
    * <p/>
@@ -68,7 +68,7 @@ public class POI extends Stop {
    * object creation builder should be used instead.
    */
   protected POI( ) {
-    evenMoreLinks = new HashSet<SoftLink>();
+    evenMoreLinkIDs = new HashSet<SoftLink>();
     stops = new HashSet<UICStop>();
     bookingCodes = new HashSet<BookingCode>();
   }
@@ -83,12 +83,12 @@ public class POI extends Stop {
     super(pBuilder);
     // Read attribute values from builder.
     description = pBuilder.description;
-    theLink = pBuilder.theLink;
-    if (pBuilder.evenMoreLinks != null) {
-      evenMoreLinks = pBuilder.evenMoreLinks;
+    theLinkID = pBuilder.theLinkID;
+    if (pBuilder.evenMoreLinkIDs != null) {
+      evenMoreLinkIDs = pBuilder.evenMoreLinkIDs;
     }
     else {
-      evenMoreLinks = new HashSet<SoftLink>();
+      evenMoreLinkIDs = new HashSet<SoftLink>();
     }
     if (pBuilder.stops != null) {
       stops = pBuilder.stops;
@@ -133,14 +133,14 @@ public class POI extends Stop {
    *
    * @return {@link com.anaptecs.jeaf.junit.openapi.base.POI}
    */
-  public static POI of( String pName, byte pIndex, SoftLink pTheSoftLink, String pDescription, Long pTheLink,
+  public static POI of( String pName, byte pIndex, SoftLink pTheSoftLinkID, String pDescription, Long pTheLinkID,
       Set<UICStop> pStops, Set<BookingCode> pBookingCodes ) {
     POI.Builder lBuilder = POI.builder();
     lBuilder.setName(pName);
     lBuilder.setIndex(pIndex);
-    lBuilder.setTheSoftLink(pTheSoftLink);
+    lBuilder.setTheSoftLinkID(pTheSoftLinkID);
     lBuilder.setDescription(pDescription);
-    lBuilder.setTheLink(pTheLink);
+    lBuilder.setTheLinkID(pTheLinkID);
     lBuilder.setStops(pStops);
     lBuilder.setBookingCodes(pBookingCodes);
     return lBuilder.build();
@@ -159,7 +159,7 @@ public class POI extends Stop {
      */
     @Deprecated
     @NotNull
-    private Long theLink;
+    private Long theLinkID;
 
     /**
      * <p/>
@@ -167,7 +167,7 @@ public class POI extends Stop {
      * <code>LinkObject</code><br/>
      */
     @Deprecated
-    private Set<SoftLink> evenMoreLinks;
+    private Set<SoftLink> evenMoreLinkIDs;
 
     /**
      * <p/>
@@ -192,8 +192,8 @@ public class POI extends Stop {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setDescription(pObject.description);
-        this.setTheLink(pObject.theLink);
-        this.setEvenMoreLinks(pObject.evenMoreLinks);
+        this.setTheLinkID(pObject.theLinkID);
+        this.setEvenMoreLinkIDs(pObject.evenMoreLinkIDs);
         this.setStops(pObject.stops);
         this.setBookingCodes(pObject.bookingCodes);
       }
@@ -257,9 +257,9 @@ public class POI extends Stop {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
-    public Builder setTheSoftLink( SoftLink pTheSoftLink ) {
+    public Builder setTheSoftLinkID( SoftLink pTheSoftLink ) {
       // Call super class implementation.
-      super.setTheSoftLink(pTheSoftLink);
+      super.setTheSoftLinkID(pTheSoftLink);
       return this;
     }
 
@@ -282,8 +282,8 @@ public class POI extends Stop {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
-    public Builder setTheLink( Long pTheLink ) {
-      theLink = pTheLink;
+    public Builder setTheLinkID( Long pTheLink ) {
+      theLinkID = pTheLink;
       return this;
     }
 
@@ -294,13 +294,13 @@ public class POI extends Stop {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
-    public Builder setEvenMoreLinks( Set<SoftLink> pEvenMoreLinks ) {
+    public Builder setEvenMoreLinkIDs( Set<SoftLink> pEvenMoreLinks ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pEvenMoreLinks != null) {
-        evenMoreLinks = new HashSet<SoftLink>(pEvenMoreLinks);
+        evenMoreLinkIDs = new HashSet<SoftLink>(pEvenMoreLinks);
       }
       else {
-        evenMoreLinks = null;
+        evenMoreLinkIDs = null;
       }
       return this;
     }
@@ -426,8 +426,8 @@ public class POI extends Stop {
    * @return {@link Long} Value to which {@link #theLink} is set.
    */
   @Deprecated
-  public Long getTheLink( ) {
-    return theLink;
+  public Long getTheLinkID( ) {
+    return theLinkID;
   }
 
   /**
@@ -436,16 +436,16 @@ public class POI extends Stop {
    * @param pTheLink Value to which {@link #theLink} should be set.
    */
   @Deprecated
-  public void setTheLink( Long pTheLink ) {
-    theLink = pTheLink;
+  public void setTheLinkID( Long pTheLink ) {
+    theLinkID = pTheLink;
   }
 
   /**
    * Method unsets {@link #theLink}.
    */
   @Deprecated
-  public final void unsetTheLink( ) {
-    theLink = null;
+  public final void unsetTheLinkID( ) {
+    theLinkID = null;
   }
 
   /**
@@ -458,9 +458,9 @@ public class POI extends Stop {
    * returned collection is modifiable.
    */
   @Deprecated
-  public Set<SoftLink> getEvenMoreLinks( ) {
+  public Set<SoftLink> getEvenMoreLinkIDs( ) {
     // Return all LinkObject objects directly without any protection against modification.
-    return evenMoreLinks;
+    return evenMoreLinkIDs;
   }
 
   /**
@@ -469,11 +469,11 @@ public class POI extends Stop {
    * @param pEvenMoreLinks Object that should be added to {@link #evenMoreLinks}. The parameter must not be null.
    */
   @Deprecated
-  public void addToEvenMoreLinks( SoftLink pEvenMoreLinks ) {
+  public void addToEvenMoreLinkIDs( SoftLink pEvenMoreLinks ) {
     // Check parameter "pEvenMoreLinks" for invalid value null.
     Check.checkInvalidParameterNull(pEvenMoreLinks, "pEvenMoreLinks");
     // Add passed object to collection of associated LinkObject objects.
-    evenMoreLinks.add(pEvenMoreLinks);
+    evenMoreLinkIDs.add(pEvenMoreLinks);
   }
 
   /**
@@ -483,12 +483,12 @@ public class POI extends Stop {
    * must not be null.
    */
   @Deprecated
-  public void addToEvenMoreLinks( Collection<SoftLink> pEvenMoreLinks ) {
+  public void addToEvenMoreLinkIDs( Collection<SoftLink> pEvenMoreLinks ) {
     // Check parameter "pEvenMoreLinks" for invalid value null.
     Check.checkInvalidParameterNull(pEvenMoreLinks, "pEvenMoreLinks");
     // Add all passed objects.
     for (SoftLink lNextObject : pEvenMoreLinks) {
-      this.addToEvenMoreLinks(lNextObject);
+      this.addToEvenMoreLinkIDs(lNextObject);
     }
   }
 
@@ -498,20 +498,20 @@ public class POI extends Stop {
    * @param pEvenMoreLinks Object that should be removed from {@link #evenMoreLinks}. The parameter must not be null.
    */
   @Deprecated
-  public void removeFromEvenMoreLinks( SoftLink pEvenMoreLinks ) {
+  public void removeFromEvenMoreLinkIDs( SoftLink pEvenMoreLinks ) {
     // Check parameter for invalid value null.
     Check.checkInvalidParameterNull(pEvenMoreLinks, "pEvenMoreLinks");
     // Remove passed object from collection of associated LinkObject objects.
-    evenMoreLinks.remove(pEvenMoreLinks);
+    evenMoreLinkIDs.remove(pEvenMoreLinks);
   }
 
   /**
    * Method removes all objects from {@link #evenMoreLinks}.
    */
   @Deprecated
-  public void clearEvenMoreLinks( ) {
+  public void clearEvenMoreLinkIDs( ) {
     // Remove all objects from association "evenMoreLinks".
-    evenMoreLinks.clear();
+    evenMoreLinkIDs.clear();
   }
 
   /**
@@ -650,20 +650,20 @@ public class POI extends Stop {
     lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("theLink: ");
-    lBuilder.append(theLink);
+    lBuilder.append(theLinkID);
     lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("evenMoreLinks: ");
-    if (evenMoreLinks != null) {
-      lBuilder.append(evenMoreLinks.size());
+    if (evenMoreLinkIDs != null) {
+      lBuilder.append(evenMoreLinkIDs.size());
       lBuilder.append(" element(s)");
     }
     else {
       lBuilder.append(" null");
     }
     lBuilder.append(System.lineSeparator());
-    if (evenMoreLinks != null) {
-      for (SoftLink lNext : evenMoreLinks) {
+    if (evenMoreLinkIDs != null) {
+      for (SoftLink lNext : evenMoreLinkIDs) {
         lBuilder.append(pIndent + "    ");
         lBuilder.append(lNext.toString());
         lBuilder.append(System.lineSeparator());

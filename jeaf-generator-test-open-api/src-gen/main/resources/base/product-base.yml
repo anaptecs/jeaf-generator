@@ -301,14 +301,14 @@ components:
       type: object
       additionalProperties: false
       required:
-        - moreLinks
+        - moreLinkIDs
       properties:
-        theLink:
+        theLinkID:
           type: integer
           format: int64
           deprecated: true
           nullable: true
-        moreLinks:
+        moreLinkIDs:
           description: |
             
             Deprecated: No good any more (since: 1.2, removed with: 3.0)
@@ -318,7 +318,7 @@ components:
             format: int64
           deprecated: true
           nullable: false
-        discountOffers:
+        discountOfferIDs:
           type: array
           items:
             type: string
@@ -649,7 +649,7 @@ components:
       type: object
       additionalProperties: false
       properties:
-        campaigns:
+        campaignIDs:
           type: array
           items:
             type: string
@@ -908,19 +908,19 @@ components:
           additionalProperties: false
           required:
             - description
-            - theLink
+            - theLinkID
             - stops
             - bookingCodes
           properties:
             description:
               type: string
               nullable: false
-            theLink:
+            theLinkID:
               type: integer
               format: int64
               deprecated: true
               nullable: false
-            evenMoreLinks:
+            evenMoreLinkIDs:
               type: array
               items:
                 type: string
@@ -1731,7 +1731,7 @@ components:
         - objectType
         - name
         - index
-        - theSoftLink
+        - theSoftLinkID
       properties:
         objectType:
           description: Attribute is used as discriminator for inheritance between data types.
@@ -1752,7 +1752,7 @@ components:
           maximum: 32
           minimum: 0
           nullable: false
-        theSoftLink:
+        theSoftLinkID:
           type: string
           nullable: false
 

@@ -36,27 +36,27 @@ import openapitools.JSON;
  * DiscountOffer
  */
 @JsonPropertyOrder({
-  DiscountOffer.JSON_PROPERTY_CAMPAIGNS
+  DiscountOffer.JSON_PROPERTY_CAMPAIGN_I_DS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.4.0")
 public class DiscountOffer {
-  public static final String JSON_PROPERTY_CAMPAIGNS = "campaigns";
-  private JsonNullable<List<String>> campaigns = JsonNullable.<List<String>>undefined();
+  public static final String JSON_PROPERTY_CAMPAIGN_I_DS = "campaignIDs";
+  private JsonNullable<List<String>> campaignIDs = JsonNullable.<List<String>>undefined();
 
   public DiscountOffer() { 
   }
 
-  public DiscountOffer campaigns(List<String> campaigns) {
-    this.campaigns = JsonNullable.<List<String>>of(campaigns);
+  public DiscountOffer campaignIDs(List<String> campaignIDs) {
+    this.campaignIDs = JsonNullable.<List<String>>of(campaignIDs);
     return this;
   }
 
-  public DiscountOffer addCampaignsItem(String campaignsItem) {
-    if (this.campaigns == null || !this.campaigns.isPresent()) {
-      this.campaigns = JsonNullable.<List<String>>of(new ArrayList<>());
+  public DiscountOffer addCampaignIDsItem(String campaignIDsItem) {
+    if (this.campaignIDs == null || !this.campaignIDs.isPresent()) {
+      this.campaignIDs = JsonNullable.<List<String>>of(new ArrayList<>());
     }
     try {
-      this.campaigns.get().add(campaignsItem);
+      this.campaignIDs.get().add(campaignIDsItem);
     } catch (java.util.NoSuchElementException e) {
       // this can never happen, as we make sure above that the value is present
     }
@@ -64,32 +64,32 @@ public class DiscountOffer {
   }
 
    /**
-   * Get campaigns
-   * @return campaigns
+   * Get campaignIDs
+   * @return campaignIDs
    * @deprecated
   **/
   @Deprecated
   @javax.annotation.Nullable
   @JsonIgnore
 
-  public List<String> getCampaigns() {
-        return campaigns.orElse(null);
+  public List<String> getCampaignIDs() {
+        return campaignIDs.orElse(null);
   }
 
-  @JsonProperty(JSON_PROPERTY_CAMPAIGNS)
+  @JsonProperty(JSON_PROPERTY_CAMPAIGN_I_DS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public JsonNullable<List<String>> getCampaigns_JsonNullable() {
-    return campaigns;
+  public JsonNullable<List<String>> getCampaignIDs_JsonNullable() {
+    return campaignIDs;
   }
   
-  @JsonProperty(JSON_PROPERTY_CAMPAIGNS)
-  public void setCampaigns_JsonNullable(JsonNullable<List<String>> campaigns) {
-    this.campaigns = campaigns;
+  @JsonProperty(JSON_PROPERTY_CAMPAIGN_I_DS)
+  public void setCampaignIDs_JsonNullable(JsonNullable<List<String>> campaignIDs) {
+    this.campaignIDs = campaignIDs;
   }
 
-  public void setCampaigns(List<String> campaigns) {
-    this.campaigns = JsonNullable.<List<String>>of(campaigns);
+  public void setCampaignIDs(List<String> campaignIDs) {
+    this.campaignIDs = JsonNullable.<List<String>>of(campaignIDs);
   }
 
 
@@ -105,7 +105,7 @@ public class DiscountOffer {
       return false;
     }
     DiscountOffer discountOffer = (DiscountOffer) o;
-    return equalsNullable(this.campaigns, discountOffer.campaigns);
+    return equalsNullable(this.campaignIDs, discountOffer.campaignIDs);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -114,7 +114,7 @@ public class DiscountOffer {
 
   @Override
   public int hashCode() {
-    return Objects.hash(hashCodeNullable(campaigns));
+    return Objects.hash(hashCodeNullable(campaignIDs));
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -128,7 +128,7 @@ public class DiscountOffer {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class DiscountOffer {\n");
-    sb.append("    campaigns: ").append(toIndentedString(campaigns)).append("\n");
+    sb.append("    campaignIDs: ").append(toIndentedString(campaignIDs)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -4,6 +4,7 @@
 «EXTENSION java::OpenAPIFunctions»
 «EXTENSION functions::Class»
 «EXTENSION functions::Property»
+«EXTENSION functions::SoftLink»
 
 
 «DEFINE GenerateToStringMethod FOR uml::Class»
@@ -57,12 +58,13 @@
 «ENDDEFINE»
 
 «DEFINE ToStringValue FOR uml::Property»
+    «LET this.getSoftLinkAwarePropertyName() AS propertyName»
     «IF association == null »
 	    «IF isMultivalued() == false»
-		    lBuilder.append(«name»);
+		    lBuilder.append(«propertyName»);
 	    «ELSE»
-		    if(«name» != null) {
-		    	lBuilder.append(java.util.Arrays.toString(«name»));
+		    if(«propertyName» != null) {
+		    	lBuilder.append(java.util.Arrays.toString(«propertyName»));
 		    }
 		    else {
 		    	lBuilder.append(" null");
@@ -71,39 +73,39 @@
 	    lBuilder.append(System.lineSeparator());
     «ELSE»
 	    «IF isMultivalued() == false»
-		    «IF type.isEnumeration() == false && this.isSoftLink() == false && (type.isStereotypeApplied("POJO") || type.isStereotypeApplied("ServiceObject"))»
-		    if(«name» != null) {
+		    «IF type.isEnumeration() == false && this.isSoftLink() == false && (type.isPOJO() || type.isServiceObject())»
+		    if(«propertyName» != null) {
 		    	lBuilder.append(System.lineSeparator());
-		    	lBuilder.append(«name».toStringBuilder(pIndent + "    "));
+		    	lBuilder.append(«propertyName».toStringBuilder(pIndent + "    "));
 		    }
 		    else {
 		    	lBuilder.append(" null");
 		    	lBuilder.append(System.lineSeparator());
 		    }
 		    «ELSE»
-		    lBuilder.append(«name»);
+		    lBuilder.append(«propertyName»);
 		    lBuilder.append(System.lineSeparator());
 		    «ENDIF»
 	    «ELSE»
-		    if («name» != null) {
-		      lBuilder.append(«name».size());
+		    if («propertyName» != null) {
+		      lBuilder.append(«propertyName».size());
 		      lBuilder.append(" element(s)");
 		    }
 		    else {
 		      lBuilder.append(" null");
 		    }
 		    lBuilder.append(System.lineSeparator());
-		    if («name» != null) {
+		    if («propertyName» != null) {
 		      «IF this.isSoftLink()»
 		      «LET ((JMM::SoftLink) this) AS softLink»
-              for («softLink.getMultivaluedJavaSoftLinkType()» lNext : «name») {
+              for («softLink.getMultivaluedJavaSoftLinkType()» lNext : «propertyName») {
                 lBuilder.append(pIndent + "    ");
                 lBuilder.append(lNext.toString());
                 lBuilder.append(System.lineSeparator());
               }
               «ENDLET»
 		      «ELSE»
-		      for («type.fqn()» lNext : «name») {
+		      for («type.fqn()» lNext : «propertyName») {
 		      	«IF type.isEnumeration() == false && (type.isStereotypeApplied("POJO") || type.isStereotypeApplied("ServiceObject"))»
 		        lBuilder.append(lNext.toStringBuilder(pIndent + "    "));
 		        «ELSE»
@@ -116,6 +118,7 @@
 		    }
 	    «ENDIF»
     «ENDIF»
+    «ENDLET»
 «ENDDEFINE»
 
 
@@ -325,13 +328,21 @@
 				   «ENDIF»
 			   «ELSE»
 			       «attr.fqn()»«IF attr.isMultivalued()»[]«ENDIF»
-			   «ENDIF» 
-			   «attr.asParameter()»
+			   «ENDIF»
+			   «IF attr.isSoftLink()»
+			       «attr.getSoftLinkPropertyName().asParameter()»
+			   «ELSE»
+			       «attr.asParameter()»
+			   «ENDIF»
 		   «ENDFOREACH») {
 	
 		    «name».Builder lBuilder = «name».builder();
            «FOREACH this.getAllAttributesForOfOperation() AS attr»
-           lBuilder.«attr.asSetter()»(«attr.asParameter()»);
+               «IF attr.isSoftLink()»
+                   lBuilder.set«attr.getSoftLinkPropertyName().toFirstUpper()»(«attr.getSoftLinkPropertyName().asParameter()»);
+               «ELSE»
+                   lBuilder.«attr.asSetter()»(«attr.asParameter()»);
+               «ENDIF»
            «ENDFOREACH»
 		    return lBuilder.build();
 	  }
@@ -368,7 +379,11 @@
 		        «ELSEIF property.isMultivalued() && property.association == null»
 		            lResult = lPrime * lResult + java.util.Arrays.hashCode(«property.name»);
 		        «ELSE»
-		            lResult = lPrime * lResult + java.util.Objects.hashCode(«property.name»);
+		            «IF property.isSoftLink()»
+		                lResult = lPrime * lResult + java.util.Objects.hashCode(«property.getSoftLinkPropertyName()»);
+		            «ELSE»
+		                lResult = lPrime * lResult + java.util.Objects.hashCode(«property.name»);
+		            «ENDIF»
 		        «ENDIF»
 		    «ENDFOREACH»
 	        «IF this.hasCustomHeaders()»
@@ -418,7 +433,11 @@
 		        «ELSEIF property.isMultivalued() && property.association == null»
 		            java.util.Arrays.equals(«property.name», lOther.«property.name»)
 		        «ELSE»
-	                java.util.Objects.equals(«property.name», lOther.«property.name»)
+	                «IF property.isSoftLink()»
+	                   java.util.Objects.equals(«property.getSoftLinkPropertyName()», lOther.«property.getSoftLinkPropertyName()»)
+	                «ELSE»
+	                   java.util.Objects.equals(«property.name», lOther.«property.name»)
+	                «ENDIF»
 		        «ENDIF»
 		      «ENDFOREACH»
 		      «IF this.hasCustomHeaders()»

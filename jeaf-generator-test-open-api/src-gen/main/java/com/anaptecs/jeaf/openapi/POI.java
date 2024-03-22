@@ -32,11 +32,11 @@ public class POI extends Stop {
   @JsonProperty("description")
   private String description = null;
 
-  @JsonProperty("theLink")
-  private Long theLink = null;
+  @JsonProperty("theLinkID")
+  private Long theLinkID = null;
 
-  @JsonProperty("evenMoreLinks")
-  private List<String> evenMoreLinks = null;
+  @JsonProperty("evenMoreLinkIDs")
+  private List<String> evenMoreLinkIDs = null;
 
   @JsonProperty("stops")
   private List<UICStop> stops = new ArrayList<>();
@@ -62,48 +62,48 @@ public class POI extends Stop {
     this.description = description;
   }
 
-  public POI theLink(Long theLink) {
-    this.theLink = theLink;
+  public POI theLinkID(Long theLinkID) {
+    this.theLinkID = theLinkID;
     return this;
   }
 
    /**
-   * Get theLink
-   * @return theLink
+   * Get theLinkID
+   * @return theLinkID
   **/
   @Schema(required = true, description = "")
-  public Long getTheLink() {
-    return theLink;
+  public Long getTheLinkID() {
+    return theLinkID;
   }
 
-  public void setTheLink(Long theLink) {
-    this.theLink = theLink;
+  public void setTheLinkID(Long theLinkID) {
+    this.theLinkID = theLinkID;
   }
 
-  public POI evenMoreLinks(List<String> evenMoreLinks) {
-    this.evenMoreLinks = evenMoreLinks;
+  public POI evenMoreLinkIDs(List<String> evenMoreLinkIDs) {
+    this.evenMoreLinkIDs = evenMoreLinkIDs;
     return this;
   }
 
-  public POI addEvenMoreLinksItem(String evenMoreLinksItem) {
-    if (this.evenMoreLinks == null) {
-      this.evenMoreLinks = new ArrayList<>();
+  public POI addEvenMoreLinkIDsItem(String evenMoreLinkIDsItem) {
+    if (this.evenMoreLinkIDs == null) {
+      this.evenMoreLinkIDs = new ArrayList<>();
     }
-    this.evenMoreLinks.add(evenMoreLinksItem);
+    this.evenMoreLinkIDs.add(evenMoreLinkIDsItem);
     return this;
   }
 
    /**
-   * Get evenMoreLinks
-   * @return evenMoreLinks
+   * Get evenMoreLinkIDs
+   * @return evenMoreLinkIDs
   **/
   @Schema(description = "")
-  public List<String> getEvenMoreLinks() {
-    return evenMoreLinks;
+  public List<String> getEvenMoreLinkIDs() {
+    return evenMoreLinkIDs;
   }
 
-  public void setEvenMoreLinks(List<String> evenMoreLinks) {
-    this.evenMoreLinks = evenMoreLinks;
+  public void setEvenMoreLinkIDs(List<String> evenMoreLinkIDs) {
+    this.evenMoreLinkIDs = evenMoreLinkIDs;
   }
 
   public POI stops(List<UICStop> stops) {
@@ -163,8 +163,8 @@ public class POI extends Stop {
     }
     POI POI = (POI) o;
     return Objects.equals(this.description, POI.description) &&
-        Objects.equals(this.theLink, POI.theLink) &&
-        Objects.equals(this.evenMoreLinks, POI.evenMoreLinks) &&
+        Objects.equals(this.theLinkID, POI.theLinkID) &&
+        Objects.equals(this.evenMoreLinkIDs, POI.evenMoreLinkIDs) &&
         Objects.equals(this.stops, POI.stops) &&
         Objects.equals(this.bookingCodes, POI.bookingCodes) &&
         super.equals(o);
@@ -172,7 +172,7 @@ public class POI extends Stop {
 
   @Override
   public int hashCode() {
-    return Objects.hash(description, theLink, evenMoreLinks, stops, bookingCodes, super.hashCode());
+    return Objects.hash(description, theLinkID, evenMoreLinkIDs, stops, bookingCodes, super.hashCode());
   }
 
 
@@ -182,8 +182,8 @@ public class POI extends Stop {
     sb.append("class POI {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    theLink: ").append(toIndentedString(theLink)).append("\n");
-    sb.append("    evenMoreLinks: ").append(toIndentedString(evenMoreLinks)).append("\n");
+    sb.append("    theLinkID: ").append(toIndentedString(theLinkID)).append("\n");
+    sb.append("    evenMoreLinkIDs: ").append(toIndentedString(evenMoreLinkIDs)).append("\n");
     sb.append("    stops: ").append(toIndentedString(stops)).append("\n");
     sb.append("    bookingCodes: ").append(toIndentedString(bookingCodes)).append("\n");
     sb.append("}");

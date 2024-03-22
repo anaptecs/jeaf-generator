@@ -222,12 +222,14 @@ public class Naming {
     Check.checkInvalidParameterNull(pNamedElement, "pNamedElement");
     Check.checkIsRealString(pNamedElement.getName(), "pNamedElement.getName()");
 
-    final String lName = pNamedElement.getName();
+    return asParameterName(pNamedElement.getName());
+  }
 
-    StringBuffer lBuffer = new StringBuffer(lName.length() + 1);
+  public static String asParameterName( String pName ) {
+    StringBuffer lBuffer = new StringBuffer(pName.length() + 1);
     lBuffer.append(PARAM_PREFIX);
-    lBuffer.append(Character.toUpperCase(lName.charAt(0)));
-    lBuffer.append(lName.substring(1));
+    lBuffer.append(Character.toUpperCase(pName.charAt(0)));
+    lBuffer.append(pName.substring(1));
 
     return lBuffer.toString();
   }

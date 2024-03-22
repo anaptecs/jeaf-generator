@@ -32,14 +32,14 @@ public class DiscountOffer implements ServiceObject {
    */
   @Deprecated
   @JsonSetter(nulls = Nulls.SKIP)
-  private Set<SoftLink> campaigns;
+  private Set<SoftLink> campaignIDs;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   protected DiscountOffer( ) {
-    campaigns = new HashSet<SoftLink>();
+    campaignIDs = new HashSet<SoftLink>();
   }
 
   /**
@@ -51,11 +51,11 @@ public class DiscountOffer implements ServiceObject {
     // Ensure that builder is not null.
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
-    if (pBuilder.campaigns != null) {
-      campaigns = pBuilder.campaigns;
+    if (pBuilder.campaignIDs != null) {
+      campaignIDs = pBuilder.campaignIDs;
     }
     else {
-      campaigns = new HashSet<SoftLink>();
+      campaignIDs = new HashSet<SoftLink>();
     }
   }
 
@@ -89,7 +89,7 @@ public class DiscountOffer implements ServiceObject {
      * <code>com.anaptecs.jeaf.junit.openapi.base.Campaign</code><br/>
      */
     @Deprecated
-    private Set<SoftLink> campaigns;
+    private Set<SoftLink> campaignIDs;
 
     /**
      * Use {@link DiscountOffer#builder()} instead of private constructor to create new builder.
@@ -103,7 +103,7 @@ public class DiscountOffer implements ServiceObject {
     protected Builder( DiscountOffer pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
-        this.setCampaigns(pObject.campaigns);
+        this.setCampaignIDs(pObject.campaignIDs);
       }
     }
 
@@ -114,13 +114,13 @@ public class DiscountOffer implements ServiceObject {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
-    public Builder setCampaigns( Set<SoftLink> pCampaigns ) {
+    public Builder setCampaignIDs( Set<SoftLink> pCampaigns ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pCampaigns != null) {
-        campaigns = new HashSet<SoftLink>(pCampaigns);
+        campaignIDs = new HashSet<SoftLink>(pCampaigns);
       }
       else {
-        campaigns = null;
+        campaignIDs = null;
       }
       return this;
     }
@@ -159,9 +159,9 @@ public class DiscountOffer implements ServiceObject {
    * returned collection is modifiable.
    */
   @Deprecated
-  public Set<SoftLink> getCampaigns( ) {
+  public Set<SoftLink> getCampaignIDs( ) {
     // Return all Campaign objects directly without any protection against modification.
-    return campaigns;
+    return campaignIDs;
   }
 
   /**
@@ -170,11 +170,11 @@ public class DiscountOffer implements ServiceObject {
    * @param pCampaigns Object that should be added to {@link #campaigns}. The parameter must not be null.
    */
   @Deprecated
-  public void addToCampaigns( SoftLink pCampaigns ) {
+  public void addToCampaignIDs( SoftLink pCampaigns ) {
     // Check parameter "pCampaigns" for invalid value null.
     Check.checkInvalidParameterNull(pCampaigns, "pCampaigns");
     // Add passed object to collection of associated Campaign objects.
-    campaigns.add(pCampaigns);
+    campaignIDs.add(pCampaigns);
   }
 
   /**
@@ -184,12 +184,12 @@ public class DiscountOffer implements ServiceObject {
    * null.
    */
   @Deprecated
-  public void addToCampaigns( Collection<SoftLink> pCampaigns ) {
+  public void addToCampaignIDs( Collection<SoftLink> pCampaigns ) {
     // Check parameter "pCampaigns" for invalid value null.
     Check.checkInvalidParameterNull(pCampaigns, "pCampaigns");
     // Add all passed objects.
     for (SoftLink lNextObject : pCampaigns) {
-      this.addToCampaigns(lNextObject);
+      this.addToCampaignIDs(lNextObject);
     }
   }
 
@@ -199,20 +199,20 @@ public class DiscountOffer implements ServiceObject {
    * @param pCampaigns Object that should be removed from {@link #campaigns}. The parameter must not be null.
    */
   @Deprecated
-  public void removeFromCampaigns( SoftLink pCampaigns ) {
+  public void removeFromCampaignIDs( SoftLink pCampaigns ) {
     // Check parameter for invalid value null.
     Check.checkInvalidParameterNull(pCampaigns, "pCampaigns");
     // Remove passed object from collection of associated Campaign objects.
-    campaigns.remove(pCampaigns);
+    campaignIDs.remove(pCampaigns);
   }
 
   /**
    * Method removes all objects from {@link #campaigns}.
    */
   @Deprecated
-  public void clearCampaigns( ) {
+  public void clearCampaignIDs( ) {
     // Remove all objects from association "campaigns".
-    campaigns.clear();
+    campaignIDs.clear();
   }
 
   /**
@@ -228,16 +228,16 @@ public class DiscountOffer implements ServiceObject {
     lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("campaigns: ");
-    if (campaigns != null) {
-      lBuilder.append(campaigns.size());
+    if (campaignIDs != null) {
+      lBuilder.append(campaignIDs.size());
       lBuilder.append(" element(s)");
     }
     else {
       lBuilder.append(" null");
     }
     lBuilder.append(System.lineSeparator());
-    if (campaigns != null) {
-      for (SoftLink lNext : campaigns) {
+    if (campaignIDs != null) {
+      for (SoftLink lNext : campaignIDs) {
         lBuilder.append(pIndent + "    ");
         lBuilder.append(lNext.toString());
         lBuilder.append(System.lineSeparator());

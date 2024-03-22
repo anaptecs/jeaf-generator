@@ -36,105 +36,105 @@ import openapitools.JSON;
  * Campaign
  */
 @JsonPropertyOrder({
-  Campaign.JSON_PROPERTY_THE_LINK,
-  Campaign.JSON_PROPERTY_MORE_LINKS,
-  Campaign.JSON_PROPERTY_DISCOUNT_OFFERS
+  Campaign.JSON_PROPERTY_THE_LINK_I_D,
+  Campaign.JSON_PROPERTY_MORE_LINK_I_DS,
+  Campaign.JSON_PROPERTY_DISCOUNT_OFFER_I_DS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.4.0")
 public class Campaign {
-  public static final String JSON_PROPERTY_THE_LINK = "theLink";
-  private JsonNullable<Long> theLink = JsonNullable.<Long>undefined();
+  public static final String JSON_PROPERTY_THE_LINK_I_D = "theLinkID";
+  private JsonNullable<Long> theLinkID = JsonNullable.<Long>undefined();
 
-  public static final String JSON_PROPERTY_MORE_LINKS = "moreLinks";
-  private List<Long> moreLinks = new ArrayList<>();
+  public static final String JSON_PROPERTY_MORE_LINK_I_DS = "moreLinkIDs";
+  private List<Long> moreLinkIDs = new ArrayList<>();
 
-  public static final String JSON_PROPERTY_DISCOUNT_OFFERS = "discountOffers";
-  private JsonNullable<List<String>> discountOffers = JsonNullable.<List<String>>undefined();
+  public static final String JSON_PROPERTY_DISCOUNT_OFFER_I_DS = "discountOfferIDs";
+  private JsonNullable<List<String>> discountOfferIDs = JsonNullable.<List<String>>undefined();
 
   public Campaign() { 
   }
 
-  public Campaign theLink(Long theLink) {
-    this.theLink = JsonNullable.<Long>of(theLink);
+  public Campaign theLinkID(Long theLinkID) {
+    this.theLinkID = JsonNullable.<Long>of(theLinkID);
     return this;
   }
 
    /**
-   * Get theLink
-   * @return theLink
+   * Get theLinkID
+   * @return theLinkID
    * @deprecated
   **/
   @Deprecated
   @javax.annotation.Nullable
   @JsonIgnore
 
-  public Long getTheLink() {
-        return theLink.orElse(null);
+  public Long getTheLinkID() {
+        return theLinkID.orElse(null);
   }
 
-  @JsonProperty(JSON_PROPERTY_THE_LINK)
+  @JsonProperty(JSON_PROPERTY_THE_LINK_I_D)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public JsonNullable<Long> getTheLink_JsonNullable() {
-    return theLink;
+  public JsonNullable<Long> getTheLinkID_JsonNullable() {
+    return theLinkID;
   }
   
-  @JsonProperty(JSON_PROPERTY_THE_LINK)
-  public void setTheLink_JsonNullable(JsonNullable<Long> theLink) {
-    this.theLink = theLink;
+  @JsonProperty(JSON_PROPERTY_THE_LINK_I_D)
+  public void setTheLinkID_JsonNullable(JsonNullable<Long> theLinkID) {
+    this.theLinkID = theLinkID;
   }
 
-  public void setTheLink(Long theLink) {
-    this.theLink = JsonNullable.<Long>of(theLink);
+  public void setTheLinkID(Long theLinkID) {
+    this.theLinkID = JsonNullable.<Long>of(theLinkID);
   }
 
 
-  public Campaign moreLinks(List<Long> moreLinks) {
-    this.moreLinks = moreLinks;
+  public Campaign moreLinkIDs(List<Long> moreLinkIDs) {
+    this.moreLinkIDs = moreLinkIDs;
     return this;
   }
 
-  public Campaign addMoreLinksItem(Long moreLinksItem) {
-    if (this.moreLinks == null) {
-      this.moreLinks = new ArrayList<>();
+  public Campaign addMoreLinkIDsItem(Long moreLinkIDsItem) {
+    if (this.moreLinkIDs == null) {
+      this.moreLinkIDs = new ArrayList<>();
     }
-    this.moreLinks.add(moreLinksItem);
+    this.moreLinkIDs.add(moreLinkIDsItem);
     return this;
   }
 
    /**
    *  Deprecated: No good any more (since: 1.2, removed with: 3.0) 
-   * @return moreLinks
+   * @return moreLinkIDs
    * @deprecated
   **/
   @Deprecated
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_MORE_LINKS)
+  @JsonProperty(JSON_PROPERTY_MORE_LINK_I_DS)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public List<Long> getMoreLinks() {
-    return moreLinks;
+  public List<Long> getMoreLinkIDs() {
+    return moreLinkIDs;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_MORE_LINKS)
+  @JsonProperty(JSON_PROPERTY_MORE_LINK_I_DS)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setMoreLinks(List<Long> moreLinks) {
-    this.moreLinks = moreLinks;
+  public void setMoreLinkIDs(List<Long> moreLinkIDs) {
+    this.moreLinkIDs = moreLinkIDs;
   }
 
 
-  public Campaign discountOffers(List<String> discountOffers) {
-    this.discountOffers = JsonNullable.<List<String>>of(discountOffers);
+  public Campaign discountOfferIDs(List<String> discountOfferIDs) {
+    this.discountOfferIDs = JsonNullable.<List<String>>of(discountOfferIDs);
     return this;
   }
 
-  public Campaign addDiscountOffersItem(String discountOffersItem) {
-    if (this.discountOffers == null || !this.discountOffers.isPresent()) {
-      this.discountOffers = JsonNullable.<List<String>>of(new ArrayList<>());
+  public Campaign addDiscountOfferIDsItem(String discountOfferIDsItem) {
+    if (this.discountOfferIDs == null || !this.discountOfferIDs.isPresent()) {
+      this.discountOfferIDs = JsonNullable.<List<String>>of(new ArrayList<>());
     }
     try {
-      this.discountOffers.get().add(discountOffersItem);
+      this.discountOfferIDs.get().add(discountOfferIDsItem);
     } catch (java.util.NoSuchElementException e) {
       // this can never happen, as we make sure above that the value is present
     }
@@ -142,32 +142,32 @@ public class Campaign {
   }
 
    /**
-   * Get discountOffers
-   * @return discountOffers
+   * Get discountOfferIDs
+   * @return discountOfferIDs
    * @deprecated
   **/
   @Deprecated
   @javax.annotation.Nullable
   @JsonIgnore
 
-  public List<String> getDiscountOffers() {
-        return discountOffers.orElse(null);
+  public List<String> getDiscountOfferIDs() {
+        return discountOfferIDs.orElse(null);
   }
 
-  @JsonProperty(JSON_PROPERTY_DISCOUNT_OFFERS)
+  @JsonProperty(JSON_PROPERTY_DISCOUNT_OFFER_I_DS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public JsonNullable<List<String>> getDiscountOffers_JsonNullable() {
-    return discountOffers;
+  public JsonNullable<List<String>> getDiscountOfferIDs_JsonNullable() {
+    return discountOfferIDs;
   }
   
-  @JsonProperty(JSON_PROPERTY_DISCOUNT_OFFERS)
-  public void setDiscountOffers_JsonNullable(JsonNullable<List<String>> discountOffers) {
-    this.discountOffers = discountOffers;
+  @JsonProperty(JSON_PROPERTY_DISCOUNT_OFFER_I_DS)
+  public void setDiscountOfferIDs_JsonNullable(JsonNullable<List<String>> discountOfferIDs) {
+    this.discountOfferIDs = discountOfferIDs;
   }
 
-  public void setDiscountOffers(List<String> discountOffers) {
-    this.discountOffers = JsonNullable.<List<String>>of(discountOffers);
+  public void setDiscountOfferIDs(List<String> discountOfferIDs) {
+    this.discountOfferIDs = JsonNullable.<List<String>>of(discountOfferIDs);
   }
 
 
@@ -183,9 +183,9 @@ public class Campaign {
       return false;
     }
     Campaign campaign = (Campaign) o;
-    return equalsNullable(this.theLink, campaign.theLink) &&
-        Objects.equals(this.moreLinks, campaign.moreLinks) &&
-        equalsNullable(this.discountOffers, campaign.discountOffers);
+    return equalsNullable(this.theLinkID, campaign.theLinkID) &&
+        Objects.equals(this.moreLinkIDs, campaign.moreLinkIDs) &&
+        equalsNullable(this.discountOfferIDs, campaign.discountOfferIDs);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -194,7 +194,7 @@ public class Campaign {
 
   @Override
   public int hashCode() {
-    return Objects.hash(hashCodeNullable(theLink), moreLinks, hashCodeNullable(discountOffers));
+    return Objects.hash(hashCodeNullable(theLinkID), moreLinkIDs, hashCodeNullable(discountOfferIDs));
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -208,9 +208,9 @@ public class Campaign {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Campaign {\n");
-    sb.append("    theLink: ").append(toIndentedString(theLink)).append("\n");
-    sb.append("    moreLinks: ").append(toIndentedString(moreLinks)).append("\n");
-    sb.append("    discountOffers: ").append(toIndentedString(discountOffers)).append("\n");
+    sb.append("    theLinkID: ").append(toIndentedString(theLinkID)).append("\n");
+    sb.append("    moreLinkIDs: ").append(toIndentedString(moreLinkIDs)).append("\n");
+    sb.append("    discountOfferIDs: ").append(toIndentedString(discountOfferIDs)).append("\n");
     sb.append("}");
     return sb.toString();
   }

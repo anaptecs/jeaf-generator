@@ -6,6 +6,7 @@
 «EXTENSION functions::Class»
 «EXTENSION functions::NamedElement»
 «EXTENSION functions::TemplateParameter»
+«EXTENSION functions::SoftLink»
 
 «IMPORT JMM»
 
@@ -366,7 +367,7 @@
 							«attr.name» = null;
 						«ELSE»
                             «IF attr.isSoftLink()»
-                                «attr.name» = new «attr.getCollectionImplType()»<«((SoftLink)attr).getMultivaluedJavaSoftLinkType()»>();
+                                «attr.getSoftLinkPropertyName()» = new «attr.getCollectionImplType()»<«((SoftLink)attr).getMultivaluedJavaSoftLinkType()»>();
                             «ELSE»
 							    «attr.name» = new «attr.getCollectionImplType()»<«attr.type.fqn()»>();
 							«ENDIF»
@@ -375,7 +376,11 @@
 	                    «IF attr.isRealInitValue() »
 	                        «attr.name» = «IF attr.isJEAFEnumerationProperty()»«attr.type.name».«ENDIF»«attr.initValue()»;
 	                    «ELSE»
-                            «attr.name» = null;
+                            «IF attr.isSoftLink()»
+                                «attr.getSoftLinkPropertyName()» = null;
+                            «ELSE»
+                                «attr.name» = null;
+                            «ENDIF»
 	                    «ENDIF»
 					«ENDIF»
 				«ENDIF»
@@ -383,7 +388,7 @@
 				«IF attr.isMultivalued() && attr.association != null»
 					«REM»Only in case of collections we have to initilize them.«ENDREM»
                     «IF attr.isSoftLink()»
-                       «attr.name» = new «attr.getCollectionImplType()»<«((SoftLink)attr).getMultivaluedJavaSoftLinkType()»>();
+                       «attr.getSoftLinkPropertyName()» = new «attr.getCollectionImplType()»<«((SoftLink)attr).getMultivaluedJavaSoftLinkType()»>();
                     «ELSE»
 					   «attr.name» = new «attr.getCollectionImplType()»<«attr.type.fqn()»>();
 					«ENDIF»
@@ -408,14 +413,23 @@
 		«FOREACH this.ownedAttribute.select(e|e.isPropertySuppressed() == false) AS attr»
 			«IF attr.association == null»
 				«IF attr.isStatic == false»
-					«attr.name» = pBuilder.«attr.name»;
+					«IF attr.isSoftLink()»
+					   «attr.getSoftLinkPropertyName()» = pBuilder.«attr.getSoftLinkPropertyName()»;
+					«ELSE»
+					   «attr.name» = pBuilder.«attr.name»;
+					«ENDIF»
 				«ENDIF»
 			«ELSE»
 				«IF attr.isMultivalued()»
 					«IF attr.isStatic == false»
 						«IF attr.belongsToTransientBidirectionalBackReference() == false»
-							if(pBuilder.«attr.name» != null) {
-							«attr.name» = pBuilder.«attr.name»;
+							«IF attr.isSoftLink()»
+	                            if(pBuilder.«attr.getSoftLinkPropertyName()» != null) {
+								   «attr.getSoftLinkPropertyName()» = pBuilder.«attr.getSoftLinkPropertyName()»;
+							«ELSE»
+	                            if(pBuilder.«attr.name» != null) {
+								   «attr.name» = pBuilder.«attr.name»;
+							«ENDIF»
 
                             «IF attr.opposite != null && attr.opposite.isNavigable() == true»
                                // As association is bidirectional we also have to set it in the other direction.
@@ -430,14 +444,14 @@
 							}
 							else {
 	                        «IF attr.isSoftLink()»
-	                          «attr.name» = new «attr.getCollectionImplType()»<«((SoftLink)attr).getMultivaluedJavaSoftLinkType()»>();
+	                          «attr.getSoftLinkPropertyName()» = new «attr.getCollectionImplType()»<«((SoftLink)attr).getMultivaluedJavaSoftLinkType()»>();
 	                        «ELSE»
 	    						«attr.name» = new «attr.getCollectionImplType()»<«attr.type.fqn()»>();
 	    					«ENDIF»
 							}
 						«ELSE»
                             «IF attr.isSoftLink()»
-                              «attr.name» = new «attr.getCollectionImplType()»<«((SoftLink)attr).getMultivaluedJavaSoftLinkType()»>();
+                                «attr.getSoftLinkPropertyName()» = new «attr.getCollectionImplType()»<«((SoftLink)attr).getMultivaluedJavaSoftLinkType()»>();
                             «ELSE»
                                 «attr.name» = new «attr.getCollectionImplType()»<«attr.type.fqn()»>();
                             «ENDIF»
@@ -445,7 +459,11 @@
 					«ENDIF»
 				«ELSE»
 					«IF attr.isStatic == false && attr.belongsToTransientBidirectionalBackReference() == false»
-						«attr.name» = pBuilder.«attr.name»;
+						«IF attr.isSoftLink()»
+						  «attr.getSoftLinkPropertyName()» = pBuilder.«attr.getSoftLinkPropertyName()»;
+						«ELSE»
+						  «attr.name» = pBuilder.«attr.name»;
+						«ENDIF»
                         «IF attr.opposite != null && attr.opposite.isNavigable() == true»
                             if(«attr.name» != null) {
                                // As association is bidirectional we also have to set it in the other direction.

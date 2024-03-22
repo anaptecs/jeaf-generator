@@ -46,7 +46,7 @@ public class SoftLinkPartner {
    * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #theBackLink} is
    * <code>com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkParent</code><br/>
    */
-  private String theBackLink;
+  private String theBackLinkID;
 
   /**
    * <p/>
@@ -54,7 +54,7 @@ public class SoftLinkPartner {
    * <code>com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkChildA</code><br/>
    */
   @JsonSetter(nulls = Nulls.SKIP)
-  private final Set<SoftLinkID> childLinks;
+  private final Set<SoftLinkID> childLinkIDs;
 
   /**
    * <p/>
@@ -62,15 +62,15 @@ public class SoftLinkPartner {
    * <code>com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkChildA</code><br/>
    */
   @JsonSetter(nulls = Nulls.SKIP)
-  private List<Long> longLinks;
+  private List<Long> longLinkIDs;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   protected SoftLinkPartner( ) {
-    childLinks = new HashSet<SoftLinkID>();
-    longLinks = new ArrayList<Long>();
+    childLinkIDs = new HashSet<SoftLinkID>();
+    longLinkIDs = new ArrayList<Long>();
   }
 
   /**
@@ -82,18 +82,18 @@ public class SoftLinkPartner {
     // Ensure that builder is not null.
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
-    theBackLink = pBuilder.theBackLink;
-    if (pBuilder.childLinks != null) {
-      childLinks = pBuilder.childLinks;
+    theBackLinkID = pBuilder.theBackLinkID;
+    if (pBuilder.childLinkIDs != null) {
+      childLinkIDs = pBuilder.childLinkIDs;
     }
     else {
-      childLinks = new HashSet<SoftLinkID>();
+      childLinkIDs = new HashSet<SoftLinkID>();
     }
-    if (pBuilder.longLinks != null) {
-      longLinks = pBuilder.longLinks;
+    if (pBuilder.longLinkIDs != null) {
+      longLinkIDs = pBuilder.longLinkIDs;
     }
     else {
-      longLinks = new ArrayList<Long>();
+      longLinkIDs = new ArrayList<Long>();
     }
   }
 
@@ -114,9 +114,9 @@ public class SoftLinkPartner {
    *
    * @return {@link com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkPartner}
    */
-  public static SoftLinkPartner of( List<Long> pLongLinks ) {
+  public static SoftLinkPartner of( List<Long> pLongLinkIDs ) {
     SoftLinkPartner.Builder lBuilder = SoftLinkPartner.builder();
-    lBuilder.setLongLinks(pLongLinks);
+    lBuilder.setLongLinkIDs(pLongLinkIDs);
     return lBuilder.build();
   }
 
@@ -129,21 +129,21 @@ public class SoftLinkPartner {
      * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #theBackLink} is
      * <code>com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkParent</code><br/>
      */
-    private String theBackLink;
+    private String theBackLinkID;
 
     /**
      * <p/>
      * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #childLinks} is
      * <code>com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkChildA</code><br/>
      */
-    private Set<SoftLinkID> childLinks;
+    private Set<SoftLinkID> childLinkIDs;
 
     /**
      * <p/>
      * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #longLinks} is
      * <code>com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkChildA</code><br/>
      */
-    private List<Long> longLinks;
+    private List<Long> longLinkIDs;
 
     /**
      * Use {@link SoftLinkPartner#builder()} instead of private constructor to create new builder.
@@ -157,9 +157,9 @@ public class SoftLinkPartner {
     protected Builder( SoftLinkPartner pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
-        this.setTheBackLink(pObject.theBackLink);
-        this.setChildLinks(pObject.childLinks);
-        this.setLongLinks(pObject.longLinks);
+        this.setTheBackLinkID(pObject.theBackLinkID);
+        this.setChildLinkIDs(pObject.childLinkIDs);
+        this.setLongLinkIDs(pObject.longLinkIDs);
       }
     }
 
@@ -169,8 +169,8 @@ public class SoftLinkPartner {
      * @param pTheBackLink Value to which {@link #theBackLink} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setTheBackLink( String pTheBackLink ) {
-      theBackLink = pTheBackLink;
+    public Builder setTheBackLinkID( String pTheBackLink ) {
+      theBackLinkID = pTheBackLink;
       return this;
     }
 
@@ -180,13 +180,13 @@ public class SoftLinkPartner {
      * @param pChildLinks Collection to which {@link #childLinks} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setChildLinks( Set<SoftLinkID> pChildLinks ) {
+    public Builder setChildLinkIDs( Set<SoftLinkID> pChildLinks ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pChildLinks != null) {
-        childLinks = new HashSet<SoftLinkID>(pChildLinks);
+        childLinkIDs = new HashSet<SoftLinkID>(pChildLinks);
       }
       else {
-        childLinks = null;
+        childLinkIDs = null;
       }
       return this;
     }
@@ -197,13 +197,13 @@ public class SoftLinkPartner {
      * @param pLongLinks Collection to which {@link #longLinks} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setLongLinks( List<Long> pLongLinks ) {
+    public Builder setLongLinkIDs( List<Long> pLongLinks ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pLongLinks != null) {
-        longLinks = new ArrayList<Long>(pLongLinks);
+        longLinkIDs = new ArrayList<Long>(pLongLinks);
       }
       else {
-        longLinks = null;
+        longLinkIDs = null;
       }
       return this;
     }
@@ -240,8 +240,8 @@ public class SoftLinkPartner {
    *
    * @return {@link String} Value to which {@link #theBackLink} is set.
    */
-  public String getTheBackLink( ) {
-    return theBackLink;
+  public String getTheBackLinkID( ) {
+    return theBackLinkID;
   }
 
   /**
@@ -249,15 +249,15 @@ public class SoftLinkPartner {
    *
    * @param pTheBackLink Value to which {@link #theBackLink} should be set.
    */
-  public void setTheBackLink( String pTheBackLink ) {
-    theBackLink = pTheBackLink;
+  public void setTheBackLinkID( String pTheBackLink ) {
+    theBackLinkID = pTheBackLink;
   }
 
   /**
    * Method unsets {@link #theBackLink}.
    */
-  public final void unsetTheBackLink( ) {
-    theBackLink = null;
+  public final void unsetTheBackLinkID( ) {
+    theBackLinkID = null;
   }
 
   /**
@@ -269,9 +269,9 @@ public class SoftLinkPartner {
    * @return {@link Set<SoftLinkID>} Value to which {@link #childLinks} is set. The method never returns null and the
    * returned collection is unmodifiable.
    */
-  public Set<SoftLinkID> getChildLinks( ) {
+  public Set<SoftLinkID> getChildLinkIDs( ) {
     // Return all SoftLinkChildA objects as unmodifiable collection.
-    return Collections.unmodifiableSet(childLinks);
+    return Collections.unmodifiableSet(childLinkIDs);
   }
 
   /**
@@ -283,9 +283,9 @@ public class SoftLinkPartner {
    * @return {@link List<long>} Value to which {@link #longLinks} is set. The method never returns null and the returned
    * collection is unmodifiable.
    */
-  public List<Long> getLongLinks( ) {
+  public List<Long> getLongLinkIDs( ) {
     // Return all SoftLinkChildA objects as unmodifiable collection.
-    return Collections.unmodifiableList(longLinks);
+    return Collections.unmodifiableList(longLinkIDs);
   }
 
   /**
@@ -293,11 +293,11 @@ public class SoftLinkPartner {
    *
    * @param pLongLinks Object that should be added to {@link #longLinks}. The parameter must not be null.
    */
-  public void addToLongLinks( Long pLongLinks ) {
+  public void addToLongLinkIDs( Long pLongLinks ) {
     // Check parameter "pLongLinks" for invalid value null.
     Check.checkInvalidParameterNull(pLongLinks, "pLongLinks");
     // Add passed object to collection of associated SoftLinkChildA objects.
-    longLinks.add(pLongLinks);
+    longLinkIDs.add(pLongLinks);
   }
 
   /**
@@ -306,12 +306,12 @@ public class SoftLinkPartner {
    * @param pLongLinks Collection with all objects that should be added to {@link #longLinks}. The parameter must not be
    * null.
    */
-  public void addToLongLinks( Collection<Long> pLongLinks ) {
+  public void addToLongLinkIDs( Collection<Long> pLongLinks ) {
     // Check parameter "pLongLinks" for invalid value null.
     Check.checkInvalidParameterNull(pLongLinks, "pLongLinks");
     // Add all passed objects.
     for (Long lNextObject : pLongLinks) {
-      this.addToLongLinks(lNextObject);
+      this.addToLongLinkIDs(lNextObject);
     }
   }
 
@@ -320,28 +320,28 @@ public class SoftLinkPartner {
    *
    * @param pLongLinks Object that should be removed from {@link #longLinks}. The parameter must not be null.
    */
-  public void removeFromLongLinks( Long pLongLinks ) {
+  public void removeFromLongLinkIDs( Long pLongLinks ) {
     // Check parameter for invalid value null.
     Check.checkInvalidParameterNull(pLongLinks, "pLongLinks");
     // Remove passed object from collection of associated SoftLinkChildA objects.
-    longLinks.remove(pLongLinks);
+    longLinkIDs.remove(pLongLinks);
   }
 
   /**
    * Method removes all objects from {@link #longLinks}.
    */
-  public void clearLongLinks( ) {
+  public void clearLongLinkIDs( ) {
     // Remove all objects from association "longLinks".
-    longLinks.clear();
+    longLinkIDs.clear();
   }
 
   @Override
   public int hashCode( ) {
     final int lPrime = 31;
     int lResult = 1;
-    lResult = lPrime * lResult + Objects.hashCode(theBackLink);
-    lResult = lPrime * lResult + Objects.hashCode(childLinks);
-    lResult = lPrime * lResult + Objects.hashCode(longLinks);
+    lResult = lPrime * lResult + Objects.hashCode(theBackLinkID);
+    lResult = lPrime * lResult + Objects.hashCode(childLinkIDs);
+    lResult = lPrime * lResult + Objects.hashCode(longLinkIDs);
     return lResult;
   }
 
@@ -359,8 +359,8 @@ public class SoftLinkPartner {
     }
     else {
       SoftLinkPartner lOther = (SoftLinkPartner) pObject;
-      lEquals = Objects.equals(theBackLink, lOther.theBackLink) && Objects.equals(childLinks, lOther.childLinks)
-          && Objects.equals(longLinks, lOther.longLinks);
+      lEquals = Objects.equals(theBackLinkID, lOther.theBackLinkID) && Objects.equals(childLinkIDs, lOther.childLinkIDs)
+          && Objects.equals(longLinkIDs, lOther.longLinkIDs);
     }
     return lEquals;
   }
@@ -378,20 +378,20 @@ public class SoftLinkPartner {
     lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("theBackLink: ");
-    lBuilder.append(theBackLink);
+    lBuilder.append(theBackLinkID);
     lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("childLinks: ");
-    if (childLinks != null) {
-      lBuilder.append(childLinks.size());
+    if (childLinkIDs != null) {
+      lBuilder.append(childLinkIDs.size());
       lBuilder.append(" element(s)");
     }
     else {
       lBuilder.append(" null");
     }
     lBuilder.append(System.lineSeparator());
-    if (childLinks != null) {
-      for (SoftLinkID lNext : childLinks) {
+    if (childLinkIDs != null) {
+      for (SoftLinkID lNext : childLinkIDs) {
         lBuilder.append(pIndent + "    ");
         lBuilder.append(lNext.toString());
         lBuilder.append(System.lineSeparator());
@@ -399,16 +399,16 @@ public class SoftLinkPartner {
     }
     lBuilder.append(pIndent);
     lBuilder.append("longLinks: ");
-    if (longLinks != null) {
-      lBuilder.append(longLinks.size());
+    if (longLinkIDs != null) {
+      lBuilder.append(longLinkIDs.size());
       lBuilder.append(" element(s)");
     }
     else {
       lBuilder.append(" null");
     }
     lBuilder.append(System.lineSeparator());
-    if (longLinks != null) {
-      for (Long lNext : longLinks) {
+    if (longLinkIDs != null) {
+      for (Long lNext : longLinkIDs) {
         lBuilder.append(pIndent + "    ");
         lBuilder.append(lNext.toString());
         lBuilder.append(System.lineSeparator());

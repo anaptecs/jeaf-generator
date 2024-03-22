@@ -53,10 +53,10 @@ public class SoftLinkChildA extends SoftLinkParent {
    *
    * @return {@link com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkChildA}
    */
-  public static SoftLinkChildA of( Set<SoftLinkID> pPartners, SoftLinkID pThePartner ) {
+  public static SoftLinkChildA of( Set<SoftLinkID> pPartnerIDs, SoftLinkID pThePartnerID ) {
     SoftLinkChildA.Builder lBuilder = SoftLinkChildA.builder();
-    lBuilder.setPartners(pPartners);
-    lBuilder.setThePartner(pThePartner);
+    lBuilder.setPartnerIDs(pPartnerIDs);
+    lBuilder.setThePartnerID(pThePartnerID);
     return lBuilder.build();
   }
 
@@ -85,9 +85,9 @@ public class SoftLinkChildA extends SoftLinkParent {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
-    public Builder setPartners( Set<SoftLinkID> pPartners ) {
+    public Builder setPartnerIDs( Set<SoftLinkID> pPartners ) {
       // Call super class implementation.
-      super.setPartners(pPartners);
+      super.setPartnerIDs(pPartners);
       return this;
     }
 
@@ -98,9 +98,9 @@ public class SoftLinkChildA extends SoftLinkParent {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
-    public Builder setThePartner( SoftLinkID pThePartner ) {
+    public Builder setThePartnerID( SoftLinkID pThePartner ) {
       // Call super class implementation.
-      super.setThePartner(pThePartner);
+      super.setThePartnerID(pThePartner);
       return this;
     }
 
@@ -111,9 +111,9 @@ public class SoftLinkChildA extends SoftLinkParent {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
-    public Builder setReadonlyPartner( SoftLinkID pReadonlyPartner ) {
+    public Builder setReadonlyPartnerID( SoftLinkID pReadonlyPartner ) {
       // Call super class implementation.
-      super.setReadonlyPartner(pReadonlyPartner);
+      super.setReadonlyPartnerID(pReadonlyPartner);
       return this;
     }
 

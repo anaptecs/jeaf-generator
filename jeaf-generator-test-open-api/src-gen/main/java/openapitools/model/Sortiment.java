@@ -36,7 +36,7 @@ import openapitools.JSON;
   Sortiment.JSON_PROPERTY_PRODUCTS,
   Sortiment.JSON_PROPERTY_VALUE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.4.0")
 public class Sortiment {
   public static final String JSON_PROPERTY_PRODUCTS = "products";
   private List<Product> products;

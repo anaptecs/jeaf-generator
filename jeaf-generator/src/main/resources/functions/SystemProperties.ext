@@ -1,6 +1,10 @@
 
 
-private cached String getSystemProperty(String propertyName, String defaultValue):
+cached String getSystemProperty(String propertyName):
+   JAVA java.lang.System.getProperty(java.lang.String);
+
+
+cached String getSystemProperty(String propertyName, String defaultValue):
    JAVA java.lang.System.getProperty(java.lang.String, java.lang.String);
 
 

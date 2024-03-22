@@ -36,7 +36,7 @@ import openapitools.JSON;
   Channel.JSON_PROPERTY_CODE,
   Channel.JSON_PROPERTY_SELF_SERVICE_CHANNEL
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.4.0")
 public class Channel {
   public static final String JSON_PROPERTY_CHANNEL_TYPE = "channelType";
   private ChannelType channelType = ChannelType.MOBILE;
