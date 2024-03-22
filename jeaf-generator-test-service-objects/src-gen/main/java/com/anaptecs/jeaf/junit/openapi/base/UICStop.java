@@ -115,12 +115,12 @@ public class UICStop extends Stop {
    *
    * @return {@link com.anaptecs.jeaf.junit.openapi.base.UICStop}
    */
-  public static UICStop of( String pName, byte pIndex, SoftLink pTheSoftLink, String pUicCode, int pPriority,
+  public static UICStop of( String pName, byte pIndex, SoftLink pTheSoftLinkLink, String pUicCode, int pPriority,
       long pCode, byte pIndex2 ) {
     UICStop.Builder lBuilder = UICStop.builder();
     lBuilder.setName(pName);
     lBuilder.setIndex(pIndex);
-    lBuilder.setTheSoftLink(pTheSoftLink);
+    lBuilder.setTheSoftLinkLink(pTheSoftLinkLink);
     lBuilder.setUicCode(pUicCode);
     lBuilder.setPriority(pPriority);
     lBuilder.setCode(pCode);
@@ -225,9 +225,9 @@ public class UICStop extends Stop {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Override
-    public Builder setTheSoftLink( SoftLink pTheSoftLink ) {
+    public Builder setTheSoftLinkLink( SoftLink pTheSoftLink ) {
       // Call super class implementation.
-      super.setTheSoftLink(pTheSoftLink);
+      super.setTheSoftLinkLink(pTheSoftLink);
       return this;
     }
 

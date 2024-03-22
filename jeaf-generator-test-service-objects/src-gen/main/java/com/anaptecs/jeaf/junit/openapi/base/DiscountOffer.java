@@ -34,14 +34,14 @@ public class DiscountOffer implements ServiceObject {
    * <code>com.anaptecs.jeaf.junit.openapi.base.Campaign</code><br/>
    */
   @Deprecated
-  private Set<SoftLink> campaigns;
+  private Set<SoftLink> campaignLinks;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   protected DiscountOffer( ) {
-    campaigns = new HashSet<SoftLink>();
+    campaignLinks = new HashSet<SoftLink>();
   }
 
   /**
@@ -53,11 +53,11 @@ public class DiscountOffer implements ServiceObject {
     // Ensure that builder is not null.
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
-    if (pBuilder.campaigns != null) {
-      campaigns = pBuilder.campaigns;
+    if (pBuilder.campaignLinks != null) {
+      campaignLinks = pBuilder.campaignLinks;
     }
     else {
-      campaigns = new HashSet<SoftLink>();
+      campaignLinks = new HashSet<SoftLink>();
     }
   }
 
@@ -91,7 +91,7 @@ public class DiscountOffer implements ServiceObject {
      * <code>com.anaptecs.jeaf.junit.openapi.base.Campaign</code><br/>
      */
     @Deprecated
-    private Set<SoftLink> campaigns;
+    private Set<SoftLink> campaignLinks;
 
     /**
      * Use {@link DiscountOffer#builder()} instead of private constructor to create new builder.
@@ -105,7 +105,7 @@ public class DiscountOffer implements ServiceObject {
     protected Builder( DiscountOffer pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
-        this.setCampaigns(pObject.campaigns);
+        this.setCampaignLinks(pObject.campaignLinks);
       }
     }
 
@@ -116,13 +116,13 @@ public class DiscountOffer implements ServiceObject {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
-    public Builder setCampaigns( Set<SoftLink> pCampaigns ) {
+    public Builder setCampaignLinks( Set<SoftLink> pCampaigns ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pCampaigns != null) {
-        campaigns = new HashSet<SoftLink>(pCampaigns);
+        campaignLinks = new HashSet<SoftLink>(pCampaigns);
       }
       else {
-        campaigns = null;
+        campaignLinks = null;
       }
       return this;
     }
@@ -163,9 +163,9 @@ public class DiscountOffer implements ServiceObject {
    * returned collection is unmodifiable.
    */
   @Deprecated
-  public Set<SoftLink> getCampaigns( ) {
+  public Set<SoftLink> getCampaignLinks( ) {
     // Return all Campaign objects as unmodifiable collection.
-    return Collections.unmodifiableSet(campaigns);
+    return Collections.unmodifiableSet(campaignLinks);
   }
 
   /**
@@ -174,11 +174,11 @@ public class DiscountOffer implements ServiceObject {
    * @param pCampaigns Object that should be added to {@link #campaigns}. The parameter must not be null.
    */
   @Deprecated
-  public void addToCampaigns( SoftLink pCampaigns ) {
+  public void addToCampaignLinks( SoftLink pCampaigns ) {
     // Check parameter "pCampaigns" for invalid value null.
     Check.checkInvalidParameterNull(pCampaigns, "pCampaigns");
     // Add passed object to collection of associated Campaign objects.
-    campaigns.add(pCampaigns);
+    campaignLinks.add(pCampaigns);
   }
 
   /**
@@ -188,12 +188,12 @@ public class DiscountOffer implements ServiceObject {
    * null.
    */
   @Deprecated
-  public void addToCampaigns( Collection<SoftLink> pCampaigns ) {
+  public void addToCampaignLinks( Collection<SoftLink> pCampaigns ) {
     // Check parameter "pCampaigns" for invalid value null.
     Check.checkInvalidParameterNull(pCampaigns, "pCampaigns");
     // Add all passed objects.
     for (SoftLink lNextObject : pCampaigns) {
-      this.addToCampaigns(lNextObject);
+      this.addToCampaignLinks(lNextObject);
     }
   }
 
@@ -203,20 +203,20 @@ public class DiscountOffer implements ServiceObject {
    * @param pCampaigns Object that should be removed from {@link #campaigns}. The parameter must not be null.
    */
   @Deprecated
-  public void removeFromCampaigns( SoftLink pCampaigns ) {
+  public void removeFromCampaignLinks( SoftLink pCampaigns ) {
     // Check parameter for invalid value null.
     Check.checkInvalidParameterNull(pCampaigns, "pCampaigns");
     // Remove passed object from collection of associated Campaign objects.
-    campaigns.remove(pCampaigns);
+    campaignLinks.remove(pCampaigns);
   }
 
   /**
    * Method removes all objects from {@link #campaigns}.
    */
   @Deprecated
-  public void clearCampaigns( ) {
+  public void clearCampaignLinks( ) {
     // Remove all objects from association "campaigns".
-    campaigns.clear();
+    campaignLinks.clear();
   }
 
   /**

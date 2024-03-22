@@ -398,14 +398,23 @@
 		«FOREACH this.ownedAttribute.select(e|e.isPropertySuppressed() == false) AS attr»
 			«IF attr.association == null»
 				«IF attr.isStatic == false»
-					«attr.name» = pBuilder.«attr.name»;
+                    «IF attr.isSoftLink()»
+                       «attr.getSoftLinkPropertyName()» = pBuilder.«attr.getSoftLinkPropertyName()»;
+                    «ELSE»
+                       «attr.name» = pBuilder.«attr.name»;
+                    «ENDIF»
 				«ENDIF»
 			«ELSE»
 				«IF attr.isMultivalued()»
 					«IF attr.isStatic == false»
 						«IF attr.belongsToTransientBidirectionalBackReference() == false»
-							if(pBuilder.«attr.name» != null) {
-							«attr.name» = pBuilder.«attr.name»;
+                            «IF attr.isSoftLink()»
+                                if(pBuilder.«attr.getSoftLinkPropertyName()» != null) {
+                                   «attr.getSoftLinkPropertyName()» = pBuilder.«attr.getSoftLinkPropertyName()»;
+                            «ELSE»
+                                if(pBuilder.«attr.name» != null) {
+                                   «attr.name» = pBuilder.«attr.name»;
+                            «ENDIF»
 
 	                        «IF attr.opposite != null && attr.opposite.isNavigable() == true»
 	                           // As association is bidirectional we also have to set it in the other direction.
@@ -435,7 +444,11 @@
 					«ENDIF»
 				«ELSE»
 					«IF attr.isStatic == false && attr.belongsToTransientBidirectionalBackReference() == false»
-						«attr.name» = pBuilder.«attr.name»;
+                        «IF attr.isSoftLink()»
+                          «attr.getSoftLinkPropertyName()» = pBuilder.«attr.getSoftLinkPropertyName()»;
+                        «ELSE»
+                          «attr.name» = pBuilder.«attr.name»;
+                        «ENDIF»
 						«IF attr.opposite != null && attr.opposite.isNavigable() == true»
 	                        if(«attr.name» != null) {
 	                           // As association is bidirectional we also have to set it in the other direction.

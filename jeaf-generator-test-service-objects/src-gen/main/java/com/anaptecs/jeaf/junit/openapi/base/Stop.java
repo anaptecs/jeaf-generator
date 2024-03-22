@@ -58,7 +58,7 @@ public class Stop implements ServiceObject {
    * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #theSoftLink} is
    * <code>LinkObject</code><br/>
    */
-  private SoftLink theSoftLink;
+  private SoftLink theSoftLinkLink;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
@@ -85,7 +85,7 @@ public class Stop implements ServiceObject {
       links = new ArrayList<LinkObject>();
     }
     index = pBuilder.index;
-    theSoftLink = pBuilder.theSoftLink;
+    theSoftLinkLink = pBuilder.theSoftLinkLink;
   }
 
   /**
@@ -109,11 +109,11 @@ public class Stop implements ServiceObject {
    *
    * @return {@link com.anaptecs.jeaf.junit.openapi.base.Stop}
    */
-  public static Stop of( String pName, byte pIndex, SoftLink pTheSoftLink ) {
+  public static Stop of( String pName, byte pIndex, SoftLink pTheSoftLinkLink ) {
     Stop.Builder lBuilder = Stop.builder();
     lBuilder.setName(pName);
     lBuilder.setIndex(pIndex);
-    lBuilder.setTheSoftLink(pTheSoftLink);
+    lBuilder.setTheSoftLinkLink(pTheSoftLinkLink);
     return lBuilder.build();
   }
 
@@ -134,7 +134,7 @@ public class Stop implements ServiceObject {
      * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #theSoftLink} is
      * <code>LinkObject</code><br/>
      */
-    private SoftLink theSoftLink;
+    private SoftLink theSoftLinkLink;
 
     /**
      * Use {@link Stop#builder()} instead of private constructor to create new builder.
@@ -151,7 +151,7 @@ public class Stop implements ServiceObject {
         this.setName(pObject.name);
         this.setLinks(pObject.links);
         this.setIndex(pObject.index);
-        this.setTheSoftLink(pObject.theSoftLink);
+        this.setTheSoftLinkLink(pObject.theSoftLinkLink);
       }
     }
 
@@ -218,8 +218,8 @@ public class Stop implements ServiceObject {
      * @param pTheSoftLink Value to which {@link #theSoftLink} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setTheSoftLink( SoftLink pTheSoftLink ) {
-      theSoftLink = pTheSoftLink;
+    public Builder setTheSoftLinkLink( SoftLink pTheSoftLink ) {
+      theSoftLinkLink = pTheSoftLink;
       return this;
     }
 
@@ -351,8 +351,8 @@ public class Stop implements ServiceObject {
    *
    * @return {@link SoftLink} Value to which {@link #theSoftLink} is set.
    */
-  public SoftLink getTheSoftLink( ) {
-    return theSoftLink;
+  public SoftLink getTheSoftLinkLink( ) {
+    return theSoftLinkLink;
   }
 
   /**
@@ -360,15 +360,15 @@ public class Stop implements ServiceObject {
    *
    * @param pTheSoftLink Value to which {@link #theSoftLink} should be set.
    */
-  public void setTheSoftLink( SoftLink pTheSoftLink ) {
-    theSoftLink = pTheSoftLink;
+  public void setTheSoftLinkLink( SoftLink pTheSoftLink ) {
+    theSoftLinkLink = pTheSoftLink;
   }
 
   /**
    * Method unsets {@link #theSoftLink}.
    */
-  public final void unsetTheSoftLink( ) {
-    theSoftLink = null;
+  public final void unsetTheSoftLinkLink( ) {
+    theSoftLinkLink = null;
   }
 
   /**
