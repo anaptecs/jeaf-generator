@@ -14,7 +14,7 @@ This repository contains the source code for JEAF Generator. JEAF Generator can 
 For further information please refer to our documentation:
 
 * [JEAF Generator](https://www.jeaf-generator.io/)
-* [UML Modeling Guide](https://www.jeaf-generator.io/uml-modeling-guide/)
+* [UML Modeling Guide](docs/uml-modeling-guide.md)
 * [Developer Guide](https://www.jeaf-generator.io/developer-guide/)
 * [Quickstart Guide](https://www.jeaf-generator.io/developer-guide/quickstart/)
 * [Releases](https://github.com/anaptecs/jeaf-generator/releases)
