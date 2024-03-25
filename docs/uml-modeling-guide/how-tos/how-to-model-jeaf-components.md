@@ -1,10 +1,3 @@
----
-title: "UML Modeling Guide"
-subtitle: "How to model Activities"
-toc_title: " "
-menubar: how_to_menu
----
-
 # How to model JEAF Components
 
 ## Components

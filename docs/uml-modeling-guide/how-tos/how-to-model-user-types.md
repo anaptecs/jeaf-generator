@@ -1,10 +1,3 @@
----
-title: "UML Modeling Guide"
-subtitle: "How to model User Types"
-toc_title: " "
-menubar: how_to_menu
----
-
 # How to model User Types
 
 User Types are used to simplify UML modeling when the same kind of data is used in several areas. In this case of course it possible to extract the information into an independent domain object. But in many cases the data we are talking about is not really a domain object. A very good example therefore might be a period (having a start and end date). From a business perspective this is a complex data type but not a domain object. In this case we can make use of user types.

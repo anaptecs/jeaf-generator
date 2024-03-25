@@ -1,10 +1,3 @@
----
-title: "UML Modeling Guide"
-subtitle: "How to model Activities"
-toc_title: " "
-menubar: how_to_menu
----
-
 # How to model Activities
 
 Components use activities to implement non-trivial functionality of the services they offer. Activities are used to structure the internal dynamic aspects of a component and help to achieve a better testability.

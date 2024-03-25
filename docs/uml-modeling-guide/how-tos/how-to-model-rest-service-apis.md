@@ -1,10 +1,3 @@
----
-title: "UML Modeling Guide"
-subtitle: "How to model (REST) Services APIs"
-toc_title: " "
-menubar: how_to_menu
----
-
 # How to model (REST) Services APIs
 
 ## How to model Service Interfaces

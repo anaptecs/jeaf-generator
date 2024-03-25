@@ -1,10 +1,3 @@
----
-title: "UML Modeling Guide"
-subtitle: "How to model Security Roles"
-toc_title: " "
-menubar: how_to_menu
----
-
 # How to model Security Roles
 
 [JEAF Security](https://anaptecs.atlassian.net/wiki/spaces/JEAF/pages/546210729 "https://anaptecs.atlassian.net/wiki/spaces/JEAF/pages/546210729") provides a role based mechanism to ensure proper authorization for 

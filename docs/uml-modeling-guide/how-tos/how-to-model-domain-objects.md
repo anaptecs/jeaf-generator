@@ -1,10 +1,3 @@
----
-title: "UML Modeling Guide"
-subtitle: "How to model Domain Objects"
-toc_title: " "
-menubar: how_to_menu
----
-
 # How to model Domain Objects
 
 Domain objects (stereotype `«DomainObject»`) are used to define the internal structure of a component. Domain objects are intended to be used to represent the domain model of a component when it does not need persistence or if a strict separation 

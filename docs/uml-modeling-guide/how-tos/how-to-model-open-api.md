@@ -1,10 +1,3 @@
----
-title: "UML Modeling Guide"
-subtitle: "How to publish REST Services as OpenAPI 3 specification"
-toc_title: " "
-menubar: how_to_menu
----
-
 # How to publish REST Services as OpenAPI 3 specification
 
 When you want to publish your REST services also using OpenAPI 3 specification standard then this can be done very simple. Only a small amount of additional information inside the UML model is required and then JEAF Generator can generate a complete OpenAPI 3 specification of your services.

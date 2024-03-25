@@ -1,10 +1,3 @@
----
-title: "UML Modeling Guide"
-subtitle: "How to model POJOs"
-toc_title: " "
-menubar: how_to_menu
----
-
 # How to model POJOs
 
 Stereotype `«POJO»` can be used to model a POJO (Plain old Java object). It depends on your individual programming model what POJOs will be used for.

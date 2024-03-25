@@ -1,10 +1,3 @@
----
-title: "UML Modeling Guide"
-subtitle: "How to model Persistence Units"
-toc_title: " "
-menubar: how_to_menu
----
-
 # How to model Persistence Units
 
 Java Persistence API (JPA) defines so called persistence units. They are used to put a bunch of persistence objects together. All persistent classes within the same persistence unit share the same database connection and transaction.

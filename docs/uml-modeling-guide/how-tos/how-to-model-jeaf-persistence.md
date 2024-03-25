@@ -1,10 +1,3 @@
----
-title: "UML Modeling Guide"
-subtitle: "How to model Persistent Classes"
-toc_title: " "
-menubar: how_to_menu
----
-
 # How to model Persistent Classes
 
 Persistent objects are a fundamental part of many applications. They define the domain model of a component and thus define its data structure. Persistent objects are stored in a relational database using Java Persistence API (JPA). As all required information for the object-relational-mapping are already defined in the UML model 
