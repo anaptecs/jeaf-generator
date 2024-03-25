@@ -3,9 +3,9 @@ Stereotype `«BeanParam»` is used to mark a class or parameter as so called bea
 
 This has mainly two benefits:
 
-- Instead of defining the same set of parameters for every REST operation over and over again you can just use the bean parameter instead. This is a great help to keep the parameters of your REST services consistent among all operations.
+* Instead of defining the same set of parameters for every REST operation over and over again you can just use the bean parameter instead. This is a great help to keep the parameters of your REST services consistent among all operations.
 
-- When it comes to code generation for Java service interfaces the bean parameter class is used as parameter of the operation instead of the individual parameters. This helps to have clearer interfaces and also ensure a better maintainability
+* When it comes to code generation for Java service interfaces the bean parameter class is used as parameter of the operation instead of the individual parameters. This helps to have clearer interfaces and also ensure a better maintainability
 
 Stereotype `«BeanParam»` on classes makes only sense when at least one of the attributes of the class is marked as REST parameter (stereotypes `«PathParam»`, `«HeaderParam»`, `«QueryParam»`, `«CookieParam»`)
 
@@ -22,6 +22,7 @@ Stereotype `«BeanParam»` on classes makes only sense when at least one of the 
 <br>
 
 For further information please refer to:
+
 * [«REST Resource»](/uml-modeling-guide/jmm/RESTResource)
 * [«REST Operation»](/uml-modeling-guide/jmm/RESTOperation)
 * [How to model REST Services](/uml-modeling-guide/how-tos/how-to-model-rest-service-apis)
