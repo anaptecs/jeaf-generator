@@ -1,10 +1,3 @@
----
-title: "Developer Guide"
-subtitle: "Generating Code for Object Mappings"
-toc: false
-menubar: developer_guide_menu
----
-
 ## Generating Code for Object Mappings
 
 JEAF Generator offers the possibility to free developers from error-prawn and boring job of mapping objects from one into another. To do so, a so called object mapping can be defined in the UML model by defining dependencies between attributes using stereotype `«ObjectMapping»`. Object mappings distinguish between creating, updating and reading of objects.<br>

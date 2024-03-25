@@ -1,10 +1,3 @@
----
-title: "Developer Guide"
-subtitle: "Generating Code for POJOs"
-toc: false
-menubar: developer_guide_menu
----
-
 # Generating Code for POJOs
 
 Stereotype `«POJO»` can be used to model a POJO (Plain old Java object). It depends on your individual programming model what POJOs will be used for.

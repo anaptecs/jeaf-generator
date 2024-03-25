@@ -1,10 +1,3 @@
----
-title: "Developer Guide"
-subtitle: "Integrate JEAF Generator into Maven Build"
-toc: true
-menubar: developer_guide_menu
----
-
 # Integrate JEAF Generator into Maven Build
 
 JEAF Generator is provided as Maven Plugin and thus can be easily integrated into your build process. This side will describe how to do that.

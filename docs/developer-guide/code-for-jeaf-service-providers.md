@@ -1,10 +1,3 @@
----
-title: "Developer Guide"
-subtitle: "Generating Code for JEAF Service Providers"
-toc: false
-menubar: developer_guide_menu
----
-
 ## Generating Code for JEAF Service Providers
 
 In addition to services and components JEAF also offers an additional mechanism to support technical services, so called Service Providers.

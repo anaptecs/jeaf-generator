@@ -1,10 +1,3 @@
----
-title: "Developer Guide"
-subtitle: "Generating Code for JEAF Activities"
-toc: false
-menubar: developer_guide_menu
----
-
 # Generating Code for JEAF Activities
 
 Activities are used to structure the internal dynamic aspects of a component and help to achieve a better testability.

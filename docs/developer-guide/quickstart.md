@@ -1,10 +1,3 @@
----
-title: "Developer Guide"
-subtitle: "Quickstart"
-toc: true
-menubar: developer_guide_menu
----
-
 ## Preconditions
 
 Please ensure, before you jump into the sample code, that you are familiar with the model driven development process in general. You will find further information about that on the following sides:<br>

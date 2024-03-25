@@ -1,10 +1,3 @@
----
-title: "Developer Guide"
-subtitle: "Generating Code for JEAF Services"
-toc: true
-menubar: developer_guide_menu
----
-
 # Generating Code for JEAF Services
 
 The diagram below shows the transformation of services, service objects, query objects and load strategy objects from the UML model into Java code.

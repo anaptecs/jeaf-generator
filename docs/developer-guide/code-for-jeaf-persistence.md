@@ -1,10 +1,3 @@
----
-title: "Developer Guide"
-subtitle: "Generating Code for JEAF Persistence"
-toc: false
-menubar: developer_guide_menu
----
-
 ## Generating Code for JEAF Persistence
 
 Diagram below illustrates the transformation of persistent classes from the UML model (stereotype [«PersistentObject»](https://anaptecs.atlassian.net/wiki/spaces/JEAF/pages/516849793 "/wiki/spaces/JEAF/pages/516849793")) into the corresponding Java code and resources.

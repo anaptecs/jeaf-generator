@@ -1,10 +1,3 @@
----
-title: "Developer Guide"
-subtitle: "Generating Code for JEAF Components"
-toc: false
-menubar: developer_guide_menu
----
-
 # Generating Code for JEAF Components
 
 Components are self-contained, reusable pieces of software. They provide their functionality as services. JEAF Generator is able to use information about components from a UML Model and generate code for JEAF as a target platform.

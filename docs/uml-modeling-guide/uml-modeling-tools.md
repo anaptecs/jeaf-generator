@@ -1,11 +1,3 @@
----
-title: "UML Modeling Guide"
-subtitle: "UML Modeling Tools"
-toc_title: " "
-toc: false
-menubar: uml_modeling_guide_menu
----
-
 # UML Modeling Tools
 
 Unfortunately many so called UML Modeling Tools are just better tools for painting, but not sufficient to create real UML models. Sadly even tools like Enterprise Architect that are widely used, do not have full support for the UML meta model.

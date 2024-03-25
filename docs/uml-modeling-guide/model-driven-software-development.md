@@ -1,10 +1,3 @@
----
-title: "UML Modeling Guide"
-subtitle: "Model Driven Software Development"
-toc_title: " "
-menubar: uml_modeling_guide_menu
----
-
 # Model Driven Software Development
 
 This part of the modeling guide will shortly describe the basic ideas 

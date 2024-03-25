@@ -1,10 +1,3 @@
----
-title: "UML Modeling Guide"
-subtitle: "Modeling How-Tos"
-toc_title: " "
-menubar: how_to_menu
----
-
 # Modeling How-Tos
 
 This section describes how to define UML models in combination with JEAF Generator. In general there is no big difference to conventional UML models. However, due to the model driven approach, for some elements of the UML model it is required to add additional information. Therefore JEAF Generator defines a set of stereotypes that must be used to add required information to your model.

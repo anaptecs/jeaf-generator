@@ -1,10 +1,3 @@
----
-title: "UML Modeling Guide"
-subtitle: "JEAF Generator Meta Model"
-toc: false
-menubar: jmm_menu
----
-
 # JEAF Generator Meta Model
 
 ## Extension of UML Standard Meta Model

@@ -1,10 +1,3 @@
----
-title: "Developer Guide"
-subtitle: "Maven Plugin Configuration"
-toc: true
-menubar: developer_guide_menu
----
-
 # Maven Plugin Configuration
 
 The following tables describe all possible configuration parameters of the 

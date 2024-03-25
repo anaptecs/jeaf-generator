@@ -1,10 +1,3 @@
----
-title: "Developer Guide"
-subtitle: "Generating Code for JEAF Security"
-toc: false
-menubar: developer_guide_menu
----
-
 ## Generating Code for JEAF Security
 
 As described in [How to model Security Roles](/uml-modeling-guide/how-tos/how-to-model-security-roles) JEAF Generator supports to define roles and authorizations based on the UML model.
