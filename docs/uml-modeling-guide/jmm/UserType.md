@@ -1,10 +1,3 @@
----
-title: "UML Modeling Guide"
-subtitle: "Stereotype «UserType»"
-toc: false
-menubar: jmm_menu
----
-
 # Stereotype `«UserType»`
 Stereotype `«UserType»` is used to model custom types that have a special mapping to database. They are used to simplify modeling and implementation and also lead to more meaningful UML models as models better represent the business perspective.
 

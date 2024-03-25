@@ -1,10 +1,3 @@
----
-title: "UML Modeling Guide"
-subtitle: "Stereotype «OpenAPISpecReference»"
-toc: false
-menubar: jmm_menu
----
-
 # Stereotype `«OpenAPISpecReference»`
 When creating an OpenAPI specification there might come up situations where you rather want to publish multiple smaller specification artifacts then one larger one. 
 

@@ -1,10 +1,3 @@
----
-title: "UML Modeling Guide"
-subtitle: "Stereotype «OpenAPIEnumeration»"
-toc: false
-menubar: jmm_menu
----
-
 # Stereotype `«OpenAPIEnumeration»`
 Stereotype `«OpenAPIEnumeration»` can be used to mark an enumeration as OpenAPI data type.
 

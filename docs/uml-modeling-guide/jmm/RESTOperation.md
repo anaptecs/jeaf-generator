@@ -1,10 +1,3 @@
----
-title: "UML Modeling Guide"
-subtitle: "Stereotype «RESTOperation»"
-toc: false
-menubar: jmm_menu
----
-
 # Stereotype `«RESTOperation»`
 Stereotype `«RESTOperation»` is used to mark that an operation of a service should also be accessible via REST. 
 

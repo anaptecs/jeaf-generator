@@ -1,10 +1,3 @@
----
-title: "UML Modeling Guide"
-subtitle: "Stereotype «OpenAPITag»"
-toc: false
-menubar: jmm_menu
----
-
 # Stereotype `«OpenAPITag»`
 OpenAPI supports to group REST resource by tags. Using stereotype `«OpenAPITag»` you can define such tags.
 

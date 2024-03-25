@@ -1,10 +1,3 @@
----
-title: "UML Modeling Guide"
-subtitle: "Stereotype «CookieParam»"
-toc: false
-menubar: jmm_menu
----
-
 # Stereotype `«CookieParam»`
 Stereotype `«CookieParam»` can be used to mark a REST request parameter to be passed via a cookie. 
 

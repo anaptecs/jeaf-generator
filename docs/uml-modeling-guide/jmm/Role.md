@@ -1,10 +1,3 @@
----
-title: "UML Modeling Guide"
-subtitle: "Stereotype «Role»"
-toc: false
-menubar: jmm_menu
----
-
 # Stereotype `«Role»`
 Stereotype `«Role»` can be used to map associations between two persistent objects to a relational database. The stereotype can be applied on the ends of an association and it is required that the classes on both association ends have assigned stereotype `«Persistent Object»`. 
 

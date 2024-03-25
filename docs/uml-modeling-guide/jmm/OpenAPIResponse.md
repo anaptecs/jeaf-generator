@@ -1,10 +1,3 @@
----
-title: "UML Modeling Guide"
-subtitle: "Stereotype «OpenAPIResponse»"
-toc: false
-menubar: jmm_menu
----
-
 # Stereotype `«OpenAPIResponse»`
 Stereotype `«OpenAPIResponse»` can be used to define error responses.
 

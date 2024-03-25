@@ -1,10 +1,3 @@
----
-title: "UML Modeling Guide"
-subtitle: "Stereotype «OAuthScope»"
-toc: false
-menubar: jmm_menu
----
-
 # Stereotype `«OAuthScope»`
 Stereotype `«OAuthScope»` is used to define the scopes of a OAuth flow.
 

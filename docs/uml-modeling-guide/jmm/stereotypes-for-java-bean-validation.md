@@ -1,10 +1,3 @@
----
-title: "UML Modeling Guide"
-subtitle: "Stereotypes for Java Bean Validation «Alias»"
-toc: false
-menubar: jmm_menu
----
-
 # Stereotypes for Java Bean Validation (JSR 380)
 
 JEAF Generator also support of [Java Bean Validation (JSR-380)](https://beanvalidation.org/2.0-jsr380/ "https://beanvalidation.org/2.0-jsr380/"). This means that for every constraint of defined by Java Bean validation there also is a matching stereotype that can be used in UML model.

@@ -1,10 +1,3 @@
----
-title: "UML Modeling Guide"
-subtitle: "Stereotype «DomainObject»"
-toc: false
-menubar: jmm_menu
----
-
 # Stereotype `«DomainObject»`
 Stereotype `«DomainObject»` is used to model domain objects. Domain objects can be used to build up the internal structures of a component. Domain objects are intended to be used to represent the domain model of a component when it does not need persistence or if a strict separation between persistence and domain objects is expected.
 

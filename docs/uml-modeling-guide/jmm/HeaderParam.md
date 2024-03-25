@@ -1,10 +1,3 @@
----
-title: "UML Modeling Guide"
-subtitle: "Stereotype «HeaderParam»"
-toc: false
-menubar: jmm_menu
----
-
 # Stereotype `«HeaderParam»`
 Stereotype `«HeaderParam»` is used to mark that a parameter of a REST operation should be taken from the http header. Please be aware that the stereotype can only be applied on an operation of an interface that is marked as `«RESTResource»` and the operation is marked as `«RESTOperation»`.
 

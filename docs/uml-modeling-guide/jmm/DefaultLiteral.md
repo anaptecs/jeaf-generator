@@ -1,10 +1,3 @@
----
-title: "UML Modeling Guide"
-subtitle: "Stereotype «DefaultLiteral»"
-toc: false
-menubar: jmm_menu
----
-
 # Stereotype `«DefaultLiteral»`
 Stereotype `«DefaultLiteral»` can be used to define which literal of an enumeration is the default one if none is provided. 
 

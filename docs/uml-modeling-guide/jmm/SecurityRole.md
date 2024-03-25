@@ -1,10 +1,3 @@
----
-title: "UML Modeling Guide"
-subtitle: "Stereotype «SecurityRole»"
-toc: false
-menubar: jmm_menu
----
-
 # Stereotype `«SecurityRole»`
 According to [JEAF Security](https://anaptecs.atlassian.net/wiki/spaces/JEAF/pages/546210729) the authorization to call a specific method of a service will be grouped to roles for better maintainability. JEAF Generator support to defines roles already in the UML model. 
 

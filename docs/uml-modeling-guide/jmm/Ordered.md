@@ -1,10 +1,3 @@
----
-title: "UML Modeling Guide"
-subtitle: "Stereotype «Ordered»"
-toc: false
-menubar: jmm_menu
----
-
 # Stereotype `«Ordered»`
 Stereotype `«Ordered»` can be used to define the order of types / operations in an OpenAPI specification. 
 

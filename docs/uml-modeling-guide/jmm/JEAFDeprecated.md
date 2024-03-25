@@ -1,10 +1,3 @@
----
-title: "UML Modeling Guide"
-subtitle: "Stereotype «JEAFDeprecated»"
-toc: false
-menubar: jmm_menu
----
-
 # Stereotype `«JEAFDeprecated»`
 Deprecations are markers that indicate that a specific model element should not be used any longer. To do so, you just have to apply the stereotype `«JEAFDeprecated»` to the model element. This can be anything from a whole class or interface to an parameter of an operation.
 

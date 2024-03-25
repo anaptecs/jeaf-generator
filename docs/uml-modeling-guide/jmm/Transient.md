@@ -1,10 +1,3 @@
----
-title: "UML Modeling Guide"
-subtitle: "Stereotype «Transient»"
-toc: false
-menubar: jmm_menu
----
-
 # Stereotype `«Transient»`
 Using stereotype `«Transient»` it is possible to add keyword transient to generated code.
 

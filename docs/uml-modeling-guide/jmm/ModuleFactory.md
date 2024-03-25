@@ -1,10 +1,3 @@
----
-title: "UML Modeling Guide"
-subtitle: "Stereotype «ModuleFactory»"
-toc: false
-menubar: jmm_menu
----
-
 # Stereotype `«ModuleFactory»`
 Stereotype `«ModuleFactory»` can be used to mark a component in the UML model as Jackson Module Factory. Module factories are used by Jackson to define details like special serializers and deserializers for specific classes.
 

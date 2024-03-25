@@ -1,10 +1,3 @@
----
-title: "UML Modeling Guide"
-subtitle: "Stereotype «TemplateBindingMultiplicity»"
-toc: false
-menubar: jmm_menu
----
-
 # Stereotype `«TemplateBindingMultiplicity»`
 JEAF Generator also supports usage of generic types (called template bindings in UML). 
 

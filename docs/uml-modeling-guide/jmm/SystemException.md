@@ -1,10 +1,3 @@
----
-title: "UML Modeling Guide"
-subtitle: "Stereotype «SystemException»"
-toc: false
-menubar: jmm_menu
----
-
 # Stereotype `«SystemException»`
 Stereotype `«SystemException»` is used to model system exceptions.
 

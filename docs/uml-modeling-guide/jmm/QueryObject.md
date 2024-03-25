@@ -1,10 +1,3 @@
----
-title: "UML Modeling Guide"
-subtitle: "Stereotype «QueryObject»"
-toc: false
-menubar: jmm_menu
----
-
 # Stereotype `«QueryObject»`
 Stereotype `«QueryObject»` can be used to define so called query objects. In opposite to service objects they do not represent business related objects but are used to describe queries that are supported by a service. 
 

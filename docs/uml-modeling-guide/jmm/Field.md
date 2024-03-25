@@ -1,10 +1,3 @@
----
-title: "UML Modeling Guide"
-subtitle: "Stereotype «Field»"
-toc: false
-menubar: jmm_menu
----
-
 # Stereotype `«Field»`
 Stereotype `«Field»` is used to map attributes of persistent objects to a relational database. Due to that, the stereotype can only be applied on classes with stereotype `«Persistent Object»`. Persistence frameworks will map attributes to the database using so called property mapping. This means that for every attribute there will be a row on the database. The mapping between Java and SQL type will be done automatically by default. Using tagged value `sqlType` it is also possible to define a custom mapping.
 

@@ -1,10 +1,3 @@
----
-title: "UML Modeling Guide"
-subtitle: "Stereotype «OpenAPISecurityScheme»"
-toc: false
-menubar: jmm_menu
----
-
 # Stereotype `«OpenAPISecurityScheme»`
 Stereotype `«OpenAPISecurityScheme»` can be used to define the authentication mechanism for servers that are defined in the OpenAPI specification.
 

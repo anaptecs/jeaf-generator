@@ -1,10 +1,3 @@
----
-title: "UML Modeling Guide"
-subtitle: "Stereotype «Alias»"
-toc: false
-menubar: jmm_menu
----
-
 # Stereotype `«Alias»`
 Stereotype `«Alias»` can be used to express that a model element also has an alternative name. This might be helpful in case that there is a renaming of elements. Alternate name might be displayed in model report.
 

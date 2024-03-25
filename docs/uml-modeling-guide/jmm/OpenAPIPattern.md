@@ -1,10 +1,3 @@
----
-title: "UML Modeling Guide"
-subtitle: "Stereotype «OpenAPIPattern»"
-toc: false
-menubar: jmm_menu
----
-
 # Stereotype `«OpenAPIPattern»`
 Stereotype `«OpenAPIPattern»` can be used to define a pattern for the values of a property / parameter.
 

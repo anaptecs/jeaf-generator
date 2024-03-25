@@ -1,10 +1,3 @@
----
-title: "UML Modeling Guide"
-subtitle: "Stereotype «ApplicationException»"
-toc: false
-menubar: jmm_menu
----
-
 # Stereotype `«ApplicationException»`
 Stereotype `«ApplicationException»` is used to model application exceptions.
 

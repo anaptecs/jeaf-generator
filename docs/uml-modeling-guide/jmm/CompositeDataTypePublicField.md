@@ -1,10 +1,3 @@
----
-title: "UML Modeling Guide"
-subtitle: "Stereotype «CompositeDataTypePublicField»"
-toc: false
-menubar: jmm_menu
----
-
 # Stereotype `«CompositeDataTypePublicField»`
 Stereotype `«CompositeDataTypePublicField»` can be used for the name of the public field which acts as public representation of a composite data type.
 

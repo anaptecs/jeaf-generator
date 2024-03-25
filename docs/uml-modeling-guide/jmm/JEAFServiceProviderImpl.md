@@ -1,10 +1,3 @@
----
-title: "UML Modeling Guide"
-subtitle: "Stereotype «JEAFServiceProviderImpl»"
-toc: false
-menubar: jmm_menu
----
-
 # Stereotype `«JEAFServiceProviderImpl»`
 Stereotype `«JEAFServiceProviderImpl»` can be used to mark a class as an implementation of a service provider.
 

@@ -1,10 +1,3 @@
----
-title: "UML Modeling Guide"
-subtitle: "Stereotype «Identifiable»"
-toc: false
-menubar: jmm_menu
----
-
 # Stereotype `«Identifiable»`
 Stereotype «Identifiable» can be used to mark a class to have an ID.
 

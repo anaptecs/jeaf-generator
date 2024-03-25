@@ -1,10 +1,3 @@
----
-title: "UML Modeling Guide"
-subtitle: "Stereotype «OpenAPIDataType»"
-toc: false
-menubar: jmm_menu
----
-
 # Stereotype `«OpenAPIDataType»`
 
 

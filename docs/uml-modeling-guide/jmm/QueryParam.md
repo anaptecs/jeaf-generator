@@ -1,10 +1,3 @@
----
-title: "UML Modeling Guide"
-subtitle: "Stereotype «QueryParam»"
-toc: false
-menubar: jmm_menu
----
-
 # Stereotype `«QueryParam»`
 Stereotype `«QueryParam»` is used to mark that a parameter of a REST operation should be taken from the query string of a REST request. 
 

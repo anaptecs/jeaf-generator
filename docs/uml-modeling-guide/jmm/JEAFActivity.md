@@ -1,10 +1,3 @@
----
-title: "UML Modeling Guide"
-subtitle: "Stereotype «JEAFActivity»"
-toc: false
-menubar: jmm_menu
----
-
 # Stereotype `«JEAFActivity»`
 Components use activities to implement non-trivial functionality of the services they offer. Activities are used to structure the internal dynamic aspects of a component. JEAF Generator will create an interface and an empty implementation class for every activity in the UML model that is marked with stereotype `«JEAFActivity»`.
 

@@ -1,10 +1,3 @@
----
-title: "UML Modeling Guide"
-subtitle: "Stereotype «JEAFServiceProvider»"
-toc: false
-menubar: jmm_menu
----
-
 # Stereotype `«JEAFServiceProvider»`
 Stereotype `«JEAFServiceProvider»` can be used to define so called service providers. Service providers are an mechanism of JEAF to encapsulate technical services like persistence. Service providers are, like services, stateless and are defined inside the UML model as interface with stereotype `«JEAFServiceProvider»`.
 

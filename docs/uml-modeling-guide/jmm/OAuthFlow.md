@@ -1,10 +1,3 @@
----
-title: "UML Modeling Guide"
-subtitle: "Stereotype «OAuthFlow»"
-toc: false
-menubar: jmm_menu
----
-
 # Stereotype `«OAuthFlow»`
 Stereotype `«OAuthFlow»` can be used to define the authentication part of an OpenAPI specification.
 

@@ -1,10 +1,3 @@
----
-title: "UML Modeling Guide"
-subtitle: "Stereotype «JEAFComponent»"
-toc: false
-menubar: jmm_menu
----
-
 # Stereotype `«JEAFComponent»`
 Stereotype `«JEAFComponent»` is used to define JEAF Components in the UML model. JEAF Generator will use this stereotype as marker to identify for which model elements JEAF-specific classes for components should be generated.
 

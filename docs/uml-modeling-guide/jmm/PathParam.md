@@ -1,10 +1,3 @@
----
-title: "UML Modeling Guide"
-subtitle: "Stereotype «PathParam»"
-toc: false
-menubar: jmm_menu
----
-
 # Stereotype `«PathParam»`
 Stereotype `«PathParam»` is used to mark that a parameter of an REST operation that it’s value should be taken from the request path. Please be aware that the stereotype can only be applied on an operation of an interface that is marked as `«RESTResource»` and the operation is marked as `«RESTOperation»`.
 

@@ -1,10 +1,3 @@
----
-title: "UML Modeling Guide"
-subtitle: "Stereotype «RESTResource»"
-toc: false
-menubar: jmm_menu
----
-
 # Stereotype `«RESTResource»`
 Stereotype `«RESTResource»` can be used to mark a service to also expose his operations at least partially also as REST Resource. 
 

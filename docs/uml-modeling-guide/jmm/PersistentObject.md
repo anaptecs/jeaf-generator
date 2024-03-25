@@ -1,10 +1,3 @@
----
-title: "UML Modeling Guide"
-subtitle: "Stereotype «PersistentObject»"
-toc: false
-menubar: jmm_menu
----
-
 # Stereotype `«PersistentObject»`
 Stereotype `«PersistentObject»` can be used to define all information needed to map a class to a relational database using Java Persistence API (JPA). 
 

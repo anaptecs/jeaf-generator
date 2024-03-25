@@ -1,10 +1,3 @@
----
-title: "UML Modeling Guide"
-subtitle: "Stereotype «ServiceObject»"
-toc: false
-menubar: jmm_menu
----
-
 # Stereotype `«ServiceObject»`
 Stereotype `«Service Object»` is used to model service objects. They define together with the service interface (stereotype «JEAFService») the public interface of a service.
 

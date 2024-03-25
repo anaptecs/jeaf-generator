@@ -1,10 +1,3 @@
----
-title: "UML Modeling Guide"
-subtitle: "Stereotype «OpenAPIProperty»"
-toc: false
-menubar: jmm_menu
----
-
 # Stereotype `«OpenAPIProperty»`
 Stereotype `«OpenAPIProperty»` can be used to define OpenAPI specifc information about a property.
 

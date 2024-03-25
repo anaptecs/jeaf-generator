@@ -1,10 +1,3 @@
----
-title: "UML Modeling Guide"
-subtitle: "Stereotype «OpenAPIFormat»"
-toc: false
-menubar: jmm_menu
----
-
 # Stereotype `«OpenAPIFormat»`
 Stereotype `«OpenAPIFormat»` can be used to define an explicit format for the OpenAPI representation of a property / parameter. By default the types defined in the UML model are mapped the their matching types in OpenAPI. However, there might be cases where this default mapping should not be applied.
 

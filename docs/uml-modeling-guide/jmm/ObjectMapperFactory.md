@@ -1,10 +1,3 @@
----
-title: "UML Modeling Guide"
-subtitle: "Stereotype «ObjectMapperFactory»"
-toc: false
-menubar: jmm_menu
----
-
 # Stereotype `«ObjectMapperFactory»`
 Stereotype `«ObjectMapperFactory»` can be used to define a complete Jackson ObjectMapperFactory. An object mapper factory consists of one or more module factories. This connection is defined using dependencies in UML.
 

@@ -1,10 +1,3 @@
----
-title: "UML Modeling Guide"
-subtitle: "Stereotype «Ignore»"
-toc: false
-menubar: jmm_menu
----
-
 # Stereotype `«Ignore»`
 Stereotype `«Ignore»` can be used to exclude a single element from code generation process even though it is located inside a package list for code generation.
 

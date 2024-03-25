@@ -1,10 +1,3 @@
----
-title: "UML Modeling Guide"
-subtitle: "Stereotype «Example»"
-toc: false
-menubar: jmm_menu
----
-
 # Stereotype `«Example»`
 Stereotype `«Example»` can be used to add example values to properties in the UML model. These example values will be added to OpenAPI specifications and to Java code.
 

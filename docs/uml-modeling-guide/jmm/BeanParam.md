@@ -1,10 +1,3 @@
----
-title: "UML Modeling Guide"
-subtitle: "Stereotype «BeanParam»"
-toc: false
-menubar: jmm_menu
----
-
 # Stereotype `«BeanParam»`
 Stereotype `«BeanParam»` is used to mark a class or parameter as so called bean parameter. Bean parameters can be used to group REST parameters together. 
 

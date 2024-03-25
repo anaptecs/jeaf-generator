@@ -1,10 +1,3 @@
----
-title: "UML Modeling Guide"
-subtitle: "Stereotype «Interceptor»"
-toc: false
-menubar: jmm_menu
----
-
 # Stereotype `«Interceptor»`
 Stereotype `«Interceptor»` is used to mark classes as an interceptor. Interceptors will be called before and after a service invocation. As they tend to have a strong impact on the behavior of a component / service it’s recommended to already add them to the UML model.
 

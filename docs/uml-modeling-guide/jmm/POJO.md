@@ -1,10 +1,3 @@
----
-title: "UML Modeling Guide"
-subtitle: "Stereotype «POJO»"
-toc: false
-menubar: jmm_menu
----
-
 # Stereotype `«POJO»`
 Stereotype `«POJO»` can be used to model a POJO (Plain old Java object). It depends on your individual programming model what POJOs will be used for. 
 

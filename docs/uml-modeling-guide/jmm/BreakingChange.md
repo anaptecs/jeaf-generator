@@ -1,10 +1,3 @@
----
-title: "UML Modeling Guide"
-subtitle: "Stereotype «BreakingChange»"
-toc: false
-menubar: jmm_menu
----
-
 # Stereotype `«BreakingChange»`
 Stereotype `«BreakingChange»` can be used to mark model elements that are a breaking change compared to a previous version. 
 

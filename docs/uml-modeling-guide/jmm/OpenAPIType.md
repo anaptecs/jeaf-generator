@@ -1,10 +1,3 @@
----
-title: "UML Modeling Guide"
-subtitle: "Stereotype «OpenAPIType»"
-toc: false
-menubar: jmm_menu
----
-
 # Stereotype `«OpenAPIType»`
 Stereotype `«OpenAPIType»` can be used to mark a class as OpenAPI data type. As no further information are required the stereotype does not define any tagged values.
 
