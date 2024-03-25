@@ -22,10 +22,10 @@ Stereotype `«BeanParam»` on classes makes only sense when at least one of the 
 <br>
 
 For further information please refer to:
-- [«REST Resource»](/uml-modeling-guide/jmm/RESTResource)
-- [«REST Operation»](/uml-modeling-guide/jmm/RESTOperation)
-- [How to model REST Services](/uml-modeling-guide/how-tos/how-to-model-rest-service-apis)
-- [Generating Code for REST Services](/developer-guide/code-for-jeaf-services)
+* [«REST Resource»](/uml-modeling-guide/jmm/RESTResource)
+* [«REST Operation»](/uml-modeling-guide/jmm/RESTOperation)
+* [How to model REST Services](/uml-modeling-guide/how-tos/how-to-model-rest-service-apis)
+* [Generating Code for REST Services](/developer-guide/code-for-jeaf-services)
 
 
 <br>
