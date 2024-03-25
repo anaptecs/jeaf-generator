@@ -1,10 +1,3 @@
----
-title: "Developer Guide"
-subtitle: "Generating Code for Domain Objects"
-toc: false
-menubar: developer_guide_menu
----
-
 # Generating Code for Domain Objects
 
 Domain objects (stereotype «DomainObject») are used to define the internal structure of a component. Domain objects are intended to be used to represent the domain model of a component.
