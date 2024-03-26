@@ -105,7 +105,7 @@ public class ChildBB extends ChildB {
   }
 
    /**
-   *  Deprecated: Please  keep &#x60;hands off&#x60;. (since: , removed with: ) 
+   *  &lt;br&gt; Deprecated: Please  keep &#x60;hands off&#x60;. (since: , removed with: ) 
    * @return deprecatedAttribute
    * @deprecated
   **/

@@ -67,28 +67,28 @@ cached String getCommentForOpenAPIDescription(uml::Element element, String inden
 
 private cached String getAlternateNameForOpenAPI(uml::Element element, String indentation):
     if element.isAlias()
-    then "\r\n" + indentation + "Alternate Name: " + element.asAlias().getAlternateName()
+    then "\r\n" + indentation + "<br>\r\n" + indentation + "Alternate Name: " + element.asAlias().getAlternateName()
     else "";
 
 
 private cached String getAliasDocs(uml::Element property, String indentation):
     if property.hasAliasAttributeName()
-    then "\r\n" + indentation + "Java Property Name: '" + ((uml::Property) property).name + "' " 
+    then "\r\n" + indentation + "<br>\r\n" + indentation + "Java Property Name: '" + ((uml::Property) property).name + "' " 
     else "";
     
 private cached String getAuthorizedRoles(uml::Element element, String indentation):
     if element.isOperation() && element.asOperation().hasSecurityRoles()
-    then "\r\n" + indentation + "Authorized Roles: " + element.asOperation().getSecurityRolesForDocumentation().toString(", ")
+    then "\r\n" + indentation + "<br>\r\n" + indentation + "Authorized Roles: " + element.asOperation().getSecurityRolesForDocumentation().toString(", ")
     else "";
     
 private cached String getInternalDeprecationDescription(uml::NamedElement element, String indentation):
     if element.isJEAFDeprecated() && element.hasMeaningfulDeprecationInfo()
-    then "\r\n" + indentation + "Deprecated: " + element.getDeprecationDescriptionForMarkup() + " (since: " + element.getDeprecatedSince() + ", removed with: " + element.getDeprecationRemoval() + ")"
+    then "\r\n" + indentation + "<br>\r\n" + indentation + "Deprecated: " + element.getDeprecationDescriptionForMarkup() + " (since: " + element.getDeprecatedSince() + ", removed with: " + element.getDeprecationRemoval() + ")"
     else "";
     
 private cached String getBreakingChangeDescriptionInternal(uml::NamedElement element, String indentation):
     if element.isBreakingChange()
-    then "\r\n" + indentation + "Breaking Change with " + element.getBreakingChangeActiveWith() +  ": " + element.getBreakingChangeDescription()
+    then "\r\n" + indentation + "<br>\r\n" + indentation + "Breaking Change with " + element.getBreakingChangeActiveWith() +  ": " + element.getBreakingChangeDescription()
     else "";
 
     

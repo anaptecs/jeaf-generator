@@ -38,7 +38,7 @@ import openapitools.JSON;
 
 
 /**
- *  Deprecated: Please do not use this class any longer. There are better alternatives but I do not tell you which ones. May be &#x60;java.lang.Nothing&#x60; (since: 0.5, removed with: 2.0) 
+ *  &lt;br&gt; Deprecated: Please do not use this class any longer. There are better alternatives but I do not tell you which ones. May be &#x60;java.lang.Nothing&#x60; (since: 0.5, removed with: 2.0) 
  * @deprecated
  */
 @Deprecated

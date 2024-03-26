@@ -100,10 +100,10 @@ public class Stop {
   }
 
    /**
-   *  Java Property Name: &#x27;links&#x27;  
+   *  &lt;br&gt; Java Property Name: &#x27;links&#x27;  
    * @return _links
   **/
-  @Schema(description = " Java Property Name: 'links'  ")
+  @Schema(description = " <br> Java Property Name: 'links'  ")
   public List<LinkObject> getLinks() {
     return _links;
   }

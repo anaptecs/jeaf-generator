@@ -311,6 +311,7 @@ components:
         moreLinks:
           description: |
             
+            <br>
             Deprecated: No good any more (since: 1.2, removed with: 3.0)
           type: array
           items:
@@ -357,16 +358,21 @@ components:
     ChannelType:
       description: |
         
+        <br>
         Alternate Name: Kanal
+        <br>
         Valid Values:
         - COUNTER: counter
+            <br>
             Alternate Name: BEDIENT
         - CALL_CENTER
         - MOBILE
         - TVM
         - WEB: 
+            <br>
             Breaking Change with 1.47.11: Added new literal
         - @Deprecated LEGACY_POS: 
+            <br>
             Deprecated: I'm `DEPRECATED`. (since: , removed with: )
       type: string
       enum:
@@ -398,6 +404,7 @@ components:
     ChildAA:
       description: |
         
+        <br>
         Deprecated: Please do not use this class any longer. There are better alternatives but I do not tell you which ones. May be `java.lang.Nothing` (since: 0.5, removed with: 2.0)
       deprecated: true
       allOf:
@@ -491,6 +498,7 @@ components:
             deprecatedAttribute:
               description: |
                 
+                <br>
                 Deprecated: Please  keep `hands off`. (since: , removed with: )
               type: integer
               format: int32
@@ -561,6 +569,7 @@ components:
     ComplexBookingType:
       description: |
         
+        <br>
         Breaking Change with PI 17: Class was changed to an extensible enum. New literals will not be introduced before PI 17.
       type: string
       x-extensible-enum:
@@ -615,6 +624,7 @@ components:
     DeprecatedEnum:
       description: |
         
+        <br>
         Deprecated: Hello `World`. (since: , removed with: )
       type: string
       deprecated: true
@@ -640,6 +650,7 @@ components:
         previousName:
           description: |
             Another simple comment.
+            <br>
             Java Property Name: 'link' 
           type: string
           nullable: false
@@ -766,10 +777,12 @@ components:
     # com.anaptecs.jeaf.junit.openapi.base.InventoryType
     InventoryType:
       description: |
+        <br>
         Valid Values:
         - SBB
         - SNCF
         - DB: 
+            <br>
             Breaking Change with 3.x: New literal will occur
       type: string
       enum:
@@ -929,6 +942,7 @@ components:
             stops:
               description: |
                 
+                <br>
                 Breaking Change with PI 15: New mandatory association is required to support upcoming features.
               type: array
               items:
@@ -1017,6 +1031,7 @@ components:
             surname:
               description: |
                 
+                <br>
                 Alternate Name: Vorname
               type: string
               nullable: false
@@ -1611,6 +1626,7 @@ components:
       additionalProperties: false
       description: |
         Data type represents a product definition
+        <br>
         Alternate Name: Produkt
       required:
         - name
@@ -1695,6 +1711,7 @@ components:
         name:
           description: |
             
+            <br>
             Breaking Change with 1.1: Maximum size will be increased.
           type: string
           minLength: 1
@@ -1742,6 +1759,7 @@ components:
         _links:
           description: |
             
+            <br>
             Java Property Name: 'links' 
           type: array
           items:
@@ -1788,7 +1806,9 @@ components:
              
         NOVA 14 Mapping
         * nova-base.xsd.ZeitEinheit
+        <br>
         Alternate Name: Zeiteinheit
+        <br>
         Valid Values:
         - MINUTE: Literal represents time unit "minutes".
         - HOUR
@@ -1817,6 +1837,7 @@ components:
     UICStop:
       description: |
         
+        <br>
         Alternate Name: Haltestelle
       allOf:
         - $ref: '#/components/schemas/Stop'
@@ -1902,6 +1923,7 @@ components:
             inventories:
               description: |
                 
+                <br>
                 Breaking Change with 2.1: Association will required at least 1 object.
               type: array
               items:
