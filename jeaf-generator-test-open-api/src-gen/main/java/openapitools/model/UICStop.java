@@ -34,7 +34,7 @@ import openapitools.JSON;
 
 
 /**
- *  Alternate Name: Haltestelle 
+ *  &lt;br&gt; Alternate Name: Haltestelle 
  */
 @JsonPropertyOrder({
   UICStop.JSON_PROPERTY_UIC_CODE,

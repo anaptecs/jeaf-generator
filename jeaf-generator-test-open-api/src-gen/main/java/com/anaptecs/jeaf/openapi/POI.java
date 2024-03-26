@@ -117,10 +117,10 @@ public class POI extends Stop {
   }
 
    /**
-   *  Breaking Change with PI 15: New mandatory association is required to support upcoming features. 
+   *  &lt;br&gt; Breaking Change with PI 15: New mandatory association is required to support upcoming features. 
    * @return stops
   **/
-  @Schema(required = true, description = " Breaking Change with PI 15: New mandatory association is required to support upcoming features. ")
+  @Schema(required = true, description = " <br> Breaking Change with PI 15: New mandatory association is required to support upcoming features. ")
   public List<UICStop> getStops() {
     return stops;
   }

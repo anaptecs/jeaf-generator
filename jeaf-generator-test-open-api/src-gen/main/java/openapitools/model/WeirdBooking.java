@@ -237,7 +237,7 @@ public class WeirdBooking extends WeirdParent {
   }
 
    /**
-   *  Breaking Change with 2.1: Association will required at least 1 object. 
+   *  &lt;br&gt; Breaking Change with 2.1: Association will required at least 1 object. 
    * @return inventories
   **/
   @javax.annotation.Nullable

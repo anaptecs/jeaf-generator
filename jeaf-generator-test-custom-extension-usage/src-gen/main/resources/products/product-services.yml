@@ -228,6 +228,7 @@ paths:
       requestBody:
         description: >-
           
+          <br>
           Breaking Change with 2.0: Parameter will be mandatory
         required: true
         content:
@@ -271,6 +272,7 @@ paths:
     get:
       description: >-
         
+        <br>
         Deprecated: This request is no longer supported. (since: 1.1.1, removed with: 2.3)
       operationId: deprecatedOperation
       deprecated: true
@@ -1053,6 +1055,7 @@ paths:
           in: query
           description: >-
             
+            <br>
             Breaking Change with 2.0: Has to be in the past
           required: true
           schema:

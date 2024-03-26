@@ -222,6 +222,7 @@ components:
     # com.anaptecs.spring.base.ChannelType
     ChannelType:
       description: |
+        <br>
         Valid Values:
         - COUNTER
         - CALL_CENTER
@@ -471,6 +472,7 @@ components:
         previousName:
           description: |
             
+            <br>
             Java Property Name: 'link' 
           type: string
           nullable: false
@@ -1471,6 +1473,7 @@ components:
         _links:
           description: |
             
+            <br>
             Java Property Name: 'links' 
           type: array
           items:
@@ -1497,6 +1500,7 @@ components:
              
         NOVA 14 Mapping
         * nova-base.xsd.ZeitEinheit
+        <br>
         Valid Values:
         - MINUTE: Literal represents time unit "minutes".
         - HOUR

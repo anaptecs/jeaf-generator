@@ -136,7 +136,7 @@ public class Stop {
   }
 
    /**
-   *  Java Property Name: &#39;links&#39;  
+   *  &lt;br&gt; Java Property Name: &#39;links&#39;  
    * @return links
   **/
   @javax.annotation.Nullable

@@ -603,8 +603,10 @@ components:
         «ENDIF-»
         «IF this.hasLiteralComment()-»
         «IF this.extensibleEnum == true-»
+        <br>
         Known Values:
         «ELSE-»
+        <br>
         Valid Values:
         «ENDIF-»
         «FOREACH this.getPulicLiterals() AS literal-»
