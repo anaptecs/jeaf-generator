@@ -76,10 +76,10 @@ public class DirectedEdge {
   }
 
    /**
-   * Another simple comment. &lt;br&gt; Java Property Name: &#x27;link&#x27;  
+   * Another simple comment. &lt;br&gt;&lt;br&gt; Java Property Name: &#x27;link&#x27;  
    * @return previousName
   **/
-  @Schema(required = true, description = "Another simple comment. <br> Java Property Name: 'link'  ")
+  @Schema(required = true, description = "Another simple comment. <br><br> Java Property Name: 'link'  ")
   public String getPreviousName() {
     return previousName;
   }

@@ -159,10 +159,10 @@ public class WeirdBooking extends WeirdParent {
   }
 
    /**
-   *  &lt;br&gt; Breaking Change with 2.1: Association will required at least 1 object. 
+   *  &lt;br&gt;&lt;br&gt; Breaking Change with 2.1: Association will required at least 1 object. 
    * @return inventories
   **/
-  @Schema(description = " <br> Breaking Change with 2.1: Association will required at least 1 object. ")
+  @Schema(description = " <br><br> Breaking Change with 2.1: Association will required at least 1 object. ")
   public List<InventoryType> getInventories() {
     return inventories;
   }

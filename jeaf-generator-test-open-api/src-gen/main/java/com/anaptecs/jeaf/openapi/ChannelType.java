@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- *  &lt;br&gt; Alternate Name: Kanal &lt;br&gt; Valid Values: - COUNTER: counter     &lt;br&gt;     Alternate Name: BEDIENT - CALL_CENTER - MOBILE - TVM - WEB:      &lt;br&gt;     Breaking Change with 1.47.11: Added new literal - @Deprecated LEGACY_POS:      &lt;br&gt;     Deprecated: I&#x27;m &#x60;DEPRECATED&#x60;. (since: , removed with: ) 
+ *  &lt;br&gt;&lt;br&gt; Alternate Name: Kanal &lt;br&gt; Valid Values: - COUNTER: counter     &lt;br&gt;&lt;br&gt;     Alternate Name: BEDIENT - CALL_CENTER - MOBILE - TVM - WEB:      &lt;br&gt;&lt;br&gt;     Breaking Change with 1.47.11: Added new literal - @Deprecated LEGACY_POS:      &lt;br&gt;&lt;br&gt;     Deprecated: I&#x27;m &#x60;DEPRECATED&#x60;. (since: , removed with: ) 
  */
 public enum ChannelType {
   COUNTER("COUNTER"),

@@ -103,7 +103,7 @@ public class Campaign {
   }
 
    /**
-   *  &lt;br&gt; Deprecated: No good any more (since: 1.2, removed with: 3.0) 
+   *  &lt;br&gt;&lt;br&gt; Deprecated: No good any more (since: 1.2, removed with: 3.0) 
    * @return moreLinkIDs
    * @deprecated
   **/

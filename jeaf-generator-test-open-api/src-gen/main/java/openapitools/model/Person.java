@@ -63,7 +63,7 @@ public class Person extends Partner {
   }
 
    /**
-   *  &lt;br&gt; Alternate Name: Vorname 
+   *  &lt;br&gt;&lt;br&gt; Alternate Name: Vorname 
    * @return surname
   **/
   @javax.annotation.Nonnull
