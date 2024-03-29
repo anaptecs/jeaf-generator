@@ -283,7 +283,7 @@ public class GeneratorCommons {
 
   public static final String TYPES_REPORT_FILE_SHOW_PROPERTIES = "switch.gen.types.report.showProperties";
 
-  public static final String TYPES_REPORT_FILE_GROUP_BY_PACKAGES = "switch.gen.types.report.typesReportGroupByPackage";
+  public static final String TYPES_REPORT_FILE_GROUP_BY_PACKAGES = "switch.gen.types.report.groupByPackage";
 
   public static final String TYPES_REPORT_FILE_STEREOTYPES = "switch.gen.types.report.stereotypes";
 
