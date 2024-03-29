@@ -105,7 +105,7 @@ public class DirectedEdge {
   }
 
    /**
-   * Another simple comment. &lt;br&gt; Java Property Name: &#39;link&#39;  
+   * Another simple comment. &lt;br&gt;&lt;br&gt; Java Property Name: &#39;link&#39;  
    * @return previousName
   **/
   @javax.annotation.Nonnull

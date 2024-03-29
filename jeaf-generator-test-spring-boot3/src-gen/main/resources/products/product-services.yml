@@ -1171,7 +1171,7 @@ paths:
     get:
       description: |
         Operation returns all available product.
-        <br>
+        <br><br>
         Authorized Roles: Customer, Sales Agent
       operationId: rest.getProducts
       externalDocs:
@@ -1202,7 +1202,7 @@ paths:
     post:
       description: |
         
-        <br>
+        <br><br>
         Authorized Roles: Sales Agent
       operationId: rest.createProduct
       requestBody:
@@ -1229,7 +1229,7 @@ paths:
     head:
       description: |
         
-        <br>
+        <br><br>
         Authorized Roles: Customer, Sales Agent
       operationId: rest.ping
       responses:
@@ -1246,7 +1246,7 @@ paths:
     get:
       description: |
         
-        <br>
+        <br><br>
         Authorized Roles: Sales Agent
       operationId: rest.getProduct
       parameters:
@@ -1275,7 +1275,7 @@ paths:
     get:
       description: |
         
-        <br>
+        <br><br>
         Authorized Roles: Sales Agent
       operationId: rest.getSortiment
       parameters:
@@ -1331,7 +1331,7 @@ paths:
     post:
       description: |
         
-        <br>
+        <br><br>
         Authorized Roles: Sales Agent
       operationId: rest.createChannelCode
       requestBody:
@@ -1364,7 +1364,7 @@ paths:
     get:
       description: |
         
-        <br>
+        <br><br>
         Authorized Roles: Sales Agent
       operationId: testInit
       responses:
@@ -1381,7 +1381,7 @@ paths:
     get:
       description: |
         
-        <br>
+        <br><br>
         Authorized Roles: Sales Agent
       operationId: getSupportedCurrencies
       parameters:
@@ -1421,7 +1421,7 @@ paths:
     get:
       description: |
         
-        <br>
+        <br><br>
         Authorized Roles: Sales Agent
       operationId: getSupportedCurrenciesAsync
       parameters:
@@ -1461,7 +1461,7 @@ paths:
     get:
       description: |
         
-        <br>
+        <br><br>
         Authorized Roles: Sales Agent
       operationId: testParams
       parameters:
@@ -1500,7 +1500,7 @@ paths:
     get:
       description: |
         
-        <br>
+        <br><br>
         Authorized Roles: Sales Agent
       operationId: testEnumParams
       parameters:
@@ -1533,7 +1533,7 @@ paths:
     get:
       description: |
         
-        <br>
+        <br><br>
         Authorized Roles: Sales Agent
       operationId: testEnumHeaderParams
       parameters:
@@ -1566,7 +1566,7 @@ paths:
     get:
       description: |
         
-        <br>
+        <br><br>
         Authorized Roles: Sales Agent
       operationId: rest.testDateQueryParams
       parameters:
@@ -1656,7 +1656,7 @@ paths:
     get:
       description: |
         
-        <br>
+        <br><br>
         Authorized Roles: Sales Agent
       operationId: rest.testDateQueryParamsBean
       parameters:
@@ -1739,7 +1739,7 @@ paths:
     get:
       description: |
         
-        <br>
+        <br><br>
         Authorized Roles: Sales Agent
       operationId: rest.testDateHeaderParams
       parameters:
@@ -1829,7 +1829,7 @@ paths:
     get:
       description: |
         
-        <br>
+        <br><br>
         Authorized Roles: Sales Agent
       operationId: rest.testDateHeaderParamsBean
       parameters:
@@ -1912,7 +1912,7 @@ paths:
     get:
       description: |
         
-        <br>
+        <br><br>
         Authorized Roles: Sales Agent
       operationId: testCookieParams
       parameters:
@@ -1979,7 +1979,7 @@ paths:
     get:
       description: |
         
-        <br>
+        <br><br>
         Authorized Roles: Sales Agent
       operationId: testOptionalQueryParams
       parameters:
@@ -2011,7 +2011,7 @@ paths:
     get:
       description: |
         
-        <br>
+        <br><br>
         Authorized Roles: Sales Agent
       operationId: processComplexBookingID
       parameters:
@@ -2039,7 +2039,7 @@ paths:
     get:
       description: |
         
-        <br>
+        <br><br>
         Authorized Roles: Sales Agent
       operationId: testDataTypesAsHeaderParam
       parameters:
@@ -2080,7 +2080,7 @@ paths:
     get:
       description: |
         
-        <br>
+        <br><br>
         Authorized Roles: Sales Agent
       operationId: testDataTypesAsHeaderBeanParam
       parameters:
@@ -2121,7 +2121,7 @@ paths:
     post:
       description: |
         
-        <br>
+        <br><br>
         Authorized Roles: Sales Agent
       operationId: testPrimitiveArrays
       requestBody:
@@ -2150,7 +2150,7 @@ paths:
     get:
       description: |
         
-        <br>
+        <br><br>
         Authorized Roles: Sales Agent
       operationId: testDataTypeAsQueryParam
       parameters:
@@ -2178,7 +2178,7 @@ paths:
     get:
       description: |
         
-        <br>
+        <br><br>
         Authorized Roles: Sales Agent
       operationId: testDataTypeAsBeanQueryParam
       parameters:
@@ -2213,7 +2213,7 @@ paths:
     get:
       description: |
         
-        <br>
+        <br><br>
         Authorized Roles: Sales Agent
       operationId: testPrimitiveArrayAsQueryParam
       parameters:
@@ -2242,7 +2242,7 @@ paths:
     get:
       description: |
         
-        <br>
+        <br><br>
         Authorized Roles: Sales Agent
       operationId: testSimpleTypesAsQueryParams
       parameters:
@@ -2270,7 +2270,7 @@ paths:
     get:
       description: |
         
-        <br>
+        <br><br>
         Authorized Roles: Sales Agent
       operationId: testPrimitiveWrapperArrayAsQueryParam
       parameters:
@@ -2301,7 +2301,7 @@ paths:
     get:
       description: |
         
-        <br>
+        <br><br>
         Authorized Roles: Sales Agent
       operationId: testMultivaluedQueryParamsBean
       parameters:
@@ -2355,7 +2355,7 @@ paths:
     get:
       description: |
         
-        <br>
+        <br><br>
         Authorized Roles: Sales Agent
       operationId: testMulitvaluedDataTypeAsQueryParam
       parameters:
@@ -2414,7 +2414,7 @@ paths:
     get:
       description: |
         
-        <br>
+        <br><br>
         Authorized Roles: Sales Agent
       operationId: testMulitvaluedDataTypeAsBeanQueryParam
       parameters:
@@ -2517,7 +2517,7 @@ paths:
     get:
       description: |
         
-        <br>
+        <br><br>
         Authorized Roles: Sales Agent
       operationId: testMultiValuedHeaderFieldsInBeanParam
       parameters:
@@ -2632,7 +2632,7 @@ paths:
     get:
       description: |
         
-        <br>
+        <br><br>
         Authorized Roles: Sales Agent
       operationId: testMultiValuedHeaderFields
       parameters:
@@ -2707,7 +2707,7 @@ paths:
     patch:
       description: |
         
-        <br>
+        <br><br>
         Authorized Roles: Sales Agent
       operationId: testBookingIDAsPathParam
       parameters:
@@ -2731,7 +2731,7 @@ paths:
     patch:
       description: |
         
-        <br>
+        <br><br>
         Authorized Roles: Sales Agent
       operationId: testBookingIDAsHeaderParam
       parameters:
@@ -2754,7 +2754,7 @@ paths:
     get:
       description: |
         
-        <br>
+        <br><br>
         Authorized Roles: Sales Agent
       operationId: testContextWithPrimitives
       parameters:
@@ -2810,7 +2810,7 @@ paths:
     get:
       description: |
         
-        <br>
+        <br><br>
         Authorized Roles: Sales Agent
       operationId: testPrimitivesAsParams
       parameters:
