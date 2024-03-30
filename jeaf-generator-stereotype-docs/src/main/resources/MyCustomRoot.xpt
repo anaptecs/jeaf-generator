@@ -1,0 +1,19 @@
+«IMPORT uml»
+«EXTENSION org::openarchitectureware::util::stdlib::io»
+«EXTENSION Custom»
+
+
+«DEFINE Root FOR Model»
+    «REM» Empty template in case that no custom templates schould be executed.«ENDREM»
+    «info("Hello JEAF Generator")»
+    «info("")»
+    «info("Property: " + getProperty("jeaf.test"))»
+    «FILE  "HelloJEAFGenerator.txt" res_gen»
+Hello JEAF Generator,
+this is my first extension template
+
+Looking forward to try out more.
+
+Your JEAF Development Team
+    «ENDFILE»
+«ENDDEFINE» 
