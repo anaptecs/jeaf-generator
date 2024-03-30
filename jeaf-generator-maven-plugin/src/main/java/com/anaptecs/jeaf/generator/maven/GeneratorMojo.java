@@ -730,6 +730,48 @@ public class GeneratorMojo extends AbstractMojo {
   private Boolean suppressTechnicalHeaders;
 
   /**
+   * Configuration parameter can be used to define the OpenAPI contact name. The provided value will only be used if
+   * none is explicitly defined in the UML model.
+   */
+  @Parameter(required = false)
+  private String openAPIContactName = "";
+
+  /**
+   * Configuration parameter can be used to define the OpenAPI contact URL. The provided value will only be used if none
+   * is explicitly defined in the UML model.
+   */
+  @Parameter(required = false)
+  private String openAPIContactURL = "";
+
+  /**
+   * Configuration parameter can be used to define the OpenAPI contact email. The provided value will only be used if
+   * none is explicitly defined in the UML model.
+   */
+  @Parameter(required = false)
+  private String openAPIContactEmail = "";
+
+  /**
+   * Configuration parameter can be used to define the OpenAPI license name. The provided value will only be used if
+   * none is explicitly defined in the UML model.
+   */
+  @Parameter(required = false)
+  private String openAPILicenseName = "";
+
+  /**
+   * Configuration parameter can be used to define the OpenAPI license URL. The provided value will only be used if none
+   * is explicitly defined in the UML model.
+   */
+  @Parameter(required = false)
+  private String openAPILicenseURL = "";
+
+  /**
+   * Configuration parameter can be used to define the OpenAPI terms of use URL. The provided value will only be used if
+   * none is explicitly defined in the UML model.
+   */
+  @Parameter(required = false)
+  private String openAPITermsOfUseURL = "";
+
+  /**
    * OpenAPI standard defines that for whatever reason some header fields should not be mentioned in the OpenAPI
    * specification e.g. 'Authorization' header. However from an overall perspective it still might make sense to
    * explicitly show the for better documentation purposes. This can be done by setting this property to
@@ -1460,10 +1502,32 @@ public class GeneratorMojo extends AbstractMojo {
       lLog.info("OpenAPI Specification file extensions:            " + openAPIExtensions.toString());
       lLog.info("Enable YAML 1.1 compatibility mode:               " + enableYAML11Compatibility);
       lLog.info("OpenAPI YAML multi-line comment style:            " + openAPICommentStyle);
+
+      if (openAPIContactName.isEmpty() == false) {
+        lLog.info("OpenAPI Contact Name:                             " + openAPIContactName);
+      }
+      if (openAPIContactURL.isEmpty() == false) {
+        lLog.info("OpenAPI Contact URL:                              " + openAPIContactURL);
+      }
+      if (openAPIContactEmail.isEmpty() == false) {
+        lLog.info("OpenAPI Contact EMail:                            " + openAPIContactEmail);
+      }
+      if (openAPILicenseName.isEmpty() == false) {
+        lLog.info("OpenAPI License Name:                             " + openAPILicenseName);
+      }
+      if (openAPILicenseURL.isEmpty() == false) {
+        lLog.info("OpenAPI License URL:                              " + openAPILicenseURL);
+      }
+      if (openAPITermsOfUseURL.isEmpty() == false) {
+        lLog.info("OpenAPI Terms of Use URL:                         " + openAPITermsOfUseURL);
+      }
+
       lLog.info("Add ignored header fields to OpenAPI spec:        " + addIgnoredHeadersToOpenAPISpec);
     }
 
-    if (generateOpenAPISpec || generateRESTResources || generateRESTServiceProxies) {
+    if (generateOpenAPISpec || generateRESTResources || generateRESTServiceProxies)
+
+    {
       lLog.info("REST default success status code:                 " + restDefaultSuccessStatusCode);
       lLog.info("REST default success void status code:            " + restDefaultVoidStatusCode);
     }
@@ -1715,6 +1779,14 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty("switch.gen.openapispec", generateOpenAPISpec.toString());
       System.setProperty("switch.gen.openapi.yaml.11.comapitibility", enableYAML11Compatibility.toString());
       System.setProperty("switch.gen.openapi.openAPICommentStyle", openAPICommentStyle.toString());
+
+      System.setProperty("switch.gen.openapi.openAPIContactName", openAPIContactName.toString());
+      System.setProperty("switch.gen.openapi.openAPIContactURL", openAPIContactURL.toString());
+      System.setProperty("switch.gen.openapi.openAPIContactEmail", openAPIContactEmail.toString());
+      System.setProperty("switch.gen.openapi.openAPILicenseName", openAPILicenseName.toString());
+      System.setProperty("switch.gen.openapi.openAPILicenseURL", openAPILicenseURL.toString());
+      System.setProperty("switch.gen.openapi.openAPITermsOfUseURL", openAPITermsOfUseURL.toString());
+
       System.setProperty("switch.gen.rest.suppress.technical.headers", suppressTechnicalHeaders.toString());
       System.setProperty("switch.gen.openapi.addIgnoredHeadersToOpenAPISpec",
           addIgnoredHeadersToOpenAPISpec.toString());
