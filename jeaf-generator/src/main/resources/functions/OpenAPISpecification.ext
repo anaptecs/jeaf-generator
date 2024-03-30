@@ -1,0 +1,60 @@
+extension java::GeneratorCommons;
+extension functions::SystemProperties;
+
+
+cached boolean isOpenAPISpecification(uml::Element element):
+    element.isStereotypeApplied("OpenAPI3Specification");
+    
+cached JMM::OpenAPI3Specification asOpenAPISpecification(uml::Element element):
+    (JMM::OpenAPI3Specification) element;
+    
+
+cached String getContactName(JMM::OpenAPI3Specification spec):
+    if spec.contactName.length > 0
+    then spec.contactName
+    else getOpenAPIContactNameFromSystemProperties();
+    
+cached String getContactURL(JMM::OpenAPI3Specification spec):
+    if spec.contactURL.length > 0
+    then spec.contactURL
+    else getOpenAPIContactURLFromSystemProperties();
+    
+cached String getContactEmail(JMM::OpenAPI3Specification spec):
+    if spec.contactEmail.length > 0
+    then spec.contactEmail
+    else getOpenAPIContactEmailFromSystemProperties();
+    
+cached String getLicenseName(JMM::OpenAPI3Specification spec):
+    if spec.licenseName.length > 0
+    then spec.licenseName
+    else getOpenAPILicenseNameFromSystemProperties();
+    
+cached String getLicenseURL(JMM::OpenAPI3Specification spec):
+    if spec.licenseURL.length > 0
+    then spec.licenseURL
+    else getOpenAPILicenseURLFromSystemProperties();
+    
+cached String getTermsOfUseURL(JMM::OpenAPI3Specification spec):
+    if spec.termsOfUseURL.length > 0
+    then spec.termsOfUseURL
+    else getOpenAPITermsOfUseURLFromSystemProperties();
+
+private cached String getOpenAPIContactNameFromSystemProperties():
+    getSystemProperty("switch.gen.openapi.openAPIContactName", "");
+    
+private cached String getOpenAPIContactURLFromSystemProperties():
+    getSystemProperty("switch.gen.openapi.openAPIContactURL", "");
+    
+private cached String getOpenAPIContactEmailFromSystemProperties():
+    getSystemProperty("switch.gen.openapi.openAPIContactEmail", "");
+    
+private cached String getOpenAPILicenseNameFromSystemProperties():
+    getSystemProperty("switch.gen.openapi.openAPILicenseName", "");
+    
+private cached String getOpenAPILicenseURLFromSystemProperties():
+    getSystemProperty("switch.gen.openapi.openAPILicenseURL", "");
+    
+private cached String getOpenAPITermsOfUseURLFromSystemProperties():
+    getSystemProperty("switch.gen.openapi.openAPITermsOfUseURL", "");
+    
+    

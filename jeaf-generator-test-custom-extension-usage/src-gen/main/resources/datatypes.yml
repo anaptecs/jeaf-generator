@@ -3,6 +3,14 @@ openapi: 3.0.3
 info:
   title: Datatypes
   version: 1.17.4-SNAPSHOT
+  termsOfService: https://www.jeaf-generator.io/terms-of-use
+  contact:
+    name: Maven Contact
+    url: 'https://www.jeaf-generator.io'
+    email: maven@jeaf.de
+  license:
+    name: Maven Custom License
+    url: 'https://www.jeaf-generator.io/license'
 paths:
   # OpenAPI standard requires to define at least 1 operation. This API however seems to be a pure type definition. 
   # So we define NOP operation here as workaround.
