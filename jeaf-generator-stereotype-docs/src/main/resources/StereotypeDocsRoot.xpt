@@ -1,0 +1,19 @@
+«IMPORT uml»
+«IMPORT JMM»
+«EXTENSION java::Naming»
+«EXTENSION java::GeneratorCommons»
+«EXTENSION org::openarchitectureware::util::stdlib::io»
+
+
+«DEFINE Root FOR Model»
+    «FOREACH this.getAllAppliedProfiles().select(e|e.name == "JMM") AS profile»
+        «info(profile.name)»
+        «FOREACH profile.ownedStereotype AS stereotype»
+            «IF stereotype.isStereotypeApplied("JEAFStereotype")»
+			    «info("Processing «JEAFStereotype» " + stereotype.name + " (" + (this.fqn()) + ")")»
+			    «EXPAND JEAFStereotype::StereotypeTemplate FOR (JEAFStereotype)stereotype»
+            «ENDIF»
+        «ENDFOREACH»
+    «ENDFOREACH»
+«ENDDEFINE» 
+
