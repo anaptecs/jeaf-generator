@@ -232,6 +232,22 @@ ComplexBookingID |   |  |
 
 <br>
 
+## com.anaptecs.jeaf.junit.openapi.datatypes
+
+| Type     | Legacy Name | Description  |
+|----------|---------------------|------------|
+MyDataType |   |  |
+
+<br>
+
+## com.anaptecs.jeaf.junit.openapi.datatypeusage
+
+| Type     | Legacy Name | Description  |
+|----------|---------------------|------------|
+DataTypeUsage |   |  |
+
+<br>
+
 ## com.anaptecs.jeaf.junit.openapi.service1
 
 | Type     | Legacy Name | Description  |
