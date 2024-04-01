@@ -1,0 +1,12 @@
+«IMPORT uml»
+«IMPORT JMM»
+
+«EXTENSION functions::Example»
+
+«DEFINE GenerateExample(String indentation) FOR NamedElement -»
+	«IF this.hasExample()-»
+	    «IF this.asExample().exampleValue.length > 0-»
+«indentation»example: «this.asExample().exampleValue»
+	    «ENDIF-»
+	«ENDIF-»
+«ENDDEFINE»

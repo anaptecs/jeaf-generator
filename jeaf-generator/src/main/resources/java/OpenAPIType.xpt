@@ -146,11 +146,7 @@
           «IF attribute.defaultValue != null -»
           default: «attribute.defaultValue.stringValue().replaceAll("\"", "'")»
           «ENDIF-»
-            «IF attribute.hasExample()-»
-              «IF ((Example) attribute).exampleValue.length > 0-»
-          example: «((Example) attribute).exampleValue»
-              «ENDIF-»
-            «ENDIF-»
+          «EXPAND java::OpenAPIHelper::GenerateExample("          ") FOR attribute -»
           «REM»Handling complex types«ENDREM-»
           «ELSE-»
             «IF attribute.isMultivalued() == false && this.hasMultivaluedTemplateBinding(attribute) == false -»
@@ -317,11 +313,7 @@
           «IF attribute.defaultValue != null -»
               default: «attribute.defaultValue.stringValue().replaceAll("\"", "'")»
           «ENDIF-»
-            «IF attribute.hasExample()-»
-              «IF ((Example) attribute).exampleValue.length > 0-»
-              example: «((Example) attribute).exampleValue»
-              «ENDIF-»
-            «ENDIF-»
+            «EXPAND java::OpenAPIHelper::GenerateExample("              ") FOR attribute -»
           «REM»Handling complex types«ENDREM-»
           «ELSE-»
             «IF attribute.isMultivalued() == false-»
