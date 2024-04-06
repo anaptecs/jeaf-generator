@@ -74,7 +74,7 @@ public abstract class GenericPageableResponseBase<T> extends AbstractResponse<T>
     protected BuilderBase( GenericPageableResponseBase<T> pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
-        values = pObject.values;
+        this.setValues(pObject.values);
       }
     }
 

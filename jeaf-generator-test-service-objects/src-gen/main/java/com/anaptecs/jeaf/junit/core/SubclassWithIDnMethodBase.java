@@ -64,7 +64,7 @@ public abstract class SubclassWithIDnMethodBase extends IdentifiableServiceObjec
       super(pObject);
       if (pObject != null) {
         // Read attribute values from passed object.
-        attr = pObject.attr;
+        this.setAttr(pObject.attr);
       }
     }
 

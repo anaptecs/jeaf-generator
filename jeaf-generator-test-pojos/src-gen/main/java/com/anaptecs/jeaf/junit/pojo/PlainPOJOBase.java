@@ -76,8 +76,8 @@ public abstract class PlainPOJOBase {
     protected BuilderBase( PlainPOJOBase pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
-        hello = pObject.hello;
-        world = pObject.world;
+        this.setHello(pObject.hello);
+        this.setWorld(pObject.world);
       }
     }
 

@@ -104,7 +104,7 @@ public abstract class BidirectionalABase {
     protected BuilderBase( BidirectionalABase pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
-        child = pObject.child;
+        this.setChild(pObject.child);
       }
     }
 

@@ -109,10 +109,10 @@ public abstract class MasterDataObjectBase implements Serializable {
     protected BuilderBase( MasterDataObjectBase pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
-        dataUnits = pObject.dataUnits;
-        entity = pObject.entity;
-        objectID = pObject.objectID;
-        internalProperty = pObject.internalProperty;
+        this.setDataUnits(pObject.dataUnits);
+        this.setEntity(pObject.entity);
+        this.setObjectID(pObject.objectID);
+        this.setInternalProperty(pObject.internalProperty);
       }
     }
 

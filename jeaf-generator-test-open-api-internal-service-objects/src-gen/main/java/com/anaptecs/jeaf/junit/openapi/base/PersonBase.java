@@ -79,8 +79,8 @@ public abstract class PersonBase extends Partner {
       super(pObject);
       if (pObject != null) {
         // Read attribute values from passed object.
-        surname = pObject.surname;
-        firstName = pObject.firstName;
+        this.setSurname(pObject.surname);
+        this.setFirstName(pObject.firstName);
       }
     }
 

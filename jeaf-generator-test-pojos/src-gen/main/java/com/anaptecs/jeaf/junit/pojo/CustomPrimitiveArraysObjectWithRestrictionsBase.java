@@ -287,28 +287,28 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
     protected BuilderBase( CustomPrimitiveArraysObjectWithRestrictionsBase pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
-        aBooleanArray = pObject.aBooleanArray;
-        bBooleanArray = pObject.bBooleanArray;
-        cBooleanArray = pObject.cBooleanArray;
-        aByteArray = pObject.aByteArray;
-        bByteArray = pObject.bByteArray;
-        aShortArray = pObject.aShortArray;
-        bShortArray = pObject.bShortArray;
-        aIntegerArray = pObject.aIntegerArray;
-        bIntegerArray = pObject.bIntegerArray;
-        cIntegerArray = pObject.cIntegerArray;
-        aLongArray = pObject.aLongArray;
-        bLongArray = pObject.bLongArray;
-        aBigIntegerArray = pObject.aBigIntegerArray;
-        aCharacterArray = pObject.aCharacterArray;
-        bCharacterArray = pObject.bCharacterArray;
-        aFloatArray = pObject.aFloatArray;
-        bFloatArray = pObject.bFloatArray;
-        aDoubleArray = pObject.aDoubleArray;
-        bDoubleArray = pObject.bDoubleArray;
-        aBigDecimalArray = pObject.aBigDecimalArray;
-        aStringArray = pObject.aStringArray;
-        bStringArray = pObject.bStringArray;
+        this.setABooleanArray(pObject.aBooleanArray);
+        this.setBBooleanArray(pObject.bBooleanArray);
+        this.setCBooleanArray(pObject.cBooleanArray);
+        this.setAByteArray(pObject.aByteArray);
+        this.setBByteArray(pObject.bByteArray);
+        this.setAShortArray(pObject.aShortArray);
+        this.setBShortArray(pObject.bShortArray);
+        this.setAIntegerArray(pObject.aIntegerArray);
+        this.setBIntegerArray(pObject.bIntegerArray);
+        this.setCIntegerArray(pObject.cIntegerArray);
+        this.setALongArray(pObject.aLongArray);
+        this.setBLongArray(pObject.bLongArray);
+        this.setABigIntegerArray(pObject.aBigIntegerArray);
+        this.setACharacterArray(pObject.aCharacterArray);
+        this.setBCharacterArray(pObject.bCharacterArray);
+        this.setAFloatArray(pObject.aFloatArray);
+        this.setBFloatArray(pObject.bFloatArray);
+        this.setADoubleArray(pObject.aDoubleArray);
+        this.setBDoubleArray(pObject.bDoubleArray);
+        this.setABigDecimalArray(pObject.aBigDecimalArray);
+        this.setAStringArray(pObject.aStringArray);
+        this.setBStringArray(pObject.bStringArray);
       }
     }
 

@@ -99,8 +99,8 @@ public abstract class ClassABase implements ServiceObject, Identifiable<ServiceO
       if (pObject != null) {
         // Read attribute values from passed object.
         objectID = pObject.objectID;
-        name = pObject.name;
-        oneB = pObject.oneB;
+        this.setName(pObject.name);
+        this.setOneB(pObject.oneB);
       }
     }
 

@@ -105,9 +105,9 @@ public abstract class AccountInfoBase implements ServiceObject, Identifiable<Ser
       if (pObject != null) {
         // Read attribute values from passed object.
         objectID = pObject.objectID;
-        iban = pObject.iban;
-        balance = pObject.balance;
-        bankID = pObject.bankID;
+        this.setIban(pObject.iban);
+        this.setBalance(pObject.balance);
+        this.setBankID(pObject.bankID);
       }
     }
 

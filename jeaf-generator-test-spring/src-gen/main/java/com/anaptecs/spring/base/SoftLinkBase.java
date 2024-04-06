@@ -93,10 +93,10 @@ public abstract class SoftLinkBase {
     protected BuilderBase( SoftLinkBase pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
-        objectID = pObject.objectID;
-        dataUnit = pObject.dataUnit;
-        entity = pObject.entity;
-        refrenceID = pObject.refrenceID;
+        this.setObjectID(pObject.objectID);
+        this.setDataUnit(pObject.dataUnit);
+        this.setEntity(pObject.entity);
+        this.setRefrenceID(pObject.refrenceID);
       }
     }
 

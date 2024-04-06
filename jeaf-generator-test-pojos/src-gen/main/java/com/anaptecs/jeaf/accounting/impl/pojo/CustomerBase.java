@@ -119,10 +119,10 @@ public abstract class CustomerBase extends Partner {
     protected BuilderBase( CustomerBase pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
-        name = pObject.name;
-        firstName = pObject.firstName;
-        email = pObject.email;
-        accounts = pObject.accounts;
+        this.setName(pObject.name);
+        this.setFirstName(pObject.firstName);
+        this.setEmail(pObject.email);
+        this.setAccounts(pObject.accounts);
       }
     }
 
