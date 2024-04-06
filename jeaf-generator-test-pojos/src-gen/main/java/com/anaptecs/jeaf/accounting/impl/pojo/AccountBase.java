@@ -112,10 +112,10 @@ public abstract class AccountBase {
     protected BuilderBase( AccountBase pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
-        iban = pObject.iban;
-        owner = pObject.owner;
-        currency = pObject.currency;
-        allBookings = pObject.allBookings;
+        this.setIban(pObject.iban);
+        this.setOwner(pObject.owner);
+        this.setCurrency(pObject.currency);
+        this.setAllBookings(pObject.allBookings);
       }
     }
 

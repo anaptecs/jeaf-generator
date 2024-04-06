@@ -87,7 +87,7 @@ public abstract class IdentifiableServiceObjectWithMethodBase implements Service
       if (pObject != null) {
         // Read attribute values from passed object.
         objectID = pObject.objectID;
-        hello = pObject.hello;
+        this.setHello(pObject.hello);
       }
     }
 

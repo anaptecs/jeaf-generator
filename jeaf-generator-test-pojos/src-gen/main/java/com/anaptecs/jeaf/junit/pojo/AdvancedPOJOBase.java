@@ -93,8 +93,8 @@ public abstract class AdvancedPOJOBase {
     protected BuilderBase( AdvancedPOJOBase pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
-        readonlyDefault = pObject.readonlyDefault;
-        intWithDefault = pObject.intWithDefault;
+        this.setReadonlyDefault(pObject.readonlyDefault);
+        this.setIntWithDefault(pObject.intWithDefault);
       }
     }
 

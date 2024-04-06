@@ -94,8 +94,8 @@ public abstract class ReadonlyDefaultPOJOBase {
     protected BuilderBase( ReadonlyDefaultPOJOBase pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
-        readonlyDefault = pObject.readonlyDefault;
-        booleanDefault = pObject.booleanDefault;
+        this.setReadonlyDefault(pObject.readonlyDefault);
+        this.setBooleanDefault(pObject.booleanDefault);
       }
     }
 

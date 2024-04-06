@@ -125,9 +125,9 @@ public abstract class ResellerBase {
     protected BuilderBase( ResellerBase pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
-        channels = pObject.channels;
-        name = pObject.name;
-        language = pObject.language;
+        this.setChannels(pObject.channels);
+        this.setName(pObject.name);
+        this.setLanguage(pObject.language);
       }
     }
 

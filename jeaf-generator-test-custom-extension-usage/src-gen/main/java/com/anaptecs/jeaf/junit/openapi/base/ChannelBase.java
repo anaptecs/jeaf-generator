@@ -176,10 +176,10 @@ public abstract class ChannelBase implements ServiceObject {
     protected BuilderBase( ChannelBase pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
-        channelType = pObject.channelType;
-        channelCode = pObject.channelCode;
-        code = pObject.code;
-        selfServiceChannel = pObject.selfServiceChannel;
+        this.setChannelType(pObject.channelType);
+        this.setChannelCode(pObject.channelCode);
+        this.setCode(pObject.code);
+        this.setSelfServiceChannel(pObject.selfServiceChannel);
       }
     }
 

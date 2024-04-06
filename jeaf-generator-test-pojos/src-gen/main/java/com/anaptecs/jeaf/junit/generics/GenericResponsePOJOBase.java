@@ -105,9 +105,9 @@ public abstract class GenericResponsePOJOBase<T> {
     protected BuilderBase( GenericResponsePOJOBase<T> pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
-        errors = pObject.errors;
-        warnings = pObject.warnings;
-        value = pObject.value;
+        this.setErrors(pObject.errors);
+        this.setWarnings(pObject.warnings);
+        this.setValue(pObject.value);
       }
     }
 
