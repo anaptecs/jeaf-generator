@@ -133,11 +133,11 @@ public abstract class PartiallyDeprecatedServiceObjectBase implements ServiceObj
     protected BuilderBase( PartiallyDeprecatedServiceObjectBase pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
-        name = pObject.name;
-        outdated = pObject.outdated;
-        deprecatedRef = pObject.deprecatedRef;
-        deprecatedRefs = pObject.deprecatedRefs;
-        readonlyDefault = pObject.readonlyDefault;
+        this.setName(pObject.name);
+        this.setOutdated(pObject.outdated);
+        this.setDeprecatedRef(pObject.deprecatedRef);
+        this.setDeprecatedRefs(pObject.deprecatedRefs);
+        this.setReadonlyDefault(pObject.readonlyDefault);
       }
     }
 

@@ -202,9 +202,9 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
       if (pObject != null) {
         // Read attribute values from passed object.
         objectID = pObject.objectID;
-        channels = pObject.channels;
-        name = pObject.name;
-        language = pObject.language;
+        this.setChannels(pObject.channels);
+        this.setName(pObject.name);
+        this.setLanguage(pObject.language);
       }
     }
 

@@ -98,8 +98,8 @@ public abstract class CompositeIDBase implements ServiceObject {
     protected BuilderBase( CompositeIDBase pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
-        primaryCode = pObject.primaryCode;
-        secondaryCode = pObject.secondaryCode;
+        this.setPrimaryCode(pObject.primaryCode);
+        this.setSecondaryCode(pObject.secondaryCode);
       }
     }
 

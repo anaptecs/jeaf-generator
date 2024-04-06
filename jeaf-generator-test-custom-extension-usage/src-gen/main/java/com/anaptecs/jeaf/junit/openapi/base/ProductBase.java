@@ -368,15 +368,15 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
       if (pObject != null) {
         // Read attribute values from passed object.
         objectID = pObject.objectID;
-        resellers = pObject.resellers;
-        name = pObject.name;
-        image = pObject.image;
-        link = pObject.link;
-        productID = pObject.productID;
-        supportedCurrencies = pObject.supportedCurrencies;
-        productCodes = pObject.productCodes;
-        description = pObject.description;
-        uri = pObject.uri;
+        this.setResellers(pObject.resellers);
+        this.setName(pObject.name);
+        this.setImage(pObject.image);
+        this.setLink(pObject.link);
+        this.setProductID(pObject.productID);
+        this.setSupportedCurrencies(pObject.supportedCurrencies);
+        this.setProductCodes(pObject.productCodes);
+        this.setDescription(pObject.description);
+        this.setUri(pObject.uri);
       }
     }
 

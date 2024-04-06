@@ -118,12 +118,12 @@ public abstract class TestServiceObjectBase implements ServiceObject {
     protected BuilderBase( TestServiceObjectBase pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
-        key = pObject.key;
-        info = pObject.info;
-        someTest = pObject.someTest;
-        dummy1 = pObject.dummy1;
-        dummy2 = pObject.dummy2;
-        dummy3 = pObject.dummy3;
+        this.setKey(pObject.key);
+        this.setInfo(pObject.info);
+        this.setSomeTest(pObject.someTest);
+        this.setDummy1(pObject.dummy1);
+        this.setDummy2(pObject.dummy2);
+        this.setDummy3(pObject.dummy3);
       }
     }
 

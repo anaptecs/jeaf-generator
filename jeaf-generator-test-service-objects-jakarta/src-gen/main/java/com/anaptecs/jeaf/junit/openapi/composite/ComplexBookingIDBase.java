@@ -126,11 +126,11 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
     protected BuilderBase( ComplexBookingIDBase pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
-        internalID = pObject.internalID;
-        referenceID = pObject.referenceID;
-        bookingIDs = pObject.bookingIDs;
-        complexBookingType = pObject.complexBookingType;
-        anotherID = pObject.anotherID;
+        this.setInternalID(pObject.internalID);
+        this.setReferenceID(pObject.referenceID);
+        this.setBookingIDs(pObject.bookingIDs);
+        this.setComplexBookingType(pObject.complexBookingType);
+        this.setAnotherID(pObject.anotherID);
       }
     }
 

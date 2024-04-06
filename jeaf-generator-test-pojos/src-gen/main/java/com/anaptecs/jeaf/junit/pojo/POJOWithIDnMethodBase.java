@@ -89,7 +89,7 @@ public abstract class POJOWithIDnMethodBase implements Identifiable<ObjectID> {
       if (pObject != null) {
         // Read attribute values from passed object.
         objectID = pObject.objectID;
-        attr = pObject.attr;
+        this.setAttr(pObject.attr);
       }
     }
 

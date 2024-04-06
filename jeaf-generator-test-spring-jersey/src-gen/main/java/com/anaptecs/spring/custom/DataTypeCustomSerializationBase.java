@@ -55,7 +55,7 @@ public abstract class DataTypeCustomSerializationBase {
     protected BuilderBase( DataTypeCustomSerializationBase pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
-        property1 = pObject.property1;
+        this.setProperty1(pObject.property1);
       }
     }
 

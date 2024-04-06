@@ -65,7 +65,7 @@ public abstract class ReadOnlyClientBase implements ServiceObject {
     protected BuilderBase( ReadOnlyClientBase pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
-        name = pObject.name;
+        this.setName(pObject.name);
       }
     }
 

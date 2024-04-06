@@ -90,9 +90,9 @@ public abstract class VersionedObjectSoftLinkBase implements ServiceObject {
     protected BuilderBase( VersionedObjectSoftLinkBase pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
-        objectID = pObject.objectID;
-        dataUnit = pObject.dataUnit;
-        entity = pObject.entity;
+        this.setObjectID(pObject.objectID);
+        this.setDataUnit(pObject.dataUnit);
+        this.setEntity(pObject.entity);
       }
     }
 
