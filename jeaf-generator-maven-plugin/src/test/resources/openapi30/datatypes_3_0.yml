@@ -1,0 +1,44 @@
+openapi: 3.0.3
+
+info:
+  title: Datatypes
+  version: 1.17.5-SNAPSHOT
+paths:
+  # OpenAPI standard requires to define at least 1 operation. This API however seems to be a pure type definition. 
+  # So we define NOP operation here as workaround.
+  /nop:
+    get:
+      operationId: noOperation
+      responses:
+        '200':
+          description: Nothing is the result of nop ;-)
+
+components:
+  securitySchemes:
+    MyOAuthSecuritySchema:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: 'https://example.com/api/oauth/dialog'
+          tokenUrl: 'https://example.com/api/oauth/dialog'
+          refreshUrl: 'https://example.com/api/oauth/dialog'
+          scopes: 
+            read:pets: Read pets data
+            write:pets: Modify pets
+
+        implicit:
+          authorizationUrl: 'https://example.com/api/oauth/dialog'
+          tokenUrl: 'TODO Please add required token URL'
+          refreshUrl: 'https://example.com/api/oauth/dialog'
+          scopes: 
+            read:pets: Read pets data
+            write:pets: Modify pets
+
+  schemas:
+      
+      
+    # com.anaptecs.jeaf.junit.openapi.datatypes.MyDataType
+    MyDataType:
+      type: string
+      nullable: false
+

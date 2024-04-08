@@ -53,6 +53,7 @@ import org.twdata.maven.mojoexecutor.MojoExecutor.ExecutionEnvironment;
 
 import com.anaptecs.jeaf.fwk.generator.util.EnterpriseJavaType;
 import com.anaptecs.jeaf.fwk.generator.util.ModelingTool;
+import com.anaptecs.jeaf.fwk.generator.util.OpenAPIVersion;
 import com.anaptecs.jeaf.fwk.generator.util.RESTLibrary;
 import com.anaptecs.jeaf.fwk.generator.util.ReportFormat;
 import com.anaptecs.jeaf.fwk.generator.util.TargetRuntime;
@@ -689,6 +690,18 @@ public class GeneratorMojo extends AbstractMojo {
   @Parameter(required = false, defaultValue = "false")
   private Boolean validateOpenAPISpec;
 
+  /**
+   * Parameter defines which OpenAPI version is used when generating OpenAPI specifications. As there are breaking
+   * changes between OpenAPI 3.0 and 3.1 unfortunately it is required to define that as part of the Maven build.
+   * Depending on the OpenAPI version different checks on the model have to be applied. <br>
+   * <br>
+   * Breaking changes between OpenAPI 3.0 and 3.1 are described here:
+   * <a href="https://www.openapis.org/blog/2021/02/16/migrating-from-openapi-3-0-to-3-1-0"> Migrating from OpenAPI 3.0
+   * to 3.1.0</a>
+   */
+  @Parameter(required = false)
+  private OpenAPIVersion openAPIVersion = OpenAPIVersion.OPEN_API_3_1;
+
   @Parameter(required = false, defaultValue = "*.yaml,*.yml")
   private List<String> openAPIExtensions = new ArrayList<>();
 
@@ -705,7 +718,6 @@ public class GeneratorMojo extends AbstractMojo {
    * 
    * @see <a href=
    * "https://stackoverflow.com/questions/61157594/why-does-swagger-codegen-convert-an-on-off-string-enum-to-true-false">https://stackoverflow.com/questions/61157594/why-does-swagger-codegen-convert-an-on-off-string-enum-to-true-false<a/>
-   * 
    */
   @Parameter(required = false, defaultValue = "false")
   private Boolean enableYAML11Compatibility;
@@ -1499,6 +1511,7 @@ public class GeneratorMojo extends AbstractMojo {
     if (generateOpenAPISpec) {
       lLog.info("Generate OpenAPI Specification:                   " + generateOpenAPISpec);
       lLog.info("Validate OpenAPI Specification:                   " + validateOpenAPISpec);
+      lLog.info("OpenAPI Version                      :            " + openAPIVersion.name());
       lLog.info("OpenAPI Specification file extensions:            " + openAPIExtensions.toString());
       lLog.info("Enable YAML 1.1 compatibility mode:               " + enableYAML11Compatibility);
       lLog.info("OpenAPI YAML multi-line comment style:            " + openAPICommentStyle);
@@ -1777,6 +1790,7 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty("switch.gen.security.roles.report.format", securityRolesReportFormat.name());
 
       System.setProperty("switch.gen.openapispec", generateOpenAPISpec.toString());
+      System.setProperty("switch.gen.openapi.version", openAPIVersion.name());
       System.setProperty("switch.gen.openapi.yaml.11.comapitibility", enableYAML11Compatibility.toString());
       System.setProperty("switch.gen.openapi.openAPICommentStyle", openAPICommentStyle.toString());
 
@@ -2481,7 +2495,10 @@ public class GeneratorMojo extends AbstractMojo {
   private List<String> validateOpenAPISpec( String pFileName ) {
     ParseOptions lOptions = new ParseOptions();
     lOptions.setResolve(true);
-    SwaggerParseResult lResult = new OpenAPIParser().readLocation(pFileName, (List<AuthorizationValue>) null, lOptions);
+
+    // Workaround for https://github.com/OpenAPITools/openapi-generator/issues/14648
+    SwaggerParseResult lResult =
+        new OpenAPIParser().readLocation(pFileName.replaceAll("\\\\", "/"), (List<AuthorizationValue>) null, lOptions);
 
     List<String> lErrorMessages;
     if (lResult == null) {
