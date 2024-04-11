@@ -57,8 +57,9 @@
     <br/><b>Default Value:</b> <code>«this.initValue()»</code>
     «ENDIF -»
     «IF this.hasExample() -»
-    «IF ((JMM::Example) this).exampleValue.length > 0 -»
-    <br/><b>Example:</b> <code>«((JMM::Example) this).exampleValue»</code>
+    «IF this.asExample().hasExampleValue() -»
+    <br/><b>Example(s):</b> <br/><ul>«FOREACH this.asExample().exampleValues AS exampleValue»<li><code>«exampleValue»</code></li>
+    «ENDFOREACH»</ul>
     «ENDIF -»
     «ENDIF -»
     «EXPAND AliasJavadoc -»

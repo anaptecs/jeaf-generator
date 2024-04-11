@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.1.0
 
 info:
   title: Product Base Definitions
@@ -207,7 +207,8 @@ components:
             The business code of the channel
           type: string
           default: 'WEBSHOP'
-          example: MOBILE_APP
+          examples:
+           - MOBILE_APP
           nullable: false
         code:
           type: integer
@@ -426,7 +427,8 @@ components:
           type: string
           format: time
           nullable: false
-          example: 12:07
+          examples:
+           - 12:07
         localDate:
           type: string
           format: date
@@ -585,7 +587,8 @@ components:
           default: 'CHF'
           minLength: 3
           maxLength: 3
-          example: CHF
+          examples:
+           - CHF
           nullable: false
 
     # com.anaptecs.spring.base.NoSubTypesChild
@@ -1381,7 +1384,8 @@ components:
         link:
           type: string
           nullable: false
-          example: https://www.company.com/products/1345-345
+          examples:
+           - https://www.company.com/products/1345-345
         productID:
           type: string
           nullable: false
@@ -1394,7 +1398,8 @@ components:
             default: 'CHF'
             minLength: 3
             maxLength: 3
-            example: CHF
+            examples:
+             - CHF
           minItems: 7
           maxItems: 42
           nullable: false

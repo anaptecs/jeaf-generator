@@ -30,7 +30,10 @@ public class CurrencyCode implements ServiceObject {
   /**
    * ISO 4217 currency code. <br/>
    * <b>Default Value:</b> <code>"CHF"</code> <br/>
-   * <b>Example:</b> <code>CHF</code>
+   * <b>Example(s):</b> <br/>
+   * <ul>
+   * <li><code>CHF</code></li>
+   * </ul>
    */
   @Size(min = 3, max = 3)
   private String code;
@@ -76,7 +79,10 @@ public class CurrencyCode implements ServiceObject {
     /**
      * ISO 4217 currency code. <br/>
      * <b>Default Value:</b> <code>"CHF"</code> <br/>
-     * <b>Example:</b> <code>CHF</code>
+     * <b>Example(s):</b> <br/>
+     * <ul>
+     * <li><code>CHF</code></li>
+     * </ul>
      */
     // "String"
     @BuilderPropertyDeclaration

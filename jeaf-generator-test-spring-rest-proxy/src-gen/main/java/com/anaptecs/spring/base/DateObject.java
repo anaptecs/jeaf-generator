@@ -44,7 +44,10 @@ public class DateObject {
 
   /**
    * <br/>
-   * <b>Example:</b> <code>12:07</code>
+   * <b>Example(s):</b> <br/>
+   * <ul>
+   * <li><code>12:07</code></li>
+   * </ul>
    */
   private LocalTime localTime;
 
@@ -125,7 +128,10 @@ public class DateObject {
   public static class Builder {
     /**
      * <br/>
-     * <b>Example:</b> <code>12:07</code>
+     * <b>Example(s):</b> <br/>
+     * <ul>
+     * <li><code>12:07</code></li>
+     * </ul>
      */
     private LocalTime localTime;
 

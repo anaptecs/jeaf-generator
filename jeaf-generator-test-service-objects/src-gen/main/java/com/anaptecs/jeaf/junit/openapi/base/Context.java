@@ -58,7 +58,10 @@ public class Context implements ServiceObject {
 
   /**
    * <br/>
-   * <b>Example:</b> <code>en</code>
+   * <b>Example(s):</b> <br/>
+   * <ul>
+   * <li><code>en</code></li>
+   * </ul>
    */
   private Locale language;
 
@@ -144,7 +147,10 @@ public class Context implements ServiceObject {
 
     /**
      * <br/>
-     * <b>Example:</b> <code>en</code>
+     * <b>Example(s):</b> <br/>
+     * <ul>
+     * <li><code>en</code></li>
+     * </ul>
      */
     private Locale language;
 

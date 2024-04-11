@@ -66,7 +66,10 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
 
   /**
    * <br/>
-   * <b>Example:</b> <code>https://www.company.com/products/1345-345</code>
+   * <b>Example(s):</b> <br/>
+   * <ul>
+   * <li><code>https://www.company.com/products/1345-345</code></li>
+   * </ul>
    */
   @NotNull
   private URL link;
@@ -185,7 +188,10 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
 
     /**
      * <br/>
-     * <b>Example:</b> <code>https://www.company.com/products/1345-345</code>
+     * <b>Example(s):</b> <br/>
+     * <ul>
+     * <li><code>https://www.company.com/products/1345-345</code></li>
+     * </ul>
      */
     private URL link;
 

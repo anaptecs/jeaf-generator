@@ -55,7 +55,10 @@ public class DeprecatedContext implements ServiceObject {
   @ClassPropertyDeclaration
   /**
    * <br/>
-   * <b>Example:</b> <code>en</code>
+   * <b>Example(s):</b> <br/>
+   * <ul>
+   * <li><code>en</code></li>
+   * </ul>
    */
   private Locale language;
 
@@ -130,7 +133,10 @@ public class DeprecatedContext implements ServiceObject {
 
     /**
      * <br/>
-     * <b>Example:</b> <code>en</code>
+     * <b>Example(s):</b> <br/>
+     * <ul>
+     * <li><code>en</code></li>
+     * </ul>
      */
     // "java.util.Locale"
     @BuilderPropertyDeclaration

@@ -34,7 +34,10 @@ public class ChannelCode {
   /**
    * channel code <br/>
    * <b>Default Value:</b> <code>"WEBSHOP"</code> <br/>
-   * <b>Example:</b> <code>MOBILE_APP</code>
+   * <b>Example(s):</b> <br/>
+   * <ul>
+   * <li><code>MOBILE_APP</code></li>
+   * </ul>
    */
   @NotNull
   private String code;
@@ -87,7 +90,10 @@ public class ChannelCode {
     /**
      * channel code <br/>
      * <b>Default Value:</b> <code>"WEBSHOP"</code> <br/>
-     * <b>Example:</b> <code>MOBILE_APP</code>
+     * <b>Example(s):</b> <br/>
+     * <ul>
+     * <li><code>MOBILE_APP</code></li>
+     * </ul>
      */
     @NotNull
     private String code = "WEBSHOP";

@@ -616,4 +616,17 @@ public class OpenAPIHelper {
     }
     return lDeadPathParams;
   }
+
+  public static OpenAPIVersion getOpenAPIVersion( ) {
+    String lValue = SystemProperties.getProperty("switch.gen.openapi.version", OpenAPIVersion.OPEN_API_3_1.name());
+    return OpenAPIVersion.valueOf(lValue);
+  }
+
+  public static boolean isOpenAPIVersion31( ) {
+    return OpenAPIVersion.OPEN_API_3_1 == getOpenAPIVersion();
+  }
+
+  public static boolean isOpenAPIVersion30( ) {
+    return OpenAPIVersion.OPEN_API_3_0 == getOpenAPIVersion();
+  }
 }

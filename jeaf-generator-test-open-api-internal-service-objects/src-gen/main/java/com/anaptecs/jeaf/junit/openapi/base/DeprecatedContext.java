@@ -34,7 +34,10 @@ public class DeprecatedContext implements ServiceObject {
 
   /**
    * <br/>
-   * <b>Example:</b> <code>en</code>
+   * <b>Example(s):</b> <br/>
+   * <ul>
+   * <li><code>en</code></li>
+   * </ul>
    */
   @HeaderParam("lang")
   @NotNull
@@ -123,7 +126,10 @@ public class DeprecatedContext implements ServiceObject {
 
     /**
      * <br/>
-     * <b>Example:</b> <code>en</code>
+     * <b>Example(s):</b> <br/>
+     * <ul>
+     * <li><code>en</code></li>
+     * </ul>
      */
     private Locale language;
 

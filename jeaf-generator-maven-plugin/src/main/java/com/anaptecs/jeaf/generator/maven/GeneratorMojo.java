@@ -1511,7 +1511,7 @@ public class GeneratorMojo extends AbstractMojo {
     if (generateOpenAPISpec) {
       lLog.info("Generate OpenAPI Specification:                   " + generateOpenAPISpec);
       lLog.info("Validate OpenAPI Specification:                   " + validateOpenAPISpec);
-      lLog.info("OpenAPI Version                      :            " + openAPIVersion.name());
+      lLog.info("OpenAPI Version:                                  " + openAPIVersion.name());
       lLog.info("OpenAPI Specification file extensions:            " + openAPIExtensions.toString());
       lLog.info("Enable YAML 1.1 compatibility mode:               " + enableYAML11Compatibility);
       lLog.info("OpenAPI YAML multi-line comment style:            " + openAPICommentStyle);
