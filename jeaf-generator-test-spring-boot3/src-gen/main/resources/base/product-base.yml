@@ -1230,8 +1230,7 @@ components:
         aByte:
           type: integer
           format: int32
-          maximum: 0
-          exclusiveMaximum: true
+          exclusiveMaximum: 0
           nullable: false
         bByte:
           type: integer
@@ -1246,8 +1245,7 @@ components:
         bShort:
           type: integer
           format: int32
-          minimum: 0
-          exclusiveMinimum: true
+          exclusiveMinimum: 0
           nullable: false
         aInteger:
           type: integer
@@ -1272,16 +1270,13 @@ components:
         bLong:
           type: integer
           format: int64
-          maximum: 299792458
-          exclusiveMaximum: true
+          exclusiveMaximum: 299792458
           nullable: false
         aBigInteger:
           type: integer
           format: int64
           maximum: 3.14159265359
-          exclusiveMaximum: false
           minimum: -3.14159265359
-          exclusiveMinimum: false
           nullable: false
         aCharacter:
           type: string
@@ -1310,7 +1305,6 @@ components:
           type: number
           format: double
           minimum: 4711.0815
-          exclusiveMinimum: false
           nullable: false
         aString:
           type: string
@@ -1422,8 +1416,7 @@ components:
     ProductCode:
       type: integer
       format: int32
-      minimum: 0
-      exclusiveMinimum: true
+      exclusiveMinimum: 0
       nullable: false
 
     # com.anaptecs.spring.base.Reseller

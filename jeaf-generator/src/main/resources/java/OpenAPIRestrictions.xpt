@@ -2,6 +2,7 @@
 «IMPORT JMM»
 «EXTENSION java::Naming»
 «EXTENSION java::CustomValidationCommons»
+«EXTENSION java::OpenAPIFunctions»
 «EXTENSION org::openarchitectureware::util::stdlib::io»
 
 «DEFINE OpenAPIRestrictions(String indent) FOR MultiplicityElement -»
@@ -48,13 +49,27 @@
 
 
 «DEFINE DecimalMinAnnotation(String indent) FOR DecimalMin -»
+«IF isOpenAPIVersion30() -»
 «indent»      minimum: «this.minValue»
 «indent»      exclusiveMinimum: «!this.inclusive -»
+«ELSE -»
+«IF inclusive -»
+«indent»      minimum: «this.minValue»«ELSE -»
+«indent»      exclusiveMinimum: «this.minValue -»
+«ENDIF -»
+«ENDIF -»
 «ENDDEFINE»
 
 «DEFINE DecimalMaxAnnotation(String indent) FOR DecimalMax -»
+«IF isOpenAPIVersion30() -»
 «indent»      maximum: «this.maxValue»
 «indent»      exclusiveMaximum: «!this.inclusive -»
+«ELSE -»
+«IF inclusive -»
+«indent»      maximum: «this.maxValue»«ELSE -»
+«indent»      exclusiveMaximum: «this.maxValue -»
+«ENDIF -»
+«ENDIF -»
 «ENDDEFINE»
 
 «DEFINE MinValueAnnotation(String indent) FOR Min-»
@@ -66,8 +81,10 @@
 «ENDDEFINE»
 
 «DEFINE NegativeAnnotation(String indent) FOR Negative -»
+«IF isOpenAPIVersion30() -»
 «indent»      maximum: 0
-«indent»      exclusiveMaximum: true«ENDDEFINE»
+«indent»      exclusiveMaximum: true«ELSE -»
+«indent»      exclusiveMaximum: 0«ENDIF -»«ENDDEFINE»
 
 «DEFINE NegativeOrZeroAnnotation(String indent) FOR NegativeOrZero -»
 «indent»      maximum: 0«ENDDEFINE»
@@ -76,8 +93,10 @@
 «indent»      minimum: 0«ENDDEFINE»
 
 «DEFINE PositiveAnnotation(String indent) FOR Positive -»
+«IF isOpenAPIVersion30() -»
 «indent»      minimum: 0
-«indent»      exclusiveMinimum: true«ENDDEFINE»
+«indent»      exclusiveMinimum: true«ELSE -»
+«indent»      exclusiveMinimum: 0«ENDIF -»«ENDDEFINE»
 
 «DEFINE SizeAnnotation(String indent) FOR Size -»
           «IF min != -1 && max != -1 -»
