@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.1.0
 
 info:
   title: Product Services
@@ -103,7 +103,8 @@ paths:
             application/json:
               schema:
                 type: boolean
-                example: true
+                examples:
+                 - true
           headers:
             X-Global-Response-Header:
               schema:
@@ -143,7 +144,8 @@ paths:
             type: string
             minLength: 1
             default: 4711
-            example: 1234-345
+            examples:
+             - 1234-345
       responses:
         '201':
           description: >-
@@ -181,7 +183,8 @@ paths:
           required: true
           schema:
             type: string
-            example: en
+            examples:
+             - en
         - name: reseller
           in: cookie
           required: true
@@ -235,11 +238,13 @@ paths:
           application/json:
             schema:
               type: string
-              example: MOBILE_APP
+              examples:
+               - MOBILE_APP
           application/xml:
             schema:
               type: string
-              example: MOBILE_APP
+              examples:
+               - MOBILE_APP
       responses:
         '201':
           description: >-
@@ -249,13 +254,17 @@ paths:
               schema:
                 type: string
                 default: 'WEBSHOP'
-                example: MOBILE_APP
+                examples:
+                 - MOBILE_APP
+                 - WEBSHOP
                 nullable: false
             application/xml:
               schema:
                 type: string
                 default: 'WEBSHOP'
-                example: MOBILE_APP
+                examples:
+                 - MOBILE_APP
+                 - WEBSHOP
                 nullable: false
           headers:
             X-Global-Response-Header:
@@ -310,7 +319,8 @@ paths:
           required: true
           schema:
             type: string
-            example: en
+            examples:
+             - en
         - name: reseller
           in: cookie
           required: true
@@ -493,7 +503,8 @@ paths:
           required: true
           schema:
             type: string
-            example: en
+            examples:
+             - en
         - name: reseller
           in: cookie
           required: true
@@ -561,7 +572,9 @@ paths:
             schema:
                 type: string
                 default: 'WEBSHOP'
-                example: MOBILE_APP
+                examples:
+                 - MOBILE_APP
+                 - WEBSHOP
                 nullable: false
       responses:
         '201':
@@ -572,7 +585,9 @@ paths:
               schema:
                 type: string
                 default: 'WEBSHOP'
-                example: MOBILE_APP
+                examples:
+                 - MOBILE_APP
+                 - WEBSHOP
                 nullable: false
           headers:
             X-Global-Response-Header:
@@ -602,10 +617,12 @@ paths:
                   type: string
                   minLength: 3
                   maxLength: 3
-                  example: CHF
+                  examples:
+                   - CHF
                 minItems: 1
                 nullable: false
-                example: ["CHF", "EUR", "USD"]
+                examples:
+                 - ["CHF", "EUR", "USD"]
       responses:
         '201':
           description: >-
@@ -620,7 +637,8 @@ paths:
                   type: string
                   minLength: 3
                   maxLength: 3
-                  example: CHF
+                  examples:
+                   - CHF
                 minItems: 1
                 nullable: false
           headers:
@@ -650,7 +668,8 @@ paths:
                 default: 'CHF'
                 minLength: 3
                 maxLength: 3
-                example: CHF
+                examples:
+                 - CHF
                 nullable: false
       responses:
         '201':
@@ -665,7 +684,8 @@ paths:
                 default: 'CHF'
                 minLength: 3
                 maxLength: 3
-                example: CHF
+                examples:
+                 - CHF
                 nullable: false
           headers:
             X-Global-Response-Header:
@@ -888,7 +908,9 @@ paths:
           schema:
             type: string
             default: 'WEBSHOP'
-            example: MOBILE_APP
+            examples:
+             - MOBILE_APP
+             - WEBSHOP
             nullable: false
       responses:
         '201':
@@ -904,7 +926,8 @@ paths:
                   type: string
                   minLength: 3
                   maxLength: 3
-                  example: CHF
+                  examples:
+                   - CHF
                 nullable: true
           headers:
             X-Global-Response-Header:
@@ -927,7 +950,9 @@ paths:
           schema:
             type: string
             default: 'WEBSHOP'
-            example: MOBILE_APP
+            examples:
+             - MOBILE_APP
+             - WEBSHOP
             nullable: false
       responses:
         '201':
@@ -943,7 +968,8 @@ paths:
                   type: string
                   minLength: 3
                   maxLength: 3
-                  example: CHF
+                  examples:
+                   - CHF
                 nullable: true
           headers:
             X-Global-Response-Header:
@@ -1647,7 +1673,8 @@ paths:
           required: true
           schema:
             type: string
-            example: en
+            examples:
+             - en
         - name: reseller
           in: cookie
           required: true

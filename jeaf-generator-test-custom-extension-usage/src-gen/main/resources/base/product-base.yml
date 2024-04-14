@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.1.0
 
 info:
   title: Product Base Definitions
@@ -344,7 +344,9 @@ components:
             The business code of the channel
           type: string
           default: 'WEBSHOP'
-          example: MOBILE_APP
+          examples:
+           - MOBILE_APP
+           - WEBSHOP
           nullable: false
         code:
           type: integer
@@ -599,7 +601,8 @@ components:
           type: string
           format: time
           nullable: false
-          example: 12:07
+          examples:
+           - 12:07
         localDate:
           type: string
           format: date
@@ -845,7 +848,8 @@ components:
           default: 'CHF'
           minLength: 3
           maxLength: 3
-          example: CHF
+          examples:
+           - CHF
           nullable: false
 
     # com.anaptecs.jeaf.junit.openapi.base.MyFirstResponse
@@ -1499,8 +1503,7 @@ components:
         aByte:
           type: integer
           format: int32
-          maximum: 0
-          exclusiveMaximum: true
+          exclusiveMaximum: 0
           nullable: false
         bByte:
           type: integer
@@ -1515,8 +1518,7 @@ components:
         bShort:
           type: integer
           format: int32
-          minimum: 0
-          exclusiveMinimum: true
+          exclusiveMinimum: 0
           nullable: false
         aInteger:
           type: integer
@@ -1541,16 +1543,13 @@ components:
         bLong:
           type: integer
           format: int64
-          maximum: 299792458
-          exclusiveMaximum: true
+          exclusiveMaximum: 299792458
           nullable: false
         aBigInteger:
           type: integer
           format: int64
           maximum: 3.14159265359
-          exclusiveMaximum: false
           minimum: -3.14159265359
-          exclusiveMinimum: false
           nullable: false
         aCharacter:
           type: string
@@ -1579,7 +1578,6 @@ components:
           type: number
           format: double
           minimum: 4711.0815
-          exclusiveMinimum: false
           nullable: false
         aString:
           type: string
@@ -1655,7 +1653,8 @@ components:
         link:
           type: string
           nullable: false
-          example: https://www.company.com/products/1345-345
+          examples:
+           - https://www.company.com/products/1345-345
         productID:
           type: string
           nullable: false
@@ -1668,7 +1667,8 @@ components:
             default: 'CHF'
             minLength: 3
             maxLength: 3
-            example: CHF
+            examples:
+             - CHF
           minItems: 7
           maxItems: 42
           nullable: false
@@ -1691,8 +1691,7 @@ components:
     ProductCode:
       type: integer
       format: int32
-      minimum: 0
-      exclusiveMinimum: true
+      exclusiveMinimum: 0
       nullable: false
 
     # com.anaptecs.jeaf.junit.openapi.base.Reseller
@@ -1859,9 +1858,7 @@ components:
               type: integer
               format: int32
               maximum: 32.777
-              exclusiveMaximum: false
               minimum: 1.025
-              exclusiveMinimum: false
               nullable: false
             code:
               type: integer
@@ -1872,8 +1869,7 @@ components:
             index2:
               type: integer
               format: int32
-              minimum: 0
-              exclusiveMinimum: true
+              exclusiveMinimum: 0
               nullable: false
 
     # com.anaptecs.jeaf.junit.openapi.base.UICStopPlace

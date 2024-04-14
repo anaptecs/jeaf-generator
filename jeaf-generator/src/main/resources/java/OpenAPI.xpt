@@ -15,7 +15,7 @@
 
 «DEFINE GenerateOpenAPI FOR OpenAPI3Specification»
 	«FILE resourceName res_gen-»
-openapi: «openAPIVersion»
+openapi: «getOpenAPIVersion()»
 
 info:
   title: «name»

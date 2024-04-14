@@ -520,4 +520,9 @@ cached boolean isOpenAPIVersion31( ):
 
 cached boolean isOpenAPIVersion30( ):
      JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.isOpenAPIVersion30();
+     
+cached String getOpenAPIVersion():
+    if isOpenAPIVersion30()
+    then "3.0.3"
+    else "3.1.0";
     
