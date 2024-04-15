@@ -15,7 +15,7 @@
 
 «DEFINE GenerateOpenAPI FOR OpenAPI3Specification»
 	«FILE resourceName res_gen-»
-openapi: «openAPIVersion»
+openapi: «getOpenAPIVersion()»
 
 info:
   title: «name»
@@ -128,11 +128,7 @@ components:
             pattern: '«parameter.getPatternForProperty()»'
           «ENDIF-»
         «ENDIF-»
-        «IF parameter.hasExample()-»
-          «IF ((Example) parameter).exampleValue.length > 0-»
-          example: «((Example) parameter).exampleValue»
-          «ENDIF-»
-        «ENDIF-»
+        «EXPAND java::OpenAPIHelper::GenerateExample("          ") FOR parameter -»
       «ELSE-»
       	«IF parameter.type.isOpenAPIDataType() -»
       		«IF ((JMM::OpenAPIDataType)parameter.type).compositeDataType -»
@@ -145,11 +141,7 @@ components:
           			«IF parameter.type.attribute().first().hasPatternForProperty() -»
         pattern: '«parameter.type.attribute().first().getPatternForProperty()»'
           			«ENDIF-»
-        		«IF parameter.hasExample()-»
-          			«IF ((Example) parameter).exampleValue.length > 0-»
-          example: «((Example) parameter).exampleValue»
-          			«ENDIF-»
-        		«ENDIF-»
+        		«EXPAND java::OpenAPIHelper::GenerateExample("          ") FOR parameter -»
       		«ENDIF-»
       	«ELSE-»
       		«IF parameter.type.isEnumeration() -»
@@ -325,11 +317,7 @@ components:
               pattern: '«property.getPatternForProperty()»'
                     «ENDIF-»
             	«ENDIF -»
-                «IF property.hasExample()-»
-                  «IF ((Example) property).exampleValue.length > 0-»
-            example: «((Example) property).exampleValue»
-                  «ENDIF-»
-                «ENDIF-»
+                «EXPAND java::OpenAPIHelper::GenerateExample("            ") FOR property -»
             «ELSE -»
               «IF property.type.isOpenAPIDataType() && ((OpenAPIDataType) property.type).inline == true -»
               «EXPAND java::OpenAPIDataType::GenerateOpenAPIDataType(this, property,"  ", false) FOR (OpenAPIDataType) property.type -»
@@ -398,11 +386,7 @@ components:
                     «ENDIF-»
               «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("        ") FOR param-»
             	«ENDIF-»
-                «IF param.hasExample()-»
-                  «IF ((Example) param).exampleValue.length > 0-»
-            example: «((Example) param).exampleValue»
-                  «ENDIF-»
-                «ENDIF-»
+                «EXPAND java::OpenAPIHelper::GenerateExample("            ") FOR param -»
             «ELSE-»
               «IF param.type.isOpenAPIDataType() && ((OpenAPIDataType) param.type).inline == true -»
               «EXPAND java::OpenAPIDataType::GenerateOpenAPIDataTypeForPath(this, param,"") FOR (OpenAPIDataType) param.type -»
@@ -467,11 +451,7 @@ components:
                 deprecated: true
                   «ENDIF-»                
                 «ENDIF-»
-                «IF param.hasExample()-»
-                  «IF ((Example) param).exampleValue.length > 0-»
-              example: «((Example) param).exampleValue»
-                  «ENDIF-»
-                «ENDIF-»
+                «EXPAND java::OpenAPIHelper::GenerateExample("              ") FOR param -»
               «ELSE-»
                 «IF param.isMultivalued() == false-»
               $ref: «param.type.getOpenAPIType(this)»
@@ -525,11 +505,7 @@ components:
                   pattern: '«returnParam.getPatternForParam()»'
                     «ENDIF-»
                   «ENDIF-»
-                  «IF returnParam.hasExample()-»
-                    «IF ((Example) returnParam).exampleValue.length > 0-»
-                example: «((Example) returnParam).exampleValue»
-                    «ENDIF-»
-                «ENDIF-»
+                  «EXPAND java::OpenAPIHelper::GenerateExample("                ") FOR returnParam -»
                 «ELSE-»
                   «IF returnParam.isMultivalued() == false-»
                 $ref: «returnParam.type.getOpenAPIType(this)»

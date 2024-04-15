@@ -68,7 +68,10 @@ public class Context implements Serializable {
 
   /**
    * <br/>
-   * <b>Example:</b> <code>en</code>
+   * <b>Example(s):</b> <br/>
+   * <ul>
+   * <li><code>en</code></li>
+   * </ul>
    */
   @HeaderParam("lang")
   private Locale language;
@@ -184,7 +187,10 @@ public class Context implements Serializable {
 
     /**
      * <br/>
-     * <b>Example:</b> <code>en</code>
+     * <b>Example(s):</b> <br/>
+     * <ul>
+     * <li><code>en</code></li>
+     * </ul>
      */
     private Locale language;
 

@@ -57,7 +57,10 @@ public class DateObject implements Serializable {
 
   /**
    * <br/>
-   * <b>Example:</b> <code>12:07</code>
+   * <b>Example(s):</b> <br/>
+   * <ul>
+   * <li><code>12:07</code></li>
+   * </ul>
    */
   private LocalTime localTime;
 
@@ -155,7 +158,10 @@ public class DateObject implements Serializable {
   public static class Builder {
     /**
      * <br/>
-     * <b>Example:</b> <code>12:07</code>
+     * <b>Example(s):</b> <br/>
+     * <ul>
+     * <li><code>12:07</code></li>
+     * </ul>
      */
     private LocalTime localTime;
 

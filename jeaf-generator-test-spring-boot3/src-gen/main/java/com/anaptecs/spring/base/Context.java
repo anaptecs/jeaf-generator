@@ -54,7 +54,10 @@ public class Context {
 
   /**
    * <br/>
-   * <b>Example:</b> <code>en</code>
+   * <b>Example(s):</b> <br/>
+   * <ul>
+   * <li><code>en</code></li>
+   * </ul>
    * <p/>
    * <b>Header-Param:</b> lang
    */
@@ -149,7 +152,10 @@ public class Context {
 
     /**
      * <br/>
-     * <b>Example:</b> <code>en</code>
+     * <b>Example(s):</b> <br/>
+     * <ul>
+     * <li><code>en</code></li>
+     * </ul>
      * <p/>
      * <b>Header-Param:</b> lang
      */

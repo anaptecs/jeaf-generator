@@ -515,3 +515,14 @@ List[String] detectDeadRESTPathParams(JMM::RESTOperation operation):
 private List[String] javaDetectDeadRESTPathParams(String restPath, List[String] restPathParamNames):
     JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.detectDeadRESTPathParams(java.lang.String, java.util.List);
     
+cached boolean isOpenAPIVersion31( ):
+     JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.isOpenAPIVersion31();
+
+cached boolean isOpenAPIVersion30( ):
+     JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.isOpenAPIVersion30();
+     
+cached String getOpenAPIVersion():
+    if isOpenAPIVersion30()
+    then "3.0.3"
+    else "3.1.0";
+    

@@ -1,0 +1,11 @@
+extension java::GeneratorCommons;
+
+boolean hasExample(uml::NamedElement element):
+    element.isStereotypeApplied("Example");
+  
+JMM::Example asExample(uml::NamedElement element):
+    (JMM::Example) element;
+    
+cached boolean hasExampleValue(JMM::Example example):
+    example.exampleValues.isEmpty == false && example.exampleValues.selectFirst(e|e.length > 0) != null;
+  

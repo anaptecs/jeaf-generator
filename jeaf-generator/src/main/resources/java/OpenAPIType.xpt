@@ -113,7 +113,15 @@
               «ELSEIF attribute.isSoftLink()-»
           type: array
           items:
+            «IF isOpenAPIVersion30() -»
             type: «((SoftLink)attribute).getOpenAPISoftLinkType()»
+            «ELSE -»
+            type: 
+              - «((SoftLink)attribute).getOpenAPISoftLinkType()»
+              «IF attribute.isNullable() -»
+              - "null"
+              «ENDIF -»
+            «ENDIF -»
               «IF ((SoftLink)attribute).hasOpenAPISoftLinkFormat() -»
             format: «((SoftLink)attribute).getOpenAPISoftLinkFormat()»
               «ENDIF-»
@@ -123,7 +131,15 @@
               «ELSE -»
           type: array
           items:
+            «IF isOpenAPIVersion30() -»
             type: «attribute.type.getOpenAPIType(spec)»
+            «ELSE -»
+            type: 
+              - «attribute.type.getOpenAPIType(spec)»
+              «IF attribute.isNullable() -»
+              - "null"
+              «ENDIF -»
+            «ENDIF -»
               «IF attribute.hasOpenAPIFormatForProperty()-»
             format: «attribute.getOpenAPIFormatForProperty()»
               «ENDIF-»
@@ -136,7 +152,9 @@
               «ENDIF-»
             «ENDIF-»
            «ENDIF-»
+          «IF attribute.isMultivalued() == false || isOpenAPIVersion30() || attribute.type.isByteType() -»
           nullable: «attribute.isNullable()»
+          «ENDIF -»
           «IF attribute.isReadOnly() && true == false  -»
           readOnly: «attribute.isReadOnly()»
           «ENDIF-»  
@@ -146,11 +164,7 @@
           «IF attribute.defaultValue != null -»
           default: «attribute.defaultValue.stringValue().replaceAll("\"", "'")»
           «ENDIF-»
-            «IF attribute.hasExample()-»
-              «IF ((Example) attribute).exampleValue.length > 0-»
-          example: «((Example) attribute).exampleValue»
-              «ENDIF-»
-            «ENDIF-»
+          «EXPAND java::OpenAPIHelper::GenerateExample("          ") FOR attribute -»
           «REM»Handling complex types«ENDREM-»
           «ELSE-»
             «IF attribute.isMultivalued() == false && this.hasMultivaluedTemplateBinding(attribute) == false -»
@@ -284,7 +298,15 @@
               «ELSEIF attribute.isSoftLink()-»
               type: array
               items:
+                «IF isOpenAPIVersion30() -»
                 type: «((SoftLink)attribute).getOpenAPISoftLinkType()»
+                «ELSE -»
+                type: 
+                  - «((SoftLink)attribute).getOpenAPISoftLinkType()»
+                  «IF attribute.isNullable() -»
+                  - "null"
+                  «ENDIF -»
+                «ENDIF -»
               «IF ((SoftLink)attribute).hasOpenAPISoftLinkFormat() -»
                 format: «((SoftLink)attribute).getOpenAPISoftLinkFormat()»
               «ENDIF-»
@@ -294,7 +316,15 @@
               «ELSE -»
               type: array
               items:
+                «IF isOpenAPIVersion30() -»
                 type: «attribute.type.getOpenAPIType(spec)»
+                «ELSE -»
+                type: 
+                  - «attribute.type.getOpenAPIType(spec)»
+                  «IF attribute.isNullable() -»
+                  - "null"
+                  «ENDIF -»
+                «ENDIF -»
               «IF attribute.hasOpenAPIFormatForProperty()-»
                 format: «attribute.getOpenAPIFormatForProperty()»
               «ENDIF-»
@@ -307,7 +337,9 @@
               «ENDIF-»
             «ENDIF-»
            «ENDIF-»
+              «IF attribute.isMultivalued() == false || isOpenAPIVersion30() || attribute.type.isByteType() -»
               nullable: «attribute.isNullable()»
+              «ENDIF -»
           «IF attribute.isReadOnly() && true == false -»
               readOnly: «attribute.isReadOnly()»
           «ENDIF-»  
@@ -317,11 +349,7 @@
           «IF attribute.defaultValue != null -»
               default: «attribute.defaultValue.stringValue().replaceAll("\"", "'")»
           «ENDIF-»
-            «IF attribute.hasExample()-»
-              «IF ((Example) attribute).exampleValue.length > 0-»
-              example: «((Example) attribute).exampleValue»
-              «ENDIF-»
-            «ENDIF-»
+            «EXPAND java::OpenAPIHelper::GenerateExample("              ") FOR attribute -»
           «REM»Handling complex types«ENDREM-»
           «ELSE-»
             «IF attribute.isMultivalued() == false-»

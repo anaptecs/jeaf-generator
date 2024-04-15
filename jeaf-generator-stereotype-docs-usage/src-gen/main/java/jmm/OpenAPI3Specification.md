@@ -16,7 +16,6 @@ Stereotype `«OpenAPI3Specification»` can be used to mark a component as OpenAP
 | **Tagged Values**       |                       |                                                                                                                                                                                                          |
 | **Name**                | **Type**              | **Description**                                                                                                                                                                                          |
 | `resourceName`   | `String` | Name of the file that will be generated as OpenAPI specification file. By default it will be named as `openapi.yml`. |
-| `openAPIVersion`   | `String` | OpenAPI version on which the specification is based. Default value is `3.1.0`. |
 | `apiVersion`   | `String` | Version of the API that is represented by this OpenAPI specification. We strongly recommend to version you API according to the rules of [Semantic Versioning](https://semver.org). |
 | `contactName`   | `String` | Name of the team or person that will be mentioned in your OpenAPI specification as contact. |
 | `contactURL`   | `String` | URL of the contact for your OpenAPI specification. |

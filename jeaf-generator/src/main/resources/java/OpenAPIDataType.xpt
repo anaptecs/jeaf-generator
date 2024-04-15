@@ -39,11 +39,7 @@
               «IF attribute.isDeprecated() || ownerAttribute.type.isDeprecated() -»
 «indentation»          deprecated: true
               «ENDIF-»
-              «IF attribute.hasExample()-»
-                «IF ((Example) attribute).exampleValue.length > 0-»
-«indentation»          example: «((Example) attribute).exampleValue»
-                «ENDIF-»
-              «ENDIF-»
+              «EXPAND java::OpenAPIHelper::GenerateExample(indentation + "          ") FOR attribute -»
           «ENDIF-»
           «ELSE-»
 «indentation»          type: array
@@ -65,11 +61,7 @@
 «indentation»            default: «attribute.defaultValue.stringValue().replaceAll("\"", "'")»
               «ENDIF-»
             «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions(indentation + "      ") FOR attribute-»
-            «IF attribute.hasExample()-»
-              «IF ((Example) attribute).exampleValue.length > 0-»
-«indentation»            example: «((Example) attribute).exampleValue»
-              «ENDIF-»
-            «ENDIF-»
+            «EXPAND java::OpenAPIHelper::GenerateExample(indentation + "            ") FOR attribute -»
             «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions(indentation + "    ") FOR ownerAttribute-»
               «IF attribute.isDeprecated() || ownerAttribute.type.isDeprecated() -»
 «indentation»            deprecated: true
@@ -83,11 +75,7 @@
           «IF ownerAttribute.isWriteOnly() -»
 «indentation»          writeOnly: «ownerAttribute.isWriteOnly()»
           «ENDIF-»  
-            «IF ownerAttribute.hasExample()-»
-              «IF ((Example) ownerAttribute).exampleValue.length > 0-»
-«indentation»          example: «((Example) ownerAttribute).exampleValue»
-              «ENDIF-»
-            «ENDIF-»
+            «EXPAND java::OpenAPIHelper::GenerateExample(indentation + "          ") FOR ownerAttribute -»
     «ELSE-»
     «IF suppressClassNameCommentInOpenAPISpec() == false -»
     # «this.fqn()»
@@ -124,11 +112,7 @@
       «IF attribute.isWriteOnly() -»
       writeOnly: «attribute.isWriteOnly()»
       «ENDIF-»
-      «IF attribute.hasExample()-»
-        «IF ((Example) attribute).exampleValue.length > 0-»
-      example: «((Example) attribute).exampleValue»
-        «ENDIF-»
-      «ENDIF-»
+      «EXPAND java::OpenAPIHelper::GenerateExample("      ") FOR attribute -»
       «ENDIF-»
     «ENDIF-»         
   «ENDLET -»
@@ -161,11 +145,7 @@
                   «IF attribute.isDeprecated() || param.isDeprecated() -»
 «indent»            deprecated: true
                   «ENDIF-»
-                  «IF attribute.hasExample()-»
-                    «IF ((Example) attribute).exampleValue.length > 0-»
-«indent»            example: «((Example) attribute).exampleValue»
-                    «ENDIF-»
-                  «ENDIF-»
+                  «EXPAND java::OpenAPIHelper::GenerateExample(indent + "            ") FOR attribute -»
                   «ENDIF-»
                 «ELSE-»
 «indent»            type: array
@@ -184,11 +164,7 @@
 «indent»              pattern: '«attribute.getPatternForProperty()»'
                   «ENDIF-»
                   «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions(indent + "        ") FOR attribute-»
-                  «IF attribute.hasExample()-»
-                  «IF ((Example) attribute).exampleValue.length > 0-»
-«indent»              example: «((Example) attribute).exampleValue»
-                  «ENDIF-»
-                  «ENDIF-»
+                  «EXPAND java::OpenAPIHelper::GenerateExample(indent + "              ") FOR attribute -»
                   «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions(indent + "      ") FOR param-»
                   «IF attribute.isDeprecated() || param.isDeprecated() -»
 «indent»            deprecated: true
@@ -196,11 +172,7 @@
                 «ENDIF-»
                 «ENDIF-»
 «indent»            nullable: «param.isNullableForParam()»
-                «IF param.hasExample()-»
-                «IF ((Example) param).exampleValue.length > 0-»
-«indent»            example: «((Example) param).exampleValue»
-                «ENDIF-»
-                «ENDIF-»
+                «EXPAND java::OpenAPIHelper::GenerateExample(indent + "            ") FOR param -»
                 «ENDLET -»
 «ENDDEFINE»
 
