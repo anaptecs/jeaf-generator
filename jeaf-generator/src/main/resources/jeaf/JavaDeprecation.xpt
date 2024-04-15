@@ -25,20 +25,26 @@
 
 
 «DEFINE JavaDeprecationReport FOR Model»
-«LET this.getAllDeprecations() AS deprecations»
 «FILE getJavaDeprecationReportFileName() res_gen-»
 # «getJavaDeprecationReportName()»
 
 <br>
 
-## Deprecated Services
+«FOREACH this.getPackagesForDeprecationsReport() AS package-»
+## Package `«package.fqn()»`
+
+<br>
+
+«LET package.getAllDeprecations() AS deprecations-»
+«IF deprecations.typeSelect(JEAFService).typeSelect(JEAFDeprecated).sortBy(e|e.fqn()).isEmpty == false -»
+### Deprecated Services
 
 <br>
 
 | Service Name   | Description   | Deprecated since   | Planned to be removed   |
 |----------------|---------------|:------------------:|:-----------------------:|
-«FOREACH deprecations.typeSelect(JEAFService).sortBy(e|e.fqn()) AS service-»
-| `«service.fqn()»` | «service.getDeprecationDescriptionForMarkup()» | «service.getDeprecatedSince()» | «service.getDeprecationRemoval()» |
+«FOREACH deprecations.typeSelect(JEAFService).typeSelect(JEAFDeprecated).sortBy(e|e.fqn()) AS service-»
+| `«service.name»` | «service.getDeprecationDescriptionForMarkup()» | «service.getDeprecatedSince()» | «service.getDeprecationRemoval()» |
 «ENDFOREACH-»
 «IF deprecations.typeSelect(JEAFService).size == 0-»
 | No services are marked as deprecated. |
@@ -46,9 +52,10 @@
 
 <br>
 
+«ENDIF -»
 «FOREACH deprecations.typeSelect(JEAFService).sortBy(e|e.fqn()) AS service-»
-«IF service.hasDeprecatedOperations()»
-### `«service.fqn()»`
+«IF service.hasDeprecatedOperations() -»
+#### `«service.name»`
 
 | Operation   |  Parameter   | Description   | Deprecated since   | Planned to be removed   |
 |-------------|--------------|---------------|:------------------:|:-----------------------:|
@@ -63,17 +70,17 @@
 
 <br>
 
-«ENDIF»
-«ENDFOREACH»
-
-## Classes with Deprecations
+«ENDIF-»
+«ENDFOREACH-»
+«IF deprecations.select(e|e.isPOJO() || e.isServiceObject() || e.isDomainObject() || e.isPersistentObject()).sortBy(e|e.fqn()).isEmpty == false -»
+### Classes with Deprecations
 
 <br>
 
 | Type   | Attribute   | Description   | Deprecated since   | Planned to be removed   |
 |--------|-------------|---------------|:------------------:|:-----------------------:|
 «FOREACH deprecations.select(e|e.isPOJO() || e.isServiceObject() || e.isDomainObject() || e.isPersistentObject()).sortBy(e|e.fqn()) AS element-»
-| `«element.fqn()»` | | «element.getDeprecationDescriptionForMarkup()» | «element.getDeprecatedSince()» | «element.getDeprecationRemoval()» |
+| `«element.name»` | | «element.getDeprecationDescriptionForMarkup()» | «element.getDeprecatedSince()» | «element.getDeprecationRemoval()» |
     «IF element.asClass().hasDeprecatedProperties()-»
         «FOREACH element.asClass().getDeprecatedProperties() AS property-»
 |   | `«property.name»` | «property.getDeprecationDescriptionForMarkup()» | «property.getDeprecatedSince()» | «property.getDeprecationRemoval()» |
@@ -86,15 +93,16 @@
 
 <br>
 
-
-## Enumerations with Deprecations
+«ENDIF-»
+«IF deprecations.select(e|e.isJEAFEnumeration()).select(e|e.hasDeprecation()).sortBy(e|e.fqn()).isEmpty == false -»
+### Enumerations with Deprecations
 
 <br>
 
 | Enumeration   | Literal   | Description   | Deprecated since   | Planned to be removed   |
 |---------------|-----------|---------------|:------------------:|:-----------------------:|
 «FOREACH deprecations.select(e|e.isJEAFEnumeration()).select(e|e.hasDeprecation()).sortBy(e|e.fqn()) AS element-»
-| `«element.fqn()»` | | «element.getDeprecationDescriptionForMarkup()» | «element.getDeprecatedSince()» | «element.getDeprecationRemoval()» |
+| `«element.name»` | | «element.getDeprecationDescriptionForMarkup()» | «element.getDeprecatedSince()» | «element.getDeprecationRemoval()» |
     «IF element.asEnumeration().hasDeprecatedLiterals()-»
         «FOREACH element.asEnumeration().getDeprecatedLiterals() AS literal-»
 |   | `«literal.name»` | «literal.getDeprecationDescriptionForMarkup()» | «literal.getDeprecatedSince()» | «literal.getDeprecationRemoval()» |
@@ -107,8 +115,10 @@
 
 <br>
 
+«ENDIF-»
+«ENDLET-»
+«ENDFOREACH-»
 «ENDFILE»
-«ENDLET»
 «ENDDEFINE»
 
 

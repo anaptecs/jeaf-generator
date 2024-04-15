@@ -2,25 +2,25 @@
 
 <br>
 
-## Deprecated Services
+## Package `com.anaptecs.jeaf.junit.activities`
+
+<br>
+
+## Package `com.anaptecs.jeaf.junit.core`
+
+<br>
+
+### Deprecated Services
 
 <br>
 
 | Service Name   | Description   | Deprecated since   | Planned to be removed   |
 |----------------|---------------|:------------------:|:-----------------------:|
-| `com.anaptecs.jeaf.junit.core.BusinessObjectTestService` |  |  |  |
-| `com.anaptecs.jeaf.junit.core.DeprecatedTestService` |  |  |  |
-| `com.anaptecs.jeaf.junit.core.JEAFTestService` |  |  |  |
-| `com.anaptecs.jeaf.junit.deprecation.DeprecatedService` | This service does not make sense any more.<br><br>The functionality is completely wrong. | 1.0 | 2023-12-31 |
-| `com.anaptecs.jeaf.junit.deprecation.ServiceWithDeprecations` |  |  |  |
-| `com.anaptecs.jeaf.junit.openapi.service1.ProductService` |  |  |  |
-| `com.anaptecs.jeaf.junit.rest.DeprecatedRESTService` |  |  |  |
-| `com.anaptecs.jeaf.junit.rest.RESTTestService` |  |  |  |
+| `DeprecatedTestService` |  |  |  |
 
 <br>
 
-
-### `com.anaptecs.jeaf.junit.core.BusinessObjectTestService`
+#### `BusinessObjectTestService`
 
 | Operation   |  Parameter   | Description   | Deprecated since   | Planned to be removed   |
 |-------------|--------------|---------------|:------------------:|:-----------------------:|
@@ -28,10 +28,7 @@
 
 <br>
 
-
-
-
-### `com.anaptecs.jeaf.junit.core.JEAFTestService`
+#### `JEAFTestService`
 
 | Operation   |  Parameter   | Description   | Deprecated since   | Planned to be removed   |
 |-------------|--------------|---------------|:------------------:|:-----------------------:|
@@ -39,10 +36,47 @@
 
 <br>
 
+### Classes with Deprecations
 
+<br>
 
+| Type   | Attribute   | Description   | Deprecated since   | Planned to be removed   |
+|--------|-------------|---------------|:------------------:|:-----------------------:|
+| `DeprecatedServiceObject` | |  |  |  |
+| `PartiallyDeprecatedServiceObject` | |  |  |  |
+|   | `outdated` |  |  |  |
+|   | `deprecatedRef` |  |  |  |
+|   | `deprecatedRefs` |  |  |  |
 
-### `com.anaptecs.jeaf.junit.deprecation.ServiceWithDeprecations`
+<br>
+
+### Enumerations with Deprecations
+
+<br>
+
+| Enumeration   | Literal   | Description   | Deprecated since   | Planned to be removed   |
+|---------------|-----------|---------------|:------------------:|:-----------------------:|
+| `Color` | |  |  |  |
+|   | `LightGreen` | We do not like this color any more. |  |  |
+| `Farbe` | |  |  |  |
+
+<br>
+
+## Package `com.anaptecs.jeaf.junit.deprecation`
+
+<br>
+
+### Deprecated Services
+
+<br>
+
+| Service Name   | Description   | Deprecated since   | Planned to be removed   |
+|----------------|---------------|:------------------:|:-----------------------:|
+| `DeprecatedService` | This service does not make sense any more.<br><br>The functionality is completely wrong. | 1.0 | 2023-12-31 |
+
+<br>
+
+#### `ServiceWithDeprecations`
 
 | Operation   |  Parameter   | Description   | Deprecated since   | Planned to be removed   |
 |-------------|--------------|---------------|:------------------:|:-----------------------:|
@@ -53,9 +87,119 @@
 
 <br>
 
+### Classes with Deprecations
 
+<br>
 
-### `com.anaptecs.jeaf.junit.openapi.service1.ProductService`
+| Type   | Attribute   | Description   | Deprecated since   | Planned to be removed   |
+|--------|-------------|---------------|:------------------:|:-----------------------:|
+| `BeanParamWithDeprecations` | |  |  |  |
+|   | `deprecatedHeader` | this header param is no longer supported. Please use "xxx" instead. | 1.2.3 | PI.2.3 |
+| `JustAType` | |  |  |  |
+|   | `legacy` | Hello |  |  |
+
+<br>
+
+## Package `com.anaptecs.jeaf.junit.domainObjects`
+
+<br>
+
+### Classes with Deprecations
+
+<br>
+
+| Type   | Attribute   | Description   | Deprecated since   | Planned to be removed   |
+|--------|-------------|---------------|:------------------:|:-----------------------:|
+| `DeprecatedDomainObject` | |  |  |  |
+| `Price` | |  |  |  |
+|   | `price` |  |  |  |
+|   | `reiseweg` |  |  |  |
+|   | `verbindungspunkte` |  |  |  |
+| `Reiseweg` | |  |  |  |
+
+<br>
+
+## Package `com.anaptecs.jeaf.junit.impl.core`
+
+<br>
+
+## Package `com.anaptecs.jeaf.junit.impl.domain`
+
+<br>
+
+### Classes with Deprecations
+
+<br>
+
+| Type   | Attribute   | Description   | Deprecated since   | Planned to be removed   |
+|--------|-------------|---------------|:------------------:|:-----------------------:|
+| `DeprecatedPO` | |  |  |  |
+|   | `deprecated` |  |  |  |
+|   | `publicClass` |  |  |  |
+|   | `baseClasses` |  |  |  |
+| `PublicClassBO` | |  |  |  |
+
+<br>
+
+## Package `com.anaptecs.jeaf.junit.impl.persistence`
+
+<br>
+
+## Package `com.anaptecs.jeaf.junit.openapi.base`
+
+<br>
+
+### Classes with Deprecations
+
+<br>
+
+| Type   | Attribute   | Description   | Deprecated since   | Planned to be removed   |
+|--------|-------------|---------------|:------------------:|:-----------------------:|
+| `BeanParameter` | |  |  |  |
+|   | `oldStyle` |  |  |  |
+| `Campaign` | |  |  |  |
+|   | `theLink` | Please use "moreLinks" instead. | 2.3.1 | 2.4 |
+|   | `moreLinks` | No good any more | 1.2 | 3.0 |
+|   | `discountOffers` |  |  |  |
+| `ChildAA` | | Please do not use this class any longer. There are better alternatives but I do not tell you which ones. May be `java.lang.Nothing` | 0.5 | 2.0 |
+| `ChildBB` | |  |  |  |
+|   | `deprecatedAttribute` | Please  keep `hands off`. |  |  |
+|   | `deprecatedBs` |  |  |  |
+|   | `deprecatedParent` |  |  |  |
+|   | `deprecatedArray` |  |  |  |
+| `DeprecatedContext` | |  |  |  |
+| `DeprecatedType` | |  |  |  |
+| `DiscountOffer` | |  |  |  |
+|   | `campaigns` |  |  |  |
+| `POI` | |  |  |  |
+|   | `theLink` |  |  |  |
+|   | `evenMoreLinks` |  |  |  |
+| `ParentClass` | |  |  |  |
+|   | `theBankAccount` |  |  |  |
+|   | `legacyBankAccounts` |  |  |  |
+| `SpecialContext` | |  |  |  |
+|   | `deprecatedHeader` |  |  |  |
+| `TheReadOnlyServiceObject` | |  |  |  |
+|   | `inventoryType` | Let's reproduce #65 | not too long | 99.9 |
+
+<br>
+
+### Enumerations with Deprecations
+
+<br>
+
+| Enumeration   | Literal   | Description   | Deprecated since   | Planned to be removed   |
+|---------------|-----------|---------------|:------------------:|:-----------------------:|
+| `ChannelType` | |  |  |  |
+|   | `LEGACY_POS` | I'm `DEPRECATED`. |  |  |
+
+<br>
+
+## Package `com.anaptecs.jeaf.junit.openapi.service1`
+
+<br>
+
+#### `ProductService`
 
 | Operation   |  Parameter   | Description   | Deprecated since   | Planned to be removed   |
 |-------------|--------------|---------------|:------------------:|:-----------------------:|
@@ -72,10 +216,40 @@
 
 <br>
 
+## Package `com.anaptecs.jeaf.junit.pojo`
 
+<br>
 
+### Classes with Deprecations
 
-### `com.anaptecs.jeaf.junit.rest.RESTTestService`
+<br>
+
+| Type   | Attribute   | Description   | Deprecated since   | Planned to be removed   |
+|--------|-------------|---------------|:------------------:|:-----------------------:|
+| `BChildPOJO` | |  |  |  |
+| `ChildPOJO` | | We do not like this class any more. | Big bang | Last X-Mas |
+| `ImmutableAssociationPOJO` | |  |  |  |
+|   | `deprecatedRefs` |  |  |  |
+| `ParentPOJO` | |  |  |  |
+|   | `weirdAttribute` |  |  |  |
+
+<br>
+
+## Package `com.anaptecs.jeaf.junit.rest`
+
+<br>
+
+### Deprecated Services
+
+<br>
+
+| Service Name   | Description   | Deprecated since   | Planned to be removed   |
+|----------------|---------------|:------------------:|:-----------------------:|
+| `DeprecatedRESTService` |  |  |  |
+
+<br>
+
+#### `RESTTestService`
 
 | Operation   |  Parameter   | Description   | Deprecated since   | Planned to be removed   |
 |-------------|--------------|---------------|:------------------:|:-----------------------:|
@@ -91,82 +265,7 @@
 
 <br>
 
-
-
-
-## Classes with Deprecations
-
-<br>
-
-| Type   | Attribute   | Description   | Deprecated since   | Planned to be removed   |
-|--------|-------------|---------------|:------------------:|:-----------------------:|
-| `com.anaptecs.jeaf.junit.core.DeprecatedServiceObject` | |  |  |  |
-| `com.anaptecs.jeaf.junit.core.PartiallyDeprecatedServiceObject` | |  |  |  |
-|   | `outdated` |  |  |  |
-|   | `deprecatedRef` |  |  |  |
-|   | `deprecatedRefs` |  |  |  |
-| `com.anaptecs.jeaf.junit.deprecation.BeanParamWithDeprecations` | |  |  |  |
-|   | `deprecatedHeader` | this header param is no longer supported. Please use "xxx" instead. | 1.2.3 | PI.2.3 |
-| `com.anaptecs.jeaf.junit.deprecation.JustAType` | |  |  |  |
-|   | `legacy` | Hello |  |  |
-| `com.anaptecs.jeaf.junit.domainObjects.DeprecatedDomainObject` | |  |  |  |
-| `com.anaptecs.jeaf.junit.domainObjects.Price` | |  |  |  |
-|   | `price` |  |  |  |
-|   | `reiseweg` |  |  |  |
-|   | `verbindungspunkte` |  |  |  |
-| `com.anaptecs.jeaf.junit.domainObjects.Reiseweg` | |  |  |  |
-| `com.anaptecs.jeaf.junit.impl.domain.DeprecatedPO` | |  |  |  |
-|   | `deprecated` |  |  |  |
-|   | `publicClass` |  |  |  |
-|   | `baseClasses` |  |  |  |
-| `com.anaptecs.jeaf.junit.impl.domain.PublicClassBO` | |  |  |  |
-| `com.anaptecs.jeaf.junit.openapi.base.BeanParameter` | |  |  |  |
-|   | `oldStyle` |  |  |  |
-| `com.anaptecs.jeaf.junit.openapi.base.Campaign` | |  |  |  |
-|   | `theLink` | Please use "moreLinks" instead. | 2.3.1 | 2.4 |
-|   | `moreLinks` | No good any more | 1.2 | 3.0 |
-|   | `discountOffers` |  |  |  |
-| `com.anaptecs.jeaf.junit.openapi.base.ChildAA` | | Please do not use this class any longer. There are better alternatives but I do not tell you which ones. May be `java.lang.Nothing` | 0.5 | 2.0 |
-| `com.anaptecs.jeaf.junit.openapi.base.ChildBB` | |  |  |  |
-|   | `deprecatedAttribute` | Please  keep `hands off`. |  |  |
-|   | `deprecatedBs` |  |  |  |
-|   | `deprecatedParent` |  |  |  |
-|   | `deprecatedArray` |  |  |  |
-| `com.anaptecs.jeaf.junit.openapi.base.DeprecatedContext` | |  |  |  |
-| `com.anaptecs.jeaf.junit.openapi.base.DeprecatedType` | |  |  |  |
-| `com.anaptecs.jeaf.junit.openapi.base.DiscountOffer` | |  |  |  |
-|   | `campaigns` |  |  |  |
-| `com.anaptecs.jeaf.junit.openapi.base.POI` | |  |  |  |
-|   | `theLink` |  |  |  |
-|   | `evenMoreLinks` |  |  |  |
-| `com.anaptecs.jeaf.junit.openapi.base.ParentClass` | |  |  |  |
-|   | `theBankAccount` |  |  |  |
-|   | `legacyBankAccounts` |  |  |  |
-| `com.anaptecs.jeaf.junit.openapi.base.SpecialContext` | |  |  |  |
-|   | `deprecatedHeader` |  |  |  |
-| `com.anaptecs.jeaf.junit.openapi.base.TheReadOnlyServiceObject` | |  |  |  |
-|   | `inventoryType` | Let's reproduce #65 | not too long | 99.9 |
-| `com.anaptecs.jeaf.junit.pojo.BChildPOJO` | |  |  |  |
-| `com.anaptecs.jeaf.junit.pojo.ChildPOJO` | | We do not like this class any more. | Big bang | Last X-Mas |
-| `com.anaptecs.jeaf.junit.pojo.ImmutableAssociationPOJO` | |  |  |  |
-|   | `deprecatedRefs` |  |  |  |
-| `com.anaptecs.jeaf.junit.pojo.ParentPOJO` | |  |  |  |
-|   | `weirdAttribute` |  |  |  |
-
-<br>
-
-
-## Enumerations with Deprecations
-
-<br>
-
-| Enumeration   | Literal   | Description   | Deprecated since   | Planned to be removed   |
-|---------------|-----------|---------------|:------------------:|:-----------------------:|
-| `com.anaptecs.jeaf.junit.core.Color` | |  |  |  |
-|   | `LightGreen` | We do not like this color any more. |  |  |
-| `com.anaptecs.jeaf.junit.core.Farbe` | |  |  |  |
-| `com.anaptecs.jeaf.junit.openapi.base.ChannelType` | |  |  |  |
-|   | `LEGACY_POS` | I'm `DEPRECATED`. |  |  |
+## Package `com.anaptecs.jeaf.junit.serviceproviders`
 
 <br>
 
