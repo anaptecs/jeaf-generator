@@ -13,10 +13,15 @@ extension functions::Interface;
 extension functions::QueryParam;
 extension functions::BeanParam;
 extension functions::JEAFDeprecated;
+extension functions::NamedElement;
 
+cached List[uml::NamedElement] getAllDeprecations(uml::Package package):
+    package.allOwnedElements().typeSelect(uml::NamedElement).select(e|e.isInGeneratorWhitelist()).select(e|e.hasDeprecation());
+    
+cached List[uml::Package] getPackagesForDeprecationsReport(uml::Model model):
+    model.getAllDeprecations().getNearestPackage().toSet().sortBy(e|e.qualifiedName());
 
-cached List[uml::NamedElement] getAllDeprecations(uml::Model model):
-    model.allOwnedElements().typeSelect(uml::NamedElement).select(e|e.isInGeneratorWhitelist()).select(e|e.hasDeprecation());
+    
     
 cached boolean hasDeprecation(uml::Element element):
     if element.isClass()
