@@ -5,7 +5,7 @@ cached List[uml::NamedElement] getAllElementsForTypesReport(uml::Package package
     package.allOwnedElements().typeSelect(uml::NamedElement).select(e|e.isInGeneratorWhitelist()).select(e|e.hasStereotypeForTypesReport());
     
 cached List[uml::Package] getPackagesForTypesReport(uml::Model model):
-    model.getAllElementsForTypesReport().owner.typeSelect(uml::Package).toSet().sortBy(e|e.qualifiedName());
+    model.getAllElementsForTypesReport().getNearestPackage().toSet().sortBy(e|e.qualifiedName());
     
 private boolean hasStereotypeForTypesReport(uml::NamedElement element):
     getTypesReportStereotypes().exists(e|element.isStereotypeApplied(e));

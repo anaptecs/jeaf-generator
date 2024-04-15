@@ -1,8 +1,13 @@
 extension java::GeneratorCommons;
+extension functions::NamedElement;
 
-cached List[uml::NamedElement] getAllBreakingChanges(uml::Model model):
-    model.allOwnedElements().typeSelect(uml::NamedElement).select(e|e.isInGeneratorWhitelist()).select(e|e.isBreakingChange()).sortBy(e|e.getBreakingChangeActiveWith());
+
+cached List[uml::NamedElement] getAllBreakingChanges(uml::Package package):
+    package.allOwnedElements().typeSelect(uml::NamedElement).select(e|e.isInGeneratorWhitelist()).select(e|e.isBreakingChange()).sortBy(e|e.getBreakingChangeActiveWith());
     
+cached List[uml::Package] getPackagesForBreakingChangesReport(uml::Model model):
+    model.getAllBreakingChanges().getNearestPackage().toSet().sortBy(e|e.qualifiedName());
+
 cached boolean isBreakingChange(uml::Element element):
     element.isStereotypeApplied("BreakingChange");
     
@@ -11,6 +16,3 @@ cached String getBreakingChangeDescription(uml::NamedElement change):
     
 cached String getBreakingChangeActiveWith(uml::NamedElement change):
     change.getStereotypeValue("BreakingChange", "activeWith");
-    
-
-    

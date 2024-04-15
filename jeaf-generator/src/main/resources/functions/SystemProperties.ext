@@ -16,3 +16,5 @@ private cached boolean getBooleanSystemProperty(String propertyName, boolean def
 cached boolean generateJSONAutoDetectAnnotationOnClass():
    getBooleanSystemProperty("switch.gen.jackson.jsonautodetect.on.class", false);
 
+cached boolean groupBreakingChangesReportByPackage():
+    getBooleanSystemProperty("switch.gen.breaking.changes.report.groupByPackage", true);

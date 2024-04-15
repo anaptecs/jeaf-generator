@@ -25,6 +25,8 @@
 «EXTENSION java::GeneratorCommons»
 «EXTENSION functions::BreakingChange»
 «EXTENSION functions::Property»
+«EXTENSION functions::NamedElement»
+«EXTENSION functions::SystemProperties»
 
 
 «DEFINE BreakingChangesReport FOR Model»
@@ -33,23 +35,51 @@
 
 <br>
 
-| Element  | Details    | Description  | Active with |
-|----------|------------|--------------|:-----------:|
-«IF this.getAllBreakingChanges().isEmpty == false -»
-	«FOREACH this.getAllBreakingChanges() AS change -»
-	    «IF change.isProperty() || change.isEnumerationLiteral() || change.isParameter() -»
-| `«((uml::NamedElement) change.owner).fqn()»` | `«change.name»` | «change.getBreakingChangeDescription()» | «change.getBreakingChangeActiveWith()» | 
-	   «ELSE -»
-| `«((uml::NamedElement) change).fqn()»` | | «change.getBreakingChangeDescription()» | «change.getBreakingChangeActiveWith()» | 
-	   «ENDIF-»
-	«ENDFOREACH -»
-«ELSE-»
-| No breaking changes declared. |
-«ENDIF-»
+«IF groupBreakingChangesReportByPackage() -»
+«FOREACH this.getPackagesForBreakingChangesReport() AS package-»
+## «package.qualifiedName()»
 
+«EXPAND BreakingChangesTablePerPackage FOR package.getAllBreakingChanges()»
+<br>
+
+«ENDFOREACH-»
+«ELSE-»
+«EXPAND BreakingChangesTable FOR this.getAllBreakingChanges()»
+«ENDIF-»
 «ENDFILE»
 «ENDDEFINE»
 
 
+«DEFINE BreakingChangesTablePerPackage FOR List[uml::NamedElement]-»
+| Element  | Details    | Description  | Active with |
+|----------|------------|--------------|:-----------:|
+«IF this.isEmpty == false -»
+    «FOREACH this AS change -»
+        «IF change.isProperty() || change.isEnumerationLiteral() -»
+| `«change.owner.asNamedElement().name»` | `«change.name»` | «change.getBreakingChangeDescription()» | «change.getBreakingChangeActiveWith()» | 
+       «ELSEIF change.isParameter() -»
+| `«change.owner.owner.asNamedElement().name».«change.owner.asNamedElement().name»` | `«change.name»` | «change.getBreakingChangeDescription()» | «change.getBreakingChangeActiveWith()» | 
+       «ELSE -»
+| `«change.name»` | | «change.getBreakingChangeDescription()» | «change.getBreakingChangeActiveWith()» | 
+       «ENDIF-»
+    «ENDFOREACH -»
+«ELSE-»
+| No breaking changes declared. |
+«ENDIF-»
+«ENDDEFINE»
 
-
+«DEFINE BreakingChangesTable FOR List[uml::NamedElement]-»
+| Element  | Details    | Description  | Active with |
+|----------|------------|--------------|:-----------:|
+«IF this.isEmpty == false -»
+    «FOREACH this AS change -»
+        «IF change.isProperty() || change.isEnumerationLiteral() || change.isParameter() -»
+| `«((uml::NamedElement) change.owner).fqn()»` | `«change.name»` | «change.getBreakingChangeDescription()» | «change.getBreakingChangeActiveWith()» | 
+       «ELSE -»
+| `«((uml::NamedElement) change).fqn()»` | | «change.getBreakingChangeDescription()» | «change.getBreakingChangeActiveWith()» | 
+       «ENDIF-»
+    «ENDFOREACH -»
+«ELSE-»
+| No breaking changes declared. |
+«ENDIF-»
+«ENDDEFINE»

@@ -605,6 +605,12 @@ public class GeneratorMojo extends AbstractMojo {
   private String breakingChangesReportFileName;
 
   /**
+   * Switch defines if for breaking changes report content should be grouped by package.
+   */
+  @Parameter(required = false, defaultValue = "true")
+  private Boolean breakingChangesReportGroupByPackage;
+
+  /**
    * Switch enables the generation of a REST / OpenAPI deprecation report about the model parts which are configured to
    * be processed.
    */
@@ -1478,7 +1484,7 @@ public class GeneratorMojo extends AbstractMojo {
       lLog.info("Breaking Changes Report Name                      " + breakingChangesReportName);
       lLog.info("Breaking Changes Report File Name                 " + breakingChangesReportFileName
           + deprecationReportFormat.getExtension());
-      lLog.info("Breaking Changes Report Format                    " + deprecationReportFormat);
+      lLog.info("Breaking Changes Group by Package                 " + breakingChangesReportGroupByPackage);
       lLog.info(" ");
     }
 
@@ -1777,13 +1783,19 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty("switch.gen.breaking.changes.report", generateBreakingChangesReport.toString());
       System.setProperty("switch.gen.breaking.changes.report.name", breakingChangesReportName.toString());
       System.setProperty("switch.gen.breaking.changes.report.filename", breakingChangesReportFileName.toString());
+      System.setProperty("switch.gen.breaking.changes.report.groupByPackage",
+          breakingChangesReportGroupByPackage.toString());
+
       System.setProperty("switch.gen.rest.deprecation.report", generateRESTDeprecationReport.toString());
       System.setProperty("switch.gen.rest.deprecation.report.name", restDeprecationReportName.toString());
       System.setProperty("switch.gen.rest.deprecation.report.filename", restDeprecationReportFileName.toString());
+
       System.setProperty("switch.gen.java.deprecation.report", generateJavaDeprecationReport.toString());
       System.setProperty("switch.gen.java.deprecation.report.name", javaDeprecationReportName.toString());
       System.setProperty("switch.gen.java.deprecation.report.filename", javaDeprecationReportFileName.toString());
+
       System.setProperty("switch.gen.deprecation.report.format", deprecationReportFormat.name());
+
       System.setProperty("switch.gen.security.roles.report", generateSecurityRolesReport.toString());
       System.setProperty("switch.gen.security.roles.report.name", securityRolesReportName.toString());
       System.setProperty("switch.gen.security.roles.report.filename", securityRolesReportFileName.toString());
