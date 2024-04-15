@@ -316,16 +316,17 @@ components:
             Deprecated: No good any more (since: 1.2, removed with: 3.0)
           type: array
           items:
-            type: integer
+            type: 
+              - integer
             format: int64
           deprecated: true
-          nullable: false
         discountOffers:
           type: array
           items:
-            type: string
+            type: 
+              - string
+              - "null"
           deprecated: true
-          nullable: true
 
     # com.anaptecs.jeaf.junit.openapi.base.Channel
     Channel:
@@ -430,17 +431,18 @@ components:
             sizedArray:
               type: array
               items:
-                type: integer
+                type: 
+                  - integer
+                  - "null"
                 format: int32
               minItems: 10
               maxItems: 100
-              nullable: true
             requiredArray:
               type: array
               items:
-                type: string
+                type: 
+                  - string
               minItems: 1
-              nullable: false
             bigIntegerCode:
               type: integer
               format: int64
@@ -473,10 +475,11 @@ components:
                 A child attribute
               type: array
               items:
-                type: boolean
+                type: 
+                  - boolean
+                  - "null"
               minItems: 11
               maxItems: 42
-              nullable: true
             composition:
               description: >-
                 the composition
@@ -667,9 +670,10 @@ components:
         campaigns:
           type: array
           items:
-            type: string
+            type: 
+              - string
+              - "null"
           deprecated: true
-          nullable: true
 
     # com.anaptecs.jeaf.junit.openapi.base.Duration
     Duration:
@@ -941,9 +945,10 @@ components:
             evenMoreLinks:
               type: array
               items:
-                type: string
+                type: 
+                  - string
+                  - "null"
               deprecated: true
-              nullable: true
             stops:
               description: >-
                 
@@ -1095,18 +1100,21 @@ components:
         aBooleanArray:
           type: array
           items:
-            type: boolean
-          nullable: true
+            type: 
+              - boolean
+              - "null"
         bBooleanArray:
           type: array
           items:
-            type: boolean
-          nullable: true
+            type: 
+              - boolean
+              - "null"
         cBooleanArray:
           type: array
           items:
-            type: boolean
-          nullable: true
+            type: 
+              - boolean
+              - "null"
         aByteArray:
           type: string
           format: byte
@@ -1118,107 +1126,124 @@ components:
         aShortArray:
           type: array
           items:
-            type: integer
+            type: 
+              - integer
+              - "null"
             format: int32
-          nullable: true
         bShortArray:
           type: array
           items:
-            type: integer
+            type: 
+              - integer
+              - "null"
             format: int32
-          nullable: true
         aIntegerArray:
           type: array
           items:
-            type: integer
+            type: 
+              - integer
+              - "null"
             format: int32
-          nullable: true
         bIntegerArray:
           type: array
           items:
-            type: integer
+            type: 
+              - integer
+              - "null"
             format: int32
-          nullable: true
         cIntegerArray:
           type: array
           items:
-            type: integer
+            type: 
+              - integer
+              - "null"
             format: int32
-          nullable: true
         aLongArray:
           type: array
           items:
-            type: integer
+            type: 
+              - integer
+              - "null"
             format: int64
-          nullable: true
         bLongArray:
           type: array
           items:
-            type: integer
+            type: 
+              - integer
+              - "null"
             format: int64
-          nullable: true
         aBigIntegerArray:
           type: array
           items:
-            type: integer
+            type: 
+              - integer
+              - "null"
             format: int64
-          nullable: true
         aCharacterArray:
           type: array
           items:
-            type: string
-          nullable: true
+            type: 
+              - string
+              - "null"
         bCharacterArray:
           type: array
           items:
-            type: string
-          nullable: true
+            type: 
+              - string
+              - "null"
         aFloatArray:
           type: array
           items:
-            type: number
+            type: 
+              - number
+              - "null"
             format: float
-          nullable: true
         bFloatArray:
           type: array
           items:
-            type: number
+            type: 
+              - number
+              - "null"
             format: float
-          nullable: true
         aDoubleArray:
           type: array
           items:
-            type: number
+            type: 
+              - number
+              - "null"
             format: double
-          nullable: true
         bDoubleArray:
           type: array
           items:
-            type: number
+            type: 
+              - number
+              - "null"
             format: double
-          nullable: true
         aBigDecimalArray:
           type: array
           items:
-            type: number
+            type: 
+              - number
+              - "null"
             format: double
-          nullable: true
         aStringArray:
           type: array
           items:
-            type: string
-          nullable: true
+            type: 
+              - string
+              - "null"
         bStringArray:
           type: array
           items:
-            type: string
-          nullable: true
+            type: 
+              - string
+              - "null"
         cStringArray:
           type: array
           items:
-            type: string
+            type: 
+              - string
           minItems: 1
-          nullable: false
 
     # com.anaptecs.jeaf.junit.openapi.base.PrimitiveArraysObjectWithRestrictions
     PrimitiveArraysObjectWithRestrictions:
@@ -1230,18 +1255,21 @@ components:
         aBooleanArray:
           type: array
           items:
-            type: boolean
-          nullable: true
+            type: 
+              - boolean
+              - "null"
         bBooleanArray:
           type: array
           items:
-            type: boolean
-          nullable: true
+            type: 
+              - boolean
+              - "null"
         cBooleanArray:
           type: array
           items:
-            type: boolean
-          nullable: true
+            type: 
+              - boolean
+              - "null"
         aByteArray:
           type: string
           format: byte
@@ -1253,104 +1281,121 @@ components:
         aShortArray:
           type: array
           items:
-            type: integer
+            type: 
+              - integer
+              - "null"
             format: int32
-          nullable: true
         bShortArray:
           type: array
           items:
-            type: integer
+            type: 
+              - integer
+              - "null"
             format: int32
-          nullable: true
         aIntegerArray:
           type: array
           items:
-            type: integer
+            type: 
+              - integer
+              - "null"
             format: int32
-          nullable: true
         bIntegerArray:
           type: array
           items:
-            type: integer
+            type: 
+              - integer
+              - "null"
             format: int32
-          nullable: true
         cIntegerArray:
           type: array
           items:
-            type: integer
+            type: 
+              - integer
+              - "null"
             format: int32
-          nullable: true
         aLongArray:
           type: array
           items:
-            type: integer
+            type: 
+              - integer
+              - "null"
             format: int64
           minItems: 1
-          nullable: true
         bLongArray:
           type: array
           items:
-            type: integer
+            type: 
+              - integer
+              - "null"
             format: int64
-          nullable: true
         aBigIntegerArray:
           type: array
           items:
-            type: integer
+            type: 
+              - integer
+              - "null"
             format: int64
-          nullable: true
         aCharacterArray:
           type: array
           items:
-            type: string
-          nullable: true
+            type: 
+              - string
+              - "null"
         bCharacterArray:
           type: array
           items:
-            type: string
-          nullable: true
+            type: 
+              - string
+              - "null"
         aFloatArray:
           type: array
           items:
-            type: number
+            type: 
+              - number
+              - "null"
             format: float
-          nullable: true
         bFloatArray:
           type: array
           items:
-            type: number
+            type: 
+              - number
+              - "null"
             format: float
-          nullable: true
         aDoubleArray:
           type: array
           items:
-            type: number
+            type: 
+              - number
+              - "null"
             format: double
           minItems: 4
           maxItems: 12
-          nullable: true
         bDoubleArray:
           type: array
           items:
-            type: number
+            type: 
+              - number
+              - "null"
             format: double
-          nullable: true
         aBigDecimalArray:
           type: array
           items:
-            type: number
+            type: 
+              - number
+              - "null"
             format: double
-          nullable: true
         aStringArray:
           type: array
           items:
-            type: string
-          nullable: true
+            type: 
+              - string
+              - "null"
         bStringArray:
           type: array
           items:
-            type: string
-          nullable: true
+            type: 
+              - string
+              - "null"
 
     # com.anaptecs.jeaf.junit.openapi.base.PrimitiveObject
     PrimitiveObject:

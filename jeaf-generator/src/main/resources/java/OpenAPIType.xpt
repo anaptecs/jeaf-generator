@@ -113,7 +113,15 @@
               «ELSEIF attribute.isSoftLink()-»
           type: array
           items:
+            «IF isOpenAPIVersion30() -»
             type: «((SoftLink)attribute).getOpenAPISoftLinkType()»
+            «ELSE -»
+            type: 
+              - «((SoftLink)attribute).getOpenAPISoftLinkType()»
+              «IF attribute.isNullable() -»
+              - "null"
+              «ENDIF -»
+            «ENDIF -»
               «IF ((SoftLink)attribute).hasOpenAPISoftLinkFormat() -»
             format: «((SoftLink)attribute).getOpenAPISoftLinkFormat()»
               «ENDIF-»
@@ -123,7 +131,15 @@
               «ELSE -»
           type: array
           items:
+            «IF isOpenAPIVersion30() -»
             type: «attribute.type.getOpenAPIType(spec)»
+            «ELSE -»
+            type: 
+              - «attribute.type.getOpenAPIType(spec)»
+              «IF attribute.isNullable() -»
+              - "null"
+              «ENDIF -»
+            «ENDIF -»
               «IF attribute.hasOpenAPIFormatForProperty()-»
             format: «attribute.getOpenAPIFormatForProperty()»
               «ENDIF-»
@@ -136,7 +152,9 @@
               «ENDIF-»
             «ENDIF-»
            «ENDIF-»
+          «IF attribute.isMultivalued() == false || isOpenAPIVersion30() || attribute.type.isByteType() -»
           nullable: «attribute.isNullable()»
+          «ENDIF -»
           «IF attribute.isReadOnly() && true == false  -»
           readOnly: «attribute.isReadOnly()»
           «ENDIF-»  
@@ -280,7 +298,15 @@
               «ELSEIF attribute.isSoftLink()-»
               type: array
               items:
+                «IF isOpenAPIVersion30() -»
                 type: «((SoftLink)attribute).getOpenAPISoftLinkType()»
+                «ELSE -»
+                type: 
+                  - «((SoftLink)attribute).getOpenAPISoftLinkType()»
+                  «IF attribute.isNullable() -»
+                  - "null"
+                  «ENDIF -»
+                «ENDIF -»
               «IF ((SoftLink)attribute).hasOpenAPISoftLinkFormat() -»
                 format: «((SoftLink)attribute).getOpenAPISoftLinkFormat()»
               «ENDIF-»
@@ -290,7 +316,15 @@
               «ELSE -»
               type: array
               items:
+                «IF isOpenAPIVersion30() -»
                 type: «attribute.type.getOpenAPIType(spec)»
+                «ELSE -»
+                type: 
+                  - «attribute.type.getOpenAPIType(spec)»
+                  «IF attribute.isNullable() -»
+                  - "null"
+                  «ENDIF -»
+                «ENDIF -»
               «IF attribute.hasOpenAPIFormatForProperty()-»
                 format: «attribute.getOpenAPIFormatForProperty()»
               «ENDIF-»
@@ -303,7 +337,9 @@
               «ENDIF-»
             «ENDIF-»
            «ENDIF-»
+              «IF attribute.isMultivalued() == false || isOpenAPIVersion30() || attribute.type.isByteType() -»
               nullable: «attribute.isNullable()»
+              «ENDIF -»
           «IF attribute.isReadOnly() && true == false -»
               readOnly: «attribute.isReadOnly()»
           «ENDIF-»  
