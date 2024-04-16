@@ -22,7 +22,7 @@
 «EXTENSION org::openarchitectureware::util::stdlib::io»
 
 «DEFINE RESTDeprecationReport FOR Model»
-«LET this.getAllDeprecations() AS deprecations»
+«LET this.getAllRESTDeprecations() AS deprecations»
 «FILE getRESTDeprecationReportFileName() res_gen-»
 # «getRESTDeprecationReportName()»
 
@@ -93,7 +93,7 @@
 
 | Enumeration   | Literal   | Description   | Deprecated since   | Planned to be removed   |
 |---------------|-----------|---------------|:------------------:|:-----------------------:|
-«FOREACH deprecations.select(e|e.isOpenAPIEnumeration()).select(e|e.hasDeprecation()).sortBy(e|e.name) AS element-»
+«FOREACH deprecations.select(e|e.isOpenAPIEnumeration()).select(e|e.hasRESTDeprecation()).sortBy(e|e.name) AS element-»
 | `«element.name»` | | «element.getDeprecationDescriptionForMarkup()» | «element.getDeprecatedSince()» | «element.getDeprecationRemoval()» |
     «IF element.asEnumeration().hasDeprecatedLiterals()-»
         «FOREACH element.asEnumeration().getDeprecatedLiterals() AS literal-»
@@ -101,7 +101,7 @@
         «ENDFOREACH-»
     «ENDIF-»
 «ENDFOREACH-»
-«IF deprecations.select(e|e.isOpenAPIEnumeration()).select(e|e.hasDeprecation()).size == 0-»
+«IF deprecations.select(e|e.isOpenAPIEnumeration()).select(e|e.hasRESTDeprecation()).size == 0-»
 | No OpenAPI Enumerations are marked as deprecated. |
 «ENDIF-»
 

@@ -2,7 +2,7 @@
 
 <br>
 
-## com.anaptecs.jeaf.junit.deprecation
+## Package `com.anaptecs.jeaf.junit.deprecation`
 
 | Element  | Details    | Description  | Active with |
 |----------|------------|--------------|:-----------:|
@@ -10,7 +10,7 @@
 
 <br>
 
-## com.anaptecs.jeaf.junit.openapi.base
+## Package `com.anaptecs.jeaf.junit.openapi.base`
 
 | Element  | Details    | Description  | Active with |
 |----------|------------|--------------|:-----------:|
@@ -26,7 +26,7 @@
 
 <br>
 
-## com.anaptecs.jeaf.junit.openapi.service1
+## Package `com.anaptecs.jeaf.junit.openapi.service1`
 
 | Element  | Details    | Description  | Active with |
 |----------|------------|--------------|:-----------:|

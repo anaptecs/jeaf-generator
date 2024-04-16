@@ -15,18 +15,38 @@ extension functions::BeanParam;
 extension functions::JEAFDeprecated;
 extension functions::NamedElement;
 
-cached List[uml::NamedElement] getAllDeprecations(uml::Package package):
-    package.allOwnedElements().typeSelect(uml::NamedElement).select(e|e.isInGeneratorWhitelist()).select(e|e.hasDeprecation());
+cached List[uml::NamedElement] getAllJavaDeprecations(uml::Package package):
+    package.allOwnedElements().typeSelect(uml::NamedElement).select(e|e.isInGeneratorWhitelist()).select(e|e.hasJavaDeprecation());
     
-cached List[uml::NamedElement] getDeprecations(uml::Package package):
-    package.allOwnedElements().typeSelect(uml::NamedElement).select(e|e.isInGeneratorWhitelist()).select(e|e.hasDeprecation() && e.getNearestPackage() == package);
+cached List[uml::NamedElement] getJavaDeprecations(uml::Package package):
+    package.allOwnedElements().typeSelect(uml::NamedElement).select(e|e.isInGeneratorWhitelist()).select(e|e.hasJavaDeprecation() && e.getNearestPackage() == package);
     
-cached List[uml::Package] getPackagesForDeprecationsReport(uml::Model model):
-    model.getAllDeprecations().getNearestPackage().toSet().sortBy(e|e.qualifiedName());
+cached List[uml::Package] getPackagesForJavaDeprecationsReport(uml::Model model):
+    model.getAllJavaDeprecations().getNearestPackage().toSet().sortBy(e|e.qualifiedName());
 
+cached List[uml::NamedElement] getAllRESTDeprecations(uml::Package package):
+    package.allOwnedElements().typeSelect(uml::NamedElement).select(e|e.isInGeneratorWhitelist()).select(e|e.hasRESTDeprecation());
+    
+cached List[uml::NamedElement] getRESTDeprecations(uml::Package package):
+    package.allOwnedElements().typeSelect(uml::NamedElement).select(e|e.isInGeneratorWhitelist()).select(e|e.hasRESTDeprecation() && e.getNearestPackage() == package);
+    
+cached List[uml::Package] getPackagesForRESTDeprecationsReport(uml::Model model):
+    model.getAllRESTDeprecations().getNearestPackage().toSet().sortBy(e|e.qualifiedName());
     
     
-cached boolean hasDeprecation(uml::Element element):
+cached boolean hasJavaDeprecation(uml::Element element):
+    if element.isClass()
+    then element.asClass().hasClassDeprecationInternal()
+    else if element.isInterface()
+    then element.asInterface().hasInterfaceDeprecationInternal()
+    else if element.isOperation()
+    then element.asOperation().hasJavaOperationDeprecationInternal()
+    else if element.isEnumeration()
+    then element.asEnumeration().hasEnumerationDeprecationInternal()
+    else element.isJEAFDeprecated();
+
+
+cached boolean hasRESTDeprecation(uml::Element element):
     if element.isClass()
     then element.asClass().hasClassDeprecationInternal()
     else if element.isInterface()
