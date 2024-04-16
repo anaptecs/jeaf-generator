@@ -36,6 +36,9 @@
 <br>
 
 «LET package.getDeprecations() AS deprecations-»
+«FOREACH deprecations AS object -»
+«info(object.fqn())-»
+«ENDFOREACH-»
 «IF deprecations.typeSelect(JEAFService).typeSelect(JEAFDeprecated).sortBy(e|e.fqn()).isEmpty == false -»
 ### Deprecated Services
 
@@ -94,7 +97,7 @@
 <br>
 
 «ENDIF-»
-«IF deprecations.select(e|e.isJEAFEnumeration()).select(e|e.hasDeprecation()).sortBy(e|e.fqn()).isEmpty == false -»
+«IF deprecations.select(e|e.isJEAFEnumeration()).isEmpty == false -»
 ### Enumerations with Deprecations
 
 <br>
