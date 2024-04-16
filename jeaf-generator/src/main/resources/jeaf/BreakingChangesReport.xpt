@@ -39,7 +39,7 @@
 «FOREACH this.getPackagesForBreakingChangesReport() AS package-»
 ## «package.qualifiedName()»
 
-«EXPAND BreakingChangesTablePerPackage FOR package.getAllBreakingChanges()»
+«EXPAND BreakingChangesTablePerPackage FOR package.getBreakingChanges()»
 <br>
 
 «ENDFOREACH-»

@@ -5,6 +5,9 @@ extension functions::NamedElement;
 cached List[uml::NamedElement] getAllBreakingChanges(uml::Package package):
     package.allOwnedElements().typeSelect(uml::NamedElement).select(e|e.isInGeneratorWhitelist()).select(e|e.isBreakingChange()).sortBy(e|e.getBreakingChangeActiveWith());
     
+cached List[uml::NamedElement] getBreakingChanges(uml::Package package):
+    package.allOwnedElements().typeSelect(uml::NamedElement).select(e|e.isInGeneratorWhitelist()).select(e|e.isBreakingChange() && e.getNearestPackage() == package).sortBy(e|e.getBreakingChangeActiveWith());
+    
 cached List[uml::Package] getPackagesForBreakingChangesReport(uml::Model model):
     model.getAllBreakingChanges().getNearestPackage().toSet().sortBy(e|e.qualifiedName());
 
