@@ -18,6 +18,9 @@ extension functions::NamedElement;
 cached List[uml::NamedElement] getAllDeprecations(uml::Package package):
     package.allOwnedElements().typeSelect(uml::NamedElement).select(e|e.isInGeneratorWhitelist()).select(e|e.hasDeprecation());
     
+cached List[uml::NamedElement] getDeprecations(uml::Package package):
+    package.allOwnedElements().typeSelect(uml::NamedElement).select(e|e.isInGeneratorWhitelist()).select(e|e.hasDeprecation() && e.getNearestPackage() == package);
+    
 cached List[uml::Package] getPackagesForDeprecationsReport(uml::Model model):
     model.getAllDeprecations().getNearestPackage().toSet().sortBy(e|e.qualifiedName());
 
