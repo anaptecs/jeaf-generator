@@ -38,13 +38,13 @@ import openapitools.JSON;
   CodeTypeUsageTest.JSON_PROPERTY_STRING_CODE,
   CodeTypeUsageTest.JSON_PROPERTY_SHORT_CODE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.5.0")
 public class CodeTypeUsageTest {
   public static final String JSON_PROPERTY_BOOLEAN_CODE = "booleanCode";
   private Boolean booleanCode;
 
   public static final String JSON_PROPERTY_BOOLEAN_CODE_ASSOCIATION = "booleanCodeAssociation";
-  private List<Boolean> booleanCodeAssociation;
+  private List<Boolean> booleanCodeAssociation = new ArrayList<>();
 
   public static final String JSON_PROPERTY_SHORT_CODE_TYPE_ASSOCIATION = "shortCodeTypeAssociation";
   private List<Integer> shortCodeTypeAssociation = new ArrayList<>();

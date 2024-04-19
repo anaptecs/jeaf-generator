@@ -48,10 +48,10 @@ import openapitools.JSON;
   Product.JSON_PROPERTY_DESCRIPTION,
   Product.JSON_PROPERTY_URI
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.5.0")
 public class Product {
   public static final String JSON_PROPERTY_RESELLERS = "resellers";
-  private List<Reseller> resellers;
+  private List<Reseller> resellers = new ArrayList<>();
 
   public static final String JSON_PROPERTY_NAME = "name";
   private String name;
@@ -72,6 +72,7 @@ public class Product {
   private List<Integer> productCodes = new ArrayList<>();
 
   public static final String JSON_PROPERTY_DESCRIPTION = "description";
+  @Deprecated
   private String description;
 
   public static final String JSON_PROPERTY_URI = "uri";
@@ -287,6 +288,7 @@ public class Product {
   }
 
 
+  @Deprecated
   public Product description(String description) {
     this.description = description;
     return this;
@@ -307,6 +309,7 @@ public class Product {
   }
 
 
+  @Deprecated
   @JsonProperty(JSON_PROPERTY_DESCRIPTION)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setDescription(String description) {

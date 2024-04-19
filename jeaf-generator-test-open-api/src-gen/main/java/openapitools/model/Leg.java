@@ -37,7 +37,7 @@ import openapitools.JSON;
   Leg.JSON_PROPERTY_STOP,
   Leg.JSON_PROPERTY_STOPOVERS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.5.0")
 public class Leg {
   public static final String JSON_PROPERTY_START = "start";
   private PlaceRef start;
@@ -46,7 +46,7 @@ public class Leg {
   private PlaceRef stop;
 
   public static final String JSON_PROPERTY_STOPOVERS = "stopovers";
-  private List<PlaceRef> stopovers;
+  private List<PlaceRef> stopovers = new ArrayList<>();
 
   public Leg() { 
   }

@@ -14,7 +14,7 @@ package «packageName()»;
 «EXPAND java::Helper::GenerateDeprecationAnnotation-»
 
 «IF this.extensibleEnum == false || generateHeavyStyleExtensibleEnums() == false»
-	public enum «name» {
+	public enum «name» «IF this.general.isEmpty== false»implements «FOREACH this.general AS interface SEPARATOR ", "»«interface.fqn()»«ENDFOREACH»«ENDIF» {
 	«FOREACH this.ownedLiteral AS literal SEPARATOR ", "»
 	  «EXPAND functions::Javadoc::JavadocForLiteral FOR literal»
 	  «EXPAND java::Helper::GenerateDeprecationAnnotation FOR literal -»  
@@ -65,6 +65,13 @@ package «packageName()»;
 		«EXPAND Attribute::DoPropertyDeclaration FOREACH this.ownedAttribute»
 		«EXPAND Attribute::Getter FOREACH this.ownedAttribute»
 	«ENDIF»
+	
+	«IF this.hasCustomImplementation»
+		«PROTECT CSTART "/*" CEND "*/" ID this.fqn()»
+		// TODO: Please add your custom implementation here.
+	    «ENDPROTECT»
+    «ENDIF»
+	
 «ELSE»
 public final class «name» {
   public static enum «name»Type {

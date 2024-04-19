@@ -58,6 +58,202 @@ CustomEnum |   |  |
 
 <br>
 
+## com.anaptecs.jeaf.junit
+
+| Type     | Legacy Name | Description  |
+|----------|---------------------|------------|
+AbstractPOJO |   |  |
+AbstractResponse |   |  |
+AdvancedPOJO |   |  |
+AndOneMorePOJO |   |  |
+Assortment |   |  |
+BChildPOJO |   |  |
+BParentPOJO |   |  |
+BankAccount |   |  |
+BeanParamWithDeprecations |   |  |
+BeanParameter |   |  |
+BidirectA |   |  |
+BidirectB |   |  |
+BidirectionalA |   |  |
+BidirectionalB |   |  |
+BigDecimalCode |   |  |
+BigIntegerCode |   |  |
+Booking |   |  |
+BookingCode |   |  |
+BookingID |   | Type represents a booking ID. |
+BooleanCode |   |  |
+BooleanCodeType |   |  |
+BooleanLiteralsEnum |   |  |
+BusinessA |   |  |
+BusinessChild |   |  |
+BusinessParent |   |  |
+BusinessServiceObject |   |  |
+ByteCode |   |  |
+ByteCodeType |   |  |
+CHStopPlace |   |  |
+Campaign |   |  |
+Channel |   |  |
+ChannelCode |   |  |
+ChannelType |  Kanal |  |
+ChildA |   | single line class comment |
+ChildAA |   |  |
+ChildB |   | Multi<br>line<br>class<br>comment |
+ChildBB |   |  |
+ChildBeanParameterType |   |  |
+ChildPOJO |   | This is the first line of the first comment<br>2nd line |
+ClassA |   |  |
+ClassB |   |  |
+ClientClass |   |  |
+ClientClass |   |  |
+CodeTypeUsageTest |   |  |
+Color |   | There are so many colors. |
+Company |   |  |
+ComplexArrayServiceObject |   |  |
+ComplexBookingID |   |  |
+ComplexBookingType |   |  |
+ComplextTypeArrayPOJO |   |  |
+CompositeID |   |  |
+Context |   |  |
+CurrencyCode |   |  |
+CustomPrimitiveArraysObjectWithRestrictions |   |  |
+DataTypeUsage |   |  |
+DataTypeWithConstraints |   |  |
+DataUnit |   |  |
+DateQueryParamsBean |   |  |
+DeprecatedContext |   |  |
+DeprecatedServiceObject |   |  |
+DeprecatedType |   |  |
+DirectedEdge |   | Just a simple comment. |
+DiscountOffer |   |  |
+DoubleCode |   |  |
+DoubleCodeType |   |  |
+Entity |   |  |
+EnumTest |   |  |
+EnumWithProperties |   |  |
+ExtensibleEnum |   |  |
+ExtensibleEnumWithProperties |   |  |
+Farbe |   |  |
+FloatCode |   |  |
+FloatCodeType |   |  |
+GenericPageableResponse |   |  |
+GenericResponsePOJO |   |  |
+GenericSingleValuedReponse |   |  |
+GeoPosition |   |  |
+HeavyDataTypeUser |   |  |
+IBAN |   |  |
+IdentifiableServiceObject |   |  |
+IdentifiableServiceObjectWithMethod |   |  |
+IgnoringClass |   |  |
+ImmutableAssociationPOJO |   |  |
+ImmutableChildPOJO |   |  |
+ImmutablePOJO |   |  |
+ImmutablePOJOParent |   |  |
+Input |   |  |
+InputSubclass |   |  |
+IntegerCode |   |  |
+IntegerCodeType |   |  |
+InventoryType |   |  |
+JustAType |   |  |
+Leg |   |  |
+LinkObject |   |  |
+LocalBeanParamType |   |  |
+LongCode |   |  |
+LongCodeType |   |  |
+MappingChild |   |  |
+MappingParent |   |  |
+MasterClass |   |  |
+MasterClass |   |  |
+Message |   |  |
+Message |   |  |
+ModelWrapperArrayServiceObject |   |  |
+ModelWrapperTypeServiceObject |   |  |
+MultiValuedDataType |   |  |
+MultivaluedQueryParamsBean |   |  |
+MutableChildPOJO |   |  |
+MyBusinessObject |   |  |
+MyDataType |   |  |
+MyEnumWithInterface |   |  |
+MyType |   |  |
+NotInlinedBeanParam |   |  |
+Offer |   |  |
+OtherMappingObject |   |  |
+Output |   |  |
+POI |   |  |
+POJOWithID |   |  |
+POJOWithIDnMethod |   |  |
+Pageable |   |  |
+ParentBeanParamType |   |  |
+ParentClass |   |  |
+ParentPOJO |   |  |
+PartiallyDeprecatedServiceObject |   |  |
+Partner |   |  |
+PartnerContainer |   |  |
+Person |   |  |
+PlaceRef |   |  |
+PlainPOJO |   |  |
+PostalAddress |   |  |
+Price |   |  |
+PrimitiveArrayServiceObject |   |  |
+PrimitiveArraysObjectWithRestrictions |   |  |
+PrimitiveArraysObjectWithRestrictions |   |  |
+PrimitiveObjectWithRestrictions |   |  |
+PrimitiveObjectWithRestrictions |   |  |
+PrimitiveReferenceServiceObject |   |  |
+PrimitiveServiceObject |   |  |
+PrincipalWrapper |   |  |
+Product |   |  |
+Product |  Produkt | Data type represents a product definition |
+ProductCategory |   |  |
+ProductCode |   |  |
+ReadOnlyClient |   |  |
+ReadOnlyClient |   |  |
+ReadOnlyMaster |   |  |
+ReadOnlyMaster |   |  |
+ReadonlyDefaultPOJO |   |  |
+ReadonlyServiceObject |   |  |
+Reseller |   |  |
+Response |   |  |
+Sale |   | Chännel<br>€<br>Ö |
+SessionContextValues |   |  |
+ShortCode |   |  |
+ShortCodeType |   |  |
+SimpleDatatypeServiceObject |   |  |
+SoftLinkChildA |   |  |
+SoftLinkChildB |   |  |
+SoftLinkParent |   |  |
+SoftLinkPartner |   |  |
+Sortiment |   |  |
+SpecialContext |   |  |
+Stop |   |  |
+StopPlaceRef |   |  |
+StringCode |   |  |
+StringCodeType |   |  |
+SubclassWithID |   |  |
+SubclassWithIDnMethod |   |  |
+SubclassWithoutID |   |  |
+SubclassWithoutIDnMethod |   |  |
+SwissGeoPosition |   |  |
+TechParent |   |  |
+TechnicalHeaderContext |   |  |
+TestServiceObject |   | This is a service object that was modeled in order to test the output of the JEAF Generator. |
+TheReadOnlyServiceObject |   |  |
+TimeUnit |  Zeiteinheit | Enumeration represents time units.<br>     <br>NOVA 14 Mapping<br>* nova-base.xsd.ZeitEinheit |
+TopoRef |   |  |
+UICStop |  Haltestelle |  |
+UICStopPlace |   |  |
+VAT |   |  |
+ValidationTestObject |   |  |
+VerkehrsmittelTyp |   |  |
+VersionedObjectSoftLink |   |  |
+WeirdBooking |   |  |
+WeirdParent |   |  |
+WrapperArrayServiceObject |   |  |
+WrapperDatatypeServiceObject |   |  |
+WrapperTypesServiceObject |   |  |
+YetAnotherPOJO |   |  |
+
+<br>
+
 ## com.anaptecs.jeaf.junit.core
 
 | Type     | Legacy Name | Description  |
