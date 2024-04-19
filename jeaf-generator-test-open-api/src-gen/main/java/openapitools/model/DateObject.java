@@ -39,7 +39,7 @@ import openapitools.JSON;
   DateObject.JSON_PROPERTY_SQL_DATE,
   DateObject.JSON_PROPERTY_UTIL_DATE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.4.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.5.0")
 public class DateObject {
   public static final String JSON_PROPERTY_LOCAL_TIME = "localTime";
   private String _localTime;

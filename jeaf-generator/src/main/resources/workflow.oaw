@@ -60,6 +60,11 @@
         <outlet name="res_test_gen"  path="${path.res.test.gen}/" overwrite="true"/>
         <outlet name="res_test"  path="${path.res.test}/" overwrite="false"/>
 		<outlet path="error" />
+		
+		<!-- protected regions configuration -->
+		<prSrcPaths value="${path.src.gen}"/>
+		<prDefaultExcludes value="true"/>
+		<prExcludes value="*.xml"/>		
     </component>
     
     <!-- Write log message to console -->

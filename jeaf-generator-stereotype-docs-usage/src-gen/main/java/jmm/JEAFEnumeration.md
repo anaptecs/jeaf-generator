@@ -20,6 +20,7 @@ To support developers in this scenarios JEAF Generator is able to generate exten
 | **Tagged Values**       |                       |                                                                                                                                                                                                          |
 | **Name**                | **Type**              | **Description**                                                                                                                                                                                          |
 | `extensibleEnum`   | `Boolean` | If set to `true` the enumeration is an extensible enum.<br><br>Default value: `false` |
+| `hasCustomImplementation`   | `Boolean` | If set to `true` then a so called code protection region will be generated. Inside this region custom code for the enum can be added. JEAF Generator will detect such regions and will preserve the code inside.<br><br>Default value: `false` |
 
 <br>
 
