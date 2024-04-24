@@ -6,10 +6,9 @@ menubar: jmm_menu
 ---
 
 # Stereotype `«OpenAPIEnumeration»`
-Stereotype `«OpenAPIEnumeration»` can be used to mark an enumeration as 
-OpenAPI data type.
+Stereotype `«OpenAPIEnumeration»` can be used to mark an enumeration to be part of an OpenAPI specification.
 
-JEAF Generator also supports so called "extensible enums". From a semantic versioning perspective added new literals to an enumeration is a breaking change. However in reality this is a quite common case. If you want to avoid the breaking change then you can work with extensible enums. By default for them its not considered to be a breaking change if you add an additional literal.
+JEAF Generator also supports so called "extensible enums". From a semantic versioning perspective added new literals to an enumeration is a breaking change. However in reality this is a quite common case. If you want to avoid the breaking change then you can work with extensible enums. By convention for them its not considered to be a breaking change if you add an additional literal.
 
 To support developers in this scenarios JEAF Generator is able to generate extensible enums. In such a case type `x-extensible-enum` is used instead of `enum`.
 

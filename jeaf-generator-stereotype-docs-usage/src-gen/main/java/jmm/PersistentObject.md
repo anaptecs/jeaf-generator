@@ -18,13 +18,13 @@ Stereotype `«PersistentObject»` can be used to define all information needed t
 | `classID`   | `Integer` | The `classID` is a global ID for persistent objects. It is used e.g. for mapping of inheritance hierarchies to databases in object relational mapping. The `classID` is maintained and managed manually and must be unique within the whole UML model. <br><br>JEAF Generator will check and ensure it’s uniqueness and will produce an error if this constraint is not met. It’s recommended to work with value ranges for for Class-IDs if your model becomes a little larger. |
 | `table`   | `String` | Attribute defines the name of the table that is used to store objects of this class in a database. If the attribute is not set then the not qualified name of the class in upper case letters will be used.<br><br>Please be aware of specific length and keyword restrictions depending on the used relational database. |
 | `optimisticLock`   | `Boolean` | Attribute defines the locking behavior of the class. If the attribute is set to `false` then no locking will be used. In case of `true` optimistic locking is enabled.<br><br>Default value is `true`. |
-| `OIDRowName`   | `String` | Optional attribute can be used to define the name of the row that is used to store the so called Object-ID. The Object-ID is the object oriented equivalent to a primary key on the database.<br><br>If the attribute is not set then the globally configured default value of JEAF Generator is used. |
+| `OIDRowName`   | `String` | Optional attribute can be used to define the name of the row that is used to store the so called Object-ID (OID). The OID is the object oriented equivalent to a primary key on the database.<br><br>If the attribute is not set then the globally configured default value of JEAF Generator is used. |
 | `VersionLabelRowName`   | `String` | Optional attribute can be used to define the name of the row that is used as version label for optimistic locking.<br><br>If the attribute is not set then the globally configured default value of JEAF Generator is used. |
 
 <br>
 
 For further information please refer to:
-- [How to model Persistence Classes](/uml-modeling-guide/how-to-model-jeaf-persistence)
+- [How to model Persistence Classes](/uml-modeling-guide/how-tos/how-to-model-jeaf-persistence)
 - [Generating Code for Persistence Units](/developer-guide/code-for-jeaf-persistence)
 
 

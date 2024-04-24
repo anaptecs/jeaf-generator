@@ -18,7 +18,7 @@ Components use activities to implement non-trivial functionality of the services
 <br>
 
 For further information please refer to:
-- [How to model Activities](/uml-modeling-guide/how-to-model-activities)
+- [How to model Activities](/uml-modeling-guide/how-tos/how-to-model-activities)
 - [Generating Code for Activities](/developer-guide/code-for-jeaf-activities)
 - [JEAF Architecture Model - Activity](https://anaptecs.atlassian.net/wiki/spaces/JEAF/pages/515276970/JEAF+Architecture+Model#Activity) 
 

@@ -18,8 +18,8 @@ Stereotype `«JEAFServiceProviderImpl»` can be used to mark a class as an imple
 <br>
 
 For further information please refer to:
-- [How to model Service Providers](/uml-modeling-guide/how-to-model-service-providers) 
-- [Generating Code for Service Providers](/developer-guide/code-for-jeaf-service-providers) 
+- [How to model Service Providers](/uml-modeling-guide/how-tos/how-to-model-service-providers)
+- [Generating Code for Service Providers](/developer-guide/code-for-jeaf-service-providers)
 - [JEAF Architecture Model - Service Provider](https://anaptecs.atlassian.net/wiki/spaces/JEAF/pages/515276970/JEAF+Architecture+Model#Service-Provider)
 
 

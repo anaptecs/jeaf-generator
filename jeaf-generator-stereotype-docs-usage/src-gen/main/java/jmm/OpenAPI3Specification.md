@@ -24,13 +24,13 @@ Stereotype `«OpenAPI3Specification»` can be used to mark a component as OpenAP
 | `licenseURL`   | `String` | URL under which the used license is available. |
 | `termsOfUseURL`   | `String` | URL under which the terms of use are published. |
 | `securityOptional`   | `Boolean` | Tagged value can be used to define that the security section of the OpenAPI specification will not be provided. |
-| `explicityTypeOrdering`   | `Boolean` | By default types are order in an alphabetic order. However, JEAF Generator also supports to define an explicit type ordering in OpenAPI specification. <br><br>This can be enabled using tagged value. In addition stereotype «Ordered» has to be applied on the elements of the OpenAPI Types that belong to the OpenAPI specification. |
+| `explicityTypeOrdering`   | `Boolean` | By default types are ordered in an alphabetic order. However, JEAF Generator also supports to define an explicit type ordering in OpenAPI specifications. <br><br>This can be enabled using this tagged value. In addition stereotype «Ordered» has to be applied on the elements of the OpenAPI Types that belong to the OpenAPI specification. |
 | `explicitPathOrdering`   | `Boolean` | As for types it is also to define an explicit order for paths. <br><br>This can be enabled using tagged value. In addition stereotype «Ordered» has to be applied on the REST operations that belong to the OpenAPI specification. |
 
 <br>
 
 For further information please refer to:
-- [How to publish REST Services as OpenAPI 3 specification](/uml-modeling-guide/how-to-model-open-api)
+- [How to publish REST Services as OpenAPI 3 specification](/uml-modeling-guide/how-tos/how-to-model-open-api)
 - [Generating OpenAPI Specification](/developer-guide/generating-open-api-spec)
 
 

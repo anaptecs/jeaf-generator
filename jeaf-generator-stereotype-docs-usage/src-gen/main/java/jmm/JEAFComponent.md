@@ -23,7 +23,11 @@ Please be aware that all settings will applied for all services that are impleme
 
 <br>
 
-For further information please refer to: - [How to model Components](https://anaptecs.atlassian.net/wiki/spaces/JEAF/pages/546177607) - [Generating Code for Components](https://anaptecs.atlassian.net/wiki/spaces/JEAF/pages/546047011) - [JEAF Architecture Model - Component](https://anaptecs.atlassian.net/wiki/spaces/JEAF/pages/515276970/JEAF+Architecture+Model#Component ) - [JEAF Security](https://anaptecs.atlassian.net/wiki/spaces/JEAF/pages/546210729)
+For further information please refer to: 
+- [How to model Components](/uml-modeling-guide/how-tos/how-to-model-jeaf-components) 
+- [Generating Code for Components](/developer-guide/code-for-jeaf-components) 
+- [JEAF Architecture Model - Component](https://anaptecs.atlassian.net/wiki/spaces/JEAF/pages/515276970/JEAF+Architecture+Model#Component ) 
+- [JEAF Security](https://anaptecs.atlassian.net/wiki/spaces/JEAF/pages/546210729)
 
 
 <br>

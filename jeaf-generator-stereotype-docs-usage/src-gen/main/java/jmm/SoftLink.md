@@ -6,7 +6,7 @@ menubar: jmm_menu
 ---
 
 # Stereotype `«SoftLink»`
-So called soft links are a mechanism to decouple objects within your application. From a model perspective the is just a directed association between 2 classes of your model. But as the association end is marked as soft link using stereotype `«SoftLink»` in the generated code there will be just a proxy type e.g. a String representing the ID of the object and not a direct reference to this type.
+So called soft links are a mechanism to decouple objects within your application. From a model perspective there is just a directed association between 2 classes of your model. But as the association end is marked as soft link using stereotype `«SoftLink»` in the generated code there will be just a proxy type e.g. a String representing the ID of the object and not a direct reference to the class.
 
 <br>
 

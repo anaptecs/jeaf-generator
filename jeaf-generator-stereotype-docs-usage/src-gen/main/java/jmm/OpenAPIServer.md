@@ -6,7 +6,7 @@ menubar: jmm_menu
 ---
 
 # Stereotype `«OpenAPIServer»`
-When defining an OpenAPI specification it is also possible to define the servers on which the API is available. For each server on which the API is available a component with stereotype `«OpenAPIServer»` needs to be defined.
+When defining an OpenAPI specification it is also possible to define the servers on which the API is available. For each server a component with stereotype `«OpenAPIServer»` needs to be defined.
 
 <br>
 
