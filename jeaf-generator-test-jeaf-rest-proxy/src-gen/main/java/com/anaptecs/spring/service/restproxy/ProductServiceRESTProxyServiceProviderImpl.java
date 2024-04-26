@@ -91,7 +91,8 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
     // Build path of request
     StringBuilder lPathBuilder = new StringBuilder();
-    lPathBuilder.append("/products");
+    lPathBuilder.append('/');
+    lPathBuilder.append("products/");
     lRequestBuilder.setPath(lPathBuilder.toString());
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
@@ -113,8 +114,8 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
     // Build path of request
     StringBuilder lPathBuilder = new StringBuilder();
-    lPathBuilder.append("/products");
     lPathBuilder.append('/');
+    lPathBuilder.append("products/");
     lPathBuilder.append(pProductID);
     lRequestBuilder.setPath(lPathBuilder.toString());
     // Execute request and return result.
@@ -133,7 +134,8 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.POST, ContentType.JSON);
     // Build path of request
     StringBuilder lPathBuilder = new StringBuilder();
-    lPathBuilder.append("/products");
+    lPathBuilder.append('/');
+    lPathBuilder.append("products/");
     lRequestBuilder.setPath(lPathBuilder.toString());
     // Set parameter pProduct as request body.
     lRequestBuilder.setBody(pProduct);
@@ -153,9 +155,8 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
     // Build path of request
     StringBuilder lPathBuilder = new StringBuilder();
-    lPathBuilder.append("/products");
     lPathBuilder.append('/');
-    lPathBuilder.append("sortiment/");
+    lPathBuilder.append("products/sortiment/");
     lPathBuilder.append(pContext.getPathParam());
     lRequestBuilder.setPath(lPathBuilder.toString());
     // Add query parameter(s) to request
@@ -201,9 +202,8 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.POST, ContentType.JSON);
     // Build path of request
     StringBuilder lPathBuilder = new StringBuilder();
-    lPathBuilder.append("/products");
     lPathBuilder.append('/');
-    lPathBuilder.append("ChannelCode");
+    lPathBuilder.append("products/ChannelCode");
     lRequestBuilder.setPath(lPathBuilder.toString());
     // Set parameter pChannelCode as request body.
     lRequestBuilder.setBody(pChannelCode);
@@ -221,7 +221,8 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.HEAD, ContentType.JSON);
     // Build path of request
     StringBuilder lPathBuilder = new StringBuilder();
-    lPathBuilder.append("/products");
+    lPathBuilder.append('/');
+    lPathBuilder.append("products/");
     lRequestBuilder.setPath(lPathBuilder.toString());
     // Execute request.
     RESTRequest lRequest = lRequestBuilder.build();
@@ -238,9 +239,8 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
     // Build path of request
     StringBuilder lPathBuilder = new StringBuilder();
-    lPathBuilder.append("/products");
     lPathBuilder.append('/');
-    lPathBuilder.append("deprecated/operation");
+    lPathBuilder.append("products/deprecated/operation");
     lRequestBuilder.setPath(lPathBuilder.toString());
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
@@ -258,9 +258,8 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.POST, ContentType.JSON);
     // Build path of request
     StringBuilder lPathBuilder = new StringBuilder();
-    lPathBuilder.append("/products");
     lPathBuilder.append('/');
-    lPathBuilder.append("deprecated/context");
+    lPathBuilder.append("products/deprecated/context");
     lRequestBuilder.setPath(lPathBuilder.toString());
     // Add query parameter(s) to request
     if (pContext != null) {
@@ -297,9 +296,8 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.POST, ContentType.JSON);
     // Build path of request
     StringBuilder lPathBuilder = new StringBuilder();
-    lPathBuilder.append("/products");
     lPathBuilder.append('/');
-    lPathBuilder.append("deprecated/beanParams");
+    lPathBuilder.append("products/deprecated/beanParams");
     lRequestBuilder.setPath(lPathBuilder.toString());
     // Add query parameter(s) to request
     if (pBeanParam != null) {
@@ -335,9 +333,8 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.POST, ContentType.JSON);
     // Build path of request
     StringBuilder lPathBuilder = new StringBuilder();
-    lPathBuilder.append("/products");
     lPathBuilder.append('/');
-    lPathBuilder.append("deprecated/params");
+    lPathBuilder.append("products/deprecated/params");
     lRequestBuilder.setPath(lPathBuilder.toString());
     // Set HTTP header(s)
     lRequestBuilder.setHeader("param1", pParam1);
@@ -358,9 +355,8 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.POST, ContentType.JSON);
     // Build path of request
     StringBuilder lPathBuilder = new StringBuilder();
-    lPathBuilder.append("/products");
     lPathBuilder.append('/');
-    lPathBuilder.append("deprecated/body");
+    lPathBuilder.append("products/deprecated/body");
     lRequestBuilder.setPath(lPathBuilder.toString());
     // Set parameter pBody as request body.
     lRequestBuilder.setBody(pBody);
@@ -383,9 +379,8 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.POST, ContentType.JSON);
     // Build path of request
     StringBuilder lPathBuilder = new StringBuilder();
-    lPathBuilder.append("/products");
     lPathBuilder.append('/');
-    lPathBuilder.append("deprecated/complexBody");
+    lPathBuilder.append("products/deprecated/complexBody");
     lRequestBuilder.setPath(lPathBuilder.toString());
     // Set parameter pProduct as request body.
     lRequestBuilder.setBody(pProduct);
@@ -405,9 +400,8 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
     // Build path of request
     StringBuilder lPathBuilder = new StringBuilder();
-    lPathBuilder.append("/products");
     lPathBuilder.append('/');
-    lPathBuilder.append("deprecated/complexReturn");
+    lPathBuilder.append("products/deprecated/complexReturn");
     lRequestBuilder.setPath(lPathBuilder.toString());
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
@@ -424,9 +418,8 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.PATCH, ContentType.JSON);
     // Build path of request
     StringBuilder lPathBuilder = new StringBuilder();
-    lPathBuilder.append("/products");
     lPathBuilder.append('/');
-    lPathBuilder.append("specific/");
+    lPathBuilder.append("products/specific/");
     lPathBuilder.append(pContext.getPathParam());
     lRequestBuilder.setPath(lPathBuilder.toString());
     // Add query parameter(s) to request
@@ -478,9 +471,8 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.POST, ContentType.JSON);
     // Build path of request
     StringBuilder lPathBuilder = new StringBuilder();
-    lPathBuilder.append("/products");
     lPathBuilder.append('/');
-    lPathBuilder.append("ChannelCodeObject");
+    lPathBuilder.append("products/ChannelCodeObject");
     lRequestBuilder.setPath(lPathBuilder.toString());
     // Set parameter pChannelCode as request body.
     lRequestBuilder.setBody(pChannelCode);
@@ -500,9 +492,8 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.POST, ContentType.JSON);
     // Build path of request
     StringBuilder lPathBuilder = new StringBuilder();
-    lPathBuilder.append("/products");
     lPathBuilder.append('/');
-    lPathBuilder.append("currencies");
+    lPathBuilder.append("products/currencies");
     lRequestBuilder.setPath(lPathBuilder.toString());
     // Set parameter pCurrencies as request body.
     lRequestBuilder.setBody(pCurrencies);
@@ -526,9 +517,8 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.POST, ContentType.JSON);
     // Build path of request
     StringBuilder lPathBuilder = new StringBuilder();
-    lPathBuilder.append("/products");
     lPathBuilder.append('/');
-    lPathBuilder.append("currencies/valid");
+    lPathBuilder.append("products/currencies/valid");
     lRequestBuilder.setPath(lPathBuilder.toString());
     // Set parameter pCurrency as request body.
     lRequestBuilder.setBody(pCurrency);
@@ -548,9 +538,8 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.POST, ContentType.JSON);
     // Build path of request
     StringBuilder lPathBuilder = new StringBuilder();
-    lPathBuilder.append("/products");
     lPathBuilder.append('/');
-    lPathBuilder.append("codeTypeUsages");
+    lPathBuilder.append("products/codeTypeUsages");
     lRequestBuilder.setPath(lPathBuilder.toString());
     // Set parameter pStringCode as request body.
     lRequestBuilder.setBody(pStringCode);
@@ -570,9 +559,8 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
     // Build path of request
     StringBuilder lPathBuilder = new StringBuilder();
-    lPathBuilder.append("/products");
     lPathBuilder.append('/');
-    lPathBuilder.append("LocalBeanParam");
+    lPathBuilder.append("products/LocalBeanParam");
     lRequestBuilder.setPath(lPathBuilder.toString());
     // Set HTTP header(s)
     if (pBeanParam != null) {
@@ -599,9 +587,8 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
     // Build path of request
     StringBuilder lPathBuilder = new StringBuilder();
-    lPathBuilder.append("/products");
     lPathBuilder.append('/');
-    lPathBuilder.append("ExternalBeanParam");
+    lPathBuilder.append("products/ExternalBeanParam");
     lRequestBuilder.setPath(lPathBuilder.toString());
     // Set HTTP header(s)
     if (pParent != null) {
@@ -628,9 +615,8 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
     // Build path of request
     StringBuilder lPathBuilder = new StringBuilder();
-    lPathBuilder.append("/products");
     lPathBuilder.append('/');
-    lPathBuilder.append("ChildBeanParam");
+    lPathBuilder.append("products/ChildBeanParam");
     lRequestBuilder.setPath(lPathBuilder.toString());
     // Set HTTP header(s)
     if (pChild != null) {
@@ -671,9 +657,8 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
     // Build path of request
     StringBuilder lPathBuilder = new StringBuilder();
-    lPathBuilder.append("/products");
     lPathBuilder.append('/');
-    lPathBuilder.append("test-date-query-params/");
+    lPathBuilder.append("products/test-date-query-params/");
     lPathBuilder.append(pPath);
     lRequestBuilder.setPath(lPathBuilder.toString());
     // Add query parameter(s) to request
@@ -732,9 +717,8 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
     // Build path of request
     StringBuilder lPathBuilder = new StringBuilder();
-    lPathBuilder.append("/products");
     lPathBuilder.append('/');
-    lPathBuilder.append("test-date-query-params-beans/");
+    lPathBuilder.append("products/test-date-query-params-beans/");
     lPathBuilder.append(pPath);
     lRequestBuilder.setPath(lPathBuilder.toString());
     // Add query parameter(s) to request
@@ -806,9 +790,8 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
     // Build path of request
     StringBuilder lPathBuilder = new StringBuilder();
-    lPathBuilder.append("/products");
     lPathBuilder.append('/');
-    lPathBuilder.append("test-date-header-params/");
+    lPathBuilder.append("products/test-date-header-params/");
     lPathBuilder.append(pPath);
     lRequestBuilder.setPath(lPathBuilder.toString());
     // Set HTTP header(s)
@@ -867,9 +850,8 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
     // Build path of request
     StringBuilder lPathBuilder = new StringBuilder();
-    lPathBuilder.append("/products");
     lPathBuilder.append('/');
-    lPathBuilder.append("test-date-header-params-beans/");
+    lPathBuilder.append("products/test-date-header-params-beans/");
     lPathBuilder.append(pPath);
     lRequestBuilder.setPath(lPathBuilder.toString());
     // Set HTTP header(s)
@@ -931,9 +913,8 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
     // Build path of request
     StringBuilder lPathBuilder = new StringBuilder();
-    lPathBuilder.append("/products");
     lPathBuilder.append('/');
-    lPathBuilder.append("technicalHeaderParam");
+    lPathBuilder.append("products/technicalHeaderParam");
     lRequestBuilder.setPath(lPathBuilder.toString());
     // Set HTTP header(s)
     if (pReseller != null) {
@@ -955,9 +936,8 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
     // Build path of request
     StringBuilder lPathBuilder = new StringBuilder();
-    lPathBuilder.append("/products");
     lPathBuilder.append('/');
-    lPathBuilder.append("technicalHeaderBeanParam");
+    lPathBuilder.append("products/technicalHeaderBeanParam");
     lRequestBuilder.setPath(lPathBuilder.toString());
     // Set HTTP header(s)
     if (pContext != null) {
@@ -985,9 +965,8 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
     // Build path of request
     StringBuilder lPathBuilder = new StringBuilder();
-    lPathBuilder.append("/products");
     lPathBuilder.append('/');
-    lPathBuilder.append("product-codes");
+    lPathBuilder.append("products/product-codes");
     lRequestBuilder.setPath(lPathBuilder.toString());
     // Add query parameter(s) to request
     if (pCodes != null) {

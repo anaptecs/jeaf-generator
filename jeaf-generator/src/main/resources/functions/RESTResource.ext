@@ -1,5 +1,11 @@
 extension java::GeneratorCommons;
 extension functions::RESTOperation;
 
+cached boolean isRESTResource(uml::Element element):
+    element.isStereotypeApplied("RESTResource");
+    
+cached JMM::RESTResource asRESTResource(uml::Element element):
+    (JMM::RESTResource) element;
+    
 cached boolean filterCustomHeaders(JMM::RESTResource resource):
-    filterCustomHeaders() && resource.ownedOperation.typeSelect(JMM::RESTOperation).select(e|e.hasBeanParams()).getBeanParams().select(e|e.supportsCustomHeaders).isEmpty == false;
+    filterCustomHeaders() && resource.ownedOperation.typeSelect(JMM::RESTOperation).select(e|e.hasBeanParamsForRESTOperation()).getBeanParamsForRESTOperation().select(e|e.supportsCustomHeaders).isEmpty == false;

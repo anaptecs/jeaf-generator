@@ -8,7 +8,8 @@ menubar: jmm_menu
 # Stereotype `«OpenAPIPattern»`
 Stereotype `«OpenAPIPattern»` can be used to define a pattern for the values of a property / parameter.
 
-When also working with Java, please be aware that syntax from JavaScript ([ECMA 262](https://www.ecma-international.org/ecma-262/5.1/#sec-15.10.1).
+*Note:*
+When also working with Java, please be aware that syntax from JavaScript ([ECMA 262](https://www.ecma-international.org/ecma-262/5.1/#sec-15.10.1)) is used which is not compatible.
 
 <br>
 

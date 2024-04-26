@@ -6,7 +6,7 @@ menubar: jmm_menu
 ---
 
 # Stereotype `«Alias»`
-Stereotype `«Alias»` can be used to express that an model element also has an alternative name. This might be helpful in case that there is a renaming of elements. Alternate name might be displayed in model report.
+Stereotype `«Alias»` can be used to express that a model element also has an alternative name. This might be helpful in case that there is a renaming of elements. Alternate name might be displayed in model report.
 
 <br>
 
@@ -15,7 +15,7 @@ Stereotype `«Alias»` can be used to express that an model element also has an 
 | **Applicable Elements** | `NamedElement`        |
 | **Tagged Values**       |                       |                                                                                                                                                                                                          |
 | **Name**                | **Type**              | **Description**                                                                                                                                                                                          |
-| `alternateName`   | `String` |  |
+| `alternateName`   | `String` | Alternate name for the model element. |
 
 
 

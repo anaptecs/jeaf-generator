@@ -28,9 +28,9 @@ Stereotype `«Service Object»` is used to model service objects. They define to
 
 <br>
 
-For further information please also refer to: 
-- [How to model Service Interfaces](/uml-modeling-guide/how-to-model-rest-service-apis)  
-- [Generating Code for Services](/developer-guide/code-for-jeaf-services/) 
+For further information please also refer to:
+- [How to model Service Interfaces](/uml-modeling-guide/how-tos/how-to-model-rest-service-apis)
+- [Generating Code for Services](/developer-guide/code-for-jeaf-services/)
 - [JEAF Architecture Model - Service](https://anaptecs.atlassian.net/wiki/spaces/JEAF/pages/515276970/JEAF+Architecture+Model#Service)
 
 

@@ -30,7 +30,7 @@ Please be aware that the stereotype can only be applied on an operation of an in
 <br>
 
 For further information please refer to:
-- [How to model REST Services](/uml-modeling-guide/how-to-model-rest-service-apis)
+- [How to model REST Services](/uml-modeling-guide/how-tos/how-to-model-rest-service-apis)
 - [Generating Code for REST Services](/developer-guide/code-for-jeaf-services)
 
 

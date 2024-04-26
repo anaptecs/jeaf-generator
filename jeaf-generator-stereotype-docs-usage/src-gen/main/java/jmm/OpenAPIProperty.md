@@ -16,8 +16,8 @@ Stereotype `«OpenAPIProperty»` can be used to define OpenAPI specifc informati
 | **Applicable Elements** | `Property`        |
 | **Tagged Values**       |                       |                                                                                                                                                                                                          |
 | **Name**                | **Type**              | **Description**                                                                                                                                                                                          |
-| `nullable`   | `Boolean` | OpenAPI 3.0 does not have an explicit null type as in JSON Schema, but you can use `nullable: true` to specify that the value may be `null`.<br><br>Note that `null` is different from an empty string `""`. Default value is `true`. |
-| `accessType`   | `AccessType` | Access type can be used to control OpenAPI keywords `readOnly` and `writeOnly`. <br><br>The following values are possible:<br>- `READ_WRITE`: Property will be available in requests and responses<br>- `READ_ONLY`: Property is only included in responses but not in requests<br>- `WRITE_ONLY`: Property is only included in requests but ot in responses<br><br>Default value is `READ_WRITE´. |
+| `nullable`   | `Boolean` | OpenAPI 3.0 does not have an explicit null type as in JSON Schema, but you can use `nullable: true` to specify that the value may be `null`.<br><br>Note that `null` is different from an empty string `""`. Default value is `true`.<br><br>Please be aware that for most cases nullable information can be taken from UML multiplicity information also for OpenAPI. |
+| `accessType`   | `AccessType` | Access type can be used to control OpenAPI keywords `readOnly` and `writeOnly`. <br><br>The following values are possible:<br>- `READ_WRITE`: Property will be available in requests and responses<br>- `READ_ONLY`: Property is only included in responses but not in requests<br>- `WRITE_ONLY`: Property is only included in requests but ot in responses<br><br>Default value is `READ_WRITE`. |
 
 
 

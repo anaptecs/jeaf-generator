@@ -6,7 +6,7 @@ menubar: jmm_menu
 ---
 
 # Stereotype `«JEAFService»`
-Stereotype `«JEAFService»` is used to model services. The stereotype does not have any tagged values. It is only used as marker. Based on this stereotype JEAF Generator is able to identify service interfaces in an UML model and will generate the appropriate source code.
+Stereotype `«JEAFService»` is used to model services. The stereotype does not have any tagged values and is only used as marker. Based on this stereotype JEAF Generator is able to identify service interfaces in an UML model and will generate the appropriate source code.
 
 <br>
 
@@ -18,8 +18,8 @@ Stereotype `«JEAFService»` is used to model services. The stereotype does not 
 <br>
 
 For further information please also refer to: 
-- [How to model Service Interfaces](/uml-modeling-guide/how-to-model-rest-service-apis)  
-- [Generating Code for Services](/developer-guide/code-for-jeaf-services/) 
+- [How to model Service Interfaces](/uml-modeling-guide/how-tos/how-to-model-rest-service-apis)
+- [Generating Code for Services](/developer-guide/code-for-jeaf-services/)
 - [JEAF Architecture Model - Service](https://anaptecs.atlassian.net/wiki/spaces/JEAF/pages/515276970/JEAF+Architecture+Model#Service)
 
 

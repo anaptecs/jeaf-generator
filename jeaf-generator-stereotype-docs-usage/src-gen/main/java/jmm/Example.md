@@ -15,7 +15,7 @@ Stereotype `«Example»` can be used to add example values to properties in the 
 | **Applicable Elements** | `Property` `Parameter`        |
 | **Tagged Values**       |                       |                                                                                                                                                                                                          |
 | **Name**                | **Type**              | **Description**                                                                                                                                                                                          |
-| `exampleValues`   | `String` | Example value |
+| `exampleValues`   | `String` | Example values |
 
 
 

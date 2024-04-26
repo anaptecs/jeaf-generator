@@ -55,7 +55,7 @@ import com.anaptecs.spring.service.DateQueryParamsBean;
 import com.anaptecs.spring.service.LocalBeanParamType;
 import com.anaptecs.spring.service.ProductService;
 
-@RequestMapping(path = "/nova/prefix/products")
+@RequestMapping(path = "/nova/prefix")
 @RestController
 public class ProductServiceResource {
   /**
@@ -90,7 +90,7 @@ public class ProductServiceResource {
    * {@link ProductService#getProducts()}
    */
   @ResponseStatus(HttpStatus.OK)
-  @RequestMapping(method = { RequestMethod.GET })
+  @RequestMapping(path = "products/", method = { RequestMethod.GET })
   public List<Product> getProducts( ) {
     // Delegate request to service.
     List<Product> lResponse = productService.getProducts();
@@ -103,7 +103,7 @@ public class ProductServiceResource {
    * {@link ProductService#getProduct()}
    */
   @ResponseStatus(HttpStatus.OK)
-  @RequestMapping(path = "{id}", method = { RequestMethod.GET })
+  @RequestMapping(path = "products/{id}", method = { RequestMethod.GET })
   public Product getProduct( @PathVariable(name = "id", required = true) String pProductID ) {
     // Validate request parameter(s).
     validationExecutor.validateRequest(ProductService.class, pProductID);
@@ -118,7 +118,7 @@ public class ProductServiceResource {
    * {@link ProductService#createProduct()}
    */
   @ResponseStatus(HttpStatus.OK)
-  @RequestMapping(method = { RequestMethod.POST })
+  @RequestMapping(path = "products/", method = { RequestMethod.POST })
   public boolean createProduct( @RequestBody(required = true) Product pProduct ) {
     // Validate request parameter(s).
     validationExecutor.validateRequest(ProductService.class, pProduct);
@@ -133,7 +133,7 @@ public class ProductServiceResource {
    * {@link ProductService#getSortiment()}
    */
   @ResponseStatus(HttpStatus.OK)
-  @RequestMapping(path = "sortiment/{id}", method = { RequestMethod.GET })
+  @RequestMapping(path = "products/sortiment/{id}", method = { RequestMethod.GET })
   public Sortiment getSortiment( @RequestHeader(name = "token", required = true) String pAccessToken,
       @RequestHeader(name = "lang", required = true) Locale pLanguage,
       @CookieValue(name = "reseller", required = true) long pResellerID,
@@ -173,7 +173,7 @@ public class ProductServiceResource {
    */
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(
-      path = "ChannelCode",
+      path = "products/ChannelCode",
       consumes = { "application/json" },
       produces = { "application/json" },
       method = { RequestMethod.POST })
@@ -191,7 +191,7 @@ public class ProductServiceResource {
    * {@link ProductService#ping()}
    */
   @ResponseStatus(HttpStatus.NO_CONTENT)
-  @RequestMapping(method = { RequestMethod.HEAD })
+  @RequestMapping(path = "products/", method = { RequestMethod.HEAD })
   public void ping( ) {
     // Delegate request to service.
     productService.ping();
@@ -201,7 +201,7 @@ public class ProductServiceResource {
    * {@link ProductService#deprecatedOperation()}
    */
   @ResponseStatus(HttpStatus.OK)
-  @RequestMapping(path = "deprecated/operation", method = { RequestMethod.GET })
+  @RequestMapping(path = "products/deprecated/operation", method = { RequestMethod.GET })
   @Deprecated
   public String deprecatedOperation( ) {
     // Delegate request to service.
@@ -215,7 +215,7 @@ public class ProductServiceResource {
    * {@link ProductService#deprecatedContext()}
    */
   @ResponseStatus(HttpStatus.OK)
-  @RequestMapping(path = "deprecated/context", method = { RequestMethod.POST })
+  @RequestMapping(path = "products/deprecated/context", method = { RequestMethod.POST })
   public String deprecatedContext( @RequestHeader(name = "token", required = true) String pAccessToken,
       @RequestHeader(name = "lang", required = true) Locale pLanguage,
       @CookieValue(name = "reseller", required = true) long pResellerID,
@@ -241,7 +241,7 @@ public class ProductServiceResource {
    * {@link ProductService#deprecatedBeanParam()}
    */
   @ResponseStatus(HttpStatus.NO_CONTENT)
-  @RequestMapping(path = "deprecated/beanParams", method = { RequestMethod.POST })
+  @RequestMapping(path = "products/deprecated/beanParams", method = { RequestMethod.POST })
   public void deprecatedBeanParam( @RequestHeader(name = "token", required = true) String pAccessToken,
       @RequestHeader(name = "lang", required = true) Locale pLanguage,
       @RequestParam(name = "q2", required = true) @Deprecated String pOldStyle ) {
@@ -262,7 +262,7 @@ public class ProductServiceResource {
    * {@link ProductService#deprecatedParams()}
    */
   @ResponseStatus(HttpStatus.OK)
-  @RequestMapping(path = "deprecated/params", method = { RequestMethod.POST })
+  @RequestMapping(path = "products/deprecated/params", method = { RequestMethod.POST })
   @Deprecated
   public String deprecatedParams( @RequestHeader(name = "param1", required = true) @Deprecated int pParam1 ) {
     // Validate request parameter(s).
@@ -278,7 +278,7 @@ public class ProductServiceResource {
    * {@link ProductService#deprecatedBody()}
    */
   @ResponseStatus(HttpStatus.OK)
-  @RequestMapping(path = "deprecated/body", method = { RequestMethod.POST })
+  @RequestMapping(path = "products/deprecated/body", method = { RequestMethod.POST })
   public String deprecatedBody( @RequestBody(required = true) @Deprecated String pBody ) {
     // Validate request parameter(s).
     validationExecutor.validateRequest(ProductService.class, pBody);
@@ -293,7 +293,7 @@ public class ProductServiceResource {
    * {@link ProductService#deprectedComplexRequestBody()}
    */
   @ResponseStatus(HttpStatus.NO_CONTENT)
-  @RequestMapping(path = "deprecated/complexBody", method = { RequestMethod.POST })
+  @RequestMapping(path = "products/deprecated/complexBody", method = { RequestMethod.POST })
   public void deprectedComplexRequestBody( @RequestBody(required = true) @Deprecated Product pProduct ) {
     // Validate request parameter(s).
     validationExecutor.validateRequest(ProductService.class, pProduct);
@@ -305,7 +305,7 @@ public class ProductServiceResource {
    * {@link ProductService#deprecatedComplexReturn()}
    */
   @ResponseStatus(HttpStatus.OK)
-  @RequestMapping(path = "deprecated/complexReturn", method = { RequestMethod.GET })
+  @RequestMapping(path = "products/deprecated/complexReturn", method = { RequestMethod.GET })
   @Deprecated
   public Product deprecatedComplexReturn( ) {
     // Delegate request to service.
@@ -319,7 +319,7 @@ public class ProductServiceResource {
    * {@link ProductService#loadSpecificThings()}
    */
   @ResponseStatus(HttpStatus.NO_CONTENT)
-  @RequestMapping(path = "specific/{id}", method = { RequestMethod.PATCH })
+  @RequestMapping(path = "products/specific/{id}", method = { RequestMethod.PATCH })
   public void loadSpecificThings( @RequestHeader(name = "token", required = true) String pAccessToken,
       @RequestHeader(name = "lang", required = true) Locale pLanguage,
       @CookieValue(name = "reseller", required = true) long pResellerID,
@@ -359,7 +359,7 @@ public class ProductServiceResource {
    * {@link ProductService#createChannelCodeFromObject()}
    */
   @ResponseStatus(HttpStatus.OK)
-  @RequestMapping(path = "ChannelCodeObject", method = { RequestMethod.POST })
+  @RequestMapping(path = "products/ChannelCodeObject", method = { RequestMethod.POST })
   public ChannelCode createChannelCodeFromObject( @RequestBody(required = true) ChannelCode pChannelCode ) {
     // Validate request parameter(s).
     validationExecutor.validateRequest(ProductService.class, pChannelCode);
@@ -374,7 +374,7 @@ public class ProductServiceResource {
    * {@link ProductService#addCurrencies()}
    */
   @ResponseStatus(HttpStatus.OK)
-  @RequestMapping(path = "currencies", method = { RequestMethod.POST })
+  @RequestMapping(path = "products/currencies", method = { RequestMethod.POST })
   public List<CurrencyCode> addCurrencies( @RequestBody(required = true) List<CurrencyCode> pCurrencies ) {
     // Validate request parameter(s).
     validationExecutor.validateRequest(ProductService.class, pCurrencies);
@@ -389,7 +389,7 @@ public class ProductServiceResource {
    * {@link ProductService#isCurrencySupported()}
    */
   @ResponseStatus(HttpStatus.OK)
-  @RequestMapping(path = "currencies/valid", method = { RequestMethod.POST })
+  @RequestMapping(path = "products/currencies/valid", method = { RequestMethod.POST })
   public CurrencyCode isCurrencySupported( @RequestBody(required = true) CurrencyCode pCurrency ) {
     // Validate request parameter(s).
     validationExecutor.validateRequest(ProductService.class, pCurrency);
@@ -404,7 +404,7 @@ public class ProductServiceResource {
    * {@link ProductService#testCodeTypeUsage()}
    */
   @ResponseStatus(HttpStatus.OK)
-  @RequestMapping(path = "codeTypeUsages", method = { RequestMethod.POST })
+  @RequestMapping(path = "products/codeTypeUsages", method = { RequestMethod.POST })
   public IntegerCodeType testCodeTypeUsage( @RequestBody(required = true) StringCodeType pStringCode ) {
     // Validate request parameter(s).
     validationExecutor.validateRequest(ProductService.class, pStringCode);
@@ -419,7 +419,7 @@ public class ProductServiceResource {
    * {@link ProductService#testLocalBeanParamType()}
    */
   @ResponseStatus(HttpStatus.OK)
-  @RequestMapping(path = "LocalBeanParam", method = { RequestMethod.GET })
+  @RequestMapping(path = "products/LocalBeanParam", method = { RequestMethod.GET })
   public String testLocalBeanParamType( @RequestHeader(name = "localKey", required = true) String pLocalKey,
       @RequestHeader(name = "localID", required = true) String pLocalID ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
@@ -441,7 +441,7 @@ public class ProductServiceResource {
    * {@link ProductService#testExternalBeanParameterType()}
    */
   @ResponseStatus(HttpStatus.OK)
-  @RequestMapping(path = "ExternalBeanParam", method = { RequestMethod.GET })
+  @RequestMapping(path = "products/ExternalBeanParam", method = { RequestMethod.GET })
   public String testExternalBeanParameterType( @RequestHeader(name = "novaKey", required = true) String pNovaKey,
       @RequestHeader(name = "tkID", required = true) String pTkID ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
@@ -463,7 +463,7 @@ public class ProductServiceResource {
    * {@link ProductService#testChildBeanParameter()}
    */
   @ResponseStatus(HttpStatus.OK)
-  @RequestMapping(path = "ChildBeanParam", method = { RequestMethod.GET })
+  @RequestMapping(path = "products/ChildBeanParam", method = { RequestMethod.GET })
   public String testChildBeanParameter( @RequestHeader(name = "novaKey", required = true) String pNovaKey,
       @RequestHeader(name = "tkID", required = true) String pTkID,
       @RequestHeader(name = "X-Child-Property", required = true) String pChildProperty ) {
@@ -487,7 +487,7 @@ public class ProductServiceResource {
    * {@link ProductService#testDateQueryParams()}
    */
   @ResponseStatus(HttpStatus.NO_CONTENT)
-  @RequestMapping(path = "test-date-query-params/{path}", method = { RequestMethod.GET })
+  @RequestMapping(path = "products/test-date-query-params/{path}", method = { RequestMethod.GET })
   public void testDateQueryParams( @PathVariable(name = "path", required = true) String pPath,
       @RequestParam(name = "startTimestamp", required = true) String pStartTimestampAsBasicType,
       @RequestParam(name = "startTime", required = true) String pStartTimeAsBasicType,
@@ -594,7 +594,7 @@ public class ProductServiceResource {
    * {@link ProductService#testDateQueryParamsBean()}
    */
   @ResponseStatus(HttpStatus.NO_CONTENT)
-  @RequestMapping(path = "test-date-query-params-beans/{path}", method = { RequestMethod.GET })
+  @RequestMapping(path = "products/test-date-query-params-beans/{path}", method = { RequestMethod.GET })
   public void testDateQueryParamsBean( @PathVariable(name = "path", required = true) String pPath,
       @RequestParam(name = "offsetDateTime", required = true) String pOffsetDateTimeAsBasicType,
       @RequestParam(name = "offsetTime", required = true) String pOffsetTimeAsBasicType,
@@ -674,7 +674,7 @@ public class ProductServiceResource {
    * {@link ProductService#testDateHeaderParams()}
    */
   @ResponseStatus(HttpStatus.NO_CONTENT)
-  @RequestMapping(path = "test-date-header-params/{path}", method = { RequestMethod.GET })
+  @RequestMapping(path = "products/test-date-header-params/{path}", method = { RequestMethod.GET })
   public void testDateHeaderParams( @PathVariable(name = "path", required = true) String pPath,
       @RequestHeader(name = "Offset-Date-Time", required = true) String pOffsetDateTimeAsBasicType,
       @RequestHeader(name = "Offset-Time", required = true) String pOffsetTimeAsBasicType,
@@ -781,7 +781,7 @@ public class ProductServiceResource {
    * {@link ProductService#testDateHeaderParamsBean()}
    */
   @ResponseStatus(HttpStatus.NO_CONTENT)
-  @RequestMapping(path = "test-date-header-params-beans/{path}", method = { RequestMethod.GET })
+  @RequestMapping(path = "products/test-date-header-params-beans/{path}", method = { RequestMethod.GET })
   public void testDateHeaderParamsBean( @PathVariable(name = "path", required = true) String pPath,
       @RequestHeader(name = "Offset-Date-Time", required = true) String pOffsetDateTimeAsBasicType,
       @RequestHeader(name = "Offset-Time", required = true) String pOffsetTimeAsBasicType,
@@ -861,7 +861,7 @@ public class ProductServiceResource {
    * {@link ProductService#testTechnicalHeaderParam()}
    */
   @ResponseStatus(HttpStatus.OK)
-  @RequestMapping(path = "technicalHeaderParam", method = { RequestMethod.GET })
+  @RequestMapping(path = "products/technicalHeaderParam", method = { RequestMethod.GET })
   public String testTechnicalHeaderParam( @RequestHeader(name = "Reseller", required = true) String pReseller ) {
     // Validate request parameter(s).
     validationExecutor.validateRequest(ProductService.class, pReseller);
@@ -876,7 +876,7 @@ public class ProductServiceResource {
    * {@link ProductService#testTechnicalHeaderBean()}
    */
   @ResponseStatus(HttpStatus.OK)
-  @RequestMapping(path = "technicalHeaderBeanParam", method = { RequestMethod.GET })
+  @RequestMapping(path = "products/technicalHeaderBeanParam", method = { RequestMethod.GET })
   public String testTechnicalHeaderBean( @RequestHeader(name = "Reseller", required = true) String pReseller,
       @RequestHeader Map<String, String> pHeaders ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
@@ -903,7 +903,7 @@ public class ProductServiceResource {
    * {@link ProductService#processDataTypes()}
    */
   @ResponseStatus(HttpStatus.OK)
-  @RequestMapping(path = "product-codes", method = { RequestMethod.GET })
+  @RequestMapping(path = "products/product-codes", method = { RequestMethod.GET })
   public String processDataTypes( @RequestParam(name = "pCodes", required = false) String[] pCodesAsBasicType ) {
     // Convert basic type parameters into "real" objects.
     List<AnotherDataType> pCodes;

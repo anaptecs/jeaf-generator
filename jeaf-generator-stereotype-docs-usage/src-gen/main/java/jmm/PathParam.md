@@ -15,15 +15,15 @@ Stereotype `«PathParam»` is used to mark that a parameter of an REST operation
 | **Applicable Elements** | `Parameter` `Property`        |
 | **Tagged Values**       |                       |                                                                                                                                                                                                          |
 | **Name**                | **Type**              | **Description**                                                                                                                                                                                          |
-| `value`   | `String` | Name of the parameter as it is defined in the operations path e.g. id in path `/doSomething/{id}`. |
+| `value`   | `String` | Name of the parameter as it is defined in the operations path e.g. id in path `/doSomething/{id}`.<br><br>If no name is defined then the name of the property / parameter will also be used for the header field. |
 
 <br>
 
 For further information please refer to:
 - [«REST Resource»](/uml-modeling-guide/jmm/RESTResource)
 - [«REST Operation»](/uml-modeling-guide/jmm/RESTOperation)
-- [How to model REST Services](/uml-modeling-guide/how-to-model-rest-service-apis)
-- [Generating Code for REST Services](developer-guide/code-for-jeaf-services/)
+- [How to model REST Services](/uml-modeling-guide/how-tos/how-to-model-rest-service-apis)
+- [Generating Code for REST Services](/developer-guide/code-for-jeaf-services/)
 
 
 <br>

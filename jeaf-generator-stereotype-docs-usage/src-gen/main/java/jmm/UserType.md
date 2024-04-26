@@ -6,7 +6,7 @@ menubar: jmm_menu
 ---
 
 # Stereotype `«UserType»`
-Stereotype `«UserType»` is used to model custom types that have a special mapping to database. They are used to simplify modeling and implementation and also lead to more meaningful UML models as they models better represent the business perspective.
+Stereotype `«UserType»` is used to model custom types that have a special mapping to database. They are used to simplify modeling and implementation and also lead to more meaningful UML models as models better represent the business perspective.
 
 **Example:**
 - Instead of modeling a start and end date in several classes of the model it is also possible to work with a user type Period (which has a start and end date). This type can be used all over the model. As it is an user type it will be mapped to the database everywhere the same.

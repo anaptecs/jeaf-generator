@@ -16,7 +16,7 @@ Stereotype `«OAuthScope»` is used to define the scopes of a OAuth flow.
 | **Tagged Values**       |                       |                                                                                                                                                                                                          |
 | **Name**                | **Type**              | **Description**                                                                                                                                                                                          |
 | `name`   | `String` | Name of the scope e.g. `write:pets`. |
-| `description`   | `String` | Description of the scope e.g. ""modify pets in your account"" |
+| `description`   | `String` | Description of the scope e.g. `"modify pets in your account"` |
 
 <br>
 

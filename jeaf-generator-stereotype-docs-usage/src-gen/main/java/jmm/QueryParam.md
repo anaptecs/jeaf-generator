@@ -6,7 +6,7 @@ menubar: jmm_menu
 ---
 
 # Stereotype `«QueryParam»`
-Stereotype `«QueryParam»` is used to mark that a parameter of a REST operation should be taken from the query string of a REST call. 
+Stereotype `«QueryParam»` is used to mark that a parameter of a REST operation should be taken from the query string of a REST request. 
 
 Please be aware that the stereotype can only be applied on an operation of an interface that is marked as `«RESTResource»` and the operation is marked as `«RESTOperation»`.
 
@@ -17,7 +17,7 @@ Please be aware that the stereotype can only be applied on an operation of an in
 | **Applicable Elements** | `Parameter` `Property`        |
 | **Tagged Values**       |                       |                                                                                                                                                                                                          |
 | **Name**                | **Type**              | **Description**                                                                                                                                                                                          |
-| `value`   | `String` |  |
+| `value`   | `String` | Name of the query parameter in the request. If it is not set then the name of the property / parameter will also be used as query param name. |
 
 
 

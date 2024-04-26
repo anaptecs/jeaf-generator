@@ -29,7 +29,7 @@ Stereotype `«POJO»` can be used to model a POJO (Plain old Java object). It de
 <br>
 
 For further information please refer to:
-- [How to model POJOs](/uml-modeling-guide/how-to-model-pojos)
+- [How to model POJOs](/uml-modeling-guide/how-tos/how-to-model-pojos)
 - [Generating Code for POJOs](/developer-guide/code-for-pojos)
 
 

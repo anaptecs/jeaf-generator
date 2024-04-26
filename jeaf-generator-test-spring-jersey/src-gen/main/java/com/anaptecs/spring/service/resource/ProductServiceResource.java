@@ -65,7 +65,7 @@ import com.anaptecs.spring.service.DateQueryParamsBean;
 import com.anaptecs.spring.service.LocalBeanParamType;
 import com.anaptecs.spring.service.ProductService;
 
-@Path("/products")
+@Path("/")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class ProductServiceResource {
@@ -91,6 +91,7 @@ public class ProductServiceResource {
   /**
    * {@link ProductService#getProducts()}
    */
+  @Path("products/")
   @GET
   public void getProducts( @Suspended AsyncResponse pAsyncResponse,
       @javax.ws.rs.core.Context HttpServletRequest pRequest ) {
@@ -123,7 +124,7 @@ public class ProductServiceResource {
   /**
    * {@link ProductService#getProduct()}
    */
-  @Path("{id}")
+  @Path("products/{id}")
   @GET
   public Response getProduct( @PathParam("id") String pProductID ) {
     // Delegate request to service.
@@ -136,6 +137,7 @@ public class ProductServiceResource {
   /**
    * {@link ProductService#createProduct()}
    */
+  @Path("products/")
   @POST
   public Response createProduct( Product pProduct ) {
     // Delegate request to service.
@@ -148,7 +150,7 @@ public class ProductServiceResource {
   /**
    * {@link ProductService#getSortiment()}
    */
-  @Path("sortiment/{id}")
+  @Path("products/sortiment/{id}")
   @GET
   public Response getSortiment( @BeanParam Context pContext, @javax.ws.rs.core.Context HttpHeaders pHeaders ) {
     // Add custom headers.
@@ -167,7 +169,7 @@ public class ProductServiceResource {
   /**
    * {@link ProductService#createChannelCode()}
    */
-  @Path("ChannelCode")
+  @Path("products/ChannelCode")
   @POST
   @Consumes(MediaType.APPLICATION_JSON)
   @Produces(MediaType.APPLICATION_JSON)
@@ -182,6 +184,7 @@ public class ProductServiceResource {
   /**
    * {@link ProductService#ping()}
    */
+  @Path("products/")
   @HEAD
   public Response ping( ) {
     // Delegate request to service.
@@ -192,7 +195,7 @@ public class ProductServiceResource {
   /**
    * {@link ProductService#deprecatedOperation()}
    */
-  @Path("deprecated/operation")
+  @Path("products/deprecated/operation")
   @GET
   @Deprecated
   public Response deprecatedOperation( ) {
@@ -206,7 +209,7 @@ public class ProductServiceResource {
   /**
    * {@link ProductService#deprecatedContext()}
    */
-  @Path("deprecated/context")
+  @Path("products/deprecated/context")
   @POST
   public Response deprecatedContext( @BeanParam DeprecatedContext pContext ) {
     // Delegate request to service.
@@ -219,7 +222,7 @@ public class ProductServiceResource {
   /**
    * {@link ProductService#deprecatedBeanParam()}
    */
-  @Path("deprecated/beanParams")
+  @Path("products/deprecated/beanParams")
   @POST
   public Response deprecatedBeanParam( @BeanParam BeanParameter pBeanParam ) {
     // Delegate request to service.
@@ -230,7 +233,7 @@ public class ProductServiceResource {
   /**
    * {@link ProductService#deprecatedParams()}
    */
-  @Path("deprecated/params")
+  @Path("products/deprecated/params")
   @POST
   @Deprecated
   public Response deprecatedParams( @HeaderParam("param1") @Deprecated int pParam1 ) {
@@ -244,7 +247,7 @@ public class ProductServiceResource {
   /**
    * {@link ProductService#deprecatedBody()}
    */
-  @Path("deprecated/body")
+  @Path("products/deprecated/body")
   @POST
   public Response deprecatedBody( @DefaultValue("Hello World!") @Deprecated String pBody ) {
     // Delegate request to service.
@@ -257,7 +260,7 @@ public class ProductServiceResource {
   /**
    * {@link ProductService#deprectedComplexRequestBody()}
    */
-  @Path("deprecated/complexBody")
+  @Path("products/deprecated/complexBody")
   @POST
   public Response deprectedComplexRequestBody( @Deprecated Product pProduct ) {
     // Delegate request to service.
@@ -268,7 +271,7 @@ public class ProductServiceResource {
   /**
    * {@link ProductService#deprecatedComplexReturn()}
    */
-  @Path("deprecated/complexReturn")
+  @Path("products/deprecated/complexReturn")
   @GET
   @Deprecated
   public Response deprecatedComplexReturn( ) {
@@ -282,7 +285,7 @@ public class ProductServiceResource {
   /**
    * {@link ProductService#loadSpecificThings()}
    */
-  @Path("specific/{id}")
+  @Path("products/specific/{id}")
   @PATCH
   public Response loadSpecificThings( @BeanParam SpecialContext pContext,
       @javax.ws.rs.core.Context HttpHeaders pHeaders ) {
@@ -300,7 +303,7 @@ public class ProductServiceResource {
   /**
    * {@link ProductService#createChannelCodeFromObject()}
    */
-  @Path("ChannelCodeObject")
+  @Path("products/ChannelCodeObject")
   @POST
   public Response createChannelCodeFromObject( ChannelCode pChannelCode ) {
     // Delegate request to service.
@@ -313,7 +316,7 @@ public class ProductServiceResource {
   /**
    * {@link ProductService#addCurrencies()}
    */
-  @Path("currencies")
+  @Path("products/currencies")
   @POST
   public Response addCurrencies( List<CurrencyCode> pCurrencies ) {
     // Delegate request to service.
@@ -326,7 +329,7 @@ public class ProductServiceResource {
   /**
    * {@link ProductService#isCurrencySupported()}
    */
-  @Path("currencies/valid")
+  @Path("products/currencies/valid")
   @POST
   public Response isCurrencySupported( CurrencyCode pCurrency ) {
     // Delegate request to service.
@@ -339,7 +342,7 @@ public class ProductServiceResource {
   /**
    * {@link ProductService#testCodeTypeUsage()}
    */
-  @Path("codeTypeUsages")
+  @Path("products/codeTypeUsages")
   @POST
   public Response testCodeTypeUsage( StringCodeType pStringCode ) {
     // Delegate request to service.
@@ -352,7 +355,7 @@ public class ProductServiceResource {
   /**
    * {@link ProductService#testLocalBeanParamType()}
    */
-  @Path("LocalBeanParam")
+  @Path("products/LocalBeanParam")
   @GET
   public Response testLocalBeanParamType( @BeanParam LocalBeanParamType pBeanParam ) {
     // Delegate request to service.
@@ -365,7 +368,7 @@ public class ProductServiceResource {
   /**
    * {@link ProductService#testExternalBeanParameterType()}
    */
-  @Path("ExternalBeanParam")
+  @Path("products/ExternalBeanParam")
   @GET
   public Response testExternalBeanParameterType( @BeanParam ParentBeanParamType pParent ) {
     // Delegate request to service.
@@ -378,7 +381,7 @@ public class ProductServiceResource {
   /**
    * {@link ProductService#testChildBeanParameter()}
    */
-  @Path("ChildBeanParam")
+  @Path("products/ChildBeanParam")
   @GET
   public Response testChildBeanParameter( @BeanParam ChildBeanParameterType pChild ) {
     // Delegate request to service.
@@ -391,7 +394,7 @@ public class ProductServiceResource {
   /**
    * {@link ProductService#testDateQueryParams()}
    */
-  @Path("test-date-query-params/{path}")
+  @Path("products/test-date-query-params/{path}")
   @GET
   public Response testDateQueryParams( @PathParam("path") String pPath,
       @QueryParam("startTimestamp") OffsetDateTime pStartTimestamp, @QueryParam("startTime") OffsetTime pStartTime,
@@ -409,7 +412,7 @@ public class ProductServiceResource {
   /**
    * {@link ProductService#testDateQueryParamsBean()}
    */
-  @Path("test-date-query-params-beans/{path}")
+  @Path("products/test-date-query-params-beans/{path}")
   @GET
   public Response testDateQueryParamsBean( @PathParam("path") String pPath,
       @BeanParam DateQueryParamsBean pQueryParams ) {
@@ -421,7 +424,7 @@ public class ProductServiceResource {
   /**
    * {@link ProductService#testDateHeaderParams()}
    */
-  @Path("test-date-header-params/{path}")
+  @Path("products/test-date-header-params/{path}")
   @GET
   public Response testDateHeaderParams( @PathParam("path") String pPath,
       @HeaderParam("Offset-Date-Time") OffsetDateTime pOffsetDateTime,
@@ -439,7 +442,7 @@ public class ProductServiceResource {
   /**
    * {@link ProductService#testDateHeaderParamsBean()}
    */
-  @Path("test-date-header-params-beans/{path}")
+  @Path("products/test-date-header-params-beans/{path}")
   @GET
   public Response testDateHeaderParamsBean( @PathParam("path") String pPath,
       @BeanParam DateHeaderParamsBean pHeaderParams ) {
@@ -451,7 +454,7 @@ public class ProductServiceResource {
   /**
    * {@link ProductService#testTechnicalHeaderParam()}
    */
-  @Path("technicalHeaderParam")
+  @Path("products/technicalHeaderParam")
   @GET
   public Response testTechnicalHeaderParam( @HeaderParam("Reseller") String pReseller ) {
     // Delegate request to service.
@@ -464,7 +467,7 @@ public class ProductServiceResource {
   /**
    * {@link ProductService#testTechnicalHeaderBean()}
    */
-  @Path("technicalHeaderBeanParam")
+  @Path("products/technicalHeaderBeanParam")
   @GET
   public Response testTechnicalHeaderBean( @BeanParam TechnicalHeaderContext pContext,
       @javax.ws.rs.core.Context HttpHeaders pHeaders ) {
@@ -484,7 +487,7 @@ public class ProductServiceResource {
   /**
    * {@link ProductService#processDataTypes()}
    */
-  @Path("product-codes")
+  @Path("products/product-codes")
   @GET
   public Response processDataTypes( @QueryParam("pCodes") String[] pCodesAsBasicType ) {
     // Convert basic type parameters into "real" objects.

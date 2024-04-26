@@ -8,7 +8,7 @@ menubar: jmm_menu
 # Stereotype `«PersistenceUnit»`
 Java Persistence API (JPA) defines so called persistence units. They are used to put a bunch of persistence objects together. All persistent classes within the same persistence unit share the same database connection and transaction.
 
-Stereotype `«PersistenceUnit»` can be used to define a persistent unit. Therefore the persistence unit has to reference the packages from which the unit should be build up. JEAF Components that want to make use of classes of a persistence unit need to define a corresponding dependency. For further details about modelling persistence units please refer to [How to model Persistence Units](/uml-modeling-guide/how-to-model-jeaf-persistence).
+Stereotype `«PersistenceUnit»` can be used to define a persistence unit. Therefore the persistence unit has to reference the packages from which the unit should be build up. JEAF Components that want to make use of classes of a persistence unit need to define a dependency on it.
 
 <br>
 
@@ -17,14 +17,14 @@ Stereotype `«PersistenceUnit»` can be used to define a persistent unit. Theref
 | **Applicable Elements** | `Component`        |
 | **Tagged Values**       |                       |                                                                                                                                                                                                          |
 | **Name**                | **Type**              | **Description**                                                                                                                                                                                          |
-| `entityManagerJNDI`   | `String` | Attribute was used in previous versions of JEAF to define the name of the entity manager that is connected with the persistence unit. Meanwhile this information is not needed any longer and so this attribute is not relevant any more.<br><br>Attribute is deprecated and will be removed in one of the next releases. |
+| `entityManagerJNDI`   | `String` | Attribute was used in previous versions of JEAF to define the name of the entity manager that is connected with the persistence unit. Meanwhile this information is not needed any longer and so this attribute is not relevant any more.<br><br>**Attribute is deprecated and will be removed in one of the next releases.** |
 | `showSQL`   | `ConfigurationMode` | Optional attribute showSQL is used to control SQL logging for all persistent objects that belong to the persistence unit.<br><br>Possible values are:<br>- `TRUE` / `FALSE`: Logging is active or not<br>- `GLOBAL_PROPERTY`: Logging is controlled for this persistence units by one global configuration property.<br>- `INDIVIDUAL_PROPERTY`: Logging is controlled by a specific configuration property for this persistence unit.<br><br>Default value is `TRUE`. |
 | `formatSQL`   | `ConfigurationMode` | Optional attribute formatSQL is used to control the style of the written SQL logs.<br><br>Possible values are the same as for attribute `showSQL`.<br><br>Default value is `TRUE`. |
 
 <br>
 
 For further information please refer to:
-- [How to model Persistence Units](/uml-modeling-guide/how-to-model-jeaf-persistence)
+- [How to model Persistence Units](/uml-modeling-guide/how-tos/how-to-model-jeaf-persistence)
 - [Generating Code for Persistence Units](/developer-guide/code-for-jeaf-persistence)
 
 

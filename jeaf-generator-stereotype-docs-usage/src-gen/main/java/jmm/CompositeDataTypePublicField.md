@@ -18,7 +18,7 @@ Stereotype `«CompositeDataTypePublicField»` can be used for the name of the pu
 <br>
 
 For further information please refer to:
-- [`«CompositeDataTypePublicField»`](/uml-modeling-guide/jmm/OpenAPIDataType)
+- [`«OpenAPIDataType»`](/uml-modeling-guide/jmm/OpenAPIDataType)
 
 
 <br>

@@ -6,9 +6,9 @@ menubar: jmm_menu
 ---
 
 # Stereotype `«Field»`
-Stereotype `«Field»` is used to map attributes of persistent objects to a relational database. Due to that the stereotype can only be applied on classes with stereotype `«Persistent Object»`. Persistence frameworks will map attributes to the database using so called property mapping. This means that for every attribute there will be a row on the database. The mapping between Java and SQL type will be done automatically by default. Using tagged value sqlType it is also possible to define a custom mapping.
+Stereotype `«Field»` is used to map attributes of persistent objects to a relational database. Due to that, the stereotype can only be applied on classes with stereotype `«Persistent Object»`. Persistence frameworks will map attributes to the database using so called property mapping. This means that for every attribute there will be a row on the database. The mapping between Java and SQL type will be done automatically by default. Using tagged value `sqlType` it is also possible to define a custom mapping.
 
-Attributes of persistent classes which do not have stereotype «Field» are considered to be transient.
+Attributes of persistent classes which do not have stereotype `«Field»` are considered to be transient.
 
 <br>
 
@@ -32,7 +32,7 @@ Attributes of persistent classes which do not have stereotype «Field» are cons
 <br>
 
 For further information please refer to:
-- [How to model Persistent Classes](/uml-modeling-guide/how-to-model-jeaf-persistence)
+- [How to model Persistent Classes](/uml-modeling-guide/how-tos/how-to-model-jeaf-persistence)
 - [Generating Code for Persistence](/developer-guide/code-for-jeaf-persistence)
 
 
