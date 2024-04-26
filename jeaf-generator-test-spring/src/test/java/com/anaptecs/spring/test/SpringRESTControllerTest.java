@@ -53,7 +53,7 @@ public class SpringRESTControllerTest {
 
   @Test
   void testRESTControllerAccess( ) {
-    ResponseEntity<String> lResponse = template.getForEntity(PREFIX + "/products", String.class);
+    ResponseEntity<String> lResponse = template.getForEntity(PREFIX + "/products/", String.class);
     assertEquals("[{\"name\":\"Cool Product\",\"uri\":\"https://products.anaptecs.de/123456789\"}]",
         lResponse.getBody());
   }
@@ -63,7 +63,7 @@ public class SpringRESTControllerTest {
     // Execute simple request using Apache HTTP client
     CloseableHttpClient lHttpClient = HttpClientBuilder.create().build();
 
-    ClassicHttpRequest lRequest = ClassicRequestBuilder.get(template.getRootUri() + PREFIX + "/products").build();
+    ClassicHttpRequest lRequest = ClassicRequestBuilder.get(template.getRootUri() + PREFIX + "/products/").build();
     CloseableHttpResponse lResponse = lHttpClient.execute(lRequest);
     assertEquals(200, lResponse.getCode());
     assertEquals("[{\"name\":\"Cool Product\",\"uri\":\"https://products.anaptecs.de/123456789\"}]",
@@ -120,7 +120,7 @@ public class SpringRESTControllerTest {
   @Test
   void testPOSTRequests( ) throws IOException {
     CloseableHttpClient lHttpClient = HttpClientBuilder.create().build();
-    ClassicRequestBuilder lRequest = ClassicRequestBuilder.post(template.getRootUri() + PREFIX + "/products");
+    ClassicRequestBuilder lRequest = ClassicRequestBuilder.post(template.getRootUri() + PREFIX + "/products/");
 
     //
     // createProduct(...)

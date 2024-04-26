@@ -1,51 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <uml:Profile xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/2.0.0/UML" xmi:id="0faf926f-e455-4957-a958-13742c2fc621" name="deployment" metamodelReference="db10c39e-0937-4e9d-97a3-f96e61f1fb48">
-  <eAnnotations xmi:id="_G98nJgGYEe-SP5A5qM9vQg" source="http://www.eclipse.org/uml2/2.0.0/UML">
-    <contents xmi:type="ecore:EPackage" xmi:id="_G98nJwGYEe-SP5A5qM9vQg" name="deployment" nsURI="http://UML_Profile_for_Java/deployment/_9_0_622020d_1108465332701_602548_6762" nsPrefix="deployment">
-      <eClassifiers xmi:type="ecore:EClass" xmi:id="_G98nKAGYEe-SP5A5qM9vQg" name="JARInclude">
-        <eAnnotations xmi:id="_G98nKQGYEe-SP5A5qM9vQg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="72982302-b459-4c01-89dc-b6ec24aeb30f"/>
-        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_G98nKgGYEe-SP5A5qM9vQg" name="base_Dependency" ordered="false" lowerBound="1">
+  <eAnnotations xmi:id="_HQLFkAOiEe-o2fCJt4XqEw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+    <contents xmi:type="ecore:EPackage" xmi:id="_HQLFkQOiEe-o2fCJt4XqEw" name="deployment" nsURI="http://UML_Profile_for_Java/deployment/_9_0_622020d_1108465332701_602548_6762" nsPrefix="deployment">
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_HQLFkgOiEe-o2fCJt4XqEw" name="JARInclude">
+        <eAnnotations xmi:id="_HQLFkwOiEe-o2fCJt4XqEw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="72982302-b459-4c01-89dc-b6ec24aeb30f"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_HQLFlAOiEe-o2fCJt4XqEw" name="base_Dependency" ordered="false" lowerBound="1">
           <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.0.0/UML#//Dependency"/>
         </eStructuralFeatures>
       </eClassifiers>
-      <eClassifiers xmi:type="ecore:EClass" xmi:id="_G98nKwGYEe-SP5A5qM9vQg" name="JARReference">
-        <eAnnotations xmi:id="_G98nLAGYEe-SP5A5qM9vQg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="3b97e311-f344-4fb2-8c18-2275a5f54929"/>
-        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_G98nLQGYEe-SP5A5qM9vQg" name="base_Usage" ordered="false" lowerBound="1">
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_HQLFlQOiEe-o2fCJt4XqEw" name="JARReference">
+        <eAnnotations xmi:id="_HQLFlgOiEe-o2fCJt4XqEw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="3b97e311-f344-4fb2-8c18-2275a5f54929"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_HQLFlwOiEe-o2fCJt4XqEw" name="base_Usage" ordered="false" lowerBound="1">
           <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.0.0/UML#//Usage"/>
         </eStructuralFeatures>
       </eClassifiers>
-      <eClassifiers xmi:type="ecore:EClass" xmi:id="_G98nLgGYEe-SP5A5qM9vQg" name="JAR">
-        <eAnnotations xmi:id="_G98nLwGYEe-SP5A5qM9vQg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="8c72adb0-e5c3-454c-9338-b1323c898473"/>
-        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_G98nMAGYEe-SP5A5qM9vQg" name="JARFileList" ordered="false" lowerBound="1">
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_HQLFmAOiEe-o2fCJt4XqEw" name="JAR">
+        <eAnnotations xmi:id="_HQLFmQOiEe-o2fCJt4XqEw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="8c72adb0-e5c3-454c-9338-b1323c898473"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_HQLFmgOiEe-o2fCJt4XqEw" name="JARFileList" ordered="false" lowerBound="1">
           <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
         </eStructuralFeatures>
-        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_G98nMQGYEe-SP5A5qM9vQg" name="base_Artifact" ordered="false" lowerBound="1">
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_HQLFmwOiEe-o2fCJt4XqEw" name="base_Artifact" ordered="false" lowerBound="1">
           <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.0.0/UML#//Artifact"/>
         </eStructuralFeatures>
       </eClassifiers>
-      <eClassifiers xmi:type="ecore:EClass" xmi:id="_G98nMgGYEe-SP5A5qM9vQg" name="JavaArchiveFile">
-        <eAnnotations xmi:id="_G98nMwGYEe-SP5A5qM9vQg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="b7121bfa-821d-4194-9476-4e029e5058ee"/>
-        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_G98nNAGYEe-SP5A5qM9vQg" name="base_Package" ordered="false" lowerBound="1">
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_HQLFnAOiEe-o2fCJt4XqEw" name="JavaArchiveFile">
+        <eAnnotations xmi:id="_HQLFnQOiEe-o2fCJt4XqEw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="b7121bfa-821d-4194-9476-4e029e5058ee"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_HQLFngOiEe-o2fCJt4XqEw" name="base_Package" ordered="false" lowerBound="1">
           <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.0.0/UML#//Package"/>
         </eStructuralFeatures>
       </eClassifiers>
-      <eClassifiers xmi:type="ecore:EClass" xmi:id="_G98nNQGYEe-SP5A5qM9vQg" name="JavaSourceFile" eSuperTypes="_G98nOwGYEe-SP5A5qM9vQg">
-        <eAnnotations xmi:id="_G98nNgGYEe-SP5A5qM9vQg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="79c533a2-d511-4db6-990d-4d80356f1a09"/>
-        <eAnnotations xmi:id="_G98nNwGYEe-SP5A5qM9vQg" source="duplicates">
-          <contents xmi:type="ecore:EReference" xmi:id="_G98nOAGYEe-SP5A5qM9vQg" name="base_Artifact" ordered="false" lowerBound="1">
-            <eAnnotations xmi:id="_G98nOQGYEe-SP5A5qM9vQg" source="redefines" references="_G98nPQGYEe-SP5A5qM9vQg"/>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_HQLFnwOiEe-o2fCJt4XqEw" name="JavaSourceFile" eSuperTypes="_HQLFpQOiEe-o2fCJt4XqEw">
+        <eAnnotations xmi:id="_HQLFoAOiEe-o2fCJt4XqEw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="79c533a2-d511-4db6-990d-4d80356f1a09"/>
+        <eAnnotations xmi:id="_HQLFoQOiEe-o2fCJt4XqEw" source="duplicates">
+          <contents xmi:type="ecore:EReference" xmi:id="_HQLFogOiEe-o2fCJt4XqEw" name="base_Artifact" ordered="false" lowerBound="1">
+            <eAnnotations xmi:id="_HQLFowOiEe-o2fCJt4XqEw" source="redefines" references="_HQLFpwOiEe-o2fCJt4XqEw"/>
             <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.0.0/UML#//Artifact"/>
           </contents>
         </eAnnotations>
-        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_G98nOgGYEe-SP5A5qM9vQg" name="base_Component" ordered="false" lowerBound="1">
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_HQLFpAOiEe-o2fCJt4XqEw" name="base_Component" ordered="false" lowerBound="1">
           <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.0.0/UML#//Component"/>
         </eStructuralFeatures>
       </eClassifiers>
-      <eClassifiers xmi:type="ecore:EClass" xmi:id="_G98nOwGYEe-SP5A5qM9vQg" name="Standard_File">
-        <eAnnotations xmi:id="_G98nPAGYEe-SP5A5qM9vQg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_HQLFpQOiEe-o2fCJt4XqEw" name="Standard_File">
+        <eAnnotations xmi:id="_HQLFpgOiEe-o2fCJt4XqEw" source="http://www.eclipse.org/uml2/2.0.0/UML">
           <references xmi:type="uml:Stereotype" href="pathmap://UML_PROFILES/Standard.profile.uml#File"/>
         </eAnnotations>
-        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_G98nPQGYEe-SP5A5qM9vQg" name="base_Artifact" ordered="false" lowerBound="1">
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_HQLFpwOiEe-o2fCJt4XqEw" name="base_Artifact" ordered="false" lowerBound="1">
           <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.0.0/UML#//Artifact"/>
         </eStructuralFeatures>
       </eClassifiers>
