@@ -1,5 +1,6 @@
 extension java::GeneratorCommons;
 extension functions::BeanParam;
+extension functions::RESTResource;
 
 cached boolean isRESTOperation(uml::Element element):
     element.isStereotypeApplied("RESTOperation");
@@ -11,9 +12,23 @@ cached String getFullPath(JMM::RESTOperation operation):
     if operation.path.length > 0
     then ((JMM::RESTResource) operation.owner).path + "/" + operation.path + " " + operation.httpMethods
     else ((JMM::RESTResource) operation.owner).path + " " + operation.httpMethods;
+//    if operation.getRESTOperationPath().length > 0
+//    then ((JMM::RESTResource) operation.owner).path + "/" + operation.getRESTOperationPath() + " " + operation.httpMethods
+//    else ((JMM::RESTResource) operation.owner).path + " " + operation.httpMethods;
     
-cached boolean hasBeanParams(JMM::RESTOperation operation):
-    operation.getBeanParams().isEmpty == false;
+cached String getRESTOperationPath(JMM::RESTOperation operation):
+    operation.path;
+//    if operation.path.length > 0
+//    then operation.getRESTOperationPathPrefix() + operation.path
+//    else operation.getRESTOperationPathPrefix();
 
-cached List[JMM::BeanParam] getBeanParams(JMM::RESTOperation operation):
+private String getRESTOperationPathPrefix(JMM::RESTOperation operation):
+    if operation.owner.asRESTResource().operationPathPrefix.length > 0
+    then operation.owner.asRESTResource().operationPathPrefix
+    else "";
+    
+cached boolean hasBeanParamsForRESTOperation(JMM::RESTOperation operation):
+    operation.getBeanParamsForRESTOperation().isEmpty == false;
+
+cached List[JMM::BeanParam] getBeanParamsForRESTOperation(JMM::RESTOperation operation):
     operation.ownedParameter.select(e|e.isParameterBeanParam()).parameterAsBeanParam();

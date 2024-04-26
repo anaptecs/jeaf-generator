@@ -6,6 +6,7 @@
 «EXTENSION java::OpenAPIFunctions»
 
 «EXTENSION functions::RESTResource»
+«EXTENSION functions::RESTOperation»
 «EXTENSION functions::Operation»
 
 
@@ -214,7 +215,7 @@ public class «name»Resource {
 	/**
 	 * {@link «this.getOwningClass().fqn()»#«name»()}
 	 */
-	«IF path.length > 0»@«getEnterpriseJavaPackage()».ws.rs.Path("«path»")«ENDIF»
+	«IF this.getRESTOperationPath().length > 0»@«getEnterpriseJavaPackage()».ws.rs.Path("«this.getRESTOperationPath()»")«ENDIF»
 	«EXPAND HTTPMethods»
 	«IF consumes.size > 0»@«getEnterpriseJavaPackage()».ws.rs.Consumes(«IF consumes.size > 1»{«ENDIF»«FOREACH consumes AS mediaType SEPARATOR ","»«getEnterpriseJavaPackage()».ws.rs.core.MediaType.«mediaType»«ENDFOREACH»«IF consumes.size > 1»}«ENDIF»)«ENDIF»
 	«IF produces.size > 0»@«getEnterpriseJavaPackage()».ws.rs.Produces(«IF produces.size > 1»{«ENDIF»«FOREACH produces AS mediaType SEPARATOR ","»«getEnterpriseJavaPackage()».ws.rs.core.MediaType.«mediaType»«ENDFOREACH»«IF produces.size > 1»}«ENDIF»)«ENDIF»
@@ -356,7 +357,7 @@ public class «name»Resource {
 	«ENDIF»
 	@org.springframework.web.bind.annotation.ResponseStatus(org.springframework.http.HttpStatus.«getJAXRSStatusCodeName(this.getStatusCodeName())»)
 	@org.springframework.web.bind.annotation.RequestMapping(
-	«IF path.length > 0»path = "«path»",«ENDIF»
+	«IF this.getRESTOperationPath().length > 0»path = "«this.getRESTOperationPath()»",«ENDIF»
 	«IF consumes.size > 0»consumes = {«FOREACH consumes AS mediaType SEPARATOR ","»"«mediaType.toOpenAPIContentType()»"«ENDFOREACH»},«ENDIF»
 	«IF produces.size > 0»produces = {«FOREACH produces AS mediaType SEPARATOR ","»"«mediaType.toOpenAPIContentType()»"«ENDFOREACH»},«ENDIF»
 	method = { «FOREACH httpMethods AS httpMethod SEPARATOR ","»org.springframework.web.bind.annotation.RequestMethod.«httpMethod»«ENDFOREACH»}
@@ -702,7 +703,7 @@ public class «name»Resource {
 	/**
 	 * {@link «this.getOwningClass().fqn()»#«name»()}
 	 */
-	«IF path.length > 0»@«getEnterpriseJavaPackage()».ws.rs.Path("«path»")«ENDIF»
+	«IF this.getRESTOperationPath().length > 0»@«getEnterpriseJavaPackage()».ws.rs.Path("«this.getRESTOperationPath()»")«ENDIF»
 	«EXPAND HTTPMethods»
 	«IF consumes.size > 0»@«getEnterpriseJavaPackage()».ws.rs.Consumes(«IF consumes.size > 1»{«ENDIF»«FOREACH consumes AS mediaType SEPARATOR ","»«getEnterpriseJavaPackage()».ws.rs.core.MediaType.«mediaType»«ENDFOREACH»«IF consumes.size > 1»}«ENDIF»)«ENDIF»
 	«IF produces.size > 0»@«getEnterpriseJavaPackage()».ws.rs.Produces(«IF produces.size > 1»{«ENDIF»«FOREACH produces AS mediaType SEPARATOR ","»«getEnterpriseJavaPackage()».ws.rs.core.MediaType.«mediaType»«ENDFOREACH»«IF produces.size > 1»}«ENDIF»)«ENDIF»

@@ -8,6 +8,7 @@ extension functions::TemplateParameter;
 extension functions::Operation;
 extension functions::Alias;
 extension functions::SoftLink;
+extension functions::RESTOperation;
 
 cached boolean hasOpenAPITypes(JMM::OpenAPI3Specification spec):
 	getOpenAPITypes(spec).size > 0;
@@ -52,10 +53,10 @@ cached List[JMM::RESTResource] getRESTResources(JMM::OpenAPI3Specification spec)
 	spec.clientDependency.supplier.typeSelect(JMM::RESTResource).select(e|e.isInGeneratorWhitelist()).sortBy(e|e.name).sortBy(e|e.getOrderNumber());
 	
 cached List[JMM::RESTOperation] getRESTOperations(JMM::RESTResource service, String pPath):
-   service.ownedOperation.typeSelect(JMM::RESTOperation).select(e|e.path == pPath);
+   service.ownedOperation.typeSelect(JMM::RESTOperation).select(e|e.getRESTOperationPath() == pPath);
    
 cached Set[String] getPaths(JMM::RESTResource service):
-   service.ownedOperation.typeSelect(JMM::RESTOperation).path.toSet();
+   service.ownedOperation.typeSelect(JMM::RESTOperation).getRESTOperationPath().toSet();
 	
 cached String getYAMLStyleComment(uml::Element element, String indentation):
     element.ownedComment.get(0).body.trim().replaceAll("\n", "\r\n" + indentation + "# ");
@@ -504,13 +505,13 @@ private cached boolean hasMultivaluedTemplateBinding(uml::Class class):
     else false;
     
 List[String] detectMissingRESTPathParams(JMM::RESTOperation operation):
-    javaDetectMissingRESTPathParams(operation.path,  operation.getAllRESTPathParamNames());
+    javaDetectMissingRESTPathParams(operation.getRESTOperationPath(),  operation.getAllRESTPathParamNames());
 
 private List[String] javaDetectMissingRESTPathParams(String restPath, List[String] restPathParamNames):
     JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.detectMissingRESTPathParams(java.lang.String, java.util.List);
     
 List[String] detectDeadRESTPathParams(JMM::RESTOperation operation):
-    javaDetectDeadRESTPathParams(operation.path,  operation.getAllRESTPathParamNames());
+    javaDetectDeadRESTPathParams(operation.getRESTOperationPath(),  operation.getAllRESTPathParamNames());
 
 private List[String] javaDetectDeadRESTPathParams(String restPath, List[String] restPathParamNames):
     JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.detectDeadRESTPathParams(java.lang.String, java.util.List);

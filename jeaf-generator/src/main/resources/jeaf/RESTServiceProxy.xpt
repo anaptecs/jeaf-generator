@@ -4,6 +4,7 @@
 «EXTENSION java::OpenAPIFunctions»
 «EXTENSION functions::Property»
 «EXTENSION functions::Class»
+«EXTENSION functions::RESTOperation»
 
 «IMPORT uml»
 «IMPORT JMM»
@@ -201,9 +202,9 @@ public class «name»RESTProxy implements «this.fqn()» {
 	    «IF service.path.length > 0»
 	    lPathBuilder.append("«service.path»");
 	    «ENDIF»
-	    «IF this.path.length > 0»
+	    «IF this.getRESTOperationPath().length > 0»
 	    	lPathBuilder.append('/');
-	    	«FOREACH splitRESTPath(this.path, this.getAllPathParams(), this.getAllPathParamNamnes()) AS pathPart»
+	    	«FOREACH splitRESTPath(this.getRESTOperationPath(), this.getAllPathParams(), this.getAllPathParamNamnes()) AS pathPart»
 	    	lPathBuilder.append(«pathPart»);
 	    	«ENDFOREACH»
 	    «ENDIF»
