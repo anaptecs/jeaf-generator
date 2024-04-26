@@ -253,7 +253,7 @@
 			    «ENDIF»
 		
 			    // Create configured modules and add them as well.
-			    «FOREACH this.clientDependency.supplier.typeSelect(ModuleFactory).sortBy(e|e.fqn()) AS moduleFactory»
+			    «FOREACH this.clientDependency.supplier.typeSelect(ModuleFactory).sortBy(e|e.name) AS moduleFactory»
 			    	lBuilder.addModule(«moduleFactory.fqn()».createDataTypeSerializerModule());
 				    «IF moduleFactory.requiresCompositeDataTypeConverter()»
 			    	lBuilder.addModule(«moduleFactory.fqn()».createCompositeDataTypeSerializerModule(pCompositeTypeConverter));
