@@ -17,7 +17,7 @@ import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-public class TechnicalHeaderContext implements ServiceObject {
+public class TechnicalHeaderContext extends Object implements ServiceObject {
   /**
    * Default serial version uid.
    */
@@ -260,6 +260,10 @@ public class TechnicalHeaderContext implements ServiceObject {
     else {
       throw new IllegalArgumentException("Parameter 'pHeaderName' must not be null.");
     }
+  }
+
+  public void doSomethingGenerated( ) {
+    // Ooops, I forget to implement that ;-)
   }
 
   /**

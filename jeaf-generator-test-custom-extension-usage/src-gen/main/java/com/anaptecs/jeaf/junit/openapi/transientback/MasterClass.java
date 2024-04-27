@@ -21,7 +21,7 @@ import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-public class MasterClass implements ServiceObject {
+public class MasterClass extends Object implements ServiceObject {
   /**
    * Default serial version uid.
    */
@@ -446,6 +446,10 @@ public class MasterClass implements ServiceObject {
 
   public void setSingleClientXYZ( int value ) {
     singleClientXYZ = value;
+  }
+
+  public void doSomethingGenerated( ) {
+    // Ooops, I forget to implement that ;-)
   }
 
   /**

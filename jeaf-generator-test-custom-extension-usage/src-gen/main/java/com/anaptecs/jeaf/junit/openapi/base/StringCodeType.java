@@ -14,7 +14,7 @@ import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-public class StringCodeType implements ServiceObject {
+public class StringCodeType extends Object implements ServiceObject {
   /**
    * Default serial version uid.
    */
@@ -159,6 +159,10 @@ public class StringCodeType implements ServiceObject {
 
   public void setCodeXYZ( int value ) {
     codeXYZ = value;
+  }
+
+  public void doSomethingGenerated( ) {
+    // Ooops, I forget to implement that ;-)
   }
 
   /**

@@ -13,7 +13,7 @@ import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-public class TechParent implements ServiceObject {
+public class TechParent extends Object implements ServiceObject {
   /**
    * Default serial version uid.
    */
@@ -155,6 +155,10 @@ public class TechParent implements ServiceObject {
 
   public void setTechAttributeXYZ( int value ) {
     techAttributeXYZ = value;
+  }
+
+  public void doSomethingGenerated( ) {
+    // Ooops, I forget to implement that ;-)
   }
 
   /**

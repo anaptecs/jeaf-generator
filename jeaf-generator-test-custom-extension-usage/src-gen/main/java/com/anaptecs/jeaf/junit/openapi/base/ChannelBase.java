@@ -13,7 +13,7 @@ import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-public abstract class ChannelBase implements ServiceObject {
+public abstract class ChannelBase extends Object implements ServiceObject {
   /**
    * Default serial version uid.
    */
@@ -438,6 +438,10 @@ public abstract class ChannelBase implements ServiceObject {
    * @return {@link String} Value to which {@link #derivedSomething} is set.
    */
   public abstract String getDerivedSomething( );
+
+  public void doSomethingGenerated( ) {
+    // Ooops, I forget to implement that ;-)
+  }
 
   /**
    * Method returns a StringBuilder that can be used to create a String representation of this object. The returned

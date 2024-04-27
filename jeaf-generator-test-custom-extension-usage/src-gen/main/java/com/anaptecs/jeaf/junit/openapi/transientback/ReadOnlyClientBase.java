@@ -13,7 +13,7 @@ import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-public abstract class ReadOnlyClientBase implements ServiceObject {
+public abstract class ReadOnlyClientBase extends Object implements ServiceObject {
   /**
    * Default serial version uid.
    */
@@ -179,6 +179,10 @@ public abstract class ReadOnlyClientBase implements ServiceObject {
 
   public void setTransientMasterXYZ( int value ) {
     transientMasterXYZ = value;
+  }
+
+  public void doSomethingGenerated( ) {
+    // Ooops, I forget to implement that ;-)
   }
 
   /**

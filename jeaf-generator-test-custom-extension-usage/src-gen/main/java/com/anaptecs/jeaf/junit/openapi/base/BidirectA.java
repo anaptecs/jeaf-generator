@@ -19,7 +19,7 @@ import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-public class BidirectA implements ServiceObject {
+public class BidirectA extends Object implements ServiceObject {
   /**
    * Default serial version uid.
    */
@@ -336,6 +336,10 @@ public class BidirectA implements ServiceObject {
 
   public void setTransientChildXYZ( int value ) {
     transientChildXYZ = value;
+  }
+
+  public void doSomethingGenerated( ) {
+    // Ooops, I forget to implement that ;-)
   }
 
   /**

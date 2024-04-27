@@ -22,7 +22,7 @@ import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.anaptecs.jeaf.xfun.api.common.Identifiable;
 import com.anaptecs.jeaf.xfun.api.common.ObjectIdentity;
 
-public class Partner implements ServiceObject, Identifiable<ServiceObjectID> {
+public class Partner extends Object implements ServiceObject, Identifiable<ServiceObjectID> {
   /**
    * Default serial version uid.
    */
@@ -290,6 +290,10 @@ public class Partner implements ServiceObject, Identifiable<ServiceObjectID> {
 
   public void setPostalAddressesXYZ( int value ) {
     postalAddressesXYZ = value;
+  }
+
+  public void doSomethingGenerated( ) {
+    // Ooops, I forget to implement that ;-)
   }
 
   /**

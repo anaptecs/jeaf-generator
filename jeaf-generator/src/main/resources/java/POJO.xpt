@@ -132,6 +132,7 @@
 					«ENDIF»
 
 					«EXPAND java::Helper::GenerateCustomHeadersOperations»
+					«EXPAND jeafgenerator::api::ClassExtensionHook::CustomOperations»
 					«EXPAND java::Helper::GenerateEqualsHashCode(name)»
 					«EXPAND java::Helper::GenerateToStringMethod»
 					«EXPAND java::Builder::ToBuilderMethod»
@@ -257,6 +258,7 @@
 					«EXPAND java::Attribute::AbstractGetterForDerivedProperty FOREACH this.getDerivedProperties()»
 					«EXPAND jeaf::JEAFOperation::PersistentObjectOperation FOREACH ownedOperation»
 					«EXPAND java::Helper::GenerateCustomHeadersOperations»
+					«EXPAND jeafgenerator::api::ClassExtensionHook::CustomOperations»
 					«EXPAND java::Helper::GenerateEqualsHashCode(name + "Base")»
 					«EXPAND java::Helper::GenerateToStringMethod»
 					«EXPAND java::Builder::ToBuilderMethodForBaseClass»
@@ -332,7 +334,10 @@
 «ENDDEFINE»
 
 «DEFINE SuperClassDeclaration FOR POJO»
-	«IF !superClass.isEmpty» extends «superClass.get(0).fqn()»«ENDIF»
+	«IF !superClass.isEmpty» extends «superClass.get(0).fqn()»
+	«ELSE»
+	   «EXPAND jeafgenerator::api::ClassExtensionHook::ParentClassDeclaration»
+	«ENDIF»
 «ENDDEFINE»
 
 «DEFINE InterfaceDeclarations FOR POJO»

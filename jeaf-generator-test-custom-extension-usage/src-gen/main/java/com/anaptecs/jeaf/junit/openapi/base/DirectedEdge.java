@@ -19,7 +19,7 @@ import com.anaptecs.jeaf.xfun.api.checks.Check;
  * @author JEAF Generator
  * @version JEAF Release 1.6.x
  */
-public class DirectedEdge implements ServiceObject {
+public class DirectedEdge extends Object implements ServiceObject {
   /**
    * Default serial version uid.
    */
@@ -334,6 +334,10 @@ public class DirectedEdge implements ServiceObject {
 
   public void setLinkXYZ( int value ) {
     linkXYZ = value;
+  }
+
+  public void doSomethingGenerated( ) {
+    // Ooops, I forget to implement that ;-)
   }
 
   /**

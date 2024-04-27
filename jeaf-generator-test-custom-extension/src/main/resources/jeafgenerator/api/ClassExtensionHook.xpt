@@ -1,6 +1,9 @@
 «IMPORT uml»
 «IMPORT JMM»
 
+«DEFINE ParentClassDeclaration FOR Class»
+extends Object
+«ENDDEFINE»
 
 «DEFINE BeforeClassPropertyDeclaration(String fqn) FOR Property»
 // "«fqn»"
@@ -47,3 +50,10 @@ public «builderClassName» set«name.toFirstUpper()»XYZ(int value) {
   return this;
 }
 «ENDDEFINE»
+
+«DEFINE CustomOperations FOR Class»
+public void doSomethingGenerated() {
+    // Ooops, I forget to implement that ;-)
+}
+«ENDDEFINE»
+

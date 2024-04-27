@@ -19,7 +19,7 @@ import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-public class PartnerContainer implements ServiceObject {
+public class PartnerContainer extends Object implements ServiceObject {
   /**
    * Default serial version uid.
    */
@@ -228,6 +228,10 @@ public class PartnerContainer implements ServiceObject {
 
   public void setPartnersXYZ( int value ) {
     partnersXYZ = value;
+  }
+
+  public void doSomethingGenerated( ) {
+    // Ooops, I forget to implement that ;-)
   }
 
   /**

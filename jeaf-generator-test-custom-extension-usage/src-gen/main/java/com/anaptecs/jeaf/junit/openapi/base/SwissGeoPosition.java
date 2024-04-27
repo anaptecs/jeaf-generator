@@ -122,6 +122,10 @@ public class SwissGeoPosition extends GeoPosition {
     }
   }
 
+  public void doSomethingGenerated( ) {
+    // Ooops, I forget to implement that ;-)
+  }
+
   /**
    * Method creates a new builder and initializes it with the data of this object.
    *

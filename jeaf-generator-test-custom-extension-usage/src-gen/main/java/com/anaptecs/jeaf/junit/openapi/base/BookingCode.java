@@ -14,7 +14,7 @@ import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-public class BookingCode implements ServiceObject {
+public class BookingCode extends Object implements ServiceObject {
   /**
    * Default serial version uid.
    */
@@ -159,6 +159,10 @@ public class BookingCode implements ServiceObject {
 
   public void setCodeXYZ( int value ) {
     codeXYZ = value;
+  }
+
+  public void doSomethingGenerated( ) {
+    // Ooops, I forget to implement that ;-)
   }
 
   /**

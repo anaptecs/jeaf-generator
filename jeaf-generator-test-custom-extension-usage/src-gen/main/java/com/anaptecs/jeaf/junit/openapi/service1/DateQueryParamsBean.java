@@ -23,7 +23,7 @@ import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-public class DateQueryParamsBean implements ServiceObject {
+public class DateQueryParamsBean extends Object implements ServiceObject {
   /**
    * Default serial version uid.
    */
@@ -802,6 +802,10 @@ public class DateQueryParamsBean implements ServiceObject {
 
   public void setSqlDateXYZ( int value ) {
     sqlDateXYZ = value;
+  }
+
+  public void doSomethingGenerated( ) {
+    // Ooops, I forget to implement that ;-)
   }
 
   /**

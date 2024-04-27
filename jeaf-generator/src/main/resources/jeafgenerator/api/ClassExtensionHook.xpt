@@ -1,6 +1,8 @@
 «IMPORT uml»
 «IMPORT JMM»
 
+«DEFINE ParentClassDeclaration FOR Class»
+«ENDDEFINE»
 
 «DEFINE BeforeClassPropertyDeclaration(String fqn) FOR Property»
 «ENDDEFINE»
@@ -22,6 +24,9 @@
 «ENDDEFINE»
 
 «DEFINE AfterBuilderPropertyAccessors(String fqn, String builderClassName) FOR Property»
+«ENDDEFINE»
+
+«DEFINE CustomOperations FOR Class»
 «ENDDEFINE»
 
 

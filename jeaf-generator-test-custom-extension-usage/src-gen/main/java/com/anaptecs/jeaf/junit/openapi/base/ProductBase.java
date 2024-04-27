@@ -34,7 +34,7 @@ import com.anaptecs.jeaf.xfun.api.common.ObjectIdentity;
  * @author JEAF Generator
  * @version JEAF Release 1.6.x
  */
-public abstract class ProductBase implements ServiceObject, Identifiable<ServiceObjectID> {
+public abstract class ProductBase extends Object implements ServiceObject, Identifiable<ServiceObjectID> {
   /**
    * Default serial version uid.
    */
@@ -1161,6 +1161,10 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
    * returned collection is unmodifiable.
    */
   public abstract Set<Channel> getTheChannels( );
+
+  public void doSomethingGenerated( ) {
+    // Ooops, I forget to implement that ;-)
+  }
 
   /**
    * Method returns a StringBuilder that can be used to create a String representation of this object. The returned

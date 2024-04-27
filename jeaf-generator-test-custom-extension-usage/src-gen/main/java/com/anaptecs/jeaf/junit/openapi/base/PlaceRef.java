@@ -10,7 +10,7 @@ import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-public abstract class PlaceRef implements ServiceObject {
+public abstract class PlaceRef extends Object implements ServiceObject {
   /**
    * Default serial version uid.
    */
@@ -121,6 +121,10 @@ public abstract class PlaceRef implements ServiceObject {
 
   public void setNameXYZ( int value ) {
     nameXYZ = value;
+  }
+
+  public void doSomethingGenerated( ) {
+    // Ooops, I forget to implement that ;-)
   }
 
   /**

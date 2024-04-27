@@ -13,7 +13,7 @@ import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-public class IBAN implements ServiceObject {
+public class IBAN extends Object implements ServiceObject {
   /**
    * Default serial version uid.
    */
@@ -155,6 +155,10 @@ public class IBAN implements ServiceObject {
 
   public void setValueXYZ( int value ) {
     valueXYZ = value;
+  }
+
+  public void doSomethingGenerated( ) {
+    // Ooops, I forget to implement that ;-)
   }
 
   /**

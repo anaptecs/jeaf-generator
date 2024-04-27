@@ -21,7 +21,7 @@ import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-public class Stop implements ServiceObject {
+public class Stop extends Object implements ServiceObject {
   /**
    * Default serial version uid.
    */
@@ -457,6 +457,10 @@ public class Stop implements ServiceObject {
 
   public void setTheSoftLinkXYZ( int value ) {
     theSoftLinkXYZ = value;
+  }
+
+  public void doSomethingGenerated( ) {
+    // Ooops, I forget to implement that ;-)
   }
 
   /**

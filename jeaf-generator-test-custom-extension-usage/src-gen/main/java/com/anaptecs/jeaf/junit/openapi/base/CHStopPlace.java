@@ -96,6 +96,10 @@ public class CHStopPlace extends StopPlaceRef {
     }
   }
 
+  public void doSomethingGenerated( ) {
+    // Ooops, I forget to implement that ;-)
+  }
+
   /**
    * Method creates a new builder and initializes it with the data of this object.
    *
