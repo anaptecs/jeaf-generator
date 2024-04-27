@@ -59,4 +59,8 @@ public abstract class StopPlaceRef extends PlaceRef {
       return this;
     }
   }
+
+  public void doSomethingGenerated( ) {
+    // Ooops, I forget to implement that ;-)
+  }
 }

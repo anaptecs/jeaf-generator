@@ -18,7 +18,7 @@ import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
+public class PrimitiveArraysObjectWithRestrictions extends Object implements ServiceObject {
   /**
    * Default serial version uid.
    */
@@ -2057,6 +2057,10 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
 
   public void setBStringArrayXYZ( int value ) {
     bStringArrayXYZ = value;
+  }
+
+  public void doSomethingGenerated( ) {
+    // Ooops, I forget to implement that ;-)
   }
 
   /**

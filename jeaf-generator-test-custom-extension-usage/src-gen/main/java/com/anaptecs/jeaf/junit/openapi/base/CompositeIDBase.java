@@ -13,7 +13,7 @@ import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-public abstract class CompositeIDBase implements ServiceObject {
+public abstract class CompositeIDBase extends Object implements ServiceObject {
   /**
    * Default serial version uid.
    */
@@ -217,6 +217,10 @@ public abstract class CompositeIDBase implements ServiceObject {
 
   public void setSecondaryCodeXYZ( int value ) {
     secondaryCodeXYZ = value;
+  }
+
+  public void doSomethingGenerated( ) {
+    // Ooops, I forget to implement that ;-)
   }
 
   /**

@@ -13,7 +13,7 @@ import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-public abstract class VersionedObjectSoftLinkBase implements ServiceObject {
+public abstract class VersionedObjectSoftLinkBase extends Object implements ServiceObject {
   /**
    * Default serial version uid.
    */
@@ -295,6 +295,10 @@ public abstract class VersionedObjectSoftLinkBase implements ServiceObject {
 
   public void setEntityXYZ( int value ) {
     entityXYZ = value;
+  }
+
+  public void doSomethingGenerated( ) {
+    // Ooops, I forget to implement that ;-)
   }
 
   /**

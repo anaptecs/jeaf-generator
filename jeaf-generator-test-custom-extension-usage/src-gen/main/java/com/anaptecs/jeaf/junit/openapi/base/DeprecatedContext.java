@@ -17,7 +17,7 @@ import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
 @Deprecated
-public class DeprecatedContext implements ServiceObject {
+public class DeprecatedContext extends Object implements ServiceObject {
   /**
    * Default serial version uid.
    */
@@ -384,6 +384,10 @@ public class DeprecatedContext implements ServiceObject {
 
   public void setQueryParamXYZ( int value ) {
     queryParamXYZ = value;
+  }
+
+  public void doSomethingGenerated( ) {
+    // Ooops, I forget to implement that ;-)
   }
 
   /**

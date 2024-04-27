@@ -753,6 +753,10 @@ public class POI extends Stop {
     bookingCodesXYZ = value;
   }
 
+  public void doSomethingGenerated( ) {
+    // Ooops, I forget to implement that ;-)
+  }
+
   /**
    * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.

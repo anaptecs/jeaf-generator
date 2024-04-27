@@ -16,7 +16,7 @@ import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-public class BigIntegerCode implements ServiceObject {
+public class BigIntegerCode extends Object implements ServiceObject {
   /**
    * Default serial version uid.
    */
@@ -161,6 +161,10 @@ public class BigIntegerCode implements ServiceObject {
 
   public void setCodeXYZ( int value ) {
     codeXYZ = value;
+  }
+
+  public void doSomethingGenerated( ) {
+    // Ooops, I forget to implement that ;-)
   }
 
   /**

@@ -21,7 +21,7 @@ import com.anaptecs.jeaf.junit.openapi.base.ComplexBookingType;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-public abstract class ComplexBookingIDBase implements ServiceObject {
+public abstract class ComplexBookingIDBase extends Object implements ServiceObject {
   /**
    * Default serial version uid.
    */
@@ -519,6 +519,10 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
 
   public void setAnotherIDXYZ( int value ) {
     anotherIDXYZ = value;
+  }
+
+  public void doSomethingGenerated( ) {
+    // Ooops, I forget to implement that ;-)
   }
 
   /**

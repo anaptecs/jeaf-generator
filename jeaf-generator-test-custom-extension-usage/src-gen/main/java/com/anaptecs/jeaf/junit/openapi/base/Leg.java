@@ -19,7 +19,7 @@ import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-public class Leg implements ServiceObject {
+public class Leg extends Object implements ServiceObject {
   /**
    * Default serial version uid.
    */
@@ -375,6 +375,10 @@ public class Leg implements ServiceObject {
 
   public void setStopoversXYZ( int value ) {
     stopoversXYZ = value;
+  }
+
+  public void doSomethingGenerated( ) {
+    // Ooops, I forget to implement that ;-)
   }
 
   /**

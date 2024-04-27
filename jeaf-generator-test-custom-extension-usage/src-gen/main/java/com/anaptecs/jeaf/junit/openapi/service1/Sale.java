@@ -24,7 +24,7 @@ import com.anaptecs.jeaf.xfun.api.checks.Check;
  * @author JEAF Generator
  * @version JEAF Release 1.6.x
  */
-public class Sale implements ServiceObject {
+public class Sale extends Object implements ServiceObject {
   /**
    * Default serial version uid.
    */
@@ -240,6 +240,10 @@ public class Sale implements ServiceObject {
 
   public void setSaleXYZ( int value ) {
     saleXYZ = value;
+  }
+
+  public void doSomethingGenerated( ) {
+    // Ooops, I forget to implement that ;-)
   }
 
   /**

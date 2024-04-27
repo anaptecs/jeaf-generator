@@ -20,7 +20,7 @@ import com.anaptecs.jeaf.junit.openapi.composite.ComplexBookingID;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-public class WeirdParent implements ServiceObject {
+public class WeirdParent extends Object implements ServiceObject {
   /**
    * Default serial version uid.
    */
@@ -374,6 +374,10 @@ public class WeirdParent implements ServiceObject {
 
   public void setComplexBookingsXYZ( int value ) {
     complexBookingsXYZ = value;
+  }
+
+  public void doSomethingGenerated( ) {
+    // Ooops, I forget to implement that ;-)
   }
 
   /**

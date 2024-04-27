@@ -13,7 +13,7 @@ import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-public class ParentBeanParamType implements ServiceObject {
+public class ParentBeanParamType extends Object implements ServiceObject {
   /**
    * Default serial version uid.
    */
@@ -226,6 +226,10 @@ public class ParentBeanParamType implements ServiceObject {
 
   public void setTkIDXYZ( int value ) {
     tkIDXYZ = value;
+  }
+
+  public void doSomethingGenerated( ) {
+    // Ooops, I forget to implement that ;-)
   }
 
   /**

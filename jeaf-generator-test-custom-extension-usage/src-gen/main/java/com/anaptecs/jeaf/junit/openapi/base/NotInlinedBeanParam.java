@@ -13,7 +13,7 @@ import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-public class NotInlinedBeanParam implements ServiceObject {
+public class NotInlinedBeanParam extends Object implements ServiceObject {
   /**
    * Default serial version uid.
    */
@@ -364,6 +364,10 @@ public class NotInlinedBeanParam implements ServiceObject {
 
   public void setBookingIDXYZ( int value ) {
     bookingIDXYZ = value;
+  }
+
+  public void doSomethingGenerated( ) {
+    // Ooops, I forget to implement that ;-)
   }
 
   /**

@@ -19,7 +19,7 @@ import com.anaptecs.jeaf.xfun.api.checks.Check;
  * @author JEAF Generator
  * @version JEAF Release 1.6.x
  */
-public class BookingID implements ServiceObject {
+public class BookingID extends Object implements ServiceObject {
   /**
    * Default serial version uid.
    */
@@ -378,6 +378,10 @@ public class BookingID implements ServiceObject {
 
   public void setBookingCodeXYZ( int value ) {
     bookingCodeXYZ = value;
+  }
+
+  public void doSomethingGenerated( ) {
+    // Ooops, I forget to implement that ;-)
   }
 
   /**

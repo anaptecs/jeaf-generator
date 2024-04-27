@@ -20,7 +20,7 @@ import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-public class ClientClass implements ServiceObject {
+public class ClientClass extends Object implements ServiceObject {
   /**
    * Default serial version uid.
    */
@@ -299,6 +299,10 @@ public class ClientClass implements ServiceObject {
 
   public void setManyMastersXYZ( int value ) {
     manyMastersXYZ = value;
+  }
+
+  public void doSomethingGenerated( ) {
+    // Ooops, I forget to implement that ;-)
   }
 
   /**

@@ -13,7 +13,7 @@ import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-public class MultivaluedQueryParamsBean implements ServiceObject {
+public class MultivaluedQueryParamsBean extends Object implements ServiceObject {
   /**
    * Default serial version uid.
    */
@@ -369,6 +369,10 @@ public class MultivaluedQueryParamsBean implements ServiceObject {
 
   public void setIntegersXYZ( int value ) {
     integersXYZ = value;
+  }
+
+  public void doSomethingGenerated( ) {
+    // Ooops, I forget to implement that ;-)
   }
 
   /**

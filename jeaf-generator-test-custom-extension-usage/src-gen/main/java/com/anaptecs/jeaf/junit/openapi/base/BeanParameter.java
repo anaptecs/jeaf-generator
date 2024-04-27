@@ -15,7 +15,7 @@ import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-public class BeanParameter implements ServiceObject {
+public class BeanParameter extends Object implements ServiceObject {
   /**
    * Default serial version uid.
    */
@@ -302,6 +302,10 @@ public class BeanParameter implements ServiceObject {
 
   public void setOldStyleXYZ( int value ) {
     oldStyleXYZ = value;
+  }
+
+  public void doSomethingGenerated( ) {
+    // Ooops, I forget to implement that ;-)
   }
 
   /**

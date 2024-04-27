@@ -30,7 +30,7 @@ import com.anaptecs.jeaf.xfun.api.common.Identifiable;
 import com.anaptecs.jeaf.xfun.api.common.ObjectIdentity;
 
 @Valid
-public abstract class ResellerBase implements ServiceObject, Identifiable<ServiceObjectID> {
+public abstract class ResellerBase extends Object implements ServiceObject, Identifiable<ServiceObjectID> {
   /**
    * Default serial version uid.
    */
@@ -580,6 +580,10 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
    * @return double
    */
   public abstract double returnPrimitive( );
+
+  public void doSomethingGenerated( ) {
+    // Ooops, I forget to implement that ;-)
+  }
 
   /**
    * Method returns a StringBuilder that can be used to create a String representation of this object. The returned

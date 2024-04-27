@@ -22,7 +22,7 @@ import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-public class MultiValuedDataType implements ServiceObject {
+public class MultiValuedDataType extends Object implements ServiceObject {
   /**
    * Default serial version uid.
    */
@@ -717,6 +717,10 @@ public class MultiValuedDataType implements ServiceObject {
 
   public void setLongValuesXYZ( int value ) {
     longValuesXYZ = value;
+  }
+
+  public void doSomethingGenerated( ) {
+    // Ooops, I forget to implement that ;-)
   }
 
   /**

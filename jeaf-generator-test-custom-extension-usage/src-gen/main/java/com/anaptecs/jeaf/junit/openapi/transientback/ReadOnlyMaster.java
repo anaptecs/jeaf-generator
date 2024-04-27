@@ -18,7 +18,7 @@ import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-public class ReadOnlyMaster implements ServiceObject {
+public class ReadOnlyMaster extends Object implements ServiceObject {
   /**
    * Default serial version uid.
    */
@@ -261,6 +261,10 @@ public class ReadOnlyMaster implements ServiceObject {
 
   public void setClientsXYZ( int value ) {
     clientsXYZ = value;
+  }
+
+  public void doSomethingGenerated( ) {
+    // Ooops, I forget to implement that ;-)
   }
 
   /**

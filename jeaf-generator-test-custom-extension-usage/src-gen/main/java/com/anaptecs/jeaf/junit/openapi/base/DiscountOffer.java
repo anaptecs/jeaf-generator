@@ -18,7 +18,7 @@ import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-public class DiscountOffer implements ServiceObject {
+public class DiscountOffer extends Object implements ServiceObject {
   /**
    * Default serial version uid.
    */
@@ -233,6 +233,10 @@ public class DiscountOffer implements ServiceObject {
 
   public void setCampaignsXYZ( int value ) {
     campaignsXYZ = value;
+  }
+
+  public void doSomethingGenerated( ) {
+    // Ooops, I forget to implement that ;-)
   }
 
   /**

@@ -20,7 +20,7 @@ import com.anaptecs.jeaf.junit.openapi.datatypes.MyDataType;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
-public class DataTypeUsage implements ServiceObject {
+public class DataTypeUsage extends Object implements ServiceObject {
   /**
    * Default serial version uid.
    */
@@ -302,6 +302,10 @@ public class DataTypeUsage implements ServiceObject {
 
   public void setCodesXYZ( int value ) {
     codesXYZ = value;
+  }
+
+  public void doSomethingGenerated( ) {
+    // Ooops, I forget to implement that ;-)
   }
 
   /**
