@@ -1,13 +1,14 @@
 «EXTENSION java::Naming»
 «EXTENSION java::GeneratorCommons»
 «EXTENSION entity::ModelProperties»
+«EXTENSION functions::DefaultOperation»
 «IMPORT uml»
 «IMPORT JMM»
 «IMPORT java»
 «IMPORT entity»
 
 //Operations for JEAF services are created here
-//OperationS is a stereotype which caries the Exception information
+//Operation is a stereotype which caries the Exception information
 
 
 //interface methods are returned
@@ -17,6 +18,65 @@
     «EXPAND java::Helper::GenerateDeprecationAnnotation FOR this.getReturnResult() -»    
     «EXPAND Validation::ValidationAnnotation FOR this.getReturnResult()»
 	«getReturnTypeName()»  «name» («EXPAND ParameterSignature(true)»)«getThrownExceptionsAsString()»;
+«ENDDEFINE»
+
+«DEFINE ServiceInterfaceOperation FOR Operation»
+    «EXPAND functions::Javadoc::JavadocForOperation»
+    «EXPAND java::Helper::GenerateDeprecationAnnotation-»
+    «EXPAND java::Helper::GenerateDeprecationAnnotation FOR this.getReturnResult() -»    
+    «EXPAND Validation::ValidationAnnotation FOR this.getReturnResult()»
+    «IF this.isDefaultOperation()»default «ENDIF»«getReturnTypeName()»  «name» («EXPAND ParameterSignature(true)»)«getThrownExceptionsAsString()»
+    «IF this.isDefaultOperation()»
+        «LET this.asDefaultOperation().operationType AS operationType»
+	        {
+	        «IF operationType.name == "THROW_NOT_YET_IMPLMENTED_EXCEPTION"»
+	           throw new NotYetImplementedException("«this.name»('...') is not yet implemented.");
+	        «ELSEIF operationType.name == "DO_NOTHING"»
+	           «IF getReturnTypeName() != "void"»
+	               «IF getReturnType().type.isBooleanType()»
+	                   return true;
+	               «ELSEIF getReturnType().type.isPrimitiveType()»
+	                   return 0;
+	               «ELSEIF getReturnType().type.isBasicType()»
+	                   return «getReturnType().type.fqn()».valueOf(0);
+	               «ELSE»
+	                   return null;
+	               «ENDIF»
+	           «ELSE»
+	               // Nothing to do.
+	           «ENDIF»
+	        «ELSEIF operationType.name == "CUSTOM_GENERATOR_TEMPLATE"»
+               «EXPAND jeafgenerator::api::ServiceInterfaceHook::ProvideDefaultImplementation»
+	        «ELSE»
+	           «IF getReturnTypeName() != "void"»
+	               «IF getReturnType().type.isPrimitiveType() || getReturnType().type.isBasicType()»
+	                   «IF getReturnType().hasDefaultValueForBasicType()»
+	                       «IF getReturnType().type.isBasicType()»
+	                           return «getReturnType().type.fqn()».valueOf(«getReturnType().getDefaultValueForBasicType()»);
+	                       «ELSE»
+                               return «getReturnType().getDefaultValueForBasicType()»;
+                           «ENDIF»
+                       «ELSE»
+                           «IF getReturnType().type.isBooleanType()»
+                           return true;
+                           «ELSEIF getReturnType().type.isPrimitiveType()»
+                           return 0;
+                           «ELSE»
+                           return «getReturnType().type.fqn()».valueOf(0);
+                           «ENDIF»
+                       «ENDIF»
+                   «ELSEIF getReturnType().type.isEnumeration()»
+                       return «getReturnType().type.fqn()».«getReturnType().getDefaultValueForEnum()»;
+                   «ELSE»
+                       return null;
+                   «ENDIF»
+	           «ENDIF»
+	        «ENDIF» 
+	        }
+        «ENDLET»
+    «ELSE»
+        ;
+    «ENDIF»
 «ENDDEFINE»
 
 //interfaceImpl methods are returned
