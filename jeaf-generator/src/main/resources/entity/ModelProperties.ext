@@ -42,7 +42,12 @@ boolean hasDefaultValueForEnumProperty(Property param):
   !param.ownedElement.typeSelect(InstanceValue).isEmpty;
 
 InstanceValue getDefaultValueForBasicType(Parameter param):
-  param.getDefault().replaceAll("\"", "");
+  param.getDefault().replaceAll("\"", "") + param.appendJavaTypeDetails();
+  
+private cached appendJavaTypeDetails(Parameter param):
+    if param.type.isFloatType()
+    then "f"
+    else "";
 
 boolean hasDefaultValueForBasicType(Parameter param):
   if param.getDefault().trim().length > 0

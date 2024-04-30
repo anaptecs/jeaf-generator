@@ -31,6 +31,9 @@
     <AuthorizationType name="createSomething.com.anaptecs.jeaf.junit.deprecation.ServiceWithDeprecations" />
     <AuthorizationType name="createValidationTestObject.com.anaptecs.jeaf.junit.core.ValidationTestService" />
     <AuthorizationType name="createXOne.com.anaptecs.jeaf.junit.core.BusinessObjectTestService" />
+    <AuthorizationType name="customImpl.com.anaptecs.jeaf.junit.core.DefaultService" />
+    <AuthorizationType name="customImplNoDefault.com.anaptecs.jeaf.junit.core.DefaultService" />
+    <AuthorizationType name="customTemplate.com.anaptecs.jeaf.junit.core.DefaultService" />
     <AuthorizationType name="deleteBusinessObject.com.anaptecs.jeaf.junit.core.BusinessObjectTestService" />
     <AuthorizationType name="deleteSomething.com.anaptecs.jeaf.junit.openapi.service1.ProductService" />
     <AuthorizationType name="deprecatedAsync.com.anaptecs.jeaf.junit.rest.RESTTestService" />
@@ -47,6 +50,7 @@
     <AuthorizationType name="deprectedComplexRequestBody.com.anaptecs.jeaf.junit.openapi.service1.ProductService" />
     <AuthorizationType name="deprectedOperation.com.anaptecs.jeaf.junit.core.BusinessObjectTestService" />
     <AuthorizationType name="doAnotherthing1.com.anaptecs.jeaf.junit.core.JEAFAuthorizationTestService" />
+    <AuthorizationType name="doNothing.com.anaptecs.jeaf.junit.core.DefaultService" />
     <AuthorizationType name="doSomeNotRESTThing.com.anaptecs.jeaf.junit.rest.RESTTestService" />
     <AuthorizationType name="doSomething.com.anaptecs.jeaf.junit.core.DeprecatedTestService" />
     <AuthorizationType name="doSomething.com.anaptecs.jeaf.junit.core.JEAFAuthorizationTestService" />
@@ -60,8 +64,10 @@
     <AuthorizationType name="getCManys.com.anaptecs.jeaf.junit.core.BusinessObjectTestService" />
     <AuthorizationType name="getChannels.com.anaptecs.jeaf.junit.openapi.service1.ProductService" />
     <AuthorizationType name="getClassA.com.anaptecs.jeaf.junit.core.BusinessObjectTestService" />
+    <AuthorizationType name="getColor.com.anaptecs.jeaf.junit.core.DefaultService" />
     <AuthorizationType name="getCustomer.com.anaptecs.jeaf.accounting.AccountingService" />
     <AuthorizationType name="getDefaultChannel.com.anaptecs.jeaf.junit.openapi.service1.ProductService" />
+    <AuthorizationType name="getFloatWithDefault.com.anaptecs.jeaf.junit.core.DefaultService" />
     <AuthorizationType name="getProduct.com.anaptecs.jeaf.junit.openapi.service1.ProductService" />
     <AuthorizationType name="getProducts.com.anaptecs.jeaf.junit.openapi.service1.ProductService" />
     <AuthorizationType name="getResource.com.anaptecs.jeaf.junit.rest.RESTTestService" />
@@ -157,6 +163,7 @@
     <AuthorizationType name="testTransactionBehavior.com.anaptecs.jeaf.junit.tx.TxRequiresNewService" />
     <AuthorizationType name="testTransactionBehavior.com.anaptecs.jeaf.junit.tx.TxSupportedService" />
     <AuthorizationType name="testTransactionListener.com.anaptecs.jeaf.junit.core.BusinessObjectTestService" />
+    <AuthorizationType name="throwNYI.com.anaptecs.jeaf.junit.core.DefaultService" />
     <AuthorizationType name="unlock.com.anaptecs.jeaf.accounting.AccountingService" />
     <AuthorizationType name="updateBusinessObject.com.anaptecs.jeaf.junit.core.BusinessObjectTestService" />
     <AuthorizationType name="updateClassA.com.anaptecs.jeaf.junit.core.BusinessObjectTestService" />

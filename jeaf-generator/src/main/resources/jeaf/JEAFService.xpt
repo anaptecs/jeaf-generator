@@ -1,6 +1,7 @@
 «EXTENSION java::Naming»
 «EXTENSION java::GeneratorCommons»
 «EXTENSION entity::ModelProperties»
+«EXTENSION functions::DefaultOperation»
 «IMPORT uml»
 «IMPORT JMM»
 «IMPORT java»
@@ -21,7 +22,20 @@ package «packageName()»;
 «EXPAND functions::Javadoc::JavadocForType»
 «EXPAND java::Helper::GenerateDeprecationAnnotation-»
 public interface «name» «IF generalization.size > 0»extends «this.getAllExtendedInterfaces()» «ELSE»«IF isTargetRuntimeJEAF()»extends com.anaptecs.jeaf.core.api.Service«ENDIF»«ENDIF» {
-  «EXPAND JEAFOperation::InterfaceOperation FOREACH ownedOperation»
+  «EXPAND JEAFOperation::ServiceInterfaceOperation FOREACH ownedOperation»
+  
+  «IF ownedOperation.selectFirst(e|e.throwsNotYetImplementedException()) != null »
+  /**
+   * NotYetImplementedException is generated as at least one service operation throws such an exception in its default implementation.
+   */
+  static class NotYetImplementedException extends RuntimeException {
+    private static final long serialVersionUID = 1L;
+
+    public NotYetImplementedException( String pMessage ) {
+      super(pMessage);
+    }
+  }
+  «ENDIF»
 }
 «ENDFILE»
 «ENDDEFINE»

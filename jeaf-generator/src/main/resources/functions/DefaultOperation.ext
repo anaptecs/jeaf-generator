@@ -1,0 +1,16 @@
+extension java::GeneratorCommons;
+extension java::Naming;
+
+cached boolean isDefaultOperation(uml::Element element):
+    element.isStereotypeApplied("DefaultOperation");
+    
+cached JMM::DefaultOperation asDefaultOperation(uml::Element element):
+    (JMM::DefaultOperation) element;
+    
+cached String getParameterTypes(uml::Operation operation):
+    operation.ownedParameter.select(e| e.isInputParameter() && e.isParameterSuppressed() == false).collect(e|e.name + " ");
+    
+cached boolean throwsNotYetImplementedException(uml::Operation operation):
+    if operation.isDefaultOperation()
+    then operation.asDefaultOperation().operationType.name == "THROW_NOT_YET_IMPLMENTED_EXCEPTION"
+    else false;

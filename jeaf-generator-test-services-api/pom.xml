@@ -33,6 +33,14 @@
 				<groupId>com.anaptecs.jeaf.generator</groupId>
 				<artifactId>jeaf-generator-maven-plugin</artifactId>
 				<version>${project.version}</version>
+				<dependencies>
+					<!-- Custom templates need to be added as dependency -->
+					<dependency>
+						<groupId>com.anaptecs.jeaf.generator</groupId>
+						<artifactId>jeaf-generator-test-custom-extension</artifactId>
+						<version>${project.version}</version>
+					</dependency>
+				</dependencies>
 				<executions>
 					<execution>
 						<goals>
