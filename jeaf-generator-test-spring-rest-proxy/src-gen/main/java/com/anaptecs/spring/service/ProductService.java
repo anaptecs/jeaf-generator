@@ -32,8 +32,9 @@ import com.anaptecs.spring.base.Sortiment;
 import com.anaptecs.spring.base.SpecialContext;
 import com.anaptecs.spring.base.StringCodeType;
 import com.anaptecs.spring.base.TechnicalHeaderContext;
+import com.anaptecs.spring.service.monitoring.MonitoringService;
 
-public interface ProductService {
+public interface ProductService extends MonitoringService {
   /**
    * Operation returns all available product.
    *

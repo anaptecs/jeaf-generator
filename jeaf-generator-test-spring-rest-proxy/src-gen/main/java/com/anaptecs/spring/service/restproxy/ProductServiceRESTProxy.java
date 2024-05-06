@@ -47,6 +47,7 @@ import com.anaptecs.spring.service.DateHeaderParamsBean;
 import com.anaptecs.spring.service.DateQueryParamsBean;
 import com.anaptecs.spring.service.LocalBeanParamType;
 import com.anaptecs.spring.service.ProductService;
+import com.anaptecs.spring.service.monitoring.MonitoringService;
 
 /**
  * Class implements a proxy for REST Service {@link ProductService}. The proxy is implemented as Spring services. This
@@ -1065,6 +1066,27 @@ public class ProductServiceRESTProxy implements ProductService {
     String lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
     // Validate response and return it.
     validationExecutor.validateResponse(ProductService.class, lResult);
+    return lResult;
+  }
+
+  /**
+   * @return {@link String}
+   */
+  @Override
+  public String getVersionInfo( ) {
+    // Create builder for GET request
+    RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
+    // Build path of request
+    StringBuilder lPathBuilder = new StringBuilder();
+    lPathBuilder.append('/');
+    lPathBuilder.append("products/info");
+    lRequestBuilder.setPath(lPathBuilder.toString());
+    // Execute request and return result.
+    RESTRequest lRequest = lRequestBuilder.build();
+    ObjectType lObjectType = ObjectType.createObjectType(String.class);
+    String lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
+    // Validate response and return it.
+    validationExecutor.validateResponse(MonitoringService.class, lResult);
     return lResult;
   }
 }

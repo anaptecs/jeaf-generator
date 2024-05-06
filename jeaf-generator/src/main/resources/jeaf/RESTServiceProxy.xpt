@@ -30,7 +30,7 @@ package «packageName()».restproxy;
  * Service Provider Interface is generated so that a proxy for a REST Resource can be provided as JEAF Service Provider.
  */
 public interface «name»RESTProxyServiceProvider extends com.anaptecs.jeaf.core.api.ServiceProvider {
-  «EXPAND JEAFOperation::InterfaceOperation FOREACH ownedOperation»
+  «EXPAND JEAFOperation::InterfaceOperation FOREACH this.getAllOperations().typeSelect(RESTOperation)»
 }
 «ENDFILE»
 «ENDDEFINE»
@@ -120,7 +120,7 @@ public final class «name»RESTProxyServiceProviderImpl implements com.anaptecs.
     return null;
   }
   
-  «EXPAND RESTProxyOperationOperation(this) FOREACH ownedOperation.typeSelect(RESTOperation)»
+  «EXPAND RESTProxyOperationOperation(this) FOREACH this.getAllOperations().typeSelect(RESTOperation)»
 }
 «ENDFILE»
 «ENDDEFINE»
@@ -175,7 +175,7 @@ public class «name»RESTProxy implements «this.fqn()» {
     «ENDIF»
   }
 
-  «EXPAND RESTProxyOperationOperation(this) FOREACH ownedOperation.typeSelect(RESTOperation)»
+  «EXPAND RESTProxyOperationOperation(this) FOREACH this.getAllOperations().typeSelect(RESTOperation)»
 }
 «ENDFILE»
 «ENDDEFINE»
@@ -202,9 +202,9 @@ public class «name»RESTProxy implements «this.fqn()» {
 	    «IF service.path.length > 0»
 	    lPathBuilder.append("«service.path»");
 	    «ENDIF»
-	    «IF this.getRESTOperationPath().length > 0»
+	    «IF this.getRESTOperationPath(service).length > 0»
 	    	lPathBuilder.append('/');
-	    	«FOREACH splitRESTPath(this.getRESTOperationPath(), this.getAllPathParams(), this.getAllPathParamNamnes()) AS pathPart»
+	    	«FOREACH splitRESTPath(this.getRESTOperationPath(service), this.getAllPathParams(), this.getAllPathParamNamnes()) AS pathPart»
 	    	lPathBuilder.append(«pathPart»);
 	    	«ENDFOREACH»
 	    «ENDIF»

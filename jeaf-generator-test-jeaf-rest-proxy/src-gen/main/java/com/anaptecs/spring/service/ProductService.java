@@ -19,7 +19,6 @@ import java.util.List;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 
-import com.anaptecs.jeaf.core.api.Service;
 import com.anaptecs.spring.base.AnotherDataType;
 import com.anaptecs.spring.base.BeanParameter;
 import com.anaptecs.spring.base.ChannelCode;
@@ -33,8 +32,9 @@ import com.anaptecs.spring.base.Sortiment;
 import com.anaptecs.spring.base.SpecialContext;
 import com.anaptecs.spring.base.StringCodeType;
 import com.anaptecs.spring.base.TechnicalHeaderContext;
+import com.anaptecs.spring.service.monitoring.MonitoringService;
 
-public interface ProductService extends Service {
+public interface ProductService extends MonitoringService {
   /**
    * Operation returns all available product.
    *

@@ -126,7 +126,7 @@ public class «name»Resource {
 		«ENDIF»
 	«ENDIF»
 	
-	«EXPAND RESTOperationImpl FOREACH ownedOperation.typeSelect(RESTOperation)»
+	«EXPAND RESTOperationImpl(this) FOREACH this.getAllOperations().typeSelect(RESTOperation)»
 	
 	«IF this.hasCompositeDataTypes() && generatePublicObjectView() == false»
 		«IF isTargetRuntimeSpring()»
@@ -199,23 +199,23 @@ public class «name»Resource {
 «ENDDEFINE»
 
 
-«DEFINE RESTOperationImpl FOR RESTOperation»
+«DEFINE RESTOperationImpl(JMM::RESTResource restResource) FOR RESTOperation»
 	«IF isRESTLibrarySpringWebMVC()»
-		«EXPAND SpringRESTControllerOperationImpl»
+		«EXPAND SpringRESTControllerOperationImpl(restResource)»
 	«ELSE»
 		«IF async == false»
-			«EXPAND SyncJAXRSOperationImpl FOR this»
+			«EXPAND SyncJAXRSOperationImpl(restResource) FOR this»
 		«ELSE»
-			«EXPAND AsyncJAXRSOperationImpl FOR this»
+			«EXPAND AsyncJAXRSOperationImpl(restResource) FOR this»
 		«ENDIF»
 	«ENDIF»	
 «ENDDEFINE»
 
-«DEFINE SyncJAXRSOperationImpl FOR RESTOperation»
+«DEFINE SyncJAXRSOperationImpl(JMM::RESTResource restResource) FOR RESTOperation»
 	/**
 	 * {@link «this.getOwningClass().fqn()»#«name»()}
 	 */
-	«IF this.getRESTOperationPath().length > 0»@«getEnterpriseJavaPackage()».ws.rs.Path("«this.getRESTOperationPath()»")«ENDIF»
+	«IF this.getRESTOperationPath(restResource).length > 0»@«getEnterpriseJavaPackage()».ws.rs.Path("«this.getRESTOperationPath(restResource)»")«ENDIF»
 	«EXPAND HTTPMethods»
 	«IF consumes.size > 0»@«getEnterpriseJavaPackage()».ws.rs.Consumes(«IF consumes.size > 1»{«ENDIF»«FOREACH consumes AS mediaType SEPARATOR ","»«getEnterpriseJavaPackage()».ws.rs.core.MediaType.«mediaType»«ENDFOREACH»«IF consumes.size > 1»}«ENDIF»)«ENDIF»
 	«IF produces.size > 0»@«getEnterpriseJavaPackage()».ws.rs.Produces(«IF produces.size > 1»{«ENDIF»«FOREACH produces AS mediaType SEPARATOR ","»«getEnterpriseJavaPackage()».ws.rs.core.MediaType.«mediaType»«ENDFOREACH»«IF produces.size > 1»}«ENDIF»)«ENDIF»
@@ -318,7 +318,7 @@ public class «name»Resource {
       
       // Delegate request to service.
       «IF isTargetRuntimeJEAF()»
-		  «this.getOwningClass().fqn()» lService = this.get«this.getOwningClass().name»();
+		  «restResource.fqn()» lService = this.get«restResource.name»();
 		  «IF getReturnTypeName() != "void"»
 		  «getReturnTypeName()» lResult = lService.«this.name»(«this.asParameterListNames()»);
 		  return «getEnterpriseJavaPackage()».ws.rs.core.Response.status(«EXPAND StatusCode»).entity(lResult).build();
@@ -329,22 +329,22 @@ public class «name»Resource {
 	  «ENDIF»
       «IF isTargetRuntimeSpring()»
 		  «IF getReturnTypeName() != "void"»
-		  «getReturnTypeName()» lResult = «this.getOwningClass().name.toFirstLower()».«this.name»(«this.asParameterListNames()»);
+		  «getReturnTypeName()» lResult = «restResource.name.toFirstLower()».«this.name»(«this.asParameterListNames()»);
 		  
 		  «IF generateRESTResponseValidation()»
 	         // Validate response and return it.
-	         validationExecutor.validateResponse(«((NamedElement)owner).fqn()».class, lResult);
+	         validationExecutor.validateResponse(«restResource.fqn()».class, lResult);
 	      «ENDIF»
 		  return «getEnterpriseJavaPackage()».ws.rs.core.Response.status(«EXPAND StatusCode»).entity(lResult).build();
 		  «ELSE»
-		  «this.getOwningClass().name.toFirstLower()».«this.name»(«this.asParameterListNames()»);
+		  «restResource.name.toFirstLower()».«this.name»(«this.asParameterListNames()»);
 		  return «getEnterpriseJavaPackage()».ws.rs.core.Response.status(«EXPAND StatusCode»).build();
 		  «ENDIF»
 	  «ENDIF»
 	}
 «ENDDEFINE»
 
-«DEFINE SpringRESTControllerOperationImpl FOR RESTOperation»
+«DEFINE SpringRESTControllerOperationImpl(JMM::RESTResource restResource) FOR RESTOperation»
 	/**
 	 * {@link «this.getOwningClass().fqn()»#«name»()}
 	 */
@@ -357,7 +357,7 @@ public class «name»Resource {
 	«ENDIF»
 	@org.springframework.web.bind.annotation.ResponseStatus(org.springframework.http.HttpStatus.«getJAXRSStatusCodeName(this.getStatusCodeName())»)
 	@org.springframework.web.bind.annotation.RequestMapping(
-	«IF this.getRESTOperationPath().length > 0»path = "«this.getRESTOperationPath()»",«ENDIF»
+	«IF this.getRESTOperationPath(restResource).length > 0»path = "«this.getRESTOperationPath(restResource)»",«ENDIF»
 	«IF consumes.size > 0»consumes = {«FOREACH consumes AS mediaType SEPARATOR ","»"«mediaType.toOpenAPIContentType()»"«ENDFOREACH»},«ENDIF»
 	«IF produces.size > 0»produces = {«FOREACH produces AS mediaType SEPARATOR ","»"«mediaType.toOpenAPIContentType()»"«ENDFOREACH»},«ENDIF»
 	method = { «FOREACH httpMethods AS httpMethod SEPARATOR ","»org.springframework.web.bind.annotation.RequestMethod.«httpMethod»«ENDFOREACH»}
@@ -679,31 +679,31 @@ public class «name»Resource {
 	  
 	  «IF generateRESTRequestValidation() && this.getInputParameters().select(e|e.isParameterSuppressed() == false).isEmpty == false»
         // Validate request parameter(s).
-	    validationExecutor.validateRequest(«((NamedElement)owner).fqn()».class, «this.asParameterListNames()»);
+	    validationExecutor.validateRequest(«restResource.fqn()».class, «this.asParameterListNames()»);
 	  «ENDIF»
 	  
       // Delegate request to service.
 	  «IF getReturnTypeName() != "void"»
 	       «IF generateRESTResponseValidation()»
-	         «getReturnTypeName()» lResponse = «this.getOwningClass().name.toFirstLower()».«this.name»(«this.asParameterListNames()»);
+	         «getReturnTypeName()» lResponse = «restResource.name.toFirstLower()».«this.name»(«this.asParameterListNames()»);
 		     
 		     // Validate response and return it.
-		     validationExecutor.validateResponse(«((NamedElement)owner).fqn()».class, lResponse);
+		     validationExecutor.validateResponse(«restResource.fqn()».class, lResponse);
 		     return lResponse;
 	       «ELSE»
-             return «this.getOwningClass().name.toFirstLower()».«this.name»(«this.asParameterListNames()»);
+             return «restResource.name.toFirstLower()».«this.name»(«this.asParameterListNames()»);
 	       «ENDIF»
 	  «ELSE»
-	  «this.getOwningClass().name.toFirstLower()».«this.name»(«this.asParameterListNames()»);
+	  «restResource.name.toFirstLower()».«this.name»(«this.asParameterListNames()»);
 	  «ENDIF»
 	}
 «ENDDEFINE»
 
-«DEFINE AsyncJAXRSOperationImpl FOR RESTOperation»
+«DEFINE AsyncJAXRSOperationImpl(JMM::RESTResource restResource) FOR RESTOperation»
 	/**
 	 * {@link «this.getOwningClass().fqn()»#«name»()}
 	 */
-	«IF this.getRESTOperationPath().length > 0»@«getEnterpriseJavaPackage()».ws.rs.Path("«this.getRESTOperationPath()»")«ENDIF»
+	«IF this.getRESTOperationPath(restResource).length > 0»@«getEnterpriseJavaPackage()».ws.rs.Path("«this.getRESTOperationPath(restResource)»")«ENDIF»
 	«EXPAND HTTPMethods»
 	«IF consumes.size > 0»@«getEnterpriseJavaPackage()».ws.rs.Consumes(«IF consumes.size > 1»{«ENDIF»«FOREACH consumes AS mediaType SEPARATOR ","»«getEnterpriseJavaPackage()».ws.rs.core.MediaType.«mediaType»«ENDFOREACH»«IF consumes.size > 1»}«ENDIF»)«ENDIF»
 	«IF produces.size > 0»@«getEnterpriseJavaPackage()».ws.rs.Produces(«IF produces.size > 1»{«ENDIF»«FOREACH produces AS mediaType SEPARATOR ","»«getEnterpriseJavaPackage()».ws.rs.core.MediaType.«mediaType»«ENDFOREACH»«IF produces.size > 1»}«ENDIF»)«ENDIF»

@@ -507,4 +507,17 @@ public class ProductServiceResource {
     validationExecutor.validateResponse(ProductService.class, lResult);
     return Response.status(Response.Status.OK).entity(lResult).build();
   }
+
+  /**
+   * {@link com.anaptecs.spring.service.monitoring.MonitoringService#getVersionInfo()}
+   */
+  @Path("products/info")
+  @GET
+  public Response getVersionInfo( ) {
+    // Delegate request to service.
+    String lResult = productService.getVersionInfo();
+    // Validate response and return it.
+    validationExecutor.validateResponse(ProductService.class, lResult);
+    return Response.status(Response.Status.OK).entity(lResult).build();
+  }
 }
