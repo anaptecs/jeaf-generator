@@ -235,6 +235,7 @@ SubclassWithoutIDnMethod |   |  |
 SwissGeoPosition |   |  |
 TechParent |   |  |
 TechnicalHeaderContext |   |  |
+TemplateEnumTest |   |  |
 TestServiceObject |   | This is a service object that was modeled in order to test the output of the JEAF Generator. |
 TheReadOnlyServiceObject |   |  |
 TimeUnit |  Zeiteinheit | Enumeration represents time units.<br>     <br>NOVA 14 Mapping<br>* nova-base.xsd.ZeitEinheit |
@@ -312,6 +313,7 @@ AndOneMorePOJO |   |  |
 GenericResponsePOJO |   |  |
 Message |   |  |
 MyBusinessObject |   |  |
+TemplateEnumTest |   |  |
 YetAnotherPOJO |   |  |
 
 <br>

@@ -142,10 +142,10 @@ public class Naming {
       lOrdered = false;
       lUnique = false;
     }
-    Class lGenericClass = (Class) lTemplateBinding.getTargets().get(0).getOwner();
+    NamedElement lGenericClass = (NamedElement) lTemplateBinding.getTargets().get(0).getOwner();
 
     StringBuilder lTemplateParameter = new StringBuilder();
-    lTemplateParameter.append(Naming.getFullyQualifiedName(lGenericClass.getPackage()));
+    lTemplateParameter.append(Naming.getFullyQualifiedName(lGenericClass.getNearestPackage()));
     lTemplateParameter.append(".");
     lTemplateParameter.append(lGenericClass.getName());
     lTemplateParameter.append("<");
@@ -157,7 +157,7 @@ public class Naming {
 
     if (lTemplateBinding.getParameterSubstitutions().isEmpty() == false) {
       TemplateParameterSubstitution lParameterSubstitution = lTemplateBinding.getParameterSubstitutions().get(0);
-      Class lTypeParameterClass = (Class) lParameterSubstitution.getActuals().get(0);
+      NamedElement lTypeParameterClass = (NamedElement) lParameterSubstitution.getActuals().get(0);
       lTemplateParameter.append(Naming.getFullyQualifiedName(lTypeParameterClass));
     }
     else {
