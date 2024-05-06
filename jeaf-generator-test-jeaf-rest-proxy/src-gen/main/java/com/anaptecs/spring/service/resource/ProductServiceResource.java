@@ -472,6 +472,18 @@ public class ProductServiceResource {
   }
 
   /**
+   * {@link com.anaptecs.spring.service.monitoring.MonitoringService#getVersionInfo()}
+   */
+  @Path("products/info")
+  @GET
+  public Response getVersionInfo( ) {
+    // Delegate request to service.
+    ProductService lService = this.getProductService();
+    String lResult = lService.getVersionInfo();
+    return Response.status(Response.Status.OK).entity(lResult).build();
+  }
+
+  /**
    * Method returns reference to service to which all REST requests will be delegated.
    *
    * @return ProductService Service instance to which all requests will be delegated.

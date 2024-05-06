@@ -15,6 +15,6 @@ cached List[String] getSecurityRoles(uml::Operation operation):
 
 cached List[String] getSecurityRolesForDocumentation(uml::Operation operation):
     operation.getAssociatedSecurityRoles().addAll(operation.owner.getAssociatedSecurityRoles().select(e|e.excludeFromDocumentation == false)).toSet().name.sortBy(e|e);
-
+    
 
 

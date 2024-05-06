@@ -237,4 +237,9 @@ public interface ProductServiceRESTProxyServiceProvider extends ServiceProvider 
    * @return {@link String}
    */
   String processDataTypes( List<AnotherDataType> pCodes );
+
+  /**
+   * @return {@link String}
+   */
+  String getVersionInfo( );
 }

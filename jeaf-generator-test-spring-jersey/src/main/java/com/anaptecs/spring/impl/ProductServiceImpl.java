@@ -201,4 +201,9 @@ public class ProductServiceImpl implements ProductService {
   public String processDataTypes( List<AnotherDataType> pCodes ) {
     return null;
   }
+
+  @Override
+  public String getVersionInfo( ) {
+    return null;
+  }
 }

@@ -9,18 +9,31 @@ cached JMM::RESTOperation asRESTOperation(uml::Element element):
     (JMM::RESTOperation) element;
     
 cached String getFullPath(JMM::RESTOperation operation):
-    if operation.getRESTOperationPath().length > 0
-    then ((JMM::RESTResource) operation.owner).path + "/" + operation.getRESTOperationPath() + " " + operation.httpMethods
+    if operation.owner.isRESTResource()
+    then operation.getFullPath(operation.owner.asRESTResource())
+    else operation.getFullPath(null);
+
+cached String getFullPath(JMM::RESTOperation operation, JMM::RESTResource restResource):
+    if operation.getRESTOperationPath(restResource).length > 0
+    then ((JMM::RESTResource) operation.owner).path + "/" + operation.getRESTOperationPath(restResource) + " " + operation.httpMethods
     else ((JMM::RESTResource) operation.owner).path + " " + operation.httpMethods;
     
 cached String getRESTOperationPath(JMM::RESTOperation operation):
-    if operation.path.length > 0
-    then operation.getRESTOperationPathPrefix() + operation.path
-    else operation.getRESTOperationPathPrefix();
+    if operation.owner.isRESTResource()
+    then operation.getRESTOperationPath(operation.owner.asRESTResource())
+    else operation.getRESTOperationPath(null);
 
-private String getRESTOperationPathPrefix(JMM::RESTOperation operation):
-    if operation.owner.asRESTResource().operationPathPrefix.length > 0
-    then operation.owner.asRESTResource().operationPathPrefix
+cached String getRESTOperationPath(JMM::RESTOperation operation, JMM::RESTResource restResource):
+    if restResource == null
+    then operation.path
+    else
+	    if operation.path.length > 0
+	    then restResource.getRESTOperationPathPrefix() + operation.path
+	    else restResource.getRESTOperationPathPrefix();
+
+private String getRESTOperationPathPrefix(JMM::RESTResource restResource):
+    if restResource.operationPathPrefix.length > 0
+    then restResource.operationPathPrefix
     else "";
     
 cached boolean hasBeanParamsForRESTOperation(JMM::RESTOperation operation):

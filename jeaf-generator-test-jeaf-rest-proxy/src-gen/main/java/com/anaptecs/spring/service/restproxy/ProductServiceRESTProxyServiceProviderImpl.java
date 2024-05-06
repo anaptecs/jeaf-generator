@@ -981,4 +981,22 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     ObjectType lObjectType = ObjectType.createObjectType(String.class);
     return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
   }
+
+  /**
+   * @return {@link String}
+   */
+  @Override
+  public String getVersionInfo( ) {
+    // Create builder for GET request
+    RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
+    // Build path of request
+    StringBuilder lPathBuilder = new StringBuilder();
+    lPathBuilder.append('/');
+    lPathBuilder.append("products/info");
+    lRequestBuilder.setPath(lPathBuilder.toString());
+    // Execute request and return result.
+    RESTRequest lRequest = lRequestBuilder.build();
+    ObjectType lObjectType = ObjectType.createObjectType(String.class);
+    return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
+  }
 }
