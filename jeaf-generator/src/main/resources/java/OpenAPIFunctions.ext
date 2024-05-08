@@ -103,6 +103,11 @@ cached boolean generateDefaultClassMapping() :
 cached String getOpenAPIType(uml::Type type, JMM::OpenAPI3Specification spec):
     JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.getOpenAPIType(org.eclipse.uml2.uml.Type, org.eclipse.uml2.uml.Component);
     
+cached String getOpenAPISoftLinkRefType(JMM::SoftLink softLink):
+	if (softLink.getOpenAPISoftLinkType() == "integer" || softLink.getOpenAPISoftLinkType() == "string")
+	then "type"
+	else "$ref";
+	
 cached String getOpenAPISoftLinkType(JMM::SoftLink softLink):
 	if (softLink.softLinkType.name == "long" || softLink.softLinkType.name == "Long")
 	then "integer"
