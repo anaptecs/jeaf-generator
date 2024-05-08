@@ -322,7 +322,7 @@ components:
         discountOffers:
           type: array
           items:
-            type: '#/components/schemas/StringCodeType'
+            $ref: '#/components/schemas/StringCodeType'
           deprecated: true
           nullable: true
 
@@ -663,7 +663,7 @@ components:
         campaigns:
           type: array
           items:
-            type: '#/components/schemas/StringCodeType'
+            $ref: '#/components/schemas/StringCodeType'
           deprecated: true
           nullable: true
 
@@ -936,7 +936,7 @@ components:
             evenMoreLinks:
               type: array
               items:
-                type: '#/components/schemas/StringCodeType'
+                $ref: '#/components/schemas/StringCodeType'
               deprecated: true
               nullable: true
             stops:
@@ -1771,7 +1771,7 @@ components:
           minimum: 0
           nullable: false
         theSoftLink:
-          type: '#/components/schemas/StringCodeType'
+          $ref: '#/components/schemas/StringCodeType'
           nullable: false
 
     # com.anaptecs.jeaf.junit.openapi.base.StopPlaceRef

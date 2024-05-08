@@ -98,7 +98,7 @@
               «ENDIF-»
               «REM»SoftLink«ENDREM-»
               «ELSE-»
-          type: «((SoftLink)attribute).getOpenAPISoftLinkType()»
+          «((SoftLink)attribute).getOpenAPISoftLinkRefType()»: «((SoftLink)attribute).getOpenAPISoftLinkType()»
               «IF ((SoftLink)attribute).hasOpenAPISoftLinkFormat() -»
           format: «((SoftLink)attribute).getOpenAPISoftLinkFormat()»
               «ENDIF-»
@@ -114,7 +114,7 @@
           type: array
           items:
             «IF isOpenAPIVersion30() -»
-            type: «((SoftLink)attribute).getOpenAPISoftLinkType()»
+            «((SoftLink)attribute).getOpenAPISoftLinkRefType()»: «((SoftLink)attribute).getOpenAPISoftLinkType()»
             «ELSE -»
             type: 
               - «((SoftLink)attribute).getOpenAPISoftLinkType()»
@@ -275,7 +275,7 @@
               «ENDIF-»
               «REM»SoftLink«ENDREM-»
               «ELSE-»
-              type: «((SoftLink)attribute).getOpenAPISoftLinkType()»
+              «((SoftLink)attribute).getOpenAPISoftLinkRefType()»: «((SoftLink)attribute).getOpenAPISoftLinkType()»
               «IF ((SoftLink)attribute).hasOpenAPISoftLinkFormat() -»
               format: «((SoftLink)attribute).getOpenAPISoftLinkFormat()»
               «ENDIF-»
@@ -299,7 +299,7 @@
               type: array
               items:
                 «IF isOpenAPIVersion30() -»
-                type: «((SoftLink)attribute).getOpenAPISoftLinkType()»
+                «((SoftLink)attribute).getOpenAPISoftLinkRefType()»: «((SoftLink)attribute).getOpenAPISoftLinkType()»
                 «ELSE -»
                 type: 
                   - «((SoftLink)attribute).getOpenAPISoftLinkType()»
