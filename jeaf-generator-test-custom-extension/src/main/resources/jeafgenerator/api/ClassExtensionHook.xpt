@@ -5,6 +5,12 @@
 extends Object
 «ENDDEFINE»
 
+«DEFINE ImplementInterfaces(List[String] interfaces) FOR Class»
+	«IF interfaces.isEmpty == false»
+	    implements «FOREACH interfaces AS interface SEPARATOR ", "»«interface»«ENDFOREACH» 
+	«ENDIF»
+«ENDDEFINE»
+
 «DEFINE BeforeClassPropertyDeclaration(String fqn) FOR Property»
 // "«fqn»"
 @com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration
