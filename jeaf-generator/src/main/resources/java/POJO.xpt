@@ -341,10 +341,7 @@
 «ENDDEFINE»
 
 «DEFINE InterfaceDeclarations FOR POJO»
-	«IF needsToImplementIdentifiable()==true» implements com.anaptecs.jeaf.xfun.api.common.Identifiable<«this.getObjectIDClassName()»> «IF makePOJOsSerializable()  && superClass.isEmpty», java.io.Serializable«ENDIF»
-	«ELSE»
-		«IF makePOJOsSerializable() && superClass.isEmpty» implements java.io.Serializable«ENDIF»
-	«ENDIF»
+    «EXPAND jeafgenerator::api::ClassExtensionHook::ImplementInterfaces(this.getTechnicalInterfacesToImplement())»
 «ENDDEFINE»
 
 «DEFINE POJOPlainConstructorInit FOR POJO»
