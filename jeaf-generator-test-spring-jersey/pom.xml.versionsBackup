@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.anaptecs.jeaf.generator</groupId>
+		<artifactId>jeaf-generator-project</artifactId>
+		<version>1.18.1-SNAPSHOT</version>
+	</parent>
+
+	<name>JEAF Generator Test Spring Jersey</name>
+	<artifactId>jeaf-generator-test-spring-jersey</artifactId>
+	<packaging>jar</packaging>
+
+	<dependencies>
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-validation</artifactId>
+		    <version>${spring.boot.version}</version>
+		</dependency>
+		
+		<dependency>
+		  <groupId>org.springframework</groupId>
+		  <artifactId>spring-context</artifactId>
+		  <version>${spring.core.version}</version>
+		</dependency>
+
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-jersey</artifactId>
+		    <version>${spring.boot.version}</version>
+		</dependency>
+
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-actuator</artifactId>
+		    <version>${spring.boot.version}</version>
+		</dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <version>${spring.boot.version}</version>
+            <scope>test</scope>            
+        </dependency>
+
+		<dependency>
+			<groupId>com.anaptecs.jeaf.validation</groupId>
+			<artifactId>jeaf-validation-api-spring</artifactId>
+			<version>${jeaf.validation.api.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.anaptecs.jeaf.rest</groupId>
+			<artifactId>jeaf-rest-resource-api</artifactId>
+			<version>${jeaf.rest.api.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.anaptecs.jeaf.rest</groupId>
+			<artifactId>jeaf-rest-request-executor-api</artifactId>
+			<version>${jeaf.rest.api.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.anaptecs.jeaf.rest</groupId>
+			<artifactId>jeaf-rest-request-executor-apache-spring</artifactId>
+			<version>${jeaf.rest.impl.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.anaptecs.jeaf.rest</groupId>
+			<artifactId>jeaf-rest-composite-type-api</artifactId>
+			<version>${jeaf.rest.api.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.anaptecs.jeaf.rest</groupId>
+			<artifactId>jeaf-rest-composite-type-impl-kryo</artifactId>
+			<version>${jeaf.rest.impl.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+			<version>${validation-api.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>${javaee-api.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<artifactId>jeaf-jersey-extensions-impl</artifactId>
+			<groupId>com.anaptecs.jeaf.jersey</groupId>
+			<version>${jeaf.jersey.extensions.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<version>${junit.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.anaptecs.jeaf.x-fun</groupId>
+			<artifactId>jeaf-x-fun-api</artifactId>
+			<version>${jeaf.x-fun.api.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.anaptecs.jeaf.x-fun</groupId>
+			<artifactId>jeaf-x-fun-default-runtime</artifactId>
+			<version>${jeaf.x-fun.impl.version}</version>
+			<type>pom</type>
+		</dependency>
+
+		<!-- Dependency on JEAF Workload Management is only required for test purposes -->
+		<dependency>
+			<groupId>com.anaptecs.jeaf.workload</groupId>
+			<artifactId>jeaf-workload-impl</artifactId>
+			<version>${jeaf.workload.impl.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.anaptecs.jeaf.json</groupId>
+			<artifactId>jeaf-json-impl-runtime</artifactId>
+			<version>${jeaf.json.impl.version}</version>
+			<type>pom</type>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- Dependency for mock server which is used to test request delegation. -->		
+		<dependency>
+			<groupId>org.mock-server</groupId>
+			<artifactId>mockserver-client-java</artifactId>
+			<version>${mock.server.version}</version>
+			<scope>test</scope>
+		</dependency>		
+
+		<dependency>
+			<groupId>org.mock-server</groupId>
+			<artifactId>mockserver-netty</artifactId>
+			<version>${mock.server.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.anaptecs.jeaf.uml</groupId>
+			<artifactId>jeaf-uml-test-model</artifactId>
+			<version>${jeaf.test.model.version}</version>
+			<type>zip</type>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>com.anaptecs.jeaf.generator</groupId>
+				<artifactId>jeaf-generator-maven-plugin</artifactId>
+				<version>${project.version}</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>Generator</goal>
+						</goals>
+						<phase>generate-sources</phase>
+					</execution>
+				</executions>
+				<configuration>
+					<!-- Define input files and directories where output should be write to. -->
+					<modelArtifactGroupID>com.anaptecs.jeaf.uml</modelArtifactGroupID>
+					<modelArtifactArtifactID>jeaf-uml-test-model</modelArtifactArtifactID>
+					<modelArtifactXMIPath>xmi</modelArtifactXMIPath>
+
+					<umlModelFile>JEAF_Test.uml</umlModelFile>
+					<sourceDirectory>${project.basedir}/src-gen/main/java</sourceDirectory>
+					<sourceGenDirectory>${project.basedir}/src-gen/main/java</sourceGenDirectory>
+					<resourceDirectory>${project.basedir}/src-gen/main/resources</resourceDirectory>
+					<resourceGenDirectory>${project.basedir}/src-gen/main/resources</resourceGenDirectory>
+
+					<!-- Configure behavior concerning existing files in src-gen and res-gen directory. It is strongly recommended to clean directories before generating new files. -->
+					<cleanSourceGen>true</cleanSourceGen>
+					<cleanResourceGen>true</cleanResourceGen>
+
+					<!-- Define whitelist of package in UML model generator should take care when generating code. -->
+					<packages>
+						<package>com.anaptecs.spring</package>
+					</packages>
+
+					<!-- Define what should be generated. By default nothing is generated. -->
+					<targetRuntime>SPRING</targetRuntime>
+					<restLibrary>JAX_RS</restLibrary>
+					<generateRESTResources>true</generateRESTResources>
+					<generateRESTRequestValidation>false</generateRESTRequestValidation>
+					<generateRESTResponseValidation>true</generateRESTResponseValidation>
+					<generateJAXRSAnnotations>true</generateJAXRSAnnotations>
+					<generateServiceInterfaces>true</generateServiceInterfaces>
+					<generatePOJOs>true</generatePOJOs>
+					<generateEqualsAndHashCodeForCompositeDataTypes>true</generateEqualsAndHashCodeForCompositeDataTypes>
+					<generateEqualsAndHashCodeForOpenAPIDataTypes>true</generateEqualsAndHashCodeForOpenAPIDataTypes>
+					<generateHeavyExtensibleEnums>true</generateHeavyExtensibleEnums>
+					<generatePublicObjectView>false</generatePublicObjectView>
+					<generateValueOfForOpenAPIDataTypes>true</generateValueOfForOpenAPIDataTypes>
+					<generateJSONSerializers>true</generateJSONSerializers>
+					<generateJacksonAnnotations>true</generateJacksonAnnotations>
+					<enableDetailedToStringMethod>true</enableDetailedToStringMethod>
+					<suppressTechnicalHeaders>true</suppressTechnicalHeaders>
+					
+					<generateOfOperation>true</generateOfOperation>
+
+					<!-- Define information that are written to file headers -->
+					<fileHeaderCompany>anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany</fileHeaderCompany>
+					<fileHeaderAuthor>JEAF Generator</fileHeaderAuthor>
+					<fileHeaderCopyright>Copyright 2004 - 2019. All rights reserved.</fileHeaderCopyright>
+					<fileHeaderVersion>JEAF Release 1.4.x</fileHeaderVersion>
+					
+					<!-- Define code formatting style -->
+					<!-- <conventionFile>anaptecs_code_guideline.xml</conventionFile> -->
+				</configuration>
+			</plugin>
+
+			<!-- JEAF Maven Plugin to generate JEAF configuration files -->
+			<plugin>
+				<groupId>com.anaptecs.jeaf.maven</groupId>
+				<artifactId>jeaf-maven-plugin</artifactId>
+				<version>${maven.jeaf-plugin.version}</version>
+				<executions>
+					<!--  Cleanup run -->
+					<execution>
+						<id>Clean</id>
+						<goals>
+							<goal>GenerateJEAFConfig</goal>
+						</goals>
+						<phase>clean</phase>
+						<configuration>
+							<resourceGenDirectory>${basedir}/src-gen/main/resources</resourceGenDirectory>
+							<testResourceGenDirectory>${basedir}/src-gen/test/resources</testResourceGenDirectory>
+							<cleanMetaInfDirectory>true</cleanMetaInfDirectory>
+							<cleanOnly>true</cleanOnly>
+						</configuration>
+					</execution>
+
+					<!-- Generate configuration files -->
+					<execution>
+						<id>GenerateConfigs</id>
+						<goals>
+							<goal>GenerateJEAFConfig</goal>
+						</goals>
+						<configuration>
+							<resourceGenDirectory>${basedir}/src-gen/main/resources</resourceGenDirectory>
+							<testResourceGenDirectory>${basedir}/src-gen/test/resources</testResourceGenDirectory>
+							<targetDirectory>${basedir}/target/classes</targetDirectory>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>

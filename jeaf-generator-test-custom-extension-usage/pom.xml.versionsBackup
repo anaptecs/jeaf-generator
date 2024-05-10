@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.anaptecs.jeaf.generator</groupId>
+		<artifactId>jeaf-generator-project</artifactId>
+		<version>1.18.1-SNAPSHOT</version>
+	</parent>
+
+	<name>JEAF Generator Test Custom Extension Usage</name>
+	<artifactId>jeaf-generator-test-custom-extension-usage</artifactId>
+	<packaging>jar</packaging>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.anaptecs.jeaf.core</groupId>
+			<artifactId>jeaf-core-api</artifactId>
+			<version>${jeaf.core.api.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.anaptecs.jeaf.uml</groupId>
+			<artifactId>jeaf-uml-test-model</artifactId>
+			<version>${jeaf.test.model.version}</version>
+			<type>zip</type>
+			<scope>provided</scope>
+		</dependency>
+		
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>com.anaptecs.jeaf.generator</groupId>
+				<artifactId>jeaf-generator-maven-plugin</artifactId>
+				<version>${project.version}</version>
+				<dependencies>
+					<!-- Custom templates need to be added as dependency -->
+					<dependency>
+						<groupId>com.anaptecs.jeaf.generator</groupId>
+						<artifactId>jeaf-generator-test-custom-extension</artifactId>
+						<version>${project.version}</version>
+					</dependency>
+				</dependencies>
+				<executions>
+					<execution>
+						<goals>
+							<goal>Generator</goal>
+						</goals>
+						<phase>generate-sources</phase>
+					</execution>
+				</executions>
+				<configuration>
+					<!-- Define input files and directories where output should be write to. -->
+					<modelArtifactGroupID>com.anaptecs.jeaf.uml</modelArtifactGroupID>
+					<modelArtifactArtifactID>jeaf-uml-test-model</modelArtifactArtifactID>
+					<modelArtifactXMIPath>xmi</modelArtifactXMIPath>
+
+					<umlModelFile>JEAF_Test.uml</umlModelFile>
+					<sourceDirectory>${project.basedir}/src-gen/main/java</sourceDirectory>
+					<sourceGenDirectory>${project.basedir}/src-gen/main/java</sourceGenDirectory>
+					<resourceDirectory>${project.basedir}/src-gen/main/resources</resourceDirectory>
+					<resourceGenDirectory>${project.basedir}/src-gen/main/resources</resourceGenDirectory>
+					<sourceTestDirectory>${project.basedir}/src-gen/test/java</sourceTestDirectory>
+					<sourceTestGenDirectory>${project.basedir}/src-gen/test/java</sourceTestGenDirectory>
+					<resourceTestDirectory>${project.basedir}/src-gen/test/resources</resourceTestDirectory>
+					<resourceTestGenDirectory>${project.basedir}/src-gen/test/resources</resourceTestGenDirectory>
+
+					<!-- Configure behavior concerning existing files in src-gen and res-gen directory. It is strongly recommended to clean directories before generating new files. -->
+					<cleanSourceGen>true</cleanSourceGen>
+					<cleanResourceGen>true</cleanResourceGen>
+
+					<!-- Add configuration for customer specific templates and checks -->
+					<customProfileFile>TestProfile.profile.uml</customProfileFile>
+					<customRootTemplate>MyCustomRoot::Root</customRootTemplate>
+					<customCheckFiles>
+						<customCheckFile>CustomChecks</customCheckFile>
+						<customCheckFile>openapi::OpenAPIChecks</customCheckFile>
+					</customCheckFiles>
+					
+					
+					<customRootTemplate>MyCustomRoot::Root</customRootTemplate>
+					<!-- Define whitelist of package in UML model generator should take care when generating code. -->
+					<packages>
+						<package>com.anaptecs.jeaf.junit.openapi</package>
+					</packages>
+
+					<!-- Define what should be generated. By default nothing is generated. -->
+					<generateServiceObjects>true</generateServiceObjects>
+					<javaGenericSoftLinkType>com.anaptecs.jeaf.junit.openapi.base.SoftLink</javaGenericSoftLinkType>
+					<generateHeavyExtensibleEnums>true</generateHeavyExtensibleEnums>
+					
+					<generateOpenAPISpec>true</generateOpenAPISpec>
+					<validateOpenAPISpec>true</validateOpenAPISpec>
+					<addIgnoredHeadersToOpenAPISpec>true</addIgnoredHeadersToOpenAPISpec>
+					<openAPICommentStyle>&gt;-</openAPICommentStyle>
+					<restDefaultSuccessStatusCode>201</restDefaultSuccessStatusCode>
+					<restDefaultVoidStatusCode>202</restDefaultVoidStatusCode>
+
+					<!-- Define information that are written to file headers -->
+					<fileHeaderCompany>anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany</fileHeaderCompany>
+					<fileHeaderAuthor>JEAF Generator</fileHeaderAuthor>
+					<fileHeaderCopyright>Copyright 2004 - 2021. All rights reserved.</fileHeaderCopyright>
+					<fileHeaderVersion>JEAF Release 1.6.x</fileHeaderVersion>
+					
+					<openAPIContactName>Maven Contact</openAPIContactName>
+					<openAPIContactURL>https://www.jeaf-generator.io</openAPIContactURL>
+					<openAPIContactEmail>maven@jeaf.de</openAPIContactEmail>
+					<openAPILicenseName>Maven Custom License</openAPILicenseName>
+					<openAPILicenseURL>https://www.jeaf-generator.io/license</openAPILicenseURL>
+					<openAPITermsOfUseURL>https://www.jeaf-generator.io/terms-of-use</openAPITermsOfUseURL>
+
+					<!-- Define code formatting style -->
+					<!-- <conventionFile>anaptecs_code_guideline.xml</conventionFile> -->
+					<customTemplateParameters>
+						<jeaf.test>Hello Custom Template</jeaf.test>
+					</customTemplateParameters>
+				</configuration>
+			</plugin>
+		</plugins>
+		<pluginManagement>
+			<plugins>
+				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>com.anaptecs.jeaf.generator</groupId>
+										<artifactId>jeaf-generator-maven-plugin</artifactId>
+										<versionRange>[1.5.1,)</versionRange>
+										<goals>
+											<goal>Generator</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore />
+									</action>
+								</pluginExecution>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>com.anaptecs.jeaf.maven</groupId>
+										<artifactId>jeaf-maven-plugin</artifactId>
+										<versionRange>[1.5.18,)</versionRange>
+										<goals>
+											<goal>GenerateJEAFConfig</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore />
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+</project>
