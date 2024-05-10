@@ -355,6 +355,9 @@ cached boolean needsToImplementIdentifiable(uml::Class class):
     
 cached boolean implementsIdentifiable(uml::Class class):
     JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.implementsIdentifiable(org.eclipse.uml2.uml.Class);
+
+cached List[String] getImplementedInterfacesForPOJO(JMM::POJO class):
+    class.getImplementedInterfaces().fqn().addAll(class.getTechnicalInterfacesToImplementByPOJOs());
     
 cached List[String] getTechnicalInterfacesToImplementByPOJOs(JMM::POJO class):
     if class.needsToImplementIdentifiable() == false &&  class.superClass.isEmpty && makePOJOsSerializable()
@@ -365,6 +368,9 @@ cached List[String] getTechnicalInterfacesToImplementByPOJOs(JMM::POJO class):
     then {"com.anaptecs.jeaf.xfun.api.common.Identifiable<" + class.getObjectIDClassName() + ">"}
     else {};
     
+    
+cached List[String] getImplementedInterfacesForServiceObject(JMM::ServiceObject class):
+    class.getImplementedInterfaces().fqn().addAll(class.getTechnicalInterfacesToImplementByServiceObjects());
     
 cached List[String] getTechnicalInterfacesToImplementByServiceObjects(JMM::ServiceObject class):
     if class.needsToImplementIdentifiable() == false &&  class.superClass.isEmpty

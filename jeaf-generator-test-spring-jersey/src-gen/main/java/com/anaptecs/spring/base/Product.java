@@ -27,7 +27,7 @@ import com.fasterxml.jackson.annotation.Nulls;
  * @version JEAF Release 1.4.x
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Product {
+public class Product implements IProduct {
   /**
    * Constant for the name of attribute "resellers".
    */

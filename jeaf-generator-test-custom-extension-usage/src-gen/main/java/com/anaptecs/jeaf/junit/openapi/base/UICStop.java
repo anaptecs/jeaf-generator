@@ -26,7 +26,7 @@ import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
  * @author JEAF Generator
  * @version JEAF Release 1.6.x
  */
-public class UICStop extends Stop {
+public class UICStop extends Stop implements IStop {
   /**
    * Default serial version uid.
    */

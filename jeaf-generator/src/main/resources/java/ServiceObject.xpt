@@ -327,7 +327,7 @@
 «ENDDEFINE»
 
 «DEFINE InterfaceDeclarations FOR ServiceObject»
-	«EXPAND jeafgenerator::api::ClassExtensionHook::ImplementInterfaces(this.getTechnicalInterfacesToImplementByServiceObjects())»
+	«EXPAND jeafgenerator::api::ClassExtensionHook::ImplementInterfaces(this.getImplementedInterfacesForServiceObject())»
 «ENDDEFINE»
 
 
