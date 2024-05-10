@@ -341,7 +341,7 @@
 «ENDDEFINE»
 
 «DEFINE InterfaceDeclarations FOR POJO»
-    «EXPAND jeafgenerator::api::ClassExtensionHook::ImplementInterfaces(this.getTechnicalInterfacesToImplement())»
+    «EXPAND jeafgenerator::api::ClassExtensionHook::ImplementInterfaces(this.getImplementedInterfacesForPOJO())»
 «ENDDEFINE»
 
 «DEFINE POJOPlainConstructorInit FOR POJO»

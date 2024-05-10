@@ -31,7 +31,7 @@ import com.fasterxml.jackson.annotation.Nulls;
  * @version JEAF Release 1.4.x
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Product implements Serializable {
+public class Product implements IProduct, Serializable {
   /**
    * Default serial version UID.
    */

@@ -23,7 +23,7 @@ import jakarta.validation.constraints.Size;
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */
-public class Product {
+public class Product implements IProduct {
   /**
    * Constant for the name of attribute "resellers".
    */

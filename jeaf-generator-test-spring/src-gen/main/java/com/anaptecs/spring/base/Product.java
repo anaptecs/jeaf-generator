@@ -35,7 +35,7 @@ import com.fasterxml.jackson.annotation.Nulls;
     getterVisibility = JsonAutoDetect.Visibility.NONE,
     isGetterVisibility = JsonAutoDetect.Visibility.NONE,
     setterVisibility = JsonAutoDetect.Visibility.NONE)
-public class Product {
+public class Product implements IProduct {
   /**
    * Constant for the name of attribute "resellers".
    */
