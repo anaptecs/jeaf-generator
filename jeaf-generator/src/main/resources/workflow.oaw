@@ -13,6 +13,9 @@
         <metaModel id="${profile.name}" class="oaw.uml2.profile.ProfileMetaModel">
             <profile value="${profile.file}"/>
         </metaModel>
+        <metaModel id="CustomProfile" class="oaw.uml2.profile.ProfileMetaModel">
+            <profile value="${customprofile.file}"/>
+        </metaModel>
         
         <checkFile value="jeaf::VersionCheck"/>
         
@@ -20,10 +23,9 @@
     </component>
 
     <component class="org.openarchitectureware.check.CheckComponent">
-        <metaModel id="UmlMM" class="oaw.uml2.UML2MetaModel"/>
-        <metaModel id="${profile.name}" class="oaw.uml2.profile.ProfileMetaModel">
-            <profile value="${profile.file}"/>
-        </metaModel>
+		<metaModel idRef="UmlMM"/>
+		<metaModel idRef="${profile.name}"/>
+		<metaModel idRef="CustomProfile"/>
         
         <checkFile value="jeaf::JEAFChecks"/>
         <checkFile value="entity::EntityChecks"/>
@@ -38,6 +40,7 @@
     <component class="com.anaptecs.jeaf.fwk.generator.workflow.CustomChecksWorkflow">
 		<metaModel idRef="UmlMM"/>
 		<metaModel idRef="${profile.name}"/>
+		<metaModel idRef="CustomProfile"/>
 		
         <expression value="${output.slot}.eAllContents.union({${output.slot}})"/>
     </component>
@@ -46,6 +49,7 @@
     <component id="generator" class="org.openarchitectureware.xpand2.Generator" skipOnErrors="true">
 		<metaModel idRef="UmlMM"/>
 		<metaModel idRef="${profile.name}"/>
+		<metaModel idRef="CustomProfile"/>
 
 		<fileEncoding value="UTF-8"/>
 		<!-- Fuer jedes 'model' im slot model rufe Define 'Root' im template 'Root' auf -->
@@ -71,6 +75,7 @@
     <component id="generator" class="org.openarchitectureware.xpand2.Generator" skipOnErrors="true">
 		<metaModel idRef="UmlMM"/>
 		<metaModel idRef="${profile.name}"/>
+		<metaModel idRef="CustomProfile"/>
 
 		<fileEncoding value="UTF-8"/>
 		<expand value="CustomRoot::InfoMessage FOR ${output.slot}"/>
@@ -90,6 +95,7 @@
     <component id="generator" class="org.openarchitectureware.xpand2.Generator" skipOnErrors="true">
 		<metaModel idRef="UmlMM"/>
 		<metaModel idRef="${profile.name}"/>
+		<metaModel idRef="CustomProfile"/>
 
 		<fileEncoding value="UTF-8"/>
 		<expand value="${custom.root.template} FOR ${output.slot}"/>

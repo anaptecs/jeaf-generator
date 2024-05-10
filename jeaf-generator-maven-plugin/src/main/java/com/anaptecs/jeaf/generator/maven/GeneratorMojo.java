@@ -154,7 +154,14 @@ public class GeneratorMojo extends AbstractMojo {
    * Only the name of the file has to be provided as we assume that the file is located in the XMI directory.
    */
   @Parameter(required = false, defaultValue = "JMM.profile.uml")
-  private String umlProfileFile;
+  private String jmmProfileFile;
+
+  /**
+   * In addition to standard profile of JEAF Generator it is also possible to add a custom profile that contains your
+   * own stereotypes.
+   */
+  @Parameter(required = false)
+  private String customProfileFile;
 
   /**
    * Name of the root template for customer specific extensions
@@ -1306,7 +1313,10 @@ public class GeneratorMojo extends AbstractMojo {
     lLog.info("--------------------------------------------------------------------------------------");
     if (this.isUMLGenerationRequested() == true) {
       lLog.info("UML Model File:                                   " + umlModelFile);
-      lLog.info("UML Profile File:                                 " + umlProfileFile);
+      lLog.info("UML Profile File:                                 " + jmmProfileFile);
+      if (customProfileFile != null && customProfileFile.trim().isEmpty() == false) {
+        lLog.info("Custom UML Profile File                           " + customProfileFile);
+      }
       if (xmiDirectory != null) {
         lLog.info("XMI Path:                                         " + xmiDirectory);
       }
@@ -1895,8 +1905,19 @@ public class GeneratorMojo extends AbstractMojo {
       // Check if UML model file and profile file exist
       String lModelFilePath = lXMIDirectory + "/" + umlModelFile;
       File lModelFile = new File(lModelFilePath);
-      String lProfileFilePath = lXMIDirectory + "/" + umlProfileFile;
+      String lProfileFilePath = lXMIDirectory + "/" + jmmProfileFile;
       File lProfileFile = new File(lProfileFilePath);
+
+      File lCustomProfileFile;
+      String lCustomProfileFilePath;
+      if (customProfileFile != null && customProfileFile.trim().isEmpty() == false) {
+        lCustomProfileFilePath = lXMIDirectory + "/" + customProfileFile;
+        lCustomProfileFile = new File(lCustomProfileFilePath);
+      }
+      else {
+        lCustomProfileFilePath = null;
+        lCustomProfileFile = null;
+      }
 
       // File with UML model does not exist.
       if (lModelFile.exists() == false) {
@@ -1908,6 +1929,11 @@ public class GeneratorMojo extends AbstractMojo {
         throw new MojoFailureException("UML profile file " + lProfileFilePath
             + " does not exist. Please make sure that the path to the UML profile file is correct.");
       }
+      // Custom profile does not exist
+      if (lCustomProfileFile != null && lCustomProfileFile.exists() == false) {
+        throw new MojoFailureException("Custom profile file " + lCustomProfileFilePath
+            + " does not exist. Please make sure that the path to the UML profile file is correct.");
+      }
       // Model file and profile file both exist, so we can really start the generation process.
       else {
         // Build arguments for generator
@@ -1916,8 +1942,14 @@ public class GeneratorMojo extends AbstractMojo {
         lParams.put("custom.root.template", customRootTemplate);
         lParams.put("output.slot", "model");
         lParams.put("model.file", lModelFilePath);
-        lParams.put("profile.file", lProfileFilePath);
         lParams.put("profile.name", "JMM");
+        lParams.put("profile.file", lProfileFilePath);
+        if (lCustomProfileFile != null) {
+          lParams.put("customprofile.file", lCustomProfileFilePath);
+        }
+        else {
+          lParams.put("customprofile.file", lProfileFilePath);
+        }
         lParams.put("path.src.gen", sourceGenDirectory);
         lParams.put("path.src", sourceDirectory);
         lParams.put("path.res.gen", resourceGenDirectory);
@@ -1939,7 +1971,7 @@ public class GeneratorMojo extends AbstractMojo {
     return lSuccessful;
   }
 
-  private void preCheckXMIFiles( List<String> pUMLFiles ) throws MojoFailureException {
+  private void preCheckXMIFiles(List<String> pUMLFiles) throws MojoFailureException {
     for (String lNextFile : pUMLFiles) {
       try {
         String lStartOfFile = FileTools.getFileTools().readLinesAsString(lNextFile, 0, 5);
@@ -2268,8 +2300,8 @@ public class GeneratorMojo extends AbstractMojo {
     }
   }
 
-  private List<String> resolveResourceFiles( String pResourceLocationPath, String pFileExtension,
-      List<String> pExclusionList ) {
+  private List<String> resolveResourceFiles(String pResourceLocationPath, String pFileExtension,
+      List<String> pExclusionList) {
 
     // Check parameters.
     Assert.assertNotNull(pResourceLocationPath, "pResourceLocationPath");
@@ -2504,7 +2536,7 @@ public class GeneratorMojo extends AbstractMojo {
     }
   }
 
-  private List<String> validateOpenAPISpec( String pFileName ) {
+  private List<String> validateOpenAPISpec(String pFileName) {
     ParseOptions lOptions = new ParseOptions();
     lOptions.setResolve(true);
 
@@ -2522,12 +2554,12 @@ public class GeneratorMojo extends AbstractMojo {
     return lErrorMessages;
   }
 
-  private List<String> resolveOpenAPISpecs( String pDirectory ) throws IOException {
+  private List<String> resolveOpenAPISpecs(String pDirectory) throws IOException {
     FilenameFilter lFilter = FileTools.getFileTools().createExtensionFilenameFilter(List.of("*.yaml", "*.yml"), null);
     return this.resolveFiles(pDirectory, lFilter);
   }
 
-  private List<String> resolveFiles( String pDirectory, FilenameFilter pFilter ) throws IOException {
+  private List<String> resolveFiles(String pDirectory, FilenameFilter pFilter) throws IOException {
     List<String> lFiles = FileTools.getFileTools().listFiles(pDirectory, pFilter);
     for (File lNextFile : FileTools.getFileTools().listFiles(new File(pDirectory))) {
       if (lNextFile.isDirectory()) {
