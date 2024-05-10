@@ -356,12 +356,22 @@ cached boolean needsToImplementIdentifiable(uml::Class class):
 cached boolean implementsIdentifiable(uml::Class class):
     JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.implementsIdentifiable(org.eclipse.uml2.uml.Class);
     
-cached List[String] getTechnicalInterfacesToImplement(JMM::POJO class):
+cached List[String] getTechnicalInterfacesToImplementByPOJOs(JMM::POJO class):
     if class.needsToImplementIdentifiable() == false &&  class.superClass.isEmpty && makePOJOsSerializable()
     then {"java.io.Serializable"} 
     else if class.needsToImplementIdentifiable() && class.superClass.isEmpty && makePOJOsSerializable()
     then {"com.anaptecs.jeaf.xfun.api.common.Identifiable<" + class.getObjectIDClassName() + ">", "java.io.Serializable"}
     else if class.needsToImplementIdentifiable() && (class.superClass.isEmpty == false || makePOJOsSerializable() == false)
+    then {"com.anaptecs.jeaf.xfun.api.common.Identifiable<" + class.getObjectIDClassName() + ">"}
+    else {};
+    
+    
+cached List[String] getTechnicalInterfacesToImplementByServiceObjects(JMM::ServiceObject class):
+    if class.needsToImplementIdentifiable() == false &&  class.superClass.isEmpty
+    then {"com.anaptecs.jeaf.core.api.ServiceObject"} 
+    else if class.needsToImplementIdentifiable() && class.superClass.isEmpty
+    then {"com.anaptecs.jeaf.core.api.ServiceObject", "com.anaptecs.jeaf.xfun.api.common.Identifiable<" + class.getObjectIDClassName() + ">"}
+    else if class.needsToImplementIdentifiable() && class.superClass.isEmpty == false 
     then {"com.anaptecs.jeaf.xfun.api.common.Identifiable<" + class.getObjectIDClassName() + ">"}
     else {};
     

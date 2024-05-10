@@ -327,12 +327,7 @@
 «ENDDEFINE»
 
 «DEFINE InterfaceDeclarations FOR ServiceObject»
-	«IF superClass.isEmpty»
-		implements com.anaptecs.jeaf.core.api.ServiceObject
-		«IF needsToImplementIdentifiable()==true», com.anaptecs.jeaf.xfun.api.common.Identifiable<«this.getObjectIDClassName()»>«ENDIF»
-	«ELSE»
-		«IF needsToImplementIdentifiable()==true»implements com.anaptecs.jeaf.xfun.api.common.Identifiable<«this.getObjectIDClassName()»>«ENDIF»
-	«ENDIF»
+	«EXPAND jeafgenerator::api::ClassExtensionHook::ImplementInterfaces(this.getTechnicalInterfacesToImplementByServiceObjects())»
 «ENDDEFINE»
 
 
