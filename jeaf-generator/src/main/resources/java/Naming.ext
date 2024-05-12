@@ -107,7 +107,7 @@ cached String umlFQN(uml::NamedElement element):
      
 // For "normale" Typen wird einfach der Name als qualifizierter Name geliefert
 // Blob wird von OAW nicht als Klasse anerkannt, deswegen muss sie hier behandelt werden.
-cached String fqn (uml::NamedElement element) :
+cached String fqn(uml::NamedElement element) :
     if element.isClass()
     then element.asClass().internalFQNForClass()
     else element.internalFQN();
