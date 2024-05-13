@@ -520,7 +520,7 @@ public class SimpleDatatypeServiceObject implements ServiceObject, Identifiable<
   /**
    * Method returns attribute {@link #myByteArray}.<br/>
    *
-   * @return byte Value to which {@link #myByteArray} is set.
+   * @return byte[] Value to which {@link #myByteArray} is set.
    */
   public byte[] getMyByteArray( ) {
     byte[] lReturnValue;

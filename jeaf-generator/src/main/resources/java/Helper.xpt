@@ -327,7 +327,7 @@
 				   «attr.type.fqn()»
 				   «ENDIF»
 			   «ELSE»
-			       «attr.fqn()»«IF attr.isMultivalued()»[]«ENDIF»
+			       «attr.fqn()»
 			   «ENDIF»
 			   «IF attr.isSoftLink()»
 			       «attr.getSoftLinkPropertyName().asParameter()»

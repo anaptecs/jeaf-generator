@@ -175,7 +175,7 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     lRequestBuilder.setBody(pProduct);
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
-    ObjectType lObjectType = ObjectType.createObjectType(Boolean.class);
+    ObjectType lObjectType = ObjectType.createObjectType(boolean.class);
     boolean lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
     // Validate response and return it.
     validationExecutor.validateResponse(RESTProductService.class, lResult);
@@ -845,7 +845,7 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     lRequestBuilder.setPath(lPathBuilder.toString());
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
-    ObjectType lObjectType = ObjectType.createObjectType(Boolean.class);
+    ObjectType lObjectType = ObjectType.createObjectType(boolean.class);
     boolean lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
     // Validate response and return it.
     validationExecutor.validateResponse(RESTProductService.class, lResult);

@@ -211,7 +211,7 @@ public class ChildB extends ParentClass {
    * Method returns attribute {@link #childBAttribute}.<br/>
    * A child attribute
    *
-   * @return boolean Value to which {@link #childBAttribute} is set.
+   * @return boolean[] Value to which {@link #childBAttribute} is set.
    */
   public boolean[] getChildBAttribute( ) {
     boolean[] lReturnValue;

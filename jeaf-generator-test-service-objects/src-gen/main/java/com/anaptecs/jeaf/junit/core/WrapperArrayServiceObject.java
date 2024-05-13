@@ -133,7 +133,7 @@ public class WrapperArrayServiceObject implements ServiceObject {
   /**
    * Method returns attribute {@link #booleanArray}.<br/>
    *
-   * @return {@link Boolean} Value to which {@link #booleanArray} is set.
+   * @return {@link Boolean[]} Value to which {@link #booleanArray} is set.
    */
   public Boolean[] getBooleanArray( ) {
     Boolean[] lReturnValue;

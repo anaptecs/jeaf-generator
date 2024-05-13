@@ -34,7 +34,7 @@ import «getEnterpriseJavaPackage()».validation.Payload;
 public @interface «validationClass» {
     «FOREACH this.ownedAttribute AS attribute»
 	    «IF attribute.name.startsWith("base_") == false»
-			«attribute.type.fqn()»«IF attribute.isMultivalued()»[]«ENDIF» «attribute.name»() 
+			«attribute.fqn()» «attribute.name»() 
 			«IF attribute.defaultValue.isNull() == false-»
 				default
 			    «REM»Annotation supports either primitive types or enums.«ENDREM»

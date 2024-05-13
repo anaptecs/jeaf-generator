@@ -172,7 +172,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
   /**
    * Method creates a new builder and initializes it with the passed attributes.
    */
-  public static Builder builder( Boolean pABoolean, Boolean pBBoolean, Boolean pCBoolean, byte pAByte, Byte pBByte,
+  public static Builder builder( boolean pABoolean, Boolean pBBoolean, boolean pCBoolean, byte pAByte, Byte pBByte,
       short pAShort, Short pBShort, int pAInteger, Integer pBInteger, Integer pCInteger, long pALong, Long pBLong,
       BigInteger pABigInteger, char pACharacter, Character pBCharacter, float pAFloat, Float pBFloat, double pADouble,
       Double pBDouble, BigDecimal pABigDecimal, String pAString, String pBString ) {

@@ -285,7 +285,7 @@ public class TheReadOnlyPOJO implements Serializable {
   /**
    * Method returns attribute {@link #ints}.<br/>
    *
-   * @return int Value to which {@link #ints} is set.
+   * @return int[] Value to which {@link #ints} is set.
    */
   public int[] getInts( ) {
     int[] lReturnValue;

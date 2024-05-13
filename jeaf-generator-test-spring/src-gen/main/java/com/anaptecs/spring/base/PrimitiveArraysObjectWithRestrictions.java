@@ -762,7 +762,7 @@ public class PrimitiveArraysObjectWithRestrictions {
   /**
    * Method returns attribute {@link #aBooleanArray}.<br/>
    *
-   * @return boolean Value to which {@link #aBooleanArray} is set.
+   * @return boolean[] Value to which {@link #aBooleanArray} is set.
    */
   public boolean[] getABooleanArray( ) {
     boolean[] lReturnValue;
@@ -795,7 +795,7 @@ public class PrimitiveArraysObjectWithRestrictions {
   /**
    * Method returns attribute {@link #bBooleanArray}.<br/>
    *
-   * @return {@link Boolean} Value to which {@link #bBooleanArray} is set.
+   * @return {@link Boolean[]} Value to which {@link #bBooleanArray} is set.
    */
   public Boolean[] getBBooleanArray( ) {
     Boolean[] lReturnValue;
@@ -828,7 +828,7 @@ public class PrimitiveArraysObjectWithRestrictions {
   /**
    * Method returns attribute {@link #cBooleanArray}.<br/>
    *
-   * @return boolean Value to which {@link #cBooleanArray} is set.
+   * @return boolean[] Value to which {@link #cBooleanArray} is set.
    */
   public boolean[] getCBooleanArray( ) {
     boolean[] lReturnValue;
@@ -861,7 +861,7 @@ public class PrimitiveArraysObjectWithRestrictions {
   /**
    * Method returns attribute {@link #aByteArray}.<br/>
    *
-   * @return byte Value to which {@link #aByteArray} is set.
+   * @return byte[] Value to which {@link #aByteArray} is set.
    */
   public byte[] getAByteArray( ) {
     byte[] lReturnValue;
@@ -894,7 +894,7 @@ public class PrimitiveArraysObjectWithRestrictions {
   /**
    * Method returns attribute {@link #bByteArray}.<br/>
    *
-   * @return {@link Byte} Value to which {@link #bByteArray} is set.
+   * @return {@link Byte[]} Value to which {@link #bByteArray} is set.
    */
   public Byte[] getBByteArray( ) {
     Byte[] lReturnValue;
@@ -927,7 +927,7 @@ public class PrimitiveArraysObjectWithRestrictions {
   /**
    * Method returns attribute {@link #aShortArray}.<br/>
    *
-   * @return short Value to which {@link #aShortArray} is set.
+   * @return short[] Value to which {@link #aShortArray} is set.
    */
   public short[] getAShortArray( ) {
     short[] lReturnValue;
@@ -960,7 +960,7 @@ public class PrimitiveArraysObjectWithRestrictions {
   /**
    * Method returns attribute {@link #bShortArray}.<br/>
    *
-   * @return {@link Short} Value to which {@link #bShortArray} is set.
+   * @return {@link Short[]} Value to which {@link #bShortArray} is set.
    */
   public Short[] getBShortArray( ) {
     Short[] lReturnValue;
@@ -993,7 +993,7 @@ public class PrimitiveArraysObjectWithRestrictions {
   /**
    * Method returns attribute {@link #aIntegerArray}.<br/>
    *
-   * @return int Value to which {@link #aIntegerArray} is set.
+   * @return int[] Value to which {@link #aIntegerArray} is set.
    */
   public int[] getAIntegerArray( ) {
     int[] lReturnValue;
@@ -1026,7 +1026,7 @@ public class PrimitiveArraysObjectWithRestrictions {
   /**
    * Method returns attribute {@link #bIntegerArray}.<br/>
    *
-   * @return {@link Integer} Value to which {@link #bIntegerArray} is set.
+   * @return {@link Integer[]} Value to which {@link #bIntegerArray} is set.
    */
   public Integer[] getBIntegerArray( ) {
     Integer[] lReturnValue;
@@ -1059,7 +1059,7 @@ public class PrimitiveArraysObjectWithRestrictions {
   /**
    * Method returns attribute {@link #cIntegerArray}.<br/>
    *
-   * @return {@link Integer} Value to which {@link #cIntegerArray} is set.
+   * @return {@link Integer[]} Value to which {@link #cIntegerArray} is set.
    */
   public Integer[] getCIntegerArray( ) {
     Integer[] lReturnValue;
@@ -1092,7 +1092,7 @@ public class PrimitiveArraysObjectWithRestrictions {
   /**
    * Method returns attribute {@link #aLongArray}.<br/>
    *
-   * @return long Value to which {@link #aLongArray} is set.
+   * @return long[] Value to which {@link #aLongArray} is set.
    */
   public long[] getALongArray( ) {
     long[] lReturnValue;
@@ -1125,7 +1125,7 @@ public class PrimitiveArraysObjectWithRestrictions {
   /**
    * Method returns attribute {@link #bLongArray}.<br/>
    *
-   * @return {@link Long} Value to which {@link #bLongArray} is set.
+   * @return {@link Long[]} Value to which {@link #bLongArray} is set.
    */
   public Long[] getBLongArray( ) {
     Long[] lReturnValue;
@@ -1158,7 +1158,7 @@ public class PrimitiveArraysObjectWithRestrictions {
   /**
    * Method returns attribute {@link #aBigIntegerArray}.<br/>
    *
-   * @return {@link BigInteger} Value to which {@link #aBigIntegerArray} is set.
+   * @return {@link BigInteger[]} Value to which {@link #aBigIntegerArray} is set.
    */
   public BigInteger[] getABigIntegerArray( ) {
     BigInteger[] lReturnValue;
@@ -1191,7 +1191,7 @@ public class PrimitiveArraysObjectWithRestrictions {
   /**
    * Method returns attribute {@link #aCharacterArray}.<br/>
    *
-   * @return char Value to which {@link #aCharacterArray} is set.
+   * @return char[] Value to which {@link #aCharacterArray} is set.
    */
   public char[] getACharacterArray( ) {
     char[] lReturnValue;
@@ -1224,7 +1224,7 @@ public class PrimitiveArraysObjectWithRestrictions {
   /**
    * Method returns attribute {@link #bCharacterArray}.<br/>
    *
-   * @return {@link Character} Value to which {@link #bCharacterArray} is set.
+   * @return {@link Character[]} Value to which {@link #bCharacterArray} is set.
    */
   public Character[] getBCharacterArray( ) {
     Character[] lReturnValue;
@@ -1257,7 +1257,7 @@ public class PrimitiveArraysObjectWithRestrictions {
   /**
    * Method returns attribute {@link #aFloatArray}.<br/>
    *
-   * @return float Value to which {@link #aFloatArray} is set.
+   * @return float[] Value to which {@link #aFloatArray} is set.
    */
   public float[] getAFloatArray( ) {
     float[] lReturnValue;
@@ -1290,7 +1290,7 @@ public class PrimitiveArraysObjectWithRestrictions {
   /**
    * Method returns attribute {@link #bFloatArray}.<br/>
    *
-   * @return {@link Float} Value to which {@link #bFloatArray} is set.
+   * @return {@link Float[]} Value to which {@link #bFloatArray} is set.
    */
   public Float[] getBFloatArray( ) {
     Float[] lReturnValue;
@@ -1323,7 +1323,7 @@ public class PrimitiveArraysObjectWithRestrictions {
   /**
    * Method returns attribute {@link #aDoubleArray}.<br/>
    *
-   * @return double Value to which {@link #aDoubleArray} is set.
+   * @return double[] Value to which {@link #aDoubleArray} is set.
    */
   public double[] getADoubleArray( ) {
     double[] lReturnValue;
@@ -1356,7 +1356,7 @@ public class PrimitiveArraysObjectWithRestrictions {
   /**
    * Method returns attribute {@link #bDoubleArray}.<br/>
    *
-   * @return {@link Double} Value to which {@link #bDoubleArray} is set.
+   * @return {@link Double[]} Value to which {@link #bDoubleArray} is set.
    */
   public Double[] getBDoubleArray( ) {
     Double[] lReturnValue;
@@ -1389,7 +1389,7 @@ public class PrimitiveArraysObjectWithRestrictions {
   /**
    * Method returns attribute {@link #aBigDecimalArray}.<br/>
    *
-   * @return {@link BigDecimal} Value to which {@link #aBigDecimalArray} is set.
+   * @return {@link BigDecimal[]} Value to which {@link #aBigDecimalArray} is set.
    */
   public BigDecimal[] getABigDecimalArray( ) {
     BigDecimal[] lReturnValue;
@@ -1422,7 +1422,7 @@ public class PrimitiveArraysObjectWithRestrictions {
   /**
    * Method returns attribute {@link #aStringArray}.<br/>
    *
-   * @return {@link String} Value to which {@link #aStringArray} is set.
+   * @return {@link String[]} Value to which {@link #aStringArray} is set.
    */
   public String[] getAStringArray( ) {
     String[] lReturnValue;
@@ -1455,7 +1455,7 @@ public class PrimitiveArraysObjectWithRestrictions {
   /**
    * Method returns attribute {@link #bStringArray}.<br/>
    *
-   * @return {@link String} Value to which {@link #bStringArray} is set.
+   * @return {@link String[]} Value to which {@link #bStringArray} is set.
    */
   public String[] getBStringArray( ) {
     String[] lReturnValue;

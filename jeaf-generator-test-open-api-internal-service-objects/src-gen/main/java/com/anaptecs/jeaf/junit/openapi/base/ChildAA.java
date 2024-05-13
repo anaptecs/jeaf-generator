@@ -405,7 +405,7 @@ public class ChildAA extends ChildA {
   /**
    * Method returns attribute {@link #sizedArray}.<br/>
    *
-   * @return int Value to which {@link #sizedArray} is set.
+   * @return int[] Value to which {@link #sizedArray} is set.
    */
   public int[] getSizedArray( ) {
     int[] lReturnValue;
@@ -436,7 +436,7 @@ public class ChildAA extends ChildA {
   /**
    * Method returns attribute {@link #requiredArray}.<br/>
    *
-   * @return {@link String} Value to which {@link #requiredArray} is set.
+   * @return {@link String[]} Value to which {@link #requiredArray} is set.
    */
   public String[] getRequiredArray( ) {
     String[] lReturnValue;
@@ -511,7 +511,7 @@ public class ChildAA extends ChildA {
   /**
    * Method returns attribute {@link #codes}.<br/>
    *
-   * @return {@link IntegerCode} Value to which {@link #codes} is set.
+   * @return {@link IntegerCode[]} Value to which {@link #codes} is set.
    */
   public IntegerCode[] getCodes( ) {
     IntegerCode[] lReturnValue;

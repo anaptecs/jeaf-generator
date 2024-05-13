@@ -267,7 +267,7 @@ public class MultivaluedQueryParamsBean {
   /**
    * Method returns attribute {@link #intArray}.<br/>
    *
-   * @return int Value to which {@link #intArray} is set.
+   * @return int[] Value to which {@link #intArray} is set.
    */
   public int[] getIntArray( ) {
     int[] lReturnValue;
@@ -300,7 +300,7 @@ public class MultivaluedQueryParamsBean {
   /**
    * Method returns attribute {@link #strings}.<br/>
    *
-   * @return {@link String} Value to which {@link #strings} is set.
+   * @return {@link String[]} Value to which {@link #strings} is set.
    */
   public String[] getStrings( ) {
     String[] lReturnValue;
@@ -333,7 +333,7 @@ public class MultivaluedQueryParamsBean {
   /**
    * Method returns attribute {@link #integers}.<br/>
    *
-   * @return {@link Integer} Value to which {@link #integers} is set.
+   * @return {@link Integer[]} Value to which {@link #integers} is set.
    */
   public Integer[] getIntegers( ) {
     Integer[] lReturnValue;
@@ -418,7 +418,7 @@ public class MultivaluedQueryParamsBean {
   /**
    * Method returns attribute {@link #timeUnitArray}.<br/>
    *
-   * @return {@link TimeUnit} Value to which {@link #timeUnitArray} is set.
+   * @return {@link TimeUnit[]} Value to which {@link #timeUnitArray} is set.
    */
   public TimeUnit[] getTimeUnitArray( ) {
     TimeUnit[] lReturnValue;

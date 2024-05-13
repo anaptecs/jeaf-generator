@@ -316,7 +316,7 @@ public abstract class TestServiceObjectBase implements ServiceObject {
   /**
    * Method returns attribute {@link #dummy2}.<br/>
    *
-   * @return {@link String} Value to which {@link #dummy2} is set.
+   * @return {@link String[]} Value to which {@link #dummy2} is set.
    */
   public String[] getDummy2( ) {
     String[] lReturnValue;
@@ -349,7 +349,7 @@ public abstract class TestServiceObjectBase implements ServiceObject {
   /**
    * Method returns attribute {@link #dummy3}.<br/>
    *
-   * @return {@link Integer} Value to which {@link #dummy3} is set.
+   * @return {@link Integer[]} Value to which {@link #dummy3} is set.
    */
   public Integer[] getDummy3( ) {
     Integer[] lReturnValue;

@@ -41,7 +41,7 @@ public class Channel extends ChannelBase {
    * Method creates a new builder and initializes it with the passed attributes.
    */
   public static Builder builder( ChannelType pChannelType, ChannelCode pChannelCode, int pCode,
-      Boolean pSelfServiceChannel ) {
+      boolean pSelfServiceChannel ) {
     Builder lBuilder = builder();
     lBuilder.setChannelType(pChannelType);
     lBuilder.setChannelCode(pChannelCode);

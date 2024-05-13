@@ -71,7 +71,7 @@ public abstract class ChannelBase extends Object implements ServiceObject {
   // "int"
   private int codeXYZ = 0;
 
-  // "Boolean"
+  // "boolean"
   @ClassPropertyDeclaration
   /**
    * <br/>
@@ -79,7 +79,7 @@ public abstract class ChannelBase extends Object implements ServiceObject {
    */
   private final boolean selfServiceChannel;
 
-  // "Boolean"
+  // "boolean"
   private int selfServiceChannelXYZ = 0;
 
   // "com.anaptecs.jeaf.junit.openapi.base.Reseller"
@@ -117,7 +117,7 @@ public abstract class ChannelBase extends Object implements ServiceObject {
     // "int"
     codeXYZ = pBuilder.codeXYZ;
     selfServiceChannel = pBuilder.selfServiceChannel;
-    // "Boolean"
+    // "boolean"
     selfServiceChannelXYZ = pBuilder.selfServiceChannelXYZ;
   }
 
@@ -157,11 +157,11 @@ public abstract class ChannelBase extends Object implements ServiceObject {
      * <br/>
      * <b>Default Value:</b> <code>true</code>
      */
-    // "Boolean"
+    // "boolean"
     @BuilderPropertyDeclaration
     private boolean selfServiceChannel = true;
 
-    // "Boolean"
+    // "boolean"
     private int selfServiceChannelXYZ = 0;
 
     /**
@@ -248,7 +248,7 @@ public abstract class ChannelBase extends Object implements ServiceObject {
     }
 
     public BuilderBase setSelfServiceChannelXYZ( int value ) {
-      // "Boolean"
+      // "boolean"
       selfServiceChannelXYZ = value;
       return this;
     }
@@ -386,7 +386,7 @@ public abstract class ChannelBase extends Object implements ServiceObject {
   }
 
   public int getSelfServiceChannelXYZ( ) {
-    // "Boolean"
+    // "boolean"
     return selfServiceChannelXYZ;
   }
 

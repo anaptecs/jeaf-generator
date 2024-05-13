@@ -600,7 +600,7 @@ public class Product implements IProduct {
    * Method returns attribute {@link #image}.<br/>
    * Image describing the product.
    *
-   * @return byte Value to which {@link #image} is set.
+   * @return byte[] Value to which {@link #image} is set.
    */
   public byte[] getImage( ) {
     byte[] lReturnValue;

@@ -195,7 +195,7 @@ public class SecurityToken implements ServiceObject {
    * Method returns attribute {@link #sessionKey}.<br/>
    * The attribute contains the session key of the security token that was used when the booking was executed.
    *
-   * @return byte Value to which {@link #sessionKey} is set.
+   * @return byte[] Value to which {@link #sessionKey} is set.
    */
   public byte[] getSessionKey( ) {
     byte[] lReturnValue;

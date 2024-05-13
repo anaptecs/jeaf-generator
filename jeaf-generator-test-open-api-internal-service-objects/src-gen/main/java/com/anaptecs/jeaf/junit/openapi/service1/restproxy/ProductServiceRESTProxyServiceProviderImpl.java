@@ -154,7 +154,7 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     lRequestBuilder.setBody(pProduct);
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
-    ObjectType lObjectType = ObjectType.createObjectType(Boolean.class);
+    ObjectType lObjectType = ObjectType.createObjectType(boolean.class);
     return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
   }
 
@@ -691,7 +691,7 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     lRequestBuilder.setBody(pIBAN);
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
-    ObjectType lObjectType = ObjectType.createObjectType(Boolean.class);
+    ObjectType lObjectType = ObjectType.createObjectType(boolean.class);
     return requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
   }
 

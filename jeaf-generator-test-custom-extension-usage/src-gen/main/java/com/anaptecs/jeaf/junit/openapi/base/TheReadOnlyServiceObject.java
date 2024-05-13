@@ -52,7 +52,7 @@ public class TheReadOnlyServiceObject extends Object implements ServiceObject {
   // "String"
   private int nameXYZ = 0;
 
-  // "Boolean"
+  // "boolean"
   @ClassPropertyDeclaration
   /**
    * <p/>
@@ -60,7 +60,7 @@ public class TheReadOnlyServiceObject extends Object implements ServiceObject {
    */
   private final boolean[] bits;
 
-  // "Boolean"
+  // "boolean"
   private int bitsXYZ = 0;
 
   // "com.anaptecs.jeaf.junit.openapi.base.BookingCode"
@@ -105,7 +105,7 @@ public class TheReadOnlyServiceObject extends Object implements ServiceObject {
     // "String"
     nameXYZ = pBuilder.nameXYZ;
     bits = pBuilder.bits;
-    // "Boolean"
+    // "boolean"
     bitsXYZ = pBuilder.bitsXYZ;
     if (pBuilder.bookingCodes != null) {
       bookingCodes = pBuilder.bookingCodes;
@@ -144,11 +144,11 @@ public class TheReadOnlyServiceObject extends Object implements ServiceObject {
      * <p/>
      * <b>Breaking Change with PI 16:</b> At least one bit will be expected.
      */
-    // "Boolean"
+    // "boolean"
     @BuilderPropertyDeclaration
     private boolean[] bits;
 
-    // "Boolean"
+    // "boolean"
     private int bitsXYZ = 0;
 
     // "com.anaptecs.jeaf.junit.openapi.base.BookingCode"
@@ -228,7 +228,7 @@ public class TheReadOnlyServiceObject extends Object implements ServiceObject {
     }
 
     public Builder setBitsXYZ( int value ) {
-      // "Boolean"
+      // "boolean"
       bitsXYZ = value;
       return this;
     }
@@ -338,7 +338,7 @@ public class TheReadOnlyServiceObject extends Object implements ServiceObject {
    * <p/>
    * <b>Breaking Change with PI 16:</b> At least one bit will be expected.
    *
-   * @return boolean Value to which {@link #bits} is set.
+   * @return boolean[] Value to which {@link #bits} is set.
    */
   public boolean[] getBits( ) {
     boolean[] lReturnValue;
@@ -353,7 +353,7 @@ public class TheReadOnlyServiceObject extends Object implements ServiceObject {
   }
 
   public int getBitsXYZ( ) {
-    // "Boolean"
+    // "boolean"
     return bitsXYZ;
   }
 

@@ -54,7 +54,7 @@ public class BooleanCode implements ServiceObject {
   /**
    * Method creates a new builder and initializes it with the passed attributes.
    */
-  public static Builder builder( Boolean pCode ) {
+  public static Builder builder( boolean pCode ) {
     Builder lBuilder = builder();
     lBuilder.setCode(pCode);
     return lBuilder;

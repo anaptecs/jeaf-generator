@@ -142,7 +142,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
    */
   public static final String BSTRING = "bString";
 
-  // "Boolean"
+  // "boolean"
   @ClassPropertyDeclaration
   /**
    * <br/>
@@ -150,7 +150,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
    */
   private boolean aBoolean;
 
-  // "Boolean"
+  // "boolean"
   private int aBooleanXYZ = 0;
 
   // "java.lang.Boolean"
@@ -160,11 +160,11 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
   // "java.lang.Boolean"
   private int bBooleanXYZ = 0;
 
-  // "Boolean"
+  // "boolean"
   @ClassPropertyDeclaration
   private boolean cBoolean;
 
-  // "Boolean"
+  // "boolean"
   private int cBooleanXYZ = 0;
 
   // "byte"
@@ -343,13 +343,13 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     aBoolean = pBuilder.aBoolean;
-    // "Boolean"
+    // "boolean"
     aBooleanXYZ = pBuilder.aBooleanXYZ;
     bBoolean = pBuilder.bBoolean;
     // "java.lang.Boolean"
     bBooleanXYZ = pBuilder.bBooleanXYZ;
     cBoolean = pBuilder.cBoolean;
-    // "Boolean"
+    // "boolean"
     cBooleanXYZ = pBuilder.cBooleanXYZ;
     aByte = pBuilder.aByte;
     // "byte"
@@ -427,11 +427,11 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
      * <br/>
      * <b>Default Value:</b> <code>true</code>
      */
-    // "Boolean"
+    // "boolean"
     @BuilderPropertyDeclaration
     private boolean aBoolean = true;
 
-    // "Boolean"
+    // "boolean"
     private int aBooleanXYZ = 0;
 
     // "java.lang.Boolean"
@@ -441,11 +441,11 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
     // "java.lang.Boolean"
     private int bBooleanXYZ = 0;
 
-    // "Boolean"
+    // "boolean"
     @BuilderPropertyDeclaration
     private boolean cBoolean;
 
-    // "Boolean"
+    // "boolean"
     private int cBooleanXYZ = 0;
 
     // "byte"
@@ -655,7 +655,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
     }
 
     public Builder setABooleanXYZ( int value ) {
-      // "Boolean"
+      // "boolean"
       aBooleanXYZ = value;
       return this;
     }
@@ -691,7 +691,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
     }
 
     public Builder setCBooleanXYZ( int value ) {
-      // "Boolean"
+      // "boolean"
       cBooleanXYZ = value;
       return this;
     }
@@ -1092,7 +1092,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
   }
 
   public int getABooleanXYZ( ) {
-    // "Boolean"
+    // "boolean"
     return aBooleanXYZ;
   }
 
@@ -1158,7 +1158,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
   }
 
   public int getCBooleanXYZ( ) {
-    // "Boolean"
+    // "boolean"
     return cBooleanXYZ;
   }
 

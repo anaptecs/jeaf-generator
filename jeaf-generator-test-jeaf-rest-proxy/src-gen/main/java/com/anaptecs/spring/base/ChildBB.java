@@ -481,7 +481,7 @@ public class ChildBB extends ChildB {
   /**
    * Method returns attribute {@link #deprecatedArray}.<br/>
    *
-   * @return byte Value to which {@link #deprecatedArray} is set.
+   * @return byte[] Value to which {@link #deprecatedArray} is set.
    */
   @Deprecated
   public byte[] getDeprecatedArray( ) {

@@ -571,7 +571,7 @@ public class MultiValuedDataType implements ServiceObject {
    * Method returns attribute {@link #longValues}.<br/>
    * long values as multivalued header
    *
-   * @return long Value to which {@link #longValues} is set.
+   * @return long[] Value to which {@link #longValues} is set.
    */
   public long[] getLongValues( ) {
     long[] lReturnValue;
