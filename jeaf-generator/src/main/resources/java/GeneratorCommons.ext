@@ -305,6 +305,10 @@ cached boolean generateNullChecksForToOneAssociationsOfServiceObjects() :
 cached boolean generatePublicObjectView() :
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.generatePublicObjectView();
     
+cached boolean useArraysOnlyForPrimitives():
+    JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.useArraysOnlyForPrimitives();
+
+
 cached boolean disableCollectionImmutability():
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.disableCollectionImmutability();
             

@@ -369,10 +369,10 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
     «IF this.isStatic == false»
 	    «IF this.isSoftLink()»
 	       «EXPAND CreateBuilderSoftLinkSetter(builderClassName) FOR ((SoftLink) this)»
-	    «ELSEIF this.association == null»
-	        «EXPAND CreateBuilderPropertySetter(builderClassName)»
+	    «ELSEIF this.isCollectionType() || association != null»
+            «EXPAND CreateBuilderAssociationSetter(builderClassName)»
 	    «ELSE»
-	        «EXPAND CreateBuilderAssociationSetter(builderClassName)»
+            «EXPAND CreateBuilderPropertySetter(builderClassName)»
 	    «ENDIF»
 	    «IF this.isMultivalued() && this.type.isEnumeration() && this.association != null»
 	    	«EXPAND CreateBuilderVarArgsSetter(builderClassName)»

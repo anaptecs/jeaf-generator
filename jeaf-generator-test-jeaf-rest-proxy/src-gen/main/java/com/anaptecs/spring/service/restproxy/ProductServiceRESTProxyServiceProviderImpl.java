@@ -328,8 +328,7 @@ public final class ProductServiceRESTProxyServiceProviderImpl
    */
   @Deprecated
   @Override
-  public String deprecatedParams( @Deprecated
-  int pParam1 ) {
+  public String deprecatedParams( @Deprecated int pParam1 ) {
     // Create builder for POST request
     RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.POST, ContentType.JSON);
     // Build path of request
@@ -351,8 +350,7 @@ public final class ProductServiceRESTProxyServiceProviderImpl
    * @return {@link String}
    */
   @Override
-  public String deprecatedBody( @Deprecated
-  String pBody ) {
+  public String deprecatedBody( @Deprecated String pBody ) {
     // Create builder for POST request
     RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.POST, ContentType.JSON);
     // Build path of request
@@ -376,8 +374,7 @@ public final class ProductServiceRESTProxyServiceProviderImpl
    * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    */
   @Override
-  public void deprectedComplexRequestBody( @Deprecated
-  Product pProduct ) {
+  public void deprectedComplexRequestBody( @Deprecated Product pProduct ) {
     // Create builder for POST request
     RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.POST, ContentType.JSON);
     // Build path of request

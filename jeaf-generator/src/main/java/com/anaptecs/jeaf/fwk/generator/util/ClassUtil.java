@@ -266,6 +266,10 @@ public class ClassUtil {
             lCollectionRequired = true;
             lArrayRequired = false;
           }
+          else if (GeneratorCommons.useArraysOnlyForPrimitives() && isPrimitive(pTypedElement.getType()) == false) {
+            lCollectionRequired = true;
+            lArrayRequired = false;
+          }
           else {
             lCollectionRequired = false;
             lArrayRequired = true;

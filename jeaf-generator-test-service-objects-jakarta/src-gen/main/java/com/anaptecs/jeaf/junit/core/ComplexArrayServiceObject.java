@@ -5,6 +5,12 @@
  */
 package com.anaptecs.jeaf.junit.core;
 
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
@@ -22,7 +28,7 @@ public class ComplexArrayServiceObject implements ServiceObject {
    */
   public static final String CLASSBS = "classBs";
 
-  private ClassB[] classBs;
+  private Set<ClassB> classBs;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
@@ -67,7 +73,7 @@ public class ComplexArrayServiceObject implements ServiceObject {
    * Class implements builder to create a new instance of class <code>ComplexArrayServiceObject</code>.
    */
   public static class Builder {
-    private ClassB[] classBs;
+    private Set<ClassB> classBs;
 
     /**
      * Use {@link ComplexArrayServiceObject#builder()} instead of private constructor to create new builder.
@@ -92,14 +98,29 @@ public class ComplexArrayServiceObject implements ServiceObject {
      * @param pClassBs Collection to which {@link #classBs} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setClassBs( ClassB[] pClassBs ) {
-      // Assign value to attribute
+    public Builder setClassBs( Set<ClassB> pClassBs ) {
+      // To ensure immutability we have to copy the content of the passed collection.
       if (pClassBs != null) {
-        classBs = new ClassB[pClassBs.length];
-        System.arraycopy(pClassBs, 0, classBs, 0, pClassBs.length);
+        classBs = new HashSet<ClassB>(pClassBs);
       }
       else {
         classBs = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method adds the passed objects to association {@link #classBs}.<br/>
+     *
+     * @param pClassBs Array of objects that should be added to {@link #classBs}. The parameter may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToClassBs( ClassB... pClassBs ) {
+      if (pClassBs != null) {
+        if (classBs == null) {
+          classBs = new HashSet<ClassB>();
+        }
+        classBs.addAll(Arrays.asList(pClassBs));
       }
       return this;
     }
@@ -133,34 +154,58 @@ public class ComplexArrayServiceObject implements ServiceObject {
   /**
    * Method returns attribute {@link #classBs}.<br/>
    *
-   * @return {@link ClassB[]} Value to which {@link #classBs} is set.
+   * @return {@link Set<ClassB>} Value to which {@link #classBs} is set.
    */
-  public ClassB[] getClassBs( ) {
-    ClassB[] lReturnValue;
-    if (classBs != null) {
-      lReturnValue = new ClassB[classBs.length];
-      System.arraycopy(classBs, 0, lReturnValue, 0, classBs.length);
-    }
-    else {
-      lReturnValue = null;
-    }
-    return lReturnValue;
+  public Set<ClassB> getClassBs( ) {
+    // Return all ClassB objects as unmodifiable collection.
+    return Collections.unmodifiableSet(classBs);
   }
 
   /**
-   * Method sets attribute {@link #classBs}.<br/>
+   * Method adds the passed object to {@link #classBs}.
    *
-   * @param pClassBs Value to which {@link #classBs} should be set.
+   * @param pClassBs Object that should be added to {@link #classBs}. The parameter must not be null.
    */
-  public void setClassBs( ClassB[] pClassBs ) {
-    // Assign value to attribute
-    if (pClassBs != null) {
-      classBs = new ClassB[pClassBs.length];
-      System.arraycopy(pClassBs, 0, classBs, 0, pClassBs.length);
+  public void addToClassBs( ClassB pClassBs ) {
+    // Check parameter "pClassBs" for invalid value null.
+    Check.checkInvalidParameterNull(pClassBs, "pClassBs");
+    // Add passed object to collection of associated ClassB objects.
+    classBs.add(pClassBs);
+  }
+
+  /**
+   * Method adds all passed objects to {@link #classBs}.
+   *
+   * @param pClassBs Collection with all objects that should be added to {@link #classBs}. The parameter must not be
+   * null.
+   */
+  public void addToClassBs( Collection<ClassB> pClassBs ) {
+    // Check parameter "pClassBs" for invalid value null.
+    Check.checkInvalidParameterNull(pClassBs, "pClassBs");
+    // Add all passed objects.
+    for (ClassB lNextObject : pClassBs) {
+      this.addToClassBs(lNextObject);
     }
-    else {
-      classBs = null;
-    }
+  }
+
+  /**
+   * Method removes the passed object from {@link #classBs}.<br/>
+   *
+   * @param pClassBs Object that should be removed from {@link #classBs}. The parameter must not be null.
+   */
+  public void removeFromClassBs( ClassB pClassBs ) {
+    // Check parameter for invalid value null.
+    Check.checkInvalidParameterNull(pClassBs, "pClassBs");
+    // Remove passed object from collection of associated ClassB objects.
+    classBs.remove(pClassBs);
+  }
+
+  /**
+   * Method removes all objects from {@link #classBs}.
+   */
+  public void clearClassBs( ) {
+    // Remove all objects from association "classBs".
+    classBs.clear();
   }
 
   /**

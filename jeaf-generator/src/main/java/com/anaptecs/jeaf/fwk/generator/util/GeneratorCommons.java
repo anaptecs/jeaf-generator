@@ -1215,6 +1215,10 @@ public class GeneratorCommons {
     return SystemProperties.getBooleanProperty(GENERATE_PUBLIC_OBJECT_VIEW, true);
   }
 
+  public static boolean useArraysOnlyForPrimitives( ) {
+    return SystemProperties.getBooleanProperty("switch.gen.arrays.for.primitives.only", false);
+  }
+
   public static boolean disableCollectionImmutability( ) {
     return SystemProperties.getBooleanProperty(DISABLE_COLLECTION_IMMUTABILITY, false);
   }

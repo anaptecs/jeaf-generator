@@ -5,6 +5,12 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
@@ -38,9 +44,9 @@ public class MultivaluedQueryParamsBean implements ServiceObject {
    */
   private int[] intArray;
 
-  private String[] strings;
+  private Set<String> strings;
 
-  private Integer[] integers;
+  private Set<Integer> integers;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
@@ -93,9 +99,9 @@ public class MultivaluedQueryParamsBean implements ServiceObject {
      */
     private int[] intArray;
 
-    private String[] strings;
+    private Set<String> strings;
 
-    private Integer[] integers;
+    private Set<Integer> integers;
 
     /**
      * Use {@link MultivaluedQueryParamsBean#builder()} instead of private constructor to create new builder.
@@ -142,14 +148,29 @@ public class MultivaluedQueryParamsBean implements ServiceObject {
      * @param pStrings Collection to which {@link #strings} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setStrings( String[] pStrings ) {
-      // Assign value to attribute
+    public Builder setStrings( Set<String> pStrings ) {
+      // To ensure immutability we have to copy the content of the passed collection.
       if (pStrings != null) {
-        strings = new String[pStrings.length];
-        System.arraycopy(pStrings, 0, strings, 0, pStrings.length);
+        strings = new HashSet<String>(pStrings);
       }
       else {
         strings = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method adds the passed objects to association {@link #strings}.<br/>
+     *
+     * @param pStrings Array of objects that should be added to {@link #strings}. The parameter may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToStrings( String... pStrings ) {
+      if (pStrings != null) {
+        if (strings == null) {
+          strings = new HashSet<String>();
+        }
+        strings.addAll(Arrays.asList(pStrings));
       }
       return this;
     }
@@ -160,14 +181,29 @@ public class MultivaluedQueryParamsBean implements ServiceObject {
      * @param pIntegers Collection to which {@link #integers} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setIntegers( Integer[] pIntegers ) {
-      // Assign value to attribute
+    public Builder setIntegers( Set<Integer> pIntegers ) {
+      // To ensure immutability we have to copy the content of the passed collection.
       if (pIntegers != null) {
-        integers = new Integer[pIntegers.length];
-        System.arraycopy(pIntegers, 0, integers, 0, pIntegers.length);
+        integers = new HashSet<Integer>(pIntegers);
       }
       else {
         integers = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method adds the passed objects to association {@link #integers}.<br/>
+     *
+     * @param pIntegers Array of objects that should be added to {@link #integers}. The parameter may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToIntegers( Integer... pIntegers ) {
+      if (pIntegers != null) {
+        if (integers == null) {
+          integers = new HashSet<Integer>();
+        }
+        integers.addAll(Arrays.asList(pIntegers));
       }
       return this;
     }
@@ -238,67 +274,115 @@ public class MultivaluedQueryParamsBean implements ServiceObject {
   /**
    * Method returns attribute {@link #strings}.<br/>
    *
-   * @return {@link String[]} Value to which {@link #strings} is set.
+   * @return {@link Set<String>} Value to which {@link #strings} is set.
    */
-  public String[] getStrings( ) {
-    String[] lReturnValue;
-    if (strings != null) {
-      lReturnValue = new String[strings.length];
-      System.arraycopy(strings, 0, lReturnValue, 0, strings.length);
-    }
-    else {
-      lReturnValue = null;
-    }
-    return lReturnValue;
+  public Set<String> getStrings( ) {
+    // Return all String objects as unmodifiable collection.
+    return Collections.unmodifiableSet(strings);
   }
 
   /**
-   * Method sets attribute {@link #strings}.<br/>
+   * Method adds the passed object to {@link #strings}.
    *
-   * @param pStrings Value to which {@link #strings} should be set.
+   * @param pStrings Object that should be added to {@link #strings}. The parameter must not be null.
    */
-  public void setStrings( String[] pStrings ) {
-    // Assign value to attribute
-    if (pStrings != null) {
-      strings = new String[pStrings.length];
-      System.arraycopy(pStrings, 0, strings, 0, pStrings.length);
+  public void addToStrings( String pStrings ) {
+    // Check parameter "pStrings" for invalid value null.
+    Check.checkInvalidParameterNull(pStrings, "pStrings");
+    // Add passed object to collection of associated String objects.
+    strings.add(pStrings);
+  }
+
+  /**
+   * Method adds all passed objects to {@link #strings}.
+   *
+   * @param pStrings Collection with all objects that should be added to {@link #strings}. The parameter must not be
+   * null.
+   */
+  public void addToStrings( Collection<String> pStrings ) {
+    // Check parameter "pStrings" for invalid value null.
+    Check.checkInvalidParameterNull(pStrings, "pStrings");
+    // Add all passed objects.
+    for (String lNextObject : pStrings) {
+      this.addToStrings(lNextObject);
     }
-    else {
-      strings = null;
-    }
+  }
+
+  /**
+   * Method removes the passed object from {@link #strings}.<br/>
+   *
+   * @param pStrings Object that should be removed from {@link #strings}. The parameter must not be null.
+   */
+  public void removeFromStrings( String pStrings ) {
+    // Check parameter for invalid value null.
+    Check.checkInvalidParameterNull(pStrings, "pStrings");
+    // Remove passed object from collection of associated String objects.
+    strings.remove(pStrings);
+  }
+
+  /**
+   * Method removes all objects from {@link #strings}.
+   */
+  public void clearStrings( ) {
+    // Remove all objects from association "strings".
+    strings.clear();
   }
 
   /**
    * Method returns attribute {@link #integers}.<br/>
    *
-   * @return {@link Integer[]} Value to which {@link #integers} is set.
+   * @return {@link Set<Integer>} Value to which {@link #integers} is set.
    */
-  public Integer[] getIntegers( ) {
-    Integer[] lReturnValue;
-    if (integers != null) {
-      lReturnValue = new Integer[integers.length];
-      System.arraycopy(integers, 0, lReturnValue, 0, integers.length);
-    }
-    else {
-      lReturnValue = null;
-    }
-    return lReturnValue;
+  public Set<Integer> getIntegers( ) {
+    // Return all Integer objects as unmodifiable collection.
+    return Collections.unmodifiableSet(integers);
   }
 
   /**
-   * Method sets attribute {@link #integers}.<br/>
+   * Method adds the passed object to {@link #integers}.
    *
-   * @param pIntegers Value to which {@link #integers} should be set.
+   * @param pIntegers Object that should be added to {@link #integers}. The parameter must not be null.
    */
-  public void setIntegers( Integer[] pIntegers ) {
-    // Assign value to attribute
-    if (pIntegers != null) {
-      integers = new Integer[pIntegers.length];
-      System.arraycopy(pIntegers, 0, integers, 0, pIntegers.length);
+  public void addToIntegers( Integer pIntegers ) {
+    // Check parameter "pIntegers" for invalid value null.
+    Check.checkInvalidParameterNull(pIntegers, "pIntegers");
+    // Add passed object to collection of associated Integer objects.
+    integers.add(pIntegers);
+  }
+
+  /**
+   * Method adds all passed objects to {@link #integers}.
+   *
+   * @param pIntegers Collection with all objects that should be added to {@link #integers}. The parameter must not be
+   * null.
+   */
+  public void addToIntegers( Collection<Integer> pIntegers ) {
+    // Check parameter "pIntegers" for invalid value null.
+    Check.checkInvalidParameterNull(pIntegers, "pIntegers");
+    // Add all passed objects.
+    for (Integer lNextObject : pIntegers) {
+      this.addToIntegers(lNextObject);
     }
-    else {
-      integers = null;
-    }
+  }
+
+  /**
+   * Method removes the passed object from {@link #integers}.<br/>
+   *
+   * @param pIntegers Object that should be removed from {@link #integers}. The parameter must not be null.
+   */
+  public void removeFromIntegers( Integer pIntegers ) {
+    // Check parameter for invalid value null.
+    Check.checkInvalidParameterNull(pIntegers, "pIntegers");
+    // Remove passed object from collection of associated Integer objects.
+    integers.remove(pIntegers);
+  }
+
+  /**
+   * Method removes all objects from {@link #integers}.
+   */
+  public void clearIntegers( ) {
+    // Remove all objects from association "integers".
+    integers.clear();
   }
 
   /**

@@ -5,6 +5,12 @@
  */
 package com.anaptecs.jeaf.junit.core;
 
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
@@ -22,7 +28,7 @@ public class WrapperArrayServiceObject implements ServiceObject {
    */
   public static final String BOOLEANARRAY = "booleanArray";
 
-  private Boolean[] booleanArray;
+  private Set<Boolean> booleanArray;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
@@ -67,7 +73,7 @@ public class WrapperArrayServiceObject implements ServiceObject {
    * Class implements builder to create a new instance of class <code>WrapperArrayServiceObject</code>.
    */
   public static class Builder {
-    private Boolean[] booleanArray;
+    private Set<Boolean> booleanArray;
 
     /**
      * Use {@link WrapperArrayServiceObject#builder()} instead of private constructor to create new builder.
@@ -92,14 +98,29 @@ public class WrapperArrayServiceObject implements ServiceObject {
      * @param pBooleanArray Collection to which {@link #booleanArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setBooleanArray( Boolean[] pBooleanArray ) {
-      // Assign value to attribute
+    public Builder setBooleanArray( Set<Boolean> pBooleanArray ) {
+      // To ensure immutability we have to copy the content of the passed collection.
       if (pBooleanArray != null) {
-        booleanArray = new Boolean[pBooleanArray.length];
-        System.arraycopy(pBooleanArray, 0, booleanArray, 0, pBooleanArray.length);
+        booleanArray = new HashSet<Boolean>(pBooleanArray);
       }
       else {
         booleanArray = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method adds the passed objects to association {@link #booleanArray}.<br/>
+     *
+     * @param pBooleanArray Array of objects that should be added to {@link #booleanArray}. The parameter may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToBooleanArray( Boolean... pBooleanArray ) {
+      if (pBooleanArray != null) {
+        if (booleanArray == null) {
+          booleanArray = new HashSet<Boolean>();
+        }
+        booleanArray.addAll(Arrays.asList(pBooleanArray));
       }
       return this;
     }
@@ -133,34 +154,58 @@ public class WrapperArrayServiceObject implements ServiceObject {
   /**
    * Method returns attribute {@link #booleanArray}.<br/>
    *
-   * @return {@link Boolean[]} Value to which {@link #booleanArray} is set.
+   * @return {@link Set<Boolean>} Value to which {@link #booleanArray} is set.
    */
-  public Boolean[] getBooleanArray( ) {
-    Boolean[] lReturnValue;
-    if (booleanArray != null) {
-      lReturnValue = new Boolean[booleanArray.length];
-      System.arraycopy(booleanArray, 0, lReturnValue, 0, booleanArray.length);
-    }
-    else {
-      lReturnValue = null;
-    }
-    return lReturnValue;
+  public Set<Boolean> getBooleanArray( ) {
+    // Return all Boolean objects as unmodifiable collection.
+    return Collections.unmodifiableSet(booleanArray);
   }
 
   /**
-   * Method sets attribute {@link #booleanArray}.<br/>
+   * Method adds the passed object to {@link #booleanArray}.
    *
-   * @param pBooleanArray Value to which {@link #booleanArray} should be set.
+   * @param pBooleanArray Object that should be added to {@link #booleanArray}. The parameter must not be null.
    */
-  public void setBooleanArray( Boolean[] pBooleanArray ) {
-    // Assign value to attribute
-    if (pBooleanArray != null) {
-      booleanArray = new Boolean[pBooleanArray.length];
-      System.arraycopy(pBooleanArray, 0, booleanArray, 0, pBooleanArray.length);
+  public void addToBooleanArray( Boolean pBooleanArray ) {
+    // Check parameter "pBooleanArray" for invalid value null.
+    Check.checkInvalidParameterNull(pBooleanArray, "pBooleanArray");
+    // Add passed object to collection of associated Boolean objects.
+    booleanArray.add(pBooleanArray);
+  }
+
+  /**
+   * Method adds all passed objects to {@link #booleanArray}.
+   *
+   * @param pBooleanArray Collection with all objects that should be added to {@link #booleanArray}. The parameter must
+   * not be null.
+   */
+  public void addToBooleanArray( Collection<Boolean> pBooleanArray ) {
+    // Check parameter "pBooleanArray" for invalid value null.
+    Check.checkInvalidParameterNull(pBooleanArray, "pBooleanArray");
+    // Add all passed objects.
+    for (Boolean lNextObject : pBooleanArray) {
+      this.addToBooleanArray(lNextObject);
     }
-    else {
-      booleanArray = null;
-    }
+  }
+
+  /**
+   * Method removes the passed object from {@link #booleanArray}.<br/>
+   *
+   * @param pBooleanArray Object that should be removed from {@link #booleanArray}. The parameter must not be null.
+   */
+  public void removeFromBooleanArray( Boolean pBooleanArray ) {
+    // Check parameter for invalid value null.
+    Check.checkInvalidParameterNull(pBooleanArray, "pBooleanArray");
+    // Remove passed object from collection of associated Boolean objects.
+    booleanArray.remove(pBooleanArray);
+  }
+
+  /**
+   * Method removes all objects from {@link #booleanArray}.
+   */
+  public void clearBooleanArray( ) {
+    // Remove all objects from association "booleanArray".
+    booleanArray.clear();
   }
 
   /**

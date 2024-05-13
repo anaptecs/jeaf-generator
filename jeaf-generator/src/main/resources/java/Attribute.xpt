@@ -27,15 +27,15 @@
 «DEFINE PropertyAccessors FOR Property»
     «IF this.isSoftLink()»
         «EXPAND SoftLinkAccessors FOR (SoftLink) this»
-    «ELSEIF this.association == null»
-		«IF !isStatic»
-			«EXPAND Getter»
-			«IF isReadOnly() == false»
-			«EXPAND Setter»
-			«ENDIF»
-		«ENDIF»
-    «ELSE»
+    «ELSEIF this.isCollectionType() || association != null»
         «EXPAND DoAssociationAccessors»
+    «ELSE»
+        «IF !isStatic»
+            «EXPAND Getter»
+            «IF isReadOnly() == false»
+            «EXPAND Setter»
+            «ENDIF»
+        «ENDIF»
     «ENDIF»
     «EXPAND jeafgenerator::api::ClassExtensionHook::AfterClassPropertyAccessors(this.type.fqn())»
 «ENDDEFINE»

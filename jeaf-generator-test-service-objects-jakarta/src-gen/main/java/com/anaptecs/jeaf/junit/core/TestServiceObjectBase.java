@@ -5,6 +5,12 @@
  */
 package com.anaptecs.jeaf.junit.core;
 
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
@@ -61,9 +67,9 @@ public abstract class TestServiceObjectBase implements ServiceObject {
 
   private Double dummy1;
 
-  private String[] dummy2;
+  private Set<String> dummy2;
 
-  private Integer[] dummy3;
+  private Set<Integer> dummy3;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
@@ -102,9 +108,9 @@ public abstract class TestServiceObjectBase implements ServiceObject {
 
     private Double dummy1;
 
-    private String[] dummy2;
+    private Set<String> dummy2;
 
-    private Integer[] dummy3;
+    private Set<Integer> dummy3;
 
     /**
      * Use {@link TestServiceObject.builder()} instead of protected constructor to create new builder.
@@ -181,14 +187,29 @@ public abstract class TestServiceObjectBase implements ServiceObject {
      * @param pDummy2 Collection to which {@link #dummy2} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setDummy2( String[] pDummy2 ) {
-      // Assign value to attribute
+    public BuilderBase setDummy2( Set<String> pDummy2 ) {
+      // To ensure immutability we have to copy the content of the passed collection.
       if (pDummy2 != null) {
-        dummy2 = new String[pDummy2.length];
-        System.arraycopy(pDummy2, 0, dummy2, 0, pDummy2.length);
+        dummy2 = new HashSet<String>(pDummy2);
       }
       else {
         dummy2 = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method adds the passed objects to association {@link #dummy2}.<br/>
+     *
+     * @param pDummy2 Array of objects that should be added to {@link #dummy2}. The parameter may be null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining. Method never returns null.
+     */
+    public BuilderBase addToDummy2( String... pDummy2 ) {
+      if (pDummy2 != null) {
+        if (dummy2 == null) {
+          dummy2 = new HashSet<String>();
+        }
+        dummy2.addAll(Arrays.asList(pDummy2));
       }
       return this;
     }
@@ -199,14 +220,29 @@ public abstract class TestServiceObjectBase implements ServiceObject {
      * @param pDummy3 Collection to which {@link #dummy3} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setDummy3( Integer[] pDummy3 ) {
-      // Assign value to attribute
+    public BuilderBase setDummy3( Set<Integer> pDummy3 ) {
+      // To ensure immutability we have to copy the content of the passed collection.
       if (pDummy3 != null) {
-        dummy3 = new Integer[pDummy3.length];
-        System.arraycopy(pDummy3, 0, dummy3, 0, pDummy3.length);
+        dummy3 = new HashSet<Integer>(pDummy3);
       }
       else {
         dummy3 = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method adds the passed objects to association {@link #dummy3}.<br/>
+     *
+     * @param pDummy3 Array of objects that should be added to {@link #dummy3}. The parameter may be null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining. Method never returns null.
+     */
+    public BuilderBase addToDummy3( Integer... pDummy3 ) {
+      if (pDummy3 != null) {
+        if (dummy3 == null) {
+          dummy3 = new HashSet<Integer>();
+        }
+        dummy3.addAll(Arrays.asList(pDummy3));
       }
       return this;
     }
@@ -316,67 +352,113 @@ public abstract class TestServiceObjectBase implements ServiceObject {
   /**
    * Method returns attribute {@link #dummy2}.<br/>
    *
-   * @return {@link String[]} Value to which {@link #dummy2} is set.
+   * @return {@link Set<String>} Value to which {@link #dummy2} is set.
    */
-  public String[] getDummy2( ) {
-    String[] lReturnValue;
-    if (dummy2 != null) {
-      lReturnValue = new String[dummy2.length];
-      System.arraycopy(dummy2, 0, lReturnValue, 0, dummy2.length);
-    }
-    else {
-      lReturnValue = null;
-    }
-    return lReturnValue;
+  public Set<String> getDummy2( ) {
+    // Return all String objects as unmodifiable collection.
+    return Collections.unmodifiableSet(dummy2);
   }
 
   /**
-   * Method sets attribute {@link #dummy2}.<br/>
+   * Method adds the passed object to {@link #dummy2}.
    *
-   * @param pDummy2 Value to which {@link #dummy2} should be set.
+   * @param pDummy2 Object that should be added to {@link #dummy2}. The parameter must not be null.
    */
-  public void setDummy2( String[] pDummy2 ) {
-    // Assign value to attribute
-    if (pDummy2 != null) {
-      dummy2 = new String[pDummy2.length];
-      System.arraycopy(pDummy2, 0, dummy2, 0, pDummy2.length);
+  public void addToDummy2( String pDummy2 ) {
+    // Check parameter "pDummy2" for invalid value null.
+    Check.checkInvalidParameterNull(pDummy2, "pDummy2");
+    // Add passed object to collection of associated String objects.
+    dummy2.add(pDummy2);
+  }
+
+  /**
+   * Method adds all passed objects to {@link #dummy2}.
+   *
+   * @param pDummy2 Collection with all objects that should be added to {@link #dummy2}. The parameter must not be null.
+   */
+  public void addToDummy2( Collection<String> pDummy2 ) {
+    // Check parameter "pDummy2" for invalid value null.
+    Check.checkInvalidParameterNull(pDummy2, "pDummy2");
+    // Add all passed objects.
+    for (String lNextObject : pDummy2) {
+      this.addToDummy2(lNextObject);
     }
-    else {
-      dummy2 = null;
-    }
+  }
+
+  /**
+   * Method removes the passed object from {@link #dummy2}.<br/>
+   *
+   * @param pDummy2 Object that should be removed from {@link #dummy2}. The parameter must not be null.
+   */
+  public void removeFromDummy2( String pDummy2 ) {
+    // Check parameter for invalid value null.
+    Check.checkInvalidParameterNull(pDummy2, "pDummy2");
+    // Remove passed object from collection of associated String objects.
+    dummy2.remove(pDummy2);
+  }
+
+  /**
+   * Method removes all objects from {@link #dummy2}.
+   */
+  public void clearDummy2( ) {
+    // Remove all objects from association "dummy2".
+    dummy2.clear();
   }
 
   /**
    * Method returns attribute {@link #dummy3}.<br/>
    *
-   * @return {@link Integer[]} Value to which {@link #dummy3} is set.
+   * @return {@link Set<Integer>} Value to which {@link #dummy3} is set.
    */
-  public Integer[] getDummy3( ) {
-    Integer[] lReturnValue;
-    if (dummy3 != null) {
-      lReturnValue = new Integer[dummy3.length];
-      System.arraycopy(dummy3, 0, lReturnValue, 0, dummy3.length);
-    }
-    else {
-      lReturnValue = null;
-    }
-    return lReturnValue;
+  public Set<Integer> getDummy3( ) {
+    // Return all Integer objects as unmodifiable collection.
+    return Collections.unmodifiableSet(dummy3);
   }
 
   /**
-   * Method sets attribute {@link #dummy3}.<br/>
+   * Method adds the passed object to {@link #dummy3}.
    *
-   * @param pDummy3 Value to which {@link #dummy3} should be set.
+   * @param pDummy3 Object that should be added to {@link #dummy3}. The parameter must not be null.
    */
-  public void setDummy3( Integer[] pDummy3 ) {
-    // Assign value to attribute
-    if (pDummy3 != null) {
-      dummy3 = new Integer[pDummy3.length];
-      System.arraycopy(pDummy3, 0, dummy3, 0, pDummy3.length);
+  public void addToDummy3( Integer pDummy3 ) {
+    // Check parameter "pDummy3" for invalid value null.
+    Check.checkInvalidParameterNull(pDummy3, "pDummy3");
+    // Add passed object to collection of associated Integer objects.
+    dummy3.add(pDummy3);
+  }
+
+  /**
+   * Method adds all passed objects to {@link #dummy3}.
+   *
+   * @param pDummy3 Collection with all objects that should be added to {@link #dummy3}. The parameter must not be null.
+   */
+  public void addToDummy3( Collection<Integer> pDummy3 ) {
+    // Check parameter "pDummy3" for invalid value null.
+    Check.checkInvalidParameterNull(pDummy3, "pDummy3");
+    // Add all passed objects.
+    for (Integer lNextObject : pDummy3) {
+      this.addToDummy3(lNextObject);
     }
-    else {
-      dummy3 = null;
-    }
+  }
+
+  /**
+   * Method removes the passed object from {@link #dummy3}.<br/>
+   *
+   * @param pDummy3 Object that should be removed from {@link #dummy3}. The parameter must not be null.
+   */
+  public void removeFromDummy3( Integer pDummy3 ) {
+    // Check parameter for invalid value null.
+    Check.checkInvalidParameterNull(pDummy3, "pDummy3");
+    // Remove passed object from collection of associated Integer objects.
+    dummy3.remove(pDummy3);
+  }
+
+  /**
+   * Method removes all objects from {@link #dummy3}.
+   */
+  public void clearDummy3( ) {
+    // Remove all objects from association "dummy3".
+    dummy3.clear();
   }
 
   /**
@@ -393,7 +475,7 @@ public abstract class TestServiceObjectBase implements ServiceObject {
    *
    * @return {@link com.anaptecs.jeaf.junit.core.TestServiceObject}
    */
-  public static TestServiceObject of( String pKey, String pInfo, int pSomeTest, String[] pDummy2 ) {
+  public static TestServiceObject of( String pKey, String pInfo, int pSomeTest, Set<String> pDummy2 ) {
     TestServiceObject.Builder lBuilder = TestServiceObject.builder();
     lBuilder.setKey(pKey);
     lBuilder.setInfo(pInfo);
