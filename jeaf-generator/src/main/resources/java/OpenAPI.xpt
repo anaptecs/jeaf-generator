@@ -247,9 +247,9 @@ components:
     «FOREACH service.getRESTOperations(path) AS operation-»
     «FOREACH operation.httpMethods AS httpMethod-»
     «httpMethod.toString().toLowerCase()»:
-      «IF operation.getTargetDirectedRelationships().source.typeSelect(OpenAPITag).size > 0 -»
+      «IF operation.hasOperationOpenAPITags() -»
       tags:
-      «FOREACH operation.getTargetDirectedRelationships().source.typeSelect(OpenAPITag).sortBy(e|e.name) AS tag -»
+      «FOREACH operation.getOpenAPITagsForOperation() AS tag -»
         - «tag.name»
       «ENDFOREACH-»
       «ENDIF-»
