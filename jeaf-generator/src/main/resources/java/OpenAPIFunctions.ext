@@ -532,3 +532,14 @@ cached String getOpenAPIVersion():
     then "3.0.3"
     else "3.1.0";
     
+cached boolean hasOperationOpenAPITags(JMM::RESTOperation operation):
+    operation.getOpenAPITagsForOperation().isEmpty == false;
+
+cached List[JMM::OpenAPITag] getOpenAPITagsForOperation(JMM::RESTOperation operation):
+    operation.getOpenAPITagsForOperationOnly().addAll(((uml::Interface)operation.owner).getOpenAPITagsForInterface());
+
+private List[JMM::OpenAPITag] getOpenAPITagsForOperationOnly(JMM::RESTOperation operation):
+    operation.getTargetDirectedRelationships().source.typeSelect(JMM::OpenAPITag).sortBy(e|e.name);
+    
+private List[JMM::OpenAPITag] getOpenAPITagsForInterface(uml::Interface interface):
+    interface.getTargetDirectedRelationships().source.typeSelect(JMM::OpenAPITag).sortBy(e|e.name);

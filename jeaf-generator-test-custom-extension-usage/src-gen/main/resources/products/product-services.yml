@@ -38,6 +38,7 @@ tags:
   - name: A Tag
   - name: Another Tag
   - name: B Tag
+  - name: Service Tag
 
 paths:
   # ProductService
@@ -46,6 +47,7 @@ paths:
       tags:
         - MasterData
         - Products
+        - Service Tag
       description: >-
         Operation returns all available product.
       operationId: getProducts
@@ -88,6 +90,7 @@ paths:
     post:
       tags:
         - Products
+        - Service Tag
       operationId: createProduct
       requestBody:
         required: true
@@ -117,6 +120,8 @@ paths:
           $ref: '#/components/responses/CustomErrorResponse'
     
     head:
+      tags:
+        - Service Tag
       operationId: ping
       responses:
         '202':
@@ -135,6 +140,7 @@ paths:
       tags:
         - MasterData
         - Products
+        - Service Tag
       operationId: getProduct
       parameters:
         - name: id
@@ -170,6 +176,7 @@ paths:
       tags:
         - MasterData
         - Products
+        - Service Tag
       operationId: getSortiment
       parameters:
         - name: token
@@ -227,6 +234,8 @@ paths:
     
   /products/ChannelCode:
     post:
+      tags:
+        - Service Tag
       operationId: createChannelCode
       requestBody:
         description: >-
@@ -279,6 +288,8 @@ paths:
     
   /products/deprecated/operation:
     get:
+      tags:
+        - Service Tag
       description: >-
         
         <br><br>
@@ -306,6 +317,8 @@ paths:
     
   /products/deprecated/context:
     post:
+      tags:
+        - Service Tag
       operationId: deprecatedContext
       parameters:
         - name: token
@@ -353,6 +366,8 @@ paths:
     
   /products/deprecated/beanParams:
     post:
+      tags:
+        - Service Tag
       operationId: deprecatedBeanParam
       parameters:
         - name: token
@@ -383,6 +398,8 @@ paths:
     
   /products/deprecated/params:
     post:
+      tags:
+        - Service Tag
       operationId: deprecatedParams
       parameters:
         - name: param1
@@ -414,6 +431,8 @@ paths:
     
   /products/deprecated/body:
     post:
+      tags:
+        - Service Tag
       operationId: deprecatedBody
       requestBody:
         required: true
@@ -443,6 +462,8 @@ paths:
     
   /products/deprecated/complexBody:
     post:
+      tags:
+        - Service Tag
       description: >-
         Please be aware that deprecations on complex bodies are not supported. Instead the whole operation needs to be set to deprecated.
       operationId: deprectedComplexRequestBody
@@ -467,6 +488,8 @@ paths:
     
   /products/deprecated/complexReturn:
     get:
+      tags:
+        - Service Tag
       operationId: deprecatedComplexReturn
       responses:
         '201':
@@ -490,6 +513,8 @@ paths:
     
   /products/specific/{id}:
     patch:
+      tags:
+        - Service Tag
       operationId: loadSpecificThings
       parameters:
         - name: token
@@ -562,6 +587,8 @@ paths:
     
   /products/ChannelCodeObject:
     post:
+      tags:
+        - Service Tag
       operationId: createChannelCodeFromObject
       requestBody:
         description: >-
@@ -604,6 +631,7 @@ paths:
     post:
       tags:
         - B Tag
+        - Service Tag
       operationId: addCurrencies
       requestBody:
         required: true
@@ -656,6 +684,7 @@ paths:
     post:
       tags:
         - Another Tag
+        - Service Tag
       operationId: isCurrencySupported
       requestBody:
         required: true
@@ -700,6 +729,8 @@ paths:
     
   /products/codeTypeUsages:
     post:
+      tags:
+        - Service Tag
       operationId: testCodeTypeUsage
       requestBody:
         required: true
@@ -728,6 +759,8 @@ paths:
     
   /products/LocalBeanParam:
     get:
+      tags:
+        - Service Tag
       operationId: testLocalBeanParamType
       parameters:
         - $ref: '#/components/parameters/localKey'
@@ -754,6 +787,8 @@ paths:
     
   /products/ExternalBeanParam:
     get:
+      tags:
+        - Service Tag
       operationId: testExternalBeanParameterType
       parameters:
         - $ref: '../base/product-base.yml#/components/parameters/novaKey'
@@ -779,6 +814,8 @@ paths:
     
   /products/ChildBeanParam:
     get:
+      tags:
+        - Service Tag
       operationId: testChildBeanParameter
       parameters:
         - $ref: '../base/product-base.yml#/components/parameters/novaKey'
@@ -805,6 +842,8 @@ paths:
     
   /products/IBAN:
     post:
+      tags:
+        - Service Tag
       operationId: checkIBAN
       requestBody:
         required: true
@@ -836,6 +875,7 @@ paths:
     get:
       tags:
         - A Tag
+        - Service Tag
       operationId: getChannels
       parameters:
         - name: channelTypes
@@ -870,6 +910,8 @@ paths:
     
   /products/DefaultChannel:
     get:
+      tags:
+        - Service Tag
       operationId: getDefaultChannel
       parameters:
         - name: channelType
@@ -900,6 +942,8 @@ paths:
     
   /products/currencies/{channelCode}:
     get:
+      tags:
+        - Service Tag
       operationId: getSupportedCurrencies
       parameters:
         - name: channelCode
@@ -942,6 +986,8 @@ paths:
     
   /products/async-currencies/{channelCode}:
     get:
+      tags:
+        - Service Tag
       operationId: getSupportedCurrenciesAsync
       parameters:
         - name: channelCode
@@ -984,6 +1030,8 @@ paths:
     
   /products/test-date-query-params/{path}:
     get:
+      tags:
+        - Service Tag
       operationId: testDateQueryParams
       parameters:
         - name: path
@@ -1063,6 +1111,8 @@ paths:
     
   /products/test-date-query-params-beans/{path}:
     get:
+      tags:
+        - Service Tag
       operationId: testDateQueryParamsBean
       parameters:
         - name: offsetDateTime
@@ -1146,6 +1196,8 @@ paths:
     
   /products/test-optional-query-params:
     get:
+      tags:
+        - Service Tag
       operationId: testOptionalQueryParams
       parameters:
         - name: query1
@@ -1179,6 +1231,8 @@ paths:
     
   /products/special-header-params:
     get:
+      tags:
+        - Service Tag
       operationId: testSpecialHeaderParams
       parameters:
         - name: authorization
@@ -1208,6 +1262,8 @@ paths:
     
   /products/technicalHeaderBeanParam:
     get:
+      tags:
+        - Service Tag
       operationId: testTechnicalHeaderBean
       parameters:
         - name: Reseller
@@ -1241,6 +1297,8 @@ paths:
     
   /products/technicalHeaderParam:
     get:
+      tags:
+        - Service Tag
       operationId: testTechnicalHeaderParam
       parameters:
         - name: Reseller
@@ -1274,6 +1332,8 @@ paths:
     
   /products/testNotInlinedBeanParam:
     post:
+      tags:
+        - Service Tag
       operationId: testNotInlinedBeanParam
       parameters:
         - $ref: '../base/product-base.yml#/components/parameters/header'
@@ -1292,6 +1352,8 @@ paths:
     
   /products/testStringArray:
     post:
+      tags:
+        - Service Tag
       operationId: testPrimitiveArray
       requestBody:
         required: true
@@ -1314,6 +1376,8 @@ paths:
     
   /products/testPrimitiveArrayAsQueryParam:
     get:
+      tags:
+        - Service Tag
       operationId: testPrimitiveArrayAsQueryParam
       parameters:
         - name: intValues
@@ -1344,6 +1408,8 @@ paths:
     
   /products/big-decimal-codes-header:
     get:
+      tags:
+        - Service Tag
       operationId: testMultivaluedHeader
       parameters:
         - name: pCodes
@@ -1375,6 +1441,8 @@ paths:
     
   /products/big-decimal-codes-query:
     get:
+      tags:
+        - Service Tag
       operationId: testMultivaluedQueryParams
       parameters:
         - name: pCodes
@@ -1412,6 +1480,8 @@ paths:
     
   /products/testMulitValuedBeanParams:
     get:
+      tags:
+        - Service Tag
       operationId: testMulitValuedBeanParams
       parameters:
         - name: stringCodeHeader
@@ -1489,6 +1559,8 @@ paths:
     
   /products/no-return-type:
     post:
+      tags:
+        - Service Tag
       operationId: noReturnType
       parameters:
         - name: stringCodeHeader
@@ -1557,6 +1629,8 @@ paths:
     
   /products/delete-something/{id}:
     delete:
+      tags:
+        - Service Tag
       operationId: deleteSomething
       parameters:
         - name: id
@@ -1578,6 +1652,8 @@ paths:
     
   /products/generic-single-value:
     get:
+      tags:
+        - Service Tag
       operationId: genericSingleValueResponse
       responses:
         '201':
@@ -1600,6 +1676,8 @@ paths:
     
   /products/generic-multi-value:
     get:
+      tags:
+        - Service Tag
       operationId: genericMultiValueResponse
       responses:
         '201':
@@ -1622,6 +1700,8 @@ paths:
     
   /products/test-string-code-with-restriction/{string-code}:
     post:
+      tags:
+        - Service Tag
       operationId: testDataTypeWithRestrition
       parameters:
         - name: string-code
@@ -1660,6 +1740,8 @@ paths:
     
   /products/testContext:
     get:
+      tags:
+        - Service Tag
       operationId: testContext
       parameters:
         - name: token
@@ -1708,6 +1790,8 @@ paths:
     
   /products/nested-generics:
     get:
+      tags:
+        - Service Tag
       operationId: testNestedGenericsResponse
       responses:
         '201':
@@ -1730,6 +1814,8 @@ paths:
     
   /products/multivalued-generics:
     get:
+      tags:
+        - Service Tag
       operationId: testNestedMultivaluedResponse
       responses:
         '201':
@@ -1752,6 +1838,8 @@ paths:
     
   /products/testDuplicateGenerics1:
     get:
+      tags:
+        - Service Tag
       operationId: testDuplicateGenerics1
       responses:
         '201':
@@ -1774,6 +1862,8 @@ paths:
     
   /products/testDuplicateGenerics2:
     get:
+      tags:
+        - Service Tag
       operationId: testDuplicateGenerics2
       responses:
         '201':
