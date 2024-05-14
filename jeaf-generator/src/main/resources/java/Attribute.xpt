@@ -27,15 +27,15 @@
 «DEFINE PropertyAccessors FOR Property»
     «IF this.isSoftLink()»
         «EXPAND SoftLinkAccessors FOR (SoftLink) this»
-    «ELSEIF this.association == null»
-		«IF !isStatic»
-			«EXPAND Getter»
-			«IF isReadOnly() == false»
-			«EXPAND Setter»
-			«ENDIF»
-		«ENDIF»
-    «ELSE»
+    «ELSEIF this.isCollectionType() || association != null»
         «EXPAND DoAssociationAccessors»
+    «ELSE»
+        «IF !isStatic»
+            «EXPAND Getter»
+            «IF isReadOnly() == false»
+            «EXPAND Setter»
+            «ENDIF»
+        «ENDIF»
     «ENDIF»
     «EXPAND jeafgenerator::api::ClassExtensionHook::AfterClassPropertyAccessors(this.type.fqn())»
 «ENDDEFINE»
@@ -49,7 +49,7 @@
 	«EXPAND Validation::ValidationAnnotation»
     «IF generateValidationAnnotationsForAttributesFromMultiplicity() && isStatic == false && isTransient() == false && isMultivalued() == true && isStereotypeApplied("Size") == false && lower > 0»@«getEnterpriseJavaPackage()».validation.constraints.Size(min = «lower»)«ENDIF»
     «IF generateValidationAnnotationsForAttributesFromMultiplicity() && isStatic == false && isTransient() == false && isMultivalued() == false && type.isPrimitiveType() == false && this.requiresNotNullAnnotation() && lower > 0»@«getEnterpriseJavaPackage()».validation.constraints.NotNull«ENDIF»
-	«visibility» «IF isStatic» static «ENDIF» «IF isReadOnly() && belongsToTransientBidirectionalBackReference() == false»final «ENDIF» «IF isTransient()»transient «ENDIF» «this.fqn()»«IF isMultivalued()»[]«ENDIF» «name»«IF this.isRealInitValue() && this.isMultivalued()== false && this.isStatic == true» = «this.initValue()»«ENDIF»;
+	«visibility» «IF isStatic» static «ENDIF» «IF isReadOnly() && belongsToTransientBidirectionalBackReference() == false»final «ENDIF» «IF isTransient()»transient «ENDIF» «this.fqn()» «name»«IF this.isRealInitValue() && this.isMultivalued()== false && this.isStatic == true» = «this.initValue()»«ENDIF»;
 «ENDDEFINE»
 
 // processing the properties
@@ -133,29 +133,31 @@
 	«IF this.isDeprecated() == false && type.isPrimitiveType() && type.isBooleanType() && this.isMultivalued() == false-»
     @Deprecated
     «ENDIF-»	
-	«IF this.isInternalProperty() == false»public«ENDIF» «this.fqn()»«IF isMultivalued()»[]«ENDIF» «asGetter()»() {
-	    «IF this.isMultivalued() == false»return «asInstanceVar()»;«ELSE»«this.fqn()»[] lReturnValue;
-	    if(«asInstanceVar()» != null) {
-	      «IF this.isBinaryType()»
-		      «IF disableBinaryDataImmutability()»
-			      lReturnValue = «asInstanceVar()»;
+	«IF this.isInternalProperty() == false»public«ENDIF» «this.fqn()» «asGetter()»() {
+	    «IF this.isMultivalued() == false»return «asInstanceVar()»;
+	    «ELSE»
+		    «this.fqn()» lReturnValue;
+		    if(«asInstanceVar()» != null) {
+		      «IF this.isBinaryType()»
+			      «IF disableBinaryDataImmutability()»
+				      lReturnValue = «asInstanceVar()»;
+			      «ELSE»
+				      lReturnValue = new «type.fqn()»[«asInstanceVar()».length];
+				      System.arraycopy(«asInstanceVar()», 0, lReturnValue, 0, «asInstanceVar()».length);
+			      «ENDIF»
 		      «ELSE»
-			      lReturnValue = new «this.fqn()»[«asInstanceVar()».length];
-			      System.arraycopy(«asInstanceVar()», 0, lReturnValue, 0, «asInstanceVar()».length);
+			      «IF disableArrayImmutability()»
+				      lReturnValue = «asInstanceVar()»;
+			      «ELSE»
+				      lReturnValue = new «type.fqn()»[«asInstanceVar()».length];
+				      System.arraycopy(«asInstanceVar()», 0, lReturnValue, 0, «asInstanceVar()».length);
+			      «ENDIF»
 		      «ENDIF»
-	      «ELSE»
-		      «IF disableArrayImmutability()»
-			      lReturnValue = «asInstanceVar()»;
-		      «ELSE»
-			      lReturnValue = new «this.fqn()»[«asInstanceVar()».length];
-			      System.arraycopy(«asInstanceVar()», 0, lReturnValue, 0, «asInstanceVar()».length);
-		      «ENDIF»
-	      «ENDIF»
-	    }
-	    else {
-	      lReturnValue = null;
-	    }
-	    return lReturnValue;
+		    }
+		    else {
+		      lReturnValue = null;
+		    }
+		    return lReturnValue;
 		«ENDIF»
     }
     «IF type.isPrimitiveType() && type.isBooleanType() && this.isMultivalued() == false» 
@@ -170,13 +172,13 @@
 «DEFINE AbstractGetterForDerivedProperty FOR Property»
     «EXPAND functions::Javadoc::JavadocForPropertyGetter»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
-    «IF this.isInternalProperty() == false»public«ENDIF» abstract «IF this.association == null»«this.fqn()»«IF isMultivalued()»[]«ENDIF»«ELSE»«this.fqn()»«ENDIF» «asGetter()»();
+    «IF this.isInternalProperty() == false»public«ENDIF» abstract «IF this.association == null»«this.fqn()»«ELSE»«this.fqn()»«ENDIF» «asGetter()»();
 «ENDDEFINE»
 
 «DEFINE EmptyGetterImplForDerivedProperty FOR Property»
     «EXPAND functions::Javadoc::JavadocForPropertyGetter»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
-    «IF this.isInternalProperty() == false»public«ENDIF» «IF this.association == null»«this.fqn()»«IF isMultivalued()»[]«ENDIF»«ELSE»«this.fqn()»«ENDIF» «asGetter()»() {
+    «IF this.isInternalProperty() == false»public«ENDIF» «IF this.association == null»«this.fqn()»«ELSE»«this.fqn()»«ENDIF» «asGetter()»() {
         // TODO Implement method for derived property "«this.name»".
         «IF this.type.isPrimitiveType() && this.isMultivalued() == false»
             «IF this.fqn() != "boolean"» return 0; «ELSE» return false;«ENDIF»
@@ -189,7 +191,7 @@
 «DEFINE Setter FOR Property»
 	«EXPAND functions::Javadoc::JavadocForPropertySetter»
 	«EXPAND java::Helper::GenerateDeprecationAnnotation-»
-	«IF this.isInternalProperty() == false»public«ENDIF» void «asSetter()»(«this.fqn()»«IF isMultivalued()»[]«ENDIF» «asParameter()») {
+	«IF this.isInternalProperty() == false»public«ENDIF» void «asSetter()»(«this.fqn()» «asParameter()») {
 		// Assign value to attribute
 		«IF this.isMultivalued() == false»
 			«asInstanceVar()»=«asParameter()»;
@@ -199,14 +201,14 @@
 		      «IF disableBinaryDataImmutability()»
 			      «asInstanceVar()» = «asParameter()»;
 		      «ELSE»
-			      «asInstanceVar()» = new «this.fqn()»[«asParameter()».length];
+			      «asInstanceVar()» = new «type.fqn()»[«asParameter()».length];
 			      System.arraycopy(«asParameter()», 0, «asInstanceVar()», 0, «asParameter()».length);
 		      «ENDIF»
 	      «ELSE»
 		      «IF disableArrayImmutability()»
 			      «asInstanceVar()» = «asParameter()»;
 		      «ELSE»
-			      «asInstanceVar()» = new «this.fqn()»[«asParameter()».length];
+			      «asInstanceVar()» = new «type.fqn()»[«asParameter()».length];
 			      System.arraycopy(«asParameter()», 0, «asInstanceVar()», 0, «asParameter()».length);
 		      «ENDIF»
 	      «ENDIF»

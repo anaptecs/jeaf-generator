@@ -532,7 +532,7 @@ public class DataTypesQueryBean {
   /**
    * Method returns attribute {@link #longCodes}.<br/>
    *
-   * @return {@link LongCode} Value to which {@link #longCodes} is set.
+   * @return {@link LongCode[]} Value to which {@link #longCodes} is set.
    */
   public LongCode[] getLongCodes( ) {
     LongCode[] lReturnValue;
@@ -565,7 +565,7 @@ public class DataTypesQueryBean {
   /**
    * Method returns attribute {@link #codes}.<br/>
    *
-   * @return {@link IntegerCodeType} Value to which {@link #codes} is set.
+   * @return {@link IntegerCodeType[]} Value to which {@link #codes} is set.
    */
   public IntegerCodeType[] getCodes( ) {
     IntegerCodeType[] lReturnValue;
@@ -702,7 +702,7 @@ public class DataTypesQueryBean {
   /**
    * Method returns attribute {@link #bookingIDsArray}.<br/>
    *
-   * @return {@link BookingID} Value to which {@link #bookingIDsArray} is set.
+   * @return {@link BookingID[]} Value to which {@link #bookingIDsArray} is set.
    */
   public BookingID[] getBookingIDsArray( ) {
     BookingID[] lReturnValue;
@@ -920,7 +920,7 @@ public class DataTypesQueryBean {
   /**
    * Method returns attribute {@link #startTimestamps}.<br/>
    *
-   * @return {@link OffsetDateTime} Value to which {@link #startTimestamps} is set.
+   * @return {@link OffsetDateTime[]} Value to which {@link #startTimestamps} is set.
    */
   public OffsetDateTime[] getStartTimestamps( ) {
     OffsetDateTime[] lReturnValue;

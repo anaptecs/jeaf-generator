@@ -384,7 +384,7 @@ public abstract class ComplexBookingIDBase {
   /**
    * Method returns attribute {@link #strings}.<br/>
    *
-   * @return {@link String} Value to which {@link #strings} is set.
+   * @return {@link String[]} Value to which {@link #strings} is set.
    */
   public String[] getStrings( ) {
     String[] lReturnValue;

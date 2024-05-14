@@ -261,9 +261,19 @@ public class ClassUtil {
       if (pTypedElement instanceof Property) {
         // If properties are not modeled as association then the will be generated as simple arrays in case they are
         // multivalued.
-        if (lModeledAsAssociation && lMultiplicityElement.isMultivalued()) {
-          lCollectionRequired = true;
-          lArrayRequired = false;
+        if (lMultiplicityElement.isMultivalued()) {
+          if (lModeledAsAssociation) {
+            lCollectionRequired = true;
+            lArrayRequired = false;
+          }
+          else if (GeneratorCommons.useArraysOnlyForPrimitives() && isPrimitive(pTypedElement.getType()) == false) {
+            lCollectionRequired = true;
+            lArrayRequired = false;
+          }
+          else {
+            lCollectionRequired = false;
+            lArrayRequired = true;
+          }
         }
         else {
           lCollectionRequired = false;

@@ -104,7 +104,7 @@ public class MasterDataObject extends MasterDataObjectBase {
   /**
    * Method returns attribute {@link #derivedArray}.<br/>
    *
-   * @return int Value to which {@link #derivedArray} is set.
+   * @return int[] Value to which {@link #derivedArray} is set.
    */
   public int[] getDerivedArray( ) {
     // TODO Implement method for derived property "derivedArray".

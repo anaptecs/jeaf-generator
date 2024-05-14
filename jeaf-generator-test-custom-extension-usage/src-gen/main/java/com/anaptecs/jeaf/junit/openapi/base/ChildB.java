@@ -45,7 +45,7 @@ public class ChildB extends ParentClass {
    */
   public static final String COMPOSITION = "composition";
 
-  // "Boolean"
+  // "boolean"
   @ClassPropertyDeclaration
   /**
    * A child attribute
@@ -53,7 +53,7 @@ public class ChildB extends ParentClass {
   @Size(min = 11, max = 42)
   private boolean[] childBAttribute;
 
-  // "Boolean"
+  // "boolean"
   private int childBAttributeXYZ = 0;
 
   // "com.anaptecs.jeaf.junit.openapi.base.ParentClass"
@@ -84,7 +84,7 @@ public class ChildB extends ParentClass {
     super(pBuilder);
     // Read attribute values from builder.
     childBAttribute = pBuilder.childBAttribute;
-    // "Boolean"
+    // "boolean"
     childBAttributeXYZ = pBuilder.childBAttributeXYZ;
     if (pBuilder.composition != null) {
       composition = pBuilder.composition;
@@ -112,12 +112,12 @@ public class ChildB extends ParentClass {
     /**
      * A child attribute
      */
-    // "Boolean"
+    // "boolean"
     @BuilderPropertyDeclaration
     @Size(min = 11, max = 42)
     private boolean[] childBAttribute;
 
-    // "Boolean"
+    // "boolean"
     private int childBAttributeXYZ = 0;
 
     /**
@@ -248,7 +248,7 @@ public class ChildB extends ParentClass {
     }
 
     public Builder setChildBAttributeXYZ( int value ) {
-      // "Boolean"
+      // "boolean"
       childBAttributeXYZ = value;
       return this;
     }
@@ -319,7 +319,7 @@ public class ChildB extends ParentClass {
    * Method returns attribute {@link #childBAttribute}.<br/>
    * A child attribute
    *
-   * @return boolean Value to which {@link #childBAttribute} is set.
+   * @return boolean[] Value to which {@link #childBAttribute} is set.
    */
   public boolean[] getChildBAttribute( ) {
     boolean[] lReturnValue;
@@ -351,7 +351,7 @@ public class ChildB extends ParentClass {
   }
 
   public int getChildBAttributeXYZ( ) {
-    // "Boolean"
+    // "boolean"
     return childBAttributeXYZ;
   }
 

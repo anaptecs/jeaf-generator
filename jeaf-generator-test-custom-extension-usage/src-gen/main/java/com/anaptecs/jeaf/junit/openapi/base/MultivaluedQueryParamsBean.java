@@ -246,7 +246,7 @@ public class MultivaluedQueryParamsBean extends Object implements ServiceObject 
    * <p/>
    * <b>Breaking Change with 47.11:</b> At least one will become mandatory
    *
-   * @return int Value to which {@link #intArray} is set.
+   * @return int[] Value to which {@link #intArray} is set.
    */
   public int[] getIntArray( ) {
     int[] lReturnValue;
@@ -290,7 +290,7 @@ public class MultivaluedQueryParamsBean extends Object implements ServiceObject 
   /**
    * Method returns attribute {@link #strings}.<br/>
    *
-   * @return {@link String} Value to which {@link #strings} is set.
+   * @return {@link String[]} Value to which {@link #strings} is set.
    */
   public String[] getStrings( ) {
     String[] lReturnValue;
@@ -332,7 +332,7 @@ public class MultivaluedQueryParamsBean extends Object implements ServiceObject 
   /**
    * Method returns attribute {@link #integers}.<br/>
    *
-   * @return {@link Integer} Value to which {@link #integers} is set.
+   * @return {@link Integer[]} Value to which {@link #integers} is set.
    */
   public Integer[] getIntegers( ) {
     Integer[] lReturnValue;

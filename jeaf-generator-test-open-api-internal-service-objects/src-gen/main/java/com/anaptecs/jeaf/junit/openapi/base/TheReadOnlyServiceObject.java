@@ -264,7 +264,7 @@ public class TheReadOnlyServiceObject implements ServiceObject {
    * <p/>
    * <b>Breaking Change with PI 16:</b> At least one bit will be expected.
    *
-   * @return boolean Value to which {@link #bits} is set.
+   * @return boolean[] Value to which {@link #bits} is set.
    */
   public boolean[] getBits( ) {
     boolean[] lReturnValue;

@@ -56,6 +56,9 @@ public class Naming {
       // Is primitive type
       if (pNamedElement instanceof PrimitiveType) {
         lQualifiedName = pNamedElement.getName();
+        if (lQualifiedName.equals("Boolean")) {
+          lQualifiedName = "boolean";
+        }
       }
       else if (pNamedElement instanceof Class || pNamedElement instanceof Interface
           || pNamedElement instanceof Enumeration) {

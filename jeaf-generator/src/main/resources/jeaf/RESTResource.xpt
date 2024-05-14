@@ -903,7 +903,7 @@ public class «name»Resource {
             «IF type.isPrimitiveType() && type.isByteType() && this.isMultivalued()»
                String «this.asParameter()»
             «ELSE»
-	  		   «this.fqn()»«IF this.association == null && this.isMultivalued()»[]«ENDIF» «this.asParameter()»
+	  		   «this.fqn()» «this.asParameter()»
 	  		«ENDIF»
 	  	«ENDIF»
 	  «ENDIF»

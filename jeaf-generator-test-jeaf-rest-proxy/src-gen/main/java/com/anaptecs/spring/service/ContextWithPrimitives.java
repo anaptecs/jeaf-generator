@@ -104,7 +104,7 @@ public class ContextWithPrimitives implements Serializable {
   /**
    * Method creates a new builder and initializes it with the passed attributes.
    */
-  public static Builder builder( Boolean pABoolean, Boolean pABooleanWrapper, int pAnInt, Integer pAnInteger,
+  public static Builder builder( boolean pABoolean, Boolean pABooleanWrapper, int pAnInt, Integer pAnInteger,
       long pALong, Long pAVeryLong ) {
     Builder lBuilder = builder();
     lBuilder.setABoolean(pABoolean);

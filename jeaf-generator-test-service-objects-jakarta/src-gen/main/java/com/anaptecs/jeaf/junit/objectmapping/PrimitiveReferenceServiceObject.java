@@ -56,7 +56,7 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
 
   private Set<String> strings;
 
-  private String[] stringArray;
+  private Set<String> stringArray;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
@@ -131,7 +131,7 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
 
     private Set<String> strings;
 
-    private String[] stringArray;
+    private Set<String> stringArray;
 
     /**
      * Use {@link PrimitiveReferenceServiceObject#builder()} instead of private constructor to create new builder.
@@ -270,14 +270,29 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
      * @param pStringArray Collection to which {@link #stringArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setStringArray( String[] pStringArray ) {
-      // Assign value to attribute
+    public Builder setStringArray( Set<String> pStringArray ) {
+      // To ensure immutability we have to copy the content of the passed collection.
       if (pStringArray != null) {
-        stringArray = new String[pStringArray.length];
-        System.arraycopy(pStringArray, 0, stringArray, 0, pStringArray.length);
+        stringArray = new HashSet<String>(pStringArray);
       }
       else {
         stringArray = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method adds the passed objects to association {@link #stringArray}.<br/>
+     *
+     * @param pStringArray Array of objects that should be added to {@link #stringArray}. The parameter may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToStringArray( String... pStringArray ) {
+      if (pStringArray != null) {
+        if (stringArray == null) {
+          stringArray = new HashSet<String>();
+        }
+        stringArray.addAll(Arrays.asList(pStringArray));
       }
       return this;
     }
@@ -510,34 +525,58 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
   /**
    * Method returns attribute {@link #stringArray}.<br/>
    *
-   * @return {@link String} Value to which {@link #stringArray} is set.
+   * @return {@link Set<String>} Value to which {@link #stringArray} is set.
    */
-  public String[] getStringArray( ) {
-    String[] lReturnValue;
-    if (stringArray != null) {
-      lReturnValue = new String[stringArray.length];
-      System.arraycopy(stringArray, 0, lReturnValue, 0, stringArray.length);
-    }
-    else {
-      lReturnValue = null;
-    }
-    return lReturnValue;
+  public Set<String> getStringArray( ) {
+    // Return all String objects as unmodifiable collection.
+    return Collections.unmodifiableSet(stringArray);
   }
 
   /**
-   * Method sets attribute {@link #stringArray}.<br/>
+   * Method adds the passed object to {@link #stringArray}.
    *
-   * @param pStringArray Value to which {@link #stringArray} should be set.
+   * @param pStringArray Object that should be added to {@link #stringArray}. The parameter must not be null.
    */
-  public void setStringArray( String[] pStringArray ) {
-    // Assign value to attribute
-    if (pStringArray != null) {
-      stringArray = new String[pStringArray.length];
-      System.arraycopy(pStringArray, 0, stringArray, 0, pStringArray.length);
+  public void addToStringArray( String pStringArray ) {
+    // Check parameter "pStringArray" for invalid value null.
+    Check.checkInvalidParameterNull(pStringArray, "pStringArray");
+    // Add passed object to collection of associated String objects.
+    stringArray.add(pStringArray);
+  }
+
+  /**
+   * Method adds all passed objects to {@link #stringArray}.
+   *
+   * @param pStringArray Collection with all objects that should be added to {@link #stringArray}. The parameter must
+   * not be null.
+   */
+  public void addToStringArray( Collection<String> pStringArray ) {
+    // Check parameter "pStringArray" for invalid value null.
+    Check.checkInvalidParameterNull(pStringArray, "pStringArray");
+    // Add all passed objects.
+    for (String lNextObject : pStringArray) {
+      this.addToStringArray(lNextObject);
     }
-    else {
-      stringArray = null;
-    }
+  }
+
+  /**
+   * Method removes the passed object from {@link #stringArray}.<br/>
+   *
+   * @param pStringArray Object that should be removed from {@link #stringArray}. The parameter must not be null.
+   */
+  public void removeFromStringArray( String pStringArray ) {
+    // Check parameter for invalid value null.
+    Check.checkInvalidParameterNull(pStringArray, "pStringArray");
+    // Remove passed object from collection of associated String objects.
+    stringArray.remove(pStringArray);
+  }
+
+  /**
+   * Method removes all objects from {@link #stringArray}.
+   */
+  public void clearStringArray( ) {
+    // Remove all objects from association "stringArray".
+    stringArray.clear();
   }
 
   /**

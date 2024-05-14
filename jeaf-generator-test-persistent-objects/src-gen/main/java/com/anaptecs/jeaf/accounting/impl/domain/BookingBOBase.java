@@ -201,7 +201,7 @@ public abstract class BookingBOBase extends PersistentObject {
   /**
    * Method returns attribute {@link #sessionKey}.<br/>
    *
-   * @return byte Value to which {@link #sessionKey} is set.
+   * @return byte[] Value to which {@link #sessionKey} is set.
    */
   public byte[] getSessionKey( ) {
     byte[] lReturnValue;

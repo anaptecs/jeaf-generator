@@ -370,7 +370,7 @@ public abstract class MasterDataObjectBase {
   /**
    * Method returns attribute {@link #derivedArray}.<br/>
    *
-   * @return int Value to which {@link #derivedArray} is set.
+   * @return int[] Value to which {@link #derivedArray} is set.
    */
   public abstract int[] getDerivedArray( );
 

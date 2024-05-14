@@ -107,7 +107,7 @@ cached String umlFQN(uml::NamedElement element):
      
 // For "normale" Typen wird einfach der Name als qualifizierter Name geliefert
 // Blob wird von OAW nicht als Klasse anerkannt, deswegen muss sie hier behandelt werden.
-cached String fqn (uml::NamedElement element) :
+cached String fqn(uml::NamedElement element) :
     if element.isClass()
     then element.asClass().internalFQNForClass()
     else element.internalFQN();
@@ -325,7 +325,7 @@ cached String getCollectionTypeShort(uml::MultiplicityElement multiplicityElemen
     JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.getCollectionTypeShort(org.eclipse.uml2.uml.MultiplicityElement);
     
 cached boolean isCollectionType(uml::Property propery) :
-	propery.isMultivalued() && propery.association != null;
+	(propery.isMultivalued() && propery.association != null) || (propery.isMultivalued() && useArraysOnlyForPrimitives() && propery.type.isPrimitiveType() == false);
     
 cached String getEmptyCollectionOperation(uml::MultiplicityElement multiplicityElement) :
     JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.getEmptyCollectionOperation(org.eclipse.uml2.uml.MultiplicityElement);

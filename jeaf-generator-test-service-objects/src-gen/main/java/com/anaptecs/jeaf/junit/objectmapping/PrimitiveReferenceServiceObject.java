@@ -510,7 +510,7 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
   /**
    * Method returns attribute {@link #stringArray}.<br/>
    *
-   * @return {@link String} Value to which {@link #stringArray} is set.
+   * @return {@link String[]} Value to which {@link #stringArray} is set.
    */
   public String[] getStringArray( ) {
     String[] lReturnValue;

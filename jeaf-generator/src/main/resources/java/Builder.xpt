@@ -337,7 +337,7 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
 «DEFINE DoBuilderPropertyDeclaration FOR Property»
 	«EXPAND java::Helper::GenerateDeprecationAnnotation-»
     «EXPAND Validation::ValidationAnnotation»
-	private «this.fqn()»«IF isMultivalued()»[]«ENDIF» «name»«IF this.isRealInitValue() && this.isMultivalued()== false » = «IF this.isJEAFEnumerationProperty()»«this.type.name».«ENDIF»«this.initValue()»«ENDIF»;
+	private «this.fqn()» «name»«IF this.isRealInitValue() && this.isMultivalued()== false » = «IF this.isJEAFEnumerationProperty()»«this.type.name».«ENDIF»«this.initValue()»«ENDIF»;
 «ENDDEFINE»
 
 «DEFINE DoBuilderAssociationPropertyDeclaration FOR Property»
@@ -369,10 +369,10 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
     «IF this.isStatic == false»
 	    «IF this.isSoftLink()»
 	       «EXPAND CreateBuilderSoftLinkSetter(builderClassName) FOR ((SoftLink) this)»
-	    «ELSEIF this.association == null»
-	        «EXPAND CreateBuilderPropertySetter(builderClassName)»
+	    «ELSEIF this.isCollectionType() || association != null»
+            «EXPAND CreateBuilderAssociationSetter(builderClassName)»
 	    «ELSE»
-	        «EXPAND CreateBuilderAssociationSetter(builderClassName)»
+            «EXPAND CreateBuilderPropertySetter(builderClassName)»
 	    «ENDIF»
 	    «IF this.isMultivalued() && this.type.isEnumeration() && this.association != null»
 	    	«EXPAND CreateBuilderVarArgsSetter(builderClassName)»
@@ -384,7 +384,7 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
 «DEFINE CreateBuilderPropertySetter(String builderClassName) FOR Property»
 	«EXPAND functions::Javadoc::JavadocForBuilderSetter(builderClassName)»
 	«EXPAND java::Helper::GenerateDeprecationAnnotation-»
-	public «builderClassName»«owner.asClass().getTemplateParams()» «asSetter()»(«this.fqn()»«IF isMultivalued()»[]«ENDIF» «asParameter()») {
+	public «builderClassName»«owner.asClass().getTemplateParams()» «asSetter()»(«this.fqn()» «asParameter()») {
 		// Assign value to attribute
 		«IF this.isMultivalued() == false»
 			«asInstanceVar()»=«asParameter()»;
@@ -394,14 +394,14 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
 				«IF disableBinaryDataImmutability()»
 					«asInstanceVar()» = «asParameter()»;
 				«ELSE»
-					«asInstanceVar()» = new «this.fqn()»[«asParameter()».length];
+					«asInstanceVar()» = new «type.fqn()»[«asParameter()».length];
 					System.arraycopy(«asParameter()», 0, «asInstanceVar()», 0, «asParameter()».length);
 				«ENDIF»
 			«ELSE»
 				«IF disableArrayImmutability()»
 					«asInstanceVar()» = «asParameter()»;
 				«ELSE»
-					«asInstanceVar()» = new «this.fqn()»[«asParameter()».length];
+					«asInstanceVar()» = new «type.fqn()»[«asParameter()».length];
 					System.arraycopy(«asParameter()», 0, «asInstanceVar()», 0, «asParameter()».length);
 				«ENDIF»
 			«ENDIF»
@@ -511,7 +511,7 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
 	«EXPAND functions::Javadoc::JavadocForBuilderSetter(builderClassName)»
 	«EXPAND java::Helper::GenerateDeprecationAnnotation-»
 	@Override
-	public «builderClassName» «asSetter()»(«this.fqn()»«IF isMultivalued()»[]«ENDIF» «asParameter()») {
+	public «builderClassName» «asSetter()»(«this.fqn()» «asParameter()») {
 		// Call super class implementation.
 		super.«asSetter()»(«asParameter()»);
 		return this;

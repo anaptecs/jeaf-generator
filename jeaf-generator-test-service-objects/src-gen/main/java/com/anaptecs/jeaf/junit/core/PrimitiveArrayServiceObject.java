@@ -133,7 +133,7 @@ public class PrimitiveArrayServiceObject implements ServiceObject {
   /**
    * Method returns attribute {@link #booleanArray}.<br/>
    *
-   * @return boolean Value to which {@link #booleanArray} is set.
+   * @return boolean[] Value to which {@link #booleanArray} is set.
    */
   public boolean[] getBooleanArray( ) {
     boolean[] lReturnValue;

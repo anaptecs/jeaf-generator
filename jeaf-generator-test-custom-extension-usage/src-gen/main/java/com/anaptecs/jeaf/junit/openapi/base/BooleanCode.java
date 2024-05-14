@@ -24,11 +24,11 @@ public class BooleanCode extends Object implements ServiceObject {
    */
   public static final String CODE = "code";
 
-  // "Boolean"
+  // "boolean"
   @ClassPropertyDeclaration
   private boolean code;
 
-  // "Boolean"
+  // "boolean"
   private int codeXYZ = 0;
 
   /**
@@ -48,7 +48,7 @@ public class BooleanCode extends Object implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     code = pBuilder.code;
-    // "Boolean"
+    // "boolean"
     codeXYZ = pBuilder.codeXYZ;
   }
 
@@ -65,11 +65,11 @@ public class BooleanCode extends Object implements ServiceObject {
    * Class implements builder to create a new instance of class <code>BooleanCode</code>.
    */
   public static class Builder {
-    // "Boolean"
+    // "boolean"
     @BuilderPropertyDeclaration
     private boolean code;
 
-    // "Boolean"
+    // "boolean"
     private int codeXYZ = 0;
 
     /**
@@ -101,7 +101,7 @@ public class BooleanCode extends Object implements ServiceObject {
     }
 
     public Builder setCodeXYZ( int value ) {
-      // "Boolean"
+      // "boolean"
       codeXYZ = value;
       return this;
     }
@@ -160,7 +160,7 @@ public class BooleanCode extends Object implements ServiceObject {
   }
 
   public int getCodeXYZ( ) {
-    // "Boolean"
+    // "boolean"
     return codeXYZ;
   }
 

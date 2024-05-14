@@ -7,6 +7,11 @@ package com.anaptecs.jeaf.junit.openapi.base;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.validation.ConstraintViolationException;
 import javax.validation.constraints.NotEmpty;
@@ -134,50 +139,50 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
 
   private boolean[] aBooleanArray;
 
-  private Boolean[] bBooleanArray;
+  private Set<Boolean> bBooleanArray;
 
   private boolean[] cBooleanArray;
 
   @Size(min = 0, max = 32768)
   private byte[] aByteArray;
 
-  private Byte[] bByteArray;
+  private Set<Byte> bByteArray;
 
   private short[] aShortArray;
 
-  private Short[] bShortArray;
+  private Set<Short> bShortArray;
 
   private int[] aIntegerArray;
 
-  private Integer[] bIntegerArray;
+  private Set<Integer> bIntegerArray;
 
-  private Integer[] cIntegerArray;
+  private Set<Integer> cIntegerArray;
 
   @NotEmpty
   private long[] aLongArray;
 
-  private Long[] bLongArray;
+  private Set<Long> bLongArray;
 
-  private BigInteger[] aBigIntegerArray;
+  private Set<BigInteger> aBigIntegerArray;
 
   private char[] aCharacterArray;
 
-  private Character[] bCharacterArray;
+  private Set<Character> bCharacterArray;
 
   private float[] aFloatArray;
 
-  private Float[] bFloatArray;
+  private Set<Float> bFloatArray;
 
   @Size(min = 4, max = 12)
   private double[] aDoubleArray;
 
-  private Double[] bDoubleArray;
+  private Set<Double> bDoubleArray;
 
-  private BigDecimal[] aBigDecimalArray;
+  private Set<BigDecimal> aBigDecimalArray;
 
-  private String[] aStringArray;
+  private Set<String> aStringArray;
 
-  private String[] bStringArray;
+  private Set<String> bStringArray;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
@@ -248,50 +253,50 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   public static class Builder {
     private boolean[] aBooleanArray;
 
-    private Boolean[] bBooleanArray;
+    private Set<Boolean> bBooleanArray;
 
     private boolean[] cBooleanArray;
 
     @Size(min = 0, max = 32768)
     private byte[] aByteArray;
 
-    private Byte[] bByteArray;
+    private Set<Byte> bByteArray;
 
     private short[] aShortArray;
 
-    private Short[] bShortArray;
+    private Set<Short> bShortArray;
 
     private int[] aIntegerArray;
 
-    private Integer[] bIntegerArray;
+    private Set<Integer> bIntegerArray;
 
-    private Integer[] cIntegerArray;
+    private Set<Integer> cIntegerArray;
 
     @NotEmpty
     private long[] aLongArray;
 
-    private Long[] bLongArray;
+    private Set<Long> bLongArray;
 
-    private BigInteger[] aBigIntegerArray;
+    private Set<BigInteger> aBigIntegerArray;
 
     private char[] aCharacterArray;
 
-    private Character[] bCharacterArray;
+    private Set<Character> bCharacterArray;
 
     private float[] aFloatArray;
 
-    private Float[] bFloatArray;
+    private Set<Float> bFloatArray;
 
     @Size(min = 4, max = 12)
     private double[] aDoubleArray;
 
-    private Double[] bDoubleArray;
+    private Set<Double> bDoubleArray;
 
-    private BigDecimal[] aBigDecimalArray;
+    private Set<BigDecimal> aBigDecimalArray;
 
-    private String[] aStringArray;
+    private Set<String> aStringArray;
 
-    private String[] bStringArray;
+    private Set<String> bStringArray;
 
     /**
      * Use {@link PrimitiveArraysObjectWithRestrictions#builder()} instead of private constructor to create new builder.
@@ -355,14 +360,29 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
      * @param pBBooleanArray Collection to which {@link #bBooleanArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setBBooleanArray( Boolean[] pBBooleanArray ) {
-      // Assign value to attribute
+    public Builder setBBooleanArray( Set<Boolean> pBBooleanArray ) {
+      // To ensure immutability we have to copy the content of the passed collection.
       if (pBBooleanArray != null) {
-        bBooleanArray = new Boolean[pBBooleanArray.length];
-        System.arraycopy(pBBooleanArray, 0, bBooleanArray, 0, pBBooleanArray.length);
+        bBooleanArray = new HashSet<Boolean>(pBBooleanArray);
       }
       else {
         bBooleanArray = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method adds the passed objects to association {@link #bBooleanArray}.<br/>
+     *
+     * @param pBBooleanArray Array of objects that should be added to {@link #bBooleanArray}. The parameter may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToBBooleanArray( Boolean... pBBooleanArray ) {
+      if (pBBooleanArray != null) {
+        if (bBooleanArray == null) {
+          bBooleanArray = new HashSet<Boolean>();
+        }
+        bBooleanArray.addAll(Arrays.asList(pBBooleanArray));
       }
       return this;
     }
@@ -409,14 +429,29 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
      * @param pBByteArray Collection to which {@link #bByteArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setBByteArray( Byte[] pBByteArray ) {
-      // Assign value to attribute
+    public Builder setBByteArray( Set<Byte> pBByteArray ) {
+      // To ensure immutability we have to copy the content of the passed collection.
       if (pBByteArray != null) {
-        bByteArray = new Byte[pBByteArray.length];
-        System.arraycopy(pBByteArray, 0, bByteArray, 0, pBByteArray.length);
+        bByteArray = new HashSet<Byte>(pBByteArray);
       }
       else {
         bByteArray = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method adds the passed objects to association {@link #bByteArray}.<br/>
+     *
+     * @param pBByteArray Array of objects that should be added to {@link #bByteArray}. The parameter may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToBByteArray( Byte... pBByteArray ) {
+      if (pBByteArray != null) {
+        if (bByteArray == null) {
+          bByteArray = new HashSet<Byte>();
+        }
+        bByteArray.addAll(Arrays.asList(pBByteArray));
       }
       return this;
     }
@@ -445,14 +480,29 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
      * @param pBShortArray Collection to which {@link #bShortArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setBShortArray( Short[] pBShortArray ) {
-      // Assign value to attribute
+    public Builder setBShortArray( Set<Short> pBShortArray ) {
+      // To ensure immutability we have to copy the content of the passed collection.
       if (pBShortArray != null) {
-        bShortArray = new Short[pBShortArray.length];
-        System.arraycopy(pBShortArray, 0, bShortArray, 0, pBShortArray.length);
+        bShortArray = new HashSet<Short>(pBShortArray);
       }
       else {
         bShortArray = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method adds the passed objects to association {@link #bShortArray}.<br/>
+     *
+     * @param pBShortArray Array of objects that should be added to {@link #bShortArray}. The parameter may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToBShortArray( Short... pBShortArray ) {
+      if (pBShortArray != null) {
+        if (bShortArray == null) {
+          bShortArray = new HashSet<Short>();
+        }
+        bShortArray.addAll(Arrays.asList(pBShortArray));
       }
       return this;
     }
@@ -481,14 +531,29 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
      * @param pBIntegerArray Collection to which {@link #bIntegerArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setBIntegerArray( Integer[] pBIntegerArray ) {
-      // Assign value to attribute
+    public Builder setBIntegerArray( Set<Integer> pBIntegerArray ) {
+      // To ensure immutability we have to copy the content of the passed collection.
       if (pBIntegerArray != null) {
-        bIntegerArray = new Integer[pBIntegerArray.length];
-        System.arraycopy(pBIntegerArray, 0, bIntegerArray, 0, pBIntegerArray.length);
+        bIntegerArray = new HashSet<Integer>(pBIntegerArray);
       }
       else {
         bIntegerArray = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method adds the passed objects to association {@link #bIntegerArray}.<br/>
+     *
+     * @param pBIntegerArray Array of objects that should be added to {@link #bIntegerArray}. The parameter may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToBIntegerArray( Integer... pBIntegerArray ) {
+      if (pBIntegerArray != null) {
+        if (bIntegerArray == null) {
+          bIntegerArray = new HashSet<Integer>();
+        }
+        bIntegerArray.addAll(Arrays.asList(pBIntegerArray));
       }
       return this;
     }
@@ -499,14 +564,29 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
      * @param pCIntegerArray Collection to which {@link #cIntegerArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setCIntegerArray( Integer[] pCIntegerArray ) {
-      // Assign value to attribute
+    public Builder setCIntegerArray( Set<Integer> pCIntegerArray ) {
+      // To ensure immutability we have to copy the content of the passed collection.
       if (pCIntegerArray != null) {
-        cIntegerArray = new Integer[pCIntegerArray.length];
-        System.arraycopy(pCIntegerArray, 0, cIntegerArray, 0, pCIntegerArray.length);
+        cIntegerArray = new HashSet<Integer>(pCIntegerArray);
       }
       else {
         cIntegerArray = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method adds the passed objects to association {@link #cIntegerArray}.<br/>
+     *
+     * @param pCIntegerArray Array of objects that should be added to {@link #cIntegerArray}. The parameter may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToCIntegerArray( Integer... pCIntegerArray ) {
+      if (pCIntegerArray != null) {
+        if (cIntegerArray == null) {
+          cIntegerArray = new HashSet<Integer>();
+        }
+        cIntegerArray.addAll(Arrays.asList(pCIntegerArray));
       }
       return this;
     }
@@ -535,14 +615,29 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
      * @param pBLongArray Collection to which {@link #bLongArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setBLongArray( Long[] pBLongArray ) {
-      // Assign value to attribute
+    public Builder setBLongArray( Set<Long> pBLongArray ) {
+      // To ensure immutability we have to copy the content of the passed collection.
       if (pBLongArray != null) {
-        bLongArray = new Long[pBLongArray.length];
-        System.arraycopy(pBLongArray, 0, bLongArray, 0, pBLongArray.length);
+        bLongArray = new HashSet<Long>(pBLongArray);
       }
       else {
         bLongArray = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method adds the passed objects to association {@link #bLongArray}.<br/>
+     *
+     * @param pBLongArray Array of objects that should be added to {@link #bLongArray}. The parameter may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToBLongArray( Long... pBLongArray ) {
+      if (pBLongArray != null) {
+        if (bLongArray == null) {
+          bLongArray = new HashSet<Long>();
+        }
+        bLongArray.addAll(Arrays.asList(pBLongArray));
       }
       return this;
     }
@@ -553,14 +648,30 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
      * @param pABigIntegerArray Collection to which {@link #aBigIntegerArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setABigIntegerArray( BigInteger[] pABigIntegerArray ) {
-      // Assign value to attribute
+    public Builder setABigIntegerArray( Set<BigInteger> pABigIntegerArray ) {
+      // To ensure immutability we have to copy the content of the passed collection.
       if (pABigIntegerArray != null) {
-        aBigIntegerArray = new BigInteger[pABigIntegerArray.length];
-        System.arraycopy(pABigIntegerArray, 0, aBigIntegerArray, 0, pABigIntegerArray.length);
+        aBigIntegerArray = new HashSet<BigInteger>(pABigIntegerArray);
       }
       else {
         aBigIntegerArray = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method adds the passed objects to association {@link #aBigIntegerArray}.<br/>
+     *
+     * @param pABigIntegerArray Array of objects that should be added to {@link #aBigIntegerArray}. The parameter may be
+     * null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToABigIntegerArray( BigInteger... pABigIntegerArray ) {
+      if (pABigIntegerArray != null) {
+        if (aBigIntegerArray == null) {
+          aBigIntegerArray = new HashSet<BigInteger>();
+        }
+        aBigIntegerArray.addAll(Arrays.asList(pABigIntegerArray));
       }
       return this;
     }
@@ -589,14 +700,30 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
      * @param pBCharacterArray Collection to which {@link #bCharacterArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setBCharacterArray( Character[] pBCharacterArray ) {
-      // Assign value to attribute
+    public Builder setBCharacterArray( Set<Character> pBCharacterArray ) {
+      // To ensure immutability we have to copy the content of the passed collection.
       if (pBCharacterArray != null) {
-        bCharacterArray = new Character[pBCharacterArray.length];
-        System.arraycopy(pBCharacterArray, 0, bCharacterArray, 0, pBCharacterArray.length);
+        bCharacterArray = new HashSet<Character>(pBCharacterArray);
       }
       else {
         bCharacterArray = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method adds the passed objects to association {@link #bCharacterArray}.<br/>
+     *
+     * @param pBCharacterArray Array of objects that should be added to {@link #bCharacterArray}. The parameter may be
+     * null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToBCharacterArray( Character... pBCharacterArray ) {
+      if (pBCharacterArray != null) {
+        if (bCharacterArray == null) {
+          bCharacterArray = new HashSet<Character>();
+        }
+        bCharacterArray.addAll(Arrays.asList(pBCharacterArray));
       }
       return this;
     }
@@ -625,14 +752,29 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
      * @param pBFloatArray Collection to which {@link #bFloatArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setBFloatArray( Float[] pBFloatArray ) {
-      // Assign value to attribute
+    public Builder setBFloatArray( Set<Float> pBFloatArray ) {
+      // To ensure immutability we have to copy the content of the passed collection.
       if (pBFloatArray != null) {
-        bFloatArray = new Float[pBFloatArray.length];
-        System.arraycopy(pBFloatArray, 0, bFloatArray, 0, pBFloatArray.length);
+        bFloatArray = new HashSet<Float>(pBFloatArray);
       }
       else {
         bFloatArray = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method adds the passed objects to association {@link #bFloatArray}.<br/>
+     *
+     * @param pBFloatArray Array of objects that should be added to {@link #bFloatArray}. The parameter may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToBFloatArray( Float... pBFloatArray ) {
+      if (pBFloatArray != null) {
+        if (bFloatArray == null) {
+          bFloatArray = new HashSet<Float>();
+        }
+        bFloatArray.addAll(Arrays.asList(pBFloatArray));
       }
       return this;
     }
@@ -661,14 +803,29 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
      * @param pBDoubleArray Collection to which {@link #bDoubleArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setBDoubleArray( Double[] pBDoubleArray ) {
-      // Assign value to attribute
+    public Builder setBDoubleArray( Set<Double> pBDoubleArray ) {
+      // To ensure immutability we have to copy the content of the passed collection.
       if (pBDoubleArray != null) {
-        bDoubleArray = new Double[pBDoubleArray.length];
-        System.arraycopy(pBDoubleArray, 0, bDoubleArray, 0, pBDoubleArray.length);
+        bDoubleArray = new HashSet<Double>(pBDoubleArray);
       }
       else {
         bDoubleArray = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method adds the passed objects to association {@link #bDoubleArray}.<br/>
+     *
+     * @param pBDoubleArray Array of objects that should be added to {@link #bDoubleArray}. The parameter may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToBDoubleArray( Double... pBDoubleArray ) {
+      if (pBDoubleArray != null) {
+        if (bDoubleArray == null) {
+          bDoubleArray = new HashSet<Double>();
+        }
+        bDoubleArray.addAll(Arrays.asList(pBDoubleArray));
       }
       return this;
     }
@@ -679,14 +836,30 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
      * @param pABigDecimalArray Collection to which {@link #aBigDecimalArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setABigDecimalArray( BigDecimal[] pABigDecimalArray ) {
-      // Assign value to attribute
+    public Builder setABigDecimalArray( Set<BigDecimal> pABigDecimalArray ) {
+      // To ensure immutability we have to copy the content of the passed collection.
       if (pABigDecimalArray != null) {
-        aBigDecimalArray = new BigDecimal[pABigDecimalArray.length];
-        System.arraycopy(pABigDecimalArray, 0, aBigDecimalArray, 0, pABigDecimalArray.length);
+        aBigDecimalArray = new HashSet<BigDecimal>(pABigDecimalArray);
       }
       else {
         aBigDecimalArray = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method adds the passed objects to association {@link #aBigDecimalArray}.<br/>
+     *
+     * @param pABigDecimalArray Array of objects that should be added to {@link #aBigDecimalArray}. The parameter may be
+     * null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToABigDecimalArray( BigDecimal... pABigDecimalArray ) {
+      if (pABigDecimalArray != null) {
+        if (aBigDecimalArray == null) {
+          aBigDecimalArray = new HashSet<BigDecimal>();
+        }
+        aBigDecimalArray.addAll(Arrays.asList(pABigDecimalArray));
       }
       return this;
     }
@@ -697,14 +870,29 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
      * @param pAStringArray Collection to which {@link #aStringArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setAStringArray( String[] pAStringArray ) {
-      // Assign value to attribute
+    public Builder setAStringArray( Set<String> pAStringArray ) {
+      // To ensure immutability we have to copy the content of the passed collection.
       if (pAStringArray != null) {
-        aStringArray = new String[pAStringArray.length];
-        System.arraycopy(pAStringArray, 0, aStringArray, 0, pAStringArray.length);
+        aStringArray = new HashSet<String>(pAStringArray);
       }
       else {
         aStringArray = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method adds the passed objects to association {@link #aStringArray}.<br/>
+     *
+     * @param pAStringArray Array of objects that should be added to {@link #aStringArray}. The parameter may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToAStringArray( String... pAStringArray ) {
+      if (pAStringArray != null) {
+        if (aStringArray == null) {
+          aStringArray = new HashSet<String>();
+        }
+        aStringArray.addAll(Arrays.asList(pAStringArray));
       }
       return this;
     }
@@ -715,14 +903,29 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
      * @param pBStringArray Collection to which {@link #bStringArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setBStringArray( String[] pBStringArray ) {
-      // Assign value to attribute
+    public Builder setBStringArray( Set<String> pBStringArray ) {
+      // To ensure immutability we have to copy the content of the passed collection.
       if (pBStringArray != null) {
-        bStringArray = new String[pBStringArray.length];
-        System.arraycopy(pBStringArray, 0, bStringArray, 0, pBStringArray.length);
+        bStringArray = new HashSet<String>(pBStringArray);
       }
       else {
         bStringArray = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method adds the passed objects to association {@link #bStringArray}.<br/>
+     *
+     * @param pBStringArray Array of objects that should be added to {@link #bStringArray}. The parameter may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToBStringArray( String... pBStringArray ) {
+      if (pBStringArray != null) {
+        if (bStringArray == null) {
+          bStringArray = new HashSet<String>();
+        }
+        bStringArray.addAll(Arrays.asList(pBStringArray));
       }
       return this;
     }
@@ -756,7 +959,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   /**
    * Method returns attribute {@link #aBooleanArray}.<br/>
    *
-   * @return boolean Value to which {@link #aBooleanArray} is set.
+   * @return boolean[] Value to which {@link #aBooleanArray} is set.
    */
   public boolean[] getABooleanArray( ) {
     boolean[] lReturnValue;
@@ -789,40 +992,64 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   /**
    * Method returns attribute {@link #bBooleanArray}.<br/>
    *
-   * @return {@link Boolean} Value to which {@link #bBooleanArray} is set.
+   * @return {@link Set<Boolean>} Value to which {@link #bBooleanArray} is set.
    */
-  public Boolean[] getBBooleanArray( ) {
-    Boolean[] lReturnValue;
-    if (bBooleanArray != null) {
-      lReturnValue = new Boolean[bBooleanArray.length];
-      System.arraycopy(bBooleanArray, 0, lReturnValue, 0, bBooleanArray.length);
-    }
-    else {
-      lReturnValue = null;
-    }
-    return lReturnValue;
+  public Set<Boolean> getBBooleanArray( ) {
+    // Return all Boolean objects as unmodifiable collection.
+    return Collections.unmodifiableSet(bBooleanArray);
   }
 
   /**
-   * Method sets attribute {@link #bBooleanArray}.<br/>
+   * Method adds the passed object to {@link #bBooleanArray}.
    *
-   * @param pBBooleanArray Value to which {@link #bBooleanArray} should be set.
+   * @param pBBooleanArray Object that should be added to {@link #bBooleanArray}. The parameter must not be null.
    */
-  public void setBBooleanArray( Boolean[] pBBooleanArray ) {
-    // Assign value to attribute
-    if (pBBooleanArray != null) {
-      bBooleanArray = new Boolean[pBBooleanArray.length];
-      System.arraycopy(pBBooleanArray, 0, bBooleanArray, 0, pBBooleanArray.length);
+  public void addToBBooleanArray( Boolean pBBooleanArray ) {
+    // Check parameter "pBBooleanArray" for invalid value null.
+    Check.checkInvalidParameterNull(pBBooleanArray, "pBBooleanArray");
+    // Add passed object to collection of associated Boolean objects.
+    bBooleanArray.add(pBBooleanArray);
+  }
+
+  /**
+   * Method adds all passed objects to {@link #bBooleanArray}.
+   *
+   * @param pBBooleanArray Collection with all objects that should be added to {@link #bBooleanArray}. The parameter
+   * must not be null.
+   */
+  public void addToBBooleanArray( Collection<Boolean> pBBooleanArray ) {
+    // Check parameter "pBBooleanArray" for invalid value null.
+    Check.checkInvalidParameterNull(pBBooleanArray, "pBBooleanArray");
+    // Add all passed objects.
+    for (Boolean lNextObject : pBBooleanArray) {
+      this.addToBBooleanArray(lNextObject);
     }
-    else {
-      bBooleanArray = null;
-    }
+  }
+
+  /**
+   * Method removes the passed object from {@link #bBooleanArray}.<br/>
+   *
+   * @param pBBooleanArray Object that should be removed from {@link #bBooleanArray}. The parameter must not be null.
+   */
+  public void removeFromBBooleanArray( Boolean pBBooleanArray ) {
+    // Check parameter for invalid value null.
+    Check.checkInvalidParameterNull(pBBooleanArray, "pBBooleanArray");
+    // Remove passed object from collection of associated Boolean objects.
+    bBooleanArray.remove(pBBooleanArray);
+  }
+
+  /**
+   * Method removes all objects from {@link #bBooleanArray}.
+   */
+  public void clearBBooleanArray( ) {
+    // Remove all objects from association "bBooleanArray".
+    bBooleanArray.clear();
   }
 
   /**
    * Method returns attribute {@link #cBooleanArray}.<br/>
    *
-   * @return boolean Value to which {@link #cBooleanArray} is set.
+   * @return boolean[] Value to which {@link #cBooleanArray} is set.
    */
   public boolean[] getCBooleanArray( ) {
     boolean[] lReturnValue;
@@ -855,7 +1082,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   /**
    * Method returns attribute {@link #aByteArray}.<br/>
    *
-   * @return byte Value to which {@link #aByteArray} is set.
+   * @return byte[] Value to which {@link #aByteArray} is set.
    */
   public byte[] getAByteArray( ) {
     byte[] lReturnValue;
@@ -888,40 +1115,64 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   /**
    * Method returns attribute {@link #bByteArray}.<br/>
    *
-   * @return {@link Byte} Value to which {@link #bByteArray} is set.
+   * @return {@link Set<Byte>} Value to which {@link #bByteArray} is set.
    */
-  public Byte[] getBByteArray( ) {
-    Byte[] lReturnValue;
-    if (bByteArray != null) {
-      lReturnValue = new Byte[bByteArray.length];
-      System.arraycopy(bByteArray, 0, lReturnValue, 0, bByteArray.length);
-    }
-    else {
-      lReturnValue = null;
-    }
-    return lReturnValue;
+  public Set<Byte> getBByteArray( ) {
+    // Return all Byte objects as unmodifiable collection.
+    return Collections.unmodifiableSet(bByteArray);
   }
 
   /**
-   * Method sets attribute {@link #bByteArray}.<br/>
+   * Method adds the passed object to {@link #bByteArray}.
    *
-   * @param pBByteArray Value to which {@link #bByteArray} should be set.
+   * @param pBByteArray Object that should be added to {@link #bByteArray}. The parameter must not be null.
    */
-  public void setBByteArray( Byte[] pBByteArray ) {
-    // Assign value to attribute
-    if (pBByteArray != null) {
-      bByteArray = new Byte[pBByteArray.length];
-      System.arraycopy(pBByteArray, 0, bByteArray, 0, pBByteArray.length);
+  public void addToBByteArray( Byte pBByteArray ) {
+    // Check parameter "pBByteArray" for invalid value null.
+    Check.checkInvalidParameterNull(pBByteArray, "pBByteArray");
+    // Add passed object to collection of associated Byte objects.
+    bByteArray.add(pBByteArray);
+  }
+
+  /**
+   * Method adds all passed objects to {@link #bByteArray}.
+   *
+   * @param pBByteArray Collection with all objects that should be added to {@link #bByteArray}. The parameter must not
+   * be null.
+   */
+  public void addToBByteArray( Collection<Byte> pBByteArray ) {
+    // Check parameter "pBByteArray" for invalid value null.
+    Check.checkInvalidParameterNull(pBByteArray, "pBByteArray");
+    // Add all passed objects.
+    for (Byte lNextObject : pBByteArray) {
+      this.addToBByteArray(lNextObject);
     }
-    else {
-      bByteArray = null;
-    }
+  }
+
+  /**
+   * Method removes the passed object from {@link #bByteArray}.<br/>
+   *
+   * @param pBByteArray Object that should be removed from {@link #bByteArray}. The parameter must not be null.
+   */
+  public void removeFromBByteArray( Byte pBByteArray ) {
+    // Check parameter for invalid value null.
+    Check.checkInvalidParameterNull(pBByteArray, "pBByteArray");
+    // Remove passed object from collection of associated Byte objects.
+    bByteArray.remove(pBByteArray);
+  }
+
+  /**
+   * Method removes all objects from {@link #bByteArray}.
+   */
+  public void clearBByteArray( ) {
+    // Remove all objects from association "bByteArray".
+    bByteArray.clear();
   }
 
   /**
    * Method returns attribute {@link #aShortArray}.<br/>
    *
-   * @return short Value to which {@link #aShortArray} is set.
+   * @return short[] Value to which {@link #aShortArray} is set.
    */
   public short[] getAShortArray( ) {
     short[] lReturnValue;
@@ -954,40 +1205,64 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   /**
    * Method returns attribute {@link #bShortArray}.<br/>
    *
-   * @return {@link Short} Value to which {@link #bShortArray} is set.
+   * @return {@link Set<Short>} Value to which {@link #bShortArray} is set.
    */
-  public Short[] getBShortArray( ) {
-    Short[] lReturnValue;
-    if (bShortArray != null) {
-      lReturnValue = new Short[bShortArray.length];
-      System.arraycopy(bShortArray, 0, lReturnValue, 0, bShortArray.length);
-    }
-    else {
-      lReturnValue = null;
-    }
-    return lReturnValue;
+  public Set<Short> getBShortArray( ) {
+    // Return all Short objects as unmodifiable collection.
+    return Collections.unmodifiableSet(bShortArray);
   }
 
   /**
-   * Method sets attribute {@link #bShortArray}.<br/>
+   * Method adds the passed object to {@link #bShortArray}.
    *
-   * @param pBShortArray Value to which {@link #bShortArray} should be set.
+   * @param pBShortArray Object that should be added to {@link #bShortArray}. The parameter must not be null.
    */
-  public void setBShortArray( Short[] pBShortArray ) {
-    // Assign value to attribute
-    if (pBShortArray != null) {
-      bShortArray = new Short[pBShortArray.length];
-      System.arraycopy(pBShortArray, 0, bShortArray, 0, pBShortArray.length);
+  public void addToBShortArray( Short pBShortArray ) {
+    // Check parameter "pBShortArray" for invalid value null.
+    Check.checkInvalidParameterNull(pBShortArray, "pBShortArray");
+    // Add passed object to collection of associated Short objects.
+    bShortArray.add(pBShortArray);
+  }
+
+  /**
+   * Method adds all passed objects to {@link #bShortArray}.
+   *
+   * @param pBShortArray Collection with all objects that should be added to {@link #bShortArray}. The parameter must
+   * not be null.
+   */
+  public void addToBShortArray( Collection<Short> pBShortArray ) {
+    // Check parameter "pBShortArray" for invalid value null.
+    Check.checkInvalidParameterNull(pBShortArray, "pBShortArray");
+    // Add all passed objects.
+    for (Short lNextObject : pBShortArray) {
+      this.addToBShortArray(lNextObject);
     }
-    else {
-      bShortArray = null;
-    }
+  }
+
+  /**
+   * Method removes the passed object from {@link #bShortArray}.<br/>
+   *
+   * @param pBShortArray Object that should be removed from {@link #bShortArray}. The parameter must not be null.
+   */
+  public void removeFromBShortArray( Short pBShortArray ) {
+    // Check parameter for invalid value null.
+    Check.checkInvalidParameterNull(pBShortArray, "pBShortArray");
+    // Remove passed object from collection of associated Short objects.
+    bShortArray.remove(pBShortArray);
+  }
+
+  /**
+   * Method removes all objects from {@link #bShortArray}.
+   */
+  public void clearBShortArray( ) {
+    // Remove all objects from association "bShortArray".
+    bShortArray.clear();
   }
 
   /**
    * Method returns attribute {@link #aIntegerArray}.<br/>
    *
-   * @return int Value to which {@link #aIntegerArray} is set.
+   * @return int[] Value to which {@link #aIntegerArray} is set.
    */
   public int[] getAIntegerArray( ) {
     int[] lReturnValue;
@@ -1020,73 +1295,121 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   /**
    * Method returns attribute {@link #bIntegerArray}.<br/>
    *
-   * @return {@link Integer} Value to which {@link #bIntegerArray} is set.
+   * @return {@link Set<Integer>} Value to which {@link #bIntegerArray} is set.
    */
-  public Integer[] getBIntegerArray( ) {
-    Integer[] lReturnValue;
-    if (bIntegerArray != null) {
-      lReturnValue = new Integer[bIntegerArray.length];
-      System.arraycopy(bIntegerArray, 0, lReturnValue, 0, bIntegerArray.length);
-    }
-    else {
-      lReturnValue = null;
-    }
-    return lReturnValue;
+  public Set<Integer> getBIntegerArray( ) {
+    // Return all Integer objects as unmodifiable collection.
+    return Collections.unmodifiableSet(bIntegerArray);
   }
 
   /**
-   * Method sets attribute {@link #bIntegerArray}.<br/>
+   * Method adds the passed object to {@link #bIntegerArray}.
    *
-   * @param pBIntegerArray Value to which {@link #bIntegerArray} should be set.
+   * @param pBIntegerArray Object that should be added to {@link #bIntegerArray}. The parameter must not be null.
    */
-  public void setBIntegerArray( Integer[] pBIntegerArray ) {
-    // Assign value to attribute
-    if (pBIntegerArray != null) {
-      bIntegerArray = new Integer[pBIntegerArray.length];
-      System.arraycopy(pBIntegerArray, 0, bIntegerArray, 0, pBIntegerArray.length);
+  public void addToBIntegerArray( Integer pBIntegerArray ) {
+    // Check parameter "pBIntegerArray" for invalid value null.
+    Check.checkInvalidParameterNull(pBIntegerArray, "pBIntegerArray");
+    // Add passed object to collection of associated Integer objects.
+    bIntegerArray.add(pBIntegerArray);
+  }
+
+  /**
+   * Method adds all passed objects to {@link #bIntegerArray}.
+   *
+   * @param pBIntegerArray Collection with all objects that should be added to {@link #bIntegerArray}. The parameter
+   * must not be null.
+   */
+  public void addToBIntegerArray( Collection<Integer> pBIntegerArray ) {
+    // Check parameter "pBIntegerArray" for invalid value null.
+    Check.checkInvalidParameterNull(pBIntegerArray, "pBIntegerArray");
+    // Add all passed objects.
+    for (Integer lNextObject : pBIntegerArray) {
+      this.addToBIntegerArray(lNextObject);
     }
-    else {
-      bIntegerArray = null;
-    }
+  }
+
+  /**
+   * Method removes the passed object from {@link #bIntegerArray}.<br/>
+   *
+   * @param pBIntegerArray Object that should be removed from {@link #bIntegerArray}. The parameter must not be null.
+   */
+  public void removeFromBIntegerArray( Integer pBIntegerArray ) {
+    // Check parameter for invalid value null.
+    Check.checkInvalidParameterNull(pBIntegerArray, "pBIntegerArray");
+    // Remove passed object from collection of associated Integer objects.
+    bIntegerArray.remove(pBIntegerArray);
+  }
+
+  /**
+   * Method removes all objects from {@link #bIntegerArray}.
+   */
+  public void clearBIntegerArray( ) {
+    // Remove all objects from association "bIntegerArray".
+    bIntegerArray.clear();
   }
 
   /**
    * Method returns attribute {@link #cIntegerArray}.<br/>
    *
-   * @return {@link Integer} Value to which {@link #cIntegerArray} is set.
+   * @return {@link Set<Integer>} Value to which {@link #cIntegerArray} is set.
    */
-  public Integer[] getCIntegerArray( ) {
-    Integer[] lReturnValue;
-    if (cIntegerArray != null) {
-      lReturnValue = new Integer[cIntegerArray.length];
-      System.arraycopy(cIntegerArray, 0, lReturnValue, 0, cIntegerArray.length);
-    }
-    else {
-      lReturnValue = null;
-    }
-    return lReturnValue;
+  public Set<Integer> getCIntegerArray( ) {
+    // Return all Integer objects as unmodifiable collection.
+    return Collections.unmodifiableSet(cIntegerArray);
   }
 
   /**
-   * Method sets attribute {@link #cIntegerArray}.<br/>
+   * Method adds the passed object to {@link #cIntegerArray}.
    *
-   * @param pCIntegerArray Value to which {@link #cIntegerArray} should be set.
+   * @param pCIntegerArray Object that should be added to {@link #cIntegerArray}. The parameter must not be null.
    */
-  public void setCIntegerArray( Integer[] pCIntegerArray ) {
-    // Assign value to attribute
-    if (pCIntegerArray != null) {
-      cIntegerArray = new Integer[pCIntegerArray.length];
-      System.arraycopy(pCIntegerArray, 0, cIntegerArray, 0, pCIntegerArray.length);
+  public void addToCIntegerArray( Integer pCIntegerArray ) {
+    // Check parameter "pCIntegerArray" for invalid value null.
+    Check.checkInvalidParameterNull(pCIntegerArray, "pCIntegerArray");
+    // Add passed object to collection of associated Integer objects.
+    cIntegerArray.add(pCIntegerArray);
+  }
+
+  /**
+   * Method adds all passed objects to {@link #cIntegerArray}.
+   *
+   * @param pCIntegerArray Collection with all objects that should be added to {@link #cIntegerArray}. The parameter
+   * must not be null.
+   */
+  public void addToCIntegerArray( Collection<Integer> pCIntegerArray ) {
+    // Check parameter "pCIntegerArray" for invalid value null.
+    Check.checkInvalidParameterNull(pCIntegerArray, "pCIntegerArray");
+    // Add all passed objects.
+    for (Integer lNextObject : pCIntegerArray) {
+      this.addToCIntegerArray(lNextObject);
     }
-    else {
-      cIntegerArray = null;
-    }
+  }
+
+  /**
+   * Method removes the passed object from {@link #cIntegerArray}.<br/>
+   *
+   * @param pCIntegerArray Object that should be removed from {@link #cIntegerArray}. The parameter must not be null.
+   */
+  public void removeFromCIntegerArray( Integer pCIntegerArray ) {
+    // Check parameter for invalid value null.
+    Check.checkInvalidParameterNull(pCIntegerArray, "pCIntegerArray");
+    // Remove passed object from collection of associated Integer objects.
+    cIntegerArray.remove(pCIntegerArray);
+  }
+
+  /**
+   * Method removes all objects from {@link #cIntegerArray}.
+   */
+  public void clearCIntegerArray( ) {
+    // Remove all objects from association "cIntegerArray".
+    cIntegerArray.clear();
   }
 
   /**
    * Method returns attribute {@link #aLongArray}.<br/>
    *
-   * @return long Value to which {@link #aLongArray} is set.
+   * @return long[] Value to which {@link #aLongArray} is set.
    */
   public long[] getALongArray( ) {
     long[] lReturnValue;
@@ -1119,73 +1442,122 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   /**
    * Method returns attribute {@link #bLongArray}.<br/>
    *
-   * @return {@link Long} Value to which {@link #bLongArray} is set.
+   * @return {@link Set<Long>} Value to which {@link #bLongArray} is set.
    */
-  public Long[] getBLongArray( ) {
-    Long[] lReturnValue;
-    if (bLongArray != null) {
-      lReturnValue = new Long[bLongArray.length];
-      System.arraycopy(bLongArray, 0, lReturnValue, 0, bLongArray.length);
-    }
-    else {
-      lReturnValue = null;
-    }
-    return lReturnValue;
+  public Set<Long> getBLongArray( ) {
+    // Return all Long objects as unmodifiable collection.
+    return Collections.unmodifiableSet(bLongArray);
   }
 
   /**
-   * Method sets attribute {@link #bLongArray}.<br/>
+   * Method adds the passed object to {@link #bLongArray}.
    *
-   * @param pBLongArray Value to which {@link #bLongArray} should be set.
+   * @param pBLongArray Object that should be added to {@link #bLongArray}. The parameter must not be null.
    */
-  public void setBLongArray( Long[] pBLongArray ) {
-    // Assign value to attribute
-    if (pBLongArray != null) {
-      bLongArray = new Long[pBLongArray.length];
-      System.arraycopy(pBLongArray, 0, bLongArray, 0, pBLongArray.length);
+  public void addToBLongArray( Long pBLongArray ) {
+    // Check parameter "pBLongArray" for invalid value null.
+    Check.checkInvalidParameterNull(pBLongArray, "pBLongArray");
+    // Add passed object to collection of associated Long objects.
+    bLongArray.add(pBLongArray);
+  }
+
+  /**
+   * Method adds all passed objects to {@link #bLongArray}.
+   *
+   * @param pBLongArray Collection with all objects that should be added to {@link #bLongArray}. The parameter must not
+   * be null.
+   */
+  public void addToBLongArray( Collection<Long> pBLongArray ) {
+    // Check parameter "pBLongArray" for invalid value null.
+    Check.checkInvalidParameterNull(pBLongArray, "pBLongArray");
+    // Add all passed objects.
+    for (Long lNextObject : pBLongArray) {
+      this.addToBLongArray(lNextObject);
     }
-    else {
-      bLongArray = null;
-    }
+  }
+
+  /**
+   * Method removes the passed object from {@link #bLongArray}.<br/>
+   *
+   * @param pBLongArray Object that should be removed from {@link #bLongArray}. The parameter must not be null.
+   */
+  public void removeFromBLongArray( Long pBLongArray ) {
+    // Check parameter for invalid value null.
+    Check.checkInvalidParameterNull(pBLongArray, "pBLongArray");
+    // Remove passed object from collection of associated Long objects.
+    bLongArray.remove(pBLongArray);
+  }
+
+  /**
+   * Method removes all objects from {@link #bLongArray}.
+   */
+  public void clearBLongArray( ) {
+    // Remove all objects from association "bLongArray".
+    bLongArray.clear();
   }
 
   /**
    * Method returns attribute {@link #aBigIntegerArray}.<br/>
    *
-   * @return {@link BigInteger} Value to which {@link #aBigIntegerArray} is set.
+   * @return {@link Set<BigInteger>} Value to which {@link #aBigIntegerArray} is set.
    */
-  public BigInteger[] getABigIntegerArray( ) {
-    BigInteger[] lReturnValue;
-    if (aBigIntegerArray != null) {
-      lReturnValue = new BigInteger[aBigIntegerArray.length];
-      System.arraycopy(aBigIntegerArray, 0, lReturnValue, 0, aBigIntegerArray.length);
-    }
-    else {
-      lReturnValue = null;
-    }
-    return lReturnValue;
+  public Set<BigInteger> getABigIntegerArray( ) {
+    // Return all BigInteger objects as unmodifiable collection.
+    return Collections.unmodifiableSet(aBigIntegerArray);
   }
 
   /**
-   * Method sets attribute {@link #aBigIntegerArray}.<br/>
+   * Method adds the passed object to {@link #aBigIntegerArray}.
    *
-   * @param pABigIntegerArray Value to which {@link #aBigIntegerArray} should be set.
+   * @param pABigIntegerArray Object that should be added to {@link #aBigIntegerArray}. The parameter must not be null.
    */
-  public void setABigIntegerArray( BigInteger[] pABigIntegerArray ) {
-    // Assign value to attribute
-    if (pABigIntegerArray != null) {
-      aBigIntegerArray = new BigInteger[pABigIntegerArray.length];
-      System.arraycopy(pABigIntegerArray, 0, aBigIntegerArray, 0, pABigIntegerArray.length);
+  public void addToABigIntegerArray( BigInteger pABigIntegerArray ) {
+    // Check parameter "pABigIntegerArray" for invalid value null.
+    Check.checkInvalidParameterNull(pABigIntegerArray, "pABigIntegerArray");
+    // Add passed object to collection of associated BigInteger objects.
+    aBigIntegerArray.add(pABigIntegerArray);
+  }
+
+  /**
+   * Method adds all passed objects to {@link #aBigIntegerArray}.
+   *
+   * @param pABigIntegerArray Collection with all objects that should be added to {@link #aBigIntegerArray}. The
+   * parameter must not be null.
+   */
+  public void addToABigIntegerArray( Collection<BigInteger> pABigIntegerArray ) {
+    // Check parameter "pABigIntegerArray" for invalid value null.
+    Check.checkInvalidParameterNull(pABigIntegerArray, "pABigIntegerArray");
+    // Add all passed objects.
+    for (BigInteger lNextObject : pABigIntegerArray) {
+      this.addToABigIntegerArray(lNextObject);
     }
-    else {
-      aBigIntegerArray = null;
-    }
+  }
+
+  /**
+   * Method removes the passed object from {@link #aBigIntegerArray}.<br/>
+   *
+   * @param pABigIntegerArray Object that should be removed from {@link #aBigIntegerArray}. The parameter must not be
+   * null.
+   */
+  public void removeFromABigIntegerArray( BigInteger pABigIntegerArray ) {
+    // Check parameter for invalid value null.
+    Check.checkInvalidParameterNull(pABigIntegerArray, "pABigIntegerArray");
+    // Remove passed object from collection of associated BigInteger objects.
+    aBigIntegerArray.remove(pABigIntegerArray);
+  }
+
+  /**
+   * Method removes all objects from {@link #aBigIntegerArray}.
+   */
+  public void clearABigIntegerArray( ) {
+    // Remove all objects from association "aBigIntegerArray".
+    aBigIntegerArray.clear();
   }
 
   /**
    * Method returns attribute {@link #aCharacterArray}.<br/>
    *
-   * @return char Value to which {@link #aCharacterArray} is set.
+   * @return char[] Value to which {@link #aCharacterArray} is set.
    */
   public char[] getACharacterArray( ) {
     char[] lReturnValue;
@@ -1218,40 +1590,65 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   /**
    * Method returns attribute {@link #bCharacterArray}.<br/>
    *
-   * @return {@link Character} Value to which {@link #bCharacterArray} is set.
+   * @return {@link Set<Character>} Value to which {@link #bCharacterArray} is set.
    */
-  public Character[] getBCharacterArray( ) {
-    Character[] lReturnValue;
-    if (bCharacterArray != null) {
-      lReturnValue = new Character[bCharacterArray.length];
-      System.arraycopy(bCharacterArray, 0, lReturnValue, 0, bCharacterArray.length);
-    }
-    else {
-      lReturnValue = null;
-    }
-    return lReturnValue;
+  public Set<Character> getBCharacterArray( ) {
+    // Return all Character objects as unmodifiable collection.
+    return Collections.unmodifiableSet(bCharacterArray);
   }
 
   /**
-   * Method sets attribute {@link #bCharacterArray}.<br/>
+   * Method adds the passed object to {@link #bCharacterArray}.
    *
-   * @param pBCharacterArray Value to which {@link #bCharacterArray} should be set.
+   * @param pBCharacterArray Object that should be added to {@link #bCharacterArray}. The parameter must not be null.
    */
-  public void setBCharacterArray( Character[] pBCharacterArray ) {
-    // Assign value to attribute
-    if (pBCharacterArray != null) {
-      bCharacterArray = new Character[pBCharacterArray.length];
-      System.arraycopy(pBCharacterArray, 0, bCharacterArray, 0, pBCharacterArray.length);
+  public void addToBCharacterArray( Character pBCharacterArray ) {
+    // Check parameter "pBCharacterArray" for invalid value null.
+    Check.checkInvalidParameterNull(pBCharacterArray, "pBCharacterArray");
+    // Add passed object to collection of associated Character objects.
+    bCharacterArray.add(pBCharacterArray);
+  }
+
+  /**
+   * Method adds all passed objects to {@link #bCharacterArray}.
+   *
+   * @param pBCharacterArray Collection with all objects that should be added to {@link #bCharacterArray}. The parameter
+   * must not be null.
+   */
+  public void addToBCharacterArray( Collection<Character> pBCharacterArray ) {
+    // Check parameter "pBCharacterArray" for invalid value null.
+    Check.checkInvalidParameterNull(pBCharacterArray, "pBCharacterArray");
+    // Add all passed objects.
+    for (Character lNextObject : pBCharacterArray) {
+      this.addToBCharacterArray(lNextObject);
     }
-    else {
-      bCharacterArray = null;
-    }
+  }
+
+  /**
+   * Method removes the passed object from {@link #bCharacterArray}.<br/>
+   *
+   * @param pBCharacterArray Object that should be removed from {@link #bCharacterArray}. The parameter must not be
+   * null.
+   */
+  public void removeFromBCharacterArray( Character pBCharacterArray ) {
+    // Check parameter for invalid value null.
+    Check.checkInvalidParameterNull(pBCharacterArray, "pBCharacterArray");
+    // Remove passed object from collection of associated Character objects.
+    bCharacterArray.remove(pBCharacterArray);
+  }
+
+  /**
+   * Method removes all objects from {@link #bCharacterArray}.
+   */
+  public void clearBCharacterArray( ) {
+    // Remove all objects from association "bCharacterArray".
+    bCharacterArray.clear();
   }
 
   /**
    * Method returns attribute {@link #aFloatArray}.<br/>
    *
-   * @return float Value to which {@link #aFloatArray} is set.
+   * @return float[] Value to which {@link #aFloatArray} is set.
    */
   public float[] getAFloatArray( ) {
     float[] lReturnValue;
@@ -1284,40 +1681,64 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   /**
    * Method returns attribute {@link #bFloatArray}.<br/>
    *
-   * @return {@link Float} Value to which {@link #bFloatArray} is set.
+   * @return {@link Set<Float>} Value to which {@link #bFloatArray} is set.
    */
-  public Float[] getBFloatArray( ) {
-    Float[] lReturnValue;
-    if (bFloatArray != null) {
-      lReturnValue = new Float[bFloatArray.length];
-      System.arraycopy(bFloatArray, 0, lReturnValue, 0, bFloatArray.length);
-    }
-    else {
-      lReturnValue = null;
-    }
-    return lReturnValue;
+  public Set<Float> getBFloatArray( ) {
+    // Return all Float objects as unmodifiable collection.
+    return Collections.unmodifiableSet(bFloatArray);
   }
 
   /**
-   * Method sets attribute {@link #bFloatArray}.<br/>
+   * Method adds the passed object to {@link #bFloatArray}.
    *
-   * @param pBFloatArray Value to which {@link #bFloatArray} should be set.
+   * @param pBFloatArray Object that should be added to {@link #bFloatArray}. The parameter must not be null.
    */
-  public void setBFloatArray( Float[] pBFloatArray ) {
-    // Assign value to attribute
-    if (pBFloatArray != null) {
-      bFloatArray = new Float[pBFloatArray.length];
-      System.arraycopy(pBFloatArray, 0, bFloatArray, 0, pBFloatArray.length);
+  public void addToBFloatArray( Float pBFloatArray ) {
+    // Check parameter "pBFloatArray" for invalid value null.
+    Check.checkInvalidParameterNull(pBFloatArray, "pBFloatArray");
+    // Add passed object to collection of associated Float objects.
+    bFloatArray.add(pBFloatArray);
+  }
+
+  /**
+   * Method adds all passed objects to {@link #bFloatArray}.
+   *
+   * @param pBFloatArray Collection with all objects that should be added to {@link #bFloatArray}. The parameter must
+   * not be null.
+   */
+  public void addToBFloatArray( Collection<Float> pBFloatArray ) {
+    // Check parameter "pBFloatArray" for invalid value null.
+    Check.checkInvalidParameterNull(pBFloatArray, "pBFloatArray");
+    // Add all passed objects.
+    for (Float lNextObject : pBFloatArray) {
+      this.addToBFloatArray(lNextObject);
     }
-    else {
-      bFloatArray = null;
-    }
+  }
+
+  /**
+   * Method removes the passed object from {@link #bFloatArray}.<br/>
+   *
+   * @param pBFloatArray Object that should be removed from {@link #bFloatArray}. The parameter must not be null.
+   */
+  public void removeFromBFloatArray( Float pBFloatArray ) {
+    // Check parameter for invalid value null.
+    Check.checkInvalidParameterNull(pBFloatArray, "pBFloatArray");
+    // Remove passed object from collection of associated Float objects.
+    bFloatArray.remove(pBFloatArray);
+  }
+
+  /**
+   * Method removes all objects from {@link #bFloatArray}.
+   */
+  public void clearBFloatArray( ) {
+    // Remove all objects from association "bFloatArray".
+    bFloatArray.clear();
   }
 
   /**
    * Method returns attribute {@link #aDoubleArray}.<br/>
    *
-   * @return double Value to which {@link #aDoubleArray} is set.
+   * @return double[] Value to which {@link #aDoubleArray} is set.
    */
   public double[] getADoubleArray( ) {
     double[] lReturnValue;
@@ -1350,133 +1771,230 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
   /**
    * Method returns attribute {@link #bDoubleArray}.<br/>
    *
-   * @return {@link Double} Value to which {@link #bDoubleArray} is set.
+   * @return {@link Set<Double>} Value to which {@link #bDoubleArray} is set.
    */
-  public Double[] getBDoubleArray( ) {
-    Double[] lReturnValue;
-    if (bDoubleArray != null) {
-      lReturnValue = new Double[bDoubleArray.length];
-      System.arraycopy(bDoubleArray, 0, lReturnValue, 0, bDoubleArray.length);
-    }
-    else {
-      lReturnValue = null;
-    }
-    return lReturnValue;
+  public Set<Double> getBDoubleArray( ) {
+    // Return all Double objects as unmodifiable collection.
+    return Collections.unmodifiableSet(bDoubleArray);
   }
 
   /**
-   * Method sets attribute {@link #bDoubleArray}.<br/>
+   * Method adds the passed object to {@link #bDoubleArray}.
    *
-   * @param pBDoubleArray Value to which {@link #bDoubleArray} should be set.
+   * @param pBDoubleArray Object that should be added to {@link #bDoubleArray}. The parameter must not be null.
    */
-  public void setBDoubleArray( Double[] pBDoubleArray ) {
-    // Assign value to attribute
-    if (pBDoubleArray != null) {
-      bDoubleArray = new Double[pBDoubleArray.length];
-      System.arraycopy(pBDoubleArray, 0, bDoubleArray, 0, pBDoubleArray.length);
+  public void addToBDoubleArray( Double pBDoubleArray ) {
+    // Check parameter "pBDoubleArray" for invalid value null.
+    Check.checkInvalidParameterNull(pBDoubleArray, "pBDoubleArray");
+    // Add passed object to collection of associated Double objects.
+    bDoubleArray.add(pBDoubleArray);
+  }
+
+  /**
+   * Method adds all passed objects to {@link #bDoubleArray}.
+   *
+   * @param pBDoubleArray Collection with all objects that should be added to {@link #bDoubleArray}. The parameter must
+   * not be null.
+   */
+  public void addToBDoubleArray( Collection<Double> pBDoubleArray ) {
+    // Check parameter "pBDoubleArray" for invalid value null.
+    Check.checkInvalidParameterNull(pBDoubleArray, "pBDoubleArray");
+    // Add all passed objects.
+    for (Double lNextObject : pBDoubleArray) {
+      this.addToBDoubleArray(lNextObject);
     }
-    else {
-      bDoubleArray = null;
-    }
+  }
+
+  /**
+   * Method removes the passed object from {@link #bDoubleArray}.<br/>
+   *
+   * @param pBDoubleArray Object that should be removed from {@link #bDoubleArray}. The parameter must not be null.
+   */
+  public void removeFromBDoubleArray( Double pBDoubleArray ) {
+    // Check parameter for invalid value null.
+    Check.checkInvalidParameterNull(pBDoubleArray, "pBDoubleArray");
+    // Remove passed object from collection of associated Double objects.
+    bDoubleArray.remove(pBDoubleArray);
+  }
+
+  /**
+   * Method removes all objects from {@link #bDoubleArray}.
+   */
+  public void clearBDoubleArray( ) {
+    // Remove all objects from association "bDoubleArray".
+    bDoubleArray.clear();
   }
 
   /**
    * Method returns attribute {@link #aBigDecimalArray}.<br/>
    *
-   * @return {@link BigDecimal} Value to which {@link #aBigDecimalArray} is set.
+   * @return {@link Set<BigDecimal>} Value to which {@link #aBigDecimalArray} is set.
    */
-  public BigDecimal[] getABigDecimalArray( ) {
-    BigDecimal[] lReturnValue;
-    if (aBigDecimalArray != null) {
-      lReturnValue = new BigDecimal[aBigDecimalArray.length];
-      System.arraycopy(aBigDecimalArray, 0, lReturnValue, 0, aBigDecimalArray.length);
-    }
-    else {
-      lReturnValue = null;
-    }
-    return lReturnValue;
+  public Set<BigDecimal> getABigDecimalArray( ) {
+    // Return all BigDecimal objects as unmodifiable collection.
+    return Collections.unmodifiableSet(aBigDecimalArray);
   }
 
   /**
-   * Method sets attribute {@link #aBigDecimalArray}.<br/>
+   * Method adds the passed object to {@link #aBigDecimalArray}.
    *
-   * @param pABigDecimalArray Value to which {@link #aBigDecimalArray} should be set.
+   * @param pABigDecimalArray Object that should be added to {@link #aBigDecimalArray}. The parameter must not be null.
    */
-  public void setABigDecimalArray( BigDecimal[] pABigDecimalArray ) {
-    // Assign value to attribute
-    if (pABigDecimalArray != null) {
-      aBigDecimalArray = new BigDecimal[pABigDecimalArray.length];
-      System.arraycopy(pABigDecimalArray, 0, aBigDecimalArray, 0, pABigDecimalArray.length);
+  public void addToABigDecimalArray( BigDecimal pABigDecimalArray ) {
+    // Check parameter "pABigDecimalArray" for invalid value null.
+    Check.checkInvalidParameterNull(pABigDecimalArray, "pABigDecimalArray");
+    // Add passed object to collection of associated BigDecimal objects.
+    aBigDecimalArray.add(pABigDecimalArray);
+  }
+
+  /**
+   * Method adds all passed objects to {@link #aBigDecimalArray}.
+   *
+   * @param pABigDecimalArray Collection with all objects that should be added to {@link #aBigDecimalArray}. The
+   * parameter must not be null.
+   */
+  public void addToABigDecimalArray( Collection<BigDecimal> pABigDecimalArray ) {
+    // Check parameter "pABigDecimalArray" for invalid value null.
+    Check.checkInvalidParameterNull(pABigDecimalArray, "pABigDecimalArray");
+    // Add all passed objects.
+    for (BigDecimal lNextObject : pABigDecimalArray) {
+      this.addToABigDecimalArray(lNextObject);
     }
-    else {
-      aBigDecimalArray = null;
-    }
+  }
+
+  /**
+   * Method removes the passed object from {@link #aBigDecimalArray}.<br/>
+   *
+   * @param pABigDecimalArray Object that should be removed from {@link #aBigDecimalArray}. The parameter must not be
+   * null.
+   */
+  public void removeFromABigDecimalArray( BigDecimal pABigDecimalArray ) {
+    // Check parameter for invalid value null.
+    Check.checkInvalidParameterNull(pABigDecimalArray, "pABigDecimalArray");
+    // Remove passed object from collection of associated BigDecimal objects.
+    aBigDecimalArray.remove(pABigDecimalArray);
+  }
+
+  /**
+   * Method removes all objects from {@link #aBigDecimalArray}.
+   */
+  public void clearABigDecimalArray( ) {
+    // Remove all objects from association "aBigDecimalArray".
+    aBigDecimalArray.clear();
   }
 
   /**
    * Method returns attribute {@link #aStringArray}.<br/>
    *
-   * @return {@link String} Value to which {@link #aStringArray} is set.
+   * @return {@link Set<String>} Value to which {@link #aStringArray} is set.
    */
-  public String[] getAStringArray( ) {
-    String[] lReturnValue;
-    if (aStringArray != null) {
-      lReturnValue = new String[aStringArray.length];
-      System.arraycopy(aStringArray, 0, lReturnValue, 0, aStringArray.length);
-    }
-    else {
-      lReturnValue = null;
-    }
-    return lReturnValue;
+  public Set<String> getAStringArray( ) {
+    // Return all String objects as unmodifiable collection.
+    return Collections.unmodifiableSet(aStringArray);
   }
 
   /**
-   * Method sets attribute {@link #aStringArray}.<br/>
+   * Method adds the passed object to {@link #aStringArray}.
    *
-   * @param pAStringArray Value to which {@link #aStringArray} should be set.
+   * @param pAStringArray Object that should be added to {@link #aStringArray}. The parameter must not be null.
    */
-  public void setAStringArray( String[] pAStringArray ) {
-    // Assign value to attribute
-    if (pAStringArray != null) {
-      aStringArray = new String[pAStringArray.length];
-      System.arraycopy(pAStringArray, 0, aStringArray, 0, pAStringArray.length);
+  public void addToAStringArray( String pAStringArray ) {
+    // Check parameter "pAStringArray" for invalid value null.
+    Check.checkInvalidParameterNull(pAStringArray, "pAStringArray");
+    // Add passed object to collection of associated String objects.
+    aStringArray.add(pAStringArray);
+  }
+
+  /**
+   * Method adds all passed objects to {@link #aStringArray}.
+   *
+   * @param pAStringArray Collection with all objects that should be added to {@link #aStringArray}. The parameter must
+   * not be null.
+   */
+  public void addToAStringArray( Collection<String> pAStringArray ) {
+    // Check parameter "pAStringArray" for invalid value null.
+    Check.checkInvalidParameterNull(pAStringArray, "pAStringArray");
+    // Add all passed objects.
+    for (String lNextObject : pAStringArray) {
+      this.addToAStringArray(lNextObject);
     }
-    else {
-      aStringArray = null;
-    }
+  }
+
+  /**
+   * Method removes the passed object from {@link #aStringArray}.<br/>
+   *
+   * @param pAStringArray Object that should be removed from {@link #aStringArray}. The parameter must not be null.
+   */
+  public void removeFromAStringArray( String pAStringArray ) {
+    // Check parameter for invalid value null.
+    Check.checkInvalidParameterNull(pAStringArray, "pAStringArray");
+    // Remove passed object from collection of associated String objects.
+    aStringArray.remove(pAStringArray);
+  }
+
+  /**
+   * Method removes all objects from {@link #aStringArray}.
+   */
+  public void clearAStringArray( ) {
+    // Remove all objects from association "aStringArray".
+    aStringArray.clear();
   }
 
   /**
    * Method returns attribute {@link #bStringArray}.<br/>
    *
-   * @return {@link String} Value to which {@link #bStringArray} is set.
+   * @return {@link Set<String>} Value to which {@link #bStringArray} is set.
    */
-  public String[] getBStringArray( ) {
-    String[] lReturnValue;
-    if (bStringArray != null) {
-      lReturnValue = new String[bStringArray.length];
-      System.arraycopy(bStringArray, 0, lReturnValue, 0, bStringArray.length);
-    }
-    else {
-      lReturnValue = null;
-    }
-    return lReturnValue;
+  public Set<String> getBStringArray( ) {
+    // Return all String objects as unmodifiable collection.
+    return Collections.unmodifiableSet(bStringArray);
   }
 
   /**
-   * Method sets attribute {@link #bStringArray}.<br/>
+   * Method adds the passed object to {@link #bStringArray}.
    *
-   * @param pBStringArray Value to which {@link #bStringArray} should be set.
+   * @param pBStringArray Object that should be added to {@link #bStringArray}. The parameter must not be null.
    */
-  public void setBStringArray( String[] pBStringArray ) {
-    // Assign value to attribute
-    if (pBStringArray != null) {
-      bStringArray = new String[pBStringArray.length];
-      System.arraycopy(pBStringArray, 0, bStringArray, 0, pBStringArray.length);
+  public void addToBStringArray( String pBStringArray ) {
+    // Check parameter "pBStringArray" for invalid value null.
+    Check.checkInvalidParameterNull(pBStringArray, "pBStringArray");
+    // Add passed object to collection of associated String objects.
+    bStringArray.add(pBStringArray);
+  }
+
+  /**
+   * Method adds all passed objects to {@link #bStringArray}.
+   *
+   * @param pBStringArray Collection with all objects that should be added to {@link #bStringArray}. The parameter must
+   * not be null.
+   */
+  public void addToBStringArray( Collection<String> pBStringArray ) {
+    // Check parameter "pBStringArray" for invalid value null.
+    Check.checkInvalidParameterNull(pBStringArray, "pBStringArray");
+    // Add all passed objects.
+    for (String lNextObject : pBStringArray) {
+      this.addToBStringArray(lNextObject);
     }
-    else {
-      bStringArray = null;
-    }
+  }
+
+  /**
+   * Method removes the passed object from {@link #bStringArray}.<br/>
+   *
+   * @param pBStringArray Object that should be removed from {@link #bStringArray}. The parameter must not be null.
+   */
+  public void removeFromBStringArray( String pBStringArray ) {
+    // Check parameter for invalid value null.
+    Check.checkInvalidParameterNull(pBStringArray, "pBStringArray");
+    // Remove passed object from collection of associated String objects.
+    bStringArray.remove(pBStringArray);
+  }
+
+  /**
+   * Method removes all objects from {@link #bStringArray}.
+   */
+  public void clearBStringArray( ) {
+    // Remove all objects from association "bStringArray".
+    bStringArray.clear();
   }
 
   /**

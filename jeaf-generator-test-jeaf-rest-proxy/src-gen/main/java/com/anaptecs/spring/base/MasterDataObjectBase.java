@@ -391,7 +391,7 @@ public abstract class MasterDataObjectBase implements Serializable {
   /**
    * Method returns attribute {@link #derivedArray}.<br/>
    *
-   * @return int Value to which {@link #derivedArray} is set.
+   * @return int[] Value to which {@link #derivedArray} is set.
    */
   public abstract int[] getDerivedArray( );
 

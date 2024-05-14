@@ -5,6 +5,10 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -12,6 +16,7 @@ import javax.validation.ConstraintViolationException;
 import javax.validation.constraints.Size;
 
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
+import com.anaptecs.jeaf.xfun.api.checks.Check;
 
 /**
  * @author JEAF Generator
@@ -66,13 +71,13 @@ public class ChildAA extends ChildA {
   @Size(min = 10, max = 100)
   private int[] sizedArray;
 
-  private String[] requiredArray;
+  private Set<String> requiredArray;
 
   private BigIntegerCode bigIntegerCode;
 
   private IntegerCodeType integerCode;
 
-  private IntegerCode[] codes;
+  private Set<IntegerCode> codes;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
@@ -124,7 +129,7 @@ public class ChildAA extends ChildA {
    * @return {@link com.anaptecs.jeaf.junit.openapi.base.ChildAA}
    */
   public static ChildAA of( String pParentAttribute, int pChildAAttribute, byte pChildAAAttribute,
-      String[] pRequiredArray, BigIntegerCode pBigIntegerCode ) {
+      Set<String> pRequiredArray, BigIntegerCode pBigIntegerCode ) {
     ChildAA.Builder lBuilder = ChildAA.builder();
     lBuilder.setParentAttribute(pParentAttribute);
     lBuilder.setChildAAttribute(pChildAAttribute);
@@ -149,13 +154,13 @@ public class ChildAA extends ChildA {
     @Size(min = 10, max = 100)
     private int[] sizedArray;
 
-    private String[] requiredArray;
+    private Set<String> requiredArray;
 
     private BigIntegerCode bigIntegerCode;
 
     private IntegerCodeType integerCode;
 
-    private IntegerCode[] codes;
+    private Set<IntegerCode> codes;
 
     /**
      * Use {@link ChildAA#builder()} instead of private constructor to create new builder.
@@ -309,14 +314,29 @@ public class ChildAA extends ChildA {
      * @param pRequiredArray Collection to which {@link #requiredArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setRequiredArray( String[] pRequiredArray ) {
-      // Assign value to attribute
+    public Builder setRequiredArray( Set<String> pRequiredArray ) {
+      // To ensure immutability we have to copy the content of the passed collection.
       if (pRequiredArray != null) {
-        requiredArray = new String[pRequiredArray.length];
-        System.arraycopy(pRequiredArray, 0, requiredArray, 0, pRequiredArray.length);
+        requiredArray = new HashSet<String>(pRequiredArray);
       }
       else {
         requiredArray = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method adds the passed objects to association {@link #requiredArray}.<br/>
+     *
+     * @param pRequiredArray Array of objects that should be added to {@link #requiredArray}. The parameter may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToRequiredArray( String... pRequiredArray ) {
+      if (pRequiredArray != null) {
+        if (requiredArray == null) {
+          requiredArray = new HashSet<String>();
+        }
+        requiredArray.addAll(Arrays.asList(pRequiredArray));
       }
       return this;
     }
@@ -350,14 +370,29 @@ public class ChildAA extends ChildA {
      * @param pCodes Collection to which {@link #codes} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setCodes( IntegerCode[] pCodes ) {
-      // Assign value to attribute
+    public Builder setCodes( Set<IntegerCode> pCodes ) {
+      // To ensure immutability we have to copy the content of the passed collection.
       if (pCodes != null) {
-        codes = new IntegerCode[pCodes.length];
-        System.arraycopy(pCodes, 0, codes, 0, pCodes.length);
+        codes = new HashSet<IntegerCode>(pCodes);
       }
       else {
         codes = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method adds the passed objects to association {@link #codes}.<br/>
+     *
+     * @param pCodes Array of objects that should be added to {@link #codes}. The parameter may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToCodes( IntegerCode... pCodes ) {
+      if (pCodes != null) {
+        if (codes == null) {
+          codes = new HashSet<IntegerCode>();
+        }
+        codes.addAll(Arrays.asList(pCodes));
       }
       return this;
     }
@@ -415,7 +450,7 @@ public class ChildAA extends ChildA {
   /**
    * Method returns attribute {@link #sizedArray}.<br/>
    *
-   * @return int Value to which {@link #sizedArray} is set.
+   * @return int[] Value to which {@link #sizedArray} is set.
    */
   public int[] getSizedArray( ) {
     int[] lReturnValue;
@@ -448,34 +483,58 @@ public class ChildAA extends ChildA {
   /**
    * Method returns attribute {@link #requiredArray}.<br/>
    *
-   * @return {@link String} Value to which {@link #requiredArray} is set.
+   * @return {@link Set<String>} Value to which {@link #requiredArray} is set.
    */
-  public String[] getRequiredArray( ) {
-    String[] lReturnValue;
-    if (requiredArray != null) {
-      lReturnValue = new String[requiredArray.length];
-      System.arraycopy(requiredArray, 0, lReturnValue, 0, requiredArray.length);
-    }
-    else {
-      lReturnValue = null;
-    }
-    return lReturnValue;
+  public Set<String> getRequiredArray( ) {
+    // Return all String objects as unmodifiable collection.
+    return Collections.unmodifiableSet(requiredArray);
   }
 
   /**
-   * Method sets attribute {@link #requiredArray}.<br/>
+   * Method adds the passed object to {@link #requiredArray}.
    *
-   * @param pRequiredArray Value to which {@link #requiredArray} should be set.
+   * @param pRequiredArray Object that should be added to {@link #requiredArray}. The parameter must not be null.
    */
-  public void setRequiredArray( String[] pRequiredArray ) {
-    // Assign value to attribute
-    if (pRequiredArray != null) {
-      requiredArray = new String[pRequiredArray.length];
-      System.arraycopy(pRequiredArray, 0, requiredArray, 0, pRequiredArray.length);
+  public void addToRequiredArray( String pRequiredArray ) {
+    // Check parameter "pRequiredArray" for invalid value null.
+    Check.checkInvalidParameterNull(pRequiredArray, "pRequiredArray");
+    // Add passed object to collection of associated String objects.
+    requiredArray.add(pRequiredArray);
+  }
+
+  /**
+   * Method adds all passed objects to {@link #requiredArray}.
+   *
+   * @param pRequiredArray Collection with all objects that should be added to {@link #requiredArray}. The parameter
+   * must not be null.
+   */
+  public void addToRequiredArray( Collection<String> pRequiredArray ) {
+    // Check parameter "pRequiredArray" for invalid value null.
+    Check.checkInvalidParameterNull(pRequiredArray, "pRequiredArray");
+    // Add all passed objects.
+    for (String lNextObject : pRequiredArray) {
+      this.addToRequiredArray(lNextObject);
     }
-    else {
-      requiredArray = null;
-    }
+  }
+
+  /**
+   * Method removes the passed object from {@link #requiredArray}.<br/>
+   *
+   * @param pRequiredArray Object that should be removed from {@link #requiredArray}. The parameter must not be null.
+   */
+  public void removeFromRequiredArray( String pRequiredArray ) {
+    // Check parameter for invalid value null.
+    Check.checkInvalidParameterNull(pRequiredArray, "pRequiredArray");
+    // Remove passed object from collection of associated String objects.
+    requiredArray.remove(pRequiredArray);
+  }
+
+  /**
+   * Method removes all objects from {@link #requiredArray}.
+   */
+  public void clearRequiredArray( ) {
+    // Remove all objects from association "requiredArray".
+    requiredArray.clear();
   }
 
   /**
@@ -525,34 +584,57 @@ public class ChildAA extends ChildA {
   /**
    * Method returns attribute {@link #codes}.<br/>
    *
-   * @return {@link IntegerCode} Value to which {@link #codes} is set.
+   * @return {@link Set<IntegerCode>} Value to which {@link #codes} is set.
    */
-  public IntegerCode[] getCodes( ) {
-    IntegerCode[] lReturnValue;
-    if (codes != null) {
-      lReturnValue = new IntegerCode[codes.length];
-      System.arraycopy(codes, 0, lReturnValue, 0, codes.length);
-    }
-    else {
-      lReturnValue = null;
-    }
-    return lReturnValue;
+  public Set<IntegerCode> getCodes( ) {
+    // Return all IntegerCode objects as unmodifiable collection.
+    return Collections.unmodifiableSet(codes);
   }
 
   /**
-   * Method sets attribute {@link #codes}.<br/>
+   * Method adds the passed object to {@link #codes}.
    *
-   * @param pCodes Value to which {@link #codes} should be set.
+   * @param pCodes Object that should be added to {@link #codes}. The parameter must not be null.
    */
-  public void setCodes( IntegerCode[] pCodes ) {
-    // Assign value to attribute
-    if (pCodes != null) {
-      codes = new IntegerCode[pCodes.length];
-      System.arraycopy(pCodes, 0, codes, 0, pCodes.length);
+  public void addToCodes( IntegerCode pCodes ) {
+    // Check parameter "pCodes" for invalid value null.
+    Check.checkInvalidParameterNull(pCodes, "pCodes");
+    // Add passed object to collection of associated IntegerCode objects.
+    codes.add(pCodes);
+  }
+
+  /**
+   * Method adds all passed objects to {@link #codes}.
+   *
+   * @param pCodes Collection with all objects that should be added to {@link #codes}. The parameter must not be null.
+   */
+  public void addToCodes( Collection<IntegerCode> pCodes ) {
+    // Check parameter "pCodes" for invalid value null.
+    Check.checkInvalidParameterNull(pCodes, "pCodes");
+    // Add all passed objects.
+    for (IntegerCode lNextObject : pCodes) {
+      this.addToCodes(lNextObject);
     }
-    else {
-      codes = null;
-    }
+  }
+
+  /**
+   * Method removes the passed object from {@link #codes}.<br/>
+   *
+   * @param pCodes Object that should be removed from {@link #codes}. The parameter must not be null.
+   */
+  public void removeFromCodes( IntegerCode pCodes ) {
+    // Check parameter for invalid value null.
+    Check.checkInvalidParameterNull(pCodes, "pCodes");
+    // Remove passed object from collection of associated IntegerCode objects.
+    codes.remove(pCodes);
+  }
+
+  /**
+   * Method removes all objects from {@link #codes}.
+   */
+  public void clearCodes( ) {
+    // Remove all objects from association "codes".
+    codes.clear();
   }
 
   /**

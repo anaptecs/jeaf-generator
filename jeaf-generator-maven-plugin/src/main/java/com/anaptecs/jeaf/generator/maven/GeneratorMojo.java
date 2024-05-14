@@ -1067,6 +1067,14 @@ public class GeneratorMojo extends AbstractMojo {
   private Boolean generatePublicObjectView;
 
   /**
+   * Switch defines if arrays should only be generated for primitive types.
+   * 
+   * By default arrays are generated for every type if it is modeled as property and not as association.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean useArraysOnlyForPrimitives;
+
+  /**
    * Switch defines whether generated methods dealing with any kind of collections must ensure that the internal state
    * of an object can not be modified by accident. This will lead to get method that make use of
    * Collections.unmodifiableCollection(...). Builders that receive a collection as input will copy their content. This
@@ -1647,6 +1655,10 @@ public class GeneratorMojo extends AbstractMojo {
       lLog.info("Generate public view for POJO's / ServiceObjects: " + generatePublicObjectView);
     }
 
+    if (useArraysOnlyForPrimitives) {
+      lLog.info("Use arrays for primitives only:                   " + useArraysOnlyForPrimitives);
+    }
+
     // Print information about immutability behavior
     if (disableImmutabilityOfCollections) {
       lLog.info("Disable immutability for collections:             " + disableImmutabilityOfCollections);
@@ -1878,6 +1890,8 @@ public class GeneratorMojo extends AbstractMojo {
           generateNullChecksForToOneAssociations.toString());
 
       System.setProperty("switch.gen.public.object.view", generatePublicObjectView.toString());
+
+      System.setProperty("switch.gen.arrays.for.primitives.only", useArraysOnlyForPrimitives.toString());
 
       System.setProperty("switch.gen.disable.collection.immutability", disableImmutabilityOfCollections.toString());
       System.setProperty("switch.gen.disable.array.immutability", disableImmutabilityOfArrays.toString());

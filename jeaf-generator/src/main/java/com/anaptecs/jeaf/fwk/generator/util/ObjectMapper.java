@@ -15,6 +15,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import javax.lang.model.element.TypeElement;
+
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Dependency;
@@ -23,6 +25,7 @@ import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Stereotype;
+import org.eclipse.uml2.uml.TypedElement;
 
 public class ObjectMapper {
   enum PrimitiveType {
@@ -436,12 +439,26 @@ public class ObjectMapper {
   }
 
   public static boolean isDatatypeConverterRequired( NamedElement pSupplier, NamedElement pClient ) {
-    // A datatype converter is required if supplier and client are not of the same tpye and Java`s auto boxing is not
+    // A datatype converter is required if supplier and client are not of the same type and Java`s auto boxing is not
     // able to do the conversion.
     boolean lDatatypeConverterRequired;
     // Types are the same, so we need no converter.
-    String lSupplierFQN = Naming.getFullyQualifiedName(pSupplier);
-    String lClientFQN = Naming.getFullyQualifiedName(pClient);
+
+    String lSupplierFQN;
+    if (pSupplier instanceof TypedElement) {
+      lSupplierFQN = Naming.getFullyQualifiedName(((TypedElement) pSupplier).getType());
+    }
+    else {
+      lSupplierFQN = Naming.getFullyQualifiedName(pSupplier);
+    }
+    String lClientFQN;
+    if (pClient instanceof TypedElement) {
+      lClientFQN = Naming.getFullyQualifiedName(((TypedElement) pClient).getType());
+    }
+    else {
+      lClientFQN = Naming.getFullyQualifiedName(pClient);
+    }
+
     if (lSupplierFQN.equals(lClientFQN)) {
       lDatatypeConverterRequired = false;
     }
