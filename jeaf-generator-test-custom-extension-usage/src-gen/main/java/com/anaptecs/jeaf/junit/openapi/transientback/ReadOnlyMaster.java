@@ -192,6 +192,7 @@ public class ReadOnlyMaster extends Object implements ServiceObject {
       clientsXYZ = value;
       return this;
     }
+    // Ooops, I also forgot to implement that for our builders ;-(
 
     /**
      * Method creates a new instance of class ReadOnlyMaster. The object will be initialized with the values of the

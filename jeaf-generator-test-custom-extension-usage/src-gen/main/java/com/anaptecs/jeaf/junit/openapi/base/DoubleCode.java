@@ -105,6 +105,7 @@ public class DoubleCode extends Object implements ServiceObject {
       codeXYZ = value;
       return this;
     }
+    // Ooops, I also forgot to implement that for our builders ;-(
 
     /**
      * Method creates a new instance of class DoubleCode. The object will be initialized with the values of the builder.

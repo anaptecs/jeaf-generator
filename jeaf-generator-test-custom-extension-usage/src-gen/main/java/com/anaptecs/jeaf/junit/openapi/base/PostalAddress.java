@@ -228,6 +228,7 @@ public class PostalAddress extends Object implements ServiceObject {
       postalCodeXYZ = value;
       return this;
     }
+    // Ooops, I also forgot to implement that for our builders ;-(
 
     /**
      * Method creates a new instance of class PostalAddress. The object will be initialized with the values of the

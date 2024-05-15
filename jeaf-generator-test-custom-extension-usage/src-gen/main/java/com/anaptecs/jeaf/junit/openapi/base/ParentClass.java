@@ -311,6 +311,7 @@ public class ParentClass extends Object implements ServiceObject {
       legacyBankAccountsXYZ = value;
       return this;
     }
+    // Ooops, I also forgot to implement that for our builders ;-(
 
     /**
      * Method creates a new instance of class ParentClass. The object will be initialized with the values of the

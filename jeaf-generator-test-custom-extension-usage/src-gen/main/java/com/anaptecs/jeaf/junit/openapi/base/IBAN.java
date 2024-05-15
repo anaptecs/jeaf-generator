@@ -105,6 +105,7 @@ public class IBAN extends Object implements ServiceObject {
       valueXYZ = value;
       return this;
     }
+    // Ooops, I also forgot to implement that for our builders ;-(
 
     /**
      * Method creates a new instance of class IBAN. The object will be initialized with the values of the builder.

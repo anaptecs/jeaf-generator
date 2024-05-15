@@ -97,6 +97,7 @@ public class SwissGeoPosition extends GeoPosition {
       super.setLatitude(pLatitude);
       return this;
     }
+    // Ooops, I also forgot to implement that for our builders ;-(
 
     /**
      * Method creates a new instance of class SwissGeoPosition. The object will be initialized with the values of the

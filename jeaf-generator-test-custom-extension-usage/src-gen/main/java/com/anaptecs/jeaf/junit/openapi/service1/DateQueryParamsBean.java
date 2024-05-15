@@ -495,6 +495,7 @@ public class DateQueryParamsBean extends Object implements ServiceObject {
       sqlDateXYZ = value;
       return this;
     }
+    // Ooops, I also forgot to implement that for our builders ;-(
 
     /**
      * Method creates a new instance of class DateQueryParamsBean. The object will be initialized with the values of the

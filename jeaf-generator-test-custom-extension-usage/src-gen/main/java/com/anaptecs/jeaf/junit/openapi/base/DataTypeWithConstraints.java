@@ -109,6 +109,7 @@ public class DataTypeWithConstraints extends Object implements ServiceObject {
       intValueXYZ = value;
       return this;
     }
+    // Ooops, I also forgot to implement that for our builders ;-(
 
     /**
      * Method creates a new instance of class DataTypeWithConstraints. The object will be initialized with the values of

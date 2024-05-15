@@ -182,6 +182,7 @@ public abstract class ChildA extends ParentClass {
       childAAttributeXYZ = value;
       return this;
     }
+    // Ooops, I also forgot to implement that for our builders ;-(
   }
 
   /**

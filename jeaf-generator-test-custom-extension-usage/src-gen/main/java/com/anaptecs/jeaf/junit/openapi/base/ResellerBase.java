@@ -293,6 +293,7 @@ public abstract class ResellerBase extends Object implements ServiceObject, Iden
       languageXYZ = value;
       return this;
     }
+    // Ooops, I also forgot to implement that for our builders ;-(
 
     /**
      * Method creates a new instance of class Reseller. The object will be initialized with the values of the builder.

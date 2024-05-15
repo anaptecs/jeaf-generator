@@ -58,6 +58,7 @@ public abstract class StopPlaceRef extends PlaceRef {
       super.setName(pName);
       return this;
     }
+    // Ooops, I also forgot to implement that for our builders ;-(
   }
 
   public void doSomethingGenerated( ) {

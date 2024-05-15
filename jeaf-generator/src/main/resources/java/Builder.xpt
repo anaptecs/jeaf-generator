@@ -136,6 +136,8 @@ public static «IF isAbstract == true» abstract «ENDIF»class Builder«this.ge
 		«ENDFOREACH»
 	«ENDIF»
 	
+    «EXPAND jeafgenerator::api::ClassExtensionHook::CustomBuilderOperations»
+    
 	«IF this.isAbstract == false»
 	/**
 	 * Method creates a new instance of class «this.name». The object will be initialized with the values of the
@@ -277,6 +279,8 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
 		«ENDFOREACH»
 	«ENDIF»
 
+    «EXPAND jeafgenerator::api::ClassExtensionHook::CustomBuilderOperations»
+    
 	«IF this.isAbstract == false»
 	/**
 	 * Method creates a new instance of class «this.name». The object will be initialized with the values of the

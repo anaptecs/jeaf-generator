@@ -179,6 +179,7 @@ public class DataTypeUsage extends Object implements ServiceObject {
       codesXYZ = value;
       return this;
     }
+    // Ooops, I also forgot to implement that for our builders ;-(
 
     /**
      * Method creates a new instance of class DataTypeUsage. The object will be initialized with the values of the
