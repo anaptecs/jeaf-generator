@@ -290,6 +290,7 @@ public class TheReadOnlyServiceObject extends Object implements ServiceObject {
       inventoryTypeXYZ = value;
       return this;
     }
+    // Ooops, I also forgot to implement that for our builders ;-(
 
     /**
      * Method creates a new instance of class TheReadOnlyServiceObject. The object will be initialized with the values

@@ -249,6 +249,7 @@ public class DeprecatedContext extends Object implements ServiceObject {
       queryParamXYZ = value;
       return this;
     }
+    // Ooops, I also forgot to implement that for our builders ;-(
 
     /**
      * Method creates a new instance of class DeprecatedContext. The object will be initialized with the values of the

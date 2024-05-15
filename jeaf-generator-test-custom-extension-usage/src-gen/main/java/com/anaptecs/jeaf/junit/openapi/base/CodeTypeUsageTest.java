@@ -332,6 +332,7 @@ public class CodeTypeUsageTest extends Object implements ServiceObject {
       shortCodeXYZ = value;
       return this;
     }
+    // Ooops, I also forgot to implement that for our builders ;-(
 
     /**
      * Method creates a new instance of class CodeTypeUsageTest. The object will be initialized with the values of the

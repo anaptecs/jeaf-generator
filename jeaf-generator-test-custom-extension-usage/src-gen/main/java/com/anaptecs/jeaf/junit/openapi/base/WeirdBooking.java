@@ -483,6 +483,7 @@ public class WeirdBooking extends WeirdParent {
       inventoriesXYZ = value;
       return this;
     }
+    // Ooops, I also forgot to implement that for our builders ;-(
 
     /**
      * Method creates a new instance of class WeirdBooking. The object will be initialized with the values of the

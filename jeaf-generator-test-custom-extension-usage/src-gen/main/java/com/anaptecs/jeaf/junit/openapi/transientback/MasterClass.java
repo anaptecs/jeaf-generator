@@ -247,6 +247,7 @@ public class MasterClass extends Object implements ServiceObject {
       singleClientXYZ = value;
       return this;
     }
+    // Ooops, I also forgot to implement that for our builders ;-(
 
     /**
      * Method creates a new instance of class MasterClass. The object will be initialized with the values of the

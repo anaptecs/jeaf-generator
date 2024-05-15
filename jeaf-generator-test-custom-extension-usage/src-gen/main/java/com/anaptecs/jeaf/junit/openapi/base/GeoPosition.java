@@ -159,6 +159,7 @@ public class GeoPosition extends PlaceRef {
       latitudeXYZ = value;
       return this;
     }
+    // Ooops, I also forgot to implement that for our builders ;-(
 
     /**
      * Method creates a new instance of class GeoPosition. The object will be initialized with the values of the

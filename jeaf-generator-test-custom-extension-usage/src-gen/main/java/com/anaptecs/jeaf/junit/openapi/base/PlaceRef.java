@@ -93,6 +93,7 @@ public abstract class PlaceRef extends Object implements ServiceObject {
       nameXYZ = value;
       return this;
     }
+    // Ooops, I also forgot to implement that for our builders ;-(
   }
 
   /**

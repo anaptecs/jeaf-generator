@@ -187,6 +187,7 @@ public abstract class PersonBase extends Partner {
       firstNameXYZ = value;
       return this;
     }
+    // Ooops, I also forgot to implement that for our builders ;-(
 
     /**
      * Method creates a new instance of class Person. The object will be initialized with the values of the builder.

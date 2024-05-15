@@ -337,6 +337,7 @@ public class Context extends Object implements ServiceObject {
       intCodeXYZ = value;
       return this;
     }
+    // Ooops, I also forgot to implement that for our builders ;-(
 
     /**
      * Method creates a new instance of class Context. The object will be initialized with the values of the builder.

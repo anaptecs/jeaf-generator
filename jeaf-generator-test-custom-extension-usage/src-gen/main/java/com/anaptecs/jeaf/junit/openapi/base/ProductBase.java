@@ -627,6 +627,7 @@ public abstract class ProductBase extends Object implements ServiceObject, Ident
       uriXYZ = value;
       return this;
     }
+    // Ooops, I also forgot to implement that for our builders ;-(
 
     /**
      * Method creates a new instance of class Product. The object will be initialized with the values of the builder.

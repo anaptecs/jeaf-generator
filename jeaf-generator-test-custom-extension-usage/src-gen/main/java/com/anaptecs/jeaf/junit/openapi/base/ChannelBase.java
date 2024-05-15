@@ -252,6 +252,7 @@ public abstract class ChannelBase extends Object implements ServiceObject {
       selfServiceChannelXYZ = value;
       return this;
     }
+    // Ooops, I also forgot to implement that for our builders ;-(
 
     /**
      * Method creates a new instance of class Channel. The object will be initialized with the values of the builder.

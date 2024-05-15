@@ -1110,6 +1110,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
       bStringArrayXYZ = value;
       return this;
     }
+    // Ooops, I also forgot to implement that for our builders ;-(
 
     /**
      * Method creates a new instance of class PrimitiveArraysObjectWithRestrictions. The object will be initialized with

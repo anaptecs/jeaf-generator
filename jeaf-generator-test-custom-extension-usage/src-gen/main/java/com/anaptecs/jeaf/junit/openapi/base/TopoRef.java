@@ -71,6 +71,7 @@ public class TopoRef extends PlaceRef {
       super.setName(pName);
       return this;
     }
+    // Ooops, I also forgot to implement that for our builders ;-(
 
     /**
      * Method creates a new instance of class TopoRef. The object will be initialized with the values of the builder.

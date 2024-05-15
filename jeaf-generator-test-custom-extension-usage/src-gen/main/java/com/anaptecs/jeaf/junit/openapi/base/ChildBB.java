@@ -454,6 +454,7 @@ public class ChildBB extends ChildB {
       deprecatedArrayXYZ = value;
       return this;
     }
+    // Ooops, I also forgot to implement that for our builders ;-(
 
     /**
      * Method creates a new instance of class ChildBB. The object will be initialized with the values of the builder.

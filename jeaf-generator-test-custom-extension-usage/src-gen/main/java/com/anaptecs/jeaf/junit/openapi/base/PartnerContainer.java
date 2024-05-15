@@ -138,6 +138,7 @@ public class PartnerContainer extends Object implements ServiceObject {
       partnersXYZ = value;
       return this;
     }
+    // Ooops, I also forgot to implement that for our builders ;-(
 
     /**
      * Method creates a new instance of class PartnerContainer. The object will be initialized with the values of the
