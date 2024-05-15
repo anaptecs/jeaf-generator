@@ -8,6 +8,7 @@
 «EXTENSION entity::ModelProperties»
 «EXTENSION functions::Internal»
 «EXTENSION functions::SoftLink»
+«EXTENSION functions::AddToJSON»
 
 // this properties should be processed
 // for now all properties should be processed
@@ -172,12 +173,22 @@
 «DEFINE AbstractGetterForDerivedProperty FOR Property»
     «EXPAND functions::Javadoc::JavadocForPropertyGetter»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
+    «IF this.isAddToJSON()»@com.fasterxml.jackson.annotation.JsonGetter«ENDIF»
     «IF this.isInternalProperty() == false»public«ENDIF» abstract «IF this.association == null»«this.fqn()»«ELSE»«this.fqn()»«ENDIF» «asGetter()»();
+    
+    «IF this.isAddToJSON()»
+        @com.fasterxml.jackson.annotation.JsonSetter
+        «IF this.isInternalProperty() == false»public«ENDIF» void set«name.toFirstUpper()»(«this.fqn()» «asParameter()») {
+          // Actively ignore passed objects as this is just a derived property. Unfortunately there is no more elegant variant to not run into problems during deserialization.
+        }
+    «ENDIF»
 «ENDDEFINE»
 
 «DEFINE EmptyGetterImplForDerivedProperty FOR Property»
     «EXPAND functions::Javadoc::JavadocForPropertyGetter»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
+    «IF this.isAddToJSON()»@com.fasterxml.jackson.annotation.JsonGetter«ENDIF»
+    @Override
     «IF this.isInternalProperty() == false»public«ENDIF» «IF this.association == null»«this.fqn()»«ELSE»«this.fqn()»«ENDIF» «asGetter()»() {
         // TODO Implement method for derived property "«this.name»".
         «IF this.type.isPrimitiveType() && this.isMultivalued() == false»
@@ -521,9 +532,9 @@
         «EXPAND GenerateInitOpposite»
 	}
 	
-  «EXPAND functions::Javadoc::JavadocForPropertyAddAll»
-  «EXPAND java::Helper::GenerateDeprecationAnnotation-»
-  «IF this.isInternalProperty() == false && this.belongsToTransientBidirectionalBackReference() == false»public«ENDIF» void addTo«name.toFirstUpper()» (java.util.Collection<«this.type.fqn()»> «asParameter()») {
+    «EXPAND functions::Javadoc::JavadocForPropertyAddAll»
+    «EXPAND java::Helper::GenerateDeprecationAnnotation-»
+    «IF this.isInternalProperty() == false && this.belongsToTransientBidirectionalBackReference() == false»public«ENDIF» void addTo«name.toFirstUpper()» (java.util.Collection<«this.type.fqn()»> «asParameter()») {
         «IF isTargetRuntimeJEAF()»
         // Check parameter "«asParameter()»" for invalid value null.
         com.anaptecs.jeaf.xfun.api.checks.Check.checkInvalidParameterNull(«asParameter()», "«asParameter()»");
@@ -533,8 +544,7 @@
         for («this.type.fqn()» lNextObject : «asParameter()») {
           this.addTo«name.toFirstUpper()»(lNextObject);
         }
-        
-  }
+    }
   
     /**
      * Method removes the passed object from {@link #«asInstanceVar()»}.<br/>     

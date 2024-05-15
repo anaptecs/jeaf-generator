@@ -1,0 +1,9 @@
+extension java::GeneratorCommons;
+
+
+cached boolean isAddToJSON(uml::Element element) :
+  element.isStereotypeApplied("AddToJSON");
+  
+cached JMM::AddToJSON asAddToJSON(uml::Element element):
+    (JMM::AddToJSON) element;
+    
