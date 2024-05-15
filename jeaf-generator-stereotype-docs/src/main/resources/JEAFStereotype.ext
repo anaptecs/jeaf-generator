@@ -1,5 +1,0 @@
-cached String displayName(JMM::JEAFStereotype stereotype):
-    "«" + stereotype.name + "»";
-    
-cached String replaceBreaksForMarkup(String element): 
-    element.replaceAll("\n", "<br>");
