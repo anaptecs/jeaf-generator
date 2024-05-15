@@ -25,90 +25,12 @@
 			<artifactId>jeaf-validation-api-spring</artifactId>
 			<version>${jeaf.validation.api.version}</version>
 		</dependency>
-
-		<!--
-		<dependency>
-			<groupId>com.anaptecs.jeaf.validation</groupId>
-			<artifactId>jeaf-validation-api-spring</artifactId>
-			<version>${jeaf.validation.api.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>com.anaptecs.jeaf.rest</groupId>
-			<artifactId>jeaf-rest-resource-api</artifactId>
-			<version>${jeaf.rest.api.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>com.anaptecs.jeaf.rest</groupId>
-			<artifactId>jeaf-rest-composite-type-api</artifactId>
-			<version>${jeaf.rest.api.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>com.anaptecs.jeaf.rest</groupId>
-			<artifactId>jeaf-rest-composite-type-impl-kryo</artifactId>
-			<version>${jeaf.rest.impl.version}</version>
-		</dependency>
-
-		<dependency>
-		    <groupId>org.springframework.boot</groupId>
-		    <artifactId>spring-boot-starter-web</artifactId>
-		    <version>${spring.boot.version}</version>
-		</dependency>
-
-		<dependency>
-		    <groupId>org.springframework.boot</groupId>
-		    <artifactId>spring-boot-starter-validation</artifactId>
-		    <version>${spring.boot.version}</version>
-		</dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <version>${spring.boot.version}</version>
-            <scope>test</scope>            
-        </dependency>
-
-		<dependency>
-			<groupId>javax.validation</groupId>
-			<artifactId>validation-api</artifactId>
-			<version>${validation-api.version}</version>
-		</dependency>
 		
 		<dependency>
-			<groupId>javax</groupId>
-			<artifactId>javaee-api</artifactId>
-			<version>${javaee-api.version}</version>
-			<scope>provided</scope>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>${jackson.version}</version>
 		</dependency>
-
-		<dependency>
-		    <groupId>com.fasterxml.jackson.core</groupId>
-		    <artifactId>jackson-databind</artifactId>
-		    <version>${jackson.version}</version>
-		</dependency>
-		
-		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter-api</artifactId>
-			<version>${junit.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.apache.httpcomponents.client5</groupId>
-			<artifactId>httpclient5</artifactId>
-			<version>${apache.httpclient5.version}</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-		    <groupId>nl.jqno.equalsverifier</groupId>
-		    <artifactId>equalsverifier</artifactId>
-		    <version>${equalsverifier.version}</version>
-		    <scope>test</scope>
-		</dependency>
-		-->
 
 		<dependency>
 			<groupId>com.anaptecs.jeaf.x-fun</groupId>

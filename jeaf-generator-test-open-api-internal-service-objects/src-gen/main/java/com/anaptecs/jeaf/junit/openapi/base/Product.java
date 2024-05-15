@@ -91,6 +91,7 @@ public class Product extends ProductBase {
    * @return {@link Set<Channel>} Value to which {@link #theChannels} is set. The method never returns null and the
    * returned collection is modifiable.
    */
+  @Override
   public Set<Channel> getTheChannels( ) {
     // TODO Implement method for derived property "theChannels".
     return null;

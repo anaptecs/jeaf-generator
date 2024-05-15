@@ -11,6 +11,9 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonSetter;
+
 public abstract class MasterDataObjectBase {
   /**
    * Constant for the name of attribute "dataUnits".
@@ -342,14 +345,28 @@ public abstract class MasterDataObjectBase {
    * @return {@link List<DataUnit>} Value to which {@link #derivedDataUnits} is set. The method never returns null and
    * the returned collection is unmodifiable.
    */
+  @JsonGetter
   public abstract List<DataUnit> getDerivedDataUnits( );
+
+  @JsonSetter
+  public void setDerivedDataUnits( List<DataUnit> pDerivedDataUnits ) {
+    // Actively ignore passed objects as this is just a derived property. Unfortunately there is no more elegant variant
+    // to not run into problems during deserialization.
+  }
 
   /**
    * Method returns association {@link #derivedEntity}.<br/>
    *
    * @return {@link Entity} Value to which {@link #derivedEntity} is set.
    */
+  @JsonGetter
   public abstract Entity getDerivedEntity( );
+
+  @JsonSetter
+  public void setDerivedEntity( Entity pDerivedEntity ) {
+    // Actively ignore passed objects as this is just a derived property. Unfortunately there is no more elegant variant
+    // to not run into problems during deserialization.
+  }
 
   /**
    * Method returns attribute {@link #derivedArray}.<br/>

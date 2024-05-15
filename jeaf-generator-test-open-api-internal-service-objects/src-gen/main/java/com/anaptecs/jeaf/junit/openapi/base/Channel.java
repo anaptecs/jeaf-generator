@@ -74,6 +74,7 @@ public class Channel extends ChannelBase {
    *
    * @return {@link String} Value to which {@link #derivedSomething} is set.
    */
+  @Override
   public String getDerivedSomething( ) {
     // TODO Implement method for derived property "derivedSomething".
     return null;

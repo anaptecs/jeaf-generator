@@ -7,6 +7,8 @@ package com.anaptecs.spring.base;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
+
 public class MasterDataObject extends MasterDataObjectBase {
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
@@ -55,6 +57,7 @@ public class MasterDataObject extends MasterDataObjectBase {
    *
    * @return {@link String} Value to which {@link #derivedProperty} is set.
    */
+  @Override
   public String getDerivedProperty( ) {
     // TODO Implement method for derived property "derivedProperty".
     return null;
@@ -66,6 +69,8 @@ public class MasterDataObject extends MasterDataObjectBase {
    * @return {@link List<DataUnit>} Value to which {@link #derivedDataUnits} is set. The method never returns null and
    * the returned collection is unmodifiable.
    */
+  @JsonGetter
+  @Override
   public List<DataUnit> getDerivedDataUnits( ) {
     // TODO Implement method for derived property "derivedDataUnits".
     return null;
@@ -76,6 +81,8 @@ public class MasterDataObject extends MasterDataObjectBase {
    *
    * @return {@link Entity} Value to which {@link #derivedEntity} is set.
    */
+  @JsonGetter
+  @Override
   public Entity getDerivedEntity( ) {
     // TODO Implement method for derived property "derivedEntity".
     return null;
@@ -86,6 +93,7 @@ public class MasterDataObject extends MasterDataObjectBase {
    *
    * @return int[] Value to which {@link #derivedArray} is set.
    */
+  @Override
   public int[] getDerivedArray( ) {
     // TODO Implement method for derived property "derivedArray".
     return null;
@@ -96,6 +104,7 @@ public class MasterDataObject extends MasterDataObjectBase {
    *
    * @return boolean Value to which {@link #derivedBoolean} is set.
    */
+  @Override
   public boolean getDerivedBoolean( ) {
     // TODO Implement method for derived property "derivedBoolean".
     return false;
@@ -106,6 +115,7 @@ public class MasterDataObject extends MasterDataObjectBase {
    *
    * @return int Value to which {@link #derivedInt} is set.
    */
+  @Override
   public int getDerivedInt( ) {
     // TODO Implement method for derived property "derivedInt".
     return 0;
@@ -116,6 +126,7 @@ public class MasterDataObject extends MasterDataObjectBase {
    *
    * @return {@link String} Value to which {@link #derivedString} is set.
    */
+  @Override
   public String getDerivedString( ) {
     // TODO Implement method for derived property "derivedString".
     return null;
