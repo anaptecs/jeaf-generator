@@ -14,7 +14,7 @@ This repository contains the source code for JEAF Generator. JEAF Generator can 
 ## How to use it?
 JEAF Generator is provided as Maven Plugin and so can be easily integrated into your build process.
 
-For further details please have a look on [Maven Plugin Configuration](https://www.jeaf-generator.io/developer-guide/maven-plugin-configuration/) in our developer guide.
+For further details please have a look on [Maven Integration](https://www.jeaf-generator.io/developer-guide/maven-integration/) in our developer guide.
 
 <br>
 
