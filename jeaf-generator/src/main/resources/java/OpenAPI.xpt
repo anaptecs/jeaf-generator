@@ -580,10 +580,14 @@ components:
         «ENDIF-»
         «IF this.hasLiteralComment()-»
         «IF this.extensibleEnum == true-»
+        «IF this.hasComment() -»
         <br><br>
+        «ENDIF-»
         Known Values:
         «ELSE-»
+        «IF this.hasComment() -»
         <br><br>
+        «ENDIF-»
         Valid Values:
         «ENDIF-»
         «FOREACH this.getPulicLiterals() AS literal-»
