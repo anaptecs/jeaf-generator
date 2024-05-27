@@ -32,7 +32,7 @@ import openapitools.JSON;
 @JsonPropertyOrder({
   LinkObject.JSON_PROPERTY_HREF
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.5.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
 public class LinkObject {
   public static final String JSON_PROPERTY_HREF = "href";
   private String href;

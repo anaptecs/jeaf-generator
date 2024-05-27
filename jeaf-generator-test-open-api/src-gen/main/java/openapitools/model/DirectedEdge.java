@@ -35,7 +35,7 @@ import openapitools.JSON;
   DirectedEdge.JSON_PROPERTY_END,
   DirectedEdge.JSON_PROPERTY_PREVIOUS_NAME
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.5.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
 public class DirectedEdge {
   public static final String JSON_PROPERTY_START = "start";
   private Stop start;
