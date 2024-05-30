@@ -2,7 +2,7 @@
 
 <br>
 
-## com.anaptecs.jeaf.accounting
+## Package `com.anaptecs.jeaf.accounting`
 
 | Type     | Legacy Name | Description  |
 |----------|---------------------|------------|
@@ -27,7 +27,7 @@ SwiftAccount |   |  |
 
 <br>
 
-## com.anaptecs.jeaf.accounting.impl
+## Package `com.anaptecs.jeaf.accounting.impl`
 
 | Type     | Legacy Name | Description  |
 |----------|---------------------|------------|
@@ -39,7 +39,7 @@ SchufaRequest |   |  |
 
 <br>
 
-## com.anaptecs.jeaf.accounting.impl.pojo
+## Package `com.anaptecs.jeaf.accounting.impl.pojo`
 
 | Type     | Legacy Name | Description  |
 |----------|---------------------|------------|
@@ -50,7 +50,7 @@ Partner |   |  |
 
 <br>
 
-## com.anaptecs.jeaf.accounting.validation
+## Package `com.anaptecs.jeaf.accounting.validation`
 
 | Type     | Legacy Name | Description  |
 |----------|---------------------|------------|
@@ -58,7 +58,7 @@ CustomEnum |   |  |
 
 <br>
 
-## com.anaptecs.jeaf.junit
+## Package `com.anaptecs.jeaf.junit`
 
 | Type     | Legacy Name | Description  |
 |----------|---------------------|------------|
@@ -255,7 +255,7 @@ YetAnotherPOJO |   |  |
 
 <br>
 
-## com.anaptecs.jeaf.junit.core
+## Package `com.anaptecs.jeaf.junit.core`
 
 | Type     | Legacy Name | Description  |
 |----------|---------------------|------------|
@@ -288,7 +288,7 @@ WrapperTypesServiceObject |   |  |
 
 <br>
 
-## com.anaptecs.jeaf.junit.deprecation
+## Package `com.anaptecs.jeaf.junit.deprecation`
 
 | Type     | Legacy Name | Description  |
 |----------|---------------------|------------|
@@ -297,7 +297,7 @@ JustAType |   |  |
 
 <br>
 
-## com.anaptecs.jeaf.junit.domainObjects
+## Package `com.anaptecs.jeaf.junit.domainObjects`
 
 | Type     | Legacy Name | Description  |
 |----------|---------------------|------------|
@@ -305,7 +305,7 @@ VerkehrsmittelTyp |   |  |
 
 <br>
 
-## com.anaptecs.jeaf.junit.generics
+## Package `com.anaptecs.jeaf.junit.generics`
 
 | Type     | Legacy Name | Description  |
 |----------|---------------------|------------|
@@ -318,7 +318,7 @@ YetAnotherPOJO |   |  |
 
 <br>
 
-## com.anaptecs.jeaf.junit.objectmapping
+## Package `com.anaptecs.jeaf.junit.objectmapping`
 
 | Type     | Legacy Name | Description  |
 |----------|---------------------|------------|
@@ -329,7 +329,7 @@ PrimitiveReferenceServiceObject |   |  |
 
 <br>
 
-## com.anaptecs.jeaf.junit.openapi.base
+## Package `com.anaptecs.jeaf.junit.openapi.base`
 
 | Type     | Legacy Name | Description  |
 |----------|---------------------|------------|
@@ -422,7 +422,7 @@ WeirdParent |   |  |
 
 <br>
 
-## com.anaptecs.jeaf.junit.openapi.composite
+## Package `com.anaptecs.jeaf.junit.openapi.composite`
 
 | Type     | Legacy Name | Description  |
 |----------|---------------------|------------|
@@ -430,7 +430,7 @@ ComplexBookingID |   |  |
 
 <br>
 
-## com.anaptecs.jeaf.junit.openapi.datatypes
+## Package `com.anaptecs.jeaf.junit.openapi.datatypes`
 
 | Type     | Legacy Name | Description  |
 |----------|---------------------|------------|
@@ -438,7 +438,7 @@ MyDataType |   |  |
 
 <br>
 
-## com.anaptecs.jeaf.junit.openapi.datatypeusage
+## Package `com.anaptecs.jeaf.junit.openapi.datatypeusage`
 
 | Type     | Legacy Name | Description  |
 |----------|---------------------|------------|
@@ -446,7 +446,7 @@ DataTypeUsage |   |  |
 
 <br>
 
-## com.anaptecs.jeaf.junit.openapi.service1
+## Package `com.anaptecs.jeaf.junit.openapi.service1`
 
 | Type     | Legacy Name | Description  |
 |----------|---------------------|------------|
@@ -458,7 +458,7 @@ TechnicalHeaderContext |   |  |
 
 <br>
 
-## com.anaptecs.jeaf.junit.openapi.techbase
+## Package `com.anaptecs.jeaf.junit.openapi.techbase`
 
 | Type     | Legacy Name | Description  |
 |----------|---------------------|------------|
@@ -469,7 +469,7 @@ TechParent |   |  |
 
 <br>
 
-## com.anaptecs.jeaf.junit.openapi.transientback
+## Package `com.anaptecs.jeaf.junit.openapi.transientback`
 
 | Type     | Legacy Name | Description  |
 |----------|---------------------|------------|
@@ -480,7 +480,7 @@ ReadOnlyMaster |   |  |
 
 <br>
 
-## com.anaptecs.jeaf.junit.otherpackage
+## Package `com.anaptecs.jeaf.junit.otherpackage`
 
 | Type     | Legacy Name | Description  |
 |----------|---------------------|------------|
@@ -490,7 +490,7 @@ Output |   |  |
 
 <br>
 
-## com.anaptecs.jeaf.junit.pojo
+## Package `com.anaptecs.jeaf.junit.pojo`
 
 | Type     | Legacy Name | Description  |
 |----------|---------------------|------------|
@@ -529,7 +529,7 @@ SoftLinkPartner |   |  |
 
 <br>
 
-## com.anaptecs.jeaf.junit.pojo.softlink
+## Package `com.anaptecs.jeaf.junit.pojo.softlink`
 
 | Type     | Legacy Name | Description  |
 |----------|---------------------|------------|
@@ -540,7 +540,7 @@ SoftLinkPartner |   |  |
 
 <br>
 
-## com.anaptecs.jeaf.junit.pojo.transientback
+## Package `com.anaptecs.jeaf.junit.pojo.transientback`
 
 | Type     | Legacy Name | Description  |
 |----------|---------------------|------------|
@@ -551,7 +551,7 @@ ReadOnlyMaster |   |  |
 
 <br>
 
-## com.anaptecs.jeaf.junit.product
+## Package `com.anaptecs.jeaf.junit.product`
 
 | Type     | Legacy Name | Description  |
 |----------|---------------------|------------|
@@ -563,7 +563,7 @@ VAT |   |  |
 
 <br>
 
-## com.anaptecs.jeaf.junit.product.pojo
+## Package `com.anaptecs.jeaf.junit.product.pojo`
 
 | Type     | Legacy Name | Description  |
 |----------|---------------------|------------|
@@ -574,7 +574,7 @@ VAT |   |  |
 
 <br>
 
-## com.anaptecs.jeaf.junit.rest.generics
+## Package `com.anaptecs.jeaf.junit.rest.generics`
 
 | Type     | Legacy Name | Description  |
 |----------|---------------------|------------|
