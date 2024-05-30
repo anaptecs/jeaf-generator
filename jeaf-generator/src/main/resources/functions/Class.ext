@@ -36,8 +36,8 @@ cached boolean generateOfOperationForClass(uml::Class class):
     
 cached List[uml::Property] getAllAttributesForOfOperation(uml::Class class):
     if class.useOnlyRequiredPropertiesForOfMethod()
-    then class.getAllAttributesFromHierarchy().select(e|e.isPropertySuppressed() == false && e.belongsToTransientBidirectionalBackReference() == false && e.isStatic == false && e.isRequiredProperty())
-    else class.getAllAttributesFromHierarchy().select(e|e.isPropertySuppressed() == false && e.belongsToTransientBidirectionalBackReference() == false && e.isStatic == false);
+    then class.getAllPropertiesFromHierarchy().select(e|e.isPropertySuppressed() == false && e.belongsToTransientBidirectionalBackReference() == false && e.isStatic == false && e.isRequiredProperty())
+    else class.getAllPropertiesFromHierarchy().select(e|e.isPropertySuppressed() == false && e.belongsToTransientBidirectionalBackReference() == false && e.isStatic == false);
     //class.getAllAttributes().select(e|e.isPropertySuppressed() == false);
     
 private boolean useOnlyRequiredPropertiesForOfMethod(uml::Class class):
@@ -52,6 +52,9 @@ private String getOfMethodType(uml::Class class):
     else 
         if class.isServiceObject()
         then class.asServiceObject().ofMethod.name;
+        
+cached List[uml::Property] getAllPropertiesFromHierarchy(uml::Class class):
+  JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.getAllAttributesFromHierarchy(org.eclipse.uml2.uml.Element);   
         
 cached boolean suppressSubtypesMapping(uml::Class class):
   if class.isStereotypeApplied("POJO")

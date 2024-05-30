@@ -5,6 +5,7 @@
 «EXTENSION entity::ModelProperties»
 «EXTENSION java::OpenAPIFunctions»
 «EXTENSION functions::Class»
+«EXTENSION functions::AddToJSON»
 «EXTENSION functions::SystemProperties»
 
 «IMPORT uml»
@@ -38,6 +39,11 @@
 		     isGetterVisibility = com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.NONE,
 		     setterVisibility = com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.NONE)
 		«ENDIF»
+	    «IF this.hasAddToJSONProperty()»
+	        @com.fasterxml.jackson.annotation.JsonPropertyOrder(value = {
+	           «FOREACH this.getAllPropertiesFromHierarchy() AS property SEPARATOR ", "»"«property.name»"«ENDFOREACH»
+	        })
+	    «ENDIF»
 	«ENDIF»
 «ENDDEFINE»
 

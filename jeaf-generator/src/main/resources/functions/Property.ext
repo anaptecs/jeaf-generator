@@ -15,7 +15,6 @@ cached boolean belongsToBidirectionalAssociation(uml::Property property):
     
 cached boolean belongsToTransientBidirectionalAssociation(uml::Property property):
     property.belongsToBidirectionalAssociation() && property.association.getAllAttributes().selectFirst(e|e.isTransient()) != null;
-    
 
     
 
