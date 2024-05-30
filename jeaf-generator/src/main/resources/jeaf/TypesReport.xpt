@@ -19,7 +19,7 @@
 
 «IF groupTypesReportByPackage() -»
 «FOREACH this.getPackagesForTypesReport() AS package-»
-## «package.qualifiedName()»
+## Package `«package.qualifiedName()»`
 
 «EXPAND TypesTable FOR package.getAllElementsForTypesReport()»
 <br>
