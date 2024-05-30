@@ -7,8 +7,6 @@ package com.anaptecs.spring.base;
 
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonGetter;
-
 public class MasterDataObject extends MasterDataObjectBase {
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
@@ -69,7 +67,6 @@ public class MasterDataObject extends MasterDataObjectBase {
    * @return {@link List<DataUnit>} Value to which {@link #derivedDataUnits} is set. The method never returns null and
    * the returned collection is unmodifiable.
    */
-  @JsonGetter
   @Override
   public List<DataUnit> getDerivedDataUnits( ) {
     // TODO Implement method for derived property "derivedDataUnits".
@@ -81,7 +78,6 @@ public class MasterDataObject extends MasterDataObjectBase {
    *
    * @return {@link Entity} Value to which {@link #derivedEntity} is set.
    */
-  @JsonGetter
   @Override
   public Entity getDerivedEntity( ) {
     // TODO Implement method for derived property "derivedEntity".

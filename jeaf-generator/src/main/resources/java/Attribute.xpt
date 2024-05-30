@@ -173,10 +173,10 @@
 «DEFINE AbstractGetterForDerivedProperty FOR Property»
     «EXPAND functions::Javadoc::JavadocForPropertyGetter»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
-    «IF this.isAddToJSON()»@com.fasterxml.jackson.annotation.JsonGetter«ENDIF»
+    «IF generateJacksonAnnotations() && this.isAddToJSON()»@com.fasterxml.jackson.annotation.JsonGetter«ENDIF»
     «IF this.isInternalProperty() == false»public«ENDIF» abstract «IF this.association == null»«this.fqn()»«ELSE»«this.fqn()»«ENDIF» «asGetter()»();
     
-    «IF this.isAddToJSON()»
+    «IF generateJacksonAnnotations() && this.isAddToJSON()»
         @com.fasterxml.jackson.annotation.JsonSetter
         «IF this.isInternalProperty() == false»public«ENDIF» void set«name.toFirstUpper()»(«this.fqn()» «asParameter()») {
           // Actively ignore passed objects as this is just a derived property. Unfortunately there is no more elegant variant to not run into problems during deserialization.
@@ -187,7 +187,7 @@
 «DEFINE EmptyGetterImplForDerivedProperty FOR Property»
     «EXPAND functions::Javadoc::JavadocForPropertyGetter»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
-    «IF this.isAddToJSON()»@com.fasterxml.jackson.annotation.JsonGetter«ENDIF»
+    «IF generateJacksonAnnotations() && this.isAddToJSON()»@com.fasterxml.jackson.annotation.JsonGetter«ENDIF»
     @Override
     «IF this.isInternalProperty() == false»public«ENDIF» «IF this.association == null»«this.fqn()»«ELSE»«this.fqn()»«ENDIF» «asGetter()»() {
         // TODO Implement method for derived property "«this.name»".

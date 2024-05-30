@@ -1,5 +1,5 @@
 extension java::GeneratorCommons;
-
+extension functions::Class;
 
 cached boolean isAddToJSON(uml::Element element) :
   element.isStereotypeApplied("AddToJSON");
@@ -7,3 +7,5 @@ cached boolean isAddToJSON(uml::Element element) :
 cached JMM::AddToJSON asAddToJSON(uml::Element element):
     (JMM::AddToJSON) element;
     
+cached boolean hasAddToJSONProperty(uml::Class class):
+    !class.getAllPropertiesFromHierarchy().select(e|e.isAddToJSON()).isEmpty;

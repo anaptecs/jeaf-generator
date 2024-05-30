@@ -13,10 +13,14 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.annotation.Nulls;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JsonPropertyOrder(
+    value = { "dataUnits", "entity", "objectID", "internalProperty", "derivedProperty", "derivedDataUnits",
+      "derivedEntity", "derivedArray", "derivedBoolean", "derivedInt", "derivedString" })
 public abstract class MasterDataObjectBase {
   /**
    * Constant for the name of attribute "dataUnits".
