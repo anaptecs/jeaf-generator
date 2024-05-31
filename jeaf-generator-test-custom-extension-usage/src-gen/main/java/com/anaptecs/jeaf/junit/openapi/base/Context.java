@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
+import javax.annotation.processing.Generated;
 import javax.validation.ConstraintViolationException;
 import javax.validation.constraints.NotEmpty;
 
@@ -19,6 +20,7 @@ import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
+@Generated("Before Class Declaration. Here an annontation cloud be added.")
 public class Context extends Object implements ServiceObject {
   /**
    * Default serial version uid.

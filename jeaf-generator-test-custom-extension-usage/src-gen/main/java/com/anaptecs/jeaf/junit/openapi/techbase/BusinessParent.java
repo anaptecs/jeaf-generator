@@ -5,12 +5,14 @@
  */
 package com.anaptecs.jeaf.junit.openapi.techbase;
 
+import javax.annotation.processing.Generated;
 import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 
+@Generated("Before Class Declaration. Here an annontation cloud be added.")
 public class BusinessParent extends TechParent {
   /**
    * Default serial version uid.

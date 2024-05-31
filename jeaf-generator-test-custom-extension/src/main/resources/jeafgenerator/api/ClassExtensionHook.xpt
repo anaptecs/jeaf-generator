@@ -1,6 +1,10 @@
 «IMPORT uml»
 «IMPORT JMM»
 
+«DEFINE BeforeClassDeclaration FOR Class»
+@javax.annotation.processing.Generated("Before Class Declaration. Here an annontation cloud be added.")
+«ENDDEFINE»
+
 «DEFINE ParentClassDeclaration FOR Class»
 extends Object
 «ENDDEFINE»

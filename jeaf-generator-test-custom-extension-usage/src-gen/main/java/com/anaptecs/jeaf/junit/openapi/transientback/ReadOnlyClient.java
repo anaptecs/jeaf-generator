@@ -5,6 +5,9 @@
  */
 package com.anaptecs.jeaf.junit.openapi.transientback;
 
+import javax.annotation.processing.Generated;
+
+@Generated("Before Class Declaration. Here an annontation cloud be added.")
 public class ReadOnlyClient extends ReadOnlyClientBase {
   /**
    * Default serial version uid.

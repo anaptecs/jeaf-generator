@@ -8,6 +8,7 @@ package com.anaptecs.jeaf.junit.openapi.base;
 import java.util.List;
 import java.util.Set;
 
+import javax.annotation.processing.Generated;
 import javax.validation.ConstraintViolationException;
 import javax.validation.constraints.Size;
 
@@ -15,6 +16,7 @@ import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 
+@Generated("Before Class Declaration. Here an annontation cloud be added.")
 /**
  * @author JEAF Generator
  * @version JEAF Release 1.6.x

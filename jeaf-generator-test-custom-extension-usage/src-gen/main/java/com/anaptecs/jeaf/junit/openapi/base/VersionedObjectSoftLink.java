@@ -5,6 +5,9 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
+import javax.annotation.processing.Generated;
+
+@Generated("Before Class Declaration. Here an annontation cloud be added.")
 public class VersionedObjectSoftLink extends VersionedObjectSoftLinkBase {
   /**
    * Default serial version uid.

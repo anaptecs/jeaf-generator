@@ -5,6 +5,9 @@
  */
 package com.anaptecs.jeaf.junit.openapi.composite;
 
+import javax.annotation.processing.Generated;
+
+@Generated("Before Class Declaration. Here an annontation cloud be added.")
 public class ComplexBookingID extends ComplexBookingIDBase {
   /**
    * Default serial version uid.

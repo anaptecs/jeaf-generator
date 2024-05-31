@@ -5,10 +5,12 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
+import javax.annotation.processing.Generated;
 import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 
+@Generated("Before Class Declaration. Here an annontation cloud be added.")
 public class TopoRef extends PlaceRef {
   /**
    * Default serial version uid.

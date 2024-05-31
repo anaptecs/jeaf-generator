@@ -7,6 +7,9 @@ package com.anaptecs.jeaf.junit.openapi.base;
 
 import java.util.Set;
 
+import javax.annotation.processing.Generated;
+
+@Generated("Before Class Declaration. Here an annontation cloud be added.")
 /**
  * Data type represents a product definition
  * <p/>
