@@ -5,6 +5,7 @@
  */
 package com.anaptecs.jeaf.junit.openapi.service1;
 
+import javax.annotation.processing.Generated;
 import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
@@ -12,6 +13,7 @@ import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.junit.openapi.base.ParentBeanParamType;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 
+@Generated("Before Class Declaration. Here an annontation cloud be added.")
 public class ChildBeanParameterType extends ParentBeanParamType {
   /**
    * Default serial version uid.

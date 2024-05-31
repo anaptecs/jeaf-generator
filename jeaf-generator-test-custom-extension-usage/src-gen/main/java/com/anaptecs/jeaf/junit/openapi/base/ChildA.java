@@ -8,9 +8,12 @@ package com.anaptecs.jeaf.junit.openapi.base;
 import java.util.List;
 import java.util.Set;
 
+import javax.annotation.processing.Generated;
+
 import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 
+@Generated("Before Class Declaration. Here an annontation cloud be added.")
 /**
  * single line class comment
  *

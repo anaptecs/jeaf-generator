@@ -7,6 +7,7 @@ package com.anaptecs.jeaf.junit.openapi.base;
 
 import java.util.List;
 
+import javax.annotation.processing.Generated;
 import javax.validation.ConstraintViolationException;
 import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.DecimalMin;
@@ -19,6 +20,7 @@ import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 
+@Generated("Before Class Declaration. Here an annontation cloud be added.")
 /**
  * <p/>
  * <b>Alternate Name:</b> Haltestelle

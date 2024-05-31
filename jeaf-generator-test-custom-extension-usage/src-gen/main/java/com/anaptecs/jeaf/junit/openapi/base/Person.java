@@ -5,8 +5,10 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
+import javax.annotation.processing.Generated;
 import javax.validation.Valid;
 
+@Generated("Before Class Declaration. Here an annontation cloud be added.")
 @Valid
 public class Person extends PersonBase {
   /**

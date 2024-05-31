@@ -12,6 +12,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.annotation.processing.Generated;
 import javax.validation.ConstraintViolationException;
 import javax.validation.constraints.Size;
 
@@ -20,6 +21,7 @@ import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
+@Generated("Before Class Declaration. Here an annontation cloud be added.")
 public class POI extends Stop {
   /**
    * Default serial version uid.

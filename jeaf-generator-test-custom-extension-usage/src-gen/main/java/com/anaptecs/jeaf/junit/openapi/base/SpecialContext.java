@@ -7,12 +7,14 @@ package com.anaptecs.jeaf.junit.openapi.base;
 
 import java.util.Locale;
 
+import javax.annotation.processing.Generated;
 import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 
+@Generated("Before Class Declaration. Here an annontation cloud be added.")
 public class SpecialContext extends Context {
   /**
    * Default serial version uid.

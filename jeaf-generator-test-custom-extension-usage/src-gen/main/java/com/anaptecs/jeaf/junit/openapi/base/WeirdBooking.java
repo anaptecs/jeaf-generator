@@ -13,6 +13,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.annotation.processing.Generated;
 import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
@@ -21,6 +22,7 @@ import com.anaptecs.jeaf.junit.openapi.composite.ComplexBookingID;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
+@Generated("Before Class Declaration. Here an annontation cloud be added.")
 public class WeirdBooking extends WeirdParent {
   /**
    * Default serial version uid.

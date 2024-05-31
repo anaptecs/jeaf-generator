@@ -11,6 +11,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
+import javax.annotation.processing.Generated;
 import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
@@ -22,6 +23,7 @@ import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.anaptecs.jeaf.xfun.api.common.Identifiable;
 import com.anaptecs.jeaf.xfun.api.common.ObjectIdentity;
 
+@Generated("Before Class Declaration. Here an annontation cloud be added.")
 public class Partner extends Object implements ServiceObject, Identifiable<ServiceObjectID> {
   /**
    * Default serial version uid.

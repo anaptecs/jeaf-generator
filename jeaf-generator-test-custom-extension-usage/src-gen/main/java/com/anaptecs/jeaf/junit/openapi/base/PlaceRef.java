@@ -5,11 +5,14 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
+import javax.annotation.processing.Generated;
+
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
+@Generated("Before Class Declaration. Here an annontation cloud be added.")
 public abstract class PlaceRef extends Object implements ServiceObject {
   /**
    * Default serial version uid.
