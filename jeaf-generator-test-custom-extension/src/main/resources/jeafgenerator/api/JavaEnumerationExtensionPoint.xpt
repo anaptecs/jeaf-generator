@@ -1,0 +1,10 @@
+«IMPORT uml»
+«IMPORT JMM»
+
+«DEFINE AddDynamicLiterals FOR JEAFEnumeration»
+    «IF !ownedLiteral.isEmpty», «ENDIF»
+    /**
+     * This is a fake dynamic literal.
+     */
+    FAKE
+«ENDDEFINE»

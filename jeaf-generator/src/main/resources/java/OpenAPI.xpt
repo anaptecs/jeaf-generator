@@ -5,6 +5,7 @@
 «EXTENSION functions::Enumeration»
 «EXTENSION functions::OpenAPISpecification»
 
+
 «IMPORT uml»
 «IMPORT JMM»
 «IMPORT java»
@@ -179,13 +180,13 @@ components:
           «IF element.isStereotypeApplied("OpenAPIDataType") -»
             «EXPAND java::OpenAPIDataType::GenerateOpenAPIDataType(this, null, "", true) FOR ((OpenAPIDataType) element)»
           «ELSE-»
-«EXPAND GenerateOpenAPIEnum FOR ((OpenAPIEnumeration) element)»
+«EXPAND OpenAPIEnumeration::GenerateOpenAPIEnum FOR ((OpenAPIEnumeration) element)»
           «ENDIF-»
         «ENDIF-»
       «ENDFOREACH-»
     «ELSE-»
       «EXPAND java::OpenAPIType::GenerateOpenAPIType(this) FOREACH this.getOpenAPITypes().sortBy(e|e.name)»
-      «EXPAND GenerateOpenAPIEnum FOREACH this.getOpenAPIEnums().sortBy(e|e.name)»
+      «EXPAND OpenAPIEnumeration::GenerateOpenAPIEnum FOREACH this.getOpenAPIEnums().sortBy(e|e.name)»
       «EXPAND java::OpenAPIDataType::GenerateOpenAPIDataType(this, null, "", true) FOREACH this.getOpenAPIDataTypes().select(e|e.inline == false).sortBy(e|e.name)»
     «ENDIF-»
   «ENDIF -»
@@ -567,50 +568,6 @@ components:
 
 «ENDDEFINE»
 
-
-«DEFINE GenerateOpenAPIEnum FOR OpenAPIEnumeration -»
-    «IF suppressClassNameCommentInOpenAPISpec() == false -»
-    # «this.fqn()»
-    «ENDIF-»
-    «this.name»:
-      «IF this.hasOpenAPIComment()-»
-      description: «getOpenAPICommentStyle()»
-        «IF this.hasComment() -»
-        «this.getCommentForOpenAPIDescription("        ")»
-        «ENDIF-»
-        «IF this.hasLiteralComment()-»
-        «IF this.extensibleEnum == true-»
-        «IF this.hasComment() -»
-        <br><br>
-        «ENDIF-»
-        Known Values:
-        «ELSE-»
-        «IF this.hasComment() -»
-        <br><br>
-        «ENDIF-»
-        Valid Values:
-        «ENDIF-»
-        «FOREACH this.getPulicLiterals() AS literal-»
-        - «IF literal.isDeprecated() -»@Deprecated «ENDIF»«literal.name»«IF literal.hasComment()»: «literal.getCommentForOpenAPIDescription("            ")»«ENDIF»
-        «ENDFOREACH-»
-        «ENDIF-»
-      «ENDIF-»        
-      type: string
-      «IF this.isDeprecated() -»
-      deprecated: true
-      «ENDIF-»
-      «IF this.extensibleEnum == true-»
-      x-extensible-enum:
-      «ELSE-»
-      enum:
-      «ENDIF-»
-        «FOREACH this.getPulicLiterals() AS literal-»        
-        - «literal.getLiteralName()»
-        «ENDFOREACH-»
-      «IF this.hasDefaultLiteral()-»
-      default: «this.getDefaultLiteral().getLiteralName()»
-      «ENDIF-»
-«ENDDEFINE»
 
 «DEFINE RESTParamName FOR Parameter-»
 «IF this.isStereotypeApplied("PathParam")»«IF ((PathParam) this).value.length > 0»«((PathParam) this).value -»«ELSE»«this.name»«ENDIF»«ENDIF-»

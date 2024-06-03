@@ -127,6 +127,8 @@ DirectedEdge |   | Just a simple comment. |
 DiscountOffer |   |  |
 DoubleCode |   |  |
 DoubleCodeType |   |  |
+DynamicEnum |   | Test for enums with dynamic literals. |
+DynamicExtensibleEnum |   |  |
 Entity |   |  |
 EnumTest |   |  |
 EnumWithProperties |   |  |
@@ -370,6 +372,8 @@ DirectedEdge |   | Just a simple comment. |
 DiscountOffer |   |  |
 DoubleCode |   |  |
 DoubleCodeType |   |  |
+DynamicEnum |   | Test for enums with dynamic literals. |
+DynamicExtensibleEnum |   |  |
 Entity |   |  |
 EnumTest |   |  |
 ExtensibleEnum |   |  |

@@ -39,6 +39,8 @@ import com.anaptecs.jeaf.junit.openapi.base.serializers.DoubleCodeDeserializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.DoubleCodeSerializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.DoubleCodeTypeDeserializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.DoubleCodeTypeSerializer;
+import com.anaptecs.jeaf.junit.openapi.base.serializers.DynamicExtensibleEnumDeserializer;
+import com.anaptecs.jeaf.junit.openapi.base.serializers.DynamicExtensibleEnumSerializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.EntityDeserializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.EntitySerializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.ExtensibleEnumDeserializer;
@@ -144,6 +146,8 @@ public class BaseModuleFactory implements ObjectMapperModuleFactory {
     lModule.addDeserializer(ComplexBookingType.class, new ComplexBookingTypeDeserializer());
     lModule.addSerializer(DataUnit.class, new DataUnitSerializer());
     lModule.addDeserializer(DataUnit.class, new DataUnitDeserializer());
+    lModule.addSerializer(DynamicExtensibleEnum.class, new DynamicExtensibleEnumSerializer());
+    lModule.addDeserializer(DynamicExtensibleEnum.class, new DynamicExtensibleEnumDeserializer());
     lModule.addSerializer(Entity.class, new EntitySerializer());
     lModule.addDeserializer(Entity.class, new EntityDeserializer());
     lModule.addSerializer(ExtensibleEnum.class, new ExtensibleEnumSerializer());
@@ -228,6 +232,8 @@ public class BaseModuleFactory implements ObjectMapperModuleFactory {
     lModule.addDeserializer(ComplexBookingType.class, new ComplexBookingTypeDeserializer());
     lModule.addSerializer(DataUnit.class, new DataUnitSerializer());
     lModule.addDeserializer(DataUnit.class, new DataUnitDeserializer());
+    lModule.addSerializer(DynamicExtensibleEnum.class, new DynamicExtensibleEnumSerializer());
+    lModule.addDeserializer(DynamicExtensibleEnum.class, new DynamicExtensibleEnumDeserializer());
     lModule.addSerializer(Entity.class, new EntitySerializer());
     lModule.addDeserializer(Entity.class, new EntityDeserializer());
     lModule.addSerializer(ExtensibleEnum.class, new ExtensibleEnumSerializer());
