@@ -1,6 +1,7 @@
 «EXTENSION java::Naming»
 «EXTENSION java::GeneratorCommons»
 «EXTENSION functions::Enumeration»
+
 «IMPORT uml»
 «IMPORT java»
 «IMPORT JMM»
@@ -22,6 +23,9 @@ package «packageName()»;
 	  	«FOREACH literal.getOrderedSlots() AS slot SEPARATOR ", "»«slot.getSlotValue()»«ENDFOREACH»	  
 	  )«ENDIF»	  
 	«ENDFOREACH»
+	«IF this.hasDynamicLiterals»
+	   «EXPAND jeafgenerator::api::JavaEnumerationExtensionPoint::AddDynamicLiterals» 
+	«ENDIF»
 	«IF extensibleEnum && this.hasUnknownLiteral() == false»
 	   ,
 		/**

@@ -1,0 +1,67 @@
+«IMPORT uml»
+«IMPORT JMM»
+
+«EXTENSION java::Naming»
+«EXTENSION java::GeneratorCommons»
+«EXTENSION java::OpenAPIFunctions»
+«EXTENSION entity::ModelProperties»
+«EXTENSION functions::Enumeration»
+«EXTENSION jeafgenerator::api::OpenAPIEnumExtensionPoint»
+
+«DEFINE GenerateOpenAPIEnum FOR OpenAPIEnumeration -»
+    «IF suppressClassNameCommentInOpenAPISpec() == false -»
+    # «this.fqn()»
+    «ENDIF-»
+    «this.name»:
+      «IF this.hasOpenAPIComment()-»
+      description: «getOpenAPICommentStyle()»
+        «IF this.hasComment() -»
+        «this.getCommentForOpenAPIDescription("        ")»
+        «ENDIF-»
+        «IF this.hasLiteralComment()-»
+        «IF this.extensibleEnum == true-»
+        «IF this.hasComment() -»
+        <br><br>
+        «ENDIF-»
+        Known Values:
+        «ELSE-»
+        «IF this.hasComment() -»
+        <br><br>
+        «ENDIF-»
+        Valid Values:
+        «ENDIF-»
+        «FOREACH this.getPulicLiterals() AS literal-»
+        - «IF literal.isDeprecated() -»@Deprecated «ENDIF»«literal.name»«IF literal.hasComment()»: «literal.getCommentForOpenAPIDescription("            ")»«ENDIF»
+        «ENDFOREACH-»
+        «IF this.hasDynamicLiterals -»
+            «LET this.getDynamicLiteralDescriptions() AS descriptions -»
+            «LET this.getDynamicLiteralDeprecations() AS deprecations -»
+            «FOREACH this.getDynamicLiteralNames() AS dynamicLiteral ITERATOR iter -»
+        - «IF deprecations.get(iter.counter0)»@Deprecated «ENDIF» «dynamicLiteral»«IF descriptions.get(iter.counter0).length > 0»: «descriptions.get(iter.counter0)»«ENDIF»
+            «ENDFOREACH-»
+            «ENDLET-»
+            «ENDLET-»
+        «ENDIF-»
+        «ENDIF-»
+      «ENDIF-»        
+      type: string
+      «IF this.isDeprecated() -»
+      deprecated: true
+      «ENDIF-»
+      «IF this.extensibleEnum == true-»
+      x-extensible-enum:
+      «ELSE-»
+      enum:
+      «ENDIF-»
+        «FOREACH this.getPulicLiterals() AS literal-»        
+        - «literal.getLiteralName()»
+        «ENDFOREACH-»
+        «IF this.hasDynamicLiterals -»
+	        «FOREACH this.getDynamicLiteralNames() AS dynamicLiteral -»
+        - «dynamicLiteral»
+	        «ENDFOREACH-»
+        «ENDIF-»
+      «IF this.hasDefaultLiteral()-»
+      default: «this.getDefaultLiteral().getLiteralName()»
+      «ENDIF-»
+«ENDDEFINE»

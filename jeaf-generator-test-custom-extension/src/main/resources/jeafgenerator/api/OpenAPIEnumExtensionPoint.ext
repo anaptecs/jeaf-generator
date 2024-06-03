@@ -1,0 +1,9 @@
+
+cached List[String] getDynamicLiteralNames(JMM::OpenAPIEnumeration enum):
+    {"FAKE"}.toList();
+    
+cached List[String] getDynamicLiteralDescriptions(JMM::OpenAPIEnumeration enum):
+    {"Fake literal"}.toList();
+    
+cached List[boolean] getDynamicLiteralDeprecations(JMM::OpenAPIEnumeration enum):
+    {true}.toList();

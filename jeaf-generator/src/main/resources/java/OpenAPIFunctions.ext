@@ -9,6 +9,7 @@ extension functions::Operation;
 extension functions::Alias;
 extension functions::SoftLink;
 extension functions::RESTOperation;
+extension jeafgenerator::api::OpenAPIEnumExtensionPoint;
 
 cached boolean hasOpenAPITypes(JMM::OpenAPI3Specification spec):
 	getOpenAPITypes(spec).size > 0;
@@ -444,7 +445,7 @@ cached hasOpenAPIComment(JMM::OpenAPIEnumeration enum):
   if enum.hasComment()
   then true
   else 
-    enum.hasLiteralComment();
+    enum.hasLiteralComment() || (enum.hasDynamicLiterals && enum.getDynamicLiteralDescriptions().selectFirst(e|e.length > 0) != null);
 
 cached hasLiteralComment(JMM::OpenAPIEnumeration enum):
     if enum.ownedLiteral.select(e|e.hasComment()).isEmpty == false

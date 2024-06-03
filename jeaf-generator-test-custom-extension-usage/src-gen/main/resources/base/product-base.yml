@@ -695,6 +695,23 @@ components:
         timeUnit:
           $ref: '#/components/schemas/TimeUnit'
 
+    # com.anaptecs.jeaf.junit.openapi.base.DynamicEnum
+    DynamicEnum:
+      description: >-
+        Test for enums with dynamic literals.
+      type: string
+      enum:
+        - STATIC_LITERAL
+        - FAKE
+
+    # com.anaptecs.jeaf.junit.openapi.base.DynamicExtensibleEnum
+    DynamicExtensibleEnum:
+      description: >-
+      type: string
+      x-extensible-enum:
+        - STATIC_LITERAL
+        - FAKE
+
     # com.anaptecs.jeaf.junit.openapi.base.Entity
     Entity:
       type: string

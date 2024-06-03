@@ -20,6 +20,7 @@ import com.anaptecs.spring.base.CurrencyCode;
 import com.anaptecs.spring.base.DataUnit;
 import com.anaptecs.spring.base.DoubleCode;
 import com.anaptecs.spring.base.DoubleCodeType;
+import com.anaptecs.spring.base.DynamicExtensibleEnum;
 import com.anaptecs.spring.base.Entity;
 import com.anaptecs.spring.base.ExtensibleEnum;
 import com.anaptecs.spring.base.FloatCode;
@@ -113,6 +114,8 @@ public class BaseModuleFactory {
     lModule.addDeserializer(ComplexBookingType.class, new ComplexBookingTypeDeserializer());
     lModule.addSerializer(DataUnit.class, new DataUnitSerializer());
     lModule.addDeserializer(DataUnit.class, new DataUnitDeserializer());
+    lModule.addSerializer(DynamicExtensibleEnum.class, new DynamicExtensibleEnumSerializer());
+    lModule.addDeserializer(DynamicExtensibleEnum.class, new DynamicExtensibleEnumDeserializer());
     lModule.addSerializer(Entity.class, new EntitySerializer());
     lModule.addDeserializer(Entity.class, new EntityDeserializer());
     lModule.addSerializer(ExtensibleEnum.class, new ExtensibleEnumSerializer());

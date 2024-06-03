@@ -500,6 +500,18 @@ components:
         timeUnit:
           $ref: '#/components/schemas/TimeUnit'
 
+    # com.anaptecs.spring.base.DynamicEnum
+    DynamicEnum:
+      type: string
+      enum:
+        - STATIC_LITERAL
+
+    # com.anaptecs.spring.base.DynamicExtensibleEnum
+    DynamicExtensibleEnum:
+      type: string
+      x-extensible-enum:
+        - STATIC_LITERAL
+
     # com.anaptecs.spring.base.Entity
     Entity:
       type: string
