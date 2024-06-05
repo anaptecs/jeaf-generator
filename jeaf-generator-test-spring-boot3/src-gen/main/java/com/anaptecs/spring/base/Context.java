@@ -13,6 +13,14 @@ import java.util.Objects;
 
 import jakarta.validation.constraints.NotEmpty;
 
+/**
+ * Type with default comment.
+ * <p/>
+ * Default Comment
+ *
+ * @author JEAF Generator
+ * @version JEAF Release 1.4.x
+ */
 public class Context {
   /**
    * Constant for the name of attribute "accessToken".

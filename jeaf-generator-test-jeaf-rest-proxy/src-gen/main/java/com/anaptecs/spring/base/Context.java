@@ -21,6 +21,14 @@ import javax.ws.rs.QueryParam;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
+/**
+ * Type with default comment.
+ * <p/>
+ * Default Comment
+ *
+ * @author JEAF Generator
+ * @version JEAF Release 1.4.x
+ */
 public class Context implements Serializable {
   /**
    * Default serial version UID.
