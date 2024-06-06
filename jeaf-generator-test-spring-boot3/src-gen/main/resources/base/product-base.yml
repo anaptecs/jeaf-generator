@@ -1495,6 +1495,22 @@ components:
           type: string
           nullable: false
 
+    # com.anaptecs.spring.base.backward.SimpleBackwardCompatibility
+    SimpleBackwardCompatibility:
+      type: object
+      additionalProperties: false
+      required:
+        - deprecatedProperty
+        - successorProperty
+      properties:
+        deprecatedProperty:
+          type: string
+          deprecated: true
+          nullable: false
+        successorProperty:
+          type: string
+          nullable: false
+
     # com.anaptecs.spring.base.Sortiment
     Sortiment:
       type: object
