@@ -37,7 +37,7 @@
             «LET this.getDynamicLiteralDescriptions() AS descriptions -»
             «LET this.getDynamicLiteralDeprecations() AS deprecations -»
             «FOREACH this.getDynamicLiteralNames() AS dynamicLiteral ITERATOR iter -»
-        - «IF deprecations.get(iter.counter0)»@Deprecated «ENDIF» «dynamicLiteral»«IF descriptions.get(iter.counter0).length > 0»: «descriptions.get(iter.counter0)»«ENDIF»
+        - «IF deprecations.size > iter.counter0 && deprecations.get(iter.counter0)»@Deprecated «ENDIF» «dynamicLiteral»«IF descriptions.size > iter.counter0 && descriptions.get(iter.counter0).length > 0»: «descriptions.get(iter.counter0)»«ENDIF»
             «ENDFOREACH-»
             «ENDLET-»
             «ENDLET-»

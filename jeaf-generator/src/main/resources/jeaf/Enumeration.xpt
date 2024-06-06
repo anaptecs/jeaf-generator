@@ -9,6 +9,7 @@
 
 «DEFINE JEAFEnumTemplate FOR JEAFEnumeration»
 «FILE packagePath()+"/"+name+".java" src_gen»
+«getFileHeader()»
 package «packageName()»;
 
 «EXPAND functions::Javadoc::JavadocForType»
