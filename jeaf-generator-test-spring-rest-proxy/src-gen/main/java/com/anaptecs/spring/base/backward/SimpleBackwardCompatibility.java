@@ -9,6 +9,7 @@ public class SimpleBackwardCompatibility {
   /**
    * Constant for the name of attribute "deprecatedProperty".
    */
+  @Deprecated
   public static final String DEPRECATEDPROPERTY = "deprecatedProperty";
 
   /**
@@ -16,6 +17,7 @@ public class SimpleBackwardCompatibility {
    */
   public static final String SUCCESSORPROPERTY = "successorProperty";
 
+  @Deprecated
   private String deprecatedProperty;
 
   private String successorProperty;
@@ -68,6 +70,7 @@ public class SimpleBackwardCompatibility {
    * Class implements builder to create a new instance of class <code>SimpleBackwardCompatibility</code>.
    */
   public static class Builder {
+    @Deprecated
     private String deprecatedProperty;
 
     private String successorProperty;
@@ -96,6 +99,7 @@ public class SimpleBackwardCompatibility {
      * @param pDeprecatedProperty Value to which {@link #deprecatedProperty} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @Deprecated
     public Builder setDeprecatedProperty( String pDeprecatedProperty ) {
       // Assign value to attribute
       deprecatedProperty = pDeprecatedProperty;
@@ -130,6 +134,7 @@ public class SimpleBackwardCompatibility {
    *
    * @return {@link String} Value to which {@link #deprecatedProperty} is set.
    */
+  @Deprecated
   public String getDeprecatedProperty( ) {
     return deprecatedProperty;
   }
@@ -139,6 +144,7 @@ public class SimpleBackwardCompatibility {
    *
    * @param pDeprecatedProperty Value to which {@link #deprecatedProperty} should be set.
    */
+  @Deprecated
   public void setDeprecatedProperty( String pDeprecatedProperty ) {
     // Assign value to attribute
     deprecatedProperty = pDeprecatedProperty;

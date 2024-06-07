@@ -23,6 +23,7 @@ public class SimpleBackwardCompatibility implements Serializable {
   /**
    * Constant for the name of attribute "deprecatedProperty".
    */
+  @Deprecated
   public static final String DEPRECATEDPROPERTY = "deprecatedProperty";
 
   /**
@@ -30,6 +31,7 @@ public class SimpleBackwardCompatibility implements Serializable {
    */
   public static final String SUCCESSORPROPERTY = "successorProperty";
 
+  @Deprecated
   private String deprecatedProperty;
 
   private String successorProperty;
@@ -94,6 +96,7 @@ public class SimpleBackwardCompatibility implements Serializable {
    * Class implements builder to create a new instance of class <code>SimpleBackwardCompatibility</code>.
    */
   public static class Builder {
+    @Deprecated
     private String deprecatedProperty;
 
     private String successorProperty;
@@ -122,6 +125,7 @@ public class SimpleBackwardCompatibility implements Serializable {
      * @param pDeprecatedProperty Value to which {@link #deprecatedProperty} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @Deprecated
     public Builder setDeprecatedProperty( String pDeprecatedProperty ) {
       // Assign value to attribute
       deprecatedProperty = pDeprecatedProperty;
@@ -169,6 +173,7 @@ public class SimpleBackwardCompatibility implements Serializable {
    *
    * @return {@link String} Value to which {@link #deprecatedProperty} is set.
    */
+  @Deprecated
   public String getDeprecatedProperty( ) {
     return deprecatedProperty;
   }
@@ -178,6 +183,7 @@ public class SimpleBackwardCompatibility implements Serializable {
    *
    * @param pDeprecatedProperty Value to which {@link #deprecatedProperty} should be set.
    */
+  @Deprecated
   public void setDeprecatedProperty( String pDeprecatedProperty ) {
     // Assign value to attribute
     deprecatedProperty = pDeprecatedProperty;
