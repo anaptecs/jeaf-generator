@@ -1,3 +1,6 @@
+import uml;
+import JMM;
+
 extension java::GeneratorCommons;
 extension functions::SystemProperties;
 
@@ -5,36 +8,36 @@ extension functions::SystemProperties;
 cached boolean isOpenAPISpecification(uml::Element element):
     element.isStereotypeApplied("OpenAPI3Specification");
     
-cached JMM::OpenAPI3Specification asOpenAPISpecification(uml::Element element):
-    (JMM::OpenAPI3Specification) element;
+cached OpenAPI3Specification asOpenAPISpecification(uml::Element element):
+    (OpenAPI3Specification) element;
     
 
-cached String getContactName(JMM::OpenAPI3Specification spec):
+cached String getContactName(OpenAPI3Specification spec):
     if spec.contactName.length > 0
     then spec.contactName
     else getOpenAPIContactNameFromSystemProperties();
     
-cached String getContactURL(JMM::OpenAPI3Specification spec):
+cached String getContactURL(OpenAPI3Specification spec):
     if spec.contactURL.length > 0
     then spec.contactURL
     else getOpenAPIContactURLFromSystemProperties();
     
-cached String getContactEmail(JMM::OpenAPI3Specification spec):
+cached String getContactEmail(OpenAPI3Specification spec):
     if spec.contactEmail.length > 0
     then spec.contactEmail
     else getOpenAPIContactEmailFromSystemProperties();
     
-cached String getLicenseName(JMM::OpenAPI3Specification spec):
+cached String getLicenseName(OpenAPI3Specification spec):
     if spec.licenseName.length > 0
     then spec.licenseName
     else getOpenAPILicenseNameFromSystemProperties();
     
-cached String getLicenseURL(JMM::OpenAPI3Specification spec):
+cached String getLicenseURL(OpenAPI3Specification spec):
     if spec.licenseURL.length > 0
     then spec.licenseURL
     else getOpenAPILicenseURLFromSystemProperties();
     
-cached String getTermsOfUseURL(JMM::OpenAPI3Specification spec):
+cached String getTermsOfUseURL(OpenAPI3Specification spec):
     if spec.termsOfUseURL.length > 0
     then spec.termsOfUseURL
     else getOpenAPITermsOfUseURLFromSystemProperties();
@@ -56,5 +59,14 @@ private cached String getOpenAPILicenseURLFromSystemProperties():
     
 private cached String getOpenAPITermsOfUseURLFromSystemProperties():
     getSystemProperty("switch.gen.openapi.openAPITermsOfUseURL", "");
+    
+cached boolean hasDependency(OpenAPI3Specification source, OpenAPI3Specification target):
+    source.getDependentOpenAPISpecs().contains(target);
+    
+cached List[OpenAPI3Specification] getDependentOpenAPISpecs(OpenAPI3Specification source):
+    source.getRelationships().typeSelect(Dependency).supplier.typeSelect(OpenAPI3Specification);
+    
+cached boolean runOpenAPIDependencyCheck():
+    getBooleanSystemProperty("switch.gen.openapi.checkOpenAPIDependencies", true);
     
     

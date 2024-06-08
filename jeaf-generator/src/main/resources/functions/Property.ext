@@ -1,4 +1,10 @@
+import uml;
+import JMM;
+
 extension functions::TypeChecks;
+extension functions::SoftLink;
+extension functions::OpenAPISpecification;
+extension java::OpenAPIFunctions;
 extension java::GeneratorCommons;
 
 cached boolean isProperty(uml::Element element):
@@ -15,6 +21,24 @@ cached boolean belongsToBidirectionalAssociation(uml::Property property):
     
 cached boolean belongsToTransientBidirectionalAssociation(uml::Property property):
     property.belongsToBidirectionalAssociation() && property.association.getAllAttributes().selectFirst(e|e.isTransient()) != null;
-
     
+cached OpenAPI3Specification getOwnOpenAPISpecification(Property property):
+    property.getNearestPackage().getOpenAPISpecificationForPackage();
+    
+cached OpenAPI3Specification getReferencedOpenAPISpecification(Property property):
+    property.type.getNearestPackage().getOpenAPISpecificationForPackage();
 
+private cached OpenAPI3Specification getOpenAPISpecificationForPackage(Package package):
+    package.getRelationships().typeSelect(Dependency).client.typeSelect(OpenAPI3Specification).first();
+    
+    
+cached boolean checkOpenAPIDependencies(Property property):
+    if property.type.isBasicOpenAPIType() || property.type == null || property.getReferencedOpenAPISpecification() == null || property.isSoftLink()
+    then true
+    else property.getOwnOpenAPISpecification() == property.getReferencedOpenAPISpecification() || property.getOwnOpenAPISpecification().hasDependency(property.getReferencedOpenAPISpecification());
+
+cached boolean checkForOrphanedOpenAPITypes(Property property):
+    if property.type.isBasicOpenAPIType() || property.type == null
+    then true
+    else property.getReferencedOpenAPISpecification() != null;
+    
