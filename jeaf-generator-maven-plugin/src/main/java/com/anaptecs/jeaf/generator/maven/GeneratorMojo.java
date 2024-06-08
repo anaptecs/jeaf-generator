@@ -698,6 +698,14 @@ public class GeneratorMojo extends AbstractMojo {
   private Boolean generateOpenAPISpec;
 
   /**
+   * By default JEAF Generator runs a dependency check for OpenAPI specifications to ensure that all types that are
+   * referenced from another OpenAPI spec can be resolved. If you want to disable these checks for whatever reason you
+   * can set this switch to <code>true</code>.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean disableOpenAPIDependencyChecks;
+
+  /**
    * Switch defines if a generated OpenAPI specification should be validated.
    */
   @Parameter(required = false, defaultValue = "false")
@@ -1535,6 +1543,7 @@ public class GeneratorMojo extends AbstractMojo {
     if (generateOpenAPISpec) {
       lLog.info("Generate OpenAPI Specification:                   " + generateOpenAPISpec);
       lLog.info("Validate OpenAPI Specification:                   " + validateOpenAPISpec);
+      lLog.info("Disable OpenAPI Dependency Checks:                " + disableOpenAPIDependencyChecks);
       lLog.info("OpenAPI Version:                                  " + openAPIVersion.name());
       lLog.info("OpenAPI Specification file extensions:            " + openAPIExtensions.toString());
       lLog.info("Enable YAML 1.1 compatibility mode:               " + enableYAML11Compatibility);
@@ -1824,6 +1833,8 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty("switch.gen.security.roles.report.format", securityRolesReportFormat.name());
 
       System.setProperty("switch.gen.openapispec", generateOpenAPISpec.toString());
+      System.setProperty("switch.gen.openapi.checkOpenAPIDependencies",
+          Boolean.toString(!disableOpenAPIDependencyChecks));
       System.setProperty("switch.gen.openapi.version", openAPIVersion.name());
       System.setProperty("switch.gen.openapi.yaml.11.comapitibility", enableYAML11Compatibility.toString());
       System.setProperty("switch.gen.openapi.openAPICommentStyle", openAPICommentStyle.toString());

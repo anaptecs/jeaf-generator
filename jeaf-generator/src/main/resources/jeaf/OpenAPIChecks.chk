@@ -8,6 +8,10 @@ extension jeaf::RESTFunctions;
 extension functions::ClassifierTemplateParameter;
 extension functions::RESTOperation;
 extension functions::RESTResource;
+extension functions::NamedElement;
+extension functions::Property;
+extension functions::OpenAPIType;
+extension functions::OpenAPISpecification;
 
 // Checks for stereotype RESTResource
 context RESTResource if runChecks("RESTResource") && ignore() == false ERROR this.getErrorMessage("9104", {name}): this.hasValidRESTResourcePath() == true;
@@ -15,21 +19,21 @@ context RESTResource if runChecks("RESTResource") && ignore() == false ERROR	thi
 
 
 // Checks for stereotype RESTOperation
-context RESTOperation if runChecks("RESTOperation") && ignore() == false ERROR   this.getErrorMessage("9105", {((NamedElement)owner).name + "." + name}): this.hasValidRESTResourcePath() == true;
-context RESTOperation if runChecks("RESTOperation") && ignore() == false ERROR   this.getErrorMessage("9106", {((NamedElement)owner).name + "." + name}): this.hasValidOperationPath() == true;
-context RESTOperation if runChecks("RESTOperation") && ignore() == false ERROR   this.getErrorMessage("9107", {((NamedElement)owner).name + "." + name}): httpMethods.size > 0;
+context RESTOperation if runChecks("RESTOperation") && ignore() == false ERROR   this.getErrorMessage("9105", {owner.asNamedElement().name + "." + name}): this.hasValidRESTResourcePath() == true;
+context RESTOperation if runChecks("RESTOperation") && ignore() == false ERROR   this.getErrorMessage("9106", {owner.asNamedElement().name + "." + name}): this.hasValidOperationPath() == true;
+context RESTOperation if runChecks("RESTOperation") && ignore() == false ERROR   this.getErrorMessage("9107", {owner.asNamedElement().name + "." + name}): httpMethods.size > 0;
 context RESTOperation if runChecks("RESTOperation") && ignore() == false ERROR   this.getErrorMessage("9108", {this.getStatusCodeName()}): isJAXRSStatusCode(this.getStatusCodeName()) == true;
-context RESTOperation if runChecks("RESTOperation") && ignore() == false && owner.isRESTResource() ERROR   this.getErrorMessage("9109", {((NamedElement)owner).name + "." + name}): unifyMediaTypes(((JMM::RESTResource)this.owner).consumes, this.consumes).size > 0;
-context RESTOperation if runChecks("RESTOperation") && ignore() == false && owner.isRESTResource() ERROR   this.getErrorMessage("9110", {((NamedElement)owner).name + "." + name}): unifyMediaTypes(((JMM::RESTResource)this.owner).produces, this.produces).size > 0;
-context RESTOperation if runChecks("RESTOperation") && ignore() == false ERROR   this.getErrorMessage("9111", {((NamedElement)owner).name + "." + name}): this.areAllInputParametersNamed() == true;
-context RESTOperation if runChecks("RESTOperation") && ignore() == false ERROR   this.getErrorMessage("9112", {((NamedElement)owner).name + "." + name, this.getBodyParamNames().toString()}): this.getBodyParamNames().size < 2 ;
-context RESTOperation if runChecks("RESTOperation") && ignore() == false ERROR   this.getErrorMessage("9113", {((NamedElement)owner).name + "." + name, httpMethods.toString()}): this.hasUnsupportedRequestBody() == false ;
-context RESTOperation if runChecks("RESTOperation") && ignore() == false ERROR   this.getErrorMessage("9165", {this.detectMissingRESTPathParams().toString(", "), this.getRESTOperationPath(), ((NamedElement)owner).name + "." + name}): this.detectMissingRESTPathParams().isEmpty == true ;
+context RESTOperation if runChecks("RESTOperation") && ignore() == false && owner.isRESTResource() ERROR   this.getErrorMessage("9109", {owner.asNamedElement().name + "." + name}): unifyMediaTypes(((JMM::RESTResource)this.owner).consumes, this.consumes).size > 0;
+context RESTOperation if runChecks("RESTOperation") && ignore() == false && owner.isRESTResource() ERROR   this.getErrorMessage("9110", {owner.asNamedElement().name + "." + name}): unifyMediaTypes(((JMM::RESTResource)this.owner).produces, this.produces).size > 0;
+context RESTOperation if runChecks("RESTOperation") && ignore() == false ERROR   this.getErrorMessage("9111", {owner.asNamedElement().name + "." + name}): this.areAllInputParametersNamed() == true;
+context RESTOperation if runChecks("RESTOperation") && ignore() == false ERROR   this.getErrorMessage("9112", {owner.asNamedElement().name + "." + name, this.getBodyParamNames().toString()}): this.getBodyParamNames().size < 2 ;
+context RESTOperation if runChecks("RESTOperation") && ignore() == false ERROR   this.getErrorMessage("9113", {owner.asNamedElement().name + "." + name, httpMethods.toString()}): this.hasUnsupportedRequestBody() == false ;
+context RESTOperation if runChecks("RESTOperation") && ignore() == false ERROR   this.getErrorMessage("9165", {this.detectMissingRESTPathParams().toString(", "), this.getRESTOperationPath(), owner.asNamedElement().name + "." + name}): this.detectMissingRESTPathParams().isEmpty == true ;
 
 
-context RESTOperation if runChecks("RESTOperation") && ignore() == false && owner.isRESTResource() WARNING this.getWarningMessage("9101", {((NamedElement)owner).name + "." + name, this.getOpenAPIIncomaptibleParameterTypes().asParamErrorMessage().toString()}): this.getOpenAPIIncomaptibleParameterTypes().size == 0;
+context RESTOperation if runChecks("RESTOperation") && ignore() == false && owner.isRESTResource() WARNING this.getWarningMessage("9101", {owner.asNamedElement().name + "." + name, this.getOpenAPIIncomaptibleParameterTypes().asParamErrorMessage().toString()}): this.getOpenAPIIncomaptibleParameterTypes().size == 0;
 
-context RESTOperation if runChecks("RESTOperation") && ignore() == false WARNING this.getWarningMessage("9166", {((NamedElement)owner).name + "." + name, this.getRESTOperationPath(), this.detectDeadRESTPathParams().toString(", ")}): this.detectDeadRESTPathParams().isEmpty == true ;
+context RESTOperation if runChecks("RESTOperation") && ignore() == false WARNING this.getWarningMessage("9166", {owner.asNamedElement().name + "." + name, this.getRESTOperationPath(), this.detectDeadRESTPathParams().toString(", ")}): this.detectDeadRESTPathParams().isEmpty == true ;
 
 
 // Global checks for OpenAPI3Specification
@@ -64,14 +68,20 @@ context PathParam if runChecks("PathParam") && ignore() == false ERROR this.getE
 context PathParam if runChecks("PathParam") && ignore() == false ERROR this.getErrorMessage("9120", {this.fqn()}): this.isMultivalued() == false;
 
 // Checks for stereotype HeaderParam
-context HeaderParam if runChecks("HeaderParam") && ignore() == false WARNING this.getWarningMessage("9153", {((NamedElement)owner).fqn(), this.getRESTHeaderParamName(), name}): this.isIgnoredHeaderParam() == false;
-context HeaderParam if runChecks("HeaderParam") && ignore() == false ERROR this.getErrorMessage("9155", {((NamedElement)owner).fqn(), this.getRESTHeaderParamName(), name}): !(isRESTLibraryJAXRS() && generateRESTResources() && this.isMultivalued() && this.getCollectionType() == "java.util.Collection");
+context HeaderParam if runChecks("HeaderParam") && ignore() == false WARNING this.getWarningMessage("9153", {owner.asNamedElement().fqn(), this.getRESTHeaderParamName(), name}): this.isIgnoredHeaderParam() == false;
+context HeaderParam if runChecks("HeaderParam") && ignore() == false ERROR this.getErrorMessage("9155", {owner.asNamedElement().fqn(), this.getRESTHeaderParamName(), name}): !(isRESTLibraryJAXRS() && generateRESTResources() && this.isMultivalued() && this.getCollectionType() == "java.util.Collection");
 
 // Checks for stereotype QueryParam
-context QueryParam if runChecks("QueryParam") && ignore() == false ERROR this.getErrorMessage("9156", {((NamedElement)owner).fqn(), this.getRESTQueryParamName(), name}): !(isRESTLibraryJAXRS() && generateRESTResources() && this.isMultivalued() && this.getCollectionType() == "java.util.Collection");
+context QueryParam if runChecks("QueryParam") && ignore() == false ERROR this.getErrorMessage("9156", {owner.asNamedElement().fqn(), this.getRESTQueryParamName(), name}): !(isRESTLibraryJAXRS() && generateRESTResources() && this.isMultivalued() && this.getCollectionType() == "java.util.Collection");
 
 // Checks for stereotype BeanParam
 context BeanParam if runChecks("RESTOperation") && ignore() == false WARNING this.getWarningMessage("9103", {this.fqn(), this.getOpenAPIIncompatibleBeanProperties().asPropertyErrorMessage().toString()}): this.getOpenAPIIncompatibleBeanProperties().size == 0;
 
 // Checks for deprecations that are not supported by OpenAPI
-context Property if ((NamedElement)owner).runChecks("OpenAPIType") && ignore() == false WARNING this.getWarningMessage("9154", {((NamedElement)owner).name + "." + name}): !(this.isMultivalued() == false && this.type.isClassifierTemplateParameter()== true  && this.type.isBasicOpenAPIType() == false && this.isDeprecated() && owner.isStereotypeApplied("OpenAPIType"));
+context Property if owner.asNamedElement().runChecks("OpenAPIType") && ignore() == false WARNING this.getWarningMessage("9154", {owner.asNamedElement().name + "." + name}): !(this.isMultivalued() == false && this.type.isClassifierTemplateParameter()== true  && this.type.isBasicOpenAPIType() == false && this.isDeprecated() && owner.isStereotypeApplied("OpenAPIType"));
+
+// Check for missing dependencies between OpenAPI specs
+context Property if owner.asNamedElement().runChecks("OpenAPIType") && runOpenAPIDependencyCheck () && ignore() == false ERROR this.getErrorMessage("9171", {name, owner.asNamedElement().name, type.name, this.getOwnOpenAPISpecification().name, this.getReferencedOpenAPISpecification().name}): this.checkOpenAPIDependencies();
+
+// Check for types that do not belong to an openAPI specification at all.
+context Property if owner.asNamedElement().runChecks("OpenAPIType") && owner.isOpenAPIType() && runOpenAPIDependencyCheck () && ignore() == false ERROR this.getErrorMessage("9172", {name, owner.asNamedElement().name, type.name}): this.checkForOrphanedOpenAPITypes();
