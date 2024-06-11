@@ -17,6 +17,9 @@ cached boolean isStereotypeApplied(uml::Element element, String stereotype) :
 cached String getStereotypeValue(uml::Element element, String stereotype, String attribute) :
     JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.getStereotypeValue(org.eclipse.uml2.uml.Element, java.lang.String, java.lang.String);
     
+cached boolean getStereotypeValueAsBoolean(uml::Element element, String stereotype, String attribute, boolean defaultValue) :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.getStereotypeValueAsBoolean(org.eclipse.uml2.uml.Element, java.lang.String, java.lang.String, java.lang.Boolean);
+    
 cached List getAllAuthorizationTypes(uml::Model model) :
     JAVA com.anaptecs.jeaf.fwk.generator.util.AuthorizationHelper.getAllAuthorizationTypes(org.eclipse.uml2.uml.Model);
    

@@ -31,6 +31,9 @@ public class SimpleBackwardCompatibility implements Serializable {
    */
   public static final String SUCCESSORPROPERTY = "successorProperty";
 
+  /**
+   * a comment
+   */
   @Deprecated
   private String deprecatedProperty;
 
@@ -96,6 +99,9 @@ public class SimpleBackwardCompatibility implements Serializable {
    * Class implements builder to create a new instance of class <code>SimpleBackwardCompatibility</code>.
    */
   public static class Builder {
+    /**
+     * a comment
+     */
     @Deprecated
     private String deprecatedProperty;
 
@@ -170,6 +176,7 @@ public class SimpleBackwardCompatibility implements Serializable {
 
   /**
    * Method returns attribute {@link #deprecatedProperty}.<br/>
+   * a comment
    *
    * @return {@link String} Value to which {@link #deprecatedProperty} is set.
    */
@@ -180,6 +187,7 @@ public class SimpleBackwardCompatibility implements Serializable {
 
   /**
    * Method sets attribute {@link #deprecatedProperty}.<br/>
+   * a comment
    *
    * @param pDeprecatedProperty Value to which {@link #deprecatedProperty} should be set.
    */

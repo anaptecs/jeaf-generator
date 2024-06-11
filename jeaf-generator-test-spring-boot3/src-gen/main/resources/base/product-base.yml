@@ -1504,6 +1504,8 @@ components:
         - successorProperty
       properties:
         deprecatedProperty:
+          description: |
+            a comment
           type: string
           deprecated: true
           nullable: false

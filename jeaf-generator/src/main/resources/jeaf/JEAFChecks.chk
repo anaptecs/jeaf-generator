@@ -114,4 +114,9 @@ context Ignore if runChecks() WARNING this.getWarningMessage("9152", {name}): fa
 // Checks for stereotype JEAFDeprecation
 context JEAFDeprecated if runChecks() && ignore() == false WARNING this.getWarningMessage("9161", {owner.asNamedElement().fqn() + "." + name}): this.isDeprecationComplete();
 
+context JEAFDeprecated if runChecks() && ignore() == false && (this.getSuccessorName() != null && this.getSuccessorName().length > 0) ERROR this.getErrorMessage("9173", {this.fqn()}): this.isProperty();
+context JEAFDeprecated if runChecks() && ignore() == false && this.generateBackwardCompatibility() ERROR this.getErrorMessage("9173", {this.fqn()}): this.isProperty();
+context JEAFDeprecated if runChecks() && ignore() == false && this.isClass() && this.generateBackwardCompatibility() ERROR this.getErrorMessage("9174", {this.getSuccessorName(),  this.fqn()}): this.getAllAttributesFromHierarchy().select(e|e.name).contains(this.getSuccessorName());
+context JEAFDeprecated if runChecks() && ignore() == false && this.generateBackwardCompatibility() ERROR this.getErrorMessage("9174", {this.getSuccessorName(),  this.fqn()}): this.getSuccessorName() != null && this.getSuccessorName().trim().length > 0;
+
  

@@ -20,6 +20,9 @@ public class SimpleBackwardCompatibility {
    */
   public static final String SUCCESSORPROPERTY = "successorProperty";
 
+  /**
+   * a comment
+   */
   @Deprecated
   private String deprecatedProperty;
 
@@ -73,6 +76,9 @@ public class SimpleBackwardCompatibility {
    * Class implements builder to create a new instance of class <code>SimpleBackwardCompatibility</code>.
    */
   public static class Builder {
+    /**
+     * a comment
+     */
     @Deprecated
     private String deprecatedProperty;
 
@@ -134,6 +140,7 @@ public class SimpleBackwardCompatibility {
 
   /**
    * Method returns attribute {@link #deprecatedProperty}.<br/>
+   * a comment
    *
    * @return {@link String} Value to which {@link #deprecatedProperty} is set.
    */
@@ -144,6 +151,7 @@ public class SimpleBackwardCompatibility {
 
   /**
    * Method sets attribute {@link #deprecatedProperty}.<br/>
+   * a comment
    *
    * @param pDeprecatedProperty Value to which {@link #deprecatedProperty} should be set.
    */
