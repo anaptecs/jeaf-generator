@@ -179,10 +179,11 @@ public class GeneratorMojo extends AbstractMojo {
   private Map<String, String> customTemplateParameters;
 
   /**
-   * Switch can be used to disable execution of custom templates.
+   * By default custom templates are only executed in case that also default templates are executed. Using this switch
+   * is it also possible to only execute custom templates.
    */
   @Parameter(required = false, defaultValue = "false")
-  private Boolean disableCustomTemplateExecution;
+  private Boolean enforceCustomTemplateExecution;
 
   /**
    * List of custom check files that will be used to run customer specific checks of the UML model.
@@ -1699,9 +1700,9 @@ public class GeneratorMojo extends AbstractMojo {
       lLog.info("Enable detailed toString():                       " + enableDetailedToStringMethod);
     }
 
-    if (disableCustomTemplateExecution) {
+    if (enforceCustomTemplateExecution) {
       lLog.info(" ");
-      lLog.info("Disable custom root template execution:           " + enableDetailedToStringMethod);
+      lLog.info("Enforce custom root template execution:           " + enforceCustomTemplateExecution);
     }
 
     if (customRootTemplate.equals(DEFAULT_CUSTOM_ROOT) == false) {
@@ -1977,12 +1978,7 @@ public class GeneratorMojo extends AbstractMojo {
         // Build arguments for generator
         HashMap<String, String> lParams = new HashMap<>();
         lParams.put("template.root", "Root::Root");
-        if (disableCustomTemplateExecution) {
-          lParams.put("custom.root.template", DEFAULT_CUSTOM_ROOT);
-        }
-        else {
-          lParams.put("custom.root.template", customRootTemplate);
-        }
+        lParams.put("custom.root.template", customRootTemplate);
         lParams.put("output.slot", "model");
         lParams.put("model.file", lModelFilePath);
         lParams.put("profile.name", "JMM");
@@ -2202,7 +2198,7 @@ public class GeneratorMojo extends AbstractMojo {
         | generatePersistentObjects | generateComponentImpls | generateComponentRuntimeClasses | generateGlobalParts
         | generateExceptionClasses | generateJUnitTests | generateTypesReport | generateBreakingChangesReport
         | generateRESTDeprecationReport | generateJavaDeprecationReport | generateOpenAPISpec | generateJSONSerializers
-        | (customRootTemplate.equals(DEFAULT_CUSTOM_ROOT) == false && disableCustomTemplateExecution == false);
+        | enforceCustomTemplateExecution;
   }
 
   private boolean isMessageConstantsGenerationRequested( ) {
