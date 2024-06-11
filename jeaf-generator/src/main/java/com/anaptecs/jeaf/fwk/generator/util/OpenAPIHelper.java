@@ -493,17 +493,15 @@ public class OpenAPIHelper {
 
   public static List<Element> getAllAttributesFromHierarchy( Element pElement ) {
     List<Element> lElements = new ArrayList<Element>();
-    if (pElement instanceof Class) {
-      Class lClass = (Class) pElement;
-      if (lClass.parents().size() > 0) {
-        List<Element> lParentAttributes = getAllAttributesFromHierarchy(lClass.parents().get(0));
-        lElements.addAll(lParentAttributes);
-      }
+    Class lClass = (Class) pElement;
+    if (lClass.parents().size() > 0) {
+      List<Element> lParentAttributes = getAllAttributesFromHierarchy(lClass.parents().get(0));
+      lElements.addAll(lParentAttributes);
+    }
 
-      EList<Property> lOwnedAttributes = lClass.getOwnedAttributes();
-      for (int i = 0; i < lOwnedAttributes.size(); i++) {
-        lElements.add(lOwnedAttributes.get(i));
-      }
+    EList<Property> lOwnedAttributes = lClass.getOwnedAttributes();
+    for (int i = 0; i < lOwnedAttributes.size(); i++) {
+      lElements.add(lOwnedAttributes.get(i));
     }
 
     return lElements;
