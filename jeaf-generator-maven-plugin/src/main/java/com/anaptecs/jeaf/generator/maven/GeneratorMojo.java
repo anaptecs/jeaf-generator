@@ -85,6 +85,8 @@ import io.swagger.v3.parser.core.models.SwaggerParseResult;
     requiresDependencyResolution = ResolutionScope.TEST)
 
 public class GeneratorMojo extends AbstractMojo {
+  private static final String DEFAULT_CUSTOM_ROOT = "CustomRoot::Root";
+
   /**
    * Reference to Maven project. Reference will be injected by Maven and can not be configured via POM.
    */
@@ -166,7 +168,7 @@ public class GeneratorMojo extends AbstractMojo {
   /**
    * Name of the root template for customer specific extensions
    */
-  @Parameter(required = false, defaultValue = "CustomRoot::Root")
+  @Parameter(required = false, defaultValue = DEFAULT_CUSTOM_ROOT)
   private String customRootTemplate;
 
   /**
@@ -175,6 +177,12 @@ public class GeneratorMojo extends AbstractMojo {
    */
   @Parameter(required = false)
   private Map<String, String> customTemplateParameters;
+
+  /**
+   * Switch can be used to disable execution of custom templates.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean disableCustomTemplateExecution;
 
   /**
    * List of custom check files that will be used to run customer specific checks of the UML model.
@@ -1691,7 +1699,12 @@ public class GeneratorMojo extends AbstractMojo {
       lLog.info("Enable detailed toString():                       " + enableDetailedToStringMethod);
     }
 
-    if (customRootTemplate.equals("CustomRoot::Root") == false) {
+    if (disableCustomTemplateExecution) {
+      lLog.info(" ");
+      lLog.info("Disable custom root template execution:           " + enableDetailedToStringMethod);
+    }
+
+    if (customRootTemplate.equals(DEFAULT_CUSTOM_ROOT) == false) {
       lLog.info(" ");
       lLog.info("Custom Root Template:                             " + customRootTemplate);
       if (customTemplateParameters != null && customTemplateParameters.isEmpty() == false) {
@@ -1964,7 +1977,12 @@ public class GeneratorMojo extends AbstractMojo {
         // Build arguments for generator
         HashMap<String, String> lParams = new HashMap<>();
         lParams.put("template.root", "Root::Root");
-        lParams.put("custom.root.template", customRootTemplate);
+        if (disableCustomTemplateExecution) {
+          lParams.put("custom.root.template", DEFAULT_CUSTOM_ROOT);
+        }
+        else {
+          lParams.put("custom.root.template", customRootTemplate);
+        }
         lParams.put("output.slot", "model");
         lParams.put("model.file", lModelFilePath);
         lParams.put("profile.name", "JMM");
@@ -1990,7 +2008,9 @@ public class GeneratorMojo extends AbstractMojo {
         lSuccessful = lRunner.run("workflow.oaw", null, lParams, null);
       }
     }
-    else {
+    else
+
+    {
       lSuccessful = true;
     }
     return lSuccessful;
@@ -2182,7 +2202,7 @@ public class GeneratorMojo extends AbstractMojo {
         | generatePersistentObjects | generateComponentImpls | generateComponentRuntimeClasses | generateGlobalParts
         | generateExceptionClasses | generateJUnitTests | generateTypesReport | generateBreakingChangesReport
         | generateRESTDeprecationReport | generateJavaDeprecationReport | generateOpenAPISpec | generateJSONSerializers
-        | customRootTemplate.equals("CustomRoot::Root") == false;
+        | (customRootTemplate.equals(DEFAULT_CUSTOM_ROOT) == false && disableCustomTemplateExecution == false);
   }
 
   private boolean isMessageConstantsGenerationRequested( ) {
