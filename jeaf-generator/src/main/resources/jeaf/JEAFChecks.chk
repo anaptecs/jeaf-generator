@@ -116,7 +116,7 @@ context JEAFDeprecated if runChecks() && ignore() == false WARNING this.getWarni
 
 context JEAFDeprecated if runChecks() && ignore() == false && (this.getSuccessorName() != null && this.getSuccessorName().length > 0) ERROR this.getErrorMessage("9173", {this.fqn()}): this.isProperty();
 context JEAFDeprecated if runChecks() && ignore() == false && this.generateBackwardCompatibility() ERROR this.getErrorMessage("9173", {this.fqn()}): this.isProperty();
-context JEAFDeprecated if runChecks() && ignore() == false && this.isClass() && this.generateBackwardCompatibility() ERROR this.getErrorMessage("9174", {this.getSuccessorName(),  this.fqn()}): this.getAllAttributesFromHierarchy().select(e|e.name).contains(this.getSuccessorName());
-context JEAFDeprecated if runChecks() && ignore() == false && this.generateBackwardCompatibility() ERROR this.getErrorMessage("9174", {this.getSuccessorName(),  this.fqn()}): this.getSuccessorName() != null && this.getSuccessorName().trim().length > 0;
+context JEAFDeprecated if runChecks() && ignore() == false && this.generateBackwardCompatibility() && this.getSuccessorName().length > 0 && (this.owner.isPOJO() || this.owner.isServiceObject()) ERROR this.getErrorMessage("9174", {this.getSuccessorName(),  owner.asNamedElement().fqn()}): this.owner.getAllAttributesFromHierarchy().select(e|e.name).contains(this.getSuccessorName());
+context JEAFDeprecated if runChecks() && ignore() == false && this.generateBackwardCompatibility() ERROR this.getErrorMessage("9175", {this.name,  owner.asNamedElement().fqn()}): this.getSuccessorName() != null && this.getSuccessorName().trim().length > 0;
 
  
