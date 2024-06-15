@@ -367,4 +367,7 @@ cached boolean requiresAttributeInitValue(uml::Class class):
 cached boolean isValidIdentifierName(uml::NamedElement namedElement):
     if namedElement.name == null
     then false
-    else namedElement.name.matches("^([a-zA-Z_$][a-zA-Z\\d_$]*)$");
+    else namedElement.name.isValidIdentifierNameAsString();
+    
+cached boolean isValidIdentifierNameAsString(String name):
+	name.matches("^([a-zA-Z_$][a-zA-Z\\d_$]*)$");

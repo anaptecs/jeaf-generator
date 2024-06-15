@@ -14,6 +14,12 @@ cached String getVersion():
 cached boolean hasMeaningfulComment(uml::NamedElement element):
     !element.ownedComment.select(e|e.body.trim().length > 0).isEmpty;    
     
+cached String getMarkdownComment(uml::NamedElement element):
+    element.ownedComment.first().body.trim();
+    
+cached String getJavadocComment(uml::NamedElement element):
+    element.getMarkdownComment().convertCommentForJavadoc();
+    
 cached boolean hasMeaningfulJavadoc(uml::NamedElement element):
     element.hasMeaningfulComment() || element.hasMeaningfulDeprecationInfo() || element.isAlias() || element.isBreakingChange();
 
