@@ -125,7 +125,7 @@ public class SimpleBackwardCompatibility {
      */
     @Deprecated
     public Builder setDeprecatedProperty( String pDeprecatedProperty ) {
-      // Call setter for successor.
+      // Delegate call to setSuccessorProperty(...)
       this.setSuccessorProperty(pDeprecatedProperty);
       return this;
     }
@@ -163,7 +163,7 @@ public class SimpleBackwardCompatibility {
    */
   @Deprecated
   public String getDeprecatedProperty( ) {
-    // Call getter for successor.
+    // Delegate call to getSuccessorProperty(...)
     return this.getSuccessorProperty();
   }
 
@@ -175,7 +175,7 @@ public class SimpleBackwardCompatibility {
    */
   @Deprecated
   public void setDeprecatedProperty( String pDeprecatedProperty ) {
-    // Call setter for successor.
+    // Delegate call to setSuccessorProperty(...)
     this.setSuccessorProperty(pDeprecatedProperty);
   }
 
