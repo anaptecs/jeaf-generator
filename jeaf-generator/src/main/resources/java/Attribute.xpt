@@ -9,19 +9,22 @@
 «EXTENSION functions::Internal»
 «EXTENSION functions::SoftLink»
 «EXTENSION functions::AddToJSON»
+«EXTENSION functions::JEAFDeprecated»
 
 // this properties should be processed
 // for now all properties should be processed
 «DEFINE PropertyDeclaration FOR Property»
-    «EXPAND jeafgenerator::api::ClassExtensionHook::BeforeClassPropertyDeclaration(this.type.fqn())»
-    «IF this.isSoftLink()»
-        «EXPAND SoftLinkPropertyDeclaration FOR (SoftLink) this»
-    «ELSEIF this.association == null»
-        «EXPAND DoPropertyDeclaration»
-    «ELSE»
-        «EXPAND DoAssociationPropertyDeclaration»
+    «IF this.generateBackwardCompatibility() == false»
+	    «EXPAND jeafgenerator::api::ClassExtensionHook::BeforeClassPropertyDeclaration(this.type.fqn())»
+	    «IF this.isSoftLink()»
+	        «EXPAND SoftLinkPropertyDeclaration FOR (SoftLink) this»
+	    «ELSEIF this.association == null»
+	        «EXPAND DoPropertyDeclaration»
+	    «ELSE»
+	        «EXPAND DoAssociationPropertyDeclaration»
+	    «ENDIF»
+	    «EXPAND jeafgenerator::api::ClassExtensionHook::AfterClassPropertyDeclaration(this.type.fqn())»
     «ENDIF»
-    «EXPAND jeafgenerator::api::ClassExtensionHook::AfterClassPropertyDeclaration(this.type.fqn())»
 «ENDDEFINE»
 
 
@@ -135,37 +138,45 @@
     @Deprecated
     «ENDIF-»	
 	«IF this.isInternalProperty() == false»public«ENDIF» «this.fqn()» «asGetter()»() {
-	    «IF this.isMultivalued() == false»return «asInstanceVar()»;
-	    «ELSE»
-		    «this.fqn()» lReturnValue;
-		    if(«asInstanceVar()» != null) {
-		      «IF this.isBinaryType()»
-			      «IF disableBinaryDataImmutability()»
-				      lReturnValue = «asInstanceVar()»;
+	    «IF this.generateBackwardCompatibility() == false»
+		    «IF this.isMultivalued() == false»return «asInstanceVar()»;
+		    «ELSE»
+			    «this.fqn()» lReturnValue;
+			    if(«asInstanceVar()» != null) {
+			      «IF this.isBinaryType()»
+				      «IF disableBinaryDataImmutability()»
+					      lReturnValue = «asInstanceVar()»;
+				      «ELSE»
+					      lReturnValue = new «type.fqn()»[«asInstanceVar()».length];
+					      System.arraycopy(«asInstanceVar()», 0, lReturnValue, 0, «asInstanceVar()».length);
+				      «ENDIF»
 			      «ELSE»
-				      lReturnValue = new «type.fqn()»[«asInstanceVar()».length];
-				      System.arraycopy(«asInstanceVar()», 0, lReturnValue, 0, «asInstanceVar()».length);
+				      «IF disableArrayImmutability()»
+					      lReturnValue = «asInstanceVar()»;
+				      «ELSE»
+					      lReturnValue = new «type.fqn()»[«asInstanceVar()».length];
+					      System.arraycopy(«asInstanceVar()», 0, lReturnValue, 0, «asInstanceVar()».length);
+				      «ENDIF»
 			      «ENDIF»
-		      «ELSE»
-			      «IF disableArrayImmutability()»
-				      lReturnValue = «asInstanceVar()»;
-			      «ELSE»
-				      lReturnValue = new «type.fqn()»[«asInstanceVar()».length];
-				      System.arraycopy(«asInstanceVar()», 0, lReturnValue, 0, «asInstanceVar()».length);
-			      «ENDIF»
-		      «ENDIF»
-		    }
-		    else {
-		      lReturnValue = null;
-		    }
-		    return lReturnValue;
+			    }
+			    else {
+			      lReturnValue = null;
+			    }
+			    return lReturnValue;
+			«ENDIF»
+		«ELSE»
+            «EXPAND java::Helper::CallGetterForSuccessor»
 		«ENDIF»
     }
     «IF type.isPrimitiveType() && type.isBooleanType() && this.isMultivalued() == false» 
         «EXPAND functions::Javadoc::JavadocForPropertyGetter»
         «EXPAND java::Helper::GenerateDeprecationAnnotation-»
        «IF this.isInternalProperty() == false»public«ENDIF» boolean is«name.toFirstUpper()»() {
-           return «name»;
+           «IF this.generateBackwardCompatibility() == false»
+               return «name»;
+           «ELSE»
+	           «EXPAND java::Helper::CallGetterForSuccessor»
+           «ENDIF»
        }
     «ENDIF»    
 «ENDDEFINE»
@@ -203,30 +214,34 @@
 	«EXPAND functions::Javadoc::JavadocForPropertySetter»
 	«EXPAND java::Helper::GenerateDeprecationAnnotation-»
 	«IF this.isInternalProperty() == false»public«ENDIF» void «asSetter()»(«this.fqn()» «asParameter()») {
-		// Assign value to attribute
-		«IF this.isMultivalued() == false»
-			«asInstanceVar()»=«asParameter()»;
+		«IF this.generateBackwardCompatibility() == false»
+			// Assign value to attribute
+			«IF this.isMultivalued() == false»
+				«asInstanceVar()»=«asParameter()»;
+			«ELSE»
+			  if(«asParameter()» != null) {
+		      «IF this.isBinaryType()»
+			      «IF disableBinaryDataImmutability()»
+				      «asInstanceVar()» = «asParameter()»;
+			      «ELSE»
+				      «asInstanceVar()» = new «type.fqn()»[«asParameter()».length];
+				      System.arraycopy(«asParameter()», 0, «asInstanceVar()», 0, «asParameter()».length);
+			      «ENDIF»
+		      «ELSE»
+			      «IF disableArrayImmutability()»
+				      «asInstanceVar()» = «asParameter()»;
+			      «ELSE»
+				      «asInstanceVar()» = new «type.fqn()»[«asParameter()».length];
+				      System.arraycopy(«asParameter()», 0, «asInstanceVar()», 0, «asParameter()».length);
+			      «ENDIF»
+		      «ENDIF»
+			  }
+			  else {
+			      «asInstanceVar()» = null;
+			  }
+			«ENDIF»
 		«ELSE»
-		  if(«asParameter()» != null) {
-	      «IF this.isBinaryType()»
-		      «IF disableBinaryDataImmutability()»
-			      «asInstanceVar()» = «asParameter()»;
-		      «ELSE»
-			      «asInstanceVar()» = new «type.fqn()»[«asParameter()».length];
-			      System.arraycopy(«asParameter()», 0, «asInstanceVar()», 0, «asParameter()».length);
-		      «ENDIF»
-	      «ELSE»
-		      «IF disableArrayImmutability()»
-			      «asInstanceVar()» = «asParameter()»;
-		      «ELSE»
-			      «asInstanceVar()» = new «type.fqn()»[«asParameter()».length];
-			      System.arraycopy(«asParameter()», 0, «asInstanceVar()», 0, «asParameter()».length);
-		      «ENDIF»
-	      «ENDIF»
-		  }
-		  else {
-		      «asInstanceVar()» = null;
-		  }
+            «EXPAND java::Helper::CallSetterForSuccessor»
 		«ENDIF»
 	}
 «ENDDEFINE»

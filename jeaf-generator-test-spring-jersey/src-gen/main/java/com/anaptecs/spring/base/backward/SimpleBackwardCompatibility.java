@@ -20,12 +20,6 @@ public class SimpleBackwardCompatibility {
    */
   public static final String SUCCESSORPROPERTY = "successorProperty";
 
-  /**
-   * a comment
-   */
-  @Deprecated
-  private String deprecatedProperty;
-
   private String successorProperty;
 
   /**
@@ -42,7 +36,6 @@ public class SimpleBackwardCompatibility {
    */
   protected SimpleBackwardCompatibility( Builder pBuilder ) {
     // Read attribute values from builder.
-    deprecatedProperty = pBuilder.deprecatedProperty;
     successorProperty = pBuilder.successorProperty;
   }
 
@@ -76,12 +69,6 @@ public class SimpleBackwardCompatibility {
    * Class implements builder to create a new instance of class <code>SimpleBackwardCompatibility</code>.
    */
   public static class Builder {
-    /**
-     * a comment
-     */
-    @Deprecated
-    private String deprecatedProperty;
-
     private String successorProperty;
 
     /**
@@ -97,7 +84,6 @@ public class SimpleBackwardCompatibility {
     protected Builder( SimpleBackwardCompatibility pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
-        this.setDeprecatedProperty(pObject.deprecatedProperty);
         this.setSuccessorProperty(pObject.successorProperty);
       }
     }
@@ -110,8 +96,8 @@ public class SimpleBackwardCompatibility {
      */
     @Deprecated
     public Builder setDeprecatedProperty( String pDeprecatedProperty ) {
-      // Assign value to attribute
-      deprecatedProperty = pDeprecatedProperty;
+      // Call setter for successor.
+      this.setSuccessorProperty(pDeprecatedProperty);
       return this;
     }
 
@@ -146,7 +132,8 @@ public class SimpleBackwardCompatibility {
    */
   @Deprecated
   public String getDeprecatedProperty( ) {
-    return deprecatedProperty;
+    // Call getter for successor.
+    return this.getSuccessorProperty();
   }
 
   /**
@@ -157,8 +144,8 @@ public class SimpleBackwardCompatibility {
    */
   @Deprecated
   public void setDeprecatedProperty( String pDeprecatedProperty ) {
-    // Assign value to attribute
-    deprecatedProperty = pDeprecatedProperty;
+    // Call setter for successor.
+    this.setSuccessorProperty(pDeprecatedProperty);
   }
 
   /**
@@ -190,10 +177,6 @@ public class SimpleBackwardCompatibility {
     StringBuilder lBuilder = new StringBuilder();
     lBuilder.append(pIndent);
     lBuilder.append(this.getClass().getName());
-    lBuilder.append(System.lineSeparator());
-    lBuilder.append(pIndent);
-    lBuilder.append("deprecatedProperty: ");
-    lBuilder.append(deprecatedProperty);
     lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("successorProperty: ");

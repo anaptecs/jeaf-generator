@@ -7,6 +7,7 @@
 «EXTENSION functions::Class»
 «EXTENSION functions::ClassifierTemplateParameter»
 «EXTENSION functions::SoftLink»
+«EXTENSION functions::JEAFDeprecated»
 
 
 «IMPORT uml»
@@ -31,7 +32,7 @@ public static «IF isAbstract == true» abstract «ENDIF»class Builder«this.ge
 		 */
 		private String «this.getCompositeDateTypePublicFieldName()»;
 	«ELSE»
-		«FOREACH this.ownedAttribute.select(e|e.isPropertySuppressed() == false && e.belongsToTransientBidirectionalBackReference() == false) AS attr»
+		«FOREACH this.ownedAttribute.select(e|e.isPropertySuppressed() == false && e.belongsToTransientBidirectionalBackReference() == false && e.generateBackwardCompatibility() == false) AS attr»
 		«EXPAND BuilderPropertyDeclaration FOR attr»
 		«ENDFOREACH»
 	«ENDIF»
@@ -57,7 +58,7 @@ public static «IF isAbstract == true» abstract «ENDIF»class Builder«this.ge
         «IF this.isCompositeDataType()»
         	this.set«this.getCompositeDateTypePublicFieldName().toFirstUpper()»(pObject.«this.getCompositeDateTypePublicFieldName()»);
         «ELSE»
-	        «FOREACH this.ownedAttribute.select(e|e.isPropertySuppressed() == false && e.belongsToTransientBidirectionalBackReference() == false) AS attr»
+	        «FOREACH this.ownedAttribute.select(e|e.isPropertySuppressed() == false && e.belongsToTransientBidirectionalBackReference() == false && e.generateBackwardCompatibility() == false) AS attr»
 	           «IF attr.isStatic == false»
 	               «IF attr.isSoftLink()»
 	                   this.set«attr.getSoftLinkPropertyName().toFirstUpper()»(pObject.«attr.getSoftLinkPropertyName()»);
@@ -389,30 +390,34 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
 	«EXPAND functions::Javadoc::JavadocForBuilderSetter(builderClassName)»
 	«EXPAND java::Helper::GenerateDeprecationAnnotation-»
 	public «builderClassName»«owner.asClass().getTemplateParams()» «asSetter()»(«this.fqn()» «asParameter()») {
-		// Assign value to attribute
-		«IF this.isMultivalued() == false»
-			«asInstanceVar()»=«asParameter()»;
-		«ELSE»
-			if(«asParameter()» != null) {
-			«IF this.isBinaryType()»
-				«IF disableBinaryDataImmutability()»
-					«asInstanceVar()» = «asParameter()»;
-				«ELSE»
-					«asInstanceVar()» = new «type.fqn()»[«asParameter()».length];
-					System.arraycopy(«asParameter()», 0, «asInstanceVar()», 0, «asParameter()».length);
-				«ENDIF»
+		«IF this.generateBackwardCompatibility() == false»
+			// Assign value to attribute
+			«IF this.isMultivalued() == false»
+				«asInstanceVar()»=«asParameter()»;
 			«ELSE»
-				«IF disableArrayImmutability()»
-					«asInstanceVar()» = «asParameter()»;
+				if(«asParameter()» != null) {
+				«IF this.isBinaryType()»
+					«IF disableBinaryDataImmutability()»
+						«asInstanceVar()» = «asParameter()»;
+					«ELSE»
+						«asInstanceVar()» = new «type.fqn()»[«asParameter()».length];
+						System.arraycopy(«asParameter()», 0, «asInstanceVar()», 0, «asParameter()».length);
+					«ENDIF»
 				«ELSE»
-					«asInstanceVar()» = new «type.fqn()»[«asParameter()».length];
-					System.arraycopy(«asParameter()», 0, «asInstanceVar()», 0, «asParameter()».length);
+					«IF disableArrayImmutability()»
+						«asInstanceVar()» = «asParameter()»;
+					«ELSE»
+						«asInstanceVar()» = new «type.fqn()»[«asParameter()».length];
+						System.arraycopy(«asParameter()», 0, «asInstanceVar()», 0, «asParameter()».length);
+					«ENDIF»
 				«ENDIF»
+				}
+				else {
+					«asInstanceVar()» = null;
+				}
 			«ENDIF»
-			}
-			else {
-				«asInstanceVar()» = null;
-			}
+		«ELSE»
+		    «EXPAND java::Helper::CallSetterForSuccessor»
 		«ENDIF»
 		return this;
 	}
