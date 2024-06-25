@@ -35,12 +35,9 @@ cached String getSoftLinkPropertyName(String propertyName, String suffix):
 	if propertyName.endsWith("ies")
 	then propertyName.subString(0, propertyName.length-3) + "y" + suffix + "s"
 	else
-		if propertyName.endsWith("es")
-		then propertyName.subString(0, propertyName.length-2) + suffix + "s"
-		else 
-			if propertyName.endsWith("s")
-			then propertyName.subString(0, propertyName.length-1) + suffix + "s"
-			else propertyName + suffix;
+		if propertyName.endsWith("s")
+		then propertyName.subString(0, propertyName.length-1) + suffix + "s"
+		else propertyName + suffix;
     
 cached String getSoftLinkAwarePropertyName(uml::Property property):
     if property.isSoftLink()
