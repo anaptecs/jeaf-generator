@@ -241,7 +241,7 @@
             - «property.getAttributeName()»
         «ENDFOREACH-»
       «ENDIF-»
-      «IF this.ownedAttribute.size > 0 -»
+      «IF this.getPropertiesForOpenAPI().size > 0 -»
           properties:
         «FOREACH this.getPropertiesForOpenAPI() AS attribute-»
             «attribute.getAttributeName()»:
