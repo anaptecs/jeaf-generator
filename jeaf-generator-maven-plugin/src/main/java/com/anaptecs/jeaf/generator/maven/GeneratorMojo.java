@@ -959,7 +959,7 @@ public class GeneratorMojo extends AbstractMojo {
   /**
    * Switch can be used to define if a soft link suffix should be used in OpenAPI.
    */
-  @Parameter(required = false, defaultValue = "false")
+  @Parameter(required = false, defaultValue = "true")
   private Boolean useSoftLinkSuffixInOpenAPI;
 
   /**
