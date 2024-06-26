@@ -58,7 +58,7 @@
 «ENDDEFINE»
 
 «DEFINE ToStringValue FOR uml::Property»
-    «LET this.getSoftLinkAwarePropertyName() AS propertyName»
+    «LET this.getSoftLinkAwarePropertyNameForJava() AS propertyName»
     «IF association == null »
 	    «IF isMultivalued() == false»
 		    lBuilder.append(«propertyName»);

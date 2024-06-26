@@ -949,6 +949,18 @@ public class GeneratorMojo extends AbstractMojo {
    */
   @Parameter(required = false)
   private String softLinkSuffix = "";
+  
+  /**
+   * Switch can be used to define if a soft link suffix should be used when for generated Java code.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean useSoftLinkSuffixInJava;
+
+  /**
+   * Switch can be used to define if a soft link suffix should be used in OpenAPI.
+   */
+  @Parameter(required = false, defaultValue = "true")
+  private Boolean useSoftLinkSuffixInOpenAPI;
 
   /**
    * Parameter can be used to suppress link to model element in generated OpenAPI specification. By default fully
@@ -1614,6 +1626,8 @@ public class GeneratorMojo extends AbstractMojo {
 
     if (softLinkSuffix.isEmpty() == false) {
       lLog.info("Soft link suffix:                                 " + softLinkSuffix);
+      lLog.info("Use soft link suffix in Java:                     " + useSoftLinkSuffixInJava);
+      lLog.info("Use soft link suffix in OpenAPI:                  " + useSoftLinkSuffixInOpenAPI);
     }
 
     if (suppressAllWarnings) {
@@ -1888,8 +1902,10 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty("switch.gen.value.of.data.types", generateValueOfForOpenAPIDataTypes.toString());
 
       System.setProperty("switch.gen.java.generic.soft.link.type", javaGenericSoftLinkType);
+      System.setProperty("switch.gen.java.generic.soft.link.type.use", useSoftLinkSuffixInJava.toString());
       System.setProperty("switch.gen.openapi.generic.soft.link.type", openAPIGenericSoftLinkType);
       System.setProperty("switch.gen.openapi.generic.soft.link.suffix", softLinkSuffix);
+      System.setProperty("switch.gen.openapi.generic.soft.link.suffix.use", useSoftLinkSuffixInOpenAPI.toString());
 
       System.setProperty("switch.gen.suppress.warnings", suppressWarnings.stream().collect(Collectors.joining("; ")));
       System.setProperty("switch.gen.suppress.all.warnings", suppressAllWarnings.toString());

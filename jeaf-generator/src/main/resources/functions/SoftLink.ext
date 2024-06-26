@@ -26,6 +26,12 @@ cached String getOpenAPIGenericSoftLinkType():
 private cached String getSoftLinkSuffix():
     getSystemProperty("switch.gen.openapi.generic.soft.link.suffix", "");
     
+cached boolean useSoftLinkSuffixInOpenAPI():
+	getBooleanSystemProperty("switch.gen.openapi.generic.soft.link.suffix.use", true);
+    
+cached boolean hasSoftLinkSuffix(uml::Property property):
+	getSoftLinkSuffix().length > 0;
+    
 cached String getSoftLinkPropertyName(uml::Property property):
     if property.isMultivalued()
     then getSoftLinkPropertyName(property.name, getSoftLinkSuffix())
@@ -39,8 +45,13 @@ cached String getSoftLinkPropertyName(String propertyName, String suffix):
 		then propertyName.subString(0, propertyName.length-1) + suffix + "s"
 		else propertyName + suffix;
     
-cached String getSoftLinkAwarePropertyName(uml::Property property):
+cached String getSoftLinkAwarePropertyNameForJava(uml::Property property):
     if property.isSoftLink()
+    then property.getSoftLinkPropertyName()
+    else property.name;
+    
+cached String getSoftLinkAwarePropertyNameForOpenAPI(uml::Property property):
+    if property.isSoftLink() && useSoftLinkSuffixInOpenAPI()
     then property.getSoftLinkPropertyName()
     else property.name;
     
