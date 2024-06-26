@@ -6,6 +6,7 @@
 «EXTENSION java::OpenAPIFunctions»
 «EXTENSION functions::Class»
 «EXTENSION functions::AddToJSON»
+«EXTENSION functions::SoftLink»
 «EXTENSION functions::SystemProperties»
 
 «IMPORT uml»
@@ -57,8 +58,12 @@
 «ENDDEFINE»
 
 «DEFINE JSONAlias FOR Property»
-	«IF generateJacksonAnnotations() && this.isStereotypeApplied("OpenAPIAliasName") == true»
-		@com.fasterxml.jackson.annotation.JsonProperty("«((OpenAPIAliasName)this).openAPIPropertyName»")
+	«IF generateJacksonAnnotations()» 
+		«IF this.isStereotypeApplied("OpenAPIAliasName") == true»
+			@com.fasterxml.jackson.annotation.JsonProperty("«((OpenAPIAliasName)this).openAPIPropertyName»")
+		«ELSEIF this.isSoftLink() && this.hasSoftLinkSuffix() && useSoftLinkSuffixInOpenAPI() == false»
+			@com.fasterxml.jackson.annotation.JsonProperty("«this.name»")
+		«ENDIF»
 	«ENDIF»
 «ENDDEFINE»
 
