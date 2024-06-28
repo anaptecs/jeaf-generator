@@ -12,19 +12,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.anaptecs.spring.base.backward.SimpleBackwardCompatibility;
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonSetter;
-import com.fasterxml.jackson.annotation.Nulls;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-@JsonAutoDetect(
-    fieldVisibility = JsonAutoDetect.Visibility.ANY,
-    getterVisibility = JsonAutoDetect.Visibility.NONE,
-    isGetterVisibility = JsonAutoDetect.Visibility.NONE,
-    setterVisibility = JsonAutoDetect.Visibility.NONE)
 public class SimpleAssociationBackwardCompatibility {
   /**
    * Constant for the name of attribute "deprecatedLinks".
@@ -48,18 +37,7 @@ public class SimpleAssociationBackwardCompatibility {
    */
   public static final String NEWSINGLELINK = "newSingleLink";
 
-  /**
-   * @deprecated Wrong type. Switch to <code>newLink</code> instead. (<b>since:</b> 2.0, <b>removed with:</b> 3.0)
-   */
-  @Deprecated
-  @JsonSetter(nulls = Nulls.SKIP)
-  private List<SimpleBackwardCompatibility> deprecatedLinks;
-
-  @JsonSetter(nulls = Nulls.SKIP)
   private List<SimpleBackwardCompatibility> newLinks;
-
-  @Deprecated
-  private SimpleBackwardCompatibility oldSingleLink;
 
   private SimpleBackwardCompatibility newSingleLink;
 
@@ -68,7 +46,6 @@ public class SimpleAssociationBackwardCompatibility {
    * object creation builder should be used instead.
    */
   protected SimpleAssociationBackwardCompatibility( ) {
-    deprecatedLinks = new ArrayList<SimpleBackwardCompatibility>();
     newLinks = new ArrayList<SimpleBackwardCompatibility>();
   }
 
@@ -79,19 +56,12 @@ public class SimpleAssociationBackwardCompatibility {
    */
   protected SimpleAssociationBackwardCompatibility( Builder pBuilder ) {
     // Read attribute values from builder.
-    if (pBuilder.deprecatedLinks != null) {
-      deprecatedLinks = pBuilder.deprecatedLinks;
-    }
-    else {
-      deprecatedLinks = new ArrayList<SimpleBackwardCompatibility>();
-    }
     if (pBuilder.newLinks != null) {
       newLinks = pBuilder.newLinks;
     }
     else {
       newLinks = new ArrayList<SimpleBackwardCompatibility>();
     }
-    oldSingleLink = pBuilder.oldSingleLink;
     newSingleLink = pBuilder.newSingleLink;
   }
 
@@ -119,16 +89,7 @@ public class SimpleAssociationBackwardCompatibility {
    * Class implements builder to create a new instance of class <code>SimpleAssociationBackwardCompatibility</code>.
    */
   public static class Builder {
-    /**
-     * @deprecated Wrong type. Switch to <code>newLink</code> instead. (<b>since:</b> 2.0, <b>removed with:</b> 3.0)
-     */
-    @Deprecated
-    private List<SimpleBackwardCompatibility> deprecatedLinks;
-
     private List<SimpleBackwardCompatibility> newLinks;
-
-    @Deprecated
-    private SimpleBackwardCompatibility oldSingleLink;
 
     private SimpleBackwardCompatibility newSingleLink;
 
@@ -146,32 +107,9 @@ public class SimpleAssociationBackwardCompatibility {
     protected Builder( SimpleAssociationBackwardCompatibility pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
-        this.setDeprecatedLinks(pObject.deprecatedLinks);
         this.setNewLinks(pObject.newLinks);
-        this.setOldSingleLink(pObject.oldSingleLink);
         this.setNewSingleLink(pObject.newSingleLink);
       }
-    }
-
-    /**
-     * Method returns a new builder.
-     *
-     * @return {@link Builder} New builder that can be used to create new SimpleAssociationBackwardCompatibility
-     * objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     *
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new SimpleAssociationBackwardCompatibility
-     * objects. The method never returns null.
-     */
-    public static Builder newBuilder( SimpleAssociationBackwardCompatibility pObject ) {
-      return new Builder(pObject);
     }
 
     /**
@@ -183,13 +121,8 @@ public class SimpleAssociationBackwardCompatibility {
      */
     @Deprecated
     public Builder setDeprecatedLinks( List<SimpleBackwardCompatibility> pDeprecatedLinks ) {
-      // To ensure immutability we have to copy the content of the passed collection.
-      if (pDeprecatedLinks != null) {
-        deprecatedLinks = new ArrayList<SimpleBackwardCompatibility>(pDeprecatedLinks);
-      }
-      else {
-        deprecatedLinks = null;
-      }
+      // Delegate call to setNewLinks(...)
+      this.setNewLinks(pDeprecatedLinks);
       return this;
     }
 
@@ -203,12 +136,8 @@ public class SimpleAssociationBackwardCompatibility {
      */
     @Deprecated
     public Builder addToDeprecatedLinks( SimpleBackwardCompatibility... pDeprecatedLinks ) {
-      if (pDeprecatedLinks != null) {
-        if (deprecatedLinks == null) {
-          deprecatedLinks = new ArrayList<SimpleBackwardCompatibility>();
-        }
-        deprecatedLinks.addAll(Arrays.asList(pDeprecatedLinks));
-      }
+      // Delegate call to addToNewLinks(...)
+      this.addToNewLinks(pDeprecatedLinks);
       return this;
     }
 
@@ -253,7 +182,8 @@ public class SimpleAssociationBackwardCompatibility {
      */
     @Deprecated
     public Builder setOldSingleLink( SimpleBackwardCompatibility pOldSingleLink ) {
-      oldSingleLink = pOldSingleLink;
+      // Delegate call to setNewSingleLink(...)
+      this.setNewSingleLink(pOldSingleLink);
       return this;
     }
 
@@ -275,9 +205,7 @@ public class SimpleAssociationBackwardCompatibility {
      * @return SimpleAssociationBackwardCompatibility Created object. The method never returns null.
      */
     public SimpleAssociationBackwardCompatibility build( ) {
-      SimpleAssociationBackwardCompatibility lObject = new SimpleAssociationBackwardCompatibility(this);
-      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
-      return lObject;
+      return new SimpleAssociationBackwardCompatibility(this);
     }
   }
 
@@ -290,8 +218,8 @@ public class SimpleAssociationBackwardCompatibility {
    */
   @Deprecated
   public List<SimpleBackwardCompatibility> getDeprecatedLinks( ) {
-    // Return all SimpleBackwardCompatibility objects as unmodifiable collection.
-    return Collections.unmodifiableList(deprecatedLinks);
+    // Delegate call to getNewLinks(...)
+    return this.getNewLinks();
   }
 
   /**
@@ -302,8 +230,8 @@ public class SimpleAssociationBackwardCompatibility {
    */
   @Deprecated
   public void addToDeprecatedLinks( SimpleBackwardCompatibility pDeprecatedLinks ) {
-    // Add passed object to collection of associated SimpleBackwardCompatibility objects.
-    deprecatedLinks.add(pDeprecatedLinks);
+    // Delegate call to addToNewLinks(...)
+    this.addToNewLinks(pDeprecatedLinks);
   }
 
   /**
@@ -329,8 +257,8 @@ public class SimpleAssociationBackwardCompatibility {
    */
   @Deprecated
   public void removeFromDeprecatedLinks( SimpleBackwardCompatibility pDeprecatedLinks ) {
-    // Remove passed object from collection of associated SimpleBackwardCompatibility objects.
-    deprecatedLinks.remove(pDeprecatedLinks);
+    // Delegate call to removeFromNewLinks(...)
+    this.removeFromNewLinks(pDeprecatedLinks);
   }
 
   /**
@@ -338,8 +266,8 @@ public class SimpleAssociationBackwardCompatibility {
    */
   @Deprecated
   public void clearDeprecatedLinks( ) {
-    // Remove all objects from association "deprecatedLinks".
-    deprecatedLinks.clear();
+    // Delegate call to clearNewLinks()
+    this.clearNewLinks();
   }
 
   /**
@@ -401,7 +329,8 @@ public class SimpleAssociationBackwardCompatibility {
    */
   @Deprecated
   public SimpleBackwardCompatibility getOldSingleLink( ) {
-    return oldSingleLink;
+    // Delegate call to getNewSingleLink(...)
+    return this.getNewSingleLink();
   }
 
   /**
@@ -411,7 +340,8 @@ public class SimpleAssociationBackwardCompatibility {
    */
   @Deprecated
   public void setOldSingleLink( SimpleBackwardCompatibility pOldSingleLink ) {
-    oldSingleLink = pOldSingleLink;
+    // Delegate call to setNewSingleLink(...)
+    this.setNewSingleLink(pOldSingleLink);
   }
 
   /**
@@ -419,7 +349,8 @@ public class SimpleAssociationBackwardCompatibility {
    */
   @Deprecated
   public final void unsetOldSingleLink( ) {
-    oldSingleLink = null;
+    // Delegate call to unsetNewSingleLink()
+    this.unsetNewSingleLink();
   }
 
   /**
@@ -451,9 +382,7 @@ public class SimpleAssociationBackwardCompatibility {
   public int hashCode( ) {
     final int lPrime = 31;
     int lResult = 1;
-    lResult = lPrime * lResult + Objects.hashCode(deprecatedLinks);
     lResult = lPrime * lResult + Objects.hashCode(newLinks);
-    lResult = lPrime * lResult + Objects.hashCode(oldSingleLink);
     lResult = lPrime * lResult + Objects.hashCode(newSingleLink);
     return lResult;
   }
@@ -472,8 +401,7 @@ public class SimpleAssociationBackwardCompatibility {
     }
     else {
       SimpleAssociationBackwardCompatibility lOther = (SimpleAssociationBackwardCompatibility) pObject;
-      lEquals = Objects.equals(deprecatedLinks, lOther.deprecatedLinks) && Objects.equals(newLinks, lOther.newLinks)
-          && Objects.equals(oldSingleLink, lOther.oldSingleLink) && Objects.equals(newSingleLink, lOther.newSingleLink);
+      lEquals = Objects.equals(newLinks, lOther.newLinks) && Objects.equals(newSingleLink, lOther.newSingleLink);
     }
     return lEquals;
   }
@@ -490,22 +418,6 @@ public class SimpleAssociationBackwardCompatibility {
     lBuilder.append(this.getClass().getName());
     lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
-    lBuilder.append("deprecatedLinks: ");
-    if (deprecatedLinks != null) {
-      lBuilder.append(deprecatedLinks.size());
-      lBuilder.append(" element(s)");
-    }
-    else {
-      lBuilder.append(" null");
-    }
-    lBuilder.append(System.lineSeparator());
-    if (deprecatedLinks != null) {
-      for (SimpleBackwardCompatibility lNext : deprecatedLinks) {
-        lBuilder.append(lNext.toStringBuilder(pIndent + "    "));
-        lBuilder.append(System.lineSeparator());
-      }
-    }
-    lBuilder.append(pIndent);
     lBuilder.append("newLinks: ");
     if (newLinks != null) {
       lBuilder.append(newLinks.size());
@@ -520,16 +432,6 @@ public class SimpleAssociationBackwardCompatibility {
         lBuilder.append(lNext.toStringBuilder(pIndent + "    "));
         lBuilder.append(System.lineSeparator());
       }
-    }
-    lBuilder.append(pIndent);
-    lBuilder.append("oldSingleLink: ");
-    if (oldSingleLink != null) {
-      lBuilder.append(System.lineSeparator());
-      lBuilder.append(oldSingleLink.toStringBuilder(pIndent + "    "));
-    }
-    else {
-      lBuilder.append(" null");
-      lBuilder.append(System.lineSeparator());
     }
     lBuilder.append(pIndent);
     lBuilder.append("newSingleLink: ");

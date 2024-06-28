@@ -47,10 +47,12 @@ cached boolean generateBackwardCompatibility(Element deprecated):
     
 cached String getSuccessorName(Element deprecated):
     deprecated.getStereotypeValue("JEAFDeprecated", "successorName");
-    
 
 cached Property getSuccessorAsProperty(Property property):
     property.owner.allOwnedElements().typeSelect(Property).selectFirst(e|e.name == property.getSuccessorName());
+    
+cached boolean hasPropertyWithBckwardCompatibility(Class class):
+    class.allOwnedElements().typeSelect(Property).select(e|e.generateBackwardCompatibility()).size > 0;
     
 //cached boolean isSuccessorOfSameType(Property property):
 //    property.owner.getall

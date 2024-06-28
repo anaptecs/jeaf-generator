@@ -6,8 +6,10 @@
 package com.anaptecs.spring.base.backward;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JsonPropertyOrder(value = { "deprecatedProperty", "successorProperty" })
 public class SimpleBackwardCompatibility {
   /**
    * Constant for the name of attribute "deprecatedProperty".
@@ -96,7 +98,7 @@ public class SimpleBackwardCompatibility {
      */
     @Deprecated
     public Builder setDeprecatedProperty( String pDeprecatedProperty ) {
-      // Call setter for successor.
+      // Delegate call to setSuccessorProperty(...)
       this.setSuccessorProperty(pDeprecatedProperty);
       return this;
     }
@@ -132,7 +134,7 @@ public class SimpleBackwardCompatibility {
    */
   @Deprecated
   public String getDeprecatedProperty( ) {
-    // Call getter for successor.
+    // Delegate call to getSuccessorProperty(...)
     return this.getSuccessorProperty();
   }
 
@@ -144,7 +146,7 @@ public class SimpleBackwardCompatibility {
    */
   @Deprecated
   public void setDeprecatedProperty( String pDeprecatedProperty ) {
-    // Call setter for successor.
+    // Delegate call to setSuccessorProperty(...)
     this.setSuccessorProperty(pDeprecatedProperty);
   }
 

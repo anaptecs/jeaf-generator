@@ -1495,6 +1495,30 @@ components:
           type: string
           nullable: false
 
+    # com.anaptecs.spring.base.SimpleAssociationBackwardCompatibility
+    SimpleAssociationBackwardCompatibility:
+      type: object
+      additionalProperties: false
+      properties:
+        deprecatedLinks:
+          description: |
+            
+            <br><br>
+            Deprecated: Wrong type. Switch to `newLink` instead. (since: 2.0, removed with: 3.0)
+          deprecated: true
+          type: array
+          items:
+            $ref: '#/components/schemas/SimpleBackwardCompatibility'
+        newLinks:
+          type: array
+          items:
+            $ref: '#/components/schemas/SimpleBackwardCompatibility'
+        oldSingleLink:
+          # Property "oldSingleLink" is marked as deprecated. However OpenAPI does not support to mark references to complex types as deprecated.
+          $ref: '#/components/schemas/SimpleBackwardCompatibility'
+        newSingleLink:
+          $ref: '#/components/schemas/SimpleBackwardCompatibility'
+
     # com.anaptecs.spring.base.backward.SimpleBackwardCompatibility
     SimpleBackwardCompatibility:
       type: object
