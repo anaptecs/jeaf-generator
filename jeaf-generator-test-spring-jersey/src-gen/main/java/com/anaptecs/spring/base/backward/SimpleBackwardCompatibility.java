@@ -6,8 +6,10 @@
 package com.anaptecs.spring.base.backward;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JsonPropertyOrder(value = { "deprecatedProperty", "successorProperty" })
 public class SimpleBackwardCompatibility {
   /**
    * Constant for the name of attribute "deprecatedProperty".
@@ -19,9 +21,6 @@ public class SimpleBackwardCompatibility {
    * Constant for the name of attribute "successorProperty".
    */
   public static final String SUCCESSORPROPERTY = "successorProperty";
-
-  @Deprecated
-  private String deprecatedProperty;
 
   private String successorProperty;
 
@@ -39,7 +38,6 @@ public class SimpleBackwardCompatibility {
    */
   protected SimpleBackwardCompatibility( Builder pBuilder ) {
     // Read attribute values from builder.
-    deprecatedProperty = pBuilder.deprecatedProperty;
     successorProperty = pBuilder.successorProperty;
   }
 
@@ -73,9 +71,6 @@ public class SimpleBackwardCompatibility {
    * Class implements builder to create a new instance of class <code>SimpleBackwardCompatibility</code>.
    */
   public static class Builder {
-    @Deprecated
-    private String deprecatedProperty;
-
     private String successorProperty;
 
     /**
@@ -91,7 +86,6 @@ public class SimpleBackwardCompatibility {
     protected Builder( SimpleBackwardCompatibility pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
-        this.setDeprecatedProperty(pObject.deprecatedProperty);
         this.setSuccessorProperty(pObject.successorProperty);
       }
     }
@@ -104,8 +98,8 @@ public class SimpleBackwardCompatibility {
      */
     @Deprecated
     public Builder setDeprecatedProperty( String pDeprecatedProperty ) {
-      // Assign value to attribute
-      deprecatedProperty = pDeprecatedProperty;
+      // Delegate call to setSuccessorProperty(...)
+      this.setSuccessorProperty(pDeprecatedProperty);
       return this;
     }
 
@@ -134,23 +128,26 @@ public class SimpleBackwardCompatibility {
 
   /**
    * Method returns attribute {@link #deprecatedProperty}.<br/>
+   * a comment
    *
    * @return {@link String} Value to which {@link #deprecatedProperty} is set.
    */
   @Deprecated
   public String getDeprecatedProperty( ) {
-    return deprecatedProperty;
+    // Delegate call to getSuccessorProperty(...)
+    return this.getSuccessorProperty();
   }
 
   /**
    * Method sets attribute {@link #deprecatedProperty}.<br/>
+   * a comment
    *
    * @param pDeprecatedProperty Value to which {@link #deprecatedProperty} should be set.
    */
   @Deprecated
   public void setDeprecatedProperty( String pDeprecatedProperty ) {
-    // Assign value to attribute
-    deprecatedProperty = pDeprecatedProperty;
+    // Delegate call to setSuccessorProperty(...)
+    this.setSuccessorProperty(pDeprecatedProperty);
   }
 
   /**
@@ -182,10 +179,6 @@ public class SimpleBackwardCompatibility {
     StringBuilder lBuilder = new StringBuilder();
     lBuilder.append(pIndent);
     lBuilder.append(this.getClass().getName());
-    lBuilder.append(System.lineSeparator());
-    lBuilder.append(pIndent);
-    lBuilder.append("deprecatedProperty: ");
-    lBuilder.append(deprecatedProperty);
     lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
     lBuilder.append("successorProperty: ");

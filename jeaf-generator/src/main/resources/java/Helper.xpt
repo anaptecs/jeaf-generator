@@ -5,6 +5,7 @@
 «EXTENSION functions::Class»
 «EXTENSION functions::Property»
 «EXTENSION functions::SoftLink»
+«EXTENSION functions::JEAFDeprecated»
 
 
 «DEFINE GenerateToStringMethod FOR uml::Class»
@@ -36,7 +37,7 @@
 	    «ELSE»
 		    StringBuilder lBuilder = super.toStringBuilder(pIndent);
 	    «ENDIF»
-	    «FOREACH this.getToStringProperties().select(e|e.isPropertySuppressed() == false && e.isStatic == false && e.belongsToTransientBidirectionalBackReference() == false) AS attribute»
+	    «FOREACH this.getToStringProperties().select(e|e.isPropertySuppressed() == false && e.isStatic == false && e.belongsToTransientBidirectionalBackReference() == false && e.generateBackwardCompatibility() == false) AS attribute»
 			lBuilder.append(pIndent);
 			lBuilder.append("«attribute.name»: ");
 		    «EXPAND ToStringValue FOR attribute»
@@ -354,7 +355,7 @@
   «IF this.hasBidirectionalAssociations() == false || this.hasOnlyTransientBidirectionalAssociations()»
 	  @Override
 	  public int hashCode( ) {
-	    «IF ownedAttribute.select(e|e.isPropertySuppressed() == false && e.isTransient() == false && e.isStatic == false).isEmpty == false»
+	    «IF ownedAttribute.select(e|e.isPropertySuppressed() == false && e.isTransient() == false && e.isStatic == false && e.generateBackwardCompatibility() == false).isEmpty == false»
 		    final int lPrime = 31;
 		    «IF parents().isEmpty»
 		    int lResult = 1;
@@ -362,7 +363,7 @@
 		    int lResult = super.hashCode();
 		    «ENDIF»
 		    
-		    «FOREACH ownedAttribute.select(e|e.isPropertySuppressed() == false && e.isTransient() == false && e.isStatic == false) AS property»
+		    «FOREACH ownedAttribute.select(e|e.isPropertySuppressed() == false && e.isTransient() == false && e.isStatic == false && e.generateBackwardCompatibility() == false) AS property»
 		        «IF property.type.isPrimitiveType() && property.isMultivalued() == false»
 		            «IF property.type.isBooleanType()»
 		                lResult = lPrime * lResult + Boolean.hashCode(«property.name»);
@@ -418,10 +419,10 @@
           lEquals = false;
         }
 	    else {
-	      «IF ownedAttribute.select(e|e.isPropertySuppressed() == false && e.isTransient() == false && e.isStatic == false).isEmpty == false»
+	      «IF ownedAttribute.select(e|e.isPropertySuppressed() == false && e.isTransient() == false && e.isStatic == false && e.generateBackwardCompatibility() == false).isEmpty == false»
 	          «className»«IF this.hasTemplateParameter()»<?>«ENDIF» lOther = («className»«IF this.hasTemplateParameter()»<?>«ENDIF») pObject;
 		      lEquals =
-		      «FOREACH ownedAttribute.select(e|e.isPropertySuppressed() == false && e.isTransient() == false && e.isStatic == false) AS property SEPARATOR " && "»
+		      «FOREACH ownedAttribute.select(e|e.isPropertySuppressed() == false && e.isTransient() == false && e.isStatic == false && e.generateBackwardCompatibility() == false) AS property SEPARATOR " && "»
 		        «IF property.type.isPrimitiveType() && property.isMultivalued() == false»
                     «IF property.type.isDoubleType()»
                       Double.compare(«property.name», lOther.«property.name») == 0
@@ -451,4 +452,58 @@
 	    return lEquals;
 	  }
   «ENDIF»
+«ENDDEFINE»
+
+«DEFINE CallSetterForSuccessor FOR uml::Property»
+	// Delegate call to «this.getSuccessorAsProperty().asSetter()»(...)
+	«IF this.getSuccessorAsProperty().type == this.type»
+		this.«this.getSuccessorAsProperty().asSetter()»(«asParameter()»);
+	«ELSE»
+	   // TODO: ERROR: Type of deprecated property '«name»' and successor property '«this.getSuccessorAsProperty().name»' are not the same
+	«ENDIF»
+«ENDDEFINE»
+
+«DEFINE CallAddToForSuccessor FOR uml::Property»
+    // Delegate call to addTo«this.getSuccessorAsProperty().name.toFirstUpper()»(...)
+    «IF this.getSuccessorAsProperty().type == this.type»
+        this.addTo«this.getSuccessorAsProperty().name.toFirstUpper()»(«asParameter()»);
+    «ELSE»
+       // TODO: ERROR: Type of deprecated property '«name»' and successor property '«this.getSuccessorAsProperty().name»' are not the same
+    «ENDIF»
+«ENDDEFINE»
+
+«DEFINE CallRemoveFromForSuccessor FOR uml::Property»
+    // Delegate call to removeFrom«this.getSuccessorAsProperty().name.toFirstUpper()»(...)
+    «IF this.getSuccessorAsProperty().type == this.type»
+        this.removeFrom«this.getSuccessorAsProperty().name.toFirstUpper()»(«asParameter()»);
+    «ELSE»
+       // TODO: ERROR: Type of deprecated property '«name»' and successor property '«this.getSuccessorAsProperty().name»' are not the same
+    «ENDIF»
+«ENDDEFINE»
+
+«DEFINE CallClearForSuccessor FOR uml::Property»
+    // Delegate call to clear«this.getSuccessorAsProperty().name.toFirstUpper()»()
+    «IF this.getSuccessorAsProperty().type == this.type»
+        this.clear«this.getSuccessorAsProperty().name.toFirstUpper()»();
+    «ELSE»
+       // TODO: ERROR: Type of deprecated property '«name»' and successor property '«this.getSuccessorAsProperty().name»' are not the same
+    «ENDIF»
+«ENDDEFINE»
+
+«DEFINE CallUnsetForSuccessor FOR uml::Property»
+    // Delegate call to unset«this.getSuccessorAsProperty().name.toFirstUpper()»()
+    «IF this.getSuccessorAsProperty().type == this.type»
+        this.unset«this.getSuccessorAsProperty().name.toFirstUpper()»();
+    «ELSE»
+       // TODO: ERROR: Type of deprecated property '«name»' and successor property '«this.getSuccessorAsProperty().name»' are not the same
+    «ENDIF»
+«ENDDEFINE»
+
+«DEFINE CallGetterForSuccessor FOR uml::Property»
+    // Delegate call to «this.getSuccessorAsProperty().asGetter()»(...)
+	«IF this.getSuccessorAsProperty().type == this.type»
+		return this.«this.getSuccessorAsProperty().asGetter()»();
+    «ELSE»
+       // TODO: ERROR: Type of deprecated property '«name»' and successor property '«this.getSuccessorAsProperty().name»' are not the same
+	«ENDIF»
 «ENDDEFINE»

@@ -8,6 +8,7 @@
 «EXTENSION functions::AddToJSON»
 «EXTENSION functions::SoftLink»
 «EXTENSION functions::SystemProperties»
+«EXTENSION functions::JEAFDeprecated»
 
 «IMPORT uml»
 «IMPORT JMM»
@@ -40,7 +41,7 @@
 		     isGetterVisibility = com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.NONE,
 		     setterVisibility = com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.NONE)
 		«ENDIF»
-	    «IF this.hasAddToJSONProperty()»
+	    «IF this.hasAddToJSONProperty() || this.hasPropertyWithBckwardCompatibility()»
 	        @com.fasterxml.jackson.annotation.JsonPropertyOrder(value = {
 	           «FOREACH this.getAllPropertiesFromHierarchy() AS property SEPARATOR ", "»"«property.name»"«ENDFOREACH»
 	        })

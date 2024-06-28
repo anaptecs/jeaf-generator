@@ -9,19 +9,22 @@
 «EXTENSION functions::Internal»
 «EXTENSION functions::SoftLink»
 «EXTENSION functions::AddToJSON»
+«EXTENSION functions::JEAFDeprecated»
 
 // this properties should be processed
 // for now all properties should be processed
 «DEFINE PropertyDeclaration FOR Property»
-    «EXPAND jeafgenerator::api::ClassExtensionHook::BeforeClassPropertyDeclaration(this.type.fqn())»
-    «IF this.isSoftLink()»
-        «EXPAND SoftLinkPropertyDeclaration FOR (SoftLink) this»
-    «ELSEIF this.association == null»
-        «EXPAND DoPropertyDeclaration»
-    «ELSE»
-        «EXPAND DoAssociationPropertyDeclaration»
+    «IF this.generateBackwardCompatibility() == false»
+	    «EXPAND jeafgenerator::api::ClassExtensionHook::BeforeClassPropertyDeclaration(this.type.fqn())»
+	    «IF this.isSoftLink()»
+	        «EXPAND SoftLinkPropertyDeclaration FOR (SoftLink) this»
+	    «ELSEIF this.association == null»
+	        «EXPAND DoPropertyDeclaration»
+	    «ELSE»
+	        «EXPAND DoAssociationPropertyDeclaration»
+	    «ENDIF»
+	    «EXPAND jeafgenerator::api::ClassExtensionHook::AfterClassPropertyDeclaration(this.type.fqn())»
     «ENDIF»
-    «EXPAND jeafgenerator::api::ClassExtensionHook::AfterClassPropertyDeclaration(this.type.fqn())»
 «ENDDEFINE»
 
 
@@ -135,37 +138,45 @@
     @Deprecated
     «ENDIF-»	
 	«IF this.isInternalProperty() == false»public«ENDIF» «this.fqn()» «asGetter()»() {
-	    «IF this.isMultivalued() == false»return «asInstanceVar()»;
-	    «ELSE»
-		    «this.fqn()» lReturnValue;
-		    if(«asInstanceVar()» != null) {
-		      «IF this.isBinaryType()»
-			      «IF disableBinaryDataImmutability()»
-				      lReturnValue = «asInstanceVar()»;
+	    «IF this.generateBackwardCompatibility() == false»
+		    «IF this.isMultivalued() == false»return «asInstanceVar()»;
+		    «ELSE»
+			    «this.fqn()» lReturnValue;
+			    if(«asInstanceVar()» != null) {
+			      «IF this.isBinaryType()»
+				      «IF disableBinaryDataImmutability()»
+					      lReturnValue = «asInstanceVar()»;
+				      «ELSE»
+					      lReturnValue = new «type.fqn()»[«asInstanceVar()».length];
+					      System.arraycopy(«asInstanceVar()», 0, lReturnValue, 0, «asInstanceVar()».length);
+				      «ENDIF»
 			      «ELSE»
-				      lReturnValue = new «type.fqn()»[«asInstanceVar()».length];
-				      System.arraycopy(«asInstanceVar()», 0, lReturnValue, 0, «asInstanceVar()».length);
+				      «IF disableArrayImmutability()»
+					      lReturnValue = «asInstanceVar()»;
+				      «ELSE»
+					      lReturnValue = new «type.fqn()»[«asInstanceVar()».length];
+					      System.arraycopy(«asInstanceVar()», 0, lReturnValue, 0, «asInstanceVar()».length);
+				      «ENDIF»
 			      «ENDIF»
-		      «ELSE»
-			      «IF disableArrayImmutability()»
-				      lReturnValue = «asInstanceVar()»;
-			      «ELSE»
-				      lReturnValue = new «type.fqn()»[«asInstanceVar()».length];
-				      System.arraycopy(«asInstanceVar()», 0, lReturnValue, 0, «asInstanceVar()».length);
-			      «ENDIF»
-		      «ENDIF»
-		    }
-		    else {
-		      lReturnValue = null;
-		    }
-		    return lReturnValue;
+			    }
+			    else {
+			      lReturnValue = null;
+			    }
+			    return lReturnValue;
+			«ENDIF»
+		«ELSE»
+            «EXPAND java::Helper::CallGetterForSuccessor»
 		«ENDIF»
     }
     «IF type.isPrimitiveType() && type.isBooleanType() && this.isMultivalued() == false» 
         «EXPAND functions::Javadoc::JavadocForPropertyGetter»
         «EXPAND java::Helper::GenerateDeprecationAnnotation-»
        «IF this.isInternalProperty() == false»public«ENDIF» boolean is«name.toFirstUpper()»() {
-           return «name»;
+           «IF this.generateBackwardCompatibility() == false»
+               return «name»;
+           «ELSE»
+	           «EXPAND java::Helper::CallGetterForSuccessor»
+           «ENDIF»
        }
     «ENDIF»    
 «ENDDEFINE»
@@ -203,30 +214,34 @@
 	«EXPAND functions::Javadoc::JavadocForPropertySetter»
 	«EXPAND java::Helper::GenerateDeprecationAnnotation-»
 	«IF this.isInternalProperty() == false»public«ENDIF» void «asSetter()»(«this.fqn()» «asParameter()») {
-		// Assign value to attribute
-		«IF this.isMultivalued() == false»
-			«asInstanceVar()»=«asParameter()»;
+		«IF this.generateBackwardCompatibility() == false»
+			// Assign value to attribute
+			«IF this.isMultivalued() == false»
+				«asInstanceVar()»=«asParameter()»;
+			«ELSE»
+			  if(«asParameter()» != null) {
+		      «IF this.isBinaryType()»
+			      «IF disableBinaryDataImmutability()»
+				      «asInstanceVar()» = «asParameter()»;
+			      «ELSE»
+				      «asInstanceVar()» = new «type.fqn()»[«asParameter()».length];
+				      System.arraycopy(«asParameter()», 0, «asInstanceVar()», 0, «asParameter()».length);
+			      «ENDIF»
+		      «ELSE»
+			      «IF disableArrayImmutability()»
+				      «asInstanceVar()» = «asParameter()»;
+			      «ELSE»
+				      «asInstanceVar()» = new «type.fqn()»[«asParameter()».length];
+				      System.arraycopy(«asParameter()», 0, «asInstanceVar()», 0, «asParameter()».length);
+			      «ENDIF»
+		      «ENDIF»
+			  }
+			  else {
+			      «asInstanceVar()» = null;
+			  }
+			«ENDIF»
 		«ELSE»
-		  if(«asParameter()» != null) {
-	      «IF this.isBinaryType()»
-		      «IF disableBinaryDataImmutability()»
-			      «asInstanceVar()» = «asParameter()»;
-		      «ELSE»
-			      «asInstanceVar()» = new «type.fqn()»[«asParameter()».length];
-			      System.arraycopy(«asParameter()», 0, «asInstanceVar()», 0, «asParameter()».length);
-		      «ENDIF»
-	      «ELSE»
-		      «IF disableArrayImmutability()»
-			      «asInstanceVar()» = «asParameter()»;
-		      «ELSE»
-			      «asInstanceVar()» = new «type.fqn()»[«asParameter()».length];
-			      System.arraycopy(«asParameter()», 0, «asInstanceVar()», 0, «asParameter()».length);
-		      «ENDIF»
-	      «ENDIF»
-		  }
-		  else {
-		      «asInstanceVar()» = null;
-		  }
+            «EXPAND java::Helper::CallSetterForSuccessor»
 		«ENDIF»
 	}
 «ENDDEFINE»
@@ -406,91 +421,111 @@
 	«IF this.isInternalProperty() == false»public«ENDIF» «type.fqn()» «asGetter()» () {
     «IF ((NamedElement)this.owner).isPersistentObject()»
     «asInstanceVar()» = this.unproxy(«asInstanceVar()»);«ENDIF»
-	    «IF this.isTransientBidirectionalBackReference()»
-	    // Due to restrictions in JSON serialization / deserialization bi-directional associations need a special handling after an object was deserialized.
-	    if («this.asInstanceVar()»BackReferenceInitialized == false) {
-	      «this.asInstanceVar()»BackReferenceInitialized = true;
-	        «IF opposite.isMultivalued() == true»
-	        «this.asInstanceVar()».addTo«opposite.name.toFirstUpper()»((«opposite.type.name»)this);
-	        «ELSE»
-		    «this.asInstanceVar()».«opposite.asSetter()»((«opposite.type.name»)this);
+	    «IF this.generateBackwardCompatibility() == false»
+		    «IF this.isTransientBidirectionalBackReference()»
+		    // Due to restrictions in JSON serialization / deserialization bi-directional associations need a special handling after an object was deserialized.
+		    if («this.asInstanceVar()»BackReferenceInitialized == false) {
+		      «this.asInstanceVar()»BackReferenceInitialized = true;
+		        «IF opposite.isMultivalued() == true»
+		        «this.asInstanceVar()».addTo«opposite.name.toFirstUpper()»((«opposite.type.name»)this);
+		        «ELSE»
+			    «this.asInstanceVar()».«opposite.asSetter()»((«opposite.type.name»)this);
+			    «ENDIF»
+		    }
 		    «ENDIF»
-	    }
-	    «ENDIF»
-		return «asInstanceVar()»;
+			return «asInstanceVar()»;
+		«ELSE»
+		    «EXPAND java::Helper::CallGetterForSuccessor»
+		«ENDIF»
 	}
 	
     «IF isReadOnly() == false»
     «EXPAND functions::Javadoc::JavadocForPropertySetter»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
 	«IF this.isInternalProperty() == false && this.belongsToTransientBidirectionalBackReference() == false»public«ENDIF» void «asSetter()» («type.fqn()» «asParameter()») {
-		«IF generateNullChecksForToOneAssociationsOfServiceObjects()»
-		// «asParameter()» must not be null. To unset an association the unset method has to be called.
-		com.anaptecs.jeaf.xfun.api.checks.Check.checkInvalidParameterNull(«asParameter()», "«asParameter()»");
-		«ENDIF»
-
-		«IF opposite != null && opposite.isNavigable() == true»
-			// Release already referenced object before setting a new association.
-			if(«asInstanceVar()» != null) {
-			«IF opposite.isMultivalued() == true»
-				«asInstanceVar()».removeFrom«opposite.name.toFirstUpper()»( («opposite.type.fqn()») this);
-			«ELSE»
-				«asInstanceVar()».«opposite.asUnset()»();
+	    «IF this.generateBackwardCompatibility() == false»
+			«IF generateNullChecksForToOneAssociationsOfServiceObjects()»
+			// «asParameter()» must not be null. To unset an association the unset method has to be called.
+			com.anaptecs.jeaf.xfun.api.checks.Check.checkInvalidParameterNull(«asParameter()», "«asParameter()»");
 			«ENDIF»
-			}
+		
+			«IF opposite != null && opposite.isNavigable() == true»
+				// Release already referenced object before setting a new association.
+				if(«asInstanceVar()» != null) {
+				«IF opposite.isMultivalued() == true»
+					«asInstanceVar()».removeFrom«opposite.name.toFirstUpper()»( («opposite.type.fqn()») this);
+				«ELSE»
+					«asInstanceVar()».«opposite.asUnset()»();
+				«ENDIF»
+				}
+			«ENDIF»
+		
+			«asInstanceVar()» = «asParameter()»;
+		    «EXPAND GenerateInitOpposite»
+		«ELSE»
+		    «EXPAND java::Helper::CallSetterForSuccessor»
 		«ENDIF»
-
-		«asInstanceVar()» = «asParameter()»;
-	    «EXPAND GenerateInitOpposite»
 	}
-	
+		
     «EXPAND functions::Javadoc::JavadocForPropertyUnset»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
     «IF this.isInternalProperty() == false && this.belongsToTransientBidirectionalBackReference() == false»public«ENDIF» final void «asUnset()» () {
-        «EXPAND GenerateRemoveOpposite»
-        «IF opposite == null || opposite.isNavigable() == false || this.belongsToTransientBidirectionalBackReference()»
-          «asInstanceVar()» = null;
-        «ENDIF»
+        «IF this.generateBackwardCompatibility() == false»
+	        «EXPAND GenerateRemoveOpposite»
+	        «IF opposite == null || opposite.isNavigable() == false || this.belongsToTransientBidirectionalBackReference()»
+	          «asInstanceVar()» = null;
+	        «ENDIF»
+	    «ELSE»
+	        «EXPAND java::Helper::CallUnsetForSuccessor»
+	    «ENDIF»
     }
     «REM»Even though class is readonly it is still required to set transient back reference«ENDREM»
     «ELSEIF belongsToTransientBidirectionalBackReference()»
 	    «EXPAND functions::Javadoc::JavadocForPropertySetter»
 	    «EXPAND java::Helper::GenerateDeprecationAnnotation-»
 		void «asSetter()» («type.fqn()» «asParameter()») {
-			«IF generateNullChecksForToOneAssociationsOfServiceObjects()»
-			// «asParameter()» must not be null. To unset an association the unset method has to be called.
-			com.anaptecs.jeaf.xfun.api.checks.Check.checkInvalidParameterNull(«asParameter()», "«asParameter()»");
+            «IF this.generateBackwardCompatibility() == false»			
+				«IF generateNullChecksForToOneAssociationsOfServiceObjects()»
+				// «asParameter()» must not be null. To unset an association the unset method has to be called.
+				com.anaptecs.jeaf.xfun.api.checks.Check.checkInvalidParameterNull(«asParameter()», "«asParameter()»");
+				«ENDIF»
+		
+				«asInstanceVar()» = «asParameter()»;
+			«ELSE»
+			    «EXPAND java::Helper::CallUnsetForSuccessor»
 			«ENDIF»
-	
-			«asInstanceVar()» = «asParameter()»;
 		}
     «ENDIF»
 «ENDDEFINE»
 
-// Setter for associations
+// Getter for associations
 «DEFINE ToManyAccessorMethods FOR Property»
     «EXPAND functions::Javadoc::JavadocForPropertyGetter»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
 	«IF this.isInternalProperty() == false»public«ENDIF» «this.fqn()» «asGetter()» () {
-	    «IF this.isTransientBidirectionalBackReference()»
-	    // Due to restrictions in JSON serialization / deserialization bi-directional associations need a special handling after an object was deserialized.
-	    if («this.asInstanceVar()»BackReferenceInitialized == false) {
-	      «this.asInstanceVar()»BackReferenceInitialized = true;
-	      for («this.type.fqn()» lNext : «this.asInstanceVar()») {
-	        «IF opposite.isMultivalued() == true»
-	        lNext.addTo«opposite.name.toFirstUpper()»((«opposite.type.name»)this);
-	        «ELSE»
-		    lNext.«opposite.asSetter()»((«opposite.type.name»)this);
+	    «IF this.generateBackwardCompatibility() == false»
+		    «IF this.isTransientBidirectionalBackReference()»
+		    // Due to restrictions in JSON serialization / deserialization bi-directional associations need a special handling after an object was deserialized.
+		    if («this.asInstanceVar()»BackReferenceInitialized == false) {
+		      «this.asInstanceVar()»BackReferenceInitialized = true;
+		      for («this.type.fqn()» lNext : «this.asInstanceVar()») {
+		        «IF opposite.isMultivalued() == true»
+		        lNext.addTo«opposite.name.toFirstUpper()»((«opposite.type.name»)this);
+		        «ELSE»
+			    lNext.«opposite.asSetter()»((«opposite.type.name»)this);
+			    «ENDIF»
+		      }
+		    }
 		    «ENDIF»
-	      }
-	    }
-	    «ENDIF»
-	    «IF disableCollectionImmutability()»
-	    // Return all «this.type.name» objects directly without any protection against modification.
-		return «asInstanceVar()»;
-	    «ELSE»
-	    // Return all «this.type.name» objects as unmodifiable collection.
-		return java.util.Collections.unmodifiable«this.getCollectionTypeShort()»(«asInstanceVar()»);
+		    «IF disableCollectionImmutability()»
+		    // Return all «this.type.name» objects directly without any protection against modification.
+			return «asInstanceVar()»;
+		    «ELSE»
+		    // Return all «this.type.name» objects as unmodifiable collection.
+			return java.util.Collections.unmodifiable«this.getCollectionTypeShort()»(«asInstanceVar()»);
+			«ENDIF»
+		«ELSE»
+		    «EXPAND java::Helper::CallGetterForSuccessor»
 		«ENDIF»
 	}
 	
@@ -499,37 +534,45 @@
     «EXPAND functions::Javadoc::JavadocForPropertySetter»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
     «IF this.isInternalProperty() == false && this.belongsToTransientBidirectionalBackReference() == false»public«ENDIF» void set«name.toFirstUpper()»(«this.fqn()» «asParameter()») {
-        // Check of parameter is not required.
-        
-        // Remove all objects from association "«asInstanceVar()»".
-        this.clear«name.toFirstUpper()»();
-        
-        // If the association is null, removing all entries is sufficient.
-        if(«asParameter()» != null) {
-          «asInstanceVar()» = new «this.getCollectionImplType()»<«type.fqn()»>(«asParameter()»);
-        }
+        «IF this.generateBackwardCompatibility() == false»
+	        // Check of parameter is not required.
+	        
+	        // Remove all objects from association "«asInstanceVar()»".
+	        this.clear«name.toFirstUpper()»();
+	        
+	        // If the association is null, removing all entries is sufficient.
+	        if(«asParameter()» != null) {
+	          «asInstanceVar()» = new «this.getCollectionImplType()»<«type.fqn()»>(«asParameter()»);
+	        }
+	    «ELSE»
+	        «EXPAND java::Helper::CallSetterForSuccessor»
+	    «ENDIF»
     }
     «ENDIF»
 
     «EXPAND functions::Javadoc::JavadocForPropertyAdd»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
 	«IF this.isInternalProperty() == false && this.belongsToTransientBidirectionalBackReference() == false»public«ENDIF» void addTo«name.toFirstUpper()» («this.type.fqn()» «asParameter()») {
-        «IF isTargetRuntimeJEAF()»
-        // Check parameter "«asParameter()»" for invalid value null.
-        com.anaptecs.jeaf.xfun.api.checks.Check.checkInvalidParameterNull(«asParameter()», "«asParameter()»");
-        «ENDIF»
-        
-	    «IF opposite != null && opposite.isNavigable() == true»
-	        «IF opposite.isMultivalued() == false && this.belongsToTransientBidirectionalBackReference() == false»
-	            // Since this is not a many-to-many association the association to which the passed object belongs, has to be released.
-	            «asParameter()».«opposite.asUnset()»();
+        «IF this.generateBackwardCompatibility() == false»
+	        «IF isTargetRuntimeJEAF()»
+	        // Check parameter "«asParameter()»" for invalid value null.
+	        com.anaptecs.jeaf.xfun.api.checks.Check.checkInvalidParameterNull(«asParameter()», "«asParameter()»");
 	        «ENDIF»
+	        
+		    «IF opposite != null && opposite.isNavigable() == true»
+		        «IF opposite.isMultivalued() == false && this.belongsToTransientBidirectionalBackReference() == false»
+		            // Since this is not a many-to-many association the association to which the passed object belongs, has to be released.
+		            «asParameter()».«opposite.asUnset()»();
+		        «ENDIF»
+		    «ENDIF»
+		    
+			// Add passed object to collection of associated «this.type.name» objects.
+			«asInstanceVar()».add(«asParameter()»);
+			
+	        «EXPAND GenerateInitOpposite»
+	    «ELSE»
+	        «EXPAND java::Helper::CallAddToForSuccessor»
 	    «ENDIF»
-	    
-		// Add passed object to collection of associated «this.type.name» objects.
-		«asInstanceVar()».add(«asParameter()»);
-		
-        «EXPAND GenerateInitOpposite»
 	}
 	
     «EXPAND functions::Javadoc::JavadocForPropertyAddAll»
@@ -553,15 +596,19 @@
      */
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
 	«IF this.isInternalProperty() == false && this.belongsToTransientBidirectionalBackReference() == false»public«ENDIF» void removeFrom«name.toFirstUpper()» («type.fqn()» «asParameter()») {
-        «IF isTargetRuntimeJEAF()»
-        // Check parameter for invalid value null.
-        com.anaptecs.jeaf.xfun.api.checks.Check.checkInvalidParameterNull(«asParameter()», "«asParameter()»");
-        «ENDIF»
-
-        // Remove passed object from collection of associated «this.type.name» objects.
-		«asInstanceVar()».remove(«asParameter()»);
-		
-		«EXPAND GenerateRemoveOpposite»
+        «IF this.generateBackwardCompatibility() == false»
+	        «IF isTargetRuntimeJEAF()»
+	        // Check parameter for invalid value null.
+	        com.anaptecs.jeaf.xfun.api.checks.Check.checkInvalidParameterNull(«asParameter()», "«asParameter()»");
+	        «ENDIF»
+	
+	        // Remove passed object from collection of associated «this.type.name» objects.
+			«asInstanceVar()».remove(«asParameter()»);
+			
+			«EXPAND GenerateRemoveOpposite»
+		«ELSE»
+		    «EXPAND java::Helper::CallRemoveFromForSuccessor»
+		«ENDIF»
 	}
 	
     /**
@@ -569,18 +616,22 @@
      */
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
     «IF this.isInternalProperty() == false && this.belongsToTransientBidirectionalBackReference() == false»public«ENDIF» void clear«name.toFirstUpper()» () {
-      «IF opposite != null && opposite.isNavigable() == true»
-      // Remove all objects from association "«asInstanceVar()»".
-      java.util.Collection<«type.fqn()»> «asLocalVar()» = new java.util.HashSet<«type.fqn()»>(«asInstanceVar()»);
-      java.util.Iterator<«type.fqn()»> lIterator = «asLocalVar()».iterator();
-      while(lIterator.hasNext()) {
-          // As association is bidirectional we have to clear it in both directions.
-          this.removeFrom«name.toFirstUpper()»(lIterator.next());
-      }
-      «ELSE»
-      // Remove all objects from association "«asInstanceVar()»".
-      «asInstanceVar()».clear();
-      «ENDIF»
+      «IF this.generateBackwardCompatibility() == false»
+	      «IF opposite != null && opposite.isNavigable() == true»
+	      // Remove all objects from association "«asInstanceVar()»".
+	      java.util.Collection<«type.fqn()»> «asLocalVar()» = new java.util.HashSet<«type.fqn()»>(«asInstanceVar()»);
+	      java.util.Iterator<«type.fqn()»> lIterator = «asLocalVar()».iterator();
+	      while(lIterator.hasNext()) {
+	          // As association is bidirectional we have to clear it in both directions.
+	          this.removeFrom«name.toFirstUpper()»(lIterator.next());
+	      }
+	      «ELSE»
+	      // Remove all objects from association "«asInstanceVar()»".
+	      «asInstanceVar()».clear();
+	      «ENDIF»
+	  «ELSE»
+	      «EXPAND java::Helper::CallClearForSuccessor»
+	  «ENDIF»
     }
     «REM»Even though class is readonly it is still required to set transient back reference«ENDREM»
     «ELSEIF belongsToTransientBidirectionalBackReference()»

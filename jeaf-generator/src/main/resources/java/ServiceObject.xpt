@@ -7,6 +7,7 @@
 «EXTENSION functions::TemplateParameter»
 «EXTENSION org::openarchitectureware::util::stdlib::io»
 «EXTENSION functions::SoftLink»
+«EXTENSION functions::JEAFDeprecated»
 
 «IMPORT JMM»
 
@@ -339,7 +340,7 @@
 			«this.getCompositeDateTypePublicFieldName()» = null;
 		«ENDIF»
 	«ELSE»
-		«FOREACH this.ownedAttribute.select(e|e.isPropertySuppressed() == false) AS attr»
+		«FOREACH this.ownedAttribute.select(e|e.isPropertySuppressed() == false && e.generateBackwardCompatibility() == false) AS attr»
 			«IF attr.isReadOnly() && attr.isStatic == false»
 				«IF attr.type.isPrimitiveType() == true»
 					«IF attr.isMultivalued() == false»
@@ -397,7 +398,7 @@
 	«IF this.isCompositeDataType()»
 		«this.getCompositeDateTypePublicFieldName()» = pBuilder.«this.getCompositeDateTypePublicFieldName()»;
 	«ELSE»
-		«FOREACH this.ownedAttribute.select(e|e.isPropertySuppressed() == false) AS attr»
+		«FOREACH this.ownedAttribute.select(e|e.isPropertySuppressed() == false && e.generateBackwardCompatibility() == false) AS attr»
 			«IF attr.association == null»
 				«IF attr.isStatic == false»
                     «IF attr.isSoftLink()»

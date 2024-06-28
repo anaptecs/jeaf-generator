@@ -492,9 +492,8 @@ public class OpenAPIHelper {
   }
 
   public static List<Element> getAllAttributesFromHierarchy( Element pElement ) {
-    Class lClass = (Class) pElement;
     List<Element> lElements = new ArrayList<Element>();
-
+    Class lClass = (Class) pElement;
     if (lClass.parents().size() > 0) {
       List<Element> lParentAttributes = getAllAttributesFromHierarchy(lClass.parents().get(0));
       lElements.addAll(lParentAttributes);

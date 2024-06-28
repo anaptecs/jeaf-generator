@@ -1155,13 +1155,31 @@ public class ClassUtil {
 
   public static String getStereotypeValue( Element pElement, String pStereotype, String pAttribute ) {
     Stereotype lStereotype = getAppliedStereotype(pElement, pStereotype);
-    Object lValueObject = pElement.getValue(lStereotype, pAttribute);
     String lValue;
-    if (lValueObject != null) {
-      lValue = lValueObject.toString();
+    if (lStereotype != null) {
+      Object lValueObject = pElement.getValue(lStereotype, pAttribute);
+      if (lValueObject != null) {
+        lValue = lValueObject.toString();
+      }
+      else {
+        lValue = "";
+      }
     }
     else {
-      lValue = "";
+      lValue = null;
+    }
+    return lValue;
+  }
+
+  public static boolean getStereotypeValueAsBoolean( Element pElement, String pStereotype, String pAttribute,
+      Boolean pDefault ) {
+    String lValueAsString = getStereotypeValue(pElement, pStereotype, pAttribute);
+    boolean lValue;
+    if (lValueAsString != null && lValueAsString.length() > 0) {
+      lValue = Boolean.valueOf(lValueAsString);
+    }
+    else {
+      lValue = pDefault;
     }
     return lValue;
   }
