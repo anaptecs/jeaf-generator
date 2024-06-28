@@ -15,8 +15,14 @@ cached String getFullPath(JMM::RESTOperation operation):
 
 cached String getFullPath(JMM::RESTOperation operation, JMM::RESTResource restResource):
     if operation.getRESTOperationPath(restResource).length > 0
-    then ((JMM::RESTResource) operation.owner).path + "/" + operation.getRESTOperationPath(restResource) + " " + operation.httpMethods
+    then restResource.getRESTREsourcePath() + operation.getRESTOperationPath(restResource) + " " + operation.httpMethods
+    //then operation.owner.asRESTResource().path + "XXX"
     else ((JMM::RESTResource) operation.owner).path + " " + operation.httpMethods;
+    
+private cached String getRESTREsourcePath(JMM::RESTResource restResource):
+	if restResource != null && restResource.path.length > 0
+	then restResource.path + "/"
+	else "/";
     
 cached String getRESTOperationPath(JMM::RESTOperation operation):
     if operation.owner.isRESTResource()

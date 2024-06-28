@@ -18,3 +18,6 @@ cached boolean generateJSONAutoDetectAnnotationOnClass():
 
 cached boolean groupBreakingChangesReportByPackage():
     getBooleanSystemProperty("switch.gen.breaking.changes.report.groupByPackage", true);
+    
+cached boolean listUnsecuredRESTEndpoints():
+    getBooleanSystemProperty("switch.gen.security.roles.report.list.unsecured.endpoints", true);

@@ -6,6 +6,8 @@
 «EXTENSION java::Naming»
 «EXTENSION functions::SecurityRole»
 «EXTENSION functions::RESTOperation»
+«EXTENSION functions::NamedElement»
+«EXTENSION functions::SystemProperties»
 
 «DEFINE SecurityRolesReport FOR Model»
 «FILE getSecurityRolesReportFileName() res_gen-»
@@ -21,5 +23,17 @@
 «ENDFOREACH»
 «ENDFOREACH-»
 «ENDFOREACH-»
+
+«IF listUnsecuredRESTEndpoints() -»
+<br>
+
+## Unsecured REST Operations
+
+| Service          | Operation     | REST Resource Path |
+|------------------|---------------|--------------------|
+«FOREACH this.getRESTOperationsWithoutSecurityRole() AS operation -»
+| `«operation.owner.asNamedElement().name»` | `«operation.name»(«FOREACH operation.ownedParameter.select(e|e.isInputParameter()) AS param SEPARATOR ", "»«param.type.name»«ENDFOREACH»)` | `«operation.asRESTOperation().getFullPath()»` |
+«ENDFOREACH-»
+«ENDIF-»
 «ENDFILE-»
 «ENDDEFINE»

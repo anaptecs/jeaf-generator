@@ -701,6 +701,12 @@ public class GeneratorMojo extends AbstractMojo {
   private ReportFormat securityRolesReportFormat;
 
   /**
+   * Switch can be used to list all unsecured REST endpoints in security report.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean listUnsecuredRESTEndpoints;
+
+  /**
    * Switch defines whether an OpenAPI specification should be generated or not.
    */
   @Parameter(required = false, defaultValue = "false")
@@ -949,7 +955,7 @@ public class GeneratorMojo extends AbstractMojo {
    */
   @Parameter(required = false)
   private String softLinkSuffix = "";
-  
+
   /**
    * Switch can be used to define if a soft link suffix should be used when for generated Java code.
    */
@@ -1559,6 +1565,7 @@ public class GeneratorMojo extends AbstractMojo {
       lLog.info("Security Roles Report File Name                   " + securityRolesReportFileName
           + securityRolesReportFormat.getExtension());
       lLog.info("Security Roles Report Format                      " + securityRolesReportFormat);
+      lLog.info("List unsecured REST endpoints                     " + listUnsecuredRESTEndpoints);
     }
 
     if (generateOpenAPISpec) {
@@ -1859,6 +1866,8 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty("switch.gen.security.roles.report.name", securityRolesReportName.toString());
       System.setProperty("switch.gen.security.roles.report.filename", securityRolesReportFileName.toString());
       System.setProperty("switch.gen.security.roles.report.format", securityRolesReportFormat.name());
+      System.setProperty("switch.gen.security.roles.report.list.unsecured.endpoints",
+          listUnsecuredRESTEndpoints.toString());
 
       System.setProperty("switch.gen.openapispec", generateOpenAPISpec.toString());
       System.setProperty("switch.gen.openapi.checkOpenAPIDependencies",
