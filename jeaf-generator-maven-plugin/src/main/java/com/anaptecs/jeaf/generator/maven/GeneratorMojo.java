@@ -322,6 +322,12 @@ public class GeneratorMojo extends AbstractMojo {
    */
   @Parameter(required = false, defaultValue = "false")
   private Boolean generateSecurityAnnotation;
+  
+  /**
+   * Parameter can be used to define a default security role. If defined this default security role will be used whenever no explicit role is defined for an operation / REST resource.
+   */
+  @Parameter(required = false, defaultValue = "")
+  private String defaultSecurityRoleName = "";
 
   /**
    * Switch defines if in case of Spring deprecated @Secured annotation should be used instead of
@@ -1444,6 +1450,9 @@ public class GeneratorMojo extends AbstractMojo {
     if (generateRESTResources) {
       lLog.info("Generate REST Resources:                          " + generateRESTResources);
       lLog.info("Generate REST Security Annotation:                " + generateSecurityAnnotation);
+      if(defaultSecurityRoleName.length() > 0) {
+        lLog.info("Default Security Role Name:                       " + defaultSecurityRoleName);
+      }
       if (useDeprecatedSpringSecuredAnnotation) {
         lLog.info("Use deprecated Spring @Secured annotation:        " + useDeprecatedSpringSecuredAnnotation);
       }
@@ -1812,6 +1821,8 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty("switch.gen.rest.security.useDeprecatedSpringSecuredAnnotation",
           useDeprecatedSpringSecuredAnnotation.toString());
       System.setProperty("switch.gen.rest.security.annotation", generateSecurityAnnotation.toString());
+      System.setProperty("switch.gen.security.default.security.role", defaultSecurityRoleName);
+      
       System.setProperty("switch.gen.rest.validation.request", generateRESTRequestValidation.toString());
       System.setProperty("switch.gen.rest.validation.response", generateRESTResponseValidation.toString());
       System.setProperty("switch.gen.rest.filter.custom.headers", filterCustomHeaders.toString());

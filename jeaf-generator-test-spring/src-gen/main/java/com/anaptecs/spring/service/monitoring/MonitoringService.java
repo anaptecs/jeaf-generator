@@ -7,6 +7,9 @@ package com.anaptecs.spring.service.monitoring;
 
 public interface MonitoringService {
   /**
+   * <p/>
+   * <b>Authorized Roles:</b> NO_ACCESS
+   *
    * @return {@link String}
    */
   String getVersionInfo( );
