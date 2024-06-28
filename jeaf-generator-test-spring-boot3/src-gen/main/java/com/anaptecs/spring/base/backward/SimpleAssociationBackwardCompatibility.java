@@ -3,22 +3,15 @@
  *
  * Copyright 2004 - 2019. All rights reserved.
  */
-package com.anaptecs.spring.base;
+package com.anaptecs.spring.base.backward;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
-import com.anaptecs.spring.base.backward.SimpleBackwardCompatibility;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.fasterxml.jackson.annotation.JsonSetter;
-import com.fasterxml.jackson.annotation.Nulls;
-
-@JsonIgnoreProperties(ignoreUnknown = true)
-@JsonPropertyOrder(value = { "deprecatedLinks", "newLinks", "oldSingleLink", "newSingleLink" })
 public class SimpleAssociationBackwardCompatibility {
   /**
    * Constant for the name of attribute "deprecatedLinks".
@@ -42,7 +35,6 @@ public class SimpleAssociationBackwardCompatibility {
    */
   public static final String NEWSINGLELINK = "newSingleLink";
 
-  @JsonSetter(nulls = Nulls.SKIP)
   private List<SimpleBackwardCompatibility> newLinks;
 
   private SimpleBackwardCompatibility newSingleLink;
@@ -84,7 +76,7 @@ public class SimpleAssociationBackwardCompatibility {
    * Convenience method to create new instance of class SimpleAssociationBackwardCompatibility.
    *
    *
-   * @return {@link com.anaptecs.spring.base.SimpleAssociationBackwardCompatibility}
+   * @return {@link com.anaptecs.spring.base.backward.SimpleAssociationBackwardCompatibility}
    */
   public static SimpleAssociationBackwardCompatibility of( ) {
     SimpleAssociationBackwardCompatibility.Builder lBuilder = SimpleAssociationBackwardCompatibility.builder();
@@ -382,6 +374,34 @@ public class SimpleAssociationBackwardCompatibility {
    */
   public final void unsetNewSingleLink( ) {
     newSingleLink = null;
+  }
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = 1;
+    lResult = lPrime * lResult + Objects.hashCode(newLinks);
+    lResult = lPrime * lResult + Objects.hashCode(newSingleLink);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      SimpleAssociationBackwardCompatibility lOther = (SimpleAssociationBackwardCompatibility) pObject;
+      lEquals = Objects.equals(newLinks, lOther.newLinks) && Objects.equals(newSingleLink, lOther.newSingleLink);
+    }
+    return lEquals;
   }
 
   /**

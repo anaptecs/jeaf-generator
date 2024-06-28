@@ -3,15 +3,13 @@
  *
  * Copyright 2004 - 2019. All rights reserved.
  */
-package com.anaptecs.spring.base;
+package com.anaptecs.spring.base.backward;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
-
-import com.anaptecs.spring.base.backward.SimpleBackwardCompatibility;
 
 public class SimpleAssociationBackwardCompatibility {
   /**
@@ -77,7 +75,7 @@ public class SimpleAssociationBackwardCompatibility {
    * Convenience method to create new instance of class SimpleAssociationBackwardCompatibility.
    *
    *
-   * @return {@link com.anaptecs.spring.base.SimpleAssociationBackwardCompatibility}
+   * @return {@link com.anaptecs.spring.base.backward.SimpleAssociationBackwardCompatibility}
    */
   public static SimpleAssociationBackwardCompatibility of( ) {
     SimpleAssociationBackwardCompatibility.Builder lBuilder = SimpleAssociationBackwardCompatibility.builder();
