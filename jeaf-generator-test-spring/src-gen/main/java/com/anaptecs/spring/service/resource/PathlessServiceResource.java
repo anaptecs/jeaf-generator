@@ -22,6 +22,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -80,6 +81,7 @@ public class PathlessServiceResource {
   /**
    * {@link PathlessService#getSomething()}
    */
+  @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "doSomething", method = { RequestMethod.GET })
   public String getSomething( ) {
@@ -93,6 +95,7 @@ public class PathlessServiceResource {
   /**
    * {@link PathlessService#processTechParam()}
    */
+  @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(path = "processTechParam", method = { RequestMethod.POST })
   public void processTechParam( @RequestHeader(name = "names", required = false) String[] pNames,
@@ -209,6 +212,7 @@ public class PathlessServiceResource {
   /**
    * {@link PathlessService#testQueryBeanParam()}
    */
+  @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "test-query-bean-param", method = { RequestMethod.GET })
   public String testQueryBeanParam( @RequestParam(name = "longCodes", required = false) Long[] pLongCodesAsBasicType,

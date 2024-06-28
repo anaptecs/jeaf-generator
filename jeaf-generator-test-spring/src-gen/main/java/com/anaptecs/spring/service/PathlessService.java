@@ -7,17 +7,26 @@ package com.anaptecs.spring.service;
 
 public interface PathlessService {
   /**
+   * <p/>
+   * <b>Authorized Roles:</b> NO_ACCESS
+   *
    * @return {@link String}
    */
   String getSomething( );
 
   /**
+   * <p/>
+   * <b>Authorized Roles:</b> NO_ACCESS
+   *
    * @param pHeaderBean
    * @param pTechContext
    */
   void processTechParam( MultiValuedHeaderBeanParam pHeaderBean );
 
   /**
+   * <p/>
+   * <b>Authorized Roles:</b> NO_ACCESS
+   *
    * @param pQuery
    * @return {@link String}
    */

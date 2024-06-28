@@ -21,3 +21,6 @@ cached boolean groupBreakingChangesReportByPackage():
     
 cached boolean listUnsecuredRESTEndpoints():
     getBooleanSystemProperty("switch.gen.security.roles.report.list.unsecured.endpoints", true);
+    
+cached String getDefaultSecurityRoleName():
+	getSystemProperty("switch.gen.security.default.security.role", "");

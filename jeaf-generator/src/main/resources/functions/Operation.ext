@@ -1,5 +1,8 @@
 extension functions::TypeChecks;
 extension functions::SecurityRole;
+extension functions::SystemProperties;
+extension functions::JEAFService;
+extension functions::RESTResource;
 
 cached boolean isOperation(uml::Element element):
     element.isInstanceOf("org.eclipse.uml2.uml.Operation");
@@ -11,10 +14,26 @@ cached boolean hasSecurityRoles(uml::Operation operation):
     !operation.getSecurityRoles().isEmpty;
 
 cached List[String] getSecurityRoles(uml::Operation operation):
+    if operation.getAssignedSecurityRoles().isEmpty == false
+    then operation.getAssignedSecurityRoles()
+    else operation.getDefaultRole(); 
+    	
+    	
+private cached List[String] getDefaultRole(uml::Operation operation):
+	if (operation.owner.isJEAFService() || operation.owner.isRESTResource()) && getDefaultSecurityRoleName().length > 0
+	then {getDefaultSecurityRoleName()}.toList()
+	else {}.toList();
+	
+
+private cached List[String] getAssignedSecurityRoles(uml::Operation operation):
     operation.getAssociatedSecurityRoles().addAll(operation.owner.getAssociatedSecurityRoles()).toSet().name.sortBy(e|e);
 
 cached List[String] getSecurityRolesForDocumentation(uml::Operation operation):
-    operation.getAssociatedSecurityRoles().addAll(operation.owner.getAssociatedSecurityRoles().select(e|e.excludeFromDocumentation == false)).toSet().name.sortBy(e|e);
+	if operation.getAssignedSecurityRoles().isEmpty == false
+	then operation.getAssignedSecurityRolesForDocumentation()
+	else operation.getDefaultRole();
     
+private cached List[String] getAssignedSecurityRolesForDocumentation(uml::Operation operation):
+    operation.getAssociatedSecurityRoles().addAll(operation.owner.getAssociatedSecurityRoles().select(e|e.excludeFromDocumentation == false)).toSet().name.sortBy(e|e);
 
 

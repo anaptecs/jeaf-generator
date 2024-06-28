@@ -167,6 +167,7 @@
 					<restLibrary>SPRING_WEB_MVC</restLibrary>
 					<generateRESTResources>true</generateRESTResources>
 					<generateSecurityAnnotation>true</generateSecurityAnnotation>
+					<defaultSecurityRoleName>NO_ACCESS</defaultSecurityRoleName>
 					<generateRESTRequestValidation>true</generateRESTRequestValidation>
 					<generateRESTResponseValidation>true</generateRESTResponseValidation>
 					<restPathPrefix>/nova/prefix</restPathPrefix>
@@ -181,6 +182,8 @@
 					<enableLegacyBuilderStyle>true</enableLegacyBuilderStyle>
 					<enableDetailedToStringMethod>true</enableDetailedToStringMethod>
 					<suppressTechnicalHeaders>true</suppressTechnicalHeaders>
+					
+					
 
 					<generateOfOperation>true</generateOfOperation>
 					<generateOfOperationForOpenAPIDataType>true</generateOfOperationForOpenAPIDataType>

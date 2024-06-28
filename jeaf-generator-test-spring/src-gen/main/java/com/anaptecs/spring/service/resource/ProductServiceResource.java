@@ -23,6 +23,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -89,6 +90,7 @@ public class ProductServiceResource {
   /**
    * {@link ProductService#getProducts()}
    */
+  @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "products/", method = { RequestMethod.GET })
   public List<Product> getProducts( ) {
@@ -102,6 +104,7 @@ public class ProductServiceResource {
   /**
    * {@link ProductService#getProduct()}
    */
+  @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "products/{id}", method = { RequestMethod.GET })
   public Product getProduct( @PathVariable(name = "id", required = true) String pProductID ) {
@@ -117,6 +120,7 @@ public class ProductServiceResource {
   /**
    * {@link ProductService#createProduct()}
    */
+  @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "products/", method = { RequestMethod.POST })
   public boolean createProduct( @RequestBody(required = true) Product pProduct ) {
@@ -132,6 +136,7 @@ public class ProductServiceResource {
   /**
    * {@link ProductService#getSortiment()}
    */
+  @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "products/sortiment/{id}", method = { RequestMethod.GET })
   public Sortiment getSortiment( @RequestHeader(name = "token", required = true) String pAccessToken,
@@ -171,6 +176,7 @@ public class ProductServiceResource {
   /**
    * {@link ProductService#createChannelCode()}
    */
+  @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(
       path = "products/ChannelCode",
@@ -190,6 +196,7 @@ public class ProductServiceResource {
   /**
    * {@link ProductService#ping()}
    */
+  @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(path = "products/", method = { RequestMethod.HEAD })
   public void ping( ) {
@@ -200,6 +207,7 @@ public class ProductServiceResource {
   /**
    * {@link ProductService#deprecatedOperation()}
    */
+  @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "products/deprecated/operation", method = { RequestMethod.GET })
   @Deprecated
@@ -214,6 +222,7 @@ public class ProductServiceResource {
   /**
    * {@link ProductService#deprecatedContext()}
    */
+  @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "products/deprecated/context", method = { RequestMethod.POST })
   public String deprecatedContext( @RequestHeader(name = "token", required = true) String pAccessToken,
@@ -240,6 +249,7 @@ public class ProductServiceResource {
   /**
    * {@link ProductService#deprecatedBeanParam()}
    */
+  @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(path = "products/deprecated/beanParams", method = { RequestMethod.POST })
   public void deprecatedBeanParam( @RequestHeader(name = "token", required = true) String pAccessToken,
@@ -261,6 +271,7 @@ public class ProductServiceResource {
   /**
    * {@link ProductService#deprecatedParams()}
    */
+  @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "products/deprecated/params", method = { RequestMethod.POST })
   @Deprecated
@@ -277,6 +288,7 @@ public class ProductServiceResource {
   /**
    * {@link ProductService#deprecatedBody()}
    */
+  @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "products/deprecated/body", method = { RequestMethod.POST })
   public String deprecatedBody( @RequestBody(required = true) @Deprecated String pBody ) {
@@ -292,6 +304,7 @@ public class ProductServiceResource {
   /**
    * {@link ProductService#deprectedComplexRequestBody()}
    */
+  @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(path = "products/deprecated/complexBody", method = { RequestMethod.POST })
   public void deprectedComplexRequestBody( @RequestBody(required = true) @Deprecated Product pProduct ) {
@@ -304,6 +317,7 @@ public class ProductServiceResource {
   /**
    * {@link ProductService#deprecatedComplexReturn()}
    */
+  @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "products/deprecated/complexReturn", method = { RequestMethod.GET })
   @Deprecated
@@ -318,6 +332,7 @@ public class ProductServiceResource {
   /**
    * {@link ProductService#loadSpecificThings()}
    */
+  @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(path = "products/specific/{id}", method = { RequestMethod.PATCH })
   public void loadSpecificThings( @RequestHeader(name = "token", required = true) String pAccessToken,
@@ -358,6 +373,7 @@ public class ProductServiceResource {
   /**
    * {@link ProductService#createChannelCodeFromObject()}
    */
+  @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "products/ChannelCodeObject", method = { RequestMethod.POST })
   public ChannelCode createChannelCodeFromObject( @RequestBody(required = true) ChannelCode pChannelCode ) {
@@ -373,6 +389,7 @@ public class ProductServiceResource {
   /**
    * {@link ProductService#addCurrencies()}
    */
+  @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "products/currencies", method = { RequestMethod.POST })
   public List<CurrencyCode> addCurrencies( @RequestBody(required = true) List<CurrencyCode> pCurrencies ) {
@@ -388,6 +405,7 @@ public class ProductServiceResource {
   /**
    * {@link ProductService#isCurrencySupported()}
    */
+  @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "products/currencies/valid", method = { RequestMethod.POST })
   public CurrencyCode isCurrencySupported( @RequestBody(required = true) CurrencyCode pCurrency ) {
@@ -403,6 +421,7 @@ public class ProductServiceResource {
   /**
    * {@link ProductService#testCodeTypeUsage()}
    */
+  @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "products/codeTypeUsages", method = { RequestMethod.POST })
   public IntegerCodeType testCodeTypeUsage( @RequestBody(required = true) StringCodeType pStringCode ) {
@@ -418,6 +437,7 @@ public class ProductServiceResource {
   /**
    * {@link ProductService#testLocalBeanParamType()}
    */
+  @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "products/LocalBeanParam", method = { RequestMethod.GET })
   public String testLocalBeanParamType( @RequestHeader(name = "localKey", required = true) String pLocalKey,
@@ -440,6 +460,7 @@ public class ProductServiceResource {
   /**
    * {@link ProductService#testExternalBeanParameterType()}
    */
+  @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "products/ExternalBeanParam", method = { RequestMethod.GET })
   public String testExternalBeanParameterType( @RequestHeader(name = "novaKey", required = true) String pNovaKey,
@@ -462,6 +483,7 @@ public class ProductServiceResource {
   /**
    * {@link ProductService#testChildBeanParameter()}
    */
+  @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "products/ChildBeanParam", method = { RequestMethod.GET })
   public String testChildBeanParameter( @RequestHeader(name = "novaKey", required = true) String pNovaKey,
@@ -486,6 +508,7 @@ public class ProductServiceResource {
   /**
    * {@link ProductService#testDateQueryParams()}
    */
+  @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(path = "products/test-date-query-params/{path}", method = { RequestMethod.GET })
   public void testDateQueryParams( @PathVariable(name = "path", required = true) String pPath,
@@ -593,6 +616,7 @@ public class ProductServiceResource {
   /**
    * {@link ProductService#testDateQueryParamsBean()}
    */
+  @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(path = "products/test-date-query-params-beans/{path}", method = { RequestMethod.GET })
   public void testDateQueryParamsBean( @PathVariable(name = "path", required = true) String pPath,
@@ -673,6 +697,7 @@ public class ProductServiceResource {
   /**
    * {@link ProductService#testDateHeaderParams()}
    */
+  @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(path = "products/test-date-header-params/{path}", method = { RequestMethod.GET })
   public void testDateHeaderParams( @PathVariable(name = "path", required = true) String pPath,
@@ -780,6 +805,7 @@ public class ProductServiceResource {
   /**
    * {@link ProductService#testDateHeaderParamsBean()}
    */
+  @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(path = "products/test-date-header-params-beans/{path}", method = { RequestMethod.GET })
   public void testDateHeaderParamsBean( @PathVariable(name = "path", required = true) String pPath,
@@ -860,6 +886,7 @@ public class ProductServiceResource {
   /**
    * {@link ProductService#testTechnicalHeaderParam()}
    */
+  @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "products/technicalHeaderParam", method = { RequestMethod.GET })
   public String testTechnicalHeaderParam( @RequestHeader(name = "Reseller", required = true) String pReseller ) {
@@ -875,6 +902,7 @@ public class ProductServiceResource {
   /**
    * {@link ProductService#testTechnicalHeaderBean()}
    */
+  @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "products/technicalHeaderBeanParam", method = { RequestMethod.GET })
   public String testTechnicalHeaderBean( @RequestHeader(name = "Reseller", required = true) String pReseller,
@@ -902,6 +930,7 @@ public class ProductServiceResource {
   /**
    * {@link ProductService#processDataTypes()}
    */
+  @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "products/product-codes", method = { RequestMethod.GET })
   public String processDataTypes( @RequestParam(name = "pCodes", required = false) String[] pCodesAsBasicType ) {
@@ -928,6 +957,7 @@ public class ProductServiceResource {
   /**
    * {@link com.anaptecs.spring.service.monitoring.MonitoringService#getVersionInfo()}
    */
+  @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "products/info", method = { RequestMethod.GET })
   public String getVersionInfo( ) {

@@ -1,0 +1,7 @@
+extension java::GeneratorCommons;
+
+cached boolean isJEAFService(uml::Element element):
+    element.isStereotypeApplied("JEAFService");
+
+cached JMM::JEAFService asInterface(uml::Element element):
+    (JMM::JEAFService) element;
