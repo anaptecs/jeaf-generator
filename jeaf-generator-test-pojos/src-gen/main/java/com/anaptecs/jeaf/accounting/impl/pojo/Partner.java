@@ -24,7 +24,7 @@ public abstract class Partner extends PartnerBase {
    * Class implements builder to create a new instance of class Partner. As the class has readonly attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
-  public static class Builder extends Partner.BuilderBase {
+  public static abstract class Builder extends Partner.BuilderBase {
     /**
      * Use {@link Partner#builder()} instead of protected constructor to create new builder.
      */

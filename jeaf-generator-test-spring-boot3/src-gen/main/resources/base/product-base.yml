@@ -144,6 +144,18 @@ components:
       format: double
       nullable: false
 
+    # com.anaptecs.spring.base.AbstractWithCustomImpl
+    AbstractWithCustomImpl:
+      type: object
+      additionalProperties: false
+      required:
+        - justAProperty
+      properties:
+        justAProperty:
+          type: integer
+          format: int32
+          nullable: false
+
     # com.anaptecs.spring.base.BidirectA
     BidirectA:
       type: object
