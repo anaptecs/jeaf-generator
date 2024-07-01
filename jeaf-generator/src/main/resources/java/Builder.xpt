@@ -607,7 +607,7 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
 	 * Class implements builder to create a new instance of class «this.name». As the class has readonly attributes
 	 * or associations instances can not be created directly. Instead this builder class has to be used.
 	 */
-	public static class Builder«this.getTemplateParams()» extends «this.name».BuilderBase«this.getTemplateParams()» {
+	public static «IF isAbstract == true» abstract «ENDIF»class Builder«this.getTemplateParams()» extends «this.name».BuilderBase«this.getTemplateParams()» {
 	  /**
 	   * Use {@link «name»#builder()} instead of protected constructor to create new builder.
 	   */
