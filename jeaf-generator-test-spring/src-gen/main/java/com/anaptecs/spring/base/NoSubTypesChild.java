@@ -264,7 +264,7 @@ public class NoSubTypesChild extends NoSubTypesParent {
    *
    * @param pMyProperty Value to which {@link #myProperty} should be set.
    */
-  public void setMyProperty( String pMyProperty ) {
+  public void setMyProperty( @MyNotNull String pMyProperty ) {
     // Assign value to attribute
     myProperty = pMyProperty;
   }

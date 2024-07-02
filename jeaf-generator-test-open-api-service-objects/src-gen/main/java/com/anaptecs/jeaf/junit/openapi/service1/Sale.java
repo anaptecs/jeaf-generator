@@ -166,7 +166,7 @@ public class Sale implements ServiceObject {
    *
    * @param pTransactionAmount Value to which {@link #transactionAmount} should be set.
    */
-  public void setTransactionAmount( BigDecimal pTransactionAmount ) {
+  public void setTransactionAmount( @MyNotNull BigDecimal pTransactionAmount ) {
     // Assign value to attribute
     transactionAmount = pTransactionAmount;
   }

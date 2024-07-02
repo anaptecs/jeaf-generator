@@ -554,7 +554,7 @@ public class MultiValuedDataType implements ServiceObject {
    *
    * @param pStringProperty Value to which {@link #stringProperty} should be set.
    */
-  public void setStringProperty( String pStringProperty ) {
+  public void setStringProperty( @MyNotNull String pStringProperty ) {
     // Assign value to attribute
     stringProperty = pStringProperty;
   }

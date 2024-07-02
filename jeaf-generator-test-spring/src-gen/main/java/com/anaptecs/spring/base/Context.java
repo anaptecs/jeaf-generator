@@ -335,7 +335,7 @@ public class Context {
    *
    * @param pAccessToken Value to which {@link #accessToken} should be set.
    */
-  public void setAccessToken( String pAccessToken ) {
+  public void setAccessToken( @MyNotNull String pAccessToken ) {
     // Assign value to attribute
     accessToken = pAccessToken;
   }
@@ -355,7 +355,7 @@ public class Context {
    *
    * @param pLanguage Value to which {@link #language} should be set.
    */
-  public void setLanguage( Locale pLanguage ) {
+  public void setLanguage( @MyNotNull Locale pLanguage ) {
     // Assign value to attribute
     language = pLanguage;
   }
@@ -413,7 +413,7 @@ public class Context {
    *
    * @param pQueryParam Value to which {@link #queryParam} should be set.
    */
-  public void setQueryParam( String pQueryParam ) {
+  public void setQueryParam( @MyNotNull String pQueryParam ) {
     // Assign value to attribute
     queryParam = pQueryParam;
   }
@@ -433,7 +433,7 @@ public class Context {
    *
    * @param pLang Value to which {@link #lang} should be set.
    */
-  public void setLang( String pLang ) {
+  public void setLang( @MyNotNull String pLang ) {
     // Assign value to attribute
     lang = pLang;
   }
@@ -453,7 +453,7 @@ public class Context {
    *
    * @param pIntCode Value to which {@link #intCode} should be set.
    */
-  public void setIntCode( IntegerCodeType pIntCode ) {
+  public void setIntCode( @MyNotNull IntegerCodeType pIntCode ) {
     // Assign value to attribute
     intCode = pIntCode;
   }

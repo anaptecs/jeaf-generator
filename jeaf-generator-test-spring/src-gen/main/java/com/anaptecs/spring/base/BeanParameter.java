@@ -205,7 +205,7 @@ public class BeanParameter {
    *
    * @param pAccessToken Value to which {@link #accessToken} should be set.
    */
-  public void setAccessToken( String pAccessToken ) {
+  public void setAccessToken( @MyNotNull String pAccessToken ) {
     // Assign value to attribute
     accessToken = pAccessToken;
   }
@@ -225,7 +225,7 @@ public class BeanParameter {
    *
    * @param pLanguage Value to which {@link #language} should be set.
    */
-  public void setLanguage( Locale pLanguage ) {
+  public void setLanguage( @MyNotNull Locale pLanguage ) {
     // Assign value to attribute
     language = pLanguage;
   }
@@ -247,7 +247,7 @@ public class BeanParameter {
    * @param pOldStyle Value to which {@link #oldStyle} should be set.
    */
   @Deprecated
-  public void setOldStyle( String pOldStyle ) {
+  public void setOldStyle( @MyNotNull String pOldStyle ) {
     // Assign value to attribute
     oldStyle = pOldStyle;
   }

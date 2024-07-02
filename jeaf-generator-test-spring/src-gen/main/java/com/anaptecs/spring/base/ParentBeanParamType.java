@@ -167,7 +167,7 @@ public class ParentBeanParamType {
    *
    * @param pNovaKey Value to which {@link #novaKey} should be set.
    */
-  public void setNovaKey( String pNovaKey ) {
+  public void setNovaKey( @MyNotNull String pNovaKey ) {
     // Assign value to attribute
     novaKey = pNovaKey;
   }
@@ -187,7 +187,7 @@ public class ParentBeanParamType {
    *
    * @param pTkID Value to which {@link #tkID} should be set.
    */
-  public void setTkID( String pTkID ) {
+  public void setTkID( @MyNotNull String pTkID ) {
     // Assign value to attribute
     tkID = pTkID;
   }

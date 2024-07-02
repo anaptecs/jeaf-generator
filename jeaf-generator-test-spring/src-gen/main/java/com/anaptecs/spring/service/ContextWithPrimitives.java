@@ -301,7 +301,7 @@ public class ContextWithPrimitives {
    *
    * @param pABooleanWrapper Value to which {@link #aBooleanWrapper} should be set.
    */
-  public void setABooleanWrapper( Boolean pABooleanWrapper ) {
+  public void setABooleanWrapper( @MyNotNull Boolean pABooleanWrapper ) {
     // Assign value to attribute
     aBooleanWrapper = pABooleanWrapper;
   }
@@ -340,7 +340,7 @@ public class ContextWithPrimitives {
    *
    * @param pAnInteger Value to which {@link #anInteger} should be set.
    */
-  public void setAnInteger( Integer pAnInteger ) {
+  public void setAnInteger( @MyNotNull Integer pAnInteger ) {
     // Assign value to attribute
     anInteger = pAnInteger;
   }
@@ -379,7 +379,7 @@ public class ContextWithPrimitives {
    *
    * @param pAVeryLong Value to which {@link #aVeryLong} should be set.
    */
-  public void setAVeryLong( Long pAVeryLong ) {
+  public void setAVeryLong( @MyNotNull Long pAVeryLong ) {
     // Assign value to attribute
     aVeryLong = pAVeryLong;
   }

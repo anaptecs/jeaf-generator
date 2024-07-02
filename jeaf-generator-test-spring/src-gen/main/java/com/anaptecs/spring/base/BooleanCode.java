@@ -148,7 +148,7 @@ public class BooleanCode {
    *
    * @param pCode Value to which {@link #code} should be set.
    */
-  public void setCode( Boolean pCode ) {
+  public void setCode( @MyNotNull Boolean pCode ) {
     // Assign value to attribute
     code = pCode;
   }

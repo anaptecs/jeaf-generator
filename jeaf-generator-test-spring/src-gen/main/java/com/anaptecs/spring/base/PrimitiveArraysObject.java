@@ -1529,7 +1529,7 @@ public class PrimitiveArraysObject {
    *
    * @param pCStringArray Value to which {@link #cStringArray} should be set.
    */
-  public void setCStringArray( String[] pCStringArray ) {
+  public void setCStringArray( @MyNotEmpty String[] pCStringArray ) {
     // Assign value to attribute
     if (pCStringArray != null) {
       cStringArray = new String[pCStringArray.length];

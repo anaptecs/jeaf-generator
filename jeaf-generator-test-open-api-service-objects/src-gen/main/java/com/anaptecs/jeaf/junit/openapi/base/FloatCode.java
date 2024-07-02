@@ -126,7 +126,7 @@ public class FloatCode implements ServiceObject {
    *
    * @param pCode Value to which {@link #code} should be set.
    */
-  public void setCode( Float pCode ) {
+  public void setCode( @MyNotNull Float pCode ) {
     // Assign value to attribute
     code = pCode;
   }

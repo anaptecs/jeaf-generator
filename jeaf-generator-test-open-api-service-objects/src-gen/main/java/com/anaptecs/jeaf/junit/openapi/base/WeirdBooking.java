@@ -423,7 +423,7 @@ public class WeirdBooking extends WeirdParent {
    *
    * @param pBooking Value to which {@link #booking} should be set.
    */
-  public void setBooking( ComplexBookingID pBooking ) {
+  public void setBooking( @MyNotNull ComplexBookingID pBooking ) {
     booking = pBooking;
   }
 
@@ -516,7 +516,7 @@ public class WeirdBooking extends WeirdParent {
    *
    * @param pVersionedObjectSoftLink Value to which {@link #versionedObjectSoftLink} should be set.
    */
-  public void setVersionedObjectSoftLink( VersionedObjectSoftLink pVersionedObjectSoftLink ) {
+  public void setVersionedObjectSoftLink( @MyNotNull VersionedObjectSoftLink pVersionedObjectSoftLink ) {
     versionedObjectSoftLink = pVersionedObjectSoftLink;
   }
 

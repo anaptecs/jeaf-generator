@@ -259,7 +259,7 @@ public class Channel {
    *
    * @param pChannelType Value to which {@link #channelType} should be set.
    */
-  public void setChannelType( ChannelType pChannelType ) {
+  public void setChannelType( @MyNotNull ChannelType pChannelType ) {
     channelType = pChannelType;
   }
 
@@ -287,7 +287,7 @@ public class Channel {
    *
    * @param pChannelCode Value to which {@link #channelCode} should be set.
    */
-  public void setChannelCode( ChannelCode pChannelCode ) {
+  public void setChannelCode( @MyNotNull ChannelCode pChannelCode ) {
     channelCode = pChannelCode;
   }
 
@@ -342,7 +342,7 @@ public class Channel {
    *
    * @param pReseller Value to which {@link #reseller} should be set.
    */
-  void setReseller( Reseller pReseller ) {
+  void setReseller( @MyNotNull Reseller pReseller ) {
     // Release already referenced object before setting a new association.
     if (reseller != null) {
       reseller.removeFromChannels((Channel) this);

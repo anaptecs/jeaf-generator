@@ -797,7 +797,7 @@ public class PrimitiveObjectWithRestrictions {
    *
    * @param pBBoolean Value to which {@link #bBoolean} should be set.
    */
-  public void setBBoolean( Boolean pBBoolean ) {
+  public void setBBoolean( @MyNotNull Boolean pBBoolean ) {
     // Assign value to attribute
     bBoolean = pBBoolean;
   }
@@ -865,7 +865,7 @@ public class PrimitiveObjectWithRestrictions {
    *
    * @param pBByte Value to which {@link #bByte} should be set.
    */
-  public void setBByte( Byte pBByte ) {
+  public void setBByte( @MyNotNull Byte pBByte ) {
     // Assign value to attribute
     bByte = pBByte;
   }
@@ -904,7 +904,7 @@ public class PrimitiveObjectWithRestrictions {
    *
    * @param pBShort Value to which {@link #bShort} should be set.
    */
-  public void setBShort( Short pBShort ) {
+  public void setBShort( @MyNotNull Short pBShort ) {
     // Assign value to attribute
     bShort = pBShort;
   }
@@ -943,7 +943,7 @@ public class PrimitiveObjectWithRestrictions {
    *
    * @param pBInteger Value to which {@link #bInteger} should be set.
    */
-  public void setBInteger( Integer pBInteger ) {
+  public void setBInteger( @MyNotNull Integer pBInteger ) {
     // Assign value to attribute
     bInteger = pBInteger;
   }
@@ -963,7 +963,7 @@ public class PrimitiveObjectWithRestrictions {
    *
    * @param pCInteger Value to which {@link #cInteger} should be set.
    */
-  public void setCInteger( Integer pCInteger ) {
+  public void setCInteger( @MyNotNull Integer pCInteger ) {
     // Assign value to attribute
     cInteger = pCInteger;
   }
@@ -1002,7 +1002,7 @@ public class PrimitiveObjectWithRestrictions {
    *
    * @param pBLong Value to which {@link #bLong} should be set.
    */
-  public void setBLong( Long pBLong ) {
+  public void setBLong( @MyNotNull Long pBLong ) {
     // Assign value to attribute
     bLong = pBLong;
   }
@@ -1022,7 +1022,7 @@ public class PrimitiveObjectWithRestrictions {
    *
    * @param pABigInteger Value to which {@link #aBigInteger} should be set.
    */
-  public void setABigInteger( BigInteger pABigInteger ) {
+  public void setABigInteger( @MyNotNull BigInteger pABigInteger ) {
     // Assign value to attribute
     aBigInteger = pABigInteger;
   }
@@ -1061,7 +1061,7 @@ public class PrimitiveObjectWithRestrictions {
    *
    * @param pBCharacter Value to which {@link #bCharacter} should be set.
    */
-  public void setBCharacter( Character pBCharacter ) {
+  public void setBCharacter( @MyNotNull Character pBCharacter ) {
     // Assign value to attribute
     bCharacter = pBCharacter;
   }
@@ -1100,7 +1100,7 @@ public class PrimitiveObjectWithRestrictions {
    *
    * @param pBFloat Value to which {@link #bFloat} should be set.
    */
-  public void setBFloat( Float pBFloat ) {
+  public void setBFloat( @MyNotNull Float pBFloat ) {
     // Assign value to attribute
     bFloat = pBFloat;
   }
@@ -1139,7 +1139,7 @@ public class PrimitiveObjectWithRestrictions {
    *
    * @param pBDouble Value to which {@link #bDouble} should be set.
    */
-  public void setBDouble( Double pBDouble ) {
+  public void setBDouble( @MyNotNull Double pBDouble ) {
     // Assign value to attribute
     bDouble = pBDouble;
   }
@@ -1159,7 +1159,7 @@ public class PrimitiveObjectWithRestrictions {
    *
    * @param pABigDecimal Value to which {@link #aBigDecimal} should be set.
    */
-  public void setABigDecimal( BigDecimal pABigDecimal ) {
+  public void setABigDecimal( @MyNotNull BigDecimal pABigDecimal ) {
     // Assign value to attribute
     aBigDecimal = pABigDecimal;
   }
@@ -1179,7 +1179,7 @@ public class PrimitiveObjectWithRestrictions {
    *
    * @param pAString Value to which {@link #aString} should be set.
    */
-  public void setAString( String pAString ) {
+  public void setAString( @MyNotNull String pAString ) {
     // Assign value to attribute
     aString = pAString;
   }
@@ -1199,7 +1199,7 @@ public class PrimitiveObjectWithRestrictions {
    *
    * @param pBString Value to which {@link #bString} should be set.
    */
-  public void setBString( String pBString ) {
+  public void setBString( @MyNotNull String pBString ) {
     // Assign value to attribute
     bString = pBString;
   }

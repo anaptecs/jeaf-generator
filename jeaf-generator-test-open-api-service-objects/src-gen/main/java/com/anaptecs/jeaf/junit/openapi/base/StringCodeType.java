@@ -130,7 +130,7 @@ public class StringCodeType implements ServiceObject {
    *
    * @param pCode Value to which {@link #code} should be set.
    */
-  public void setCode( String pCode ) {
+  public void setCode( @MyNotNull String pCode ) {
     // Assign value to attribute
     code = pCode;
   }

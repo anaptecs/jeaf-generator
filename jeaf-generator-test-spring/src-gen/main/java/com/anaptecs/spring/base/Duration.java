@@ -213,7 +213,7 @@ public class Duration {
    *
    * @param pTimeUnit Value to which {@link #timeUnit} should be set.
    */
-  public void setTimeUnit( TimeUnit pTimeUnit ) {
+  public void setTimeUnit( @MyNotNull TimeUnit pTimeUnit ) {
     // Assign value to attribute
     timeUnit = pTimeUnit;
   }

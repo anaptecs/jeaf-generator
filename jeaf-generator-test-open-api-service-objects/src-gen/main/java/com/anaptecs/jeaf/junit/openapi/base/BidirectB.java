@@ -164,7 +164,7 @@ public class BidirectB implements ServiceObject {
    *
    * @param pA Value to which {@link #a} should be set.
    */
-  public void setA( BidirectA pA ) {
+  public void setA( @MyNotNull BidirectA pA ) {
     // Release already referenced object before setting a new association.
     if (a != null) {
       a.removeFromTransientBs((BidirectB) this);

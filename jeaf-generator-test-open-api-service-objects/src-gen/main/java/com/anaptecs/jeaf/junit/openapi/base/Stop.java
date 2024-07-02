@@ -259,7 +259,7 @@ public class Stop implements ServiceObject {
    *
    * @param pName Value to which {@link #name} should be set.
    */
-  public void setName( String pName ) {
+  public void setName( @MyNotNull String pName ) {
     // Assign value to attribute
     name = pName;
   }
@@ -358,7 +358,7 @@ public class Stop implements ServiceObject {
    *
    * @param pTheSoftLink Value to which {@link #theSoftLink} should be set.
    */
-  public void setTheSoftLinkID( SoftLink pTheSoftLink ) {
+  public void setTheSoftLinkID( @MyNotNull SoftLink pTheSoftLink ) {
     theSoftLinkID = pTheSoftLink;
   }
 

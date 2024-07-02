@@ -177,7 +177,7 @@ public class EnumTest implements ServiceObject {
    *
    * @param pProperty Value to which {@link #property} should be set.
    */
-  public void setProperty( ExtensibleEnum pProperty ) {
+  public void setProperty( @MyNotNull ExtensibleEnum pProperty ) {
     // Assign value to attribute
     property = pProperty;
   }
@@ -197,7 +197,7 @@ public class EnumTest implements ServiceObject {
    *
    * @param pEnumRef Value to which {@link #enumRef} should be set.
    */
-  public void setEnumRef( ExtensibleEnum pEnumRef ) {
+  public void setEnumRef( @MyNotNull ExtensibleEnum pEnumRef ) {
     enumRef = pEnumRef;
   }
 

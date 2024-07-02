@@ -148,7 +148,7 @@ public class IgnoringClass {
    *
    * @param pAge Value to which {@link #age} should be set.
    */
-  public void setAge( Integer pAge ) {
+  public void setAge( @MyNotNull Integer pAge ) {
     // Assign value to attribute
     age = pAge;
   }

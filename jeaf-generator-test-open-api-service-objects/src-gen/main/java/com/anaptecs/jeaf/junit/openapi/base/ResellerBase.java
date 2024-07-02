@@ -441,7 +441,7 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
    *
    * @param pName Value to which {@link #name} should be set.
    */
-  public void setName( String pName ) {
+  public void setName( @MyNotNull String pName ) {
     // Assign value to attribute
     name = pName;
   }
@@ -461,7 +461,7 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
    *
    * @param pLanguage Value to which {@link #language} should be set.
    */
-  public void setLanguage( Locale pLanguage ) {
+  public void setLanguage( @MyNotNull Locale pLanguage ) {
     // Assign value to attribute
     language = pLanguage;
   }

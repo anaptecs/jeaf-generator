@@ -283,7 +283,7 @@ public abstract class MasterDataObjectBase {
    *
    * @param pEntity Value to which {@link #entity} should be set.
    */
-  void setEntity( Entity pEntity ) {
+  void setEntity( @MyNotNull Entity pEntity ) {
     entity = pEntity;
   }
 
@@ -309,7 +309,7 @@ public abstract class MasterDataObjectBase {
    *
    * @param pObjectID Value to which {@link #objectID} should be set.
    */
-  public void setObjectID( String pObjectID ) {
+  public void setObjectID( @MyNotNull String pObjectID ) {
     // Assign value to attribute
     objectID = pObjectID;
   }
@@ -329,7 +329,7 @@ public abstract class MasterDataObjectBase {
    *
    * @param pInternalProperty Value to which {@link #internalProperty} should be set.
    */
-  void setInternalProperty( String pInternalProperty ) {
+  void setInternalProperty( @MyNotNull String pInternalProperty ) {
     // Assign value to attribute
     internalProperty = pInternalProperty;
   }

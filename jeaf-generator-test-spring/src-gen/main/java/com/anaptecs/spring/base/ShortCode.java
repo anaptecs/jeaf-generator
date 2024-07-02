@@ -147,7 +147,7 @@ public class ShortCode {
    *
    * @param pCode Value to which {@link #code} should be set.
    */
-  public void setCode( Short pCode ) {
+  public void setCode( @MyNotNull Short pCode ) {
     // Assign value to attribute
     code = pCode;
   }

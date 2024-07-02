@@ -594,7 +594,7 @@ public class Product implements IProduct {
    *
    * @param pName Value to which {@link #name} should be set.
    */
-  public void setName( String pName ) {
+  public void setName( @MyNotNull String pName ) {
     // Assign value to attribute
     name = pName;
   }
@@ -649,7 +649,7 @@ public class Product implements IProduct {
    *
    * @param pLink Value to which {@link #link} should be set.
    */
-  public void setLink( URL pLink ) {
+  public void setLink( @MyNotNull URL pLink ) {
     // Assign value to attribute
     link = pLink;
   }
@@ -789,7 +789,7 @@ public class Product implements IProduct {
    * @param pDescription Value to which {@link #description} should be set.
    */
   @Deprecated
-  public void setDescription( String pDescription ) {
+  public void setDescription( @MyNotNull String pDescription ) {
     // Assign value to attribute
     description = pDescription;
   }
@@ -866,7 +866,7 @@ public class Product implements IProduct {
    *
    * @param pUri Value to which {@link #uri} should be set.
    */
-  public void setUri( String pUri ) {
+  public void setUri( @MyNotNull String pUri ) {
     // Assign value to attribute
     uri = pUri;
   }

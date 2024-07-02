@@ -295,7 +295,7 @@ public class HeavyDataTypeUser implements ServiceObject {
    *
    * @param pBooleanCode Value to which {@link #booleanCode} should be set.
    */
-  public void setBooleanCode( BooleanCode pBooleanCode ) {
+  public void setBooleanCode( @MyNotNull BooleanCode pBooleanCode ) {
     // Assign value to attribute
     booleanCode = pBooleanCode;
   }
@@ -315,7 +315,7 @@ public class HeavyDataTypeUser implements ServiceObject {
    *
    * @param pByteCode Value to which {@link #byteCode} should be set.
    */
-  public void setByteCode( ByteCode pByteCode ) {
+  public void setByteCode( @MyNotNull ByteCode pByteCode ) {
     // Assign value to attribute
     byteCode = pByteCode;
   }
@@ -335,7 +335,7 @@ public class HeavyDataTypeUser implements ServiceObject {
    *
    * @param pShortCode Value to which {@link #shortCode} should be set.
    */
-  public void setShortCode( ShortCode pShortCode ) {
+  public void setShortCode( @MyNotNull ShortCode pShortCode ) {
     // Assign value to attribute
     shortCode = pShortCode;
   }
@@ -355,7 +355,7 @@ public class HeavyDataTypeUser implements ServiceObject {
    *
    * @param pIntegerCode Value to which {@link #integerCode} should be set.
    */
-  public void setIntegerCode( IntegerCode pIntegerCode ) {
+  public void setIntegerCode( @MyNotNull IntegerCode pIntegerCode ) {
     // Assign value to attribute
     integerCode = pIntegerCode;
   }
@@ -375,7 +375,7 @@ public class HeavyDataTypeUser implements ServiceObject {
    *
    * @param pFloatCode Value to which {@link #floatCode} should be set.
    */
-  public void setFloatCode( FloatCode pFloatCode ) {
+  public void setFloatCode( @MyNotNull FloatCode pFloatCode ) {
     // Assign value to attribute
     floatCode = pFloatCode;
   }
@@ -395,7 +395,7 @@ public class HeavyDataTypeUser implements ServiceObject {
    *
    * @param pDoubleCode Value to which {@link #doubleCode} should be set.
    */
-  public void setDoubleCode( DoubleCode pDoubleCode ) {
+  public void setDoubleCode( @MyNotNull DoubleCode pDoubleCode ) {
     // Assign value to attribute
     doubleCode = pDoubleCode;
   }
@@ -415,7 +415,7 @@ public class HeavyDataTypeUser implements ServiceObject {
    *
    * @param pBigInegerCode Value to which {@link #bigInegerCode} should be set.
    */
-  public void setBigInegerCode( BigIntegerCode pBigInegerCode ) {
+  public void setBigInegerCode( @MyNotNull BigIntegerCode pBigInegerCode ) {
     // Assign value to attribute
     bigInegerCode = pBigInegerCode;
   }
@@ -435,7 +435,7 @@ public class HeavyDataTypeUser implements ServiceObject {
    *
    * @param pBigDecimalCode Value to which {@link #bigDecimalCode} should be set.
    */
-  public void setBigDecimalCode( BigDecimalCode pBigDecimalCode ) {
+  public void setBigDecimalCode( @MyNotNull BigDecimalCode pBigDecimalCode ) {
     // Assign value to attribute
     bigDecimalCode = pBigDecimalCode;
   }

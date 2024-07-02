@@ -230,7 +230,7 @@ public class BidirectA implements ServiceObject {
    *
    * @param pParent Value to which {@link #parent} should be set.
    */
-  public void setParent( BidirectA pParent ) {
+  public void setParent( @MyNotNull BidirectA pParent ) {
     // Release already referenced object before setting a new association.
     if (parent != null) {
       parent.unsetTransientChild();
@@ -271,7 +271,7 @@ public class BidirectA implements ServiceObject {
    *
    * @param pTransientChild Value to which {@link #transientChild} should be set.
    */
-  void setTransientChild( BidirectA pTransientChild ) {
+  void setTransientChild( @MyNotNull BidirectA pTransientChild ) {
     // Release already referenced object before setting a new association.
     if (transientChild != null) {
       transientChild.unsetParent();

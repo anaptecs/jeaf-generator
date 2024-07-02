@@ -187,7 +187,7 @@ public class LocalBeanParamType implements ServiceObject {
    *
    * @param pLocalKey Value to which {@link #localKey} should be set.
    */
-  public void setLocalKey( String pLocalKey ) {
+  public void setLocalKey( @MyNotNull String pLocalKey ) {
     // Assign value to attribute
     localKey = pLocalKey;
   }
@@ -207,7 +207,7 @@ public class LocalBeanParamType implements ServiceObject {
    *
    * @param pLocalID Value to which {@link #localID} should be set.
    */
-  public void setLocalID( String pLocalID ) {
+  public void setLocalID( @MyNotNull String pLocalID ) {
     // Assign value to attribute
     localID = pLocalID;
   }
@@ -227,7 +227,7 @@ public class LocalBeanParamType implements ServiceObject {
    *
    * @param pAuthorization Value to which {@link #authorization} should be set.
    */
-  public void setAuthorization( String pAuthorization ) {
+  public void setAuthorization( @MyNotNull String pAuthorization ) {
     // Assign value to attribute
     authorization = pAuthorization;
   }

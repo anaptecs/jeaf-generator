@@ -156,7 +156,7 @@ public class CharacterCode {
    *
    * @param pCode Value to which {@link #code} should be set.
    */
-  public void setCode( Character pCode ) {
+  public void setCode( @MyNotNull Character pCode ) {
     // Assign value to attribute
     code = pCode;
   }

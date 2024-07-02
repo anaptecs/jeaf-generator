@@ -302,7 +302,7 @@ public class UICStop extends Stop implements IStop {
    *
    * @param pUicCode Value to which {@link #uicCode} should be set.
    */
-  public void setUicCode( String pUicCode ) {
+  public void setUicCode( @MyNotNull String pUicCode ) {
     // Assign value to attribute
     uicCode = pUicCode;
   }

@@ -147,7 +147,7 @@ public class TechParent {
    *
    * @param pTechAttribute Value to which {@link #techAttribute} should be set.
    */
-  public void setTechAttribute( String pTechAttribute ) {
+  public void setTechAttribute( @MyNotNull String pTechAttribute ) {
     // Assign value to attribute
     techAttribute = pTechAttribute;
   }

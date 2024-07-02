@@ -438,7 +438,7 @@ public class ChildAA extends ChildA {
    *
    * @param pRequiredArray Value to which {@link #requiredArray} should be set.
    */
-  public void setRequiredArray( String[] pRequiredArray ) {
+  public void setRequiredArray( @MyNotEmpty String[] pRequiredArray ) {
     // Assign value to attribute
     if (pRequiredArray != null) {
       requiredArray = pRequiredArray;
@@ -463,7 +463,7 @@ public class ChildAA extends ChildA {
    *
    * @param pBigIntegerCode Value to which {@link #bigIntegerCode} should be set.
    */
-  public void setBigIntegerCode( BigIntegerCode pBigIntegerCode ) {
+  public void setBigIntegerCode( @MyNotNull BigIntegerCode pBigIntegerCode ) {
     // Assign value to attribute
     bigIntegerCode = pBigIntegerCode;
   }

@@ -262,7 +262,7 @@ public class PostalAddress {
    *
    * @param pStreet Value to which {@link #street} should be set.
    */
-  public void setStreet( String pStreet ) {
+  public void setStreet( @MyNotNull String pStreet ) {
     // Assign value to attribute
     street = pStreet;
   }
@@ -282,7 +282,7 @@ public class PostalAddress {
    *
    * @param pHouseNumber Value to which {@link #houseNumber} should be set.
    */
-  public void setHouseNumber( String pHouseNumber ) {
+  public void setHouseNumber( @MyNotNull String pHouseNumber ) {
     // Assign value to attribute
     houseNumber = pHouseNumber;
   }
@@ -302,7 +302,7 @@ public class PostalAddress {
    *
    * @param pCity Value to which {@link #city} should be set.
    */
-  public void setCity( String pCity ) {
+  public void setCity( @MyNotNull String pCity ) {
     // Assign value to attribute
     city = pCity;
   }
@@ -341,7 +341,7 @@ public class PostalAddress {
    *
    * @param pCountry Value to which {@link #country} should be set.
    */
-  public void setCountry( String pCountry ) {
+  public void setCountry( @MyNotNull String pCountry ) {
     // Assign value to attribute
     country = pCountry;
   }

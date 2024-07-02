@@ -286,7 +286,7 @@ public class SpecialContext extends Context {
    *
    * @param pSpecificHeader Value to which {@link #specificHeader} should be set.
    */
-  public void setSpecificHeader( String pSpecificHeader ) {
+  public void setSpecificHeader( @MyNotNull String pSpecificHeader ) {
     // Assign value to attribute
     specificHeader = pSpecificHeader;
   }
@@ -308,7 +308,7 @@ public class SpecialContext extends Context {
    * @param pDeprecatedHeader Value to which {@link #deprecatedHeader} should be set.
    */
   @Deprecated
-  public void setDeprecatedHeader( IntegerCode pDeprecatedHeader ) {
+  public void setDeprecatedHeader( @MyNotNull IntegerCode pDeprecatedHeader ) {
     // Assign value to attribute
     deprecatedHeader = pDeprecatedHeader;
   }
@@ -328,7 +328,7 @@ public class SpecialContext extends Context {
    *
    * @param pDeprecatedType Value to which {@link #deprecatedType} should be set.
    */
-  public void setDeprecatedType( DeprecatedType pDeprecatedType ) {
+  public void setDeprecatedType( @MyNotNull DeprecatedType pDeprecatedType ) {
     // Assign value to attribute
     deprecatedType = pDeprecatedType;
   }

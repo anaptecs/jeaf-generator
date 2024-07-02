@@ -183,7 +183,7 @@ public abstract class SoftLinkBase {
    *
    * @param pDataUnit Value to which {@link #dataUnit} should be set.
    */
-  public void setDataUnit( DataUnit pDataUnit ) {
+  public void setDataUnit( @MyNotNull DataUnit pDataUnit ) {
     dataUnit = pDataUnit;
   }
 
@@ -209,7 +209,7 @@ public abstract class SoftLinkBase {
    *
    * @param pEntity Value to which {@link #entity} should be set.
    */
-  public void setEntity( Entity pEntity ) {
+  public void setEntity( @MyNotNull Entity pEntity ) {
     entity = pEntity;
   }
 

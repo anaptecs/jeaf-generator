@@ -148,7 +148,7 @@ public class AnotherDataType {
    *
    * @param pData Value to which {@link #data} should be set.
    */
-  public void setData( String pData ) {
+  public void setData( @MyNotNull String pData ) {
     // Assign value to attribute
     data = pData;
   }

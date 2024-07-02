@@ -187,7 +187,7 @@ public class GenericSingleValuedReponse<T> extends AbstractResponse<T> {
    *
    * @param pValue Value to which {@link #value} should be set.
    */
-  public void setValue( T pValue ) {
+  public void setValue( @MyNotNull T pValue ) {
     // Assign value to attribute
     value = pValue;
   }

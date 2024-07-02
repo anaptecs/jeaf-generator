@@ -192,7 +192,7 @@ public class DataTypeUsage implements ServiceObject {
    *
    * @param pCode Value to which {@link #code} should be set.
    */
-  public void setCode( MyDataType pCode ) {
+  public void setCode( @MyNotNull MyDataType pCode ) {
     code = pCode;
   }
 

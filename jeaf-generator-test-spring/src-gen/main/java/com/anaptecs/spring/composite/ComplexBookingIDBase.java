@@ -283,7 +283,7 @@ public abstract class ComplexBookingIDBase {
    *
    * @param pReferenceID Value to which {@link #referenceID} should be set.
    */
-  public void setReferenceID( String pReferenceID ) {
+  public void setReferenceID( @MyNotNull String pReferenceID ) {
     // Assign value to attribute
     referenceID = pReferenceID;
   }
@@ -356,7 +356,7 @@ public abstract class ComplexBookingIDBase {
    *
    * @param pComplexBookingType Value to which {@link #complexBookingType} should be set.
    */
-  public void setComplexBookingType( ComplexBookingType pComplexBookingType ) {
+  public void setComplexBookingType( @MyNotNull ComplexBookingType pComplexBookingType ) {
     complexBookingType = pComplexBookingType;
   }
 
@@ -382,7 +382,7 @@ public abstract class ComplexBookingIDBase {
    *
    * @param pAnotherID Value to which {@link #anotherID} should be set.
    */
-  public void setAnotherID( Integer pAnotherID ) {
+  public void setAnotherID( @MyNotNull Integer pAnotherID ) {
     // Assign value to attribute
     anotherID = pAnotherID;
   }

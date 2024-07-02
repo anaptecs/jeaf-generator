@@ -151,7 +151,7 @@ public class TechnicalHeaderContext implements ServiceObject {
    *
    * @param pReseller Value to which {@link #reseller} should be set.
    */
-  public void setReseller( String pReseller ) {
+  public void setReseller( @MyNotNull String pReseller ) {
     // Assign value to attribute
     reseller = pReseller;
   }

@@ -101,7 +101,7 @@ public abstract class PlaceRef {
    *
    * @param pName Value to which {@link #name} should be set.
    */
-  public void setName( String pName ) {
+  public void setName( @MyNotNull String pName ) {
     // Assign value to attribute
     name = pName;
   }

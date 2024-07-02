@@ -147,7 +147,7 @@ public class DoubleCode {
    *
    * @param pCode Value to which {@link #code} should be set.
    */
-  public void setCode( Double pCode ) {
+  public void setCode( @MyNotNull Double pCode ) {
     // Assign value to attribute
     code = pCode;
   }

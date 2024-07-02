@@ -178,7 +178,7 @@ public class SimpleBackwardCompatibility {
    * @param pDeprecatedProperty Value to which {@link #deprecatedProperty} should be set.
    */
   @Deprecated
-  public void setDeprecatedProperty( String pDeprecatedProperty ) {
+  public void setDeprecatedProperty( @MyNotNull String pDeprecatedProperty ) {
     // Delegate call to setSuccessorProperty(...)
     this.setSuccessorProperty(pDeprecatedProperty);
   }
@@ -198,7 +198,7 @@ public class SimpleBackwardCompatibility {
    *
    * @param pSuccessorProperty Value to which {@link #successorProperty} should be set.
    */
-  public void setSuccessorProperty( String pSuccessorProperty ) {
+  public void setSuccessorProperty( @MyNotNull String pSuccessorProperty ) {
     // Assign value to attribute
     successorProperty = pSuccessorProperty;
   }

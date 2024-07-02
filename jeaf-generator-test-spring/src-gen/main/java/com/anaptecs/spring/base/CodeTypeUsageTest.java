@@ -312,7 +312,7 @@ public class CodeTypeUsageTest {
    *
    * @param pBooleanCode Value to which {@link #booleanCode} should be set.
    */
-  public void setBooleanCode( BooleanCodeType pBooleanCode ) {
+  public void setBooleanCode( @MyNotNull BooleanCodeType pBooleanCode ) {
     // Assign value to attribute
     booleanCode = pBooleanCode;
   }
@@ -441,7 +441,7 @@ public class CodeTypeUsageTest {
    *
    * @param pStringCode Value to which {@link #stringCode} should be set.
    */
-  public void setStringCode( StringCodeType pStringCode ) {
+  public void setStringCode( @MyNotNull StringCodeType pStringCode ) {
     // Assign value to attribute
     stringCode = pStringCode;
   }

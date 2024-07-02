@@ -195,7 +195,7 @@ public class AdvancedHeader {
    *
    * @param pBookingID Value to which {@link #bookingID} should be set.
    */
-  public void setBookingID( BookingID pBookingID ) {
+  public void setBookingID( @MyNotNull BookingID pBookingID ) {
     // Assign value to attribute
     bookingID = pBookingID;
   }
@@ -215,7 +215,7 @@ public class AdvancedHeader {
    *
    * @param pBookingCode Value to which {@link #bookingCode} should be set.
    */
-  public void setBookingCode( BookingCode pBookingCode ) {
+  public void setBookingCode( @MyNotNull BookingCode pBookingCode ) {
     // Assign value to attribute
     bookingCode = pBookingCode;
   }
@@ -235,7 +235,7 @@ public class AdvancedHeader {
    *
    * @param pDoubleCode Value to which {@link #doubleCode} should be set.
    */
-  public void setDoubleCode( DoubleCode pDoubleCode ) {
+  public void setDoubleCode( @MyNotNull DoubleCode pDoubleCode ) {
     // Assign value to attribute
     doubleCode = pDoubleCode;
   }

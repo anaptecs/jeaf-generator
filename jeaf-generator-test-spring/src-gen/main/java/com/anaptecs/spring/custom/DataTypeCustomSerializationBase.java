@@ -107,7 +107,7 @@ public abstract class DataTypeCustomSerializationBase {
    *
    * @param pProperty1 Value to which {@link #property1} should be set.
    */
-  public void setProperty1( String pProperty1 ) {
+  public void setProperty1( @MyNotNull String pProperty1 ) {
     // Assign value to attribute
     property1 = pProperty1;
   }

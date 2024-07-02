@@ -231,7 +231,7 @@ public class DeprecatedContext implements ServiceObject {
    *
    * @param pAccessToken Value to which {@link #accessToken} should be set.
    */
-  public void setAccessToken( String pAccessToken ) {
+  public void setAccessToken( @MyNotNull String pAccessToken ) {
     // Assign value to attribute
     accessToken = pAccessToken;
   }
@@ -251,7 +251,7 @@ public class DeprecatedContext implements ServiceObject {
    *
    * @param pLanguage Value to which {@link #language} should be set.
    */
-  public void setLanguage( Locale pLanguage ) {
+  public void setLanguage( @MyNotNull Locale pLanguage ) {
     // Assign value to attribute
     language = pLanguage;
   }
@@ -290,7 +290,7 @@ public class DeprecatedContext implements ServiceObject {
    *
    * @param pQueryParam Value to which {@link #queryParam} should be set.
    */
-  public void setQueryParam( String pQueryParam ) {
+  public void setQueryParam( @MyNotNull String pQueryParam ) {
     // Assign value to attribute
     queryParam = pQueryParam;
   }

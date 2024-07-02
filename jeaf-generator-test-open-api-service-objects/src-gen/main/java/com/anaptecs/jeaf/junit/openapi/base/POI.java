@@ -415,7 +415,7 @@ public class POI extends Stop {
    *
    * @param pDescription Value to which {@link #description} should be set.
    */
-  public void setDescription( String pDescription ) {
+  public void setDescription( @MyNotNull String pDescription ) {
     // Assign value to attribute
     description = pDescription;
   }
@@ -440,7 +440,7 @@ public class POI extends Stop {
    * @param pTheLink Value to which {@link #theLink} should be set.
    */
   @Deprecated
-  public void setTheLinkID( Long pTheLink ) {
+  public void setTheLinkID( @MyNotNull Long pTheLink ) {
     theLinkID = pTheLink;
   }
 

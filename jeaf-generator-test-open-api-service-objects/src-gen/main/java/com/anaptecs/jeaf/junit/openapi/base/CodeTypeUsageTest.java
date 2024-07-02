@@ -292,7 +292,7 @@ public class CodeTypeUsageTest implements ServiceObject {
    *
    * @param pBooleanCode Value to which {@link #booleanCode} should be set.
    */
-  public void setBooleanCode( BooleanCodeType pBooleanCode ) {
+  public void setBooleanCode( @MyNotNull BooleanCodeType pBooleanCode ) {
     // Assign value to attribute
     booleanCode = pBooleanCode;
   }
@@ -433,7 +433,7 @@ public class CodeTypeUsageTest implements ServiceObject {
    *
    * @param pStringCode Value to which {@link #stringCode} should be set.
    */
-  public void setStringCode( StringCodeType pStringCode ) {
+  public void setStringCode( @MyNotNull StringCodeType pStringCode ) {
     // Assign value to attribute
     stringCode = pStringCode;
   }
@@ -453,7 +453,7 @@ public class CodeTypeUsageTest implements ServiceObject {
    *
    * @param pShortCode Value to which {@link #shortCode} should be set.
    */
-  public void setShortCode( ShortCode pShortCode ) {
+  public void setShortCode( @MyNotNull ShortCode pShortCode ) {
     shortCode = pShortCode;
   }
 

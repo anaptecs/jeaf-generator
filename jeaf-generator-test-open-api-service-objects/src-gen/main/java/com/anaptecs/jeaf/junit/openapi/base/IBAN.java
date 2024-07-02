@@ -126,7 +126,7 @@ public class IBAN implements ServiceObject {
    *
    * @param pValue Value to which {@link #value} should be set.
    */
-  public void setValue( String pValue ) {
+  public void setValue( @MyNotNull String pValue ) {
     // Assign value to attribute
     value = pValue;
   }

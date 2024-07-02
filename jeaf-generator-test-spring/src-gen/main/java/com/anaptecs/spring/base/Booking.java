@@ -250,7 +250,7 @@ public class Booking {
    *
    * @param pBookingID Value to which {@link #bookingID} should be set.
    */
-  public void setBookingID( BookingID pBookingID ) {
+  public void setBookingID( @MyNotNull BookingID pBookingID ) {
     bookingID = pBookingID;
   }
 
@@ -276,7 +276,7 @@ public class Booking {
    *
    * @param pCustomerName Value to which {@link #customerName} should be set.
    */
-  public void setCustomerName( String pCustomerName ) {
+  public void setCustomerName( @MyNotNull String pCustomerName ) {
     // Assign value to attribute
     customerName = pCustomerName;
   }

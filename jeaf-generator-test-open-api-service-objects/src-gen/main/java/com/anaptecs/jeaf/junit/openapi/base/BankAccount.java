@@ -139,7 +139,7 @@ public class BankAccount implements ServiceObject {
    *
    * @param pIban Value to which {@link #iban} should be set.
    */
-  public void setIban( String pIban ) {
+  public void setIban( @MyNotNull String pIban ) {
     // Assign value to attribute
     iban = pIban;
   }

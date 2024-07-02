@@ -184,7 +184,7 @@ public class BusinessChild extends BusinessParent {
    *
    * @param pChildAttribute Value to which {@link #childAttribute} should be set.
    */
-  public void setChildAttribute( String pChildAttribute ) {
+  public void setChildAttribute( @MyNotNull String pChildAttribute ) {
     // Assign value to attribute
     childAttribute = pChildAttribute;
   }

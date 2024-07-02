@@ -284,7 +284,7 @@ public class SpecialContext extends Context {
    *
    * @param pSpecificHeader Value to which {@link #specificHeader} should be set.
    */
-  public void setSpecificHeader( String pSpecificHeader ) {
+  public void setSpecificHeader( @MyNotNull String pSpecificHeader ) {
     // Assign value to attribute
     specificHeader = pSpecificHeader;
   }
@@ -304,7 +304,7 @@ public class SpecialContext extends Context {
    *
    * @param pChannelType Value to which {@link #channelType} should be set.
    */
-  public void setChannelType( ChannelType pChannelType ) {
+  public void setChannelType( @MyNotNull ChannelType pChannelType ) {
     // Assign value to attribute
     channelType = pChannelType;
   }

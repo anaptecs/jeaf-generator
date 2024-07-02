@@ -147,7 +147,7 @@ public class LinkObject {
    *
    * @param pHref Value to which {@link #href} should be set.
    */
-  public void setHref( String pHref ) {
+  public void setHref( @MyNotNull String pHref ) {
     // Assign value to attribute
     href = pHref;
   }

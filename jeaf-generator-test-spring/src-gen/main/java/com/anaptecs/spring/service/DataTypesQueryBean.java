@@ -758,7 +758,7 @@ public class DataTypesQueryBean {
    *
    * @param pOffsetDateTime Value to which {@link #offsetDateTime} should be set.
    */
-  public void setOffsetDateTime( OffsetDateTime pOffsetDateTime ) {
+  public void setOffsetDateTime( @MyNotNull OffsetDateTime pOffsetDateTime ) {
     // Assign value to attribute
     offsetDateTime = pOffsetDateTime;
   }
@@ -778,7 +778,7 @@ public class DataTypesQueryBean {
    *
    * @param pOffsetTime Value to which {@link #offsetTime} should be set.
    */
-  public void setOffsetTime( OffsetTime pOffsetTime ) {
+  public void setOffsetTime( @MyNotNull OffsetTime pOffsetTime ) {
     offsetTime = pOffsetTime;
   }
 
@@ -804,7 +804,7 @@ public class DataTypesQueryBean {
    *
    * @param pLocalDateTime Value to which {@link #localDateTime} should be set.
    */
-  public void setLocalDateTime( LocalDateTime pLocalDateTime ) {
+  public void setLocalDateTime( @MyNotNull LocalDateTime pLocalDateTime ) {
     // Assign value to attribute
     localDateTime = pLocalDateTime;
   }
@@ -824,7 +824,7 @@ public class DataTypesQueryBean {
    *
    * @param pLocalTime Value to which {@link #localTime} should be set.
    */
-  public void setLocalTime( LocalTime pLocalTime ) {
+  public void setLocalTime( @MyNotNull LocalTime pLocalTime ) {
     // Assign value to attribute
     localTime = pLocalTime;
   }

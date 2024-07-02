@@ -657,7 +657,7 @@ public class MultiValuedHeaderBeanParam {
    *
    * @param pInts Value to which {@link #ints} should be set.
    */
-  public void setInts( int[] pInts ) {
+  public void setInts( @MyNotEmpty int[] pInts ) {
     // Assign value to attribute
     if (pInts != null) {
       ints = new int[pInts.length];

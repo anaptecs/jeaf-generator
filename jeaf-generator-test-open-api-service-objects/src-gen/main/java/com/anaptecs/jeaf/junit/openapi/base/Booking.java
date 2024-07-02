@@ -151,7 +151,7 @@ public class Booking implements ServiceObject {
    *
    * @param pBookingID Value to which {@link #bookingID} should be set.
    */
-  public void setBookingID( BookingID pBookingID ) {
+  public void setBookingID( @MyNotNull BookingID pBookingID ) {
     bookingID = pBookingID;
   }
 

@@ -129,7 +129,7 @@ public class DeprecatedType implements ServiceObject {
    *
    * @param pCode Value to which {@link #code} should be set.
    */
-  public void setCode( Integer pCode ) {
+  public void setCode( @MyNotNull Integer pCode ) {
     // Assign value to attribute
     code = pCode;
   }

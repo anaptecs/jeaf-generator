@@ -238,7 +238,7 @@ public class DirectedEdge {
    *
    * @param pEnd Value to which {@link #end} should be set.
    */
-  public void setEnd( Stop pEnd ) {
+  public void setEnd( @MyNotNull Stop pEnd ) {
     end = pEnd;
   }
 
@@ -264,7 +264,7 @@ public class DirectedEdge {
    *
    * @param pLink Value to which {@link #link} should be set.
    */
-  public void setLink( String pLink ) {
+  public void setLink( @MyNotNull String pLink ) {
     // Assign value to attribute
     link = pLink;
   }

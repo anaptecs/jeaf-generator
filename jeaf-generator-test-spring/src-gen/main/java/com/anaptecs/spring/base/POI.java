@@ -192,7 +192,7 @@ public class POI extends Stop {
    *
    * @param pDescription Value to which {@link #description} should be set.
    */
-  public void setDescription( String pDescription ) {
+  public void setDescription( @MyNotNull String pDescription ) {
     // Assign value to attribute
     description = pDescription;
   }

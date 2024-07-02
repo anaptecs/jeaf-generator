@@ -166,7 +166,7 @@ public class LocalBeanParamType {
    *
    * @param pLocalKey Value to which {@link #localKey} should be set.
    */
-  public void setLocalKey( String pLocalKey ) {
+  public void setLocalKey( @MyNotNull String pLocalKey ) {
     // Assign value to attribute
     localKey = pLocalKey;
   }
@@ -186,7 +186,7 @@ public class LocalBeanParamType {
    *
    * @param pLocalID Value to which {@link #localID} should be set.
    */
-  public void setLocalID( String pLocalID ) {
+  public void setLocalID( @MyNotNull String pLocalID ) {
     // Assign value to attribute
     localID = pLocalID;
   }

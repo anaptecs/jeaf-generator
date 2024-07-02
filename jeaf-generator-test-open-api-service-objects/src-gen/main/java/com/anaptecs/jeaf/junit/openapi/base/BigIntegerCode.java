@@ -131,7 +131,7 @@ public class BigIntegerCode implements ServiceObject {
    *
    * @param pCode Value to which {@link #code} should be set.
    */
-  public void setCode( BigInteger pCode ) {
+  public void setCode( @MyNotNull BigInteger pCode ) {
     // Assign value to attribute
     code = pCode;
   }

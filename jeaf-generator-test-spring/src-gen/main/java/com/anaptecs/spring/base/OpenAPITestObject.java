@@ -384,7 +384,7 @@ public class OpenAPITestObject {
    *
    * @param pReadOnlyAttribute Value to which {@link #readOnlyAttribute} should be set.
    */
-  public void setReadOnlyAttribute( String pReadOnlyAttribute ) {
+  public void setReadOnlyAttribute( @MyNotNull String pReadOnlyAttribute ) {
     // Assign value to attribute
     readOnlyAttribute = pReadOnlyAttribute;
   }
@@ -404,7 +404,7 @@ public class OpenAPITestObject {
    *
    * @param pReadWriteAttribute Value to which {@link #readWriteAttribute} should be set.
    */
-  public void setReadWriteAttribute( String pReadWriteAttribute ) {
+  public void setReadWriteAttribute( @MyNotNull String pReadWriteAttribute ) {
     // Assign value to attribute
     readWriteAttribute = pReadWriteAttribute;
   }
@@ -443,7 +443,7 @@ public class OpenAPITestObject {
    *
    * @param pNullableAttribute Value to which {@link #nullableAttribute} should be set.
    */
-  public void setNullableAttribute( Boolean pNullableAttribute ) {
+  public void setNullableAttribute( @MyNotNull Boolean pNullableAttribute ) {
     // Assign value to attribute
     nullableAttribute = pNullableAttribute;
   }
@@ -482,7 +482,7 @@ public class OpenAPITestObject {
    *
    * @param pReadOnlyArray Value to which {@link #readOnlyArray} should be set.
    */
-  public void setReadOnlyArray( String pReadOnlyArray ) {
+  public void setReadOnlyArray( @MyNotNull String pReadOnlyArray ) {
     // Assign value to attribute
     readOnlyArray = pReadOnlyArray;
   }
@@ -502,7 +502,7 @@ public class OpenAPITestObject {
    *
    * @param pReadWriteArray Value to which {@link #readWriteArray} should be set.
    */
-  public void setReadWriteArray( String pReadWriteArray ) {
+  public void setReadWriteArray( @MyNotNull String pReadWriteArray ) {
     // Assign value to attribute
     readWriteArray = pReadWriteArray;
   }

@@ -176,7 +176,7 @@ public class QueryBeanParam {
    *
    * @param pBookingCode Value to which {@link #bookingCode} should be set.
    */
-  public void setBookingCode( BookingCode pBookingCode ) {
+  public void setBookingCode( @MyNotNull BookingCode pBookingCode ) {
     // Assign value to attribute
     bookingCode = pBookingCode;
   }

@@ -386,7 +386,7 @@ public class DateHeaderParamsBean {
    *
    * @param pOffsetDateTime Value to which {@link #offsetDateTime} should be set.
    */
-  public void setOffsetDateTime( OffsetDateTime pOffsetDateTime ) {
+  public void setOffsetDateTime( @MyNotNull OffsetDateTime pOffsetDateTime ) {
     // Assign value to attribute
     offsetDateTime = pOffsetDateTime;
   }
@@ -406,7 +406,7 @@ public class DateHeaderParamsBean {
    *
    * @param pOffsetTime Value to which {@link #offsetTime} should be set.
    */
-  public void setOffsetTime( OffsetTime pOffsetTime ) {
+  public void setOffsetTime( @MyNotNull OffsetTime pOffsetTime ) {
     // Assign value to attribute
     offsetTime = pOffsetTime;
   }
@@ -426,7 +426,7 @@ public class DateHeaderParamsBean {
    *
    * @param pLocalDateTime Value to which {@link #localDateTime} should be set.
    */
-  public void setLocalDateTime( LocalDateTime pLocalDateTime ) {
+  public void setLocalDateTime( @MyNotNull LocalDateTime pLocalDateTime ) {
     // Assign value to attribute
     localDateTime = pLocalDateTime;
   }
@@ -446,7 +446,7 @@ public class DateHeaderParamsBean {
    *
    * @param pLocalTime Value to which {@link #localTime} should be set.
    */
-  public void setLocalTime( LocalTime pLocalTime ) {
+  public void setLocalTime( @MyNotNull LocalTime pLocalTime ) {
     // Assign value to attribute
     localTime = pLocalTime;
   }
@@ -466,7 +466,7 @@ public class DateHeaderParamsBean {
    *
    * @param pLocalDate Value to which {@link #localDate} should be set.
    */
-  public void setLocalDate( LocalDate pLocalDate ) {
+  public void setLocalDate( @MyNotNull LocalDate pLocalDate ) {
     // Assign value to attribute
     localDate = pLocalDate;
   }
@@ -486,7 +486,7 @@ public class DateHeaderParamsBean {
    *
    * @param pUtilDate Value to which {@link #utilDate} should be set.
    */
-  public void setUtilDate( java.util.Date pUtilDate ) {
+  public void setUtilDate( @MyNotNull java.util.Date pUtilDate ) {
     // Assign value to attribute
     utilDate = pUtilDate;
   }
@@ -506,7 +506,7 @@ public class DateHeaderParamsBean {
    *
    * @param pCalendar Value to which {@link #calendar} should be set.
    */
-  public void setCalendar( Calendar pCalendar ) {
+  public void setCalendar( @MyNotNull Calendar pCalendar ) {
     // Assign value to attribute
     calendar = pCalendar;
   }
@@ -526,7 +526,7 @@ public class DateHeaderParamsBean {
    *
    * @param pSqlTimestamp Value to which {@link #sqlTimestamp} should be set.
    */
-  public void setSqlTimestamp( Timestamp pSqlTimestamp ) {
+  public void setSqlTimestamp( @MyNotNull Timestamp pSqlTimestamp ) {
     // Assign value to attribute
     sqlTimestamp = pSqlTimestamp;
   }
@@ -546,7 +546,7 @@ public class DateHeaderParamsBean {
    *
    * @param pSqlTime Value to which {@link #sqlTime} should be set.
    */
-  public void setSqlTime( Time pSqlTime ) {
+  public void setSqlTime( @MyNotNull Time pSqlTime ) {
     // Assign value to attribute
     sqlTime = pSqlTime;
   }
@@ -566,7 +566,7 @@ public class DateHeaderParamsBean {
    *
    * @param pSqlDate Value to which {@link #sqlDate} should be set.
    */
-  public void setSqlDate( Date pSqlDate ) {
+  public void setSqlDate( @MyNotNull Date pSqlDate ) {
     // Assign value to attribute
     sqlDate = pSqlDate;
   }

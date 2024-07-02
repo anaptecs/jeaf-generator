@@ -327,7 +327,7 @@ public class ChildAA extends ChildA {
    *
    * @param pRequiredArray Value to which {@link #requiredArray} should be set.
    */
-  public void setRequiredArray( String[] pRequiredArray ) {
+  public void setRequiredArray( @MyNotEmpty String[] pRequiredArray ) {
     // Assign value to attribute
     if (pRequiredArray != null) {
       requiredArray = new String[pRequiredArray.length];

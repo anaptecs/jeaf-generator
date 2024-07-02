@@ -216,7 +216,7 @@
 «DEFINE Setter FOR Property»
 	«EXPAND functions::Javadoc::JavadocForPropertySetter»
 	«EXPAND java::Helper::GenerateDeprecationAnnotation-»
-	«IF this.isInternalProperty() == false»public«ENDIF» void «asSetter()»(«this.fqn()» «asParameter()») {
+	«IF this.isInternalProperty() == false»public«ENDIF» void «asSetter()»(«EXPAND java::Helper::NotNullAnnotationForProperty» «this.fqn()» «asParameter()») {
 		«IF this.generateBackwardCompatibility() == false»
 			// Assign value to attribute
 			«IF this.isMultivalued() == false»
@@ -273,7 +273,7 @@
     «IF isReadOnly() == false»
     «EXPAND functions::Javadoc::JavadocForPropertySetter»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
-    public void set«this.getSoftLinkPropertyName().toFirstUpper()» («this.getJavaSoftLinkType()» «asParameter()») {
+    public void set«this.getSoftLinkPropertyName().toFirstUpper()» («EXPAND java::Helper::NotNullAnnotationForProperty» «this.getJavaSoftLinkType()» «asParameter()») {
         «IF generateNullChecksForToOneAssociationsOfServiceObjects() && this.getJavaSoftLinkType() != "long"»
         // «asParameter()» must not be null. To unset an association the unset method has to be called.
         com.anaptecs.jeaf.xfun.api.checks.Check.checkInvalidParameterNull(«asParameter()», "«asParameter()»");
@@ -331,7 +331,7 @@
      * @param «asParameter()» Collection with objects to which {@link #«asInstanceVar()»} should be set. The parameter may be null. In this case {@link #«asInstanceVar()»} is just unset.
      */
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
-    public void set«this.getSoftLinkPropertyName().toFirstUpper()»(«this.getCollectionType()»<«this.getMultivaluedJavaSoftLinkType()»> «asParameter()») {
+    public void set«this.getSoftLinkPropertyName().toFirstUpper()»(«EXPAND java::Helper::NotNullAnnotationForProperty» «this.getCollectionType()»<«this.getMultivaluedJavaSoftLinkType()»> «asParameter()») {
         // Check of parameter is not required.
         
         // Remove all objects from association "«this.getSoftLinkPropertyName()»".
@@ -448,7 +448,7 @@
     «IF isReadOnly() == false»
     «EXPAND functions::Javadoc::JavadocForPropertySetter»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
-	«IF this.isInternalProperty() == false && this.belongsToTransientBidirectionalBackReference() == false»public«ENDIF» void «asSetter()» («type.fqn()» «asParameter()») {
+	«IF this.isInternalProperty() == false && this.belongsToTransientBidirectionalBackReference() == false»public«ENDIF» void «asSetter()» («EXPAND java::Helper::NotNullAnnotationForProperty» «type.fqn()» «asParameter()») {
 	    «IF this.generateBackwardCompatibility() == false»
 			«IF generateNullChecksForToOneAssociationsOfServiceObjects()»
 			// «asParameter()» must not be null. To unset an association the unset method has to be called.
@@ -540,7 +540,7 @@
     «IF generatePublicSettersForAssociations()»
     «EXPAND functions::Javadoc::JavadocForPropertySetter»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
-    «IF this.isInternalProperty() == false && this.belongsToTransientBidirectionalBackReference() == false»public«ENDIF» void set«name.toFirstUpper()»(«this.fqn()» «asParameter()») {
+    «IF this.isInternalProperty() == false && this.belongsToTransientBidirectionalBackReference() == false»public«ENDIF» void set«name.toFirstUpper()»(«EXPAND java::Helper::NotNullAnnotationForProperty» «this.fqn()» «asParameter()») {
         «IF this.generateBackwardCompatibility() == false»
 	        // Check of parameter is not required.
 	        

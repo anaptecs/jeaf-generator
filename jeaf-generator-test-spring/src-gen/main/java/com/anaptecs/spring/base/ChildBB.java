@@ -361,7 +361,7 @@ public class ChildBB extends ChildB {
    *
    * @param pChildBBAttribute Value to which {@link #childBBAttribute} should be set.
    */
-  public void setChildBBAttribute( Long pChildBBAttribute ) {
+  public void setChildBBAttribute( @MyNotNull Long pChildBBAttribute ) {
     // Assign value to attribute
     childBBAttribute = pChildBBAttribute;
   }

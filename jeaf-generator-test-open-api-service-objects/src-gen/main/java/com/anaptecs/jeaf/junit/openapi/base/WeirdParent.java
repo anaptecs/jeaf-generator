@@ -229,7 +229,7 @@ public class WeirdParent implements ServiceObject {
    *
    * @param pSomeProperty Value to which {@link #someProperty} should be set.
    */
-  public void setSomeProperty( String pSomeProperty ) {
+  public void setSomeProperty( @MyNotNull String pSomeProperty ) {
     // Assign value to attribute
     someProperty = pSomeProperty;
   }
@@ -249,7 +249,7 @@ public class WeirdParent implements ServiceObject {
    *
    * @param pComplexBooking Value to which {@link #complexBooking} should be set.
    */
-  public void setComplexBooking( ComplexBookingID pComplexBooking ) {
+  public void setComplexBooking( @MyNotNull ComplexBookingID pComplexBooking ) {
     complexBooking = pComplexBooking;
   }
 

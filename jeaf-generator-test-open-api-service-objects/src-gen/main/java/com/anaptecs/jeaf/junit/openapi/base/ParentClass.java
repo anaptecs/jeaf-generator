@@ -286,7 +286,7 @@ public class ParentClass implements ServiceObject {
    *
    * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
    */
-  public void setParentAttribute( String pParentAttribute ) {
+  public void setParentAttribute( @MyNotNull String pParentAttribute ) {
     // Assign value to attribute
     parentAttribute = pParentAttribute;
   }

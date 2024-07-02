@@ -207,7 +207,7 @@ public class WeirdBooking {
    *
    * @param pBooking Value to which {@link #booking} should be set.
    */
-  public void setBooking( ComplexBookingID pBooking ) {
+  public void setBooking( @MyNotNull ComplexBookingID pBooking ) {
     booking = pBooking;
   }
 

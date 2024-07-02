@@ -175,7 +175,7 @@ public class ChildBeanParameterType extends ParentBeanParamType {
    *
    * @param pChildProperty Value to which {@link #childProperty} should be set.
    */
-  public void setChildProperty( String pChildProperty ) {
+  public void setChildProperty( @MyNotNull String pChildProperty ) {
     // Assign value to attribute
     childProperty = pChildProperty;
   }

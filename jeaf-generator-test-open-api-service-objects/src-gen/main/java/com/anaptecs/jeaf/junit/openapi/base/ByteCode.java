@@ -126,7 +126,7 @@ public class ByteCode implements ServiceObject {
    *
    * @param pCode Value to which {@link #code} should be set.
    */
-  public void setCode( Byte pCode ) {
+  public void setCode( @MyNotNull Byte pCode ) {
     // Assign value to attribute
     code = pCode;
   }

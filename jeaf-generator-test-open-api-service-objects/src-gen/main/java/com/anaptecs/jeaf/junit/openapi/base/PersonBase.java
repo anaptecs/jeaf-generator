@@ -182,7 +182,7 @@ public abstract class PersonBase extends Partner {
    *
    * @param pSurname Value to which {@link #surname} should be set.
    */
-  public void setSurname( String pSurname ) {
+  public void setSurname( @MyNotNull String pSurname ) {
     // Assign value to attribute
     surname = pSurname;
   }
@@ -202,7 +202,7 @@ public abstract class PersonBase extends Partner {
    *
    * @param pFirstName Value to which {@link #firstName} should be set.
    */
-  public void setFirstName( String pFirstName ) {
+  public void setFirstName( @MyNotNull String pFirstName ) {
     // Assign value to attribute
     firstName = pFirstName;
   }

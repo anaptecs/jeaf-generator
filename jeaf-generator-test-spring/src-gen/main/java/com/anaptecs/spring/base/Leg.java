@@ -228,7 +228,7 @@ public class Leg {
    *
    * @param pStart Value to which {@link #start} should be set.
    */
-  public void setStart( PlaceRef pStart ) {
+  public void setStart( @MyNotNull PlaceRef pStart ) {
     start = pStart;
   }
 
@@ -254,7 +254,7 @@ public class Leg {
    *
    * @param pStop Value to which {@link #stop} should be set.
    */
-  public void setStop( PlaceRef pStop ) {
+  public void setStop( @MyNotNull PlaceRef pStop ) {
     stop = pStop;
   }
 

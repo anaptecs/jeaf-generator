@@ -212,7 +212,7 @@ public class NotInlinedBeanParam implements ServiceObject {
    *
    * @param pHeader Value to which {@link #header} should be set.
    */
-  public void setHeader( String pHeader ) {
+  public void setHeader( @MyNotNull String pHeader ) {
     // Assign value to attribute
     header = pHeader;
   }
@@ -232,7 +232,7 @@ public class NotInlinedBeanParam implements ServiceObject {
    *
    * @param pDoubleCode Value to which {@link #doubleCode} should be set.
    */
-  public void setDoubleCode( DoubleCode pDoubleCode ) {
+  public void setDoubleCode( @MyNotNull DoubleCode pDoubleCode ) {
     // Assign value to attribute
     doubleCode = pDoubleCode;
   }
@@ -252,7 +252,7 @@ public class NotInlinedBeanParam implements ServiceObject {
    *
    * @param pExtensibleEnum Value to which {@link #extensibleEnum} should be set.
    */
-  public void setExtensibleEnum( ExtensibleEnum pExtensibleEnum ) {
+  public void setExtensibleEnum( @MyNotNull ExtensibleEnum pExtensibleEnum ) {
     // Assign value to attribute
     extensibleEnum = pExtensibleEnum;
   }
@@ -272,7 +272,7 @@ public class NotInlinedBeanParam implements ServiceObject {
    *
    * @param pBookingID Value to which {@link #bookingID} should be set.
    */
-  public void setBookingID( BookingID pBookingID ) {
+  public void setBookingID( @MyNotNull BookingID pBookingID ) {
     // Assign value to attribute
     bookingID = pBookingID;
   }

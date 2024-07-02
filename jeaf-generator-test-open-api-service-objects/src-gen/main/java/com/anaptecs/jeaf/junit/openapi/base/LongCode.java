@@ -126,7 +126,7 @@ public class LongCode implements ServiceObject {
    *
    * @param pCode Value to which {@link #code} should be set.
    */
-  public void setCode( Long pCode ) {
+  public void setCode( @MyNotNull Long pCode ) {
     // Assign value to attribute
     code = pCode;
   }
