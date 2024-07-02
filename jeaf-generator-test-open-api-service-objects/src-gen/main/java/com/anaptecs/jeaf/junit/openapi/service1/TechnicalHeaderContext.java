@@ -14,6 +14,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.ws.rs.HeaderParam;
 
+import com.anaptecs.annotations.MyNotNull;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -140,6 +141,7 @@ public class TechnicalHeaderContext implements ServiceObject {
    *
    * @return {@link String} Value to which {@link #reseller} is set.
    */
+  @MyNotNull
   public String getReseller( ) {
     return reseller;
   }

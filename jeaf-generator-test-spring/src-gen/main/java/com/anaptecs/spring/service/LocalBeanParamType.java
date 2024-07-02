@@ -7,6 +7,7 @@ package com.anaptecs.spring.service;
 
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotNull;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 
 public class LocalBeanParamType {
@@ -155,6 +156,7 @@ public class LocalBeanParamType {
    *
    * @return {@link String} Value to which {@link #localKey} is set.
    */
+  @MyNotNull
   public String getLocalKey( ) {
     return localKey;
   }
@@ -174,6 +176,7 @@ public class LocalBeanParamType {
    *
    * @return {@link String} Value to which {@link #localID} is set.
    */
+  @MyNotNull
   public String getLocalID( ) {
     return localID;
   }

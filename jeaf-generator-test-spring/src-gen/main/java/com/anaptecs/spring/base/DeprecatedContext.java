@@ -10,6 +10,7 @@ import java.util.Objects;
 
 import javax.validation.constraints.NotEmpty;
 
+import com.anaptecs.annotations.MyNotNull;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 
 @Deprecated
@@ -232,6 +233,7 @@ public class DeprecatedContext {
    *
    * @return {@link String} Value to which {@link #accessToken} is set.
    */
+  @MyNotNull
   public String getAccessToken( ) {
     return accessToken;
   }
@@ -251,6 +253,7 @@ public class DeprecatedContext {
    *
    * @return {@link Locale} Value to which {@link #language} is set.
    */
+  @MyNotNull
   public Locale getLanguage( ) {
     return language;
   }
@@ -289,6 +292,7 @@ public class DeprecatedContext {
    *
    * @return {@link String} Value to which {@link #queryParam} is set.
    */
+  @MyNotNull
   public String getQueryParam( ) {
     return queryParam;
   }

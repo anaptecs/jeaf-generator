@@ -17,6 +17,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
 
+import com.anaptecs.annotations.MyNotNull;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 
 /**
@@ -291,6 +292,7 @@ public class UICStop extends Stop implements IStop {
    *
    * @return {@link String} Value to which {@link #uicCode} is set.
    */
+  @MyNotNull
   public String getUicCode( ) {
     return uicCode;
   }

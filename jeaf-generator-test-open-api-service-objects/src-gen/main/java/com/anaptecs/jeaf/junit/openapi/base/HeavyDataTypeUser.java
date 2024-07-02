@@ -9,6 +9,7 @@ import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
+import com.anaptecs.annotations.MyNotNull;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -284,6 +285,7 @@ public class HeavyDataTypeUser implements ServiceObject {
    *
    * @return {@link BooleanCode} Value to which {@link #booleanCode} is set.
    */
+  @MyNotNull
   public BooleanCode getBooleanCode( ) {
     return booleanCode;
   }
@@ -303,6 +305,7 @@ public class HeavyDataTypeUser implements ServiceObject {
    *
    * @return {@link ByteCode} Value to which {@link #byteCode} is set.
    */
+  @MyNotNull
   public ByteCode getByteCode( ) {
     return byteCode;
   }
@@ -322,6 +325,7 @@ public class HeavyDataTypeUser implements ServiceObject {
    *
    * @return {@link ShortCode} Value to which {@link #shortCode} is set.
    */
+  @MyNotNull
   public ShortCode getShortCode( ) {
     return shortCode;
   }
@@ -341,6 +345,7 @@ public class HeavyDataTypeUser implements ServiceObject {
    *
    * @return {@link IntegerCode} Value to which {@link #integerCode} is set.
    */
+  @MyNotNull
   public IntegerCode getIntegerCode( ) {
     return integerCode;
   }
@@ -360,6 +365,7 @@ public class HeavyDataTypeUser implements ServiceObject {
    *
    * @return {@link FloatCode} Value to which {@link #floatCode} is set.
    */
+  @MyNotNull
   public FloatCode getFloatCode( ) {
     return floatCode;
   }
@@ -379,6 +385,7 @@ public class HeavyDataTypeUser implements ServiceObject {
    *
    * @return {@link DoubleCode} Value to which {@link #doubleCode} is set.
    */
+  @MyNotNull
   public DoubleCode getDoubleCode( ) {
     return doubleCode;
   }
@@ -398,6 +405,7 @@ public class HeavyDataTypeUser implements ServiceObject {
    *
    * @return {@link BigIntegerCode} Value to which {@link #bigInegerCode} is set.
    */
+  @MyNotNull
   public BigIntegerCode getBigInegerCode( ) {
     return bigInegerCode;
   }
@@ -417,6 +425,7 @@ public class HeavyDataTypeUser implements ServiceObject {
    *
    * @return {@link BigDecimalCode} Value to which {@link #bigDecimalCode} is set.
    */
+  @MyNotNull
   public BigDecimalCode getBigDecimalCode( ) {
     return bigDecimalCode;
   }

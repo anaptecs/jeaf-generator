@@ -6,6 +6,7 @@
 «EXTENSION functions::Property»
 «EXTENSION functions::SoftLink»
 «EXTENSION functions::JEAFDeprecated»
+«EXTENSION functions::SystemProperties»
 
 
 «DEFINE GenerateToStringMethod FOR uml::Class»
@@ -506,4 +507,18 @@
     «ELSE»
        // TODO: ERROR: Type of deprecated property '«name»' and successor property '«this.getSuccessorAsProperty().name»' are not the same
 	«ENDIF»
+«ENDDEFINE»
+
+«DEFINE NotNullAnnotationForProperty FOR uml::Property -»
+    «IF lower > 0 && type.isPrimitiveType() == false -»
+        «IF isMultivalued() -»
+            «IF generateNotEmptyAnnotationForMultiValuedProperties() -»
+                @«notEmptyAnnotationNameForMultiValuedProperties()»
+            «ENDIF -»
+        «ELSE -»
+            «IF generateNotNullAnnotationForSingleValuedProperties() -»
+                @«notNullAnnotationNameForSingleValuedProperties()»
+            «ENDIF -»
+        «ENDIF -»
+    «ENDIF -»
 «ENDDEFINE»

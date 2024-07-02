@@ -14,6 +14,7 @@ import java.util.Set;
 
 import javax.validation.constraints.Size;
 
+import com.anaptecs.annotations.MyNotNull;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -350,6 +351,7 @@ public class ChildBB extends ChildB {
    *
    * @return {@link Long} Value to which {@link #childBBAttribute} is set.
    */
+  @MyNotNull
   public Long getChildBBAttribute( ) {
     return childBBAttribute;
   }

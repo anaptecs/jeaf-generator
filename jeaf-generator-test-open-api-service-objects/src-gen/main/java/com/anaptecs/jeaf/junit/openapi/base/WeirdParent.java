@@ -15,6 +15,8 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.anaptecs.annotations.MyNotEmpty;
+import com.anaptecs.annotations.MyNotNull;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.junit.openapi.composite.ComplexBookingID;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
@@ -217,6 +219,7 @@ public class WeirdParent implements ServiceObject {
    *
    * @return {@link String} Value to which {@link #someProperty} is set.
    */
+  @MyNotNull
   public String getSomeProperty( ) {
     return someProperty;
   }
@@ -236,6 +239,7 @@ public class WeirdParent implements ServiceObject {
    *
    * @return {@link ComplexBookingID} Value to which {@link #complexBooking} is set.
    */
+  @MyNotNull
   public ComplexBookingID getComplexBooking( ) {
     return complexBooking;
   }
@@ -262,6 +266,7 @@ public class WeirdParent implements ServiceObject {
    * @return {@link Set<ComplexBookingID>} Value to which {@link #complexBookings} is set. The method never returns null
    * and the returned collection is modifiable.
    */
+  @MyNotEmpty
   public Set<ComplexBookingID> getComplexBookings( ) {
     // Return all ComplexBookingID objects directly without any protection against modification.
     return complexBookings;

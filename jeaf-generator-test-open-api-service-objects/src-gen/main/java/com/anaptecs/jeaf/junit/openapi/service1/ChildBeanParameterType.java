@@ -10,6 +10,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.ws.rs.HeaderParam;
 
+import com.anaptecs.annotations.MyNotNull;
 import com.anaptecs.jeaf.junit.openapi.base.ParentBeanParamType;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 
@@ -164,6 +165,7 @@ public class ChildBeanParameterType extends ParentBeanParamType {
    *
    * @return {@link String} Value to which {@link #childProperty} is set.
    */
+  @MyNotNull
   public String getChildProperty( ) {
     return childProperty;
   }

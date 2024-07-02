@@ -14,6 +14,7 @@ import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
+import com.anaptecs.annotations.MyNotNull;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.junit.openapi.datatypes.MyDataType;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
@@ -181,6 +182,7 @@ public class DataTypeUsage implements ServiceObject {
    *
    * @return {@link MyDataType} Value to which {@link #code} is set.
    */
+  @MyNotNull
   public MyDataType getCode( ) {
     return code;
   }

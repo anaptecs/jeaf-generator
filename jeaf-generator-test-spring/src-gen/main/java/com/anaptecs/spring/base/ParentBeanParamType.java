@@ -7,6 +7,7 @@ package com.anaptecs.spring.base;
 
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotNull;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 
 public class ParentBeanParamType {
@@ -156,6 +157,7 @@ public class ParentBeanParamType {
    *
    * @return {@link String} Value to which {@link #novaKey} is set.
    */
+  @MyNotNull
   public String getNovaKey( ) {
     return novaKey;
   }
@@ -175,6 +177,7 @@ public class ParentBeanParamType {
    *
    * @return {@link String} Value to which {@link #tkID} is set.
    */
+  @MyNotNull
   public String getTkID( ) {
     return tkID;
   }

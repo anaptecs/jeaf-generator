@@ -15,6 +15,8 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.anaptecs.annotations.MyNotEmpty;
+import com.anaptecs.annotations.MyNotNull;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -280,6 +282,7 @@ public class CodeTypeUsageTest implements ServiceObject {
    *
    * @return {@link BooleanCodeType} Value to which {@link #booleanCode} is set.
    */
+  @MyNotNull
   public BooleanCodeType getBooleanCode( ) {
     return booleanCode;
   }
@@ -360,6 +363,7 @@ public class CodeTypeUsageTest implements ServiceObject {
    * @return {@link Set<ShortCodeType>} Value to which {@link #shortCodeTypeAssociation} is set. The method never
    * returns null and the returned collection is modifiable.
    */
+  @MyNotEmpty
   public Set<ShortCodeType> getShortCodeTypeAssociation( ) {
     // Return all ShortCodeType objects directly without any protection against modification.
     return shortCodeTypeAssociation;
@@ -419,6 +423,7 @@ public class CodeTypeUsageTest implements ServiceObject {
    *
    * @return {@link StringCodeType} Value to which {@link #stringCode} is set.
    */
+  @MyNotNull
   public StringCodeType getStringCode( ) {
     return stringCode;
   }
@@ -438,6 +443,7 @@ public class CodeTypeUsageTest implements ServiceObject {
    *
    * @return {@link ShortCode} Value to which {@link #shortCode} is set.
    */
+  @MyNotNull
   public ShortCode getShortCode( ) {
     return shortCode;
   }

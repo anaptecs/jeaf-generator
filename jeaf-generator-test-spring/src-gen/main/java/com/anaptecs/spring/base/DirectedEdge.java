@@ -7,6 +7,7 @@ package com.anaptecs.spring.base;
 
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotNull;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -226,6 +227,7 @@ public class DirectedEdge {
    *
    * @return {@link Stop} Value to which {@link #end} is set.
    */
+  @MyNotNull
   public Stop getEnd( ) {
     return end;
   }
@@ -252,6 +254,7 @@ public class DirectedEdge {
    *
    * @return {@link String} Value to which {@link #link} is set.
    */
+  @MyNotNull
   public String getLink( ) {
     return link;
   }

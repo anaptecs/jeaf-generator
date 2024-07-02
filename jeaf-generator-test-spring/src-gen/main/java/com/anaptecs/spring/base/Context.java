@@ -13,6 +13,7 @@ import java.util.Objects;
 
 import javax.validation.constraints.NotEmpty;
 
+import com.anaptecs.annotations.MyNotNull;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 
 /**
@@ -324,6 +325,7 @@ public class Context {
    *
    * @return {@link String} Value to which {@link #accessToken} is set.
    */
+  @MyNotNull
   public String getAccessToken( ) {
     return accessToken;
   }
@@ -343,6 +345,7 @@ public class Context {
    *
    * @return {@link Locale} Value to which {@link #language} is set.
    */
+  @MyNotNull
   public Locale getLanguage( ) {
     return language;
   }
@@ -400,6 +403,7 @@ public class Context {
    *
    * @return {@link String} Value to which {@link #queryParam} is set.
    */
+  @MyNotNull
   public String getQueryParam( ) {
     return queryParam;
   }
@@ -419,6 +423,7 @@ public class Context {
    *
    * @return {@link String} Value to which {@link #lang} is set.
    */
+  @MyNotNull
   public String getLang( ) {
     return lang;
   }
@@ -438,6 +443,7 @@ public class Context {
    *
    * @return {@link IntegerCodeType} Value to which {@link #intCode} is set.
    */
+  @MyNotNull
   public IntegerCodeType getIntCode( ) {
     return intCode;
   }

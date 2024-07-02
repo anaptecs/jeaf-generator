@@ -8,6 +8,7 @@ package com.anaptecs.spring.base;
 import java.util.List;
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotNull;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -182,6 +183,7 @@ public class UICStop extends Stop {
    *
    * @return {@link String} Value to which {@link #uicCode} is set.
    */
+  @MyNotNull
   public String getUicCode( ) {
     return uicCode;
   }

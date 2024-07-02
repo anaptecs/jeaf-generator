@@ -19,6 +19,8 @@ import javax.validation.constraints.Size;
 import javax.ws.rs.HeaderParam;
 import javax.ws.rs.QueryParam;
 
+import com.anaptecs.annotations.MyNotEmpty;
+import com.anaptecs.annotations.MyNotNull;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -484,6 +486,7 @@ public class MultiValuedDataType implements ServiceObject {
    * @return {@link List<BooleanLiteralsEnum>} Value to which {@link #literals} is set. The method never returns null
    * and the returned collection is modifiable.
    */
+  @MyNotEmpty
   public List<BooleanLiteralsEnum> getLiterals( ) {
     // Return all BooleanLiteralsEnum objects directly without any protection against modification.
     return literals;
@@ -541,6 +544,7 @@ public class MultiValuedDataType implements ServiceObject {
    *
    * @return {@link String} Value to which {@link #stringProperty} is set.
    */
+  @MyNotNull
   public String getStringProperty( ) {
     return stringProperty;
   }

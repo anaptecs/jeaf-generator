@@ -9,6 +9,7 @@ import java.util.Arrays;
 
 import javax.validation.constraints.Size;
 
+import com.anaptecs.annotations.MyNotEmpty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -308,6 +309,7 @@ public class ChildAA extends ChildA {
    *
    * @return {@link String[]} Value to which {@link #requiredArray} is set.
    */
+  @MyNotEmpty
   public String[] getRequiredArray( ) {
     String[] lReturnValue;
     if (requiredArray != null) {

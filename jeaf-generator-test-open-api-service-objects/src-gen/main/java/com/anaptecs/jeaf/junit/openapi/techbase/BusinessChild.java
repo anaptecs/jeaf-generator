@@ -9,6 +9,7 @@ import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
+import com.anaptecs.annotations.MyNotNull;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 
 @Valid
@@ -160,6 +161,7 @@ public class BusinessChild extends BusinessParent {
    *
    * @return {@link String} Value to which {@link #childAttribute} is set.
    */
+  @MyNotNull
   public String getChildAttribute( ) {
     return childAttribute;
   }

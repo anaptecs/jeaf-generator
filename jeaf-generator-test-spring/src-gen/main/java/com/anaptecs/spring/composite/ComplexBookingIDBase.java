@@ -12,6 +12,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotEmpty;
+import com.anaptecs.annotations.MyNotNull;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.anaptecs.spring.base.BookingID;
 import com.anaptecs.spring.base.ComplexBookingType;
@@ -271,6 +273,7 @@ public abstract class ComplexBookingIDBase {
    *
    * @return {@link String} Value to which {@link #referenceID} is set.
    */
+  @MyNotNull
   public String getReferenceID( ) {
     return referenceID;
   }
@@ -291,6 +294,7 @@ public abstract class ComplexBookingIDBase {
    * @return {@link List<BookingID>} Value to which {@link #bookingIDs} is set. The method never returns null and the
    * returned collection is unmodifiable.
    */
+  @MyNotEmpty
   public List<BookingID> getBookingIDs( ) {
     // Return all BookingID objects as unmodifiable collection.
     return Collections.unmodifiableList(bookingIDs);
@@ -342,6 +346,7 @@ public abstract class ComplexBookingIDBase {
    *
    * @return {@link ComplexBookingType} Value to which {@link #complexBookingType} is set.
    */
+  @MyNotNull
   public ComplexBookingType getComplexBookingType( ) {
     return complexBookingType;
   }
@@ -367,6 +372,7 @@ public abstract class ComplexBookingIDBase {
    *
    * @return {@link Integer} Value to which {@link #anotherID} is set.
    */
+  @MyNotNull
   public Integer getAnotherID( ) {
     return anotherID;
   }

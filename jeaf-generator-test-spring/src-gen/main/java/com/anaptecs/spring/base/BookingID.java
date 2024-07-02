@@ -7,6 +7,7 @@ package com.anaptecs.spring.base;
 
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotNull;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -250,6 +251,7 @@ public class BookingID {
    *
    * @return {@link String} Value to which {@link #publicBookingID} is set.
    */
+  @MyNotNull
   public String getPublicBookingID( ) {
     return publicBookingID;
   }
@@ -259,6 +261,7 @@ public class BookingID {
    *
    * @return {@link String} Value to which {@link #referenceID} is set.
    */
+  @MyNotNull
   public String getReferenceID( ) {
     return referenceID;
   }
@@ -268,6 +271,7 @@ public class BookingID {
    *
    * @return {@link String} Value to which {@link #externalRefID} is set.
    */
+  @MyNotNull
   public String getExternalRefID( ) {
     return externalRefID;
   }
@@ -277,6 +281,7 @@ public class BookingID {
    *
    * @return {@link InventoryType} Value to which {@link #inventory} is set.
    */
+  @MyNotNull
   public InventoryType getInventory( ) {
     return inventory;
   }
@@ -286,6 +291,7 @@ public class BookingID {
    *
    * @return {@link BookingCode} Value to which {@link #bookingCode} is set.
    */
+  @MyNotNull
   public BookingCode getBookingCode( ) {
     return bookingCode;
   }

@@ -7,6 +7,7 @@ package com.anaptecs.spring.base.techbase;
 
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotNull;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -173,6 +174,7 @@ public class BusinessChild extends BusinessParent {
    *
    * @return {@link String} Value to which {@link #childAttribute} is set.
    */
+  @MyNotNull
   public String getChildAttribute( ) {
     return childAttribute;
   }

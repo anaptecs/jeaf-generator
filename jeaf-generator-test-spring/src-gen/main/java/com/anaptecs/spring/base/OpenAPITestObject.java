@@ -7,6 +7,7 @@ package com.anaptecs.spring.base;
 
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotNull;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -373,6 +374,7 @@ public class OpenAPITestObject {
    *
    * @return {@link String} Value to which {@link #readOnlyAttribute} is set.
    */
+  @MyNotNull
   public String getReadOnlyAttribute( ) {
     return readOnlyAttribute;
   }
@@ -392,6 +394,7 @@ public class OpenAPITestObject {
    *
    * @return {@link String} Value to which {@link #readWriteAttribute} is set.
    */
+  @MyNotNull
   public String getReadWriteAttribute( ) {
     return readWriteAttribute;
   }
@@ -430,6 +433,7 @@ public class OpenAPITestObject {
    *
    * @return {@link Boolean} Value to which {@link #nullableAttribute} is set.
    */
+  @MyNotNull
   public Boolean getNullableAttribute( ) {
     return nullableAttribute;
   }
@@ -468,6 +472,7 @@ public class OpenAPITestObject {
    *
    * @return {@link String} Value to which {@link #readOnlyArray} is set.
    */
+  @MyNotNull
   public String getReadOnlyArray( ) {
     return readOnlyArray;
   }
@@ -487,6 +492,7 @@ public class OpenAPITestObject {
    *
    * @return {@link String} Value to which {@link #readWriteArray} is set.
    */
+  @MyNotNull
   public String getReadWriteArray( ) {
     return readWriteArray;
   }

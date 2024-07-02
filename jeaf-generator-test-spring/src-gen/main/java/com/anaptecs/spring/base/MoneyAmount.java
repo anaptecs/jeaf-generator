@@ -10,6 +10,7 @@ import java.util.Objects;
 
 import javax.validation.constraints.NotNull;
 
+import com.anaptecs.annotations.MyNotNull;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -191,6 +192,7 @@ public class MoneyAmount {
    *
    * @return {@link BigDecimal} Value to which {@link #amount} is set.
    */
+  @MyNotNull
   public BigDecimal getAmount( ) {
     return amount;
   }
@@ -200,6 +202,7 @@ public class MoneyAmount {
    *
    * @return {@link CurrencyCode} Value to which {@link #currencyCode} is set.
    */
+  @MyNotNull
   public CurrencyCode getCurrencyCode( ) {
     return currencyCode;
   }

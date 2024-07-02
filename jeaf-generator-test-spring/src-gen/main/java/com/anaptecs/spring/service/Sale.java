@@ -8,6 +8,7 @@ package com.anaptecs.spring.service;
 import java.math.BigDecimal;
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotNull;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.anaptecs.spring.base.Channel;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
@@ -159,6 +160,7 @@ public class Sale {
    *
    * @return {@link BigDecimal} Value to which {@link #transactionAmount} is set.
    */
+  @MyNotNull
   public BigDecimal getTransactionAmount( ) {
     return transactionAmount;
   }

@@ -7,6 +7,7 @@ package com.anaptecs.spring.base;
 
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotNull;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -144,6 +145,7 @@ public class ParentClass {
    *
    * @return {@link String} Value to which {@link #parentAttribute} is set.
    */
+  @MyNotNull
   public String getParentAttribute( ) {
     return parentAttribute;
   }

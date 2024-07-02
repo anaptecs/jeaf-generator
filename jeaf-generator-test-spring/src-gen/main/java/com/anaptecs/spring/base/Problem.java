@@ -9,6 +9,7 @@ import java.util.Objects;
 
 import javax.validation.constraints.NotNull;
 
+import com.anaptecs.annotations.MyNotNull;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -253,6 +254,7 @@ public class Problem {
    *
    * @return {@link String} Value to which {@link #title} is set.
    */
+  @MyNotNull
   public String getTitle( ) {
     return title;
   }
@@ -271,6 +273,7 @@ public class Problem {
    *
    * @return {@link String} Value to which {@link #type} is set.
    */
+  @MyNotNull
   public String getType( ) {
     return type;
   }
@@ -280,6 +283,7 @@ public class Problem {
    *
    * @return {@link String} Value to which {@link #detail} is set.
    */
+  @MyNotNull
   public String getDetail( ) {
     return detail;
   }
@@ -289,6 +293,7 @@ public class Problem {
    *
    * @return {@link String} Value to which {@link #instance} is set.
    */
+  @MyNotNull
   public String getInstance( ) {
     return instance;
   }

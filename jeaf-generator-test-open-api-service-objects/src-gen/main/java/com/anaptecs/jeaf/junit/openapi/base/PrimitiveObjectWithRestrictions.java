@@ -22,6 +22,7 @@ import javax.validation.constraints.Positive;
 import javax.validation.constraints.PositiveOrZero;
 import javax.validation.constraints.Size;
 
+import com.anaptecs.annotations.MyNotNull;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -683,6 +684,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
    *
    * @return {@link Boolean} Value to which {@link #bBoolean} is set.
    */
+  @MyNotNull
   public Boolean getBBoolean( ) {
     return bBoolean;
   }
@@ -750,6 +752,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
    *
    * @return {@link Byte} Value to which {@link #bByte} is set.
    */
+  @MyNotNull
   public Byte getBByte( ) {
     return bByte;
   }
@@ -788,6 +791,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
    *
    * @return {@link Short} Value to which {@link #bShort} is set.
    */
+  @MyNotNull
   public Short getBShort( ) {
     return bShort;
   }
@@ -826,6 +830,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
    *
    * @return {@link Integer} Value to which {@link #bInteger} is set.
    */
+  @MyNotNull
   public Integer getBInteger( ) {
     return bInteger;
   }
@@ -845,6 +850,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
    *
    * @return {@link Integer} Value to which {@link #cInteger} is set.
    */
+  @MyNotNull
   public Integer getCInteger( ) {
     return cInteger;
   }
@@ -883,6 +889,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
    *
    * @return {@link Long} Value to which {@link #bLong} is set.
    */
+  @MyNotNull
   public Long getBLong( ) {
     return bLong;
   }
@@ -902,6 +909,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
    *
    * @return {@link BigInteger} Value to which {@link #aBigInteger} is set.
    */
+  @MyNotNull
   public BigInteger getABigInteger( ) {
     return aBigInteger;
   }
@@ -940,6 +948,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
    *
    * @return {@link Character} Value to which {@link #bCharacter} is set.
    */
+  @MyNotNull
   public Character getBCharacter( ) {
     return bCharacter;
   }
@@ -978,6 +987,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
    *
    * @return {@link Float} Value to which {@link #bFloat} is set.
    */
+  @MyNotNull
   public Float getBFloat( ) {
     return bFloat;
   }
@@ -1016,6 +1026,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
    *
    * @return {@link Double} Value to which {@link #bDouble} is set.
    */
+  @MyNotNull
   public Double getBDouble( ) {
     return bDouble;
   }
@@ -1035,6 +1046,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
    *
    * @return {@link BigDecimal} Value to which {@link #aBigDecimal} is set.
    */
+  @MyNotNull
   public BigDecimal getABigDecimal( ) {
     return aBigDecimal;
   }
@@ -1054,6 +1066,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
    *
    * @return {@link String} Value to which {@link #aString} is set.
    */
+  @MyNotNull
   public String getAString( ) {
     return aString;
   }
@@ -1073,6 +1086,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
    *
    * @return {@link String} Value to which {@link #bString} is set.
    */
+  @MyNotNull
   public String getBString( ) {
     return bString;
   }

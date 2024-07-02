@@ -8,6 +8,7 @@ package com.anaptecs.spring.base;
 import java.util.Locale;
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotNull;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -194,6 +195,7 @@ public class BeanParameter {
    *
    * @return {@link String} Value to which {@link #accessToken} is set.
    */
+  @MyNotNull
   public String getAccessToken( ) {
     return accessToken;
   }
@@ -213,6 +215,7 @@ public class BeanParameter {
    *
    * @return {@link Locale} Value to which {@link #language} is set.
    */
+  @MyNotNull
   public Locale getLanguage( ) {
     return language;
   }
@@ -233,6 +236,7 @@ public class BeanParameter {
    * @return {@link String} Value to which {@link #oldStyle} is set.
    */
   @Deprecated
+  @MyNotNull
   public String getOldStyle( ) {
     return oldStyle;
   }

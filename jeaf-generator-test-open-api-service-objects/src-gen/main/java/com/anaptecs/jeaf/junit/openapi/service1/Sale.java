@@ -11,6 +11,7 @@ import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
+import com.anaptecs.annotations.MyNotNull;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.junit.openapi.base.Channel;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
@@ -155,6 +156,7 @@ public class Sale implements ServiceObject {
    *
    * @return {@link BigDecimal} Value to which {@link #transactionAmount} is set.
    */
+  @MyNotNull
   public BigDecimal getTransactionAmount( ) {
     return transactionAmount;
   }

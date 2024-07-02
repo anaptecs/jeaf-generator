@@ -20,6 +20,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.anaptecs.annotations.MyNotEmpty;
+import com.anaptecs.annotations.MyNotNull;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.core.api.ServiceObjectID;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
@@ -277,6 +279,7 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
    * @return {@link List<Channel>} Value to which {@link #channels} is set. The method never returns null and the
    * returned collection is modifiable.
    */
+  @MyNotEmpty
   public List<Channel> getChannels( ) {
     // Due to restrictions in JSON serialization / deserialization bi-directional associations need a special handling
     // after an object was deserialized.
@@ -361,6 +364,7 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
    * @return {@link Set<Product>} Value to which {@link #products} is set. The method never returns null and the
    * returned collection is modifiable.
    */
+  @MyNotEmpty
   public Set<Product> getProducts( ) {
     // Return all Product objects directly without any protection against modification.
     return products;
@@ -425,6 +429,7 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
    *
    * @return {@link String} Value to which {@link #name} is set.
    */
+  @MyNotNull
   public String getName( ) {
     return name;
   }
@@ -446,6 +451,7 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
    *
    * @return {@link Locale} Value to which {@link #language} is set.
    */
+  @MyNotNull
   public Locale getLanguage( ) {
     return language;
   }

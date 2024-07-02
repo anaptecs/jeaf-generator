@@ -12,6 +12,7 @@ import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
+import com.anaptecs.annotations.MyNotNull;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -117,6 +118,7 @@ public class BigDecimalCode implements ServiceObject {
    *
    * @return {@link BigDecimal} Value to which {@link #code} is set.
    */
+  @MyNotNull
   public BigDecimal getCode( ) {
     return code;
   }

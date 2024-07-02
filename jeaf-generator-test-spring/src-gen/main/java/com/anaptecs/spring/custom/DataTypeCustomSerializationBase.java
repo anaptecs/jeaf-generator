@@ -7,6 +7,7 @@ package com.anaptecs.spring.custom;
 
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotNull;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -96,6 +97,7 @@ public abstract class DataTypeCustomSerializationBase {
    *
    * @return {@link String} Value to which {@link #property1} is set.
    */
+  @MyNotNull
   public String getProperty1( ) {
     return property1;
   }

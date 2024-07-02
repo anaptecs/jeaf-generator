@@ -7,6 +7,7 @@ package com.anaptecs.spring.base;
 
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotNull;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -179,6 +180,7 @@ public class EnumTest {
    *
    * @return {@link ExtensibleEnum} Value to which {@link #property} is set.
    */
+  @MyNotNull
   public ExtensibleEnum getProperty( ) {
     return property;
   }
@@ -198,6 +200,7 @@ public class EnumTest {
    *
    * @return {@link ExtensibleEnum} Value to which {@link #enumRef} is set.
    */
+  @MyNotNull
   public ExtensibleEnum getEnumRef( ) {
     return enumRef;
   }

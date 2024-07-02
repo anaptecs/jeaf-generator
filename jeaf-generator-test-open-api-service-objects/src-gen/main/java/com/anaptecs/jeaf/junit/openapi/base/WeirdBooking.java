@@ -16,6 +16,7 @@ import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
+import com.anaptecs.annotations.MyNotNull;
 import com.anaptecs.jeaf.junit.openapi.composite.ComplexBookingID;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -412,6 +413,7 @@ public class WeirdBooking extends WeirdParent {
    *
    * @return {@link ComplexBookingID} Value to which {@link #booking} is set.
    */
+  @MyNotNull
   public ComplexBookingID getBooking( ) {
     return booking;
   }
@@ -501,6 +503,7 @@ public class WeirdBooking extends WeirdParent {
    *
    * @return {@link VersionedObjectSoftLink} Value to which {@link #versionedObjectSoftLink} is set.
    */
+  @MyNotNull
   public VersionedObjectSoftLink getVersionedObjectSoftLink( ) {
     return versionedObjectSoftLink;
   }

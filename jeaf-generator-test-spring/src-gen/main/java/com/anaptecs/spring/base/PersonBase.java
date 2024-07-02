@@ -10,6 +10,7 @@ import java.util.Objects;
 
 import javax.validation.Valid;
 
+import com.anaptecs.annotations.MyNotNull;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -149,6 +150,7 @@ public abstract class PersonBase extends Partner {
    *
    * @return {@link String} Value to which {@link #surname} is set.
    */
+  @MyNotNull
   public String getSurname( ) {
     return surname;
   }
@@ -168,6 +170,7 @@ public abstract class PersonBase extends Partner {
    *
    * @return {@link String} Value to which {@link #firstName} is set.
    */
+  @MyNotNull
   public String getFirstName( ) {
     return firstName;
   }

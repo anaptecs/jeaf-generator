@@ -12,6 +12,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotNull;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonGetter;
@@ -272,6 +273,7 @@ public abstract class MasterDataObjectBase {
    *
    * @return {@link Entity} Value to which {@link #entity} is set.
    */
+  @MyNotNull
   Entity getEntity( ) {
     return entity;
   }
@@ -297,6 +299,7 @@ public abstract class MasterDataObjectBase {
    *
    * @return {@link String} Value to which {@link #objectID} is set.
    */
+  @MyNotNull
   public String getObjectID( ) {
     return objectID;
   }
@@ -316,6 +319,7 @@ public abstract class MasterDataObjectBase {
    *
    * @return {@link String} Value to which {@link #internalProperty} is set.
    */
+  @MyNotNull
   String getInternalProperty( ) {
     return internalProperty;
   }
@@ -355,6 +359,7 @@ public abstract class MasterDataObjectBase {
    *
    * @return {@link String} Value to which {@link #derivedProperty} is set.
    */
+  @MyNotNull
   public abstract String getDerivedProperty( );
 
   /**
@@ -412,6 +417,7 @@ public abstract class MasterDataObjectBase {
    *
    * @return {@link String} Value to which {@link #derivedString} is set.
    */
+  @MyNotNull
   public abstract String getDerivedString( );
 
   @Override

@@ -12,6 +12,7 @@ import java.time.LocalTime;
 import java.util.Calendar;
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotNull;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -286,6 +287,7 @@ public class DateObject {
    *
    * @return {@link LocalTime} Value to which {@link #localTime} is set.
    */
+  @MyNotNull
   public LocalTime getLocalTime( ) {
     return localTime;
   }
@@ -305,6 +307,7 @@ public class DateObject {
    *
    * @return {@link LocalDate} Value to which {@link #localDate} is set.
    */
+  @MyNotNull
   public LocalDate getLocalDate( ) {
     return localDate;
   }
@@ -324,6 +327,7 @@ public class DateObject {
    *
    * @return {@link LocalDateTime} Value to which {@link #localDateTime} is set.
    */
+  @MyNotNull
   public LocalDateTime getLocalDateTime( ) {
     return localDateTime;
   }
@@ -343,6 +347,7 @@ public class DateObject {
    *
    * @return {@link Calendar} Value to which {@link #calendar} is set.
    */
+  @MyNotNull
   public Calendar getCalendar( ) {
     return calendar;
   }
@@ -362,6 +367,7 @@ public class DateObject {
    *
    * @return {@link Date} Value to which {@link #sqlDate} is set.
    */
+  @MyNotNull
   public Date getSqlDate( ) {
     return sqlDate;
   }
@@ -381,6 +387,7 @@ public class DateObject {
    *
    * @return {@link java.util.Date} Value to which {@link #utilDate} is set.
    */
+  @MyNotNull
   public java.util.Date getUtilDate( ) {
     return utilDate;
   }

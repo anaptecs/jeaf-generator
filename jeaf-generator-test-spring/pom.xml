@@ -82,7 +82,7 @@
 			<version>${javaee-api.version}</version>
 			<scope>provided</scope>
 		</dependency>
-
+		
 		<dependency>
 		    <groupId>com.fasterxml.jackson.core</groupId>
 		    <artifactId>jackson-databind</artifactId>
@@ -182,6 +182,13 @@
 					<enableLegacyBuilderStyle>true</enableLegacyBuilderStyle>
 					<enableDetailedToStringMethod>true</enableDetailedToStringMethod>
 					<suppressTechnicalHeaders>true</suppressTechnicalHeaders>
+					
+					<generateNotNullAnnotationForSingleValuedProperties>true</generateNotNullAnnotationForSingleValuedProperties>
+					<notNullAnnotationNameForSingleValuedProperties>com.anaptecs.annotations.MyNotNull</notNullAnnotationNameForSingleValuedProperties>
+					
+					<generateNotEmptyAnnotationForMultiValuedProperties>true</generateNotEmptyAnnotationForMultiValuedProperties>
+					<notEmptyAnnotationNameForMultiValuedProperties>com.anaptecs.annotations.MyNotEmpty</notEmptyAnnotationNameForMultiValuedProperties>
+					
 					
 					
 

@@ -11,6 +11,7 @@ import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
+import com.anaptecs.annotations.MyNotNull;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.common.ObjectIdentity;
 
@@ -171,6 +172,7 @@ public abstract class PersonBase extends Partner {
    *
    * @return {@link String} Value to which {@link #surname} is set.
    */
+  @MyNotNull
   public String getSurname( ) {
     return surname;
   }
@@ -190,6 +192,7 @@ public abstract class PersonBase extends Partner {
    *
    * @return {@link String} Value to which {@link #firstName} is set.
    */
+  @MyNotNull
   public String getFirstName( ) {
     return firstName;
   }

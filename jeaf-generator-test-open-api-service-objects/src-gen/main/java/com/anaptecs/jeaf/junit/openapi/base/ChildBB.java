@@ -16,6 +16,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.anaptecs.annotations.MyNotNull;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonSetter;
@@ -387,6 +388,7 @@ public class ChildBB extends ChildB {
    *
    * @return {@link Long} Value to which {@link #childBBAttribute} is set.
    */
+  @MyNotNull
   public Long getChildBBAttribute( ) {
     return childBBAttribute;
   }

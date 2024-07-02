@@ -7,6 +7,7 @@ package com.anaptecs.spring.service;
 
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotNull;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.anaptecs.spring.base.BookingCode;
 
@@ -165,6 +166,7 @@ public class QueryBeanParam {
    *
    * @return {@link BookingCode} Value to which {@link #bookingCode} is set.
    */
+  @MyNotNull
   public BookingCode getBookingCode( ) {
     return bookingCode;
   }

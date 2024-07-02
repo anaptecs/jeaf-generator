@@ -12,6 +12,7 @@ import java.util.Iterator;
 import java.util.Objects;
 import java.util.Set;
 
+import com.anaptecs.annotations.MyNotNull;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -226,6 +227,7 @@ public class BidirectA {
    *
    * @return {@link BidirectA} Value to which {@link #parent} is set.
    */
+  @MyNotNull
   public BidirectA getParent( ) {
     // Due to restrictions in JSON serialization / deserialization bi-directional associations need a special handling
     // after an object was deserialized.
@@ -272,6 +274,7 @@ public class BidirectA {
    *
    * @return {@link BidirectA} Value to which {@link #transientChild} is set.
    */
+  @MyNotNull
   public BidirectA getTransientChild( ) {
     return transientChild;
   }

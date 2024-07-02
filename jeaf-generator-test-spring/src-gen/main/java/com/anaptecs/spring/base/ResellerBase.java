@@ -20,6 +20,8 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import com.anaptecs.annotations.MyNotEmpty;
+import com.anaptecs.annotations.MyNotNull;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -217,6 +219,7 @@ public abstract class ResellerBase {
    * @return {@link List<Channel>} Value to which {@link #channels} is set. The method never returns null and the
    * returned collection is unmodifiable.
    */
+  @MyNotEmpty
   public List<Channel> getChannels( ) {
     // Due to restrictions in JSON serialization / deserialization bi-directional associations need a special handling
     // after an object was deserialized.
@@ -295,6 +298,7 @@ public abstract class ResellerBase {
    * @return {@link Set<Product>} Value to which {@link #products} is set. The method never returns null and the
    * returned collection is unmodifiable.
    */
+  @MyNotEmpty
   public Set<Product> getProducts( ) {
     // Return all Product objects as unmodifiable collection.
     return Collections.unmodifiableSet(products);
@@ -351,6 +355,7 @@ public abstract class ResellerBase {
    *
    * @return {@link String} Value to which {@link #name} is set.
    */
+  @MyNotNull
   public String getName( ) {
     return name;
   }
@@ -370,6 +375,7 @@ public abstract class ResellerBase {
    *
    * @return {@link Locale} Value to which {@link #language} is set.
    */
+  @MyNotNull
   public Locale getLanguage( ) {
     return language;
   }

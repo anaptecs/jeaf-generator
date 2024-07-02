@@ -7,6 +7,7 @@ package com.anaptecs.spring.base.backward;
 
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotNull;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -164,6 +165,7 @@ public class SimpleBackwardCompatibility {
    * @return {@link String} Value to which {@link #deprecatedProperty} is set.
    */
   @Deprecated
+  @MyNotNull
   public String getDeprecatedProperty( ) {
     // Delegate call to getSuccessorProperty(...)
     return this.getSuccessorProperty();
@@ -186,6 +188,7 @@ public class SimpleBackwardCompatibility {
    *
    * @return {@link String} Value to which {@link #successorProperty} is set.
    */
+  @MyNotNull
   public String getSuccessorProperty( ) {
     return successorProperty;
   }

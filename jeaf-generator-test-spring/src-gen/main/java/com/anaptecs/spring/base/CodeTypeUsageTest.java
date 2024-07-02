@@ -12,6 +12,8 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
+import com.anaptecs.annotations.MyNotEmpty;
+import com.anaptecs.annotations.MyNotNull;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -300,6 +302,7 @@ public class CodeTypeUsageTest {
    *
    * @return {@link BooleanCodeType} Value to which {@link #booleanCode} is set.
    */
+  @MyNotNull
   public BooleanCodeType getBooleanCode( ) {
     return booleanCode;
   }
@@ -374,6 +377,7 @@ public class CodeTypeUsageTest {
    * @return {@link Set<ShortCodeType>} Value to which {@link #shortCodeTypeAssociation} is set. The method never
    * returns null and the returned collection is unmodifiable.
    */
+  @MyNotEmpty
   public Set<ShortCodeType> getShortCodeTypeAssociation( ) {
     // Return all ShortCodeType objects as unmodifiable collection.
     return Collections.unmodifiableSet(shortCodeTypeAssociation);
@@ -427,6 +431,7 @@ public class CodeTypeUsageTest {
    *
    * @return {@link StringCodeType} Value to which {@link #stringCode} is set.
    */
+  @MyNotNull
   public StringCodeType getStringCode( ) {
     return stringCode;
   }

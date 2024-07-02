@@ -7,6 +7,7 @@ package com.anaptecs.spring.base;
 
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotNull;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -136,6 +137,7 @@ public class DoubleCode {
    *
    * @return {@link Double} Value to which {@link #code} is set.
    */
+  @MyNotNull
   public Double getCode( ) {
     return code;
   }

@@ -7,6 +7,7 @@ package com.anaptecs.spring.service;
 
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotNull;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.anaptecs.spring.base.ParentBeanParamType;
 
@@ -167,6 +168,7 @@ public class ChildBeanParameterType extends ParentBeanParamType {
    *
    * @return {@link String} Value to which {@link #childProperty} is set.
    */
+  @MyNotNull
   public String getChildProperty( ) {
     return childProperty;
   }

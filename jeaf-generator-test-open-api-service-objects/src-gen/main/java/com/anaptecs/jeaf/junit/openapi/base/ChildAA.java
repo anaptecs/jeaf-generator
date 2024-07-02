@@ -14,6 +14,8 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.anaptecs.annotations.MyNotEmpty;
+import com.anaptecs.annotations.MyNotNull;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 
 /**
@@ -419,6 +421,7 @@ public class ChildAA extends ChildA {
    *
    * @return {@link String[]} Value to which {@link #requiredArray} is set.
    */
+  @MyNotEmpty
   public String[] getRequiredArray( ) {
     String[] lReturnValue;
     if (requiredArray != null) {
@@ -450,6 +453,7 @@ public class ChildAA extends ChildA {
    *
    * @return {@link BigIntegerCode} Value to which {@link #bigIntegerCode} is set.
    */
+  @MyNotNull
   public BigIntegerCode getBigIntegerCode( ) {
     return bigIntegerCode;
   }

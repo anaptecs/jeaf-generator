@@ -137,6 +137,7 @@
 	«IF this.isDeprecated() == false && type.isPrimitiveType() && type.isBooleanType() && this.isMultivalued() == false-»
     @Deprecated
     «ENDIF-»	
+    «EXPAND java::Helper::NotNullAnnotationForProperty»
 	«IF this.isInternalProperty() == false»public«ENDIF» «this.fqn()» «asGetter()»() {
 	    «IF this.generateBackwardCompatibility() == false»
 		    «IF this.isMultivalued() == false»return «asInstanceVar()»;
@@ -185,6 +186,7 @@
     «EXPAND functions::Javadoc::JavadocForPropertyGetter»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
     «IF generateJacksonAnnotations() && this.isAddToJSON()»@com.fasterxml.jackson.annotation.JsonGetter«ENDIF»
+    «EXPAND java::Helper::NotNullAnnotationForProperty»
     «IF this.isInternalProperty() == false»public«ENDIF» abstract «IF this.association == null»«this.fqn()»«ELSE»«this.fqn()»«ENDIF» «asGetter()»();
     
     «IF generateJacksonAnnotations() && this.isAddToJSON()»
@@ -199,6 +201,7 @@
     «EXPAND functions::Javadoc::JavadocForPropertyGetter»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
     «IF generateJacksonAnnotations() && this.isAddToJSON()»@com.fasterxml.jackson.annotation.JsonGetter«ENDIF»
+    «EXPAND java::Helper::NotNullAnnotationForProperty»
     @Override
     «IF this.isInternalProperty() == false»public«ENDIF» «IF this.association == null»«this.fqn()»«ELSE»«this.fqn()»«ENDIF» «asGetter()»() {
         // TODO Implement method for derived property "«this.name»".
@@ -249,6 +252,7 @@
 «DEFINE SoftLinkToOneAccessorMethods FOR SoftLink»
     «EXPAND functions::Javadoc::JavadocForPropertyGetter»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
+    «EXPAND java::Helper::NotNullAnnotationForProperty»
     public «this.getJavaSoftLinkType()» get«this.getSoftLinkPropertyName().toFirstUpper()» () {
     «IF ((NamedElement)this.owner).isPersistentObject()»
     «this.getSoftLinkPropertyName()» = this.unproxy(«asInstanceVar()»);«ENDIF»
@@ -295,6 +299,7 @@
 «DEFINE SoftLinkToManyAccessorMethods FOR SoftLink»
     «EXPAND functions::Javadoc::JavadocForPropertyGetter»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
+    «EXPAND java::Helper::NotNullAnnotationForProperty»
     public «this.getCollectionType()»<«this.getMultivaluedJavaSoftLinkType()»> get«this.getSoftLinkPropertyName().toFirstUpper()»() {
         «IF this.isTransientBidirectionalBackReference()»
         // Due to restrictions in JSON serialization / deserialization bi-directional associations need a special handling after an object was deserialized.
@@ -418,6 +423,7 @@
 «DEFINE ToOneAccessorMethods FOR Property»
     «EXPAND functions::Javadoc::JavadocForPropertyGetter»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
+    «EXPAND java::Helper::NotNullAnnotationForProperty»
 	«IF this.isInternalProperty() == false»public«ENDIF» «type.fqn()» «asGetter()» () {
     «IF ((NamedElement)this.owner).isPersistentObject()»
     «asInstanceVar()» = this.unproxy(«asInstanceVar()»);«ENDIF»
@@ -502,6 +508,7 @@
 «DEFINE ToManyAccessorMethods FOR Property»
     «EXPAND functions::Javadoc::JavadocForPropertyGetter»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
+    «EXPAND java::Helper::NotNullAnnotationForProperty»
 	«IF this.isInternalProperty() == false»public«ENDIF» «this.fqn()» «asGetter()» () {
 	    «IF this.generateBackwardCompatibility() == false»
 		    «IF this.isTransientBidirectionalBackReference()»

@@ -24,3 +24,15 @@ cached boolean listUnsecuredRESTEndpoints():
     
 cached String getDefaultSecurityRoleName():
 	getSystemProperty("switch.gen.security.default.security.role", "");
+	
+cached boolean generateNotNullAnnotationForSingleValuedProperties():
+    getBooleanSystemProperty("jeaf.generator.generateNotNullAnnotationForSingleValuedProperties", false);
+
+cached String notNullAnnotationNameForSingleValuedProperties():
+    getSystemProperty("jeaf.generator.notNullAnnotationNameForSingleValuedProperties");
+
+cached boolean generateNotEmptyAnnotationForMultiValuedProperties():
+    getBooleanSystemProperty("jeaf.generator.generateNotEmptyAnnotationForMultiValuedProperties", false);
+
+cached String notEmptyAnnotationNameForMultiValuedProperties():
+    getSystemProperty("jeaf.generator.notEmptyAnnotationNameForMultiValuedProperties");

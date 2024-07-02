@@ -8,6 +8,7 @@ package com.anaptecs.spring.base;
 import java.util.List;
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotNull;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -170,6 +171,7 @@ public class Company extends Partner {
    *
    * @return {@link String} Value to which {@link #name} is set.
    */
+  @MyNotNull
   public String getName( ) {
     return name;
   }

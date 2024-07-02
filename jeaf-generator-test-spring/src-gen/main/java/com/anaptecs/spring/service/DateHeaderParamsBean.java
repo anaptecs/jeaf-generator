@@ -16,6 +16,7 @@ import java.time.OffsetTime;
 import java.util.Calendar;
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotNull;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 
 public class DateHeaderParamsBean {
@@ -375,6 +376,7 @@ public class DateHeaderParamsBean {
    *
    * @return {@link OffsetDateTime} Value to which {@link #offsetDateTime} is set.
    */
+  @MyNotNull
   public OffsetDateTime getOffsetDateTime( ) {
     return offsetDateTime;
   }
@@ -394,6 +396,7 @@ public class DateHeaderParamsBean {
    *
    * @return {@link OffsetTime} Value to which {@link #offsetTime} is set.
    */
+  @MyNotNull
   public OffsetTime getOffsetTime( ) {
     return offsetTime;
   }
@@ -413,6 +416,7 @@ public class DateHeaderParamsBean {
    *
    * @return {@link LocalDateTime} Value to which {@link #localDateTime} is set.
    */
+  @MyNotNull
   public LocalDateTime getLocalDateTime( ) {
     return localDateTime;
   }
@@ -432,6 +436,7 @@ public class DateHeaderParamsBean {
    *
    * @return {@link LocalTime} Value to which {@link #localTime} is set.
    */
+  @MyNotNull
   public LocalTime getLocalTime( ) {
     return localTime;
   }
@@ -451,6 +456,7 @@ public class DateHeaderParamsBean {
    *
    * @return {@link LocalDate} Value to which {@link #localDate} is set.
    */
+  @MyNotNull
   public LocalDate getLocalDate( ) {
     return localDate;
   }
@@ -470,6 +476,7 @@ public class DateHeaderParamsBean {
    *
    * @return {@link java.util.Date} Value to which {@link #utilDate} is set.
    */
+  @MyNotNull
   public java.util.Date getUtilDate( ) {
     return utilDate;
   }
@@ -489,6 +496,7 @@ public class DateHeaderParamsBean {
    *
    * @return {@link Calendar} Value to which {@link #calendar} is set.
    */
+  @MyNotNull
   public Calendar getCalendar( ) {
     return calendar;
   }
@@ -508,6 +516,7 @@ public class DateHeaderParamsBean {
    *
    * @return {@link Timestamp} Value to which {@link #sqlTimestamp} is set.
    */
+  @MyNotNull
   public Timestamp getSqlTimestamp( ) {
     return sqlTimestamp;
   }
@@ -527,6 +536,7 @@ public class DateHeaderParamsBean {
    *
    * @return {@link Time} Value to which {@link #sqlTime} is set.
    */
+  @MyNotNull
   public Time getSqlTime( ) {
     return sqlTime;
   }
@@ -546,6 +556,7 @@ public class DateHeaderParamsBean {
    *
    * @return {@link Date} Value to which {@link #sqlDate} is set.
    */
+  @MyNotNull
   public Date getSqlDate( ) {
     return sqlDate;
   }

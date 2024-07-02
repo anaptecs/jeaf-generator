@@ -7,6 +7,7 @@ package com.anaptecs.spring.base;
 
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotNull;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -172,6 +173,7 @@ public abstract class SoftLinkBase {
    *
    * @return {@link DataUnit} Value to which {@link #dataUnit} is set.
    */
+  @MyNotNull
   public DataUnit getDataUnit( ) {
     return dataUnit;
   }
@@ -197,6 +199,7 @@ public abstract class SoftLinkBase {
    *
    * @return {@link Entity} Value to which {@link #entity} is set.
    */
+  @MyNotNull
   public Entity getEntity( ) {
     return entity;
   }
@@ -222,6 +225,7 @@ public abstract class SoftLinkBase {
    *
    * @return {@link String} Value to which {@link #refrenceID} is set.
    */
+  @MyNotNull
   public String getRefrenceID( ) {
     return refrenceID;
   }

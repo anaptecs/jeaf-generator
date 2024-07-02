@@ -18,6 +18,8 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.anaptecs.annotations.MyNotEmpty;
+import com.anaptecs.annotations.MyNotNull;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.core.api.ServiceObjectID;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
@@ -560,6 +562,7 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
    *
    * @return {@link String} Value to which {@link #name} is set.
    */
+  @MyNotNull
   public String getName( ) {
     return name;
   }
@@ -612,6 +615,7 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
    *
    * @return {@link URL} Value to which {@link #link} is set.
    */
+  @MyNotNull
   public URL getLink( ) {
     return link;
   }
@@ -631,6 +635,7 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
    *
    * @return {@link UUID} Value to which {@link #productID} is set.
    */
+  @MyNotNull
   public UUID getProductID( ) {
     return productID;
   }
@@ -641,6 +646,7 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
    * @return {@link Set<CurrencyCode>} Value to which {@link #supportedCurrencies} is set. The method never returns null
    * and the returned collection is modifiable.
    */
+  @MyNotEmpty
   public Set<CurrencyCode> getSupportedCurrencies( ) {
     // Return all CurrencyCode objects directly without any protection against modification.
     return supportedCurrencies;
@@ -701,6 +707,7 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
    * @return {@link Set<ProductCode>} Value to which {@link #productCodes} is set. The method never returns null and the
    * returned collection is modifiable.
    */
+  @MyNotEmpty
   public Set<ProductCode> getProductCodes( ) {
     // Return all ProductCode objects directly without any protection against modification.
     return productCodes;
@@ -759,6 +766,7 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
    * @return {@link String} Value to which {@link #description} is set.
    */
   @Deprecated
+  @MyNotNull
   public String getDescription( ) {
     return description;
   }
@@ -842,6 +850,7 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
    *
    * @return {@link String} Value to which {@link #uri} is set.
    */
+  @MyNotNull
   public String getUri( ) {
     return uri;
   }

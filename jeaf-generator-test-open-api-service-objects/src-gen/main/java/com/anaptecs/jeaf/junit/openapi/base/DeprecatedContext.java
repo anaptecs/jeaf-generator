@@ -15,6 +15,7 @@ import javax.ws.rs.CookieParam;
 import javax.ws.rs.HeaderParam;
 import javax.ws.rs.QueryParam;
 
+import com.anaptecs.annotations.MyNotNull;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -220,6 +221,7 @@ public class DeprecatedContext implements ServiceObject {
    *
    * @return {@link String} Value to which {@link #accessToken} is set.
    */
+  @MyNotNull
   public String getAccessToken( ) {
     return accessToken;
   }
@@ -239,6 +241,7 @@ public class DeprecatedContext implements ServiceObject {
    *
    * @return {@link Locale} Value to which {@link #language} is set.
    */
+  @MyNotNull
   public Locale getLanguage( ) {
     return language;
   }
@@ -277,6 +280,7 @@ public class DeprecatedContext implements ServiceObject {
    *
    * @return {@link String} Value to which {@link #queryParam} is set.
    */
+  @MyNotNull
   public String getQueryParam( ) {
     return queryParam;
   }

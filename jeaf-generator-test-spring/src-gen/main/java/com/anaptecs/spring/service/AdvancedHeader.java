@@ -7,6 +7,7 @@ package com.anaptecs.spring.service;
 
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotNull;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.anaptecs.spring.base.BookingCode;
 import com.anaptecs.spring.base.BookingID;
@@ -184,6 +185,7 @@ public class AdvancedHeader {
    *
    * @return {@link BookingID} Value to which {@link #bookingID} is set.
    */
+  @MyNotNull
   public BookingID getBookingID( ) {
     return bookingID;
   }
@@ -203,6 +205,7 @@ public class AdvancedHeader {
    *
    * @return {@link BookingCode} Value to which {@link #bookingCode} is set.
    */
+  @MyNotNull
   public BookingCode getBookingCode( ) {
     return bookingCode;
   }
@@ -222,6 +225,7 @@ public class AdvancedHeader {
    *
    * @return {@link DoubleCode} Value to which {@link #doubleCode} is set.
    */
+  @MyNotNull
   public DoubleCode getDoubleCode( ) {
     return doubleCode;
   }

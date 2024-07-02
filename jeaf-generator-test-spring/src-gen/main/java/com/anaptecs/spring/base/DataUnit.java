@@ -5,6 +5,8 @@
  */
 package com.anaptecs.spring.base;
 
+import com.anaptecs.annotations.MyNotNull;
+
 public enum DataUnit {
   COUPON("CMP"), UNKNOWN("N/A");
 
@@ -22,6 +24,7 @@ public enum DataUnit {
    *
    * @return {@link String} Value to which {@link #dataUnitID} is set.
    */
+  @MyNotNull
   public String getDataUnitID( ) {
     return dataUnitID;
   }

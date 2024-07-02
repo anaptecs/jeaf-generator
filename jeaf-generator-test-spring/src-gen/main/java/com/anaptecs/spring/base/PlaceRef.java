@@ -7,6 +7,7 @@ package com.anaptecs.spring.base;
 
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotNull;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
@@ -90,6 +91,7 @@ public abstract class PlaceRef {
    *
    * @return {@link String} Value to which {@link #name} is set.
    */
+  @MyNotNull
   public String getName( ) {
     return name;
   }

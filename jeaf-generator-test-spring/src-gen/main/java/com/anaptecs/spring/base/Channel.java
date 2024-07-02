@@ -7,6 +7,7 @@ package com.anaptecs.spring.base;
 
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotNull;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -247,6 +248,7 @@ public class Channel {
    *
    * @return {@link ChannelType} Value to which {@link #channelType} is set.
    */
+  @MyNotNull
   public ChannelType getChannelType( ) {
     return channelType;
   }
@@ -274,6 +276,7 @@ public class Channel {
    *
    * @return {@link ChannelCode} Value to which {@link #channelCode} is set.
    */
+  @MyNotNull
   public ChannelCode getChannelCode( ) {
     return channelCode;
   }
@@ -329,6 +332,7 @@ public class Channel {
    *
    * @return {@link Reseller} Value to which {@link #reseller} is set.
    */
+  @MyNotNull
   public Reseller getReseller( ) {
     return reseller;
   }

@@ -11,6 +11,7 @@ import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
+import com.anaptecs.annotations.MyNotNull;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 
 @Valid
@@ -176,6 +177,7 @@ public class GenericSingleValuedReponse<T> extends AbstractResponse<T> {
    *
    * @return {@link T} Value to which {@link #value} is set.
    */
+  @MyNotNull
   public T getValue( ) {
     return value;
   }

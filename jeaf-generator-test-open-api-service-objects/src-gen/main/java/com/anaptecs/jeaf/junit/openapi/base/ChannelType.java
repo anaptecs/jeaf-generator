@@ -7,6 +7,8 @@ package com.anaptecs.jeaf.junit.openapi.base;
 
 import javax.validation.constraints.NotNull;
 
+import com.anaptecs.annotations.MyNotNull;
+
 /**
  * <p/>
  * <b>Alternate Name:</b> Kanal
@@ -47,6 +49,7 @@ public enum ChannelType {
    *
    * @return {@link String} Value to which {@link #code} is set.
    */
+  @MyNotNull
   public String getCode( ) {
     return code;
   }

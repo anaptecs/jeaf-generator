@@ -9,6 +9,7 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Arrays;
 
+import com.anaptecs.annotations.MyNotEmpty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -1510,6 +1511,7 @@ public class PrimitiveArraysObject {
    *
    * @return {@link String[]} Value to which {@link #cStringArray} is set.
    */
+  @MyNotEmpty
   public String[] getCStringArray( ) {
     String[] lReturnValue;
     if (cStringArray != null) {

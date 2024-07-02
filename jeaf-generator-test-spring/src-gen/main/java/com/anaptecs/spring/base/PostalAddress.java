@@ -7,6 +7,7 @@ package com.anaptecs.spring.base;
 
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotNull;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -251,6 +252,7 @@ public class PostalAddress {
    *
    * @return {@link String} Value to which {@link #street} is set.
    */
+  @MyNotNull
   public String getStreet( ) {
     return street;
   }
@@ -270,6 +272,7 @@ public class PostalAddress {
    *
    * @return {@link String} Value to which {@link #houseNumber} is set.
    */
+  @MyNotNull
   public String getHouseNumber( ) {
     return houseNumber;
   }
@@ -289,6 +292,7 @@ public class PostalAddress {
    *
    * @return {@link String} Value to which {@link #city} is set.
    */
+  @MyNotNull
   public String getCity( ) {
     return city;
   }
@@ -327,6 +331,7 @@ public class PostalAddress {
    *
    * @return {@link String} Value to which {@link #country} is set.
    */
+  @MyNotNull
   public String getCountry( ) {
     return country;
   }

@@ -17,6 +17,8 @@ import java.util.UUID;
 
 import javax.validation.constraints.Size;
 
+import com.anaptecs.annotations.MyNotEmpty;
+import com.anaptecs.annotations.MyNotNull;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -582,6 +584,7 @@ public class Product implements IProduct {
    *
    * @return {@link String} Value to which {@link #name} is set.
    */
+  @MyNotNull
   public String getName( ) {
     return name;
   }
@@ -636,6 +639,7 @@ public class Product implements IProduct {
    *
    * @return {@link URL} Value to which {@link #link} is set.
    */
+  @MyNotNull
   public URL getLink( ) {
     return link;
   }
@@ -655,6 +659,7 @@ public class Product implements IProduct {
    *
    * @return {@link UUID} Value to which {@link #productID} is set.
    */
+  @MyNotNull
   public UUID getProductID( ) {
     return productID;
   }
@@ -665,6 +670,7 @@ public class Product implements IProduct {
    * @return {@link Set<CurrencyCode>} Value to which {@link #supportedCurrencies} is set. The method never returns null
    * and the returned collection is unmodifiable.
    */
+  @MyNotEmpty
   public Set<CurrencyCode> getSupportedCurrencies( ) {
     // Return all CurrencyCode objects as unmodifiable collection.
     return Collections.unmodifiableSet(supportedCurrencies);
@@ -719,6 +725,7 @@ public class Product implements IProduct {
    * @return {@link Set<ProductCode>} Value to which {@link #productCodes} is set. The method never returns null and the
    * returned collection is unmodifiable.
    */
+  @MyNotEmpty
   public Set<ProductCode> getProductCodes( ) {
     // Return all ProductCode objects as unmodifiable collection.
     return Collections.unmodifiableSet(productCodes);
@@ -771,6 +778,7 @@ public class Product implements IProduct {
    * @return {@link String} Value to which {@link #description} is set.
    */
   @Deprecated
+  @MyNotNull
   public String getDescription( ) {
     return description;
   }
@@ -848,6 +856,7 @@ public class Product implements IProduct {
    *
    * @return {@link String} Value to which {@link #uri} is set.
    */
+  @MyNotNull
   public String getUri( ) {
     return uri;
   }

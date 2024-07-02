@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotNull;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 
 public class TechnicalHeaderContext {
@@ -138,6 +139,7 @@ public class TechnicalHeaderContext {
    *
    * @return {@link String} Value to which {@link #reseller} is set.
    */
+  @MyNotNull
   public String getReseller( ) {
     return reseller;
   }

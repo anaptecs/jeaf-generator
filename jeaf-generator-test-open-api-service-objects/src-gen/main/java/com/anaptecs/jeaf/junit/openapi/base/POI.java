@@ -16,6 +16,8 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.anaptecs.annotations.MyNotEmpty;
+import com.anaptecs.annotations.MyNotNull;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonSetter;
@@ -403,6 +405,7 @@ public class POI extends Stop {
    *
    * @return {@link String} Value to which {@link #description} is set.
    */
+  @MyNotNull
   public String getDescription( ) {
     return description;
   }
@@ -426,6 +429,7 @@ public class POI extends Stop {
    * @return {@link Long} Value to which {@link #theLink} is set.
    */
   @Deprecated
+  @MyNotNull
   public Long getTheLinkID( ) {
     return theLinkID;
   }
@@ -522,6 +526,7 @@ public class POI extends Stop {
    * @return {@link Set<UICStop>} Value to which {@link #stops} is set. The method never returns null and the returned
    * collection is modifiable.
    */
+  @MyNotEmpty
   public Set<UICStop> getStops( ) {
     // Return all UICStop objects directly without any protection against modification.
     return stops;
@@ -583,6 +588,7 @@ public class POI extends Stop {
    * @return {@link Set<BookingCode>} Value to which {@link #bookingCodes} is set. The method never returns null and the
    * returned collection is modifiable.
    */
+  @MyNotEmpty
   public Set<BookingCode> getBookingCodes( ) {
     // Return all BookingCode objects directly without any protection against modification.
     return bookingCodes;

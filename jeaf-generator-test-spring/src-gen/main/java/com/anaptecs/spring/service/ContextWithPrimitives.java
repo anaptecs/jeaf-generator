@@ -7,6 +7,7 @@ package com.anaptecs.spring.service;
 
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotNull;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 
 public class ContextWithPrimitives {
@@ -290,6 +291,7 @@ public class ContextWithPrimitives {
    *
    * @return {@link Boolean} Value to which {@link #aBooleanWrapper} is set.
    */
+  @MyNotNull
   public Boolean getABooleanWrapper( ) {
     return aBooleanWrapper;
   }
@@ -328,6 +330,7 @@ public class ContextWithPrimitives {
    *
    * @return {@link Integer} Value to which {@link #anInteger} is set.
    */
+  @MyNotNull
   public Integer getAnInteger( ) {
     return anInteger;
   }
@@ -366,6 +369,7 @@ public class ContextWithPrimitives {
    *
    * @return {@link Long} Value to which {@link #aVeryLong} is set.
    */
+  @MyNotNull
   public Long getAVeryLong( ) {
     return aVeryLong;
   }

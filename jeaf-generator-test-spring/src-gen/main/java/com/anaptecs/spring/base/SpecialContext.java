@@ -8,6 +8,7 @@ package com.anaptecs.spring.base;
 import java.util.Locale;
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotNull;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 
 public class SpecialContext extends Context {
@@ -273,6 +274,7 @@ public class SpecialContext extends Context {
    *
    * @return {@link String} Value to which {@link #specificHeader} is set.
    */
+  @MyNotNull
   public String getSpecificHeader( ) {
     return specificHeader;
   }
@@ -292,6 +294,7 @@ public class SpecialContext extends Context {
    *
    * @return {@link ChannelType} Value to which {@link #channelType} is set.
    */
+  @MyNotNull
   public ChannelType getChannelType( ) {
     return channelType;
   }

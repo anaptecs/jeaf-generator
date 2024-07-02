@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
+import com.anaptecs.annotations.MyNotNull;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.anaptecs.spring.base.BookingID;
 import com.anaptecs.spring.base.DoubleCode;
@@ -747,6 +748,7 @@ public class DataTypesQueryBean {
    *
    * @return {@link OffsetDateTime} Value to which {@link #offsetDateTime} is set.
    */
+  @MyNotNull
   public OffsetDateTime getOffsetDateTime( ) {
     return offsetDateTime;
   }
@@ -766,6 +768,7 @@ public class DataTypesQueryBean {
    *
    * @return {@link OffsetTime} Value to which {@link #offsetTime} is set.
    */
+  @MyNotNull
   public OffsetTime getOffsetTime( ) {
     return offsetTime;
   }
@@ -791,6 +794,7 @@ public class DataTypesQueryBean {
    *
    * @return {@link LocalDateTime} Value to which {@link #localDateTime} is set.
    */
+  @MyNotNull
   public LocalDateTime getLocalDateTime( ) {
     return localDateTime;
   }
@@ -810,6 +814,7 @@ public class DataTypesQueryBean {
    *
    * @return {@link LocalTime} Value to which {@link #localTime} is set.
    */
+  @MyNotNull
   public LocalTime getLocalTime( ) {
     return localTime;
   }

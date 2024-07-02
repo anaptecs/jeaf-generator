@@ -15,6 +15,7 @@ import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
+import com.anaptecs.annotations.MyNotNull;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -284,6 +285,7 @@ public class Sortiment implements ServiceObject {
    *
    * @return {@link Integer} Value to which {@link #value} is set.
    */
+  @MyNotNull
   public Integer getValue( ) {
     return value;
   }

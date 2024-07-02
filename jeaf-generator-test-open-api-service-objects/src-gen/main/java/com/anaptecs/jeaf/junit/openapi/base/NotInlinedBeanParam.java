@@ -10,6 +10,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.ws.rs.HeaderParam;
 
+import com.anaptecs.annotations.MyNotNull;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -201,6 +202,7 @@ public class NotInlinedBeanParam implements ServiceObject {
    *
    * @return {@link String} Value to which {@link #header} is set.
    */
+  @MyNotNull
   public String getHeader( ) {
     return header;
   }
@@ -220,6 +222,7 @@ public class NotInlinedBeanParam implements ServiceObject {
    *
    * @return {@link DoubleCode} Value to which {@link #doubleCode} is set.
    */
+  @MyNotNull
   public DoubleCode getDoubleCode( ) {
     return doubleCode;
   }
@@ -239,6 +242,7 @@ public class NotInlinedBeanParam implements ServiceObject {
    *
    * @return {@link ExtensibleEnum} Value to which {@link #extensibleEnum} is set.
    */
+  @MyNotNull
   public ExtensibleEnum getExtensibleEnum( ) {
     return extensibleEnum;
   }
@@ -258,6 +262,7 @@ public class NotInlinedBeanParam implements ServiceObject {
    *
    * @return {@link BookingID} Value to which {@link #bookingID} is set.
    */
+  @MyNotNull
   public BookingID getBookingID( ) {
     return bookingID;
   }

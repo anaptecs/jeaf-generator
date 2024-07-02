@@ -14,6 +14,7 @@ import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
+import com.anaptecs.annotations.MyNotNull;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -213,6 +214,7 @@ public class BidirectA implements ServiceObject {
    *
    * @return {@link BidirectA} Value to which {@link #parent} is set.
    */
+  @MyNotNull
   public BidirectA getParent( ) {
     // Due to restrictions in JSON serialization / deserialization bi-directional associations need a special handling
     // after an object was deserialized.
@@ -259,6 +261,7 @@ public class BidirectA implements ServiceObject {
    *
    * @return {@link BidirectA} Value to which {@link #transientChild} is set.
    */
+  @MyNotNull
   public BidirectA getTransientChild( ) {
     return transientChild;
   }

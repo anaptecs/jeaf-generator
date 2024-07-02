@@ -87,6 +87,8 @@ import io.swagger.v3.parser.core.models.SwaggerParseResult;
 public class GeneratorMojo extends AbstractMojo {
   private static final String DEFAULT_CUSTOM_ROOT = "CustomRoot::Root";
 
+  private static final String PROPERTY_PREFIX = "jeaf.generator.";
+
   /**
    * Reference to Maven project. Reference will be injected by Maven and can not be configured via POM.
    */
@@ -322,9 +324,10 @@ public class GeneratorMojo extends AbstractMojo {
    */
   @Parameter(required = false, defaultValue = "false")
   private Boolean generateSecurityAnnotation;
-  
+
   /**
-   * Parameter can be used to define a default security role. If defined this default security role will be used whenever no explicit role is defined for an operation / REST resource.
+   * Parameter can be used to define a default security role. If defined this default security role will be used
+   * whenever no explicit role is defined for an operation / REST resource.
    */
   @Parameter(required = false, defaultValue = "")
   private String defaultSecurityRoleName = "";
@@ -491,6 +494,32 @@ public class GeneratorMojo extends AbstractMojo {
    */
   @Parameter(required = false, defaultValue = "false")
   private Boolean generateEqualsAndHashCodeForOpenAPIDataTypes;
+
+  /**
+   * Switch can be used to enable that <code>NotNull</code> annotation is generated for setter and getter of single
+   * valued properties.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean generateNotNullAnnotationForSingleValuedProperties;
+
+  /**
+   * Parameter defines the name of the <code>NotNull</code> annotation that should be used for single value properties.
+   */
+  @Parameter(required = false)
+  private String notNullAnnotationNameForSingleValuedProperties = "";
+
+  /**
+   * Switch can be used to enable that <code>NotEmpty</code> annotation is generated for setter and getter of multi
+   * valued properties.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean generateNotEmptyAnnotationForMultiValuedProperties;
+
+  /**
+   * Parameter defines the name of the <code>NotEmpty</code> annotation that should be used for multi value properties.
+   */
+  @Parameter(required = false)
+  private String notEmptyAnnotationNameForMultiValuedProperties = "";
 
   /**
    * Switch defines whether POJO's should be serializable or not.
@@ -1450,7 +1479,7 @@ public class GeneratorMojo extends AbstractMojo {
     if (generateRESTResources) {
       lLog.info("Generate REST Resources:                          " + generateRESTResources);
       lLog.info("Generate REST Security Annotation:                " + generateSecurityAnnotation);
-      if(defaultSecurityRoleName.length() > 0) {
+      if (defaultSecurityRoleName.length() > 0) {
         lLog.info("Default Security Role Name:                       " + defaultSecurityRoleName);
       }
       if (useDeprecatedSpringSecuredAnnotation) {
@@ -1504,6 +1533,20 @@ public class GeneratorMojo extends AbstractMojo {
     if (generateEqualsAndHashCodeForOpenAPIDataTypes) {
       lLog.info("Generate equals() and hashCode() for OpenAPI");
       lLog.info("data types:                                       " + generateEqualsAndHashCodeForOpenAPIDataTypes);
+    }
+
+    if (generateNotNullAnnotationForSingleValuedProperties) {
+      lLog.info("Generate NotNull annotation for                   ");
+      lLog.info(
+          "single valued properties:                         " + generateNotNullAnnotationForSingleValuedProperties);
+      lLog.info("NotNull annotation name:                          " + notNullAnnotationNameForSingleValuedProperties);
+    }
+
+    if (generateNotEmptyAnnotationForMultiValuedProperties) {
+      lLog.info("Generate NotNull annotation for                   ");
+      lLog.info(
+          "multi valued properties:                          " + generateNotEmptyAnnotationForMultiValuedProperties);
+      lLog.info("NotEmpty annotation name:                         " + notEmptyAnnotationNameForMultiValuedProperties);
     }
 
     if (generateDomainObjects) {
@@ -1822,7 +1865,7 @@ public class GeneratorMojo extends AbstractMojo {
           useDeprecatedSpringSecuredAnnotation.toString());
       System.setProperty("switch.gen.rest.security.annotation", generateSecurityAnnotation.toString());
       System.setProperty("switch.gen.security.default.security.role", defaultSecurityRoleName);
-      
+
       System.setProperty("switch.gen.rest.validation.request", generateRESTRequestValidation.toString());
       System.setProperty("switch.gen.rest.validation.response", generateRESTResponseValidation.toString());
       System.setProperty("switch.gen.rest.filter.custom.headers", filterCustomHeaders.toString());
@@ -1840,6 +1883,15 @@ public class GeneratorMojo extends AbstractMojo {
           generateEqualsAndHashCodeForCompositeDataTypes.toString());
       System.setProperty("switch.gen.equalsAndHashCode.openapi.datatype",
           generateEqualsAndHashCodeForOpenAPIDataTypes.toString());
+
+      System.setProperty(PROPERTY_PREFIX + "generateNotNullAnnotationForSingleValuedProperties",
+          generateNotNullAnnotationForSingleValuedProperties.toString());
+      System.setProperty(PROPERTY_PREFIX + "notNullAnnotationNameForSingleValuedProperties",
+          notNullAnnotationNameForSingleValuedProperties);
+      System.setProperty(PROPERTY_PREFIX + "generateNotEmptyAnnotationForMultiValuedProperties",
+          generateNotEmptyAnnotationForMultiValuedProperties.toString());
+      System.setProperty(PROPERTY_PREFIX + "notEmptyAnnotationNameForMultiValuedProperties",
+          notEmptyAnnotationNameForMultiValuedProperties.toString());
 
       System.setProperty("switch.gen.immutable.classes", generateImmutableClasses.toString());
       System.setProperty("switch.gen.serializable.pojos", makePOJOsSerializable.toString());

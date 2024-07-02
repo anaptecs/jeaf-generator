@@ -12,6 +12,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.ws.rs.HeaderParam;
 
+import com.anaptecs.annotations.MyNotNull;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 
 @Valid
@@ -275,6 +276,7 @@ public class SpecialContext extends Context {
    *
    * @return {@link String} Value to which {@link #specificHeader} is set.
    */
+  @MyNotNull
   public String getSpecificHeader( ) {
     return specificHeader;
   }
@@ -295,6 +297,7 @@ public class SpecialContext extends Context {
    * @return {@link IntegerCode} Value to which {@link #deprecatedHeader} is set.
    */
   @Deprecated
+  @MyNotNull
   public IntegerCode getDeprecatedHeader( ) {
     return deprecatedHeader;
   }
@@ -315,6 +318,7 @@ public class SpecialContext extends Context {
    *
    * @return {@link DeprecatedType} Value to which {@link #deprecatedType} is set.
    */
+  @MyNotNull
   public DeprecatedType getDeprecatedType( ) {
     return deprecatedType;
   }
