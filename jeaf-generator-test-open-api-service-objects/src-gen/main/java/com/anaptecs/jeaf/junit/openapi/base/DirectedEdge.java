@@ -147,7 +147,7 @@ public class DirectedEdge implements ServiceObject {
      * @param pEnd Value to which {@link #end} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setEnd( Stop pEnd ) {
+    public Builder setEnd( @MyNotNull Stop pEnd ) {
       end = pEnd;
       return this;
     }
@@ -158,7 +158,7 @@ public class DirectedEdge implements ServiceObject {
      * @param pLink Value to which {@link #link} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setLink( String pLink ) {
+    public Builder setLink( @MyNotNull String pLink ) {
       // Assign value to attribute
       link = pLink;
       return this;

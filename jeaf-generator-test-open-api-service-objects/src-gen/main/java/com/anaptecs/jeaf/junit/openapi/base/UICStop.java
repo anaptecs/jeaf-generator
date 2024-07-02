@@ -222,7 +222,7 @@ public class UICStop extends Stop implements IStop {
      * @param pUicCode Value to which {@link #uicCode} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setUicCode( String pUicCode ) {
+    public Builder setUicCode( @MyNotNull String pUicCode ) {
       // Assign value to attribute
       uicCode = pUicCode;
       return this;

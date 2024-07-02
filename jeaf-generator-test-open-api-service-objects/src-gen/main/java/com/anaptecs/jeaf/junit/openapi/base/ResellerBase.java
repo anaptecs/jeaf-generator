@@ -168,7 +168,7 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
      * @param pChannels Collection to which {@link #channels} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setChannels( List<Channel> pChannels ) {
+    public BuilderBase setChannels( @MyNotEmpty List<Channel> pChannels ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pChannels != null) {
         channels = new ArrayList<Channel>(pChannels);
@@ -185,7 +185,7 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
      * @param pChannels Array of objects that should be added to {@link #channels}. The parameter may be null.
      * @return {@link BuilderBase} Instance of this builder to support chaining. Method never returns null.
      */
-    public BuilderBase addToChannels( Channel... pChannels ) {
+    public BuilderBase addToChannels( @MyNotEmpty Channel... pChannels ) {
       if (pChannels != null) {
         if (channels == null) {
           channels = new ArrayList<Channel>();
@@ -203,7 +203,7 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
      * @param pName Value to which {@link #name} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setName( String pName ) {
+    public BuilderBase setName( @MyNotNull String pName ) {
       // Assign value to attribute
       name = pName;
       return this;
@@ -215,7 +215,7 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
      * @param pLanguage Value to which {@link #language} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setLanguage( Locale pLanguage ) {
+    public BuilderBase setLanguage( @MyNotNull Locale pLanguage ) {
       // Assign value to attribute
       language = pLanguage;
       return this;

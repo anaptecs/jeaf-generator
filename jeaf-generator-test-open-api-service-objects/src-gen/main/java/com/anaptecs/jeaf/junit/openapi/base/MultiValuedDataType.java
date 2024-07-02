@@ -261,7 +261,7 @@ public class MultiValuedDataType implements ServiceObject {
      * @param pLiterals Collection to which {@link #literals} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setLiterals( List<BooleanLiteralsEnum> pLiterals ) {
+    public Builder setLiterals( @MyNotEmpty List<BooleanLiteralsEnum> pLiterals ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pLiterals != null) {
         literals = new ArrayList<BooleanLiteralsEnum>(pLiterals);
@@ -278,7 +278,7 @@ public class MultiValuedDataType implements ServiceObject {
      * @param pLiterals Array of objects that should be added to {@link #literals}. The parameter may be null.
      * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
      */
-    public Builder addToLiterals( BooleanLiteralsEnum... pLiterals ) {
+    public Builder addToLiterals( @MyNotEmpty BooleanLiteralsEnum... pLiterals ) {
       if (pLiterals != null) {
         if (literals == null) {
           literals = new ArrayList<BooleanLiteralsEnum>();
@@ -294,7 +294,7 @@ public class MultiValuedDataType implements ServiceObject {
      * @param pLiterals Array with objects to which {@link #literals} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setLiterals( BooleanLiteralsEnum... pLiterals ) {
+    public Builder setLiterals( @MyNotEmpty BooleanLiteralsEnum... pLiterals ) {
       // To ensure immutability we have to copy the content of the passed array.
       if (pLiterals != null) {
         literals = new ArrayList<BooleanLiteralsEnum>(Arrays.asList(pLiterals));
@@ -311,7 +311,7 @@ public class MultiValuedDataType implements ServiceObject {
      * @param pStringProperty Value to which {@link #stringProperty} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setStringProperty( String pStringProperty ) {
+    public Builder setStringProperty( @MyNotNull String pStringProperty ) {
       // Assign value to attribute
       stringProperty = pStringProperty;
       return this;

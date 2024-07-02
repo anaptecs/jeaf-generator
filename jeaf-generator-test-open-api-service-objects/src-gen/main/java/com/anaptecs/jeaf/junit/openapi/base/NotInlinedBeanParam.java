@@ -131,7 +131,7 @@ public class NotInlinedBeanParam implements ServiceObject {
      * @param pHeader Value to which {@link #header} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setHeader( String pHeader ) {
+    public Builder setHeader( @MyNotNull String pHeader ) {
       // Assign value to attribute
       header = pHeader;
       return this;
@@ -143,7 +143,7 @@ public class NotInlinedBeanParam implements ServiceObject {
      * @param pDoubleCode Value to which {@link #doubleCode} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setDoubleCode( DoubleCode pDoubleCode ) {
+    public Builder setDoubleCode( @MyNotNull DoubleCode pDoubleCode ) {
       // Assign value to attribute
       doubleCode = pDoubleCode;
       return this;
@@ -155,7 +155,7 @@ public class NotInlinedBeanParam implements ServiceObject {
      * @param pExtensibleEnum Value to which {@link #extensibleEnum} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setExtensibleEnum( ExtensibleEnum pExtensibleEnum ) {
+    public Builder setExtensibleEnum( @MyNotNull ExtensibleEnum pExtensibleEnum ) {
       // Assign value to attribute
       extensibleEnum = pExtensibleEnum;
       return this;
@@ -167,7 +167,7 @@ public class NotInlinedBeanParam implements ServiceObject {
      * @param pBookingID Value to which {@link #bookingID} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setBookingID( BookingID pBookingID ) {
+    public Builder setBookingID( @MyNotNull BookingID pBookingID ) {
       // Assign value to attribute
       bookingID = pBookingID;
       return this;

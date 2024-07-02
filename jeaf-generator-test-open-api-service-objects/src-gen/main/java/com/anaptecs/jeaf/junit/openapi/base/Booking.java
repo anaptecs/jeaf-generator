@@ -106,7 +106,7 @@ public class Booking implements ServiceObject {
      * @param pBookingID Value to which {@link #bookingID} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setBookingID( BookingID pBookingID ) {
+    public Builder setBookingID( @MyNotNull BookingID pBookingID ) {
       bookingID = pBookingID;
       return this;
     }

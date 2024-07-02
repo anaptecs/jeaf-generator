@@ -285,7 +285,7 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
      * @param pName Value to which {@link #name} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setName( String pName ) {
+    public BuilderBase setName( @MyNotNull String pName ) {
       // Assign value to attribute
       name = pName;
       return this;
@@ -314,7 +314,7 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
      * @param pLink Value to which {@link #link} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setLink( URL pLink ) {
+    public BuilderBase setLink( @MyNotNull URL pLink ) {
       // Assign value to attribute
       link = pLink;
       return this;
@@ -326,7 +326,7 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
      * @param pProductID Value to which {@link #productID} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setProductID( UUID pProductID ) {
+    public BuilderBase setProductID( @MyNotNull UUID pProductID ) {
       // Assign value to attribute
       productID = pProductID;
       return this;
@@ -338,7 +338,7 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
      * @param pSupportedCurrencies Collection to which {@link #supportedCurrencies} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setSupportedCurrencies( Set<CurrencyCode> pSupportedCurrencies ) {
+    public BuilderBase setSupportedCurrencies( @MyNotEmpty Set<CurrencyCode> pSupportedCurrencies ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pSupportedCurrencies != null) {
         supportedCurrencies = new HashSet<CurrencyCode>(pSupportedCurrencies);
@@ -356,7 +356,7 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
      * may be null.
      * @return {@link BuilderBase} Instance of this builder to support chaining. Method never returns null.
      */
-    public BuilderBase addToSupportedCurrencies( CurrencyCode... pSupportedCurrencies ) {
+    public BuilderBase addToSupportedCurrencies( @MyNotEmpty CurrencyCode... pSupportedCurrencies ) {
       if (pSupportedCurrencies != null) {
         if (supportedCurrencies == null) {
           supportedCurrencies = new HashSet<CurrencyCode>();
@@ -372,7 +372,7 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
      * @param pProductCodes Collection to which {@link #productCodes} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setProductCodes( Set<ProductCode> pProductCodes ) {
+    public BuilderBase setProductCodes( @MyNotEmpty Set<ProductCode> pProductCodes ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pProductCodes != null) {
         productCodes = new HashSet<ProductCode>(pProductCodes);
@@ -389,7 +389,7 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
      * @param pProductCodes Array of objects that should be added to {@link #productCodes}. The parameter may be null.
      * @return {@link BuilderBase} Instance of this builder to support chaining. Method never returns null.
      */
-    public BuilderBase addToProductCodes( ProductCode... pProductCodes ) {
+    public BuilderBase addToProductCodes( @MyNotEmpty ProductCode... pProductCodes ) {
       if (pProductCodes != null) {
         if (productCodes == null) {
           productCodes = new HashSet<ProductCode>();
@@ -406,7 +406,7 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
-    public BuilderBase setDescription( String pDescription ) {
+    public BuilderBase setDescription( @MyNotNull String pDescription ) {
       // Assign value to attribute
       description = pDescription;
       return this;
@@ -418,7 +418,7 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
      * @param pUri Value to which {@link #uri} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setUri( String pUri ) {
+    public BuilderBase setUri( @MyNotNull String pUri ) {
       // Assign value to attribute
       uri = pUri;
       return this;

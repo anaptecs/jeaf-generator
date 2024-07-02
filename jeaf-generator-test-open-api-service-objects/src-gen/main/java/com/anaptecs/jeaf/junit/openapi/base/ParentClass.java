@@ -160,7 +160,7 @@ public class ParentClass implements ServiceObject {
      * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setParentAttribute( String pParentAttribute ) {
+    public Builder setParentAttribute( @MyNotNull String pParentAttribute ) {
       // Assign value to attribute
       parentAttribute = pParentAttribute;
       return this;

@@ -170,7 +170,7 @@ public class Sortiment implements ServiceObject {
      * @param pValue Value to which {@link #value} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setValue( Integer pValue ) {
+    public Builder setValue( @MyNotNull Integer pValue ) {
       // Assign value to attribute
       value = pValue;
       return this;

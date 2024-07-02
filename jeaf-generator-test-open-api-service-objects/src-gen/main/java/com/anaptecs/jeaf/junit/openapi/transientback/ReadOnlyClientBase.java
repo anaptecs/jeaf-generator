@@ -76,7 +76,7 @@ public abstract class ReadOnlyClientBase implements ServiceObject {
      * @param pName Value to which {@link #name} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setName( String pName ) {
+    public BuilderBase setName( @MyNotNull String pName ) {
       // Assign value to attribute
       name = pName;
       return this;

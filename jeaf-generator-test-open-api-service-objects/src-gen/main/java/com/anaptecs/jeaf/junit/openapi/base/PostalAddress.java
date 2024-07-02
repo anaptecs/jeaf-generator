@@ -123,7 +123,7 @@ public class PostalAddress implements ServiceObject {
      * @param pStreet Value to which {@link #street} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setStreet( String pStreet ) {
+    public Builder setStreet( @MyNotNull String pStreet ) {
       // Assign value to attribute
       street = pStreet;
       return this;
@@ -135,7 +135,7 @@ public class PostalAddress implements ServiceObject {
      * @param pHouseNumber Value to which {@link #houseNumber} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setHouseNumber( String pHouseNumber ) {
+    public Builder setHouseNumber( @MyNotNull String pHouseNumber ) {
       // Assign value to attribute
       houseNumber = pHouseNumber;
       return this;
@@ -147,7 +147,7 @@ public class PostalAddress implements ServiceObject {
      * @param pCity Value to which {@link #city} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setCity( String pCity ) {
+    public Builder setCity( @MyNotNull String pCity ) {
       // Assign value to attribute
       city = pCity;
       return this;

@@ -193,7 +193,7 @@ public class Campaign implements ServiceObject {
      * @deprecated No good any more (<b>since:</b> 1.2, <b>removed with:</b> 3.0)
      */
     @Deprecated
-    public Builder setMoreLinkIDs( Set<Long> pMoreLinks ) {
+    public Builder setMoreLinkIDs( @MyNotEmpty Set<Long> pMoreLinks ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pMoreLinks != null) {
         moreLinkIDs = new HashSet<Long>(pMoreLinks);

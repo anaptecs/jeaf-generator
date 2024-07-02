@@ -115,7 +115,7 @@ public class DataTypeUsage implements ServiceObject {
      * @param pCode Value to which {@link #code} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setCode( MyDataType pCode ) {
+    public Builder setCode( @MyNotNull MyDataType pCode ) {
       code = pCode;
       return this;
     }

@@ -139,7 +139,7 @@ public class WeirdParent implements ServiceObject {
      * @param pSomeProperty Value to which {@link #someProperty} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setSomeProperty( String pSomeProperty ) {
+    public Builder setSomeProperty( @MyNotNull String pSomeProperty ) {
       // Assign value to attribute
       someProperty = pSomeProperty;
       return this;
@@ -151,7 +151,7 @@ public class WeirdParent implements ServiceObject {
      * @param pComplexBooking Value to which {@link #complexBooking} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setComplexBooking( ComplexBookingID pComplexBooking ) {
+    public Builder setComplexBooking( @MyNotNull ComplexBookingID pComplexBooking ) {
       complexBooking = pComplexBooking;
       return this;
     }
@@ -162,7 +162,7 @@ public class WeirdParent implements ServiceObject {
      * @param pComplexBookings Collection to which {@link #complexBookings} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setComplexBookings( Set<ComplexBookingID> pComplexBookings ) {
+    public Builder setComplexBookings( @MyNotEmpty Set<ComplexBookingID> pComplexBookings ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pComplexBookings != null) {
         complexBookings = new HashSet<ComplexBookingID>(pComplexBookings);
@@ -180,7 +180,7 @@ public class WeirdParent implements ServiceObject {
      * null.
      * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
      */
-    public Builder addToComplexBookings( ComplexBookingID... pComplexBookings ) {
+    public Builder addToComplexBookings( @MyNotEmpty ComplexBookingID... pComplexBookings ) {
       if (pComplexBookings != null) {
         if (complexBookings == null) {
           complexBookings = new HashSet<ComplexBookingID>();

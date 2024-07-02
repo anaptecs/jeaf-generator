@@ -216,7 +216,7 @@ public class SpecialContext extends Context {
      * @param pSpecificHeader Value to which {@link #specificHeader} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setSpecificHeader( String pSpecificHeader ) {
+    public Builder setSpecificHeader( @MyNotNull String pSpecificHeader ) {
       // Assign value to attribute
       specificHeader = pSpecificHeader;
       return this;
@@ -229,7 +229,7 @@ public class SpecialContext extends Context {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
-    public Builder setDeprecatedHeader( IntegerCode pDeprecatedHeader ) {
+    public Builder setDeprecatedHeader( @MyNotNull IntegerCode pDeprecatedHeader ) {
       // Assign value to attribute
       deprecatedHeader = pDeprecatedHeader;
       return this;
@@ -241,7 +241,7 @@ public class SpecialContext extends Context {
      * @param pDeprecatedType Value to which {@link #deprecatedType} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setDeprecatedType( DeprecatedType pDeprecatedType ) {
+    public Builder setDeprecatedType( @MyNotNull DeprecatedType pDeprecatedType ) {
       // Assign value to attribute
       deprecatedType = pDeprecatedType;
       return this;

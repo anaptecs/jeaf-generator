@@ -142,7 +142,7 @@ public class GenericSingleValuedReponse<T> extends AbstractResponse<T> {
      * @param pValue Value to which {@link #value} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder<T> setValue( T pValue ) {
+    public Builder<T> setValue( @MyNotNull T pValue ) {
       // Assign value to attribute
       value = pValue;
       return this;

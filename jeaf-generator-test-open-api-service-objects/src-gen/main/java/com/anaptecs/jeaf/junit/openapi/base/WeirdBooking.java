@@ -253,7 +253,7 @@ public class WeirdBooking extends WeirdParent {
      * @param pBooking Value to which {@link #booking} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setBooking( ComplexBookingID pBooking ) {
+    public Builder setBooking( @MyNotNull ComplexBookingID pBooking ) {
       booking = pBooking;
       return this;
     }
@@ -298,7 +298,7 @@ public class WeirdBooking extends WeirdParent {
      * @param pVersionedObjectSoftLink Value to which {@link #versionedObjectSoftLink} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setVersionedObjectSoftLink( VersionedObjectSoftLink pVersionedObjectSoftLink ) {
+    public Builder setVersionedObjectSoftLink( @MyNotNull VersionedObjectSoftLink pVersionedObjectSoftLink ) {
       versionedObjectSoftLink = pVersionedObjectSoftLink;
       return this;
     }

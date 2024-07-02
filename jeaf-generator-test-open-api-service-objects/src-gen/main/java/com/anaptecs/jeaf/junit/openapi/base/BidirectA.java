@@ -118,7 +118,7 @@ public class BidirectA implements ServiceObject {
      * @param pParent Value to which {@link #parent} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setParent( BidirectA pParent ) {
+    public Builder setParent( @MyNotNull BidirectA pParent ) {
       parent = pParent;
       return this;
     }

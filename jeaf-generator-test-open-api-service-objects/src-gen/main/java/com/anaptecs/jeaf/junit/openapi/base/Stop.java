@@ -159,7 +159,7 @@ public class Stop implements ServiceObject {
      * @param pName Value to which {@link #name} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setName( String pName ) {
+    public Builder setName( @MyNotNull String pName ) {
       // Assign value to attribute
       name = pName;
       return this;
@@ -216,7 +216,7 @@ public class Stop implements ServiceObject {
      * @param pTheSoftLink Value to which {@link #theSoftLink} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setTheSoftLinkID( SoftLink pTheSoftLink ) {
+    public Builder setTheSoftLinkID( @MyNotNull SoftLink pTheSoftLink ) {
       theSoftLinkID = pTheSoftLink;
       return this;
     }

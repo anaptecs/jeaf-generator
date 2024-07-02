@@ -115,7 +115,7 @@ public abstract class ChannelBase implements ServiceObject {
      * @param pChannelType Value to which {@link #channelType} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setChannelType( ChannelType pChannelType ) {
+    public BuilderBase setChannelType( @MyNotNull ChannelType pChannelType ) {
       channelType = pChannelType;
       return this;
     }
@@ -126,7 +126,7 @@ public abstract class ChannelBase implements ServiceObject {
      * @param pChannelCode Value to which {@link #channelCode} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setChannelCode( ChannelCode pChannelCode ) {
+    public BuilderBase setChannelCode( @MyNotNull ChannelCode pChannelCode ) {
       channelCode = pChannelCode;
       return this;
     }

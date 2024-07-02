@@ -108,7 +108,7 @@ public class ParentBeanParamType implements ServiceObject {
      * @param pNovaKey Value to which {@link #novaKey} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setNovaKey( String pNovaKey ) {
+    public Builder setNovaKey( @MyNotNull String pNovaKey ) {
       // Assign value to attribute
       novaKey = pNovaKey;
       return this;
@@ -120,7 +120,7 @@ public class ParentBeanParamType implements ServiceObject {
      * @param pTkID Value to which {@link #tkID} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setTkID( String pTkID ) {
+    public Builder setTkID( @MyNotNull String pTkID ) {
       // Assign value to attribute
       tkID = pTkID;
       return this;

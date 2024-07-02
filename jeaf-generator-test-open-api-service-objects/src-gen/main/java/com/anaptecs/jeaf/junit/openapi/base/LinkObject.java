@@ -94,7 +94,7 @@ public class LinkObject implements ServiceObject {
      * @param pHref Value to which {@link #href} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setHref( String pHref ) {
+    public Builder setHref( @MyNotNull String pHref ) {
       // Assign value to attribute
       href = pHref;
       return this;

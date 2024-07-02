@@ -271,7 +271,7 @@ public class POI extends Stop {
      * @param pDescription Value to which {@link #description} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setDescription( String pDescription ) {
+    public Builder setDescription( @MyNotNull String pDescription ) {
       // Assign value to attribute
       description = pDescription;
       return this;
@@ -284,7 +284,7 @@ public class POI extends Stop {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
-    public Builder setTheLinkID( Long pTheLink ) {
+    public Builder setTheLinkID( @MyNotNull Long pTheLink ) {
       theLinkID = pTheLink;
       return this;
     }
@@ -315,7 +315,7 @@ public class POI extends Stop {
      * @param pStops Collection to which {@link #stops} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setStops( Set<UICStop> pStops ) {
+    public Builder setStops( @MyNotEmpty Set<UICStop> pStops ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pStops != null) {
         stops = new HashSet<UICStop>(pStops);
@@ -334,7 +334,7 @@ public class POI extends Stop {
      * @param pStops Array of objects that should be added to {@link #stops}. The parameter may be null.
      * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
      */
-    public Builder addToStops( UICStop... pStops ) {
+    public Builder addToStops( @MyNotEmpty UICStop... pStops ) {
       if (pStops != null) {
         if (stops == null) {
           stops = new HashSet<UICStop>();
@@ -350,7 +350,7 @@ public class POI extends Stop {
      * @param pBookingCodes Collection to which {@link #bookingCodes} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setBookingCodes( Set<BookingCode> pBookingCodes ) {
+    public Builder setBookingCodes( @MyNotEmpty Set<BookingCode> pBookingCodes ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pBookingCodes != null) {
         bookingCodes = new HashSet<BookingCode>(pBookingCodes);
@@ -367,7 +367,7 @@ public class POI extends Stop {
      * @param pBookingCodes Array of objects that should be added to {@link #bookingCodes}. The parameter may be null.
      * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
      */
-    public Builder addToBookingCodes( BookingCode... pBookingCodes ) {
+    public Builder addToBookingCodes( @MyNotEmpty BookingCode... pBookingCodes ) {
       if (pBookingCodes != null) {
         if (bookingCodes == null) {
           bookingCodes = new HashSet<BookingCode>();

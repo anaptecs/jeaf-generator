@@ -84,7 +84,7 @@ public class DeprecatedType implements ServiceObject {
      * @param pCode Value to which {@link #code} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setCode( Integer pCode ) {
+    public Builder setCode( @MyNotNull Integer pCode ) {
       // Assign value to attribute
       code = pCode;
       return this;

@@ -94,7 +94,7 @@ public class IgnoringClass implements ServiceObject {
      * @param pAge Value to which {@link #age} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setAge( Integer pAge ) {
+    public Builder setAge( @MyNotNull Integer pAge ) {
       // Assign value to attribute
       age = pAge;
       return this;

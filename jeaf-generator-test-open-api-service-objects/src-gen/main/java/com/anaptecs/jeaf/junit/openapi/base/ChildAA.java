@@ -286,7 +286,7 @@ public class ChildAA extends ChildA {
      * @param pRequiredArray Collection to which {@link #requiredArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setRequiredArray( String[] pRequiredArray ) {
+    public Builder setRequiredArray( @MyNotEmpty String[] pRequiredArray ) {
       // Assign value to attribute
       if (pRequiredArray != null) {
         requiredArray = pRequiredArray;
@@ -303,7 +303,7 @@ public class ChildAA extends ChildA {
      * @param pBigIntegerCode Value to which {@link #bigIntegerCode} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setBigIntegerCode( BigIntegerCode pBigIntegerCode ) {
+    public Builder setBigIntegerCode( @MyNotNull BigIntegerCode pBigIntegerCode ) {
       // Assign value to attribute
       bigIntegerCode = pBigIntegerCode;
       return this;
