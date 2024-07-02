@@ -190,7 +190,7 @@ public class ContextWithPrimitives {
      * @param pABooleanWrapper Value to which {@link #aBooleanWrapper} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setABooleanWrapper( Boolean pABooleanWrapper ) {
+    public Builder setABooleanWrapper( @MyNotNull Boolean pABooleanWrapper ) {
       // Assign value to attribute
       aBooleanWrapper = pABooleanWrapper;
       return this;
@@ -214,7 +214,7 @@ public class ContextWithPrimitives {
      * @param pAnInteger Value to which {@link #anInteger} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setAnInteger( Integer pAnInteger ) {
+    public Builder setAnInteger( @MyNotNull Integer pAnInteger ) {
       // Assign value to attribute
       anInteger = pAnInteger;
       return this;
@@ -238,7 +238,7 @@ public class ContextWithPrimitives {
      * @param pAVeryLong Value to which {@link #aVeryLong} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setAVeryLong( Long pAVeryLong ) {
+    public Builder setAVeryLong( @MyNotNull Long pAVeryLong ) {
       // Assign value to attribute
       aVeryLong = pAVeryLong;
       return this;

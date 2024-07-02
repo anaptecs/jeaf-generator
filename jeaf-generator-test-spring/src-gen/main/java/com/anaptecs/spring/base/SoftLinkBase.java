@@ -119,7 +119,7 @@ public abstract class SoftLinkBase {
      * @param pDataUnit Value to which {@link #dataUnit} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setDataUnit( DataUnit pDataUnit ) {
+    public BuilderBase setDataUnit( @MyNotNull DataUnit pDataUnit ) {
       dataUnit = pDataUnit;
       return this;
     }
@@ -130,7 +130,7 @@ public abstract class SoftLinkBase {
      * @param pEntity Value to which {@link #entity} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setEntity( Entity pEntity ) {
+    public BuilderBase setEntity( @MyNotNull Entity pEntity ) {
       entity = pEntity;
       return this;
     }
@@ -141,7 +141,7 @@ public abstract class SoftLinkBase {
      * @param pRefrenceID Value to which {@link #refrenceID} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setRefrenceID( String pRefrenceID ) {
+    public BuilderBase setRefrenceID( @MyNotNull String pRefrenceID ) {
       // Assign value to attribute
       refrenceID = pRefrenceID;
       return this;

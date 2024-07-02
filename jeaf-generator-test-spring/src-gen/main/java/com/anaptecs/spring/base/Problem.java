@@ -183,7 +183,7 @@ public class Problem {
      * @param pTitle Value to which {@link #title} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setTitle( String pTitle ) {
+    public Builder setTitle( @MyNotNull String pTitle ) {
       // Assign value to attribute
       title = pTitle;
       return this;
@@ -207,7 +207,7 @@ public class Problem {
      * @param pType Value to which {@link #type} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setType( String pType ) {
+    public Builder setType( @MyNotNull String pType ) {
       // Assign value to attribute
       type = pType;
       return this;
@@ -219,7 +219,7 @@ public class Problem {
      * @param pDetail Value to which {@link #detail} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setDetail( String pDetail ) {
+    public Builder setDetail( @MyNotNull String pDetail ) {
       // Assign value to attribute
       detail = pDetail;
       return this;
@@ -231,7 +231,7 @@ public class Problem {
      * @param pInstance Value to which {@link #instance} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setInstance( String pInstance ) {
+    public Builder setInstance( @MyNotNull String pInstance ) {
       // Assign value to attribute
       instance = pInstance;
       return this;

@@ -146,7 +146,7 @@ public class BeanParameter {
      * @param pAccessToken Value to which {@link #accessToken} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setAccessToken( String pAccessToken ) {
+    public Builder setAccessToken( @MyNotNull String pAccessToken ) {
       // Assign value to attribute
       accessToken = pAccessToken;
       return this;
@@ -158,7 +158,7 @@ public class BeanParameter {
      * @param pLanguage Value to which {@link #language} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setLanguage( Locale pLanguage ) {
+    public Builder setLanguage( @MyNotNull Locale pLanguage ) {
       // Assign value to attribute
       language = pLanguage;
       return this;
@@ -171,7 +171,7 @@ public class BeanParameter {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
-    public Builder setOldStyle( String pOldStyle ) {
+    public Builder setOldStyle( @MyNotNull String pOldStyle ) {
       // Assign value to attribute
       oldStyle = pOldStyle;
       return this;

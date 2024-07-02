@@ -182,7 +182,7 @@ public class BookingID {
      * @param pPublicBookingID Value to which {@link #publicBookingID} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setPublicBookingID( String pPublicBookingID ) {
+    public Builder setPublicBookingID( @MyNotNull String pPublicBookingID ) {
       // Assign value to attribute
       publicBookingID = pPublicBookingID;
       return this;
@@ -194,7 +194,7 @@ public class BookingID {
      * @param pReferenceID Value to which {@link #referenceID} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setReferenceID( String pReferenceID ) {
+    public Builder setReferenceID( @MyNotNull String pReferenceID ) {
       // Assign value to attribute
       referenceID = pReferenceID;
       return this;
@@ -206,7 +206,7 @@ public class BookingID {
      * @param pExternalRefID Value to which {@link #externalRefID} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setExternalRefID( String pExternalRefID ) {
+    public Builder setExternalRefID( @MyNotNull String pExternalRefID ) {
       // Assign value to attribute
       externalRefID = pExternalRefID;
       return this;
@@ -218,7 +218,7 @@ public class BookingID {
      * @param pInventory Value to which {@link #inventory} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setInventory( InventoryType pInventory ) {
+    public Builder setInventory( @MyNotNull InventoryType pInventory ) {
       inventory = pInventory;
       return this;
     }
@@ -229,7 +229,7 @@ public class BookingID {
      * @param pBookingCode Value to which {@link #bookingCode} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setBookingCode( BookingCode pBookingCode ) {
+    public Builder setBookingCode( @MyNotNull BookingCode pBookingCode ) {
       bookingCode = pBookingCode;
       return this;
     }

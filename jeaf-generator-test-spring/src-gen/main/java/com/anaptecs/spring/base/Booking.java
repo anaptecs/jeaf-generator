@@ -156,7 +156,7 @@ public class Booking {
      * @param pBookingID Value to which {@link #bookingID} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setBookingID( BookingID pBookingID ) {
+    public Builder setBookingID( @MyNotNull BookingID pBookingID ) {
       bookingID = pBookingID;
       return this;
     }
@@ -167,7 +167,7 @@ public class Booking {
      * @param pCustomerName Value to which {@link #customerName} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setCustomerName( String pCustomerName ) {
+    public Builder setCustomerName( @MyNotNull String pCustomerName ) {
       // Assign value to attribute
       customerName = pCustomerName;
       return this;

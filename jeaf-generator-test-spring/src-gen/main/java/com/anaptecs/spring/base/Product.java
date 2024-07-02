@@ -352,7 +352,7 @@ public class Product implements IProduct {
      * @param pName Value to which {@link #name} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setName( String pName ) {
+    public Builder setName( @MyNotNull String pName ) {
       // Assign value to attribute
       name = pName;
       return this;
@@ -382,7 +382,7 @@ public class Product implements IProduct {
      * @param pLink Value to which {@link #link} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setLink( URL pLink ) {
+    public Builder setLink( @MyNotNull URL pLink ) {
       // Assign value to attribute
       link = pLink;
       return this;
@@ -394,7 +394,7 @@ public class Product implements IProduct {
      * @param pProductID Value to which {@link #productID} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setProductID( UUID pProductID ) {
+    public Builder setProductID( @MyNotNull UUID pProductID ) {
       // Assign value to attribute
       productID = pProductID;
       return this;
@@ -406,7 +406,7 @@ public class Product implements IProduct {
      * @param pSupportedCurrencies Collection to which {@link #supportedCurrencies} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setSupportedCurrencies( Set<CurrencyCode> pSupportedCurrencies ) {
+    public Builder setSupportedCurrencies( @MyNotEmpty Set<CurrencyCode> pSupportedCurrencies ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pSupportedCurrencies != null) {
         supportedCurrencies = new HashSet<CurrencyCode>(pSupportedCurrencies);
@@ -424,7 +424,7 @@ public class Product implements IProduct {
      * may be null.
      * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
      */
-    public Builder addToSupportedCurrencies( CurrencyCode... pSupportedCurrencies ) {
+    public Builder addToSupportedCurrencies( @MyNotEmpty CurrencyCode... pSupportedCurrencies ) {
       if (pSupportedCurrencies != null) {
         if (supportedCurrencies == null) {
           supportedCurrencies = new HashSet<CurrencyCode>();
@@ -440,7 +440,7 @@ public class Product implements IProduct {
      * @param pProductCodes Collection to which {@link #productCodes} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setProductCodes( Set<ProductCode> pProductCodes ) {
+    public Builder setProductCodes( @MyNotEmpty Set<ProductCode> pProductCodes ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pProductCodes != null) {
         productCodes = new HashSet<ProductCode>(pProductCodes);
@@ -457,7 +457,7 @@ public class Product implements IProduct {
      * @param pProductCodes Array of objects that should be added to {@link #productCodes}. The parameter may be null.
      * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
      */
-    public Builder addToProductCodes( ProductCode... pProductCodes ) {
+    public Builder addToProductCodes( @MyNotEmpty ProductCode... pProductCodes ) {
       if (pProductCodes != null) {
         if (productCodes == null) {
           productCodes = new HashSet<ProductCode>();
@@ -474,7 +474,7 @@ public class Product implements IProduct {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
-    public Builder setDescription( String pDescription ) {
+    public Builder setDescription( @MyNotNull String pDescription ) {
       // Assign value to attribute
       description = pDescription;
       return this;
@@ -486,7 +486,7 @@ public class Product implements IProduct {
      * @param pUri Value to which {@link #uri} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setUri( String pUri ) {
+    public Builder setUri( @MyNotNull String pUri ) {
       // Assign value to attribute
       uri = pUri;
       return this;

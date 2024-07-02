@@ -126,7 +126,7 @@ public class Sale {
      * @param pTransactionAmount Value to which {@link #transactionAmount} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setTransactionAmount( BigDecimal pTransactionAmount ) {
+    public Builder setTransactionAmount( @MyNotNull BigDecimal pTransactionAmount ) {
       // Assign value to attribute
       transactionAmount = pTransactionAmount;
       return this;

@@ -249,7 +249,7 @@ public class ChildBB extends ChildB {
      * @param pChildBBAttribute Value to which {@link #childBBAttribute} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setChildBBAttribute( Long pChildBBAttribute ) {
+    public Builder setChildBBAttribute( @MyNotNull Long pChildBBAttribute ) {
       // Assign value to attribute
       childBBAttribute = pChildBBAttribute;
       return this;

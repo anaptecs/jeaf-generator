@@ -402,7 +402,7 @@ public class DataTypesQueryBean {
      * @param pOffsetDateTime Value to which {@link #offsetDateTime} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setOffsetDateTime( OffsetDateTime pOffsetDateTime ) {
+    public Builder setOffsetDateTime( @MyNotNull OffsetDateTime pOffsetDateTime ) {
       // Assign value to attribute
       offsetDateTime = pOffsetDateTime;
       return this;
@@ -414,7 +414,7 @@ public class DataTypesQueryBean {
      * @param pOffsetTime Value to which {@link #offsetTime} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setOffsetTime( OffsetTime pOffsetTime ) {
+    public Builder setOffsetTime( @MyNotNull OffsetTime pOffsetTime ) {
       offsetTime = pOffsetTime;
       return this;
     }
@@ -425,7 +425,7 @@ public class DataTypesQueryBean {
      * @param pLocalDateTime Value to which {@link #localDateTime} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setLocalDateTime( LocalDateTime pLocalDateTime ) {
+    public Builder setLocalDateTime( @MyNotNull LocalDateTime pLocalDateTime ) {
       // Assign value to attribute
       localDateTime = pLocalDateTime;
       return this;
@@ -437,7 +437,7 @@ public class DataTypesQueryBean {
      * @param pLocalTime Value to which {@link #localTime} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setLocalTime( LocalTime pLocalTime ) {
+    public Builder setLocalTime( @MyNotNull LocalTime pLocalTime ) {
       // Assign value to attribute
       localTime = pLocalTime;
       return this;

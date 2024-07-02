@@ -204,7 +204,7 @@ public class DateObject {
      * @param pLocalTime Value to which {@link #localTime} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setLocalTime( LocalTime pLocalTime ) {
+    public Builder setLocalTime( @MyNotNull LocalTime pLocalTime ) {
       // Assign value to attribute
       localTime = pLocalTime;
       return this;
@@ -216,7 +216,7 @@ public class DateObject {
      * @param pLocalDate Value to which {@link #localDate} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setLocalDate( LocalDate pLocalDate ) {
+    public Builder setLocalDate( @MyNotNull LocalDate pLocalDate ) {
       // Assign value to attribute
       localDate = pLocalDate;
       return this;
@@ -228,7 +228,7 @@ public class DateObject {
      * @param pLocalDateTime Value to which {@link #localDateTime} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setLocalDateTime( LocalDateTime pLocalDateTime ) {
+    public Builder setLocalDateTime( @MyNotNull LocalDateTime pLocalDateTime ) {
       // Assign value to attribute
       localDateTime = pLocalDateTime;
       return this;
@@ -240,7 +240,7 @@ public class DateObject {
      * @param pCalendar Value to which {@link #calendar} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setCalendar( Calendar pCalendar ) {
+    public Builder setCalendar( @MyNotNull Calendar pCalendar ) {
       // Assign value to attribute
       calendar = pCalendar;
       return this;
@@ -252,7 +252,7 @@ public class DateObject {
      * @param pSqlDate Value to which {@link #sqlDate} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setSqlDate( Date pSqlDate ) {
+    public Builder setSqlDate( @MyNotNull Date pSqlDate ) {
       // Assign value to attribute
       sqlDate = pSqlDate;
       return this;
@@ -264,7 +264,7 @@ public class DateObject {
      * @param pUtilDate Value to which {@link #utilDate} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setUtilDate( java.util.Date pUtilDate ) {
+    public Builder setUtilDate( @MyNotNull java.util.Date pUtilDate ) {
       // Assign value to attribute
       utilDate = pUtilDate;
       return this;

@@ -189,7 +189,7 @@ public class Channel {
      * @param pChannelType Value to which {@link #channelType} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setChannelType( ChannelType pChannelType ) {
+    public Builder setChannelType( @MyNotNull ChannelType pChannelType ) {
       channelType = pChannelType;
       return this;
     }
@@ -200,7 +200,7 @@ public class Channel {
      * @param pChannelCode Value to which {@link #channelCode} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setChannelCode( ChannelCode pChannelCode ) {
+    public Builder setChannelCode( @MyNotNull ChannelCode pChannelCode ) {
       channelCode = pChannelCode;
       return this;
     }

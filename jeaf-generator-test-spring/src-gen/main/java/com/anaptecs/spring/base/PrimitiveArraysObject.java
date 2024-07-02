@@ -755,7 +755,7 @@ public class PrimitiveArraysObject {
      * @param pCStringArray Collection to which {@link #cStringArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setCStringArray( String[] pCStringArray ) {
+    public Builder setCStringArray( @MyNotEmpty String[] pCStringArray ) {
       // Assign value to attribute
       if (pCStringArray != null) {
         cStringArray = new String[pCStringArray.length];

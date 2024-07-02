@@ -140,7 +140,7 @@ public class WeirdBooking {
      * @param pBooking Value to which {@link #booking} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setBooking( ComplexBookingID pBooking ) {
+    public Builder setBooking( @MyNotNull ComplexBookingID pBooking ) {
       booking = pBooking;
       return this;
     }

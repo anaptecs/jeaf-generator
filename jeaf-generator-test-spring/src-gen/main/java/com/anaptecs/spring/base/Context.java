@@ -230,7 +230,7 @@ public class Context {
      * @param pAccessToken Value to which {@link #accessToken} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setAccessToken( String pAccessToken ) {
+    public Builder setAccessToken( @MyNotNull String pAccessToken ) {
       // Assign value to attribute
       accessToken = pAccessToken;
       return this;
@@ -242,7 +242,7 @@ public class Context {
      * @param pLanguage Value to which {@link #language} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setLanguage( Locale pLanguage ) {
+    public Builder setLanguage( @MyNotNull Locale pLanguage ) {
       // Assign value to attribute
       language = pLanguage;
       return this;
@@ -278,7 +278,7 @@ public class Context {
      * @param pQueryParam Value to which {@link #queryParam} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setQueryParam( String pQueryParam ) {
+    public Builder setQueryParam( @MyNotNull String pQueryParam ) {
       // Assign value to attribute
       queryParam = pQueryParam;
       return this;
@@ -290,7 +290,7 @@ public class Context {
      * @param pLang Value to which {@link #lang} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setLang( String pLang ) {
+    public Builder setLang( @MyNotNull String pLang ) {
       // Assign value to attribute
       lang = pLang;
       return this;
@@ -302,7 +302,7 @@ public class Context {
      * @param pIntCode Value to which {@link #intCode} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setIntCode( IntegerCodeType pIntCode ) {
+    public Builder setIntCode( @MyNotNull IntegerCodeType pIntCode ) {
       // Assign value to attribute
       intCode = pIntCode;
       return this;

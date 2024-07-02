@@ -114,7 +114,7 @@ public class DoubleCode {
      * @param pCode Value to which {@link #code} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setCode( Double pCode ) {
+    public Builder setCode( @MyNotNull Double pCode ) {
       // Assign value to attribute
       code = pCode;
       return this;

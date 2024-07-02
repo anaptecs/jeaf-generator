@@ -73,7 +73,7 @@ public abstract class DataTypeCustomSerializationBase {
      * @param pProperty1 Value to which {@link #property1} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setProperty1( String pProperty1 ) {
+    public BuilderBase setProperty1( @MyNotNull String pProperty1 ) {
       // Assign value to attribute
       property1 = pProperty1;
       return this;

@@ -120,7 +120,7 @@ public class CharacterCode {
      * @param pCode Value to which {@link #code} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setCode( Character pCode ) {
+    public Builder setCode( @MyNotNull Character pCode ) {
       // Assign value to attribute
       code = pCode;
       return this;

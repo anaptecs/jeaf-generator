@@ -114,7 +114,7 @@ public class TechParent {
      * @param pTechAttribute Value to which {@link #techAttribute} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setTechAttribute( String pTechAttribute ) {
+    public Builder setTechAttribute( @MyNotNull String pTechAttribute ) {
       // Assign value to attribute
       techAttribute = pTechAttribute;
       return this;

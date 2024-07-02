@@ -152,7 +152,7 @@ public class Leg {
      * @param pStart Value to which {@link #start} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setStart( PlaceRef pStart ) {
+    public Builder setStart( @MyNotNull PlaceRef pStart ) {
       start = pStart;
       return this;
     }
@@ -163,7 +163,7 @@ public class Leg {
      * @param pStop Value to which {@link #stop} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setStop( PlaceRef pStop ) {
+    public Builder setStop( @MyNotNull PlaceRef pStop ) {
       stop = pStop;
       return this;
     }

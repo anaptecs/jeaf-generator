@@ -114,7 +114,7 @@ public class AnotherDataType {
      * @param pData Value to which {@link #data} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setData( String pData ) {
+    public Builder setData( @MyNotNull String pData ) {
       // Assign value to attribute
       data = pData;
       return this;

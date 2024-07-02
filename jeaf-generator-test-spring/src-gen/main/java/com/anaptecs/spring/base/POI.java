@@ -159,7 +159,7 @@ public class POI extends Stop {
      * @param pDescription Value to which {@link #description} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setDescription( String pDescription ) {
+    public Builder setDescription( @MyNotNull String pDescription ) {
       // Assign value to attribute
       description = pDescription;
       return this;

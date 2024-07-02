@@ -130,7 +130,7 @@ public class QueryBeanParam {
      * @param pBookingCode Value to which {@link #bookingCode} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setBookingCode( BookingCode pBookingCode ) {
+    public Builder setBookingCode( @MyNotNull BookingCode pBookingCode ) {
       // Assign value to attribute
       bookingCode = pBookingCode;
       return this;

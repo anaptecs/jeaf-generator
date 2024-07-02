@@ -127,7 +127,7 @@ public class SimpleBackwardCompatibility {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
-    public Builder setDeprecatedProperty( String pDeprecatedProperty ) {
+    public Builder setDeprecatedProperty( @MyNotNull String pDeprecatedProperty ) {
       // Delegate call to setSuccessorProperty(...)
       this.setSuccessorProperty(pDeprecatedProperty);
       return this;
@@ -139,7 +139,7 @@ public class SimpleBackwardCompatibility {
      * @param pSuccessorProperty Value to which {@link #successorProperty} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setSuccessorProperty( String pSuccessorProperty ) {
+    public Builder setSuccessorProperty( @MyNotNull String pSuccessorProperty ) {
       // Assign value to attribute
       successorProperty = pSuccessorProperty;
       return this;

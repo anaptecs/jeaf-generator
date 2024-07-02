@@ -222,7 +222,7 @@ public class ChildAA extends ChildA {
      * @param pRequiredArray Collection to which {@link #requiredArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setRequiredArray( String[] pRequiredArray ) {
+    public Builder setRequiredArray( @MyNotEmpty String[] pRequiredArray ) {
       // Assign value to attribute
       if (pRequiredArray != null) {
         requiredArray = new String[pRequiredArray.length];

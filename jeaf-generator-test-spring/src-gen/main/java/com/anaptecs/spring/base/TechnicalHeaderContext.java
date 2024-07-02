@@ -115,7 +115,7 @@ public class TechnicalHeaderContext {
      * @param pReseller Value to which {@link #reseller} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setReseller( String pReseller ) {
+    public Builder setReseller( @MyNotNull String pReseller ) {
       // Assign value to attribute
       reseller = pReseller;
       return this;

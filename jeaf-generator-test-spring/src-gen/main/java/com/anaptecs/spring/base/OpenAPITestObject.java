@@ -242,7 +242,7 @@ public class OpenAPITestObject {
      * @param pReadOnlyAttribute Value to which {@link #readOnlyAttribute} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setReadOnlyAttribute( String pReadOnlyAttribute ) {
+    public Builder setReadOnlyAttribute( @MyNotNull String pReadOnlyAttribute ) {
       // Assign value to attribute
       readOnlyAttribute = pReadOnlyAttribute;
       return this;
@@ -254,7 +254,7 @@ public class OpenAPITestObject {
      * @param pReadWriteAttribute Value to which {@link #readWriteAttribute} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setReadWriteAttribute( String pReadWriteAttribute ) {
+    public Builder setReadWriteAttribute( @MyNotNull String pReadWriteAttribute ) {
       // Assign value to attribute
       readWriteAttribute = pReadWriteAttribute;
       return this;
@@ -278,7 +278,7 @@ public class OpenAPITestObject {
      * @param pNullableAttribute Value to which {@link #nullableAttribute} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setNullableAttribute( Boolean pNullableAttribute ) {
+    public Builder setNullableAttribute( @MyNotNull Boolean pNullableAttribute ) {
       // Assign value to attribute
       nullableAttribute = pNullableAttribute;
       return this;
@@ -302,7 +302,7 @@ public class OpenAPITestObject {
      * @param pReadOnlyArray Value to which {@link #readOnlyArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setReadOnlyArray( String pReadOnlyArray ) {
+    public Builder setReadOnlyArray( @MyNotNull String pReadOnlyArray ) {
       // Assign value to attribute
       readOnlyArray = pReadOnlyArray;
       return this;
@@ -314,7 +314,7 @@ public class OpenAPITestObject {
      * @param pReadWriteArray Value to which {@link #readWriteArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setReadWriteArray( String pReadWriteArray ) {
+    public Builder setReadWriteArray( @MyNotNull String pReadWriteArray ) {
       // Assign value to attribute
       readWriteArray = pReadWriteArray;
       return this;

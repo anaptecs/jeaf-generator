@@ -115,7 +115,7 @@ public abstract class PersonBase extends Partner {
      * @param pSurname Value to which {@link #surname} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setSurname( String pSurname ) {
+    public BuilderBase setSurname( @MyNotNull String pSurname ) {
       // Assign value to attribute
       surname = pSurname;
       return this;
@@ -127,7 +127,7 @@ public abstract class PersonBase extends Partner {
      * @param pFirstName Value to which {@link #firstName} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setFirstName( String pFirstName ) {
+    public BuilderBase setFirstName( @MyNotNull String pFirstName ) {
       // Assign value to attribute
       firstName = pFirstName;
       return this;

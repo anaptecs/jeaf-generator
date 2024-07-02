@@ -174,7 +174,7 @@ public abstract class MasterDataObjectBase {
      * @param pEntity Value to which {@link #entity} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setEntity( Entity pEntity ) {
+    public BuilderBase setEntity( @MyNotNull Entity pEntity ) {
       entity = pEntity;
       return this;
     }
@@ -185,7 +185,7 @@ public abstract class MasterDataObjectBase {
      * @param pObjectID Value to which {@link #objectID} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setObjectID( String pObjectID ) {
+    public BuilderBase setObjectID( @MyNotNull String pObjectID ) {
       // Assign value to attribute
       objectID = pObjectID;
       return this;
@@ -197,7 +197,7 @@ public abstract class MasterDataObjectBase {
      * @param pInternalProperty Value to which {@link #internalProperty} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setInternalProperty( String pInternalProperty ) {
+    public BuilderBase setInternalProperty( @MyNotNull String pInternalProperty ) {
       // Assign value to attribute
       internalProperty = pInternalProperty;
       return this;

@@ -146,7 +146,7 @@ public class EnumTest {
      * @param pProperty Value to which {@link #property} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setProperty( ExtensibleEnum pProperty ) {
+    public Builder setProperty( @MyNotNull ExtensibleEnum pProperty ) {
       // Assign value to attribute
       property = pProperty;
       return this;
@@ -158,7 +158,7 @@ public class EnumTest {
      * @param pEnumRef Value to which {@link #enumRef} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setEnumRef( ExtensibleEnum pEnumRef ) {
+    public Builder setEnumRef( @MyNotNull ExtensibleEnum pEnumRef ) {
       enumRef = pEnumRef;
       return this;
     }

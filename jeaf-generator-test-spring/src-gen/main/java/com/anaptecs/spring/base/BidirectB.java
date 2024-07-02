@@ -133,7 +133,7 @@ public class BidirectB {
      * @param pA Value to which {@link #a} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setA( BidirectA pA ) {
+    public Builder setA( @MyNotNull BidirectA pA ) {
       a = pA;
       return this;
     }

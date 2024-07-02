@@ -176,7 +176,7 @@ public class NoSubTypesChild extends NoSubTypesParent {
      * @param pMyProperty Value to which {@link #myProperty} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setMyProperty( String pMyProperty ) {
+    public Builder setMyProperty( @MyNotNull String pMyProperty ) {
       // Assign value to attribute
       myProperty = pMyProperty;
       return this;

@@ -161,7 +161,7 @@ public class Duration {
      * @param pTimeUnit Value to which {@link #timeUnit} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setTimeUnit( TimeUnit pTimeUnit ) {
+    public Builder setTimeUnit( @MyNotNull TimeUnit pTimeUnit ) {
       // Assign value to attribute
       timeUnit = pTimeUnit;
       return this;
