@@ -11,6 +11,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSetter;
@@ -33,6 +34,7 @@ public class Stop {
    */
   public static final String LINKS = "links";
 
+  @JsonAlias({ "bavName", "stopName" })
   private String name;
 
   @JsonProperty("_links")

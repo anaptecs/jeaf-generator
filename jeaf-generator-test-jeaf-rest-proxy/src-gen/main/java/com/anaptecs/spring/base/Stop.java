@@ -16,6 +16,7 @@ import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSetter;
@@ -43,6 +44,7 @@ public class Stop implements Serializable {
    */
   public static final String LINKS = "links";
 
+  @JsonAlias({ "bavName", "stopName" })
   private String name;
 
   @JsonProperty("_links")
