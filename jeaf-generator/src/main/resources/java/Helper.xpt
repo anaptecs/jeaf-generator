@@ -510,7 +510,21 @@
 «ENDDEFINE»
 
 «DEFINE NotNullAnnotationForProperty FOR uml::Property -»
-    «IF lower > 0  -»
+    «IF lower > 0 -»
+        «IF isMultivalued() -»
+            «IF generateNotEmptyAnnotationForMultiValuedProperties() -»
+                @«notEmptyAnnotationNameForMultiValuedProperties()»
+            «ENDIF -»
+        «ELSE -»
+            «IF generateNotNullAnnotationForSingleValuedProperties() && type.isPrimitiveType() == false -»
+                @«notNullAnnotationNameForSingleValuedProperties()»
+            «ENDIF -»
+        «ENDIF -»
+    «ENDIF -»
+«ENDDEFINE»
+
+«DEFINE NotNullAnnotationForParameter FOR uml::Parameter -»
+    «IF lower > 0 -»
         «IF isMultivalued() -»
             «IF generateNotEmptyAnnotationForMultiValuedProperties() -»
                 @«notEmptyAnnotationNameForMultiValuedProperties()»

@@ -413,6 +413,7 @@ public abstract class ResellerBase {
   /**
    * @return {@link Integer}
    */
+  @MyNotNull
   public abstract Integer doSomething( );
 
   /**

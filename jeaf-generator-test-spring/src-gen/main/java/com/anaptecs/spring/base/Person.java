@@ -7,6 +7,8 @@ package com.anaptecs.spring.base;
 
 import javax.validation.Valid;
 
+import com.anaptecs.annotations.MyNotNull;
+
 @Valid
 public class Person extends PersonBase {
   /**
@@ -74,6 +76,7 @@ public class Person extends PersonBase {
   /**
    * @return {@link String}
    */
+  @MyNotNull
   @Override
   public String getDisplayName( ) {
     // TODO: Implement business logic for method.

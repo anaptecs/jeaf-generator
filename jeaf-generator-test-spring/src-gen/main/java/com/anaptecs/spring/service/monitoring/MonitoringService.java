@@ -5,6 +5,8 @@
  */
 package com.anaptecs.spring.service.monitoring;
 
+import com.anaptecs.annotations.MyNotNull;
+
 public interface MonitoringService {
   /**
    * <p/>
@@ -12,5 +14,6 @@ public interface MonitoringService {
    *
    * @return {@link String}
    */
+  @MyNotNull
   String getVersionInfo( );
 }

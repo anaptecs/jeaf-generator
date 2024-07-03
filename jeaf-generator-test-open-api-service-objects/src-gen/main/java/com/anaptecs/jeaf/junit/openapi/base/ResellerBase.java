@@ -489,6 +489,7 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
   /**
    * @return {@link Integer}
    */
+  @MyNotNull
   public abstract Integer doSomething( );
 
   /**
