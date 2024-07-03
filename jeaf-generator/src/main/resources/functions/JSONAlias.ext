@@ -1,0 +1,11 @@
+extension java::GeneratorCommons;
+extension functions::Class;
+
+cached boolean isJSONAlias(uml::Element element) :
+  element.isStereotypeApplied("JSONAlias");
+  
+cached JMM::JSONAlias asJSONAlias(uml::Element element):
+    (JMM::JSONAlias) element;
+    
+cached boolean hasAddToJSONProperty(uml::Class class):
+    !class.getAllPropertiesFromHierarchy().select(e|e.isJSONAlias()).isEmpty;
