@@ -18,7 +18,7 @@
  * Class implements builder to create a new instance of class <code>«this.name»</code>.
  */
 «EXPAND java::Helper::GenerateDeprecationAnnotation-»
-public static «IF isAbstract == true» abstract «ENDIF»class Builder«this.getTemplateParams()» «IF superClass.isEmpty == false»extends «superClass.get(0).name».Builder«superClass.get(0).getTemplateParams()»«ENDIF» {
+public static «IF isAbstract == true» abstract «ENDIF»class Builder«this.getTemplateParams()» «IF superClass.isEmpty == false»extends «superClass.get(0).fqn()».Builder«superClass.get(0).getTemplateParams()»«ENDIF» {
 	«REM»Generate instance variables for each property«ENDREM»
 	«IF needsToImplementIdentifiable() == true»
 	/**
@@ -183,7 +183,7 @@ public static «IF isAbstract == true» abstract «ENDIF»class Builder«this.ge
 /**
  * Class implements builder to create a new instance of class «this.name». As the class has read only attributes or associations instances can not be created directly. Instead this builder class has to be used.
  */
-public static abstract class BuilderBase«this.getTemplateParams()» «IF superClass.isEmpty == false»extends «superClass.get(0).name».Builder«superClass.get(0).getTemplateParams()»«ENDIF» {
+public static abstract class BuilderBase«this.getTemplateParams()» «IF superClass.isEmpty == false»extends «superClass.get(0).fqn()».Builder«superClass.get(0).getTemplateParams()»«ENDIF» {
 	«REM»Generate instance variables for each property«ENDREM»
 	«IF needsToImplementIdentifiable() == true»
 	/**
@@ -607,7 +607,7 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
 	 * Class implements builder to create a new instance of class «this.name». As the class has readonly attributes
 	 * or associations instances can not be created directly. Instead this builder class has to be used.
 	 */
-	public static «IF isAbstract == true» abstract «ENDIF»class Builder«this.getTemplateParams()» extends «this.name».BuilderBase«this.getTemplateParams()» {
+	public static «IF isAbstract == true» abstract «ENDIF»class Builder«this.getTemplateParams()» extends «this.fqn()».BuilderBase«this.getTemplateParams()» {
 	  /**
 	   * Use {@link «name»#builder()} instead of protected constructor to create new builder.
 	   */
