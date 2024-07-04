@@ -388,7 +388,7 @@ public abstract class MasterDataObjectBase implements Serializable {
   public abstract List<DataUnit> getDerivedDataUnits( );
 
   @JsonSetter
-  public void setDerivedDataUnits( List<DataUnit> pDerivedDataUnits ) {
+  private void setDerivedDataUnits( List<DataUnit> pDerivedDataUnits ) {
     // Actively ignore passed objects as this is just a derived property. Unfortunately there is no more elegant variant
     // to not run into problems during deserialization.
   }
@@ -400,12 +400,6 @@ public abstract class MasterDataObjectBase implements Serializable {
    */
   @JsonGetter
   public abstract Entity getDerivedEntity( );
-
-  @JsonSetter
-  public void setDerivedEntity( Entity pDerivedEntity ) {
-    // Actively ignore passed objects as this is just a derived property. Unfortunately there is no more elegant variant
-    // to not run into problems during deserialization.
-  }
 
   /**
    * Method returns attribute {@link #derivedArray}.<br/>

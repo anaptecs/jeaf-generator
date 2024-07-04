@@ -16,9 +16,9 @@
 ## Role `«securityRole.name»`
 «FOREACH securityRole.getAuthorizedServices().sortBy(e|e.name) AS service-»
 ### Service `«service.name»`
-«FOREACH securityRole.getAuthorizedOperations(service) AS operation»
 | Operation        | REST Resource Path |
-|------------------|---------------|
+|------------------|--------------------|
+«FOREACH securityRole.getAuthorizedOperations(service) AS operation -»
 | `«operation.name»(«FOREACH operation.ownedParameter.select(e|e.isInputParameter()) AS param SEPARATOR ", "»«param.type.name»«ENDFOREACH»)` | «IF operation.isRESTOperation()»`«operation.asRESTOperation().getFullPath()»`«ENDIF» |
 «ENDFOREACH»
 «ENDFOREACH-»
