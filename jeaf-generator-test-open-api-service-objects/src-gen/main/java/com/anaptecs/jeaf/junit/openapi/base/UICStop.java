@@ -17,6 +17,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
 
+import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 
 /**
@@ -221,7 +222,7 @@ public class UICStop extends Stop implements IStop {
      * @param pUicCode Value to which {@link #uicCode} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setUicCode( String pUicCode ) {
+    public Builder setUicCode( @MyNotNullProperty String pUicCode ) {
       // Assign value to attribute
       uicCode = pUicCode;
       return this;
@@ -291,6 +292,7 @@ public class UICStop extends Stop implements IStop {
    *
    * @return {@link String} Value to which {@link #uicCode} is set.
    */
+  @MyNotNullProperty
   public String getUicCode( ) {
     return uicCode;
   }
@@ -300,7 +302,7 @@ public class UICStop extends Stop implements IStop {
    *
    * @param pUicCode Value to which {@link #uicCode} should be set.
    */
-  public void setUicCode( String pUicCode ) {
+  public void setUicCode( @MyNotNullProperty String pUicCode ) {
     // Assign value to attribute
     uicCode = pUicCode;
   }

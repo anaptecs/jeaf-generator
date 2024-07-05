@@ -7,6 +7,7 @@ package com.anaptecs.spring.service;
 
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 
 public class ContextWithPrimitives {
@@ -189,7 +190,7 @@ public class ContextWithPrimitives {
      * @param pABooleanWrapper Value to which {@link #aBooleanWrapper} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setABooleanWrapper( Boolean pABooleanWrapper ) {
+    public Builder setABooleanWrapper( @MyNotNullProperty Boolean pABooleanWrapper ) {
       // Assign value to attribute
       aBooleanWrapper = pABooleanWrapper;
       return this;
@@ -213,7 +214,7 @@ public class ContextWithPrimitives {
      * @param pAnInteger Value to which {@link #anInteger} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setAnInteger( Integer pAnInteger ) {
+    public Builder setAnInteger( @MyNotNullProperty Integer pAnInteger ) {
       // Assign value to attribute
       anInteger = pAnInteger;
       return this;
@@ -237,7 +238,7 @@ public class ContextWithPrimitives {
      * @param pAVeryLong Value to which {@link #aVeryLong} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setAVeryLong( Long pAVeryLong ) {
+    public Builder setAVeryLong( @MyNotNullProperty Long pAVeryLong ) {
       // Assign value to attribute
       aVeryLong = pAVeryLong;
       return this;
@@ -290,6 +291,7 @@ public class ContextWithPrimitives {
    *
    * @return {@link Boolean} Value to which {@link #aBooleanWrapper} is set.
    */
+  @MyNotNullProperty
   public Boolean getABooleanWrapper( ) {
     return aBooleanWrapper;
   }
@@ -299,7 +301,7 @@ public class ContextWithPrimitives {
    *
    * @param pABooleanWrapper Value to which {@link #aBooleanWrapper} should be set.
    */
-  public void setABooleanWrapper( Boolean pABooleanWrapper ) {
+  public void setABooleanWrapper( @MyNotNullProperty Boolean pABooleanWrapper ) {
     // Assign value to attribute
     aBooleanWrapper = pABooleanWrapper;
   }
@@ -328,6 +330,7 @@ public class ContextWithPrimitives {
    *
    * @return {@link Integer} Value to which {@link #anInteger} is set.
    */
+  @MyNotNullProperty
   public Integer getAnInteger( ) {
     return anInteger;
   }
@@ -337,7 +340,7 @@ public class ContextWithPrimitives {
    *
    * @param pAnInteger Value to which {@link #anInteger} should be set.
    */
-  public void setAnInteger( Integer pAnInteger ) {
+  public void setAnInteger( @MyNotNullProperty Integer pAnInteger ) {
     // Assign value to attribute
     anInteger = pAnInteger;
   }
@@ -366,6 +369,7 @@ public class ContextWithPrimitives {
    *
    * @return {@link Long} Value to which {@link #aVeryLong} is set.
    */
+  @MyNotNullProperty
   public Long getAVeryLong( ) {
     return aVeryLong;
   }
@@ -375,7 +379,7 @@ public class ContextWithPrimitives {
    *
    * @param pAVeryLong Value to which {@link #aVeryLong} should be set.
    */
-  public void setAVeryLong( Long pAVeryLong ) {
+  public void setAVeryLong( @MyNotNullProperty Long pAVeryLong ) {
     // Assign value to attribute
     aVeryLong = pAVeryLong;
   }

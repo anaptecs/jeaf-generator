@@ -10,6 +10,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.ws.rs.HeaderParam;
 
+import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.junit.openapi.base.ParentBeanParamType;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 
@@ -129,7 +130,7 @@ public class ChildBeanParameterType extends ParentBeanParamType {
      * @param pChildProperty Value to which {@link #childProperty} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setChildProperty( String pChildProperty ) {
+    public Builder setChildProperty( @MyNotNullProperty String pChildProperty ) {
       // Assign value to attribute
       childProperty = pChildProperty;
       return this;
@@ -164,6 +165,7 @@ public class ChildBeanParameterType extends ParentBeanParamType {
    *
    * @return {@link String} Value to which {@link #childProperty} is set.
    */
+  @MyNotNullProperty
   public String getChildProperty( ) {
     return childProperty;
   }
@@ -173,7 +175,7 @@ public class ChildBeanParameterType extends ParentBeanParamType {
    *
    * @param pChildProperty Value to which {@link #childProperty} should be set.
    */
-  public void setChildProperty( String pChildProperty ) {
+  public void setChildProperty( @MyNotNullProperty String pChildProperty ) {
     // Assign value to attribute
     childProperty = pChildProperty;
   }

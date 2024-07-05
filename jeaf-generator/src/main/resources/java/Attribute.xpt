@@ -137,6 +137,7 @@
 	«IF this.isDeprecated() == false && type.isPrimitiveType() && type.isBooleanType() && this.isMultivalued() == false-»
     @Deprecated
     «ENDIF-»	
+    «EXPAND java::Helper::NotNullAnnotationForProperty»
 	«IF this.isInternalProperty() == false»public«ENDIF» «this.fqn()» «asGetter()»() {
 	    «IF this.generateBackwardCompatibility() == false»
 		    «IF this.isMultivalued() == false»return «asInstanceVar()»;
@@ -185,6 +186,7 @@
     «EXPAND functions::Javadoc::JavadocForPropertyGetter»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
     «IF generateJacksonAnnotations() && this.isAddToJSON()»@com.fasterxml.jackson.annotation.JsonGetter«ENDIF»
+    «EXPAND java::Helper::NotNullAnnotationForProperty»
     «IF this.isInternalProperty() == false»public«ENDIF» abstract «IF this.association == null»«this.fqn()»«ELSE»«this.fqn()»«ENDIF» «asGetter()»();
     
     «IF generateJacksonAnnotations() && this.isAddToJSON() && this.isMultivalued()»
@@ -199,6 +201,7 @@
     «EXPAND functions::Javadoc::JavadocForPropertyGetter»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
     «IF generateJacksonAnnotations() && this.isAddToJSON()»@com.fasterxml.jackson.annotation.JsonGetter«ENDIF»
+    «EXPAND java::Helper::NotNullAnnotationForProperty»
     @Override
     «IF this.isInternalProperty() == false»public«ENDIF» «IF this.association == null»«this.fqn()»«ELSE»«this.fqn()»«ENDIF» «asGetter()»() {
         // TODO Implement method for derived property "«this.name»".
@@ -213,7 +216,7 @@
 «DEFINE Setter FOR Property»
 	«EXPAND functions::Javadoc::JavadocForPropertySetter»
 	«EXPAND java::Helper::GenerateDeprecationAnnotation-»
-	«IF this.isInternalProperty() == false»public«ENDIF» void «asSetter()»(«this.fqn()» «asParameter()») {
+	«IF this.isInternalProperty() == false»public«ENDIF» void «asSetter()»(«EXPAND java::Helper::NotNullAnnotationForProperty» «this.fqn()» «asParameter()») {
 		«IF this.generateBackwardCompatibility() == false»
 			// Assign value to attribute
 			«IF this.isMultivalued() == false»
@@ -249,6 +252,7 @@
 «DEFINE SoftLinkToOneAccessorMethods FOR SoftLink»
     «EXPAND functions::Javadoc::JavadocForPropertyGetter»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
+    «EXPAND java::Helper::NotNullAnnotationForProperty»
     public «this.getJavaSoftLinkType()» get«this.getSoftLinkPropertyName().toFirstUpper()» () {
     «IF ((NamedElement)this.owner).isPersistentObject()»
     «this.getSoftLinkPropertyName()» = this.unproxy(«asInstanceVar()»);«ENDIF»
@@ -269,7 +273,7 @@
     «IF isReadOnly() == false»
     «EXPAND functions::Javadoc::JavadocForPropertySetter»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
-    public void set«this.getSoftLinkPropertyName().toFirstUpper()» («this.getJavaSoftLinkType()» «asParameter()») {
+    public void set«this.getSoftLinkPropertyName().toFirstUpper()» («EXPAND java::Helper::NotNullAnnotationForProperty» «this.getJavaSoftLinkType()» «asParameter()») {
         «IF generateNullChecksForToOneAssociationsOfServiceObjects() && this.getJavaSoftLinkType() != "long"»
         // «asParameter()» must not be null. To unset an association the unset method has to be called.
         com.anaptecs.jeaf.xfun.api.checks.Check.checkInvalidParameterNull(«asParameter()», "«asParameter()»");
@@ -295,6 +299,7 @@
 «DEFINE SoftLinkToManyAccessorMethods FOR SoftLink»
     «EXPAND functions::Javadoc::JavadocForPropertyGetter»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
+    «EXPAND java::Helper::NotNullAnnotationForProperty»
     public «this.getCollectionType()»<«this.getMultivaluedJavaSoftLinkType()»> get«this.getSoftLinkPropertyName().toFirstUpper()»() {
         «IF this.isTransientBidirectionalBackReference()»
         // Due to restrictions in JSON serialization / deserialization bi-directional associations need a special handling after an object was deserialized.
@@ -326,7 +331,7 @@
      * @param «asParameter()» Collection with objects to which {@link #«asInstanceVar()»} should be set. The parameter may be null. In this case {@link #«asInstanceVar()»} is just unset.
      */
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
-    public void set«this.getSoftLinkPropertyName().toFirstUpper()»(«this.getCollectionType()»<«this.getMultivaluedJavaSoftLinkType()»> «asParameter()») {
+    public void set«this.getSoftLinkPropertyName().toFirstUpper()»(«EXPAND java::Helper::NotNullAnnotationForProperty» «this.getCollectionType()»<«this.getMultivaluedJavaSoftLinkType()»> «asParameter()») {
         // Check of parameter is not required.
         
         // Remove all objects from association "«this.getSoftLinkPropertyName()»".
@@ -418,6 +423,7 @@
 «DEFINE ToOneAccessorMethods FOR Property»
     «EXPAND functions::Javadoc::JavadocForPropertyGetter»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
+    «EXPAND java::Helper::NotNullAnnotationForProperty»
 	«IF this.isInternalProperty() == false»public«ENDIF» «type.fqn()» «asGetter()» () {
     «IF ((NamedElement)this.owner).isPersistentObject()»
     «asInstanceVar()» = this.unproxy(«asInstanceVar()»);«ENDIF»
@@ -442,7 +448,7 @@
     «IF isReadOnly() == false»
     «EXPAND functions::Javadoc::JavadocForPropertySetter»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
-	«IF this.isInternalProperty() == false && this.belongsToTransientBidirectionalBackReference() == false»public«ENDIF» void «asSetter()» («type.fqn()» «asParameter()») {
+	«IF this.isInternalProperty() == false && this.belongsToTransientBidirectionalBackReference() == false»public«ENDIF» void «asSetter()» («EXPAND java::Helper::NotNullAnnotationForProperty» «type.fqn()» «asParameter()») {
 	    «IF this.generateBackwardCompatibility() == false»
 			«IF generateNullChecksForToOneAssociationsOfServiceObjects()»
 			// «asParameter()» must not be null. To unset an association the unset method has to be called.
@@ -502,6 +508,7 @@
 «DEFINE ToManyAccessorMethods FOR Property»
     «EXPAND functions::Javadoc::JavadocForPropertyGetter»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
+    «EXPAND java::Helper::NotNullAnnotationForProperty»
 	«IF this.isInternalProperty() == false»public«ENDIF» «this.fqn()» «asGetter()» () {
 	    «IF this.generateBackwardCompatibility() == false»
 		    «IF this.isTransientBidirectionalBackReference()»
@@ -533,7 +540,7 @@
     «IF generatePublicSettersForAssociations()»
     «EXPAND functions::Javadoc::JavadocForPropertySetter»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
-    «IF this.isInternalProperty() == false && this.belongsToTransientBidirectionalBackReference() == false»public«ENDIF» void set«name.toFirstUpper()»(«this.fqn()» «asParameter()») {
+    «IF this.isInternalProperty() == false && this.belongsToTransientBidirectionalBackReference() == false»public«ENDIF» void set«name.toFirstUpper()»(«EXPAND java::Helper::NotNullAnnotationForProperty» «this.fqn()» «asParameter()») {
         «IF this.generateBackwardCompatibility() == false»
 	        // Check of parameter is not required.
 	        

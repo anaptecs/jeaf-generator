@@ -12,6 +12,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotEmptyProperty;
+import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.anaptecs.spring.base.BookingID;
 import com.anaptecs.spring.base.ComplexBookingType;
@@ -154,7 +156,7 @@ public abstract class ComplexBookingIDBase {
      * @param pReferenceID Value to which {@link #referenceID} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setReferenceID( String pReferenceID ) {
+    public BuilderBase setReferenceID( @MyNotNullProperty String pReferenceID ) {
       // Assign value to attribute
       referenceID = pReferenceID;
       return this;
@@ -166,7 +168,7 @@ public abstract class ComplexBookingIDBase {
      * @param pBookingIDs Collection to which {@link #bookingIDs} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setBookingIDs( List<BookingID> pBookingIDs ) {
+    public BuilderBase setBookingIDs( @MyNotEmptyProperty List<BookingID> pBookingIDs ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pBookingIDs != null) {
         bookingIDs = new ArrayList<BookingID>(pBookingIDs);
@@ -183,7 +185,7 @@ public abstract class ComplexBookingIDBase {
      * @param pBookingIDs Array of objects that should be added to {@link #bookingIDs}. The parameter may be null.
      * @return {@link BuilderBase} Instance of this builder to support chaining. Method never returns null.
      */
-    public BuilderBase addToBookingIDs( BookingID... pBookingIDs ) {
+    public BuilderBase addToBookingIDs( @MyNotEmptyProperty BookingID... pBookingIDs ) {
       if (pBookingIDs != null) {
         if (bookingIDs == null) {
           bookingIDs = new ArrayList<BookingID>();
@@ -199,7 +201,7 @@ public abstract class ComplexBookingIDBase {
      * @param pComplexBookingType Value to which {@link #complexBookingType} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setComplexBookingType( ComplexBookingType pComplexBookingType ) {
+    public BuilderBase setComplexBookingType( @MyNotNullProperty ComplexBookingType pComplexBookingType ) {
       complexBookingType = pComplexBookingType;
       return this;
     }
@@ -210,7 +212,7 @@ public abstract class ComplexBookingIDBase {
      * @param pAnotherID Value to which {@link #anotherID} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setAnotherID( Integer pAnotherID ) {
+    public BuilderBase setAnotherID( @MyNotNullProperty Integer pAnotherID ) {
       // Assign value to attribute
       anotherID = pAnotherID;
       return this;
@@ -271,6 +273,7 @@ public abstract class ComplexBookingIDBase {
    *
    * @return {@link String} Value to which {@link #referenceID} is set.
    */
+  @MyNotNullProperty
   public String getReferenceID( ) {
     return referenceID;
   }
@@ -280,7 +283,7 @@ public abstract class ComplexBookingIDBase {
    *
    * @param pReferenceID Value to which {@link #referenceID} should be set.
    */
-  public void setReferenceID( String pReferenceID ) {
+  public void setReferenceID( @MyNotNullProperty String pReferenceID ) {
     // Assign value to attribute
     referenceID = pReferenceID;
   }
@@ -291,6 +294,7 @@ public abstract class ComplexBookingIDBase {
    * @return {@link List<BookingID>} Value to which {@link #bookingIDs} is set. The method never returns null and the
    * returned collection is unmodifiable.
    */
+  @MyNotEmptyProperty
   public List<BookingID> getBookingIDs( ) {
     // Return all BookingID objects as unmodifiable collection.
     return Collections.unmodifiableList(bookingIDs);
@@ -342,6 +346,7 @@ public abstract class ComplexBookingIDBase {
    *
    * @return {@link ComplexBookingType} Value to which {@link #complexBookingType} is set.
    */
+  @MyNotNullProperty
   public ComplexBookingType getComplexBookingType( ) {
     return complexBookingType;
   }
@@ -351,7 +356,7 @@ public abstract class ComplexBookingIDBase {
    *
    * @param pComplexBookingType Value to which {@link #complexBookingType} should be set.
    */
-  public void setComplexBookingType( ComplexBookingType pComplexBookingType ) {
+  public void setComplexBookingType( @MyNotNullProperty ComplexBookingType pComplexBookingType ) {
     complexBookingType = pComplexBookingType;
   }
 
@@ -367,6 +372,7 @@ public abstract class ComplexBookingIDBase {
    *
    * @return {@link Integer} Value to which {@link #anotherID} is set.
    */
+  @MyNotNullProperty
   public Integer getAnotherID( ) {
     return anotherID;
   }
@@ -376,7 +382,7 @@ public abstract class ComplexBookingIDBase {
    *
    * @param pAnotherID Value to which {@link #anotherID} should be set.
    */
-  public void setAnotherID( Integer pAnotherID ) {
+  public void setAnotherID( @MyNotNullProperty Integer pAnotherID ) {
     // Assign value to attribute
     anotherID = pAnotherID;
   }

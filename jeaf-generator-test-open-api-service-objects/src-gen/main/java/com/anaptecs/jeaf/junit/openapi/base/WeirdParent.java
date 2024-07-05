@@ -15,6 +15,8 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.anaptecs.annotations.MyNotEmptyProperty;
+import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.junit.openapi.composite.ComplexBookingID;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
@@ -137,7 +139,7 @@ public class WeirdParent implements ServiceObject {
      * @param pSomeProperty Value to which {@link #someProperty} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setSomeProperty( String pSomeProperty ) {
+    public Builder setSomeProperty( @MyNotNullProperty String pSomeProperty ) {
       // Assign value to attribute
       someProperty = pSomeProperty;
       return this;
@@ -149,7 +151,7 @@ public class WeirdParent implements ServiceObject {
      * @param pComplexBooking Value to which {@link #complexBooking} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setComplexBooking( ComplexBookingID pComplexBooking ) {
+    public Builder setComplexBooking( @MyNotNullProperty ComplexBookingID pComplexBooking ) {
       complexBooking = pComplexBooking;
       return this;
     }
@@ -160,7 +162,7 @@ public class WeirdParent implements ServiceObject {
      * @param pComplexBookings Collection to which {@link #complexBookings} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setComplexBookings( Set<ComplexBookingID> pComplexBookings ) {
+    public Builder setComplexBookings( @MyNotEmptyProperty Set<ComplexBookingID> pComplexBookings ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pComplexBookings != null) {
         complexBookings = new HashSet<ComplexBookingID>(pComplexBookings);
@@ -178,7 +180,7 @@ public class WeirdParent implements ServiceObject {
      * null.
      * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
      */
-    public Builder addToComplexBookings( ComplexBookingID... pComplexBookings ) {
+    public Builder addToComplexBookings( @MyNotEmptyProperty ComplexBookingID... pComplexBookings ) {
       if (pComplexBookings != null) {
         if (complexBookings == null) {
           complexBookings = new HashSet<ComplexBookingID>();
@@ -217,6 +219,7 @@ public class WeirdParent implements ServiceObject {
    *
    * @return {@link String} Value to which {@link #someProperty} is set.
    */
+  @MyNotNullProperty
   public String getSomeProperty( ) {
     return someProperty;
   }
@@ -226,7 +229,7 @@ public class WeirdParent implements ServiceObject {
    *
    * @param pSomeProperty Value to which {@link #someProperty} should be set.
    */
-  public void setSomeProperty( String pSomeProperty ) {
+  public void setSomeProperty( @MyNotNullProperty String pSomeProperty ) {
     // Assign value to attribute
     someProperty = pSomeProperty;
   }
@@ -236,6 +239,7 @@ public class WeirdParent implements ServiceObject {
    *
    * @return {@link ComplexBookingID} Value to which {@link #complexBooking} is set.
    */
+  @MyNotNullProperty
   public ComplexBookingID getComplexBooking( ) {
     return complexBooking;
   }
@@ -245,7 +249,7 @@ public class WeirdParent implements ServiceObject {
    *
    * @param pComplexBooking Value to which {@link #complexBooking} should be set.
    */
-  public void setComplexBooking( ComplexBookingID pComplexBooking ) {
+  public void setComplexBooking( @MyNotNullProperty ComplexBookingID pComplexBooking ) {
     complexBooking = pComplexBooking;
   }
 
@@ -262,6 +266,7 @@ public class WeirdParent implements ServiceObject {
    * @return {@link Set<ComplexBookingID>} Value to which {@link #complexBookings} is set. The method never returns null
    * and the returned collection is modifiable.
    */
+  @MyNotEmptyProperty
   public Set<ComplexBookingID> getComplexBookings( ) {
     // Return all ComplexBookingID objects directly without any protection against modification.
     return complexBookings;

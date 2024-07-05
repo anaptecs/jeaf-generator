@@ -7,6 +7,7 @@ package com.anaptecs.spring.base;
 
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -181,7 +182,7 @@ public class BookingID {
      * @param pPublicBookingID Value to which {@link #publicBookingID} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setPublicBookingID( String pPublicBookingID ) {
+    public Builder setPublicBookingID( @MyNotNullProperty String pPublicBookingID ) {
       // Assign value to attribute
       publicBookingID = pPublicBookingID;
       return this;
@@ -193,7 +194,7 @@ public class BookingID {
      * @param pReferenceID Value to which {@link #referenceID} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setReferenceID( String pReferenceID ) {
+    public Builder setReferenceID( @MyNotNullProperty String pReferenceID ) {
       // Assign value to attribute
       referenceID = pReferenceID;
       return this;
@@ -205,7 +206,7 @@ public class BookingID {
      * @param pExternalRefID Value to which {@link #externalRefID} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setExternalRefID( String pExternalRefID ) {
+    public Builder setExternalRefID( @MyNotNullProperty String pExternalRefID ) {
       // Assign value to attribute
       externalRefID = pExternalRefID;
       return this;
@@ -217,7 +218,7 @@ public class BookingID {
      * @param pInventory Value to which {@link #inventory} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setInventory( InventoryType pInventory ) {
+    public Builder setInventory( @MyNotNullProperty InventoryType pInventory ) {
       inventory = pInventory;
       return this;
     }
@@ -228,7 +229,7 @@ public class BookingID {
      * @param pBookingCode Value to which {@link #bookingCode} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setBookingCode( BookingCode pBookingCode ) {
+    public Builder setBookingCode( @MyNotNullProperty BookingCode pBookingCode ) {
       bookingCode = pBookingCode;
       return this;
     }
@@ -250,6 +251,7 @@ public class BookingID {
    *
    * @return {@link String} Value to which {@link #publicBookingID} is set.
    */
+  @MyNotNullProperty
   public String getPublicBookingID( ) {
     return publicBookingID;
   }
@@ -259,6 +261,7 @@ public class BookingID {
    *
    * @return {@link String} Value to which {@link #referenceID} is set.
    */
+  @MyNotNullProperty
   public String getReferenceID( ) {
     return referenceID;
   }
@@ -268,6 +271,7 @@ public class BookingID {
    *
    * @return {@link String} Value to which {@link #externalRefID} is set.
    */
+  @MyNotNullProperty
   public String getExternalRefID( ) {
     return externalRefID;
   }
@@ -277,6 +281,7 @@ public class BookingID {
    *
    * @return {@link InventoryType} Value to which {@link #inventory} is set.
    */
+  @MyNotNullProperty
   public InventoryType getInventory( ) {
     return inventory;
   }
@@ -286,6 +291,7 @@ public class BookingID {
    *
    * @return {@link BookingCode} Value to which {@link #bookingCode} is set.
    */
+  @MyNotNullProperty
   public BookingCode getBookingCode( ) {
     return bookingCode;
   }

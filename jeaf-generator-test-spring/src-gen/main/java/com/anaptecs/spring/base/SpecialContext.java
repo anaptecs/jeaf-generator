@@ -8,6 +8,7 @@ package com.anaptecs.spring.base;
 import java.util.Locale;
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 
 public class SpecialContext extends Context {
@@ -237,7 +238,7 @@ public class SpecialContext extends Context {
      * @param pSpecificHeader Value to which {@link #specificHeader} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setSpecificHeader( String pSpecificHeader ) {
+    public Builder setSpecificHeader( @MyNotNullProperty String pSpecificHeader ) {
       // Assign value to attribute
       specificHeader = pSpecificHeader;
       return this;
@@ -249,7 +250,7 @@ public class SpecialContext extends Context {
      * @param pChannelType Value to which {@link #channelType} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setChannelType( ChannelType pChannelType ) {
+    public Builder setChannelType( @MyNotNullProperty ChannelType pChannelType ) {
       // Assign value to attribute
       channelType = pChannelType;
       return this;
@@ -273,6 +274,7 @@ public class SpecialContext extends Context {
    *
    * @return {@link String} Value to which {@link #specificHeader} is set.
    */
+  @MyNotNullProperty
   public String getSpecificHeader( ) {
     return specificHeader;
   }
@@ -282,7 +284,7 @@ public class SpecialContext extends Context {
    *
    * @param pSpecificHeader Value to which {@link #specificHeader} should be set.
    */
-  public void setSpecificHeader( String pSpecificHeader ) {
+  public void setSpecificHeader( @MyNotNullProperty String pSpecificHeader ) {
     // Assign value to attribute
     specificHeader = pSpecificHeader;
   }
@@ -292,6 +294,7 @@ public class SpecialContext extends Context {
    *
    * @return {@link ChannelType} Value to which {@link #channelType} is set.
    */
+  @MyNotNullProperty
   public ChannelType getChannelType( ) {
     return channelType;
   }
@@ -301,7 +304,7 @@ public class SpecialContext extends Context {
    *
    * @param pChannelType Value to which {@link #channelType} should be set.
    */
-  public void setChannelType( ChannelType pChannelType ) {
+  public void setChannelType( @MyNotNullProperty ChannelType pChannelType ) {
     // Assign value to attribute
     channelType = pChannelType;
   }

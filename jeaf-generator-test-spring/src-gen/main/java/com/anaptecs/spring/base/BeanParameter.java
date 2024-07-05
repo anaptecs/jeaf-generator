@@ -8,6 +8,7 @@ package com.anaptecs.spring.base;
 import java.util.Locale;
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -145,7 +146,7 @@ public class BeanParameter {
      * @param pAccessToken Value to which {@link #accessToken} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setAccessToken( String pAccessToken ) {
+    public Builder setAccessToken( @MyNotNullProperty String pAccessToken ) {
       // Assign value to attribute
       accessToken = pAccessToken;
       return this;
@@ -157,7 +158,7 @@ public class BeanParameter {
      * @param pLanguage Value to which {@link #language} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setLanguage( Locale pLanguage ) {
+    public Builder setLanguage( @MyNotNullProperty Locale pLanguage ) {
       // Assign value to attribute
       language = pLanguage;
       return this;
@@ -170,7 +171,7 @@ public class BeanParameter {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
-    public Builder setOldStyle( String pOldStyle ) {
+    public Builder setOldStyle( @MyNotNullProperty String pOldStyle ) {
       // Assign value to attribute
       oldStyle = pOldStyle;
       return this;
@@ -194,6 +195,7 @@ public class BeanParameter {
    *
    * @return {@link String} Value to which {@link #accessToken} is set.
    */
+  @MyNotNullProperty
   public String getAccessToken( ) {
     return accessToken;
   }
@@ -203,7 +205,7 @@ public class BeanParameter {
    *
    * @param pAccessToken Value to which {@link #accessToken} should be set.
    */
-  public void setAccessToken( String pAccessToken ) {
+  public void setAccessToken( @MyNotNullProperty String pAccessToken ) {
     // Assign value to attribute
     accessToken = pAccessToken;
   }
@@ -213,6 +215,7 @@ public class BeanParameter {
    *
    * @return {@link Locale} Value to which {@link #language} is set.
    */
+  @MyNotNullProperty
   public Locale getLanguage( ) {
     return language;
   }
@@ -222,7 +225,7 @@ public class BeanParameter {
    *
    * @param pLanguage Value to which {@link #language} should be set.
    */
-  public void setLanguage( Locale pLanguage ) {
+  public void setLanguage( @MyNotNullProperty Locale pLanguage ) {
     // Assign value to attribute
     language = pLanguage;
   }
@@ -233,6 +236,7 @@ public class BeanParameter {
    * @return {@link String} Value to which {@link #oldStyle} is set.
    */
   @Deprecated
+  @MyNotNullProperty
   public String getOldStyle( ) {
     return oldStyle;
   }
@@ -243,7 +247,7 @@ public class BeanParameter {
    * @param pOldStyle Value to which {@link #oldStyle} should be set.
    */
   @Deprecated
-  public void setOldStyle( String pOldStyle ) {
+  public void setOldStyle( @MyNotNullProperty String pOldStyle ) {
     // Assign value to attribute
     oldStyle = pOldStyle;
   }

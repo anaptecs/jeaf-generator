@@ -8,6 +8,7 @@ package com.anaptecs.spring.service;
 import java.math.BigDecimal;
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.anaptecs.spring.base.Channel;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
@@ -125,7 +126,7 @@ public class Sale {
      * @param pTransactionAmount Value to which {@link #transactionAmount} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setTransactionAmount( BigDecimal pTransactionAmount ) {
+    public Builder setTransactionAmount( @MyNotNullProperty BigDecimal pTransactionAmount ) {
       // Assign value to attribute
       transactionAmount = pTransactionAmount;
       return this;
@@ -159,6 +160,7 @@ public class Sale {
    *
    * @return {@link BigDecimal} Value to which {@link #transactionAmount} is set.
    */
+  @MyNotNullProperty
   public BigDecimal getTransactionAmount( ) {
     return transactionAmount;
   }
@@ -168,7 +170,7 @@ public class Sale {
    *
    * @param pTransactionAmount Value to which {@link #transactionAmount} should be set.
    */
-  public void setTransactionAmount( BigDecimal pTransactionAmount ) {
+  public void setTransactionAmount( @MyNotNullProperty BigDecimal pTransactionAmount ) {
     // Assign value to attribute
     transactionAmount = pTransactionAmount;
   }

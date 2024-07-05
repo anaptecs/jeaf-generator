@@ -9,6 +9,7 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Arrays;
 
+import com.anaptecs.annotations.MyNotEmptyProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -754,7 +755,7 @@ public class PrimitiveArraysObject {
      * @param pCStringArray Collection to which {@link #cStringArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setCStringArray( String[] pCStringArray ) {
+    public Builder setCStringArray( @MyNotEmptyProperty String[] pCStringArray ) {
       // Assign value to attribute
       if (pCStringArray != null) {
         cStringArray = new String[pCStringArray.length];
@@ -1510,6 +1511,7 @@ public class PrimitiveArraysObject {
    *
    * @return {@link String[]} Value to which {@link #cStringArray} is set.
    */
+  @MyNotEmptyProperty
   public String[] getCStringArray( ) {
     String[] lReturnValue;
     if (cStringArray != null) {
@@ -1527,7 +1529,7 @@ public class PrimitiveArraysObject {
    *
    * @param pCStringArray Value to which {@link #cStringArray} should be set.
    */
-  public void setCStringArray( String[] pCStringArray ) {
+  public void setCStringArray( @MyNotEmptyProperty String[] pCStringArray ) {
     // Assign value to attribute
     if (pCStringArray != null) {
       cStringArray = new String[pCStringArray.length];

@@ -94,7 +94,7 @@
 			  }
 
 		«EXPAND Attribute::PropertyAccessors FOREACH ownedAttribute»
-		«EXPAND JEAFOperation::PersistentObjectOperation FOREACH ownedOperation»
+		«EXPAND JEAFOperation::BusinessOperation FOREACH ownedOperation»
 		
 	    /**
 	     * Method returns the class id of this business object class.
@@ -129,7 +129,7 @@
               // Nothing to do.
             }
             
-	      «EXPAND JEAFOperation::PersistentObjectOperationImpl FOREACH ownedOperation»
+	      «EXPAND JEAFOperation::BusinessOperationImpl FOREACH ownedOperation»
 		}
 		
 		 

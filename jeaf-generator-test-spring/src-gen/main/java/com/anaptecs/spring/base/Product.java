@@ -17,6 +17,8 @@ import java.util.UUID;
 
 import javax.validation.constraints.Size;
 
+import com.anaptecs.annotations.MyNotEmptyProperty;
+import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -350,7 +352,7 @@ public class Product implements IProduct {
      * @param pName Value to which {@link #name} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setName( String pName ) {
+    public Builder setName( @MyNotNullProperty String pName ) {
       // Assign value to attribute
       name = pName;
       return this;
@@ -380,7 +382,7 @@ public class Product implements IProduct {
      * @param pLink Value to which {@link #link} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setLink( URL pLink ) {
+    public Builder setLink( @MyNotNullProperty URL pLink ) {
       // Assign value to attribute
       link = pLink;
       return this;
@@ -392,7 +394,7 @@ public class Product implements IProduct {
      * @param pProductID Value to which {@link #productID} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setProductID( UUID pProductID ) {
+    public Builder setProductID( @MyNotNullProperty UUID pProductID ) {
       // Assign value to attribute
       productID = pProductID;
       return this;
@@ -404,7 +406,7 @@ public class Product implements IProduct {
      * @param pSupportedCurrencies Collection to which {@link #supportedCurrencies} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setSupportedCurrencies( Set<CurrencyCode> pSupportedCurrencies ) {
+    public Builder setSupportedCurrencies( @MyNotEmptyProperty Set<CurrencyCode> pSupportedCurrencies ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pSupportedCurrencies != null) {
         supportedCurrencies = new HashSet<CurrencyCode>(pSupportedCurrencies);
@@ -422,7 +424,7 @@ public class Product implements IProduct {
      * may be null.
      * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
      */
-    public Builder addToSupportedCurrencies( CurrencyCode... pSupportedCurrencies ) {
+    public Builder addToSupportedCurrencies( @MyNotEmptyProperty CurrencyCode... pSupportedCurrencies ) {
       if (pSupportedCurrencies != null) {
         if (supportedCurrencies == null) {
           supportedCurrencies = new HashSet<CurrencyCode>();
@@ -438,7 +440,7 @@ public class Product implements IProduct {
      * @param pProductCodes Collection to which {@link #productCodes} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setProductCodes( Set<ProductCode> pProductCodes ) {
+    public Builder setProductCodes( @MyNotEmptyProperty Set<ProductCode> pProductCodes ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pProductCodes != null) {
         productCodes = new HashSet<ProductCode>(pProductCodes);
@@ -455,7 +457,7 @@ public class Product implements IProduct {
      * @param pProductCodes Array of objects that should be added to {@link #productCodes}. The parameter may be null.
      * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
      */
-    public Builder addToProductCodes( ProductCode... pProductCodes ) {
+    public Builder addToProductCodes( @MyNotEmptyProperty ProductCode... pProductCodes ) {
       if (pProductCodes != null) {
         if (productCodes == null) {
           productCodes = new HashSet<ProductCode>();
@@ -472,7 +474,7 @@ public class Product implements IProduct {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
-    public Builder setDescription( String pDescription ) {
+    public Builder setDescription( @MyNotNullProperty String pDescription ) {
       // Assign value to attribute
       description = pDescription;
       return this;
@@ -484,7 +486,7 @@ public class Product implements IProduct {
      * @param pUri Value to which {@link #uri} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setUri( String pUri ) {
+    public Builder setUri( @MyNotNullProperty String pUri ) {
       // Assign value to attribute
       uri = pUri;
       return this;
@@ -582,6 +584,7 @@ public class Product implements IProduct {
    *
    * @return {@link String} Value to which {@link #name} is set.
    */
+  @MyNotNullProperty
   public String getName( ) {
     return name;
   }
@@ -591,7 +594,7 @@ public class Product implements IProduct {
    *
    * @param pName Value to which {@link #name} should be set.
    */
-  public void setName( String pName ) {
+  public void setName( @MyNotNullProperty String pName ) {
     // Assign value to attribute
     name = pName;
   }
@@ -636,6 +639,7 @@ public class Product implements IProduct {
    *
    * @return {@link URL} Value to which {@link #link} is set.
    */
+  @MyNotNullProperty
   public URL getLink( ) {
     return link;
   }
@@ -645,7 +649,7 @@ public class Product implements IProduct {
    *
    * @param pLink Value to which {@link #link} should be set.
    */
-  public void setLink( URL pLink ) {
+  public void setLink( @MyNotNullProperty URL pLink ) {
     // Assign value to attribute
     link = pLink;
   }
@@ -655,6 +659,7 @@ public class Product implements IProduct {
    *
    * @return {@link UUID} Value to which {@link #productID} is set.
    */
+  @MyNotNullProperty
   public UUID getProductID( ) {
     return productID;
   }
@@ -665,6 +670,7 @@ public class Product implements IProduct {
    * @return {@link Set<CurrencyCode>} Value to which {@link #supportedCurrencies} is set. The method never returns null
    * and the returned collection is unmodifiable.
    */
+  @MyNotEmptyProperty
   public Set<CurrencyCode> getSupportedCurrencies( ) {
     // Return all CurrencyCode objects as unmodifiable collection.
     return Collections.unmodifiableSet(supportedCurrencies);
@@ -719,6 +725,7 @@ public class Product implements IProduct {
    * @return {@link Set<ProductCode>} Value to which {@link #productCodes} is set. The method never returns null and the
    * returned collection is unmodifiable.
    */
+  @MyNotEmptyProperty
   public Set<ProductCode> getProductCodes( ) {
     // Return all ProductCode objects as unmodifiable collection.
     return Collections.unmodifiableSet(productCodes);
@@ -771,6 +778,7 @@ public class Product implements IProduct {
    * @return {@link String} Value to which {@link #description} is set.
    */
   @Deprecated
+  @MyNotNullProperty
   public String getDescription( ) {
     return description;
   }
@@ -781,7 +789,7 @@ public class Product implements IProduct {
    * @param pDescription Value to which {@link #description} should be set.
    */
   @Deprecated
-  public void setDescription( String pDescription ) {
+  public void setDescription( @MyNotNullProperty String pDescription ) {
     // Assign value to attribute
     description = pDescription;
   }
@@ -848,6 +856,7 @@ public class Product implements IProduct {
    *
    * @return {@link String} Value to which {@link #uri} is set.
    */
+  @MyNotNullProperty
   public String getUri( ) {
     return uri;
   }
@@ -857,7 +866,7 @@ public class Product implements IProduct {
    *
    * @param pUri Value to which {@link #uri} should be set.
    */
-  public void setUri( String pUri ) {
+  public void setUri( @MyNotNullProperty String pUri ) {
     // Assign value to attribute
     uri = pUri;
   }

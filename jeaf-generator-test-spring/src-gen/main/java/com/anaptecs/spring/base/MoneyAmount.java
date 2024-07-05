@@ -10,6 +10,7 @@ import java.util.Objects;
 
 import javax.validation.constraints.NotNull;
 
+import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -154,7 +155,7 @@ public class MoneyAmount {
      * @param pAmount Value to which {@link #amount} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setAmount( BigDecimal pAmount ) {
+    public Builder setAmount( @MyNotNullProperty BigDecimal pAmount ) {
       // Assign value to attribute
       amount = pAmount;
       return this;
@@ -166,7 +167,7 @@ public class MoneyAmount {
      * @param pCurrencyCode Value to which {@link #currencyCode} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setCurrencyCode( CurrencyCode pCurrencyCode ) {
+    public Builder setCurrencyCode( @MyNotNullProperty CurrencyCode pCurrencyCode ) {
       // Assign value to attribute
       currencyCode = pCurrencyCode;
       return this;
@@ -191,6 +192,7 @@ public class MoneyAmount {
    *
    * @return {@link BigDecimal} Value to which {@link #amount} is set.
    */
+  @MyNotNullProperty
   public BigDecimal getAmount( ) {
     return amount;
   }
@@ -200,6 +202,7 @@ public class MoneyAmount {
    *
    * @return {@link CurrencyCode} Value to which {@link #currencyCode} is set.
    */
+  @MyNotNullProperty
   public CurrencyCode getCurrencyCode( ) {
     return currencyCode;
   }

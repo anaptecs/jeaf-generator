@@ -7,6 +7,7 @@ package com.anaptecs.spring.base;
 
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -175,7 +176,7 @@ public class NoSubTypesChild extends NoSubTypesParent {
      * @param pMyProperty Value to which {@link #myProperty} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setMyProperty( String pMyProperty ) {
+    public Builder setMyProperty( @MyNotNullProperty String pMyProperty ) {
       // Assign value to attribute
       myProperty = pMyProperty;
       return this;
@@ -226,6 +227,7 @@ public class NoSubTypesChild extends NoSubTypesParent {
    *
    * @return {@link String} Value to which {@link #myProperty} is set.
    */
+  @MyNotNullProperty
   public String getMyProperty( ) {
     return myProperty;
   }
@@ -262,7 +264,7 @@ public class NoSubTypesChild extends NoSubTypesParent {
    *
    * @param pMyProperty Value to which {@link #myProperty} should be set.
    */
-  public void setMyProperty( String pMyProperty ) {
+  public void setMyProperty( @MyNotNullProperty String pMyProperty ) {
     // Assign value to attribute
     myProperty = pMyProperty;
   }

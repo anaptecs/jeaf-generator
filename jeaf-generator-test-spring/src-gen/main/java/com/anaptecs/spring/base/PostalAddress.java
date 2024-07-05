@@ -7,6 +7,7 @@ package com.anaptecs.spring.base;
 
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -179,7 +180,7 @@ public class PostalAddress {
      * @param pStreet Value to which {@link #street} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setStreet( String pStreet ) {
+    public Builder setStreet( @MyNotNullProperty String pStreet ) {
       // Assign value to attribute
       street = pStreet;
       return this;
@@ -191,7 +192,7 @@ public class PostalAddress {
      * @param pHouseNumber Value to which {@link #houseNumber} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setHouseNumber( String pHouseNumber ) {
+    public Builder setHouseNumber( @MyNotNullProperty String pHouseNumber ) {
       // Assign value to attribute
       houseNumber = pHouseNumber;
       return this;
@@ -203,7 +204,7 @@ public class PostalAddress {
      * @param pCity Value to which {@link #city} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setCity( String pCity ) {
+    public Builder setCity( @MyNotNullProperty String pCity ) {
       // Assign value to attribute
       city = pCity;
       return this;
@@ -227,7 +228,7 @@ public class PostalAddress {
      * @param pCountry Value to which {@link #country} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setCountry( String pCountry ) {
+    public Builder setCountry( @MyNotNullProperty String pCountry ) {
       // Assign value to attribute
       country = pCountry;
       return this;
@@ -251,6 +252,7 @@ public class PostalAddress {
    *
    * @return {@link String} Value to which {@link #street} is set.
    */
+  @MyNotNullProperty
   public String getStreet( ) {
     return street;
   }
@@ -260,7 +262,7 @@ public class PostalAddress {
    *
    * @param pStreet Value to which {@link #street} should be set.
    */
-  public void setStreet( String pStreet ) {
+  public void setStreet( @MyNotNullProperty String pStreet ) {
     // Assign value to attribute
     street = pStreet;
   }
@@ -270,6 +272,7 @@ public class PostalAddress {
    *
    * @return {@link String} Value to which {@link #houseNumber} is set.
    */
+  @MyNotNullProperty
   public String getHouseNumber( ) {
     return houseNumber;
   }
@@ -279,7 +282,7 @@ public class PostalAddress {
    *
    * @param pHouseNumber Value to which {@link #houseNumber} should be set.
    */
-  public void setHouseNumber( String pHouseNumber ) {
+  public void setHouseNumber( @MyNotNullProperty String pHouseNumber ) {
     // Assign value to attribute
     houseNumber = pHouseNumber;
   }
@@ -289,6 +292,7 @@ public class PostalAddress {
    *
    * @return {@link String} Value to which {@link #city} is set.
    */
+  @MyNotNullProperty
   public String getCity( ) {
     return city;
   }
@@ -298,7 +302,7 @@ public class PostalAddress {
    *
    * @param pCity Value to which {@link #city} should be set.
    */
-  public void setCity( String pCity ) {
+  public void setCity( @MyNotNullProperty String pCity ) {
     // Assign value to attribute
     city = pCity;
   }
@@ -327,6 +331,7 @@ public class PostalAddress {
    *
    * @return {@link String} Value to which {@link #country} is set.
    */
+  @MyNotNullProperty
   public String getCountry( ) {
     return country;
   }
@@ -336,7 +341,7 @@ public class PostalAddress {
    *
    * @param pCountry Value to which {@link #country} should be set.
    */
-  public void setCountry( String pCountry ) {
+  public void setCountry( @MyNotNullProperty String pCountry ) {
     // Assign value to attribute
     country = pCountry;
   }

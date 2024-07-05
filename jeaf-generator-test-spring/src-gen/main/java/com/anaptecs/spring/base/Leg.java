@@ -12,6 +12,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -151,7 +152,7 @@ public class Leg {
      * @param pStart Value to which {@link #start} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setStart( PlaceRef pStart ) {
+    public Builder setStart( @MyNotNullProperty PlaceRef pStart ) {
       start = pStart;
       return this;
     }
@@ -162,7 +163,7 @@ public class Leg {
      * @param pStop Value to which {@link #stop} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setStop( PlaceRef pStop ) {
+    public Builder setStop( @MyNotNullProperty PlaceRef pStop ) {
       stop = pStop;
       return this;
     }
@@ -217,6 +218,7 @@ public class Leg {
    *
    * @return {@link PlaceRef} Value to which {@link #start} is set.
    */
+  @MyNotNullProperty
   public PlaceRef getStart( ) {
     return start;
   }
@@ -226,7 +228,7 @@ public class Leg {
    *
    * @param pStart Value to which {@link #start} should be set.
    */
-  public void setStart( PlaceRef pStart ) {
+  public void setStart( @MyNotNullProperty PlaceRef pStart ) {
     start = pStart;
   }
 
@@ -242,6 +244,7 @@ public class Leg {
    *
    * @return {@link PlaceRef} Value to which {@link #stop} is set.
    */
+  @MyNotNullProperty
   public PlaceRef getStop( ) {
     return stop;
   }
@@ -251,7 +254,7 @@ public class Leg {
    *
    * @param pStop Value to which {@link #stop} should be set.
    */
-  public void setStop( PlaceRef pStop ) {
+  public void setStop( @MyNotNullProperty PlaceRef pStop ) {
     stop = pStop;
   }
 

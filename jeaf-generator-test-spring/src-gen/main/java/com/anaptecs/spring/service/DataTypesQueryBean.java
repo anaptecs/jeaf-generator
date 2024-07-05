@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
+import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.anaptecs.spring.base.BookingID;
 import com.anaptecs.spring.base.DoubleCode;
@@ -401,7 +402,7 @@ public class DataTypesQueryBean {
      * @param pOffsetDateTime Value to which {@link #offsetDateTime} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setOffsetDateTime( OffsetDateTime pOffsetDateTime ) {
+    public Builder setOffsetDateTime( @MyNotNullProperty OffsetDateTime pOffsetDateTime ) {
       // Assign value to attribute
       offsetDateTime = pOffsetDateTime;
       return this;
@@ -413,7 +414,7 @@ public class DataTypesQueryBean {
      * @param pOffsetTime Value to which {@link #offsetTime} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setOffsetTime( OffsetTime pOffsetTime ) {
+    public Builder setOffsetTime( @MyNotNullProperty OffsetTime pOffsetTime ) {
       offsetTime = pOffsetTime;
       return this;
     }
@@ -424,7 +425,7 @@ public class DataTypesQueryBean {
      * @param pLocalDateTime Value to which {@link #localDateTime} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setLocalDateTime( LocalDateTime pLocalDateTime ) {
+    public Builder setLocalDateTime( @MyNotNullProperty LocalDateTime pLocalDateTime ) {
       // Assign value to attribute
       localDateTime = pLocalDateTime;
       return this;
@@ -436,7 +437,7 @@ public class DataTypesQueryBean {
      * @param pLocalTime Value to which {@link #localTime} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setLocalTime( LocalTime pLocalTime ) {
+    public Builder setLocalTime( @MyNotNullProperty LocalTime pLocalTime ) {
       // Assign value to attribute
       localTime = pLocalTime;
       return this;
@@ -747,6 +748,7 @@ public class DataTypesQueryBean {
    *
    * @return {@link OffsetDateTime} Value to which {@link #offsetDateTime} is set.
    */
+  @MyNotNullProperty
   public OffsetDateTime getOffsetDateTime( ) {
     return offsetDateTime;
   }
@@ -756,7 +758,7 @@ public class DataTypesQueryBean {
    *
    * @param pOffsetDateTime Value to which {@link #offsetDateTime} should be set.
    */
-  public void setOffsetDateTime( OffsetDateTime pOffsetDateTime ) {
+  public void setOffsetDateTime( @MyNotNullProperty OffsetDateTime pOffsetDateTime ) {
     // Assign value to attribute
     offsetDateTime = pOffsetDateTime;
   }
@@ -766,6 +768,7 @@ public class DataTypesQueryBean {
    *
    * @return {@link OffsetTime} Value to which {@link #offsetTime} is set.
    */
+  @MyNotNullProperty
   public OffsetTime getOffsetTime( ) {
     return offsetTime;
   }
@@ -775,7 +778,7 @@ public class DataTypesQueryBean {
    *
    * @param pOffsetTime Value to which {@link #offsetTime} should be set.
    */
-  public void setOffsetTime( OffsetTime pOffsetTime ) {
+  public void setOffsetTime( @MyNotNullProperty OffsetTime pOffsetTime ) {
     offsetTime = pOffsetTime;
   }
 
@@ -791,6 +794,7 @@ public class DataTypesQueryBean {
    *
    * @return {@link LocalDateTime} Value to which {@link #localDateTime} is set.
    */
+  @MyNotNullProperty
   public LocalDateTime getLocalDateTime( ) {
     return localDateTime;
   }
@@ -800,7 +804,7 @@ public class DataTypesQueryBean {
    *
    * @param pLocalDateTime Value to which {@link #localDateTime} should be set.
    */
-  public void setLocalDateTime( LocalDateTime pLocalDateTime ) {
+  public void setLocalDateTime( @MyNotNullProperty LocalDateTime pLocalDateTime ) {
     // Assign value to attribute
     localDateTime = pLocalDateTime;
   }
@@ -810,6 +814,7 @@ public class DataTypesQueryBean {
    *
    * @return {@link LocalTime} Value to which {@link #localTime} is set.
    */
+  @MyNotNullProperty
   public LocalTime getLocalTime( ) {
     return localTime;
   }
@@ -819,7 +824,7 @@ public class DataTypesQueryBean {
    *
    * @param pLocalTime Value to which {@link #localTime} should be set.
    */
-  public void setLocalTime( LocalTime pLocalTime ) {
+  public void setLocalTime( @MyNotNullProperty LocalTime pLocalTime ) {
     // Assign value to attribute
     localTime = pLocalTime;
   }

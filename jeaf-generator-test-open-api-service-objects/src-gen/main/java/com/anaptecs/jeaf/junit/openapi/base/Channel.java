@@ -7,6 +7,8 @@ package com.anaptecs.jeaf.junit.openapi.base;
 
 import javax.validation.Valid;
 
+import com.anaptecs.annotations.MyNotNullProperty;
+
 @Valid
 public class Channel extends ChannelBase {
   /**
@@ -61,6 +63,7 @@ public class Channel extends ChannelBase {
    *
    * @return {@link String} Value to which {@link #derivedSomething} is set.
    */
+  @MyNotNullProperty
   @Override
   public String getDerivedSomething( ) {
     // TODO Implement method for derived property "derivedSomething".

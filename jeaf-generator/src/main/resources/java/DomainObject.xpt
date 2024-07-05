@@ -131,7 +131,7 @@
 		«ENDIF»
 
         «EXPAND Attribute::PropertyAccessors FOREACH ownedAttribute»
-        «EXPAND jeaf::JEAFOperation::PersistentObjectOperation FOREACH ownedOperation»
+        «EXPAND jeaf::JEAFOperation::BusinessOperation FOREACH ownedOperation»
         «EXPAND java::Helper::GenerateToStringMethod»
       }
       «ENDFILE»
@@ -164,7 +164,7 @@
             super(pDomainObjectID);
           }
       
-        «EXPAND jeaf::JEAFOperation::PersistentObjectOperationImpl FOREACH ownedOperation»
+        «EXPAND jeaf::JEAFOperation::BusinessOperationImpl FOREACH ownedOperation»
       }
       «ENDFILE»
   «ENDIF»

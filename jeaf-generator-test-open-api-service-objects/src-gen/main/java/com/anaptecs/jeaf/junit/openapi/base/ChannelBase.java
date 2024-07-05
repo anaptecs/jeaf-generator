@@ -9,6 +9,7 @@ import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
+import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -114,7 +115,7 @@ public abstract class ChannelBase implements ServiceObject {
      * @param pChannelType Value to which {@link #channelType} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setChannelType( ChannelType pChannelType ) {
+    public BuilderBase setChannelType( @MyNotNullProperty ChannelType pChannelType ) {
       channelType = pChannelType;
       return this;
     }
@@ -125,7 +126,7 @@ public abstract class ChannelBase implements ServiceObject {
      * @param pChannelCode Value to which {@link #channelCode} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setChannelCode( ChannelCode pChannelCode ) {
+    public BuilderBase setChannelCode( @MyNotNullProperty ChannelCode pChannelCode ) {
       channelCode = pChannelCode;
       return this;
     }
@@ -183,6 +184,7 @@ public abstract class ChannelBase implements ServiceObject {
    *
    * @return {@link ChannelType} Value to which {@link #channelType} is set.
    */
+  @MyNotNullProperty
   public ChannelType getChannelType( ) {
     return channelType;
   }
@@ -193,7 +195,7 @@ public abstract class ChannelBase implements ServiceObject {
    *
    * @param pChannelType Value to which {@link #channelType} should be set.
    */
-  public void setChannelType( ChannelType pChannelType ) {
+  public void setChannelType( @MyNotNullProperty ChannelType pChannelType ) {
     channelType = pChannelType;
   }
 
@@ -210,6 +212,7 @@ public abstract class ChannelBase implements ServiceObject {
    *
    * @return {@link ChannelCode} Value to which {@link #channelCode} is set.
    */
+  @MyNotNullProperty
   public ChannelCode getChannelCode( ) {
     return channelCode;
   }
@@ -220,7 +223,7 @@ public abstract class ChannelBase implements ServiceObject {
    *
    * @param pChannelCode Value to which {@link #channelCode} should be set.
    */
-  public void setChannelCode( ChannelCode pChannelCode ) {
+  public void setChannelCode( @MyNotNullProperty ChannelCode pChannelCode ) {
     channelCode = pChannelCode;
   }
 
@@ -264,6 +267,7 @@ public abstract class ChannelBase implements ServiceObject {
    *
    * @return {@link Reseller} Value to which {@link #reseller} is set.
    */
+  @MyNotNullProperty
   public Reseller getReseller( ) {
     return reseller;
   }
@@ -273,7 +277,7 @@ public abstract class ChannelBase implements ServiceObject {
    *
    * @param pReseller Value to which {@link #reseller} should be set.
    */
-  void setReseller( Reseller pReseller ) {
+  void setReseller( @MyNotNullProperty Reseller pReseller ) {
     // Release already referenced object before setting a new association.
     if (reseller != null) {
       reseller.removeFromChannels((Channel) this);
@@ -317,6 +321,7 @@ public abstract class ChannelBase implements ServiceObject {
    *
    * @return {@link String} Value to which {@link #derivedSomething} is set.
    */
+  @MyNotNullProperty
   public abstract String getDerivedSomething( );
 
   /**

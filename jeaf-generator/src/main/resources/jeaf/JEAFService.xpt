@@ -100,7 +100,7 @@ public final class «name»Proxy extends ServiceProxy implements «name» «IF g
     «IF this.returnResult().isMultivalued().first() == true»@SuppressWarnings("unchecked")«ENDIF» 
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
     «EXPAND java::Helper::GenerateDeprecationAnnotation FOR this.getReturnResult() -»
-    «visibility» «getReturnTypeName()» «name» («EXPAND JEAFOperation::ParameterSignature(true)») «getThrownExceptionsAsString()» {
+    «visibility» «getReturnTypeName()» «name» («EXPAND JEAFOperation::ParameterSignature(true, "JEAFService")») «getThrownExceptionsAsString()» {
         try {
             Command lCommand = new «this.getCommandClassName()»(«asParameterListNames()»);
             «IF getReturnTypeName() != "void"»
@@ -178,7 +178,7 @@ final class «this.getCommandClassName()» extends Command {
    * 
    «asParameterJavaDoc()»
    */    
-  «this.getCommandClassName()»(«EXPAND JEAFOperation::ParameterSignature(false)») {
+  «this.getCommandClassName()»(«EXPAND JEAFOperation::ParameterSignature(false, "JEAFService")») {
     super(«targetService.name».class);
         «FOREACH ownedParameter AS param»
             «IF param.isInputParameter() && param.isParameterSuppressed() == false»

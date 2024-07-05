@@ -14,6 +14,8 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.anaptecs.annotations.MyNotEmptyProperty;
+import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 
 /**
@@ -284,7 +286,7 @@ public class ChildAA extends ChildA {
      * @param pRequiredArray Collection to which {@link #requiredArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setRequiredArray( String[] pRequiredArray ) {
+    public Builder setRequiredArray( @MyNotEmptyProperty String[] pRequiredArray ) {
       // Assign value to attribute
       if (pRequiredArray != null) {
         requiredArray = pRequiredArray;
@@ -301,7 +303,7 @@ public class ChildAA extends ChildA {
      * @param pBigIntegerCode Value to which {@link #bigIntegerCode} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setBigIntegerCode( BigIntegerCode pBigIntegerCode ) {
+    public Builder setBigIntegerCode( @MyNotNullProperty BigIntegerCode pBigIntegerCode ) {
       // Assign value to attribute
       bigIntegerCode = pBigIntegerCode;
       return this;
@@ -419,6 +421,7 @@ public class ChildAA extends ChildA {
    *
    * @return {@link String[]} Value to which {@link #requiredArray} is set.
    */
+  @MyNotEmptyProperty
   public String[] getRequiredArray( ) {
     String[] lReturnValue;
     if (requiredArray != null) {
@@ -435,7 +438,7 @@ public class ChildAA extends ChildA {
    *
    * @param pRequiredArray Value to which {@link #requiredArray} should be set.
    */
-  public void setRequiredArray( String[] pRequiredArray ) {
+  public void setRequiredArray( @MyNotEmptyProperty String[] pRequiredArray ) {
     // Assign value to attribute
     if (pRequiredArray != null) {
       requiredArray = pRequiredArray;
@@ -450,6 +453,7 @@ public class ChildAA extends ChildA {
    *
    * @return {@link BigIntegerCode} Value to which {@link #bigIntegerCode} is set.
    */
+  @MyNotNullProperty
   public BigIntegerCode getBigIntegerCode( ) {
     return bigIntegerCode;
   }
@@ -459,7 +463,7 @@ public class ChildAA extends ChildA {
    *
    * @param pBigIntegerCode Value to which {@link #bigIntegerCode} should be set.
    */
-  public void setBigIntegerCode( BigIntegerCode pBigIntegerCode ) {
+  public void setBigIntegerCode( @MyNotNullProperty BigIntegerCode pBigIntegerCode ) {
     // Assign value to attribute
     bigIntegerCode = pBigIntegerCode;
   }

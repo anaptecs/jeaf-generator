@@ -7,6 +7,7 @@ package com.anaptecs.spring.base;
 
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -113,7 +114,7 @@ public class LinkObject {
      * @param pHref Value to which {@link #href} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setHref( String pHref ) {
+    public Builder setHref( @MyNotNullProperty String pHref ) {
       // Assign value to attribute
       href = pHref;
       return this;
@@ -136,6 +137,7 @@ public class LinkObject {
    *
    * @return {@link String} Value to which {@link #href} is set.
    */
+  @MyNotNullProperty
   public String getHref( ) {
     return href;
   }
@@ -145,7 +147,7 @@ public class LinkObject {
    *
    * @param pHref Value to which {@link #href} should be set.
    */
-  public void setHref( String pHref ) {
+  public void setHref( @MyNotNullProperty String pHref ) {
     // Assign value to attribute
     href = pHref;
   }

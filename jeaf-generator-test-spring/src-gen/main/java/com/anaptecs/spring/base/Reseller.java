@@ -7,6 +7,8 @@ package com.anaptecs.spring.base;
 
 import javax.validation.Valid;
 
+import com.anaptecs.annotations.MyNotNullProperty;
+
 @Valid
 public class Reseller extends ResellerBase {
   /**
@@ -74,6 +76,7 @@ public class Reseller extends ResellerBase {
   /**
    * @return {@link Integer}
    */
+  @MyNotNullProperty
   @Override
   public Integer doSomething( ) {
     // TODO: Implement business logic for method.

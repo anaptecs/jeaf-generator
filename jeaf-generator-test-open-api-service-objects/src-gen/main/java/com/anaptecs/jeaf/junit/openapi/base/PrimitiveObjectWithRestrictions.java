@@ -22,6 +22,7 @@ import javax.validation.constraints.Positive;
 import javax.validation.constraints.PositiveOrZero;
 import javax.validation.constraints.Size;
 
+import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -379,7 +380,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
      * @param pBBoolean Value to which {@link #bBoolean} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setBBoolean( Boolean pBBoolean ) {
+    public Builder setBBoolean( @MyNotNullProperty Boolean pBBoolean ) {
       // Assign value to attribute
       bBoolean = pBBoolean;
       return this;
@@ -415,7 +416,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
      * @param pBByte Value to which {@link #bByte} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setBByte( Byte pBByte ) {
+    public Builder setBByte( @MyNotNullProperty Byte pBByte ) {
       // Assign value to attribute
       bByte = pBByte;
       return this;
@@ -439,7 +440,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
      * @param pBShort Value to which {@link #bShort} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setBShort( Short pBShort ) {
+    public Builder setBShort( @MyNotNullProperty Short pBShort ) {
       // Assign value to attribute
       bShort = pBShort;
       return this;
@@ -463,7 +464,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
      * @param pBInteger Value to which {@link #bInteger} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setBInteger( Integer pBInteger ) {
+    public Builder setBInteger( @MyNotNullProperty Integer pBInteger ) {
       // Assign value to attribute
       bInteger = pBInteger;
       return this;
@@ -475,7 +476,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
      * @param pCInteger Value to which {@link #cInteger} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setCInteger( Integer pCInteger ) {
+    public Builder setCInteger( @MyNotNullProperty Integer pCInteger ) {
       // Assign value to attribute
       cInteger = pCInteger;
       return this;
@@ -499,7 +500,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
      * @param pBLong Value to which {@link #bLong} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setBLong( Long pBLong ) {
+    public Builder setBLong( @MyNotNullProperty Long pBLong ) {
       // Assign value to attribute
       bLong = pBLong;
       return this;
@@ -511,7 +512,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
      * @param pABigInteger Value to which {@link #aBigInteger} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setABigInteger( BigInteger pABigInteger ) {
+    public Builder setABigInteger( @MyNotNullProperty BigInteger pABigInteger ) {
       // Assign value to attribute
       aBigInteger = pABigInteger;
       return this;
@@ -535,7 +536,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
      * @param pBCharacter Value to which {@link #bCharacter} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setBCharacter( Character pBCharacter ) {
+    public Builder setBCharacter( @MyNotNullProperty Character pBCharacter ) {
       // Assign value to attribute
       bCharacter = pBCharacter;
       return this;
@@ -559,7 +560,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
      * @param pBFloat Value to which {@link #bFloat} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setBFloat( Float pBFloat ) {
+    public Builder setBFloat( @MyNotNullProperty Float pBFloat ) {
       // Assign value to attribute
       bFloat = pBFloat;
       return this;
@@ -583,7 +584,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
      * @param pBDouble Value to which {@link #bDouble} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setBDouble( Double pBDouble ) {
+    public Builder setBDouble( @MyNotNullProperty Double pBDouble ) {
       // Assign value to attribute
       bDouble = pBDouble;
       return this;
@@ -595,7 +596,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
      * @param pABigDecimal Value to which {@link #aBigDecimal} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setABigDecimal( BigDecimal pABigDecimal ) {
+    public Builder setABigDecimal( @MyNotNullProperty BigDecimal pABigDecimal ) {
       // Assign value to attribute
       aBigDecimal = pABigDecimal;
       return this;
@@ -607,7 +608,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
      * @param pAString Value to which {@link #aString} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setAString( String pAString ) {
+    public Builder setAString( @MyNotNullProperty String pAString ) {
       // Assign value to attribute
       aString = pAString;
       return this;
@@ -619,7 +620,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
      * @param pBString Value to which {@link #bString} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setBString( String pBString ) {
+    public Builder setBString( @MyNotNullProperty String pBString ) {
       // Assign value to attribute
       bString = pBString;
       return this;
@@ -683,6 +684,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
    *
    * @return {@link Boolean} Value to which {@link #bBoolean} is set.
    */
+  @MyNotNullProperty
   public Boolean getBBoolean( ) {
     return bBoolean;
   }
@@ -692,7 +694,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
    *
    * @param pBBoolean Value to which {@link #bBoolean} should be set.
    */
-  public void setBBoolean( Boolean pBBoolean ) {
+  public void setBBoolean( @MyNotNullProperty Boolean pBBoolean ) {
     // Assign value to attribute
     bBoolean = pBBoolean;
   }
@@ -750,6 +752,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
    *
    * @return {@link Byte} Value to which {@link #bByte} is set.
    */
+  @MyNotNullProperty
   public Byte getBByte( ) {
     return bByte;
   }
@@ -759,7 +762,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
    *
    * @param pBByte Value to which {@link #bByte} should be set.
    */
-  public void setBByte( Byte pBByte ) {
+  public void setBByte( @MyNotNullProperty Byte pBByte ) {
     // Assign value to attribute
     bByte = pBByte;
   }
@@ -788,6 +791,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
    *
    * @return {@link Short} Value to which {@link #bShort} is set.
    */
+  @MyNotNullProperty
   public Short getBShort( ) {
     return bShort;
   }
@@ -797,7 +801,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
    *
    * @param pBShort Value to which {@link #bShort} should be set.
    */
-  public void setBShort( Short pBShort ) {
+  public void setBShort( @MyNotNullProperty Short pBShort ) {
     // Assign value to attribute
     bShort = pBShort;
   }
@@ -826,6 +830,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
    *
    * @return {@link Integer} Value to which {@link #bInteger} is set.
    */
+  @MyNotNullProperty
   public Integer getBInteger( ) {
     return bInteger;
   }
@@ -835,7 +840,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
    *
    * @param pBInteger Value to which {@link #bInteger} should be set.
    */
-  public void setBInteger( Integer pBInteger ) {
+  public void setBInteger( @MyNotNullProperty Integer pBInteger ) {
     // Assign value to attribute
     bInteger = pBInteger;
   }
@@ -845,6 +850,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
    *
    * @return {@link Integer} Value to which {@link #cInteger} is set.
    */
+  @MyNotNullProperty
   public Integer getCInteger( ) {
     return cInteger;
   }
@@ -854,7 +860,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
    *
    * @param pCInteger Value to which {@link #cInteger} should be set.
    */
-  public void setCInteger( Integer pCInteger ) {
+  public void setCInteger( @MyNotNullProperty Integer pCInteger ) {
     // Assign value to attribute
     cInteger = pCInteger;
   }
@@ -883,6 +889,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
    *
    * @return {@link Long} Value to which {@link #bLong} is set.
    */
+  @MyNotNullProperty
   public Long getBLong( ) {
     return bLong;
   }
@@ -892,7 +899,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
    *
    * @param pBLong Value to which {@link #bLong} should be set.
    */
-  public void setBLong( Long pBLong ) {
+  public void setBLong( @MyNotNullProperty Long pBLong ) {
     // Assign value to attribute
     bLong = pBLong;
   }
@@ -902,6 +909,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
    *
    * @return {@link BigInteger} Value to which {@link #aBigInteger} is set.
    */
+  @MyNotNullProperty
   public BigInteger getABigInteger( ) {
     return aBigInteger;
   }
@@ -911,7 +919,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
    *
    * @param pABigInteger Value to which {@link #aBigInteger} should be set.
    */
-  public void setABigInteger( BigInteger pABigInteger ) {
+  public void setABigInteger( @MyNotNullProperty BigInteger pABigInteger ) {
     // Assign value to attribute
     aBigInteger = pABigInteger;
   }
@@ -940,6 +948,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
    *
    * @return {@link Character} Value to which {@link #bCharacter} is set.
    */
+  @MyNotNullProperty
   public Character getBCharacter( ) {
     return bCharacter;
   }
@@ -949,7 +958,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
    *
    * @param pBCharacter Value to which {@link #bCharacter} should be set.
    */
-  public void setBCharacter( Character pBCharacter ) {
+  public void setBCharacter( @MyNotNullProperty Character pBCharacter ) {
     // Assign value to attribute
     bCharacter = pBCharacter;
   }
@@ -978,6 +987,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
    *
    * @return {@link Float} Value to which {@link #bFloat} is set.
    */
+  @MyNotNullProperty
   public Float getBFloat( ) {
     return bFloat;
   }
@@ -987,7 +997,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
    *
    * @param pBFloat Value to which {@link #bFloat} should be set.
    */
-  public void setBFloat( Float pBFloat ) {
+  public void setBFloat( @MyNotNullProperty Float pBFloat ) {
     // Assign value to attribute
     bFloat = pBFloat;
   }
@@ -1016,6 +1026,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
    *
    * @return {@link Double} Value to which {@link #bDouble} is set.
    */
+  @MyNotNullProperty
   public Double getBDouble( ) {
     return bDouble;
   }
@@ -1025,7 +1036,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
    *
    * @param pBDouble Value to which {@link #bDouble} should be set.
    */
-  public void setBDouble( Double pBDouble ) {
+  public void setBDouble( @MyNotNullProperty Double pBDouble ) {
     // Assign value to attribute
     bDouble = pBDouble;
   }
@@ -1035,6 +1046,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
    *
    * @return {@link BigDecimal} Value to which {@link #aBigDecimal} is set.
    */
+  @MyNotNullProperty
   public BigDecimal getABigDecimal( ) {
     return aBigDecimal;
   }
@@ -1044,7 +1056,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
    *
    * @param pABigDecimal Value to which {@link #aBigDecimal} should be set.
    */
-  public void setABigDecimal( BigDecimal pABigDecimal ) {
+  public void setABigDecimal( @MyNotNullProperty BigDecimal pABigDecimal ) {
     // Assign value to attribute
     aBigDecimal = pABigDecimal;
   }
@@ -1054,6 +1066,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
    *
    * @return {@link String} Value to which {@link #aString} is set.
    */
+  @MyNotNullProperty
   public String getAString( ) {
     return aString;
   }
@@ -1063,7 +1076,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
    *
    * @param pAString Value to which {@link #aString} should be set.
    */
-  public void setAString( String pAString ) {
+  public void setAString( @MyNotNullProperty String pAString ) {
     // Assign value to attribute
     aString = pAString;
   }
@@ -1073,6 +1086,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
    *
    * @return {@link String} Value to which {@link #bString} is set.
    */
+  @MyNotNullProperty
   public String getBString( ) {
     return bString;
   }
@@ -1082,7 +1096,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
    *
    * @param pBString Value to which {@link #bString} should be set.
    */
-  public void setBString( String pBString ) {
+  public void setBString( @MyNotNullProperty String pBString ) {
     // Assign value to attribute
     bString = pBString;
   }

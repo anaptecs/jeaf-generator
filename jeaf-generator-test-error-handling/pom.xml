@@ -68,6 +68,8 @@
 					
 					<disableOpenAPIDependencyChecks>false</disableOpenAPIDependencyChecks>
 					
+					<generateNotNullAnnotationForSingleValuedProperties>true</generateNotNullAnnotationForSingleValuedProperties>
+					<generateNotEmptyAnnotationForMultiValuedProperties>true</generateNotEmptyAnnotationForMultiValuedProperties>
 					
 					<!-- For test purposes the build does not break if we face problems here as this is the intention of this Maven project -->
 					<breakBuildOnGeneratorError>false</breakBuildOnGeneratorError>

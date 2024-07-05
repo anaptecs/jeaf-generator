@@ -23,6 +23,8 @@ import java.util.SortedSet;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 
+import com.anaptecs.annotations.MyNotEmptyServiceParam;
+import com.anaptecs.annotations.MyNotNullServiceParam;
 import com.anaptecs.spring.base.BookingCode;
 import com.anaptecs.spring.base.BookingID;
 import com.anaptecs.spring.base.ChannelCode;
@@ -58,7 +60,8 @@ public interface RESTProductService {
    * @param pProductID
    * @return {@link Product}
    */
-  Product getProduct( @NotEmpty String pProductID );
+  @MyNotNullServiceParam
+  Product getProduct( @NotEmpty @MyNotNullServiceParam String pProductID );
 
   /**
    * <p/>
@@ -67,7 +70,7 @@ public interface RESTProductService {
    * @param pProduct
    * @return boolean
    */
-  boolean createProduct( Product pProduct );
+  boolean createProduct( @MyNotNullServiceParam Product pProduct );
 
   /**
    * <p/>
@@ -76,7 +79,8 @@ public interface RESTProductService {
    * @param pContext
    * @return {@link Sortiment}
    */
-  Sortiment getSortiment( Context pContext );
+  @MyNotNullServiceParam
+  Sortiment getSortiment( @MyNotNullServiceParam Context pContext );
 
   /**
    * <p/>
@@ -85,18 +89,21 @@ public interface RESTProductService {
    * @param pChannelCode
    * @return {@link ChannelCode}
    */
-  ChannelCode createChannelCode( @NotBlank String pChannelCode );
+  @MyNotNullServiceParam
+  ChannelCode createChannelCode( @NotBlank @MyNotNullServiceParam String pChannelCode );
 
   /**
    * <p/>
    * <b>Authorized Roles:</b> Customer, Sales Agent
    */
+  @MyNotNullServiceParam
   void ping( );
 
   /**
    * <p/>
    * <b>Authorized Roles:</b> Sales Agent
    */
+  @MyNotNullServiceParam
   void testInit( );
 
   /**
@@ -106,7 +113,7 @@ public interface RESTProductService {
    * @param pChannelCode
    * @return {@link List<CurrencyCode>}
    */
-  List<CurrencyCode> getSupportedCurrencies( ChannelCode pChannelCode );
+  List<CurrencyCode> getSupportedCurrencies( @MyNotNullServiceParam ChannelCode pChannelCode );
 
   /**
    * <p/>
@@ -115,7 +122,7 @@ public interface RESTProductService {
    * @param pChannelCode
    * @return {@link List<CurrencyCode>}
    */
-  List<CurrencyCode> getSupportedCurrenciesAsync( ChannelCode pChannelCode );
+  List<CurrencyCode> getSupportedCurrenciesAsync( @MyNotNullServiceParam ChannelCode pChannelCode );
 
   /**
    * <p/>
@@ -126,7 +133,9 @@ public interface RESTProductService {
    * @param pLocaleQueryParam
    * @return {@link String}
    */
-  String testParams( BigDecimal pBigDecimalHeader, int pIntCookieParam, Locale pLocaleQueryParam );
+  @MyNotNullServiceParam
+  String testParams( @MyNotNullServiceParam BigDecimal pBigDecimalHeader, int pIntCookieParam,
+      @MyNotNullServiceParam Locale pLocaleQueryParam );
 
   /**
    * <p/>
@@ -136,7 +145,9 @@ public interface RESTProductService {
    * @param pTimeUnit
    * @param pExtensibleEnum
    */
-  void testEnumParams( ChannelType pChannelType, TimeUnit pTimeUnit, ExtensibleEnum pExtensibleEnum );
+  @MyNotNullServiceParam
+  void testEnumParams( @MyNotNullServiceParam ChannelType pChannelType, @MyNotNullServiceParam TimeUnit pTimeUnit,
+      @MyNotNullServiceParam ExtensibleEnum pExtensibleEnum );
 
   /**
    * <p/>
@@ -146,7 +157,9 @@ public interface RESTProductService {
    * @param pTimeUnit
    * @param pExtensibleEnum
    */
-  void testEnumHeaderParams( ChannelType pChannelType, TimeUnit pTimeUnit, ExtensibleEnum pExtensibleEnum );
+  @MyNotNullServiceParam
+  void testEnumHeaderParams( @MyNotNullServiceParam ChannelType pChannelType, @MyNotNullServiceParam TimeUnit pTimeUnit,
+      @MyNotNullServiceParam ExtensibleEnum pExtensibleEnum );
 
   /**
    * <p/>
@@ -165,9 +178,13 @@ public interface RESTProductService {
    * @param pSQLDate
    * @param pCalendars
    */
-  void testDateQueryParams( String pPath, OffsetDateTime pStartTimestamp, OffsetTime pStartTime,
-      LocalDateTime pLocalStartTimestamp, LocalTime pLocalStartTime, LocalDate pLocalStartDate, Calendar pCalendar,
-      java.util.Date pUtilDate, Timestamp pSQLTimestamp, Time pSQLTime, Date pSQLDate, Set<Calendar> pCalendars );
+  @MyNotNullServiceParam
+  void testDateQueryParams( @MyNotNullServiceParam String pPath, @MyNotNullServiceParam OffsetDateTime pStartTimestamp,
+      @MyNotNullServiceParam OffsetTime pStartTime, @MyNotNullServiceParam LocalDateTime pLocalStartTimestamp,
+      @MyNotNullServiceParam LocalTime pLocalStartTime, @MyNotNullServiceParam LocalDate pLocalStartDate,
+      @MyNotNullServiceParam Calendar pCalendar, @MyNotNullServiceParam java.util.Date pUtilDate,
+      @MyNotNullServiceParam Timestamp pSQLTimestamp, @MyNotNullServiceParam Time pSQLTime,
+      @MyNotNullServiceParam Date pSQLDate, Set<Calendar> pCalendars );
 
   /**
    * <p/>
@@ -176,7 +193,9 @@ public interface RESTProductService {
    * @param pPath
    * @param pQueryParams
    */
-  void testDateQueryParamsBean( String pPath, DateQueryParamsBean pQueryParams );
+  @MyNotNullServiceParam
+  void testDateQueryParamsBean( @MyNotNullServiceParam String pPath,
+      @MyNotNullServiceParam DateQueryParamsBean pQueryParams );
 
   /**
    * <p/>
@@ -195,9 +214,13 @@ public interface RESTProductService {
    * @param pSQLDate
    * @param pUtilDates
    */
-  void testDateHeaderParams( String pPath, OffsetDateTime pOffsetDateTime, OffsetTime pOffsetTime,
-      LocalDateTime pLocalDateTime, LocalTime pLocalTime, LocalDate pLocalDate, Calendar pCalendar,
-      java.util.Date pUtilDate, Timestamp pSQLTimestamp, Time pSQLTime, Date pSQLDate, Set<java.util.Date> pUtilDates );
+  @MyNotNullServiceParam
+  void testDateHeaderParams( @MyNotNullServiceParam String pPath, @MyNotNullServiceParam OffsetDateTime pOffsetDateTime,
+      @MyNotNullServiceParam OffsetTime pOffsetTime, @MyNotNullServiceParam LocalDateTime pLocalDateTime,
+      @MyNotNullServiceParam LocalTime pLocalTime, @MyNotNullServiceParam LocalDate pLocalDate,
+      @MyNotNullServiceParam Calendar pCalendar, @MyNotNullServiceParam java.util.Date pUtilDate,
+      @MyNotNullServiceParam Timestamp pSQLTimestamp, @MyNotNullServiceParam Time pSQLTime,
+      @MyNotNullServiceParam Date pSQLDate, Set<java.util.Date> pUtilDates );
 
   /**
    * <p/>
@@ -206,7 +229,9 @@ public interface RESTProductService {
    * @param pPath
    * @param pHeaderParams
    */
-  void testDateHeaderParamsBean( String pPath, DateHeaderParamsBean pHeaderParams );
+  @MyNotNullServiceParam
+  void testDateHeaderParamsBean( @MyNotNullServiceParam String pPath,
+      @MyNotNullServiceParam DateHeaderParamsBean pHeaderParams );
 
   /**
    * <p/>
@@ -215,7 +240,9 @@ public interface RESTProductService {
    * @param pChannelTypeParam
    * @param pContext
    */
-  void testCookieParams( ChannelType pChannelTypeParam, SpecialContext pContext );
+  @MyNotNullServiceParam
+  void testCookieParams( @MyNotNullServiceParam ChannelType pChannelTypeParam,
+      @MyNotNullServiceParam SpecialContext pContext );
 
   /**
    * <p/>
@@ -225,6 +252,7 @@ public interface RESTProductService {
    * @param query2
    * @return {@link String}
    */
+  @MyNotNullServiceParam
   String testOptionalQueryParams( String query1, int query2 );
 
   /**
@@ -234,7 +262,7 @@ public interface RESTProductService {
    * @param pComplextBookingID
    * @return boolean
    */
-  boolean processComplexBookingID( ComplexBookingID pComplextBookingID );
+  boolean processComplexBookingID( @MyNotNullServiceParam ComplexBookingID pComplextBookingID );
 
   /**
    * <p/>
@@ -245,7 +273,9 @@ public interface RESTProductService {
    * @param pDoubleCode
    * @return {@link String}
    */
-  String testDataTypesAsHeaderParam( BookingID pBookingID, BookingCode pBookingCode, DoubleCode pDoubleCode );
+  @MyNotNullServiceParam
+  String testDataTypesAsHeaderParam( @MyNotNullServiceParam BookingID pBookingID,
+      @MyNotNullServiceParam BookingCode pBookingCode, @MyNotNullServiceParam DoubleCode pDoubleCode );
 
   /**
    * <p/>
@@ -254,7 +284,8 @@ public interface RESTProductService {
    * @param pContext
    * @return {@link String}
    */
-  String testDataTypesAsHeaderBeanParam( AdvancedHeader pContext );
+  @MyNotNullServiceParam
+  String testDataTypesAsHeaderBeanParam( @MyNotNullServiceParam AdvancedHeader pContext );
 
   /**
    * <p/>
@@ -263,6 +294,7 @@ public interface RESTProductService {
    * @param pIntegerArray
    * @return {@link String}
    */
+  @MyNotNullServiceParam
   String testPrimitiveArrays( int[] pIntegerArray );
 
   /**
@@ -272,7 +304,8 @@ public interface RESTProductService {
    * @param pBookingCode
    * @return {@link String}
    */
-  String testDataTypeAsQueryParam( BookingCode pBookingCode );
+  @MyNotNullServiceParam
+  String testDataTypeAsQueryParam( @MyNotNullServiceParam BookingCode pBookingCode );
 
   /**
    * <p/>
@@ -281,7 +314,8 @@ public interface RESTProductService {
    * @param pBeanParam
    * @return {@link String}
    */
-  String testDataTypeAsBeanQueryParam( QueryBeanParam pBeanParam );
+  @MyNotNullServiceParam
+  String testDataTypeAsBeanQueryParam( @MyNotNullServiceParam QueryBeanParam pBeanParam );
 
   /**
    * <p/>
@@ -290,6 +324,7 @@ public interface RESTProductService {
    * @param pIntValues
    * @return {@link String}
    */
+  @MyNotNullServiceParam
   String testPrimitiveArrayAsQueryParam( int[] pIntValues );
 
   /**
@@ -299,6 +334,7 @@ public interface RESTProductService {
    * @param pStrings
    * @return {@link String}
    */
+  @MyNotNullServiceParam
   String testSimpleTypesAsQueryParams( List<String> pStrings );
 
   /**
@@ -308,7 +344,8 @@ public interface RESTProductService {
    * @param pIntegers
    * @return {@link String}
    */
-  String testPrimitiveWrapperArrayAsQueryParam( Set<Integer> pIntegers );
+  @MyNotNullServiceParam
+  String testPrimitiveWrapperArrayAsQueryParam( @MyNotEmptyServiceParam Set<Integer> pIntegers );
 
   /**
    * <p/>
@@ -317,7 +354,8 @@ public interface RESTProductService {
    * @param pBean
    * @return {@link String}
    */
-  String testMultivaluedQueryParamsBean( MultivaluedQueryParamsBean pBean );
+  @MyNotNullServiceParam
+  String testMultivaluedQueryParamsBean( @MyNotNullServiceParam MultivaluedQueryParamsBean pBean );
 
   /**
    * <p/>
@@ -330,8 +368,10 @@ public interface RESTProductService {
    * @param pLocalDates
    * @return {@link String}
    */
-  String testMulitvaluedDataTypeAsQueryParam( List<IntegerCodeType> pCodes, Set<LongCode> pLongCodes,
-      List<BookingID> pBookingIDs, List<OffsetDateTime> pTimestamps, SortedSet<LocalDate> pLocalDates );
+  @MyNotNullServiceParam
+  String testMulitvaluedDataTypeAsQueryParam( List<IntegerCodeType> pCodes,
+      @MyNotEmptyServiceParam Set<LongCode> pLongCodes, List<BookingID> pBookingIDs, List<OffsetDateTime> pTimestamps,
+      SortedSet<LocalDate> pLocalDates );
 
   /**
    * <p/>
@@ -340,7 +380,8 @@ public interface RESTProductService {
    * @param pQueryBean
    * @return {@link String}
    */
-  String testMulitvaluedDataTypeAsBeanQueryParam( DataTypesQueryBean pQueryBean );
+  @MyNotNullServiceParam
+  String testMulitvaluedDataTypeAsBeanQueryParam( @MyNotNullServiceParam DataTypesQueryBean pQueryBean );
 
   /**
    * <p/>
@@ -349,7 +390,8 @@ public interface RESTProductService {
    * @param pMultiValuedBean
    * @return {@link String}
    */
-  String testMultiValuedHeaderFieldsInBeanParam( MultiValuedHeaderBeanParam pMultiValuedBean );
+  @MyNotNullServiceParam
+  String testMultiValuedHeaderFieldsInBeanParam( @MyNotNullServiceParam MultiValuedHeaderBeanParam pMultiValuedBean );
 
   /**
    * <p/>
@@ -365,8 +407,10 @@ public interface RESTProductService {
    * @param pBase64
    * @return {@link String}
    */
-  String testMultiValuedHeaderFields( Set<String> pNames, int[] pInts, Set<Double> pDoubles, Set<StringCode> pCodes,
-      OffsetDateTime pStartDate, Set<OffsetDateTime> pTimestamps, Set<OffsetTime> pTimes, byte[] pBase64 );
+  @MyNotNullServiceParam
+  String testMultiValuedHeaderFields( Set<String> pNames, @MyNotEmptyServiceParam int[] pInts, Set<Double> pDoubles,
+      Set<StringCode> pCodes, OffsetDateTime pStartDate, Set<OffsetDateTime> pTimestamps, Set<OffsetTime> pTimes,
+      byte[] pBase64 );
 
   /**
    * <p/>
@@ -374,7 +418,8 @@ public interface RESTProductService {
    *
    * @param pBookingID
    */
-  void testBookingIDAsPathParam( BookingID pBookingID );
+  @MyNotNullServiceParam
+  void testBookingIDAsPathParam( @MyNotNullServiceParam BookingID pBookingID );
 
   /**
    * <p/>
@@ -382,6 +427,7 @@ public interface RESTProductService {
    *
    * @param pBookingID
    */
+  @MyNotNullServiceParam
   void testBookingIDAsHeaderParam( BookingID pBookingID );
 
   /**
@@ -391,7 +437,8 @@ public interface RESTProductService {
    * @param pContext
    * @return {@link String}
    */
-  String testContextWithPrimitives( ContextWithPrimitives pContext );
+  @MyNotNullServiceParam
+  String testContextWithPrimitives( @MyNotNullServiceParam ContextWithPrimitives pContext );
 
   /**
    * <p/>
@@ -405,6 +452,7 @@ public interface RESTProductService {
    * @param pVeryLong
    * @return {@link String}
    */
-  String testPrimitivesAsParams( int pAnInt, Integer pAnInteger, boolean pABoolean, Boolean pBooleanWrapper,
-      long pALong, Long pVeryLong );
+  @MyNotNullServiceParam
+  String testPrimitivesAsParams( int pAnInt, @MyNotNullServiceParam Integer pAnInteger, boolean pABoolean,
+      @MyNotNullServiceParam Boolean pBooleanWrapper, long pALong, @MyNotNullServiceParam Long pVeryLong );
 }

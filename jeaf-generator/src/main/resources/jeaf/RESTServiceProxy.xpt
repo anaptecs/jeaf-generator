@@ -30,7 +30,7 @@ package «packageName()».restproxy;
  * Service Provider Interface is generated so that a proxy for a REST Resource can be provided as JEAF Service Provider.
  */
 public interface «name»RESTProxyServiceProvider extends com.anaptecs.jeaf.core.api.ServiceProvider {
-  «EXPAND JEAFOperation::InterfaceOperation FOREACH this.getAllOperations().typeSelect(RESTOperation)»
+  «EXPAND JEAFOperation::PlainInterfaceOperation("RESTResource") FOREACH this.getAllOperations().typeSelect(RESTOperation)»
 }
 «ENDFILE»
 «ENDDEFINE»

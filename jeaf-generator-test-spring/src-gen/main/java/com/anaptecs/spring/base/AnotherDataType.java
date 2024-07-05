@@ -7,6 +7,7 @@ package com.anaptecs.spring.base;
 
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -113,7 +114,7 @@ public class AnotherDataType {
      * @param pData Value to which {@link #data} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setData( String pData ) {
+    public Builder setData( @MyNotNullProperty String pData ) {
       // Assign value to attribute
       data = pData;
       return this;
@@ -137,6 +138,7 @@ public class AnotherDataType {
    *
    * @return {@link String} Value to which {@link #data} is set.
    */
+  @MyNotNullProperty
   public String getData( ) {
     return data;
   }
@@ -146,7 +148,7 @@ public class AnotherDataType {
    *
    * @param pData Value to which {@link #data} should be set.
    */
-  public void setData( String pData ) {
+  public void setData( @MyNotNullProperty String pData ) {
     // Assign value to attribute
     data = pData;
   }

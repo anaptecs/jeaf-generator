@@ -15,6 +15,7 @@ import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
+import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -169,7 +170,7 @@ public class Sortiment implements ServiceObject {
      * @param pValue Value to which {@link #value} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setValue( Integer pValue ) {
+    public Builder setValue( @MyNotNullProperty Integer pValue ) {
       // Assign value to attribute
       value = pValue;
       return this;
@@ -284,6 +285,7 @@ public class Sortiment implements ServiceObject {
    *
    * @return {@link Integer} Value to which {@link #value} is set.
    */
+  @MyNotNullProperty
   public Integer getValue( ) {
     return value;
   }

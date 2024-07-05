@@ -10,6 +10,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.ws.rs.HeaderParam;
 
+import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -117,7 +118,7 @@ public class LocalBeanParamType implements ServiceObject {
      * @param pLocalKey Value to which {@link #localKey} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setLocalKey( String pLocalKey ) {
+    public Builder setLocalKey( @MyNotNullProperty String pLocalKey ) {
       // Assign value to attribute
       localKey = pLocalKey;
       return this;
@@ -129,7 +130,7 @@ public class LocalBeanParamType implements ServiceObject {
      * @param pLocalID Value to which {@link #localID} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setLocalID( String pLocalID ) {
+    public Builder setLocalID( @MyNotNullProperty String pLocalID ) {
       // Assign value to attribute
       localID = pLocalID;
       return this;
@@ -141,7 +142,7 @@ public class LocalBeanParamType implements ServiceObject {
      * @param pAuthorization Value to which {@link #authorization} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setAuthorization( String pAuthorization ) {
+    public Builder setAuthorization( @MyNotNullProperty String pAuthorization ) {
       // Assign value to attribute
       authorization = pAuthorization;
       return this;
@@ -176,6 +177,7 @@ public class LocalBeanParamType implements ServiceObject {
    *
    * @return {@link String} Value to which {@link #localKey} is set.
    */
+  @MyNotNullProperty
   public String getLocalKey( ) {
     return localKey;
   }
@@ -185,7 +187,7 @@ public class LocalBeanParamType implements ServiceObject {
    *
    * @param pLocalKey Value to which {@link #localKey} should be set.
    */
-  public void setLocalKey( String pLocalKey ) {
+  public void setLocalKey( @MyNotNullProperty String pLocalKey ) {
     // Assign value to attribute
     localKey = pLocalKey;
   }
@@ -195,6 +197,7 @@ public class LocalBeanParamType implements ServiceObject {
    *
    * @return {@link String} Value to which {@link #localID} is set.
    */
+  @MyNotNullProperty
   public String getLocalID( ) {
     return localID;
   }
@@ -204,7 +207,7 @@ public class LocalBeanParamType implements ServiceObject {
    *
    * @param pLocalID Value to which {@link #localID} should be set.
    */
-  public void setLocalID( String pLocalID ) {
+  public void setLocalID( @MyNotNullProperty String pLocalID ) {
     // Assign value to attribute
     localID = pLocalID;
   }
@@ -214,6 +217,7 @@ public class LocalBeanParamType implements ServiceObject {
    *
    * @return {@link String} Value to which {@link #authorization} is set.
    */
+  @MyNotNullProperty
   public String getAuthorization( ) {
     return authorization;
   }
@@ -223,7 +227,7 @@ public class LocalBeanParamType implements ServiceObject {
    *
    * @param pAuthorization Value to which {@link #authorization} should be set.
    */
-  public void setAuthorization( String pAuthorization ) {
+  public void setAuthorization( @MyNotNullProperty String pAuthorization ) {
     // Assign value to attribute
     authorization = pAuthorization;
   }

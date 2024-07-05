@@ -11,6 +11,7 @@ import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
+import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -81,7 +82,7 @@ public class IBAN implements ServiceObject {
      * @param pValue Value to which {@link #value} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setValue( String pValue ) {
+    public Builder setValue( @MyNotNullProperty String pValue ) {
       // Assign value to attribute
       value = pValue;
       return this;
@@ -115,6 +116,7 @@ public class IBAN implements ServiceObject {
    *
    * @return {@link String} Value to which {@link #value} is set.
    */
+  @MyNotNullProperty
   public String getValue( ) {
     return value;
   }
@@ -124,7 +126,7 @@ public class IBAN implements ServiceObject {
    *
    * @param pValue Value to which {@link #value} should be set.
    */
-  public void setValue( String pValue ) {
+  public void setValue( @MyNotNullProperty String pValue ) {
     // Assign value to attribute
     value = pValue;
   }

@@ -7,6 +7,7 @@ package com.anaptecs.spring.service;
 
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.anaptecs.spring.base.BookingCode;
 
@@ -129,7 +130,7 @@ public class QueryBeanParam {
      * @param pBookingCode Value to which {@link #bookingCode} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setBookingCode( BookingCode pBookingCode ) {
+    public Builder setBookingCode( @MyNotNullProperty BookingCode pBookingCode ) {
       // Assign value to attribute
       bookingCode = pBookingCode;
       return this;
@@ -165,6 +166,7 @@ public class QueryBeanParam {
    *
    * @return {@link BookingCode} Value to which {@link #bookingCode} is set.
    */
+  @MyNotNullProperty
   public BookingCode getBookingCode( ) {
     return bookingCode;
   }
@@ -174,7 +176,7 @@ public class QueryBeanParam {
    *
    * @param pBookingCode Value to which {@link #bookingCode} should be set.
    */
-  public void setBookingCode( BookingCode pBookingCode ) {
+  public void setBookingCode( @MyNotNullProperty BookingCode pBookingCode ) {
     // Assign value to attribute
     bookingCode = pBookingCode;
   }

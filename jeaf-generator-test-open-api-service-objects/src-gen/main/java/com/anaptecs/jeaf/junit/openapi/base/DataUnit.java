@@ -7,6 +7,7 @@ package com.anaptecs.jeaf.junit.openapi.base;
 
 import javax.validation.constraints.NotNull;
 
+import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
 public final class DataUnit {
@@ -35,6 +36,7 @@ public final class DataUnit {
      *
      * @return {@link String} Value to which {@link #dataUnitID} is set.
      */
+    @MyNotNullProperty
     public String getDataUnitID( ) {
       return dataUnitID;
     }

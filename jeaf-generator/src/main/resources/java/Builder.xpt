@@ -389,7 +389,7 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
 «DEFINE CreateBuilderPropertySetter(String builderClassName) FOR Property»
 	«EXPAND functions::Javadoc::JavadocForBuilderSetter(builderClassName)»
 	«EXPAND java::Helper::GenerateDeprecationAnnotation-»
-	public «builderClassName»«owner.asClass().getTemplateParams()» «asSetter()»(«this.fqn()» «asParameter()») {
+	public «builderClassName»«owner.asClass().getTemplateParams()» «asSetter()»(«EXPAND java::Helper::NotNullAnnotationForProperty» «this.fqn()» «asParameter()») {
 		«IF this.generateBackwardCompatibility() == false»
 			// Assign value to attribute
 			«IF this.isMultivalued() == false»
@@ -428,7 +428,7 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
         «EXPAND functions::Javadoc::JavadocForBuilderSetter(builderClassName)»
         «EXPAND java::Helper::GenerateDeprecationAnnotation-»
 		«IF isMultivalued()»
-			public «builderClassName»«owner.asClass().getTemplateParams()» set«name.toFirstUpper()»(«this.fqn()» «asParameter()») {
+			public «builderClassName»«owner.asClass().getTemplateParams()» set«name.toFirstUpper()»(«EXPAND java::Helper::NotNullAnnotationForProperty» «this.fqn()» «asParameter()») {
 			    «IF this.generateBackwardCompatibility() == false»
 				    // To ensure immutability we have to copy the content of the passed collection.
 				    if(«asParameter()» != null) {
@@ -445,7 +445,7 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
 
 	        «EXPAND functions::Javadoc::JavadocForBuilderAddTo(builderClassName)»
 	        «EXPAND java::Helper::GenerateDeprecationAnnotation-»
-            public «builderClassName»«owner.asClass().getTemplateParams()» addTo«name.toFirstUpper()»(«IF type.owner.isClassifierTemplateParameter()»@SuppressWarnings("unchecked") «ENDIF»«type.fqn()»... «asParameter()») {
+            public «builderClassName»«owner.asClass().getTemplateParams()» addTo«name.toFirstUpper()»(«EXPAND java::Helper::NotNullAnnotationForProperty» «IF type.owner.isClassifierTemplateParameter()»@SuppressWarnings("unchecked") «ENDIF»«type.fqn()»... «asParameter()») {
                 «IF this.generateBackwardCompatibility() == false»
 	                if(«asParameter()» != null) {
 		                if(«asInstanceVar()» == null) {
@@ -459,7 +459,7 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
                 return this;
             }
 		«ELSE»
-			public «builderClassName»«owner.asClass().getTemplateParams()» «asSetter()» («type.fqn()» «asParameter()») {
+			public «builderClassName»«owner.asClass().getTemplateParams()» «asSetter()» («EXPAND java::Helper::NotNullAnnotationForProperty» «type.fqn()» «asParameter()») {
 				«IF this.generateBackwardCompatibility() == false»
 				    «asInstanceVar()» = «asParameter()»;
 				«ELSE»
@@ -476,7 +476,7 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
         «EXPAND functions::Javadoc::JavadocForBuilderSetter(builderClassName)»
         «EXPAND java::Helper::GenerateDeprecationAnnotation-»
         «IF isMultivalued()»
-            public «builderClassName»«owner.asClass().getTemplateParams()» set«this.getSoftLinkPropertyName().toFirstUpper()»(«this.getCollectionType()»<«this.getMultivaluedJavaSoftLinkType()»> «asParameter()») {
+            public «builderClassName»«owner.asClass().getTemplateParams()» set«this.getSoftLinkPropertyName().toFirstUpper()»(«EXPAND java::Helper::NotNullAnnotationForProperty» «this.getCollectionType()»<«this.getMultivaluedJavaSoftLinkType()»> «asParameter()») {
                 // To ensure immutability we have to copy the content of the passed collection.
                 if(«asParameter()» != null) {
                   «this.getSoftLinkPropertyName()» = new «this.getCollectionImplType()»<«this.getMultivaluedJavaSoftLinkType()»>(«asParameter()»);
@@ -487,7 +487,7 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
                 return this;
             }
         «ELSE»
-            public «builderClassName»«owner.asClass().getTemplateParams()» set«this.getSoftLinkPropertyName().toFirstUpper()» («this.getJavaSoftLinkType()» «asParameter()») {
+            public «builderClassName»«owner.asClass().getTemplateParams()» set«this.getSoftLinkPropertyName().toFirstUpper()» («EXPAND java::Helper::NotNullAnnotationForProperty» «this.getJavaSoftLinkType()» «asParameter()») {
                 «this.getSoftLinkPropertyName()» = «asParameter()»;
                 return this;
             }
@@ -501,7 +501,7 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
 		«IF isMultivalued()»
 			«EXPAND functions::Javadoc::JavadocForBuilderVarArgsSetter(builderClassName)»
 			«EXPAND java::Helper::GenerateDeprecationAnnotation-»
-			public «builderClassName»«owner.asClass().getTemplateParams()» set«name.toFirstUpper()»(«this.type.fqn()»... «asParameter()») {
+			public «builderClassName»«owner.asClass().getTemplateParams()» set«name.toFirstUpper()»(«EXPAND java::Helper::NotNullAnnotationForProperty» «this.type.fqn()»... «asParameter()») {
 			    // To ensure immutability we have to copy the content of the passed array.
 			    if(«asParameter()» != null) {
 			      «asInstanceVar()» = new «this.getCollectionImplType()»<«type.fqn()»>(java.util.Arrays.asList(«asParameter()»));

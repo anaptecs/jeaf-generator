@@ -21,6 +21,8 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 
+import com.anaptecs.annotations.MyNotEmptyServiceParam;
+import com.anaptecs.annotations.MyNotNullServiceParam;
 import com.anaptecs.jeaf.core.api.Service;
 import com.anaptecs.jeaf.junit.openapi.base.BeanParameter;
 import com.anaptecs.jeaf.junit.openapi.base.BigDecimalCode;
@@ -60,19 +62,21 @@ public interface ProductService extends Service {
    * @param pProductID
    * @return {@link Product}
    */
-  Product getProduct( @NotEmpty String pProductID );
+  @MyNotNullServiceParam
+  Product getProduct( @NotEmpty @MyNotNullServiceParam String pProductID );
 
   /**
    * @param pProduct
    * @return boolean
    */
-  boolean createProduct( Product pProduct );
+  boolean createProduct( @MyNotNullServiceParam Product pProduct );
 
   /**
    * @param pContext
    * @return {@link Sortiment}
    */
-  Sortiment getSortiment( Context pContext );
+  @MyNotNullServiceParam
+  Sortiment getSortiment( @MyNotNullServiceParam Context pContext );
 
   /**
    * @param pChannelCode
@@ -80,10 +84,12 @@ public interface ProductService extends Service {
    * <b>Breaking Change with 2.0:</b> Parameter will be mandatory
    * @return {@link ChannelCode}
    */
-  ChannelCode createChannelCode( @NotBlank String pChannelCode );
+  @MyNotNullServiceParam
+  ChannelCode createChannelCode( @NotBlank @MyNotNullServiceParam String pChannelCode );
 
   /**
    */
+  @MyNotNullServiceParam
   void ping( );
 
   /**
@@ -91,18 +97,21 @@ public interface ProductService extends Service {
    * @deprecated This request is no longer supported. (<b>since:</b> 1.1.1, <b>removed with:</b> 2.3)
    */
   @Deprecated
+  @MyNotNullServiceParam
   String deprecatedOperation( );
 
   /**
    * @param pContext
    * @return {@link String}
    */
-  String deprecatedContext( DeprecatedContext pContext );
+  @MyNotNullServiceParam
+  String deprecatedContext( @MyNotNullServiceParam DeprecatedContext pContext );
 
   /**
    * @param pBeanParam
    */
-  void deprecatedBeanParam( BeanParameter pBeanParam );
+  @MyNotNullServiceParam
+  void deprecatedBeanParam( @MyNotNullServiceParam BeanParameter pBeanParam );
 
   /**
    * @param pParam1 <br/>
@@ -111,6 +120,7 @@ public interface ProductService extends Service {
    * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
+  @MyNotNullServiceParam
   String deprecatedParams( @Deprecated int pParam1 );
 
   /**
@@ -118,7 +128,8 @@ public interface ProductService extends Service {
    * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    * @return {@link String}
    */
-  String deprecatedBody( @Deprecated String pBody );
+  @MyNotNullServiceParam
+  String deprecatedBody( @Deprecated @MyNotNullServiceParam String pBody );
 
   /**
    * Please be aware that deprecations on complex bodies are not supported. Instead the whole operation needs to be set
@@ -127,67 +138,77 @@ public interface ProductService extends Service {
    * @param pProduct <br/>
    * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    */
-  void deprectedComplexRequestBody( @Deprecated Product pProduct );
+  @MyNotNullServiceParam
+  void deprectedComplexRequestBody( @Deprecated @MyNotNullServiceParam Product pProduct );
 
   /**
    * @return {@link Product} <br/>
    * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
+  @MyNotNullServiceParam
   Product deprecatedComplexReturn( );
 
   /**
    * @param pContext
    */
-  void loadSpecificThings( SpecialContext pContext );
+  @MyNotNullServiceParam
+  void loadSpecificThings( @MyNotNullServiceParam SpecialContext pContext );
 
   /**
    * @param pChannelCode Channel Code that should be created.
    * @return {@link ChannelCode} Created channel code
    */
-  ChannelCode createChannelCodeFromObject( ChannelCode pChannelCode );
+  @MyNotNullServiceParam
+  ChannelCode createChannelCodeFromObject( @MyNotNullServiceParam ChannelCode pChannelCode );
 
   /**
    * @param pCurrencies
    * @return {@link List<CurrencyCode>}
    */
-  List<CurrencyCode> addCurrencies( List<CurrencyCode> pCurrencies );
+  @MyNotEmptyServiceParam
+  List<CurrencyCode> addCurrencies( @MyNotEmptyServiceParam List<CurrencyCode> pCurrencies );
 
   /**
    * @param pCurrency
    * @return {@link CurrencyCode}
    */
-  CurrencyCode isCurrencySupported( CurrencyCode pCurrency );
+  @MyNotNullServiceParam
+  CurrencyCode isCurrencySupported( @MyNotNullServiceParam CurrencyCode pCurrency );
 
   /**
    * @param pStringCode
    * @return {@link IntegerCodeType}
    */
-  IntegerCodeType testCodeTypeUsage( StringCodeType pStringCode );
+  @MyNotNullServiceParam
+  IntegerCodeType testCodeTypeUsage( @MyNotNullServiceParam StringCodeType pStringCode );
 
   /**
    * @param pBeanParam
    * @return {@link String}
    */
-  String testLocalBeanParamType( LocalBeanParamType pBeanParam );
+  @MyNotNullServiceParam
+  String testLocalBeanParamType( @MyNotNullServiceParam LocalBeanParamType pBeanParam );
 
   /**
    * @param pParent
    * @return {@link String}
    */
-  String testExternalBeanParameterType( ParentBeanParamType pParent );
+  @MyNotNullServiceParam
+  String testExternalBeanParameterType( @MyNotNullServiceParam ParentBeanParamType pParent );
 
   /**
    * @param pChild
    * @return {@link String}
    */
-  String testChildBeanParameter( ChildBeanParameterType pChild );
+  @MyNotNullServiceParam
+  String testChildBeanParameter( @MyNotNullServiceParam ChildBeanParameterType pChild );
 
   /**
    * @param pIBAN
    * @return boolean
    */
-  boolean checkIBAN( String pIBAN );
+  boolean checkIBAN( @MyNotNullServiceParam String pIBAN );
 
   /**
    * @param pChannelTypes
@@ -199,19 +220,20 @@ public interface ProductService extends Service {
    * @param pChannelType
    * @return {@link Channel}
    */
-  Channel getDefaultChannel( ChannelType pChannelType );
+  @MyNotNullServiceParam
+  Channel getDefaultChannel( @MyNotNullServiceParam ChannelType pChannelType );
 
   /**
    * @param pChannelCode
    * @return {@link List<CurrencyCode>}
    */
-  List<CurrencyCode> getSupportedCurrencies( ChannelCode pChannelCode );
+  List<CurrencyCode> getSupportedCurrencies( @MyNotNullServiceParam ChannelCode pChannelCode );
 
   /**
    * @param pChannelCode
    * @return {@link List<CurrencyCode>}
    */
-  List<CurrencyCode> getSupportedCurrenciesAsync( ChannelCode pChannelCode );
+  List<CurrencyCode> getSupportedCurrenciesAsync( @MyNotNullServiceParam ChannelCode pChannelCode );
 
   /**
    * @param pPath
@@ -226,21 +248,28 @@ public interface ProductService extends Service {
    * @param pSQLTime
    * @param pSQLDate
    */
-  void testDateQueryParams( String pPath, OffsetDateTime pStartTimestamp, OffsetTime pStartTime,
-      LocalDateTime pLocalStartTimestamp, LocalTime pLocalStartTime, LocalDate pLocalStartDate, Calendar pCalendar,
-      java.util.Date pUtilDate, Timestamp pSQLTimestamp, Time pSQLTime, Date pSQLDate );
+  @MyNotNullServiceParam
+  void testDateQueryParams( @MyNotNullServiceParam String pPath, @MyNotNullServiceParam OffsetDateTime pStartTimestamp,
+      @MyNotNullServiceParam OffsetTime pStartTime, @MyNotNullServiceParam LocalDateTime pLocalStartTimestamp,
+      @MyNotNullServiceParam LocalTime pLocalStartTime, @MyNotNullServiceParam LocalDate pLocalStartDate,
+      @MyNotNullServiceParam Calendar pCalendar, @MyNotNullServiceParam java.util.Date pUtilDate,
+      @MyNotNullServiceParam Timestamp pSQLTimestamp, @MyNotNullServiceParam Time pSQLTime,
+      @MyNotNullServiceParam Date pSQLDate );
 
   /**
    * @param pPath
    * @param pQueryParams
    */
-  void testDateQueryParamsBean( String pPath, DateQueryParamsBean pQueryParams );
+  @MyNotNullServiceParam
+  void testDateQueryParamsBean( @MyNotNullServiceParam String pPath,
+      @MyNotNullServiceParam DateQueryParamsBean pQueryParams );
 
   /**
    * @param query1
    * @param query2
    * @return {@link String}
    */
+  @MyNotNullServiceParam
   String testOptionalQueryParams( String query1, int query2 );
 
   /**
@@ -248,41 +277,49 @@ public interface ProductService extends Service {
    * @param pContentType
    * @param pAccept
    */
-  void testSpecialHeaderParams( String authorization, String pContentType, String pAccept );
+  @MyNotNullServiceParam
+  void testSpecialHeaderParams( @MyNotNullServiceParam String authorization, @MyNotNullServiceParam String pContentType,
+      @MyNotNullServiceParam String pAccept );
 
   /**
    * @param pContext
    * @return {@link String}
    */
-  String testTechnicalHeaderBean( TechnicalHeaderContext pContext );
+  @MyNotNullServiceParam
+  String testTechnicalHeaderBean( @MyNotNullServiceParam TechnicalHeaderContext pContext );
 
   /**
    * @param pReseller
    * @param pAuthenticationToken
    * @return {@link String}
    */
-  String testTechnicalHeaderParam( String pReseller );
+  @MyNotNullServiceParam
+  String testTechnicalHeaderParam( @MyNotNullServiceParam String pReseller );
 
   /**
    * @param pInlinedBeanParam
    */
-  void testNotInlinedBeanParam( NotInlinedBeanParam pInlinedBeanParam );
+  @MyNotNullServiceParam
+  void testNotInlinedBeanParam( @MyNotNullServiceParam NotInlinedBeanParam pInlinedBeanParam );
 
   /**
    * @param pIntegerArray
    */
-  void testPrimitiveArray( int[] pIntegerArray );
+  @MyNotNullServiceParam
+  void testPrimitiveArray( @MyNotEmptyServiceParam int[] pIntegerArray );
 
   /**
    * @param pIntValues
    * @return {@link String}
    */
+  @MyNotNullServiceParam
   String testPrimitiveArrayAsQueryParam( int[] pIntValues );
 
   /**
    * @param pCodes
    * @return {@link String}
    */
+  @MyNotNullServiceParam
   String testMultivaluedHeader( List<BigDecimalCode> pCodes );
 
   /**
@@ -290,6 +327,7 @@ public interface ProductService extends Service {
    * @param pEnums
    * @return {@link String}
    */
+  @MyNotNullServiceParam
   String testMultivaluedQueryParams( List<BigDecimalCode> pCodes, List<BooleanLiteralsEnum> pEnums );
 
   /**
@@ -297,27 +335,33 @@ public interface ProductService extends Service {
    * @param pTheEnum
    * @return {@link String}
    */
-  String testMulitValuedBeanParams( MultiValuedDataType pBeanParam, BooleanLiteralsEnum pTheEnum );
+  @MyNotNullServiceParam
+  String testMulitValuedBeanParams( @MyNotNullServiceParam MultiValuedDataType pBeanParam,
+      @MyNotNullServiceParam BooleanLiteralsEnum pTheEnum );
 
   /**
    * @param pHeader
    * @param pContext
    */
-  void noReturnType( String pHeader, MultiValuedDataType pContext );
+  @MyNotNullServiceParam
+  void noReturnType( @MyNotNullServiceParam String pHeader, @MyNotNullServiceParam MultiValuedDataType pContext );
 
   /**
    * @param pID
    */
-  void deleteSomething( String pID );
+  @MyNotNullServiceParam
+  void deleteSomething( @MyNotNullServiceParam String pID );
 
   /**
    * @return {@link GenericSingleValuedReponse<BusinessServiceObject>}
    */
+  @MyNotNullServiceParam
   GenericSingleValuedReponse<BusinessServiceObject> genericSingleValueResponse( );
 
   /**
    * @return {@link GenericPageableResponse<BusinessServiceObject>}
    */
+  @MyNotNullServiceParam
   GenericPageableResponse<BusinessServiceObject> genericMultiValueResponse( );
 
   /**
@@ -325,31 +369,37 @@ public interface ProductService extends Service {
    * @param pShortCodes
    * @param pJustAByte
    */
-  void testDataTypeWithRestrition( StringCode pStringCode, Set<ShortCode> pShortCodes,
-      @Min(value = 32) Byte pJustAByte );
+  @MyNotNullServiceParam
+  void testDataTypeWithRestrition( @MyNotNullServiceParam StringCode pStringCode, Set<ShortCode> pShortCodes,
+      @Min(value = 32) @MyNotNullServiceParam Byte pJustAByte );
 
   /**
    * @param pContext
    */
-  void testContext( Context pContext );
+  @MyNotNullServiceParam
+  void testContext( @MyNotNullServiceParam Context pContext );
 
   /**
    * @return {@link Response<Pageable<BusinessServiceObject>>}
    */
+  @MyNotNullServiceParam
   Response<Pageable<BusinessServiceObject>> testNestedGenericsResponse( );
 
   /**
    * @return {@link Response<List<Offer>>}
    */
+  @MyNotNullServiceParam
   Response<List<Offer>> testNestedMultivaluedResponse( );
 
   /**
    * @return {@link Response<Offer>}
    */
+  @MyNotNullServiceParam
   Response<Offer> testDuplicateGenerics1( );
 
   /**
    * @return {@link Response<Offer>}
    */
+  @MyNotNullServiceParam
   Response<Offer> testDuplicateGenerics2( );
 }

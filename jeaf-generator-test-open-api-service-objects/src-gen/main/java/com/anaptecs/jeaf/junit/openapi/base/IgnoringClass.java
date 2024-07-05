@@ -9,6 +9,7 @@ import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
+import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -93,7 +94,7 @@ public class IgnoringClass implements ServiceObject {
      * @param pAge Value to which {@link #age} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setAge( Integer pAge ) {
+    public Builder setAge( @MyNotNullProperty Integer pAge ) {
       // Assign value to attribute
       age = pAge;
       return this;
@@ -128,6 +129,7 @@ public class IgnoringClass implements ServiceObject {
    *
    * @return {@link Integer} Value to which {@link #age} is set.
    */
+  @MyNotNullProperty
   public Integer getAge( ) {
     return age;
   }
@@ -137,7 +139,7 @@ public class IgnoringClass implements ServiceObject {
    *
    * @param pAge Value to which {@link #age} should be set.
    */
-  public void setAge( Integer pAge ) {
+  public void setAge( @MyNotNullProperty Integer pAge ) {
     // Assign value to attribute
     age = pAge;
   }
