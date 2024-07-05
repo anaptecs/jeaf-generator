@@ -10,7 +10,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.ws.rs.HeaderParam;
 
-import com.anaptecs.annotations.MyNotNull;
+import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -131,7 +131,7 @@ public class NotInlinedBeanParam implements ServiceObject {
      * @param pHeader Value to which {@link #header} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setHeader( @MyNotNull String pHeader ) {
+    public Builder setHeader( @MyNotNullProperty String pHeader ) {
       // Assign value to attribute
       header = pHeader;
       return this;
@@ -143,7 +143,7 @@ public class NotInlinedBeanParam implements ServiceObject {
      * @param pDoubleCode Value to which {@link #doubleCode} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setDoubleCode( @MyNotNull DoubleCode pDoubleCode ) {
+    public Builder setDoubleCode( @MyNotNullProperty DoubleCode pDoubleCode ) {
       // Assign value to attribute
       doubleCode = pDoubleCode;
       return this;
@@ -155,7 +155,7 @@ public class NotInlinedBeanParam implements ServiceObject {
      * @param pExtensibleEnum Value to which {@link #extensibleEnum} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setExtensibleEnum( @MyNotNull ExtensibleEnum pExtensibleEnum ) {
+    public Builder setExtensibleEnum( @MyNotNullProperty ExtensibleEnum pExtensibleEnum ) {
       // Assign value to attribute
       extensibleEnum = pExtensibleEnum;
       return this;
@@ -167,7 +167,7 @@ public class NotInlinedBeanParam implements ServiceObject {
      * @param pBookingID Value to which {@link #bookingID} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setBookingID( @MyNotNull BookingID pBookingID ) {
+    public Builder setBookingID( @MyNotNullProperty BookingID pBookingID ) {
       // Assign value to attribute
       bookingID = pBookingID;
       return this;
@@ -202,7 +202,7 @@ public class NotInlinedBeanParam implements ServiceObject {
    *
    * @return {@link String} Value to which {@link #header} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public String getHeader( ) {
     return header;
   }
@@ -212,7 +212,7 @@ public class NotInlinedBeanParam implements ServiceObject {
    *
    * @param pHeader Value to which {@link #header} should be set.
    */
-  public void setHeader( @MyNotNull String pHeader ) {
+  public void setHeader( @MyNotNullProperty String pHeader ) {
     // Assign value to attribute
     header = pHeader;
   }
@@ -222,7 +222,7 @@ public class NotInlinedBeanParam implements ServiceObject {
    *
    * @return {@link DoubleCode} Value to which {@link #doubleCode} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public DoubleCode getDoubleCode( ) {
     return doubleCode;
   }
@@ -232,7 +232,7 @@ public class NotInlinedBeanParam implements ServiceObject {
    *
    * @param pDoubleCode Value to which {@link #doubleCode} should be set.
    */
-  public void setDoubleCode( @MyNotNull DoubleCode pDoubleCode ) {
+  public void setDoubleCode( @MyNotNullProperty DoubleCode pDoubleCode ) {
     // Assign value to attribute
     doubleCode = pDoubleCode;
   }
@@ -242,7 +242,7 @@ public class NotInlinedBeanParam implements ServiceObject {
    *
    * @return {@link ExtensibleEnum} Value to which {@link #extensibleEnum} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public ExtensibleEnum getExtensibleEnum( ) {
     return extensibleEnum;
   }
@@ -252,7 +252,7 @@ public class NotInlinedBeanParam implements ServiceObject {
    *
    * @param pExtensibleEnum Value to which {@link #extensibleEnum} should be set.
    */
-  public void setExtensibleEnum( @MyNotNull ExtensibleEnum pExtensibleEnum ) {
+  public void setExtensibleEnum( @MyNotNullProperty ExtensibleEnum pExtensibleEnum ) {
     // Assign value to attribute
     extensibleEnum = pExtensibleEnum;
   }
@@ -262,7 +262,7 @@ public class NotInlinedBeanParam implements ServiceObject {
    *
    * @return {@link BookingID} Value to which {@link #bookingID} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public BookingID getBookingID( ) {
     return bookingID;
   }
@@ -272,7 +272,7 @@ public class NotInlinedBeanParam implements ServiceObject {
    *
    * @param pBookingID Value to which {@link #bookingID} should be set.
    */
-  public void setBookingID( @MyNotNull BookingID pBookingID ) {
+  public void setBookingID( @MyNotNullProperty BookingID pBookingID ) {
     // Assign value to attribute
     bookingID = pBookingID;
   }

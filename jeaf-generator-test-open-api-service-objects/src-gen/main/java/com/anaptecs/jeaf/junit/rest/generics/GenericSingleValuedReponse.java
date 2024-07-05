@@ -11,7 +11,7 @@ import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
-import com.anaptecs.annotations.MyNotNull;
+import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 
 @Valid
@@ -142,7 +142,7 @@ public class GenericSingleValuedReponse<T> extends AbstractResponse<T> {
      * @param pValue Value to which {@link #value} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder<T> setValue( @MyNotNull T pValue ) {
+    public Builder<T> setValue( @MyNotNullProperty T pValue ) {
       // Assign value to attribute
       value = pValue;
       return this;
@@ -177,7 +177,7 @@ public class GenericSingleValuedReponse<T> extends AbstractResponse<T> {
    *
    * @return {@link T} Value to which {@link #value} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public T getValue( ) {
     return value;
   }
@@ -187,7 +187,7 @@ public class GenericSingleValuedReponse<T> extends AbstractResponse<T> {
    *
    * @param pValue Value to which {@link #value} should be set.
    */
-  public void setValue( @MyNotNull T pValue ) {
+  public void setValue( @MyNotNullProperty T pValue ) {
     // Assign value to attribute
     value = pValue;
   }

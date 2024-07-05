@@ -25,6 +25,7 @@ cached boolean listUnsecuredRESTEndpoints():
 cached String getDefaultSecurityRoleName():
 	getSystemProperty("switch.gen.security.default.security.role", "");
 	
+// NotNull / NotEmpty annotation settings for properties
 cached boolean generateNotNullAnnotationForSingleValuedProperties():
     getBooleanSystemProperty("jeaf.generator.generateNotNullAnnotationForSingleValuedProperties", false);
 
@@ -36,3 +37,30 @@ cached boolean generateNotEmptyAnnotationForMultiValuedProperties():
 
 cached String notEmptyAnnotationNameForMultiValuedProperties():
     getSystemProperty("jeaf.generator.notEmptyAnnotationNameForMultiValuedProperties");
+    
+// NotNull / NotEmpty annotation settings for services
+cached boolean generateNotNullAnnotationForSingleValuedServiceParameters():
+    getBooleanSystemProperty("jeaf.generator.generateNotNullAnnotationForSingleValuedServiceParameters", false);
+
+cached String notNullAnnotationNameForSingleValuedServiceParameters():
+    getSystemProperty("jeaf.generator.notNullAnnotationNameForSingleValuedServiceParameters");
+
+cached boolean generateNotEmptyAnnotationForMultiValuedServiceParameters():
+    getBooleanSystemProperty("jeaf.generator.generateNotEmptyAnnotationForMultiValuedServiceParameters", false);
+
+cached String notEmptyAnnotationNameForMultiValuedServiceParameters():
+    getSystemProperty("jeaf.generator.notEmptyAnnotationNameForMultiValuedServiceParameters");
+
+
+// NotNull / NotEmpty annotation settings for REST controllers
+cached boolean generateNotNullAnnotationForSingleValuedRESTParameters():
+    getBooleanSystemProperty("jeaf.generator.generateNotNullAnnotationForSingleValuedRESTParameters", false);
+
+cached String notNullAnnotationNameForSingleValuedRESTParameters():
+    getSystemProperty("jeaf.generator.notNullAnnotationNameForSingleValuedRESTParameters");
+
+cached boolean generateNotEmptyAnnotationForMultiValuedRESTParameters():
+    getBooleanSystemProperty("jeaf.generator.generateNotEmptyAnnotationForMultiValuedRESTParameters", false);
+
+cached String notEmptyAnnotationNameForMultiValuedRESTParameters():
+    getSystemProperty("jeaf.generator.notEmptyAnnotationNameForMultiValuedRESTParameters");

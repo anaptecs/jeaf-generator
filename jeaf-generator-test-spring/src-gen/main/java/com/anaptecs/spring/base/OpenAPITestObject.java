@@ -7,7 +7,7 @@ package com.anaptecs.spring.base;
 
 import java.util.Objects;
 
-import com.anaptecs.annotations.MyNotNull;
+import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -242,7 +242,7 @@ public class OpenAPITestObject {
      * @param pReadOnlyAttribute Value to which {@link #readOnlyAttribute} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setReadOnlyAttribute( @MyNotNull String pReadOnlyAttribute ) {
+    public Builder setReadOnlyAttribute( @MyNotNullProperty String pReadOnlyAttribute ) {
       // Assign value to attribute
       readOnlyAttribute = pReadOnlyAttribute;
       return this;
@@ -254,7 +254,7 @@ public class OpenAPITestObject {
      * @param pReadWriteAttribute Value to which {@link #readWriteAttribute} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setReadWriteAttribute( @MyNotNull String pReadWriteAttribute ) {
+    public Builder setReadWriteAttribute( @MyNotNullProperty String pReadWriteAttribute ) {
       // Assign value to attribute
       readWriteAttribute = pReadWriteAttribute;
       return this;
@@ -278,7 +278,7 @@ public class OpenAPITestObject {
      * @param pNullableAttribute Value to which {@link #nullableAttribute} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setNullableAttribute( @MyNotNull Boolean pNullableAttribute ) {
+    public Builder setNullableAttribute( @MyNotNullProperty Boolean pNullableAttribute ) {
       // Assign value to attribute
       nullableAttribute = pNullableAttribute;
       return this;
@@ -302,7 +302,7 @@ public class OpenAPITestObject {
      * @param pReadOnlyArray Value to which {@link #readOnlyArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setReadOnlyArray( @MyNotNull String pReadOnlyArray ) {
+    public Builder setReadOnlyArray( @MyNotNullProperty String pReadOnlyArray ) {
       // Assign value to attribute
       readOnlyArray = pReadOnlyArray;
       return this;
@@ -314,7 +314,7 @@ public class OpenAPITestObject {
      * @param pReadWriteArray Value to which {@link #readWriteArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setReadWriteArray( @MyNotNull String pReadWriteArray ) {
+    public Builder setReadWriteArray( @MyNotNullProperty String pReadWriteArray ) {
       // Assign value to attribute
       readWriteArray = pReadWriteArray;
       return this;
@@ -374,7 +374,7 @@ public class OpenAPITestObject {
    *
    * @return {@link String} Value to which {@link #readOnlyAttribute} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public String getReadOnlyAttribute( ) {
     return readOnlyAttribute;
   }
@@ -384,7 +384,7 @@ public class OpenAPITestObject {
    *
    * @param pReadOnlyAttribute Value to which {@link #readOnlyAttribute} should be set.
    */
-  public void setReadOnlyAttribute( @MyNotNull String pReadOnlyAttribute ) {
+  public void setReadOnlyAttribute( @MyNotNullProperty String pReadOnlyAttribute ) {
     // Assign value to attribute
     readOnlyAttribute = pReadOnlyAttribute;
   }
@@ -394,7 +394,7 @@ public class OpenAPITestObject {
    *
    * @return {@link String} Value to which {@link #readWriteAttribute} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public String getReadWriteAttribute( ) {
     return readWriteAttribute;
   }
@@ -404,7 +404,7 @@ public class OpenAPITestObject {
    *
    * @param pReadWriteAttribute Value to which {@link #readWriteAttribute} should be set.
    */
-  public void setReadWriteAttribute( @MyNotNull String pReadWriteAttribute ) {
+  public void setReadWriteAttribute( @MyNotNullProperty String pReadWriteAttribute ) {
     // Assign value to attribute
     readWriteAttribute = pReadWriteAttribute;
   }
@@ -433,7 +433,7 @@ public class OpenAPITestObject {
    *
    * @return {@link Boolean} Value to which {@link #nullableAttribute} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public Boolean getNullableAttribute( ) {
     return nullableAttribute;
   }
@@ -443,7 +443,7 @@ public class OpenAPITestObject {
    *
    * @param pNullableAttribute Value to which {@link #nullableAttribute} should be set.
    */
-  public void setNullableAttribute( @MyNotNull Boolean pNullableAttribute ) {
+  public void setNullableAttribute( @MyNotNullProperty Boolean pNullableAttribute ) {
     // Assign value to attribute
     nullableAttribute = pNullableAttribute;
   }
@@ -472,7 +472,7 @@ public class OpenAPITestObject {
    *
    * @return {@link String} Value to which {@link #readOnlyArray} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public String getReadOnlyArray( ) {
     return readOnlyArray;
   }
@@ -482,7 +482,7 @@ public class OpenAPITestObject {
    *
    * @param pReadOnlyArray Value to which {@link #readOnlyArray} should be set.
    */
-  public void setReadOnlyArray( @MyNotNull String pReadOnlyArray ) {
+  public void setReadOnlyArray( @MyNotNullProperty String pReadOnlyArray ) {
     // Assign value to attribute
     readOnlyArray = pReadOnlyArray;
   }
@@ -492,7 +492,7 @@ public class OpenAPITestObject {
    *
    * @return {@link String} Value to which {@link #readWriteArray} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public String getReadWriteArray( ) {
     return readWriteArray;
   }
@@ -502,7 +502,7 @@ public class OpenAPITestObject {
    *
    * @param pReadWriteArray Value to which {@link #readWriteArray} should be set.
    */
-  public void setReadWriteArray( @MyNotNull String pReadWriteArray ) {
+  public void setReadWriteArray( @MyNotNullProperty String pReadWriteArray ) {
     // Assign value to attribute
     readWriteArray = pReadWriteArray;
   }

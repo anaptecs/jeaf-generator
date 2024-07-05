@@ -8,7 +8,7 @@ package com.anaptecs.spring.base;
 import java.util.List;
 import java.util.Objects;
 
-import com.anaptecs.annotations.MyNotNull;
+import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -160,7 +160,7 @@ public class UICStop extends Stop {
      * @param pUicCode Value to which {@link #uicCode} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setUicCode( @MyNotNull String pUicCode ) {
+    public Builder setUicCode( @MyNotNullProperty String pUicCode ) {
       // Assign value to attribute
       uicCode = pUicCode;
       return this;
@@ -183,7 +183,7 @@ public class UICStop extends Stop {
    *
    * @return {@link String} Value to which {@link #uicCode} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public String getUicCode( ) {
     return uicCode;
   }
@@ -193,7 +193,7 @@ public class UICStop extends Stop {
    *
    * @param pUicCode Value to which {@link #uicCode} should be set.
    */
-  public void setUicCode( @MyNotNull String pUicCode ) {
+  public void setUicCode( @MyNotNullProperty String pUicCode ) {
     // Assign value to attribute
     uicCode = pUicCode;
   }

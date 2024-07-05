@@ -7,7 +7,7 @@ package com.anaptecs.spring.base;
 
 import java.util.Objects;
 
-import com.anaptecs.annotations.MyNotNull;
+import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -164,7 +164,7 @@ public class DirectedEdge {
      * @param pEnd Value to which {@link #end} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setEnd( @MyNotNull Stop pEnd ) {
+    public Builder setEnd( @MyNotNullProperty Stop pEnd ) {
       end = pEnd;
       return this;
     }
@@ -175,7 +175,7 @@ public class DirectedEdge {
      * @param pLink Value to which {@link #link} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setLink( @MyNotNull String pLink ) {
+    public Builder setLink( @MyNotNullProperty String pLink ) {
       // Assign value to attribute
       link = pLink;
       return this;
@@ -227,7 +227,7 @@ public class DirectedEdge {
    *
    * @return {@link Stop} Value to which {@link #end} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public Stop getEnd( ) {
     return end;
   }
@@ -238,7 +238,7 @@ public class DirectedEdge {
    *
    * @param pEnd Value to which {@link #end} should be set.
    */
-  public void setEnd( @MyNotNull Stop pEnd ) {
+  public void setEnd( @MyNotNullProperty Stop pEnd ) {
     end = pEnd;
   }
 
@@ -254,7 +254,7 @@ public class DirectedEdge {
    *
    * @return {@link String} Value to which {@link #link} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public String getLink( ) {
     return link;
   }
@@ -264,7 +264,7 @@ public class DirectedEdge {
    *
    * @param pLink Value to which {@link #link} should be set.
    */
-  public void setLink( @MyNotNull String pLink ) {
+  public void setLink( @MyNotNullProperty String pLink ) {
     // Assign value to attribute
     link = pLink;
   }

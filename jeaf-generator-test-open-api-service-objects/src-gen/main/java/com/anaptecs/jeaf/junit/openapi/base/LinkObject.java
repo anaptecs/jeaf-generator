@@ -9,7 +9,7 @@ import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
-import com.anaptecs.annotations.MyNotNull;
+import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -94,7 +94,7 @@ public class LinkObject implements ServiceObject {
      * @param pHref Value to which {@link #href} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setHref( @MyNotNull String pHref ) {
+    public Builder setHref( @MyNotNullProperty String pHref ) {
       // Assign value to attribute
       href = pHref;
       return this;
@@ -128,7 +128,7 @@ public class LinkObject implements ServiceObject {
    *
    * @return {@link String} Value to which {@link #href} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public String getHref( ) {
     return href;
   }
@@ -138,7 +138,7 @@ public class LinkObject implements ServiceObject {
    *
    * @param pHref Value to which {@link #href} should be set.
    */
-  public void setHref( @MyNotNull String pHref ) {
+  public void setHref( @MyNotNullProperty String pHref ) {
     // Assign value to attribute
     href = pHref;
   }

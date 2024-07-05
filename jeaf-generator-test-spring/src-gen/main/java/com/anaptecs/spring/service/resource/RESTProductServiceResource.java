@@ -40,6 +40,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.anaptecs.annotations.MyNotEmptyRESTParam;
+import com.anaptecs.annotations.MyNotNullRESTParam;
 import com.anaptecs.jeaf.rest.resource.api.CustomHeaderFilter;
 import com.anaptecs.jeaf.validation.api.ValidationExecutor;
 import com.anaptecs.spring.base.BookingCode;
@@ -132,7 +134,8 @@ public class RESTProductServiceResource {
   @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "{id}", method = { RequestMethod.GET })
-  public Product getProduct( @PathVariable(name = "id", required = true) String pProductID ) {
+  @MyNotNullRESTParam
+  public Product getProduct( @PathVariable(name = "id", required = true) @MyNotNullRESTParam String pProductID ) {
     // Validate request parameter(s).
     validationExecutor.validateRequest(RESTProductService.class, pProductID);
     // Delegate request to service.
@@ -148,7 +151,7 @@ public class RESTProductServiceResource {
   @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(method = { RequestMethod.POST })
-  public boolean createProduct( @RequestBody(required = true) Product pProduct ) {
+  public boolean createProduct( @RequestBody(required = true) @MyNotNullRESTParam Product pProduct ) {
     // Validate request parameter(s).
     validationExecutor.validateRequest(RESTProductService.class, pProduct);
     // Delegate request to service.
@@ -164,12 +167,15 @@ public class RESTProductServiceResource {
   @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "sortiment/{id}", method = { RequestMethod.GET })
-  public Sortiment getSortiment( @RequestHeader(name = "token", required = true) String pAccessToken,
-      @RequestHeader(name = "lang", required = true) Locale pLanguage,
+  @MyNotNullRESTParam
+  public Sortiment getSortiment(
+      @RequestHeader(name = "token", required = true) @MyNotNullRESTParam String pAccessToken,
+      @RequestHeader(name = "lang", required = true) @MyNotNullRESTParam Locale pLanguage,
       @CookieValue(name = "reseller", required = true) long pResellerID,
       @PathVariable(name = "id", required = true) long pPathParam,
-      @RequestParam(name = "q1", required = true) String pQueryParam, String pLang,
-      @RequestHeader(name = "intCode", required = true) int pIntCodeAsBasicType,
+      @RequestParam(name = "q1", required = true) @MyNotNullRESTParam String pQueryParam,
+      @MyNotNullRESTParam String pLang,
+      @RequestHeader(name = "intCode", required = true) @MyNotNullRESTParam int pIntCodeAsBasicType,
       @RequestHeader Map<String, String> pHeaders ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
@@ -204,7 +210,8 @@ public class RESTProductServiceResource {
   @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "ChannelCode", method = { RequestMethod.POST })
-  public ChannelCode createChannelCode( @RequestBody(required = true) String pChannelCode ) {
+  @MyNotNullRESTParam
+  public ChannelCode createChannelCode( @RequestBody(required = true) @MyNotNullRESTParam String pChannelCode ) {
     // Validate request parameter(s).
     validationExecutor.validateRequest(RESTProductService.class, pChannelCode);
     // Delegate request to service.
@@ -220,6 +227,7 @@ public class RESTProductServiceResource {
   @PreAuthorize("hasAnyRole('Customer', 'Sales Agent')")
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(method = { RequestMethod.HEAD })
+  @MyNotNullRESTParam
   public void ping( ) {
     // Delegate request to service.
     rESTProductService.ping();
@@ -231,6 +239,7 @@ public class RESTProductServiceResource {
   @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(path = "test-init", method = { RequestMethod.GET })
+  @MyNotNullRESTParam
   public void testInit( ) {
     // Delegate request to service.
     rESTProductService.testInit();
@@ -243,7 +252,7 @@ public class RESTProductServiceResource {
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "currencies/{channelCode}", method = { RequestMethod.GET })
   public List<CurrencyCode> getSupportedCurrencies(
-      @PathVariable(name = "channelCode", required = true) String pChannelCodeAsBasicType ) {
+      @PathVariable(name = "channelCode", required = true) @MyNotNullRESTParam String pChannelCodeAsBasicType ) {
     // Convert basic type parameters into "real" objects.
     ChannelCode pChannelCode;
     if (pChannelCodeAsBasicType != null) {
@@ -268,7 +277,7 @@ public class RESTProductServiceResource {
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "async-currencies/{channelCode}", method = { RequestMethod.GET })
   public List<CurrencyCode> getSupportedCurrenciesAsync(
-      @PathVariable(name = "channelCode", required = true) String pChannelCodeAsBasicType ) {
+      @PathVariable(name = "channelCode", required = true) @MyNotNullRESTParam String pChannelCodeAsBasicType ) {
     // Convert basic type parameters into "real" objects.
     ChannelCode pChannelCode;
     if (pChannelCodeAsBasicType != null) {
@@ -292,9 +301,11 @@ public class RESTProductServiceResource {
   @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "test-params", method = { RequestMethod.GET })
-  public String testParams( @RequestHeader(name = "Big-Header", required = true) BigDecimal pBigDecimalHeader,
+  @MyNotNullRESTParam
+  public String testParams(
+      @RequestHeader(name = "Big-Header", required = true) @MyNotNullRESTParam BigDecimal pBigDecimalHeader,
       @CookieValue(name = "giveMeMoreCookies", required = true) @RequestBody(required = true) int pIntCookieParam,
-      @RequestParam(name = "locale", required = true) Locale pLocaleQueryParam ) {
+      @RequestParam(name = "locale", required = true) @MyNotNullRESTParam Locale pLocaleQueryParam ) {
     // Validate request parameter(s).
     validationExecutor.validateRequest(RESTProductService.class, pBigDecimalHeader, pIntCookieParam, pLocaleQueryParam);
     // Delegate request to service.
@@ -310,9 +321,11 @@ public class RESTProductServiceResource {
   @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(path = "test-enum-params/{channelType}", method = { RequestMethod.GET })
-  public void testEnumParams( @PathVariable(name = "channelType", required = true) ChannelType pChannelType,
-      @RequestParam(name = "timeUnit", required = true) TimeUnit pTimeUnit,
-      @RequestParam(name = "extensibleEnum", required = true) ExtensibleEnum pExtensibleEnum ) {
+  @MyNotNullRESTParam
+  public void testEnumParams(
+      @PathVariable(name = "channelType", required = true) @MyNotNullRESTParam ChannelType pChannelType,
+      @RequestParam(name = "timeUnit", required = true) @MyNotNullRESTParam TimeUnit pTimeUnit,
+      @RequestParam(name = "extensibleEnum", required = true) @MyNotNullRESTParam ExtensibleEnum pExtensibleEnum ) {
     // Validate request parameter(s).
     validationExecutor.validateRequest(RESTProductService.class, pChannelType, pTimeUnit, pExtensibleEnum);
     // Delegate request to service.
@@ -325,9 +338,11 @@ public class RESTProductServiceResource {
   @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(path = "test-enum-header-params", method = { RequestMethod.GET })
-  public void testEnumHeaderParams( @RequestHeader(name = "Channel-Type", required = true) ChannelType pChannelType,
-      @RequestHeader(name = "Time-Unit", required = true) TimeUnit pTimeUnit,
-      @RequestHeader(name = "Extensible-Enum", required = true) ExtensibleEnum pExtensibleEnum ) {
+  @MyNotNullRESTParam
+  public void testEnumHeaderParams(
+      @RequestHeader(name = "Channel-Type", required = true) @MyNotNullRESTParam ChannelType pChannelType,
+      @RequestHeader(name = "Time-Unit", required = true) @MyNotNullRESTParam TimeUnit pTimeUnit,
+      @RequestHeader(name = "Extensible-Enum", required = true) @MyNotNullRESTParam ExtensibleEnum pExtensibleEnum ) {
     // Validate request parameter(s).
     validationExecutor.validateRequest(RESTProductService.class, pChannelType, pTimeUnit, pExtensibleEnum);
     // Delegate request to service.
@@ -340,17 +355,20 @@ public class RESTProductServiceResource {
   @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(path = "test-date-query-params/{path}", method = { RequestMethod.GET })
-  public void testDateQueryParams( @PathVariable(name = "path", required = true) String pPath,
-      @RequestParam(name = "startTimestamp", required = true) String pStartTimestampAsBasicType,
-      @RequestParam(name = "startTime", required = true) String pStartTimeAsBasicType,
-      @RequestParam(name = "localStartTimestamp", required = true) String pLocalStartTimestampAsBasicType,
-      @RequestParam(name = "localStartTime", required = true) String pLocalStartTimeAsBasicType,
-      @RequestParam(name = "localStartDate", required = true) String pLocalStartDateAsBasicType,
-      @RequestParam(name = "calendar", required = true) String pCalendarAsBasicType,
-      @RequestParam(name = "utilDate", required = true) String pUtilDateAsBasicType,
-      @RequestParam(name = "sqlTimestamp", required = true) String pSQLTimestampAsBasicType,
-      @RequestParam(name = "sqlTime", required = true) String pSQLTimeAsBasicType,
-      @RequestParam(name = "sqlDate", required = true) String pSQLDateAsBasicType,
+  @MyNotNullRESTParam
+  public void testDateQueryParams( @PathVariable(name = "path", required = true) @MyNotNullRESTParam String pPath,
+      @RequestParam(name = "startTimestamp", required = true) @MyNotNullRESTParam String pStartTimestampAsBasicType,
+      @RequestParam(name = "startTime", required = true) @MyNotNullRESTParam String pStartTimeAsBasicType,
+      @RequestParam(
+          name = "localStartTimestamp",
+          required = true) @MyNotNullRESTParam String pLocalStartTimestampAsBasicType,
+      @RequestParam(name = "localStartTime", required = true) @MyNotNullRESTParam String pLocalStartTimeAsBasicType,
+      @RequestParam(name = "localStartDate", required = true) @MyNotNullRESTParam String pLocalStartDateAsBasicType,
+      @RequestParam(name = "calendar", required = true) @MyNotNullRESTParam String pCalendarAsBasicType,
+      @RequestParam(name = "utilDate", required = true) @MyNotNullRESTParam String pUtilDateAsBasicType,
+      @RequestParam(name = "sqlTimestamp", required = true) @MyNotNullRESTParam String pSQLTimestampAsBasicType,
+      @RequestParam(name = "sqlTime", required = true) @MyNotNullRESTParam String pSQLTimeAsBasicType,
+      @RequestParam(name = "sqlDate", required = true) @MyNotNullRESTParam String pSQLDateAsBasicType,
       @RequestParam(name = "calendars", required = false) String[] pCalendarsAsBasicType ) {
     // Convert date types into real objects.
     OffsetDateTime pStartTimestamp;
@@ -469,17 +487,18 @@ public class RESTProductServiceResource {
   @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(path = "test-date-query-params-beans/{path}", method = { RequestMethod.GET })
-  public void testDateQueryParamsBean( @PathVariable(name = "path", required = true) String pPath,
-      @RequestParam(name = "offsetDateTime", required = true) String pOffsetDateTimeAsBasicType,
-      @RequestParam(name = "offsetTime", required = true) String pOffsetTimeAsBasicType,
-      @RequestParam(name = "localDateTime", required = true) String pLocalDateTimeAsBasicType,
-      @RequestParam(name = "localTime", required = true) String pLocalTimeAsBasicType,
-      @RequestParam(name = "localDate", required = true) String pLocalDateAsBasicType,
-      @RequestParam(name = "utilDate", required = true) String pUtilDateAsBasicType,
-      @RequestParam(name = "calendar", required = true) String pCalendarAsBasicType,
-      @RequestParam(name = "sqlTimestamp", required = true) String pSqlTimestampAsBasicType,
-      @RequestParam(name = "sqlTime", required = true) String pSqlTimeAsBasicType,
-      @RequestParam(name = "sqlDate", required = true) String pSqlDateAsBasicType ) {
+  @MyNotNullRESTParam
+  public void testDateQueryParamsBean( @PathVariable(name = "path", required = true) @MyNotNullRESTParam String pPath,
+      @RequestParam(name = "offsetDateTime", required = true) @MyNotNullRESTParam String pOffsetDateTimeAsBasicType,
+      @RequestParam(name = "offsetTime", required = true) @MyNotNullRESTParam String pOffsetTimeAsBasicType,
+      @RequestParam(name = "localDateTime", required = true) @MyNotNullRESTParam String pLocalDateTimeAsBasicType,
+      @RequestParam(name = "localTime", required = true) @MyNotNullRESTParam String pLocalTimeAsBasicType,
+      @RequestParam(name = "localDate", required = true) @MyNotNullRESTParam String pLocalDateAsBasicType,
+      @RequestParam(name = "utilDate", required = true) @MyNotNullRESTParam String pUtilDateAsBasicType,
+      @RequestParam(name = "calendar", required = true) @MyNotNullRESTParam String pCalendarAsBasicType,
+      @RequestParam(name = "sqlTimestamp", required = true) @MyNotNullRESTParam String pSqlTimestampAsBasicType,
+      @RequestParam(name = "sqlTime", required = true) @MyNotNullRESTParam String pSqlTimeAsBasicType,
+      @RequestParam(name = "sqlDate", required = true) @MyNotNullRESTParam String pSqlDateAsBasicType ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
     DateQueryParamsBean.Builder lQueryParamsBuilder = DateQueryParamsBean.builder();
@@ -550,17 +569,18 @@ public class RESTProductServiceResource {
   @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(path = "test-date-header-params/{path}", method = { RequestMethod.GET })
-  public void testDateHeaderParams( @PathVariable(name = "path", required = true) String pPath,
-      @RequestHeader(name = "Offset-Date-Time", required = true) String pOffsetDateTimeAsBasicType,
-      @RequestHeader(name = "Offset-Time", required = true) String pOffsetTimeAsBasicType,
-      @RequestHeader(name = "Local-Date-Time", required = true) String pLocalDateTimeAsBasicType,
-      @RequestHeader(name = "Local-Time", required = true) String pLocalTimeAsBasicType,
-      @RequestHeader(name = "Local-Date", required = true) String pLocalDateAsBasicType,
-      @RequestHeader(name = "Calendar", required = true) String pCalendarAsBasicType,
-      @RequestHeader(name = "Util-Date", required = true) String pUtilDateAsBasicType,
-      @RequestHeader(name = "SQL-Timestamp", required = true) String pSQLTimestampAsBasicType,
-      @RequestHeader(name = "SQL-Time", required = true) String pSQLTimeAsBasicType,
-      @RequestHeader(name = "SQL-Date", required = true) String pSQLDateAsBasicType,
+  @MyNotNullRESTParam
+  public void testDateHeaderParams( @PathVariable(name = "path", required = true) @MyNotNullRESTParam String pPath,
+      @RequestHeader(name = "Offset-Date-Time", required = true) @MyNotNullRESTParam String pOffsetDateTimeAsBasicType,
+      @RequestHeader(name = "Offset-Time", required = true) @MyNotNullRESTParam String pOffsetTimeAsBasicType,
+      @RequestHeader(name = "Local-Date-Time", required = true) @MyNotNullRESTParam String pLocalDateTimeAsBasicType,
+      @RequestHeader(name = "Local-Time", required = true) @MyNotNullRESTParam String pLocalTimeAsBasicType,
+      @RequestHeader(name = "Local-Date", required = true) @MyNotNullRESTParam String pLocalDateAsBasicType,
+      @RequestHeader(name = "Calendar", required = true) @MyNotNullRESTParam String pCalendarAsBasicType,
+      @RequestHeader(name = "Util-Date", required = true) @MyNotNullRESTParam String pUtilDateAsBasicType,
+      @RequestHeader(name = "SQL-Timestamp", required = true) @MyNotNullRESTParam String pSQLTimestampAsBasicType,
+      @RequestHeader(name = "SQL-Time", required = true) @MyNotNullRESTParam String pSQLTimeAsBasicType,
+      @RequestHeader(name = "SQL-Date", required = true) @MyNotNullRESTParam String pSQLDateAsBasicType,
       @RequestHeader(name = "util-dates", required = false) String[] pUtilDatesAsBasicType ) {
     // Convert date types into real objects.
     OffsetDateTime pOffsetDateTime;
@@ -676,17 +696,18 @@ public class RESTProductServiceResource {
   @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(path = "test-date-header-params-beans/{path}", method = { RequestMethod.GET })
-  public void testDateHeaderParamsBean( @PathVariable(name = "path", required = true) String pPath,
-      @RequestHeader(name = "Offset-Date-Time", required = true) String pOffsetDateTimeAsBasicType,
-      @RequestHeader(name = "Offset-Time", required = true) String pOffsetTimeAsBasicType,
-      @RequestHeader(name = "Local-Date-Time", required = true) String pLocalDateTimeAsBasicType,
-      @RequestHeader(name = "Local-Time", required = true) String pLocalTimeAsBasicType,
-      @RequestHeader(name = "Local-Date", required = true) String pLocalDateAsBasicType,
-      @RequestHeader(name = "Util-Date", required = true) String pUtilDateAsBasicType,
-      @RequestHeader(name = "Calendar", required = true) String pCalendarAsBasicType,
-      @RequestHeader(name = "SQL-Timestamp", required = true) String pSqlTimestampAsBasicType,
-      @RequestHeader(name = "SQL-Time", required = true) String pSqlTimeAsBasicType,
-      @RequestHeader(name = "SQL-Date", required = true) String pSqlDateAsBasicType ) {
+  @MyNotNullRESTParam
+  public void testDateHeaderParamsBean( @PathVariable(name = "path", required = true) @MyNotNullRESTParam String pPath,
+      @RequestHeader(name = "Offset-Date-Time", required = true) @MyNotNullRESTParam String pOffsetDateTimeAsBasicType,
+      @RequestHeader(name = "Offset-Time", required = true) @MyNotNullRESTParam String pOffsetTimeAsBasicType,
+      @RequestHeader(name = "Local-Date-Time", required = true) @MyNotNullRESTParam String pLocalDateTimeAsBasicType,
+      @RequestHeader(name = "Local-Time", required = true) @MyNotNullRESTParam String pLocalTimeAsBasicType,
+      @RequestHeader(name = "Local-Date", required = true) @MyNotNullRESTParam String pLocalDateAsBasicType,
+      @RequestHeader(name = "Util-Date", required = true) @MyNotNullRESTParam String pUtilDateAsBasicType,
+      @RequestHeader(name = "Calendar", required = true) @MyNotNullRESTParam String pCalendarAsBasicType,
+      @RequestHeader(name = "SQL-Timestamp", required = true) @MyNotNullRESTParam String pSqlTimestampAsBasicType,
+      @RequestHeader(name = "SQL-Time", required = true) @MyNotNullRESTParam String pSqlTimeAsBasicType,
+      @RequestHeader(name = "SQL-Date", required = true) @MyNotNullRESTParam String pSqlDateAsBasicType ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
     DateHeaderParamsBean.Builder lHeaderParamsBuilder = DateHeaderParamsBean.builder();
@@ -757,17 +778,19 @@ public class RESTProductServiceResource {
   @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(path = "cookies", method = { RequestMethod.GET })
+  @MyNotNullRESTParam
   public void testCookieParams(
       @CookieValue(name = "Channel-Type-Param", required = true) @RequestBody(
-          required = true) ChannelType pChannelTypeParam,
-      @RequestHeader(name = "token", required = true) String pAccessToken,
-      @RequestHeader(name = "lang", required = true) Locale pLanguage,
+          required = true) @MyNotNullRESTParam ChannelType pChannelTypeParam,
+      @RequestHeader(name = "token", required = true) @MyNotNullRESTParam String pAccessToken,
+      @RequestHeader(name = "lang", required = true) @MyNotNullRESTParam Locale pLanguage,
       @CookieValue(name = "reseller", required = true) long pResellerID,
       @PathVariable(name = "id", required = true) long pPathParam,
-      @RequestParam(name = "q1", required = true) String pQueryParam, String pLang,
-      @RequestHeader(name = "intCode", required = true) int pIntCodeAsBasicType,
-      @RequestHeader(name = "specificHeader", required = true) String pSpecificHeader,
-      @CookieValue(name = "Channel-Type", required = true) ChannelType pChannelType,
+      @RequestParam(name = "q1", required = true) @MyNotNullRESTParam String pQueryParam,
+      @MyNotNullRESTParam String pLang,
+      @RequestHeader(name = "intCode", required = true) @MyNotNullRESTParam int pIntCodeAsBasicType,
+      @RequestHeader(name = "specificHeader", required = true) @MyNotNullRESTParam String pSpecificHeader,
+      @CookieValue(name = "Channel-Type", required = true) @MyNotNullRESTParam ChannelType pChannelType,
       @RequestHeader Map<String, String> pHeaders ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
@@ -801,6 +824,7 @@ public class RESTProductServiceResource {
   @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "test-optional-query-params", method = { RequestMethod.GET })
+  @MyNotNullRESTParam
   public String testOptionalQueryParams(
       @RequestParam(name = "query1", required = false, defaultValue = "Just a default value") String query1,
       @RequestParam(name = "query2", required = false) int query2 ) {
@@ -820,7 +844,7 @@ public class RESTProductServiceResource {
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "complex/{bookingID}", method = { RequestMethod.GET })
   public boolean processComplexBookingID(
-      @PathVariable(name = "bookingID", required = true) String pComplextBookingIDAsBasicType ) {
+      @PathVariable(name = "bookingID", required = true) @MyNotNullRESTParam String pComplextBookingIDAsBasicType ) {
     // Convert basic type parameters into "real" objects.
     ComplexBookingID pComplextBookingID =
         this.deserializeCompositeDataType(pComplextBookingIDAsBasicType, ComplexBookingID.class);
@@ -839,10 +863,11 @@ public class RESTProductServiceResource {
   @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "dataTypesInHeader", method = { RequestMethod.GET })
+  @MyNotNullRESTParam
   public String testDataTypesAsHeaderParam(
-      @RequestHeader(name = "BookingID", required = true) String pBookingIDAsBasicType,
-      @RequestHeader(name = "BookingCode", required = true) String pBookingCodeAsBasicType,
-      @RequestHeader(name = "DoubleCode", required = true) Double pDoubleCodeAsBasicType ) {
+      @RequestHeader(name = "BookingID", required = true) @MyNotNullRESTParam String pBookingIDAsBasicType,
+      @RequestHeader(name = "BookingCode", required = true) @MyNotNullRESTParam String pBookingCodeAsBasicType,
+      @RequestHeader(name = "DoubleCode", required = true) @MyNotNullRESTParam Double pDoubleCodeAsBasicType ) {
     // Convert basic type parameters into "real" objects.
     BookingID pBookingID = this.deserializeCompositeDataType(pBookingIDAsBasicType, BookingID.class);
     BookingCode pBookingCode;
@@ -874,10 +899,11 @@ public class RESTProductServiceResource {
   @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "dataTypesInBeanHeader", method = { RequestMethod.GET })
+  @MyNotNullRESTParam
   public String testDataTypesAsHeaderBeanParam(
-      @RequestHeader(name = "bookingID", required = true) String pBookingIDAsBasicType,
-      @RequestHeader(name = "bookingCode", required = true) String pBookingCodeAsBasicType,
-      @RequestHeader(name = "DoubleCode", required = true) Double pDoubleCodeAsBasicType ) {
+      @RequestHeader(name = "bookingID", required = true) @MyNotNullRESTParam String pBookingIDAsBasicType,
+      @RequestHeader(name = "bookingCode", required = true) @MyNotNullRESTParam String pBookingCodeAsBasicType,
+      @RequestHeader(name = "DoubleCode", required = true) @MyNotNullRESTParam Double pDoubleCodeAsBasicType ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
     AdvancedHeader.Builder lContextBuilder = AdvancedHeader.builder();
@@ -909,6 +935,7 @@ public class RESTProductServiceResource {
   @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "testPrimitiveArrayAsBody", method = { RequestMethod.POST })
+  @MyNotNullRESTParam
   public String testPrimitiveArrays( @RequestBody(required = false) int[] pIntegerArray ) {
     // Validate request parameter(s).
     validationExecutor.validateRequest(RESTProductService.class, pIntegerArray);
@@ -925,8 +952,9 @@ public class RESTProductServiceResource {
   @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "testDataTypeAsQueryParam", method = { RequestMethod.GET })
+  @MyNotNullRESTParam
   public String testDataTypeAsQueryParam(
-      @RequestParam(name = "bookingCode", required = true) String pBookingCodeAsBasicType ) {
+      @RequestParam(name = "bookingCode", required = true) @MyNotNullRESTParam String pBookingCodeAsBasicType ) {
     // Convert basic type parameters into "real" objects.
     BookingCode pBookingCode;
     if (pBookingCodeAsBasicType != null) {
@@ -950,8 +978,9 @@ public class RESTProductServiceResource {
   @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "testDataTypeAsBeanQueryParam", method = { RequestMethod.GET })
+  @MyNotNullRESTParam
   public String testDataTypeAsBeanQueryParam(
-      @RequestParam(name = "bookingCode", required = true) String pBookingCodeAsBasicType,
+      @RequestParam(name = "bookingCode", required = true) @MyNotNullRESTParam String pBookingCodeAsBasicType,
       @RequestParam(name = "maxResults", required = true, defaultValue = "47") int pMaxResults ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
@@ -977,6 +1006,7 @@ public class RESTProductServiceResource {
   @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "testPrimitiveArrayAsQueryParam", method = { RequestMethod.GET })
+  @MyNotNullRESTParam
   public String testPrimitiveArrayAsQueryParam( @RequestParam(name = "intValues", required = false) int[] pIntValues ) {
     // Validate request parameter(s).
     validationExecutor.validateRequest(RESTProductService.class, pIntValues);
@@ -993,6 +1023,7 @@ public class RESTProductServiceResource {
   @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "testSimpleTypesAsQueryParams", method = { RequestMethod.GET })
+  @MyNotNullRESTParam
   public String testSimpleTypesAsQueryParams(
       @RequestParam(name = "strings", required = false) List<String> pStrings ) {
     // Validate request parameter(s).
@@ -1010,8 +1041,9 @@ public class RESTProductServiceResource {
   @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "testPrimitiveWrapperArrayAsQueryParam", method = { RequestMethod.GET })
+  @MyNotNullRESTParam
   public String testPrimitiveWrapperArrayAsQueryParam(
-      @RequestParam(name = "integers", required = true) Set<Integer> pIntegers ) {
+      @RequestParam(name = "integers", required = true) @MyNotEmptyRESTParam Set<Integer> pIntegers ) {
     // Validate request parameter(s).
     validationExecutor.validateRequest(RESTProductService.class, pIntegers);
     // Delegate request to service.
@@ -1027,6 +1059,7 @@ public class RESTProductServiceResource {
   @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "testMultivaluedQueryParamsBean", method = { RequestMethod.GET })
+  @MyNotNullRESTParam
   public String testMultivaluedQueryParamsBean( @RequestParam(name = "intArray", required = false) int[] pIntArray,
       @RequestParam(name = "strings", required = false) String[] pStrings,
       @RequestParam(name = "integers", required = false) Integer[] pIntegers,
@@ -1056,9 +1089,10 @@ public class RESTProductServiceResource {
   @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "testMulitvaluedDataTypeAsQueryParam", method = { RequestMethod.GET })
+  @MyNotNullRESTParam
   public String testMulitvaluedDataTypeAsQueryParam(
       @RequestParam(name = "codes", required = false) int[] pCodesAsBasicType,
-      @RequestParam(name = "longCodes", required = true) Long[] pLongCodesAsBasicType,
+      @RequestParam(name = "longCodes", required = true) @MyNotEmptyRESTParam Long[] pLongCodesAsBasicType,
       @RequestParam(name = "bookingIDs", required = false) String[] pBookingIDsAsBasicType,
       @RequestParam(name = "timestamps", required = false) String[] pTimestampsAsBasicType,
       @RequestParam(name = "localDates", required = false) String[] pLocalDatesAsBasicType ) {
@@ -1131,16 +1165,17 @@ public class RESTProductServiceResource {
   @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "testMulitvaluedDataTypeAsBeanQueryParam", method = { RequestMethod.GET })
+  @MyNotNullRESTParam
   public String testMulitvaluedDataTypeAsBeanQueryParam(
       @RequestParam(name = "longCodes", required = false) Long[] pLongCodesAsBasicType,
       @RequestParam(name = "codes", required = false) int[] pCodesAsBasicType,
       @RequestParam(name = "doubleCodes", required = false) Double[] pDoubleCodesAsBasicType,
       @RequestParam(name = "bookingIDs", required = false) String[] pBookingIDsAsBasicType,
       @RequestParam(name = "bookingIDsArray", required = false) String[] pBookingIDsArrayAsBasicType,
-      @RequestParam(name = "offsetDateTime", required = true) String pOffsetDateTimeAsBasicType,
-      @RequestParam(name = "offsetTime", required = true) String pOffsetTimeAsBasicType,
-      @RequestParam(name = "localDateTime", required = true) String pLocalDateTimeAsBasicType,
-      @RequestParam(name = "localTime", required = true) String pLocalTimeAsBasicType,
+      @RequestParam(name = "offsetDateTime", required = true) @MyNotNullRESTParam String pOffsetDateTimeAsBasicType,
+      @RequestParam(name = "offsetTime", required = true) @MyNotNullRESTParam String pOffsetTimeAsBasicType,
+      @RequestParam(name = "localDateTime", required = true) @MyNotNullRESTParam String pLocalDateTimeAsBasicType,
+      @RequestParam(name = "localTime", required = true) @MyNotNullRESTParam String pLocalTimeAsBasicType,
       @RequestParam(name = "timestamps", required = false) String[] pTimestampsAsBasicType,
       @RequestParam(name = "times", required = false) String[] pTimesAsBasicType,
       @RequestParam(name = "startTimestamps", required = false) String[] pStartTimestampsAsBasicType ) {
@@ -1245,9 +1280,10 @@ public class RESTProductServiceResource {
   @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "testMultiValuedHeaderFieldsInBeanParam", method = { RequestMethod.GET })
+  @MyNotNullRESTParam
   public String testMultiValuedHeaderFieldsInBeanParam(
       @RequestHeader(name = "names", required = false) String[] pNames,
-      @RequestHeader(name = "ints", required = true) int[] pInts,
+      @RequestHeader(name = "ints", required = true) @MyNotEmptyRESTParam int[] pInts,
       @RequestHeader(name = "doubles", required = false) Double[] pDoubles,
       @RequestHeader(name = "codes", required = false) String[] pCodesAsBasicType,
       @RequestHeader(name = "stringCodeList", required = false) String[] pStringCodeListAsBasicType,
@@ -1364,8 +1400,9 @@ public class RESTProductServiceResource {
   @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "testMultiValuedHeaderFields", method = { RequestMethod.GET })
+  @MyNotNullRESTParam
   public String testMultiValuedHeaderFields( @RequestHeader(name = "names", required = false) Set<String> pNames,
-      @RequestHeader(name = "ints", required = true) int[] pInts,
+      @RequestHeader(name = "ints", required = true) @MyNotEmptyRESTParam int[] pInts,
       @RequestHeader(name = "doubles", required = false) Set<Double> pDoubles,
       @RequestHeader(name = "codes", required = false) String[] pCodesAsBasicType,
       @RequestHeader(name = "startDate", required = false) String pStartDateAsBasicType,
@@ -1435,8 +1472,9 @@ public class RESTProductServiceResource {
   @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(path = "booking-id-as-path-param/{bookingID}", method = { RequestMethod.PATCH })
+  @MyNotNullRESTParam
   public void testBookingIDAsPathParam(
-      @PathVariable(name = "bookingID", required = true) String pBookingIDAsBasicType ) {
+      @PathVariable(name = "bookingID", required = true) @MyNotNullRESTParam String pBookingIDAsBasicType ) {
     // Convert basic type parameters into "real" objects.
     BookingID pBookingID = this.deserializeCompositeDataType(pBookingIDAsBasicType, BookingID.class);
     // Validate request parameter(s).
@@ -1451,6 +1489,7 @@ public class RESTProductServiceResource {
   @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(path = "booking-id-as-header-param", method = { RequestMethod.PATCH })
+  @MyNotNullRESTParam
   public void testBookingIDAsHeaderParam(
       @RequestHeader(name = "bookingID", required = false) String pBookingIDAsBasicType ) {
     // Convert basic type parameters into "real" objects.
@@ -1467,12 +1506,13 @@ public class RESTProductServiceResource {
   @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "test-context-with-primitives", method = { RequestMethod.GET })
+  @MyNotNullRESTParam
   public String testContextWithPrimitives( @RequestHeader(name = "aBoolean", required = true) boolean pABoolean,
-      @RequestHeader(name = "aBooleanWrapper", required = true) Boolean pABooleanWrapper,
+      @RequestHeader(name = "aBooleanWrapper", required = true) @MyNotNullRESTParam Boolean pABooleanWrapper,
       @RequestHeader(name = "anInt", required = true) int pAnInt,
-      @RequestHeader(name = "anInteger", required = true) Integer pAnInteger,
+      @RequestHeader(name = "anInteger", required = true) @MyNotNullRESTParam Integer pAnInteger,
       @RequestParam(name = "aLong", required = true) long pALong,
-      @RequestParam(name = "aVeryLong", required = true) Long pAVeryLong ) {
+      @RequestParam(name = "aVeryLong", required = true) @MyNotNullRESTParam Long pAVeryLong ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
     ContextWithPrimitives.Builder lContextBuilder = ContextWithPrimitives.builder();
@@ -1498,12 +1538,13 @@ public class RESTProductServiceResource {
   @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "test-primitives-as-params", method = { RequestMethod.GET })
+  @MyNotNullRESTParam
   public String testPrimitivesAsParams( @RequestHeader(name = "pAnInt", required = true) int pAnInt,
-      @RequestHeader(name = "pAnInteger", required = true) Integer pAnInteger,
+      @RequestHeader(name = "pAnInteger", required = true) @MyNotNullRESTParam Integer pAnInteger,
       @RequestHeader(name = "pABoolean", required = true) boolean pABoolean,
-      @RequestHeader(name = "pBooleanWrapper", required = true) Boolean pBooleanWrapper,
+      @RequestHeader(name = "pBooleanWrapper", required = true) @MyNotNullRESTParam Boolean pBooleanWrapper,
       @RequestParam(name = "pALong", required = true) long pALong,
-      @RequestParam(name = "pVeryLong", required = true) Long pVeryLong ) {
+      @RequestParam(name = "pVeryLong", required = true) @MyNotNullRESTParam Long pVeryLong ) {
     // Validate request parameter(s).
     validationExecutor.validateRequest(RESTProductService.class, pAnInt, pAnInteger, pABoolean, pBooleanWrapper, pALong,
         pVeryLong);

@@ -7,7 +7,7 @@ package com.anaptecs.spring.base;
 
 import java.util.Objects;
 
-import com.anaptecs.annotations.MyNotNull;
+import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -146,7 +146,7 @@ public class EnumTest {
      * @param pProperty Value to which {@link #property} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setProperty( @MyNotNull ExtensibleEnum pProperty ) {
+    public Builder setProperty( @MyNotNullProperty ExtensibleEnum pProperty ) {
       // Assign value to attribute
       property = pProperty;
       return this;
@@ -158,7 +158,7 @@ public class EnumTest {
      * @param pEnumRef Value to which {@link #enumRef} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setEnumRef( @MyNotNull ExtensibleEnum pEnumRef ) {
+    public Builder setEnumRef( @MyNotNullProperty ExtensibleEnum pEnumRef ) {
       enumRef = pEnumRef;
       return this;
     }
@@ -180,7 +180,7 @@ public class EnumTest {
    *
    * @return {@link ExtensibleEnum} Value to which {@link #property} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public ExtensibleEnum getProperty( ) {
     return property;
   }
@@ -190,7 +190,7 @@ public class EnumTest {
    *
    * @param pProperty Value to which {@link #property} should be set.
    */
-  public void setProperty( @MyNotNull ExtensibleEnum pProperty ) {
+  public void setProperty( @MyNotNullProperty ExtensibleEnum pProperty ) {
     // Assign value to attribute
     property = pProperty;
   }
@@ -200,7 +200,7 @@ public class EnumTest {
    *
    * @return {@link ExtensibleEnum} Value to which {@link #enumRef} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public ExtensibleEnum getEnumRef( ) {
     return enumRef;
   }
@@ -210,7 +210,7 @@ public class EnumTest {
    *
    * @param pEnumRef Value to which {@link #enumRef} should be set.
    */
-  public void setEnumRef( @MyNotNull ExtensibleEnum pEnumRef ) {
+  public void setEnumRef( @MyNotNullProperty ExtensibleEnum pEnumRef ) {
     enumRef = pEnumRef;
   }
 

@@ -12,7 +12,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-import com.anaptecs.annotations.MyNotNull;
+import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonGetter;
@@ -174,7 +174,7 @@ public abstract class MasterDataObjectBase {
      * @param pEntity Value to which {@link #entity} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setEntity( @MyNotNull Entity pEntity ) {
+    public BuilderBase setEntity( @MyNotNullProperty Entity pEntity ) {
       entity = pEntity;
       return this;
     }
@@ -185,7 +185,7 @@ public abstract class MasterDataObjectBase {
      * @param pObjectID Value to which {@link #objectID} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setObjectID( @MyNotNull String pObjectID ) {
+    public BuilderBase setObjectID( @MyNotNullProperty String pObjectID ) {
       // Assign value to attribute
       objectID = pObjectID;
       return this;
@@ -197,7 +197,7 @@ public abstract class MasterDataObjectBase {
      * @param pInternalProperty Value to which {@link #internalProperty} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setInternalProperty( @MyNotNull String pInternalProperty ) {
+    public BuilderBase setInternalProperty( @MyNotNullProperty String pInternalProperty ) {
       // Assign value to attribute
       internalProperty = pInternalProperty;
       return this;
@@ -273,7 +273,7 @@ public abstract class MasterDataObjectBase {
    *
    * @return {@link Entity} Value to which {@link #entity} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   Entity getEntity( ) {
     return entity;
   }
@@ -283,7 +283,7 @@ public abstract class MasterDataObjectBase {
    *
    * @param pEntity Value to which {@link #entity} should be set.
    */
-  void setEntity( @MyNotNull Entity pEntity ) {
+  void setEntity( @MyNotNullProperty Entity pEntity ) {
     entity = pEntity;
   }
 
@@ -299,7 +299,7 @@ public abstract class MasterDataObjectBase {
    *
    * @return {@link String} Value to which {@link #objectID} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public String getObjectID( ) {
     return objectID;
   }
@@ -309,7 +309,7 @@ public abstract class MasterDataObjectBase {
    *
    * @param pObjectID Value to which {@link #objectID} should be set.
    */
-  public void setObjectID( @MyNotNull String pObjectID ) {
+  public void setObjectID( @MyNotNullProperty String pObjectID ) {
     // Assign value to attribute
     objectID = pObjectID;
   }
@@ -319,7 +319,7 @@ public abstract class MasterDataObjectBase {
    *
    * @return {@link String} Value to which {@link #internalProperty} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   String getInternalProperty( ) {
     return internalProperty;
   }
@@ -329,7 +329,7 @@ public abstract class MasterDataObjectBase {
    *
    * @param pInternalProperty Value to which {@link #internalProperty} should be set.
    */
-  void setInternalProperty( @MyNotNull String pInternalProperty ) {
+  void setInternalProperty( @MyNotNullProperty String pInternalProperty ) {
     // Assign value to attribute
     internalProperty = pInternalProperty;
   }
@@ -359,7 +359,7 @@ public abstract class MasterDataObjectBase {
    *
    * @return {@link String} Value to which {@link #derivedProperty} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public abstract String getDerivedProperty( );
 
   /**
@@ -411,7 +411,7 @@ public abstract class MasterDataObjectBase {
    *
    * @return {@link String} Value to which {@link #derivedString} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public abstract String getDerivedString( );
 
   @Override

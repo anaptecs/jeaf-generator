@@ -221,6 +221,7 @@ public class «name»Resource {
 	«IF produces.size > 0»@«getEnterpriseJavaPackage()».ws.rs.Produces(«IF produces.size > 1»{«ENDIF»«FOREACH produces AS mediaType SEPARATOR ","»«getEnterpriseJavaPackage()».ws.rs.core.MediaType.«mediaType»«ENDFOREACH»«IF produces.size > 1»}«ENDIF»)«ENDIF»
 	«EXPAND java::Helper::GenerateDeprecationAnnotation-»
 	«EXPAND java::Helper::GenerateDeprecationAnnotation FOR this.getReturnResult()-»
+	«EXPAND java::Helper::NotNullAnnotationForParameter("RESTResource") FOR this.getReturnResult()-»
 	public «getEnterpriseJavaPackage()».ws.rs.core.Response  «name» («EXPAND RESTParameterSignature FOR this» «IF this.ownedParameter.select(e|e.hasParamCustomHeaders()).size > 0» «IF ownedParameter.select(e| e.isInputParameter() && e.isParameterSuppressed() == false).size > 0»,«ENDIF» @«getEnterpriseJavaPackage()».ws.rs.core.Context «getEnterpriseJavaPackage()».ws.rs.core.HttpHeaders pHeaders«ENDIF»)«getThrownExceptionsAsString()»{
 	  «IF this.hasDataTypeParameters()»
 	  // Convert basic type parameters into "real" objects.
@@ -364,6 +365,7 @@ public class «name»Resource {
 	)
 	«EXPAND java::Helper::GenerateDeprecationAnnotation-»
 	«EXPAND java::Helper::GenerateDeprecationAnnotation FOR this.getReturnResult()-»
+	«EXPAND java::Helper::NotNullAnnotationForParameter("RESTResource") FOR this.getReturnResult()-»
 	public «getReturnTypeName()»  «name» («EXPAND SpringRESTParameterSignature FOR this» «IF this.ownedParameter.select(e|e.hasParamCustomHeaders()).size > 0» «IF ownedParameter.select(e| e.isInputParameter() && e.isParameterSuppressed() == false).size > 0»,«ENDIF» @org.springframework.web.bind.annotation.RequestHeader java.util.Map<String, String> pHeaders«ENDIF»)«getThrownExceptionsAsString()»{
 	  «IF this.hasBeanParameters()»
 	  // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the service interface but "only" our REST controller.
@@ -709,6 +711,7 @@ public class «name»Resource {
 	«IF produces.size > 0»@«getEnterpriseJavaPackage()».ws.rs.Produces(«IF produces.size > 1»{«ENDIF»«FOREACH produces AS mediaType SEPARATOR ","»«getEnterpriseJavaPackage()».ws.rs.core.MediaType.«mediaType»«ENDFOREACH»«IF produces.size > 1»}«ENDIF»)«ENDIF»
 	«EXPAND java::Helper::GenerateDeprecationAnnotation -»
 	«EXPAND java::Helper::GenerateDeprecationAnnotation FOR this.getReturnResult()-»
+	«EXPAND java::Helper::NotNullAnnotationForParameter("RESTResource") FOR this.getReturnResult()-»
 	public void  «name» (@«getEnterpriseJavaPackage()».ws.rs.container.Suspended «getEnterpriseJavaPackage()».ws.rs.container.AsyncResponse pAsyncResponse, @«getEnterpriseJavaPackage()».ws.rs.core.Context «getEnterpriseJavaPackage()».servlet.http.HttpServletRequest pRequest «IF this.hasInputParameters()»,«ENDIF» «EXPAND RESTParameterSignature FOR this»)«getThrownExceptionsAsString()»{
 	    // Lookup workload manager that takes care that the system will have an optimal throughput.
 	    com.anaptecs.jeaf.workload.api.WorkloadManager lWorkloadManager = com.anaptecs.jeaf.workload.api.Workload.getWorkloadManager();
@@ -812,6 +815,7 @@ public class «name»Resource {
   «ENDIF»
 
 «EXPAND java::Helper::GenerateDeprecationAnnotation»
+«EXPAND java::Helper::NotNullAnnotationForParameter("RESTResource")»
 	«IF this.type.isOpenAPIDataType() && this.isRequestBody() == false»
 	  	«IF ((JMM::OpenAPIDataType) this.type).compositeDataType»
 	  		String«IF this.isMultivalued()»[]«ENDIF» «this.name»AsBasicType
@@ -849,6 +853,7 @@ public class «name»Resource {
 
   «EXPAND java::Helper::GenerateDeprecationAnnotation»
   «IF this.isBeanParam() == false»
+      «EXPAND java::Helper::NotNullAnnotationForParameter("RESTResource")»
 	  «IF this.type.isOpenAPIDataType() && this.isRequestBody() == false»
 	  	«IF ((JMM::OpenAPIDataType) this.type).compositeDataType»
 	  		String«IF this.isMultivalued()»[]«ENDIF» «name»AsBasicType
@@ -889,6 +894,7 @@ public class «name»Resource {
   «ENDIF-»
 
   «EXPAND java::Helper::GenerateDeprecationAnnotation»
+  «EXPAND java::Helper::NotNullAnnotationForBeanParameter»
 	  «IF this.type.isOpenAPIDataType() »
 	  	«IF ((JMM::OpenAPIDataType) this.type).compositeDataType»
 	  		String«IF this.isMultivalued()»[]«ENDIF» «this.asParameter()»AsBasicType

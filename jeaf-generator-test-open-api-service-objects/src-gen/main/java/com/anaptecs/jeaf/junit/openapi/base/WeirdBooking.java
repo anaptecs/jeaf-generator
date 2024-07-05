@@ -16,7 +16,7 @@ import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
-import com.anaptecs.annotations.MyNotNull;
+import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.junit.openapi.composite.ComplexBookingID;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -253,7 +253,7 @@ public class WeirdBooking extends WeirdParent {
      * @param pBooking Value to which {@link #booking} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setBooking( @MyNotNull ComplexBookingID pBooking ) {
+    public Builder setBooking( @MyNotNullProperty ComplexBookingID pBooking ) {
       booking = pBooking;
       return this;
     }
@@ -298,7 +298,7 @@ public class WeirdBooking extends WeirdParent {
      * @param pVersionedObjectSoftLink Value to which {@link #versionedObjectSoftLink} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setVersionedObjectSoftLink( @MyNotNull VersionedObjectSoftLink pVersionedObjectSoftLink ) {
+    public Builder setVersionedObjectSoftLink( @MyNotNullProperty VersionedObjectSoftLink pVersionedObjectSoftLink ) {
       versionedObjectSoftLink = pVersionedObjectSoftLink;
       return this;
     }
@@ -413,7 +413,7 @@ public class WeirdBooking extends WeirdParent {
    *
    * @return {@link ComplexBookingID} Value to which {@link #booking} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public ComplexBookingID getBooking( ) {
     return booking;
   }
@@ -423,7 +423,7 @@ public class WeirdBooking extends WeirdParent {
    *
    * @param pBooking Value to which {@link #booking} should be set.
    */
-  public void setBooking( @MyNotNull ComplexBookingID pBooking ) {
+  public void setBooking( @MyNotNullProperty ComplexBookingID pBooking ) {
     booking = pBooking;
   }
 
@@ -503,7 +503,7 @@ public class WeirdBooking extends WeirdParent {
    *
    * @return {@link VersionedObjectSoftLink} Value to which {@link #versionedObjectSoftLink} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public VersionedObjectSoftLink getVersionedObjectSoftLink( ) {
     return versionedObjectSoftLink;
   }
@@ -516,7 +516,7 @@ public class WeirdBooking extends WeirdParent {
    *
    * @param pVersionedObjectSoftLink Value to which {@link #versionedObjectSoftLink} should be set.
    */
-  public void setVersionedObjectSoftLink( @MyNotNull VersionedObjectSoftLink pVersionedObjectSoftLink ) {
+  public void setVersionedObjectSoftLink( @MyNotNullProperty VersionedObjectSoftLink pVersionedObjectSoftLink ) {
     versionedObjectSoftLink = pVersionedObjectSoftLink;
   }
 

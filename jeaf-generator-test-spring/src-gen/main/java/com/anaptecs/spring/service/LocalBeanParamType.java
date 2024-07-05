@@ -7,7 +7,7 @@ package com.anaptecs.spring.service;
 
 import java.util.Objects;
 
-import com.anaptecs.annotations.MyNotNull;
+import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 
 public class LocalBeanParamType {
@@ -120,7 +120,7 @@ public class LocalBeanParamType {
      * @param pLocalKey Value to which {@link #localKey} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setLocalKey( @MyNotNull String pLocalKey ) {
+    public Builder setLocalKey( @MyNotNullProperty String pLocalKey ) {
       // Assign value to attribute
       localKey = pLocalKey;
       return this;
@@ -132,7 +132,7 @@ public class LocalBeanParamType {
      * @param pLocalID Value to which {@link #localID} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setLocalID( @MyNotNull String pLocalID ) {
+    public Builder setLocalID( @MyNotNullProperty String pLocalID ) {
       // Assign value to attribute
       localID = pLocalID;
       return this;
@@ -156,7 +156,7 @@ public class LocalBeanParamType {
    *
    * @return {@link String} Value to which {@link #localKey} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public String getLocalKey( ) {
     return localKey;
   }
@@ -166,7 +166,7 @@ public class LocalBeanParamType {
    *
    * @param pLocalKey Value to which {@link #localKey} should be set.
    */
-  public void setLocalKey( @MyNotNull String pLocalKey ) {
+  public void setLocalKey( @MyNotNullProperty String pLocalKey ) {
     // Assign value to attribute
     localKey = pLocalKey;
   }
@@ -176,7 +176,7 @@ public class LocalBeanParamType {
    *
    * @return {@link String} Value to which {@link #localID} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public String getLocalID( ) {
     return localID;
   }
@@ -186,7 +186,7 @@ public class LocalBeanParamType {
    *
    * @param pLocalID Value to which {@link #localID} should be set.
    */
-  public void setLocalID( @MyNotNull String pLocalID ) {
+  public void setLocalID( @MyNotNullProperty String pLocalID ) {
     // Assign value to attribute
     localID = pLocalID;
   }

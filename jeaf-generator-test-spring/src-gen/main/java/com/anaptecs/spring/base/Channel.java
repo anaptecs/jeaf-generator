@@ -7,7 +7,7 @@ package com.anaptecs.spring.base;
 
 import java.util.Objects;
 
-import com.anaptecs.annotations.MyNotNull;
+import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -189,7 +189,7 @@ public class Channel {
      * @param pChannelType Value to which {@link #channelType} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setChannelType( @MyNotNull ChannelType pChannelType ) {
+    public Builder setChannelType( @MyNotNullProperty ChannelType pChannelType ) {
       channelType = pChannelType;
       return this;
     }
@@ -200,7 +200,7 @@ public class Channel {
      * @param pChannelCode Value to which {@link #channelCode} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setChannelCode( @MyNotNull ChannelCode pChannelCode ) {
+    public Builder setChannelCode( @MyNotNullProperty ChannelCode pChannelCode ) {
       channelCode = pChannelCode;
       return this;
     }
@@ -248,7 +248,7 @@ public class Channel {
    *
    * @return {@link ChannelType} Value to which {@link #channelType} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public ChannelType getChannelType( ) {
     return channelType;
   }
@@ -259,7 +259,7 @@ public class Channel {
    *
    * @param pChannelType Value to which {@link #channelType} should be set.
    */
-  public void setChannelType( @MyNotNull ChannelType pChannelType ) {
+  public void setChannelType( @MyNotNullProperty ChannelType pChannelType ) {
     channelType = pChannelType;
   }
 
@@ -276,7 +276,7 @@ public class Channel {
    *
    * @return {@link ChannelCode} Value to which {@link #channelCode} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public ChannelCode getChannelCode( ) {
     return channelCode;
   }
@@ -287,7 +287,7 @@ public class Channel {
    *
    * @param pChannelCode Value to which {@link #channelCode} should be set.
    */
-  public void setChannelCode( @MyNotNull ChannelCode pChannelCode ) {
+  public void setChannelCode( @MyNotNullProperty ChannelCode pChannelCode ) {
     channelCode = pChannelCode;
   }
 
@@ -332,7 +332,7 @@ public class Channel {
    *
    * @return {@link Reseller} Value to which {@link #reseller} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public Reseller getReseller( ) {
     return reseller;
   }
@@ -342,7 +342,7 @@ public class Channel {
    *
    * @param pReseller Value to which {@link #reseller} should be set.
    */
-  void setReseller( @MyNotNull Reseller pReseller ) {
+  void setReseller( @MyNotNullProperty Reseller pReseller ) {
     // Release already referenced object before setting a new association.
     if (reseller != null) {
       reseller.removeFromChannels((Channel) this);

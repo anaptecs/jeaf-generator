@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-import com.anaptecs.annotations.MyNotNull;
+import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 
 public class TechnicalHeaderContext {
@@ -115,7 +115,7 @@ public class TechnicalHeaderContext {
      * @param pReseller Value to which {@link #reseller} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setReseller( @MyNotNull String pReseller ) {
+    public Builder setReseller( @MyNotNullProperty String pReseller ) {
       // Assign value to attribute
       reseller = pReseller;
       return this;
@@ -139,7 +139,7 @@ public class TechnicalHeaderContext {
    *
    * @return {@link String} Value to which {@link #reseller} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public String getReseller( ) {
     return reseller;
   }
@@ -149,7 +149,7 @@ public class TechnicalHeaderContext {
    *
    * @param pReseller Value to which {@link #reseller} should be set.
    */
-  public void setReseller( @MyNotNull String pReseller ) {
+  public void setReseller( @MyNotNullProperty String pReseller ) {
     // Assign value to attribute
     reseller = pReseller;
   }

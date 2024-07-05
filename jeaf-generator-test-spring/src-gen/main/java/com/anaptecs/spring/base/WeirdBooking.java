@@ -12,7 +12,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-import com.anaptecs.annotations.MyNotNull;
+import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.anaptecs.spring.composite.ComplexBookingID;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
@@ -140,7 +140,7 @@ public class WeirdBooking {
      * @param pBooking Value to which {@link #booking} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setBooking( @MyNotNull ComplexBookingID pBooking ) {
+    public Builder setBooking( @MyNotNullProperty ComplexBookingID pBooking ) {
       booking = pBooking;
       return this;
     }
@@ -197,7 +197,7 @@ public class WeirdBooking {
    *
    * @return {@link ComplexBookingID} Value to which {@link #booking} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public ComplexBookingID getBooking( ) {
     return booking;
   }
@@ -207,7 +207,7 @@ public class WeirdBooking {
    *
    * @param pBooking Value to which {@link #booking} should be set.
    */
-  public void setBooking( @MyNotNull ComplexBookingID pBooking ) {
+  public void setBooking( @MyNotNullProperty ComplexBookingID pBooking ) {
     booking = pBooking;
   }
 

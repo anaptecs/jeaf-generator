@@ -15,7 +15,7 @@ import javax.ws.rs.CookieParam;
 import javax.ws.rs.HeaderParam;
 import javax.ws.rs.QueryParam;
 
-import com.anaptecs.annotations.MyNotNull;
+import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -150,7 +150,7 @@ public class DeprecatedContext implements ServiceObject {
      * @param pAccessToken Value to which {@link #accessToken} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setAccessToken( @MyNotNull String pAccessToken ) {
+    public Builder setAccessToken( @MyNotNullProperty String pAccessToken ) {
       // Assign value to attribute
       accessToken = pAccessToken;
       return this;
@@ -162,7 +162,7 @@ public class DeprecatedContext implements ServiceObject {
      * @param pLanguage Value to which {@link #language} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setLanguage( @MyNotNull Locale pLanguage ) {
+    public Builder setLanguage( @MyNotNullProperty Locale pLanguage ) {
       // Assign value to attribute
       language = pLanguage;
       return this;
@@ -186,7 +186,7 @@ public class DeprecatedContext implements ServiceObject {
      * @param pQueryParam Value to which {@link #queryParam} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setQueryParam( @MyNotNull String pQueryParam ) {
+    public Builder setQueryParam( @MyNotNullProperty String pQueryParam ) {
       // Assign value to attribute
       queryParam = pQueryParam;
       return this;
@@ -221,7 +221,7 @@ public class DeprecatedContext implements ServiceObject {
    *
    * @return {@link String} Value to which {@link #accessToken} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public String getAccessToken( ) {
     return accessToken;
   }
@@ -231,7 +231,7 @@ public class DeprecatedContext implements ServiceObject {
    *
    * @param pAccessToken Value to which {@link #accessToken} should be set.
    */
-  public void setAccessToken( @MyNotNull String pAccessToken ) {
+  public void setAccessToken( @MyNotNullProperty String pAccessToken ) {
     // Assign value to attribute
     accessToken = pAccessToken;
   }
@@ -241,7 +241,7 @@ public class DeprecatedContext implements ServiceObject {
    *
    * @return {@link Locale} Value to which {@link #language} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public Locale getLanguage( ) {
     return language;
   }
@@ -251,7 +251,7 @@ public class DeprecatedContext implements ServiceObject {
    *
    * @param pLanguage Value to which {@link #language} should be set.
    */
-  public void setLanguage( @MyNotNull Locale pLanguage ) {
+  public void setLanguage( @MyNotNullProperty Locale pLanguage ) {
     // Assign value to attribute
     language = pLanguage;
   }
@@ -280,7 +280,7 @@ public class DeprecatedContext implements ServiceObject {
    *
    * @return {@link String} Value to which {@link #queryParam} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public String getQueryParam( ) {
     return queryParam;
   }
@@ -290,7 +290,7 @@ public class DeprecatedContext implements ServiceObject {
    *
    * @param pQueryParam Value to which {@link #queryParam} should be set.
    */
-  public void setQueryParam( @MyNotNull String pQueryParam ) {
+  public void setQueryParam( @MyNotNullProperty String pQueryParam ) {
     // Assign value to attribute
     queryParam = pQueryParam;
   }

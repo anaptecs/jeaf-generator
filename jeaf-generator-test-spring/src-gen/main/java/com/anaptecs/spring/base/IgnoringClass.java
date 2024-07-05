@@ -7,7 +7,7 @@ package com.anaptecs.spring.base;
 
 import java.util.Objects;
 
-import com.anaptecs.annotations.MyNotNull;
+import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -114,7 +114,7 @@ public class IgnoringClass {
      * @param pAge Value to which {@link #age} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setAge( @MyNotNull Integer pAge ) {
+    public Builder setAge( @MyNotNullProperty Integer pAge ) {
       // Assign value to attribute
       age = pAge;
       return this;
@@ -138,7 +138,7 @@ public class IgnoringClass {
    *
    * @return {@link Integer} Value to which {@link #age} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public Integer getAge( ) {
     return age;
   }
@@ -148,7 +148,7 @@ public class IgnoringClass {
    *
    * @param pAge Value to which {@link #age} should be set.
    */
-  public void setAge( @MyNotNull Integer pAge ) {
+  public void setAge( @MyNotNullProperty Integer pAge ) {
     // Assign value to attribute
     age = pAge;
   }

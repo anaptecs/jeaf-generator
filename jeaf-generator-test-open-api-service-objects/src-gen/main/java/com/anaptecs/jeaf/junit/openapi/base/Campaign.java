@@ -16,7 +16,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import com.anaptecs.annotations.MyNotEmpty;
+import com.anaptecs.annotations.MyNotEmptyProperty;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -193,7 +193,7 @@ public class Campaign implements ServiceObject {
      * @deprecated No good any more (<b>since:</b> 1.2, <b>removed with:</b> 3.0)
      */
     @Deprecated
-    public Builder setMoreLinkIDs( @MyNotEmpty Set<Long> pMoreLinks ) {
+    public Builder setMoreLinkIDs( @MyNotEmptyProperty Set<Long> pMoreLinks ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pMoreLinks != null) {
         moreLinkIDs = new HashSet<Long>(pMoreLinks);
@@ -283,7 +283,7 @@ public class Campaign implements ServiceObject {
    * @deprecated No good any more (<b>since:</b> 1.2, <b>removed with:</b> 3.0)
    */
   @Deprecated
-  @MyNotEmpty
+  @MyNotEmptyProperty
   public Set<Long> getMoreLinkIDs( ) {
     // Return all LinkObject objects directly without any protection against modification.
     return moreLinkIDs;

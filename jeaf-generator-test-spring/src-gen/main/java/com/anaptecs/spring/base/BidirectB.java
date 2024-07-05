@@ -7,7 +7,7 @@ package com.anaptecs.spring.base;
 
 import java.util.Objects;
 
-import com.anaptecs.annotations.MyNotNull;
+import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -133,7 +133,7 @@ public class BidirectB {
      * @param pA Value to which {@link #a} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setA( @MyNotNull BidirectA pA ) {
+    public Builder setA( @MyNotNullProperty BidirectA pA ) {
       a = pA;
       return this;
     }
@@ -156,7 +156,7 @@ public class BidirectB {
    *
    * @return {@link BidirectA} Value to which {@link #a} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public BidirectA getA( ) {
     // Due to restrictions in JSON serialization / deserialization bi-directional associations need a special handling
     // after an object was deserialized.
@@ -173,7 +173,7 @@ public class BidirectB {
    *
    * @param pA Value to which {@link #a} should be set.
    */
-  public void setA( @MyNotNull BidirectA pA ) {
+  public void setA( @MyNotNullProperty BidirectA pA ) {
     // Release already referenced object before setting a new association.
     if (a != null) {
       a.removeFromTransientBs((BidirectB) this);

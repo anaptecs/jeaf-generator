@@ -9,7 +9,7 @@ import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
-import com.anaptecs.annotations.MyNotNull;
+import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -147,7 +147,7 @@ public class DirectedEdge implements ServiceObject {
      * @param pEnd Value to which {@link #end} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setEnd( @MyNotNull Stop pEnd ) {
+    public Builder setEnd( @MyNotNullProperty Stop pEnd ) {
       end = pEnd;
       return this;
     }
@@ -158,7 +158,7 @@ public class DirectedEdge implements ServiceObject {
      * @param pLink Value to which {@link #link} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setLink( @MyNotNull String pLink ) {
+    public Builder setLink( @MyNotNullProperty String pLink ) {
       // Assign value to attribute
       link = pLink;
       return this;
@@ -221,7 +221,7 @@ public class DirectedEdge implements ServiceObject {
    *
    * @return {@link Stop} Value to which {@link #end} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public Stop getEnd( ) {
     return end;
   }
@@ -232,7 +232,7 @@ public class DirectedEdge implements ServiceObject {
    *
    * @param pEnd Value to which {@link #end} should be set.
    */
-  public void setEnd( @MyNotNull Stop pEnd ) {
+  public void setEnd( @MyNotNullProperty Stop pEnd ) {
     end = pEnd;
   }
 
@@ -249,7 +249,7 @@ public class DirectedEdge implements ServiceObject {
    *
    * @return {@link String} Value to which {@link #link} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public String getLink( ) {
     return link;
   }
@@ -260,7 +260,7 @@ public class DirectedEdge implements ServiceObject {
    *
    * @param pLink Value to which {@link #link} should be set.
    */
-  public void setLink( @MyNotNull String pLink ) {
+  public void setLink( @MyNotNullProperty String pLink ) {
     // Assign value to attribute
     link = pLink;
   }

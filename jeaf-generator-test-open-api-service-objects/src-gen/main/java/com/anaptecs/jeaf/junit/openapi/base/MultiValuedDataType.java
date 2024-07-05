@@ -19,8 +19,8 @@ import javax.validation.constraints.Size;
 import javax.ws.rs.HeaderParam;
 import javax.ws.rs.QueryParam;
 
-import com.anaptecs.annotations.MyNotEmpty;
-import com.anaptecs.annotations.MyNotNull;
+import com.anaptecs.annotations.MyNotEmptyProperty;
+import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -261,7 +261,7 @@ public class MultiValuedDataType implements ServiceObject {
      * @param pLiterals Collection to which {@link #literals} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setLiterals( @MyNotEmpty List<BooleanLiteralsEnum> pLiterals ) {
+    public Builder setLiterals( @MyNotEmptyProperty List<BooleanLiteralsEnum> pLiterals ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pLiterals != null) {
         literals = new ArrayList<BooleanLiteralsEnum>(pLiterals);
@@ -278,7 +278,7 @@ public class MultiValuedDataType implements ServiceObject {
      * @param pLiterals Array of objects that should be added to {@link #literals}. The parameter may be null.
      * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
      */
-    public Builder addToLiterals( @MyNotEmpty BooleanLiteralsEnum... pLiterals ) {
+    public Builder addToLiterals( @MyNotEmptyProperty BooleanLiteralsEnum... pLiterals ) {
       if (pLiterals != null) {
         if (literals == null) {
           literals = new ArrayList<BooleanLiteralsEnum>();
@@ -294,7 +294,7 @@ public class MultiValuedDataType implements ServiceObject {
      * @param pLiterals Array with objects to which {@link #literals} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setLiterals( @MyNotEmpty BooleanLiteralsEnum... pLiterals ) {
+    public Builder setLiterals( @MyNotEmptyProperty BooleanLiteralsEnum... pLiterals ) {
       // To ensure immutability we have to copy the content of the passed array.
       if (pLiterals != null) {
         literals = new ArrayList<BooleanLiteralsEnum>(Arrays.asList(pLiterals));
@@ -311,7 +311,7 @@ public class MultiValuedDataType implements ServiceObject {
      * @param pStringProperty Value to which {@link #stringProperty} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setStringProperty( @MyNotNull String pStringProperty ) {
+    public Builder setStringProperty( @MyNotNullProperty String pStringProperty ) {
       // Assign value to attribute
       stringProperty = pStringProperty;
       return this;
@@ -486,7 +486,7 @@ public class MultiValuedDataType implements ServiceObject {
    * @return {@link List<BooleanLiteralsEnum>} Value to which {@link #literals} is set. The method never returns null
    * and the returned collection is modifiable.
    */
-  @MyNotEmpty
+  @MyNotEmptyProperty
   public List<BooleanLiteralsEnum> getLiterals( ) {
     // Return all BooleanLiteralsEnum objects directly without any protection against modification.
     return literals;
@@ -544,7 +544,7 @@ public class MultiValuedDataType implements ServiceObject {
    *
    * @return {@link String} Value to which {@link #stringProperty} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public String getStringProperty( ) {
     return stringProperty;
   }
@@ -554,7 +554,7 @@ public class MultiValuedDataType implements ServiceObject {
    *
    * @param pStringProperty Value to which {@link #stringProperty} should be set.
    */
-  public void setStringProperty( @MyNotNull String pStringProperty ) {
+  public void setStringProperty( @MyNotNullProperty String pStringProperty ) {
     // Assign value to attribute
     stringProperty = pStringProperty;
   }

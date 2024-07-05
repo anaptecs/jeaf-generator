@@ -16,8 +16,8 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import com.anaptecs.annotations.MyNotEmpty;
-import com.anaptecs.annotations.MyNotNull;
+import com.anaptecs.annotations.MyNotEmptyProperty;
+import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonSetter;
@@ -271,7 +271,7 @@ public class POI extends Stop {
      * @param pDescription Value to which {@link #description} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setDescription( @MyNotNull String pDescription ) {
+    public Builder setDescription( @MyNotNullProperty String pDescription ) {
       // Assign value to attribute
       description = pDescription;
       return this;
@@ -284,7 +284,7 @@ public class POI extends Stop {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
-    public Builder setTheLinkID( @MyNotNull Long pTheLink ) {
+    public Builder setTheLinkID( @MyNotNullProperty Long pTheLink ) {
       theLinkID = pTheLink;
       return this;
     }
@@ -315,7 +315,7 @@ public class POI extends Stop {
      * @param pStops Collection to which {@link #stops} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setStops( @MyNotEmpty Set<UICStop> pStops ) {
+    public Builder setStops( @MyNotEmptyProperty Set<UICStop> pStops ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pStops != null) {
         stops = new HashSet<UICStop>(pStops);
@@ -334,7 +334,7 @@ public class POI extends Stop {
      * @param pStops Array of objects that should be added to {@link #stops}. The parameter may be null.
      * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
      */
-    public Builder addToStops( @MyNotEmpty UICStop... pStops ) {
+    public Builder addToStops( @MyNotEmptyProperty UICStop... pStops ) {
       if (pStops != null) {
         if (stops == null) {
           stops = new HashSet<UICStop>();
@@ -350,7 +350,7 @@ public class POI extends Stop {
      * @param pBookingCodes Collection to which {@link #bookingCodes} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setBookingCodes( @MyNotEmpty Set<BookingCode> pBookingCodes ) {
+    public Builder setBookingCodes( @MyNotEmptyProperty Set<BookingCode> pBookingCodes ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pBookingCodes != null) {
         bookingCodes = new HashSet<BookingCode>(pBookingCodes);
@@ -367,7 +367,7 @@ public class POI extends Stop {
      * @param pBookingCodes Array of objects that should be added to {@link #bookingCodes}. The parameter may be null.
      * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
      */
-    public Builder addToBookingCodes( @MyNotEmpty BookingCode... pBookingCodes ) {
+    public Builder addToBookingCodes( @MyNotEmptyProperty BookingCode... pBookingCodes ) {
       if (pBookingCodes != null) {
         if (bookingCodes == null) {
           bookingCodes = new HashSet<BookingCode>();
@@ -405,7 +405,7 @@ public class POI extends Stop {
    *
    * @return {@link String} Value to which {@link #description} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public String getDescription( ) {
     return description;
   }
@@ -415,7 +415,7 @@ public class POI extends Stop {
    *
    * @param pDescription Value to which {@link #description} should be set.
    */
-  public void setDescription( @MyNotNull String pDescription ) {
+  public void setDescription( @MyNotNullProperty String pDescription ) {
     // Assign value to attribute
     description = pDescription;
   }
@@ -429,7 +429,7 @@ public class POI extends Stop {
    * @return {@link Long} Value to which {@link #theLink} is set.
    */
   @Deprecated
-  @MyNotNull
+  @MyNotNullProperty
   public Long getTheLinkID( ) {
     return theLinkID;
   }
@@ -440,7 +440,7 @@ public class POI extends Stop {
    * @param pTheLink Value to which {@link #theLink} should be set.
    */
   @Deprecated
-  public void setTheLinkID( @MyNotNull Long pTheLink ) {
+  public void setTheLinkID( @MyNotNullProperty Long pTheLink ) {
     theLinkID = pTheLink;
   }
 
@@ -526,7 +526,7 @@ public class POI extends Stop {
    * @return {@link Set<UICStop>} Value to which {@link #stops} is set. The method never returns null and the returned
    * collection is modifiable.
    */
-  @MyNotEmpty
+  @MyNotEmptyProperty
   public Set<UICStop> getStops( ) {
     // Return all UICStop objects directly without any protection against modification.
     return stops;
@@ -588,7 +588,7 @@ public class POI extends Stop {
    * @return {@link Set<BookingCode>} Value to which {@link #bookingCodes} is set. The method never returns null and the
    * returned collection is modifiable.
    */
-  @MyNotEmpty
+  @MyNotEmptyProperty
   public Set<BookingCode> getBookingCodes( ) {
     // Return all BookingCode objects directly without any protection against modification.
     return bookingCodes;

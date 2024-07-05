@@ -9,7 +9,7 @@ import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
-import com.anaptecs.annotations.MyNotNull;
+import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -106,7 +106,7 @@ public class Booking implements ServiceObject {
      * @param pBookingID Value to which {@link #bookingID} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setBookingID( @MyNotNull BookingID pBookingID ) {
+    public Builder setBookingID( @MyNotNullProperty BookingID pBookingID ) {
       bookingID = pBookingID;
       return this;
     }
@@ -140,7 +140,7 @@ public class Booking implements ServiceObject {
    *
    * @return {@link BookingID} Value to which {@link #bookingID} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public BookingID getBookingID( ) {
     return bookingID;
   }
@@ -151,7 +151,7 @@ public class Booking implements ServiceObject {
    *
    * @param pBookingID Value to which {@link #bookingID} should be set.
    */
-  public void setBookingID( @MyNotNull BookingID pBookingID ) {
+  public void setBookingID( @MyNotNullProperty BookingID pBookingID ) {
     bookingID = pBookingID;
   }
 

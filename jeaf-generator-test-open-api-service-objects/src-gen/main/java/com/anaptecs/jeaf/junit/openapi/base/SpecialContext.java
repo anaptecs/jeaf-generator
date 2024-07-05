@@ -12,7 +12,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.ws.rs.HeaderParam;
 
-import com.anaptecs.annotations.MyNotNull;
+import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 
 @Valid
@@ -216,7 +216,7 @@ public class SpecialContext extends Context {
      * @param pSpecificHeader Value to which {@link #specificHeader} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setSpecificHeader( @MyNotNull String pSpecificHeader ) {
+    public Builder setSpecificHeader( @MyNotNullProperty String pSpecificHeader ) {
       // Assign value to attribute
       specificHeader = pSpecificHeader;
       return this;
@@ -229,7 +229,7 @@ public class SpecialContext extends Context {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
-    public Builder setDeprecatedHeader( @MyNotNull IntegerCode pDeprecatedHeader ) {
+    public Builder setDeprecatedHeader( @MyNotNullProperty IntegerCode pDeprecatedHeader ) {
       // Assign value to attribute
       deprecatedHeader = pDeprecatedHeader;
       return this;
@@ -241,7 +241,7 @@ public class SpecialContext extends Context {
      * @param pDeprecatedType Value to which {@link #deprecatedType} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setDeprecatedType( @MyNotNull DeprecatedType pDeprecatedType ) {
+    public Builder setDeprecatedType( @MyNotNullProperty DeprecatedType pDeprecatedType ) {
       // Assign value to attribute
       deprecatedType = pDeprecatedType;
       return this;
@@ -276,7 +276,7 @@ public class SpecialContext extends Context {
    *
    * @return {@link String} Value to which {@link #specificHeader} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public String getSpecificHeader( ) {
     return specificHeader;
   }
@@ -286,7 +286,7 @@ public class SpecialContext extends Context {
    *
    * @param pSpecificHeader Value to which {@link #specificHeader} should be set.
    */
-  public void setSpecificHeader( @MyNotNull String pSpecificHeader ) {
+  public void setSpecificHeader( @MyNotNullProperty String pSpecificHeader ) {
     // Assign value to attribute
     specificHeader = pSpecificHeader;
   }
@@ -297,7 +297,7 @@ public class SpecialContext extends Context {
    * @return {@link IntegerCode} Value to which {@link #deprecatedHeader} is set.
    */
   @Deprecated
-  @MyNotNull
+  @MyNotNullProperty
   public IntegerCode getDeprecatedHeader( ) {
     return deprecatedHeader;
   }
@@ -308,7 +308,7 @@ public class SpecialContext extends Context {
    * @param pDeprecatedHeader Value to which {@link #deprecatedHeader} should be set.
    */
   @Deprecated
-  public void setDeprecatedHeader( @MyNotNull IntegerCode pDeprecatedHeader ) {
+  public void setDeprecatedHeader( @MyNotNullProperty IntegerCode pDeprecatedHeader ) {
     // Assign value to attribute
     deprecatedHeader = pDeprecatedHeader;
   }
@@ -318,7 +318,7 @@ public class SpecialContext extends Context {
    *
    * @return {@link DeprecatedType} Value to which {@link #deprecatedType} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public DeprecatedType getDeprecatedType( ) {
     return deprecatedType;
   }
@@ -328,7 +328,7 @@ public class SpecialContext extends Context {
    *
    * @param pDeprecatedType Value to which {@link #deprecatedType} should be set.
    */
-  public void setDeprecatedType( @MyNotNull DeprecatedType pDeprecatedType ) {
+  public void setDeprecatedType( @MyNotNullProperty DeprecatedType pDeprecatedType ) {
     // Assign value to attribute
     deprecatedType = pDeprecatedType;
   }

@@ -7,7 +7,7 @@ package com.anaptecs.spring.base;
 
 import java.util.Objects;
 
-import com.anaptecs.annotations.MyNotNull;
+import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -114,7 +114,7 @@ public class IntegerCode {
      * @param pCode Value to which {@link #code} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setCode( @MyNotNull Integer pCode ) {
+    public Builder setCode( @MyNotNullProperty Integer pCode ) {
       // Assign value to attribute
       code = pCode;
       return this;
@@ -138,7 +138,7 @@ public class IntegerCode {
    *
    * @return {@link Integer} Value to which {@link #code} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public Integer getCode( ) {
     return code;
   }
@@ -148,7 +148,7 @@ public class IntegerCode {
    *
    * @param pCode Value to which {@link #code} should be set.
    */
-  public void setCode( @MyNotNull Integer pCode ) {
+  public void setCode( @MyNotNullProperty Integer pCode ) {
     // Assign value to attribute
     code = pCode;
   }

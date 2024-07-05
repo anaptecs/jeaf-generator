@@ -7,7 +7,7 @@ package com.anaptecs.spring.custom;
 
 import java.util.Objects;
 
-import com.anaptecs.annotations.MyNotNull;
+import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -73,7 +73,7 @@ public abstract class DataTypeCustomSerializationBase {
      * @param pProperty1 Value to which {@link #property1} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setProperty1( @MyNotNull String pProperty1 ) {
+    public BuilderBase setProperty1( @MyNotNullProperty String pProperty1 ) {
       // Assign value to attribute
       property1 = pProperty1;
       return this;
@@ -97,7 +97,7 @@ public abstract class DataTypeCustomSerializationBase {
    *
    * @return {@link String} Value to which {@link #property1} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public String getProperty1( ) {
     return property1;
   }
@@ -107,7 +107,7 @@ public abstract class DataTypeCustomSerializationBase {
    *
    * @param pProperty1 Value to which {@link #property1} should be set.
    */
-  public void setProperty1( @MyNotNull String pProperty1 ) {
+  public void setProperty1( @MyNotNullProperty String pProperty1 ) {
     // Assign value to attribute
     property1 = pProperty1;
   }

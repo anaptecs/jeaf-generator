@@ -20,8 +20,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import com.anaptecs.annotations.MyNotEmpty;
-import com.anaptecs.annotations.MyNotNull;
+import com.anaptecs.annotations.MyNotEmptyProperty;
+import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.core.api.ServiceObjectID;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
@@ -168,7 +168,7 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
      * @param pChannels Collection to which {@link #channels} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setChannels( @MyNotEmpty List<Channel> pChannels ) {
+    public BuilderBase setChannels( @MyNotEmptyProperty List<Channel> pChannels ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pChannels != null) {
         channels = new ArrayList<Channel>(pChannels);
@@ -185,7 +185,7 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
      * @param pChannels Array of objects that should be added to {@link #channels}. The parameter may be null.
      * @return {@link BuilderBase} Instance of this builder to support chaining. Method never returns null.
      */
-    public BuilderBase addToChannels( @MyNotEmpty Channel... pChannels ) {
+    public BuilderBase addToChannels( @MyNotEmptyProperty Channel... pChannels ) {
       if (pChannels != null) {
         if (channels == null) {
           channels = new ArrayList<Channel>();
@@ -203,7 +203,7 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
      * @param pName Value to which {@link #name} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setName( @MyNotNull String pName ) {
+    public BuilderBase setName( @MyNotNullProperty String pName ) {
       // Assign value to attribute
       name = pName;
       return this;
@@ -215,7 +215,7 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
      * @param pLanguage Value to which {@link #language} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setLanguage( @MyNotNull Locale pLanguage ) {
+    public BuilderBase setLanguage( @MyNotNullProperty Locale pLanguage ) {
       // Assign value to attribute
       language = pLanguage;
       return this;
@@ -279,7 +279,7 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
    * @return {@link List<Channel>} Value to which {@link #channels} is set. The method never returns null and the
    * returned collection is modifiable.
    */
-  @MyNotEmpty
+  @MyNotEmptyProperty
   public List<Channel> getChannels( ) {
     // Due to restrictions in JSON serialization / deserialization bi-directional associations need a special handling
     // after an object was deserialized.
@@ -364,7 +364,7 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
    * @return {@link Set<Product>} Value to which {@link #products} is set. The method never returns null and the
    * returned collection is modifiable.
    */
-  @MyNotEmpty
+  @MyNotEmptyProperty
   public Set<Product> getProducts( ) {
     // Return all Product objects directly without any protection against modification.
     return products;
@@ -429,7 +429,7 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
    *
    * @return {@link String} Value to which {@link #name} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public String getName( ) {
     return name;
   }
@@ -441,7 +441,7 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
    *
    * @param pName Value to which {@link #name} should be set.
    */
-  public void setName( @MyNotNull String pName ) {
+  public void setName( @MyNotNullProperty String pName ) {
     // Assign value to attribute
     name = pName;
   }
@@ -451,7 +451,7 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
    *
    * @return {@link Locale} Value to which {@link #language} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public Locale getLanguage( ) {
     return language;
   }
@@ -461,7 +461,7 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
    *
    * @param pLanguage Value to which {@link #language} should be set.
    */
-  public void setLanguage( @MyNotNull Locale pLanguage ) {
+  public void setLanguage( @MyNotNullProperty Locale pLanguage ) {
     // Assign value to attribute
     language = pLanguage;
   }
@@ -489,7 +489,7 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
   /**
    * @return {@link Integer}
    */
-  @MyNotNull
+  @MyNotNullProperty
   public abstract Integer doSomething( );
 
   /**

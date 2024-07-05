@@ -7,7 +7,7 @@ package com.anaptecs.spring.base.backward;
 
 import java.util.Objects;
 
-import com.anaptecs.annotations.MyNotNull;
+import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -127,7 +127,7 @@ public class SimpleBackwardCompatibility {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
-    public Builder setDeprecatedProperty( @MyNotNull String pDeprecatedProperty ) {
+    public Builder setDeprecatedProperty( @MyNotNullProperty String pDeprecatedProperty ) {
       // Delegate call to setSuccessorProperty(...)
       this.setSuccessorProperty(pDeprecatedProperty);
       return this;
@@ -139,7 +139,7 @@ public class SimpleBackwardCompatibility {
      * @param pSuccessorProperty Value to which {@link #successorProperty} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setSuccessorProperty( @MyNotNull String pSuccessorProperty ) {
+    public Builder setSuccessorProperty( @MyNotNullProperty String pSuccessorProperty ) {
       // Assign value to attribute
       successorProperty = pSuccessorProperty;
       return this;
@@ -165,7 +165,7 @@ public class SimpleBackwardCompatibility {
    * @return {@link String} Value to which {@link #deprecatedProperty} is set.
    */
   @Deprecated
-  @MyNotNull
+  @MyNotNullProperty
   public String getDeprecatedProperty( ) {
     // Delegate call to getSuccessorProperty(...)
     return this.getSuccessorProperty();
@@ -178,7 +178,7 @@ public class SimpleBackwardCompatibility {
    * @param pDeprecatedProperty Value to which {@link #deprecatedProperty} should be set.
    */
   @Deprecated
-  public void setDeprecatedProperty( @MyNotNull String pDeprecatedProperty ) {
+  public void setDeprecatedProperty( @MyNotNullProperty String pDeprecatedProperty ) {
     // Delegate call to setSuccessorProperty(...)
     this.setSuccessorProperty(pDeprecatedProperty);
   }
@@ -188,7 +188,7 @@ public class SimpleBackwardCompatibility {
    *
    * @return {@link String} Value to which {@link #successorProperty} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public String getSuccessorProperty( ) {
     return successorProperty;
   }
@@ -198,7 +198,7 @@ public class SimpleBackwardCompatibility {
    *
    * @param pSuccessorProperty Value to which {@link #successorProperty} should be set.
    */
-  public void setSuccessorProperty( @MyNotNull String pSuccessorProperty ) {
+  public void setSuccessorProperty( @MyNotNullProperty String pSuccessorProperty ) {
     // Assign value to attribute
     successorProperty = pSuccessorProperty;
   }

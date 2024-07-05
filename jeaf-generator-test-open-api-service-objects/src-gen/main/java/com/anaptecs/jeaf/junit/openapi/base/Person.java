@@ -7,7 +7,7 @@ package com.anaptecs.jeaf.junit.openapi.base;
 
 import javax.validation.Valid;
 
-import com.anaptecs.annotations.MyNotNull;
+import com.anaptecs.annotations.MyNotNullProperty;
 
 @Valid
 public class Person extends PersonBase {
@@ -61,7 +61,7 @@ public class Person extends PersonBase {
   /**
    * @return {@link String}
    */
-  @MyNotNull
+  @MyNotNullProperty
   @Override
   public String getDisplayName( ) {
     // TODO: Implement business logic for method.

@@ -30,6 +30,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.anaptecs.annotations.MyNotEmptyRESTParam;
+import com.anaptecs.annotations.MyNotNullRESTParam;
 import com.anaptecs.jeaf.validation.api.ValidationExecutor;
 import com.anaptecs.spring.base.BookingID;
 import com.anaptecs.spring.base.DoubleCode;
@@ -84,6 +86,7 @@ public class PathlessServiceResource {
   @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "doSomething", method = { RequestMethod.GET })
+  @MyNotNullRESTParam
   public String getSomething( ) {
     // Delegate request to service.
     String lResponse = pathlessService.getSomething();
@@ -98,8 +101,9 @@ public class PathlessServiceResource {
   @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(path = "processTechParam", method = { RequestMethod.POST })
+  @MyNotNullRESTParam
   public void processTechParam( @RequestHeader(name = "names", required = false) String[] pNames,
-      @RequestHeader(name = "ints", required = true) int[] pInts,
+      @RequestHeader(name = "ints", required = true) @MyNotEmptyRESTParam int[] pInts,
       @RequestHeader(name = "doubles", required = false) Double[] pDoubles,
       @RequestHeader(name = "codes", required = false) String[] pCodesAsBasicType,
       @RequestHeader(name = "stringCodeList", required = false) String[] pStringCodeListAsBasicType,
@@ -215,15 +219,16 @@ public class PathlessServiceResource {
   @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "test-query-bean-param", method = { RequestMethod.GET })
+  @MyNotNullRESTParam
   public String testQueryBeanParam( @RequestParam(name = "longCodes", required = false) Long[] pLongCodesAsBasicType,
       @RequestParam(name = "codes", required = false) int[] pCodesAsBasicType,
       @RequestParam(name = "doubleCodes", required = false) Double[] pDoubleCodesAsBasicType,
       @RequestParam(name = "bookingIDs", required = false) String[] pBookingIDsAsBasicType,
       @RequestParam(name = "bookingIDsArray", required = false) String[] pBookingIDsArrayAsBasicType,
-      @RequestParam(name = "offsetDateTime", required = true) String pOffsetDateTimeAsBasicType,
-      @RequestParam(name = "offsetTime", required = true) String pOffsetTimeAsBasicType,
-      @RequestParam(name = "localDateTime", required = true) String pLocalDateTimeAsBasicType,
-      @RequestParam(name = "localTime", required = true) String pLocalTimeAsBasicType,
+      @RequestParam(name = "offsetDateTime", required = true) @MyNotNullRESTParam String pOffsetDateTimeAsBasicType,
+      @RequestParam(name = "offsetTime", required = true) @MyNotNullRESTParam String pOffsetTimeAsBasicType,
+      @RequestParam(name = "localDateTime", required = true) @MyNotNullRESTParam String pLocalDateTimeAsBasicType,
+      @RequestParam(name = "localTime", required = true) @MyNotNullRESTParam String pLocalTimeAsBasicType,
       @RequestParam(name = "timestamps", required = false) String[] pTimestampsAsBasicType,
       @RequestParam(name = "times", required = false) String[] pTimesAsBasicType,
       @RequestParam(name = "startTimestamps", required = false) String[] pStartTimestampsAsBasicType ) {

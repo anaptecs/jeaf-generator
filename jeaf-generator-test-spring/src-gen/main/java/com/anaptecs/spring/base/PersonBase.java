@@ -10,7 +10,7 @@ import java.util.Objects;
 
 import javax.validation.Valid;
 
-import com.anaptecs.annotations.MyNotNull;
+import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -115,7 +115,7 @@ public abstract class PersonBase extends Partner {
      * @param pSurname Value to which {@link #surname} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setSurname( @MyNotNull String pSurname ) {
+    public BuilderBase setSurname( @MyNotNullProperty String pSurname ) {
       // Assign value to attribute
       surname = pSurname;
       return this;
@@ -127,7 +127,7 @@ public abstract class PersonBase extends Partner {
      * @param pFirstName Value to which {@link #firstName} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setFirstName( @MyNotNull String pFirstName ) {
+    public BuilderBase setFirstName( @MyNotNullProperty String pFirstName ) {
       // Assign value to attribute
       firstName = pFirstName;
       return this;
@@ -150,7 +150,7 @@ public abstract class PersonBase extends Partner {
    *
    * @return {@link String} Value to which {@link #surname} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public String getSurname( ) {
     return surname;
   }
@@ -160,7 +160,7 @@ public abstract class PersonBase extends Partner {
    *
    * @param pSurname Value to which {@link #surname} should be set.
    */
-  public void setSurname( @MyNotNull String pSurname ) {
+  public void setSurname( @MyNotNullProperty String pSurname ) {
     // Assign value to attribute
     surname = pSurname;
   }
@@ -170,7 +170,7 @@ public abstract class PersonBase extends Partner {
    *
    * @return {@link String} Value to which {@link #firstName} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public String getFirstName( ) {
     return firstName;
   }
@@ -180,7 +180,7 @@ public abstract class PersonBase extends Partner {
    *
    * @param pFirstName Value to which {@link #firstName} should be set.
    */
-  public void setFirstName( @MyNotNull String pFirstName ) {
+  public void setFirstName( @MyNotNullProperty String pFirstName ) {
     // Assign value to attribute
     firstName = pFirstName;
   }
@@ -205,7 +205,7 @@ public abstract class PersonBase extends Partner {
   /**
    * @return {@link String}
    */
-  @MyNotNull
+  @MyNotNullProperty
   public abstract String getDisplayName( );
 
   @Override

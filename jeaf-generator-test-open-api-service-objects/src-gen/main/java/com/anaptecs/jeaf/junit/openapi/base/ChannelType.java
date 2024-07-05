@@ -7,7 +7,7 @@ package com.anaptecs.jeaf.junit.openapi.base;
 
 import javax.validation.constraints.NotNull;
 
-import com.anaptecs.annotations.MyNotNull;
+import com.anaptecs.annotations.MyNotNullProperty;
 
 /**
  * <p/>
@@ -49,7 +49,7 @@ public enum ChannelType {
    *
    * @return {@link String} Value to which {@link #code} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public String getCode( ) {
     return code;
   }

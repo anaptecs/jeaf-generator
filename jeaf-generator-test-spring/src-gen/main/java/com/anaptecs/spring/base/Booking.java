@@ -12,7 +12,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-import com.anaptecs.annotations.MyNotNull;
+import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -156,7 +156,7 @@ public class Booking {
      * @param pBookingID Value to which {@link #bookingID} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setBookingID( @MyNotNull BookingID pBookingID ) {
+    public Builder setBookingID( @MyNotNullProperty BookingID pBookingID ) {
       bookingID = pBookingID;
       return this;
     }
@@ -167,7 +167,7 @@ public class Booking {
      * @param pCustomerName Value to which {@link #customerName} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setCustomerName( @MyNotNull String pCustomerName ) {
+    public Builder setCustomerName( @MyNotNullProperty String pCustomerName ) {
       // Assign value to attribute
       customerName = pCustomerName;
       return this;
@@ -240,7 +240,7 @@ public class Booking {
    *
    * @return {@link BookingID} Value to which {@link #bookingID} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public BookingID getBookingID( ) {
     return bookingID;
   }
@@ -250,7 +250,7 @@ public class Booking {
    *
    * @param pBookingID Value to which {@link #bookingID} should be set.
    */
-  public void setBookingID( @MyNotNull BookingID pBookingID ) {
+  public void setBookingID( @MyNotNullProperty BookingID pBookingID ) {
     bookingID = pBookingID;
   }
 
@@ -266,7 +266,7 @@ public class Booking {
    *
    * @return {@link String} Value to which {@link #customerName} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public String getCustomerName( ) {
     return customerName;
   }
@@ -276,7 +276,7 @@ public class Booking {
    *
    * @param pCustomerName Value to which {@link #customerName} should be set.
    */
-  public void setCustomerName( @MyNotNull String pCustomerName ) {
+  public void setCustomerName( @MyNotNullProperty String pCustomerName ) {
     // Assign value to attribute
     customerName = pCustomerName;
   }

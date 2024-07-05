@@ -14,7 +14,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.ws.rs.HeaderParam;
 
-import com.anaptecs.annotations.MyNotNull;
+import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -106,7 +106,7 @@ public class TechnicalHeaderContext implements ServiceObject {
      * @param pReseller Value to which {@link #reseller} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setReseller( @MyNotNull String pReseller ) {
+    public Builder setReseller( @MyNotNullProperty String pReseller ) {
       // Assign value to attribute
       reseller = pReseller;
       return this;
@@ -141,7 +141,7 @@ public class TechnicalHeaderContext implements ServiceObject {
    *
    * @return {@link String} Value to which {@link #reseller} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public String getReseller( ) {
     return reseller;
   }
@@ -151,7 +151,7 @@ public class TechnicalHeaderContext implements ServiceObject {
    *
    * @param pReseller Value to which {@link #reseller} should be set.
    */
-  public void setReseller( @MyNotNull String pReseller ) {
+  public void setReseller( @MyNotNullProperty String pReseller ) {
     // Assign value to attribute
     reseller = pReseller;
   }

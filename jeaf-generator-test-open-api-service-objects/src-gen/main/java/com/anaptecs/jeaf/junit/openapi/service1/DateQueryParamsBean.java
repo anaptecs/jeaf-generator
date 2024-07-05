@@ -20,7 +20,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.ws.rs.QueryParam;
 
-import com.anaptecs.annotations.MyNotNull;
+import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -216,7 +216,7 @@ public class DateQueryParamsBean implements ServiceObject {
      * @param pOffsetDateTime Value to which {@link #offsetDateTime} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setOffsetDateTime( @MyNotNull OffsetDateTime pOffsetDateTime ) {
+    public Builder setOffsetDateTime( @MyNotNullProperty OffsetDateTime pOffsetDateTime ) {
       // Assign value to attribute
       offsetDateTime = pOffsetDateTime;
       return this;
@@ -228,7 +228,7 @@ public class DateQueryParamsBean implements ServiceObject {
      * @param pOffsetTime Value to which {@link #offsetTime} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setOffsetTime( @MyNotNull OffsetTime pOffsetTime ) {
+    public Builder setOffsetTime( @MyNotNullProperty OffsetTime pOffsetTime ) {
       // Assign value to attribute
       offsetTime = pOffsetTime;
       return this;
@@ -242,7 +242,7 @@ public class DateQueryParamsBean implements ServiceObject {
      * @param pLocalDateTime Value to which {@link #localDateTime} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setLocalDateTime( @MyNotNull LocalDateTime pLocalDateTime ) {
+    public Builder setLocalDateTime( @MyNotNullProperty LocalDateTime pLocalDateTime ) {
       // Assign value to attribute
       localDateTime = pLocalDateTime;
       return this;
@@ -254,7 +254,7 @@ public class DateQueryParamsBean implements ServiceObject {
      * @param pLocalTime Value to which {@link #localTime} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setLocalTime( @MyNotNull LocalTime pLocalTime ) {
+    public Builder setLocalTime( @MyNotNullProperty LocalTime pLocalTime ) {
       // Assign value to attribute
       localTime = pLocalTime;
       return this;
@@ -266,7 +266,7 @@ public class DateQueryParamsBean implements ServiceObject {
      * @param pLocalDate Value to which {@link #localDate} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setLocalDate( @MyNotNull LocalDate pLocalDate ) {
+    public Builder setLocalDate( @MyNotNullProperty LocalDate pLocalDate ) {
       // Assign value to attribute
       localDate = pLocalDate;
       return this;
@@ -278,7 +278,7 @@ public class DateQueryParamsBean implements ServiceObject {
      * @param pUtilDate Value to which {@link #utilDate} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setUtilDate( @MyNotNull java.util.Date pUtilDate ) {
+    public Builder setUtilDate( @MyNotNullProperty java.util.Date pUtilDate ) {
       // Assign value to attribute
       utilDate = pUtilDate;
       return this;
@@ -290,7 +290,7 @@ public class DateQueryParamsBean implements ServiceObject {
      * @param pCalendar Value to which {@link #calendar} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setCalendar( @MyNotNull Calendar pCalendar ) {
+    public Builder setCalendar( @MyNotNullProperty Calendar pCalendar ) {
       // Assign value to attribute
       calendar = pCalendar;
       return this;
@@ -302,7 +302,7 @@ public class DateQueryParamsBean implements ServiceObject {
      * @param pSqlTimestamp Value to which {@link #sqlTimestamp} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setSqlTimestamp( @MyNotNull Timestamp pSqlTimestamp ) {
+    public Builder setSqlTimestamp( @MyNotNullProperty Timestamp pSqlTimestamp ) {
       // Assign value to attribute
       sqlTimestamp = pSqlTimestamp;
       return this;
@@ -314,7 +314,7 @@ public class DateQueryParamsBean implements ServiceObject {
      * @param pSqlTime Value to which {@link #sqlTime} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setSqlTime( @MyNotNull Time pSqlTime ) {
+    public Builder setSqlTime( @MyNotNullProperty Time pSqlTime ) {
       // Assign value to attribute
       sqlTime = pSqlTime;
       return this;
@@ -326,7 +326,7 @@ public class DateQueryParamsBean implements ServiceObject {
      * @param pSqlDate Value to which {@link #sqlDate} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setSqlDate( @MyNotNull Date pSqlDate ) {
+    public Builder setSqlDate( @MyNotNullProperty Date pSqlDate ) {
       // Assign value to attribute
       sqlDate = pSqlDate;
       return this;
@@ -361,7 +361,7 @@ public class DateQueryParamsBean implements ServiceObject {
    *
    * @return {@link OffsetDateTime} Value to which {@link #offsetDateTime} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public OffsetDateTime getOffsetDateTime( ) {
     return offsetDateTime;
   }
@@ -371,7 +371,7 @@ public class DateQueryParamsBean implements ServiceObject {
    *
    * @param pOffsetDateTime Value to which {@link #offsetDateTime} should be set.
    */
-  public void setOffsetDateTime( @MyNotNull OffsetDateTime pOffsetDateTime ) {
+  public void setOffsetDateTime( @MyNotNullProperty OffsetDateTime pOffsetDateTime ) {
     // Assign value to attribute
     offsetDateTime = pOffsetDateTime;
   }
@@ -381,7 +381,7 @@ public class DateQueryParamsBean implements ServiceObject {
    *
    * @return {@link OffsetTime} Value to which {@link #offsetTime} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public OffsetTime getOffsetTime( ) {
     return offsetTime;
   }
@@ -391,7 +391,7 @@ public class DateQueryParamsBean implements ServiceObject {
    *
    * @param pOffsetTime Value to which {@link #offsetTime} should be set.
    */
-  public void setOffsetTime( @MyNotNull OffsetTime pOffsetTime ) {
+  public void setOffsetTime( @MyNotNullProperty OffsetTime pOffsetTime ) {
     // Assign value to attribute
     offsetTime = pOffsetTime;
   }
@@ -403,7 +403,7 @@ public class DateQueryParamsBean implements ServiceObject {
    *
    * @return {@link LocalDateTime} Value to which {@link #localDateTime} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public LocalDateTime getLocalDateTime( ) {
     return localDateTime;
   }
@@ -415,7 +415,7 @@ public class DateQueryParamsBean implements ServiceObject {
    *
    * @param pLocalDateTime Value to which {@link #localDateTime} should be set.
    */
-  public void setLocalDateTime( @MyNotNull LocalDateTime pLocalDateTime ) {
+  public void setLocalDateTime( @MyNotNullProperty LocalDateTime pLocalDateTime ) {
     // Assign value to attribute
     localDateTime = pLocalDateTime;
   }
@@ -425,7 +425,7 @@ public class DateQueryParamsBean implements ServiceObject {
    *
    * @return {@link LocalTime} Value to which {@link #localTime} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public LocalTime getLocalTime( ) {
     return localTime;
   }
@@ -435,7 +435,7 @@ public class DateQueryParamsBean implements ServiceObject {
    *
    * @param pLocalTime Value to which {@link #localTime} should be set.
    */
-  public void setLocalTime( @MyNotNull LocalTime pLocalTime ) {
+  public void setLocalTime( @MyNotNullProperty LocalTime pLocalTime ) {
     // Assign value to attribute
     localTime = pLocalTime;
   }
@@ -445,7 +445,7 @@ public class DateQueryParamsBean implements ServiceObject {
    *
    * @return {@link LocalDate} Value to which {@link #localDate} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public LocalDate getLocalDate( ) {
     return localDate;
   }
@@ -455,7 +455,7 @@ public class DateQueryParamsBean implements ServiceObject {
    *
    * @param pLocalDate Value to which {@link #localDate} should be set.
    */
-  public void setLocalDate( @MyNotNull LocalDate pLocalDate ) {
+  public void setLocalDate( @MyNotNullProperty LocalDate pLocalDate ) {
     // Assign value to attribute
     localDate = pLocalDate;
   }
@@ -465,7 +465,7 @@ public class DateQueryParamsBean implements ServiceObject {
    *
    * @return {@link java.util.Date} Value to which {@link #utilDate} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public java.util.Date getUtilDate( ) {
     return utilDate;
   }
@@ -475,7 +475,7 @@ public class DateQueryParamsBean implements ServiceObject {
    *
    * @param pUtilDate Value to which {@link #utilDate} should be set.
    */
-  public void setUtilDate( @MyNotNull java.util.Date pUtilDate ) {
+  public void setUtilDate( @MyNotNullProperty java.util.Date pUtilDate ) {
     // Assign value to attribute
     utilDate = pUtilDate;
   }
@@ -485,7 +485,7 @@ public class DateQueryParamsBean implements ServiceObject {
    *
    * @return {@link Calendar} Value to which {@link #calendar} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public Calendar getCalendar( ) {
     return calendar;
   }
@@ -495,7 +495,7 @@ public class DateQueryParamsBean implements ServiceObject {
    *
    * @param pCalendar Value to which {@link #calendar} should be set.
    */
-  public void setCalendar( @MyNotNull Calendar pCalendar ) {
+  public void setCalendar( @MyNotNullProperty Calendar pCalendar ) {
     // Assign value to attribute
     calendar = pCalendar;
   }
@@ -505,7 +505,7 @@ public class DateQueryParamsBean implements ServiceObject {
    *
    * @return {@link Timestamp} Value to which {@link #sqlTimestamp} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public Timestamp getSqlTimestamp( ) {
     return sqlTimestamp;
   }
@@ -515,7 +515,7 @@ public class DateQueryParamsBean implements ServiceObject {
    *
    * @param pSqlTimestamp Value to which {@link #sqlTimestamp} should be set.
    */
-  public void setSqlTimestamp( @MyNotNull Timestamp pSqlTimestamp ) {
+  public void setSqlTimestamp( @MyNotNullProperty Timestamp pSqlTimestamp ) {
     // Assign value to attribute
     sqlTimestamp = pSqlTimestamp;
   }
@@ -525,7 +525,7 @@ public class DateQueryParamsBean implements ServiceObject {
    *
    * @return {@link Time} Value to which {@link #sqlTime} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public Time getSqlTime( ) {
     return sqlTime;
   }
@@ -535,7 +535,7 @@ public class DateQueryParamsBean implements ServiceObject {
    *
    * @param pSqlTime Value to which {@link #sqlTime} should be set.
    */
-  public void setSqlTime( @MyNotNull Time pSqlTime ) {
+  public void setSqlTime( @MyNotNullProperty Time pSqlTime ) {
     // Assign value to attribute
     sqlTime = pSqlTime;
   }
@@ -545,7 +545,7 @@ public class DateQueryParamsBean implements ServiceObject {
    *
    * @return {@link Date} Value to which {@link #sqlDate} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public Date getSqlDate( ) {
     return sqlDate;
   }
@@ -555,7 +555,7 @@ public class DateQueryParamsBean implements ServiceObject {
    *
    * @param pSqlDate Value to which {@link #sqlDate} should be set.
    */
-  public void setSqlDate( @MyNotNull Date pSqlDate ) {
+  public void setSqlDate( @MyNotNullProperty Date pSqlDate ) {
     // Assign value to attribute
     sqlDate = pSqlDate;
   }

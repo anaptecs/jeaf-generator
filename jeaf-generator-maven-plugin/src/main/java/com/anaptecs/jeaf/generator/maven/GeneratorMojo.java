@@ -488,6 +488,8 @@ public class GeneratorMojo extends AbstractMojo {
   @Parameter(required = false, defaultValue = "false")
   private Boolean generateEqualsAndHashCodeForCompositeDataTypes;
 
+  // Properties
+
   /**
    * Switch defines if <code>equals()</code> and <code>hashCode()</code> should be generated for OpenAPI data type POJOs
    * and ServiceObjects.
@@ -520,6 +522,58 @@ public class GeneratorMojo extends AbstractMojo {
    */
   @Parameter(required = false)
   private String notEmptyAnnotationNameForMultiValuedProperties = "";
+
+  // Services
+
+  /**
+   * Switch can be used to enable that <code>NotNull</code> annotation is generated for service operations.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean generateNotNullAnnotationForSingleValuedServiceParameters;
+
+  /**
+   * Parameter defines the name of the <code>NotNull</code> annotation that should be used for for service operations.
+   */
+  @Parameter(required = false)
+  private String notNullAnnotationNameForSingleValuedServiceParameters = "";
+
+  /**
+   * Switch can be used to enable that <code>NotEmpty</code> annotation is generated for service operations.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean generateNotEmptyAnnotationForMultiValuedServiceParameters;
+
+  /**
+   * Parameter defines the name of the <code>NotEmpty</code> annotation that should be used for service operations.
+   */
+  @Parameter(required = false)
+  private String notEmptyAnnotationNameForMultiValuedServiceParameters = "";
+
+  // REST Controller
+
+  /**
+   * Switch can be used to enable that <code>NotEmpty</code> annotation is generated for REST resources.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean generateNotNullAnnotationForSingleValuedRESTParameters;
+
+  /**
+   * Parameter defines the name of the <code>NotEmpty</code> annotation that should be used for REST resources.
+   */
+  @Parameter(required = false)
+  private String notNullAnnotationNameForSingleValuedRESTParameters = "";
+
+  /**
+   * Switch can be used to enable that <code>NotEmpty</code> annotation is generated for for REST resources.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean generateNotEmptyAnnotationForMultiValuedRESTParameters;
+
+  /**
+   * Parameter defines the name of the <code>NotEmpty</code> annotation that should be used for REST resources.
+   */
+  @Parameter(required = false)
+  private String notEmptyAnnotationNameForMultiValuedRESTParameters = "";
 
   /**
    * Switch defines whether POJO's should be serializable or not.
@@ -1543,10 +1597,43 @@ public class GeneratorMojo extends AbstractMojo {
     }
 
     if (generateNotEmptyAnnotationForMultiValuedProperties) {
-      lLog.info("Generate NotNull annotation for                   ");
+      lLog.info("Generate NotEmpty annotation for                   ");
       lLog.info(
           "multi valued properties:                          " + generateNotEmptyAnnotationForMultiValuedProperties);
       lLog.info("NotEmpty annotation name:                         " + notEmptyAnnotationNameForMultiValuedProperties);
+    }
+
+    if (generateNotNullAnnotationForSingleValuedServiceParameters) {
+      lLog.info("Generate NotNull annotation for                   ");
+      lLog.info("single valued service parameters:                 "
+          + generateNotNullAnnotationForSingleValuedServiceParameters);
+      lLog.info(
+          "NotNull annotation name:                          " + notNullAnnotationNameForSingleValuedServiceParameters);
+    }
+
+    if (generateNotEmptyAnnotationForMultiValuedServiceParameters) {
+      lLog.info("Generate NotEmpty annotation for                   ");
+      lLog.info("multi valued service parameters:                  "
+          + generateNotEmptyAnnotationForMultiValuedServiceParameters);
+      lLog.info(
+          "NotEmpty annotation name:                         " + notEmptyAnnotationNameForMultiValuedServiceParameters);
+    }
+
+    if (generateNotNullAnnotationForSingleValuedRESTParameters) {
+      lLog.info("Generate NotNull annotation for                   ");
+      lLog.info(
+          "single valued REST parameters:                          "
+              + generateNotNullAnnotationForSingleValuedRESTParameters);
+      lLog.info(
+          "NotNull annotation name:                          " + notNullAnnotationNameForSingleValuedRESTParameters);
+    }
+
+    if (generateNotEmptyAnnotationForMultiValuedRESTParameters) {
+      lLog.info("Generate NotEmpty annotation for                   ");
+      lLog.info("multi valued REST parameters:                     "
+          + generateNotEmptyAnnotationForMultiValuedRESTParameters);
+      lLog.info(
+          "NotEmpty annotation name:                         " + notEmptyAnnotationNameForMultiValuedRESTParameters);
     }
 
     if (generateDomainObjects) {
@@ -1884,6 +1971,7 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty("switch.gen.equalsAndHashCode.openapi.datatype",
           generateEqualsAndHashCodeForOpenAPIDataTypes.toString());
 
+      // NotNull / NotEmpty annotations for properties / POJOs / ServiceObjects
       System.setProperty(PROPERTY_PREFIX + "generateNotNullAnnotationForSingleValuedProperties",
           generateNotNullAnnotationForSingleValuedProperties.toString());
       System.setProperty(PROPERTY_PREFIX + "notNullAnnotationNameForSingleValuedProperties",
@@ -1892,6 +1980,26 @@ public class GeneratorMojo extends AbstractMojo {
           generateNotEmptyAnnotationForMultiValuedProperties.toString());
       System.setProperty(PROPERTY_PREFIX + "notEmptyAnnotationNameForMultiValuedProperties",
           notEmptyAnnotationNameForMultiValuedProperties.toString());
+
+      // NotNull / NotEmpty annotations for services
+      System.setProperty(PROPERTY_PREFIX + "generateNotNullAnnotationForSingleValuedServiceParameters",
+          generateNotNullAnnotationForSingleValuedServiceParameters.toString());
+      System.setProperty(PROPERTY_PREFIX + "notNullAnnotationNameForSingleValuedServiceParameters",
+          notNullAnnotationNameForSingleValuedServiceParameters);
+      System.setProperty(PROPERTY_PREFIX + "generateNotEmptyAnnotationForMultiValuedServiceParameters",
+          generateNotEmptyAnnotationForMultiValuedServiceParameters.toString());
+      System.setProperty(PROPERTY_PREFIX + "notEmptyAnnotationNameForMultiValuedServiceParameters",
+          notEmptyAnnotationNameForMultiValuedServiceParameters.toString());
+
+      // NotNull / NotEmpty annotations for REST parameters
+      System.setProperty(PROPERTY_PREFIX + "generateNotNullAnnotationForSingleValuedRESTParameters",
+          generateNotNullAnnotationForSingleValuedRESTParameters.toString());
+      System.setProperty(PROPERTY_PREFIX + "notNullAnnotationNameForSingleValuedRESTParameters",
+          notNullAnnotationNameForSingleValuedRESTParameters);
+      System.setProperty(PROPERTY_PREFIX + "generateNotEmptyAnnotationForMultiValuedRESTParameters",
+          generateNotEmptyAnnotationForMultiValuedRESTParameters.toString());
+      System.setProperty(PROPERTY_PREFIX + "notEmptyAnnotationNameForMultiValuedRESTParameters",
+          notEmptyAnnotationNameForMultiValuedRESTParameters.toString());
 
       System.setProperty("switch.gen.immutable.classes", generateImmutableClasses.toString());
       System.setProperty("switch.gen.serializable.pojos", makePOJOsSerializable.toString());

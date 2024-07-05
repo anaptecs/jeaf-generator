@@ -18,8 +18,8 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import com.anaptecs.annotations.MyNotEmpty;
-import com.anaptecs.annotations.MyNotNull;
+import com.anaptecs.annotations.MyNotEmptyProperty;
+import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.core.api.ServiceObjectID;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
@@ -285,7 +285,7 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
      * @param pName Value to which {@link #name} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setName( @MyNotNull String pName ) {
+    public BuilderBase setName( @MyNotNullProperty String pName ) {
       // Assign value to attribute
       name = pName;
       return this;
@@ -314,7 +314,7 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
      * @param pLink Value to which {@link #link} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setLink( @MyNotNull URL pLink ) {
+    public BuilderBase setLink( @MyNotNullProperty URL pLink ) {
       // Assign value to attribute
       link = pLink;
       return this;
@@ -326,7 +326,7 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
      * @param pProductID Value to which {@link #productID} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setProductID( @MyNotNull UUID pProductID ) {
+    public BuilderBase setProductID( @MyNotNullProperty UUID pProductID ) {
       // Assign value to attribute
       productID = pProductID;
       return this;
@@ -338,7 +338,7 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
      * @param pSupportedCurrencies Collection to which {@link #supportedCurrencies} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setSupportedCurrencies( @MyNotEmpty Set<CurrencyCode> pSupportedCurrencies ) {
+    public BuilderBase setSupportedCurrencies( @MyNotEmptyProperty Set<CurrencyCode> pSupportedCurrencies ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pSupportedCurrencies != null) {
         supportedCurrencies = new HashSet<CurrencyCode>(pSupportedCurrencies);
@@ -356,7 +356,7 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
      * may be null.
      * @return {@link BuilderBase} Instance of this builder to support chaining. Method never returns null.
      */
-    public BuilderBase addToSupportedCurrencies( @MyNotEmpty CurrencyCode... pSupportedCurrencies ) {
+    public BuilderBase addToSupportedCurrencies( @MyNotEmptyProperty CurrencyCode... pSupportedCurrencies ) {
       if (pSupportedCurrencies != null) {
         if (supportedCurrencies == null) {
           supportedCurrencies = new HashSet<CurrencyCode>();
@@ -372,7 +372,7 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
      * @param pProductCodes Collection to which {@link #productCodes} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setProductCodes( @MyNotEmpty Set<ProductCode> pProductCodes ) {
+    public BuilderBase setProductCodes( @MyNotEmptyProperty Set<ProductCode> pProductCodes ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pProductCodes != null) {
         productCodes = new HashSet<ProductCode>(pProductCodes);
@@ -389,7 +389,7 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
      * @param pProductCodes Array of objects that should be added to {@link #productCodes}. The parameter may be null.
      * @return {@link BuilderBase} Instance of this builder to support chaining. Method never returns null.
      */
-    public BuilderBase addToProductCodes( @MyNotEmpty ProductCode... pProductCodes ) {
+    public BuilderBase addToProductCodes( @MyNotEmptyProperty ProductCode... pProductCodes ) {
       if (pProductCodes != null) {
         if (productCodes == null) {
           productCodes = new HashSet<ProductCode>();
@@ -406,7 +406,7 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
-    public BuilderBase setDescription( @MyNotNull String pDescription ) {
+    public BuilderBase setDescription( @MyNotNullProperty String pDescription ) {
       // Assign value to attribute
       description = pDescription;
       return this;
@@ -418,7 +418,7 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
      * @param pUri Value to which {@link #uri} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setUri( @MyNotNull String pUri ) {
+    public BuilderBase setUri( @MyNotNullProperty String pUri ) {
       // Assign value to attribute
       uri = pUri;
       return this;
@@ -562,7 +562,7 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
    *
    * @return {@link String} Value to which {@link #name} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public String getName( ) {
     return name;
   }
@@ -572,7 +572,7 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
    *
    * @param pName Value to which {@link #name} should be set.
    */
-  public void setName( @MyNotNull String pName ) {
+  public void setName( @MyNotNullProperty String pName ) {
     // Assign value to attribute
     name = pName;
   }
@@ -615,7 +615,7 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
    *
    * @return {@link URL} Value to which {@link #link} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public URL getLink( ) {
     return link;
   }
@@ -625,7 +625,7 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
    *
    * @param pLink Value to which {@link #link} should be set.
    */
-  public void setLink( @MyNotNull URL pLink ) {
+  public void setLink( @MyNotNullProperty URL pLink ) {
     // Assign value to attribute
     link = pLink;
   }
@@ -635,7 +635,7 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
    *
    * @return {@link UUID} Value to which {@link #productID} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public UUID getProductID( ) {
     return productID;
   }
@@ -646,7 +646,7 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
    * @return {@link Set<CurrencyCode>} Value to which {@link #supportedCurrencies} is set. The method never returns null
    * and the returned collection is modifiable.
    */
-  @MyNotEmpty
+  @MyNotEmptyProperty
   public Set<CurrencyCode> getSupportedCurrencies( ) {
     // Return all CurrencyCode objects directly without any protection against modification.
     return supportedCurrencies;
@@ -707,7 +707,7 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
    * @return {@link Set<ProductCode>} Value to which {@link #productCodes} is set. The method never returns null and the
    * returned collection is modifiable.
    */
-  @MyNotEmpty
+  @MyNotEmptyProperty
   public Set<ProductCode> getProductCodes( ) {
     // Return all ProductCode objects directly without any protection against modification.
     return productCodes;
@@ -766,7 +766,7 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
    * @return {@link String} Value to which {@link #description} is set.
    */
   @Deprecated
-  @MyNotNull
+  @MyNotNullProperty
   public String getDescription( ) {
     return description;
   }
@@ -777,7 +777,7 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
    * @param pDescription Value to which {@link #description} should be set.
    */
   @Deprecated
-  public void setDescription( @MyNotNull String pDescription ) {
+  public void setDescription( @MyNotNullProperty String pDescription ) {
     // Assign value to attribute
     description = pDescription;
   }
@@ -850,7 +850,7 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
    *
    * @return {@link String} Value to which {@link #uri} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public String getUri( ) {
     return uri;
   }
@@ -860,7 +860,7 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
    *
    * @param pUri Value to which {@link #uri} should be set.
    */
-  public void setUri( @MyNotNull String pUri ) {
+  public void setUri( @MyNotNullProperty String pUri ) {
     // Assign value to attribute
     uri = pUri;
   }

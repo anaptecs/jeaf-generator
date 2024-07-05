@@ -7,7 +7,7 @@ package com.anaptecs.jeaf.junit.openapi.base;
 
 import javax.validation.Valid;
 
-import com.anaptecs.annotations.MyNotNull;
+import com.anaptecs.annotations.MyNotNullProperty;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators.PropertyGenerator;
 
@@ -64,7 +64,7 @@ public class Reseller extends ResellerBase {
   /**
    * @return {@link Integer}
    */
-  @MyNotNull
+  @MyNotNullProperty
   @Override
   public Integer doSomething( ) {
     // TODO: Implement business logic for method.

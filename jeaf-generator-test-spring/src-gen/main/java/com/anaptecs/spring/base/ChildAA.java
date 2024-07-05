@@ -9,7 +9,7 @@ import java.util.Arrays;
 
 import javax.validation.constraints.Size;
 
-import com.anaptecs.annotations.MyNotEmpty;
+import com.anaptecs.annotations.MyNotEmptyProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -222,7 +222,7 @@ public class ChildAA extends ChildA {
      * @param pRequiredArray Collection to which {@link #requiredArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setRequiredArray( @MyNotEmpty String[] pRequiredArray ) {
+    public Builder setRequiredArray( @MyNotEmptyProperty String[] pRequiredArray ) {
       // Assign value to attribute
       if (pRequiredArray != null) {
         requiredArray = new String[pRequiredArray.length];
@@ -309,7 +309,7 @@ public class ChildAA extends ChildA {
    *
    * @return {@link String[]} Value to which {@link #requiredArray} is set.
    */
-  @MyNotEmpty
+  @MyNotEmptyProperty
   public String[] getRequiredArray( ) {
     String[] lReturnValue;
     if (requiredArray != null) {
@@ -327,7 +327,7 @@ public class ChildAA extends ChildA {
    *
    * @param pRequiredArray Value to which {@link #requiredArray} should be set.
    */
-  public void setRequiredArray( @MyNotEmpty String[] pRequiredArray ) {
+  public void setRequiredArray( @MyNotEmptyProperty String[] pRequiredArray ) {
     // Assign value to attribute
     if (pRequiredArray != null) {
       requiredArray = new String[pRequiredArray.length];

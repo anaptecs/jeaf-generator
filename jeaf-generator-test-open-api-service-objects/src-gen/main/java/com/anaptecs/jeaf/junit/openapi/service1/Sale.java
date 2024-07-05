@@ -11,7 +11,7 @@ import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
-import com.anaptecs.annotations.MyNotNull;
+import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.junit.openapi.base.Channel;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
@@ -111,7 +111,7 @@ public class Sale implements ServiceObject {
      * @param pTransactionAmount Value to which {@link #transactionAmount} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setTransactionAmount( @MyNotNull BigDecimal pTransactionAmount ) {
+    public Builder setTransactionAmount( @MyNotNullProperty BigDecimal pTransactionAmount ) {
       // Assign value to attribute
       transactionAmount = pTransactionAmount;
       return this;
@@ -156,7 +156,7 @@ public class Sale implements ServiceObject {
    *
    * @return {@link BigDecimal} Value to which {@link #transactionAmount} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public BigDecimal getTransactionAmount( ) {
     return transactionAmount;
   }
@@ -166,7 +166,7 @@ public class Sale implements ServiceObject {
    *
    * @param pTransactionAmount Value to which {@link #transactionAmount} should be set.
    */
-  public void setTransactionAmount( @MyNotNull BigDecimal pTransactionAmount ) {
+  public void setTransactionAmount( @MyNotNullProperty BigDecimal pTransactionAmount ) {
     // Assign value to attribute
     transactionAmount = pTransactionAmount;
   }

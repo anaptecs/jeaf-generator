@@ -7,7 +7,7 @@ package com.anaptecs.spring.service;
 
 import java.util.Objects;
 
-import com.anaptecs.annotations.MyNotNull;
+import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.anaptecs.spring.base.BookingCode;
 import com.anaptecs.spring.base.BookingID;
@@ -137,7 +137,7 @@ public class AdvancedHeader {
      * @param pBookingID Value to which {@link #bookingID} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setBookingID( @MyNotNull BookingID pBookingID ) {
+    public Builder setBookingID( @MyNotNullProperty BookingID pBookingID ) {
       // Assign value to attribute
       bookingID = pBookingID;
       return this;
@@ -149,7 +149,7 @@ public class AdvancedHeader {
      * @param pBookingCode Value to which {@link #bookingCode} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setBookingCode( @MyNotNull BookingCode pBookingCode ) {
+    public Builder setBookingCode( @MyNotNullProperty BookingCode pBookingCode ) {
       // Assign value to attribute
       bookingCode = pBookingCode;
       return this;
@@ -161,7 +161,7 @@ public class AdvancedHeader {
      * @param pDoubleCode Value to which {@link #doubleCode} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setDoubleCode( @MyNotNull DoubleCode pDoubleCode ) {
+    public Builder setDoubleCode( @MyNotNullProperty DoubleCode pDoubleCode ) {
       // Assign value to attribute
       doubleCode = pDoubleCode;
       return this;
@@ -185,7 +185,7 @@ public class AdvancedHeader {
    *
    * @return {@link BookingID} Value to which {@link #bookingID} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public BookingID getBookingID( ) {
     return bookingID;
   }
@@ -195,7 +195,7 @@ public class AdvancedHeader {
    *
    * @param pBookingID Value to which {@link #bookingID} should be set.
    */
-  public void setBookingID( @MyNotNull BookingID pBookingID ) {
+  public void setBookingID( @MyNotNullProperty BookingID pBookingID ) {
     // Assign value to attribute
     bookingID = pBookingID;
   }
@@ -205,7 +205,7 @@ public class AdvancedHeader {
    *
    * @return {@link BookingCode} Value to which {@link #bookingCode} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public BookingCode getBookingCode( ) {
     return bookingCode;
   }
@@ -215,7 +215,7 @@ public class AdvancedHeader {
    *
    * @param pBookingCode Value to which {@link #bookingCode} should be set.
    */
-  public void setBookingCode( @MyNotNull BookingCode pBookingCode ) {
+  public void setBookingCode( @MyNotNullProperty BookingCode pBookingCode ) {
     // Assign value to attribute
     bookingCode = pBookingCode;
   }
@@ -225,7 +225,7 @@ public class AdvancedHeader {
    *
    * @return {@link DoubleCode} Value to which {@link #doubleCode} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public DoubleCode getDoubleCode( ) {
     return doubleCode;
   }
@@ -235,7 +235,7 @@ public class AdvancedHeader {
    *
    * @param pDoubleCode Value to which {@link #doubleCode} should be set.
    */
-  public void setDoubleCode( @MyNotNull DoubleCode pDoubleCode ) {
+  public void setDoubleCode( @MyNotNullProperty DoubleCode pDoubleCode ) {
     // Assign value to attribute
     doubleCode = pDoubleCode;
   }

@@ -9,7 +9,7 @@ import java.util.Objects;
 
 import javax.validation.constraints.NotNull;
 
-import com.anaptecs.annotations.MyNotNull;
+import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -183,7 +183,7 @@ public class Problem {
      * @param pTitle Value to which {@link #title} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setTitle( @MyNotNull String pTitle ) {
+    public Builder setTitle( @MyNotNullProperty String pTitle ) {
       // Assign value to attribute
       title = pTitle;
       return this;
@@ -207,7 +207,7 @@ public class Problem {
      * @param pType Value to which {@link #type} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setType( @MyNotNull String pType ) {
+    public Builder setType( @MyNotNullProperty String pType ) {
       // Assign value to attribute
       type = pType;
       return this;
@@ -219,7 +219,7 @@ public class Problem {
      * @param pDetail Value to which {@link #detail} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setDetail( @MyNotNull String pDetail ) {
+    public Builder setDetail( @MyNotNullProperty String pDetail ) {
       // Assign value to attribute
       detail = pDetail;
       return this;
@@ -231,7 +231,7 @@ public class Problem {
      * @param pInstance Value to which {@link #instance} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setInstance( @MyNotNull String pInstance ) {
+    public Builder setInstance( @MyNotNullProperty String pInstance ) {
       // Assign value to attribute
       instance = pInstance;
       return this;
@@ -254,7 +254,7 @@ public class Problem {
    *
    * @return {@link String} Value to which {@link #title} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public String getTitle( ) {
     return title;
   }
@@ -273,7 +273,7 @@ public class Problem {
    *
    * @return {@link String} Value to which {@link #type} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public String getType( ) {
     return type;
   }
@@ -283,7 +283,7 @@ public class Problem {
    *
    * @return {@link String} Value to which {@link #detail} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public String getDetail( ) {
     return detail;
   }
@@ -293,7 +293,7 @@ public class Problem {
    *
    * @return {@link String} Value to which {@link #instance} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public String getInstance( ) {
     return instance;
   }

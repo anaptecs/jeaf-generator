@@ -11,7 +11,7 @@ import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
-import com.anaptecs.annotations.MyNotNull;
+import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -82,7 +82,7 @@ public class MyDataType implements ServiceObject {
      * @param pCode Value to which {@link #code} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setCode( @MyNotNull String pCode ) {
+    public Builder setCode( @MyNotNullProperty String pCode ) {
       // Assign value to attribute
       code = pCode;
       return this;
@@ -116,7 +116,7 @@ public class MyDataType implements ServiceObject {
    *
    * @return {@link String} Value to which {@link #code} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public String getCode( ) {
     return code;
   }
@@ -126,7 +126,7 @@ public class MyDataType implements ServiceObject {
    *
    * @param pCode Value to which {@link #code} should be set.
    */
-  public void setCode( @MyNotNull String pCode ) {
+  public void setCode( @MyNotNullProperty String pCode ) {
     // Assign value to attribute
     code = pCode;
   }

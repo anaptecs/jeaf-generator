@@ -7,7 +7,7 @@ package com.anaptecs.spring.base;
 
 import java.util.Objects;
 
-import com.anaptecs.annotations.MyNotNull;
+import com.anaptecs.annotations.MyNotNullProperty;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
@@ -79,7 +79,7 @@ public abstract class PlaceRef {
      * @param pName Value to which {@link #name} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setName( @MyNotNull String pName ) {
+    public Builder setName( @MyNotNullProperty String pName ) {
       // Assign value to attribute
       name = pName;
       return this;
@@ -91,7 +91,7 @@ public abstract class PlaceRef {
    *
    * @return {@link String} Value to which {@link #name} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public String getName( ) {
     return name;
   }
@@ -101,7 +101,7 @@ public abstract class PlaceRef {
    *
    * @param pName Value to which {@link #name} should be set.
    */
-  public void setName( @MyNotNull String pName ) {
+  public void setName( @MyNotNullProperty String pName ) {
     // Assign value to attribute
     name = pName;
   }

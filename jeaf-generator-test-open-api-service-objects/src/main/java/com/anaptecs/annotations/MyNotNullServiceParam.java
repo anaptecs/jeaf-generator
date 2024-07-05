@@ -6,6 +6,6 @@ import static java.lang.annotation.ElementType.PARAMETER;
 import java.lang.annotation.Target;
 
 @Target({ METHOD, PARAMETER })
-public @interface MyNotNull {
+public @interface MyNotNullServiceParam {
 
 }

@@ -14,7 +14,7 @@ import java.util.Set;
 
 import javax.validation.constraints.Size;
 
-import com.anaptecs.annotations.MyNotNull;
+import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -249,7 +249,7 @@ public class ChildBB extends ChildB {
      * @param pChildBBAttribute Value to which {@link #childBBAttribute} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setChildBBAttribute( @MyNotNull Long pChildBBAttribute ) {
+    public Builder setChildBBAttribute( @MyNotNullProperty Long pChildBBAttribute ) {
       // Assign value to attribute
       childBBAttribute = pChildBBAttribute;
       return this;
@@ -351,7 +351,7 @@ public class ChildBB extends ChildB {
    *
    * @return {@link Long} Value to which {@link #childBBAttribute} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public Long getChildBBAttribute( ) {
     return childBBAttribute;
   }
@@ -361,7 +361,7 @@ public class ChildBB extends ChildB {
    *
    * @param pChildBBAttribute Value to which {@link #childBBAttribute} should be set.
    */
-  public void setChildBBAttribute( @MyNotNull Long pChildBBAttribute ) {
+  public void setChildBBAttribute( @MyNotNullProperty Long pChildBBAttribute ) {
     // Assign value to attribute
     childBBAttribute = pChildBBAttribute;
   }

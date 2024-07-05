@@ -14,7 +14,7 @@ import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
-import com.anaptecs.annotations.MyNotNull;
+import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -118,7 +118,7 @@ public class BidirectA implements ServiceObject {
      * @param pParent Value to which {@link #parent} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setParent( @MyNotNull BidirectA pParent ) {
+    public Builder setParent( @MyNotNullProperty BidirectA pParent ) {
       parent = pParent;
       return this;
     }
@@ -214,7 +214,7 @@ public class BidirectA implements ServiceObject {
    *
    * @return {@link BidirectA} Value to which {@link #parent} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public BidirectA getParent( ) {
     // Due to restrictions in JSON serialization / deserialization bi-directional associations need a special handling
     // after an object was deserialized.
@@ -230,7 +230,7 @@ public class BidirectA implements ServiceObject {
    *
    * @param pParent Value to which {@link #parent} should be set.
    */
-  public void setParent( @MyNotNull BidirectA pParent ) {
+  public void setParent( @MyNotNullProperty BidirectA pParent ) {
     // Release already referenced object before setting a new association.
     if (parent != null) {
       parent.unsetTransientChild();
@@ -261,7 +261,7 @@ public class BidirectA implements ServiceObject {
    *
    * @return {@link BidirectA} Value to which {@link #transientChild} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public BidirectA getTransientChild( ) {
     return transientChild;
   }
@@ -271,7 +271,7 @@ public class BidirectA implements ServiceObject {
    *
    * @param pTransientChild Value to which {@link #transientChild} should be set.
    */
-  void setTransientChild( @MyNotNull BidirectA pTransientChild ) {
+  void setTransientChild( @MyNotNullProperty BidirectA pTransientChild ) {
     // Release already referenced object before setting a new association.
     if (transientChild != null) {
       transientChild.unsetParent();

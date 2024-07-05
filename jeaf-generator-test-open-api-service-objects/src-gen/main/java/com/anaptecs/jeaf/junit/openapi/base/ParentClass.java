@@ -16,7 +16,7 @@ import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
-import com.anaptecs.annotations.MyNotNull;
+import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -160,7 +160,7 @@ public class ParentClass implements ServiceObject {
      * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setParentAttribute( @MyNotNull String pParentAttribute ) {
+    public Builder setParentAttribute( @MyNotNullProperty String pParentAttribute ) {
       // Assign value to attribute
       parentAttribute = pParentAttribute;
       return this;
@@ -276,7 +276,7 @@ public class ParentClass implements ServiceObject {
    *
    * @return {@link String} Value to which {@link #parentAttribute} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public String getParentAttribute( ) {
     return parentAttribute;
   }
@@ -286,7 +286,7 @@ public class ParentClass implements ServiceObject {
    *
    * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
    */
-  public void setParentAttribute( @MyNotNull String pParentAttribute ) {
+  public void setParentAttribute( @MyNotNullProperty String pParentAttribute ) {
     // Assign value to attribute
     parentAttribute = pParentAttribute;
   }

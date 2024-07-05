@@ -260,7 +260,7 @@
                     
                     «EXPAND java::Helper::GenerateOfForClass FOR this»
 					«EXPAND java::Attribute::AbstractGetterForDerivedProperty FOREACH this.getDerivedProperties()»
-					«EXPAND jeaf::JEAFOperation::PersistentObjectOperation FOREACH ownedOperation»
+					«EXPAND jeaf::JEAFOperation::BusinessOperation FOREACH ownedOperation»
 					«EXPAND java::Helper::GenerateCustomHeadersOperations»
 					«EXPAND jeafgenerator::api::ClassExtensionHook::CustomOperations»
 					«EXPAND java::Helper::GenerateEqualsHashCode(name + "Base")»
@@ -303,7 +303,7 @@
 					«EXPAND java::Builder::GenerateBuilderImpl»
 					
 					«EXPAND java::Attribute::EmptyGetterImplForDerivedProperty FOREACH this.getDerivedProperties()»
-					«EXPAND jeaf::JEAFOperation::PersistentObjectOperationImpl FOREACH ownedOperation»
+					«EXPAND jeaf::JEAFOperation::BusinessOperationImpl FOREACH ownedOperation»
 
 				  «IF this.compositeDataTypeCustomSerialization»
 				  /**

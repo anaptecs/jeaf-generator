@@ -7,7 +7,7 @@ package com.anaptecs.spring.base;
 
 import java.util.Objects;
 
-import com.anaptecs.annotations.MyNotNull;
+import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -119,7 +119,7 @@ public abstract class SoftLinkBase {
      * @param pDataUnit Value to which {@link #dataUnit} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setDataUnit( @MyNotNull DataUnit pDataUnit ) {
+    public BuilderBase setDataUnit( @MyNotNullProperty DataUnit pDataUnit ) {
       dataUnit = pDataUnit;
       return this;
     }
@@ -130,7 +130,7 @@ public abstract class SoftLinkBase {
      * @param pEntity Value to which {@link #entity} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setEntity( @MyNotNull Entity pEntity ) {
+    public BuilderBase setEntity( @MyNotNullProperty Entity pEntity ) {
       entity = pEntity;
       return this;
     }
@@ -141,7 +141,7 @@ public abstract class SoftLinkBase {
      * @param pRefrenceID Value to which {@link #refrenceID} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setRefrenceID( @MyNotNull String pRefrenceID ) {
+    public BuilderBase setRefrenceID( @MyNotNullProperty String pRefrenceID ) {
       // Assign value to attribute
       refrenceID = pRefrenceID;
       return this;
@@ -173,7 +173,7 @@ public abstract class SoftLinkBase {
    *
    * @return {@link DataUnit} Value to which {@link #dataUnit} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public DataUnit getDataUnit( ) {
     return dataUnit;
   }
@@ -183,7 +183,7 @@ public abstract class SoftLinkBase {
    *
    * @param pDataUnit Value to which {@link #dataUnit} should be set.
    */
-  public void setDataUnit( @MyNotNull DataUnit pDataUnit ) {
+  public void setDataUnit( @MyNotNullProperty DataUnit pDataUnit ) {
     dataUnit = pDataUnit;
   }
 
@@ -199,7 +199,7 @@ public abstract class SoftLinkBase {
    *
    * @return {@link Entity} Value to which {@link #entity} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public Entity getEntity( ) {
     return entity;
   }
@@ -209,7 +209,7 @@ public abstract class SoftLinkBase {
    *
    * @param pEntity Value to which {@link #entity} should be set.
    */
-  public void setEntity( @MyNotNull Entity pEntity ) {
+  public void setEntity( @MyNotNullProperty Entity pEntity ) {
     entity = pEntity;
   }
 
@@ -225,7 +225,7 @@ public abstract class SoftLinkBase {
    *
    * @return {@link String} Value to which {@link #refrenceID} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public String getRefrenceID( ) {
     return refrenceID;
   }

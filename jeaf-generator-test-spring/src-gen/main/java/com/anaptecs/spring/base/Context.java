@@ -13,7 +13,7 @@ import java.util.Objects;
 
 import javax.validation.constraints.NotEmpty;
 
-import com.anaptecs.annotations.MyNotNull;
+import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 
 /**
@@ -230,7 +230,7 @@ public class Context {
      * @param pAccessToken Value to which {@link #accessToken} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setAccessToken( @MyNotNull String pAccessToken ) {
+    public Builder setAccessToken( @MyNotNullProperty String pAccessToken ) {
       // Assign value to attribute
       accessToken = pAccessToken;
       return this;
@@ -242,7 +242,7 @@ public class Context {
      * @param pLanguage Value to which {@link #language} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setLanguage( @MyNotNull Locale pLanguage ) {
+    public Builder setLanguage( @MyNotNullProperty Locale pLanguage ) {
       // Assign value to attribute
       language = pLanguage;
       return this;
@@ -278,7 +278,7 @@ public class Context {
      * @param pQueryParam Value to which {@link #queryParam} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setQueryParam( @MyNotNull String pQueryParam ) {
+    public Builder setQueryParam( @MyNotNullProperty String pQueryParam ) {
       // Assign value to attribute
       queryParam = pQueryParam;
       return this;
@@ -290,7 +290,7 @@ public class Context {
      * @param pLang Value to which {@link #lang} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setLang( @MyNotNull String pLang ) {
+    public Builder setLang( @MyNotNullProperty String pLang ) {
       // Assign value to attribute
       lang = pLang;
       return this;
@@ -302,7 +302,7 @@ public class Context {
      * @param pIntCode Value to which {@link #intCode} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setIntCode( @MyNotNull IntegerCodeType pIntCode ) {
+    public Builder setIntCode( @MyNotNullProperty IntegerCodeType pIntCode ) {
       // Assign value to attribute
       intCode = pIntCode;
       return this;
@@ -325,7 +325,7 @@ public class Context {
    *
    * @return {@link String} Value to which {@link #accessToken} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public String getAccessToken( ) {
     return accessToken;
   }
@@ -335,7 +335,7 @@ public class Context {
    *
    * @param pAccessToken Value to which {@link #accessToken} should be set.
    */
-  public void setAccessToken( @MyNotNull String pAccessToken ) {
+  public void setAccessToken( @MyNotNullProperty String pAccessToken ) {
     // Assign value to attribute
     accessToken = pAccessToken;
   }
@@ -345,7 +345,7 @@ public class Context {
    *
    * @return {@link Locale} Value to which {@link #language} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public Locale getLanguage( ) {
     return language;
   }
@@ -355,7 +355,7 @@ public class Context {
    *
    * @param pLanguage Value to which {@link #language} should be set.
    */
-  public void setLanguage( @MyNotNull Locale pLanguage ) {
+  public void setLanguage( @MyNotNullProperty Locale pLanguage ) {
     // Assign value to attribute
     language = pLanguage;
   }
@@ -403,7 +403,7 @@ public class Context {
    *
    * @return {@link String} Value to which {@link #queryParam} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public String getQueryParam( ) {
     return queryParam;
   }
@@ -413,7 +413,7 @@ public class Context {
    *
    * @param pQueryParam Value to which {@link #queryParam} should be set.
    */
-  public void setQueryParam( @MyNotNull String pQueryParam ) {
+  public void setQueryParam( @MyNotNullProperty String pQueryParam ) {
     // Assign value to attribute
     queryParam = pQueryParam;
   }
@@ -423,7 +423,7 @@ public class Context {
    *
    * @return {@link String} Value to which {@link #lang} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public String getLang( ) {
     return lang;
   }
@@ -433,7 +433,7 @@ public class Context {
    *
    * @param pLang Value to which {@link #lang} should be set.
    */
-  public void setLang( @MyNotNull String pLang ) {
+  public void setLang( @MyNotNullProperty String pLang ) {
     // Assign value to attribute
     lang = pLang;
   }
@@ -443,7 +443,7 @@ public class Context {
    *
    * @return {@link IntegerCodeType} Value to which {@link #intCode} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public IntegerCodeType getIntCode( ) {
     return intCode;
   }
@@ -453,7 +453,7 @@ public class Context {
    *
    * @param pIntCode Value to which {@link #intCode} should be set.
    */
-  public void setIntCode( @MyNotNull IntegerCodeType pIntCode ) {
+  public void setIntCode( @MyNotNullProperty IntegerCodeType pIntCode ) {
     // Assign value to attribute
     intCode = pIntCode;
   }

@@ -10,7 +10,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.ws.rs.HeaderParam;
 
-import com.anaptecs.annotations.MyNotNull;
+import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -108,7 +108,7 @@ public class ParentBeanParamType implements ServiceObject {
      * @param pNovaKey Value to which {@link #novaKey} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setNovaKey( @MyNotNull String pNovaKey ) {
+    public Builder setNovaKey( @MyNotNullProperty String pNovaKey ) {
       // Assign value to attribute
       novaKey = pNovaKey;
       return this;
@@ -120,7 +120,7 @@ public class ParentBeanParamType implements ServiceObject {
      * @param pTkID Value to which {@link #tkID} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setTkID( @MyNotNull String pTkID ) {
+    public Builder setTkID( @MyNotNullProperty String pTkID ) {
       // Assign value to attribute
       tkID = pTkID;
       return this;
@@ -155,7 +155,7 @@ public class ParentBeanParamType implements ServiceObject {
    *
    * @return {@link String} Value to which {@link #novaKey} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public String getNovaKey( ) {
     return novaKey;
   }
@@ -165,7 +165,7 @@ public class ParentBeanParamType implements ServiceObject {
    *
    * @param pNovaKey Value to which {@link #novaKey} should be set.
    */
-  public void setNovaKey( @MyNotNull String pNovaKey ) {
+  public void setNovaKey( @MyNotNullProperty String pNovaKey ) {
     // Assign value to attribute
     novaKey = pNovaKey;
   }
@@ -175,7 +175,7 @@ public class ParentBeanParamType implements ServiceObject {
    *
    * @return {@link String} Value to which {@link #tkID} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public String getTkID( ) {
     return tkID;
   }
@@ -185,7 +185,7 @@ public class ParentBeanParamType implements ServiceObject {
    *
    * @param pTkID Value to which {@link #tkID} should be set.
    */
-  public void setTkID( @MyNotNull String pTkID ) {
+  public void setTkID( @MyNotNullProperty String pTkID ) {
     // Assign value to attribute
     tkID = pTkID;
   }

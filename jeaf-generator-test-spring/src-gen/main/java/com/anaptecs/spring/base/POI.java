@@ -8,7 +8,7 @@ package com.anaptecs.spring.base;
 import java.util.List;
 import java.util.Objects;
 
-import com.anaptecs.annotations.MyNotNull;
+import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -159,7 +159,7 @@ public class POI extends Stop {
      * @param pDescription Value to which {@link #description} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setDescription( @MyNotNull String pDescription ) {
+    public Builder setDescription( @MyNotNullProperty String pDescription ) {
       // Assign value to attribute
       description = pDescription;
       return this;
@@ -182,7 +182,7 @@ public class POI extends Stop {
    *
    * @return {@link String} Value to which {@link #description} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public String getDescription( ) {
     return description;
   }
@@ -192,7 +192,7 @@ public class POI extends Stop {
    *
    * @param pDescription Value to which {@link #description} should be set.
    */
-  public void setDescription( @MyNotNull String pDescription ) {
+  public void setDescription( @MyNotNullProperty String pDescription ) {
     // Assign value to attribute
     description = pDescription;
   }

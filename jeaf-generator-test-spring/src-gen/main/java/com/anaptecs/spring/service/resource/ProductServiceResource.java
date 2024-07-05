@@ -34,6 +34,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.anaptecs.annotations.MyNotEmptyRESTParam;
+import com.anaptecs.annotations.MyNotNullRESTParam;
 import com.anaptecs.jeaf.rest.resource.api.CustomHeaderFilter;
 import com.anaptecs.jeaf.validation.api.ValidationExecutor;
 import com.anaptecs.spring.base.AnotherDataType;
@@ -107,7 +109,8 @@ public class ProductServiceResource {
   @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "products/{id}", method = { RequestMethod.GET })
-  public Product getProduct( @PathVariable(name = "id", required = true) String pProductID ) {
+  @MyNotNullRESTParam
+  public Product getProduct( @PathVariable(name = "id", required = true) @MyNotNullRESTParam String pProductID ) {
     // Validate request parameter(s).
     validationExecutor.validateRequest(ProductService.class, pProductID);
     // Delegate request to service.
@@ -123,7 +126,7 @@ public class ProductServiceResource {
   @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "products/", method = { RequestMethod.POST })
-  public boolean createProduct( @RequestBody(required = true) Product pProduct ) {
+  public boolean createProduct( @RequestBody(required = true) @MyNotNullRESTParam Product pProduct ) {
     // Validate request parameter(s).
     validationExecutor.validateRequest(ProductService.class, pProduct);
     // Delegate request to service.
@@ -139,12 +142,15 @@ public class ProductServiceResource {
   @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "products/sortiment/{id}", method = { RequestMethod.GET })
-  public Sortiment getSortiment( @RequestHeader(name = "token", required = true) String pAccessToken,
-      @RequestHeader(name = "lang", required = true) Locale pLanguage,
+  @MyNotNullRESTParam
+  public Sortiment getSortiment(
+      @RequestHeader(name = "token", required = true) @MyNotNullRESTParam String pAccessToken,
+      @RequestHeader(name = "lang", required = true) @MyNotNullRESTParam Locale pLanguage,
       @CookieValue(name = "reseller", required = true) long pResellerID,
       @PathVariable(name = "id", required = true) long pPathParam,
-      @RequestParam(name = "q1", required = true) String pQueryParam, String pLang,
-      @RequestHeader(name = "intCode", required = true) int pIntCodeAsBasicType,
+      @RequestParam(name = "q1", required = true) @MyNotNullRESTParam String pQueryParam,
+      @MyNotNullRESTParam String pLang,
+      @RequestHeader(name = "intCode", required = true) @MyNotNullRESTParam int pIntCodeAsBasicType,
       @RequestHeader Map<String, String> pHeaders ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
@@ -183,7 +189,8 @@ public class ProductServiceResource {
       consumes = { "application/json" },
       produces = { "application/json" },
       method = { RequestMethod.POST })
-  public ChannelCode createChannelCode( @RequestBody(required = true) String pChannelCode ) {
+  @MyNotNullRESTParam
+  public ChannelCode createChannelCode( @RequestBody(required = true) @MyNotNullRESTParam String pChannelCode ) {
     // Validate request parameter(s).
     validationExecutor.validateRequest(ProductService.class, pChannelCode);
     // Delegate request to service.
@@ -199,6 +206,7 @@ public class ProductServiceResource {
   @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(path = "products/", method = { RequestMethod.HEAD })
+  @MyNotNullRESTParam
   public void ping( ) {
     // Delegate request to service.
     productService.ping();
@@ -211,6 +219,7 @@ public class ProductServiceResource {
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "products/deprecated/operation", method = { RequestMethod.GET })
   @Deprecated
+  @MyNotNullRESTParam
   public String deprecatedOperation( ) {
     // Delegate request to service.
     String lResponse = productService.deprecatedOperation();
@@ -225,10 +234,12 @@ public class ProductServiceResource {
   @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "products/deprecated/context", method = { RequestMethod.POST })
-  public String deprecatedContext( @RequestHeader(name = "token", required = true) String pAccessToken,
-      @RequestHeader(name = "lang", required = true) Locale pLanguage,
+  @MyNotNullRESTParam
+  public String deprecatedContext(
+      @RequestHeader(name = "token", required = true) @MyNotNullRESTParam String pAccessToken,
+      @RequestHeader(name = "lang", required = true) @MyNotNullRESTParam Locale pLanguage,
       @CookieValue(name = "reseller", required = true) long pResellerID,
-      @RequestParam(name = "q1", required = true) String pQueryParam ) {
+      @RequestParam(name = "q1", required = true) @MyNotNullRESTParam String pQueryParam ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
     DeprecatedContext.Builder lContextBuilder = DeprecatedContext.builder();
@@ -252,9 +263,11 @@ public class ProductServiceResource {
   @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(path = "products/deprecated/beanParams", method = { RequestMethod.POST })
-  public void deprecatedBeanParam( @RequestHeader(name = "token", required = true) String pAccessToken,
-      @RequestHeader(name = "lang", required = true) Locale pLanguage,
-      @RequestParam(name = "q2", required = true) @Deprecated String pOldStyle ) {
+  @MyNotNullRESTParam
+  public void deprecatedBeanParam(
+      @RequestHeader(name = "token", required = true) @MyNotNullRESTParam String pAccessToken,
+      @RequestHeader(name = "lang", required = true) @MyNotNullRESTParam Locale pLanguage,
+      @RequestParam(name = "q2", required = true) @Deprecated @MyNotNullRESTParam String pOldStyle ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
     BeanParameter.Builder lBeanParamBuilder = BeanParameter.builder();
@@ -275,6 +288,7 @@ public class ProductServiceResource {
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "products/deprecated/params", method = { RequestMethod.POST })
   @Deprecated
+  @MyNotNullRESTParam
   public String deprecatedParams( @RequestHeader(name = "param1", required = true) @Deprecated int pParam1 ) {
     // Validate request parameter(s).
     validationExecutor.validateRequest(ProductService.class, pParam1);
@@ -291,7 +305,8 @@ public class ProductServiceResource {
   @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "products/deprecated/body", method = { RequestMethod.POST })
-  public String deprecatedBody( @RequestBody(required = true) @Deprecated String pBody ) {
+  @MyNotNullRESTParam
+  public String deprecatedBody( @RequestBody(required = true) @Deprecated @MyNotNullRESTParam String pBody ) {
     // Validate request parameter(s).
     validationExecutor.validateRequest(ProductService.class, pBody);
     // Delegate request to service.
@@ -307,7 +322,9 @@ public class ProductServiceResource {
   @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(path = "products/deprecated/complexBody", method = { RequestMethod.POST })
-  public void deprectedComplexRequestBody( @RequestBody(required = true) @Deprecated Product pProduct ) {
+  @MyNotNullRESTParam
+  public void deprectedComplexRequestBody(
+      @RequestBody(required = true) @Deprecated @MyNotNullRESTParam Product pProduct ) {
     // Validate request parameter(s).
     validationExecutor.validateRequest(ProductService.class, pProduct);
     // Delegate request to service.
@@ -321,6 +338,7 @@ public class ProductServiceResource {
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "products/deprecated/complexReturn", method = { RequestMethod.GET })
   @Deprecated
+  @MyNotNullRESTParam
   public Product deprecatedComplexReturn( ) {
     // Delegate request to service.
     Product lResponse = productService.deprecatedComplexReturn();
@@ -335,14 +353,17 @@ public class ProductServiceResource {
   @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(path = "products/specific/{id}", method = { RequestMethod.PATCH })
-  public void loadSpecificThings( @RequestHeader(name = "token", required = true) String pAccessToken,
-      @RequestHeader(name = "lang", required = true) Locale pLanguage,
+  @MyNotNullRESTParam
+  public void loadSpecificThings(
+      @RequestHeader(name = "token", required = true) @MyNotNullRESTParam String pAccessToken,
+      @RequestHeader(name = "lang", required = true) @MyNotNullRESTParam Locale pLanguage,
       @CookieValue(name = "reseller", required = true) long pResellerID,
       @PathVariable(name = "id", required = true) long pPathParam,
-      @RequestParam(name = "q1", required = true) String pQueryParam, String pLang,
-      @RequestHeader(name = "intCode", required = true) int pIntCodeAsBasicType,
-      @RequestHeader(name = "specificHeader", required = true) String pSpecificHeader,
-      @CookieValue(name = "Channel-Type", required = true) ChannelType pChannelType,
+      @RequestParam(name = "q1", required = true) @MyNotNullRESTParam String pQueryParam,
+      @MyNotNullRESTParam String pLang,
+      @RequestHeader(name = "intCode", required = true) @MyNotNullRESTParam int pIntCodeAsBasicType,
+      @RequestHeader(name = "specificHeader", required = true) @MyNotNullRESTParam String pSpecificHeader,
+      @CookieValue(name = "Channel-Type", required = true) @MyNotNullRESTParam ChannelType pChannelType,
       @RequestHeader Map<String, String> pHeaders ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
@@ -376,7 +397,9 @@ public class ProductServiceResource {
   @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "products/ChannelCodeObject", method = { RequestMethod.POST })
-  public ChannelCode createChannelCodeFromObject( @RequestBody(required = true) ChannelCode pChannelCode ) {
+  @MyNotNullRESTParam
+  public ChannelCode createChannelCodeFromObject(
+      @RequestBody(required = true) @MyNotNullRESTParam ChannelCode pChannelCode ) {
     // Validate request parameter(s).
     validationExecutor.validateRequest(ProductService.class, pChannelCode);
     // Delegate request to service.
@@ -392,7 +415,9 @@ public class ProductServiceResource {
   @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "products/currencies", method = { RequestMethod.POST })
-  public List<CurrencyCode> addCurrencies( @RequestBody(required = true) List<CurrencyCode> pCurrencies ) {
+  @MyNotEmptyRESTParam
+  public List<CurrencyCode> addCurrencies(
+      @RequestBody(required = true) @MyNotEmptyRESTParam List<CurrencyCode> pCurrencies ) {
     // Validate request parameter(s).
     validationExecutor.validateRequest(ProductService.class, pCurrencies);
     // Delegate request to service.
@@ -408,7 +433,8 @@ public class ProductServiceResource {
   @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "products/currencies/valid", method = { RequestMethod.POST })
-  public CurrencyCode isCurrencySupported( @RequestBody(required = true) CurrencyCode pCurrency ) {
+  @MyNotNullRESTParam
+  public CurrencyCode isCurrencySupported( @RequestBody(required = true) @MyNotNullRESTParam CurrencyCode pCurrency ) {
     // Validate request parameter(s).
     validationExecutor.validateRequest(ProductService.class, pCurrency);
     // Delegate request to service.
@@ -424,7 +450,9 @@ public class ProductServiceResource {
   @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "products/codeTypeUsages", method = { RequestMethod.POST })
-  public IntegerCodeType testCodeTypeUsage( @RequestBody(required = true) StringCodeType pStringCode ) {
+  @MyNotNullRESTParam
+  public IntegerCodeType testCodeTypeUsage(
+      @RequestBody(required = true) @MyNotNullRESTParam StringCodeType pStringCode ) {
     // Validate request parameter(s).
     validationExecutor.validateRequest(ProductService.class, pStringCode);
     // Delegate request to service.
@@ -440,8 +468,10 @@ public class ProductServiceResource {
   @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "products/LocalBeanParam", method = { RequestMethod.GET })
-  public String testLocalBeanParamType( @RequestHeader(name = "localKey", required = true) String pLocalKey,
-      @RequestHeader(name = "localID", required = true) String pLocalID ) {
+  @MyNotNullRESTParam
+  public String testLocalBeanParamType(
+      @RequestHeader(name = "localKey", required = true) @MyNotNullRESTParam String pLocalKey,
+      @RequestHeader(name = "localID", required = true) @MyNotNullRESTParam String pLocalID ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
     LocalBeanParamType.Builder lBeanParamBuilder = LocalBeanParamType.builder();
@@ -463,8 +493,10 @@ public class ProductServiceResource {
   @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "products/ExternalBeanParam", method = { RequestMethod.GET })
-  public String testExternalBeanParameterType( @RequestHeader(name = "novaKey", required = true) String pNovaKey,
-      @RequestHeader(name = "tkID", required = true) String pTkID ) {
+  @MyNotNullRESTParam
+  public String testExternalBeanParameterType(
+      @RequestHeader(name = "novaKey", required = true) @MyNotNullRESTParam String pNovaKey,
+      @RequestHeader(name = "tkID", required = true) @MyNotNullRESTParam String pTkID ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
     ParentBeanParamType.Builder lParentBuilder = ParentBeanParamType.builder();
@@ -486,9 +518,11 @@ public class ProductServiceResource {
   @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "products/ChildBeanParam", method = { RequestMethod.GET })
-  public String testChildBeanParameter( @RequestHeader(name = "novaKey", required = true) String pNovaKey,
-      @RequestHeader(name = "tkID", required = true) String pTkID,
-      @RequestHeader(name = "X-Child-Property", required = true) String pChildProperty ) {
+  @MyNotNullRESTParam
+  public String testChildBeanParameter(
+      @RequestHeader(name = "novaKey", required = true) @MyNotNullRESTParam String pNovaKey,
+      @RequestHeader(name = "tkID", required = true) @MyNotNullRESTParam String pTkID,
+      @RequestHeader(name = "X-Child-Property", required = true) @MyNotNullRESTParam String pChildProperty ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
     ChildBeanParameterType.Builder lChildBuilder = ChildBeanParameterType.builder();
@@ -511,17 +545,20 @@ public class ProductServiceResource {
   @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(path = "products/test-date-query-params/{path}", method = { RequestMethod.GET })
-  public void testDateQueryParams( @PathVariable(name = "path", required = true) String pPath,
-      @RequestParam(name = "startTimestamp", required = true) String pStartTimestampAsBasicType,
-      @RequestParam(name = "startTime", required = true) String pStartTimeAsBasicType,
-      @RequestParam(name = "localStartTimestamp", required = true) String pLocalStartTimestampAsBasicType,
-      @RequestParam(name = "localStartTime", required = true) String pLocalStartTimeAsBasicType,
-      @RequestParam(name = "localStartDate", required = true) String pLocalStartDateAsBasicType,
-      @RequestParam(name = "calendar", required = true) String pCalendarAsBasicType,
-      @RequestParam(name = "utilDate", required = true) String pUtilDateAsBasicType,
-      @RequestParam(name = "sqlTimestamp", required = true) String pSQLTimestampAsBasicType,
-      @RequestParam(name = "sqlTime", required = true) String pSQLTimeAsBasicType,
-      @RequestParam(name = "sqlDate", required = true) String pSQLDateAsBasicType ) {
+  @MyNotNullRESTParam
+  public void testDateQueryParams( @PathVariable(name = "path", required = true) @MyNotNullRESTParam String pPath,
+      @RequestParam(name = "startTimestamp", required = true) @MyNotNullRESTParam String pStartTimestampAsBasicType,
+      @RequestParam(name = "startTime", required = true) @MyNotNullRESTParam String pStartTimeAsBasicType,
+      @RequestParam(
+          name = "localStartTimestamp",
+          required = true) @MyNotNullRESTParam String pLocalStartTimestampAsBasicType,
+      @RequestParam(name = "localStartTime", required = true) @MyNotNullRESTParam String pLocalStartTimeAsBasicType,
+      @RequestParam(name = "localStartDate", required = true) @MyNotNullRESTParam String pLocalStartDateAsBasicType,
+      @RequestParam(name = "calendar", required = true) @MyNotNullRESTParam String pCalendarAsBasicType,
+      @RequestParam(name = "utilDate", required = true) @MyNotNullRESTParam String pUtilDateAsBasicType,
+      @RequestParam(name = "sqlTimestamp", required = true) @MyNotNullRESTParam String pSQLTimestampAsBasicType,
+      @RequestParam(name = "sqlTime", required = true) @MyNotNullRESTParam String pSQLTimeAsBasicType,
+      @RequestParam(name = "sqlDate", required = true) @MyNotNullRESTParam String pSQLDateAsBasicType ) {
     // Convert date types into real objects.
     OffsetDateTime pStartTimestamp;
     if (pStartTimestampAsBasicType != null) {
@@ -619,17 +656,18 @@ public class ProductServiceResource {
   @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(path = "products/test-date-query-params-beans/{path}", method = { RequestMethod.GET })
-  public void testDateQueryParamsBean( @PathVariable(name = "path", required = true) String pPath,
-      @RequestParam(name = "offsetDateTime", required = true) String pOffsetDateTimeAsBasicType,
-      @RequestParam(name = "offsetTime", required = true) String pOffsetTimeAsBasicType,
-      @RequestParam(name = "localDateTime", required = true) String pLocalDateTimeAsBasicType,
-      @RequestParam(name = "localTime", required = true) String pLocalTimeAsBasicType,
-      @RequestParam(name = "localDate", required = true) String pLocalDateAsBasicType,
-      @RequestParam(name = "utilDate", required = true) String pUtilDateAsBasicType,
-      @RequestParam(name = "calendar", required = true) String pCalendarAsBasicType,
-      @RequestParam(name = "sqlTimestamp", required = true) String pSqlTimestampAsBasicType,
-      @RequestParam(name = "sqlTime", required = true) String pSqlTimeAsBasicType,
-      @RequestParam(name = "sqlDate", required = true) String pSqlDateAsBasicType ) {
+  @MyNotNullRESTParam
+  public void testDateQueryParamsBean( @PathVariable(name = "path", required = true) @MyNotNullRESTParam String pPath,
+      @RequestParam(name = "offsetDateTime", required = true) @MyNotNullRESTParam String pOffsetDateTimeAsBasicType,
+      @RequestParam(name = "offsetTime", required = true) @MyNotNullRESTParam String pOffsetTimeAsBasicType,
+      @RequestParam(name = "localDateTime", required = true) @MyNotNullRESTParam String pLocalDateTimeAsBasicType,
+      @RequestParam(name = "localTime", required = true) @MyNotNullRESTParam String pLocalTimeAsBasicType,
+      @RequestParam(name = "localDate", required = true) @MyNotNullRESTParam String pLocalDateAsBasicType,
+      @RequestParam(name = "utilDate", required = true) @MyNotNullRESTParam String pUtilDateAsBasicType,
+      @RequestParam(name = "calendar", required = true) @MyNotNullRESTParam String pCalendarAsBasicType,
+      @RequestParam(name = "sqlTimestamp", required = true) @MyNotNullRESTParam String pSqlTimestampAsBasicType,
+      @RequestParam(name = "sqlTime", required = true) @MyNotNullRESTParam String pSqlTimeAsBasicType,
+      @RequestParam(name = "sqlDate", required = true) @MyNotNullRESTParam String pSqlDateAsBasicType ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
     DateQueryParamsBean.Builder lQueryParamsBuilder = DateQueryParamsBean.builder();
@@ -700,17 +738,18 @@ public class ProductServiceResource {
   @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(path = "products/test-date-header-params/{path}", method = { RequestMethod.GET })
-  public void testDateHeaderParams( @PathVariable(name = "path", required = true) String pPath,
-      @RequestHeader(name = "Offset-Date-Time", required = true) String pOffsetDateTimeAsBasicType,
-      @RequestHeader(name = "Offset-Time", required = true) String pOffsetTimeAsBasicType,
-      @RequestHeader(name = "Local-Date-Time", required = true) String pLocalDateTimeAsBasicType,
-      @RequestHeader(name = "Local-Time", required = true) String pLocalTimeAsBasicType,
-      @RequestHeader(name = "Local-Date", required = true) String pLocalDateAsBasicType,
-      @RequestHeader(name = "Calendar", required = true) String pCalendarAsBasicType,
-      @RequestHeader(name = "Util-Date", required = true) String pUtilDateAsBasicType,
-      @RequestHeader(name = "SQL-Timestamp", required = true) String pSQLTimestampAsBasicType,
-      @RequestHeader(name = "SQL-Time", required = true) String pSQLTimeAsBasicType,
-      @RequestHeader(name = "SQL-Date", required = true) String pSQLDateAsBasicType ) {
+  @MyNotNullRESTParam
+  public void testDateHeaderParams( @PathVariable(name = "path", required = true) @MyNotNullRESTParam String pPath,
+      @RequestHeader(name = "Offset-Date-Time", required = true) @MyNotNullRESTParam String pOffsetDateTimeAsBasicType,
+      @RequestHeader(name = "Offset-Time", required = true) @MyNotNullRESTParam String pOffsetTimeAsBasicType,
+      @RequestHeader(name = "Local-Date-Time", required = true) @MyNotNullRESTParam String pLocalDateTimeAsBasicType,
+      @RequestHeader(name = "Local-Time", required = true) @MyNotNullRESTParam String pLocalTimeAsBasicType,
+      @RequestHeader(name = "Local-Date", required = true) @MyNotNullRESTParam String pLocalDateAsBasicType,
+      @RequestHeader(name = "Calendar", required = true) @MyNotNullRESTParam String pCalendarAsBasicType,
+      @RequestHeader(name = "Util-Date", required = true) @MyNotNullRESTParam String pUtilDateAsBasicType,
+      @RequestHeader(name = "SQL-Timestamp", required = true) @MyNotNullRESTParam String pSQLTimestampAsBasicType,
+      @RequestHeader(name = "SQL-Time", required = true) @MyNotNullRESTParam String pSQLTimeAsBasicType,
+      @RequestHeader(name = "SQL-Date", required = true) @MyNotNullRESTParam String pSQLDateAsBasicType ) {
     // Convert date types into real objects.
     OffsetDateTime pOffsetDateTime;
     if (pOffsetDateTimeAsBasicType != null) {
@@ -808,17 +847,18 @@ public class ProductServiceResource {
   @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(path = "products/test-date-header-params-beans/{path}", method = { RequestMethod.GET })
-  public void testDateHeaderParamsBean( @PathVariable(name = "path", required = true) String pPath,
-      @RequestHeader(name = "Offset-Date-Time", required = true) String pOffsetDateTimeAsBasicType,
-      @RequestHeader(name = "Offset-Time", required = true) String pOffsetTimeAsBasicType,
-      @RequestHeader(name = "Local-Date-Time", required = true) String pLocalDateTimeAsBasicType,
-      @RequestHeader(name = "Local-Time", required = true) String pLocalTimeAsBasicType,
-      @RequestHeader(name = "Local-Date", required = true) String pLocalDateAsBasicType,
-      @RequestHeader(name = "Util-Date", required = true) String pUtilDateAsBasicType,
-      @RequestHeader(name = "Calendar", required = true) String pCalendarAsBasicType,
-      @RequestHeader(name = "SQL-Timestamp", required = true) String pSqlTimestampAsBasicType,
-      @RequestHeader(name = "SQL-Time", required = true) String pSqlTimeAsBasicType,
-      @RequestHeader(name = "SQL-Date", required = true) String pSqlDateAsBasicType ) {
+  @MyNotNullRESTParam
+  public void testDateHeaderParamsBean( @PathVariable(name = "path", required = true) @MyNotNullRESTParam String pPath,
+      @RequestHeader(name = "Offset-Date-Time", required = true) @MyNotNullRESTParam String pOffsetDateTimeAsBasicType,
+      @RequestHeader(name = "Offset-Time", required = true) @MyNotNullRESTParam String pOffsetTimeAsBasicType,
+      @RequestHeader(name = "Local-Date-Time", required = true) @MyNotNullRESTParam String pLocalDateTimeAsBasicType,
+      @RequestHeader(name = "Local-Time", required = true) @MyNotNullRESTParam String pLocalTimeAsBasicType,
+      @RequestHeader(name = "Local-Date", required = true) @MyNotNullRESTParam String pLocalDateAsBasicType,
+      @RequestHeader(name = "Util-Date", required = true) @MyNotNullRESTParam String pUtilDateAsBasicType,
+      @RequestHeader(name = "Calendar", required = true) @MyNotNullRESTParam String pCalendarAsBasicType,
+      @RequestHeader(name = "SQL-Timestamp", required = true) @MyNotNullRESTParam String pSqlTimestampAsBasicType,
+      @RequestHeader(name = "SQL-Time", required = true) @MyNotNullRESTParam String pSqlTimeAsBasicType,
+      @RequestHeader(name = "SQL-Date", required = true) @MyNotNullRESTParam String pSqlDateAsBasicType ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
     DateHeaderParamsBean.Builder lHeaderParamsBuilder = DateHeaderParamsBean.builder();
@@ -889,7 +929,9 @@ public class ProductServiceResource {
   @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "products/technicalHeaderParam", method = { RequestMethod.GET })
-  public String testTechnicalHeaderParam( @RequestHeader(name = "Reseller", required = true) String pReseller ) {
+  @MyNotNullRESTParam
+  public String testTechnicalHeaderParam(
+      @RequestHeader(name = "Reseller", required = true) @MyNotNullRESTParam String pReseller ) {
     // Validate request parameter(s).
     validationExecutor.validateRequest(ProductService.class, pReseller);
     // Delegate request to service.
@@ -905,7 +947,9 @@ public class ProductServiceResource {
   @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "products/technicalHeaderBeanParam", method = { RequestMethod.GET })
-  public String testTechnicalHeaderBean( @RequestHeader(name = "Reseller", required = true) String pReseller,
+  @MyNotNullRESTParam
+  public String testTechnicalHeaderBean(
+      @RequestHeader(name = "Reseller", required = true) @MyNotNullRESTParam String pReseller,
       @RequestHeader Map<String, String> pHeaders ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
@@ -933,6 +977,7 @@ public class ProductServiceResource {
   @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "products/product-codes", method = { RequestMethod.GET })
+  @MyNotNullRESTParam
   public String processDataTypes( @RequestParam(name = "pCodes", required = false) String[] pCodesAsBasicType ) {
     // Convert basic type parameters into "real" objects.
     List<AnotherDataType> pCodes;
@@ -960,6 +1005,7 @@ public class ProductServiceResource {
   @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "products/info", method = { RequestMethod.GET })
+  @MyNotNullRESTParam
   public String getVersionInfo( ) {
     // Delegate request to service.
     String lResponse = productService.getVersionInfo();

@@ -19,8 +19,8 @@ import java.util.List;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 
-import com.anaptecs.annotations.MyNotEmpty;
-import com.anaptecs.annotations.MyNotNull;
+import com.anaptecs.annotations.MyNotEmptyServiceParam;
+import com.anaptecs.annotations.MyNotNullServiceParam;
 import com.anaptecs.spring.base.AnotherDataType;
 import com.anaptecs.spring.base.BeanParameter;
 import com.anaptecs.spring.base.ChannelCode;
@@ -53,8 +53,8 @@ public interface ProductService extends MonitoringService {
    * @param pProductID
    * @return {@link Product}
    */
-  @MyNotNull
-  Product getProduct( @NotEmpty @MyNotNull String pProductID );
+  @MyNotNullServiceParam
+  Product getProduct( @NotEmpty @MyNotNullServiceParam String pProductID );
 
   /**
    * <p/>
@@ -63,7 +63,7 @@ public interface ProductService extends MonitoringService {
    * @param pProduct
    * @return boolean
    */
-  boolean createProduct( @MyNotNull Product pProduct );
+  boolean createProduct( @MyNotNullServiceParam Product pProduct );
 
   /**
    * <p/>
@@ -72,8 +72,8 @@ public interface ProductService extends MonitoringService {
    * @param pContext
    * @return {@link Sortiment}
    */
-  @MyNotNull
-  Sortiment getSortiment( @MyNotNull Context pContext );
+  @MyNotNullServiceParam
+  Sortiment getSortiment( @MyNotNullServiceParam Context pContext );
 
   /**
    * <p/>
@@ -82,14 +82,14 @@ public interface ProductService extends MonitoringService {
    * @param pChannelCode
    * @return {@link ChannelCode}
    */
-  @MyNotNull
-  ChannelCode createChannelCode( @NotBlank @MyNotNull String pChannelCode );
+  @MyNotNullServiceParam
+  ChannelCode createChannelCode( @NotBlank @MyNotNullServiceParam String pChannelCode );
 
   /**
    * <p/>
    * <b>Authorized Roles:</b> NO_ACCESS
    */
-  @MyNotNull
+  @MyNotNullServiceParam
   void ping( );
 
   /**
@@ -99,7 +99,7 @@ public interface ProductService extends MonitoringService {
    * @return {@link String}
    */
   @Deprecated
-  @MyNotNull
+  @MyNotNullServiceParam
   String deprecatedOperation( );
 
   /**
@@ -109,8 +109,8 @@ public interface ProductService extends MonitoringService {
    * @param pContext
    * @return {@link String}
    */
-  @MyNotNull
-  String deprecatedContext( @MyNotNull DeprecatedContext pContext );
+  @MyNotNullServiceParam
+  String deprecatedContext( @MyNotNullServiceParam DeprecatedContext pContext );
 
   /**
    * <p/>
@@ -118,8 +118,8 @@ public interface ProductService extends MonitoringService {
    *
    * @param pBeanParam
    */
-  @MyNotNull
-  void deprecatedBeanParam( @MyNotNull BeanParameter pBeanParam );
+  @MyNotNullServiceParam
+  void deprecatedBeanParam( @MyNotNullServiceParam BeanParameter pBeanParam );
 
   /**
    * <p/>
@@ -131,7 +131,7 @@ public interface ProductService extends MonitoringService {
    * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
-  @MyNotNull
+  @MyNotNullServiceParam
   String deprecatedParams( @Deprecated int pParam1 );
 
   /**
@@ -142,8 +142,8 @@ public interface ProductService extends MonitoringService {
    * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    * @return {@link String}
    */
-  @MyNotNull
-  String deprecatedBody( @Deprecated @MyNotNull String pBody );
+  @MyNotNullServiceParam
+  String deprecatedBody( @Deprecated @MyNotNullServiceParam String pBody );
 
   /**
    * Please be aware that deprecations on complex bodies are not supported. Instead the whole operation needs to be set
@@ -154,8 +154,8 @@ public interface ProductService extends MonitoringService {
    * @param pProduct <br/>
    * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    */
-  @MyNotNull
-  void deprectedComplexRequestBody( @Deprecated @MyNotNull Product pProduct );
+  @MyNotNullServiceParam
+  void deprectedComplexRequestBody( @Deprecated @MyNotNullServiceParam Product pProduct );
 
   /**
    * <p/>
@@ -165,7 +165,7 @@ public interface ProductService extends MonitoringService {
    * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
-  @MyNotNull
+  @MyNotNullServiceParam
   Product deprecatedComplexReturn( );
 
   /**
@@ -174,8 +174,8 @@ public interface ProductService extends MonitoringService {
    *
    * @param pContext
    */
-  @MyNotNull
-  void loadSpecificThings( @MyNotNull SpecialContext pContext );
+  @MyNotNullServiceParam
+  void loadSpecificThings( @MyNotNullServiceParam SpecialContext pContext );
 
   /**
    * <p/>
@@ -184,8 +184,8 @@ public interface ProductService extends MonitoringService {
    * @param pChannelCode Channel Code that should be created.
    * @return {@link ChannelCode} Created channel code
    */
-  @MyNotNull
-  ChannelCode createChannelCodeFromObject( @MyNotNull ChannelCode pChannelCode );
+  @MyNotNullServiceParam
+  ChannelCode createChannelCodeFromObject( @MyNotNullServiceParam ChannelCode pChannelCode );
 
   /**
    * <p/>
@@ -194,8 +194,8 @@ public interface ProductService extends MonitoringService {
    * @param pCurrencies
    * @return {@link List<CurrencyCode>}
    */
-  @MyNotEmpty
-  List<CurrencyCode> addCurrencies( @MyNotEmpty List<CurrencyCode> pCurrencies );
+  @MyNotEmptyServiceParam
+  List<CurrencyCode> addCurrencies( @MyNotEmptyServiceParam List<CurrencyCode> pCurrencies );
 
   /**
    * <p/>
@@ -204,8 +204,8 @@ public interface ProductService extends MonitoringService {
    * @param pCurrency
    * @return {@link CurrencyCode}
    */
-  @MyNotNull
-  CurrencyCode isCurrencySupported( @MyNotNull CurrencyCode pCurrency );
+  @MyNotNullServiceParam
+  CurrencyCode isCurrencySupported( @MyNotNullServiceParam CurrencyCode pCurrency );
 
   /**
    * <p/>
@@ -214,8 +214,8 @@ public interface ProductService extends MonitoringService {
    * @param pStringCode
    * @return {@link IntegerCodeType}
    */
-  @MyNotNull
-  IntegerCodeType testCodeTypeUsage( @MyNotNull StringCodeType pStringCode );
+  @MyNotNullServiceParam
+  IntegerCodeType testCodeTypeUsage( @MyNotNullServiceParam StringCodeType pStringCode );
 
   /**
    * <p/>
@@ -224,8 +224,8 @@ public interface ProductService extends MonitoringService {
    * @param pBeanParam
    * @return {@link String}
    */
-  @MyNotNull
-  String testLocalBeanParamType( @MyNotNull LocalBeanParamType pBeanParam );
+  @MyNotNullServiceParam
+  String testLocalBeanParamType( @MyNotNullServiceParam LocalBeanParamType pBeanParam );
 
   /**
    * <p/>
@@ -234,8 +234,8 @@ public interface ProductService extends MonitoringService {
    * @param pParent
    * @return {@link String}
    */
-  @MyNotNull
-  String testExternalBeanParameterType( @MyNotNull ParentBeanParamType pParent );
+  @MyNotNullServiceParam
+  String testExternalBeanParameterType( @MyNotNullServiceParam ParentBeanParamType pParent );
 
   /**
    * <p/>
@@ -244,8 +244,8 @@ public interface ProductService extends MonitoringService {
    * @param pChild
    * @return {@link String}
    */
-  @MyNotNull
-  String testChildBeanParameter( @MyNotNull ChildBeanParameterType pChild );
+  @MyNotNullServiceParam
+  String testChildBeanParameter( @MyNotNullServiceParam ChildBeanParameterType pChild );
 
   /**
    * <p/>
@@ -263,12 +263,13 @@ public interface ProductService extends MonitoringService {
    * @param pSQLTime
    * @param pSQLDate
    */
-  @MyNotNull
-  void testDateQueryParams( @MyNotNull String pPath, @MyNotNull OffsetDateTime pStartTimestamp,
-      @MyNotNull OffsetTime pStartTime, @MyNotNull LocalDateTime pLocalStartTimestamp,
-      @MyNotNull LocalTime pLocalStartTime, @MyNotNull LocalDate pLocalStartDate, @MyNotNull Calendar pCalendar,
-      @MyNotNull java.util.Date pUtilDate, @MyNotNull Timestamp pSQLTimestamp, @MyNotNull Time pSQLTime,
-      @MyNotNull Date pSQLDate );
+  @MyNotNullServiceParam
+  void testDateQueryParams( @MyNotNullServiceParam String pPath, @MyNotNullServiceParam OffsetDateTime pStartTimestamp,
+      @MyNotNullServiceParam OffsetTime pStartTime, @MyNotNullServiceParam LocalDateTime pLocalStartTimestamp,
+      @MyNotNullServiceParam LocalTime pLocalStartTime, @MyNotNullServiceParam LocalDate pLocalStartDate,
+      @MyNotNullServiceParam Calendar pCalendar, @MyNotNullServiceParam java.util.Date pUtilDate,
+      @MyNotNullServiceParam Timestamp pSQLTimestamp, @MyNotNullServiceParam Time pSQLTime,
+      @MyNotNullServiceParam Date pSQLDate );
 
   /**
    * <p/>
@@ -277,8 +278,9 @@ public interface ProductService extends MonitoringService {
    * @param pPath
    * @param pQueryParams
    */
-  @MyNotNull
-  void testDateQueryParamsBean( @MyNotNull String pPath, @MyNotNull DateQueryParamsBean pQueryParams );
+  @MyNotNullServiceParam
+  void testDateQueryParamsBean( @MyNotNullServiceParam String pPath,
+      @MyNotNullServiceParam DateQueryParamsBean pQueryParams );
 
   /**
    * <p/>
@@ -296,11 +298,13 @@ public interface ProductService extends MonitoringService {
    * @param pSQLTime
    * @param pSQLDate
    */
-  @MyNotNull
-  void testDateHeaderParams( @MyNotNull String pPath, @MyNotNull OffsetDateTime pOffsetDateTime,
-      @MyNotNull OffsetTime pOffsetTime, @MyNotNull LocalDateTime pLocalDateTime, @MyNotNull LocalTime pLocalTime,
-      @MyNotNull LocalDate pLocalDate, @MyNotNull Calendar pCalendar, @MyNotNull java.util.Date pUtilDate,
-      @MyNotNull Timestamp pSQLTimestamp, @MyNotNull Time pSQLTime, @MyNotNull Date pSQLDate );
+  @MyNotNullServiceParam
+  void testDateHeaderParams( @MyNotNullServiceParam String pPath, @MyNotNullServiceParam OffsetDateTime pOffsetDateTime,
+      @MyNotNullServiceParam OffsetTime pOffsetTime, @MyNotNullServiceParam LocalDateTime pLocalDateTime,
+      @MyNotNullServiceParam LocalTime pLocalTime, @MyNotNullServiceParam LocalDate pLocalDate,
+      @MyNotNullServiceParam Calendar pCalendar, @MyNotNullServiceParam java.util.Date pUtilDate,
+      @MyNotNullServiceParam Timestamp pSQLTimestamp, @MyNotNullServiceParam Time pSQLTime,
+      @MyNotNullServiceParam Date pSQLDate );
 
   /**
    * <p/>
@@ -309,8 +313,9 @@ public interface ProductService extends MonitoringService {
    * @param pPath
    * @param pHeaderParams
    */
-  @MyNotNull
-  void testDateHeaderParamsBean( @MyNotNull String pPath, @MyNotNull DateHeaderParamsBean pHeaderParams );
+  @MyNotNullServiceParam
+  void testDateHeaderParamsBean( @MyNotNullServiceParam String pPath,
+      @MyNotNullServiceParam DateHeaderParamsBean pHeaderParams );
 
   /**
    * <p/>
@@ -320,8 +325,8 @@ public interface ProductService extends MonitoringService {
    * @param pAuthenticationToken
    * @return {@link String}
    */
-  @MyNotNull
-  String testTechnicalHeaderParam( @MyNotNull String pReseller );
+  @MyNotNullServiceParam
+  String testTechnicalHeaderParam( @MyNotNullServiceParam String pReseller );
 
   /**
    * <p/>
@@ -330,8 +335,8 @@ public interface ProductService extends MonitoringService {
    * @param pContext
    * @return {@link String}
    */
-  @MyNotNull
-  String testTechnicalHeaderBean( @MyNotNull TechnicalHeaderContext pContext );
+  @MyNotNullServiceParam
+  String testTechnicalHeaderBean( @MyNotNullServiceParam TechnicalHeaderContext pContext );
 
   /**
    * <p/>
@@ -340,6 +345,6 @@ public interface ProductService extends MonitoringService {
    * @param pCodes
    * @return {@link String}
    */
-  @MyNotNull
+  @MyNotNullServiceParam
   String processDataTypes( List<AnotherDataType> pCodes );
 }

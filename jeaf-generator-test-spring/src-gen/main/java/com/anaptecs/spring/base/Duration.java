@@ -7,7 +7,7 @@ package com.anaptecs.spring.base;
 
 import java.util.Objects;
 
-import com.anaptecs.annotations.MyNotNull;
+import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -161,7 +161,7 @@ public class Duration {
      * @param pTimeUnit Value to which {@link #timeUnit} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setTimeUnit( @MyNotNull TimeUnit pTimeUnit ) {
+    public Builder setTimeUnit( @MyNotNullProperty TimeUnit pTimeUnit ) {
       // Assign value to attribute
       timeUnit = pTimeUnit;
       return this;
@@ -203,7 +203,7 @@ public class Duration {
    *
    * @return {@link TimeUnit} Value to which {@link #timeUnit} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public TimeUnit getTimeUnit( ) {
     return timeUnit;
   }
@@ -213,7 +213,7 @@ public class Duration {
    *
    * @param pTimeUnit Value to which {@link #timeUnit} should be set.
    */
-  public void setTimeUnit( @MyNotNull TimeUnit pTimeUnit ) {
+  public void setTimeUnit( @MyNotNullProperty TimeUnit pTimeUnit ) {
     // Assign value to attribute
     timeUnit = pTimeUnit;
   }

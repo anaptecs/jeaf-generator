@@ -17,7 +17,7 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-import com.anaptecs.annotations.MyNotEmpty;
+import com.anaptecs.annotations.MyNotEmptyProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.anaptecs.spring.base.StringCode;
 import com.anaptecs.spring.base.TimeUnit;
@@ -303,7 +303,7 @@ public class MultiValuedHeaderBeanParam {
      * @param pInts Value to which {@link #ints} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setInts( @MyNotEmpty int[] pInts ) {
+    public Builder setInts( @MyNotEmptyProperty int[] pInts ) {
       // Assign value to attribute
       if (pInts != null) {
         ints = new int[pInts.length];
@@ -639,7 +639,7 @@ public class MultiValuedHeaderBeanParam {
    *
    * @return int[] Value to which {@link #ints} is set.
    */
-  @MyNotEmpty
+  @MyNotEmptyProperty
   public int[] getInts( ) {
     int[] lReturnValue;
     if (ints != null) {
@@ -657,7 +657,7 @@ public class MultiValuedHeaderBeanParam {
    *
    * @param pInts Value to which {@link #ints} should be set.
    */
-  public void setInts( @MyNotEmpty int[] pInts ) {
+  public void setInts( @MyNotEmptyProperty int[] pInts ) {
     // Assign value to attribute
     if (pInts != null) {
       ints = new int[pInts.length];

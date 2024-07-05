@@ -15,8 +15,8 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import com.anaptecs.annotations.MyNotEmpty;
-import com.anaptecs.annotations.MyNotNull;
+import com.anaptecs.annotations.MyNotEmptyProperty;
+import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -156,7 +156,7 @@ public class CodeTypeUsageTest implements ServiceObject {
      * @param pBooleanCode Value to which {@link #booleanCode} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setBooleanCode( @MyNotNull BooleanCodeType pBooleanCode ) {
+    public Builder setBooleanCode( @MyNotNullProperty BooleanCodeType pBooleanCode ) {
       // Assign value to attribute
       booleanCode = pBooleanCode;
       return this;
@@ -202,7 +202,7 @@ public class CodeTypeUsageTest implements ServiceObject {
      * @param pShortCodeTypeAssociation Collection to which {@link #shortCodeTypeAssociation} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setShortCodeTypeAssociation( @MyNotEmpty Set<ShortCodeType> pShortCodeTypeAssociation ) {
+    public Builder setShortCodeTypeAssociation( @MyNotEmptyProperty Set<ShortCodeType> pShortCodeTypeAssociation ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pShortCodeTypeAssociation != null) {
         shortCodeTypeAssociation = new HashSet<ShortCodeType>(pShortCodeTypeAssociation);
@@ -220,7 +220,7 @@ public class CodeTypeUsageTest implements ServiceObject {
      * parameter may be null.
      * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
      */
-    public Builder addToShortCodeTypeAssociation( @MyNotEmpty ShortCodeType... pShortCodeTypeAssociation ) {
+    public Builder addToShortCodeTypeAssociation( @MyNotEmptyProperty ShortCodeType... pShortCodeTypeAssociation ) {
       if (pShortCodeTypeAssociation != null) {
         if (shortCodeTypeAssociation == null) {
           shortCodeTypeAssociation = new HashSet<ShortCodeType>();
@@ -236,7 +236,7 @@ public class CodeTypeUsageTest implements ServiceObject {
      * @param pStringCode Value to which {@link #stringCode} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setStringCode( @MyNotNull StringCodeType pStringCode ) {
+    public Builder setStringCode( @MyNotNullProperty StringCodeType pStringCode ) {
       // Assign value to attribute
       stringCode = pStringCode;
       return this;
@@ -248,7 +248,7 @@ public class CodeTypeUsageTest implements ServiceObject {
      * @param pShortCode Value to which {@link #shortCode} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setShortCode( @MyNotNull ShortCode pShortCode ) {
+    public Builder setShortCode( @MyNotNullProperty ShortCode pShortCode ) {
       shortCode = pShortCode;
       return this;
     }
@@ -282,7 +282,7 @@ public class CodeTypeUsageTest implements ServiceObject {
    *
    * @return {@link BooleanCodeType} Value to which {@link #booleanCode} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public BooleanCodeType getBooleanCode( ) {
     return booleanCode;
   }
@@ -292,7 +292,7 @@ public class CodeTypeUsageTest implements ServiceObject {
    *
    * @param pBooleanCode Value to which {@link #booleanCode} should be set.
    */
-  public void setBooleanCode( @MyNotNull BooleanCodeType pBooleanCode ) {
+  public void setBooleanCode( @MyNotNullProperty BooleanCodeType pBooleanCode ) {
     // Assign value to attribute
     booleanCode = pBooleanCode;
   }
@@ -363,7 +363,7 @@ public class CodeTypeUsageTest implements ServiceObject {
    * @return {@link Set<ShortCodeType>} Value to which {@link #shortCodeTypeAssociation} is set. The method never
    * returns null and the returned collection is modifiable.
    */
-  @MyNotEmpty
+  @MyNotEmptyProperty
   public Set<ShortCodeType> getShortCodeTypeAssociation( ) {
     // Return all ShortCodeType objects directly without any protection against modification.
     return shortCodeTypeAssociation;
@@ -423,7 +423,7 @@ public class CodeTypeUsageTest implements ServiceObject {
    *
    * @return {@link StringCodeType} Value to which {@link #stringCode} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public StringCodeType getStringCode( ) {
     return stringCode;
   }
@@ -433,7 +433,7 @@ public class CodeTypeUsageTest implements ServiceObject {
    *
    * @param pStringCode Value to which {@link #stringCode} should be set.
    */
-  public void setStringCode( @MyNotNull StringCodeType pStringCode ) {
+  public void setStringCode( @MyNotNullProperty StringCodeType pStringCode ) {
     // Assign value to attribute
     stringCode = pStringCode;
   }
@@ -443,7 +443,7 @@ public class CodeTypeUsageTest implements ServiceObject {
    *
    * @return {@link ShortCode} Value to which {@link #shortCode} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public ShortCode getShortCode( ) {
     return shortCode;
   }
@@ -453,7 +453,7 @@ public class CodeTypeUsageTest implements ServiceObject {
    *
    * @param pShortCode Value to which {@link #shortCode} should be set.
    */
-  public void setShortCode( @MyNotNull ShortCode pShortCode ) {
+  public void setShortCode( @MyNotNullProperty ShortCode pShortCode ) {
     shortCode = pShortCode;
   }
 

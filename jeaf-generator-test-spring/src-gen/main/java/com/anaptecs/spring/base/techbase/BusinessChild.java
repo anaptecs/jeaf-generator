@@ -7,7 +7,7 @@ package com.anaptecs.spring.base.techbase;
 
 import java.util.Objects;
 
-import com.anaptecs.annotations.MyNotNull;
+import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -150,7 +150,7 @@ public class BusinessChild extends BusinessParent {
      * @param pChildAttribute Value to which {@link #childAttribute} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setChildAttribute( @MyNotNull String pChildAttribute ) {
+    public Builder setChildAttribute( @MyNotNullProperty String pChildAttribute ) {
       // Assign value to attribute
       childAttribute = pChildAttribute;
       return this;
@@ -174,7 +174,7 @@ public class BusinessChild extends BusinessParent {
    *
    * @return {@link String} Value to which {@link #childAttribute} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public String getChildAttribute( ) {
     return childAttribute;
   }
@@ -184,7 +184,7 @@ public class BusinessChild extends BusinessParent {
    *
    * @param pChildAttribute Value to which {@link #childAttribute} should be set.
    */
-  public void setChildAttribute( @MyNotNull String pChildAttribute ) {
+  public void setChildAttribute( @MyNotNullProperty String pChildAttribute ) {
     // Assign value to attribute
     childAttribute = pChildAttribute;
   }

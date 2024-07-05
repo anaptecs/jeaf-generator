@@ -155,11 +155,23 @@
 					<javaGenericSoftLinkType>com.anaptecs.jeaf.junit.openapi.base.SoftLink</javaGenericSoftLinkType>
 					<softLinkSuffix>ID</softLinkSuffix>
 					
+					<!-- NotNull / NotEmpty congfiguration for properties -->
 					<generateNotNullAnnotationForSingleValuedProperties>true</generateNotNullAnnotationForSingleValuedProperties>
-					<notNullAnnotationNameForSingleValuedProperties>com.anaptecs.annotations.MyNotNull</notNullAnnotationNameForSingleValuedProperties>
-					
+					<notNullAnnotationNameForSingleValuedProperties>com.anaptecs.annotations.MyNotNullProperty</notNullAnnotationNameForSingleValuedProperties>
 					<generateNotEmptyAnnotationForMultiValuedProperties>true</generateNotEmptyAnnotationForMultiValuedProperties>
-					<notEmptyAnnotationNameForMultiValuedProperties>com.anaptecs.annotations.MyNotEmpty</notEmptyAnnotationNameForMultiValuedProperties>
+					<notEmptyAnnotationNameForMultiValuedProperties>com.anaptecs.annotations.MyNotEmptyProperty</notEmptyAnnotationNameForMultiValuedProperties>
+					
+					<!-- NotNull / NotEmpty congfiguration for services -->
+					<generateNotNullAnnotationForSingleValuedServiceParameters>true</generateNotNullAnnotationForSingleValuedServiceParameters>
+					<notNullAnnotationNameForSingleValuedServiceParameters>com.anaptecs.annotations.MyNotNullServiceParam</notNullAnnotationNameForSingleValuedServiceParameters>
+					<generateNotEmptyAnnotationForMultiValuedServiceParameters>true</generateNotEmptyAnnotationForMultiValuedServiceParameters>
+					<notEmptyAnnotationNameForMultiValuedServiceParameters>com.anaptecs.annotations.MyNotEmptyServiceParam</notEmptyAnnotationNameForMultiValuedServiceParameters>
+
+					<!-- NotNull / NotEmpty congfiguration for REST -->
+					<generateNotNullAnnotationForSingleValuedRESTParameters>true</generateNotNullAnnotationForSingleValuedRESTParameters>
+					<notNullAnnotationNameForSingleValuedRESTParameters>com.anaptecs.annotations.MyNotNullRESTParam</notNullAnnotationNameForSingleValuedRESTParameters>
+					<generateNotEmptyAnnotationForMultiValuedRESTParameters>true</generateNotEmptyAnnotationForMultiValuedRESTParameters>
+					<notEmptyAnnotationNameForMultiValuedRESTParameters>com.anaptecs.annotations.MyNotEmptyRESTParam</notEmptyAnnotationNameForMultiValuedRESTParameters>
 
 					<!-- Define information that are written to file headers -->
 					<fileHeaderCompany>anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany</fileHeaderCompany>

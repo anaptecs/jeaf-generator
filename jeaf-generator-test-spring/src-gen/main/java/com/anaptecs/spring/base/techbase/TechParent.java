@@ -7,7 +7,7 @@ package com.anaptecs.spring.base.techbase;
 
 import java.util.Objects;
 
-import com.anaptecs.annotations.MyNotNull;
+import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -114,7 +114,7 @@ public class TechParent {
      * @param pTechAttribute Value to which {@link #techAttribute} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setTechAttribute( @MyNotNull String pTechAttribute ) {
+    public Builder setTechAttribute( @MyNotNullProperty String pTechAttribute ) {
       // Assign value to attribute
       techAttribute = pTechAttribute;
       return this;
@@ -137,7 +137,7 @@ public class TechParent {
    *
    * @return {@link String} Value to which {@link #techAttribute} is set.
    */
-  @MyNotNull
+  @MyNotNullProperty
   public String getTechAttribute( ) {
     return techAttribute;
   }
@@ -147,7 +147,7 @@ public class TechParent {
    *
    * @param pTechAttribute Value to which {@link #techAttribute} should be set.
    */
-  public void setTechAttribute( @MyNotNull String pTechAttribute ) {
+  public void setTechAttribute( @MyNotNullProperty String pTechAttribute ) {
     // Assign value to attribute
     techAttribute = pTechAttribute;
   }
