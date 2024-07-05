@@ -2,6 +2,7 @@ extension java::Naming;
 extension java::GeneratorCommons;
 extension java::OpenAPIFunctions;
 extension functions::RESTOperation;
+extension functions::RESTResource;
 
 cached boolean isBeanParam(uml::Parameter param):
 	param.isStereotypeApplied("BeanParam") || param.type.isStereotypeApplied("BeanParam");
@@ -136,7 +137,7 @@ cached boolean hasValidRESTResourcePath(JMM::RESTOperation operation):
     else false;
     
 cached boolean hasValidOperationPath(JMM::RESTOperation operation):
-    if operation.getRESTOperationPath().length > 0 && operation.path.startsWith("/")
+    if operation.getRESTOperationPath().length > 0 && operation.path.startsWith("/") && operation.owner.isRESTResource() && operation.owner.asRESTResource().operationPathPrefix.length == 0
     then false
     else true;
     
