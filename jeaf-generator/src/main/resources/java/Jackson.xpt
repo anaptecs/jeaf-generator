@@ -6,6 +6,7 @@
 «EXTENSION java::OpenAPIFunctions»
 «EXTENSION functions::Class»
 «EXTENSION functions::AddToJSON»
+«EXTENSION functions::JSONAlias»
 «EXTENSION functions::SoftLink»
 «EXTENSION functions::SystemProperties»
 «EXTENSION functions::JEAFDeprecated»
@@ -64,6 +65,10 @@
 			@com.fasterxml.jackson.annotation.JsonProperty("«((OpenAPIAliasName)this).openAPIPropertyName»")
 		«ELSEIF this.isSoftLink() && this.hasSoftLinkSuffix() && useSoftLinkSuffixInOpenAPI() == false»
 			@com.fasterxml.jackson.annotation.JsonProperty("«this.name»")
+		«ENDIF»
+		
+		«IF this.isJSONAlias()»
+		    @com.fasterxml.jackson.annotation.JsonAlias({«FOREACH this.asJSONAlias().aliasNames AS aliasName SEPARATOR ", "»"«aliasName»"«ENDFOREACH»})
 		«ENDIF»
 	«ENDIF»
 «ENDDEFINE»

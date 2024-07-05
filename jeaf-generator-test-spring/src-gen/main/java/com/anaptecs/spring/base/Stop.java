@@ -14,6 +14,7 @@ import java.util.Objects;
 
 import com.anaptecs.annotations.MyNotNull;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -42,6 +43,7 @@ public class Stop {
    */
   public static final String LINKS = "links";
 
+  @JsonAlias({ "bavName", "stopName" })
   private String name;
 
   @JsonProperty("_links")

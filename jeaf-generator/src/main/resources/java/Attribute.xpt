@@ -189,9 +189,9 @@
     «EXPAND java::Helper::NotNullAnnotationForProperty»
     «IF this.isInternalProperty() == false»public«ENDIF» abstract «IF this.association == null»«this.fqn()»«ELSE»«this.fqn()»«ENDIF» «asGetter()»();
     
-    «IF generateJacksonAnnotations() && this.isAddToJSON()»
+    «IF generateJacksonAnnotations() && this.isAddToJSON() && this.isMultivalued()»
         @com.fasterxml.jackson.annotation.JsonSetter
-        «IF this.isInternalProperty() == false»public«ENDIF» void set«name.toFirstUpper()»(«this.fqn()» «asParameter()») {
+        private void set«name.toFirstUpper()»(«this.fqn()» «asParameter()») {
           // Actively ignore passed objects as this is just a derived property. Unfortunately there is no more elegant variant to not run into problems during deserialization.
         }
     «ENDIF»
