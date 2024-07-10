@@ -37,7 +37,7 @@ import openapitools.JSON;
   Reseller.JSON_PROPERTY_NAME,
   Reseller.JSON_PROPERTY_LANGUAGE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
 public class Reseller {
   public static final String JSON_PROPERTY_CHANNELS = "channels";
   private List<Channel> channels = new ArrayList<>();
@@ -64,10 +64,10 @@ public class Reseller {
     return this;
   }
 
-   /**
+  /**
    * Get channels
    * @return channels
-  **/
+   */
   @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_CHANNELS)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -89,10 +89,10 @@ public class Reseller {
     return this;
   }
 
-   /**
+  /**
    *  &lt;br&gt;&lt;br&gt; Breaking Change with 1.1: Maximum size will be increased. 
    * @return name
-  **/
+   */
   @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_NAME)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -114,10 +114,10 @@ public class Reseller {
     return this;
   }
 
-   /**
+  /**
    * Get language
    * @return language
-  **/
+   */
   @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_LANGUAGE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)

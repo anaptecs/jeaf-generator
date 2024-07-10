@@ -1,0 +1,962 @@
+// license-header java merge-point
+package br.ita.finep.icammh.sad.web.AgendarColeta;
+
+import br.ita.finep.icammh.ServiceLocator;
+import br.ita.finep.icammh.sad.service.AgendaService;
+import br.ita.finep.icammh.webapp.AdfFacesContextWrapper;
+import br.ita.finep.icammh.webapp.ExceptionHandler;
+import br.ita.finep.icammh.webapp.FormPopulator;
+import br.ita.finep.icammh.webapp.JsfUtils;
+import br.ita.finep.icammh.webapp.Messages;
+import java.io.Serializable;
+import java.lang.reflect.Method;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import javax.faces.application.FacesMessage;
+import javax.faces.component.UIComponent;
+import javax.faces.component.UIForm;
+import javax.faces.component.UIInput;
+import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
+import javax.faces.event.FacesEvent;
+import javax.faces.event.ValueChangeEvent;
+import javax.faces.validator.ValidatorException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import org.apache.commons.beanutils.PropertyUtils;
+import org.apache.commons.lang.exception.ExceptionUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.apache.myfaces.trinidad.context.RequestContext;
+
+/**
+ * 
+ */
+public abstract class AgendarColetaController
+    implements Serializable{
+    private static final long serialVersionUID = 1L;
+
+    private static final Log logger = LogFactory.getLog(AgendarColetaController.class);
+
+    /**
+     * 
+     */
+    public abstract void cancelarColeta(CancelarColetaForm form)
+        throws Throwable;
+
+    /**
+     * 
+     */
+    public abstract void agendarColeta(AgendarColetaForm form)
+        throws Throwable;
+
+    /**
+     * 
+     */
+    public abstract void pesquisarColetas(PesquisarColetasForm form)
+        throws Throwable;
+
+    /**
+     * 
+     */
+    public abstract void salvarPesquisa(SalvarPesquisaForm form)
+        throws Throwable;
+
+    /**
+     * <p>
+     * Limpe a pesquisa do session.
+     * </p>
+     */
+    public abstract void inicializar()
+        throws Throwable;
+
+    /**
+     * Resets all the "isSet" flags on the forms to false.
+     */
+    protected void resetFormSetFlags()
+    {
+        this.getAgendamentoDeColetaAgendarForm().resetIsSetFlags();
+        this.getAgendamentoDeColetaCancelarForm().resetIsSetFlags();
+        this.getAgendamentoDeColetaBuscarForm().resetIsSetFlags();
+        this.getAgendarColetaForm().resetIsSetFlags();
+    }
+
+    /**
+     * Retrieves the {@link AgendamentoDeColetaAgendarFormImpl} form instance (normally you wont't
+     * need to call this method explicitly, however this is here for times when you need to access the
+     * <em>agendarColetaAgendamentoDeColetaAgendarForm</em> instance outside of its assigned controller operation).
+     */
+    protected AgendamentoDeColetaAgendarFormImpl getAgendamentoDeColetaAgendarForm()
+    {
+        // - we do this in the case a button that submitted the form was set to immediate (this should be removed
+        //   when we found a better way to handle this).
+        final UIForm uiForm = this.findForm(this.getContext().getViewRoot(), "agendarColetaAgendamentoDeColetaAgendarForm");
+        this.populateComponentInputs(uiForm);
+        return (AgendamentoDeColetaAgendarFormImpl)this.resolveVariable("agendarColetaAgendamentoDeColetaAgendarForm");
+    }
+
+    public String agendamentoDeColetaAgendar()
+    {
+        return agendamentoDeColetaAgendar((FacesEvent)null);
+    }
+
+    public void agendamentoDeColetaAgendar(final ActionEvent event)
+    {
+        this.agendamentoDeColetaAgendar((FacesEvent)event);
+    }
+
+    public void agendamentoDeColetaAgendar(final ValueChangeEvent event)
+    {
+        this.agendamentoDeColetaAgendar((FacesEvent)event);
+    }
+
+    public String agendamentoDeColetaAgendar(final FacesEvent event)
+    {
+        String forward = null;
+        final Object currentForm = this.resolveVariable("form");
+        try
+        {
+            final AgendamentoDeColetaAgendarFormImpl form =
+                this.getAgendamentoDeColetaAgendarForm();
+            form.setEvent(event);
+            this.setForm("form", form, true);
+            // - pass any properties from the previous form along
+            FormPopulator.populateForm(currentForm, form);
+            // - populate the form with any event attributes that may match
+            // IMPORTANT: it isn't possible to automatically populate any property named "id" since that
+            // is a reserved name in JSF (the id of a component), therefore we have to unfortunately ignore any available "id" attribute
+            FormPopulator.populateFormFromPropertyMap(
+                form, form.getDateTimeFormatters(), (Map)this.getRequestAttribute(ACTION_EVENT_ATTRIBUTES), new String[] {"id"});
+            if (event != null)
+            {
+                final Map eventProperties = new HashMap();
+                eventProperties.put(event.getComponent().getId(), event.getSource());
+                FormPopulator.populateFormFromPropertyMapAssignableTypesOnly(form, null, eventProperties);
+                FormPopulator.populateFormFromPropertyMap(
+                    form, form.getDateTimeFormatters(), event.getComponent().getAttributes(), new String[] {"id"});
+            }
+            // - populate the form with any request attributes that may match
+            FormPopulator.populateFormFromRequestAttributes(form, form.getDateTimeFormatters(), false);
+            // - populate the form with any request parameters that may match
+            FormPopulator.populateFormFromPropertyMap(
+                form, form.getDateTimeFormatters(), this.getContext().getExternalContext().getRequestParameterMap());
+            forward = _agendarColeta(form);
+            final FacesMessage.Severity messageSeverity = this.getMaximumMessageSeverity();
+            if (messageSeverity != null && FacesMessage.SEVERITY_ERROR.getOrdinal() <= messageSeverity.getOrdinal())
+            {
+                // - copy any messages to the 'currentForm'
+                PropertyUtils.setProperty(currentForm,
+                    "jsfMessages", PropertyUtils.getProperty(form, "jsfMessages"));
+                this.setForm("form", currentForm, false);
+            }
+            if (event != null)
+            {
+                AgendarColetaViewPopulator.populateFormAndViewVariables(this.getContext(), form);
+            }
+        }
+        catch (final Throwable throwable)
+        {
+            this.setForm("form", currentForm, false);
+            // - set the forward to null so that we stay on the current view
+            forward = null;
+            try
+            {
+                // - the exception is re-thrown by the exception handler and handled by the catch below if it can't get a messageKey
+                //   (no reason to check for presence of messageKey)
+                this.addErrorMessage(Messages.get(
+                    ExceptionHandler.instance().handleException(throwable),
+                    ExceptionHandler.instance().getMessageArguments(throwable)));
+            }
+            catch (Throwable exception)
+            {
+                logger.error(exception);
+                this.addExceptionMessage(exception);
+            }
+        }
+        return forward;
+    }
+
+    /**
+     * 
+     */
+    private String _agendarColeta(final AgendamentoDeColetaAgendarFormImpl form)
+        throws Throwable
+    {
+        String forward = null;
+        agendarColeta(form);
+        forward = _pesquisarColeta(form);
+        return forward;
+    }
+
+    /**
+     * 
+     */
+    private String _pesquisarColeta(final AgendamentoDeColetaAgendarFormImpl form)
+        throws Throwable
+    {
+        String forward = null;
+        pesquisarColetas(form);
+        forward = "agendar-coleta-agendamento-de-coleta";
+        return forward;
+    }
+
+    /**
+     * Retrieves the {@link AgendamentoDeColetaCancelarFormImpl} form instance (normally you wont't
+     * need to call this method explicitly, however this is here for times when you need to access the
+     * <em>agendarColetaAgendamentoDeColetaCancelarForm</em> instance outside of its assigned controller operation).
+     */
+    protected AgendamentoDeColetaCancelarFormImpl getAgendamentoDeColetaCancelarForm()
+    {
+        // - we do this in the case a button that submitted the form was set to immediate (this should be removed
+        //   when we found a better way to handle this).
+        final UIForm uiForm = this.findForm(this.getContext().getViewRoot(), "agendarColetaAgendamentoDeColetaCancelarForm");
+        this.populateComponentInputs(uiForm);
+        return (AgendamentoDeColetaCancelarFormImpl)this.resolveVariable("agendarColetaAgendamentoDeColetaCancelarForm");
+    }
+
+    public String agendamentoDeColetaCancelar()
+    {
+        return agendamentoDeColetaCancelar((FacesEvent)null);
+    }
+
+    public void agendamentoDeColetaCancelar(final ActionEvent event)
+    {
+        this.agendamentoDeColetaCancelar((FacesEvent)event);
+    }
+
+    public void agendamentoDeColetaCancelar(final ValueChangeEvent event)
+    {
+        this.agendamentoDeColetaCancelar((FacesEvent)event);
+    }
+
+    @SuppressWarnings("unchecked")
+    public String agendamentoDeColetaCancelar(final FacesEvent event)
+    {
+        String forward = null;
+        final Object currentForm = this.resolveVariable("form");
+        try
+        {
+            final AgendamentoDeColetaCancelarFormImpl form =
+                this.getAgendamentoDeColetaCancelarForm();
+            form.setEvent(event);
+            this.setForm("form", form, true);
+            // - pass any properties from the previous form along
+            FormPopulator.populateForm(currentForm, form);
+            // - populate the form with any event attributes that may match
+            // IMPORTANT: it isn't possible to automatically populate any property named "id" since that
+            // is a reserved name in JSF (the id of a component), therefore we have to unfortunately ignore any available "id" attribute
+            FormPopulator.populateFormFromPropertyMap(
+                form, form.getDateTimeFormatters(), (Map)this.getRequestAttribute(ACTION_EVENT_ATTRIBUTES), new String[] {"id"});
+            if (event != null)
+            {
+                final Map eventProperties = new HashMap();
+                eventProperties.put(event.getComponent().getId(), event.getSource());
+                FormPopulator.populateFormFromPropertyMapAssignableTypesOnly(form, null, eventProperties);
+                FormPopulator.populateFormFromPropertyMap(
+                    form, form.getDateTimeFormatters(), event.getComponent().getAttributes(), new String[] {"id"});
+            }
+            // - populate the form with any request attributes that may match
+            FormPopulator.populateFormFromRequestAttributes(form, form.getDateTimeFormatters(), false);
+            // - populate the form with any request parameters that may match
+            FormPopulator.populateFormFromPropertyMap(
+                form, form.getDateTimeFormatters(), this.getContext().getExternalContext().getRequestParameterMap());
+            forward = _cancelarAgendamento(form);
+            final FacesMessage.Severity messageSeverity = this.getMaximumMessageSeverity();
+            if (messageSeverity != null && FacesMessage.SEVERITY_ERROR.getOrdinal() <= messageSeverity.getOrdinal())
+            {
+                // - copy any messages to the 'currentForm'
+                PropertyUtils.setProperty(currentForm,
+                    "jsfMessages", PropertyUtils.getProperty(form, "jsfMessages"));
+                this.setForm("form", currentForm, false);
+            }
+            if (event != null)
+            {
+                AgendarColetaViewPopulator.populateFormAndViewVariables(this.getContext(), form);
+            }
+        }
+        catch (final Throwable throwable)
+        {
+            this.setForm("form", currentForm, false);
+            // - set the forward to null so that we stay on the current view
+            forward = null;
+            try
+            {
+                // - the exception is re-thrown by the exception handler and handled by the catch below if it can't get a messageKey
+                //   (no reason to check for presence of messageKey)
+                this.addErrorMessage(Messages.get(
+                    ExceptionHandler.instance().handleException(throwable),
+                    ExceptionHandler.instance().getMessageArguments(throwable)));
+            }
+            catch (Throwable exception)
+            {
+                logger.error(exception);
+                this.addExceptionMessage(exception);
+            }
+        }
+        return forward;
+    }
+
+    /**
+     * 
+     */
+    private String _cancelarAgendamento(final AgendamentoDeColetaCancelarFormImpl form)
+        throws Throwable
+    {
+        String forward = null;
+        cancelarColeta(form);
+        forward = _pesquisarColeta(form);
+        return forward;
+    }
+
+    /**
+     * 
+     */
+    private String _pesquisarColeta(final AgendamentoDeColetaCancelarFormImpl form)
+        throws Throwable
+    {
+        String forward = null;
+        pesquisarColetas(form);
+        forward = "agendar-coleta-agendamento-de-coleta";
+        return forward;
+    }
+
+    /**
+     * Retrieves the {@link AgendamentoDeColetaBuscarFormImpl} form instance (normally you wont't
+     * need to call this method explicitly, however this is here for times when you need to access the
+     * <em>agendarColetaAgendamentoDeColetaBuscarForm</em> instance outside of its assigned controller operation).
+     */
+    protected AgendamentoDeColetaBuscarFormImpl getAgendamentoDeColetaBuscarForm()
+    {
+        // - we do this in the case a button that submitted the form was set to immediate (this should be removed
+        //   when we found a better way to handle this).
+        final UIForm uiForm = this.findForm(this.getContext().getViewRoot(), "agendarColetaAgendamentoDeColetaBuscarForm");
+        this.populateComponentInputs(uiForm);
+        return (AgendamentoDeColetaBuscarFormImpl)this.resolveVariable("agendarColetaAgendamentoDeColetaBuscarForm");
+    }
+
+    public String agendamentoDeColetaBuscar()
+    {
+        return agendamentoDeColetaBuscar((FacesEvent)null);
+    }
+
+    public void agendamentoDeColetaBuscar(final ActionEvent event)
+    {
+        this.agendamentoDeColetaBuscar((FacesEvent)event);
+    }
+
+    public void agendamentoDeColetaBuscar(final ValueChangeEvent event)
+    {
+        this.agendamentoDeColetaBuscar((FacesEvent)event);
+    }
+
+    @SuppressWarnings("unchecked")
+    public String agendamentoDeColetaBuscar(final FacesEvent event)
+    {
+        String forward = null;
+        final Object currentForm = this.resolveVariable("form");
+        try
+        {
+            final AgendamentoDeColetaBuscarFormImpl form =
+                this.getAgendamentoDeColetaBuscarForm();
+            form.setEvent(event);
+            this.setForm("form", form, true);
+            // - pass any properties from the previous form along
+            FormPopulator.populateForm(currentForm, form);
+            // - populate the form with any event attributes that may match
+            // IMPORTANT: it isn't possible to automatically populate any property named "id" since that
+            // is a reserved name in JSF (the id of a component), therefore we have to unfortunately ignore any available "id" attribute
+            FormPopulator.populateFormFromPropertyMap(
+                form, form.getDateTimeFormatters(), (Map)this.getRequestAttribute(ACTION_EVENT_ATTRIBUTES), new String[] {"id"});
+            if (event != null)
+            {
+                final Map eventProperties = new HashMap();
+                eventProperties.put(event.getComponent().getId(), event.getSource());
+                FormPopulator.populateFormFromPropertyMapAssignableTypesOnly(form, null, eventProperties);
+                FormPopulator.populateFormFromPropertyMap(
+                    form, form.getDateTimeFormatters(), event.getComponent().getAttributes(), new String[] {"id"});
+            }
+            // - populate the form with any request attributes that may match
+            FormPopulator.populateFormFromRequestAttributes(form, form.getDateTimeFormatters(), false);
+            // - populate the form with any request parameters that may match
+            FormPopulator.populateFormFromPropertyMap(
+                form, form.getDateTimeFormatters(), this.getContext().getExternalContext().getRequestParameterMap());
+            forward = _salvarPesquisa(form);
+            final FacesMessage.Severity messageSeverity = this.getMaximumMessageSeverity();
+            if (messageSeverity != null && FacesMessage.SEVERITY_ERROR.getOrdinal() <= messageSeverity.getOrdinal())
+            {
+                // - copy any messages to the 'currentForm'
+                PropertyUtils.setProperty(currentForm,
+                    "jsfMessages", PropertyUtils.getProperty(form, "jsfMessages"));
+                this.setForm("form", currentForm, false);
+            }
+            if (event != null)
+            {
+                AgendarColetaViewPopulator.populateFormAndViewVariables(this.getContext(), form);
+            }
+        }
+        catch (final Throwable throwable)
+        {
+            this.setForm("form", currentForm, false);
+            // - set the forward to null so that we stay on the current view
+            forward = null;
+            try
+            {
+                // - the exception is re-thrown by the exception handler and handled by the catch below if it can't get a messageKey
+                //   (no reason to check for presence of messageKey)
+                this.addErrorMessage(Messages.get(
+                    ExceptionHandler.instance().handleException(throwable),
+                    ExceptionHandler.instance().getMessageArguments(throwable)));
+            }
+            catch (Throwable exception)
+            {
+                logger.error(exception);
+                this.addExceptionMessage(exception);
+            }
+        }
+        return forward;
+    }
+
+    /**
+     * 
+     */
+    private String _salvarPesquisa(final AgendamentoDeColetaBuscarFormImpl form)
+        throws Throwable
+    {
+        String forward = null;
+        salvarPesquisa(form);
+        forward = _pesquisarColeta(form);
+        return forward;
+    }
+
+    /**
+     * 
+     */
+    private String _pesquisarColeta(final AgendamentoDeColetaBuscarFormImpl form)
+        throws Throwable
+    {
+        String forward = null;
+        pesquisarColetas(form);
+        forward = "agendar-coleta-agendamento-de-coleta";
+        return forward;
+    }
+
+    /**
+     * Retrieves the {@link AgendarColetaFormImpl} form instance (normally you wont't
+     * need to call this method explicitly, however this is here for times when you need to access the
+     * <em>agendarColetaAgendarColetaForm</em> instance outside of its assigned controller operation).
+     */
+    protected AgendarColetaFormImpl getAgendarColetaForm()
+    {
+        // - we do this in the case a button that submitted the form was set to immediate (this should be removed
+        //   when we found a better way to handle this).
+        final UIForm uiForm = this.findForm(this.getContext().getViewRoot(), "agendarColetaAgendarColetaForm");
+        this.populateComponentInputs(uiForm);
+        return (AgendarColetaFormImpl)this.resolveVariable("agendarColetaAgendarColetaForm");
+    }
+
+    public String agendarColeta()
+    {
+        return agendarColeta((FacesEvent)null);
+    }
+
+    public void agendarColeta(final ActionEvent event)
+    {
+        this.agendarColeta((FacesEvent)event);
+    }
+
+    public void agendarColeta(final ValueChangeEvent event)
+    {
+        this.agendarColeta((FacesEvent)event);
+    }
+
+    @SuppressWarnings("unchecked")
+    public String agendarColeta(final FacesEvent event)
+    {
+        String forward = null;
+        final Object currentForm = this.resolveVariable("form");
+        try
+        {
+            final AgendarColetaFormImpl form =
+                this.getAgendarColetaForm();
+            form.setEvent(event);
+            this.setForm("form", form, true);
+            // - pass any properties from the previous form along
+            FormPopulator.populateForm(currentForm, form);
+            // - populate the form with any event attributes that may match
+            // IMPORTANT: it isn't possible to automatically populate any property named "id" since that
+            // is a reserved name in JSF (the id of a component), therefore we have to unfortunately ignore any available "id" attribute
+            FormPopulator.populateFormFromPropertyMap(
+                form, form.getDateTimeFormatters(), (Map)this.getRequestAttribute(ACTION_EVENT_ATTRIBUTES), new String[] {"id"});
+            if (event != null)
+            {
+                final Map eventProperties = new HashMap();
+                eventProperties.put(event.getComponent().getId(), event.getSource());
+                FormPopulator.populateFormFromPropertyMapAssignableTypesOnly(form, null, eventProperties);
+                FormPopulator.populateFormFromPropertyMap(
+                    form, form.getDateTimeFormatters(), event.getComponent().getAttributes(), new String[] {"id"});
+            }
+            // - populate the form with any request attributes that may match
+            FormPopulator.populateFormFromRequestAttributes(form, form.getDateTimeFormatters(), false);
+            // - populate the form with any request parameters that may match
+            FormPopulator.populateFormFromPropertyMap(
+                form, form.getDateTimeFormatters(), this.getContext().getExternalContext().getRequestParameterMap());
+            forward = _inicializar(form);
+            final FacesMessage.Severity messageSeverity = this.getMaximumMessageSeverity();
+            if (messageSeverity != null && FacesMessage.SEVERITY_ERROR.getOrdinal() <= messageSeverity.getOrdinal())
+            {
+                // - copy any messages to the 'currentForm'
+                PropertyUtils.setProperty(currentForm,
+                    "jsfMessages", PropertyUtils.getProperty(form, "jsfMessages"));
+                this.setForm("form", currentForm, false);
+            }
+            if (event != null)
+            {
+                AgendarColetaViewPopulator.populateFormAndViewVariables(this.getContext(), form);
+            }
+        }
+        catch (final Throwable throwable)
+        {
+            this.setForm("form", currentForm, false);
+            // - set the forward to null so that we stay on the current view
+            forward = null;
+            try
+            {
+                // - the exception is re-thrown by the exception handler and handled by the catch below if it can't get a messageKey
+                //   (no reason to check for presence of messageKey)
+                this.addErrorMessage(Messages.get(
+                    ExceptionHandler.instance().handleException(throwable),
+                    ExceptionHandler.instance().getMessageArguments(throwable)));
+            }
+            catch (Throwable exception)
+            {
+                logger.error(exception);
+                this.addExceptionMessage(exception);
+            }
+        }
+        return forward;
+    }
+
+    /**
+     * 
+     */
+    private String _inicializar(final AgendarColetaFormImpl form)
+        throws Throwable
+    {
+        String forward = null;
+        inicializar();
+        forward = _pesquisarColeta(form);
+        return forward;
+    }
+
+    /**
+     * 
+     */
+    private String _pesquisarColeta(final AgendarColetaFormImpl form)
+        throws Throwable
+    {
+        String forward = null;
+        pesquisarColetas(form);
+        forward = "agendar-coleta-agendamento-de-coleta";
+        return forward;
+    }
+
+    /**
+     * Returns a reference to the agendaService back-end service.
+     */
+    protected final AgendaService getAgendaService()
+    {
+        try
+        {
+            return ServiceLocator.instance().getAgendaService();
+        }
+        catch (final Throwable throwable)
+        {
+            throw new RuntimeException(throwable);
+        }
+    }
+
+    /**
+     * Gets the current faces context.  This object is the point
+     * from which to retrieve any request, session, etc information.
+     *
+     * @return the JSF faces context instance.
+     */
+    public FacesContext getContext()
+    {
+        return FacesContext.getCurrentInstance();
+    }
+
+    /**
+     * A helper method that gets the current request from the faces
+     * context.
+     *
+     * @return the current request instance.
+     */
+    protected HttpServletRequest getRequest()
+    {
+        return (HttpServletRequest)this.getContext().getExternalContext().getRequest();
+    }
+
+    /**
+     * A helper method that gets the current reponse from the faces
+     * context.
+     *
+     * @return the current response instance.
+     */
+    protected HttpServletResponse getResponse()
+    {
+        return (HttpServletResponse)this.getContext().getExternalContext().getResponse();
+    }
+
+    /**
+     * A helper method that gets the current session from the faces
+     * context.
+     *
+     * @param create If the create parameter is true, create (if necessary) and return a
+     *        session instance associated with the current request. If the create
+     *        parameter is false return any existing session instance associated with the
+     *        current request, or return null if there is no such session.
+     * @return the current session instance.
+     */
+    protected HttpSession getSession(final boolean create)
+    {
+        return (HttpSession)this.getContext().getExternalContext().getSession(create);
+    }
+
+    /**
+     * Attempts to resolve the variable, given, the <code>name</code> of
+     * the variable using the faces context variable resolver instance.
+     *
+     * @return the resolved variable or null if not found.
+     */
+    protected Object resolveVariable(final String name)
+    {
+        RequestContext adfContext = RequestContext.getCurrentInstance();
+        Object variable = adfContext.getPageFlowScope().get(name);
+        // - if we couldn't get the variable from the regular ADF context, see if
+        //   the session contains an ADF context with the variable
+        if (variable == null)
+        {
+            final HttpSession session = this.getSession(false);
+            if (session != null)
+            {
+                final AdfFacesContextWrapper contextWrapper =
+                    (AdfFacesContextWrapper)session.getAttribute("AndroMDAADFContext");
+                adfContext = contextWrapper != null ? contextWrapper.getCurrentInstance() : null;
+            }
+            variable = adfContext != null ? adfContext.getPageFlowScope().get(name) : null;
+        }
+        // - finally try resolving it in the standard JSF manner
+        if (variable == null)
+        {
+            final FacesContext context = this.getContext();
+            variable = context != null ? context.getApplication().getVariableResolver().resolveVariable(context, name) : null;
+        }
+        return variable;
+    }
+
+    private void setForm(final String formKey, final Object form, boolean includeInSession)
+    {
+        final AdfFacesContextWrapper contextWrapper = new AdfFacesContextWrapper();
+        contextWrapper.getCurrentInstance().getPageFlowScope().put(formKey, form);
+        if (includeInSession)
+        {
+            this.setSessionAttribute(formKey, form);
+            // - add this temporary ADF context to the session so that we can retrieve from a view populator if required
+            this.getSession(false).setAttribute("AndroMDAADFContext", contextWrapper);
+        }
+    }
+
+    /**
+     * Finds the root cause of the given <code>throwable</code> and
+     * adds the message taken from that cause to the faces context messages.
+     *
+     * @param throwable the exception information to add.
+     */
+    protected final void addExceptionMessage(
+        Throwable throwable)
+    {
+        String message = null;
+        final Throwable rootCause = ExceptionUtils.getRootCause(throwable);
+        if (rootCause != null)
+        {
+            message = rootCause.toString();
+        }
+        if (message == null || message.trim().length() == 0)
+        {
+            message = throwable.toString();
+        }
+        this.addErrorMessage(message);
+    }
+
+    /**
+     * Adds the given error <code>message</code> to the current faces context.
+     *
+     * @param message the message to add.
+     */
+    protected void addErrorMessage(final String message)
+    {
+        this.addMessage(FacesMessage.SEVERITY_ERROR, message);
+    }
+
+    /**
+     * Adds the given warning <code>message</code> to the current faces context.
+     *
+     * @param message the message to add.
+     */
+    protected void addWarningMessage(final String message)
+    {
+        this.addMessage(FacesMessage.SEVERITY_WARN, message);
+    }
+
+    /**
+     * Adds the given info <code>message</code> to the current faces context.
+     *
+     * @param message the message to add.
+     */
+    protected void addInfoMessage(final String message)
+    {
+        this.addMessage(FacesMessage.SEVERITY_INFO, message);
+    }
+
+    /**
+     * Adds the given fatal <code>message</code> to the current faces context.
+     *
+     * @param message the message to add.
+     */
+    protected void addFatalMessage(final String message)
+    {
+        this.addMessage(FacesMessage.SEVERITY_FATAL, message);
+    }
+
+    /**
+     * Adds a message to the faces context (which will show up on your view when using the
+     * lt;h:messages/gt; tag).
+     *
+     * @param severity the severity of the message
+     * @param message the message to add.
+     */
+    protected void addMessage(final FacesMessage.Severity severity, final String message)
+    {
+        final FacesMessage facesMessage = new FacesMessage(severity, message, message);
+        final Object form = this.resolveVariable("form");
+        if (form != null)
+        {
+            try
+            {
+                final Method method = form.getClass().getMethod(
+                    "addJsfMessages",
+                    new Class[]{FacesMessage.class});
+                method.invoke(form, new Object[]{facesMessage});
+            }
+            catch (final Exception exception)
+            {
+                throw new RuntimeException(exception);
+            }
+        }
+    }
+
+    /**
+     * Sets the messages title to use on the next view.
+     *
+     * @param messagesTitle the title to use.
+     */
+    protected void setMessagesTitle(final String messagesTitle)
+    {
+        final Object form = this.resolveVariable("form");
+        if (form != null)
+        {
+            try
+            {
+                final Method method = form.getClass().getMethod(
+                    "setJsfMessagesTitle",
+                    new Class[]{String.class});
+                method.invoke(form, new Object[]{messagesTitle});
+            }
+            catch (final Exception exception)
+            {
+                throw new RuntimeException(exception);
+            }
+        }
+    }
+
+    /**
+     * Gets the maximum severity of the messages stored in the current form.
+     *
+     * @return the maximum message severity.
+     */
+    protected FacesMessage.Severity getMaximumMessageSeverity()
+    {
+        FacesMessage.Severity maximumSeverity = null;
+        final Object form = this.resolveVariable("form");
+        if (form != null)
+        {
+            try
+            {
+                final Method method = form.getClass().getMethod(
+                    "getMaximumMessageSeverity",
+                    (Class[])null);
+                maximumSeverity = (FacesMessage.Severity)method.invoke(form, (Object[])null);
+            }
+            catch (final Exception exception)
+            {
+                throw new RuntimeException(exception);
+            }
+        }
+        return maximumSeverity;
+    }
+
+    /**
+     * Copies all matching properties from the <code>fromForm</code> to the given
+     * <code>toForm</code> overridding any previously set values.
+     */
+    protected void copyForm(final Object fromForm, final Object toForm)
+    {
+        FormPopulator.populateForm(fromForm, toForm, true);
+    }
+
+    /**
+     * Finds the form (if one is present) on the given <code>component</code> having the given
+     * <code>id</code>.
+     *
+     * @param component the component to search.
+     * @param id the id of the form.
+     * @return the form or null if none was found.
+     */
+    @SuppressWarnings("unchecked")
+    private UIForm findForm(UIComponent component, String id)
+    {
+        UIForm foundForm = null;
+        if (component != null)
+        {
+            for (final Iterator iterator = component.getFacetsAndChildren(); iterator.hasNext();)
+            {
+                final Object object = iterator.next();
+                if (object instanceof UIComponent)
+                {
+                    final UIComponent uiComponent = (UIComponent)object;
+                    if (uiComponent instanceof UIForm)
+                    {
+                        final UIForm form = (UIForm)uiComponent;
+                        if (form.getId().equals(id))
+                        {
+                            foundForm = form;
+                            break;
+                        }
+                    }
+                    foundForm = this.findForm(uiComponent, id);
+                    if (foundForm != null)
+                    {
+                        break;
+                    }
+                }
+            }
+        }
+        return foundForm;
+    }
+
+    /**
+     * If the given <code>component</code> has an child input elements, this method finds
+     * them all and populates them.  This is to get around the fact that when immediate is set to true
+     * on a button that submits the form that the form isn't populated.
+     *
+     * @param component the component to populate.
+     */
+    @SuppressWarnings("unchecked")
+    private void populateComponentInputs(UIComponent component)
+    {
+        if (component != null)
+        {
+            for (final Iterator iterator = component.getFacetsAndChildren(); iterator.hasNext();)
+            {
+                final UIComponent uiComponent = (UIComponent)iterator.next();
+                if (uiComponent instanceof UIInput)
+                {
+                    try
+                    {
+                        final UIInput input = (UIInput)uiComponent;
+                        input.validate(this.getContext());
+                        input.updateModel(this.getContext());
+                    }
+                    catch (ValidatorException exception)
+                    {
+                        // - ignore, no value is set (validate will be called by the regular
+                        //   JSF lifecycle processing anyway, this is just called to populate the
+                        //   local value
+                    }
+                }
+                else
+                {
+                    this.populateComponentInputs(uiComponent);
+                }
+            }
+        }
+    }
+    /**
+     * Retrieves the current action form while making sure the form is of the given
+     * <code>type</code>.  If the action form is found, but not of the given type, null will
+     * be returned.
+     *
+     * @param type the type of form to retrieve.
+     * @return the found form.
+     */
+    @SuppressWarnings("unchecked")
+    protected Object getCurrentActionForm(final Class type)
+    {
+        Object form = this.getCurrentActionForm();
+        if (!type.isInstance(form))
+        {
+            form = null;
+        }
+        return form;
+    }
+
+    /**
+     * Retrieves the current action form instance.
+     *
+     * @return the current action form instance.
+     */
+    protected Object getCurrentActionForm()
+    {
+        return this.resolveVariable("form");
+    }
+
+    /**
+     * The name of the request attribute that stores the attributes from the current action event.
+     */
+    private static final String ACTION_EVENT_ATTRIBUTES = "actionEventAttributes";
+
+    /**
+     * This method just captures the event attributes and sets them into the request
+     * so that we can retrieve in controller action operation and use to populate form.
+     *
+     * @param event the action event.
+     */
+    public void action(ActionEvent event)
+    {
+        this.setRequestAttribute(ACTION_EVENT_ATTRIBUTES, event.getComponent().getAttributes());
+    }
+
+    protected void setRequestAttribute(final String name, final Object object)
+    {
+        JsfUtils.setAttribute(this.getContext().getExternalContext().getRequest(), name, object);
+    }
+
+    protected Object getRequestAttribute(final String name)
+    {
+        return JsfUtils.getAttribute(this.getContext().getExternalContext().getRequest(), name);
+    }
+
+    protected void setSessionAttribute(final String name, final Object object)
+    {
+        JsfUtils.setAttribute(this.getContext().getExternalContext().getSession(false), name, object);
+    }
+
+    protected Object getSessionAttribute(final String name)
+    {
+        return JsfUtils.getAttribute(this.getContext().getExternalContext().getSession(false), name);
+    }
+
+}

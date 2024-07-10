@@ -39,7 +39,7 @@ import openapitools.JSON;
   HeavyDataTypeUser.JSON_PROPERTY_BIG_INEGER_CODE,
   HeavyDataTypeUser.JSON_PROPERTY_BIG_DECIMAL_CODE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
 public class HeavyDataTypeUser {
   public static final String JSON_PROPERTY_BOOLEAN_CODE = "booleanCode";
   private Boolean booleanCode;
@@ -73,10 +73,10 @@ public class HeavyDataTypeUser {
     return this;
   }
 
-   /**
+  /**
    * Get booleanCode
    * @return booleanCode
-  **/
+   */
   @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_BOOLEAN_CODE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -98,10 +98,10 @@ public class HeavyDataTypeUser {
     return this;
   }
 
-   /**
+  /**
    * Get byteCode
    * @return byteCode
-  **/
+   */
   @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_BYTE_CODE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -123,11 +123,11 @@ public class HeavyDataTypeUser {
     return this;
   }
 
-   /**
+  /**
    * Get shortCode
    * maximum: 4711
    * @return shortCode
-  **/
+   */
   @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_SHORT_CODE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -149,11 +149,11 @@ public class HeavyDataTypeUser {
     return this;
   }
 
-   /**
+  /**
    * Get integerCode
    * minimum: 1234
    * @return integerCode
-  **/
+   */
   @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_INTEGER_CODE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -175,10 +175,10 @@ public class HeavyDataTypeUser {
     return this;
   }
 
-   /**
+  /**
    * Get floatCode
    * @return floatCode
-  **/
+   */
   @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_FLOAT_CODE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -200,10 +200,10 @@ public class HeavyDataTypeUser {
     return this;
   }
 
-   /**
+  /**
    * Get doubleCode
    * @return doubleCode
-  **/
+   */
   @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_DOUBLE_CODE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -225,11 +225,11 @@ public class HeavyDataTypeUser {
     return this;
   }
 
-   /**
+  /**
    * Get bigInegerCode
    * maximum: 4711
    * @return bigInegerCode
-  **/
+   */
   @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_BIG_INEGER_CODE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -251,10 +251,10 @@ public class HeavyDataTypeUser {
     return this;
   }
 
-   /**
+  /**
    * Get bigDecimalCode
    * @return bigDecimalCode
-  **/
+   */
   @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_BIG_DECIMAL_CODE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)

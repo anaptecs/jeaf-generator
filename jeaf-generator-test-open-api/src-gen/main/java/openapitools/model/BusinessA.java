@@ -33,7 +33,7 @@ import openapitools.JSON;
   BusinessA.JSON_PROPERTY_TECH_ATTRIBUTE,
   BusinessA.JSON_PROPERTY_BUSINESS_ATTRIBUTE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
 public class BusinessA {
   public static final String JSON_PROPERTY_TECH_ATTRIBUTE = "techAttribute";
   private String techAttribute;
@@ -49,10 +49,10 @@ public class BusinessA {
     return this;
   }
 
-   /**
+  /**
    * Get techAttribute
    * @return techAttribute
-  **/
+   */
   @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_TECH_ATTRIBUTE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -74,10 +74,10 @@ public class BusinessA {
     return this;
   }
 
-   /**
+  /**
    * Get businessAttribute
    * @return businessAttribute
-  **/
+   */
   @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_BUSINESS_ATTRIBUTE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)

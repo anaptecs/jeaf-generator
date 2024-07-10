@@ -1,0 +1,15 @@
+package org.andromda.test;
+
+/**
+ * Test for some annotations
+ */
+public class TestClass {
+
+    @org.springframework.web.bind.annotation.RequestMapping(value = "/hotels/{hotel}/bookings/{booking}", method = RequestMethod.GET)
+    public java.lang.String getBooking(@org.springframework.web.bind.annotation.PathVariable("hotel") long hotelId, @org.springframework.web.bind.annotation.PathVariable("booking") long bookingId, Model model) {
+        Hotel hotel = hotelService.getHotel(hotelId);
+        Booking booking = hotel.getBooking(bookingId);
+        model.addAttribute("booking", booking);
+        return "booking";
+    }
+}

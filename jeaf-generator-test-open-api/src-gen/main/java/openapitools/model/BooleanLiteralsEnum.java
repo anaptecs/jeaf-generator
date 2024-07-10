@@ -44,7 +44,7 @@ public enum BooleanLiteralsEnum {
   
   TRUE("True"),
   
-  FALSE("FaLsE");
+  FA_LS_E("FaLsE");
 
   private String value;
 

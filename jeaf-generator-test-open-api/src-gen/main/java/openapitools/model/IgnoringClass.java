@@ -32,7 +32,7 @@ import openapitools.JSON;
 @JsonPropertyOrder({
   IgnoringClass.JSON_PROPERTY_AGE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
 public class IgnoringClass {
   public static final String JSON_PROPERTY_AGE = "age";
   private Integer age;
@@ -45,10 +45,10 @@ public class IgnoringClass {
     return this;
   }
 
-   /**
+  /**
    * Get age
    * @return age
-  **/
+   */
   @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_AGE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)

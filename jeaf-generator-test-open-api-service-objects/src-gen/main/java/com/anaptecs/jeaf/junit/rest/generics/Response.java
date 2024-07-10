@@ -228,7 +228,7 @@ public class Response<T> implements ServiceObject {
   /**
    * Method returns association {@link #data}.<br/>
    *
-   * @return {@link com.anaptecs.jeaf.junit.rest.generics.T} Value to which {@link #data} is set.
+   * @return {@link T} Value to which {@link #data} is set.
    */
   public T getData( ) {
     return data;

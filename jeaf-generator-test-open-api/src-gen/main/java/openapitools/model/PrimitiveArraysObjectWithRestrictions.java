@@ -59,7 +59,7 @@ import openapitools.JSON;
   PrimitiveArraysObjectWithRestrictions.JSON_PROPERTY_A_STRING_ARRAY,
   PrimitiveArraysObjectWithRestrictions.JSON_PROPERTY_B_STRING_ARRAY
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
 public class PrimitiveArraysObjectWithRestrictions {
   public static final String JSON_PROPERTY_A_BOOLEAN_ARRAY = "aBooleanArray";
   private JsonNullable<List<Boolean>> aBooleanArray = JsonNullable.<List<Boolean>>undefined();
@@ -147,10 +147,10 @@ public class PrimitiveArraysObjectWithRestrictions {
     return this;
   }
 
-   /**
+  /**
    * Get aBooleanArray
    * @return aBooleanArray
-  **/
+   */
   @javax.annotation.Nullable
   @JsonIgnore
 
@@ -192,10 +192,10 @@ public class PrimitiveArraysObjectWithRestrictions {
     return this;
   }
 
-   /**
+  /**
    * Get bBooleanArray
    * @return bBooleanArray
-  **/
+   */
   @javax.annotation.Nullable
   @JsonIgnore
 
@@ -237,10 +237,10 @@ public class PrimitiveArraysObjectWithRestrictions {
     return this;
   }
 
-   /**
+  /**
    * Get cBooleanArray
    * @return cBooleanArray
-  **/
+   */
   @javax.annotation.Nullable
   @JsonIgnore
 
@@ -270,10 +270,10 @@ public class PrimitiveArraysObjectWithRestrictions {
     return this;
   }
 
-   /**
+  /**
    * Get aByteArray
    * @return aByteArray
-  **/
+   */
   @javax.annotation.Nullable
   @JsonIgnore
 
@@ -303,10 +303,10 @@ public class PrimitiveArraysObjectWithRestrictions {
     return this;
   }
 
-   /**
+  /**
    * Get bByteArray
    * @return bByteArray
-  **/
+   */
   @javax.annotation.Nullable
   @JsonIgnore
 
@@ -348,10 +348,10 @@ public class PrimitiveArraysObjectWithRestrictions {
     return this;
   }
 
-   /**
+  /**
    * Get aShortArray
    * @return aShortArray
-  **/
+   */
   @javax.annotation.Nullable
   @JsonIgnore
 
@@ -393,10 +393,10 @@ public class PrimitiveArraysObjectWithRestrictions {
     return this;
   }
 
-   /**
+  /**
    * Get bShortArray
    * @return bShortArray
-  **/
+   */
   @javax.annotation.Nullable
   @JsonIgnore
 
@@ -438,10 +438,10 @@ public class PrimitiveArraysObjectWithRestrictions {
     return this;
   }
 
-   /**
+  /**
    * Get aIntegerArray
    * @return aIntegerArray
-  **/
+   */
   @javax.annotation.Nullable
   @JsonIgnore
 
@@ -483,10 +483,10 @@ public class PrimitiveArraysObjectWithRestrictions {
     return this;
   }
 
-   /**
+  /**
    * Get bIntegerArray
    * @return bIntegerArray
-  **/
+   */
   @javax.annotation.Nullable
   @JsonIgnore
 
@@ -528,10 +528,10 @@ public class PrimitiveArraysObjectWithRestrictions {
     return this;
   }
 
-   /**
+  /**
    * Get cIntegerArray
    * @return cIntegerArray
-  **/
+   */
   @javax.annotation.Nullable
   @JsonIgnore
 
@@ -569,10 +569,10 @@ public class PrimitiveArraysObjectWithRestrictions {
     return this;
   }
 
-   /**
+  /**
    * Get aLongArray
    * @return aLongArray
-  **/
+   */
   @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_A_LONG_ARRAY)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -606,10 +606,10 @@ public class PrimitiveArraysObjectWithRestrictions {
     return this;
   }
 
-   /**
+  /**
    * Get bLongArray
    * @return bLongArray
-  **/
+   */
   @javax.annotation.Nullable
   @JsonIgnore
 
@@ -651,10 +651,10 @@ public class PrimitiveArraysObjectWithRestrictions {
     return this;
   }
 
-   /**
+  /**
    * Get aBigIntegerArray
    * @return aBigIntegerArray
-  **/
+   */
   @javax.annotation.Nullable
   @JsonIgnore
 
@@ -696,10 +696,10 @@ public class PrimitiveArraysObjectWithRestrictions {
     return this;
   }
 
-   /**
+  /**
    * Get aCharacterArray
    * @return aCharacterArray
-  **/
+   */
   @javax.annotation.Nullable
   @JsonIgnore
 
@@ -741,10 +741,10 @@ public class PrimitiveArraysObjectWithRestrictions {
     return this;
   }
 
-   /**
+  /**
    * Get bCharacterArray
    * @return bCharacterArray
-  **/
+   */
   @javax.annotation.Nullable
   @JsonIgnore
 
@@ -786,10 +786,10 @@ public class PrimitiveArraysObjectWithRestrictions {
     return this;
   }
 
-   /**
+  /**
    * Get aFloatArray
    * @return aFloatArray
-  **/
+   */
   @javax.annotation.Nullable
   @JsonIgnore
 
@@ -831,10 +831,10 @@ public class PrimitiveArraysObjectWithRestrictions {
     return this;
   }
 
-   /**
+  /**
    * Get bFloatArray
    * @return bFloatArray
-  **/
+   */
   @javax.annotation.Nullable
   @JsonIgnore
 
@@ -876,10 +876,10 @@ public class PrimitiveArraysObjectWithRestrictions {
     return this;
   }
 
-   /**
+  /**
    * Get aDoubleArray
    * @return aDoubleArray
-  **/
+   */
   @javax.annotation.Nullable
   @JsonIgnore
 
@@ -921,10 +921,10 @@ public class PrimitiveArraysObjectWithRestrictions {
     return this;
   }
 
-   /**
+  /**
    * Get bDoubleArray
    * @return bDoubleArray
-  **/
+   */
   @javax.annotation.Nullable
   @JsonIgnore
 
@@ -966,10 +966,10 @@ public class PrimitiveArraysObjectWithRestrictions {
     return this;
   }
 
-   /**
+  /**
    * Get aBigDecimalArray
    * @return aBigDecimalArray
-  **/
+   */
   @javax.annotation.Nullable
   @JsonIgnore
 
@@ -1011,10 +1011,10 @@ public class PrimitiveArraysObjectWithRestrictions {
     return this;
   }
 
-   /**
+  /**
    * Get aStringArray
    * @return aStringArray
-  **/
+   */
   @javax.annotation.Nullable
   @JsonIgnore
 
@@ -1056,10 +1056,10 @@ public class PrimitiveArraysObjectWithRestrictions {
     return this;
   }
 
-   /**
+  /**
    * Get bStringArray
    * @return bStringArray
-  **/
+   */
   @javax.annotation.Nullable
   @JsonIgnore
 

@@ -1,0 +1,45 @@
+package br.ita.finep.icammh.relatorio.web.ManutencaoRelatorio;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
+/**
+ * This servlet is used to allow controller operation execution through
+ * a URL call.
+ */
+public class ManutencaoRelatorio
+    extends HttpServlet
+{
+    /**
+     * @see javax.servlet.http.HttpServlet#doGet(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
+     */
+    public void doGet(
+        final HttpServletRequest request,
+        final HttpServletResponse response)
+        throws ServletException, IOException
+    {
+        // - we need to resolve the controller differently since we're outside of the faces servlet
+        br.ita.finep.icammh.relatorio.web.ManutencaoRelatorio.ManutencaoRelatorioController controller =
+            (br.ita.finep.icammh.relatorio.web.ManutencaoRelatorio.ManutencaoRelatorioController)br.ita.finep.icammh.webapp.FacesContextUtils.resolveVariable(
+                request, response,
+                "manutencaoRelatorioController");
+        final String forwardPath = br.ita.finep.icammh.webapp.UseCaseForwards.getPath(controller.manutencaoRelatorio());
+        response.sendRedirect(request.getContextPath() + forwardPath + (request.getQueryString() != null ? "?" + request.getQueryString() : ""));
+    }
+
+    /**
+     * @see javax.servlet.http.HttpServlet#doPost(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
+     */
+    public void doPost(
+        final HttpServletRequest request,
+        final HttpServletResponse response)
+        throws ServletException, IOException
+    {
+        this.doGet(request, response);
+    }
+}
