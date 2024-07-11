@@ -111,6 +111,9 @@ cached String fqn(uml::NamedElement element) :
     if element.isClass()
     then element.asClass().internalFQNForClass()
     else element.internalFQN();
+    
+cached String fqnWithoutGenerics(uml::NamedElement element):
+    element.internalFQN(true);
 
 private cached String internalFQNForClass(uml::Class class):
     if class.templateBinding.isEmpty
@@ -138,6 +141,8 @@ cached uml::Class getGenericClass(uml::Class class):
 private cached String internalFQN(uml::NamedElement element) :
     JAVA com.anaptecs.jeaf.fwk.generator.util.Naming.getFullyQualifiedName( org.eclipse.uml2.uml.NamedElement);
 
+private cached String internalFQN(uml::NamedElement element, boolean igonreTemplateBinding) :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.Naming.getFullyQualifiedName(org.eclipse.uml2.uml.NamedElement, java.lang.Boolean);
 
 
 // For "normale" Typen wird einfach der Name als qualifizierter Name geliefert

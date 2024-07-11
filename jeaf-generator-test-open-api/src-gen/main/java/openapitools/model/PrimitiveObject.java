@@ -53,7 +53,7 @@ import openapitools.JSON;
   PrimitiveObject.JSON_PROPERTY_A_STRING,
   PrimitiveObject.JSON_PROPERTY_B_STRING
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
 public class PrimitiveObject {
   public static final String JSON_PROPERTY_A_BOOLEAN = "aBoolean";
   private Boolean aBoolean;
@@ -129,10 +129,10 @@ public class PrimitiveObject {
     return this;
   }
 
-   /**
+  /**
    * Get aBoolean
    * @return aBoolean
-  **/
+   */
   @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_A_BOOLEAN)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -154,10 +154,10 @@ public class PrimitiveObject {
     return this;
   }
 
-   /**
+  /**
    * Get bBoolean
    * @return bBoolean
-  **/
+   */
   @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_B_BOOLEAN)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -179,10 +179,10 @@ public class PrimitiveObject {
     return this;
   }
 
-   /**
+  /**
    * Get cBoolean
    * @return cBoolean
-  **/
+   */
   @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_C_BOOLEAN)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -204,10 +204,10 @@ public class PrimitiveObject {
     return this;
   }
 
-   /**
+  /**
    * Get aByte
    * @return aByte
-  **/
+   */
   @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_A_BYTE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -229,10 +229,10 @@ public class PrimitiveObject {
     return this;
   }
 
-   /**
+  /**
    * Get bByte
    * @return bByte
-  **/
+   */
   @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_B_BYTE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -254,10 +254,10 @@ public class PrimitiveObject {
     return this;
   }
 
-   /**
+  /**
    * Get aShort
    * @return aShort
-  **/
+   */
   @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_A_SHORT)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -279,10 +279,10 @@ public class PrimitiveObject {
     return this;
   }
 
-   /**
+  /**
    * Get bShort
    * @return bShort
-  **/
+   */
   @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_B_SHORT)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -304,10 +304,10 @@ public class PrimitiveObject {
     return this;
   }
 
-   /**
+  /**
    * Get aInteger
    * @return aInteger
-  **/
+   */
   @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_A_INTEGER)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -329,10 +329,10 @@ public class PrimitiveObject {
     return this;
   }
 
-   /**
+  /**
    * Get bInteger
    * @return bInteger
-  **/
+   */
   @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_B_INTEGER)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -354,10 +354,10 @@ public class PrimitiveObject {
     return this;
   }
 
-   /**
+  /**
    * Get cInteger
    * @return cInteger
-  **/
+   */
   @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_C_INTEGER)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -379,10 +379,10 @@ public class PrimitiveObject {
     return this;
   }
 
-   /**
+  /**
    * Get aLong
    * @return aLong
-  **/
+   */
   @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_A_LONG)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -404,10 +404,10 @@ public class PrimitiveObject {
     return this;
   }
 
-   /**
+  /**
    * Get bLong
    * @return bLong
-  **/
+   */
   @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_B_LONG)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -429,10 +429,10 @@ public class PrimitiveObject {
     return this;
   }
 
-   /**
+  /**
    * Get aBigInteger
    * @return aBigInteger
-  **/
+   */
   @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_A_BIG_INTEGER)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -454,10 +454,10 @@ public class PrimitiveObject {
     return this;
   }
 
-   /**
+  /**
    * Get aCharacter
    * @return aCharacter
-  **/
+   */
   @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_A_CHARACTER)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -479,10 +479,10 @@ public class PrimitiveObject {
     return this;
   }
 
-   /**
+  /**
    * Get bCharacter
    * @return bCharacter
-  **/
+   */
   @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_B_CHARACTER)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -504,10 +504,10 @@ public class PrimitiveObject {
     return this;
   }
 
-   /**
+  /**
    * Get aFloat
    * @return aFloat
-  **/
+   */
   @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_A_FLOAT)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -529,10 +529,10 @@ public class PrimitiveObject {
     return this;
   }
 
-   /**
+  /**
    * Get bFloat
    * @return bFloat
-  **/
+   */
   @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_B_FLOAT)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -554,10 +554,10 @@ public class PrimitiveObject {
     return this;
   }
 
-   /**
+  /**
    * Get aDouble
    * @return aDouble
-  **/
+   */
   @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_A_DOUBLE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -579,10 +579,10 @@ public class PrimitiveObject {
     return this;
   }
 
-   /**
+  /**
    * Get bDouble
    * @return bDouble
-  **/
+   */
   @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_B_DOUBLE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -604,10 +604,10 @@ public class PrimitiveObject {
     return this;
   }
 
-   /**
+  /**
    * Get aBigDecimal
    * @return aBigDecimal
-  **/
+   */
   @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_A_BIG_DECIMAL)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -629,10 +629,10 @@ public class PrimitiveObject {
     return this;
   }
 
-   /**
+  /**
    * Get aString
    * @return aString
-  **/
+   */
   @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_A_STRING)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -654,10 +654,10 @@ public class PrimitiveObject {
     return this;
   }
 
-   /**
+  /**
    * Get bString
    * @return bString
-  **/
+   */
   @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_B_STRING)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)

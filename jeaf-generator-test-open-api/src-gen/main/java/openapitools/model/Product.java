@@ -48,7 +48,7 @@ import openapitools.JSON;
   Product.JSON_PROPERTY_DESCRIPTION,
   Product.JSON_PROPERTY_URI
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
 public class Product {
   public static final String JSON_PROPERTY_RESELLERS = "resellers";
   private List<Reseller> resellers = new ArrayList<>();
@@ -94,10 +94,10 @@ public class Product {
     return this;
   }
 
-   /**
+  /**
    * Get resellers
    * @return resellers
-  **/
+   */
   @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_RESELLERS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -119,10 +119,10 @@ public class Product {
     return this;
   }
 
-   /**
+  /**
    * Get name
    * @return name
-  **/
+   */
   @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_NAME)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -144,10 +144,10 @@ public class Product {
     return this;
   }
 
-   /**
+  /**
    * Image describing the product. 
    * @return image
-  **/
+   */
   @javax.annotation.Nullable
   @JsonIgnore
 
@@ -177,10 +177,10 @@ public class Product {
     return this;
   }
 
-   /**
+  /**
    * Get link
    * @return link
-  **/
+   */
   @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_LINK)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -202,10 +202,10 @@ public class Product {
     return this;
   }
 
-   /**
+  /**
    * Get productID
    * @return productID
-  **/
+   */
   @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_PRODUCT_I_D)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -235,10 +235,10 @@ public class Product {
     return this;
   }
 
-   /**
+  /**
    * ISO 4217 currency code. 
    * @return supportedCurrencies
-  **/
+   */
   @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_SUPPORTED_CURRENCIES)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -268,10 +268,10 @@ public class Product {
     return this;
   }
 
-   /**
+  /**
    * Get productCodes
    * @return productCodes
-  **/
+   */
   @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_PRODUCT_CODES)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -294,11 +294,11 @@ public class Product {
     return this;
   }
 
-   /**
+  /**
    * Get description
    * @return description
    * @deprecated
-  **/
+   */
   @Deprecated
   @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_DESCRIPTION)
@@ -322,10 +322,10 @@ public class Product {
     return this;
   }
 
-   /**
+  /**
    * Get uri
    * @return uri
-  **/
+   */
   @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_URI)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)

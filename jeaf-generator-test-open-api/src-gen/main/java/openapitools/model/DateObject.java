@@ -39,7 +39,7 @@ import openapitools.JSON;
   DateObject.JSON_PROPERTY_SQL_DATE,
   DateObject.JSON_PROPERTY_UTIL_DATE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
 public class DateObject {
   public static final String JSON_PROPERTY_LOCAL_TIME = "localTime";
   private String _localTime;
@@ -67,10 +67,10 @@ public class DateObject {
     return this;
   }
 
-   /**
+  /**
    * Get _localTime
    * @return _localTime
-  **/
+   */
   @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_LOCAL_TIME)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -92,10 +92,10 @@ public class DateObject {
     return this;
   }
 
-   /**
+  /**
    * Get _localDate
    * @return _localDate
-  **/
+   */
   @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_LOCAL_DATE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -117,10 +117,10 @@ public class DateObject {
     return this;
   }
 
-   /**
+  /**
    * Get localDateTime
    * @return localDateTime
-  **/
+   */
   @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_LOCAL_DATE_TIME)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -142,10 +142,10 @@ public class DateObject {
     return this;
   }
 
-   /**
+  /**
    * Get calendar
    * @return calendar
-  **/
+   */
   @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_CALENDAR)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -167,10 +167,10 @@ public class DateObject {
     return this;
   }
 
-   /**
+  /**
    * Get sqlDate
    * @return sqlDate
-  **/
+   */
   @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_SQL_DATE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -192,10 +192,10 @@ public class DateObject {
     return this;
   }
 
-   /**
+  /**
    * Get utilDate
    * @return utilDate
-  **/
+   */
   @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_UTIL_DATE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)

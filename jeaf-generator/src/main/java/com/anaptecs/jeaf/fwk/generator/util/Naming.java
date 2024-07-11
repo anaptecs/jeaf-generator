@@ -48,8 +48,8 @@ public class Naming {
     return Naming.getFullyQualifiedName(pNamedElement, false);
   }
 
-  private static String getFullyQualifiedName( org.eclipse.uml2.uml.NamedElement pNamedElement,
-      boolean pIgnoreTemplateBinding ) {
+  public static String getFullyQualifiedName( org.eclipse.uml2.uml.NamedElement pNamedElement,
+      Boolean pIgnoreTemplateBinding ) {
     // Check parameter.
     String lQualifiedName;
     if (pNamedElement != null) {

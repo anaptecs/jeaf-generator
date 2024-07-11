@@ -1,0 +1,932 @@
+// license-header java merge-point
+package br.ita.finep.icammh.sad.web.AgendarColeta;
+
+/**
+ * 
+ */
+public abstract class AgendarColetaController
+    implements java.io.Serializable{
+    private static final long serialVersionUID = 1L;
+
+    private static final org.apache.commons.logging.Log logger = org.apache.commons.logging.LogFactory.getLog(AgendarColetaController.class);
+
+    /**
+     * 
+     */
+    public abstract void cancelarColeta(CancelarColetaForm form)
+        throws java.lang.Throwable;
+
+    /**
+     * 
+     */
+    public abstract void agendarColeta(AgendarColetaForm form)
+        throws java.lang.Throwable;
+
+    /**
+     * 
+     */
+    public abstract void pesquisarColetas(PesquisarColetasForm form)
+        throws java.lang.Throwable;
+
+    /**
+     * 
+     */
+    public abstract void salvarPesquisa(SalvarPesquisaForm form)
+        throws java.lang.Throwable;
+
+    /**
+     * <p>
+     * Limpe a pesquisa do session.
+     * </p>
+     */
+    public abstract void inicializar()
+        throws java.lang.Throwable;
+
+    /**
+     * Resets all the "isSet" flags on the forms to false.
+     */
+    protected void resetFormSetFlags()
+    {
+        this.getAgendamentoDeColetaAgendarForm().resetIsSetFlags();
+        this.getAgendamentoDeColetaCancelarForm().resetIsSetFlags();
+        this.getAgendamentoDeColetaBuscarForm().resetIsSetFlags();
+        this.getAgendarColetaForm().resetIsSetFlags();
+    }
+
+    /**
+     * Retrieves the {@link br.ita.finep.icammh.sad.web.AgendarColeta.AgendamentoDeColetaAgendarFormImpl} form instance (normally you wont't
+     * need to call this method explicitly, however this is here for times when you need to access the
+     * <em>agendarColetaAgendamentoDeColetaAgendarForm</em> instance outside of its assigned controller operation).
+     */
+    protected br.ita.finep.icammh.sad.web.AgendarColeta.AgendamentoDeColetaAgendarFormImpl getAgendamentoDeColetaAgendarForm()
+    {
+        // - we do this in the case a button that submitted the form was set to immediate (this should be removed
+        //   when we found a better way to handle this).
+        final javax.faces.component.UIForm uiForm = this.findForm(this.getContext().getViewRoot(), "agendarColetaAgendamentoDeColetaAgendarForm");
+        this.populateComponentInputs(uiForm);
+        return (br.ita.finep.icammh.sad.web.AgendarColeta.AgendamentoDeColetaAgendarFormImpl)this.resolveVariable("agendarColetaAgendamentoDeColetaAgendarForm");
+    }
+
+    public java.lang.String agendamentoDeColetaAgendar()
+    {
+        return agendamentoDeColetaAgendar((javax.faces.event.FacesEvent)null);
+    }
+
+    public void agendamentoDeColetaAgendar(final javax.faces.event.ActionEvent event)
+    {
+        this.agendamentoDeColetaAgendar((javax.faces.event.FacesEvent)event);
+    }
+
+    public void agendamentoDeColetaAgendar(final javax.faces.event.ValueChangeEvent event)
+    {
+        this.agendamentoDeColetaAgendar((javax.faces.event.FacesEvent)event);
+    }
+
+    public java.lang.String agendamentoDeColetaAgendar(final javax.faces.event.FacesEvent event)
+    {
+        String forward = null;
+        final Object currentForm = this.resolveVariable("form");
+        try
+        {
+            final br.ita.finep.icammh.sad.web.AgendarColeta.AgendamentoDeColetaAgendarFormImpl form =
+                this.getAgendamentoDeColetaAgendarForm();
+            form.setEvent(event);
+            this.setForm("form", form, true);
+            // - pass any properties from the previous form along
+            br.ita.finep.icammh.webapp.FormPopulator.populateForm(currentForm, form);
+            // - populate the form with any event attributes that may match
+            // IMPORTANT: it isn't possible to automatically populate any property named "id" since that
+            // is a reserved name in JSF (the id of a component), therefore we have to unfortunately ignore any available "id" attribute
+            br.ita.finep.icammh.webapp.FormPopulator.populateFormFromPropertyMap(
+                form, form.getDateTimeFormatters(), (java.util.Map)this.getRequestAttribute(ACTION_EVENT_ATTRIBUTES), new String[] {"id"});
+            if (event != null)
+            {
+                final java.util.Map eventProperties = new java.util.HashMap();
+                eventProperties.put(event.getComponent().getId(), event.getSource());
+                br.ita.finep.icammh.webapp.FormPopulator.populateFormFromPropertyMapAssignableTypesOnly(form, null, eventProperties);
+                br.ita.finep.icammh.webapp.FormPopulator.populateFormFromPropertyMap(
+                    form, form.getDateTimeFormatters(), event.getComponent().getAttributes(), new String[] {"id"});
+            }
+            // - populate the form with any request attributes that may match
+            br.ita.finep.icammh.webapp.FormPopulator.populateFormFromRequestAttributes(form, form.getDateTimeFormatters(), false);
+            // - populate the form with any request parameters that may match
+            br.ita.finep.icammh.webapp.FormPopulator.populateFormFromPropertyMap(
+                form, form.getDateTimeFormatters(), this.getContext().getExternalContext().getRequestParameterMap());
+            forward = _agendarColeta(form);
+            final javax.faces.application.FacesMessage.Severity messageSeverity = this.getMaximumMessageSeverity();
+            if (messageSeverity != null && javax.faces.application.FacesMessage.SEVERITY_ERROR.getOrdinal() <= messageSeverity.getOrdinal())
+            {
+                // - copy any messages to the 'currentForm'
+                org.apache.commons.beanutils.PropertyUtils.setProperty(currentForm,
+                    "jsfMessages", org.apache.commons.beanutils.PropertyUtils.getProperty(form, "jsfMessages"));
+                this.setForm("form", currentForm, false);
+            }
+            if (event != null)
+            {
+                AgendarColetaViewPopulator.populateFormAndViewVariables(this.getContext(), form);
+            }
+        }
+        catch (final Throwable throwable)
+        {
+            this.setForm("form", currentForm, false);
+            // - set the forward to null so that we stay on the current view
+            forward = null;
+            try
+            {
+                // - the exception is re-thrown by the exception handler and handled by the catch below if it can't get a messageKey
+                //   (no reason to check for presence of messageKey)
+                this.addErrorMessage(br.ita.finep.icammh.webapp.Messages.get(
+                    br.ita.finep.icammh.webapp.ExceptionHandler.instance().handleException(throwable),
+                    br.ita.finep.icammh.webapp.ExceptionHandler.instance().getMessageArguments(throwable)));
+            }
+            catch (Throwable exception)
+            {
+                logger.error(exception);
+                this.addExceptionMessage(exception);
+            }
+        }
+        return forward;
+    }
+
+    /**
+     * 
+     */
+    private java.lang.String _agendarColeta(final br.ita.finep.icammh.sad.web.AgendarColeta.AgendamentoDeColetaAgendarFormImpl form)
+        throws java.lang.Throwable
+    {
+        java.lang.String forward = null;
+        agendarColeta(form);
+        forward = _pesquisarColeta(form);
+        return forward;
+    }
+
+    /**
+     * 
+     */
+    private java.lang.String _pesquisarColeta(final br.ita.finep.icammh.sad.web.AgendarColeta.AgendamentoDeColetaAgendarFormImpl form)
+        throws java.lang.Throwable
+    {
+        java.lang.String forward = null;
+        pesquisarColetas(form);
+        forward = "agendar-coleta-agendamento-de-coleta";
+        return forward;
+    }
+
+    /**
+     * Retrieves the {@link br.ita.finep.icammh.sad.web.AgendarColeta.AgendamentoDeColetaCancelarFormImpl} form instance (normally you wont't
+     * need to call this method explicitly, however this is here for times when you need to access the
+     * <em>agendarColetaAgendamentoDeColetaCancelarForm</em> instance outside of its assigned controller operation).
+     */
+    protected br.ita.finep.icammh.sad.web.AgendarColeta.AgendamentoDeColetaCancelarFormImpl getAgendamentoDeColetaCancelarForm()
+    {
+        // - we do this in the case a button that submitted the form was set to immediate (this should be removed
+        //   when we found a better way to handle this).
+        final javax.faces.component.UIForm uiForm = this.findForm(this.getContext().getViewRoot(), "agendarColetaAgendamentoDeColetaCancelarForm");
+        this.populateComponentInputs(uiForm);
+        return (br.ita.finep.icammh.sad.web.AgendarColeta.AgendamentoDeColetaCancelarFormImpl)this.resolveVariable("agendarColetaAgendamentoDeColetaCancelarForm");
+    }
+
+    public java.lang.String agendamentoDeColetaCancelar()
+    {
+        return agendamentoDeColetaCancelar((javax.faces.event.FacesEvent)null);
+    }
+
+    public void agendamentoDeColetaCancelar(final javax.faces.event.ActionEvent event)
+    {
+        this.agendamentoDeColetaCancelar((javax.faces.event.FacesEvent)event);
+    }
+
+    public void agendamentoDeColetaCancelar(final javax.faces.event.ValueChangeEvent event)
+    {
+        this.agendamentoDeColetaCancelar((javax.faces.event.FacesEvent)event);
+    }
+
+    @SuppressWarnings("unchecked")
+    public java.lang.String agendamentoDeColetaCancelar(final javax.faces.event.FacesEvent event)
+    {
+        String forward = null;
+        final Object currentForm = this.resolveVariable("form");
+        try
+        {
+            final br.ita.finep.icammh.sad.web.AgendarColeta.AgendamentoDeColetaCancelarFormImpl form =
+                this.getAgendamentoDeColetaCancelarForm();
+            form.setEvent(event);
+            this.setForm("form", form, true);
+            // - pass any properties from the previous form along
+            br.ita.finep.icammh.webapp.FormPopulator.populateForm(currentForm, form);
+            // - populate the form with any event attributes that may match
+            // IMPORTANT: it isn't possible to automatically populate any property named "id" since that
+            // is a reserved name in JSF (the id of a component), therefore we have to unfortunately ignore any available "id" attribute
+            br.ita.finep.icammh.webapp.FormPopulator.populateFormFromPropertyMap(
+                form, form.getDateTimeFormatters(), (java.util.Map)this.getRequestAttribute(ACTION_EVENT_ATTRIBUTES), new String[] {"id"});
+            if (event != null)
+            {
+                final java.util.Map eventProperties = new java.util.HashMap();
+                eventProperties.put(event.getComponent().getId(), event.getSource());
+                br.ita.finep.icammh.webapp.FormPopulator.populateFormFromPropertyMapAssignableTypesOnly(form, null, eventProperties);
+                br.ita.finep.icammh.webapp.FormPopulator.populateFormFromPropertyMap(
+                    form, form.getDateTimeFormatters(), event.getComponent().getAttributes(), new String[] {"id"});
+            }
+            // - populate the form with any request attributes that may match
+            br.ita.finep.icammh.webapp.FormPopulator.populateFormFromRequestAttributes(form, form.getDateTimeFormatters(), false);
+            // - populate the form with any request parameters that may match
+            br.ita.finep.icammh.webapp.FormPopulator.populateFormFromPropertyMap(
+                form, form.getDateTimeFormatters(), this.getContext().getExternalContext().getRequestParameterMap());
+            forward = _cancelarAgendamento(form);
+            final javax.faces.application.FacesMessage.Severity messageSeverity = this.getMaximumMessageSeverity();
+            if (messageSeverity != null && javax.faces.application.FacesMessage.SEVERITY_ERROR.getOrdinal() <= messageSeverity.getOrdinal())
+            {
+                // - copy any messages to the 'currentForm'
+                org.apache.commons.beanutils.PropertyUtils.setProperty(currentForm,
+                    "jsfMessages", org.apache.commons.beanutils.PropertyUtils.getProperty(form, "jsfMessages"));
+                this.setForm("form", currentForm, false);
+            }
+            if (event != null)
+            {
+                AgendarColetaViewPopulator.populateFormAndViewVariables(this.getContext(), form);
+            }
+        }
+        catch (final Throwable throwable)
+        {
+            this.setForm("form", currentForm, false);
+            // - set the forward to null so that we stay on the current view
+            forward = null;
+            try
+            {
+                // - the exception is re-thrown by the exception handler and handled by the catch below if it can't get a messageKey
+                //   (no reason to check for presence of messageKey)
+                this.addErrorMessage(br.ita.finep.icammh.webapp.Messages.get(
+                    br.ita.finep.icammh.webapp.ExceptionHandler.instance().handleException(throwable),
+                    br.ita.finep.icammh.webapp.ExceptionHandler.instance().getMessageArguments(throwable)));
+            }
+            catch (Throwable exception)
+            {
+                logger.error(exception);
+                this.addExceptionMessage(exception);
+            }
+        }
+        return forward;
+    }
+
+    /**
+     * 
+     */
+    private java.lang.String _cancelarAgendamento(final br.ita.finep.icammh.sad.web.AgendarColeta.AgendamentoDeColetaCancelarFormImpl form)
+        throws java.lang.Throwable
+    {
+        java.lang.String forward = null;
+        cancelarColeta(form);
+        forward = _pesquisarColeta(form);
+        return forward;
+    }
+
+    /**
+     * 
+     */
+    private java.lang.String _pesquisarColeta(final br.ita.finep.icammh.sad.web.AgendarColeta.AgendamentoDeColetaCancelarFormImpl form)
+        throws java.lang.Throwable
+    {
+        java.lang.String forward = null;
+        pesquisarColetas(form);
+        forward = "agendar-coleta-agendamento-de-coleta";
+        return forward;
+    }
+
+    /**
+     * Retrieves the {@link br.ita.finep.icammh.sad.web.AgendarColeta.AgendamentoDeColetaBuscarFormImpl} form instance (normally you wont't
+     * need to call this method explicitly, however this is here for times when you need to access the
+     * <em>agendarColetaAgendamentoDeColetaBuscarForm</em> instance outside of its assigned controller operation).
+     */
+    protected br.ita.finep.icammh.sad.web.AgendarColeta.AgendamentoDeColetaBuscarFormImpl getAgendamentoDeColetaBuscarForm()
+    {
+        // - we do this in the case a button that submitted the form was set to immediate (this should be removed
+        //   when we found a better way to handle this).
+        final javax.faces.component.UIForm uiForm = this.findForm(this.getContext().getViewRoot(), "agendarColetaAgendamentoDeColetaBuscarForm");
+        this.populateComponentInputs(uiForm);
+        return (br.ita.finep.icammh.sad.web.AgendarColeta.AgendamentoDeColetaBuscarFormImpl)this.resolveVariable("agendarColetaAgendamentoDeColetaBuscarForm");
+    }
+
+    public java.lang.String agendamentoDeColetaBuscar()
+    {
+        return agendamentoDeColetaBuscar((javax.faces.event.FacesEvent)null);
+    }
+
+    public void agendamentoDeColetaBuscar(final javax.faces.event.ActionEvent event)
+    {
+        this.agendamentoDeColetaBuscar((javax.faces.event.FacesEvent)event);
+    }
+
+    public void agendamentoDeColetaBuscar(final javax.faces.event.ValueChangeEvent event)
+    {
+        this.agendamentoDeColetaBuscar((javax.faces.event.FacesEvent)event);
+    }
+
+    @SuppressWarnings("unchecked")
+    public java.lang.String agendamentoDeColetaBuscar(final javax.faces.event.FacesEvent event)
+    {
+        String forward = null;
+        final Object currentForm = this.resolveVariable("form");
+        try
+        {
+            final br.ita.finep.icammh.sad.web.AgendarColeta.AgendamentoDeColetaBuscarFormImpl form =
+                this.getAgendamentoDeColetaBuscarForm();
+            form.setEvent(event);
+            this.setForm("form", form, true);
+            // - pass any properties from the previous form along
+            br.ita.finep.icammh.webapp.FormPopulator.populateForm(currentForm, form);
+            // - populate the form with any event attributes that may match
+            // IMPORTANT: it isn't possible to automatically populate any property named "id" since that
+            // is a reserved name in JSF (the id of a component), therefore we have to unfortunately ignore any available "id" attribute
+            br.ita.finep.icammh.webapp.FormPopulator.populateFormFromPropertyMap(
+                form, form.getDateTimeFormatters(), (java.util.Map)this.getRequestAttribute(ACTION_EVENT_ATTRIBUTES), new String[] {"id"});
+            if (event != null)
+            {
+                final java.util.Map eventProperties = new java.util.HashMap();
+                eventProperties.put(event.getComponent().getId(), event.getSource());
+                br.ita.finep.icammh.webapp.FormPopulator.populateFormFromPropertyMapAssignableTypesOnly(form, null, eventProperties);
+                br.ita.finep.icammh.webapp.FormPopulator.populateFormFromPropertyMap(
+                    form, form.getDateTimeFormatters(), event.getComponent().getAttributes(), new String[] {"id"});
+            }
+            // - populate the form with any request attributes that may match
+            br.ita.finep.icammh.webapp.FormPopulator.populateFormFromRequestAttributes(form, form.getDateTimeFormatters(), false);
+            // - populate the form with any request parameters that may match
+            br.ita.finep.icammh.webapp.FormPopulator.populateFormFromPropertyMap(
+                form, form.getDateTimeFormatters(), this.getContext().getExternalContext().getRequestParameterMap());
+            forward = _salvarPesquisa(form);
+            final javax.faces.application.FacesMessage.Severity messageSeverity = this.getMaximumMessageSeverity();
+            if (messageSeverity != null && javax.faces.application.FacesMessage.SEVERITY_ERROR.getOrdinal() <= messageSeverity.getOrdinal())
+            {
+                // - copy any messages to the 'currentForm'
+                org.apache.commons.beanutils.PropertyUtils.setProperty(currentForm,
+                    "jsfMessages", org.apache.commons.beanutils.PropertyUtils.getProperty(form, "jsfMessages"));
+                this.setForm("form", currentForm, false);
+            }
+            if (event != null)
+            {
+                AgendarColetaViewPopulator.populateFormAndViewVariables(this.getContext(), form);
+            }
+        }
+        catch (final Throwable throwable)
+        {
+            this.setForm("form", currentForm, false);
+            // - set the forward to null so that we stay on the current view
+            forward = null;
+            try
+            {
+                // - the exception is re-thrown by the exception handler and handled by the catch below if it can't get a messageKey
+                //   (no reason to check for presence of messageKey)
+                this.addErrorMessage(br.ita.finep.icammh.webapp.Messages.get(
+                    br.ita.finep.icammh.webapp.ExceptionHandler.instance().handleException(throwable),
+                    br.ita.finep.icammh.webapp.ExceptionHandler.instance().getMessageArguments(throwable)));
+            }
+            catch (Throwable exception)
+            {
+                logger.error(exception);
+                this.addExceptionMessage(exception);
+            }
+        }
+        return forward;
+    }
+
+    /**
+     * 
+     */
+    private java.lang.String _salvarPesquisa(final br.ita.finep.icammh.sad.web.AgendarColeta.AgendamentoDeColetaBuscarFormImpl form)
+        throws java.lang.Throwable
+    {
+        java.lang.String forward = null;
+        salvarPesquisa(form);
+        forward = _pesquisarColeta(form);
+        return forward;
+    }
+
+    /**
+     * 
+     */
+    private java.lang.String _pesquisarColeta(final br.ita.finep.icammh.sad.web.AgendarColeta.AgendamentoDeColetaBuscarFormImpl form)
+        throws java.lang.Throwable
+    {
+        java.lang.String forward = null;
+        pesquisarColetas(form);
+        forward = "agendar-coleta-agendamento-de-coleta";
+        return forward;
+    }
+
+    /**
+     * Retrieves the {@link br.ita.finep.icammh.sad.web.AgendarColeta.AgendarColetaFormImpl} form instance (normally you wont't
+     * need to call this method explicitly, however this is here for times when you need to access the
+     * <em>agendarColetaAgendarColetaForm</em> instance outside of its assigned controller operation).
+     */
+    protected br.ita.finep.icammh.sad.web.AgendarColeta.AgendarColetaFormImpl getAgendarColetaForm()
+    {
+        // - we do this in the case a button that submitted the form was set to immediate (this should be removed
+        //   when we found a better way to handle this).
+        final javax.faces.component.UIForm uiForm = this.findForm(this.getContext().getViewRoot(), "agendarColetaAgendarColetaForm");
+        this.populateComponentInputs(uiForm);
+        return (br.ita.finep.icammh.sad.web.AgendarColeta.AgendarColetaFormImpl)this.resolveVariable("agendarColetaAgendarColetaForm");
+    }
+
+    public java.lang.String agendarColeta()
+    {
+        return agendarColeta((javax.faces.event.FacesEvent)null);
+    }
+
+    public void agendarColeta(final javax.faces.event.ActionEvent event)
+    {
+        this.agendarColeta((javax.faces.event.FacesEvent)event);
+    }
+
+    public void agendarColeta(final javax.faces.event.ValueChangeEvent event)
+    {
+        this.agendarColeta((javax.faces.event.FacesEvent)event);
+    }
+
+    @SuppressWarnings("unchecked")
+    public java.lang.String agendarColeta(final javax.faces.event.FacesEvent event)
+    {
+        String forward = null;
+        final Object currentForm = this.resolveVariable("form");
+        try
+        {
+            final br.ita.finep.icammh.sad.web.AgendarColeta.AgendarColetaFormImpl form =
+                this.getAgendarColetaForm();
+            form.setEvent(event);
+            this.setForm("form", form, true);
+            // - pass any properties from the previous form along
+            br.ita.finep.icammh.webapp.FormPopulator.populateForm(currentForm, form);
+            // - populate the form with any event attributes that may match
+            // IMPORTANT: it isn't possible to automatically populate any property named "id" since that
+            // is a reserved name in JSF (the id of a component), therefore we have to unfortunately ignore any available "id" attribute
+            br.ita.finep.icammh.webapp.FormPopulator.populateFormFromPropertyMap(
+                form, form.getDateTimeFormatters(), (java.util.Map)this.getRequestAttribute(ACTION_EVENT_ATTRIBUTES), new String[] {"id"});
+            if (event != null)
+            {
+                final java.util.Map eventProperties = new java.util.HashMap();
+                eventProperties.put(event.getComponent().getId(), event.getSource());
+                br.ita.finep.icammh.webapp.FormPopulator.populateFormFromPropertyMapAssignableTypesOnly(form, null, eventProperties);
+                br.ita.finep.icammh.webapp.FormPopulator.populateFormFromPropertyMap(
+                    form, form.getDateTimeFormatters(), event.getComponent().getAttributes(), new String[] {"id"});
+            }
+            // - populate the form with any request attributes that may match
+            br.ita.finep.icammh.webapp.FormPopulator.populateFormFromRequestAttributes(form, form.getDateTimeFormatters(), false);
+            // - populate the form with any request parameters that may match
+            br.ita.finep.icammh.webapp.FormPopulator.populateFormFromPropertyMap(
+                form, form.getDateTimeFormatters(), this.getContext().getExternalContext().getRequestParameterMap());
+            forward = _inicializar(form);
+            final javax.faces.application.FacesMessage.Severity messageSeverity = this.getMaximumMessageSeverity();
+            if (messageSeverity != null && javax.faces.application.FacesMessage.SEVERITY_ERROR.getOrdinal() <= messageSeverity.getOrdinal())
+            {
+                // - copy any messages to the 'currentForm'
+                org.apache.commons.beanutils.PropertyUtils.setProperty(currentForm,
+                    "jsfMessages", org.apache.commons.beanutils.PropertyUtils.getProperty(form, "jsfMessages"));
+                this.setForm("form", currentForm, false);
+            }
+            if (event != null)
+            {
+                AgendarColetaViewPopulator.populateFormAndViewVariables(this.getContext(), form);
+            }
+        }
+        catch (final Throwable throwable)
+        {
+            this.setForm("form", currentForm, false);
+            // - set the forward to null so that we stay on the current view
+            forward = null;
+            try
+            {
+                // - the exception is re-thrown by the exception handler and handled by the catch below if it can't get a messageKey
+                //   (no reason to check for presence of messageKey)
+                this.addErrorMessage(br.ita.finep.icammh.webapp.Messages.get(
+                    br.ita.finep.icammh.webapp.ExceptionHandler.instance().handleException(throwable),
+                    br.ita.finep.icammh.webapp.ExceptionHandler.instance().getMessageArguments(throwable)));
+            }
+            catch (Throwable exception)
+            {
+                logger.error(exception);
+                this.addExceptionMessage(exception);
+            }
+        }
+        return forward;
+    }
+
+    /**
+     * 
+     */
+    private java.lang.String _inicializar(final br.ita.finep.icammh.sad.web.AgendarColeta.AgendarColetaFormImpl form)
+        throws java.lang.Throwable
+    {
+        java.lang.String forward = null;
+        inicializar();
+        forward = _pesquisarColeta(form);
+        return forward;
+    }
+
+    /**
+     * 
+     */
+    private java.lang.String _pesquisarColeta(final br.ita.finep.icammh.sad.web.AgendarColeta.AgendarColetaFormImpl form)
+        throws java.lang.Throwable
+    {
+        java.lang.String forward = null;
+        pesquisarColetas(form);
+        forward = "agendar-coleta-agendamento-de-coleta";
+        return forward;
+    }
+
+    /**
+     * Returns a reference to the agendaService back-end service.
+     */
+    protected final br.ita.finep.icammh.sad.service.AgendaService getAgendaService()
+    {
+        try
+        {
+            return br.ita.finep.icammh.ServiceLocator.instance().getAgendaService();
+        }
+        catch (final Throwable throwable)
+        {
+            throw new RuntimeException(throwable);
+        }
+    }
+
+    /**
+     * Gets the current faces context.  This object is the point
+     * from which to retrieve any request, session, etc information.
+     *
+     * @return the JSF faces context instance.
+     */
+    public javax.faces.context.FacesContext getContext()
+    {
+        return javax.faces.context.FacesContext.getCurrentInstance();
+    }
+
+    /**
+     * A helper method that gets the current request from the faces
+     * context.
+     *
+     * @return the current request instance.
+     */
+    protected javax.servlet.http.HttpServletRequest getRequest()
+    {
+        return (javax.servlet.http.HttpServletRequest)this.getContext().getExternalContext().getRequest();
+    }
+
+    /**
+     * A helper method that gets the current reponse from the faces
+     * context.
+     *
+     * @return the current response instance.
+     */
+    protected javax.servlet.http.HttpServletResponse getResponse()
+    {
+        return (javax.servlet.http.HttpServletResponse)this.getContext().getExternalContext().getResponse();
+    }
+
+    /**
+     * A helper method that gets the current session from the faces
+     * context.
+     *
+     * @param create If the create parameter is true, create (if necessary) and return a
+     *        session instance associated with the current request. If the create
+     *        parameter is false return any existing session instance associated with the
+     *        current request, or return null if there is no such session.
+     * @return the current session instance.
+     */
+    protected javax.servlet.http.HttpSession getSession(final boolean create)
+    {
+        return (javax.servlet.http.HttpSession)this.getContext().getExternalContext().getSession(create);
+    }
+
+    /**
+     * Attempts to resolve the variable, given, the <code>name</code> of
+     * the variable using the faces context variable resolver instance.
+     *
+     * @return the resolved variable or null if not found.
+     */
+    protected java.lang.Object resolveVariable(final String name)
+    {
+        org.apache.myfaces.trinidad.context.RequestContext adfContext = org.apache.myfaces.trinidad.context.RequestContext.getCurrentInstance();
+        Object variable = adfContext.getPageFlowScope().get(name);
+        // - if we couldn't get the variable from the regular ADF context, see if
+        //   the session contains an ADF context with the variable
+        if (variable == null)
+        {
+            final javax.servlet.http.HttpSession session = this.getSession(false);
+            if (session != null)
+            {
+                final br.ita.finep.icammh.webapp.AdfFacesContextWrapper contextWrapper =
+                    (br.ita.finep.icammh.webapp.AdfFacesContextWrapper)session.getAttribute("AndroMDAADFContext");
+                adfContext = contextWrapper != null ? contextWrapper.getCurrentInstance() : null;
+            }
+            variable = adfContext != null ? adfContext.getPageFlowScope().get(name) : null;
+        }
+        // - finally try resolving it in the standard JSF manner
+        if (variable == null)
+        {
+            final javax.faces.context.FacesContext context = this.getContext();
+            variable = context != null ? context.getApplication().getVariableResolver().resolveVariable(context, name) : null;
+        }
+        return variable;
+    }
+
+    private void setForm(final String formKey, final Object form, boolean includeInSession)
+    {
+        final br.ita.finep.icammh.webapp.AdfFacesContextWrapper contextWrapper = new br.ita.finep.icammh.webapp.AdfFacesContextWrapper();
+        contextWrapper.getCurrentInstance().getPageFlowScope().put(formKey, form);
+        if (includeInSession)
+        {
+            this.setSessionAttribute(formKey, form);
+            // - add this temporary ADF context to the session so that we can retrieve from a view populator if required
+            this.getSession(false).setAttribute("AndroMDAADFContext", contextWrapper);
+        }
+    }
+
+    /**
+     * Finds the root cause of the given <code>throwable</code> and
+     * adds the message taken from that cause to the faces context messages.
+     *
+     * @param throwable the exception information to add.
+     */
+    protected final void addExceptionMessage(
+        Throwable throwable)
+    {
+        String message = null;
+        final Throwable rootCause = org.apache.commons.lang.exception.ExceptionUtils.getRootCause(throwable);
+        if (rootCause != null)
+        {
+            message = rootCause.toString();
+        }
+        if (message == null || message.trim().length() == 0)
+        {
+            message = throwable.toString();
+        }
+        this.addErrorMessage(message);
+    }
+
+    /**
+     * Adds the given error <code>message</code> to the current faces context.
+     *
+     * @param message the message to add.
+     */
+    protected void addErrorMessage(final String message)
+    {
+        this.addMessage(javax.faces.application.FacesMessage.SEVERITY_ERROR, message);
+    }
+
+    /**
+     * Adds the given warning <code>message</code> to the current faces context.
+     *
+     * @param message the message to add.
+     */
+    protected void addWarningMessage(final String message)
+    {
+        this.addMessage(javax.faces.application.FacesMessage.SEVERITY_WARN, message);
+    }
+
+    /**
+     * Adds the given info <code>message</code> to the current faces context.
+     *
+     * @param message the message to add.
+     */
+    protected void addInfoMessage(final String message)
+    {
+        this.addMessage(javax.faces.application.FacesMessage.SEVERITY_INFO, message);
+    }
+
+    /**
+     * Adds the given fatal <code>message</code> to the current faces context.
+     *
+     * @param message the message to add.
+     */
+    protected void addFatalMessage(final String message)
+    {
+        this.addMessage(javax.faces.application.FacesMessage.SEVERITY_FATAL, message);
+    }
+
+    /**
+     * Adds a message to the faces context (which will show up on your view when using the
+     * lt;h:messages/gt; tag).
+     *
+     * @param severity the severity of the message
+     * @param message the message to add.
+     */
+    protected void addMessage(final javax.faces.application.FacesMessage.Severity severity, final String message)
+    {
+        final javax.faces.application.FacesMessage facesMessage = new javax.faces.application.FacesMessage(severity, message, message);
+        final Object form = this.resolveVariable("form");
+        if (form != null)
+        {
+            try
+            {
+                final java.lang.reflect.Method method = form.getClass().getMethod(
+                    "addJsfMessages",
+                    new Class[]{javax.faces.application.FacesMessage.class});
+                method.invoke(form, new Object[]{facesMessage});
+            }
+            catch (final Exception exception)
+            {
+                throw new RuntimeException(exception);
+            }
+        }
+    }
+
+    /**
+     * Sets the messages title to use on the next view.
+     *
+     * @param messagesTitle the title to use.
+     */
+    protected void setMessagesTitle(final String messagesTitle)
+    {
+        final Object form = this.resolveVariable("form");
+        if (form != null)
+        {
+            try
+            {
+                final java.lang.reflect.Method method = form.getClass().getMethod(
+                    "setJsfMessagesTitle",
+                    new Class[]{java.lang.String.class});
+                method.invoke(form, new Object[]{messagesTitle});
+            }
+            catch (final Exception exception)
+            {
+                throw new RuntimeException(exception);
+            }
+        }
+    }
+
+    /**
+     * Gets the maximum severity of the messages stored in the current form.
+     *
+     * @return the maximum message severity.
+     */
+    protected javax.faces.application.FacesMessage.Severity getMaximumMessageSeverity()
+    {
+        javax.faces.application.FacesMessage.Severity maximumSeverity = null;
+        final Object form = this.resolveVariable("form");
+        if (form != null)
+        {
+            try
+            {
+                final java.lang.reflect.Method method = form.getClass().getMethod(
+                    "getMaximumMessageSeverity",
+                    (Class[])null);
+                maximumSeverity = (javax.faces.application.FacesMessage.Severity)method.invoke(form, (Object[])null);
+            }
+            catch (final Exception exception)
+            {
+                throw new RuntimeException(exception);
+            }
+        }
+        return maximumSeverity;
+    }
+
+    /**
+     * Copies all matching properties from the <code>fromForm</code> to the given
+     * <code>toForm</code> overridding any previously set values.
+     */
+    protected void copyForm(final Object fromForm, final Object toForm)
+    {
+        br.ita.finep.icammh.webapp.FormPopulator.populateForm(fromForm, toForm, true);
+    }
+
+    /**
+     * Finds the form (if one is present) on the given <code>component</code> having the given
+     * <code>id</code>.
+     *
+     * @param component the component to search.
+     * @param id the id of the form.
+     * @return the form or null if none was found.
+     */
+    @SuppressWarnings("unchecked")
+    private javax.faces.component.UIForm findForm(javax.faces.component.UIComponent component, String id)
+    {
+        javax.faces.component.UIForm foundForm = null;
+        if (component != null)
+        {
+            for (final java.util.Iterator iterator = component.getFacetsAndChildren(); iterator.hasNext();)
+            {
+                final Object object = iterator.next();
+                if (object instanceof javax.faces.component.UIComponent)
+                {
+                    final javax.faces.component.UIComponent uiComponent = (javax.faces.component.UIComponent)object;
+                    if (uiComponent instanceof javax.faces.component.UIForm)
+                    {
+                        final javax.faces.component.UIForm form = (javax.faces.component.UIForm)uiComponent;
+                        if (form.getId().equals(id))
+                        {
+                            foundForm = form;
+                            break;
+                        }
+                    }
+                    foundForm = this.findForm(uiComponent, id);
+                    if (foundForm != null)
+                    {
+                        break;
+                    }
+                }
+            }
+        }
+        return foundForm;
+    }
+
+    /**
+     * If the given <code>component</code> has an child input elements, this method finds
+     * them all and populates them.  This is to get around the fact that when immediate is set to true
+     * on a button that submits the form that the form isn't populated.
+     *
+     * @param component the component to populate.
+     */
+    @SuppressWarnings("unchecked")
+    private void populateComponentInputs(javax.faces.component.UIComponent component)
+    {
+        if (component != null)
+        {
+            for (final java.util.Iterator iterator = component.getFacetsAndChildren(); iterator.hasNext();)
+            {
+                final javax.faces.component.UIComponent uiComponent = (javax.faces.component.UIComponent)iterator.next();
+                if (uiComponent instanceof javax.faces.component.UIInput)
+                {
+                    try
+                    {
+                        final javax.faces.component.UIInput input = (javax.faces.component.UIInput)uiComponent;
+                        input.validate(this.getContext());
+                        input.updateModel(this.getContext());
+                    }
+                    catch (javax.faces.validator.ValidatorException exception)
+                    {
+                        // - ignore, no value is set (validate will be called by the regular
+                        //   JSF lifecycle processing anyway, this is just called to populate the
+                        //   local value
+                    }
+                }
+                else
+                {
+                    this.populateComponentInputs(uiComponent);
+                }
+            }
+        }
+    }
+    /**
+     * Retrieves the current action form while making sure the form is of the given
+     * <code>type</code>.  If the action form is found, but not of the given type, null will
+     * be returned.
+     *
+     * @param type the type of form to retrieve.
+     * @return the found form.
+     */
+    @SuppressWarnings("unchecked")
+    protected Object getCurrentActionForm(final Class type)
+    {
+        Object form = this.getCurrentActionForm();
+        if (!type.isInstance(form))
+        {
+            form = null;
+        }
+        return form;
+    }
+
+    /**
+     * Retrieves the current action form instance.
+     *
+     * @return the current action form instance.
+     */
+    protected Object getCurrentActionForm()
+    {
+        return this.resolveVariable("form");
+    }
+
+    /**
+     * The name of the request attribute that stores the attributes from the current action event.
+     */
+    private static final String ACTION_EVENT_ATTRIBUTES = "actionEventAttributes";
+
+    /**
+     * This method just captures the event attributes and sets them into the request
+     * so that we can retrieve in controller action operation and use to populate form.
+     *
+     * @param event the action event.
+     */
+    public void action(javax.faces.event.ActionEvent event)
+    {
+        this.setRequestAttribute(ACTION_EVENT_ATTRIBUTES, event.getComponent().getAttributes());
+    }
+
+    protected void setRequestAttribute(final String name, final Object object)
+    {
+        br.ita.finep.icammh.webapp.JsfUtils.setAttribute(this.getContext().getExternalContext().getRequest(), name, object);
+    }
+
+    protected Object getRequestAttribute(final String name)
+    {
+        return br.ita.finep.icammh.webapp.JsfUtils.getAttribute(this.getContext().getExternalContext().getRequest(), name);
+    }
+
+    protected void setSessionAttribute(final String name, final Object object)
+    {
+        br.ita.finep.icammh.webapp.JsfUtils.setAttribute(this.getContext().getExternalContext().getSession(false), name, object);
+    }
+
+    protected Object getSessionAttribute(final String name)
+    {
+        return br.ita.finep.icammh.webapp.JsfUtils.getAttribute(this.getContext().getExternalContext().getSession(false), name);
+    }
+
+}

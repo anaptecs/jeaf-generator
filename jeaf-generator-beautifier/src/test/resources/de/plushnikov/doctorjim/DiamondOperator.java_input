@@ -1,0 +1,42 @@
+/*
+ * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
+ *
+ * Copyright 2004 - 2019. All rights reserved.
+ */
+package com.anaptecs.jeaf.junit.activities;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.anaptecs.jeaf.core.api.Activity;
+
+/**
+ * Interface of activity ErstelleStreckenActivity.
+ *
+ * Intention of thius activity is to transform the results from HAFAS to out internal representation as Strecke.
+ */
+public interface ErstelleStreckenActivity extends Activity {
+  /**
+   * Intention of thius activity is to transform the results from HAFAS to out internal representation as Strecke.
+   *
+   * @param pConnections
+   * @param pValue This is an integer value as input for an activity.
+   * @return java.util.List<com.anaptecs.jeaf.junit.domainObjects.Strecke>
+   */
+  java.util.List<com.anaptecs.jeaf.junit.domainObjects.Strecke> execute(
+      java.util.List<com.anaptecs.jeaf.junit.domainObjects.InfoPLUSConnection> pConnections, java.lang.Integer pValue );
+
+  List<?> doSomething( );
+  
+  default String get( ) {
+    java.util.List<String> list = new java.util.ArrayList<>();
+    java.util.function.Function<String, String> foo = parameter -> parameter + " from lambda";
+
+    java.util.Set<String> set = new java.util.HashSet<String>();
+    set.addAll(java.util.Arrays.asList("leo", "bale", "hanks"));
+    java.util.function.Predicate<String> pred = set::contains;
+    boolean exists = pred.test("leo");
+
+    return "Hello World!";
+  }
+}

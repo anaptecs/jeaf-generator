@@ -33,7 +33,7 @@ import openapitools.JSON;
   MoneyAmount.JSON_PROPERTY_AMOUNT,
   MoneyAmount.JSON_PROPERTY_CURRENCY_CODE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
 public class MoneyAmount {
   public static final String JSON_PROPERTY_AMOUNT = "amount";
   private Double amount;
@@ -49,10 +49,10 @@ public class MoneyAmount {
     return this;
   }
 
-   /**
+  /**
    * The amount of money. Attribute is always set. 
    * @return amount
-  **/
+   */
   @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_AMOUNT)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -74,10 +74,10 @@ public class MoneyAmount {
     return this;
   }
 
-   /**
+  /**
    * ISO 4217 currency code. 
    * @return currencyCode
-  **/
+   */
   @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_CURRENCY_CODE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)

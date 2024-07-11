@@ -35,7 +35,7 @@ import openapitools.JSON;
   DirectedEdge.JSON_PROPERTY_END,
   DirectedEdge.JSON_PROPERTY_PREVIOUS_NAME
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
 public class DirectedEdge {
   public static final String JSON_PROPERTY_START = "start";
   private Stop start;
@@ -54,10 +54,10 @@ public class DirectedEdge {
     return this;
   }
 
-   /**
+  /**
    * Get start
    * @return start
-  **/
+   */
   @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_START)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -79,10 +79,10 @@ public class DirectedEdge {
     return this;
   }
 
-   /**
+  /**
    * Get end
    * @return end
-  **/
+   */
   @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_END)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -104,10 +104,10 @@ public class DirectedEdge {
     return this;
   }
 
-   /**
+  /**
    * Another simple comment. &lt;br&gt;&lt;br&gt; Java Property Name: &#39;link&#39;  
    * @return previousName
-  **/
+   */
   @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_PREVIOUS_NAME)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)

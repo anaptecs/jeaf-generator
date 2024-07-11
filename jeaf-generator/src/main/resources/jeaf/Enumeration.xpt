@@ -333,7 +333,7 @@ public final class «name» {
 		/**
 		 * Class implements a JSON / Jackson serializer for class «name».
 		 */
-		public class «name»Serializer extends com.fasterxml.jackson.databind.JsonSerializer<«name»> {
+		public class «name»Serializer extends com.fasterxml.jackson.databind.JsonSerializer<«this.fqn()»> {
 		  @Override
 		  public void serialize( «this.fqn()» pObject, com.fasterxml.jackson.core.JsonGenerator pGenerator, com.fasterxml.jackson.databind.SerializerProvider pSerializers ) throws java.io.IOException {
 		    // Write value directly to JSON and avoid nesting object structures. Existing toString() operation is exactly what we need.

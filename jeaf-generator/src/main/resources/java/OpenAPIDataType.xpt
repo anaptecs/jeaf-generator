@@ -185,7 +185,7 @@
 		/**
 		 * Class implements a JSON / Jackson serializer for class «name».
 		 */
-		public class «name»Serializer extends com.fasterxml.jackson.databind.JsonSerializer<«name»> {		
+		public class «name»Serializer extends com.fasterxml.jackson.databind.JsonSerializer<«this.fqn()»> {		
 		  «IF this.generateInternalViewOfCompositeDataType()»
 			«IF this.hasCompositeDateTypeCustomSerialization() == false»
 				/**
@@ -330,7 +330,7 @@
 					if (lNode instanceof com.fasterxml.jackson.databind.node.TextNode) {
 						// Convert public string representation of «name» into real object.
 				  	«IF this.hasCompositeDateTypeCustomSerialization()»
-				  		return «name».deserialize(lNode.asText());
+				  		return «this.fqn()».deserialize(lNode.asText());
 				  	«ELSE»
 						«IF this.hasCompositePublicFieldProperties()»
 							«IF isTargetRuntimeJEAF()»

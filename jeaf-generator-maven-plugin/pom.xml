@@ -20,6 +20,12 @@
 		
 		<dependency>
 			<groupId>com.anaptecs.jeaf.generator</groupId>
+			<artifactId>jeaf-generator-beautifier</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.anaptecs.jeaf.generator</groupId>
 			<artifactId>jeaf-generator-code-styles</artifactId>
 			<version>${project.version}</version>
 		</dependency>
@@ -68,7 +74,7 @@
 			<artifactId>maven-core</artifactId>
 			<version>${maven.core.jar.version}</version>
 		</dependency>
-
+		
         <dependency>
             <groupId>io.swagger.parser.v3</groupId>
             <artifactId>swagger-parser</artifactId>

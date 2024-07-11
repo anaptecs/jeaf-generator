@@ -1,0 +1,14 @@
+package org.andromda.test;
+
+import java.util.HashMap;
+
+/**
+ * Test for Map.Entry special case 2
+ */
+public class TestClass {
+    public void test(HashMap<String, String> param) {
+        for (Map.Entry<String, String> entry : param.entrySet()) {
+            System.out.println(entry.getKey() + " " + entry.getValue());
+        }
+    }
+}

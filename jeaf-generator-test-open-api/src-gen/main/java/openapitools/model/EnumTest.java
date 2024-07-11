@@ -33,7 +33,7 @@ import openapitools.JSON;
   EnumTest.JSON_PROPERTY_PROPERTY,
   EnumTest.JSON_PROPERTY_ENUM_REF
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
 public class EnumTest {
   public static final String JSON_PROPERTY_PROPERTY = "property";
   private String property;
@@ -49,10 +49,10 @@ public class EnumTest {
     return this;
   }
 
-   /**
+  /**
    * Get property
    * @return property
-  **/
+   */
   @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_PROPERTY)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -74,10 +74,10 @@ public class EnumTest {
     return this;
   }
 
-   /**
+  /**
    * Get enumRef
    * @return enumRef
-  **/
+   */
   @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_ENUM_REF)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)

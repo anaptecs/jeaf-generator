@@ -40,6 +40,7 @@ import org.eclipse.uml2.uml.Port;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Relationship;
 import org.eclipse.uml2.uml.Stereotype;
+import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.TypedElement;
 
@@ -211,14 +212,21 @@ public class ClassUtil {
     Type lType = pTypedElement.getType();
     String lFQN;
     if (lType != null) {
-      if (lType instanceof Class && ((Class) lType).getTemplateBindings().isEmpty() == false) {
+      TemplateParameter lTemplateParameter = lType.getTemplateParameter();
+      if (lTemplateParameter != null
+          && pTypedElement.getNearestPackage().equals(
+              lTemplateParameter.getOwnedParameteredElement().getNearestPackage())) {
+
+        lFQN = lType.getName();
+      }
+      else if (lType instanceof Class && ((Class) lType).getTemplateBindings().isEmpty() == false) {
         lFQN = Naming.getTemplateBindingFQN((Class) lType);
       }
       else {
         String lTypePackage = getPackageName(lType);
 
         // Generate default type name.
-        String lTypeName = pTypedElement.getType().getName();
+        String lTypeName = lType.getName();
         if (lTypePackage != null && lTypePackage.length() > 0) {
           lFQN = lTypePackage + "." + lTypeName;
         }

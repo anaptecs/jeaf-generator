@@ -13,14 +13,18 @@ import static org.twdata.maven.mojoexecutor.MojoExecutor.goal;
 import static org.twdata.maven.mojoexecutor.MojoExecutor.plugin;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FilenameFilter;
 import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -30,6 +34,7 @@ import java.util.StringJoiner;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.execution.MavenSession;
 import org.apache.maven.model.Dependency;
@@ -73,6 +78,8 @@ import com.anaptecs.jeaf.xfun.api.checks.VerificationResult;
 import com.anaptecs.jeaf.xfun.api.errorhandling.ApplicationException;
 import com.anaptecs.jeaf.xfun.api.trace.Trace;
 
+import de.plushnikov.doctorjim.ImportProcessor;
+import de.plushnikov.doctorjim.javaparser.ParseException;
 import io.swagger.parser.OpenAPIParser;
 import io.swagger.v3.parser.core.models.AuthorizationValue;
 import io.swagger.v3.parser.core.models.ParseOptions;
@@ -2592,7 +2599,7 @@ public class GeneratorMojo extends AbstractMojo {
           "Skipping formatting of generated sources and resources as it is disabled in the plugin configuration.");
     }
     else {
-      this.executeImportBeautifierPlugin();
+      this.executeImportBeautifier();
       this.executeImportSorterPlugin();
       this.executeFormatterPlugin();
     }
@@ -2603,23 +2610,36 @@ public class GeneratorMojo extends AbstractMojo {
    * 
    * @throws MojoExecutionException
    */
-  private void executeImportBeautifierPlugin( ) throws MojoExecutionException {
+  private void executeImportBeautifier( ) throws MojoExecutionException {
     if (disableFormatting == true || disableSourceFormatting == true) {
       this.getLog().info("Skipping beautification of imports as it is disbale in the plugin configuration.");
     }
     else {
       this.getLog().info("Beautifying imports.");
 
-      // Execute Maven plugin to format sources.
-      List<Dependency> lDependencies = MojoExecutor.dependencies(MojoExecutor.dependency("com.anaptecs.jeaf.generator",
-          "jeaf-generator-maven-plugin", XFun.getVersionInfo().getVersionString()));
-      Plugin lBeautifierPlugin =
-          plugin("org.andromda.maven.plugins", "andromda-beautifier-plugin", "3.4", lDependencies);
-      String lBeautifierGoal = goal("beautify-imports");
-      Xpp3Dom lFormatterConfiguration = configuration(element("inputDirectory", sourceGenDirectory));
-
-      ExecutionEnvironment lExecutionEnvironment = executionEnvironment(mavenProject, mavenSession, pluginManager);
-      executeMojo(lBeautifierPlugin, lBeautifierGoal, lFormatterConfiguration, lExecutionEnvironment);
+      try {
+        String[] lExtensions = { "java" };
+        Collection<File> lFiles = FileUtils.listFiles(new File(sourceGenDirectory), lExtensions, true);
+        ImportProcessor lProcessor = new ImportProcessor();
+        for (File formatFile : lFiles) {
+          try {
+            this.getLog().debug("Beautifying imports on " + formatFile.getPath());
+            Charset lUTF8 = StandardCharsets.UTF_8;
+            String output = lProcessor.organizeImports(FileUtils.readFileToString(formatFile, lUTF8));
+            FileUtils.writeStringToFile(formatFile, output, lUTF8);
+          }
+          catch (ParseException e) {
+            // Don't allow a single file error to kill the whole process.
+            this.getLog().error("Beautifier error on " + formatFile.getCanonicalPath() + ": " + e.getMessage());
+          }
+        }
+      }
+      catch (FileNotFoundException e) {
+        throw new MojoExecutionException("FileNotFound creating beautifier output: " + sourceGenDirectory, e);
+      }
+      catch (IOException e) {
+        throw new MojoExecutionException("Error creating beautifier output: " + sourceGenDirectory, e);
+      }
     }
   }
 

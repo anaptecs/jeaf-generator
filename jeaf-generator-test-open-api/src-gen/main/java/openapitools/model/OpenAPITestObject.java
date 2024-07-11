@@ -41,7 +41,7 @@ import openapitools.JSON;
   OpenAPITestObject.JSON_PROPERTY_NULLABLE_ARRAY,
   OpenAPITestObject.JSON_PROPERTY_NOT_NULLABLE_ARRAY
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
 public class OpenAPITestObject {
   public static final String JSON_PROPERTY_READ_ONLY_ATTRIBUTE = "readOnlyAttribute";
   private String readOnlyAttribute;
@@ -81,10 +81,10 @@ public class OpenAPITestObject {
     return this;
   }
 
-   /**
+  /**
    * Get readOnlyAttribute
    * @return readOnlyAttribute
-  **/
+   */
   @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_READ_ONLY_ATTRIBUTE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -106,10 +106,10 @@ public class OpenAPITestObject {
     return this;
   }
 
-   /**
+  /**
    * Get readWriteAttribute
    * @return readWriteAttribute
-  **/
+   */
   @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_READ_WRITE_ATTRIBUTE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -131,10 +131,10 @@ public class OpenAPITestObject {
     return this;
   }
 
-   /**
+  /**
    * Get writeOnlyAttribute
    * @return writeOnlyAttribute
-  **/
+   */
   @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_WRITE_ONLY_ATTRIBUTE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -156,10 +156,10 @@ public class OpenAPITestObject {
     return this;
   }
 
-   /**
+  /**
    * Get nullableAttribute
    * @return nullableAttribute
-  **/
+   */
   @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_NULLABLE_ATTRIBUTE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -181,10 +181,10 @@ public class OpenAPITestObject {
     return this;
   }
 
-   /**
+  /**
    * Get notNullableAttribute
    * @return notNullableAttribute
-  **/
+   */
   @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_NOT_NULLABLE_ATTRIBUTE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -206,10 +206,10 @@ public class OpenAPITestObject {
     return this;
   }
 
-   /**
+  /**
    * Get readOnlyArray
    * @return readOnlyArray
-  **/
+   */
   @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_READ_ONLY_ARRAY)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -231,10 +231,10 @@ public class OpenAPITestObject {
     return this;
   }
 
-   /**
+  /**
    * Get readWriteArray
    * @return readWriteArray
-  **/
+   */
   @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_READ_WRITE_ARRAY)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -256,10 +256,10 @@ public class OpenAPITestObject {
     return this;
   }
 
-   /**
+  /**
    * Get writeOnlyArray
    * @return writeOnlyArray
-  **/
+   */
   @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_WRITE_ONLY_ARRAY)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -281,10 +281,10 @@ public class OpenAPITestObject {
     return this;
   }
 
-   /**
+  /**
    * Get nullableArray
    * @return nullableArray
-  **/
+   */
   @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_NULLABLE_ARRAY)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -306,10 +306,10 @@ public class OpenAPITestObject {
     return this;
   }
 
-   /**
+  /**
    * Get notNullableArray
    * @return notNullableArray
-  **/
+   */
   @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_NOT_NULLABLE_ARRAY)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)

@@ -36,7 +36,7 @@ import openapitools.JSON;
   Channel.JSON_PROPERTY_CODE,
   Channel.JSON_PROPERTY_SELF_SERVICE_CHANNEL
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.6.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
 public class Channel {
   public static final String JSON_PROPERTY_CHANNEL_TYPE = "channelType";
   private ChannelType channelType = ChannelType.MOBILE;
@@ -58,10 +58,10 @@ public class Channel {
     return this;
   }
 
-   /**
+  /**
    * Get channelType
    * @return channelType
-  **/
+   */
   @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_CHANNEL_TYPE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -83,10 +83,10 @@ public class Channel {
     return this;
   }
 
-   /**
+  /**
    * The business code of the channel 
    * @return channelCode
-  **/
+   */
   @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_CHANNEL_CODE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -108,10 +108,10 @@ public class Channel {
     return this;
   }
 
-   /**
+  /**
    * Get code
    * @return code
-  **/
+   */
   @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_CODE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
@@ -133,10 +133,10 @@ public class Channel {
     return this;
   }
 
-   /**
+  /**
    * Get selfServiceChannel
    * @return selfServiceChannel
-  **/
+   */
   @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_SELF_SERVICE_CHANNEL)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)

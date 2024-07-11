@@ -5,7 +5,9 @@
  */
 package com.anaptecs.jeaf.junit.core;
 
-public interface DefaultService extends com.anaptecs.jeaf.core.api.Service {
+import com.anaptecs.jeaf.core.api.Service;
+
+public interface DefaultService extends Service {
   /**
    */
   default void doNothing( ) {
@@ -32,24 +34,24 @@ public interface DefaultService extends com.anaptecs.jeaf.core.api.Service {
   }
 
   /**
-   * @return {@link java.lang.Double}
+   * @return {@link Double}
    */
-  default java.lang.Double customImplNoDefault( ) {
-    return java.lang.Double.valueOf(0);
+  default Double customImplNoDefault( ) {
+    return Double.valueOf(0);
   }
 
   /**
-   * @return {@link com.anaptecs.jeaf.junit.core.Color}
+   * @return {@link Color}
    */
-  default com.anaptecs.jeaf.junit.core.Color getColor( ) {
-    return com.anaptecs.jeaf.junit.core.Color.BLACK;
+  default Color getColor( ) {
+    return Color.BLACK;
   }
 
   /**
-   * @return {@link java.lang.Float}
+   * @return {@link Float}
    */
-  default java.lang.Float getFloatWithDefault( ) {
-    return java.lang.Float.valueOf(47.11f);
+  default Float getFloatWithDefault( ) {
+    return Float.valueOf(47.11f);
   }
 
   /**

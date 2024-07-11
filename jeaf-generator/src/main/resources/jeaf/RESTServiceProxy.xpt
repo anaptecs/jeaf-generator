@@ -421,10 +421,10 @@ public class «name»RESTProxy implements «this.fqn()» {
 		«IF getReturnTypeName() != "void"»
             
             «IF getReturnType().type.isClass() && getReturnType().type.asClass().templateBinding.isEmpty == false»
-            com.anaptecs.jeaf.rest.executor.api.TypeReference<«getReturnTypeName()»> lTypeReference = new TypeReference<«getReturnTypeName()»>() { };
-            com.anaptecs.jeaf.rest.executor.api.ObjectType lObjectType = ObjectType.createTypeReferenceObjectType(lTypeReference);
+            com.anaptecs.jeaf.rest.executor.api.TypeReference<«getReturnTypeName()»> lTypeReference = new com.anaptecs.jeaf.rest.executor.api.TypeReference<«getReturnTypeName()»>() { };
+            com.anaptecs.jeaf.rest.executor.api.ObjectType lObjectType = com.anaptecs.jeaf.rest.executor.api.ObjectType.createTypeReferenceObjectType(lTypeReference);
             «ELSE»
-            com.anaptecs.jeaf.rest.executor.api.ObjectType lObjectType = ObjectType.createObjectType(«getReturnType().type.fqn()».class);                
+            com.anaptecs.jeaf.rest.executor.api.ObjectType lObjectType = com.anaptecs.jeaf.rest.executor.api.ObjectType.createObjectType(«getReturnType().type.fqn()».class);                
             «ENDIF»
 			«IF this.getReturnResult().isMultivalued() == false»
 	            «IF generateRESTResponseValidation()»

@@ -973,7 +973,23 @@
       @Deprecated
       «ENDIF-»
       public «property.fqn()» «property.asGetter()»() {
-        return configuration.getConfigurationValue("«property.name»", «property.type.name».class);
+        «IF property.type.isStringType()»
+        return configuration.getConfigurationValue("«property.name»", java.lang.String.class);
+        «ELSEIF property.type.isBooleanType()»
+        return configuration.getConfigurationValue("«property.name»", java.lang.Boolean.class);
+        «ELSEIF property.type.isByteType()»
+        return configuration.getConfigurationValue("«property.name»", java.lang.Byte.class);
+        «ELSEIF property.type.isDoubleType()»
+        return configuration.getConfigurationValue("«property.name»", java.lang.Double.class);
+        «ELSEIF property.type.isFloatType()»
+        return configuration.getConfigurationValue("«property.name»", java.lang.Float.class);
+        «ELSEIF property.type.isLongType()»
+        return configuration.getConfigurationValue("«property.name»", java.lang.Long.class);
+        «ELSEIF property.type.isShortType()»
+        return configuration.getConfigurationValue("«property.name»", java.lang.Short.class);
+        «ELSE»
+        return configuration.getConfigurationValue("«property.name»", «property.type.getNearestPackage().fqn()».«property.type.name».class);
+        «ENDIF»
       }
       «ENDFOREACH»
 }

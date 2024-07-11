@@ -18,6 +18,7 @@
 «EXTENSION functions::QueryParam»
 «EXTENSION functions::BeanParam»
 «EXTENSION functions::JEAFDeprecated»
+«EXTENSION functions::NamedElement»
 
 «EXTENSION org::openarchitectureware::util::stdlib::io»
 
@@ -43,7 +44,7 @@
 
 | Service Name   | Description   | Deprecated since   | Planned to be removed   |
 |----------------|---------------|:------------------:|:-----------------------:|
-«FOREACH deprecations.typeSelect(JEAFService).typeSelect(JEAFDeprecated).sortBy(e|e.fqn()) AS service-»
+«FOREACH deprecations.typeSelect(JEAFService).typeSelect(JEAFDeprecated).sortBy(e|e.asNamedElement().fqn()).asNamedElement() AS service-»
 | `«service.name»` | «service.getDeprecationDescriptionForMarkup()» | «service.getDeprecatedSince()» | «service.getDeprecationRemoval()» |
 «ENDFOREACH-»
 «IF deprecations.typeSelect(JEAFService).size == 0-»
