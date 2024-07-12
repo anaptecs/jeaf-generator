@@ -3,11 +3,14 @@ package de.plushnikov.doctorjim;
 import java.io.File;
 import java.io.IOException;
 import java.io.StringReader;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
+import java.util.stream.Collectors;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -146,9 +149,10 @@ public class ImportProcessor {
    * @throws IOException in case of an I/O error
    * @throws java.io.UnsupportedEncodingException if the encoding is not supported by the VM
    */
-  public void organizeImports( File pInputFile, File pOutputFile ) throws ParseException, IOException {
+  public void organizeImports( File pInputFile, File pOutputFile, List<String> pImportGroups )
+    throws ParseException, IOException {
     final String lInput = FileUtils.readFileToString(pInputFile, getEncoding());
-    String lOutput = organizeImports(lInput);
+    String lOutput = organizeImports(lInput, pImportGroups);
     FileUtils.writeStringToFile(pOutputFile, lOutput, getEncoding());
   }
 
@@ -159,7 +163,7 @@ public class ImportProcessor {
    * @return a {@link java.lang.String} object.
    * @throws de.plushnikov.doctorjim.javaparser.ParseException in case of an parsing errors
    */
-  public String organizeImports( String pInput ) throws ParseException {
+  public String organizeImports( String pInput, List<String> pImportGroups ) throws ParseException {
     sLogger.debug("Started initialization of the parser");
     // create Parser and initialize with input string
     JavaParser lParser = new JavaParser(new StringReader(pInput));
@@ -292,7 +296,8 @@ public class ImportProcessor {
     }
 
     // append new imports
-    final String lGeneratedImportsSection = generateImportSection(lAllImports, lMainPackage, lStarImports);
+    final String lGeneratedImportsSection =
+        generateImportSection(lAllImports, lMainPackage, lStarImports, pImportGroups);
     if (lGeneratedImportsSection.length() > 0) {
       lBuffer.append(lGeneratedImportsSection);
       lBuffer.append(NEW_LINE);
@@ -459,23 +464,47 @@ public class ImportProcessor {
    * @return a {@link java.lang.String} object.
    */
   protected String generateImportSection( Set<String> pAllImports, String pMainPackage,
-      Collection<String> pStarImports ) {
+      Collection<String> pStarImports, List<String> pImportGroups ) {
     StringBuilder lBuffer = new StringBuilder(256);
 
-    for (String lImport : pAllImports) {
-      String lImportPackage = extractPackage(lImport);
-      // make sure the import is not redundant, because :
-      // - it is java.lang import (automatically imported)
-      // - it is part of the current package
-      // - there is * import from the same package already
-      if (!JAVA_LANG_PACKAGE.equals(lImportPackage) &&
-          !pMainPackage.equals(lImportPackage) &&
-          (lImport.endsWith(STAR_IMPORT) || !pStarImports.contains(lImportPackage + STAR_IMPORT))) {
-        lBuffer.append(IMPORT_STATEMENT).append(lImport).append(';').append(NEW_LINE);
+    List<List<String>> lAllGroupedImports = this.groupImports(pAllImports, pImportGroups);
+
+    int lLoopCount = 1;
+    for (List<String> lNextGroup : lAllGroupedImports) {
+      lLoopCount++;
+      for (String lImport : lNextGroup) {
+        String lImportPackage = extractPackage(lImport);
+        // make sure the import is not redundant, because :
+        // - it is java.lang import (automatically imported)
+        // - it is part of the current package
+        // - there is * import from the same package already
+        if (!JAVA_LANG_PACKAGE.equals(lImportPackage) &&
+            !pMainPackage.equals(lImportPackage) &&
+            (lImport.endsWith(STAR_IMPORT) || !pStarImports.contains(lImportPackage + STAR_IMPORT))) {
+          lBuffer.append(IMPORT_STATEMENT).append(lImport).append(';').append(NEW_LINE);
+        }
+      }
+      if (lLoopCount < lAllGroupedImports.size()) {
+        lBuffer.append(NEW_LINE);
       }
     }
 
     return lBuffer.toString();
+  }
+
+  public List<List<String>> groupImports( Set<String> pAllImports, List<String> pImportGroups ) {
+    List<List<String>> lGroupedImports = new ArrayList<>();
+    List<String> lLeftOvers = new ArrayList<>(pAllImports);
+    for (String lNextGroup : pImportGroups) {
+      List<String> lImports = pAllImports.stream().filter(e -> e.startsWith(lNextGroup)).collect(Collectors.toList());
+      Collections.sort(lImports);
+      lGroupedImports.add(lImports);
+      lLeftOvers.removeAll(lImports);
+    }
+
+    Collections.sort(lLeftOvers);
+    lGroupedImports.add(lLeftOvers);
+    return lGroupedImports;
   }
 
   /**

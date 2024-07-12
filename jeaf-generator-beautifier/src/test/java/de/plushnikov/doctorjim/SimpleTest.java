@@ -3,6 +3,7 @@ package de.plushnikov.doctorjim;
 import static org.junit.Assert.assertEquals;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import org.apache.commons.io.IOUtils;
 import org.junit.Before;
@@ -266,7 +267,7 @@ public class SimpleTest {
     String lInput = IOUtils.toString(this.getClass().getResourceAsStream(pFilename + ".java_input"));
     String lExpectedOutput = IOUtils.toString(this.getClass().getResourceAsStream(pFilename + ".java_output"));
 
-    String lOutput = mProcessor.organizeImports(lInput);
+    String lOutput = mProcessor.organizeImports(lInput, new ArrayList<String>());
 
     assertEquals(lExpectedOutput.trim(), lOutput.trim());
   }
