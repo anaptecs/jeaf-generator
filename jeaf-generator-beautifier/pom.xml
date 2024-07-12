@@ -42,6 +42,7 @@
                             <goal>javacc</goal>
                         </goals>
                         <configuration>
+                            <sourceDirectory>${project.basedir}/src/main/resources</sourceDirectory>
                             <outputDirectory>${project.basedir}/src-gen/main/java</outputDirectory>
                             <lookAhead>2</lookAhead>
                             <isStatic>false</isStatic>
