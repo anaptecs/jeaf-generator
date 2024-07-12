@@ -12,6 +12,12 @@
 «getFileHeader()»
 package «packageName()»;
 
+«IF this.hasCustomImplementation»
+    «PROTECT CSTART "/*" CEND "*/" ID "Import:"  + this.fqn()»
+    // TODO: Please add your custom imports here.
+    «ENDPROTECT»
+«ENDIF»
+
 «EXPAND functions::Javadoc::JavadocForType»
 «EXPAND java::Helper::GenerateDeprecationAnnotation-»
 
