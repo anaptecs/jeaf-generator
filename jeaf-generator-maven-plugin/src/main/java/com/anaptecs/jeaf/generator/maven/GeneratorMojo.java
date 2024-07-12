@@ -2600,7 +2600,6 @@ public class GeneratorMojo extends AbstractMojo {
     }
     else {
       this.executeImportBeautifier();
-      this.executeImportSorterPlugin();
       this.executeFormatterPlugin();
     }
   }
@@ -2625,7 +2624,9 @@ public class GeneratorMojo extends AbstractMojo {
           try {
             this.getLog().debug("Beautifying imports on " + formatFile.getPath());
             Charset lUTF8 = StandardCharsets.UTF_8;
-            String output = lProcessor.organizeImports(FileUtils.readFileToString(formatFile, lUTF8));
+            String[] lSplit = importGroups.split(",");
+            String output =
+                lProcessor.organizeImports(FileUtils.readFileToString(formatFile, lUTF8), Arrays.asList(lSplit));
             FileUtils.writeStringToFile(formatFile, output, lUTF8);
           }
           catch (ParseException e) {
@@ -2666,23 +2667,6 @@ public class GeneratorMojo extends AbstractMojo {
       ExecutionEnvironment lExecutionEnvironment = executionEnvironment(mavenProject, mavenSession, pluginManager);
       executeMojo(lFormatterPlugin, lFormatterGoal, lFormatterConfiguration, lExecutionEnvironment);
     }
-  }
-
-  /**
-   * Method executes the Maven plugin that organizes imports.
-   * 
-   * @throws MojoExecutionException
-   */
-  private void executeImportSorterPlugin( ) throws MojoExecutionException {
-    this.getLog().info("Sorting imports.");
-    Plugin lFormatterPlugin = plugin("net.revelc.code", "impsort-maven-plugin", "1.9.0");
-    String lFormatterGoal = goal("sort");
-    Xpp3Dom lFormatterConfiguration =
-        configuration(element("groups", importGroups), element("staticGroups", staticImportGroups),
-            element("removeUnused", Boolean.toString(removeUnusedImports)), this.createDirectoryElementConfiguration());
-
-    ExecutionEnvironment lExecutionEnvironment = executionEnvironment(mavenProject, mavenSession, pluginManager);
-    executeMojo(lFormatterPlugin, lFormatterGoal, lFormatterConfiguration, lExecutionEnvironment);
   }
 
   /**

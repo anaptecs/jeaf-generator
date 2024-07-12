@@ -20,7 +20,9 @@ import com.anaptecs.jeaf.junit.openapi.base.Context;
 import com.anaptecs.jeaf.junit.rest.generics.BusinessServiceObject;
 import com.anaptecs.jeaf.junit.rest.generics.GenericSingleValuedReponse;
 import com.anaptecs.jeaf.xfun.api.XFun;
+import com.anaptecs.jeaf.xfun.api.XFunMessages;
 import com.anaptecs.jeaf.xfun.api.errorhandling.ApplicationException;
+import com.anaptecs.jeaf.xfun.api.errorhandling.ErrorCode;
 import com.anaptecs.jeaf.xfun.api.errorhandling.JEAFSystemException;
 import com.anaptecs.jeaf.xfun.api.trace.Trace;
 

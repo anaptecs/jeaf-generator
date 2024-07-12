@@ -17,9 +17,6 @@
 	«getFileHeader()»
 	package «this.packageName()»;
   
-	import com.anaptecs.jeaf.xfun.api.XFunMessages;
-	import com.anaptecs.jeaf.xfun.api.XFun;
-	   
 	«EXPAND functions::Javadoc::JavadocForType»
 	«EXPAND java::Helper::GenerateGeneratedAnnotation»
 	«EXPAND java::Helper::GenerateSuppressWarningsAnnotation»
@@ -74,9 +71,6 @@
       «FILE packagePath() + "/" + name +"Base.java" src_gen»
       «getFileHeader()»
       package «this.packageName()»;
-      
-      import com.anaptecs.jeaf.xfun.api.XFunMessages;
-      import com.anaptecs.jeaf.xfun.api.XFun;        
       
       «EXPAND functions::Javadoc::JavadocForType»
 	  «EXPAND java::Helper::GenerateGeneratedAnnotation»

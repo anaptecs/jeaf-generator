@@ -61,7 +61,6 @@ import com.anaptecs.jeaf.xfun.api.errorhandling.JEAFSystemException;
 import com.anaptecs.jeaf.xfun.api.XFunMessages;
 import com.anaptecs.jeaf.core.api.Service;
 import com.anaptecs.jeaf.xfun.api.trace.Trace;
-import com.anaptecs.jeaf.xfun.api.XFun;
 «ENDIF»
 
 /**
@@ -203,7 +202,7 @@ final class «this.getCommandClassName()» extends Command {
      «targetService.name» lService = («targetService.name») pTargetService;
      
     // Trace service call.
-    Trace lTrace = XFun.getTrace();
+    Trace lTrace = com.anaptecs.jeaf.xfun.api.XFun.getTrace();
     lTrace.write(com.anaptecs.jeaf.core.api.MessageConstants.EXECUTING_SERVICE_CALL, this.getCalledServiceMethod() );
     
     «IF getReturnTypeName() != "void"»

@@ -18,7 +18,6 @@ package «packageName()»;
 import com.anaptecs.jeaf.xfun.api.errorhandling.ApplicationException;
 import com.anaptecs.jeaf.xfun.api.errorhandling.ErrorCode;
 import com.anaptecs.jeaf.xfun.api.info.VersionInfo;
-import com.anaptecs.jeaf.xfun.api.XFun;
 
 /**
  * Application exception that is used in order to indicate application specific problems.
@@ -108,7 +107,7 @@ public final class «name» extends ApplicationException {
    * @return VersionInfo Information about the used JEAF version. The method never returns null.
    */
   protected VersionInfo resolveVersionInfo() {
-    return XFun.getVersionInfo();
+    return com.anaptecs.jeaf.xfun.api.XFun.getVersionInfo();
   }
 
 }
@@ -128,7 +127,6 @@ package «packageName()»;
 import com.anaptecs.jeaf.xfun.api.errorhandling.ErrorCode;
 import com.anaptecs.jeaf.xfun.api.errorhandling.SystemException;
 import com.anaptecs.jeaf.xfun.api.info.VersionInfo;
-import com.anaptecs.jeaf.xfun.api.XFun;
 
 /**
  * System exception that is used in order to indicate technical problems.
@@ -217,7 +215,7 @@ public final class «name» extends SystemException {
    * @return VersionInfo Information about the used JEAF version. The method never returns null.
    */
   protected VersionInfo resolveVersionInfo() {
-    return XFun.getVersionInfo();
+    return com.anaptecs.jeaf.xfun.api.XFun.getVersionInfo();
   }
 }
 «ENDFILE»
