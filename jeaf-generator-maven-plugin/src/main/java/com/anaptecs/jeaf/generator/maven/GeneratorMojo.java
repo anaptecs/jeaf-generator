@@ -296,10 +296,25 @@ public class GeneratorMojo extends AbstractMojo {
   private Boolean generateCustomConstraints;
 
   /**
-   * Switch defines whether service interfaces should be generated or not.
+   * Switch defines whether service interfaces (non-reactive) should be generated or not.
    */
   @Parameter(required = false, defaultValue = "false")
   private Boolean generateServiceInterfaces;
+
+  /**
+   * Switch can be used to generate reactive service interfaces.<br>
+   * <br>
+   * Please be aware that generated code will have dependency on library <b><code>Reactor Code</code></b>. <br>
+   * 
+   * <pre>
+   * &#60;dependency>
+   *     &#60;groupId>io.projectreactor&#60;/groupId>
+   *     &#60;artifactId>reactor-core&#60;/artifactId>
+   * &#60;/dependency><br/>
+   * </pre>
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean generateReactiveServiceInterfaces;
 
   /**
    * Switch defines whether service proxies should be generated or not.
@@ -1528,6 +1543,9 @@ public class GeneratorMojo extends AbstractMojo {
     if (generateServiceInterfaces) {
       lLog.info("Generate Service Interfaces:                      " + generateServiceInterfaces);
     }
+    if (generateReactiveServiceInterfaces) {
+      lLog.info("Generate Reactive Service Interfaces:             " + generateReactiveServiceInterfaces);
+    }
     if (generateServiceProxies) {
       lLog.info("Generate Service Proxies:                         " + generateServiceProxies);
     }
@@ -1945,6 +1963,8 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty("switch.gen.custom.constraints", generateCustomConstraints.toString());
       System.setProperty("switch.gen.global.parts", generateGlobalParts.toString());
       System.setProperty("switch.gen.services", generateServiceInterfaces.toString());
+      System.setProperty(PROPERTY_PREFIX + "generateReactiveServiceInterfaces",
+          generateReactiveServiceInterfaces.toString());
       System.setProperty("switch.gen.service.proxies", generateServiceProxies.toString());
       System.setProperty("switch.gen.service.provider.interfaces", generateServiceProviderInterfaces.toString());
       System.setProperty("switch.gen.persistent.objects", generatePersistentObjects.toString());
@@ -2394,13 +2414,14 @@ public class GeneratorMojo extends AbstractMojo {
   }
 
   private boolean isUMLGenerationRequested( ) {
-    return generateCustomConstraints | generateServiceInterfaces | generateServiceProxies
-        | generateServiceProviderInterfaces | generateServiceProviderImpls | generateRESTResources
-        | generateRESTServiceProxies | generateRESTServiceProxyConfigFile | generateActivityInterfaces
-        | generateActivityImpls | generateServiceObjects | generatePOJOs | generateDomainObjects | generateObjectMappers
-        | generatePersistentObjects | generateComponentImpls | generateComponentRuntimeClasses | generateGlobalParts
-        | generateExceptionClasses | generateJUnitTests | generateTypesReport | generateBreakingChangesReport
-        | generateRESTDeprecationReport | generateJavaDeprecationReport | generateOpenAPISpec | generateJSONSerializers
+    return generateCustomConstraints | generateServiceInterfaces | generateReactiveServiceInterfaces
+        | generateServiceProxies | generateServiceProviderInterfaces | generateServiceProviderImpls
+        | generateRESTResources | generateRESTServiceProxies | generateRESTServiceProxyConfigFile
+        | generateActivityInterfaces | generateActivityImpls | generateServiceObjects | generatePOJOs
+        | generateDomainObjects | generateObjectMappers | generatePersistentObjects | generateComponentImpls
+        | generateComponentRuntimeClasses | generateGlobalParts | generateExceptionClasses | generateJUnitTests
+        | generateTypesReport | generateBreakingChangesReport | generateRESTDeprecationReport
+        | generateJavaDeprecationReport | generateOpenAPISpec | generateJSONSerializers
         | enforceCustomTemplateExecution;
   }
 

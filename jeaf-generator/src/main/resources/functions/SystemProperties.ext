@@ -64,3 +64,9 @@ cached boolean generateNotEmptyAnnotationForMultiValuedRESTParameters():
 
 cached String notEmptyAnnotationNameForMultiValuedRESTParameters():
     getSystemProperty("jeaf.generator.notEmptyAnnotationNameForMultiValuedRESTParameters");
+    
+cached boolean generateServiceInterfaces():
+    getBooleanSystemProperty("switch.gen.services", false);
+
+cached boolean generateReactiveServiceInterfaces():
+    getBooleanSystemProperty("jeaf.generator.generateReactiveServiceInterfaces", false);

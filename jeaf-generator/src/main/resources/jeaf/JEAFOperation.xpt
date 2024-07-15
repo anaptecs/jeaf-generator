@@ -2,6 +2,7 @@
 «EXTENSION java::GeneratorCommons»
 «EXTENSION entity::ModelProperties»
 «EXTENSION functions::DefaultOperation»
+«EXTENSION functions::JEAFService»
 «IMPORT uml»
 «IMPORT JMM»
 «IMPORT java»
@@ -12,22 +13,22 @@
 
 
 //interface methods are returned
-«DEFINE PlainInterfaceOperation(String context) FOR Operation»
+«DEFINE PlainInterfaceOperation(String context, boolean reactive) FOR Operation»
     «EXPAND functions::Javadoc::JavadocForOperation»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
     «EXPAND java::Helper::GenerateDeprecationAnnotation FOR this.getReturnResult() -»    
     «EXPAND Validation::ValidationAnnotation FOR this.getReturnResult()»
     «EXPAND java::Helper::NotNullAnnotationForParameter(context) FOR this.getReturnResult()»
-	«getReturnTypeName()»  «name» («EXPAND ParameterSignature(true, context)»)«getThrownExceptionsAsString()»;
+	«getReturnTypeName().getServiceOperationReturnTypeName(reactive)»  «name» («EXPAND ParameterSignature(true, context)»)«getThrownExceptionsAsString()»;
 «ENDDEFINE»
 
-«DEFINE ServiceInterfaceOperation FOR Operation»
+«DEFINE ServiceInterfaceOperation(boolean reactive) FOR Operation»
     «EXPAND functions::Javadoc::JavadocForOperation»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
     «EXPAND java::Helper::GenerateDeprecationAnnotation FOR this.getReturnResult() -»    
     «EXPAND Validation::ValidationAnnotation FOR this.getReturnResult()»
     «EXPAND java::Helper::NotNullAnnotationForParameter("JEAFService") FOR this.getReturnResult()»
-    «IF this.isDefaultOperation()»default «ENDIF»«getReturnTypeName()»  «name» («EXPAND ParameterSignature(true, "JEAFService")»)«getThrownExceptionsAsString()»
+    «IF this.isDefaultOperation()»default «ENDIF»«getReturnTypeName().getServiceOperationReturnTypeName(reactive)»  «name» («EXPAND ParameterSignature(true, "JEAFService")»)«getThrownExceptionsAsString()»
     «IF this.isDefaultOperation()»
         «LET this.asDefaultOperation().operationType AS operationType»
 	        {
@@ -81,13 +82,13 @@
     «ENDIF»
 «ENDDEFINE»
 
-«DEFINE ServiceOperationImpl(String context) FOR Operation»
+«DEFINE ServiceOperationImpl(String context, boolean reactive) FOR Operation»
     «EXPAND functions::Javadoc::JavadocForOperation»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
     «EXPAND java::Helper::GenerateDeprecationAnnotation FOR this.getReturnResult() -»
     «EXPAND java::Helper::NotNullAnnotationForParameter(context) FOR this.getReturnResult()»
     @Override
-    «visibility» «getReturnTypeName()» «name» («EXPAND ParameterSignatureNoValidationAnnotation»)«getThrownExceptionsAsString()» {
+    «visibility» «getReturnTypeName().getServiceOperationReturnTypeName(reactive)» «name» («EXPAND ParameterSignatureNoValidationAnnotation»)«getThrownExceptionsAsString()» {
         «IF getReturnTypeName() != "void"»
             // TODO Implement method and return real result
             «IF returnsPrimitiveType()»

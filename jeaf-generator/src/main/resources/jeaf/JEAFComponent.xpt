@@ -755,7 +755,7 @@
 		    return null;
 		  }
 
-          «EXPAND JEAFOperation::ServiceOperationImpl("JEAFService") FOREACH this.getAllOperations()»
+          «EXPAND JEAFOperation::ServiceOperationImpl("JEAFService", false) FOREACH this.getAllOperations()»
         
         }
         «ENDFILE»

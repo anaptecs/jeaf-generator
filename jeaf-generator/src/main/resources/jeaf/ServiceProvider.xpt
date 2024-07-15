@@ -16,7 +16,7 @@ package «packageName()»;
 «EXPAND java::Helper::GenerateDeprecationAnnotation-»
 public interface «name» extends «IF generalization.size > 0» «this.getAllExtendedInterfaces()» «ELSE»com.anaptecs.jeaf.core.api.ServiceProvider«ENDIF» {
 
-«EXPAND JEAFOperation::PlainInterfaceOperation("JEAFServiceProvider") FOREACH this.ownedOperation»
+«EXPAND JEAFOperation::PlainInterfaceOperation("JEAFServiceProvider", false) FOREACH this.ownedOperation»
 }
 «ENDFILE»
 
@@ -137,7 +137,7 @@ final class «name» extends «name»Base {
   }
 
 	«FOREACH this.getAllImplementedInterfaces() AS interface»
-	  «EXPAND JEAFOperation::ServiceOperationImpl("JEAFServiceProvider") FOREACH interface.ownedOperation»
+	  «EXPAND JEAFOperation::ServiceOperationImpl("JEAFServiceProvider", false) FOREACH interface.ownedOperation»
 	«ENDFOREACH»
 }
 «ENDFILE»
