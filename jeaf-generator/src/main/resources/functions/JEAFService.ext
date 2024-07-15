@@ -23,6 +23,30 @@ cached String getServiceNameFQN(JMM::JEAFService service, boolean reactive):
     else service.qualifiedName();
 
 cached String getServiceOperationReturnTypeName(String returnType, boolean reactive):
-    if reactive
-    then getMonoTypeName() + "<" + returnType + ">"
-    else returnType;
+    if reactive == false
+    then returnType
+    else 
+        if returnType == "void"
+        then getMonoTypeName() + "<Void>"
+        else
+            if returnType == "boolean"
+            then getMonoTypeName() + "<Boolean>"
+            else
+                if returnType == "byte"
+                then getMonoTypeName() + "<Byte>"
+                else
+                    if returnType == "short"
+                    then getMonoTypeName() + "<Short>"
+                    else
+                        if returnType == "int"
+                        then getMonoTypeName() + "<Integer>"
+                        else
+                            if returnType == "long"
+                            then getMonoTypeName() + "<Long>"
+                            else
+                                if returnType == "float"
+                                then getMonoTypeName() + "<Float>"
+                                else
+                                    if returnType == "double"
+                                    then getMonoTypeName() + "<Double>"
+                                    else getMonoTypeName() + "<" + returnType + ">";

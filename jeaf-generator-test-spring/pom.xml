@@ -69,7 +69,13 @@
             <version>${spring.security.version}</version>
             <scope>test</scope>            
 		</dependency>
-
+		
+		<dependency>
+			<groupId>io.projectreactor</groupId>
+			<artifactId>reactor-core</artifactId>
+			<version>${reactor-core.version}</version>
+		</dependency>
+ 
 		<dependency>
 			<groupId>javax.validation</groupId>
 			<artifactId>validation-api</artifactId>
@@ -172,6 +178,7 @@
 					<generateRESTResponseValidation>true</generateRESTResponseValidation>
 					<restPathPrefix>/nova/prefix</restPathPrefix>
 					<generateServiceInterfaces>true</generateServiceInterfaces>
+					<generateReactiveServiceInterfaces>true</generateReactiveServiceInterfaces>
 					<generatePOJOs>true</generatePOJOs>
 					<generateEqualsAndHashCode>true</generateEqualsAndHashCode>
 					<generateObjectValidationInBuilder>true</generateObjectValidationInBuilder>
