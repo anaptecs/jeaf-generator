@@ -43,7 +43,7 @@ public class ImportProcessor {
   private static final String STAR_IMPORT = ".*";
 
   /**
-   * Import parser behaivor for .* imports
+   * Import parser behavior for .* imports
    */
   private boolean mStrict;
 
