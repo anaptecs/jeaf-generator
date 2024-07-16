@@ -141,7 +141,7 @@ public class ImportProcessor {
   }
 
   /**
-   * Organized imports from InputFile and writes procesed data to OutputFile
+   * Organized imports from InputFile and writes processed data to OutputFile
    * 
    * @param pInputFile the file to read, must not be <code>null</code>
    * @param pOutputFile the file to write to, must not be <code>null</code>
@@ -199,7 +199,7 @@ public class ImportProcessor {
     // add some of basic java.lang types
     initializeJavaLang(lOriginalImports);
 
-    // if strict and there are star imports, break and return immedeadly
+    // if strict and there are star imports, break and return immediately
     if (isStrict() && !lStarImports.isEmpty()) {
       sLogger.debug("Doctor JIM is in strict modus and file contains star imports -> exiting");
       return pInput;
@@ -207,10 +207,10 @@ public class ImportProcessor {
 
     // extract head section of the file (everything before first import or just before package end)
     String lHeadSection = extractHeadSection(pInput, lPackage, lImports);
-    // extract import section of the file (everything between beginn of first import and end of last import)
+    // extract import section of the file (everything between begin of first import and end of last import)
     final String lImportsSection = extractImportsSection(pInput, lImports);
 
-    // check for safe import section (it means where are no comments beetween imports)
+    // check for safe import section (it means where are no comments between imports)
     final boolean lImportsAreSafe = verifyInputSection(lImportsSection);
 
     // prepare place for all javaparser imports
@@ -234,7 +234,7 @@ public class ImportProcessor {
       final String[] lParts = lType.split("\\.");
 
       int lCurrentScanToken = lParts.length - 1;
-      // search for last (first from the end) type-part, which starts with uppercase letter
+      // search for last (first from the end) type-part, which starts with upper case letter
       while (lCurrentScanToken >= 0 && !lParts[lCurrentScanToken].matches("\\p{Lu}.*")) {
         lCurrentScanToken--;
       }
@@ -268,7 +268,7 @@ public class ImportProcessor {
       }
     }
 
-    // prepare resultbuffer
+    // prepare result buffer
     final StringBuilder lBuffer = new StringBuilder(pInput.length());
 
     // add original head
@@ -514,7 +514,7 @@ public class ImportProcessor {
    *
    * @param pInput original Data-string
    * @param pLine a line in this string
-   * @param pColumn a column in thid string
+   * @param pColumn a column in this string
    * @return Position of a character in the string
    */
   protected int locatePosition( String pInput, int pLine, int pColumn ) {
@@ -527,11 +527,11 @@ public class ImportProcessor {
 
   /**
    * <p>
-   * Extracts packagename from the type declaration
+   * Extracts package name from the type declaration
    * </p>
    *
    * @param pImportType a declaration of some type.
-   * @return packagename of this type
+   * @return package name of this type
    */
   protected String extractPackage( String pImportType ) {
     final int index = pImportType.lastIndexOf('.');
