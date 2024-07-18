@@ -17,12 +17,12 @@ import com.anaptecs.jeaf.xfun.api.common.ObjectID;
 import com.anaptecs.jeaf.xfun.api.common.ObjectIdentity;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators.PropertyGenerator;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
 @JsonIgnoreProperties(ignoreUnknown = true)
-@JsonIdentityInfo(property = "objectID", generator = PropertyGenerator.class)
+@JsonIdentityInfo(property = "objectID", generator = ObjectIdGenerators.PropertyGenerator.class)
 public class POJOWithID implements Identifiable<ObjectID> {
   /**
    * Constant for the name of attribute "attr".

@@ -79,7 +79,6 @@ import com.anaptecs.jeaf.xfun.api.errorhandling.ApplicationException;
 import com.anaptecs.jeaf.xfun.api.trace.Trace;
 
 import de.plushnikov.doctorjim.ImportProcessor;
-import de.plushnikov.doctorjim.javaparser.ParseException;
 import io.swagger.parser.OpenAPIParser;
 import io.swagger.v3.parser.core.models.AuthorizationValue;
 import io.swagger.v3.parser.core.models.ParseOptions;
@@ -2629,7 +2628,7 @@ public class GeneratorMojo extends AbstractMojo {
                 lProcessor.organizeImports(FileUtils.readFileToString(formatFile, lUTF8), Arrays.asList(lSplit));
             FileUtils.writeStringToFile(formatFile, output, lUTF8);
           }
-          catch (ParseException e) {
+          catch (com.github.javaparser.ParseException e) {
             // Don't allow a single file error to kill the whole process.
             this.getLog().error("Beautifier error on " + formatFile.getCanonicalPath() + ": " + e.getMessage());
           }

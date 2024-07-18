@@ -10,10 +10,10 @@ import java.util.Locale;
 import javax.validation.Valid;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators.PropertyGenerator;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Valid
-@JsonIdentityInfo(property = "objectID", generator = PropertyGenerator.class)
+@JsonIdentityInfo(property = "objectID", generator = ObjectIdGenerators.PropertyGenerator.class)
 public class Reseller extends ResellerBase {
   /**
    * Default serial version uid.

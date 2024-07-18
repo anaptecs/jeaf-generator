@@ -1,5 +1,5 @@
 // license-header java merge-point
-package br.ita.finep.icammh.sad.web.AgendarColeta;
+package br.ita.finep.icammh.sad.web.agendarcoleta;
 
 /**
  * 
@@ -54,17 +54,17 @@ public abstract class AgendarColetaController
     }
 
     /**
-     * Retrieves the {@link br.ita.finep.icammh.sad.web.AgendarColeta.AgendamentoDeColetaAgendarFormImpl} form instance (normally you wont't
+     * Retrieves the {@link br.ita.finep.icammh.sad.web.agendarcoleta.AgendamentoDeColetaAgendarFormImpl} form instance (normally you wont't
      * need to call this method explicitly, however this is here for times when you need to access the
      * <em>agendarColetaAgendamentoDeColetaAgendarForm</em> instance outside of its assigned controller operation).
      */
-    protected br.ita.finep.icammh.sad.web.AgendarColeta.AgendamentoDeColetaAgendarFormImpl getAgendamentoDeColetaAgendarForm()
+    protected br.ita.finep.icammh.sad.web.agendarcoleta.AgendamentoDeColetaAgendarFormImpl getAgendamentoDeColetaAgendarForm()
     {
         // - we do this in the case a button that submitted the form was set to immediate (this should be removed
         //   when we found a better way to handle this).
         final javax.faces.component.UIForm uiForm = this.findForm(this.getContext().getViewRoot(), "agendarColetaAgendamentoDeColetaAgendarForm");
         this.populateComponentInputs(uiForm);
-        return (br.ita.finep.icammh.sad.web.AgendarColeta.AgendamentoDeColetaAgendarFormImpl)this.resolveVariable("agendarColetaAgendamentoDeColetaAgendarForm");
+        return (br.ita.finep.icammh.sad.web.agendarcoleta.AgendamentoDeColetaAgendarFormImpl)this.resolveVariable("agendarColetaAgendamentoDeColetaAgendarForm");
     }
 
     public java.lang.String agendamentoDeColetaAgendar()
@@ -88,7 +88,7 @@ public abstract class AgendarColetaController
         final Object currentForm = this.resolveVariable("form");
         try
         {
-            final br.ita.finep.icammh.sad.web.AgendarColeta.AgendamentoDeColetaAgendarFormImpl form =
+            final br.ita.finep.icammh.sad.web.agendarcoleta.AgendamentoDeColetaAgendarFormImpl form =
                 this.getAgendamentoDeColetaAgendarForm();
             form.setEvent(event);
             this.setForm("form", form, true);
@@ -151,7 +151,7 @@ public abstract class AgendarColetaController
     /**
      * 
      */
-    private java.lang.String _agendarColeta(final br.ita.finep.icammh.sad.web.AgendarColeta.AgendamentoDeColetaAgendarFormImpl form)
+    private java.lang.String _agendarColeta(final br.ita.finep.icammh.sad.web.agendarcoleta.AgendamentoDeColetaAgendarFormImpl form)
         throws java.lang.Throwable
     {
         java.lang.String forward = null;
@@ -163,7 +163,7 @@ public abstract class AgendarColetaController
     /**
      * 
      */
-    private java.lang.String _pesquisarColeta(final br.ita.finep.icammh.sad.web.AgendarColeta.AgendamentoDeColetaAgendarFormImpl form)
+    private java.lang.String _pesquisarColeta(final br.ita.finep.icammh.sad.web.agendarcoleta.AgendamentoDeColetaAgendarFormImpl form)
         throws java.lang.Throwable
     {
         java.lang.String forward = null;
@@ -173,17 +173,17 @@ public abstract class AgendarColetaController
     }
 
     /**
-     * Retrieves the {@link br.ita.finep.icammh.sad.web.AgendarColeta.AgendamentoDeColetaCancelarFormImpl} form instance (normally you wont't
+     * Retrieves the {@link br.ita.finep.icammh.sad.web.agendarcoleta.AgendamentoDeColetaCancelarFormImpl} form instance (normally you wont't
      * need to call this method explicitly, however this is here for times when you need to access the
      * <em>agendarColetaAgendamentoDeColetaCancelarForm</em> instance outside of its assigned controller operation).
      */
-    protected br.ita.finep.icammh.sad.web.AgendarColeta.AgendamentoDeColetaCancelarFormImpl getAgendamentoDeColetaCancelarForm()
+    protected br.ita.finep.icammh.sad.web.agendarcoleta.AgendamentoDeColetaCancelarFormImpl getAgendamentoDeColetaCancelarForm()
     {
         // - we do this in the case a button that submitted the form was set to immediate (this should be removed
         //   when we found a better way to handle this).
         final javax.faces.component.UIForm uiForm = this.findForm(this.getContext().getViewRoot(), "agendarColetaAgendamentoDeColetaCancelarForm");
         this.populateComponentInputs(uiForm);
-        return (br.ita.finep.icammh.sad.web.AgendarColeta.AgendamentoDeColetaCancelarFormImpl)this.resolveVariable("agendarColetaAgendamentoDeColetaCancelarForm");
+        return (br.ita.finep.icammh.sad.web.agendarcoleta.AgendamentoDeColetaCancelarFormImpl)this.resolveVariable("agendarColetaAgendamentoDeColetaCancelarForm");
     }
 
     public java.lang.String agendamentoDeColetaCancelar()
@@ -208,7 +208,7 @@ public abstract class AgendarColetaController
         final Object currentForm = this.resolveVariable("form");
         try
         {
-            final br.ita.finep.icammh.sad.web.AgendarColeta.AgendamentoDeColetaCancelarFormImpl form =
+            final br.ita.finep.icammh.sad.web.agendarcoleta.AgendamentoDeColetaCancelarFormImpl form =
                 this.getAgendamentoDeColetaCancelarForm();
             form.setEvent(event);
             this.setForm("form", form, true);
@@ -271,7 +271,7 @@ public abstract class AgendarColetaController
     /**
      * 
      */
-    private java.lang.String _cancelarAgendamento(final br.ita.finep.icammh.sad.web.AgendarColeta.AgendamentoDeColetaCancelarFormImpl form)
+    private java.lang.String _cancelarAgendamento(final br.ita.finep.icammh.sad.web.agendarcoleta.AgendamentoDeColetaCancelarFormImpl form)
         throws java.lang.Throwable
     {
         java.lang.String forward = null;
@@ -283,7 +283,7 @@ public abstract class AgendarColetaController
     /**
      * 
      */
-    private java.lang.String _pesquisarColeta(final br.ita.finep.icammh.sad.web.AgendarColeta.AgendamentoDeColetaCancelarFormImpl form)
+    private java.lang.String _pesquisarColeta(final br.ita.finep.icammh.sad.web.agendarcoleta.AgendamentoDeColetaCancelarFormImpl form)
         throws java.lang.Throwable
     {
         java.lang.String forward = null;
@@ -293,17 +293,17 @@ public abstract class AgendarColetaController
     }
 
     /**
-     * Retrieves the {@link br.ita.finep.icammh.sad.web.AgendarColeta.AgendamentoDeColetaBuscarFormImpl} form instance (normally you wont't
+     * Retrieves the {@link br.ita.finep.icammh.sad.web.agendarcoleta.AgendamentoDeColetaBuscarFormImpl} form instance (normally you wont't
      * need to call this method explicitly, however this is here for times when you need to access the
      * <em>agendarColetaAgendamentoDeColetaBuscarForm</em> instance outside of its assigned controller operation).
      */
-    protected br.ita.finep.icammh.sad.web.AgendarColeta.AgendamentoDeColetaBuscarFormImpl getAgendamentoDeColetaBuscarForm()
+    protected br.ita.finep.icammh.sad.web.agendarcoleta.AgendamentoDeColetaBuscarFormImpl getAgendamentoDeColetaBuscarForm()
     {
         // - we do this in the case a button that submitted the form was set to immediate (this should be removed
         //   when we found a better way to handle this).
         final javax.faces.component.UIForm uiForm = this.findForm(this.getContext().getViewRoot(), "agendarColetaAgendamentoDeColetaBuscarForm");
         this.populateComponentInputs(uiForm);
-        return (br.ita.finep.icammh.sad.web.AgendarColeta.AgendamentoDeColetaBuscarFormImpl)this.resolveVariable("agendarColetaAgendamentoDeColetaBuscarForm");
+        return (br.ita.finep.icammh.sad.web.agendarcoleta.AgendamentoDeColetaBuscarFormImpl)this.resolveVariable("agendarColetaAgendamentoDeColetaBuscarForm");
     }
 
     public java.lang.String agendamentoDeColetaBuscar()
@@ -328,7 +328,7 @@ public abstract class AgendarColetaController
         final Object currentForm = this.resolveVariable("form");
         try
         {
-            final br.ita.finep.icammh.sad.web.AgendarColeta.AgendamentoDeColetaBuscarFormImpl form =
+            final br.ita.finep.icammh.sad.web.agendarcoleta.AgendamentoDeColetaBuscarFormImpl form =
                 this.getAgendamentoDeColetaBuscarForm();
             form.setEvent(event);
             this.setForm("form", form, true);
@@ -391,7 +391,7 @@ public abstract class AgendarColetaController
     /**
      * 
      */
-    private java.lang.String _salvarPesquisa(final br.ita.finep.icammh.sad.web.AgendarColeta.AgendamentoDeColetaBuscarFormImpl form)
+    private java.lang.String _salvarPesquisa(final br.ita.finep.icammh.sad.web.agendarcoleta.AgendamentoDeColetaBuscarFormImpl form)
         throws java.lang.Throwable
     {
         java.lang.String forward = null;
@@ -403,7 +403,7 @@ public abstract class AgendarColetaController
     /**
      * 
      */
-    private java.lang.String _pesquisarColeta(final br.ita.finep.icammh.sad.web.AgendarColeta.AgendamentoDeColetaBuscarFormImpl form)
+    private java.lang.String _pesquisarColeta(final br.ita.finep.icammh.sad.web.agendarcoleta.AgendamentoDeColetaBuscarFormImpl form)
         throws java.lang.Throwable
     {
         java.lang.String forward = null;
@@ -413,17 +413,17 @@ public abstract class AgendarColetaController
     }
 
     /**
-     * Retrieves the {@link br.ita.finep.icammh.sad.web.AgendarColeta.AgendarColetaFormImpl} form instance (normally you wont't
+     * Retrieves the {@link br.ita.finep.icammh.sad.web.agendarcoleta.AgendarColetaFormImpl} form instance (normally you wont't
      * need to call this method explicitly, however this is here for times when you need to access the
      * <em>agendarColetaAgendarColetaForm</em> instance outside of its assigned controller operation).
      */
-    protected br.ita.finep.icammh.sad.web.AgendarColeta.AgendarColetaFormImpl getAgendarColetaForm()
+    protected br.ita.finep.icammh.sad.web.agendarcoleta.AgendarColetaFormImpl getAgendarColetaForm()
     {
         // - we do this in the case a button that submitted the form was set to immediate (this should be removed
         //   when we found a better way to handle this).
         final javax.faces.component.UIForm uiForm = this.findForm(this.getContext().getViewRoot(), "agendarColetaAgendarColetaForm");
         this.populateComponentInputs(uiForm);
-        return (br.ita.finep.icammh.sad.web.AgendarColeta.AgendarColetaFormImpl)this.resolveVariable("agendarColetaAgendarColetaForm");
+        return (br.ita.finep.icammh.sad.web.agendarcoleta.AgendarColetaFormImpl)this.resolveVariable("agendarColetaAgendarColetaForm");
     }
 
     public java.lang.String agendarColeta()
@@ -448,7 +448,7 @@ public abstract class AgendarColetaController
         final Object currentForm = this.resolveVariable("form");
         try
         {
-            final br.ita.finep.icammh.sad.web.AgendarColeta.AgendarColetaFormImpl form =
+            final br.ita.finep.icammh.sad.web.agendarcoleta.AgendarColetaFormImpl form =
                 this.getAgendarColetaForm();
             form.setEvent(event);
             this.setForm("form", form, true);
@@ -511,7 +511,7 @@ public abstract class AgendarColetaController
     /**
      * 
      */
-    private java.lang.String _inicializar(final br.ita.finep.icammh.sad.web.AgendarColeta.AgendarColetaFormImpl form)
+    private java.lang.String _inicializar(final br.ita.finep.icammh.sad.web.agendarcoleta.AgendarColetaFormImpl form)
         throws java.lang.Throwable
     {
         java.lang.String forward = null;
@@ -523,7 +523,7 @@ public abstract class AgendarColetaController
     /**
      * 
      */
-    private java.lang.String _pesquisarColeta(final br.ita.finep.icammh.sad.web.AgendarColeta.AgendarColetaFormImpl form)
+    private java.lang.String _pesquisarColeta(final br.ita.finep.icammh.sad.web.agendarcoleta.AgendarColetaFormImpl form)
         throws java.lang.Throwable
     {
         java.lang.String forward = null;
