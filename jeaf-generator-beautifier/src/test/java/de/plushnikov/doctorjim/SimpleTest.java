@@ -9,7 +9,7 @@ import org.apache.commons.io.IOUtils;
 import org.junit.Before;
 import org.junit.Test;
 
-import de.plushnikov.doctorjim.javaparser.ParseException;
+import com.github.javaparser.ParseException;
 
 /**
  * Simple testsuit for Importbeautifier tests
