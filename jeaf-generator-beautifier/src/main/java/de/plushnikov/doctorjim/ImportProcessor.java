@@ -31,6 +31,7 @@ import com.github.javaparser.ast.body.TypeDeclaration;
 import com.github.javaparser.ast.expr.AnnotationExpr;
 import com.github.javaparser.ast.expr.BinaryExpr;
 import com.github.javaparser.ast.expr.FieldAccessExpr;
+import com.github.javaparser.ast.expr.MemberValuePair;
 import com.github.javaparser.ast.expr.ThisExpr;
 import com.github.javaparser.ast.nodeTypes.NodeWithRange;
 import com.github.javaparser.ast.type.ClassOrInterfaceType;
@@ -275,19 +276,17 @@ public class ImportProcessor {
           lUsedTypes.add(lTypeName);
         }
       }
+      
       for (FieldAccessExpr lNext : lCompilationUnit.findAll(FieldAccessExpr.class)) {
         String lTypeName = lNext.toString();
         List<Node> lChildNodes = lNext.getChildNodes();
 
         // "this" expressions are not relevant to us.
         if (lChildNodes.size() > 0
-            && (lChildNodes.get(0) instanceof ThisExpr == false && lChildNodes.get(0) instanceof BinaryExpr == false)) {
-          // Try to detect constants by naming convention to avoid invalid imports. Unfortunately there is no better
-          // solution.
-          String lNameAsString = lNext.getNameAsString();
-          if (lNameAsString.equals(lNameAsString.toUpperCase()) == false && lUsedTypes.contains(lTypeName) == false) {
-            lUsedTypes.add(lTypeName);
-          }
+            && (lChildNodes.get(0) instanceof ThisExpr == false && 
+                lChildNodes.get(0) instanceof BinaryExpr == false && 
+                lNext.getParentNode().get() instanceof MemberValuePair == false)) {
+          lUsedTypes.add(lTypeName);
         }
       }
       for (AnnotationExpr lNext : lCompilationUnit.findAll(AnnotationExpr.class)) {
@@ -315,12 +314,43 @@ public class ImportProcessor {
           }
 
           if (lFound && lNext.indexOf(".") > -1) {
-            if(lTypesToProcess.contains(lNext) == false) {
+            if (lTypesToProcess.contains(lNext) == false) {
               lTypesToProcess.add(lNext);
             }
           }
         }
       }
+
+      // Filter out constants and inner classes
+      List<String> lFilteredTypes = new ArrayList<>();
+      for (String lNext : lTypesToProcess) {
+        String[] lParts = lNext.split("\\.");
+        int lIndex = 0;
+        if (lParts.length > 1) {
+          for (int i = lParts.length - 1; i >= 0; i--) {
+            String lPart = lParts[i];
+            if (lPart.matches("\\p{Lu}.*")) {
+              lIndex = i;
+            }
+            else {
+              break;
+            }
+          }
+          StringBuffer lBuffer = new StringBuffer();
+          for (int i = 0; i <= lIndex; i++) {
+            lBuffer.append(lParts[i]);
+            if (i < lIndex) {
+              lBuffer.append(".");
+            }
+          }
+          String lType = lBuffer.toString();
+          if (lFilteredTypes.contains(lType) == false) {
+            lFilteredTypes.add(lType);
+          }
+        }
+      }
+      
+      Collections.sort(lTypesToProcess);
 
       for (String lTypeName : lTypesToProcess) {
         final String[] lParts = lTypeName.split("\\.");
@@ -567,7 +597,8 @@ public class ImportProcessor {
       Collection<String> pStarImports, List<String> pImportGroups) {
     StringBuilder lBuffer = new StringBuilder(256);
 
-    List<List<String>> lAllGroupedImports = this.groupImports(pAllImports, pImportGroups);
+    List<List<String>> lAllGroupedImports = this.groupImports(pAllImports, pImportGroups, true);
+    lAllGroupedImports.addAll(this.groupImports(pAllImports, pImportGroups, false));
 
     int lLoopCount = 1;
     for (List<String> lNextGroup : lAllGroupedImports) {
@@ -592,7 +623,9 @@ public class ImportProcessor {
     return lBuffer.toString();
   }
 
-  public List<List<String>> groupImports(Set<String> pAllImports, List<String> pImportGroups) {
+  public List<List<String>> groupImports(Set<String> pAllImports, List<String> pImportGroups, boolean pStatic) {
+    // Reduce imports to those that should be processed (static or non-static ones)
+    pAllImports = pAllImports.stream().filter(f -> f.startsWith("static ") == pStatic).collect(Collectors.toSet());
     List<List<String>> lGroupedImports = new ArrayList<>();
     List<String> lLeftOvers = new ArrayList<>(pAllImports);
     for (String lNextGroup : pImportGroups) {

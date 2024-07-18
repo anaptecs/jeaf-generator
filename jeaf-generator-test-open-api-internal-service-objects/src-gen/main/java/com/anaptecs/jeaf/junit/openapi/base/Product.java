@@ -12,7 +12,7 @@ import java.util.UUID;
 import javax.validation.Valid;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators.PropertyGenerator;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 /**
  * Data type represents a product definition
@@ -23,7 +23,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators.PropertyGenerator;
  * @version JEAF Release 1.6.x
  */
 @Valid
-@JsonIdentityInfo(property = "objectID", generator = PropertyGenerator.class)
+@JsonIdentityInfo(property = "objectID", generator = ObjectIdGenerators.PropertyGenerator.class)
 public class Product extends ProductBase {
   /**
    * Default serial version uid.

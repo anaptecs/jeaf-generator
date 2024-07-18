@@ -11,13 +11,13 @@ import com.anaptecs.jeaf.accounting.validation.MyEnum;
 import com.anaptecs.jeaf.accounting.validation.MyGeneratedCustomConstraint;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.core.api.ServiceObjectID;
-import com.anaptecs.jeaf.tools.api.validation.Severity.Warning;
+import com.anaptecs.jeaf.tools.api.validation.Severity;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.anaptecs.jeaf.xfun.api.common.Identifiable;
 import com.anaptecs.jeaf.xfun.api.common.ObjectIdentity;
 
-@MyGeneratedCustomConstraint(myEnum = MyEnum.WORLD, message = "4711", payload = Warning.class)
+@MyGeneratedCustomConstraint(myEnum = MyEnum.WORLD, message = "4711", payload = Severity.Warning.class)
 public class Bank implements ServiceObject, Identifiable<ServiceObjectID> {
   /**
    * Default serial version uid.

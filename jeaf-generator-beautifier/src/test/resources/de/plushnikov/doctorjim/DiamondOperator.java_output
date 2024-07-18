@@ -7,6 +7,7 @@ package com.anaptecs.jeaf.junit.activities;
 
 import com.anaptecs.TokenServiceReactive;
 import com.anaptecs.jeaf.core.api.Activity;
+import com.anaptecs.jeaf.core.api.JEAF;
 import com.anaptecs.jeaf.junit.domainObjects.InfoPLUSConnection;
 import com.anaptecs.jeaf.junit.domainObjects.Strecke;
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import javax.ws.rs.core.Response;
 import reactor.core.publisher.Mono;
 
 /**
@@ -44,6 +46,8 @@ public interface ErstelleStreckenActivity extends Activity {
     set.addAll(Arrays.asList("leo", "bale", "hanks"));
     Predicate<String> pred = set::contains;
     boolean exists = pred.test("leo");
+    
+    JEAF.getServiceProvider(PersistenceServiceProvider.class);
 
 	Mono
             .defer(( ) -> {
@@ -58,5 +62,9 @@ public interface ErstelleStreckenActivity extends Activity {
             );
     
     return "Hello World!";
+  }
+  
+  default String doMore() {
+  			return Response.status(Status.NO_CONTENT).build();
   }
 }

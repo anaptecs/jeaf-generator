@@ -14,7 +14,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import javax.faces.application.FacesMessage;
-import javax.faces.application.FacesMessage.Severity;
 import javax.faces.component.UIComponent;
 import javax.faces.component.UIForm;
 import javax.faces.component.UIInput;
@@ -144,7 +143,7 @@ public abstract class AgendarColetaController
             FormPopulator.populateFormFromPropertyMap(
                 form, form.getDateTimeFormatters(), this.getContext().getExternalContext().getRequestParameterMap());
             forward = _agendarColeta(form);
-            final Severity messageSeverity = this.getMaximumMessageSeverity();
+            final FacesMessage.Severity messageSeverity = this.getMaximumMessageSeverity();
             if (messageSeverity != null && FacesMessage.SEVERITY_ERROR.getOrdinal() <= messageSeverity.getOrdinal())
             {
                 // - copy any messages to the 'currentForm'
@@ -264,7 +263,7 @@ public abstract class AgendarColetaController
             FormPopulator.populateFormFromPropertyMap(
                 form, form.getDateTimeFormatters(), this.getContext().getExternalContext().getRequestParameterMap());
             forward = _cancelarAgendamento(form);
-            final Severity messageSeverity = this.getMaximumMessageSeverity();
+            final FacesMessage.Severity messageSeverity = this.getMaximumMessageSeverity();
             if (messageSeverity != null && FacesMessage.SEVERITY_ERROR.getOrdinal() <= messageSeverity.getOrdinal())
             {
                 // - copy any messages to the 'currentForm'
@@ -384,7 +383,7 @@ public abstract class AgendarColetaController
             FormPopulator.populateFormFromPropertyMap(
                 form, form.getDateTimeFormatters(), this.getContext().getExternalContext().getRequestParameterMap());
             forward = _salvarPesquisa(form);
-            final Severity messageSeverity = this.getMaximumMessageSeverity();
+            final FacesMessage.Severity messageSeverity = this.getMaximumMessageSeverity();
             if (messageSeverity != null && FacesMessage.SEVERITY_ERROR.getOrdinal() <= messageSeverity.getOrdinal())
             {
                 // - copy any messages to the 'currentForm'
@@ -504,7 +503,7 @@ public abstract class AgendarColetaController
             FormPopulator.populateFormFromPropertyMap(
                 form, form.getDateTimeFormatters(), this.getContext().getExternalContext().getRequestParameterMap());
             forward = _inicializar(form);
-            final Severity messageSeverity = this.getMaximumMessageSeverity();
+            final FacesMessage.Severity messageSeverity = this.getMaximumMessageSeverity();
             if (messageSeverity != null && FacesMessage.SEVERITY_ERROR.getOrdinal() <= messageSeverity.getOrdinal())
             {
                 // - copy any messages to the 'currentForm'
@@ -739,7 +738,7 @@ public abstract class AgendarColetaController
      * @param severity the severity of the message
      * @param message the message to add.
      */
-    protected void addMessage(final Severity severity, final String message)
+    protected void addMessage(final FacesMessage.Severity severity, final String message)
     {
         final FacesMessage facesMessage = new FacesMessage(severity, message, message);
         final Object form = this.resolveVariable("form");
@@ -788,9 +787,9 @@ public abstract class AgendarColetaController
      *
      * @return the maximum message severity.
      */
-    protected Severity getMaximumMessageSeverity()
+    protected FacesMessage.Severity getMaximumMessageSeverity()
     {
-        Severity maximumSeverity = null;
+        FacesMessage.Severity maximumSeverity = null;
         final Object form = this.resolveVariable("form");
         if (form != null)
         {
@@ -799,7 +798,7 @@ public abstract class AgendarColetaController
                 final Method method = form.getClass().getMethod(
                     "getMaximumMessageSeverity",
                     (Class[])null);
-                maximumSeverity = (Severity)method.invoke(form, (Object[])null);
+                maximumSeverity = (FacesMessage.Severity)method.invoke(form, (Object[])null);
             }
             catch (final Exception exception)
             {

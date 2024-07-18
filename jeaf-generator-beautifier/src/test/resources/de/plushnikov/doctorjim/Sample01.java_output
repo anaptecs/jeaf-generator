@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
+import javax.hibernate.Basic;
 import javax.hibernate.JoinTable;
 import javax.hibernate.Table;
-import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import org.somepackage.annotations.Info;
@@ -17,12 +17,12 @@ public class SampleEntity {
     @Id()
     String id;
     
-    @Basic
+    @javax.persistence.Basic
     String name;
     
     @Table
     @JoinTable(table=@Table(schema="test"))
-    @javax.hibernate.Basic
+    @Basic
     String test;
 
     @Info(dtoClass="org.somepackage.sample.dto.SampleEntityDto")
