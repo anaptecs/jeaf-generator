@@ -401,9 +401,7 @@ public class ImportProcessor {
 
       return lBuffer.toString();
     }
-    else
-
-    {
+    else {
       throw new ParseException(lParseResult.getProblems().toString());
     }
   }
