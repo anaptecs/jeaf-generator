@@ -30,13 +30,25 @@ public interface ErstelleStreckenActivity extends Activity {
   
   default String get( ) {
     java.util.List<String> list = new java.util.ArrayList<>();
-    java.util.function.Function<String, String> foo = parameter -> parameter + " from lambda";
+    java.util.function.Function<java.lang.String, String> foo = parameter -> parameter + " from lambda";
 
     java.util.Set<String> set = new java.util.HashSet<String>();
     set.addAll(java.util.Arrays.asList("leo", "bale", "hanks"));
     java.util.function.Predicate<String> pred = set::contains;
     boolean exists = pred.test("leo");
 
+	reactor.core.publisher.Mono
+            .defer(( ) -> {
+                // Validate request parameter(s).
+                validationExecutor.validateRequest(com.anaptecs.TokenServiceReactive.class, pQuery, pContext);
+                // Delegate request to service.
+                return tokenServiceReactive.queryTokens(pQuery, pContext);
+            })
+            .doOnNext(lResponse ->
+                // Validate response.
+                validationExecutor.validateResponse(com.anaptecs.TokenServiceReactive.class, lResponse)
+            );
+    
     return "Hello World!";
   }
 }

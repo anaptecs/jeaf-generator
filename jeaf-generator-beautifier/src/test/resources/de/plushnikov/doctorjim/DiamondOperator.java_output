@@ -5,6 +5,7 @@
  */
 package com.anaptecs.jeaf.junit.activities;
 
+import com.anaptecs.TokenServiceReactive;
 import com.anaptecs.jeaf.core.api.Activity;
 import com.anaptecs.jeaf.junit.domainObjects.InfoPLUSConnection;
 import com.anaptecs.jeaf.junit.domainObjects.Strecke;
@@ -15,6 +16,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import reactor.core.publisher.Mono;
 
 /**
  * Interface of activity ErstelleStreckenActivity.
@@ -43,6 +45,18 @@ public interface ErstelleStreckenActivity extends Activity {
     Predicate<String> pred = set::contains;
     boolean exists = pred.test("leo");
 
+	Mono
+            .defer(( ) -> {
+                // Validate request parameter(s).
+                validationExecutor.validateRequest(TokenServiceReactive.class, pQuery, pContext);
+                // Delegate request to service.
+                return tokenServiceReactive.queryTokens(pQuery, pContext);
+            })
+            .doOnNext(lResponse ->
+                // Validate response.
+                validationExecutor.validateResponse(TokenServiceReactive.class, lResponse)
+            );
+    
     return "Hello World!";
   }
 }

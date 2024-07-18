@@ -25,17 +25,17 @@ public class SimpleTest {
   }
 
   @Test
-  public void testOne( ) throws IOException, ParseException {
+  public void testOne( ) throws Exception {
     testBeautifikation("Temp");
   }
 
   @Test
-  public void testTwo( ) throws IOException, ParseException {
+  public void testTwo( ) throws Exception {
     testBeautifikation("Temp2");
   }
 
   @Test
-  public void testThree( ) throws IOException, ParseException {
+  public void testThree( ) throws Exception {
     testBeautifikation("package-info");
   }
 
@@ -263,7 +263,7 @@ public class SimpleTest {
    * @throws IOException if any errors occured
    * @throws ParseException if any errors occured
    */
-  private void testBeautifikation( String pFilename ) throws IOException, ParseException {
+  private void testBeautifikation( String pFilename ) throws Exception {
     String lInput = IOUtils.toString(this.getClass().getResourceAsStream(pFilename + ".java_input"));
     String lExpectedOutput = IOUtils.toString(this.getClass().getResourceAsStream(pFilename + ".java_output"));
 
