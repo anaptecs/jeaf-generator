@@ -56,7 +56,7 @@ public class ServiceRemoteDelegate implements com.hybridlabs.axistest.Service {
         if (remote == null) {
             synchronized (ServiceRemoteDelegate.class) {
                 if (remote == null) {
-                    CacheKey cacheKey = new InstanceCacheKey(ServiceInterface.class);
+                    org.somepackage.cache.CacheKey cacheKey = new InstanceCacheKey(ServiceInterface.class);
                     remote = (ServiceInterface) InstanceCache.getCached(cacheKey);
                     
                     if (remote == null) {

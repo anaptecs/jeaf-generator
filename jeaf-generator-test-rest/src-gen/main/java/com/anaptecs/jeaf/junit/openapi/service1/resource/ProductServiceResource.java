@@ -40,6 +40,7 @@ import javax.ws.rs.container.AsyncResponse;
 import javax.ws.rs.container.Suspended;
 import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response.Status;
 
 import com.anaptecs.jeaf.core.api.JEAF;
 import com.anaptecs.jeaf.junit.openapi.base.BeanParameter;
@@ -101,8 +102,8 @@ public class ProductServiceResource {
             public void run( ) {
                 try {
                     List<Product> lResult = lService.getProducts();
-                    javax.ws.rs.core.Response lResponseObject = javax.ws.rs.core.Response
-                                    .status(javax.ws.rs.core.Response.Status.OK).entity(lResult).build();
+                    javax.ws.rs.core.Response lResponseObject =
+                                    javax.ws.rs.core.Response.status(Status.OK).entity(lResult).build();
                     // Due to the asynchronous processing of the requests, the response can not be returned as return
                     // value. Therefore we make use of the defined JAX-RS mechanisms.
                     pAsyncResponse.resume(lResponseObject);
@@ -126,7 +127,7 @@ public class ProductServiceResource {
         // Delegate request to service.
         ProductService lService = this.getProductService();
         Product lResult = lService.getProduct(pProductID);
-        return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.OK).entity(lResult).build();
+        return javax.ws.rs.core.Response.status(Status.OK).entity(lResult).build();
     }
 
     /**
@@ -137,7 +138,7 @@ public class ProductServiceResource {
         // Delegate request to service.
         ProductService lService = this.getProductService();
         boolean lResult = lService.createProduct(pProduct);
-        return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.OK).entity(lResult).build();
+        return javax.ws.rs.core.Response.status(Status.OK).entity(lResult).build();
     }
 
     /**
@@ -154,7 +155,7 @@ public class ProductServiceResource {
         // Delegate request to service.
         ProductService lService = this.getProductService();
         Sortiment lResult = lService.getSortiment(pContext);
-        return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.OK).entity(lResult).build();
+        return javax.ws.rs.core.Response.status(Status.OK).entity(lResult).build();
     }
 
     /**
@@ -168,7 +169,7 @@ public class ProductServiceResource {
         // Delegate request to service.
         ProductService lService = this.getProductService();
         ChannelCode lResult = lService.createChannelCode(pChannelCode);
-        return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.OK).entity(lResult).build();
+        return javax.ws.rs.core.Response.status(Status.OK).entity(lResult).build();
     }
 
     /**
@@ -179,7 +180,7 @@ public class ProductServiceResource {
         // Delegate request to service.
         ProductService lService = this.getProductService();
         lService.ping();
-        return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.ACCEPTED).build();
+        return javax.ws.rs.core.Response.status(Status.ACCEPTED).build();
     }
 
     /**
@@ -192,7 +193,7 @@ public class ProductServiceResource {
         // Delegate request to service.
         ProductService lService = this.getProductService();
         String lResult = lService.deprecatedOperation();
-        return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.OK).entity(lResult).build();
+        return javax.ws.rs.core.Response.status(Status.OK).entity(lResult).build();
     }
 
     /**
@@ -204,7 +205,7 @@ public class ProductServiceResource {
         // Delegate request to service.
         ProductService lService = this.getProductService();
         String lResult = lService.deprecatedContext(pContext);
-        return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.OK).entity(lResult).build();
+        return javax.ws.rs.core.Response.status(Status.OK).entity(lResult).build();
     }
 
     /**
@@ -216,7 +217,7 @@ public class ProductServiceResource {
         // Delegate request to service.
         ProductService lService = this.getProductService();
         lService.deprecatedBeanParam(pBeanParam);
-        return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.NO_CONTENT).build();
+        return javax.ws.rs.core.Response.status(Status.NO_CONTENT).build();
     }
 
     /**
@@ -229,7 +230,7 @@ public class ProductServiceResource {
         // Delegate request to service.
         ProductService lService = this.getProductService();
         String lResult = lService.deprecatedParams(pParam1);
-        return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.OK).entity(lResult).build();
+        return javax.ws.rs.core.Response.status(Status.OK).entity(lResult).build();
     }
 
     /**
@@ -241,7 +242,7 @@ public class ProductServiceResource {
         // Delegate request to service.
         ProductService lService = this.getProductService();
         String lResult = lService.deprecatedBody(pBody);
-        return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.OK).entity(lResult).build();
+        return javax.ws.rs.core.Response.status(Status.OK).entity(lResult).build();
     }
 
     /**
@@ -253,7 +254,7 @@ public class ProductServiceResource {
         // Delegate request to service.
         ProductService lService = this.getProductService();
         lService.deprectedComplexRequestBody(pProduct);
-        return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.NO_CONTENT).build();
+        return javax.ws.rs.core.Response.status(Status.NO_CONTENT).build();
     }
 
     /**
@@ -266,7 +267,7 @@ public class ProductServiceResource {
         // Delegate request to service.
         ProductService lService = this.getProductService();
         Product lResult = lService.deprecatedComplexReturn();
-        return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.OK).entity(lResult).build();
+        return javax.ws.rs.core.Response.status(Status.OK).entity(lResult).build();
     }
 
     /**
@@ -283,7 +284,7 @@ public class ProductServiceResource {
         // Delegate request to service.
         ProductService lService = this.getProductService();
         lService.loadSpecificThings(pContext);
-        return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.NO_CONTENT).build();
+        return javax.ws.rs.core.Response.status(Status.NO_CONTENT).build();
     }
 
     /**
@@ -295,7 +296,7 @@ public class ProductServiceResource {
         // Delegate request to service.
         ProductService lService = this.getProductService();
         ChannelCode lResult = lService.createChannelCodeFromObject(pChannelCode);
-        return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.OK).entity(lResult).build();
+        return javax.ws.rs.core.Response.status(Status.OK).entity(lResult).build();
     }
 
     /**
@@ -307,7 +308,7 @@ public class ProductServiceResource {
         // Delegate request to service.
         ProductService lService = this.getProductService();
         List<CurrencyCode> lResult = lService.addCurrencies(pCurrencies);
-        return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.OK).entity(lResult).build();
+        return javax.ws.rs.core.Response.status(Status.OK).entity(lResult).build();
     }
 
     /**
@@ -319,7 +320,7 @@ public class ProductServiceResource {
         // Delegate request to service.
         ProductService lService = this.getProductService();
         CurrencyCode lResult = lService.isCurrencySupported(pCurrency);
-        return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.OK).entity(lResult).build();
+        return javax.ws.rs.core.Response.status(Status.OK).entity(lResult).build();
     }
 
     /**
@@ -331,7 +332,7 @@ public class ProductServiceResource {
         // Delegate request to service.
         ProductService lService = this.getProductService();
         IntegerCodeType lResult = lService.testCodeTypeUsage(pStringCode);
-        return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.ACCEPTED).entity(lResult).build();
+        return javax.ws.rs.core.Response.status(Status.ACCEPTED).entity(lResult).build();
     }
 
     /**
@@ -343,7 +344,7 @@ public class ProductServiceResource {
         // Delegate request to service.
         ProductService lService = this.getProductService();
         String lResult = lService.testLocalBeanParamType(pBeanParam);
-        return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.OK).entity(lResult).build();
+        return javax.ws.rs.core.Response.status(Status.OK).entity(lResult).build();
     }
 
     /**
@@ -355,7 +356,7 @@ public class ProductServiceResource {
         // Delegate request to service.
         ProductService lService = this.getProductService();
         String lResult = lService.testExternalBeanParameterType(pParent);
-        return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.OK).entity(lResult).build();
+        return javax.ws.rs.core.Response.status(Status.OK).entity(lResult).build();
     }
 
     /**
@@ -367,7 +368,7 @@ public class ProductServiceResource {
         // Delegate request to service.
         ProductService lService = this.getProductService();
         String lResult = lService.testChildBeanParameter(pChild);
-        return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.OK).entity(lResult).build();
+        return javax.ws.rs.core.Response.status(Status.OK).entity(lResult).build();
     }
 
     /**
@@ -379,7 +380,7 @@ public class ProductServiceResource {
         // Delegate request to service.
         ProductService lService = this.getProductService();
         boolean lResult = lService.checkIBAN(pIBAN);
-        return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.OK).entity(lResult).build();
+        return javax.ws.rs.core.Response.status(Status.OK).entity(lResult).build();
     }
 
     /**
@@ -392,7 +393,7 @@ public class ProductServiceResource {
         // Delegate request to service.
         ProductService lService = this.getProductService();
         List<Channel> lResult = lService.getChannels(pChannelTypes);
-        return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.OK).entity(lResult).build();
+        return javax.ws.rs.core.Response.status(Status.OK).entity(lResult).build();
     }
 
     /**
@@ -405,7 +406,7 @@ public class ProductServiceResource {
         // Delegate request to service.
         ProductService lService = this.getProductService();
         Channel lResult = lService.getDefaultChannel(pChannelType);
-        return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.OK).entity(lResult).build();
+        return javax.ws.rs.core.Response.status(Status.OK).entity(lResult).build();
     }
 
     /**
@@ -426,7 +427,7 @@ public class ProductServiceResource {
         // Delegate request to service.
         ProductService lService = this.getProductService();
         List<CurrencyCode> lResult = lService.getSupportedCurrencies(pChannelCode);
-        return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.OK).entity(lResult).build();
+        return javax.ws.rs.core.Response.status(Status.OK).entity(lResult).build();
     }
 
     /**
@@ -453,8 +454,8 @@ public class ProductServiceResource {
                     // Convert basic type parameters into "real" objects.
                     ChannelCode pChannelCode = ChannelCode.builder().setCode(pChannelCodeAsBasicType).build();
                     List<CurrencyCode> lResult = lService.getSupportedCurrenciesAsync(pChannelCode);
-                    javax.ws.rs.core.Response lResponseObject = javax.ws.rs.core.Response
-                                    .status(javax.ws.rs.core.Response.Status.OK).entity(lResult).build();
+                    javax.ws.rs.core.Response lResponseObject =
+                                    javax.ws.rs.core.Response.status(Status.OK).entity(lResult).build();
                     // Due to the asynchronous processing of the requests, the response can not be returned as return
                     // value. Therefore we make use of the defined JAX-RS mechanisms.
                     pAsyncResponse.resume(lResponseObject);
@@ -487,7 +488,7 @@ public class ProductServiceResource {
         ProductService lService = this.getProductService();
         lService.testDateQueryParams(pPath, pStartTimestamp, pStartTime, pLocalStartTimestamp, pLocalStartTime,
                         pLocalStartDate, pCalendar, pUtilDate, pSQLTimestamp, pSQLTime, pSQLDate);
-        return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.NO_CONTENT).build();
+        return javax.ws.rs.core.Response.status(Status.NO_CONTENT).build();
     }
 
     /**
@@ -500,7 +501,7 @@ public class ProductServiceResource {
         // Delegate request to service.
         ProductService lService = this.getProductService();
         lService.testDateQueryParamsBean(pPath, pQueryParams);
-        return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.NO_CONTENT).build();
+        return javax.ws.rs.core.Response.status(Status.NO_CONTENT).build();
     }
 
     /**
@@ -514,7 +515,7 @@ public class ProductServiceResource {
         // Delegate request to service.
         ProductService lService = this.getProductService();
         String lResult = lService.testOptionalQueryParams(query1, query2);
-        return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.OK).entity(lResult).build();
+        return javax.ws.rs.core.Response.status(Status.OK).entity(lResult).build();
     }
 
     /**
@@ -527,7 +528,7 @@ public class ProductServiceResource {
         // Delegate request to service.
         ProductService lService = this.getProductService();
         lService.testSpecialHeaderParams(authorization, pContentType, pAccept);
-        return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.NO_CONTENT).build();
+        return javax.ws.rs.core.Response.status(Status.NO_CONTENT).build();
     }
 
     /**
@@ -544,7 +545,7 @@ public class ProductServiceResource {
         // Delegate request to service.
         ProductService lService = this.getProductService();
         String lResult = lService.testTechnicalHeaderBean(pContext);
-        return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.OK).entity(lResult).build();
+        return javax.ws.rs.core.Response.status(Status.OK).entity(lResult).build();
     }
 
     /**
@@ -556,7 +557,7 @@ public class ProductServiceResource {
         // Delegate request to service.
         ProductService lService = this.getProductService();
         String lResult = lService.testTechnicalHeaderParam(pReseller);
-        return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.OK).entity(lResult).build();
+        return javax.ws.rs.core.Response.status(Status.OK).entity(lResult).build();
     }
 
     /**
@@ -568,7 +569,7 @@ public class ProductServiceResource {
         // Delegate request to service.
         ProductService lService = this.getProductService();
         lService.testNotInlinedBeanParam(pInlinedBeanParam);
-        return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.NO_CONTENT).build();
+        return javax.ws.rs.core.Response.status(Status.NO_CONTENT).build();
     }
 
     /**
@@ -580,7 +581,7 @@ public class ProductServiceResource {
         // Delegate request to service.
         ProductService lService = this.getProductService();
         lService.testPrimitiveArray(pIntegerArray);
-        return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.NO_CONTENT).build();
+        return javax.ws.rs.core.Response.status(Status.NO_CONTENT).build();
     }
 
     /**
@@ -592,7 +593,7 @@ public class ProductServiceResource {
         // Delegate request to service.
         ProductService lService = this.getProductService();
         String lResult = lService.testPrimitiveArrayAsQueryParam(pIntValues);
-        return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.OK).entity(lResult).build();
+        return javax.ws.rs.core.Response.status(Status.OK).entity(lResult).build();
     }
 
     /**
@@ -615,7 +616,7 @@ public class ProductServiceResource {
         // Delegate request to service.
         ProductService lService = this.getProductService();
         String lResult = lService.testMultivaluedHeader(pCodes);
-        return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.OK).entity(lResult).build();
+        return javax.ws.rs.core.Response.status(Status.OK).entity(lResult).build();
     }
 
     /**
@@ -639,7 +640,7 @@ public class ProductServiceResource {
         // Delegate request to service.
         ProductService lService = this.getProductService();
         String lResult = lService.testMultivaluedQueryParams(pCodes, pEnums);
-        return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.OK).entity(lResult).build();
+        return javax.ws.rs.core.Response.status(Status.OK).entity(lResult).build();
     }
 
     /**
@@ -652,7 +653,7 @@ public class ProductServiceResource {
         // Delegate request to service.
         ProductService lService = this.getProductService();
         String lResult = lService.testMulitValuedBeanParams(pBeanParam, pTheEnum);
-        return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.OK).entity(lResult).build();
+        return javax.ws.rs.core.Response.status(Status.OK).entity(lResult).build();
     }
 
     /**
@@ -665,7 +666,7 @@ public class ProductServiceResource {
         // Delegate request to service.
         ProductService lService = this.getProductService();
         lService.noReturnType(pHeader, pContext);
-        return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.NO_CONTENT).build();
+        return javax.ws.rs.core.Response.status(Status.NO_CONTENT).build();
     }
 
     /**
@@ -677,7 +678,7 @@ public class ProductServiceResource {
         // Delegate request to service.
         ProductService lService = this.getProductService();
         lService.deleteSomething(pID);
-        return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.NO_CONTENT).build();
+        return javax.ws.rs.core.Response.status(Status.NO_CONTENT).build();
     }
 
     /**
@@ -689,7 +690,7 @@ public class ProductServiceResource {
         // Delegate request to service.
         ProductService lService = this.getProductService();
         GenericSingleValuedReponse<BusinessServiceObject> lResult = lService.genericSingleValueResponse();
-        return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.OK).entity(lResult).build();
+        return javax.ws.rs.core.Response.status(Status.OK).entity(lResult).build();
     }
 
     /**
@@ -701,7 +702,7 @@ public class ProductServiceResource {
         // Delegate request to service.
         ProductService lService = this.getProductService();
         GenericPageableResponse<BusinessServiceObject> lResult = lService.genericMultiValueResponse();
-        return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.OK).entity(lResult).build();
+        return javax.ws.rs.core.Response.status(Status.OK).entity(lResult).build();
     }
 
     /**
@@ -734,7 +735,7 @@ public class ProductServiceResource {
         // Delegate request to service.
         ProductService lService = this.getProductService();
         lService.testDataTypeWithRestrition(pStringCode, pShortCodes, pJustAByte);
-        return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.NO_CONTENT).build();
+        return javax.ws.rs.core.Response.status(Status.NO_CONTENT).build();
     }
 
     /**
@@ -751,7 +752,7 @@ public class ProductServiceResource {
         // Delegate request to service.
         ProductService lService = this.getProductService();
         lService.testContext(pContext);
-        return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.NO_CONTENT).build();
+        return javax.ws.rs.core.Response.status(Status.NO_CONTENT).build();
     }
 
     /**
@@ -763,7 +764,7 @@ public class ProductServiceResource {
         // Delegate request to service.
         ProductService lService = this.getProductService();
         Response<Pageable<BusinessServiceObject>> lResult = lService.testNestedGenericsResponse();
-        return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.OK).entity(lResult).build();
+        return javax.ws.rs.core.Response.status(Status.OK).entity(lResult).build();
     }
 
     /**
@@ -775,7 +776,7 @@ public class ProductServiceResource {
         // Delegate request to service.
         ProductService lService = this.getProductService();
         Response<List<Offer>> lResult = lService.testNestedMultivaluedResponse();
-        return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.OK).entity(lResult).build();
+        return javax.ws.rs.core.Response.status(Status.OK).entity(lResult).build();
     }
 
     /**
@@ -787,7 +788,7 @@ public class ProductServiceResource {
         // Delegate request to service.
         ProductService lService = this.getProductService();
         Response<Offer> lResult = lService.testDuplicateGenerics1();
-        return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.OK).entity(lResult).build();
+        return javax.ws.rs.core.Response.status(Status.OK).entity(lResult).build();
     }
 
     /**
@@ -799,7 +800,7 @@ public class ProductServiceResource {
         // Delegate request to service.
         ProductService lService = this.getProductService();
         Response<Offer> lResult = lService.testDuplicateGenerics2();
-        return javax.ws.rs.core.Response.status(javax.ws.rs.core.Response.Status.OK).entity(lResult).build();
+        return javax.ws.rs.core.Response.status(Status.OK).entity(lResult).build();
     }
 
     /**

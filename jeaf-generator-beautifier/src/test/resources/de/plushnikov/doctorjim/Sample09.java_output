@@ -3,11 +3,11 @@ org.
 somepackage.
 test;
 
+import static org.apache.commons.logging.LogFactory.LEVEL;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.somepackage.test.more.Dummy2;
 import org.w3c.dom.Element;
-import static org.apache.commons.logging.LogFactory.LEVEL;
 
 public class MyHelper {
 
