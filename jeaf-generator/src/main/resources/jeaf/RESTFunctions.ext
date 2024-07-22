@@ -23,7 +23,7 @@ cached boolean isCookieParam(uml::Parameter param):
 	param.isStereotypeApplied("CookieParam");
 
 cached boolean isRequestBody(uml::Parameter param):
-    !(param.isPathParam() || param.isHeaderParam() || param.isQueryParam() || param.isQueryParam() || param.isBeanParam());
+    !(param.isPathParam() || param.isHeaderParam() || param.isQueryParam() || param.isBeanParam() || param.isCookieParam());
     
 cached List[String] getBodyParamNames(JMM::RESTOperation operation):
     operation.ownedParameter.select(e|e.isRequestBody() && e.isInputParameter()).name;

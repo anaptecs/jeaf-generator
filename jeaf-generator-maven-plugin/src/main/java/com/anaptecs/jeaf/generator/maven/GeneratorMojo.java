@@ -341,6 +341,21 @@ public class GeneratorMojo extends AbstractMojo {
   private Boolean generateRESTResources;
 
   /**
+   * Switch can be used to generate reactive Spring RESt Controllers.<br>
+   * <br>
+   * Please be aware that generated code will have dependency on library <b><code>Reactor Code</code></b>. <br>
+   * 
+   * <pre>
+   * &#60;dependency>
+   *     &#60;groupId>io.projectreactor&#60;/groupId>
+   *     &#60;artifactId>reactor-core&#60;/artifactId>
+   * &#60;/dependency><br/>
+   * </pre>
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean generateReactiveRESTResources;
+
+  /**
    * Switch defines if target runtime specific security annotations (e.g. @RolesAllowed from JSR-250 or @PreAuthorize
    * from Spring Security) should be generated or not.
    */
@@ -1555,8 +1570,9 @@ public class GeneratorMojo extends AbstractMojo {
     if (generateServiceProviderImpls) {
       lLog.info("Generate Service Provider Impls:                  " + generateServiceProviderImpls);
     }
-    if (generateRESTResources) {
+    if (generateRESTResources || generateReactiveRESTResources) {
       lLog.info("Generate REST Resources:                          " + generateRESTResources);
+      lLog.info("Generate Reactive REST Resources:                 " + generateReactiveRESTResources);
       lLog.info("Generate REST Security Annotation:                " + generateSecurityAnnotation);
       if (defaultSecurityRoleName.length() > 0) {
         lLog.info("Default Security Role Name:                       " + defaultSecurityRoleName);
@@ -1975,6 +1991,8 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty("switch.gen.component.impls", generateComponentImpls.toString());
       System.setProperty("switch.gen.service.provider.impls", generateServiceProviderImpls.toString());
       System.setProperty("switch.gen.rest.resources", generateRESTResources.toString());
+      System.setProperty(PROPERTY_PREFIX + "generateReactiveRESTResources", generateReactiveRESTResources.toString());
+
       System.setProperty("switch.gen.rest.security.useDeprecatedSpringSecuredAnnotation",
           useDeprecatedSpringSecuredAnnotation.toString());
       System.setProperty("switch.gen.rest.security.annotation", generateSecurityAnnotation.toString());
@@ -2416,12 +2434,12 @@ public class GeneratorMojo extends AbstractMojo {
   private boolean isUMLGenerationRequested( ) {
     return generateCustomConstraints | generateServiceInterfaces | generateReactiveServiceInterfaces
         | generateServiceProxies | generateServiceProviderInterfaces | generateServiceProviderImpls
-        | generateRESTResources | generateRESTServiceProxies | generateRESTServiceProxyConfigFile
-        | generateActivityInterfaces | generateActivityImpls | generateServiceObjects | generatePOJOs
-        | generateDomainObjects | generateObjectMappers | generatePersistentObjects | generateComponentImpls
-        | generateComponentRuntimeClasses | generateGlobalParts | generateExceptionClasses | generateJUnitTests
-        | generateTypesReport | generateBreakingChangesReport | generateRESTDeprecationReport
-        | generateJavaDeprecationReport | generateOpenAPISpec | generateJSONSerializers
+        | generateRESTResources | generateReactiveRESTResources | generateRESTServiceProxies
+        | generateRESTServiceProxyConfigFile | generateActivityInterfaces | generateActivityImpls
+        | generateServiceObjects | generatePOJOs | generateDomainObjects | generateObjectMappers
+        | generatePersistentObjects | generateComponentImpls | generateComponentRuntimeClasses | generateGlobalParts
+        | generateExceptionClasses | generateJUnitTests | generateTypesReport | generateBreakingChangesReport
+        | generateRESTDeprecationReport | generateJavaDeprecationReport | generateOpenAPISpec | generateJSONSerializers
         | enforceCustomTemplateExecution;
   }
 

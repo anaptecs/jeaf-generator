@@ -7,14 +7,16 @@
 
 «EXTENSION functions::RESTResource»
 «EXTENSION functions::RESTOperation»
+«EXTENSION functions::JEAFService»
+«EXTENSION functions::Reactive»
 «EXTENSION functions::Operation»
 
 
 «IMPORT uml»
 «IMPORT JMM»
 
-«DEFINE RESTResourceClass FOR RESTResource»
-«FILE packagePath()+"/resource/"+name+"Resource.java" src_gen»
+«DEFINE RESTResourceClass(boolean reactive) FOR RESTResource»
+«FILE packagePath()+"/resource/" + this.getResourceName(reactive) + ".java" src_gen»
 «getFileHeader()»
 package «packageName()».resource;
 
@@ -30,7 +32,7 @@ package «packageName()».resource;
 	«IF produces.size > 0»@«getEnterpriseJavaPackage()».ws.rs.Produces(«IF produces.size > 1»{«ENDIF»«FOREACH produces AS mediaType SEPARATOR ","»«getEnterpriseJavaPackage()».ws.rs.core.MediaType.«mediaType»«ENDFOREACH»«IF produces.size > 1»}«ENDIF»)«ENDIF»
 «ENDIF»
 «EXPAND java::Helper::GenerateDeprecationAnnotation -»
-public class «name»Resource {
+public class «this.getResourceName(reactive)» {
 	
 	«IF this.hasCompositeDataTypes() && generatePublicObjectView() == false»
 		«IF isTargetRuntimeSpring()»
@@ -94,7 +96,7 @@ public class «name»Resource {
 			/**
 			 * All request to this class will be delegated to {@link «this.fqn()»}.
 			 */
-			private final «this.fqn()» «name.toFirstLower()»;
+			private final «this.asJEAFService().getServiceNameFQN(reactive)» «name.toFirstLower()»;
 		
 			/**
 			 * Initialize object.
@@ -104,7 +106,7 @@ public class «name»Resource {
 			 * @param pCompositeTypeConverter Composite type converter is used convert types from their string representation to a real object that can be processed internally.
 			 «ENDIF -»
 			 */
-			public «name»Resource( «this.fqn()» p«name» «IF this.hasCompositeDataTypes()», com.fasterxml.jackson.databind.ObjectMapper pObjectMapper«ENDIF»«IF generateRESTRequestValidation() || generateRESTResponseValidation()», com.anaptecs.jeaf.validation.api.ValidationExecutor pValidationExecutor«ENDIF»«IF this.filterCustomHeaders()», com.anaptecs.jeaf.rest.resource.api.CustomHeaderFilter pCustomHeaderFilter«ENDIF») {
+			public «this.getResourceName(reactive)»( «this.asJEAFService().getServiceNameFQN(reactive)» p«name» «IF this.hasCompositeDataTypes()», com.fasterxml.jackson.databind.ObjectMapper pObjectMapper«ENDIF»«IF generateRESTRequestValidation() || generateRESTResponseValidation()», com.anaptecs.jeaf.validation.api.ValidationExecutor pValidationExecutor«ENDIF»«IF this.filterCustomHeaders()», com.anaptecs.jeaf.rest.resource.api.CustomHeaderFilter pCustomHeaderFilter«ENDIF») {
 			  «name.toFirstLower()» = p«name»;
 			  «IF this.hasCompositeDataTypes()»
 			  objectMapper = pObjectMapper;
@@ -122,11 +124,11 @@ public class «name»Resource {
 			 * All request to this class will be delegated to {@link «this.fqn()»}.
 			 */
 			@org.springframework.beans.factory.annotation.Autowired
-			private «this.fqn()» «name.toFirstLower()»;
+			private «this.asJEAFService().getServiceNameFQN(reactive)» «name.toFirstLower()»;
 		«ENDIF»
 	«ENDIF»
 	
-	«EXPAND RESTOperationImpl(this) FOREACH this.getAllOperations().typeSelect(RESTOperation)»
+	«EXPAND RESTOperationImpl(this, reactive) FOREACH this.getAllOperations().typeSelect(RESTOperation)»
 	
 	«IF this.hasCompositeDataTypes() && generatePublicObjectView() == false»
 		«IF isTargetRuntimeSpring()»
@@ -191,7 +193,7 @@ public class «name»Resource {
 		 * @return «this.name» Service instance to which all requests will be delegated.
 		 */
 		private «this.fqn()» get«name»() {
-		  return com.anaptecs.jeaf.core.api.JEAF.getService(«this.fqn()».class);
+		  return com.anaptecs.jeaf.core.api.JEAF.getService(«this.asJEAFService().getServiceNameFQN(reactive)».class);
 		}
 	«ENDIF»
 }
@@ -199,9 +201,9 @@ public class «name»Resource {
 «ENDDEFINE»
 
 
-«DEFINE RESTOperationImpl(JMM::RESTResource restResource) FOR RESTOperation»
+«DEFINE RESTOperationImpl(JMM::RESTResource restResource, boolean reactive) FOR RESTOperation»
 	«IF isRESTLibrarySpringWebMVC()»
-		«EXPAND SpringRESTControllerOperationImpl(restResource)»
+		«EXPAND SpringRESTControllerOperationImpl(restResource, reactive)»
 	«ELSE»
 		«IF async == false»
 			«EXPAND SyncJAXRSOperationImpl(restResource) FOR this»
@@ -345,7 +347,7 @@ public class «name»Resource {
 	}
 «ENDDEFINE»
 
-«DEFINE SpringRESTControllerOperationImpl(JMM::RESTResource restResource) FOR RESTOperation»
+«DEFINE SpringRESTControllerOperationImpl(JMM::RESTResource restResource, boolean reactive) FOR RESTOperation»
 	/**
 	 * {@link «this.getOwningClass().fqn()»#«name»()}
 	 */
@@ -366,7 +368,7 @@ public class «name»Resource {
 	«EXPAND java::Helper::GenerateDeprecationAnnotation-»
 	«EXPAND java::Helper::GenerateDeprecationAnnotation FOR this.getReturnResult()-»
 	«EXPAND java::Helper::NotNullAnnotationForParameter("RESTResource") FOR this.getReturnResult()-»
-	public «getReturnTypeName()»  «name» («EXPAND SpringRESTParameterSignature FOR this» «IF this.ownedParameter.select(e|e.hasParamCustomHeaders()).size > 0» «IF ownedParameter.select(e| e.isInputParameter() && e.isParameterSuppressed() == false).size > 0»,«ENDIF» @org.springframework.web.bind.annotation.RequestHeader java.util.Map<String, String> pHeaders«ENDIF»)«getThrownExceptionsAsString()»{
+	public «getReturnTypeName().getReactiveAwareTypeName(reactive)»  «name» («EXPAND SpringRESTParameterSignature(reactive) FOR this» «IF this.ownedParameter.select(e|e.hasParamCustomHeaders()).size > 0» «IF ownedParameter.select(e| e.isInputParameter() && e.isParameterSuppressed() == false).size > 0»,«ENDIF» @org.springframework.web.bind.annotation.RequestHeader java.util.Map<String, String> pHeaders«ENDIF»«IF reactive»«IF ownedParameter.select(e| e.isInputParameter() && e.isParameterSuppressed() == false).size > 0»,«ENDIF» «getServerWebExchangeTypeName()» pServerWebExchange«ENDIF»)«getThrownExceptionsAsString()»{
 	  «IF this.hasBeanParameters()»
 	  // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the service interface but "only" our REST controller.
 	  «ENDIF»
@@ -679,24 +681,72 @@ public class «name»Resource {
 	       «ENDFOREACH»
 	  «ENDIF»
 	  
-	  «IF generateRESTRequestValidation() && this.getInputParameters().select(e|e.isParameterSuppressed() == false).isEmpty == false»
-        // Validate request parameter(s).
-	    validationExecutor.validateRequest(«restResource.fqn()».class, «this.asParameterListNames()»);
-	  «ENDIF»
-	  
-      // Delegate request to service.
-	  «IF getReturnTypeName() != "void"»
-	       «IF generateRESTResponseValidation()»
-	         «getReturnTypeName()» lResponse = «restResource.name.toFirstLower()».«this.name»(«this.asParameterListNames()»);
-		     
-		     // Validate response and return it.
-		     validationExecutor.validateResponse(«restResource.fqn()».class, lResponse);
-		     return lResponse;
-	       «ELSE»
-             return «restResource.name.toFirstLower()».«this.name»(«this.asParameterListNames()»);
-	       «ENDIF»
+	  «IF reactive»
+	      «IF this.hasRequestBody()»
+	            return «this.getRequestBodyParameters().first().name» 
+            «IF generateRESTRequestValidation() && this.getInputParameters().select(e|e.isParameterSuppressed() == false).isEmpty == false»
+		            .flatMap(«this.getRequestBodyParameters().first().name»Body -> {
+		                // Validate request parameter(s).
+		                validationExecutor.validateRequest(«restResource.fqn()»Reactive.class, «this.asRESTParameterListNames(reactive)»);
+            «ENDIF»
+                        // Delegate request to service.
+                        return «restResource.name.toFirstLower()».«this.name»(«this.asRESTParameterListNames(reactive)»);
+                    })
+            «IF getReturnTypeName() != "void"»
+                «IF generateRESTResponseValidation()»
+		            .doOnNext(lResponse ->
+		                // Validate response.
+		                validationExecutor.validateResponse(«restResource.fqn()»Reactive.class, lResponse)
+		            );
+		        «ELSE»
+		            ;
+		        «ENDIF»         
+	        «ELSE»
+	            ;
+	        «ENDIF» 
+	      «ELSE»
+                return «getMonoTypeName()»
+                    .defer(() -> {
+            «IF generateRESTRequestValidation() && this.getInputParameters().select(e|e.isParameterSuppressed() == false).isEmpty == false»
+                        // Validate request parameter(s).
+                        validationExecutor.validateRequest(«restResource.fqn()»Reactive.class, «this.asRESTParameterListNames(reactive)»);
+            «ENDIF»
+                        // Delegate request to service.
+                        return «restResource.name.toFirstLower()».«this.name»(«this.asRESTParameterListNames(reactive)»);
+                    })           
+            «IF getReturnTypeName() != "void"»
+                «IF generateRESTResponseValidation()»
+                    .doOnNext(lResponse ->
+                        // Validate response.
+                        validationExecutor.validateResponse(«restResource.fqn()»Reactive.class, lResponse)
+                    );
+                «ELSE»
+                    ;
+                «ENDIF»         
+            «ELSE»
+                ;
+            «ENDIF» 
+	      «ENDIF»
 	  «ELSE»
-	  «restResource.name.toFirstLower()».«this.name»(«this.asParameterListNames()»);
+		  «IF generateRESTRequestValidation() && this.getInputParameters().select(e|e.isParameterSuppressed() == false).isEmpty == false»
+	        // Validate request parameter(s).
+		    validationExecutor.validateRequest(«restResource.fqn()».class, «this.asParameterListNames()»);
+		  «ENDIF»
+		  
+	      // Delegate request to service.
+		  «IF getReturnTypeName() != "void"»
+		       «IF generateRESTResponseValidation()»
+		         «getReturnTypeName()» lResponse = «restResource.name.toFirstLower()».«this.name»(«this.asParameterListNames()»);
+			     
+			     // Validate response and return it.
+			     validationExecutor.validateResponse(«restResource.fqn()».class, lResponse);
+			     return lResponse;
+		       «ELSE»
+	             return «restResource.name.toFirstLower()».«this.name»(«this.asParameterListNames()»);
+		       «ENDIF»
+		  «ELSE»
+		  «restResource.name.toFirstLower()».«this.name»(«this.asParameterListNames()»);
+		  «ENDIF»
 	  «ENDIF»
 	}
 «ENDDEFINE»
@@ -827,11 +877,11 @@ public class «name»Resource {
 	«ENDIF»
 «ENDDEFINE»
 
-«DEFINE SpringRESTParameterSignature FOR Operation»
-  «EXPAND SpringRESTParameterDefinition FOREACH ownedParameter.select(e| e.isInputParameter() && e.isParameterSuppressed() == false) SEPARATOR ", "» 
+«DEFINE SpringRESTParameterSignature(boolean reactive) FOR Operation»
+  «EXPAND SpringRESTParameterDefinition(reactive) FOREACH ownedParameter.select(e| e.isInputParameter() && e.isParameterSuppressed() == false) SEPARATOR ", "» 
 «ENDDEFINE»
 
-«DEFINE SpringRESTParameterDefinition FOR Parameter»
+«DEFINE SpringRESTParameterDefinition(boolean reactive) FOR Parameter»
   «IF this.isPathParam() -»
   @org.springframework.web.bind.annotation.PathVariable(name = "«EXPAND java::OpenAPI::RESTParamName FOR this»", required = «this.isRequired()» «IF this.isParamJEAFEnumeration() && this.hasDefaultValueForEnum()», defaultValue = "«this.getDefaultValueForEnum()»"«ENDIF» «IF (this.type.isBasicType() || this.type.isPrimitiveType()) && this.hasDefaultValueForBasicType()», defaultValue = "«this.getDefaultValueForBasicType()»"«ENDIF»)
   «ENDIF-»
@@ -862,13 +912,23 @@ public class «name»Resource {
 	  	«ENDIF»
 	  «ELSE»
 	  	«IF this.type.isAnyDateType()»
-	  		String«IF this.isMultivalued()»[]«ENDIF» «name»AsBasicType
+	  		«IF this.isRequestBody() && reactive»«getMonoTypeName()»<«ENDIF»
+	  		String«IF this.isMultivalued()»[]«ENDIF»
+	  		«IF this.isRequestBody() && reactive»>«ENDIF» 
+	  		«name»AsBasicType
 	  	«ELSE»
 	  		«REM»byte[] are transfered as base64 encoded Strings«ENDREM»
 	  		«IF type.isPrimitiveType() && type.isByteType() && this.isMultivalued()»
-	  		   String «name»AsString
+	  		   «IF this.isRequestBody() && reactive»«getMonoTypeName()»<«ENDIF»
+	  		   String
+	  		   «IF this.isRequestBody() && reactive»>«ENDIF» 
+	  		   «name»AsString
 	  		«ELSE»
-	  		   «this.getTypeName()» «name»
+	  		   «IF this.isRequestBody()»
+	  		   «this.getTypeName().getReactiveAwareTypeName(reactive)» «name»
+	  		   «ELSE»
+               «this.getTypeName()» «name»
+	  		   «ENDIF»
 	  		«ENDIF»
 	  	«ENDIF»
 	  «ENDIF»

@@ -1,5 +1,8 @@
 extension java::GeneratorCommons;
 extension functions::RESTOperation;
+extension jeaf::RESTFunctions;
+extension jeaf::RESTFunctions;
+extension java::Naming;
 
 cached boolean isRESTResource(uml::Element element):
     element.isStereotypeApplied("RESTResource");
@@ -9,3 +12,20 @@ cached JMM::RESTResource asRESTResource(uml::Element element):
     
 cached boolean filterCustomHeaders(JMM::RESTResource resource):
     filterCustomHeaders() && resource.ownedOperation.typeSelect(JMM::RESTOperation).select(e|e.hasBeanParamsForRESTOperation()).getBeanParamsForRESTOperation().select(e|e.supportsCustomHeaders).isEmpty == false;
+    
+cached String getResourceName(JMM::RESTResource resource, boolean reactive):
+    if reactive
+    then resource.name + "ReactiveResource"
+    else resource.name + "Resource";
+
+cached String asRESTParameterListNames(uml::Operation operation, boolean reactive) :
+    if reactive == false
+    then operation.asParameterListNames()
+    else 
+        operation.getInputParameters().select(e|e.isParameterSuppressed() == false).getReactiveParameterName().toString(", ");
+    
+private String getReactiveParameterName(uml::Parameter parameter):
+    if parameter.isRequestBody()
+    then parameter.name + "Body"
+    else parameter.name;
+    

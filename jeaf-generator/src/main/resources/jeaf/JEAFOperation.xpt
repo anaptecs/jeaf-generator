@@ -19,7 +19,7 @@
     «EXPAND java::Helper::GenerateDeprecationAnnotation FOR this.getReturnResult() -»    
     «EXPAND Validation::ValidationAnnotation FOR this.getReturnResult()»
     «EXPAND java::Helper::NotNullAnnotationForParameter(context) FOR this.getReturnResult()»
-	«getReturnTypeName().getServiceOperationReturnTypeName(reactive)»  «name» («EXPAND ParameterSignature(true, context)»)«getThrownExceptionsAsString()»;
+	«getReturnTypeName().getReactiveAwareTypeName(reactive)»  «name» («EXPAND ParameterSignature(true, context)»)«getThrownExceptionsAsString()»;
 «ENDDEFINE»
 
 «DEFINE ServiceInterfaceOperation(boolean reactive) FOR Operation»
@@ -28,7 +28,7 @@
     «EXPAND java::Helper::GenerateDeprecationAnnotation FOR this.getReturnResult() -»    
     «EXPAND Validation::ValidationAnnotation FOR this.getReturnResult()»
     «EXPAND java::Helper::NotNullAnnotationForParameter("JEAFService") FOR this.getReturnResult()»
-    «IF this.isDefaultOperation()»default «ENDIF»«getReturnTypeName().getServiceOperationReturnTypeName(reactive)»  «name» («EXPAND ParameterSignature(true, "JEAFService")»)«getThrownExceptionsAsString()»
+    «IF this.isDefaultOperation()»default «ENDIF»«getReturnTypeName().getReactiveAwareTypeName(reactive)»  «name» («EXPAND ParameterSignature(true, "JEAFService")»)«getThrownExceptionsAsString()»
     «IF this.isDefaultOperation()»
         «LET this.asDefaultOperation().operationType AS operationType»
 	        {
@@ -88,7 +88,7 @@
     «EXPAND java::Helper::GenerateDeprecationAnnotation FOR this.getReturnResult() -»
     «EXPAND java::Helper::NotNullAnnotationForParameter(context) FOR this.getReturnResult()»
     @Override
-    «visibility» «getReturnTypeName().getServiceOperationReturnTypeName(reactive)» «name» («EXPAND ParameterSignatureNoValidationAnnotation»)«getThrownExceptionsAsString()» {
+    «visibility» «getReturnTypeName().getReactiveAwareTypeName(reactive)» «name» («EXPAND ParameterSignatureNoValidationAnnotation»)«getThrownExceptionsAsString()» {
         «IF getReturnTypeName() != "void"»
             // TODO Implement method and return real result
             «IF returnsPrimitiveType()»

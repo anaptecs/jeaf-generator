@@ -162,9 +162,14 @@
 	«IF this.isStereotypeApplied("RESTResource")»
 		«IF generateRESTResources() == true && this.isInGeneratorWhitelist() == true»
 			«info("Processing «RESTResource» " + this.name + " (" + (this.fqn()) + ")")»
-			«EXPAND jeaf::RESTResource::RESTResourceClass FOR (RESTResource) this»
+			«EXPAND jeaf::RESTResource::RESTResourceClass(false) FOR (RESTResource) this»
 		«ENDIF»
 		
+        «IF generateReactiveRESTResources() == true && this.isInGeneratorWhitelist() == true»
+            «info("Processing reactive «RESTResource» " + this.name + " (" + (this.fqn()) + ")")»
+            «EXPAND jeaf::RESTResource::RESTResourceClass(true) FOR (RESTResource) this»
+        «ENDIF»
+
 		«IF generateRESTServiceProxies() == true && this.isInGeneratorWhitelist() == true»
 			«info("Processing «RESTResource» " + this.name + " (" + (this.fqn()) + ")")»
 			«EXPAND jeaf::RESTServiceProxy::GenerateRESTServiceProxy FOR (RESTResource) this»
