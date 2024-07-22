@@ -5,30 +5,99 @@
  */
 package com.anaptecs.spring.service.resource;
 
-@org.springframework.web.bind.annotation.RequestMapping(path = "/nova/prefix/rest-products")
-@org.springframework.web.bind.annotation.RestController
+import java.math.BigDecimal;
+import java.sql.Date;
+import java.sql.Time;
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.OffsetDateTime;
+import java.time.OffsetTime;
+import java.util.ArrayList;
+import java.util.Base64;
+import java.util.Calendar;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
+import java.util.SortedSet;
+import java.util.TreeSet;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.CookieValue;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ServerWebExchange;
+
+import com.anaptecs.annotations.MyNotEmptyRESTParam;
+import com.anaptecs.annotations.MyNotNullRESTParam;
+import com.anaptecs.jeaf.rest.resource.api.CustomHeaderFilter;
+import com.anaptecs.jeaf.validation.api.ValidationExecutor;
+import com.anaptecs.spring.base.BookingCode;
+import com.anaptecs.spring.base.BookingID;
+import com.anaptecs.spring.base.ChannelCode;
+import com.anaptecs.spring.base.ChannelType;
+import com.anaptecs.spring.base.Context;
+import com.anaptecs.spring.base.CurrencyCode;
+import com.anaptecs.spring.base.DoubleCode;
+import com.anaptecs.spring.base.ExtensibleEnum;
+import com.anaptecs.spring.base.IntegerCodeType;
+import com.anaptecs.spring.base.LongCode;
+import com.anaptecs.spring.base.Product;
+import com.anaptecs.spring.base.Sortiment;
+import com.anaptecs.spring.base.SpecialContext;
+import com.anaptecs.spring.base.StringCode;
+import com.anaptecs.spring.base.TimeUnit;
+import com.anaptecs.spring.composite.ComplexBookingID;
+import com.anaptecs.spring.service.AdvancedHeader;
+import com.anaptecs.spring.service.ContextWithPrimitives;
+import com.anaptecs.spring.service.DataTypesQueryBean;
+import com.anaptecs.spring.service.DateHeaderParamsBean;
+import com.anaptecs.spring.service.DateQueryParamsBean;
+import com.anaptecs.spring.service.MultiValuedHeaderBeanParam;
+import com.anaptecs.spring.service.MultivaluedQueryParamsBean;
+import com.anaptecs.spring.service.QueryBeanParam;
+import com.anaptecs.spring.service.RESTProductServiceReactive;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import reactor.core.publisher.Mono;
+
+@RequestMapping(path = "/nova/prefix/rest-products")
+@RestController
 public class RESTProductServiceReactiveResource {
   /**
    * REST interface makes usage of so called composite data types. As Spring itself is not able to do conversions from a
    * String representation into a real object this is done in the generated REST Controller.
    */
-  private final com.fasterxml.jackson.databind.ObjectMapper objectMapper;
+  private final ObjectMapper objectMapper;
 
   /**
    * REST Controller was generated with request / response validation enabled. The actual validation will be delegated
    * to the implementation of this interface.
    */
-  private final com.anaptecs.jeaf.validation.api.ValidationExecutor validationExecutor;
+  private final ValidationExecutor validationExecutor;
 
   /**
    * Filter is used to provide only those headers that are configured to be processed by this REST resource.
    */
-  private final com.anaptecs.jeaf.rest.resource.api.CustomHeaderFilter customHeaderFilter;
+  private final CustomHeaderFilter customHeaderFilter;
 
   /**
    * All request to this class will be delegated to {@link com.anaptecs.spring.service.RESTProductService}.
    */
-  private final com.anaptecs.spring.service.RESTProductServiceReactive rESTProductService;
+  private final RESTProductServiceReactive rESTProductService;
 
   /**
    * Initialize object.
@@ -38,10 +107,8 @@ public class RESTProductServiceReactiveResource {
    * @param pCompositeTypeConverter Composite type converter is used convert types from their string representation to a
    * real object that can be processed internally.
    */
-  public RESTProductServiceReactiveResource( com.anaptecs.spring.service.RESTProductServiceReactive pRESTProductService,
-      com.fasterxml.jackson.databind.ObjectMapper pObjectMapper,
-      com.anaptecs.jeaf.validation.api.ValidationExecutor pValidationExecutor,
-      com.anaptecs.jeaf.rest.resource.api.CustomHeaderFilter pCustomHeaderFilter ) {
+  public RESTProductServiceReactiveResource( RESTProductServiceReactive pRESTProductService, ObjectMapper pObjectMapper,
+      ValidationExecutor pValidationExecutor, CustomHeaderFilter pCustomHeaderFilter ) {
     rESTProductService = pRESTProductService;
     objectMapper = pObjectMapper;
     validationExecutor = pValidationExecutor;
@@ -51,97 +118,77 @@ public class RESTProductServiceReactiveResource {
   /**
    * {@link com.anaptecs.spring.service.RESTProductService#getProducts()}
    */
-  @org.springframework.security.access.prepost.PreAuthorize("hasAnyRole('Customer', 'Sales Agent')")
-  @org.springframework.web.bind.annotation.ResponseStatus(org.springframework.http.HttpStatus.OK)
-  @org.springframework.web.bind.annotation.RequestMapping(
-      method = { org.springframework.web.bind.annotation.RequestMethod.GET })
-  public reactor.core.publisher.Mono<java.util.List<com.anaptecs.spring.base.Product>> getProducts(
-      @org.springframework.web.bind.annotation.RequestParam(name = "maxResult", required = false) int pMaxResultSize,
-      org.springframework.web.server.ServerWebExchange pServerWebExchange ) {
-    return reactor.core.publisher.Mono.defer(( ) -> {
+  @PreAuthorize("hasAnyRole('Customer', 'Sales Agent')")
+  @ResponseStatus(HttpStatus.OK)
+  @RequestMapping(method = { RequestMethod.GET })
+  public Mono<List<Product>> getProducts( @RequestParam(name = "maxResult", required = false) int pMaxResultSize,
+      ServerWebExchange pServerWebExchange ) {
+    return Mono.defer(( ) -> {
       // Validate request parameter(s).
-      validationExecutor.validateRequest(com.anaptecs.spring.service.RESTProductServiceReactive.class, pMaxResultSize);
+      validationExecutor.validateRequest(RESTProductServiceReactive.class, pMaxResultSize);
       // Delegate request to service.
       return rESTProductService.getProducts(pMaxResultSize);
     }).doOnNext(lResponse ->
     // Validate response.
-    validationExecutor.validateResponse(com.anaptecs.spring.service.RESTProductServiceReactive.class, lResponse));
+    validationExecutor.validateResponse(RESTProductServiceReactive.class, lResponse));
   }
 
   /**
    * {@link com.anaptecs.spring.service.RESTProductService#getProduct()}
    */
-  @org.springframework.security.access.prepost.PreAuthorize("hasAnyRole('Sales Agent')")
-  @org.springframework.web.bind.annotation.ResponseStatus(org.springframework.http.HttpStatus.OK)
-  @org.springframework.web.bind.annotation.RequestMapping(
-      path = "{id}",
-      method = { org.springframework.web.bind.annotation.RequestMethod.GET })
-  @com.anaptecs.annotations.MyNotNullRESTParam
-  public reactor.core.publisher.Mono<com.anaptecs.spring.base.Product> getProduct(
-      @org.springframework.web.bind.annotation.PathVariable(
-          name = "id",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam java.lang.String pProductID,
-      org.springframework.web.server.ServerWebExchange pServerWebExchange ) {
-    return reactor.core.publisher.Mono.defer(( ) -> {
+  @PreAuthorize("hasAnyRole('Sales Agent')")
+  @ResponseStatus(HttpStatus.OK)
+  @RequestMapping(path = "{id}", method = { RequestMethod.GET })
+  @MyNotNullRESTParam
+  public Mono<Product> getProduct( @PathVariable(name = "id", required = true) @MyNotNullRESTParam String pProductID,
+      ServerWebExchange pServerWebExchange ) {
+    return Mono.defer(( ) -> {
       // Validate request parameter(s).
-      validationExecutor.validateRequest(com.anaptecs.spring.service.RESTProductServiceReactive.class, pProductID);
+      validationExecutor.validateRequest(RESTProductServiceReactive.class, pProductID);
       // Delegate request to service.
       return rESTProductService.getProduct(pProductID);
     }).doOnNext(lResponse ->
     // Validate response.
-    validationExecutor.validateResponse(com.anaptecs.spring.service.RESTProductServiceReactive.class, lResponse));
+    validationExecutor.validateResponse(RESTProductServiceReactive.class, lResponse));
   }
 
   /**
    * {@link com.anaptecs.spring.service.RESTProductService#createProduct()}
    */
-  @org.springframework.security.access.prepost.PreAuthorize("hasAnyRole('Sales Agent')")
-  @org.springframework.web.bind.annotation.ResponseStatus(org.springframework.http.HttpStatus.OK)
-  @org.springframework.web.bind.annotation.RequestMapping(
-      method = { org.springframework.web.bind.annotation.RequestMethod.POST })
-  public reactor.core.publisher.Mono<Boolean> createProduct( @org.springframework.web.bind.annotation.RequestBody(
-      required = true) @com.anaptecs.annotations.MyNotNullRESTParam reactor.core.publisher.Mono<com.anaptecs.spring.base.Product> pProduct,
-      org.springframework.web.server.ServerWebExchange pServerWebExchange ) {
+  @PreAuthorize("hasAnyRole('Sales Agent')")
+  @ResponseStatus(HttpStatus.OK)
+  @RequestMapping(method = { RequestMethod.POST })
+  public Mono<Boolean> createProduct( @RequestBody(required = true) @MyNotNullRESTParam Mono<Product> pProduct,
+      ServerWebExchange pServerWebExchange ) {
     return pProduct.flatMap(pProductBody -> {
       // Validate request parameter(s).
-      validationExecutor.validateRequest(com.anaptecs.spring.service.RESTProductServiceReactive.class, pProductBody);
+      validationExecutor.validateRequest(RESTProductServiceReactive.class, pProductBody);
       // Delegate request to service.
       return rESTProductService.createProduct(pProductBody);
     }).doOnNext(lResponse ->
     // Validate response.
-    validationExecutor.validateResponse(com.anaptecs.spring.service.RESTProductServiceReactive.class, lResponse));
+    validationExecutor.validateResponse(RESTProductServiceReactive.class, lResponse));
   }
 
   /**
    * {@link com.anaptecs.spring.service.RESTProductService#getSortiment()}
    */
-  @org.springframework.security.access.prepost.PreAuthorize("hasAnyRole('Sales Agent')")
-  @org.springframework.web.bind.annotation.ResponseStatus(org.springframework.http.HttpStatus.OK)
-  @org.springframework.web.bind.annotation.RequestMapping(
-      path = "sortiment/{id}",
-      method = { org.springframework.web.bind.annotation.RequestMethod.GET })
-  @com.anaptecs.annotations.MyNotNullRESTParam
-  public reactor.core.publisher.Mono<com.anaptecs.spring.base.Sortiment> getSortiment(
-      @org.springframework.web.bind.annotation.RequestHeader(
-          name = "token",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam java.lang.String pAccessToken,
-      @org.springframework.web.bind.annotation.RequestHeader(
-          name = "lang",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam java.util.Locale pLanguage,
-      @org.springframework.web.bind.annotation.CookieValue(name = "reseller", required = true) long pResellerID,
-      @org.springframework.web.bind.annotation.PathVariable(name = "id", required = true) long pPathParam,
-      @org.springframework.web.bind.annotation.RequestParam(
-          name = "q1",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam java.lang.String pQueryParam,
-      @com.anaptecs.annotations.MyNotNullRESTParam String pLang,
-      @org.springframework.web.bind.annotation.RequestHeader(
-          name = "intCode",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam int pIntCodeAsBasicType,
-      @org.springframework.web.bind.annotation.RequestHeader java.util.Map<String, String> pHeaders,
-      org.springframework.web.server.ServerWebExchange pServerWebExchange ) {
+  @PreAuthorize("hasAnyRole('Sales Agent')")
+  @ResponseStatus(HttpStatus.OK)
+  @RequestMapping(path = "sortiment/{id}", method = { RequestMethod.GET })
+  @MyNotNullRESTParam
+  public Mono<Sortiment> getSortiment(
+      @RequestHeader(name = "token", required = true) @MyNotNullRESTParam String pAccessToken,
+      @RequestHeader(name = "lang", required = true) @MyNotNullRESTParam Locale pLanguage,
+      @CookieValue(name = "reseller", required = true) long pResellerID,
+      @PathVariable(name = "id", required = true) long pPathParam,
+      @RequestParam(name = "q1", required = true) @MyNotNullRESTParam String pQueryParam,
+      @MyNotNullRESTParam String pLang,
+      @RequestHeader(name = "intCode", required = true) @MyNotNullRESTParam int pIntCodeAsBasicType,
+      @RequestHeader Map<String, String> pHeaders, ServerWebExchange pServerWebExchange ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
-    com.anaptecs.spring.base.Context.Builder lContextBuilder = com.anaptecs.spring.base.Context.builder();
+    Context.Builder lContextBuilder = Context.builder();
     lContextBuilder.setAccessToken(pAccessToken);
     lContextBuilder.setLanguage(pLanguage);
     lContextBuilder.setResellerID(pResellerID);
@@ -149,58 +196,53 @@ public class RESTProductServiceReactiveResource {
     lContextBuilder.setQueryParam(pQueryParam);
     lContextBuilder.setLang(pLang);
     // Handle bean parameter pContext.intCode
-    lContextBuilder.setIntCode(com.anaptecs.spring.base.IntegerCodeType.builder().setCode(pIntCodeAsBasicType).build());
-    com.anaptecs.spring.base.Context pContext = lContextBuilder.build();
+    lContextBuilder.setIntCode(IntegerCodeType.builder().setCode(pIntCodeAsBasicType).build());
+    Context pContext = lContextBuilder.build();
     // Add custom headers.
-    for (java.util.Map.Entry<String, String> lNextEntry : pHeaders.entrySet()) {
+    for (Map.Entry<String, String> lNextEntry : pHeaders.entrySet()) {
       if (customHeaderFilter.test(lNextEntry.getKey())) {
         pContext.addCustomHeader(lNextEntry.getKey(), lNextEntry.getValue());
       }
     }
-    return reactor.core.publisher.Mono.defer(( ) -> {
+    return Mono.defer(( ) -> {
       // Validate request parameter(s).
-      validationExecutor.validateRequest(com.anaptecs.spring.service.RESTProductServiceReactive.class, pContext);
+      validationExecutor.validateRequest(RESTProductServiceReactive.class, pContext);
       // Delegate request to service.
       return rESTProductService.getSortiment(pContext);
     }).doOnNext(lResponse ->
     // Validate response.
-    validationExecutor.validateResponse(com.anaptecs.spring.service.RESTProductServiceReactive.class, lResponse));
+    validationExecutor.validateResponse(RESTProductServiceReactive.class, lResponse));
   }
 
   /**
    * {@link com.anaptecs.spring.service.RESTProductService#createChannelCode()}
    */
-  @org.springframework.security.access.prepost.PreAuthorize("hasAnyRole('Sales Agent')")
-  @org.springframework.web.bind.annotation.ResponseStatus(org.springframework.http.HttpStatus.OK)
-  @org.springframework.web.bind.annotation.RequestMapping(
-      path = "ChannelCode",
-      method = { org.springframework.web.bind.annotation.RequestMethod.POST })
-  @com.anaptecs.annotations.MyNotNullRESTParam
-  public reactor.core.publisher.Mono<com.anaptecs.spring.base.ChannelCode> createChannelCode(
-      @org.springframework.web.bind.annotation.RequestBody(
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam reactor.core.publisher.Mono<java.lang.String> pChannelCode,
-      org.springframework.web.server.ServerWebExchange pServerWebExchange ) {
+  @PreAuthorize("hasAnyRole('Sales Agent')")
+  @ResponseStatus(HttpStatus.OK)
+  @RequestMapping(path = "ChannelCode", method = { RequestMethod.POST })
+  @MyNotNullRESTParam
+  public Mono<ChannelCode> createChannelCode(
+      @RequestBody(required = true) @MyNotNullRESTParam Mono<String> pChannelCode,
+      ServerWebExchange pServerWebExchange ) {
     return pChannelCode.flatMap(pChannelCodeBody -> {
       // Validate request parameter(s).
-      validationExecutor.validateRequest(com.anaptecs.spring.service.RESTProductServiceReactive.class,
-          pChannelCodeBody);
+      validationExecutor.validateRequest(RESTProductServiceReactive.class, pChannelCodeBody);
       // Delegate request to service.
       return rESTProductService.createChannelCode(pChannelCodeBody);
     }).doOnNext(lResponse ->
     // Validate response.
-    validationExecutor.validateResponse(com.anaptecs.spring.service.RESTProductServiceReactive.class, lResponse));
+    validationExecutor.validateResponse(RESTProductServiceReactive.class, lResponse));
   }
 
   /**
    * {@link com.anaptecs.spring.service.RESTProductService#ping()}
    */
-  @org.springframework.security.access.prepost.PreAuthorize("hasAnyRole('Customer', 'Sales Agent')")
-  @org.springframework.web.bind.annotation.ResponseStatus(org.springframework.http.HttpStatus.NO_CONTENT)
-  @org.springframework.web.bind.annotation.RequestMapping(
-      method = { org.springframework.web.bind.annotation.RequestMethod.HEAD })
-  @com.anaptecs.annotations.MyNotNullRESTParam
-  public reactor.core.publisher.Mono<Void> ping( org.springframework.web.server.ServerWebExchange pServerWebExchange ) {
-    return reactor.core.publisher.Mono.defer(( ) -> {
+  @PreAuthorize("hasAnyRole('Customer', 'Sales Agent')")
+  @ResponseStatus(HttpStatus.NO_CONTENT)
+  @RequestMapping(method = { RequestMethod.HEAD })
+  @MyNotNullRESTParam
+  public Mono<Void> ping( ServerWebExchange pServerWebExchange ) {
+    return Mono.defer(( ) -> {
       // Delegate request to service.
       return rESTProductService.ping();
     });
@@ -209,15 +251,12 @@ public class RESTProductServiceReactiveResource {
   /**
    * {@link com.anaptecs.spring.service.RESTProductService#testInit()}
    */
-  @org.springframework.security.access.prepost.PreAuthorize("hasAnyRole('Sales Agent')")
-  @org.springframework.web.bind.annotation.ResponseStatus(org.springframework.http.HttpStatus.NO_CONTENT)
-  @org.springframework.web.bind.annotation.RequestMapping(
-      path = "test-init",
-      method = { org.springframework.web.bind.annotation.RequestMethod.GET })
-  @com.anaptecs.annotations.MyNotNullRESTParam
-  public reactor.core.publisher.Mono<Void> testInit(
-      org.springframework.web.server.ServerWebExchange pServerWebExchange ) {
-    return reactor.core.publisher.Mono.defer(( ) -> {
+  @PreAuthorize("hasAnyRole('Sales Agent')")
+  @ResponseStatus(HttpStatus.NO_CONTENT)
+  @RequestMapping(path = "test-init", method = { RequestMethod.GET })
+  @MyNotNullRESTParam
+  public Mono<Void> testInit( ServerWebExchange pServerWebExchange ) {
+    return Mono.defer(( ) -> {
       // Delegate request to service.
       return rESTProductService.testInit();
     });
@@ -226,119 +265,95 @@ public class RESTProductServiceReactiveResource {
   /**
    * {@link com.anaptecs.spring.service.RESTProductService#getSupportedCurrencies()}
    */
-  @org.springframework.security.access.prepost.PreAuthorize("hasAnyRole('Sales Agent')")
-  @org.springframework.web.bind.annotation.ResponseStatus(org.springframework.http.HttpStatus.OK)
-  @org.springframework.web.bind.annotation.RequestMapping(
-      path = "currencies/{channelCode}",
-      method = { org.springframework.web.bind.annotation.RequestMethod.GET })
-  public reactor.core.publisher.Mono<java.util.List<com.anaptecs.spring.base.CurrencyCode>> getSupportedCurrencies(
-      @org.springframework.web.bind.annotation.PathVariable(
-          name = "channelCode",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam String pChannelCodeAsBasicType,
-      org.springframework.web.server.ServerWebExchange pServerWebExchange ) {
+  @PreAuthorize("hasAnyRole('Sales Agent')")
+  @ResponseStatus(HttpStatus.OK)
+  @RequestMapping(path = "currencies/{channelCode}", method = { RequestMethod.GET })
+  public Mono<List<CurrencyCode>> getSupportedCurrencies(
+      @PathVariable(name = "channelCode", required = true) @MyNotNullRESTParam String pChannelCodeAsBasicType,
+      ServerWebExchange pServerWebExchange ) {
     // Convert basic type parameters into "real" objects.
-    com.anaptecs.spring.base.ChannelCode pChannelCode;
+    ChannelCode pChannelCode;
     if (pChannelCodeAsBasicType != null) {
-      pChannelCode = com.anaptecs.spring.base.ChannelCode.builder().setCode(pChannelCodeAsBasicType).build();
+      pChannelCode = ChannelCode.builder().setCode(pChannelCodeAsBasicType).build();
     }
     else {
       pChannelCode = null;
     }
-    return reactor.core.publisher.Mono.defer(( ) -> {
+    return Mono.defer(( ) -> {
       // Validate request parameter(s).
-      validationExecutor.validateRequest(com.anaptecs.spring.service.RESTProductServiceReactive.class, pChannelCode);
+      validationExecutor.validateRequest(RESTProductServiceReactive.class, pChannelCode);
       // Delegate request to service.
       return rESTProductService.getSupportedCurrencies(pChannelCode);
     }).doOnNext(lResponse ->
     // Validate response.
-    validationExecutor.validateResponse(com.anaptecs.spring.service.RESTProductServiceReactive.class, lResponse));
+    validationExecutor.validateResponse(RESTProductServiceReactive.class, lResponse));
   }
 
   /**
    * {@link com.anaptecs.spring.service.RESTProductService#getSupportedCurrenciesAsync()}
    */
-  @org.springframework.security.access.prepost.PreAuthorize("hasAnyRole('Sales Agent')")
-  @org.springframework.web.bind.annotation.ResponseStatus(org.springframework.http.HttpStatus.OK)
-  @org.springframework.web.bind.annotation.RequestMapping(
-      path = "async-currencies/{channelCode}",
-      method = { org.springframework.web.bind.annotation.RequestMethod.GET })
-  public reactor.core.publisher.Mono<java.util.List<com.anaptecs.spring.base.CurrencyCode>> getSupportedCurrenciesAsync(
-      @org.springframework.web.bind.annotation.PathVariable(
-          name = "channelCode",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam String pChannelCodeAsBasicType,
-      org.springframework.web.server.ServerWebExchange pServerWebExchange ) {
+  @PreAuthorize("hasAnyRole('Sales Agent')")
+  @ResponseStatus(HttpStatus.OK)
+  @RequestMapping(path = "async-currencies/{channelCode}", method = { RequestMethod.GET })
+  public Mono<List<CurrencyCode>> getSupportedCurrenciesAsync(
+      @PathVariable(name = "channelCode", required = true) @MyNotNullRESTParam String pChannelCodeAsBasicType,
+      ServerWebExchange pServerWebExchange ) {
     // Convert basic type parameters into "real" objects.
-    com.anaptecs.spring.base.ChannelCode pChannelCode;
+    ChannelCode pChannelCode;
     if (pChannelCodeAsBasicType != null) {
-      pChannelCode = com.anaptecs.spring.base.ChannelCode.builder().setCode(pChannelCodeAsBasicType).build();
+      pChannelCode = ChannelCode.builder().setCode(pChannelCodeAsBasicType).build();
     }
     else {
       pChannelCode = null;
     }
-    return reactor.core.publisher.Mono.defer(( ) -> {
+    return Mono.defer(( ) -> {
       // Validate request parameter(s).
-      validationExecutor.validateRequest(com.anaptecs.spring.service.RESTProductServiceReactive.class, pChannelCode);
+      validationExecutor.validateRequest(RESTProductServiceReactive.class, pChannelCode);
       // Delegate request to service.
       return rESTProductService.getSupportedCurrenciesAsync(pChannelCode);
     }).doOnNext(lResponse ->
     // Validate response.
-    validationExecutor.validateResponse(com.anaptecs.spring.service.RESTProductServiceReactive.class, lResponse));
+    validationExecutor.validateResponse(RESTProductServiceReactive.class, lResponse));
   }
 
   /**
    * {@link com.anaptecs.spring.service.RESTProductService#testParams()}
    */
-  @org.springframework.security.access.prepost.PreAuthorize("hasAnyRole('Sales Agent')")
-  @org.springframework.web.bind.annotation.ResponseStatus(org.springframework.http.HttpStatus.OK)
-  @org.springframework.web.bind.annotation.RequestMapping(
-      path = "test-params",
-      method = { org.springframework.web.bind.annotation.RequestMethod.GET })
-  @com.anaptecs.annotations.MyNotNullRESTParam
-  public reactor.core.publisher.Mono<String> testParams(
-      @org.springframework.web.bind.annotation.RequestHeader(
-          name = "Big-Header",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam java.math.BigDecimal pBigDecimalHeader,
-      @org.springframework.web.bind.annotation.CookieValue(
-          name = "giveMeMoreCookies",
-          required = true) int pIntCookieParam,
-      @org.springframework.web.bind.annotation.RequestParam(
-          name = "locale",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam java.util.Locale pLocaleQueryParam,
-      org.springframework.web.server.ServerWebExchange pServerWebExchange ) {
-    return reactor.core.publisher.Mono.defer(( ) -> {
+  @PreAuthorize("hasAnyRole('Sales Agent')")
+  @ResponseStatus(HttpStatus.OK)
+  @RequestMapping(path = "test-params", method = { RequestMethod.GET })
+  @MyNotNullRESTParam
+  public Mono<String> testParams(
+      @RequestHeader(name = "Big-Header", required = true) @MyNotNullRESTParam BigDecimal pBigDecimalHeader,
+      @CookieValue(name = "giveMeMoreCookies", required = true) int pIntCookieParam,
+      @RequestParam(name = "locale", required = true) @MyNotNullRESTParam Locale pLocaleQueryParam,
+      ServerWebExchange pServerWebExchange ) {
+    return Mono.defer(( ) -> {
       // Validate request parameter(s).
-      validationExecutor.validateRequest(com.anaptecs.spring.service.RESTProductServiceReactive.class,
-          pBigDecimalHeader, pIntCookieParam, pLocaleQueryParam);
+      validationExecutor.validateRequest(RESTProductServiceReactive.class, pBigDecimalHeader, pIntCookieParam,
+          pLocaleQueryParam);
       // Delegate request to service.
       return rESTProductService.testParams(pBigDecimalHeader, pIntCookieParam, pLocaleQueryParam);
     }).doOnNext(lResponse ->
     // Validate response.
-    validationExecutor.validateResponse(com.anaptecs.spring.service.RESTProductServiceReactive.class, lResponse));
+    validationExecutor.validateResponse(RESTProductServiceReactive.class, lResponse));
   }
 
   /**
    * {@link com.anaptecs.spring.service.RESTProductService#testEnumParams()}
    */
-  @org.springframework.security.access.prepost.PreAuthorize("hasAnyRole('Sales Agent')")
-  @org.springframework.web.bind.annotation.ResponseStatus(org.springframework.http.HttpStatus.NO_CONTENT)
-  @org.springframework.web.bind.annotation.RequestMapping(
-      path = "test-enum-params/{channelType}",
-      method = { org.springframework.web.bind.annotation.RequestMethod.GET })
-  @com.anaptecs.annotations.MyNotNullRESTParam
-  public reactor.core.publisher.Mono<Void> testEnumParams( @org.springframework.web.bind.annotation.PathVariable(
-      name = "channelType",
-      required = true) @com.anaptecs.annotations.MyNotNullRESTParam com.anaptecs.spring.base.ChannelType pChannelType,
-      @org.springframework.web.bind.annotation.RequestParam(
-          name = "timeUnit",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam com.anaptecs.spring.base.TimeUnit pTimeUnit,
-      @org.springframework.web.bind.annotation.RequestParam(
-          name = "extensibleEnum",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam com.anaptecs.spring.base.ExtensibleEnum pExtensibleEnum,
-      org.springframework.web.server.ServerWebExchange pServerWebExchange ) {
-    return reactor.core.publisher.Mono.defer(( ) -> {
+  @PreAuthorize("hasAnyRole('Sales Agent')")
+  @ResponseStatus(HttpStatus.NO_CONTENT)
+  @RequestMapping(path = "test-enum-params/{channelType}", method = { RequestMethod.GET })
+  @MyNotNullRESTParam
+  public Mono<Void> testEnumParams(
+      @PathVariable(name = "channelType", required = true) @MyNotNullRESTParam ChannelType pChannelType,
+      @RequestParam(name = "timeUnit", required = true) @MyNotNullRESTParam TimeUnit pTimeUnit,
+      @RequestParam(name = "extensibleEnum", required = true) @MyNotNullRESTParam ExtensibleEnum pExtensibleEnum,
+      ServerWebExchange pServerWebExchange ) {
+    return Mono.defer(( ) -> {
       // Validate request parameter(s).
-      validationExecutor.validateRequest(com.anaptecs.spring.service.RESTProductServiceReactive.class, pChannelType,
-          pTimeUnit, pExtensibleEnum);
+      validationExecutor.validateRequest(RESTProductServiceReactive.class, pChannelType, pTimeUnit, pExtensibleEnum);
       // Delegate request to service.
       return rESTProductService.testEnumParams(pChannelType, pTimeUnit, pExtensibleEnum);
     });
@@ -347,26 +362,18 @@ public class RESTProductServiceReactiveResource {
   /**
    * {@link com.anaptecs.spring.service.RESTProductService#testEnumHeaderParams()}
    */
-  @org.springframework.security.access.prepost.PreAuthorize("hasAnyRole('Sales Agent')")
-  @org.springframework.web.bind.annotation.ResponseStatus(org.springframework.http.HttpStatus.NO_CONTENT)
-  @org.springframework.web.bind.annotation.RequestMapping(
-      path = "test-enum-header-params",
-      method = { org.springframework.web.bind.annotation.RequestMethod.GET })
-  @com.anaptecs.annotations.MyNotNullRESTParam
-  public reactor.core.publisher.Mono<Void> testEnumHeaderParams( @org.springframework.web.bind.annotation.RequestHeader(
-      name = "Channel-Type",
-      required = true) @com.anaptecs.annotations.MyNotNullRESTParam com.anaptecs.spring.base.ChannelType pChannelType,
-      @org.springframework.web.bind.annotation.RequestHeader(
-          name = "Time-Unit",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam com.anaptecs.spring.base.TimeUnit pTimeUnit,
-      @org.springframework.web.bind.annotation.RequestHeader(
-          name = "Extensible-Enum",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam com.anaptecs.spring.base.ExtensibleEnum pExtensibleEnum,
-      org.springframework.web.server.ServerWebExchange pServerWebExchange ) {
-    return reactor.core.publisher.Mono.defer(( ) -> {
+  @PreAuthorize("hasAnyRole('Sales Agent')")
+  @ResponseStatus(HttpStatus.NO_CONTENT)
+  @RequestMapping(path = "test-enum-header-params", method = { RequestMethod.GET })
+  @MyNotNullRESTParam
+  public Mono<Void> testEnumHeaderParams(
+      @RequestHeader(name = "Channel-Type", required = true) @MyNotNullRESTParam ChannelType pChannelType,
+      @RequestHeader(name = "Time-Unit", required = true) @MyNotNullRESTParam TimeUnit pTimeUnit,
+      @RequestHeader(name = "Extensible-Enum", required = true) @MyNotNullRESTParam ExtensibleEnum pExtensibleEnum,
+      ServerWebExchange pServerWebExchange ) {
+    return Mono.defer(( ) -> {
       // Validate request parameter(s).
-      validationExecutor.validateRequest(com.anaptecs.spring.service.RESTProductServiceReactive.class, pChannelType,
-          pTimeUnit, pExtensibleEnum);
+      validationExecutor.validateRequest(RESTProductServiceReactive.class, pChannelType, pTimeUnit, pExtensibleEnum);
       // Delegate request to service.
       return rESTProductService.testEnumHeaderParams(pChannelType, pTimeUnit, pExtensibleEnum);
     });
@@ -375,95 +382,69 @@ public class RESTProductServiceReactiveResource {
   /**
    * {@link com.anaptecs.spring.service.RESTProductService#testDateQueryParams()}
    */
-  @org.springframework.security.access.prepost.PreAuthorize("hasAnyRole('Sales Agent')")
-  @org.springframework.web.bind.annotation.ResponseStatus(org.springframework.http.HttpStatus.NO_CONTENT)
-  @org.springframework.web.bind.annotation.RequestMapping(
-      path = "test-date-query-params/{path}",
-      method = { org.springframework.web.bind.annotation.RequestMethod.GET })
-  @com.anaptecs.annotations.MyNotNullRESTParam
-  public reactor.core.publisher.Mono<Void> testDateQueryParams(
-      @org.springframework.web.bind.annotation.PathVariable(
-          name = "path",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam String pPath,
-      @org.springframework.web.bind.annotation.RequestParam(
-          name = "startTimestamp",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam String pStartTimestampAsBasicType,
-      @org.springframework.web.bind.annotation.RequestParam(
-          name = "startTime",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam String pStartTimeAsBasicType,
-      @org.springframework.web.bind.annotation.RequestParam(
+  @PreAuthorize("hasAnyRole('Sales Agent')")
+  @ResponseStatus(HttpStatus.NO_CONTENT)
+  @RequestMapping(path = "test-date-query-params/{path}", method = { RequestMethod.GET })
+  @MyNotNullRESTParam
+  public Mono<Void> testDateQueryParams( @PathVariable(name = "path", required = true) @MyNotNullRESTParam String pPath,
+      @RequestParam(name = "startTimestamp", required = true) @MyNotNullRESTParam String pStartTimestampAsBasicType,
+      @RequestParam(name = "startTime", required = true) @MyNotNullRESTParam String pStartTimeAsBasicType,
+      @RequestParam(
           name = "localStartTimestamp",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam String pLocalStartTimestampAsBasicType,
-      @org.springframework.web.bind.annotation.RequestParam(
-          name = "localStartTime",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam String pLocalStartTimeAsBasicType,
-      @org.springframework.web.bind.annotation.RequestParam(
-          name = "localStartDate",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam String pLocalStartDateAsBasicType,
-      @org.springframework.web.bind.annotation.RequestParam(
-          name = "calendar",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam String pCalendarAsBasicType,
-      @org.springframework.web.bind.annotation.RequestParam(
-          name = "utilDate",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam String pUtilDateAsBasicType,
-      @org.springframework.web.bind.annotation.RequestParam(
-          name = "sqlTimestamp",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam String pSQLTimestampAsBasicType,
-      @org.springframework.web.bind.annotation.RequestParam(
-          name = "sqlTime",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam String pSQLTimeAsBasicType,
-      @org.springframework.web.bind.annotation.RequestParam(
-          name = "sqlDate",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam String pSQLDateAsBasicType,
-      @org.springframework.web.bind.annotation.RequestParam(
-          name = "calendars",
-          required = false) String[] pCalendarsAsBasicType,
-      org.springframework.web.server.ServerWebExchange pServerWebExchange ) {
+          required = true) @MyNotNullRESTParam String pLocalStartTimestampAsBasicType,
+      @RequestParam(name = "localStartTime", required = true) @MyNotNullRESTParam String pLocalStartTimeAsBasicType,
+      @RequestParam(name = "localStartDate", required = true) @MyNotNullRESTParam String pLocalStartDateAsBasicType,
+      @RequestParam(name = "calendar", required = true) @MyNotNullRESTParam String pCalendarAsBasicType,
+      @RequestParam(name = "utilDate", required = true) @MyNotNullRESTParam String pUtilDateAsBasicType,
+      @RequestParam(name = "sqlTimestamp", required = true) @MyNotNullRESTParam String pSQLTimestampAsBasicType,
+      @RequestParam(name = "sqlTime", required = true) @MyNotNullRESTParam String pSQLTimeAsBasicType,
+      @RequestParam(name = "sqlDate", required = true) @MyNotNullRESTParam String pSQLDateAsBasicType,
+      @RequestParam(name = "calendars", required = false) String[] pCalendarsAsBasicType,
+      ServerWebExchange pServerWebExchange ) {
     // Convert date types into real objects.
-    java.time.OffsetDateTime pStartTimestamp;
+    OffsetDateTime pStartTimestamp;
     if (pStartTimestampAsBasicType != null) {
-      pStartTimestamp = java.time.OffsetDateTime.parse(pStartTimestampAsBasicType);
+      pStartTimestamp = OffsetDateTime.parse(pStartTimestampAsBasicType);
     }
     else {
       pStartTimestamp = null;
     }
-    java.time.OffsetTime pStartTime;
+    OffsetTime pStartTime;
     if (pStartTimeAsBasicType != null) {
-      pStartTime = java.time.OffsetTime.parse(pStartTimeAsBasicType);
+      pStartTime = OffsetTime.parse(pStartTimeAsBasicType);
     }
     else {
       pStartTime = null;
     }
-    java.time.LocalDateTime pLocalStartTimestamp;
+    LocalDateTime pLocalStartTimestamp;
     if (pLocalStartTimestampAsBasicType != null) {
-      pLocalStartTimestamp = java.time.LocalDateTime.parse(pLocalStartTimestampAsBasicType);
+      pLocalStartTimestamp = LocalDateTime.parse(pLocalStartTimestampAsBasicType);
     }
     else {
       pLocalStartTimestamp = null;
     }
-    java.time.LocalTime pLocalStartTime;
+    LocalTime pLocalStartTime;
     if (pLocalStartTimeAsBasicType != null) {
-      pLocalStartTime = java.time.LocalTime.parse(pLocalStartTimeAsBasicType);
+      pLocalStartTime = LocalTime.parse(pLocalStartTimeAsBasicType);
     }
     else {
       pLocalStartTime = null;
     }
-    java.time.LocalDate pLocalStartDate;
+    LocalDate pLocalStartDate;
     if (pLocalStartDateAsBasicType != null) {
-      pLocalStartDate = java.time.LocalDate.parse(pLocalStartDateAsBasicType);
+      pLocalStartDate = LocalDate.parse(pLocalStartDateAsBasicType);
     }
     else {
       pLocalStartDate = null;
     }
-    java.util.Calendar pCalendar;
+    Calendar pCalendar;
     if (pCalendarAsBasicType != null) {
       try {
-        java.util.Date lDate =
-            new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").parse(pCalendarAsBasicType);
-        pCalendar = java.util.Calendar.getInstance();
+        java.util.Date lDate = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").parse(pCalendarAsBasicType);
+        pCalendar = Calendar.getInstance();
         pCalendar.setTime(lDate);
       }
-      catch (java.text.ParseException e) {
+      catch (ParseException e) {
         throw new IllegalArgumentException(e.getMessage());
       }
     }
@@ -473,60 +454,60 @@ public class RESTProductServiceReactiveResource {
     java.util.Date pUtilDate;
     if (pUtilDateAsBasicType != null) {
       try {
-        pUtilDate = new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").parse(pUtilDateAsBasicType);
+        pUtilDate = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").parse(pUtilDateAsBasicType);
       }
-      catch (java.text.ParseException e) {
+      catch (ParseException e) {
         throw new IllegalArgumentException(e.getMessage());
       }
     }
     else {
       pUtilDate = null;
     }
-    java.sql.Timestamp pSQLTimestamp;
+    Timestamp pSQLTimestamp;
     if (pSQLTimestampAsBasicType != null) {
-      pSQLTimestamp = java.sql.Timestamp.valueOf(pSQLTimestampAsBasicType);
+      pSQLTimestamp = Timestamp.valueOf(pSQLTimestampAsBasicType);
     }
     else {
       pSQLTimestamp = null;
     }
-    java.sql.Time pSQLTime;
+    Time pSQLTime;
     if (pSQLTimeAsBasicType != null) {
-      pSQLTime = java.sql.Time.valueOf(pSQLTimeAsBasicType);
+      pSQLTime = Time.valueOf(pSQLTimeAsBasicType);
     }
     else {
       pSQLTime = null;
     }
-    java.sql.Date pSQLDate;
+    Date pSQLDate;
     if (pSQLDateAsBasicType != null) {
-      pSQLDate = java.sql.Date.valueOf(pSQLDateAsBasicType);
+      pSQLDate = Date.valueOf(pSQLDateAsBasicType);
     }
     else {
       pSQLDate = null;
     }
-    java.util.Set<java.util.Calendar> pCalendars;
+    Set<Calendar> pCalendars;
     if (pCalendarsAsBasicType != null) {
       try {
-        pCalendars = new java.util.HashSet<java.util.Calendar>();
+        pCalendars = new HashSet<Calendar>();
         for (int i = 0; i < pCalendarsAsBasicType.length; i++) {
-          java.text.SimpleDateFormat lDateFormat = new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
+          SimpleDateFormat lDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
           java.util.Date lDate = lDateFormat.parse(pCalendarsAsBasicType[i]);
-          java.util.Calendar lCalendar = java.util.Calendar.getInstance();
+          Calendar lCalendar = Calendar.getInstance();
           lCalendar.setTime(lDate);
           pCalendars.add(lCalendar);
         }
       }
-      catch (java.text.ParseException e) {
+      catch (ParseException e) {
         throw new IllegalArgumentException(e.getMessage());
       }
     }
     else {
-      pCalendars = java.util.Collections.emptySet();
+      pCalendars = Collections.emptySet();
     }
-    return reactor.core.publisher.Mono.defer(( ) -> {
+    return Mono.defer(( ) -> {
       // Validate request parameter(s).
-      validationExecutor.validateRequest(com.anaptecs.spring.service.RESTProductServiceReactive.class, pPath,
-          pStartTimestamp, pStartTime, pLocalStartTimestamp, pLocalStartTime, pLocalStartDate, pCalendar, pUtilDate,
-          pSQLTimestamp, pSQLTime, pSQLDate, pCalendars);
+      validationExecutor.validateRequest(RESTProductServiceReactive.class, pPath, pStartTimestamp, pStartTime,
+          pLocalStartTimestamp, pLocalStartTime, pLocalStartDate, pCalendar, pUtilDate, pSQLTimestamp, pSQLTime,
+          pSQLDate, pCalendars);
       // Delegate request to service.
       return rESTProductService.testDateQueryParams(pPath, pStartTimestamp, pStartTime, pLocalStartTimestamp,
           pLocalStartTime, pLocalStartDate, pCalendar, pUtilDate, pSQLTimestamp, pSQLTime, pSQLDate, pCalendars);
@@ -536,112 +517,84 @@ public class RESTProductServiceReactiveResource {
   /**
    * {@link com.anaptecs.spring.service.RESTProductService#testDateQueryParamsBean()}
    */
-  @org.springframework.security.access.prepost.PreAuthorize("hasAnyRole('Sales Agent')")
-  @org.springframework.web.bind.annotation.ResponseStatus(org.springframework.http.HttpStatus.NO_CONTENT)
-  @org.springframework.web.bind.annotation.RequestMapping(
-      path = "test-date-query-params-beans/{path}",
-      method = { org.springframework.web.bind.annotation.RequestMethod.GET })
-  @com.anaptecs.annotations.MyNotNullRESTParam
-  public reactor.core.publisher.Mono<Void> testDateQueryParamsBean(
-      @org.springframework.web.bind.annotation.PathVariable(
-          name = "path",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam String pPath,
-      @org.springframework.web.bind.annotation.RequestParam(
-          name = "offsetDateTime",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam String pOffsetDateTimeAsBasicType,
-      @org.springframework.web.bind.annotation.RequestParam(
-          name = "offsetTime",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam String pOffsetTimeAsBasicType,
-      @org.springframework.web.bind.annotation.RequestParam(
-          name = "localDateTime",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam String pLocalDateTimeAsBasicType,
-      @org.springframework.web.bind.annotation.RequestParam(
-          name = "localTime",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam String pLocalTimeAsBasicType,
-      @org.springframework.web.bind.annotation.RequestParam(
-          name = "localDate",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam String pLocalDateAsBasicType,
-      @org.springframework.web.bind.annotation.RequestParam(
-          name = "utilDate",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam String pUtilDateAsBasicType,
-      @org.springframework.web.bind.annotation.RequestParam(
-          name = "calendar",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam String pCalendarAsBasicType,
-      @org.springframework.web.bind.annotation.RequestParam(
-          name = "sqlTimestamp",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam String pSqlTimestampAsBasicType,
-      @org.springframework.web.bind.annotation.RequestParam(
-          name = "sqlTime",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam String pSqlTimeAsBasicType,
-      @org.springframework.web.bind.annotation.RequestParam(
-          name = "sqlDate",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam String pSqlDateAsBasicType,
-      org.springframework.web.server.ServerWebExchange pServerWebExchange ) {
+  @PreAuthorize("hasAnyRole('Sales Agent')")
+  @ResponseStatus(HttpStatus.NO_CONTENT)
+  @RequestMapping(path = "test-date-query-params-beans/{path}", method = { RequestMethod.GET })
+  @MyNotNullRESTParam
+  public Mono<Void> testDateQueryParamsBean(
+      @PathVariable(name = "path", required = true) @MyNotNullRESTParam String pPath,
+      @RequestParam(name = "offsetDateTime", required = true) @MyNotNullRESTParam String pOffsetDateTimeAsBasicType,
+      @RequestParam(name = "offsetTime", required = true) @MyNotNullRESTParam String pOffsetTimeAsBasicType,
+      @RequestParam(name = "localDateTime", required = true) @MyNotNullRESTParam String pLocalDateTimeAsBasicType,
+      @RequestParam(name = "localTime", required = true) @MyNotNullRESTParam String pLocalTimeAsBasicType,
+      @RequestParam(name = "localDate", required = true) @MyNotNullRESTParam String pLocalDateAsBasicType,
+      @RequestParam(name = "utilDate", required = true) @MyNotNullRESTParam String pUtilDateAsBasicType,
+      @RequestParam(name = "calendar", required = true) @MyNotNullRESTParam String pCalendarAsBasicType,
+      @RequestParam(name = "sqlTimestamp", required = true) @MyNotNullRESTParam String pSqlTimestampAsBasicType,
+      @RequestParam(name = "sqlTime", required = true) @MyNotNullRESTParam String pSqlTimeAsBasicType,
+      @RequestParam(name = "sqlDate", required = true) @MyNotNullRESTParam String pSqlDateAsBasicType,
+      ServerWebExchange pServerWebExchange ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
-    com.anaptecs.spring.service.DateQueryParamsBean.Builder lQueryParamsBuilder =
-        com.anaptecs.spring.service.DateQueryParamsBean.builder();
+    DateQueryParamsBean.Builder lQueryParamsBuilder = DateQueryParamsBean.builder();
     // Handle bean parameter pQueryParams.offsetDateTime
     if (pOffsetDateTimeAsBasicType != null) {
-      lQueryParamsBuilder.setOffsetDateTime(java.time.OffsetDateTime.parse(pOffsetDateTimeAsBasicType));
+      lQueryParamsBuilder.setOffsetDateTime(OffsetDateTime.parse(pOffsetDateTimeAsBasicType));
     }
     // Handle bean parameter pQueryParams.offsetTime
     if (pOffsetTimeAsBasicType != null) {
-      lQueryParamsBuilder.setOffsetTime(java.time.OffsetTime.parse(pOffsetTimeAsBasicType));
+      lQueryParamsBuilder.setOffsetTime(OffsetTime.parse(pOffsetTimeAsBasicType));
     }
     // Handle bean parameter pQueryParams.localDateTime
     if (pLocalDateTimeAsBasicType != null) {
-      lQueryParamsBuilder.setLocalDateTime(java.time.LocalDateTime.parse(pLocalDateTimeAsBasicType));
+      lQueryParamsBuilder.setLocalDateTime(LocalDateTime.parse(pLocalDateTimeAsBasicType));
     }
     // Handle bean parameter pQueryParams.localTime
     if (pLocalTimeAsBasicType != null) {
-      lQueryParamsBuilder.setLocalTime(java.time.LocalTime.parse(pLocalTimeAsBasicType));
+      lQueryParamsBuilder.setLocalTime(LocalTime.parse(pLocalTimeAsBasicType));
     }
     // Handle bean parameter pQueryParams.localDate
     if (pLocalDateAsBasicType != null) {
-      lQueryParamsBuilder.setLocalDate(java.time.LocalDate.parse(pLocalDateAsBasicType));
+      lQueryParamsBuilder.setLocalDate(LocalDate.parse(pLocalDateAsBasicType));
     }
     // Handle bean parameter pQueryParams.utilDate
     if (pUtilDateAsBasicType != null) {
       try {
-        java.util.Date lDate =
-            new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").parse(pUtilDateAsBasicType);
+        java.util.Date lDate = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").parse(pUtilDateAsBasicType);
         lQueryParamsBuilder.setUtilDate(lDate);
       }
-      catch (java.text.ParseException e) {
+      catch (ParseException e) {
         throw new IllegalArgumentException(e.getMessage());
       }
     }
     // Handle bean parameter pQueryParams.calendar
     if (pCalendarAsBasicType != null) {
       try {
-        java.util.Date lDate =
-            new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").parse(pCalendarAsBasicType);
-        java.util.Calendar lCalendar = java.util.Calendar.getInstance();
+        java.util.Date lDate = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").parse(pCalendarAsBasicType);
+        Calendar lCalendar = Calendar.getInstance();
         lCalendar.setTime(lDate);
         lQueryParamsBuilder.setCalendar(lCalendar);
       }
-      catch (java.text.ParseException e) {
+      catch (ParseException e) {
         throw new IllegalArgumentException(e.getMessage());
       }
     }
     // Handle bean parameter pQueryParams.sqlTimestamp
     if (pSqlTimestampAsBasicType != null) {
-      lQueryParamsBuilder.setSqlTimestamp(java.sql.Timestamp.valueOf(pSqlTimestampAsBasicType));
+      lQueryParamsBuilder.setSqlTimestamp(Timestamp.valueOf(pSqlTimestampAsBasicType));
     }
     // Handle bean parameter pQueryParams.sqlTime
     if (pSqlTimeAsBasicType != null) {
-      lQueryParamsBuilder.setSqlTime(java.sql.Time.valueOf(pSqlTimeAsBasicType));
+      lQueryParamsBuilder.setSqlTime(Time.valueOf(pSqlTimeAsBasicType));
     }
     // Handle bean parameter pQueryParams.sqlDate
     if (pSqlDateAsBasicType != null) {
-      lQueryParamsBuilder.setSqlDate(java.sql.Date.valueOf(pSqlDateAsBasicType));
+      lQueryParamsBuilder.setSqlDate(Date.valueOf(pSqlDateAsBasicType));
     }
-    com.anaptecs.spring.service.DateQueryParamsBean pQueryParams = lQueryParamsBuilder.build();
-    return reactor.core.publisher.Mono.defer(( ) -> {
+    DateQueryParamsBean pQueryParams = lQueryParamsBuilder.build();
+    return Mono.defer(( ) -> {
       // Validate request parameter(s).
-      validationExecutor.validateRequest(com.anaptecs.spring.service.RESTProductServiceReactive.class, pPath,
-          pQueryParams);
+      validationExecutor.validateRequest(RESTProductServiceReactive.class, pPath, pQueryParams);
       // Delegate request to service.
       return rESTProductService.testDateQueryParamsBean(pPath, pQueryParams);
     });
@@ -650,95 +603,68 @@ public class RESTProductServiceReactiveResource {
   /**
    * {@link com.anaptecs.spring.service.RESTProductService#testDateHeaderParams()}
    */
-  @org.springframework.security.access.prepost.PreAuthorize("hasAnyRole('Sales Agent')")
-  @org.springframework.web.bind.annotation.ResponseStatus(org.springframework.http.HttpStatus.NO_CONTENT)
-  @org.springframework.web.bind.annotation.RequestMapping(
-      path = "test-date-header-params/{path}",
-      method = { org.springframework.web.bind.annotation.RequestMethod.GET })
-  @com.anaptecs.annotations.MyNotNullRESTParam
-  public reactor.core.publisher.Mono<Void> testDateHeaderParams(
-      @org.springframework.web.bind.annotation.PathVariable(
-          name = "path",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam String pPath,
-      @org.springframework.web.bind.annotation.RequestHeader(
-          name = "Offset-Date-Time",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam String pOffsetDateTimeAsBasicType,
-      @org.springframework.web.bind.annotation.RequestHeader(
-          name = "Offset-Time",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam String pOffsetTimeAsBasicType,
-      @org.springframework.web.bind.annotation.RequestHeader(
-          name = "Local-Date-Time",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam String pLocalDateTimeAsBasicType,
-      @org.springframework.web.bind.annotation.RequestHeader(
-          name = "Local-Time",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam String pLocalTimeAsBasicType,
-      @org.springframework.web.bind.annotation.RequestHeader(
-          name = "Local-Date",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam String pLocalDateAsBasicType,
-      @org.springframework.web.bind.annotation.RequestHeader(
-          name = "Calendar",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam String pCalendarAsBasicType,
-      @org.springframework.web.bind.annotation.RequestHeader(
-          name = "Util-Date",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam String pUtilDateAsBasicType,
-      @org.springframework.web.bind.annotation.RequestHeader(
-          name = "SQL-Timestamp",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam String pSQLTimestampAsBasicType,
-      @org.springframework.web.bind.annotation.RequestHeader(
-          name = "SQL-Time",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam String pSQLTimeAsBasicType,
-      @org.springframework.web.bind.annotation.RequestHeader(
-          name = "SQL-Date",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam String pSQLDateAsBasicType,
-      @org.springframework.web.bind.annotation.RequestHeader(
-          name = "util-dates",
-          required = false) String[] pUtilDatesAsBasicType,
-      org.springframework.web.server.ServerWebExchange pServerWebExchange ) {
+  @PreAuthorize("hasAnyRole('Sales Agent')")
+  @ResponseStatus(HttpStatus.NO_CONTENT)
+  @RequestMapping(path = "test-date-header-params/{path}", method = { RequestMethod.GET })
+  @MyNotNullRESTParam
+  public Mono<Void> testDateHeaderParams(
+      @PathVariable(name = "path", required = true) @MyNotNullRESTParam String pPath,
+      @RequestHeader(name = "Offset-Date-Time", required = true) @MyNotNullRESTParam String pOffsetDateTimeAsBasicType,
+      @RequestHeader(name = "Offset-Time", required = true) @MyNotNullRESTParam String pOffsetTimeAsBasicType,
+      @RequestHeader(name = "Local-Date-Time", required = true) @MyNotNullRESTParam String pLocalDateTimeAsBasicType,
+      @RequestHeader(name = "Local-Time", required = true) @MyNotNullRESTParam String pLocalTimeAsBasicType,
+      @RequestHeader(name = "Local-Date", required = true) @MyNotNullRESTParam String pLocalDateAsBasicType,
+      @RequestHeader(name = "Calendar", required = true) @MyNotNullRESTParam String pCalendarAsBasicType,
+      @RequestHeader(name = "Util-Date", required = true) @MyNotNullRESTParam String pUtilDateAsBasicType,
+      @RequestHeader(name = "SQL-Timestamp", required = true) @MyNotNullRESTParam String pSQLTimestampAsBasicType,
+      @RequestHeader(name = "SQL-Time", required = true) @MyNotNullRESTParam String pSQLTimeAsBasicType,
+      @RequestHeader(name = "SQL-Date", required = true) @MyNotNullRESTParam String pSQLDateAsBasicType,
+      @RequestHeader(name = "util-dates", required = false) String[] pUtilDatesAsBasicType,
+      ServerWebExchange pServerWebExchange ) {
     // Convert date types into real objects.
-    java.time.OffsetDateTime pOffsetDateTime;
+    OffsetDateTime pOffsetDateTime;
     if (pOffsetDateTimeAsBasicType != null) {
-      pOffsetDateTime = java.time.OffsetDateTime.parse(pOffsetDateTimeAsBasicType);
+      pOffsetDateTime = OffsetDateTime.parse(pOffsetDateTimeAsBasicType);
     }
     else {
       pOffsetDateTime = null;
     }
-    java.time.OffsetTime pOffsetTime;
+    OffsetTime pOffsetTime;
     if (pOffsetTimeAsBasicType != null) {
-      pOffsetTime = java.time.OffsetTime.parse(pOffsetTimeAsBasicType);
+      pOffsetTime = OffsetTime.parse(pOffsetTimeAsBasicType);
     }
     else {
       pOffsetTime = null;
     }
-    java.time.LocalDateTime pLocalDateTime;
+    LocalDateTime pLocalDateTime;
     if (pLocalDateTimeAsBasicType != null) {
-      pLocalDateTime = java.time.LocalDateTime.parse(pLocalDateTimeAsBasicType);
+      pLocalDateTime = LocalDateTime.parse(pLocalDateTimeAsBasicType);
     }
     else {
       pLocalDateTime = null;
     }
-    java.time.LocalTime pLocalTime;
+    LocalTime pLocalTime;
     if (pLocalTimeAsBasicType != null) {
-      pLocalTime = java.time.LocalTime.parse(pLocalTimeAsBasicType);
+      pLocalTime = LocalTime.parse(pLocalTimeAsBasicType);
     }
     else {
       pLocalTime = null;
     }
-    java.time.LocalDate pLocalDate;
+    LocalDate pLocalDate;
     if (pLocalDateAsBasicType != null) {
-      pLocalDate = java.time.LocalDate.parse(pLocalDateAsBasicType);
+      pLocalDate = LocalDate.parse(pLocalDateAsBasicType);
     }
     else {
       pLocalDate = null;
     }
-    java.util.Calendar pCalendar;
+    Calendar pCalendar;
     if (pCalendarAsBasicType != null) {
       try {
-        java.util.Date lDate =
-            new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").parse(pCalendarAsBasicType);
-        pCalendar = java.util.Calendar.getInstance();
+        java.util.Date lDate = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").parse(pCalendarAsBasicType);
+        pCalendar = Calendar.getInstance();
         pCalendar.setTime(lDate);
       }
-      catch (java.text.ParseException e) {
+      catch (ParseException e) {
         throw new IllegalArgumentException(e.getMessage());
       }
     }
@@ -748,58 +674,57 @@ public class RESTProductServiceReactiveResource {
     java.util.Date pUtilDate;
     if (pUtilDateAsBasicType != null) {
       try {
-        pUtilDate = new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").parse(pUtilDateAsBasicType);
+        pUtilDate = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").parse(pUtilDateAsBasicType);
       }
-      catch (java.text.ParseException e) {
+      catch (ParseException e) {
         throw new IllegalArgumentException(e.getMessage());
       }
     }
     else {
       pUtilDate = null;
     }
-    java.sql.Timestamp pSQLTimestamp;
+    Timestamp pSQLTimestamp;
     if (pSQLTimestampAsBasicType != null) {
-      pSQLTimestamp = java.sql.Timestamp.valueOf(pSQLTimestampAsBasicType);
+      pSQLTimestamp = Timestamp.valueOf(pSQLTimestampAsBasicType);
     }
     else {
       pSQLTimestamp = null;
     }
-    java.sql.Time pSQLTime;
+    Time pSQLTime;
     if (pSQLTimeAsBasicType != null) {
-      pSQLTime = java.sql.Time.valueOf(pSQLTimeAsBasicType);
+      pSQLTime = Time.valueOf(pSQLTimeAsBasicType);
     }
     else {
       pSQLTime = null;
     }
-    java.sql.Date pSQLDate;
+    Date pSQLDate;
     if (pSQLDateAsBasicType != null) {
-      pSQLDate = java.sql.Date.valueOf(pSQLDateAsBasicType);
+      pSQLDate = Date.valueOf(pSQLDateAsBasicType);
     }
     else {
       pSQLDate = null;
     }
-    java.util.Set<java.util.Date> pUtilDates;
+    Set<java.util.Date> pUtilDates;
     if (pUtilDatesAsBasicType != null) {
       try {
-        pUtilDates = new java.util.HashSet<java.util.Date>();
+        pUtilDates = new HashSet<java.util.Date>();
         for (int i = 0; i < pUtilDatesAsBasicType.length; i++) {
-          java.text.SimpleDateFormat lDateFormat = new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
+          SimpleDateFormat lDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
           java.util.Date lDate = lDateFormat.parse(pUtilDatesAsBasicType[i]);
           pUtilDates.add(lDate);
         }
       }
-      catch (java.text.ParseException e) {
+      catch (ParseException e) {
         throw new IllegalArgumentException(e.getMessage());
       }
     }
     else {
-      pUtilDates = java.util.Collections.emptySet();
+      pUtilDates = Collections.emptySet();
     }
-    return reactor.core.publisher.Mono.defer(( ) -> {
+    return Mono.defer(( ) -> {
       // Validate request parameter(s).
-      validationExecutor.validateRequest(com.anaptecs.spring.service.RESTProductServiceReactive.class, pPath,
-          pOffsetDateTime, pOffsetTime, pLocalDateTime, pLocalTime, pLocalDate, pCalendar, pUtilDate, pSQLTimestamp,
-          pSQLTime, pSQLDate, pUtilDates);
+      validationExecutor.validateRequest(RESTProductServiceReactive.class, pPath, pOffsetDateTime, pOffsetTime,
+          pLocalDateTime, pLocalTime, pLocalDate, pCalendar, pUtilDate, pSQLTimestamp, pSQLTime, pSQLDate, pUtilDates);
       // Delegate request to service.
       return rESTProductService.testDateHeaderParams(pPath, pOffsetDateTime, pOffsetTime, pLocalDateTime, pLocalTime,
           pLocalDate, pCalendar, pUtilDate, pSQLTimestamp, pSQLTime, pSQLDate, pUtilDates);
@@ -809,112 +734,84 @@ public class RESTProductServiceReactiveResource {
   /**
    * {@link com.anaptecs.spring.service.RESTProductService#testDateHeaderParamsBean()}
    */
-  @org.springframework.security.access.prepost.PreAuthorize("hasAnyRole('Sales Agent')")
-  @org.springframework.web.bind.annotation.ResponseStatus(org.springframework.http.HttpStatus.NO_CONTENT)
-  @org.springframework.web.bind.annotation.RequestMapping(
-      path = "test-date-header-params-beans/{path}",
-      method = { org.springframework.web.bind.annotation.RequestMethod.GET })
-  @com.anaptecs.annotations.MyNotNullRESTParam
-  public reactor.core.publisher.Mono<Void> testDateHeaderParamsBean(
-      @org.springframework.web.bind.annotation.PathVariable(
-          name = "path",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam String pPath,
-      @org.springframework.web.bind.annotation.RequestHeader(
-          name = "Offset-Date-Time",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam String pOffsetDateTimeAsBasicType,
-      @org.springframework.web.bind.annotation.RequestHeader(
-          name = "Offset-Time",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam String pOffsetTimeAsBasicType,
-      @org.springframework.web.bind.annotation.RequestHeader(
-          name = "Local-Date-Time",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam String pLocalDateTimeAsBasicType,
-      @org.springframework.web.bind.annotation.RequestHeader(
-          name = "Local-Time",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam String pLocalTimeAsBasicType,
-      @org.springframework.web.bind.annotation.RequestHeader(
-          name = "Local-Date",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam String pLocalDateAsBasicType,
-      @org.springframework.web.bind.annotation.RequestHeader(
-          name = "Util-Date",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam String pUtilDateAsBasicType,
-      @org.springframework.web.bind.annotation.RequestHeader(
-          name = "Calendar",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam String pCalendarAsBasicType,
-      @org.springframework.web.bind.annotation.RequestHeader(
-          name = "SQL-Timestamp",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam String pSqlTimestampAsBasicType,
-      @org.springframework.web.bind.annotation.RequestHeader(
-          name = "SQL-Time",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam String pSqlTimeAsBasicType,
-      @org.springframework.web.bind.annotation.RequestHeader(
-          name = "SQL-Date",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam String pSqlDateAsBasicType,
-      org.springframework.web.server.ServerWebExchange pServerWebExchange ) {
+  @PreAuthorize("hasAnyRole('Sales Agent')")
+  @ResponseStatus(HttpStatus.NO_CONTENT)
+  @RequestMapping(path = "test-date-header-params-beans/{path}", method = { RequestMethod.GET })
+  @MyNotNullRESTParam
+  public Mono<Void> testDateHeaderParamsBean(
+      @PathVariable(name = "path", required = true) @MyNotNullRESTParam String pPath,
+      @RequestHeader(name = "Offset-Date-Time", required = true) @MyNotNullRESTParam String pOffsetDateTimeAsBasicType,
+      @RequestHeader(name = "Offset-Time", required = true) @MyNotNullRESTParam String pOffsetTimeAsBasicType,
+      @RequestHeader(name = "Local-Date-Time", required = true) @MyNotNullRESTParam String pLocalDateTimeAsBasicType,
+      @RequestHeader(name = "Local-Time", required = true) @MyNotNullRESTParam String pLocalTimeAsBasicType,
+      @RequestHeader(name = "Local-Date", required = true) @MyNotNullRESTParam String pLocalDateAsBasicType,
+      @RequestHeader(name = "Util-Date", required = true) @MyNotNullRESTParam String pUtilDateAsBasicType,
+      @RequestHeader(name = "Calendar", required = true) @MyNotNullRESTParam String pCalendarAsBasicType,
+      @RequestHeader(name = "SQL-Timestamp", required = true) @MyNotNullRESTParam String pSqlTimestampAsBasicType,
+      @RequestHeader(name = "SQL-Time", required = true) @MyNotNullRESTParam String pSqlTimeAsBasicType,
+      @RequestHeader(name = "SQL-Date", required = true) @MyNotNullRESTParam String pSqlDateAsBasicType,
+      ServerWebExchange pServerWebExchange ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
-    com.anaptecs.spring.service.DateHeaderParamsBean.Builder lHeaderParamsBuilder =
-        com.anaptecs.spring.service.DateHeaderParamsBean.builder();
+    DateHeaderParamsBean.Builder lHeaderParamsBuilder = DateHeaderParamsBean.builder();
     // Handle bean parameter pHeaderParams.offsetDateTime
     if (pOffsetDateTimeAsBasicType != null) {
-      lHeaderParamsBuilder.setOffsetDateTime(java.time.OffsetDateTime.parse(pOffsetDateTimeAsBasicType));
+      lHeaderParamsBuilder.setOffsetDateTime(OffsetDateTime.parse(pOffsetDateTimeAsBasicType));
     }
     // Handle bean parameter pHeaderParams.offsetTime
     if (pOffsetTimeAsBasicType != null) {
-      lHeaderParamsBuilder.setOffsetTime(java.time.OffsetTime.parse(pOffsetTimeAsBasicType));
+      lHeaderParamsBuilder.setOffsetTime(OffsetTime.parse(pOffsetTimeAsBasicType));
     }
     // Handle bean parameter pHeaderParams.localDateTime
     if (pLocalDateTimeAsBasicType != null) {
-      lHeaderParamsBuilder.setLocalDateTime(java.time.LocalDateTime.parse(pLocalDateTimeAsBasicType));
+      lHeaderParamsBuilder.setLocalDateTime(LocalDateTime.parse(pLocalDateTimeAsBasicType));
     }
     // Handle bean parameter pHeaderParams.localTime
     if (pLocalTimeAsBasicType != null) {
-      lHeaderParamsBuilder.setLocalTime(java.time.LocalTime.parse(pLocalTimeAsBasicType));
+      lHeaderParamsBuilder.setLocalTime(LocalTime.parse(pLocalTimeAsBasicType));
     }
     // Handle bean parameter pHeaderParams.localDate
     if (pLocalDateAsBasicType != null) {
-      lHeaderParamsBuilder.setLocalDate(java.time.LocalDate.parse(pLocalDateAsBasicType));
+      lHeaderParamsBuilder.setLocalDate(LocalDate.parse(pLocalDateAsBasicType));
     }
     // Handle bean parameter pHeaderParams.utilDate
     if (pUtilDateAsBasicType != null) {
       try {
-        java.util.Date lDate =
-            new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").parse(pUtilDateAsBasicType);
+        java.util.Date lDate = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").parse(pUtilDateAsBasicType);
         lHeaderParamsBuilder.setUtilDate(lDate);
       }
-      catch (java.text.ParseException e) {
+      catch (ParseException e) {
         throw new IllegalArgumentException(e.getMessage());
       }
     }
     // Handle bean parameter pHeaderParams.calendar
     if (pCalendarAsBasicType != null) {
       try {
-        java.util.Date lDate =
-            new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").parse(pCalendarAsBasicType);
-        java.util.Calendar lCalendar = java.util.Calendar.getInstance();
+        java.util.Date lDate = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").parse(pCalendarAsBasicType);
+        Calendar lCalendar = Calendar.getInstance();
         lCalendar.setTime(lDate);
         lHeaderParamsBuilder.setCalendar(lCalendar);
       }
-      catch (java.text.ParseException e) {
+      catch (ParseException e) {
         throw new IllegalArgumentException(e.getMessage());
       }
     }
     // Handle bean parameter pHeaderParams.sqlTimestamp
     if (pSqlTimestampAsBasicType != null) {
-      lHeaderParamsBuilder.setSqlTimestamp(java.sql.Timestamp.valueOf(pSqlTimestampAsBasicType));
+      lHeaderParamsBuilder.setSqlTimestamp(Timestamp.valueOf(pSqlTimestampAsBasicType));
     }
     // Handle bean parameter pHeaderParams.sqlTime
     if (pSqlTimeAsBasicType != null) {
-      lHeaderParamsBuilder.setSqlTime(java.sql.Time.valueOf(pSqlTimeAsBasicType));
+      lHeaderParamsBuilder.setSqlTime(Time.valueOf(pSqlTimeAsBasicType));
     }
     // Handle bean parameter pHeaderParams.sqlDate
     if (pSqlDateAsBasicType != null) {
-      lHeaderParamsBuilder.setSqlDate(java.sql.Date.valueOf(pSqlDateAsBasicType));
+      lHeaderParamsBuilder.setSqlDate(Date.valueOf(pSqlDateAsBasicType));
     }
-    com.anaptecs.spring.service.DateHeaderParamsBean pHeaderParams = lHeaderParamsBuilder.build();
-    return reactor.core.publisher.Mono.defer(( ) -> {
+    DateHeaderParamsBean pHeaderParams = lHeaderParamsBuilder.build();
+    return Mono.defer(( ) -> {
       // Validate request parameter(s).
-      validationExecutor.validateRequest(com.anaptecs.spring.service.RESTProductServiceReactive.class, pPath,
-          pHeaderParams);
+      validationExecutor.validateRequest(RESTProductServiceReactive.class, pPath, pHeaderParams);
       // Delegate request to service.
       return rESTProductService.testDateHeaderParamsBean(pPath, pHeaderParams);
     });
@@ -923,41 +820,25 @@ public class RESTProductServiceReactiveResource {
   /**
    * {@link com.anaptecs.spring.service.RESTProductService#testCookieParams()}
    */
-  @org.springframework.security.access.prepost.PreAuthorize("hasAnyRole('Sales Agent')")
-  @org.springframework.web.bind.annotation.ResponseStatus(org.springframework.http.HttpStatus.NO_CONTENT)
-  @org.springframework.web.bind.annotation.RequestMapping(
-      path = "cookies",
-      method = { org.springframework.web.bind.annotation.RequestMethod.GET })
-  @com.anaptecs.annotations.MyNotNullRESTParam
-  public reactor.core.publisher.Mono<Void> testCookieParams( @org.springframework.web.bind.annotation.CookieValue(
-      name = "Channel-Type-Param",
-      required = true) @com.anaptecs.annotations.MyNotNullRESTParam com.anaptecs.spring.base.ChannelType pChannelTypeParam,
-      @org.springframework.web.bind.annotation.RequestHeader(
-          name = "token",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam java.lang.String pAccessToken,
-      @org.springframework.web.bind.annotation.RequestHeader(
-          name = "lang",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam java.util.Locale pLanguage,
-      @org.springframework.web.bind.annotation.CookieValue(name = "reseller", required = true) long pResellerID,
-      @org.springframework.web.bind.annotation.PathVariable(name = "id", required = true) long pPathParam,
-      @org.springframework.web.bind.annotation.RequestParam(
-          name = "q1",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam java.lang.String pQueryParam,
-      @com.anaptecs.annotations.MyNotNullRESTParam String pLang,
-      @org.springframework.web.bind.annotation.RequestHeader(
-          name = "intCode",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam int pIntCodeAsBasicType,
-      @org.springframework.web.bind.annotation.RequestHeader(
-          name = "specificHeader",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam String pSpecificHeader,
-      @org.springframework.web.bind.annotation.CookieValue(
-          name = "Channel-Type",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam com.anaptecs.spring.base.ChannelType pChannelType,
-      @org.springframework.web.bind.annotation.RequestHeader java.util.Map<String, String> pHeaders,
-      org.springframework.web.server.ServerWebExchange pServerWebExchange ) {
+  @PreAuthorize("hasAnyRole('Sales Agent')")
+  @ResponseStatus(HttpStatus.NO_CONTENT)
+  @RequestMapping(path = "cookies", method = { RequestMethod.GET })
+  @MyNotNullRESTParam
+  public Mono<Void> testCookieParams(
+      @CookieValue(name = "Channel-Type-Param", required = true) @MyNotNullRESTParam ChannelType pChannelTypeParam,
+      @RequestHeader(name = "token", required = true) @MyNotNullRESTParam String pAccessToken,
+      @RequestHeader(name = "lang", required = true) @MyNotNullRESTParam Locale pLanguage,
+      @CookieValue(name = "reseller", required = true) long pResellerID,
+      @PathVariable(name = "id", required = true) long pPathParam,
+      @RequestParam(name = "q1", required = true) @MyNotNullRESTParam String pQueryParam,
+      @MyNotNullRESTParam String pLang,
+      @RequestHeader(name = "intCode", required = true) @MyNotNullRESTParam int pIntCodeAsBasicType,
+      @RequestHeader(name = "specificHeader", required = true) @MyNotNullRESTParam String pSpecificHeader,
+      @CookieValue(name = "Channel-Type", required = true) @MyNotNullRESTParam ChannelType pChannelType,
+      @RequestHeader Map<String, String> pHeaders, ServerWebExchange pServerWebExchange ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
-    com.anaptecs.spring.base.SpecialContext.Builder lContextBuilder = com.anaptecs.spring.base.SpecialContext.builder();
+    SpecialContext.Builder lContextBuilder = SpecialContext.builder();
     lContextBuilder.setAccessToken(pAccessToken);
     lContextBuilder.setLanguage(pLanguage);
     lContextBuilder.setResellerID(pResellerID);
@@ -965,20 +846,19 @@ public class RESTProductServiceReactiveResource {
     lContextBuilder.setQueryParam(pQueryParam);
     lContextBuilder.setLang(pLang);
     // Handle bean parameter pContext.intCode
-    lContextBuilder.setIntCode(com.anaptecs.spring.base.IntegerCodeType.builder().setCode(pIntCodeAsBasicType).build());
+    lContextBuilder.setIntCode(IntegerCodeType.builder().setCode(pIntCodeAsBasicType).build());
     lContextBuilder.setSpecificHeader(pSpecificHeader);
     lContextBuilder.setChannelType(pChannelType);
-    com.anaptecs.spring.base.SpecialContext pContext = lContextBuilder.build();
+    SpecialContext pContext = lContextBuilder.build();
     // Add custom headers.
-    for (java.util.Map.Entry<String, String> lNextEntry : pHeaders.entrySet()) {
+    for (Map.Entry<String, String> lNextEntry : pHeaders.entrySet()) {
       if (customHeaderFilter.test(lNextEntry.getKey())) {
         pContext.addCustomHeader(lNextEntry.getKey(), lNextEntry.getValue());
       }
     }
-    return reactor.core.publisher.Mono.defer(( ) -> {
+    return Mono.defer(( ) -> {
       // Validate request parameter(s).
-      validationExecutor.validateRequest(com.anaptecs.spring.service.RESTProductServiceReactive.class,
-          pChannelTypeParam, pContext);
+      validationExecutor.validateRequest(RESTProductServiceReactive.class, pChannelTypeParam, pContext);
       // Delegate request to service.
       return rESTProductService.testCookieParams(pChannelTypeParam, pContext);
     });
@@ -987,702 +867,562 @@ public class RESTProductServiceReactiveResource {
   /**
    * {@link com.anaptecs.spring.service.RESTProductService#testOptionalQueryParams()}
    */
-  @org.springframework.security.access.prepost.PreAuthorize("hasAnyRole('Sales Agent')")
-  @org.springframework.web.bind.annotation.ResponseStatus(org.springframework.http.HttpStatus.OK)
-  @org.springframework.web.bind.annotation.RequestMapping(
-      path = "test-optional-query-params",
-      method = { org.springframework.web.bind.annotation.RequestMethod.GET })
-  @com.anaptecs.annotations.MyNotNullRESTParam
-  public reactor.core.publisher.Mono<String> testOptionalQueryParams(
-      @org.springframework.web.bind.annotation.RequestParam(
-          name = "query1",
-          required = false,
-          defaultValue = "Just a default value") String query1,
-      @org.springframework.web.bind.annotation.RequestParam(name = "query2", required = false) int query2,
-      org.springframework.web.server.ServerWebExchange pServerWebExchange ) {
-    return reactor.core.publisher.Mono.defer(( ) -> {
+  @PreAuthorize("hasAnyRole('Sales Agent')")
+  @ResponseStatus(HttpStatus.OK)
+  @RequestMapping(path = "test-optional-query-params", method = { RequestMethod.GET })
+  @MyNotNullRESTParam
+  public Mono<String> testOptionalQueryParams(
+      @RequestParam(name = "query1", required = false, defaultValue = "Just a default value") String query1,
+      @RequestParam(name = "query2", required = false) int query2, ServerWebExchange pServerWebExchange ) {
+    return Mono.defer(( ) -> {
       // Validate request parameter(s).
-      validationExecutor.validateRequest(com.anaptecs.spring.service.RESTProductServiceReactive.class, query1, query2);
+      validationExecutor.validateRequest(RESTProductServiceReactive.class, query1, query2);
       // Delegate request to service.
       return rESTProductService.testOptionalQueryParams(query1, query2);
     }).doOnNext(lResponse ->
     // Validate response.
-    validationExecutor.validateResponse(com.anaptecs.spring.service.RESTProductServiceReactive.class, lResponse));
+    validationExecutor.validateResponse(RESTProductServiceReactive.class, lResponse));
   }
 
   /**
    * {@link com.anaptecs.spring.service.RESTProductService#processComplexBookingID()}
    */
-  @org.springframework.security.access.prepost.PreAuthorize("hasAnyRole('Sales Agent')")
-  @org.springframework.web.bind.annotation.ResponseStatus(org.springframework.http.HttpStatus.OK)
-  @org.springframework.web.bind.annotation.RequestMapping(
-      path = "complex/{bookingID}",
-      method = { org.springframework.web.bind.annotation.RequestMethod.GET })
-  public reactor.core.publisher.Mono<Boolean> processComplexBookingID(
-      @org.springframework.web.bind.annotation.PathVariable(
-          name = "bookingID",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam String pComplextBookingIDAsBasicType,
-      org.springframework.web.server.ServerWebExchange pServerWebExchange ) {
+  @PreAuthorize("hasAnyRole('Sales Agent')")
+  @ResponseStatus(HttpStatus.OK)
+  @RequestMapping(path = "complex/{bookingID}", method = { RequestMethod.GET })
+  public Mono<Boolean> processComplexBookingID(
+      @PathVariable(name = "bookingID", required = true) @MyNotNullRESTParam String pComplextBookingIDAsBasicType,
+      ServerWebExchange pServerWebExchange ) {
     // Convert basic type parameters into "real" objects.
-    com.anaptecs.spring.composite.ComplexBookingID pComplextBookingID = this.deserializeCompositeDataType(
-        pComplextBookingIDAsBasicType, com.anaptecs.spring.composite.ComplexBookingID.class);
-    return reactor.core.publisher.Mono.defer(( ) -> {
+    ComplexBookingID pComplextBookingID =
+        this.deserializeCompositeDataType(pComplextBookingIDAsBasicType, ComplexBookingID.class);
+    return Mono.defer(( ) -> {
       // Validate request parameter(s).
-      validationExecutor.validateRequest(com.anaptecs.spring.service.RESTProductServiceReactive.class,
-          pComplextBookingID);
+      validationExecutor.validateRequest(RESTProductServiceReactive.class, pComplextBookingID);
       // Delegate request to service.
       return rESTProductService.processComplexBookingID(pComplextBookingID);
     }).doOnNext(lResponse ->
     // Validate response.
-    validationExecutor.validateResponse(com.anaptecs.spring.service.RESTProductServiceReactive.class, lResponse));
+    validationExecutor.validateResponse(RESTProductServiceReactive.class, lResponse));
   }
 
   /**
    * {@link com.anaptecs.spring.service.RESTProductService#testDataTypesAsHeaderParam()}
    */
-  @org.springframework.security.access.prepost.PreAuthorize("hasAnyRole('Sales Agent')")
-  @org.springframework.web.bind.annotation.ResponseStatus(org.springframework.http.HttpStatus.OK)
-  @org.springframework.web.bind.annotation.RequestMapping(
-      path = "dataTypesInHeader",
-      method = { org.springframework.web.bind.annotation.RequestMethod.GET })
-  @com.anaptecs.annotations.MyNotNullRESTParam
-  public reactor.core.publisher.Mono<String> testDataTypesAsHeaderParam(
-      @org.springframework.web.bind.annotation.RequestHeader(
-          name = "BookingID",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam String pBookingIDAsBasicType,
-      @org.springframework.web.bind.annotation.RequestHeader(
-          name = "BookingCode",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam String pBookingCodeAsBasicType,
-      @org.springframework.web.bind.annotation.RequestHeader(
-          name = "DoubleCode",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam java.lang.Double pDoubleCodeAsBasicType,
-      org.springframework.web.server.ServerWebExchange pServerWebExchange ) {
+  @PreAuthorize("hasAnyRole('Sales Agent')")
+  @ResponseStatus(HttpStatus.OK)
+  @RequestMapping(path = "dataTypesInHeader", method = { RequestMethod.GET })
+  @MyNotNullRESTParam
+  public Mono<String> testDataTypesAsHeaderParam(
+      @RequestHeader(name = "BookingID", required = true) @MyNotNullRESTParam String pBookingIDAsBasicType,
+      @RequestHeader(name = "BookingCode", required = true) @MyNotNullRESTParam String pBookingCodeAsBasicType,
+      @RequestHeader(name = "DoubleCode", required = true) @MyNotNullRESTParam Double pDoubleCodeAsBasicType,
+      ServerWebExchange pServerWebExchange ) {
     // Convert basic type parameters into "real" objects.
-    com.anaptecs.spring.base.BookingID pBookingID =
-        this.deserializeCompositeDataType(pBookingIDAsBasicType, com.anaptecs.spring.base.BookingID.class);
-    com.anaptecs.spring.base.BookingCode pBookingCode;
+    BookingID pBookingID = this.deserializeCompositeDataType(pBookingIDAsBasicType, BookingID.class);
+    BookingCode pBookingCode;
     if (pBookingCodeAsBasicType != null) {
-      pBookingCode = com.anaptecs.spring.base.BookingCode.builder().setCode(pBookingCodeAsBasicType).build();
+      pBookingCode = BookingCode.builder().setCode(pBookingCodeAsBasicType).build();
     }
     else {
       pBookingCode = null;
     }
-    com.anaptecs.spring.base.DoubleCode pDoubleCode;
+    DoubleCode pDoubleCode;
     if (pDoubleCodeAsBasicType != null) {
-      pDoubleCode = com.anaptecs.spring.base.DoubleCode.builder().setCode(pDoubleCodeAsBasicType).build();
+      pDoubleCode = DoubleCode.builder().setCode(pDoubleCodeAsBasicType).build();
     }
     else {
       pDoubleCode = null;
     }
-    return reactor.core.publisher.Mono.defer(( ) -> {
+    return Mono.defer(( ) -> {
       // Validate request parameter(s).
-      validationExecutor.validateRequest(com.anaptecs.spring.service.RESTProductServiceReactive.class, pBookingID,
-          pBookingCode, pDoubleCode);
+      validationExecutor.validateRequest(RESTProductServiceReactive.class, pBookingID, pBookingCode, pDoubleCode);
       // Delegate request to service.
       return rESTProductService.testDataTypesAsHeaderParam(pBookingID, pBookingCode, pDoubleCode);
     }).doOnNext(lResponse ->
     // Validate response.
-    validationExecutor.validateResponse(com.anaptecs.spring.service.RESTProductServiceReactive.class, lResponse));
+    validationExecutor.validateResponse(RESTProductServiceReactive.class, lResponse));
   }
 
   /**
    * {@link com.anaptecs.spring.service.RESTProductService#testDataTypesAsHeaderBeanParam()}
    */
-  @org.springframework.security.access.prepost.PreAuthorize("hasAnyRole('Sales Agent')")
-  @org.springframework.web.bind.annotation.ResponseStatus(org.springframework.http.HttpStatus.OK)
-  @org.springframework.web.bind.annotation.RequestMapping(
-      path = "dataTypesInBeanHeader",
-      method = { org.springframework.web.bind.annotation.RequestMethod.GET })
-  @com.anaptecs.annotations.MyNotNullRESTParam
-  public reactor.core.publisher.Mono<String> testDataTypesAsHeaderBeanParam(
-      @org.springframework.web.bind.annotation.RequestHeader(
-          name = "bookingID",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam String pBookingIDAsBasicType,
-      @org.springframework.web.bind.annotation.RequestHeader(
-          name = "bookingCode",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam String pBookingCodeAsBasicType,
-      @org.springframework.web.bind.annotation.RequestHeader(
-          name = "DoubleCode",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam java.lang.Double pDoubleCodeAsBasicType,
-      org.springframework.web.server.ServerWebExchange pServerWebExchange ) {
+  @PreAuthorize("hasAnyRole('Sales Agent')")
+  @ResponseStatus(HttpStatus.OK)
+  @RequestMapping(path = "dataTypesInBeanHeader", method = { RequestMethod.GET })
+  @MyNotNullRESTParam
+  public Mono<String> testDataTypesAsHeaderBeanParam(
+      @RequestHeader(name = "bookingID", required = true) @MyNotNullRESTParam String pBookingIDAsBasicType,
+      @RequestHeader(name = "bookingCode", required = true) @MyNotNullRESTParam String pBookingCodeAsBasicType,
+      @RequestHeader(name = "DoubleCode", required = true) @MyNotNullRESTParam Double pDoubleCodeAsBasicType,
+      ServerWebExchange pServerWebExchange ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
-    com.anaptecs.spring.service.AdvancedHeader.Builder lContextBuilder =
-        com.anaptecs.spring.service.AdvancedHeader.builder();
+    AdvancedHeader.Builder lContextBuilder = AdvancedHeader.builder();
     // Handle bean parameter pContext.bookingID
     if (pBookingIDAsBasicType != null) {
-      lContextBuilder.setBookingID(
-          this.deserializeCompositeDataType(pBookingIDAsBasicType, com.anaptecs.spring.base.BookingID.class));
+      lContextBuilder.setBookingID(this.deserializeCompositeDataType(pBookingIDAsBasicType, BookingID.class));
     }
     // Handle bean parameter pContext.bookingCode
     if (pBookingCodeAsBasicType != null) {
-      lContextBuilder
-          .setBookingCode(com.anaptecs.spring.base.BookingCode.builder().setCode(pBookingCodeAsBasicType).build());
+      lContextBuilder.setBookingCode(BookingCode.builder().setCode(pBookingCodeAsBasicType).build());
     }
     // Handle bean parameter pContext.doubleCode
     if (pDoubleCodeAsBasicType != null) {
-      lContextBuilder
-          .setDoubleCode(com.anaptecs.spring.base.DoubleCode.builder().setCode(pDoubleCodeAsBasicType).build());
+      lContextBuilder.setDoubleCode(DoubleCode.builder().setCode(pDoubleCodeAsBasicType).build());
     }
-    com.anaptecs.spring.service.AdvancedHeader pContext = lContextBuilder.build();
-    return reactor.core.publisher.Mono.defer(( ) -> {
+    AdvancedHeader pContext = lContextBuilder.build();
+    return Mono.defer(( ) -> {
       // Validate request parameter(s).
-      validationExecutor.validateRequest(com.anaptecs.spring.service.RESTProductServiceReactive.class, pContext);
+      validationExecutor.validateRequest(RESTProductServiceReactive.class, pContext);
       // Delegate request to service.
       return rESTProductService.testDataTypesAsHeaderBeanParam(pContext);
     }).doOnNext(lResponse ->
     // Validate response.
-    validationExecutor.validateResponse(com.anaptecs.spring.service.RESTProductServiceReactive.class, lResponse));
+    validationExecutor.validateResponse(RESTProductServiceReactive.class, lResponse));
   }
 
   /**
    * {@link com.anaptecs.spring.service.RESTProductService#testPrimitiveArrays()}
    */
-  @org.springframework.security.access.prepost.PreAuthorize("hasAnyRole('Sales Agent')")
-  @org.springframework.web.bind.annotation.ResponseStatus(org.springframework.http.HttpStatus.OK)
-  @org.springframework.web.bind.annotation.RequestMapping(
-      path = "testPrimitiveArrayAsBody",
-      method = { org.springframework.web.bind.annotation.RequestMethod.POST })
-  @com.anaptecs.annotations.MyNotNullRESTParam
-  public reactor.core.publisher.Mono<String> testPrimitiveArrays(
-      @org.springframework.web.bind.annotation.RequestBody(
-          required = false) reactor.core.publisher.Mono<int[]> pIntegerArray,
-      org.springframework.web.server.ServerWebExchange pServerWebExchange ) {
+  @PreAuthorize("hasAnyRole('Sales Agent')")
+  @ResponseStatus(HttpStatus.OK)
+  @RequestMapping(path = "testPrimitiveArrayAsBody", method = { RequestMethod.POST })
+  @MyNotNullRESTParam
+  public Mono<String> testPrimitiveArrays( @RequestBody(required = false) Mono<int[]> pIntegerArray,
+      ServerWebExchange pServerWebExchange ) {
     return pIntegerArray.flatMap(pIntegerArrayBody -> {
       // Validate request parameter(s).
-      validationExecutor.validateRequest(com.anaptecs.spring.service.RESTProductServiceReactive.class,
-          pIntegerArrayBody);
+      validationExecutor.validateRequest(RESTProductServiceReactive.class, pIntegerArrayBody);
       // Delegate request to service.
       return rESTProductService.testPrimitiveArrays(pIntegerArrayBody);
     }).doOnNext(lResponse ->
     // Validate response.
-    validationExecutor.validateResponse(com.anaptecs.spring.service.RESTProductServiceReactive.class, lResponse));
+    validationExecutor.validateResponse(RESTProductServiceReactive.class, lResponse));
   }
 
   /**
    * {@link com.anaptecs.spring.service.RESTProductService#testDataTypeAsQueryParam()}
    */
-  @org.springframework.security.access.prepost.PreAuthorize("hasAnyRole('Sales Agent')")
-  @org.springframework.web.bind.annotation.ResponseStatus(org.springframework.http.HttpStatus.OK)
-  @org.springframework.web.bind.annotation.RequestMapping(
-      path = "testDataTypeAsQueryParam",
-      method = { org.springframework.web.bind.annotation.RequestMethod.GET })
-  @com.anaptecs.annotations.MyNotNullRESTParam
-  public reactor.core.publisher.Mono<String> testDataTypeAsQueryParam(
-      @org.springframework.web.bind.annotation.RequestParam(
-          name = "bookingCode",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam String pBookingCodeAsBasicType,
-      org.springframework.web.server.ServerWebExchange pServerWebExchange ) {
+  @PreAuthorize("hasAnyRole('Sales Agent')")
+  @ResponseStatus(HttpStatus.OK)
+  @RequestMapping(path = "testDataTypeAsQueryParam", method = { RequestMethod.GET })
+  @MyNotNullRESTParam
+  public Mono<String> testDataTypeAsQueryParam(
+      @RequestParam(name = "bookingCode", required = true) @MyNotNullRESTParam String pBookingCodeAsBasicType,
+      ServerWebExchange pServerWebExchange ) {
     // Convert basic type parameters into "real" objects.
-    com.anaptecs.spring.base.BookingCode pBookingCode;
+    BookingCode pBookingCode;
     if (pBookingCodeAsBasicType != null) {
-      pBookingCode = com.anaptecs.spring.base.BookingCode.builder().setCode(pBookingCodeAsBasicType).build();
+      pBookingCode = BookingCode.builder().setCode(pBookingCodeAsBasicType).build();
     }
     else {
       pBookingCode = null;
     }
-    return reactor.core.publisher.Mono.defer(( ) -> {
+    return Mono.defer(( ) -> {
       // Validate request parameter(s).
-      validationExecutor.validateRequest(com.anaptecs.spring.service.RESTProductServiceReactive.class, pBookingCode);
+      validationExecutor.validateRequest(RESTProductServiceReactive.class, pBookingCode);
       // Delegate request to service.
       return rESTProductService.testDataTypeAsQueryParam(pBookingCode);
     }).doOnNext(lResponse ->
     // Validate response.
-    validationExecutor.validateResponse(com.anaptecs.spring.service.RESTProductServiceReactive.class, lResponse));
+    validationExecutor.validateResponse(RESTProductServiceReactive.class, lResponse));
   }
 
   /**
    * {@link com.anaptecs.spring.service.RESTProductService#testDataTypeAsBeanQueryParam()}
    */
-  @org.springframework.security.access.prepost.PreAuthorize("hasAnyRole('Sales Agent')")
-  @org.springframework.web.bind.annotation.ResponseStatus(org.springframework.http.HttpStatus.OK)
-  @org.springframework.web.bind.annotation.RequestMapping(
-      path = "testDataTypeAsBeanQueryParam",
-      method = { org.springframework.web.bind.annotation.RequestMethod.GET })
-  @com.anaptecs.annotations.MyNotNullRESTParam
-  public reactor.core.publisher.Mono<String> testDataTypeAsBeanQueryParam(
-      @org.springframework.web.bind.annotation.RequestParam(
-          name = "bookingCode",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam String pBookingCodeAsBasicType,
-      @org.springframework.web.bind.annotation.RequestParam(
-          name = "maxResults",
-          required = true,
-          defaultValue = "47") int pMaxResults,
-      org.springframework.web.server.ServerWebExchange pServerWebExchange ) {
+  @PreAuthorize("hasAnyRole('Sales Agent')")
+  @ResponseStatus(HttpStatus.OK)
+  @RequestMapping(path = "testDataTypeAsBeanQueryParam", method = { RequestMethod.GET })
+  @MyNotNullRESTParam
+  public Mono<String> testDataTypeAsBeanQueryParam(
+      @RequestParam(name = "bookingCode", required = true) @MyNotNullRESTParam String pBookingCodeAsBasicType,
+      @RequestParam(name = "maxResults", required = true, defaultValue = "47") int pMaxResults,
+      ServerWebExchange pServerWebExchange ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
-    com.anaptecs.spring.service.QueryBeanParam.Builder lBeanParamBuilder =
-        com.anaptecs.spring.service.QueryBeanParam.builder();
+    QueryBeanParam.Builder lBeanParamBuilder = QueryBeanParam.builder();
     // Handle bean parameter pBeanParam.bookingCode
     if (pBookingCodeAsBasicType != null) {
-      lBeanParamBuilder
-          .setBookingCode(com.anaptecs.spring.base.BookingCode.builder().setCode(pBookingCodeAsBasicType).build());
+      lBeanParamBuilder.setBookingCode(BookingCode.builder().setCode(pBookingCodeAsBasicType).build());
     }
     lBeanParamBuilder.setMaxResults(pMaxResults);
-    com.anaptecs.spring.service.QueryBeanParam pBeanParam = lBeanParamBuilder.build();
-    return reactor.core.publisher.Mono.defer(( ) -> {
+    QueryBeanParam pBeanParam = lBeanParamBuilder.build();
+    return Mono.defer(( ) -> {
       // Validate request parameter(s).
-      validationExecutor.validateRequest(com.anaptecs.spring.service.RESTProductServiceReactive.class, pBeanParam);
+      validationExecutor.validateRequest(RESTProductServiceReactive.class, pBeanParam);
       // Delegate request to service.
       return rESTProductService.testDataTypeAsBeanQueryParam(pBeanParam);
     }).doOnNext(lResponse ->
     // Validate response.
-    validationExecutor.validateResponse(com.anaptecs.spring.service.RESTProductServiceReactive.class, lResponse));
+    validationExecutor.validateResponse(RESTProductServiceReactive.class, lResponse));
   }
 
   /**
    * {@link com.anaptecs.spring.service.RESTProductService#testPrimitiveArrayAsQueryParam()}
    */
-  @org.springframework.security.access.prepost.PreAuthorize("hasAnyRole('Sales Agent')")
-  @org.springframework.web.bind.annotation.ResponseStatus(org.springframework.http.HttpStatus.OK)
-  @org.springframework.web.bind.annotation.RequestMapping(
-      path = "testPrimitiveArrayAsQueryParam",
-      method = { org.springframework.web.bind.annotation.RequestMethod.GET })
-  @com.anaptecs.annotations.MyNotNullRESTParam
-  public reactor.core.publisher.Mono<String> testPrimitiveArrayAsQueryParam(
-      @org.springframework.web.bind.annotation.RequestParam(name = "intValues", required = false) int[] pIntValues,
-      org.springframework.web.server.ServerWebExchange pServerWebExchange ) {
-    return reactor.core.publisher.Mono.defer(( ) -> {
+  @PreAuthorize("hasAnyRole('Sales Agent')")
+  @ResponseStatus(HttpStatus.OK)
+  @RequestMapping(path = "testPrimitiveArrayAsQueryParam", method = { RequestMethod.GET })
+  @MyNotNullRESTParam
+  public Mono<String> testPrimitiveArrayAsQueryParam(
+      @RequestParam(name = "intValues", required = false) int[] pIntValues, ServerWebExchange pServerWebExchange ) {
+    return Mono.defer(( ) -> {
       // Validate request parameter(s).
-      validationExecutor.validateRequest(com.anaptecs.spring.service.RESTProductServiceReactive.class, pIntValues);
+      validationExecutor.validateRequest(RESTProductServiceReactive.class, pIntValues);
       // Delegate request to service.
       return rESTProductService.testPrimitiveArrayAsQueryParam(pIntValues);
     }).doOnNext(lResponse ->
     // Validate response.
-    validationExecutor.validateResponse(com.anaptecs.spring.service.RESTProductServiceReactive.class, lResponse));
+    validationExecutor.validateResponse(RESTProductServiceReactive.class, lResponse));
   }
 
   /**
    * {@link com.anaptecs.spring.service.RESTProductService#testSimpleTypesAsQueryParams()}
    */
-  @org.springframework.security.access.prepost.PreAuthorize("hasAnyRole('Sales Agent')")
-  @org.springframework.web.bind.annotation.ResponseStatus(org.springframework.http.HttpStatus.OK)
-  @org.springframework.web.bind.annotation.RequestMapping(
-      path = "testSimpleTypesAsQueryParams",
-      method = { org.springframework.web.bind.annotation.RequestMethod.GET })
-  @com.anaptecs.annotations.MyNotNullRESTParam
-  public reactor.core.publisher.Mono<String> testSimpleTypesAsQueryParams(
-      @org.springframework.web.bind.annotation.RequestParam(
-          name = "strings",
-          required = false) java.util.List<String> pStrings,
-      org.springframework.web.server.ServerWebExchange pServerWebExchange ) {
-    return reactor.core.publisher.Mono.defer(( ) -> {
+  @PreAuthorize("hasAnyRole('Sales Agent')")
+  @ResponseStatus(HttpStatus.OK)
+  @RequestMapping(path = "testSimpleTypesAsQueryParams", method = { RequestMethod.GET })
+  @MyNotNullRESTParam
+  public Mono<String> testSimpleTypesAsQueryParams(
+      @RequestParam(name = "strings", required = false) List<String> pStrings, ServerWebExchange pServerWebExchange ) {
+    return Mono.defer(( ) -> {
       // Validate request parameter(s).
-      validationExecutor.validateRequest(com.anaptecs.spring.service.RESTProductServiceReactive.class, pStrings);
+      validationExecutor.validateRequest(RESTProductServiceReactive.class, pStrings);
       // Delegate request to service.
       return rESTProductService.testSimpleTypesAsQueryParams(pStrings);
     }).doOnNext(lResponse ->
     // Validate response.
-    validationExecutor.validateResponse(com.anaptecs.spring.service.RESTProductServiceReactive.class, lResponse));
+    validationExecutor.validateResponse(RESTProductServiceReactive.class, lResponse));
   }
 
   /**
    * {@link com.anaptecs.spring.service.RESTProductService#testPrimitiveWrapperArrayAsQueryParam()}
    */
-  @org.springframework.security.access.prepost.PreAuthorize("hasAnyRole('Sales Agent')")
-  @org.springframework.web.bind.annotation.ResponseStatus(org.springframework.http.HttpStatus.OK)
-  @org.springframework.web.bind.annotation.RequestMapping(
-      path = "testPrimitiveWrapperArrayAsQueryParam",
-      method = { org.springframework.web.bind.annotation.RequestMethod.GET })
-  @com.anaptecs.annotations.MyNotNullRESTParam
-  public reactor.core.publisher.Mono<String> testPrimitiveWrapperArrayAsQueryParam(
-      @org.springframework.web.bind.annotation.RequestParam(
-          name = "integers",
-          required = true) @com.anaptecs.annotations.MyNotEmptyRESTParam java.util.Set<Integer> pIntegers,
-      org.springframework.web.server.ServerWebExchange pServerWebExchange ) {
-    return reactor.core.publisher.Mono.defer(( ) -> {
+  @PreAuthorize("hasAnyRole('Sales Agent')")
+  @ResponseStatus(HttpStatus.OK)
+  @RequestMapping(path = "testPrimitiveWrapperArrayAsQueryParam", method = { RequestMethod.GET })
+  @MyNotNullRESTParam
+  public Mono<String> testPrimitiveWrapperArrayAsQueryParam(
+      @RequestParam(name = "integers", required = true) @MyNotEmptyRESTParam Set<Integer> pIntegers,
+      ServerWebExchange pServerWebExchange ) {
+    return Mono.defer(( ) -> {
       // Validate request parameter(s).
-      validationExecutor.validateRequest(com.anaptecs.spring.service.RESTProductServiceReactive.class, pIntegers);
+      validationExecutor.validateRequest(RESTProductServiceReactive.class, pIntegers);
       // Delegate request to service.
       return rESTProductService.testPrimitiveWrapperArrayAsQueryParam(pIntegers);
     }).doOnNext(lResponse ->
     // Validate response.
-    validationExecutor.validateResponse(com.anaptecs.spring.service.RESTProductServiceReactive.class, lResponse));
+    validationExecutor.validateResponse(RESTProductServiceReactive.class, lResponse));
   }
 
   /**
    * {@link com.anaptecs.spring.service.RESTProductService#testMultivaluedQueryParamsBean()}
    */
-  @org.springframework.security.access.prepost.PreAuthorize("hasAnyRole('Sales Agent')")
-  @org.springframework.web.bind.annotation.ResponseStatus(org.springframework.http.HttpStatus.OK)
-  @org.springframework.web.bind.annotation.RequestMapping(
-      path = "testMultivaluedQueryParamsBean",
-      method = { org.springframework.web.bind.annotation.RequestMethod.GET })
-  @com.anaptecs.annotations.MyNotNullRESTParam
-  public reactor.core.publisher.Mono<String> testMultivaluedQueryParamsBean(
-      @org.springframework.web.bind.annotation.RequestParam(name = "intArray", required = false) int[] pIntArray,
-      @org.springframework.web.bind.annotation.RequestParam(name = "strings", required = false) String[] pStrings,
-      @org.springframework.web.bind.annotation.RequestParam(name = "integers", required = false) Integer[] pIntegers,
-      @org.springframework.web.bind.annotation.RequestParam(
-          name = "timeUnits",
-          required = false) java.util.Set<com.anaptecs.spring.base.TimeUnit> pTimeUnits,
-      @org.springframework.web.bind.annotation.RequestParam(
-          name = "timeUnitArray",
-          required = false) com.anaptecs.spring.base.TimeUnit[] pTimeUnitArray,
-      org.springframework.web.server.ServerWebExchange pServerWebExchange ) {
+  @PreAuthorize("hasAnyRole('Sales Agent')")
+  @ResponseStatus(HttpStatus.OK)
+  @RequestMapping(path = "testMultivaluedQueryParamsBean", method = { RequestMethod.GET })
+  @MyNotNullRESTParam
+  public Mono<String> testMultivaluedQueryParamsBean(
+      @RequestParam(name = "intArray", required = false) int[] pIntArray,
+      @RequestParam(name = "strings", required = false) String[] pStrings,
+      @RequestParam(name = "integers", required = false) Integer[] pIntegers,
+      @RequestParam(name = "timeUnits", required = false) Set<TimeUnit> pTimeUnits,
+      @RequestParam(name = "timeUnitArray", required = false) TimeUnit[] pTimeUnitArray,
+      ServerWebExchange pServerWebExchange ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
-    com.anaptecs.spring.service.MultivaluedQueryParamsBean.Builder lBeanBuilder =
-        com.anaptecs.spring.service.MultivaluedQueryParamsBean.builder();
+    MultivaluedQueryParamsBean.Builder lBeanBuilder = MultivaluedQueryParamsBean.builder();
     lBeanBuilder.setIntArray(pIntArray);
     lBeanBuilder.setStrings(pStrings);
     lBeanBuilder.setIntegers(pIntegers);
     lBeanBuilder.setTimeUnits(pTimeUnits);
     lBeanBuilder.setTimeUnitArray(pTimeUnitArray);
-    com.anaptecs.spring.service.MultivaluedQueryParamsBean pBean = lBeanBuilder.build();
-    return reactor.core.publisher.Mono.defer(( ) -> {
+    MultivaluedQueryParamsBean pBean = lBeanBuilder.build();
+    return Mono.defer(( ) -> {
       // Validate request parameter(s).
-      validationExecutor.validateRequest(com.anaptecs.spring.service.RESTProductServiceReactive.class, pBean);
+      validationExecutor.validateRequest(RESTProductServiceReactive.class, pBean);
       // Delegate request to service.
       return rESTProductService.testMultivaluedQueryParamsBean(pBean);
     }).doOnNext(lResponse ->
     // Validate response.
-    validationExecutor.validateResponse(com.anaptecs.spring.service.RESTProductServiceReactive.class, lResponse));
+    validationExecutor.validateResponse(RESTProductServiceReactive.class, lResponse));
   }
 
   /**
    * {@link com.anaptecs.spring.service.RESTProductService#testMulitvaluedDataTypeAsQueryParam()}
    */
-  @org.springframework.security.access.prepost.PreAuthorize("hasAnyRole('Sales Agent')")
-  @org.springframework.web.bind.annotation.ResponseStatus(org.springframework.http.HttpStatus.OK)
-  @org.springframework.web.bind.annotation.RequestMapping(
-      path = "testMulitvaluedDataTypeAsQueryParam",
-      method = { org.springframework.web.bind.annotation.RequestMethod.GET })
-  @com.anaptecs.annotations.MyNotNullRESTParam
-  public reactor.core.publisher.Mono<String> testMulitvaluedDataTypeAsQueryParam(
-      @org.springframework.web.bind.annotation.RequestParam(name = "codes", required = false) int[] pCodesAsBasicType,
-      @org.springframework.web.bind.annotation.RequestParam(
-          name = "longCodes",
-          required = true) @com.anaptecs.annotations.MyNotEmptyRESTParam java.lang.Long[] pLongCodesAsBasicType,
-      @org.springframework.web.bind.annotation.RequestParam(
-          name = "bookingIDs",
-          required = false) String[] pBookingIDsAsBasicType,
-      @org.springframework.web.bind.annotation.RequestParam(
-          name = "timestamps",
-          required = false) String[] pTimestampsAsBasicType,
-      @org.springframework.web.bind.annotation.RequestParam(
-          name = "localDates",
-          required = false) String[] pLocalDatesAsBasicType,
-      org.springframework.web.server.ServerWebExchange pServerWebExchange ) {
+  @PreAuthorize("hasAnyRole('Sales Agent')")
+  @ResponseStatus(HttpStatus.OK)
+  @RequestMapping(path = "testMulitvaluedDataTypeAsQueryParam", method = { RequestMethod.GET })
+  @MyNotNullRESTParam
+  public Mono<String> testMulitvaluedDataTypeAsQueryParam(
+      @RequestParam(name = "codes", required = false) int[] pCodesAsBasicType,
+      @RequestParam(name = "longCodes", required = true) @MyNotEmptyRESTParam Long[] pLongCodesAsBasicType,
+      @RequestParam(name = "bookingIDs", required = false) String[] pBookingIDsAsBasicType,
+      @RequestParam(name = "timestamps", required = false) String[] pTimestampsAsBasicType,
+      @RequestParam(name = "localDates", required = false) String[] pLocalDatesAsBasicType,
+      ServerWebExchange pServerWebExchange ) {
     // Convert basic type parameters into "real" objects.
-    java.util.List<com.anaptecs.spring.base.IntegerCodeType> pCodes;
+    List<IntegerCodeType> pCodes;
     if (pCodesAsBasicType != null) {
-      pCodes = new java.util.ArrayList<com.anaptecs.spring.base.IntegerCodeType>();
+      pCodes = new ArrayList<IntegerCodeType>();
       for (int lNext : pCodesAsBasicType) {
-        pCodes.add(com.anaptecs.spring.base.IntegerCodeType.builder().setCode(lNext).build());
+        pCodes.add(IntegerCodeType.builder().setCode(lNext).build());
       }
     }
     else {
-      pCodes = java.util.Collections.emptyList();
+      pCodes = Collections.emptyList();
     }
-    java.util.Set<com.anaptecs.spring.base.LongCode> pLongCodes;
+    Set<LongCode> pLongCodes;
     if (pLongCodesAsBasicType != null) {
-      pLongCodes = new java.util.HashSet<com.anaptecs.spring.base.LongCode>();
-      for (java.lang.Long lNext : pLongCodesAsBasicType) {
-        pLongCodes.add(com.anaptecs.spring.base.LongCode.builder().setCode(lNext).build());
+      pLongCodes = new HashSet<LongCode>();
+      for (Long lNext : pLongCodesAsBasicType) {
+        pLongCodes.add(LongCode.builder().setCode(lNext).build());
       }
     }
     else {
-      pLongCodes = java.util.Collections.emptySet();
+      pLongCodes = Collections.emptySet();
     }
-    java.util.List<com.anaptecs.spring.base.BookingID> pBookingIDs;
+    List<BookingID> pBookingIDs;
     if (pBookingIDsAsBasicType != null) {
-      pBookingIDs = new java.util.ArrayList<com.anaptecs.spring.base.BookingID>();
+      pBookingIDs = new ArrayList<BookingID>();
       for (String lNext : pBookingIDsAsBasicType) {
-        pBookingIDs.add(this.deserializeCompositeDataType(lNext, com.anaptecs.spring.base.BookingID.class));
+        pBookingIDs.add(this.deserializeCompositeDataType(lNext, BookingID.class));
       }
     }
     else {
-      pBookingIDs = java.util.Collections.emptyList();
+      pBookingIDs = Collections.emptyList();
     }
     // Convert date types into real objects.
-    java.util.List<java.time.OffsetDateTime> pTimestamps;
+    List<OffsetDateTime> pTimestamps;
     if (pTimestampsAsBasicType != null) {
-      pTimestamps = new java.util.ArrayList<java.time.OffsetDateTime>();
+      pTimestamps = new ArrayList<OffsetDateTime>();
       for (int i = 0; i < pTimestampsAsBasicType.length; i++) {
-        pTimestamps.add(java.time.OffsetDateTime.parse(pTimestampsAsBasicType[i]));
+        pTimestamps.add(OffsetDateTime.parse(pTimestampsAsBasicType[i]));
       }
     }
     else {
-      pTimestamps = java.util.Collections.emptyList();
+      pTimestamps = Collections.emptyList();
     }
-    java.util.SortedSet<java.time.LocalDate> pLocalDates;
+    SortedSet<LocalDate> pLocalDates;
     if (pLocalDatesAsBasicType != null) {
-      pLocalDates = new java.util.TreeSet<java.time.LocalDate>();
+      pLocalDates = new TreeSet<LocalDate>();
       for (int i = 0; i < pLocalDatesAsBasicType.length; i++) {
-        pLocalDates.add(java.time.LocalDate.parse(pLocalDatesAsBasicType[i]));
+        pLocalDates.add(LocalDate.parse(pLocalDatesAsBasicType[i]));
       }
     }
     else {
-      pLocalDates = java.util.Collections.emptySortedSet();
+      pLocalDates = Collections.emptySortedSet();
     }
-    return reactor.core.publisher.Mono.defer(( ) -> {
+    return Mono.defer(( ) -> {
       // Validate request parameter(s).
-      validationExecutor.validateRequest(com.anaptecs.spring.service.RESTProductServiceReactive.class, pCodes,
-          pLongCodes, pBookingIDs, pTimestamps, pLocalDates);
+      validationExecutor.validateRequest(RESTProductServiceReactive.class, pCodes, pLongCodes, pBookingIDs, pTimestamps,
+          pLocalDates);
       // Delegate request to service.
       return rESTProductService.testMulitvaluedDataTypeAsQueryParam(pCodes, pLongCodes, pBookingIDs, pTimestamps,
           pLocalDates);
     }).doOnNext(lResponse ->
     // Validate response.
-    validationExecutor.validateResponse(com.anaptecs.spring.service.RESTProductServiceReactive.class, lResponse));
+    validationExecutor.validateResponse(RESTProductServiceReactive.class, lResponse));
   }
 
   /**
    * {@link com.anaptecs.spring.service.RESTProductService#testMulitvaluedDataTypeAsBeanQueryParam()}
    */
-  @org.springframework.security.access.prepost.PreAuthorize("hasAnyRole('Sales Agent')")
-  @org.springframework.web.bind.annotation.ResponseStatus(org.springframework.http.HttpStatus.OK)
-  @org.springframework.web.bind.annotation.RequestMapping(
-      path = "testMulitvaluedDataTypeAsBeanQueryParam",
-      method = { org.springframework.web.bind.annotation.RequestMethod.GET })
-  @com.anaptecs.annotations.MyNotNullRESTParam
-  public reactor.core.publisher.Mono<String> testMulitvaluedDataTypeAsBeanQueryParam(
-      @org.springframework.web.bind.annotation.RequestParam(
-          name = "longCodes",
-          required = false) java.lang.Long[] pLongCodesAsBasicType,
-      @org.springframework.web.bind.annotation.RequestParam(name = "codes", required = false) int[] pCodesAsBasicType,
-      @org.springframework.web.bind.annotation.RequestParam(
-          name = "doubleCodes",
-          required = false) java.lang.Double[] pDoubleCodesAsBasicType,
-      @org.springframework.web.bind.annotation.RequestParam(
-          name = "bookingIDs",
-          required = false) String[] pBookingIDsAsBasicType,
-      @org.springframework.web.bind.annotation.RequestParam(
-          name = "bookingIDsArray",
-          required = false) String[] pBookingIDsArrayAsBasicType,
-      @org.springframework.web.bind.annotation.RequestParam(
-          name = "offsetDateTime",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam String pOffsetDateTimeAsBasicType,
-      @org.springframework.web.bind.annotation.RequestParam(
-          name = "offsetTime",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam String pOffsetTimeAsBasicType,
-      @org.springframework.web.bind.annotation.RequestParam(
-          name = "localDateTime",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam String pLocalDateTimeAsBasicType,
-      @org.springframework.web.bind.annotation.RequestParam(
-          name = "localTime",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam String pLocalTimeAsBasicType,
-      @org.springframework.web.bind.annotation.RequestParam(
-          name = "timestamps",
-          required = false) String[] pTimestampsAsBasicType,
-      @org.springframework.web.bind.annotation.RequestParam(
-          name = "times",
-          required = false) String[] pTimesAsBasicType,
-      @org.springframework.web.bind.annotation.RequestParam(
-          name = "startTimestamps",
-          required = false) String[] pStartTimestampsAsBasicType,
-      org.springframework.web.server.ServerWebExchange pServerWebExchange ) {
+  @PreAuthorize("hasAnyRole('Sales Agent')")
+  @ResponseStatus(HttpStatus.OK)
+  @RequestMapping(path = "testMulitvaluedDataTypeAsBeanQueryParam", method = { RequestMethod.GET })
+  @MyNotNullRESTParam
+  public Mono<String> testMulitvaluedDataTypeAsBeanQueryParam(
+      @RequestParam(name = "longCodes", required = false) Long[] pLongCodesAsBasicType,
+      @RequestParam(name = "codes", required = false) int[] pCodesAsBasicType,
+      @RequestParam(name = "doubleCodes", required = false) Double[] pDoubleCodesAsBasicType,
+      @RequestParam(name = "bookingIDs", required = false) String[] pBookingIDsAsBasicType,
+      @RequestParam(name = "bookingIDsArray", required = false) String[] pBookingIDsArrayAsBasicType,
+      @RequestParam(name = "offsetDateTime", required = true) @MyNotNullRESTParam String pOffsetDateTimeAsBasicType,
+      @RequestParam(name = "offsetTime", required = true) @MyNotNullRESTParam String pOffsetTimeAsBasicType,
+      @RequestParam(name = "localDateTime", required = true) @MyNotNullRESTParam String pLocalDateTimeAsBasicType,
+      @RequestParam(name = "localTime", required = true) @MyNotNullRESTParam String pLocalTimeAsBasicType,
+      @RequestParam(name = "timestamps", required = false) String[] pTimestampsAsBasicType,
+      @RequestParam(name = "times", required = false) String[] pTimesAsBasicType,
+      @RequestParam(name = "startTimestamps", required = false) String[] pStartTimestampsAsBasicType,
+      ServerWebExchange pServerWebExchange ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
-    com.anaptecs.spring.service.DataTypesQueryBean.Builder lQueryBeanBuilder =
-        com.anaptecs.spring.service.DataTypesQueryBean.builder();
+    DataTypesQueryBean.Builder lQueryBeanBuilder = DataTypesQueryBean.builder();
     // Handle bean parameter pQueryBean.longCodes
     if (pLongCodesAsBasicType != null) {
-      com.anaptecs.spring.base.LongCode[] lLongCodes =
-          new com.anaptecs.spring.base.LongCode[pLongCodesAsBasicType.length];
+      LongCode[] lLongCodes = new LongCode[pLongCodesAsBasicType.length];
       for (int i = 0; i < pLongCodesAsBasicType.length; i++) {
-        lLongCodes[i] = com.anaptecs.spring.base.LongCode.builder().setCode(pLongCodesAsBasicType[i]).build();
+        lLongCodes[i] = LongCode.builder().setCode(pLongCodesAsBasicType[i]).build();
       }
       lQueryBeanBuilder.setLongCodes(lLongCodes);
     }
     // Handle bean parameter pQueryBean.codes
     if (pCodesAsBasicType != null) {
-      com.anaptecs.spring.base.IntegerCodeType[] lCodes =
-          new com.anaptecs.spring.base.IntegerCodeType[pCodesAsBasicType.length];
+      IntegerCodeType[] lCodes = new IntegerCodeType[pCodesAsBasicType.length];
       for (int i = 0; i < pCodesAsBasicType.length; i++) {
-        lCodes[i] = com.anaptecs.spring.base.IntegerCodeType.builder().setCode(pCodesAsBasicType[i]).build();
+        lCodes[i] = IntegerCodeType.builder().setCode(pCodesAsBasicType[i]).build();
       }
       lQueryBeanBuilder.setCodes(lCodes);
     }
     // Handle bean parameter pQueryBean.doubleCodes
     if (pDoubleCodesAsBasicType != null) {
-      java.util.Set<com.anaptecs.spring.base.DoubleCode> lDoubleCodes =
-          new java.util.HashSet<com.anaptecs.spring.base.DoubleCode>();
-      for (java.lang.Double lNext : pDoubleCodesAsBasicType) {
-        lDoubleCodes.add(com.anaptecs.spring.base.DoubleCode.builder().setCode(lNext).build());
+      Set<DoubleCode> lDoubleCodes = new HashSet<DoubleCode>();
+      for (Double lNext : pDoubleCodesAsBasicType) {
+        lDoubleCodes.add(DoubleCode.builder().setCode(lNext).build());
       }
       lQueryBeanBuilder.setDoubleCodes(lDoubleCodes);
     }
     // Handle bean parameter pQueryBean.bookingIDs
     if (pBookingIDsAsBasicType != null) {
       // Handle bean parameter pQueryBean.bookingIDs
-      java.util.Set<com.anaptecs.spring.base.BookingID> lBookingIDs =
-          new java.util.HashSet<com.anaptecs.spring.base.BookingID>();
+      Set<BookingID> lBookingIDs = new HashSet<BookingID>();
       for (String lNext : pBookingIDsAsBasicType) {
-        lBookingIDs.add(this.deserializeCompositeDataType(lNext, com.anaptecs.spring.base.BookingID.class));
+        lBookingIDs.add(this.deserializeCompositeDataType(lNext, BookingID.class));
       }
       lQueryBeanBuilder.setBookingIDs(lBookingIDs);
     }
     // Handle bean parameter pQueryBean.bookingIDsArray
     if (pBookingIDsArrayAsBasicType != null) {
       // Handle bean parameter pQueryBean.bookingIDsArray
-      com.anaptecs.spring.base.BookingID[] lBookingIDsArray =
-          new com.anaptecs.spring.base.BookingID[pBookingIDsArrayAsBasicType.length];
+      BookingID[] lBookingIDsArray = new BookingID[pBookingIDsArrayAsBasicType.length];
       for (int i = 0; i < pBookingIDsArrayAsBasicType.length; i++) {
-        lBookingIDsArray[i] =
-            this.deserializeCompositeDataType(pBookingIDsArrayAsBasicType[i], com.anaptecs.spring.base.BookingID.class);
+        lBookingIDsArray[i] = this.deserializeCompositeDataType(pBookingIDsArrayAsBasicType[i], BookingID.class);
       }
       lQueryBeanBuilder.setBookingIDsArray(lBookingIDsArray);
     }
     // Handle bean parameter pQueryBean.offsetDateTime
     if (pOffsetDateTimeAsBasicType != null) {
-      lQueryBeanBuilder.setOffsetDateTime(java.time.OffsetDateTime.parse(pOffsetDateTimeAsBasicType));
+      lQueryBeanBuilder.setOffsetDateTime(OffsetDateTime.parse(pOffsetDateTimeAsBasicType));
     }
     // Handle bean parameter pQueryBean.offsetTime
     if (pOffsetTimeAsBasicType != null) {
-      lQueryBeanBuilder.setOffsetTime(java.time.OffsetTime.parse(pOffsetTimeAsBasicType));
+      lQueryBeanBuilder.setOffsetTime(OffsetTime.parse(pOffsetTimeAsBasicType));
     }
     // Handle bean parameter pQueryBean.localDateTime
     if (pLocalDateTimeAsBasicType != null) {
-      lQueryBeanBuilder.setLocalDateTime(java.time.LocalDateTime.parse(pLocalDateTimeAsBasicType));
+      lQueryBeanBuilder.setLocalDateTime(LocalDateTime.parse(pLocalDateTimeAsBasicType));
     }
     // Handle bean parameter pQueryBean.localTime
     if (pLocalTimeAsBasicType != null) {
-      lQueryBeanBuilder.setLocalTime(java.time.LocalTime.parse(pLocalTimeAsBasicType));
+      lQueryBeanBuilder.setLocalTime(LocalTime.parse(pLocalTimeAsBasicType));
     }
     // Handle bean parameter pQueryBean.timestamps
     if (pTimestampsAsBasicType != null) {
-      java.util.List<java.time.LocalDateTime> lTimestamps = new java.util.ArrayList<java.time.LocalDateTime>();
+      List<LocalDateTime> lTimestamps = new ArrayList<LocalDateTime>();
       for (int i = 0; i < pTimestampsAsBasicType.length; i++) {
-        lTimestamps.add(java.time.LocalDateTime.parse(pTimestampsAsBasicType[i]));
+        lTimestamps.add(LocalDateTime.parse(pTimestampsAsBasicType[i]));
       }
       lQueryBeanBuilder.setTimestamps(lTimestamps);
     }
     // Handle bean parameter pQueryBean.times
     if (pTimesAsBasicType != null) {
-      java.util.Set<java.time.OffsetTime> lTimes = new java.util.HashSet<java.time.OffsetTime>();
+      Set<OffsetTime> lTimes = new HashSet<OffsetTime>();
       for (int i = 0; i < pTimesAsBasicType.length; i++) {
-        lTimes.add(java.time.OffsetTime.parse(pTimesAsBasicType[i]));
+        lTimes.add(OffsetTime.parse(pTimesAsBasicType[i]));
       }
       lQueryBeanBuilder.setTimes(lTimes);
     }
     // Handle bean parameter pQueryBean.startTimestamps
     if (pStartTimestampsAsBasicType != null) {
-      java.time.OffsetDateTime[] lStartTimestamps = new java.time.OffsetDateTime[pStartTimestampsAsBasicType.length];
+      OffsetDateTime[] lStartTimestamps = new OffsetDateTime[pStartTimestampsAsBasicType.length];
       for (int i = 0; i < pStartTimestampsAsBasicType.length; i++) {
-        lStartTimestamps[i] = java.time.OffsetDateTime.parse(pStartTimestampsAsBasicType[i]);
+        lStartTimestamps[i] = OffsetDateTime.parse(pStartTimestampsAsBasicType[i]);
       }
       lQueryBeanBuilder.setStartTimestamps(lStartTimestamps);
     }
-    com.anaptecs.spring.service.DataTypesQueryBean pQueryBean = lQueryBeanBuilder.build();
-    return reactor.core.publisher.Mono.defer(( ) -> {
+    DataTypesQueryBean pQueryBean = lQueryBeanBuilder.build();
+    return Mono.defer(( ) -> {
       // Validate request parameter(s).
-      validationExecutor.validateRequest(com.anaptecs.spring.service.RESTProductServiceReactive.class, pQueryBean);
+      validationExecutor.validateRequest(RESTProductServiceReactive.class, pQueryBean);
       // Delegate request to service.
       return rESTProductService.testMulitvaluedDataTypeAsBeanQueryParam(pQueryBean);
     }).doOnNext(lResponse ->
     // Validate response.
-    validationExecutor.validateResponse(com.anaptecs.spring.service.RESTProductServiceReactive.class, lResponse));
+    validationExecutor.validateResponse(RESTProductServiceReactive.class, lResponse));
   }
 
   /**
    * {@link com.anaptecs.spring.service.RESTProductService#testMultiValuedHeaderFieldsInBeanParam()}
    */
-  @org.springframework.security.access.prepost.PreAuthorize("hasAnyRole('Sales Agent')")
-  @org.springframework.web.bind.annotation.ResponseStatus(org.springframework.http.HttpStatus.OK)
-  @org.springframework.web.bind.annotation.RequestMapping(
-      path = "testMultiValuedHeaderFieldsInBeanParam",
-      method = { org.springframework.web.bind.annotation.RequestMethod.GET })
-  @com.anaptecs.annotations.MyNotNullRESTParam
-  public reactor.core.publisher.Mono<String> testMultiValuedHeaderFieldsInBeanParam(
-      @org.springframework.web.bind.annotation.RequestHeader(name = "names", required = false) String[] pNames,
-      @org.springframework.web.bind.annotation.RequestHeader(
-          name = "ints",
-          required = true) @com.anaptecs.annotations.MyNotEmptyRESTParam int[] pInts,
-      @org.springframework.web.bind.annotation.RequestHeader(
-          name = "doubles",
-          required = false) java.lang.Double[] pDoubles,
-      @org.springframework.web.bind.annotation.RequestHeader(
-          name = "codes",
-          required = false) String[] pCodesAsBasicType,
-      @org.springframework.web.bind.annotation.RequestHeader(
-          name = "stringCodeList",
-          required = false) String[] pStringCodeListAsBasicType,
-      @org.springframework.web.bind.annotation.RequestHeader(
-          name = "startDate",
-          required = false) String pStartDateAsBasicType,
-      @org.springframework.web.bind.annotation.RequestHeader(
-          name = "dates",
-          required = false) String[] pDatesAsBasicType,
-      @org.springframework.web.bind.annotation.RequestHeader(
-          name = "timestamps",
-          required = false) String[] pTimestampsAsBasicType,
-      @org.springframework.web.bind.annotation.RequestHeader(
-          name = "calendars",
-          required = false) String[] pCalendarsAsBasicType,
-      @org.springframework.web.bind.annotation.RequestHeader(
-          name = "utilDates",
-          required = false) String[] pUtilDatesAsBasicType,
-      @org.springframework.web.bind.annotation.RequestHeader(
-          name = "sqlTimestamps",
-          required = false) String[] pSqlTimestampsAsBasicType,
-      @org.springframework.web.bind.annotation.RequestHeader(
-          name = "timeUnits",
-          required = false) java.util.Set<com.anaptecs.spring.base.TimeUnit> pTimeUnits,
-      @org.springframework.web.bind.annotation.RequestHeader(
-          name = "timeUnitArray",
-          required = false) com.anaptecs.spring.base.TimeUnit[] pTimeUnitArray,
-      @org.springframework.web.bind.annotation.RequestHeader(name = "base64", required = false) String pBase64,
-      org.springframework.web.server.ServerWebExchange pServerWebExchange ) {
+  @PreAuthorize("hasAnyRole('Sales Agent')")
+  @ResponseStatus(HttpStatus.OK)
+  @RequestMapping(path = "testMultiValuedHeaderFieldsInBeanParam", method = { RequestMethod.GET })
+  @MyNotNullRESTParam
+  public Mono<String> testMultiValuedHeaderFieldsInBeanParam(
+      @RequestHeader(name = "names", required = false) String[] pNames,
+      @RequestHeader(name = "ints", required = true) @MyNotEmptyRESTParam int[] pInts,
+      @RequestHeader(name = "doubles", required = false) Double[] pDoubles,
+      @RequestHeader(name = "codes", required = false) String[] pCodesAsBasicType,
+      @RequestHeader(name = "stringCodeList", required = false) String[] pStringCodeListAsBasicType,
+      @RequestHeader(name = "startDate", required = false) String pStartDateAsBasicType,
+      @RequestHeader(name = "dates", required = false) String[] pDatesAsBasicType,
+      @RequestHeader(name = "timestamps", required = false) String[] pTimestampsAsBasicType,
+      @RequestHeader(name = "calendars", required = false) String[] pCalendarsAsBasicType,
+      @RequestHeader(name = "utilDates", required = false) String[] pUtilDatesAsBasicType,
+      @RequestHeader(name = "sqlTimestamps", required = false) String[] pSqlTimestampsAsBasicType,
+      @RequestHeader(name = "timeUnits", required = false) Set<TimeUnit> pTimeUnits,
+      @RequestHeader(name = "timeUnitArray", required = false) TimeUnit[] pTimeUnitArray,
+      @RequestHeader(name = "base64", required = false) String pBase64, ServerWebExchange pServerWebExchange ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
-    com.anaptecs.spring.service.MultiValuedHeaderBeanParam.Builder lMultiValuedBeanBuilder =
-        com.anaptecs.spring.service.MultiValuedHeaderBeanParam.builder();
+    MultiValuedHeaderBeanParam.Builder lMultiValuedBeanBuilder = MultiValuedHeaderBeanParam.builder();
     lMultiValuedBeanBuilder.setNames(pNames);
     lMultiValuedBeanBuilder.setInts(pInts);
     lMultiValuedBeanBuilder.setDoubles(pDoubles);
     // Handle bean parameter pMultiValuedBean.codes
     if (pCodesAsBasicType != null) {
-      com.anaptecs.spring.base.StringCode[] lCodes = new com.anaptecs.spring.base.StringCode[pCodesAsBasicType.length];
+      StringCode[] lCodes = new StringCode[pCodesAsBasicType.length];
       for (int i = 0; i < pCodesAsBasicType.length; i++) {
-        lCodes[i] = com.anaptecs.spring.base.StringCode.builder().setCode(pCodesAsBasicType[i]).build();
+        lCodes[i] = StringCode.builder().setCode(pCodesAsBasicType[i]).build();
       }
       lMultiValuedBeanBuilder.setCodes(lCodes);
     }
     // Handle bean parameter pMultiValuedBean.stringCodeList
     if (pStringCodeListAsBasicType != null) {
-      java.util.Set<com.anaptecs.spring.base.StringCode> lStringCodeList =
-          new java.util.HashSet<com.anaptecs.spring.base.StringCode>();
+      Set<StringCode> lStringCodeList = new HashSet<StringCode>();
       for (String lNext : pStringCodeListAsBasicType) {
-        lStringCodeList.add(com.anaptecs.spring.base.StringCode.builder().setCode(lNext).build());
+        lStringCodeList.add(StringCode.builder().setCode(lNext).build());
       }
       lMultiValuedBeanBuilder.setStringCodeList(lStringCodeList);
     }
     // Handle bean parameter pMultiValuedBean.startDate
     if (pStartDateAsBasicType != null) {
-      lMultiValuedBeanBuilder.setStartDate(java.time.LocalDate.parse(pStartDateAsBasicType));
+      lMultiValuedBeanBuilder.setStartDate(LocalDate.parse(pStartDateAsBasicType));
     }
     // Handle bean parameter pMultiValuedBean.dates
     if (pDatesAsBasicType != null) {
-      java.time.LocalDate[] lDates = new java.time.LocalDate[pDatesAsBasicType.length];
+      LocalDate[] lDates = new LocalDate[pDatesAsBasicType.length];
       for (int i = 0; i < pDatesAsBasicType.length; i++) {
-        lDates[i] = java.time.LocalDate.parse(pDatesAsBasicType[i]);
+        lDates[i] = LocalDate.parse(pDatesAsBasicType[i]);
       }
       lMultiValuedBeanBuilder.setDates(lDates);
     }
     // Handle bean parameter pMultiValuedBean.timestamps
     if (pTimestampsAsBasicType != null) {
-      java.util.Set<java.time.LocalDateTime> lTimestamps = new java.util.HashSet<java.time.LocalDateTime>();
+      Set<LocalDateTime> lTimestamps = new HashSet<LocalDateTime>();
       for (int i = 0; i < pTimestampsAsBasicType.length; i++) {
-        lTimestamps.add(java.time.LocalDateTime.parse(pTimestampsAsBasicType[i]));
+        lTimestamps.add(LocalDateTime.parse(pTimestampsAsBasicType[i]));
       }
       lMultiValuedBeanBuilder.setTimestamps(lTimestamps);
     }
     // Handle bean parameter pMultiValuedBean.calendars
     if (pCalendarsAsBasicType != null) {
       try {
-        java.util.Calendar[] lCalendars = new java.util.Calendar[pCalendarsAsBasicType.length];
+        Calendar[] lCalendars = new Calendar[pCalendarsAsBasicType.length];
         for (int i = 0; i < pCalendarsAsBasicType.length; i++) {
-          java.text.SimpleDateFormat lDateFormat = new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
+          SimpleDateFormat lDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
           java.util.Date lDate = lDateFormat.parse(pCalendarsAsBasicType[i]);
-          java.util.Calendar lCalendar = java.util.Calendar.getInstance();
+          Calendar lCalendar = Calendar.getInstance();
           lCalendar.setTime(lDate);
           lCalendars[i] = lCalendar;
         }
         lMultiValuedBeanBuilder.setCalendars(lCalendars);
       }
-      catch (java.text.ParseException e) {
+      catch (ParseException e) {
         throw new IllegalArgumentException(e.getMessage());
       }
     }
@@ -1691,21 +1431,21 @@ public class RESTProductServiceReactiveResource {
       try {
         java.util.Date[] lUtilDates = new java.util.Date[pUtilDatesAsBasicType.length];
         for (int i = 0; i < pUtilDatesAsBasicType.length; i++) {
-          java.text.SimpleDateFormat lDateFormat = new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
+          SimpleDateFormat lDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
           java.util.Date lDate = lDateFormat.parse(pUtilDatesAsBasicType[i]);
           lUtilDates[i] = lDate;
         }
         lMultiValuedBeanBuilder.setUtilDates(lUtilDates);
       }
-      catch (java.text.ParseException e) {
+      catch (ParseException e) {
         throw new IllegalArgumentException(e.getMessage());
       }
     }
     // Handle bean parameter pMultiValuedBean.sqlTimestamps
     if (pSqlTimestampsAsBasicType != null) {
-      java.sql.Timestamp[] lSqlTimestamps = new java.sql.Timestamp[pSqlTimestampsAsBasicType.length];
+      Timestamp[] lSqlTimestamps = new Timestamp[pSqlTimestampsAsBasicType.length];
       for (int i = 0; i < pSqlTimestampsAsBasicType.length; i++) {
-        lSqlTimestamps[i] = java.sql.Timestamp.valueOf(pSqlTimestampsAsBasicType[i]);
+        lSqlTimestamps[i] = Timestamp.valueOf(pSqlTimestampsAsBasicType[i]);
       }
       lMultiValuedBeanBuilder.setSqlTimestamps(lSqlTimestamps);
     }
@@ -1713,131 +1453,108 @@ public class RESTProductServiceReactiveResource {
     lMultiValuedBeanBuilder.setTimeUnitArray(pTimeUnitArray);
     // Decode base64 encoded String back to byte[]
     if (pBase64 != null) {
-      lMultiValuedBeanBuilder.setBase64(java.util.Base64.getDecoder().decode(pBase64));
+      lMultiValuedBeanBuilder.setBase64(Base64.getDecoder().decode(pBase64));
     }
-    com.anaptecs.spring.service.MultiValuedHeaderBeanParam pMultiValuedBean = lMultiValuedBeanBuilder.build();
-    return reactor.core.publisher.Mono.defer(( ) -> {
+    MultiValuedHeaderBeanParam pMultiValuedBean = lMultiValuedBeanBuilder.build();
+    return Mono.defer(( ) -> {
       // Validate request parameter(s).
-      validationExecutor.validateRequest(com.anaptecs.spring.service.RESTProductServiceReactive.class,
-          pMultiValuedBean);
+      validationExecutor.validateRequest(RESTProductServiceReactive.class, pMultiValuedBean);
       // Delegate request to service.
       return rESTProductService.testMultiValuedHeaderFieldsInBeanParam(pMultiValuedBean);
     }).doOnNext(lResponse ->
     // Validate response.
-    validationExecutor.validateResponse(com.anaptecs.spring.service.RESTProductServiceReactive.class, lResponse));
+    validationExecutor.validateResponse(RESTProductServiceReactive.class, lResponse));
   }
 
   /**
    * {@link com.anaptecs.spring.service.RESTProductService#testMultiValuedHeaderFields()}
    */
-  @org.springframework.security.access.prepost.PreAuthorize("hasAnyRole('Sales Agent')")
-  @org.springframework.web.bind.annotation.ResponseStatus(org.springframework.http.HttpStatus.OK)
-  @org.springframework.web.bind.annotation.RequestMapping(
-      path = "testMultiValuedHeaderFields",
-      method = { org.springframework.web.bind.annotation.RequestMethod.GET })
-  @com.anaptecs.annotations.MyNotNullRESTParam
-  public reactor.core.publisher.Mono<String> testMultiValuedHeaderFields(
-      @org.springframework.web.bind.annotation.RequestHeader(
-          name = "names",
-          required = false) java.util.Set<String> pNames,
-      @org.springframework.web.bind.annotation.RequestHeader(
-          name = "ints",
-          required = true) @com.anaptecs.annotations.MyNotEmptyRESTParam int[] pInts,
-      @org.springframework.web.bind.annotation.RequestHeader(
-          name = "doubles",
-          required = false) java.util.Set<java.lang.Double> pDoubles,
-      @org.springframework.web.bind.annotation.RequestHeader(
-          name = "codes",
-          required = false) String[] pCodesAsBasicType,
-      @org.springframework.web.bind.annotation.RequestHeader(
-          name = "startDate",
-          required = false) String pStartDateAsBasicType,
-      @org.springframework.web.bind.annotation.RequestHeader(
-          name = "timestamps",
-          required = false) String[] pTimestampsAsBasicType,
-      @org.springframework.web.bind.annotation.RequestHeader(
-          name = "times",
-          required = false) String[] pTimesAsBasicType,
-      @org.springframework.web.bind.annotation.RequestHeader(name = "BASE_64", required = false) String pBase64AsString,
-      org.springframework.web.server.ServerWebExchange pServerWebExchange ) {
+  @PreAuthorize("hasAnyRole('Sales Agent')")
+  @ResponseStatus(HttpStatus.OK)
+  @RequestMapping(path = "testMultiValuedHeaderFields", method = { RequestMethod.GET })
+  @MyNotNullRESTParam
+  public Mono<String> testMultiValuedHeaderFields( @RequestHeader(name = "names", required = false) Set<String> pNames,
+      @RequestHeader(name = "ints", required = true) @MyNotEmptyRESTParam int[] pInts,
+      @RequestHeader(name = "doubles", required = false) Set<Double> pDoubles,
+      @RequestHeader(name = "codes", required = false) String[] pCodesAsBasicType,
+      @RequestHeader(name = "startDate", required = false) String pStartDateAsBasicType,
+      @RequestHeader(name = "timestamps", required = false) String[] pTimestampsAsBasicType,
+      @RequestHeader(name = "times", required = false) String[] pTimesAsBasicType,
+      @RequestHeader(name = "BASE_64", required = false) String pBase64AsString,
+      ServerWebExchange pServerWebExchange ) {
     // Convert basic type parameters into "real" objects.
-    java.util.Set<com.anaptecs.spring.base.StringCode> pCodes;
+    Set<StringCode> pCodes;
     if (pCodesAsBasicType != null) {
-      pCodes = new java.util.HashSet<com.anaptecs.spring.base.StringCode>();
+      pCodes = new HashSet<StringCode>();
       for (String lNext : pCodesAsBasicType) {
-        pCodes.add(com.anaptecs.spring.base.StringCode.builder().setCode(lNext).build());
+        pCodes.add(StringCode.builder().setCode(lNext).build());
       }
     }
     else {
-      pCodes = java.util.Collections.emptySet();
+      pCodes = Collections.emptySet();
     }
     // Convert date types into real objects.
-    java.time.OffsetDateTime pStartDate;
+    OffsetDateTime pStartDate;
     if (pStartDateAsBasicType != null) {
-      pStartDate = java.time.OffsetDateTime.parse(pStartDateAsBasicType);
+      pStartDate = OffsetDateTime.parse(pStartDateAsBasicType);
     }
     else {
       pStartDate = null;
     }
-    java.util.Set<java.time.OffsetDateTime> pTimestamps;
+    Set<OffsetDateTime> pTimestamps;
     if (pTimestampsAsBasicType != null) {
-      pTimestamps = new java.util.HashSet<java.time.OffsetDateTime>();
+      pTimestamps = new HashSet<OffsetDateTime>();
       for (int i = 0; i < pTimestampsAsBasicType.length; i++) {
-        pTimestamps.add(java.time.OffsetDateTime.parse(pTimestampsAsBasicType[i]));
+        pTimestamps.add(OffsetDateTime.parse(pTimestampsAsBasicType[i]));
       }
     }
     else {
-      pTimestamps = java.util.Collections.emptySet();
+      pTimestamps = Collections.emptySet();
     }
-    java.util.Set<java.time.OffsetTime> pTimes;
+    Set<OffsetTime> pTimes;
     if (pTimesAsBasicType != null) {
-      pTimes = new java.util.HashSet<java.time.OffsetTime>();
+      pTimes = new HashSet<OffsetTime>();
       for (int i = 0; i < pTimesAsBasicType.length; i++) {
-        pTimes.add(java.time.OffsetTime.parse(pTimesAsBasicType[i]));
+        pTimes.add(OffsetTime.parse(pTimesAsBasicType[i]));
       }
     }
     else {
-      pTimes = java.util.Collections.emptySet();
+      pTimes = Collections.emptySet();
     }
     byte[] pBase64;
     if (pBase64AsString != null) {
-      pBase64 = java.util.Base64.getDecoder().decode(pBase64AsString);
+      pBase64 = Base64.getDecoder().decode(pBase64AsString);
     }
     else {
       pBase64 = null;
     }
-    return reactor.core.publisher.Mono.defer(( ) -> {
+    return Mono.defer(( ) -> {
       // Validate request parameter(s).
-      validationExecutor.validateRequest(com.anaptecs.spring.service.RESTProductServiceReactive.class, pNames, pInts,
-          pDoubles, pCodes, pStartDate, pTimestamps, pTimes, pBase64);
+      validationExecutor.validateRequest(RESTProductServiceReactive.class, pNames, pInts, pDoubles, pCodes, pStartDate,
+          pTimestamps, pTimes, pBase64);
       // Delegate request to service.
       return rESTProductService.testMultiValuedHeaderFields(pNames, pInts, pDoubles, pCodes, pStartDate, pTimestamps,
           pTimes, pBase64);
     }).doOnNext(lResponse ->
     // Validate response.
-    validationExecutor.validateResponse(com.anaptecs.spring.service.RESTProductServiceReactive.class, lResponse));
+    validationExecutor.validateResponse(RESTProductServiceReactive.class, lResponse));
   }
 
   /**
    * {@link com.anaptecs.spring.service.RESTProductService#testBookingIDAsPathParam()}
    */
-  @org.springframework.security.access.prepost.PreAuthorize("hasAnyRole('Sales Agent')")
-  @org.springframework.web.bind.annotation.ResponseStatus(org.springframework.http.HttpStatus.NO_CONTENT)
-  @org.springframework.web.bind.annotation.RequestMapping(
-      path = "booking-id-as-path-param/{bookingID}",
-      method = { org.springframework.web.bind.annotation.RequestMethod.PATCH })
-  @com.anaptecs.annotations.MyNotNullRESTParam
-  public reactor.core.publisher.Mono<Void> testBookingIDAsPathParam(
-      @org.springframework.web.bind.annotation.PathVariable(
-          name = "bookingID",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam String pBookingIDAsBasicType,
-      org.springframework.web.server.ServerWebExchange pServerWebExchange ) {
+  @PreAuthorize("hasAnyRole('Sales Agent')")
+  @ResponseStatus(HttpStatus.NO_CONTENT)
+  @RequestMapping(path = "booking-id-as-path-param/{bookingID}", method = { RequestMethod.PATCH })
+  @MyNotNullRESTParam
+  public Mono<Void> testBookingIDAsPathParam(
+      @PathVariable(name = "bookingID", required = true) @MyNotNullRESTParam String pBookingIDAsBasicType,
+      ServerWebExchange pServerWebExchange ) {
     // Convert basic type parameters into "real" objects.
-    com.anaptecs.spring.base.BookingID pBookingID =
-        this.deserializeCompositeDataType(pBookingIDAsBasicType, com.anaptecs.spring.base.BookingID.class);
-    return reactor.core.publisher.Mono.defer(( ) -> {
+    BookingID pBookingID = this.deserializeCompositeDataType(pBookingIDAsBasicType, BookingID.class);
+    return Mono.defer(( ) -> {
       // Validate request parameter(s).
-      validationExecutor.validateRequest(com.anaptecs.spring.service.RESTProductServiceReactive.class, pBookingID);
+      validationExecutor.validateRequest(RESTProductServiceReactive.class, pBookingID);
       // Delegate request to service.
       return rESTProductService.testBookingIDAsPathParam(pBookingID);
     });
@@ -1846,23 +1563,18 @@ public class RESTProductServiceReactiveResource {
   /**
    * {@link com.anaptecs.spring.service.RESTProductService#testBookingIDAsHeaderParam()}
    */
-  @org.springframework.security.access.prepost.PreAuthorize("hasAnyRole('Sales Agent')")
-  @org.springframework.web.bind.annotation.ResponseStatus(org.springframework.http.HttpStatus.NO_CONTENT)
-  @org.springframework.web.bind.annotation.RequestMapping(
-      path = "booking-id-as-header-param",
-      method = { org.springframework.web.bind.annotation.RequestMethod.PATCH })
-  @com.anaptecs.annotations.MyNotNullRESTParam
-  public reactor.core.publisher.Mono<Void> testBookingIDAsHeaderParam(
-      @org.springframework.web.bind.annotation.RequestHeader(
-          name = "bookingID",
-          required = false) String pBookingIDAsBasicType,
-      org.springframework.web.server.ServerWebExchange pServerWebExchange ) {
+  @PreAuthorize("hasAnyRole('Sales Agent')")
+  @ResponseStatus(HttpStatus.NO_CONTENT)
+  @RequestMapping(path = "booking-id-as-header-param", method = { RequestMethod.PATCH })
+  @MyNotNullRESTParam
+  public Mono<Void> testBookingIDAsHeaderParam(
+      @RequestHeader(name = "bookingID", required = false) String pBookingIDAsBasicType,
+      ServerWebExchange pServerWebExchange ) {
     // Convert basic type parameters into "real" objects.
-    com.anaptecs.spring.base.BookingID pBookingID =
-        this.deserializeCompositeDataType(pBookingIDAsBasicType, com.anaptecs.spring.base.BookingID.class);
-    return reactor.core.publisher.Mono.defer(( ) -> {
+    BookingID pBookingID = this.deserializeCompositeDataType(pBookingIDAsBasicType, BookingID.class);
+    return Mono.defer(( ) -> {
       // Validate request parameter(s).
-      validationExecutor.validateRequest(com.anaptecs.spring.service.RESTProductServiceReactive.class, pBookingID);
+      validationExecutor.validateRequest(RESTProductServiceReactive.class, pBookingID);
       // Delegate request to service.
       return rESTProductService.testBookingIDAsHeaderParam(pBookingID);
     });
@@ -1871,80 +1583,61 @@ public class RESTProductServiceReactiveResource {
   /**
    * {@link com.anaptecs.spring.service.RESTProductService#testContextWithPrimitives()}
    */
-  @org.springframework.security.access.prepost.PreAuthorize("hasAnyRole('Sales Agent')")
-  @org.springframework.web.bind.annotation.ResponseStatus(org.springframework.http.HttpStatus.OK)
-  @org.springframework.web.bind.annotation.RequestMapping(
-      path = "test-context-with-primitives",
-      method = { org.springframework.web.bind.annotation.RequestMethod.GET })
-  @com.anaptecs.annotations.MyNotNullRESTParam
-  public reactor.core.publisher.Mono<java.lang.String> testContextWithPrimitives(
-      @org.springframework.web.bind.annotation.RequestHeader(name = "aBoolean", required = true) boolean pABoolean,
-      @org.springframework.web.bind.annotation.RequestHeader(
-          name = "aBooleanWrapper",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam java.lang.Boolean pABooleanWrapper,
-      @org.springframework.web.bind.annotation.RequestHeader(name = "anInt", required = true) int pAnInt,
-      @org.springframework.web.bind.annotation.RequestHeader(
-          name = "anInteger",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam Integer pAnInteger,
-      @org.springframework.web.bind.annotation.RequestParam(name = "aLong", required = true) long pALong,
-      @org.springframework.web.bind.annotation.RequestParam(
-          name = "aVeryLong",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam java.lang.Long pAVeryLong,
-      org.springframework.web.server.ServerWebExchange pServerWebExchange ) {
+  @PreAuthorize("hasAnyRole('Sales Agent')")
+  @ResponseStatus(HttpStatus.OK)
+  @RequestMapping(path = "test-context-with-primitives", method = { RequestMethod.GET })
+  @MyNotNullRESTParam
+  public Mono<String> testContextWithPrimitives( @RequestHeader(name = "aBoolean", required = true) boolean pABoolean,
+      @RequestHeader(name = "aBooleanWrapper", required = true) @MyNotNullRESTParam Boolean pABooleanWrapper,
+      @RequestHeader(name = "anInt", required = true) int pAnInt,
+      @RequestHeader(name = "anInteger", required = true) @MyNotNullRESTParam Integer pAnInteger,
+      @RequestParam(name = "aLong", required = true) long pALong,
+      @RequestParam(name = "aVeryLong", required = true) @MyNotNullRESTParam Long pAVeryLong,
+      ServerWebExchange pServerWebExchange ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
-    com.anaptecs.spring.service.ContextWithPrimitives.Builder lContextBuilder =
-        com.anaptecs.spring.service.ContextWithPrimitives.builder();
+    ContextWithPrimitives.Builder lContextBuilder = ContextWithPrimitives.builder();
     lContextBuilder.setABoolean(pABoolean);
     lContextBuilder.setABooleanWrapper(pABooleanWrapper);
     lContextBuilder.setAnInt(pAnInt);
     lContextBuilder.setAnInteger(pAnInteger);
     lContextBuilder.setALong(pALong);
     lContextBuilder.setAVeryLong(pAVeryLong);
-    com.anaptecs.spring.service.ContextWithPrimitives pContext = lContextBuilder.build();
-    return reactor.core.publisher.Mono.defer(( ) -> {
+    ContextWithPrimitives pContext = lContextBuilder.build();
+    return Mono.defer(( ) -> {
       // Validate request parameter(s).
-      validationExecutor.validateRequest(com.anaptecs.spring.service.RESTProductServiceReactive.class, pContext);
+      validationExecutor.validateRequest(RESTProductServiceReactive.class, pContext);
       // Delegate request to service.
       return rESTProductService.testContextWithPrimitives(pContext);
     }).doOnNext(lResponse ->
     // Validate response.
-    validationExecutor.validateResponse(com.anaptecs.spring.service.RESTProductServiceReactive.class, lResponse));
+    validationExecutor.validateResponse(RESTProductServiceReactive.class, lResponse));
   }
 
   /**
    * {@link com.anaptecs.spring.service.RESTProductService#testPrimitivesAsParams()}
    */
-  @org.springframework.security.access.prepost.PreAuthorize("hasAnyRole('Sales Agent')")
-  @org.springframework.web.bind.annotation.ResponseStatus(org.springframework.http.HttpStatus.OK)
-  @org.springframework.web.bind.annotation.RequestMapping(
-      path = "test-primitives-as-params",
-      method = { org.springframework.web.bind.annotation.RequestMethod.GET })
-  @com.anaptecs.annotations.MyNotNullRESTParam
-  public reactor.core.publisher.Mono<java.lang.String> testPrimitivesAsParams(
-      @org.springframework.web.bind.annotation.RequestHeader(name = "pAnInt", required = true) int pAnInt,
-      @org.springframework.web.bind.annotation.RequestHeader(
-          name = "pAnInteger",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam java.lang.Integer pAnInteger,
-      @org.springframework.web.bind.annotation.RequestHeader(name = "pABoolean", required = true) boolean pABoolean,
-      @org.springframework.web.bind.annotation.RequestHeader(
-          name = "pBooleanWrapper",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam java.lang.Boolean pBooleanWrapper,
-      @org.springframework.web.bind.annotation.RequestParam(name = "pALong", required = true) long pALong,
-      @org.springframework.web.bind.annotation.RequestParam(
-          name = "pVeryLong",
-          required = true) @com.anaptecs.annotations.MyNotNullRESTParam java.lang.Long pVeryLong,
-      org.springframework.web.server.ServerWebExchange pServerWebExchange ) {
-    return reactor.core.publisher.Mono.defer(( ) -> {
+  @PreAuthorize("hasAnyRole('Sales Agent')")
+  @ResponseStatus(HttpStatus.OK)
+  @RequestMapping(path = "test-primitives-as-params", method = { RequestMethod.GET })
+  @MyNotNullRESTParam
+  public Mono<String> testPrimitivesAsParams( @RequestHeader(name = "pAnInt", required = true) int pAnInt,
+      @RequestHeader(name = "pAnInteger", required = true) @MyNotNullRESTParam Integer pAnInteger,
+      @RequestHeader(name = "pABoolean", required = true) boolean pABoolean,
+      @RequestHeader(name = "pBooleanWrapper", required = true) @MyNotNullRESTParam Boolean pBooleanWrapper,
+      @RequestParam(name = "pALong", required = true) long pALong,
+      @RequestParam(name = "pVeryLong", required = true) @MyNotNullRESTParam Long pVeryLong,
+      ServerWebExchange pServerWebExchange ) {
+    return Mono.defer(( ) -> {
       // Validate request parameter(s).
-      validationExecutor.validateRequest(com.anaptecs.spring.service.RESTProductServiceReactive.class, pAnInt,
-          pAnInteger, pABoolean, pBooleanWrapper, pALong, pVeryLong);
+      validationExecutor.validateRequest(RESTProductServiceReactive.class, pAnInt, pAnInteger, pABoolean,
+          pBooleanWrapper, pALong, pVeryLong);
       // Delegate request to service.
       return rESTProductService.testPrimitivesAsParams(pAnInt, pAnInteger, pABoolean, pBooleanWrapper, pALong,
           pVeryLong);
     }).doOnNext(lResponse ->
     // Validate response.
-    validationExecutor.validateResponse(com.anaptecs.spring.service.RESTProductServiceReactive.class, lResponse));
+    validationExecutor.validateResponse(RESTProductServiceReactive.class, lResponse));
   }
 
   /**
@@ -1955,11 +1648,11 @@ public class RESTProductServiceReactiveResource {
    * @param pType Type of which the returned objects is supposed to be. The parameter must not be null.
    * @return T Instance of the expected type or null if <code>pCompositeDataTypeAsString</code> is null.
    */
-  private <T> T deserializeCompositeDataType( String pCompositeDataTypeAsString, java.lang.Class<T> pType ) {
+  private <T> T deserializeCompositeDataType( String pCompositeDataTypeAsString, Class<T> pType ) {
     try {
       T lObject;
       if (pCompositeDataTypeAsString != null) {
-        java.lang.StringBuilder lBuilder = new StringBuilder(pCompositeDataTypeAsString.length() + 4);
+        StringBuilder lBuilder = new StringBuilder(pCompositeDataTypeAsString.length() + 4);
         lBuilder.append("\"");
         lBuilder.append(pCompositeDataTypeAsString);
         lBuilder.append("\"");
@@ -1970,7 +1663,7 @@ public class RESTProductServiceReactiveResource {
       }
       return lObject;
     }
-    catch (com.fasterxml.jackson.core.JsonProcessingException e) {
+    catch (JsonProcessingException e) {
       throw new IllegalArgumentException("Unable to deserialize composite data type " + pType.getName()
           + " from String '" + pCompositeDataTypeAsString + "'. Details: " + e.getMessage(), e);
     }
