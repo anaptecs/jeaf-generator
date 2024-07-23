@@ -63,6 +63,8 @@ public class ImportProcessor {
    */
   private boolean mStrict;
 
+  private boolean removeUnusedImports;
+
   /**
    * Encoding to read or write
    */
@@ -112,6 +114,7 @@ public class ImportProcessor {
    */
   public ImportProcessor( ) {
     mStrict = true;
+    removeUnusedImports = false;
     mEncoding = null;
     sLogger.debug("Doctor JIM created");
   }
@@ -125,6 +128,14 @@ public class ImportProcessor {
    */
   public boolean isStrict( ) {
     return mStrict;
+  }
+
+  public boolean removeUnusedImports( ) {
+    return removeUnusedImports;
+  }
+
+  public void setRemoveUnusedImports( boolean pRemoveUnusedImports ) {
+    removeUnusedImports = pRemoveUnusedImports;
   }
 
   /**
@@ -220,7 +231,7 @@ public class ImportProcessor {
       // Collect imports
       Collection<String> lStarImports = new HashSet<String>(lDeclaredImports.size());
       for (ImportDeclaration lImport : lDeclaredImports) {
-        String lImportValue = lImport.toString();
+        String lImportValue;
         if (lImport.isStatic()) {
           lImportValue = "static " + lImport.getNameAsString();
         }
@@ -296,9 +307,11 @@ public class ImportProcessor {
 
       // Prefer entries from java.lang.* over all others.
       List<String> lOrderedTypes =
-          lUsedTypes.stream().filter(s -> s.startsWith("java.lang.")).collect(Collectors.toList());
+          lUsedTypes.stream().filter(s -> s.startsWith("java.lang."))
+              .collect(Collectors.toList());
       lUsedTypes.removeAll(lOrderedTypes);
       lOrderedTypes.addAll(lUsedTypes);
+
       List<String> lTypesToProcess = new ArrayList<>();
       for (String lNext : lOrderedTypes) {
         String[] lParts = lNext.split("\\.");
@@ -311,17 +324,35 @@ public class ImportProcessor {
             }
           }
 
-          if (lFound && lNext.indexOf(".") > -1) {
-            if (lTypesToProcess.contains(lNext) == false) {
-              lTypesToProcess.add(lNext);
+          if (lFound) {
+            Optional<String> lImport = lOriginalImports.stream().filter(e -> e.endsWith("." + lParts[0])).findFirst();
+            String lImportValue;
+            if (lImport.isPresent()) {
+              lImportValue = lImport.get();
             }
+            else {
+              lImportValue = lNext;
+            }
+            if (lTypesToProcess.contains(lImportValue) == false) {
+              lTypesToProcess.add(lImportValue);
+            }
+          }
+        }
+        // Types which already have an explicit import will get lost, if we do not check that. Sadly this will only
+        // work in strict mode.
+        else if (mStrict) {
+          Optional<String> lImport = lOriginalImports.stream().filter(e -> e.endsWith("." + lNext)).findFirst();
+          if (lImport.isPresent()) {
+            lTypesToProcess.add(lImport.get());
           }
         }
       }
 
       // Filter out constants and inner classes
       List<String> lFilteredTypes = new ArrayList<>();
-      for (String lNext : lTypesToProcess) {
+      for (
+
+      String lNext : lTypesToProcess) {
         String[] lParts = lNext.split("\\.");
         int lIndex = 0;
         if (lParts.length > 1) {
@@ -350,9 +381,24 @@ public class ImportProcessor {
 
       Collections.sort(lTypesToProcess);
 
+      // Filter unused imports.
+      List<String> lUnusedImports = new ArrayList<>();
+      for (ImportDeclaration lNextDeclaredImport : lDeclaredImports) {
+        String lImport = lNextDeclaredImport.getNameAsString();
+        if (lNextDeclaredImport.isAsterisk() == false) {
+          // Current import is an explicit import, so it is expected to be part of list of used types
+          if (lTypesToProcess.contains(lImport) == false) {
+            lUnusedImports.add(lImport);
+          }
+        }
+      }
+
+      // Apply changes to body.
       String lBody = extractBodySection(pInput, lPackage, lDeclaredImports);
 
-      for (String lTypeName : lTypesToProcess) {
+      for (
+
+      String lTypeName : lTypesToProcess) {
         final String[] lParts = lTypeName.split("\\.");
 
         int lCurrentScanToken = lParts.length - 1;
@@ -418,9 +464,14 @@ public class ImportProcessor {
         lAllImports.addAll(lOriginalImports);
       }
 
+      // Remove unused imports
+      if (removeUnusedImports && mStrict) {
+        lAllImports.removeAll(lUnusedImports);
+      }
+
       // append new imports
-      final String lGeneratedImportsSection =
-          generateImportSection(lAllImports, lMainPackageName, lStarImports, pImportGroups);
+      String lGeneratedImportsSection = generateImportSection(lAllImports, lMainPackageName, lStarImports,
+          pImportGroups);
       if (lGeneratedImportsSection.length() > 0) {
         lBuffer.append(lGeneratedImportsSection);
         lBuffer.append(NEW_LINE);
@@ -431,7 +482,9 @@ public class ImportProcessor {
 
       return lBuffer.toString();
     }
-    else {
+    else
+
+    {
       throw new ParseException(lParseResult.getProblems().toString());
     }
   }

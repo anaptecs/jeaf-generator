@@ -5,7 +5,6 @@ package com.anaptecs.jeaf.junit.impl.internal;
 
 import com.anaptecs.jeaf.core.api.Component;
 import com.anaptecs.jeaf.core.api.Service;
-import com.anaptecs.jeaf.core.spi.ServiceImplementation;
 import com.anaptecs.jeaf.junit.core.InternalStuffService;
 
 /**

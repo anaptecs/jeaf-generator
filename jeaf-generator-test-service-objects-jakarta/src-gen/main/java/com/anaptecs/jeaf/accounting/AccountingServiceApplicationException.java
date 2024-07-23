@@ -13,7 +13,7 @@ import com.anaptecs.jeaf.xfun.api.info.VersionInfo;
 /**
  * Application exception that is used in order to indicate application specific problems.
  *
- * @see com.anaptecs.jeaf.xfun.api.errorhandling.ApplicationException
+ * @see ApplicationException
  */
 public final class AccountingServiceApplicationException extends ApplicationException {
   /**

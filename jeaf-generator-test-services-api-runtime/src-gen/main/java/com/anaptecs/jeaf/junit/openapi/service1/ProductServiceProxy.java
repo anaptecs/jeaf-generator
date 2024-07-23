@@ -54,9 +54,7 @@ import com.anaptecs.jeaf.junit.rest.generics.Offer;
 import com.anaptecs.jeaf.junit.rest.generics.Pageable;
 import com.anaptecs.jeaf.junit.rest.generics.Response;
 import com.anaptecs.jeaf.xfun.api.XFun;
-import com.anaptecs.jeaf.xfun.api.XFunMessages;
 import com.anaptecs.jeaf.xfun.api.errorhandling.ApplicationException;
-import com.anaptecs.jeaf.xfun.api.errorhandling.ErrorCode;
 import com.anaptecs.jeaf.xfun.api.errorhandling.JEAFSystemException;
 import com.anaptecs.jeaf.xfun.api.trace.Trace;
 

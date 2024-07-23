@@ -1337,6 +1337,14 @@ public class GeneratorMojo extends AbstractMojo {
   private String xmlFormatterStyleFile;
 
   /**
+   * Parameter defines if unused imports in generated code should be removed or not. Except for cases when you run into
+   * problems there is no reason to disable this feature. This feature can only be enabled if formatting of sources is
+   * enabled.
+   */
+  @Parameter(required = false, defaultValue = "true")
+  private boolean removeUnusedImports;
+
+  /**
    * Parameter defines the grouping and sorting of Java import statements.
    */
   @Parameter(required = false, defaultValue = "java.,javax.,org.,com.")
@@ -1347,13 +1355,6 @@ public class GeneratorMojo extends AbstractMojo {
    */
   @Parameter(required = false, defaultValue = "java,*")
   private String staticImportGroups;
-
-  /**
-   * Parameter defines if unused imports in generated code should be removed or not. Except for cases when you run into
-   * problems there is no reason to disable this feature.
-   */
-  @Parameter(required = false, defaultValue = "true")
-  private boolean removeUnusedImports;
 
   @Component
   private BuildPluginManager pluginManager;
@@ -2619,6 +2620,7 @@ public class GeneratorMojo extends AbstractMojo {
         String[] lExtensions = { "java" };
         Collection<File> lFiles = FileUtils.listFiles(new File(sourceGenDirectory), lExtensions, true);
         ImportProcessor lProcessor = new ImportProcessor();
+        lProcessor.setRemoveUnusedImports(removeUnusedImports);
         for (File formatFile : lFiles) {
           try {
             this.getLog().debug("Beautifying imports on " + formatFile.getPath());

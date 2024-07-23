@@ -16,7 +16,7 @@ public class ManutencaoRelatorio
     extends HttpServlet
 {
     /**
-     * @see javax.servlet.http.HttpServlet#doGet(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
+     * @see HttpServlet#doGet(HttpServletRequest, HttpServletResponse)
      */
     public void doGet(
         final HttpServletRequest request,
@@ -33,7 +33,7 @@ public class ManutencaoRelatorio
     }
 
     /**
-     * @see javax.servlet.http.HttpServlet#doPost(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
+     * @see HttpServlet#doPost(HttpServletRequest, HttpServletResponse)
      */
     public void doPost(
         final HttpServletRequest request,

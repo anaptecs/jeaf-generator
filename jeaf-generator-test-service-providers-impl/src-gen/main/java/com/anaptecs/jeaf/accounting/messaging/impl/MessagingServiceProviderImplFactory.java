@@ -27,7 +27,7 @@ public final class MessagingServiceProviderImplFactory extends ServiceProviderFa
    *
    * @return {@link ServiceProviderImplementation} Instance of service provider. The method never returns null.
    *
-   * @see com.anaptecs.jeaf.core.servicechannel.api.ServiceProviderFactory#createServiceProviderImplementation()
+   * @see ServiceProviderFactory#createServiceProviderImplementation()
    */
   @Override
   public ServiceProviderImplementation createServiceProviderImplementation( ) {
@@ -40,7 +40,7 @@ public final class MessagingServiceProviderImplFactory extends ServiceProviderFa
    * @return Class Class object of interface that belongs to the service provider that is created by this factory. The
    * method never returns null.
    *
-   * @see com.anaptecs.jeaf.core.servicechannel.api.ServiceProviderFactory#getServiceProviderInterface()
+   * @see ServiceProviderFactory#getServiceProviderInterface()
    */
   @Override
   public Class<? extends ServiceProvider> getServiceProviderInterface( ) {

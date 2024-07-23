@@ -43,7 +43,7 @@ final class SchufaServiceFactory extends ServiceFactory {
    *
    * @return ServiceImplementation Created instance of the service implementation. The method must not return null.
    *
-   * @see com.anaptecs.jeaf.core.servicechannel.api.ServiceFactory#createServiceInstance()
+   * @see ServiceFactory#createServiceInstance()
    */
   public ServiceImplementation createServiceInstance( ) {
     return new SchufaServiceImpl(this.getComponent());
@@ -55,7 +55,7 @@ final class SchufaServiceFactory extends ServiceFactory {
    *
    * @return ServiceProxy Created instance of the service proxy. The method must not return null.
    *
-   * @see com.anaptecs.jeaf.core.servicechannel.api.ServiceFactory#createServiceProxy()
+   * @see ServiceFactory#createServiceProxy()
    */
   public ServiceProxy createServiceProxy( ) {
     // Create new service proxy and return it.

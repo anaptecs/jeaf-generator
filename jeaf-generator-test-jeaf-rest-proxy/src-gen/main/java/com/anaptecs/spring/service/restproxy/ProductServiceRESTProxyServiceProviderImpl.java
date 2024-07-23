@@ -21,8 +21,6 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.anaptecs.jeaf.core.annotations.JEAFServiceProvider;
-import com.anaptecs.jeaf.core.api.ServiceProvider;
-import com.anaptecs.jeaf.core.servicechannel.api.ServiceProviderFactory;
 import com.anaptecs.jeaf.core.spi.ServiceProviderImplementation;
 import com.anaptecs.jeaf.rest.executor.api.ContentType;
 import com.anaptecs.jeaf.rest.executor.api.HttpMethod;

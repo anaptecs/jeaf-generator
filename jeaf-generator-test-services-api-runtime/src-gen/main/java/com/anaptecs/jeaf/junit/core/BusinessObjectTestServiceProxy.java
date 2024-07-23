@@ -16,9 +16,7 @@ import com.anaptecs.jeaf.core.servicechannel.api.Command;
 import com.anaptecs.jeaf.core.servicechannel.api.ServiceProxy;
 import com.anaptecs.jeaf.core.spi.TransactionBehavior;
 import com.anaptecs.jeaf.xfun.api.XFun;
-import com.anaptecs.jeaf.xfun.api.XFunMessages;
 import com.anaptecs.jeaf.xfun.api.errorhandling.ApplicationException;
-import com.anaptecs.jeaf.xfun.api.errorhandling.ErrorCode;
 import com.anaptecs.jeaf.xfun.api.errorhandling.JEAFSystemException;
 import com.anaptecs.jeaf.xfun.api.trace.Trace;
 
