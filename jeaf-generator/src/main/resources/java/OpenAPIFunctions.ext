@@ -285,7 +285,7 @@ cached boolean hasRequestBody(uml::Operation operation, JMM::HTTPMethod httpMeth
   operation.getRequestBodyParameters().size == 1  && httpMethod.supportsRequestBody() == true;
   
 cached List[uml::Parameter] getRequestBodyParameters(uml::Operation operation):
-  operation.ownedParameter.select(e|e.isInputParameter() && e.isOpenAPIInputParameter() == false && e.isBeanParamater() == false && e.isIgnoredHeaderParam() == false);
+  operation.ownedParameter.select(e|e.isInputParameter() && e.isRequestBody());
   
 cached boolean hasRequestBody(uml::Operation operation):
   operation.getRequestBodyParameters().size > 0;

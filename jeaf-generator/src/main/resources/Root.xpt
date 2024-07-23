@@ -4,6 +4,7 @@
 «EXTENSION java::GeneratorCommons»
 «EXTENSION java::CustomValidationCommons»
 «EXTENSION java::OpenAPIFunctions»
+«EXTENSION functions::SystemProperties»
 «EXTENSION org::openarchitectureware::util::stdlib::io»
 
 
@@ -139,10 +140,14 @@
 «DEFINE Root FOR Interface»
 	«REM»Handle stereotype JEAFService«ENDREM»
 	«IF this.isStereotypeApplied("JEAFService")»
-	    «IF generateServices() == true && this.isInGeneratorWhitelist() == true»
+	    «IF generateServices() && this.isInGeneratorWhitelist() == true»
 			«info("Processing «JEAFService» " + this.name + " (" + (this.fqn()) + ")")»
-	    	«EXPAND jeaf::JEAFService::JEAFServiceInterface FOR (JEAFService) this»
+	    	«EXPAND jeaf::JEAFService::JEAFServiceInterface(false) FOR (JEAFService) this»
 	    «ENDIF»
+        «IF generateReactiveServiceInterfaces() && this.isInGeneratorWhitelist() == true»
+            «info("Processing reactive «JEAFService» " + this.name + " (" + (this.fqn()) + ")")»
+            «EXPAND jeaf::JEAFService::JEAFServiceInterface(true) FOR (JEAFService) this»
+        «ENDIF»
 	    «IF generateServiceProxies() == true && this.isInGeneratorWhitelist() == true»
 			«info("Processing «JEAFService» " + this.name + " (" + (this.fqn()) + ")")»
 	    	«EXPAND jeaf::JEAFService::JEAFServiceProxy FOR (JEAFService) this»
@@ -157,9 +162,14 @@
 	«IF this.isStereotypeApplied("RESTResource")»
 		«IF generateRESTResources() == true && this.isInGeneratorWhitelist() == true»
 			«info("Processing «RESTResource» " + this.name + " (" + (this.fqn()) + ")")»
-			«EXPAND jeaf::RESTResource::RESTResourceClass FOR (RESTResource) this»
+			«EXPAND jeaf::RESTResource::RESTResourceClass(false) FOR (RESTResource) this»
 		«ENDIF»
 		
+        «IF generateReactiveRESTResources() == true && this.isInGeneratorWhitelist() == true»
+            «info("Processing reactive «RESTResource» " + this.name + " (" + (this.fqn()) + ")")»
+            «EXPAND jeaf::RESTResource::RESTResourceClass(true) FOR (RESTResource) this»
+        «ENDIF»
+
 		«IF generateRESTServiceProxies() == true && this.isInGeneratorWhitelist() == true»
 			«info("Processing «RESTResource» " + this.name + " (" + (this.fqn()) + ")")»
 			«EXPAND jeaf::RESTServiceProxy::GenerateRESTServiceProxy FOR (RESTResource) this»

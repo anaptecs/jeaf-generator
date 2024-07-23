@@ -1,7 +1,55 @@
 extension java::GeneratorCommons;
+extension functions::Reactive;
+extension functions::NamedElement;
+
 
 cached boolean isJEAFService(uml::Element element):
     element.isStereotypeApplied("JEAFService");
 
 cached JMM::JEAFService asInterface(uml::Element element):
     (JMM::JEAFService) element;
+    
+cached JMM::JEAFService asJEAFService(uml::Element element):
+    (JMM::JEAFService) element;
+    
+cached List[JMM::JEAFService] getParentServices(JMM::JEAFService interface) :
+    interface.parents().typeSelect(JMM::JEAFService);    
+    
+cached String getServiceName(JMM::JEAFService service, boolean reactive):
+    if reactive
+    then service.name + "Reactive"
+    else service.name;
+
+cached String getServiceNameFQN(JMM::JEAFService service, boolean reactive):
+    if reactive
+    then service.qualifiedName() + "Reactive"
+    else service.qualifiedName();
+
+cached String getReactiveAwareTypeName(String typeName, boolean reactive):
+    if reactive == false
+    then typeName
+    else 
+        if typeName == "void"
+        then getMonoTypeName() + "<Void>"
+        else
+            if typeName == "boolean"
+            then getMonoTypeName() + "<Boolean>"
+            else
+                if typeName == "byte"
+                then getMonoTypeName() + "<Byte>"
+                else
+                    if typeName == "short"
+                    then getMonoTypeName() + "<Short>"
+                    else
+                        if typeName == "int"
+                        then getMonoTypeName() + "<Integer>"
+                        else
+                            if typeName == "long"
+                            then getMonoTypeName() + "<Long>"
+                            else
+                                if typeName == "float"
+                                then getMonoTypeName() + "<Float>"
+                                else
+                                    if typeName == "double"
+                                    then getMonoTypeName() + "<Double>"
+                                    else getMonoTypeName() + "<" + typeName + ">";

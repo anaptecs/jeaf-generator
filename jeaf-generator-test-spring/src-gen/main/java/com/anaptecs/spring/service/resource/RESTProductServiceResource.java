@@ -304,7 +304,7 @@ public class RESTProductServiceResource {
   @MyNotNullRESTParam
   public String testParams(
       @RequestHeader(name = "Big-Header", required = true) @MyNotNullRESTParam BigDecimal pBigDecimalHeader,
-      @CookieValue(name = "giveMeMoreCookies", required = true) @RequestBody(required = true) int pIntCookieParam,
+      @CookieValue(name = "giveMeMoreCookies", required = true) int pIntCookieParam,
       @RequestParam(name = "locale", required = true) @MyNotNullRESTParam Locale pLocaleQueryParam ) {
     // Validate request parameter(s).
     validationExecutor.validateRequest(RESTProductService.class, pBigDecimalHeader, pIntCookieParam, pLocaleQueryParam);
@@ -780,8 +780,7 @@ public class RESTProductServiceResource {
   @RequestMapping(path = "cookies", method = { RequestMethod.GET })
   @MyNotNullRESTParam
   public void testCookieParams(
-      @CookieValue(name = "Channel-Type-Param", required = true) @RequestBody(
-          required = true) @MyNotNullRESTParam ChannelType pChannelTypeParam,
+      @CookieValue(name = "Channel-Type-Param", required = true) @MyNotNullRESTParam ChannelType pChannelTypeParam,
       @RequestHeader(name = "token", required = true) @MyNotNullRESTParam String pAccessToken,
       @RequestHeader(name = "lang", required = true) @MyNotNullRESTParam Locale pLanguage,
       @CookieValue(name = "reseller", required = true) long pResellerID,
