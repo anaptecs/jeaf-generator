@@ -13,7 +13,7 @@ import com.anaptecs.jeaf.xfun.api.info.VersionInfo;
 /**
  * System exception that is used in order to indicate technical problems.
  *
- * @see com.anaptecs.jeaf.xfun.api.errorhandling.SystemException
+ * @see SystemException
  */
 public final class AccountingServiceSystemException extends SystemException {
   /**

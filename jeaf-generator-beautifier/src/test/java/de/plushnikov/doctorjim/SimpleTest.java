@@ -65,6 +65,11 @@ public class SimpleTest {
   }
 
   @Test
+  public void testSample5UnusedImportsRemoved( ) throws Exception {
+    testBeautifikation("Sample05UnusedImportsRemoved", true);
+  }
+
+  @Test
   public void testSample6( ) throws Exception {
     testBeautifikation("Sample06");
   }
@@ -264,12 +269,18 @@ public class SimpleTest {
    * @throws ParseException if any errors occured
    */
   private void testBeautifikation( String pFilename ) throws Exception {
+    this.testBeautifikation(pFilename, false);
+  }
+
+  private void testBeautifikation( String pFilename, boolean pRemoveUnusedImports ) throws Exception {
     String lInput = IOUtils.toString(this.getClass().getResourceAsStream(pFilename + ".java_input"));
     String lExpectedOutput = IOUtils.toString(this.getClass().getResourceAsStream(pFilename + ".java_output"));
+
+    mProcessor.setRemoveUnusedImports(pRemoveUnusedImports);
 
     String lOutput = mProcessor.organizeImports(lInput, new ArrayList<String>());
 
     assertEquals(lExpectedOutput.trim(), lOutput.trim());
-  }
 
+  }
 }

@@ -27,7 +27,7 @@ public final class PathlessServiceRESTProxyServiceProviderFactory extends Servic
    *
    * @return {@link ServiceProviderImplementation} Instance of service provider. The method never returns null.
    *
-   * @see com.anaptecs.jeaf.core.servicechannel.api.ServiceProviderFactory#createServiceProviderImplementation()
+   * @see ServiceProviderFactory#createServiceProviderImplementation()
    */
   public ServiceProviderImplementation createServiceProviderImplementation( ) {
     return new PathlessServiceRESTProxyServiceProviderImpl();
@@ -39,7 +39,7 @@ public final class PathlessServiceRESTProxyServiceProviderFactory extends Servic
    * @return Class Class object of interface that belongs to the service provider that is created by this factory. The
    * method never returns null.
    *
-   * @see com.anaptecs.jeaf.core.servicechannel.api.ServiceProviderFactory#getServiceProviderInterface()
+   * @see ServiceProviderFactory#getServiceProviderInterface()
    */
   public Class<? extends ServiceProvider> getServiceProviderInterface( ) {
     return PathlessServiceRESTProxyServiceProvider.class;

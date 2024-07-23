@@ -11,7 +11,6 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
-import com.anaptecs.jeaf.core.api.Component;
 import com.anaptecs.jeaf.core.api.MessageConstants;
 import com.anaptecs.jeaf.core.api.Service;
 import com.anaptecs.jeaf.core.spi.CommunicationProtocol;
@@ -243,7 +242,7 @@ public final class GeneratorTestComponent implements ComponentImplementation {
    * @return {@link TransactionBehavior} Transactional behavior of all services of the component. The method never
    * returns null.
    *
-   * @see com.anaptecs.jeaf.core.spi.ComponentImplementation#getTransactionBehavior()
+   * @see ComponentImplementation#getTransactionBehavior()
    */
   @Override
   public TransactionBehavior getTransactionBehavior( ) {
