@@ -462,6 +462,12 @@ public class GeneratorMojo extends AbstractMojo {
   private Boolean generateRESTServiceProxies;
 
   /**
+   * Switch defines whether reactive REST service proxies should be generated or not.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean generateReactiveRESTServiceProxies;
+
+  /**
    * Switch defines whether a default config file for REST service proxies should be generated or not.
    */
   @Parameter(required = false, defaultValue = "false")
@@ -1446,7 +1452,7 @@ public class GeneratorMojo extends AbstractMojo {
     else {
       Log lLog = this.getLog();
       lLog.info("--------------------------------------------------------------------------------------");
-      lLog.info("Starting JEAF Generator " + XFun.getVersionInfo().getVersionString());
+      lLog.info("Starting JEAF Generator " + XFun.getVersionInfo().getVersionString() + " (www.jeaf-generator.io)");
       lLog.info("Skipping code generation. According to Maven Plugin configuration nothing should be generated.");
       lLog.info("--------------------------------------------------------------------------------------");
     }
@@ -1478,7 +1484,7 @@ public class GeneratorMojo extends AbstractMojo {
   private void showStartupInfo( ) {
     Log lLog = this.getLog();
     lLog.info("--------------------------------------------------------------------------------------");
-    lLog.info("Starting JEAF Generator " + XFun.getVersionInfo().getVersionString());
+    lLog.info("Starting JEAF Generator " + XFun.getVersionInfo().getVersionString() + " (www.jeaf-generator.io)");
     lLog.info("--------------------------------------------------------------------------------------");
     if (this.isUMLGenerationRequested() == true) {
       lLog.info("UML Model File:                                   " + umlModelFile);
@@ -1589,8 +1595,9 @@ public class GeneratorMojo extends AbstractMojo {
     if (restPathPrefix.length() > 0) {
       lLog.info("REST Path Prefix:                                 " + restPathPrefix);
     }
-    if (generateRESTServiceProxies) {
+    if (generateRESTServiceProxies || generateReactiveRESTServiceProxies) {
       lLog.info("Generate REST Service Proxies:                    " + generateRESTServiceProxies);
+      lLog.info("Generate reactive REST Service Proxies:           " + generateReactiveRESTServiceProxies);
     }
     if (generateRESTServiceProxyConfigFile) {
       lLog.info("Generate REST Service Default Config File:        " + generateRESTServiceProxyConfigFile);
@@ -2003,6 +2010,9 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty("switch.gen.rest.filter.custom.headers", filterCustomHeaders.toString());
       System.setProperty("switch.gen.rest.path.prefix", restPathPrefix);
       System.setProperty("switch.gen.rest.service.proxy", generateRESTServiceProxies.toString());
+      System.setProperty(PROPERTY_PREFIX + "generateReactiveRESTServiceProxies",
+          generateReactiveRESTServiceProxies.toString());
+
       System.setProperty("switch.gen.rest.service.proxy.config.file", generateRESTServiceProxyConfigFile.toString());
       System.setProperty("switch.gen.service.objects", generateServiceObjects.toString());
       System.setProperty("switch.gen.exception.classes", generateExceptionClasses.toString());
@@ -2435,8 +2445,8 @@ public class GeneratorMojo extends AbstractMojo {
     return generateCustomConstraints | generateServiceInterfaces | generateReactiveServiceInterfaces
         | generateServiceProxies | generateServiceProviderInterfaces | generateServiceProviderImpls
         | generateRESTResources | generateReactiveRESTResources | generateRESTServiceProxies
-        | generateRESTServiceProxyConfigFile | generateActivityInterfaces | generateActivityImpls
-        | generateServiceObjects | generatePOJOs | generateDomainObjects | generateObjectMappers
+        | generateReactiveRESTServiceProxies | generateRESTServiceProxyConfigFile | generateActivityInterfaces
+        | generateActivityImpls | generateServiceObjects | generatePOJOs | generateDomainObjects | generateObjectMappers
         | generatePersistentObjects | generateComponentImpls | generateComponentRuntimeClasses | generateGlobalParts
         | generateExceptionClasses | generateJUnitTests | generateTypesReport | generateBreakingChangesReport
         | generateRESTDeprecationReport | generateJavaDeprecationReport | generateOpenAPISpec | generateJSONSerializers
