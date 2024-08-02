@@ -2,21 +2,23 @@
 «EXTENSION java::Naming»
 «EXTENSION jeaf::RESTFunctions»
 «EXTENSION java::OpenAPIFunctions»
+«EXTENSION functions::JEAFService»
 «EXTENSION functions::Property»
 «EXTENSION functions::Class»
 «EXTENSION functions::RESTOperation»
+«EXTENSION functions::Reactive»
 
 «IMPORT uml»
 «IMPORT JMM»
 
-«DEFINE GenerateRESTServiceProxy FOR RESTResource»
+«DEFINE GenerateRESTServiceProxy(boolean reactive) FOR RESTResource»
   «IF isTargetRuntimeSpring()»
-  	«EXPAND GenerateRESTServiceProxySpring»
+  	«EXPAND GenerateRESTServiceProxySpring(reactive)»
   «ENDIF»
   «IF isTargetRuntimeJEAF()»
   	«EXPAND GenerateRESTProxyServiceProviderInterface»
   	«EXPAND GenerateRESTProxyServiceProviderFactory»
-  	«EXPAND GenerateRESTProxyServiceProviderImpl»
+  	«EXPAND GenerateRESTProxyServiceProviderImpl(reactive)»
   «ENDIF»
    
 «ENDDEFINE»
@@ -82,7 +84,7 @@ public final class «name»RESTProxyServiceProviderFactory extends ServiceProvid
 «ENDFILE»
 «ENDDEFINE»
 
-«DEFINE GenerateRESTProxyServiceProviderImpl FOR RESTResource»
+«DEFINE GenerateRESTProxyServiceProviderImpl(boolean reactive) FOR RESTResource»
 «FILE packagePath()+"/restproxy/"+name+"RESTProxyServiceProviderImpl.java" src_gen»
 «getFileHeader()»
 package «packageName()».restproxy;
@@ -120,15 +122,15 @@ public final class «name»RESTProxyServiceProviderImpl implements com.anaptecs.
     return null;
   }
   
-  «EXPAND RESTProxyOperationOperation(this) FOREACH this.getAllOperations().typeSelect(RESTOperation)»
+  «EXPAND RESTProxyOperationOperation(this, reactive) FOREACH this.getAllOperations().typeSelect(RESTOperation)»
 }
 «ENDFILE»
 «ENDDEFINE»
 
 
 
-«DEFINE GenerateRESTServiceProxySpring FOR RESTResource»
-«FILE packagePath()+"/restproxy/"+name+"RESTProxy.java" src_gen»
+«DEFINE GenerateRESTServiceProxySpring(boolean reactive) FOR RESTResource»
+«FILE packagePath() + "/restproxy/" + this.getRESTProxyName(reactive) + ".java" src_gen»
 «getFileHeader()»
 package «packageName()».restproxy;
 
@@ -149,12 +151,16 @@ package «packageName()».restproxy;
  * about proper transaction handling if needed.
  */
 @org.springframework.stereotype.Service
-public class «name»RESTProxy implements «this.fqn()» {
+public class «this.getRESTProxyName(reactive)» implements «this.asJEAFService().getServiceNameFQN(reactive)» {
   /**
    * REST request executor is used to send REST request to the proxied REST resource. Depending on the Spring
    * configuration the matching implementation will be injected here.
    */
-  private final com.anaptecs.jeaf.rest.executor.api.RESTRequestExecutor requestExecutor;
+  «IF reactive»
+      private final com.anaptecs.jeaf.rest.executor.api.reactive.RESTRequestExecutorReactive requestExecutor;
+  «ELSE»
+	  private final com.anaptecs.jeaf.rest.executor.api.RESTRequestExecutor requestExecutor;
+  «ENDIF»
 
   «IF generateRESTRequestValidation() || generateRESTResponseValidation()»
     /**
@@ -168,25 +174,25 @@ public class «name»RESTProxy implements «this.fqn()» {
    * 
    * @param pRequestExecutor Dependency on concrete {@link RESTRequestExecutor} implementation that should be used.
    */
-  public «name»RESTProxy( com.anaptecs.jeaf.rest.executor.api.RESTRequestExecutor pRequestExecutor «IF generateRESTRequestValidation() || generateRESTResponseValidation()», com.anaptecs.jeaf.validation.api.ValidationExecutor pValidationExecutor«ENDIF» ) {
+  public «this.getRESTProxyName(reactive)»( «IF reactive»com.anaptecs.jeaf.rest.executor.api.reactive.RESTRequestExecutorReactive«ELSE»com.anaptecs.jeaf.rest.executor.api.RESTRequestExecutor«ENDIF» pRequestExecutor «IF generateRESTRequestValidation() || generateRESTResponseValidation()», com.anaptecs.jeaf.validation.api.ValidationExecutor pValidationExecutor«ENDIF» ) {
     requestExecutor = pRequestExecutor;
     «IF generateRESTRequestValidation() || generateRESTResponseValidation()»
       validationExecutor = pValidationExecutor;
     «ENDIF»
   }
 
-  «EXPAND RESTProxyOperationOperation(this) FOREACH this.getAllOperations().typeSelect(RESTOperation)»
+  «EXPAND RESTProxyOperationOperation(this, reactive) FOREACH this.getAllOperations().typeSelect(RESTOperation)»
 }
 «ENDFILE»
 «ENDDEFINE»
 
 
-«DEFINE RESTProxyOperationOperation(RESTResource service) FOR RESTOperation»
+«DEFINE RESTProxyOperationOperation(RESTResource service, boolean reactive) FOR RESTOperation»
     «EXPAND functions::Javadoc::JavadocForOperation»
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
     «EXPAND java::Helper::GenerateDeprecationAnnotation FOR this.getReturnResult() -»
     @Override
-	«visibility» «getReturnTypeName()» «name» («EXPAND jeaf::JEAFOperation::ParameterSignatureNoValidationAnnotation»)«getThrownExceptionsAsString()» {
+	«visibility» «getReturnTypeName().getReactiveAwareTypeName(reactive)» «name» («EXPAND jeaf::JEAFOperation::ParameterSignatureNoValidationAnnotation»)«getThrownExceptionsAsString()» {
         «IF generateRESTRequestValidation() && this.getInputParameters().select(e|e.isParameterSuppressed() == false).isEmpty == false»
             «IF isTargetRuntimeSpring()»
                 // Validate request parameter(s).
@@ -418,7 +424,7 @@ public class «name»RESTProxy implements «this.fqn()» {
 		«ENDIF»
 		com.anaptecs.jeaf.rest.executor.api.RESTRequest lRequest = lRequestBuilder.build();
 		
-		«IF getReturnTypeName() != "void"»
+		«IF reactive || getReturnTypeName() != "void"»
             
             «IF getReturnType().type.isClass() && getReturnType().type.asClass().templateBinding.isEmpty == false»
             com.anaptecs.jeaf.rest.executor.api.TypeReference<«getReturnTypeName()»> lTypeReference = new com.anaptecs.jeaf.rest.executor.api.TypeReference<«getReturnTypeName()»>() { };
@@ -428,7 +434,7 @@ public class «name»RESTProxy implements «this.fqn()» {
             «ENDIF»
 			«IF this.getReturnResult().isMultivalued() == false»
 	            «IF generateRESTResponseValidation()»
-	                «getReturnTypeName()» lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, «this.getHTTPStatusCode()», lObjectType);
+	                «getReturnTypeName().getReactiveAwareTypeName(reactive)» lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, «this.getHTTPStatusCode()», lObjectType);
 	                // Validate response and return it.
 	                validationExecutor.validateResponse(«((NamedElement)owner).fqn()».class, lResult);
 	                return lResult;
@@ -436,9 +442,9 @@ public class «name»RESTProxy implements «this.fqn()» {
 				return requestExecutor.executeSingleObjectResultRequest(lRequest, «this.getHTTPStatusCode()», lObjectType);
 	            «ENDIF»
 			«ELSE»
-		    «getReturnTypeName()» lResult = requestExecutor.executeCollectionResultRequest(lRequest, «this.getHTTPStatusCode()», «this.getReturnResult().getCollectionType()».class, lObjectType);
+		    «getReturnTypeName().getReactiveAwareTypeName(reactive)» lResult = requestExecutor.executeCollectionResultRequest(lRequest, «this.getHTTPStatusCode()», «this.getReturnResult().getCollectionType()».class, lObjectType);
 		    if (lResult == null) {
-		      lResult = «this.getReturnResult().getEmptyCollectionOperation()»;
+		      lResult = «IF reactive»«getMonoTypeName()».just(«ENDIF»«this.getReturnResult().getEmptyCollectionOperation()»«IF reactive»)«ENDIF»;
 		    }
 
 			«IF generateRESTResponseValidation()»

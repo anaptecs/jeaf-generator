@@ -213,3 +213,7 @@ cached boolean isCompositeDataTypeForRESTResource(uml::Type type):
 cached List[String] getAllRESTPathParamNames(uml::Operation operation):
     operation.getPathParams().getRESTPathParamName().addAll(operation.getBeanPathParams().getRESTPathParamName());
    
+cached String getRESTProxyName(JMM::RESTResource service, boolean reactive):
+    if reactive
+    then service.name + "RESTProxyReactive"
+    else service.name + "RESTProxy";

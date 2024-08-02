@@ -73,3 +73,6 @@ cached boolean generateReactiveServiceInterfaces():
 
 cached boolean generateReactiveRESTResources():
     getBooleanSystemProperty("jeaf.generator.generateReactiveRESTResources", false);
+    
+cached boolean generateReactiveRESTServiceProxies():
+    getBooleanSystemProperty("jeaf.generator.generateReactiveRESTServiceProxies", false);    
