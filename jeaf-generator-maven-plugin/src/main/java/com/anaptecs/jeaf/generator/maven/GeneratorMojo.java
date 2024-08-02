@@ -340,7 +340,7 @@ public class GeneratorMojo extends AbstractMojo {
   private Boolean generateRESTResources;
 
   /**
-   * Switch can be used to generate reactive Spring RESt Controllers.<br>
+   * Switch can be used to generate reactive Spring REST Controllers.<br>
    * <br>
    * Please be aware that generated code will have dependency on library <b><code>Reactor Code</code></b>. <br>
    * 
@@ -462,7 +462,16 @@ public class GeneratorMojo extends AbstractMojo {
   private Boolean generateRESTServiceProxies;
 
   /**
-   * Switch defines whether reactive REST service proxies should be generated or not.
+   * Switch defines whether reactive REST service proxies should be generated or not.<br>
+   * <br>
+   * Please be aware that generated code will have dependency on library <b><code>Reactor Code</code></b>. <br>
+   * 
+   * <pre>
+   * &#60;dependency>
+   *     &#60;groupId>io.projectreactor&#60;/groupId>
+   *     &#60;artifactId>reactor-core&#60;/artifactId>
+   * &#60;/dependency><br/>
+   * </pre>
    */
   @Parameter(required = false, defaultValue = "false")
   private Boolean generateReactiveRESTServiceProxies;
