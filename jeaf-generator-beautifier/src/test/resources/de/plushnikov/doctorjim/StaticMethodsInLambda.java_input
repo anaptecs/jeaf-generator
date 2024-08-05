@@ -1,0 +1,76 @@
+
+package ch.staticmethod.in.lamdba;
+
+import java.time.LocalDate;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import jakarta.annotation.Nonnull;
+
+public class XYWrapper  {
+    protected XYWrapper() {
+    }
+
+    /**
+     * Wraps the delegate along with a reference date and access to all other repositories.
+     *
+     * @param repositorySet Repository set the delegate was loaded from.
+     * @param delegate Entity to wrap.
+     * @param referenceDate Date used to load the delegate.
+     * @return New wrapped entity instance.
+     */
+    public static IProductTaxonomy wrap( RepositorySet repositorySet, ProductTaxonomy delegate,
+                    LocalDate referenceDate ) {
+        if (delegate == null) {
+            return null;
+        }
+        return new XYWrapper(repositorySet, delegate, referenceDate);
+    }
+
+    @Override
+    protected boolean canEqual( Object other ) {
+        return other instanceof XYWrapper;
+    }
+
+    @Nonnull
+    @Override
+    public VersionedObjectID getObjectID( ) {
+        return getDelegate().getObjectID();
+    }
+
+    @Override
+    public List<IProductTaxonomyClass> getClasses( ) {
+        if (classes == null) {
+            classes = getDelegate().getClasses().stream()
+                            .map(del -> ProductTaxonomyClassWrapper.wrap(getRepositorySet(), del, getReferenceDate()))
+                            .collect(Collectors.toList());
+        }
+        return classes;
+    }
+
+    private List<IProductTaxonomyClass> classes;
+
+    @Override
+    public List<VersionedObjectID> getAllowedResellerIDs( ) {
+        return getDelegate().getAllowedResellerIDs();
+    }
+
+    @Override
+    public String getName( ) {
+        return getDelegate().getName();
+    }
+
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+    @Override
+    public <I extends IEntityVersion> Stream<I> getAllowedResellers( ) {
+        if (allowedResellers == null) {
+            IEntityRepository<I, VersionedObjectID, ?> repository = getRepositorySet()
+                            .getEntityRepository((Class) classForName("ch.voev.nova.reseller.masterdata.Reseller"));
+            allowedResellers = repository.find(getDelegate().getAllowedResellerIDs(), getReferenceDate()).toList();
+        }
+        return (Stream<I>) allowedResellers.stream();
+    }
+
+    private List<? extends IEntityVersion> allowedResellers;
+}

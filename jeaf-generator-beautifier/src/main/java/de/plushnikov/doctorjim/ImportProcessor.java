@@ -32,6 +32,7 @@ import com.github.javaparser.ast.expr.AnnotationExpr;
 import com.github.javaparser.ast.expr.BinaryExpr;
 import com.github.javaparser.ast.expr.FieldAccessExpr;
 import com.github.javaparser.ast.expr.MemberValuePair;
+import com.github.javaparser.ast.expr.MethodCallExpr;
 import com.github.javaparser.ast.expr.ThisExpr;
 import com.github.javaparser.ast.nodeTypes.NodeWithRange;
 import com.github.javaparser.ast.type.ClassOrInterfaceType;
@@ -301,6 +302,13 @@ public class ImportProcessor {
       for (AnnotationExpr lNext : lCompilationUnit.findAll(AnnotationExpr.class)) {
         String lTypeName = lNext.getChildNodes().get(0).toString();
         if (lUsedTypes.contains(lTypeName) == false) {
+          lUsedTypes.add(lTypeName);
+        }
+      }
+
+      for (MethodCallExpr lNext : lCompilationUnit.findAll(MethodCallExpr.class)) {
+        String lTypeName = lNext.getChildNodes().get(0).toString();
+        if (lUsedTypes.contains(lTypeName) == false && lTypeName.endsWith(")") == false) {
           lUsedTypes.add(lTypeName);
         }
       }

@@ -261,6 +261,11 @@ public class SimpleTest {
     testBeautifikation("DiamondOperator");
   }
 
+  @Test
+  public void testStaticMethodsInLambda( ) throws Exception {
+    testBeautifikation("StaticMethodsInLambda", true);
+  }
+
   /**
    * Execute beautifikation on the given file and compare result
    *
