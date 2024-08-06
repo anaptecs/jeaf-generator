@@ -1,4 +1,3 @@
-
 package ch.staticmethod.in.lamdba;
 
 import jakarta.annotation.Nonnull;
@@ -6,6 +5,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
 public class XYWrapper  {
     protected XYWrapper() {
@@ -72,4 +72,12 @@ public class XYWrapper  {
     }
 
     private List<? extends IEntityVersion> allowedResellers;
+    
+    @Override
+    public final Stream<I> findByNumber( @NonNull Iterable<ProductNumber> pNumber, @NonNull LocalDate referenceDate ) {
+        return StreamSupport.stream(pNumber.spliterator(), false)
+                        .flatMap(key -> findByNumber(key, referenceDate).stream());
+    }
+
+    
 }
