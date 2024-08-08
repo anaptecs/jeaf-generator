@@ -304,6 +304,13 @@ public class ImportProcessor {
         if (lUsedTypes.contains(lTypeName) == false) {
           lUsedTypes.add(lTypeName);
         }
+        List<FieldAccessExpr> lFieldAccessExpressions = lNext.findAll(FieldAccessExpr.class);
+        for(FieldAccessExpr lNextExpr : lFieldAccessExpressions) {
+          String lString = lNextExpr.toString();
+          if(lUsedTypes.contains(lString)== false) {
+            lUsedTypes.add(lString);
+          }
+        }
       }
 
       for (MethodCallExpr lNext : lCompilationUnit.findAll(MethodCallExpr.class)) {
