@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication.Type;
 
 public class XYWrapper  {
     protected XYWrapper() {
@@ -79,5 +81,10 @@ public class XYWrapper  {
                         .flatMap(key -> findByNumber(key, referenceDate).stream());
     }
 
+    
+    @ConditionalOnWebApplication(type = Type.SERVLET)
+    public ServiceResource serviceResource( ) {
+        return null;
+    }
     
 }
