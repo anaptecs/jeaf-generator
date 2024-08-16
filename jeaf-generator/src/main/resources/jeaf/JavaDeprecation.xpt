@@ -31,12 +31,20 @@
 
 <br>
 
-«FOREACH this.getPackagesForJavaDeprecationsReport() AS package-»
-## Package `«package.fqn()»`
+«EXPAND DeprecationsForPackage FOREACH this.getPackagesForJavaDeprecationsReport() -»
+
+«ENDFILE»
+«ENDDEFINE»
+
+«DEFINE DeprecationsForPackage FOR Package»
+## Package `«this.fqn()»`
+«LET this.getJavaDeprecations() AS deprecations-»
+«IF deprecations.isEmpty-»
+No deprecations published.
+«ENDIF-»
 
 <br>
 
-«LET package.getJavaDeprecations() AS deprecations-»
 «IF deprecations.typeSelect(JEAFService).typeSelect(JEAFDeprecated).isEmpty == false -»
 ### Services with Deprecations 
 
@@ -118,8 +126,6 @@
 
 «ENDIF-»
 «ENDLET-»
-«ENDFOREACH-»
-«ENDFILE»
 «ENDDEFINE»
 
 

@@ -17,6 +17,9 @@ cached boolean hasMeaningfulComment(uml::NamedElement element):
 cached String getMarkdownComment(uml::NamedElement element):
     element.ownedComment.first().body.trim();
     
+cached String getMarkdownCommentForTable(uml::NamedElement element):
+    element.getMarkdownComment().replaceAll("\n", "<br>");
+
 cached String getJavadocComment(uml::NamedElement element):
     element.getMarkdownComment().convertCommentForJavadoc();
     

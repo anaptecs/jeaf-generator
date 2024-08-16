@@ -10,6 +10,12 @@ cached boolean isOperation(uml::Element element):
 cached uml::Operation asOperation(uml::Element element):
     (uml::Operation) element;
     
+cached List[uml::Parameter] getInputParameters(uml::Operation operation):
+   operation.ownedParameter.select(p| p.isInputParam());
+
+cached boolean isInputParam(uml::Parameter parameter):
+	parameter.direction.toString() != "return";
+    
 cached boolean hasSecurityRoles(uml::Operation operation):
     !operation.getSecurityRoles().isEmpty;
 
