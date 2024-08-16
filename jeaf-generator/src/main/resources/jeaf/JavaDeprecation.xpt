@@ -32,11 +32,10 @@
 <br>
 
 «EXPAND DeprecationsForPackage FOREACH this.getPackagesForJavaDeprecationsReport() -»
-
 «ENDFILE»
 «ENDDEFINE»
 
-«DEFINE DeprecationsForPackage FOR Package»
+«DEFINE DeprecationsForPackage FOR Package-»
 ## Package `«this.fqn()»`
 «LET this.getJavaDeprecations() AS deprecations-»
 «IF deprecations.isEmpty-»
