@@ -12,3 +12,14 @@ private boolean hasStereotypeForTypesReport(uml::NamedElement element):
     
 cached String getDescriptionForMarkup(uml::NamedElement element): 
     element.ownedComment.first().body.trim().replaceAll("\n", "<br>");
+    
+cached List[JMM::POJO] getAllPOJOs(uml::Package package):
+    package.ownedElement.typeSelect(JMM::POJO).select(e|e.isInGeneratorWhitelist()).sortBy(e|e.name);
+    
+cached List[JMM::JEAFEnumeration] getAllEnums(uml::Package package):
+    package.ownedElement.typeSelect(JMM::JEAFEnumeration).select(e|e.isInGeneratorWhitelist()).sortBy(e|e.name);
+    
+cached List[uml::Package] getAllPAckagesForModelReport(uml::Package package):
+    package.allOwnedElements().typeSelect(uml::Package).select(e|e.isInGeneratorWhitelist() && (e.getAllPOJOs().isEmpty == false || e.getAllEnums().isEmpty == false));
+    
+    

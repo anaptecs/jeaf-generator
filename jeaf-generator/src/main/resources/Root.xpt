@@ -18,6 +18,7 @@
     «IF generateTypesReport()»
        «info("Generating Types Report")»
        «EXPAND jeaf::TypesReport::TypesReport»
+       «EXPAND jeaf::ModelReport::ModelReport»
     «ENDIF»
 
     «IF generateBreakingChangesReport()»

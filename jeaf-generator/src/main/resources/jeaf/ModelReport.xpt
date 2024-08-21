@@ -1,0 +1,68 @@
+«IMPORT uml»
+«IMPORT JMM»
+
+«EXTENSION functions::TypesReport»
+«EXTENSION functions::Javadoc»
+«EXTENSION functions::Alias»
+«EXTENSION functions::NamedElement»
+
+
+«EXTENSION org::openarchitectureware::util::stdlib::io»
+
+«EXTENSION java::GeneratorCommons»
+
+
+«DEFINE ModelReport FOR Model»
+    «EXPAND PackageReport FOREACH this.getAllPAckagesForModelReport()»
+«ENDDEFINE»
+
+
+«DEFINE PackageReport FOR Package»
+«FILE this.qualifiedName() + ".md" res_gen-»
+**Types / Enumerations:**
+[TOC levels=2]
+
+<br>
+
+# Package `«this.qualifiedName()»`
+
+«IF this.getAllPOJOs().isEmpty == false»
+<br>
+
+# Types
+«FOREACH this.getAllPOJOs() AS pojo-»
+## «pojo.name»
+«pojo.getMarkdownComment()»
+«IF pojo.parents().isEmpty == false || pojo.isAbstract-»
+
+<br>
+
+| Type Details | Details         | 
+|--------------|-----------------|
+«IF pojo.parents().isEmpty == false-»
+| Base Class  | `«pojo.parents().first().qualifiedName()»` |
+«ENDIF-»
+«IF pojo.isAlias()-»
+| Alias       | `«pojo.asAlias().alternateName»`           |
+«ENDIF-»
+«IF pojo.isAbstract-»
+| Abstract | `true` |
+«ENDIF-»
+«ENDIF»
+
+<br>
+
+### Properties / Associations
+| Name | Type | Multiplicity | Description |
+|------|------|:------------:|-------------|
+«FOREACH pojo.ownedAttribute AS attr-»
+| `«attr.name»` | `«attr.type.qualifiedName()»` | `«attr.lower»..«IF attr.isMultivalued()»*«ELSE»1«ENDIF»` | «attr.getMarkdownCommentForTable()» |
+«ENDFOREACH-»
+
+<br>
+
+«ENDFOREACH»
+«ENDIF»
+«ENDFILE»
+«ENDDEFINE»
+
