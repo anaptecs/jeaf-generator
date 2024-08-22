@@ -18,6 +18,10 @@
     «IF generateTypesReport()»
        «info("Generating Types Report")»
        «EXPAND jeaf::TypesReport::TypesReport»
+    «ENDIF»
+
+    «IF generateModelReport()»
+       «info("Generating Model Details Report")»
        «EXPAND jeaf::ModelReport::ModelReport»
     «ENDIF»
 

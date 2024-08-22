@@ -1,8 +1,23 @@
+# Package `com.anaptecs.jeaf.junit.domainObjects`
+
 **Types / Enumerations:**
 [TOC levels=2]
 
+
+
 <br>
 
-# Package `com.anaptecs.jeaf.junit.domainObjects`
+# Enumerations
+## VerkehrsmittelTyp
 
+
+### Literals
+
+| Name | Description |
+|------|-------------|
+| `Zug` |  |
+| `Bus` |  |
+| `Schiff` |  |
+| `Tram` |  |
+| `Seilbahn` |  |
 

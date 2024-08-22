@@ -1,10 +1,7 @@
-**Types / Enumerations:**
-[TOC levels=2]
-
-<br>
-
 # Package `com.anaptecs.jeaf.junit.generics`
 
+**Types / Enumerations:**
+[TOC levels=2]
 
 <br>
 
@@ -15,7 +12,8 @@
 
 <br>
 
-### Properties / Associations
+**Properties / Associations**
+
 | Name | Type | Multiplicity | Constraints | Description |
 |------|------|:------------:|-------------|-------------|
 | `genericProperty` | [`DoSomethingResponse`](#dosomethingresponse) | `1..1` |  |  |
@@ -29,7 +27,8 @@
 
 <br>
 
-### Properties / Associations
+**Properties / Associations**
+
 | Name | Type | Multiplicity | Constraints | Description |
 |------|------|:------------:|-------------|-------------|
 | `errors` | [`Message`](#message) | `0..*` |  |  |
@@ -44,7 +43,8 @@
 
 <br>
 
-### Properties / Associations
+**Properties / Associations**
+
 | Name | Type | Multiplicity | Constraints | Description |
 |------|------|:------------:|-------------|-------------|
 | `text` | `String` | `1..1` |  |  |
@@ -57,7 +57,8 @@
 
 <br>
 
-### Properties / Associations
+**Properties / Associations**
+
 | Name | Type | Multiplicity | Constraints | Description |
 |------|------|:------------:|-------------|-------------|
 | `myBusinessAttribute` | `int` | `1..1` |  |  |
@@ -70,11 +71,27 @@
 
 <br>
 
-### Properties / Associations
+**Properties / Associations**
+
 | Name | Type | Multiplicity | Constraints | Description |
 |------|------|:------------:|-------------|-------------|
 
 <br>
 
 
+
+
+<br>
+
+# Enumerations
+## TemplateEnumTest
+
+
+### Literals
+
+| Name | Description |
+|------|-------------|
+| `ONE` |  |
+| `TWO` |  |
+| `THREE` |  |
 

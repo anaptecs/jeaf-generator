@@ -1,10 +1,7 @@
-**Types / Enumerations:**
-[TOC levels=2]
-
-<br>
-
 # Package `com.anaptecs.jeaf.junit.product.pojo`
 
+**Types / Enumerations:**
+[TOC levels=2]
 
 <br>
 
@@ -15,7 +12,8 @@
 
 <br>
 
-### Properties / Associations
+**Properties / Associations**
+
 | Name | Type | Multiplicity | Constraints | Description |
 |------|------|:------------:|-------------|-------------|
 | `products` | [`Product`](#product) | `0..*` |  |  |
@@ -29,7 +27,8 @@
 
 <br>
 
-### Properties / Associations
+**Properties / Associations**
+
 | Name | Type | Multiplicity | Constraints | Description |
 |------|------|:------------:|-------------|-------------|
 | `amount` | `java.math.BigDecimal` | `1..1` |  |  |
@@ -43,7 +42,8 @@
 
 <br>
 
-### Properties / Associations
+**Properties / Associations**
+
 | Name | Type | Multiplicity | Constraints | Description |
 |------|------|:------------:|-------------|-------------|
 | `assortments` | [`Assortment`](#assortment) | `0..*` |  |  |
@@ -61,12 +61,14 @@
 
 <br>
 
-### Properties / Associations
+**Properties / Associations**
+
 | Name | Type | Multiplicity | Constraints | Description |
 |------|------|:------------:|-------------|-------------|
 | `rate` | `double` | `1..1` |  |  |
 
 <br>
+
 
 
 

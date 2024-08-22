@@ -741,6 +741,13 @@ public class GeneratorMojo extends AbstractMojo {
   private Boolean typesReportGroupByPackage;
 
   /**
+   * Switch enables the generation of a detailed model report. A model report contains detailed information about all
+   * model elements. There will be one file per package.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean generateModelReport;
+
+  /**
    * Switch enables the generation of a breaking changes report about the model parts which are configured to be
    * processed. Breaking changes report is based an model elements that are tagged with stereotype "BreakingChange".
    */
@@ -1728,6 +1735,10 @@ public class GeneratorMojo extends AbstractMojo {
       lLog.info(" ");
     }
 
+    if (generateModelReport) {
+      lLog.info("Generate Model Report                             " + generateModelReport);
+    }
+
     if (generateBreakingChangesReport) {
       lLog.info("Generate Breaking Changes Report                  " + generateBreakingChangesReport);
       lLog.info("Breaking Changes Report Name                      " + breakingChangesReportName);
@@ -2080,6 +2091,8 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty("switch.gen.types.report.showProperties", typesReportShowProperties.toString());
       System.setProperty("switch.gen.types.report.groupByPackage", typesReportGroupByPackage.toString());
       System.setProperty("switch.gen.types.report.stereotypes", typesReportStereotypes);
+
+      System.setProperty(PROPERTY_PREFIX + "generateModelReport", generateModelReport.toString());
 
       System.setProperty("switch.gen.breaking.changes.report", generateBreakingChangesReport.toString());
       System.setProperty("switch.gen.breaking.changes.report.name", breakingChangesReportName.toString());
@@ -2457,9 +2470,9 @@ public class GeneratorMojo extends AbstractMojo {
         | generateReactiveRESTServiceProxies | generateRESTServiceProxyConfigFile | generateActivityInterfaces
         | generateActivityImpls | generateServiceObjects | generatePOJOs | generateDomainObjects | generateObjectMappers
         | generatePersistentObjects | generateComponentImpls | generateComponentRuntimeClasses | generateGlobalParts
-        | generateExceptionClasses | generateJUnitTests | generateTypesReport | generateBreakingChangesReport
-        | generateRESTDeprecationReport | generateJavaDeprecationReport | generateOpenAPISpec | generateJSONSerializers
-        | enforceCustomTemplateExecution;
+        | generateExceptionClasses | generateJUnitTests | generateTypesReport | generateModelReport
+        | generateBreakingChangesReport | generateRESTDeprecationReport | generateJavaDeprecationReport
+        | generateOpenAPISpec | generateJSONSerializers | enforceCustomTemplateExecution;
   }
 
   private boolean isMessageConstantsGenerationRequested( ) {

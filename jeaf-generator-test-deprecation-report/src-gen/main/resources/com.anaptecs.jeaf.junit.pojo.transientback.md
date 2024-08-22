@@ -1,10 +1,7 @@
-**Types / Enumerations:**
-[TOC levels=2]
-
-<br>
-
 # Package `com.anaptecs.jeaf.junit.pojo.transientback`
 
+**Types / Enumerations:**
+[TOC levels=2]
 
 <br>
 
@@ -15,7 +12,8 @@
 
 <br>
 
-### Properties / Associations
+**Properties / Associations**
+
 | Name | Type | Multiplicity | Constraints | Description |
 |------|------|:------------:|-------------|-------------|
 | `transientMaster` | [`MasterClass`](#masterclass) | `0..1` |  |  |
@@ -30,7 +28,8 @@
 
 <br>
 
-### Properties / Associations
+**Properties / Associations**
+
 | Name | Type | Multiplicity | Constraints | Description |
 |------|------|:------------:|-------------|-------------|
 | `clients` | [`ClientClass`](#clientclass) | `0..*` |  |  |
@@ -45,7 +44,8 @@
 
 <br>
 
-### Properties / Associations
+**Properties / Associations**
+
 | Name | Type | Multiplicity | Constraints | Description |
 |------|------|:------------:|-------------|-------------|
 | `name` | `String` | `1..1` |  |  |
@@ -59,13 +59,15 @@
 
 <br>
 
-### Properties / Associations
+**Properties / Associations**
+
 | Name | Type | Multiplicity | Constraints | Description |
 |------|------|:------------:|-------------|-------------|
 | `name` | `String` | `1..1` |  |  |
 | `clients` | [`ReadOnlyClient`](#readonlyclient) | `0..*` |  |  |
 
 <br>
+
 
 
 

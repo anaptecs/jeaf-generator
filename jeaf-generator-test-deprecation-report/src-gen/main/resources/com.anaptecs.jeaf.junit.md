@@ -1,8 +1,21 @@
+# Package `com.anaptecs.jeaf.junit`
+
 **Types / Enumerations:**
 [TOC levels=2]
 
+
+
 <br>
 
-# Package `com.anaptecs.jeaf.junit`
+# Enumerations
+## MyEnumWithInterface
 
+
+### Literals
+
+| Name | Description |
+|------|-------------|
+| `ONE` |  |
+| `TWO` |  |
+| `MANY` |  |
 

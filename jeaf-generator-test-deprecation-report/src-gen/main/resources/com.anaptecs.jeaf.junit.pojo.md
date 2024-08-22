@@ -1,10 +1,7 @@
-**Types / Enumerations:**
-[TOC levels=2]
-
-<br>
-
 # Package `com.anaptecs.jeaf.junit.pojo`
 
+**Types / Enumerations:**
+[TOC levels=2]
 
 <br>
 
@@ -21,7 +18,8 @@
 
 <br>
 
-### Properties / Associations
+**Properties / Associations**
+
 | Name | Type | Multiplicity | Constraints | Description |
 |------|------|:------------:|-------------|-------------|
 | `abtractAttr` | `java.lang.String` | `1..1` |  |  |
@@ -34,7 +32,8 @@
 
 <br>
 
-### Properties / Associations
+**Properties / Associations**
+
 | Name | Type | Multiplicity | Constraints | Description |
 |------|------|:------------:|-------------|-------------|
 | `readonlyDefault` | `int` | `1..1` |  |  |
@@ -49,12 +48,13 @@
 
 | Type Details | Details         | 
 |--------------|-----------------|
-| Base Class  | `com.anaptecs.jeaf.junit.pojo.BParentPOJO` |
+| Parent Class  | [`BParentPOJO`](#bparentpojo) |
 
 
 <br>
 
-### Properties / Associations
+**Properties / Associations**
+
 | Name | Type | Multiplicity | Constraints | Description |
 |------|------|:------------:|-------------|-------------|
 | `weirdAttribute` | `byte` | `1..1` |  |  |
@@ -68,7 +68,8 @@
 
 <br>
 
-### Properties / Associations
+**Properties / Associations**
+
 | Name | Type | Multiplicity | Constraints | Description |
 |------|------|:------------:|-------------|-------------|
 | `parentAttribute` | `java.lang.String` | `1..1` |  |  |
@@ -81,7 +82,8 @@
 
 <br>
 
-### Properties / Associations
+**Properties / Associations**
+
 | Name | Type | Multiplicity | Constraints | Description |
 |------|------|:------------:|-------------|-------------|
 | `transientB` | [`BidirectionalB`](#bidirectionalb) | `0..1` |  |  |
@@ -97,7 +99,8 @@
 
 <br>
 
-### Properties / Associations
+**Properties / Associations**
+
 | Name | Type | Multiplicity | Constraints | Description |
 |------|------|:------------:|-------------|-------------|
 | `as` | [`BidirectionalA`](#bidirectionala) | `0..*` |  |  |
@@ -113,12 +116,13 @@ This is the first line of the first comment
 
 | Type Details | Details         | 
 |--------------|-----------------|
-| Base Class  | `com.anaptecs.jeaf.junit.pojo.ParentPOJO` |
+| Parent Class  | [`ParentPOJO`](#parentpojo) |
 
 
 <br>
 
-### Properties / Associations
+**Properties / Associations**
+
 | Name | Type | Multiplicity | Constraints | Description |
 |------|------|:------------:|-------------|-------------|
 | `childAttribute` | `java.lang.Integer` | `1..1` | `@NotNull`<br> |  |
@@ -131,7 +135,8 @@ This is the first line of the first comment
 
 <br>
 
-### Properties / Associations
+**Properties / Associations**
+
 | Name | Type | Multiplicity | Constraints | Description |
 |------|------|:------------:|-------------|-------------|
 | `plainPOJOs` | [`PlainPOJO`](#plainpojo) | `0..*` |  |  |
@@ -144,7 +149,8 @@ This is the first line of the first comment
 
 <br>
 
-### Properties / Associations
+**Properties / Associations**
+
 | Name | Type | Multiplicity | Constraints | Description |
 |------|------|:------------:|-------------|-------------|
 | `aBooleanArray` | `boolean` | `0..*` |  |  |
@@ -178,7 +184,8 @@ This is the first line of the first comment
 
 <br>
 
-### Properties / Associations
+**Properties / Associations**
+
 | Name | Type | Multiplicity | Constraints | Description |
 |------|------|:------------:|-------------|-------------|
 | `yetAnotherAttribute` | `boolean` | `1..1` |  |  |
@@ -196,12 +203,13 @@ This is the first line of the first comment
 
 | Type Details | Details         | 
 |--------------|-----------------|
-| Base Class  | `com.anaptecs.jeaf.junit.pojo.ImmutablePOJOParent` |
+| Parent Class  | [`ImmutablePOJOParent`](#immutablepojoparent) |
 
 
 <br>
 
-### Properties / Associations
+**Properties / Associations**
+
 | Name | Type | Multiplicity | Constraints | Description |
 |------|------|:------------:|-------------|-------------|
 | `childAttribute` | `java.lang.String` | `1..1` |  |  |
@@ -215,7 +223,8 @@ This is the first line of the first comment
 
 <br>
 
-### Properties / Associations
+**Properties / Associations**
+
 | Name | Type | Multiplicity | Constraints | Description |
 |------|------|:------------:|-------------|-------------|
 | `name` | `java.lang.String` | `1..1` |  |  |
@@ -230,12 +239,13 @@ This is the first line of the first comment
 
 | Type Details | Details         | 
 |--------------|-----------------|
-| Base Class  | `com.anaptecs.jeaf.junit.pojo.AbstractPOJO` |
+| Parent Class  | [`AbstractPOJO`](#abstractpojo) |
 
 
 <br>
 
-### Properties / Associations
+**Properties / Associations**
+
 | Name | Type | Multiplicity | Constraints | Description |
 |------|------|:------------:|-------------|-------------|
 | `parentAttribute` | `java.lang.String` | `1..1` |  |  |
@@ -250,12 +260,13 @@ This is the first line of the first comment
 
 | Type Details | Details         | 
 |--------------|-----------------|
-| Base Class  | `com.anaptecs.jeaf.junit.pojo.ImmutablePOJOParent` |
+| Parent Class  | [`ImmutablePOJOParent`](#immutablepojoparent) |
 
 
 <br>
 
-### Properties / Associations
+**Properties / Associations**
+
 | Name | Type | Multiplicity | Constraints | Description |
 |------|------|:------------:|-------------|-------------|
 | `writeable` | `java.lang.Integer` | `1..1` |  |  |
@@ -269,7 +280,8 @@ This is the first line of the first comment
 
 <br>
 
-### Properties / Associations
+**Properties / Associations**
+
 | Name | Type | Multiplicity | Constraints | Description |
 |------|------|:------------:|-------------|-------------|
 | `attr` | `java.lang.Double` | `1..1` |  |  |
@@ -284,7 +296,8 @@ This is the first line of the first comment
 
 <br>
 
-### Properties / Associations
+**Properties / Associations**
+
 | Name | Type | Multiplicity | Constraints | Description |
 |------|------|:------------:|-------------|-------------|
 | `attr` | `java.lang.Double` | `1..1` |  |  |
@@ -297,7 +310,8 @@ This is the first line of the first comment
 
 <br>
 
-### Properties / Associations
+**Properties / Associations**
+
 | Name | Type | Multiplicity | Constraints | Description |
 |------|------|:------------:|-------------|-------------|
 | `parentAttribute` | `java.lang.String` | `1..1` |  |  |
@@ -312,7 +326,8 @@ This is the first line of the first comment
 
 <br>
 
-### Properties / Associations
+**Properties / Associations**
+
 | Name | Type | Multiplicity | Constraints | Description |
 |------|------|:------------:|-------------|-------------|
 | `hello` | `java.lang.String` | `1..1` |  |  |
@@ -326,7 +341,8 @@ This is the first line of the first comment
 
 <br>
 
-### Properties / Associations
+**Properties / Associations**
+
 | Name | Type | Multiplicity | Constraints | Description |
 |------|------|:------------:|-------------|-------------|
 | `aBooleanArray` | `boolean` | `0..*` |  |  |
@@ -360,7 +376,8 @@ This is the first line of the first comment
 
 <br>
 
-### Properties / Associations
+**Properties / Associations**
+
 | Name | Type | Multiplicity | Constraints | Description |
 |------|------|:------------:|-------------|-------------|
 | `aBoolean` | `boolean` | `1..1` |  |  |
@@ -394,7 +411,8 @@ This is the first line of the first comment
 
 <br>
 
-### Properties / Associations
+**Properties / Associations**
+
 | Name | Type | Multiplicity | Constraints | Description |
 |------|------|:------------:|-------------|-------------|
 | `readonlyDefault` | `int` | `1..1` |  |  |
@@ -403,4 +421,41 @@ This is the first line of the first comment
 <br>
 
 
+
+
+<br>
+
+# Enumerations
+## EnumWithProperties
+
+
+### Literals
+
+| Name | Description |
+|------|-------------|
+| `CAMPAIGN_DATA_UNIT` |  |
+| `RELATION_KEY_DATA_UNIT` |  |
+| `LITERAL_WITH_DEFAULTS` |  |
+
+## ExtensibleEnumWithProperties
+
+
+### Literals
+
+| Name | Description |
+|------|-------------|
+| `CAMPAIGN_DATA_UNIT` |  |
+| `RELATION_KEY_DATA_UNIT` |  |
+| `UNKNOWN` | Please be aware that this enum is an extensible enum. This means that new literals can be introduced without prior notice. |
+
+## MyType
+
+
+### Literals
+
+| Name | Description |
+|------|-------------|
+| `ALPHA` |  |
+| `BETA` |  |
+| `GAMMA` |  |
 

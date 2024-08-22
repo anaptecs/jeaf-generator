@@ -1,10 +1,7 @@
-**Types / Enumerations:**
-[TOC levels=2]
-
-<br>
-
 # Package `com.anaptecs.jeaf.junit.pojo.softlink`
 
+**Types / Enumerations:**
+[TOC levels=2]
 
 <br>
 
@@ -16,12 +13,13 @@
 
 | Type Details | Details         | 
 |--------------|-----------------|
-| Base Class  | `com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkParent` |
+| Parent Class  | [`SoftLinkParent`](#softlinkparent) |
 
 
 <br>
 
-### Properties / Associations
+**Properties / Associations**
+
 | Name | Type | Multiplicity | Constraints | Description |
 |------|------|:------------:|-------------|-------------|
 
@@ -34,12 +32,13 @@
 
 | Type Details | Details         | 
 |--------------|-----------------|
-| Base Class  | `com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkParent` |
+| Parent Class  | [`SoftLinkParent`](#softlinkparent) |
 
 
 <br>
 
-### Properties / Associations
+**Properties / Associations**
+
 | Name | Type | Multiplicity | Constraints | Description |
 |------|------|:------------:|-------------|-------------|
 | `heyBrother` | [`SoftLinkChildA`](#softlinkchilda) | `0..1` |  |  |
@@ -54,7 +53,8 @@
 
 <br>
 
-### Properties / Associations
+**Properties / Associations**
+
 | Name | Type | Multiplicity | Constraints | Description |
 |------|------|:------------:|-------------|-------------|
 | `partners` | [`SoftLinkPartner`](#softlinkpartner) | `1..*` |  |  |
@@ -69,7 +69,8 @@
 
 <br>
 
-### Properties / Associations
+**Properties / Associations**
+
 | Name | Type | Multiplicity | Constraints | Description |
 |------|------|:------------:|-------------|-------------|
 | `theBackLink` | [`SoftLinkParent`](#softlinkparent) | `0..1` |  |  |
@@ -77,6 +78,7 @@
 | `longLinks` | [`SoftLinkChildA`](#softlinkchilda) | `1..*` |  |  |
 
 <br>
+
 
 
 

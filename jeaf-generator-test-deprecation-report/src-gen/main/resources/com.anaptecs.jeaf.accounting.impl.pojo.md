@@ -1,10 +1,7 @@
-**Types / Enumerations:**
-[TOC levels=2]
-
-<br>
-
 # Package `com.anaptecs.jeaf.accounting.impl.pojo`
 
+**Types / Enumerations:**
+[TOC levels=2]
 
 <br>
 
@@ -15,7 +12,8 @@
 
 <br>
 
-### Properties / Associations
+**Properties / Associations**
+
 | Name | Type | Multiplicity | Constraints | Description |
 |------|------|:------------:|-------------|-------------|
 | `iban` | `int` | `1..1` |  |  |
@@ -31,7 +29,8 @@
 
 <br>
 
-### Properties / Associations
+**Properties / Associations**
+
 | Name | Type | Multiplicity | Constraints | Description |
 |------|------|:------------:|-------------|-------------|
 | `sourceAccount` | [`Account`](#account) | `1..1` |  |  |
@@ -49,12 +48,13 @@
 
 | Type Details | Details         | 
 |--------------|-----------------|
-| Base Class  | `com.anaptecs.jeaf.accounting.impl.pojo.Partner` |
+| Parent Class  | [`Partner`](#partner) |
 
 
 <br>
 
-### Properties / Associations
+**Properties / Associations**
+
 | Name | Type | Multiplicity | Constraints | Description |
 |------|------|:------------:|-------------|-------------|
 | `name` | `java.lang.String` | `1..1` | `@NotBlank`<br> |  |
@@ -76,11 +76,13 @@
 
 <br>
 
-### Properties / Associations
+**Properties / Associations**
+
 | Name | Type | Multiplicity | Constraints | Description |
 |------|------|:------------:|-------------|-------------|
 
 <br>
+
 
 
 
