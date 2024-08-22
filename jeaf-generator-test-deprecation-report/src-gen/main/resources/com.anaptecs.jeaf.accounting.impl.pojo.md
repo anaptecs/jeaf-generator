@@ -1,76 +1,84 @@
+**Types / Enumerations:**
+[TOC levels=2]
+
+<br>
+
 # Package `com.anaptecs.jeaf.accounting.impl.pojo`
 
 
 <br>
 
 # Types
-## `Account`
+## Account
 
-| Info        | Details         | 
-|-------------|-----------------|
-| Description |  |
+
 
 <br>
 
 ### Properties / Associations
-| Name | Multiplicity | Description |
-|------|:------------:|-------------|
-| `iban` | `1..1` |  |
-| `owner` | `1..1` |  |
-| `currency` | `1..1` |  |
-| `allBookings` | `0..*` |  |
+| Name | Type | Multiplicity | Constraints | Description |
+|------|------|:------------:|-------------|-------------|
+| `iban` | `int` | `1..1` |  |  |
+| `owner` | [`Customer`](#customer) | `1..1` |  |  |
+| `currency` | `java.util.Currency` | `1..1` |  |  |
+| `allBookings` | [`Booking`](#booking) | `0..*` |  |  |
 
 <br>
 
-## `Booking`
+## Booking
 
-| Info        | Details         | 
-|-------------|-----------------|
-| Description |  |
+
 
 <br>
 
 ### Properties / Associations
-| Name | Multiplicity | Description |
-|------|:------------:|-------------|
-| `sourceAccount` | `1..1` |  |
-| `targetAccount` | `1..1` |  |
-| `amount` | `1..1` |  |
-| `currency` | `1..1` |  |
-| `executionTimestamp` | `1..1` |  |
+| Name | Type | Multiplicity | Constraints | Description |
+|------|------|:------------:|-------------|-------------|
+| `sourceAccount` | [`Account`](#account) | `1..1` |  |  |
+| `targetAccount` | [`Account`](#account) | `1..1` |  |  |
+| `amount` | `java.math.BigDecimal` | `1..1` |  |  |
+| `currency` | `java.util.Currency` | `1..1` |  |  |
+| `executionTimestamp` | `java.util.Calendar` | `1..1` |  |  |
 
 <br>
 
-## `Customer`
+## Customer
 
-| Info        | Details         | 
-|-------------|-----------------|
+
+<br>
+
+| Type Details | Details         | 
+|--------------|-----------------|
 | Base Class  | `com.anaptecs.jeaf.accounting.impl.pojo.Partner` |
-| Description |  |
+
 
 <br>
 
 ### Properties / Associations
-| Name | Multiplicity | Description |
-|------|:------------:|-------------|
-| `name` | `1..1` |  |
-| `firstName` | `1..1` |  |
-| `email` | `1..1` |  |
-| `accounts` | `0..*` |  |
+| Name | Type | Multiplicity | Constraints | Description |
+|------|------|:------------:|-------------|-------------|
+| `name` | `java.lang.String` | `1..1` | `@NotBlank`<br> |  |
+| `firstName` | `java.lang.String` | `1..1` | `@NotBlank`<br> |  |
+| `email` | `java.lang.String` | `1..1` | `@Email`<br> |  |
+| `accounts` | [`Account`](#account) | `0..*` |  |  |
 
 <br>
 
-## `Partner`
+## Partner
 
-| Info        | Details         | 
-|-------------|-----------------|
-| Description |  |
+
+<br>
+
+| Type Details | Details         | 
+|--------------|-----------------|
+| Abstract | `true` |
+
 
 <br>
 
 ### Properties / Associations
-| Name | Multiplicity | Description |
-|------|:------------:|-------------|
+| Name | Type | Multiplicity | Constraints | Description |
+|------|------|:------------:|-------------|-------------|
 
 <br>
 

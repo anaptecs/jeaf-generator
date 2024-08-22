@@ -1,72 +1,69 @@
+**Types / Enumerations:**
+[TOC levels=2]
+
+<br>
+
 # Package `com.anaptecs.jeaf.junit.pojo.transientback`
 
 
 <br>
 
 # Types
-## `ClientClass`
+## ClientClass
 
-| Info        | Details         | 
-|-------------|-----------------|
-| Description |  |
+
 
 <br>
 
 ### Properties / Associations
-| Name | Multiplicity | Description |
-|------|:------------:|-------------|
-| `transientMaster` | `0..1` |  |
-| `name` | `1..1` |  |
-| `manyMasters` | `0..*` |  |
+| Name | Type | Multiplicity | Constraints | Description |
+|------|------|:------------:|-------------|-------------|
+| `transientMaster` | [`MasterClass`](#masterclass) | `0..1` |  |  |
+| `name` | `String` | `1..1` |  |  |
+| `manyMasters` | [`MasterClass`](#masterclass) | `0..*` |  |  |
 
 <br>
 
-## `MasterClass`
+## MasterClass
 
-| Info        | Details         | 
-|-------------|-----------------|
-| Description |  |
 
-<br>
-
-### Properties / Associations
-| Name | Multiplicity | Description |
-|------|:------------:|-------------|
-| `clients` | `0..*` |  |
-| `name` | `1..1` |  |
-| `singleClient` | `0..1` |  |
-
-<br>
-
-## `ReadOnlyClient`
-
-| Info        | Details         | 
-|-------------|-----------------|
-| Description |  |
 
 <br>
 
 ### Properties / Associations
-| Name | Multiplicity | Description |
-|------|:------------:|-------------|
-| `name` | `1..1` |  |
-| `transientMaster` | `0..1` |  |
+| Name | Type | Multiplicity | Constraints | Description |
+|------|------|:------------:|-------------|-------------|
+| `clients` | [`ClientClass`](#clientclass) | `0..*` |  |  |
+| `name` | `String` | `1..1` |  |  |
+| `singleClient` | [`ClientClass`](#clientclass) | `0..1` |  |  |
 
 <br>
 
-## `ReadOnlyMaster`
+## ReadOnlyClient
 
-| Info        | Details         | 
-|-------------|-----------------|
-| Description |  |
+
 
 <br>
 
 ### Properties / Associations
-| Name | Multiplicity | Description |
-|------|:------------:|-------------|
-| `name` | `1..1` |  |
-| `clients` | `0..*` |  |
+| Name | Type | Multiplicity | Constraints | Description |
+|------|------|:------------:|-------------|-------------|
+| `name` | `String` | `1..1` |  |  |
+| `transientMaster` | [`ReadOnlyMaster`](#readonlymaster) | `0..1` |  |  |
+
+<br>
+
+## ReadOnlyMaster
+
+
+
+<br>
+
+### Properties / Associations
+| Name | Type | Multiplicity | Constraints | Description |
+|------|------|:------------:|-------------|-------------|
+| `name` | `String` | `1..1` |  |  |
+| `clients` | [`ReadOnlyClient`](#readonlyclient) | `0..*` |  |  |
 
 <br>
 

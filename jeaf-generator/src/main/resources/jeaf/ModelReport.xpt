@@ -5,12 +5,9 @@
 «EXTENSION functions::Javadoc»
 «EXTENSION functions::Alias»
 «EXTENSION functions::NamedElement»
-
+«EXTENSION functions::Validation»
 
 «EXTENSION org::openarchitectureware::util::stdlib::io»
-
-«EXTENSION java::GeneratorCommons»
-
 
 «DEFINE ModelReport FOR Model»
     «EXPAND PackageReport FOREACH this.getAllPAckagesForModelReport()»
@@ -53,10 +50,10 @@
 <br>
 
 ### Properties / Associations
-| Name | Type | Multiplicity | Description |
-|------|------|:------------:|-------------|
+| Name | Type | Multiplicity | Constraints | Description |
+|------|------|:------------:|-------------|-------------|
 «FOREACH pojo.ownedAttribute AS attr-»
-| `«attr.name»` | `«attr.type.qualifiedName()»` | `«attr.lower»..«IF attr.isMultivalued()»*«ELSE»1«ENDIF»` | «attr.getMarkdownCommentForTable()» |
+| `«attr.name»` | «attr.getPropertyTypeLink()» | `«attr.lower»..«IF attr.isMultivalued()»*«ELSE»1«ENDIF»` | «IF attr.getValidationStereotypes().isEmpty == false»«FOREACH attr.getValidationStereotypes() AS stereo SEPARATOR "<br>"»`«attr.getValidationStereotyeAndValue(stereo)»`«ENDFOREACH»<br>«ENDIF» | «attr.getMarkdownCommentForTable()» |
 «ENDFOREACH-»
 
 <br>

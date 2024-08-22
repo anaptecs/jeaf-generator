@@ -15,6 +15,12 @@ cached uml::Property asProperty(uml::Element element):
     
 boolean isTransient(uml::Property property):
   property.isStereotypeApplied("Transient") || property.isStereotypeApplied("CompositeDataTypePublicField");
+  
+boolean isPrimitiveType(uml::Type type) :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.isPrimitive(org.eclipse.uml2.uml.Type);
+
+boolean isBasicType(uml::Type type):
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.isBasicType(org.eclipse.uml2.uml.Type);
 
 cached boolean belongsToBidirectionalAssociation(uml::Property property):
     property.association != null && property.association.getAllAttributes().select(e|e.isNavigable()).size > 1;
@@ -41,4 +47,6 @@ cached boolean checkForOrphanedOpenAPITypes(Property property):
     if property.type.isBasicOpenAPIType() || property.type == null
     then true
     else property.getReferencedOpenAPISpecification() != null;
+    
+    
     

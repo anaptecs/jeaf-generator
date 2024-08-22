@@ -1,5 +1,8 @@
 extension java::GeneratorCommons;
+extension java::Naming;
+
 extension functions::NamedElement;
+extension functions::Property;
 
 cached List[uml::NamedElement] getAllElementsForTypesReport(uml::Package package):
     package.allOwnedElements().typeSelect(uml::NamedElement).select(e|e.isInGeneratorWhitelist()).select(e|e.hasStereotypeForTypesReport());
@@ -21,5 +24,11 @@ cached List[JMM::JEAFEnumeration] getAllEnums(uml::Package package):
     
 cached List[uml::Package] getAllPAckagesForModelReport(uml::Package package):
     package.allOwnedElements().typeSelect(uml::Package).select(e|e.isInGeneratorWhitelist() && (e.getAllPOJOs().isEmpty == false || e.getAllEnums().isEmpty == false));
-    
-    
+
+cached String getPropertyTypeLink(uml::Property property):
+    if property.type.isInGeneratorWhitelist() == false
+    then "`" + property.type.qualifiedName() + "`"
+    else 
+        if property.owner.getNearestPackage() == property.type.getNearestPackage()
+        then "[`" + property.type.name + "`](#" + property.type.name.toLowerCase() + ")"
+        else "[`" + property.type.name + "`](" + property.type.getNearestPackage().qualifiedName() + ".html#" + property.type.name.toLowerCase() + ")";

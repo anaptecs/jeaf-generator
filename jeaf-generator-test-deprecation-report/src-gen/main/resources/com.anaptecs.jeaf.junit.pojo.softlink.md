@@ -1,73 +1,80 @@
+**Types / Enumerations:**
+[TOC levels=2]
+
+<br>
+
 # Package `com.anaptecs.jeaf.junit.pojo.softlink`
 
 
 <br>
 
 # Types
-## `SoftLinkChildA`
+## SoftLinkChildA
 
-| Info        | Details         | 
-|-------------|-----------------|
+
+<br>
+
+| Type Details | Details         | 
+|--------------|-----------------|
 | Base Class  | `com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkParent` |
-| Description |  |
+
 
 <br>
 
 ### Properties / Associations
-| Name | Multiplicity | Description |
-|------|:------------:|-------------|
+| Name | Type | Multiplicity | Constraints | Description |
+|------|------|:------------:|-------------|-------------|
 
 <br>
 
-## `SoftLinkChildB`
+## SoftLinkChildB
 
-| Info        | Details         | 
-|-------------|-----------------|
+
+<br>
+
+| Type Details | Details         | 
+|--------------|-----------------|
 | Base Class  | `com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkParent` |
-| Description |  |
+
 
 <br>
 
 ### Properties / Associations
-| Name | Multiplicity | Description |
-|------|:------------:|-------------|
-| `heyBrother` | `0..1` |  |
-| `softLinkPartners` | `0..*` |  |
-| `oneLink` | `1..1` |  |
+| Name | Type | Multiplicity | Constraints | Description |
+|------|------|:------------:|-------------|-------------|
+| `heyBrother` | [`SoftLinkChildA`](#softlinkchilda) | `0..1` |  |  |
+| `softLinkPartners` | [`SoftLinkPartner`](#softlinkpartner) | `0..*` |  |  |
+| `oneLink` | [`SoftLinkPartner`](#softlinkpartner) | `1..1` |  |  |
 
 <br>
 
-## `SoftLinkParent`
+## SoftLinkParent
 
-| Info        | Details         | 
-|-------------|-----------------|
-| Description |  |
 
-<br>
-
-### Properties / Associations
-| Name | Multiplicity | Description |
-|------|:------------:|-------------|
-| `partners` | `1..*` |  |
-| `thePartner` | `1..1` |  |
-| `readonlyPartner` | `0..1` |  |
-
-<br>
-
-## `SoftLinkPartner`
-
-| Info        | Details         | 
-|-------------|-----------------|
-| Description |  |
 
 <br>
 
 ### Properties / Associations
-| Name | Multiplicity | Description |
-|------|:------------:|-------------|
-| `theBackLink` | `0..1` |  |
-| `childLinks` | `0..*` |  |
-| `longLinks` | `1..*` |  |
+| Name | Type | Multiplicity | Constraints | Description |
+|------|------|:------------:|-------------|-------------|
+| `partners` | [`SoftLinkPartner`](#softlinkpartner) | `1..*` |  |  |
+| `thePartner` | [`SoftLinkPartner`](#softlinkpartner) | `1..1` |  |  |
+| `readonlyPartner` | [`SoftLinkPartner`](#softlinkpartner) | `0..1` |  |  |
+
+<br>
+
+## SoftLinkPartner
+
+
+
+<br>
+
+### Properties / Associations
+| Name | Type | Multiplicity | Constraints | Description |
+|------|------|:------------:|-------------|-------------|
+| `theBackLink` | [`SoftLinkParent`](#softlinkparent) | `0..1` |  |  |
+| `childLinks` | [`SoftLinkChildA`](#softlinkchilda) | `0..*` |  |  |
+| `longLinks` | [`SoftLinkChildA`](#softlinkchilda) | `1..*` |  |  |
 
 <br>
 

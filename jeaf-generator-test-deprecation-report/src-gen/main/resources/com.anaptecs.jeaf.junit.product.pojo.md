@@ -1,73 +1,70 @@
+**Types / Enumerations:**
+[TOC levels=2]
+
+<br>
+
 # Package `com.anaptecs.jeaf.junit.product.pojo`
 
 
 <br>
 
 # Types
-## `Assortment`
+## Assortment
 
-| Info        | Details         | 
-|-------------|-----------------|
-| Description |  |
+
 
 <br>
 
 ### Properties / Associations
-| Name | Multiplicity | Description |
-|------|:------------:|-------------|
-| `products` | `0..*` |  |
-| `name` | `1..1` |  |
+| Name | Type | Multiplicity | Constraints | Description |
+|------|------|:------------:|-------------|-------------|
+| `products` | [`Product`](#product) | `0..*` |  |  |
+| `name` | `String` | `1..1` |  |  |
 
 <br>
 
-## `Price`
+## Price
 
-| Info        | Details         | 
-|-------------|-----------------|
-| Description |  |
 
-<br>
-
-### Properties / Associations
-| Name | Multiplicity | Description |
-|------|:------------:|-------------|
-| `amount` | `1..1` |  |
-| `currency` | `1..1` |  |
-
-<br>
-
-## `Product`
-
-| Info        | Details         | 
-|-------------|-----------------|
-| Description |  |
 
 <br>
 
 ### Properties / Associations
-| Name | Multiplicity | Description |
-|------|:------------:|-------------|
-| `assortments` | `0..*` |  |
-| `pricesPerCurrency` | `1..*` |  |
-| `name` | `1..1` |  |
-| `description` | `1..1` |  |
-| `vat` | `1..1` |  |
-| `productCategory` | `0..1` |  |
+| Name | Type | Multiplicity | Constraints | Description |
+|------|------|:------------:|-------------|-------------|
+| `amount` | `java.math.BigDecimal` | `1..1` |  |  |
+| `currency` | `java.util.Currency` | `1..1` |  |  |
 
 <br>
 
-## `VAT`
+## Product
 
-| Info        | Details         | 
-|-------------|-----------------|
-| Description |  |
+
 
 <br>
 
 ### Properties / Associations
-| Name | Multiplicity | Description |
-|------|:------------:|-------------|
-| `rate` | `1..1` |  |
+| Name | Type | Multiplicity | Constraints | Description |
+|------|------|:------------:|-------------|-------------|
+| `assortments` | [`Assortment`](#assortment) | `0..*` |  |  |
+| `pricesPerCurrency` | [`Price`](#price) | `1..*` |  |  |
+| `name` | `String` | `1..1` |  |  |
+| `description` | `String` | `1..1` |  |  |
+| `vat` | [`VAT`](#vat) | `1..1` |  |  |
+| `productCategory` | [`ProductCategory`](com.anaptecs.jeaf.junit.product.html#productcategory) | `0..1` |  |  |
+
+<br>
+
+## VAT
+
+
+
+<br>
+
+### Properties / Associations
+| Name | Type | Multiplicity | Constraints | Description |
+|------|------|:------------:|-------------|-------------|
+| `rate` | `double` | `1..1` |  |  |
 
 <br>
 

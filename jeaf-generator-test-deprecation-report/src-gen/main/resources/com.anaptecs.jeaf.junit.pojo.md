@@ -1,409 +1,404 @@
+**Types / Enumerations:**
+[TOC levels=2]
+
+<br>
+
 # Package `com.anaptecs.jeaf.junit.pojo`
 
 
 <br>
 
 # Types
-## `AbstractPOJO`
+## AbstractPOJO
 
-| Info        | Details         | 
-|-------------|-----------------|
-| Description |  |
+
+<br>
+
+| Type Details | Details         | 
+|--------------|-----------------|
+| Abstract | `true` |
+
 
 <br>
 
 ### Properties / Associations
-| Name | Multiplicity | Description |
-|------|:------------:|-------------|
-| `abtractAttr` | `1..1` |  |
+| Name | Type | Multiplicity | Constraints | Description |
+|------|------|:------------:|-------------|-------------|
+| `abtractAttr` | `java.lang.String` | `1..1` |  |  |
 
 <br>
 
-## `AdvancedPOJO`
+## AdvancedPOJO
 
-| Info        | Details         | 
-|-------------|-----------------|
-| Description |  |
+
 
 <br>
 
 ### Properties / Associations
-| Name | Multiplicity | Description |
-|------|:------------:|-------------|
-| `readonlyDefault` | `1..1` |  |
-| `intWithDefault` | `1..1` |  |
+| Name | Type | Multiplicity | Constraints | Description |
+|------|------|:------------:|-------------|-------------|
+| `readonlyDefault` | `int` | `1..1` |  |  |
+| `intWithDefault` | `java.lang.Integer` | `1..1` |  |  |
 
 <br>
 
-## `BChildPOJO`
+## BChildPOJO
 
-| Info        | Details         | 
-|-------------|-----------------|
+
+<br>
+
+| Type Details | Details         | 
+|--------------|-----------------|
 | Base Class  | `com.anaptecs.jeaf.junit.pojo.BParentPOJO` |
-| Description |  |
+
 
 <br>
 
 ### Properties / Associations
-| Name | Multiplicity | Description |
-|------|:------------:|-------------|
-| `weirdAttribute` | `1..1` |  |
-| `childAttribute` | `1..1` |  |
+| Name | Type | Multiplicity | Constraints | Description |
+|------|------|:------------:|-------------|-------------|
+| `weirdAttribute` | `byte` | `1..1` |  |  |
+| `childAttribute` | `java.lang.Integer` | `1..1` |  |  |
 
 <br>
 
-## `BParentPOJO`
+## BParentPOJO
 
-| Info        | Details         | 
-|-------------|-----------------|
-| Description |  |
 
-<br>
-
-### Properties / Associations
-| Name | Multiplicity | Description |
-|------|:------------:|-------------|
-| `parentAttribute` | `1..1` |  |
-
-<br>
-
-## `BidirectionalA`
-
-| Info        | Details         | 
-|-------------|-----------------|
-| Description |  |
 
 <br>
 
 ### Properties / Associations
-| Name | Multiplicity | Description |
-|------|:------------:|-------------|
-| `transientB` | `0..1` |  |
-| `transientParent` | `0..1` |  |
-| `child` | `0..1` |  |
-| `transientBs` | `0..*` |  |
+| Name | Type | Multiplicity | Constraints | Description |
+|------|------|:------------:|-------------|-------------|
+| `parentAttribute` | `java.lang.String` | `1..1` |  |  |
 
 <br>
 
-## `BidirectionalB`
+## BidirectionalA
 
-| Info        | Details         | 
-|-------------|-----------------|
-| Description |  |
+
 
 <br>
 
 ### Properties / Associations
-| Name | Multiplicity | Description |
-|------|:------------:|-------------|
-| `as` | `0..*` |  |
-| `theAs` | `0..*` |  |
+| Name | Type | Multiplicity | Constraints | Description |
+|------|------|:------------:|-------------|-------------|
+| `transientB` | [`BidirectionalB`](#bidirectionalb) | `0..1` |  |  |
+| `transientParent` | [`BidirectionalA`](#bidirectionala) | `0..1` |  |  |
+| `child` | [`BidirectionalA`](#bidirectionala) | `0..1` |  |  |
+| `transientBs` | [`BidirectionalB`](#bidirectionalb) | `0..*` |  |  |
 
 <br>
 
-## `ChildPOJO`
+## BidirectionalB
 
-| Info        | Details         | 
-|-------------|-----------------|
+
+
+<br>
+
+### Properties / Associations
+| Name | Type | Multiplicity | Constraints | Description |
+|------|------|:------------:|-------------|-------------|
+| `as` | [`BidirectionalA`](#bidirectionala) | `0..*` |  |  |
+| `theAs` | [`BidirectionalA`](#bidirectionala) | `0..*` |  |  |
+
+<br>
+
+## ChildPOJO
+This is the first line of the first comment
+2nd line
+
+<br>
+
+| Type Details | Details         | 
+|--------------|-----------------|
 | Base Class  | `com.anaptecs.jeaf.junit.pojo.ParentPOJO` |
-| Description | This is the first line of the first comment<br>2nd line |
+
 
 <br>
 
 ### Properties / Associations
-| Name | Multiplicity | Description |
-|------|:------------:|-------------|
-| `childAttribute` | `1..1` |  |
+| Name | Type | Multiplicity | Constraints | Description |
+|------|------|:------------:|-------------|-------------|
+| `childAttribute` | `java.lang.Integer` | `1..1` | `@NotNull`<br> |  |
 
 <br>
 
-## `ComplextTypeArrayPOJO`
+## ComplextTypeArrayPOJO
 
-| Info        | Details         | 
-|-------------|-----------------|
-| Description |  |
 
-<br>
-
-### Properties / Associations
-| Name | Multiplicity | Description |
-|------|:------------:|-------------|
-| `plainPOJOs` | `0..*` |  |
-
-<br>
-
-## `CustomPrimitiveArraysObjectWithRestrictions`
-
-| Info        | Details         | 
-|-------------|-----------------|
-| Description |  |
 
 <br>
 
 ### Properties / Associations
-| Name | Multiplicity | Description |
-|------|:------------:|-------------|
-| `aBooleanArray` | `0..*` |  |
-| `bBooleanArray` | `0..*` |  |
-| `cBooleanArray` | `0..*` |  |
-| `aByteArray` | `0..*` |  |
-| `bByteArray` | `0..*` |  |
-| `aShortArray` | `0..*` |  |
-| `bShortArray` | `0..*` |  |
-| `aIntegerArray` | `0..*` |  |
-| `bIntegerArray` | `0..*` |  |
-| `cIntegerArray` | `0..*` |  |
-| `aLongArray` | `0..*` |  |
-| `bLongArray` | `0..*` |  |
-| `aBigIntegerArray` | `0..*` |  |
-| `aCharacterArray` | `0..*` |  |
-| `bCharacterArray` | `0..*` |  |
-| `aFloatArray` | `0..*` |  |
-| `bFloatArray` | `0..*` |  |
-| `aDoubleArray` | `0..*` |  |
-| `bDoubleArray` | `0..*` |  |
-| `aBigDecimalArray` | `0..*` |  |
-| `aStringArray` | `0..*` |  |
-| `bStringArray` | `0..*` |  |
+| Name | Type | Multiplicity | Constraints | Description |
+|------|------|:------------:|-------------|-------------|
+| `plainPOJOs` | [`PlainPOJO`](#plainpojo) | `0..*` |  |  |
 
 <br>
 
-## `ImmutableAssociationPOJO`
+## CustomPrimitiveArraysObjectWithRestrictions
 
-| Info        | Details         | 
-|-------------|-----------------|
-| Description |  |
+
 
 <br>
 
 ### Properties / Associations
-| Name | Multiplicity | Description |
-|------|:------------:|-------------|
-| `yetAnotherAttribute` | `1..1` |  |
-| `readonlyAssociation` | `0..*` |  |
-| `immutableChildPOJO` | `0..1` |  |
-| `deprecatedRefs` | `0..*` |  |
-| `deprecatedRef` | `0..1` |  |
+| Name | Type | Multiplicity | Constraints | Description |
+|------|------|:------------:|-------------|-------------|
+| `aBooleanArray` | `boolean` | `0..*` |  |  |
+| `bBooleanArray` | `java.lang.Boolean` | `0..*` |  |  |
+| `cBooleanArray` | `boolean` | `0..*` |  |  |
+| `aByteArray` | `byte` | `0..*` | `@Size(min=0, max=32768)`<br> |  |
+| `bByteArray` | `java.lang.Byte` | `0..*` |  |  |
+| `aShortArray` | `short` | `0..*` |  |  |
+| `bShortArray` | `java.lang.Short` | `0..*` |  |  |
+| `aIntegerArray` | `int` | `0..*` |  |  |
+| `bIntegerArray` | `java.lang.Integer` | `0..*` |  |  |
+| `cIntegerArray` | `Integer` | `0..*` |  |  |
+| `aLongArray` | `long` | `0..*` | `@NotEmpty`<br> |  |
+| `bLongArray` | `java.lang.Long` | `0..*` |  |  |
+| `aBigIntegerArray` | `java.math.BigInteger` | `0..*` |  |  |
+| `aCharacterArray` | `char` | `0..*` |  |  |
+| `bCharacterArray` | `java.lang.Character` | `0..*` |  |  |
+| `aFloatArray` | `float` | `0..*` |  |  |
+| `bFloatArray` | `java.lang.Float` | `0..*` |  |  |
+| `aDoubleArray` | `double` | `0..*` | `@Size(min=4, max=12)`<br> |  |
+| `bDoubleArray` | `java.lang.Double` | `0..*` |  |  |
+| `aBigDecimalArray` | `java.math.BigDecimal` | `0..*` |  |  |
+| `aStringArray` | `String` | `0..*` |  |  |
+| `bStringArray` | `String` | `0..*` |  |  |
 
 <br>
 
-## `ImmutableChildPOJO`
+## ImmutableAssociationPOJO
 
-| Info        | Details         | 
-|-------------|-----------------|
+
+
+<br>
+
+### Properties / Associations
+| Name | Type | Multiplicity | Constraints | Description |
+|------|------|:------------:|-------------|-------------|
+| `yetAnotherAttribute` | `boolean` | `1..1` |  |  |
+| `readonlyAssociation` | [`ImmutablePOJO`](#immutablepojo) | `0..*` |  |  |
+| `immutableChildPOJO` | [`ImmutableChildPOJO`](#immutablechildpojo) | `0..1` |  |  |
+| `deprecatedRefs` | [`ImmutableChildPOJO`](#immutablechildpojo) | `0..*` |  |  |
+| `deprecatedRef` | [`ChildPOJO`](#childpojo) | `0..1` |  |  |
+
+<br>
+
+## ImmutableChildPOJO
+
+
+<br>
+
+| Type Details | Details         | 
+|--------------|-----------------|
 | Base Class  | `com.anaptecs.jeaf.junit.pojo.ImmutablePOJOParent` |
-| Description |  |
+
 
 <br>
 
 ### Properties / Associations
-| Name | Multiplicity | Description |
-|------|:------------:|-------------|
-| `childAttribute` | `1..1` |  |
-| `anotherChildAttribute` | `1..1` |  |
+| Name | Type | Multiplicity | Constraints | Description |
+|------|------|:------------:|-------------|-------------|
+| `childAttribute` | `java.lang.String` | `1..1` |  |  |
+| `anotherChildAttribute` | `java.lang.Double` | `1..1` |  |  |
 
 <br>
 
-## `ImmutablePOJO`
+## ImmutablePOJO
 
-| Info        | Details         | 
-|-------------|-----------------|
-| Description |  |
+
 
 <br>
 
 ### Properties / Associations
-| Name | Multiplicity | Description |
-|------|:------------:|-------------|
-| `name` | `1..1` |  |
-| `something` | `1..1` |  |
+| Name | Type | Multiplicity | Constraints | Description |
+|------|------|:------------:|-------------|-------------|
+| `name` | `java.lang.String` | `1..1` |  |  |
+| `something` | `java.lang.Integer` | `1..1` |  |  |
 
 <br>
 
-## `ImmutablePOJOParent`
+## ImmutablePOJOParent
 
-| Info        | Details         | 
-|-------------|-----------------|
+
+<br>
+
+| Type Details | Details         | 
+|--------------|-----------------|
 | Base Class  | `com.anaptecs.jeaf.junit.pojo.AbstractPOJO` |
-| Description |  |
+
 
 <br>
 
 ### Properties / Associations
-| Name | Multiplicity | Description |
-|------|:------------:|-------------|
-| `parentAttribute` | `1..1` |  |
-| `anotherParentAttribute` | `1..1` |  |
+| Name | Type | Multiplicity | Constraints | Description |
+|------|------|:------------:|-------------|-------------|
+| `parentAttribute` | `java.lang.String` | `1..1` |  |  |
+| `anotherParentAttribute` | `java.lang.Integer` | `1..1` |  |  |
 
 <br>
 
-## `MutableChildPOJO`
+## MutableChildPOJO
 
-| Info        | Details         | 
-|-------------|-----------------|
+
+<br>
+
+| Type Details | Details         | 
+|--------------|-----------------|
 | Base Class  | `com.anaptecs.jeaf.junit.pojo.ImmutablePOJOParent` |
-| Description |  |
+
 
 <br>
 
 ### Properties / Associations
-| Name | Multiplicity | Description |
-|------|:------------:|-------------|
-| `writeable` | `1..1` |  |
-| `booleanDefault` | `1..1` |  |
+| Name | Type | Multiplicity | Constraints | Description |
+|------|------|:------------:|-------------|-------------|
+| `writeable` | `java.lang.Integer` | `1..1` |  |  |
+| `booleanDefault` | `java.lang.Boolean` | `1..1` |  |  |
 
 <br>
 
-## `POJOWithID`
+## POJOWithID
 
-| Info        | Details         | 
-|-------------|-----------------|
-| Description |  |
 
-<br>
-
-### Properties / Associations
-| Name | Multiplicity | Description |
-|------|:------------:|-------------|
-| `attr` | `1..1` |  |
-| `name` | `1..1` |  |
-| `integerWithDefault` | `1..1` |  |
-
-<br>
-
-## `POJOWithIDnMethod`
-
-| Info        | Details         | 
-|-------------|-----------------|
-| Description |  |
 
 <br>
 
 ### Properties / Associations
-| Name | Multiplicity | Description |
-|------|:------------:|-------------|
-| `attr` | `1..1` |  |
+| Name | Type | Multiplicity | Constraints | Description |
+|------|------|:------------:|-------------|-------------|
+| `attr` | `java.lang.Double` | `1..1` |  |  |
+| `name` | `java.lang.String` | `1..1` |  |  |
+| `integerWithDefault` | `java.lang.Integer` | `1..1` |  |  |
 
 <br>
 
-## `ParentPOJO`
+## POJOWithIDnMethod
 
-| Info        | Details         | 
-|-------------|-----------------|
-| Description |  |
 
-<br>
-
-### Properties / Associations
-| Name | Multiplicity | Description |
-|------|:------------:|-------------|
-| `parentAttribute` | `1..1` |  |
-| `weirdAttribute` | `1..1` |  |
-| `hello` | `1..1` |  |
-
-<br>
-
-## `PlainPOJO`
-
-| Info        | Details         | 
-|-------------|-----------------|
-| Description |  |
 
 <br>
 
 ### Properties / Associations
-| Name | Multiplicity | Description |
-|------|:------------:|-------------|
-| `hello` | `1..1` |  |
-| `world` | `1..1` |  |
+| Name | Type | Multiplicity | Constraints | Description |
+|------|------|:------------:|-------------|-------------|
+| `attr` | `java.lang.Double` | `1..1` |  |  |
 
 <br>
 
-## `PrimitiveArraysObjectWithRestrictions`
+## ParentPOJO
 
-| Info        | Details         | 
-|-------------|-----------------|
-| Description |  |
+
 
 <br>
 
 ### Properties / Associations
-| Name | Multiplicity | Description |
-|------|:------------:|-------------|
-| `aBooleanArray` | `0..*` |  |
-| `bBooleanArray` | `0..*` |  |
-| `cBooleanArray` | `0..*` |  |
-| `aByteArray` | `0..*` |  |
-| `bByteArray` | `0..*` |  |
-| `aShortArray` | `0..*` |  |
-| `bShortArray` | `0..*` |  |
-| `aIntegerArray` | `0..*` |  |
-| `bIntegerArray` | `0..*` |  |
-| `cIntegerArray` | `0..*` |  |
-| `aLongArray` | `0..*` |  |
-| `bLongArray` | `0..*` |  |
-| `aBigIntegerArray` | `0..*` |  |
-| `aCharacterArray` | `0..*` |  |
-| `bCharacterArray` | `0..*` |  |
-| `aFloatArray` | `0..*` |  |
-| `bFloatArray` | `0..*` |  |
-| `aDoubleArray` | `0..*` |  |
-| `bDoubleArray` | `0..*` |  |
-| `aBigDecimalArray` | `0..*` |  |
-| `aStringArray` | `0..*` |  |
-| `bStringArray` | `0..*` |  |
+| Name | Type | Multiplicity | Constraints | Description |
+|------|------|:------------:|-------------|-------------|
+| `parentAttribute` | `java.lang.String` | `1..1` |  |  |
+| `weirdAttribute` | `byte` | `1..1` |  |  |
+| `hello` | `String` | `1..1` |  |  |
 
 <br>
 
-## `PrimitiveObjectWithRestrictions`
+## PlainPOJO
 
-| Info        | Details         | 
-|-------------|-----------------|
-| Description |  |
+
 
 <br>
 
 ### Properties / Associations
-| Name | Multiplicity | Description |
-|------|:------------:|-------------|
-| `aBoolean` | `1..1` |  |
-| `bBoolean` | `1..1` |  |
-| `cBoolean` | `1..1` |  |
-| `aByte` | `1..1` |  |
-| `bByte` | `1..1` |  |
-| `aShort` | `1..1` |  |
-| `bShort` | `1..1` |  |
-| `aInteger` | `1..1` |  |
-| `bInteger` | `1..1` |  |
-| `cInteger` | `1..1` |  |
-| `aLong` | `1..1` |  |
-| `bLong` | `1..1` |  |
-| `aBigInteger` | `1..1` |  |
-| `aCharacter` | `1..1` |  |
-| `bCharacter` | `1..1` |  |
-| `aFloat` | `1..1` |  |
-| `bFloat` | `1..1` |  |
-| `aDouble` | `1..1` |  |
-| `bDouble` | `1..1` |  |
-| `aBigDecimal` | `1..1` |  |
-| `aString` | `1..1` |  |
-| `bString` | `1..1` |  |
+| Name | Type | Multiplicity | Constraints | Description |
+|------|------|:------------:|-------------|-------------|
+| `hello` | `java.lang.String` | `1..1` |  |  |
+| `world` | `java.lang.Integer` | `1..1` | `@PositiveOrZero`<br> |  |
 
 <br>
 
-## `ReadonlyDefaultPOJO`
+## PrimitiveArraysObjectWithRestrictions
 
-| Info        | Details         | 
-|-------------|-----------------|
-| Description |  |
+
 
 <br>
 
 ### Properties / Associations
-| Name | Multiplicity | Description |
-|------|:------------:|-------------|
-| `readonlyDefault` | `1..1` |  |
-| `booleanDefault` | `1..1` |  |
+| Name | Type | Multiplicity | Constraints | Description |
+|------|------|:------------:|-------------|-------------|
+| `aBooleanArray` | `boolean` | `0..*` |  |  |
+| `bBooleanArray` | `java.lang.Boolean` | `0..*` |  |  |
+| `cBooleanArray` | `boolean` | `0..*` |  |  |
+| `aByteArray` | `byte` | `0..*` | `@Size(min=0, max=32768)`<br> |  |
+| `bByteArray` | `java.lang.Byte` | `0..*` |  |  |
+| `aShortArray` | `short` | `0..*` |  |  |
+| `bShortArray` | `java.lang.Short` | `0..*` |  |  |
+| `aIntegerArray` | `int` | `0..*` |  |  |
+| `bIntegerArray` | `java.lang.Integer` | `0..*` |  |  |
+| `cIntegerArray` | `Integer` | `0..*` |  |  |
+| `aLongArray` | `long` | `0..*` | `@NotEmpty`<br> |  |
+| `bLongArray` | `java.lang.Long` | `0..*` |  |  |
+| `aBigIntegerArray` | `java.math.BigInteger` | `0..*` |  |  |
+| `aCharacterArray` | `char` | `0..*` |  |  |
+| `bCharacterArray` | `java.lang.Character` | `0..*` |  |  |
+| `aFloatArray` | `float` | `0..*` |  |  |
+| `bFloatArray` | `java.lang.Float` | `0..*` |  |  |
+| `aDoubleArray` | `double` | `0..*` | `@Size(min=4, max=12)`<br> |  |
+| `bDoubleArray` | `java.lang.Double` | `0..*` |  |  |
+| `aBigDecimalArray` | `java.math.BigDecimal` | `0..*` |  |  |
+| `aStringArray` | `String` | `0..*` |  |  |
+| `bStringArray` | `String` | `0..*` |  |  |
+
+<br>
+
+## PrimitiveObjectWithRestrictions
+
+
+
+<br>
+
+### Properties / Associations
+| Name | Type | Multiplicity | Constraints | Description |
+|------|------|:------------:|-------------|-------------|
+| `aBoolean` | `boolean` | `1..1` |  |  |
+| `bBoolean` | `java.lang.Boolean` | `1..1` |  |  |
+| `cBoolean` | `boolean` | `1..1` |  |  |
+| `aByte` | `byte` | `1..1` | `@Negative`<br> |  |
+| `bByte` | `java.lang.Byte` | `1..1` | `@NegativeOrZero`<br> |  |
+| `aShort` | `short` | `1..1` | `@Min(minValue=-237)`<br> |  |
+| `bShort` | `java.lang.Short` | `1..1` | `@Positive`<br> |  |
+| `aInteger` | `int` | `1..1` | `@PositiveOrZero`<br> |  |
+| `bInteger` | `java.lang.Integer` | `1..1` | `@Min(minValue=4711)`<br> |  |
+| `cInteger` | `Integer` | `1..1` | `@Min(minValue=100)`<br>`@Max(maxValue=1000)`<br> |  |
+| `aLong` | `long` | `1..1` |  |  |
+| `bLong` | `java.lang.Long` | `1..1` | `@DecimalMax(maxValue=299792458, inclusive=false)`<br> |  |
+| `aBigInteger` | `java.math.BigInteger` | `1..1` | `@DecimalMax(maxValue=3.14159265359, inclusive=true)`<br>`@DecimalMin(minValue=-3.14159265359, inclusive=true)`<br> |  |
+| `aCharacter` | `char` | `1..1` |  |  |
+| `bCharacter` | `java.lang.Character` | `1..1` |  |  |
+| `aFloat` | `float` | `1..1` |  |  |
+| `bFloat` | `java.lang.Float` | `1..1` |  |  |
+| `aDouble` | `double` | `1..1` |  |  |
+| `bDouble` | `java.lang.Double` | `1..1` |  |  |
+| `aBigDecimal` | `java.math.BigDecimal` | `1..1` | `@DecimalMin(minValue=4711.0815, inclusive=true)`<br> |  |
+| `aString` | `String` | `1..1` | `@Size(min=8, max=32)`<br> |  |
+| `bString` | `String` | `1..1` | `@NotEmpty`<br>`@Size(min=0, max=128)`<br> |  |
+
+<br>
+
+## ReadonlyDefaultPOJO
+
+
+
+<br>
+
+### Properties / Associations
+| Name | Type | Multiplicity | Constraints | Description |
+|------|------|:------------:|-------------|-------------|
+| `readonlyDefault` | `int` | `1..1` |  |  |
+| `booleanDefault` | `java.lang.Boolean` | `1..1` |  |  |
 
 <br>
 

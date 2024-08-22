@@ -1,83 +1,78 @@
+**Types / Enumerations:**
+[TOC levels=2]
+
+<br>
+
 # Package `com.anaptecs.jeaf.junit.generics`
 
 
 <br>
 
 # Types
-## `AndOneMorePOJO`
+## AndOneMorePOJO
 
-| Info        | Details         | 
-|-------------|-----------------|
-| Description |  |
+
 
 <br>
 
 ### Properties / Associations
-| Name | Multiplicity | Description |
-|------|:------------:|-------------|
-| `genericProperty` | `1..1` |  |
-| `genericResponses` | `0..*` |  |
+| Name | Type | Multiplicity | Constraints | Description |
+|------|------|:------------:|-------------|-------------|
+| `genericProperty` | [`DoSomethingResponse`](#dosomethingresponse) | `1..1` |  |  |
+| `genericResponses` | [`DoSomethingResponse`](#dosomethingresponse) | `0..*` |  |  |
 
 <br>
 
-## `GenericResponsePOJO`
+## GenericResponsePOJO
 
-| Info        | Details         | 
-|-------------|-----------------|
-| Description |  |
 
-<br>
-
-### Properties / Associations
-| Name | Multiplicity | Description |
-|------|:------------:|-------------|
-| `errors` | `0..*` |  |
-| `warnings` | `0..*` |  |
-| `value` | `1..1` |  |
-
-<br>
-
-## `Message`
-
-| Info        | Details         | 
-|-------------|-----------------|
-| Description |  |
 
 <br>
 
 ### Properties / Associations
-| Name | Multiplicity | Description |
-|------|:------------:|-------------|
-| `text` | `1..1` |  |
+| Name | Type | Multiplicity | Constraints | Description |
+|------|------|:------------:|-------------|-------------|
+| `errors` | [`Message`](#message) | `0..*` |  |  |
+| `warnings` | [`Message`](#message) | `0..*` |  |  |
+| `value` | [`T`](#t) | `1..1` |  |  |
 
 <br>
 
-## `MyBusinessObject`
+## Message
 
-| Info        | Details         | 
-|-------------|-----------------|
-| Description |  |
 
-<br>
-
-### Properties / Associations
-| Name | Multiplicity | Description |
-|------|:------------:|-------------|
-| `myBusinessAttribute` | `1..1` |  |
-
-<br>
-
-## `YetAnotherPOJO`
-
-| Info        | Details         | 
-|-------------|-----------------|
-| Description |  |
 
 <br>
 
 ### Properties / Associations
-| Name | Multiplicity | Description |
-|------|:------------:|-------------|
+| Name | Type | Multiplicity | Constraints | Description |
+|------|------|:------------:|-------------|-------------|
+| `text` | `String` | `1..1` |  |  |
+
+<br>
+
+## MyBusinessObject
+
+
+
+<br>
+
+### Properties / Associations
+| Name | Type | Multiplicity | Constraints | Description |
+|------|------|:------------:|-------------|-------------|
+| `myBusinessAttribute` | `int` | `1..1` |  |  |
+
+<br>
+
+## YetAnotherPOJO
+
+
+
+<br>
+
+### Properties / Associations
+| Name | Type | Multiplicity | Constraints | Description |
+|------|------|:------------:|-------------|-------------|
 
 <br>
 
