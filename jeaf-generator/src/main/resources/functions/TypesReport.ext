@@ -32,3 +32,11 @@ cached String getPropertyTypeLink(uml::Property property):
         if property.owner.getNearestPackage() == property.type.getNearestPackage()
         then "[`" + property.type.name + "`](#" + property.type.name.toLowerCase() + ")"
         else "[`" + property.type.name + "`](" + property.type.getNearestPackage().qualifiedName() + ".html#" + property.type.name.toLowerCase() + ")";
+
+cached String getParentClassLink(JMM::POJO pojo):
+    if pojo.parents().first().isInGeneratorWhitelist() == false
+    then "`" + pojo.parents().first().qualifiedName() + "`"
+    else 
+	    if pojo.getNearestPackage() == pojo.parents().first().getNearestPackage()
+	    then "[`" + pojo.parents().first().name + "`](#" + pojo.parents().first().name.toLowerCase() + ")"
+	    else "[`" + pojo.parents().first().name + "`](" + pojo.parents().first().getNearestPackage().qualifiedName() + ".html#" + pojo.parents().first().name.toLowerCase() + ")";

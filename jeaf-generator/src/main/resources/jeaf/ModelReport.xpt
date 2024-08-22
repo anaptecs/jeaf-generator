@@ -16,31 +16,29 @@
 
 «DEFINE PackageReport FOR Package»
 «FILE this.qualifiedName() + ".md" res_gen-»
+# Package `«this.qualifiedName()»`
+
 **Types / Enumerations:**
 [TOC levels=2]
 
-<br>
-
-# Package `«this.qualifiedName()»`
-
-«IF this.getAllPOJOs().isEmpty == false»
+«IF this.getAllPOJOs().isEmpty == false-»
 <br>
 
 # Types
 «FOREACH this.getAllPOJOs() AS pojo-»
 ## «pojo.name»
 «pojo.getMarkdownComment()»
-«IF pojo.parents().isEmpty == false || pojo.isAbstract-»
+«IF pojo.parents().isEmpty == false || pojo.isAbstract || pojo.isAlias()-»
 
 <br>
 
 | Type Details | Details         | 
 |--------------|-----------------|
-«IF pojo.parents().isEmpty == false-»
-| Base Class  | `«pojo.parents().first().qualifiedName()»` |
-«ENDIF-»
 «IF pojo.isAlias()-»
 | Alias       | `«pojo.asAlias().alternateName»`           |
+«ENDIF-»
+«IF pojo.parents().isEmpty == false-»
+| Parent Class  | «pojo.getParentClassLink()» |
 «ENDIF-»
 «IF pojo.isAbstract-»
 | Abstract | `true` |
@@ -49,7 +47,8 @@
 
 <br>
 
-### Properties / Associations
+**Properties / Associations**
+
 | Name | Type | Multiplicity | Constraints | Description |
 |------|------|:------------:|-------------|-------------|
 «FOREACH pojo.ownedAttribute AS attr-»
@@ -60,6 +59,27 @@
 
 «ENDFOREACH»
 «ENDIF»
+
+«IF this.getAllEnums().isEmpty == false-»
+<br>
+
+# Enumerations
+«FOREACH this.getAllEnums() AS enum-»
+## «enum.name»
+«enum.getMarkdownComment()»
+
+### Literals
+
+| Name | Description |
+|------|-------------|
+«FOREACH enum.ownedLiteral AS literal-»
+| `«literal.name»` | «literal.getMarkdownCommentForTable()» |
+«ENDFOREACH-»
+«IF enum.extensibleEnum -»
+| `UNKNOWN` | Please be aware that this enum is an extensible enum. This means that new literals can be introduced without prior notice. |
+«ENDIF»
+«ENDFOREACH-»
+«ENDIF-»
 «ENDFILE»
 «ENDDEFINE»
 
