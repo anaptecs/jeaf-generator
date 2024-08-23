@@ -20,6 +20,11 @@
        «EXPAND jeaf::TypesReport::TypesReport»
     «ENDIF»
 
+    «IF generateModelReport()»
+       «info("Generating Model Details Report")»
+       «EXPAND jeaf::ModelReport::ModelReport»
+    «ENDIF»
+
     «IF generateBreakingChangesReport()»
        «info("Generating Breaking Changes Report")»
        «EXPAND jeaf::BreakingChangesReport::BreakingChangesReport»

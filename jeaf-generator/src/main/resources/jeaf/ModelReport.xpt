@@ -1,0 +1,85 @@
+«IMPORT uml»
+«IMPORT JMM»
+
+«EXTENSION functions::TypesReport»
+«EXTENSION functions::Javadoc»
+«EXTENSION functions::Alias»
+«EXTENSION functions::NamedElement»
+«EXTENSION functions::Validation»
+
+«EXTENSION org::openarchitectureware::util::stdlib::io»
+
+«DEFINE ModelReport FOR Model»
+    «EXPAND PackageReport FOREACH this.getAllPAckagesForModelReport()»
+«ENDDEFINE»
+
+
+«DEFINE PackageReport FOR Package»
+«FILE this.qualifiedName() + ".md" res_gen-»
+# Package `«this.qualifiedName()»`
+
+**Types / Enumerations:**
+[TOC levels=2]
+
+«IF this.getAllPOJOs().isEmpty == false-»
+<br>
+
+# Types
+«FOREACH this.getAllPOJOs() AS pojo-»
+## «pojo.name»
+«pojo.getMarkdownComment()»
+«IF pojo.parents().isEmpty == false || pojo.isAbstract || pojo.isAlias()-»
+
+<br>
+
+| Type Details | Details         | 
+|--------------|-----------------|
+«IF pojo.isAlias()-»
+| Alias       | `«pojo.asAlias().alternateName»`           |
+«ENDIF-»
+«IF pojo.parents().isEmpty == false-»
+| Parent Class  | «pojo.getParentClassLink()» |
+«ENDIF-»
+«IF pojo.isAbstract-»
+| Abstract | `true` |
+«ENDIF-»
+«ENDIF»
+
+<br>
+
+**Properties / Associations**
+
+| Name | Type | Multiplicity | Constraints | Description |
+|------|------|:------------:|-------------|-------------|
+«FOREACH pojo.ownedAttribute AS attr-»
+| `«attr.name»` | «attr.getPropertyTypeLink()» | `«attr.lower»..«IF attr.isMultivalued()»*«ELSE»1«ENDIF»` | «IF attr.getValidationStereotypes().isEmpty == false»«FOREACH attr.getValidationStereotypes() AS stereo SEPARATOR "<br>"»`«attr.getValidationStereotyeAndValue(stereo)»`«ENDFOREACH»<br>«ENDIF» | «attr.getMarkdownCommentForTable()» |
+«ENDFOREACH-»
+
+<br>
+
+«ENDFOREACH»
+«ENDIF»
+
+«IF this.getAllEnums().isEmpty == false-»
+<br>
+
+# Enumerations
+«FOREACH this.getAllEnums() AS enum-»
+## «enum.name»
+«enum.getMarkdownComment()»
+
+### Literals
+
+| Name | Description |
+|------|-------------|
+«FOREACH enum.ownedLiteral AS literal-»
+| `«literal.name»` | «literal.getMarkdownCommentForTable()» |
+«ENDFOREACH-»
+«IF enum.extensibleEnum -»
+| `UNKNOWN` | Please be aware that this enum is an extensible enum. This means that new literals can be introduced without prior notice. |
+«ENDIF»
+«ENDFOREACH-»
+«ENDIF-»
+«ENDFILE»
+«ENDDEFINE»
+
