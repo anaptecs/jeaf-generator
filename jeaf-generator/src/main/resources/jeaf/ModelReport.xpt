@@ -3,6 +3,7 @@
 
 «EXTENSION functions::TypesReport»
 «EXTENSION functions::Javadoc»
+«EXTENSION functions::Property»
 «EXTENSION functions::Alias»
 «EXTENSION functions::NamedElement»
 «EXTENSION functions::Validation»
@@ -52,7 +53,7 @@
 | Name | Type | Multiplicity | Constraints | Description |
 |------|------|:------------:|-------------|-------------|
 «FOREACH pojo.ownedAttribute AS attr-»
-| `«attr.name»` | «attr.getPropertyTypeLink()» | `«attr.lower»..«IF attr.isMultivalued()»*«ELSE»1«ENDIF»` | «IF attr.getValidationStereotypes().isEmpty == false»«FOREACH attr.getValidationStereotypes() AS stereo SEPARATOR "<br>"»`«attr.getValidationStereotyeAndValue(stereo)»`«ENDFOREACH»<br>«ENDIF» | «attr.getMarkdownCommentForTable()» |
+| `«attr.name»` | «attr.getPropertyTypeLink()» | `«attr.lower»..«IF attr.isMultivalued()»*«ELSE»1«ENDIF»` | «IF attr.getValidationStereotypes().isEmpty == false»«FOREACH attr.getValidationStereotypes() AS stereo SEPARATOR "<br>"»`«attr.getValidationStereotyeAndValue(stereo)»`«ENDFOREACH»<br>«ENDIF»«IF attr.isTransient()»`transient`<br>«ENDIF»«IF attr.isDerived»`derived`«ENDIF» | «attr.getMarkdownCommentForTable()» |
 «ENDFOREACH-»
 
 <br>
