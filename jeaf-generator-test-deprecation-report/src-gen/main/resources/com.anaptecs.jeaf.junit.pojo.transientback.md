@@ -16,9 +16,9 @@
 
 | Name | Type | Multiplicity | Constraints | Description |
 |------|------|:------------:|-------------|-------------|
-| `transientMaster` | [`MasterClass`](#masterclass) | `0..1` |  |  |
+| `transientMaster` | [`MasterClass`](#masterclass) | `0..1` | `transient`<br> |  |
 | `name` | `String` | `1..1` |  |  |
-| `manyMasters` | [`MasterClass`](#masterclass) | `0..*` |  |  |
+| `manyMasters` | [`MasterClass`](#masterclass) | `0..*` | `transient`<br> |  |
 
 <br>
 
@@ -49,7 +49,7 @@
 | Name | Type | Multiplicity | Constraints | Description |
 |------|------|:------------:|-------------|-------------|
 | `name` | `String` | `1..1` |  |  |
-| `transientMaster` | [`ReadOnlyMaster`](#readonlymaster) | `0..1` |  |  |
+| `transientMaster` | [`ReadOnlyMaster`](#readonlymaster) | `0..1` | `transient`<br> |  |
 
 <br>
 

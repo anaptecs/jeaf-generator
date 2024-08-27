@@ -33,7 +33,7 @@ import openapitools.JSON;
   EnumTest.JSON_PROPERTY_PROPERTY,
   EnumTest.JSON_PROPERTY_ENUM_REF
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.7.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class EnumTest {
   public static final String JSON_PROPERTY_PROPERTY = "property";
   private String property;

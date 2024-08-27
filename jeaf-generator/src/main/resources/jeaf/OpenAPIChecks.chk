@@ -54,7 +54,7 @@ context OpenAPIType if runChecks("OpenAPIType") && ignore() == false WARNING thi
 
 // Checks for stereotype OpenAPIDataType
 context OpenAPIDataType if runChecks("OpenDataAPIType") && ignore() == false ERROR this.getErrorMessage("9124", {"OpenAPIDataType", name}): ownedAttribute.select(e|e.isPropertySuppressed() == false).forAll( a | a.type != null);
-context OpenAPIDataType if runChecks("OpenAPIDataType") && ignore() == false && this.compositeDataType == false ERROR this.getErrorMessage("9116", {name}): this.ownedAttribute.select(e|e.isStatic == false).size == 1;
+context OpenAPIDataType if runChecks("OpenAPIDataType") && ignore() == false && this.compositeDataType == false ERROR this.getErrorMessage("9116", {name}): this.ownedAttribute.select(e|e.isStatic == false && e.isDerived == false).size == 1;
 context OpenAPIDataType if runChecks("OpenAPIDataType") && ignore() == false && this.compositeDataType == false ERROR this.getErrorMessage("9117", {name}): this.ownedAttribute.get(0).type.isBasicOpenAPIType() == true;
 context OpenAPIDataType if runChecks("OpenAPIDataType") && ignore() == false && this.compositeDataType == false ERROR this.getErrorMessage("9118", {name}): this.ownedAttribute.get(0).isMultivalued() == false;
 context OpenAPIDataType if runChecks("OpenAPIDataType") && ignore() == false ERROR this.getErrorMessage("9119", {name}): this.superClass.size == 0;
