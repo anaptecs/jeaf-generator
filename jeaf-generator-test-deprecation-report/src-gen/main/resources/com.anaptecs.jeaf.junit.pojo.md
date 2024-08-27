@@ -86,10 +86,10 @@
 
 | Name | Type | Multiplicity | Constraints | Description |
 |------|------|:------------:|-------------|-------------|
-| `transientB` | [`BidirectionalB`](#bidirectionalb) | `0..1` |  |  |
-| `transientParent` | [`BidirectionalA`](#bidirectionala) | `0..1` |  |  |
+| `transientB` | [`BidirectionalB`](#bidirectionalb) | `0..1` | `transient`<br> |  |
+| `transientParent` | [`BidirectionalA`](#bidirectionala) | `0..1` | `transient`<br> |  |
 | `child` | [`BidirectionalA`](#bidirectionala) | `0..1` |  |  |
-| `transientBs` | [`BidirectionalB`](#bidirectionalb) | `0..*` |  |  |
+| `transientBs` | [`BidirectionalB`](#bidirectionalb) | `0..*` | `transient`<br> |  |
 
 <br>
 

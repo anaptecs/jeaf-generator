@@ -19,6 +19,7 @@ import com.anaptecs.spring.base.CharacterCode;
 import com.anaptecs.spring.base.CharacterCodeType;
 import com.anaptecs.spring.base.ComplexBookingType;
 import com.anaptecs.spring.base.CurrencyCode;
+import com.anaptecs.spring.base.DataTypeWithDerivedProperty;
 import com.anaptecs.spring.base.DataUnit;
 import com.anaptecs.spring.base.DoubleCode;
 import com.anaptecs.spring.base.DoubleCodeType;
@@ -75,6 +76,8 @@ public class BaseModuleFactory implements ObjectMapperModuleFactory {
     lModule.addDeserializer(CharacterCodeType.class, new CharacterCodeTypeDeserializer());
     lModule.addSerializer(CurrencyCode.class, new CurrencyCodeSerializer());
     lModule.addDeserializer(CurrencyCode.class, new CurrencyCodeDeserializer());
+    lModule.addSerializer(DataTypeWithDerivedProperty.class, new DataTypeWithDerivedPropertySerializer());
+    lModule.addDeserializer(DataTypeWithDerivedProperty.class, new DataTypeWithDerivedPropertyDeserializer());
     lModule.addSerializer(DoubleCode.class, new DoubleCodeSerializer());
     lModule.addDeserializer(DoubleCode.class, new DoubleCodeDeserializer());
     lModule.addSerializer(DoubleCodeType.class, new DoubleCodeTypeSerializer());
@@ -147,6 +150,8 @@ public class BaseModuleFactory implements ObjectMapperModuleFactory {
     lModule.addDeserializer(CharacterCodeType.class, new CharacterCodeTypeDeserializer());
     lModule.addSerializer(CurrencyCode.class, new CurrencyCodeSerializer());
     lModule.addDeserializer(CurrencyCode.class, new CurrencyCodeDeserializer());
+    lModule.addSerializer(DataTypeWithDerivedProperty.class, new DataTypeWithDerivedPropertySerializer());
+    lModule.addDeserializer(DataTypeWithDerivedProperty.class, new DataTypeWithDerivedPropertyDeserializer());
     lModule.addSerializer(DoubleCode.class, new DoubleCodeSerializer());
     lModule.addDeserializer(DoubleCode.class, new DoubleCodeDeserializer());
     lModule.addSerializer(DoubleCodeType.class, new DoubleCodeTypeSerializer());
