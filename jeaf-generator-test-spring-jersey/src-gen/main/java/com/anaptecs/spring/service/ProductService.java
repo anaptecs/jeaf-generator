@@ -55,7 +55,7 @@ public interface ProductService extends MonitoringService {
   boolean createProduct( Product pProduct );
 
   /**
-   * @param pContext
+   * @param pContext Default Comment
    * @return {@link Sortiment}
    */
   Sortiment getSortiment( Context pContext );

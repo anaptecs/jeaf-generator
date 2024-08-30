@@ -183,7 +183,7 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
   }
 
   /**
-   * @param pContext
+   * @param pContext Default Comment
    * @return {@link Sortiment}
    */
   @Override

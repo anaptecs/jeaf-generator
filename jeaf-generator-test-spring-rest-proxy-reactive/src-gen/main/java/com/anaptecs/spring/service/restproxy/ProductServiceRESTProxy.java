@@ -167,7 +167,7 @@ public class ProductServiceRESTProxy implements ProductService {
   }
 
   /**
-   * @param pContext
+   * @param pContext Default Comment
    * @return {@link Sortiment}
    */
   @Override

@@ -63,7 +63,7 @@ public interface RESTProductService extends Service {
   boolean createProduct( Product pProduct );
 
   /**
-   * @param pContext
+   * @param pContext Default Comment
    * @return {@link Sortiment}
    */
   Sortiment getSortiment( Context pContext );

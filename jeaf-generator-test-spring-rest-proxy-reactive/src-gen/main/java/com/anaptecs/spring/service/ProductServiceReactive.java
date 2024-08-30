@@ -56,7 +56,7 @@ public interface ProductServiceReactive extends MonitoringServiceReactive {
   Mono<Boolean> createProduct( Product pProduct );
 
   /**
-   * @param pContext
+   * @param pContext Default Comment
    * @return {@link Sortiment}
    */
   Mono<Sortiment> getSortiment( Context pContext );
