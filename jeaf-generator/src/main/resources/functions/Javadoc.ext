@@ -3,6 +3,7 @@ extension functions::Alias;
 extension functions::SoftLink;
 extension functions::BreakingChange;
 extension functions::Example;
+extension functions::DefaultComment;
 extension java::GeneratorCommons;
 
 cached String getAuthor():
@@ -22,6 +23,14 @@ cached String getMarkdownCommentForTable(uml::NamedElement element):
 
 cached String getJavadocComment(uml::NamedElement element):
     element.getMarkdownComment().convertCommentForJavadoc();
+    
+cached String getJavadocCommentForParameter(uml::Parameter parameter):
+    if parameter.hasMeaningfulJavadoc()
+    then parameter.getMarkdownComment().convertCommentForJavadoc()
+    else
+        if parameter.type.ownedComment.selectFirst(e|e.isDefaultComment()) != null
+        then parameter.type.ownedComment.selectFirst(e|e.isDefaultComment()).body.trim().convertCommentForJavadoc().replaceAll("\n", "<br/>")
+        else "";
     
 cached boolean hasMeaningfulJavadoc(uml::NamedElement element):
     element.hasMeaningfulComment() || element.hasMeaningfulDeprecationInfo() || element.isAlias() || element.isBreakingChange();

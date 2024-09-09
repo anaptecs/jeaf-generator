@@ -5,6 +5,7 @@
 «EXTENSION functions::Alias»
 «EXTENSION functions::SoftLink»
 «EXTENSION functions::Example»
+«EXTENSION functions::DefaultComment»
 «EXTENSION java::Naming»
 «EXTENSION entity::ModelProperties»
 «EXTENSION java::GeneratorCommons»
@@ -32,12 +33,12 @@
     «EXPAND SecurityRolesComment -»
     «EXPAND BreakingChangeJavadoc -»
     «FOREACH this.getInputParameters() AS param -»
- * @param «param.name» «param.ownedComment.first().body.trim().replaceAll("\n", "<br/>")» «IF param.isJEAFDeprecated()»<br/><b>Deprecated. </b> <i>«param.getDeprecationDescriptionForJavadoc()» (<b>since:</b> «param.getDeprecatedSince()», <b>removed with:</b> «param.getDeprecationRemoval()»)«ENDIF»    
+ * @param «param.name» «param.getJavadocCommentForParameter()» «IF param.isJEAFDeprecated()»<br/><b>Deprecated. </b> <i>«param.getDeprecationDescriptionForJavadoc()» (<b>since:</b> «param.getDeprecatedSince()», <b>removed with:</b> «param.getDeprecationRemoval()»)«ENDIF»    
 «EXPAND BreakingChangeJavadoc FOR param-»
     «ENDFOREACH -»
     «IF this.hasReturnType() && this.getReturnTypeName() != "void" -»
     «LET this.getReturnType() AS returnType -»
- * @return «IF this.returnsPrimitiveType() == false»{@link «ENDIF»«this.getReturnTypeName()»«IF this.returnsPrimitiveType() == false»}«ENDIF» «returnType.ownedComment.first().body.trim().replaceAll("\n", "<br/>")» «IF returnType.isJEAFDeprecated()»<br/><b>Deprecated. </b> <i>«returnType.getDeprecationDescriptionForJavadoc()» (<b>since:</b> «returnType.getDeprecatedSince()», <b>removed with:</b> «returnType.getDeprecationRemoval()»)«ENDIF»
+ * @return «IF this.returnsPrimitiveType() == false»{@link «ENDIF»«this.getReturnTypeName()»«IF this.returnsPrimitiveType() == false»}«ENDIF» «returnType.getJavadocCommentForParameter()» «IF returnType.isJEAFDeprecated()»<br/><b>Deprecated. </b> <i>«returnType.getDeprecationDescriptionForJavadoc()» (<b>since:</b> «returnType.getDeprecatedSince()», <b>removed with:</b> «returnType.getDeprecationRemoval()»)«ENDIF»
 «EXPAND BreakingChangeJavadoc FOR returnType -»
     «ENDLET-»
     «ENDIF -»
@@ -178,7 +179,7 @@
 
 
 «DEFINE AddComment FOR uml::NamedElement -»
-    «FOREACH ownedComment AS comment SEPARATOR "<p/>" -»
+    «FOREACH ownedComment.select(e|e.isDefaultComment() == false) AS comment SEPARATOR "<p/>" -»
  «comment.body.trim().convertCommentForJavadoc()»
     «ENDFOREACH -»«ENDDEFINE»
 

@@ -18,8 +18,6 @@ import javax.ws.rs.QueryParam;
 
 /**
  * Type with default comment.
- * <p/>
- * Default Comment
  *
  * @author JEAF Generator
  * @version JEAF Release 1.4.x

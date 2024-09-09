@@ -34,15 +34,21 @@ public class JavadocHelper {
   }
 
   public static String convertCommentForJavadoc( String pComment ) {
-    Node lDocument = markdownParser.parse(pComment.trim());
-    String lJavadoc = renderer.render(lDocument).trim();
-    if (lJavadoc.startsWith("<p>")) {
-      lJavadoc = lJavadoc.substring(3);
+    String lJavadoc;
+    if (pComment != null) {
+      Node lDocument = markdownParser.parse(pComment.trim());
+      lJavadoc = renderer.render(lDocument).trim();
+      if (lJavadoc.startsWith("<p>")) {
+        lJavadoc = lJavadoc.substring(3);
+      }
+      if (lJavadoc.endsWith("</p>")) {
+        lJavadoc = lJavadoc.substring(0, lJavadoc.length() - 4);
+      }
+      lJavadoc = lJavadoc.replaceAll("</p>\n<p>", "<br/><br/>");
     }
-    if (lJavadoc.endsWith("</p>")) {
-      lJavadoc = lJavadoc.substring(0, lJavadoc.length() - 4);
+    else {
+      lJavadoc = "";
     }
-    lJavadoc = lJavadoc.replaceAll("</p>\n<p>", "<br/><br/>");
     return lJavadoc;
   }
 }

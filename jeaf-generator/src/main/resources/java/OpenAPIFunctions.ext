@@ -8,6 +8,11 @@ extension functions::TemplateParameter;
 extension functions::Operation;
 extension functions::Alias;
 extension functions::SoftLink;
+extension functions::NamedElement;
+extension functions::Parameter;
+extension functions::Javadoc;
+extension functions::DefaultComment;
+extension functions::Example;
 extension functions::RESTOperation;
 extension jeafgenerator::api::OpenAPIEnumExtensionPoint;
 extension functions::AddToJSON;
@@ -64,15 +69,34 @@ cached String getYAMLStyleComment(uml::Element element, String indentation):
     element.ownedComment.get(0).body.trim().replaceAll("\n", "\r\n" + indentation + "# ");
 
 cached String getCommentForOpenAPIDescription(uml::Element element, String indentation):
-    if element.ownedComment.size > 0
-    then element.ownedComment.first().body.trim().replaceAll("\n", "\r\n" + indentation) + element.getAlternateNameForOpenAPI(indentation) + element.getAliasDocs(indentation) + ((uml::NamedElement) element).getBreakingChangeDescriptionInternal(indentation) + element.getAuthorizedRoles(indentation) + ((uml::NamedElement) element).getInternalDeprecationDescription(indentation)
-    else element.getAlternateNameForOpenAPI(indentation) + element.getAliasDocs(indentation) + ((uml::NamedElement) element).getBreakingChangeDescriptionInternal(indentation) + element.getAuthorizedRoles(indentation) + ((uml::NamedElement) element).getInternalDeprecationDescription(indentation);
+    if  element.getComment().length == 0 && element.hasDefaultComment()
+    then element.getDefaultComment().replaceAll("\n", "\r\n" + indentation) + element.getAlternateNameForOpenAPI(indentation) + element.getAliasDocs(indentation) + ((uml::NamedElement) element).getBreakingChangeDescriptionInternal(indentation) + element.getAuthorizedRoles(indentation) + ((uml::NamedElement) element).getInternalDeprecationDescription(indentation)
+    else
+        if element.getComment().length > 0
+	    then element.getComment().replaceAll("\n", "\r\n" + indentation) + element.getAlternateNameForOpenAPI(indentation) + element.getAliasDocs(indentation) + ((uml::NamedElement) element).getBreakingChangeDescriptionInternal(indentation) + element.getAuthorizedRoles(indentation) + ((uml::NamedElement) element).getInternalDeprecationDescription(indentation)
+	    else element.getAlternateNameForOpenAPI(indentation) + element.getAliasDocs(indentation) + ((uml::NamedElement) element).getBreakingChangeDescriptionInternal(indentation) + element.getAuthorizedRoles(indentation) + ((uml::NamedElement) element).getInternalDeprecationDescription(indentation);
+
+cached String getParameterCommentForOpenAPIDescription(uml::Element element, String indentation):
+    element.getCommentForOpenAPIDescription(indentation);
+//    if element.hasMeaningfulComment() == false && element.isParameter()
+//    then element.asParameter().getDefaultComment(indentation)
+//    else
+//	    if element.getComment().length > 0
+//	    then element.getComment().trim().replaceAll("\n", "\r\n" + indentation) + ((uml::NamedElement) element).getBreakingChangeDescriptionInternal(indentation) + ((uml::NamedElement) element).getInternalDeprecationDescription(indentation)
+//	    else ((uml::NamedElement) element).getBreakingChangeDescriptionInternal(indentation) + ((uml::NamedElement) element).getInternalDeprecationDescription(indentation);
+
+private boolean hasMeaningfulComment(uml::Element element):
+    element.asNamedElement().hasMeaningfulComment() || element.asNamedElement().hasMeaningfulDeprecationInfo() || element.isBreakingChange();
+    
+private String getDefaultComment(uml::Parameter parameter, String indentation):
+        if parameter.type.ownedComment.select(e|e.isDefaultComment()) != null
+        then indentation +  parameter.type.ownedComment.select(e|e.isDefaultComment()).body.trim().replaceAll("\n", "\r\n" + indentation)
+        else indentation;
 
 private cached String getAlternateNameForOpenAPI(uml::Element element, String indentation):
     if element.isAlias()
     then "\r\n" + indentation + "<br><br>\r\n" + indentation + "Alternate Name: " + element.asAlias().getAlternateName()
     else "";
-
 
 private cached String getAliasDocs(uml::Element property, String indentation):
     if property.hasAliasAttributeName()

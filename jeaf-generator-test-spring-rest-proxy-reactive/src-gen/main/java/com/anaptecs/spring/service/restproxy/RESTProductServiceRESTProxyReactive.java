@@ -106,7 +106,7 @@ public class RESTProductServiceRESTProxyReactive implements RESTProductServiceRe
    * Operation returns all available product.
    *
    * @param pMaxResultSize
-   * @return {@link List<Product>}
+   * @return {@link List<Product>} My default comment
    */
   @Override
   public Mono<List<Product>> getProducts( int pMaxResultSize ) {
@@ -136,7 +136,7 @@ public class RESTProductServiceRESTProxyReactive implements RESTProductServiceRe
 
   /**
    * @param pProductID
-   * @return {@link Product}
+   * @return {@link Product} My default comment
    */
   @Override
   public Mono<Product> getProduct( String pProductID ) {
@@ -161,7 +161,7 @@ public class RESTProductServiceRESTProxyReactive implements RESTProductServiceRe
   }
 
   /**
-   * @param pProduct
+   * @param pProduct My default comment
    * @return boolean
    */
   @Override
@@ -187,7 +187,7 @@ public class RESTProductServiceRESTProxyReactive implements RESTProductServiceRe
   }
 
   /**
-   * @param pContext
+   * @param pContext Default Comment
    * @return {@link Sortiment}
    */
   @Override

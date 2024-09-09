@@ -53,7 +53,7 @@ paths:
       responses:
         '200':
           description: |
-            TODO: Please add comment for response
+            My default comment
           content:
             application/json:
               schema:
@@ -89,6 +89,8 @@ paths:
         - Products
       operationId: createProduct
       requestBody:
+        description: |
+          My default comment
         required: true
         content:
           application/json:
@@ -145,7 +147,7 @@ paths:
       responses:
         '200':
           description: |
-            TODO: Please add comment for response
+            My default comment
           content:
             application/json:
               schema:
@@ -425,7 +427,7 @@ paths:
       operationId: deprectedComplexRequestBody
       requestBody:
         description: |
-          
+          My default comment
           Operation has deprected body parameter. Please be aware that deprecations on complex bodies are not supported. Instead the whole operation needs to be set to deprecated.
         required: true
         content:
@@ -448,7 +450,7 @@ paths:
       responses:
         '200':
           description: |
-            TODO: Please add comment for response
+            My default comment
             Operation has deprected return type. Please be aware that deprecations on complex return types are not supported. Instead the whole operation needs to be set to deprecated.
           content:
             application/json:
@@ -1199,7 +1201,7 @@ paths:
       responses:
         '200':
           description: |
-            TODO: Please add comment for response
+            My default comment
           content:
             application/json:
               schema:
@@ -1220,6 +1222,8 @@ paths:
         Authorized Roles: Sales Agent
       operationId: rest.createProduct
       requestBody:
+        description: |
+          My default comment
         required: true
         content:
           application/json:
@@ -1276,7 +1280,7 @@ paths:
       responses:
         '200':
           description: |
-            TODO: Please add comment for response
+            My default comment
           content:
             application/json:
               schema:

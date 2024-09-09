@@ -42,7 +42,7 @@ public interface ProductService extends MonitoringService {
    * <p/>
    * <b>Authorized Roles:</b> NO_ACCESS
    *
-   * @return {@link List<Product>}
+   * @return {@link List<Product>} My default comment
    */
   List<Product> getProducts( );
 
@@ -51,7 +51,7 @@ public interface ProductService extends MonitoringService {
    * <b>Authorized Roles:</b> NO_ACCESS
    *
    * @param pProductID
-   * @return {@link Product}
+   * @return {@link Product} My default comment
    */
   @MyNotNullServiceParam
   Product getProduct( @NotEmpty @MyNotNullServiceParam String pProductID );
@@ -60,7 +60,7 @@ public interface ProductService extends MonitoringService {
    * <p/>
    * <b>Authorized Roles:</b> NO_ACCESS
    *
-   * @param pProduct
+   * @param pProduct My default comment
    * @return boolean
    */
   boolean createProduct( @MyNotNullServiceParam Product pProduct );
@@ -69,7 +69,7 @@ public interface ProductService extends MonitoringService {
    * <p/>
    * <b>Authorized Roles:</b> NO_ACCESS
    *
-   * @param pContext
+   * @param pContext Default Comment
    * @return {@link Sortiment}
    */
   @MyNotNullServiceParam
@@ -151,7 +151,7 @@ public interface ProductService extends MonitoringService {
    * <p/>
    * <b>Authorized Roles:</b> NO_ACCESS
    *
-   * @param pProduct <br/>
+   * @param pProduct My default comment <br/>
    * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    */
   @MyNotNullServiceParam
@@ -161,7 +161,7 @@ public interface ProductService extends MonitoringService {
    * <p/>
    * <b>Authorized Roles:</b> NO_ACCESS
    *
-   * @return {@link Product} <br/>
+   * @return {@link Product} My default comment <br/>
    * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated

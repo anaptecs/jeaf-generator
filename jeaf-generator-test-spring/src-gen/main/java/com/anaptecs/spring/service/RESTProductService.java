@@ -49,7 +49,7 @@ public interface RESTProductService {
    * <b>Authorized Roles:</b> Customer, Sales Agent
    *
    * @param pMaxResultSize
-   * @return {@link List<Product>}
+   * @return {@link List<Product>} My default comment
    */
   List<Product> getProducts( int pMaxResultSize );
 
@@ -58,7 +58,7 @@ public interface RESTProductService {
    * <b>Authorized Roles:</b> Sales Agent
    *
    * @param pProductID
-   * @return {@link Product}
+   * @return {@link Product} My default comment
    */
   @MyNotNullServiceParam
   Product getProduct( @NotEmpty @MyNotNullServiceParam String pProductID );
@@ -67,7 +67,7 @@ public interface RESTProductService {
    * <p/>
    * <b>Authorized Roles:</b> Sales Agent
    *
-   * @param pProduct
+   * @param pProduct My default comment
    * @return boolean
    */
   boolean createProduct( @MyNotNullServiceParam Product pProduct );
@@ -76,7 +76,7 @@ public interface RESTProductService {
    * <p/>
    * <b>Authorized Roles:</b> Sales Agent
    *
-   * @param pContext
+   * @param pContext Default Comment
    * @return {@link Sortiment}
    */
   @MyNotNullServiceParam
