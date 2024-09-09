@@ -6,6 +6,8 @@ extension functions::Class;
 extension functions::TemplateParameter;
 extension functions::Operation;
 extension functions::Alias;
+extension functions::DefaultComment;
+extension functions::Parameter;
 
 // Function returns the name of the parameter for a java method accoring to the anaptecs code styleguide. For the 
 // element "name" the function will return "pName".
@@ -157,18 +159,20 @@ private cached String packageName (uml::Package pck) :
     JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.getPackageName(org.eclipse.uml2.uml.Package);
 
 String getComment(uml::Element element):
-    getComment(element.ownedComment);
+    if element.ownedComment.isEmpty == false
+    then element.ownedComment.first().body.trim()
+    else "";
     
-String getComment(List commentList):
-    commentList.size > 0 ? getComment(commentList.get(0)) : "";
+//String getComment(List commentList):
+//    commentList.size > 0 ? getComment(commentList.get(0)) : "";
                   
-String getComment(uml::Comment comment):
-    comment.body.trim();
+//String getComment(uml::Comment comment):
+//    comment.body.trim();
     
 boolean hasComment(uml::Element element):
-    getComment(element).length > 0 || (element.isOperation() && element.asOperation().hasSecurityRoles()) || (element.isJEAFDeprecated() && ((uml::NamedElement) element).hasMeaningfulDeprecationInfo()) || element.hasAliasAttributeName() || element.isBreakingChange() || element.isAlias();
+    element.getComment().length > 0 || (element.isParameter() && element.hasDefaultComment()) || (element.isOperation() && element.asOperation().hasSecurityRoles()) || (element.isJEAFDeprecated() && ((uml::NamedElement) element).hasMeaningfulDeprecationInfo()) || element.hasAliasAttributeName() || element.isBreakingChange() || element.isAlias();
 
-String getComment(Object this): "";
+//String getComment(Object this): "";
 
 // Konvertiert einen Parameter zu einer Instanzvariable
 String fromParameterToInstance(uml::NamedElement elem) : 

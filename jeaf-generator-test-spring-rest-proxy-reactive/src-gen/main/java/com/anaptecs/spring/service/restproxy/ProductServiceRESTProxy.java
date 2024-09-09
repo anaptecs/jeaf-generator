@@ -92,7 +92,7 @@ public class ProductServiceRESTProxy implements ProductService {
   /**
    * Operation returns all available product.
    *
-   * @return {@link List<Product>}
+   * @return {@link List<Product>} My default comment
    */
   @Override
   public List<Product> getProducts( ) {
@@ -117,7 +117,7 @@ public class ProductServiceRESTProxy implements ProductService {
 
   /**
    * @param pProductID
-   * @return {@link Product}
+   * @return {@link Product} My default comment
    */
   @Override
   public Product getProduct( String pProductID ) {
@@ -141,7 +141,7 @@ public class ProductServiceRESTProxy implements ProductService {
   }
 
   /**
-   * @param pProduct
+   * @param pProduct My default comment
    * @return boolean
    */
   @Override
@@ -418,7 +418,7 @@ public class ProductServiceRESTProxy implements ProductService {
    * Please be aware that deprecations on complex bodies are not supported. Instead the whole operation needs to be set
    * to deprecated.
    *
-   * @param pProduct <br/>
+   * @param pProduct My default comment <br/>
    * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    */
   @Override
@@ -440,7 +440,7 @@ public class ProductServiceRESTProxy implements ProductService {
   }
 
   /**
-   * @return {@link Product} <br/>
+   * @return {@link Product} My default comment <br/>
    * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated

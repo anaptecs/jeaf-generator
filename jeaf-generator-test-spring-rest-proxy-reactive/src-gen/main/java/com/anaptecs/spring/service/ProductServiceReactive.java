@@ -39,18 +39,18 @@ public interface ProductServiceReactive extends MonitoringServiceReactive {
   /**
    * Operation returns all available product.
    *
-   * @return {@link List<Product>}
+   * @return {@link List<Product>} My default comment
    */
   Mono<List<Product>> getProducts( );
 
   /**
    * @param pProductID
-   * @return {@link Product}
+   * @return {@link Product} My default comment
    */
   Mono<Product> getProduct( @NotEmpty String pProductID );
 
   /**
-   * @param pProduct
+   * @param pProduct My default comment
    * @return boolean
    */
   Mono<Boolean> createProduct( Product pProduct );
@@ -108,13 +108,13 @@ public interface ProductServiceReactive extends MonitoringServiceReactive {
    * Please be aware that deprecations on complex bodies are not supported. Instead the whole operation needs to be set
    * to deprecated.
    *
-   * @param pProduct <br/>
+   * @param pProduct My default comment <br/>
    * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    */
   Mono<Void> deprectedComplexRequestBody( @Deprecated Product pProduct );
 
   /**
-   * @return {@link Product} <br/>
+   * @return {@link Product} My default comment <br/>
    * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated

@@ -1,0 +1,9 @@
+extension functions::TypeChecks;
+extension java::Naming;
+
+cached boolean isParameter(uml::Element element):
+    element.isInstanceOf("org.eclipse.uml2.uml.Parameter");
+
+cached uml::Parameter asParameter(uml::Element element):
+    (uml::Parameter) element;
+    

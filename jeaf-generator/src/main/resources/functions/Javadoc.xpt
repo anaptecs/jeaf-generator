@@ -5,6 +5,7 @@
 «EXTENSION functions::Alias»
 «EXTENSION functions::SoftLink»
 «EXTENSION functions::Example»
+«EXTENSION functions::DefaultComment»
 «EXTENSION java::Naming»
 «EXTENSION entity::ModelProperties»
 «EXTENSION java::GeneratorCommons»
@@ -178,7 +179,7 @@
 
 
 «DEFINE AddComment FOR uml::NamedElement -»
-    «FOREACH ownedComment AS comment SEPARATOR "<p/>" -»
+    «FOREACH ownedComment.select(e|e.isDefaultComment() == false) AS comment SEPARATOR "<p/>" -»
  «comment.body.trim().convertCommentForJavadoc()»
     «ENDFOREACH -»«ENDDEFINE»
 

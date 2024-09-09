@@ -280,7 +280,7 @@ components:
           in: «property.getOpenAPIParameterType()»
           «IF property.hasComment()-»
           description: «getOpenAPICommentStyle()»
-            «property.getCommentForOpenAPIDescription("            ")»
+            «property.getParameterCommentForOpenAPIDescription("            ")»
           «ENDIF-»
           «IF property.isRequiredProperty() -»
           required: «property.isRequiredProperty()»
@@ -346,7 +346,7 @@ components:
           «IF param.hasComment()|| param.hasDefaultValueForEnum() -»
           description: «getOpenAPICommentStyle()»
             «IF param.hasComment()-»
-            «param.getCommentForOpenAPIDescription("            ")»
+            «param.getParameterCommentForOpenAPIDescription("            ")»
             «ENDIF-»
             «IF param.hasDefaultValueForEnum() -»
             Default value: «param.getDefaultValueForEnum()»
@@ -472,7 +472,7 @@ components:
         '«operation.getHTTPStatusCode()»':
           «LET operation.getReturnResult() AS returnParam-»
           description: «getOpenAPICommentStyle()»
-            «IF returnParam.hasComment()»«returnParam.getCommentForOpenAPIDescription("            ")»«ELSE»TODO: Please add comment for response«ENDIF»
+            «IF returnParam.hasComment()»«returnParam.getParameterCommentForOpenAPIDescription("            ")»«ELSE»TODO: Please add comment for response«ENDIF»
             «IF returnParam.isDeprecated() && returnParam.type.isBasicOpenAPIType() == false-»
             Operation has deprected return type. Please be aware that deprecations on complex return types are not supported. Instead the whole operation needs to be set to deprecated.
             «ENDIF-»

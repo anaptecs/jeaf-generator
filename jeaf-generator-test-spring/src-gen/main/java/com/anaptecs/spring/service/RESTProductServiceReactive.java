@@ -50,7 +50,7 @@ public interface RESTProductServiceReactive {
    * <b>Authorized Roles:</b> Customer, Sales Agent
    *
    * @param pMaxResultSize
-   * @return {@link List<Product>}
+   * @return {@link List<Product>} My default comment
    */
   Mono<List<Product>> getProducts( int pMaxResultSize );
 
@@ -59,7 +59,7 @@ public interface RESTProductServiceReactive {
    * <b>Authorized Roles:</b> Sales Agent
    *
    * @param pProductID
-   * @return {@link Product}
+   * @return {@link Product} My default comment
    */
   @MyNotNullServiceParam
   Mono<Product> getProduct( @NotEmpty @MyNotNullServiceParam String pProductID );
@@ -68,7 +68,7 @@ public interface RESTProductServiceReactive {
    * <p/>
    * <b>Authorized Roles:</b> Sales Agent
    *
-   * @param pProduct
+   * @param pProduct My default comment
    * @return boolean
    */
   Mono<Boolean> createProduct( @MyNotNullServiceParam Product pProduct );

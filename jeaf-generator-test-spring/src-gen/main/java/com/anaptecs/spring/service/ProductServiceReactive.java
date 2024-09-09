@@ -43,7 +43,7 @@ public interface ProductServiceReactive extends MonitoringServiceReactive {
    * <p/>
    * <b>Authorized Roles:</b> NO_ACCESS
    *
-   * @return {@link List<Product>}
+   * @return {@link List<Product>} My default comment
    */
   Mono<List<Product>> getProducts( );
 
@@ -52,7 +52,7 @@ public interface ProductServiceReactive extends MonitoringServiceReactive {
    * <b>Authorized Roles:</b> NO_ACCESS
    *
    * @param pProductID
-   * @return {@link Product}
+   * @return {@link Product} My default comment
    */
   @MyNotNullServiceParam
   Mono<Product> getProduct( @NotEmpty @MyNotNullServiceParam String pProductID );
@@ -61,7 +61,7 @@ public interface ProductServiceReactive extends MonitoringServiceReactive {
    * <p/>
    * <b>Authorized Roles:</b> NO_ACCESS
    *
-   * @param pProduct
+   * @param pProduct My default comment
    * @return boolean
    */
   Mono<Boolean> createProduct( @MyNotNullServiceParam Product pProduct );
@@ -152,7 +152,7 @@ public interface ProductServiceReactive extends MonitoringServiceReactive {
    * <p/>
    * <b>Authorized Roles:</b> NO_ACCESS
    *
-   * @param pProduct <br/>
+   * @param pProduct My default comment <br/>
    * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    */
   @MyNotNullServiceParam
@@ -162,7 +162,7 @@ public interface ProductServiceReactive extends MonitoringServiceReactive {
    * <p/>
    * <b>Authorized Roles:</b> NO_ACCESS
    *
-   * @return {@link Product} <br/>
+   * @return {@link Product} My default comment <br/>
    * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated

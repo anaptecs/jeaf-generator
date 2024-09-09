@@ -1,6 +1,21 @@
 extension java::GeneratorCommons;
+extension functions::TypeChecks;
+extension functions::Parameter;
 
 cached boolean isDefaultComment(uml::Element element):
     element.isStereotypeApplied("DefaultComment");
+    
+cached boolean hasDefaultComment(uml::Element element):
+    element.getDefaultComment().length > 0;
+    
+cached String getDefaultComment(uml::Element element):
+    if element.isTypedElement()
+    then ((uml::TypedElement) element).type.ownedComment.selectFirst(e|e.isDefaultComment()).body.trim()
+    else element.ownedComment.selectFirst(e|e.isDefaultComment()).body.trim();
+
+private isTypedElement(uml::Element element):
+    element.isInstanceOf("org.eclipse.uml2.uml.TypedElement");
+
+    
 
     

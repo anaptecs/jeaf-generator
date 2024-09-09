@@ -95,7 +95,7 @@ public class ProductServiceRESTProxyReactive implements ProductServiceReactive {
   /**
    * Operation returns all available product.
    *
-   * @return {@link List<Product>}
+   * @return {@link List<Product>} My default comment
    */
   @Override
   public Mono<List<Product>> getProducts( ) {
@@ -121,7 +121,7 @@ public class ProductServiceRESTProxyReactive implements ProductServiceReactive {
 
   /**
    * @param pProductID
-   * @return {@link Product}
+   * @return {@link Product} My default comment
    */
   @Override
   public Mono<Product> getProduct( String pProductID ) {
@@ -145,7 +145,7 @@ public class ProductServiceRESTProxyReactive implements ProductServiceReactive {
   }
 
   /**
-   * @param pProduct
+   * @param pProduct My default comment
    * @return boolean
    */
   @Override
@@ -430,7 +430,7 @@ public class ProductServiceRESTProxyReactive implements ProductServiceReactive {
    * Please be aware that deprecations on complex bodies are not supported. Instead the whole operation needs to be set
    * to deprecated.
    *
-   * @param pProduct <br/>
+   * @param pProduct My default comment <br/>
    * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    */
   @Override
@@ -456,7 +456,7 @@ public class ProductServiceRESTProxyReactive implements ProductServiceReactive {
   }
 
   /**
-   * @return {@link Product} <br/>
+   * @return {@link Product} My default comment <br/>
    * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated

@@ -46,18 +46,18 @@ public interface RESTProductService extends Service {
    * Operation returns all available product.
    *
    * @param pMaxResultSize
-   * @return {@link List<Product>}
+   * @return {@link List<Product>} My default comment
    */
   List<Product> getProducts( int pMaxResultSize );
 
   /**
    * @param pProductID
-   * @return {@link Product}
+   * @return {@link Product} My default comment
    */
   Product getProduct( @NotEmpty String pProductID );
 
   /**
-   * @param pProduct
+   * @param pProduct My default comment
    * @return boolean
    */
   boolean createProduct( Product pProduct );

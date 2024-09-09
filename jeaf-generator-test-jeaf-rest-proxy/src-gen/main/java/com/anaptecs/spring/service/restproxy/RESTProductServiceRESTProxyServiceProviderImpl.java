@@ -95,7 +95,7 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
    * Operation returns all available product.
    *
    * @param pMaxResultSize
-   * @return {@link List<Product>}
+   * @return {@link List<Product>} My default comment
    */
   @Override
   public List<Product> getProducts( int pMaxResultSize ) {
@@ -120,7 +120,7 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
 
   /**
    * @param pProductID
-   * @return {@link Product}
+   * @return {@link Product} My default comment
    */
   @Override
   public Product getProduct( String pProductID ) {
@@ -140,7 +140,7 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
   }
 
   /**
-   * @param pProduct
+   * @param pProduct My default comment
    * @return boolean
    */
   @Override

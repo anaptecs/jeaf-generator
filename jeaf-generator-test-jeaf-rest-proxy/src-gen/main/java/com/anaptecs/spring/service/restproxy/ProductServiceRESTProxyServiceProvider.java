@@ -45,18 +45,18 @@ public interface ProductServiceRESTProxyServiceProvider extends ServiceProvider 
   /**
    * Operation returns all available product.
    *
-   * @return {@link List<Product>}
+   * @return {@link List<Product>} My default comment
    */
   List<Product> getProducts( );
 
   /**
    * @param pProductID
-   * @return {@link Product}
+   * @return {@link Product} My default comment
    */
   Product getProduct( @NotEmpty String pProductID );
 
   /**
-   * @param pProduct
+   * @param pProduct My default comment
    * @return boolean
    */
   boolean createProduct( Product pProduct );
@@ -114,13 +114,13 @@ public interface ProductServiceRESTProxyServiceProvider extends ServiceProvider 
    * Please be aware that deprecations on complex bodies are not supported. Instead the whole operation needs to be set
    * to deprecated.
    *
-   * @param pProduct <br/>
+   * @param pProduct My default comment <br/>
    * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    */
   void deprectedComplexRequestBody( @Deprecated Product pProduct );
 
   /**
-   * @return {@link Product} <br/>
+   * @return {@link Product} My default comment <br/>
    * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated

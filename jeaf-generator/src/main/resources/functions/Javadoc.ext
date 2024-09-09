@@ -25,7 +25,7 @@ cached String getJavadocComment(uml::NamedElement element):
     element.getMarkdownComment().convertCommentForJavadoc();
     
 cached String getJavadocCommentForParameter(uml::Parameter parameter):
-    if parameter.hasMeaningfulComment()
+    if parameter.hasMeaningfulJavadoc()
     then parameter.getMarkdownComment().convertCommentForJavadoc()
     else
         if parameter.type.ownedComment.selectFirst(e|e.isDefaultComment()) != null
