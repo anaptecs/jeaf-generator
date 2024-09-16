@@ -51,7 +51,7 @@
 | `name` | `String` | `1..1` |  |  |
 | `description` | `String` | `1..1` |  |  |
 | `vat` | [`VAT`](#vat) | `1..1` |  |  |
-| `productCategory` | [`ProductCategory`](com.anaptecs.jeaf.junit.product.html#productcategory) | `0..1` |  |  |
+| `productCategory` | [`ProductCategory`](com.anaptecs.jeaf.junit.product#productcategory) | `0..1` |  |  |
 
 <br>
 
