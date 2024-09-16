@@ -15,7 +15,7 @@
 // for now all properties should be processed
 «DEFINE PropertyDeclaration FOR Property»
     «IF this.generateBackwardCompatibility() == false»
-	    «EXPAND jeafgenerator::api::ClassExtensionHook::BeforeClassPropertyDeclaration(this.type.fqn())»
+	    «EXPAND jeafgenerator::api::ClassExtensionPoint::BeforeClassPropertyDeclaration(this.type.fqn())»
 	    «IF this.isSoftLink()»
 	        «EXPAND SoftLinkPropertyDeclaration FOR (SoftLink) this»
 	    «ELSEIF this.association == null»
@@ -23,7 +23,7 @@
 	    «ELSE»
 	        «EXPAND DoAssociationPropertyDeclaration»
 	    «ENDIF»
-	    «EXPAND jeafgenerator::api::ClassExtensionHook::AfterClassPropertyDeclaration(this.type.fqn())»
+	    «EXPAND jeafgenerator::api::ClassExtensionPoint::AfterClassPropertyDeclaration(this.type.fqn())»
     «ENDIF»
 «ENDDEFINE»
 
@@ -41,7 +41,7 @@
             «ENDIF»
         «ENDIF»
     «ENDIF»
-    «EXPAND jeafgenerator::api::ClassExtensionHook::AfterClassPropertyAccessors(this.type.fqn())»
+    «EXPAND jeafgenerator::api::ClassExtensionPoint::AfterClassPropertyAccessors(this.type.fqn())»
 «ENDDEFINE»
 
 // processing the properties

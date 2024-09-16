@@ -6,6 +6,7 @@
 package com.anaptecs.jeaf.junit.scheduling;
 
 import com.anaptecs.jeaf.services.scheduling.ScheduleableService;
+// @Something
 
 public interface SchedulingTestService extends ScheduleableService {
 }

@@ -6,6 +6,7 @@
 package com.anaptecs.jeaf.junit.rest;
 
 import com.anaptecs.jeaf.core.api.Service;
+// @Something
 
 @Deprecated
 public interface DeprecatedRESTService extends Service {

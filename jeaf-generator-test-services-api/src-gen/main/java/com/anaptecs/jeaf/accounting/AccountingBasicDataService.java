@@ -10,6 +10,7 @@ import javax.validation.constraints.NotNull;
 
 import com.anaptecs.jeaf.core.api.Service;
 import com.anaptecs.jeaf.core.api.ServiceObjectID;
+// @Something
 
 public interface AccountingBasicDataService extends Service {
   /**

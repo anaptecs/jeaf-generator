@@ -20,6 +20,7 @@ import com.anaptecs.jeaf.core.api.ServiceObjectID;
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */
+// @Something
 public interface AccountingService extends Service {
   /**
    * Method creates a new account for the passed customer. The method uses the passed person as authorized person.<br/>

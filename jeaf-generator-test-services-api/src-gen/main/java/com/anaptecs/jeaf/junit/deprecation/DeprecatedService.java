@@ -14,6 +14,7 @@ import com.anaptecs.jeaf.core.api.Service;
  * <br/>
  * The functionality is completely wrong. (<b>since:</b> 1.0, <b>removed with:</b> 2023-12-31)
  */
+// @Something
 @Deprecated
 public interface DeprecatedService extends Service {
 }

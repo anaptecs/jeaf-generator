@@ -6,6 +6,7 @@
 package com.anaptecs.jeaf.junit.core;
 
 import com.anaptecs.jeaf.core.api.Service;
+// @Something
 
 public interface ParentService extends Service {
   /**

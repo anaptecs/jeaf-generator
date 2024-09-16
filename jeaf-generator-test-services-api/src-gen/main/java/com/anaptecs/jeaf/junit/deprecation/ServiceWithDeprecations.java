@@ -6,6 +6,7 @@
 package com.anaptecs.jeaf.junit.deprecation;
 
 import com.anaptecs.jeaf.core.api.Service;
+// @Something
 
 public interface ServiceWithDeprecations extends Service {
   /**

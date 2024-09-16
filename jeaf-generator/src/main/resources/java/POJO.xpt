@@ -23,7 +23,7 @@
 				«getFileHeader()»
 				package «this.packageName()»;
 				
-				«EXPAND jeafgenerator::api::ClassExtensionHook::BeforeClassDeclaration»
+				«EXPAND jeafgenerator::api::ClassExtensionPoint::BeforeClassDeclaration»
 				«EXPAND functions::Javadoc::JavadocForType»
 				«EXPAND java::Helper::GenerateGeneratedAnnotation»
 				«EXPAND java::Helper::GenerateSuppressWarningsAnnotation»
@@ -131,7 +131,7 @@
 					«ENDIF»
 
 					«EXPAND java::Helper::GenerateCustomHeadersOperations»
-					«EXPAND jeafgenerator::api::ClassExtensionHook::CustomOperations»
+					«EXPAND jeafgenerator::api::ClassExtensionPoint::CustomOperations»
 					«EXPAND java::Helper::GenerateEqualsHashCode(name)»
 					«EXPAND java::Helper::GenerateToStringMethod»
 					«EXPAND java::Builder::ToBuilderMethod»
@@ -145,7 +145,7 @@
 				«getFileHeader()»
 				package «this.packageName()»;
 				  
-                «EXPAND jeafgenerator::api::ClassExtensionHook::BeforeClassDeclaration»
+                «EXPAND jeafgenerator::api::ClassExtensionPoint::BeforeClassDeclaration»
 				«EXPAND functions::Javadoc::JavadocForType»
 				«EXPAND java::Helper::GenerateGeneratedAnnotation»
 				«EXPAND java::Helper::GenerateSuppressWarningsAnnotation»
@@ -255,7 +255,7 @@
 					«EXPAND java::Attribute::AbstractGetterForDerivedProperty FOREACH this.getDerivedProperties()»
 					«EXPAND jeaf::JEAFOperation::BusinessOperation FOREACH ownedOperation»
 					«EXPAND java::Helper::GenerateCustomHeadersOperations»
-					«EXPAND jeafgenerator::api::ClassExtensionHook::CustomOperations»
+					«EXPAND jeafgenerator::api::ClassExtensionPoint::CustomOperations»
 					«EXPAND java::Helper::GenerateEqualsHashCode(name + "Base")»
 					«EXPAND java::Helper::GenerateToStringMethod»
 					«EXPAND java::Builder::ToBuilderMethodForBaseClass»
@@ -333,12 +333,12 @@
 «DEFINE SuperClassDeclaration FOR POJO»
 	«IF !superClass.isEmpty» extends «superClass.get(0).fqn()»
 	«ELSE»
-	   «EXPAND jeafgenerator::api::ClassExtensionHook::ParentClassDeclaration»
+	   «EXPAND jeafgenerator::api::ClassExtensionPoint::ParentClassDeclaration»
 	«ENDIF»
 «ENDDEFINE»
 
 «DEFINE InterfaceDeclarations FOR POJO»
-    «EXPAND jeafgenerator::api::ClassExtensionHook::ImplementInterfaces(this.getImplementedInterfacesForPOJO())»
+    «EXPAND jeafgenerator::api::ClassExtensionPoint::ImplementInterfaces(this.getImplementedInterfacesForPOJO())»
 «ENDDEFINE»
 
 «DEFINE POJOPlainConstructorInit FOR POJO»
@@ -482,7 +482,7 @@
 			«ENDIF»
 			
             «IF attr.isTransient() == false && attr.isStatic == false»
-                «EXPAND jeafgenerator::api::ClassExtensionHook::AfterBuilderConstructorPropertyInit(attr.type.fqn(), "pBuilder") FOR attr»
+                «EXPAND jeafgenerator::api::ClassExtensionPoint::AfterBuilderConstructorPropertyInit(attr.type.fqn(), "pBuilder") FOR attr»
             «ENDIF»
 		«ENDFOREACH»
 	«ENDIF»

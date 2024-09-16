@@ -49,7 +49,7 @@
 	               // Nothing to do.
 	           «ENDIF»
 	        «ELSEIF operationType.name == "CUSTOM_GENERATOR_TEMPLATE"»
-               «EXPAND jeafgenerator::api::ServiceInterfaceHook::ProvideDefaultImplementation»
+               «EXPAND jeafgenerator::api::ServiceInterfaceExtensionPoint::ProvideDefaultImplementation»
 	        «ELSE»
 	           «IF getReturnTypeName() != "void"»
 	               «IF getReturnType().type.isPrimitiveType() || getReturnType().type.isBasicType()»

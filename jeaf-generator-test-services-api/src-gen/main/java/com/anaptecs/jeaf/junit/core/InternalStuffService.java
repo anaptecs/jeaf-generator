@@ -7,6 +7,7 @@ package com.anaptecs.jeaf.junit.core;
 
 import com.anaptecs.jeaf.core.api.Service;
 import com.anaptecs.jeaf.core.api.ServiceObjectID;
+// @Something
 
 public interface InternalStuffService extends Service {
   /**

@@ -22,6 +22,7 @@ import com.anaptecs.jeaf.core.api.ServiceObjectID;
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */
+// @Something
 public interface BusinessObjectTestService extends Service {
   /**
    */

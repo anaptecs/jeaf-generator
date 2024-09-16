@@ -6,6 +6,7 @@
 package com.anaptecs.jeaf.junit.tx;
 
 import com.anaptecs.jeaf.core.api.Service;
+// @Something
 
 public interface TxSupportedService extends Service {
   /**

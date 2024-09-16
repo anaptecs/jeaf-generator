@@ -22,9 +22,12 @@
 package «packageName()»;
 
 «EXPAND functions::Javadoc::JavadocForType»
+«EXPAND jeafgenerator::api::ServiceInterfaceExtensionPoint::BeforeServiceInterfaceDeclaration»
 «EXPAND java::Helper::GenerateDeprecationAnnotation-»
 public interface «this.getServiceName(reactive)» «IF this.getParentServices().size > 0»extends «FOREACH this.getParentServices() AS parentService SEPARATOR ", "»«parentService.getServiceNameFQN(reactive)»«ENDFOREACH»«ELSE»«IF isTargetRuntimeJEAF()»extends com.anaptecs.jeaf.core.api.Service«ENDIF»«ENDIF» {
   «EXPAND JEAFOperation::ServiceInterfaceOperation(reactive) FOREACH ownedOperation»
+  
+  «EXPAND jeafgenerator::api::ServiceInterfaceExtensionPoint::AfterOperationDeclaration»
   
   «IF ownedOperation.selectFirst(e|e.throwsNotYetImplementedException()) != null »
   /**
