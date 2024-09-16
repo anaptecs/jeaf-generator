@@ -47,6 +47,7 @@ import com.anaptecs.jeaf.junit.rest.generics.GenericSingleValuedReponse;
 import com.anaptecs.jeaf.junit.rest.generics.Offer;
 import com.anaptecs.jeaf.junit.rest.generics.Pageable;
 import com.anaptecs.jeaf.junit.rest.generics.Response;
+// @Something
 
 public interface ProductService extends Service {
   /**

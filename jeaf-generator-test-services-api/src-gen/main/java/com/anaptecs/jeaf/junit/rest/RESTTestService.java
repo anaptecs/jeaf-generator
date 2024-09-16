@@ -13,6 +13,7 @@ import com.anaptecs.jeaf.junit.openapi.base.BeanParameter;
 import com.anaptecs.jeaf.junit.openapi.base.Context;
 import com.anaptecs.jeaf.junit.rest.generics.BusinessServiceObject;
 import com.anaptecs.jeaf.junit.rest.generics.GenericSingleValuedReponse;
+// @Something
 
 public interface RESTTestService extends Service {
   /**

@@ -1,6 +1,13 @@
 «IMPORT uml»
 «IMPORT JMM»
 
+«DEFINE BeforeServiceInterfaceDeclaration FOR JEAFService»
+// @Something
+«ENDDEFINE»
+
+«DEFINE AfterOperationDeclaration FOR JEAFService»
+«ENDDEFINE»
+
 «DEFINE ProvideDefaultImplementation FOR Operation»
 System.out.println("Hey Guys, no AI, I'm only generated ;-)");
 «ENDDEFINE»

@@ -11,6 +11,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 import com.anaptecs.jeaf.core.api.Service;
+// @Something
 
 public interface ValidationTestService extends Service {
   /**

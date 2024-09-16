@@ -9,6 +9,7 @@ import java.util.Set;
 
 import com.anaptecs.jeaf.junit.otherpackage.Input;
 import com.anaptecs.jeaf.junit.otherpackage.Output;
+// @Something
 
 public interface GeneratorTestService extends ParentService {
   /**

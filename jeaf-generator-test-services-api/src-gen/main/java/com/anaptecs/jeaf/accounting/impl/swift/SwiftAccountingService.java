@@ -7,6 +7,7 @@ package com.anaptecs.jeaf.accounting.impl.swift;
 
 import com.anaptecs.jeaf.accounting.Booking;
 import com.anaptecs.jeaf.core.api.Service;
+// @Something
 
 public interface SwiftAccountingService extends Service {
   /**
