@@ -892,6 +892,15 @@ public class GeneratorMojo extends AbstractMojo {
   private List<Dependency> openAPISpecDependencies = new ArrayList<>();
 
   /**
+   * Parameter can be used to define a default path for the location of OpenAPI specification in case that they are
+   * referenced from another OpenAPI spec. Settings this parameter is equivalent to setting
+   * <code>OpenAPISpecReference.location</code>. Default location will only be used in case that nothing is defined in
+   * the UML model explicitly.
+   */
+  @Parameter(required = false)
+  private String openAPISpecReferenceDefaultLocation = "";
+
+  /**
    * Switch defines whether YAML 1.1 compatibility mode for OpenAPI should be enabled. In YAML 1.1 there is a big
    * difference compared to YAML 1.2 when it comes to boolean values. In YAML 1.1 besides <code>true</code> and
    * <code>false</code> also <code>yes</code>, <code>no</code>, <code>y</code>, <code>n</code>, <code>on</code> and
@@ -1779,6 +1788,7 @@ public class GeneratorMojo extends AbstractMojo {
       lLog.info("Generate OpenAPI Specification:                   " + generateOpenAPISpec);
       lLog.info("Validate OpenAPI Specification:                   " + validateOpenAPISpec);
       lLog.info("Disable OpenAPI Dependency Checks:                " + disableOpenAPIDependencyChecks);
+      lLog.info("OpenAPI spec reference default location:          " + openAPISpecReferenceDefaultLocation);
       lLog.info("OpenAPI Version:                                  " + openAPIVersion.name());
       lLog.info("OpenAPI Specification file extensions:            " + openAPIExtensions.toString());
       lLog.info("Enable YAML 1.1 compatibility mode:               " + enableYAML11Compatibility);
@@ -2121,6 +2131,7 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty("switch.gen.openapi.checkOpenAPIDependencies",
           Boolean.toString(!disableOpenAPIDependencyChecks));
       System.setProperty("switch.gen.openapi.version", openAPIVersion.name());
+      System.setProperty(PROPERTY_PREFIX + "openAPISpecReferenceDefaultLocation", openAPISpecReferenceDefaultLocation);
       System.setProperty("switch.gen.openapi.yaml.11.comapitibility", enableYAML11Compatibility.toString());
       System.setProperty("switch.gen.openapi.openAPICommentStyle", openAPICommentStyle.toString());
 

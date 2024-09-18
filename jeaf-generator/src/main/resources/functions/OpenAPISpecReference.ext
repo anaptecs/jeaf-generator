@@ -1,0 +1,10 @@
+import uml;
+import JMM;
+
+extension java::GeneratorCommons;
+extension functions::SystemProperties;
+
+cached String getOpenAPISpecReferenceLocation(JMM::OpenAPISpecReference specRef):
+    if specRef.location.length > 0
+    then specRef.location 
+    else getOpenAPISpecReferenceDefaultLocation();

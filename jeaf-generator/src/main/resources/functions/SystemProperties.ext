@@ -80,3 +80,6 @@ cached boolean generateReactiveRESTServiceProxies():
 cached boolean generateModelReport():
     getBooleanSystemProperty("jeaf.generator.generateModelReport", false); 
    
+cached String getOpenAPISpecReferenceDefaultLocation():
+    getSystemProperty("jeaf.generator.openAPISpecReferenceDefaultLocation", ""); 
+   

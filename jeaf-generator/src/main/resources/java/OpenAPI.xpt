@@ -4,6 +4,7 @@
 «EXTENSION entity::ModelProperties»
 «EXTENSION functions::Enumeration»
 «EXTENSION functions::OpenAPISpecification»
+«EXTENSION functions::OpenAPISpecReference»
 
 
 «IMPORT uml»
@@ -204,10 +205,10 @@ components:
 	
 	«FOREACH this.clientDependency.typeSelect(OpenAPISpecReference) AS dependency»
 	  «FOREACH dependency.supplier.typeSelect(OpenAPI3Specification) AS dependentSpec»
-	    «IF dependency.location.length > 0»
-	    «registerSpecDependency(this, dependentSpec, dependency.location + dependentSpec.resourceName)»
+	    «IF dependency.getOpenAPISpecReferenceLocation().length > 0»
+	    «registerSpecDependency(this, dependentSpec, dependency.getOpenAPISpecReferenceLocation() + dependentSpec.resourceName)»
 	    «REM» Also create spec dependency in opposite direction «ENDREM» 
-	    «registerSpecDependency(dependentSpec, this, dependency.location + this.resourceName)»
+	    «registerSpecDependency(dependentSpec, this, dependency.getOpenAPISpecReferenceLocation() + this.resourceName)»
 	    «ELSE»
 	    «registerSpecDependency(this, dependentSpec, dependentSpec.resourceName)»
 	    «REM» Also create spec dependency in opposite direction «ENDREM» 
