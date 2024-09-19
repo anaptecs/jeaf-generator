@@ -242,13 +242,7 @@ public class ChildBB extends ChildB {
      */
     @Deprecated
     public Builder setDeprecatedBs( Set<ChildB> pDeprecatedBs ) {
-      // To ensure immutability we have to copy the content of the passed collection.
-      if (pDeprecatedBs != null) {
-        deprecatedBs = new HashSet<ChildB>(pDeprecatedBs);
-      }
-      else {
-        deprecatedBs = null;
-      }
+      deprecatedBs = pDeprecatedBs;
       return this;
     }
 

@@ -291,13 +291,7 @@ public class DataTypesQueryBean {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setDoubleCodes( Set<DoubleCode> pDoubleCodes ) {
-      // To ensure immutability we have to copy the content of the passed collection.
-      if (pDoubleCodes != null) {
-        doubleCodes = new HashSet<DoubleCode>(pDoubleCodes);
-      }
-      else {
-        doubleCodes = null;
-      }
+      doubleCodes = pDoubleCodes;
       return this;
     }
 
@@ -324,13 +318,7 @@ public class DataTypesQueryBean {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBookingIDs( Set<BookingID> pBookingIDs ) {
-      // To ensure immutability we have to copy the content of the passed collection.
-      if (pBookingIDs != null) {
-        bookingIDs = new HashSet<BookingID>(pBookingIDs);
-      }
-      else {
-        bookingIDs = null;
-      }
+      bookingIDs = pBookingIDs;
       return this;
     }
 
@@ -422,13 +410,7 @@ public class DataTypesQueryBean {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setTimestamps( List<LocalDateTime> pTimestamps ) {
-      // To ensure immutability we have to copy the content of the passed collection.
-      if (pTimestamps != null) {
-        timestamps = new ArrayList<LocalDateTime>(pTimestamps);
-      }
-      else {
-        timestamps = null;
-      }
+      timestamps = pTimestamps;
       return this;
     }
 
@@ -455,13 +437,7 @@ public class DataTypesQueryBean {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setTimes( Set<OffsetTime> pTimes ) {
-      // To ensure immutability we have to copy the content of the passed collection.
-      if (pTimes != null) {
-        times = new HashSet<OffsetTime>(pTimes);
-      }
-      else {
-        times = null;
-      }
+      times = pTimes;
       return this;
     }
 

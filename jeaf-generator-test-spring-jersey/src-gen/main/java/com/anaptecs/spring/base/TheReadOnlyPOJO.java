@@ -209,7 +209,7 @@ public class TheReadOnlyPOJO {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setEntities( Entity... pEntities ) {
-      // To ensure immutability we have to copy the content of the passed array.
+      // Copy the content of the passed array.
       if (pEntities != null) {
         entities = new ArrayList<Entity>(Arrays.asList(pEntities));
       }

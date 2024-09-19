@@ -106,13 +106,7 @@ public abstract class MasterDataObjectBase {
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setDataUnits( List<DataUnit> pDataUnits ) {
-      // To ensure immutability we have to copy the content of the passed collection.
-      if (pDataUnits != null) {
-        dataUnits = new ArrayList<DataUnit>(pDataUnits);
-      }
-      else {
-        dataUnits = null;
-      }
+      dataUnits = pDataUnits;
       return this;
     }
 
@@ -139,7 +133,7 @@ public abstract class MasterDataObjectBase {
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setDataUnits( DataUnit... pDataUnits ) {
-      // To ensure immutability we have to copy the content of the passed array.
+      // Copy the content of the passed array.
       if (pDataUnits != null) {
         dataUnits = new ArrayList<DataUnit>(Arrays.asList(pDataUnits));
       }

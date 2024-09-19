@@ -82,4 +82,6 @@ cached boolean generateModelReport():
    
 cached String getOpenAPISpecReferenceDefaultLocation():
     getSystemProperty("jeaf.generator.openAPISpecReferenceDefaultLocation", ""); 
-   
+    
+cached boolean disableSaveCopyOfCollectionsInBuilders():
+   getBooleanSystemProperty("jeaf.generator.disableSaveCopyOfCollectionsInBuilders", false);

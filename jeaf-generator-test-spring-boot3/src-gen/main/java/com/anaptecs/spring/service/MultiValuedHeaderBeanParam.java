@@ -331,13 +331,7 @@ public class MultiValuedHeaderBeanParam {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setStringCodeList( Set<StringCode> pStringCodeList ) {
-      // To ensure immutability we have to copy the content of the passed collection.
-      if (pStringCodeList != null) {
-        stringCodeList = new HashSet<StringCode>(pStringCodeList);
-      }
-      else {
-        stringCodeList = null;
-      }
+      stringCodeList = pStringCodeList;
       return this;
     }
 
@@ -395,13 +389,7 @@ public class MultiValuedHeaderBeanParam {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setTimestamps( Set<LocalDateTime> pTimestamps ) {
-      // To ensure immutability we have to copy the content of the passed collection.
-      if (pTimestamps != null) {
-        timestamps = new HashSet<LocalDateTime>(pTimestamps);
-      }
-      else {
-        timestamps = null;
-      }
+      timestamps = pTimestamps;
       return this;
     }
 
@@ -482,13 +470,7 @@ public class MultiValuedHeaderBeanParam {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setTimeUnits( Set<TimeUnit> pTimeUnits ) {
-      // To ensure immutability we have to copy the content of the passed collection.
-      if (pTimeUnits != null) {
-        timeUnits = new HashSet<TimeUnit>(pTimeUnits);
-      }
-      else {
-        timeUnits = null;
-      }
+      timeUnits = pTimeUnits;
       return this;
     }
 
@@ -515,7 +497,7 @@ public class MultiValuedHeaderBeanParam {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setTimeUnits( TimeUnit... pTimeUnits ) {
-      // To ensure immutability we have to copy the content of the passed array.
+      // Copy the content of the passed array.
       if (pTimeUnits != null) {
         timeUnits = new HashSet<TimeUnit>(Arrays.asList(pTimeUnits));
       }

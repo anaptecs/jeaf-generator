@@ -231,13 +231,7 @@ public class Booking implements ServiceObject {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setRemitters( Set<Person> pRemitters ) {
-      // To ensure immutability we have to copy the content of the passed collection.
-      if (pRemitters != null) {
-        remitters = new HashSet<Person>(pRemitters);
-      }
-      else {
-        remitters = null;
-      }
+      remitters = pRemitters;
       return this;
     }
 

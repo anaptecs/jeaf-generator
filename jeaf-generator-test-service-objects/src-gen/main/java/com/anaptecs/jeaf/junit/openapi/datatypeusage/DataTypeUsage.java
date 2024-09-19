@@ -130,13 +130,7 @@ public class DataTypeUsage implements ServiceObject {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setCodes( List<MyDataType> pCodes ) {
-      // To ensure immutability we have to copy the content of the passed collection.
-      if (pCodes != null) {
-        codes = new ArrayList<MyDataType>(pCodes);
-      }
-      else {
-        codes = null;
-      }
+      codes = pCodes;
       return this;
     }
 

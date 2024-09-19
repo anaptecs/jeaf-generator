@@ -92,13 +92,7 @@ public class PartnerContainer {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setPartners( List<Partner> pPartners ) {
-      // To ensure immutability we have to copy the content of the passed collection.
-      if (pPartners != null) {
-        partners = new ArrayList<Partner>(pPartners);
-      }
-      else {
-        partners = null;
-      }
+      partners = pPartners;
       return this;
     }
 

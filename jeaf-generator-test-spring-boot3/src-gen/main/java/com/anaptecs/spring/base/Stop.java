@@ -118,13 +118,7 @@ public class Stop {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setLinks( List<LinkObject> pLinks ) {
-      // To ensure immutability we have to copy the content of the passed collection.
-      if (pLinks != null) {
-        links = new ArrayList<LinkObject>(pLinks);
-      }
-      else {
-        links = null;
-      }
+      links = pLinks;
       return this;
     }
 

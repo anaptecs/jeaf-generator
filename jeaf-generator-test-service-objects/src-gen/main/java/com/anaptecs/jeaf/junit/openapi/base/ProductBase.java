@@ -287,13 +287,7 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setResellers( Set<Reseller> pResellers ) {
-      // To ensure immutability we have to copy the content of the passed collection.
-      if (pResellers != null) {
-        resellers = new HashSet<Reseller>(pResellers);
-      }
-      else {
-        resellers = null;
-      }
+      resellers = pResellers;
       return this;
     }
 
@@ -374,13 +368,7 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setSupportedCurrencies( Set<CurrencyCode> pSupportedCurrencies ) {
-      // To ensure immutability we have to copy the content of the passed collection.
-      if (pSupportedCurrencies != null) {
-        supportedCurrencies = new HashSet<CurrencyCode>(pSupportedCurrencies);
-      }
-      else {
-        supportedCurrencies = null;
-      }
+      supportedCurrencies = pSupportedCurrencies;
       return this;
     }
 
@@ -408,13 +396,7 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setProductCodes( Set<ProductCode> pProductCodes ) {
-      // To ensure immutability we have to copy the content of the passed collection.
-      if (pProductCodes != null) {
-        productCodes = new HashSet<ProductCode>(pProductCodes);
-      }
-      else {
-        productCodes = null;
-      }
+      productCodes = pProductCodes;
       return this;
     }
 

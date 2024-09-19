@@ -156,13 +156,7 @@ public class ClassB implements ServiceObject, Identifiable<ServiceObjectID> {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setManyAs( SortedSet<ClassA> pManyAs ) {
-      // To ensure immutability we have to copy the content of the passed collection.
-      if (pManyAs != null) {
-        manyAs = new TreeSet<ClassA>(pManyAs);
-      }
-      else {
-        manyAs = null;
-      }
+      manyAs = pManyAs;
       return this;
     }
 

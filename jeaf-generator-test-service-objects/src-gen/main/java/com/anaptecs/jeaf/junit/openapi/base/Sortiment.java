@@ -141,13 +141,7 @@ public class Sortiment implements ServiceObject {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setProducts( Set<Product> pProducts ) {
-      // To ensure immutability we have to copy the content of the passed collection.
-      if (pProducts != null) {
-        products = new HashSet<Product>(pProducts);
-      }
-      else {
-        products = null;
-      }
+      products = pProducts;
       return this;
     }
 

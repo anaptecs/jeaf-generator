@@ -200,13 +200,7 @@ public class MultiValuedDataType implements ServiceObject {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setStringCodeHeader( List<StringCode> pStringCodeHeader ) {
-      // To ensure immutability we have to copy the content of the passed collection.
-      if (pStringCodeHeader != null) {
-        stringCodeHeader = new ArrayList<StringCode>(pStringCodeHeader);
-      }
-      else {
-        stringCodeHeader = null;
-      }
+      stringCodeHeader = pStringCodeHeader;
       return this;
     }
 
@@ -234,13 +228,7 @@ public class MultiValuedDataType implements ServiceObject {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setLongCodeQueryParam( List<LongCode> pLongCodeQueryParam ) {
-      // To ensure immutability we have to copy the content of the passed collection.
-      if (pLongCodeQueryParam != null) {
-        longCodeQueryParam = new ArrayList<LongCode>(pLongCodeQueryParam);
-      }
-      else {
-        longCodeQueryParam = null;
-      }
+      longCodeQueryParam = pLongCodeQueryParam;
       return this;
     }
 
@@ -268,13 +256,7 @@ public class MultiValuedDataType implements ServiceObject {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setLiterals( List<BooleanLiteralsEnum> pLiterals ) {
-      // To ensure immutability we have to copy the content of the passed collection.
-      if (pLiterals != null) {
-        literals = new ArrayList<BooleanLiteralsEnum>(pLiterals);
-      }
-      else {
-        literals = null;
-      }
+      literals = pLiterals;
       return this;
     }
 
@@ -301,7 +283,7 @@ public class MultiValuedDataType implements ServiceObject {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setLiterals( BooleanLiteralsEnum... pLiterals ) {
-      // To ensure immutability we have to copy the content of the passed array.
+      // Copy the content of the passed array.
       if (pLiterals != null) {
         literals = new ArrayList<BooleanLiteralsEnum>(Arrays.asList(pLiterals));
       }

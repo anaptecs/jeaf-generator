@@ -113,13 +113,7 @@ public class Pageable<T> implements ServiceObject {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder<T> setObjects( List<T> pObjects ) {
-      // To ensure immutability we have to copy the content of the passed collection.
-      if (pObjects != null) {
-        objects = new ArrayList<T>(pObjects);
-      }
-      else {
-        objects = null;
-      }
+      objects = pObjects;
       return this;
     }
 

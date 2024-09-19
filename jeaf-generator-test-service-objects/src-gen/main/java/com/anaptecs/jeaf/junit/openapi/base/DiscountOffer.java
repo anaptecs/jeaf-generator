@@ -117,13 +117,7 @@ public class DiscountOffer implements ServiceObject {
      */
     @Deprecated
     public Builder setCampaignLinks( Set<SoftLink> pCampaigns ) {
-      // To ensure immutability we have to copy the content of the passed collection.
-      if (pCampaigns != null) {
-        campaignLinks = new HashSet<SoftLink>(pCampaigns);
-      }
-      else {
-        campaignLinks = null;
-      }
+      campaignLinks = pCampaigns;
       return this;
     }
 

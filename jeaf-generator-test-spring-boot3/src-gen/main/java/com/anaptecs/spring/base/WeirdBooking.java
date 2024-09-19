@@ -119,13 +119,7 @@ public class WeirdBooking {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setAdditionalBookings( List<ComplexBookingID> pAdditionalBookings ) {
-      // To ensure immutability we have to copy the content of the passed collection.
-      if (pAdditionalBookings != null) {
-        additionalBookings = new ArrayList<ComplexBookingID>(pAdditionalBookings);
-      }
-      else {
-        additionalBookings = null;
-      }
+      additionalBookings = pAdditionalBookings;
       return this;
     }
 

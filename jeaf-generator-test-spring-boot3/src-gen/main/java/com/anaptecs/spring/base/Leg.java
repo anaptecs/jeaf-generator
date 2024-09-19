@@ -142,13 +142,7 @@ public class Leg {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setStopovers( List<PlaceRef> pStopovers ) {
-      // To ensure immutability we have to copy the content of the passed collection.
-      if (pStopovers != null) {
-        stopovers = new ArrayList<PlaceRef>(pStopovers);
-      }
-      else {
-        stopovers = null;
-      }
+      stopovers = pStopovers;
       return this;
     }
 

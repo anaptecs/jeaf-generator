@@ -186,13 +186,7 @@ public abstract class PartiallyDeprecatedServiceObjectBase implements ServiceObj
      */
     @Deprecated
     public BuilderBase setDeprecatedRefs( Set<ValidationTestObject> pDeprecatedRefs ) {
-      // To ensure immutability we have to copy the content of the passed collection.
-      if (pDeprecatedRefs != null) {
-        deprecatedRefs = new HashSet<ValidationTestObject>(pDeprecatedRefs);
-      }
-      else {
-        deprecatedRefs = null;
-      }
+      deprecatedRefs = pDeprecatedRefs;
       return this;
     }
 

@@ -135,13 +135,7 @@ public abstract class GenericPageableResponseBase<T> extends AbstractResponse<T>
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase<T> setValues( List<T> pValues ) {
-      // To ensure immutability we have to copy the content of the passed collection.
-      if (pValues != null) {
-        values = new ArrayList<T>(pValues);
-      }
-      else {
-        values = null;
-      }
+      values = pValues;
       return this;
     }
 

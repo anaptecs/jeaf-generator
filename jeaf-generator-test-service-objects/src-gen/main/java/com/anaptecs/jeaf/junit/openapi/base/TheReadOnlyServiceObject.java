@@ -192,13 +192,7 @@ public class TheReadOnlyServiceObject implements ServiceObject {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBookingCodes( Set<BookingCode> pBookingCodes ) {
-      // To ensure immutability we have to copy the content of the passed collection.
-      if (pBookingCodes != null) {
-        bookingCodes = new HashSet<BookingCode>(pBookingCodes);
-      }
-      else {
-        bookingCodes = null;
-      }
+      bookingCodes = pBookingCodes;
       return this;
     }
 
