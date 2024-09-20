@@ -1266,7 +1266,7 @@ public class GeneratorMojo extends AbstractMojo {
   private Boolean useArraysOnlyForPrimitives;
 
   /**
-   * SWitch can be used to disable generation of save copy of collections inside builders. By default, in builders there
+   * Switch can be used to disable generation of save copy of collections inside builders. By default, in builders there
    * collections will be copied to strictly ensure that internal data structures of an object can not be edited from
    * outside. However, this behavior also leads to additional garbage. Using this switch it is possible to disable the
    * save copy mechanism for collections inside setters for collections.
