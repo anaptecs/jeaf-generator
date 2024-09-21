@@ -200,13 +200,7 @@ public class Campaign implements ServiceObject {
      */
     @Deprecated
     public Builder setMoreLinkLinks( Set<Long> pMoreLinks ) {
-      // To ensure immutability we have to copy the content of the passed collection.
-      if (pMoreLinks != null) {
-        moreLinkLinks = new HashSet<Long>(pMoreLinks);
-      }
-      else {
-        moreLinkLinks = null;
-      }
+      moreLinkLinks = pMoreLinks;
       return this;
     }
 
@@ -218,13 +212,7 @@ public class Campaign implements ServiceObject {
      */
     @Deprecated
     public Builder setDiscountOfferLinks( List<String> pDiscountOffers ) {
-      // To ensure immutability we have to copy the content of the passed collection.
-      if (pDiscountOffers != null) {
-        discountOfferLinks = new ArrayList<String>(pDiscountOffers);
-      }
-      else {
-        discountOfferLinks = null;
-      }
+      discountOfferLinks = pDiscountOffers;
       return this;
     }
 

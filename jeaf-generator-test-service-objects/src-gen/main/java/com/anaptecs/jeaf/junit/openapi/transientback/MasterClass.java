@@ -157,13 +157,7 @@ public class MasterClass implements ServiceObject {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setClients( List<ClientClass> pClients ) {
-      // To ensure immutability we have to copy the content of the passed collection.
-      if (pClients != null) {
-        clients = new ArrayList<ClientClass>(pClients);
-      }
-      else {
-        clients = null;
-      }
+      clients = pClients;
       return this;
     }
 

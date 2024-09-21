@@ -98,13 +98,7 @@ public abstract class AbstractResponse<T> implements ServiceObject {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder<T> setErrors( List<Message> pErrors ) {
-      // To ensure immutability we have to copy the content of the passed collection.
-      if (pErrors != null) {
-        errors = new ArrayList<Message>(pErrors);
-      }
-      else {
-        errors = null;
-      }
+      errors = pErrors;
       return this;
     }
 
@@ -131,13 +125,7 @@ public abstract class AbstractResponse<T> implements ServiceObject {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder<T> setWarnings( List<Message> pWarnings ) {
-      // To ensure immutability we have to copy the content of the passed collection.
-      if (pWarnings != null) {
-        warnings = new ArrayList<Message>(pWarnings);
-      }
-      else {
-        warnings = null;
-      }
+      warnings = pWarnings;
       return this;
     }
 

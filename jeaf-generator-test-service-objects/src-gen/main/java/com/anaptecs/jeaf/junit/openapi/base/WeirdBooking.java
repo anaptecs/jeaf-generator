@@ -286,13 +286,7 @@ public class WeirdBooking extends WeirdParent {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setAdditionalBookings( List<ComplexBookingID> pAdditionalBookings ) {
-      // To ensure immutability we have to copy the content of the passed collection.
-      if (pAdditionalBookings != null) {
-        additionalBookings = new ArrayList<ComplexBookingID>(pAdditionalBookings);
-      }
-      else {
-        additionalBookings = null;
-      }
+      additionalBookings = pAdditionalBookings;
       return this;
     }
 
@@ -358,13 +352,7 @@ public class WeirdBooking extends WeirdParent {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setInventories( Set<InventoryType> pInventories ) {
-      // To ensure immutability we have to copy the content of the passed collection.
-      if (pInventories != null) {
-        inventories = new HashSet<InventoryType>(pInventories);
-      }
-      else {
-        inventories = null;
-      }
+      inventories = pInventories;
       return this;
     }
 
@@ -395,7 +383,7 @@ public class WeirdBooking extends WeirdParent {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setInventories( InventoryType... pInventories ) {
-      // To ensure immutability we have to copy the content of the passed array.
+      // Copy the content of the passed array.
       if (pInventories != null) {
         inventories = new HashSet<InventoryType>(Arrays.asList(pInventories));
       }

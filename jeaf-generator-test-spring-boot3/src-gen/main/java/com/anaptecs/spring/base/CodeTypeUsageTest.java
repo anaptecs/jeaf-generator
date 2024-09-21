@@ -164,13 +164,7 @@ public class CodeTypeUsageTest {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBooleanCodeAssociation( Set<BooleanCodeType> pBooleanCodeAssociation ) {
-      // To ensure immutability we have to copy the content of the passed collection.
-      if (pBooleanCodeAssociation != null) {
-        booleanCodeAssociation = new HashSet<BooleanCodeType>(pBooleanCodeAssociation);
-      }
-      else {
-        booleanCodeAssociation = null;
-      }
+      booleanCodeAssociation = pBooleanCodeAssociation;
       return this;
     }
 
@@ -198,13 +192,7 @@ public class CodeTypeUsageTest {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setShortCodeTypeAssociation( Set<ShortCodeType> pShortCodeTypeAssociation ) {
-      // To ensure immutability we have to copy the content of the passed collection.
-      if (pShortCodeTypeAssociation != null) {
-        shortCodeTypeAssociation = new HashSet<ShortCodeType>(pShortCodeTypeAssociation);
-      }
-      else {
-        shortCodeTypeAssociation = null;
-      }
+      shortCodeTypeAssociation = pShortCodeTypeAssociation;
       return this;
     }
 

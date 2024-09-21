@@ -206,7 +206,7 @@ public class Booking implements Serializable {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setInventories( InventoryType... pInventories ) {
-      // To ensure immutability we have to copy the content of the passed array.
+      // Copy the content of the passed array.
       if (pInventories != null) {
         inventories = new ArrayList<InventoryType>(Arrays.asList(pInventories));
       }

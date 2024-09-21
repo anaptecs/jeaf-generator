@@ -235,13 +235,7 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setAuthorizedPersons( Set<Person> pAuthorizedPersons ) {
-      // To ensure immutability we have to copy the content of the passed collection.
-      if (pAuthorizedPersons != null) {
-        authorizedPersons = new HashSet<Person>(pAuthorizedPersons);
-      }
-      else {
-        authorizedPersons = null;
-      }
+      authorizedPersons = pAuthorizedPersons;
       return this;
     }
 
@@ -269,13 +263,7 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setBookings( Set<Booking> pBookings ) {
-      // To ensure immutability we have to copy the content of the passed collection.
-      if (pBookings != null) {
-        bookings = new HashSet<Booking>(pBookings);
-      }
-      else {
-        bookings = null;
-      }
+      bookings = pBookings;
       return this;
     }
 

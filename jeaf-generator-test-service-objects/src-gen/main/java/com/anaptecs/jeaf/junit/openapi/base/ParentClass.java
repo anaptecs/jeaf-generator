@@ -178,13 +178,7 @@ public class ParentClass implements ServiceObject {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setIbans( Set<IBAN> pIbans ) {
-      // To ensure immutability we have to copy the content of the passed collection.
-      if (pIbans != null) {
-        ibans = new HashSet<IBAN>(pIbans);
-      }
-      else {
-        ibans = null;
-      }
+      ibans = pIbans;
       return this;
     }
 
@@ -224,13 +218,7 @@ public class ParentClass implements ServiceObject {
      */
     @Deprecated
     public Builder setLegacyBankAccounts( List<BankAccount> pLegacyBankAccounts ) {
-      // To ensure immutability we have to copy the content of the passed collection.
-      if (pLegacyBankAccounts != null) {
-        legacyBankAccounts = new ArrayList<BankAccount>(pLegacyBankAccounts);
-      }
-      else {
-        legacyBankAccounts = null;
-      }
+      legacyBankAccounts = pLegacyBankAccounts;
       return this;
     }
 

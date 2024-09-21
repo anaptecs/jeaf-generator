@@ -155,13 +155,7 @@ public abstract class ComplexBookingIDBase {
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setBookingIDs( List<BookingID> pBookingIDs ) {
-      // To ensure immutability we have to copy the content of the passed collection.
-      if (pBookingIDs != null) {
-        bookingIDs = new ArrayList<BookingID>(pBookingIDs);
-      }
-      else {
-        bookingIDs = null;
-      }
+      bookingIDs = pBookingIDs;
       return this;
     }
 

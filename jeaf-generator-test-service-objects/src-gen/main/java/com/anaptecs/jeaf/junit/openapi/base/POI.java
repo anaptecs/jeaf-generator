@@ -309,13 +309,7 @@ public class POI extends Stop {
      */
     @Deprecated
     public Builder setEvenMoreLinkLinks( Set<SoftLink> pEvenMoreLinks ) {
-      // To ensure immutability we have to copy the content of the passed collection.
-      if (pEvenMoreLinks != null) {
-        evenMoreLinkLinks = new HashSet<SoftLink>(pEvenMoreLinks);
-      }
-      else {
-        evenMoreLinkLinks = null;
-      }
+      evenMoreLinkLinks = pEvenMoreLinks;
       return this;
     }
 
@@ -328,13 +322,7 @@ public class POI extends Stop {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setStops( Set<UICStop> pStops ) {
-      // To ensure immutability we have to copy the content of the passed collection.
-      if (pStops != null) {
-        stops = new HashSet<UICStop>(pStops);
-      }
-      else {
-        stops = null;
-      }
+      stops = pStops;
       return this;
     }
 
@@ -363,13 +351,7 @@ public class POI extends Stop {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBookingCodes( Set<BookingCode> pBookingCodes ) {
-      // To ensure immutability we have to copy the content of the passed collection.
-      if (pBookingCodes != null) {
-        bookingCodes = new HashSet<BookingCode>(pBookingCodes);
-      }
-      else {
-        bookingCodes = null;
-      }
+      bookingCodes = pBookingCodes;
       return this;
     }
 

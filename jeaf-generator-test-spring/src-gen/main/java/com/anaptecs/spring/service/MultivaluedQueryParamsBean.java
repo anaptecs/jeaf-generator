@@ -250,7 +250,7 @@ public class MultivaluedQueryParamsBean {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setTimeUnits( TimeUnit... pTimeUnits ) {
-      // To ensure immutability we have to copy the content of the passed array.
+      // Copy the content of the passed array.
       if (pTimeUnits != null) {
         timeUnits = new HashSet<TimeUnit>(Arrays.asList(pTimeUnits));
       }

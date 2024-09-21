@@ -1266,6 +1266,15 @@ public class GeneratorMojo extends AbstractMojo {
   private Boolean useArraysOnlyForPrimitives;
 
   /**
+   * Switch can be used to disable generation of save copy of collections inside builders. By default, in builders there
+   * collections will be copied to strictly ensure that internal data structures of an object can not be edited from
+   * outside. However, this behavior also leads to additional garbage. Using this switch it is possible to disable the
+   * save copy mechanism for collections inside setters for collections.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean disableSaveCopyOfCollectionsInBuilders;
+
+  /**
    * Switch defines whether generated methods dealing with any kind of collections must ensure that the internal state
    * of an object can not be modified by accident. This will lead to get method that make use of
    * Collections.unmodifiableCollection(...). Builders that receive a collection as input will copy their content. This
@@ -1915,6 +1924,10 @@ public class GeneratorMojo extends AbstractMojo {
       lLog.info("Use arrays for primitives only:                   " + useArraysOnlyForPrimitives);
     }
 
+    if (disableSaveCopyOfCollectionsInBuilders) {
+      lLog.info("Disable save copy of collections in builders:     " + disableSaveCopyOfCollectionsInBuilders);
+    }
+
     // Print information about immutability behavior
     if (disableImmutabilityOfCollections) {
       lLog.info("Disable immutability for collections:             " + disableImmutabilityOfCollections);
@@ -2202,6 +2215,8 @@ public class GeneratorMojo extends AbstractMojo {
 
       System.setProperty("switch.gen.arrays.for.primitives.only", useArraysOnlyForPrimitives.toString());
 
+      System.setProperty(PROPERTY_PREFIX + "disableSaveCopyOfCollectionsInBuilders",
+          disableSaveCopyOfCollectionsInBuilders.toString());
       System.setProperty("switch.gen.disable.collection.immutability", disableImmutabilityOfCollections.toString());
       System.setProperty("switch.gen.disable.array.immutability", disableImmutabilityOfArrays.toString());
       System.setProperty("switch.gen.disable.binary.data.immutability", disableImmutabilityOfBinaryData.toString());

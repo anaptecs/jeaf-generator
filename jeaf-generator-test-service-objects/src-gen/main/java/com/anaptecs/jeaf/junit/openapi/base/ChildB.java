@@ -242,13 +242,7 @@ public class ChildB extends ParentClass {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setComposition( Set<ParentClass> pComposition ) {
-      // To ensure immutability we have to copy the content of the passed collection.
-      if (pComposition != null) {
-        composition = new HashSet<ParentClass>(pComposition);
-      }
-      else {
-        composition = null;
-      }
+      composition = pComposition;
       return this;
     }
 

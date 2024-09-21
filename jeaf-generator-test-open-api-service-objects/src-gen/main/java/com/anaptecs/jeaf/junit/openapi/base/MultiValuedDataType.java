@@ -295,7 +295,7 @@ public class MultiValuedDataType implements ServiceObject {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setLiterals( @MyNotEmptyProperty BooleanLiteralsEnum... pLiterals ) {
-      // To ensure immutability we have to copy the content of the passed array.
+      // Copy the content of the passed array.
       if (pLiterals != null) {
         literals = new ArrayList<BooleanLiteralsEnum>(Arrays.asList(pLiterals));
       }

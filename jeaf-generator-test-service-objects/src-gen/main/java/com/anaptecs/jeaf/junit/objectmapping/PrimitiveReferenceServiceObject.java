@@ -172,13 +172,7 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBooleanSet( Set<Boolean> pBooleanSet ) {
-      // To ensure immutability we have to copy the content of the passed collection.
-      if (pBooleanSet != null) {
-        booleanSet = new HashSet<Boolean>(pBooleanSet);
-      }
-      else {
-        booleanSet = null;
-      }
+      booleanSet = pBooleanSet;
       return this;
     }
 
@@ -205,13 +199,7 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setBuffers( Set<StringBuffer> pBuffers ) {
-      // To ensure immutability we have to copy the content of the passed collection.
-      if (pBuffers != null) {
-        buffers = new HashSet<StringBuffer>(pBuffers);
-      }
-      else {
-        buffers = null;
-      }
+      buffers = pBuffers;
       return this;
     }
 
@@ -238,13 +226,7 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setStrings( Set<String> pStrings ) {
-      // To ensure immutability we have to copy the content of the passed collection.
-      if (pStrings != null) {
-        strings = new HashSet<String>(pStrings);
-      }
-      else {
-        strings = null;
-      }
+      strings = pStrings;
       return this;
     }
 

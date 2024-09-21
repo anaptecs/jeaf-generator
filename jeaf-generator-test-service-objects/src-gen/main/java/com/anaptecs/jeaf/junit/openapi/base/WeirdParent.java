@@ -160,13 +160,7 @@ public class WeirdParent implements ServiceObject {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setComplexBookings( Set<ComplexBookingID> pComplexBookings ) {
-      // To ensure immutability we have to copy the content of the passed collection.
-      if (pComplexBookings != null) {
-        complexBookings = new HashSet<ComplexBookingID>(pComplexBookings);
-      }
-      else {
-        complexBookings = null;
-      }
+      complexBookings = pComplexBookings;
       return this;
     }
 
