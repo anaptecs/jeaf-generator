@@ -29,6 +29,8 @@ cached List[uml::Slot] getOrderedSlots(uml::EnumerationLiteral literal):
 cached String getSlotValue(uml::Slot slot):
     if slot == null
     then "null"
+    else if slot.definingFeature.isMultivalued()
+    then slot.getMultivaluedSlotValue()
     else if slot.isEnumTypeSlot()
     then slot.definingFeature.type.fqn() + "." + slot.value.first().stringValue()
     else if slot.isStringTypeSlot()
@@ -37,6 +39,10 @@ cached String getSlotValue(uml::Slot slot):
     then slot.value.first().stringValue() + "f"
     else slot.value.first().stringValue(); 
     
+private String getMultivaluedSlotValue(uml::Slot slot):
+	if slot.definingFeature.isUnique == false
+	then "java.util.List.of(" + slot.value.collect(e|slot.definingFeature.type.fqn() + "." + e.stringValue()).toString(", ") + ")" 
+	else "java.util.Set.of(" + slot.value.collect(e|slot.definingFeature.type.fqn() + "." + e.stringValue()).toString(", ") + ")";
     
 cached String getMissingMandatorySlots(uml::EnumerationLiteral literal):
     literal.javaGetMissingMandatorySlots().toString(", ");
