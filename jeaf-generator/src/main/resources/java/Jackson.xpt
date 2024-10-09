@@ -44,7 +44,7 @@
 		«ENDIF»
 	    «IF this.hasAddToJSONProperty() || this.hasPropertyWithBckwardCompatibility()»
 	        @com.fasterxml.jackson.annotation.JsonPropertyOrder(value = {
-	           «FOREACH this.getAllPropertiesFromHierarchy() AS property SEPARATOR ", "»"«property.name»"«ENDFOREACH»
+	           «FOREACH this.getAllPropertiesFromHierarchy().select(e|e.isTransient() == false) AS property SEPARATOR ", "»"«property.name»"«ENDFOREACH»
 	        })
 	    «ENDIF»
 	«ENDIF»
