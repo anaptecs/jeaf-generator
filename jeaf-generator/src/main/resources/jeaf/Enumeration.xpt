@@ -51,15 +51,18 @@ package «packageName()»;
           «FOREACH this.ownedAttribute AS attr»
           «IF attr.type.isStringType()»
           «attr.name» = null;
-          «ELSE»«IF attr.type.isBooleanType()»
-          «attr.name» = false;
+          «ELSEIF attr.isMultivalued()»
+          	  «attr.name» = java.util.Collections.emptyList();
           «ELSE»
-            «IF attr.type.isEnumeration()»
-                «attr.name» = null;
-            «ELSE»
-                «attr.name» = -1;
-            «ENDIF»
-          «ENDIF»             
+	          «IF attr.type.isBooleanType()»
+	          «attr.name» = false;
+	          «ELSE»
+	            «IF attr.type.isEnumeration()»
+	                «attr.name» = null;
+	            «ELSE»
+	                «attr.name» = -1;
+	            «ENDIF»
+	          «ENDIF»             
           «ENDIF»
           «ENDFOREACH»
         }
@@ -70,7 +73,16 @@ package «packageName()»;
 		 */
 		private «this.name»(«this.ownedAttribute.asParameterDefinitionList()») {
 		  «FOREACH this.ownedAttribute AS attr»
+		  «IF attr.isMultivalued()»
+		  	if(«attr.asParameter()» != null) {
+		  	    «attr.name» = «attr.asParameter()»;
+		  	}
+		  	else {
+		  	    «attr.name» = java.util.Collections.emptyList();
+		  	}
+		  «ELSE»
 		  «attr.name» = «attr.asParameter()»;
+		  «ENDIF»
 		  «ENDFOREACH»
 		}
 		«EXPAND Attribute::DoPropertyDeclaration FOREACH this.ownedAttribute»

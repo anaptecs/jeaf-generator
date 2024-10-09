@@ -3,6 +3,9 @@ extension java::GeneratorCommons;
 extension java::Naming;
 
 
+cached boolean isEnumeration(uml::Element element):
+  JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.isEnumeration(org.eclipse.uml2.uml.Element);  
+  
 cached uml::Enumeration asEnumeration(uml::Element element):
     (uml::Enumeration) element;
     
