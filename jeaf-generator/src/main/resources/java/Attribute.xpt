@@ -139,7 +139,9 @@
     «ENDIF-»	
     «EXPAND java::Helper::NotNullAnnotationForProperty»
 	«IF this.isInternalProperty() == false»public«ENDIF» «this.fqn()» «asGetter()»() {
-	    «IF this.generateBackwardCompatibility() == false»
+	    «IF this.owner.isEnumeration() && this.isMultivalued()»
+	    	return «asInstanceVar()»;
+	    «ELSEIF this.generateBackwardCompatibility() == false»
 		    «IF this.isMultivalued() == false»return «asInstanceVar()»;
 		    «ELSE»
 			    «this.fqn()» lReturnValue;
