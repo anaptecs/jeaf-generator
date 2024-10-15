@@ -13,13 +13,13 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "objectType", visible = true)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type", visible = true)
 @JsonSubTypes({ @JsonSubTypes.Type(value = GeoPosition.class, name = "GeoPosition"),
   @JsonSubTypes.Type(value = SwissGeoPosition.class, name = "SwissGeoPosition"),
   @JsonSubTypes.Type(value = StopPlaceRef.class, name = "StopPlaceRef"),
-  @JsonSubTypes.Type(value = CHStopPlace.class, name = "CHStopPlace"),
+  @JsonSubTypes.Type(value = CHStopPlace.class, name = "FOO"),
   @JsonSubTypes.Type(value = UICStopPlace.class, name = "UICStopPlace"),
-  @JsonSubTypes.Type(value = TopoRef.class, name = "TopoRef") })
+  @JsonSubTypes.Type(value = TopoRef.class, name = "FOO-BAR") })
 public abstract class PlaceRef implements Serializable {
   /**
    * Default serial version UID.
@@ -31,7 +31,14 @@ public abstract class PlaceRef implements Serializable {
    */
   public static final String NAME = "name";
 
+  /**
+   * Constant for the name of attribute "type".
+   */
+  public static final String TYPE = "type";
+
   private String name;
+
+  private MyType type;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
@@ -50,6 +57,7 @@ public abstract class PlaceRef implements Serializable {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     name = pBuilder.name;
+    type = pBuilder.type;
   }
 
   /**
@@ -57,6 +65,8 @@ public abstract class PlaceRef implements Serializable {
    */
   public static abstract class Builder {
     private String name;
+
+    private MyType type;
 
     /**
      * Use {@link PlaceRef#builder()} instead of private constructor to create new builder.
@@ -71,6 +81,7 @@ public abstract class PlaceRef implements Serializable {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setName(pObject.name);
+        this.setType(pObject.type);
       }
     }
 
@@ -83,6 +94,17 @@ public abstract class PlaceRef implements Serializable {
     public Builder setName( String pName ) {
       // Assign value to attribute
       name = pName;
+      return this;
+    }
+
+    /**
+     * Method sets association {@link #type}.<br/>
+     *
+     * @param pType Value to which {@link #type} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    public Builder setType( MyType pType ) {
+      type = pType;
       return this;
     }
   }
@@ -104,6 +126,31 @@ public abstract class PlaceRef implements Serializable {
   public void setName( String pName ) {
     // Assign value to attribute
     name = pName;
+  }
+
+  /**
+   * Method returns association {@link #type}.<br/>
+   *
+   * @return {@link MyType} Value to which {@link #type} is set.
+   */
+  public MyType getType( ) {
+    return type;
+  }
+
+  /**
+   * Method sets association {@link #type}.<br/>
+   *
+   * @param pType Value to which {@link #type} should be set.
+   */
+  public void setType( MyType pType ) {
+    type = pType;
+  }
+
+  /**
+   * Method unsets {@link #type}.
+   */
+  public final void unsetType( ) {
+    type = null;
   }
 
   /**

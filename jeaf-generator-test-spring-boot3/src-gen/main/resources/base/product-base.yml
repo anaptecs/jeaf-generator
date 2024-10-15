@@ -616,6 +616,17 @@ components:
            - CHF
           nullable: false
 
+    # com.anaptecs.spring.base.MyType
+    MyType:
+      type: string
+      enum:
+        - FOO
+        - BAR
+        - FOO_BAR
+        - UIC_STOP_PLACE
+        - GEO_POSITION
+        - SWIIS_GEO_POSITION
+
     # com.anaptecs.spring.base.NoSubTypesChild
     NoSubTypesChild:
       allOf:
@@ -796,17 +807,24 @@ components:
       type: object
       additionalProperties: false
       discriminator:
-        propertyName: objectType
+        propertyName: type
+        mapping:
+          PlaceRef: '#/components/schemas/PlaceRef'
+          FOO: '#/components/schemas/CHStopPlace'
+          GeoPosition: '#/components/schemas/GeoPosition'
+          StopPlaceRef: '#/components/schemas/StopPlaceRef'
+          SwissGeoPosition: '#/components/schemas/SwissGeoPosition'
+          FOO-BAR: '#/components/schemas/TopoRef'
+          UICStopPlace: '#/components/schemas/UICStopPlace'
       required:
-        - objectType
         - name
+        - type
       properties:
-        objectType:
-          description: Attribute is used as discriminator for inheritance between data types.
-          type: string
         name:
           type: string
           nullable: false
+        type:
+          $ref: '#/components/schemas/MyType'
 
     # com.anaptecs.spring.base.PostalAddress
     PostalAddress:

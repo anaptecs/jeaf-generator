@@ -41,15 +41,18 @@ public class SwissGeoPosition extends GeoPosition {
    *
    * @param pName Value to which {@link #name} should be set.
    *
+   * @param pType Value to which {@link #type} should be set.
+   *
    * @param pLongitude Value to which {@link #longitude} should be set.
    *
    * @param pLatitude Value to which {@link #latitude} should be set.
    *
    * @return {@link com.anaptecs.spring.base.SwissGeoPosition}
    */
-  public static SwissGeoPosition of( String pName, int pLongitude, int pLatitude ) {
+  public static SwissGeoPosition of( String pName, MyType pType, int pLongitude, int pLatitude ) {
     SwissGeoPosition.Builder lBuilder = SwissGeoPosition.builder();
     lBuilder.setName(pName);
+    lBuilder.setType(pType);
     lBuilder.setLongitude(pLongitude);
     lBuilder.setLatitude(pLatitude);
     return lBuilder.build();
@@ -83,6 +86,19 @@ public class SwissGeoPosition extends GeoPosition {
     public Builder setName( String pName ) {
       // Call super class implementation.
       super.setName(pName);
+      return this;
+    }
+
+    /**
+     * Method sets association {@link #type}.<br/>
+     *
+     * @param pType Value to which {@link #type} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    @Override
+    public Builder setType( MyType pType ) {
+      // Call super class implementation.
+      super.setType(pType);
       return this;
     }
 

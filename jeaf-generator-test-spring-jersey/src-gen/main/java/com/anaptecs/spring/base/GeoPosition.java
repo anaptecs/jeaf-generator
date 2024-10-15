@@ -58,15 +58,18 @@ public class GeoPosition extends PlaceRef {
    *
    * @param pName Value to which {@link #name} should be set.
    *
+   * @param pType Value to which {@link #type} should be set.
+   *
    * @param pLongitude Value to which {@link #longitude} should be set.
    *
    * @param pLatitude Value to which {@link #latitude} should be set.
    *
    * @return {@link com.anaptecs.spring.base.GeoPosition}
    */
-  public static GeoPosition of( String pName, int pLongitude, int pLatitude ) {
+  public static GeoPosition of( String pName, MyType pType, int pLongitude, int pLatitude ) {
     GeoPosition.Builder lBuilder = GeoPosition.builder();
     lBuilder.setName(pName);
+    lBuilder.setType(pType);
     lBuilder.setLongitude(pLongitude);
     lBuilder.setLatitude(pLatitude);
     return lBuilder.build();
@@ -109,6 +112,19 @@ public class GeoPosition extends PlaceRef {
     public Builder setName( String pName ) {
       // Call super class implementation.
       super.setName(pName);
+      return this;
+    }
+
+    /**
+     * Method sets association {@link #type}.<br/>
+     *
+     * @param pType Value to which {@link #type} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    @Override
+    public Builder setType( MyType pType ) {
+      // Call super class implementation.
+      super.setType(pType);
       return this;
     }
 

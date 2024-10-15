@@ -48,11 +48,14 @@ public class TopoRef extends PlaceRef {
    *
    * @param pName Value to which {@link #name} should be set.
    *
+   * @param pType Value to which {@link #type} should be set.
+   *
    * @return {@link com.anaptecs.spring.base.TopoRef}
    */
-  public static TopoRef of( String pName ) {
+  public static TopoRef of( String pName, MyType pType ) {
     TopoRef.Builder lBuilder = TopoRef.builder();
     lBuilder.setName(pName);
+    lBuilder.setType(pType);
     return lBuilder.build();
   }
 
@@ -104,6 +107,19 @@ public class TopoRef extends PlaceRef {
     public Builder setName( String pName ) {
       // Call super class implementation.
       super.setName(pName);
+      return this;
+    }
+
+    /**
+     * Method sets association {@link #type}.<br/>
+     *
+     * @param pType Value to which {@link #type} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    @Override
+    public Builder setType( MyType pType ) {
+      // Call super class implementation.
+      super.setType(pType);
       return this;
     }
 

@@ -13,7 +13,14 @@ public abstract class PlaceRef {
    */
   public static final String NAME = "name";
 
+  /**
+   * Constant for the name of attribute "type".
+   */
+  public static final String TYPE = "type";
+
   private String name;
+
+  private MyType type;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
@@ -30,6 +37,7 @@ public abstract class PlaceRef {
   protected PlaceRef( Builder pBuilder ) {
     // Read attribute values from builder.
     name = pBuilder.name;
+    type = pBuilder.type;
   }
 
   /**
@@ -37,6 +45,8 @@ public abstract class PlaceRef {
    */
   public static abstract class Builder {
     private String name;
+
+    private MyType type;
 
     /**
      * Use {@link PlaceRef#builder()} instead of private constructor to create new builder.
@@ -51,6 +61,7 @@ public abstract class PlaceRef {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setName(pObject.name);
+        this.setType(pObject.type);
       }
     }
 
@@ -63,6 +74,17 @@ public abstract class PlaceRef {
     public Builder setName( String pName ) {
       // Assign value to attribute
       name = pName;
+      return this;
+    }
+
+    /**
+     * Method sets association {@link #type}.<br/>
+     *
+     * @param pType Value to which {@link #type} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    public Builder setType( MyType pType ) {
+      type = pType;
       return this;
     }
   }
@@ -86,11 +108,37 @@ public abstract class PlaceRef {
     name = pName;
   }
 
+  /**
+   * Method returns association {@link #type}.<br/>
+   *
+   * @return {@link MyType} Value to which {@link #type} is set.
+   */
+  public MyType getType( ) {
+    return type;
+  }
+
+  /**
+   * Method sets association {@link #type}.<br/>
+   *
+   * @param pType Value to which {@link #type} should be set.
+   */
+  public void setType( MyType pType ) {
+    type = pType;
+  }
+
+  /**
+   * Method unsets {@link #type}.
+   */
+  public final void unsetType( ) {
+    type = null;
+  }
+
   @Override
   public int hashCode( ) {
     final int lPrime = 31;
     int lResult = 1;
     lResult = lPrime * lResult + Objects.hashCode(name);
+    lResult = lPrime * lResult + Objects.hashCode(type);
     return lResult;
   }
 
@@ -108,7 +156,7 @@ public abstract class PlaceRef {
     }
     else {
       PlaceRef lOther = (PlaceRef) pObject;
-      lEquals = Objects.equals(name, lOther.name);
+      lEquals = Objects.equals(name, lOther.name) && Objects.equals(type, lOther.type);
     }
     return lEquals;
   }
@@ -127,6 +175,10 @@ public abstract class PlaceRef {
     lBuilder.append(pIndent);
     lBuilder.append("name: ");
     lBuilder.append(name);
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("type: ");
+    lBuilder.append(type);
     lBuilder.append(System.lineSeparator());
     return lBuilder;
   }

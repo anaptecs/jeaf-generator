@@ -123,8 +123,8 @@ cached boolean hasMultiLineComment(uml::Element element) :
     //element.ownedComment.get(0).body.contains("\n");
     true;
     
-cached boolean generateDefaultClassMapping() :
-    false;
+cached boolean generateClassMapping(uml::Class class) :
+    class.isStereotypeApplied("JSONMapping");
     
 cached String getOpenAPIType(uml::Type type, JMM::OpenAPI3Specification spec):
     JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.getOpenAPIType(org.eclipse.uml2.uml.Type, org.eclipse.uml2.uml.Component);
