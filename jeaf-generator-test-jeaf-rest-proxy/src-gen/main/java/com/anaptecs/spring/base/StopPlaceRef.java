@@ -61,5 +61,18 @@ public abstract class StopPlaceRef extends PlaceRef {
       super.setName(pName);
       return this;
     }
+
+    /**
+     * Method sets association {@link #type}.<br/>
+     *
+     * @param pType Value to which {@link #type} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    @Override
+    public Builder setType( MyType pType ) {
+      // Call super class implementation.
+      super.setType(pType);
+      return this;
+    }
   }
 }

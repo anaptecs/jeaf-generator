@@ -41,11 +41,14 @@ public class CHStopPlace extends StopPlaceRef {
    *
    * @param pName Value to which {@link #name} should be set.
    *
+   * @param pType Value to which {@link #type} should be set.
+   *
    * @return {@link com.anaptecs.spring.base.CHStopPlace}
    */
-  public static CHStopPlace of( String pName ) {
+  public static CHStopPlace of( String pName, MyType pType ) {
     CHStopPlace.Builder lBuilder = CHStopPlace.builder();
     lBuilder.setName(pName);
+    lBuilder.setType(pType);
     return lBuilder.build();
   }
 
@@ -77,6 +80,19 @@ public class CHStopPlace extends StopPlaceRef {
     public Builder setName( String pName ) {
       // Call super class implementation.
       super.setName(pName);
+      return this;
+    }
+
+    /**
+     * Method sets association {@link #type}.<br/>
+     *
+     * @param pType Value to which {@link #type} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    @Override
+    public Builder setType( MyType pType ) {
+      // Call super class implementation.
+      super.setType(pType);
       return this;
     }
 

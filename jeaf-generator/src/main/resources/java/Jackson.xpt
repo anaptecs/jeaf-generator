@@ -23,9 +23,9 @@
 		«IF (this.isTechnicalBaseClass() == false && this.superClass.size == 0 && this.getSubclasses().size > 0 ) ||
 		     (superClass.size > 0 && superClass.first().isTechnicalBaseClass() && this.isTechnicalBaseClass() == false && this.getSubclasses().size > 0) »
 		  «IF enableSemVerForJSON() == false»
-		@com.fasterxml.jackson.annotation.JsonIgnoreProperties(value = "objectType")
+		@com.fasterxml.jackson.annotation.JsonIgnoreProperties(value = "«this.getDescriminatorPropertyName()»")
 		  «ENDIF»
-		@com.fasterxml.jackson.annotation.JsonTypeInfo(use = com.fasterxml.jackson.annotation.JsonTypeInfo.Id.NAME, include = com.fasterxml.jackson.annotation.JsonTypeInfo.As.PROPERTY, property = "objectType", visible = true)
+		@com.fasterxml.jackson.annotation.JsonTypeInfo(use = com.fasterxml.jackson.annotation.JsonTypeInfo.Id.NAME, include = com.fasterxml.jackson.annotation.JsonTypeInfo.As.PROPERTY, property = "«this.getDescriminatorPropertyName()»", visible = true)
 		«IF this.suppressSubtypesMapping() == false»
 		@com.fasterxml.jackson.annotation.JsonSubTypes({
 		  «EXPAND SubtypesAnnotation -»
@@ -52,7 +52,7 @@
 
 «DEFINE SubtypesAnnotation FOR Class»
 	«FOREACH this.getSubclasses().typeSelect(Class) AS subclass SEPARATOR "," »
-	@com.fasterxml.jackson.annotation.JsonSubTypes.Type(value = «subclass.getNearestPackage().fqn()».«subclass.name».class, name = "«subclass.name»")
+	@com.fasterxml.jackson.annotation.JsonSubTypes.Type(value = «subclass.getNearestPackage().fqn()».«subclass.name».class, name = "«subclass.getDiscriminatorValue()»")
 		«IF subclass.getSubclasses().size >0»,
 			«EXPAND SubtypesAnnotation FOR subclass»
 		«ENDIF»

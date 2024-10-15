@@ -57,11 +57,28 @@ cached List[uml::Property] getAllPropertiesFromHierarchy(uml::Class class):
   JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.getAllAttributesFromHierarchy(org.eclipse.uml2.uml.Element);   
         
 cached boolean suppressSubtypesMapping(uml::Class class):
-  if class.isStereotypeApplied("POJO")
-  then ((JMM::POJO) class).suppressSubtypesMapping
-  else 
+	if class.isStereotypeApplied("POJO")
+	then ((JMM::POJO) class).suppressSubtypesMapping
+	else 
         if class.isStereotypeApplied("ServiceObject")
         then ((JMM::ServiceObject) class).suppressSubtypesMapping
         else false;
+        
+cached String getDescriminatorPropertyName(uml::Class class):
+	if class.isStereotypeApplied("JSONMapping")
+	then ((JMM::JSONMapping) class).discriminatorPropertyName
+	else "objectType";
+
+cached String getDiscriminatorValue(uml::Class class):
+    if class.isStereotypeApplied("JSONMapping")
+    then ((JMM::JSONMapping) class).getDiscriminatorValueInternal()
+    else class.name;
+    
+private String getDiscriminatorValueInternal(JMM::JSONMapping class):
+    if class.discriminatorValue.length > 0
+    then class.discriminatorValue
+    else class.name;
+    
+    
  
        
