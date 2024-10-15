@@ -65,16 +65,16 @@ cached boolean suppressSubtypesMapping(uml::Class class):
         else false;
         
 cached String getDescriminatorPropertyName(uml::Class class):
-	if class.isStereotypeApplied("JSONMapping")
-	then ((JMM::JSONMapping) class).discriminatorPropertyName
+	if class.isStereotypeApplied("OpenAPITypeMapping")
+	then ((JMM::OpenAPITypeMapping) class).discriminatorPropertyName
 	else "objectType";
 
 cached String getDiscriminatorValue(uml::Class class):
-    if class.isStereotypeApplied("JSONMapping")
-    then ((JMM::JSONMapping) class).getDiscriminatorValueInternal()
+    if class.isStereotypeApplied("OpenAPITypeMapping")
+    then ((JMM::OpenAPITypeMapping) class).getDiscriminatorValueInternal()
     else class.name;
     
-private String getDiscriminatorValueInternal(JMM::JSONMapping class):
+private String getDiscriminatorValueInternal(JMM::OpenAPITypeMapping class):
     if class.discriminatorValue.length > 0
     then class.discriminatorValue
     else class.name;

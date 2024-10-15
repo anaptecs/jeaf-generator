@@ -124,7 +124,7 @@ cached boolean hasMultiLineComment(uml::Element element) :
     true;
     
 cached boolean generateClassMapping(uml::Class class) :
-    class.isStereotypeApplied("JSONMapping");
+    class.isStereotypeApplied("OpenAPITypeMapping");
     
 cached String getOpenAPIType(uml::Type type, JMM::OpenAPI3Specification spec):
     JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.getOpenAPIType(org.eclipse.uml2.uml.Type, org.eclipse.uml2.uml.Component);
