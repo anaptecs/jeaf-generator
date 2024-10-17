@@ -1,4 +1,4 @@
-![Maven Central Version](https://img.shields.io/maven-central/v/com.anaptecs.jeaf.generator/jeaf-generator-project) ![License](https://img.shields.io/github/license/anaptecs/jeaf-generator)
+![Maven Central Version](https://img.shields.io/maven-central/v/com.anaptecs.jeaf.generator/jeaf-generator-project)
 
 
 <br>
