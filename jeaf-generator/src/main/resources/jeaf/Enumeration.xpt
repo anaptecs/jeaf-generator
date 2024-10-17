@@ -360,7 +360,7 @@ public final class «name» {
 			    switch (pObject) {
 			    «FOREACH this.getOpenAPILiterals() AS literal»
 			      case «literal.name»:
-			        lLiteralName = "«literal.getLiteralName()»";
+			        lLiteralName = "«literal.getLiteralNameForOpenAPI()»";
 			        break;
 			    «ENDFOREACH»
 			
@@ -405,7 +405,7 @@ public final class «name» {
 					  «IF this.requiresNonStandardSerializer()»
 			          switch (lLiteralName) {
                         «FOREACH this.getOpenAPILiterals() AS literal»
-                        case "«literal.getLiteralName()»":
+                        case "«literal.getLiteralNameForOpenAPI()»":
                           lLiteral = «this.fqn()».«literal.name»;
                           break;
                         «ENDFOREACH»

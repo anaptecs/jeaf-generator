@@ -12,7 +12,7 @@ cached boolean requiresNonStandardSerializer(JMM::JEAFEnumeration enum):
 cached List[uml::EnumerationLiteral] getOpenAPILiterals(JMM::JEAFEnumeration enum):
     enum.ownedElement.select(e|e.isStereotypeApplied("OpenAPILiteral"));
     
-cached String getLiteralName(uml::EnumerationLiteral literal):
+cached String getLiteralNameForOpenAPI(uml::EnumerationLiteral literal):
     if literal.getStereotypeValue("OpenAPILiteral", "literalName").length > 0
     then literal.getStereotypeValue("OpenAPILiteral", "literalName")
     else literal.name;

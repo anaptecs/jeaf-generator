@@ -16,6 +16,7 @@ extension functions::Example;
 extension functions::RESTOperation;
 extension jeafgenerator::api::OpenAPIEnumExtensionPoint;
 extension functions::AddToJSON;
+extension functions::JEAFEnumeration;
 
 cached boolean hasOpenAPITypes(JMM::OpenAPI3Specification spec):
 	getOpenAPITypes(spec).size > 0;
@@ -429,8 +430,8 @@ cached uml::EnumerationLiteral getDefaultLiteral(JMM::OpenAPIEnumeration enum) :
     
 cached String getLiteralName(uml::EnumerationLiteral literal):
     if literal.isYAML11QutingRequired() == true
-    then "'" + literal.name + "'"
-    else literal.name;
+    then "'" + literal.getLiteralNameForOpenAPI() + "'"
+    else literal.getLiteralNameForOpenAPI();
     
 cached String getEnumerationType(uml::Enumeration enum):
 	if enum.isStereotypeApplied("OpenAPIEnumeration") && ((JMM::OpenAPIEnumeration) enum).extensibleEnum

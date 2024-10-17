@@ -39,7 +39,7 @@ public class MyTypeDeserializer extends JsonDeserializer<MyType> {
       }
       // Literal is unknown.
       catch (IllegalArgumentException e) {
-        throw new IOException("Unable to deserialize object of type ''MyType''. Literal name '" + lNode.asText()
+        throw new IOException("Unable to deserialize object of type 'MyType'. Literal name '" + lNode.asText()
             + "' does not match to expected vales of enum 'MyType'.");
       }
       return lLiteral;
