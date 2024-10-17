@@ -25,6 +25,9 @@
 ### Service `AccountingBasicDataService`
 | Operation        | REST Resource Path |
 |------------------|--------------------|
+| `createResponsibilityType(ResponsibilityType)` |  |
+| `createBank(Bank)` |  |
+| `createEmployee(Person, ResponsibilityType, Bank)` |  |
 | `createAccount(Customer, Person)` |  |
 | `getAccount(ServiceObjectID)` |  |
 | `lockAccount(Account)` |  |
@@ -34,13 +37,13 @@
 | `getCustomer(ServiceObjectID, CustomerLoadStrategy)` |  |
 | `createPerson(Person)` |  |
 | `searchCustomers(CustomerQuery)` |  |
-| `createResponsibilityType(ResponsibilityType)` |  |
-| `createBank(Bank)` |  |
-| `createEmployee(Person, ResponsibilityType, Bank)` |  |
 
 ### Service `AccountingService`
 | Operation        | REST Resource Path |
 |------------------|--------------------|
+| `createResponsibilityType(ResponsibilityType)` |  |
+| `createBank(Bank)` |  |
+| `createEmployee(Person, ResponsibilityType, Bank)` |  |
 | `createAccount(Customer, Person)` |  |
 | `getAccount(ServiceObjectID)` |  |
 | `lockAccount(Account)` |  |
@@ -50,9 +53,6 @@
 | `getCustomer(ServiceObjectID, CustomerLoadStrategy)` |  |
 | `createPerson(Person)` |  |
 | `searchCustomers(CustomerQuery)` |  |
-| `createResponsibilityType(ResponsibilityType)` |  |
-| `createBank(Bank)` |  |
-| `createEmployee(Person, ResponsibilityType, Bank)` |  |
 
 ## Role `Customer`
 ### Service `RESTProductService`

@@ -1,6 +1,7 @@
 «EXTENSION java::Naming»
 «EXTENSION java::GeneratorCommons»
 «EXTENSION functions::Enumeration»
+«EXTENSION functions::JEAFEnumeration»
 
 «IMPORT uml»
 «IMPORT java»
@@ -342,7 +343,7 @@ public final class «name» {
 «ENDFILE»
 «ENDDEFINE»
 
-«DEFINE GenerateExtensibleEnumSerializer FOR JEAFEnumeration -»
+«DEFINE GenerateEnumSerializer FOR JEAFEnumeration -»
 	«FILE packagePath() + "/serializers/" + name +"Serializer.java" src_gen»
 		«getFileHeader()»
 		package «this.packageName()».serializers;
@@ -354,14 +355,29 @@ public final class «name» {
 		public class «name»Serializer extends com.fasterxml.jackson.databind.JsonSerializer<«this.fqn()»> {
 		  @Override
 		  public void serialize( «this.fqn()» pObject, com.fasterxml.jackson.core.JsonGenerator pGenerator, com.fasterxml.jackson.databind.SerializerProvider pSerializers ) throws java.io.IOException {
+		    «IF this.requiresNonStandardSerializer()»
+			    String lLiteralName;
+			    switch (pObject) {
+			    «FOREACH this.getOpenAPILiterals() AS literal»
+			      case «literal.name»:
+			        lLiteralName = "«literal.getLiteralName()»";
+			        break;
+			    «ENDFOREACH»
+			
+			      default:
+			        lLiteralName = pObject.name();
+			    }
+			    pGenerator.writeString(lLiteralName);
+		    «ELSE»
 		    // Write value directly to JSON and avoid nesting object structures. Existing toString() operation is exactly what we need.
 		    pGenerator.writeString(pObject.toString());
+		    «ENDIF»
 		  }		    
 		}
 	«ENDFILE»
 «ENDDEFINE»
 
-«DEFINE GenerateExtensibleEnumDeserializer FOR JEAFEnumeration -»
+«DEFINE GenerateEnumDeserializer FOR JEAFEnumeration -»
 	«FILE packagePath() + "/serializers/" + name +"Deserializer.java" src_gen»
 		«getFileHeader()»
 		package «this.packageName()».serializers;
@@ -379,18 +395,34 @@ public final class «name» {
 		
 		    // We expect that enumerations are always serialized as plain text which will result in a TextNode.
 		    if (lNode instanceof com.fasterxml.jackson.databind.node.TextNode) {
-		        «IF generateHeavyStyleExtensibleEnums()»
+		        «IF generateHeavyStyleExtensibleEnums() && this.extensibleEnum»
 					String lLiteralName = lNode.asText();
 					return «this.fqn()».valueOf(lLiteralName);
                 «ELSE»
 					«this.fqn()» lLiteral;
 					try {
 					  String lLiteralName = lNode.asText();
+					  «IF this.requiresNonStandardSerializer()»
+			          switch (lLiteralName) {
+                        «FOREACH this.getOpenAPILiterals() AS literal»
+                        case "«literal.getLiteralName()»":
+                          lLiteral = «this.fqn()».«literal.name»;
+                          break;
+                        «ENDFOREACH»
+			            default:
+			              lLiteral = MyType.valueOf(lLiteralName);
+			          }
+					  «ELSE»
 					  lLiteral = «this.fqn()».valueOf(lLiteralName);
+					  «ENDIF»
 					}
 					// Literal is unknown.
 					catch (IllegalArgumentException e) {
+					  «IF this.extensibleEnum»
 					  lLiteral = «this.fqn()».UNKNOWN;
+					  «ELSE»
+                      throw new java.io.IOException("Unable to deserialize object of type '«this.fqn()»'. Literal name '" + lNode.asText() + "' does not match to expected vales of enum '«this.fqn()»'.");
+					  «ENDIF»
 					}
 					return lLiteral;
 	            «ENDIF»

@@ -5,3 +5,15 @@ cached boolean isJEAFEnumeration(uml::Element element):
     
 cached JMM::JEAFEnumeration asJEAFEnumeration(uml::Element element):
     (JMM::JEAFEnumeration) element;
+    
+cached boolean requiresNonStandardSerializer(JMM::JEAFEnumeration enum):
+    enum.getOpenAPILiterals().size > 0;
+    
+cached List[uml::EnumerationLiteral] getOpenAPILiterals(JMM::JEAFEnumeration enum):
+    enum.ownedElement.select(e|e.isStereotypeApplied("OpenAPILiteral"));
+    
+cached String getLiteralName(uml::EnumerationLiteral literal):
+    if literal.getStereotypeValue("OpenAPILiteral", "literalName").length > 0
+    then literal.getStereotypeValue("OpenAPILiteral", "literalName")
+    else literal.name;
+    
