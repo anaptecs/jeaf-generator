@@ -5,6 +5,7 @@
 «EXTENSION java::CustomValidationCommons»
 «EXTENSION java::OpenAPIFunctions»
 «EXTENSION functions::SystemProperties»
+«EXTENSION functions::JEAFEnumeration»
 «EXTENSION org::openarchitectureware::util::stdlib::io»
 
 
@@ -67,10 +68,10 @@
 		    «ENDIF»
 	    «ENDFOREACH»
 	    
-	    «FOREACH this.allOwnedElements().typeSelect(JEAFEnumeration).select(e|e.extensibleEnum) AS enum»
+	    «FOREACH this.allOwnedElements().typeSelect(JEAFEnumeration).select(e|e.extensibleEnum || e.requiresNonStandardSerializer()) AS enum»
 	    	«IF enum.isInGeneratorWhitelist() == true»
-	    		«EXPAND jeaf::Enumeration::GenerateExtensibleEnumSerializer FOR enum»
-	    		«EXPAND jeaf::Enumeration::GenerateExtensibleEnumDeserializer FOR enum»
+	    		«EXPAND jeaf::Enumeration::GenerateEnumSerializer FOR enum»
+	    		«EXPAND jeaf::Enumeration::GenerateEnumDeserializer FOR enum»
 	    	«ENDIF»
 	    «ENDFOREACH»	    
     «ENDIF»
