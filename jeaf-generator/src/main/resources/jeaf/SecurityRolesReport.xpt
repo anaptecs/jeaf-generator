@@ -19,7 +19,7 @@
 | Operation        | REST Resource Path |
 |------------------|--------------------|
 «FOREACH securityRole.getAuthorizedOperations(service) AS operation -»
-| `«operation.name»(«FOREACH operation.ownedParameter.select(e|e.isInputParameter()) AS param SEPARATOR ", "»«param.type.name»«ENDFOREACH»)` | «IF operation.isRESTOperation()»`«operation.asRESTOperation().getFullPath()»`«ENDIF» |
+| `«operation.name»(«FOREACH operation.ownedParameter.select(e|e.isInputParameter()) AS param SEPARATOR ", "»«param.type.name»«ENDFOREACH»)` | «IF operation.isRESTOperation()»`«operation.asRESTOperation().getFullPath().replaceFirst("//", "/*/")»`«ENDIF» |
 «ENDFOREACH»
 «ENDFOREACH-»
 «ENDFOREACH-»

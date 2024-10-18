@@ -17,7 +17,13 @@ cached List[JMM::JEAFService] getAuthorizedServices(JMM::SecurityRole role):
     role.getRelationships().typeSelect(uml::Dependency).target.typeSelect(JMM::JEAFService).addAll(role.getRelationships().typeSelect(uml::Dependency).target.typeSelect(uml::Operation).owner).toSet().sortBy(e|e.name);
     
 cached List[uml::Operation] getAuthorizedOperations(JMM::SecurityRole role, uml::Interface service):
-    role.getRelationships().typeSelect(uml::Dependency).target.typeSelect(JMM::JEAFService).ownedOperation.addAll(role.getRelationships().typeSelect(uml::Dependency).target.typeSelect(uml::Operation).select(e|e.owner == service).sortBy(e|e.name));
+    role.getOperationsFromAssociatedServices(service).addAll(role.getDirectAssociatedOperations(service)).sortBy(e|e.name);
+    
+private List[uml::Operation] getOperationsFromAssociatedServices(JMM::SecurityRole role, uml::Interface service):
+	role.getRelationships().typeSelect(uml::Dependency).target.typeSelect(JMM::JEAFService).ownedOperation.select(e|e.owner == service);
+    
+private List[uml::Operation] getDirectAssociatedOperations(JMM::SecurityRole role, uml::Interface service):
+	role.getRelationships().typeSelect(uml::Dependency).target.typeSelect(uml::Operation).select(e|e.owner == service);
     
 cached List[JMM::SecurityRole] getAssociatedSecurityRolesForRESTOperation(JMM::RESTOperation operation):
 	operation.getAssociatedSecurityRoles().addAll(operation.owner.getAssociatedSecurityRoles()).toSet().sortBy(e| e.name);
