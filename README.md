@@ -21,13 +21,13 @@ For further details please have a look on [Maven Integration](https://www.jeaf-g
 
 ## Releases, Backward Compatibility and Versioning Scheme
 * In general we try to keep JEAF Generator and especially the generated code backward compatible when ever possible / meaningful
-* The same we also try to apply to JEAF Generator Maven Plugin
-* Within the release notes, we will always provide information about hot to upgrade to the next version
+* The same we also try to apply to JEAF Generator Maven Plugin itself
+* Within the release notes, we will always provide information about how to upgrade to the next version
 
 <br>
 
 ### Verisoning Schema
-Concerning the version number s of JEAF Generator Maven Plugin we stick to `MAJOR.MINOR.PATCH` version scheme: 
+Concerning the version numbers of JEAF Generator Maven Plugin we stick to `MAJOR.MINOR.PATCH` version scheme: 
 * `MAJOR`: We increase the major version if the generated code will become incompatible due to generator changes
 * `MINOR`: We will increase the minor version when changes to the Maven Plugin configuration or UML model are required before upgrading to a new version
 * `PATCH`: We increase the patch level in case that upgrade to next version can just be done without any further changes. Please be aware that in many cases new features are made available with just a new patch version as they do not require and further changes.
