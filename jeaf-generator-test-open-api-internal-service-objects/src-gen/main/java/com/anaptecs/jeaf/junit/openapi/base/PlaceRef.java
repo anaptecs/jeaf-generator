@@ -21,7 +21,6 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "objectType", visible = true)
 @JsonSubTypes({ @JsonSubTypes.Type(value = GeoPosition.class, name = "GeoPosition"),
   @JsonSubTypes.Type(value = SwissGeoPosition.class, name = "SwissGeoPosition"),
-  @JsonSubTypes.Type(value = StopPlaceRef.class, name = "StopPlaceRef"),
   @JsonSubTypes.Type(value = CHStopPlace.class, name = "CHStopPlace"),
   @JsonSubTypes.Type(value = UICStopPlace.class, name = "UICStopPlace"),
   @JsonSubTypes.Type(value = TopoRef.class, name = "TopoRef") })

@@ -39,7 +39,7 @@
         «IF this.generateClassMapping() == true-»
         mapping:
           «name»: «this.getOpenAPIType(spec)»
-          «FOREACH this.getAllSubclasses().typeSelect(OpenAPIType) AS subclass-»
+          «FOREACH this.getAllSubclasses().typeSelect(OpenAPIType).select(e|e.isAbstract == false) AS subclass-»
           «subclass.getDiscriminatorValue()»: «subclass.getOpenAPIType(spec)»
           «ENDFOREACH-»
         «ENDIF-»  

@@ -17,8 +17,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "objectType", visible = true)
-@JsonSubTypes({ @JsonSubTypes.Type(value = ChildA.class, name = "ChildA"),
-  @JsonSubTypes.Type(value = ChildAA.class, name = "ChildAA"),
+@JsonSubTypes({ @JsonSubTypes.Type(value = ChildAA.class, name = "ChildAA"),
   @JsonSubTypes.Type(value = ChildB.class, name = "ChildB"),
   @JsonSubTypes.Type(value = ChildBB.class, name = "ChildBB") })
 public class ParentClass implements Serializable {
