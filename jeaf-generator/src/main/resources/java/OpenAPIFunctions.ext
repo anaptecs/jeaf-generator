@@ -63,8 +63,8 @@ cached List[JMM::RESTResource] getRESTResources(JMM::OpenAPI3Specification spec)
 cached List[JMM::RESTOperation] getRESTOperations(JMM::RESTResource service, String pPath):
    service.ownedOperation.typeSelect(JMM::RESTOperation).select(e|e.getRESTOperationPath(service) == pPath);
    
-cached Set[String] getPaths(JMM::RESTResource service):
-   service.ownedOperation.typeSelect(JMM::RESTOperation).getRESTOperationPath(service).toSet();
+cached List[String] getPaths(JMM::RESTResource service):
+   service.ownedOperation.typeSelect(JMM::RESTOperation).getRESTOperationPath(service).toSet().sortBy(e|e);
 	
 cached String getYAMLStyleComment(uml::Element element, String indentation):
     element.ownedComment.get(0).body.trim().replaceAll("\n", "\r\n" + indentation + "# ");
