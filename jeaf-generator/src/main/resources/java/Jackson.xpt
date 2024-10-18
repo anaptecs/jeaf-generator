@@ -52,8 +52,10 @@
 
 «DEFINE SubtypesAnnotation FOR Class»
 	«FOREACH this.getSubclasses().typeSelect(Class) AS subclass SEPARATOR "," »
+	«IF subclass.isAbstract == false»
 	@com.fasterxml.jackson.annotation.JsonSubTypes.Type(value = «subclass.getNearestPackage().fqn()».«subclass.name».class, name = "«subclass.getDiscriminatorValue()»")
-		«IF subclass.getSubclasses().size >0»,
+	«ENDIF»
+		«IF subclass.getSubclasses().size >0»«IF subclass.isAbstract == false»,«ENDIF»
 			«EXPAND SubtypesAnnotation FOR subclass»
 		«ENDIF»
 	«ENDFOREACH»
