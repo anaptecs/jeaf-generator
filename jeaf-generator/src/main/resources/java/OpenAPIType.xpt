@@ -3,6 +3,7 @@
 «EXTENSION java::OpenAPIFunctions»
 «EXTENSION functions::SoftLink»
 «EXTENSION functions::Class»
+«EXTENSION functions::SystemProperties»
 
 «IMPORT uml»
 «IMPORT JMM»
@@ -154,7 +155,9 @@
             «ENDIF-»
            «ENDIF-»
           «IF attribute.isMultivalued() == false || isOpenAPIVersion30() || attribute.type.isByteType() -»
+          «IF attribute.isNullable() == false || suppressNotRequiredNullableInOpenAPISpec() == false -»
           nullable: «attribute.isNullable()»
+          «ENDIF-»
           «ENDIF -»
           «IF attribute.isReadOnly() && true == false  -»
           readOnly: «attribute.isReadOnly()»
@@ -339,7 +342,9 @@
             «ENDIF-»
            «ENDIF-»
               «IF attribute.isMultivalued() == false || isOpenAPIVersion30() || attribute.type.isByteType() -»
+              «IF attribute.isNullable() == false || suppressNotRequiredNullableInOpenAPISpec() == false -»
               nullable: «attribute.isNullable()»
+              «ENDIF-»
               «ENDIF -»
           «IF attribute.isReadOnly() && true == false -»
               readOnly: «attribute.isReadOnly()»

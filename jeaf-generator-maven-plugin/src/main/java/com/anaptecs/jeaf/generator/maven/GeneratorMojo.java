@@ -1132,6 +1132,13 @@ public class GeneratorMojo extends AbstractMojo {
   private Boolean suppressClassNameCommentInOpenAPISpec;
 
   /**
+   * Parameter can be used to suppress nullable information in generated OpenAPI specs if it is not required
+   * (<code>nullable = true</code> is default).
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean suppressNotRequiredNullableInOpenAPISpec;
+
+  /**
    * Parameter defines if constants for the name of attributes of POJOs, Service Objects, Query Objects, Domain Objects
    * or Persistent Objects should be generated or not..
    */
@@ -1823,6 +1830,7 @@ public class GeneratorMojo extends AbstractMojo {
       }
 
       lLog.info("Add ignored header fields to OpenAPI spec:        " + addIgnoredHeadersToOpenAPISpec);
+      lLog.info("Suppress not required nullable in OpenAPI spec:   " + suppressNotRequiredNullableInOpenAPISpec);
     }
 
     if (generateOpenAPISpec || generateRESTResources || generateRESTServiceProxies)
@@ -2195,6 +2203,9 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty("switch.gen.generation.comment", generationComment.toString());
 
       System.setProperty("switch.gen.suppress.classname.openapi", suppressClassNameCommentInOpenAPISpec.toString());
+
+      System.setProperty(PROPERTY_PREFIX + "suppressNotRequiredNullableInOpenAPISpec",
+          suppressNotRequiredNullableInOpenAPISpec.toString());
 
       System.setProperty("switch.gen.enable.valid.annotation.classes", generateValidAnnotationForClasses.toString());
       System.setProperty("switch.gen.enable.valid.annotation.associations",

@@ -2453,7 +2453,6 @@ paths:
             items:
               type: integer
               format: int64
-            nullable: true
         - name: codes
           in: query
           schema:
@@ -2467,21 +2466,18 @@ paths:
             items:
               type: number
               format: double
-            nullable: true
         - name: bookingIDs
           in: query
           schema:
             type: array
             items:
               type: string
-            nullable: true
         - name: bookingIDsArray
           in: query
           schema:
             type: array
             items:
               type: string
-            nullable: true
         - name: offsetDateTime
           in: query
           required: true
@@ -2577,14 +2573,12 @@ paths:
             type: array
             items:
               type: string
-            nullable: true
         - name: stringCodeList
           in: header
           schema:
             type: array
             items:
               type: string
-            nullable: true
         - name: startDate
           in: header
           schema:
