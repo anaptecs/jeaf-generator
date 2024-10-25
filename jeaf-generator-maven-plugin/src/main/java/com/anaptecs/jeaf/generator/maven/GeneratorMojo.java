@@ -1541,14 +1541,14 @@ public class GeneratorMojo extends AbstractMojo {
       lLog.info(" ");
     }
 
-    lLog.info("src:                                              " + sourceDirectory);
-    lLog.info("src-gen:                                          " + sourceGenDirectory);
-    lLog.info("res:                                              " + resourceDirectory);
-    lLog.info("res-gen:                                          " + resourceGenDirectory);
-    lLog.info("src-test:                                         " + sourceTestDirectory);
-    lLog.info("src-test-gen:                                     " + sourceTestGenDirectory);
-    lLog.info("res-test:                                         " + resourceTestDirectory);
-    lLog.info("res-test-gen:                                     " + resourceTestGenDirectory);
+    lLog.info("sourceDirectory (slot 'src'):                     " + sourceDirectory);
+    lLog.info("sourceGenDirectory (slot 'src_gen'):              " + sourceGenDirectory);
+    lLog.info("resourceDirectory (slot 'res'):                   " + resourceDirectory);
+    lLog.info("resourceGenDirectory(slot 'res_gen'):             " + resourceGenDirectory);
+    lLog.info("sourceTestDirectory (slot 'src_test'):            " + sourceTestDirectory);
+    lLog.info("sourceTestGenDirectory (slot 'src_test_gen'):     " + sourceTestGenDirectory);
+    lLog.info("resourceTestDirectory (slot 'res_test'):          " + resourceTestDirectory);
+    lLog.info("resourceTestGenDirectory (slot 'res-test-gen'):   " + resourceTestGenDirectory);
 
     if (breakBuildOnGeneratorError == false) {
       lLog.warn("");
