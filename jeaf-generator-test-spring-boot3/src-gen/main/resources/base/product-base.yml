@@ -368,7 +368,6 @@ components:
               type: string
               format: byte
               maxLength: 4711
-              nullable: true
 
     # com.anaptecs.spring.base.CodeTypeUsageTest
     CodeTypeUsageTest:
@@ -396,7 +395,6 @@ components:
           description: |
             Just a character
           type: string
-          nullable: true
 
     # com.anaptecs.spring.base.Company
     Company:
@@ -692,37 +690,29 @@ components:
       properties:
         readOnlyAttribute:
           type: string
-          nullable: true
         readWriteAttribute:
           type: string
-          nullable: true
         writeOnlyAttribute:
           type: integer
           format: int32
-          nullable: true
           writeOnly: true
         nullableAttribute:
           type: boolean
-          nullable: true
         notNullableAttribute:
           type: number
           format: double
           nullable: false
         readOnlyArray:
           type: string
-          nullable: true
         readWriteArray:
           type: string
-          nullable: true
         writeOnlyArray:
           type: integer
           format: int32
-          nullable: true
           writeOnly: true
         nullableArray:
           type: number
           format: double
-          nullable: true
         notNullableArray:
           type: number
           format: double
@@ -882,11 +872,9 @@ components:
         aByteArray:
           type: string
           format: byte
-          nullable: true
         bByteArray:
           type: string
           format: byte
-          nullable: true
         aShortArray:
           type: array
           items:
@@ -1037,11 +1025,9 @@ components:
         aByteArray:
           type: string
           format: byte
-          nullable: true
         bByteArray:
           type: string
           format: byte
-          nullable: true
         aShortArray:
           type: array
           items:
@@ -1456,7 +1442,6 @@ components:
             Image describing the product.
           type: string
           format: byte
-          nullable: true
         link:
           type: string
           nullable: false
@@ -1681,5 +1666,4 @@ components:
           type: array
           items:
             type: string
-          nullable: true
 

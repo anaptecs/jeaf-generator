@@ -1,6 +1,7 @@
 «EXTENSION java::Naming»
 «EXTENSION java::GeneratorCommons»
 «EXTENSION java::OpenAPIFunctions»
+«EXTENSION functions::SystemProperties»
 
 «IMPORT uml»
 «IMPORT JMM»
@@ -68,7 +69,9 @@
               «ENDIF-»
             «ENDIF-»
           «ENDIF-»
+          «IF ownerAttribute.isNullable() == false || suppressNotRequiredNullableInOpenAPISpec() == false -»
 «indentation»          nullable: «ownerAttribute.isNullable()»
+          «ENDIF-»
           «IF ownerAttribute.isReadOnly() && true == false -»
 «indentation»          readOnly: «ownerAttribute.isReadOnly()»
           «ENDIF-»  
@@ -105,7 +108,9 @@
       «IF attribute.isDeprecated() -»
       deprecated: true
       «ENDIF-»
+      «IF attribute.isNullable() == false || suppressNotRequiredNullableInOpenAPISpec() == false -»
       nullable: «attribute.isNullable()»
+      «ENDIF-»
       «IF attribute.isReadOnly() && true == false -»
       readOnly: «attribute.isReadOnly()»
       «ENDIF-»  
