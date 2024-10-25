@@ -10,3 +10,8 @@ cached uml::NamedElement asNamedElement(uml::Element element):
 cached String qualifiedName(uml::NamedElement element):
     element.fqn();
     
+cached String asLocalVariable(uml::NamedElement element):
+	element.asLocalVar();
+	
+cached String asGetter(uml::NamedElement element):
+    "get" + element.name.toFirstUpper();
