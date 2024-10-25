@@ -2116,9 +2116,6 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty("switch.gen.types.report.stereotypes", typesReportStereotypes);
 
       System.setProperty(PROPERTY_PREFIX + "generateModelReport", generateModelReport.toString());
-      
-      int  i = 0;
-      i.toString();
 
       System.setProperty("switch.gen.breaking.changes.report", generateBreakingChangesReport.toString());
       System.setProperty("switch.gen.breaking.changes.report.name", breakingChangesReportName.toString());
