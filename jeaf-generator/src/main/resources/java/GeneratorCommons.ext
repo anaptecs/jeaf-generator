@@ -1,5 +1,7 @@
 extension java::Naming;
 extension java::OpenAPIFunctions;
+extension functions::SystemProperties;
+
 
 // Function checks whether the passed package is part of the package white list for generation. 
 cached String isMayBeInPackageWhitelist(uml::Package package) : 
@@ -364,7 +366,17 @@ cached boolean implementsIdentifiable(uml::Class class):
     JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.implementsIdentifiable(org.eclipse.uml2.uml.Class);
 
 cached List[String] getImplementedInterfacesForPOJO(JMM::POJO class):
-    class.getImplementedInterfaces().fqn().addAll(class.getTechnicalInterfacesToImplementByPOJOs());
+    class.getImplementedInterfaces().fqn().addAll(class.getTechnicalInterfacesToImplementByPOJOs()).add(class.implementComparableIfRequired());
+    
+cached String implementComparableIfRequired(uml::Class class):
+    if class.shouldImplementComparable()
+    then "java.lang.Comparable<" + class.name + ">";
+    
+    
+cached boolean shouldImplementComparable(uml::Class class):
+    if class.isStereotypeApplied("OpenAPIDataType") && implementCompareableForOpenAPIDataTypes()
+    then true
+    else false;
     
 cached List[String] getTechnicalInterfacesToImplementByPOJOs(JMM::POJO class):
     if class.needsToImplementIdentifiable() == false &&  class.superClass.isEmpty && makePOJOsSerializable()
