@@ -366,11 +366,14 @@ cached boolean implementsIdentifiable(uml::Class class):
     JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.implementsIdentifiable(org.eclipse.uml2.uml.Class);
 
 cached List[String] getImplementedInterfacesForPOJO(JMM::POJO class):
-    class.getImplementedInterfaces().fqn().addAll(class.getTechnicalInterfacesToImplementByPOJOs()).add(class.implementComparableIfRequired());
+    if class.shouldImplementComparable()
+    then class.getImplementedInterfaces().fqn().addAll(class.getTechnicalInterfacesToImplementByPOJOs()).add(class.implementComparableIfRequired())
+    else class.getImplementedInterfaces().fqn().addAll(class.getTechnicalInterfacesToImplementByPOJOs());
     
 cached String implementComparableIfRequired(uml::Class class):
     if class.shouldImplementComparable()
-    then "java.lang.Comparable<" + class.name + ">";
+    then "java.lang.Comparable<" + class.name + ">"
+    else null;
     
     
 cached boolean shouldImplementComparable(uml::Class class):
