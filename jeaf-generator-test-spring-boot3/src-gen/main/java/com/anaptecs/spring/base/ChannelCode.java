@@ -9,7 +9,7 @@ import java.util.Objects;
 
 import jakarta.validation.constraints.NotNull;
 
-public class ChannelCode {
+public class ChannelCode implements Comparable<ChannelCode> {
   /**
    * Constant for the name of attribute "code".
    */
@@ -152,6 +152,11 @@ public class ChannelCode {
       lEquals = Objects.equals(code, ((ChannelCode) pOtherObject).getCode());
     }
     return lEquals;
+  }
+
+  @Override
+  public int compareTo( ChannelCode pOther ) {
+    return this.getCode().compareTo(pOther.getCode());
   }
 
   /**

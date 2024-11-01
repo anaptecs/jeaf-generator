@@ -1,6 +1,7 @@
 extension java::Naming;
 extension java::OpenAPIFunctions;
 extension functions::SystemProperties;
+extension functions::OpenAPIDataType;
 
 
 // Function checks whether the passed package is part of the package white list for generation. 
@@ -377,7 +378,7 @@ cached String implementComparableIfRequired(uml::Class class):
     
     
 cached boolean shouldImplementComparable(uml::Class class):
-    if class.isStereotypeApplied("OpenAPIDataType") && implementCompareableForOpenAPIDataTypes()
+    if class.isStereotypeApplied("OpenAPIDataType") && implementCompareableForOpenAPIDataTypes() && !class.asOpenAPIDataType().compositeDataType
     then true
     else false;
     

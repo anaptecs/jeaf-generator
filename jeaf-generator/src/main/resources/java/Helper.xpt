@@ -214,6 +214,21 @@
 	«ENDIF»
 «ENDDEFINE»
 
+«DEFINE GenerateCompareTo FOR uml::Class»
+    «IF this.shouldImplementComparable()»
+        @Override
+        public int compareTo( «this.name» pOther ) {
+        «LET this.ownedAttribute.selectFirst(e|e.isPropertySuppressed() == false && e.isStatic == false) AS property»
+	        «IF property.type.isStringType()»
+	            return this.«property.asGetter()»().compareTo(pOther.«property.asGetter()»());
+	        «ELSE»
+	            return «property.getJavaWrapperTypeForProperty()».compare(this.«property.asGetter()»(), pOther.«property.asGetter()»());
+	        «ENDIF»
+        «ENDLET»
+        }
+    «ENDIF»
+«ENDDEFINE»
+
 «DEFINE GenerateCustomHeadersField FOR uml::Class»
 	«IF this.hasCustomHeaders()»
 		/**

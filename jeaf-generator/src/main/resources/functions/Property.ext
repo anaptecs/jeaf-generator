@@ -48,5 +48,31 @@ cached boolean checkForOrphanedOpenAPITypes(Property property):
     then true
     else property.getReferencedOpenAPISpecification() != null;
     
-    
-    
+cached boolean hasJavaWrapperTypeForProperty(uml::Property property):
+    property.type.hasJavaWrapperType();
+
+cached boolean hasJavaWrapperType(uml::Type type):
+    if type.isBasicType() && !type.isStringType()
+    then true
+    else false;
+
+cached String getJavaWrapperTypeForProperty(uml::Property property):
+    property.type.getJavaWrapperTypeNameForType();
+
+cached String getJavaWrapperTypeNameForType(uml::Type type):
+    if type.isIntegerType()
+    then "java.lang.Integer"
+    else if type.isBooleanType()
+    then "java.lang.Boolean"
+    else if type.isByteType()
+    then "java.lang.Byte"
+    else if type.isCharacterType()
+    then "java.lang.Character"
+    else if type.isShortType()
+    then "java.lang.Short"
+    else if type.isFloatType()
+    then "java.lang.Float"
+    else if type.isDoubleType()
+    then "java.lang.Double"
+    else type.name.toFirstUpper();
+

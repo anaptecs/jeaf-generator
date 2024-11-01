@@ -9,7 +9,7 @@ import java.util.Objects;
 
 import jakarta.validation.constraints.Positive;
 
-public class ProductCode {
+public class ProductCode implements Comparable<ProductCode> {
   /**
    * Constant for the name of attribute "code".
    */
@@ -135,6 +135,11 @@ public class ProductCode {
       lEquals = Objects.equals(code, ((ProductCode) pOtherObject).getCode());
     }
     return lEquals;
+  }
+
+  @Override
+  public int compareTo( ProductCode pOther ) {
+    return Integer.compare(this.getCode(), pOther.getCode());
   }
 
   /**
