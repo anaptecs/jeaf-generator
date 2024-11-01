@@ -129,6 +129,7 @@
 		«EXPAND java::Helper::GenerateCustomHeadersOperations»
 		«EXPAND jeafgenerator::api::ClassExtensionPoint::CustomOperations»
 		«EXPAND java::Helper::GenerateEqualsHashCode(name)»
+		«EXPAND java::Helper::GenerateCompareTo»
 		«EXPAND java::Helper::GenerateToStringMethod»
 		«EXPAND java::Builder::ToBuilderMethod»
 	}
@@ -244,6 +245,7 @@
         «EXPAND java::Helper::GenerateCustomHeadersOperations»
         «EXPAND jeafgenerator::api::ClassExtensionPoint::CustomOperations»
         «EXPAND java::Helper::GenerateEqualsHashCode(name + "Base")»
+        «EXPAND java::Helper::GenerateCompareTo»
         «EXPAND java::Helper::GenerateToStringMethod»
         «EXPAND java::Builder::ToBuilderMethodForBaseClass»
       }

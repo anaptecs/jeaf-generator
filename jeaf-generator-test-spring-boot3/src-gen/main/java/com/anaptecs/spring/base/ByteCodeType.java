@@ -7,7 +7,7 @@ package com.anaptecs.spring.base;
 
 import java.util.Objects;
 
-public class ByteCodeType {
+public class ByteCodeType implements Comparable<ByteCodeType> {
   /**
    * Constant for the name of attribute "code".
    */
@@ -123,6 +123,11 @@ public class ByteCodeType {
       lEquals = Objects.equals(code, ((ByteCodeType) pOtherObject).getCode());
     }
     return lEquals;
+  }
+
+  @Override
+  public int compareTo( ByteCodeType pOther ) {
+    return Byte.compare(this.getCode(), pOther.getCode());
   }
 
   /**

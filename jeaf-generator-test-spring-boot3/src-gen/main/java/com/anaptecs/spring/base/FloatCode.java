@@ -7,7 +7,7 @@ package com.anaptecs.spring.base;
 
 import java.util.Objects;
 
-public class FloatCode {
+public class FloatCode implements Comparable<FloatCode> {
   /**
    * Constant for the name of attribute "code".
    */
@@ -122,6 +122,11 @@ public class FloatCode {
       lEquals = Objects.equals(code, ((FloatCode) pOtherObject).getCode());
     }
     return lEquals;
+  }
+
+  @Override
+  public int compareTo( FloatCode pOther ) {
+    return Float.compare(this.getCode(), pOther.getCode());
   }
 
   /**

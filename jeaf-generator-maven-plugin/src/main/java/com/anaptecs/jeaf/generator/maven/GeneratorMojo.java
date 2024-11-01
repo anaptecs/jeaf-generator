@@ -539,14 +539,18 @@ public class GeneratorMojo extends AbstractMojo {
   @Parameter(required = false, defaultValue = "false")
   private Boolean generateEqualsAndHashCodeForCompositeDataTypes;
 
-  // Properties
-
   /**
    * Switch defines if <code>equals()</code> and <code>hashCode()</code> should be generated for OpenAPI data type POJOs
    * and ServiceObjects.
    */
   @Parameter(required = false, defaultValue = "false")
   private Boolean generateEqualsAndHashCodeForOpenAPIDataTypes;
+
+  /**
+   * Switch defines if {@link Comparable} should be implemented by classes that are marked as OpenAPIDataTypes.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean implementCompareableForOpenAPIDataTypes;
 
   /**
    * Switch can be used to enable that <code>NotNull</code> annotation is generated for setter and getter of single
@@ -1677,6 +1681,9 @@ public class GeneratorMojo extends AbstractMojo {
       lLog.info("Generate equals() and hashCode() for OpenAPI");
       lLog.info("data types:                                       " + generateEqualsAndHashCodeForOpenAPIDataTypes);
     }
+    if (implementCompareableForOpenAPIDataTypes) {
+      lLog.info("Implement Compareable for OpenAPIDataTypes:       " + implementCompareableForOpenAPIDataTypes);
+    }
 
     if (generateNotNullAnnotationForSingleValuedProperties) {
       lLog.info("Generate NotNull annotation for                   ");
@@ -2076,6 +2083,9 @@ public class GeneratorMojo extends AbstractMojo {
           generateEqualsAndHashCodeForCompositeDataTypes.toString());
       System.setProperty("switch.gen.equalsAndHashCode.openapi.datatype",
           generateEqualsAndHashCodeForOpenAPIDataTypes.toString());
+
+      System.setProperty(PROPERTY_PREFIX + "implementCompareableForOpenAPIDataTypes",
+          implementCompareableForOpenAPIDataTypes.toString());
 
       // NotNull / NotEmpty annotations for properties / POJOs / ServiceObjects
       System.setProperty(PROPERTY_PREFIX + "generateNotNullAnnotationForSingleValuedProperties",

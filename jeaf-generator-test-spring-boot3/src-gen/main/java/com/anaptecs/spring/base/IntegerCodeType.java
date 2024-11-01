@@ -7,7 +7,7 @@ package com.anaptecs.spring.base;
 
 import java.util.Objects;
 
-public class IntegerCodeType {
+public class IntegerCodeType implements Comparable<IntegerCodeType> {
   /**
    * Constant for the name of attribute "code".
    */
@@ -123,6 +123,11 @@ public class IntegerCodeType {
       lEquals = Objects.equals(code, ((IntegerCodeType) pOtherObject).getCode());
     }
     return lEquals;
+  }
+
+  @Override
+  public int compareTo( IntegerCodeType pOther ) {
+    return Integer.compare(this.getCode(), pOther.getCode());
   }
 
   /**

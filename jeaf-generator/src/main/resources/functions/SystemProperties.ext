@@ -88,3 +88,7 @@ cached boolean disableSaveCopyOfCollectionsInBuilders():
    
 cached boolean suppressNotRequiredNullableInOpenAPISpec():   
    getBooleanSystemProperty("jeaf.generator.suppressNotRequiredNullableInOpenAPISpec", false);
+   
+cached boolean implementCompareableForOpenAPIDataTypes():
+   getBooleanSystemProperty("jeaf.generator.implementCompareableForOpenAPIDataTypes", false);
+   
