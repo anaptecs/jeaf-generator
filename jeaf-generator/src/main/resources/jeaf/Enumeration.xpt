@@ -410,7 +410,7 @@ public final class «name» {
                           break;
                         «ENDFOREACH»
 			            default:
-			              lLiteral = MyType.valueOf(lLiteralName);
+			              lLiteral = «this.fqn()».valueOf(lLiteralName);
 			          }
 					  «ELSE»
 					  lLiteral = «this.fqn()».valueOf(lLiteralName);
