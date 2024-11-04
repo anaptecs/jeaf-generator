@@ -147,6 +147,7 @@ paths:
           required: true
           schema:
             type: string
+            nullable: false
             minLength: 1
             default: 4711
             example: 1234-345
@@ -182,12 +183,14 @@ paths:
           required: true
           schema:
             type: string
+            nullable: false
             minLength: 1
         - name: lang
           in: header
           required: true
           schema:
             type: string
+            nullable: false
             example: en
         - name: reseller
           in: cookie
@@ -195,17 +198,20 @@ paths:
           schema:
             type: integer
             format: int64
+            nullable: false
         - name: id
           in: path
           required: true
           schema:
             type: integer
             format: int64
+            nullable: false
         - name: q1
           in: query
           required: true
           schema:
             type: string
+            nullable: false
         - name: intCode
           in: header
           schema:
@@ -317,12 +323,14 @@ paths:
           required: true
           schema:
             type: string
+            nullable: false
             minLength: 1
         - name: lang
           in: header
           required: true
           schema:
             type: string
+            nullable: false
             example: en
         - name: reseller
           in: cookie
@@ -330,11 +338,13 @@ paths:
           schema:
             type: integer
             format: int64
+            nullable: false
         - name: q1
           in: query
           required: true
           schema:
             type: string
+            nullable: false
       responses:
         '200':
           description: |
@@ -365,17 +375,20 @@ paths:
           required: true
           schema:
             type: string
+            nullable: false
         - name: lang
           in: header
           required: true
           schema:
             type: string
+            nullable: false
         - name: q2
           in: query
           required: true
           deprecated: true
           schema:
             type: string
+            nullable: false
       responses:
         '204':
           description: |
@@ -399,6 +412,7 @@ paths:
           schema:
             type: integer
             format: int32
+            nullable: false
       responses:
         '200':
           description: |
@@ -512,12 +526,14 @@ paths:
           required: true
           schema:
             type: string
+            nullable: false
             minLength: 1
         - name: lang
           in: header
           required: true
           schema:
             type: string
+            nullable: false
             example: en
         - name: reseller
           in: cookie
@@ -525,17 +541,20 @@ paths:
           schema:
             type: integer
             format: int64
+            nullable: false
         - name: id
           in: path
           required: true
           schema:
             type: integer
             format: int64
+            nullable: false
         - name: q1
           in: query
           required: true
           schema:
             type: string
+            nullable: false
         - name: intCode
           in: header
           schema:
@@ -545,6 +564,7 @@ paths:
           required: true
           schema:
             type: string
+            nullable: false
         - name: deprecatedHeader
           in: header
           required: true
@@ -1012,66 +1032,77 @@ paths:
           required: true
           schema:
             type: string
+            nullable: false
         - name: startTimestamp
           in: query
           required: true
           schema:
             type: string
             format: date-time
+            nullable: false
         - name: startTime
           in: query
           required: true
           schema:
             type: string
             format: time
+            nullable: false
         - name: localStartTimestamp
           in: query
           required: true
           schema:
             type: string
             format: date-time
+            nullable: false
         - name: localStartTime
           in: query
           required: true
           schema:
             type: string
             format: time
+            nullable: false
         - name: localStartDate
           in: query
           required: true
           schema:
             type: string
             format: date
+            nullable: false
         - name: calendar
           in: query
           required: true
           schema:
             type: string
             format: date-time
+            nullable: false
         - name: utilDate
           in: query
           required: true
           schema:
             type: string
             format: date-time
+            nullable: false
         - name: sqlTimestamp
           in: query
           required: true
           schema:
             type: string
             format: date-time
+            nullable: false
         - name: sqlTime
           in: query
           required: true
           schema:
             type: string
             format: time
+            nullable: false
         - name: sqlDate
           in: query
           required: true
           schema:
             type: string
             format: date
+            nullable: false
       responses:
         '204':
           description: |
@@ -1094,12 +1125,14 @@ paths:
           schema:
             type: string
             format: date-time
+            nullable: false
         - name: offsetTime
           in: query
           required: true
           schema:
             type: string
             format: time
+            nullable: false
         - name: localDateTime
           in: query
           description: |
@@ -1110,53 +1143,62 @@ paths:
           schema:
             type: string
             format: date-time
+            nullable: false
         - name: localTime
           in: query
           required: true
           schema:
             type: string
             format: time
+            nullable: false
         - name: localDate
           in: query
           required: true
           schema:
             type: string
             format: date
+            nullable: false
         - name: utilDate
           in: query
           required: true
           schema:
             type: string
             format: date-time
+            nullable: false
         - name: calendar
           in: query
           required: true
           schema:
             type: string
             format: date-time
+            nullable: false
         - name: sqlTimestamp
           in: query
           required: true
           schema:
             type: string
             format: date-time
+            nullable: false
         - name: sqlTime
           in: query
           required: true
           schema:
             type: string
             format: time
+            nullable: false
         - name: sqlDate
           in: query
           required: true
           schema:
             type: string
             format: date
+            nullable: false
         - name: path
           in: path
           required: true
           schema:
             type: string
+            nullable: false
       responses:
         '204':
           description: |
@@ -1228,11 +1270,13 @@ paths:
           required: true
           schema:
             type: string
+            nullable: false
         - name: Authentication
           in: header
           required: true
           schema:
             type: string
+            nullable: false
       responses:
         '200':
           description: |
@@ -1263,11 +1307,13 @@ paths:
           required: true
           schema:
             type: string
+            nullable: false
         - name: Authentication
           in: header
           required: true
           schema:
             type: string
+            nullable: false
       responses:
         '200':
           description: |
@@ -1477,6 +1523,7 @@ paths:
           required: true
           schema:
             type: string
+            nullable: false
             minLength: 32
             maxLength: 64
         - name: longValues
@@ -1556,6 +1603,7 @@ paths:
           required: true
           schema:
             type: string
+            nullable: false
             minLength: 32
             maxLength: 64
         - name: longValues
@@ -1574,6 +1622,7 @@ paths:
           required: true
           schema:
             type: string
+            nullable: false
       responses:
         '204':
           description: |
@@ -1595,6 +1644,7 @@ paths:
           required: true
           schema:
             type: string
+            nullable: false
       responses:
         '204':
           description: |
@@ -1684,6 +1734,7 @@ paths:
           schema:
             type: integer
             format: int32
+            nullable: false
             minimum: 32
       responses:
         '204':
@@ -1706,12 +1757,14 @@ paths:
           required: true
           schema:
             type: string
+            nullable: false
             minLength: 1
         - name: lang
           in: header
           required: true
           schema:
             type: string
+            nullable: false
             example: en
         - name: reseller
           in: cookie
@@ -1719,17 +1772,20 @@ paths:
           schema:
             type: integer
             format: int64
+            nullable: false
         - name: id
           in: path
           required: true
           schema:
             type: integer
             format: int64
+            nullable: false
         - name: q1
           in: query
           required: true
           schema:
             type: string
+            nullable: false
         - name: intCode
           in: header
           schema:
@@ -1873,6 +1929,7 @@ components:
       in: header
       schema:
         type: string
+        nullable: false
       required: true
 
     # com.anaptecs.jeaf.junit.openapi.service1.LocalBeanParamType.localID
@@ -1881,6 +1938,7 @@ components:
       in: header
       schema:
         type: string
+        nullable: false
       required: true
 
     # com.anaptecs.jeaf.junit.openapi.service1.LocalBeanParamType.localKey
@@ -1889,6 +1947,7 @@ components:
       in: header
       schema:
         type: string
+        nullable: false
       required: true
 
   responses:
