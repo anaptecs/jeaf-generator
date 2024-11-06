@@ -18,6 +18,7 @@ import java.util.List;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 import com.anaptecs.spring.base.AnotherDataType;
 import com.anaptecs.spring.base.BeanParameter;
@@ -41,6 +42,7 @@ public interface ProductServiceReactive extends MonitoringServiceReactive {
    *
    * @return {@link List<Product>} My default comment
    */
+  @Size(min = 0, max = 4711)
   Mono<List<Product>> getProducts( );
 
   /**
@@ -135,6 +137,7 @@ public interface ProductServiceReactive extends MonitoringServiceReactive {
    * @param pCurrencies
    * @return {@link List<CurrencyCode>}
    */
+  @Size(min = 0, max = 20)
   Mono<List<CurrencyCode>> addCurrencies( List<CurrencyCode> pCurrencies );
 
   /**

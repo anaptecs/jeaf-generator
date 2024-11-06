@@ -95,6 +95,7 @@ public class ProductServiceResource {
   @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "products/", method = { RequestMethod.GET })
+  @MyNotEmptyRESTParam
   public List<Product> getProducts( ) {
     // Delegate request to service.
     List<Product> lResponse = productService.getProducts();

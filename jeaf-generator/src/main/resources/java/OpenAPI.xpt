@@ -538,6 +538,7 @@ components:
                     «ENDIF-»
                   «ENDIF-»
                   «EXPAND java::OpenAPIHelper::GenerateExample("                ") FOR returnParam -»
+                «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("          ") FOR returnParam-»
                 «ELSE-»
                   «IF returnParam.isMultivalued() == false-»
                 $ref: «returnParam.type.getOpenAPIType(this)»
@@ -545,7 +546,7 @@ components:
                 type: array
                 items:
                   $ref: «returnParam.type.getOpenAPIType(this)»
-                minItems: «returnParam.getLower()»
+                «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("          ") FOR returnParam-»
                   «ENDIF-»
                 «ENDIF-»
                 «ENDIF-»

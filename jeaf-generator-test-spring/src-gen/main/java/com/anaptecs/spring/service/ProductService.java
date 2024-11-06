@@ -18,6 +18,7 @@ import java.util.List;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 import com.anaptecs.annotations.MyNotEmptyServiceParam;
 import com.anaptecs.annotations.MyNotNullServiceParam;
@@ -44,6 +45,8 @@ public interface ProductService extends MonitoringService {
    *
    * @return {@link List<Product>} My default comment
    */
+  @Size(min = 0, max = 4711)
+  @MyNotEmptyServiceParam
   List<Product> getProducts( );
 
   /**
@@ -194,6 +197,7 @@ public interface ProductService extends MonitoringService {
    * @param pCurrencies
    * @return {@link List<CurrencyCode>}
    */
+  @Size(min = 0, max = 20)
   @MyNotEmptyServiceParam
   List<CurrencyCode> addCurrencies( @MyNotEmptyServiceParam List<CurrencyCode> pCurrencies );
 
