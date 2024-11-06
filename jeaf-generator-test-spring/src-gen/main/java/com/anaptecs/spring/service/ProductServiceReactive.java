@@ -198,7 +198,7 @@ public interface ProductServiceReactive extends MonitoringServiceReactive {
    * @param pCurrencies
    * @return {@link List<CurrencyCode>}
    */
-  @Size(min = 0, max = 20)
+  @Size(min = 1, max = 20)
   @MyNotEmptyServiceParam
   Mono<List<CurrencyCode>> addCurrencies( @MyNotEmptyServiceParam List<CurrencyCode> pCurrencies );
 
@@ -229,6 +229,7 @@ public interface ProductServiceReactive extends MonitoringServiceReactive {
    * @param pBeanParam
    * @return {@link String}
    */
+  @Size(min = 111, max = 666)
   @MyNotNullServiceParam
   Mono<String> testLocalBeanParamType( @MyNotNullServiceParam LocalBeanParamType pBeanParam );
 

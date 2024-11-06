@@ -197,7 +197,7 @@ public interface ProductService extends MonitoringService {
    * @param pCurrencies
    * @return {@link List<CurrencyCode>}
    */
-  @Size(min = 0, max = 20)
+  @Size(min = 1, max = 20)
   @MyNotEmptyServiceParam
   List<CurrencyCode> addCurrencies( @MyNotEmptyServiceParam List<CurrencyCode> pCurrencies );
 
@@ -228,6 +228,7 @@ public interface ProductService extends MonitoringService {
    * @param pBeanParam
    * @return {@link String}
    */
+  @Size(min = 111, max = 666)
   @MyNotNullServiceParam
   String testLocalBeanParamType( @MyNotNullServiceParam LocalBeanParamType pBeanParam );
 
