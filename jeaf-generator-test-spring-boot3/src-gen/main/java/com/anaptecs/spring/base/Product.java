@@ -107,6 +107,16 @@ public class Product implements IProduct {
 
   private Set<ProductCode> productCodes;
 
+  /**
+   * <br/>
+   * <b>Example(s):</b> <br/>
+   * <ul>
+   * <li><code>1st line 1st comment<br/>
+   * 2nd line 1st comment</code></li>
+   * <li><code>1st line 2nd comment<br/>
+   * 2nd line 2nd comment</code></li>
+   * </ul>
+   */
   @Deprecated
   private String description;
 
@@ -245,6 +255,16 @@ public class Product implements IProduct {
 
     private Set<ProductCode> productCodes;
 
+    /**
+     * <br/>
+     * <b>Example(s):</b> <br/>
+     * <ul>
+     * <li><code>1st line 1st comment<br/>
+     * 2nd line 1st comment</code></li>
+     * <li><code>1st line 2nd comment<br/>
+     * 2nd line 2nd comment</code></li>
+     * </ul>
+     */
     @Deprecated
     private String description;
 

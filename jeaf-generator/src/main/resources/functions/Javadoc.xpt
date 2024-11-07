@@ -59,7 +59,7 @@
     «ENDIF -»
     «IF this.hasExample() -»
     «IF this.asExample().hasExampleValue() -»
-    <br/><b>Example(s):</b> <br/><ul>«FOREACH this.asExample().exampleValues AS exampleValue»<li><code>«exampleValue»</code></li>
+    <br/><b>Example(s):</b> <br/><ul>«FOREACH this.asExample().exampleValues AS exampleValue»<li><code>«exampleValue.makeMultiLineCompatible()»</code></li>
     «ENDFOREACH»</ul>
     «ENDIF -»
     «ENDIF -»

@@ -37,6 +37,15 @@ public class BeanParameter implements ServiceObject {
 
   private String accessToken;
 
+  /**
+   * <br/>
+   * <b>Example(s):</b> <br/>
+   * <ul>
+   * <li><code>DE-de<br/>
+   * 2nd line</code></li>
+   * <li><code>en</code></li>
+   * </ul>
+   */
   private Locale language;
 
   @Deprecated
@@ -98,6 +107,15 @@ public class BeanParameter implements ServiceObject {
   public static class Builder {
     private String accessToken;
 
+    /**
+     * <br/>
+     * <b>Example(s):</b> <br/>
+     * <ul>
+     * <li><code>DE-de<br/>
+     * 2nd line</code></li>
+     * <li><code>en</code></li>
+     * </ul>
+     */
     private Locale language;
 
     @Deprecated
