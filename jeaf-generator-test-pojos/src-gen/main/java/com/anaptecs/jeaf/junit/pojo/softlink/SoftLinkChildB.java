@@ -426,11 +426,11 @@ public class SoftLinkChildB extends SoftLinkParent {
   public StringBuilder toStringBuilder( String pIndent ) {
     StringBuilder lBuilder = super.toStringBuilder(pIndent);
     lBuilder.append(pIndent);
-    lBuilder.append("heyBrother: ");
+    lBuilder.append("heyBrotherID: ");
     lBuilder.append(heyBrotherID);
     lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
-    lBuilder.append("softLinkPartners: ");
+    lBuilder.append("softLinkPartnerIDs: ");
     if (softLinkPartnerIDs != null) {
       lBuilder.append(softLinkPartnerIDs.size());
       lBuilder.append(" element(s)");
@@ -447,7 +447,7 @@ public class SoftLinkChildB extends SoftLinkParent {
       }
     }
     lBuilder.append(pIndent);
-    lBuilder.append("oneLink: ");
+    lBuilder.append("oneLinkID: ");
     lBuilder.append(oneLinkID);
     lBuilder.append(System.lineSeparator());
     return lBuilder;

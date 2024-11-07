@@ -377,11 +377,11 @@ public class SoftLinkPartner {
     lBuilder.append(this.getClass().getName());
     lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
-    lBuilder.append("theBackLink: ");
+    lBuilder.append("theBackLinkID: ");
     lBuilder.append(theBackLinkID);
     lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
-    lBuilder.append("childLinks: ");
+    lBuilder.append("childLinkIDs: ");
     if (childLinkIDs != null) {
       lBuilder.append(childLinkIDs.size());
       lBuilder.append(" element(s)");
@@ -398,7 +398,7 @@ public class SoftLinkPartner {
       }
     }
     lBuilder.append(pIndent);
-    lBuilder.append("longLinks: ");
+    lBuilder.append("longLinkIDs: ");
     if (longLinkIDs != null) {
       lBuilder.append(longLinkIDs.size());
       lBuilder.append(" element(s)");

@@ -420,11 +420,11 @@ public class Campaign implements ServiceObject {
     lBuilder.append(this.getClass().getName());
     lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
-    lBuilder.append("theLink: ");
+    lBuilder.append("theLinkID: ");
     lBuilder.append(theLinkID);
     lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
-    lBuilder.append("moreLinks: ");
+    lBuilder.append("moreLinkIDs: ");
     if (moreLinkIDs != null) {
       lBuilder.append(moreLinkIDs.size());
       lBuilder.append(" element(s)");
@@ -441,7 +441,7 @@ public class Campaign implements ServiceObject {
       }
     }
     lBuilder.append(pIndent);
-    lBuilder.append("discountOffers: ");
+    lBuilder.append("discountOfferIDs: ");
     if (discountOfferIDs != null) {
       lBuilder.append(discountOfferIDs.size());
       lBuilder.append(" element(s)");

@@ -227,7 +227,7 @@ public class DiscountOffer implements ServiceObject {
     lBuilder.append(this.getClass().getName());
     lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
-    lBuilder.append("campaigns: ");
+    lBuilder.append("campaignIDs: ");
     if (campaignIDs != null) {
       lBuilder.append(campaignIDs.size());
       lBuilder.append(" element(s)");

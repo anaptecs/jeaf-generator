@@ -655,11 +655,11 @@ public class POI extends Stop {
     lBuilder.append(description);
     lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
-    lBuilder.append("theLink: ");
+    lBuilder.append("theLinkID: ");
     lBuilder.append(theLinkID);
     lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
-    lBuilder.append("evenMoreLinks: ");
+    lBuilder.append("evenMoreLinkIDs: ");
     if (evenMoreLinkIDs != null) {
       lBuilder.append(evenMoreLinkIDs.size());
       lBuilder.append(" element(s)");
