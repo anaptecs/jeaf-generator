@@ -749,6 +749,7 @@ paths:
       parameters:
         - $ref: '../base/product-base.yml#/components/parameters/novaKey'
         - $ref: '../base/product-base.yml#/components/parameters/tkID'
+        - $ref: '../base/product-base.yml#/components/parameters/code'
       responses:
         '200':
           description: |
@@ -774,6 +775,7 @@ paths:
       parameters:
         - $ref: '../base/product-base.yml#/components/parameters/novaKey'
         - $ref: '../base/product-base.yml#/components/parameters/tkID'
+        - $ref: '../base/product-base.yml#/components/parameters/code'
         - $ref: '#/components/parameters/childProperty'
       responses:
         '200':
@@ -2248,6 +2250,8 @@ paths:
           schema:
             type: string
             nullable: false
+            examples:
+             - BOOK-12345
         - name: bookingCode
           in: header
           required: true

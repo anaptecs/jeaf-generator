@@ -136,7 +136,7 @@ components:
             nullable: false
           «ENDIF-»          
         «ENDIF-»
-        «EXPAND java::OpenAPIHelper::GenerateExample("          ") FOR parameter -»
+        «EXPAND java::OpenAPIHelper::GenerateExample("        ") FOR parameter -»
       «ELSE-»
       	«IF parameter.type.isOpenAPIDataType() -»
       		«IF ((JMM::OpenAPIDataType)parameter.type).compositeDataType -»
@@ -149,7 +149,7 @@ components:
           			«IF parameter.type.attribute().first().hasPatternForProperty() -»
         pattern: '«parameter.type.attribute().first().getPatternForProperty()»'
           			«ENDIF-»
-        		«EXPAND java::OpenAPIHelper::GenerateExample("          ") FOR parameter -»
+        		«EXPAND java::OpenAPIHelper::GenerateExample("        ") FOR parameter -»
       		«ENDIF-»
             «IF parameter.isRequiredProperty() -»
         nullable: false

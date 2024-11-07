@@ -21,9 +21,34 @@ public class ParentBeanParamType {
    */
   public static final String TKID = "tkID";
 
+  /**
+   * Constant for the name of attribute "code".
+   */
+  public static final String CODE = "code";
+
+  /**
+   * <br/>
+   * <b>Example(s):</b> <br/>
+   * <ul>
+   * <li><code>4711-0815</code></li>
+   * </ul>
+   * <p/>
+   * <b>Header-Param:</b> novaKey
+   */
   private String novaKey;
 
   private String tkID;
+
+  /**
+   * <br/>
+   * <b>Example(s):</b> <br/>
+   * <ul>
+   * <li><code>BOOKING_ID_999</code></li>
+   * </ul>
+   * <p/>
+   * <b>Header-Param:</b> code
+   */
+  private DoubleCode code;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
@@ -41,6 +66,7 @@ public class ParentBeanParamType {
     // Read attribute values from builder.
     novaKey = pBuilder.novaKey;
     tkID = pBuilder.tkID;
+    code = pBuilder.code;
   }
 
   /**
@@ -60,12 +86,15 @@ public class ParentBeanParamType {
    *
    * @param pTkID Value to which {@link #tkID} should be set.
    *
+   * @param pCode Value to which {@link #code} should be set.
+   *
    * @return {@link com.anaptecs.spring.base.ParentBeanParamType}
    */
-  public static ParentBeanParamType of( String pNovaKey, String pTkID ) {
+  public static ParentBeanParamType of( String pNovaKey, String pTkID, DoubleCode pCode ) {
     ParentBeanParamType.Builder lBuilder = ParentBeanParamType.builder();
     lBuilder.setNovaKey(pNovaKey);
     lBuilder.setTkID(pTkID);
+    lBuilder.setCode(pCode);
     return lBuilder.build();
   }
 
@@ -73,9 +102,29 @@ public class ParentBeanParamType {
    * Class implements builder to create a new instance of class <code>ParentBeanParamType</code>.
    */
   public static class Builder {
+    /**
+     * <br/>
+     * <b>Example(s):</b> <br/>
+     * <ul>
+     * <li><code>4711-0815</code></li>
+     * </ul>
+     * <p/>
+     * <b>Header-Param:</b> novaKey
+     */
     private String novaKey;
 
     private String tkID;
+
+    /**
+     * <br/>
+     * <b>Example(s):</b> <br/>
+     * <ul>
+     * <li><code>BOOKING_ID_999</code></li>
+     * </ul>
+     * <p/>
+     * <b>Header-Param:</b> code
+     */
+    private DoubleCode code;
 
     /**
      * Use {@link ParentBeanParamType#builder()} instead of private constructor to create new builder.
@@ -92,6 +141,7 @@ public class ParentBeanParamType {
         // Read attribute values from passed object.
         this.setNovaKey(pObject.novaKey);
         this.setTkID(pObject.tkID);
+        this.setCode(pObject.code);
       }
     }
 
@@ -136,6 +186,18 @@ public class ParentBeanParamType {
     public Builder setTkID( @MyNotNullProperty String pTkID ) {
       // Assign value to attribute
       tkID = pTkID;
+      return this;
+    }
+
+    /**
+     * Method sets attribute {@link #code}.<br/>
+     *
+     * @param pCode Value to which {@link #code} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    public Builder setCode( @MyNotNullProperty DoubleCode pCode ) {
+      // Assign value to attribute
+      code = pCode;
       return this;
     }
 
@@ -192,12 +254,33 @@ public class ParentBeanParamType {
     tkID = pTkID;
   }
 
+  /**
+   * Method returns attribute {@link #code}.<br/>
+   *
+   * @return {@link DoubleCode} Value to which {@link #code} is set.
+   */
+  @MyNotNullProperty
+  public DoubleCode getCode( ) {
+    return code;
+  }
+
+  /**
+   * Method sets attribute {@link #code}.<br/>
+   *
+   * @param pCode Value to which {@link #code} should be set.
+   */
+  public void setCode( @MyNotNullProperty DoubleCode pCode ) {
+    // Assign value to attribute
+    code = pCode;
+  }
+
   @Override
   public int hashCode( ) {
     final int lPrime = 31;
     int lResult = 1;
     lResult = lPrime * lResult + Objects.hashCode(novaKey);
     lResult = lPrime * lResult + Objects.hashCode(tkID);
+    lResult = lPrime * lResult + Objects.hashCode(code);
     return lResult;
   }
 
@@ -215,7 +298,8 @@ public class ParentBeanParamType {
     }
     else {
       ParentBeanParamType lOther = (ParentBeanParamType) pObject;
-      lEquals = Objects.equals(novaKey, lOther.novaKey) && Objects.equals(tkID, lOther.tkID);
+      lEquals = Objects.equals(novaKey, lOther.novaKey) && Objects.equals(tkID, lOther.tkID)
+          && Objects.equals(code, lOther.code);
     }
     return lEquals;
   }
@@ -238,6 +322,10 @@ public class ParentBeanParamType {
     lBuilder.append(pIndent);
     lBuilder.append("tkID: ");
     lBuilder.append(tkID);
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("code: ");
+    lBuilder.append(code);
     lBuilder.append(System.lineSeparator());
     return lBuilder;
   }

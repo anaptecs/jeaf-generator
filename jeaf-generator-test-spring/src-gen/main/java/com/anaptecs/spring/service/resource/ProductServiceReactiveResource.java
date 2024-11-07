@@ -46,6 +46,7 @@ import com.anaptecs.spring.base.ChannelType;
 import com.anaptecs.spring.base.Context;
 import com.anaptecs.spring.base.CurrencyCode;
 import com.anaptecs.spring.base.DeprecatedContext;
+import com.anaptecs.spring.base.DoubleCode;
 import com.anaptecs.spring.base.IntegerCodeType;
 import com.anaptecs.spring.base.ParentBeanParamType;
 import com.anaptecs.spring.base.Product;
@@ -539,12 +540,17 @@ public class ProductServiceReactiveResource {
   public Mono<String> testExternalBeanParameterType(
       @RequestHeader(name = "novaKey", required = true) @MyNotNullRESTParam String pNovaKey,
       @RequestHeader(name = "tkID", required = true) @MyNotNullRESTParam String pTkID,
+      @RequestHeader(name = "code", required = true) @MyNotNullRESTParam Double pCodeAsBasicType,
       ServerWebExchange pServerWebExchange ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
     ParentBeanParamType.Builder lParentBuilder = ParentBeanParamType.builder();
     lParentBuilder.setNovaKey(pNovaKey);
     lParentBuilder.setTkID(pTkID);
+    // Handle bean parameter pParent.code
+    if (pCodeAsBasicType != null) {
+      lParentBuilder.setCode(DoubleCode.builder().setCode(pCodeAsBasicType).build());
+    }
     ParentBeanParamType pParent = lParentBuilder.build();
     return Mono.defer(( ) -> {
       // Validate request parameter(s).
@@ -566,6 +572,7 @@ public class ProductServiceReactiveResource {
   public Mono<String> testChildBeanParameter(
       @RequestHeader(name = "novaKey", required = true) @MyNotNullRESTParam String pNovaKey,
       @RequestHeader(name = "tkID", required = true) @MyNotNullRESTParam String pTkID,
+      @RequestHeader(name = "code", required = true) @MyNotNullRESTParam Double pCodeAsBasicType,
       @RequestHeader(name = "X-Child-Property", required = true) @MyNotNullRESTParam String pChildProperty,
       ServerWebExchange pServerWebExchange ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
@@ -573,6 +580,10 @@ public class ProductServiceReactiveResource {
     ChildBeanParameterType.Builder lChildBuilder = ChildBeanParameterType.builder();
     lChildBuilder.setNovaKey(pNovaKey);
     lChildBuilder.setTkID(pTkID);
+    // Handle bean parameter pChild.code
+    if (pCodeAsBasicType != null) {
+      lChildBuilder.setCode(DoubleCode.builder().setCode(pCodeAsBasicType).build());
+    }
     lChildBuilder.setChildProperty(pChildProperty);
     ChildBeanParameterType pChild = lChildBuilder.build();
     return Mono.defer(( ) -> {

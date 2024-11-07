@@ -29,11 +29,33 @@ public class ParentBeanParamType implements Serializable {
    */
   public static final String TKID = "tkID";
 
+  /**
+   * Constant for the name of attribute "code".
+   */
+  public static final String CODE = "code";
+
+  /**
+   * <br/>
+   * <b>Example(s):</b> <br/>
+   * <ul>
+   * <li><code>4711-0815</code></li>
+   * </ul>
+   */
   @HeaderParam("novaKey")
   private String novaKey;
 
   @HeaderParam("tkID")
   private String tkID;
+
+  /**
+   * <br/>
+   * <b>Example(s):</b> <br/>
+   * <ul>
+   * <li><code>BOOKING_ID_999</code></li>
+   * </ul>
+   */
+  @HeaderParam("code")
+  private DoubleCode code;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
@@ -53,6 +75,7 @@ public class ParentBeanParamType implements Serializable {
     // Read attribute values from builder.
     novaKey = pBuilder.novaKey;
     tkID = pBuilder.tkID;
+    code = pBuilder.code;
   }
 
   /**
@@ -67,10 +90,11 @@ public class ParentBeanParamType implements Serializable {
   /**
    * Method creates a new builder and initializes it with the passed attributes.
    */
-  public static Builder builder( String pNovaKey, String pTkID ) {
+  public static Builder builder( String pNovaKey, String pTkID, DoubleCode pCode ) {
     Builder lBuilder = builder();
     lBuilder.setNovaKey(pNovaKey);
     lBuilder.setTkID(pTkID);
+    lBuilder.setCode(pCode);
     return lBuilder;
   }
 
@@ -82,12 +106,15 @@ public class ParentBeanParamType implements Serializable {
    *
    * @param pTkID Value to which {@link #tkID} should be set.
    *
+   * @param pCode Value to which {@link #code} should be set.
+   *
    * @return {@link com.anaptecs.spring.base.ParentBeanParamType}
    */
-  public static ParentBeanParamType of( String pNovaKey, String pTkID ) {
+  public static ParentBeanParamType of( String pNovaKey, String pTkID, DoubleCode pCode ) {
     ParentBeanParamType.Builder lBuilder = ParentBeanParamType.builder();
     lBuilder.setNovaKey(pNovaKey);
     lBuilder.setTkID(pTkID);
+    lBuilder.setCode(pCode);
     return lBuilder.build();
   }
 
@@ -95,9 +122,25 @@ public class ParentBeanParamType implements Serializable {
    * Class implements builder to create a new instance of class <code>ParentBeanParamType</code>.
    */
   public static class Builder {
+    /**
+     * <br/>
+     * <b>Example(s):</b> <br/>
+     * <ul>
+     * <li><code>4711-0815</code></li>
+     * </ul>
+     */
     private String novaKey;
 
     private String tkID;
+
+    /**
+     * <br/>
+     * <b>Example(s):</b> <br/>
+     * <ul>
+     * <li><code>BOOKING_ID_999</code></li>
+     * </ul>
+     */
+    private DoubleCode code;
 
     /**
      * Use {@link ParentBeanParamType#builder()} instead of private constructor to create new builder.
@@ -114,6 +157,7 @@ public class ParentBeanParamType implements Serializable {
         // Read attribute values from passed object.
         this.setNovaKey(pObject.novaKey);
         this.setTkID(pObject.tkID);
+        this.setCode(pObject.code);
       }
     }
 
@@ -138,6 +182,18 @@ public class ParentBeanParamType implements Serializable {
     public Builder setTkID( String pTkID ) {
       // Assign value to attribute
       tkID = pTkID;
+      return this;
+    }
+
+    /**
+     * Method sets attribute {@link #code}.<br/>
+     *
+     * @param pCode Value to which {@link #code} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    public Builder setCode( DoubleCode pCode ) {
+      // Assign value to attribute
+      code = pCode;
       return this;
     }
 
@@ -204,6 +260,25 @@ public class ParentBeanParamType implements Serializable {
   }
 
   /**
+   * Method returns attribute {@link #code}.<br/>
+   *
+   * @return {@link DoubleCode} Value to which {@link #code} is set.
+   */
+  public DoubleCode getCode( ) {
+    return code;
+  }
+
+  /**
+   * Method sets attribute {@link #code}.<br/>
+   *
+   * @param pCode Value to which {@link #code} should be set.
+   */
+  public void setCode( DoubleCode pCode ) {
+    // Assign value to attribute
+    code = pCode;
+  }
+
+  /**
    * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
@@ -221,6 +296,10 @@ public class ParentBeanParamType implements Serializable {
     lBuilder.append(pIndent);
     lBuilder.append("tkID: ");
     lBuilder.append(tkID);
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("code: ");
+    lBuilder.append(code);
     lBuilder.append(System.lineSeparator());
     return lBuilder;
   }

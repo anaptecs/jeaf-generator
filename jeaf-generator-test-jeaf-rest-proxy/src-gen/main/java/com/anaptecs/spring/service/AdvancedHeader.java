@@ -37,6 +37,13 @@ public class AdvancedHeader implements Serializable {
    */
   public static final String DOUBLECODE = "doubleCode";
 
+  /**
+   * <br/>
+   * <b>Example(s):</b> <br/>
+   * <ul>
+   * <li><code>BOOK-12345</code></li>
+   * </ul>
+   */
   @HeaderParam("bookingID")
   private BookingID bookingID;
 
@@ -111,6 +118,13 @@ public class AdvancedHeader implements Serializable {
    * Class implements builder to create a new instance of class <code>AdvancedHeader</code>.
    */
   public static class Builder {
+    /**
+     * <br/>
+     * <b>Example(s):</b> <br/>
+     * <ul>
+     * <li><code>BOOK-12345</code></li>
+     * </ul>
+     */
     private BookingID bookingID;
 
     private BookingCode bookingCode;

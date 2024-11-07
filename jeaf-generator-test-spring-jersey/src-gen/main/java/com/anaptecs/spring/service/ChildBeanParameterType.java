@@ -7,6 +7,7 @@ package com.anaptecs.spring.service;
 
 import javax.ws.rs.HeaderParam;
 
+import com.anaptecs.spring.base.DoubleCode;
 import com.anaptecs.spring.base.ParentBeanParamType;
 
 public class ChildBeanParameterType extends ParentBeanParamType {
@@ -54,14 +55,17 @@ public class ChildBeanParameterType extends ParentBeanParamType {
    *
    * @param pTkID Value to which {@link #tkID} should be set.
    *
+   * @param pCode Value to which {@link #code} should be set.
+   *
    * @param pChildProperty Value to which {@link #childProperty} should be set.
    *
    * @return {@link com.anaptecs.spring.service.ChildBeanParameterType}
    */
-  public static ChildBeanParameterType of( String pNovaKey, String pTkID, String pChildProperty ) {
+  public static ChildBeanParameterType of( String pNovaKey, String pTkID, DoubleCode pCode, String pChildProperty ) {
     ChildBeanParameterType.Builder lBuilder = ChildBeanParameterType.builder();
     lBuilder.setNovaKey(pNovaKey);
     lBuilder.setTkID(pTkID);
+    lBuilder.setCode(pCode);
     lBuilder.setChildProperty(pChildProperty);
     return lBuilder.build();
   }
@@ -114,6 +118,19 @@ public class ChildBeanParameterType extends ParentBeanParamType {
     public Builder setTkID( String pTkID ) {
       // Call super class implementation.
       super.setTkID(pTkID);
+      return this;
+    }
+
+    /**
+     * Method sets attribute {@link #code}.<br/>
+     *
+     * @param pCode Value to which {@link #code} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    @Override
+    public Builder setCode( DoubleCode pCode ) {
+      // Call super class implementation.
+      super.setCode(pCode);
       return this;
     }
 
