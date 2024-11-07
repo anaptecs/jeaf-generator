@@ -484,6 +484,11 @@ paths:
     
   /products/specific/{id}:
     patch:
+      summary: |
+        Load
+        specific things
+        from multiple
+        lines
       operationId: loadSpecificThings
       parameters:
         - name: token

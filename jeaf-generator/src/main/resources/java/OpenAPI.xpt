@@ -269,7 +269,8 @@ components:
       «ENDFOREACH-»
       «ENDIF-»
       «IF operation.summary.length > 0-»
-      summary: «operation.summary»
+      summary: «IF operation.summary.isMultiLineValue()»|
+        «ENDIF»«operation.summary.makeMultiLineCompatible("        ")»
       «ENDIF-»
       «IF operation.hasComment()-»
       description: «getOpenAPICommentStyle()»
