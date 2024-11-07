@@ -55,6 +55,7 @@ components:
       in: header
       schema:
         type: string
+        nullable: false
       required: true
 
     # com.anaptecs.jeaf.junit.openapi.base.NotInlinedBeanParam.doubleCode
@@ -64,6 +65,7 @@ components:
       schema:
         type: number
         format: double
+        nullable: false
       required: true
 
     # com.anaptecs.jeaf.junit.openapi.base.NotInlinedBeanParam.extensibleEnum
@@ -72,6 +74,7 @@ components:
       in: header
       schema:
         type: string
+        nullable: false
         x-extensible-enum:
           - RED
           - GREEN
@@ -84,6 +87,7 @@ components:
       in: header
       schema:
         type: string
+        nullable: false
       required: true
 
     # com.anaptecs.jeaf.junit.openapi.base.ParentBeanParamType.novaKey
@@ -92,6 +96,7 @@ components:
       in: header
       schema:
         type: string
+        nullable: false
       required: true
 
     # com.anaptecs.jeaf.junit.openapi.base.ParentBeanParamType.tkID
@@ -100,6 +105,7 @@ components:
       in: header
       schema:
         type: string
+        nullable: false
       required: true
 
   responses:

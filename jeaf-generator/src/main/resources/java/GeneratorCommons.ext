@@ -701,4 +701,8 @@ cached boolean isTechnicalBaseClass(uml::Class class):
         if class.isStereotypeApplied("ServiceObject")
         then ((JMM::ServiceObject) class).technicalBaseClass
         else false;
-    
+
+Integer maxValue(Integer first, Integer second):
+    if first > second
+    then first
+    else second;

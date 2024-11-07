@@ -60,7 +60,8 @@ paths:
                 type: array
                 items:
                   $ref: '../base/product-base.yml#/components/schemas/Product'
-                minItems: 0
+                minItems: 1
+                maxItems: 4711
           headers:
             Cache-Control:
               schema:
@@ -141,6 +142,7 @@ paths:
           required: true
           schema:
             type: string
+            nullable: false
             minLength: 1
             examples:
              - 1234-345
@@ -175,12 +177,14 @@ paths:
           required: true
           schema:
             type: string
+            nullable: false
             minLength: 1
         - name: lang
           in: header
           required: true
           schema:
             type: string
+            nullable: false
             examples:
              - en
         - name: reseller
@@ -189,17 +193,20 @@ paths:
           schema:
             type: integer
             format: int64
+            nullable: false
         - name: id
           in: path
           required: true
           schema:
             type: integer
             format: int64
+            nullable: false
         - name: q1
           in: query
           required: true
           schema:
             type: string
+            nullable: false
         - name: intCode
           in: header
           required: true
@@ -292,12 +299,14 @@ paths:
           required: true
           schema:
             type: string
+            nullable: false
             minLength: 1
         - name: lang
           in: header
           required: true
           schema:
             type: string
+            nullable: false
             examples:
              - en
         - name: reseller
@@ -306,11 +315,13 @@ paths:
           schema:
             type: integer
             format: int64
+            nullable: false
         - name: q1
           in: query
           required: true
           schema:
             type: string
+            nullable: false
       responses:
         '200':
           description: |
@@ -339,17 +350,20 @@ paths:
           required: true
           schema:
             type: string
+            nullable: false
         - name: lang
           in: header
           required: true
           schema:
             type: string
+            nullable: false
         - name: q2
           in: query
           required: true
           deprecated: true
           schema:
             type: string
+            nullable: false
       responses:
         '204':
           description: |
@@ -371,6 +385,7 @@ paths:
           schema:
             type: integer
             format: int32
+            nullable: false
       responses:
         '200':
           description: |
@@ -476,12 +491,14 @@ paths:
           required: true
           schema:
             type: string
+            nullable: false
             minLength: 1
         - name: lang
           in: header
           required: true
           schema:
             type: string
+            nullable: false
             examples:
              - en
         - name: reseller
@@ -490,17 +507,20 @@ paths:
           schema:
             type: integer
             format: int64
+            nullable: false
         - name: id
           in: path
           required: true
           schema:
             type: integer
             format: int64
+            nullable: false
         - name: q1
           in: query
           required: true
           schema:
             type: string
+            nullable: false
         - name: intCode
           in: header
           required: true
@@ -511,6 +531,7 @@ paths:
           required: true
           schema:
             type: string
+            nullable: false
         - name: Channel-Type
           in: cookie
           required: true
@@ -608,6 +629,7 @@ paths:
                   examples:
                    - CHF
                 minItems: 1
+                maxItems: 20
                 nullable: false
           headers:
             X-Global-Response-Header:
@@ -708,6 +730,8 @@ paths:
             application/json:
               schema:
                 type: string
+                minLength: 111
+                maxLength: 666
           headers:
             X-Global-Response-Header:
               schema:
@@ -779,66 +803,77 @@ paths:
           required: true
           schema:
             type: string
+            nullable: false
         - name: startTimestamp
           in: query
           required: true
           schema:
             type: string
             format: date-time
+            nullable: false
         - name: startTime
           in: query
           required: true
           schema:
             type: string
             format: time
+            nullable: false
         - name: localStartTimestamp
           in: query
           required: true
           schema:
             type: string
             format: date-time
+            nullable: false
         - name: localStartTime
           in: query
           required: true
           schema:
             type: string
             format: time
+            nullable: false
         - name: localStartDate
           in: query
           required: true
           schema:
             type: string
             format: date
+            nullable: false
         - name: calendar
           in: query
           required: true
           schema:
             type: string
             format: date-time
+            nullable: false
         - name: utilDate
           in: query
           required: true
           schema:
             type: string
             format: date-time
+            nullable: false
         - name: sqlTimestamp
           in: query
           required: true
           schema:
             type: string
             format: date-time
+            nullable: false
         - name: sqlTime
           in: query
           required: true
           schema:
             type: string
             format: time
+            nullable: false
         - name: sqlDate
           in: query
           required: true
           schema:
             type: string
             format: date
+            nullable: false
       responses:
         '204':
           description: |
@@ -859,65 +894,76 @@ paths:
           schema:
             type: string
             format: date-time
+            nullable: false
         - name: offsetTime
           in: query
           required: true
           schema:
             type: string
             format: time
+            nullable: false
         - name: localDateTime
           in: query
           required: true
           schema:
             type: string
             format: date-time
+            nullable: false
         - name: localTime
           in: query
           required: true
           schema:
             type: string
             format: time
+            nullable: false
         - name: localDate
           in: query
           required: true
           schema:
             type: string
             format: date
+            nullable: false
         - name: utilDate
           in: query
           required: true
           schema:
             type: string
             format: date-time
+            nullable: false
         - name: calendar
           in: query
           required: true
           schema:
             type: string
             format: date-time
+            nullable: false
         - name: sqlTimestamp
           in: query
           required: true
           schema:
             type: string
             format: date-time
+            nullable: false
         - name: sqlTime
           in: query
           required: true
           schema:
             type: string
             format: time
+            nullable: false
         - name: sqlDate
           in: query
           required: true
           schema:
             type: string
             format: date
+            nullable: false
         - name: path
           in: path
           required: true
           schema:
             type: string
+            nullable: false
       responses:
         '204':
           description: |
@@ -937,66 +983,77 @@ paths:
           required: true
           schema:
             type: string
+            nullable: false
         - name: Offset-Date-Time
           in: header
           required: true
           schema:
             type: string
             format: date-time
+            nullable: false
         - name: Offset-Time
           in: header
           required: true
           schema:
             type: string
             format: time
+            nullable: false
         - name: Local-Date-Time
           in: header
           required: true
           schema:
             type: string
             format: date-time
+            nullable: false
         - name: Local-Time
           in: header
           required: true
           schema:
             type: string
             format: time
+            nullable: false
         - name: Local-Date
           in: header
           required: true
           schema:
             type: string
             format: date
+            nullable: false
         - name: Calendar
           in: header
           required: true
           schema:
             type: string
             format: date-time
+            nullable: false
         - name: Util-Date
           in: header
           required: true
           schema:
             type: string
             format: date-time
+            nullable: false
         - name: SQL-Timestamp
           in: header
           required: true
           schema:
             type: string
             format: date-time
+            nullable: false
         - name: SQL-Time
           in: header
           required: true
           schema:
             type: string
             format: time
+            nullable: false
         - name: SQL-Date
           in: header
           required: true
           schema:
             type: string
             format: date
+            nullable: false
       responses:
         '204':
           description: |
@@ -1017,65 +1074,76 @@ paths:
           schema:
             type: string
             format: date-time
+            nullable: false
         - name: Offset-Time
           in: header
           required: true
           schema:
             type: string
             format: time
+            nullable: false
         - name: Local-Date-Time
           in: header
           required: true
           schema:
             type: string
             format: date-time
+            nullable: false
         - name: Local-Time
           in: header
           required: true
           schema:
             type: string
             format: time
+            nullable: false
         - name: Local-Date
           in: header
           required: true
           schema:
             type: string
             format: date
+            nullable: false
         - name: Util-Date
           in: header
           required: true
           schema:
             type: string
             format: date-time
+            nullable: false
         - name: Calendar
           in: header
           required: true
           schema:
             type: string
             format: date-time
+            nullable: false
         - name: SQL-Timestamp
           in: header
           required: true
           schema:
             type: string
             format: date-time
+            nullable: false
         - name: SQL-Time
           in: header
           required: true
           schema:
             type: string
             format: time
+            nullable: false
         - name: SQL-Date
           in: header
           required: true
           schema:
             type: string
             format: date
+            nullable: false
         - name: path
           in: path
           required: true
           schema:
             type: string
+            nullable: false
       responses:
         '204':
           description: |
@@ -1095,11 +1163,13 @@ paths:
           required: true
           schema:
             type: string
+            nullable: false
         - name: Authentication
           in: header
           required: true
           schema:
             type: string
+            nullable: false
       responses:
         '200':
           description: |
@@ -1128,11 +1198,13 @@ paths:
           required: true
           schema:
             type: string
+            nullable: false
         - name: Authentication
           in: header
           required: true
           schema:
             type: string
+            nullable: false
       responses:
         '200':
           description: |
@@ -1208,7 +1280,6 @@ paths:
                 type: array
                 items:
                   $ref: '../base/product-base.yml#/components/schemas/Product'
-                minItems: 0
     
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
@@ -1274,6 +1345,7 @@ paths:
           required: true
           schema:
             type: string
+            nullable: false
             minLength: 1
             examples:
              - 1234-345
@@ -1304,12 +1376,14 @@ paths:
           required: true
           schema:
             type: string
+            nullable: false
             minLength: 1
         - name: lang
           in: header
           required: true
           schema:
             type: string
+            nullable: false
             examples:
              - en
         - name: reseller
@@ -1318,17 +1392,20 @@ paths:
           schema:
             type: integer
             format: int64
+            nullable: false
         - name: id
           in: path
           required: true
           schema:
             type: integer
             format: int64
+            nullable: false
         - name: q1
           in: query
           required: true
           schema:
             type: string
+            nullable: false
         - name: intCode
           in: header
           required: true
@@ -1498,17 +1575,20 @@ paths:
           schema:
             type: number
             format: double
+            nullable: false
         - name: giveMeMoreCookies
           in: cookie
           required: true
           schema:
             type: integer
             format: int32
+            nullable: false
         - name: locale
           in: query
           required: true
           schema:
             type: string
+            nullable: false
       responses:
         '200':
           description: |
@@ -1602,66 +1682,77 @@ paths:
           required: true
           schema:
             type: string
+            nullable: false
         - name: startTimestamp
           in: query
           required: true
           schema:
             type: string
             format: date-time
+            nullable: false
         - name: startTime
           in: query
           required: true
           schema:
             type: string
             format: time
+            nullable: false
         - name: localStartTimestamp
           in: query
           required: true
           schema:
             type: string
             format: date-time
+            nullable: false
         - name: localStartTime
           in: query
           required: true
           schema:
             type: string
             format: time
+            nullable: false
         - name: localStartDate
           in: query
           required: true
           schema:
             type: string
             format: date
+            nullable: false
         - name: calendar
           in: query
           required: true
           schema:
             type: string
             format: date-time
+            nullable: false
         - name: utilDate
           in: query
           required: true
           schema:
             type: string
             format: date-time
+            nullable: false
         - name: sqlTimestamp
           in: query
           required: true
           schema:
             type: string
             format: date-time
+            nullable: false
         - name: sqlTime
           in: query
           required: true
           schema:
             type: string
             format: time
+            nullable: false
         - name: sqlDate
           in: query
           required: true
           schema:
             type: string
             format: date
+            nullable: false
         - name: calendars
           in: query
           schema:
@@ -1693,65 +1784,76 @@ paths:
           schema:
             type: string
             format: date-time
+            nullable: false
         - name: offsetTime
           in: query
           required: true
           schema:
             type: string
             format: time
+            nullable: false
         - name: localDateTime
           in: query
           required: true
           schema:
             type: string
             format: date-time
+            nullable: false
         - name: localTime
           in: query
           required: true
           schema:
             type: string
             format: time
+            nullable: false
         - name: localDate
           in: query
           required: true
           schema:
             type: string
             format: date
+            nullable: false
         - name: utilDate
           in: query
           required: true
           schema:
             type: string
             format: date-time
+            nullable: false
         - name: calendar
           in: query
           required: true
           schema:
             type: string
             format: date-time
+            nullable: false
         - name: sqlTimestamp
           in: query
           required: true
           schema:
             type: string
             format: date-time
+            nullable: false
         - name: sqlTime
           in: query
           required: true
           schema:
             type: string
             format: time
+            nullable: false
         - name: sqlDate
           in: query
           required: true
           schema:
             type: string
             format: date
+            nullable: false
         - name: path
           in: path
           required: true
           schema:
             type: string
+            nullable: false
       responses:
         '204':
           description: |
@@ -1775,66 +1877,77 @@ paths:
           required: true
           schema:
             type: string
+            nullable: false
         - name: Offset-Date-Time
           in: header
           required: true
           schema:
             type: string
             format: date-time
+            nullable: false
         - name: Offset-Time
           in: header
           required: true
           schema:
             type: string
             format: time
+            nullable: false
         - name: Local-Date-Time
           in: header
           required: true
           schema:
             type: string
             format: date-time
+            nullable: false
         - name: Local-Time
           in: header
           required: true
           schema:
             type: string
             format: time
+            nullable: false
         - name: Local-Date
           in: header
           required: true
           schema:
             type: string
             format: date
+            nullable: false
         - name: Calendar
           in: header
           required: true
           schema:
             type: string
             format: date-time
+            nullable: false
         - name: Util-Date
           in: header
           required: true
           schema:
             type: string
             format: date-time
+            nullable: false
         - name: SQL-Timestamp
           in: header
           required: true
           schema:
             type: string
             format: date-time
+            nullable: false
         - name: SQL-Time
           in: header
           required: true
           schema:
             type: string
             format: time
+            nullable: false
         - name: SQL-Date
           in: header
           required: true
           schema:
             type: string
             format: date
+            nullable: false
         - name: util-dates
           in: header
           schema:
@@ -1866,65 +1979,76 @@ paths:
           schema:
             type: string
             format: date-time
+            nullable: false
         - name: Offset-Time
           in: header
           required: true
           schema:
             type: string
             format: time
+            nullable: false
         - name: Local-Date-Time
           in: header
           required: true
           schema:
             type: string
             format: date-time
+            nullable: false
         - name: Local-Time
           in: header
           required: true
           schema:
             type: string
             format: time
+            nullable: false
         - name: Local-Date
           in: header
           required: true
           schema:
             type: string
             format: date
+            nullable: false
         - name: Util-Date
           in: header
           required: true
           schema:
             type: string
             format: date-time
+            nullable: false
         - name: Calendar
           in: header
           required: true
           schema:
             type: string
             format: date-time
+            nullable: false
         - name: SQL-Timestamp
           in: header
           required: true
           schema:
             type: string
             format: date-time
+            nullable: false
         - name: SQL-Time
           in: header
           required: true
           schema:
             type: string
             format: time
+            nullable: false
         - name: SQL-Date
           in: header
           required: true
           schema:
             type: string
             format: date
+            nullable: false
         - name: path
           in: path
           required: true
           schema:
             type: string
+            nullable: false
       responses:
         '204':
           description: |
@@ -1948,12 +2072,14 @@ paths:
           required: true
           schema:
             type: string
+            nullable: false
             minLength: 1
         - name: lang
           in: header
           required: true
           schema:
             type: string
+            nullable: false
             examples:
              - en
         - name: reseller
@@ -1962,17 +2088,20 @@ paths:
           schema:
             type: integer
             format: int64
+            nullable: false
         - name: id
           in: path
           required: true
           schema:
             type: integer
             format: int64
+            nullable: false
         - name: q1
           in: query
           required: true
           schema:
             type: string
+            nullable: false
         - name: intCode
           in: header
           required: true
@@ -1983,6 +2112,7 @@ paths:
           required: true
           schema:
             type: string
+            nullable: false
         - name: Channel-Type
           in: cookie
           required: true
@@ -2222,6 +2352,7 @@ paths:
           schema:
             type: integer
             format: int32
+            nullable: false
             default: '47'
       responses:
         '200':
@@ -2307,6 +2438,7 @@ paths:
           required: true
           schema:
             type: array
+            nullable: false
             items:
               type: integer
               format: int32
@@ -2484,24 +2616,28 @@ paths:
           schema:
             type: string
             format: date-time
+            nullable: false
         - name: offsetTime
           in: query
           required: true
           schema:
             type: string
             format: time
+            nullable: false
         - name: localDateTime
           in: query
           required: true
           schema:
             type: string
             format: date-time
+            nullable: false
         - name: localTime
           in: query
           required: true
           schema:
             type: string
             format: time
+            nullable: false
         - name: timestamps
           in: query
           schema:
@@ -2560,6 +2696,7 @@ paths:
             items:
               type: integer
               format: int32
+              nullable: false
         - name: doubles
           in: header
           schema:
@@ -2669,6 +2806,7 @@ paths:
           required: true
           schema:
             type: array
+            nullable: false
             items:
               type: integer
               format: int32
@@ -2785,35 +2923,41 @@ paths:
           required: true
           schema:
             type: boolean
+            nullable: false
         - name: aBooleanWrapper
           in: header
           required: true
           schema:
             type: boolean
+            nullable: false
         - name: anInt
           in: header
           required: true
           schema:
             type: integer
             format: int32
+            nullable: false
         - name: anInteger
           in: header
           required: true
           schema:
             type: integer
             format: int32
+            nullable: false
         - name: aLong
           in: query
           required: true
           schema:
             type: integer
             format: int64
+            nullable: false
         - name: aVeryLong
           in: query
           required: true
           schema:
             type: integer
             format: int64
+            nullable: false
       responses:
         '200':
           description: |
@@ -2842,34 +2986,40 @@ paths:
           schema:
             type: integer
             format: int32
+            nullable: false
         - name: pAnInteger
           in: header
           required: true
           schema:
             type: integer
             format: int32
+            nullable: false
         - name: pABoolean
           in: header
           required: true
           schema:
             type: boolean
+            nullable: false
         - name: pBooleanWrapper
           in: header
           required: true
           schema:
             type: boolean
+            nullable: false
         - name: pALong
           in: query
           required: true
           schema:
             type: integer
             format: int64
+            nullable: false
         - name: pVeryLong
           in: query
           required: true
           schema:
             type: integer
             format: int64
+            nullable: false
       responses:
         '200':
           description: |
@@ -2917,6 +3067,7 @@ components:
       in: header
       schema:
         type: string
+        nullable: false
       required: true
 
     # com.anaptecs.spring.service.LocalBeanParamType.localID
@@ -2925,6 +3076,7 @@ components:
       in: header
       schema:
         type: string
+        nullable: false
       required: true
 
     # com.anaptecs.spring.service.LocalBeanParamType.localKey
@@ -2933,6 +3085,7 @@ components:
       in: header
       schema:
         type: string
+        nullable: false
       required: true
 
   responses:

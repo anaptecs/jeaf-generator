@@ -98,6 +98,7 @@ public class ProductServiceReactiveResource {
   @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(path = "products/", method = { RequestMethod.GET })
+  @MyNotEmptyRESTParam
   public Mono<List<Product>> getProducts( ServerWebExchange pServerWebExchange ) {
     return Mono.defer(( ) -> {
       // Delegate request to service.

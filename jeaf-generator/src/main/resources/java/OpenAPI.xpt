@@ -119,6 +119,9 @@ components:
           «IF parameter.hasPatternForProperty() -»
         pattern: '«parameter.getPatternForProperty()»'
           «ENDIF-»
+          «IF parameter.isRequiredProperty() -»
+        nullable: false
+          «ENDIF-»          
         «ELSE-»
         type: array
           items:
@@ -129,6 +132,9 @@ components:
           «IF parameter.hasPatternForProperty() -»
             pattern: '«parameter.getPatternForProperty()»'
           «ENDIF-»
+          «IF parameter.isRequiredProperty() -»
+            nullable: false
+          «ENDIF-»          
         «ENDIF-»
         «EXPAND java::OpenAPIHelper::GenerateExample("          ") FOR parameter -»
       «ELSE-»
@@ -145,9 +151,15 @@ components:
           			«ENDIF-»
         		«EXPAND java::OpenAPIHelper::GenerateExample("          ") FOR parameter -»
       		«ENDIF-»
+            «IF parameter.isRequiredProperty() -»
+        nullable: false
+            «ENDIF-»          
       	«ELSE-»
       		«IF parameter.type.isEnumeration() -»
         type: string
+                «IF parameter.isRequiredProperty() -»
+        nullable: false
+                «ENDIF-»          
         «((uml::Enumeration) parameter.type).getEnumerationType()»:
           		«FOREACH ((uml::Enumeration) parameter.type).ownedLiteral AS literal-»
           - «literal.getLiteralName()»
@@ -295,6 +307,9 @@ components:
             	«IF property.isMultivalued() && property.type.isByteType() -» 
             type: string
             format: byte
+                    «IF property.isRequiredProperty() -»
+            nullable: false
+                    «ENDIF-»          
             	«ELSEIF property.isMultivalued() == false -»
             type: «property.type.getOpenAPIType(this)»
             		«IF property.hasOpenAPIFormatForProperty()-»
@@ -303,6 +318,9 @@ components:
                     «IF property.hasPatternForProperty() -»
             pattern: '«property.getPatternForProperty()»'
                     «ENDIF-»
+                    «IF property.isRequiredProperty() -»
+            nullable: false
+                    «ENDIF-»          
             «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("      ") FOR property-»
                     «IF property.defaultValue != null -»
             default: '«property.defaultValue.stringValue()»'
@@ -318,6 +336,9 @@ components:
                     «IF property.hasPatternForProperty() -»
               pattern: '«property.getPatternForProperty()»'
                     «ENDIF-»
+                    «IF property.isRequiredProperty() -»
+              nullable: false
+                    «ENDIF-»          
             	«ENDIF -»
                 «EXPAND java::OpenAPIHelper::GenerateExample("            ") FOR property -»
             «ELSE -»
@@ -364,6 +385,9 @@ components:
                 «IF param.isMultivalued() && param.type.isByteType() -» 
             type: string
             format: byte
+                    «IF param.isRequired() -»
+            nullable: false
+                    «ENDIF-»          
             	«ELSEIF param.isMultivalued() == false-»
             type: «param.type.getOpenAPIType(this)»
             		«IF param.hasOpenAPIFormatForParam()-»
@@ -372,12 +396,18 @@ components:
                     «IF param.hasPatternForParam() -»
             pattern: '«param.getOpenAPIFormatForParam()»'
                     «ENDIF-»
+                    «IF param.isRequired() -»
+            nullable: false
+                    «ENDIF-»          
 			«EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("      ") FOR param-»
                   «IF param.hasDefaultValueForBasicType() -»
             default: «param.getDefaultValueForBasicType()»
                   «ENDIF-»
             	«ELSE-»
             type: array
+                    «IF param.isRequired() -»
+            nullable: false
+                    «ENDIF-»          
             items:
               type: «param.type.getOpenAPIType(this)»
               		«IF param.hasOpenAPIFormatForParam()-»
@@ -508,6 +538,7 @@ components:
                     «ENDIF-»
                   «ENDIF-»
                   «EXPAND java::OpenAPIHelper::GenerateExample("                ") FOR returnParam -»
+                «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("          ") FOR returnParam-»
                 «ELSE-»
                   «IF returnParam.isMultivalued() == false-»
                 $ref: «returnParam.type.getOpenAPIType(this)»
@@ -515,7 +546,7 @@ components:
                 type: array
                 items:
                   $ref: «returnParam.type.getOpenAPIType(this)»
-                minItems: «returnParam.getLower()»
+                «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("          ") FOR returnParam-»
                   «ENDIF-»
                 «ENDIF-»
                 «ENDIF-»
