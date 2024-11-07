@@ -677,6 +677,9 @@ public class ProductServiceRESTProxy implements ProductService {
       if (pParent.getTkID() != null) {
         lRequestBuilder.setHeader("tkID", pParent.getTkID());
       }
+      if (pParent.getCode() != null) {
+        lRequestBuilder.setHeader("code", pParent.getCode().getCode());
+      }
     }
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();
@@ -709,6 +712,9 @@ public class ProductServiceRESTProxy implements ProductService {
       }
       if (pChild.getTkID() != null) {
         lRequestBuilder.setHeader("tkID", pChild.getTkID());
+      }
+      if (pChild.getCode() != null) {
+        lRequestBuilder.setHeader("code", pChild.getCode().getCode());
       }
       if (pChild.getChildProperty() != null) {
         lRequestBuilder.setHeader("X-Child-Property", pChild.getChildProperty());

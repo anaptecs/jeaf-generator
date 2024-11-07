@@ -49,6 +49,18 @@ components:
             write:pets: Modify pets
 
   parameters:
+    # com.anaptecs.spring.base.ParentBeanParamType.code
+    code:
+      name: code
+      in: header
+      schema:
+        type: number
+        format: double
+        examples:
+         - BOOKING_ID_999
+        nullable: false
+      required: true
+
     # com.anaptecs.spring.base.ParentBeanParamType.novaKey
     novaKey:
       name: novaKey
@@ -56,6 +68,8 @@ components:
       schema:
         type: string
         nullable: false
+        examples:
+         - 4711-0815
       required: true
 
     # com.anaptecs.spring.base.ParentBeanParamType.tkID
