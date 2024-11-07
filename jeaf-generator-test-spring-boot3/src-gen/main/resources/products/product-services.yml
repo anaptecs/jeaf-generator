@@ -1256,6 +1256,23 @@ paths:
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
     
+  /products/info:
+    get:
+      operationId: getVersionInfo
+      responses:
+        '200':
+          description: |
+            TODO: Please add comment for response
+          content:
+            application/json:
+              schema:
+                type: string
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+    
   # RESTProductService
   /rest-products:
     get:
