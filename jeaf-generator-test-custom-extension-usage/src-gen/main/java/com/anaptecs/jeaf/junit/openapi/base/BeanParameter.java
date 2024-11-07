@@ -48,6 +48,15 @@ public class BeanParameter extends Object implements ServiceObject {
 
   // "java.util.Locale"
   @ClassPropertyDeclaration
+  /**
+   * <br/>
+   * <b>Example(s):</b> <br/>
+   * <ul>
+   * <li><code>DE-de<br/>
+   * 2nd line</code></li>
+   * <li><code>en</code></li>
+   * </ul>
+   */
   private Locale language;
 
   // "java.util.Locale"
@@ -108,6 +117,15 @@ public class BeanParameter extends Object implements ServiceObject {
     // "java.lang.String"
     private int accessTokenXYZ = 0;
 
+    /**
+     * <br/>
+     * <b>Example(s):</b> <br/>
+     * <ul>
+     * <li><code>DE-de<br/>
+     * 2nd line</code></li>
+     * <li><code>en</code></li>
+     * </ul>
+     */
     // "java.util.Locale"
     @BuilderPropertyDeclaration
     private Locale language;

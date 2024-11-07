@@ -1478,6 +1478,11 @@ components:
           type: string
           deprecated: true
           nullable: false
+          examples:
+           - 1st line 1st comment
+             2nd line 1st comment
+           - 1st line 2nd comment
+             2nd line 2nd comment
         uri:
           type: string
           format: uri

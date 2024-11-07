@@ -66,6 +66,14 @@ cached List[JMM::RESTOperation] getRESTOperations(JMM::RESTResource service, Str
 cached List[String] getPaths(JMM::RESTResource service):
    service.ownedOperation.typeSelect(JMM::RESTOperation).getRESTOperationPath(service).toSet();
 	
+cached boolean isMultiLineValue(String value):
+    value.contains("\n");
+
+cached String makeMultiLineCompatible(String value, String indentation):
+    if value.isMultiLineValue()
+    then value.replaceAll("\n", "\r\n" + indentation)
+    else value;
+    
 cached String getYAMLStyleComment(uml::Element element, String indentation):
     element.ownedComment.get(0).body.trim().replaceAll("\n", "\r\n" + indentation + "# ");
 

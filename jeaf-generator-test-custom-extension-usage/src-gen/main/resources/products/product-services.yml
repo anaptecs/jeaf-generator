@@ -391,6 +391,10 @@ paths:
           schema:
             type: string
             nullable: false
+            examples:
+             - DE-de
+               2nd line
+             - en
         - name: q2
           in: query
           required: true

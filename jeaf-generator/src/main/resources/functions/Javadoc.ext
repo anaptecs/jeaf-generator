@@ -44,3 +44,13 @@ cached String convertCommentForJavadoc(String comment):
 private String javaConvertCommentForJavadoc(String comment):
     JAVA com.anaptecs.jeaf.fwk.generator.util.JavadocHelper.convertCommentForJavadoc(java.lang.String);
     
+cached boolean isMultiLineValue(String value):
+    value.contains("\n");
+
+cached String makeMultiLineCompatible(String value):
+    if value.isMultiLineValue()
+    then value.replaceAll("\n", "<br/>\n    * ")
+    else value;
+    
+
+    
