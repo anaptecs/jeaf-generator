@@ -42,7 +42,7 @@
 	    «ENDIF»
 	    «FOREACH this.getToStringProperties().select(e|e.isPropertySuppressed() == false && e.isStatic == false && e.belongsToTransientBidirectionalBackReference() == false && e.generateBackwardCompatibility() == false) AS attribute»
 			lBuilder.append(pIndent);
-			lBuilder.append("«attribute.name»: ");
+			lBuilder.append("«attribute.getSoftLinkAwarePropertyNameForJava()»: ");
 		    «EXPAND ToStringValue FOR attribute»
 	    «ENDFOREACH»
     «ENDIF»

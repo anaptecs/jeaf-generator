@@ -405,7 +405,7 @@ public class Stop implements ServiceObject {
     lBuilder.append(index);
     lBuilder.append(System.lineSeparator());
     lBuilder.append(pIndent);
-    lBuilder.append("theSoftLink: ");
+    lBuilder.append("theSoftLinkID: ");
     lBuilder.append(theSoftLinkID);
     lBuilder.append(System.lineSeparator());
     return lBuilder;
