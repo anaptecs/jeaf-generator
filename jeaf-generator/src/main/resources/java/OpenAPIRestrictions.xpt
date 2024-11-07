@@ -6,6 +6,9 @@
 «EXTENSION java::OpenAPIFunctions»
 «EXTENSION java::GeneratorCommons»
 
+«EXTENSION functions::Property»
+
+
 «EXTENSION org::openarchitectureware::util::stdlib::io»
 
 «DEFINE OpenAPIRestrictions(String indent) FOR MultiplicityElement -»
@@ -28,7 +31,7 @@
 			«ELSEIF stereotype.name == "Positive" -»
 			  «EXPAND PositiveAnnotation(indent) FOR ((Positive) this)»
 			«ELSEIF stereotype.name == "Size" -»
-			  «IF this.isMultivalued() == false -»
+			  «IF this.isMultivalued() == false || (this.isProperty() && this.asProperty().type.isByteType() &&  this.asProperty().isMultivalued()) -»
 			  «EXPAND SizeAnnotation(indent) FOR ((Size) this)»
 			  «ELSE -»
 			  «EXPAND SizeAnnotationForArray(indent) FOR ((Size) this)»

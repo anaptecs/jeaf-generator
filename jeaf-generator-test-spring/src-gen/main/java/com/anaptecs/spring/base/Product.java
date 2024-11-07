@@ -103,7 +103,7 @@ public class Product implements IProduct {
   /**
    * Image describing the product.
    */
-  @Size(min = 0, max = 32768)
+  @Size(min = 1024, max = 32768)
   private byte[] image;
 
   /**
@@ -244,7 +244,7 @@ public class Product implements IProduct {
     /**
      * Image describing the product.
      */
-    @Size(min = 0, max = 32768)
+    @Size(min = 1024, max = 32768)
     private byte[] image;
 
     /**

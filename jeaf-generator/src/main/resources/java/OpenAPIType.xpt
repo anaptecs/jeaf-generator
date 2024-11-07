@@ -112,6 +112,7 @@
               «IF attribute.type.isByteType() -»
           type: string
           format: byte
+          «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("    ") FOR attribute-»          
               «ELSEIF attribute.isSoftLink()-»
           type: array
           items:

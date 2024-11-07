@@ -1027,6 +1027,7 @@ components:
         aByteArray:
           type: string
           format: byte
+          maxLength: 32768
         bByteArray:
           type: string
           format: byte
@@ -1444,6 +1445,8 @@ components:
             Image describing the product.
           type: string
           format: byte
+          minLength: 1024
+          maxLength: 32768
         link:
           type: string
           nullable: false

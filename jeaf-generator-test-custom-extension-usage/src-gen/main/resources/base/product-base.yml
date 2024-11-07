@@ -1295,6 +1295,7 @@ components:
         aByteArray:
           type: string
           format: byte
+          maxLength: 32768
           nullable: true
         bByteArray:
           type: string
