@@ -61,10 +61,13 @@ cached List[JMM::RESTResource] getRESTResources(JMM::OpenAPI3Specification spec)
 	spec.clientDependency.supplier.typeSelect(JMM::RESTResource).select(e|e.isInGeneratorWhitelist()).sortBy(e|e.name).sortBy(e|e.getOrderNumber());
 	
 cached List[JMM::RESTOperation] getRESTOperations(JMM::RESTResource service, String pPath):
-   service.ownedOperation.typeSelect(JMM::RESTOperation).select(e|e.getRESTOperationPath(service) == pPath);
+   service.getAllOperations().typeSelect(JMM::RESTOperation).select(e|e.getRESTOperationPath(service) == pPath);
    
 cached List[String] getPaths(JMM::RESTResource service):
-   service.ownedOperation.typeSelect(JMM::RESTOperation).getRESTOperationPath(service).toSet();
+   service.getAllOperations().typeSelect(JMM::RESTOperation).getRESTOperationPath(service).toSet();
+   
+cached List[uml::Operation] getAllOperations(uml::Interface interface):
+    interface.parents().getAllOperations().addAll(interface.ownedOperation);   
 	
 cached boolean isMultiLineValue(String value):
     value.contains("\n");
