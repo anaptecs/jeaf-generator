@@ -550,7 +550,7 @@ public class GeneratorMojo extends AbstractMojo {
    * Switch defines if {@link Comparable} should be implemented by classes that are marked as OpenAPIDataTypes.
    */
   @Parameter(required = false, defaultValue = "false")
-  private Boolean implementCompareableForOpenAPIDataTypes;
+  private Boolean implementComparableForOpenAPIDataTypes;
 
   /**
    * Switch can be used to enable that <code>NotNull</code> annotation is generated for setter and getter of single
