@@ -1681,8 +1681,8 @@ public class GeneratorMojo extends AbstractMojo {
       lLog.info("Generate equals() and hashCode() for OpenAPI");
       lLog.info("data types:                                       " + generateEqualsAndHashCodeForOpenAPIDataTypes);
     }
-    if (implementCompareableForOpenAPIDataTypes) {
-      lLog.info("Implement Compareable for OpenAPIDataTypes:       " + implementCompareableForOpenAPIDataTypes);
+    if (implementComparableForOpenAPIDataTypes) {
+      lLog.info("Implement Compareable for OpenAPIDataTypes:       " + implementComparableForOpenAPIDataTypes);
     }
 
     if (generateNotNullAnnotationForSingleValuedProperties) {
@@ -2085,7 +2085,7 @@ public class GeneratorMojo extends AbstractMojo {
           generateEqualsAndHashCodeForOpenAPIDataTypes.toString());
 
       System.setProperty(PROPERTY_PREFIX + "implementCompareableForOpenAPIDataTypes",
-          implementCompareableForOpenAPIDataTypes.toString());
+          implementComparableForOpenAPIDataTypes.toString());
 
       // NotNull / NotEmpty annotations for properties / POJOs / ServiceObjects
       System.setProperty(PROPERTY_PREFIX + "generateNotNullAnnotationForSingleValuedProperties",
