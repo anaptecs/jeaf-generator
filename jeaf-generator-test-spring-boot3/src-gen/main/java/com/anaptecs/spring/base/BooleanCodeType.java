@@ -7,7 +7,7 @@ package com.anaptecs.spring.base;
 
 import java.util.Objects;
 
-public class BooleanCodeType implements Comparable<BooleanCodeType> {
+public class BooleanCodeType {
   /**
    * Constant for the name of attribute "code".
    */
@@ -133,11 +133,6 @@ public class BooleanCodeType implements Comparable<BooleanCodeType> {
       lEquals = Objects.equals(code, ((BooleanCodeType) pOtherObject).getCode());
     }
     return lEquals;
-  }
-
-  @Override
-  public int compareTo( BooleanCodeType pOther ) {
-    return Boolean.compare(this.getCode(), pOther.getCode());
   }
 
   /**

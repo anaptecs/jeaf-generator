@@ -1,4 +1,5 @@
 extension java::GeneratorCommons;
+extension functions::Class;
 extension functions::RESTOperation;
 extension jeaf::RESTFunctions;
 extension jeaf::RESTFunctions;
@@ -10,9 +11,17 @@ cached boolean isRESTResource(uml::Element element):
 cached JMM::RESTResource asRESTResource(uml::Element element):
     (JMM::RESTResource) element;
     
-cached boolean filterCustomHeaders(JMM::RESTResource resource):
-    filterCustomHeaders() && resource.ownedOperation.typeSelect(JMM::RESTOperation).select(e|e.hasBeanParamsForRESTOperation()).getBeanParamsForRESTOperation().select(e|e.supportsCustomHeaders).isEmpty == false;
+cached boolean requiresCustomHeadersFilter(JMM::RESTResource resource):
+    filterCustomHeaders() && resource.ownedOperation.typeSelect(JMM::RESTOperation).select(e|e.requiresCustomHeadersFilterForOperation()).isEmpty == false;
     
+private requiresCustomHeadersFilterForOperation(JMM::RESTOperation operation):
+	operation.getBeanParamsForRESTOperation().select(e|e.supportsCustomHeaders()).isEmpty == false;
+	
+cached boolean supportsCustomHeaders(JMM::BeanParam beanParam):
+	if beanParam.isClass() && beanParam.parents().isEmpty == false
+	then beanParam.supportsCustomHeaders || (beanParam.parents().typeSelect(JMM::BeanParam).select(e| e.supportsCustomHeaders()).isEmpty == false)
+	else beanParam.supportsCustomHeaders;
+	
 cached String getResourceName(JMM::RESTResource resource, boolean reactive):
     if reactive
     then resource.name + "ReactiveResource"

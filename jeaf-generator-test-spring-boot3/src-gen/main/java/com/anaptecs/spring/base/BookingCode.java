@@ -7,7 +7,7 @@ package com.anaptecs.spring.base;
 
 import java.util.Objects;
 
-public class BookingCode implements Comparable<BookingCode> {
+public class BookingCode {
   /**
    * Constant for the name of attribute "code".
    */
@@ -123,11 +123,6 @@ public class BookingCode implements Comparable<BookingCode> {
       lEquals = Objects.equals(code, ((BookingCode) pOtherObject).getCode());
     }
     return lEquals;
-  }
-
-  @Override
-  public int compareTo( BookingCode pOther ) {
-    return this.getCode().compareTo(pOther.getCode());
   }
 
   /**

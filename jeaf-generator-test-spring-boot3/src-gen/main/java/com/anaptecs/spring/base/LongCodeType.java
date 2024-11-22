@@ -7,7 +7,7 @@ package com.anaptecs.spring.base;
 
 import java.util.Objects;
 
-public class LongCodeType implements Comparable<LongCodeType> {
+public class LongCodeType {
   /**
    * Constant for the name of attribute "code".
    */
@@ -123,11 +123,6 @@ public class LongCodeType implements Comparable<LongCodeType> {
       lEquals = Objects.equals(code, ((LongCodeType) pOtherObject).getCode());
     }
     return lEquals;
-  }
-
-  @Override
-  public int compareTo( LongCodeType pOther ) {
-    return Long.compare(this.getCode(), pOther.getCode());
   }
 
   /**
