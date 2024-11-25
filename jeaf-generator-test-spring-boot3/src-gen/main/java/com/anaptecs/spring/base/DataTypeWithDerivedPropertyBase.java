@@ -7,7 +7,7 @@ package com.anaptecs.spring.base;
 
 import java.util.Objects;
 
-public abstract class DataTypeWithDerivedPropertyBase implements Comparable<DataTypeWithDerivedProperty> {
+public abstract class DataTypeWithDerivedPropertyBase {
   /**
    * Constant for the name of attribute "property".
    */
@@ -123,11 +123,6 @@ public abstract class DataTypeWithDerivedPropertyBase implements Comparable<Data
       lEquals = Objects.equals(property, ((DataTypeWithDerivedProperty) pOtherObject).getProperty());
     }
     return lEquals;
-  }
-
-  @Override
-  public int compareTo( DataTypeWithDerivedProperty pOther ) {
-    return Integer.compare(this.getProperty(), pOther.getProperty());
   }
 
   /**

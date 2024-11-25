@@ -7,7 +7,7 @@ package com.anaptecs.spring.base;
 
 import java.util.Objects;
 
-public class CharacterCode implements Comparable<CharacterCode> {
+public class CharacterCode {
   /**
    * Constant for the name of attribute "code".
    */
@@ -131,11 +131,6 @@ public class CharacterCode implements Comparable<CharacterCode> {
       lEquals = Objects.equals(code, ((CharacterCode) pOtherObject).getCode());
     }
     return lEquals;
-  }
-
-  @Override
-  public int compareTo( CharacterCode pOther ) {
-    return Character.compare(this.getCode(), pOther.getCode());
   }
 
   /**

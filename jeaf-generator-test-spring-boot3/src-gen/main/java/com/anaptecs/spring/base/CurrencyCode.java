@@ -9,7 +9,7 @@ import java.util.Objects;
 
 import jakarta.validation.constraints.Size;
 
-public class CurrencyCode implements Comparable<CurrencyCode> {
+public class CurrencyCode {
   /**
    * Constant for the name of attribute "code".
    */
@@ -146,11 +146,6 @@ public class CurrencyCode implements Comparable<CurrencyCode> {
       lEquals = Objects.equals(code, ((CurrencyCode) pOtherObject).getCode());
     }
     return lEquals;
-  }
-
-  @Override
-  public int compareTo( CurrencyCode pOther ) {
-    return this.getCode().compareTo(pOther.getCode());
   }
 
   /**

@@ -7,7 +7,7 @@ package com.anaptecs.spring.base;
 
 import java.util.Objects;
 
-public class DoubleCodeType implements Comparable<DoubleCodeType> {
+public class DoubleCodeType {
   /**
    * Constant for the name of attribute "code".
    */
@@ -123,11 +123,6 @@ public class DoubleCodeType implements Comparable<DoubleCodeType> {
       lEquals = Objects.equals(code, ((DoubleCodeType) pOtherObject).getCode());
     }
     return lEquals;
-  }
-
-  @Override
-  public int compareTo( DoubleCodeType pOther ) {
-    return Double.compare(this.getCode(), pOther.getCode());
   }
 
   /**

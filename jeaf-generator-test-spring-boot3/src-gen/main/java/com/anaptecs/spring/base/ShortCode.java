@@ -7,7 +7,7 @@ package com.anaptecs.spring.base;
 
 import java.util.Objects;
 
-public class ShortCode implements Comparable<ShortCode> {
+public class ShortCode {
   /**
    * Constant for the name of attribute "code".
    */
@@ -122,11 +122,6 @@ public class ShortCode implements Comparable<ShortCode> {
       lEquals = Objects.equals(code, ((ShortCode) pOtherObject).getCode());
     }
     return lEquals;
-  }
-
-  @Override
-  public int compareTo( ShortCode pOther ) {
-    return Short.compare(this.getCode(), pOther.getCode());
   }
 
   /**
