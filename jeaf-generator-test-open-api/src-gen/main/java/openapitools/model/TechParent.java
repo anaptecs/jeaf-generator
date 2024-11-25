@@ -32,15 +32,16 @@ import openapitools.JSON;
 @JsonPropertyOrder({
   TechParent.JSON_PROPERTY_TECH_ATTRIBUTE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
 public class TechParent {
   public static final String JSON_PROPERTY_TECH_ATTRIBUTE = "techAttribute";
+  @javax.annotation.Nonnull
   private String techAttribute;
 
   public TechParent() { 
   }
 
-  public TechParent techAttribute(String techAttribute) {
+  public TechParent techAttribute(@javax.annotation.Nonnull String techAttribute) {
     this.techAttribute = techAttribute;
     return this;
   }
@@ -60,7 +61,7 @@ public class TechParent {
 
   @JsonProperty(JSON_PROPERTY_TECH_ATTRIBUTE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setTechAttribute(String techAttribute) {
+  public void setTechAttribute(@javax.annotation.Nonnull String techAttribute) {
     this.techAttribute = techAttribute;
   }
 

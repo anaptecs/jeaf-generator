@@ -36,18 +36,20 @@ import openapitools.JSON;
   Sortiment.JSON_PROPERTY_PRODUCTS,
   Sortiment.JSON_PROPERTY_VALUE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
 public class Sortiment {
   public static final String JSON_PROPERTY_PRODUCTS = "products";
+  @javax.annotation.Nullable
   private List<Product> products = new ArrayList<>();
 
   public static final String JSON_PROPERTY_VALUE = "value";
+  @javax.annotation.Nonnull
   private Integer value = 4711;
 
   public Sortiment() { 
   }
 
-  public Sortiment products(List<Product> products) {
+  public Sortiment products(@javax.annotation.Nullable List<Product> products) {
     this.products = products;
     return this;
   }
@@ -75,12 +77,12 @@ public class Sortiment {
 
   @JsonProperty(JSON_PROPERTY_PRODUCTS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setProducts(List<Product> products) {
+  public void setProducts(@javax.annotation.Nullable List<Product> products) {
     this.products = products;
   }
 
 
-  public Sortiment value(Integer value) {
+  public Sortiment value(@javax.annotation.Nonnull Integer value) {
     this.value = value;
     return this;
   }
@@ -100,7 +102,7 @@ public class Sortiment {
 
   @JsonProperty(JSON_PROPERTY_VALUE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setValue(Integer value) {
+  public void setValue(@javax.annotation.Nonnull Integer value) {
     this.value = value;
   }
 

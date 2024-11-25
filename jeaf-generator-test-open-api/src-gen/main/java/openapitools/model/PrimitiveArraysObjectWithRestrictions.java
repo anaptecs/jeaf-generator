@@ -59,7 +59,7 @@ import openapitools.JSON;
   PrimitiveArraysObjectWithRestrictions.JSON_PROPERTY_A_STRING_ARRAY,
   PrimitiveArraysObjectWithRestrictions.JSON_PROPERTY_B_STRING_ARRAY
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
 public class PrimitiveArraysObjectWithRestrictions {
   public static final String JSON_PROPERTY_A_BOOLEAN_ARRAY = "aBooleanArray";
   private JsonNullable<List<Boolean>> aBooleanArray = JsonNullable.<List<Boolean>>undefined();
@@ -92,6 +92,7 @@ public class PrimitiveArraysObjectWithRestrictions {
   private JsonNullable<List<Integer>> cIntegerArray = JsonNullable.<List<Integer>>undefined();
 
   public static final String JSON_PROPERTY_A_LONG_ARRAY = "aLongArray";
+  @javax.annotation.Nullable
   private List<Long> aLongArray;
 
   public static final String JSON_PROPERTY_B_LONG_ARRAY = "bLongArray";
@@ -130,7 +131,7 @@ public class PrimitiveArraysObjectWithRestrictions {
   public PrimitiveArraysObjectWithRestrictions() { 
   }
 
-  public PrimitiveArraysObjectWithRestrictions aBooleanArray(List<Boolean> aBooleanArray) {
+  public PrimitiveArraysObjectWithRestrictions aBooleanArray(@javax.annotation.Nullable List<Boolean> aBooleanArray) {
     this.aBooleanArray = JsonNullable.<List<Boolean>>of(aBooleanArray);
     return this;
   }
@@ -170,12 +171,12 @@ public class PrimitiveArraysObjectWithRestrictions {
     this.aBooleanArray = aBooleanArray;
   }
 
-  public void setaBooleanArray(List<Boolean> aBooleanArray) {
+  public void setaBooleanArray(@javax.annotation.Nullable List<Boolean> aBooleanArray) {
     this.aBooleanArray = JsonNullable.<List<Boolean>>of(aBooleanArray);
   }
 
 
-  public PrimitiveArraysObjectWithRestrictions bBooleanArray(List<Boolean> bBooleanArray) {
+  public PrimitiveArraysObjectWithRestrictions bBooleanArray(@javax.annotation.Nullable List<Boolean> bBooleanArray) {
     this.bBooleanArray = JsonNullable.<List<Boolean>>of(bBooleanArray);
     return this;
   }
@@ -215,12 +216,12 @@ public class PrimitiveArraysObjectWithRestrictions {
     this.bBooleanArray = bBooleanArray;
   }
 
-  public void setbBooleanArray(List<Boolean> bBooleanArray) {
+  public void setbBooleanArray(@javax.annotation.Nullable List<Boolean> bBooleanArray) {
     this.bBooleanArray = JsonNullable.<List<Boolean>>of(bBooleanArray);
   }
 
 
-  public PrimitiveArraysObjectWithRestrictions cBooleanArray(List<Boolean> cBooleanArray) {
+  public PrimitiveArraysObjectWithRestrictions cBooleanArray(@javax.annotation.Nullable List<Boolean> cBooleanArray) {
     this.cBooleanArray = JsonNullable.<List<Boolean>>of(cBooleanArray);
     return this;
   }
@@ -260,12 +261,12 @@ public class PrimitiveArraysObjectWithRestrictions {
     this.cBooleanArray = cBooleanArray;
   }
 
-  public void setcBooleanArray(List<Boolean> cBooleanArray) {
+  public void setcBooleanArray(@javax.annotation.Nullable List<Boolean> cBooleanArray) {
     this.cBooleanArray = JsonNullable.<List<Boolean>>of(cBooleanArray);
   }
 
 
-  public PrimitiveArraysObjectWithRestrictions aByteArray(byte[] aByteArray) {
+  public PrimitiveArraysObjectWithRestrictions aByteArray(@javax.annotation.Nullable byte[] aByteArray) {
     this.aByteArray = JsonNullable.<byte[]>of(aByteArray);
     return this;
   }
@@ -293,12 +294,12 @@ public class PrimitiveArraysObjectWithRestrictions {
     this.aByteArray = aByteArray;
   }
 
-  public void setaByteArray(byte[] aByteArray) {
+  public void setaByteArray(@javax.annotation.Nullable byte[] aByteArray) {
     this.aByteArray = JsonNullable.<byte[]>of(aByteArray);
   }
 
 
-  public PrimitiveArraysObjectWithRestrictions bByteArray(byte[] bByteArray) {
+  public PrimitiveArraysObjectWithRestrictions bByteArray(@javax.annotation.Nullable byte[] bByteArray) {
     this.bByteArray = JsonNullable.<byte[]>of(bByteArray);
     return this;
   }
@@ -326,12 +327,12 @@ public class PrimitiveArraysObjectWithRestrictions {
     this.bByteArray = bByteArray;
   }
 
-  public void setbByteArray(byte[] bByteArray) {
+  public void setbByteArray(@javax.annotation.Nullable byte[] bByteArray) {
     this.bByteArray = JsonNullable.<byte[]>of(bByteArray);
   }
 
 
-  public PrimitiveArraysObjectWithRestrictions aShortArray(List<Integer> aShortArray) {
+  public PrimitiveArraysObjectWithRestrictions aShortArray(@javax.annotation.Nullable List<Integer> aShortArray) {
     this.aShortArray = JsonNullable.<List<Integer>>of(aShortArray);
     return this;
   }
@@ -371,12 +372,12 @@ public class PrimitiveArraysObjectWithRestrictions {
     this.aShortArray = aShortArray;
   }
 
-  public void setaShortArray(List<Integer> aShortArray) {
+  public void setaShortArray(@javax.annotation.Nullable List<Integer> aShortArray) {
     this.aShortArray = JsonNullable.<List<Integer>>of(aShortArray);
   }
 
 
-  public PrimitiveArraysObjectWithRestrictions bShortArray(List<Integer> bShortArray) {
+  public PrimitiveArraysObjectWithRestrictions bShortArray(@javax.annotation.Nullable List<Integer> bShortArray) {
     this.bShortArray = JsonNullable.<List<Integer>>of(bShortArray);
     return this;
   }
@@ -416,12 +417,12 @@ public class PrimitiveArraysObjectWithRestrictions {
     this.bShortArray = bShortArray;
   }
 
-  public void setbShortArray(List<Integer> bShortArray) {
+  public void setbShortArray(@javax.annotation.Nullable List<Integer> bShortArray) {
     this.bShortArray = JsonNullable.<List<Integer>>of(bShortArray);
   }
 
 
-  public PrimitiveArraysObjectWithRestrictions aIntegerArray(List<Integer> aIntegerArray) {
+  public PrimitiveArraysObjectWithRestrictions aIntegerArray(@javax.annotation.Nullable List<Integer> aIntegerArray) {
     this.aIntegerArray = JsonNullable.<List<Integer>>of(aIntegerArray);
     return this;
   }
@@ -461,12 +462,12 @@ public class PrimitiveArraysObjectWithRestrictions {
     this.aIntegerArray = aIntegerArray;
   }
 
-  public void setaIntegerArray(List<Integer> aIntegerArray) {
+  public void setaIntegerArray(@javax.annotation.Nullable List<Integer> aIntegerArray) {
     this.aIntegerArray = JsonNullable.<List<Integer>>of(aIntegerArray);
   }
 
 
-  public PrimitiveArraysObjectWithRestrictions bIntegerArray(List<Integer> bIntegerArray) {
+  public PrimitiveArraysObjectWithRestrictions bIntegerArray(@javax.annotation.Nullable List<Integer> bIntegerArray) {
     this.bIntegerArray = JsonNullable.<List<Integer>>of(bIntegerArray);
     return this;
   }
@@ -506,12 +507,12 @@ public class PrimitiveArraysObjectWithRestrictions {
     this.bIntegerArray = bIntegerArray;
   }
 
-  public void setbIntegerArray(List<Integer> bIntegerArray) {
+  public void setbIntegerArray(@javax.annotation.Nullable List<Integer> bIntegerArray) {
     this.bIntegerArray = JsonNullable.<List<Integer>>of(bIntegerArray);
   }
 
 
-  public PrimitiveArraysObjectWithRestrictions cIntegerArray(List<Integer> cIntegerArray) {
+  public PrimitiveArraysObjectWithRestrictions cIntegerArray(@javax.annotation.Nullable List<Integer> cIntegerArray) {
     this.cIntegerArray = JsonNullable.<List<Integer>>of(cIntegerArray);
     return this;
   }
@@ -551,12 +552,12 @@ public class PrimitiveArraysObjectWithRestrictions {
     this.cIntegerArray = cIntegerArray;
   }
 
-  public void setcIntegerArray(List<Integer> cIntegerArray) {
+  public void setcIntegerArray(@javax.annotation.Nullable List<Integer> cIntegerArray) {
     this.cIntegerArray = JsonNullable.<List<Integer>>of(cIntegerArray);
   }
 
 
-  public PrimitiveArraysObjectWithRestrictions aLongArray(List<Long> aLongArray) {
+  public PrimitiveArraysObjectWithRestrictions aLongArray(@javax.annotation.Nullable List<Long> aLongArray) {
     this.aLongArray = aLongArray;
     return this;
   }
@@ -584,12 +585,12 @@ public class PrimitiveArraysObjectWithRestrictions {
 
   @JsonProperty(JSON_PROPERTY_A_LONG_ARRAY)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setaLongArray(List<Long> aLongArray) {
+  public void setaLongArray(@javax.annotation.Nullable List<Long> aLongArray) {
     this.aLongArray = aLongArray;
   }
 
 
-  public PrimitiveArraysObjectWithRestrictions bLongArray(List<Long> bLongArray) {
+  public PrimitiveArraysObjectWithRestrictions bLongArray(@javax.annotation.Nullable List<Long> bLongArray) {
     this.bLongArray = JsonNullable.<List<Long>>of(bLongArray);
     return this;
   }
@@ -629,12 +630,12 @@ public class PrimitiveArraysObjectWithRestrictions {
     this.bLongArray = bLongArray;
   }
 
-  public void setbLongArray(List<Long> bLongArray) {
+  public void setbLongArray(@javax.annotation.Nullable List<Long> bLongArray) {
     this.bLongArray = JsonNullable.<List<Long>>of(bLongArray);
   }
 
 
-  public PrimitiveArraysObjectWithRestrictions aBigIntegerArray(List<Long> aBigIntegerArray) {
+  public PrimitiveArraysObjectWithRestrictions aBigIntegerArray(@javax.annotation.Nullable List<Long> aBigIntegerArray) {
     this.aBigIntegerArray = JsonNullable.<List<Long>>of(aBigIntegerArray);
     return this;
   }
@@ -674,12 +675,12 @@ public class PrimitiveArraysObjectWithRestrictions {
     this.aBigIntegerArray = aBigIntegerArray;
   }
 
-  public void setaBigIntegerArray(List<Long> aBigIntegerArray) {
+  public void setaBigIntegerArray(@javax.annotation.Nullable List<Long> aBigIntegerArray) {
     this.aBigIntegerArray = JsonNullable.<List<Long>>of(aBigIntegerArray);
   }
 
 
-  public PrimitiveArraysObjectWithRestrictions aCharacterArray(List<String> aCharacterArray) {
+  public PrimitiveArraysObjectWithRestrictions aCharacterArray(@javax.annotation.Nullable List<String> aCharacterArray) {
     this.aCharacterArray = JsonNullable.<List<String>>of(aCharacterArray);
     return this;
   }
@@ -719,12 +720,12 @@ public class PrimitiveArraysObjectWithRestrictions {
     this.aCharacterArray = aCharacterArray;
   }
 
-  public void setaCharacterArray(List<String> aCharacterArray) {
+  public void setaCharacterArray(@javax.annotation.Nullable List<String> aCharacterArray) {
     this.aCharacterArray = JsonNullable.<List<String>>of(aCharacterArray);
   }
 
 
-  public PrimitiveArraysObjectWithRestrictions bCharacterArray(List<String> bCharacterArray) {
+  public PrimitiveArraysObjectWithRestrictions bCharacterArray(@javax.annotation.Nullable List<String> bCharacterArray) {
     this.bCharacterArray = JsonNullable.<List<String>>of(bCharacterArray);
     return this;
   }
@@ -764,12 +765,12 @@ public class PrimitiveArraysObjectWithRestrictions {
     this.bCharacterArray = bCharacterArray;
   }
 
-  public void setbCharacterArray(List<String> bCharacterArray) {
+  public void setbCharacterArray(@javax.annotation.Nullable List<String> bCharacterArray) {
     this.bCharacterArray = JsonNullable.<List<String>>of(bCharacterArray);
   }
 
 
-  public PrimitiveArraysObjectWithRestrictions aFloatArray(List<Float> aFloatArray) {
+  public PrimitiveArraysObjectWithRestrictions aFloatArray(@javax.annotation.Nullable List<Float> aFloatArray) {
     this.aFloatArray = JsonNullable.<List<Float>>of(aFloatArray);
     return this;
   }
@@ -809,12 +810,12 @@ public class PrimitiveArraysObjectWithRestrictions {
     this.aFloatArray = aFloatArray;
   }
 
-  public void setaFloatArray(List<Float> aFloatArray) {
+  public void setaFloatArray(@javax.annotation.Nullable List<Float> aFloatArray) {
     this.aFloatArray = JsonNullable.<List<Float>>of(aFloatArray);
   }
 
 
-  public PrimitiveArraysObjectWithRestrictions bFloatArray(List<Float> bFloatArray) {
+  public PrimitiveArraysObjectWithRestrictions bFloatArray(@javax.annotation.Nullable List<Float> bFloatArray) {
     this.bFloatArray = JsonNullable.<List<Float>>of(bFloatArray);
     return this;
   }
@@ -854,12 +855,12 @@ public class PrimitiveArraysObjectWithRestrictions {
     this.bFloatArray = bFloatArray;
   }
 
-  public void setbFloatArray(List<Float> bFloatArray) {
+  public void setbFloatArray(@javax.annotation.Nullable List<Float> bFloatArray) {
     this.bFloatArray = JsonNullable.<List<Float>>of(bFloatArray);
   }
 
 
-  public PrimitiveArraysObjectWithRestrictions aDoubleArray(List<Double> aDoubleArray) {
+  public PrimitiveArraysObjectWithRestrictions aDoubleArray(@javax.annotation.Nullable List<Double> aDoubleArray) {
     this.aDoubleArray = JsonNullable.<List<Double>>of(aDoubleArray);
     return this;
   }
@@ -899,12 +900,12 @@ public class PrimitiveArraysObjectWithRestrictions {
     this.aDoubleArray = aDoubleArray;
   }
 
-  public void setaDoubleArray(List<Double> aDoubleArray) {
+  public void setaDoubleArray(@javax.annotation.Nullable List<Double> aDoubleArray) {
     this.aDoubleArray = JsonNullable.<List<Double>>of(aDoubleArray);
   }
 
 
-  public PrimitiveArraysObjectWithRestrictions bDoubleArray(List<Double> bDoubleArray) {
+  public PrimitiveArraysObjectWithRestrictions bDoubleArray(@javax.annotation.Nullable List<Double> bDoubleArray) {
     this.bDoubleArray = JsonNullable.<List<Double>>of(bDoubleArray);
     return this;
   }
@@ -944,12 +945,12 @@ public class PrimitiveArraysObjectWithRestrictions {
     this.bDoubleArray = bDoubleArray;
   }
 
-  public void setbDoubleArray(List<Double> bDoubleArray) {
+  public void setbDoubleArray(@javax.annotation.Nullable List<Double> bDoubleArray) {
     this.bDoubleArray = JsonNullable.<List<Double>>of(bDoubleArray);
   }
 
 
-  public PrimitiveArraysObjectWithRestrictions aBigDecimalArray(List<Double> aBigDecimalArray) {
+  public PrimitiveArraysObjectWithRestrictions aBigDecimalArray(@javax.annotation.Nullable List<Double> aBigDecimalArray) {
     this.aBigDecimalArray = JsonNullable.<List<Double>>of(aBigDecimalArray);
     return this;
   }
@@ -989,12 +990,12 @@ public class PrimitiveArraysObjectWithRestrictions {
     this.aBigDecimalArray = aBigDecimalArray;
   }
 
-  public void setaBigDecimalArray(List<Double> aBigDecimalArray) {
+  public void setaBigDecimalArray(@javax.annotation.Nullable List<Double> aBigDecimalArray) {
     this.aBigDecimalArray = JsonNullable.<List<Double>>of(aBigDecimalArray);
   }
 
 
-  public PrimitiveArraysObjectWithRestrictions aStringArray(List<String> aStringArray) {
+  public PrimitiveArraysObjectWithRestrictions aStringArray(@javax.annotation.Nullable List<String> aStringArray) {
     this.aStringArray = JsonNullable.<List<String>>of(aStringArray);
     return this;
   }
@@ -1034,12 +1035,12 @@ public class PrimitiveArraysObjectWithRestrictions {
     this.aStringArray = aStringArray;
   }
 
-  public void setaStringArray(List<String> aStringArray) {
+  public void setaStringArray(@javax.annotation.Nullable List<String> aStringArray) {
     this.aStringArray = JsonNullable.<List<String>>of(aStringArray);
   }
 
 
-  public PrimitiveArraysObjectWithRestrictions bStringArray(List<String> bStringArray) {
+  public PrimitiveArraysObjectWithRestrictions bStringArray(@javax.annotation.Nullable List<String> bStringArray) {
     this.bStringArray = JsonNullable.<List<String>>of(bStringArray);
     return this;
   }
@@ -1079,7 +1080,7 @@ public class PrimitiveArraysObjectWithRestrictions {
     this.bStringArray = bStringArray;
   }
 
-  public void setbStringArray(List<String> bStringArray) {
+  public void setbStringArray(@javax.annotation.Nullable List<String> bStringArray) {
     this.bStringArray = JsonNullable.<List<String>>of(bStringArray);
   }
 

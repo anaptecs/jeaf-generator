@@ -40,7 +40,7 @@ import openapitools.JSON;
   Campaign.JSON_PROPERTY_MORE_LINK_I_DS,
   Campaign.JSON_PROPERTY_DISCOUNT_OFFER_I_DS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
 public class Campaign {
   public static final String JSON_PROPERTY_THE_LINK_I_D = "theLinkID";
   @Deprecated
@@ -48,6 +48,7 @@ public class Campaign {
 
   public static final String JSON_PROPERTY_MORE_LINK_I_DS = "moreLinkIDs";
   @Deprecated
+  @javax.annotation.Nonnull
   private List<Long> moreLinkIDs = new ArrayList<>();
 
   public static final String JSON_PROPERTY_DISCOUNT_OFFER_I_DS = "discountOfferIDs";
@@ -58,7 +59,7 @@ public class Campaign {
   }
 
   @Deprecated
-  public Campaign theLinkID(Long theLinkID) {
+  public Campaign theLinkID(@javax.annotation.Nullable Long theLinkID) {
     this.theLinkID = JsonNullable.<Long>of(theLinkID);
     return this;
   }
@@ -89,13 +90,13 @@ public class Campaign {
   }
 
   @Deprecated
-  public void setTheLinkID(Long theLinkID) {
+  public void setTheLinkID(@javax.annotation.Nullable Long theLinkID) {
     this.theLinkID = JsonNullable.<Long>of(theLinkID);
   }
 
 
   @Deprecated
-  public Campaign moreLinkIDs(List<Long> moreLinkIDs) {
+  public Campaign moreLinkIDs(@javax.annotation.Nonnull List<Long> moreLinkIDs) {
     this.moreLinkIDs = moreLinkIDs;
     return this;
   }
@@ -126,13 +127,13 @@ public class Campaign {
   @Deprecated
   @JsonProperty(JSON_PROPERTY_MORE_LINK_I_DS)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setMoreLinkIDs(List<Long> moreLinkIDs) {
+  public void setMoreLinkIDs(@javax.annotation.Nonnull List<Long> moreLinkIDs) {
     this.moreLinkIDs = moreLinkIDs;
   }
 
 
   @Deprecated
-  public Campaign discountOfferIDs(List<String> discountOfferIDs) {
+  public Campaign discountOfferIDs(@javax.annotation.Nullable List<String> discountOfferIDs) {
     this.discountOfferIDs = JsonNullable.<List<String>>of(discountOfferIDs);
     return this;
   }
@@ -175,7 +176,7 @@ public class Campaign {
   }
 
   @Deprecated
-  public void setDiscountOfferIDs(List<String> discountOfferIDs) {
+  public void setDiscountOfferIDs(@javax.annotation.Nullable List<String> discountOfferIDs) {
     this.discountOfferIDs = JsonNullable.<List<String>>of(discountOfferIDs);
   }
 

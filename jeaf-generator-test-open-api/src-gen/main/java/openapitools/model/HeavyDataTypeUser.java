@@ -39,36 +39,44 @@ import openapitools.JSON;
   HeavyDataTypeUser.JSON_PROPERTY_BIG_INEGER_CODE,
   HeavyDataTypeUser.JSON_PROPERTY_BIG_DECIMAL_CODE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
 public class HeavyDataTypeUser {
   public static final String JSON_PROPERTY_BOOLEAN_CODE = "booleanCode";
+  @javax.annotation.Nonnull
   private Boolean booleanCode;
 
   public static final String JSON_PROPERTY_BYTE_CODE = "byteCode";
+  @javax.annotation.Nonnull
   private Integer byteCode;
 
   public static final String JSON_PROPERTY_SHORT_CODE = "shortCode";
+  @javax.annotation.Nonnull
   private Integer shortCode;
 
   public static final String JSON_PROPERTY_INTEGER_CODE = "integerCode";
+  @javax.annotation.Nonnull
   private Integer integerCode;
 
   public static final String JSON_PROPERTY_FLOAT_CODE = "floatCode";
+  @javax.annotation.Nonnull
   private Float floatCode;
 
   public static final String JSON_PROPERTY_DOUBLE_CODE = "doubleCode";
+  @javax.annotation.Nonnull
   private Double doubleCode;
 
   public static final String JSON_PROPERTY_BIG_INEGER_CODE = "bigInegerCode";
+  @javax.annotation.Nonnull
   private Long bigInegerCode;
 
   public static final String JSON_PROPERTY_BIG_DECIMAL_CODE = "bigDecimalCode";
+  @javax.annotation.Nonnull
   private Double bigDecimalCode;
 
   public HeavyDataTypeUser() { 
   }
 
-  public HeavyDataTypeUser booleanCode(Boolean booleanCode) {
+  public HeavyDataTypeUser booleanCode(@javax.annotation.Nonnull Boolean booleanCode) {
     this.booleanCode = booleanCode;
     return this;
   }
@@ -88,12 +96,12 @@ public class HeavyDataTypeUser {
 
   @JsonProperty(JSON_PROPERTY_BOOLEAN_CODE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setBooleanCode(Boolean booleanCode) {
+  public void setBooleanCode(@javax.annotation.Nonnull Boolean booleanCode) {
     this.booleanCode = booleanCode;
   }
 
 
-  public HeavyDataTypeUser byteCode(Integer byteCode) {
+  public HeavyDataTypeUser byteCode(@javax.annotation.Nonnull Integer byteCode) {
     this.byteCode = byteCode;
     return this;
   }
@@ -113,12 +121,12 @@ public class HeavyDataTypeUser {
 
   @JsonProperty(JSON_PROPERTY_BYTE_CODE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setByteCode(Integer byteCode) {
+  public void setByteCode(@javax.annotation.Nonnull Integer byteCode) {
     this.byteCode = byteCode;
   }
 
 
-  public HeavyDataTypeUser shortCode(Integer shortCode) {
+  public HeavyDataTypeUser shortCode(@javax.annotation.Nonnull Integer shortCode) {
     this.shortCode = shortCode;
     return this;
   }
@@ -139,12 +147,12 @@ public class HeavyDataTypeUser {
 
   @JsonProperty(JSON_PROPERTY_SHORT_CODE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setShortCode(Integer shortCode) {
+  public void setShortCode(@javax.annotation.Nonnull Integer shortCode) {
     this.shortCode = shortCode;
   }
 
 
-  public HeavyDataTypeUser integerCode(Integer integerCode) {
+  public HeavyDataTypeUser integerCode(@javax.annotation.Nonnull Integer integerCode) {
     this.integerCode = integerCode;
     return this;
   }
@@ -165,12 +173,12 @@ public class HeavyDataTypeUser {
 
   @JsonProperty(JSON_PROPERTY_INTEGER_CODE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setIntegerCode(Integer integerCode) {
+  public void setIntegerCode(@javax.annotation.Nonnull Integer integerCode) {
     this.integerCode = integerCode;
   }
 
 
-  public HeavyDataTypeUser floatCode(Float floatCode) {
+  public HeavyDataTypeUser floatCode(@javax.annotation.Nonnull Float floatCode) {
     this.floatCode = floatCode;
     return this;
   }
@@ -190,12 +198,12 @@ public class HeavyDataTypeUser {
 
   @JsonProperty(JSON_PROPERTY_FLOAT_CODE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setFloatCode(Float floatCode) {
+  public void setFloatCode(@javax.annotation.Nonnull Float floatCode) {
     this.floatCode = floatCode;
   }
 
 
-  public HeavyDataTypeUser doubleCode(Double doubleCode) {
+  public HeavyDataTypeUser doubleCode(@javax.annotation.Nonnull Double doubleCode) {
     this.doubleCode = doubleCode;
     return this;
   }
@@ -215,12 +223,12 @@ public class HeavyDataTypeUser {
 
   @JsonProperty(JSON_PROPERTY_DOUBLE_CODE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setDoubleCode(Double doubleCode) {
+  public void setDoubleCode(@javax.annotation.Nonnull Double doubleCode) {
     this.doubleCode = doubleCode;
   }
 
 
-  public HeavyDataTypeUser bigInegerCode(Long bigInegerCode) {
+  public HeavyDataTypeUser bigInegerCode(@javax.annotation.Nonnull Long bigInegerCode) {
     this.bigInegerCode = bigInegerCode;
     return this;
   }
@@ -241,12 +249,12 @@ public class HeavyDataTypeUser {
 
   @JsonProperty(JSON_PROPERTY_BIG_INEGER_CODE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setBigInegerCode(Long bigInegerCode) {
+  public void setBigInegerCode(@javax.annotation.Nonnull Long bigInegerCode) {
     this.bigInegerCode = bigInegerCode;
   }
 
 
-  public HeavyDataTypeUser bigDecimalCode(Double bigDecimalCode) {
+  public HeavyDataTypeUser bigDecimalCode(@javax.annotation.Nonnull Double bigDecimalCode) {
     this.bigDecimalCode = bigDecimalCode;
     return this;
   }
@@ -266,7 +274,7 @@ public class HeavyDataTypeUser {
 
   @JsonProperty(JSON_PROPERTY_BIG_DECIMAL_CODE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setBigDecimalCode(Double bigDecimalCode) {
+  public void setBigDecimalCode(@javax.annotation.Nonnull Double bigDecimalCode) {
     this.bigDecimalCode = bigDecimalCode;
   }
 

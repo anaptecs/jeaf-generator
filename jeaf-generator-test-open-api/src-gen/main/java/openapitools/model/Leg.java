@@ -37,21 +37,24 @@ import openapitools.JSON;
   Leg.JSON_PROPERTY_STOP,
   Leg.JSON_PROPERTY_STOPOVERS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
 public class Leg {
   public static final String JSON_PROPERTY_START = "start";
+  @javax.annotation.Nonnull
   private PlaceRef start;
 
   public static final String JSON_PROPERTY_STOP = "stop";
+  @javax.annotation.Nonnull
   private PlaceRef stop;
 
   public static final String JSON_PROPERTY_STOPOVERS = "stopovers";
+  @javax.annotation.Nullable
   private List<PlaceRef> stopovers = new ArrayList<>();
 
   public Leg() { 
   }
 
-  public Leg start(PlaceRef start) {
+  public Leg start(@javax.annotation.Nonnull PlaceRef start) {
     this.start = start;
     return this;
   }
@@ -71,12 +74,12 @@ public class Leg {
 
   @JsonProperty(JSON_PROPERTY_START)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setStart(PlaceRef start) {
+  public void setStart(@javax.annotation.Nonnull PlaceRef start) {
     this.start = start;
   }
 
 
-  public Leg stop(PlaceRef stop) {
+  public Leg stop(@javax.annotation.Nonnull PlaceRef stop) {
     this.stop = stop;
     return this;
   }
@@ -96,12 +99,12 @@ public class Leg {
 
   @JsonProperty(JSON_PROPERTY_STOP)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setStop(PlaceRef stop) {
+  public void setStop(@javax.annotation.Nonnull PlaceRef stop) {
     this.stop = stop;
   }
 
 
-  public Leg stopovers(List<PlaceRef> stopovers) {
+  public Leg stopovers(@javax.annotation.Nullable List<PlaceRef> stopovers) {
     this.stopovers = stopovers;
     return this;
   }
@@ -129,7 +132,7 @@ public class Leg {
 
   @JsonProperty(JSON_PROPERTY_STOPOVERS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setStopovers(List<PlaceRef> stopovers) {
+  public void setStopovers(@javax.annotation.Nullable List<PlaceRef> stopovers) {
     this.stopovers = stopovers;
   }
 

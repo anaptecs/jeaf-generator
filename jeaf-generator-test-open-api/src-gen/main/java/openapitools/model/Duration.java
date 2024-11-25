@@ -34,18 +34,20 @@ import openapitools.JSON;
   Duration.JSON_PROPERTY_VALUE,
   Duration.JSON_PROPERTY_TIME_UNIT
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
 public class Duration {
   public static final String JSON_PROPERTY_VALUE = "value";
+  @javax.annotation.Nonnull
   private Integer value;
 
   public static final String JSON_PROPERTY_TIME_UNIT = "timeUnit";
+  @javax.annotation.Nonnull
   private TimeUnit timeUnit;
 
   public Duration() { 
   }
 
-  public Duration value(Integer value) {
+  public Duration value(@javax.annotation.Nonnull Integer value) {
     this.value = value;
     return this;
   }
@@ -65,12 +67,12 @@ public class Duration {
 
   @JsonProperty(JSON_PROPERTY_VALUE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setValue(Integer value) {
+  public void setValue(@javax.annotation.Nonnull Integer value) {
     this.value = value;
   }
 
 
-  public Duration timeUnit(TimeUnit timeUnit) {
+  public Duration timeUnit(@javax.annotation.Nonnull TimeUnit timeUnit) {
     this.timeUnit = timeUnit;
     return this;
   }
@@ -90,7 +92,7 @@ public class Duration {
 
   @JsonProperty(JSON_PROPERTY_TIME_UNIT)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setTimeUnit(TimeUnit timeUnit) {
+  public void setTimeUnit(@javax.annotation.Nonnull TimeUnit timeUnit) {
     this.timeUnit = timeUnit;
   }
 

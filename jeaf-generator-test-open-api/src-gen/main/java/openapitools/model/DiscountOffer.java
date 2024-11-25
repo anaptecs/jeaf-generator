@@ -38,7 +38,7 @@ import openapitools.JSON;
 @JsonPropertyOrder({
   DiscountOffer.JSON_PROPERTY_CAMPAIGN_I_DS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
 public class DiscountOffer {
   public static final String JSON_PROPERTY_CAMPAIGN_I_DS = "campaignIDs";
   @Deprecated
@@ -48,7 +48,7 @@ public class DiscountOffer {
   }
 
   @Deprecated
-  public DiscountOffer campaignIDs(List<String> campaignIDs) {
+  public DiscountOffer campaignIDs(@javax.annotation.Nullable List<String> campaignIDs) {
     this.campaignIDs = JsonNullable.<List<String>>of(campaignIDs);
     return this;
   }
@@ -91,7 +91,7 @@ public class DiscountOffer {
   }
 
   @Deprecated
-  public void setCampaignIDs(List<String> campaignIDs) {
+  public void setCampaignIDs(@javax.annotation.Nullable List<String> campaignIDs) {
     this.campaignIDs = JsonNullable.<List<String>>of(campaignIDs);
   }
 

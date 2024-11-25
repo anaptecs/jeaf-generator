@@ -33,18 +33,20 @@ import openapitools.JSON;
   MoneyAmount.JSON_PROPERTY_AMOUNT,
   MoneyAmount.JSON_PROPERTY_CURRENCY_CODE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
 public class MoneyAmount {
   public static final String JSON_PROPERTY_AMOUNT = "amount";
+  @javax.annotation.Nonnull
   private Double amount;
 
   public static final String JSON_PROPERTY_CURRENCY_CODE = "currencyCode";
+  @javax.annotation.Nonnull
   private String currencyCode = "CHF";
 
   public MoneyAmount() { 
   }
 
-  public MoneyAmount amount(Double amount) {
+  public MoneyAmount amount(@javax.annotation.Nonnull Double amount) {
     this.amount = amount;
     return this;
   }
@@ -64,12 +66,12 @@ public class MoneyAmount {
 
   @JsonProperty(JSON_PROPERTY_AMOUNT)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setAmount(Double amount) {
+  public void setAmount(@javax.annotation.Nonnull Double amount) {
     this.amount = amount;
   }
 
 
-  public MoneyAmount currencyCode(String currencyCode) {
+  public MoneyAmount currencyCode(@javax.annotation.Nonnull String currencyCode) {
     this.currencyCode = currencyCode;
     return this;
   }
@@ -89,7 +91,7 @@ public class MoneyAmount {
 
   @JsonProperty(JSON_PROPERTY_CURRENCY_CODE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setCurrencyCode(String currencyCode) {
+  public void setCurrencyCode(@javax.annotation.Nonnull String currencyCode) {
     this.currencyCode = currencyCode;
   }
 

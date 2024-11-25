@@ -37,21 +37,24 @@ import openapitools.JSON;
   Reseller.JSON_PROPERTY_NAME,
   Reseller.JSON_PROPERTY_LANGUAGE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
 public class Reseller {
   public static final String JSON_PROPERTY_CHANNELS = "channels";
+  @javax.annotation.Nonnull
   private List<Channel> channels = new ArrayList<>();
 
   public static final String JSON_PROPERTY_NAME = "name";
+  @javax.annotation.Nonnull
   private String name;
 
   public static final String JSON_PROPERTY_LANGUAGE = "language";
+  @javax.annotation.Nonnull
   private String language;
 
   public Reseller() { 
   }
 
-  public Reseller channels(List<Channel> channels) {
+  public Reseller channels(@javax.annotation.Nonnull List<Channel> channels) {
     this.channels = channels;
     return this;
   }
@@ -79,12 +82,12 @@ public class Reseller {
 
   @JsonProperty(JSON_PROPERTY_CHANNELS)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setChannels(List<Channel> channels) {
+  public void setChannels(@javax.annotation.Nonnull List<Channel> channels) {
     this.channels = channels;
   }
 
 
-  public Reseller name(String name) {
+  public Reseller name(@javax.annotation.Nonnull String name) {
     this.name = name;
     return this;
   }
@@ -104,12 +107,12 @@ public class Reseller {
 
   @JsonProperty(JSON_PROPERTY_NAME)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nonnull String name) {
     this.name = name;
   }
 
 
-  public Reseller language(String language) {
+  public Reseller language(@javax.annotation.Nonnull String language) {
     this.language = language;
     return this;
   }
@@ -129,7 +132,7 @@ public class Reseller {
 
   @JsonProperty(JSON_PROPERTY_LANGUAGE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setLanguage(String language) {
+  public void setLanguage(@javax.annotation.Nonnull String language) {
     this.language = language;
   }
 

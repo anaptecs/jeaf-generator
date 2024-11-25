@@ -38,27 +38,32 @@ import openapitools.JSON;
   CodeTypeUsageTest.JSON_PROPERTY_STRING_CODE,
   CodeTypeUsageTest.JSON_PROPERTY_SHORT_CODE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
 public class CodeTypeUsageTest {
   public static final String JSON_PROPERTY_BOOLEAN_CODE = "booleanCode";
+  @javax.annotation.Nonnull
   private Boolean booleanCode;
 
   public static final String JSON_PROPERTY_BOOLEAN_CODE_ASSOCIATION = "booleanCodeAssociation";
+  @javax.annotation.Nullable
   private List<Boolean> booleanCodeAssociation = new ArrayList<>();
 
   public static final String JSON_PROPERTY_SHORT_CODE_TYPE_ASSOCIATION = "shortCodeTypeAssociation";
+  @javax.annotation.Nonnull
   private List<Integer> shortCodeTypeAssociation = new ArrayList<>();
 
   public static final String JSON_PROPERTY_STRING_CODE = "stringCode";
+  @javax.annotation.Nonnull
   private String stringCode;
 
   public static final String JSON_PROPERTY_SHORT_CODE = "shortCode";
+  @javax.annotation.Nonnull
   private Integer shortCode;
 
   public CodeTypeUsageTest() { 
   }
 
-  public CodeTypeUsageTest booleanCode(Boolean booleanCode) {
+  public CodeTypeUsageTest booleanCode(@javax.annotation.Nonnull Boolean booleanCode) {
     this.booleanCode = booleanCode;
     return this;
   }
@@ -78,12 +83,12 @@ public class CodeTypeUsageTest {
 
   @JsonProperty(JSON_PROPERTY_BOOLEAN_CODE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setBooleanCode(Boolean booleanCode) {
+  public void setBooleanCode(@javax.annotation.Nonnull Boolean booleanCode) {
     this.booleanCode = booleanCode;
   }
 
 
-  public CodeTypeUsageTest booleanCodeAssociation(List<Boolean> booleanCodeAssociation) {
+  public CodeTypeUsageTest booleanCodeAssociation(@javax.annotation.Nullable List<Boolean> booleanCodeAssociation) {
     this.booleanCodeAssociation = booleanCodeAssociation;
     return this;
   }
@@ -111,12 +116,12 @@ public class CodeTypeUsageTest {
 
   @JsonProperty(JSON_PROPERTY_BOOLEAN_CODE_ASSOCIATION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setBooleanCodeAssociation(List<Boolean> booleanCodeAssociation) {
+  public void setBooleanCodeAssociation(@javax.annotation.Nullable List<Boolean> booleanCodeAssociation) {
     this.booleanCodeAssociation = booleanCodeAssociation;
   }
 
 
-  public CodeTypeUsageTest shortCodeTypeAssociation(List<Integer> shortCodeTypeAssociation) {
+  public CodeTypeUsageTest shortCodeTypeAssociation(@javax.annotation.Nonnull List<Integer> shortCodeTypeAssociation) {
     this.shortCodeTypeAssociation = shortCodeTypeAssociation;
     return this;
   }
@@ -144,12 +149,12 @@ public class CodeTypeUsageTest {
 
   @JsonProperty(JSON_PROPERTY_SHORT_CODE_TYPE_ASSOCIATION)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setShortCodeTypeAssociation(List<Integer> shortCodeTypeAssociation) {
+  public void setShortCodeTypeAssociation(@javax.annotation.Nonnull List<Integer> shortCodeTypeAssociation) {
     this.shortCodeTypeAssociation = shortCodeTypeAssociation;
   }
 
 
-  public CodeTypeUsageTest stringCode(String stringCode) {
+  public CodeTypeUsageTest stringCode(@javax.annotation.Nonnull String stringCode) {
     this.stringCode = stringCode;
     return this;
   }
@@ -169,12 +174,12 @@ public class CodeTypeUsageTest {
 
   @JsonProperty(JSON_PROPERTY_STRING_CODE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setStringCode(String stringCode) {
+  public void setStringCode(@javax.annotation.Nonnull String stringCode) {
     this.stringCode = stringCode;
   }
 
 
-  public CodeTypeUsageTest shortCode(Integer shortCode) {
+  public CodeTypeUsageTest shortCode(@javax.annotation.Nonnull Integer shortCode) {
     this.shortCode = shortCode;
     return this;
   }
@@ -195,7 +200,7 @@ public class CodeTypeUsageTest {
 
   @JsonProperty(JSON_PROPERTY_SHORT_CODE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setShortCode(Integer shortCode) {
+  public void setShortCode(@javax.annotation.Nonnull Integer shortCode) {
     this.shortCode = shortCode;
   }
 

@@ -48,40 +48,48 @@ import openapitools.JSON;
   Product.JSON_PROPERTY_DESCRIPTION,
   Product.JSON_PROPERTY_URI
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
 public class Product {
   public static final String JSON_PROPERTY_RESELLERS = "resellers";
+  @javax.annotation.Nullable
   private List<Reseller> resellers = new ArrayList<>();
 
   public static final String JSON_PROPERTY_NAME = "name";
+  @javax.annotation.Nonnull
   private String name;
 
   public static final String JSON_PROPERTY_IMAGE = "image";
   private JsonNullable<byte[]> image = JsonNullable.<byte[]>undefined();
 
   public static final String JSON_PROPERTY_LINK = "link";
+  @javax.annotation.Nonnull
   private String link;
 
   public static final String JSON_PROPERTY_PRODUCT_I_D = "productID";
+  @javax.annotation.Nonnull
   private String productID;
 
   public static final String JSON_PROPERTY_SUPPORTED_CURRENCIES = "supportedCurrencies";
+  @javax.annotation.Nonnull
   private List<String> supportedCurrencies = new ArrayList<>();
 
   public static final String JSON_PROPERTY_PRODUCT_CODES = "productCodes";
+  @javax.annotation.Nonnull
   private List<Integer> productCodes = new ArrayList<>();
 
   public static final String JSON_PROPERTY_DESCRIPTION = "description";
   @Deprecated
+  @javax.annotation.Nonnull
   private String description;
 
   public static final String JSON_PROPERTY_URI = "uri";
+  @javax.annotation.Nonnull
   private URI uri = URI.create("https://products.anaptecs.de/123456789");
 
   public Product() { 
   }
 
-  public Product resellers(List<Reseller> resellers) {
+  public Product resellers(@javax.annotation.Nullable List<Reseller> resellers) {
     this.resellers = resellers;
     return this;
   }
@@ -109,12 +117,12 @@ public class Product {
 
   @JsonProperty(JSON_PROPERTY_RESELLERS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setResellers(List<Reseller> resellers) {
+  public void setResellers(@javax.annotation.Nullable List<Reseller> resellers) {
     this.resellers = resellers;
   }
 
 
-  public Product name(String name) {
+  public Product name(@javax.annotation.Nonnull String name) {
     this.name = name;
     return this;
   }
@@ -134,12 +142,12 @@ public class Product {
 
   @JsonProperty(JSON_PROPERTY_NAME)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nonnull String name) {
     this.name = name;
   }
 
 
-  public Product image(byte[] image) {
+  public Product image(@javax.annotation.Nullable byte[] image) {
     this.image = JsonNullable.<byte[]>of(image);
     return this;
   }
@@ -167,12 +175,12 @@ public class Product {
     this.image = image;
   }
 
-  public void setImage(byte[] image) {
+  public void setImage(@javax.annotation.Nullable byte[] image) {
     this.image = JsonNullable.<byte[]>of(image);
   }
 
 
-  public Product link(String link) {
+  public Product link(@javax.annotation.Nonnull String link) {
     this.link = link;
     return this;
   }
@@ -192,12 +200,12 @@ public class Product {
 
   @JsonProperty(JSON_PROPERTY_LINK)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setLink(String link) {
+  public void setLink(@javax.annotation.Nonnull String link) {
     this.link = link;
   }
 
 
-  public Product productID(String productID) {
+  public Product productID(@javax.annotation.Nonnull String productID) {
     this.productID = productID;
     return this;
   }
@@ -217,12 +225,12 @@ public class Product {
 
   @JsonProperty(JSON_PROPERTY_PRODUCT_I_D)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setProductID(String productID) {
+  public void setProductID(@javax.annotation.Nonnull String productID) {
     this.productID = productID;
   }
 
 
-  public Product supportedCurrencies(List<String> supportedCurrencies) {
+  public Product supportedCurrencies(@javax.annotation.Nonnull List<String> supportedCurrencies) {
     this.supportedCurrencies = supportedCurrencies;
     return this;
   }
@@ -250,12 +258,12 @@ public class Product {
 
   @JsonProperty(JSON_PROPERTY_SUPPORTED_CURRENCIES)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setSupportedCurrencies(List<String> supportedCurrencies) {
+  public void setSupportedCurrencies(@javax.annotation.Nonnull List<String> supportedCurrencies) {
     this.supportedCurrencies = supportedCurrencies;
   }
 
 
-  public Product productCodes(List<Integer> productCodes) {
+  public Product productCodes(@javax.annotation.Nonnull List<Integer> productCodes) {
     this.productCodes = productCodes;
     return this;
   }
@@ -283,13 +291,13 @@ public class Product {
 
   @JsonProperty(JSON_PROPERTY_PRODUCT_CODES)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setProductCodes(List<Integer> productCodes) {
+  public void setProductCodes(@javax.annotation.Nonnull List<Integer> productCodes) {
     this.productCodes = productCodes;
   }
 
 
   @Deprecated
-  public Product description(String description) {
+  public Product description(@javax.annotation.Nonnull String description) {
     this.description = description;
     return this;
   }
@@ -312,12 +320,12 @@ public class Product {
   @Deprecated
   @JsonProperty(JSON_PROPERTY_DESCRIPTION)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setDescription(String description) {
+  public void setDescription(@javax.annotation.Nonnull String description) {
     this.description = description;
   }
 
 
-  public Product uri(URI uri) {
+  public Product uri(@javax.annotation.Nonnull URI uri) {
     this.uri = uri;
     return this;
   }
@@ -337,7 +345,7 @@ public class Product {
 
   @JsonProperty(JSON_PROPERTY_URI)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setUri(URI uri) {
+  public void setUri(@javax.annotation.Nonnull URI uri) {
     this.uri = uri;
   }
 

@@ -36,27 +36,32 @@ import openapitools.JSON;
   Problem.JSON_PROPERTY_DETAIL,
   Problem.JSON_PROPERTY_INSTANCE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
 public class Problem {
   public static final String JSON_PROPERTY_TITLE = "title";
+  @javax.annotation.Nonnull
   private String title;
 
   public static final String JSON_PROPERTY_STATUS = "status";
+  @javax.annotation.Nonnull
   private Integer status;
 
   public static final String JSON_PROPERTY_TYPE = "type";
+  @javax.annotation.Nonnull
   private String type;
 
   public static final String JSON_PROPERTY_DETAIL = "detail";
+  @javax.annotation.Nonnull
   private String detail;
 
   public static final String JSON_PROPERTY_INSTANCE = "instance";
+  @javax.annotation.Nonnull
   private String instance;
 
   public Problem() { 
   }
 
-  public Problem title(String title) {
+  public Problem title(@javax.annotation.Nonnull String title) {
     this.title = title;
     return this;
   }
@@ -76,12 +81,12 @@ public class Problem {
 
   @JsonProperty(JSON_PROPERTY_TITLE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setTitle(String title) {
+  public void setTitle(@javax.annotation.Nonnull String title) {
     this.title = title;
   }
 
 
-  public Problem status(Integer status) {
+  public Problem status(@javax.annotation.Nonnull Integer status) {
     this.status = status;
     return this;
   }
@@ -101,12 +106,12 @@ public class Problem {
 
   @JsonProperty(JSON_PROPERTY_STATUS)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setStatus(Integer status) {
+  public void setStatus(@javax.annotation.Nonnull Integer status) {
     this.status = status;
   }
 
 
-  public Problem type(String type) {
+  public Problem type(@javax.annotation.Nonnull String type) {
     this.type = type;
     return this;
   }
@@ -126,12 +131,12 @@ public class Problem {
 
   @JsonProperty(JSON_PROPERTY_TYPE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setType(String type) {
+  public void setType(@javax.annotation.Nonnull String type) {
     this.type = type;
   }
 
 
-  public Problem detail(String detail) {
+  public Problem detail(@javax.annotation.Nonnull String detail) {
     this.detail = detail;
     return this;
   }
@@ -151,12 +156,12 @@ public class Problem {
 
   @JsonProperty(JSON_PROPERTY_DETAIL)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setDetail(String detail) {
+  public void setDetail(@javax.annotation.Nonnull String detail) {
     this.detail = detail;
   }
 
 
-  public Problem instance(String instance) {
+  public Problem instance(@javax.annotation.Nonnull String instance) {
     this.instance = instance;
     return this;
   }
@@ -176,7 +181,7 @@ public class Problem {
 
   @JsonProperty(JSON_PROPERTY_INSTANCE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setInstance(String instance) {
+  public void setInstance(@javax.annotation.Nonnull String instance) {
     this.instance = instance;
   }
 

@@ -35,18 +35,20 @@ import openapitools.JSON;
   MyFirstResponse.JSON_PROPERTY_MESSAGES,
   MyFirstResponse.JSON_PROPERTY_DATA
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
 public class MyFirstResponse {
   public static final String JSON_PROPERTY_MESSAGES = "messages";
+  @javax.annotation.Nullable
   private List<Object> messages = new ArrayList<>();
 
   public static final String JSON_PROPERTY_DATA = "data";
+  @javax.annotation.Nullable
   private Object data;
 
   public MyFirstResponse() { 
   }
 
-  public MyFirstResponse messages(List<Object> messages) {
+  public MyFirstResponse messages(@javax.annotation.Nullable List<Object> messages) {
     this.messages = messages;
     return this;
   }
@@ -74,12 +76,12 @@ public class MyFirstResponse {
 
   @JsonProperty(JSON_PROPERTY_MESSAGES)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMessages(List<Object> messages) {
+  public void setMessages(@javax.annotation.Nullable List<Object> messages) {
     this.messages = messages;
   }
 
 
-  public MyFirstResponse data(Object data) {
+  public MyFirstResponse data(@javax.annotation.Nullable Object data) {
     this.data = data;
     return this;
   }
@@ -99,7 +101,7 @@ public class MyFirstResponse {
 
   @JsonProperty(JSON_PROPERTY_DATA)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setData(Object data) {
+  public void setData(@javax.annotation.Nullable Object data) {
     this.data = data;
   }
 

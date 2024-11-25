@@ -35,24 +35,28 @@ import openapitools.JSON;
   PostalAddress.JSON_PROPERTY_CITY,
   PostalAddress.JSON_PROPERTY_POSTAL_CODE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
 public class PostalAddress {
   public static final String JSON_PROPERTY_STREET = "street";
+  @javax.annotation.Nonnull
   private String street;
 
   public static final String JSON_PROPERTY_HOUSE_NUMBER = "houseNumber";
+  @javax.annotation.Nonnull
   private String houseNumber;
 
   public static final String JSON_PROPERTY_CITY = "city";
+  @javax.annotation.Nonnull
   private String city;
 
   public static final String JSON_PROPERTY_POSTAL_CODE = "postalCode";
+  @javax.annotation.Nonnull
   private Integer postalCode;
 
   public PostalAddress() { 
   }
 
-  public PostalAddress street(String street) {
+  public PostalAddress street(@javax.annotation.Nonnull String street) {
     this.street = street;
     return this;
   }
@@ -72,12 +76,12 @@ public class PostalAddress {
 
   @JsonProperty(JSON_PROPERTY_STREET)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setStreet(String street) {
+  public void setStreet(@javax.annotation.Nonnull String street) {
     this.street = street;
   }
 
 
-  public PostalAddress houseNumber(String houseNumber) {
+  public PostalAddress houseNumber(@javax.annotation.Nonnull String houseNumber) {
     this.houseNumber = houseNumber;
     return this;
   }
@@ -97,12 +101,12 @@ public class PostalAddress {
 
   @JsonProperty(JSON_PROPERTY_HOUSE_NUMBER)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setHouseNumber(String houseNumber) {
+  public void setHouseNumber(@javax.annotation.Nonnull String houseNumber) {
     this.houseNumber = houseNumber;
   }
 
 
-  public PostalAddress city(String city) {
+  public PostalAddress city(@javax.annotation.Nonnull String city) {
     this.city = city;
     return this;
   }
@@ -122,12 +126,12 @@ public class PostalAddress {
 
   @JsonProperty(JSON_PROPERTY_CITY)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setCity(String city) {
+  public void setCity(@javax.annotation.Nonnull String city) {
     this.city = city;
   }
 
 
-  public PostalAddress postalCode(Integer postalCode) {
+  public PostalAddress postalCode(@javax.annotation.Nonnull Integer postalCode) {
     this.postalCode = postalCode;
     return this;
   }
@@ -147,7 +151,7 @@ public class PostalAddress {
 
   @JsonProperty(JSON_PROPERTY_POSTAL_CODE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setPostalCode(Integer postalCode) {
+  public void setPostalCode(@javax.annotation.Nonnull Integer postalCode) {
     this.postalCode = postalCode;
   }
 

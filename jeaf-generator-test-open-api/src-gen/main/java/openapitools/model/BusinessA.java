@@ -33,18 +33,20 @@ import openapitools.JSON;
   BusinessA.JSON_PROPERTY_TECH_ATTRIBUTE,
   BusinessA.JSON_PROPERTY_BUSINESS_ATTRIBUTE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
 public class BusinessA {
   public static final String JSON_PROPERTY_TECH_ATTRIBUTE = "techAttribute";
+  @javax.annotation.Nonnull
   private String techAttribute;
 
   public static final String JSON_PROPERTY_BUSINESS_ATTRIBUTE = "businessAttribute";
+  @javax.annotation.Nonnull
   private Integer businessAttribute;
 
   public BusinessA() { 
   }
 
-  public BusinessA techAttribute(String techAttribute) {
+  public BusinessA techAttribute(@javax.annotation.Nonnull String techAttribute) {
     this.techAttribute = techAttribute;
     return this;
   }
@@ -64,12 +66,12 @@ public class BusinessA {
 
   @JsonProperty(JSON_PROPERTY_TECH_ATTRIBUTE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setTechAttribute(String techAttribute) {
+  public void setTechAttribute(@javax.annotation.Nonnull String techAttribute) {
     this.techAttribute = techAttribute;
   }
 
 
-  public BusinessA businessAttribute(Integer businessAttribute) {
+  public BusinessA businessAttribute(@javax.annotation.Nonnull Integer businessAttribute) {
     this.businessAttribute = businessAttribute;
     return this;
   }
@@ -89,7 +91,7 @@ public class BusinessA {
 
   @JsonProperty(JSON_PROPERTY_BUSINESS_ATTRIBUTE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setBusinessAttribute(Integer businessAttribute) {
+  public void setBusinessAttribute(@javax.annotation.Nonnull Integer businessAttribute) {
     this.businessAttribute = businessAttribute;
   }
 

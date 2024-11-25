@@ -33,18 +33,20 @@ import openapitools.JSON;
   EnumTest.JSON_PROPERTY_PROPERTY,
   EnumTest.JSON_PROPERTY_ENUM_REF
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
 public class EnumTest {
   public static final String JSON_PROPERTY_PROPERTY = "property";
+  @javax.annotation.Nonnull
   private String property;
 
   public static final String JSON_PROPERTY_ENUM_REF = "enumRef";
+  @javax.annotation.Nonnull
   private String enumRef;
 
   public EnumTest() { 
   }
 
-  public EnumTest property(String property) {
+  public EnumTest property(@javax.annotation.Nonnull String property) {
     this.property = property;
     return this;
   }
@@ -64,12 +66,12 @@ public class EnumTest {
 
   @JsonProperty(JSON_PROPERTY_PROPERTY)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setProperty(String property) {
+  public void setProperty(@javax.annotation.Nonnull String property) {
     this.property = property;
   }
 
 
-  public EnumTest enumRef(String enumRef) {
+  public EnumTest enumRef(@javax.annotation.Nonnull String enumRef) {
     this.enumRef = enumRef;
     return this;
   }
@@ -89,7 +91,7 @@ public class EnumTest {
 
   @JsonProperty(JSON_PROPERTY_ENUM_REF)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setEnumRef(String enumRef) {
+  public void setEnumRef(@javax.annotation.Nonnull String enumRef) {
     this.enumRef = enumRef;
   }
 

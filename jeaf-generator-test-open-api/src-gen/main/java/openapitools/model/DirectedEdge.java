@@ -35,21 +35,24 @@ import openapitools.JSON;
   DirectedEdge.JSON_PROPERTY_END,
   DirectedEdge.JSON_PROPERTY_PREVIOUS_NAME
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.10.0")
 public class DirectedEdge {
   public static final String JSON_PROPERTY_START = "start";
+  @javax.annotation.Nullable
   private Stop start;
 
   public static final String JSON_PROPERTY_END = "end";
+  @javax.annotation.Nonnull
   private Stop end;
 
   public static final String JSON_PROPERTY_PREVIOUS_NAME = "previousName";
+  @javax.annotation.Nonnull
   private String previousName;
 
   public DirectedEdge() { 
   }
 
-  public DirectedEdge start(Stop start) {
+  public DirectedEdge start(@javax.annotation.Nullable Stop start) {
     this.start = start;
     return this;
   }
@@ -69,12 +72,12 @@ public class DirectedEdge {
 
   @JsonProperty(JSON_PROPERTY_START)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setStart(Stop start) {
+  public void setStart(@javax.annotation.Nullable Stop start) {
     this.start = start;
   }
 
 
-  public DirectedEdge end(Stop end) {
+  public DirectedEdge end(@javax.annotation.Nonnull Stop end) {
     this.end = end;
     return this;
   }
@@ -94,12 +97,12 @@ public class DirectedEdge {
 
   @JsonProperty(JSON_PROPERTY_END)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setEnd(Stop end) {
+  public void setEnd(@javax.annotation.Nonnull Stop end) {
     this.end = end;
   }
 
 
-  public DirectedEdge previousName(String previousName) {
+  public DirectedEdge previousName(@javax.annotation.Nonnull String previousName) {
     this.previousName = previousName;
     return this;
   }
@@ -119,7 +122,7 @@ public class DirectedEdge {
 
   @JsonProperty(JSON_PROPERTY_PREVIOUS_NAME)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setPreviousName(String previousName) {
+  public void setPreviousName(@javax.annotation.Nonnull String previousName) {
     this.previousName = previousName;
   }
 
