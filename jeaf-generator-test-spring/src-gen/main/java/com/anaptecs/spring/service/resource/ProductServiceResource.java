@@ -165,13 +165,13 @@ public class ProductServiceResource {
     lContextBuilder.setLang(pLang);
     // Handle bean parameter pContext.intCode
     lContextBuilder.setIntCode(IntegerCodeType.builder().setCode(pIntCodeAsBasicType).build());
-    Context pContext = lContextBuilder.build();
     // Add custom headers.
     for (Map.Entry<String, String> lNextEntry : pHeaders.entrySet()) {
       if (customHeaderFilter.test(lNextEntry.getKey())) {
-        pContext.addCustomHeader(lNextEntry.getKey(), lNextEntry.getValue());
+        lContextBuilder.addCustomHeader(lNextEntry.getKey(), lNextEntry.getValue());
       }
     }
+    Context pContext = lContextBuilder.build();
     // Validate request parameter(s).
     validationExecutor.validateRequest(ProductService.class, pContext);
     // Delegate request to service.
@@ -380,13 +380,13 @@ public class ProductServiceResource {
     lContextBuilder.setIntCode(IntegerCodeType.builder().setCode(pIntCodeAsBasicType).build());
     lContextBuilder.setSpecificHeader(pSpecificHeader);
     lContextBuilder.setChannelType(pChannelType);
-    SpecialContext pContext = lContextBuilder.build();
     // Add custom headers.
     for (Map.Entry<String, String> lNextEntry : pHeaders.entrySet()) {
       if (customHeaderFilter.test(lNextEntry.getKey())) {
-        pContext.addCustomHeader(lNextEntry.getKey(), lNextEntry.getValue());
+        lContextBuilder.addCustomHeader(lNextEntry.getKey(), lNextEntry.getValue());
       }
     }
+    SpecialContext pContext = lContextBuilder.build();
     // Validate request parameter(s).
     validationExecutor.validateRequest(ProductService.class, pContext);
     // Delegate request to service.
@@ -967,13 +967,13 @@ public class ProductServiceResource {
     // service interface but "only" our REST controller.
     TechnicalHeaderContext.Builder lContextBuilder = TechnicalHeaderContext.builder();
     lContextBuilder.setReseller(pReseller);
-    TechnicalHeaderContext pContext = lContextBuilder.build();
     // Add custom headers.
     for (Map.Entry<String, String> lNextEntry : pHeaders.entrySet()) {
       if (customHeaderFilter.test(lNextEntry.getKey())) {
-        pContext.addCustomHeader(lNextEntry.getKey(), lNextEntry.getValue());
+        lContextBuilder.addCustomHeader(lNextEntry.getKey(), lNextEntry.getValue());
       }
     }
+    TechnicalHeaderContext pContext = lContextBuilder.build();
     // Validate request parameter(s).
     validationExecutor.validateRequest(ProductService.class, pContext);
     // Delegate request to service.

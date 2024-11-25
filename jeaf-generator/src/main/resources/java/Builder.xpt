@@ -37,6 +37,8 @@ public static «IF isAbstract == true» abstract «ENDIF»class Builder«this.ge
 		    «EXPAND BuilderPropertyDeclaration FOR attr»
 		«ENDFOREACH»
 	«ENDIF»
+	
+	«EXPAND java::Helper::GenerateCustomHeadersField»
 
     /**
      * Use {@link «name»#builder()} instead of private constructor to create new builder.
@@ -68,6 +70,9 @@ public static «IF isAbstract == true» abstract «ENDIF»class Builder«this.ge
 	               «ENDIF»
 	           «ENDIF»
 	        «ENDFOREACH»
+        «ENDIF»
+        «IF this.hasCustomHeaders()»
+            customHeaders = new java.util.HashMap<String,String>(pObject.customHeaders);
         «ENDIF»
       }
       «ENDIF»
@@ -138,6 +143,25 @@ public static «IF isAbstract == true» abstract «ENDIF»class Builder«this.ge
 		«ENDFOREACH»
 	«ENDIF»
 	
+    «IF this.hasCustomHeaders()»
+      /**
+       * Method adds the passed values as custom headers. The passed name and value of the http header must be compliant
+       * with guidelines about http headers.
+       * 
+       * @param pHeaderName Name of the HTTP header. The parameter must not be null,
+       * @param pHeaderValue Value of the http header the parameter may be null.
+       */
+      public Builder addCustomHeader( String pHeaderName, String pHeaderValue ) {
+        if (pHeaderName != null) {
+          customHeaders.put(pHeaderName, pHeaderValue);
+          return this;
+        }
+        else {
+          throw new IllegalArgumentException("Parameter 'pHeaderName' must not be null.");
+        }
+      }
+	«ENDIF»
+	
     «EXPAND jeafgenerator::api::ClassExtensionPoint::CustomBuilderOperations»
     
 	«IF this.isAbstract == false»
@@ -203,6 +227,8 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
 		«EXPAND BuilderPropertyDeclaration FOR attr»
 		«ENDFOREACH»
 	«ENDIF»
+	
+	«EXPAND java::Helper::GenerateCustomHeadersField»
 
     /**
      * Use {@link «this.name».builder()} instead of protected constructor to create new builder.
@@ -234,6 +260,10 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
                    «ENDIF»
                «ENDIF»
 	        «ENDFOREACH»
+        «ENDIF»
+
+        «IF this.hasCustomHeaders()»
+            customHeaders = new java.util.HashMap<String,String>(pObject.customHeaders);
         «ENDIF»
       }
     }
@@ -280,6 +310,25 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
 			«EXPAND BuilderSetter("BuilderBase") FOR attr»
 		«ENDFOREACH»
 	«ENDIF»
+
+    «IF this.hasCustomHeaders()»
+      /**
+       * Method adds the passed values as custom headers. The passed name and value of the http header must be compliant
+       * with guidelines about http headers.
+       * 
+       * @param pHeaderName Name of the HTTP header. The parameter must not be null,
+       * @param pHeaderValue Value of the http header the parameter may be null.
+       */
+      public Builder addCustomHeader( String pHeaderName, String pHeaderValue ) {
+        if (pHeaderName != null) {
+          customHeaders.put(pHeaderName, pHeaderValue);
+          return this;
+        }
+        else {
+          throw new IllegalArgumentException("Parameter 'pHeaderName' must not be null.");
+        }
+      }
+    «ENDIF»
 
     «EXPAND jeafgenerator::api::ClassExtensionPoint::CustomBuilderOperations»
     

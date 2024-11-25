@@ -524,19 +524,19 @@ public class «this.getResourceName(reactive)» {
 		  			«ENDIF»
 		  		«ENDIF»
 		  «ENDFOREACH»
-		  «beanParam.getTypeName()» «beanParam.name» = «beanParam.name.toLocalVar()»Builder.build();
 		  «IF beanParam.hasParamCustomHeaders()»
 			// Add custom headers.
 			for (java.util.Map.Entry<String, String> lNextEntry : pHeaders.entrySet()) {
 			 «IF filterCustomHeaders()»
 			 if (customHeaderFilter.test(lNextEntry.getKey())) {
 			 «ENDIF»
-			    «beanParam.name».addCustomHeader(lNextEntry.getKey(), lNextEntry.getValue());
+			    «beanParam.name.toLocalVar()»Builder.addCustomHeader(lNextEntry.getKey(), lNextEntry.getValue());
              «IF filterCustomHeaders()»
              }
              «ENDIF»
 			}		  
 		  «ENDIF»
+          «beanParam.getTypeName()» «beanParam.name» = «beanParam.name.toLocalVar()»Builder.build();
 	  «ENDFOREACH»
 	  «IF this.hasDataTypeParameters()»
 	  // Convert basic type parameters into "real" objects.

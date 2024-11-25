@@ -249,6 +249,7 @@
 	    return java.util.Collections.unmodifiableMap(customHeaders);
 	  }
 	  
+	  «IF this.isReadOnlyClass() == false || isRESTLibraryJAXRS()»
 	  /**
 	   * Method adds the passed values as custom headers. The passed name and value of the http header must be compliant
 	   * with guidelines about http headers.
@@ -264,6 +265,7 @@
 	      throw new IllegalArgumentException("Parameter 'pHeaderName' must not be null.");
 	    }
 	  }
+	  «ENDIF»
 	«ENDIF»
 «ENDDEFINE»
 

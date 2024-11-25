@@ -188,13 +188,13 @@ public class RESTProductServiceResource {
     lContextBuilder.setLang(pLang);
     // Handle bean parameter pContext.intCode
     lContextBuilder.setIntCode(IntegerCodeType.builder().setCode(pIntCodeAsBasicType).build());
-    Context pContext = lContextBuilder.build();
     // Add custom headers.
     for (Map.Entry<String, String> lNextEntry : pHeaders.entrySet()) {
       if (customHeaderFilter.test(lNextEntry.getKey())) {
-        pContext.addCustomHeader(lNextEntry.getKey(), lNextEntry.getValue());
+        lContextBuilder.addCustomHeader(lNextEntry.getKey(), lNextEntry.getValue());
       }
     }
+    Context pContext = lContextBuilder.build();
     // Validate request parameter(s).
     validationExecutor.validateRequest(RESTProductService.class, pContext);
     // Delegate request to service.
@@ -804,13 +804,13 @@ public class RESTProductServiceResource {
     lContextBuilder.setIntCode(IntegerCodeType.builder().setCode(pIntCodeAsBasicType).build());
     lContextBuilder.setSpecificHeader(pSpecificHeader);
     lContextBuilder.setChannelType(pChannelType);
-    SpecialContext pContext = lContextBuilder.build();
     // Add custom headers.
     for (Map.Entry<String, String> lNextEntry : pHeaders.entrySet()) {
       if (customHeaderFilter.test(lNextEntry.getKey())) {
-        pContext.addCustomHeader(lNextEntry.getKey(), lNextEntry.getValue());
+        lContextBuilder.addCustomHeader(lNextEntry.getKey(), lNextEntry.getValue());
       }
     }
+    SpecialContext pContext = lContextBuilder.build();
     // Validate request parameter(s).
     validationExecutor.validateRequest(RESTProductService.class, pChannelTypeParam, pContext);
     // Delegate request to service.

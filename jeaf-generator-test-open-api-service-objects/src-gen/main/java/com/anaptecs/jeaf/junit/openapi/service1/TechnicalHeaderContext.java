@@ -52,6 +52,8 @@ public class TechnicalHeaderContext implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     reseller = pBuilder.reseller;
+    // Add request headers.
+    customHeaders = pBuilder.customHeaders;
   }
 
   /**
@@ -84,6 +86,11 @@ public class TechnicalHeaderContext implements ServiceObject {
     private String reseller;
 
     /**
+     * Map contains all custom headers that were set on the object.
+     */
+    private Map<String, String> customHeaders = new HashMap<String, String>();
+
+    /**
      * Use {@link TechnicalHeaderContext#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
@@ -97,6 +104,7 @@ public class TechnicalHeaderContext implements ServiceObject {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setReseller(pObject.reseller);
+        customHeaders = new HashMap<String, String>(pObject.customHeaders);
       }
     }
 
@@ -110,6 +118,23 @@ public class TechnicalHeaderContext implements ServiceObject {
       // Assign value to attribute
       reseller = pReseller;
       return this;
+    }
+
+    /**
+     * Method adds the passed values as custom headers. The passed name and value of the http header must be compliant
+     * with guidelines about http headers.
+     *
+     * @param pHeaderName Name of the HTTP header. The parameter must not be null,
+     * @param pHeaderValue Value of the http header the parameter may be null.
+     */
+    public Builder addCustomHeader( String pHeaderName, String pHeaderValue ) {
+      if (pHeaderName != null) {
+        customHeaders.put(pHeaderName, pHeaderValue);
+        return this;
+      }
+      else {
+        throw new IllegalArgumentException("Parameter 'pHeaderName' must not be null.");
+      }
     }
 
     /**

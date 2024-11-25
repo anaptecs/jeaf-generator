@@ -173,13 +173,13 @@ public class ProductServiceReactiveResource {
     lContextBuilder.setLang(pLang);
     // Handle bean parameter pContext.intCode
     lContextBuilder.setIntCode(IntegerCodeType.builder().setCode(pIntCodeAsBasicType).build());
-    Context pContext = lContextBuilder.build();
     // Add custom headers.
     for (Map.Entry<String, String> lNextEntry : pHeaders.entrySet()) {
       if (customHeaderFilter.test(lNextEntry.getKey())) {
-        pContext.addCustomHeader(lNextEntry.getKey(), lNextEntry.getValue());
+        lContextBuilder.addCustomHeader(lNextEntry.getKey(), lNextEntry.getValue());
       }
     }
+    Context pContext = lContextBuilder.build();
     return Mono.defer(( ) -> {
       // Validate request parameter(s).
       validationExecutor.validateRequest(ProductServiceReactive.class, pContext);
@@ -408,13 +408,13 @@ public class ProductServiceReactiveResource {
     lContextBuilder.setIntCode(IntegerCodeType.builder().setCode(pIntCodeAsBasicType).build());
     lContextBuilder.setSpecificHeader(pSpecificHeader);
     lContextBuilder.setChannelType(pChannelType);
-    SpecialContext pContext = lContextBuilder.build();
     // Add custom headers.
     for (Map.Entry<String, String> lNextEntry : pHeaders.entrySet()) {
       if (customHeaderFilter.test(lNextEntry.getKey())) {
-        pContext.addCustomHeader(lNextEntry.getKey(), lNextEntry.getValue());
+        lContextBuilder.addCustomHeader(lNextEntry.getKey(), lNextEntry.getValue());
       }
     }
+    SpecialContext pContext = lContextBuilder.build();
     return Mono.defer(( ) -> {
       // Validate request parameter(s).
       validationExecutor.validateRequest(ProductServiceReactive.class, pContext);
@@ -1030,13 +1030,13 @@ public class ProductServiceReactiveResource {
     // service interface but "only" our REST controller.
     TechnicalHeaderContext.Builder lContextBuilder = TechnicalHeaderContext.builder();
     lContextBuilder.setReseller(pReseller);
-    TechnicalHeaderContext pContext = lContextBuilder.build();
     // Add custom headers.
     for (Map.Entry<String, String> lNextEntry : pHeaders.entrySet()) {
       if (customHeaderFilter.test(lNextEntry.getKey())) {
-        pContext.addCustomHeader(lNextEntry.getKey(), lNextEntry.getValue());
+        lContextBuilder.addCustomHeader(lNextEntry.getKey(), lNextEntry.getValue());
       }
     }
+    TechnicalHeaderContext pContext = lContextBuilder.build();
     return Mono.defer(( ) -> {
       // Validate request parameter(s).
       validationExecutor.validateRequest(ProductServiceReactive.class, pContext);

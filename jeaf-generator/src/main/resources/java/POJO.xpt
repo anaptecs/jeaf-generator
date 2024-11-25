@@ -487,5 +487,9 @@
                 «EXPAND jeafgenerator::api::ClassExtensionPoint::AfterBuilderConstructorPropertyInit(attr.type.fqn(), "pBuilder") FOR attr»
             «ENDIF»
 		«ENDFOREACH»
+		«IF this.hasCustomHeaders()»
+            // Add request headers.
+            customHeaders = pBuilder.customHeaders;
+        «ENDIF»
 	«ENDIF»
 «ENDDEFINE»
