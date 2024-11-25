@@ -7,7 +7,6 @@ package com.anaptecs.spring.base;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
@@ -25,15 +24,16 @@ public class WeirdBooking {
    */
   public static final String ADDITIONALBOOKINGS = "additionalBookings";
 
-  private ComplexBookingID booking;
+  private final ComplexBookingID booking;
 
-  private List<ComplexBookingID> additionalBookings;
+  private final List<ComplexBookingID> additionalBookings;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   protected WeirdBooking( ) {
+    booking = null;
     additionalBookings = new ArrayList<ComplexBookingID>();
   }
 
@@ -161,22 +161,6 @@ public class WeirdBooking {
   }
 
   /**
-   * Method sets association {@link #booking}.<br/>
-   *
-   * @param pBooking Value to which {@link #booking} should be set.
-   */
-  public void setBooking( ComplexBookingID pBooking ) {
-    booking = pBooking;
-  }
-
-  /**
-   * Method unsets {@link #booking}.
-   */
-  public final void unsetBooking( ) {
-    booking = null;
-  }
-
-  /**
    * Method returns association {@link #additionalBookings}.<br/>
    *
    * @return {@link List<ComplexBookingID>} Value to which {@link #additionalBookings} is set. The method never returns
@@ -185,49 +169,6 @@ public class WeirdBooking {
   public List<ComplexBookingID> getAdditionalBookings( ) {
     // Return all ComplexBookingID objects as unmodifiable collection.
     return Collections.unmodifiableList(additionalBookings);
-  }
-
-  /**
-   * Method adds the passed object to {@link #additionalBookings}.
-   *
-   * @param pAdditionalBookings Object that should be added to {@link #additionalBookings}. The parameter must not be
-   * null.
-   */
-  public void addToAdditionalBookings( ComplexBookingID pAdditionalBookings ) {
-    // Add passed object to collection of associated ComplexBookingID objects.
-    additionalBookings.add(pAdditionalBookings);
-  }
-
-  /**
-   * Method adds all passed objects to {@link #additionalBookings}.
-   *
-   * @param pAdditionalBookings Collection with all objects that should be added to {@link #additionalBookings}. The
-   * parameter must not be null.
-   */
-  public void addToAdditionalBookings( Collection<ComplexBookingID> pAdditionalBookings ) {
-    // Add all passed objects.
-    for (ComplexBookingID lNextObject : pAdditionalBookings) {
-      this.addToAdditionalBookings(lNextObject);
-    }
-  }
-
-  /**
-   * Method removes the passed object from {@link #additionalBookings}.<br/>
-   *
-   * @param pAdditionalBookings Object that should be removed from {@link #additionalBookings}. The parameter must not
-   * be null.
-   */
-  public void removeFromAdditionalBookings( ComplexBookingID pAdditionalBookings ) {
-    // Remove passed object from collection of associated ComplexBookingID objects.
-    additionalBookings.remove(pAdditionalBookings);
-  }
-
-  /**
-   * Method removes all objects from {@link #additionalBookings}.
-   */
-  public void clearAdditionalBookings( ) {
-    // Remove all objects from association "additionalBookings".
-    additionalBookings.clear();
   }
 
   @Override

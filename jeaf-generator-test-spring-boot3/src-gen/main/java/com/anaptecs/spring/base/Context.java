@@ -56,7 +56,7 @@ public class Context {
   public static final String INTCODE = "intCode";
 
   @NotEmpty
-  private String accessToken;
+  private final String accessToken;
 
   /**
    * <br/>
@@ -67,17 +67,17 @@ public class Context {
    * <p/>
    * <b>Header-Param:</b> lang
    */
-  private Locale language;
+  private final Locale language;
 
-  private long resellerID;
+  private final long resellerID;
 
-  private long pathParam;
+  private final long pathParam;
 
-  private String queryParam;
+  private final String queryParam;
 
-  private String lang;
+  private final String lang;
 
-  private IntegerCodeType intCode;
+  private final IntegerCodeType intCode;
 
   /**
    * Map contains all custom headers that were set on the object.
@@ -89,6 +89,13 @@ public class Context {
    * object creation builder should be used instead.
    */
   public Context( ) {
+    accessToken = null;
+    language = null;
+    resellerID = 0;
+    pathParam = 0;
+    queryParam = null;
+    lang = null;
+    intCode = null;
   }
 
   /**
@@ -105,6 +112,8 @@ public class Context {
     queryParam = pBuilder.queryParam;
     lang = pBuilder.lang;
     intCode = pBuilder.intCode;
+    // Add request headers.
+    customHeaders = pBuilder.customHeaders;
   }
 
   /**
@@ -178,6 +187,11 @@ public class Context {
     private IntegerCodeType intCode;
 
     /**
+     * Map contains all custom headers that were set on the object.
+     */
+    private Map<String, String> customHeaders = new HashMap<String, String>();
+
+    /**
      * Use {@link Context#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
@@ -196,6 +210,7 @@ public class Context {
         this.setQueryParam(pObject.queryParam);
         this.setLang(pObject.lang);
         this.setIntCode(pObject.intCode);
+        customHeaders = new HashMap<String, String>(pObject.customHeaders);
       }
     }
 
@@ -284,6 +299,23 @@ public class Context {
     }
 
     /**
+     * Method adds the passed values as custom headers. The passed name and value of the http header must be compliant
+     * with guidelines about http headers.
+     *
+     * @param pHeaderName Name of the HTTP header. The parameter must not be null,
+     * @param pHeaderValue Value of the http header the parameter may be null.
+     */
+    public Builder addCustomHeader( String pHeaderName, String pHeaderValue ) {
+      if (pHeaderName != null) {
+        customHeaders.put(pHeaderName, pHeaderValue);
+        return this;
+      }
+      else {
+        throw new IllegalArgumentException("Parameter 'pHeaderName' must not be null.");
+      }
+    }
+
+    /**
      * Method creates a new instance of class Context. The object will be initialized with the values of the builder.
      *
      * @return Context Created object. The method never returns null.
@@ -303,32 +335,12 @@ public class Context {
   }
 
   /**
-   * Method sets attribute {@link #accessToken}.<br/>
-   *
-   * @param pAccessToken Value to which {@link #accessToken} should be set.
-   */
-  public void setAccessToken( String pAccessToken ) {
-    // Assign value to attribute
-    accessToken = pAccessToken;
-  }
-
-  /**
    * Method returns attribute {@link #language}.<br/>
    *
    * @return {@link Locale} Value to which {@link #language} is set.
    */
   public Locale getLanguage( ) {
     return language;
-  }
-
-  /**
-   * Method sets attribute {@link #language}.<br/>
-   *
-   * @param pLanguage Value to which {@link #language} should be set.
-   */
-  public void setLanguage( Locale pLanguage ) {
-    // Assign value to attribute
-    language = pLanguage;
   }
 
   /**
@@ -341,32 +353,12 @@ public class Context {
   }
 
   /**
-   * Method sets attribute {@link #resellerID}.<br/>
-   *
-   * @param pResellerID Value to which {@link #resellerID} should be set.
-   */
-  public void setResellerID( long pResellerID ) {
-    // Assign value to attribute
-    resellerID = pResellerID;
-  }
-
-  /**
    * Method returns attribute {@link #pathParam}.<br/>
    *
    * @return long Value to which {@link #pathParam} is set.
    */
   public long getPathParam( ) {
     return pathParam;
-  }
-
-  /**
-   * Method sets attribute {@link #pathParam}.<br/>
-   *
-   * @param pPathParam Value to which {@link #pathParam} should be set.
-   */
-  public void setPathParam( long pPathParam ) {
-    // Assign value to attribute
-    pathParam = pPathParam;
   }
 
   /**
@@ -379,32 +371,12 @@ public class Context {
   }
 
   /**
-   * Method sets attribute {@link #queryParam}.<br/>
-   *
-   * @param pQueryParam Value to which {@link #queryParam} should be set.
-   */
-  public void setQueryParam( String pQueryParam ) {
-    // Assign value to attribute
-    queryParam = pQueryParam;
-  }
-
-  /**
    * Method returns attribute {@link #lang}.<br/>
    *
    * @return {@link String} Value to which {@link #lang} is set.
    */
   public String getLang( ) {
     return lang;
-  }
-
-  /**
-   * Method sets attribute {@link #lang}.<br/>
-   *
-   * @param pLang Value to which {@link #lang} should be set.
-   */
-  public void setLang( String pLang ) {
-    // Assign value to attribute
-    lang = pLang;
   }
 
   /**
@@ -417,38 +389,12 @@ public class Context {
   }
 
   /**
-   * Method sets attribute {@link #intCode}.<br/>
-   *
-   * @param pIntCode Value to which {@link #intCode} should be set.
-   */
-  public void setIntCode( IntegerCodeType pIntCode ) {
-    // Assign value to attribute
-    intCode = pIntCode;
-  }
-
-  /**
    * Method returns map with all custom headers that were added
    *
    * @return {@link Map} Map with all custom headers. The method never returns null. The returned map is unmodifiable.
    */
   public Map<String, String> getCustomHeaders( ) {
     return Collections.unmodifiableMap(customHeaders);
-  }
-
-  /**
-   * Method adds the passed values as custom headers. The passed name and value of the http header must be compliant
-   * with guidelines about http headers.
-   *
-   * @param pHeaderName Name of the HTTP header. The parameter must not be null,
-   * @param pHeaderValue Value of the http header the parameter may be null.
-   */
-  public void addCustomHeader( String pHeaderName, String pHeaderValue ) {
-    if (pHeaderName != null) {
-      customHeaders.put(pHeaderName, pHeaderValue);
-    }
-    else {
-      throw new IllegalArgumentException("Parameter 'pHeaderName' must not be null.");
-    }
   }
 
   @Override

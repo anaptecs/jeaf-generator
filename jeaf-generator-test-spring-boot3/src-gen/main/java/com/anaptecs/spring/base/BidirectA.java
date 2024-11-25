@@ -5,10 +5,8 @@
  */
 package com.anaptecs.spring.base;
 
-import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Objects;
 import java.util.Set;
 
@@ -28,9 +26,9 @@ public class BidirectA {
    */
   public static final String TRANSIENTCHILD = "transientChild";
 
-  private transient Set<BidirectB> transientBs;
+  private final transient Set<BidirectB> transientBs;
 
-  private BidirectA parent;
+  private final BidirectA parent;
 
   /**
    * Attribute is required for correct handling of bidirectional associations in case of deserialization.
@@ -45,8 +43,10 @@ public class BidirectA {
    */
   protected BidirectA( ) {
     transientBs = new HashSet<BidirectB>();
+    parent = null;
     // Bidirectional back reference is not yet set up correctly
     parentBackReferenceInitialized = false;
+    transientChild = null;
   }
 
   /**
@@ -154,42 +154,6 @@ public class BidirectA {
   }
 
   /**
-   * Method adds all passed objects to {@link #transientBs}.
-   *
-   * @param pTransientBs Collection with all objects that should be added to {@link #transientBs}. The parameter must
-   * not be null.
-   */
-  void addToTransientBs( Collection<BidirectB> pTransientBs ) {
-    // Add all passed objects.
-    for (BidirectB lNextObject : pTransientBs) {
-      this.addToTransientBs(lNextObject);
-    }
-  }
-
-  /**
-   * Method removes the passed object from {@link #transientBs}.<br/>
-   *
-   * @param pTransientBs Object that should be removed from {@link #transientBs}. The parameter must not be null.
-   */
-  void removeFromTransientBs( BidirectB pTransientBs ) {
-    // Remove passed object from collection of associated BidirectB objects.
-    transientBs.remove(pTransientBs);
-  }
-
-  /**
-   * Method removes all objects from {@link #transientBs}.
-   */
-  void clearTransientBs( ) {
-    // Remove all objects from association "transientBs".
-    Collection<BidirectB> lTransientBs = new HashSet<BidirectB>(transientBs);
-    Iterator<BidirectB> lIterator = lTransientBs.iterator();
-    while (lIterator.hasNext()) {
-      // As association is bidirectional we have to clear it in both directions.
-      this.removeFromTransientBs(lIterator.next());
-    }
-  }
-
-  /**
    * Method returns association {@link #parent}.<br/>
    *
    * @return {@link BidirectA} Value to which {@link #parent} is set.
@@ -202,37 +166,6 @@ public class BidirectA {
       parent.setTransientChild((BidirectA) this);
     }
     return parent;
-  }
-
-  /**
-   * Method sets association {@link #parent}.<br/>
-   *
-   * @param pParent Value to which {@link #parent} should be set.
-   */
-  public void setParent( BidirectA pParent ) {
-    // Release already referenced object before setting a new association.
-    if (parent != null) {
-      parent.unsetTransientChild();
-    }
-    parent = pParent;
-    // The association is set in both directions because within the UML model it is defined to be bidirectional.
-    // In case that one side will be removed from the association the other side will also be removed.
-    if (pParent != null && this.equals(pParent.getTransientChild()) == false) {
-      pParent.setTransientChild((BidirectA) this);
-    }
-  }
-
-  /**
-   * Method unsets {@link #parent}.
-   */
-  public final void unsetParent( ) {
-    // The association is set in both directions because within the UML model it is defined to be bidirectional.
-    // In case that one side will be removed from the association the other side will also be removed.
-    BidirectA lBidirectA = parent;
-    parent = null;
-    if (lBidirectA != null && this.equals(lBidirectA.getTransientChild()) == true) {
-      lBidirectA.unsetTransientChild();
-    }
   }
 
   /**
@@ -250,18 +183,7 @@ public class BidirectA {
    * @param pTransientChild Value to which {@link #transientChild} should be set.
    */
   void setTransientChild( BidirectA pTransientChild ) {
-    // Release already referenced object before setting a new association.
-    if (transientChild != null) {
-      transientChild.unsetParent();
-    }
     transientChild = pTransientChild;
-  }
-
-  /**
-   * Method unsets {@link #transientChild}.
-   */
-  final void unsetTransientChild( ) {
-    transientChild = null;
   }
 
   @Override

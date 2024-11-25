@@ -67,31 +67,41 @@ public class DateQueryParamsBean {
    */
   public static final String SQLDATE = "sqlDate";
 
-  private OffsetDateTime offsetDateTime;
+  private final OffsetDateTime offsetDateTime;
 
-  private OffsetTime offsetTime;
+  private final OffsetTime offsetTime;
 
-  private LocalDateTime localDateTime;
+  private final LocalDateTime localDateTime;
 
-  private LocalTime localTime;
+  private final LocalTime localTime;
 
-  private LocalDate localDate;
+  private final LocalDate localDate;
 
-  private java.util.Date utilDate;
+  private final java.util.Date utilDate;
 
-  private Calendar calendar;
+  private final Calendar calendar;
 
-  private Timestamp sqlTimestamp;
+  private final Timestamp sqlTimestamp;
 
-  private Time sqlTime;
+  private final Time sqlTime;
 
-  private Date sqlDate;
+  private final Date sqlDate;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   public DateQueryParamsBean( ) {
+    offsetDateTime = null;
+    offsetTime = null;
+    localDateTime = null;
+    localTime = null;
+    localDate = null;
+    utilDate = null;
+    calendar = null;
+    sqlTimestamp = null;
+    sqlTime = null;
+    sqlDate = null;
   }
 
   /**
@@ -356,32 +366,12 @@ public class DateQueryParamsBean {
   }
 
   /**
-   * Method sets attribute {@link #offsetDateTime}.<br/>
-   *
-   * @param pOffsetDateTime Value to which {@link #offsetDateTime} should be set.
-   */
-  public void setOffsetDateTime( OffsetDateTime pOffsetDateTime ) {
-    // Assign value to attribute
-    offsetDateTime = pOffsetDateTime;
-  }
-
-  /**
    * Method returns attribute {@link #offsetTime}.<br/>
    *
    * @return {@link OffsetTime} Value to which {@link #offsetTime} is set.
    */
   public OffsetTime getOffsetTime( ) {
     return offsetTime;
-  }
-
-  /**
-   * Method sets attribute {@link #offsetTime}.<br/>
-   *
-   * @param pOffsetTime Value to which {@link #offsetTime} should be set.
-   */
-  public void setOffsetTime( OffsetTime pOffsetTime ) {
-    // Assign value to attribute
-    offsetTime = pOffsetTime;
   }
 
   /**
@@ -394,32 +384,12 @@ public class DateQueryParamsBean {
   }
 
   /**
-   * Method sets attribute {@link #localDateTime}.<br/>
-   *
-   * @param pLocalDateTime Value to which {@link #localDateTime} should be set.
-   */
-  public void setLocalDateTime( LocalDateTime pLocalDateTime ) {
-    // Assign value to attribute
-    localDateTime = pLocalDateTime;
-  }
-
-  /**
    * Method returns attribute {@link #localTime}.<br/>
    *
    * @return {@link LocalTime} Value to which {@link #localTime} is set.
    */
   public LocalTime getLocalTime( ) {
     return localTime;
-  }
-
-  /**
-   * Method sets attribute {@link #localTime}.<br/>
-   *
-   * @param pLocalTime Value to which {@link #localTime} should be set.
-   */
-  public void setLocalTime( LocalTime pLocalTime ) {
-    // Assign value to attribute
-    localTime = pLocalTime;
   }
 
   /**
@@ -432,32 +402,12 @@ public class DateQueryParamsBean {
   }
 
   /**
-   * Method sets attribute {@link #localDate}.<br/>
-   *
-   * @param pLocalDate Value to which {@link #localDate} should be set.
-   */
-  public void setLocalDate( LocalDate pLocalDate ) {
-    // Assign value to attribute
-    localDate = pLocalDate;
-  }
-
-  /**
    * Method returns attribute {@link #utilDate}.<br/>
    *
    * @return {@link java.util.Date} Value to which {@link #utilDate} is set.
    */
   public java.util.Date getUtilDate( ) {
     return utilDate;
-  }
-
-  /**
-   * Method sets attribute {@link #utilDate}.<br/>
-   *
-   * @param pUtilDate Value to which {@link #utilDate} should be set.
-   */
-  public void setUtilDate( java.util.Date pUtilDate ) {
-    // Assign value to attribute
-    utilDate = pUtilDate;
   }
 
   /**
@@ -470,32 +420,12 @@ public class DateQueryParamsBean {
   }
 
   /**
-   * Method sets attribute {@link #calendar}.<br/>
-   *
-   * @param pCalendar Value to which {@link #calendar} should be set.
-   */
-  public void setCalendar( Calendar pCalendar ) {
-    // Assign value to attribute
-    calendar = pCalendar;
-  }
-
-  /**
    * Method returns attribute {@link #sqlTimestamp}.<br/>
    *
    * @return {@link Timestamp} Value to which {@link #sqlTimestamp} is set.
    */
   public Timestamp getSqlTimestamp( ) {
     return sqlTimestamp;
-  }
-
-  /**
-   * Method sets attribute {@link #sqlTimestamp}.<br/>
-   *
-   * @param pSqlTimestamp Value to which {@link #sqlTimestamp} should be set.
-   */
-  public void setSqlTimestamp( Timestamp pSqlTimestamp ) {
-    // Assign value to attribute
-    sqlTimestamp = pSqlTimestamp;
   }
 
   /**
@@ -508,32 +438,12 @@ public class DateQueryParamsBean {
   }
 
   /**
-   * Method sets attribute {@link #sqlTime}.<br/>
-   *
-   * @param pSqlTime Value to which {@link #sqlTime} should be set.
-   */
-  public void setSqlTime( Time pSqlTime ) {
-    // Assign value to attribute
-    sqlTime = pSqlTime;
-  }
-
-  /**
    * Method returns attribute {@link #sqlDate}.<br/>
    *
    * @return {@link Date} Value to which {@link #sqlDate} is set.
    */
   public Date getSqlDate( ) {
     return sqlDate;
-  }
-
-  /**
-   * Method sets attribute {@link #sqlDate}.<br/>
-   *
-   * @param pSqlDate Value to which {@link #sqlDate} should be set.
-   */
-  public void setSqlDate( Date pSqlDate ) {
-    // Assign value to attribute
-    sqlDate = pSqlDate;
   }
 
   @Override

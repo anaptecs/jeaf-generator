@@ -22,13 +22,13 @@ public class EnumTest {
    * <br/>
    * <b>Default Value:</b> <code>GREEN</code>
    */
-  private ExtensibleEnum property;
+  private final ExtensibleEnum property;
 
   /**
    * <br/>
    * <b>Default Value:</b> <code>RED</code>
    */
-  private ExtensibleEnum enumRef;
+  private final ExtensibleEnum enumRef;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
@@ -152,38 +152,12 @@ public class EnumTest {
   }
 
   /**
-   * Method sets attribute {@link #property}.<br/>
-   *
-   * @param pProperty Value to which {@link #property} should be set.
-   */
-  public void setProperty( ExtensibleEnum pProperty ) {
-    // Assign value to attribute
-    property = pProperty;
-  }
-
-  /**
    * Method returns association {@link #enumRef}.<br/>
    *
    * @return {@link ExtensibleEnum} Value to which {@link #enumRef} is set.
    */
   public ExtensibleEnum getEnumRef( ) {
     return enumRef;
-  }
-
-  /**
-   * Method sets association {@link #enumRef}.<br/>
-   *
-   * @param pEnumRef Value to which {@link #enumRef} should be set.
-   */
-  public void setEnumRef( ExtensibleEnum pEnumRef ) {
-    enumRef = pEnumRef;
-  }
-
-  /**
-   * Method unsets {@link #enumRef}.
-   */
-  public final void unsetEnumRef( ) {
-    enumRef = null;
   }
 
   @Override

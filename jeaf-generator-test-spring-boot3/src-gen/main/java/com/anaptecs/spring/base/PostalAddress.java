@@ -33,25 +33,29 @@ public class PostalAddress {
    */
   public static final String COUNTRY = "country";
 
-  private String street;
+  private final String street;
 
-  private String houseNumber;
+  private final String houseNumber;
 
-  private String city;
+  private final String city;
 
-  private int postalCode;
+  private final int postalCode;
 
   /**
    * <br/>
    * <b>Default Value:</b> <code>"Germany"</code>
    */
-  private String country;
+  private final String country;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   protected PostalAddress( ) {
+    street = null;
+    houseNumber = null;
+    city = null;
+    postalCode = 0;
     country = "Germany";
   }
 
@@ -224,32 +228,12 @@ public class PostalAddress {
   }
 
   /**
-   * Method sets attribute {@link #street}.<br/>
-   *
-   * @param pStreet Value to which {@link #street} should be set.
-   */
-  public void setStreet( String pStreet ) {
-    // Assign value to attribute
-    street = pStreet;
-  }
-
-  /**
    * Method returns attribute {@link #houseNumber}.<br/>
    *
    * @return {@link String} Value to which {@link #houseNumber} is set.
    */
   public String getHouseNumber( ) {
     return houseNumber;
-  }
-
-  /**
-   * Method sets attribute {@link #houseNumber}.<br/>
-   *
-   * @param pHouseNumber Value to which {@link #houseNumber} should be set.
-   */
-  public void setHouseNumber( String pHouseNumber ) {
-    // Assign value to attribute
-    houseNumber = pHouseNumber;
   }
 
   /**
@@ -262,16 +246,6 @@ public class PostalAddress {
   }
 
   /**
-   * Method sets attribute {@link #city}.<br/>
-   *
-   * @param pCity Value to which {@link #city} should be set.
-   */
-  public void setCity( String pCity ) {
-    // Assign value to attribute
-    city = pCity;
-  }
-
-  /**
    * Method returns attribute {@link #postalCode}.<br/>
    *
    * @return int Value to which {@link #postalCode} is set.
@@ -281,32 +255,12 @@ public class PostalAddress {
   }
 
   /**
-   * Method sets attribute {@link #postalCode}.<br/>
-   *
-   * @param pPostalCode Value to which {@link #postalCode} should be set.
-   */
-  public void setPostalCode( int pPostalCode ) {
-    // Assign value to attribute
-    postalCode = pPostalCode;
-  }
-
-  /**
    * Method returns attribute {@link #country}.<br/>
    *
    * @return {@link String} Value to which {@link #country} is set.
    */
   public String getCountry( ) {
     return country;
-  }
-
-  /**
-   * Method sets attribute {@link #country}.<br/>
-   *
-   * @param pCountry Value to which {@link #country} should be set.
-   */
-  public void setCountry( String pCountry ) {
-    // Assign value to attribute
-    country = pCountry;
   }
 
   @Override

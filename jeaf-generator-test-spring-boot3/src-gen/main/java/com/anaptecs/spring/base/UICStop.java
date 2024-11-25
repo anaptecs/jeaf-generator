@@ -16,13 +16,14 @@ public class UICStop extends Stop {
    */
   public static final String UICCODE = "uicCode";
 
-  private String uicCode;
+  private final String uicCode;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   protected UICStop( ) {
+    uicCode = null;
   }
 
   /**
@@ -156,16 +157,6 @@ public class UICStop extends Stop {
    */
   public String getUicCode( ) {
     return uicCode;
-  }
-
-  /**
-   * Method sets attribute {@link #uicCode}.<br/>
-   *
-   * @param pUicCode Value to which {@link #uicCode} should be set.
-   */
-  public void setUicCode( String pUicCode ) {
-    // Assign value to attribute
-    uicCode = pUicCode;
   }
 
   @Override

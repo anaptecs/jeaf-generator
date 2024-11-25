@@ -13,13 +13,14 @@ public class FloatCode {
    */
   public static final String CODE = "code";
 
-  private Float code;
+  private final Float code;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   protected FloatCode( ) {
+    code = null;
   }
 
   /**
@@ -92,16 +93,6 @@ public class FloatCode {
    */
   public Float getCode( ) {
     return code;
-  }
-
-  /**
-   * Method sets attribute {@link #code}.<br/>
-   *
-   * @param pCode Value to which {@link #code} should be set.
-   */
-  public void setCode( Float pCode ) {
-    // Assign value to attribute
-    code = pCode;
   }
 
   @Override

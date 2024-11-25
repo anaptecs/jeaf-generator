@@ -13,13 +13,14 @@ public class LinkObject {
    */
   public static final String HREF = "href";
 
-  private String href;
+  private final String href;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   protected LinkObject( ) {
+    href = null;
   }
 
   /**
@@ -106,16 +107,6 @@ public class LinkObject {
    */
   public String getHref( ) {
     return href;
-  }
-
-  /**
-   * Method sets attribute {@link #href}.<br/>
-   *
-   * @param pHref Value to which {@link #href} should be set.
-   */
-  public void setHref( String pHref ) {
-    // Assign value to attribute
-    href = pHref;
   }
 
   @Override

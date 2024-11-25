@@ -13,13 +13,14 @@ public class AnotherDataType {
    */
   public static final String DATA = "data";
 
-  public String data;
+  public final String data;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   protected AnotherDataType( ) {
+    data = null;
   }
 
   /**
@@ -93,16 +94,6 @@ public class AnotherDataType {
    */
   public String getData( ) {
     return data;
-  }
-
-  /**
-   * Method sets attribute {@link #data}.<br/>
-   *
-   * @param pData Value to which {@link #data} should be set.
-   */
-  public void setData( String pData ) {
-    // Assign value to attribute
-    data = pData;
   }
 
   @Override

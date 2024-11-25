@@ -7,7 +7,6 @@ package com.anaptecs.spring.base;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
@@ -23,15 +22,16 @@ public class Stop {
    */
   public static final String LINKS = "links";
 
-  private String name;
+  private final String name;
 
-  private List<LinkObject> links;
+  private final List<LinkObject> links;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   protected Stop( ) {
+    name = null;
     links = new ArrayList<LinkObject>();
   }
 
@@ -158,16 +158,6 @@ public class Stop {
   }
 
   /**
-   * Method sets attribute {@link #name}.<br/>
-   *
-   * @param pName Value to which {@link #name} should be set.
-   */
-  public void setName( String pName ) {
-    // Assign value to attribute
-    name = pName;
-  }
-
-  /**
    * Method returns association {@link #links}.<br/>
    *
    * @return {@link List<LinkObject>} Value to which {@link #links} is set. The method never returns null and the
@@ -176,46 +166,6 @@ public class Stop {
   public List<LinkObject> getLinks( ) {
     // Return all LinkObject objects as unmodifiable collection.
     return Collections.unmodifiableList(links);
-  }
-
-  /**
-   * Method adds the passed object to {@link #links}.
-   *
-   * @param pLinks Object that should be added to {@link #links}. The parameter must not be null.
-   */
-  public void addToLinks( LinkObject pLinks ) {
-    // Add passed object to collection of associated LinkObject objects.
-    links.add(pLinks);
-  }
-
-  /**
-   * Method adds all passed objects to {@link #links}.
-   *
-   * @param pLinks Collection with all objects that should be added to {@link #links}. The parameter must not be null.
-   */
-  public void addToLinks( Collection<LinkObject> pLinks ) {
-    // Add all passed objects.
-    for (LinkObject lNextObject : pLinks) {
-      this.addToLinks(lNextObject);
-    }
-  }
-
-  /**
-   * Method removes the passed object from {@link #links}.<br/>
-   *
-   * @param pLinks Object that should be removed from {@link #links}. The parameter must not be null.
-   */
-  public void removeFromLinks( LinkObject pLinks ) {
-    // Remove passed object from collection of associated LinkObject objects.
-    links.remove(pLinks);
-  }
-
-  /**
-   * Method removes all objects from {@link #links}.
-   */
-  public void clearLinks( ) {
-    // Remove all objects from association "links".
-    links.clear();
   }
 
   @Override

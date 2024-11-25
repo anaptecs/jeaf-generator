@@ -14,13 +14,14 @@ public class POI extends Stop {
    */
   public static final String DESCRIPTION = "description";
 
-  private String description;
+  private final String description;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   protected POI( ) {
+    description = null;
   }
 
   /**
@@ -152,16 +153,6 @@ public class POI extends Stop {
    */
   public String getDescription( ) {
     return description;
-  }
-
-  /**
-   * Method sets attribute {@link #description}.<br/>
-   *
-   * @param pDescription Value to which {@link #description} should be set.
-   */
-  public void setDescription( String pDescription ) {
-    // Assign value to attribute
-    description = pDescription;
   }
 
   @Override

@@ -7,7 +7,6 @@ package com.anaptecs.spring.base;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
@@ -28,17 +27,19 @@ public class Leg {
    */
   public static final String STOPOVERS = "stopovers";
 
-  private PlaceRef start;
+  private final PlaceRef start;
 
-  private PlaceRef stop;
+  private final PlaceRef stop;
 
-  private List<PlaceRef> stopovers;
+  private final List<PlaceRef> stopovers;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   protected Leg( ) {
+    start = null;
+    stop = null;
     stopovers = new ArrayList<PlaceRef>();
   }
 
@@ -182,44 +183,12 @@ public class Leg {
   }
 
   /**
-   * Method sets association {@link #start}.<br/>
-   *
-   * @param pStart Value to which {@link #start} should be set.
-   */
-  public void setStart( PlaceRef pStart ) {
-    start = pStart;
-  }
-
-  /**
-   * Method unsets {@link #start}.
-   */
-  public final void unsetStart( ) {
-    start = null;
-  }
-
-  /**
    * Method returns association {@link #stop}.<br/>
    *
    * @return {@link PlaceRef} Value to which {@link #stop} is set.
    */
   public PlaceRef getStop( ) {
     return stop;
-  }
-
-  /**
-   * Method sets association {@link #stop}.<br/>
-   *
-   * @param pStop Value to which {@link #stop} should be set.
-   */
-  public void setStop( PlaceRef pStop ) {
-    stop = pStop;
-  }
-
-  /**
-   * Method unsets {@link #stop}.
-   */
-  public final void unsetStop( ) {
-    stop = null;
   }
 
   /**
@@ -231,47 +200,6 @@ public class Leg {
   public List<PlaceRef> getStopovers( ) {
     // Return all PlaceRef objects as unmodifiable collection.
     return Collections.unmodifiableList(stopovers);
-  }
-
-  /**
-   * Method adds the passed object to {@link #stopovers}.
-   *
-   * @param pStopovers Object that should be added to {@link #stopovers}. The parameter must not be null.
-   */
-  public void addToStopovers( PlaceRef pStopovers ) {
-    // Add passed object to collection of associated PlaceRef objects.
-    stopovers.add(pStopovers);
-  }
-
-  /**
-   * Method adds all passed objects to {@link #stopovers}.
-   *
-   * @param pStopovers Collection with all objects that should be added to {@link #stopovers}. The parameter must not be
-   * null.
-   */
-  public void addToStopovers( Collection<PlaceRef> pStopovers ) {
-    // Add all passed objects.
-    for (PlaceRef lNextObject : pStopovers) {
-      this.addToStopovers(lNextObject);
-    }
-  }
-
-  /**
-   * Method removes the passed object from {@link #stopovers}.<br/>
-   *
-   * @param pStopovers Object that should be removed from {@link #stopovers}. The parameter must not be null.
-   */
-  public void removeFromStopovers( PlaceRef pStopovers ) {
-    // Remove passed object from collection of associated PlaceRef objects.
-    stopovers.remove(pStopovers);
-  }
-
-  /**
-   * Method removes all objects from {@link #stopovers}.
-   */
-  public void clearStopovers( ) {
-    // Remove all objects from association "stopovers".
-    stopovers.clear();
   }
 
   @Override

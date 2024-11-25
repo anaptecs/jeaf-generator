@@ -18,15 +18,17 @@ public abstract class PlaceRef {
    */
   public static final String TYPE = "type";
 
-  private String name;
+  private final String name;
 
-  private MyType type;
+  private final MyType type;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   protected PlaceRef( ) {
+    name = null;
+    type = null;
   }
 
   /**
@@ -99,38 +101,12 @@ public abstract class PlaceRef {
   }
 
   /**
-   * Method sets attribute {@link #name}.<br/>
-   *
-   * @param pName Value to which {@link #name} should be set.
-   */
-  public void setName( String pName ) {
-    // Assign value to attribute
-    name = pName;
-  }
-
-  /**
    * Method returns association {@link #type}.<br/>
    *
    * @return {@link MyType} Value to which {@link #type} is set.
    */
   public MyType getType( ) {
     return type;
-  }
-
-  /**
-   * Method sets association {@link #type}.<br/>
-   *
-   * @param pType Value to which {@link #type} should be set.
-   */
-  public void setType( MyType pType ) {
-    type = pType;
-  }
-
-  /**
-   * Method unsets {@link #type}.
-   */
-  public final void unsetType( ) {
-    type = null;
   }
 
   @Override

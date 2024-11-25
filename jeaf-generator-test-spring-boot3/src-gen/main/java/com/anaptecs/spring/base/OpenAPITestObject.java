@@ -58,31 +58,41 @@ public class OpenAPITestObject {
    */
   public static final String NOTNULLABLEARRAY = "notNullableArray";
 
-  private String readOnlyAttribute;
+  private final String readOnlyAttribute;
 
-  private String readWriteAttribute;
+  private final String readWriteAttribute;
 
-  private int writeOnlyAttribute;
+  private final int writeOnlyAttribute;
 
-  private Boolean nullableAttribute;
+  private final Boolean nullableAttribute;
 
-  private double notNullableAttribute;
+  private final double notNullableAttribute;
 
-  private String readOnlyArray;
+  private final String readOnlyArray;
 
-  private String readWriteArray;
+  private final String readWriteArray;
 
-  private int writeOnlyArray;
+  private final int writeOnlyArray;
 
-  private double nullableArray;
+  private final double nullableArray;
 
-  private double notNullableArray;
+  private final double notNullableArray;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   protected OpenAPITestObject( ) {
+    readOnlyAttribute = null;
+    readWriteAttribute = null;
+    writeOnlyAttribute = 0;
+    nullableAttribute = null;
+    notNullableAttribute = 0;
+    readOnlyArray = null;
+    readWriteArray = null;
+    writeOnlyArray = 0;
+    nullableArray = 0;
+    notNullableArray = 0;
   }
 
   /**
@@ -346,32 +356,12 @@ public class OpenAPITestObject {
   }
 
   /**
-   * Method sets attribute {@link #readOnlyAttribute}.<br/>
-   *
-   * @param pReadOnlyAttribute Value to which {@link #readOnlyAttribute} should be set.
-   */
-  public void setReadOnlyAttribute( String pReadOnlyAttribute ) {
-    // Assign value to attribute
-    readOnlyAttribute = pReadOnlyAttribute;
-  }
-
-  /**
    * Method returns attribute {@link #readWriteAttribute}.<br/>
    *
    * @return {@link String} Value to which {@link #readWriteAttribute} is set.
    */
   public String getReadWriteAttribute( ) {
     return readWriteAttribute;
-  }
-
-  /**
-   * Method sets attribute {@link #readWriteAttribute}.<br/>
-   *
-   * @param pReadWriteAttribute Value to which {@link #readWriteAttribute} should be set.
-   */
-  public void setReadWriteAttribute( String pReadWriteAttribute ) {
-    // Assign value to attribute
-    readWriteAttribute = pReadWriteAttribute;
   }
 
   /**
@@ -384,32 +374,12 @@ public class OpenAPITestObject {
   }
 
   /**
-   * Method sets attribute {@link #writeOnlyAttribute}.<br/>
-   *
-   * @param pWriteOnlyAttribute Value to which {@link #writeOnlyAttribute} should be set.
-   */
-  public void setWriteOnlyAttribute( int pWriteOnlyAttribute ) {
-    // Assign value to attribute
-    writeOnlyAttribute = pWriteOnlyAttribute;
-  }
-
-  /**
    * Method returns attribute {@link #nullableAttribute}.<br/>
    *
    * @return {@link Boolean} Value to which {@link #nullableAttribute} is set.
    */
   public Boolean getNullableAttribute( ) {
     return nullableAttribute;
-  }
-
-  /**
-   * Method sets attribute {@link #nullableAttribute}.<br/>
-   *
-   * @param pNullableAttribute Value to which {@link #nullableAttribute} should be set.
-   */
-  public void setNullableAttribute( Boolean pNullableAttribute ) {
-    // Assign value to attribute
-    nullableAttribute = pNullableAttribute;
   }
 
   /**
@@ -422,32 +392,12 @@ public class OpenAPITestObject {
   }
 
   /**
-   * Method sets attribute {@link #notNullableAttribute}.<br/>
-   *
-   * @param pNotNullableAttribute Value to which {@link #notNullableAttribute} should be set.
-   */
-  public void setNotNullableAttribute( double pNotNullableAttribute ) {
-    // Assign value to attribute
-    notNullableAttribute = pNotNullableAttribute;
-  }
-
-  /**
    * Method returns attribute {@link #readOnlyArray}.<br/>
    *
    * @return {@link String} Value to which {@link #readOnlyArray} is set.
    */
   public String getReadOnlyArray( ) {
     return readOnlyArray;
-  }
-
-  /**
-   * Method sets attribute {@link #readOnlyArray}.<br/>
-   *
-   * @param pReadOnlyArray Value to which {@link #readOnlyArray} should be set.
-   */
-  public void setReadOnlyArray( String pReadOnlyArray ) {
-    // Assign value to attribute
-    readOnlyArray = pReadOnlyArray;
   }
 
   /**
@@ -460,32 +410,12 @@ public class OpenAPITestObject {
   }
 
   /**
-   * Method sets attribute {@link #readWriteArray}.<br/>
-   *
-   * @param pReadWriteArray Value to which {@link #readWriteArray} should be set.
-   */
-  public void setReadWriteArray( String pReadWriteArray ) {
-    // Assign value to attribute
-    readWriteArray = pReadWriteArray;
-  }
-
-  /**
    * Method returns attribute {@link #writeOnlyArray}.<br/>
    *
    * @return int Value to which {@link #writeOnlyArray} is set.
    */
   public int getWriteOnlyArray( ) {
     return writeOnlyArray;
-  }
-
-  /**
-   * Method sets attribute {@link #writeOnlyArray}.<br/>
-   *
-   * @param pWriteOnlyArray Value to which {@link #writeOnlyArray} should be set.
-   */
-  public void setWriteOnlyArray( int pWriteOnlyArray ) {
-    // Assign value to attribute
-    writeOnlyArray = pWriteOnlyArray;
   }
 
   /**
@@ -498,32 +428,12 @@ public class OpenAPITestObject {
   }
 
   /**
-   * Method sets attribute {@link #nullableArray}.<br/>
-   *
-   * @param pNullableArray Value to which {@link #nullableArray} should be set.
-   */
-  public void setNullableArray( double pNullableArray ) {
-    // Assign value to attribute
-    nullableArray = pNullableArray;
-  }
-
-  /**
    * Method returns attribute {@link #notNullableArray}.<br/>
    *
    * @return double Value to which {@link #notNullableArray} is set.
    */
   public double getNotNullableArray( ) {
     return notNullableArray;
-  }
-
-  /**
-   * Method sets attribute {@link #notNullableArray}.<br/>
-   *
-   * @param pNotNullableArray Value to which {@link #notNullableArray} should be set.
-   */
-  public void setNotNullableArray( double pNotNullableArray ) {
-    // Assign value to attribute
-    notNullableArray = pNotNullableArray;
   }
 
   @Override

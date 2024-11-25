@@ -76,6 +76,8 @@ public class TechnicalHeaderContext extends Object implements ServiceObject {
     authenticationToken = pBuilder.authenticationToken;
     // "String"
     authenticationTokenXYZ = pBuilder.authenticationTokenXYZ;
+    // Add request headers.
+    customHeaders = pBuilder.customHeaders;
   }
 
   /**
@@ -106,6 +108,11 @@ public class TechnicalHeaderContext extends Object implements ServiceObject {
     private int authenticationTokenXYZ = 0;
 
     /**
+     * Map contains all custom headers that were set on the object.
+     */
+    private Map<String, String> customHeaders = new HashMap<String, String>();
+
+    /**
      * Use {@link TechnicalHeaderContext#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
@@ -120,6 +127,7 @@ public class TechnicalHeaderContext extends Object implements ServiceObject {
         // Read attribute values from passed object.
         this.setReseller(pObject.reseller);
         this.setAuthenticationToken(pObject.authenticationToken);
+        customHeaders = new HashMap<String, String>(pObject.customHeaders);
       }
     }
 
@@ -157,6 +165,23 @@ public class TechnicalHeaderContext extends Object implements ServiceObject {
       // "String"
       authenticationTokenXYZ = value;
       return this;
+    }
+
+    /**
+     * Method adds the passed values as custom headers. The passed name and value of the http header must be compliant
+     * with guidelines about http headers.
+     *
+     * @param pHeaderName Name of the HTTP header. The parameter must not be null,
+     * @param pHeaderValue Value of the http header the parameter may be null.
+     */
+    public Builder addCustomHeader( String pHeaderName, String pHeaderValue ) {
+      if (pHeaderName != null) {
+        customHeaders.put(pHeaderName, pHeaderValue);
+        return this;
+      }
+      else {
+        throw new IllegalArgumentException("Parameter 'pHeaderName' must not be null.");
+      }
     }
     // Ooops, I also forgot to implement that for our builders ;-(
 

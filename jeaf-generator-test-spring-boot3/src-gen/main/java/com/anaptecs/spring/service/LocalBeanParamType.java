@@ -18,15 +18,17 @@ public class LocalBeanParamType {
    */
   public static final String LOCALID = "localID";
 
-  private String localKey;
+  private final String localKey;
 
-  private String localID;
+  private final String localID;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   public LocalBeanParamType( ) {
+    localKey = null;
+    localID = null;
   }
 
   /**
@@ -136,32 +138,12 @@ public class LocalBeanParamType {
   }
 
   /**
-   * Method sets attribute {@link #localKey}.<br/>
-   *
-   * @param pLocalKey Value to which {@link #localKey} should be set.
-   */
-  public void setLocalKey( String pLocalKey ) {
-    // Assign value to attribute
-    localKey = pLocalKey;
-  }
-
-  /**
    * Method returns attribute {@link #localID}.<br/>
    *
    * @return {@link String} Value to which {@link #localID} is set.
    */
   public String getLocalID( ) {
     return localID;
-  }
-
-  /**
-   * Method sets attribute {@link #localID}.<br/>
-   *
-   * @param pLocalID Value to which {@link #localID} should be set.
-   */
-  public void setLocalID( String pLocalID ) {
-    // Assign value to attribute
-    localID = pLocalID;
   }
 
   @Override

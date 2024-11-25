@@ -87,6 +87,8 @@ public class Context implements ServiceObject {
     pathParam = pBuilder.pathParam;
     queryParam = pBuilder.queryParam;
     intCode = pBuilder.intCode;
+    // Add request headers.
+    customHeaders = pBuilder.customHeaders;
   }
 
   /**
@@ -165,6 +167,11 @@ public class Context implements ServiceObject {
     private IntegerCodeType intCode;
 
     /**
+     * Map contains all custom headers that were set on the object.
+     */
+    private Map<String, String> customHeaders = new HashMap<String, String>();
+
+    /**
      * Use {@link Context#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
@@ -182,6 +189,7 @@ public class Context implements ServiceObject {
         this.setPathParam(pObject.pathParam);
         this.setQueryParam(pObject.queryParam);
         this.setIntCode(pObject.intCode);
+        customHeaders = new HashMap<String, String>(pObject.customHeaders);
       }
     }
 
@@ -255,6 +263,23 @@ public class Context implements ServiceObject {
       // Assign value to attribute
       intCode = pIntCode;
       return this;
+    }
+
+    /**
+     * Method adds the passed values as custom headers. The passed name and value of the http header must be compliant
+     * with guidelines about http headers.
+     *
+     * @param pHeaderName Name of the HTTP header. The parameter must not be null,
+     * @param pHeaderValue Value of the http header the parameter may be null.
+     */
+    public Builder addCustomHeader( String pHeaderName, String pHeaderValue ) {
+      if (pHeaderName != null) {
+        customHeaders.put(pHeaderName, pHeaderValue);
+        return this;
+      }
+      else {
+        throw new IllegalArgumentException("Parameter 'pHeaderName' must not be null.");
+      }
     }
 
     /**

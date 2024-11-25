@@ -13,13 +13,14 @@ public abstract class DataTypeCustomSerializationBase {
    */
   public static final String PROPERTY1 = "property1";
 
-  private String property1;
+  private final String property1;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   protected DataTypeCustomSerializationBase( ) {
+    property1 = null;
   }
 
   /**
@@ -86,16 +87,6 @@ public abstract class DataTypeCustomSerializationBase {
    */
   public String getProperty1( ) {
     return property1;
-  }
-
-  /**
-   * Method sets attribute {@link #property1}.<br/>
-   *
-   * @param pProperty1 Value to which {@link #property1} should be set.
-   */
-  public void setProperty1( String pProperty1 ) {
-    // Assign value to attribute
-    property1 = pProperty1;
   }
 
   @Override

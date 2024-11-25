@@ -36,17 +36,20 @@ public class AdvancedHeader {
    * <p/>
    * <b>Header-Param:</b> bookingID
    */
-  private BookingID bookingID;
+  private final BookingID bookingID;
 
-  private BookingCode bookingCode;
+  private final BookingCode bookingCode;
 
-  private DoubleCode doubleCode;
+  private final DoubleCode doubleCode;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   public AdvancedHeader( ) {
+    bookingID = null;
+    bookingCode = null;
+    doubleCode = null;
   }
 
   /**
@@ -184,16 +187,6 @@ public class AdvancedHeader {
   }
 
   /**
-   * Method sets attribute {@link #bookingID}.<br/>
-   *
-   * @param pBookingID Value to which {@link #bookingID} should be set.
-   */
-  public void setBookingID( BookingID pBookingID ) {
-    // Assign value to attribute
-    bookingID = pBookingID;
-  }
-
-  /**
    * Method returns attribute {@link #bookingCode}.<br/>
    *
    * @return {@link BookingCode} Value to which {@link #bookingCode} is set.
@@ -203,32 +196,12 @@ public class AdvancedHeader {
   }
 
   /**
-   * Method sets attribute {@link #bookingCode}.<br/>
-   *
-   * @param pBookingCode Value to which {@link #bookingCode} should be set.
-   */
-  public void setBookingCode( BookingCode pBookingCode ) {
-    // Assign value to attribute
-    bookingCode = pBookingCode;
-  }
-
-  /**
    * Method returns attribute {@link #doubleCode}.<br/>
    *
    * @return {@link DoubleCode} Value to which {@link #doubleCode} is set.
    */
   public DoubleCode getDoubleCode( ) {
     return doubleCode;
-  }
-
-  /**
-   * Method sets attribute {@link #doubleCode}.<br/>
-   *
-   * @param pDoubleCode Value to which {@link #doubleCode} should be set.
-   */
-  public void setDoubleCode( DoubleCode pDoubleCode ) {
-    // Assign value to attribute
-    doubleCode = pDoubleCode;
   }
 
   @Override

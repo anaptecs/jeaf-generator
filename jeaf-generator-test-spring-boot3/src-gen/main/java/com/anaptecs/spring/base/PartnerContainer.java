@@ -7,7 +7,6 @@ package com.anaptecs.spring.base;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
@@ -18,7 +17,7 @@ public class PartnerContainer {
    */
   public static final String PARTNERS = "partners";
 
-  private List<Partner> partners;
+  private final List<Partner> partners;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
@@ -132,47 +131,6 @@ public class PartnerContainer {
   public List<Partner> getPartners( ) {
     // Return all Partner objects as unmodifiable collection.
     return Collections.unmodifiableList(partners);
-  }
-
-  /**
-   * Method adds the passed object to {@link #partners}.
-   *
-   * @param pPartners Object that should be added to {@link #partners}. The parameter must not be null.
-   */
-  public void addToPartners( Partner pPartners ) {
-    // Add passed object to collection of associated Partner objects.
-    partners.add(pPartners);
-  }
-
-  /**
-   * Method adds all passed objects to {@link #partners}.
-   *
-   * @param pPartners Collection with all objects that should be added to {@link #partners}. The parameter must not be
-   * null.
-   */
-  public void addToPartners( Collection<Partner> pPartners ) {
-    // Add all passed objects.
-    for (Partner lNextObject : pPartners) {
-      this.addToPartners(lNextObject);
-    }
-  }
-
-  /**
-   * Method removes the passed object from {@link #partners}.<br/>
-   *
-   * @param pPartners Object that should be removed from {@link #partners}. The parameter must not be null.
-   */
-  public void removeFromPartners( Partner pPartners ) {
-    // Remove passed object from collection of associated Partner objects.
-    partners.remove(pPartners);
-  }
-
-  /**
-   * Method removes all objects from {@link #partners}.
-   */
-  public void clearPartners( ) {
-    // Remove all objects from association "partners".
-    partners.clear();
   }
 
   @Override

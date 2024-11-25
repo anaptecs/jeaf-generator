@@ -17,13 +17,14 @@ public abstract class ChildA extends ParentClass {
    */
   public static final String CHILDAATTRIBUTE = "childAAttribute";
 
-  private int childAAttribute;
+  private final int childAAttribute;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   protected ChildA( ) {
+    childAAttribute = 0;
   }
 
   /**
@@ -95,16 +96,6 @@ public abstract class ChildA extends ParentClass {
    */
   public int getChildAAttribute( ) {
     return childAAttribute;
-  }
-
-  /**
-   * Method sets attribute {@link #childAAttribute}.<br/>
-   *
-   * @param pChildAAttribute Value to which {@link #childAAttribute} should be set.
-   */
-  public void setChildAAttribute( int pChildAAttribute ) {
-    // Assign value to attribute
-    childAAttribute = pChildAAttribute;
   }
 
   @Override

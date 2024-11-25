@@ -16,7 +16,7 @@ public class BidirectB {
   /**
    * the A
    */
-  private BidirectA a;
+  private final BidirectA a;
 
   /**
    * Attribute is required for correct handling of bidirectional associations in case of deserialization.
@@ -28,6 +28,7 @@ public class BidirectB {
    * object creation builder should be used instead.
    */
   protected BidirectB( ) {
+    a = null;
     // Bidirectional back reference is not yet set up correctly
     aBackReferenceInitialized = false;
   }
@@ -131,38 +132,6 @@ public class BidirectB {
       a.addToTransientBs((BidirectB) this);
     }
     return a;
-  }
-
-  /**
-   * Method sets association {@link #a}.<br/>
-   * the A
-   *
-   * @param pA Value to which {@link #a} should be set.
-   */
-  public void setA( BidirectA pA ) {
-    // Release already referenced object before setting a new association.
-    if (a != null) {
-      a.removeFromTransientBs((BidirectB) this);
-    }
-    a = pA;
-    // The association is set in both directions because within the UML model it is defined to be bidirectional.
-    // In case that one side will be removed from the association the other side will also be removed.
-    if (pA != null && pA.getTransientBs().contains(this) == false) {
-      pA.addToTransientBs((BidirectB) this);
-    }
-  }
-
-  /**
-   * Method unsets {@link #a}.
-   */
-  public final void unsetA( ) {
-    // The association is set in both directions because within the UML model it is defined to be bidirectional.
-    // In case that one side will be removed from the association the other side will also be removed.
-    BidirectA lBidirectA = a;
-    a = null;
-    if (lBidirectA != null && lBidirectA.getTransientBs().contains(this) == true) {
-      lBidirectA.removeFromTransientBs((BidirectB) this);
-    }
   }
 
   @Override

@@ -13,13 +13,14 @@ public class IntegerCodeType {
    */
   public static final String CODE = "code";
 
-  private int code;
+  private final int code;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   protected IntegerCodeType( ) {
+    code = 0;
   }
 
   /**
@@ -93,16 +94,6 @@ public class IntegerCodeType {
    */
   public int getCode( ) {
     return code;
-  }
-
-  /**
-   * Method sets attribute {@link #code}.<br/>
-   *
-   * @param pCode Value to which {@link #code} should be set.
-   */
-  public void setCode( int pCode ) {
-    // Assign value to attribute
-    code = pCode;
   }
 
   @Override

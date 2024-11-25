@@ -237,13 +237,17 @@ public class SpringRESTServiceProxyTest {
 
   @Test
   void testTechnicalHeaders( ) {
-    TechnicalHeaderContext lContext = TechnicalHeaderContext.builder().build();
-    lContext.addCustomHeader("Custom-Header", "XYZ");
+    TechnicalHeaderContext lContext = TechnicalHeaderContext.builder()
+        .addCustomHeader("Custom-Header", "XYZ")
+        .build();
     String lResult = theRealProductService.testTechnicalHeaderBean(lContext);
     assertEquals(null, lResult);
 
     try {
-      lContext.addCustomHeader("Custom-Header", "XYZ1");
+      lContext = TechnicalHeaderContext.builder()
+          .addCustomHeader("Custom-Header", "XYZ1")
+          .build();
+
       theRealProductService.testTechnicalHeaderBean(lContext);
       fail();
     }

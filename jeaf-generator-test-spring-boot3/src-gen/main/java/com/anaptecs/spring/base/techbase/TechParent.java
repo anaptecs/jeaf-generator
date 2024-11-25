@@ -13,13 +13,14 @@ public class TechParent {
    */
   public static final String TECHATTRIBUTE = "techAttribute";
 
-  private String techAttribute;
+  private final String techAttribute;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   protected TechParent( ) {
+    techAttribute = null;
   }
 
   /**
@@ -106,16 +107,6 @@ public class TechParent {
    */
   public String getTechAttribute( ) {
     return techAttribute;
-  }
-
-  /**
-   * Method sets attribute {@link #techAttribute}.<br/>
-   *
-   * @param pTechAttribute Value to which {@link #techAttribute} should be set.
-   */
-  public void setTechAttribute( String pTechAttribute ) {
-    // Assign value to attribute
-    techAttribute = pTechAttribute;
   }
 
   @Override

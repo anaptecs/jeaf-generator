@@ -6,7 +6,6 @@
 package com.anaptecs.spring.base;
 
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Objects;
@@ -38,18 +37,19 @@ public class ChildB extends ParentClass {
    * A child attribute
    */
   @Size(min = 11, max = 42)
-  private boolean[] childBAttribute;
+  private final boolean[] childBAttribute;
 
   /**
    * the composition
    */
-  private Set<ParentClass> composition;
+  private final Set<ParentClass> composition;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   protected ChildB( ) {
+    childBAttribute = null;
     composition = new HashSet<ParentClass>();
   }
 
@@ -215,23 +215,6 @@ public class ChildB extends ParentClass {
   }
 
   /**
-   * Method sets attribute {@link #childBAttribute}.<br/>
-   * A child attribute
-   *
-   * @param pChildBAttribute Value to which {@link #childBAttribute} should be set.
-   */
-  public void setChildBAttribute( boolean[] pChildBAttribute ) {
-    // Assign value to attribute
-    if (pChildBAttribute != null) {
-      childBAttribute = new boolean[pChildBAttribute.length];
-      System.arraycopy(pChildBAttribute, 0, childBAttribute, 0, pChildBAttribute.length);
-    }
-    else {
-      childBAttribute = null;
-    }
-  }
-
-  /**
    * Method returns association {@link #composition}.<br/>
    * the composition
    *
@@ -241,47 +224,6 @@ public class ChildB extends ParentClass {
   public Set<ParentClass> getComposition( ) {
     // Return all ParentClass objects as unmodifiable collection.
     return Collections.unmodifiableSet(composition);
-  }
-
-  /**
-   * Method adds the passed object to {@link #composition}.
-   *
-   * @param pComposition Object that should be added to {@link #composition}. The parameter must not be null.
-   */
-  public void addToComposition( ParentClass pComposition ) {
-    // Add passed object to collection of associated ParentClass objects.
-    composition.add(pComposition);
-  }
-
-  /**
-   * Method adds all passed objects to {@link #composition}.
-   *
-   * @param pComposition Collection with all objects that should be added to {@link #composition}. The parameter must
-   * not be null.
-   */
-  public void addToComposition( Collection<ParentClass> pComposition ) {
-    // Add all passed objects.
-    for (ParentClass lNextObject : pComposition) {
-      this.addToComposition(lNextObject);
-    }
-  }
-
-  /**
-   * Method removes the passed object from {@link #composition}.<br/>
-   *
-   * @param pComposition Object that should be removed from {@link #composition}. The parameter must not be null.
-   */
-  public void removeFromComposition( ParentClass pComposition ) {
-    // Remove passed object from collection of associated ParentClass objects.
-    composition.remove(pComposition);
-  }
-
-  /**
-   * Method removes all objects from {@link #composition}.
-   */
-  public void clearComposition( ) {
-    // Remove all objects from association "composition".
-    composition.clear();
   }
 
   @Override

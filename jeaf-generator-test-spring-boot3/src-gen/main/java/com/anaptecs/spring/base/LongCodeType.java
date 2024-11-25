@@ -13,13 +13,14 @@ public class LongCodeType {
    */
   public static final String CODE = "code";
 
-  private long code;
+  private final long code;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   protected LongCodeType( ) {
+    code = 0;
   }
 
   /**
@@ -93,16 +94,6 @@ public class LongCodeType {
    */
   public long getCode( ) {
     return code;
-  }
-
-  /**
-   * Method sets attribute {@link #code}.<br/>
-   *
-   * @param pCode Value to which {@link #code} should be set.
-   */
-  public void setCode( long pCode ) {
-    // Assign value to attribute
-    code = pCode;
   }
 
   @Override

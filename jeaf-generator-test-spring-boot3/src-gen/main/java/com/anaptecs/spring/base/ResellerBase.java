@@ -7,10 +7,8 @@ package com.anaptecs.spring.base;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
@@ -43,14 +41,14 @@ public abstract class ResellerBase {
    */
   public static final String LANGUAGE = "language";
 
-  private List<Channel> channels;
+  private final List<Channel> channels;
 
   /**
    * Attribute is required for correct handling of bidirectional associations in case of deserialization.
    */
   private transient boolean channelsBackReferenceInitialized;
 
-  private transient Set<Product> products;
+  private final transient Set<Product> products;
 
   /**
    * <br/>
@@ -60,9 +58,9 @@ public abstract class ResellerBase {
 
   @NotBlank
   @Size(min = 0, max = 32)
-  private String name;
+  private final String name;
 
-  private Locale language;
+  private final Locale language;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
@@ -73,6 +71,8 @@ public abstract class ResellerBase {
     // Bidirectional back reference is not yet set up correctly
     channelsBackReferenceInitialized = false;
     products = new HashSet<Product>();
+    name = null;
+    language = null;
   }
 
   /**
@@ -213,65 +213,6 @@ public abstract class ResellerBase {
   }
 
   /**
-   * Method adds the passed object to {@link #channels}.
-   *
-   * @param pChannels Object that should be added to {@link #channels}. The parameter must not be null.
-   */
-  public void addToChannels( Channel pChannels ) {
-    // Since this is not a many-to-many association the association to which the passed object belongs, has to be
-    // released.
-    pChannels.unsetReseller();
-    // Add passed object to collection of associated Channel objects.
-    channels.add(pChannels);
-    // The association is set in both directions because within the UML model it is defined to be bidirectional.
-    // In case that one side will be removed from the association the other side will also be removed.
-    if (pChannels != null && this.equals(pChannels.getReseller()) == false) {
-      pChannels.setReseller((Reseller) this);
-    }
-  }
-
-  /**
-   * Method adds all passed objects to {@link #channels}.
-   *
-   * @param pChannels Collection with all objects that should be added to {@link #channels}. The parameter must not be
-   * null.
-   */
-  public void addToChannels( Collection<Channel> pChannels ) {
-    // Add all passed objects.
-    for (Channel lNextObject : pChannels) {
-      this.addToChannels(lNextObject);
-    }
-  }
-
-  /**
-   * Method removes the passed object from {@link #channels}.<br/>
-   *
-   * @param pChannels Object that should be removed from {@link #channels}. The parameter must not be null.
-   */
-  public void removeFromChannels( Channel pChannels ) {
-    // Remove passed object from collection of associated Channel objects.
-    channels.remove(pChannels);
-    // The association is set in both directions because within the UML model it is defined to be bidirectional.
-    // In case that one side will be removed from the association the other side will also be removed.
-    if (this.equals(pChannels.getReseller()) == true) {
-      pChannels.unsetReseller();
-    }
-  }
-
-  /**
-   * Method removes all objects from {@link #channels}.
-   */
-  public void clearChannels( ) {
-    // Remove all objects from association "channels".
-    Collection<Channel> lChannels = new HashSet<Channel>(channels);
-    Iterator<Channel> lIterator = lChannels.iterator();
-    while (lIterator.hasNext()) {
-      // As association is bidirectional we have to clear it in both directions.
-      this.removeFromChannels(lIterator.next());
-    }
-  }
-
-  /**
    * Method returns association {@link #products}.<br/>
    *
    * @return {@link Set<Product>} Value to which {@link #products} is set. The method never returns null and the
@@ -293,42 +234,6 @@ public abstract class ResellerBase {
   }
 
   /**
-   * Method adds all passed objects to {@link #products}.
-   *
-   * @param pProducts Collection with all objects that should be added to {@link #products}. The parameter must not be
-   * null.
-   */
-  void addToProducts( Collection<Product> pProducts ) {
-    // Add all passed objects.
-    for (Product lNextObject : pProducts) {
-      this.addToProducts(lNextObject);
-    }
-  }
-
-  /**
-   * Method removes the passed object from {@link #products}.<br/>
-   *
-   * @param pProducts Object that should be removed from {@link #products}. The parameter must not be null.
-   */
-  void removeFromProducts( Product pProducts ) {
-    // Remove passed object from collection of associated Product objects.
-    products.remove(pProducts);
-  }
-
-  /**
-   * Method removes all objects from {@link #products}.
-   */
-  void clearProducts( ) {
-    // Remove all objects from association "products".
-    Collection<Product> lProducts = new HashSet<Product>(products);
-    Iterator<Product> lIterator = lProducts.iterator();
-    while (lIterator.hasNext()) {
-      // As association is bidirectional we have to clear it in both directions.
-      this.removeFromProducts(lIterator.next());
-    }
-  }
-
-  /**
    * Method returns attribute {@link #name}.<br/>
    *
    * @return {@link String} Value to which {@link #name} is set.
@@ -338,32 +243,12 @@ public abstract class ResellerBase {
   }
 
   /**
-   * Method sets attribute {@link #name}.<br/>
-   *
-   * @param pName Value to which {@link #name} should be set.
-   */
-  public void setName( String pName ) {
-    // Assign value to attribute
-    name = pName;
-  }
-
-  /**
    * Method returns attribute {@link #language}.<br/>
    *
    * @return {@link Locale} Value to which {@link #language} is set.
    */
   public Locale getLanguage( ) {
     return language;
-  }
-
-  /**
-   * Method sets attribute {@link #language}.<br/>
-   *
-   * @param pLanguage Value to which {@link #language} should be set.
-   */
-  public void setLanguage( Locale pLanguage ) {
-    // Assign value to attribute
-    language = pLanguage;
   }
 
   /**

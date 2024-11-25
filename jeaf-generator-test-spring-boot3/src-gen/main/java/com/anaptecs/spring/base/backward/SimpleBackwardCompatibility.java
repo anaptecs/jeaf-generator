@@ -19,13 +19,14 @@ public class SimpleBackwardCompatibility {
    */
   public static final String SUCCESSORPROPERTY = "successorProperty";
 
-  private String successorProperty;
+  private final String successorProperty;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   protected SimpleBackwardCompatibility( ) {
+    successorProperty = null;
   }
 
   /**
@@ -136,34 +137,12 @@ public class SimpleBackwardCompatibility {
   }
 
   /**
-   * Method sets attribute {@link #deprecatedProperty}.<br/>
-   * a comment
-   *
-   * @param pDeprecatedProperty Value to which {@link #deprecatedProperty} should be set.
-   */
-  @Deprecated
-  public void setDeprecatedProperty( String pDeprecatedProperty ) {
-    // Delegate call to setSuccessorProperty(...)
-    this.setSuccessorProperty(pDeprecatedProperty);
-  }
-
-  /**
    * Method returns attribute {@link #successorProperty}.<br/>
    *
    * @return {@link String} Value to which {@link #successorProperty} is set.
    */
   public String getSuccessorProperty( ) {
     return successorProperty;
-  }
-
-  /**
-   * Method sets attribute {@link #successorProperty}.<br/>
-   *
-   * @param pSuccessorProperty Value to which {@link #successorProperty} should be set.
-   */
-  public void setSuccessorProperty( String pSuccessorProperty ) {
-    // Assign value to attribute
-    successorProperty = pSuccessorProperty;
   }
 
   @Override

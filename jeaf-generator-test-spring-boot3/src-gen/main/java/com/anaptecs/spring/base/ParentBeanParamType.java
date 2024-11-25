@@ -32,9 +32,9 @@ public class ParentBeanParamType {
    * <p/>
    * <b>Header-Param:</b> novaKey
    */
-  private String novaKey;
+  private final String novaKey;
 
-  private String tkID;
+  private final String tkID;
 
   /**
    * <br/>
@@ -45,13 +45,16 @@ public class ParentBeanParamType {
    * <p/>
    * <b>Header-Param:</b> code
    */
-  private DoubleCode code;
+  private final DoubleCode code;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   public ParentBeanParamType( ) {
+    novaKey = null;
+    tkID = null;
+    code = null;
   }
 
   /**
@@ -199,16 +202,6 @@ public class ParentBeanParamType {
   }
 
   /**
-   * Method sets attribute {@link #novaKey}.<br/>
-   *
-   * @param pNovaKey Value to which {@link #novaKey} should be set.
-   */
-  public void setNovaKey( String pNovaKey ) {
-    // Assign value to attribute
-    novaKey = pNovaKey;
-  }
-
-  /**
    * Method returns attribute {@link #tkID}.<br/>
    *
    * @return {@link String} Value to which {@link #tkID} is set.
@@ -218,32 +211,12 @@ public class ParentBeanParamType {
   }
 
   /**
-   * Method sets attribute {@link #tkID}.<br/>
-   *
-   * @param pTkID Value to which {@link #tkID} should be set.
-   */
-  public void setTkID( String pTkID ) {
-    // Assign value to attribute
-    tkID = pTkID;
-  }
-
-  /**
    * Method returns attribute {@link #code}.<br/>
    *
    * @return {@link DoubleCode} Value to which {@link #code} is set.
    */
   public DoubleCode getCode( ) {
     return code;
-  }
-
-  /**
-   * Method sets attribute {@link #code}.<br/>
-   *
-   * @param pCode Value to which {@link #code} should be set.
-   */
-  public void setCode( DoubleCode pCode ) {
-    // Assign value to attribute
-    code = pCode;
   }
 
   @Override

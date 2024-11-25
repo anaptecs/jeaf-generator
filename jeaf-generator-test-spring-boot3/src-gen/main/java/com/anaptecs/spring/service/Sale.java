@@ -21,15 +21,17 @@ public class Sale {
    */
   public static final String SALE = "sale";
 
-  private BigDecimal transactionAmount;
+  private final BigDecimal transactionAmount;
 
-  private Channel sale;
+  private final Channel sale;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   protected Sale( ) {
+    transactionAmount = null;
+    sale = null;
   }
 
   /**
@@ -134,38 +136,12 @@ public class Sale {
   }
 
   /**
-   * Method sets attribute {@link #transactionAmount}.<br/>
-   *
-   * @param pTransactionAmount Value to which {@link #transactionAmount} should be set.
-   */
-  public void setTransactionAmount( BigDecimal pTransactionAmount ) {
-    // Assign value to attribute
-    transactionAmount = pTransactionAmount;
-  }
-
-  /**
    * Method returns association {@link #sale}.<br/>
    *
    * @return {@link Channel} Value to which {@link #sale} is set.
    */
   public Channel getSale( ) {
     return sale;
-  }
-
-  /**
-   * Method sets association {@link #sale}.<br/>
-   *
-   * @param pSale Value to which {@link #sale} should be set.
-   */
-  public void setSale( Channel pSale ) {
-    sale = pSale;
-  }
-
-  /**
-   * Method unsets {@link #sale}.
-   */
-  public final void unsetSale( ) {
-    sale = null;
   }
 
   @Override

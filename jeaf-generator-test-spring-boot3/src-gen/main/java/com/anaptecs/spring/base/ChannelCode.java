@@ -30,7 +30,7 @@ public class ChannelCode {
    * </ul>
    */
   @NotNull
-  private String code;
+  private final String code;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
@@ -121,17 +121,6 @@ public class ChannelCode {
    */
   public String getCode( ) {
     return code;
-  }
-
-  /**
-   * Method sets attribute {@link #code}.<br/>
-   * channel code
-   *
-   * @param pCode Value to which {@link #code} should be set.
-   */
-  public void setCode( String pCode ) {
-    // Assign value to attribute
-    code = pCode;
   }
 
   @Override

@@ -33,7 +33,7 @@ public class DeprecatedContext {
   public static final String QUERYPARAM = "queryParam";
 
   @NotEmpty
-  private String accessToken;
+  private final String accessToken;
 
   /**
    * <br/>
@@ -44,17 +44,21 @@ public class DeprecatedContext {
    * <p/>
    * <b>Header-Param:</b> lang
    */
-  private Locale language;
+  private final Locale language;
 
-  private long resellerID;
+  private final long resellerID;
 
-  private String queryParam;
+  private final String queryParam;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   public DeprecatedContext( ) {
+    accessToken = null;
+    language = null;
+    resellerID = 0;
+    queryParam = null;
   }
 
   /**
@@ -213,32 +217,12 @@ public class DeprecatedContext {
   }
 
   /**
-   * Method sets attribute {@link #accessToken}.<br/>
-   *
-   * @param pAccessToken Value to which {@link #accessToken} should be set.
-   */
-  public void setAccessToken( String pAccessToken ) {
-    // Assign value to attribute
-    accessToken = pAccessToken;
-  }
-
-  /**
    * Method returns attribute {@link #language}.<br/>
    *
    * @return {@link Locale} Value to which {@link #language} is set.
    */
   public Locale getLanguage( ) {
     return language;
-  }
-
-  /**
-   * Method sets attribute {@link #language}.<br/>
-   *
-   * @param pLanguage Value to which {@link #language} should be set.
-   */
-  public void setLanguage( Locale pLanguage ) {
-    // Assign value to attribute
-    language = pLanguage;
   }
 
   /**
@@ -251,32 +235,12 @@ public class DeprecatedContext {
   }
 
   /**
-   * Method sets attribute {@link #resellerID}.<br/>
-   *
-   * @param pResellerID Value to which {@link #resellerID} should be set.
-   */
-  public void setResellerID( long pResellerID ) {
-    // Assign value to attribute
-    resellerID = pResellerID;
-  }
-
-  /**
    * Method returns attribute {@link #queryParam}.<br/>
    *
    * @return {@link String} Value to which {@link #queryParam} is set.
    */
   public String getQueryParam( ) {
     return queryParam;
-  }
-
-  /**
-   * Method sets attribute {@link #queryParam}.<br/>
-   *
-   * @param pQueryParam Value to which {@link #queryParam} should be set.
-   */
-  public void setQueryParam( String pQueryParam ) {
-    // Assign value to attribute
-    queryParam = pQueryParam;
   }
 
   @Override
