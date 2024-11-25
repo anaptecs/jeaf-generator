@@ -13,13 +13,14 @@ public abstract class DataTypeWithDerivedPropertyBase {
    */
   public static final String PROPERTY = "property";
 
-  private int property;
+  private final int property;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   protected DataTypeWithDerivedPropertyBase( ) {
+    property = 0;
   }
 
   /**
@@ -86,16 +87,6 @@ public abstract class DataTypeWithDerivedPropertyBase {
    */
   public int getProperty( ) {
     return property;
-  }
-
-  /**
-   * Method sets attribute {@link #property}.<br/>
-   *
-   * @param pProperty Value to which {@link #property} should be set.
-   */
-  public void setProperty( int pProperty ) {
-    // Assign value to attribute
-    property = pProperty;
   }
 
   /**

@@ -11,13 +11,14 @@ public abstract class AbstractWithCustomImplBase {
    */
   public static final String JUSTAPROPERTY = "justAProperty";
 
-  private int justAProperty;
+  private final int justAProperty;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   protected AbstractWithCustomImplBase( ) {
+    justAProperty = 0;
   }
 
   /**
@@ -74,16 +75,6 @@ public abstract class AbstractWithCustomImplBase {
    */
   public int getJustAProperty( ) {
     return justAProperty;
-  }
-
-  /**
-   * Method sets attribute {@link #justAProperty}.<br/>
-   *
-   * @param pJustAProperty Value to which {@link #justAProperty} should be set.
-   */
-  public void setJustAProperty( int pJustAProperty ) {
-    // Assign value to attribute
-    justAProperty = pJustAProperty;
   }
 
   @Override

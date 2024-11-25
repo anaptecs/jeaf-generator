@@ -30,9 +30,9 @@ public abstract class SoftLinkBase {
 
   private final long objectID;
 
-  private DataUnit dataUnit;
+  private final DataUnit dataUnit;
 
-  private Entity entity;
+  private final Entity entity;
 
   private final String refrenceID;
 
@@ -42,6 +42,8 @@ public abstract class SoftLinkBase {
    */
   protected SoftLinkBase( ) {
     objectID = 0;
+    dataUnit = null;
+    entity = null;
     refrenceID = null;
   }
 
@@ -165,44 +167,12 @@ public abstract class SoftLinkBase {
   }
 
   /**
-   * Method sets association {@link #dataUnit}.<br/>
-   *
-   * @param pDataUnit Value to which {@link #dataUnit} should be set.
-   */
-  public void setDataUnit( DataUnit pDataUnit ) {
-    dataUnit = pDataUnit;
-  }
-
-  /**
-   * Method unsets {@link #dataUnit}.
-   */
-  public final void unsetDataUnit( ) {
-    dataUnit = null;
-  }
-
-  /**
    * Method returns association {@link #entity}.<br/>
    *
    * @return {@link Entity} Value to which {@link #entity} is set.
    */
   public Entity getEntity( ) {
     return entity;
-  }
-
-  /**
-   * Method sets association {@link #entity}.<br/>
-   *
-   * @param pEntity Value to which {@link #entity} should be set.
-   */
-  public void setEntity( Entity pEntity ) {
-    entity = pEntity;
-  }
-
-  /**
-   * Method unsets {@link #entity}.
-   */
-  public final void unsetEntity( ) {
-    entity = null;
   }
 
   /**

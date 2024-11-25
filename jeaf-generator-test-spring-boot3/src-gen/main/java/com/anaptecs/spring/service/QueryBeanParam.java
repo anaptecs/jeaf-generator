@@ -20,19 +20,20 @@ public class QueryBeanParam {
    */
   public static final String MAXRESULTS = "maxResults";
 
-  private BookingCode bookingCode;
+  private final BookingCode bookingCode;
 
   /**
    * <br/>
    * <b>Default Value:</b> <code>47</code>
    */
-  private int maxResults;
+  private final int maxResults;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   public QueryBeanParam( ) {
+    bookingCode = null;
     maxResults = 47;
   }
 
@@ -147,32 +148,12 @@ public class QueryBeanParam {
   }
 
   /**
-   * Method sets attribute {@link #bookingCode}.<br/>
-   *
-   * @param pBookingCode Value to which {@link #bookingCode} should be set.
-   */
-  public void setBookingCode( BookingCode pBookingCode ) {
-    // Assign value to attribute
-    bookingCode = pBookingCode;
-  }
-
-  /**
    * Method returns attribute {@link #maxResults}.<br/>
    *
    * @return int Value to which {@link #maxResults} is set.
    */
   public int getMaxResults( ) {
     return maxResults;
-  }
-
-  /**
-   * Method sets attribute {@link #maxResults}.<br/>
-   *
-   * @param pMaxResults Value to which {@link #maxResults} should be set.
-   */
-  public void setMaxResults( int pMaxResults ) {
-    // Assign value to attribute
-    maxResults = pMaxResults;
   }
 
   @Override

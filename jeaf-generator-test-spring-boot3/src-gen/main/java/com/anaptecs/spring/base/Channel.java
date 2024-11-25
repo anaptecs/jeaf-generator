@@ -37,12 +37,12 @@ public class Channel {
   /**
    * Type of the channel
    */
-  private ChannelType channelType;
+  private final ChannelType channelType;
 
   /**
    * The business code of the channel
    */
-  private ChannelCode channelCode;
+  private final ChannelCode channelCode;
 
   private final int code;
 
@@ -60,8 +60,11 @@ public class Channel {
    * object creation builder should be used instead.
    */
   protected Channel( ) {
+    channelType = null;
+    channelCode = null;
     code = 0;
     selfServiceChannel = true;
+    reseller = null;
   }
 
   /**
@@ -98,7 +101,7 @@ public class Channel {
    *
    * @param pSelfServiceChannel Value to which {@link #selfServiceChannel} should be set.
    *
-   * @return {@link Channel}
+   * @return {@link com.anaptecs.spring.base.Channel}
    */
   public static Channel of( ChannelType pChannelType, ChannelCode pChannelCode, int pCode,
       boolean pSelfServiceChannel ) {
@@ -220,23 +223,6 @@ public class Channel {
   }
 
   /**
-   * Method sets association {@link #channelType}.<br/>
-   * Type of the channel
-   *
-   * @param pChannelType Value to which {@link #channelType} should be set.
-   */
-  public void setChannelType( ChannelType pChannelType ) {
-    channelType = pChannelType;
-  }
-
-  /**
-   * Method unsets {@link #channelType}.
-   */
-  public final void unsetChannelType( ) {
-    channelType = null;
-  }
-
-  /**
    * Method returns association {@link #channelCode}.<br/>
    * The business code of the channel
    *
@@ -244,23 +230,6 @@ public class Channel {
    */
   public ChannelCode getChannelCode( ) {
     return channelCode;
-  }
-
-  /**
-   * Method sets association {@link #channelCode}.<br/>
-   * The business code of the channel
-   *
-   * @param pChannelCode Value to which {@link #channelCode} should be set.
-   */
-  public void setChannelCode( ChannelCode pChannelCode ) {
-    channelCode = pChannelCode;
-  }
-
-  /**
-   * Method unsets {@link #channelCode}.
-   */
-  public final void unsetChannelCode( ) {
-    channelCode = null;
   }
 
   /**
@@ -307,18 +276,7 @@ public class Channel {
    * @param pReseller Value to which {@link #reseller} should be set.
    */
   void setReseller( Reseller pReseller ) {
-    // Release already referenced object before setting a new association.
-    if (reseller != null) {
-      reseller.removeFromChannels((Channel) this);
-    }
     reseller = pReseller;
-  }
-
-  /**
-   * Method unsets {@link #reseller}.
-   */
-  final void unsetReseller( ) {
-    reseller = null;
   }
 
   @Override

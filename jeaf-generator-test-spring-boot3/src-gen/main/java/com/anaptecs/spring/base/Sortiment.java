@@ -6,10 +6,8 @@
 package com.anaptecs.spring.base;
 
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Objects;
 import java.util.Set;
 
@@ -19,7 +17,7 @@ public class Sortiment {
    */
   public static final String PRODUCTS = "products";
 
-  private Set<Product> products;
+  private final Set<Product> products;
 
   /**
    * Attribute is required for correct handling of bidirectional associations in case of deserialization.
@@ -153,62 +151,6 @@ public class Sortiment {
     }
     // Return all Product objects as unmodifiable collection.
     return Collections.unmodifiableSet(products);
-  }
-
-  /**
-   * Method adds the passed object to {@link #products}.
-   *
-   * @param pProducts Object that should be added to {@link #products}. The parameter must not be null.
-   */
-  public void addToProducts( Product pProducts ) {
-    // Add passed object to collection of associated Product objects.
-    products.add(pProducts);
-    // The association is set in both directions because within the UML model it is defined to be bidirectional.
-    // In case that one side will be removed from the association the other side will also be removed.
-    if (pProducts != null && pProducts.getSortiments().contains(this) == false) {
-      pProducts.addToSortiments((Sortiment) this);
-    }
-  }
-
-  /**
-   * Method adds all passed objects to {@link #products}.
-   *
-   * @param pProducts Collection with all objects that should be added to {@link #products}. The parameter must not be
-   * null.
-   */
-  public void addToProducts( Collection<Product> pProducts ) {
-    // Add all passed objects.
-    for (Product lNextObject : pProducts) {
-      this.addToProducts(lNextObject);
-    }
-  }
-
-  /**
-   * Method removes the passed object from {@link #products}.<br/>
-   *
-   * @param pProducts Object that should be removed from {@link #products}. The parameter must not be null.
-   */
-  public void removeFromProducts( Product pProducts ) {
-    // Remove passed object from collection of associated Product objects.
-    products.remove(pProducts);
-    // The association is set in both directions because within the UML model it is defined to be bidirectional.
-    // In case that one side will be removed from the association the other side will also be removed.
-    if (pProducts.getSortiments().contains(this) == true) {
-      pProducts.removeFromSortiments((Sortiment) this);
-    }
-  }
-
-  /**
-   * Method removes all objects from {@link #products}.
-   */
-  public void clearProducts( ) {
-    // Remove all objects from association "products".
-    Collection<Product> lProducts = new HashSet<Product>(products);
-    Iterator<Product> lIterator = lProducts.iterator();
-    while (lIterator.hasNext()) {
-      // As association is bidirectional we have to clear it in both directions.
-      this.removeFromProducts(lIterator.next());
-    }
   }
 
   @Override

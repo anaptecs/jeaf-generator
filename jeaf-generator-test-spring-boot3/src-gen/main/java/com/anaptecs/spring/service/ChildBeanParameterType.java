@@ -16,13 +16,14 @@ public class ChildBeanParameterType extends ParentBeanParamType {
    */
   public static final String CHILDPROPERTY = "childProperty";
 
-  private String childProperty;
+  private final String childProperty;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   public ChildBeanParameterType( ) {
+    childProperty = null;
   }
 
   /**
@@ -163,16 +164,6 @@ public class ChildBeanParameterType extends ParentBeanParamType {
    */
   public String getChildProperty( ) {
     return childProperty;
-  }
-
-  /**
-   * Method sets attribute {@link #childProperty}.<br/>
-   *
-   * @param pChildProperty Value to which {@link #childProperty} should be set.
-   */
-  public void setChildProperty( String pChildProperty ) {
-    // Assign value to attribute
-    childProperty = pChildProperty;
   }
 
   @Override

@@ -22,15 +22,17 @@ public abstract class PersonBase extends Partner {
    */
   public static final String FIRSTNAME = "firstName";
 
-  private String surname;
+  private final String surname;
 
-  private String firstName;
+  private final String firstName;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   protected PersonBase( ) {
+    surname = null;
+    firstName = null;
   }
 
   /**
@@ -142,32 +144,12 @@ public abstract class PersonBase extends Partner {
   }
 
   /**
-   * Method sets attribute {@link #surname}.<br/>
-   *
-   * @param pSurname Value to which {@link #surname} should be set.
-   */
-  public void setSurname( String pSurname ) {
-    // Assign value to attribute
-    surname = pSurname;
-  }
-
-  /**
    * Method returns attribute {@link #firstName}.<br/>
    *
    * @return {@link String} Value to which {@link #firstName} is set.
    */
   public String getFirstName( ) {
     return firstName;
-  }
-
-  /**
-   * Method sets attribute {@link #firstName}.<br/>
-   *
-   * @param pFirstName Value to which {@link #firstName} should be set.
-   */
-  public void setFirstName( String pFirstName ) {
-    // Assign value to attribute
-    firstName = pFirstName;
   }
 
   /**

@@ -31,18 +31,21 @@ public class ChildAA extends ChildA {
    * line<br/>
    * docs
    */
-  private byte childAAAttribute;
+  private final byte childAAAttribute;
 
   @Size(min = 10, max = 100)
-  private int[] sizedArray;
+  private final int[] sizedArray;
 
-  private String[] requiredArray;
+  private final String[] requiredArray;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   protected ChildAA( ) {
+    childAAAttribute = 0;
+    sizedArray = null;
+    requiredArray = null;
   }
 
   /**
@@ -226,19 +229,6 @@ public class ChildAA extends ChildA {
   }
 
   /**
-   * Method sets attribute {@link #childAAAttribute}.<br/>
-   * Multi<br/>
-   * line<br/>
-   * docs
-   *
-   * @param pChildAAAttribute Value to which {@link #childAAAttribute} should be set.
-   */
-  public void setChildAAAttribute( byte pChildAAAttribute ) {
-    // Assign value to attribute
-    childAAAttribute = pChildAAAttribute;
-  }
-
-  /**
    * Method returns attribute {@link #sizedArray}.<br/>
    *
    * @return int[] Value to which {@link #sizedArray} is set.
@@ -256,22 +246,6 @@ public class ChildAA extends ChildA {
   }
 
   /**
-   * Method sets attribute {@link #sizedArray}.<br/>
-   *
-   * @param pSizedArray Value to which {@link #sizedArray} should be set.
-   */
-  public void setSizedArray( int[] pSizedArray ) {
-    // Assign value to attribute
-    if (pSizedArray != null) {
-      sizedArray = new int[pSizedArray.length];
-      System.arraycopy(pSizedArray, 0, sizedArray, 0, pSizedArray.length);
-    }
-    else {
-      sizedArray = null;
-    }
-  }
-
-  /**
    * Method returns attribute {@link #requiredArray}.<br/>
    *
    * @return {@link String[]} Value to which {@link #requiredArray} is set.
@@ -286,22 +260,6 @@ public class ChildAA extends ChildA {
       lReturnValue = null;
     }
     return lReturnValue;
-  }
-
-  /**
-   * Method sets attribute {@link #requiredArray}.<br/>
-   *
-   * @param pRequiredArray Value to which {@link #requiredArray} should be set.
-   */
-  public void setRequiredArray( String[] pRequiredArray ) {
-    // Assign value to attribute
-    if (pRequiredArray != null) {
-      requiredArray = new String[pRequiredArray.length];
-      System.arraycopy(pRequiredArray, 0, requiredArray, 0, pRequiredArray.length);
-    }
-    else {
-      requiredArray = null;
-    }
   }
 
   @Override

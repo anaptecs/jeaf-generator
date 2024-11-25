@@ -6,7 +6,6 @@
 package com.anaptecs.spring.base;
 
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Objects;
@@ -44,27 +43,31 @@ public class ChildBB extends ChildB {
   @Deprecated
   public static final String DEPRECATEDARRAY = "deprecatedArray";
 
-  private Long childBBAttribute;
+  private final Long childBBAttribute;
 
   @Deprecated
-  private int deprecatedAttribute;
+  private final int deprecatedAttribute;
 
   @Deprecated
-  private Set<ChildB> deprecatedBs;
+  private final Set<ChildB> deprecatedBs;
 
   @Deprecated
-  private ParentClass deprecatedParent;
+  private final ParentClass deprecatedParent;
 
   @Deprecated
   @Size(min = 0, max = 4711)
-  private byte[] deprecatedArray;
+  private final byte[] deprecatedArray;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   protected ChildBB( ) {
+    childBBAttribute = null;
+    deprecatedAttribute = 0;
     deprecatedBs = new HashSet<ChildB>();
+    deprecatedParent = null;
+    deprecatedArray = null;
   }
 
   /**
@@ -314,16 +317,6 @@ public class ChildBB extends ChildB {
   }
 
   /**
-   * Method sets attribute {@link #childBBAttribute}.<br/>
-   *
-   * @param pChildBBAttribute Value to which {@link #childBBAttribute} should be set.
-   */
-  public void setChildBBAttribute( Long pChildBBAttribute ) {
-    // Assign value to attribute
-    childBBAttribute = pChildBBAttribute;
-  }
-
-  /**
    * Method returns attribute {@link #deprecatedAttribute}.<br/>
    *
    * @return int Value to which {@link #deprecatedAttribute} is set.
@@ -331,17 +324,6 @@ public class ChildBB extends ChildB {
   @Deprecated
   public int getDeprecatedAttribute( ) {
     return deprecatedAttribute;
-  }
-
-  /**
-   * Method sets attribute {@link #deprecatedAttribute}.<br/>
-   *
-   * @param pDeprecatedAttribute Value to which {@link #deprecatedAttribute} should be set.
-   */
-  @Deprecated
-  public void setDeprecatedAttribute( int pDeprecatedAttribute ) {
-    // Assign value to attribute
-    deprecatedAttribute = pDeprecatedAttribute;
   }
 
   /**
@@ -357,51 +339,6 @@ public class ChildBB extends ChildB {
   }
 
   /**
-   * Method adds the passed object to {@link #deprecatedBs}.
-   *
-   * @param pDeprecatedBs Object that should be added to {@link #deprecatedBs}. The parameter must not be null.
-   */
-  @Deprecated
-  public void addToDeprecatedBs( ChildB pDeprecatedBs ) {
-    // Add passed object to collection of associated ChildB objects.
-    deprecatedBs.add(pDeprecatedBs);
-  }
-
-  /**
-   * Method adds all passed objects to {@link #deprecatedBs}.
-   *
-   * @param pDeprecatedBs Collection with all objects that should be added to {@link #deprecatedBs}. The parameter must
-   * not be null.
-   */
-  @Deprecated
-  public void addToDeprecatedBs( Collection<ChildB> pDeprecatedBs ) {
-    // Add all passed objects.
-    for (ChildB lNextObject : pDeprecatedBs) {
-      this.addToDeprecatedBs(lNextObject);
-    }
-  }
-
-  /**
-   * Method removes the passed object from {@link #deprecatedBs}.<br/>
-   *
-   * @param pDeprecatedBs Object that should be removed from {@link #deprecatedBs}. The parameter must not be null.
-   */
-  @Deprecated
-  public void removeFromDeprecatedBs( ChildB pDeprecatedBs ) {
-    // Remove passed object from collection of associated ChildB objects.
-    deprecatedBs.remove(pDeprecatedBs);
-  }
-
-  /**
-   * Method removes all objects from {@link #deprecatedBs}.
-   */
-  @Deprecated
-  public void clearDeprecatedBs( ) {
-    // Remove all objects from association "deprecatedBs".
-    deprecatedBs.clear();
-  }
-
-  /**
    * Method returns association {@link #deprecatedParent}.<br/>
    *
    * @return {@link ParentClass} Value to which {@link #deprecatedParent} is set.
@@ -409,24 +346,6 @@ public class ChildBB extends ChildB {
   @Deprecated
   public ParentClass getDeprecatedParent( ) {
     return deprecatedParent;
-  }
-
-  /**
-   * Method sets association {@link #deprecatedParent}.<br/>
-   *
-   * @param pDeprecatedParent Value to which {@link #deprecatedParent} should be set.
-   */
-  @Deprecated
-  public void setDeprecatedParent( ParentClass pDeprecatedParent ) {
-    deprecatedParent = pDeprecatedParent;
-  }
-
-  /**
-   * Method unsets {@link #deprecatedParent}.
-   */
-  @Deprecated
-  public final void unsetDeprecatedParent( ) {
-    deprecatedParent = null;
   }
 
   /**
@@ -445,23 +364,6 @@ public class ChildBB extends ChildB {
       lReturnValue = null;
     }
     return lReturnValue;
-  }
-
-  /**
-   * Method sets attribute {@link #deprecatedArray}.<br/>
-   *
-   * @param pDeprecatedArray Value to which {@link #deprecatedArray} should be set.
-   */
-  @Deprecated
-  public void setDeprecatedArray( byte[] pDeprecatedArray ) {
-    // Assign value to attribute
-    if (pDeprecatedArray != null) {
-      deprecatedArray = new byte[pDeprecatedArray.length];
-      System.arraycopy(pDeprecatedArray, 0, deprecatedArray, 0, pDeprecatedArray.length);
-    }
-    else {
-      deprecatedArray = null;
-    }
   }
 
   @Override

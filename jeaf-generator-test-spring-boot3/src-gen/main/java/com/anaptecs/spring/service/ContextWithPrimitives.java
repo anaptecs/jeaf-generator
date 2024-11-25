@@ -38,23 +38,29 @@ public class ContextWithPrimitives {
    */
   public static final String AVERYLONG = "aVeryLong";
 
-  private boolean aBoolean;
+  private final boolean aBoolean;
 
-  private Boolean aBooleanWrapper;
+  private final Boolean aBooleanWrapper;
 
-  private int anInt;
+  private final int anInt;
 
-  private Integer anInteger;
+  private final Integer anInteger;
 
-  private long aLong;
+  private final long aLong;
 
-  private Long aVeryLong;
+  private final Long aVeryLong;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   public ContextWithPrimitives( ) {
+    aBoolean = false;
+    aBooleanWrapper = null;
+    anInt = 0;
+    anInteger = null;
+    aLong = 0;
+    aVeryLong = null;
   }
 
   /**
@@ -252,32 +258,12 @@ public class ContextWithPrimitives {
   }
 
   /**
-   * Method sets attribute {@link #aBoolean}.<br/>
-   *
-   * @param pABoolean Value to which {@link #aBoolean} should be set.
-   */
-  public void setABoolean( boolean pABoolean ) {
-    // Assign value to attribute
-    aBoolean = pABoolean;
-  }
-
-  /**
    * Method returns attribute {@link #aBooleanWrapper}.<br/>
    *
    * @return {@link Boolean} Value to which {@link #aBooleanWrapper} is set.
    */
   public Boolean getABooleanWrapper( ) {
     return aBooleanWrapper;
-  }
-
-  /**
-   * Method sets attribute {@link #aBooleanWrapper}.<br/>
-   *
-   * @param pABooleanWrapper Value to which {@link #aBooleanWrapper} should be set.
-   */
-  public void setABooleanWrapper( Boolean pABooleanWrapper ) {
-    // Assign value to attribute
-    aBooleanWrapper = pABooleanWrapper;
   }
 
   /**
@@ -290,32 +276,12 @@ public class ContextWithPrimitives {
   }
 
   /**
-   * Method sets attribute {@link #anInt}.<br/>
-   *
-   * @param pAnInt Value to which {@link #anInt} should be set.
-   */
-  public void setAnInt( int pAnInt ) {
-    // Assign value to attribute
-    anInt = pAnInt;
-  }
-
-  /**
    * Method returns attribute {@link #anInteger}.<br/>
    *
    * @return {@link Integer} Value to which {@link #anInteger} is set.
    */
   public Integer getAnInteger( ) {
     return anInteger;
-  }
-
-  /**
-   * Method sets attribute {@link #anInteger}.<br/>
-   *
-   * @param pAnInteger Value to which {@link #anInteger} should be set.
-   */
-  public void setAnInteger( Integer pAnInteger ) {
-    // Assign value to attribute
-    anInteger = pAnInteger;
   }
 
   /**
@@ -328,32 +294,12 @@ public class ContextWithPrimitives {
   }
 
   /**
-   * Method sets attribute {@link #aLong}.<br/>
-   *
-   * @param pALong Value to which {@link #aLong} should be set.
-   */
-  public void setALong( long pALong ) {
-    // Assign value to attribute
-    aLong = pALong;
-  }
-
-  /**
    * Method returns attribute {@link #aVeryLong}.<br/>
    *
    * @return {@link Long} Value to which {@link #aVeryLong} is set.
    */
   public Long getAVeryLong( ) {
     return aVeryLong;
-  }
-
-  /**
-   * Method sets attribute {@link #aVeryLong}.<br/>
-   *
-   * @param pAVeryLong Value to which {@link #aVeryLong} should be set.
-   */
-  public void setAVeryLong( Long pAVeryLong ) {
-    // Assign value to attribute
-    aVeryLong = pAVeryLong;
   }
 
   @Override

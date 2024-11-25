@@ -7,7 +7,6 @@ package com.anaptecs.spring.base;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
@@ -33,13 +32,13 @@ public abstract class MasterDataObjectBase {
    */
   public static final String INTERNALPROPERTY = "internalProperty";
 
-  private List<DataUnit> dataUnits;
+  private final List<DataUnit> dataUnits;
 
-  private Entity entity;
+  private final Entity entity;
 
-  private String objectID;
+  private final String objectID;
 
-  private String internalProperty;
+  private final String internalProperty;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
@@ -47,6 +46,9 @@ public abstract class MasterDataObjectBase {
    */
   protected MasterDataObjectBase( ) {
     dataUnits = new ArrayList<DataUnit>();
+    entity = null;
+    objectID = null;
+    internalProperty = null;
   }
 
   /**
@@ -201,69 +203,12 @@ public abstract class MasterDataObjectBase {
   }
 
   /**
-   * Method adds the passed object to {@link #dataUnits}.
-   *
-   * @param pDataUnits Object that should be added to {@link #dataUnits}. The parameter must not be null.
-   */
-  void addToDataUnits( DataUnit pDataUnits ) {
-    // Add passed object to collection of associated DataUnit objects.
-    dataUnits.add(pDataUnits);
-  }
-
-  /**
-   * Method adds all passed objects to {@link #dataUnits}.
-   *
-   * @param pDataUnits Collection with all objects that should be added to {@link #dataUnits}. The parameter must not be
-   * null.
-   */
-  void addToDataUnits( Collection<DataUnit> pDataUnits ) {
-    // Add all passed objects.
-    for (DataUnit lNextObject : pDataUnits) {
-      this.addToDataUnits(lNextObject);
-    }
-  }
-
-  /**
-   * Method removes the passed object from {@link #dataUnits}.<br/>
-   *
-   * @param pDataUnits Object that should be removed from {@link #dataUnits}. The parameter must not be null.
-   */
-  void removeFromDataUnits( DataUnit pDataUnits ) {
-    // Remove passed object from collection of associated DataUnit objects.
-    dataUnits.remove(pDataUnits);
-  }
-
-  /**
-   * Method removes all objects from {@link #dataUnits}.
-   */
-  void clearDataUnits( ) {
-    // Remove all objects from association "dataUnits".
-    dataUnits.clear();
-  }
-
-  /**
    * Method returns association {@link #entity}.<br/>
    *
    * @return {@link Entity} Value to which {@link #entity} is set.
    */
   Entity getEntity( ) {
     return entity;
-  }
-
-  /**
-   * Method sets association {@link #entity}.<br/>
-   *
-   * @param pEntity Value to which {@link #entity} should be set.
-   */
-  void setEntity( Entity pEntity ) {
-    entity = pEntity;
-  }
-
-  /**
-   * Method unsets {@link #entity}.
-   */
-  final void unsetEntity( ) {
-    entity = null;
   }
 
   /**
@@ -276,32 +221,12 @@ public abstract class MasterDataObjectBase {
   }
 
   /**
-   * Method sets attribute {@link #objectID}.<br/>
-   *
-   * @param pObjectID Value to which {@link #objectID} should be set.
-   */
-  public void setObjectID( String pObjectID ) {
-    // Assign value to attribute
-    objectID = pObjectID;
-  }
-
-  /**
    * Method returns attribute {@link #internalProperty}.<br/>
    *
    * @return {@link String} Value to which {@link #internalProperty} is set.
    */
   String getInternalProperty( ) {
     return internalProperty;
-  }
-
-  /**
-   * Method sets attribute {@link #internalProperty}.<br/>
-   *
-   * @param pInternalProperty Value to which {@link #internalProperty} should be set.
-   */
-  void setInternalProperty( String pInternalProperty ) {
-    // Assign value to attribute
-    internalProperty = pInternalProperty;
   }
 
   /**

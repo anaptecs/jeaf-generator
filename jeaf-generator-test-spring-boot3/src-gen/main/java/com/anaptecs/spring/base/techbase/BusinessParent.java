@@ -11,13 +11,14 @@ public class BusinessParent extends TechParent {
    */
   public static final String PARENTATTRIBUTE = "parentAttribute";
 
-  private long parentAttribute;
+  private final long parentAttribute;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   protected BusinessParent( ) {
+    parentAttribute = 0;
   }
 
   /**
@@ -125,16 +126,6 @@ public class BusinessParent extends TechParent {
    */
   public long getParentAttribute( ) {
     return parentAttribute;
-  }
-
-  /**
-   * Method sets attribute {@link #parentAttribute}.<br/>
-   *
-   * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
-   */
-  public void setParentAttribute( long pParentAttribute ) {
-    // Assign value to attribute
-    parentAttribute = pParentAttribute;
   }
 
   @Override

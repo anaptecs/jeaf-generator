@@ -24,7 +24,7 @@ public class CurrencyCode {
    * </ul>
    */
   @Size(min = 3, max = 3)
-  private String code;
+  private final String code;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
@@ -115,17 +115,6 @@ public class CurrencyCode {
    */
   public String getCode( ) {
     return code;
-  }
-
-  /**
-   * Method sets attribute {@link #code}.<br/>
-   * ISO 4217 currency code.
-   *
-   * @param pCode Value to which {@link #code} should be set.
-   */
-  public void setCode( String pCode ) {
-    // Assign value to attribute
-    code = pCode;
   }
 
   @Override

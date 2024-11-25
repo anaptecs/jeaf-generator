@@ -19,13 +19,14 @@ public class ProductCode {
    * the product code.
    */
   @Positive
-  private int code;
+  private final int code;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   protected ProductCode( ) {
+    code = 0;
   }
 
   /**
@@ -104,17 +105,6 @@ public class ProductCode {
    */
   public int getCode( ) {
     return code;
-  }
-
-  /**
-   * Method sets attribute {@link #code}.<br/>
-   * the product code.
-   *
-   * @param pCode Value to which {@link #code} should be set.
-   */
-  public void setCode( int pCode ) {
-    // Assign value to attribute
-    code = pCode;
   }
 
   @Override

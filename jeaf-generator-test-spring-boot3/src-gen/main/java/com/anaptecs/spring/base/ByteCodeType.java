@@ -13,13 +13,14 @@ public class ByteCodeType {
    */
   public static final String CODE = "code";
 
-  private byte code;
+  private final byte code;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   protected ByteCodeType( ) {
+    code = 0;
   }
 
   /**
@@ -93,16 +94,6 @@ public class ByteCodeType {
    */
   public byte getCode( ) {
     return code;
-  }
-
-  /**
-   * Method sets attribute {@link #code}.<br/>
-   *
-   * @param pCode Value to which {@link #code} should be set.
-   */
-  public void setCode( byte pCode ) {
-    // Assign value to attribute
-    code = pCode;
   }
 
   @Override

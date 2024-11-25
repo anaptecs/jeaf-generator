@@ -13,13 +13,14 @@ public class BooleanCodeType {
    */
   public static final String CODE = "code";
 
-  private boolean code;
+  private final boolean code;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   protected BooleanCodeType( ) {
+    code = false;
   }
 
   /**
@@ -103,16 +104,6 @@ public class BooleanCodeType {
    */
   public boolean isCode( ) {
     return code;
-  }
-
-  /**
-   * Method sets attribute {@link #code}.<br/>
-   *
-   * @param pCode Value to which {@link #code} should be set.
-   */
-  public void setCode( boolean pCode ) {
-    // Assign value to attribute
-    code = pCode;
   }
 
   @Override

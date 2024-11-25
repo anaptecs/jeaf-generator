@@ -50,23 +50,29 @@ public class DateObject {
    * <li><code>12:07</code></li>
    * </ul>
    */
-  private LocalTime localTime;
+  private final LocalTime localTime;
 
-  private LocalDate localDate;
+  private final LocalDate localDate;
 
-  private LocalDateTime localDateTime;
+  private final LocalDateTime localDateTime;
 
-  private Calendar calendar;
+  private final Calendar calendar;
 
-  private Date sqlDate;
+  private final Date sqlDate;
 
-  private java.util.Date utilDate;
+  private final java.util.Date utilDate;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   protected DateObject( ) {
+    localTime = null;
+    localDate = null;
+    localDateTime = null;
+    calendar = null;
+    sqlDate = null;
+    utilDate = null;
   }
 
   /**
@@ -259,32 +265,12 @@ public class DateObject {
   }
 
   /**
-   * Method sets attribute {@link #localTime}.<br/>
-   *
-   * @param pLocalTime Value to which {@link #localTime} should be set.
-   */
-  public void setLocalTime( LocalTime pLocalTime ) {
-    // Assign value to attribute
-    localTime = pLocalTime;
-  }
-
-  /**
    * Method returns attribute {@link #localDate}.<br/>
    *
    * @return {@link LocalDate} Value to which {@link #localDate} is set.
    */
   public LocalDate getLocalDate( ) {
     return localDate;
-  }
-
-  /**
-   * Method sets attribute {@link #localDate}.<br/>
-   *
-   * @param pLocalDate Value to which {@link #localDate} should be set.
-   */
-  public void setLocalDate( LocalDate pLocalDate ) {
-    // Assign value to attribute
-    localDate = pLocalDate;
   }
 
   /**
@@ -297,32 +283,12 @@ public class DateObject {
   }
 
   /**
-   * Method sets attribute {@link #localDateTime}.<br/>
-   *
-   * @param pLocalDateTime Value to which {@link #localDateTime} should be set.
-   */
-  public void setLocalDateTime( LocalDateTime pLocalDateTime ) {
-    // Assign value to attribute
-    localDateTime = pLocalDateTime;
-  }
-
-  /**
    * Method returns attribute {@link #calendar}.<br/>
    *
    * @return {@link Calendar} Value to which {@link #calendar} is set.
    */
   public Calendar getCalendar( ) {
     return calendar;
-  }
-
-  /**
-   * Method sets attribute {@link #calendar}.<br/>
-   *
-   * @param pCalendar Value to which {@link #calendar} should be set.
-   */
-  public void setCalendar( Calendar pCalendar ) {
-    // Assign value to attribute
-    calendar = pCalendar;
   }
 
   /**
@@ -335,32 +301,12 @@ public class DateObject {
   }
 
   /**
-   * Method sets attribute {@link #sqlDate}.<br/>
-   *
-   * @param pSqlDate Value to which {@link #sqlDate} should be set.
-   */
-  public void setSqlDate( Date pSqlDate ) {
-    // Assign value to attribute
-    sqlDate = pSqlDate;
-  }
-
-  /**
    * Method returns attribute {@link #utilDate}.<br/>
    *
    * @return {@link java.util.Date} Value to which {@link #utilDate} is set.
    */
   public java.util.Date getUtilDate( ) {
     return utilDate;
-  }
-
-  /**
-   * Method sets attribute {@link #utilDate}.<br/>
-   *
-   * @param pUtilDate Value to which {@link #utilDate} should be set.
-   */
-  public void setUtilDate( java.util.Date pUtilDate ) {
-    // Assign value to attribute
-    utilDate = pUtilDate;
   }
 
   @Override

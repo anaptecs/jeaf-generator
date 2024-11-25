@@ -14,13 +14,14 @@ public class Company extends Partner {
    */
   public static final String NAME = "name";
 
-  private String name;
+  private final String name;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   protected Company( ) {
+    name = null;
   }
 
   /**
@@ -123,16 +124,6 @@ public class Company extends Partner {
    */
   public String getName( ) {
     return name;
-  }
-
-  /**
-   * Method sets attribute {@link #name}.<br/>
-   *
-   * @param pName Value to which {@link #name} should be set.
-   */
-  public void setName( String pName ) {
-    // Assign value to attribute
-    name = pName;
   }
 
   @Override

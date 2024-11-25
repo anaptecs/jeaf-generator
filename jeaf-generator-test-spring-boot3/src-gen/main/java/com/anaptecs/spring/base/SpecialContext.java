@@ -19,15 +19,17 @@ public class SpecialContext extends Context {
    */
   public static final String CHANNELTYPE = "channelType";
 
-  private String specificHeader;
+  private final String specificHeader;
 
-  private ChannelType channelType;
+  private final ChannelType channelType;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   public SpecialContext( ) {
+    specificHeader = null;
+    channelType = null;
   }
 
   /**
@@ -254,32 +256,12 @@ public class SpecialContext extends Context {
   }
 
   /**
-   * Method sets attribute {@link #specificHeader}.<br/>
-   *
-   * @param pSpecificHeader Value to which {@link #specificHeader} should be set.
-   */
-  public void setSpecificHeader( String pSpecificHeader ) {
-    // Assign value to attribute
-    specificHeader = pSpecificHeader;
-  }
-
-  /**
    * Method returns attribute {@link #channelType}.<br/>
    *
    * @return {@link ChannelType} Value to which {@link #channelType} is set.
    */
   public ChannelType getChannelType( ) {
     return channelType;
-  }
-
-  /**
-   * Method sets attribute {@link #channelType}.<br/>
-   *
-   * @param pChannelType Value to which {@link #channelType} should be set.
-   */
-  public void setChannelType( ChannelType pChannelType ) {
-    // Assign value to attribute
-    channelType = pChannelType;
   }
 
   @Override

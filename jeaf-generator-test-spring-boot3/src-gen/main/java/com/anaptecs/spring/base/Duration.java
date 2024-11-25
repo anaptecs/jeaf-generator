@@ -30,19 +30,20 @@ public class Duration {
    */
   public static final String TIMEUNIT = "timeUnit";
 
-  private int value;
+  private final int value;
 
   /**
    * <br/>
    * <b>Default Value:</b> <code>DAY</code>
    */
-  private TimeUnit timeUnit;
+  private final TimeUnit timeUnit;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   protected Duration( ) {
+    value = 0;
     timeUnit = TimeUnit.DAY;
   }
 
@@ -156,32 +157,12 @@ public class Duration {
   }
 
   /**
-   * Method sets attribute {@link #value}.<br/>
-   *
-   * @param pValue Value to which {@link #value} should be set.
-   */
-  public void setValue( int pValue ) {
-    // Assign value to attribute
-    value = pValue;
-  }
-
-  /**
    * Method returns attribute {@link #timeUnit}.<br/>
    *
    * @return {@link TimeUnit} Value to which {@link #timeUnit} is set.
    */
   public TimeUnit getTimeUnit( ) {
     return timeUnit;
-  }
-
-  /**
-   * Method sets attribute {@link #timeUnit}.<br/>
-   *
-   * @param pTimeUnit Value to which {@link #timeUnit} should be set.
-   */
-  public void setTimeUnit( TimeUnit pTimeUnit ) {
-    // Assign value to attribute
-    timeUnit = pTimeUnit;
   }
 
   @Override

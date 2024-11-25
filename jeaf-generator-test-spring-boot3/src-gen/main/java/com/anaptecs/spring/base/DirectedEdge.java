@@ -28,20 +28,23 @@ public class DirectedEdge {
   /**
    * The start
    */
-  private Stop start;
+  private final Stop start;
 
   /**
    * The end
    */
-  private Stop end;
+  private final Stop end;
 
-  private String link;
+  private final String link;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   protected DirectedEdge( ) {
+    start = null;
+    end = null;
+    link = null;
   }
 
   /**
@@ -174,23 +177,6 @@ public class DirectedEdge {
   }
 
   /**
-   * Method sets association {@link #start}.<br/>
-   * The start
-   *
-   * @param pStart Value to which {@link #start} should be set.
-   */
-  public void setStart( Stop pStart ) {
-    start = pStart;
-  }
-
-  /**
-   * Method unsets {@link #start}.
-   */
-  public final void unsetStart( ) {
-    start = null;
-  }
-
-  /**
    * Method returns association {@link #end}.<br/>
    * The end
    *
@@ -201,39 +187,12 @@ public class DirectedEdge {
   }
 
   /**
-   * Method sets association {@link #end}.<br/>
-   * The end
-   *
-   * @param pEnd Value to which {@link #end} should be set.
-   */
-  public void setEnd( Stop pEnd ) {
-    end = pEnd;
-  }
-
-  /**
-   * Method unsets {@link #end}.
-   */
-  public final void unsetEnd( ) {
-    end = null;
-  }
-
-  /**
    * Method returns attribute {@link #link}.<br/>
    *
    * @return {@link String} Value to which {@link #link} is set.
    */
   public String getLink( ) {
     return link;
-  }
-
-  /**
-   * Method sets attribute {@link #link}.<br/>
-   *
-   * @param pLink Value to which {@link #link} should be set.
-   */
-  public void setLink( String pLink ) {
-    // Assign value to attribute
-    link = pLink;
   }
 
   @Override

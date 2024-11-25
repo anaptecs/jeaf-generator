@@ -16,15 +16,17 @@ public class GeoPosition extends PlaceRef {
    */
   public static final String LATITUDE = "latitude";
 
-  private int longitude;
+  private final int longitude;
 
-  private int latitude;
+  private final int latitude;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   protected GeoPosition( ) {
+    longitude = 0;
+    latitude = 0;
   }
 
   /**
@@ -170,32 +172,12 @@ public class GeoPosition extends PlaceRef {
   }
 
   /**
-   * Method sets attribute {@link #longitude}.<br/>
-   *
-   * @param pLongitude Value to which {@link #longitude} should be set.
-   */
-  public void setLongitude( int pLongitude ) {
-    // Assign value to attribute
-    longitude = pLongitude;
-  }
-
-  /**
    * Method returns attribute {@link #latitude}.<br/>
    *
    * @return int Value to which {@link #latitude} is set.
    */
   public int getLatitude( ) {
     return latitude;
-  }
-
-  /**
-   * Method sets attribute {@link #latitude}.<br/>
-   *
-   * @param pLatitude Value to which {@link #latitude} should be set.
-   */
-  public void setLatitude( int pLatitude ) {
-    // Assign value to attribute
-    latitude = pLatitude;
   }
 
   @Override

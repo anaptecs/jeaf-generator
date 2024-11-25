@@ -7,7 +7,6 @@ package com.anaptecs.spring.base;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
@@ -28,17 +27,19 @@ public class Booking {
    */
   public static final String INVENTORIES = "inventories";
 
-  private BookingID bookingID;
+  private final BookingID bookingID;
 
-  private String customerName;
+  private final String customerName;
 
-  private List<InventoryType> inventories;
+  private final List<InventoryType> inventories;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   protected Booking( ) {
+    bookingID = null;
+    customerName = null;
     inventories = new ArrayList<InventoryType>();
   }
 
@@ -203,38 +204,12 @@ public class Booking {
   }
 
   /**
-   * Method sets association {@link #bookingID}.<br/>
-   *
-   * @param pBookingID Value to which {@link #bookingID} should be set.
-   */
-  public void setBookingID( BookingID pBookingID ) {
-    bookingID = pBookingID;
-  }
-
-  /**
-   * Method unsets {@link #bookingID}.
-   */
-  public final void unsetBookingID( ) {
-    bookingID = null;
-  }
-
-  /**
    * Method returns attribute {@link #customerName}.<br/>
    *
    * @return {@link String} Value to which {@link #customerName} is set.
    */
   public String getCustomerName( ) {
     return customerName;
-  }
-
-  /**
-   * Method sets attribute {@link #customerName}.<br/>
-   *
-   * @param pCustomerName Value to which {@link #customerName} should be set.
-   */
-  public void setCustomerName( String pCustomerName ) {
-    // Assign value to attribute
-    customerName = pCustomerName;
   }
 
   /**
@@ -246,47 +221,6 @@ public class Booking {
   public List<InventoryType> getInventories( ) {
     // Return all InventoryType objects as unmodifiable collection.
     return Collections.unmodifiableList(inventories);
-  }
-
-  /**
-   * Method adds the passed object to {@link #inventories}.
-   *
-   * @param pInventories Object that should be added to {@link #inventories}. The parameter must not be null.
-   */
-  public void addToInventories( InventoryType pInventories ) {
-    // Add passed object to collection of associated InventoryType objects.
-    inventories.add(pInventories);
-  }
-
-  /**
-   * Method adds all passed objects to {@link #inventories}.
-   *
-   * @param pInventories Collection with all objects that should be added to {@link #inventories}. The parameter must
-   * not be null.
-   */
-  public void addToInventories( Collection<InventoryType> pInventories ) {
-    // Add all passed objects.
-    for (InventoryType lNextObject : pInventories) {
-      this.addToInventories(lNextObject);
-    }
-  }
-
-  /**
-   * Method removes the passed object from {@link #inventories}.<br/>
-   *
-   * @param pInventories Object that should be removed from {@link #inventories}. The parameter must not be null.
-   */
-  public void removeFromInventories( InventoryType pInventories ) {
-    // Remove passed object from collection of associated InventoryType objects.
-    inventories.remove(pInventories);
-  }
-
-  /**
-   * Method removes all objects from {@link #inventories}.
-   */
-  public void clearInventories( ) {
-    // Remove all objects from association "inventories".
-    inventories.clear();
   }
 
   @Override

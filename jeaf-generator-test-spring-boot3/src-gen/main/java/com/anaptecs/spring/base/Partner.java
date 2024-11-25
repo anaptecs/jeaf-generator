@@ -7,7 +7,6 @@ package com.anaptecs.spring.base;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
@@ -18,7 +17,7 @@ public class Partner {
    */
   public static final String POSTALADDRESSES = "postalAddresses";
 
-  private List<PostalAddress> postalAddresses;
+  private final List<PostalAddress> postalAddresses;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
@@ -132,48 +131,6 @@ public class Partner {
   public List<PostalAddress> getPostalAddresses( ) {
     // Return all PostalAddress objects as unmodifiable collection.
     return Collections.unmodifiableList(postalAddresses);
-  }
-
-  /**
-   * Method adds the passed object to {@link #postalAddresses}.
-   *
-   * @param pPostalAddresses Object that should be added to {@link #postalAddresses}. The parameter must not be null.
-   */
-  public void addToPostalAddresses( PostalAddress pPostalAddresses ) {
-    // Add passed object to collection of associated PostalAddress objects.
-    postalAddresses.add(pPostalAddresses);
-  }
-
-  /**
-   * Method adds all passed objects to {@link #postalAddresses}.
-   *
-   * @param pPostalAddresses Collection with all objects that should be added to {@link #postalAddresses}. The parameter
-   * must not be null.
-   */
-  public void addToPostalAddresses( Collection<PostalAddress> pPostalAddresses ) {
-    // Add all passed objects.
-    for (PostalAddress lNextObject : pPostalAddresses) {
-      this.addToPostalAddresses(lNextObject);
-    }
-  }
-
-  /**
-   * Method removes the passed object from {@link #postalAddresses}.<br/>
-   *
-   * @param pPostalAddresses Object that should be removed from {@link #postalAddresses}. The parameter must not be
-   * null.
-   */
-  public void removeFromPostalAddresses( PostalAddress pPostalAddresses ) {
-    // Remove passed object from collection of associated PostalAddress objects.
-    postalAddresses.remove(pPostalAddresses);
-  }
-
-  /**
-   * Method removes all objects from {@link #postalAddresses}.
-   */
-  public void clearPostalAddresses( ) {
-    // Remove all objects from association "postalAddresses".
-    postalAddresses.clear();
   }
 
   @Override

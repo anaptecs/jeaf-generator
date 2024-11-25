@@ -7,7 +7,6 @@ package com.anaptecs.spring.composite;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
@@ -46,24 +45,29 @@ public abstract class ComplexBookingIDBase {
    */
   public static final String STRINGS = "strings";
 
-  private long internalID;
+  private final long internalID;
 
-  private String referenceID;
+  private final String referenceID;
 
-  private List<BookingID> bookingIDs;
+  private final List<BookingID> bookingIDs;
 
-  private ComplexBookingType complexBookingType;
+  private final ComplexBookingType complexBookingType;
 
-  private Integer anotherID;
+  private final Integer anotherID;
 
-  private String[] strings;
+  private final String[] strings;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   protected ComplexBookingIDBase( ) {
+    internalID = 0;
+    referenceID = null;
     bookingIDs = new ArrayList<BookingID>();
+    complexBookingType = null;
+    anotherID = null;
+    strings = null;
   }
 
   /**
@@ -237,32 +241,12 @@ public abstract class ComplexBookingIDBase {
   }
 
   /**
-   * Method sets attribute {@link #internalID}.<br/>
-   *
-   * @param pInternalID Value to which {@link #internalID} should be set.
-   */
-  public void setInternalID( long pInternalID ) {
-    // Assign value to attribute
-    internalID = pInternalID;
-  }
-
-  /**
    * Method returns attribute {@link #referenceID}.<br/>
    *
    * @return {@link String} Value to which {@link #referenceID} is set.
    */
   public String getReferenceID( ) {
     return referenceID;
-  }
-
-  /**
-   * Method sets attribute {@link #referenceID}.<br/>
-   *
-   * @param pReferenceID Value to which {@link #referenceID} should be set.
-   */
-  public void setReferenceID( String pReferenceID ) {
-    // Assign value to attribute
-    referenceID = pReferenceID;
   }
 
   /**
@@ -277,47 +261,6 @@ public abstract class ComplexBookingIDBase {
   }
 
   /**
-   * Method adds the passed object to {@link #bookingIDs}.
-   *
-   * @param pBookingIDs Object that should be added to {@link #bookingIDs}. The parameter must not be null.
-   */
-  public void addToBookingIDs( BookingID pBookingIDs ) {
-    // Add passed object to collection of associated BookingID objects.
-    bookingIDs.add(pBookingIDs);
-  }
-
-  /**
-   * Method adds all passed objects to {@link #bookingIDs}.
-   *
-   * @param pBookingIDs Collection with all objects that should be added to {@link #bookingIDs}. The parameter must not
-   * be null.
-   */
-  public void addToBookingIDs( Collection<BookingID> pBookingIDs ) {
-    // Add all passed objects.
-    for (BookingID lNextObject : pBookingIDs) {
-      this.addToBookingIDs(lNextObject);
-    }
-  }
-
-  /**
-   * Method removes the passed object from {@link #bookingIDs}.<br/>
-   *
-   * @param pBookingIDs Object that should be removed from {@link #bookingIDs}. The parameter must not be null.
-   */
-  public void removeFromBookingIDs( BookingID pBookingIDs ) {
-    // Remove passed object from collection of associated BookingID objects.
-    bookingIDs.remove(pBookingIDs);
-  }
-
-  /**
-   * Method removes all objects from {@link #bookingIDs}.
-   */
-  public void clearBookingIDs( ) {
-    // Remove all objects from association "bookingIDs".
-    bookingIDs.clear();
-  }
-
-  /**
    * Method returns association {@link #complexBookingType}.<br/>
    *
    * @return {@link ComplexBookingType} Value to which {@link #complexBookingType} is set.
@@ -327,38 +270,12 @@ public abstract class ComplexBookingIDBase {
   }
 
   /**
-   * Method sets association {@link #complexBookingType}.<br/>
-   *
-   * @param pComplexBookingType Value to which {@link #complexBookingType} should be set.
-   */
-  public void setComplexBookingType( ComplexBookingType pComplexBookingType ) {
-    complexBookingType = pComplexBookingType;
-  }
-
-  /**
-   * Method unsets {@link #complexBookingType}.
-   */
-  public final void unsetComplexBookingType( ) {
-    complexBookingType = null;
-  }
-
-  /**
    * Method returns attribute {@link #anotherID}.<br/>
    *
    * @return {@link Integer} Value to which {@link #anotherID} is set.
    */
   public Integer getAnotherID( ) {
     return anotherID;
-  }
-
-  /**
-   * Method sets attribute {@link #anotherID}.<br/>
-   *
-   * @param pAnotherID Value to which {@link #anotherID} should be set.
-   */
-  public void setAnotherID( Integer pAnotherID ) {
-    // Assign value to attribute
-    anotherID = pAnotherID;
   }
 
   /**
@@ -376,22 +293,6 @@ public abstract class ComplexBookingIDBase {
       lReturnValue = null;
     }
     return lReturnValue;
-  }
-
-  /**
-   * Method sets attribute {@link #strings}.<br/>
-   *
-   * @param pStrings Value to which {@link #strings} should be set.
-   */
-  public void setStrings( String[] pStrings ) {
-    // Assign value to attribute
-    if (pStrings != null) {
-      strings = new String[pStrings.length];
-      System.arraycopy(pStrings, 0, strings, 0, pStrings.length);
-    }
-    else {
-      strings = null;
-    }
   }
 
   @Override

@@ -6,7 +6,6 @@
 package com.anaptecs.spring.base;
 
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Objects;
@@ -38,23 +37,26 @@ public class CodeTypeUsageTest {
    */
   public static final String CHARACTERCODE = "characterCode";
 
-  private BooleanCodeType booleanCode;
+  private final BooleanCodeType booleanCode;
 
-  private Set<BooleanCodeType> booleanCodeAssociation;
+  private final Set<BooleanCodeType> booleanCodeAssociation;
 
-  private Set<ShortCodeType> shortCodeTypeAssociation;
+  private final Set<ShortCodeType> shortCodeTypeAssociation;
 
-  private StringCodeType stringCode;
+  private final StringCodeType stringCode;
 
-  private CharacterCode characterCode;
+  private final CharacterCode characterCode;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   protected CodeTypeUsageTest( ) {
+    booleanCode = null;
     booleanCodeAssociation = new HashSet<BooleanCodeType>();
     shortCodeTypeAssociation = new HashSet<ShortCodeType>();
+    stringCode = null;
+    characterCode = null;
   }
 
   /**
@@ -257,16 +259,6 @@ public class CodeTypeUsageTest {
   }
 
   /**
-   * Method sets attribute {@link #booleanCode}.<br/>
-   *
-   * @param pBooleanCode Value to which {@link #booleanCode} should be set.
-   */
-  public void setBooleanCode( BooleanCodeType pBooleanCode ) {
-    // Assign value to attribute
-    booleanCode = pBooleanCode;
-  }
-
-  /**
    * Method returns association {@link #booleanCodeAssociation}.<br/>
    *
    * @return {@link Set<BooleanCodeType>} Value to which {@link #booleanCodeAssociation} is set. The method never
@@ -275,49 +267,6 @@ public class CodeTypeUsageTest {
   public Set<BooleanCodeType> getBooleanCodeAssociation( ) {
     // Return all BooleanCodeType objects as unmodifiable collection.
     return Collections.unmodifiableSet(booleanCodeAssociation);
-  }
-
-  /**
-   * Method adds the passed object to {@link #booleanCodeAssociation}.
-   *
-   * @param pBooleanCodeAssociation Object that should be added to {@link #booleanCodeAssociation}. The parameter must
-   * not be null.
-   */
-  public void addToBooleanCodeAssociation( BooleanCodeType pBooleanCodeAssociation ) {
-    // Add passed object to collection of associated BooleanCodeType objects.
-    booleanCodeAssociation.add(pBooleanCodeAssociation);
-  }
-
-  /**
-   * Method adds all passed objects to {@link #booleanCodeAssociation}.
-   *
-   * @param pBooleanCodeAssociation Collection with all objects that should be added to {@link #booleanCodeAssociation}.
-   * The parameter must not be null.
-   */
-  public void addToBooleanCodeAssociation( Collection<BooleanCodeType> pBooleanCodeAssociation ) {
-    // Add all passed objects.
-    for (BooleanCodeType lNextObject : pBooleanCodeAssociation) {
-      this.addToBooleanCodeAssociation(lNextObject);
-    }
-  }
-
-  /**
-   * Method removes the passed object from {@link #booleanCodeAssociation}.<br/>
-   *
-   * @param pBooleanCodeAssociation Object that should be removed from {@link #booleanCodeAssociation}. The parameter
-   * must not be null.
-   */
-  public void removeFromBooleanCodeAssociation( BooleanCodeType pBooleanCodeAssociation ) {
-    // Remove passed object from collection of associated BooleanCodeType objects.
-    booleanCodeAssociation.remove(pBooleanCodeAssociation);
-  }
-
-  /**
-   * Method removes all objects from {@link #booleanCodeAssociation}.
-   */
-  public void clearBooleanCodeAssociation( ) {
-    // Remove all objects from association "booleanCodeAssociation".
-    booleanCodeAssociation.clear();
   }
 
   /**
@@ -332,49 +281,6 @@ public class CodeTypeUsageTest {
   }
 
   /**
-   * Method adds the passed object to {@link #shortCodeTypeAssociation}.
-   *
-   * @param pShortCodeTypeAssociation Object that should be added to {@link #shortCodeTypeAssociation}. The parameter
-   * must not be null.
-   */
-  public void addToShortCodeTypeAssociation( ShortCodeType pShortCodeTypeAssociation ) {
-    // Add passed object to collection of associated ShortCodeType objects.
-    shortCodeTypeAssociation.add(pShortCodeTypeAssociation);
-  }
-
-  /**
-   * Method adds all passed objects to {@link #shortCodeTypeAssociation}.
-   *
-   * @param pShortCodeTypeAssociation Collection with all objects that should be added to
-   * {@link #shortCodeTypeAssociation}. The parameter must not be null.
-   */
-  public void addToShortCodeTypeAssociation( Collection<ShortCodeType> pShortCodeTypeAssociation ) {
-    // Add all passed objects.
-    for (ShortCodeType lNextObject : pShortCodeTypeAssociation) {
-      this.addToShortCodeTypeAssociation(lNextObject);
-    }
-  }
-
-  /**
-   * Method removes the passed object from {@link #shortCodeTypeAssociation}.<br/>
-   *
-   * @param pShortCodeTypeAssociation Object that should be removed from {@link #shortCodeTypeAssociation}. The
-   * parameter must not be null.
-   */
-  public void removeFromShortCodeTypeAssociation( ShortCodeType pShortCodeTypeAssociation ) {
-    // Remove passed object from collection of associated ShortCodeType objects.
-    shortCodeTypeAssociation.remove(pShortCodeTypeAssociation);
-  }
-
-  /**
-   * Method removes all objects from {@link #shortCodeTypeAssociation}.
-   */
-  public void clearShortCodeTypeAssociation( ) {
-    // Remove all objects from association "shortCodeTypeAssociation".
-    shortCodeTypeAssociation.clear();
-  }
-
-  /**
    * Method returns attribute {@link #stringCode}.<br/>
    *
    * @return {@link StringCodeType} Value to which {@link #stringCode} is set.
@@ -384,38 +290,12 @@ public class CodeTypeUsageTest {
   }
 
   /**
-   * Method sets attribute {@link #stringCode}.<br/>
-   *
-   * @param pStringCode Value to which {@link #stringCode} should be set.
-   */
-  public void setStringCode( StringCodeType pStringCode ) {
-    // Assign value to attribute
-    stringCode = pStringCode;
-  }
-
-  /**
    * Method returns association {@link #characterCode}.<br/>
    *
    * @return {@link CharacterCode} Value to which {@link #characterCode} is set.
    */
   public CharacterCode getCharacterCode( ) {
     return characterCode;
-  }
-
-  /**
-   * Method sets association {@link #characterCode}.<br/>
-   *
-   * @param pCharacterCode Value to which {@link #characterCode} should be set.
-   */
-  public void setCharacterCode( CharacterCode pCharacterCode ) {
-    characterCode = pCharacterCode;
-  }
-
-  /**
-   * Method unsets {@link #characterCode}.
-   */
-  public final void unsetCharacterCode( ) {
-    characterCode = null;
   }
 
   @Override

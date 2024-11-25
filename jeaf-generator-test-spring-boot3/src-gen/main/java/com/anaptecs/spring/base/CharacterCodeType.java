@@ -13,13 +13,14 @@ public class CharacterCodeType {
    */
   public static final String CODE = "code";
 
-  private char code;
+  private final char code;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   protected CharacterCodeType( ) {
+    code = 0;
   }
 
   /**
@@ -93,16 +94,6 @@ public class CharacterCodeType {
    */
   public char getCode( ) {
     return code;
-  }
-
-  /**
-   * Method sets attribute {@link #code}.<br/>
-   *
-   * @param pCode Value to which {@link #code} should be set.
-   */
-  public void setCode( char pCode ) {
-    // Assign value to attribute
-    code = pCode;
   }
 
   @Override

@@ -13,13 +13,14 @@ public class DoubleCode {
    */
   public static final String CODE = "code";
 
-  private Double code;
+  private final Double code;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   protected DoubleCode( ) {
+    code = null;
   }
 
   /**
@@ -92,16 +93,6 @@ public class DoubleCode {
    */
   public Double getCode( ) {
     return code;
-  }
-
-  /**
-   * Method sets attribute {@link #code}.<br/>
-   *
-   * @param pCode Value to which {@link #code} should be set.
-   */
-  public void setCode( Double pCode ) {
-    // Assign value to attribute
-    code = pCode;
   }
 
   @Override

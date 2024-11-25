@@ -6,7 +6,6 @@
 package com.anaptecs.spring.service;
 
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Objects;
@@ -40,22 +39,26 @@ public class MultivaluedQueryParamsBean {
    */
   public static final String TIMEUNITARRAY = "timeUnitArray";
 
-  private int[] intArray;
+  private final int[] intArray;
 
-  private String[] strings;
+  private final String[] strings;
 
-  private Integer[] integers;
+  private final Integer[] integers;
 
-  private Set<TimeUnit> timeUnits;
+  private final Set<TimeUnit> timeUnits;
 
-  private TimeUnit[] timeUnitArray;
+  private final TimeUnit[] timeUnitArray;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   public MultivaluedQueryParamsBean( ) {
+    intArray = null;
+    strings = null;
+    integers = null;
     timeUnits = new HashSet<TimeUnit>();
+    timeUnitArray = null;
   }
 
   /**
@@ -277,22 +280,6 @@ public class MultivaluedQueryParamsBean {
   }
 
   /**
-   * Method sets attribute {@link #intArray}.<br/>
-   *
-   * @param pIntArray Value to which {@link #intArray} should be set.
-   */
-  public void setIntArray( int[] pIntArray ) {
-    // Assign value to attribute
-    if (pIntArray != null) {
-      intArray = new int[pIntArray.length];
-      System.arraycopy(pIntArray, 0, intArray, 0, pIntArray.length);
-    }
-    else {
-      intArray = null;
-    }
-  }
-
-  /**
    * Method returns attribute {@link #strings}.<br/>
    *
    * @return {@link String[]} Value to which {@link #strings} is set.
@@ -307,22 +294,6 @@ public class MultivaluedQueryParamsBean {
       lReturnValue = null;
     }
     return lReturnValue;
-  }
-
-  /**
-   * Method sets attribute {@link #strings}.<br/>
-   *
-   * @param pStrings Value to which {@link #strings} should be set.
-   */
-  public void setStrings( String[] pStrings ) {
-    // Assign value to attribute
-    if (pStrings != null) {
-      strings = new String[pStrings.length];
-      System.arraycopy(pStrings, 0, strings, 0, pStrings.length);
-    }
-    else {
-      strings = null;
-    }
   }
 
   /**
@@ -343,22 +314,6 @@ public class MultivaluedQueryParamsBean {
   }
 
   /**
-   * Method sets attribute {@link #integers}.<br/>
-   *
-   * @param pIntegers Value to which {@link #integers} should be set.
-   */
-  public void setIntegers( Integer[] pIntegers ) {
-    // Assign value to attribute
-    if (pIntegers != null) {
-      integers = new Integer[pIntegers.length];
-      System.arraycopy(pIntegers, 0, integers, 0, pIntegers.length);
-    }
-    else {
-      integers = null;
-    }
-  }
-
-  /**
    * Method returns association {@link #timeUnits}.<br/>
    *
    * @return {@link Set<TimeUnit>} Value to which {@link #timeUnits} is set. The method never returns null and the
@@ -367,47 +322,6 @@ public class MultivaluedQueryParamsBean {
   public Set<TimeUnit> getTimeUnits( ) {
     // Return all TimeUnit objects as unmodifiable collection.
     return Collections.unmodifiableSet(timeUnits);
-  }
-
-  /**
-   * Method adds the passed object to {@link #timeUnits}.
-   *
-   * @param pTimeUnits Object that should be added to {@link #timeUnits}. The parameter must not be null.
-   */
-  public void addToTimeUnits( TimeUnit pTimeUnits ) {
-    // Add passed object to collection of associated TimeUnit objects.
-    timeUnits.add(pTimeUnits);
-  }
-
-  /**
-   * Method adds all passed objects to {@link #timeUnits}.
-   *
-   * @param pTimeUnits Collection with all objects that should be added to {@link #timeUnits}. The parameter must not be
-   * null.
-   */
-  public void addToTimeUnits( Collection<TimeUnit> pTimeUnits ) {
-    // Add all passed objects.
-    for (TimeUnit lNextObject : pTimeUnits) {
-      this.addToTimeUnits(lNextObject);
-    }
-  }
-
-  /**
-   * Method removes the passed object from {@link #timeUnits}.<br/>
-   *
-   * @param pTimeUnits Object that should be removed from {@link #timeUnits}. The parameter must not be null.
-   */
-  public void removeFromTimeUnits( TimeUnit pTimeUnits ) {
-    // Remove passed object from collection of associated TimeUnit objects.
-    timeUnits.remove(pTimeUnits);
-  }
-
-  /**
-   * Method removes all objects from {@link #timeUnits}.
-   */
-  public void clearTimeUnits( ) {
-    // Remove all objects from association "timeUnits".
-    timeUnits.clear();
   }
 
   /**
@@ -425,22 +339,6 @@ public class MultivaluedQueryParamsBean {
       lReturnValue = null;
     }
     return lReturnValue;
-  }
-
-  /**
-   * Method sets attribute {@link #timeUnitArray}.<br/>
-   *
-   * @param pTimeUnitArray Value to which {@link #timeUnitArray} should be set.
-   */
-  public void setTimeUnitArray( TimeUnit[] pTimeUnitArray ) {
-    // Assign value to attribute
-    if (pTimeUnitArray != null) {
-      timeUnitArray = new TimeUnit[pTimeUnitArray.length];
-      System.arraycopy(pTimeUnitArray, 0, timeUnitArray, 0, pTimeUnitArray.length);
-    }
-    else {
-      timeUnitArray = null;
-    }
   }
 
   @Override

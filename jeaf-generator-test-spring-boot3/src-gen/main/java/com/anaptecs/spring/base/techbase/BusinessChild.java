@@ -13,13 +13,14 @@ public class BusinessChild extends BusinessParent {
    */
   public static final String CHILDATTRIBUTE = "childAttribute";
 
-  private String childAttribute;
+  private final String childAttribute;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   protected BusinessChild( ) {
+    childAttribute = null;
   }
 
   /**
@@ -143,16 +144,6 @@ public class BusinessChild extends BusinessParent {
    */
   public String getChildAttribute( ) {
     return childAttribute;
-  }
-
-  /**
-   * Method sets attribute {@link #childAttribute}.<br/>
-   *
-   * @param pChildAttribute Value to which {@link #childAttribute} should be set.
-   */
-  public void setChildAttribute( String pChildAttribute ) {
-    // Assign value to attribute
-    childAttribute = pChildAttribute;
   }
 
   @Override

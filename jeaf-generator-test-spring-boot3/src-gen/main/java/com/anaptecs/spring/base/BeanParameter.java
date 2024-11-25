@@ -25,18 +25,21 @@ public class BeanParameter {
   @Deprecated
   public static final String OLDSTYLE = "oldStyle";
 
-  private String accessToken;
+  private final String accessToken;
 
-  private Locale language;
+  private final Locale language;
 
   @Deprecated
-  private String oldStyle;
+  private final String oldStyle;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   protected BeanParameter( ) {
+    accessToken = null;
+    language = null;
+    oldStyle = null;
   }
 
   /**
@@ -167,32 +170,12 @@ public class BeanParameter {
   }
 
   /**
-   * Method sets attribute {@link #accessToken}.<br/>
-   *
-   * @param pAccessToken Value to which {@link #accessToken} should be set.
-   */
-  public void setAccessToken( String pAccessToken ) {
-    // Assign value to attribute
-    accessToken = pAccessToken;
-  }
-
-  /**
    * Method returns attribute {@link #language}.<br/>
    *
    * @return {@link Locale} Value to which {@link #language} is set.
    */
   public Locale getLanguage( ) {
     return language;
-  }
-
-  /**
-   * Method sets attribute {@link #language}.<br/>
-   *
-   * @param pLanguage Value to which {@link #language} should be set.
-   */
-  public void setLanguage( Locale pLanguage ) {
-    // Assign value to attribute
-    language = pLanguage;
   }
 
   /**
@@ -203,17 +186,6 @@ public class BeanParameter {
   @Deprecated
   public String getOldStyle( ) {
     return oldStyle;
-  }
-
-  /**
-   * Method sets attribute {@link #oldStyle}.<br/>
-   *
-   * @param pOldStyle Value to which {@link #oldStyle} should be set.
-   */
-  @Deprecated
-  public void setOldStyle( String pOldStyle ) {
-    // Assign value to attribute
-    oldStyle = pOldStyle;
   }
 
   @Override

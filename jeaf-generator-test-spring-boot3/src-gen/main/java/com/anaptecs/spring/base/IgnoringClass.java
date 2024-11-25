@@ -13,13 +13,14 @@ public class IgnoringClass {
    */
   public static final String AGE = "age";
 
-  private Integer age;
+  private final Integer age;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   protected IgnoringClass( ) {
+    age = null;
   }
 
   /**
@@ -107,16 +108,6 @@ public class IgnoringClass {
    */
   public Integer getAge( ) {
     return age;
-  }
-
-  /**
-   * Method sets attribute {@link #age}.<br/>
-   *
-   * @param pAge Value to which {@link #age} should be set.
-   */
-  public void setAge( Integer pAge ) {
-    // Assign value to attribute
-    age = pAge;
   }
 
   @Override

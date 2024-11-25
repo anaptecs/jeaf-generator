@@ -7,10 +7,8 @@ package com.anaptecs.spring.base;
 
 import java.net.URL;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
@@ -75,7 +73,7 @@ public class Product implements IProduct {
    */
   public static final String URI = "uri";
 
-  private Set<Reseller> resellers;
+  private final Set<Reseller> resellers;
 
   /**
    * Attribute is required for correct handling of bidirectional associations in case of deserialization.
@@ -83,13 +81,13 @@ public class Product implements IProduct {
   private transient boolean resellersBackReferenceInitialized;
 
   @Size(min = 12, max = Integer.MAX_VALUE)
-  private String name;
+  private final String name;
 
   /**
    * Image describing the product.
    */
   @Size(min = 1024, max = 32768)
-  private byte[] image;
+  private final byte[] image;
 
   /**
    * <br/>
@@ -98,14 +96,14 @@ public class Product implements IProduct {
    * <li><code>https://www.company.com/products/1345-345</code></li>
    * </ul>
    */
-  private URL link;
+  private final URL link;
 
   private final UUID productID;
 
   @Size(min = 7, max = 42)
-  private Set<CurrencyCode> supportedCurrencies;
+  private final Set<CurrencyCode> supportedCurrencies;
 
-  private Set<ProductCode> productCodes;
+  private final Set<ProductCode> productCodes;
 
   /**
    * <br/>
@@ -118,15 +116,15 @@ public class Product implements IProduct {
    * </ul>
    */
   @Deprecated
-  private String description;
+  private final String description;
 
-  private transient Set<Sortiment> sortiments;
+  private final transient Set<Sortiment> sortiments;
 
   /**
    * <br/>
    * <b>Default Value:</b> <code>"https://products.anaptecs.de/123456789"</code>
    */
-  private String uri;
+  private final String uri;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
@@ -136,9 +134,13 @@ public class Product implements IProduct {
     resellers = new HashSet<Reseller>();
     // Bidirectional back reference is not yet set up correctly
     resellersBackReferenceInitialized = false;
+    name = null;
+    image = null;
+    link = null;
     productID = null;
     supportedCurrencies = new HashSet<CurrencyCode>();
     productCodes = new HashSet<ProductCode>();
+    description = null;
     sortiments = new HashSet<Sortiment>();
     uri = "https://products.anaptecs.de/123456789";
   }
@@ -489,78 +491,12 @@ public class Product implements IProduct {
   }
 
   /**
-   * Method adds the passed object to {@link #resellers}.
-   *
-   * @param pResellers Object that should be added to {@link #resellers}. The parameter must not be null.
-   */
-  public void addToResellers( Reseller pResellers ) {
-    // Add passed object to collection of associated Reseller objects.
-    resellers.add(pResellers);
-    // The association is set in both directions because within the UML model it is defined to be bidirectional.
-    // In case that one side will be removed from the association the other side will also be removed.
-    if (pResellers != null && pResellers.getProducts().contains(this) == false) {
-      pResellers.addToProducts((Product) this);
-    }
-  }
-
-  /**
-   * Method adds all passed objects to {@link #resellers}.
-   *
-   * @param pResellers Collection with all objects that should be added to {@link #resellers}. The parameter must not be
-   * null.
-   */
-  public void addToResellers( Collection<Reseller> pResellers ) {
-    // Add all passed objects.
-    for (Reseller lNextObject : pResellers) {
-      this.addToResellers(lNextObject);
-    }
-  }
-
-  /**
-   * Method removes the passed object from {@link #resellers}.<br/>
-   *
-   * @param pResellers Object that should be removed from {@link #resellers}. The parameter must not be null.
-   */
-  public void removeFromResellers( Reseller pResellers ) {
-    // Remove passed object from collection of associated Reseller objects.
-    resellers.remove(pResellers);
-    // The association is set in both directions because within the UML model it is defined to be bidirectional.
-    // In case that one side will be removed from the association the other side will also be removed.
-    if (pResellers.getProducts().contains(this) == true) {
-      pResellers.removeFromProducts((Product) this);
-    }
-  }
-
-  /**
-   * Method removes all objects from {@link #resellers}.
-   */
-  public void clearResellers( ) {
-    // Remove all objects from association "resellers".
-    Collection<Reseller> lResellers = new HashSet<Reseller>(resellers);
-    Iterator<Reseller> lIterator = lResellers.iterator();
-    while (lIterator.hasNext()) {
-      // As association is bidirectional we have to clear it in both directions.
-      this.removeFromResellers(lIterator.next());
-    }
-  }
-
-  /**
    * Method returns attribute {@link #name}.<br/>
    *
    * @return {@link String} Value to which {@link #name} is set.
    */
   public String getName( ) {
     return name;
-  }
-
-  /**
-   * Method sets attribute {@link #name}.<br/>
-   *
-   * @param pName Value to which {@link #name} should be set.
-   */
-  public void setName( String pName ) {
-    // Assign value to attribute
-    name = pName;
   }
 
   /**
@@ -582,39 +518,12 @@ public class Product implements IProduct {
   }
 
   /**
-   * Method sets attribute {@link #image}.<br/>
-   * Image describing the product.
-   *
-   * @param pImage Value to which {@link #image} should be set.
-   */
-  public void setImage( byte[] pImage ) {
-    // Assign value to attribute
-    if (pImage != null) {
-      image = new byte[pImage.length];
-      System.arraycopy(pImage, 0, image, 0, pImage.length);
-    }
-    else {
-      image = null;
-    }
-  }
-
-  /**
    * Method returns attribute {@link #link}.<br/>
    *
    * @return {@link URL} Value to which {@link #link} is set.
    */
   public URL getLink( ) {
     return link;
-  }
-
-  /**
-   * Method sets attribute {@link #link}.<br/>
-   *
-   * @param pLink Value to which {@link #link} should be set.
-   */
-  public void setLink( URL pLink ) {
-    // Assign value to attribute
-    link = pLink;
   }
 
   /**
@@ -638,49 +547,6 @@ public class Product implements IProduct {
   }
 
   /**
-   * Method adds the passed object to {@link #supportedCurrencies}.
-   *
-   * @param pSupportedCurrencies Object that should be added to {@link #supportedCurrencies}. The parameter must not be
-   * null.
-   */
-  public void addToSupportedCurrencies( CurrencyCode pSupportedCurrencies ) {
-    // Add passed object to collection of associated CurrencyCode objects.
-    supportedCurrencies.add(pSupportedCurrencies);
-  }
-
-  /**
-   * Method adds all passed objects to {@link #supportedCurrencies}.
-   *
-   * @param pSupportedCurrencies Collection with all objects that should be added to {@link #supportedCurrencies}. The
-   * parameter must not be null.
-   */
-  public void addToSupportedCurrencies( Collection<CurrencyCode> pSupportedCurrencies ) {
-    // Add all passed objects.
-    for (CurrencyCode lNextObject : pSupportedCurrencies) {
-      this.addToSupportedCurrencies(lNextObject);
-    }
-  }
-
-  /**
-   * Method removes the passed object from {@link #supportedCurrencies}.<br/>
-   *
-   * @param pSupportedCurrencies Object that should be removed from {@link #supportedCurrencies}. The parameter must not
-   * be null.
-   */
-  public void removeFromSupportedCurrencies( CurrencyCode pSupportedCurrencies ) {
-    // Remove passed object from collection of associated CurrencyCode objects.
-    supportedCurrencies.remove(pSupportedCurrencies);
-  }
-
-  /**
-   * Method removes all objects from {@link #supportedCurrencies}.
-   */
-  public void clearSupportedCurrencies( ) {
-    // Remove all objects from association "supportedCurrencies".
-    supportedCurrencies.clear();
-  }
-
-  /**
    * Method returns association {@link #productCodes}.<br/>
    *
    * @return {@link Set<ProductCode>} Value to which {@link #productCodes} is set. The method never returns null and the
@@ -692,47 +558,6 @@ public class Product implements IProduct {
   }
 
   /**
-   * Method adds the passed object to {@link #productCodes}.
-   *
-   * @param pProductCodes Object that should be added to {@link #productCodes}. The parameter must not be null.
-   */
-  public void addToProductCodes( ProductCode pProductCodes ) {
-    // Add passed object to collection of associated ProductCode objects.
-    productCodes.add(pProductCodes);
-  }
-
-  /**
-   * Method adds all passed objects to {@link #productCodes}.
-   *
-   * @param pProductCodes Collection with all objects that should be added to {@link #productCodes}. The parameter must
-   * not be null.
-   */
-  public void addToProductCodes( Collection<ProductCode> pProductCodes ) {
-    // Add all passed objects.
-    for (ProductCode lNextObject : pProductCodes) {
-      this.addToProductCodes(lNextObject);
-    }
-  }
-
-  /**
-   * Method removes the passed object from {@link #productCodes}.<br/>
-   *
-   * @param pProductCodes Object that should be removed from {@link #productCodes}. The parameter must not be null.
-   */
-  public void removeFromProductCodes( ProductCode pProductCodes ) {
-    // Remove passed object from collection of associated ProductCode objects.
-    productCodes.remove(pProductCodes);
-  }
-
-  /**
-   * Method removes all objects from {@link #productCodes}.
-   */
-  public void clearProductCodes( ) {
-    // Remove all objects from association "productCodes".
-    productCodes.clear();
-  }
-
-  /**
    * Method returns attribute {@link #description}.<br/>
    *
    * @return {@link String} Value to which {@link #description} is set.
@@ -740,17 +565,6 @@ public class Product implements IProduct {
   @Deprecated
   public String getDescription( ) {
     return description;
-  }
-
-  /**
-   * Method sets attribute {@link #description}.<br/>
-   *
-   * @param pDescription Value to which {@link #description} should be set.
-   */
-  @Deprecated
-  public void setDescription( String pDescription ) {
-    // Assign value to attribute
-    description = pDescription;
   }
 
   /**
@@ -775,58 +589,12 @@ public class Product implements IProduct {
   }
 
   /**
-   * Method adds all passed objects to {@link #sortiments}.
-   *
-   * @param pSortiments Collection with all objects that should be added to {@link #sortiments}. The parameter must not
-   * be null.
-   */
-  void addToSortiments( Collection<Sortiment> pSortiments ) {
-    // Add all passed objects.
-    for (Sortiment lNextObject : pSortiments) {
-      this.addToSortiments(lNextObject);
-    }
-  }
-
-  /**
-   * Method removes the passed object from {@link #sortiments}.<br/>
-   *
-   * @param pSortiments Object that should be removed from {@link #sortiments}. The parameter must not be null.
-   */
-  void removeFromSortiments( Sortiment pSortiments ) {
-    // Remove passed object from collection of associated Sortiment objects.
-    sortiments.remove(pSortiments);
-  }
-
-  /**
-   * Method removes all objects from {@link #sortiments}.
-   */
-  void clearSortiments( ) {
-    // Remove all objects from association "sortiments".
-    Collection<Sortiment> lSortiments = new HashSet<Sortiment>(sortiments);
-    Iterator<Sortiment> lIterator = lSortiments.iterator();
-    while (lIterator.hasNext()) {
-      // As association is bidirectional we have to clear it in both directions.
-      this.removeFromSortiments(lIterator.next());
-    }
-  }
-
-  /**
    * Method returns attribute {@link #uri}.<br/>
    *
    * @return {@link String} Value to which {@link #uri} is set.
    */
   public String getUri( ) {
     return uri;
-  }
-
-  /**
-   * Method sets attribute {@link #uri}.<br/>
-   *
-   * @param pUri Value to which {@link #uri} should be set.
-   */
-  public void setUri( String pUri ) {
-    // Assign value to attribute
-    uri = pUri;
   }
 
   @Override

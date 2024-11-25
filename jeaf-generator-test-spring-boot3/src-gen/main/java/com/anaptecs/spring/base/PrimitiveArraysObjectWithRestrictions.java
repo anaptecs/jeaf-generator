@@ -123,58 +123,80 @@ public class PrimitiveArraysObjectWithRestrictions {
    */
   public static final String BSTRINGARRAY = "bStringArray";
 
-  private boolean[] aBooleanArray;
+  private final boolean[] aBooleanArray;
 
-  private Boolean[] bBooleanArray;
+  private final Boolean[] bBooleanArray;
 
-  private boolean[] cBooleanArray;
+  private final boolean[] cBooleanArray;
 
   @Size(min = 0, max = 32768)
-  private byte[] aByteArray;
+  private final byte[] aByteArray;
 
-  private Byte[] bByteArray;
+  private final Byte[] bByteArray;
 
-  private short[] aShortArray;
+  private final short[] aShortArray;
 
-  private Short[] bShortArray;
+  private final Short[] bShortArray;
 
-  private int[] aIntegerArray;
+  private final int[] aIntegerArray;
 
-  private Integer[] bIntegerArray;
+  private final Integer[] bIntegerArray;
 
-  private Integer[] cIntegerArray;
+  private final Integer[] cIntegerArray;
 
   @NotEmpty
-  private long[] aLongArray;
+  private final long[] aLongArray;
 
-  private Long[] bLongArray;
+  private final Long[] bLongArray;
 
-  private BigInteger[] aBigIntegerArray;
+  private final BigInteger[] aBigIntegerArray;
 
-  private char[] aCharacterArray;
+  private final char[] aCharacterArray;
 
-  private Character[] bCharacterArray;
+  private final Character[] bCharacterArray;
 
-  private float[] aFloatArray;
+  private final float[] aFloatArray;
 
-  private Float[] bFloatArray;
+  private final Float[] bFloatArray;
 
   @Size(min = 4, max = 12)
-  private double[] aDoubleArray;
+  private final double[] aDoubleArray;
 
-  private Double[] bDoubleArray;
+  private final Double[] bDoubleArray;
 
-  private BigDecimal[] aBigDecimalArray;
+  private final BigDecimal[] aBigDecimalArray;
 
-  private String[] aStringArray;
+  private final String[] aStringArray;
 
-  private String[] bStringArray;
+  private final String[] bStringArray;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   protected PrimitiveArraysObjectWithRestrictions( ) {
+    aBooleanArray = null;
+    bBooleanArray = null;
+    cBooleanArray = null;
+    aByteArray = null;
+    bByteArray = null;
+    aShortArray = null;
+    bShortArray = null;
+    aIntegerArray = null;
+    bIntegerArray = null;
+    cIntegerArray = null;
+    aLongArray = null;
+    bLongArray = null;
+    aBigIntegerArray = null;
+    aCharacterArray = null;
+    bCharacterArray = null;
+    aFloatArray = null;
+    bFloatArray = null;
+    aDoubleArray = null;
+    bDoubleArray = null;
+    aBigDecimalArray = null;
+    aStringArray = null;
+    bStringArray = null;
   }
 
   /**
@@ -745,22 +767,6 @@ public class PrimitiveArraysObjectWithRestrictions {
   }
 
   /**
-   * Method sets attribute {@link #aBooleanArray}.<br/>
-   *
-   * @param pABooleanArray Value to which {@link #aBooleanArray} should be set.
-   */
-  public void setABooleanArray( boolean[] pABooleanArray ) {
-    // Assign value to attribute
-    if (pABooleanArray != null) {
-      aBooleanArray = new boolean[pABooleanArray.length];
-      System.arraycopy(pABooleanArray, 0, aBooleanArray, 0, pABooleanArray.length);
-    }
-    else {
-      aBooleanArray = null;
-    }
-  }
-
-  /**
    * Method returns attribute {@link #bBooleanArray}.<br/>
    *
    * @return {@link Boolean[]} Value to which {@link #bBooleanArray} is set.
@@ -775,22 +781,6 @@ public class PrimitiveArraysObjectWithRestrictions {
       lReturnValue = null;
     }
     return lReturnValue;
-  }
-
-  /**
-   * Method sets attribute {@link #bBooleanArray}.<br/>
-   *
-   * @param pBBooleanArray Value to which {@link #bBooleanArray} should be set.
-   */
-  public void setBBooleanArray( Boolean[] pBBooleanArray ) {
-    // Assign value to attribute
-    if (pBBooleanArray != null) {
-      bBooleanArray = new Boolean[pBBooleanArray.length];
-      System.arraycopy(pBBooleanArray, 0, bBooleanArray, 0, pBBooleanArray.length);
-    }
-    else {
-      bBooleanArray = null;
-    }
   }
 
   /**
@@ -811,22 +801,6 @@ public class PrimitiveArraysObjectWithRestrictions {
   }
 
   /**
-   * Method sets attribute {@link #cBooleanArray}.<br/>
-   *
-   * @param pCBooleanArray Value to which {@link #cBooleanArray} should be set.
-   */
-  public void setCBooleanArray( boolean[] pCBooleanArray ) {
-    // Assign value to attribute
-    if (pCBooleanArray != null) {
-      cBooleanArray = new boolean[pCBooleanArray.length];
-      System.arraycopy(pCBooleanArray, 0, cBooleanArray, 0, pCBooleanArray.length);
-    }
-    else {
-      cBooleanArray = null;
-    }
-  }
-
-  /**
    * Method returns attribute {@link #aByteArray}.<br/>
    *
    * @return byte[] Value to which {@link #aByteArray} is set.
@@ -841,22 +815,6 @@ public class PrimitiveArraysObjectWithRestrictions {
       lReturnValue = null;
     }
     return lReturnValue;
-  }
-
-  /**
-   * Method sets attribute {@link #aByteArray}.<br/>
-   *
-   * @param pAByteArray Value to which {@link #aByteArray} should be set.
-   */
-  public void setAByteArray( byte[] pAByteArray ) {
-    // Assign value to attribute
-    if (pAByteArray != null) {
-      aByteArray = new byte[pAByteArray.length];
-      System.arraycopy(pAByteArray, 0, aByteArray, 0, pAByteArray.length);
-    }
-    else {
-      aByteArray = null;
-    }
   }
 
   /**
@@ -877,22 +835,6 @@ public class PrimitiveArraysObjectWithRestrictions {
   }
 
   /**
-   * Method sets attribute {@link #bByteArray}.<br/>
-   *
-   * @param pBByteArray Value to which {@link #bByteArray} should be set.
-   */
-  public void setBByteArray( Byte[] pBByteArray ) {
-    // Assign value to attribute
-    if (pBByteArray != null) {
-      bByteArray = new Byte[pBByteArray.length];
-      System.arraycopy(pBByteArray, 0, bByteArray, 0, pBByteArray.length);
-    }
-    else {
-      bByteArray = null;
-    }
-  }
-
-  /**
    * Method returns attribute {@link #aShortArray}.<br/>
    *
    * @return short[] Value to which {@link #aShortArray} is set.
@@ -907,22 +849,6 @@ public class PrimitiveArraysObjectWithRestrictions {
       lReturnValue = null;
     }
     return lReturnValue;
-  }
-
-  /**
-   * Method sets attribute {@link #aShortArray}.<br/>
-   *
-   * @param pAShortArray Value to which {@link #aShortArray} should be set.
-   */
-  public void setAShortArray( short[] pAShortArray ) {
-    // Assign value to attribute
-    if (pAShortArray != null) {
-      aShortArray = new short[pAShortArray.length];
-      System.arraycopy(pAShortArray, 0, aShortArray, 0, pAShortArray.length);
-    }
-    else {
-      aShortArray = null;
-    }
   }
 
   /**
@@ -943,22 +869,6 @@ public class PrimitiveArraysObjectWithRestrictions {
   }
 
   /**
-   * Method sets attribute {@link #bShortArray}.<br/>
-   *
-   * @param pBShortArray Value to which {@link #bShortArray} should be set.
-   */
-  public void setBShortArray( Short[] pBShortArray ) {
-    // Assign value to attribute
-    if (pBShortArray != null) {
-      bShortArray = new Short[pBShortArray.length];
-      System.arraycopy(pBShortArray, 0, bShortArray, 0, pBShortArray.length);
-    }
-    else {
-      bShortArray = null;
-    }
-  }
-
-  /**
    * Method returns attribute {@link #aIntegerArray}.<br/>
    *
    * @return int[] Value to which {@link #aIntegerArray} is set.
@@ -973,22 +883,6 @@ public class PrimitiveArraysObjectWithRestrictions {
       lReturnValue = null;
     }
     return lReturnValue;
-  }
-
-  /**
-   * Method sets attribute {@link #aIntegerArray}.<br/>
-   *
-   * @param pAIntegerArray Value to which {@link #aIntegerArray} should be set.
-   */
-  public void setAIntegerArray( int[] pAIntegerArray ) {
-    // Assign value to attribute
-    if (pAIntegerArray != null) {
-      aIntegerArray = new int[pAIntegerArray.length];
-      System.arraycopy(pAIntegerArray, 0, aIntegerArray, 0, pAIntegerArray.length);
-    }
-    else {
-      aIntegerArray = null;
-    }
   }
 
   /**
@@ -1009,22 +903,6 @@ public class PrimitiveArraysObjectWithRestrictions {
   }
 
   /**
-   * Method sets attribute {@link #bIntegerArray}.<br/>
-   *
-   * @param pBIntegerArray Value to which {@link #bIntegerArray} should be set.
-   */
-  public void setBIntegerArray( Integer[] pBIntegerArray ) {
-    // Assign value to attribute
-    if (pBIntegerArray != null) {
-      bIntegerArray = new Integer[pBIntegerArray.length];
-      System.arraycopy(pBIntegerArray, 0, bIntegerArray, 0, pBIntegerArray.length);
-    }
-    else {
-      bIntegerArray = null;
-    }
-  }
-
-  /**
    * Method returns attribute {@link #cIntegerArray}.<br/>
    *
    * @return {@link Integer[]} Value to which {@link #cIntegerArray} is set.
@@ -1039,22 +917,6 @@ public class PrimitiveArraysObjectWithRestrictions {
       lReturnValue = null;
     }
     return lReturnValue;
-  }
-
-  /**
-   * Method sets attribute {@link #cIntegerArray}.<br/>
-   *
-   * @param pCIntegerArray Value to which {@link #cIntegerArray} should be set.
-   */
-  public void setCIntegerArray( Integer[] pCIntegerArray ) {
-    // Assign value to attribute
-    if (pCIntegerArray != null) {
-      cIntegerArray = new Integer[pCIntegerArray.length];
-      System.arraycopy(pCIntegerArray, 0, cIntegerArray, 0, pCIntegerArray.length);
-    }
-    else {
-      cIntegerArray = null;
-    }
   }
 
   /**
@@ -1075,22 +937,6 @@ public class PrimitiveArraysObjectWithRestrictions {
   }
 
   /**
-   * Method sets attribute {@link #aLongArray}.<br/>
-   *
-   * @param pALongArray Value to which {@link #aLongArray} should be set.
-   */
-  public void setALongArray( long[] pALongArray ) {
-    // Assign value to attribute
-    if (pALongArray != null) {
-      aLongArray = new long[pALongArray.length];
-      System.arraycopy(pALongArray, 0, aLongArray, 0, pALongArray.length);
-    }
-    else {
-      aLongArray = null;
-    }
-  }
-
-  /**
    * Method returns attribute {@link #bLongArray}.<br/>
    *
    * @return {@link Long[]} Value to which {@link #bLongArray} is set.
@@ -1105,22 +951,6 @@ public class PrimitiveArraysObjectWithRestrictions {
       lReturnValue = null;
     }
     return lReturnValue;
-  }
-
-  /**
-   * Method sets attribute {@link #bLongArray}.<br/>
-   *
-   * @param pBLongArray Value to which {@link #bLongArray} should be set.
-   */
-  public void setBLongArray( Long[] pBLongArray ) {
-    // Assign value to attribute
-    if (pBLongArray != null) {
-      bLongArray = new Long[pBLongArray.length];
-      System.arraycopy(pBLongArray, 0, bLongArray, 0, pBLongArray.length);
-    }
-    else {
-      bLongArray = null;
-    }
   }
 
   /**
@@ -1141,22 +971,6 @@ public class PrimitiveArraysObjectWithRestrictions {
   }
 
   /**
-   * Method sets attribute {@link #aBigIntegerArray}.<br/>
-   *
-   * @param pABigIntegerArray Value to which {@link #aBigIntegerArray} should be set.
-   */
-  public void setABigIntegerArray( BigInteger[] pABigIntegerArray ) {
-    // Assign value to attribute
-    if (pABigIntegerArray != null) {
-      aBigIntegerArray = new BigInteger[pABigIntegerArray.length];
-      System.arraycopy(pABigIntegerArray, 0, aBigIntegerArray, 0, pABigIntegerArray.length);
-    }
-    else {
-      aBigIntegerArray = null;
-    }
-  }
-
-  /**
    * Method returns attribute {@link #aCharacterArray}.<br/>
    *
    * @return char[] Value to which {@link #aCharacterArray} is set.
@@ -1171,22 +985,6 @@ public class PrimitiveArraysObjectWithRestrictions {
       lReturnValue = null;
     }
     return lReturnValue;
-  }
-
-  /**
-   * Method sets attribute {@link #aCharacterArray}.<br/>
-   *
-   * @param pACharacterArray Value to which {@link #aCharacterArray} should be set.
-   */
-  public void setACharacterArray( char[] pACharacterArray ) {
-    // Assign value to attribute
-    if (pACharacterArray != null) {
-      aCharacterArray = new char[pACharacterArray.length];
-      System.arraycopy(pACharacterArray, 0, aCharacterArray, 0, pACharacterArray.length);
-    }
-    else {
-      aCharacterArray = null;
-    }
   }
 
   /**
@@ -1207,22 +1005,6 @@ public class PrimitiveArraysObjectWithRestrictions {
   }
 
   /**
-   * Method sets attribute {@link #bCharacterArray}.<br/>
-   *
-   * @param pBCharacterArray Value to which {@link #bCharacterArray} should be set.
-   */
-  public void setBCharacterArray( Character[] pBCharacterArray ) {
-    // Assign value to attribute
-    if (pBCharacterArray != null) {
-      bCharacterArray = new Character[pBCharacterArray.length];
-      System.arraycopy(pBCharacterArray, 0, bCharacterArray, 0, pBCharacterArray.length);
-    }
-    else {
-      bCharacterArray = null;
-    }
-  }
-
-  /**
    * Method returns attribute {@link #aFloatArray}.<br/>
    *
    * @return float[] Value to which {@link #aFloatArray} is set.
@@ -1237,22 +1019,6 @@ public class PrimitiveArraysObjectWithRestrictions {
       lReturnValue = null;
     }
     return lReturnValue;
-  }
-
-  /**
-   * Method sets attribute {@link #aFloatArray}.<br/>
-   *
-   * @param pAFloatArray Value to which {@link #aFloatArray} should be set.
-   */
-  public void setAFloatArray( float[] pAFloatArray ) {
-    // Assign value to attribute
-    if (pAFloatArray != null) {
-      aFloatArray = new float[pAFloatArray.length];
-      System.arraycopy(pAFloatArray, 0, aFloatArray, 0, pAFloatArray.length);
-    }
-    else {
-      aFloatArray = null;
-    }
   }
 
   /**
@@ -1273,22 +1039,6 @@ public class PrimitiveArraysObjectWithRestrictions {
   }
 
   /**
-   * Method sets attribute {@link #bFloatArray}.<br/>
-   *
-   * @param pBFloatArray Value to which {@link #bFloatArray} should be set.
-   */
-  public void setBFloatArray( Float[] pBFloatArray ) {
-    // Assign value to attribute
-    if (pBFloatArray != null) {
-      bFloatArray = new Float[pBFloatArray.length];
-      System.arraycopy(pBFloatArray, 0, bFloatArray, 0, pBFloatArray.length);
-    }
-    else {
-      bFloatArray = null;
-    }
-  }
-
-  /**
    * Method returns attribute {@link #aDoubleArray}.<br/>
    *
    * @return double[] Value to which {@link #aDoubleArray} is set.
@@ -1303,22 +1053,6 @@ public class PrimitiveArraysObjectWithRestrictions {
       lReturnValue = null;
     }
     return lReturnValue;
-  }
-
-  /**
-   * Method sets attribute {@link #aDoubleArray}.<br/>
-   *
-   * @param pADoubleArray Value to which {@link #aDoubleArray} should be set.
-   */
-  public void setADoubleArray( double[] pADoubleArray ) {
-    // Assign value to attribute
-    if (pADoubleArray != null) {
-      aDoubleArray = new double[pADoubleArray.length];
-      System.arraycopy(pADoubleArray, 0, aDoubleArray, 0, pADoubleArray.length);
-    }
-    else {
-      aDoubleArray = null;
-    }
   }
 
   /**
@@ -1339,22 +1073,6 @@ public class PrimitiveArraysObjectWithRestrictions {
   }
 
   /**
-   * Method sets attribute {@link #bDoubleArray}.<br/>
-   *
-   * @param pBDoubleArray Value to which {@link #bDoubleArray} should be set.
-   */
-  public void setBDoubleArray( Double[] pBDoubleArray ) {
-    // Assign value to attribute
-    if (pBDoubleArray != null) {
-      bDoubleArray = new Double[pBDoubleArray.length];
-      System.arraycopy(pBDoubleArray, 0, bDoubleArray, 0, pBDoubleArray.length);
-    }
-    else {
-      bDoubleArray = null;
-    }
-  }
-
-  /**
    * Method returns attribute {@link #aBigDecimalArray}.<br/>
    *
    * @return {@link BigDecimal[]} Value to which {@link #aBigDecimalArray} is set.
@@ -1369,22 +1087,6 @@ public class PrimitiveArraysObjectWithRestrictions {
       lReturnValue = null;
     }
     return lReturnValue;
-  }
-
-  /**
-   * Method sets attribute {@link #aBigDecimalArray}.<br/>
-   *
-   * @param pABigDecimalArray Value to which {@link #aBigDecimalArray} should be set.
-   */
-  public void setABigDecimalArray( BigDecimal[] pABigDecimalArray ) {
-    // Assign value to attribute
-    if (pABigDecimalArray != null) {
-      aBigDecimalArray = new BigDecimal[pABigDecimalArray.length];
-      System.arraycopy(pABigDecimalArray, 0, aBigDecimalArray, 0, pABigDecimalArray.length);
-    }
-    else {
-      aBigDecimalArray = null;
-    }
   }
 
   /**
@@ -1405,22 +1107,6 @@ public class PrimitiveArraysObjectWithRestrictions {
   }
 
   /**
-   * Method sets attribute {@link #aStringArray}.<br/>
-   *
-   * @param pAStringArray Value to which {@link #aStringArray} should be set.
-   */
-  public void setAStringArray( String[] pAStringArray ) {
-    // Assign value to attribute
-    if (pAStringArray != null) {
-      aStringArray = new String[pAStringArray.length];
-      System.arraycopy(pAStringArray, 0, aStringArray, 0, pAStringArray.length);
-    }
-    else {
-      aStringArray = null;
-    }
-  }
-
-  /**
    * Method returns attribute {@link #bStringArray}.<br/>
    *
    * @return {@link String[]} Value to which {@link #bStringArray} is set.
@@ -1435,22 +1121,6 @@ public class PrimitiveArraysObjectWithRestrictions {
       lReturnValue = null;
     }
     return lReturnValue;
-  }
-
-  /**
-   * Method sets attribute {@link #bStringArray}.<br/>
-   *
-   * @param pBStringArray Value to which {@link #bStringArray} should be set.
-   */
-  public void setBStringArray( String[] pBStringArray ) {
-    // Assign value to attribute
-    if (pBStringArray != null) {
-      bStringArray = new String[pBStringArray.length];
-      System.arraycopy(pBStringArray, 0, bStringArray, 0, pBStringArray.length);
-    }
-    else {
-      bStringArray = null;
-    }
   }
 
   @Override
