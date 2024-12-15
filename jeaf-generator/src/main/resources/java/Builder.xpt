@@ -9,6 +9,7 @@
 «EXTENSION functions::SoftLink»
 «EXTENSION functions::JEAFDeprecated»
 «EXTENSION functions::SystemProperties»
+«EXTENSION functions::BeanParam»
 
 
 «IMPORT uml»
@@ -124,6 +125,13 @@ public static «IF isAbstract == true» abstract «ENDIF»class Builder«this.ge
 		«FOREACH this.superClass.getAllAttributesFromHierarchy().select(e|e.isPropertySuppressed() == false && e.belongsToTransientBidirectionalBackReference() == false) AS superAttr»
 			«EXPAND OverwriteBuilderSetterFromBaseClasses("Builder"+ this.getTemplateParams()) FOR superAttr»
 		«ENDFOREACH»
+		«IF hasTypeHierarchyCustomHeaders()»
+	      @Override
+	      public Builder addCustomHeader( String pHeaderName, String pHeaderValue ) {
+	        return (Builder) super.addCustomHeader(pHeaderName, pHeaderValue);
+	      }
+		«ENDIF»
+		
 	«ENDIF»
 	
 	«REM»Generate setters for each property of the builder«ENDREM»

@@ -208,6 +208,11 @@ public class SpecialContext extends Context {
       return this;
     }
 
+    @Override
+    public Builder addCustomHeader( String pHeaderName, String pHeaderValue ) {
+      return (Builder) super.addCustomHeader(pHeaderName, pHeaderValue);
+    }
+
     /**
      * Method sets attribute {@link #specificHeader}.<br/>
      *

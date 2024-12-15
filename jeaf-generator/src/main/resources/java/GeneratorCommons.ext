@@ -626,7 +626,16 @@ cached boolean hasCustomHeaders(uml::Type class):
 	if class.isStereotypeApplied("BeanParam")
 	then ((JMM::BeanParam)class).supportsCustomHeaders
 	else false;
-	  		
+	
+cached boolean hasTypeHierarchyCustomHeaders(uml::Class class):
+    if class.superClass.isEmpty
+    then false
+    else
+        if class.superClass.typeSelect(JMM::BeanParam).selectFirst(e|e.supportsCustomHeaders) != null
+        then true
+        else class.superClass.selectFirst(e|e.hasTypeHierarchyCustomHeaders()) != null;
+    
+
 cached boolean hasParamCustomHeaders(uml::Parameter param):
 	if param.isStereotypeApplied("BeanParam")
 	then ((JMM::BeanParam)param).supportsCustomHeaders
