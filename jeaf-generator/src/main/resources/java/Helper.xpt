@@ -190,27 +190,57 @@
 		  return lEquals;
 		}
 	«ELSEIF this.isOpenAPIDataType() && this.getAllAttributesFromHierarchy().select(e|e.isPropertySuppressed() == false && e.isStatic == false).size == 1 && this.getAllAttributesFromHierarchy().select(e|e.isPropertySuppressed() == false && e.isStatic == false).first().isMultivalued() == false && (generateEqualsAndHashCode() || generateEqualsAndHashCodeForOpenAPIDataTypes())»
-		@Override
-		public int hashCode( ) {
-		  return java.util.Objects.hash(«this.getAllAttributesFromHierarchy().select(e|e.isPropertySuppressed() == false && e.isStatic == false).first().name»);
-		}
-		
-		@Override
-		public boolean equals( Object pOtherObject ) {
-		  boolean lEquals;
-		  if (this == pOtherObject) {
-		    lEquals = true;
-		  }
-		  else if (pOtherObject instanceof «this.fqn()» == false) {
-		    lEquals = false;
-		  }
-		  else {
-		    lEquals = java.util.Objects.equals(«this.getAllAttributesFromHierarchy().select(e|e.isPropertySuppressed() == false && e.isStatic == false).first().name», ((«this.fqn()») pOtherObject).«this.getAllAttributesFromHierarchy().select(e|e.isPropertySuppressed() == false && e.isStatic == false).first().asGetter()»());
-		  }
-		  return lEquals;
-		}
+        «LET this.getAllAttributesFromHierarchy().select(e|e.isPropertySuppressed() == false && e.isStatic == false).first() AS property»
+			@Override
+			public int hashCode( ) {
+	          return 
+                «IF property.type.isPrimitiveType() && property.isMultivalued() == false»
+                    «IF property.type.isBooleanType()»
+                        Boolean.hashCode(«property.name»);
+                    «ELSEIF property.type.isByteType()»
+                        Byte.hashCode(«property.name»);
+                    «ELSEIF property.type.isLongType()»
+                        Long.hashCode(«property.name»);
+                    «ELSEIF property.type.isFloatType()»
+                        Float.hashCode(«property.name»);
+                    «ELSEIF property.type.isDoubleType()»
+                        Double.hashCode(«property.name»);
+                    «ELSE»
+                        «property.name»;
+                    «ENDIF»
+                «REM»Handle arrays«ENDREM»
+                «ELSEIF property.isMultivalued() && property.association == null»
+                    java.util.Arrays.hashCode(«property.name»);
+                «ELSE»
+                    «IF property.isSoftLink()»
+                        java.util.Objects.hashCode(«property.getSoftLinkPropertyName()»);
+                    «ELSE»
+                        java.util.Objects.hashCode(«property.name»);
+                    «ENDIF»
+                «ENDIF»
+			}
+			
+			@Override
+			public boolean equals( Object pOtherObject ) {
+			  boolean lEquals;
+			  if (this == pOtherObject) {
+			    lEquals = true;
+			  }
+			  else if (pOtherObject instanceof «this.fqn()» == false) {
+			    lEquals = false;
+			  }
+			  else {
+			    «IF property.type.isPrimitiveType()»
+			    lEquals = («property.name» == ((«this.fqn()») pOtherObject).«property.asGetter()»());
+			    «ELSE»
+			    lEquals = java.util.Objects.equals(«property.name», ((«this.fqn()») pOtherObject).«property.asGetter()»());
+			    «ENDIF»
+			  }
+			  return lEquals;
+			}
+        «ENDLET»
 	«ELSEIF generateEqualsAndHashCode() || generateEqualsAndHashCodeForStandardClasses()»
-	   «EXPAND GenerateEqualsAndHashCode(className)»
+	   «EXPAND GenerateEqualsAndHashCodeForStandardClasses(className)»
 	«ENDIF»
 «ENDDEFINE»
 
@@ -370,7 +400,7 @@
     «ENDIF»
 «ENDDEFINE»
 
-«DEFINE GenerateEqualsAndHashCode(String className) FOR uml::Class»
+«DEFINE GenerateEqualsAndHashCodeForStandardClasses(String className) FOR uml::Class»
   «REM»equals() and hashCode() can only be generated in case of non bi-directional assocations«ENDREM»
   «IF this.hasBidirectionalAssociations() == false || this.hasOnlyTransientBidirectionalAssociations()»
 	  @Override

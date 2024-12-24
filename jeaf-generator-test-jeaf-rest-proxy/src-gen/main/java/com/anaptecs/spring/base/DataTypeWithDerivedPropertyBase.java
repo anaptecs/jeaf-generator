@@ -6,7 +6,6 @@
 package com.anaptecs.spring.base;
 
 import java.io.Serializable;
-import java.util.Objects;
 
 import javax.validation.ConstraintViolationException;
 
@@ -135,7 +134,7 @@ public abstract class DataTypeWithDerivedPropertyBase implements Serializable {
 
   @Override
   public int hashCode( ) {
-    return Objects.hash(property);
+    return property;
   }
 
   @Override
@@ -148,7 +147,7 @@ public abstract class DataTypeWithDerivedPropertyBase implements Serializable {
       lEquals = false;
     }
     else {
-      lEquals = Objects.equals(property, ((DataTypeWithDerivedProperty) pOtherObject).getProperty());
+      lEquals = (property == ((DataTypeWithDerivedProperty) pOtherObject).getProperty());
     }
     return lEquals;
   }

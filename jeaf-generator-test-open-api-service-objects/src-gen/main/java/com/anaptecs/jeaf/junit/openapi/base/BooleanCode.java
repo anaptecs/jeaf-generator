@@ -5,8 +5,6 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
-import java.util.Objects;
-
 import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 
@@ -140,7 +138,7 @@ public class BooleanCode implements ServiceObject {
 
   @Override
   public int hashCode( ) {
-    return Objects.hash(code);
+    return Boolean.hashCode(code);
   }
 
   @Override
@@ -153,7 +151,7 @@ public class BooleanCode implements ServiceObject {
       lEquals = false;
     }
     else {
-      lEquals = Objects.equals(code, ((BooleanCode) pOtherObject).getCode());
+      lEquals = (code == ((BooleanCode) pOtherObject).getCode());
     }
     return lEquals;
   }

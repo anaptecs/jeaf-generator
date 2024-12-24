@@ -5,8 +5,6 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
-import java.util.Objects;
-
 import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 
@@ -130,7 +128,7 @@ public class LongCodeType implements ServiceObject {
 
   @Override
   public int hashCode( ) {
-    return Objects.hash(code);
+    return Long.hashCode(code);
   }
 
   @Override
@@ -143,7 +141,7 @@ public class LongCodeType implements ServiceObject {
       lEquals = false;
     }
     else {
-      lEquals = Objects.equals(code, ((LongCodeType) pOtherObject).getCode());
+      lEquals = (code == ((LongCodeType) pOtherObject).getCode());
     }
     return lEquals;
   }

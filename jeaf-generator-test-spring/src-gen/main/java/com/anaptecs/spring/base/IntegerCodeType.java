@@ -5,8 +5,6 @@
  */
 package com.anaptecs.spring.base;
 
-import java.util.Objects;
-
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -153,7 +151,7 @@ public class IntegerCodeType {
 
   @Override
   public int hashCode( ) {
-    return Objects.hash(code);
+    return code;
   }
 
   @Override
@@ -166,7 +164,7 @@ public class IntegerCodeType {
       lEquals = false;
     }
     else {
-      lEquals = Objects.equals(code, ((IntegerCodeType) pOtherObject).getCode());
+      lEquals = (code == ((IntegerCodeType) pOtherObject).getCode());
     }
     return lEquals;
   }

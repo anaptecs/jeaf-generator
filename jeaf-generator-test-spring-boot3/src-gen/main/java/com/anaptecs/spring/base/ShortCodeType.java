@@ -5,8 +5,6 @@
  */
 package com.anaptecs.spring.base;
 
-import java.util.Objects;
-
 public class ShortCodeType {
   /**
    * Constant for the name of attribute "code".
@@ -98,7 +96,7 @@ public class ShortCodeType {
 
   @Override
   public int hashCode( ) {
-    return Objects.hash(code);
+    return code;
   }
 
   @Override
@@ -111,7 +109,7 @@ public class ShortCodeType {
       lEquals = false;
     }
     else {
-      lEquals = Objects.equals(code, ((ShortCodeType) pOtherObject).getCode());
+      lEquals = (code == ((ShortCodeType) pOtherObject).getCode());
     }
     return lEquals;
   }

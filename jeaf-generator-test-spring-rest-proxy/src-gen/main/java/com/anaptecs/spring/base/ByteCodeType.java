@@ -5,8 +5,6 @@
  */
 package com.anaptecs.spring.base;
 
-import java.util.Objects;
-
 public class ByteCodeType {
   /**
    * Constant for the name of attribute "code".
@@ -107,7 +105,7 @@ public class ByteCodeType {
 
   @Override
   public int hashCode( ) {
-    return Objects.hash(code);
+    return Byte.hashCode(code);
   }
 
   @Override
@@ -120,7 +118,7 @@ public class ByteCodeType {
       lEquals = false;
     }
     else {
-      lEquals = Objects.equals(code, ((ByteCodeType) pOtherObject).getCode());
+      lEquals = (code == ((ByteCodeType) pOtherObject).getCode());
     }
     return lEquals;
   }
