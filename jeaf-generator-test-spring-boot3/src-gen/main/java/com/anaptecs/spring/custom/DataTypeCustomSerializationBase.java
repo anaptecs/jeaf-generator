@@ -91,7 +91,7 @@ public abstract class DataTypeCustomSerializationBase {
 
   @Override
   public int hashCode( ) {
-    return Objects.hash(property1);
+    return Objects.hashCode(property1);
   }
 
   @Override

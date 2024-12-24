@@ -5,8 +5,6 @@
  */
 package com.anaptecs.spring.base;
 
-import java.util.Objects;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -124,7 +122,7 @@ public class ShortCodeType {
 
   @Override
   public int hashCode( ) {
-    return Objects.hash(code);
+    return code;
   }
 
   @Override
@@ -137,7 +135,7 @@ public class ShortCodeType {
       lEquals = false;
     }
     else {
-      lEquals = Objects.equals(code, ((ShortCodeType) pOtherObject).getCode());
+      lEquals = (code == ((ShortCodeType) pOtherObject).getCode());
     }
     return lEquals;
   }

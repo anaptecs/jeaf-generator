@@ -5,8 +5,6 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
-import java.util.Objects;
-
 import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 
@@ -130,7 +128,7 @@ public class IntegerCodeType implements ServiceObject {
 
   @Override
   public int hashCode( ) {
-    return Objects.hash(code);
+    return code;
   }
 
   @Override
@@ -143,7 +141,7 @@ public class IntegerCodeType implements ServiceObject {
       lEquals = false;
     }
     else {
-      lEquals = Objects.equals(code, ((IntegerCodeType) pOtherObject).getCode());
+      lEquals = (code == ((IntegerCodeType) pOtherObject).getCode());
     }
     return lEquals;
   }

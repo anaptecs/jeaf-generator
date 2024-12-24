@@ -124,7 +124,7 @@ public class AnotherDataType {
 
   @Override
   public int hashCode( ) {
-    return Objects.hash(data);
+    return Objects.hashCode(data);
   }
 
   @Override

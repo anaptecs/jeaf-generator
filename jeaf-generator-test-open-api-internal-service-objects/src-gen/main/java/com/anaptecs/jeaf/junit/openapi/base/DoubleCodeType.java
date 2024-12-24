@@ -5,8 +5,6 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
-import java.util.Objects;
-
 import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 
@@ -139,7 +137,7 @@ public class DoubleCodeType implements ServiceObject {
 
   @Override
   public int hashCode( ) {
-    return Objects.hash(code);
+    return Double.hashCode(code);
   }
 
   @Override
@@ -152,7 +150,7 @@ public class DoubleCodeType implements ServiceObject {
       lEquals = false;
     }
     else {
-      lEquals = Objects.equals(code, ((DoubleCodeType) pOtherObject).getCode());
+      lEquals = (code == ((DoubleCodeType) pOtherObject).getCode());
     }
     return lEquals;
   }

@@ -5,8 +5,6 @@
  */
 package com.anaptecs.spring.base;
 
-import java.util.Objects;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -124,7 +122,7 @@ public class LongCodeType {
 
   @Override
   public int hashCode( ) {
-    return Objects.hash(code);
+    return Long.hashCode(code);
   }
 
   @Override
@@ -137,7 +135,7 @@ public class LongCodeType {
       lEquals = false;
     }
     else {
-      lEquals = Objects.equals(code, ((LongCodeType) pOtherObject).getCode());
+      lEquals = (code == ((LongCodeType) pOtherObject).getCode());
     }
     return lEquals;
   }

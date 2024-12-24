@@ -5,8 +5,6 @@
  */
 package com.anaptecs.spring.base;
 
-import java.util.Objects;
-
 public class DoubleCodeType {
   /**
    * Constant for the name of attribute "code".
@@ -98,7 +96,7 @@ public class DoubleCodeType {
 
   @Override
   public int hashCode( ) {
-    return Objects.hash(code);
+    return Double.hashCode(code);
   }
 
   @Override
@@ -111,7 +109,7 @@ public class DoubleCodeType {
       lEquals = false;
     }
     else {
-      lEquals = Objects.equals(code, ((DoubleCodeType) pOtherObject).getCode());
+      lEquals = (code == ((DoubleCodeType) pOtherObject).getCode());
     }
     return lEquals;
   }

@@ -5,8 +5,6 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
-import java.util.Objects;
-
 import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 
@@ -139,7 +137,7 @@ public class ShortCodeType implements ServiceObject {
 
   @Override
   public int hashCode( ) {
-    return Objects.hash(code);
+    return code;
   }
 
   @Override
@@ -152,7 +150,7 @@ public class ShortCodeType implements ServiceObject {
       lEquals = false;
     }
     else {
-      lEquals = Objects.equals(code, ((ShortCodeType) pOtherObject).getCode());
+      lEquals = (code == ((ShortCodeType) pOtherObject).getCode());
     }
     return lEquals;
   }

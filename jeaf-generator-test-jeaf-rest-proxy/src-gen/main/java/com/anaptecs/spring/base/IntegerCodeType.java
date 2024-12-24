@@ -6,7 +6,6 @@
 package com.anaptecs.spring.base;
 
 import java.io.Serializable;
-import java.util.Objects;
 
 import javax.validation.ConstraintViolationException;
 
@@ -144,7 +143,7 @@ public class IntegerCodeType implements Serializable {
 
   @Override
   public int hashCode( ) {
-    return Objects.hash(code);
+    return code;
   }
 
   @Override
@@ -157,7 +156,7 @@ public class IntegerCodeType implements Serializable {
       lEquals = false;
     }
     else {
-      lEquals = Objects.equals(code, ((IntegerCodeType) pOtherObject).getCode());
+      lEquals = (code == ((IntegerCodeType) pOtherObject).getCode());
     }
     return lEquals;
   }

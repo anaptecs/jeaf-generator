@@ -140,7 +140,7 @@ public class IBAN implements ServiceObject {
 
   @Override
   public int hashCode( ) {
-    return Objects.hash(value);
+    return Objects.hashCode(value);
   }
 
   @Override

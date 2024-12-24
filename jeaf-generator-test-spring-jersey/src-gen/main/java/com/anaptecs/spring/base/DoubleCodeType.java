@@ -5,8 +5,6 @@
  */
 package com.anaptecs.spring.base;
 
-import java.util.Objects;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -124,7 +122,7 @@ public class DoubleCodeType {
 
   @Override
   public int hashCode( ) {
-    return Objects.hash(code);
+    return Double.hashCode(code);
   }
 
   @Override
@@ -137,7 +135,7 @@ public class DoubleCodeType {
       lEquals = false;
     }
     else {
-      lEquals = Objects.equals(code, ((DoubleCodeType) pOtherObject).getCode());
+      lEquals = (code == ((DoubleCodeType) pOtherObject).getCode());
     }
     return lEquals;
   }

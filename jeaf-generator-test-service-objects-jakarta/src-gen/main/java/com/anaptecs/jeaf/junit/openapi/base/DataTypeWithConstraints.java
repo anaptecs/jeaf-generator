@@ -5,8 +5,6 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
-import java.util.Objects;
-
 import javax.validation.ConstraintViolationException;
 import javax.validation.constraints.Max;
 
@@ -139,7 +137,7 @@ public class DataTypeWithConstraints implements ServiceObject {
 
   @Override
   public int hashCode( ) {
-    return Objects.hash(intValue);
+    return intValue;
   }
 
   @Override
@@ -152,7 +150,7 @@ public class DataTypeWithConstraints implements ServiceObject {
       lEquals = false;
     }
     else {
-      lEquals = Objects.equals(intValue, ((DataTypeWithConstraints) pOtherObject).getIntValue());
+      lEquals = (intValue == ((DataTypeWithConstraints) pOtherObject).getIntValue());
     }
     return lEquals;
   }

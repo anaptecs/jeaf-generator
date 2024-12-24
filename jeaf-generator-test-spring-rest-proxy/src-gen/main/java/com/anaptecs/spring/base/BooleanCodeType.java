@@ -5,8 +5,6 @@
  */
 package com.anaptecs.spring.base;
 
-import java.util.Objects;
-
 public class BooleanCodeType {
   /**
    * Constant for the name of attribute "code".
@@ -117,7 +115,7 @@ public class BooleanCodeType {
 
   @Override
   public int hashCode( ) {
-    return Objects.hash(code);
+    return Boolean.hashCode(code);
   }
 
   @Override
@@ -130,7 +128,7 @@ public class BooleanCodeType {
       lEquals = false;
     }
     else {
-      lEquals = Objects.equals(code, ((BooleanCodeType) pOtherObject).getCode());
+      lEquals = (code == ((BooleanCodeType) pOtherObject).getCode());
     }
     return lEquals;
   }

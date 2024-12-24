@@ -5,8 +5,6 @@
  */
 package com.anaptecs.spring.base;
 
-import java.util.Objects;
-
 public abstract class DataTypeWithDerivedPropertyBase {
   /**
    * Constant for the name of attribute "property".
@@ -107,7 +105,7 @@ public abstract class DataTypeWithDerivedPropertyBase {
 
   @Override
   public int hashCode( ) {
-    return Objects.hash(property);
+    return property;
   }
 
   @Override
@@ -120,7 +118,7 @@ public abstract class DataTypeWithDerivedPropertyBase {
       lEquals = false;
     }
     else {
-      lEquals = Objects.equals(property, ((DataTypeWithDerivedProperty) pOtherObject).getProperty());
+      lEquals = (property == ((DataTypeWithDerivedProperty) pOtherObject).getProperty());
     }
     return lEquals;
   }

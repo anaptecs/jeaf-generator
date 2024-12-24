@@ -138,7 +138,7 @@ public class IntegerCode implements ServiceObject {
 
   @Override
   public int hashCode( ) {
-    return Objects.hash(code);
+    return Objects.hashCode(code);
   }
 
   @Override

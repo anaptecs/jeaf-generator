@@ -5,8 +5,6 @@
  */
 package com.anaptecs.spring.base;
 
-import java.util.Objects;
-
 import javax.validation.constraints.Positive;
 
 public class ProductCode {
@@ -119,7 +117,7 @@ public class ProductCode {
 
   @Override
   public int hashCode( ) {
-    return Objects.hash(code);
+    return code;
   }
 
   @Override
@@ -132,7 +130,7 @@ public class ProductCode {
       lEquals = false;
     }
     else {
-      lEquals = Objects.equals(code, ((ProductCode) pOtherObject).getCode());
+      lEquals = (code == ((ProductCode) pOtherObject).getCode());
     }
     return lEquals;
   }
