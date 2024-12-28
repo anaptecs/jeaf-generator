@@ -8,6 +8,17 @@
 <br>
 
 # Enumerations
+## EnumWithDeprecatedProperty
+
+
+### Literals
+
+| Name | Description |
+|------|-------------|
+| `A` |  |
+| `B` |  |
+| `C` |  |
+
 ## MyEnumWithInterface
 
 

@@ -2,6 +2,27 @@
 
 <br>
 
+## Package `com.anaptecs.jeaf.junit`
+
+<br>
+
+### Enumerations with Deprecations
+
+<br>
+
+| Enumeration   | Literal   | Description   | Deprecated since   | Planned to be removed   |
+|---------------|-----------|---------------|:------------------:|:-----------------------:|
+| `EnumWithDeprecatedProperty` | |  |  |  |
+|   | `B` |  |  |  |
+
+<br>
+
+| Type | Property   | Description   | Deprecated since   | Planned to be removed   |
+|------|------------|---------------|:------------------:|:-----------------------:|
+| `EnumWithDeprecatedProperty` | `doNotUse` | Very outdated | 08.15 | 47.11 |
+
+<br>
+
 ## Package `com.anaptecs.jeaf.junit.activities`
 
 <br>
