@@ -102,8 +102,9 @@ No deprecations published.
 <br>
 
 «ENDIF-»
-«IF deprecations.select(e|e.isJEAFEnumeration()).isEmpty == false -»
+«IF deprecations.select(e|e.isJEAFEnumeration() || e.owner.isJEAFEnumeration()).isEmpty == false -»
 ### Enumerations with Deprecations
+«IF deprecations.select(e|e.isJEAFEnumeration()).isEmpty == false -»
 
 <br>
 
@@ -119,6 +120,17 @@ No deprecations published.
 «ENDFOREACH-»
 «IF deprecations.select(e|e.isJEAFEnumeration()).select(e|e.hasJavaDeprecation()).size == 0-»
 | No enumerations are marked as deprecated. |
+«ENDIF-»
+«ENDIF-»
+«IF deprecations.select(e|e.owner.isJEAFEnumeration()).typeSelect(uml::Property).isEmpty == false -»
+
+<br>
+
+| Type | Property   | Description   | Deprecated since   | Planned to be removed   |
+|------|------------|---------------|:------------------:|:-----------------------:|
+«FOREACH deprecations.select(e|e.owner.isJEAFEnumeration()).typeSelect(uml::Property) AS property-»
+| `«property.owner.asNamedElement().name»` | `«property.name»` | «property.getDeprecationDescriptionForMarkup()» | «property.getDeprecatedSince()» | «property.getDeprecationRemoval()» |
+«ENDFOREACH-»
 «ENDIF-»
 
 <br>

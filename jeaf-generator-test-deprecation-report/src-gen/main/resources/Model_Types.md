@@ -131,6 +131,7 @@ DynamicEnum |   | Test for enums with dynamic literals. |
 DynamicExtensibleEnum |   |  |
 Entity |   |  |
 EnumTest |   |  |
+EnumWithDeprecatedProperty |   |  |
 EnumWithProperties |   |  |
 ExtensibleEnum |   |  |
 ExtensibleEnumWithProperties |   |  |
