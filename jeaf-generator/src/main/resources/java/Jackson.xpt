@@ -40,7 +40,8 @@
 		     fieldVisibility = com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.ANY,
 		     getterVisibility = com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.NONE,
 		     isGetterVisibility = com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.NONE,
-		     setterVisibility = com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.NONE)
+		     setterVisibility = com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.NONE,
+		     creatorVisibility = JsonAutoDetect.Visibility.ANY)
 		«ENDIF»
 	    «IF this.hasAddToJSONProperty() || this.hasPropertyWithBckwardCompatibility()»
 	        @com.fasterxml.jackson.annotation.JsonPropertyOrder(value = {

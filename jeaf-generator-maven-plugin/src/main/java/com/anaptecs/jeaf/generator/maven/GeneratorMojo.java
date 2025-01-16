@@ -2447,7 +2447,7 @@ public class GeneratorMojo extends AbstractMojo {
       lXMIDirectoryPath = this.getXMIDirectoryLocation();
 
       // In case that UML Modeling Tool is not MagicDraw UML then XMI files need to be manipulated before they can be
-      // processed. Thar's why we need to copy them first.
+      // processed. That's why we need to copy them first.
       if (umlModelingTool != ModelingTool.MAGIC_DRAW) {
         FileTools lFileTools = Tools.getFileTools();
         lFileTools.tryDeleteRecursive(lXMIDirectoryPath, true);
@@ -2475,7 +2475,7 @@ public class GeneratorMojo extends AbstractMojo {
     else if (lTools.isRealString(modelArtifactGroupID) && lTools.isRealString(modelArtifactArtifactID)) {
       String lKey = modelArtifactGroupID + ":" + modelArtifactArtifactID;
       try {
-        // Lookup maven module that contains UML model
+        // Lookup Maven module that contains UML model
         Artifact lModelArtifact = mavenProject.getArtifactMap().get(lKey);
         if (lModelArtifact != null) {
           Assert.assertNotNull(lModelArtifact, "Model artifact not availble.");
