@@ -56,6 +56,7 @@ import com.anaptecs.spring.service.DateHeaderParamsBean;
 import com.anaptecs.spring.service.DateQueryParamsBean;
 import com.anaptecs.spring.service.MultiValuedHeaderBeanParam;
 import com.anaptecs.spring.service.MultivaluedQueryParamsBean;
+import com.anaptecs.spring.service.MySortCriteria;
 import com.anaptecs.spring.service.QueryBeanParam;
 import com.anaptecs.spring.service.RESTProductService;
 
@@ -1009,6 +1010,13 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
         lRequestBuilder.setQueryParameter("bookingCode", pBeanParam.getBookingCode().getCode());
       }
       lRequestBuilder.setQueryParameter("maxResults", String.valueOf(pBeanParam.getMaxResults()));
+      if (pBeanParam.getSortCriteria() != null) {
+        List<Object> lValues = new ArrayList<Object>();
+        for (MySortCriteria lNext : pBeanParam.getSortCriteria()) {
+          lValues.add(lNext.getValue());
+        }
+        lRequestBuilder.setQueryParameter("sortCriteria", lValues);
+      }
     }
     // Execute request and return result.
     RESTRequest lRequest = lRequestBuilder.build();

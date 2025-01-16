@@ -2380,6 +2380,12 @@ paths:
             format: int32
             nullable: false
             default: '47'
+        - name: sortCriteria
+          in: query
+          schema:
+            type: array
+            items:
+              type: string
       responses:
         '200':
           description: |
@@ -3139,5 +3145,17 @@ components:
         sale:
           $ref: '../base/product-base.yml#/components/schemas/Channel'
 
-      
+    # com.anaptecs.spring.service.MySortProperty
+    MySortProperty:
+      type: string
+      enum:
+        - HELLO
+        - WORLD
+    # com.anaptecs.spring.service.SortOrder
+    SortOrder:
+      type: string
+      enum:
+        - ASCENDING
+        - DESCENDING
+
       

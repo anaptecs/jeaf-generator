@@ -6,6 +6,11 @@
 package com.anaptecs.spring.service;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 
 import javax.validation.ConstraintViolationException;
 import javax.ws.rs.QueryParam;
@@ -13,6 +18,8 @@ import javax.ws.rs.QueryParam;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.anaptecs.spring.base.BookingCode;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 
 public class QueryBeanParam implements Serializable {
   /**
@@ -30,6 +37,11 @@ public class QueryBeanParam implements Serializable {
    */
   public static final String MAXRESULTS = "maxResults";
 
+  /**
+   * Constant for the name of attribute "sortCriteria".
+   */
+  public static final String SORTCRITERIA = "sortCriteria";
+
   @QueryParam("bookingCode")
   private BookingCode bookingCode;
 
@@ -40,12 +52,17 @@ public class QueryBeanParam implements Serializable {
   @QueryParam("maxResults")
   private int maxResults;
 
+  @QueryParam("sortCriteria")
+  @JsonSetter(nulls = Nulls.SKIP)
+  private List<MySortCriteria> sortCriteria;
+
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   public QueryBeanParam( ) {
     maxResults = 47;
+    sortCriteria = new ArrayList<MySortCriteria>();
   }
 
   /**
@@ -59,6 +76,12 @@ public class QueryBeanParam implements Serializable {
     // Read attribute values from builder.
     bookingCode = pBuilder.bookingCode;
     maxResults = pBuilder.maxResults;
+    if (pBuilder.sortCriteria != null) {
+      sortCriteria = pBuilder.sortCriteria;
+    }
+    else {
+      sortCriteria = new ArrayList<MySortCriteria>();
+    }
   }
 
   /**
@@ -109,6 +132,8 @@ public class QueryBeanParam implements Serializable {
      */
     private int maxResults = 47;
 
+    private List<MySortCriteria> sortCriteria;
+
     /**
      * Use {@link QueryBeanParam#builder()} instead of private constructor to create new builder.
      */
@@ -123,6 +148,7 @@ public class QueryBeanParam implements Serializable {
         // Read attribute values from passed object.
         this.setBookingCode(pObject.bookingCode);
         this.setMaxResults(pObject.maxResults);
+        this.setSortCriteria(pObject.sortCriteria);
       }
     }
 
@@ -147,6 +173,39 @@ public class QueryBeanParam implements Serializable {
     public Builder setMaxResults( int pMaxResults ) {
       // Assign value to attribute
       maxResults = pMaxResults;
+      return this;
+    }
+
+    /**
+     * Method sets association {@link #sortCriteria}.<br/>
+     *
+     * @param pSortCriteria Collection to which {@link #sortCriteria} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    public Builder setSortCriteria( List<MySortCriteria> pSortCriteria ) {
+      // To ensure immutability we have to copy the content of the passed collection.
+      if (pSortCriteria != null) {
+        sortCriteria = new ArrayList<MySortCriteria>(pSortCriteria);
+      }
+      else {
+        sortCriteria = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method adds the passed objects to association {@link #sortCriteria}.<br/>
+     *
+     * @param pSortCriteria Array of objects that should be added to {@link #sortCriteria}. The parameter may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToSortCriteria( MySortCriteria... pSortCriteria ) {
+      if (pSortCriteria != null) {
+        if (sortCriteria == null) {
+          sortCriteria = new ArrayList<MySortCriteria>();
+        }
+        sortCriteria.addAll(Arrays.asList(pSortCriteria));
+      }
       return this;
     }
 
@@ -210,6 +269,64 @@ public class QueryBeanParam implements Serializable {
   public void setMaxResults( int pMaxResults ) {
     // Assign value to attribute
     maxResults = pMaxResults;
+  }
+
+  /**
+   * Method returns association {@link #sortCriteria}.<br/>
+   *
+   * @return {@link List<MySortCriteria>} Value to which {@link #sortCriteria} is set. The method never returns null and
+   * the returned collection is unmodifiable.
+   */
+  public List<MySortCriteria> getSortCriteria( ) {
+    // Return all MySortCriteria objects as unmodifiable collection.
+    return Collections.unmodifiableList(sortCriteria);
+  }
+
+  /**
+   * Method adds the passed object to {@link #sortCriteria}.
+   *
+   * @param pSortCriteria Object that should be added to {@link #sortCriteria}. The parameter must not be null.
+   */
+  public void addToSortCriteria( MySortCriteria pSortCriteria ) {
+    // Check parameter "pSortCriteria" for invalid value null.
+    Check.checkInvalidParameterNull(pSortCriteria, "pSortCriteria");
+    // Add passed object to collection of associated MySortCriteria objects.
+    sortCriteria.add(pSortCriteria);
+  }
+
+  /**
+   * Method adds all passed objects to {@link #sortCriteria}.
+   *
+   * @param pSortCriteria Collection with all objects that should be added to {@link #sortCriteria}. The parameter must
+   * not be null.
+   */
+  public void addToSortCriteria( Collection<MySortCriteria> pSortCriteria ) {
+    // Check parameter "pSortCriteria" for invalid value null.
+    Check.checkInvalidParameterNull(pSortCriteria, "pSortCriteria");
+    // Add all passed objects.
+    for (MySortCriteria lNextObject : pSortCriteria) {
+      this.addToSortCriteria(lNextObject);
+    }
+  }
+
+  /**
+   * Method removes the passed object from {@link #sortCriteria}.<br/>
+   *
+   * @param pSortCriteria Object that should be removed from {@link #sortCriteria}. The parameter must not be null.
+   */
+  public void removeFromSortCriteria( MySortCriteria pSortCriteria ) {
+    // Check parameter for invalid value null.
+    Check.checkInvalidParameterNull(pSortCriteria, "pSortCriteria");
+    // Remove passed object from collection of associated MySortCriteria objects.
+    sortCriteria.remove(pSortCriteria);
+  }
+
+  /**
+   * Method removes all objects from {@link #sortCriteria}.
+   */
+  public void clearSortCriteria( ) {
+    // Remove all objects from association "sortCriteria".
+    sortCriteria.clear();
   }
 
   /**

@@ -68,6 +68,7 @@ import com.anaptecs.spring.service.DateHeaderParamsBean;
 import com.anaptecs.spring.service.DateQueryParamsBean;
 import com.anaptecs.spring.service.MultiValuedHeaderBeanParam;
 import com.anaptecs.spring.service.MultivaluedQueryParamsBean;
+import com.anaptecs.spring.service.MySortCriteria;
 import com.anaptecs.spring.service.QueryBeanParam;
 import com.anaptecs.spring.service.RESTProductServiceReactive;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -1039,6 +1040,7 @@ public class RESTProductServiceReactiveResource {
   public Mono<String> testDataTypeAsBeanQueryParam(
       @RequestParam(name = "bookingCode", required = true) @MyNotNullRESTParam String pBookingCodeAsBasicType,
       @RequestParam(name = "maxResults", required = true, defaultValue = "47") int pMaxResults,
+      @RequestParam(name = "sortCriteria", required = false) String[] pSortCriteriaAsBasicType,
       ServerWebExchange pServerWebExchange ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
@@ -1048,6 +1050,15 @@ public class RESTProductServiceReactiveResource {
       lBeanParamBuilder.setBookingCode(BookingCode.builder().setCode(pBookingCodeAsBasicType).build());
     }
     lBeanParamBuilder.setMaxResults(pMaxResults);
+    // Handle bean parameter pBeanParam.sortCriteria
+    if (pSortCriteriaAsBasicType != null) {
+      // Handle bean parameter pBeanParam.sortCriteria
+      List<MySortCriteria> lSortCriteria = new ArrayList<MySortCriteria>();
+      for (String lNext : pSortCriteriaAsBasicType) {
+        lSortCriteria.add(this.deserializeCompositeDataType(lNext, MySortCriteria.class));
+      }
+      lBeanParamBuilder.setSortCriteria(lSortCriteria);
+    }
     QueryBeanParam pBeanParam = lBeanParamBuilder.build();
     return Mono.defer(( ) -> {
       // Validate request parameter(s).
