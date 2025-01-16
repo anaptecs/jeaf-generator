@@ -42,7 +42,8 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
     fieldVisibility = JsonAutoDetect.Visibility.ANY,
     getterVisibility = JsonAutoDetect.Visibility.NONE,
     isGetterVisibility = JsonAutoDetect.Visibility.NONE,
-    setterVisibility = JsonAutoDetect.Visibility.NONE)
+    setterVisibility = JsonAutoDetect.Visibility.NONE,
+    creatorVisibility = JsonAutoDetect.Visibility.ANY)
 public class NoSubTypesParent {
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"

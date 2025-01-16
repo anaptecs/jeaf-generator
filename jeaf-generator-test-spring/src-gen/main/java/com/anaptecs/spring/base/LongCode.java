@@ -17,7 +17,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
     fieldVisibility = JsonAutoDetect.Visibility.ANY,
     getterVisibility = JsonAutoDetect.Visibility.NONE,
     isGetterVisibility = JsonAutoDetect.Visibility.NONE,
-    setterVisibility = JsonAutoDetect.Visibility.NONE)
+    setterVisibility = JsonAutoDetect.Visibility.NONE,
+    creatorVisibility = JsonAutoDetect.Visibility.ANY)
 public class LongCode {
   /**
    * Constant for the name of attribute "code".
