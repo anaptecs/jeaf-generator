@@ -727,7 +727,7 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
      * 
      * @return {@link Builder} New builder that can be used to create new «this.name» objects.
      */
-    public static «this.getTemplateParams()» Builder«this.getTemplateParams()» builder(Class«this.getTemplateParams()» pClass) {
+    public static «this.getTemplateParams()» Builder«this.getTemplateParams()» builder(«FOREACH this.getTemplateParameterNames() AS name SEPARATOR ", "»  Class<«name»> pClass«name»«ENDFOREACH») {
       return new Builder«this.getTemplateParams()»();
     }
     «ENDIF»

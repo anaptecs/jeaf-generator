@@ -370,7 +370,8 @@ public abstract class GenericResponsePOJOBase<T> {
       lEquals = false;
     }
     else {
-      GenericResponsePOJOBase<?> lOther = (GenericResponsePOJOBase<?>) pObject;
+      @SuppressWarnings("unchecked")
+      GenericResponsePOJOBase<T> lOther = (GenericResponsePOJOBase<T>) pObject;
       lEquals = Objects.equals(errors, lOther.errors) && Objects.equals(warnings, lOther.warnings)
           && Objects.equals(value, lOther.value);
     }

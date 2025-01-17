@@ -470,7 +470,10 @@
         }
 	    else {
 	      «IF ownedAttribute.select(e|e.isPropertySuppressed() == false && e.isTransient() == false && e.isStatic == false && e.generateBackwardCompatibility() == false).isEmpty == false»
-	          «className»«IF this.hasTemplateParameter()»<?>«ENDIF» lOther = («className»«IF this.hasTemplateParameter()»<?>«ENDIF») pObject;
+	          «IF this.hasTemplateParameter()»
+	          @SuppressWarnings("unchecked")
+	          «ENDIF»
+	          «className»«IF this.hasTemplateParameter()»«this.getTemplateParams()»«ENDIF» lOther = («className»«IF this.hasTemplateParameter()»«this.getTemplateParams()»«ENDIF») pObject;
 		      lEquals =
 		      «FOREACH ownedAttribute.select(e|e.isPropertySuppressed() == false && e.isTransient() == false && e.isStatic == false && e.generateBackwardCompatibility() == false) AS property SEPARATOR " && "»
 		        «IF property.type.isPrimitiveType() && property.isMultivalued() == false»

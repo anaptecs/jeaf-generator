@@ -51,6 +51,22 @@
 
 <br>
 
+## MultiTemplateClass
+
+
+
+<br>
+
+**Properties / Associations**
+
+| Name | Type | Multiplicity | Constraints | Description |
+|------|------|:------------:|-------------|-------------|
+| `object` | [`T`](#t) | `1..1` |  |  |
+| `previousState` | [`E`](#e) | `0..1` |  |  |
+| `newState` | [`E`](#e) | `1..1` |  |  |
+
+<br>
+
 ## MyBusinessObject
 
 

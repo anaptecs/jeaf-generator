@@ -124,8 +124,11 @@ private cached String internalFQNForClass(uml::Class class):
     
 cached String getTemplateParams(uml::Class class):
     if class.hasTemplateParameter()
-    then "<" + class.ownedTemplateSignature.ownedParameter.getTemplateParameterName().toString(", ") + ">"
+    then "<" + class.getTemplateParameterNames().toString(", ") + ">"
     else "";
+    
+cached List[String] getTemplateParameterNames(uml::Class class):
+	class.ownedTemplateSignature.ownedParameter.getTemplateParameterName();
 
 private cached String fqnForTemplateClass(uml::Class class):
     class.getGenericTypeForTemplate() + "<" + class.getTypeParameterName() + ">";

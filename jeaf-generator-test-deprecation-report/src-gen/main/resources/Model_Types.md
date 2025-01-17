@@ -170,6 +170,7 @@ Message |   |  |
 Message |   |  |
 ModelWrapperArrayServiceObject |   |  |
 ModelWrapperTypeServiceObject |   |  |
+MultiTemplateClass |   |  |
 MultiValuedDataType |   |  |
 MultivaluedQueryParamsBean |   |  |
 MutableChildPOJO |   |  |
@@ -315,6 +316,7 @@ VerkehrsmittelTyp |   |  |
 AndOneMorePOJO |   |  |
 GenericResponsePOJO |   |  |
 Message |   |  |
+MultiTemplateClass |   |  |
 MyBusinessObject |   |  |
 TemplateEnumTest |   |  |
 YetAnotherPOJO |   |  |
