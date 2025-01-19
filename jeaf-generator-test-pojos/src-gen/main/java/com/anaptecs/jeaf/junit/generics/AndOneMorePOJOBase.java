@@ -35,10 +35,17 @@ public abstract class AndOneMorePOJOBase {
    */
   public static final String GENERICRESPONSES = "genericResponses";
 
+  /**
+   * Constant for the name of attribute "multiTemplateClassImpl".
+   */
+  public static final String MULTITEMPLATECLASSIMPL = "multiTemplateClassImpl";
+
   private GenericResponsePOJO<MyBusinessObject> genericProperty;
 
   @JsonSetter(nulls = Nulls.SKIP)
   private Set<GenericResponsePOJO<MyBusinessObject>> genericResponses;
+
+  private MultiTemplateClass<Message, TemplateEnumTest> multiTemplateClassImpl;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
@@ -64,6 +71,7 @@ public abstract class AndOneMorePOJOBase {
     else {
       genericResponses = new HashSet<GenericResponsePOJO<MyBusinessObject>>();
     }
+    multiTemplateClassImpl = pBuilder.multiTemplateClassImpl;
   }
 
   /**
@@ -74,6 +82,8 @@ public abstract class AndOneMorePOJOBase {
     private GenericResponsePOJO<MyBusinessObject> genericProperty;
 
     private Set<GenericResponsePOJO<MyBusinessObject>> genericResponses;
+
+    private MultiTemplateClass<Message, TemplateEnumTest> multiTemplateClassImpl;
 
     /**
      * Use {@link AndOneMorePOJO.builder()} instead of protected constructor to create new builder.
@@ -89,6 +99,7 @@ public abstract class AndOneMorePOJOBase {
         // Read attribute values from passed object.
         this.setGenericProperty(pObject.genericProperty);
         this.setGenericResponses(pObject.genericResponses);
+        this.setMultiTemplateClassImpl(pObject.multiTemplateClassImpl);
       }
     }
 
@@ -135,6 +146,18 @@ public abstract class AndOneMorePOJOBase {
         }
         genericResponses.addAll(Arrays.asList(pGenericResponses));
       }
+      return this;
+    }
+
+    /**
+     * Method sets association {@link #multiTemplateClassImpl}.<br/>
+     *
+     * @param pMultiTemplateClassImpl Value to which {@link #multiTemplateClassImpl} should be set.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    public BuilderBase setMultiTemplateClassImpl(
+        MultiTemplateClass<Message, TemplateEnumTest> pMultiTemplateClassImpl ) {
+      multiTemplateClassImpl = pMultiTemplateClassImpl;
       return this;
     }
 
@@ -241,16 +264,45 @@ public abstract class AndOneMorePOJOBase {
   }
 
   /**
+   * Method returns association {@link #multiTemplateClassImpl}.<br/>
+   *
+   * @return {@link MultiTemplateClass<Message>} Value to which {@link #multiTemplateClassImpl} is set.
+   */
+  public MultiTemplateClass<Message, TemplateEnumTest> getMultiTemplateClassImpl( ) {
+    return multiTemplateClassImpl;
+  }
+
+  /**
+   * Method sets association {@link #multiTemplateClassImpl}.<br/>
+   *
+   * @param pMultiTemplateClassImpl Value to which {@link #multiTemplateClassImpl} should be set.
+   */
+  public void setMultiTemplateClassImpl( MultiTemplateClass<Message, TemplateEnumTest> pMultiTemplateClassImpl ) {
+    multiTemplateClassImpl = pMultiTemplateClassImpl;
+  }
+
+  /**
+   * Method unsets {@link #multiTemplateClassImpl}.
+   */
+  public final void unsetMultiTemplateClassImpl( ) {
+    multiTemplateClassImpl = null;
+  }
+
+  /**
    * Convenience method to create new instance of class AndOneMorePOJO.
    *
    *
    * @param pGenericProperty Value to which {@link #genericProperty} should be set.
    *
+   * @param pMultiTemplateClassImpl Value to which {@link #multiTemplateClassImpl} should be set.
+   *
    * @return {@link com.anaptecs.jeaf.junit.generics.AndOneMorePOJO}
    */
-  public static AndOneMorePOJO of( GenericResponsePOJO<MyBusinessObject> pGenericProperty ) {
+  public static AndOneMorePOJO of( GenericResponsePOJO<MyBusinessObject> pGenericProperty,
+      MultiTemplateClass<Message, TemplateEnumTest> pMultiTemplateClassImpl ) {
     AndOneMorePOJO.Builder lBuilder = AndOneMorePOJO.builder();
     lBuilder.setGenericProperty(pGenericProperty);
+    lBuilder.setMultiTemplateClassImpl(pMultiTemplateClassImpl);
     return lBuilder.build();
   }
 
@@ -265,6 +317,7 @@ public abstract class AndOneMorePOJOBase {
     int lResult = 1;
     lResult = lPrime * lResult + Objects.hashCode(genericProperty);
     lResult = lPrime * lResult + Objects.hashCode(genericResponses);
+    lResult = lPrime * lResult + Objects.hashCode(multiTemplateClassImpl);
     return lResult;
   }
 
@@ -283,7 +336,8 @@ public abstract class AndOneMorePOJOBase {
     else {
       AndOneMorePOJOBase lOther = (AndOneMorePOJOBase) pObject;
       lEquals = Objects.equals(genericProperty, lOther.genericProperty)
-          && Objects.equals(genericResponses, lOther.genericResponses);
+          && Objects.equals(genericResponses, lOther.genericResponses)
+          && Objects.equals(multiTemplateClassImpl, lOther.multiTemplateClassImpl);
     }
     return lEquals;
   }
@@ -320,6 +374,10 @@ public abstract class AndOneMorePOJOBase {
         lBuilder.append(System.lineSeparator());
       }
     }
+    lBuilder.append(pIndent);
+    lBuilder.append("multiTemplateClassImpl: ");
+    lBuilder.append(multiTemplateClassImpl);
+    lBuilder.append(System.lineSeparator());
     return lBuilder;
   }
 

@@ -8,6 +8,7 @@ extension functions::Operation;
 extension functions::Alias;
 extension functions::DefaultComment;
 extension functions::Parameter;
+extension functions::NamedElement;
 
 // Function returns the name of the parameter for a java method accoring to the anaptecs code styleguide. For the 
 // element "name" the function will return "pName".
@@ -134,7 +135,11 @@ private cached String fqnForTemplateClass(uml::Class class):
     class.getGenericTypeForTemplate() + "<" + class.getTypeParameterName() + ">";
     
 cached String getTypeParameterName(uml::Class class):
-    class.templateBinding.first().parameterSubstitution.first().actual.first().asClass().fqn();
+    class.javaGetTypeParameterName().toString(", ");
+    
+private List[String] javaGetTypeParameterName(uml:: Class class):
+	JAVA com.anaptecs.jeaf.fwk.generator.util.TemplateParameterHelper.getTypeParameterNames(org.eclipse.uml2.uml.Class);
+
     
 private cached String getGenericTypeForTemplate(uml::Class class):
     class.getGenericClass().package.fqn() + "." + class.getGenericClass().name; 
