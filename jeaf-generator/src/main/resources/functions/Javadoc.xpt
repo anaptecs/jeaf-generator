@@ -26,7 +26,7 @@
     	«FOREACH this.asClass().ownedTemplateSignature.ownedParameter.ownedParameteredElement.asNamedElement() AS templateParam-»
 * @param <«templateParam.name»> «templateParam.owner.ownedComment.first().convertCommentObjectForJavadoc()»     	
     	«ENDFOREACH-»
-    «ENDIF»
+    «ENDIF-»
  * @author «getAuthor()»
  * @version «getVersion()»
     «EXPAND DeprecatedJavadoc -»
