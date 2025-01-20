@@ -38,6 +38,9 @@ cached boolean hasMeaningfulJavadoc(uml::NamedElement element):
 cached boolean hasMeaningfulJavadocForProperty(uml::Property property):
     property.hasMeaningfulComment() || property.hasMeaningfulDeprecationInfo() || property.hasExample() || property.defaultValue != null || property.isSoftLink() || property.isAlias() || property.isBreakingChange();
     
+cached convertCommentObjectForJavadoc(uml::Comment comment):
+	comment.body.trim().convertCommentForJavadoc();
+
 cached String convertCommentForJavadoc(String comment):
     javaConvertCommentForJavadoc(comment);
     
