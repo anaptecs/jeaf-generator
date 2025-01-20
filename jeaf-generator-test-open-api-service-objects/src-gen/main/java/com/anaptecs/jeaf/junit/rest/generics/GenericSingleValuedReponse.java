@@ -57,7 +57,7 @@ public class GenericSingleValuedReponse<T> extends AbstractResponse<T> {
    *
    * @return {@link Builder} New builder that can be used to create new GenericSingleValuedReponse objects.
    */
-  public static <T> Builder<T> builder( Class<T> pClass ) {
+  public static <T> Builder<T> builder( Class<T> pClassT ) {
     return new Builder<T>();
   }
 

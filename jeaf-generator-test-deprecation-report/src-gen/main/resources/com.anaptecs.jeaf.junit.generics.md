@@ -18,6 +18,7 @@
 |------|------|:------------:|-------------|-------------|
 | `genericProperty` | [`DoSomethingResponse`](#dosomethingresponse) | `1..1` |  |  |
 | `genericResponses` | [`DoSomethingResponse`](#dosomethingresponse) | `0..*` |  |  |
+| `multiTemplateClassImpl` | [`MultiTemplateClassImpl`](#multitemplateclassimpl) | `1..1` |  |  |
 
 <br>
 
@@ -48,6 +49,22 @@
 | Name | Type | Multiplicity | Constraints | Description |
 |------|------|:------------:|-------------|-------------|
 | `text` | `String` | `1..1` |  |  |
+
+<br>
+
+## MultiTemplateClass
+
+
+
+<br>
+
+**Properties / Associations**
+
+| Name | Type | Multiplicity | Constraints | Description |
+|------|------|:------------:|-------------|-------------|
+| `object` | [`T`](#t) | `1..1` |  |  |
+| `previousState` | [`E`](#e) | `0..1` |  |  |
+| `newState` | [`E`](#e) | `1..1` |  |  |
 
 <br>
 

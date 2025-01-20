@@ -301,7 +301,8 @@ public abstract class AbstractResponse<T> implements ServiceObject {
       lEquals = false;
     }
     else {
-      AbstractResponse<?> lOther = (AbstractResponse<?>) pObject;
+      @SuppressWarnings("unchecked")
+      AbstractResponse<T> lOther = (AbstractResponse<T>) pObject;
       lEquals = Objects.equals(errors, lOther.errors) && Objects.equals(warnings, lOther.warnings);
     }
     return lEquals;

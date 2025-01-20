@@ -73,7 +73,7 @@ public class Response<T> implements ServiceObject {
    *
    * @return {@link Builder} New builder that can be used to create new Response objects.
    */
-  public static <T> Builder<T> builder( Class<T> pClass ) {
+  public static <T> Builder<T> builder( Class<T> pClassT ) {
     return new Builder<T>();
   }
 
@@ -274,7 +274,8 @@ public class Response<T> implements ServiceObject {
       lEquals = false;
     }
     else {
-      Response<?> lOther = (Response<?>) pObject;
+      @SuppressWarnings("unchecked")
+      Response<T> lOther = (Response<T>) pObject;
       lEquals = Objects.equals(messages, lOther.messages) && Objects.equals(data, lOther.data);
     }
     return lEquals;

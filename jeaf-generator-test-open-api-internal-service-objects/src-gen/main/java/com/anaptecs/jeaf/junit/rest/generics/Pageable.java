@@ -72,7 +72,7 @@ public class Pageable<T> implements ServiceObject {
    *
    * @return {@link Builder} New builder that can be used to create new Pageable objects.
    */
-  public static <T> Builder<T> builder( Class<T> pClass ) {
+  public static <T> Builder<T> builder( Class<T> pClassT ) {
     return new Builder<T>();
   }
 
@@ -277,7 +277,8 @@ public class Pageable<T> implements ServiceObject {
       lEquals = false;
     }
     else {
-      Pageable<?> lOther = (Pageable<?>) pObject;
+      @SuppressWarnings("unchecked")
+      Pageable<T> lOther = (Pageable<T>) pObject;
       lEquals = Objects.equals(objects, lOther.objects) && size == lOther.size;
     }
     return lEquals;

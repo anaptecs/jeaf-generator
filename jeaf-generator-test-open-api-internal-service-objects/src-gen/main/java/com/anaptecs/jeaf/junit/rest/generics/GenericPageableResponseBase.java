@@ -266,7 +266,8 @@ public abstract class GenericPageableResponseBase<T> extends AbstractResponse<T>
       lEquals = false;
     }
     else {
-      GenericPageableResponseBase<?> lOther = (GenericPageableResponseBase<?>) pObject;
+      @SuppressWarnings("unchecked")
+      GenericPageableResponseBase<T> lOther = (GenericPageableResponseBase<T>) pObject;
       lEquals = Objects.equals(values, lOther.values);
     }
     return lEquals;

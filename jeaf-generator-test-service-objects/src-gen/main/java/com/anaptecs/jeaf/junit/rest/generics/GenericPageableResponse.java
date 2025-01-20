@@ -39,7 +39,7 @@ public class GenericPageableResponse<T> extends GenericPageableResponseBase<T> {
    *
    * @return {@link Builder} New builder that can be used to create new GenericPageableResponse objects.
    */
-  public static <T> Builder<T> builder( Class<T> pClass ) {
+  public static <T> Builder<T> builder( Class<T> pClassT ) {
     return new Builder<T>();
   }
 
