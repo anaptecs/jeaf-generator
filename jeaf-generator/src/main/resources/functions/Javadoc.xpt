@@ -6,6 +6,9 @@
 «EXTENSION functions::SoftLink»
 «EXTENSION functions::Example»
 «EXTENSION functions::DefaultComment»
+«EXTENSION functions::Class»
+«EXTENSION functions::NamedElement»
+
 «EXTENSION java::Naming»
 «EXTENSION entity::ModelProperties»
 «EXTENSION java::GeneratorCommons»
@@ -19,6 +22,11 @@
     «EXPAND AddComment -»
     «EXPAND AliasJavadoc -»
     «EXPAND BreakingChangeJavadoc -»
+    «IF this.isClass() && this.asClass().hasTemplateParameter()-»
+    	«FOREACH this.asClass().ownedTemplateSignature.ownedParameter.ownedParameteredElement.asNamedElement() AS templateParam-»
+* @param <«templateParam.name»> «templateParam.owner.ownedComment.first().convertCommentObjectForJavadoc()»     	
+    	«ENDFOREACH-»
+    «ENDIF-»
  * @author «getAuthor()»
  * @version «getVersion()»
     «EXPAND DeprecatedJavadoc -»
