@@ -522,7 +522,7 @@ cached List[uml::Property] getPropertiesForOpenAPI(uml::Class class):
     then class.ownedAttribute.addAll(class.getTemplateClassProperties()).select(e | e.isTransient() == false && e.ignore() == false && (e.isDerived == false || (e.isDerived && e.isAddToJSON())) && e.isStatic == false)
     else class.ownedAttribute.select(e | e.isTransient() == false && e.ignore() == false && (e.isDerived == false || (e.isDerived && e.isAddToJSON())) && e.isStatic == false);
     
-cached String getTemplateParamName(uml::Class class):
+private cached String getTemplateParamName(uml::Class class):
     if class.templateBinding.isEmpty == false
     then class.templateBinding.first().parameterSubstitution.first().formal.getTemplateParameterName();
     
