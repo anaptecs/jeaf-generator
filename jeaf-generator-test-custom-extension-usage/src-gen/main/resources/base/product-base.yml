@@ -205,6 +205,10 @@ components:
             $ref: '#/components/schemas/DoSomethingResponse'
         multiTemplateClassImpl:
           $ref: '#/components/schemas/MultiTemplateClassImpl'
+        many:
+          type: array
+          items:
+            $ref: '#/components/schemas/MultiTemplateClassImpl'
 
     # com.anaptecs.jeaf.junit.openapi.base.BankAccount
     BankAccount:

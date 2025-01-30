@@ -36,7 +36,8 @@ import openapitools.JSON;
 @JsonPropertyOrder({
   AndOneMorePOJO.JSON_PROPERTY_GENERIC_PROPERTY,
   AndOneMorePOJO.JSON_PROPERTY_GENERIC_RESPONSES,
-  AndOneMorePOJO.JSON_PROPERTY_MULTI_TEMPLATE_CLASS_IMPL
+  AndOneMorePOJO.JSON_PROPERTY_MULTI_TEMPLATE_CLASS_IMPL,
+  AndOneMorePOJO.JSON_PROPERTY_MANY
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class AndOneMorePOJO {
@@ -51,6 +52,10 @@ public class AndOneMorePOJO {
   public static final String JSON_PROPERTY_MULTI_TEMPLATE_CLASS_IMPL = "multiTemplateClassImpl";
   @javax.annotation.Nonnull
   private MultiTemplateClassImpl multiTemplateClassImpl;
+
+  public static final String JSON_PROPERTY_MANY = "many";
+  @javax.annotation.Nullable
+  private List<MultiTemplateClassImpl> many = new ArrayList<>();
 
   public AndOneMorePOJO() { 
   }
@@ -138,6 +143,39 @@ public class AndOneMorePOJO {
   }
 
 
+  public AndOneMorePOJO many(@javax.annotation.Nullable List<MultiTemplateClassImpl> many) {
+    this.many = many;
+    return this;
+  }
+
+  public AndOneMorePOJO addManyItem(MultiTemplateClassImpl manyItem) {
+    if (this.many == null) {
+      this.many = new ArrayList<>();
+    }
+    this.many.add(manyItem);
+    return this;
+  }
+
+  /**
+   * Get many
+   * @return many
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_MANY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<MultiTemplateClassImpl> getMany() {
+    return many;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_MANY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setMany(@javax.annotation.Nullable List<MultiTemplateClassImpl> many) {
+    this.many = many;
+  }
+
+
   /**
    * Return true if this AndOneMorePOJO object is equal to o.
    */
@@ -152,12 +190,13 @@ public class AndOneMorePOJO {
     AndOneMorePOJO andOneMorePOJO = (AndOneMorePOJO) o;
     return Objects.equals(this.genericProperty, andOneMorePOJO.genericProperty) &&
         Objects.equals(this.genericResponses, andOneMorePOJO.genericResponses) &&
-        Objects.equals(this.multiTemplateClassImpl, andOneMorePOJO.multiTemplateClassImpl);
+        Objects.equals(this.multiTemplateClassImpl, andOneMorePOJO.multiTemplateClassImpl) &&
+        Objects.equals(this.many, andOneMorePOJO.many);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(genericProperty, genericResponses, multiTemplateClassImpl);
+    return Objects.hash(genericProperty, genericResponses, multiTemplateClassImpl, many);
   }
 
   @Override
@@ -167,6 +206,7 @@ public class AndOneMorePOJO {
     sb.append("    genericProperty: ").append(toIndentedString(genericProperty)).append("\n");
     sb.append("    genericResponses: ").append(toIndentedString(genericResponses)).append("\n");
     sb.append("    multiTemplateClassImpl: ").append(toIndentedString(multiTemplateClassImpl)).append("\n");
+    sb.append("    many: ").append(toIndentedString(many)).append("\n");
     sb.append("}");
     return sb.toString();
   }

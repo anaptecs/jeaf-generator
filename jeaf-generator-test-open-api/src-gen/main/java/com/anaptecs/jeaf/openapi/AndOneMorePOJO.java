@@ -37,6 +37,9 @@ public class AndOneMorePOJO {
   @JsonProperty("multiTemplateClassImpl")
   private MultiTemplateClassImpl multiTemplateClassImpl = null;
 
+  @JsonProperty("many")
+  private List<MultiTemplateClassImpl> many = null;
+
   public AndOneMorePOJO genericProperty(DoSomethingResponse genericProperty) {
     this.genericProperty = genericProperty;
     return this;
@@ -99,6 +102,32 @@ public class AndOneMorePOJO {
     this.multiTemplateClassImpl = multiTemplateClassImpl;
   }
 
+  public AndOneMorePOJO many(List<MultiTemplateClassImpl> many) {
+    this.many = many;
+    return this;
+  }
+
+  public AndOneMorePOJO addManyItem(MultiTemplateClassImpl manyItem) {
+    if (this.many == null) {
+      this.many = new ArrayList<>();
+    }
+    this.many.add(manyItem);
+    return this;
+  }
+
+   /**
+   * Get many
+   * @return many
+  **/
+  @Schema(description = "")
+  public List<MultiTemplateClassImpl> getMany() {
+    return many;
+  }
+
+  public void setMany(List<MultiTemplateClassImpl> many) {
+    this.many = many;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -111,12 +140,13 @@ public class AndOneMorePOJO {
     AndOneMorePOJO andOneMorePOJO = (AndOneMorePOJO) o;
     return Objects.equals(this.genericProperty, andOneMorePOJO.genericProperty) &&
         Objects.equals(this.genericResponses, andOneMorePOJO.genericResponses) &&
-        Objects.equals(this.multiTemplateClassImpl, andOneMorePOJO.multiTemplateClassImpl);
+        Objects.equals(this.multiTemplateClassImpl, andOneMorePOJO.multiTemplateClassImpl) &&
+        Objects.equals(this.many, andOneMorePOJO.many);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(genericProperty, genericResponses, multiTemplateClassImpl);
+    return Objects.hash(genericProperty, genericResponses, multiTemplateClassImpl, many);
   }
 
 
@@ -128,6 +158,7 @@ public class AndOneMorePOJO {
     sb.append("    genericProperty: ").append(toIndentedString(genericProperty)).append("\n");
     sb.append("    genericResponses: ").append(toIndentedString(genericResponses)).append("\n");
     sb.append("    multiTemplateClassImpl: ").append(toIndentedString(multiTemplateClassImpl)).append("\n");
+    sb.append("    many: ").append(toIndentedString(many)).append("\n");
     sb.append("}");
     return sb.toString();
   }

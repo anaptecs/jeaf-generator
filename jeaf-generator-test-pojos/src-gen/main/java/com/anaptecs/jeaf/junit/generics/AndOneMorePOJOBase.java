@@ -40,6 +40,11 @@ public abstract class AndOneMorePOJOBase {
    */
   public static final String MULTITEMPLATECLASSIMPL = "multiTemplateClassImpl";
 
+  /**
+   * Constant for the name of attribute "many".
+   */
+  public static final String MANY = "many";
+
   private GenericResponsePOJO<MyBusinessObject> genericProperty;
 
   @JsonSetter(nulls = Nulls.SKIP)
@@ -47,12 +52,16 @@ public abstract class AndOneMorePOJOBase {
 
   private MultiTemplateClass<Message, TemplateEnumTest> multiTemplateClassImpl;
 
+  @JsonSetter(nulls = Nulls.SKIP)
+  private Set<MultiTemplateClass<Message, TemplateEnumTest>> many;
+
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   protected AndOneMorePOJOBase( ) {
     genericResponses = new HashSet<GenericResponsePOJO<MyBusinessObject>>();
+    many = new HashSet<MultiTemplateClass<Message, TemplateEnumTest>>();
   }
 
   /**
@@ -72,6 +81,12 @@ public abstract class AndOneMorePOJOBase {
       genericResponses = new HashSet<GenericResponsePOJO<MyBusinessObject>>();
     }
     multiTemplateClassImpl = pBuilder.multiTemplateClassImpl;
+    if (pBuilder.many != null) {
+      many = pBuilder.many;
+    }
+    else {
+      many = new HashSet<MultiTemplateClass<Message, TemplateEnumTest>>();
+    }
   }
 
   /**
@@ -84,6 +99,8 @@ public abstract class AndOneMorePOJOBase {
     private Set<GenericResponsePOJO<MyBusinessObject>> genericResponses;
 
     private MultiTemplateClass<Message, TemplateEnumTest> multiTemplateClassImpl;
+
+    private Set<MultiTemplateClass<Message, TemplateEnumTest>> many;
 
     /**
      * Use {@link AndOneMorePOJO.builder()} instead of protected constructor to create new builder.
@@ -100,6 +117,7 @@ public abstract class AndOneMorePOJOBase {
         this.setGenericProperty(pObject.genericProperty);
         this.setGenericResponses(pObject.genericResponses);
         this.setMultiTemplateClassImpl(pObject.multiTemplateClassImpl);
+        this.setMany(pObject.many);
       }
     }
 
@@ -158,6 +176,39 @@ public abstract class AndOneMorePOJOBase {
     public BuilderBase setMultiTemplateClassImpl(
         MultiTemplateClass<Message, TemplateEnumTest> pMultiTemplateClassImpl ) {
       multiTemplateClassImpl = pMultiTemplateClassImpl;
+      return this;
+    }
+
+    /**
+     * Method sets association {@link #many}.<br/>
+     *
+     * @param pMany Collection to which {@link #many} should be set.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    public BuilderBase setMany( Set<MultiTemplateClass<Message, TemplateEnumTest>> pMany ) {
+      // To ensure immutability we have to copy the content of the passed collection.
+      if (pMany != null) {
+        many = new HashSet<MultiTemplateClass<Message, TemplateEnumTest>>(pMany);
+      }
+      else {
+        many = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method adds the passed objects to association {@link #many}.<br/>
+     *
+     * @param pMany Array of objects that should be added to {@link #many}. The parameter may be null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining. Method never returns null.
+     */
+    public BuilderBase addToMany( MultiTemplateClass<Message, TemplateEnumTest>... pMany ) {
+      if (pMany != null) {
+        if (many == null) {
+          many = new HashSet<MultiTemplateClass<Message, TemplateEnumTest>>();
+        }
+        many.addAll(Arrays.asList(pMany));
+      }
       return this;
     }
 
@@ -266,7 +317,8 @@ public abstract class AndOneMorePOJOBase {
   /**
    * Method returns association {@link #multiTemplateClassImpl}.<br/>
    *
-   * @return {@link MultiTemplateClass<Message>} Value to which {@link #multiTemplateClassImpl} is set.
+   * @return {@link MultiTemplateClass<Message, TemplateEnumTest>} Value to which {@link #multiTemplateClassImpl} is
+   * set.
    */
   public MultiTemplateClass<Message, TemplateEnumTest> getMultiTemplateClassImpl( ) {
     return multiTemplateClassImpl;
@@ -286,6 +338,63 @@ public abstract class AndOneMorePOJOBase {
    */
   public final void unsetMultiTemplateClassImpl( ) {
     multiTemplateClassImpl = null;
+  }
+
+  /**
+   * Method returns association {@link #many}.<br/>
+   *
+   * @return {@link Set<MultiTemplateClass<Message, TemplateEnumTest>>} Value to which {@link #many} is set. The method
+   * never returns null and the returned collection is unmodifiable.
+   */
+  public Set<MultiTemplateClass<Message, TemplateEnumTest>> getMany( ) {
+    // Return all MultiTemplateClassImpl objects as unmodifiable collection.
+    return Collections.unmodifiableSet(many);
+  }
+
+  /**
+   * Method adds the passed object to {@link #many}.
+   *
+   * @param pMany Object that should be added to {@link #many}. The parameter must not be null.
+   */
+  public void addToMany( MultiTemplateClass<Message, TemplateEnumTest> pMany ) {
+    // Check parameter "pMany" for invalid value null.
+    Check.checkInvalidParameterNull(pMany, "pMany");
+    // Add passed object to collection of associated MultiTemplateClassImpl objects.
+    many.add(pMany);
+  }
+
+  /**
+   * Method adds all passed objects to {@link #many}.
+   *
+   * @param pMany Collection with all objects that should be added to {@link #many}. The parameter must not be null.
+   */
+  public void addToMany( Collection<MultiTemplateClass<Message, TemplateEnumTest>> pMany ) {
+    // Check parameter "pMany" for invalid value null.
+    Check.checkInvalidParameterNull(pMany, "pMany");
+    // Add all passed objects.
+    for (MultiTemplateClass<Message, TemplateEnumTest> lNextObject : pMany) {
+      this.addToMany(lNextObject);
+    }
+  }
+
+  /**
+   * Method removes the passed object from {@link #many}.<br/>
+   *
+   * @param pMany Object that should be removed from {@link #many}. The parameter must not be null.
+   */
+  public void removeFromMany( MultiTemplateClass<Message, TemplateEnumTest> pMany ) {
+    // Check parameter for invalid value null.
+    Check.checkInvalidParameterNull(pMany, "pMany");
+    // Remove passed object from collection of associated MultiTemplateClassImpl objects.
+    many.remove(pMany);
+  }
+
+  /**
+   * Method removes all objects from {@link #many}.
+   */
+  public void clearMany( ) {
+    // Remove all objects from association "many".
+    many.clear();
   }
 
   /**
@@ -318,6 +427,7 @@ public abstract class AndOneMorePOJOBase {
     lResult = lPrime * lResult + Objects.hashCode(genericProperty);
     lResult = lPrime * lResult + Objects.hashCode(genericResponses);
     lResult = lPrime * lResult + Objects.hashCode(multiTemplateClassImpl);
+    lResult = lPrime * lResult + Objects.hashCode(many);
     return lResult;
   }
 
@@ -337,7 +447,7 @@ public abstract class AndOneMorePOJOBase {
       AndOneMorePOJOBase lOther = (AndOneMorePOJOBase) pObject;
       lEquals = Objects.equals(genericProperty, lOther.genericProperty)
           && Objects.equals(genericResponses, lOther.genericResponses)
-          && Objects.equals(multiTemplateClassImpl, lOther.multiTemplateClassImpl);
+          && Objects.equals(multiTemplateClassImpl, lOther.multiTemplateClassImpl) && Objects.equals(many, lOther.many);
     }
     return lEquals;
   }
@@ -378,6 +488,23 @@ public abstract class AndOneMorePOJOBase {
     lBuilder.append("multiTemplateClassImpl: ");
     lBuilder.append(multiTemplateClassImpl);
     lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("many: ");
+    if (many != null) {
+      lBuilder.append(many.size());
+      lBuilder.append(" element(s)");
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    if (many != null) {
+      for (MultiTemplateClass<Message, TemplateEnumTest> lNext : many) {
+        lBuilder.append(pIndent + "    ");
+        lBuilder.append(lNext.toString());
+        lBuilder.append(System.lineSeparator());
+      }
+    }
     return lBuilder;
   }
 

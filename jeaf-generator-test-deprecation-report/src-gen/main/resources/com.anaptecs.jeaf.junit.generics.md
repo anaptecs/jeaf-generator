@@ -19,6 +19,7 @@
 | `genericProperty` | [`DoSomethingResponse`](#dosomethingresponse) | `1..1` |  |  |
 | `genericResponses` | [`DoSomethingResponse`](#dosomethingresponse) | `0..*` |  |  |
 | `multiTemplateClassImpl` | [`MultiTemplateClassImpl`](#multitemplateclassimpl) | `1..1` |  |  |
+| `many` | [`MultiTemplateClassImpl`](#multitemplateclassimpl) | `0..*` |  |  |
 
 <br>
 

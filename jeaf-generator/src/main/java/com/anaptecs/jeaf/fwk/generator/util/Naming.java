@@ -23,7 +23,6 @@ import org.eclipse.uml2.uml.Port;
 import org.eclipse.uml2.uml.PrimitiveType;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.TemplateBinding;
-import org.eclipse.uml2.uml.TemplateParameterSubstitution;
 import org.eclipse.uml2.uml.Type;
 
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -125,9 +124,7 @@ public class Naming {
   }
 
   public static String getTemplateBindingFQN( Class pTemplateClass ) {
-    Class lClass = (Class) pTemplateClass;
-
-    TemplateBinding lTemplateBinding = lClass.getTemplateBindings().get(0);
+    TemplateBinding lTemplateBinding = pTemplateClass.getTemplateBindings().get(0);
 
     boolean lMultivalued;
     boolean lOrdered;
@@ -157,11 +154,10 @@ public class Naming {
       lTemplateParameter.append(Naming.getCollectionType(lOrdered, lUnique));
       lTemplateParameter.append("<");
     }
-
-    if (lTemplateBinding.getParameterSubstitutions().isEmpty() == false) {
-      TemplateParameterSubstitution lParameterSubstitution = lTemplateBinding.getParameterSubstitutions().get(0);
-      NamedElement lTypeParameterClass = (NamedElement) lParameterSubstitution.getActuals().get(0);
-      lTemplateParameter.append(Naming.getFullyQualifiedName(lTypeParameterClass));
+    
+    List<String> lTypeParameterNames = TemplateParameterHelper.getTypeParameterNames(pTemplateClass);
+    if (lTypeParameterNames.isEmpty() == false) {
+      lTemplateParameter.append(String.join(", ", lTypeParameterNames));
     }
     else {
       lTemplateParameter.append("???");
