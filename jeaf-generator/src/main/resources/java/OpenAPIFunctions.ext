@@ -522,9 +522,10 @@ cached List[uml::Property] getPropertiesForOpenAPI(uml::Class class):
     then class.ownedAttribute.addAll(class.getTemplateClassProperties()).select(e | e.isTransient() == false && e.ignore() == false && (e.isDerived == false || (e.isDerived && e.isAddToJSON())) && e.isStatic == false)
     else class.ownedAttribute.select(e | e.isTransient() == false && e.ignore() == false && (e.isDerived == false || (e.isDerived && e.isAddToJSON())) && e.isStatic == false);
     
-cached String getTemplateParamName(uml::Class class):
+private cached List[String] getTemplateParamNames(uml::Class class):
     if class.templateBinding.isEmpty == false
-    then class.templateBinding.first().parameterSubstitution.first().formal.getTemplateParameterName();
+    then class.templateBinding.first().parameterSubstitution.formal.getTemplateParameterName()
+    else {};
     
 private cached List[uml::Property] getTemplateClassProperties(uml::Class class):
     if class.templateBinding.isEmpty == false
@@ -534,10 +535,11 @@ private cached boolean hasTemplateClassProperties(uml::Class class):
     class.getTemplateClassProperties().isEmpty == false;
  
 cached boolean isTemplateProperty(uml::Class class, uml::Property property):
-    class.getTemplateParamName() == property.type.name;
+    class.getTemplateParamNames().contains(property.type.name);
      
-cached uml::Class getTemplateBindingType(uml::Class class):
-    class.templateBinding.first().parameterSubstitution.first().actual.first().asClass();
+cached uml::Class getTemplateBindingType(uml::Class class, uml::Property property):
+	class.templateBinding.first().parameterSubstitution.selectFirst(e|e.formal.getTemplateParameterName() == property.type.name).actual.first().asClass();
+    //class.templateBinding.first().parameterSubstitution.first().actual.first().asClass();
     
 cached boolean hasMultivaluedTemplateBinding(uml::Class class, uml::Property property):
     isTemplateProperty(class, property) && class.hasMultivaluedTemplateBinding();
