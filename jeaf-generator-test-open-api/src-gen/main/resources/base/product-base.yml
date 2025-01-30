@@ -837,6 +837,17 @@ components:
           type: string
           nullable: false
 
+    # com.anaptecs.jeaf.junit.generics.Message
+    Message:
+      type: object
+      additionalProperties: false
+      required:
+        - text
+      properties:
+        text:
+          type: string
+          nullable: false
+
     # com.anaptecs.jeaf.junit.openapi.base.MoneyAmount
     MoneyAmount:
       type: object
@@ -864,6 +875,18 @@ components:
           minLength: 3
           maxLength: 3
           example: CHF
+          nullable: false
+
+    # com.anaptecs.jeaf.junit.generics.MyBusinessObject
+    MyBusinessObject:
+      type: object
+      additionalProperties: false
+      required:
+        - myBusinessAttribute
+      properties:
+        myBusinessAttribute:
+          type: integer
+          format: int32
           nullable: false
 
     # com.anaptecs.jeaf.junit.openapi.base.MyFirstResponse
@@ -1818,6 +1841,14 @@ components:
         techAttribute:
           type: string
           nullable: false
+
+    # com.anaptecs.jeaf.junit.generics.TemplateEnumTest
+    TemplateEnumTest:
+      type: string
+      enum:
+        - ONE
+        - TWO
+        - THREE
 
     # com.anaptecs.jeaf.junit.openapi.base.TimeUnit
     TimeUnit:

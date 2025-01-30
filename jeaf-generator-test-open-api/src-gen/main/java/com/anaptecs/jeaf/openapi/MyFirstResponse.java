@@ -14,7 +14,7 @@ package com.anaptecs.jeaf.openapi;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.anaptecs.jeaf.openapi.Message;
+import com.anaptecs.jeaf.openapi.Message1;
 import com.anaptecs.jeaf.openapi.Offer;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -29,17 +29,17 @@ import java.util.List;
 
 public class MyFirstResponse {
   @JsonProperty("messages")
-  private List<Message> messages = null;
+  private List<Message1> messages = null;
 
   @JsonProperty("data")
   private Offer data = null;
 
-  public MyFirstResponse messages(List<Message> messages) {
+  public MyFirstResponse messages(List<Message1> messages) {
     this.messages = messages;
     return this;
   }
 
-  public MyFirstResponse addMessagesItem(Message messagesItem) {
+  public MyFirstResponse addMessagesItem(Message1 messagesItem) {
     if (this.messages == null) {
       this.messages = new ArrayList<>();
     }
@@ -52,11 +52,11 @@ public class MyFirstResponse {
    * @return messages
   **/
   @Schema(description = "")
-  public List<Message> getMessages() {
+  public List<Message1> getMessages() {
     return messages;
   }
 
-  public void setMessages(List<Message> messages) {
+  public void setMessages(List<Message1> messages) {
     this.messages = messages;
   }
 

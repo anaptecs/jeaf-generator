@@ -19,30 +19,30 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 /**
- * Message
+ * MyBusinessObject
  */
 
 
-public class Message {
-  @JsonProperty("text")
-  private String text = null;
+public class MyBusinessObject {
+  @JsonProperty("myBusinessAttribute")
+  private Integer myBusinessAttribute = null;
 
-  public Message text(String text) {
-    this.text = text;
+  public MyBusinessObject myBusinessAttribute(Integer myBusinessAttribute) {
+    this.myBusinessAttribute = myBusinessAttribute;
     return this;
   }
 
    /**
-   * Get text
-   * @return text
+   * Get myBusinessAttribute
+   * @return myBusinessAttribute
   **/
   @Schema(required = true, description = "")
-  public String getText() {
-    return text;
+  public Integer getMyBusinessAttribute() {
+    return myBusinessAttribute;
   }
 
-  public void setText(String text) {
-    this.text = text;
+  public void setMyBusinessAttribute(Integer myBusinessAttribute) {
+    this.myBusinessAttribute = myBusinessAttribute;
   }
 
 
@@ -54,22 +54,22 @@ public class Message {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Message message = (Message) o;
-    return Objects.equals(this.text, message.text);
+    MyBusinessObject myBusinessObject = (MyBusinessObject) o;
+    return Objects.equals(this.myBusinessAttribute, myBusinessObject.myBusinessAttribute);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(text);
+    return Objects.hash(myBusinessAttribute);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Message {\n");
+    sb.append("class MyBusinessObject {\n");
     
-    sb.append("    text: ").append(toIndentedString(text)).append("\n");
+    sb.append("    myBusinessAttribute: ").append(toIndentedString(myBusinessAttribute)).append("\n");
     sb.append("}");
     return sb.toString();
   }

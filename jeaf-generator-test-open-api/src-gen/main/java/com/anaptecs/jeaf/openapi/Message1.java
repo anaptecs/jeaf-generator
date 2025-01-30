@@ -14,37 +14,12 @@ package com.anaptecs.jeaf.openapi;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.v3.oas.annotations.media.Schema;
 /**
- * Message
+ * Message1
  */
 
 
-public class Message {
-  @JsonProperty("text")
-  private String text = null;
-
-  public Message text(String text) {
-    this.text = text;
-    return this;
-  }
-
-   /**
-   * Get text
-   * @return text
-  **/
-  @Schema(required = true, description = "")
-  public String getText() {
-    return text;
-  }
-
-  public void setText(String text) {
-    this.text = text;
-  }
-
+public class Message1 {
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -54,22 +29,20 @@ public class Message {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Message message = (Message) o;
-    return Objects.equals(this.text, message.text);
+    return true;
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(text);
+    return Objects.hash();
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Message {\n");
+    sb.append("class Message1 {\n");
     
-    sb.append("    text: ").append(toIndentedString(text)).append("\n");
     sb.append("}");
     return sb.toString();
   }
