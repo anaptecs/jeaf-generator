@@ -186,7 +186,7 @@
                 «ENDFOREACH-»
               «ELSE-»
 		        «IF this.isTemplateProperty(attribute) -»
-          $ref: «this.getTemplateBindingType().getOpenAPIType(spec)»
+          $ref: «this.getTemplateBindingType(attribute).getOpenAPIType(spec)»
 		        «ELSE-»
           $ref: «attribute.type.getOpenAPIType(spec)»
                 «ENDIF-»
@@ -207,7 +207,7 @@
                 «ENDFOREACH-»
               «ELSE-»
                 «IF this.isTemplateProperty(attribute) -»
-            $ref: «this.getTemplateBindingType().getOpenAPIType(spec)»
+            $ref: «this.getTemplateBindingType(attribute).getOpenAPIType(spec)»
                 «ELSE-»
             $ref: «attribute.type.getOpenAPIType(spec)»
                 «ENDIF-»

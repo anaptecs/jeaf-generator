@@ -188,6 +188,23 @@ components:
       format: double
       nullable: false
 
+    # com.anaptecs.jeaf.junit.generics.AndOneMorePOJO
+    AndOneMorePOJO:
+      type: object
+      additionalProperties: false
+      required:
+        - genericProperty
+        - multiTemplateClassImpl
+      properties:
+        genericProperty:
+          $ref: '#/components/schemas/DoSomethingResponse'
+        genericResponses:
+          type: array
+          items:
+            $ref: '#/components/schemas/DoSomethingResponse'
+        multiTemplateClassImpl:
+          $ref: '#/components/schemas/MultiTemplateClassImpl'
+
     # com.anaptecs.jeaf.junit.openapi.base.BankAccount
     BankAccount:
       type: object
@@ -673,6 +690,24 @@ components:
           deprecated: true
           nullable: true
 
+    # com.anaptecs.jeaf.junit.generics.DoSomethingResponse
+    DoSomethingResponse:
+      type: object
+      additionalProperties: false
+      required:
+        - value
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Message'
+        warnings:
+          type: array
+          items:
+            $ref: '#/components/schemas/Message'
+        value:
+          $ref: '#/components/schemas/MyBusinessObject'
+
     # com.anaptecs.jeaf.junit.openapi.base.Duration
     Duration:
       type: object
@@ -876,6 +911,21 @@ components:
           maxLength: 3
           example: CHF
           nullable: false
+
+    # com.anaptecs.jeaf.junit.generics.MultiTemplateClassImpl
+    MultiTemplateClassImpl:
+      type: object
+      additionalProperties: false
+      required:
+        - object
+        - newState
+      properties:
+        object:
+          $ref: '#/components/schemas/Message'
+        previousState:
+          $ref: '#/components/schemas/TemplateEnumTest'
+        newState:
+          $ref: '#/components/schemas/TemplateEnumTest'
 
     # com.anaptecs.jeaf.junit.generics.MyBusinessObject
     MyBusinessObject:
