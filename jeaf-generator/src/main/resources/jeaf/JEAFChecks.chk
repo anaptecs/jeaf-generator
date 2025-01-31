@@ -55,7 +55,7 @@ context POJO if runChecks("POJO") && ignore() == false && compositeDataType ERRO
 context POJO if runChecks("POJO") && ignore() == false && (generateEqualsAndHashCode() || generateEqualsAndHashCodeForStandardClasses()) WARNING this.getWarningMessage("9163", {this.fqn()}): this.hasBidirectionalAssociations() == false || this.hasOnlyTransientBidirectionalAssociations();
 
 context POJO if runChecks("POJO") && ignore() == false && templateBinding.isEmpty == false ERROR this.getErrorMessage("9167", {owner.asNamedElement().fqn() + "." + name}): templateBinding.first().parameterSubstitution.isEmpty == false && templateBinding.first().parameterSubstitution.first().actual != null;
-//context POJO if runChecks("POJO") && ignore() == false && templateBinding.isEmpty == false ERROR this.getErrorMessage("9168", {this.fqn()}): templateBinding.size > 1;
+context POJO if runChecks("POJO") && ignore() == false && templateBinding.isEmpty == false ERROR this.getErrorMessage("9168", {this.fqn()}): templateBinding.size > 1;
 
 context Property if isNavigable() && class != null && class.isStereotypeApplied("POJO") && runChecks() && ignore() == false ERROR this.getErrorMessage("9135", {class.name, type.name}):	!isUnnamed();
 context CompositeDataTypePublicField if ((NamedElement) owner).runChecks("POJO") && ignore() == false ERROR this.getErrorMessage("9157", {((NamedElement)owner).name + "." + name}): this.type.isStringType();
@@ -91,6 +91,7 @@ context JEAFService if runChecks("JEAFService") && ignore() == false ERROR this.
 context JEAFService if runChecks("JEAFService") && ignore() == false WARNING this.getWarningMessage("9122", {"JEAFService", name}): ownedComment.size  > 0;
 context JEAFService if runChecks("JEAFService") && ignore() == false ERROR this.getErrorMessage("9170", {name, "interface", this.fqn()}): this.isValidIdentifierName();
 context Operation if owner.asNamedElement().runChecks("JEAFService") && owner.isStereotypeApplied("JEAFService") && ignore() == false ERROR this.getErrorMessage("9170", {name, "operation", owner.asNamedElement().fqn()}): this.isValidIdentifierName();
+context Parameter if owner.owner.asNamedElement().runChecks("JEAFService") && owner.owner.isStereotypeApplied("JEAFService") && owner.ignore() == false ERROR this.getErrorMessage("9177", {name, owner.owner.asNamedElement().name + "." +  owner.asNamedElement().name + "(...)"}): this.type != null; 
 
 
 // Checks for stereotype JEAFEnumeration
