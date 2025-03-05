@@ -75,4 +75,15 @@ class ClassB extends package0.package1.ClassA
     lObjectMapper.setDefaultPropertyInclusion(Include.NON_EMPTY);
     return lObjectMapper;
   }
+
+  public static double getPerimeter(Shape shape) throws IllegalArgumentException {
+        if (shape instanceof Rectangle s) {
+            // You can use the pattern variable s (of type Rectangle) here.
+        } else if (shape instanceof Circle s) {
+            // You can use the pattern variable s of type Circle here
+            // but not the pattern variable s of type Rectangle.
+        } else {
+            // You cannot use either pattern variable here.
+        }
+  }
 }
