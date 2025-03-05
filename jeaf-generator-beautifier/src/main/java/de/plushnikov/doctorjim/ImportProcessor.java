@@ -13,15 +13,11 @@ import java.util.Set;
 import java.util.TreeSet;
 import java.util.stream.Collectors;
 
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
 import com.github.javaparser.JavaParser;
 import com.github.javaparser.ParseException;
 import com.github.javaparser.ParseResult;
 import com.github.javaparser.ParserConfiguration;
+import com.github.javaparser.ParserConfiguration.LanguageLevel;
 import com.github.javaparser.ast.CompilationUnit;
 import com.github.javaparser.ast.ImportDeclaration;
 import com.github.javaparser.ast.Node;
@@ -36,6 +32,10 @@ import com.github.javaparser.ast.expr.MethodCallExpr;
 import com.github.javaparser.ast.expr.ThisExpr;
 import com.github.javaparser.ast.nodeTypes.NodeWithRange;
 import com.github.javaparser.ast.type.ClassOrInterfaceType;
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 /**
  * Main class for Importbeautifikation
@@ -76,7 +76,7 @@ public class ImportProcessor {
    *
    * @param pTypes Collection to add types to
    */
-  private void initializeJavaLang( Collection<String> pTypes ) {
+  private void initializeJavaLang(Collection<String> pTypes) {
     // add default java lang import
     pTypes.add("java.lang.*");
     pTypes.add("java.lang.Object");
@@ -98,11 +98,11 @@ public class ImportProcessor {
 
   /**
    * Apply workaround for import of Map.Entry.
-   * 
+   *
    * @param pImport2Replace String of import to be replaced
    * @return String of import, which should be replaced
    */
-  private String changeReplacementWorkaround( String pImport2Replace ) {
+  private String changeReplacementWorkaround(String pImport2Replace) {
     String result = pImport2Replace;
     if (pImport2Replace.equals("java.util.Map.Entry")) {
       result = "java.util.Map";
@@ -135,7 +135,7 @@ public class ImportProcessor {
     return removeUnusedImports;
   }
 
-  public void setRemoveUnusedImports( boolean pRemoveUnusedImports ) {
+  public void setRemoveUnusedImports(boolean pRemoveUnusedImports) {
     removeUnusedImports = pRemoveUnusedImports;
   }
 
@@ -146,13 +146,13 @@ public class ImportProcessor {
    *
    * @param pStrict a boolean.
    */
-  public void setStrict( boolean pStrict ) {
+  public void setStrict(boolean pStrict) {
     mStrict = pStrict;
   }
 
   /**
    * Get encoding used to read/write files
-   * 
+   *
    * @return encoding
    */
   public String getEncoding( ) {
@@ -161,23 +161,23 @@ public class ImportProcessor {
 
   /**
    * Sets encoding to use for file reading and writing
-   * 
+   *
    * @param pEncoding the encoding to use, <code>null</code> means platform default
    */
-  public void setEncoding( String pEncoding ) {
+  public void setEncoding(String pEncoding) {
     mEncoding = pEncoding;
   }
 
   /**
    * Organized imports from InputFile and writes processed data to OutputFile
-   * 
+   *
    * @param pInputFile the file to read, must not be <code>null</code>
    * @param pOutputFile the file to write to, must not be <code>null</code>
    * @throws ParseException in case of an parsing errors
    * @throws IOException in case of an I/O error
    * @throws java.io.UnsupportedEncodingException if the encoding is not supported by the VM
    */
-  public void organizeImports( File pInputFile, File pOutputFile, List<String> pImportGroups )
+  public void organizeImports(File pInputFile, File pOutputFile, List<String> pImportGroups)
     throws ParseException, IOException {
     final String lInput = FileUtils.readFileToString(pInputFile, getEncoding());
     String lOutput = organizeImports(lInput, pImportGroups);
@@ -191,10 +191,11 @@ public class ImportProcessor {
    * @return a {@link java.lang.String} object.
    * @throws de.plushnikov.doctorjim.javaparser.ParseException in case of an parsing errors
    */
-  public String organizeImports( String pInput, List<String> pImportGroups ) throws ParseException {
+  public String organizeImports(String pInput, List<String> pImportGroups) throws ParseException {
     sLogger.debug("Started initialization of the parser");
     // create Parser and initialize with input string
     ParserConfiguration lConfiguration = new ParserConfiguration();
+    lConfiguration.setLanguageLevel(LanguageLevel.JAVA_21);
     lConfiguration.setTabSize(1);
     JavaParser lParser = new JavaParser(lConfiguration);
 
@@ -292,10 +293,9 @@ public class ImportProcessor {
         List<Node> lChildNodes = lNext.getChildNodes();
 
         // "this" expressions are not relevant to us.
-        if (lChildNodes.size() > 0
-            && (lChildNodes.get(0) instanceof ThisExpr == false &&
-                lChildNodes.get(0) instanceof BinaryExpr == false &&
-                lNext.getParentNode().get() instanceof MemberValuePair == false)) {
+        if (lChildNodes.size() > 0 && lChildNodes.get(0) instanceof ThisExpr == false
+            && lChildNodes.get(0) instanceof BinaryExpr == false
+            && lNext.getParentNode().get() instanceof MemberValuePair == false) {
           lUsedTypes.add(lTypeName);
         }
       }
@@ -305,9 +305,9 @@ public class ImportProcessor {
           lUsedTypes.add(lTypeName);
         }
         List<FieldAccessExpr> lFieldAccessExpressions = lNext.findAll(FieldAccessExpr.class);
-        for(FieldAccessExpr lNextExpr : lFieldAccessExpressions) {
+        for (FieldAccessExpr lNextExpr : lFieldAccessExpressions) {
           String lString = lNextExpr.toString();
-          if(lUsedTypes.contains(lString)== false) {
+          if (lUsedTypes.contains(lString) == false) {
             lUsedTypes.add(lString);
           }
         }
@@ -321,9 +321,8 @@ public class ImportProcessor {
       }
 
       // Prefer entries from java.lang.* over all others.
-      List<String> lOrderedTypes =
-          lUsedTypes.stream().filter(s -> s.startsWith("java.lang."))
-              .collect(Collectors.toList());
+      List<String> lOrderedTypes = lUsedTypes.stream().filter(s -> s.startsWith("java.lang."))
+          .collect(Collectors.toList());
       lUsedTypes.removeAll(lOrderedTypes);
       lOrderedTypes.addAll(lUsedTypes);
 
@@ -340,7 +339,8 @@ public class ImportProcessor {
           }
 
           if (lFound) {
-            Optional<String> lImport = lOriginalImports.stream().filter(e -> e.endsWith("." + lParts[0])).findFirst();
+            Optional<String> lImport = lOriginalImports.stream().filter(e -> e.endsWith("." + lParts[0]))
+                .findFirst();
             String lImportValue;
             if (lImport.isPresent()) {
               lImportValue = lImport.get();
@@ -353,10 +353,12 @@ public class ImportProcessor {
             }
           }
         }
-        // Types which already have an explicit import will get lost, if we do not check that. Sadly this will only
+        // Types which already have an explicit import will get lost, if we do not check that. Sadly this will
+        // only
         // work in strict mode.
         else if (mStrict) {
-          Optional<String> lImport = lOriginalImports.stream().filter(e -> e.endsWith("." + lNext)).findFirst();
+          Optional<String> lImport = lOriginalImports.stream().filter(e -> e.endsWith("." + lNext))
+              .findFirst();
           if (lImport.isPresent()) {
             lTypesToProcess.add(lImport.get());
           }
@@ -425,18 +427,19 @@ public class ImportProcessor {
         if (lCurrentScanToken >= 0) {
           // drop everything after last type-part from the previous calculation
           final String lLastTypePart = lParts[lCurrentScanToken];
-          String lImport2Replace =
-              lTypeName.substring(0, lTypeName.lastIndexOf(lLastTypePart) + lLastTypePart.length());
+          String lImport2Replace = lTypeName.substring(0,
+              lTypeName.lastIndexOf(lLastTypePart) + lLastTypePart.length());
           // apply workaround for Map.Entry import
           lImport2Replace = changeReplacementWorkaround(lImport2Replace);
 
           // import should start with lower case and contains '.'
-          if (lImport2Replace.matches("[\\p{L}&&[^\\p{Lu}]].*\\..*") &&
-              !isConflict(lImport2Replace, lOriginalImports, lGeneratedImports)) {
-            final String lImport2ReplaceWith = lImport2Replace.substring(lImport2Replace.lastIndexOf('.') + 1);
+          if (lImport2Replace.matches("[\\p{L}&&[^\\p{Lu}]].*\\..*")
+              && !isConflict(lImport2Replace, lOriginalImports, lGeneratedImports)) {
+            final String lImport2ReplaceWith = lImport2Replace
+                .substring(lImport2Replace.lastIndexOf('.') + 1);
 
-            final String lReplaceSource =
-                "([^\\w\\p{L}\\.\"])" + lImport2Replace.replaceAll("\\.", "\\\\s*\\.\\\\s*") + "([^\\p{L}\"])";
+            final String lReplaceSource = "([^\\w\\p{L}\\.\"])"
+                + lImport2Replace.replaceAll("\\.", "\\\\s*\\.\\\\s*") + "([^\\p{L}\"])";
             final String lReplaceTarget = "$1" + lImport2ReplaceWith + "$2";
 
             final String lBodyNew = lBody.replaceAll(lReplaceSource, lReplaceTarget);
@@ -514,16 +517,16 @@ public class ImportProcessor {
    * @param pImports a {@link java.util.Collection} object.
    * @return a {@link java.lang.String} object.
    */
-  protected String extractHeadSection( String pInput, PackageDeclaration pPackage,
-      NodeList<ImportDeclaration> pImports ) {
+  protected String extractHeadSection(String pInput, PackageDeclaration pPackage,
+      NodeList<ImportDeclaration> pImports) {
     ImportDeclaration lFirstImport = null;
     if (pImports != null && !pImports.isEmpty()) {
       lFirstImport = pImports.getFirst().get();
     }
     int lInputPosition = 0;
     if (null != pPackage || null != lFirstImport) {
-      final int lColumn =
-          null == lFirstImport ? pPackage.getEnd().get().column : lFirstImport.getBegin().get().column - 1;
+      final int lColumn = null == lFirstImport ? pPackage.getEnd().get().column
+          : lFirstImport.getBegin().get().column - 1;
       final int lLine = null == lFirstImport ? pPackage.getEnd().get().line : lFirstImport.getBegin().get().line;
 
       lInputPosition = locatePosition(pInput, lLine, lColumn + 1);
@@ -543,13 +546,14 @@ public class ImportProcessor {
    * @param pImports a {@link java.util.Collection} object.
    * @return a {@link java.lang.String} object.
    */
-  protected String extractImportsSection( String pInput, NodeList<ImportDeclaration> pImports ) {
+  protected String extractImportsSection(String pInput, NodeList<ImportDeclaration> pImports) {
     String result = "";
     if (pImports != null && !pImports.isEmpty()) {
       final ImportDeclaration lFirstImport = pImports.getFirst().get();
       final ImportDeclaration lLastImport = pImports.getLast().get();
 
-      int lStart = locatePosition(pInput, lFirstImport.getBegin().get().line, lFirstImport.getBegin().get().column);
+      int lStart = locatePosition(pInput, lFirstImport.getBegin().get().line,
+          lFirstImport.getBegin().get().column);
       int lEnd = locatePosition(pInput, lLastImport.getEnd().get().line, lLastImport.getEnd().get().column);
 
       if (sLogger.isDebugEnabled()) {
@@ -573,8 +577,8 @@ public class ImportProcessor {
    * @param pImports a {@link java.util.Collection} object.
    * @return a {@link java.lang.String} object.
    */
-  protected String extractBodySection( String pInput, PackageDeclaration pPackage,
-      NodeList<ImportDeclaration> pImports ) {
+  protected String extractBodySection(String pInput, PackageDeclaration pPackage,
+      NodeList<ImportDeclaration> pImports) {
     // determine last element, after which class body declaration starts
     NodeWithRange<?> lClassBodyStartsAfterObject = pPackage;
     if (pImports != null && !pImports.isEmpty()) {
@@ -583,11 +587,12 @@ public class ImportProcessor {
     // calculate start position of class body
     int lClassBodyStartPosition = 0;
     if (null != lClassBodyStartsAfterObject) {
-      lClassBodyStartPosition = locatePosition(pInput,
-          lClassBodyStartsAfterObject.getEnd().get().line, lClassBodyStartsAfterObject.getEnd().get().column + 1);
+      lClassBodyStartPosition = locatePosition(pInput, lClassBodyStartsAfterObject.getEnd().get().line,
+          lClassBodyStartsAfterObject.getEnd().get().column + 1);
     }
     if (sLogger.isDebugEnabled()) {
-      sLogger.debug("Extract Bodyssection from positions [" + lClassBodyStartPosition + "," + pInput.length() + "]");
+      sLogger.debug(
+          "Extract Bodyssection from positions [" + lClassBodyStartPosition + "," + pInput.length() + "]");
     }
     return StringUtils.stripToEmpty(pInput.substring(lClassBodyStartPosition));
   }
@@ -600,7 +605,7 @@ public class ImportProcessor {
    * @param pImportSection a {@link java.lang.String} object.
    * @return a boolean.
    */
-  protected boolean verifyInputSection( String pImportSection ) {
+  protected boolean verifyInputSection(String pImportSection) {
     return !pImportSection.contains("//") && !pImportSection.contains("/*") && !pImportSection.contains("*/");
   }
 
@@ -614,10 +619,9 @@ public class ImportProcessor {
    * @param replacedSet a {@link java.util.Collection} object.
    * @return a boolean.
    */
-  protected boolean isConflict( String type, Collection<String> importList,
-      Collection<String> replacedSet ) {
-    return !JAVA_LANG_PACKAGE.equals(extractPackage(type)) &&
-        (isConflict(type, replacedSet) || isConflict(type, importList));
+  protected boolean isConflict(String type, Collection<String> importList, Collection<String> replacedSet) {
+    return !JAVA_LANG_PACKAGE.equals(extractPackage(type))
+        && (isConflict(type, replacedSet) || isConflict(type, importList));
   }
 
   /**
@@ -629,7 +633,7 @@ public class ImportProcessor {
    * @param pTestSet a {@link java.util.Collection} object.
    * @return a boolean.
    */
-  protected boolean isConflict( String pType, Collection<String> pTestSet ) {
+  protected boolean isConflict(String pType, Collection<String> pTestSet) {
     if (pTestSet.contains(pType)) {
       return false;
     }
@@ -661,8 +665,8 @@ public class ImportProcessor {
    * @param pStarImports a {@link java.util.Collection} object.
    * @return a {@link java.lang.String} object.
    */
-  protected String generateImportSection( Set<String> pAllImports, String pMainPackage,
-      Collection<String> pStarImports, List<String> pImportGroups ) {
+  protected String generateImportSection(Set<String> pAllImports, String pMainPackage,
+      Collection<String> pStarImports, List<String> pImportGroups) {
     StringBuilder lBuffer = new StringBuilder(256);
 
     List<List<String>> lAllGroupedImports = this.groupImports(pAllImports, pImportGroups, true);
@@ -677,9 +681,8 @@ public class ImportProcessor {
         // - it is java.lang import (automatically imported)
         // - it is part of the current package
         // - there is * import from the same package already
-        if (!JAVA_LANG_PACKAGE.equals(lImportPackage) &&
-            !pMainPackage.equals(lImportPackage) &&
-            (lImport.endsWith(STAR_IMPORT) || !pStarImports.contains(lImportPackage + STAR_IMPORT))) {
+        if (!JAVA_LANG_PACKAGE.equals(lImportPackage) && !pMainPackage.equals(lImportPackage)
+            && (lImport.endsWith(STAR_IMPORT) || !pStarImports.contains(lImportPackage + STAR_IMPORT))) {
           lBuffer.append(IMPORT_STATEMENT).append(lImport).append(';').append(NEW_LINE);
         }
       }
@@ -691,13 +694,14 @@ public class ImportProcessor {
     return lBuffer.toString();
   }
 
-  public List<List<String>> groupImports( Set<String> pAllImports, List<String> pImportGroups, boolean pStatic ) {
+  public List<List<String>> groupImports(Set<String> pAllImports, List<String> pImportGroups, boolean pStatic) {
     // Reduce imports to those that should be processed (static or non-static ones)
     pAllImports = pAllImports.stream().filter(f -> f.startsWith("static ") == pStatic).collect(Collectors.toSet());
     List<List<String>> lGroupedImports = new ArrayList<>();
     List<String> lLeftOvers = new ArrayList<>(pAllImports);
     for (String lNextGroup : pImportGroups) {
-      List<String> lImports = pAllImports.stream().filter(e -> e.startsWith(lNextGroup)).collect(Collectors.toList());
+      List<String> lImports = pAllImports.stream().filter(e -> e.startsWith(lNextGroup))
+          .collect(Collectors.toList());
       Collections.sort(lImports);
       lGroupedImports.add(lImports);
       lLeftOvers.removeAll(lImports);
@@ -718,7 +722,7 @@ public class ImportProcessor {
    * @param pColumn a column in this string
    * @return Position of a character in the string
    */
-  protected int locatePosition( String pInput, int pLine, int pColumn ) {
+  protected int locatePosition(String pInput, int pLine, int pColumn) {
     int result = pColumn;
     if (pLine > 0) {
       result += StringUtils.ordinalIndexOf(pInput, "\n", pLine - 1);
@@ -734,7 +738,7 @@ public class ImportProcessor {
    * @param pImportType a declaration of some type.
    * @return package name of this type
    */
-  protected String extractPackage( String pImportType ) {
+  protected String extractPackage(String pImportType) {
     final int index = pImportType.lastIndexOf('.');
     String typePackage = "";
     if (-1 < index) {
