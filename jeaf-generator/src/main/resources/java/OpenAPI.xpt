@@ -91,7 +91,7 @@ security:
   «ENDFOREACH-»
 
 «ENDIF-»
-«IF this.hasOpenAPITypes() || this.hasOpenAPIEnums() || this.hasOpenAPISecuritySchemes()-»
+«IF this.hasOpenAPITypes() || this.hasOpenAPIEnums() || this.getOpenAPIDataTypes().select(e|e.inline == false).size > 0 || this.hasOpenAPISecuritySchemes()-»
 components:
   «IF this.hasOpenAPISecuritySchemes() -»
   securitySchemes:
