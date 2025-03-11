@@ -41,7 +41,7 @@ import openapitools.JSON;
   OpenAPITestObject.JSON_PROPERTY_NULLABLE_ARRAY,
   OpenAPITestObject.JSON_PROPERTY_NOT_NULLABLE_ARRAY
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
 public class OpenAPITestObject {
   public static final String JSON_PROPERTY_READ_ONLY_ATTRIBUTE = "readOnlyAttribute";
   @javax.annotation.Nullable

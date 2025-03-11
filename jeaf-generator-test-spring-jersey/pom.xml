@@ -125,6 +125,12 @@
 		</dependency>
 
 		<dependency>
+			<groupId>org.glassfish.jersey.core</groupId>
+			<artifactId>jersey-server</artifactId>
+			<version>${jersey.version}</version>
+		</dependency>
+
+		<dependency>
 			<groupId>com.anaptecs.jeaf.json</groupId>
 			<artifactId>jeaf-json-impl-runtime</artifactId>
 			<version>${jeaf.json.impl.version}</version>
