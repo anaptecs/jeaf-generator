@@ -36,7 +36,7 @@ import openapitools.JSON;
   Problem.JSON_PROPERTY_DETAIL,
   Problem.JSON_PROPERTY_INSTANCE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
 public class Problem {
   public static final String JSON_PROPERTY_TITLE = "title";
   @javax.annotation.Nonnull
