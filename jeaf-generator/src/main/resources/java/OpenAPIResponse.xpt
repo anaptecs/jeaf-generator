@@ -4,20 +4,13 @@
 «EXTENSION org::openarchitectureware::util::stdlib::io»
 
 «DEFINE Responses(OpenAPI3Specification spec) FOR RESTOperation -»
-    «REM»Resolve REST operation specific error responses«ENDREM-»
-    «FOREACH this.clientDependency.supplier.typeSelect(OpenAPIResponse).sortBy(e|e.statusCodes) AS response -»
-      «EXPAND Responses(spec, this) FOR response -»
+    «REM»Resolve responses for REST operation specific and global ones«ENDREM»
+    «FOREACH spec.getAllResponses(this).sortBy(e|e.statusCodes) AS response -»
+        «EXPAND Response(spec, this) FOR response -»
     «ENDFOREACH -»
-    «REM»Resolve OpenAPI specification specific error responses«ENDREM»
-    «IF hasCustomResponse(spec) == true -»
-        «EXPAND Responses(spec, this) FOREACH getCustomResponses(spec).sortBy(e|e.statusCodes) -» 
-    «REM»Resolve global error responses«ENDREM»
-    «ELSE -»
-        «EXPAND Responses(spec, this) FOREACH getGlobalDefaultErrorResponses(spec.getModel()) -» 
-    «ENDIF -»
 «ENDDEFINE»
 
-«DEFINE Responses(OpenAPI3Specification spec, RESTOperation operation) FOR OpenAPIResponse -»
+«DEFINE Response(OpenAPI3Specification spec, RESTOperation operation) FOR OpenAPIResponse -»
 	«IF this.isResponseApplicable(operation) -»
 	«FOREACH this.statusCodes.sortBy(e|e) AS errorCode-»
         '«errorCode.getErrorCode()»':

@@ -403,6 +403,15 @@ cached String getHTTPStatusCode(JMM::RESTOperation operation):
        if operation.isReturnTypeVoid()
        then getRESTDefaultVoidStatusCode()
        else getRESTDefaultSuccessStatusCode();
+
+
+List[JMM::OpenAPIResponse] getAllResponses(JMM::OpenAPI3Specification spec, JMM::RESTOperation operation):
+	if(spec.hasCustomResponse())
+	then operation.getOperationSpecificResponses().addAll(spec.getCustomResponses())
+	else operation.getOperationSpecificResponses().addAll(spec.getModel().getGlobalDefaultErrorResponses());
+    
+private List[JMM::OpenAPIResponse] getOperationSpecificResponses(JMM::RESTOperation operation):
+	operation.clientDependency.supplier.typeSelect(JMM::OpenAPIResponse);
    
 List[JMM::OpenAPIResponse] getCustomResponses(JMM::OpenAPI3Specification spec):
    spec.clientDependency.supplier.typeSelect(JMM::OpenAPIResponse);

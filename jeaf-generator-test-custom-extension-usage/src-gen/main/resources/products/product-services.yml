@@ -85,7 +85,6 @@ paths:
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
-    
     post:
       tags:
         - Products
@@ -117,7 +116,6 @@ paths:
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
-    
     head:
       tags:
         - Service Tag
@@ -126,14 +124,13 @@ paths:
         '202':
           description: >-
             In case that a request was successful only status code 202 will be returned but no response content will be provided (aka as return type 'void' in many programming languages).
+    
         '204':
           $ref: '#/components/responses/NoContentResponse'
-    
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
-    
   /products/{id}:
     get:
       tags:
@@ -170,7 +167,6 @@ paths:
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
-    
   /products/sortiment/{id}:
     get:
       tags:
@@ -236,7 +232,6 @@ paths:
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
-    
   /products/ChannelCode:
     post:
       tags:
@@ -290,7 +285,6 @@ paths:
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
-    
   /products/deprecated/operation:
     get:
       tags:
@@ -319,7 +313,6 @@ paths:
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
-    
   /products/deprecated/context:
     post:
       tags:
@@ -372,7 +365,6 @@ paths:
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
-    
   /products/deprecated/beanParams:
     post:
       tags:
@@ -411,7 +403,6 @@ paths:
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
-    
   /products/deprecated/params:
     post:
       tags:
@@ -445,7 +436,6 @@ paths:
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
-    
   /products/deprecated/body:
     post:
       tags:
@@ -476,7 +466,6 @@ paths:
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
-    
   /products/deprecated/complexBody:
     post:
       tags:
@@ -502,7 +491,6 @@ paths:
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
-    
   /products/deprecated/complexReturn:
     get:
       tags:
@@ -527,7 +515,6 @@ paths:
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
-    
   /products/specific/{id}:
     patch:
       tags:
@@ -607,7 +594,6 @@ paths:
           $ref: '#/components/responses/CustomErrorResponse'
         '409':
           $ref: '#/components/responses/ConflictResponse'
-    
   /products/ChannelCodeObject:
     post:
       tags:
@@ -649,7 +635,6 @@ paths:
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
-    
   /products/currencies:
     post:
       tags:
@@ -702,7 +687,6 @@ paths:
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
-    
   /products/currencies/valid:
     post:
       tags:
@@ -749,7 +733,6 @@ paths:
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
-    
   /products/codeTypeUsages:
     post:
       tags:
@@ -779,7 +762,6 @@ paths:
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
-    
   /products/LocalBeanParam:
     get:
       tags:
@@ -807,7 +789,6 @@ paths:
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
-    
   /products/ExternalBeanParam:
     get:
       tags:
@@ -834,7 +815,6 @@ paths:
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
-    
   /products/ChildBeanParam:
     get:
       tags:
@@ -862,7 +842,6 @@ paths:
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
-    
   /products/IBAN:
     post:
       tags:
@@ -893,7 +872,6 @@ paths:
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
-    
   /products/channels:
     get:
       tags:
@@ -929,7 +907,6 @@ paths:
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
-    
   /products/DefaultChannel:
     get:
       tags:
@@ -961,7 +938,6 @@ paths:
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
-    
   /products/currencies/{channelCode}:
     get:
       tags:
@@ -1005,7 +981,6 @@ paths:
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
-    
   /products/async-currencies/{channelCode}:
     get:
       tags:
@@ -1049,7 +1024,6 @@ paths:
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
-    
   /products/test-date-query-params/{path}:
     get:
       tags:
@@ -1141,7 +1115,6 @@ paths:
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
-    
   /products/test-date-query-params-beans/{path}:
     get:
       tags:
@@ -1237,7 +1210,6 @@ paths:
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
-    
   /products/test-optional-query-params:
     get:
       tags:
@@ -1272,7 +1244,6 @@ paths:
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
-    
   /products/special-header-params:
     get:
       tags:
@@ -1306,7 +1277,6 @@ paths:
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
-    
   /products/technicalHeaderBeanParam:
     get:
       tags:
@@ -1343,7 +1313,6 @@ paths:
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
-    
   /products/technicalHeaderParam:
     get:
       tags:
@@ -1380,7 +1349,6 @@ paths:
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
-    
   /products/testNotInlinedBeanParam:
     post:
       tags:
@@ -1400,7 +1368,6 @@ paths:
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
-    
   /products/testStringArray:
     post:
       tags:
@@ -1424,7 +1391,6 @@ paths:
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
-    
   /products/testPrimitiveArrayAsQueryParam:
     get:
       tags:
@@ -1456,7 +1422,6 @@ paths:
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
-    
   /products/big-decimal-codes-header:
     get:
       tags:
@@ -1489,7 +1454,6 @@ paths:
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
-    
   /products/big-decimal-codes-query:
     get:
       tags:
@@ -1528,7 +1492,6 @@ paths:
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
-    
   /products/testMulitValuedBeanParams:
     get:
       tags:
@@ -1608,7 +1571,6 @@ paths:
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
-    
   /products/no-return-type:
     post:
       tags:
@@ -1680,7 +1642,6 @@ paths:
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
-    
   /products/delete-something/{id}:
     delete:
       tags:
@@ -1704,7 +1665,6 @@ paths:
           $ref: '#/components/responses/CustomErrorResponse'
         '409':
           $ref: '#/components/responses/ConflictResponse'
-    
   /products/generic-single-value:
     get:
       tags:
@@ -1728,7 +1688,6 @@ paths:
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
-    
   /products/generic-multi-value:
     get:
       tags:
@@ -1752,7 +1711,6 @@ paths:
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
-    
   /products/test-string-code-with-restriction/{string-code}:
     post:
       tags:
@@ -1793,7 +1751,6 @@ paths:
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
-    
   /products/testContext:
     get:
       tags:
@@ -1848,7 +1805,6 @@ paths:
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
-    
   /products/nested-generics:
     get:
       tags:
@@ -1872,7 +1828,6 @@ paths:
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
-    
   /products/multivalued-generics:
     get:
       tags:
@@ -1896,7 +1851,6 @@ paths:
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
-    
   /products/testDuplicateGenerics1:
     get:
       tags:
@@ -1920,7 +1874,6 @@ paths:
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
-    
   /products/testDuplicateGenerics2:
     get:
       tags:
@@ -1944,7 +1897,6 @@ paths:
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
-    
 
 security:
   - {}
