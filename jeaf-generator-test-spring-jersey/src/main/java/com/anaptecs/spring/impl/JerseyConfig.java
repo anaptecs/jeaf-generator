@@ -1,12 +1,11 @@
 package com.anaptecs.spring.impl;
 
-import org.glassfish.jersey.server.ResourceConfig;
-import org.springframework.context.annotation.Configuration;
-
 import com.anaptecs.jeaf.jersey.impl.time.JavaTimeConverterProvider;
 import com.anaptecs.spring.service.resource.PathlessServiceResource;
 import com.anaptecs.spring.service.resource.ProductServiceResource;
 import com.anaptecs.spring.service.resource.RESTProductServiceResource;
+import org.glassfish.jersey.server.ResourceConfig;
+import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class JerseyConfig extends ResourceConfig {
