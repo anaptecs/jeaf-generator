@@ -131,6 +131,12 @@
 		</dependency>
 
 		<dependency>
+		    <groupId>jakarta.ws.rs</groupId>
+		    <artifactId>jakarta.ws.rs-api</artifactId>
+		    <version>${jakarta.ws.version}</version>
+		</dependency>
+
+		<dependency>
 			<groupId>com.anaptecs.jeaf.json</groupId>
 			<artifactId>jeaf-json-impl-runtime</artifactId>
 			<version>${jeaf.json.impl.version}</version>
