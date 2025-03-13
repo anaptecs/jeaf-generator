@@ -5,3 +5,6 @@ cached boolean isOpenAPIDataType(uml::Element element):
     
 cached JMM::OpenAPIDataType asOpenAPIDataType(uml::Element element):
     (JMM::OpenAPIDataType) element;
+    
+cached boolean isInlinedOpenAPIDataType(uml::Element element):
+	element.isOpenAPIDataType() && element.asOpenAPIDataType().inline;
