@@ -4,6 +4,8 @@
 «EXTENSION functions::SoftLink»
 «EXTENSION functions::Class»
 «EXTENSION functions::SystemProperties»
+«EXTENSION functions::Property»
+«EXTENSION functions::OpenAPIDataType»
 
 «IMPORT uml»
 «IMPORT JMM»
@@ -186,7 +188,17 @@
                 «ENDFOREACH-»
               «ELSE-»
 		        «IF this.isTemplateProperty(attribute) -»
+                    «IF this.getTemplateBindingType(attribute).isBasicType() -»
+          type: «this.getTemplateBindingType(attribute).getOpenAPIType(spec)» 
+                    «ELSEIF this.getTemplateBindingType(attribute).isInlinedOpenAPIDataType() -»
+                        «IF this.getTemplateBindingType(attribute).asOpenAPIDataType().compositeDataType == true -»
+          type: string
+                        «ELSE -»
+          type: «this.getTemplateBindingType(attribute).ownedAttribute.first().type.getOpenAPIType(spec)»
+                        «ENDIF -»
+                    «ELSE-»
           $ref: «this.getTemplateBindingType(attribute).getOpenAPIType(spec)»
+                    «ENDIF-»
 		        «ELSE-»
           $ref: «attribute.type.getOpenAPIType(spec)»
                 «ENDIF-»
@@ -207,7 +219,17 @@
                 «ENDFOREACH-»
               «ELSE-»
                 «IF this.isTemplateProperty(attribute) -»
+                    «IF this.getTemplateBindingType(attribute).isBasicType() -»
+            type: «this.getTemplateBindingType(attribute).getOpenAPIType(spec)»
+                    «ELSEIF this.getTemplateBindingType(attribute).isInlinedOpenAPIDataType() -»
+                        «IF this.getTemplateBindingType(attribute).asOpenAPIDataType().compositeDataType == true -»
+            type: string
+                        «ELSE -»
+            type: «this.getTemplateBindingType(attribute).ownedAttribute.first().type.getOpenAPIType(spec)»
+                        «ENDIF -»
+                    «ELSE-»
             $ref: «this.getTemplateBindingType(attribute).getOpenAPIType(spec)»
+                    «ENDIF-»
                 «ELSE-»
             $ref: «attribute.type.getOpenAPIType(spec)»
                 «ENDIF-»
