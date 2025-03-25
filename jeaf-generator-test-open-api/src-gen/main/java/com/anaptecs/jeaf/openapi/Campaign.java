@@ -41,10 +41,10 @@ public class Campaign {
   }
 
    /**
-   * Get theLinkID
+   * The magic link. &lt;br&gt;&lt;br&gt; Deprecated: Please use \&quot;moreLinks\&quot; instead. (since: 2.3.1, removed with: 2.4) 
    * @return theLinkID
   **/
-  @Schema(description = "")
+  @Schema(description = "The magic link. <br><br> Deprecated: Please use \"moreLinks\" instead. (since: 2.3.1, removed with: 2.4) ")
   public Long getTheLinkID() {
     return theLinkID;
   }

@@ -240,6 +240,7 @@ components:
         - a
       properties:
         a:
+          # the A
           $ref: '#/components/schemas/BidirectA'
 
     # com.anaptecs.jeaf.junit.openapi.base.Booking
@@ -332,6 +333,10 @@ components:
         - moreLinks
       properties:
         theLink:
+          description: >-
+            The magic link.
+            <br><br>
+            Deprecated: Please use "moreLinks" instead. (since: 2.3.1, removed with: 2.4)
           type: integer
           format: int64
           deprecated: true
@@ -366,6 +371,7 @@ components:
         - selfServiceChannel
       properties:
         channelType:
+          # Type of the channel
           $ref: '#/components/schemas/ChannelType'
         channelCode:
           description: >-
@@ -678,8 +684,10 @@ components:
         - previousName
       properties:
         start:
+          # The start
           $ref: '#/components/schemas/Stop'
         end:
+          # The end
           $ref: '#/components/schemas/Stop'
         previousName:
           description: >-
@@ -1090,6 +1098,7 @@ components:
             pattern: '^DE\d{2}\s?([0-9a-zA-Z]{4}\s?){4}[0-9a-zA-Z]{2}$'
           nullable: true
         theBankAccount:
+          # I would like to document references to other types.
           # Property "theBankAccount" is marked as deprecated. However OpenAPI does not support to mark references to complex types as deprecated.
           $ref: '#/components/schemas/BankAccount'
         legacyBankAccounts:
@@ -2069,6 +2078,9 @@ components:
               format: int32
               nullable: false
             realBooking:
+              # the real booking
+              # 
+              # Breaking Change with 2.0: Association will be mandatory.
               $ref: '#/components/schemas/Booking'
             inventories:
               description: >-

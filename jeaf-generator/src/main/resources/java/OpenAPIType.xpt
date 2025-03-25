@@ -76,7 +76,8 @@
           «EXPAND java::OpenAPIDataType::GenerateOpenAPIDataType(spec, attribute, "", true) FOR (OpenAPIDataType) attribute.type -»
           «ELSE -»
           «IF attribute.hasComment() -»
-            «IF attribute.type.isBasicOpenAPIType() == false && attribute.isMultivalued() == false-»
+            «IF attribute.type.isBasicOpenAPIType() == false && attribute.isMultivalued() == false && attribute.isSoftLink() == false-»
+          # «attribute.getCommentForOpenAPIDescription("          # ").replaceAll("<br>", "")»
             «ELSE-»
               «IF attribute.hasMultiLineComment()-»
           description: «getOpenAPICommentStyle()»
@@ -276,7 +277,8 @@
           «EXPAND java::OpenAPIDataType::GenerateOpenAPIDataType(spec, attribute, "    ", true) FOR (OpenAPIDataType) attribute.type -»
           «ELSE -»
           «IF attribute.hasComment() -»
-            «IF attribute.type.isBasicOpenAPIType() == false && attribute.isMultivalued() == false-»
+            «IF attribute.type.isBasicOpenAPIType() == false && attribute.isMultivalued() == false && attribute.isSoftLink() == false-»
+              # «attribute.getCommentForOpenAPIDescription("              # ").replaceAll("<br>", "")»
             «ELSE-»
               «IF attribute.hasMultiLineComment()-»
               description: «getOpenAPICommentStyle()»
