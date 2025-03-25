@@ -938,6 +938,15 @@ public class GeneratorMojo extends AbstractMojo {
   private String openAPILiteralQuotationCharacter = "";
 
   /**
+   * Configuration parameter allows to define an explicit quotation character for example values in OpenAPI
+   * specifications.
+   *
+   * By default no quotation is used.
+   */
+  @Parameter(required = false, defaultValue = "")
+  private String openAPIExampleQuotationCharacter = "";
+
+  /**
    * Switch can be used to suppress technical http headers in generated Java code.
    */
   @Parameter(required = false, defaultValue = "false")
@@ -1827,6 +1836,10 @@ public class GeneratorMojo extends AbstractMojo {
         lLog.info("OpenAPI Enum literal quotation character:         " + openAPILiteralQuotationCharacter);
       }
 
+      if (openAPIExampleQuotationCharacter.isEmpty() == false) {
+        lLog.info("OpenAPI example value quotation character:        " + openAPIExampleQuotationCharacter);
+      }
+
       if (openAPIContactName.isEmpty() == false) {
         lLog.info("OpenAPI Contact Name:                             " + openAPIContactName);
       }
@@ -2176,6 +2189,7 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty("switch.gen.openapi.yaml.11.comapitibility", enableYAML11Compatibility.toString());
       System.setProperty("switch.gen.openapi.openAPICommentStyle", openAPICommentStyle.toString());
       System.setProperty(PROPERTY_PREFIX + "openAPILiteralQuotationCharacter", openAPILiteralQuotationCharacter);
+      System.setProperty(PROPERTY_PREFIX + "openAPIExampleQuotationCharacter", openAPIExampleQuotationCharacter);
 
       System.setProperty("switch.gen.openapi.openAPIContactName", openAPIContactName.toString());
       System.setProperty("switch.gen.openapi.openAPIContactURL", openAPIContactURL.toString());

@@ -379,8 +379,8 @@ components:
           type: string
           default: 'WEBSHOP'
           examples:
-           - MOBILE_APP
-           - WEBSHOP
+           - 'MOBILE_APP'
+           - 'WEBSHOP'
           nullable: false
         code:
           type: integer
@@ -638,7 +638,7 @@ components:
           format: time
           nullable: false
           examples:
-           - 12:07
+           - '12:07'
         localDate:
           type: string
           format: date
@@ -933,7 +933,7 @@ components:
           minLength: 3
           maxLength: 3
           examples:
-           - CHF
+           - 'CHF'
           nullable: false
 
     # com.anaptecs.jeaf.junit.generics.MultiTemplateClassImpl
@@ -1808,7 +1808,7 @@ components:
           type: string
           nullable: false
           examples:
-           - https://www.company.com/products/1345-345
+           - 'https://www.company.com/products/1345-345'
         productID:
           type: string
           nullable: false
@@ -1822,7 +1822,7 @@ components:
             minLength: 3
             maxLength: 3
             examples:
-             - CHF
+             - 'CHF'
           minItems: 7
           maxItems: 42
           nullable: false
