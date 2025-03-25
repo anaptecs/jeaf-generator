@@ -65,7 +65,7 @@ public class Campaign {
   }
 
   /**
-   * Get theLinkID
+   * The magic link. &lt;br&gt;&lt;br&gt; Deprecated: Please use \&quot;moreLinks\&quot; instead. (since: 2.3.1, removed with: 2.4) 
    * @return theLinkID
    * @deprecated
    */

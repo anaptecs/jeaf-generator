@@ -190,6 +190,7 @@ components:
         - a
       properties:
         a:
+          # the A
           $ref: '#/components/schemas/BidirectA'
 
     # com.anaptecs.spring.base.Booking
@@ -229,6 +230,7 @@ components:
         - selfServiceChannel
       properties:
         channelType:
+          # Type of the channel
           $ref: '#/components/schemas/ChannelType'
         channelCode:
           description: |
@@ -495,8 +497,10 @@ components:
         - previousName
       properties:
         start:
+          # The start
           $ref: '#/components/schemas/Stop'
         end:
+          # The end
           $ref: '#/components/schemas/Stop'
         previousName:
           description: |
