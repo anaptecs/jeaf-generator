@@ -942,6 +942,9 @@ public class GeneratorMojo extends AbstractMojo {
    * specifications.
    *
    * By default no quotation is used.
+   *
+   * Please be aware that quoting examples is not necessary except for rare cases. So instead of enabling it in general
+   * it's recommended to use quotes only in cases were it is really required.
    */
   @Parameter(required = false, defaultValue = "")
   private String openAPIExampleQuotationCharacter = "";
