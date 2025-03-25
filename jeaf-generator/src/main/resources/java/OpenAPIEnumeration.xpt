@@ -7,6 +7,7 @@
 «EXTENSION entity::ModelProperties»
 «EXTENSION functions::Enumeration»
 «EXTENSION functions::JEAFEnumeration»
+«EXTENSION functions::SystemProperties»
 «EXTENSION jeafgenerator::api::OpenAPIEnumExtensionPoint»
 
 «DEFINE GenerateOpenAPIEnum FOR OpenAPIEnumeration -»
@@ -55,14 +56,14 @@
       enum:
       «ENDIF-»
         «FOREACH this.getPulicLiterals() AS literal-»        
-        - «literal.getLiteralName()»
+        - «openAPILiteralQuotationCharacter()»«literal.getLiteralName()»«openAPILiteralQuotationCharacter()»
         «ENDFOREACH-»
         «IF this.hasDynamicLiterals -»
 	        «FOREACH this.getDynamicLiteralNames() AS dynamicLiteral -»
-        - «dynamicLiteral»
+        - «openAPILiteralQuotationCharacter()»«dynamicLiteral»«openAPILiteralQuotationCharacter()»
 	        «ENDFOREACH-»
         «ENDIF-»
       «IF this.hasDefaultLiteral()-»
-      default: «this.getDefaultLiteral().getLiteralName()»
+      default: «openAPILiteralQuotationCharacter()»«this.getDefaultLiteral().getLiteralName()»«openAPILiteralQuotationCharacter()»
       «ENDIF-»
 «ENDDEFINE»
