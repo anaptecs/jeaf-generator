@@ -34,28 +34,6 @@ import java.util.StringJoiner;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import org.apache.commons.io.FileUtils;
-import org.apache.maven.artifact.Artifact;
-import org.apache.maven.execution.MavenSession;
-import org.apache.maven.model.Dependency;
-import org.apache.maven.model.Plugin;
-import org.apache.maven.plugin.AbstractMojo;
-import org.apache.maven.plugin.BuildPluginManager;
-import org.apache.maven.plugin.MojoExecutionException;
-import org.apache.maven.plugin.MojoFailureException;
-import org.apache.maven.plugin.logging.Log;
-import org.apache.maven.plugins.annotations.Component;
-import org.apache.maven.plugins.annotations.LifecyclePhase;
-import org.apache.maven.plugins.annotations.Mojo;
-import org.apache.maven.plugins.annotations.Parameter;
-import org.apache.maven.plugins.annotations.ResolutionScope;
-import org.apache.maven.project.MavenProject;
-import org.codehaus.plexus.util.xml.Xpp3Dom;
-import org.openarchitectureware.workflow.WorkflowRunner;
-import org.twdata.maven.mojoexecutor.MojoExecutor;
-import org.twdata.maven.mojoexecutor.MojoExecutor.Element;
-import org.twdata.maven.mojoexecutor.MojoExecutor.ExecutionEnvironment;
-
 import com.anaptecs.jeaf.fwk.generator.util.EnterpriseJavaType;
 import com.anaptecs.jeaf.fwk.generator.util.ModelingTool;
 import com.anaptecs.jeaf.fwk.generator.util.OpenAPIVersion;
@@ -77,12 +55,32 @@ import com.anaptecs.jeaf.xfun.api.checks.Assert;
 import com.anaptecs.jeaf.xfun.api.checks.VerificationResult;
 import com.anaptecs.jeaf.xfun.api.errorhandling.ApplicationException;
 import com.anaptecs.jeaf.xfun.api.trace.Trace;
-
 import de.plushnikov.doctorjim.ImportProcessor;
 import io.swagger.parser.OpenAPIParser;
 import io.swagger.v3.parser.core.models.AuthorizationValue;
 import io.swagger.v3.parser.core.models.ParseOptions;
 import io.swagger.v3.parser.core.models.SwaggerParseResult;
+import org.apache.commons.io.FileUtils;
+import org.apache.maven.artifact.Artifact;
+import org.apache.maven.execution.MavenSession;
+import org.apache.maven.model.Dependency;
+import org.apache.maven.model.Plugin;
+import org.apache.maven.plugin.AbstractMojo;
+import org.apache.maven.plugin.BuildPluginManager;
+import org.apache.maven.plugin.MojoExecutionException;
+import org.apache.maven.plugin.MojoFailureException;
+import org.apache.maven.plugin.logging.Log;
+import org.apache.maven.plugins.annotations.Component;
+import org.apache.maven.plugins.annotations.LifecyclePhase;
+import org.apache.maven.plugins.annotations.Mojo;
+import org.apache.maven.plugins.annotations.Parameter;
+import org.apache.maven.plugins.annotations.ResolutionScope;
+import org.apache.maven.project.MavenProject;
+import org.codehaus.plexus.util.xml.Xpp3Dom;
+import org.openarchitectureware.workflow.WorkflowRunner;
+import org.twdata.maven.mojoexecutor.MojoExecutor;
+import org.twdata.maven.mojoexecutor.MojoExecutor.Element;
+import org.twdata.maven.mojoexecutor.MojoExecutor.ExecutionEnvironment;
 
 @Mojo(
     name = "Generator",
@@ -106,7 +104,7 @@ public class GeneratorMojo extends AbstractMojo {
 
   /**
    * UML Modeling Tool that was used to create the UML Model. By default it is assumed that MagicDraw UML was used.
-   * 
+   *
    * Supported values are (case sensitive): MAGIC_DRAW, ECLIPSE_PAPYRUS, OTHER
    */
   @Parameter(required = false, defaultValue = "MAGIC_DRAW")
@@ -115,7 +113,7 @@ public class GeneratorMojo extends AbstractMojo {
   /**
    * Parameter defines the type of Enterprise Java that should be used for code generation. By default JavaEE (aka JEE)
    * is used.
-   * 
+   *
    * Supported values are: JAVA_EE, JAKARTA_EE
    */
   @Parameter(required = false, defaultValue = "JAVA_EE")
@@ -130,7 +128,7 @@ public class GeneratorMojo extends AbstractMojo {
 
   /**
    * Group ID of the artifact that contains the XMI files of the UML model.
-   * 
+   *
    * The UML model can either be defined by pointing to the directory where the XMI files are located directly or by
    * referencing an artifact that contains the XMI files.
    */
@@ -139,7 +137,7 @@ public class GeneratorMojo extends AbstractMojo {
 
   /**
    * Artifact ID of the artifact that contains the XMI files of the UML model.
-   * 
+   *
    * The UML model can either be defined by pointing to the directory where the XMI files are located directly or by
    * referencing an artifact that contains the XMI files.
    */
@@ -304,7 +302,7 @@ public class GeneratorMojo extends AbstractMojo {
    * Switch can be used to generate reactive service interfaces.<br>
    * <br>
    * Please be aware that generated code will have dependency on library <b><code>Reactor Code</code></b>. <br>
-   * 
+   *
    * <pre>
    * &#60;dependency>
    *     &#60;groupId>io.projectreactor&#60;/groupId>
@@ -343,7 +341,7 @@ public class GeneratorMojo extends AbstractMojo {
    * Switch can be used to generate reactive Spring REST Controllers.<br>
    * <br>
    * Please be aware that generated code will have dependency on library <b><code>Reactor Code</code></b>. <br>
-   * 
+   *
    * <pre>
    * &#60;dependency>
    *     &#60;groupId>io.projectreactor&#60;/groupId>
@@ -381,7 +379,7 @@ public class GeneratorMojo extends AbstractMojo {
    * artifacts:
    * <p/>
    * <b>Spring Boot:</b>
-   * 
+   *
    * <pre>
    *    &#60;dependency>
    *        &#60;groupId>com.anaptecs.jeaf.validation&#60;/groupId>
@@ -389,9 +387,9 @@ public class GeneratorMojo extends AbstractMojo {
    *        &#60;version>${1.6.0 or higher}&#60;/version>
    *    &#60;/dependency><br/>
    * </pre>
-   * 
+   *
    * <b>JEAF:</b>
-   * 
+   *
    * <pre>
    *    &#60;dependency>
    *        &#60;groupId>com.anaptecs.jeaf.validation&#60;/groupId>
@@ -399,7 +397,7 @@ public class GeneratorMojo extends AbstractMojo {
    *        &#60;version>${1.6.0 or higher}&#60;/version>
    *    &#60;/dependency><br/>
    * </pre>
-   * 
+   *
    * Depending on the implementation of class <code>com.anaptecs.jeaf.validation.api.ValidationExecutor</code> if might
    * still be possible to disable / enable request validation without changing the code.
    */
@@ -412,7 +410,7 @@ public class GeneratorMojo extends AbstractMojo {
    * artifacts:
    * <p/>
    * <b>Spring Boot:</b>
-   * 
+   *
    * <pre>
    *    &#60;dependency>
    *        &#60;groupId>com.anaptecs.jeaf.validation&#60;/groupId>
@@ -420,9 +418,9 @@ public class GeneratorMojo extends AbstractMojo {
    *        &#60;version>${1.6.0 or higher}&#60;/version>
    *    &#60;/dependency><br/>
    * </pre>
-   * 
+   *
    * <b>JEAF:</b>
-   * 
+   *
    * <pre>
    *    &#60;dependency>
    *        &#60;groupId>com.anaptecs.jeaf.validation&#60;/groupId>
@@ -430,7 +428,7 @@ public class GeneratorMojo extends AbstractMojo {
    *        &#60;version>${1.6.0 or higher}&#60;/version>
    *    &#60;/dependency><br/>
    * </pre>
-   * 
+   *
    * Depending on the implementation of class <code>com.anaptecs.jeaf.validation.api.ValidationExecutor</code> if might
    * still be possible to disable / enable response validation without changing the code.
    */
@@ -441,7 +439,7 @@ public class GeneratorMojo extends AbstractMojo {
    * Switch defines whether custom headers of a REST resource should be filtered or not. Default is <code>true</code>.
    * If custom header filtering is defined then a {@link com.anaptecs.jeaf.rest.resource.api.CustomHeaderFilter} has to
    * be provided via configuration.
-   * 
+   *
    * It's strongly recommended to not use custom headers at all. However, if needed then at least they should be
    * filtered.
    */
@@ -465,7 +463,7 @@ public class GeneratorMojo extends AbstractMojo {
    * Switch defines whether reactive REST service proxies should be generated or not.<br>
    * <br>
    * Please be aware that generated code will have dependency on library <b><code>Reactor Code</code></b>. <br>
-   * 
+   *
    * <pre>
    * &#60;dependency>
    *     &#60;groupId>io.projectreactor&#60;/groupId>
@@ -911,7 +909,7 @@ public class GeneratorMojo extends AbstractMojo {
    * <code>off</code> are treated as boolean values. This might lead to ugly situation when tools or applications are
    * still working with YAML 1.1 based parsers. To prevent such trouble it is possible to tell JEAF generator that in
    * such cases these values should be quoted.
-   * 
+   *
    * @see <a href=
    * "https://stackoverflow.com/questions/61157594/why-does-swagger-codegen-convert-an-on-off-string-enum-to-true-false">https://stackoverflow.com/questions/61157594/why-does-swagger-codegen-convert-an-on-off-string-enum-to-true-false<a/>
    */
@@ -925,11 +923,19 @@ public class GeneratorMojo extends AbstractMojo {
    * <br/>
    * By default <code>'|'</code> is used which means that new lines will be kept and that there will be a single new
    * line at the end of each comment.
-   * 
+   *
    * @see <a href="https://yaml-multiline.info/">https://yaml-multiline.info/</a>
    */
   @Parameter(required = false, defaultValue = "|")
   private String openAPICommentStyle;
+
+  /**
+   * Configuration parameter allows to define an explicit quotation character for literals in OpenAPI specifications.
+   *
+   * By default no quotation is used.
+   */
+  @Parameter(required = false, defaultValue = "")
+  private String openAPILiteralQuotationCharacter = "";
 
   /**
    * Switch can be used to suppress technical http headers in generated Java code.
@@ -984,7 +990,7 @@ public class GeneratorMojo extends AbstractMojo {
    * specification e.g. 'Authorization' header. However from an overall perspective it still might make sense to
    * explicitly show the for better documentation purposes. This can be done by setting this property to
    * <code>true</code>
-   * 
+   *
    * @see <a href=
    * "https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.3.md#parameterObject">https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.3.md#parameterObject</>
    */
@@ -1008,7 +1014,7 @@ public class GeneratorMojo extends AbstractMojo {
    * for proper JSON serialization of POJOs and ServiceObjects. However, by default it is assumed that this
    * configuration is done on the Jackson ObjectMapperFactory. If you prefer to have it directly on the generated
    * classes for whatever reason then you need to set this parameter to <code>true</code>.
-   * 
+   *
    * This switch only is active in combination with {@link #generateJacksonAnnotations}.
    */
   @Parameter(required = false, defaultValue = "false")
@@ -1048,7 +1054,7 @@ public class GeneratorMojo extends AbstractMojo {
    * then the generated code will have a dependency on one of the following artifacts:
    * <p/>
    * <b>Spring Boot:</b>
-   * 
+   *
    * <pre>
    *    &#60;dependency>
    *        &#60;groupId>com.anaptecs.jeaf.validation&#60;/groupId>
@@ -1056,9 +1062,9 @@ public class GeneratorMojo extends AbstractMojo {
    *        &#60;version>${1.6.0 or higher}&#60;/version>
    *    &#60;/dependency><br/>
    * </pre>
-   * 
+   *
    * <b>JEAF:</b>
-   * 
+   *
    * <pre>
    *    &#60;dependency>
    *        &#60;groupId>com.anaptecs.jeaf.validation&#60;/groupId>
@@ -1066,7 +1072,7 @@ public class GeneratorMojo extends AbstractMojo {
    *        &#60;version>${1.6.0 or higher}&#60;/version>
    *    &#60;/dependency><br/>
    * </pre>
-   * 
+   *
    * Depending on the implementation of class <code>com.anaptecs.jeaf.validation.api.ValidationExecutor</code> if might
    * still be possible to disable / enable request validation without changing the code.
    */
@@ -1193,7 +1199,7 @@ public class GeneratorMojo extends AbstractMojo {
   /**
    * REST Library that is the target for code generation. Depending on the target runtime either JAX-RS (Java and JEAF)
    * or SPRING_WEB_MVC (Spring) is used as default.
-   * 
+   *
    * Supported values are (case sensitive): JAX_RS, SPRING_WEB_MVC
    */
   @Parameter(required = false)
@@ -1235,7 +1241,7 @@ public class GeneratorMojo extends AbstractMojo {
   /**
    * Switch defines whether for the Java representation of OpenAPI Data Types as valueOf method should be generated or
    * not.
-   * 
+   *
    * If this is required depends on the framework that is used for your REST implementation. Currently (Spring Boot
    * 2.7.* and Jersey 2.35) it is only required in case of Jersey. Default Spring Boot REST implementation does not
    * require that.
@@ -1270,7 +1276,7 @@ public class GeneratorMojo extends AbstractMojo {
 
   /**
    * Switch defines if arrays should only be generated for primitive types.
-   * 
+   *
    * By default arrays are generated for every type if it is modeled as property and not as association.
    */
   @Parameter(required = false, defaultValue = "false")
@@ -1290,7 +1296,7 @@ public class GeneratorMojo extends AbstractMojo {
    * of an object can not be modified by accident. This will lead to get method that make use of
    * Collections.unmodifiableCollection(...). Builders that receive a collection as input will copy their content. This
    * is the default behavior of JEAF Generator.
-   * 
+   *
    * If this parameter is set to <code>true</code> then this means that collections returned from a get method may also
    * be modified from the outside.
    */
@@ -1301,7 +1307,7 @@ public class GeneratorMojo extends AbstractMojo {
    * Switch defines whether generated methods dealing with arrays must ensure that the internal state of an object can
    * not be modified by accident. This will lead to System.arraycopy(...) in get methods. Builders that receive an array
    * as input will copy their content. This is the default behavior of JEAF Generator.
-   * 
+   *
    * If this parameter is set to <code>true</code> then this means that arrays return from get method can directly be
    * modified and this will also impact the state of the object were the array belongs to.
    */
@@ -1312,7 +1318,7 @@ public class GeneratorMojo extends AbstractMojo {
    * Switch defines whether generated methods dealing with byte arrays must ensure that the internal state of an object
    * can not be modified by accident. This will lead to System.arraycopy(...) in get methods. Builders that receive an
    * array as input will copy their content. This is the default behavior of JEAF Generator.
-   * 
+   *
    * If this parameter is set to <code>true</code> then this means that arrays return from get method can directly be
    * modified and this will also impact the state of the object were the array belongs to.
    */
@@ -1817,6 +1823,10 @@ public class GeneratorMojo extends AbstractMojo {
       lLog.info("Enable YAML 1.1 compatibility mode:               " + enableYAML11Compatibility);
       lLog.info("OpenAPI YAML multi-line comment style:            " + openAPICommentStyle);
 
+      if (openAPILiteralQuotationCharacter.isEmpty() == false) {
+        lLog.info("OpenAPI Enum literal quotation character:         " + openAPILiteralQuotationCharacter);
+      }
+
       if (openAPIContactName.isEmpty() == false) {
         lLog.info("OpenAPI Contact Name:                             " + openAPIContactName);
       }
@@ -2021,7 +2031,7 @@ public class GeneratorMojo extends AbstractMojo {
 
   /**
    * Method runs the UML generator. The UML generator is based on a library called oAW (openArchitectureWare)
-   * 
+   *
    * @throws MojoFailureException
    */
   private boolean runUMLGenerator( ) throws MojoFailureException {
@@ -2165,6 +2175,7 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty(PROPERTY_PREFIX + "openAPISpecReferenceDefaultLocation", openAPISpecReferenceDefaultLocation);
       System.setProperty("switch.gen.openapi.yaml.11.comapitibility", enableYAML11Compatibility.toString());
       System.setProperty("switch.gen.openapi.openAPICommentStyle", openAPICommentStyle.toString());
+      System.setProperty(PROPERTY_PREFIX + "openAPILiteralQuotationCharacter", openAPILiteralQuotationCharacter);
 
       System.setProperty("switch.gen.openapi.openAPIContactName", openAPIContactName.toString());
       System.setProperty("switch.gen.openapi.openAPIContactURL", openAPIContactURL.toString());
@@ -2332,7 +2343,7 @@ public class GeneratorMojo extends AbstractMojo {
     return lSuccessful;
   }
 
-  private void preCheckXMIFiles( List<String> pUMLFiles ) throws MojoFailureException {
+  private void preCheckXMIFiles(List<String> pUMLFiles) throws MojoFailureException {
     for (String lNextFile : pUMLFiles) {
       try {
         String lStartOfFile = FileTools.getFileTools().readLinesAsString(lNextFile, 0, 5);
@@ -2396,7 +2407,7 @@ public class GeneratorMojo extends AbstractMojo {
   /**
    * Method resolves the XMI directory from the Mojo configuration. This XMI directory can either be defined directly or
    * by naming an artifact that contains all required xmi files.
-   * 
+   *
    * @return
    * @throws MojoFailureException
    */
@@ -2433,7 +2444,7 @@ public class GeneratorMojo extends AbstractMojo {
   /**
    * Method resolves the XMI directory from the Mojo configuration. This XMI directory can either be defined directly or
    * by naming an artifact that contains all required xmi files.
-   * 
+   *
    * @return
    * @throws MojoFailureException
    */
@@ -2662,8 +2673,8 @@ public class GeneratorMojo extends AbstractMojo {
     }
   }
 
-  private List<String> resolveResourceFiles( String pResourceLocationPath, String pFileExtension,
-      List<String> pExclusionList ) {
+  private List<String> resolveResourceFiles(String pResourceLocationPath, String pFileExtension,
+      List<String> pExclusionList) {
 
     // Check parameters.
     Assert.assertNotNull(pResourceLocationPath, "pResourceLocationPath");
@@ -2708,11 +2719,11 @@ public class GeneratorMojo extends AbstractMojo {
 
   /**
    * Method takes care that the generated source code will be formatted according to the configuration of this plugin.
-   * 
+   *
    * @throws MojoExecutionException
    */
   private void runFormatter( ) throws MojoExecutionException {
-    if (disableFormatting == true || (disableSourceFormatting == true && disableResourceFormatting == true)) {
+    if (disableFormatting == true || disableSourceFormatting == true && disableResourceFormatting == true) {
       this.getLog().info(
           "Skipping formatting of generated sources and resources as it is disabled in the plugin configuration.");
     }
@@ -2724,7 +2735,7 @@ public class GeneratorMojo extends AbstractMojo {
 
   /**
    * Method runs the code formatter plugin
-   * 
+   *
    * @throws MojoExecutionException
    */
   private void executeImportBeautifier( ) throws MojoExecutionException {
@@ -2765,7 +2776,7 @@ public class GeneratorMojo extends AbstractMojo {
 
   /**
    * Method runs the code formatter plugin
-   * 
+   *
    * @throws MojoExecutionException
    */
   private void executeFormatterPlugin( ) throws MojoExecutionException {
@@ -2790,7 +2801,7 @@ public class GeneratorMojo extends AbstractMojo {
 
   /**
    * Method copies all declared dependent openAPI specs to res-gen directory.
-   * 
+   *
    * @throws MojoExecutionException
    */
   private void copyOpenAPISpecDependencies( ) throws MojoExecutionException {
@@ -2832,7 +2843,7 @@ public class GeneratorMojo extends AbstractMojo {
 
   /**
    * Method creates the directory configuration for called Maven plugins depending on the configured formatter settings.
-   * 
+   *
    * @return {@link Element} Configuration element for the directories that should be formatted.
    */
   private Element createDirectoryElementConfiguration( ) {
@@ -2896,7 +2907,7 @@ public class GeneratorMojo extends AbstractMojo {
     }
   }
 
-  private List<String> validateOpenAPISpec( String pFileName ) {
+  private List<String> validateOpenAPISpec(String pFileName) {
     ParseOptions lOptions = new ParseOptions();
     lOptions.setResolve(true);
 
@@ -2914,12 +2925,12 @@ public class GeneratorMojo extends AbstractMojo {
     return lErrorMessages;
   }
 
-  private List<String> resolveOpenAPISpecs( String pDirectory ) throws IOException {
+  private List<String> resolveOpenAPISpecs(String pDirectory) throws IOException {
     FilenameFilter lFilter = FileTools.getFileTools().createExtensionFilenameFilter(List.of("*.yaml", "*.yml"), null);
     return this.resolveFiles(pDirectory, lFilter);
   }
 
-  private List<String> resolveFiles( String pDirectory, FilenameFilter pFilter ) throws IOException {
+  private List<String> resolveFiles(String pDirectory, FilenameFilter pFilter) throws IOException {
     List<String> lFiles = FileTools.getFileTools().listFiles(pDirectory, pFilter);
     for (File lNextFile : FileTools.getFileTools().listFiles(new File(pDirectory))) {
       if (lNextFile.isDirectory()) {

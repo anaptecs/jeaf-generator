@@ -92,3 +92,5 @@ cached boolean suppressNotRequiredNullableInOpenAPISpec():
 cached boolean implementCompareableForOpenAPIDataTypes():
    getBooleanSystemProperty("jeaf.generator.implementCompareableForOpenAPIDataTypes", false);
    
+cached String openAPILiteralQuotationCharacter():
+   getSystemProperty("jeaf.generator.openAPILiteralQuotationCharacter", ""); 

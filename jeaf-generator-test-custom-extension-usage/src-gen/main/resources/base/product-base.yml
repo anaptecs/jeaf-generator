@@ -125,9 +125,9 @@ components:
     ExtensibleEnum:
       type: string
       x-extensible-enum:
-        - RED
-        - GREEN
-        - BLUE
+        - 'RED'
+        - 'GREEN'
+        - 'BLUE'
 
     # com.anaptecs.jeaf.junit.openapi.base.EnumTest
     EnumTest:
@@ -260,16 +260,16 @@ components:
     BooleanLiteralsEnum:
       type: string
       enum:
-        - YES
-        - ON
-        - off
-        - y
-        - n
-        - YEAH
-        - NO
-        - True
-        - FaLsE
-      default: YES
+        - 'YES'
+        - 'ON'
+        - 'off'
+        - 'y'
+        - 'n'
+        - 'YEAH'
+        - 'NO'
+        - 'True'
+        - 'FaLsE'
+      default: 'YES'
 
     # com.anaptecs.jeaf.junit.openapi.techbase.BusinessA
     BusinessA:
@@ -413,13 +413,13 @@ components:
             Deprecated: I'm `DEPRECATED`. (since: , removed with: )
       type: string
       enum:
-        - COUNTER
-        - CALL_CENTER
-        - MOBILE
-        - TVM
-        - WEB
-        - LEGACY_POS
-      default: MOBILE
+        - 'COUNTER'
+        - 'CALL_CENTER'
+        - 'MOBILE'
+        - 'TVM'
+        - 'WEB'
+        - 'LEGACY_POS'
+      default: 'MOBILE'
 
     # com.anaptecs.jeaf.junit.openapi.base.ChildA
     ChildA:
@@ -612,14 +612,14 @@ components:
         Breaking Change with PI 17: Class was changed to an extensible enum. New literals will not be introduced before PI 17.
       type: string
       x-extensible-enum:
-        - COMPLEX
-        - VERY_COMPLEX
+        - 'COMPLEX'
+        - 'VERY_COMPLEX'
 
     # com.anaptecs.jeaf.junit.openapi.base.DataUnit
     DataUnit:
       type: string
       x-extensible-enum:
-        - COUPON
+        - 'COUPON'
 
     # com.anaptecs.jeaf.junit.openapi.base.DateObject
     DateObject:
@@ -669,9 +669,9 @@ components:
       type: string
       deprecated: true
       enum:
-        - ONE
-        - TWO
-        - THREE
+        - 'ONE'
+        - 'TWO'
+        - 'THREE'
 
     # com.anaptecs.jeaf.junit.openapi.base.DirectedEdge
     DirectedEdge:
@@ -754,23 +754,23 @@ components:
         Test for enums with dynamic literals.
       type: string
       enum:
-        - STATIC_LITERAL
-        - FAKE
+        - 'STATIC_LITERAL'
+        - 'FAKE'
 
     # com.anaptecs.jeaf.junit.openapi.base.DynamicExtensibleEnum
     DynamicExtensibleEnum:
       description: >-
       type: string
       x-extensible-enum:
-        - STATIC_LITERAL
-        - FAKE
+        - 'STATIC_LITERAL'
+        - 'FAKE'
 
     # com.anaptecs.jeaf.junit.openapi.base.Entity
     Entity:
       type: string
       x-extensible-enum:
-        - DISCOUNT_CAMPAIGN
-        - DISCOUNT_OFFER
+        - 'DISCOUNT_CAMPAIGN'
+        - 'DISCOUNT_OFFER'
 
     # com.anaptecs.jeaf.junit.openapi.base.GeoPosition
     GeoPosition:
@@ -863,9 +863,9 @@ components:
             Breaking Change with 3.x: New literal will occur
       type: string
       enum:
-        - SBB
-        - SNCF
-        - DB
+        - 'SBB'
+        - 'SNCF'
+        - 'DB'
 
     # com.anaptecs.jeaf.junit.openapi.base.Leg
     Leg:
@@ -1957,9 +1957,9 @@ components:
     TemplateEnumTest:
       type: string
       enum:
-        - ONE
-        - TWO
-        - THREE
+        - 'ONE'
+        - 'TWO'
+        - 'THREE'
 
     # com.anaptecs.jeaf.junit.openapi.base.TimeUnit
     TimeUnit:
@@ -1981,12 +1981,12 @@ components:
         - YEAR
       type: string
       enum:
-        - MINUTE
-        - HOUR
-        - DAY
-        - WEEK
-        - MONTH
-        - YEAR
+        - 'MINUTE'
+        - 'HOUR'
+        - 'DAY'
+        - 'WEEK'
+        - 'MONTH'
+        - 'YEAR'
 
     # com.anaptecs.jeaf.junit.openapi.base.TopoRef
     TopoRef:
