@@ -94,3 +94,6 @@ cached boolean implementCompareableForOpenAPIDataTypes():
    
 cached String openAPILiteralQuotationCharacter():
    getSystemProperty("jeaf.generator.openAPILiteralQuotationCharacter", ""); 
+   
+cached String openAPIExampleQuotationCharacter():
+   getSystemProperty("jeaf.generator.openAPIExampleQuotationCharacter", "");    

@@ -2,6 +2,7 @@
 «IMPORT JMM»
 
 «EXTENSION functions::Example»
+«EXTENSION functions::SystemProperties»
 «EXTENSION java::OpenAPIFunctions»
 
 «DEFINE GenerateExample(String indentation) FOR NamedElement -»
@@ -10,12 +11,12 @@
             «IF isOpenAPIVersion30() -»
             «LET this.asExample().exampleValues.selectFirst(e|e.length > 0) AS exampleValue -»
 «indentation»example: «IF exampleValue.isMultiLineValue()»|
-«indentation»  «ENDIF»«this.asExample().exampleValues.selectFirst(e|e.length > 0).makeMultiLineCompatible(indentation + "  ")»
+«indentation»  «ENDIF»«openAPIExampleQuotationCharacter()»«this.asExample().exampleValues.selectFirst(e|e.length > 0).makeMultiLineCompatible(indentation + "  ")»«openAPIExampleQuotationCharacter()»
             «ENDLET-»
             «ELSE -»
 «indentation»examples:
                 «FOREACH this.asExample().exampleValues AS exampleValue -»
-«indentation» - «exampleValue.makeMultiLineCompatible(indentation + "   ")»
+«indentation» - «openAPIExampleQuotationCharacter()»«exampleValue.makeMultiLineCompatible(indentation + "   ")»«openAPIExampleQuotationCharacter()»
                 «ENDFOREACH -»           
             «ENDIF -» 
         «ENDIF-»
