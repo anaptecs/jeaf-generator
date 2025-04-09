@@ -292,7 +292,7 @@ paths:
       description: >-
         
         <br><br>
-        Deprecated: This request is no longer supported. (since: 1.1.1, removed with: 2.3)
+        Deprecated: This request is no longer supported. (since: 1.1.1, removed with: 2024-10-20)
       operationId: deprecatedOperation
       deprecated: true
       responses:
@@ -568,6 +568,10 @@ paths:
             nullable: false
         - name: deprecatedHeader
           in: header
+          description: >-
+            
+            <br><br>
+            Deprecated:  (since: , removed with: 2024-12-24)
           required: true
           deprecated: true
           schema:

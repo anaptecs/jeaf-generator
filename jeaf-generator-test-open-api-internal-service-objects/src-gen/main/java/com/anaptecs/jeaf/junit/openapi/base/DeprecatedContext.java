@@ -20,6 +20,11 @@ import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
+/**
+ * @author JEAF Generator
+ * @version JEAF Release 1.6.x
+ * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 2022-07-25)
+ */
 @Valid
 @Deprecated
 public class DeprecatedContext implements ServiceObject {

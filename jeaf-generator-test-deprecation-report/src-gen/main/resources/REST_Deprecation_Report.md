@@ -39,7 +39,7 @@
 |   | `Body` | `Product pProduct` |  |  |  |
 | `/products/deprecated/complexReturn [GET]` | `REST Operation` | `ProductService.deprecatedComplexReturn()` |  |  |  |
 |   | `Response` | `Product ` |  |  |  |
-| `/products/deprecated/operation [GET]` | `REST Operation` | `ProductService.deprecatedOperation()` | This request is no longer supported. | 1.1.1 | 2.3 |
+| `/products/deprecated/operation [GET]` | `REST Operation` | `ProductService.deprecatedOperation()` | This request is no longer supported. | 1.1.1 | 2024-10-20 |
 | `/products/deprecated/params [POST]` | `REST Operation` | `ProductService.deprecatedParams(int)` |  |  |  |
 |   | `Header Param` | `int param1` |  |  |  |
 |   | `Response` | `String ` |  |  |  |

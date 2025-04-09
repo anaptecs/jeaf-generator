@@ -35,6 +35,9 @@ public class SpecialContext extends Context {
 
   private String specificHeader;
 
+  /**
+   * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 2024-12-24)
+   */
   @Deprecated
   private IntegerCode deprecatedHeader;
 
@@ -112,6 +115,9 @@ public class SpecialContext extends Context {
   public static class Builder extends Context.Builder {
     private String specificHeader;
 
+    /**
+     * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 2024-12-24)
+     */
     @Deprecated
     private IntegerCode deprecatedHeader;
 
@@ -237,6 +243,7 @@ public class SpecialContext extends Context {
      *
      * @param pDeprecatedHeader Value to which {@link #deprecatedHeader} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 2024-12-24)
      */
     @Deprecated
     public Builder setDeprecatedHeader( IntegerCode pDeprecatedHeader ) {
@@ -306,6 +313,7 @@ public class SpecialContext extends Context {
    * Method returns attribute {@link #deprecatedHeader}.<br/>
    *
    * @return {@link IntegerCode} Value to which {@link #deprecatedHeader} is set.
+   * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 2024-12-24)
    */
   @Deprecated
   public IntegerCode getDeprecatedHeader( ) {
@@ -316,6 +324,7 @@ public class SpecialContext extends Context {
    * Method sets attribute {@link #deprecatedHeader}.<br/>
    *
    * @param pDeprecatedHeader Value to which {@link #deprecatedHeader} should be set.
+   * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 2024-12-24)
    */
   @Deprecated
   public void setDeprecatedHeader( IntegerCode pDeprecatedHeader ) {
