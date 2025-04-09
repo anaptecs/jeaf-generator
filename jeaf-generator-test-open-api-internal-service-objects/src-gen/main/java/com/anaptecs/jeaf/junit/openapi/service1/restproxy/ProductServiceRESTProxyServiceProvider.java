@@ -95,7 +95,7 @@ public interface ProductServiceRESTProxyServiceProvider extends ServiceProvider 
 
   /**
    * @return {@link String}
-   * @deprecated This request is no longer supported. (<b>since:</b> 1.1.1, <b>removed with:</b> 2.3)
+   * @deprecated This request is no longer supported. (<b>since:</b> 1.1.1, <b>removed with:</b> 2024-10-20)
    */
   @Deprecated
   String deprecatedOperation( );

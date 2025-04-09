@@ -7,7 +7,11 @@ package com.anaptecs.jeaf.fwk.generator.util;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -468,7 +472,8 @@ public class GeneratorCommons {
    * @param pClass UML Class object whose attributes should be resolved. The parameter must not be null.
    * @return List All attributes of the passed class. The method never returns null.
    */
-  public static List<Property> getAllAttributes( org.eclipse.uml2.uml.Class pClass ) {
+  public static List<Property> getAllAttributes(
+      org.eclipse.uml2.uml.Class pClass) {
     // Check parameter
     Assert.assertNotNull(pClass, "pClass");
 
@@ -476,11 +481,13 @@ public class GeneratorCommons {
     lAttributeSet.addAll(pClass.getOwnedAttributes());
 
     // Traverse through class hierarchy to all super classes.
-    final Iterator<org.eclipse.uml2.uml.Class> lIterator = pClass.getSuperClasses().iterator();
+    final Iterator<org.eclipse.uml2.uml.Class> lIterator = pClass
+        .getSuperClasses().iterator();
     while (lIterator.hasNext()) {
       // Get super class and resolve all attributes.
       org.eclipse.uml2.uml.Class lSuperClass = lIterator.next();
-      lAttributeSet.addAll(GeneratorCommons.getAllAttributes(lSuperClass));
+      lAttributeSet
+          .addAll(GeneratorCommons.getAllAttributes(lSuperClass));
     }
 
     // Return result.
@@ -495,7 +502,8 @@ public class GeneratorCommons {
    * @return boolean The method returns true if pChild is assignable to references of type pClass and false in all other
    * cases.
    */
-  public static boolean isAssignable( org.eclipse.uml2.uml.Class pChild, org.eclipse.uml2.uml.Class pClass ) {
+  public static boolean isAssignable(org.eclipse.uml2.uml.Class pChild,
+      org.eclipse.uml2.uml.Class pClass) {
     // Parameter are both the same class and thus are assignable
     boolean lResult;
     if (pChild.equals(pClass)) {
@@ -508,7 +516,8 @@ public class GeneratorCommons {
       final Iterator<Class> lIterator = lSuperClasses.iterator();
       while (lIterator.hasNext()) {
         Class lNextSuperClass = lIterator.next();
-        lResult = GeneratorCommons.isAssignable(lNextSuperClass, pClass);
+        lResult = GeneratorCommons
+            .isAssignable(lNextSuperClass, pClass);
       }
     }
     // Return result.
@@ -521,7 +530,7 @@ public class GeneratorCommons {
    * @param pProperty Property that should be checked if it has a real init value. The parameter must not be null.
    * @return
    */
-  public static boolean isRealInitValue( Property pProperty ) {
+  public static boolean isRealInitValue(Property pProperty) {
     // Check parameter
     Check.checkInvalidParameterNull(pProperty, "pProperty");
 
@@ -557,19 +566,22 @@ public class GeneratorCommons {
    * @return boolean The method returns true if the passed package belongs to the package white list and false in all
    * other cases.
    */
-  public static boolean isMayBeInPackageWhitelist( Package pPackage ) {
+  public static boolean isMayBeInPackageWhitelist(Package pPackage) {
     // Check parameter for null.
     Check.checkInvalidParameterNull(pPackage, "pPackage");
 
     // Check if system property is defined.
-    String lPropertyTest = SystemProperties.getProperty(GENERATOR_WHITELIST_PROPERTY);
+    String lPropertyTest = SystemProperties
+        .getProperty(GENERATOR_WHITELIST_PROPERTY);
     boolean lIsInWhitelist;
 
     // Get white list as it is defined as system property
     if (lPropertyTest != null) {
-      List<String> lPackageNames = SystemProperties.getPropertiesList(GENERATOR_WHITELIST_PROPERTY);
+      List<String> lPackageNames = SystemProperties
+          .getPropertiesList(GENERATOR_WHITELIST_PROPERTY);
 
-      // Check if white list is empty. This means that all packages should be generated.
+      // Check if white list is empty. This means that all packages should
+      // be generated.
       if (lPackageNames.size() > 0) {
         lIsInWhitelist = false;
 
@@ -577,7 +589,8 @@ public class GeneratorCommons {
         String lPackageName = ClassUtil.getPackageName(pPackage);
 
         for (String lNextWhitelistEntry : lPackageNames) {
-          // Get next white list entry and check if it matches with the passed package
+          // Get next white list entry and check if it matches with
+          // the passed package
           if (lPackageName.startsWith(lNextWhitelistEntry) == true
               || lNextWhitelistEntry.startsWith(lPackageName) == true) {
             // White list entry and package match.
@@ -586,12 +599,14 @@ public class GeneratorCommons {
           }
         }
       }
-      // No entries in white list defined and thus all packages will be accepted.
+      // No entries in white list defined and thus all packages will be
+      // accepted.
       else {
         lIsInWhitelist = true;
       }
     }
-    // System property is not defined and thus all packages will be accepted.
+    // System property is not defined and thus all packages will be
+    // accepted.
     else {
       lIsInWhitelist = true;
     }
@@ -608,7 +623,7 @@ public class GeneratorCommons {
    * @return boolean The method returns true if the passed package belongs to the package white list and false in all
    * other cases.
    */
-  public static boolean isInGeneratorWhitelist( NamedElement pNamedElement ) {
+  public static boolean isInGeneratorWhitelist(NamedElement pNamedElement) {
     // Check parameter for null.
     Check.checkInvalidParameterNull(pNamedElement, "pNamedElement");
 
@@ -619,25 +634,33 @@ public class GeneratorCommons {
     }
     else {
       // Check if system property is defined.
-      String lPropertyTest = System.getProperty(GENERATOR_WHITELIST_PROPERTY);
+      String lPropertyTest = System
+          .getProperty(GENERATOR_WHITELIST_PROPERTY);
 
       // Get white list as it is defined as system property
       if (lPropertyTest != null) {
-        List<String> lPackageNames = SystemProperties.getPropertiesList(GENERATOR_WHITELIST_PROPERTY);
+        List<String> lPackageNames = SystemProperties
+            .getPropertiesList(GENERATOR_WHITELIST_PROPERTY);
 
-        // Check if white list is empty. This means that all packages should be generated.
+        // Check if white list is empty. This means that all packages
+        // should be generated.
         if (lPackageNames.size() > 0) {
           lIsInWhitelist = false;
 
           // Get fully qualified name of the passed package.
-          String lPackageName = ClassUtil.getPackageName(pNamedElement.getNearestPackage());
+          String lPackageName = ClassUtil
+              .getPackageName(pNamedElement.getNearestPackage());
 
           for (String lNextWhitelistEntry : lPackageNames) {
-            // Get next white list entry and check if it matches with the passed package
+            // Get next white list entry and check if it matches
+            // with the passed package
             if (lPackageName.startsWith(lNextWhitelistEntry) == true) {
-              // Check for real package match and not only same beginning.
-              if (lPackageName.length() > lNextWhitelistEntry.length()) {
-                if ('.' == lPackageName.charAt(lNextWhitelistEntry.length())) {
+              // Check for real package match and not only same
+              // beginning.
+              if (lPackageName.length() > lNextWhitelistEntry
+                  .length()) {
+                if ('.' == lPackageName
+                    .charAt(lNextWhitelistEntry.length())) {
                   lIsInWhitelist = true;
                 }
                 else {
@@ -652,12 +675,14 @@ public class GeneratorCommons {
             }
           }
         }
-        // No entries in white list defined and thus all packages will be accepted.
+        // No entries in white list defined and thus all packages will
+        // be accepted.
         else {
           lIsInWhitelist = true;
         }
       }
-      // System property is not defined and thus all packages will be accepted.
+      // System property is not defined and thus all packages will be
+      // accepted.
       else {
         lIsInWhitelist = true;
       }
@@ -674,7 +699,8 @@ public class GeneratorCommons {
    * cases.
    */
   public static boolean generateCustomConstraints( ) {
-    return SystemProperties.getBooleanProperty(CUSTOM_CONSTRAINTS_PROPERTY, true);
+    return SystemProperties.getBooleanProperty(CUSTOM_CONSTRAINTS_PROPERTY,
+        true);
   }
 
   /**
@@ -694,7 +720,8 @@ public class GeneratorCommons {
    * cases.
    */
   public static boolean generateServiceProxies( ) {
-    return SystemProperties.getBooleanProperty(SERVICE_PROXIES_PROPERTY, true);
+    return SystemProperties.getBooleanProperty(SERVICE_PROXIES_PROPERTY,
+        true);
   }
 
   /**
@@ -704,7 +731,8 @@ public class GeneratorCommons {
    * all other cases.
    */
   public static boolean generateServiceProviderInterfaces( ) {
-    return SystemProperties.getBooleanProperty(SERVICE_PROVIDER_INTERFACES_PROPERTY, true);
+    return SystemProperties.getBooleanProperty(
+        SERVICE_PROVIDER_INTERFACES_PROPERTY, true);
   }
 
   /**
@@ -714,7 +742,8 @@ public class GeneratorCommons {
    * all other cases.
    */
   public static boolean generateServiceProviderImpls( ) {
-    return SystemProperties.getBooleanProperty(SERVICE_PROVIDER_IMPLS_PROPERTY, true);
+    return SystemProperties.getBooleanProperty(
+        SERVICE_PROVIDER_IMPLS_PROPERTY, true);
   }
 
   /**
@@ -724,23 +753,28 @@ public class GeneratorCommons {
    * all other cases.
    */
   public static boolean generateRESTResources( ) {
-    return SystemProperties.getBooleanProperty(REST_RESOURCES_PROPERTY, true);
+    return SystemProperties.getBooleanProperty(REST_RESOURCES_PROPERTY,
+        true);
   }
 
   public static boolean generateSecurityAnnotation( ) {
-    return SystemProperties.getBooleanProperty(SECURITY_ANNOTATION_PROPERTY, true);
+    return SystemProperties.getBooleanProperty(
+        SECURITY_ANNOTATION_PROPERTY, true);
   }
 
   public static boolean useDeprecatedSpringSecuredAnnotation( ) {
-    return SystemProperties.getBooleanProperty(USE_DEPRECATED_SECURED_PROPERTY, false);
+    return SystemProperties.getBooleanProperty(
+        USE_DEPRECATED_SECURED_PROPERTY, false);
   }
 
   public static boolean generateRESTRequestValidation( ) {
-    return SystemProperties.getBooleanProperty(REST_REQUEST_VALIDATION_PROPERTY, true);
+    return SystemProperties.getBooleanProperty(
+        REST_REQUEST_VALIDATION_PROPERTY, true);
   }
 
   public static boolean generateRESTResponseValidation( ) {
-    return SystemProperties.getBooleanProperty(REST_RESPONSE_VALIDATION_PROPERTY, true);
+    return SystemProperties.getBooleanProperty(
+        REST_RESPONSE_VALIDATION_PROPERTY, true);
   }
 
   public static boolean filterCustomHeaders( ) {
@@ -764,7 +798,8 @@ public class GeneratorCommons {
    * all other cases.
    */
   public static boolean generateRESTServiceProxies( ) {
-    return SystemProperties.getBooleanProperty(REST_SERVICE_PROXY_PROPERTY, true);
+    return SystemProperties.getBooleanProperty(REST_SERVICE_PROXY_PROPERTY,
+        true);
   }
 
   /**
@@ -774,7 +809,8 @@ public class GeneratorCommons {
    * all other cases.
    */
   public static boolean generateRESTServiceProxyConfigFile( ) {
-    return SystemProperties.getBooleanProperty(REST_SERVICE_PROXY_CONFIG_FILE_PROPERTY, true);
+    return SystemProperties.getBooleanProperty(
+        REST_SERVICE_PROXY_CONFIG_FILE_PROPERTY, true);
   }
 
   /**
@@ -784,7 +820,8 @@ public class GeneratorCommons {
    * other cases.
    */
   public static boolean generateActivityInterfaces( ) {
-    return SystemProperties.getBooleanProperty(ACTIVITY_INTERFACES_PROPERTY, true);
+    return SystemProperties.getBooleanProperty(
+        ACTIVITY_INTERFACES_PROPERTY, true);
   }
 
   /**
@@ -794,7 +831,8 @@ public class GeneratorCommons {
    * other cases.
    */
   public static boolean generateActivityImpls( ) {
-    return SystemProperties.getBooleanProperty(ACTIVITY_IMPLS_PROPERTY, true);
+    return SystemProperties.getBooleanProperty(ACTIVITY_IMPLS_PROPERTY,
+        true);
   }
 
   /**
@@ -804,7 +842,8 @@ public class GeneratorCommons {
    * cases.
    */
   public static boolean generateServiceObjects( ) {
-    return SystemProperties.getBooleanProperty(SERVICE_OBJECTS_PROPERTY, true);
+    return SystemProperties.getBooleanProperty(SERVICE_OBJECTS_PROPERTY,
+        true);
   }
 
   /**
@@ -821,15 +860,18 @@ public class GeneratorCommons {
   }
 
   public static boolean generateEqualsAndHashCodeForStandardClasses( ) {
-    return SystemProperties.getBooleanProperty(GENERATE_EQUALS_STANDARD, true);
+    return SystemProperties.getBooleanProperty(GENERATE_EQUALS_STANDARD,
+        true);
   }
 
   public static boolean generateEqualsAndHashCodeForCompositeDataTypes( ) {
-    return SystemProperties.getBooleanProperty(GENERATE_EQUALS_COMPOSITE, true);
+    return SystemProperties.getBooleanProperty(GENERATE_EQUALS_COMPOSITE,
+        true);
   }
 
   public static boolean generateEqualsAndHashCodeForOpenAPIDataTypes( ) {
-    return SystemProperties.getBooleanProperty(GENERATE_EQUALS_OPENAPI, true);
+    return SystemProperties.getBooleanProperty(GENERATE_EQUALS_OPENAPI,
+        true);
   }
 
   /**
@@ -838,15 +880,18 @@ public class GeneratorCommons {
    * @return boolean Method returns true if POJOs should be serializable.
    */
   public static boolean makePOJOsSerializable( ) {
-    return SystemProperties.getBooleanProperty(MAKE_POJO_SERIALIZABLE_PROPERTY, false);
+    return SystemProperties.getBooleanProperty(
+        MAKE_POJO_SERIALIZABLE_PROPERTY, false);
   }
 
   public static boolean generateImmutableClasses( ) {
-    return SystemProperties.getBooleanProperty(GENERATE_IMMUTABLE_CLASSES, false);
+    return SystemProperties.getBooleanProperty(GENERATE_IMMUTABLE_CLASSES,
+        false);
   }
 
   public static boolean generateHeavyStyleExtensibleEnums( ) {
-    return SystemProperties.getBooleanProperty(GENERATE_HEAVY_STLYE_EXTENSBLE_ENUMS_PROPERTY, false);
+    return SystemProperties.getBooleanProperty(
+        GENERATE_HEAVY_STLYE_EXTENSBLE_ENUMS_PROPERTY, false);
   }
 
   /**
@@ -856,7 +901,8 @@ public class GeneratorCommons {
    * cases.
    */
   public static boolean generateExceptionClasses( ) {
-    return SystemProperties.getBooleanProperty(EXCEPTION_CLASSES_PROPERTY, true);
+    return SystemProperties.getBooleanProperty(EXCEPTION_CLASSES_PROPERTY,
+        true);
   }
 
   /**
@@ -866,7 +912,8 @@ public class GeneratorCommons {
    * cases.
    */
   public static boolean generateDomainObjects( ) {
-    return SystemProperties.getBooleanProperty(DOMAIN_OBJECTS_PROPERTY, true);
+    return SystemProperties.getBooleanProperty(DOMAIN_OBJECTS_PROPERTY,
+        true);
   }
 
   /**
@@ -876,7 +923,8 @@ public class GeneratorCommons {
    * cases.
    */
   public static boolean generateObjectMappers( ) {
-    return SystemProperties.getBooleanProperty(OBJECT_MAPPERS_PROPERTY, true);
+    return SystemProperties.getBooleanProperty(OBJECT_MAPPERS_PROPERTY,
+        true);
   }
 
   /**
@@ -886,7 +934,8 @@ public class GeneratorCommons {
    * false in all other cases.
    */
   public static boolean generateComponentImplClasses( ) {
-    return SystemProperties.getBooleanProperty(COMPONENT_IMPLS_PROPERTY, true);
+    return SystemProperties.getBooleanProperty(COMPONENT_IMPLS_PROPERTY,
+        true);
   }
 
   /**
@@ -896,7 +945,8 @@ public class GeneratorCommons {
    * all other cases.
    */
   public static boolean generateComponentRuntimeClasses( ) {
-    return SystemProperties.getBooleanProperty(COMPONENT_RUNTIME_PROPERTY, true);
+    return SystemProperties.getBooleanProperty(COMPONENT_RUNTIME_PROPERTY,
+        true);
   }
 
   /**
@@ -906,7 +956,8 @@ public class GeneratorCommons {
    * cases.
    */
   public static boolean generatePersistentObjects( ) {
-    return SystemProperties.getBooleanProperty(PERSISTENT_OBJECTS_PROPERTY, true);
+    return SystemProperties.getBooleanProperty(PERSISTENT_OBJECTS_PROPERTY,
+        true);
   }
 
   /**
@@ -937,71 +988,88 @@ public class GeneratorCommons {
   }
 
   public static String getTypesReportFileName( ) {
-    return SystemProperties.getProperty(TYPES_REPORT_FILE_NAME, "TypesReport.md");
+    return SystemProperties.getProperty(TYPES_REPORT_FILE_NAME,
+        "TypesReport.md");
   }
 
   public static boolean showAliasInTypesReport( ) {
-    return SystemProperties.getBooleanProperty(TYPES_REPORT_FILE_SHOW_ALIAS, true);
+    return SystemProperties.getBooleanProperty(
+        TYPES_REPORT_FILE_SHOW_ALIAS, true);
   }
 
   public static String getAliasRowName( ) {
-    return SystemProperties.getProperty(TYPES_REPORT_FILE_ALIAS_ROW_NAME, "");
+    return SystemProperties.getProperty(TYPES_REPORT_FILE_ALIAS_ROW_NAME,
+        "");
   }
 
   public static boolean showPackageInTypesReport( ) {
-    return SystemProperties.getBooleanProperty(TYPES_REPORT_FILE_SHOW_PACKAGE, true);
+    return SystemProperties.getBooleanProperty(
+        TYPES_REPORT_FILE_SHOW_PACKAGE, true);
   }
 
   public static boolean showPropertiesInTypesReport( ) {
-    return SystemProperties.getBooleanProperty(TYPES_REPORT_FILE_SHOW_PROPERTIES, true);
+    return SystemProperties.getBooleanProperty(
+        TYPES_REPORT_FILE_SHOW_PROPERTIES, true);
   }
 
   public static boolean groupTypesReportByPackage( ) {
-    return SystemProperties.getBooleanProperty(TYPES_REPORT_FILE_GROUP_BY_PACKAGES, true);
+    return SystemProperties.getBooleanProperty(
+        TYPES_REPORT_FILE_GROUP_BY_PACKAGES, true);
   }
 
   public static List<String> getTypesReportStereotypes( ) {
-    return SystemProperties.getPropertiesList(TYPES_REPORT_FILE_STEREOTYPES);
+    return SystemProperties
+        .getPropertiesList(TYPES_REPORT_FILE_STEREOTYPES);
   }
 
   public static boolean generateBreakingChangesReport( ) {
-    return SystemProperties.getBooleanProperty(GENERATE_BREAKING_CHANGES_REPORT, true);
+    return SystemProperties.getBooleanProperty(
+        GENERATE_BREAKING_CHANGES_REPORT, true);
   }
 
   public static String getBreakingChangesReportName( ) {
-    return SystemProperties.getProperty(BREAKING_CHANGES_REPORT_NAME, "Breaking Changes Report");
+    return SystemProperties.getProperty(BREAKING_CHANGES_REPORT_NAME,
+        "Breaking Changes Report");
   }
 
   public static String getBreakingChangesReportFileName( ) {
-    return SystemProperties.getProperty(BREAKING_CHANGES_REPORT_FILE_NAME, "BreakingChanges.md");
+    return SystemProperties.getProperty(BREAKING_CHANGES_REPORT_FILE_NAME,
+        "BreakingChanges.md");
   }
 
   public static boolean generateRESTDeprecationReport( ) {
-    return SystemProperties.getBooleanProperty(GENERATE_REST_DEPRECATION_REPORT, true);
+    return SystemProperties.getBooleanProperty(
+        GENERATE_REST_DEPRECATION_REPORT, true);
   }
 
   public static String getRESTDeprecationReportName( ) {
-    return SystemProperties.getProperty(REST_DEPRECATION_REPORT_NAME, "REST Deprecation Report");
+    return SystemProperties.getProperty(REST_DEPRECATION_REPORT_NAME,
+        "REST Deprecation Report");
   }
 
   public static String getRESTDeprecationReportFileName( ) {
-    return SystemProperties.getProperty(REST_DEPRECATION_REPORT_FILE_NAME, "RESTDeprecationReport.md");
+    return SystemProperties.getProperty(REST_DEPRECATION_REPORT_FILE_NAME,
+        "RESTDeprecationReport.md");
   }
 
   public static boolean generateJavaDeprecationReport( ) {
-    return SystemProperties.getBooleanProperty(GENERATE_JAVA_DEPRECATION_REPORT, true);
+    return SystemProperties.getBooleanProperty(
+        GENERATE_JAVA_DEPRECATION_REPORT, true);
   }
 
   public static String getJavaDeprecationReportName( ) {
-    return SystemProperties.getProperty(JAVA_DEPRECATION_REPORT_NAME, "Java Deprecation Report");
+    return SystemProperties.getProperty(JAVA_DEPRECATION_REPORT_NAME,
+        "Java Deprecation Report");
   }
 
   public static String getJavaDeprecationReportFileName( ) {
-    return SystemProperties.getProperty(JAVA_DEPRECATION_REPORT_FILE_NAME, "JavaDeprecationReport.md");
+    return SystemProperties.getProperty(JAVA_DEPRECATION_REPORT_FILE_NAME,
+        "JavaDeprecationReport.md");
   }
 
   public static ReportFormat getDeprecationReportFormat( ) {
-    String lReportFormatName = SystemProperties.getProperty(DEPRECATION_REPORT_FORMAT, null);
+    String lReportFormatName = SystemProperties.getProperty(
+        DEPRECATION_REPORT_FORMAT, null);
     ReportFormat lReportFormat;
     if (lReportFormatName != null) {
       lReportFormat = ReportFormat.valueOf(lReportFormatName);
@@ -1017,19 +1085,23 @@ public class GeneratorCommons {
   }
 
   public static boolean generateSecurityRolesReport( ) {
-    return SystemProperties.getBooleanProperty(GENERATE_SECURITY_ROLES_REPORT, true);
+    return SystemProperties.getBooleanProperty(
+        GENERATE_SECURITY_ROLES_REPORT, true);
   }
 
   public static String getSecurityRolesReportName( ) {
-    return SystemProperties.getProperty(SECURITY_ROLES_REPORT_NAME, "Security Report");
+    return SystemProperties.getProperty(SECURITY_ROLES_REPORT_NAME,
+        "Security Report");
   }
 
   public static String getSecurityRolesReportFileName( ) {
-    return SystemProperties.getProperty(SECURITY_ROLES_REPORT_FILE_NAME, "SecurityReport.md");
+    return SystemProperties.getProperty(SECURITY_ROLES_REPORT_FILE_NAME,
+        "SecurityReport.md");
   }
 
   public static ReportFormat getSecurityRolesReportFormat( ) {
-    String lReportFormatName = SystemProperties.getProperty(SECURITY_ROLES_REPORT_FORMAT, null);
+    String lReportFormatName = SystemProperties.getProperty(
+        SECURITY_ROLES_REPORT_FORMAT, null);
     ReportFormat lReportFormat;
     if (lReportFormatName != null) {
       lReportFormat = ReportFormat.valueOf(lReportFormatName);
@@ -1051,7 +1123,8 @@ public class GeneratorCommons {
    * cases.
    */
   public static boolean generateOpenAPISpec( ) {
-    return SystemProperties.getBooleanProperty(OPEN_API_SPEC_PROPERTY, true);
+    return SystemProperties
+        .getBooleanProperty(OPEN_API_SPEC_PROPERTY, true);
   }
 
   /**
@@ -1060,7 +1133,8 @@ public class GeneratorCommons {
    * @return boolean Method returns true if YAML 1.1 compatibility mode should be enabled and false in all other cases.
    */
   public static boolean enableYAML11Compatibility( ) {
-    return SystemProperties.getBooleanProperty(OPEN_API_YAML_11_COMPATIBILITY, true);
+    return SystemProperties.getBooleanProperty(
+        OPEN_API_YAML_11_COMPATIBILITY, true);
   }
 
   /**
@@ -1076,14 +1150,16 @@ public class GeneratorCommons {
    * Method checks if technical http headers should be suppressed.
    */
   public static boolean suppressTechnicalHttpHeaders( ) {
-    return SystemProperties.getBooleanProperty(SUPPRESS_TECHNICAL_HTTP_HEADERS, false);
+    return SystemProperties.getBooleanProperty(
+        SUPPRESS_TECHNICAL_HTTP_HEADERS, false);
   }
 
   /**
    * Method checks if ignorable http headers should anyways be added to the OpenAPI spec.
    */
   public static boolean addIgnorableHeadersToOpenAPISpec( ) {
-    return SystemProperties.getBooleanProperty(ADD_IGNORED_HEADER_TO_OPEN_API_SPEC, true);
+    return SystemProperties.getBooleanProperty(
+        ADD_IGNORED_HEADER_TO_OPEN_API_SPEC, true);
   }
 
   /**
@@ -1093,7 +1169,8 @@ public class GeneratorCommons {
    * cases.
    */
   public static boolean generateJAXRSAnnotations( ) {
-    return SystemProperties.getBooleanProperty(JAX_RS_ANNOTATIONS_PROPERTY, true);
+    return SystemProperties.getBooleanProperty(JAX_RS_ANNOTATIONS_PROPERTY,
+        true);
   }
 
   /**
@@ -1103,11 +1180,13 @@ public class GeneratorCommons {
    * other cases.
    */
   public static boolean generateJacksonAnnotations( ) {
-    return SystemProperties.getBooleanProperty(JACKSON_ANNOTATIONS_PROPERTY, true);
+    return SystemProperties.getBooleanProperty(
+        JACKSON_ANNOTATIONS_PROPERTY, true);
   }
 
   public static boolean enableSemVerForJSON( ) {
-    return SystemProperties.getBooleanProperty(ENABLE_SEMVER_FOR_JSON, true);
+    return SystemProperties
+        .getBooleanProperty(ENABLE_SEMVER_FOR_JSON, true);
   }
 
   public static boolean generateJSONSerializers( ) {
@@ -1115,7 +1194,8 @@ public class GeneratorCommons {
   }
 
   public static boolean generateConstantsForAttributeNames( ) {
-    return SystemProperties.getBooleanProperty(NAME_CONSTANTS_FOR_ATTRIBUTES, true);
+    return SystemProperties.getBooleanProperty(
+        NAME_CONSTANTS_FOR_ATTRIBUTES, true);
   }
 
   public static List<String> getSuppressedWarnings( ) {
@@ -1127,11 +1207,13 @@ public class GeneratorCommons {
   }
 
   public static boolean addGeneratedAnnotation( ) {
-    return SystemProperties.getBooleanProperty(ADD_GENERATED_ANNOTATION, true);
+    return SystemProperties.getBooleanProperty(ADD_GENERATED_ANNOTATION,
+        true);
   }
 
   public static boolean addGenerationTimestamp( ) {
-    return SystemProperties.getBooleanProperty(ADD_GENERATION_TIMESTAMP, true);
+    return SystemProperties.getBooleanProperty(ADD_GENERATION_TIMESTAMP,
+        true);
   }
 
   public static String getGenerationComment( ) {
@@ -1140,11 +1222,14 @@ public class GeneratorCommons {
 
   public static String getGeneratedAnnotation( ) {
     StringBuilder lBuilder = new StringBuilder();
-    if (addGenerationTimestamp() || getGenerationComment().isEmpty() == false) {
-      lBuilder.append("value = \"com.anaptecs.jeaf.generator.JEAFGenerator\", ");
+    if (addGenerationTimestamp()
+        || getGenerationComment().isEmpty() == false) {
+      lBuilder
+          .append("value = \"com.anaptecs.jeaf.generator.JEAFGenerator\", ");
 
       if (addGenerationTimestamp()) {
-        SimpleDateFormat lDateFormat = new SimpleDateFormat(TIMESTAMP_PATTERN);
+        SimpleDateFormat lDateFormat = new SimpleDateFormat(
+            TIMESTAMP_PATTERN);
         lBuilder.append("date = \"");
         lBuilder.append(lDateFormat.format(new Date()));
         lBuilder.append("\"");
@@ -1168,39 +1253,48 @@ public class GeneratorCommons {
   }
 
   public static boolean generateValidAnnotationsForClasses( ) {
-    return SystemProperties.getBooleanProperty(VALID_ANNOTATION_FOR_CLASSES, true);
+    return SystemProperties.getBooleanProperty(
+        VALID_ANNOTATION_FOR_CLASSES, true);
   }
 
   public static boolean generateValidAnnotationsForAssociations( ) {
-    return SystemProperties.getBooleanProperty(VALID_ANNOTATION_FOR_ASSOCIATIONS, true);
+    return SystemProperties.getBooleanProperty(
+        VALID_ANNOTATION_FOR_ASSOCIATIONS, true);
   }
 
   public static boolean generateValidationAnnotationsForAttributesFromMultiplicity( ) {
-    return SystemProperties.getBooleanProperty(VALIDATION_ANNOTATION_FOR_ATTRIBUTES, true);
+    return SystemProperties.getBooleanProperty(
+        VALIDATION_ANNOTATION_FOR_ATTRIBUTES, true);
   }
 
   public static boolean generateValidationAnnotationsForAssociationsFromMultiplicity( ) {
-    return SystemProperties.getBooleanProperty(VALIDATION_ANNOTATION_FOR_ASSOCIATIONS, true);
+    return SystemProperties.getBooleanProperty(
+        VALIDATION_ANNOTATION_FOR_ASSOCIATIONS, true);
   }
 
   public static boolean generateObjectValidationInBuilder( ) {
-    return SystemProperties.getBooleanProperty(GENERATE_OBJECT_VALIDATION_IN_BUILDER, true);
+    return SystemProperties.getBooleanProperty(
+        GENERATE_OBJECT_VALIDATION_IN_BUILDER, true);
   }
 
   public static boolean suppressClassNameCommentInOpenAPISpec( ) {
-    return SystemProperties.getBooleanProperty(SUPPRESS_CLASSNAME_IN_OPENAPI, true);
+    return SystemProperties.getBooleanProperty(
+        SUPPRESS_CLASSNAME_IN_OPENAPI, true);
   }
 
   public static boolean generatePublicSettersForAssociations( ) {
-    return SystemProperties.getBooleanProperty(GENERATE_PUBLIC_SETTERS, false);
+    return SystemProperties.getBooleanProperty(GENERATE_PUBLIC_SETTERS,
+        false);
   }
 
   public static boolean generateOfOperation( ) {
-    return SystemProperties.getBooleanProperty(GENERATE_OF_OPERATION, false);
+    return SystemProperties
+        .getBooleanProperty(GENERATE_OF_OPERATION, false);
   }
 
   public static boolean generateOfOperationForOpenAPIDataType( ) {
-    return SystemProperties.getBooleanProperty(GENERATE_OF_OPERATION_FOR_OPENAPI_DATATYPE, false);
+    return SystemProperties.getBooleanProperty(
+        GENERATE_OF_OPERATION_FOR_OPENAPI_DATATYPE, false);
   }
 
   public static boolean generateValueOfForOpenAPIDataTypes( ) {
@@ -1208,39 +1302,50 @@ public class GeneratorCommons {
   }
 
   public static boolean generateNullChecksForToOneAssociationsOfServiceObjects( ) {
-    return SystemProperties.getBooleanProperty(GENERATE_NULL_CHECKS_FOR_TO_ONE_ASSOCIATIONS_OF_SERVICE_OBJECTS, true);
+    return SystemProperties
+        .getBooleanProperty(
+            GENERATE_NULL_CHECKS_FOR_TO_ONE_ASSOCIATIONS_OF_SERVICE_OBJECTS,
+            true);
   }
 
   public static boolean generatePublicObjectView( ) {
-    return SystemProperties.getBooleanProperty(GENERATE_PUBLIC_OBJECT_VIEW, true);
+    return SystemProperties.getBooleanProperty(GENERATE_PUBLIC_OBJECT_VIEW,
+        true);
   }
 
   public static boolean useArraysOnlyForPrimitives( ) {
-    return SystemProperties.getBooleanProperty("switch.gen.arrays.for.primitives.only", false);
+    return SystemProperties.getBooleanProperty(
+        "switch.gen.arrays.for.primitives.only", false);
   }
 
   public static boolean disableCollectionImmutability( ) {
-    return SystemProperties.getBooleanProperty(DISABLE_COLLECTION_IMMUTABILITY, false);
+    return SystemProperties.getBooleanProperty(
+        DISABLE_COLLECTION_IMMUTABILITY, false);
   }
 
   public static boolean disableArrayImmutability( ) {
-    return SystemProperties.getBooleanProperty(DISABLE_ARRAY_IMMUTABILITY, false);
+    return SystemProperties.getBooleanProperty(DISABLE_ARRAY_IMMUTABILITY,
+        false);
   }
 
   public static boolean disableBinaryDataImmutability( ) {
-    return SystemProperties.getBooleanProperty(DISABLE_BINRAY_DATA_IMMUTABILITY, false);
+    return SystemProperties.getBooleanProperty(
+        DISABLE_BINRAY_DATA_IMMUTABILITY, false);
   }
 
   public static boolean enableDetailedToString( ) {
-    return SystemProperties.getBooleanProperty(ENABLE_DETAILED_TO_STRING, false);
+    return SystemProperties.getBooleanProperty(ENABLE_DETAILED_TO_STRING,
+        false);
   }
 
   public static boolean enableLegacyBuilderStyle( ) {
-    return SystemProperties.getBooleanProperty(ENABLE_LEGACY_BUILDER_STYLE, false);
+    return SystemProperties.getBooleanProperty(ENABLE_LEGACY_BUILDER_STYLE,
+        false);
   }
 
   public static boolean generateBuilderMethodWithAllManadatoryFields( ) {
-    return SystemProperties.getBooleanProperty(GENERATE_BUILDER_METHOD_WITH_ALL_MANDATORY_FIELDS, false);
+    return SystemProperties.getBooleanProperty(
+        GENERATE_BUILDER_METHOD_WITH_ALL_MANDATORY_FIELDS, false);
   }
 
   public static String getMavenVersion( ) {
@@ -1265,19 +1370,23 @@ public class GeneratorCommons {
 
   public static String getFileHeader( ) {
     String lFileHeader = CLASS_INDENTATION + "/*";
-    lFileHeader = lFileHeader + LINE_SEPARATOR + "* " + GeneratorCommons.getCompanyInfo();
+    lFileHeader = lFileHeader + LINE_SEPARATOR + "* "
+        + GeneratorCommons.getCompanyInfo();
     lFileHeader = lFileHeader + LINE_SEPARATOR + "* ";
-    lFileHeader = lFileHeader + LINE_SEPARATOR + "* " + GeneratorCommons.getCopyrightTag();
+    lFileHeader = lFileHeader + LINE_SEPARATOR + "* "
+        + GeneratorCommons.getCopyrightTag();
     lFileHeader = lFileHeader + LINE_SEPARATOR + "*/";
     return lFileHeader;
   }
 
-  public static String getAllExtendedInterfaces( Interface pInterface ) {
-    final Iterator<Generalization> lIterator = pInterface.getGeneralizations().iterator();
+  public static String getAllExtendedInterfaces(Interface pInterface) {
+    final Iterator<Generalization> lIterator = pInterface
+        .getGeneralizations().iterator();
     StringBuffer lBuffer = new StringBuffer();
     while (lIterator.hasNext()) {
       final Generalization lNextGeneralization = lIterator.next();
-      lBuffer.append(Naming.getFullyQualifiedName(lNextGeneralization.getGeneral()));
+      lBuffer.append(Naming.getFullyQualifiedName(lNextGeneralization
+          .getGeneral()));
       if (lIterator.hasNext()) {
         lBuffer.append(", ");
       }
@@ -1285,19 +1394,20 @@ public class GeneratorCommons {
     return lBuffer.toString();
   }
 
-  public static boolean isPort( Property pProperty ) {
+  public static boolean isPort(Property pProperty) {
     boolean lIsPort = pProperty instanceof Port;
     return lIsPort;
   }
 
-  public static boolean runChecks( NamedElement pElement, String pStereotype ) {
+  public static boolean runChecks(NamedElement pElement, String pStereotype) {
     boolean lRunChecks = false;
     Package lPackage = pElement.getNearestPackage();
 
     NamedElement lOwner = (NamedElement) pElement.getOwner();
 
     // XFun.getTrace().info(
-    // "Analyzing element " + pElement.getName() + " in package " + ClassUtil.getPackageName(lPackage) + " Owner: "
+    // "Analyzing element " + pElement.getName() + " in package " +
+    // ClassUtil.getPackageName(lPackage) + " Owner: "
     // + lOwner.getName());
 
     // Verify if checks should be run for the passed stereotype.
@@ -1320,68 +1430,170 @@ public class GeneratorCommons {
 
       // Check for stereotypes
       if (pStereotype.length() > 0) {
-        if (pElement instanceof Class || pElement instanceof Interface || pElement instanceof Component
-            || pElement instanceof Enumeration || pElement instanceof EnumerationLiteral
-            || pElement instanceof Activity || pElement instanceof Dependency || pElement instanceof Operation
-            || pElement instanceof Property || pElement instanceof Parameter) {
-          lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, ClassUtil.STEREOTYPE_ACTIVITY);
-          lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, ClassUtil.STEREOTYPE_APPLICATION_EXCEPTION);
-          // lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(lOwner, ClassUtil.STEREOTYPE_COMPONENT);
-          lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, ClassUtil.STEREOTYPE_DOMAIN_OBJECT);
-          lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, ClassUtil.STEREOTYPE_JEAF_ENUMERATION);
-          lRunChecks =
-              lRunChecks | ClassUtil.isStereotypeApplied(pElement.getOwner(), ClassUtil.STEREOTYPE_JEAF_ENUMERATION);
-          lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, ClassUtil.STEREOTYPE_JEAF_SERVICE);
-          lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, ClassUtil.STEREOTYPE_LOAD_STRATEGY);
-          lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, ClassUtil.STEREOTYPE_PERSISTENT_OBJECT);
-          lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, ClassUtil.STEREOTYPE_POJO);
-          lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, ClassUtil.STEREOTYPE_QUERY_OBJECT);
-          lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, ClassUtil.STEREOTYPE_SERVICE_OBJECT);
-          lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, ClassUtil.STEREOTYPE_SERVICE_PROVIDER);
-          lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, ClassUtil.STEREOTYPE_SERVICE_PROVIDER_IMPL);
-          lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, ClassUtil.STEREOTYPE_SYSTEM_EXCEPTION);
-          lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, ClassUtil.STEREOTYPE_SYSTEM_EXCEPTION);
-          lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, ClassUtil.STEREOTYPE_PERSISTENCE_UNIT);
-          lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, ClassUtil.STEREOTYPE_OBJECT_MAPPING);
+        if (pElement instanceof Class || pElement instanceof Interface
+            || pElement instanceof Component
+            || pElement instanceof Enumeration
+            || pElement instanceof EnumerationLiteral
+            || pElement instanceof Activity
+            || pElement instanceof Dependency
+            || pElement instanceof Operation
+            || pElement instanceof Property
+            || pElement instanceof Parameter) {
+          lRunChecks = lRunChecks
+              | ClassUtil.isStereotypeApplied(pElement,
+                  ClassUtil.STEREOTYPE_ACTIVITY);
+          lRunChecks = lRunChecks
+              | ClassUtil.isStereotypeApplied(pElement,
+                  ClassUtil.STEREOTYPE_APPLICATION_EXCEPTION);
+          // lRunChecks = lRunChecks |
+          // ClassUtil.isStereotypeApplied(lOwner,
+          // ClassUtil.STEREOTYPE_COMPONENT);
+          lRunChecks = lRunChecks
+              | ClassUtil.isStereotypeApplied(pElement,
+                  ClassUtil.STEREOTYPE_DOMAIN_OBJECT);
+          lRunChecks = lRunChecks
+              | ClassUtil.isStereotypeApplied(pElement,
+                  ClassUtil.STEREOTYPE_JEAF_ENUMERATION);
+          lRunChecks = lRunChecks
+              | ClassUtil.isStereotypeApplied(
+                  pElement.getOwner(),
+                  ClassUtil.STEREOTYPE_JEAF_ENUMERATION);
+          lRunChecks = lRunChecks
+              | ClassUtil.isStereotypeApplied(pElement,
+                  ClassUtil.STEREOTYPE_JEAF_SERVICE);
+          lRunChecks = lRunChecks
+              | ClassUtil.isStereotypeApplied(pElement,
+                  ClassUtil.STEREOTYPE_LOAD_STRATEGY);
+          lRunChecks = lRunChecks
+              | ClassUtil.isStereotypeApplied(pElement,
+                  ClassUtil.STEREOTYPE_PERSISTENT_OBJECT);
+          lRunChecks = lRunChecks
+              | ClassUtil.isStereotypeApplied(pElement,
+                  ClassUtil.STEREOTYPE_POJO);
+          lRunChecks = lRunChecks
+              | ClassUtil.isStereotypeApplied(pElement,
+                  ClassUtil.STEREOTYPE_QUERY_OBJECT);
+          lRunChecks = lRunChecks
+              | ClassUtil.isStereotypeApplied(pElement,
+                  ClassUtil.STEREOTYPE_SERVICE_OBJECT);
+          lRunChecks = lRunChecks
+              | ClassUtil.isStereotypeApplied(pElement,
+                  ClassUtil.STEREOTYPE_SERVICE_PROVIDER);
+          lRunChecks = lRunChecks
+              | ClassUtil.isStereotypeApplied(pElement,
+                  ClassUtil.STEREOTYPE_SERVICE_PROVIDER_IMPL);
+          lRunChecks = lRunChecks
+              | ClassUtil.isStereotypeApplied(pElement,
+                  ClassUtil.STEREOTYPE_SYSTEM_EXCEPTION);
+          lRunChecks = lRunChecks
+              | ClassUtil.isStereotypeApplied(pElement,
+                  ClassUtil.STEREOTYPE_SYSTEM_EXCEPTION);
+          lRunChecks = lRunChecks
+              | ClassUtil.isStereotypeApplied(pElement,
+                  ClassUtil.STEREOTYPE_PERSISTENCE_UNIT);
+          lRunChecks = lRunChecks
+              | ClassUtil.isStereotypeApplied(pElement,
+                  ClassUtil.STEREOTYPE_OBJECT_MAPPING);
 
-          lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "PersistentObject");
-          lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "Role");
+          lRunChecks = lRunChecks
+              | ClassUtil.isStereotypeApplied(pElement,
+                  "PersistentObject");
+          lRunChecks = lRunChecks
+              | ClassUtil.isStereotypeApplied(pElement, "Role");
 
-          lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "ServiceObject");
-          lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "POJO");
-          lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "OpenAPI3Specification");
-          lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "OpenAPIType");
-          lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "OpenAPIDataType");
-          lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "OpenAPISecurityScheme");
-          lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "OpenAPIResponse");
+          lRunChecks = lRunChecks
+              | ClassUtil.isStereotypeApplied(pElement,
+                  "ServiceObject");
+          lRunChecks = lRunChecks
+              | ClassUtil.isStereotypeApplied(pElement, "POJO");
+          lRunChecks = lRunChecks
+              | ClassUtil.isStereotypeApplied(pElement,
+                  "OpenAPI3Specification");
+          lRunChecks = lRunChecks
+              | ClassUtil.isStereotypeApplied(pElement,
+                  "OpenAPIType");
+          lRunChecks = lRunChecks
+              | ClassUtil.isStereotypeApplied(pElement,
+                  "OpenAPIDataType");
+          lRunChecks = lRunChecks
+              | ClassUtil.isStereotypeApplied(pElement,
+                  "OpenAPISecurityScheme");
+          lRunChecks = lRunChecks
+              | ClassUtil.isStereotypeApplied(pElement,
+                  "OpenAPIResponse");
 
-          lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "RESTResource");
-          lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "RESTOperation");
-          lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "PathParam");
-          lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "HeaderParam");
-          lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "QueryParam");
-          lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "CookieParam");
+          lRunChecks = lRunChecks
+              | ClassUtil.isStereotypeApplied(pElement,
+                  "RESTResource");
+          lRunChecks = lRunChecks
+              | ClassUtil.isStereotypeApplied(pElement,
+                  "RESTOperation");
+          lRunChecks = lRunChecks
+              | ClassUtil.isStereotypeApplied(pElement,
+                  "PathParam");
+          lRunChecks = lRunChecks
+              | ClassUtil.isStereotypeApplied(pElement,
+                  "HeaderParam");
+          lRunChecks = lRunChecks
+              | ClassUtil.isStereotypeApplied(pElement,
+                  "QueryParam");
+          lRunChecks = lRunChecks
+              | ClassUtil.isStereotypeApplied(pElement,
+                  "CookieParam");
 
-          lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "Size");
-          lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "DecimalMin");
-          lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "DecimalMax");
-          lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "Min");
-          lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "Max");
-          lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "Digits");
-          lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "Negative");
-          lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "NegativeOrZero");
-          lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "PositiveOrZero");
-          lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "Positive");
-          lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "Pattern");
-          lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "Email");
-          lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "NotEmpty");
-          lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "AssertTrue");
-          lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "AssertFalse");
-          lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "NotBlank");
-          lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "Past");
-          lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "PastOrPresent");
-          lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "FutureOrPresent");
-          lRunChecks = lRunChecks | ClassUtil.isStereotypeApplied(pElement, "Future");
+          lRunChecks = lRunChecks
+              | ClassUtil.isStereotypeApplied(pElement, "Size");
+          lRunChecks = lRunChecks
+              | ClassUtil.isStereotypeApplied(pElement,
+                  "DecimalMin");
+          lRunChecks = lRunChecks
+              | ClassUtil.isStereotypeApplied(pElement,
+                  "DecimalMax");
+          lRunChecks = lRunChecks
+              | ClassUtil.isStereotypeApplied(pElement, "Min");
+          lRunChecks = lRunChecks
+              | ClassUtil.isStereotypeApplied(pElement, "Max");
+          lRunChecks = lRunChecks
+              | ClassUtil.isStereotypeApplied(pElement, "Digits");
+          lRunChecks = lRunChecks
+              | ClassUtil.isStereotypeApplied(pElement,
+                  "Negative");
+          lRunChecks = lRunChecks
+              | ClassUtil.isStereotypeApplied(pElement,
+                  "NegativeOrZero");
+          lRunChecks = lRunChecks
+              | ClassUtil.isStereotypeApplied(pElement,
+                  "PositiveOrZero");
+          lRunChecks = lRunChecks
+              | ClassUtil.isStereotypeApplied(pElement,
+                  "Positive");
+          lRunChecks = lRunChecks
+              | ClassUtil
+                  .isStereotypeApplied(pElement, "Pattern");
+          lRunChecks = lRunChecks
+              | ClassUtil.isStereotypeApplied(pElement, "Email");
+          lRunChecks = lRunChecks
+              | ClassUtil.isStereotypeApplied(pElement,
+                  "NotEmpty");
+          lRunChecks = lRunChecks
+              | ClassUtil.isStereotypeApplied(pElement,
+                  "AssertTrue");
+          lRunChecks = lRunChecks
+              | ClassUtil.isStereotypeApplied(pElement,
+                  "AssertFalse");
+          lRunChecks = lRunChecks
+              | ClassUtil.isStereotypeApplied(pElement,
+                  "NotBlank");
+          lRunChecks = lRunChecks
+              | ClassUtil.isStereotypeApplied(pElement, "Past");
+          lRunChecks = lRunChecks
+              | ClassUtil.isStereotypeApplied(pElement,
+                  "PastOrPresent");
+          lRunChecks = lRunChecks
+              | ClassUtil.isStereotypeApplied(pElement,
+                  "FutureOrPresent");
+          lRunChecks = lRunChecks
+              | ClassUtil.isStereotypeApplied(pElement, "Future");
         }
       }
       else {
@@ -1394,33 +1606,39 @@ public class GeneratorCommons {
     return lRunChecks;
   }
 
-  public static boolean shouldStereotypeBeChecked( String pStereotype ) {
+  public static boolean shouldStereotypeBeChecked(String pStereotype) {
     boolean lRunChecks;
     if ("POJO".equals(pStereotype)) {
       lRunChecks = generatePOJOs();
     }
-    else if ("OpenAPIType".equals(pStereotype) || "OpenAPIDataType".equals(pStereotype)
-        || "OpenAPI3Specification".equals(pStereotype) || "OpenAPIResponse".equals(pStereotype)) {
+    else if ("OpenAPIType".equals(pStereotype)
+        || "OpenAPIDataType".equals(pStereotype)
+        || "OpenAPI3Specification".equals(pStereotype)
+        || "OpenAPIResponse".equals(pStereotype)) {
       lRunChecks = generateOpenAPISpec();
     }
     // JEAFEnumeration
     else if ("JEAFEnumeration".equals(pStereotype)) {
-      lRunChecks = generateServiceObjects() | generatePOJOs() | generateDomainObjects();
+      lRunChecks = generateServiceObjects() | generatePOJOs()
+          | generateDomainObjects();
     }
     // JEAFComponent
     else if ("JEAFComponent".equals(pStereotype)) {
-      lRunChecks = generateComponentImplClasses() | generateComponentRuntimeClasses();
+      lRunChecks = generateComponentImplClasses()
+          | generateComponentRuntimeClasses();
     }
     // DomainObject
     else if ("DomainObject".equals(pStereotype)) {
       lRunChecks = generateDomainObjects();
     }
     // PersistentObject
-    else if ("PersistentObject".equals(pStereotype) || "Role".equals(pStereotype)) {
+    else if ("PersistentObject".equals(pStereotype)
+        || "Role".equals(pStereotype)) {
       lRunChecks = generatePersistentObjects();
     }
     // ServiceObject, QueryObject
-    else if ("ServiceObject".equals(pStereotype) || "QueryObject".equals(pStereotype)) {
+    else if ("ServiceObject".equals(pStereotype)
+        || "QueryObject".equals(pStereotype)) {
       lRunChecks = generateServiceObjects();
     }
     // JEAFService
@@ -1432,13 +1650,19 @@ public class GeneratorCommons {
       lRunChecks = generateActivityInterfaces() | generateActivityImpls();
     }
     // RESTOperation or REST params
-    else if ("RESTResource".equals(pStereotype) || "RESTOperation".equals(pStereotype)
-        || "PathParam".equals(pStereotype) || "QueryParam".equals(pStereotype) || "HeaderParam".equals(pStereotype)
+    else if ("RESTResource".equals(pStereotype)
+        || "RESTOperation".equals(pStereotype)
+        || "PathParam".equals(pStereotype)
+        || "QueryParam".equals(pStereotype)
+        || "HeaderParam".equals(pStereotype)
         || "CookieParam".equals(pStereotype)) {
       lRunChecks = generateRESTResources() | generateOpenAPISpec();
     }
-    // In case of reports selected here, there is no filtering based on stereotype
-    else if (generateRESTDeprecationReport() || generateJavaDeprecationReport() || generateBreakingChangesReport()) {
+    // In case of reports selected here, there is no filtering based on
+    // stereotype
+    else if (generateRESTDeprecationReport()
+        || generateJavaDeprecationReport()
+        || generateBreakingChangesReport()) {
       lRunChecks = true;
     }
     else {
@@ -1448,15 +1672,17 @@ public class GeneratorCommons {
     return lRunChecks;
   }
 
-  public static boolean isCharSequence( Type pTypedElement ) {
+  public static boolean isCharSequence(Type pTypedElement) {
     boolean lIsCharSequence;
-    String lFullyQualifiedName = Naming.getFullyQualifiedName(pTypedElement);
+    String lFullyQualifiedName = Naming
+        .getFullyQualifiedName(pTypedElement);
     if ("String".equals(lFullyQualifiedName) == true) {
       lIsCharSequence = true;
     }
     else {
       try {
-        java.lang.Class<?> lClass = java.lang.Class.forName(lFullyQualifiedName);
+        java.lang.Class<?> lClass = java.lang.Class
+            .forName(lFullyQualifiedName);
         lIsCharSequence = CharSequence.class.isAssignableFrom(lClass);
       }
       catch (ClassNotFoundException e) {
@@ -1466,18 +1692,21 @@ public class GeneratorCommons {
     return lIsCharSequence;
   }
 
-  public static boolean isNumericForAnnotation( Type pTypedElement ) {
-    String lFullyQualifiedName = Naming.getFullyQualifiedName(pTypedElement);
+  public static boolean isNumericForAnnotation(Type pTypedElement) {
+    String lFullyQualifiedName = Naming
+        .getFullyQualifiedName(pTypedElement);
     return NUMERIC_ANNOTATION_CLASSES.contains(lFullyQualifiedName);
   }
 
-  public static boolean isDateForAnnotation( Type pTypedElement ) {
-    String lFullyQualifiedName = Naming.getFullyQualifiedName(pTypedElement);
+  public static boolean isDateForAnnotation(Type pTypedElement) {
+    String lFullyQualifiedName = Naming
+        .getFullyQualifiedName(pTypedElement);
     return DATE_ANNOTATION_CLASSES.contains(lFullyQualifiedName);
   }
 
-  public static boolean isBooleanForAnnotation( Type pTypedElement ) {
-    String lFullyQualifiedName = Naming.getFullyQualifiedName(pTypedElement);
+  public static boolean isBooleanForAnnotation(Type pTypedElement) {
+    String lFullyQualifiedName = Naming
+        .getFullyQualifiedName(pTypedElement);
     return BOOLEAN_ANNOTATION_CLASSES.contains(lFullyQualifiedName);
   }
 
@@ -1495,10 +1724,12 @@ public class GeneratorCommons {
   }
 
   public static EnterpriseJavaType getEnterpriseJavaType( ) {
-    String lValue = SystemProperties.getProperty(ENTERPRISE_JAVA_TYPE, null);
+    String lValue = SystemProperties
+        .getProperty(ENTERPRISE_JAVA_TYPE, null);
     EnterpriseJavaType lEnterpriseJavaType;
     if (lValue != null) {
-      lEnterpriseJavaType = EnterpriseJavaType.valueOf(lValue.toUpperCase());
+      lEnterpriseJavaType = EnterpriseJavaType.valueOf(lValue
+          .toUpperCase());
     }
     else {
       lEnterpriseJavaType = EnterpriseJavaType.JAVA_EE;
@@ -1508,7 +1739,8 @@ public class GeneratorCommons {
   }
 
   public static String getEnterpriseJavaPackage( ) {
-    EnterpriseJavaType lEnterpriseJavaType = GeneratorCommons.getEnterpriseJavaType();
+    EnterpriseJavaType lEnterpriseJavaType = GeneratorCommons
+        .getEnterpriseJavaType();
     String lPackage;
     switch (lEnterpriseJavaType) {
       case JAVA_EE:
@@ -1520,7 +1752,9 @@ public class GeneratorCommons {
         break;
 
       default:
-        Assert.internalError("Unexpected literal for enum EnterpriseJavaType: " + lEnterpriseJavaType.name());
+        Assert
+            .internalError("Unexpected literal for enum EnterpriseJavaType: "
+                + lEnterpriseJavaType.name());
         lPackage = "error";
     }
     return lPackage;
@@ -1565,23 +1799,26 @@ public class GeneratorCommons {
   }
 
   public static Integer getRESTDefaultSuccessStatusCode( ) {
-    return Integer.valueOf(SystemProperties.getProperty(REST_DEFAULT_SUCCESS_STATUS_CODE, "200"));
+    return Integer.valueOf(SystemProperties.getProperty(
+        REST_DEFAULT_SUCCESS_STATUS_CODE, "200"));
   }
 
   public static Integer getRESTDefaultVoidStatusCode( ) {
-    return Integer.valueOf(SystemProperties.getProperty(REST_DEFAULT_VOID_STATUS_CODE, "204"));
+    return Integer.valueOf(SystemProperties.getProperty(
+        REST_DEFAULT_VOID_STATUS_CODE, "204"));
   }
 
-  public static boolean isEnumeration( Element pElement ) {
+  public static boolean isEnumeration(Element pElement) {
     return pElement instanceof Enumeration;
   }
 
-  public static List<Slot> getOrderedSlots( EnumerationLiteral pLiteral ) {
+  public static List<Slot> getOrderedSlots(EnumerationLiteral pLiteral) {
     Map<Property, Slot> lSlotsByProperty = new HashMap<Property, Slot>();
     Iterator<Slot> lIterator = pLiteral.getSlots().iterator();
     while (lIterator.hasNext()) {
       Slot lNextSlot = lIterator.next();
-      lSlotsByProperty.put((Property) lNextSlot.getDefiningFeature(), lNextSlot);
+      lSlotsByProperty.put((Property) lNextSlot.getDefiningFeature(),
+          lNextSlot);
     }
     List<Slot> lOrderdSlots = new ArrayList<Slot>(lSlotsByProperty.size());
     Enumeration lEnumeration = (Enumeration) pLiteral.getOwner();
@@ -1594,10 +1831,12 @@ public class GeneratorCommons {
     return lOrderdSlots;
   }
 
-  public static List<String> getMissingMandatorySlots( EnumerationLiteral pLiteral ) {
+  public static List<String> getMissingMandatorySlots(
+      EnumerationLiteral pLiteral) {
     List<String> lMandatoryAttributes = new ArrayList<String>();
     Enumeration lEnumeration = (Enumeration) pLiteral.getOwner();
-    Iterator<Property> lPropertyIterator = lEnumeration.getAttributes().iterator();
+    Iterator<Property> lPropertyIterator = lEnumeration.getAttributes()
+        .iterator();
     while (lPropertyIterator.hasNext()) {
       Property lProperty = lPropertyIterator.next();
       if (lProperty.getLower() > 0) {
@@ -1607,25 +1846,33 @@ public class GeneratorCommons {
 
     Iterator<Slot> lSlotIterator = pLiteral.getSlots().iterator();
     while (lSlotIterator.hasNext()) {
-      lMandatoryAttributes.remove(lSlotIterator.next().getDefiningFeature().getName());
+      lMandatoryAttributes.remove(lSlotIterator.next()
+          .getDefiningFeature().getName());
     }
     return lMandatoryAttributes;
   }
 
-  public static String getMessage( NamedElement pElement, String pErrorCode, List<String> pParams ) {
-    MessageRepository lMessageRepository = MessageRepository.getMessageRepository();
-    ErrorCode lErrorCode = lMessageRepository.getErrorCode(Integer.valueOf(pErrorCode));
+  public static String getMessage(NamedElement pElement, String pErrorCode,
+      List<String> pParams) {
+    MessageRepository lMessageRepository = MessageRepository
+        .getMessageRepository();
+    ErrorCode lErrorCode = lMessageRepository.getErrorCode(Integer
+        .valueOf(pErrorCode));
     String lMessage = lErrorCode.toString(pParams.toArray(new String[] {}));
     String lElementName = Naming.getFullyQualifiedName(pElement);
-    if (lElementName == null || lElementName.isEmpty() || lElementName.equals("unknown")) {
-      lElementName =
-          "unnamed " + pElement.getClass().getSimpleName() + " in package "
-              + Naming.getFullyQualifiedName(pElement.getNearestPackage());
+    if (lElementName == null || lElementName.isEmpty()
+        || lElementName.equals("unknown")) {
+      lElementName = "unnamed "
+          + pElement.getClass().getSimpleName()
+          + " in package "
+          + Naming
+              .getFullyQualifiedName(pElement.getNearestPackage());
     }
-    return "[" + pErrorCode + "] " + lMessage + " (Model element: " + lElementName + ")     ";
+    return "[" + pErrorCode + "] " + lMessage + " (Model element: "
+        + lElementName + ")     ";
   }
 
-  public static String getJavaDefaultValue( Property pProperty ) {
+  public static String getJavaDefaultValue(Property pProperty) {
     String lStringValue = pProperty.getDefaultValue().stringValue();
     String lTypeName = Naming.getFullyQualifiedName(pProperty);
     if ("java.lang.String".equals(lTypeName) || "String".equals(lTypeName)) {
@@ -1637,5 +1884,29 @@ public class GeneratorCommons {
       }
     }
     return lStringValue;
+  }
+
+  public static boolean isLocalDate(String pString) {
+    return asLocalDate(pString) != null;
+  }
+
+  private static LocalDate asLocalDate(String pString) {
+    LocalDate lDate;
+    try {
+      lDate = LocalDate.parse(pString, DateTimeFormatter.ISO_LOCAL_DATE);
+    }
+    catch (DateTimeParseException e) {
+      lDate = null;
+    }
+    return lDate;
+  }
+
+  public static boolean isDateInPast(String pString) {
+    if (pString != null && isLocalDate(pString)) {
+      return asLocalDate(pString).isBefore(LocalDate.now());
+    }
+    else {
+      return false;
+    }
   }
 }

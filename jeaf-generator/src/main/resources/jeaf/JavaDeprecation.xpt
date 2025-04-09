@@ -31,10 +31,27 @@
 
 <br>
 
+«EXPAND RemovableDeprecations -»
 «EXPAND DeprecationsForPackage FOREACH this.getPackagesForJavaDeprecationsReport() -»
 «ENDFILE»
 «ENDDEFINE»
 
+«DEFINE RemovableDeprecations FOR Model-»
+	«LET this.getAllRemoveableJavaDeprecations() AS deprecations -»
+		«IF deprecations.isEmpty == false -»
+## Removable Deprecations
+
+| Package | Type | Property / Operation | Description | Deprecated since | Planned to be removed |
+|---------|------|----------------------|-------------|------------------|-----------------------|			
+			«FOREACH deprecations AS element -»
+| `«element.getNearestPackage().qualifiedName()»` | «IF element.isClass() || element.isInterface()»`«element.owner.asNamedElement().name »`«ELSE»`«element.owner.asNamedElement().name »`«ENDIF» | «IF !element.isClass() &&  !element.isInterface()»`«element.name »`«ENDIF» | «element.getDeprecationDescriptionForMarkup()» | «element.getDeprecatedSince()» | «element.getDeprecationRemoval()» |   
+			«ENDFOREACH -» 
+		«ENDIF -»
+	«ENDLET -»
+
+<br>
+	
+«ENDDEFINE»
 «DEFINE DeprecationsForPackage FOR Package-»
 ## Package `«this.fqn()»`
 «LET this.getJavaDeprecations() AS deprecations-»
