@@ -105,7 +105,7 @@ public class MasterDataObject extends MasterDataObjectBase {
    * @return boolean Value to which {@link #derivedBoolean} is set.
    */
   @Override
-  public boolean getDerivedBoolean( ) {
+  public boolean isDerivedBoolean( ) {
     // TODO Implement method for derived property "derivedBoolean".
     return false;
   }

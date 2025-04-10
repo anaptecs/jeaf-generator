@@ -398,7 +398,7 @@ public abstract class MasterDataObjectBase {
    *
    * @return boolean Value to which {@link #derivedBoolean} is set.
    */
-  public abstract boolean getDerivedBoolean( );
+  public abstract boolean isDerivedBoolean( );
 
   /**
    * Method returns attribute {@link #derivedInt}.<br/>
