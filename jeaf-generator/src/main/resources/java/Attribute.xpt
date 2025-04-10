@@ -189,7 +189,7 @@
     «EXPAND java::Helper::GenerateDeprecationAnnotation-»
     «IF generateJacksonAnnotations() && this.isAddToJSON()»@com.fasterxml.jackson.annotation.JsonGetter«ENDIF»
     «EXPAND java::Helper::NotNullAnnotationForProperty»
-    «IF this.isInternalProperty() == false»public«ENDIF» abstract «IF this.association == null»«this.fqn()»«ELSE»«this.fqn()»«ENDIF» «asGetter()»();
+    «IF this.isInternalProperty() == false»public«ENDIF» abstract «IF this.association == null»«this.fqn()»«ELSE»«this.fqn()»«ENDIF» «IF type.isPrimitiveType() && type.isBooleanType() && this.isMultivalued() == false»is«name.toFirstUpper()»«ELSE»«asGetter()»«ENDIF»();
     
     «IF generateJacksonAnnotations() && this.isAddToJSON() && this.isMultivalued()»
         @com.fasterxml.jackson.annotation.JsonSetter
@@ -205,7 +205,7 @@
     «IF generateJacksonAnnotations() && this.isAddToJSON()»@com.fasterxml.jackson.annotation.JsonGetter«ENDIF»
     «EXPAND java::Helper::NotNullAnnotationForProperty»
     @Override
-    «IF this.isInternalProperty() == false»public«ENDIF» «IF this.association == null»«this.fqn()»«ELSE»«this.fqn()»«ENDIF» «asGetter()»() {
+    «IF this.isInternalProperty() == false»public«ENDIF» «IF this.association == null»«this.fqn()»«ELSE»«this.fqn()»«ENDIF» «IF type.isPrimitiveType() && type.isBooleanType() && this.isMultivalued() == false»is«name.toFirstUpper()»«ELSE»«asGetter()»«ENDIF»() {
         // TODO Implement method for derived property "«this.name»".
         «IF this.type.isPrimitiveType() && this.isMultivalued() == false»
             «IF this.fqn() != "boolean"» return 0; «ELSE» return false;«ENDIF»
