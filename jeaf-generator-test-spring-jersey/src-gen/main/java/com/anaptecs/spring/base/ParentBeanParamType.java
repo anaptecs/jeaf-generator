@@ -30,7 +30,7 @@ public class ParentBeanParamType {
    * <li><code>4711-0815</code></li>
    * </ul>
    * <p/>
-   * <b>Header-Param:</b> novaKey
+   * <b>Header-Param:</b> <code>novaKey</code>
    */
   @HeaderParam("novaKey")
   private String novaKey;
@@ -45,7 +45,7 @@ public class ParentBeanParamType {
    * <li><code>BOOKING_ID_999</code></li>
    * </ul>
    * <p/>
-   * <b>Header-Param:</b> code
+   * <b>Header-Param:</b> <code>code</code>
    */
   @HeaderParam("code")
   private DoubleCode code;
@@ -109,7 +109,7 @@ public class ParentBeanParamType {
      * <li><code>4711-0815</code></li>
      * </ul>
      * <p/>
-     * <b>Header-Param:</b> novaKey
+     * <b>Header-Param:</b> <code>novaKey</code>
      */
     private String novaKey;
 
@@ -122,7 +122,7 @@ public class ParentBeanParamType {
      * <li><code>BOOKING_ID_999</code></li>
      * </ul>
      * <p/>
-     * <b>Header-Param:</b> code
+     * <b>Header-Param:</b> <code>code</code>
      */
     private DoubleCode code;
 

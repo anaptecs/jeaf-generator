@@ -68,7 +68,7 @@ public class Context {
    * <li><code>en</code></li>
    * </ul>
    * <p/>
-   * <b>Header-Param:</b> lang
+   * <b>Header-Param:</b> <code>lang</code>
    */
   private Locale language;
 
@@ -168,7 +168,7 @@ public class Context {
      * <li><code>en</code></li>
      * </ul>
      * <p/>
-     * <b>Header-Param:</b> lang
+     * <b>Header-Param:</b> <code>lang</code>
      */
     private Locale language;
 

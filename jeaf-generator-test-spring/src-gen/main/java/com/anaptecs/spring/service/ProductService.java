@@ -41,7 +41,7 @@ public interface ProductService extends MonitoringService {
   /**
    * Operation returns all available product.
    * <p/>
-   * <b>Authorized Roles:</b> NO_ACCESS
+   * <b>Authorized Roles:</b> <code>NO_ACCESS</code>
    *
    * @return {@link List<Product>} My default comment
    */
@@ -51,7 +51,7 @@ public interface ProductService extends MonitoringService {
 
   /**
    * <p/>
-   * <b>Authorized Roles:</b> NO_ACCESS
+   * <b>Authorized Roles:</b> <code>NO_ACCESS</code>
    *
    * @param pProductID
    * @return {@link Product} My default comment
@@ -61,7 +61,7 @@ public interface ProductService extends MonitoringService {
 
   /**
    * <p/>
-   * <b>Authorized Roles:</b> NO_ACCESS
+   * <b>Authorized Roles:</b> <code>NO_ACCESS</code>
    *
    * @param pProduct My default comment
    * @return boolean
@@ -70,7 +70,7 @@ public interface ProductService extends MonitoringService {
 
   /**
    * <p/>
-   * <b>Authorized Roles:</b> NO_ACCESS
+   * <b>Authorized Roles:</b> <code>NO_ACCESS</code>
    *
    * @param pContext Default Comment
    * @return {@link Sortiment}
@@ -80,7 +80,7 @@ public interface ProductService extends MonitoringService {
 
   /**
    * <p/>
-   * <b>Authorized Roles:</b> NO_ACCESS
+   * <b>Authorized Roles:</b> <code>NO_ACCESS</code>
    *
    * @param pChannelCode
    * @return {@link ChannelCode}
@@ -90,14 +90,14 @@ public interface ProductService extends MonitoringService {
 
   /**
    * <p/>
-   * <b>Authorized Roles:</b> NO_ACCESS
+   * <b>Authorized Roles:</b> <code>NO_ACCESS</code>
    */
   @MyNotNullServiceParam
   void ping( );
 
   /**
    * <p/>
-   * <b>Authorized Roles:</b> NO_ACCESS
+   * <b>Authorized Roles:</b> <code>NO_ACCESS</code>
    *
    * @return {@link String}
    */
@@ -107,7 +107,7 @@ public interface ProductService extends MonitoringService {
 
   /**
    * <p/>
-   * <b>Authorized Roles:</b> NO_ACCESS
+   * <b>Authorized Roles:</b> <code>NO_ACCESS</code>
    *
    * @param pContext
    * @return {@link String}
@@ -117,7 +117,7 @@ public interface ProductService extends MonitoringService {
 
   /**
    * <p/>
-   * <b>Authorized Roles:</b> NO_ACCESS
+   * <b>Authorized Roles:</b> <code>NO_ACCESS</code>
    *
    * @param pBeanParam
    */
@@ -126,7 +126,7 @@ public interface ProductService extends MonitoringService {
 
   /**
    * <p/>
-   * <b>Authorized Roles:</b> NO_ACCESS
+   * <b>Authorized Roles:</b> <code>NO_ACCESS</code>
    *
    * @param pParam1 <br/>
    * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
@@ -139,7 +139,7 @@ public interface ProductService extends MonitoringService {
 
   /**
    * <p/>
-   * <b>Authorized Roles:</b> NO_ACCESS
+   * <b>Authorized Roles:</b> <code>NO_ACCESS</code>
    *
    * @param pBody <br/>
    * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
@@ -152,7 +152,7 @@ public interface ProductService extends MonitoringService {
    * Please be aware that deprecations on complex bodies are not supported. Instead the whole operation needs to be set
    * to deprecated.
    * <p/>
-   * <b>Authorized Roles:</b> NO_ACCESS
+   * <b>Authorized Roles:</b> <code>NO_ACCESS</code>
    *
    * @param pProduct My default comment <br/>
    * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
@@ -162,7 +162,7 @@ public interface ProductService extends MonitoringService {
 
   /**
    * <p/>
-   * <b>Authorized Roles:</b> NO_ACCESS
+   * <b>Authorized Roles:</b> <code>NO_ACCESS</code>
    *
    * @return {@link Product} My default comment <br/>
    * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
@@ -173,7 +173,7 @@ public interface ProductService extends MonitoringService {
 
   /**
    * <p/>
-   * <b>Authorized Roles:</b> NO_ACCESS
+   * <b>Authorized Roles:</b> <code>NO_ACCESS</code>
    *
    * @param pContext
    */
@@ -182,7 +182,7 @@ public interface ProductService extends MonitoringService {
 
   /**
    * <p/>
-   * <b>Authorized Roles:</b> NO_ACCESS
+   * <b>Authorized Roles:</b> <code>NO_ACCESS</code>
    *
    * @param pChannelCode Channel Code that should be created.
    * @return {@link ChannelCode} Created channel code
@@ -192,7 +192,7 @@ public interface ProductService extends MonitoringService {
 
   /**
    * <p/>
-   * <b>Authorized Roles:</b> NO_ACCESS
+   * <b>Authorized Roles:</b> <code>NO_ACCESS</code>
    *
    * @param pCurrencies
    * @return {@link List<CurrencyCode>}
@@ -203,7 +203,7 @@ public interface ProductService extends MonitoringService {
 
   /**
    * <p/>
-   * <b>Authorized Roles:</b> NO_ACCESS
+   * <b>Authorized Roles:</b> <code>NO_ACCESS</code>
    *
    * @param pCurrency
    * @return {@link CurrencyCode}
@@ -213,7 +213,7 @@ public interface ProductService extends MonitoringService {
 
   /**
    * <p/>
-   * <b>Authorized Roles:</b> NO_ACCESS
+   * <b>Authorized Roles:</b> <code>NO_ACCESS</code>
    *
    * @param pStringCode
    * @return {@link IntegerCodeType}
@@ -223,7 +223,7 @@ public interface ProductService extends MonitoringService {
 
   /**
    * <p/>
-   * <b>Authorized Roles:</b> NO_ACCESS
+   * <b>Authorized Roles:</b> <code>NO_ACCESS</code>
    *
    * @param pBeanParam
    * @return {@link String}
@@ -234,7 +234,7 @@ public interface ProductService extends MonitoringService {
 
   /**
    * <p/>
-   * <b>Authorized Roles:</b> NO_ACCESS
+   * <b>Authorized Roles:</b> <code>NO_ACCESS</code>
    *
    * @param pParent
    * @return {@link String}
@@ -244,7 +244,7 @@ public interface ProductService extends MonitoringService {
 
   /**
    * <p/>
-   * <b>Authorized Roles:</b> NO_ACCESS
+   * <b>Authorized Roles:</b> <code>NO_ACCESS</code>
    *
    * @param pChild
    * @return {@link String}
@@ -254,7 +254,7 @@ public interface ProductService extends MonitoringService {
 
   /**
    * <p/>
-   * <b>Authorized Roles:</b> NO_ACCESS
+   * <b>Authorized Roles:</b> <code>NO_ACCESS</code>
    *
    * @param pPath
    * @param pStartTimestamp
@@ -278,7 +278,7 @@ public interface ProductService extends MonitoringService {
 
   /**
    * <p/>
-   * <b>Authorized Roles:</b> NO_ACCESS
+   * <b>Authorized Roles:</b> <code>NO_ACCESS</code>
    *
    * @param pPath
    * @param pQueryParams
@@ -289,7 +289,7 @@ public interface ProductService extends MonitoringService {
 
   /**
    * <p/>
-   * <b>Authorized Roles:</b> NO_ACCESS
+   * <b>Authorized Roles:</b> <code>NO_ACCESS</code>
    *
    * @param pPath
    * @param pOffsetDateTime
@@ -313,7 +313,7 @@ public interface ProductService extends MonitoringService {
 
   /**
    * <p/>
-   * <b>Authorized Roles:</b> NO_ACCESS
+   * <b>Authorized Roles:</b> <code>NO_ACCESS</code>
    *
    * @param pPath
    * @param pHeaderParams
@@ -324,7 +324,7 @@ public interface ProductService extends MonitoringService {
 
   /**
    * <p/>
-   * <b>Authorized Roles:</b> NO_ACCESS
+   * <b>Authorized Roles:</b> <code>NO_ACCESS</code>
    *
    * @param pReseller
    * @param pAuthenticationToken
@@ -335,7 +335,7 @@ public interface ProductService extends MonitoringService {
 
   /**
    * <p/>
-   * <b>Authorized Roles:</b> NO_ACCESS
+   * <b>Authorized Roles:</b> <code>NO_ACCESS</code>
    *
    * @param pContext
    * @return {@link String}
@@ -345,7 +345,7 @@ public interface ProductService extends MonitoringService {
 
   /**
    * <p/>
-   * <b>Authorized Roles:</b> NO_ACCESS
+   * <b>Authorized Roles:</b> <code>NO_ACCESS</code>
    *
    * @param pCodes
    * @return {@link String}

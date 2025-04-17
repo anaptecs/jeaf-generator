@@ -14,7 +14,7 @@ package com.anaptecs.jeaf.junit.openapi.base;
  * <li>nova-base.xsd.ZeitEinheit</li>
  * </ul>
  * <p/>
- * <b>Alternate Name:</b> Zeiteinheit
+ * <b>Alternate Name:</b> <code>Zeiteinheit</code>
  *
  * @author JEAF Generator
  * @version JEAF Release 1.6.x

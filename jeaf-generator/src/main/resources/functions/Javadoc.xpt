@@ -193,7 +193,7 @@
 
 «DEFINE SecurityRolesComment FOR uml::Operation -»
     «IF generateSecurityAnnotation() && hasSecurityRoles() -»
-    <p/><b>Authorized Roles:</b> «FOREACH this.getSecurityRolesForDocumentation() AS role SEPARATOR ", "»«role»«ENDFOREACH»
+    <p/><b>Authorized Roles:</b> <code>«FOREACH this.getSecurityRolesForDocumentation() AS role SEPARATOR ", "»«role»«ENDFOREACH»</code>
     «ENDIF -» 
 «ENDDEFINE»
 
@@ -211,17 +211,17 @@
 
 «DEFINE AliasJavadoc FOR uml::NamedElement -»
     «IF this.isAlias()-»
-    <p/><b>Alternate Name:</b> «this.asAlias().getAlternateNameForJavadoc()»   
+    <p/><b>Alternate Name:</b> <code>«this.asAlias().getAlternateNameForJavadoc()»</code>   
     «ENDIF-»
 «ENDDEFINE»
 
 «DEFINE RESTDocs FOR uml::Property -»
     «IF isTargetRuntimeSpring() -»
 	    «IF this.isStereotypeApplied("PathParam") -»
-	    <p/><b>Path-Param:</b> «EXPAND java::OpenAPI::RESTParamName»
+	    <p/><b>Path-Param:</b> <code>«EXPAND java::OpenAPI::RESTParamName»</code>
 	    «ENDIF -»
 	    «IF this.isStereotypeApplied("HeaderParam") -»
-	    <p/><b>Header-Param:</b> «EXPAND java::OpenAPI::RESTParamName»
+	    <p/><b>Header-Param:</b> <code>«EXPAND java::OpenAPI::RESTParamName»</code>
 	    «ENDIF -»
     «ENDIF -»
 «ENDDEFINE»

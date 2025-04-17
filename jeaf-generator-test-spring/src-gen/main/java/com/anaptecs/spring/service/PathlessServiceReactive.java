@@ -11,7 +11,7 @@ import reactor.core.publisher.Mono;
 public interface PathlessServiceReactive {
   /**
    * <p/>
-   * <b>Authorized Roles:</b> NO_ACCESS
+   * <b>Authorized Roles:</b> <code>NO_ACCESS</code>
    *
    * @return {@link String}
    */
@@ -20,7 +20,7 @@ public interface PathlessServiceReactive {
 
   /**
    * <p/>
-   * <b>Authorized Roles:</b> NO_ACCESS
+   * <b>Authorized Roles:</b> <code>NO_ACCESS</code>
    *
    * @param pHeaderBean
    * @param pTechContext
@@ -30,7 +30,7 @@ public interface PathlessServiceReactive {
 
   /**
    * <p/>
-   * <b>Authorized Roles:</b> NO_ACCESS
+   * <b>Authorized Roles:</b> <code>NO_ACCESS</code>
    *
    * @param pQuery
    * @return {@link String}

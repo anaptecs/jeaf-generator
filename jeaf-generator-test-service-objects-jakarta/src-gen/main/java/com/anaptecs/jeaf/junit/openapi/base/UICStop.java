@@ -19,7 +19,7 @@ import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 
 /**
  * <p/>
- * <b>Alternate Name:</b> Haltestelle
+ * <b>Alternate Name:</b> <code>Haltestelle</code>
  *
  * @author JEAF Generator
  * @version JEAF Release 1.4.x

@@ -11,7 +11,7 @@ import com.anaptecs.annotations.MyNotNullProperty;
 
 /**
  * <p/>
- * <b>Alternate Name:</b> Kanal
+ * <b>Alternate Name:</b> <code>Kanal</code>
  *
  * @author JEAF Generator
  * @version JEAF Release 1.6.x
@@ -20,7 +20,7 @@ public enum ChannelType {
   /**
    * counter
    * <p/>
-   * <b>Alternate Name:</b> BEDIENT
+   * <b>Alternate Name:</b> <code>BEDIENT</code>
    */
   COUNTER("CNT"), CALL_CENTER("CC"), MOBILE("MOB"), TVM("TVM"),
   /**
