@@ -41,13 +41,15 @@
 		«IF deprecations.isEmpty == false -»
 ## Removable Deprecations
 
+<br>
+
 | Package | Type | Property / Operation | Description | Deprecated since | Planned to be removed |
 |---------|------|----------------------|-------------|------------------|-----------------------|			
-			«FOREACH deprecations AS element -»
+«FOREACH deprecations AS element -»
 | `«element.getNearestPackage().qualifiedName()»` | «IF element.isClass() || element.isInterface()»`«element.owner.asNamedElement().name »`«ELSE»`«element.owner.asNamedElement().name »`«ENDIF» | «IF !element.isClass() &&  !element.isInterface()»`«element.name »`«ENDIF» | «element.getDeprecationDescriptionForMarkup()» | «element.getDeprecatedSince()» | «element.getDeprecationRemoval()» |   
-			«ENDFOREACH -» 
-		«ENDIF -»
-	«ENDLET -»
+«ENDFOREACH -» 
+«ENDIF -»
+«ENDLET -»
 
 <br>
 	
