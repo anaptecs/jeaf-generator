@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 /**
  * Data type represents a product definition
  * <p/>
- * <b>Alternate Name:</b> Produkt
+ * <b>Alternate Name:</b> <code>Produkt</code>
  *
  * @author JEAF Generator
  * @version JEAF Release 1.6.x

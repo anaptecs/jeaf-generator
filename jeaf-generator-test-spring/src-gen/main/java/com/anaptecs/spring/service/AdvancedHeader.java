@@ -36,7 +36,7 @@ public class AdvancedHeader {
    * <li><code>BOOK-12345</code></li>
    * </ul>
    * <p/>
-   * <b>Header-Param:</b> bookingID
+   * <b>Header-Param:</b> <code>bookingID</code>
    */
   private BookingID bookingID;
 
@@ -103,7 +103,7 @@ public class AdvancedHeader {
      * <li><code>BOOK-12345</code></li>
      * </ul>
      * <p/>
-     * <b>Header-Param:</b> bookingID
+     * <b>Header-Param:</b> <code>bookingID</code>
      */
     private BookingID bookingID;
 

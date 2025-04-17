@@ -45,7 +45,7 @@ public class DeprecatedContext {
    * <li><code>en</code></li>
    * </ul>
    * <p/>
-   * <b>Header-Param:</b> lang
+   * <b>Header-Param:</b> <code>lang</code>
    */
   private Locale language;
 
@@ -120,7 +120,7 @@ public class DeprecatedContext {
      * <li><code>en</code></li>
      * </ul>
      * <p/>
-     * <b>Header-Param:</b> lang
+     * <b>Header-Param:</b> <code>lang</code>
      */
     private Locale language;
 

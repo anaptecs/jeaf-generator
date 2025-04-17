@@ -32,7 +32,7 @@ public abstract class PersonBase extends Partner {
 
   /**
    * <p/>
-   * <b>Alternate Name:</b> Vorname
+   * <b>Alternate Name:</b> <code>Vorname</code>
    */
   private String surname;
 
@@ -65,7 +65,7 @@ public abstract class PersonBase extends Partner {
   public static abstract class BuilderBase extends Partner.Builder {
     /**
      * <p/>
-     * <b>Alternate Name:</b> Vorname
+     * <b>Alternate Name:</b> <code>Vorname</code>
      */
     private String surname;
 
