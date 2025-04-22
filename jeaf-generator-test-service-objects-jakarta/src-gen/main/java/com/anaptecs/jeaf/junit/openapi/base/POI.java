@@ -71,7 +71,7 @@ public class POI extends Stop {
 
   /**
    * <p/>
-   * <b>Breaking Change with PI 15:</b> New mandatory association is required to support upcoming features.
+   * <b>Breaking Change on 2024-12-24:</b> New mandatory association is required to support upcoming features.
    */
   @Size(min = 2, max = 42)
   private Set<UICStop> stops;
@@ -185,7 +185,7 @@ public class POI extends Stop {
 
     /**
      * <p/>
-     * <b>Breaking Change with PI 15:</b> New mandatory association is required to support upcoming features.
+     * <b>Breaking Change on 2024-12-24:</b> New mandatory association is required to support upcoming features.
      */
     private Set<UICStop> stops;
 
@@ -322,7 +322,7 @@ public class POI extends Stop {
     /**
      * Method sets association {@link #stops}.<br/>
      * <p/>
-     * <b>Breaking Change with PI 15:</b> New mandatory association is required to support upcoming features.
+     * <b>Breaking Change on 2024-12-24:</b> New mandatory association is required to support upcoming features.
      *
      * @param pStops Collection to which {@link #stops} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
@@ -341,7 +341,7 @@ public class POI extends Stop {
     /**
      * Method adds the passed objects to association {@link #stops}.<br/>
      * <p/>
-     * <b>Breaking Change with PI 15:</b> New mandatory association is required to support upcoming features.
+     * <b>Breaking Change on 2024-12-24:</b> New mandatory association is required to support upcoming features.
      *
      * @param pStops Array of objects that should be added to {@link #stops}. The parameter may be null.
      * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
@@ -533,7 +533,7 @@ public class POI extends Stop {
   /**
    * Method returns association {@link #stops}.<br/>
    * <p/>
-   * <b>Breaking Change with PI 15:</b> New mandatory association is required to support upcoming features.
+   * <b>Breaking Change on 2024-12-24:</b> New mandatory association is required to support upcoming features.
    *
    * @return {@link Set<UICStop>} Value to which {@link #stops} is set. The method never returns null and the returned
    * collection is unmodifiable.
@@ -546,7 +546,7 @@ public class POI extends Stop {
   /**
    * Method adds the passed object to {@link #stops}.
    * <p/>
-   * <b>Breaking Change with PI 15:</b> New mandatory association is required to support upcoming features.
+   * <b>Breaking Change on 2024-12-24:</b> New mandatory association is required to support upcoming features.
    *
    * @param pStops Object that should be added to {@link #stops}. The parameter must not be null.
    */
@@ -560,7 +560,7 @@ public class POI extends Stop {
   /**
    * Method adds all passed objects to {@link #stops}.
    * <p/>
-   * <b>Breaking Change with PI 15:</b> New mandatory association is required to support upcoming features.
+   * <b>Breaking Change on 2024-12-24:</b> New mandatory association is required to support upcoming features.
    *
    * @param pStops Collection with all objects that should be added to {@link #stops}. The parameter must not be null.
    */
