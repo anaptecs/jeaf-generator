@@ -205,7 +205,7 @@
 
 «DEFINE BreakingChangeJavadoc FOR uml::NamedElement -»
     «IF this.isBreakingChange()-»
-    <p/><b>Breaking Change with «this.getBreakingChangeActiveWith()»:</b> «this.getBreakingChangeDescription().convertCommentForJavadoc()»   
+    <p/><b>Breaking Change «IF this.getBreakingChangeActiveWith().isConvertableToLocalDate()»on«ELSE»with«ENDIF» «this.getBreakingChangeActiveWith()»:</b> «this.getBreakingChangeDescription().convertCommentForJavadoc()»   
     «ENDIF-»
 «ENDDEFINE»
 

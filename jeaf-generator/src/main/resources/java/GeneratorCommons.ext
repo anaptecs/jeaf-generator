@@ -715,3 +715,6 @@ Integer maxValue(Integer first, Integer second):
     if first > second
     then first
     else second;
+    
+cached boolean isConvertableToLocalDate(String dateAsString):
+	JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.isLocalDate(java.lang.String);

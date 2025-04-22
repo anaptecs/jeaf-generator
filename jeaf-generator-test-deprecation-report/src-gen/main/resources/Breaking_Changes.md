@@ -18,9 +18,9 @@
 | `ChannelType` | `WEB` | Added new literal | 1.47.11 | 
 | `WeirdBooking` | `realBooking` | Association will be mandatory. | 2.0 | 
 | `WeirdBooking` | `inventories` | Association will required at least 1 object. | 2.1 | 
+| `POI` | `stops` | New mandatory association is required to support upcoming features. | 2024-12-24 | 
 | `InventoryType` | `DB` | New literal will occur | 3.x | 
 | `MultivaluedQueryParamsBean` | `intArray` | At least one will become mandatory | 47.11 | 
-| `POI` | `stops` | New mandatory association is required to support upcoming features. | PI 15 | 
 | `TheReadOnlyServiceObject` | `bits` | At least one bit will be expected. | PI 16 | 
 | `ComplexBookingType` | | Class was changed to an extensible enum. New literals will not be introduced before PI 17. | PI 17 | 
 
