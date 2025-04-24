@@ -260,7 +260,7 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
         	«this.getCompositeDateTypePublicFieldName()» = pObject.«this.getCompositeDateTypePublicFieldName()»;
         «ELSE»
 	        «FOREACH ownedAttribute.select(e|e.isPropertySuppressed() == false && e.belongsToTransientBidirectionalBackReference() == false) AS attr»
-               «IF attr.isStatic == false»
+               «IF attr.isStatic == false && attr.generateBackwardCompatibility() == false»
                    «IF attr.isSoftLink()»
                        this.set«attr.getSoftLinkPropertyName().toFirstUpper()»(pObject.«attr.getSoftLinkPropertyName()»);
                    «ELSE»
