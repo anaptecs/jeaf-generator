@@ -7,7 +7,7 @@
 <br>
 
 | Package | Type | Property / Operation | Description | Deprecated since | Planned to be removed |
-|---------|------|----------------------|-------------|------------------|-----------------------|			
+|---------|------|----------------------|-------------|------------------|-----------------------|
 | `com.anaptecs.jeaf.junit.rest` | `RESTTestService` | `deprecatedOperation` | Please use something else.<br><br>This is not the right operation any longer.<br><br>Sorry!!! | a very long time | 2023-12-13 |   
 | `com.anaptecs.jeaf.junit.openapi.base` | `base` |  |  |  | 2022-07-25 |   
 | `com.anaptecs.jeaf.junit.openapi.base` | `SpecialContext` | `deprecatedHeader` |  |  | 2024-12-24 |   
