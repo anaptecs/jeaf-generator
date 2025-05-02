@@ -35,7 +35,7 @@ import openapitools.JSON;
   PostalAddress.JSON_PROPERTY_CITY,
   PostalAddress.JSON_PROPERTY_POSTAL_CODE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class PostalAddress {
   public static final String JSON_PROPERTY_STREET = "street";
   @javax.annotation.Nonnull

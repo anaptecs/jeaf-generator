@@ -38,7 +38,7 @@ import openapitools.JSON;
   DoSomethingResponse.JSON_PROPERTY_WARNINGS,
   DoSomethingResponse.JSON_PROPERTY_VALUE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class DoSomethingResponse {
   public static final String JSON_PROPERTY_ERRORS = "errors";
   @javax.annotation.Nullable

@@ -37,7 +37,7 @@ import openapitools.JSON;
   Reseller.JSON_PROPERTY_NAME,
   Reseller.JSON_PROPERTY_LANGUAGE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class Reseller {
   public static final String JSON_PROPERTY_CHANNELS = "channels";
   @javax.annotation.Nonnull
