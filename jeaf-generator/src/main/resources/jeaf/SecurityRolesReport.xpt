@@ -8,14 +8,22 @@
 «EXTENSION functions::RESTOperation»
 «EXTENSION functions::NamedElement»
 «EXTENSION functions::SystemProperties»
+«EXTENSION functions::Javadoc»
 
 «DEFINE SecurityRolesReport FOR Model»
 «FILE getSecurityRolesReportFileName() res_gen-»
 # «getSecurityRolesReportName()»
 «FOREACH this.getAllSecurityRoles().select(e|e.excludeFromDocumentation == false).sortBy(e|e.name) AS securityRole-»
 ## Role `«securityRole.name»`
+«IF securityRole.hasComment()-»
+
+«securityRole.getMarkdownComment()»
+«ENDIF-»
+
 «FOREACH securityRole.getAuthorizedServices().sortBy(e|e.name) AS service-»
-### Service `«service.name»`
+<br>
+
+**Service `«service.name»`**
 | Operation        | REST Resource Path |
 |------------------|--------------------|
 «FOREACH securityRole.getAuthorizedOperations(service) AS operation -»

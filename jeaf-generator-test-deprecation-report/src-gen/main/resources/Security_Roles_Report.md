@@ -1,5 +1,6 @@
 # My Roles Report
 ## Role `Accounting Basic Data Admin`
+
 ### Service `AccountingBasicDataService`
 | Operation        | REST Resource Path |
 |------------------|--------------------|
@@ -8,6 +9,7 @@
 | `createResponsibilityType(ResponsibilityType)` |  |
 
 ## Role `Accounting User`
+
 ### Service `AccountingService`
 | Operation        | REST Resource Path |
 |------------------|--------------------|
@@ -22,6 +24,7 @@
 | `unlock(Account)` |  |
 
 ## Role `Advanced User`
+
 ### Service `AccountingBasicDataService`
 | Operation        | REST Resource Path |
 |------------------|--------------------|
@@ -43,6 +46,7 @@
 | `unlock(Account)` |  |
 
 ## Role `Customer`
+
 ### Service `RESTProductService`
 | Operation        | REST Resource Path |
 |------------------|--------------------|
@@ -50,6 +54,7 @@
 | `ping()` | `/rest-products [HEAD]` |
 
 ## Role `Sales Agent`
+
 ### Service `RESTProductService`
 | Operation        | REST Resource Path |
 |------------------|--------------------|
@@ -91,6 +96,7 @@
 | `testSimpleTypesAsQueryParams(String)` | `/rest-products/testSimpleTypesAsQueryParams [GET]` |
 
 ## Role `Standard User`
+
 ### Service `AccountingService`
 | Operation        | REST Resource Path |
 |------------------|--------------------|
@@ -105,6 +111,7 @@
 | `checkInvalidServiceAccess()` |  |
 
 ## Role `Support User`
+
 ### Service `AccountingService`
 | Operation        | REST Resource Path |
 |------------------|--------------------|
