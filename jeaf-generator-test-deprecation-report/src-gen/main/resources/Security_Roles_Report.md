@@ -1,7 +1,9 @@
 # My Roles Report
 ## Role `Accounting Basic Data Admin`
 
-### Service `AccountingBasicDataService`
+<br>
+
+**Service `AccountingBasicDataService`**
 | Operation        | REST Resource Path |
 |------------------|--------------------|
 | `createBank(Bank)` |  |
@@ -10,7 +12,9 @@
 
 ## Role `Accounting User`
 
-### Service `AccountingService`
+<br>
+
+**Service `AccountingService`**
 | Operation        | REST Resource Path |
 |------------------|--------------------|
 | `createAccount(Customer, Person)` |  |
@@ -25,14 +29,18 @@
 
 ## Role `Advanced User`
 
-### Service `AccountingBasicDataService`
+<br>
+
+**Service `AccountingBasicDataService`**
 | Operation        | REST Resource Path |
 |------------------|--------------------|
 | `createBank(Bank)` |  |
 | `createEmployee(Person, ResponsibilityType, Bank)` |  |
 | `createResponsibilityType(ResponsibilityType)` |  |
 
-### Service `AccountingService`
+<br>
+
+**Service `AccountingService`**
 | Operation        | REST Resource Path |
 |------------------|--------------------|
 | `createAccount(Customer, Person)` |  |
@@ -47,7 +55,9 @@
 
 ## Role `Customer`
 
-### Service `RESTProductService`
+<br>
+
+**Service `RESTProductService`**
 | Operation        | REST Resource Path |
 |------------------|--------------------|
 | `getProducts(int)` | `/rest-products [GET]` |
@@ -55,7 +65,9 @@
 
 ## Role `Sales Agent`
 
-### Service `RESTProductService`
+<br>
+
+**Service `RESTProductService`**
 | Operation        | REST Resource Path |
 |------------------|--------------------|
 | `createChannelCode(String)` | `/rest-products/ChannelCode [POST]` |
@@ -97,13 +109,17 @@
 
 ## Role `Standard User`
 
-### Service `AccountingService`
+<br>
+
+**Service `AccountingService`**
 | Operation        | REST Resource Path |
 |------------------|--------------------|
 | `performBooking(Booking, SecurityToken)` | `/api/v1/accounting/bookings [PUT]` |
 | `searchCustomers(CustomerQuery)` |  |
 
-### Service `JEAFSecurityTestService`
+<br>
+
+**Service `JEAFSecurityTestService`**
 | Operation        | REST Resource Path |
 |------------------|--------------------|
 | `checkCurrentAnonymousUser()` |  |
@@ -112,7 +128,9 @@
 
 ## Role `Support User`
 
-### Service `AccountingService`
+<br>
+
+**Service `AccountingService`**
 | Operation        | REST Resource Path |
 |------------------|--------------------|
 | `unlock(Account)` |  |
