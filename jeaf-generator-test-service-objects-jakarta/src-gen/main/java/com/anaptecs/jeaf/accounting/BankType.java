@@ -7,11 +7,17 @@ package com.anaptecs.jeaf.accounting;
 
 public enum BankType {
   /**
-   * Enumeration literal for bank of type &quot;Mutual Savings&quot;.
+   * Enumeration literal for bank of type &quot;Mutual Savings&quot;. <br/>
+   * <br/>
+   * <b>Attribute values:</b><br/>
+   * - <code>typeCode = "MS"</code><br/>
    */
   MUTUAL_SAVINGS("MS"),
   /**
-   * Enumeration literal for bank of type &quot;Private Bank&quot;.
+   * Enumeration literal for bank of type &quot;Private Bank&quot;. <br/>
+   * <br/>
+   * <b>Attribute values:</b><br/>
+   * - <code>typeCode = "PB"</code><br/>
    */
   PRIVATE_BANK("PB");
 

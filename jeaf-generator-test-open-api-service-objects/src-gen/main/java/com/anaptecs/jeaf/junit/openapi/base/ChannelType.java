@@ -18,17 +18,29 @@ import com.anaptecs.annotations.MyNotNullProperty;
  */
 public enum ChannelType {
   /**
-   * counter
+   * counter <br/>
+   * <br/>
+   * <b>Attribute values:</b><br/>
+   * - <code>code = "CNT"</code><br/>
    * <p/>
    * <b>Alternate Name:</b> <code>BEDIENT</code>
    */
   COUNTER("CNT"), CALL_CENTER("CC"), MOBILE("MOB"), TVM("TVM"),
   /**
+   * <br/>
+   * <br/>
+   * <b>Attribute values:</b><br/>
+   * - <code>code = "WEB"</code><br/>
    * <p/>
    * <b>Breaking Change with 1.47.11:</b> Added new literal
    */
   WEB("WEB"),
   /**
+   * <br/>
+   * <br/>
+   * <b>Attribute values:</b><br/>
+   * - <code>code = "PRISMA"</code><br/>
+   *
    * @deprecated I'm <code>DEPRECATED</code>. (<b>since:</b> TBD, <b>removed with:</b> TBD)
    */
   @Deprecated

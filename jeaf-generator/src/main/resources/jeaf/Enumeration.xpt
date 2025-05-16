@@ -1,5 +1,6 @@
 «EXTENSION java::Naming»
 «EXTENSION java::GeneratorCommons»
+«EXTENSION entity::ModelProperties»
 «EXTENSION functions::Enumeration»
 «EXTENSION functions::JEAFEnumeration»
 
@@ -50,21 +51,36 @@ package «packageName()»;
          */
         private «this.name»() {
           «FOREACH this.ownedAttribute AS attr»
-          «IF attr.type.isStringType()»
-          «attr.name» = null;
-          «ELSEIF attr.isMultivalued()»
-          	  «attr.name» = java.util.Collections.emptyList();
-          «ELSE»
-	          «IF attr.type.isBooleanType()»
-	          «attr.name» = false;
+	          «IF attr.isMultivalued()»
+	          
+	          	  «IF attr.hasInitValue()»
+	          	  	  «IF attr.type.isBasicType() == false»
+	          	  	  	  «attr.name» = java.util.List.of(«attr.type.fqn()».«attr.initValue()»);
+	          	  	  «ELSE»
+	          	  	  	  «attr.name» = java.util.List.of(«attr.initValue()»);
+	          	  	  «ENDIF»
+	          	  «ELSE»
+	          	  	  «attr.name» = java.util.Collections.emptyList();
+	          	  «ENDIF»
 	          «ELSE»
-	            «IF attr.type.isEnumeration()»
-	                «attr.name» = null;
-	            «ELSE»
-	                «attr.name» = -1;
-	            «ENDIF»
-	          «ENDIF»             
-          «ENDIF»
+				  «IF attr.hasInitValue()»
+					  «IF attr.type.isBasicType() == false»
+						  «attr.name» = «attr.type.fqn()».«attr.initValue()»;
+					  «ELSE»
+						  «attr.name» = «attr.initValue()»;
+					  «ENDIF»
+				  «ELSE»
+			          «IF attr.type.isStringType()»
+				          «attr.name» = null;
+			          «ELSEIF attr.type.isBooleanType()»
+				          «attr.name» = false;
+			          «ELSEIF attr.type.isEnumeration()»
+			              «attr.name» = null;
+		              «ELSE»
+			              «attr.name» = -1;
+		              «ENDIF»
+				  «ENDIF»
+	          «ENDIF»
           «ENDFOREACH»
         }
         «ENDIF»

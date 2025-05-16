@@ -20,7 +20,7 @@ List[Property] associationEnd (Class c) : c.ownedAttribute.select(a|Class.isInst
 
 String getCommentBody(Comment c) : c.body.trim();
 
-boolean hasInitValue(Property p) : !p.ownedElement.isEmpty;
+boolean hasInitValue(Property p) : p.defaultValue != null;
 
 String initValue(Property p) : 
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getJavaDefaultValue(org.eclipse.uml2.uml.Property);

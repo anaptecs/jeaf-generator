@@ -8,6 +8,7 @@
 «EXTENSION functions::DefaultComment»
 «EXTENSION functions::Class»
 «EXTENSION functions::NamedElement»
+«EXTENSION functions::Enumeration»
 
 «EXTENSION java::Naming»
 «EXTENSION entity::ModelProperties»
@@ -178,6 +179,12 @@
 «IF this.hasMeaningfulJavadoc()»
 /**
     «EXPAND AddComment -»
+    «IF this.slot.size > 0 -»
+  * <br/><br/><b>Attribute values:</b><br/>
+    	«FOREACH this.getOrderedSlots() AS currentSlot -»
+  * - <code>«currentSlot.definingFeature.name» = «currentSlot.getSlotValue()»</code><br/>
+    	«ENDFOREACH -»
+    «ENDIF -»
     «EXPAND AliasJavadoc -»
     «EXPAND BreakingChangeJavadoc -»
     «EXPAND DeprecatedJavadoc -»
