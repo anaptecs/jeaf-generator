@@ -194,13 +194,13 @@ public abstract class ProductBase extends Object implements ServiceObject, Ident
    */
   protected ProductBase( ) {
     objectID = null;
-    resellers = new HashSet<Reseller>();
+    resellers = new HashSet<>();
     // Bidirectional back reference is not yet set up correctly
     resellersBackReferenceInitialized = false;
     productID = null;
-    supportedCurrencies = new HashSet<CurrencyCode>();
-    productCodes = new HashSet<ProductCode>();
-    sortiments = new HashSet<Sortiment>();
+    supportedCurrencies = new HashSet<>();
+    productCodes = new HashSet<>();
+    sortiments = new HashSet<>();
     uri = "https://products.anaptecs.de/123456789";
   }
 
@@ -229,7 +229,7 @@ public abstract class ProductBase extends Object implements ServiceObject, Ident
       }
     }
     else {
-      resellers = new HashSet<Reseller>();
+      resellers = new HashSet<>();
     }
     // Bidirectional back reference is set up correctly as a builder is used.
     resellersBackReferenceInitialized = true;
@@ -251,7 +251,7 @@ public abstract class ProductBase extends Object implements ServiceObject, Ident
       supportedCurrencies = pBuilder.supportedCurrencies;
     }
     else {
-      supportedCurrencies = new HashSet<CurrencyCode>();
+      supportedCurrencies = new HashSet<>();
     }
     // "com.anaptecs.jeaf.junit.openapi.base.CurrencyCode"
     supportedCurrenciesXYZ = pBuilder.supportedCurrenciesXYZ;
@@ -259,14 +259,14 @@ public abstract class ProductBase extends Object implements ServiceObject, Ident
       productCodes = pBuilder.productCodes;
     }
     else {
-      productCodes = new HashSet<ProductCode>();
+      productCodes = new HashSet<>();
     }
     // "com.anaptecs.jeaf.junit.openapi.base.ProductCode"
     productCodesXYZ = pBuilder.productCodesXYZ;
     description = pBuilder.description;
     // "String"
     descriptionXYZ = pBuilder.descriptionXYZ;
-    sortiments = new HashSet<Sortiment>();
+    sortiments = new HashSet<>();
     uri = pBuilder.uri;
     // "String"
     uriXYZ = pBuilder.uriXYZ;

@@ -48,7 +48,7 @@ public class WeirdBooking implements Serializable {
    * object creation builder should be used instead.
    */
   protected WeirdBooking( ) {
-    additionalBookings = new ArrayList<ComplexBookingID>();
+    additionalBookings = new ArrayList<>();
   }
 
   /**
@@ -65,7 +65,7 @@ public class WeirdBooking implements Serializable {
       additionalBookings = pBuilder.additionalBookings;
     }
     else {
-      additionalBookings = new ArrayList<ComplexBookingID>();
+      additionalBookings = new ArrayList<>();
     }
   }
 

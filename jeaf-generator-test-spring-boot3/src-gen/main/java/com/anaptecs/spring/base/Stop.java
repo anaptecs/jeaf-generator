@@ -32,7 +32,7 @@ public class Stop {
    */
   protected Stop( ) {
     name = null;
-    links = new ArrayList<LinkObject>();
+    links = new ArrayList<>();
   }
 
   /**
@@ -47,7 +47,7 @@ public class Stop {
       links = pBuilder.links;
     }
     else {
-      links = new ArrayList<LinkObject>();
+      links = new ArrayList<>();
     }
   }
 

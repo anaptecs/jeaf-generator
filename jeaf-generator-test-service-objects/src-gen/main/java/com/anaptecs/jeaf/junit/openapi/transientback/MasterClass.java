@@ -61,7 +61,7 @@ public class MasterClass implements ServiceObject {
    * object creation builder should be used instead.
    */
   protected MasterClass( ) {
-    clients = new ArrayList<ClientClass>();
+    clients = new ArrayList<>();
     // Bidirectional back reference is not yet set up correctly
     clientsBackReferenceInitialized = false;
     // Bidirectional back reference is not yet set up correctly
@@ -85,7 +85,7 @@ public class MasterClass implements ServiceObject {
       }
     }
     else {
-      clients = new ArrayList<ClientClass>();
+      clients = new ArrayList<>();
     }
     // Bidirectional back reference is set up correctly as a builder is used.
     clientsBackReferenceInitialized = true;

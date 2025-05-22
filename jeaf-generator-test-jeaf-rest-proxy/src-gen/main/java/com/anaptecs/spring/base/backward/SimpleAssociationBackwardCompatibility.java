@@ -61,7 +61,7 @@ public class SimpleAssociationBackwardCompatibility implements Serializable {
    * object creation builder should be used instead.
    */
   protected SimpleAssociationBackwardCompatibility( ) {
-    newLinks = new ArrayList<SimpleBackwardCompatibility>();
+    newLinks = new ArrayList<>();
   }
 
   /**
@@ -77,7 +77,7 @@ public class SimpleAssociationBackwardCompatibility implements Serializable {
       newLinks = pBuilder.newLinks;
     }
     else {
-      newLinks = new ArrayList<SimpleBackwardCompatibility>();
+      newLinks = new ArrayList<>();
     }
     newSingleLink = pBuilder.newSingleLink;
   }

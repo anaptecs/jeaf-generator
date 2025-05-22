@@ -63,9 +63,9 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
    * object creation builder should be used instead.
    */
   protected PrimitiveReferenceServiceObject( ) {
-    booleanSet = new HashSet<Boolean>();
-    buffers = new HashSet<StringBuffer>();
-    strings = new HashSet<String>();
+    booleanSet = new HashSet<>();
+    buffers = new HashSet<>();
+    strings = new HashSet<>();
   }
 
   /**
@@ -82,19 +82,19 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
       booleanSet = pBuilder.booleanSet;
     }
     else {
-      booleanSet = new HashSet<Boolean>();
+      booleanSet = new HashSet<>();
     }
     if (pBuilder.buffers != null) {
       buffers = pBuilder.buffers;
     }
     else {
-      buffers = new HashSet<StringBuffer>();
+      buffers = new HashSet<>();
     }
     if (pBuilder.strings != null) {
       strings = pBuilder.strings;
     }
     else {
-      strings = new HashSet<String>();
+      strings = new HashSet<>();
     }
     stringArray = pBuilder.stringArray;
   }

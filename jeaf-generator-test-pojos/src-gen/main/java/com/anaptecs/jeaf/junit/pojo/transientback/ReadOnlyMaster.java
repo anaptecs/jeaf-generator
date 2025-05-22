@@ -52,7 +52,7 @@ public class ReadOnlyMaster {
    * object creation builder should be used instead.
    */
   protected ReadOnlyMaster( ) {
-    clients = new ArrayList<ReadOnlyClient>();
+    clients = new ArrayList<>();
     // Bidirectional back reference is not yet set up correctly
     clientsBackReferenceInitialized = false;
   }
@@ -75,7 +75,7 @@ public class ReadOnlyMaster {
       }
     }
     else {
-      clients = new ArrayList<ReadOnlyClient>();
+      clients = new ArrayList<>();
     }
     // Bidirectional back reference is set up correctly as a builder is used.
     clientsBackReferenceInitialized = true;

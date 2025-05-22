@@ -50,7 +50,7 @@ public class ClientClass {
    * object creation builder should be used instead.
    */
   protected ClientClass( ) {
-    manyMasters = new ArrayList<MasterClass>();
+    manyMasters = new ArrayList<>();
   }
 
   /**
@@ -63,7 +63,7 @@ public class ClientClass {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     name = pBuilder.name;
-    manyMasters = new ArrayList<MasterClass>();
+    manyMasters = new ArrayList<>();
   }
 
   /**

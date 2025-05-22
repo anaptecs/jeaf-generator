@@ -63,7 +63,7 @@ public class ChildBB extends ChildB {
    * object creation builder should be used instead.
    */
   protected ChildBB( ) {
-    deprecatedBs = new HashSet<ChildB>();
+    deprecatedBs = new HashSet<>();
   }
 
   /**
@@ -81,7 +81,7 @@ public class ChildBB extends ChildB {
       deprecatedBs = pBuilder.deprecatedBs;
     }
     else {
-      deprecatedBs = new HashSet<ChildB>();
+      deprecatedBs = new HashSet<>();
     }
     deprecatedParent = pBuilder.deprecatedParent;
     deprecatedArray = pBuilder.deprecatedArray;

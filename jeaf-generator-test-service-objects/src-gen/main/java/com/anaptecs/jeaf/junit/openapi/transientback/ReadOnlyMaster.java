@@ -47,7 +47,7 @@ public class ReadOnlyMaster implements ServiceObject {
    */
   protected ReadOnlyMaster( ) {
     name = null;
-    clients = new ArrayList<ReadOnlyClient>();
+    clients = new ArrayList<>();
     // Bidirectional back reference is not yet set up correctly
     clientsBackReferenceInitialized = false;
   }
@@ -70,7 +70,7 @@ public class ReadOnlyMaster implements ServiceObject {
       }
     }
     else {
-      clients = new ArrayList<ReadOnlyClient>();
+      clients = new ArrayList<>();
     }
     // Bidirectional back reference is set up correctly as a builder is used.
     clientsBackReferenceInitialized = true;

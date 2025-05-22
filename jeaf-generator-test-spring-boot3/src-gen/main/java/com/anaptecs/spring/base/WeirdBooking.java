@@ -34,7 +34,7 @@ public class WeirdBooking {
    */
   protected WeirdBooking( ) {
     booking = null;
-    additionalBookings = new ArrayList<ComplexBookingID>();
+    additionalBookings = new ArrayList<>();
   }
 
   /**
@@ -49,7 +49,7 @@ public class WeirdBooking {
       additionalBookings = pBuilder.additionalBookings;
     }
     else {
-      additionalBookings = new ArrayList<ComplexBookingID>();
+      additionalBookings = new ArrayList<>();
     }
   }
 

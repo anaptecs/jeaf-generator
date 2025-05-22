@@ -106,10 +106,10 @@ public abstract class ResellerBase extends Object implements ServiceObject, Iden
    */
   protected ResellerBase( ) {
     objectID = null;
-    channels = new ArrayList<Channel>();
+    channels = new ArrayList<>();
     // Bidirectional back reference is not yet set up correctly
     channelsBackReferenceInitialized = false;
-    products = new HashSet<Product>();
+    products = new HashSet<>();
   }
 
   /**
@@ -137,13 +137,13 @@ public abstract class ResellerBase extends Object implements ServiceObject, Iden
       }
     }
     else {
-      channels = new ArrayList<Channel>();
+      channels = new ArrayList<>();
     }
     // Bidirectional back reference is set up correctly as a builder is used.
     channelsBackReferenceInitialized = true;
     // "com.anaptecs.jeaf.junit.openapi.base.Channel"
     channelsXYZ = pBuilder.channelsXYZ;
-    products = new HashSet<Product>();
+    products = new HashSet<>();
     name = pBuilder.name;
     // "java.lang.String"
     nameXYZ = pBuilder.nameXYZ;

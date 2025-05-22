@@ -41,7 +41,7 @@ public class DiscountOffer implements ServiceObject {
    * object creation builder should be used instead.
    */
   protected DiscountOffer( ) {
-    campaigns = new HashSet<SoftLink>();
+    campaigns = new HashSet<>();
   }
 
   /**
@@ -57,7 +57,7 @@ public class DiscountOffer implements ServiceObject {
       campaigns = pBuilder.campaigns;
     }
     else {
-      campaigns = new HashSet<SoftLink>();
+      campaigns = new HashSet<>();
     }
   }
 

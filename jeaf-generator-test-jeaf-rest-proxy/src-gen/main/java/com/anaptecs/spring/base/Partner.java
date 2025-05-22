@@ -45,7 +45,7 @@ public class Partner implements Serializable {
    * object creation builder should be used instead.
    */
   protected Partner( ) {
-    postalAddresses = new ArrayList<PostalAddress>();
+    postalAddresses = new ArrayList<>();
   }
 
   /**
@@ -61,7 +61,7 @@ public class Partner implements Serializable {
       postalAddresses = pBuilder.postalAddresses;
     }
     else {
-      postalAddresses = new ArrayList<PostalAddress>();
+      postalAddresses = new ArrayList<>();
     }
   }
 

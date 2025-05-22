@@ -24,7 +24,7 @@ public class PartnerContainer {
    * object creation builder should be used instead.
    */
   protected PartnerContainer( ) {
-    partners = new ArrayList<Partner>();
+    partners = new ArrayList<>();
   }
 
   /**
@@ -38,7 +38,7 @@ public class PartnerContainer {
       partners = pBuilder.partners;
     }
     else {
-      partners = new ArrayList<Partner>();
+      partners = new ArrayList<>();
     }
   }
 

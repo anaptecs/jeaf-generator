@@ -53,7 +53,7 @@ public class TheReadOnlyServiceObject implements ServiceObject {
   protected TheReadOnlyServiceObject( ) {
     name = null;
     bits = null;
-    bookingCodes = new HashSet<BookingCode>();
+    bookingCodes = new HashSet<>();
     inventoryType = null;
   }
 
@@ -72,7 +72,7 @@ public class TheReadOnlyServiceObject implements ServiceObject {
       bookingCodes = pBuilder.bookingCodes;
     }
     else {
-      bookingCodes = new HashSet<BookingCode>();
+      bookingCodes = new HashSet<>();
     }
     inventoryType = pBuilder.inventoryType;
   }

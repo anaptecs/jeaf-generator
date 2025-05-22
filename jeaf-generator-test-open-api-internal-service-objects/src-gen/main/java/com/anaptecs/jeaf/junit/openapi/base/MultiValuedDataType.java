@@ -76,9 +76,9 @@ public class MultiValuedDataType implements ServiceObject {
    * object creation builder should be used instead.
    */
   protected MultiValuedDataType( ) {
-    stringCodeHeader = new ArrayList<StringCode>();
-    longCodeQueryParam = new ArrayList<LongCode>();
-    literals = new ArrayList<BooleanLiteralsEnum>();
+    stringCodeHeader = new ArrayList<>();
+    longCodeQueryParam = new ArrayList<>();
+    literals = new ArrayList<>();
   }
 
   /**
@@ -94,19 +94,19 @@ public class MultiValuedDataType implements ServiceObject {
       stringCodeHeader = pBuilder.stringCodeHeader;
     }
     else {
-      stringCodeHeader = new ArrayList<StringCode>();
+      stringCodeHeader = new ArrayList<>();
     }
     if (pBuilder.longCodeQueryParam != null) {
       longCodeQueryParam = pBuilder.longCodeQueryParam;
     }
     else {
-      longCodeQueryParam = new ArrayList<LongCode>();
+      longCodeQueryParam = new ArrayList<>();
     }
     if (pBuilder.literals != null) {
       literals = pBuilder.literals;
     }
     else {
-      literals = new ArrayList<BooleanLiteralsEnum>();
+      literals = new ArrayList<>();
     }
     stringProperty = pBuilder.stringProperty;
     longValues = pBuilder.longValues;

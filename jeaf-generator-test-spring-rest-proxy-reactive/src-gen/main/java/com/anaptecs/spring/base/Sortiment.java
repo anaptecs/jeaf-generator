@@ -30,7 +30,7 @@ public class Sortiment {
    * object creation builder should be used instead.
    */
   protected Sortiment( ) {
-    products = new HashSet<Product>();
+    products = new HashSet<>();
     // Bidirectional back reference is not yet set up correctly
     productsBackReferenceInitialized = false;
   }
@@ -50,7 +50,7 @@ public class Sortiment {
       }
     }
     else {
-      products = new HashSet<Product>();
+      products = new HashSet<>();
     }
     // Bidirectional back reference is set up correctly as a builder is used.
     productsBackReferenceInitialized = true;

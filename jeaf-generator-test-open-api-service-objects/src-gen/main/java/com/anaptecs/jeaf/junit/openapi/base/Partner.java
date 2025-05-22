@@ -53,7 +53,7 @@ public class Partner implements ServiceObject, Identifiable<ServiceObjectID> {
    */
   protected Partner( ) {
     objectID = null;
-    postalAddresses = new ArrayList<PostalAddress>();
+    postalAddresses = new ArrayList<>();
   }
 
   /**
@@ -77,7 +77,7 @@ public class Partner implements ServiceObject, Identifiable<ServiceObjectID> {
       postalAddresses = pBuilder.postalAddresses;
     }
     else {
-      postalAddresses = new ArrayList<PostalAddress>();
+      postalAddresses = new ArrayList<>();
     }
   }
 

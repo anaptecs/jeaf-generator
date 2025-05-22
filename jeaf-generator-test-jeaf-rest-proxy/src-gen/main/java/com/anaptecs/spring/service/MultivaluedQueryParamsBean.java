@@ -73,7 +73,7 @@ public class MultivaluedQueryParamsBean implements Serializable {
    * object creation builder should be used instead.
    */
   public MultivaluedQueryParamsBean( ) {
-    timeUnits = new HashSet<TimeUnit>();
+    timeUnits = new HashSet<>();
   }
 
   /**
@@ -92,7 +92,7 @@ public class MultivaluedQueryParamsBean implements Serializable {
       timeUnits = pBuilder.timeUnits;
     }
     else {
-      timeUnits = new HashSet<TimeUnit>();
+      timeUnits = new HashSet<>();
     }
     timeUnitArray = pBuilder.timeUnitArray;
   }

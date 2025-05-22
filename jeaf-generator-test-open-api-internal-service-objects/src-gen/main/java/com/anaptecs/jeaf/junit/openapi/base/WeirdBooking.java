@@ -72,8 +72,8 @@ public class WeirdBooking extends WeirdParent {
    * object creation builder should be used instead.
    */
   protected WeirdBooking( ) {
-    additionalBookings = new ArrayList<ComplexBookingID>();
-    inventories = new HashSet<InventoryType>();
+    additionalBookings = new ArrayList<>();
+    inventories = new HashSet<>();
   }
 
   /**
@@ -90,7 +90,7 @@ public class WeirdBooking extends WeirdParent {
       additionalBookings = pBuilder.additionalBookings;
     }
     else {
-      additionalBookings = new ArrayList<ComplexBookingID>();
+      additionalBookings = new ArrayList<>();
     }
     versionedObjectSoftLink = pBuilder.versionedObjectSoftLink;
     childProperty = pBuilder.childProperty;
@@ -99,7 +99,7 @@ public class WeirdBooking extends WeirdParent {
       inventories = pBuilder.inventories;
     }
     else {
-      inventories = new HashSet<InventoryType>();
+      inventories = new HashSet<>();
     }
   }
 

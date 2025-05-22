@@ -58,10 +58,10 @@ public class BidirectionalB {
    * object creation builder should be used instead.
    */
   protected BidirectionalB( ) {
-    as = new ArrayList<BidirectionalA>();
+    as = new ArrayList<>();
     // Bidirectional back reference is not yet set up correctly
     asBackReferenceInitialized = false;
-    theAs = new ArrayList<BidirectionalA>();
+    theAs = new ArrayList<>();
     // Bidirectional back reference is not yet set up correctly
     theAsBackReferenceInitialized = false;
   }
@@ -83,7 +83,7 @@ public class BidirectionalB {
       }
     }
     else {
-      as = new ArrayList<BidirectionalA>();
+      as = new ArrayList<>();
     }
     // Bidirectional back reference is set up correctly as a builder is used.
     asBackReferenceInitialized = true;
@@ -95,7 +95,7 @@ public class BidirectionalB {
       }
     }
     else {
-      theAs = new ArrayList<BidirectionalA>();
+      theAs = new ArrayList<>();
     }
     // Bidirectional back reference is set up correctly as a builder is used.
     theAsBackReferenceInitialized = true;

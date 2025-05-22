@@ -90,7 +90,7 @@ public class TheReadOnlyServiceObject extends Object implements ServiceObject {
   protected TheReadOnlyServiceObject( ) {
     name = null;
     bits = null;
-    bookingCodes = new HashSet<BookingCode>();
+    bookingCodes = new HashSet<>();
     inventoryType = null;
   }
 
@@ -113,7 +113,7 @@ public class TheReadOnlyServiceObject extends Object implements ServiceObject {
       bookingCodes = pBuilder.bookingCodes;
     }
     else {
-      bookingCodes = new HashSet<BookingCode>();
+      bookingCodes = new HashSet<>();
     }
     // "com.anaptecs.jeaf.junit.openapi.base.BookingCode"
     bookingCodesXYZ = pBuilder.bookingCodesXYZ;

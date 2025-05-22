@@ -54,7 +54,7 @@ public class Booking {
    * object creation builder should be used instead.
    */
   protected Booking( ) {
-    inventories = new ArrayList<InventoryType>();
+    inventories = new ArrayList<>();
   }
 
   /**
@@ -70,7 +70,7 @@ public class Booking {
       inventories = pBuilder.inventories;
     }
     else {
-      inventories = new ArrayList<InventoryType>();
+      inventories = new ArrayList<>();
     }
   }
 

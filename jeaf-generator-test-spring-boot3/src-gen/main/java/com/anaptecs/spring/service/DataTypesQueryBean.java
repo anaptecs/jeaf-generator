@@ -114,15 +114,15 @@ public class DataTypesQueryBean {
   public DataTypesQueryBean( ) {
     longCodes = null;
     codes = null;
-    doubleCodes = new HashSet<DoubleCode>();
-    bookingIDs = new HashSet<BookingID>();
+    doubleCodes = new HashSet<>();
+    bookingIDs = new HashSet<>();
     bookingIDsArray = null;
     offsetDateTime = null;
     offsetTime = null;
     localDateTime = null;
     localTime = null;
-    timestamps = new ArrayList<LocalDateTime>();
-    times = new HashSet<OffsetTime>();
+    timestamps = new ArrayList<>();
+    times = new HashSet<>();
     startTimestamps = null;
   }
 
@@ -139,13 +139,13 @@ public class DataTypesQueryBean {
       doubleCodes = pBuilder.doubleCodes;
     }
     else {
-      doubleCodes = new HashSet<DoubleCode>();
+      doubleCodes = new HashSet<>();
     }
     if (pBuilder.bookingIDs != null) {
       bookingIDs = pBuilder.bookingIDs;
     }
     else {
-      bookingIDs = new HashSet<BookingID>();
+      bookingIDs = new HashSet<>();
     }
     bookingIDsArray = pBuilder.bookingIDsArray;
     offsetDateTime = pBuilder.offsetDateTime;
@@ -156,13 +156,13 @@ public class DataTypesQueryBean {
       timestamps = pBuilder.timestamps;
     }
     else {
-      timestamps = new ArrayList<LocalDateTime>();
+      timestamps = new ArrayList<>();
     }
     if (pBuilder.times != null) {
       times = pBuilder.times;
     }
     else {
-      times = new HashSet<OffsetTime>();
+      times = new HashSet<>();
     }
     startTimestamps = pBuilder.startTimestamps;
   }

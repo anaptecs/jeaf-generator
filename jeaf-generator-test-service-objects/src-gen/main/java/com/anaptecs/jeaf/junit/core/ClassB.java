@@ -53,7 +53,7 @@ public class ClassB implements ServiceObject, Identifiable<ServiceObjectID> {
    */
   protected ClassB( ) {
     objectID = null;
-    manyAs = new TreeSet<ClassA>();
+    manyAs = new TreeSet<>();
   }
 
   /**
@@ -81,7 +81,7 @@ public class ClassB implements ServiceObject, Identifiable<ServiceObjectID> {
       }
     }
     else {
-      manyAs = new TreeSet<ClassA>();
+      manyAs = new TreeSet<>();
     }
     intValue = pBuilder.intValue;
   }

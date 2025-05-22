@@ -45,7 +45,7 @@ public class QueryBeanParam {
    */
   public QueryBeanParam( ) {
     maxResults = 47;
-    sortCriteria = new ArrayList<MySortCriteria>();
+    sortCriteria = new ArrayList<>();
   }
 
   /**
@@ -61,7 +61,7 @@ public class QueryBeanParam {
       sortCriteria = pBuilder.sortCriteria;
     }
     else {
-      sortCriteria = new ArrayList<MySortCriteria>();
+      sortCriteria = new ArrayList<>();
     }
   }
 

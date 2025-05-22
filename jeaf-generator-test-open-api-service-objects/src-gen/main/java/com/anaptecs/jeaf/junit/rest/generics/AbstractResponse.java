@@ -42,8 +42,8 @@ public abstract class AbstractResponse<T> implements ServiceObject {
    * object creation builder should be used instead.
    */
   protected AbstractResponse( ) {
-    errors = new ArrayList<Message>();
-    warnings = new ArrayList<Message>();
+    errors = new ArrayList<>();
+    warnings = new ArrayList<>();
   }
 
   /**
@@ -59,13 +59,13 @@ public abstract class AbstractResponse<T> implements ServiceObject {
       errors = pBuilder.errors;
     }
     else {
-      errors = new ArrayList<Message>();
+      errors = new ArrayList<>();
     }
     if (pBuilder.warnings != null) {
       warnings = pBuilder.warnings;
     }
     else {
-      warnings = new ArrayList<Message>();
+      warnings = new ArrayList<>();
     }
   }
 

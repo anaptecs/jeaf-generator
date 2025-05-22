@@ -65,7 +65,7 @@ public class ChildBB extends ChildB {
   protected ChildBB( ) {
     childBBAttribute = null;
     deprecatedAttribute = 0;
-    deprecatedBs = new HashSet<ChildB>();
+    deprecatedBs = new HashSet<>();
     deprecatedParent = null;
     deprecatedArray = null;
   }
@@ -85,7 +85,7 @@ public class ChildBB extends ChildB {
       deprecatedBs = pBuilder.deprecatedBs;
     }
     else {
-      deprecatedBs = new HashSet<ChildB>();
+      deprecatedBs = new HashSet<>();
     }
     deprecatedParent = pBuilder.deprecatedParent;
     deprecatedArray = pBuilder.deprecatedArray;

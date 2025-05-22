@@ -37,7 +37,7 @@ public class Pageable<T> implements ServiceObject {
    * object creation builder should be used instead.
    */
   protected Pageable( ) {
-    objects = new ArrayList<T>();
+    objects = new ArrayList<>();
   }
 
   /**
@@ -53,7 +53,7 @@ public class Pageable<T> implements ServiceObject {
       objects = pBuilder.objects;
     }
     else {
-      objects = new ArrayList<T>();
+      objects = new ArrayList<>();
     }
     size = pBuilder.size;
   }

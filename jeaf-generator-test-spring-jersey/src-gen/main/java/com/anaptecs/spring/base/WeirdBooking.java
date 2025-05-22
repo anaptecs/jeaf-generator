@@ -38,7 +38,7 @@ public class WeirdBooking {
    * object creation builder should be used instead.
    */
   protected WeirdBooking( ) {
-    additionalBookings = new ArrayList<ComplexBookingID>();
+    additionalBookings = new ArrayList<>();
   }
 
   /**
@@ -53,7 +53,7 @@ public class WeirdBooking {
       additionalBookings = pBuilder.additionalBookings;
     }
     else {
-      additionalBookings = new ArrayList<ComplexBookingID>();
+      additionalBookings = new ArrayList<>();
     }
   }
 

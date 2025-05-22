@@ -69,8 +69,8 @@ public class SoftLinkPartner {
    * object creation builder should be used instead.
    */
   protected SoftLinkPartner( ) {
-    childLinkIDs = new HashSet<SoftLinkID>();
-    longLinkIDs = new ArrayList<Long>();
+    childLinkIDs = new HashSet<>();
+    longLinkIDs = new ArrayList<>();
   }
 
   /**
@@ -87,13 +87,13 @@ public class SoftLinkPartner {
       childLinkIDs = pBuilder.childLinkIDs;
     }
     else {
-      childLinkIDs = new HashSet<SoftLinkID>();
+      childLinkIDs = new HashSet<>();
     }
     if (pBuilder.longLinkIDs != null) {
       longLinkIDs = pBuilder.longLinkIDs;
     }
     else {
-      longLinkIDs = new ArrayList<Long>();
+      longLinkIDs = new ArrayList<>();
     }
   }
 

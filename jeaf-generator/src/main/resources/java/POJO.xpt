@@ -368,9 +368,9 @@
 							«attr.name» = null;
 						«ELSE»
                             «IF attr.isSoftLink()»
-                                «attr.getSoftLinkPropertyName()» = new «attr.getCollectionImplType()»<«((SoftLink)attr).getMultivaluedJavaSoftLinkType()»>();
+                                «attr.getSoftLinkPropertyName()» = new «attr.getCollectionImplType()»<>();
                             «ELSE»
-							    «attr.name» = new «attr.getCollectionImplType()»<«attr.type.fqn()»>();
+							    «attr.name» = new «attr.getCollectionImplType()»<>();
 							«ENDIF»
 						«ENDIF»
 					«ELSE»
@@ -389,9 +389,9 @@
 				«IF attr.isMultivalued() && attr.association != null»
 					«REM»Only in case of collections we have to initilize them.«ENDREM»
                     «IF attr.isSoftLink()»
-                       «attr.getSoftLinkPropertyName()» = new «attr.getCollectionImplType()»<«((SoftLink)attr).getMultivaluedJavaSoftLinkType()»>();
+                       «attr.getSoftLinkPropertyName()» = new «attr.getCollectionImplType()»<>();
                     «ELSE»
-					   «attr.name» = new «attr.getCollectionImplType()»<«attr.type.fqn()»>();
+					   «attr.name» = new «attr.getCollectionImplType()»<>();
 					«ENDIF»
 				«ELSE»
 					«IF attr.isRealInitValue() && attr.isStatic == false »
@@ -445,16 +445,16 @@
 							}
 							else {
 	                        «IF attr.isSoftLink()»
-	                          «attr.getSoftLinkPropertyName()» = new «attr.getCollectionImplType()»<«((SoftLink)attr).getMultivaluedJavaSoftLinkType()»>();
+	                          «attr.getSoftLinkPropertyName()» = new «attr.getCollectionImplType()»<>();
 	                        «ELSE»
-	    						«attr.name» = new «attr.getCollectionImplType()»<«attr.type.fqn()»>();
+	    						«attr.name» = new «attr.getCollectionImplType()»<>();
 	    					«ENDIF»
 							}
 						«ELSE»
                             «IF attr.isSoftLink()»
-                                «attr.getSoftLinkPropertyName()» = new «attr.getCollectionImplType()»<«((SoftLink)attr).getMultivaluedJavaSoftLinkType()»>();
+                                «attr.getSoftLinkPropertyName()» = new «attr.getCollectionImplType()»<>();
                             «ELSE»
-                                «attr.name» = new «attr.getCollectionImplType()»<«attr.type.fqn()»>();
+                                «attr.name» = new «attr.getCollectionImplType()»<>();
                             «ENDIF»
 						«ENDIF»
 					«ENDIF»

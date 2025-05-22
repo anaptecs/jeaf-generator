@@ -68,8 +68,8 @@ public class ParentClass implements ServiceObject {
    * object creation builder should be used instead.
    */
   protected ParentClass( ) {
-    ibans = new HashSet<IBAN>();
-    legacyBankAccounts = new ArrayList<BankAccount>();
+    ibans = new HashSet<>();
+    legacyBankAccounts = new ArrayList<>();
   }
 
   /**
@@ -86,14 +86,14 @@ public class ParentClass implements ServiceObject {
       ibans = pBuilder.ibans;
     }
     else {
-      ibans = new HashSet<IBAN>();
+      ibans = new HashSet<>();
     }
     theBankAccount = pBuilder.theBankAccount;
     if (pBuilder.legacyBankAccounts != null) {
       legacyBankAccounts = pBuilder.legacyBankAccounts;
     }
     else {
-      legacyBankAccounts = new ArrayList<BankAccount>();
+      legacyBankAccounts = new ArrayList<>();
     }
   }
 

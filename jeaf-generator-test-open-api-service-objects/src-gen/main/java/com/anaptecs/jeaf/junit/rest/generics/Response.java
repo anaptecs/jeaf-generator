@@ -36,7 +36,7 @@ public class Response<T> implements ServiceObject {
    * object creation builder should be used instead.
    */
   protected Response( ) {
-    messages = new ArrayList<Message>();
+    messages = new ArrayList<>();
   }
 
   /**
@@ -52,7 +52,7 @@ public class Response<T> implements ServiceObject {
       messages = pBuilder.messages;
     }
     else {
-      messages = new ArrayList<Message>();
+      messages = new ArrayList<>();
     }
     data = pBuilder.data;
   }

@@ -74,9 +74,9 @@ public class ImmutableAssociationPOJO {
    */
   protected ImmutableAssociationPOJO( ) {
     yetAnotherAttribute = false;
-    readonlyAssociation = new TreeSet<ImmutablePOJO>();
+    readonlyAssociation = new TreeSet<>();
     immutableChildPOJO = null;
-    deprecatedRefs = new HashSet<ImmutableChildPOJO>();
+    deprecatedRefs = new HashSet<>();
   }
 
   /**
@@ -93,14 +93,14 @@ public class ImmutableAssociationPOJO {
       readonlyAssociation = pBuilder.readonlyAssociation;
     }
     else {
-      readonlyAssociation = new TreeSet<ImmutablePOJO>();
+      readonlyAssociation = new TreeSet<>();
     }
     immutableChildPOJO = pBuilder.immutableChildPOJO;
     if (pBuilder.deprecatedRefs != null) {
       deprecatedRefs = pBuilder.deprecatedRefs;
     }
     else {
-      deprecatedRefs = new HashSet<ImmutableChildPOJO>();
+      deprecatedRefs = new HashSet<>();
     }
     deprecatedRef = pBuilder.deprecatedRef;
   }

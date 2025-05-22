@@ -97,7 +97,7 @@ public abstract class ComplexBookingIDBase extends Object implements ServiceObje
    * object creation builder should be used instead.
    */
   protected ComplexBookingIDBase( ) {
-    bookingIDs = new ArrayList<BookingID>();
+    bookingIDs = new ArrayList<>();
   }
 
   /**
@@ -119,7 +119,7 @@ public abstract class ComplexBookingIDBase extends Object implements ServiceObje
       bookingIDs = pBuilder.bookingIDs;
     }
     else {
-      bookingIDs = new ArrayList<BookingID>();
+      bookingIDs = new ArrayList<>();
     }
     // "com.anaptecs.jeaf.junit.openapi.base.BookingID"
     bookingIDsXYZ = pBuilder.bookingIDsXYZ;

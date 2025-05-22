@@ -54,7 +54,7 @@ public class WeirdParent implements ServiceObject {
    * object creation builder should be used instead.
    */
   protected WeirdParent( ) {
-    complexBookings = new HashSet<ComplexBookingID>();
+    complexBookings = new HashSet<>();
   }
 
   /**
@@ -72,7 +72,7 @@ public class WeirdParent implements ServiceObject {
       complexBookings = pBuilder.complexBookings;
     }
     else {
-      complexBookings = new HashSet<ComplexBookingID>();
+      complexBookings = new HashSet<>();
     }
   }
 

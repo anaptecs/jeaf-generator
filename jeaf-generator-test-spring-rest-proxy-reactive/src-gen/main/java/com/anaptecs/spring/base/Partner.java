@@ -24,7 +24,7 @@ public class Partner {
    * object creation builder should be used instead.
    */
   protected Partner( ) {
-    postalAddresses = new ArrayList<PostalAddress>();
+    postalAddresses = new ArrayList<>();
   }
 
   /**
@@ -38,7 +38,7 @@ public class Partner {
       postalAddresses = pBuilder.postalAddresses;
     }
     else {
-      postalAddresses = new ArrayList<PostalAddress>();
+      postalAddresses = new ArrayList<>();
     }
   }
 

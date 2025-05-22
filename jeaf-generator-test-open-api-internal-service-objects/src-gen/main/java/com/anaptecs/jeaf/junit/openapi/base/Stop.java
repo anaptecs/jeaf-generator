@@ -64,7 +64,7 @@ public class Stop implements ServiceObject {
    * object creation builder should be used instead.
    */
   protected Stop( ) {
-    links = new ArrayList<LinkObject>();
+    links = new ArrayList<>();
   }
 
   /**
@@ -81,7 +81,7 @@ public class Stop implements ServiceObject {
       links = pBuilder.links;
     }
     else {
-      links = new ArrayList<LinkObject>();
+      links = new ArrayList<>();
     }
     index = pBuilder.index;
     theSoftLink = pBuilder.theSoftLink;
