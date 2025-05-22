@@ -397,16 +397,16 @@ components:
         Valid Values:
         - COUNTER: counter
             <br><br>
-            Alternate Name: BEDIENT (Properties: `code = "CNT"`)
+            Alternate Name: BEDIENT
         - CALL_CENTER
         - MOBILE
         - TVM
         - WEB: 
             <br><br>
-            Breaking Change with 1.47.11: Added new literal (Properties: `code = "WEB"`)
+            Breaking Change with 1.47.11: Added new literal
         - @Deprecated LEGACY_POS: 
             <br><br>
-            Deprecated: I'm `DEPRECATED`. (since: , removed with: ) (Properties: `code = "PRISMA"`)
+            Deprecated: I'm `DEPRECATED`. (since: , removed with: )
       type: string
       enum:
         - COUNTER

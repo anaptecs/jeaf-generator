@@ -33,7 +33,7 @@
         Valid Values:
         «ENDIF-»
         «FOREACH this.getPulicLiterals() AS literal-»
-        - «IF literal.isDeprecated() -»@Deprecated «ENDIF»«literal.getLiteralNameForOpenAPI()»«IF literal.hasComment()»: «literal.getCommentForOpenAPIDescription("            ")» (Properties: «FOREACH literal.getOrderedSlots() AS slot SEPARATOR ", "»`«slot.definingFeature.name» = «slot.getSlotValue()»`«ENDFOREACH»)«ENDIF»
+        - «IF literal.isDeprecated() -»@Deprecated «ENDIF»«literal.getLiteralNameForOpenAPI()»«IF literal.hasComment()»: «literal.getCommentForOpenAPIDescription("            ")»«IF ownedAttribute.size > 0» (Properties: «FOREACH literal.getOrderedSlots() AS slot SEPARATOR ", "»`«slot.definingFeature.name» = «slot.getSlotValue()»`«ENDFOREACH»)«ENDIF»«ENDIF»
         «ENDFOREACH-»
         «IF this.hasDynamicLiterals -»
             «LET this.getDynamicLiteralDescriptions() AS descriptions -»
