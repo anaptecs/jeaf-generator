@@ -89,8 +89,8 @@ public abstract class BankBOBase extends PersistentObject {
    * objects not through JEAFs persistence service provider.
    */
   protected BankBOBase( ) {
-    employees = new HashSet<EmployeeBO>();
-    accounts = new HashSet<AccountBO>();
+    employees = new HashSet<>();
+    accounts = new HashSet<>();
   }
 
   /**

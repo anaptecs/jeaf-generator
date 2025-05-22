@@ -67,7 +67,7 @@ public abstract class BookingBOBase extends PersistentObject {
    * objects not through JEAFs persistence service provider.
    */
   protected BookingBOBase( ) {
-    remitters = new HashSet<MyPersonBO>();
+    remitters = new HashSet<>();
   }
 
   /**

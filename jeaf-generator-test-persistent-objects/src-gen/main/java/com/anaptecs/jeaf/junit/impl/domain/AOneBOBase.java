@@ -53,7 +53,7 @@ public abstract class AOneBOBase extends PersistentObject {
    * objects not through JEAFs persistence service provider.
    */
   protected AOneBOBase( ) {
-    cManys = new HashSet<CManyBO>();
+    cManys = new HashSet<>();
   }
 
   /**

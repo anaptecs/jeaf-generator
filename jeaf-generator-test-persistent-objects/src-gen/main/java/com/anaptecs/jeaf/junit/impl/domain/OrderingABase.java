@@ -37,9 +37,9 @@ public abstract class OrderingABase extends PersistentObject {
    * objects not through JEAFs persistence service provider.
    */
   protected OrderingABase( ) {
-    orderedUnique = new TreeSet<OrderingB>();
-    orderedNotUnique = new ArrayList<OrderingB>();
-    notOrderedNotUnique = new ArrayList<OrderingB>();
+    orderedUnique = new TreeSet<>();
+    orderedNotUnique = new ArrayList<>();
+    notOrderedNotUnique = new ArrayList<>();
   }
 
   /**

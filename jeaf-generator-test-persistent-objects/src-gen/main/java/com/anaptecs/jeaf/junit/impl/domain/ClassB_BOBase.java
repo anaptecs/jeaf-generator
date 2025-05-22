@@ -46,7 +46,7 @@ public abstract class ClassB_BOBase extends PersistentObject {
    * objects not through JEAFs persistence service provider.
    */
   protected ClassB_BOBase( ) {
-    classAs = new HashSet<ClassA_BO>();
+    classAs = new HashSet<>();
   }
 
   /**
