@@ -56,7 +56,7 @@ public class BidirectA implements Serializable {
    * object creation builder should be used instead.
    */
   protected BidirectA( ) {
-    transientBs = new HashSet<BidirectB>();
+    transientBs = new HashSet<>();
     // Bidirectional back reference is not yet set up correctly
     parentBackReferenceInitialized = false;
   }
@@ -70,7 +70,7 @@ public class BidirectA implements Serializable {
     // Ensure that builder is not null.
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
-    transientBs = new HashSet<BidirectB>();
+    transientBs = new HashSet<>();
     parent = pBuilder.parent;
     if (parent != null) {
       // As association is bidirectional we also have to set it in the other direction.

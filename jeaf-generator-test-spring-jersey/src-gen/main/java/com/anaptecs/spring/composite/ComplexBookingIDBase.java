@@ -67,7 +67,7 @@ public abstract class ComplexBookingIDBase {
    * object creation builder should be used instead.
    */
   protected ComplexBookingIDBase( ) {
-    bookingIDs = new ArrayList<BookingID>();
+    bookingIDs = new ArrayList<>();
   }
 
   /**
@@ -83,7 +83,7 @@ public abstract class ComplexBookingIDBase {
       bookingIDs = pBuilder.bookingIDs;
     }
     else {
-      bookingIDs = new ArrayList<BookingID>();
+      bookingIDs = new ArrayList<>();
     }
     complexBookingType = pBuilder.complexBookingType;
     anotherID = pBuilder.anotherID;

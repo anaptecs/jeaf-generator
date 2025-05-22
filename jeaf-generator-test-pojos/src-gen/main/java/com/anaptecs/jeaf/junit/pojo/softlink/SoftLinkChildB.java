@@ -66,7 +66,7 @@ public class SoftLinkChildB extends SoftLinkParent {
    * object creation builder should be used instead.
    */
   protected SoftLinkChildB( ) {
-    softLinkPartnerIDs = new HashSet<String>();
+    softLinkPartnerIDs = new HashSet<>();
   }
 
   /**
@@ -83,7 +83,7 @@ public class SoftLinkChildB extends SoftLinkParent {
       softLinkPartnerIDs = pBuilder.softLinkPartnerIDs;
     }
     else {
-      softLinkPartnerIDs = new HashSet<String>();
+      softLinkPartnerIDs = new HashSet<>();
     }
     oneLinkID = pBuilder.oneLinkID;
   }

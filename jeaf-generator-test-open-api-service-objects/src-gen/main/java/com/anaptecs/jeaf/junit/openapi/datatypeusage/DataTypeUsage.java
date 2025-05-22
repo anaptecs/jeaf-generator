@@ -40,7 +40,7 @@ public class DataTypeUsage implements ServiceObject {
    * object creation builder should be used instead.
    */
   protected DataTypeUsage( ) {
-    codes = new ArrayList<MyDataType>();
+    codes = new ArrayList<>();
   }
 
   /**
@@ -57,7 +57,7 @@ public class DataTypeUsage implements ServiceObject {
       codes = pBuilder.codes;
     }
     else {
-      codes = new ArrayList<MyDataType>();
+      codes = new ArrayList<>();
     }
   }
 

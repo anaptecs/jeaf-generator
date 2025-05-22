@@ -69,7 +69,7 @@ public class ClientClass extends Object implements ServiceObject {
    * object creation builder should be used instead.
    */
   protected ClientClass( ) {
-    manyMasters = new ArrayList<MasterClass>();
+    manyMasters = new ArrayList<>();
   }
 
   /**
@@ -84,7 +84,7 @@ public class ClientClass extends Object implements ServiceObject {
     name = pBuilder.name;
     // "String"
     nameXYZ = pBuilder.nameXYZ;
-    manyMasters = new ArrayList<MasterClass>();
+    manyMasters = new ArrayList<>();
   }
 
   /**

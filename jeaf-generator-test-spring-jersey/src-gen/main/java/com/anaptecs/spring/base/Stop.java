@@ -46,7 +46,7 @@ public class Stop {
    * object creation builder should be used instead.
    */
   protected Stop( ) {
-    links = new ArrayList<LinkObject>();
+    links = new ArrayList<>();
   }
 
   /**
@@ -61,7 +61,7 @@ public class Stop {
       links = pBuilder.links;
     }
     else {
-      links = new ArrayList<LinkObject>();
+      links = new ArrayList<>();
     }
   }
 

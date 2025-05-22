@@ -55,7 +55,7 @@ public class ChildB extends ParentClass {
    * object creation builder should be used instead.
    */
   protected ChildB( ) {
-    composition = new HashSet<ParentClass>();
+    composition = new HashSet<>();
   }
 
   /**
@@ -72,7 +72,7 @@ public class ChildB extends ParentClass {
       composition = pBuilder.composition;
     }
     else {
-      composition = new HashSet<ParentClass>();
+      composition = new HashSet<>();
     }
   }
 

@@ -112,9 +112,9 @@ public class POI extends Stop {
    * object creation builder should be used instead.
    */
   protected POI( ) {
-    evenMoreLinks = new HashSet<SoftLink>();
-    stops = new HashSet<UICStop>();
-    bookingCodes = new HashSet<BookingCode>();
+    evenMoreLinks = new HashSet<>();
+    stops = new HashSet<>();
+    bookingCodes = new HashSet<>();
   }
 
   /**
@@ -136,7 +136,7 @@ public class POI extends Stop {
       evenMoreLinks = pBuilder.evenMoreLinks;
     }
     else {
-      evenMoreLinks = new HashSet<SoftLink>();
+      evenMoreLinks = new HashSet<>();
     }
     // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
     evenMoreLinksXYZ = pBuilder.evenMoreLinksXYZ;
@@ -144,7 +144,7 @@ public class POI extends Stop {
       stops = pBuilder.stops;
     }
     else {
-      stops = new HashSet<UICStop>();
+      stops = new HashSet<>();
     }
     // "com.anaptecs.jeaf.junit.openapi.base.UICStop"
     stopsXYZ = pBuilder.stopsXYZ;
@@ -152,7 +152,7 @@ public class POI extends Stop {
       bookingCodes = pBuilder.bookingCodes;
     }
     else {
-      bookingCodes = new HashSet<BookingCode>();
+      bookingCodes = new HashSet<>();
     }
     // "com.anaptecs.jeaf.junit.openapi.base.BookingCode"
     bookingCodesXYZ = pBuilder.bookingCodesXYZ;

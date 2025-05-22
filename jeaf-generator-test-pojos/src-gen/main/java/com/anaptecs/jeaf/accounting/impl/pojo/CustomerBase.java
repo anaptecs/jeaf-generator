@@ -64,7 +64,7 @@ public abstract class CustomerBase extends Partner {
    * object creation builder should be used instead.
    */
   protected CustomerBase( ) {
-    accounts = new HashSet<Account>();
+    accounts = new HashSet<>();
   }
 
   /**
@@ -87,7 +87,7 @@ public abstract class CustomerBase extends Partner {
       }
     }
     else {
-      accounts = new HashSet<Account>();
+      accounts = new HashSet<>();
     }
   }
 

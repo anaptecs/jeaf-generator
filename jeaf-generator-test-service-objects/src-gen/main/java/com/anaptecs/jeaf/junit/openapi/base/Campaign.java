@@ -76,8 +76,8 @@ public class Campaign implements ServiceObject {
    * object creation builder should be used instead.
    */
   protected Campaign( ) {
-    moreLinkLinks = new HashSet<Long>();
-    discountOfferLinks = new ArrayList<String>();
+    moreLinkLinks = new HashSet<>();
+    discountOfferLinks = new ArrayList<>();
   }
 
   /**
@@ -94,13 +94,13 @@ public class Campaign implements ServiceObject {
       moreLinkLinks = pBuilder.moreLinkLinks;
     }
     else {
-      moreLinkLinks = new HashSet<Long>();
+      moreLinkLinks = new HashSet<>();
     }
     if (pBuilder.discountOfferLinks != null) {
       discountOfferLinks = pBuilder.discountOfferLinks;
     }
     else {
-      discountOfferLinks = new ArrayList<String>();
+      discountOfferLinks = new ArrayList<>();
     }
   }
 

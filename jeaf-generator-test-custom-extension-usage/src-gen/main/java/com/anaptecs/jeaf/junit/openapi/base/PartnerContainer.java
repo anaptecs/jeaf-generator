@@ -44,7 +44,7 @@ public class PartnerContainer extends Object implements ServiceObject {
    * object creation builder should be used instead.
    */
   protected PartnerContainer( ) {
-    partners = new ArrayList<Partner>();
+    partners = new ArrayList<>();
   }
 
   /**
@@ -60,7 +60,7 @@ public class PartnerContainer extends Object implements ServiceObject {
       partners = pBuilder.partners;
     }
     else {
-      partners = new ArrayList<Partner>();
+      partners = new ArrayList<>();
     }
     // "com.anaptecs.jeaf.junit.openapi.base.Partner"
     partnersXYZ = pBuilder.partnersXYZ;

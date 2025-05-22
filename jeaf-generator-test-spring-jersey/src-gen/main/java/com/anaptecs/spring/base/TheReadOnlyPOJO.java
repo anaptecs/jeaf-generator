@@ -53,7 +53,7 @@ public class TheReadOnlyPOJO {
     dataUnit = null;
     name = null;
     ints = null;
-    entities = new ArrayList<Entity>();
+    entities = new ArrayList<>();
   }
 
   /**
@@ -70,7 +70,7 @@ public class TheReadOnlyPOJO {
       entities = pBuilder.entities;
     }
     else {
-      entities = new ArrayList<Entity>();
+      entities = new ArrayList<>();
     }
   }
 

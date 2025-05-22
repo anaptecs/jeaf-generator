@@ -46,7 +46,7 @@ public abstract class NReleationBOBase extends PersistentObject {
    * objects not through JEAFs persistence service provider.
    */
   protected NReleationBOBase( ) {
-    ms = new HashSet<MReleationBO>();
+    ms = new HashSet<>();
   }
 
   /**

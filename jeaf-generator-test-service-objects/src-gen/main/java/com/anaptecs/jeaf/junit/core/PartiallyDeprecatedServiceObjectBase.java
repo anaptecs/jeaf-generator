@@ -73,7 +73,7 @@ public abstract class PartiallyDeprecatedServiceObjectBase implements ServiceObj
    * object creation builder should be used instead.
    */
   protected PartiallyDeprecatedServiceObjectBase( ) {
-    deprecatedRefs = new HashSet<ValidationTestObject>();
+    deprecatedRefs = new HashSet<>();
     readonlyDefault = 4711;
   }
 
@@ -93,7 +93,7 @@ public abstract class PartiallyDeprecatedServiceObjectBase implements ServiceObj
       deprecatedRefs = pBuilder.deprecatedRefs;
     }
     else {
-      deprecatedRefs = new HashSet<ValidationTestObject>();
+      deprecatedRefs = new HashSet<>();
     }
     readonlyDefault = pBuilder.readonlyDefault;
   }

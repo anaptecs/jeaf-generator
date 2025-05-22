@@ -89,7 +89,7 @@ public class Stop extends Object implements ServiceObject {
    * object creation builder should be used instead.
    */
   protected Stop( ) {
-    links = new ArrayList<LinkObject>();
+    links = new ArrayList<>();
   }
 
   /**
@@ -108,7 +108,7 @@ public class Stop extends Object implements ServiceObject {
       links = pBuilder.links;
     }
     else {
-      links = new ArrayList<LinkObject>();
+      links = new ArrayList<>();
     }
     // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
     linksXYZ = pBuilder.linksXYZ;

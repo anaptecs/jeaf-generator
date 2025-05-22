@@ -40,7 +40,7 @@ public class PartnerContainer implements Serializable {
    * object creation builder should be used instead.
    */
   protected PartnerContainer( ) {
-    partners = new ArrayList<Partner>();
+    partners = new ArrayList<>();
   }
 
   /**
@@ -56,7 +56,7 @@ public class PartnerContainer implements Serializable {
       partners = pBuilder.partners;
     }
     else {
-      partners = new ArrayList<Partner>();
+      partners = new ArrayList<>();
     }
   }
 

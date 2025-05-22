@@ -94,8 +94,8 @@ public class CodeTypeUsageTest extends Object implements ServiceObject {
    * object creation builder should be used instead.
    */
   protected CodeTypeUsageTest( ) {
-    booleanCodeAssociation = new HashSet<BooleanCodeType>();
-    shortCodeTypeAssociation = new HashSet<ShortCodeType>();
+    booleanCodeAssociation = new HashSet<>();
+    shortCodeTypeAssociation = new HashSet<>();
   }
 
   /**
@@ -114,7 +114,7 @@ public class CodeTypeUsageTest extends Object implements ServiceObject {
       booleanCodeAssociation = pBuilder.booleanCodeAssociation;
     }
     else {
-      booleanCodeAssociation = new HashSet<BooleanCodeType>();
+      booleanCodeAssociation = new HashSet<>();
     }
     // "com.anaptecs.jeaf.junit.openapi.base.BooleanCodeType"
     booleanCodeAssociationXYZ = pBuilder.booleanCodeAssociationXYZ;
@@ -122,7 +122,7 @@ public class CodeTypeUsageTest extends Object implements ServiceObject {
       shortCodeTypeAssociation = pBuilder.shortCodeTypeAssociation;
     }
     else {
-      shortCodeTypeAssociation = new HashSet<ShortCodeType>();
+      shortCodeTypeAssociation = new HashSet<>();
     }
     // "com.anaptecs.jeaf.junit.openapi.base.ShortCodeType"
     shortCodeTypeAssociationXYZ = pBuilder.shortCodeTypeAssociationXYZ;

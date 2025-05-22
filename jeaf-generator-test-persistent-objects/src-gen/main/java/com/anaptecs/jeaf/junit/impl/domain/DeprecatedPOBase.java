@@ -60,7 +60,7 @@ public abstract class DeprecatedPOBase extends PersistentObject {
    * objects not through JEAFs persistence service provider.
    */
   protected DeprecatedPOBase( ) {
-    baseClasses = new HashSet<BaseClassBO>();
+    baseClasses = new HashSet<>();
   }
 
   /**

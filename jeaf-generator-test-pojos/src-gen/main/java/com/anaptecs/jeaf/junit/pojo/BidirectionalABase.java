@@ -63,7 +63,7 @@ public abstract class BidirectionalABase {
   protected BidirectionalABase( ) {
     // Bidirectional back reference is not yet set up correctly
     childBackReferenceInitialized = false;
-    transientBs = new HashSet<BidirectionalB>();
+    transientBs = new HashSet<>();
   }
 
   /**
@@ -82,7 +82,7 @@ public abstract class BidirectionalABase {
     }
     // Bidirectional back reference is set up correctly as a builder is used.
     childBackReferenceInitialized = true;
-    transientBs = new HashSet<BidirectionalB>();
+    transientBs = new HashSet<>();
   }
 
   /**

@@ -111,13 +111,13 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
    */
   protected ProductBase( ) {
     objectID = null;
-    resellers = new HashSet<Reseller>();
+    resellers = new HashSet<>();
     // Bidirectional back reference is not yet set up correctly
     resellersBackReferenceInitialized = false;
     productID = null;
-    supportedCurrencies = new HashSet<CurrencyCode>();
-    productCodes = new HashSet<ProductCode>();
-    sortiments = new HashSet<Sortiment>();
+    supportedCurrencies = new HashSet<>();
+    productCodes = new HashSet<>();
+    sortiments = new HashSet<>();
     uri = "https://products.anaptecs.de/123456789";
   }
 
@@ -146,7 +146,7 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
       }
     }
     else {
-      resellers = new HashSet<Reseller>();
+      resellers = new HashSet<>();
     }
     // Bidirectional back reference is set up correctly as a builder is used.
     resellersBackReferenceInitialized = true;
@@ -158,16 +158,16 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
       supportedCurrencies = pBuilder.supportedCurrencies;
     }
     else {
-      supportedCurrencies = new HashSet<CurrencyCode>();
+      supportedCurrencies = new HashSet<>();
     }
     if (pBuilder.productCodes != null) {
       productCodes = pBuilder.productCodes;
     }
     else {
-      productCodes = new HashSet<ProductCode>();
+      productCodes = new HashSet<>();
     }
     description = pBuilder.description;
-    sortiments = new HashSet<Sortiment>();
+    sortiments = new HashSet<>();
     uri = pBuilder.uri;
   }
 

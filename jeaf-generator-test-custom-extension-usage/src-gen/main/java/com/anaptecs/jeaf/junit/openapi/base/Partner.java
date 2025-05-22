@@ -53,7 +53,7 @@ public class Partner extends Object implements ServiceObject, Identifiable<Servi
    */
   protected Partner( ) {
     objectID = null;
-    postalAddresses = new ArrayList<PostalAddress>();
+    postalAddresses = new ArrayList<>();
   }
 
   /**
@@ -77,7 +77,7 @@ public class Partner extends Object implements ServiceObject, Identifiable<Servi
       postalAddresses = pBuilder.postalAddresses;
     }
     else {
-      postalAddresses = new ArrayList<PostalAddress>();
+      postalAddresses = new ArrayList<>();
     }
     // "com.anaptecs.jeaf.junit.openapi.base.PostalAddress"
     postalAddressesXYZ = pBuilder.postalAddressesXYZ;

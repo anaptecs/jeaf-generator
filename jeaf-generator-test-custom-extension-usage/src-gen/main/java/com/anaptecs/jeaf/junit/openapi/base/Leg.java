@@ -68,7 +68,7 @@ public class Leg extends Object implements ServiceObject {
    * object creation builder should be used instead.
    */
   protected Leg( ) {
-    stopovers = new ArrayList<PlaceRef>();
+    stopovers = new ArrayList<>();
   }
 
   /**
@@ -90,7 +90,7 @@ public class Leg extends Object implements ServiceObject {
       stopovers = pBuilder.stopovers;
     }
     else {
-      stopovers = new ArrayList<PlaceRef>();
+      stopovers = new ArrayList<>();
     }
     // "com.anaptecs.jeaf.junit.openapi.base.PlaceRef"
     stopoversXYZ = pBuilder.stopoversXYZ;

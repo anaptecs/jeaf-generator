@@ -239,7 +239,7 @@
 					«IF attr.association == null»
 						«attr.name» = null;
 					«ELSE»
-						«attr.name» = new «attr.getCollectionImplType()»<«attr.type.fqn()»>();
+						«attr.name» = new «attr.getCollectionImplType()»<>();
 					«ENDIF»
 				«ELSE»
 					«attr.name» = null;
@@ -248,7 +248,7 @@
 		«ELSE»
 			«IF attr.isMultivalued() && attr.association != null»
 				«REM»Only in case of collections we have to initilize them.«ENDREM»
-				«attr.name» = new «attr.getCollectionImplType()»<«attr.type.fqn()»>();
+				«attr.name» = new «attr.getCollectionImplType()»<>();
 			«ELSE»
 				«IF attr.isRealInitValue() && attr.isStatic == false »
 					«attr.name» = «IF attr.isJEAFEnumerationProperty()»«attr.type.name».«ENDIF»«attr.initValue()»;

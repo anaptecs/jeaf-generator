@@ -63,7 +63,7 @@ public class TheReadOnlyPOJO implements Serializable {
     dataUnit = null;
     name = null;
     ints = null;
-    entities = new ArrayList<Entity>();
+    entities = new ArrayList<>();
   }
 
   /**
@@ -82,7 +82,7 @@ public class TheReadOnlyPOJO implements Serializable {
       entities = pBuilder.entities;
     }
     else {
-      entities = new ArrayList<Entity>();
+      entities = new ArrayList<>();
     }
   }
 

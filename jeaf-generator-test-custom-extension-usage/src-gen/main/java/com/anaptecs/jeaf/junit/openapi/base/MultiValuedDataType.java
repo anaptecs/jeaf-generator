@@ -110,9 +110,9 @@ public class MultiValuedDataType extends Object implements ServiceObject {
    * object creation builder should be used instead.
    */
   protected MultiValuedDataType( ) {
-    stringCodeHeader = new ArrayList<StringCode>();
-    longCodeQueryParam = new ArrayList<LongCode>();
-    literals = new ArrayList<BooleanLiteralsEnum>();
+    stringCodeHeader = new ArrayList<>();
+    longCodeQueryParam = new ArrayList<>();
+    literals = new ArrayList<>();
   }
 
   /**
@@ -128,7 +128,7 @@ public class MultiValuedDataType extends Object implements ServiceObject {
       stringCodeHeader = pBuilder.stringCodeHeader;
     }
     else {
-      stringCodeHeader = new ArrayList<StringCode>();
+      stringCodeHeader = new ArrayList<>();
     }
     // "com.anaptecs.jeaf.junit.openapi.base.StringCode"
     stringCodeHeaderXYZ = pBuilder.stringCodeHeaderXYZ;
@@ -136,7 +136,7 @@ public class MultiValuedDataType extends Object implements ServiceObject {
       longCodeQueryParam = pBuilder.longCodeQueryParam;
     }
     else {
-      longCodeQueryParam = new ArrayList<LongCode>();
+      longCodeQueryParam = new ArrayList<>();
     }
     // "com.anaptecs.jeaf.junit.openapi.base.LongCode"
     longCodeQueryParamXYZ = pBuilder.longCodeQueryParamXYZ;
@@ -144,7 +144,7 @@ public class MultiValuedDataType extends Object implements ServiceObject {
       literals = pBuilder.literals;
     }
     else {
-      literals = new ArrayList<BooleanLiteralsEnum>();
+      literals = new ArrayList<>();
     }
     // "com.anaptecs.jeaf.junit.openapi.base.BooleanLiteralsEnum"
     literalsXYZ = pBuilder.literalsXYZ;

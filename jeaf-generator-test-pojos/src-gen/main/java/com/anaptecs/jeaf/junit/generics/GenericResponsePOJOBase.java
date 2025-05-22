@@ -53,8 +53,8 @@ public abstract class GenericResponsePOJOBase<T> {
    * object creation builder should be used instead.
    */
   protected GenericResponsePOJOBase( ) {
-    errors = new ArrayList<Message>();
-    warnings = new ArrayList<Message>();
+    errors = new ArrayList<>();
+    warnings = new ArrayList<>();
   }
 
   /**
@@ -70,13 +70,13 @@ public abstract class GenericResponsePOJOBase<T> {
       errors = pBuilder.errors;
     }
     else {
-      errors = new ArrayList<Message>();
+      errors = new ArrayList<>();
     }
     if (pBuilder.warnings != null) {
       warnings = pBuilder.warnings;
     }
     else {
-      warnings = new ArrayList<Message>();
+      warnings = new ArrayList<>();
     }
     value = pBuilder.value;
   }

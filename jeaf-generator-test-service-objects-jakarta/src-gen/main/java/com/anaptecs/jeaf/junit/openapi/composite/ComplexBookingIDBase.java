@@ -70,7 +70,7 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
    * object creation builder should be used instead.
    */
   protected ComplexBookingIDBase( ) {
-    bookingIDs = new ArrayList<BookingID>();
+    bookingIDs = new ArrayList<>();
   }
 
   /**
@@ -88,7 +88,7 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
       bookingIDs = pBuilder.bookingIDs;
     }
     else {
-      bookingIDs = new ArrayList<BookingID>();
+      bookingIDs = new ArrayList<>();
     }
     complexBookingType = pBuilder.complexBookingType;
     anotherID = pBuilder.anotherID;

@@ -83,9 +83,9 @@ public class POI extends Stop {
    * object creation builder should be used instead.
    */
   protected POI( ) {
-    evenMoreLinks = new HashSet<SoftLink>();
-    stops = new HashSet<UICStop>();
-    bookingCodes = new HashSet<BookingCode>();
+    evenMoreLinks = new HashSet<>();
+    stops = new HashSet<>();
+    bookingCodes = new HashSet<>();
   }
 
   /**
@@ -103,19 +103,19 @@ public class POI extends Stop {
       evenMoreLinks = pBuilder.evenMoreLinks;
     }
     else {
-      evenMoreLinks = new HashSet<SoftLink>();
+      evenMoreLinks = new HashSet<>();
     }
     if (pBuilder.stops != null) {
       stops = pBuilder.stops;
     }
     else {
-      stops = new HashSet<UICStop>();
+      stops = new HashSet<>();
     }
     if (pBuilder.bookingCodes != null) {
       bookingCodes = pBuilder.bookingCodes;
     }
     else {
-      bookingCodes = new HashSet<BookingCode>();
+      bookingCodes = new HashSet<>();
     }
   }
 

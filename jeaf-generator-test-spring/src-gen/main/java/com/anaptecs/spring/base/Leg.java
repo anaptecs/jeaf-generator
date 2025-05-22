@@ -54,7 +54,7 @@ public class Leg {
    * object creation builder should be used instead.
    */
   protected Leg( ) {
-    stopovers = new ArrayList<PlaceRef>();
+    stopovers = new ArrayList<>();
   }
 
   /**
@@ -70,7 +70,7 @@ public class Leg {
       stopovers = pBuilder.stopovers;
     }
     else {
-      stopovers = new ArrayList<PlaceRef>();
+      stopovers = new ArrayList<>();
     }
   }
 

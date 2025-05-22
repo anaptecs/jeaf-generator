@@ -60,8 +60,8 @@ public abstract class AndOneMorePOJOBase {
    * object creation builder should be used instead.
    */
   protected AndOneMorePOJOBase( ) {
-    genericResponses = new HashSet<GenericResponsePOJO<MyBusinessObject>>();
-    many = new HashSet<MultiTemplateClass<Message, TemplateEnumTest>>();
+    genericResponses = new HashSet<>();
+    many = new HashSet<>();
   }
 
   /**
@@ -78,14 +78,14 @@ public abstract class AndOneMorePOJOBase {
       genericResponses = pBuilder.genericResponses;
     }
     else {
-      genericResponses = new HashSet<GenericResponsePOJO<MyBusinessObject>>();
+      genericResponses = new HashSet<>();
     }
     multiTemplateClassImpl = pBuilder.multiTemplateClassImpl;
     if (pBuilder.many != null) {
       many = pBuilder.many;
     }
     else {
-      many = new HashSet<MultiTemplateClass<Message, TemplateEnumTest>>();
+      many = new HashSet<>();
     }
   }
 

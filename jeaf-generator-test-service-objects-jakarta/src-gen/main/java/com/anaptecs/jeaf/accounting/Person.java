@@ -97,7 +97,7 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
    */
   protected Person( ) {
     objectID = null;
-    accounts = new HashSet<Account>();
+    accounts = new HashSet<>();
   }
 
   /**
@@ -120,7 +120,7 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
     name = pBuilder.name;
     firstName = pBuilder.firstName;
     dateOfBirth = pBuilder.dateOfBirth;
-    accounts = new HashSet<Account>();
+    accounts = new HashSet<>();
     customer = pBuilder.customer;
     if (customer != null) {
       // As association is bidirectional we also have to set it in the other direction.

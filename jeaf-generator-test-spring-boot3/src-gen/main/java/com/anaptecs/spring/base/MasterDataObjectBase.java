@@ -45,7 +45,7 @@ public abstract class MasterDataObjectBase {
    * object creation builder should be used instead.
    */
   protected MasterDataObjectBase( ) {
-    dataUnits = new ArrayList<DataUnit>();
+    dataUnits = new ArrayList<>();
     entity = null;
     objectID = null;
     internalProperty = null;
@@ -62,7 +62,7 @@ public abstract class MasterDataObjectBase {
       dataUnits = pBuilder.dataUnits;
     }
     else {
-      dataUnits = new ArrayList<DataUnit>();
+      dataUnits = new ArrayList<>();
     }
     entity = pBuilder.entity;
     objectID = pBuilder.objectID;

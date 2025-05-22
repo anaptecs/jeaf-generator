@@ -141,10 +141,10 @@ public class DataTypesQueryBean implements Serializable {
    * object creation builder should be used instead.
    */
   public DataTypesQueryBean( ) {
-    doubleCodes = new HashSet<DoubleCode>();
-    bookingIDs = new HashSet<BookingID>();
-    timestamps = new ArrayList<LocalDateTime>();
-    times = new HashSet<OffsetTime>();
+    doubleCodes = new HashSet<>();
+    bookingIDs = new HashSet<>();
+    timestamps = new ArrayList<>();
+    times = new HashSet<>();
   }
 
   /**
@@ -162,13 +162,13 @@ public class DataTypesQueryBean implements Serializable {
       doubleCodes = pBuilder.doubleCodes;
     }
     else {
-      doubleCodes = new HashSet<DoubleCode>();
+      doubleCodes = new HashSet<>();
     }
     if (pBuilder.bookingIDs != null) {
       bookingIDs = pBuilder.bookingIDs;
     }
     else {
-      bookingIDs = new HashSet<BookingID>();
+      bookingIDs = new HashSet<>();
     }
     bookingIDsArray = pBuilder.bookingIDsArray;
     offsetDateTime = pBuilder.offsetDateTime;
@@ -179,13 +179,13 @@ public class DataTypesQueryBean implements Serializable {
       timestamps = pBuilder.timestamps;
     }
     else {
-      timestamps = new ArrayList<LocalDateTime>();
+      timestamps = new ArrayList<>();
     }
     if (pBuilder.times != null) {
       times = pBuilder.times;
     }
     else {
-      times = new HashSet<OffsetTime>();
+      times = new HashSet<>();
     }
     startTimestamps = pBuilder.startTimestamps;
   }

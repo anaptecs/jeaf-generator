@@ -64,7 +64,7 @@ public abstract class ComplexBookingIDBase {
   protected ComplexBookingIDBase( ) {
     internalID = 0;
     referenceID = null;
-    bookingIDs = new ArrayList<BookingID>();
+    bookingIDs = new ArrayList<>();
     complexBookingType = null;
     anotherID = null;
     strings = null;
@@ -83,7 +83,7 @@ public abstract class ComplexBookingIDBase {
       bookingIDs = pBuilder.bookingIDs;
     }
     else {
-      bookingIDs = new ArrayList<BookingID>();
+      bookingIDs = new ArrayList<>();
     }
     complexBookingType = pBuilder.complexBookingType;
     anotherID = pBuilder.anotherID;

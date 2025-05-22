@@ -57,7 +57,7 @@ public class MultivaluedQueryParamsBean {
     intArray = null;
     strings = null;
     integers = null;
-    timeUnits = new HashSet<TimeUnit>();
+    timeUnits = new HashSet<>();
     timeUnitArray = null;
   }
 
@@ -75,7 +75,7 @@ public class MultivaluedQueryParamsBean {
       timeUnits = pBuilder.timeUnits;
     }
     else {
-      timeUnits = new HashSet<TimeUnit>();
+      timeUnits = new HashSet<>();
     }
     timeUnitArray = pBuilder.timeUnitArray;
   }

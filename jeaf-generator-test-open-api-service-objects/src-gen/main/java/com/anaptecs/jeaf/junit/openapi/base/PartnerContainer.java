@@ -34,7 +34,7 @@ public class PartnerContainer implements ServiceObject {
    * object creation builder should be used instead.
    */
   protected PartnerContainer( ) {
-    partners = new ArrayList<Partner>();
+    partners = new ArrayList<>();
   }
 
   /**
@@ -50,7 +50,7 @@ public class PartnerContainer implements ServiceObject {
       partners = pBuilder.partners;
     }
     else {
-      partners = new ArrayList<Partner>();
+      partners = new ArrayList<>();
     }
   }
 

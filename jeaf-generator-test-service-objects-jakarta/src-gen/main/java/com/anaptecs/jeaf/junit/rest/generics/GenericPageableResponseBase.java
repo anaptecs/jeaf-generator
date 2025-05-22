@@ -34,7 +34,7 @@ public abstract class GenericPageableResponseBase<T> extends AbstractResponse<T>
    * object creation builder should be used instead.
    */
   protected GenericPageableResponseBase( ) {
-    values = new ArrayList<T>();
+    values = new ArrayList<>();
   }
 
   /**
@@ -50,7 +50,7 @@ public abstract class GenericPageableResponseBase<T> extends AbstractResponse<T>
       values = pBuilder.values;
     }
     else {
-      values = new ArrayList<T>();
+      values = new ArrayList<>();
     }
   }
 

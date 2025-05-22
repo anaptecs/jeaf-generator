@@ -92,8 +92,8 @@ public class ParentClass extends Object implements ServiceObject {
    * object creation builder should be used instead.
    */
   protected ParentClass( ) {
-    ibans = new HashSet<IBAN>();
-    legacyBankAccounts = new ArrayList<BankAccount>();
+    ibans = new HashSet<>();
+    legacyBankAccounts = new ArrayList<>();
   }
 
   /**
@@ -112,7 +112,7 @@ public class ParentClass extends Object implements ServiceObject {
       ibans = pBuilder.ibans;
     }
     else {
-      ibans = new HashSet<IBAN>();
+      ibans = new HashSet<>();
     }
     // "com.anaptecs.jeaf.junit.openapi.base.IBAN"
     ibansXYZ = pBuilder.ibansXYZ;
@@ -123,7 +123,7 @@ public class ParentClass extends Object implements ServiceObject {
       legacyBankAccounts = pBuilder.legacyBankAccounts;
     }
     else {
-      legacyBankAccounts = new ArrayList<BankAccount>();
+      legacyBankAccounts = new ArrayList<>();
     }
     // "com.anaptecs.jeaf.junit.openapi.base.BankAccount"
     legacyBankAccountsXYZ = pBuilder.legacyBankAccountsXYZ;

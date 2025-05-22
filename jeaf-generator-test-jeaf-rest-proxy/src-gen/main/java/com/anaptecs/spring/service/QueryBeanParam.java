@@ -62,7 +62,7 @@ public class QueryBeanParam implements Serializable {
    */
   public QueryBeanParam( ) {
     maxResults = 47;
-    sortCriteria = new ArrayList<MySortCriteria>();
+    sortCriteria = new ArrayList<>();
   }
 
   /**
@@ -80,7 +80,7 @@ public class QueryBeanParam implements Serializable {
       sortCriteria = pBuilder.sortCriteria;
     }
     else {
-      sortCriteria = new ArrayList<MySortCriteria>();
+      sortCriteria = new ArrayList<>();
     }
   }
 

@@ -40,7 +40,7 @@ public class Booking {
   protected Booking( ) {
     bookingID = null;
     customerName = null;
-    inventories = new ArrayList<InventoryType>();
+    inventories = new ArrayList<>();
   }
 
   /**
@@ -56,7 +56,7 @@ public class Booking {
       inventories = pBuilder.inventories;
     }
     else {
-      inventories = new ArrayList<InventoryType>();
+      inventories = new ArrayList<>();
     }
   }
 

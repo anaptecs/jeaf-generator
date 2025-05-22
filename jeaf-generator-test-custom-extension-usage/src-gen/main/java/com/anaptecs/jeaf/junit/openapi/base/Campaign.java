@@ -95,8 +95,8 @@ public class Campaign extends Object implements ServiceObject {
    * object creation builder should be used instead.
    */
   protected Campaign( ) {
-    moreLinks = new HashSet<Long>();
-    discountOffers = new ArrayList<String>();
+    moreLinks = new HashSet<>();
+    discountOffers = new ArrayList<>();
   }
 
   /**
@@ -115,7 +115,7 @@ public class Campaign extends Object implements ServiceObject {
       moreLinks = pBuilder.moreLinks;
     }
     else {
-      moreLinks = new HashSet<Long>();
+      moreLinks = new HashSet<>();
     }
     // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
     moreLinksXYZ = pBuilder.moreLinksXYZ;
@@ -123,7 +123,7 @@ public class Campaign extends Object implements ServiceObject {
       discountOffers = pBuilder.discountOffers;
     }
     else {
-      discountOffers = new ArrayList<String>();
+      discountOffers = new ArrayList<>();
     }
     // "com.anaptecs.jeaf.junit.openapi.base.DiscountOffer"
     discountOffersXYZ = pBuilder.discountOffersXYZ;

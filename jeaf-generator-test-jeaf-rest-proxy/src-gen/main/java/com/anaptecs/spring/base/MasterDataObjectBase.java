@@ -66,7 +66,7 @@ public abstract class MasterDataObjectBase implements Serializable {
    * object creation builder should be used instead.
    */
   protected MasterDataObjectBase( ) {
-    dataUnits = new ArrayList<DataUnit>();
+    dataUnits = new ArrayList<>();
   }
 
   /**
@@ -82,7 +82,7 @@ public abstract class MasterDataObjectBase implements Serializable {
       dataUnits = pBuilder.dataUnits;
     }
     else {
-      dataUnits = new ArrayList<DataUnit>();
+      dataUnits = new ArrayList<>();
     }
     entity = pBuilder.entity;
     objectID = pBuilder.objectID;

@@ -97,10 +97,10 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
    */
   protected AccountBase( ) {
     objectID = null;
-    authorizedPersons = new HashSet<Person>();
+    authorizedPersons = new HashSet<>();
     // Bidirectional back reference is not yet set up correctly
     authorizedPersonsBackReferenceInitialized = false;
-    bookings = new HashSet<Booking>();
+    bookings = new HashSet<>();
     // Bidirectional back reference is not yet set up correctly
     bookingsBackReferenceInitialized = false;
   }
@@ -132,7 +132,7 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
       }
     }
     else {
-      authorizedPersons = new HashSet<Person>();
+      authorizedPersons = new HashSet<>();
     }
     // Bidirectional back reference is set up correctly as a builder is used.
     authorizedPersonsBackReferenceInitialized = true;
@@ -144,7 +144,7 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
       }
     }
     else {
-      bookings = new HashSet<Booking>();
+      bookings = new HashSet<>();
     }
     // Bidirectional back reference is set up correctly as a builder is used.
     bookingsBackReferenceInitialized = true;

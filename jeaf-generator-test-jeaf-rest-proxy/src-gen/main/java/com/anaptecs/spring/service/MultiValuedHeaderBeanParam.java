@@ -153,9 +153,9 @@ public class MultiValuedHeaderBeanParam implements Serializable {
    * object creation builder should be used instead.
    */
   public MultiValuedHeaderBeanParam( ) {
-    stringCodeList = new HashSet<StringCode>();
-    timestamps = new HashSet<LocalDateTime>();
-    timeUnits = new HashSet<TimeUnit>();
+    stringCodeList = new HashSet<>();
+    timestamps = new HashSet<>();
+    timeUnits = new HashSet<>();
   }
 
   /**
@@ -175,7 +175,7 @@ public class MultiValuedHeaderBeanParam implements Serializable {
       stringCodeList = pBuilder.stringCodeList;
     }
     else {
-      stringCodeList = new HashSet<StringCode>();
+      stringCodeList = new HashSet<>();
     }
     startDate = pBuilder.startDate;
     dates = pBuilder.dates;
@@ -183,7 +183,7 @@ public class MultiValuedHeaderBeanParam implements Serializable {
       timestamps = pBuilder.timestamps;
     }
     else {
-      timestamps = new HashSet<LocalDateTime>();
+      timestamps = new HashSet<>();
     }
     calendars = pBuilder.calendars;
     utilDates = pBuilder.utilDates;
@@ -192,7 +192,7 @@ public class MultiValuedHeaderBeanParam implements Serializable {
       timeUnits = pBuilder.timeUnits;
     }
     else {
-      timeUnits = new HashSet<TimeUnit>();
+      timeUnits = new HashSet<>();
     }
     timeUnitArray = pBuilder.timeUnitArray;
     base64 = pBuilder.base64;

@@ -67,10 +67,10 @@ public abstract class ResellerBase {
    * object creation builder should be used instead.
    */
   protected ResellerBase( ) {
-    channels = new ArrayList<Channel>();
+    channels = new ArrayList<>();
     // Bidirectional back reference is not yet set up correctly
     channelsBackReferenceInitialized = false;
-    products = new HashSet<Product>();
+    products = new HashSet<>();
     name = null;
     language = null;
   }
@@ -90,11 +90,11 @@ public abstract class ResellerBase {
       }
     }
     else {
-      channels = new ArrayList<Channel>();
+      channels = new ArrayList<>();
     }
     // Bidirectional back reference is set up correctly as a builder is used.
     channelsBackReferenceInitialized = true;
-    products = new HashSet<Product>();
+    products = new HashSet<>();
     name = pBuilder.name;
     language = pBuilder.language;
   }

@@ -70,8 +70,8 @@ public class CodeTypeUsageTest {
    * object creation builder should be used instead.
    */
   protected CodeTypeUsageTest( ) {
-    booleanCodeAssociation = new HashSet<BooleanCodeType>();
-    shortCodeTypeAssociation = new HashSet<ShortCodeType>();
+    booleanCodeAssociation = new HashSet<>();
+    shortCodeTypeAssociation = new HashSet<>();
   }
 
   /**
@@ -86,13 +86,13 @@ public class CodeTypeUsageTest {
       booleanCodeAssociation = pBuilder.booleanCodeAssociation;
     }
     else {
-      booleanCodeAssociation = new HashSet<BooleanCodeType>();
+      booleanCodeAssociation = new HashSet<>();
     }
     if (pBuilder.shortCodeTypeAssociation != null) {
       shortCodeTypeAssociation = pBuilder.shortCodeTypeAssociation;
     }
     else {
-      shortCodeTypeAssociation = new HashSet<ShortCodeType>();
+      shortCodeTypeAssociation = new HashSet<>();
     }
     stringCode = pBuilder.stringCode;
     characterCode = pBuilder.characterCode;

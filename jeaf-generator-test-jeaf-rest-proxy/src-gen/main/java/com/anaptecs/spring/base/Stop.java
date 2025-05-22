@@ -56,7 +56,7 @@ public class Stop implements Serializable {
    * object creation builder should be used instead.
    */
   protected Stop( ) {
-    links = new ArrayList<LinkObject>();
+    links = new ArrayList<>();
   }
 
   /**
@@ -73,7 +73,7 @@ public class Stop implements Serializable {
       links = pBuilder.links;
     }
     else {
-      links = new ArrayList<LinkObject>();
+      links = new ArrayList<>();
     }
   }
 

@@ -77,7 +77,7 @@ public class Booking implements ServiceObject {
    * object creation builder should be used instead.
    */
   protected Booking( ) {
-    remitters = new HashSet<Person>();
+    remitters = new HashSet<>();
   }
 
   /**
@@ -101,7 +101,7 @@ public class Booking implements ServiceObject {
       remitters = pBuilder.remitters;
     }
     else {
-      remitters = new HashSet<Person>();
+      remitters = new HashSet<>();
     }
   }
 

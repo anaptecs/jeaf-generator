@@ -131,17 +131,17 @@ public class Product implements IProduct {
    * object creation builder should be used instead.
    */
   protected Product( ) {
-    resellers = new HashSet<Reseller>();
+    resellers = new HashSet<>();
     // Bidirectional back reference is not yet set up correctly
     resellersBackReferenceInitialized = false;
     name = null;
     image = null;
     link = null;
     productID = null;
-    supportedCurrencies = new HashSet<CurrencyCode>();
-    productCodes = new HashSet<ProductCode>();
+    supportedCurrencies = new HashSet<>();
+    productCodes = new HashSet<>();
     description = null;
-    sortiments = new HashSet<Sortiment>();
+    sortiments = new HashSet<>();
     uri = "https://products.anaptecs.de/123456789";
   }
 
@@ -160,7 +160,7 @@ public class Product implements IProduct {
       }
     }
     else {
-      resellers = new HashSet<Reseller>();
+      resellers = new HashSet<>();
     }
     // Bidirectional back reference is set up correctly as a builder is used.
     resellersBackReferenceInitialized = true;
@@ -172,16 +172,16 @@ public class Product implements IProduct {
       supportedCurrencies = pBuilder.supportedCurrencies;
     }
     else {
-      supportedCurrencies = new HashSet<CurrencyCode>();
+      supportedCurrencies = new HashSet<>();
     }
     if (pBuilder.productCodes != null) {
       productCodes = pBuilder.productCodes;
     }
     else {
-      productCodes = new HashSet<ProductCode>();
+      productCodes = new HashSet<>();
     }
     description = pBuilder.description;
-    sortiments = new HashSet<Sortiment>();
+    sortiments = new HashSet<>();
     uri = pBuilder.uri;
   }
 

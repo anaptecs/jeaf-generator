@@ -60,7 +60,7 @@ public abstract class AccountBase {
    * object creation builder should be used instead.
    */
   protected AccountBase( ) {
-    allBookings = new HashSet<Booking>();
+    allBookings = new HashSet<>();
   }
 
   /**
@@ -83,7 +83,7 @@ public abstract class AccountBase {
       allBookings = pBuilder.allBookings;
     }
     else {
-      allBookings = new HashSet<Booking>();
+      allBookings = new HashSet<>();
     }
   }
 

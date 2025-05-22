@@ -127,14 +127,14 @@ public class MultiValuedHeaderBeanParam {
     ints = null;
     doubles = null;
     codes = null;
-    stringCodeList = new HashSet<StringCode>();
+    stringCodeList = new HashSet<>();
     startDate = null;
     dates = null;
-    timestamps = new HashSet<LocalDateTime>();
+    timestamps = new HashSet<>();
     calendars = null;
     utilDates = null;
     sqlTimestamps = null;
-    timeUnits = new HashSet<TimeUnit>();
+    timeUnits = new HashSet<>();
     timeUnitArray = null;
     base64 = null;
   }
@@ -154,7 +154,7 @@ public class MultiValuedHeaderBeanParam {
       stringCodeList = pBuilder.stringCodeList;
     }
     else {
-      stringCodeList = new HashSet<StringCode>();
+      stringCodeList = new HashSet<>();
     }
     startDate = pBuilder.startDate;
     dates = pBuilder.dates;
@@ -162,7 +162,7 @@ public class MultiValuedHeaderBeanParam {
       timestamps = pBuilder.timestamps;
     }
     else {
-      timestamps = new HashSet<LocalDateTime>();
+      timestamps = new HashSet<>();
     }
     calendars = pBuilder.calendars;
     utilDates = pBuilder.utilDates;
@@ -171,7 +171,7 @@ public class MultiValuedHeaderBeanParam {
       timeUnits = pBuilder.timeUnits;
     }
     else {
-      timeUnits = new HashSet<TimeUnit>();
+      timeUnits = new HashSet<>();
     }
     timeUnitArray = pBuilder.timeUnitArray;
     base64 = pBuilder.base64;

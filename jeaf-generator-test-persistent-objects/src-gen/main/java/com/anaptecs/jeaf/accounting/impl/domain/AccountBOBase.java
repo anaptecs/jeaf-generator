@@ -80,8 +80,8 @@ public abstract class AccountBOBase extends PersistentObject {
    * objects not through JEAFs persistence service provider.
    */
   protected AccountBOBase( ) {
-    bookings = new HashSet<BookingBO>();
-    authorizedPersons = new HashSet<MyPersonBO>();
+    bookings = new HashSet<>();
+    authorizedPersons = new HashSet<>();
   }
 
   /**

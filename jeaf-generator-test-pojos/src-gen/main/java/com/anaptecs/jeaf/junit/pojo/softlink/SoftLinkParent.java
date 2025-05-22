@@ -71,7 +71,7 @@ public class SoftLinkParent {
    * object creation builder should be used instead.
    */
   protected SoftLinkParent( ) {
-    partnerIDs = new HashSet<SoftLinkID>();
+    partnerIDs = new HashSet<>();
     readonlyPartnerID = null;
   }
 
@@ -88,7 +88,7 @@ public class SoftLinkParent {
       partnerIDs = pBuilder.partnerIDs;
     }
     else {
-      partnerIDs = new HashSet<SoftLinkID>();
+      partnerIDs = new HashSet<>();
     }
     thePartnerID = pBuilder.thePartnerID;
     readonlyPartnerID = pBuilder.readonlyPartnerID;

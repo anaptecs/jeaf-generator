@@ -50,7 +50,7 @@ public class DiscountOffer extends Object implements ServiceObject {
    * object creation builder should be used instead.
    */
   protected DiscountOffer( ) {
-    campaigns = new HashSet<SoftLink>();
+    campaigns = new HashSet<>();
   }
 
   /**
@@ -66,7 +66,7 @@ public class DiscountOffer extends Object implements ServiceObject {
       campaigns = pBuilder.campaigns;
     }
     else {
-      campaigns = new HashSet<SoftLink>();
+      campaigns = new HashSet<>();
     }
     // "com.anaptecs.jeaf.junit.openapi.base.Campaign"
     campaignsXYZ = pBuilder.campaignsXYZ;
