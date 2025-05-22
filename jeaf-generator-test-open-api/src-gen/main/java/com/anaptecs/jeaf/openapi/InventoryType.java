@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * Valid Values: - SBB - SNCF - DB:      &lt;br&gt;&lt;br&gt;     Breaking Change with 3.x: New literal will occur 
+ * Valid Values: - SBB - SNCF - DB:      &lt;br&gt;&lt;br&gt;     Breaking Change with 3.x: New literal will occur (Properties: ) 
  */
 public enum InventoryType {
   SBB("SBB"),

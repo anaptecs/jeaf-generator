@@ -397,16 +397,16 @@ components:
         Valid Values:
         - COUNTER: counter
             <br><br>
-            Alternate Name: BEDIENT
+            Alternate Name: BEDIENT (Properties: `code = "CNT"`)
         - CALL_CENTER
         - MOBILE
         - TVM
         - WEB: 
             <br><br>
-            Breaking Change with 1.47.11: Added new literal
+            Breaking Change with 1.47.11: Added new literal (Properties: `code = "WEB"`)
         - @Deprecated LEGACY_POS: 
             <br><br>
-            Deprecated: I'm `DEPRECATED`. (since: , removed with: )
+            Deprecated: I'm `DEPRECATED`. (since: , removed with: ) (Properties: `code = "PRISMA"`)
       type: string
       enum:
         - COUNTER
@@ -849,7 +849,7 @@ components:
         - SNCF
         - DB: 
             <br><br>
-            Breaking Change with 3.x: New literal will occur
+            Breaking Change with 3.x: New literal will occur (Properties: )
       type: string
       enum:
         - SBB
@@ -1924,11 +1924,11 @@ components:
         Alternate Name: Zeiteinheit
         <br><br>
         Valid Values:
-        - MINUTE: Literal represents time unit "minutes".
+        - MINUTE: Literal represents time unit "minutes". (Properties: )
         - HOUR
         - DAY
         - WEEK: Literal represents time unit "weeks".
-            This is the comments second line ;-)
+            This is the comments second line ;-) (Properties: )
         - MONTH
         - YEAR
       type: string
