@@ -10,16 +10,9 @@ import javax.validation.Valid;
 @Valid
 public class ReadonlyDefaultPOJO extends ReadonlyDefaultPOJOBase {
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected ReadonlyDefaultPOJO( ) {
-  }
-
-  /**
    * Initialize object. Nothing special to do.
    */
-  protected ReadonlyDefaultPOJO( ReadonlyDefaultPOJO.BuilderBase pBuilder ) {
+  protected ReadonlyDefaultPOJO( ReadonlyDefaultPOJOBuilder<?, ?> pBuilder ) {
     super(pBuilder);
   }
 
@@ -28,27 +21,7 @@ public class ReadonlyDefaultPOJO extends ReadonlyDefaultPOJOBase {
    *
    * @return {@link Builder} New builder that can be used to create new ReadonlyDefaultPOJO objects.
    */
-  public static Builder builder( ) {
-    return new Builder();
-  }
-
-  /**
-   * Class implements builder to create a new instance of class ReadonlyDefaultPOJO. As the class has readonly
-   * attributes or associations instances can not be created directly. Instead this builder class has to be used.
-   */
-  public static class Builder extends ReadonlyDefaultPOJO.BuilderBase {
-    /**
-     * Use {@link ReadonlyDefaultPOJO#builder()} instead of protected constructor to create new builder.
-     */
-    protected Builder( ) {
-    }
-
-    /**
-     * Use {@link ReadonlyDefaultPOJO#builder(ReadonlyDefaultPOJO)} instead of protected constructor to create new
-     * builder.
-     */
-    protected Builder( ReadonlyDefaultPOJO pObject ) {
-      super(pObject);
-    }
+  public static ReadonlyDefaultPOJOBuilder<?, ?> builder( ) {
+    return new ReadonlyDefaultPOJOBuilderImpl();
   }
 }

@@ -29,7 +29,7 @@
 	«EXPAND java::Helper::GenerateSuppressWarningsAnnotation»
 	«EXPAND java::Validation::ValidationAnnotation»
 	«EXPAND java::Helper::GenerateDeprecationAnnotation -»
-	«EXPAND java::Jackson::JacksonClassAnnotations -»
+	«EXPAND java::Jackson::JacksonClassAnnotations("") -»
 	public «IF isAbstract»abstract«ENDIF» class «name»«this.getTemplateParams()» «EXPAND SuperClassDeclaration» «EXPAND InterfaceDeclarations» {
 		/**
 		 * Default serial version uid.
@@ -260,7 +260,7 @@
 	  «EXPAND functions::Javadoc::JavadocForType»
 	  «EXPAND java::Validation::ValidationAnnotation»
 	  «EXPAND java::Helper::GenerateDeprecationAnnotation -»
-	  «EXPAND java::Jackson::JacksonClassAnnotations -»
+	  «EXPAND java::Jackson::JacksonClassAnnotations("Base") -»
 	  public «IF isAbstract»abstract«ENDIF» class «name»«this.getTemplateParams()» extends «name»Base«this.getTemplateParams()» {
 	    /**
 	     * Default serial version uid.

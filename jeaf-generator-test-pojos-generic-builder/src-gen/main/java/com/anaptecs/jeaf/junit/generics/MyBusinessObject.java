@@ -11,10 +11,13 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(builder = MyBusinessObject.MyBusinessObjectBuilderImpl.class)
 public class MyBusinessObject {
   /**
    * Constant for the name of attribute "myBusinessAttribute".
@@ -24,18 +27,11 @@ public class MyBusinessObject {
   private int myBusinessAttribute;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected MyBusinessObject( ) {
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected MyBusinessObject( Builder pBuilder ) {
+  protected MyBusinessObject( MyBusinessObjectBuilder<?, ?> pBuilder ) {
     // Ensure that builder is not null.
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
@@ -47,8 +43,8 @@ public class MyBusinessObject {
    *
    * @return {@link Builder} New builder that can be used to create new MyBusinessObject objects.
    */
-  public static Builder builder( ) {
-    return new Builder();
+  public static MyBusinessObjectBuilder<?, ?> builder( ) {
+    return new MyBusinessObjectBuilderImpl();
   }
 
   /**
@@ -57,10 +53,10 @@ public class MyBusinessObject {
    *
    * @param pMyBusinessAttribute Value to which {@link #myBusinessAttribute} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.generics.MyBusinessObject}
+   * @return {@link MyBusinessObject}
    */
   public static MyBusinessObject of( int pMyBusinessAttribute ) {
-    MyBusinessObject.Builder lBuilder = MyBusinessObject.builder();
+    MyBusinessObjectBuilder<?, ?> lBuilder = MyBusinessObject.builder();
     lBuilder.setMyBusinessAttribute(pMyBusinessAttribute);
     return lBuilder.build();
   }
@@ -68,19 +64,21 @@ public class MyBusinessObject {
   /**
    * Class implements builder to create a new instance of class <code>MyBusinessObject</code>.
    */
-  public static class Builder {
+  @JsonPOJOBuilder(withPrefix = "set")
+  public static abstract class MyBusinessObjectBuilder<T extends MyBusinessObject, B extends MyBusinessObjectBuilder<T, B>> {
     private int myBusinessAttribute;
 
     /**
-     * Use {@link MyBusinessObject#builder()} instead of private constructor to create new builder.
+     * Use {@link MyBusinessObjectBuilder#builder()} instead of private constructor to create new builder.
      */
-    protected Builder( ) {
+    protected MyBusinessObjectBuilder( ) {
     }
 
     /**
-     * Use {@link MyBusinessObject#builder(MyBusinessObject)} instead of private constructor to create new builder.
+     * Use {@link MyBusinessObjectBuilder#builder(MyBusinessObject)} instead of private constructor to create new
+     * builder.
      */
-    protected Builder( MyBusinessObject pObject ) {
+    protected MyBusinessObjectBuilder( MyBusinessObject pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setMyBusinessAttribute(pObject.myBusinessAttribute);
@@ -91,13 +89,18 @@ public class MyBusinessObject {
      * Method sets attribute {@link #myBusinessAttribute}.<br/>
      *
      * @param pMyBusinessAttribute Value to which {@link #myBusinessAttribute} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setMyBusinessAttribute( int pMyBusinessAttribute ) {
+    public B setMyBusinessAttribute( int pMyBusinessAttribute ) {
       // Assign value to attribute
       myBusinessAttribute = pMyBusinessAttribute;
-      return this;
+      return this.self();
     }
+
+    /**
+     * Method returns instance of this builder. Operation is part of genric builder pattern.
+     */
+    protected abstract B self( );
 
     /**
      * Method creates a new instance of class MyBusinessObject. The object will be initialized with the values of the
@@ -105,9 +108,7 @@ public class MyBusinessObject {
      *
      * @return MyBusinessObject Created object. The method never returns null.
      */
-    public MyBusinessObject build( ) {
-      return new MyBusinessObject(this);
-    }
+    public abstract T build( );
 
     /**
      * Method creates a new validated instance of class MyBusinessObject. The object will be initialized with the values
@@ -120,6 +121,26 @@ public class MyBusinessObject {
       MyBusinessObject lObject = this.build();
       ValidationTools.getValidationTools().enforceObjectValidation(lObject);
       return lObject;
+    }
+  }
+
+  static final class MyBusinessObjectBuilderImpl
+      extends MyBusinessObjectBuilder<MyBusinessObject, MyBusinessObjectBuilderImpl> {
+    protected MyBusinessObjectBuilderImpl( ) {
+    }
+
+    protected MyBusinessObjectBuilderImpl( MyBusinessObject pObject ) {
+      super(pObject);
+    }
+
+    @Override
+    protected MyBusinessObjectBuilderImpl self( ) {
+      return this;
+    }
+
+    @Override
+    public MyBusinessObject build( ) {
+      return new MyBusinessObject(this);
     }
   }
 
@@ -204,7 +225,7 @@ public class MyBusinessObject {
    * @return {@link Builder} New builder that can be used to create new MyBusinessObject objects. The method never
    * returns null.
    */
-  public Builder toBuilder( ) {
-    return new Builder(this);
+  public MyBusinessObjectBuilder<?, ?> toBuilder( ) {
+    return new MyBusinessObjectBuilderImpl(this);
   }
 }

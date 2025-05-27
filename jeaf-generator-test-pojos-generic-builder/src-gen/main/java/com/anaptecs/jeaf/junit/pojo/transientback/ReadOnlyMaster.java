@@ -20,12 +20,13 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonSetter;
-import com.fasterxml.jackson.annotation.Nulls;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(builder = ReadOnlyMaster.ReadOnlyMasterBuilderImpl.class)
 public class ReadOnlyMaster {
   /**
    * Constant for the name of attribute "name".
@@ -39,7 +40,6 @@ public class ReadOnlyMaster {
 
   private String name;
 
-  @JsonSetter(nulls = Nulls.SKIP)
   private List<ReadOnlyClient> clients;
 
   /**
@@ -48,21 +48,11 @@ public class ReadOnlyMaster {
   private transient boolean clientsBackReferenceInitialized;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected ReadOnlyMaster( ) {
-    clients = new ArrayList<>();
-    // Bidirectional back reference is not yet set up correctly
-    clientsBackReferenceInitialized = false;
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected ReadOnlyMaster( Builder pBuilder ) {
+  protected ReadOnlyMaster( ReadOnlyMasterBuilder<?, ?> pBuilder ) {
     // Ensure that builder is not null.
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
@@ -86,8 +76,8 @@ public class ReadOnlyMaster {
    *
    * @return {@link Builder} New builder that can be used to create new ReadOnlyMaster objects.
    */
-  public static Builder builder( ) {
-    return new Builder();
+  public static ReadOnlyMasterBuilder<?, ?> builder( ) {
+    return new ReadOnlyMasterBuilderImpl();
   }
 
   /**
@@ -99,7 +89,7 @@ public class ReadOnlyMaster {
    * @return {@link ReadOnlyMaster}
    */
   public static ReadOnlyMaster of( String pName ) {
-    ReadOnlyMaster.Builder lBuilder = ReadOnlyMaster.builder();
+    ReadOnlyMasterBuilder<?, ?> lBuilder = ReadOnlyMaster.builder();
     lBuilder.setName(pName);
     return lBuilder.build();
   }
@@ -107,21 +97,22 @@ public class ReadOnlyMaster {
   /**
    * Class implements builder to create a new instance of class <code>ReadOnlyMaster</code>.
    */
-  public static class Builder {
+  @JsonPOJOBuilder(withPrefix = "set")
+  public static abstract class ReadOnlyMasterBuilder<T extends ReadOnlyMaster, B extends ReadOnlyMasterBuilder<T, B>> {
     private String name;
 
     private List<ReadOnlyClient> clients;
 
     /**
-     * Use {@link ReadOnlyMaster#builder()} instead of private constructor to create new builder.
+     * Use {@link ReadOnlyMasterBuilder#builder()} instead of private constructor to create new builder.
      */
-    protected Builder( ) {
+    protected ReadOnlyMasterBuilder( ) {
     }
 
     /**
-     * Use {@link ReadOnlyMaster#builder(ReadOnlyMaster)} instead of private constructor to create new builder.
+     * Use {@link ReadOnlyMasterBuilder#builder(ReadOnlyMaster)} instead of private constructor to create new builder.
      */
-    protected Builder( ReadOnlyMaster pObject ) {
+    protected ReadOnlyMasterBuilder( ReadOnlyMaster pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setName(pObject.name);
@@ -133,21 +124,21 @@ public class ReadOnlyMaster {
      * Method sets attribute {@link #name}.<br/>
      *
      * @param pName Value to which {@link #name} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setName( String pName ) {
+    public B setName( String pName ) {
       // Assign value to attribute
       name = pName;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets association {@link #clients}.<br/>
      *
      * @param pClients Collection to which {@link #clients} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setClients( List<ReadOnlyClient> pClients ) {
+    public B setClients( List<ReadOnlyClient> pClients ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pClients != null) {
         clients = new ArrayList<ReadOnlyClient>(pClients);
@@ -155,24 +146,29 @@ public class ReadOnlyMaster {
       else {
         clients = null;
       }
-      return this;
+      return this.self();
     }
 
     /**
      * Method adds the passed objects to association {@link #clients}.<br/>
      *
      * @param pClients Array of objects that should be added to {@link #clients}. The parameter may be null.
-     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining. Method never returns null.
      */
-    public Builder addToClients( ReadOnlyClient... pClients ) {
+    public B addToClients( ReadOnlyClient... pClients ) {
       if (pClients != null) {
         if (clients == null) {
           clients = new ArrayList<ReadOnlyClient>();
         }
         clients.addAll(Arrays.asList(pClients));
       }
-      return this;
+      return this.self();
     }
+
+    /**
+     * Method returns instance of this builder. Operation is part of genric builder pattern.
+     */
+    protected abstract B self( );
 
     /**
      * Method creates a new instance of class ReadOnlyMaster. The object will be initialized with the values of the
@@ -180,9 +176,7 @@ public class ReadOnlyMaster {
      *
      * @return ReadOnlyMaster Created object. The method never returns null.
      */
-    public ReadOnlyMaster build( ) {
-      return new ReadOnlyMaster(this);
-    }
+    public abstract T build( );
 
     /**
      * Method creates a new validated instance of class ReadOnlyMaster. The object will be initialized with the values
@@ -195,6 +189,26 @@ public class ReadOnlyMaster {
       ReadOnlyMaster lObject = this.build();
       ValidationTools.getValidationTools().enforceObjectValidation(lObject);
       return lObject;
+    }
+  }
+
+  static final class ReadOnlyMasterBuilderImpl
+      extends ReadOnlyMasterBuilder<ReadOnlyMaster, ReadOnlyMasterBuilderImpl> {
+    protected ReadOnlyMasterBuilderImpl( ) {
+    }
+
+    protected ReadOnlyMasterBuilderImpl( ReadOnlyMaster pObject ) {
+      super(pObject);
+    }
+
+    @Override
+    protected ReadOnlyMasterBuilderImpl self( ) {
+      return this;
+    }
+
+    @Override
+    public ReadOnlyMaster build( ) {
+      return new ReadOnlyMaster(this);
     }
   }
 
@@ -380,7 +394,7 @@ public class ReadOnlyMaster {
    * @return {@link Builder} New builder that can be used to create new ReadOnlyMaster objects. The method never returns
    * null.
    */
-  public Builder toBuilder( ) {
-    return new Builder(this);
+  public ReadOnlyMasterBuilder<?, ?> toBuilder( ) {
+    return new ReadOnlyMasterBuilderImpl(this);
   }
 }

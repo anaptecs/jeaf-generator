@@ -86,6 +86,9 @@ cached String getOpenAPISpecReferenceDefaultLocation():
 cached boolean disableSaveCopyOfCollectionsInBuilders():
    getBooleanSystemProperty("jeaf.generator.disableSaveCopyOfCollectionsInBuilders", false);
    
+cached boolean useGenericBuilderPattern():
+    getBooleanSystemProperty("jeaf.generator.useGenericBuilderPattern", false); 
+   
 cached boolean suppressNotRequiredNullableInOpenAPISpec():   
    getBooleanSystemProperty("jeaf.generator.suppressNotRequiredNullableInOpenAPISpec", false);
    

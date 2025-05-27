@@ -10,6 +10,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Objects;
 import java.util.Set;
 
 import javax.annotation.Generated;
@@ -20,12 +21,13 @@ import javax.validation.constraints.NotBlank;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonSetter;
-import com.fasterxml.jackson.annotation.Nulls;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(builder = CustomerBase.CustomerBuilderImpl.class)
 public abstract class CustomerBase extends Partner {
   /**
    * Constant for the name of attribute "name".
@@ -56,23 +58,19 @@ public abstract class CustomerBase extends Partner {
   @Email()
   private String email;
 
-  @JsonSetter(nulls = Nulls.SKIP)
   private Set<Account> accounts;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
+   * Attribute is required for correct handling of bidirectional associations in case of deserialization.
    */
-  protected CustomerBase( ) {
-    accounts = new HashSet<>();
-  }
+  private transient boolean accountsBackReferenceInitialized;
 
   /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected CustomerBase( BuilderBase pBuilder ) {
+  protected CustomerBase( CustomerBuilder<?, ?> pBuilder ) {
     // Call constructor of super class.
     super(pBuilder);
     // Read attribute values from builder.
@@ -89,13 +87,16 @@ public abstract class CustomerBase extends Partner {
     else {
       accounts = new HashSet<>();
     }
+    // Bidirectional back reference is set up correctly as a builder is used.
+    accountsBackReferenceInitialized = true;
   }
 
   /**
-   * Class implements builder to create a new instance of class Customer. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>Customer</code>.
    */
-  public static abstract class BuilderBase extends Partner.Builder {
+  @JsonPOJOBuilder(withPrefix = "set")
+  public static abstract class CustomerBuilder<T extends Customer, B extends CustomerBuilder<T, B>>
+      extends PartnerBuilder<T, B> {
     @NotBlank
     private String name;
 
@@ -108,15 +109,17 @@ public abstract class CustomerBase extends Partner {
     private Set<Account> accounts;
 
     /**
-     * Use {@link Customer.builder()} instead of protected constructor to create new builder.
+     * Use {@link CustomerBuilder#builder()} instead of private constructor to create new builder.
      */
-    protected BuilderBase( ) {
+    protected CustomerBuilder( ) {
+      super();
     }
 
     /**
-     * Use {@link Customer.builder(Customer)} instead of protected constructor to create new builder.
+     * Use {@link CustomerBuilder#builder(Customer)} instead of private constructor to create new builder.
      */
-    protected BuilderBase( CustomerBase pObject ) {
+    protected CustomerBuilder( CustomerBase pObject ) {
+      super(pObject);
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setName(pObject.name);
@@ -130,45 +133,45 @@ public abstract class CustomerBase extends Partner {
      * Method sets attribute {@link #name}.<br/>
      *
      * @param pName Value to which {@link #name} should be set.
-     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setName( String pName ) {
+    public B setName( String pName ) {
       // Assign value to attribute
       name = pName;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #firstName}.<br/>
      *
      * @param pFirstName Value to which {@link #firstName} should be set.
-     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setFirstName( String pFirstName ) {
+    public B setFirstName( String pFirstName ) {
       // Assign value to attribute
       firstName = pFirstName;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #email}.<br/>
      *
      * @param pEmail Value to which {@link #email} should be set.
-     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setEmail( String pEmail ) {
+    public B setEmail( String pEmail ) {
       // Assign value to attribute
       email = pEmail;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets association {@link #accounts}.<br/>
      *
      * @param pAccounts Collection to which {@link #accounts} should be set.
-     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setAccounts( Set<Account> pAccounts ) {
+    public B setAccounts( Set<Account> pAccounts ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pAccounts != null) {
         accounts = new HashSet<Account>(pAccounts);
@@ -176,33 +179,37 @@ public abstract class CustomerBase extends Partner {
       else {
         accounts = null;
       }
-      return this;
+      return this.self();
     }
 
     /**
      * Method adds the passed objects to association {@link #accounts}.<br/>
      *
      * @param pAccounts Array of objects that should be added to {@link #accounts}. The parameter may be null.
-     * @return {@link BuilderBase} Instance of this builder to support chaining. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining. Method never returns null.
      */
-    public BuilderBase addToAccounts( Account... pAccounts ) {
+    public B addToAccounts( Account... pAccounts ) {
       if (pAccounts != null) {
         if (accounts == null) {
           accounts = new HashSet<Account>();
         }
         accounts.addAll(Arrays.asList(pAccounts));
       }
-      return this;
+      return this.self();
     }
+
+    @Override
+    /**
+     * Method returns instance of this builder. Operation is part of genric builder pattern.
+     */
+    protected abstract B self( );
 
     /**
      * Method creates a new instance of class Customer. The object will be initialized with the values of the builder.
      *
      * @return Customer Created object. The method never returns null.
      */
-    public Customer build( ) {
-      return new Customer(this);
-    }
+    public abstract T build( );
 
     /**
      * Method creates a new validated instance of class Customer. The object will be initialized with the values of the
@@ -212,9 +219,28 @@ public abstract class CustomerBase extends Partner {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public Customer buildValidated( ) throws ConstraintViolationException {
-      Customer lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      Customer lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
+    }
+  }
+
+  static final class CustomerBuilderImpl extends CustomerBuilder<Customer, CustomerBuilderImpl> {
+    protected CustomerBuilderImpl( ) {
+    }
+
+    protected CustomerBuilderImpl( Customer pObject ) {
+      super(pObject);
+    }
+
+    @Override
+    protected CustomerBuilderImpl self( ) {
+      return this;
+    }
+
+    @Override
+    public Customer build( ) {
+      return new Customer(this);
     }
   }
 
@@ -282,6 +308,14 @@ public abstract class CustomerBase extends Partner {
    * returned collection is unmodifiable.
    */
   public Set<Account> getAccounts( ) {
+    // Due to restrictions in JSON serialization / deserialization bi-directional associations need a special handling
+    // after an object was deserialized.
+    if (accountsBackReferenceInitialized == false) {
+      accountsBackReferenceInitialized = true;
+      for (Account lNext : accounts) {
+        lNext.setOwner((Customer) this);
+      }
+    }
     // Return all Account objects as unmodifiable collection.
     return Collections.unmodifiableSet(accounts);
   }
@@ -364,7 +398,7 @@ public abstract class CustomerBase extends Partner {
    * @return {@link Customer}
    */
   public static Customer of( String pName, String pFirstName, String pEmail ) {
-    Customer.Builder lBuilder = Customer.builder();
+    CustomerBuilder<?, ?> lBuilder = Customer.builder();
     lBuilder.setName(pName);
     lBuilder.setFirstName(pFirstName);
     lBuilder.setEmail(pEmail);
@@ -375,6 +409,40 @@ public abstract class CustomerBase extends Partner {
    * @return {@link String}
    */
   public abstract String getDisplayName( );
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = super.hashCode();
+    lResult = lPrime * lResult + Objects.hashCode(name);
+    lResult = lPrime * lResult + Objects.hashCode(firstName);
+    lResult = lPrime * lResult + Objects.hashCode(email);
+    lResult = lPrime * lResult + Objects.hashCode(accounts);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (!super.equals(pObject)) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      CustomerBase lOther = (CustomerBase) pObject;
+      lEquals = Objects.equals(name, lOther.name) && Objects.equals(firstName, lOther.firstName)
+          && Objects.equals(email, lOther.email) && Objects.equals(accounts, lOther.accounts);
+    }
+    return lEquals;
+  }
 
   /**
    * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
@@ -432,7 +500,7 @@ public abstract class CustomerBase extends Partner {
    *
    * @return {@link Builder} New builder that can be used to create new Customer objects. The method never returns null.
    */
-  public Customer.Builder toBuilder( ) {
-    return new Customer.Builder((Customer) this);
+  public CustomerBuilder<?, ?> toBuilder( ) {
+    return new CustomerBuilderImpl((Customer) this);
   }
 }

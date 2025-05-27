@@ -11,6 +11,7 @@ import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
@@ -19,41 +20,36 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 @JsonSubTypes({ @JsonSubTypes.Type(value = Customer.class, name = "Customer") })
 public abstract class PartnerBase {
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected PartnerBase( ) {
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected PartnerBase( BuilderBase pBuilder ) {
+  protected PartnerBase( PartnerBuilder<?, ?> pBuilder ) {
     // Ensure that builder is not null.
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
   }
 
   /**
-   * Class implements builder to create a new instance of class Partner. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>Partner</code>.
    */
-  public static abstract class BuilderBase {
+  @JsonPOJOBuilder(withPrefix = "set")
+  public static abstract class PartnerBuilder<T extends Partner, B extends PartnerBuilder<T, B>> {
     /**
-     * Use {@link Partner.builder()} instead of protected constructor to create new builder.
+     * Use {@link PartnerBuilder#builder()} instead of private constructor to create new builder.
      */
-    protected BuilderBase( ) {
+    protected PartnerBuilder( ) {
     }
 
     /**
-     * Use {@link Partner.builder(Partner)} instead of protected constructor to create new builder.
+     * Use {@link PartnerBuilder#builder(Partner)} instead of private constructor to create new builder.
      */
-    protected BuilderBase( PartnerBase pObject ) {
-      if (pObject != null) {
-        // Read attribute values from passed object.
-      }
+    protected PartnerBuilder( PartnerBase pObject ) {
     }
+
+    /**
+     * Method returns instance of this builder. Operation is part of genric builder pattern.
+     */
+    protected abstract B self( );
   }
 
   @Override

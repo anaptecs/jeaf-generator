@@ -14,11 +14,14 @@ import javax.validation.Valid;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
 @Valid
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(builder = AdvancedPOJOBase.AdvancedPOJOBuilderImpl.class)
 public abstract class AdvancedPOJOBase {
   /**
    * Constant for the name of attribute "readonlyDefault".
@@ -43,20 +46,11 @@ public abstract class AdvancedPOJOBase {
   private Integer intWithDefault;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected AdvancedPOJOBase( ) {
-    readonlyDefault = 4711;
-    intWithDefault = 42;
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected AdvancedPOJOBase( BuilderBase pBuilder ) {
+  protected AdvancedPOJOBase( AdvancedPOJOBuilder<?, ?> pBuilder ) {
     // Ensure that builder is not null.
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
@@ -65,10 +59,10 @@ public abstract class AdvancedPOJOBase {
   }
 
   /**
-   * Class implements builder to create a new instance of class AdvancedPOJO. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>AdvancedPOJO</code>.
    */
-  public static abstract class BuilderBase {
+  @JsonPOJOBuilder(withPrefix = "set")
+  public static abstract class AdvancedPOJOBuilder<T extends AdvancedPOJO, B extends AdvancedPOJOBuilder<T, B>> {
     /**
      * <br/>
      * <b>Default Value:</b> <code>4711</code>
@@ -82,15 +76,15 @@ public abstract class AdvancedPOJOBase {
     private Integer intWithDefault = 42;
 
     /**
-     * Use {@link AdvancedPOJO.builder()} instead of protected constructor to create new builder.
+     * Use {@link AdvancedPOJOBuilder#builder()} instead of private constructor to create new builder.
      */
-    protected BuilderBase( ) {
+    protected AdvancedPOJOBuilder( ) {
     }
 
     /**
-     * Use {@link AdvancedPOJO.builder(AdvancedPOJO)} instead of protected constructor to create new builder.
+     * Use {@link AdvancedPOJOBuilder#builder(AdvancedPOJO)} instead of private constructor to create new builder.
      */
-    protected BuilderBase( AdvancedPOJOBase pObject ) {
+    protected AdvancedPOJOBuilder( AdvancedPOJOBase pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setReadonlyDefault(pObject.readonlyDefault);
@@ -102,25 +96,30 @@ public abstract class AdvancedPOJOBase {
      * Method sets attribute {@link #readonlyDefault}.<br/>
      *
      * @param pReadonlyDefault Value to which {@link #readonlyDefault} should be set.
-     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setReadonlyDefault( int pReadonlyDefault ) {
+    public B setReadonlyDefault( int pReadonlyDefault ) {
       // Assign value to attribute
       readonlyDefault = pReadonlyDefault;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #intWithDefault}.<br/>
      *
      * @param pIntWithDefault Value to which {@link #intWithDefault} should be set.
-     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setIntWithDefault( Integer pIntWithDefault ) {
+    public B setIntWithDefault( Integer pIntWithDefault ) {
       // Assign value to attribute
       intWithDefault = pIntWithDefault;
-      return this;
+      return this.self();
     }
+
+    /**
+     * Method returns instance of this builder. Operation is part of genric builder pattern.
+     */
+    protected abstract B self( );
 
     /**
      * Method creates a new instance of class AdvancedPOJO. The object will be initialized with the values of the
@@ -128,9 +127,7 @@ public abstract class AdvancedPOJOBase {
      *
      * @return AdvancedPOJO Created object. The method never returns null.
      */
-    public AdvancedPOJO build( ) {
-      return new AdvancedPOJO(this);
-    }
+    public abstract T build( );
 
     /**
      * Method creates a new validated instance of class AdvancedPOJO. The object will be initialized with the values of
@@ -140,9 +137,28 @@ public abstract class AdvancedPOJOBase {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public AdvancedPOJO buildValidated( ) throws ConstraintViolationException {
-      AdvancedPOJO lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      AdvancedPOJO lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
+    }
+  }
+
+  static final class AdvancedPOJOBuilderImpl extends AdvancedPOJOBuilder<AdvancedPOJO, AdvancedPOJOBuilderImpl> {
+    protected AdvancedPOJOBuilderImpl( ) {
+    }
+
+    protected AdvancedPOJOBuilderImpl( AdvancedPOJO pObject ) {
+      super(pObject);
+    }
+
+    @Override
+    protected AdvancedPOJOBuilderImpl self( ) {
+      return this;
+    }
+
+    @Override
+    public AdvancedPOJO build( ) {
+      return new AdvancedPOJO(this);
     }
   }
 
@@ -185,7 +201,7 @@ public abstract class AdvancedPOJOBase {
    * @return {@link com.anaptecs.jeaf.junit.pojo.AdvancedPOJO}
    */
   public static AdvancedPOJO of( int pReadonlyDefault, Integer pIntWithDefault ) {
-    AdvancedPOJO.Builder lBuilder = AdvancedPOJO.builder();
+    AdvancedPOJOBuilder<?, ?> lBuilder = AdvancedPOJO.builder();
     lBuilder.setReadonlyDefault(pReadonlyDefault);
     lBuilder.setIntWithDefault(pIntWithDefault);
     return lBuilder.build();
@@ -269,7 +285,7 @@ public abstract class AdvancedPOJOBase {
    * @return {@link Builder} New builder that can be used to create new AdvancedPOJO objects. The method never returns
    * null.
    */
-  public AdvancedPOJO.Builder toBuilder( ) {
-    return new AdvancedPOJO.Builder((AdvancedPOJO) this);
+  public AdvancedPOJOBuilder<?, ?> toBuilder( ) {
+    return new AdvancedPOJOBuilderImpl((AdvancedPOJO) this);
   }
 }

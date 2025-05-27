@@ -12,10 +12,13 @@ import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(builder = MutableChildPOJO.MutableChildPOJOBuilderImpl.class)
 public class MutableChildPOJO extends ImmutablePOJOParent {
   /**
    * Constant for the name of attribute "writeable".
@@ -36,19 +39,11 @@ public class MutableChildPOJO extends ImmutablePOJOParent {
   private final Boolean booleanDefault;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected MutableChildPOJO( ) {
-    booleanDefault = true;
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected MutableChildPOJO( Builder pBuilder ) {
+  protected MutableChildPOJO( MutableChildPOJOBuilder<?, ?> pBuilder ) {
     // Call constructor of super class.
     super(pBuilder);
     // Read attribute values from builder.
@@ -61,8 +56,8 @@ public class MutableChildPOJO extends ImmutablePOJOParent {
    *
    * @return {@link Builder} New builder that can be used to create new MutableChildPOJO objects.
    */
-  public static Builder builder( ) {
-    return new Builder();
+  public static MutableChildPOJOBuilder<?, ?> builder( ) {
+    return new MutableChildPOJOBuilderImpl();
   }
 
   /**
@@ -79,11 +74,11 @@ public class MutableChildPOJO extends ImmutablePOJOParent {
    *
    * @param pBooleanDefault Value to which {@link #booleanDefault} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.pojo.MutableChildPOJO}
+   * @return {@link MutableChildPOJO}
    */
   public static MutableChildPOJO of( String pAbtractAttr, String pParentAttribute, Integer pAnotherParentAttribute,
       Integer pWriteable, Boolean pBooleanDefault ) {
-    MutableChildPOJO.Builder lBuilder = MutableChildPOJO.builder();
+    MutableChildPOJOBuilder<?, ?> lBuilder = MutableChildPOJO.builder();
     lBuilder.setAbtractAttr(pAbtractAttr);
     lBuilder.setParentAttribute(pParentAttribute);
     lBuilder.setAnotherParentAttribute(pAnotherParentAttribute);
@@ -95,7 +90,9 @@ public class MutableChildPOJO extends ImmutablePOJOParent {
   /**
    * Class implements builder to create a new instance of class <code>MutableChildPOJO</code>.
    */
-  public static class Builder extends ImmutablePOJOParent.Builder {
+  @JsonPOJOBuilder(withPrefix = "set")
+  public static abstract class MutableChildPOJOBuilder<T extends MutableChildPOJO, B extends MutableChildPOJOBuilder<T, B>>
+      extends ImmutablePOJOParentBuilder<T, B> {
     private Integer writeable;
 
     /**
@@ -105,16 +102,17 @@ public class MutableChildPOJO extends ImmutablePOJOParent {
     private Boolean booleanDefault = true;
 
     /**
-     * Use {@link MutableChildPOJO#builder()} instead of private constructor to create new builder.
+     * Use {@link MutableChildPOJOBuilder#builder()} instead of private constructor to create new builder.
      */
-    protected Builder( ) {
+    protected MutableChildPOJOBuilder( ) {
       super();
     }
 
     /**
-     * Use {@link MutableChildPOJO#builder(MutableChildPOJO)} instead of private constructor to create new builder.
+     * Use {@link MutableChildPOJOBuilder#builder(MutableChildPOJO)} instead of private constructor to create new
+     * builder.
      */
-    protected Builder( MutableChildPOJO pObject ) {
+    protected MutableChildPOJOBuilder( MutableChildPOJO pObject ) {
       super(pObject);
       if (pObject != null) {
         // Read attribute values from passed object.
@@ -124,67 +122,34 @@ public class MutableChildPOJO extends ImmutablePOJOParent {
     }
 
     /**
-     * Method sets attribute {@link #abtractAttr}.<br/>
-     *
-     * @param pAbtractAttr Value to which {@link #abtractAttr} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
-     */
-    @Override
-    public Builder setAbtractAttr( String pAbtractAttr ) {
-      // Call super class implementation.
-      super.setAbtractAttr(pAbtractAttr);
-      return this;
-    }
-
-    /**
-     * Method sets attribute {@link #parentAttribute}.<br/>
-     *
-     * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
-     */
-    @Override
-    public Builder setParentAttribute( String pParentAttribute ) {
-      // Call super class implementation.
-      super.setParentAttribute(pParentAttribute);
-      return this;
-    }
-
-    /**
-     * Method sets attribute {@link #anotherParentAttribute}.<br/>
-     *
-     * @param pAnotherParentAttribute Value to which {@link #anotherParentAttribute} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
-     */
-    @Override
-    public Builder setAnotherParentAttribute( Integer pAnotherParentAttribute ) {
-      // Call super class implementation.
-      super.setAnotherParentAttribute(pAnotherParentAttribute);
-      return this;
-    }
-
-    /**
      * Method sets attribute {@link #writeable}.<br/>
      *
      * @param pWriteable Value to which {@link #writeable} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setWriteable( Integer pWriteable ) {
+    public B setWriteable( Integer pWriteable ) {
       // Assign value to attribute
       writeable = pWriteable;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #booleanDefault}.<br/>
      *
      * @param pBooleanDefault Value to which {@link #booleanDefault} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setBooleanDefault( Boolean pBooleanDefault ) {
+    public B setBooleanDefault( Boolean pBooleanDefault ) {
       // Assign value to attribute
       booleanDefault = pBooleanDefault;
-      return this;
+      return this.self();
     }
+
+    @Override
+    /**
+     * Method returns instance of this builder. Operation is part of genric builder pattern.
+     */
+    protected abstract B self( );
 
     /**
      * Method creates a new instance of class MutableChildPOJO. The object will be initialized with the values of the
@@ -192,9 +157,7 @@ public class MutableChildPOJO extends ImmutablePOJOParent {
      *
      * @return MutableChildPOJO Created object. The method never returns null.
      */
-    public MutableChildPOJO build( ) {
-      return new MutableChildPOJO(this);
-    }
+    public abstract T build( );
 
     /**
      * Method creates a new validated instance of class MutableChildPOJO. The object will be initialized with the values
@@ -207,6 +170,26 @@ public class MutableChildPOJO extends ImmutablePOJOParent {
       MutableChildPOJO lObject = this.build();
       ValidationTools.getValidationTools().enforceObjectValidation(lObject);
       return lObject;
+    }
+  }
+
+  static final class MutableChildPOJOBuilderImpl
+      extends MutableChildPOJOBuilder<MutableChildPOJO, MutableChildPOJOBuilderImpl> {
+    protected MutableChildPOJOBuilderImpl( ) {
+    }
+
+    protected MutableChildPOJOBuilderImpl( MutableChildPOJO pObject ) {
+      super(pObject);
+    }
+
+    @Override
+    protected MutableChildPOJOBuilderImpl self( ) {
+      return this;
+    }
+
+    @Override
+    public MutableChildPOJO build( ) {
+      return new MutableChildPOJO(this);
     }
   }
 
@@ -306,7 +289,7 @@ public class MutableChildPOJO extends ImmutablePOJOParent {
    * @return {@link Builder} New builder that can be used to create new MutableChildPOJO objects. The method never
    * returns null.
    */
-  public Builder toBuilder( ) {
-    return new Builder(this);
+  public MutableChildPOJOBuilder<?, ?> toBuilder( ) {
+    return new MutableChildPOJOBuilderImpl(this);
   }
 }

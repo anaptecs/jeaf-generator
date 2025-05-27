@@ -7,16 +7,9 @@ package com.anaptecs.jeaf.junit.generics;
 
 public class AndOneMorePOJO extends AndOneMorePOJOBase {
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected AndOneMorePOJO( ) {
-  }
-
-  /**
    * Initialize object. Nothing special to do.
    */
-  protected AndOneMorePOJO( AndOneMorePOJO.BuilderBase pBuilder ) {
+  protected AndOneMorePOJO( AndOneMorePOJOBuilder<?, ?> pBuilder ) {
     super(pBuilder);
   }
 
@@ -25,27 +18,8 @@ public class AndOneMorePOJO extends AndOneMorePOJOBase {
    *
    * @return {@link Builder} New builder that can be used to create new AndOneMorePOJO objects.
    */
-  public static Builder builder( ) {
-    return new Builder();
-  }
-
-  /**
-   * Class implements builder to create a new instance of class AndOneMorePOJO. As the class has readonly attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
-   */
-  public static class Builder extends AndOneMorePOJO.BuilderBase {
-    /**
-     * Use {@link AndOneMorePOJO#builder()} instead of protected constructor to create new builder.
-     */
-    protected Builder( ) {
-    }
-
-    /**
-     * Use {@link AndOneMorePOJO#builder(AndOneMorePOJO)} instead of protected constructor to create new builder.
-     */
-    protected Builder( AndOneMorePOJO pObject ) {
-      super(pObject);
-    }
+  public static AndOneMorePOJOBuilder<?, ?> builder( ) {
+    return new AndOneMorePOJOBuilderImpl();
   }
 
   /**

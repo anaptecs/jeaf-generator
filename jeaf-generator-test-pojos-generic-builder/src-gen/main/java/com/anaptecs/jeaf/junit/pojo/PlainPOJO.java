@@ -7,16 +7,9 @@ package com.anaptecs.jeaf.junit.pojo;
 
 public class PlainPOJO extends PlainPOJOBase {
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected PlainPOJO( ) {
-  }
-
-  /**
    * Initialize object. Nothing special to do.
    */
-  protected PlainPOJO( PlainPOJO.BuilderBase pBuilder ) {
+  protected PlainPOJO( PlainPOJOBuilder<?, ?> pBuilder ) {
     super(pBuilder);
   }
 
@@ -25,27 +18,8 @@ public class PlainPOJO extends PlainPOJOBase {
    *
    * @return {@link Builder} New builder that can be used to create new PlainPOJO objects.
    */
-  public static Builder builder( ) {
-    return new Builder();
-  }
-
-  /**
-   * Class implements builder to create a new instance of class PlainPOJO. As the class has readonly attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
-   */
-  public static class Builder extends PlainPOJO.BuilderBase {
-    /**
-     * Use {@link PlainPOJO#builder()} instead of protected constructor to create new builder.
-     */
-    protected Builder( ) {
-    }
-
-    /**
-     * Use {@link PlainPOJO#builder(PlainPOJO)} instead of protected constructor to create new builder.
-     */
-    protected Builder( PlainPOJO pObject ) {
-      super(pObject);
-    }
+  public static PlainPOJOBuilder<?, ?> builder( ) {
+    return new PlainPOJOBuilderImpl();
   }
 
   /**

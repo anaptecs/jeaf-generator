@@ -18,12 +18,13 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonSetter;
-import com.fasterxml.jackson.annotation.Nulls;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(builder = AndOneMorePOJOBase.AndOneMorePOJOBuilderImpl.class)
 public abstract class AndOneMorePOJOBase {
   /**
    * Constant for the name of attribute "genericProperty".
@@ -47,29 +48,18 @@ public abstract class AndOneMorePOJOBase {
 
   private GenericResponsePOJO<MyBusinessObject> genericProperty;
 
-  @JsonSetter(nulls = Nulls.SKIP)
   private Set<GenericResponsePOJO<MyBusinessObject>> genericResponses;
 
   private MultiTemplateClass<Message, TemplateEnumTest> multiTemplateClassImpl;
 
-  @JsonSetter(nulls = Nulls.SKIP)
   private Set<MultiTemplateClass<Message, TemplateEnumTest>> many;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected AndOneMorePOJOBase( ) {
-    genericResponses = new HashSet<>();
-    many = new HashSet<>();
-  }
 
   /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected AndOneMorePOJOBase( BuilderBase pBuilder ) {
+  protected AndOneMorePOJOBase( AndOneMorePOJOBuilder<?, ?> pBuilder ) {
     // Ensure that builder is not null.
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
@@ -90,10 +80,10 @@ public abstract class AndOneMorePOJOBase {
   }
 
   /**
-   * Class implements builder to create a new instance of class AndOneMorePOJO. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>AndOneMorePOJO</code>.
    */
-  public static abstract class BuilderBase {
+  @JsonPOJOBuilder(withPrefix = "set")
+  public static abstract class AndOneMorePOJOBuilder<T extends AndOneMorePOJO, B extends AndOneMorePOJOBuilder<T, B>> {
     private GenericResponsePOJO<MyBusinessObject> genericProperty;
 
     private Set<GenericResponsePOJO<MyBusinessObject>> genericResponses;
@@ -103,15 +93,15 @@ public abstract class AndOneMorePOJOBase {
     private Set<MultiTemplateClass<Message, TemplateEnumTest>> many;
 
     /**
-     * Use {@link AndOneMorePOJO.builder()} instead of protected constructor to create new builder.
+     * Use {@link AndOneMorePOJOBuilder#builder()} instead of private constructor to create new builder.
      */
-    protected BuilderBase( ) {
+    protected AndOneMorePOJOBuilder( ) {
     }
 
     /**
-     * Use {@link AndOneMorePOJO.builder(AndOneMorePOJO)} instead of protected constructor to create new builder.
+     * Use {@link AndOneMorePOJOBuilder#builder(AndOneMorePOJO)} instead of private constructor to create new builder.
      */
-    protected BuilderBase( AndOneMorePOJOBase pObject ) {
+    protected AndOneMorePOJOBuilder( AndOneMorePOJOBase pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setGenericProperty(pObject.genericProperty);
@@ -125,21 +115,21 @@ public abstract class AndOneMorePOJOBase {
      * Method sets attribute {@link #genericProperty}.<br/>
      *
      * @param pGenericProperty Value to which {@link #genericProperty} should be set.
-     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setGenericProperty( GenericResponsePOJO<MyBusinessObject> pGenericProperty ) {
+    public B setGenericProperty( GenericResponsePOJO<MyBusinessObject> pGenericProperty ) {
       // Assign value to attribute
       genericProperty = pGenericProperty;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets association {@link #genericResponses}.<br/>
      *
      * @param pGenericResponses Collection to which {@link #genericResponses} should be set.
-     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setGenericResponses( Set<GenericResponsePOJO<MyBusinessObject>> pGenericResponses ) {
+    public B setGenericResponses( Set<GenericResponsePOJO<MyBusinessObject>> pGenericResponses ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pGenericResponses != null) {
         genericResponses = new HashSet<GenericResponsePOJO<MyBusinessObject>>(pGenericResponses);
@@ -147,7 +137,7 @@ public abstract class AndOneMorePOJOBase {
       else {
         genericResponses = null;
       }
-      return this;
+      return this.self();
     }
 
     /**
@@ -155,37 +145,36 @@ public abstract class AndOneMorePOJOBase {
      *
      * @param pGenericResponses Array of objects that should be added to {@link #genericResponses}. The parameter may be
      * null.
-     * @return {@link BuilderBase} Instance of this builder to support chaining. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining. Method never returns null.
      */
-    public BuilderBase addToGenericResponses( GenericResponsePOJO<MyBusinessObject>... pGenericResponses ) {
+    public B addToGenericResponses( GenericResponsePOJO<MyBusinessObject>... pGenericResponses ) {
       if (pGenericResponses != null) {
         if (genericResponses == null) {
           genericResponses = new HashSet<GenericResponsePOJO<MyBusinessObject>>();
         }
         genericResponses.addAll(Arrays.asList(pGenericResponses));
       }
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets association {@link #multiTemplateClassImpl}.<br/>
      *
      * @param pMultiTemplateClassImpl Value to which {@link #multiTemplateClassImpl} should be set.
-     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setMultiTemplateClassImpl(
-        MultiTemplateClass<Message, TemplateEnumTest> pMultiTemplateClassImpl ) {
+    public B setMultiTemplateClassImpl( MultiTemplateClass<Message, TemplateEnumTest> pMultiTemplateClassImpl ) {
       multiTemplateClassImpl = pMultiTemplateClassImpl;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets association {@link #many}.<br/>
      *
      * @param pMany Collection to which {@link #many} should be set.
-     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setMany( Set<MultiTemplateClass<Message, TemplateEnumTest>> pMany ) {
+    public B setMany( Set<MultiTemplateClass<Message, TemplateEnumTest>> pMany ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pMany != null) {
         many = new HashSet<MultiTemplateClass<Message, TemplateEnumTest>>(pMany);
@@ -193,24 +182,29 @@ public abstract class AndOneMorePOJOBase {
       else {
         many = null;
       }
-      return this;
+      return this.self();
     }
 
     /**
      * Method adds the passed objects to association {@link #many}.<br/>
      *
      * @param pMany Array of objects that should be added to {@link #many}. The parameter may be null.
-     * @return {@link BuilderBase} Instance of this builder to support chaining. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining. Method never returns null.
      */
-    public BuilderBase addToMany( MultiTemplateClass<Message, TemplateEnumTest>... pMany ) {
+    public B addToMany( MultiTemplateClass<Message, TemplateEnumTest>... pMany ) {
       if (pMany != null) {
         if (many == null) {
           many = new HashSet<MultiTemplateClass<Message, TemplateEnumTest>>();
         }
         many.addAll(Arrays.asList(pMany));
       }
-      return this;
+      return this.self();
     }
+
+    /**
+     * Method returns instance of this builder. Operation is part of genric builder pattern.
+     */
+    protected abstract B self( );
 
     /**
      * Method creates a new instance of class AndOneMorePOJO. The object will be initialized with the values of the
@@ -218,9 +212,7 @@ public abstract class AndOneMorePOJOBase {
      *
      * @return AndOneMorePOJO Created object. The method never returns null.
      */
-    public AndOneMorePOJO build( ) {
-      return new AndOneMorePOJO(this);
-    }
+    public abstract T build( );
 
     /**
      * Method creates a new validated instance of class AndOneMorePOJO. The object will be initialized with the values
@@ -230,9 +222,29 @@ public abstract class AndOneMorePOJOBase {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public AndOneMorePOJO buildValidated( ) throws ConstraintViolationException {
-      AndOneMorePOJO lPOJO = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
-      return lPOJO;
+      AndOneMorePOJO lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
+    }
+  }
+
+  static final class AndOneMorePOJOBuilderImpl
+      extends AndOneMorePOJOBuilder<AndOneMorePOJO, AndOneMorePOJOBuilderImpl> {
+    protected AndOneMorePOJOBuilderImpl( ) {
+    }
+
+    protected AndOneMorePOJOBuilderImpl( AndOneMorePOJO pObject ) {
+      super(pObject);
+    }
+
+    @Override
+    protected AndOneMorePOJOBuilderImpl self( ) {
+      return this;
+    }
+
+    @Override
+    public AndOneMorePOJO build( ) {
+      return new AndOneMorePOJO(this);
     }
   }
 
@@ -409,7 +421,7 @@ public abstract class AndOneMorePOJOBase {
    */
   public static AndOneMorePOJO of( GenericResponsePOJO<MyBusinessObject> pGenericProperty,
       MultiTemplateClass<Message, TemplateEnumTest> pMultiTemplateClassImpl ) {
-    AndOneMorePOJO.Builder lBuilder = AndOneMorePOJO.builder();
+    AndOneMorePOJOBuilder<?, ?> lBuilder = AndOneMorePOJO.builder();
     lBuilder.setGenericProperty(pGenericProperty);
     lBuilder.setMultiTemplateClassImpl(pMultiTemplateClassImpl);
     return lBuilder.build();
@@ -525,7 +537,7 @@ public abstract class AndOneMorePOJOBase {
    * @return {@link Builder} New builder that can be used to create new AndOneMorePOJO objects. The method never returns
    * null.
    */
-  public AndOneMorePOJO.Builder toBuilder( ) {
-    return new AndOneMorePOJO.Builder((AndOneMorePOJO) this);
+  public AndOneMorePOJOBuilder<?, ?> toBuilder( ) {
+    return new AndOneMorePOJOBuilderImpl((AndOneMorePOJO) this);
   }
 }

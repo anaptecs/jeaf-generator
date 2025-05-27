@@ -13,10 +13,13 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(builder = Message.MessageBuilderImpl.class)
 public class Message {
   /**
    * Constant for the name of attribute "text".
@@ -26,18 +29,11 @@ public class Message {
   private String text;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected Message( ) {
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected Message( Builder pBuilder ) {
+  protected Message( MessageBuilder<?, ?> pBuilder ) {
     // Ensure that builder is not null.
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
@@ -49,8 +45,8 @@ public class Message {
    *
    * @return {@link Builder} New builder that can be used to create new Message objects.
    */
-  public static Builder builder( ) {
-    return new Builder();
+  public static MessageBuilder<?, ?> builder( ) {
+    return new MessageBuilderImpl();
   }
 
   /**
@@ -59,10 +55,10 @@ public class Message {
    *
    * @param pText Value to which {@link #text} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.generics.Message}
+   * @return {@link Message}
    */
   public static Message of( String pText ) {
-    Message.Builder lBuilder = Message.builder();
+    MessageBuilder<?, ?> lBuilder = Message.builder();
     lBuilder.setText(pText);
     return lBuilder.build();
   }
@@ -70,19 +66,20 @@ public class Message {
   /**
    * Class implements builder to create a new instance of class <code>Message</code>.
    */
-  public static class Builder {
+  @JsonPOJOBuilder(withPrefix = "set")
+  public static abstract class MessageBuilder<T extends Message, B extends MessageBuilder<T, B>> {
     private String text;
 
     /**
-     * Use {@link Message#builder()} instead of private constructor to create new builder.
+     * Use {@link MessageBuilder#builder()} instead of private constructor to create new builder.
      */
-    protected Builder( ) {
+    protected MessageBuilder( ) {
     }
 
     /**
-     * Use {@link Message#builder(Message)} instead of private constructor to create new builder.
+     * Use {@link MessageBuilder#builder(Message)} instead of private constructor to create new builder.
      */
-    protected Builder( Message pObject ) {
+    protected MessageBuilder( Message pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setText(pObject.text);
@@ -93,22 +90,25 @@ public class Message {
      * Method sets attribute {@link #text}.<br/>
      *
      * @param pText Value to which {@link #text} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setText( String pText ) {
+    public B setText( String pText ) {
       // Assign value to attribute
       text = pText;
-      return this;
+      return this.self();
     }
+
+    /**
+     * Method returns instance of this builder. Operation is part of genric builder pattern.
+     */
+    protected abstract B self( );
 
     /**
      * Method creates a new instance of class Message. The object will be initialized with the values of the builder.
      *
      * @return Message Created object. The method never returns null.
      */
-    public Message build( ) {
-      return new Message(this);
-    }
+    public abstract T build( );
 
     /**
      * Method creates a new validated instance of class Message. The object will be initialized with the values of the
@@ -121,6 +121,25 @@ public class Message {
       Message lObject = this.build();
       ValidationTools.getValidationTools().enforceObjectValidation(lObject);
       return lObject;
+    }
+  }
+
+  static final class MessageBuilderImpl extends MessageBuilder<Message, MessageBuilderImpl> {
+    protected MessageBuilderImpl( ) {
+    }
+
+    protected MessageBuilderImpl( Message pObject ) {
+      super(pObject);
+    }
+
+    @Override
+    protected MessageBuilderImpl self( ) {
+      return this;
+    }
+
+    @Override
+    public Message build( ) {
+      return new Message(this);
     }
   }
 
@@ -204,7 +223,7 @@ public class Message {
    *
    * @return {@link Builder} New builder that can be used to create new Message objects. The method never returns null.
    */
-  public Builder toBuilder( ) {
-    return new Builder(this);
+  public MessageBuilder<?, ?> toBuilder( ) {
+    return new MessageBuilderImpl(this);
   }
 }

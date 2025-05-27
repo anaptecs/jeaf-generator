@@ -7,17 +7,10 @@ package com.anaptecs.jeaf.junit.pojo;
 
 public class CustomPrimitiveArraysObjectWithRestrictions extends CustomPrimitiveArraysObjectWithRestrictionsBase {
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected CustomPrimitiveArraysObjectWithRestrictions( ) {
-  }
-
-  /**
    * Initialize object. Nothing special to do.
    */
   protected CustomPrimitiveArraysObjectWithRestrictions(
-      CustomPrimitiveArraysObjectWithRestrictions.BuilderBase pBuilder ) {
+      CustomPrimitiveArraysObjectWithRestrictionsBuilder<?, ?> pBuilder ) {
     super(pBuilder);
   }
 
@@ -27,29 +20,7 @@ public class CustomPrimitiveArraysObjectWithRestrictions extends CustomPrimitive
    * @return {@link Builder} New builder that can be used to create new CustomPrimitiveArraysObjectWithRestrictions
    * objects.
    */
-  public static Builder builder( ) {
-    return new Builder();
-  }
-
-  /**
-   * Class implements builder to create a new instance of class CustomPrimitiveArraysObjectWithRestrictions. As the
-   * class has readonly attributes or associations instances can not be created directly. Instead this builder class has
-   * to be used.
-   */
-  public static class Builder extends CustomPrimitiveArraysObjectWithRestrictions.BuilderBase {
-    /**
-     * Use {@link CustomPrimitiveArraysObjectWithRestrictions#builder()} instead of protected constructor to create new
-     * builder.
-     */
-    protected Builder( ) {
-    }
-
-    /**
-     * Use {@link CustomPrimitiveArraysObjectWithRestrictions#builder(CustomPrimitiveArraysObjectWithRestrictions)}
-     * instead of protected constructor to create new builder.
-     */
-    protected Builder( CustomPrimitiveArraysObjectWithRestrictions pObject ) {
-      super(pObject);
-    }
+  public static CustomPrimitiveArraysObjectWithRestrictionsBuilder<?, ?> builder( ) {
+    return new CustomPrimitiveArraysObjectWithRestrictionsBuilderImpl();
   }
 }

@@ -13,10 +13,13 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(builder = ReadOnlyClient.ReadOnlyClientBuilderImpl.class)
 public class ReadOnlyClient {
   /**
    * Constant for the name of attribute "name".
@@ -33,18 +36,11 @@ public class ReadOnlyClient {
   private transient ReadOnlyMaster transientMaster;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected ReadOnlyClient( ) {
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected ReadOnlyClient( Builder pBuilder ) {
+  protected ReadOnlyClient( ReadOnlyClientBuilder<?, ?> pBuilder ) {
     // Ensure that builder is not null.
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
@@ -56,8 +52,8 @@ public class ReadOnlyClient {
    *
    * @return {@link Builder} New builder that can be used to create new ReadOnlyClient objects.
    */
-  public static Builder builder( ) {
-    return new Builder();
+  public static ReadOnlyClientBuilder<?, ?> builder( ) {
+    return new ReadOnlyClientBuilderImpl();
   }
 
   /**
@@ -69,7 +65,7 @@ public class ReadOnlyClient {
    * @return {@link ReadOnlyClient}
    */
   public static ReadOnlyClient of( String pName ) {
-    ReadOnlyClient.Builder lBuilder = ReadOnlyClient.builder();
+    ReadOnlyClientBuilder<?, ?> lBuilder = ReadOnlyClient.builder();
     lBuilder.setName(pName);
     return lBuilder.build();
   }
@@ -77,19 +73,20 @@ public class ReadOnlyClient {
   /**
    * Class implements builder to create a new instance of class <code>ReadOnlyClient</code>.
    */
-  public static class Builder {
+  @JsonPOJOBuilder(withPrefix = "set")
+  public static abstract class ReadOnlyClientBuilder<T extends ReadOnlyClient, B extends ReadOnlyClientBuilder<T, B>> {
     private String name;
 
     /**
-     * Use {@link ReadOnlyClient#builder()} instead of private constructor to create new builder.
+     * Use {@link ReadOnlyClientBuilder#builder()} instead of private constructor to create new builder.
      */
-    protected Builder( ) {
+    protected ReadOnlyClientBuilder( ) {
     }
 
     /**
-     * Use {@link ReadOnlyClient#builder(ReadOnlyClient)} instead of private constructor to create new builder.
+     * Use {@link ReadOnlyClientBuilder#builder(ReadOnlyClient)} instead of private constructor to create new builder.
      */
-    protected Builder( ReadOnlyClient pObject ) {
+    protected ReadOnlyClientBuilder( ReadOnlyClient pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setName(pObject.name);
@@ -100,13 +97,18 @@ public class ReadOnlyClient {
      * Method sets attribute {@link #name}.<br/>
      *
      * @param pName Value to which {@link #name} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setName( String pName ) {
+    public B setName( String pName ) {
       // Assign value to attribute
       name = pName;
-      return this;
+      return this.self();
     }
+
+    /**
+     * Method returns instance of this builder. Operation is part of genric builder pattern.
+     */
+    protected abstract B self( );
 
     /**
      * Method creates a new instance of class ReadOnlyClient. The object will be initialized with the values of the
@@ -114,9 +116,7 @@ public class ReadOnlyClient {
      *
      * @return ReadOnlyClient Created object. The method never returns null.
      */
-    public ReadOnlyClient build( ) {
-      return new ReadOnlyClient(this);
-    }
+    public abstract T build( );
 
     /**
      * Method creates a new validated instance of class ReadOnlyClient. The object will be initialized with the values
@@ -129,6 +129,26 @@ public class ReadOnlyClient {
       ReadOnlyClient lObject = this.build();
       ValidationTools.getValidationTools().enforceObjectValidation(lObject);
       return lObject;
+    }
+  }
+
+  static final class ReadOnlyClientBuilderImpl
+      extends ReadOnlyClientBuilder<ReadOnlyClient, ReadOnlyClientBuilderImpl> {
+    protected ReadOnlyClientBuilderImpl( ) {
+    }
+
+    protected ReadOnlyClientBuilderImpl( ReadOnlyClient pObject ) {
+      super(pObject);
+    }
+
+    @Override
+    protected ReadOnlyClientBuilderImpl self( ) {
+      return this;
+    }
+
+    @Override
+    public ReadOnlyClient build( ) {
+      return new ReadOnlyClient(this);
     }
   }
 
@@ -242,7 +262,7 @@ public class ReadOnlyClient {
    * @return {@link Builder} New builder that can be used to create new ReadOnlyClient objects. The method never returns
    * null.
    */
-  public Builder toBuilder( ) {
-    return new Builder(this);
+  public ReadOnlyClientBuilder<?, ?> toBuilder( ) {
+    return new ReadOnlyClientBuilderImpl(this);
   }
 }

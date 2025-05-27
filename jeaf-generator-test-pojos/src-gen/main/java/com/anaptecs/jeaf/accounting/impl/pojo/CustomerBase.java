@@ -10,6 +10,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Objects;
 import java.util.Set;
 
 import javax.annotation.Generated;
@@ -60,11 +61,18 @@ public abstract class CustomerBase extends Partner {
   private Set<Account> accounts;
 
   /**
+   * Attribute is required for correct handling of bidirectional associations in case of deserialization.
+   */
+  private transient boolean accountsBackReferenceInitialized;
+
+  /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   protected CustomerBase( ) {
     accounts = new HashSet<>();
+    // Bidirectional back reference is not yet set up correctly
+    accountsBackReferenceInitialized = false;
   }
 
   /**
@@ -89,6 +97,8 @@ public abstract class CustomerBase extends Partner {
     else {
       accounts = new HashSet<>();
     }
+    // Bidirectional back reference is set up correctly as a builder is used.
+    accountsBackReferenceInitialized = true;
   }
 
   /**
@@ -282,6 +292,14 @@ public abstract class CustomerBase extends Partner {
    * returned collection is unmodifiable.
    */
   public Set<Account> getAccounts( ) {
+    // Due to restrictions in JSON serialization / deserialization bi-directional associations need a special handling
+    // after an object was deserialized.
+    if (accountsBackReferenceInitialized == false) {
+      accountsBackReferenceInitialized = true;
+      for (Account lNext : accounts) {
+        lNext.setOwner((Customer) this);
+      }
+    }
     // Return all Account objects as unmodifiable collection.
     return Collections.unmodifiableSet(accounts);
   }
@@ -375,6 +393,40 @@ public abstract class CustomerBase extends Partner {
    * @return {@link String}
    */
   public abstract String getDisplayName( );
+
+  @Override
+  public int hashCode( ) {
+    final int lPrime = 31;
+    int lResult = super.hashCode();
+    lResult = lPrime * lResult + Objects.hashCode(name);
+    lResult = lPrime * lResult + Objects.hashCode(firstName);
+    lResult = lPrime * lResult + Objects.hashCode(email);
+    lResult = lPrime * lResult + Objects.hashCode(accounts);
+    return lResult;
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (!super.equals(pObject)) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      CustomerBase lOther = (CustomerBase) pObject;
+      lEquals = Objects.equals(name, lOther.name) && Objects.equals(firstName, lOther.firstName)
+          && Objects.equals(email, lOther.email) && Objects.equals(accounts, lOther.accounts);
+    }
+    return lEquals;
+  }
 
   /**
    * Method returns a StringBuilder that can be used to create a String representation of this object. The returned

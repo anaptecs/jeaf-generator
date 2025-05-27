@@ -18,11 +18,14 @@ import com.anaptecs.jeaf.xfun.api.common.ObjectIdentity;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonIdentityInfo(property = "objectID", generator = ObjectIdGenerators.PropertyGenerator.class)
+@JsonDeserialize(builder = POJOWithID.POJOWithIDBuilderImpl.class)
 public class POJOWithID implements Identifiable<ObjectID> {
   /**
    * Constant for the name of attribute "attr".
@@ -55,20 +58,11 @@ public class POJOWithID implements Identifiable<ObjectID> {
   private final Integer integerWithDefault;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected POJOWithID( ) {
-    objectID = null;
-    integerWithDefault = 47110815;
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected POJOWithID( Builder pBuilder ) {
+  protected POJOWithID( POJOWithIDBuilder<?, ?> pBuilder ) {
     // Ensure that builder is not null.
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read object ID.
@@ -90,8 +84,8 @@ public class POJOWithID implements Identifiable<ObjectID> {
    *
    * @return {@link Builder} New builder that can be used to create new POJOWithID objects.
    */
-  public static Builder builder( ) {
-    return new Builder();
+  public static POJOWithIDBuilder<?, ?> builder( ) {
+    return new POJOWithIDBuilderImpl();
   }
 
   /**
@@ -104,10 +98,10 @@ public class POJOWithID implements Identifiable<ObjectID> {
    *
    * @param pIntegerWithDefault Value to which {@link #integerWithDefault} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.pojo.POJOWithID}
+   * @return {@link POJOWithID}
    */
   public static POJOWithID of( Double pAttr, String pName, Integer pIntegerWithDefault ) {
-    POJOWithID.Builder lBuilder = POJOWithID.builder();
+    POJOWithIDBuilder<?, ?> lBuilder = POJOWithID.builder();
     lBuilder.setAttr(pAttr);
     lBuilder.setName(pName);
     lBuilder.setIntegerWithDefault(pIntegerWithDefault);
@@ -117,7 +111,8 @@ public class POJOWithID implements Identifiable<ObjectID> {
   /**
    * Class implements builder to create a new instance of class <code>POJOWithID</code>.
    */
-  public static class Builder {
+  @JsonPOJOBuilder(withPrefix = "set")
+  public static abstract class POJOWithIDBuilder<T extends POJOWithID, B extends POJOWithIDBuilder<T, B>> {
     /**
      * Reference to the identifier of this object. The reference may be null since an id is not mandatory.
      */
@@ -134,18 +129,17 @@ public class POJOWithID implements Identifiable<ObjectID> {
     private Integer integerWithDefault = 47110815;
 
     /**
-     * Use {@link POJOWithID#builder()} instead of private constructor to create new builder.
+     * Use {@link POJOWithIDBuilder#builder()} instead of private constructor to create new builder.
      */
-    protected Builder( ) {
+    protected POJOWithIDBuilder( ) {
     }
 
     /**
-     * Use {@link POJOWithID#builder(POJOWithID)} instead of private constructor to create new builder.
+     * Use {@link POJOWithIDBuilder#builder(POJOWithID)} instead of private constructor to create new builder.
      */
-    protected Builder( POJOWithID pObject ) {
+    protected POJOWithIDBuilder( POJOWithID pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
-        objectID = pObject.objectID;
         this.setAttr(pObject.attr);
         this.setName(pObject.name);
         this.setIntegerWithDefault(pObject.integerWithDefault);
@@ -156,55 +150,58 @@ public class POJOWithID implements Identifiable<ObjectID> {
      * Method sets the identifier for the object created using the builder. The reference may be null since an id is not
      * mandatory.
      */
-    public Builder setID( ObjectIdentity<?> pObjectID ) {
+    public B setID( ObjectIdentity<?> pObjectID ) {
       objectID = pObjectID;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #attr}.<br/>
      *
      * @param pAttr Value to which {@link #attr} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setAttr( Double pAttr ) {
+    public B setAttr( Double pAttr ) {
       // Assign value to attribute
       attr = pAttr;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #name}.<br/>
      *
      * @param pName Value to which {@link #name} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setName( String pName ) {
+    public B setName( String pName ) {
       // Assign value to attribute
       name = pName;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #integerWithDefault}.<br/>
      *
      * @param pIntegerWithDefault Value to which {@link #integerWithDefault} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setIntegerWithDefault( Integer pIntegerWithDefault ) {
+    public B setIntegerWithDefault( Integer pIntegerWithDefault ) {
       // Assign value to attribute
       integerWithDefault = pIntegerWithDefault;
-      return this;
+      return this.self();
     }
+
+    /**
+     * Method returns instance of this builder. Operation is part of genric builder pattern.
+     */
+    protected abstract B self( );
 
     /**
      * Method creates a new instance of class POJOWithID. The object will be initialized with the values of the builder.
      *
      * @return POJOWithID Created object. The method never returns null.
      */
-    public POJOWithID build( ) {
-      return new POJOWithID(this);
-    }
+    public abstract T build( );
 
     /**
      * Method creates a new validated instance of class POJOWithID. The object will be initialized with the values of
@@ -217,6 +214,25 @@ public class POJOWithID implements Identifiable<ObjectID> {
       POJOWithID lObject = this.build();
       ValidationTools.getValidationTools().enforceObjectValidation(lObject);
       return lObject;
+    }
+  }
+
+  static final class POJOWithIDBuilderImpl extends POJOWithIDBuilder<POJOWithID, POJOWithIDBuilderImpl> {
+    protected POJOWithIDBuilderImpl( ) {
+    }
+
+    protected POJOWithIDBuilderImpl( POJOWithID pObject ) {
+      super(pObject);
+    }
+
+    @Override
+    protected POJOWithIDBuilderImpl self( ) {
+      return this;
+    }
+
+    @Override
+    public POJOWithID build( ) {
+      return new POJOWithID(this);
     }
   }
 
@@ -367,7 +383,7 @@ public class POJOWithID implements Identifiable<ObjectID> {
    * @return {@link Builder} New builder that can be used to create new POJOWithID objects. The method never returns
    * null.
    */
-  public Builder toBuilder( ) {
-    return new Builder(this);
+  public POJOWithIDBuilder<?, ?> toBuilder( ) {
+    return new POJOWithIDBuilderImpl(this);
   }
 }

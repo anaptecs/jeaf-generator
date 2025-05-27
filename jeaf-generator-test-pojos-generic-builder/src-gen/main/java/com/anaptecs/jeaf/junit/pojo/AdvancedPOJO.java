@@ -10,16 +10,9 @@ import javax.validation.Valid;
 @Valid
 public class AdvancedPOJO extends AdvancedPOJOBase {
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected AdvancedPOJO( ) {
-  }
-
-  /**
    * Initialize object. Nothing special to do.
    */
-  protected AdvancedPOJO( AdvancedPOJO.BuilderBase pBuilder ) {
+  protected AdvancedPOJO( AdvancedPOJOBuilder<?, ?> pBuilder ) {
     super(pBuilder);
   }
 
@@ -28,27 +21,8 @@ public class AdvancedPOJO extends AdvancedPOJOBase {
    *
    * @return {@link Builder} New builder that can be used to create new AdvancedPOJO objects.
    */
-  public static Builder builder( ) {
-    return new Builder();
-  }
-
-  /**
-   * Class implements builder to create a new instance of class AdvancedPOJO. As the class has readonly attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
-   */
-  public static class Builder extends AdvancedPOJO.BuilderBase {
-    /**
-     * Use {@link AdvancedPOJO#builder()} instead of protected constructor to create new builder.
-     */
-    protected Builder( ) {
-    }
-
-    /**
-     * Use {@link AdvancedPOJO#builder(AdvancedPOJO)} instead of protected constructor to create new builder.
-     */
-    protected Builder( AdvancedPOJO pObject ) {
-      super(pObject);
-    }
+  public static AdvancedPOJOBuilder<?, ?> builder( ) {
+    return new AdvancedPOJOBuilderImpl();
   }
 
   /**

@@ -17,12 +17,13 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonSetter;
-import com.fasterxml.jackson.annotation.Nulls;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(builder = SoftLinkChildB.SoftLinkChildBBuilderImpl.class)
 public class SoftLinkChildB extends SoftLinkParent {
   /**
    * Constant for the name of attribute "heyBrother".
@@ -51,7 +52,6 @@ public class SoftLinkChildB extends SoftLinkParent {
    * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #softLinkPartners} is
    * <code>com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkPartner</code><br/>
    */
-  @JsonSetter(nulls = Nulls.SKIP)
   private Set<String> softLinkPartnerIDs;
 
   /**
@@ -62,19 +62,11 @@ public class SoftLinkChildB extends SoftLinkParent {
   private SoftLinkID oneLinkID;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected SoftLinkChildB( ) {
-    softLinkPartnerIDs = new HashSet<>();
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected SoftLinkChildB( Builder pBuilder ) {
+  protected SoftLinkChildB( SoftLinkChildBBuilder<?, ?> pBuilder ) {
     // Call constructor of super class.
     super(pBuilder);
     // Read attribute values from builder.
@@ -93,8 +85,8 @@ public class SoftLinkChildB extends SoftLinkParent {
    *
    * @return {@link Builder} New builder that can be used to create new SoftLinkChildB objects.
    */
-  public static Builder builder( ) {
-    return new Builder();
+  public static SoftLinkChildBBuilder<?, ?> builder( ) {
+    return new SoftLinkChildBBuilderImpl();
   }
 
   /**
@@ -107,10 +99,10 @@ public class SoftLinkChildB extends SoftLinkParent {
    *
    * @param pOneLink Value to which {@link #oneLink} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkChildB}
+   * @return {@link SoftLinkChildB}
    */
   public static SoftLinkChildB of( Set<SoftLinkID> pPartnerIDs, SoftLinkID pThePartnerID, SoftLinkID pOneLinkID ) {
-    SoftLinkChildB.Builder lBuilder = SoftLinkChildB.builder();
+    SoftLinkChildBBuilder<?, ?> lBuilder = SoftLinkChildB.builder();
     lBuilder.setPartnerIDs(pPartnerIDs);
     lBuilder.setThePartnerID(pThePartnerID);
     lBuilder.setOneLinkID(pOneLinkID);
@@ -120,7 +112,9 @@ public class SoftLinkChildB extends SoftLinkParent {
   /**
    * Class implements builder to create a new instance of class <code>SoftLinkChildB</code>.
    */
-  public static class Builder extends SoftLinkParent.Builder {
+  @JsonPOJOBuilder(withPrefix = "set")
+  public static abstract class SoftLinkChildBBuilder<T extends SoftLinkChildB, B extends SoftLinkChildBBuilder<T, B>>
+      extends SoftLinkParentBuilder<T, B> {
     /**
      * <p/>
      * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #heyBrother} is
@@ -143,16 +137,16 @@ public class SoftLinkChildB extends SoftLinkParent {
     private SoftLinkID oneLinkID;
 
     /**
-     * Use {@link SoftLinkChildB#builder()} instead of private constructor to create new builder.
+     * Use {@link SoftLinkChildBBuilder#builder()} instead of private constructor to create new builder.
      */
-    protected Builder( ) {
+    protected SoftLinkChildBBuilder( ) {
       super();
     }
 
     /**
-     * Use {@link SoftLinkChildB#builder(SoftLinkChildB)} instead of private constructor to create new builder.
+     * Use {@link SoftLinkChildBBuilder#builder(SoftLinkChildB)} instead of private constructor to create new builder.
      */
-    protected Builder( SoftLinkChildB pObject ) {
+    protected SoftLinkChildBBuilder( SoftLinkChildB pObject ) {
       super(pObject);
       if (pObject != null) {
         // Read attribute values from passed object.
@@ -163,62 +157,23 @@ public class SoftLinkChildB extends SoftLinkParent {
     }
 
     /**
-     * Method sets association {@link #partners}.<br/>
-     *
-     * @param pPartners Collection to which {@link #partners} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
-     */
-    @Override
-    public Builder setPartnerIDs( Set<SoftLinkID> pPartners ) {
-      // Call super class implementation.
-      super.setPartnerIDs(pPartners);
-      return this;
-    }
-
-    /**
-     * Method sets association {@link #thePartner}.<br/>
-     *
-     * @param pThePartner Value to which {@link #thePartner} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
-     */
-    @Override
-    public Builder setThePartnerID( SoftLinkID pThePartner ) {
-      // Call super class implementation.
-      super.setThePartnerID(pThePartner);
-      return this;
-    }
-
-    /**
-     * Method sets association {@link #readonlyPartner}.<br/>
-     *
-     * @param pReadonlyPartner Value to which {@link #readonlyPartner} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
-     */
-    @Override
-    public Builder setReadonlyPartnerID( SoftLinkID pReadonlyPartner ) {
-      // Call super class implementation.
-      super.setReadonlyPartnerID(pReadonlyPartner);
-      return this;
-    }
-
-    /**
      * Method sets association {@link #heyBrother}.<br/>
      *
      * @param pHeyBrother Value to which {@link #heyBrother} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setHeyBrotherID( String pHeyBrother ) {
+    public B setHeyBrotherID( String pHeyBrother ) {
       heyBrotherID = pHeyBrother;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets association {@link #softLinkPartners}.<br/>
      *
      * @param pSoftLinkPartners Collection to which {@link #softLinkPartners} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setSoftLinkPartnerIDs( Set<String> pSoftLinkPartners ) {
+    public B setSoftLinkPartnerIDs( Set<String> pSoftLinkPartners ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pSoftLinkPartners != null) {
         softLinkPartnerIDs = new HashSet<String>(pSoftLinkPartners);
@@ -226,19 +181,25 @@ public class SoftLinkChildB extends SoftLinkParent {
       else {
         softLinkPartnerIDs = null;
       }
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets association {@link #oneLink}.<br/>
      *
      * @param pOneLink Value to which {@link #oneLink} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setOneLinkID( SoftLinkID pOneLink ) {
+    public B setOneLinkID( SoftLinkID pOneLink ) {
       oneLinkID = pOneLink;
-      return this;
+      return this.self();
     }
+
+    @Override
+    /**
+     * Method returns instance of this builder. Operation is part of genric builder pattern.
+     */
+    protected abstract B self( );
 
     /**
      * Method creates a new instance of class SoftLinkChildB. The object will be initialized with the values of the
@@ -246,9 +207,7 @@ public class SoftLinkChildB extends SoftLinkParent {
      *
      * @return SoftLinkChildB Created object. The method never returns null.
      */
-    public SoftLinkChildB build( ) {
-      return new SoftLinkChildB(this);
-    }
+    public abstract T build( );
 
     /**
      * Method creates a new validated instance of class SoftLinkChildB. The object will be initialized with the values
@@ -261,6 +220,26 @@ public class SoftLinkChildB extends SoftLinkParent {
       SoftLinkChildB lObject = this.build();
       ValidationTools.getValidationTools().enforceObjectValidation(lObject);
       return lObject;
+    }
+  }
+
+  static final class SoftLinkChildBBuilderImpl
+      extends SoftLinkChildBBuilder<SoftLinkChildB, SoftLinkChildBBuilderImpl> {
+    protected SoftLinkChildBBuilderImpl( ) {
+    }
+
+    protected SoftLinkChildBBuilderImpl( SoftLinkChildB pObject ) {
+      super(pObject);
+    }
+
+    @Override
+    protected SoftLinkChildBBuilderImpl self( ) {
+      return this;
+    }
+
+    @Override
+    public SoftLinkChildB build( ) {
+      return new SoftLinkChildB(this);
     }
   }
 
@@ -470,7 +449,7 @@ public class SoftLinkChildB extends SoftLinkParent {
    * @return {@link Builder} New builder that can be used to create new SoftLinkChildB objects. The method never returns
    * null.
    */
-  public Builder toBuilder( ) {
-    return new Builder(this);
+  public SoftLinkChildBBuilder<?, ?> toBuilder( ) {
+    return new SoftLinkChildBBuilderImpl(this);
   }
 }

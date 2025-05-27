@@ -20,12 +20,13 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonSetter;
-import com.fasterxml.jackson.annotation.Nulls;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(builder = MasterClass.MasterClassBuilderImpl.class)
 public class MasterClass {
   /**
    * Constant for the name of attribute "clients".
@@ -42,7 +43,6 @@ public class MasterClass {
    */
   public static final String SINGLECLIENT = "singleClient";
 
-  @JsonSetter(nulls = Nulls.SKIP)
   private List<ClientClass> clients;
 
   /**
@@ -60,23 +60,11 @@ public class MasterClass {
   private transient boolean singleClientBackReferenceInitialized;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected MasterClass( ) {
-    clients = new ArrayList<>();
-    // Bidirectional back reference is not yet set up correctly
-    clientsBackReferenceInitialized = false;
-    // Bidirectional back reference is not yet set up correctly
-    singleClientBackReferenceInitialized = false;
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected MasterClass( Builder pBuilder ) {
+  protected MasterClass( MasterClassBuilder<?, ?> pBuilder ) {
     // Ensure that builder is not null.
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
@@ -107,8 +95,8 @@ public class MasterClass {
    *
    * @return {@link Builder} New builder that can be used to create new MasterClass objects.
    */
-  public static Builder builder( ) {
-    return new Builder();
+  public static MasterClassBuilder<?, ?> builder( ) {
+    return new MasterClassBuilderImpl();
   }
 
   /**
@@ -120,7 +108,7 @@ public class MasterClass {
    * @return {@link MasterClass}
    */
   public static MasterClass of( String pName ) {
-    MasterClass.Builder lBuilder = MasterClass.builder();
+    MasterClassBuilder<?, ?> lBuilder = MasterClass.builder();
     lBuilder.setName(pName);
     return lBuilder.build();
   }
@@ -128,7 +116,8 @@ public class MasterClass {
   /**
    * Class implements builder to create a new instance of class <code>MasterClass</code>.
    */
-  public static class Builder {
+  @JsonPOJOBuilder(withPrefix = "set")
+  public static abstract class MasterClassBuilder<T extends MasterClass, B extends MasterClassBuilder<T, B>> {
     private List<ClientClass> clients;
 
     private String name;
@@ -136,15 +125,15 @@ public class MasterClass {
     private ClientClass singleClient;
 
     /**
-     * Use {@link MasterClass#builder()} instead of private constructor to create new builder.
+     * Use {@link MasterClassBuilder#builder()} instead of private constructor to create new builder.
      */
-    protected Builder( ) {
+    protected MasterClassBuilder( ) {
     }
 
     /**
-     * Use {@link MasterClass#builder(MasterClass)} instead of private constructor to create new builder.
+     * Use {@link MasterClassBuilder#builder(MasterClass)} instead of private constructor to create new builder.
      */
-    protected Builder( MasterClass pObject ) {
+    protected MasterClassBuilder( MasterClass pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setClients(pObject.clients);
@@ -157,9 +146,9 @@ public class MasterClass {
      * Method sets association {@link #clients}.<br/>
      *
      * @param pClients Collection to which {@link #clients} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setClients( List<ClientClass> pClients ) {
+    public B setClients( List<ClientClass> pClients ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pClients != null) {
         clients = new ArrayList<ClientClass>(pClients);
@@ -167,47 +156,52 @@ public class MasterClass {
       else {
         clients = null;
       }
-      return this;
+      return this.self();
     }
 
     /**
      * Method adds the passed objects to association {@link #clients}.<br/>
      *
      * @param pClients Array of objects that should be added to {@link #clients}. The parameter may be null.
-     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining. Method never returns null.
      */
-    public Builder addToClients( ClientClass... pClients ) {
+    public B addToClients( ClientClass... pClients ) {
       if (pClients != null) {
         if (clients == null) {
           clients = new ArrayList<ClientClass>();
         }
         clients.addAll(Arrays.asList(pClients));
       }
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #name}.<br/>
      *
      * @param pName Value to which {@link #name} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setName( String pName ) {
+    public B setName( String pName ) {
       // Assign value to attribute
       name = pName;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets association {@link #singleClient}.<br/>
      *
      * @param pSingleClient Value to which {@link #singleClient} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setSingleClient( ClientClass pSingleClient ) {
+    public B setSingleClient( ClientClass pSingleClient ) {
       singleClient = pSingleClient;
-      return this;
+      return this.self();
     }
+
+    /**
+     * Method returns instance of this builder. Operation is part of genric builder pattern.
+     */
+    protected abstract B self( );
 
     /**
      * Method creates a new instance of class MasterClass. The object will be initialized with the values of the
@@ -215,9 +209,7 @@ public class MasterClass {
      *
      * @return MasterClass Created object. The method never returns null.
      */
-    public MasterClass build( ) {
-      return new MasterClass(this);
-    }
+    public abstract T build( );
 
     /**
      * Method creates a new validated instance of class MasterClass. The object will be initialized with the values of
@@ -230,6 +222,25 @@ public class MasterClass {
       MasterClass lObject = this.build();
       ValidationTools.getValidationTools().enforceObjectValidation(lObject);
       return lObject;
+    }
+  }
+
+  static final class MasterClassBuilderImpl extends MasterClassBuilder<MasterClass, MasterClassBuilderImpl> {
+    protected MasterClassBuilderImpl( ) {
+    }
+
+    protected MasterClassBuilderImpl( MasterClass pObject ) {
+      super(pObject);
+    }
+
+    @Override
+    protected MasterClassBuilderImpl self( ) {
+      return this;
+    }
+
+    @Override
+    public MasterClass build( ) {
+      return new MasterClass(this);
     }
   }
 
@@ -473,7 +484,7 @@ public class MasterClass {
    * @return {@link Builder} New builder that can be used to create new MasterClass objects. The method never returns
    * null.
    */
-  public Builder toBuilder( ) {
-    return new Builder(this);
+  public MasterClassBuilder<?, ?> toBuilder( ) {
+    return new MasterClassBuilderImpl(this);
   }
 }

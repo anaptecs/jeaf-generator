@@ -19,10 +19,13 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(builder = ClientClass.ClientClassBuilderImpl.class)
 public class ClientClass {
   /**
    * Constant for the name of attribute "transientMaster".
@@ -46,19 +49,11 @@ public class ClientClass {
   private transient List<MasterClass> manyMasters;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected ClientClass( ) {
-    manyMasters = new ArrayList<>();
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected ClientClass( Builder pBuilder ) {
+  protected ClientClass( ClientClassBuilder<?, ?> pBuilder ) {
     // Ensure that builder is not null.
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
@@ -71,8 +66,8 @@ public class ClientClass {
    *
    * @return {@link Builder} New builder that can be used to create new ClientClass objects.
    */
-  public static Builder builder( ) {
-    return new Builder();
+  public static ClientClassBuilder<?, ?> builder( ) {
+    return new ClientClassBuilderImpl();
   }
 
   /**
@@ -84,7 +79,7 @@ public class ClientClass {
    * @return {@link ClientClass}
    */
   public static ClientClass of( String pName ) {
-    ClientClass.Builder lBuilder = ClientClass.builder();
+    ClientClassBuilder<?, ?> lBuilder = ClientClass.builder();
     lBuilder.setName(pName);
     return lBuilder.build();
   }
@@ -92,19 +87,20 @@ public class ClientClass {
   /**
    * Class implements builder to create a new instance of class <code>ClientClass</code>.
    */
-  public static class Builder {
+  @JsonPOJOBuilder(withPrefix = "set")
+  public static abstract class ClientClassBuilder<T extends ClientClass, B extends ClientClassBuilder<T, B>> {
     private String name;
 
     /**
-     * Use {@link ClientClass#builder()} instead of private constructor to create new builder.
+     * Use {@link ClientClassBuilder#builder()} instead of private constructor to create new builder.
      */
-    protected Builder( ) {
+    protected ClientClassBuilder( ) {
     }
 
     /**
-     * Use {@link ClientClass#builder(ClientClass)} instead of private constructor to create new builder.
+     * Use {@link ClientClassBuilder#builder(ClientClass)} instead of private constructor to create new builder.
      */
-    protected Builder( ClientClass pObject ) {
+    protected ClientClassBuilder( ClientClass pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setName(pObject.name);
@@ -115,13 +111,18 @@ public class ClientClass {
      * Method sets attribute {@link #name}.<br/>
      *
      * @param pName Value to which {@link #name} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setName( String pName ) {
+    public B setName( String pName ) {
       // Assign value to attribute
       name = pName;
-      return this;
+      return this.self();
     }
+
+    /**
+     * Method returns instance of this builder. Operation is part of genric builder pattern.
+     */
+    protected abstract B self( );
 
     /**
      * Method creates a new instance of class ClientClass. The object will be initialized with the values of the
@@ -129,9 +130,7 @@ public class ClientClass {
      *
      * @return ClientClass Created object. The method never returns null.
      */
-    public ClientClass build( ) {
-      return new ClientClass(this);
-    }
+    public abstract T build( );
 
     /**
      * Method creates a new validated instance of class ClientClass. The object will be initialized with the values of
@@ -144,6 +143,25 @@ public class ClientClass {
       ClientClass lObject = this.build();
       ValidationTools.getValidationTools().enforceObjectValidation(lObject);
       return lObject;
+    }
+  }
+
+  static final class ClientClassBuilderImpl extends ClientClassBuilder<ClientClass, ClientClassBuilderImpl> {
+    protected ClientClassBuilderImpl( ) {
+    }
+
+    protected ClientClassBuilderImpl( ClientClass pObject ) {
+      super(pObject);
+    }
+
+    @Override
+    protected ClientClassBuilderImpl self( ) {
+      return this;
+    }
+
+    @Override
+    public ClientClass build( ) {
+      return new ClientClass(this);
     }
   }
 
@@ -320,7 +338,7 @@ public class ClientClass {
    * @return {@link Builder} New builder that can be used to create new ClientClass objects. The method never returns
    * null.
    */
-  public Builder toBuilder( ) {
-    return new Builder(this);
+  public ClientClassBuilder<?, ?> toBuilder( ) {
+    return new ClientClassBuilderImpl(this);
   }
 }

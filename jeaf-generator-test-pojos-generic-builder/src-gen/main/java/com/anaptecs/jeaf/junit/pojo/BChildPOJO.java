@@ -12,11 +12,14 @@ import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
 @Deprecated
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(builder = BChildPOJO.BChildPOJOBuilderImpl.class)
 public class BChildPOJO extends BParentPOJO {
   /**
    * Constant for the name of attribute "weirdAttribute".
@@ -33,18 +36,11 @@ public class BChildPOJO extends BParentPOJO {
   private Integer childAttribute;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected BChildPOJO( ) {
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected BChildPOJO( Builder pBuilder ) {
+  protected BChildPOJO( BChildPOJOBuilder<?, ?> pBuilder ) {
     // Call constructor of super class.
     super(pBuilder);
     // Read attribute values from builder.
@@ -57,8 +53,8 @@ public class BChildPOJO extends BParentPOJO {
    *
    * @return {@link Builder} New builder that can be used to create new BChildPOJO objects.
    */
-  public static Builder builder( ) {
-    return new Builder();
+  public static BChildPOJOBuilder<?, ?> builder( ) {
+    return new BChildPOJOBuilderImpl();
   }
 
   /**
@@ -71,10 +67,10 @@ public class BChildPOJO extends BParentPOJO {
    *
    * @param pChildAttribute Value to which {@link #childAttribute} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.pojo.BChildPOJO}
+   * @return {@link BChildPOJO}
    */
   public static BChildPOJO of( String pParentAttribute, byte pWeirdAttribute, Integer pChildAttribute ) {
-    BChildPOJO.Builder lBuilder = BChildPOJO.builder();
+    BChildPOJOBuilder<?, ?> lBuilder = BChildPOJO.builder();
     lBuilder.setParentAttribute(pParentAttribute);
     lBuilder.setWeirdAttribute(pWeirdAttribute);
     lBuilder.setChildAttribute(pChildAttribute);
@@ -85,22 +81,24 @@ public class BChildPOJO extends BParentPOJO {
    * Class implements builder to create a new instance of class <code>BChildPOJO</code>.
    */
   @Deprecated
-  public static class Builder extends BParentPOJO.Builder {
+  @JsonPOJOBuilder(withPrefix = "set")
+  public static abstract class BChildPOJOBuilder<T extends BChildPOJO, B extends BChildPOJOBuilder<T, B>>
+      extends BParentPOJOBuilder<T, B> {
     private byte weirdAttribute;
 
     private Integer childAttribute;
 
     /**
-     * Use {@link BChildPOJO#builder()} instead of private constructor to create new builder.
+     * Use {@link BChildPOJOBuilder#builder()} instead of private constructor to create new builder.
      */
-    protected Builder( ) {
+    protected BChildPOJOBuilder( ) {
       super();
     }
 
     /**
-     * Use {@link BChildPOJO#builder(BChildPOJO)} instead of private constructor to create new builder.
+     * Use {@link BChildPOJOBuilder#builder(BChildPOJO)} instead of private constructor to create new builder.
      */
-    protected Builder( BChildPOJO pObject ) {
+    protected BChildPOJOBuilder( BChildPOJO pObject ) {
       super(pObject);
       if (pObject != null) {
         // Read attribute values from passed object.
@@ -110,50 +108,41 @@ public class BChildPOJO extends BParentPOJO {
     }
 
     /**
-     * Method sets attribute {@link #parentAttribute}.<br/>
-     *
-     * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
-     */
-    @Override
-    public Builder setParentAttribute( String pParentAttribute ) {
-      // Call super class implementation.
-      super.setParentAttribute(pParentAttribute);
-      return this;
-    }
-
-    /**
      * Method sets attribute {@link #weirdAttribute}.<br/>
      *
      * @param pWeirdAttribute Value to which {@link #weirdAttribute} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setWeirdAttribute( byte pWeirdAttribute ) {
+    public B setWeirdAttribute( byte pWeirdAttribute ) {
       // Assign value to attribute
       weirdAttribute = pWeirdAttribute;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #childAttribute}.<br/>
      *
      * @param pChildAttribute Value to which {@link #childAttribute} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setChildAttribute( Integer pChildAttribute ) {
+    public B setChildAttribute( Integer pChildAttribute ) {
       // Assign value to attribute
       childAttribute = pChildAttribute;
-      return this;
+      return this.self();
     }
+
+    @Override
+    /**
+     * Method returns instance of this builder. Operation is part of genric builder pattern.
+     */
+    protected abstract B self( );
 
     /**
      * Method creates a new instance of class BChildPOJO. The object will be initialized with the values of the builder.
      *
      * @return BChildPOJO Created object. The method never returns null.
      */
-    public BChildPOJO build( ) {
-      return new BChildPOJO(this);
-    }
+    public abstract T build( );
 
     /**
      * Method creates a new validated instance of class BChildPOJO. The object will be initialized with the values of
@@ -166,6 +155,25 @@ public class BChildPOJO extends BParentPOJO {
       BChildPOJO lObject = this.build();
       ValidationTools.getValidationTools().enforceObjectValidation(lObject);
       return lObject;
+    }
+  }
+
+  static final class BChildPOJOBuilderImpl extends BChildPOJOBuilder<BChildPOJO, BChildPOJOBuilderImpl> {
+    protected BChildPOJOBuilderImpl( ) {
+    }
+
+    protected BChildPOJOBuilderImpl( BChildPOJO pObject ) {
+      super(pObject);
+    }
+
+    @Override
+    protected BChildPOJOBuilderImpl self( ) {
+      return this;
+    }
+
+    @Override
+    public BChildPOJO build( ) {
+      return new BChildPOJO(this);
     }
   }
 
@@ -275,7 +283,7 @@ public class BChildPOJO extends BParentPOJO {
    * @return {@link Builder} New builder that can be used to create new BChildPOJO objects. The method never returns
    * null.
    */
-  public Builder toBuilder( ) {
-    return new Builder(this);
+  public BChildPOJOBuilder<?, ?> toBuilder( ) {
+    return new BChildPOJOBuilderImpl(this);
   }
 }

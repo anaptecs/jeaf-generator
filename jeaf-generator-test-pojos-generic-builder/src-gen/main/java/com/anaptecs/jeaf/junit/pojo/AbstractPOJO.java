@@ -13,6 +13,7 @@ import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
@@ -30,18 +31,11 @@ public abstract class AbstractPOJO {
   private String abtractAttr;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected AbstractPOJO( ) {
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected AbstractPOJO( Builder pBuilder ) {
+  protected AbstractPOJO( AbstractPOJOBuilder<?, ?> pBuilder ) {
     // Ensure that builder is not null.
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
@@ -51,19 +45,20 @@ public abstract class AbstractPOJO {
   /**
    * Class implements builder to create a new instance of class <code>AbstractPOJO</code>.
    */
-  public static abstract class Builder {
+  @JsonPOJOBuilder(withPrefix = "set")
+  public static abstract class AbstractPOJOBuilder<T extends AbstractPOJO, B extends AbstractPOJOBuilder<T, B>> {
     private String abtractAttr;
 
     /**
-     * Use {@link AbstractPOJO#builder()} instead of private constructor to create new builder.
+     * Use {@link AbstractPOJOBuilder#builder()} instead of private constructor to create new builder.
      */
-    protected Builder( ) {
+    protected AbstractPOJOBuilder( ) {
     }
 
     /**
-     * Use {@link AbstractPOJO#builder(AbstractPOJO)} instead of private constructor to create new builder.
+     * Use {@link AbstractPOJOBuilder#builder(AbstractPOJO)} instead of private constructor to create new builder.
      */
-    protected Builder( AbstractPOJO pObject ) {
+    protected AbstractPOJOBuilder( AbstractPOJO pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setAbtractAttr(pObject.abtractAttr);
@@ -74,13 +69,18 @@ public abstract class AbstractPOJO {
      * Method sets attribute {@link #abtractAttr}.<br/>
      *
      * @param pAbtractAttr Value to which {@link #abtractAttr} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setAbtractAttr( String pAbtractAttr ) {
+    public B setAbtractAttr( String pAbtractAttr ) {
       // Assign value to attribute
       abtractAttr = pAbtractAttr;
-      return this;
+      return this.self();
     }
+
+    /**
+     * Method returns instance of this builder. Operation is part of genric builder pattern.
+     */
+    protected abstract B self( );
   }
 
   /**

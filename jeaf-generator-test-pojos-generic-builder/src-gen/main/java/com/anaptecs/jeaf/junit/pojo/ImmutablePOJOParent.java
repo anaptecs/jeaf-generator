@@ -12,10 +12,13 @@ import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(builder = ImmutablePOJOParent.ImmutablePOJOParentBuilderImpl.class)
 public class ImmutablePOJOParent extends AbstractPOJO {
   /**
    * Constant for the name of attribute "parentAttribute".
@@ -32,19 +35,11 @@ public class ImmutablePOJOParent extends AbstractPOJO {
   private Integer anotherParentAttribute;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected ImmutablePOJOParent( ) {
-    parentAttribute = null;
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected ImmutablePOJOParent( Builder pBuilder ) {
+  protected ImmutablePOJOParent( ImmutablePOJOParentBuilder<?, ?> pBuilder ) {
     // Call constructor of super class.
     super(pBuilder);
     // Read attribute values from builder.
@@ -57,8 +52,8 @@ public class ImmutablePOJOParent extends AbstractPOJO {
    *
    * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
    */
-  public static Builder builder( ) {
-    return new Builder();
+  public static ImmutablePOJOParentBuilder<?, ?> builder( ) {
+    return new ImmutablePOJOParentBuilderImpl();
   }
 
   /**
@@ -71,11 +66,11 @@ public class ImmutablePOJOParent extends AbstractPOJO {
    *
    * @param pAnotherParentAttribute Value to which {@link #anotherParentAttribute} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.pojo.ImmutablePOJOParent}
+   * @return {@link ImmutablePOJOParent}
    */
   public static ImmutablePOJOParent of( String pAbtractAttr, String pParentAttribute,
       Integer pAnotherParentAttribute ) {
-    ImmutablePOJOParent.Builder lBuilder = ImmutablePOJOParent.builder();
+    ImmutablePOJOParentBuilder<?, ?> lBuilder = ImmutablePOJOParent.builder();
     lBuilder.setAbtractAttr(pAbtractAttr);
     lBuilder.setParentAttribute(pParentAttribute);
     lBuilder.setAnotherParentAttribute(pAnotherParentAttribute);
@@ -85,23 +80,25 @@ public class ImmutablePOJOParent extends AbstractPOJO {
   /**
    * Class implements builder to create a new instance of class <code>ImmutablePOJOParent</code>.
    */
-  public static class Builder extends AbstractPOJO.Builder {
+  @JsonPOJOBuilder(withPrefix = "set")
+  public static abstract class ImmutablePOJOParentBuilder<T extends ImmutablePOJOParent, B extends ImmutablePOJOParentBuilder<T, B>>
+      extends AbstractPOJOBuilder<T, B> {
     private String parentAttribute;
 
     private Integer anotherParentAttribute;
 
     /**
-     * Use {@link ImmutablePOJOParent#builder()} instead of private constructor to create new builder.
+     * Use {@link ImmutablePOJOParentBuilder#builder()} instead of private constructor to create new builder.
      */
-    protected Builder( ) {
+    protected ImmutablePOJOParentBuilder( ) {
       super();
     }
 
     /**
-     * Use {@link ImmutablePOJOParent#builder(ImmutablePOJOParent)} instead of private constructor to create new
+     * Use {@link ImmutablePOJOParentBuilder#builder(ImmutablePOJOParent)} instead of private constructor to create new
      * builder.
      */
-    protected Builder( ImmutablePOJOParent pObject ) {
+    protected ImmutablePOJOParentBuilder( ImmutablePOJOParent pObject ) {
       super(pObject);
       if (pObject != null) {
         // Read attribute values from passed object.
@@ -111,41 +108,34 @@ public class ImmutablePOJOParent extends AbstractPOJO {
     }
 
     /**
-     * Method sets attribute {@link #abtractAttr}.<br/>
-     *
-     * @param pAbtractAttr Value to which {@link #abtractAttr} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
-     */
-    @Override
-    public Builder setAbtractAttr( String pAbtractAttr ) {
-      // Call super class implementation.
-      super.setAbtractAttr(pAbtractAttr);
-      return this;
-    }
-
-    /**
      * Method sets attribute {@link #parentAttribute}.<br/>
      *
      * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setParentAttribute( String pParentAttribute ) {
+    public B setParentAttribute( String pParentAttribute ) {
       // Assign value to attribute
       parentAttribute = pParentAttribute;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #anotherParentAttribute}.<br/>
      *
      * @param pAnotherParentAttribute Value to which {@link #anotherParentAttribute} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setAnotherParentAttribute( Integer pAnotherParentAttribute ) {
+    public B setAnotherParentAttribute( Integer pAnotherParentAttribute ) {
       // Assign value to attribute
       anotherParentAttribute = pAnotherParentAttribute;
-      return this;
+      return this.self();
     }
+
+    @Override
+    /**
+     * Method returns instance of this builder. Operation is part of genric builder pattern.
+     */
+    protected abstract B self( );
 
     /**
      * Method creates a new instance of class ImmutablePOJOParent. The object will be initialized with the values of the
@@ -153,9 +143,7 @@ public class ImmutablePOJOParent extends AbstractPOJO {
      *
      * @return ImmutablePOJOParent Created object. The method never returns null.
      */
-    public ImmutablePOJOParent build( ) {
-      return new ImmutablePOJOParent(this);
-    }
+    public abstract T build( );
 
     /**
      * Method creates a new validated instance of class ImmutablePOJOParent. The object will be initialized with the
@@ -168,6 +156,26 @@ public class ImmutablePOJOParent extends AbstractPOJO {
       ImmutablePOJOParent lObject = this.build();
       ValidationTools.getValidationTools().enforceObjectValidation(lObject);
       return lObject;
+    }
+  }
+
+  static final class ImmutablePOJOParentBuilderImpl
+      extends ImmutablePOJOParentBuilder<ImmutablePOJOParent, ImmutablePOJOParentBuilderImpl> {
+    protected ImmutablePOJOParentBuilderImpl( ) {
+    }
+
+    protected ImmutablePOJOParentBuilderImpl( ImmutablePOJOParent pObject ) {
+      super(pObject);
+    }
+
+    @Override
+    protected ImmutablePOJOParentBuilderImpl self( ) {
+      return this;
+    }
+
+    @Override
+    public ImmutablePOJOParent build( ) {
+      return new ImmutablePOJOParent(this);
     }
   }
 
@@ -268,7 +276,7 @@ public class ImmutablePOJOParent extends AbstractPOJO {
    * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects. The method never
    * returns null.
    */
-  public Builder toBuilder( ) {
-    return new Builder(this);
+  public ImmutablePOJOParentBuilder<?, ?> toBuilder( ) {
+    return new ImmutablePOJOParentBuilderImpl(this);
   }
 }
