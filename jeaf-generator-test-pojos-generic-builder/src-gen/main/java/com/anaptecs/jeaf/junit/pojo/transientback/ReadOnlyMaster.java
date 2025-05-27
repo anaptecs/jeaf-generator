@@ -25,7 +25,6 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonDeserialize(builder = ReadOnlyMaster.ReadOnlyMasterBuilderImpl.class)
 public class ReadOnlyMaster {
   /**
@@ -98,6 +97,7 @@ public class ReadOnlyMaster {
    * Class implements builder to create a new instance of class <code>ReadOnlyMaster</code>.
    */
   @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static abstract class ReadOnlyMasterBuilder<T extends ReadOnlyMaster, B extends ReadOnlyMasterBuilder<T, B>> {
     private String name;
 

@@ -9,6 +9,8 @@ import java.util.Objects;
 
 import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 public class ContextWithPrimitives {
   /**
@@ -54,18 +56,11 @@ public class ContextWithPrimitives {
   private Long aVeryLong;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  public ContextWithPrimitives( ) {
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected ContextWithPrimitives( Builder pBuilder ) {
+  protected ContextWithPrimitives( ContextWithPrimitivesBuilder<?, ?> pBuilder ) {
     // Read attribute values from builder.
     aBoolean = pBuilder.aBoolean;
     aBooleanWrapper = pBuilder.aBooleanWrapper;
@@ -80,8 +75,8 @@ public class ContextWithPrimitives {
    *
    * @return {@link Builder} New builder that can be used to create new ContextWithPrimitives objects.
    */
-  public static Builder builder( ) {
-    return new Builder();
+  public static ContextWithPrimitivesBuilder<?, ?> builder( ) {
+    return new ContextWithPrimitivesBuilderImpl();
   }
 
   /**
@@ -104,7 +99,7 @@ public class ContextWithPrimitives {
    */
   public static ContextWithPrimitives of( boolean pABoolean, Boolean pABooleanWrapper, int pAnInt, Integer pAnInteger,
       long pALong, Long pAVeryLong ) {
-    ContextWithPrimitives.Builder lBuilder = ContextWithPrimitives.builder();
+    ContextWithPrimitivesBuilder<?, ?> lBuilder = ContextWithPrimitives.builder();
     lBuilder.setABoolean(pABoolean);
     lBuilder.setABooleanWrapper(pABooleanWrapper);
     lBuilder.setAnInt(pAnInt);
@@ -117,7 +112,9 @@ public class ContextWithPrimitives {
   /**
    * Class implements builder to create a new instance of class <code>ContextWithPrimitives</code>.
    */
-  public static class Builder {
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  public static abstract class ContextWithPrimitivesBuilder<T extends ContextWithPrimitives, B extends ContextWithPrimitivesBuilder<T, B>> {
     private boolean aBoolean;
 
     private Boolean aBooleanWrapper;
@@ -131,16 +128,16 @@ public class ContextWithPrimitives {
     private Long aVeryLong;
 
     /**
-     * Use {@link ContextWithPrimitives#builder()} instead of private constructor to create new builder.
+     * Use {@link ContextWithPrimitivesBuilder#builder()} instead of private constructor to create new builder.
      */
-    protected Builder( ) {
+    protected ContextWithPrimitivesBuilder( ) {
     }
 
     /**
-     * Use {@link ContextWithPrimitives#builder(ContextWithPrimitives)} instead of private constructor to create new
-     * builder.
+     * Use {@link ContextWithPrimitivesBuilder#builder(ContextWithPrimitives)} instead of private constructor to create
+     * new builder.
      */
-    protected Builder( ContextWithPrimitives pObject ) {
+    protected ContextWithPrimitivesBuilder( ContextWithPrimitives pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setABoolean(pObject.aBoolean);
@@ -153,96 +150,81 @@ public class ContextWithPrimitives {
     }
 
     /**
-     * Method returns a new builder.
-     *
-     * @return {@link Builder} New builder that can be used to create new ContextWithPrimitives objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     *
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new ContextWithPrimitives objects. The method
-     * never returns null.
-     */
-    public static Builder newBuilder( ContextWithPrimitives pObject ) {
-      return new Builder(pObject);
-    }
-
-    /**
      * Method sets attribute {@link #aBoolean}.<br/>
      *
      * @param pABoolean Value to which {@link #aBoolean} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setABoolean( boolean pABoolean ) {
+    public B setABoolean( boolean pABoolean ) {
       // Assign value to attribute
       aBoolean = pABoolean;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #aBooleanWrapper}.<br/>
      *
      * @param pABooleanWrapper Value to which {@link #aBooleanWrapper} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setABooleanWrapper( @MyNotNullProperty Boolean pABooleanWrapper ) {
+    public B setABooleanWrapper( @MyNotNullProperty Boolean pABooleanWrapper ) {
       // Assign value to attribute
       aBooleanWrapper = pABooleanWrapper;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #anInt}.<br/>
      *
      * @param pAnInt Value to which {@link #anInt} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setAnInt( int pAnInt ) {
+    public B setAnInt( int pAnInt ) {
       // Assign value to attribute
       anInt = pAnInt;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #anInteger}.<br/>
      *
      * @param pAnInteger Value to which {@link #anInteger} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setAnInteger( @MyNotNullProperty Integer pAnInteger ) {
+    public B setAnInteger( @MyNotNullProperty Integer pAnInteger ) {
       // Assign value to attribute
       anInteger = pAnInteger;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #aLong}.<br/>
      *
      * @param pALong Value to which {@link #aLong} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setALong( long pALong ) {
+    public B setALong( long pALong ) {
       // Assign value to attribute
       aLong = pALong;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #aVeryLong}.<br/>
      *
      * @param pAVeryLong Value to which {@link #aVeryLong} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setAVeryLong( @MyNotNullProperty Long pAVeryLong ) {
+    public B setAVeryLong( @MyNotNullProperty Long pAVeryLong ) {
       // Assign value to attribute
       aVeryLong = pAVeryLong;
-      return this;
+      return this.self();
     }
+
+    /**
+     * Method returns instance of this builder. Operation is part of genric builder pattern.
+     */
+    protected abstract B self( );
 
     /**
      * Method creates a new instance of class ContextWithPrimitives. The object will be initialized with the values of
@@ -250,6 +232,24 @@ public class ContextWithPrimitives {
      *
      * @return ContextWithPrimitives Created object. The method never returns null.
      */
+    public abstract T build( );
+  }
+
+  static final class ContextWithPrimitivesBuilderImpl
+      extends ContextWithPrimitivesBuilder<ContextWithPrimitives, ContextWithPrimitivesBuilderImpl> {
+    protected ContextWithPrimitivesBuilderImpl( ) {
+    }
+
+    protected ContextWithPrimitivesBuilderImpl( ContextWithPrimitives pObject ) {
+      super(pObject);
+    }
+
+    @Override
+    protected ContextWithPrimitivesBuilderImpl self( ) {
+      return this;
+    }
+
+    @Override
     public ContextWithPrimitives build( ) {
       ContextWithPrimitives lObject = new ContextWithPrimitives(this);
       SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
@@ -473,7 +473,7 @@ public class ContextWithPrimitives {
    * @return {@link Builder} New builder that can be used to create new ContextWithPrimitives objects. The method never
    * returns null.
    */
-  public Builder toBuilder( ) {
-    return new Builder(this);
+  public ContextWithPrimitivesBuilder<?, ?> toBuilder( ) {
+    return new ContextWithPrimitivesBuilderImpl(this);
   }
 }

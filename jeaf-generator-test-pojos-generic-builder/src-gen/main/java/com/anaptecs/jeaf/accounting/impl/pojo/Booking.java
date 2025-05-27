@@ -21,7 +21,6 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonDeserialize(builder = Booking.BookingBuilderImpl.class)
 public class Booking {
   /**
@@ -115,6 +114,7 @@ public class Booking {
    * Class implements builder to create a new instance of class <code>Booking</code>.
    */
   @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static abstract class BookingBuilder<T extends Booking, B extends BookingBuilder<T, B>> {
     private Account sourceAccount;
 

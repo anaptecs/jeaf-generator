@@ -12,6 +12,8 @@ import javax.validation.constraints.NotEmpty;
 
 import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Deprecated
 public class DeprecatedContext {
@@ -54,18 +56,11 @@ public class DeprecatedContext {
   private String queryParam;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  public DeprecatedContext( ) {
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected DeprecatedContext( Builder pBuilder ) {
+  protected DeprecatedContext( DeprecatedContextBuilder<?, ?> pBuilder ) {
     // Read attribute values from builder.
     accessToken = pBuilder.accessToken;
     language = pBuilder.language;
@@ -78,8 +73,8 @@ public class DeprecatedContext {
    *
    * @return {@link Builder} New builder that can be used to create new DeprecatedContext objects.
    */
-  public static Builder builder( ) {
-    return new Builder();
+  public static DeprecatedContextBuilder<?, ?> builder( ) {
+    return new DeprecatedContextBuilderImpl();
   }
 
   /**
@@ -97,7 +92,7 @@ public class DeprecatedContext {
    * @return {@link com.anaptecs.spring.base.DeprecatedContext}
    */
   public static DeprecatedContext of( String pAccessToken, Locale pLanguage, long pResellerID, String pQueryParam ) {
-    DeprecatedContext.Builder lBuilder = DeprecatedContext.builder();
+    DeprecatedContextBuilder<?, ?> lBuilder = DeprecatedContext.builder();
     lBuilder.setAccessToken(pAccessToken);
     lBuilder.setLanguage(pLanguage);
     lBuilder.setResellerID(pResellerID);
@@ -109,7 +104,9 @@ public class DeprecatedContext {
    * Class implements builder to create a new instance of class <code>DeprecatedContext</code>.
    */
   @Deprecated
-  public static class Builder {
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  public static abstract class DeprecatedContextBuilder<T extends DeprecatedContext, B extends DeprecatedContextBuilder<T, B>> {
     @NotEmpty
     private String accessToken;
 
@@ -129,15 +126,16 @@ public class DeprecatedContext {
     private String queryParam;
 
     /**
-     * Use {@link DeprecatedContext#builder()} instead of private constructor to create new builder.
+     * Use {@link DeprecatedContextBuilder#builder()} instead of private constructor to create new builder.
      */
-    protected Builder( ) {
+    protected DeprecatedContextBuilder( ) {
     }
 
     /**
-     * Use {@link DeprecatedContext#builder(DeprecatedContext)} instead of private constructor to create new builder.
+     * Use {@link DeprecatedContextBuilder#builder(DeprecatedContext)} instead of private constructor to create new
+     * builder.
      */
-    protected Builder( DeprecatedContext pObject ) {
+    protected DeprecatedContextBuilder( DeprecatedContext pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setAccessToken(pObject.accessToken);
@@ -148,72 +146,57 @@ public class DeprecatedContext {
     }
 
     /**
-     * Method returns a new builder.
-     *
-     * @return {@link Builder} New builder that can be used to create new DeprecatedContext objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     *
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new DeprecatedContext objects. The method never
-     * returns null.
-     */
-    public static Builder newBuilder( DeprecatedContext pObject ) {
-      return new Builder(pObject);
-    }
-
-    /**
      * Method sets attribute {@link #accessToken}.<br/>
      *
      * @param pAccessToken Value to which {@link #accessToken} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setAccessToken( @MyNotNullProperty String pAccessToken ) {
+    public B setAccessToken( @MyNotNullProperty String pAccessToken ) {
       // Assign value to attribute
       accessToken = pAccessToken;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #language}.<br/>
      *
      * @param pLanguage Value to which {@link #language} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setLanguage( @MyNotNullProperty Locale pLanguage ) {
+    public B setLanguage( @MyNotNullProperty Locale pLanguage ) {
       // Assign value to attribute
       language = pLanguage;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #resellerID}.<br/>
      *
      * @param pResellerID Value to which {@link #resellerID} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setResellerID( long pResellerID ) {
+    public B setResellerID( long pResellerID ) {
       // Assign value to attribute
       resellerID = pResellerID;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #queryParam}.<br/>
      *
      * @param pQueryParam Value to which {@link #queryParam} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setQueryParam( @MyNotNullProperty String pQueryParam ) {
+    public B setQueryParam( @MyNotNullProperty String pQueryParam ) {
       // Assign value to attribute
       queryParam = pQueryParam;
-      return this;
+      return this.self();
     }
+
+    /**
+     * Method returns instance of this builder. Operation is part of genric builder pattern.
+     */
+    protected abstract B self( );
 
     /**
      * Method creates a new instance of class DeprecatedContext. The object will be initialized with the values of the
@@ -221,6 +204,24 @@ public class DeprecatedContext {
      *
      * @return DeprecatedContext Created object. The method never returns null.
      */
+    public abstract T build( );
+  }
+
+  static final class DeprecatedContextBuilderImpl
+      extends DeprecatedContextBuilder<DeprecatedContext, DeprecatedContextBuilderImpl> {
+    protected DeprecatedContextBuilderImpl( ) {
+    }
+
+    protected DeprecatedContextBuilderImpl( DeprecatedContext pObject ) {
+      super(pObject);
+    }
+
+    @Override
+    protected DeprecatedContextBuilderImpl self( ) {
+      return this;
+    }
+
+    @Override
     public DeprecatedContext build( ) {
       DeprecatedContext lObject = new DeprecatedContext(this);
       SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
@@ -385,7 +386,7 @@ public class DeprecatedContext {
    * @return {@link Builder} New builder that can be used to create new DeprecatedContext objects. The method never
    * returns null.
    */
-  public Builder toBuilder( ) {
-    return new Builder(this);
+  public DeprecatedContextBuilder<?, ?> toBuilder( ) {
+    return new DeprecatedContextBuilderImpl(this);
   }
 }

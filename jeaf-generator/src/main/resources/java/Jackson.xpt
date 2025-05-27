@@ -18,7 +18,7 @@
 
 «DEFINE JacksonClassAnnotations(String ownerClassSuffix) FOR Class»
 	«IF generateJacksonAnnotations() && this.isStereotypeApplied("BeanParam") == false»
-		«IF enableSemVerForJSON() == true»
+		«IF enableSemVerForJSON() == true && this.hasGenericBuilder() == false»
 		@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown = true)
 		«ENDIF»
 		«IF (this.isTechnicalBaseClass() == false && this.superClass.size == 0 && this.getSubclasses().size > 0 ) ||

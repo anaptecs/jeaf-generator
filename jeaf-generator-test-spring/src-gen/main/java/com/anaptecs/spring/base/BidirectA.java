@@ -16,14 +16,16 @@ import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonAutoDetect(
     fieldVisibility = JsonAutoDetect.Visibility.ANY,
     getterVisibility = JsonAutoDetect.Visibility.NONE,
     isGetterVisibility = JsonAutoDetect.Visibility.NONE,
     setterVisibility = JsonAutoDetect.Visibility.NONE,
     creatorVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonDeserialize(builder = BidirectA.BidirectABuilderImpl.class)
 public class BidirectA {
   /**
    * Constant for the name of attribute "transientBs".
@@ -52,21 +54,11 @@ public class BidirectA {
   private transient BidirectA transientChild;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected BidirectA( ) {
-    transientBs = new HashSet<>();
-    // Bidirectional back reference is not yet set up correctly
-    parentBackReferenceInitialized = false;
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected BidirectA( Builder pBuilder ) {
+  protected BidirectA( BidirectABuilder<?, ?> pBuilder ) {
     // Read attribute values from builder.
     transientBs = new HashSet<>();
     parent = pBuilder.parent;
@@ -83,8 +75,8 @@ public class BidirectA {
    *
    * @return {@link Builder} New builder that can be used to create new BidirectA objects.
    */
-  public static Builder builder( ) {
-    return new Builder();
+  public static BidirectABuilder<?, ?> builder( ) {
+    return new BidirectABuilderImpl();
   }
 
   /**
@@ -96,7 +88,7 @@ public class BidirectA {
    * @return {@link BidirectA}
    */
   public static BidirectA of( BidirectA pParent ) {
-    BidirectA.Builder lBuilder = BidirectA.builder();
+    BidirectABuilder<?, ?> lBuilder = BidirectA.builder();
     lBuilder.setParent(pParent);
     return lBuilder.build();
   }
@@ -104,19 +96,21 @@ public class BidirectA {
   /**
    * Class implements builder to create a new instance of class <code>BidirectA</code>.
    */
-  public static class Builder {
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  public static abstract class BidirectABuilder<T extends BidirectA, B extends BidirectABuilder<T, B>> {
     private BidirectA parent;
 
     /**
-     * Use {@link BidirectA#builder()} instead of private constructor to create new builder.
+     * Use {@link BidirectABuilder#builder()} instead of private constructor to create new builder.
      */
-    protected Builder( ) {
+    protected BidirectABuilder( ) {
     }
 
     /**
-     * Use {@link BidirectA#builder(BidirectA)} instead of private constructor to create new builder.
+     * Use {@link BidirectABuilder#builder(BidirectA)} instead of private constructor to create new builder.
      */
-    protected Builder( BidirectA pObject ) {
+    protected BidirectABuilder( BidirectA pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setParent(pObject.parent);
@@ -124,41 +118,43 @@ public class BidirectA {
     }
 
     /**
-     * Method returns a new builder.
-     *
-     * @return {@link Builder} New builder that can be used to create new BidirectA objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     *
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new BidirectA objects. The method never returns
-     * null.
-     */
-    public static Builder newBuilder( BidirectA pObject ) {
-      return new Builder(pObject);
-    }
-
-    /**
      * Method sets association {@link #parent}.<br/>
      *
      * @param pParent Value to which {@link #parent} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setParent( @MyNotNullProperty BidirectA pParent ) {
+    public B setParent( @MyNotNullProperty BidirectA pParent ) {
       parent = pParent;
-      return this;
+      return this.self();
     }
+
+    /**
+     * Method returns instance of this builder. Operation is part of genric builder pattern.
+     */
+    protected abstract B self( );
 
     /**
      * Method creates a new instance of class BidirectA. The object will be initialized with the values of the builder.
      *
      * @return BidirectA Created object. The method never returns null.
      */
+    public abstract T build( );
+  }
+
+  static final class BidirectABuilderImpl extends BidirectABuilder<BidirectA, BidirectABuilderImpl> {
+    protected BidirectABuilderImpl( ) {
+    }
+
+    protected BidirectABuilderImpl( BidirectA pObject ) {
+      super(pObject);
+    }
+
+    @Override
+    protected BidirectABuilderImpl self( ) {
+      return this;
+    }
+
+    @Override
     public BidirectA build( ) {
       BidirectA lObject = new BidirectA(this);
       SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
@@ -368,7 +364,7 @@ public class BidirectA {
    * @return {@link Builder} New builder that can be used to create new BidirectA objects. The method never returns
    * null.
    */
-  public Builder toBuilder( ) {
-    return new Builder(this);
+  public BidirectABuilder<?, ?> toBuilder( ) {
+    return new BidirectABuilderImpl(this);
   }
 }

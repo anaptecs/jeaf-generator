@@ -7,16 +7,9 @@ package com.anaptecs.spring.service;
 
 public class MySortCriteria extends MySortCriteriaBase {
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected MySortCriteria( ) {
-  }
-
-  /**
    * Initialize object. Nothing special to do.
    */
-  protected MySortCriteria( MySortCriteria.BuilderBase pBuilder ) {
+  protected MySortCriteria( MySortCriteriaBuilder<?, ?> pBuilder ) {
     super(pBuilder);
   }
 
@@ -25,47 +18,8 @@ public class MySortCriteria extends MySortCriteriaBase {
    *
    * @return {@link Builder} New builder that can be used to create new MySortCriteria objects.
    */
-  public static Builder builder( ) {
-    return new Builder();
-  }
-
-  /**
-   * Class implements builder to create a new instance of class MySortCriteria. As the class has readonly attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
-   */
-  public static class Builder extends MySortCriteria.BuilderBase {
-    /**
-     * Use {@link MySortCriteria#builder()} instead of protected constructor to create new builder.
-     */
-    protected Builder( ) {
-    }
-
-    /**
-     * Use {@link MySortCriteria#builder(MySortCriteria)} instead of protected constructor to create new builder.
-     */
-    protected Builder( MySortCriteria pObject ) {
-      super(pObject);
-    }
-
-    /**
-     * Method returns a new builder.
-     *
-     * @return {@link Builder} New builder that can be used to create new MySortCriteria objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     *
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new POJOWithIDnMethod objects. The method never
-     * returns null.
-     */
-    public static Builder newBuilder( MySortCriteria pObject ) {
-      return new Builder(pObject);
-    }
+  public static MySortCriteriaBuilder<?, ?> builder( ) {
+    return new MySortCriteriaBuilderImpl();
   }
 
   /**

@@ -21,8 +21,8 @@ import com.anaptecs.annotations.MyNotEmptyProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.anaptecs.spring.base.StringCode;
 import com.anaptecs.spring.base.TimeUnit;
-import com.fasterxml.jackson.annotation.JsonSetter;
-import com.fasterxml.jackson.annotation.Nulls;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 public class MultiValuedHeaderBeanParam {
   /**
@@ -103,14 +103,12 @@ public class MultiValuedHeaderBeanParam {
 
   private StringCode[] codes;
 
-  @JsonSetter(nulls = Nulls.SKIP)
   private Set<StringCode> stringCodeList;
 
   public LocalDate startDate;
 
   private LocalDate[] dates;
 
-  @JsonSetter(nulls = Nulls.SKIP)
   private Set<LocalDateTime> timestamps;
 
   private Calendar[] calendars;
@@ -119,7 +117,6 @@ public class MultiValuedHeaderBeanParam {
 
   private Timestamp[] sqlTimestamps;
 
-  @JsonSetter(nulls = Nulls.SKIP)
   private Set<TimeUnit> timeUnits;
 
   private TimeUnit[] timeUnitArray;
@@ -127,21 +124,11 @@ public class MultiValuedHeaderBeanParam {
   private byte[] base64;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  public MultiValuedHeaderBeanParam( ) {
-    stringCodeList = new HashSet<>();
-    timestamps = new HashSet<>();
-    timeUnits = new HashSet<>();
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected MultiValuedHeaderBeanParam( Builder pBuilder ) {
+  protected MultiValuedHeaderBeanParam( MultiValuedHeaderBeanParamBuilder<?, ?> pBuilder ) {
     // Read attribute values from builder.
     names = pBuilder.names;
     ints = pBuilder.ints;
@@ -179,8 +166,8 @@ public class MultiValuedHeaderBeanParam {
    *
    * @return {@link Builder} New builder that can be used to create new MultiValuedHeaderBeanParam objects.
    */
-  public static Builder builder( ) {
-    return new Builder();
+  public static MultiValuedHeaderBeanParamBuilder<?, ?> builder( ) {
+    return new MultiValuedHeaderBeanParamBuilderImpl();
   }
 
   /**
@@ -192,7 +179,7 @@ public class MultiValuedHeaderBeanParam {
    * @return {@link com.anaptecs.spring.service.MultiValuedHeaderBeanParam}
    */
   public static MultiValuedHeaderBeanParam of( int[] pInts ) {
-    MultiValuedHeaderBeanParam.Builder lBuilder = MultiValuedHeaderBeanParam.builder();
+    MultiValuedHeaderBeanParamBuilder<?, ?> lBuilder = MultiValuedHeaderBeanParam.builder();
     lBuilder.setInts(pInts);
     return lBuilder.build();
   }
@@ -200,7 +187,9 @@ public class MultiValuedHeaderBeanParam {
   /**
    * Class implements builder to create a new instance of class <code>MultiValuedHeaderBeanParam</code>.
    */
-  public static class Builder {
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  public static abstract class MultiValuedHeaderBeanParamBuilder<T extends MultiValuedHeaderBeanParam, B extends MultiValuedHeaderBeanParamBuilder<T, B>> {
     private String[] names;
 
     private int[] ints;
@@ -230,16 +219,16 @@ public class MultiValuedHeaderBeanParam {
     private byte[] base64;
 
     /**
-     * Use {@link MultiValuedHeaderBeanParam#builder()} instead of private constructor to create new builder.
+     * Use {@link MultiValuedHeaderBeanParamBuilder#builder()} instead of private constructor to create new builder.
      */
-    protected Builder( ) {
+    protected MultiValuedHeaderBeanParamBuilder( ) {
     }
 
     /**
-     * Use {@link MultiValuedHeaderBeanParam#builder(MultiValuedHeaderBeanParam)} instead of private constructor to
-     * create new builder.
+     * Use {@link MultiValuedHeaderBeanParamBuilder#builder(MultiValuedHeaderBeanParam)} instead of private constructor
+     * to create new builder.
      */
-    protected Builder( MultiValuedHeaderBeanParam pObject ) {
+    protected MultiValuedHeaderBeanParamBuilder( MultiValuedHeaderBeanParam pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setNames(pObject.names);
@@ -260,32 +249,12 @@ public class MultiValuedHeaderBeanParam {
     }
 
     /**
-     * Method returns a new builder.
-     *
-     * @return {@link Builder} New builder that can be used to create new MultiValuedHeaderBeanParam objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     *
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new MultiValuedHeaderBeanParam objects. The method
-     * never returns null.
-     */
-    public static Builder newBuilder( MultiValuedHeaderBeanParam pObject ) {
-      return new Builder(pObject);
-    }
-
-    /**
      * Method sets attribute {@link #names}.<br/>
      *
      * @param pNames Collection to which {@link #names} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setNames( String[] pNames ) {
+    public B setNames( String[] pNames ) {
       // Assign value to attribute
       if (pNames != null) {
         names = new String[pNames.length];
@@ -294,16 +263,16 @@ public class MultiValuedHeaderBeanParam {
       else {
         names = null;
       }
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #ints}.<br/>
      *
      * @param pInts Value to which {@link #ints} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setInts( @MyNotEmptyProperty int[] pInts ) {
+    public B setInts( @MyNotEmptyProperty int[] pInts ) {
       // Assign value to attribute
       if (pInts != null) {
         ints = new int[pInts.length];
@@ -312,16 +281,16 @@ public class MultiValuedHeaderBeanParam {
       else {
         ints = null;
       }
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #doubles}.<br/>
      *
      * @param pDoubles Collection to which {@link #doubles} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setDoubles( Double[] pDoubles ) {
+    public B setDoubles( Double[] pDoubles ) {
       // Assign value to attribute
       if (pDoubles != null) {
         doubles = new Double[pDoubles.length];
@@ -330,16 +299,16 @@ public class MultiValuedHeaderBeanParam {
       else {
         doubles = null;
       }
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #codes}.<br/>
      *
      * @param pCodes Collection to which {@link #codes} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setCodes( StringCode[] pCodes ) {
+    public B setCodes( StringCode[] pCodes ) {
       // Assign value to attribute
       if (pCodes != null) {
         codes = new StringCode[pCodes.length];
@@ -348,16 +317,16 @@ public class MultiValuedHeaderBeanParam {
       else {
         codes = null;
       }
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets association {@link #stringCodeList}.<br/>
      *
      * @param pStringCodeList Collection to which {@link #stringCodeList} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setStringCodeList( Set<StringCode> pStringCodeList ) {
+    public B setStringCodeList( Set<StringCode> pStringCodeList ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pStringCodeList != null) {
         stringCodeList = new HashSet<StringCode>(pStringCodeList);
@@ -365,7 +334,7 @@ public class MultiValuedHeaderBeanParam {
       else {
         stringCodeList = null;
       }
-      return this;
+      return this.self();
     }
 
     /**
@@ -373,37 +342,37 @@ public class MultiValuedHeaderBeanParam {
      *
      * @param pStringCodeList Array of objects that should be added to {@link #stringCodeList}. The parameter may be
      * null.
-     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining. Method never returns null.
      */
-    public Builder addToStringCodeList( StringCode... pStringCodeList ) {
+    public B addToStringCodeList( StringCode... pStringCodeList ) {
       if (pStringCodeList != null) {
         if (stringCodeList == null) {
           stringCodeList = new HashSet<StringCode>();
         }
         stringCodeList.addAll(Arrays.asList(pStringCodeList));
       }
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #startDate}.<br/>
      *
      * @param pStartDate Value to which {@link #startDate} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setStartDate( LocalDate pStartDate ) {
+    public B setStartDate( LocalDate pStartDate ) {
       // Assign value to attribute
       startDate = pStartDate;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #dates}.<br/>
      *
      * @param pDates Collection to which {@link #dates} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setDates( LocalDate[] pDates ) {
+    public B setDates( LocalDate[] pDates ) {
       // Assign value to attribute
       if (pDates != null) {
         dates = new LocalDate[pDates.length];
@@ -412,16 +381,16 @@ public class MultiValuedHeaderBeanParam {
       else {
         dates = null;
       }
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets association {@link #timestamps}.<br/>
      *
      * @param pTimestamps Collection to which {@link #timestamps} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setTimestamps( Set<LocalDateTime> pTimestamps ) {
+    public B setTimestamps( Set<LocalDateTime> pTimestamps ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pTimestamps != null) {
         timestamps = new HashSet<LocalDateTime>(pTimestamps);
@@ -429,32 +398,32 @@ public class MultiValuedHeaderBeanParam {
       else {
         timestamps = null;
       }
-      return this;
+      return this.self();
     }
 
     /**
      * Method adds the passed objects to association {@link #timestamps}.<br/>
      *
      * @param pTimestamps Array of objects that should be added to {@link #timestamps}. The parameter may be null.
-     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining. Method never returns null.
      */
-    public Builder addToTimestamps( LocalDateTime... pTimestamps ) {
+    public B addToTimestamps( LocalDateTime... pTimestamps ) {
       if (pTimestamps != null) {
         if (timestamps == null) {
           timestamps = new HashSet<LocalDateTime>();
         }
         timestamps.addAll(Arrays.asList(pTimestamps));
       }
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #calendars}.<br/>
      *
      * @param pCalendars Collection to which {@link #calendars} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setCalendars( Calendar[] pCalendars ) {
+    public B setCalendars( Calendar[] pCalendars ) {
       // Assign value to attribute
       if (pCalendars != null) {
         calendars = new Calendar[pCalendars.length];
@@ -463,16 +432,16 @@ public class MultiValuedHeaderBeanParam {
       else {
         calendars = null;
       }
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #utilDates}.<br/>
      *
      * @param pUtilDates Collection to which {@link #utilDates} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setUtilDates( Date[] pUtilDates ) {
+    public B setUtilDates( Date[] pUtilDates ) {
       // Assign value to attribute
       if (pUtilDates != null) {
         utilDates = new Date[pUtilDates.length];
@@ -481,16 +450,16 @@ public class MultiValuedHeaderBeanParam {
       else {
         utilDates = null;
       }
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #sqlTimestamps}.<br/>
      *
      * @param pSqlTimestamps Collection to which {@link #sqlTimestamps} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setSqlTimestamps( Timestamp[] pSqlTimestamps ) {
+    public B setSqlTimestamps( Timestamp[] pSqlTimestamps ) {
       // Assign value to attribute
       if (pSqlTimestamps != null) {
         sqlTimestamps = new Timestamp[pSqlTimestamps.length];
@@ -499,16 +468,16 @@ public class MultiValuedHeaderBeanParam {
       else {
         sqlTimestamps = null;
       }
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets association {@link #timeUnits}.<br/>
      *
      * @param pTimeUnits Collection to which {@link #timeUnits} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setTimeUnits( Set<TimeUnit> pTimeUnits ) {
+    public B setTimeUnits( Set<TimeUnit> pTimeUnits ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pTimeUnits != null) {
         timeUnits = new HashSet<TimeUnit>(pTimeUnits);
@@ -516,32 +485,32 @@ public class MultiValuedHeaderBeanParam {
       else {
         timeUnits = null;
       }
-      return this;
+      return this.self();
     }
 
     /**
      * Method adds the passed objects to association {@link #timeUnits}.<br/>
      *
      * @param pTimeUnits Array of objects that should be added to {@link #timeUnits}. The parameter may be null.
-     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining. Method never returns null.
      */
-    public Builder addToTimeUnits( TimeUnit... pTimeUnits ) {
+    public B addToTimeUnits( TimeUnit... pTimeUnits ) {
       if (pTimeUnits != null) {
         if (timeUnits == null) {
           timeUnits = new HashSet<TimeUnit>();
         }
         timeUnits.addAll(Arrays.asList(pTimeUnits));
       }
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets association {@link #timeUnits}.<br/>
      *
      * @param pTimeUnits Array with objects to which {@link #timeUnits} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setTimeUnits( TimeUnit... pTimeUnits ) {
+    public B setTimeUnits( TimeUnit... pTimeUnits ) {
       // Copy the content of the passed array.
       if (pTimeUnits != null) {
         timeUnits = new HashSet<TimeUnit>(Arrays.asList(pTimeUnits));
@@ -549,16 +518,16 @@ public class MultiValuedHeaderBeanParam {
       else {
         timeUnits = null;
       }
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #timeUnitArray}.<br/>
      *
      * @param pTimeUnitArray Collection to which {@link #timeUnitArray} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setTimeUnitArray( TimeUnit[] pTimeUnitArray ) {
+    public B setTimeUnitArray( TimeUnit[] pTimeUnitArray ) {
       // Assign value to attribute
       if (pTimeUnitArray != null) {
         timeUnitArray = new TimeUnit[pTimeUnitArray.length];
@@ -567,16 +536,16 @@ public class MultiValuedHeaderBeanParam {
       else {
         timeUnitArray = null;
       }
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #base64}.<br/>
      *
      * @param pBase64 Value to which {@link #base64} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setBase64( byte[] pBase64 ) {
+    public B setBase64( byte[] pBase64 ) {
       // Assign value to attribute
       if (pBase64 != null) {
         base64 = new byte[pBase64.length];
@@ -585,8 +554,13 @@ public class MultiValuedHeaderBeanParam {
       else {
         base64 = null;
       }
-      return this;
+      return this.self();
     }
+
+    /**
+     * Method returns instance of this builder. Operation is part of genric builder pattern.
+     */
+    protected abstract B self( );
 
     /**
      * Method creates a new instance of class MultiValuedHeaderBeanParam. The object will be initialized with the values
@@ -594,6 +568,24 @@ public class MultiValuedHeaderBeanParam {
      *
      * @return MultiValuedHeaderBeanParam Created object. The method never returns null.
      */
+    public abstract T build( );
+  }
+
+  static final class MultiValuedHeaderBeanParamBuilderImpl
+      extends MultiValuedHeaderBeanParamBuilder<MultiValuedHeaderBeanParam, MultiValuedHeaderBeanParamBuilderImpl> {
+    protected MultiValuedHeaderBeanParamBuilderImpl( ) {
+    }
+
+    protected MultiValuedHeaderBeanParamBuilderImpl( MultiValuedHeaderBeanParam pObject ) {
+      super(pObject);
+    }
+
+    @Override
+    protected MultiValuedHeaderBeanParamBuilderImpl self( ) {
+      return this;
+    }
+
+    @Override
     public MultiValuedHeaderBeanParam build( ) {
       MultiValuedHeaderBeanParam lObject = new MultiValuedHeaderBeanParam(this);
       SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
@@ -1328,7 +1320,7 @@ public class MultiValuedHeaderBeanParam {
    * @return {@link Builder} New builder that can be used to create new MultiValuedHeaderBeanParam objects. The method
    * never returns null.
    */
-  public Builder toBuilder( ) {
-    return new Builder(this);
+  public MultiValuedHeaderBeanParamBuilder<?, ?> toBuilder( ) {
+    return new MultiValuedHeaderBeanParamBuilderImpl(this);
   }
 }

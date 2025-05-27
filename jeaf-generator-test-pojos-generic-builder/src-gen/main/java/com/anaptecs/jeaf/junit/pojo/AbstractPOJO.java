@@ -17,7 +17,6 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "objectType", visible = true)
 @JsonSubTypes({ @JsonSubTypes.Type(value = ImmutablePOJOParent.class, name = "ImmutablePOJOParent"),
   @JsonSubTypes.Type(value = ImmutableChildPOJO.class, name = "ImmutableChildPOJO"),
@@ -46,6 +45,7 @@ public abstract class AbstractPOJO {
    * Class implements builder to create a new instance of class <code>AbstractPOJO</code>.
    */
   @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static abstract class AbstractPOJOBuilder<T extends AbstractPOJO, B extends AbstractPOJOBuilder<T, B>> {
     private String abtractAttr;
 

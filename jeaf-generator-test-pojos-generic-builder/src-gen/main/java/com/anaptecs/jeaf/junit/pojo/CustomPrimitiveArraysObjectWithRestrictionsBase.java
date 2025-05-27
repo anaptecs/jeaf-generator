@@ -22,7 +22,6 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonDeserialize(
     builder = CustomPrimitiveArraysObjectWithRestrictionsBase.CustomPrimitiveArraysObjectWithRestrictionsBuilderImpl.class)
 public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
@@ -222,6 +221,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
    * <code>CustomPrimitiveArraysObjectWithRestrictions</code>.
    */
   @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static abstract class CustomPrimitiveArraysObjectWithRestrictionsBuilder<T extends CustomPrimitiveArraysObjectWithRestrictions, B extends CustomPrimitiveArraysObjectWithRestrictionsBuilder<T, B>> {
     private boolean[] aBooleanArray;
 

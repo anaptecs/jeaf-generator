@@ -15,8 +15,8 @@ import java.util.Objects;
 import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.anaptecs.spring.base.BookingCode;
-import com.fasterxml.jackson.annotation.JsonSetter;
-import com.fasterxml.jackson.annotation.Nulls;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 public class QueryBeanParam {
   /**
@@ -42,24 +42,14 @@ public class QueryBeanParam {
    */
   private int maxResults;
 
-  @JsonSetter(nulls = Nulls.SKIP)
   private List<MySortCriteria> sortCriteria;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  public QueryBeanParam( ) {
-    maxResults = 47;
-    sortCriteria = new ArrayList<>();
-  }
 
   /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected QueryBeanParam( Builder pBuilder ) {
+  protected QueryBeanParam( QueryBeanParamBuilder<?, ?> pBuilder ) {
     // Read attribute values from builder.
     bookingCode = pBuilder.bookingCode;
     maxResults = pBuilder.maxResults;
@@ -76,8 +66,8 @@ public class QueryBeanParam {
    *
    * @return {@link Builder} New builder that can be used to create new QueryBeanParam objects.
    */
-  public static Builder builder( ) {
-    return new Builder();
+  public static QueryBeanParamBuilder<?, ?> builder( ) {
+    return new QueryBeanParamBuilderImpl();
   }
 
   /**
@@ -91,7 +81,7 @@ public class QueryBeanParam {
    * @return {@link com.anaptecs.spring.service.QueryBeanParam}
    */
   public static QueryBeanParam of( BookingCode pBookingCode, int pMaxResults ) {
-    QueryBeanParam.Builder lBuilder = QueryBeanParam.builder();
+    QueryBeanParamBuilder<?, ?> lBuilder = QueryBeanParam.builder();
     lBuilder.setBookingCode(pBookingCode);
     lBuilder.setMaxResults(pMaxResults);
     return lBuilder.build();
@@ -100,7 +90,9 @@ public class QueryBeanParam {
   /**
    * Class implements builder to create a new instance of class <code>QueryBeanParam</code>.
    */
-  public static class Builder {
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  public static abstract class QueryBeanParamBuilder<T extends QueryBeanParam, B extends QueryBeanParamBuilder<T, B>> {
     private BookingCode bookingCode;
 
     /**
@@ -112,15 +104,15 @@ public class QueryBeanParam {
     private List<MySortCriteria> sortCriteria;
 
     /**
-     * Use {@link QueryBeanParam#builder()} instead of private constructor to create new builder.
+     * Use {@link QueryBeanParamBuilder#builder()} instead of private constructor to create new builder.
      */
-    protected Builder( ) {
+    protected QueryBeanParamBuilder( ) {
     }
 
     /**
-     * Use {@link QueryBeanParam#builder(QueryBeanParam)} instead of private constructor to create new builder.
+     * Use {@link QueryBeanParamBuilder#builder(QueryBeanParam)} instead of private constructor to create new builder.
      */
-    protected Builder( QueryBeanParam pObject ) {
+    protected QueryBeanParamBuilder( QueryBeanParam pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setBookingCode(pObject.bookingCode);
@@ -130,56 +122,36 @@ public class QueryBeanParam {
     }
 
     /**
-     * Method returns a new builder.
-     *
-     * @return {@link Builder} New builder that can be used to create new QueryBeanParam objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     *
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new QueryBeanParam objects. The method never
-     * returns null.
-     */
-    public static Builder newBuilder( QueryBeanParam pObject ) {
-      return new Builder(pObject);
-    }
-
-    /**
      * Method sets attribute {@link #bookingCode}.<br/>
      *
      * @param pBookingCode Value to which {@link #bookingCode} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setBookingCode( @MyNotNullProperty BookingCode pBookingCode ) {
+    public B setBookingCode( @MyNotNullProperty BookingCode pBookingCode ) {
       // Assign value to attribute
       bookingCode = pBookingCode;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #maxResults}.<br/>
      *
      * @param pMaxResults Value to which {@link #maxResults} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setMaxResults( int pMaxResults ) {
+    public B setMaxResults( int pMaxResults ) {
       // Assign value to attribute
       maxResults = pMaxResults;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets association {@link #sortCriteria}.<br/>
      *
      * @param pSortCriteria Collection to which {@link #sortCriteria} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setSortCriteria( List<MySortCriteria> pSortCriteria ) {
+    public B setSortCriteria( List<MySortCriteria> pSortCriteria ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pSortCriteria != null) {
         sortCriteria = new ArrayList<MySortCriteria>(pSortCriteria);
@@ -187,24 +159,29 @@ public class QueryBeanParam {
       else {
         sortCriteria = null;
       }
-      return this;
+      return this.self();
     }
 
     /**
      * Method adds the passed objects to association {@link #sortCriteria}.<br/>
      *
      * @param pSortCriteria Array of objects that should be added to {@link #sortCriteria}. The parameter may be null.
-     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining. Method never returns null.
      */
-    public Builder addToSortCriteria( MySortCriteria... pSortCriteria ) {
+    public B addToSortCriteria( MySortCriteria... pSortCriteria ) {
       if (pSortCriteria != null) {
         if (sortCriteria == null) {
           sortCriteria = new ArrayList<MySortCriteria>();
         }
         sortCriteria.addAll(Arrays.asList(pSortCriteria));
       }
-      return this;
+      return this.self();
     }
+
+    /**
+     * Method returns instance of this builder. Operation is part of genric builder pattern.
+     */
+    protected abstract B self( );
 
     /**
      * Method creates a new instance of class QueryBeanParam. The object will be initialized with the values of the
@@ -212,6 +189,24 @@ public class QueryBeanParam {
      *
      * @return QueryBeanParam Created object. The method never returns null.
      */
+    public abstract T build( );
+  }
+
+  static final class QueryBeanParamBuilderImpl
+      extends QueryBeanParamBuilder<QueryBeanParam, QueryBeanParamBuilderImpl> {
+    protected QueryBeanParamBuilderImpl( ) {
+    }
+
+    protected QueryBeanParamBuilderImpl( QueryBeanParam pObject ) {
+      super(pObject);
+    }
+
+    @Override
+    protected QueryBeanParamBuilderImpl self( ) {
+      return this;
+    }
+
+    @Override
     public QueryBeanParam build( ) {
       QueryBeanParam lObject = new QueryBeanParam(this);
       SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
@@ -395,7 +390,7 @@ public class QueryBeanParam {
    * @return {@link Builder} New builder that can be used to create new QueryBeanParam objects. The method never returns
    * null.
    */
-  public Builder toBuilder( ) {
-    return new Builder(this);
+  public QueryBeanParamBuilder<?, ?> toBuilder( ) {
+    return new QueryBeanParamBuilderImpl(this);
   }
 }

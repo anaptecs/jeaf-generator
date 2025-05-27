@@ -11,14 +11,16 @@ import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonAutoDetect(
     fieldVisibility = JsonAutoDetect.Visibility.ANY,
     getterVisibility = JsonAutoDetect.Visibility.NONE,
     isGetterVisibility = JsonAutoDetect.Visibility.NONE,
     setterVisibility = JsonAutoDetect.Visibility.NONE,
     creatorVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonDeserialize(builder = LinkObject.LinkObjectBuilderImpl.class)
 public class LinkObject {
   /**
    * Constant for the name of attribute "href".
@@ -28,18 +30,11 @@ public class LinkObject {
   private String href;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected LinkObject( ) {
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected LinkObject( Builder pBuilder ) {
+  protected LinkObject( LinkObjectBuilder<?, ?> pBuilder ) {
     // Read attribute values from builder.
     href = pBuilder.href;
   }
@@ -49,8 +44,8 @@ public class LinkObject {
    *
    * @return {@link Builder} New builder that can be used to create new LinkObject objects.
    */
-  public static Builder builder( ) {
-    return new Builder();
+  public static LinkObjectBuilder<?, ?> builder( ) {
+    return new LinkObjectBuilderImpl();
   }
 
   /**
@@ -59,10 +54,10 @@ public class LinkObject {
    *
    * @param pHref Value to which {@link #href} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.LinkObject}
+   * @return {@link LinkObject}
    */
   public static LinkObject of( String pHref ) {
-    LinkObject.Builder lBuilder = LinkObject.builder();
+    LinkObjectBuilder<?, ?> lBuilder = LinkObject.builder();
     lBuilder.setHref(pHref);
     return lBuilder.build();
   }
@@ -70,19 +65,21 @@ public class LinkObject {
   /**
    * Class implements builder to create a new instance of class <code>LinkObject</code>.
    */
-  public static class Builder {
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  public static abstract class LinkObjectBuilder<T extends LinkObject, B extends LinkObjectBuilder<T, B>> {
     private String href;
 
     /**
-     * Use {@link LinkObject#builder()} instead of private constructor to create new builder.
+     * Use {@link LinkObjectBuilder#builder()} instead of private constructor to create new builder.
      */
-    protected Builder( ) {
+    protected LinkObjectBuilder( ) {
     }
 
     /**
-     * Use {@link LinkObject#builder(LinkObject)} instead of private constructor to create new builder.
+     * Use {@link LinkObjectBuilder#builder(LinkObject)} instead of private constructor to create new builder.
      */
-    protected Builder( LinkObject pObject ) {
+    protected LinkObjectBuilder( LinkObject pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setHref(pObject.href);
@@ -90,42 +87,44 @@ public class LinkObject {
     }
 
     /**
-     * Method returns a new builder.
-     *
-     * @return {@link Builder} New builder that can be used to create new LinkObject objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     *
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new LinkObject objects. The method never returns
-     * null.
-     */
-    public static Builder newBuilder( LinkObject pObject ) {
-      return new Builder(pObject);
-    }
-
-    /**
      * Method sets attribute {@link #href}.<br/>
      *
      * @param pHref Value to which {@link #href} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setHref( @MyNotNullProperty String pHref ) {
+    public B setHref( @MyNotNullProperty String pHref ) {
       // Assign value to attribute
       href = pHref;
-      return this;
+      return this.self();
     }
+
+    /**
+     * Method returns instance of this builder. Operation is part of genric builder pattern.
+     */
+    protected abstract B self( );
 
     /**
      * Method creates a new instance of class LinkObject. The object will be initialized with the values of the builder.
      *
      * @return LinkObject Created object. The method never returns null.
      */
+    public abstract T build( );
+  }
+
+  static final class LinkObjectBuilderImpl extends LinkObjectBuilder<LinkObject, LinkObjectBuilderImpl> {
+    protected LinkObjectBuilderImpl( ) {
+    }
+
+    protected LinkObjectBuilderImpl( LinkObject pObject ) {
+      super(pObject);
+    }
+
+    @Override
+    protected LinkObjectBuilderImpl self( ) {
+      return this;
+    }
+
+    @Override
     public LinkObject build( ) {
       LinkObject lObject = new LinkObject(this);
       SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
@@ -215,7 +214,7 @@ public class LinkObject {
    * @return {@link Builder} New builder that can be used to create new LinkObject objects. The method never returns
    * null.
    */
-  public Builder toBuilder( ) {
-    return new Builder(this);
+  public LinkObjectBuilder<?, ?> toBuilder( ) {
+    return new LinkObjectBuilderImpl(this);
   }
 }

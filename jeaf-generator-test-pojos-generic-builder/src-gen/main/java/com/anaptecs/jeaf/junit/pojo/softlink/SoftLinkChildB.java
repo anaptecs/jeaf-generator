@@ -22,7 +22,6 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonDeserialize(builder = SoftLinkChildB.SoftLinkChildBBuilderImpl.class)
 public class SoftLinkChildB extends SoftLinkParent {
   /**
@@ -113,6 +112,7 @@ public class SoftLinkChildB extends SoftLinkParent {
    * Class implements builder to create a new instance of class <code>SoftLinkChildB</code>.
    */
   @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static abstract class SoftLinkChildBBuilder<T extends SoftLinkChildB, B extends SoftLinkChildBBuilder<T, B>>
       extends SoftLinkParentBuilder<T, B> {
     /**

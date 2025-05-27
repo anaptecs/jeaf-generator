@@ -25,17 +25,17 @@ import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonSetter;
-import com.fasterxml.jackson.annotation.Nulls;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Valid
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonAutoDetect(
     fieldVisibility = JsonAutoDetect.Visibility.ANY,
     getterVisibility = JsonAutoDetect.Visibility.NONE,
     isGetterVisibility = JsonAutoDetect.Visibility.NONE,
     setterVisibility = JsonAutoDetect.Visibility.NONE,
     creatorVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonDeserialize(builder = ResellerBase.ResellerBuilderImpl.class)
 public abstract class ResellerBase {
   /**
    * Constant for the name of attribute "channels".
@@ -57,7 +57,6 @@ public abstract class ResellerBase {
    */
   public static final String LANGUAGE = "language";
 
-  @JsonSetter(nulls = Nulls.SKIP)
   private List<Channel> channels;
 
   /**
@@ -80,22 +79,11 @@ public abstract class ResellerBase {
   private Locale language;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected ResellerBase( ) {
-    channels = new ArrayList<>();
-    // Bidirectional back reference is not yet set up correctly
-    channelsBackReferenceInitialized = false;
-    products = new HashSet<>();
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected ResellerBase( BuilderBase pBuilder ) {
+  protected ResellerBase( ResellerBuilder<?, ?> pBuilder ) {
     // Read attribute values from builder.
     if (pBuilder.channels != null) {
       channels = pBuilder.channels;
@@ -115,10 +103,11 @@ public abstract class ResellerBase {
   }
 
   /**
-   * Class implements builder to create a new instance of class Reseller. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>Reseller</code>.
    */
-  public static abstract class BuilderBase {
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  public static abstract class ResellerBuilder<T extends Reseller, B extends ResellerBuilder<T, B>> {
     private List<Channel> channels;
 
     @NotBlank
@@ -128,15 +117,15 @@ public abstract class ResellerBase {
     private Locale language;
 
     /**
-     * Use {@link Reseller.builder()} instead of protected constructor to create new builder.
+     * Use {@link ResellerBuilder#builder()} instead of private constructor to create new builder.
      */
-    protected BuilderBase( ) {
+    protected ResellerBuilder( ) {
     }
 
     /**
-     * Use {@link Reseller.builder(Reseller)} instead of protected constructor to create new builder.
+     * Use {@link ResellerBuilder#builder(Reseller)} instead of private constructor to create new builder.
      */
-    protected BuilderBase( ResellerBase pObject ) {
+    protected ResellerBuilder( ResellerBase pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setChannels(pObject.channels);
@@ -149,9 +138,9 @@ public abstract class ResellerBase {
      * Method sets association {@link #channels}.<br/>
      *
      * @param pChannels Collection to which {@link #channels} should be set.
-     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setChannels( @MyNotEmptyProperty List<Channel> pChannels ) {
+    public B setChannels( @MyNotEmptyProperty List<Channel> pChannels ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pChannels != null) {
         channels = new ArrayList<Channel>(pChannels);
@@ -159,54 +148,76 @@ public abstract class ResellerBase {
       else {
         channels = null;
       }
-      return this;
+      return this.self();
     }
 
     /**
      * Method adds the passed objects to association {@link #channels}.<br/>
      *
      * @param pChannels Array of objects that should be added to {@link #channels}. The parameter may be null.
-     * @return {@link BuilderBase} Instance of this builder to support chaining. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining. Method never returns null.
      */
-    public BuilderBase addToChannels( @MyNotEmptyProperty Channel... pChannels ) {
+    public B addToChannels( @MyNotEmptyProperty Channel... pChannels ) {
       if (pChannels != null) {
         if (channels == null) {
           channels = new ArrayList<Channel>();
         }
         channels.addAll(Arrays.asList(pChannels));
       }
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #name}.<br/>
      *
      * @param pName Value to which {@link #name} should be set.
-     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setName( @MyNotNullProperty String pName ) {
+    public B setName( @MyNotNullProperty String pName ) {
       // Assign value to attribute
       name = pName;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #language}.<br/>
      *
      * @param pLanguage Value to which {@link #language} should be set.
-     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setLanguage( @MyNotNullProperty Locale pLanguage ) {
+    public B setLanguage( @MyNotNullProperty Locale pLanguage ) {
       // Assign value to attribute
       language = pLanguage;
-      return this;
+      return this.self();
     }
+
+    /**
+     * Method returns instance of this builder. Operation is part of genric builder pattern.
+     */
+    protected abstract B self( );
 
     /**
      * Method creates a new instance of class Reseller. The object will be initialized with the values of the builder.
      *
      * @return Reseller Created object. The method never returns null.
      */
+    public abstract T build( );
+  }
+
+  static final class ResellerBuilderImpl extends ResellerBuilder<Reseller, ResellerBuilderImpl> {
+    protected ResellerBuilderImpl( ) {
+    }
+
+    protected ResellerBuilderImpl( Reseller pObject ) {
+      super(pObject);
+    }
+
+    @Override
+    protected ResellerBuilderImpl self( ) {
+      return this;
+    }
+
+    @Override
     public Reseller build( ) {
       Reseller lObject = new Reseller(this);
       SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
@@ -404,7 +415,7 @@ public abstract class ResellerBase {
    * @return {@link Reseller}
    */
   public static Reseller of( List<Channel> pChannels, String pName, Locale pLanguage ) {
-    Reseller.Builder lBuilder = Reseller.builder();
+    ResellerBuilder<?, ?> lBuilder = Reseller.builder();
     lBuilder.setChannels(pChannels);
     lBuilder.setName(pName);
     lBuilder.setLanguage(pLanguage);
@@ -506,7 +517,7 @@ public abstract class ResellerBase {
    *
    * @return {@link Builder} New builder that can be used to create new Reseller objects. The method never returns null.
    */
-  public Reseller.Builder toBuilder( ) {
-    return new Reseller.Builder((Reseller) this);
+  public ResellerBuilder<?, ?> toBuilder( ) {
+    return new ResellerBuilderImpl((Reseller) this);
   }
 }

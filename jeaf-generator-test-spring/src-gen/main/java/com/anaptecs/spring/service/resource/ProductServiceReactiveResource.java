@@ -164,7 +164,7 @@ public class ProductServiceReactiveResource {
       @RequestHeader Map<String, String> pHeaders, ServerWebExchange pServerWebExchange ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
-    Context.Builder lContextBuilder = Context.builder();
+    Context.ContextBuilder<?, ?> lContextBuilder = Context.builder();
     lContextBuilder.setAccessToken(pAccessToken);
     lContextBuilder.setLanguage(pLanguage);
     lContextBuilder.setResellerID(pResellerID);
@@ -260,7 +260,7 @@ public class ProductServiceReactiveResource {
       ServerWebExchange pServerWebExchange ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
-    DeprecatedContext.Builder lContextBuilder = DeprecatedContext.builder();
+    DeprecatedContext.DeprecatedContextBuilder<?, ?> lContextBuilder = DeprecatedContext.builder();
     lContextBuilder.setAccessToken(pAccessToken);
     lContextBuilder.setLanguage(pLanguage);
     lContextBuilder.setResellerID(pResellerID);
@@ -290,7 +290,7 @@ public class ProductServiceReactiveResource {
       ServerWebExchange pServerWebExchange ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
-    BeanParameter.Builder lBeanParamBuilder = BeanParameter.builder();
+    BeanParameter.BeanParameterBuilder<?, ?> lBeanParamBuilder = BeanParameter.builder();
     lBeanParamBuilder.setAccessToken(pAccessToken);
     lBeanParamBuilder.setLanguage(pLanguage);
     lBeanParamBuilder.setOldStyle(pOldStyle);
@@ -397,7 +397,7 @@ public class ProductServiceReactiveResource {
       @RequestHeader Map<String, String> pHeaders, ServerWebExchange pServerWebExchange ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
-    SpecialContext.Builder lContextBuilder = SpecialContext.builder();
+    SpecialContext.SpecialContextBuilder<?, ?> lContextBuilder = SpecialContext.builder();
     lContextBuilder.setAccessToken(pAccessToken);
     lContextBuilder.setLanguage(pLanguage);
     lContextBuilder.setResellerID(pResellerID);
@@ -516,7 +516,7 @@ public class ProductServiceReactiveResource {
       ServerWebExchange pServerWebExchange ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
-    LocalBeanParamType.Builder lBeanParamBuilder = LocalBeanParamType.builder();
+    LocalBeanParamType.LocalBeanParamTypeBuilder<?, ?> lBeanParamBuilder = LocalBeanParamType.builder();
     lBeanParamBuilder.setLocalKey(pLocalKey);
     lBeanParamBuilder.setLocalID(pLocalID);
     LocalBeanParamType pBeanParam = lBeanParamBuilder.build();
@@ -544,7 +544,7 @@ public class ProductServiceReactiveResource {
       ServerWebExchange pServerWebExchange ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
-    ParentBeanParamType.Builder lParentBuilder = ParentBeanParamType.builder();
+    ParentBeanParamType.ParentBeanParamTypeBuilder<?, ?> lParentBuilder = ParentBeanParamType.builder();
     lParentBuilder.setNovaKey(pNovaKey);
     lParentBuilder.setTkID(pTkID);
     // Handle bean parameter pParent.code
@@ -577,7 +577,7 @@ public class ProductServiceReactiveResource {
       ServerWebExchange pServerWebExchange ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
-    ChildBeanParameterType.Builder lChildBuilder = ChildBeanParameterType.builder();
+    ChildBeanParameterType.ChildBeanParameterTypeBuilder<?, ?> lChildBuilder = ChildBeanParameterType.builder();
     lChildBuilder.setNovaKey(pNovaKey);
     lChildBuilder.setTkID(pTkID);
     // Handle bean parameter pChild.code
@@ -733,7 +733,7 @@ public class ProductServiceReactiveResource {
       ServerWebExchange pServerWebExchange ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
-    DateQueryParamsBean.Builder lQueryParamsBuilder = DateQueryParamsBean.builder();
+    DateQueryParamsBean.DateQueryParamsBeanBuilder<?, ?> lQueryParamsBuilder = DateQueryParamsBean.builder();
     // Handle bean parameter pQueryParams.offsetDateTime
     if (pOffsetDateTimeAsBasicType != null) {
       lQueryParamsBuilder.setOffsetDateTime(OffsetDateTime.parse(pOffsetDateTimeAsBasicType));
@@ -932,7 +932,7 @@ public class ProductServiceReactiveResource {
       ServerWebExchange pServerWebExchange ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
-    DateHeaderParamsBean.Builder lHeaderParamsBuilder = DateHeaderParamsBean.builder();
+    DateHeaderParamsBean.DateHeaderParamsBeanBuilder<?, ?> lHeaderParamsBuilder = DateHeaderParamsBean.builder();
     // Handle bean parameter pHeaderParams.offsetDateTime
     if (pOffsetDateTimeAsBasicType != null) {
       lHeaderParamsBuilder.setOffsetDateTime(OffsetDateTime.parse(pOffsetDateTimeAsBasicType));
@@ -1028,7 +1028,7 @@ public class ProductServiceReactiveResource {
       @RequestHeader Map<String, String> pHeaders, ServerWebExchange pServerWebExchange ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
-    TechnicalHeaderContext.Builder lContextBuilder = TechnicalHeaderContext.builder();
+    TechnicalHeaderContext.TechnicalHeaderContextBuilder<?, ?> lContextBuilder = TechnicalHeaderContext.builder();
     lContextBuilder.setReseller(pReseller);
     // Add custom headers.
     for (Map.Entry<String, String> lNextEntry : pHeaders.entrySet()) {

@@ -16,10 +16,9 @@ import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.fasterxml.jackson.annotation.JsonSetter;
-import com.fasterxml.jackson.annotation.Nulls;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonAutoDetect(
     fieldVisibility = JsonAutoDetect.Visibility.ANY,
     getterVisibility = JsonAutoDetect.Visibility.NONE,
@@ -27,6 +26,8 @@ import com.fasterxml.jackson.annotation.Nulls;
     setterVisibility = JsonAutoDetect.Visibility.NONE,
     creatorVisibility = JsonAutoDetect.Visibility.ANY)
 @JsonPropertyOrder(value = { "deprecatedLinks", "newLinks", "oldSingleLink", "newSingleLink" })
+@JsonDeserialize(
+    builder = SimpleAssociationBackwardCompatibility.SimpleAssociationBackwardCompatibilityBuilderImpl.class)
 public class SimpleAssociationBackwardCompatibility {
   /**
    * Constant for the name of attribute "deprecatedLinks".
@@ -50,25 +51,16 @@ public class SimpleAssociationBackwardCompatibility {
    */
   public static final String NEWSINGLELINK = "newSingleLink";
 
-  @JsonSetter(nulls = Nulls.SKIP)
   private List<SimpleBackwardCompatibility> newLinks;
 
   private SimpleBackwardCompatibility newSingleLink;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected SimpleAssociationBackwardCompatibility( ) {
-    newLinks = new ArrayList<>();
-  }
 
   /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected SimpleAssociationBackwardCompatibility( Builder pBuilder ) {
+  protected SimpleAssociationBackwardCompatibility( SimpleAssociationBackwardCompatibilityBuilder<?, ?> pBuilder ) {
     // Read attribute values from builder.
     if (pBuilder.newLinks != null) {
       newLinks = pBuilder.newLinks;
@@ -84,41 +76,43 @@ public class SimpleAssociationBackwardCompatibility {
    *
    * @return {@link Builder} New builder that can be used to create new SimpleAssociationBackwardCompatibility objects.
    */
-  public static Builder builder( ) {
-    return new Builder();
+  public static SimpleAssociationBackwardCompatibilityBuilder<?, ?> builder( ) {
+    return new SimpleAssociationBackwardCompatibilityBuilderImpl();
   }
 
   /**
    * Convenience method to create new instance of class SimpleAssociationBackwardCompatibility.
    *
    *
-   * @return {@link com.anaptecs.spring.base.backward.SimpleAssociationBackwardCompatibility}
+   * @return {@link SimpleAssociationBackwardCompatibility}
    */
   public static SimpleAssociationBackwardCompatibility of( ) {
-    SimpleAssociationBackwardCompatibility.Builder lBuilder = SimpleAssociationBackwardCompatibility.builder();
+    SimpleAssociationBackwardCompatibilityBuilder<?, ?> lBuilder = SimpleAssociationBackwardCompatibility.builder();
     return lBuilder.build();
   }
 
   /**
    * Class implements builder to create a new instance of class <code>SimpleAssociationBackwardCompatibility</code>.
    */
-  public static class Builder {
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  public static abstract class SimpleAssociationBackwardCompatibilityBuilder<T extends SimpleAssociationBackwardCompatibility, B extends SimpleAssociationBackwardCompatibilityBuilder<T, B>> {
     private List<SimpleBackwardCompatibility> newLinks;
 
     private SimpleBackwardCompatibility newSingleLink;
 
     /**
-     * Use {@link SimpleAssociationBackwardCompatibility#builder()} instead of private constructor to create new
+     * Use {@link SimpleAssociationBackwardCompatibilityBuilder#builder()} instead of private constructor to create new
      * builder.
      */
-    protected Builder( ) {
+    protected SimpleAssociationBackwardCompatibilityBuilder( ) {
     }
 
     /**
-     * Use {@link SimpleAssociationBackwardCompatibility#builder(SimpleAssociationBackwardCompatibility)} instead of
-     * private constructor to create new builder.
+     * Use {@link SimpleAssociationBackwardCompatibilityBuilder#builder(SimpleAssociationBackwardCompatibility)} instead
+     * of private constructor to create new builder.
      */
-    protected Builder( SimpleAssociationBackwardCompatibility pObject ) {
+    protected SimpleAssociationBackwardCompatibilityBuilder( SimpleAssociationBackwardCompatibility pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setNewLinks(pObject.newLinks);
@@ -127,38 +121,17 @@ public class SimpleAssociationBackwardCompatibility {
     }
 
     /**
-     * Method returns a new builder.
-     *
-     * @return {@link Builder} New builder that can be used to create new SimpleAssociationBackwardCompatibility
-     * objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     *
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new SimpleAssociationBackwardCompatibility
-     * objects. The method never returns null.
-     */
-    public static Builder newBuilder( SimpleAssociationBackwardCompatibility pObject ) {
-      return new Builder(pObject);
-    }
-
-    /**
      * Method sets association {@link #deprecatedLinks}.<br/>
      *
      * @param pDeprecatedLinks Collection to which {@link #deprecatedLinks} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      * @deprecated Wrong type. Switch to <code>newLink</code> instead. (<b>since:</b> 2.0, <b>removed with:</b> 3.0)
      */
     @Deprecated
-    public Builder setDeprecatedLinks( List<SimpleBackwardCompatibility> pDeprecatedLinks ) {
+    public B setDeprecatedLinks( List<SimpleBackwardCompatibility> pDeprecatedLinks ) {
       // Delegate call to setNewLinks(...)
       this.setNewLinks(pDeprecatedLinks);
-      return this;
+      return this.self();
     }
 
     /**
@@ -166,23 +139,23 @@ public class SimpleAssociationBackwardCompatibility {
      *
      * @param pDeprecatedLinks Array of objects that should be added to {@link #deprecatedLinks}. The parameter may be
      * null.
-     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining. Method never returns null.
      * @deprecated Wrong type. Switch to <code>newLink</code> instead. (<b>since:</b> 2.0, <b>removed with:</b> 3.0)
      */
     @Deprecated
-    public Builder addToDeprecatedLinks( SimpleBackwardCompatibility... pDeprecatedLinks ) {
+    public B addToDeprecatedLinks( SimpleBackwardCompatibility... pDeprecatedLinks ) {
       // Delegate call to addToNewLinks(...)
       this.addToNewLinks(pDeprecatedLinks);
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets association {@link #newLinks}.<br/>
      *
      * @param pNewLinks Collection to which {@link #newLinks} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setNewLinks( List<SimpleBackwardCompatibility> pNewLinks ) {
+    public B setNewLinks( List<SimpleBackwardCompatibility> pNewLinks ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pNewLinks != null) {
         newLinks = new ArrayList<SimpleBackwardCompatibility>(pNewLinks);
@@ -190,48 +163,53 @@ public class SimpleAssociationBackwardCompatibility {
       else {
         newLinks = null;
       }
-      return this;
+      return this.self();
     }
 
     /**
      * Method adds the passed objects to association {@link #newLinks}.<br/>
      *
      * @param pNewLinks Array of objects that should be added to {@link #newLinks}. The parameter may be null.
-     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining. Method never returns null.
      */
-    public Builder addToNewLinks( SimpleBackwardCompatibility... pNewLinks ) {
+    public B addToNewLinks( SimpleBackwardCompatibility... pNewLinks ) {
       if (pNewLinks != null) {
         if (newLinks == null) {
           newLinks = new ArrayList<SimpleBackwardCompatibility>();
         }
         newLinks.addAll(Arrays.asList(pNewLinks));
       }
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets association {@link #oldSingleLink}.<br/>
      *
      * @param pOldSingleLink Value to which {@link #oldSingleLink} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
-    public Builder setOldSingleLink( SimpleBackwardCompatibility pOldSingleLink ) {
+    public B setOldSingleLink( SimpleBackwardCompatibility pOldSingleLink ) {
       // Delegate call to setNewSingleLink(...)
       this.setNewSingleLink(pOldSingleLink);
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets association {@link #newSingleLink}.<br/>
      *
      * @param pNewSingleLink Value to which {@link #newSingleLink} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setNewSingleLink( SimpleBackwardCompatibility pNewSingleLink ) {
+    public B setNewSingleLink( SimpleBackwardCompatibility pNewSingleLink ) {
       newSingleLink = pNewSingleLink;
-      return this;
+      return this.self();
     }
+
+    /**
+     * Method returns instance of this builder. Operation is part of genric builder pattern.
+     */
+    protected abstract B self( );
 
     /**
      * Method creates a new instance of class SimpleAssociationBackwardCompatibility. The object will be initialized
@@ -239,6 +217,24 @@ public class SimpleAssociationBackwardCompatibility {
      *
      * @return SimpleAssociationBackwardCompatibility Created object. The method never returns null.
      */
+    public abstract T build( );
+  }
+
+  static final class SimpleAssociationBackwardCompatibilityBuilderImpl extends
+      SimpleAssociationBackwardCompatibilityBuilder<SimpleAssociationBackwardCompatibility, SimpleAssociationBackwardCompatibilityBuilderImpl> {
+    protected SimpleAssociationBackwardCompatibilityBuilderImpl( ) {
+    }
+
+    protected SimpleAssociationBackwardCompatibilityBuilderImpl( SimpleAssociationBackwardCompatibility pObject ) {
+      super(pObject);
+    }
+
+    @Override
+    protected SimpleAssociationBackwardCompatibilityBuilderImpl self( ) {
+      return this;
+    }
+
+    @Override
     public SimpleAssociationBackwardCompatibility build( ) {
       SimpleAssociationBackwardCompatibility lObject = new SimpleAssociationBackwardCompatibility(this);
       SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
@@ -500,7 +496,7 @@ public class SimpleAssociationBackwardCompatibility {
    * @return {@link Builder} New builder that can be used to create new SimpleAssociationBackwardCompatibility objects.
    * The method never returns null.
    */
-  public Builder toBuilder( ) {
-    return new Builder(this);
+  public SimpleAssociationBackwardCompatibilityBuilder<?, ?> toBuilder( ) {
+    return new SimpleAssociationBackwardCompatibilityBuilderImpl(this);
   }
 }

@@ -2,6 +2,9 @@
 «EXTENSION java::GeneratorCommons»
 «EXTENSION java::OpenAPIFunctions»
 «EXTENSION functions::SystemProperties»
+«EXTENSION functions::Builder»
+«EXTENSION functions::Class»
+
 
 «IMPORT uml»
 «IMPORT JMM»
@@ -343,7 +346,12 @@
 							«ELSE»						
 								«this.fqn()» lDeserializedObject = deserializer.deserializeObject(lNode.asText(), «this.fqn()».class, SERIALIZED_CLASSES);
 							«ENDIF»
-							«this.fqn()».Builder lBuilder;
+							«IF this.hasGenericBuilder()»
+							«this.fqn()».«this.builderName()»<?, ?>
+							«ELSE»
+							«this.fqn()».Builder
+							«ENDIF»
+							lBuilder;
 							if(lDeserializedObject != null) {
 							  lBuilder = lDeserializedObject.toBuilder();
 							}

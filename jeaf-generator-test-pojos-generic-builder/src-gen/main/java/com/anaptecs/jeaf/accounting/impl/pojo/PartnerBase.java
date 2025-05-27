@@ -15,7 +15,6 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "objectType", visible = true)
 @JsonSubTypes({ @JsonSubTypes.Type(value = Customer.class, name = "Customer") })
 public abstract class PartnerBase {
@@ -33,6 +32,7 @@ public abstract class PartnerBase {
    * Class implements builder to create a new instance of class <code>Partner</code>.
    */
   @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static abstract class PartnerBuilder<T extends Partner, B extends PartnerBuilder<T, B>> {
     /**
      * Use {@link PartnerBuilder#builder()} instead of private constructor to create new builder.

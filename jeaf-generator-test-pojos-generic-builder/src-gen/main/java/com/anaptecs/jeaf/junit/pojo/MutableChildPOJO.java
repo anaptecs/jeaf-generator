@@ -17,7 +17,6 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonDeserialize(builder = MutableChildPOJO.MutableChildPOJOBuilderImpl.class)
 public class MutableChildPOJO extends ImmutablePOJOParent {
   /**
@@ -91,6 +90,7 @@ public class MutableChildPOJO extends ImmutablePOJOParent {
    * Class implements builder to create a new instance of class <code>MutableChildPOJO</code>.
    */
   @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static abstract class MutableChildPOJOBuilder<T extends MutableChildPOJO, B extends MutableChildPOJOBuilder<T, B>>
       extends ImmutablePOJOParentBuilder<T, B> {
     private Integer writeable;

@@ -11,14 +11,16 @@ import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonAutoDetect(
     fieldVisibility = JsonAutoDetect.Visibility.ANY,
     getterVisibility = JsonAutoDetect.Visibility.NONE,
     isGetterVisibility = JsonAutoDetect.Visibility.NONE,
     setterVisibility = JsonAutoDetect.Visibility.NONE,
     creatorVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonDeserialize(builder = LongCode.LongCodeBuilderImpl.class)
 public class LongCode {
   /**
    * Constant for the name of attribute "code".
@@ -28,18 +30,11 @@ public class LongCode {
   private Long code;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected LongCode( ) {
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected LongCode( Builder pBuilder ) {
+  protected LongCode( LongCodeBuilder<?, ?> pBuilder ) {
     // Read attribute values from builder.
     code = pBuilder.code;
   }
@@ -49,8 +44,8 @@ public class LongCode {
    *
    * @return {@link Builder} New builder that can be used to create new LongCode objects.
    */
-  public static Builder builder( ) {
-    return new Builder();
+  public static LongCodeBuilder<?, ?> builder( ) {
+    return new LongCodeBuilderImpl();
   }
 
   /**
@@ -62,7 +57,7 @@ public class LongCode {
    * @return {@link LongCode}
    */
   public static LongCode of( Long pCode ) {
-    LongCode.Builder lBuilder = LongCode.builder();
+    LongCodeBuilder<?, ?> lBuilder = LongCode.builder();
     lBuilder.setCode(pCode);
     return lBuilder.build();
   }
@@ -70,19 +65,21 @@ public class LongCode {
   /**
    * Class implements builder to create a new instance of class <code>LongCode</code>.
    */
-  public static class Builder {
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  public static abstract class LongCodeBuilder<T extends LongCode, B extends LongCodeBuilder<T, B>> {
     private Long code;
 
     /**
-     * Use {@link LongCode#builder()} instead of private constructor to create new builder.
+     * Use {@link LongCodeBuilder#builder()} instead of private constructor to create new builder.
      */
-    protected Builder( ) {
+    protected LongCodeBuilder( ) {
     }
 
     /**
-     * Use {@link LongCode#builder(LongCode)} instead of private constructor to create new builder.
+     * Use {@link LongCodeBuilder#builder(LongCode)} instead of private constructor to create new builder.
      */
-    protected Builder( LongCode pObject ) {
+    protected LongCodeBuilder( LongCode pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setCode(pObject.code);
@@ -90,42 +87,44 @@ public class LongCode {
     }
 
     /**
-     * Method returns a new builder.
-     *
-     * @return {@link Builder} New builder that can be used to create new LongCode objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     *
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new LongCode objects. The method never returns
-     * null.
-     */
-    public static Builder newBuilder( LongCode pObject ) {
-      return new Builder(pObject);
-    }
-
-    /**
      * Method sets attribute {@link #code}.<br/>
      *
      * @param pCode Value to which {@link #code} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setCode( @MyNotNullProperty Long pCode ) {
+    public B setCode( @MyNotNullProperty Long pCode ) {
       // Assign value to attribute
       code = pCode;
-      return this;
+      return this.self();
     }
+
+    /**
+     * Method returns instance of this builder. Operation is part of genric builder pattern.
+     */
+    protected abstract B self( );
 
     /**
      * Method creates a new instance of class LongCode. The object will be initialized with the values of the builder.
      *
      * @return LongCode Created object. The method never returns null.
      */
+    public abstract T build( );
+  }
+
+  static final class LongCodeBuilderImpl extends LongCodeBuilder<LongCode, LongCodeBuilderImpl> {
+    protected LongCodeBuilderImpl( ) {
+    }
+
+    protected LongCodeBuilderImpl( LongCode pObject ) {
+      super(pObject);
+    }
+
+    @Override
+    protected LongCodeBuilderImpl self( ) {
+      return this;
+    }
+
+    @Override
     public LongCode build( ) {
       LongCode lObject = new LongCode(this);
       SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
@@ -207,7 +206,7 @@ public class LongCode {
    *
    * @return {@link Builder} New builder that can be used to create new LongCode objects. The method never returns null.
    */
-  public Builder toBuilder( ) {
-    return new Builder(this);
+  public LongCodeBuilder<?, ?> toBuilder( ) {
+    return new LongCodeBuilderImpl(this);
   }
 }

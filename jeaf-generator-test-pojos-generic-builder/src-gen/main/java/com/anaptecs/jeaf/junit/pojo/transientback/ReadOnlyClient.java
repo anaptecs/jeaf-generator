@@ -18,7 +18,6 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonDeserialize(builder = ReadOnlyClient.ReadOnlyClientBuilderImpl.class)
 public class ReadOnlyClient {
   /**
@@ -74,6 +73,7 @@ public class ReadOnlyClient {
    * Class implements builder to create a new instance of class <code>ReadOnlyClient</code>.
    */
   @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static abstract class ReadOnlyClientBuilder<T extends ReadOnlyClient, B extends ReadOnlyClientBuilder<T, B>> {
     private String name;
 

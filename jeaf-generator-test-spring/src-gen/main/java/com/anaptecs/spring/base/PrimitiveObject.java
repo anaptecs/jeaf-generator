@@ -13,14 +13,16 @@ import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonAutoDetect(
     fieldVisibility = JsonAutoDetect.Visibility.ANY,
     getterVisibility = JsonAutoDetect.Visibility.NONE,
     isGetterVisibility = JsonAutoDetect.Visibility.NONE,
     setterVisibility = JsonAutoDetect.Visibility.NONE,
     creatorVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonDeserialize(builder = PrimitiveObject.PrimitiveObjectBuilderImpl.class)
 public class PrimitiveObject {
   /**
    * Constant for the name of attribute "aBoolean".
@@ -177,18 +179,11 @@ public class PrimitiveObject {
   private String bString;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected PrimitiveObject( ) {
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected PrimitiveObject( Builder pBuilder ) {
+  protected PrimitiveObject( PrimitiveObjectBuilder<?, ?> pBuilder ) {
     // Read attribute values from builder.
     aBoolean = pBuilder.aBoolean;
     bBoolean = pBuilder.bBoolean;
@@ -219,8 +214,8 @@ public class PrimitiveObject {
    *
    * @return {@link Builder} New builder that can be used to create new PrimitiveObject objects.
    */
-  public static Builder builder( ) {
-    return new Builder();
+  public static PrimitiveObjectBuilder<?, ?> builder( ) {
+    return new PrimitiveObjectBuilderImpl();
   }
 
   /**
@@ -271,13 +266,13 @@ public class PrimitiveObject {
    *
    * @param pBString Value to which {@link #bString} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.PrimitiveObject}
+   * @return {@link PrimitiveObject}
    */
   public static PrimitiveObject of( boolean pABoolean, Boolean pBBoolean, boolean pCBoolean, byte pAByte, Byte pBByte,
       short pAShort, Short pBShort, int pAInteger, Integer pBInteger, Integer pCInteger, long pALong, Long pBLong,
       BigInteger pABigInteger, char pACharacter, Character pBCharacter, float pAFloat, Float pBFloat, double pADouble,
       Double pBDouble, BigDecimal pABigDecimal, String pAString, String pBString ) {
-    PrimitiveObject.Builder lBuilder = PrimitiveObject.builder();
+    PrimitiveObjectBuilder<?, ?> lBuilder = PrimitiveObject.builder();
     lBuilder.setABoolean(pABoolean);
     lBuilder.setBBoolean(pBBoolean);
     lBuilder.setCBoolean(pCBoolean);
@@ -306,7 +301,9 @@ public class PrimitiveObject {
   /**
    * Class implements builder to create a new instance of class <code>PrimitiveObject</code>.
    */
-  public static class Builder {
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  public static abstract class PrimitiveObjectBuilder<T extends PrimitiveObject, B extends PrimitiveObjectBuilder<T, B>> {
     private boolean aBoolean;
 
     private Boolean bBoolean;
@@ -352,15 +349,15 @@ public class PrimitiveObject {
     private String bString;
 
     /**
-     * Use {@link PrimitiveObject#builder()} instead of private constructor to create new builder.
+     * Use {@link PrimitiveObjectBuilder#builder()} instead of private constructor to create new builder.
      */
-    protected Builder( ) {
+    protected PrimitiveObjectBuilder( ) {
     }
 
     /**
-     * Use {@link PrimitiveObject#builder(PrimitiveObject)} instead of private constructor to create new builder.
+     * Use {@link PrimitiveObjectBuilder#builder(PrimitiveObject)} instead of private constructor to create new builder.
      */
-    protected Builder( PrimitiveObject pObject ) {
+    protected PrimitiveObjectBuilder( PrimitiveObject pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setABoolean(pObject.aBoolean);
@@ -389,288 +386,273 @@ public class PrimitiveObject {
     }
 
     /**
-     * Method returns a new builder.
-     *
-     * @return {@link Builder} New builder that can be used to create new PrimitiveObject objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     *
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new PrimitiveObject objects. The method never
-     * returns null.
-     */
-    public static Builder newBuilder( PrimitiveObject pObject ) {
-      return new Builder(pObject);
-    }
-
-    /**
      * Method sets attribute {@link #aBoolean}.<br/>
      *
      * @param pABoolean Value to which {@link #aBoolean} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setABoolean( boolean pABoolean ) {
+    public B setABoolean( boolean pABoolean ) {
       // Assign value to attribute
       aBoolean = pABoolean;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #bBoolean}.<br/>
      *
      * @param pBBoolean Value to which {@link #bBoolean} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setBBoolean( @MyNotNullProperty Boolean pBBoolean ) {
+    public B setBBoolean( @MyNotNullProperty Boolean pBBoolean ) {
       // Assign value to attribute
       bBoolean = pBBoolean;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #cBoolean}.<br/>
      *
      * @param pCBoolean Value to which {@link #cBoolean} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setCBoolean( boolean pCBoolean ) {
+    public B setCBoolean( boolean pCBoolean ) {
       // Assign value to attribute
       cBoolean = pCBoolean;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #aByte}.<br/>
      *
      * @param pAByte Value to which {@link #aByte} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setAByte( byte pAByte ) {
+    public B setAByte( byte pAByte ) {
       // Assign value to attribute
       aByte = pAByte;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #bByte}.<br/>
      *
      * @param pBByte Value to which {@link #bByte} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setBByte( @MyNotNullProperty Byte pBByte ) {
+    public B setBByte( @MyNotNullProperty Byte pBByte ) {
       // Assign value to attribute
       bByte = pBByte;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #aShort}.<br/>
      *
      * @param pAShort Value to which {@link #aShort} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setAShort( short pAShort ) {
+    public B setAShort( short pAShort ) {
       // Assign value to attribute
       aShort = pAShort;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #bShort}.<br/>
      *
      * @param pBShort Value to which {@link #bShort} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setBShort( @MyNotNullProperty Short pBShort ) {
+    public B setBShort( @MyNotNullProperty Short pBShort ) {
       // Assign value to attribute
       bShort = pBShort;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #aInteger}.<br/>
      *
      * @param pAInteger Value to which {@link #aInteger} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setAInteger( int pAInteger ) {
+    public B setAInteger( int pAInteger ) {
       // Assign value to attribute
       aInteger = pAInteger;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #bInteger}.<br/>
      *
      * @param pBInteger Value to which {@link #bInteger} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setBInteger( @MyNotNullProperty Integer pBInteger ) {
+    public B setBInteger( @MyNotNullProperty Integer pBInteger ) {
       // Assign value to attribute
       bInteger = pBInteger;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #cInteger}.<br/>
      *
      * @param pCInteger Value to which {@link #cInteger} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setCInteger( @MyNotNullProperty Integer pCInteger ) {
+    public B setCInteger( @MyNotNullProperty Integer pCInteger ) {
       // Assign value to attribute
       cInteger = pCInteger;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #aLong}.<br/>
      *
      * @param pALong Value to which {@link #aLong} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setALong( long pALong ) {
+    public B setALong( long pALong ) {
       // Assign value to attribute
       aLong = pALong;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #bLong}.<br/>
      *
      * @param pBLong Value to which {@link #bLong} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setBLong( @MyNotNullProperty Long pBLong ) {
+    public B setBLong( @MyNotNullProperty Long pBLong ) {
       // Assign value to attribute
       bLong = pBLong;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #aBigInteger}.<br/>
      *
      * @param pABigInteger Value to which {@link #aBigInteger} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setABigInteger( @MyNotNullProperty BigInteger pABigInteger ) {
+    public B setABigInteger( @MyNotNullProperty BigInteger pABigInteger ) {
       // Assign value to attribute
       aBigInteger = pABigInteger;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #aCharacter}.<br/>
      *
      * @param pACharacter Value to which {@link #aCharacter} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setACharacter( char pACharacter ) {
+    public B setACharacter( char pACharacter ) {
       // Assign value to attribute
       aCharacter = pACharacter;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #bCharacter}.<br/>
      *
      * @param pBCharacter Value to which {@link #bCharacter} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setBCharacter( @MyNotNullProperty Character pBCharacter ) {
+    public B setBCharacter( @MyNotNullProperty Character pBCharacter ) {
       // Assign value to attribute
       bCharacter = pBCharacter;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #aFloat}.<br/>
      *
      * @param pAFloat Value to which {@link #aFloat} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setAFloat( float pAFloat ) {
+    public B setAFloat( float pAFloat ) {
       // Assign value to attribute
       aFloat = pAFloat;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #bFloat}.<br/>
      *
      * @param pBFloat Value to which {@link #bFloat} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setBFloat( @MyNotNullProperty Float pBFloat ) {
+    public B setBFloat( @MyNotNullProperty Float pBFloat ) {
       // Assign value to attribute
       bFloat = pBFloat;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #aDouble}.<br/>
      *
      * @param pADouble Value to which {@link #aDouble} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setADouble( double pADouble ) {
+    public B setADouble( double pADouble ) {
       // Assign value to attribute
       aDouble = pADouble;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #bDouble}.<br/>
      *
      * @param pBDouble Value to which {@link #bDouble} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setBDouble( @MyNotNullProperty Double pBDouble ) {
+    public B setBDouble( @MyNotNullProperty Double pBDouble ) {
       // Assign value to attribute
       bDouble = pBDouble;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #aBigDecimal}.<br/>
      *
      * @param pABigDecimal Value to which {@link #aBigDecimal} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setABigDecimal( @MyNotNullProperty BigDecimal pABigDecimal ) {
+    public B setABigDecimal( @MyNotNullProperty BigDecimal pABigDecimal ) {
       // Assign value to attribute
       aBigDecimal = pABigDecimal;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #aString}.<br/>
      *
      * @param pAString Value to which {@link #aString} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setAString( @MyNotNullProperty String pAString ) {
+    public B setAString( @MyNotNullProperty String pAString ) {
       // Assign value to attribute
       aString = pAString;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #bString}.<br/>
      *
      * @param pBString Value to which {@link #bString} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setBString( @MyNotNullProperty String pBString ) {
+    public B setBString( @MyNotNullProperty String pBString ) {
       // Assign value to attribute
       bString = pBString;
-      return this;
+      return this.self();
     }
+
+    /**
+     * Method returns instance of this builder. Operation is part of genric builder pattern.
+     */
+    protected abstract B self( );
 
     /**
      * Method creates a new instance of class PrimitiveObject. The object will be initialized with the values of the
@@ -678,6 +660,24 @@ public class PrimitiveObject {
      *
      * @return PrimitiveObject Created object. The method never returns null.
      */
+    public abstract T build( );
+  }
+
+  static final class PrimitiveObjectBuilderImpl
+      extends PrimitiveObjectBuilder<PrimitiveObject, PrimitiveObjectBuilderImpl> {
+    protected PrimitiveObjectBuilderImpl( ) {
+    }
+
+    protected PrimitiveObjectBuilderImpl( PrimitiveObject pObject ) {
+      super(pObject);
+    }
+
+    @Override
+    protected PrimitiveObjectBuilderImpl self( ) {
+      return this;
+    }
+
+    @Override
     public PrimitiveObject build( ) {
       PrimitiveObject lObject = new PrimitiveObject(this);
       SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
@@ -1312,7 +1312,7 @@ public class PrimitiveObject {
    * @return {@link Builder} New builder that can be used to create new PrimitiveObject objects. The method never
    * returns null.
    */
-  public Builder toBuilder( ) {
-    return new Builder(this);
+  public PrimitiveObjectBuilder<?, ?> toBuilder( ) {
+    return new PrimitiveObjectBuilderImpl(this);
   }
 }

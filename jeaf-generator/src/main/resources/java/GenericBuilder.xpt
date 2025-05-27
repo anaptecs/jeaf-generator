@@ -22,7 +22,10 @@
  * Class implements builder to create a new instance of class <code>«this.name»</code>.
  */
 «EXPAND java::Helper::GenerateDeprecationAnnotation-»
-«IF generateJacksonAnnotations()»@com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder(withPrefix = "set")«ENDIF»
+«IF generateJacksonAnnotations()»
+@com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder(withPrefix = "set")
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown = true)
+«ENDIF»
 public static abstract class «this.builderName()»<T extends «name», B extends «this.builderName()»<T, B>> «IF superClass.isEmpty == false»extends «superClass.get(0).builderName()»<T, B>«ENDIF» {
 	«REM»Generate instance variables for each property«ENDREM»
 	«IF needsToImplementIdentifiable() == true»

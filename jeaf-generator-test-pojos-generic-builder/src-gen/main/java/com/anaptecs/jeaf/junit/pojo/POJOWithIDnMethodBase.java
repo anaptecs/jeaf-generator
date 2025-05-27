@@ -23,7 +23,6 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonIdentityInfo(property = "objectID", generator = ObjectIdGenerators.PropertyGenerator.class)
 @JsonDeserialize(builder = POJOWithIDnMethodBase.POJOWithIDnMethodBuilderImpl.class)
 public abstract class POJOWithIDnMethodBase implements Identifiable<ObjectID> {
@@ -63,6 +62,7 @@ public abstract class POJOWithIDnMethodBase implements Identifiable<ObjectID> {
    * Class implements builder to create a new instance of class <code>POJOWithIDnMethod</code>.
    */
   @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static abstract class POJOWithIDnMethodBuilder<T extends POJOWithIDnMethod, B extends POJOWithIDnMethodBuilder<T, B>> {
     /**
      * Reference to the identifier of this object. The reference may be null since an id is not mandatory.

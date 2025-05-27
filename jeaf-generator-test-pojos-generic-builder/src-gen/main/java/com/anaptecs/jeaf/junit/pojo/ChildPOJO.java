@@ -30,7 +30,6 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
 @Deprecated
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonDeserialize(builder = ChildPOJO.ChildPOJOBuilderImpl.class)
 public class ChildPOJO extends ParentPOJO {
   /**
@@ -90,6 +89,7 @@ public class ChildPOJO extends ParentPOJO {
    */
   @Deprecated
   @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static abstract class ChildPOJOBuilder<T extends ChildPOJO, B extends ChildPOJOBuilder<T, B>>
       extends ParentPOJOBuilder<T, B> {
     @NotNull

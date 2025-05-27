@@ -18,6 +18,8 @@ import java.util.Objects;
 
 import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 public class DateHeaderParamsBean {
   /**
@@ -91,18 +93,11 @@ public class DateHeaderParamsBean {
   private Date sqlDate;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  public DateHeaderParamsBean( ) {
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected DateHeaderParamsBean( Builder pBuilder ) {
+  protected DateHeaderParamsBean( DateHeaderParamsBeanBuilder<?, ?> pBuilder ) {
     // Read attribute values from builder.
     offsetDateTime = pBuilder.offsetDateTime;
     offsetTime = pBuilder.offsetTime;
@@ -121,8 +116,8 @@ public class DateHeaderParamsBean {
    *
    * @return {@link Builder} New builder that can be used to create new DateHeaderParamsBean objects.
    */
-  public static Builder builder( ) {
-    return new Builder();
+  public static DateHeaderParamsBeanBuilder<?, ?> builder( ) {
+    return new DateHeaderParamsBeanBuilderImpl();
   }
 
   /**
@@ -154,7 +149,7 @@ public class DateHeaderParamsBean {
   public static DateHeaderParamsBean of( OffsetDateTime pOffsetDateTime, OffsetTime pOffsetTime,
       LocalDateTime pLocalDateTime, LocalTime pLocalTime, LocalDate pLocalDate, java.util.Date pUtilDate,
       Calendar pCalendar, Timestamp pSqlTimestamp, Time pSqlTime, Date pSqlDate ) {
-    DateHeaderParamsBean.Builder lBuilder = DateHeaderParamsBean.builder();
+    DateHeaderParamsBeanBuilder<?, ?> lBuilder = DateHeaderParamsBean.builder();
     lBuilder.setOffsetDateTime(pOffsetDateTime);
     lBuilder.setOffsetTime(pOffsetTime);
     lBuilder.setLocalDateTime(pLocalDateTime);
@@ -171,7 +166,9 @@ public class DateHeaderParamsBean {
   /**
    * Class implements builder to create a new instance of class <code>DateHeaderParamsBean</code>.
    */
-  public static class Builder {
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  public static abstract class DateHeaderParamsBeanBuilder<T extends DateHeaderParamsBean, B extends DateHeaderParamsBeanBuilder<T, B>> {
     private OffsetDateTime offsetDateTime;
 
     private OffsetTime offsetTime;
@@ -193,16 +190,16 @@ public class DateHeaderParamsBean {
     private Date sqlDate;
 
     /**
-     * Use {@link DateHeaderParamsBean#builder()} instead of private constructor to create new builder.
+     * Use {@link DateHeaderParamsBeanBuilder#builder()} instead of private constructor to create new builder.
      */
-    protected Builder( ) {
+    protected DateHeaderParamsBeanBuilder( ) {
     }
 
     /**
-     * Use {@link DateHeaderParamsBean#builder(DateHeaderParamsBean)} instead of private constructor to create new
-     * builder.
+     * Use {@link DateHeaderParamsBeanBuilder#builder(DateHeaderParamsBean)} instead of private constructor to create
+     * new builder.
      */
-    protected Builder( DateHeaderParamsBean pObject ) {
+    protected DateHeaderParamsBeanBuilder( DateHeaderParamsBean pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setOffsetDateTime(pObject.offsetDateTime);
@@ -219,144 +216,129 @@ public class DateHeaderParamsBean {
     }
 
     /**
-     * Method returns a new builder.
-     *
-     * @return {@link Builder} New builder that can be used to create new DateHeaderParamsBean objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     *
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new DateHeaderParamsBean objects. The method never
-     * returns null.
-     */
-    public static Builder newBuilder( DateHeaderParamsBean pObject ) {
-      return new Builder(pObject);
-    }
-
-    /**
      * Method sets attribute {@link #offsetDateTime}.<br/>
      *
      * @param pOffsetDateTime Value to which {@link #offsetDateTime} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setOffsetDateTime( @MyNotNullProperty OffsetDateTime pOffsetDateTime ) {
+    public B setOffsetDateTime( @MyNotNullProperty OffsetDateTime pOffsetDateTime ) {
       // Assign value to attribute
       offsetDateTime = pOffsetDateTime;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #offsetTime}.<br/>
      *
      * @param pOffsetTime Value to which {@link #offsetTime} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setOffsetTime( @MyNotNullProperty OffsetTime pOffsetTime ) {
+    public B setOffsetTime( @MyNotNullProperty OffsetTime pOffsetTime ) {
       // Assign value to attribute
       offsetTime = pOffsetTime;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #localDateTime}.<br/>
      *
      * @param pLocalDateTime Value to which {@link #localDateTime} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setLocalDateTime( @MyNotNullProperty LocalDateTime pLocalDateTime ) {
+    public B setLocalDateTime( @MyNotNullProperty LocalDateTime pLocalDateTime ) {
       // Assign value to attribute
       localDateTime = pLocalDateTime;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #localTime}.<br/>
      *
      * @param pLocalTime Value to which {@link #localTime} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setLocalTime( @MyNotNullProperty LocalTime pLocalTime ) {
+    public B setLocalTime( @MyNotNullProperty LocalTime pLocalTime ) {
       // Assign value to attribute
       localTime = pLocalTime;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #localDate}.<br/>
      *
      * @param pLocalDate Value to which {@link #localDate} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setLocalDate( @MyNotNullProperty LocalDate pLocalDate ) {
+    public B setLocalDate( @MyNotNullProperty LocalDate pLocalDate ) {
       // Assign value to attribute
       localDate = pLocalDate;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #utilDate}.<br/>
      *
      * @param pUtilDate Value to which {@link #utilDate} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setUtilDate( @MyNotNullProperty java.util.Date pUtilDate ) {
+    public B setUtilDate( @MyNotNullProperty java.util.Date pUtilDate ) {
       // Assign value to attribute
       utilDate = pUtilDate;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #calendar}.<br/>
      *
      * @param pCalendar Value to which {@link #calendar} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setCalendar( @MyNotNullProperty Calendar pCalendar ) {
+    public B setCalendar( @MyNotNullProperty Calendar pCalendar ) {
       // Assign value to attribute
       calendar = pCalendar;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #sqlTimestamp}.<br/>
      *
      * @param pSqlTimestamp Value to which {@link #sqlTimestamp} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setSqlTimestamp( @MyNotNullProperty Timestamp pSqlTimestamp ) {
+    public B setSqlTimestamp( @MyNotNullProperty Timestamp pSqlTimestamp ) {
       // Assign value to attribute
       sqlTimestamp = pSqlTimestamp;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #sqlTime}.<br/>
      *
      * @param pSqlTime Value to which {@link #sqlTime} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setSqlTime( @MyNotNullProperty Time pSqlTime ) {
+    public B setSqlTime( @MyNotNullProperty Time pSqlTime ) {
       // Assign value to attribute
       sqlTime = pSqlTime;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #sqlDate}.<br/>
      *
      * @param pSqlDate Value to which {@link #sqlDate} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setSqlDate( @MyNotNullProperty Date pSqlDate ) {
+    public B setSqlDate( @MyNotNullProperty Date pSqlDate ) {
       // Assign value to attribute
       sqlDate = pSqlDate;
-      return this;
+      return this.self();
     }
+
+    /**
+     * Method returns instance of this builder. Operation is part of genric builder pattern.
+     */
+    protected abstract B self( );
 
     /**
      * Method creates a new instance of class DateHeaderParamsBean. The object will be initialized with the values of
@@ -364,6 +346,24 @@ public class DateHeaderParamsBean {
      *
      * @return DateHeaderParamsBean Created object. The method never returns null.
      */
+    public abstract T build( );
+  }
+
+  static final class DateHeaderParamsBeanBuilderImpl
+      extends DateHeaderParamsBeanBuilder<DateHeaderParamsBean, DateHeaderParamsBeanBuilderImpl> {
+    protected DateHeaderParamsBeanBuilderImpl( ) {
+    }
+
+    protected DateHeaderParamsBeanBuilderImpl( DateHeaderParamsBean pObject ) {
+      super(pObject);
+    }
+
+    @Override
+    protected DateHeaderParamsBeanBuilderImpl self( ) {
+      return this;
+    }
+
+    @Override
     public DateHeaderParamsBean build( ) {
       DateHeaderParamsBean lObject = new DateHeaderParamsBean(this);
       SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
@@ -682,7 +682,7 @@ public class DateHeaderParamsBean {
    * @return {@link Builder} New builder that can be used to create new DateHeaderParamsBean objects. The method never
    * returns null.
    */
-  public Builder toBuilder( ) {
-    return new Builder(this);
+  public DateHeaderParamsBeanBuilder<?, ?> toBuilder( ) {
+    return new DateHeaderParamsBeanBuilderImpl(this);
   }
 }

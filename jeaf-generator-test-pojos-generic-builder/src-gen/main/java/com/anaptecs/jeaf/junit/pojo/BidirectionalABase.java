@@ -23,7 +23,6 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonDeserialize(builder = BidirectionalABase.BidirectionalABuilderImpl.class)
 public abstract class BidirectionalABase {
   /**
@@ -82,6 +81,7 @@ public abstract class BidirectionalABase {
    * Class implements builder to create a new instance of class <code>BidirectionalA</code>.
    */
   @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static abstract class BidirectionalABuilder<T extends BidirectionalA, B extends BidirectionalABuilder<T, B>> {
     private BidirectionalA child;
 

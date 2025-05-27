@@ -15,12 +15,11 @@ import java.util.Objects;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.Nulls;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "objectType", visible = true)
 @JsonSubTypes({ @JsonSubTypes.Type(value = Company.class, name = "Company"),
   @JsonSubTypes.Type(value = Person.class, name = "Person") })
@@ -30,29 +29,21 @@ import com.fasterxml.jackson.annotation.Nulls;
     isGetterVisibility = JsonAutoDetect.Visibility.NONE,
     setterVisibility = JsonAutoDetect.Visibility.NONE,
     creatorVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonDeserialize(builder = Partner.PartnerBuilderImpl.class)
 public class Partner {
   /**
    * Constant for the name of attribute "postalAddresses".
    */
   public static final String POSTALADDRESSES = "postalAddresses";
 
-  @JsonSetter(nulls = Nulls.SKIP)
   private List<PostalAddress> postalAddresses;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected Partner( ) {
-    postalAddresses = new ArrayList<>();
-  }
 
   /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected Partner( Builder pBuilder ) {
+  protected Partner( PartnerBuilder<?, ?> pBuilder ) {
     // Read attribute values from builder.
     if (pBuilder.postalAddresses != null) {
       postalAddresses = pBuilder.postalAddresses;
@@ -67,37 +58,39 @@ public class Partner {
    *
    * @return {@link Builder} New builder that can be used to create new Partner objects.
    */
-  public static Builder builder( ) {
-    return new Builder();
+  public static PartnerBuilder<?, ?> builder( ) {
+    return new PartnerBuilderImpl();
   }
 
   /**
    * Convenience method to create new instance of class Partner.
    *
    *
-   * @return {@link com.anaptecs.spring.base.Partner}
+   * @return {@link Partner}
    */
   public static Partner of( ) {
-    Partner.Builder lBuilder = Partner.builder();
+    PartnerBuilder<?, ?> lBuilder = Partner.builder();
     return lBuilder.build();
   }
 
   /**
    * Class implements builder to create a new instance of class <code>Partner</code>.
    */
-  public static class Builder {
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  public static abstract class PartnerBuilder<T extends Partner, B extends PartnerBuilder<T, B>> {
     private List<PostalAddress> postalAddresses;
 
     /**
-     * Use {@link Partner#builder()} instead of private constructor to create new builder.
+     * Use {@link PartnerBuilder#builder()} instead of private constructor to create new builder.
      */
-    protected Builder( ) {
+    protected PartnerBuilder( ) {
     }
 
     /**
-     * Use {@link Partner#builder(Partner)} instead of private constructor to create new builder.
+     * Use {@link PartnerBuilder#builder(Partner)} instead of private constructor to create new builder.
      */
-    protected Builder( Partner pObject ) {
+    protected PartnerBuilder( Partner pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setPostalAddresses(pObject.postalAddresses);
@@ -105,32 +98,12 @@ public class Partner {
     }
 
     /**
-     * Method returns a new builder.
-     *
-     * @return {@link Builder} New builder that can be used to create new Partner objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     *
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new Partner objects. The method never returns
-     * null.
-     */
-    public static Builder newBuilder( Partner pObject ) {
-      return new Builder(pObject);
-    }
-
-    /**
      * Method sets association {@link #postalAddresses}.<br/>
      *
      * @param pPostalAddresses Collection to which {@link #postalAddresses} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setPostalAddresses( List<PostalAddress> pPostalAddresses ) {
+    public B setPostalAddresses( List<PostalAddress> pPostalAddresses ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pPostalAddresses != null) {
         postalAddresses = new ArrayList<PostalAddress>(pPostalAddresses);
@@ -138,7 +111,7 @@ public class Partner {
       else {
         postalAddresses = null;
       }
-      return this;
+      return this.self();
     }
 
     /**
@@ -146,23 +119,45 @@ public class Partner {
      *
      * @param pPostalAddresses Array of objects that should be added to {@link #postalAddresses}. The parameter may be
      * null.
-     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining. Method never returns null.
      */
-    public Builder addToPostalAddresses( PostalAddress... pPostalAddresses ) {
+    public B addToPostalAddresses( PostalAddress... pPostalAddresses ) {
       if (pPostalAddresses != null) {
         if (postalAddresses == null) {
           postalAddresses = new ArrayList<PostalAddress>();
         }
         postalAddresses.addAll(Arrays.asList(pPostalAddresses));
       }
-      return this;
+      return this.self();
     }
+
+    /**
+     * Method returns instance of this builder. Operation is part of genric builder pattern.
+     */
+    protected abstract B self( );
 
     /**
      * Method creates a new instance of class Partner. The object will be initialized with the values of the builder.
      *
      * @return Partner Created object. The method never returns null.
      */
+    public abstract T build( );
+  }
+
+  static final class PartnerBuilderImpl extends PartnerBuilder<Partner, PartnerBuilderImpl> {
+    protected PartnerBuilderImpl( ) {
+    }
+
+    protected PartnerBuilderImpl( Partner pObject ) {
+      super(pObject);
+    }
+
+    @Override
+    protected PartnerBuilderImpl self( ) {
+      return this;
+    }
+
+    @Override
     public Partner build( ) {
       Partner lObject = new Partner(this);
       SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
@@ -296,7 +291,7 @@ public class Partner {
    *
    * @return {@link Builder} New builder that can be used to create new Partner objects. The method never returns null.
    */
-  public Builder toBuilder( ) {
-    return new Builder(this);
+  public PartnerBuilder<?, ?> toBuilder( ) {
+    return new PartnerBuilderImpl(this);
   }
 }

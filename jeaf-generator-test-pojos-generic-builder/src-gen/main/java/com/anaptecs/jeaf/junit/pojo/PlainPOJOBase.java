@@ -19,7 +19,6 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonDeserialize(builder = PlainPOJOBase.PlainPOJOBuilderImpl.class)
 public abstract class PlainPOJOBase {
   /**
@@ -54,6 +53,7 @@ public abstract class PlainPOJOBase {
    * Class implements builder to create a new instance of class <code>PlainPOJO</code>.
    */
   @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static abstract class PlainPOJOBuilder<T extends PlainPOJO, B extends PlainPOJOBuilder<T, B>> {
     private String hello;
 

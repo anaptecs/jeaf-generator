@@ -8,14 +8,16 @@ package com.anaptecs.spring.base;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonAutoDetect(
     fieldVisibility = JsonAutoDetect.Visibility.ANY,
     getterVisibility = JsonAutoDetect.Visibility.NONE,
     isGetterVisibility = JsonAutoDetect.Visibility.NONE,
     setterVisibility = JsonAutoDetect.Visibility.NONE,
     creatorVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonDeserialize(builder = IntegerCodeType.IntegerCodeTypeBuilderImpl.class)
 public class IntegerCodeType {
   /**
    * Constant for the name of attribute "code".
@@ -25,18 +27,11 @@ public class IntegerCodeType {
   private int code;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected IntegerCodeType( ) {
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected IntegerCodeType( Builder pBuilder ) {
+  protected IntegerCodeType( IntegerCodeTypeBuilder<?, ?> pBuilder ) {
     // Read attribute values from builder.
     code = pBuilder.code;
   }
@@ -46,8 +41,8 @@ public class IntegerCodeType {
    *
    * @return {@link Builder} New builder that can be used to create new IntegerCodeType objects.
    */
-  public static Builder builder( ) {
-    return new Builder();
+  public static IntegerCodeTypeBuilder<?, ?> builder( ) {
+    return new IntegerCodeTypeBuilderImpl();
   }
 
   /**
@@ -59,7 +54,7 @@ public class IntegerCodeType {
    * @return {@link IntegerCodeType}
    */
   public static IntegerCodeType of( int pCode ) {
-    IntegerCodeType.Builder lBuilder = IntegerCodeType.builder();
+    IntegerCodeTypeBuilder<?, ?> lBuilder = IntegerCodeType.builder();
     lBuilder.setCode(pCode);
     return lBuilder.build();
   }
@@ -67,19 +62,21 @@ public class IntegerCodeType {
   /**
    * Class implements builder to create a new instance of class <code>IntegerCodeType</code>.
    */
-  public static class Builder {
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  public static abstract class IntegerCodeTypeBuilder<T extends IntegerCodeType, B extends IntegerCodeTypeBuilder<T, B>> {
     private int code;
 
     /**
-     * Use {@link IntegerCodeType#builder()} instead of private constructor to create new builder.
+     * Use {@link IntegerCodeTypeBuilder#builder()} instead of private constructor to create new builder.
      */
-    protected Builder( ) {
+    protected IntegerCodeTypeBuilder( ) {
     }
 
     /**
-     * Use {@link IntegerCodeType#builder(IntegerCodeType)} instead of private constructor to create new builder.
+     * Use {@link IntegerCodeTypeBuilder#builder(IntegerCodeType)} instead of private constructor to create new builder.
      */
-    protected Builder( IntegerCodeType pObject ) {
+    protected IntegerCodeTypeBuilder( IntegerCodeType pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setCode(pObject.code);
@@ -87,36 +84,21 @@ public class IntegerCodeType {
     }
 
     /**
-     * Method returns a new builder.
-     *
-     * @return {@link Builder} New builder that can be used to create new IntegerCodeType objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     *
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new IntegerCodeType objects. The method never
-     * returns null.
-     */
-    public static Builder newBuilder( IntegerCodeType pObject ) {
-      return new Builder(pObject);
-    }
-
-    /**
      * Method sets attribute {@link #code}.<br/>
      *
      * @param pCode Value to which {@link #code} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setCode( int pCode ) {
+    public B setCode( int pCode ) {
       // Assign value to attribute
       code = pCode;
-      return this;
+      return this.self();
     }
+
+    /**
+     * Method returns instance of this builder. Operation is part of genric builder pattern.
+     */
+    protected abstract B self( );
 
     /**
      * Method creates a new instance of class IntegerCodeType. The object will be initialized with the values of the
@@ -124,6 +106,24 @@ public class IntegerCodeType {
      *
      * @return IntegerCodeType Created object. The method never returns null.
      */
+    public abstract T build( );
+  }
+
+  static final class IntegerCodeTypeBuilderImpl
+      extends IntegerCodeTypeBuilder<IntegerCodeType, IntegerCodeTypeBuilderImpl> {
+    protected IntegerCodeTypeBuilderImpl( ) {
+    }
+
+    protected IntegerCodeTypeBuilderImpl( IntegerCodeType pObject ) {
+      super(pObject);
+    }
+
+    @Override
+    protected IntegerCodeTypeBuilderImpl self( ) {
+      return this;
+    }
+
+    @Override
     public IntegerCodeType build( ) {
       IntegerCodeType lObject = new IntegerCodeType(this);
       SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
@@ -205,7 +205,7 @@ public class IntegerCodeType {
    * @return {@link Builder} New builder that can be used to create new IntegerCodeType objects. The method never
    * returns null.
    */
-  public Builder toBuilder( ) {
-    return new Builder(this);
+  public IntegerCodeTypeBuilder<?, ?> toBuilder( ) {
+    return new IntegerCodeTypeBuilderImpl(this);
   }
 }

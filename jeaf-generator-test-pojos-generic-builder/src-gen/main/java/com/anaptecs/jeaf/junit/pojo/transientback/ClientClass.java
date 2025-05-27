@@ -24,7 +24,6 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonDeserialize(builder = ClientClass.ClientClassBuilderImpl.class)
 public class ClientClass {
   /**
@@ -88,6 +87,7 @@ public class ClientClass {
    * Class implements builder to create a new instance of class <code>ClientClass</code>.
    */
   @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static abstract class ClientClassBuilder<T extends ClientClass, B extends ClientClassBuilder<T, B>> {
     private String name;
 

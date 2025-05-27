@@ -8,14 +8,16 @@ package com.anaptecs.spring.base;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonAutoDetect(
     fieldVisibility = JsonAutoDetect.Visibility.ANY,
     getterVisibility = JsonAutoDetect.Visibility.NONE,
     isGetterVisibility = JsonAutoDetect.Visibility.NONE,
     setterVisibility = JsonAutoDetect.Visibility.NONE,
     creatorVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonDeserialize(builder = ByteCodeType.ByteCodeTypeBuilderImpl.class)
 public class ByteCodeType {
   /**
    * Constant for the name of attribute "code".
@@ -25,18 +27,11 @@ public class ByteCodeType {
   private byte code;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected ByteCodeType( ) {
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected ByteCodeType( Builder pBuilder ) {
+  protected ByteCodeType( ByteCodeTypeBuilder<?, ?> pBuilder ) {
     // Read attribute values from builder.
     code = pBuilder.code;
   }
@@ -46,8 +41,8 @@ public class ByteCodeType {
    *
    * @return {@link Builder} New builder that can be used to create new ByteCodeType objects.
    */
-  public static Builder builder( ) {
-    return new Builder();
+  public static ByteCodeTypeBuilder<?, ?> builder( ) {
+    return new ByteCodeTypeBuilderImpl();
   }
 
   /**
@@ -59,7 +54,7 @@ public class ByteCodeType {
    * @return {@link ByteCodeType}
    */
   public static ByteCodeType of( byte pCode ) {
-    ByteCodeType.Builder lBuilder = ByteCodeType.builder();
+    ByteCodeTypeBuilder<?, ?> lBuilder = ByteCodeType.builder();
     lBuilder.setCode(pCode);
     return lBuilder.build();
   }
@@ -67,19 +62,21 @@ public class ByteCodeType {
   /**
    * Class implements builder to create a new instance of class <code>ByteCodeType</code>.
    */
-  public static class Builder {
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  public static abstract class ByteCodeTypeBuilder<T extends ByteCodeType, B extends ByteCodeTypeBuilder<T, B>> {
     private byte code;
 
     /**
-     * Use {@link ByteCodeType#builder()} instead of private constructor to create new builder.
+     * Use {@link ByteCodeTypeBuilder#builder()} instead of private constructor to create new builder.
      */
-    protected Builder( ) {
+    protected ByteCodeTypeBuilder( ) {
     }
 
     /**
-     * Use {@link ByteCodeType#builder(ByteCodeType)} instead of private constructor to create new builder.
+     * Use {@link ByteCodeTypeBuilder#builder(ByteCodeType)} instead of private constructor to create new builder.
      */
-    protected Builder( ByteCodeType pObject ) {
+    protected ByteCodeTypeBuilder( ByteCodeType pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setCode(pObject.code);
@@ -87,36 +84,21 @@ public class ByteCodeType {
     }
 
     /**
-     * Method returns a new builder.
-     *
-     * @return {@link Builder} New builder that can be used to create new ByteCodeType objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     *
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new ByteCodeType objects. The method never returns
-     * null.
-     */
-    public static Builder newBuilder( ByteCodeType pObject ) {
-      return new Builder(pObject);
-    }
-
-    /**
      * Method sets attribute {@link #code}.<br/>
      *
      * @param pCode Value to which {@link #code} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setCode( byte pCode ) {
+    public B setCode( byte pCode ) {
       // Assign value to attribute
       code = pCode;
-      return this;
+      return this.self();
     }
+
+    /**
+     * Method returns instance of this builder. Operation is part of genric builder pattern.
+     */
+    protected abstract B self( );
 
     /**
      * Method creates a new instance of class ByteCodeType. The object will be initialized with the values of the
@@ -124,6 +106,23 @@ public class ByteCodeType {
      *
      * @return ByteCodeType Created object. The method never returns null.
      */
+    public abstract T build( );
+  }
+
+  static final class ByteCodeTypeBuilderImpl extends ByteCodeTypeBuilder<ByteCodeType, ByteCodeTypeBuilderImpl> {
+    protected ByteCodeTypeBuilderImpl( ) {
+    }
+
+    protected ByteCodeTypeBuilderImpl( ByteCodeType pObject ) {
+      super(pObject);
+    }
+
+    @Override
+    protected ByteCodeTypeBuilderImpl self( ) {
+      return this;
+    }
+
+    @Override
     public ByteCodeType build( ) {
       ByteCodeType lObject = new ByteCodeType(this);
       SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
@@ -205,7 +204,7 @@ public class ByteCodeType {
    * @return {@link Builder} New builder that can be used to create new ByteCodeType objects. The method never returns
    * null.
    */
-  public Builder toBuilder( ) {
-    return new Builder(this);
+  public ByteCodeTypeBuilder<?, ?> toBuilder( ) {
+    return new ByteCodeTypeBuilderImpl(this);
   }
 }

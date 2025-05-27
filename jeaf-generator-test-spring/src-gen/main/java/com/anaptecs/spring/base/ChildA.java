@@ -7,6 +7,7 @@ package com.anaptecs.spring.base;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 /**
  * single line class comment
@@ -14,7 +15,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonAutoDetect(
     fieldVisibility = JsonAutoDetect.Visibility.ANY,
     getterVisibility = JsonAutoDetect.Visibility.NONE,
@@ -30,18 +30,11 @@ public abstract class ChildA extends ParentClass {
   private int childAAttribute;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected ChildA( ) {
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected ChildA( Builder pBuilder ) {
+  protected ChildA( ChildABuilder<?, ?> pBuilder ) {
     // Call constructor of super class.
     super(pBuilder);
     // Read attribute values from builder.
@@ -51,20 +44,23 @@ public abstract class ChildA extends ParentClass {
   /**
    * Class implements builder to create a new instance of class <code>ChildA</code>.
    */
-  public static abstract class Builder extends ParentClass.Builder {
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  public static abstract class ChildABuilder<T extends ChildA, B extends ChildABuilder<T, B>>
+      extends ParentClassBuilder<T, B> {
     private int childAAttribute;
 
     /**
-     * Use {@link ChildA#builder()} instead of private constructor to create new builder.
+     * Use {@link ChildABuilder#builder()} instead of private constructor to create new builder.
      */
-    protected Builder( ) {
+    protected ChildABuilder( ) {
       super();
     }
 
     /**
-     * Use {@link ChildA#builder(ChildA)} instead of private constructor to create new builder.
+     * Use {@link ChildABuilder#builder(ChildA)} instead of private constructor to create new builder.
      */
-    protected Builder( ChildA pObject ) {
+    protected ChildABuilder( ChildA pObject ) {
       super(pObject);
       if (pObject != null) {
         // Read attribute values from passed object.
@@ -73,29 +69,22 @@ public abstract class ChildA extends ParentClass {
     }
 
     /**
-     * Method sets attribute {@link #parentAttribute}.<br/>
-     *
-     * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
-     */
-    @Override
-    public Builder setParentAttribute( String pParentAttribute ) {
-      // Call super class implementation.
-      super.setParentAttribute(pParentAttribute);
-      return this;
-    }
-
-    /**
      * Method sets attribute {@link #childAAttribute}.<br/>
      *
      * @param pChildAAttribute Value to which {@link #childAAttribute} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setChildAAttribute( int pChildAAttribute ) {
+    public B setChildAAttribute( int pChildAAttribute ) {
       // Assign value to attribute
       childAAttribute = pChildAAttribute;
-      return this;
+      return this.self();
     }
+
+    @Override
+    /**
+     * Method returns instance of this builder. Operation is part of genric builder pattern.
+     */
+    protected abstract B self( );
   }
 
   /**

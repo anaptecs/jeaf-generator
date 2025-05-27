@@ -18,7 +18,6 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonDeserialize(builder = Message.MessageBuilderImpl.class)
 public class Message {
   /**
@@ -67,6 +66,7 @@ public class Message {
    * Class implements builder to create a new instance of class <code>Message</code>.
    */
   @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static abstract class MessageBuilder<T extends Message, B extends MessageBuilder<T, B>> {
     private String text;
 

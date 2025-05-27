@@ -11,14 +11,16 @@ import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonAutoDetect(
     fieldVisibility = JsonAutoDetect.Visibility.ANY,
     getterVisibility = JsonAutoDetect.Visibility.NONE,
     isGetterVisibility = JsonAutoDetect.Visibility.NONE,
     setterVisibility = JsonAutoDetect.Visibility.NONE,
     creatorVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonDeserialize(builder = MySortCriteriaBase.MySortCriteriaBuilderImpl.class)
 public abstract class MySortCriteriaBase {
   /**
    * Constant for the name of attribute "sortOrder".
@@ -35,42 +37,36 @@ public abstract class MySortCriteriaBase {
   private MySortProperty sortProperty;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected MySortCriteriaBase( ) {
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected MySortCriteriaBase( BuilderBase pBuilder ) {
+  protected MySortCriteriaBase( MySortCriteriaBuilder<?, ?> pBuilder ) {
     // Read attribute values from builder.
     sortOrder = pBuilder.sortOrder;
     sortProperty = pBuilder.sortProperty;
   }
 
   /**
-   * Class implements builder to create a new instance of class MySortCriteria. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>MySortCriteria</code>.
    */
-  public static abstract class BuilderBase {
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  public static abstract class MySortCriteriaBuilder<T extends MySortCriteria, B extends MySortCriteriaBuilder<T, B>> {
     private SortOrder sortOrder;
 
     private MySortProperty sortProperty;
 
     /**
-     * Use {@link MySortCriteria.builder()} instead of protected constructor to create new builder.
+     * Use {@link MySortCriteriaBuilder#builder()} instead of private constructor to create new builder.
      */
-    protected BuilderBase( ) {
+    protected MySortCriteriaBuilder( ) {
     }
 
     /**
-     * Use {@link MySortCriteria.builder(MySortCriteria)} instead of protected constructor to create new builder.
+     * Use {@link MySortCriteriaBuilder#builder(MySortCriteria)} instead of private constructor to create new builder.
      */
-    protected BuilderBase( MySortCriteriaBase pObject ) {
+    protected MySortCriteriaBuilder( MySortCriteriaBase pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setSortOrder(pObject.sortOrder);
@@ -82,23 +78,28 @@ public abstract class MySortCriteriaBase {
      * Method sets association {@link #sortOrder}.<br/>
      *
      * @param pSortOrder Value to which {@link #sortOrder} should be set.
-     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setSortOrder( @MyNotNullProperty SortOrder pSortOrder ) {
+    public B setSortOrder( @MyNotNullProperty SortOrder pSortOrder ) {
       sortOrder = pSortOrder;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets association {@link #sortProperty}.<br/>
      *
      * @param pSortProperty Value to which {@link #sortProperty} should be set.
-     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setSortProperty( @MyNotNullProperty MySortProperty pSortProperty ) {
+    public B setSortProperty( @MyNotNullProperty MySortProperty pSortProperty ) {
       sortProperty = pSortProperty;
-      return this;
+      return this.self();
     }
+
+    /**
+     * Method returns instance of this builder. Operation is part of genric builder pattern.
+     */
+    protected abstract B self( );
 
     /**
      * Method creates a new instance of class MySortCriteria. The object will be initialized with the values of the
@@ -106,6 +107,24 @@ public abstract class MySortCriteriaBase {
      *
      * @return MySortCriteria Created object. The method never returns null.
      */
+    public abstract T build( );
+  }
+
+  static final class MySortCriteriaBuilderImpl
+      extends MySortCriteriaBuilder<MySortCriteria, MySortCriteriaBuilderImpl> {
+    protected MySortCriteriaBuilderImpl( ) {
+    }
+
+    protected MySortCriteriaBuilderImpl( MySortCriteria pObject ) {
+      super(pObject);
+    }
+
+    @Override
+    protected MySortCriteriaBuilderImpl self( ) {
+      return this;
+    }
+
+    @Override
     public MySortCriteria build( ) {
       MySortCriteria lObject = new MySortCriteria(this);
       SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
@@ -176,7 +195,7 @@ public abstract class MySortCriteriaBase {
    * @return {@link com.anaptecs.spring.service.MySortCriteria}
    */
   public static MySortCriteria of( SortOrder pSortOrder, MySortProperty pSortProperty ) {
-    MySortCriteria.Builder lBuilder = MySortCriteria.builder();
+    MySortCriteriaBuilder<?, ?> lBuilder = MySortCriteria.builder();
     lBuilder.setSortOrder(pSortOrder);
     lBuilder.setSortProperty(pSortProperty);
     return lBuilder.build();
@@ -249,7 +268,7 @@ public abstract class MySortCriteriaBase {
    * @return {@link Builder} New builder that can be used to create new MySortCriteria objects. The method never returns
    * null.
    */
-  public MySortCriteria.Builder toBuilder( ) {
-    return new MySortCriteria.Builder((MySortCriteria) this);
+  public MySortCriteriaBuilder<?, ?> toBuilder( ) {
+    return new MySortCriteriaBuilderImpl((MySortCriteria) this);
   }
 }

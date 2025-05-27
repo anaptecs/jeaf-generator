@@ -18,7 +18,6 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
 @Deprecated
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonDeserialize(builder = BChildPOJO.BChildPOJOBuilderImpl.class)
 public class BChildPOJO extends BParentPOJO {
   /**
@@ -82,6 +81,7 @@ public class BChildPOJO extends BParentPOJO {
    */
   @Deprecated
   @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static abstract class BChildPOJOBuilder<T extends BChildPOJO, B extends BChildPOJOBuilder<T, B>>
       extends BParentPOJOBuilder<T, B> {
     private byte weirdAttribute;

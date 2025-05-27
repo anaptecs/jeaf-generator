@@ -17,8 +17,8 @@ import javax.validation.constraints.Size;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonSetter;
-import com.fasterxml.jackson.annotation.Nulls;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 /**
  * Multi<br/>
@@ -29,13 +29,13 @@ import com.fasterxml.jackson.annotation.Nulls;
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonAutoDetect(
     fieldVisibility = JsonAutoDetect.Visibility.ANY,
     getterVisibility = JsonAutoDetect.Visibility.NONE,
     isGetterVisibility = JsonAutoDetect.Visibility.NONE,
     setterVisibility = JsonAutoDetect.Visibility.NONE,
     creatorVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonDeserialize(builder = ChildB.ChildBBuilderImpl.class)
 public class ChildB extends ParentClass {
   /**
    * Constant for the name of attribute "childBAttribute".
@@ -56,23 +56,14 @@ public class ChildB extends ParentClass {
   /**
    * the composition
    */
-  @JsonSetter(nulls = Nulls.SKIP)
   private Set<ParentClass> composition;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected ChildB( ) {
-    composition = new HashSet<>();
-  }
 
   /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected ChildB( Builder pBuilder ) {
+  protected ChildB( ChildBBuilder<?, ?> pBuilder ) {
     // Call constructor of super class.
     super(pBuilder);
     // Read attribute values from builder.
@@ -90,8 +81,8 @@ public class ChildB extends ParentClass {
    *
    * @return {@link Builder} New builder that can be used to create new ChildB objects.
    */
-  public static Builder builder( ) {
-    return new Builder();
+  public static ChildBBuilder<?, ?> builder( ) {
+    return new ChildBBuilderImpl();
   }
 
   /**
@@ -100,10 +91,10 @@ public class ChildB extends ParentClass {
    *
    * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.ChildB}
+   * @return {@link ChildB}
    */
   public static ChildB of( String pParentAttribute ) {
-    ChildB.Builder lBuilder = ChildB.builder();
+    ChildBBuilder<?, ?> lBuilder = ChildB.builder();
     lBuilder.setParentAttribute(pParentAttribute);
     return lBuilder.build();
   }
@@ -111,7 +102,10 @@ public class ChildB extends ParentClass {
   /**
    * Class implements builder to create a new instance of class <code>ChildB</code>.
    */
-  public static class Builder extends ParentClass.Builder {
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  public static abstract class ChildBBuilder<T extends ChildB, B extends ChildBBuilder<T, B>>
+      extends ParentClassBuilder<T, B> {
     /**
      * A child attribute
      */
@@ -124,16 +118,16 @@ public class ChildB extends ParentClass {
     private Set<ParentClass> composition;
 
     /**
-     * Use {@link ChildB#builder()} instead of private constructor to create new builder.
+     * Use {@link ChildBBuilder#builder()} instead of private constructor to create new builder.
      */
-    protected Builder( ) {
+    protected ChildBBuilder( ) {
       super();
     }
 
     /**
-     * Use {@link ChildB#builder(ChildB)} instead of private constructor to create new builder.
+     * Use {@link ChildBBuilder#builder(ChildB)} instead of private constructor to create new builder.
      */
-    protected Builder( ChildB pObject ) {
+    protected ChildBBuilder( ChildB pObject ) {
       super(pObject);
       if (pObject != null) {
         // Read attribute values from passed object.
@@ -143,44 +137,12 @@ public class ChildB extends ParentClass {
     }
 
     /**
-     * Method returns a new builder.
-     *
-     * @return {@link Builder} New builder that can be used to create new ChildB objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     *
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new ChildB objects. The method never returns null.
-     */
-    public static Builder newBuilder( ChildB pObject ) {
-      return new Builder(pObject);
-    }
-
-    /**
-     * Method sets attribute {@link #parentAttribute}.<br/>
-     *
-     * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
-     */
-    @Override
-    public Builder setParentAttribute( String pParentAttribute ) {
-      // Call super class implementation.
-      super.setParentAttribute(pParentAttribute);
-      return this;
-    }
-
-    /**
      * Method sets attribute {@link #childBAttribute}.<br/>
      *
      * @param pChildBAttribute Value to which {@link #childBAttribute} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setChildBAttribute( boolean[] pChildBAttribute ) {
+    public B setChildBAttribute( boolean[] pChildBAttribute ) {
       // Assign value to attribute
       if (pChildBAttribute != null) {
         childBAttribute = new boolean[pChildBAttribute.length];
@@ -189,16 +151,16 @@ public class ChildB extends ParentClass {
       else {
         childBAttribute = null;
       }
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets association {@link #composition}.<br/>
      *
      * @param pComposition Collection to which {@link #composition} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setComposition( Set<ParentClass> pComposition ) {
+    public B setComposition( Set<ParentClass> pComposition ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pComposition != null) {
         composition = new HashSet<ParentClass>(pComposition);
@@ -206,30 +168,53 @@ public class ChildB extends ParentClass {
       else {
         composition = null;
       }
-      return this;
+      return this.self();
     }
 
     /**
      * Method adds the passed objects to association {@link #composition}.<br/>
      *
      * @param pComposition Array of objects that should be added to {@link #composition}. The parameter may be null.
-     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining. Method never returns null.
      */
-    public Builder addToComposition( ParentClass... pComposition ) {
+    public B addToComposition( ParentClass... pComposition ) {
       if (pComposition != null) {
         if (composition == null) {
           composition = new HashSet<ParentClass>();
         }
         composition.addAll(Arrays.asList(pComposition));
       }
-      return this;
+      return this.self();
     }
+
+    @Override
+    /**
+     * Method returns instance of this builder. Operation is part of genric builder pattern.
+     */
+    protected abstract B self( );
 
     /**
      * Method creates a new instance of class ChildB. The object will be initialized with the values of the builder.
      *
      * @return ChildB Created object. The method never returns null.
      */
+    public abstract T build( );
+  }
+
+  static final class ChildBBuilderImpl extends ChildBBuilder<ChildB, ChildBBuilderImpl> {
+    protected ChildBBuilderImpl( ) {
+    }
+
+    protected ChildBBuilderImpl( ChildB pObject ) {
+      super(pObject);
+    }
+
+    @Override
+    protected ChildBBuilderImpl self( ) {
+      return this;
+    }
+
+    @Override
     public ChildB build( ) {
       ChildB lObject = new ChildB(this);
       SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
@@ -410,7 +395,7 @@ public class ChildB extends ParentClass {
    *
    * @return {@link Builder} New builder that can be used to create new ChildB objects. The method never returns null.
    */
-  public Builder toBuilder( ) {
-    return new Builder(this);
+  public ChildBBuilder<?, ?> toBuilder( ) {
+    return new ChildBBuilderImpl(this);
   }
 }

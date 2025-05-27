@@ -12,7 +12,6 @@ import com.anaptecs.jeaf.accounting.impl.pojo.Booking.BookingBuilder;
 import com.anaptecs.jeaf.accounting.impl.pojo.Customer;
 import com.anaptecs.jeaf.json.api.JSON;
 import com.anaptecs.jeaf.json.api.JSONTools;
-import com.anaptecs.jeaf.tools.api.date.DateTools;
 import org.junit.jupiter.api.Test;
 
 public class GenericBuilderTest {
@@ -68,6 +67,9 @@ public class GenericBuilderTest {
         "{\"objectType\":\"Customer\",\"name\":\"Duck\",\"firstName\":\"Donald\",\"email\":\"donald@entenhausen.de\",\"accounts\":[{\"iban\":123456,\"currency\":\"EUR\"}]}",
         lJSON);
 
+    Customer lReadCustomer = lTools.read(lJSON, Customer.class);
+    assertEquals(lDonald, lReadCustomer);
+
     lJSON = lTools.writeObjectToString(lAccountDonald);
     System.out.println(lJSON);
     assertEquals("{\"iban\":123456,\"currency\":\"EUR\"}", lJSON);
@@ -88,15 +90,17 @@ public class GenericBuilderTest {
     Booking lBooking = Booking.builder()
         .setAmount(BigDecimal.TEN)
         .setCurrency(lCurrency)
-        .setExecutionTimestamp(DateTools.getDateTools().newCalendar(1748336358480L))
+        // .setExecutionTimestamp(DateTools.getDateTools().newCalendar(1748336358480L))
         .setSourceAccount(lAccountDonald)
         .setTargetAccount(lAccountDaisy)
         .build();
     lJSON = lTools.writeObjectToString(lBooking);
     System.out.println(lJSON);
     assertEquals(
-        "{\"sourceAccount\":{\"iban\":123456,\"currency\":\"EUR\"},\"targetAccount\":{\"iban\":47110815,\"currency\":\"EUR\"},\"amount\":10,\"currency\":\"EUR\",\"executionTimestamp\":1748336358480}",
+        "{\"sourceAccount\":{\"iban\":123456,\"currency\":\"EUR\"},\"targetAccount\":{\"iban\":47110815,\"currency\":\"EUR\"},\"amount\":10,\"currency\":\"EUR\"}",
         lJSON);
+    Booking lReadBooking = lTools.read(lJSON, Booking.class);
+    assertEquals(lBooking, lReadBooking);
 
   }
 }

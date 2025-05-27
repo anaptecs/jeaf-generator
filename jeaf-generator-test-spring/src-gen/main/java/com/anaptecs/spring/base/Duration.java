@@ -11,6 +11,8 @@ import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 /**
  * Type represents a duration.<br/>
@@ -24,13 +26,13 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonAutoDetect(
     fieldVisibility = JsonAutoDetect.Visibility.ANY,
     getterVisibility = JsonAutoDetect.Visibility.NONE,
     isGetterVisibility = JsonAutoDetect.Visibility.NONE,
     setterVisibility = JsonAutoDetect.Visibility.NONE,
     creatorVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonDeserialize(builder = Duration.DurationBuilderImpl.class)
 public class Duration {
   /**
    * Constant for the name of attribute "value".
@@ -51,19 +53,11 @@ public class Duration {
   private TimeUnit timeUnit;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected Duration( ) {
-    timeUnit = TimeUnit.DAY;
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected Duration( Builder pBuilder ) {
+  protected Duration( DurationBuilder<?, ?> pBuilder ) {
     // Read attribute values from builder.
     value = pBuilder.value;
     timeUnit = pBuilder.timeUnit;
@@ -74,8 +68,8 @@ public class Duration {
    *
    * @return {@link Builder} New builder that can be used to create new Duration objects.
    */
-  public static Builder builder( ) {
-    return new Builder();
+  public static DurationBuilder<?, ?> builder( ) {
+    return new DurationBuilderImpl();
   }
 
   /**
@@ -86,10 +80,10 @@ public class Duration {
    *
    * @param pTimeUnit Value to which {@link #timeUnit} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.Duration}
+   * @return {@link Duration}
    */
   public static Duration of( int pValue, TimeUnit pTimeUnit ) {
-    Duration.Builder lBuilder = Duration.builder();
+    DurationBuilder<?, ?> lBuilder = Duration.builder();
     lBuilder.setValue(pValue);
     lBuilder.setTimeUnit(pTimeUnit);
     return lBuilder.build();
@@ -98,7 +92,9 @@ public class Duration {
   /**
    * Class implements builder to create a new instance of class <code>Duration</code>.
    */
-  public static class Builder {
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  public static abstract class DurationBuilder<T extends Duration, B extends DurationBuilder<T, B>> {
     private int value;
 
     /**
@@ -108,15 +104,15 @@ public class Duration {
     private TimeUnit timeUnit = TimeUnit.DAY;
 
     /**
-     * Use {@link Duration#builder()} instead of private constructor to create new builder.
+     * Use {@link DurationBuilder#builder()} instead of private constructor to create new builder.
      */
-    protected Builder( ) {
+    protected DurationBuilder( ) {
     }
 
     /**
-     * Use {@link Duration#builder(Duration)} instead of private constructor to create new builder.
+     * Use {@link DurationBuilder#builder(Duration)} instead of private constructor to create new builder.
      */
-    protected Builder( Duration pObject ) {
+    protected DurationBuilder( Duration pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setValue(pObject.value);
@@ -125,54 +121,56 @@ public class Duration {
     }
 
     /**
-     * Method returns a new builder.
-     *
-     * @return {@link Builder} New builder that can be used to create new Duration objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     *
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new Duration objects. The method never returns
-     * null.
-     */
-    public static Builder newBuilder( Duration pObject ) {
-      return new Builder(pObject);
-    }
-
-    /**
      * Method sets attribute {@link #value}.<br/>
      *
      * @param pValue Value to which {@link #value} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setValue( int pValue ) {
+    public B setValue( int pValue ) {
       // Assign value to attribute
       value = pValue;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #timeUnit}.<br/>
      *
      * @param pTimeUnit Value to which {@link #timeUnit} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setTimeUnit( @MyNotNullProperty TimeUnit pTimeUnit ) {
+    public B setTimeUnit( @MyNotNullProperty TimeUnit pTimeUnit ) {
       // Assign value to attribute
       timeUnit = pTimeUnit;
-      return this;
+      return this.self();
     }
+
+    /**
+     * Method returns instance of this builder. Operation is part of genric builder pattern.
+     */
+    protected abstract B self( );
 
     /**
      * Method creates a new instance of class Duration. The object will be initialized with the values of the builder.
      *
      * @return Duration Created object. The method never returns null.
      */
+    public abstract T build( );
+  }
+
+  static final class DurationBuilderImpl extends DurationBuilder<Duration, DurationBuilderImpl> {
+    protected DurationBuilderImpl( ) {
+    }
+
+    protected DurationBuilderImpl( Duration pObject ) {
+      super(pObject);
+    }
+
+    @Override
+    protected DurationBuilderImpl self( ) {
+      return this;
+    }
+
+    @Override
     public Duration build( ) {
       Duration lObject = new Duration(this);
       SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
@@ -285,7 +283,7 @@ public class Duration {
    *
    * @return {@link Builder} New builder that can be used to create new Duration objects. The method never returns null.
    */
-  public Builder toBuilder( ) {
-    return new Builder(this);
+  public DurationBuilder<?, ?> toBuilder( ) {
+    return new DurationBuilderImpl(this);
   }
 }

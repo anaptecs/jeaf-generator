@@ -30,7 +30,6 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonDeserialize(builder = PrimitiveObjectWithRestrictions.PrimitiveObjectWithRestrictionsBuilderImpl.class)
 public class PrimitiveObjectWithRestrictions {
   /**
@@ -340,6 +339,7 @@ public class PrimitiveObjectWithRestrictions {
    * Class implements builder to create a new instance of class <code>PrimitiveObjectWithRestrictions</code>.
    */
   @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static abstract class PrimitiveObjectWithRestrictionsBuilder<T extends PrimitiveObjectWithRestrictions, B extends PrimitiveObjectWithRestrictionsBuilder<T, B>> {
     /**
      * <br/>

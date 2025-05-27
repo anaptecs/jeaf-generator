@@ -25,8 +25,6 @@ import java.util.Map;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 
-import org.springframework.stereotype.Service;
-
 import com.anaptecs.spring.base.AnotherDataType;
 import com.anaptecs.spring.base.BeanParameter;
 import com.anaptecs.spring.base.ChannelCode;
@@ -36,7 +34,7 @@ import com.anaptecs.spring.base.DeprecatedContext;
 import com.anaptecs.spring.base.IntegerCodeType;
 import com.anaptecs.spring.base.ParentBeanParamType;
 import com.anaptecs.spring.base.Product;
-import com.anaptecs.spring.base.Product.Builder;
+import com.anaptecs.spring.base.Product.ProductBuilder;
 import com.anaptecs.spring.base.Sortiment;
 import com.anaptecs.spring.base.SpecialContext;
 import com.anaptecs.spring.base.StringCodeType;
@@ -46,13 +44,14 @@ import com.anaptecs.spring.service.DateHeaderParamsBean;
 import com.anaptecs.spring.service.DateQueryParamsBean;
 import com.anaptecs.spring.service.LocalBeanParamType;
 import com.anaptecs.spring.service.ProductService;
+import org.springframework.stereotype.Service;
 
 @Service
 public class ProductServiceImpl implements ProductService {
 
   @Override
   public List<Product> getProducts( ) {
-    Builder lBuilder = Product.builder();
+    ProductBuilder<?, ?> lBuilder = Product.builder();
     lBuilder.setName("Cool Product");
 
     List<Product> lProducts = new ArrayList<>();
@@ -62,21 +61,21 @@ public class ProductServiceImpl implements ProductService {
   }
 
   @Override
-  public Product getProduct( @NotEmpty
-  String pProductID ) {
+  public Product getProduct(@NotEmpty
+  String pProductID) {
     assertEquals("12345", pProductID);
     return null;
   }
 
   @Override
-  public boolean createProduct( Product pProduct ) {
+  public boolean createProduct(Product pProduct) {
     assertNotNull(pProduct, "Parameter pProduct must not be null.");
     assertEquals("My First Product", pProduct.getName());
     return true;
   }
 
   @Override
-  public Sortiment getSortiment( Context pContext ) {
+  public Sortiment getSortiment(Context pContext) {
     assertEquals("12345", pContext.getAccessToken());
     assertEquals(Locale.GERMAN, pContext.getLanguage());
     assertEquals(4711, pContext.getPathParam());
@@ -86,8 +85,8 @@ public class ProductServiceImpl implements ProductService {
   }
 
   @Override
-  public ChannelCode createChannelCode( @NotBlank
-  String pChannelCode ) {
+  public ChannelCode createChannelCode(@NotBlank
+  String pChannelCode) {
     assertEquals("MyMobile", pChannelCode);
     return ChannelCode.builder().setCode(pChannelCode).build();
   }
@@ -102,26 +101,26 @@ public class ProductServiceImpl implements ProductService {
   }
 
   @Override
-  public String deprecatedContext( DeprecatedContext pContext ) {
+  public String deprecatedContext(DeprecatedContext pContext) {
     return null;
   }
 
   @Override
-  public void deprecatedBeanParam( BeanParameter pBeanParam ) {
+  public void deprecatedBeanParam(BeanParameter pBeanParam) {
   }
 
   @Override
-  public String deprecatedParams( int pParam1 ) {
+  public String deprecatedParams(int pParam1) {
     return null;
   }
 
   @Override
-  public String deprecatedBody( String pBody ) {
+  public String deprecatedBody(String pBody) {
     return null;
   }
 
   @Override
-  public void deprectedComplexRequestBody( Product pProduct ) {
+  public void deprectedComplexRequestBody(Product pProduct) {
   }
 
   @Override
@@ -130,79 +129,79 @@ public class ProductServiceImpl implements ProductService {
   }
 
   @Override
-  public void loadSpecificThings( SpecialContext pContext ) {
+  public void loadSpecificThings(SpecialContext pContext) {
   }
 
   @Override
-  public ChannelCode createChannelCodeFromObject( ChannelCode pChannelCode ) {
+  public ChannelCode createChannelCodeFromObject(ChannelCode pChannelCode) {
     return null;
   }
 
   @Override
-  public List<CurrencyCode> addCurrencies( List<CurrencyCode> pCurrencies ) {
+  public List<CurrencyCode> addCurrencies(List<CurrencyCode> pCurrencies) {
     return null;
   }
 
   @Override
-  public CurrencyCode isCurrencySupported( CurrencyCode pCurrency ) {
+  public CurrencyCode isCurrencySupported(CurrencyCode pCurrency) {
     return null;
   }
 
   @Override
-  public IntegerCodeType testCodeTypeUsage( StringCodeType pStringCode ) {
+  public IntegerCodeType testCodeTypeUsage(StringCodeType pStringCode) {
     return null;
   }
 
   @Override
-  public String testLocalBeanParamType( LocalBeanParamType pBeanParam ) {
+  public String testLocalBeanParamType(LocalBeanParamType pBeanParam) {
     return null;
   }
 
   @Override
-  public String testExternalBeanParameterType( ParentBeanParamType pParent ) {
+  public String testExternalBeanParameterType(ParentBeanParamType pParent) {
     return null;
   }
 
   @Override
-  public String testChildBeanParameter( ChildBeanParameterType pChild ) {
+  public String testChildBeanParameter(ChildBeanParameterType pChild) {
     return null;
   }
 
   @Override
-  public void testDateQueryParams( String pPath, OffsetDateTime pStartTimestamp, OffsetTime pStartTime,
+  public void testDateQueryParams(String pPath, OffsetDateTime pStartTimestamp, OffsetTime pStartTime,
       LocalDateTime pLocalStartTimestamp, LocalTime pLocalStartTime, LocalDate pLocalStartDate, Calendar pCalendar,
-      Date pUtilDate, Timestamp pSQLTimestamp, Time pSQLTime, java.sql.Date pSQLDate ) {
+      Date pUtilDate, Timestamp pSQLTimestamp, Time pSQLTime, java.sql.Date pSQLDate) {
 
   }
 
   @Override
-  public void testDateQueryParamsBean( String pPath, DateQueryParamsBean pQueryParams ) {
+  public void testDateQueryParamsBean(String pPath, DateQueryParamsBean pQueryParams) {
   }
 
   @Override
-  public void testDateHeaderParams( String pPath, OffsetDateTime pOffsetDateTime, OffsetTime pOffsetTime,
+  public void testDateHeaderParams(String pPath, OffsetDateTime pOffsetDateTime, OffsetTime pOffsetTime,
       LocalDateTime pLocalDateTime, LocalTime pLocalTime, LocalDate pLocalDate, Calendar pCalendar, Date pUtilDate,
-      Timestamp pSQLTimestamp, Time pSQLTime, java.sql.Date pSQLDate ) {
+      Timestamp pSQLTimestamp, Time pSQLTime, java.sql.Date pSQLDate) {
   }
 
   @Override
-  public void testDateHeaderParamsBean( String pPath, DateHeaderParamsBean pHeaderParams ) {
+  public void testDateHeaderParamsBean(String pPath, DateHeaderParamsBean pHeaderParams) {
   }
 
   @Override
-  public String testTechnicalHeaderParam( String pReseller ) {
+  public String testTechnicalHeaderParam(String pReseller) {
     return null;
   }
 
   @Override
-  public String testTechnicalHeaderBean( TechnicalHeaderContext pContext ) {
+  public String testTechnicalHeaderBean(TechnicalHeaderContext pContext) {
     Map<String, String> lCustomHeaders = pContext.getCustomHeaders();
     System.out.println(lCustomHeaders);
     return lCustomHeaders.get("custom-header");
   }
 
   @Override
-  public String processDataTypes( List<AnotherDataType> pCodes ) {
+  public String processDataTypes(List<AnotherDataType> pCodes) {
     return null;
   }
 

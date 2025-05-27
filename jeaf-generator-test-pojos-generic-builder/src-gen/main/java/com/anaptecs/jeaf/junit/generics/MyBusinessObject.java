@@ -16,7 +16,6 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonDeserialize(builder = MyBusinessObject.MyBusinessObjectBuilderImpl.class)
 public class MyBusinessObject {
   /**
@@ -65,6 +64,7 @@ public class MyBusinessObject {
    * Class implements builder to create a new instance of class <code>MyBusinessObject</code>.
    */
   @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static abstract class MyBusinessObjectBuilder<T extends MyBusinessObject, B extends MyBusinessObjectBuilder<T, B>> {
     private int myBusinessAttribute;
 

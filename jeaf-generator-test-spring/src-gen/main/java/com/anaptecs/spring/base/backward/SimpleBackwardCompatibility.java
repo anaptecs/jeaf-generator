@@ -12,8 +12,9 @@ import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonAutoDetect(
     fieldVisibility = JsonAutoDetect.Visibility.ANY,
     getterVisibility = JsonAutoDetect.Visibility.NONE,
@@ -21,6 +22,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     setterVisibility = JsonAutoDetect.Visibility.NONE,
     creatorVisibility = JsonAutoDetect.Visibility.ANY)
 @JsonPropertyOrder(value = { "deprecatedProperty", "successorProperty" })
+@JsonDeserialize(builder = SimpleBackwardCompatibility.SimpleBackwardCompatibilityBuilderImpl.class)
 public class SimpleBackwardCompatibility {
   /**
    * Constant for the name of attribute "deprecatedProperty".
@@ -36,18 +38,11 @@ public class SimpleBackwardCompatibility {
   private String successorProperty;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected SimpleBackwardCompatibility( ) {
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected SimpleBackwardCompatibility( Builder pBuilder ) {
+  protected SimpleBackwardCompatibility( SimpleBackwardCompatibilityBuilder<?, ?> pBuilder ) {
     // Read attribute values from builder.
     successorProperty = pBuilder.successorProperty;
   }
@@ -57,8 +52,8 @@ public class SimpleBackwardCompatibility {
    *
    * @return {@link Builder} New builder that can be used to create new SimpleBackwardCompatibility objects.
    */
-  public static Builder builder( ) {
-    return new Builder();
+  public static SimpleBackwardCompatibilityBuilder<?, ?> builder( ) {
+    return new SimpleBackwardCompatibilityBuilderImpl();
   }
 
   /**
@@ -69,10 +64,10 @@ public class SimpleBackwardCompatibility {
    *
    * @param pSuccessorProperty Value to which {@link #successorProperty} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.backward.SimpleBackwardCompatibility}
+   * @return {@link SimpleBackwardCompatibility}
    */
   public static SimpleBackwardCompatibility of( String pDeprecatedProperty, String pSuccessorProperty ) {
-    SimpleBackwardCompatibility.Builder lBuilder = SimpleBackwardCompatibility.builder();
+    SimpleBackwardCompatibilityBuilder<?, ?> lBuilder = SimpleBackwardCompatibility.builder();
     lBuilder.setDeprecatedProperty(pDeprecatedProperty);
     lBuilder.setSuccessorProperty(pSuccessorProperty);
     return lBuilder.build();
@@ -81,20 +76,22 @@ public class SimpleBackwardCompatibility {
   /**
    * Class implements builder to create a new instance of class <code>SimpleBackwardCompatibility</code>.
    */
-  public static class Builder {
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  public static abstract class SimpleBackwardCompatibilityBuilder<T extends SimpleBackwardCompatibility, B extends SimpleBackwardCompatibilityBuilder<T, B>> {
     private String successorProperty;
 
     /**
-     * Use {@link SimpleBackwardCompatibility#builder()} instead of private constructor to create new builder.
+     * Use {@link SimpleBackwardCompatibilityBuilder#builder()} instead of private constructor to create new builder.
      */
-    protected Builder( ) {
+    protected SimpleBackwardCompatibilityBuilder( ) {
     }
 
     /**
-     * Use {@link SimpleBackwardCompatibility#builder(SimpleBackwardCompatibility)} instead of private constructor to
-     * create new builder.
+     * Use {@link SimpleBackwardCompatibilityBuilder#builder(SimpleBackwardCompatibility)} instead of private
+     * constructor to create new builder.
      */
-    protected Builder( SimpleBackwardCompatibility pObject ) {
+    protected SimpleBackwardCompatibilityBuilder( SimpleBackwardCompatibility pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setSuccessorProperty(pObject.successorProperty);
@@ -102,49 +99,34 @@ public class SimpleBackwardCompatibility {
     }
 
     /**
-     * Method returns a new builder.
-     *
-     * @return {@link Builder} New builder that can be used to create new SimpleBackwardCompatibility objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     *
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new SimpleBackwardCompatibility objects. The
-     * method never returns null.
-     */
-    public static Builder newBuilder( SimpleBackwardCompatibility pObject ) {
-      return new Builder(pObject);
-    }
-
-    /**
      * Method sets attribute {@link #deprecatedProperty}.<br/>
      *
      * @param pDeprecatedProperty Value to which {@link #deprecatedProperty} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
-    public Builder setDeprecatedProperty( @MyNotNullProperty String pDeprecatedProperty ) {
+    public B setDeprecatedProperty( @MyNotNullProperty String pDeprecatedProperty ) {
       // Delegate call to setSuccessorProperty(...)
       this.setSuccessorProperty(pDeprecatedProperty);
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #successorProperty}.<br/>
      *
      * @param pSuccessorProperty Value to which {@link #successorProperty} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setSuccessorProperty( @MyNotNullProperty String pSuccessorProperty ) {
+    public B setSuccessorProperty( @MyNotNullProperty String pSuccessorProperty ) {
       // Assign value to attribute
       successorProperty = pSuccessorProperty;
-      return this;
+      return this.self();
     }
+
+    /**
+     * Method returns instance of this builder. Operation is part of genric builder pattern.
+     */
+    protected abstract B self( );
 
     /**
      * Method creates a new instance of class SimpleBackwardCompatibility. The object will be initialized with the
@@ -152,6 +134,24 @@ public class SimpleBackwardCompatibility {
      *
      * @return SimpleBackwardCompatibility Created object. The method never returns null.
      */
+    public abstract T build( );
+  }
+
+  static final class SimpleBackwardCompatibilityBuilderImpl
+      extends SimpleBackwardCompatibilityBuilder<SimpleBackwardCompatibility, SimpleBackwardCompatibilityBuilderImpl> {
+    protected SimpleBackwardCompatibilityBuilderImpl( ) {
+    }
+
+    protected SimpleBackwardCompatibilityBuilderImpl( SimpleBackwardCompatibility pObject ) {
+      super(pObject);
+    }
+
+    @Override
+    protected SimpleBackwardCompatibilityBuilderImpl self( ) {
+      return this;
+    }
+
+    @Override
     public SimpleBackwardCompatibility build( ) {
       SimpleBackwardCompatibility lObject = new SimpleBackwardCompatibility(this);
       SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
@@ -266,7 +266,7 @@ public class SimpleBackwardCompatibility {
    * @return {@link Builder} New builder that can be used to create new SimpleBackwardCompatibility objects. The method
    * never returns null.
    */
-  public Builder toBuilder( ) {
-    return new Builder(this);
+  public SimpleBackwardCompatibilityBuilder<?, ?> toBuilder( ) {
+    return new SimpleBackwardCompatibilityBuilderImpl(this);
   }
 }

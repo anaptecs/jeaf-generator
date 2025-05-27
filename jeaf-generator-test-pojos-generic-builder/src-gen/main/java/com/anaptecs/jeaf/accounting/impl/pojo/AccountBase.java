@@ -20,7 +20,6 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonDeserialize(builder = AccountBase.AccountBuilderImpl.class)
 public abstract class AccountBase {
   /**
@@ -61,6 +60,7 @@ public abstract class AccountBase {
    * Class implements builder to create a new instance of class <code>Account</code>.
    */
   @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static abstract class AccountBuilder<T extends Account, B extends AccountBuilder<T, B>> {
     private int iban;
 

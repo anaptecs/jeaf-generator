@@ -11,14 +11,16 @@ import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonAutoDetect(
     fieldVisibility = JsonAutoDetect.Visibility.ANY,
     getterVisibility = JsonAutoDetect.Visibility.NONE,
     isGetterVisibility = JsonAutoDetect.Visibility.NONE,
     setterVisibility = JsonAutoDetect.Visibility.NONE,
     creatorVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonDeserialize(builder = Channel.ChannelBuilderImpl.class)
 public class Channel {
   /**
    * Constant for the name of attribute "channelType".
@@ -68,20 +70,11 @@ public class Channel {
   private transient Reseller reseller;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected Channel( ) {
-    code = 0;
-    selfServiceChannel = true;
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected Channel( Builder pBuilder ) {
+  protected Channel( ChannelBuilder<?, ?> pBuilder ) {
     // Read attribute values from builder.
     channelType = pBuilder.channelType;
     channelCode = pBuilder.channelCode;
@@ -94,8 +87,8 @@ public class Channel {
    *
    * @return {@link Builder} New builder that can be used to create new Channel objects.
    */
-  public static Builder builder( ) {
-    return new Builder();
+  public static ChannelBuilder<?, ?> builder( ) {
+    return new ChannelBuilderImpl();
   }
 
   /**
@@ -114,7 +107,7 @@ public class Channel {
    */
   public static Channel of( ChannelType pChannelType, ChannelCode pChannelCode, int pCode,
       boolean pSelfServiceChannel ) {
-    Channel.Builder lBuilder = Channel.builder();
+    ChannelBuilder<?, ?> lBuilder = Channel.builder();
     lBuilder.setChannelType(pChannelType);
     lBuilder.setChannelCode(pChannelCode);
     lBuilder.setCode(pCode);
@@ -125,7 +118,9 @@ public class Channel {
   /**
    * Class implements builder to create a new instance of class <code>Channel</code>.
    */
-  public static class Builder {
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  public static abstract class ChannelBuilder<T extends Channel, B extends ChannelBuilder<T, B>> {
     /**
      * Type of the channel
      */
@@ -146,15 +141,15 @@ public class Channel {
     private boolean selfServiceChannel = true;
 
     /**
-     * Use {@link Channel#builder()} instead of private constructor to create new builder.
+     * Use {@link ChannelBuilder#builder()} instead of private constructor to create new builder.
      */
-    protected Builder( ) {
+    protected ChannelBuilder( ) {
     }
 
     /**
-     * Use {@link Channel#builder(Channel)} instead of private constructor to create new builder.
+     * Use {@link ChannelBuilder#builder(Channel)} instead of private constructor to create new builder.
      */
-    protected Builder( Channel pObject ) {
+    protected ChannelBuilder( Channel pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setChannelType(pObject.channelType);
@@ -165,77 +160,79 @@ public class Channel {
     }
 
     /**
-     * Method returns a new builder.
-     *
-     * @return {@link Builder} New builder that can be used to create new Channel objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     *
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new Channel objects. The method never returns
-     * null.
-     */
-    public static Builder newBuilder( Channel pObject ) {
-      return new Builder(pObject);
-    }
-
-    /**
      * Method sets association {@link #channelType}.<br/>
      *
      * @param pChannelType Value to which {@link #channelType} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setChannelType( @MyNotNullProperty ChannelType pChannelType ) {
+    public B setChannelType( @MyNotNullProperty ChannelType pChannelType ) {
       channelType = pChannelType;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets association {@link #channelCode}.<br/>
      *
      * @param pChannelCode Value to which {@link #channelCode} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setChannelCode( @MyNotNullProperty ChannelCode pChannelCode ) {
+    public B setChannelCode( @MyNotNullProperty ChannelCode pChannelCode ) {
       channelCode = pChannelCode;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #code}.<br/>
      *
      * @param pCode Value to which {@link #code} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setCode( int pCode ) {
+    public B setCode( int pCode ) {
       // Assign value to attribute
       code = pCode;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #selfServiceChannel}.<br/>
      *
      * @param pSelfServiceChannel Value to which {@link #selfServiceChannel} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
-    public Builder setSelfServiceChannel( boolean pSelfServiceChannel ) {
+    public B setSelfServiceChannel( boolean pSelfServiceChannel ) {
       // Assign value to attribute
       selfServiceChannel = pSelfServiceChannel;
-      return this;
+      return this.self();
     }
+
+    /**
+     * Method returns instance of this builder. Operation is part of genric builder pattern.
+     */
+    protected abstract B self( );
 
     /**
      * Method creates a new instance of class Channel. The object will be initialized with the values of the builder.
      *
      * @return Channel Created object. The method never returns null.
      */
+    public abstract T build( );
+  }
+
+  static final class ChannelBuilderImpl extends ChannelBuilder<Channel, ChannelBuilderImpl> {
+    protected ChannelBuilderImpl( ) {
+    }
+
+    protected ChannelBuilderImpl( Channel pObject ) {
+      super(pObject);
+    }
+
+    @Override
+    protected ChannelBuilderImpl self( ) {
+      return this;
+    }
+
+    @Override
     public Channel build( ) {
       Channel lObject = new Channel(this);
       SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
@@ -441,7 +438,7 @@ public class Channel {
    *
    * @return {@link Builder} New builder that can be used to create new Channel objects. The method never returns null.
    */
-  public Builder toBuilder( ) {
-    return new Builder(this);
+  public ChannelBuilder<?, ?> toBuilder( ) {
+    return new ChannelBuilderImpl(this);
   }
 }
