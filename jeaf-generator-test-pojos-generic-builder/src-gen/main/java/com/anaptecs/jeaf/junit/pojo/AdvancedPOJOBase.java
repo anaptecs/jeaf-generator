@@ -42,7 +42,7 @@ public abstract class AdvancedPOJOBase {
    * <br/>
    * <b>Default Value:</b> <code>42</code>
    */
-  private Integer intWithDefault;
+  private final Integer intWithDefault;
 
   /**
    * Initialize object using the passed builder.
@@ -178,16 +178,6 @@ public abstract class AdvancedPOJOBase {
    */
   public Integer getIntWithDefault( ) {
     return intWithDefault;
-  }
-
-  /**
-   * Method sets attribute {@link #intWithDefault}.<br/>
-   *
-   * @param pIntWithDefault Value to which {@link #intWithDefault} should be set.
-   */
-  public void setIntWithDefault( Integer pIntWithDefault ) {
-    // Assign value to attribute
-    intWithDefault = pIntWithDefault;
   }
 
   /**

@@ -48,15 +48,15 @@ public class Booking {
    */
   public static final String EXECUTIONTIMESTAMP = "executionTimestamp";
 
-  private Account sourceAccount;
+  private final Account sourceAccount;
 
-  private Account targetAccount;
+  private final Account targetAccount;
 
-  private BigDecimal amount;
+  private final BigDecimal amount;
 
-  private Currency currency;
+  private final Currency currency;
 
-  private Calendar executionTimestamp;
+  private final Calendar executionTimestamp;
 
   /**
    * Initialize object using the passed builder.
@@ -259,44 +259,12 @@ public class Booking {
   }
 
   /**
-   * Method sets association {@link #sourceAccount}.<br/>
-   *
-   * @param pSourceAccount Value to which {@link #sourceAccount} should be set.
-   */
-  public void setSourceAccount( Account pSourceAccount ) {
-    sourceAccount = pSourceAccount;
-  }
-
-  /**
-   * Method unsets {@link #sourceAccount}.
-   */
-  public final void unsetSourceAccount( ) {
-    sourceAccount = null;
-  }
-
-  /**
    * Method returns association {@link #targetAccount}.<br/>
    *
    * @return {@link Account} Value to which {@link #targetAccount} is set.
    */
   public Account getTargetAccount( ) {
     return targetAccount;
-  }
-
-  /**
-   * Method sets association {@link #targetAccount}.<br/>
-   *
-   * @param pTargetAccount Value to which {@link #targetAccount} should be set.
-   */
-  public void setTargetAccount( Account pTargetAccount ) {
-    targetAccount = pTargetAccount;
-  }
-
-  /**
-   * Method unsets {@link #targetAccount}.
-   */
-  public final void unsetTargetAccount( ) {
-    targetAccount = null;
   }
 
   /**
@@ -309,16 +277,6 @@ public class Booking {
   }
 
   /**
-   * Method sets attribute {@link #amount}.<br/>
-   *
-   * @param pAmount Value to which {@link #amount} should be set.
-   */
-  public void setAmount( BigDecimal pAmount ) {
-    // Assign value to attribute
-    amount = pAmount;
-  }
-
-  /**
    * Method returns attribute {@link #currency}.<br/>
    *
    * @return {@link Currency} Value to which {@link #currency} is set.
@@ -328,32 +286,12 @@ public class Booking {
   }
 
   /**
-   * Method sets attribute {@link #currency}.<br/>
-   *
-   * @param pCurrency Value to which {@link #currency} should be set.
-   */
-  public void setCurrency( Currency pCurrency ) {
-    // Assign value to attribute
-    currency = pCurrency;
-  }
-
-  /**
    * Method returns attribute {@link #executionTimestamp}.<br/>
    *
    * @return {@link Calendar} Value to which {@link #executionTimestamp} is set.
    */
   public Calendar getExecutionTimestamp( ) {
     return executionTimestamp;
-  }
-
-  /**
-   * Method sets attribute {@link #executionTimestamp}.<br/>
-   *
-   * @param pExecutionTimestamp Value to which {@link #executionTimestamp} should be set.
-   */
-  public void setExecutionTimestamp( Calendar pExecutionTimestamp ) {
-    // Assign value to attribute
-    executionTimestamp = pExecutionTimestamp;
   }
 
   @Override

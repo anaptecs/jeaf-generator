@@ -7,10 +7,7 @@ package com.anaptecs.jeaf.junit.pojo.transientback;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 
@@ -37,9 +34,9 @@ public class ReadOnlyMaster {
    */
   public static final String CLIENTS = "clients";
 
-  private String name;
+  private final String name;
 
-  private List<ReadOnlyClient> clients;
+  private final List<ReadOnlyClient> clients;
 
   /**
    * Attribute is required for correct handling of bidirectional associations in case of deserialization.
@@ -222,16 +219,6 @@ public class ReadOnlyMaster {
   }
 
   /**
-   * Method sets attribute {@link #name}.<br/>
-   *
-   * @param pName Value to which {@link #name} should be set.
-   */
-  public void setName( String pName ) {
-    // Assign value to attribute
-    name = pName;
-  }
-
-  /**
    * Method returns association {@link #clients}.<br/>
    *
    * @return {@link List<ReadOnlyClient>} Value to which {@link #clients} is set. The method never returns null and the
@@ -248,71 +235,6 @@ public class ReadOnlyMaster {
     }
     // Return all ReadOnlyClient objects as unmodifiable collection.
     return Collections.unmodifiableList(clients);
-  }
-
-  /**
-   * Method adds the passed object to {@link #clients}.
-   *
-   * @param pClients Object that should be added to {@link #clients}. The parameter must not be null.
-   */
-  public void addToClients( ReadOnlyClient pClients ) {
-    // Check parameter "pClients" for invalid value null.
-    Check.checkInvalidParameterNull(pClients, "pClients");
-    // Since this is not a many-to-many association the association to which the passed object belongs, has to be
-    // released.
-    pClients.unsetTransientMaster();
-    // Add passed object to collection of associated ReadOnlyClient objects.
-    clients.add(pClients);
-    // The association is set in both directions because within the UML model it is defined to be bidirectional.
-    // In case that one side will be removed from the association the other side will also be removed.
-    if (pClients != null && this.equals(pClients.getTransientMaster()) == false) {
-      pClients.setTransientMaster((ReadOnlyMaster) this);
-    }
-  }
-
-  /**
-   * Method adds all passed objects to {@link #clients}.
-   *
-   * @param pClients Collection with all objects that should be added to {@link #clients}. The parameter must not be
-   * null.
-   */
-  public void addToClients( Collection<ReadOnlyClient> pClients ) {
-    // Check parameter "pClients" for invalid value null.
-    Check.checkInvalidParameterNull(pClients, "pClients");
-    // Add all passed objects.
-    for (ReadOnlyClient lNextObject : pClients) {
-      this.addToClients(lNextObject);
-    }
-  }
-
-  /**
-   * Method removes the passed object from {@link #clients}.<br/>
-   *
-   * @param pClients Object that should be removed from {@link #clients}. The parameter must not be null.
-   */
-  public void removeFromClients( ReadOnlyClient pClients ) {
-    // Check parameter for invalid value null.
-    Check.checkInvalidParameterNull(pClients, "pClients");
-    // Remove passed object from collection of associated ReadOnlyClient objects.
-    clients.remove(pClients);
-    // The association is set in both directions because within the UML model it is defined to be bidirectional.
-    // In case that one side will be removed from the association the other side will also be removed.
-    if (this.equals(pClients.getTransientMaster()) == true) {
-      pClients.unsetTransientMaster();
-    }
-  }
-
-  /**
-   * Method removes all objects from {@link #clients}.
-   */
-  public void clearClients( ) {
-    // Remove all objects from association "clients".
-    Collection<ReadOnlyClient> lClients = new HashSet<ReadOnlyClient>(clients);
-    Iterator<ReadOnlyClient> lIterator = lClients.iterator();
-    while (lIterator.hasNext()) {
-      // As association is bidirectional we have to clear it in both directions.
-      this.removeFromClients(lIterator.next());
-    }
   }
 
   @Override

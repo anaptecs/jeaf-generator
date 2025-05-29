@@ -36,7 +36,7 @@ public abstract class POJOWithIDnMethodBase implements Identifiable<ObjectID> {
    */
   private final ObjectID objectID;
 
-  private Double attr;
+  private final Double attr;
 
   /**
    * Initialize object using the passed builder.
@@ -190,16 +190,6 @@ public abstract class POJOWithIDnMethodBase implements Identifiable<ObjectID> {
    */
   public Double getAttr( ) {
     return attr;
-  }
-
-  /**
-   * Method sets attribute {@link #attr}.<br/>
-   *
-   * @param pAttr Value to which {@link #attr} should be set.
-   */
-  public void setAttr( Double pAttr ) {
-    // Assign value to attribute
-    attr = pAttr;
   }
 
   /**

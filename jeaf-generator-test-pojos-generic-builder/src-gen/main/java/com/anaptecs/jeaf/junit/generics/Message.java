@@ -25,7 +25,7 @@ public class Message {
    */
   public static final String TEXT = "text";
 
-  private String text;
+  private final String text;
 
   /**
    * Initialize object using the passed builder.
@@ -150,16 +150,6 @@ public class Message {
    */
   public String getText( ) {
     return text;
-  }
-
-  /**
-   * Method sets attribute {@link #text}.<br/>
-   *
-   * @param pText Value to which {@link #text} should be set.
-   */
-  public void setText( String pText ) {
-    // Assign value to attribute
-    text = pText;
   }
 
   @Override

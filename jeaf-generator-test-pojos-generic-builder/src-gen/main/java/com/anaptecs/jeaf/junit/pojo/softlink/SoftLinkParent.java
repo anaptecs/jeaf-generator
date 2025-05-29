@@ -5,7 +5,6 @@
  */
 package com.anaptecs.jeaf.junit.pojo.softlink;
 
-import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Objects;
@@ -49,14 +48,14 @@ public class SoftLinkParent {
    * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #partners} is
    * <code>com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkPartner</code><br/>
    */
-  private Set<SoftLinkID> partnerIDs;
+  private final Set<SoftLinkID> partnerIDs;
 
   /**
    * <p/>
    * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #thePartner} is
    * <code>com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkPartner</code><br/>
    */
-  private SoftLinkID thePartnerID;
+  private final SoftLinkID thePartnerID;
 
   /**
    * <p/>
@@ -256,53 +255,6 @@ public class SoftLinkParent {
   }
 
   /**
-   * Method adds the passed object to {@link #partners}.
-   *
-   * @param pPartners Object that should be added to {@link #partners}. The parameter must not be null.
-   */
-  public void addToPartnerIDs( SoftLinkID pPartners ) {
-    // Check parameter "pPartners" for invalid value null.
-    Check.checkInvalidParameterNull(pPartners, "pPartners");
-    // Add passed object to collection of associated SoftLinkPartner objects.
-    partnerIDs.add(pPartners);
-  }
-
-  /**
-   * Method adds all passed objects to {@link #partners}.
-   *
-   * @param pPartners Collection with all objects that should be added to {@link #partners}. The parameter must not be
-   * null.
-   */
-  public void addToPartnerIDs( Collection<SoftLinkID> pPartners ) {
-    // Check parameter "pPartners" for invalid value null.
-    Check.checkInvalidParameterNull(pPartners, "pPartners");
-    // Add all passed objects.
-    for (SoftLinkID lNextObject : pPartners) {
-      this.addToPartnerIDs(lNextObject);
-    }
-  }
-
-  /**
-   * Method removes the passed object from {@link #partners}.
-   *
-   * @param pPartners Object that should be removed from {@link #partners}. The parameter must not be null.
-   */
-  public void removeFromPartnerIDs( SoftLinkID pPartners ) {
-    // Check parameter for invalid value null.
-    Check.checkInvalidParameterNull(pPartners, "pPartners");
-    // Remove passed object from collection of associated SoftLinkPartner objects.
-    partnerIDs.remove(pPartners);
-  }
-
-  /**
-   * Method removes all objects from {@link #partners}.
-   */
-  public void clearPartnerIDs( ) {
-    // Remove all objects from association "partners".
-    partnerIDs.clear();
-  }
-
-  /**
    * Method returns association {@link #thePartner}.<br/>
    * <p/>
    * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #thePartner} is
@@ -312,22 +264,6 @@ public class SoftLinkParent {
    */
   public SoftLinkID getThePartnerID( ) {
     return thePartnerID;
-  }
-
-  /**
-   * Method sets association {@link #thePartner}.<br/>
-   *
-   * @param pThePartner Value to which {@link #thePartner} should be set.
-   */
-  public void setThePartnerID( SoftLinkID pThePartner ) {
-    thePartnerID = pThePartner;
-  }
-
-  /**
-   * Method unsets {@link #thePartner}.
-   */
-  public final void unsetThePartnerID( ) {
-    thePartnerID = null;
   }
 
   /**

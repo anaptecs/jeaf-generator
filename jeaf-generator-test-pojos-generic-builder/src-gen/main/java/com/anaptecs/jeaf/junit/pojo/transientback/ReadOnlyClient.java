@@ -30,7 +30,7 @@ public class ReadOnlyClient {
    */
   public static final String TRANSIENTMASTER = "transientMaster";
 
-  private String name;
+  private final String name;
 
   private transient ReadOnlyMaster transientMaster;
 
@@ -162,16 +162,6 @@ public class ReadOnlyClient {
   }
 
   /**
-   * Method sets attribute {@link #name}.<br/>
-   *
-   * @param pName Value to which {@link #name} should be set.
-   */
-  public void setName( String pName ) {
-    // Assign value to attribute
-    name = pName;
-  }
-
-  /**
    * Method returns association {@link #transientMaster}.<br/>
    *
    * @return {@link ReadOnlyMaster} Value to which {@link #transientMaster} is set.
@@ -186,18 +176,7 @@ public class ReadOnlyClient {
    * @param pTransientMaster Value to which {@link #transientMaster} should be set.
    */
   void setTransientMaster( ReadOnlyMaster pTransientMaster ) {
-    // Release already referenced object before setting a new association.
-    if (transientMaster != null) {
-      transientMaster.removeFromClients((ReadOnlyClient) this);
-    }
     transientMaster = pTransientMaster;
-  }
-
-  /**
-   * Method unsets {@link #transientMaster}.
-   */
-  final void unsetTransientMaster( ) {
-    transientMaster = null;
   }
 
   @Override

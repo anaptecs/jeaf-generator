@@ -6,10 +6,7 @@
 package com.anaptecs.jeaf.junit.pojo.transientback;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 
@@ -43,9 +40,9 @@ public class ClientClass {
 
   private transient MasterClass transientMaster;
 
-  private String name;
+  private final String name;
 
-  private transient List<MasterClass> manyMasters;
+  private final transient List<MasterClass> manyMasters;
 
   /**
    * Initialize object using the passed builder.
@@ -180,18 +177,7 @@ public class ClientClass {
    * @param pTransientMaster Value to which {@link #transientMaster} should be set.
    */
   void setTransientMaster( MasterClass pTransientMaster ) {
-    // Release already referenced object before setting a new association.
-    if (transientMaster != null) {
-      transientMaster.removeFromClients((ClientClass) this);
-    }
     transientMaster = pTransientMaster;
-  }
-
-  /**
-   * Method unsets {@link #transientMaster}.
-   */
-  final void unsetTransientMaster( ) {
-    transientMaster = null;
   }
 
   /**
@@ -201,16 +187,6 @@ public class ClientClass {
    */
   public String getName( ) {
     return name;
-  }
-
-  /**
-   * Method sets attribute {@link #name}.<br/>
-   *
-   * @param pName Value to which {@link #name} should be set.
-   */
-  public void setName( String pName ) {
-    // Assign value to attribute
-    name = pName;
   }
 
   /**
@@ -234,46 +210,6 @@ public class ClientClass {
     Check.checkInvalidParameterNull(pManyMasters, "pManyMasters");
     // Add passed object to collection of associated MasterClass objects.
     manyMasters.add(pManyMasters);
-  }
-
-  /**
-   * Method adds all passed objects to {@link #manyMasters}.
-   *
-   * @param pManyMasters Collection with all objects that should be added to {@link #manyMasters}. The parameter must
-   * not be null.
-   */
-  void addToManyMasters( Collection<MasterClass> pManyMasters ) {
-    // Check parameter "pManyMasters" for invalid value null.
-    Check.checkInvalidParameterNull(pManyMasters, "pManyMasters");
-    // Add all passed objects.
-    for (MasterClass lNextObject : pManyMasters) {
-      this.addToManyMasters(lNextObject);
-    }
-  }
-
-  /**
-   * Method removes the passed object from {@link #manyMasters}.<br/>
-   *
-   * @param pManyMasters Object that should be removed from {@link #manyMasters}. The parameter must not be null.
-   */
-  void removeFromManyMasters( MasterClass pManyMasters ) {
-    // Check parameter for invalid value null.
-    Check.checkInvalidParameterNull(pManyMasters, "pManyMasters");
-    // Remove passed object from collection of associated MasterClass objects.
-    manyMasters.remove(pManyMasters);
-  }
-
-  /**
-   * Method removes all objects from {@link #manyMasters}.
-   */
-  void clearManyMasters( ) {
-    // Remove all objects from association "manyMasters".
-    Collection<MasterClass> lManyMasters = new HashSet<MasterClass>(manyMasters);
-    Iterator<MasterClass> lIterator = lManyMasters.iterator();
-    while (lIterator.hasNext()) {
-      // As association is bidirectional we have to clear it in both directions.
-      this.removeFromManyMasters(lIterator.next());
-    }
   }
 
   @Override

@@ -29,7 +29,7 @@ public class BParentPOJO {
    */
   public static final String PARENTATTRIBUTE = "parentAttribute";
 
-  private String parentAttribute;
+  private final String parentAttribute;
 
   /**
    * Initialize object using the passed builder.
@@ -155,16 +155,6 @@ public class BParentPOJO {
    */
   public String getParentAttribute( ) {
     return parentAttribute;
-  }
-
-  /**
-   * Method sets attribute {@link #parentAttribute}.<br/>
-   *
-   * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
-   */
-  public void setParentAttribute( String pParentAttribute ) {
-    // Assign value to attribute
-    parentAttribute = pParentAttribute;
   }
 
   @Override

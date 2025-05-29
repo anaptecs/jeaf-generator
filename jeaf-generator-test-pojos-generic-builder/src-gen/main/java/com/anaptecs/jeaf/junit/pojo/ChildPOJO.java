@@ -38,7 +38,7 @@ public class ChildPOJO extends ParentPOJO {
   public static final String CHILDATTRIBUTE = "childAttribute";
 
   @NotNull
-  private Integer childAttribute;
+  private final Integer childAttribute;
 
   /**
    * Initialize object using the passed builder.
@@ -178,16 +178,6 @@ public class ChildPOJO extends ParentPOJO {
    */
   public Integer getChildAttribute( ) {
     return childAttribute;
-  }
-
-  /**
-   * Method sets attribute {@link #childAttribute}.<br/>
-   *
-   * @param pChildAttribute Value to which {@link #childAttribute} should be set.
-   */
-  public void setChildAttribute( Integer pChildAttribute ) {
-    // Assign value to attribute
-    childAttribute = pChildAttribute;
   }
 
   @Override

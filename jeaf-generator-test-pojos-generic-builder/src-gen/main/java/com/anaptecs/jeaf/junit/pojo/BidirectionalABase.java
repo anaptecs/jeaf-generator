@@ -5,10 +5,8 @@
  */
 package com.anaptecs.jeaf.junit.pojo;
 
-import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Objects;
 import java.util.Set;
 
@@ -49,14 +47,14 @@ public abstract class BidirectionalABase {
 
   private transient BidirectionalA transientParent;
 
-  private BidirectionalA child;
+  private final BidirectionalA child;
 
   /**
    * Attribute is required for correct handling of bidirectional associations in case of deserialization.
    */
   private transient boolean childBackReferenceInitialized;
 
-  private transient Set<BidirectionalB> transientBs;
+  private final transient Set<BidirectionalB> transientBs;
 
   /**
    * Initialize object using the passed builder.
@@ -174,18 +172,7 @@ public abstract class BidirectionalABase {
    * @param pTransientB Value to which {@link #transientB} should be set.
    */
   void setTransientB( BidirectionalB pTransientB ) {
-    // Release already referenced object before setting a new association.
-    if (transientB != null) {
-      transientB.removeFromAs((BidirectionalA) this);
-    }
     transientB = pTransientB;
-  }
-
-  /**
-   * Method unsets {@link #transientB}.
-   */
-  final void unsetTransientB( ) {
-    transientB = null;
   }
 
   /**
@@ -203,18 +190,7 @@ public abstract class BidirectionalABase {
    * @param pTransientParent Value to which {@link #transientParent} should be set.
    */
   void setTransientParent( BidirectionalA pTransientParent ) {
-    // Release already referenced object before setting a new association.
-    if (transientParent != null) {
-      transientParent.unsetChild();
-    }
     transientParent = pTransientParent;
-  }
-
-  /**
-   * Method unsets {@link #transientParent}.
-   */
-  final void unsetTransientParent( ) {
-    transientParent = null;
   }
 
   /**
@@ -230,37 +206,6 @@ public abstract class BidirectionalABase {
       child.setTransientParent((BidirectionalA) this);
     }
     return child;
-  }
-
-  /**
-   * Method sets association {@link #child}.<br/>
-   *
-   * @param pChild Value to which {@link #child} should be set.
-   */
-  public void setChild( BidirectionalA pChild ) {
-    // Release already referenced object before setting a new association.
-    if (child != null) {
-      child.unsetTransientParent();
-    }
-    child = pChild;
-    // The association is set in both directions because within the UML model it is defined to be bidirectional.
-    // In case that one side will be removed from the association the other side will also be removed.
-    if (pChild != null && this.equals(pChild.getTransientParent()) == false) {
-      pChild.setTransientParent((BidirectionalA) this);
-    }
-  }
-
-  /**
-   * Method unsets {@link #child}.
-   */
-  public final void unsetChild( ) {
-    // The association is set in both directions because within the UML model it is defined to be bidirectional.
-    // In case that one side will be removed from the association the other side will also be removed.
-    BidirectionalA lBidirectionalA = child;
-    child = null;
-    if (lBidirectionalA != null && this.equals(lBidirectionalA.getTransientParent()) == true) {
-      lBidirectionalA.unsetTransientParent();
-    }
   }
 
   /**
@@ -284,46 +229,6 @@ public abstract class BidirectionalABase {
     Check.checkInvalidParameterNull(pTransientBs, "pTransientBs");
     // Add passed object to collection of associated BidirectionalB objects.
     transientBs.add(pTransientBs);
-  }
-
-  /**
-   * Method adds all passed objects to {@link #transientBs}.
-   *
-   * @param pTransientBs Collection with all objects that should be added to {@link #transientBs}. The parameter must
-   * not be null.
-   */
-  void addToTransientBs( Collection<BidirectionalB> pTransientBs ) {
-    // Check parameter "pTransientBs" for invalid value null.
-    Check.checkInvalidParameterNull(pTransientBs, "pTransientBs");
-    // Add all passed objects.
-    for (BidirectionalB lNextObject : pTransientBs) {
-      this.addToTransientBs(lNextObject);
-    }
-  }
-
-  /**
-   * Method removes the passed object from {@link #transientBs}.<br/>
-   *
-   * @param pTransientBs Object that should be removed from {@link #transientBs}. The parameter must not be null.
-   */
-  void removeFromTransientBs( BidirectionalB pTransientBs ) {
-    // Check parameter for invalid value null.
-    Check.checkInvalidParameterNull(pTransientBs, "pTransientBs");
-    // Remove passed object from collection of associated BidirectionalB objects.
-    transientBs.remove(pTransientBs);
-  }
-
-  /**
-   * Method removes all objects from {@link #transientBs}.
-   */
-  void clearTransientBs( ) {
-    // Remove all objects from association "transientBs".
-    Collection<BidirectionalB> lTransientBs = new HashSet<BidirectionalB>(transientBs);
-    Iterator<BidirectionalB> lIterator = lTransientBs.iterator();
-    while (lIterator.hasNext()) {
-      // As association is bidirectional we have to clear it in both directions.
-      this.removeFromTransientBs(lIterator.next());
-    }
   }
 
   /**

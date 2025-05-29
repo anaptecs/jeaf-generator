@@ -46,9 +46,9 @@ public class POJOWithID implements Identifiable<ObjectID> {
    */
   private final ObjectID objectID;
 
-  private Double attr;
+  private final Double attr;
 
-  private String name;
+  private final String name;
 
   /**
    * <br/>
@@ -273,32 +273,12 @@ public class POJOWithID implements Identifiable<ObjectID> {
   }
 
   /**
-   * Method sets attribute {@link #attr}.<br/>
-   *
-   * @param pAttr Value to which {@link #attr} should be set.
-   */
-  public void setAttr( Double pAttr ) {
-    // Assign value to attribute
-    attr = pAttr;
-  }
-
-  /**
    * Method returns attribute {@link #name}.<br/>
    *
    * @return {@link String} Value to which {@link #name} is set.
    */
   public String getName( ) {
     return name;
-  }
-
-  /**
-   * Method sets attribute {@link #name}.<br/>
-   *
-   * @param pName Value to which {@link #name} should be set.
-   */
-  public void setName( String pName ) {
-    // Assign value to attribute
-    name = pName;
   }
 
   /**

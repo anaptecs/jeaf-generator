@@ -33,17 +33,20 @@ public class MultiTemplateClass<T, E> {
    */
   public static final String NEWSTATE = "newState";
 
-  private T object;
+  private final T object;
 
-  private E previousState;
+  private final E previousState;
 
-  private E newState;
+  private final E newState;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   protected MultiTemplateClass( ) {
+    object = null;
+    previousState = null;
+    newState = null;
   }
 
   /**
@@ -173,22 +176,6 @@ public class MultiTemplateClass<T, E> {
   }
 
   /**
-   * Method sets association {@link #object}.<br/>
-   *
-   * @param pObject Value to which {@link #object} should be set.
-   */
-  public void setObject( T pObject ) {
-    object = pObject;
-  }
-
-  /**
-   * Method unsets {@link #object}.
-   */
-  public final void unsetObject( ) {
-    object = null;
-  }
-
-  /**
    * Method returns association {@link #previousState}.<br/>
    *
    * @return {@link E} Value to which {@link #previousState} is set.
@@ -198,44 +185,12 @@ public class MultiTemplateClass<T, E> {
   }
 
   /**
-   * Method sets association {@link #previousState}.<br/>
-   *
-   * @param pPreviousState Value to which {@link #previousState} should be set.
-   */
-  public void setPreviousState( E pPreviousState ) {
-    previousState = pPreviousState;
-  }
-
-  /**
-   * Method unsets {@link #previousState}.
-   */
-  public final void unsetPreviousState( ) {
-    previousState = null;
-  }
-
-  /**
    * Method returns association {@link #newState}.<br/>
    *
    * @return {@link E} Value to which {@link #newState} is set.
    */
   public E getNewState( ) {
     return newState;
-  }
-
-  /**
-   * Method sets association {@link #newState}.<br/>
-   *
-   * @param pNewState Value to which {@link #newState} should be set.
-   */
-  public void setNewState( E pNewState ) {
-    newState = pNewState;
-  }
-
-  /**
-   * Method unsets {@link #newState}.
-   */
-  public final void unsetNewState( ) {
-    newState = null;
   }
 
   @Override

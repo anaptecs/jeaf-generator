@@ -27,7 +27,7 @@ public abstract class AbstractPOJO {
    */
   public static final String ABTRACTATTR = "abtractAttr";
 
-  private String abtractAttr;
+  private final String abtractAttr;
 
   /**
    * Initialize object using the passed builder.
@@ -90,16 +90,6 @@ public abstract class AbstractPOJO {
    */
   public String getAbtractAttr( ) {
     return abtractAttr;
-  }
-
-  /**
-   * Method sets attribute {@link #abtractAttr}.<br/>
-   *
-   * @param pAbtractAttr Value to which {@link #abtractAttr} should be set.
-   */
-  public void setAbtractAttr( String pAbtractAttr ) {
-    // Assign value to attribute
-    abtractAttr = pAbtractAttr;
   }
 
   @Override

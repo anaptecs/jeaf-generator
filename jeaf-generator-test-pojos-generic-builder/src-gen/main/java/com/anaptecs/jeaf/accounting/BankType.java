@@ -28,7 +28,7 @@ public enum BankType {
     typeCode = pTypeCode;
   }
 
-  private String typeCode;
+  private final String typeCode;
 
   /**
    * Method returns attribute {@link #typeCode}.<br/>

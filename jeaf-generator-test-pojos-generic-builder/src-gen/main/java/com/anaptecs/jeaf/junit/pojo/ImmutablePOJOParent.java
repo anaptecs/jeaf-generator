@@ -31,7 +31,7 @@ public class ImmutablePOJOParent extends AbstractPOJO {
 
   private final String parentAttribute;
 
-  private Integer anotherParentAttribute;
+  private final Integer anotherParentAttribute;
 
   /**
    * Initialize object using the passed builder.
@@ -195,16 +195,6 @@ public class ImmutablePOJOParent extends AbstractPOJO {
    */
   public Integer getAnotherParentAttribute( ) {
     return anotherParentAttribute;
-  }
-
-  /**
-   * Method sets attribute {@link #anotherParentAttribute}.<br/>
-   *
-   * @param pAnotherParentAttribute Value to which {@link #anotherParentAttribute} should be set.
-   */
-  public void setAnotherParentAttribute( Integer pAnotherParentAttribute ) {
-    // Assign value to attribute
-    anotherParentAttribute = pAnotherParentAttribute;
   }
 
   @Override

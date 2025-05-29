@@ -33,7 +33,7 @@ public enum EnumWithProperties {
    * <br/>
    * <b>Default Value:</b> <code>GAMMA</code>
    */
-  private MyType myType;
+  private final MyType myType;
 
   /**
    * Method returns attribute {@link #dataUnitID}.<br/>

@@ -6,7 +6,6 @@
 package com.anaptecs.jeaf.junit.generics;
 
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Objects;
@@ -45,13 +44,13 @@ public abstract class AndOneMorePOJOBase {
    */
   public static final String MANY = "many";
 
-  private GenericResponsePOJO<MyBusinessObject> genericProperty;
+  private final GenericResponsePOJO<MyBusinessObject> genericProperty;
 
-  private Set<GenericResponsePOJO<MyBusinessObject>> genericResponses;
+  private final Set<GenericResponsePOJO<MyBusinessObject>> genericResponses;
 
-  private MultiTemplateClass<Message, TemplateEnumTest> multiTemplateClassImpl;
+  private final MultiTemplateClass<Message, TemplateEnumTest> multiTemplateClassImpl;
 
-  private Set<MultiTemplateClass<Message, TemplateEnumTest>> many;
+  private final Set<MultiTemplateClass<Message, TemplateEnumTest>> many;
 
   /**
    * Initialize object using the passed builder.
@@ -258,16 +257,6 @@ public abstract class AndOneMorePOJOBase {
   }
 
   /**
-   * Method sets attribute {@link #genericProperty}.<br/>
-   *
-   * @param pGenericProperty Value to which {@link #genericProperty} should be set.
-   */
-  public void setGenericProperty( GenericResponsePOJO<MyBusinessObject> pGenericProperty ) {
-    // Assign value to attribute
-    genericProperty = pGenericProperty;
-  }
-
-  /**
    * Method returns association {@link #genericResponses}.<br/>
    *
    * @return {@link Set<GenericResponsePOJO<MyBusinessObject>>} Value to which {@link #genericResponses} is set. The
@@ -276,54 +265,6 @@ public abstract class AndOneMorePOJOBase {
   public Set<GenericResponsePOJO<MyBusinessObject>> getGenericResponses( ) {
     // Return all DoSomethingResponse objects as unmodifiable collection.
     return Collections.unmodifiableSet(genericResponses);
-  }
-
-  /**
-   * Method adds the passed object to {@link #genericResponses}.
-   *
-   * @param pGenericResponses Object that should be added to {@link #genericResponses}. The parameter must not be null.
-   */
-  public void addToGenericResponses( GenericResponsePOJO<MyBusinessObject> pGenericResponses ) {
-    // Check parameter "pGenericResponses" for invalid value null.
-    Check.checkInvalidParameterNull(pGenericResponses, "pGenericResponses");
-    // Add passed object to collection of associated DoSomethingResponse objects.
-    genericResponses.add(pGenericResponses);
-  }
-
-  /**
-   * Method adds all passed objects to {@link #genericResponses}.
-   *
-   * @param pGenericResponses Collection with all objects that should be added to {@link #genericResponses}. The
-   * parameter must not be null.
-   */
-  public void addToGenericResponses( Collection<GenericResponsePOJO<MyBusinessObject>> pGenericResponses ) {
-    // Check parameter "pGenericResponses" for invalid value null.
-    Check.checkInvalidParameterNull(pGenericResponses, "pGenericResponses");
-    // Add all passed objects.
-    for (GenericResponsePOJO<MyBusinessObject> lNextObject : pGenericResponses) {
-      this.addToGenericResponses(lNextObject);
-    }
-  }
-
-  /**
-   * Method removes the passed object from {@link #genericResponses}.<br/>
-   *
-   * @param pGenericResponses Object that should be removed from {@link #genericResponses}. The parameter must not be
-   * null.
-   */
-  public void removeFromGenericResponses( GenericResponsePOJO<MyBusinessObject> pGenericResponses ) {
-    // Check parameter for invalid value null.
-    Check.checkInvalidParameterNull(pGenericResponses, "pGenericResponses");
-    // Remove passed object from collection of associated DoSomethingResponse objects.
-    genericResponses.remove(pGenericResponses);
-  }
-
-  /**
-   * Method removes all objects from {@link #genericResponses}.
-   */
-  public void clearGenericResponses( ) {
-    // Remove all objects from association "genericResponses".
-    genericResponses.clear();
   }
 
   /**
@@ -337,22 +278,6 @@ public abstract class AndOneMorePOJOBase {
   }
 
   /**
-   * Method sets association {@link #multiTemplateClassImpl}.<br/>
-   *
-   * @param pMultiTemplateClassImpl Value to which {@link #multiTemplateClassImpl} should be set.
-   */
-  public void setMultiTemplateClassImpl( MultiTemplateClass<Message, TemplateEnumTest> pMultiTemplateClassImpl ) {
-    multiTemplateClassImpl = pMultiTemplateClassImpl;
-  }
-
-  /**
-   * Method unsets {@link #multiTemplateClassImpl}.
-   */
-  public final void unsetMultiTemplateClassImpl( ) {
-    multiTemplateClassImpl = null;
-  }
-
-  /**
    * Method returns association {@link #many}.<br/>
    *
    * @return {@link Set<MultiTemplateClass<Message, TemplateEnumTest>>} Value to which {@link #many} is set. The method
@@ -361,52 +286,6 @@ public abstract class AndOneMorePOJOBase {
   public Set<MultiTemplateClass<Message, TemplateEnumTest>> getMany( ) {
     // Return all MultiTemplateClassImpl objects as unmodifiable collection.
     return Collections.unmodifiableSet(many);
-  }
-
-  /**
-   * Method adds the passed object to {@link #many}.
-   *
-   * @param pMany Object that should be added to {@link #many}. The parameter must not be null.
-   */
-  public void addToMany( MultiTemplateClass<Message, TemplateEnumTest> pMany ) {
-    // Check parameter "pMany" for invalid value null.
-    Check.checkInvalidParameterNull(pMany, "pMany");
-    // Add passed object to collection of associated MultiTemplateClassImpl objects.
-    many.add(pMany);
-  }
-
-  /**
-   * Method adds all passed objects to {@link #many}.
-   *
-   * @param pMany Collection with all objects that should be added to {@link #many}. The parameter must not be null.
-   */
-  public void addToMany( Collection<MultiTemplateClass<Message, TemplateEnumTest>> pMany ) {
-    // Check parameter "pMany" for invalid value null.
-    Check.checkInvalidParameterNull(pMany, "pMany");
-    // Add all passed objects.
-    for (MultiTemplateClass<Message, TemplateEnumTest> lNextObject : pMany) {
-      this.addToMany(lNextObject);
-    }
-  }
-
-  /**
-   * Method removes the passed object from {@link #many}.<br/>
-   *
-   * @param pMany Object that should be removed from {@link #many}. The parameter must not be null.
-   */
-  public void removeFromMany( MultiTemplateClass<Message, TemplateEnumTest> pMany ) {
-    // Check parameter for invalid value null.
-    Check.checkInvalidParameterNull(pMany, "pMany");
-    // Remove passed object from collection of associated MultiTemplateClassImpl objects.
-    many.remove(pMany);
-  }
-
-  /**
-   * Method removes all objects from {@link #many}.
-   */
-  public void clearMany( ) {
-    // Remove all objects from association "many".
-    many.clear();
   }
 
   /**

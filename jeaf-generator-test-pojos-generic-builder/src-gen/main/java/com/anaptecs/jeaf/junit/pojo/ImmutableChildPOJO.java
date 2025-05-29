@@ -29,7 +29,7 @@ public class ImmutableChildPOJO extends ImmutablePOJOParent {
    */
   public static final String ANOTHERCHILDATTRIBUTE = "anotherChildAttribute";
 
-  private String childAttribute;
+  private final String childAttribute;
 
   private final Double anotherChildAttribute;
 
@@ -192,16 +192,6 @@ public class ImmutableChildPOJO extends ImmutablePOJOParent {
    */
   public String getChildAttribute( ) {
     return childAttribute;
-  }
-
-  /**
-   * Method sets attribute {@link #childAttribute}.<br/>
-   *
-   * @param pChildAttribute Value to which {@link #childAttribute} should be set.
-   */
-  public void setChildAttribute( String pChildAttribute ) {
-    // Assign value to attribute
-    childAttribute = pChildAttribute;
   }
 
   /**

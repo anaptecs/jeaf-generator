@@ -23,7 +23,7 @@ public class MyBusinessObject {
    */
   public static final String MYBUSINESSATTRIBUTE = "myBusinessAttribute";
 
-  private int myBusinessAttribute;
+  private final int myBusinessAttribute;
 
   /**
    * Initialize object using the passed builder.
@@ -151,16 +151,6 @@ public class MyBusinessObject {
    */
   public int getMyBusinessAttribute( ) {
     return myBusinessAttribute;
-  }
-
-  /**
-   * Method sets attribute {@link #myBusinessAttribute}.<br/>
-   *
-   * @param pMyBusinessAttribute Value to which {@link #myBusinessAttribute} should be set.
-   */
-  public void setMyBusinessAttribute( int pMyBusinessAttribute ) {
-    // Assign value to attribute
-    myBusinessAttribute = pMyBusinessAttribute;
   }
 
   @Override

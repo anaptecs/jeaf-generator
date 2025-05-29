@@ -7,10 +7,7 @@ package com.anaptecs.jeaf.junit.pojo;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 
@@ -37,14 +34,14 @@ public class BidirectionalB {
    */
   public static final String THEAS = "theAs";
 
-  private List<BidirectionalA> as;
+  private final List<BidirectionalA> as;
 
   /**
    * Attribute is required for correct handling of bidirectional associations in case of deserialization.
    */
   private transient boolean asBackReferenceInitialized;
 
-  private List<BidirectionalA> theAs;
+  private final List<BidirectionalA> theAs;
 
   /**
    * Attribute is required for correct handling of bidirectional associations in case of deserialization.
@@ -266,70 +263,6 @@ public class BidirectionalB {
   }
 
   /**
-   * Method adds the passed object to {@link #as}.
-   *
-   * @param pAs Object that should be added to {@link #as}. The parameter must not be null.
-   */
-  public void addToAs( BidirectionalA pAs ) {
-    // Check parameter "pAs" for invalid value null.
-    Check.checkInvalidParameterNull(pAs, "pAs");
-    // Since this is not a many-to-many association the association to which the passed object belongs, has to be
-    // released.
-    pAs.unsetTransientB();
-    // Add passed object to collection of associated BidirectionalA objects.
-    as.add(pAs);
-    // The association is set in both directions because within the UML model it is defined to be bidirectional.
-    // In case that one side will be removed from the association the other side will also be removed.
-    if (pAs != null && this.equals(pAs.getTransientB()) == false) {
-      pAs.setTransientB((BidirectionalB) this);
-    }
-  }
-
-  /**
-   * Method adds all passed objects to {@link #as}.
-   *
-   * @param pAs Collection with all objects that should be added to {@link #as}. The parameter must not be null.
-   */
-  public void addToAs( Collection<BidirectionalA> pAs ) {
-    // Check parameter "pAs" for invalid value null.
-    Check.checkInvalidParameterNull(pAs, "pAs");
-    // Add all passed objects.
-    for (BidirectionalA lNextObject : pAs) {
-      this.addToAs(lNextObject);
-    }
-  }
-
-  /**
-   * Method removes the passed object from {@link #as}.<br/>
-   *
-   * @param pAs Object that should be removed from {@link #as}. The parameter must not be null.
-   */
-  public void removeFromAs( BidirectionalA pAs ) {
-    // Check parameter for invalid value null.
-    Check.checkInvalidParameterNull(pAs, "pAs");
-    // Remove passed object from collection of associated BidirectionalA objects.
-    as.remove(pAs);
-    // The association is set in both directions because within the UML model it is defined to be bidirectional.
-    // In case that one side will be removed from the association the other side will also be removed.
-    if (this.equals(pAs.getTransientB()) == true) {
-      pAs.unsetTransientB();
-    }
-  }
-
-  /**
-   * Method removes all objects from {@link #as}.
-   */
-  public void clearAs( ) {
-    // Remove all objects from association "as".
-    Collection<BidirectionalA> lAs = new HashSet<BidirectionalA>(as);
-    Iterator<BidirectionalA> lIterator = lAs.iterator();
-    while (lIterator.hasNext()) {
-      // As association is bidirectional we have to clear it in both directions.
-      this.removeFromAs(lIterator.next());
-    }
-  }
-
-  /**
    * Method returns association {@link #theAs}.<br/>
    *
    * @return {@link List<BidirectionalA>} Value to which {@link #theAs} is set. The method never returns null and the
@@ -346,67 +279,6 @@ public class BidirectionalB {
     }
     // Return all BidirectionalA objects as unmodifiable collection.
     return Collections.unmodifiableList(theAs);
-  }
-
-  /**
-   * Method adds the passed object to {@link #theAs}.
-   *
-   * @param pTheAs Object that should be added to {@link #theAs}. The parameter must not be null.
-   */
-  public void addToTheAs( BidirectionalA pTheAs ) {
-    // Check parameter "pTheAs" for invalid value null.
-    Check.checkInvalidParameterNull(pTheAs, "pTheAs");
-    // Add passed object to collection of associated BidirectionalA objects.
-    theAs.add(pTheAs);
-    // The association is set in both directions because within the UML model it is defined to be bidirectional.
-    // In case that one side will be removed from the association the other side will also be removed.
-    if (pTheAs != null && pTheAs.getTransientBs().contains(this) == false) {
-      pTheAs.addToTransientBs((BidirectionalB) this);
-    }
-  }
-
-  /**
-   * Method adds all passed objects to {@link #theAs}.
-   *
-   * @param pTheAs Collection with all objects that should be added to {@link #theAs}. The parameter must not be null.
-   */
-  public void addToTheAs( Collection<BidirectionalA> pTheAs ) {
-    // Check parameter "pTheAs" for invalid value null.
-    Check.checkInvalidParameterNull(pTheAs, "pTheAs");
-    // Add all passed objects.
-    for (BidirectionalA lNextObject : pTheAs) {
-      this.addToTheAs(lNextObject);
-    }
-  }
-
-  /**
-   * Method removes the passed object from {@link #theAs}.<br/>
-   *
-   * @param pTheAs Object that should be removed from {@link #theAs}. The parameter must not be null.
-   */
-  public void removeFromTheAs( BidirectionalA pTheAs ) {
-    // Check parameter for invalid value null.
-    Check.checkInvalidParameterNull(pTheAs, "pTheAs");
-    // Remove passed object from collection of associated BidirectionalA objects.
-    theAs.remove(pTheAs);
-    // The association is set in both directions because within the UML model it is defined to be bidirectional.
-    // In case that one side will be removed from the association the other side will also be removed.
-    if (pTheAs.getTransientBs().contains(this) == true) {
-      pTheAs.removeFromTransientBs((BidirectionalB) this);
-    }
-  }
-
-  /**
-   * Method removes all objects from {@link #theAs}.
-   */
-  public void clearTheAs( ) {
-    // Remove all objects from association "theAs".
-    Collection<BidirectionalA> lTheAs = new HashSet<BidirectionalA>(theAs);
-    Iterator<BidirectionalA> lIterator = lTheAs.iterator();
-    while (lIterator.hasNext()) {
-      // As association is bidirectional we have to clear it in both directions.
-      this.removeFromTheAs(lIterator.next());
-    }
   }
 
   @Override

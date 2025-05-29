@@ -42,7 +42,7 @@ public abstract class ReadonlyDefaultPOJOBase {
    * <br/>
    * <b>Default Value:</b> <code>true</code>
    */
-  private Boolean booleanDefault;
+  private final Boolean booleanDefault;
 
   /**
    * Initialize object using the passed builder.
@@ -180,16 +180,6 @@ public abstract class ReadonlyDefaultPOJOBase {
    */
   public Boolean getBooleanDefault( ) {
     return booleanDefault;
-  }
-
-  /**
-   * Method sets attribute {@link #booleanDefault}.<br/>
-   *
-   * @param pBooleanDefault Value to which {@link #booleanDefault} should be set.
-   */
-  public void setBooleanDefault( Boolean pBooleanDefault ) {
-    // Assign value to attribute
-    booleanDefault = pBooleanDefault;
   }
 
   /**

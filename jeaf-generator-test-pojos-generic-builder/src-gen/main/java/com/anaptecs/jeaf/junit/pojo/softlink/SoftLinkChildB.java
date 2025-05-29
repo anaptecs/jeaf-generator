@@ -5,7 +5,6 @@
  */
 package com.anaptecs.jeaf.junit.pojo.softlink;
 
-import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Objects;
@@ -15,7 +14,6 @@ import javax.annotation.Generated;
 import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
-import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
@@ -44,21 +42,21 @@ public class SoftLinkChildB extends SoftLinkParent {
    * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #heyBrother} is
    * <code>com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkChildA</code><br/>
    */
-  private String heyBrotherID;
+  private final String heyBrotherID;
 
   /**
    * <p/>
    * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #softLinkPartners} is
    * <code>com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkPartner</code><br/>
    */
-  private Set<String> softLinkPartnerIDs;
+  private final Set<String> softLinkPartnerIDs;
 
   /**
    * <p/>
    * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #oneLink} is
    * <code>com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkPartner</code><br/>
    */
-  private SoftLinkID oneLinkID;
+  private final SoftLinkID oneLinkID;
 
   /**
    * Initialize object using the passed builder.
@@ -256,22 +254,6 @@ public class SoftLinkChildB extends SoftLinkParent {
   }
 
   /**
-   * Method sets association {@link #heyBrother}.<br/>
-   *
-   * @param pHeyBrother Value to which {@link #heyBrother} should be set.
-   */
-  public void setHeyBrotherID( String pHeyBrother ) {
-    heyBrotherID = pHeyBrother;
-  }
-
-  /**
-   * Method unsets {@link #heyBrother}.
-   */
-  public final void unsetHeyBrotherID( ) {
-    heyBrotherID = null;
-  }
-
-  /**
    * Method returns association {@link #softLinkPartners}.<br/>
    * <p/>
    * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #softLinkPartners} is
@@ -286,54 +268,6 @@ public class SoftLinkChildB extends SoftLinkParent {
   }
 
   /**
-   * Method adds the passed object to {@link #softLinkPartners}.
-   *
-   * @param pSoftLinkPartners Object that should be added to {@link #softLinkPartners}. The parameter must not be null.
-   */
-  public void addToSoftLinkPartnerIDs( String pSoftLinkPartners ) {
-    // Check parameter "pSoftLinkPartners" for invalid value null.
-    Check.checkInvalidParameterNull(pSoftLinkPartners, "pSoftLinkPartners");
-    // Add passed object to collection of associated SoftLinkPartner objects.
-    softLinkPartnerIDs.add(pSoftLinkPartners);
-  }
-
-  /**
-   * Method adds all passed objects to {@link #softLinkPartners}.
-   *
-   * @param pSoftLinkPartners Collection with all objects that should be added to {@link #softLinkPartners}. The
-   * parameter must not be null.
-   */
-  public void addToSoftLinkPartnerIDs( Collection<String> pSoftLinkPartners ) {
-    // Check parameter "pSoftLinkPartners" for invalid value null.
-    Check.checkInvalidParameterNull(pSoftLinkPartners, "pSoftLinkPartners");
-    // Add all passed objects.
-    for (String lNextObject : pSoftLinkPartners) {
-      this.addToSoftLinkPartnerIDs(lNextObject);
-    }
-  }
-
-  /**
-   * Method removes the passed object from {@link #softLinkPartners}.
-   *
-   * @param pSoftLinkPartners Object that should be removed from {@link #softLinkPartners}. The parameter must not be
-   * null.
-   */
-  public void removeFromSoftLinkPartnerIDs( String pSoftLinkPartners ) {
-    // Check parameter for invalid value null.
-    Check.checkInvalidParameterNull(pSoftLinkPartners, "pSoftLinkPartners");
-    // Remove passed object from collection of associated SoftLinkPartner objects.
-    softLinkPartnerIDs.remove(pSoftLinkPartners);
-  }
-
-  /**
-   * Method removes all objects from {@link #softLinkPartners}.
-   */
-  public void clearSoftLinkPartnerIDs( ) {
-    // Remove all objects from association "softLinkPartners".
-    softLinkPartnerIDs.clear();
-  }
-
-  /**
    * Method returns association {@link #oneLink}.<br/>
    * <p/>
    * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #oneLink} is
@@ -343,22 +277,6 @@ public class SoftLinkChildB extends SoftLinkParent {
    */
   public SoftLinkID getOneLinkID( ) {
     return oneLinkID;
-  }
-
-  /**
-   * Method sets association {@link #oneLink}.<br/>
-   *
-   * @param pOneLink Value to which {@link #oneLink} should be set.
-   */
-  public void setOneLinkID( SoftLinkID pOneLink ) {
-    oneLinkID = pOneLink;
-  }
-
-  /**
-   * Method unsets {@link #oneLink}.
-   */
-  public final void unsetOneLinkID( ) {
-    oneLinkID = null;
   }
 
   @Override

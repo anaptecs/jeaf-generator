@@ -31,10 +31,10 @@ public abstract class PlainPOJOBase {
    */
   public static final String WORLD = "world";
 
-  private String hello;
+  private final String hello;
 
   @PositiveOrZero
-  private Integer world;
+  private final Integer world;
 
   /**
    * Initialize object using the passed builder.
@@ -158,32 +158,12 @@ public abstract class PlainPOJOBase {
   }
 
   /**
-   * Method sets attribute {@link #hello}.<br/>
-   *
-   * @param pHello Value to which {@link #hello} should be set.
-   */
-  public void setHello( String pHello ) {
-    // Assign value to attribute
-    hello = pHello;
-  }
-
-  /**
    * Method returns attribute {@link #world}.<br/>
    *
    * @return {@link Integer} Value to which {@link #world} is set.
    */
   public Integer getWorld( ) {
     return world;
-  }
-
-  /**
-   * Method sets attribute {@link #world}.<br/>
-   *
-   * @param pWorld Value to which {@link #world} should be set.
-   */
-  public void setWorld( Integer pWorld ) {
-    // Assign value to attribute
-    world = pWorld;
   }
 
   /**

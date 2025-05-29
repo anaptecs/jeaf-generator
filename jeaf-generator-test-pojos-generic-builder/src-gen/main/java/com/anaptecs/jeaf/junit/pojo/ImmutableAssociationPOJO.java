@@ -6,7 +6,6 @@
 package com.anaptecs.jeaf.junit.pojo;
 
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Objects;
@@ -61,10 +60,10 @@ public class ImmutableAssociationPOJO {
   private final ImmutableChildPOJO immutableChildPOJO;
 
   @Deprecated
-  private Set<ImmutableChildPOJO> deprecatedRefs;
+  private final Set<ImmutableChildPOJO> deprecatedRefs;
 
   @Deprecated
-  private ChildPOJO deprecatedRef;
+  private final ChildPOJO deprecatedRef;
 
   /**
    * Initialize object using the passed builder.
@@ -358,57 +357,6 @@ public class ImmutableAssociationPOJO {
   }
 
   /**
-   * Method adds the passed object to {@link #deprecatedRefs}.
-   *
-   * @param pDeprecatedRefs Object that should be added to {@link #deprecatedRefs}. The parameter must not be null.
-   */
-  @Deprecated
-  public void addToDeprecatedRefs( ImmutableChildPOJO pDeprecatedRefs ) {
-    // Check parameter "pDeprecatedRefs" for invalid value null.
-    Check.checkInvalidParameterNull(pDeprecatedRefs, "pDeprecatedRefs");
-    // Add passed object to collection of associated ImmutableChildPOJO objects.
-    deprecatedRefs.add(pDeprecatedRefs);
-  }
-
-  /**
-   * Method adds all passed objects to {@link #deprecatedRefs}.
-   *
-   * @param pDeprecatedRefs Collection with all objects that should be added to {@link #deprecatedRefs}. The parameter
-   * must not be null.
-   */
-  @Deprecated
-  public void addToDeprecatedRefs( Collection<ImmutableChildPOJO> pDeprecatedRefs ) {
-    // Check parameter "pDeprecatedRefs" for invalid value null.
-    Check.checkInvalidParameterNull(pDeprecatedRefs, "pDeprecatedRefs");
-    // Add all passed objects.
-    for (ImmutableChildPOJO lNextObject : pDeprecatedRefs) {
-      this.addToDeprecatedRefs(lNextObject);
-    }
-  }
-
-  /**
-   * Method removes the passed object from {@link #deprecatedRefs}.<br/>
-   *
-   * @param pDeprecatedRefs Object that should be removed from {@link #deprecatedRefs}. The parameter must not be null.
-   */
-  @Deprecated
-  public void removeFromDeprecatedRefs( ImmutableChildPOJO pDeprecatedRefs ) {
-    // Check parameter for invalid value null.
-    Check.checkInvalidParameterNull(pDeprecatedRefs, "pDeprecatedRefs");
-    // Remove passed object from collection of associated ImmutableChildPOJO objects.
-    deprecatedRefs.remove(pDeprecatedRefs);
-  }
-
-  /**
-   * Method removes all objects from {@link #deprecatedRefs}.
-   */
-  @Deprecated
-  public void clearDeprecatedRefs( ) {
-    // Remove all objects from association "deprecatedRefs".
-    deprecatedRefs.clear();
-  }
-
-  /**
    * Method returns association {@link #deprecatedRef}.<br/>
    *
    * @return {@link ChildPOJO} Value to which {@link #deprecatedRef} is set.
@@ -416,24 +364,6 @@ public class ImmutableAssociationPOJO {
   @Deprecated
   public ChildPOJO getDeprecatedRef( ) {
     return deprecatedRef;
-  }
-
-  /**
-   * Method sets association {@link #deprecatedRef}.<br/>
-   *
-   * @param pDeprecatedRef Value to which {@link #deprecatedRef} should be set.
-   */
-  @Deprecated
-  public void setDeprecatedRef( ChildPOJO pDeprecatedRef ) {
-    deprecatedRef = pDeprecatedRef;
-  }
-
-  /**
-   * Method unsets {@link #deprecatedRef}.
-   */
-  @Deprecated
-  public final void unsetDeprecatedRef( ) {
-    deprecatedRef = null;
   }
 
   @Override

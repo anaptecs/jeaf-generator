@@ -32,7 +32,7 @@ public class ImmutablePOJO {
 
   private final String name;
 
-  private Integer something;
+  private final Integer something;
 
   /**
    * Initialize object using the passed builder.
@@ -188,16 +188,6 @@ public class ImmutablePOJO {
    */
   public Integer getSomething( ) {
     return something;
-  }
-
-  /**
-   * Method sets attribute {@link #something}.<br/>
-   *
-   * @param pSomething Value to which {@link #something} should be set.
-   */
-  public void setSomething( Integer pSomething ) {
-    // Assign value to attribute
-    something = pSomething;
   }
 
   @Override

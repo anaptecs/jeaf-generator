@@ -6,7 +6,6 @@
 package com.anaptecs.jeaf.junit.pojo.softlink;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
@@ -46,7 +45,7 @@ public class SoftLinkPartner {
    * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #theBackLink} is
    * <code>com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkParent</code><br/>
    */
-  private String theBackLinkID;
+  private final String theBackLinkID;
 
   /**
    * <p/>
@@ -60,7 +59,7 @@ public class SoftLinkPartner {
    * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #longLinks} is
    * <code>com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkChildA</code><br/>
    */
-  private List<Long> longLinkIDs;
+  private final List<Long> longLinkIDs;
 
   /**
    * Initialize object using the passed builder.
@@ -259,22 +258,6 @@ public class SoftLinkPartner {
   }
 
   /**
-   * Method sets association {@link #theBackLink}.<br/>
-   *
-   * @param pTheBackLink Value to which {@link #theBackLink} should be set.
-   */
-  public void setTheBackLinkID( String pTheBackLink ) {
-    theBackLinkID = pTheBackLink;
-  }
-
-  /**
-   * Method unsets {@link #theBackLink}.
-   */
-  public final void unsetTheBackLinkID( ) {
-    theBackLinkID = null;
-  }
-
-  /**
    * Method returns association {@link #childLinks}.<br/>
    * <p/>
    * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #childLinks} is
@@ -300,53 +283,6 @@ public class SoftLinkPartner {
   public List<Long> getLongLinkIDs( ) {
     // Return all SoftLinkChildA objects as unmodifiable collection.
     return Collections.unmodifiableList(longLinkIDs);
-  }
-
-  /**
-   * Method adds the passed object to {@link #longLinks}.
-   *
-   * @param pLongLinks Object that should be added to {@link #longLinks}. The parameter must not be null.
-   */
-  public void addToLongLinkIDs( Long pLongLinks ) {
-    // Check parameter "pLongLinks" for invalid value null.
-    Check.checkInvalidParameterNull(pLongLinks, "pLongLinks");
-    // Add passed object to collection of associated SoftLinkChildA objects.
-    longLinkIDs.add(pLongLinks);
-  }
-
-  /**
-   * Method adds all passed objects to {@link #longLinks}.
-   *
-   * @param pLongLinks Collection with all objects that should be added to {@link #longLinks}. The parameter must not be
-   * null.
-   */
-  public void addToLongLinkIDs( Collection<Long> pLongLinks ) {
-    // Check parameter "pLongLinks" for invalid value null.
-    Check.checkInvalidParameterNull(pLongLinks, "pLongLinks");
-    // Add all passed objects.
-    for (Long lNextObject : pLongLinks) {
-      this.addToLongLinkIDs(lNextObject);
-    }
-  }
-
-  /**
-   * Method removes the passed object from {@link #longLinks}.
-   *
-   * @param pLongLinks Object that should be removed from {@link #longLinks}. The parameter must not be null.
-   */
-  public void removeFromLongLinkIDs( Long pLongLinks ) {
-    // Check parameter for invalid value null.
-    Check.checkInvalidParameterNull(pLongLinks, "pLongLinks");
-    // Remove passed object from collection of associated SoftLinkChildA objects.
-    longLinkIDs.remove(pLongLinks);
-  }
-
-  /**
-   * Method removes all objects from {@link #longLinks}.
-   */
-  public void clearLongLinkIDs( ) {
-    // Remove all objects from association "longLinks".
-    longLinkIDs.clear();
   }
 
   @Override

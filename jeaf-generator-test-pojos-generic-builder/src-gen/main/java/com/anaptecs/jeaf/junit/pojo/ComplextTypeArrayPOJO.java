@@ -25,7 +25,7 @@ public class ComplextTypeArrayPOJO {
    */
   public static final String PLAINPOJOS = "plainPOJOs";
 
-  private PlainPOJO[] plainPOJOs;
+  private final PlainPOJO[] plainPOJOs;
 
   /**
    * Initialize object using the passed builder.
@@ -164,22 +164,6 @@ public class ComplextTypeArrayPOJO {
       lReturnValue = null;
     }
     return lReturnValue;
-  }
-
-  /**
-   * Method sets attribute {@link #plainPOJOs}.<br/>
-   *
-   * @param pPlainPOJOs Value to which {@link #plainPOJOs} should be set.
-   */
-  public void setPlainPOJOs( PlainPOJO[] pPlainPOJOs ) {
-    // Assign value to attribute
-    if (pPlainPOJOs != null) {
-      plainPOJOs = new PlainPOJO[pPlainPOJOs.length];
-      System.arraycopy(pPlainPOJOs, 0, plainPOJOs, 0, pPlainPOJOs.length);
-    }
-    else {
-      plainPOJOs = null;
-    }
   }
 
   @Override

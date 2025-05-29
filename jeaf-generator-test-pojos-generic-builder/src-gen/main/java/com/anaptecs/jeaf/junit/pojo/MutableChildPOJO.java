@@ -29,7 +29,7 @@ public class MutableChildPOJO extends ImmutablePOJOParent {
    */
   public static final String BOOLEANDEFAULT = "booleanDefault";
 
-  private Integer writeable;
+  private final Integer writeable;
 
   /**
    * <br/>
@@ -200,16 +200,6 @@ public class MutableChildPOJO extends ImmutablePOJOParent {
    */
   public Integer getWriteable( ) {
     return writeable;
-  }
-
-  /**
-   * Method sets attribute {@link #writeable}.<br/>
-   *
-   * @param pWriteable Value to which {@link #writeable} should be set.
-   */
-  public void setWriteable( Integer pWriteable ) {
-    // Assign value to attribute
-    writeable = pWriteable;
   }
 
   /**

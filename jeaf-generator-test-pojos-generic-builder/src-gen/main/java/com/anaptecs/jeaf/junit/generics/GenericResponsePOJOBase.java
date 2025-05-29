@@ -7,7 +7,6 @@ package com.anaptecs.jeaf.junit.generics;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
@@ -41,12 +40,12 @@ public abstract class GenericResponsePOJOBase<T> {
   public static final String VALUE = "value";
 
   @JsonSetter(nulls = Nulls.SKIP)
-  private List<Message> errors;
+  private final List<Message> errors;
 
   @JsonSetter(nulls = Nulls.SKIP)
-  private List<Message> warnings;
+  private final List<Message> warnings;
 
-  private T value;
+  private final T value;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
@@ -55,6 +54,7 @@ public abstract class GenericResponsePOJOBase<T> {
   protected GenericResponsePOJOBase( ) {
     errors = new ArrayList<>();
     warnings = new ArrayList<>();
+    value = null;
   }
 
   /**
@@ -225,52 +225,6 @@ public abstract class GenericResponsePOJOBase<T> {
   }
 
   /**
-   * Method adds the passed object to {@link #errors}.
-   *
-   * @param pErrors Object that should be added to {@link #errors}. The parameter must not be null.
-   */
-  public void addToErrors( Message pErrors ) {
-    // Check parameter "pErrors" for invalid value null.
-    Check.checkInvalidParameterNull(pErrors, "pErrors");
-    // Add passed object to collection of associated Message objects.
-    errors.add(pErrors);
-  }
-
-  /**
-   * Method adds all passed objects to {@link #errors}.
-   *
-   * @param pErrors Collection with all objects that should be added to {@link #errors}. The parameter must not be null.
-   */
-  public void addToErrors( Collection<Message> pErrors ) {
-    // Check parameter "pErrors" for invalid value null.
-    Check.checkInvalidParameterNull(pErrors, "pErrors");
-    // Add all passed objects.
-    for (Message lNextObject : pErrors) {
-      this.addToErrors(lNextObject);
-    }
-  }
-
-  /**
-   * Method removes the passed object from {@link #errors}.<br/>
-   *
-   * @param pErrors Object that should be removed from {@link #errors}. The parameter must not be null.
-   */
-  public void removeFromErrors( Message pErrors ) {
-    // Check parameter for invalid value null.
-    Check.checkInvalidParameterNull(pErrors, "pErrors");
-    // Remove passed object from collection of associated Message objects.
-    errors.remove(pErrors);
-  }
-
-  /**
-   * Method removes all objects from {@link #errors}.
-   */
-  public void clearErrors( ) {
-    // Remove all objects from association "errors".
-    errors.clear();
-  }
-
-  /**
    * Method returns association {@link #warnings}.<br/>
    *
    * @return {@link List<Message>} Value to which {@link #warnings} is set. The method never returns null and the
@@ -282,69 +236,12 @@ public abstract class GenericResponsePOJOBase<T> {
   }
 
   /**
-   * Method adds the passed object to {@link #warnings}.
-   *
-   * @param pWarnings Object that should be added to {@link #warnings}. The parameter must not be null.
-   */
-  public void addToWarnings( Message pWarnings ) {
-    // Check parameter "pWarnings" for invalid value null.
-    Check.checkInvalidParameterNull(pWarnings, "pWarnings");
-    // Add passed object to collection of associated Message objects.
-    warnings.add(pWarnings);
-  }
-
-  /**
-   * Method adds all passed objects to {@link #warnings}.
-   *
-   * @param pWarnings Collection with all objects that should be added to {@link #warnings}. The parameter must not be
-   * null.
-   */
-  public void addToWarnings( Collection<Message> pWarnings ) {
-    // Check parameter "pWarnings" for invalid value null.
-    Check.checkInvalidParameterNull(pWarnings, "pWarnings");
-    // Add all passed objects.
-    for (Message lNextObject : pWarnings) {
-      this.addToWarnings(lNextObject);
-    }
-  }
-
-  /**
-   * Method removes the passed object from {@link #warnings}.<br/>
-   *
-   * @param pWarnings Object that should be removed from {@link #warnings}. The parameter must not be null.
-   */
-  public void removeFromWarnings( Message pWarnings ) {
-    // Check parameter for invalid value null.
-    Check.checkInvalidParameterNull(pWarnings, "pWarnings");
-    // Remove passed object from collection of associated Message objects.
-    warnings.remove(pWarnings);
-  }
-
-  /**
-   * Method removes all objects from {@link #warnings}.
-   */
-  public void clearWarnings( ) {
-    // Remove all objects from association "warnings".
-    warnings.clear();
-  }
-
-  /**
    * Method returns attribute {@link #value}.<br/>
    *
    * @return {@link T} Value to which {@link #value} is set.
    */
   public T getValue( ) {
     return value;
-  }
-
-  /**
-   * Method sets attribute {@link #value}.<br/>
-   *
-   * @param pValue Value to which {@link #value} should be set.
-   */
-  public void setValue( T pValue ) {
-    // Assign value to attribute
-    value = pValue;
   }
 
   @Override

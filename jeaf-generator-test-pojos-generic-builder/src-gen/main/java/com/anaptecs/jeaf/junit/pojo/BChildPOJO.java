@@ -30,9 +30,9 @@ public class BChildPOJO extends BParentPOJO {
    */
   public static final String CHILDATTRIBUTE = "childAttribute";
 
-  private byte weirdAttribute;
+  private final byte weirdAttribute;
 
-  private Integer childAttribute;
+  private final Integer childAttribute;
 
   /**
    * Initialize object using the passed builder.
@@ -187,32 +187,12 @@ public class BChildPOJO extends BParentPOJO {
   }
 
   /**
-   * Method sets attribute {@link #weirdAttribute}.<br/>
-   *
-   * @param pWeirdAttribute Value to which {@link #weirdAttribute} should be set.
-   */
-  public void setWeirdAttribute( byte pWeirdAttribute ) {
-    // Assign value to attribute
-    weirdAttribute = pWeirdAttribute;
-  }
-
-  /**
    * Method returns attribute {@link #childAttribute}.<br/>
    *
    * @return {@link Integer} Value to which {@link #childAttribute} is set.
    */
   public Integer getChildAttribute( ) {
     return childAttribute;
-  }
-
-  /**
-   * Method sets attribute {@link #childAttribute}.<br/>
-   *
-   * @param pChildAttribute Value to which {@link #childAttribute} should be set.
-   */
-  public void setChildAttribute( Integer pChildAttribute ) {
-    // Assign value to attribute
-    childAttribute = pChildAttribute;
   }
 
   @Override

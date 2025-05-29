@@ -40,12 +40,12 @@ public class ParentPOJO {
    */
   public static final String HELLO = "hello";
 
-  private String parentAttribute;
+  private final String parentAttribute;
 
   @Deprecated
-  private byte weirdAttribute;
+  private final byte weirdAttribute;
 
-  private String hello;
+  private final String hello;
 
   /**
    * Initialize object using the passed builder.
@@ -213,16 +213,6 @@ public class ParentPOJO {
   }
 
   /**
-   * Method sets attribute {@link #parentAttribute}.<br/>
-   *
-   * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
-   */
-  public void setParentAttribute( String pParentAttribute ) {
-    // Assign value to attribute
-    parentAttribute = pParentAttribute;
-  }
-
-  /**
    * Method returns attribute {@link #weirdAttribute}.<br/>
    *
    * @return byte Value to which {@link #weirdAttribute} is set.
@@ -233,33 +223,12 @@ public class ParentPOJO {
   }
 
   /**
-   * Method sets attribute {@link #weirdAttribute}.<br/>
-   *
-   * @param pWeirdAttribute Value to which {@link #weirdAttribute} should be set.
-   */
-  @Deprecated
-  public void setWeirdAttribute( byte pWeirdAttribute ) {
-    // Assign value to attribute
-    weirdAttribute = pWeirdAttribute;
-  }
-
-  /**
    * Method returns attribute {@link #hello}.<br/>
    *
    * @return {@link String} Value to which {@link #hello} is set.
    */
   public String getHello( ) {
     return hello;
-  }
-
-  /**
-   * Method sets attribute {@link #hello}.<br/>
-   *
-   * @param pHello Value to which {@link #hello} should be set.
-   */
-  public void setHello( String pHello ) {
-    // Assign value to attribute
-    hello = pHello;
   }
 
   @Override
