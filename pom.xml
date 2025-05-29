@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>com.anaptecs.jeaf</groupId>
 		<artifactId>jeaf-plugin-project-parent</artifactId>
-		<version>1.12.0</version>
+		<version>1.12.1-SNAPSHOT</version>
 	</parent>
 
 	<groupId>com.anaptecs.jeaf.generator</groupId>
@@ -63,8 +63,8 @@
 		<equalsverifier.version>3.19.4</equalsverifier.version>
 		<flexmark.version>0.64.8</flexmark.version>
 		
-		<java.source.version>11</java.source.version>
-		<java.target.version>11</java.target.version>
+		<java.source.version>17</java.source.version>
+		<java.target.version>17</java.target.version>
 		
 	</properties>
 
@@ -120,13 +120,13 @@
 	
 	<profiles>
 		<profile>
-			<id>active-on-jdk-11</id>
+			<id>active-on-jdk-17</id>
 			<activation>
-				<jdk>11</jdk>
+				<jdk>17</jdk>
 			</activation>
 			<properties>
-				<spring.boot.version>2.7.17</spring.boot.version>
-				<spring.core.version>5.3.29</spring.core.version>
+				<spring.boot.version>3.5.0</spring.boot.version>
+				<spring.core.version>6.2.7</spring.core.version>
 				<spring.security.version>5.7.10</spring.security.version>
 			</properties>
 		</profile>

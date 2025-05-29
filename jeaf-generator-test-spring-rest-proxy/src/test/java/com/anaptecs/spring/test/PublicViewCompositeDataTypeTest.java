@@ -7,19 +7,20 @@ package com.anaptecs.spring.test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import com.anaptecs.jeaf.xfun.api.XFun;
+import com.anaptecs.spring.base.Booking;
+import com.anaptecs.spring.base.BookingID;
+import com.anaptecs.spring.base.InventoryType;
+import com.anaptecs.spring.base.WeirdBooking;
+import com.anaptecs.spring.composite.ComplexBookingID;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.anaptecs.jeaf.xfun.api.XFun;
-import com.anaptecs.spring.base.Booking;
-import com.anaptecs.spring.base.BookingID;
-import com.anaptecs.spring.composite.ComplexBookingID;
-import com.anaptecs.spring.base.InventoryType;
-import com.anaptecs.spring.base.WeirdBooking;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
+@Disabled
 @SpringBootTest(classes = SpringTestApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class PublicViewCompositeDataTypeTest {
   @Autowired

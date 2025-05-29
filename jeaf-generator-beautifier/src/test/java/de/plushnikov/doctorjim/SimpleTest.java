@@ -1,15 +1,14 @@
 package de.plushnikov.doctorjim;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
-import org.apache.commons.io.IOUtils;
-import org.junit.Before;
-import org.junit.Test;
-
 import com.github.javaparser.ParseException;
+import org.apache.commons.io.IOUtils;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 /**
  * Simple testsuit for Importbeautifier tests
@@ -19,7 +18,7 @@ import com.github.javaparser.ParseException;
 public class SimpleTest {
   private ImportProcessor mProcessor;
 
-  @Before
+  @BeforeEach
   public void setUp( ) {
     mProcessor = new ImportProcessor();
   }
@@ -273,11 +272,11 @@ public class SimpleTest {
    * @throws IOException if any errors occured
    * @throws ParseException if any errors occured
    */
-  private void testBeautifikation( String pFilename ) throws Exception {
+  private void testBeautifikation(String pFilename) throws Exception {
     this.testBeautifikation(pFilename, false);
   }
 
-  private void testBeautifikation( String pFilename, boolean pRemoveUnusedImports ) throws Exception {
+  private void testBeautifikation(String pFilename, boolean pRemoveUnusedImports) throws Exception {
     String lInput = IOUtils.toString(this.getClass().getResourceAsStream(pFilename + ".java_input"));
     String lExpectedOutput = IOUtils.toString(this.getClass().getResourceAsStream(pFilename + ".java_output"));
 

@@ -26,18 +26,11 @@ public abstract class AccountBase {
   public static final String IBAN = "iban";
 
   /**
-   * Constant for the name of attribute "owner".
-   */
-  public static final String OWNER = "owner";
-
-  /**
    * Constant for the name of attribute "currency".
    */
   public static final String CURRENCY = "currency";
 
   private int iban;
-
-  private transient Customer owner;
 
   private Currency currency;
 
@@ -154,35 +147,6 @@ public abstract class AccountBase {
   }
 
   /**
-   * Method returns association {@link #owner}.<br/>
-   *
-   * @return {@link Customer} Value to which {@link #owner} is set.
-   */
-  public Customer getOwner( ) {
-    return owner;
-  }
-
-  /**
-   * Method sets association {@link #owner}.<br/>
-   *
-   * @param pOwner Value to which {@link #owner} should be set.
-   */
-  void setOwner( Customer pOwner ) {
-    // Release already referenced object before setting a new association.
-    if (owner != null) {
-      owner.removeFromAccounts((Account) this);
-    }
-    owner = pOwner;
-  }
-
-  /**
-   * Method unsets {@link #owner}.
-   */
-  final void unsetOwner( ) {
-    owner = null;
-  }
-
-  /**
    * Method returns attribute {@link #currency}.<br/>
    *
    * @return {@link Currency} Value to which {@link #currency} is set.
@@ -209,7 +173,7 @@ public abstract class AccountBase {
    *
    * @param pCurrency Value to which {@link #currency} should be set.
    *
-   * @return {@link Account}
+   * @return {@link com.anaptecs.jeaf.accounting.impl.pojo.Account}
    */
   public static Account of( int pIban, Currency pCurrency ) {
     Account.Builder lBuilder = Account.builder();

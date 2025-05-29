@@ -5,16 +5,15 @@
  */
 package com.anaptecs.jeaf.fwk.tools.message.generator.test;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import java.lang.reflect.Field;
-
-import org.junit.jupiter.api.Test;
 
 import com.anaptecs.jeaf.xfun.api.XFun;
 import com.anaptecs.jeaf.xfun.api.errorhandling.ErrorCode;
 import com.jeaf.sample.yourapp.MyMessages;
+import org.junit.jupiter.api.Test;
 
 public class MessageConstantsTest {
   @SuppressWarnings("deprecation")

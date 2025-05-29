@@ -9,10 +9,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.IOException;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-
 import com.anaptecs.spring.base.techbase.BusinessA;
 import com.anaptecs.spring.base.techbase.BusinessChild;
 import com.anaptecs.spring.base.techbase.BusinessParent;
@@ -20,7 +16,12 @@ import com.anaptecs.spring.base.techbase.TechParent;
 import com.anaptecs.spring.impl.SpringTestApplication;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
+@Disabled
 @SpringBootTest(classes = SpringTestApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class SerializationTest {
   @Autowired

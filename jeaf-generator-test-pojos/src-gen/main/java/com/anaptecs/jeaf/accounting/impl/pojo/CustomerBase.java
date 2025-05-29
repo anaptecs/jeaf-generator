@@ -9,7 +9,6 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Objects;
 import java.util.Set;
 
@@ -61,18 +60,11 @@ public abstract class CustomerBase extends Partner {
   private Set<Account> accounts;
 
   /**
-   * Attribute is required for correct handling of bidirectional associations in case of deserialization.
-   */
-  private transient boolean accountsBackReferenceInitialized;
-
-  /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   protected CustomerBase( ) {
     accounts = new HashSet<>();
-    // Bidirectional back reference is not yet set up correctly
-    accountsBackReferenceInitialized = false;
   }
 
   /**
@@ -89,16 +81,10 @@ public abstract class CustomerBase extends Partner {
     email = pBuilder.email;
     if (pBuilder.accounts != null) {
       accounts = pBuilder.accounts;
-      // As association is bidirectional we also have to set it in the other direction.
-      for (Account lNext : accounts) {
-        lNext.setOwner((Customer) this);
-      }
     }
     else {
       accounts = new HashSet<>();
     }
-    // Bidirectional back reference is set up correctly as a builder is used.
-    accountsBackReferenceInitialized = true;
   }
 
   /**
@@ -292,14 +278,6 @@ public abstract class CustomerBase extends Partner {
    * returned collection is unmodifiable.
    */
   public Set<Account> getAccounts( ) {
-    // Due to restrictions in JSON serialization / deserialization bi-directional associations need a special handling
-    // after an object was deserialized.
-    if (accountsBackReferenceInitialized == false) {
-      accountsBackReferenceInitialized = true;
-      for (Account lNext : accounts) {
-        lNext.setOwner((Customer) this);
-      }
-    }
     // Return all Account objects as unmodifiable collection.
     return Collections.unmodifiableSet(accounts);
   }
@@ -312,16 +290,8 @@ public abstract class CustomerBase extends Partner {
   public void addToAccounts( Account pAccounts ) {
     // Check parameter "pAccounts" for invalid value null.
     Check.checkInvalidParameterNull(pAccounts, "pAccounts");
-    // Since this is not a many-to-many association the association to which the passed object belongs, has to be
-    // released.
-    pAccounts.unsetOwner();
     // Add passed object to collection of associated Account objects.
     accounts.add(pAccounts);
-    // The association is set in both directions because within the UML model it is defined to be bidirectional.
-    // In case that one side will be removed from the association the other side will also be removed.
-    if (pAccounts != null && this.equals(pAccounts.getOwner()) == false) {
-      pAccounts.setOwner((Customer) this);
-    }
   }
 
   /**
@@ -349,11 +319,6 @@ public abstract class CustomerBase extends Partner {
     Check.checkInvalidParameterNull(pAccounts, "pAccounts");
     // Remove passed object from collection of associated Account objects.
     accounts.remove(pAccounts);
-    // The association is set in both directions because within the UML model it is defined to be bidirectional.
-    // In case that one side will be removed from the association the other side will also be removed.
-    if (this.equals(pAccounts.getOwner()) == true) {
-      pAccounts.unsetOwner();
-    }
   }
 
   /**
@@ -361,12 +326,7 @@ public abstract class CustomerBase extends Partner {
    */
   public void clearAccounts( ) {
     // Remove all objects from association "accounts".
-    Collection<Account> lAccounts = new HashSet<Account>(accounts);
-    Iterator<Account> lIterator = lAccounts.iterator();
-    while (lIterator.hasNext()) {
-      // As association is bidirectional we have to clear it in both directions.
-      this.removeFromAccounts(lIterator.next());
-    }
+    accounts.clear();
   }
 
   /**
@@ -379,7 +339,7 @@ public abstract class CustomerBase extends Partner {
    *
    * @param pEmail Value to which {@link #email} should be set.
    *
-   * @return {@link Customer}
+   * @return {@link com.anaptecs.jeaf.accounting.impl.pojo.Customer}
    */
   public static Customer of( String pName, String pFirstName, String pEmail ) {
     Customer.Builder lBuilder = Customer.builder();

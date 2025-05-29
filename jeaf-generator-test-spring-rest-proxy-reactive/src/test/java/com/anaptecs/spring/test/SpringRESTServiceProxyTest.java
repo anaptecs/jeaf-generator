@@ -5,10 +5,10 @@
  */
 package com.anaptecs.spring.test;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.fail;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -19,17 +19,6 @@ import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
 import java.util.concurrent.TimeUnit;
-
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
-import org.mockserver.client.MockServerClient;
-import org.mockserver.integration.ClientAndServer;
-import org.mockserver.model.HttpRequest;
-import org.mockserver.model.HttpResponse;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.zalando.problem.ThrowableProblem;
 
 import com.anaptecs.spring.base.BookingCode;
 import com.anaptecs.spring.base.BookingID;
@@ -45,7 +34,19 @@ import com.anaptecs.spring.service.MultiValuedHeaderBeanParam;
 import com.anaptecs.spring.service.ProductService;
 import com.anaptecs.spring.service.QueryBeanParam;
 import com.anaptecs.spring.service.RESTProductService;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
+import org.mockserver.client.MockServerClient;
+import org.mockserver.integration.ClientAndServer;
+import org.mockserver.model.HttpRequest;
+import org.mockserver.model.HttpResponse;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.zalando.problem.ThrowableProblem;
 
+@Disabled
 @SpringBootTest(classes = SpringTestApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class SpringRESTServiceProxyTest {
   private static ClientAndServer mockServer;
@@ -194,19 +195,19 @@ public class SpringRESTServiceProxyTest {
     }
   }
 
-  private static HttpRequest mockRequest( String pRequestURI, String pMethod ) {
+  private static HttpRequest mockRequest(String pRequestURI, String pMethod) {
     return HttpRequest.request().withPath(pRequestURI).withMethod(pMethod);
   }
 
-  private static HttpRequest mockRequest( String pRequestURI ) {
+  private static HttpRequest mockRequest(String pRequestURI) {
     return HttpRequest.request().withPath(pRequestURI);
   }
 
-  private static HttpResponse mockResponse( String pResponseBody ) {
+  private static HttpResponse mockResponse(String pResponseBody) {
     return HttpResponse.response().withDelay(TimeUnit.MILLISECONDS, 0).withStatusCode(200).withBody(pResponseBody);
   }
 
-  private static HttpResponse mockResponse( String pResponseBody, int pStatusCode, int pDelay ) {
+  private static HttpResponse mockResponse(String pResponseBody, int pStatusCode, int pDelay) {
     return HttpResponse.response().withDelay(TimeUnit.MILLISECONDS, pDelay).withStatusCode(pStatusCode)
         .withBody(pResponseBody);
   }

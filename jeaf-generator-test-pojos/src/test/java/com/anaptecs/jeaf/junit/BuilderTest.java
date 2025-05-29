@@ -5,11 +5,10 @@
  */
 package com.anaptecs.jeaf.junit;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import java.util.Collections;
 import java.util.Currency;
@@ -25,32 +24,28 @@ import org.junit.jupiter.api.Test;
 class BuilderTest {
   @Test
   void testBuilderForPOJOsWithCustomImplementation( ) {
-    Customer lDonald = Customer.builder().setFirstName("Donald").setName("Duck").build();
-    Account lAccount01 = Account.builder().setCurrency(Currency.getInstance("CHF")).build();
+    Account lAccount01 = Account.builder()
+        .setCurrency(Currency.getInstance("CHF")).build();
+    Customer lDonald = Customer.builder()
+        .setFirstName("Donald")
+        .setName("Duck")
+        .addToAccounts(lAccount01)
+        .build();
 
-    assertEquals(lDonald, lAccount01.getOwner());
     assertEquals(true, lDonald.getAccounts().contains(lAccount01));
     assertEquals(1, lDonald.getAccounts().size());
 
     Account lAccount02 = Account.builder().setCurrency(Currency.getInstance("EUR")).build();
     lDonald.addToAccounts(lAccount02);
-    assertEquals(lDonald, lAccount02.getOwner());
     assertEquals(true, lDonald.getAccounts().contains(lAccount01));
     assertEquals(true, lDonald.getAccounts().contains(lAccount02));
     assertEquals(2, lDonald.getAccounts().size());
 
     // Transfer Account to Daisy.
     Customer lDaisy = Customer.builder().setFirstName("Daisy").setName("Duck").build();
-    assertEquals(lDaisy, lAccount01.getOwner());
-    assertFalse(lDonald.getAccounts().contains(lAccount01));
-    assertTrue(lDaisy.getAccounts().contains(lAccount01));
+    assertFalse(lDaisy.getAccounts().contains(lAccount01));
 
-    // Test null handling
-    assertEquals(null, lAccount02.getOwner());
-
-    assertEquals(null, lAccount01.getOwner());
-
-    assertEquals(0, lDonald.getAccounts().size());
+    assertEquals(2, lDonald.getAccounts().size());
     assertEquals(0, lDaisy.getAccounts().size());
   }
 

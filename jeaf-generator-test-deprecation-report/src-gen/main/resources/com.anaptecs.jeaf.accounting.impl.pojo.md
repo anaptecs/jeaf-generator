@@ -17,7 +17,6 @@
 | Name | Type | Multiplicity | Constraints | Description |
 |------|------|:------------:|-------------|-------------|
 | `iban` | `int` | `1..1` |  |  |
-| `owner` | [`Customer`](#customer) | `1..1` | `transient`<br> |  |
 | `currency` | `java.util.Currency` | `1..1` |  |  |
 
 <br>
