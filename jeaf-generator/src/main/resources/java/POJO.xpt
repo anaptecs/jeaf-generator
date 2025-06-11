@@ -209,7 +209,7 @@
 					 * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
 					 */
 					«IF this.hasGenericBuilder()»
-					protected «name»Base(«this.genericBuilderName()»<?,?> pBuilder) {
+					protected «name»Base(«this.abstractBuilderName()»<?,?> pBuilder) {
 					«ELSE»
 					protected «name»Base(BuilderBase«this.getTemplateParams()» pBuilder) {
 					«ENDIF»
@@ -322,7 +322,11 @@
 					  
 					«EXPAND java::Builder::StaticBuilderMethods FOR this»
 					«EXPAND java::Helper::GenerateValueOfForOpenAPIDataType FOR this»
-					«IF this.hasGenericBuilder() == false»
+					«IF this.hasGenericBuilder()»
+						«IF this.customizeGenericBuilder»
+							«EXPAND java::GenericBuilder::GenerateCustomizableGenericBuilder»
+						«ENDIF»
+					«ELSE»
 						«EXPAND java::Builder::GenerateBuilderImpl»
 					«ENDIF»
 					

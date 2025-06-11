@@ -46,12 +46,6 @@ public abstract class StopPlaceRef extends PlaceRef {
     protected StopPlaceRefBuilder( StopPlaceRef pObject ) {
       super(pObject);
     }
-
-    @Override
-    /**
-     * Method returns instance of this builder. Operation is part of genric builder pattern.
-     */
-    protected abstract B self( );
   }
 
   @Override

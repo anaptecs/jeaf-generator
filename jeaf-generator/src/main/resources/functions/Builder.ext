@@ -1,6 +1,7 @@
 extension java::Naming;
 extension functions::SystemProperties;
 extension functions::Class;
+extension java::GeneratorCommons;
 
 
 cached boolean hasGenericBuilder(uml::Class class):
@@ -12,6 +13,14 @@ cached String genericBuilderName(uml::Class class):
 cached String genericBuilderImplName(uml::Class class):
 	class.name + "BuilderImpl";	
 	
+cached String abstractBuilderName(uml::Class class):
+	if class.hasGenericBuilder() == false
+	then "Builder"
+	else
+		if class.customizeGenericBuilder()
+		then class.genericBuilderName()+"Base"
+		else class.genericBuilderName();
+
 cached String builderName(uml::Class class):
 	if class.hasGenericBuilder()
 	then class.genericBuilderName()

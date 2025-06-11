@@ -106,12 +106,6 @@ public abstract class PersonBase extends Partner {
       return this.self();
     }
 
-    @Override
-    /**
-     * Method returns instance of this builder. Operation is part of genric builder pattern.
-     */
-    protected abstract B self( );
-
     /**
      * Method creates a new instance of class Person. The object will be initialized with the values of the builder.
      *

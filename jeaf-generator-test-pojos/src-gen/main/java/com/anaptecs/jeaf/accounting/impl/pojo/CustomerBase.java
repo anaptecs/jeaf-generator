@@ -123,6 +123,19 @@ public abstract class CustomerBase extends Partner {
     }
 
     /**
+     * Method sets attribute {@link #tags}.<br/>
+     *
+     * @param pTags Value to which {@link #tags} should be set.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    @Override
+    public BuilderBase setTags( String pTags ) {
+      // Call super class implementation.
+      super.setTags(pTags);
+      return this;
+    }
+
+    /**
      * Method sets attribute {@link #name}.<br/>
      *
      * @param pName Value to which {@link #name} should be set.
@@ -333,6 +346,8 @@ public abstract class CustomerBase extends Partner {
    * Convenience method to create new instance of class Customer.
    *
    *
+   * @param pTags Value to which {@link #tags} should be set.
+   *
    * @param pName Value to which {@link #name} should be set.
    *
    * @param pFirstName Value to which {@link #firstName} should be set.
@@ -341,8 +356,9 @@ public abstract class CustomerBase extends Partner {
    *
    * @return {@link com.anaptecs.jeaf.accounting.impl.pojo.Customer}
    */
-  public static Customer of( String pName, String pFirstName, String pEmail ) {
+  public static Customer of( String pTags, String pName, String pFirstName, String pEmail ) {
     Customer.Builder lBuilder = Customer.builder();
+    lBuilder.setTags(pTags);
     lBuilder.setName(pName);
     lBuilder.setFirstName(pFirstName);
     lBuilder.setEmail(pEmail);

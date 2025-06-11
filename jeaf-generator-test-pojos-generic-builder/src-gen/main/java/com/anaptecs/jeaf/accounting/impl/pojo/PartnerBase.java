@@ -5,6 +5,8 @@
  */
 package com.anaptecs.jeaf.accounting.impl.pojo;
 
+import java.util.Objects;
+
 import javax.annotation.Generated;
 
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -19,13 +21,22 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 @JsonSubTypes({ @JsonSubTypes.Type(value = Customer.class, name = "Customer") })
 public abstract class PartnerBase {
   /**
+   * Constant for the name of attribute "tags".
+   */
+  public static final String TAGS = "tags";
+
+  private final String tags;
+
+  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected PartnerBase( PartnerBuilder<?, ?> pBuilder ) {
+  protected PartnerBase( PartnerBuilderBase<?, ?> pBuilder ) {
     // Ensure that builder is not null.
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
+    // Read attribute values from builder.
+    tags = pBuilder.tags;
   }
 
   /**
@@ -33,28 +44,58 @@ public abstract class PartnerBase {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class PartnerBuilder<T extends Partner, B extends PartnerBuilder<T, B>> {
+  public static abstract class PartnerBuilderBase<T extends Partner, B extends PartnerBuilderBase<T, B>> {
+    private String tags;
+
     /**
-     * Use {@link PartnerBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link PartnerBuilderBase#builder()} instead of private constructor to create new builder.
      */
-    protected PartnerBuilder( ) {
+    protected PartnerBuilderBase( ) {
     }
 
     /**
-     * Use {@link PartnerBuilder#builder(Partner)} instead of private constructor to create new builder.
+     * Use {@link PartnerBuilderBase#builder(Partner)} instead of private constructor to create new builder.
      */
-    protected PartnerBuilder( PartnerBase pObject ) {
+    protected PartnerBuilderBase( PartnerBase pObject ) {
+      if (pObject != null) {
+        // Read attribute values from passed object.
+        this.setTags(pObject.tags);
+      }
     }
 
     /**
-     * Method returns instance of this builder. Operation is part of genric builder pattern.
+     * Method sets attribute {@link #tags}.<br/>
+     *
+     * @param pTags Value to which {@link #tags} should be set.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    public B setTags( String pTags ) {
+      // Assign value to attribute
+      tags = pTags;
+      return this.self();
+    }
+
+    /**
+     * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
     protected abstract B self( );
   }
 
+  /**
+   * Method returns attribute {@link #tags}.<br/>
+   *
+   * @return {@link String} Value to which {@link #tags} is set.
+   */
+  public String getTags( ) {
+    return tags;
+  }
+
   @Override
   public int hashCode( ) {
-    return 1;
+    final int lPrime = 31;
+    int lResult = 1;
+    lResult = lPrime * lResult + Objects.hashCode(tags);
+    return lResult;
   }
 
   @Override
@@ -70,7 +111,8 @@ public abstract class PartnerBase {
       lEquals = false;
     }
     else {
-      lEquals = true;
+      PartnerBase lOther = (PartnerBase) pObject;
+      lEquals = Objects.equals(tags, lOther.tags);
     }
     return lEquals;
   }
@@ -85,6 +127,10 @@ public abstract class PartnerBase {
     StringBuilder lBuilder = new StringBuilder();
     lBuilder.append(pIndent);
     lBuilder.append(this.getClass().getName());
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("tags: ");
+    lBuilder.append(tags);
     lBuilder.append(System.lineSeparator());
     return lBuilder;
   }

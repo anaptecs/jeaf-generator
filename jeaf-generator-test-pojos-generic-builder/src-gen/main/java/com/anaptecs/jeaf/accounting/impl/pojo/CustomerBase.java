@@ -61,7 +61,7 @@ public abstract class CustomerBase extends Partner {
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected CustomerBase( CustomerBuilder<?, ?> pBuilder ) {
+  protected CustomerBase( CustomerBuilderBase<?, ?> pBuilder ) {
     // Call constructor of super class.
     super(pBuilder);
     // Read attribute values from builder.
@@ -81,7 +81,7 @@ public abstract class CustomerBase extends Partner {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class CustomerBuilder<T extends Customer, B extends CustomerBuilder<T, B>>
+  public static abstract class CustomerBuilderBase<T extends Customer, B extends CustomerBuilderBase<T, B>>
       extends PartnerBuilder<T, B> {
     @NotBlank
     private String name;
@@ -95,16 +95,16 @@ public abstract class CustomerBase extends Partner {
     private Set<Account> accounts;
 
     /**
-     * Use {@link CustomerBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link CustomerBuilderBase#builder()} instead of private constructor to create new builder.
      */
-    protected CustomerBuilder( ) {
+    protected CustomerBuilderBase( ) {
       super();
     }
 
     /**
-     * Use {@link CustomerBuilder#builder(Customer)} instead of private constructor to create new builder.
+     * Use {@link CustomerBuilderBase#builder(Customer)} instead of private constructor to create new builder.
      */
-    protected CustomerBuilder( CustomerBase pObject ) {
+    protected CustomerBuilderBase( CustomerBase pObject ) {
       super(pObject);
       if (pObject != null) {
         // Read attribute values from passed object.
@@ -184,12 +184,6 @@ public abstract class CustomerBase extends Partner {
       return this.self();
     }
 
-    @Override
-    /**
-     * Method returns instance of this builder. Operation is part of genric builder pattern.
-     */
-    protected abstract B self( );
-
     /**
      * Method creates a new instance of class Customer. The object will be initialized with the values of the builder.
      *
@@ -211,7 +205,7 @@ public abstract class CustomerBase extends Partner {
     }
   }
 
-  static final class CustomerBuilderImpl extends CustomerBuilder<Customer, CustomerBuilderImpl> {
+  static final class CustomerBuilderImpl extends Customer.CustomerBuilder<Customer, CustomerBuilderImpl> {
     protected CustomerBuilderImpl( ) {
     }
 
@@ -272,6 +266,8 @@ public abstract class CustomerBase extends Partner {
    * Convenience method to create new instance of class Customer.
    *
    *
+   * @param pTags Value to which {@link #tags} should be set.
+   *
    * @param pName Value to which {@link #name} should be set.
    *
    * @param pFirstName Value to which {@link #firstName} should be set.
@@ -280,8 +276,9 @@ public abstract class CustomerBase extends Partner {
    *
    * @return {@link com.anaptecs.jeaf.accounting.impl.pojo.Customer}
    */
-  public static Customer of( String pName, String pFirstName, String pEmail ) {
-    CustomerBuilder<?, ?> lBuilder = Customer.builder();
+  public static Customer of( String pTags, String pName, String pFirstName, String pEmail ) {
+    Customer.CustomerBuilder<?, ?> lBuilder = Customer.builder();
+    lBuilder.setTags(pTags);
     lBuilder.setName(pName);
     lBuilder.setFirstName(pFirstName);
     lBuilder.setEmail(pEmail);
@@ -383,7 +380,7 @@ public abstract class CustomerBase extends Partner {
    *
    * @return {@link Builder} New builder that can be used to create new Customer objects. The method never returns null.
    */
-  public CustomerBuilder<?, ?> toBuilder( ) {
+  public Customer.CustomerBuilder<?, ?> toBuilder( ) {
     return new CustomerBuilderImpl((Customer) this);
   }
 }

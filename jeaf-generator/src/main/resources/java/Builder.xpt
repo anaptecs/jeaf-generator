@@ -785,7 +785,7 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
 	   * @return {@link Builder} New builder that can be used to create new «this.name» objects. The method never returns null.
 	   */
 	  «IF this.hasGenericBuilder()»
-	  public «this.builderName()»<?, ?> toBuilder( ) {
+	  public «IF this.customizeGenericBuilder()»«name».«ENDIF»«this.builderName()»<?, ?> toBuilder( ) {
 	    return new «this.builderImplName()»((«name»«this.getTemplateParams()»)this);
 	  }
 	  «ELSE»

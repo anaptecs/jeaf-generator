@@ -76,12 +76,6 @@ public class SoftLinkChildA extends SoftLinkParent {
       super(pObject);
     }
 
-    @Override
-    /**
-     * Method returns instance of this builder. Operation is part of genric builder pattern.
-     */
-    protected abstract B self( );
-
     /**
      * Method creates a new instance of class SoftLinkChildA. The object will be initialized with the values of the
      * builder.

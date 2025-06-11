@@ -79,12 +79,6 @@ public abstract class ChildA extends ParentClass {
       childAAttribute = pChildAAttribute;
       return this.self();
     }
-
-    @Override
-    /**
-     * Method returns instance of this builder. Operation is part of genric builder pattern.
-     */
-    protected abstract B self( );
   }
 
   /**

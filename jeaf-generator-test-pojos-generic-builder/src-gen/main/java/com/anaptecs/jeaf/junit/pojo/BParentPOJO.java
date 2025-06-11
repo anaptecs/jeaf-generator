@@ -103,7 +103,7 @@ public class BParentPOJO {
     }
 
     /**
-     * Method returns instance of this builder. Operation is part of genric builder pattern.
+     * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
     protected abstract B self( );
 

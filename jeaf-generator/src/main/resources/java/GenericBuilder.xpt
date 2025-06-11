@@ -26,7 +26,7 @@
 @com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder(withPrefix = "set")
 @com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown = true)
 «ENDIF»
-public static abstract class «this.builderName()»<T extends «name», B extends «this.builderName()»<T, B>> «IF superClass.isEmpty == false»extends «superClass.get(0).builderName()»<T, B>«ENDIF» {
+public static abstract class «this.abstractBuilderName()»<T extends «name», B extends «this.abstractBuilderName()»<T, B>> «IF superClass.isEmpty == false»extends «superClass.get(0).builderName()»<T, B>«ENDIF» {
 	«REM»Generate instance variables for each property«ENDREM»
 	«IF needsToImplementIdentifiable() == true»
 	/**
@@ -50,16 +50,16 @@ public static abstract class «this.builderName()»<T extends «name», B extend
 	«EXPAND java::Helper::GenerateCustomHeadersField»
 
     /**
-     * Use {@link «this.builderName()»#builder()} instead of private constructor to create new builder.
+     * Use {@link «this.abstractBuilderName()»#builder()} instead of private constructor to create new builder.
      */
-    protected «this.builderName()»( ) {
+    protected «this.abstractBuilderName()»( ) {
       «IF superClass.isEmpty == false»super();«ENDIF»
     }
 
     /**
-     * Use {@link «this.builderName()»#builder(«this.name»)} instead of private constructor to create new builder.
+     * Use {@link «this.abstractBuilderName()»#builder(«this.name»)} instead of private constructor to create new builder.
      */
-    protected «this.builderName()»( «this.name»«IF this.requiresCustomImplementationForClass()»Base«ENDIF» «this.getTemplateParams()» pObject ) {
+    protected «this.abstractBuilderName()»( «this.name»«IF this.requiresCustomImplementationForClass()»Base«ENDIF» «this.getTemplateParams()» pObject ) {
       «IF superClass.isEmpty == false»super(pObject);«ENDIF»
       «IF this.isCompositeDataType() || this.ownedAttribute.select(e|e.isPropertySuppressed() == false).isEmpty == false»
       if (pObject != null) {
@@ -101,7 +101,7 @@ public static abstract class «this.builderName()»<T extends «name», B extend
 		 * 
 		 * @return String String representation of this object.
 		 */
-		public «this.builderName()»«this.getTemplateParams()» set«this.getCompositeDateTypePublicFieldName().toFirstUpper()»( String p«this.getCompositeDateTypePublicFieldName().toFirstUpper()» ) {
+		public «this.abstractBuilderName()»«this.getTemplateParams()» set«this.getCompositeDateTypePublicFieldName().toFirstUpper()»( String p«this.getCompositeDateTypePublicFieldName().toFirstUpper()» ) {
 		  «this.getCompositeDateTypePublicFieldName()» = p«this.getCompositeDateTypePublicFieldName().toFirstUpper()»;
 		  return this;
 		}		
@@ -119,7 +119,7 @@ public static abstract class «this.builderName()»<T extends «name», B extend
        * @param pHeaderName Name of the HTTP header. The parameter must not be null,
        * @param pHeaderValue Value of the http header the parameter may be null.
        */
-      public «this.builderName()» addCustomHeader( String pHeaderName, String pHeaderValue ) {
+      public «this.abstractBuilderName()» addCustomHeader( String pHeaderName, String pHeaderValue ) {
         if (pHeaderName != null) {
           customHeaders.put(pHeaderName, pHeaderValue);
           return this;
@@ -132,11 +132,12 @@ public static abstract class «this.builderName()»<T extends «name», B extend
 	
     «EXPAND jeafgenerator::api::ClassExtensionPoint::CustomBuilderOperations»
     
-    «IF this.superClass.isEmpty == false»@Override«ENDIF»
+    «IF this.superClass.isEmpty»
     /**
-     * Method returns instance of this builder. Operation is part of genric builder pattern.
-     */
+     * Method returns instance of this builder. Operation is part of generic builder pattern.
+     */    
     protected abstract B self( );
+    «ENDIF»
 
 	«IF this.isAbstract == false»
 	/**
@@ -166,7 +167,7 @@ public static abstract class «this.builderName()»<T extends «name», B extend
 	«ENDIF»
 }
 	«IF this.isAbstract == false»
-static final class «this.genericBuilderImplName()» extends «this.genericBuilderName()»<«name», «this.genericBuilderImplName()»> {
+static final class «this.genericBuilderImplName()» extends «IF this.customizeGenericBuilder()»«name».«ENDIF»«this.genericBuilderName()»<«name», «this.genericBuilderImplName()»> {
 	protected «this.genericBuilderImplName()»() {
 	}
 	
@@ -196,4 +197,34 @@ static final class «this.genericBuilderImplName()» extends «this.genericBuild
     }
 }
 	«ENDIF»
+«ENDDEFINE»
+
+«DEFINE GenerateCustomizableGenericBuilder FOR uml::Class»
+/**
+ * Class implements builder to create a new instance of class <code>«this.name»</code>.
+ *
+ * This class is intended to contain additional custom implementations inside the builder. 
+ */
+«IF generateJacksonAnnotations()»
+@com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder(withPrefix = "set")
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown = true)
+«ENDIF»
+public static abstract class «this.builderName()»<T extends «name», B extends «this.builderName()»<T, B>> extends «this.abstractBuilderName()»<T, B> {
+    /**
+     * Use {@link «this.builderName()»#builder()} instead of private constructor to create new builder.
+     */
+    protected «this.builderName()»( ) {
+      super();
+    }
+
+    /**
+     * Use {@link «this.builderName()»#builder(«this.name»)} instead of private constructor to create new builder.
+     */
+    protected «this.builderName()»( «this.name»«this.getTemplateParams()» pObject ) {
+      super(pObject);
+    }
+    
+    // TODO: Add your custom builder operations here.
+}
+
 «ENDDEFINE»

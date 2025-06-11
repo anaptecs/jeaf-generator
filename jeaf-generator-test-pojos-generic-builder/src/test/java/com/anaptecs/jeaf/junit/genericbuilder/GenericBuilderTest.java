@@ -10,6 +10,7 @@ import com.anaptecs.jeaf.accounting.impl.pojo.Account;
 import com.anaptecs.jeaf.accounting.impl.pojo.Booking;
 import com.anaptecs.jeaf.accounting.impl.pojo.Booking.BookingBuilder;
 import com.anaptecs.jeaf.accounting.impl.pojo.Customer;
+import com.anaptecs.jeaf.accounting.impl.pojo.Customer.CustomerBuilder;
 import com.anaptecs.jeaf.json.api.JSON;
 import com.anaptecs.jeaf.json.api.JSONTools;
 import org.junit.jupiter.api.Test;
@@ -102,5 +103,7 @@ public class GenericBuilderTest {
     Booking lReadBooking = lTools.read(lJSON, Booking.class);
     assertEquals(lBooking, lReadBooking);
 
+    CustomerBuilder<?, ?> lBuilder = Customer.builder();
+    Customer lObject = Customer.builder().setTags("").setEmail("hello@anaptecs.de").build();
   }
 }

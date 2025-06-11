@@ -5,6 +5,9 @@
  */
 package com.anaptecs.jeaf.accounting.impl.pojo;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+
 public class Customer extends CustomerBase {
   /**
    * Initialize object. Nothing special to do.
@@ -20,6 +23,31 @@ public class Customer extends CustomerBase {
    */
   public static CustomerBuilder<?, ?> builder( ) {
     return new CustomerBuilderImpl();
+  }
+
+  /**
+   * Class implements builder to create a new instance of class <code>Customer</code>.
+   *
+   * This class is intended to contain additional custom implementations inside the builder.
+   */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  public static abstract class CustomerBuilder<T extends Customer, B extends CustomerBuilder<T, B>>
+      extends CustomerBuilderBase<T, B> {
+    /**
+     * Use {@link CustomerBuilder#builder()} instead of private constructor to create new builder.
+     */
+    protected CustomerBuilder( ) {
+      super();
+    }
+
+    /**
+     * Use {@link CustomerBuilder#builder(Customer)} instead of private constructor to create new builder.
+     */
+    protected CustomerBuilder( Customer pObject ) {
+      super(pObject);
+    }
+    // TODO: Add your custom builder operations here.
   }
 
   /**

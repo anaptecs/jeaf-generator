@@ -49,7 +49,7 @@
 	           «FOREACH this.getAllPropertiesFromHierarchy().select(e|e.isTransient() == false) AS property SEPARATOR ", "»"«property.name»"«ENDFOREACH»
 	        })
 	    «ENDIF»
-	    «IF this.hasGenericBuilder() && this.isAbstract == false»
+	    «IF this.hasGenericBuilder() && this.isAbstract == false && this.isOpenAPIDataType() == false && this.hasCustomSerialization() == false»
 	    @com.fasterxml.jackson.databind.annotation.JsonDeserialize(builder = «this.fqn()»«ownerClassSuffix».«this.builderImplName()».class)
 	    «ENDIF»
 	«ENDIF»

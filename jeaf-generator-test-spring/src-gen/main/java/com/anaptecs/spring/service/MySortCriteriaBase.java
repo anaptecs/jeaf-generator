@@ -11,7 +11,6 @@ import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @JsonAutoDetect(
@@ -20,7 +19,6 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
     isGetterVisibility = JsonAutoDetect.Visibility.NONE,
     setterVisibility = JsonAutoDetect.Visibility.NONE,
     creatorVisibility = JsonAutoDetect.Visibility.ANY)
-@JsonDeserialize(builder = MySortCriteriaBase.MySortCriteriaBuilderImpl.class)
 public abstract class MySortCriteriaBase {
   /**
    * Constant for the name of attribute "sortOrder".
@@ -97,7 +95,7 @@ public abstract class MySortCriteriaBase {
     }
 
     /**
-     * Method returns instance of this builder. Operation is part of genric builder pattern.
+     * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
     protected abstract B self( );
 

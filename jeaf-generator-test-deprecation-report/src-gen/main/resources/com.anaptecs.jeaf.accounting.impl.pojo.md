@@ -78,6 +78,7 @@
 
 | Name | Type | Multiplicity | Constraints | Description |
 |------|------|:------------:|-------------|-------------|
+| `tags` | `String` | `1..1` |  |  |
 
 <br>
 
