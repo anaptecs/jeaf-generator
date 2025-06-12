@@ -95,8 +95,10 @@ public class Stop {
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static abstract class StopBuilder<T extends Stop, B extends StopBuilder<T, B>> {
+    @JsonAlias({ "bavName", "stopName" })
     private String name;
 
+    @JsonProperty("_links")
     private List<LinkObject> links;
 
     /**

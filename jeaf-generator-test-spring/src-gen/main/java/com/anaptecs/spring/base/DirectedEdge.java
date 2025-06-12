@@ -105,6 +105,7 @@ public class DirectedEdge {
      */
     private Stop end;
 
+    @JsonProperty("previousName")
     private String link;
 
     /**

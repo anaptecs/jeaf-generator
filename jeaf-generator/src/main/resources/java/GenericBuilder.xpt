@@ -147,7 +147,14 @@ public static abstract class «this.abstractBuilderName()»<T extends «name», 
 	 * @return «this.name» Created object. The method never returns null.
 	 */
     «IF this.hasNonAbtractParent()»@Override«ENDIF»
+    «IF this.customizeGenericBuilder()»
+    public T build() {
+        // Method already has an implementation as otherwise it would not be possible to overwrite it in custom builder implementation. Unfortunately this is a limitation of abstract static inner classes that are used to implement generic builder pattern.
+        throw new UnsupportedOperationException("This operation has to be overwritten by subclasses.");
+    };
+    «ELSE»
     public abstract T build( );
+    «ENDIF»
 	 
 	 
 	«IF isTargetRuntimeJEAF()»
@@ -180,6 +187,7 @@ static final class «this.genericBuilderImplName()» extends «IF this.customize
       return this;
     }
 
+    «IF this.customizeGenericBuilder() == false»
     @Override
     public «name» build( ) {
 	  «IF this.validateOnBuild() || generateObjectValidationInBuilder()»
@@ -195,6 +203,7 @@ static final class «this.genericBuilderImplName()» extends «IF this.customize
 	  return new «this.name»«this.getTemplateParams()»(this);
 	  «ENDIF»
     }
+    «ENDIF»
 }
 	«ENDIF»
 «ENDDEFINE»
@@ -223,6 +232,26 @@ public static abstract class «this.builderName()»<T extends «name», B extend
     protected «this.builderName()»( «this.name»«this.getTemplateParams()» pObject ) {
       super(pObject);
     }
+    
+    «IF this.isAbstract == false»
+    @SuppressWarnings("unchecked")
+    @Override
+    public T build( ) {
+	  «IF this.validateOnBuild() || generateObjectValidationInBuilder()»
+	       «this.name»«this.getTemplateParams()» lObject = new «this.name»«this.getTemplateParams()»(this);
+	       «IF isTargetRuntimeJEAF()»
+	       com.anaptecs.jeaf.tools.api.validation.ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+	       «ENDIF»
+	       «IF isTargetRuntimeSpring()»
+	       com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+	       «ENDIF»
+	       return (T) lObject;
+	  «ELSE»
+	  return (T) new «this.name»«this.getTemplateParams()»(this);
+	  «ENDIF»
+    }
+    «ENDIF»
+    
     
     // TODO: Add your custom builder operations here.
 }

@@ -47,6 +47,12 @@ public class Customer extends CustomerBase {
     protected CustomerBuilder( Customer pObject ) {
       super(pObject);
     }
+
+    @SuppressWarnings("unchecked")
+    @Override
+    public T build( ) {
+      return (T) new Customer(this);
+    }
     // TODO: Add your custom builder operations here.
   }
 

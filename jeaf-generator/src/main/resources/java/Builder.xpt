@@ -400,6 +400,7 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
 // processing the properties
 «DEFINE DoBuilderPropertyDeclaration FOR Property»
 	«EXPAND java::Helper::GenerateDeprecationAnnotation-»
+	«IF this.owner.asClass().hasGenericBuilder()»«EXPAND java::Jackson::JSONAlias»«ENDIF»
     «EXPAND Validation::ValidationAnnotation»
 	private «this.fqn()» «name»«IF this.isRealInitValue() && this.isMultivalued()== false » = «IF this.isJEAFEnumerationProperty()»«this.type.name».«ENDIF»«this.initValue()»«ENDIF»;
 «ENDDEFINE»
@@ -407,6 +408,7 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
 «DEFINE DoBuilderAssociationPropertyDeclaration FOR Property»
 	«IF isNavigable()»
 		«EXPAND java::Helper::GenerateDeprecationAnnotation-»
+		«IF this.owner.asClass().hasGenericBuilder()»«EXPAND java::Jackson::JSONAlias»«ENDIF»
 		«IF isMultivalued()»
 			private «this.fqn()» «asInstanceVar()»;
 		«ELSE»
@@ -417,6 +419,7 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
 
 «DEFINE SoftLinkBuilderPropertyDeclaration FOR SoftLink»
         «EXPAND java::Helper::GenerateDeprecationAnnotation-»
+        «IF this.owner.asClass().hasGenericBuilder()»«EXPAND java::Jackson::JSONAlias»«ENDIF»
         «EXPAND Validation::ValidationAnnotation»
         «IF isMultivalued()»
             «IF generateValidationAnnotationsForAssociationsFromMultiplicity() && isStatic == false && isTransient() == false && this.hasValidationStereotype() == false && lower > 0»@«getEnterpriseJavaPackage()».validation.constraints.Size(min = «lower»)«ENDIF»

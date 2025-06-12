@@ -189,7 +189,12 @@ public abstract class CustomerBase extends Partner {
      *
      * @return Customer Created object. The method never returns null.
      */
-    public abstract T build( );
+    public T build( ) {
+      // Method already has an implementation as otherwise it would not be possible to overwrite it in custom builder
+      // implementation. Unfortunately this is a limitation of abstract static inner classes that are used to implement
+      // generic builder pattern.
+      throw new UnsupportedOperationException("This operation has to be overwritten by subclasses.");
+    };
 
     /**
      * Method creates a new validated instance of class Customer. The object will be initialized with the values of the
@@ -216,11 +221,6 @@ public abstract class CustomerBase extends Partner {
     @Override
     protected CustomerBuilderImpl self( ) {
       return this;
-    }
-
-    @Override
-    public Customer build( ) {
-      return new Customer(this);
     }
   }
 
