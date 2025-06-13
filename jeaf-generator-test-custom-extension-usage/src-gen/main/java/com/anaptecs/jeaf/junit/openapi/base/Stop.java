@@ -19,10 +19,12 @@ import javax.validation.constraints.PositiveOrZero;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
 @Generated("Before Class Declaration. Here an annontation cloud be added.")
+@JEAFCustomAnnotationTest
 public class Stop extends Object implements ServiceObject {
   /**
    * Default serial version uid.
@@ -32,25 +34,30 @@ public class Stop extends Object implements ServiceObject {
   /**
    * Constant for the name of attribute "name".
    */
+  @JEAFCustomAnnotationTest
   public static final String NAME = "name";
 
   /**
    * Constant for the name of attribute "links".
    */
+  @JEAFCustomAnnotationTest
   public static final String LINKS = "links";
 
   /**
    * Constant for the name of attribute "index".
    */
+  @JEAFCustomAnnotationTest
   public static final String INDEX = "index";
 
   /**
    * Constant for the name of attribute "theSoftLink".
    */
+  @JEAFCustomAnnotationTest
   public static final String THESOFTLINK = "theSoftLink";
 
   // "String"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private String name;
 
   // "String"
@@ -58,6 +65,7 @@ public class Stop extends Object implements ServiceObject {
 
   // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private List<LinkObject> links;
 
   // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
@@ -65,6 +73,7 @@ public class Stop extends Object implements ServiceObject {
 
   // "byte"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   @Max(value = 32)
   @PositiveOrZero
   private byte index;
@@ -79,6 +88,7 @@ public class Stop extends Object implements ServiceObject {
    * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #theSoftLink} is
    * <code>LinkObject</code><br/>
    */
+  @JEAFCustomAnnotationTest
   private SoftLink theSoftLink;
 
   // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
@@ -132,9 +142,11 @@ public class Stop extends Object implements ServiceObject {
   /**
    * Class implements builder to create a new instance of class <code>Stop</code>.
    */
+  @JEAFCustomAnnotationTest
   public static class Builder {
     // "String"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private String name;
 
     // "String"
@@ -142,6 +154,7 @@ public class Stop extends Object implements ServiceObject {
 
     // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private List<LinkObject> links;
 
     // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
@@ -149,6 +162,7 @@ public class Stop extends Object implements ServiceObject {
 
     // "byte"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     @Max(value = 32)
     @PositiveOrZero
     private byte index;
@@ -163,6 +177,7 @@ public class Stop extends Object implements ServiceObject {
      */
     // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private SoftLink theSoftLink;
 
     // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
@@ -193,6 +208,7 @@ public class Stop extends Object implements ServiceObject {
      * @param pName Value to which {@link #name} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setName( String pName ) {
       // Assign value to attribute
       name = pName;
@@ -211,6 +227,7 @@ public class Stop extends Object implements ServiceObject {
      * @param pLinks Collection to which {@link #links} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setLinks( List<LinkObject> pLinks ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pLinks != null) {
@@ -228,6 +245,7 @@ public class Stop extends Object implements ServiceObject {
      * @param pLinks Array of objects that should be added to {@link #links}. The parameter may be null.
      * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder addToLinks( LinkObject... pLinks ) {
       if (pLinks != null) {
         if (links == null) {
@@ -250,6 +268,7 @@ public class Stop extends Object implements ServiceObject {
      * @param pIndex Value to which {@link #index} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setIndex( byte pIndex ) {
       // Assign value to attribute
       index = pIndex;
@@ -268,6 +287,7 @@ public class Stop extends Object implements ServiceObject {
      * @param pTheSoftLink Value to which {@link #theSoftLink} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setTheSoftLink( SoftLink pTheSoftLink ) {
       theSoftLink = pTheSoftLink;
       return this;
@@ -308,6 +328,7 @@ public class Stop extends Object implements ServiceObject {
    *
    * @return {@link String} Value to which {@link #name} is set.
    */
+  @JEAFCustomAnnotationTest
   public String getName( ) {
     return name;
   }
@@ -317,6 +338,7 @@ public class Stop extends Object implements ServiceObject {
    *
    * @param pName Value to which {@link #name} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setName( String pName ) {
     // Assign value to attribute
     name = pName;
@@ -337,6 +359,7 @@ public class Stop extends Object implements ServiceObject {
    * @return {@link List<LinkObject>} Value to which {@link #links} is set. The method never returns null and the
    * returned collection is unmodifiable.
    */
+  @JEAFCustomAnnotationTest
   public List<LinkObject> getLinks( ) {
     // Return all LinkObject objects as unmodifiable collection.
     return Collections.unmodifiableList(links);
@@ -347,6 +370,7 @@ public class Stop extends Object implements ServiceObject {
    *
    * @param pLinks Object that should be added to {@link #links}. The parameter must not be null.
    */
+  @JEAFCustomAnnotationTest
   public void addToLinks( LinkObject pLinks ) {
     // Check parameter "pLinks" for invalid value null.
     Check.checkInvalidParameterNull(pLinks, "pLinks");
@@ -359,6 +383,7 @@ public class Stop extends Object implements ServiceObject {
    *
    * @param pLinks Collection with all objects that should be added to {@link #links}. The parameter must not be null.
    */
+  @JEAFCustomAnnotationTest
   public void addToLinks( Collection<LinkObject> pLinks ) {
     // Check parameter "pLinks" for invalid value null.
     Check.checkInvalidParameterNull(pLinks, "pLinks");
@@ -373,6 +398,7 @@ public class Stop extends Object implements ServiceObject {
    *
    * @param pLinks Object that should be removed from {@link #links}. The parameter must not be null.
    */
+  @JEAFCustomAnnotationTest
   public void removeFromLinks( LinkObject pLinks ) {
     // Check parameter for invalid value null.
     Check.checkInvalidParameterNull(pLinks, "pLinks");
@@ -383,6 +409,7 @@ public class Stop extends Object implements ServiceObject {
   /**
    * Method removes all objects from {@link #links}.
    */
+  @JEAFCustomAnnotationTest
   public void clearLinks( ) {
     // Remove all objects from association "links".
     links.clear();
@@ -402,6 +429,7 @@ public class Stop extends Object implements ServiceObject {
    *
    * @return byte Value to which {@link #index} is set.
    */
+  @JEAFCustomAnnotationTest
   public byte getIndex( ) {
     return index;
   }
@@ -411,6 +439,7 @@ public class Stop extends Object implements ServiceObject {
    *
    * @param pIndex Value to which {@link #index} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setIndex( byte pIndex ) {
     // Assign value to attribute
     index = pIndex;
@@ -433,6 +462,7 @@ public class Stop extends Object implements ServiceObject {
    *
    * @return {@link SoftLink} Value to which {@link #theSoftLink} is set.
    */
+  @JEAFCustomAnnotationTest
   public SoftLink getTheSoftLink( ) {
     return theSoftLink;
   }
@@ -442,6 +472,7 @@ public class Stop extends Object implements ServiceObject {
    *
    * @param pTheSoftLink Value to which {@link #theSoftLink} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setTheSoftLink( SoftLink pTheSoftLink ) {
     theSoftLink = pTheSoftLink;
   }
@@ -449,6 +480,7 @@ public class Stop extends Object implements ServiceObject {
   /**
    * Method unsets {@link #theSoftLink}.
    */
+  @JEAFCustomAnnotationTest
   public final void unsetTheSoftLink( ) {
     theSoftLink = null;
   }

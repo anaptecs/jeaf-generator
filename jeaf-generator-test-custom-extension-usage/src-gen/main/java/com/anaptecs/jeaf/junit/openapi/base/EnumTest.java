@@ -11,10 +11,12 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
 @Generated("Before Class Declaration. Here an annontation cloud be added.")
+@JEAFCustomAnnotationTest
 public class EnumTest extends Object implements ServiceObject {
   /**
    * Default serial version uid.
@@ -24,11 +26,13 @@ public class EnumTest extends Object implements ServiceObject {
   /**
    * Constant for the name of attribute "property".
    */
+  @JEAFCustomAnnotationTest
   public static final String PROPERTY = "property";
 
   /**
    * Constant for the name of attribute "enumRef".
    */
+  @JEAFCustomAnnotationTest
   public static final String ENUMREF = "enumRef";
 
   // "com.anaptecs.jeaf.junit.openapi.base.ExtensibleEnum"
@@ -37,6 +41,7 @@ public class EnumTest extends Object implements ServiceObject {
    * <br/>
    * <b>Default Value:</b> <code>GREEN</code>
    */
+  @JEAFCustomAnnotationTest
   private ExtensibleEnum property;
 
   // "com.anaptecs.jeaf.junit.openapi.base.ExtensibleEnum"
@@ -48,6 +53,7 @@ public class EnumTest extends Object implements ServiceObject {
    * <br/>
    * <b>Default Value:</b> <code>RED</code>
    */
+  @JEAFCustomAnnotationTest
   private ExtensibleEnum enumRef;
 
   // "com.anaptecs.jeaf.junit.openapi.base.ExtensibleEnum"
@@ -91,6 +97,7 @@ public class EnumTest extends Object implements ServiceObject {
   /**
    * Class implements builder to create a new instance of class <code>EnumTest</code>.
    */
+  @JEAFCustomAnnotationTest
   public static class Builder {
     /**
      * <br/>
@@ -98,6 +105,7 @@ public class EnumTest extends Object implements ServiceObject {
      */
     // "com.anaptecs.jeaf.junit.openapi.base.ExtensibleEnum"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private ExtensibleEnum property = ExtensibleEnum.GREEN;
 
     // "com.anaptecs.jeaf.junit.openapi.base.ExtensibleEnum"
@@ -109,6 +117,7 @@ public class EnumTest extends Object implements ServiceObject {
      */
     // "com.anaptecs.jeaf.junit.openapi.base.ExtensibleEnum"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private ExtensibleEnum enumRef = ExtensibleEnum.RED;
 
     // "com.anaptecs.jeaf.junit.openapi.base.ExtensibleEnum"
@@ -137,6 +146,7 @@ public class EnumTest extends Object implements ServiceObject {
      * @param pProperty Value to which {@link #property} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setProperty( ExtensibleEnum pProperty ) {
       // Assign value to attribute
       property = pProperty;
@@ -155,6 +165,7 @@ public class EnumTest extends Object implements ServiceObject {
      * @param pEnumRef Value to which {@link #enumRef} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setEnumRef( ExtensibleEnum pEnumRef ) {
       enumRef = pEnumRef;
       return this;
@@ -195,6 +206,7 @@ public class EnumTest extends Object implements ServiceObject {
    *
    * @return {@link ExtensibleEnum} Value to which {@link #property} is set.
    */
+  @JEAFCustomAnnotationTest
   public ExtensibleEnum getProperty( ) {
     return property;
   }
@@ -204,6 +216,7 @@ public class EnumTest extends Object implements ServiceObject {
    *
    * @param pProperty Value to which {@link #property} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setProperty( ExtensibleEnum pProperty ) {
     // Assign value to attribute
     property = pProperty;
@@ -223,6 +236,7 @@ public class EnumTest extends Object implements ServiceObject {
    *
    * @return {@link ExtensibleEnum} Value to which {@link #enumRef} is set.
    */
+  @JEAFCustomAnnotationTest
   public ExtensibleEnum getEnumRef( ) {
     return enumRef;
   }
@@ -232,6 +246,7 @@ public class EnumTest extends Object implements ServiceObject {
    *
    * @param pEnumRef Value to which {@link #enumRef} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setEnumRef( ExtensibleEnum pEnumRef ) {
     enumRef = pEnumRef;
   }
@@ -239,6 +254,7 @@ public class EnumTest extends Object implements ServiceObject {
   /**
    * Method unsets {@link #enumRef}.
    */
+  @JEAFCustomAnnotationTest
   public final void unsetEnumRef( ) {
     enumRef = null;
   }

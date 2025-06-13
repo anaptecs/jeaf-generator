@@ -5,10 +5,13 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
+@JEAFCustomAnnotationTest
 public final class DynamicExtensibleEnum {
   public static enum DynamicExtensibleEnumType {
+    @JEAFCustomAnnotationTest
     STATIC_LITERAL,
     /**
      * Literal UNKNOWN is used in case that an unknown literal of this enumeration is received e.g. via an external
@@ -17,6 +20,7 @@ public final class DynamicExtensibleEnum {
     UNKNOWN;
   }
 
+  @JEAFCustomAnnotationTest
   public static final DynamicExtensibleEnum STATIC_LITERAL =
       new DynamicExtensibleEnum(DynamicExtensibleEnumType.STATIC_LITERAL);
 

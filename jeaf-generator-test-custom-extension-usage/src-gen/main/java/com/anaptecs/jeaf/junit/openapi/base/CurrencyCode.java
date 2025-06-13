@@ -12,10 +12,12 @@ import javax.validation.constraints.Size;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
 @Generated("Before Class Declaration. Here an annontation cloud be added.")
+@JEAFCustomAnnotationTest
 public class CurrencyCode extends Object implements ServiceObject {
   /**
    * Default serial version uid.
@@ -25,6 +27,7 @@ public class CurrencyCode extends Object implements ServiceObject {
   /**
    * Constant for the name of attribute "code".
    */
+  @JEAFCustomAnnotationTest
   public static final String CODE = "code";
 
   // "String"
@@ -37,6 +40,7 @@ public class CurrencyCode extends Object implements ServiceObject {
    * <li><code>CHF</code></li>
    * </ul>
    */
+  @JEAFCustomAnnotationTest
   @Size(min = 3, max = 3)
   private String code;
 
@@ -77,6 +81,7 @@ public class CurrencyCode extends Object implements ServiceObject {
   /**
    * Class implements builder to create a new instance of class <code>CurrencyCode</code>.
    */
+  @JEAFCustomAnnotationTest
   public static class Builder {
     /**
      * ISO 4217 currency code. <br/>
@@ -88,6 +93,7 @@ public class CurrencyCode extends Object implements ServiceObject {
      */
     // "String"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     @Size(min = 3, max = 3)
     private String code = "CHF";
 
@@ -116,6 +122,7 @@ public class CurrencyCode extends Object implements ServiceObject {
      * @param pCode Value to which {@link #code} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setCode( String pCode ) {
       // Assign value to attribute
       code = pCode;
@@ -159,6 +166,7 @@ public class CurrencyCode extends Object implements ServiceObject {
    *
    * @return {@link String} Value to which {@link #code} is set.
    */
+  @JEAFCustomAnnotationTest
   public String getCode( ) {
     return code;
   }
@@ -169,6 +177,7 @@ public class CurrencyCode extends Object implements ServiceObject {
    *
    * @param pCode Value to which {@link #code} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setCode( String pCode ) {
     // Assign value to attribute
     code = pCode;

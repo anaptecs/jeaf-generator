@@ -12,6 +12,7 @@ import javax.validation.constraints.NotNull;
 
 import com.anaptecs.jeaf.core.api.Service;
 import com.anaptecs.jeaf.core.api.ServiceObjectID;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 
 /**
  * This interface defines the common services that are provided by the accounting component. This interface is intended
@@ -21,6 +22,7 @@ import com.anaptecs.jeaf.core.api.ServiceObjectID;
  * @version JEAF Release 1.4.x
  */
 // @Something
+@JEAFCustomAnnotationTest
 public interface AccountingService extends Service {
   /**
    * Method creates a new account for the passed customer. The method uses the passed person as authorized person.<br/>
@@ -33,7 +35,9 @@ public interface AccountingService extends Service {
    * @param pAuthorizedPerson
    * @return {@link Account}
    */
-  Account createAccount( Customer pCustomer, Person pAuthorizedPerson );
+  @JEAFCustomAnnotationTest
+  Account createAccount( @JEAFCustomAnnotationTest Customer pCustomer,
+      @JEAFCustomAnnotationTest Person pAuthorizedPerson );
 
   /**
    * Method returns the account with the passed account id.<br/>
@@ -44,7 +48,8 @@ public interface AccountingService extends Service {
    * @param pAccountID
    * @return {@link Account}
    */
-  Account getAccount( ServiceObjectID pAccountID );
+  @JEAFCustomAnnotationTest
+  Account getAccount( @JEAFCustomAnnotationTest ServiceObjectID pAccountID );
 
   /**
    * Method locks the passed account. If the account is already locked, nothing will happen.<br/>
@@ -53,7 +58,8 @@ public interface AccountingService extends Service {
    *
    * @param pAccount
    */
-  void lockAccount( Account pAccount );
+  @JEAFCustomAnnotationTest
+  void lockAccount( @JEAFCustomAnnotationTest Account pAccount );
 
   /**
    * Method unlocks the passed account. If the account is already unlocked, nothing will happen.<br/>
@@ -62,7 +68,8 @@ public interface AccountingService extends Service {
    *
    * @param pAccount
    */
-  void unlock( Account pAccount );
+  @JEAFCustomAnnotationTest
+  void unlock( @JEAFCustomAnnotationTest Account pAccount );
 
   /**
    * Method performs a booking of the passed amount. Therefore besides the booking also the source and target account
@@ -75,7 +82,9 @@ public interface AccountingService extends Service {
    * @param pBooking
    * @param pSecurityToken
    */
-  void performBooking( Booking pBooking, SecurityToken pSecurityToken );
+  @JEAFCustomAnnotationTest
+  void performBooking( @JEAFCustomAnnotationTest Booking pBooking,
+      @JEAFCustomAnnotationTest SecurityToken pSecurityToken );
 
   /**
    * Method creates a new customer object from the data of the passed service object.<br/>
@@ -91,7 +100,9 @@ public interface AccountingService extends Service {
    * @param pAttendingEmployeeID
    * @return {@link Customer}
    */
-  Customer createCustomer( Customer pNewCustomer, ServiceObjectID pAttendingEmployeeID );
+  @JEAFCustomAnnotationTest
+  Customer createCustomer( @JEAFCustomAnnotationTest Customer pNewCustomer,
+      @JEAFCustomAnnotationTest ServiceObjectID pAttendingEmployeeID );
 
   /**
    * Method returns the customer with the passed service object id.<br/>
@@ -103,7 +114,9 @@ public interface AccountingService extends Service {
    * @param pLoadStrategy
    * @return {@link Customer}
    */
-  Customer getCustomer( ServiceObjectID pCustomerID, CustomerLoadStrategy pLoadStrategy );
+  @JEAFCustomAnnotationTest
+  Customer getCustomer( @JEAFCustomAnnotationTest ServiceObjectID pCustomerID,
+      @JEAFCustomAnnotationTest CustomerLoadStrategy pLoadStrategy );
 
   /**
    * Method creates a new Person object with the data of the passed service object.<br/>
@@ -116,12 +129,14 @@ public interface AccountingService extends Service {
    * @param pPerson
    * @return {@link Person}
    */
+  @JEAFCustomAnnotationTest
   @NotNull
-  Person createPerson( @Valid Person pPerson );
+  Person createPerson( @JEAFCustomAnnotationTest @Valid Person pPerson );
 
   /**
    * @param pQuery
    * @return {@link Set<Customer>}
    */
-  Set<Customer> searchCustomers( CustomerQuery pQuery );
+  @JEAFCustomAnnotationTest
+  Set<Customer> searchCustomers( @JEAFCustomAnnotationTest CustomerQuery pQuery );
 }

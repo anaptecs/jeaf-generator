@@ -5,6 +5,8 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
+
 /**
  * Enumeration represents time units.<br/>
  * <br/>
@@ -19,14 +21,21 @@ package com.anaptecs.jeaf.junit.openapi.base;
  * @author JEAF Generator
  * @version JEAF Release 1.6.x
  */
+@JEAFCustomAnnotationTest
 public enum TimeUnit {
   /**
    * Literal represents time unit &quot;minutes&quot;.
    */
-  MINUTE, HOUR, DAY,
+  @JEAFCustomAnnotationTest
+  MINUTE, @JEAFCustomAnnotationTest
+  HOUR, @JEAFCustomAnnotationTest
+  DAY,
   /**
    * Literal represents time unit &quot;weeks&quot;.<br/>
    * This is the comments second line ;-)
    */
-  WEEK, MONTH, YEAR;
+  @JEAFCustomAnnotationTest
+  WEEK, @JEAFCustomAnnotationTest
+  MONTH, @JEAFCustomAnnotationTest
+  YEAR;
 }

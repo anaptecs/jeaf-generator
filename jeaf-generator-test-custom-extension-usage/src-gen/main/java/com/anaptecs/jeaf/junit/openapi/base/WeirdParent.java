@@ -17,11 +17,13 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 import com.anaptecs.jeaf.junit.openapi.composite.ComplexBookingID;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
 @Generated("Before Class Declaration. Here an annontation cloud be added.")
+@JEAFCustomAnnotationTest
 public class WeirdParent extends Object implements ServiceObject {
   /**
    * Default serial version uid.
@@ -31,20 +33,24 @@ public class WeirdParent extends Object implements ServiceObject {
   /**
    * Constant for the name of attribute "someProperty".
    */
+  @JEAFCustomAnnotationTest
   public static final String SOMEPROPERTY = "someProperty";
 
   /**
    * Constant for the name of attribute "complexBooking".
    */
+  @JEAFCustomAnnotationTest
   public static final String COMPLEXBOOKING = "complexBooking";
 
   /**
    * Constant for the name of attribute "complexBookings".
    */
+  @JEAFCustomAnnotationTest
   public static final String COMPLEXBOOKINGS = "complexBookings";
 
   // "String"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private String someProperty;
 
   // "String"
@@ -52,6 +58,7 @@ public class WeirdParent extends Object implements ServiceObject {
 
   // "com.anaptecs.jeaf.junit.openapi.composite.ComplexBookingID"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private ComplexBookingID complexBooking;
 
   // "com.anaptecs.jeaf.junit.openapi.composite.ComplexBookingID"
@@ -59,6 +66,7 @@ public class WeirdParent extends Object implements ServiceObject {
 
   // "com.anaptecs.jeaf.junit.openapi.composite.ComplexBookingID"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private Set<ComplexBookingID> complexBookings;
 
   // "com.anaptecs.jeaf.junit.openapi.composite.ComplexBookingID"
@@ -109,9 +117,11 @@ public class WeirdParent extends Object implements ServiceObject {
   /**
    * Class implements builder to create a new instance of class <code>WeirdParent</code>.
    */
+  @JEAFCustomAnnotationTest
   public static class Builder {
     // "String"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private String someProperty;
 
     // "String"
@@ -119,6 +129,7 @@ public class WeirdParent extends Object implements ServiceObject {
 
     // "com.anaptecs.jeaf.junit.openapi.composite.ComplexBookingID"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private ComplexBookingID complexBooking;
 
     // "com.anaptecs.jeaf.junit.openapi.composite.ComplexBookingID"
@@ -126,6 +137,7 @@ public class WeirdParent extends Object implements ServiceObject {
 
     // "com.anaptecs.jeaf.junit.openapi.composite.ComplexBookingID"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private Set<ComplexBookingID> complexBookings;
 
     // "com.anaptecs.jeaf.junit.openapi.composite.ComplexBookingID"
@@ -155,6 +167,7 @@ public class WeirdParent extends Object implements ServiceObject {
      * @param pSomeProperty Value to which {@link #someProperty} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setSomeProperty( String pSomeProperty ) {
       // Assign value to attribute
       someProperty = pSomeProperty;
@@ -173,6 +186,7 @@ public class WeirdParent extends Object implements ServiceObject {
      * @param pComplexBooking Value to which {@link #complexBooking} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setComplexBooking( ComplexBookingID pComplexBooking ) {
       complexBooking = pComplexBooking;
       return this;
@@ -190,6 +204,7 @@ public class WeirdParent extends Object implements ServiceObject {
      * @param pComplexBookings Collection to which {@link #complexBookings} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setComplexBookings( Set<ComplexBookingID> pComplexBookings ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pComplexBookings != null) {
@@ -208,6 +223,7 @@ public class WeirdParent extends Object implements ServiceObject {
      * null.
      * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder addToComplexBookings( ComplexBookingID... pComplexBookings ) {
       if (pComplexBookings != null) {
         if (complexBookings == null) {
@@ -254,6 +270,7 @@ public class WeirdParent extends Object implements ServiceObject {
    *
    * @return {@link String} Value to which {@link #someProperty} is set.
    */
+  @JEAFCustomAnnotationTest
   public String getSomeProperty( ) {
     return someProperty;
   }
@@ -263,6 +280,7 @@ public class WeirdParent extends Object implements ServiceObject {
    *
    * @param pSomeProperty Value to which {@link #someProperty} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setSomeProperty( String pSomeProperty ) {
     // Assign value to attribute
     someProperty = pSomeProperty;
@@ -282,6 +300,7 @@ public class WeirdParent extends Object implements ServiceObject {
    *
    * @return {@link ComplexBookingID} Value to which {@link #complexBooking} is set.
    */
+  @JEAFCustomAnnotationTest
   public ComplexBookingID getComplexBooking( ) {
     return complexBooking;
   }
@@ -291,6 +310,7 @@ public class WeirdParent extends Object implements ServiceObject {
    *
    * @param pComplexBooking Value to which {@link #complexBooking} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setComplexBooking( ComplexBookingID pComplexBooking ) {
     complexBooking = pComplexBooking;
   }
@@ -298,6 +318,7 @@ public class WeirdParent extends Object implements ServiceObject {
   /**
    * Method unsets {@link #complexBooking}.
    */
+  @JEAFCustomAnnotationTest
   public final void unsetComplexBooking( ) {
     complexBooking = null;
   }
@@ -317,6 +338,7 @@ public class WeirdParent extends Object implements ServiceObject {
    * @return {@link Set<ComplexBookingID>} Value to which {@link #complexBookings} is set. The method never returns null
    * and the returned collection is unmodifiable.
    */
+  @JEAFCustomAnnotationTest
   public Set<ComplexBookingID> getComplexBookings( ) {
     // Return all ComplexBookingID objects as unmodifiable collection.
     return Collections.unmodifiableSet(complexBookings);
@@ -327,6 +349,7 @@ public class WeirdParent extends Object implements ServiceObject {
    *
    * @param pComplexBookings Object that should be added to {@link #complexBookings}. The parameter must not be null.
    */
+  @JEAFCustomAnnotationTest
   public void addToComplexBookings( ComplexBookingID pComplexBookings ) {
     // Check parameter "pComplexBookings" for invalid value null.
     Check.checkInvalidParameterNull(pComplexBookings, "pComplexBookings");
@@ -340,6 +363,7 @@ public class WeirdParent extends Object implements ServiceObject {
    * @param pComplexBookings Collection with all objects that should be added to {@link #complexBookings}. The parameter
    * must not be null.
    */
+  @JEAFCustomAnnotationTest
   public void addToComplexBookings( Collection<ComplexBookingID> pComplexBookings ) {
     // Check parameter "pComplexBookings" for invalid value null.
     Check.checkInvalidParameterNull(pComplexBookings, "pComplexBookings");
@@ -355,6 +379,7 @@ public class WeirdParent extends Object implements ServiceObject {
    * @param pComplexBookings Object that should be removed from {@link #complexBookings}. The parameter must not be
    * null.
    */
+  @JEAFCustomAnnotationTest
   public void removeFromComplexBookings( ComplexBookingID pComplexBookings ) {
     // Check parameter for invalid value null.
     Check.checkInvalidParameterNull(pComplexBookings, "pComplexBookings");
@@ -365,6 +390,7 @@ public class WeirdParent extends Object implements ServiceObject {
   /**
    * Method removes all objects from {@link #complexBookings}.
    */
+  @JEAFCustomAnnotationTest
   public void clearComplexBookings( ) {
     // Remove all objects from association "complexBookings".
     complexBookings.clear();

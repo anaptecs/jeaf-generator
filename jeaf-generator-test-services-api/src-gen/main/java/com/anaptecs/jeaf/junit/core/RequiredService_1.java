@@ -6,11 +6,14 @@
 package com.anaptecs.jeaf.junit.core;
 
 import com.anaptecs.jeaf.core.api.Service;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 // @Something
 
+@JEAFCustomAnnotationTest
 public interface RequiredService_1 extends Service {
   /**
    * @param pContextObject
    */
-  void testContextHandling_1( TestServiceObject pContextObject );
+  @JEAFCustomAnnotationTest
+  void testContextHandling_1( @JEAFCustomAnnotationTest TestServiceObject pContextObject );
 }

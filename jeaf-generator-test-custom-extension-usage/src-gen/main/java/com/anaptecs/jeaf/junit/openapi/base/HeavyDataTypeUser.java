@@ -11,10 +11,12 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
 @Generated("Before Class Declaration. Here an annontation cloud be added.")
+@JEAFCustomAnnotationTest
 public class HeavyDataTypeUser extends Object implements ServiceObject {
   /**
    * Default serial version uid.
@@ -24,45 +26,54 @@ public class HeavyDataTypeUser extends Object implements ServiceObject {
   /**
    * Constant for the name of attribute "booleanCode".
    */
+  @JEAFCustomAnnotationTest
   public static final String BOOLEANCODE = "booleanCode";
 
   /**
    * Constant for the name of attribute "byteCode".
    */
+  @JEAFCustomAnnotationTest
   public static final String BYTECODE = "byteCode";
 
   /**
    * Constant for the name of attribute "shortCode".
    */
+  @JEAFCustomAnnotationTest
   public static final String SHORTCODE = "shortCode";
 
   /**
    * Constant for the name of attribute "integerCode".
    */
+  @JEAFCustomAnnotationTest
   public static final String INTEGERCODE = "integerCode";
 
   /**
    * Constant for the name of attribute "floatCode".
    */
+  @JEAFCustomAnnotationTest
   public static final String FLOATCODE = "floatCode";
 
   /**
    * Constant for the name of attribute "doubleCode".
    */
+  @JEAFCustomAnnotationTest
   public static final String DOUBLECODE = "doubleCode";
 
   /**
    * Constant for the name of attribute "bigInegerCode".
    */
+  @JEAFCustomAnnotationTest
   public static final String BIGINEGERCODE = "bigInegerCode";
 
   /**
    * Constant for the name of attribute "bigDecimalCode".
    */
+  @JEAFCustomAnnotationTest
   public static final String BIGDECIMALCODE = "bigDecimalCode";
 
   // "com.anaptecs.jeaf.junit.openapi.base.BooleanCode"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private BooleanCode booleanCode;
 
   // "com.anaptecs.jeaf.junit.openapi.base.BooleanCode"
@@ -70,6 +81,7 @@ public class HeavyDataTypeUser extends Object implements ServiceObject {
 
   // "com.anaptecs.jeaf.junit.openapi.base.ByteCode"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private ByteCode byteCode;
 
   // "com.anaptecs.jeaf.junit.openapi.base.ByteCode"
@@ -77,6 +89,7 @@ public class HeavyDataTypeUser extends Object implements ServiceObject {
 
   // "com.anaptecs.jeaf.junit.openapi.base.ShortCode"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private ShortCode shortCode;
 
   // "com.anaptecs.jeaf.junit.openapi.base.ShortCode"
@@ -84,6 +97,7 @@ public class HeavyDataTypeUser extends Object implements ServiceObject {
 
   // "com.anaptecs.jeaf.junit.openapi.base.IntegerCode"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private IntegerCode integerCode;
 
   // "com.anaptecs.jeaf.junit.openapi.base.IntegerCode"
@@ -91,6 +105,7 @@ public class HeavyDataTypeUser extends Object implements ServiceObject {
 
   // "com.anaptecs.jeaf.junit.openapi.base.FloatCode"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private FloatCode floatCode;
 
   // "com.anaptecs.jeaf.junit.openapi.base.FloatCode"
@@ -98,6 +113,7 @@ public class HeavyDataTypeUser extends Object implements ServiceObject {
 
   // "com.anaptecs.jeaf.junit.openapi.base.DoubleCode"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private DoubleCode doubleCode;
 
   // "com.anaptecs.jeaf.junit.openapi.base.DoubleCode"
@@ -105,6 +121,7 @@ public class HeavyDataTypeUser extends Object implements ServiceObject {
 
   // "com.anaptecs.jeaf.junit.openapi.base.BigIntegerCode"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private BigIntegerCode bigInegerCode;
 
   // "com.anaptecs.jeaf.junit.openapi.base.BigIntegerCode"
@@ -112,6 +129,7 @@ public class HeavyDataTypeUser extends Object implements ServiceObject {
 
   // "com.anaptecs.jeaf.junit.openapi.base.BigDecimalCode"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private BigDecimalCode bigDecimalCode;
 
   // "com.anaptecs.jeaf.junit.openapi.base.BigDecimalCode"
@@ -171,9 +189,11 @@ public class HeavyDataTypeUser extends Object implements ServiceObject {
   /**
    * Class implements builder to create a new instance of class <code>HeavyDataTypeUser</code>.
    */
+  @JEAFCustomAnnotationTest
   public static class Builder {
     // "com.anaptecs.jeaf.junit.openapi.base.BooleanCode"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private BooleanCode booleanCode;
 
     // "com.anaptecs.jeaf.junit.openapi.base.BooleanCode"
@@ -181,6 +201,7 @@ public class HeavyDataTypeUser extends Object implements ServiceObject {
 
     // "com.anaptecs.jeaf.junit.openapi.base.ByteCode"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private ByteCode byteCode;
 
     // "com.anaptecs.jeaf.junit.openapi.base.ByteCode"
@@ -188,6 +209,7 @@ public class HeavyDataTypeUser extends Object implements ServiceObject {
 
     // "com.anaptecs.jeaf.junit.openapi.base.ShortCode"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private ShortCode shortCode;
 
     // "com.anaptecs.jeaf.junit.openapi.base.ShortCode"
@@ -195,6 +217,7 @@ public class HeavyDataTypeUser extends Object implements ServiceObject {
 
     // "com.anaptecs.jeaf.junit.openapi.base.IntegerCode"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private IntegerCode integerCode;
 
     // "com.anaptecs.jeaf.junit.openapi.base.IntegerCode"
@@ -202,6 +225,7 @@ public class HeavyDataTypeUser extends Object implements ServiceObject {
 
     // "com.anaptecs.jeaf.junit.openapi.base.FloatCode"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private FloatCode floatCode;
 
     // "com.anaptecs.jeaf.junit.openapi.base.FloatCode"
@@ -209,6 +233,7 @@ public class HeavyDataTypeUser extends Object implements ServiceObject {
 
     // "com.anaptecs.jeaf.junit.openapi.base.DoubleCode"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private DoubleCode doubleCode;
 
     // "com.anaptecs.jeaf.junit.openapi.base.DoubleCode"
@@ -216,6 +241,7 @@ public class HeavyDataTypeUser extends Object implements ServiceObject {
 
     // "com.anaptecs.jeaf.junit.openapi.base.BigIntegerCode"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private BigIntegerCode bigInegerCode;
 
     // "com.anaptecs.jeaf.junit.openapi.base.BigIntegerCode"
@@ -223,6 +249,7 @@ public class HeavyDataTypeUser extends Object implements ServiceObject {
 
     // "com.anaptecs.jeaf.junit.openapi.base.BigDecimalCode"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private BigDecimalCode bigDecimalCode;
 
     // "com.anaptecs.jeaf.junit.openapi.base.BigDecimalCode"
@@ -257,6 +284,7 @@ public class HeavyDataTypeUser extends Object implements ServiceObject {
      * @param pBooleanCode Value to which {@link #booleanCode} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setBooleanCode( BooleanCode pBooleanCode ) {
       // Assign value to attribute
       booleanCode = pBooleanCode;
@@ -275,6 +303,7 @@ public class HeavyDataTypeUser extends Object implements ServiceObject {
      * @param pByteCode Value to which {@link #byteCode} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setByteCode( ByteCode pByteCode ) {
       // Assign value to attribute
       byteCode = pByteCode;
@@ -293,6 +322,7 @@ public class HeavyDataTypeUser extends Object implements ServiceObject {
      * @param pShortCode Value to which {@link #shortCode} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setShortCode( ShortCode pShortCode ) {
       // Assign value to attribute
       shortCode = pShortCode;
@@ -311,6 +341,7 @@ public class HeavyDataTypeUser extends Object implements ServiceObject {
      * @param pIntegerCode Value to which {@link #integerCode} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setIntegerCode( IntegerCode pIntegerCode ) {
       // Assign value to attribute
       integerCode = pIntegerCode;
@@ -329,6 +360,7 @@ public class HeavyDataTypeUser extends Object implements ServiceObject {
      * @param pFloatCode Value to which {@link #floatCode} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setFloatCode( FloatCode pFloatCode ) {
       // Assign value to attribute
       floatCode = pFloatCode;
@@ -347,6 +379,7 @@ public class HeavyDataTypeUser extends Object implements ServiceObject {
      * @param pDoubleCode Value to which {@link #doubleCode} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setDoubleCode( DoubleCode pDoubleCode ) {
       // Assign value to attribute
       doubleCode = pDoubleCode;
@@ -365,6 +398,7 @@ public class HeavyDataTypeUser extends Object implements ServiceObject {
      * @param pBigInegerCode Value to which {@link #bigInegerCode} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setBigInegerCode( BigIntegerCode pBigInegerCode ) {
       // Assign value to attribute
       bigInegerCode = pBigInegerCode;
@@ -383,6 +417,7 @@ public class HeavyDataTypeUser extends Object implements ServiceObject {
      * @param pBigDecimalCode Value to which {@link #bigDecimalCode} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setBigDecimalCode( BigDecimalCode pBigDecimalCode ) {
       // Assign value to attribute
       bigDecimalCode = pBigDecimalCode;
@@ -425,6 +460,7 @@ public class HeavyDataTypeUser extends Object implements ServiceObject {
    *
    * @return {@link BooleanCode} Value to which {@link #booleanCode} is set.
    */
+  @JEAFCustomAnnotationTest
   public BooleanCode getBooleanCode( ) {
     return booleanCode;
   }
@@ -434,6 +470,7 @@ public class HeavyDataTypeUser extends Object implements ServiceObject {
    *
    * @param pBooleanCode Value to which {@link #booleanCode} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setBooleanCode( BooleanCode pBooleanCode ) {
     // Assign value to attribute
     booleanCode = pBooleanCode;
@@ -453,6 +490,7 @@ public class HeavyDataTypeUser extends Object implements ServiceObject {
    *
    * @return {@link ByteCode} Value to which {@link #byteCode} is set.
    */
+  @JEAFCustomAnnotationTest
   public ByteCode getByteCode( ) {
     return byteCode;
   }
@@ -462,6 +500,7 @@ public class HeavyDataTypeUser extends Object implements ServiceObject {
    *
    * @param pByteCode Value to which {@link #byteCode} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setByteCode( ByteCode pByteCode ) {
     // Assign value to attribute
     byteCode = pByteCode;
@@ -481,6 +520,7 @@ public class HeavyDataTypeUser extends Object implements ServiceObject {
    *
    * @return {@link ShortCode} Value to which {@link #shortCode} is set.
    */
+  @JEAFCustomAnnotationTest
   public ShortCode getShortCode( ) {
     return shortCode;
   }
@@ -490,6 +530,7 @@ public class HeavyDataTypeUser extends Object implements ServiceObject {
    *
    * @param pShortCode Value to which {@link #shortCode} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setShortCode( ShortCode pShortCode ) {
     // Assign value to attribute
     shortCode = pShortCode;
@@ -509,6 +550,7 @@ public class HeavyDataTypeUser extends Object implements ServiceObject {
    *
    * @return {@link IntegerCode} Value to which {@link #integerCode} is set.
    */
+  @JEAFCustomAnnotationTest
   public IntegerCode getIntegerCode( ) {
     return integerCode;
   }
@@ -518,6 +560,7 @@ public class HeavyDataTypeUser extends Object implements ServiceObject {
    *
    * @param pIntegerCode Value to which {@link #integerCode} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setIntegerCode( IntegerCode pIntegerCode ) {
     // Assign value to attribute
     integerCode = pIntegerCode;
@@ -537,6 +580,7 @@ public class HeavyDataTypeUser extends Object implements ServiceObject {
    *
    * @return {@link FloatCode} Value to which {@link #floatCode} is set.
    */
+  @JEAFCustomAnnotationTest
   public FloatCode getFloatCode( ) {
     return floatCode;
   }
@@ -546,6 +590,7 @@ public class HeavyDataTypeUser extends Object implements ServiceObject {
    *
    * @param pFloatCode Value to which {@link #floatCode} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setFloatCode( FloatCode pFloatCode ) {
     // Assign value to attribute
     floatCode = pFloatCode;
@@ -565,6 +610,7 @@ public class HeavyDataTypeUser extends Object implements ServiceObject {
    *
    * @return {@link DoubleCode} Value to which {@link #doubleCode} is set.
    */
+  @JEAFCustomAnnotationTest
   public DoubleCode getDoubleCode( ) {
     return doubleCode;
   }
@@ -574,6 +620,7 @@ public class HeavyDataTypeUser extends Object implements ServiceObject {
    *
    * @param pDoubleCode Value to which {@link #doubleCode} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setDoubleCode( DoubleCode pDoubleCode ) {
     // Assign value to attribute
     doubleCode = pDoubleCode;
@@ -593,6 +640,7 @@ public class HeavyDataTypeUser extends Object implements ServiceObject {
    *
    * @return {@link BigIntegerCode} Value to which {@link #bigInegerCode} is set.
    */
+  @JEAFCustomAnnotationTest
   public BigIntegerCode getBigInegerCode( ) {
     return bigInegerCode;
   }
@@ -602,6 +650,7 @@ public class HeavyDataTypeUser extends Object implements ServiceObject {
    *
    * @param pBigInegerCode Value to which {@link #bigInegerCode} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setBigInegerCode( BigIntegerCode pBigInegerCode ) {
     // Assign value to attribute
     bigInegerCode = pBigInegerCode;
@@ -621,6 +670,7 @@ public class HeavyDataTypeUser extends Object implements ServiceObject {
    *
    * @return {@link BigDecimalCode} Value to which {@link #bigDecimalCode} is set.
    */
+  @JEAFCustomAnnotationTest
   public BigDecimalCode getBigDecimalCode( ) {
     return bigDecimalCode;
   }
@@ -630,6 +680,7 @@ public class HeavyDataTypeUser extends Object implements ServiceObject {
    *
    * @param pBigDecimalCode Value to which {@link #bigDecimalCode} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setBigDecimalCode( BigDecimalCode pBigDecimalCode ) {
     // Assign value to attribute
     bigDecimalCode = pBigDecimalCode;

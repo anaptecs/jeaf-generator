@@ -12,10 +12,12 @@ import javax.validation.constraints.Max;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
 @Generated("Before Class Declaration. Here an annontation cloud be added.")
+@JEAFCustomAnnotationTest
 public class DataTypeWithConstraints extends Object implements ServiceObject {
   /**
    * Default serial version uid.
@@ -25,10 +27,12 @@ public class DataTypeWithConstraints extends Object implements ServiceObject {
   /**
    * Constant for the name of attribute "intValue".
    */
+  @JEAFCustomAnnotationTest
   public static final String INTVALUE = "intValue";
 
   // "int"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   @Max(value = 9999)
   private int intValue;
 
@@ -68,9 +72,11 @@ public class DataTypeWithConstraints extends Object implements ServiceObject {
   /**
    * Class implements builder to create a new instance of class <code>DataTypeWithConstraints</code>.
    */
+  @JEAFCustomAnnotationTest
   public static class Builder {
     // "int"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     @Max(value = 9999)
     private int intValue;
 
@@ -100,6 +106,7 @@ public class DataTypeWithConstraints extends Object implements ServiceObject {
      * @param pIntValue Value to which {@link #intValue} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setIntValue( int pIntValue ) {
       // Assign value to attribute
       intValue = pIntValue;
@@ -142,6 +149,7 @@ public class DataTypeWithConstraints extends Object implements ServiceObject {
    *
    * @return int Value to which {@link #intValue} is set.
    */
+  @JEAFCustomAnnotationTest
   public int getIntValue( ) {
     return intValue;
   }
@@ -151,6 +159,7 @@ public class DataTypeWithConstraints extends Object implements ServiceObject {
    *
    * @param pIntValue Value to which {@link #intValue} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setIntValue( int pIntValue ) {
     // Assign value to attribute
     intValue = pIntValue;

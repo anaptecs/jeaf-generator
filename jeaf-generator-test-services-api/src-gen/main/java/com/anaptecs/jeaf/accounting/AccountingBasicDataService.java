@@ -10,14 +10,17 @@ import javax.validation.constraints.NotNull;
 
 import com.anaptecs.jeaf.core.api.Service;
 import com.anaptecs.jeaf.core.api.ServiceObjectID;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 // @Something
 
+@JEAFCustomAnnotationTest
 public interface AccountingBasicDataService extends Service {
   /**
    * @param pType
    * @return {@link ResponsibilityType}
    */
-  ResponsibilityType createResponsibilityType( ResponsibilityType pType );
+  @JEAFCustomAnnotationTest
+  ResponsibilityType createResponsibilityType( @JEAFCustomAnnotationTest ResponsibilityType pType );
 
   /**
    * Method creates a new persistent Bank object in the database.<br/>
@@ -30,7 +33,8 @@ public interface AccountingBasicDataService extends Service {
    * @param pBank
    * @return {@link Bank}
    */
-  Bank createBank( @Valid @NotNull Bank pBank );
+  @JEAFCustomAnnotationTest
+  Bank createBank( @JEAFCustomAnnotationTest @Valid @NotNull Bank pBank );
 
   /**
    * @param pPerson
@@ -38,5 +42,7 @@ public interface AccountingBasicDataService extends Service {
    * @param pBank
    * @return {@link ServiceObjectID}
    */
-  ServiceObjectID createEmployee( Person pPerson, ResponsibilityType pResponsibilityType, Bank pBank );
+  @JEAFCustomAnnotationTest
+  ServiceObjectID createEmployee( @JEAFCustomAnnotationTest Person pPerson,
+      @JEAFCustomAnnotationTest ResponsibilityType pResponsibilityType, @JEAFCustomAnnotationTest Bank pBank );
 }

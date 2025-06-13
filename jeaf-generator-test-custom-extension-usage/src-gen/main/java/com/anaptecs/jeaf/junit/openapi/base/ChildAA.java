@@ -14,6 +14,7 @@ import javax.validation.constraints.Size;
 
 import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 
 @Generated("Before Class Declaration. Here an annontation cloud be added.")
@@ -24,6 +25,7 @@ import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
  * May be <code>java.lang.Nothing</code> (<b>since:</b> 0.5, <b>removed with:</b> 2.0)
  */
 @Deprecated
+@JEAFCustomAnnotationTest
 public class ChildAA extends ChildA {
   /**
    * Default serial version uid.
@@ -33,31 +35,37 @@ public class ChildAA extends ChildA {
   /**
    * Constant for the name of attribute "childAAAttribute".
    */
+  @JEAFCustomAnnotationTest
   public static final String CHILDAAATTRIBUTE = "childAAAttribute";
 
   /**
    * Constant for the name of attribute "sizedArray".
    */
+  @JEAFCustomAnnotationTest
   public static final String SIZEDARRAY = "sizedArray";
 
   /**
    * Constant for the name of attribute "requiredArray".
    */
+  @JEAFCustomAnnotationTest
   public static final String REQUIREDARRAY = "requiredArray";
 
   /**
    * Constant for the name of attribute "bigIntegerCode".
    */
+  @JEAFCustomAnnotationTest
   public static final String BIGINTEGERCODE = "bigIntegerCode";
 
   /**
    * Constant for the name of attribute "integerCode".
    */
+  @JEAFCustomAnnotationTest
   public static final String INTEGERCODE = "integerCode";
 
   /**
    * Constant for the name of attribute "codes".
    */
+  @JEAFCustomAnnotationTest
   public static final String CODES = "codes";
 
   // "byte"
@@ -67,6 +75,7 @@ public class ChildAA extends ChildA {
    * line<br/>
    * docs
    */
+  @JEAFCustomAnnotationTest
   private byte childAAAttribute;
 
   // "byte"
@@ -74,6 +83,7 @@ public class ChildAA extends ChildA {
 
   // "int"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   @Size(min = 10, max = 100)
   private int[] sizedArray;
 
@@ -82,6 +92,7 @@ public class ChildAA extends ChildA {
 
   // "String"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private String[] requiredArray;
 
   // "String"
@@ -89,6 +100,7 @@ public class ChildAA extends ChildA {
 
   // "com.anaptecs.jeaf.junit.openapi.base.BigIntegerCode"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private BigIntegerCode bigIntegerCode;
 
   // "com.anaptecs.jeaf.junit.openapi.base.BigIntegerCode"
@@ -96,6 +108,7 @@ public class ChildAA extends ChildA {
 
   // "com.anaptecs.jeaf.junit.openapi.base.IntegerCodeType"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private IntegerCodeType integerCode;
 
   // "com.anaptecs.jeaf.junit.openapi.base.IntegerCodeType"
@@ -103,6 +116,7 @@ public class ChildAA extends ChildA {
 
   // "com.anaptecs.jeaf.junit.openapi.base.IntegerCode"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private IntegerCode[] codes;
 
   // "com.anaptecs.jeaf.junit.openapi.base.IntegerCode"
@@ -157,6 +171,7 @@ public class ChildAA extends ChildA {
    * Class implements builder to create a new instance of class <code>ChildAA</code>.
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   public static class Builder extends ChildA.Builder {
     /**
      * Multi<br/>
@@ -165,6 +180,7 @@ public class ChildAA extends ChildA {
      */
     // "byte"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private byte childAAAttribute;
 
     // "byte"
@@ -172,6 +188,7 @@ public class ChildAA extends ChildA {
 
     // "int"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     @Size(min = 10, max = 100)
     private int[] sizedArray;
 
@@ -180,6 +197,7 @@ public class ChildAA extends ChildA {
 
     // "String"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private String[] requiredArray;
 
     // "String"
@@ -187,6 +205,7 @@ public class ChildAA extends ChildA {
 
     // "com.anaptecs.jeaf.junit.openapi.base.BigIntegerCode"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private BigIntegerCode bigIntegerCode;
 
     // "com.anaptecs.jeaf.junit.openapi.base.BigIntegerCode"
@@ -194,6 +213,7 @@ public class ChildAA extends ChildA {
 
     // "com.anaptecs.jeaf.junit.openapi.base.IntegerCodeType"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private IntegerCodeType integerCode;
 
     // "com.anaptecs.jeaf.junit.openapi.base.IntegerCodeType"
@@ -201,6 +221,7 @@ public class ChildAA extends ChildA {
 
     // "com.anaptecs.jeaf.junit.openapi.base.IntegerCode"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private IntegerCode[] codes;
 
     // "com.anaptecs.jeaf.junit.openapi.base.IntegerCode"
@@ -235,6 +256,7 @@ public class ChildAA extends ChildA {
      * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     @Override
     public Builder setParentAttribute( String pParentAttribute ) {
       // Call super class implementation.
@@ -248,6 +270,7 @@ public class ChildAA extends ChildA {
      * @param pIbans Collection to which {@link #ibans} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     @Override
     public Builder setIbans( Set<IBAN> pIbans ) {
       // Call super class implementation.
@@ -261,6 +284,7 @@ public class ChildAA extends ChildA {
      * @param pIbans Array of objects that should be added to {@link #ibans}. The parameter may be null.
      * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder addToIbans( IBAN... pIbans ) {
       // Call super class implementation.
       super.addToIbans(pIbans);
@@ -274,6 +298,7 @@ public class ChildAA extends ChildA {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
+    @JEAFCustomAnnotationTest
     @Override
     public Builder setTheBankAccount( BankAccount pTheBankAccount ) {
       // Call super class implementation.
@@ -288,6 +313,7 @@ public class ChildAA extends ChildA {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
+    @JEAFCustomAnnotationTest
     @Override
     public Builder setLegacyBankAccounts( List<BankAccount> pLegacyBankAccounts ) {
       // Call super class implementation.
@@ -303,6 +329,7 @@ public class ChildAA extends ChildA {
      * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
      */
     @Deprecated
+    @JEAFCustomAnnotationTest
     public Builder addToLegacyBankAccounts( BankAccount... pLegacyBankAccounts ) {
       // Call super class implementation.
       super.addToLegacyBankAccounts(pLegacyBankAccounts);
@@ -315,6 +342,7 @@ public class ChildAA extends ChildA {
      * @param pChildAAttribute Value to which {@link #childAAttribute} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     @Override
     public Builder setChildAAttribute( int pChildAAttribute ) {
       // Call super class implementation.
@@ -328,6 +356,7 @@ public class ChildAA extends ChildA {
      * @param pChildAAAttribute Value to which {@link #childAAAttribute} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setChildAAAttribute( byte pChildAAAttribute ) {
       // Assign value to attribute
       childAAAttribute = pChildAAAttribute;
@@ -346,6 +375,7 @@ public class ChildAA extends ChildA {
      * @param pSizedArray Value to which {@link #sizedArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setSizedArray( int[] pSizedArray ) {
       // Assign value to attribute
       if (pSizedArray != null) {
@@ -370,6 +400,7 @@ public class ChildAA extends ChildA {
      * @param pRequiredArray Collection to which {@link #requiredArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setRequiredArray( String[] pRequiredArray ) {
       // Assign value to attribute
       if (pRequiredArray != null) {
@@ -394,6 +425,7 @@ public class ChildAA extends ChildA {
      * @param pBigIntegerCode Value to which {@link #bigIntegerCode} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setBigIntegerCode( BigIntegerCode pBigIntegerCode ) {
       // Assign value to attribute
       bigIntegerCode = pBigIntegerCode;
@@ -412,6 +444,7 @@ public class ChildAA extends ChildA {
      * @param pIntegerCode Value to which {@link #integerCode} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setIntegerCode( IntegerCodeType pIntegerCode ) {
       integerCode = pIntegerCode;
       return this;
@@ -429,6 +462,7 @@ public class ChildAA extends ChildA {
      * @param pCodes Collection to which {@link #codes} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setCodes( IntegerCode[] pCodes ) {
       // Assign value to attribute
       if (pCodes != null) {
@@ -479,6 +513,7 @@ public class ChildAA extends ChildA {
    *
    * @return byte Value to which {@link #childAAAttribute} is set.
    */
+  @JEAFCustomAnnotationTest
   public byte getChildAAAttribute( ) {
     return childAAAttribute;
   }
@@ -491,6 +526,7 @@ public class ChildAA extends ChildA {
    *
    * @param pChildAAAttribute Value to which {@link #childAAAttribute} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setChildAAAttribute( byte pChildAAAttribute ) {
     // Assign value to attribute
     childAAAttribute = pChildAAAttribute;
@@ -510,6 +546,7 @@ public class ChildAA extends ChildA {
    *
    * @return int[] Value to which {@link #sizedArray} is set.
    */
+  @JEAFCustomAnnotationTest
   public int[] getSizedArray( ) {
     int[] lReturnValue;
     if (sizedArray != null) {
@@ -527,6 +564,7 @@ public class ChildAA extends ChildA {
    *
    * @param pSizedArray Value to which {@link #sizedArray} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setSizedArray( int[] pSizedArray ) {
     // Assign value to attribute
     if (pSizedArray != null) {
@@ -552,6 +590,7 @@ public class ChildAA extends ChildA {
    *
    * @return {@link String[]} Value to which {@link #requiredArray} is set.
    */
+  @JEAFCustomAnnotationTest
   public String[] getRequiredArray( ) {
     String[] lReturnValue;
     if (requiredArray != null) {
@@ -569,6 +608,7 @@ public class ChildAA extends ChildA {
    *
    * @param pRequiredArray Value to which {@link #requiredArray} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setRequiredArray( String[] pRequiredArray ) {
     // Assign value to attribute
     if (pRequiredArray != null) {
@@ -594,6 +634,7 @@ public class ChildAA extends ChildA {
    *
    * @return {@link BigIntegerCode} Value to which {@link #bigIntegerCode} is set.
    */
+  @JEAFCustomAnnotationTest
   public BigIntegerCode getBigIntegerCode( ) {
     return bigIntegerCode;
   }
@@ -603,6 +644,7 @@ public class ChildAA extends ChildA {
    *
    * @param pBigIntegerCode Value to which {@link #bigIntegerCode} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setBigIntegerCode( BigIntegerCode pBigIntegerCode ) {
     // Assign value to attribute
     bigIntegerCode = pBigIntegerCode;
@@ -622,6 +664,7 @@ public class ChildAA extends ChildA {
    *
    * @return {@link IntegerCodeType} Value to which {@link #integerCode} is set.
    */
+  @JEAFCustomAnnotationTest
   public IntegerCodeType getIntegerCode( ) {
     return integerCode;
   }
@@ -631,6 +674,7 @@ public class ChildAA extends ChildA {
    *
    * @param pIntegerCode Value to which {@link #integerCode} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setIntegerCode( IntegerCodeType pIntegerCode ) {
     integerCode = pIntegerCode;
   }
@@ -638,6 +682,7 @@ public class ChildAA extends ChildA {
   /**
    * Method unsets {@link #integerCode}.
    */
+  @JEAFCustomAnnotationTest
   public final void unsetIntegerCode( ) {
     integerCode = null;
   }
@@ -656,6 +701,7 @@ public class ChildAA extends ChildA {
    *
    * @return {@link IntegerCode[]} Value to which {@link #codes} is set.
    */
+  @JEAFCustomAnnotationTest
   public IntegerCode[] getCodes( ) {
     IntegerCode[] lReturnValue;
     if (codes != null) {
@@ -673,6 +719,7 @@ public class ChildAA extends ChildA {
    *
    * @param pCodes Value to which {@link #codes} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setCodes( IntegerCode[] pCodes ) {
     // Assign value to attribute
     if (pCodes != null) {

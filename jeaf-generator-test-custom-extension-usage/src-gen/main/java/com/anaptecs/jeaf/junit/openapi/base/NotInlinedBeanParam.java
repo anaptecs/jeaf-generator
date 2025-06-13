@@ -11,10 +11,12 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
 @Generated("Before Class Declaration. Here an annontation cloud be added.")
+@JEAFCustomAnnotationTest
 public class NotInlinedBeanParam extends Object implements ServiceObject {
   /**
    * Default serial version uid.
@@ -24,25 +26,30 @@ public class NotInlinedBeanParam extends Object implements ServiceObject {
   /**
    * Constant for the name of attribute "header".
    */
+  @JEAFCustomAnnotationTest
   public static final String HEADER = "header";
 
   /**
    * Constant for the name of attribute "doubleCode".
    */
+  @JEAFCustomAnnotationTest
   public static final String DOUBLECODE = "doubleCode";
 
   /**
    * Constant for the name of attribute "extensibleEnum".
    */
+  @JEAFCustomAnnotationTest
   public static final String EXTENSIBLEENUM = "extensibleEnum";
 
   /**
    * Constant for the name of attribute "bookingID".
    */
+  @JEAFCustomAnnotationTest
   public static final String BOOKINGID = "bookingID";
 
   // "String"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private String header;
 
   // "String"
@@ -50,6 +57,7 @@ public class NotInlinedBeanParam extends Object implements ServiceObject {
 
   // "com.anaptecs.jeaf.junit.openapi.base.DoubleCode"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private DoubleCode doubleCode;
 
   // "com.anaptecs.jeaf.junit.openapi.base.DoubleCode"
@@ -57,6 +65,7 @@ public class NotInlinedBeanParam extends Object implements ServiceObject {
 
   // "com.anaptecs.jeaf.junit.openapi.base.ExtensibleEnum"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private ExtensibleEnum extensibleEnum;
 
   // "com.anaptecs.jeaf.junit.openapi.base.ExtensibleEnum"
@@ -64,6 +73,7 @@ public class NotInlinedBeanParam extends Object implements ServiceObject {
 
   // "com.anaptecs.jeaf.junit.openapi.base.BookingID"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private BookingID bookingID;
 
   // "com.anaptecs.jeaf.junit.openapi.base.BookingID"
@@ -111,9 +121,11 @@ public class NotInlinedBeanParam extends Object implements ServiceObject {
   /**
    * Class implements builder to create a new instance of class <code>NotInlinedBeanParam</code>.
    */
+  @JEAFCustomAnnotationTest
   public static class Builder {
     // "String"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private String header;
 
     // "String"
@@ -121,6 +133,7 @@ public class NotInlinedBeanParam extends Object implements ServiceObject {
 
     // "com.anaptecs.jeaf.junit.openapi.base.DoubleCode"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private DoubleCode doubleCode;
 
     // "com.anaptecs.jeaf.junit.openapi.base.DoubleCode"
@@ -128,6 +141,7 @@ public class NotInlinedBeanParam extends Object implements ServiceObject {
 
     // "com.anaptecs.jeaf.junit.openapi.base.ExtensibleEnum"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private ExtensibleEnum extensibleEnum;
 
     // "com.anaptecs.jeaf.junit.openapi.base.ExtensibleEnum"
@@ -135,6 +149,7 @@ public class NotInlinedBeanParam extends Object implements ServiceObject {
 
     // "com.anaptecs.jeaf.junit.openapi.base.BookingID"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private BookingID bookingID;
 
     // "com.anaptecs.jeaf.junit.openapi.base.BookingID"
@@ -166,6 +181,7 @@ public class NotInlinedBeanParam extends Object implements ServiceObject {
      * @param pHeader Value to which {@link #header} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setHeader( String pHeader ) {
       // Assign value to attribute
       header = pHeader;
@@ -184,6 +200,7 @@ public class NotInlinedBeanParam extends Object implements ServiceObject {
      * @param pDoubleCode Value to which {@link #doubleCode} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setDoubleCode( DoubleCode pDoubleCode ) {
       // Assign value to attribute
       doubleCode = pDoubleCode;
@@ -202,6 +219,7 @@ public class NotInlinedBeanParam extends Object implements ServiceObject {
      * @param pExtensibleEnum Value to which {@link #extensibleEnum} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setExtensibleEnum( ExtensibleEnum pExtensibleEnum ) {
       // Assign value to attribute
       extensibleEnum = pExtensibleEnum;
@@ -220,6 +238,7 @@ public class NotInlinedBeanParam extends Object implements ServiceObject {
      * @param pBookingID Value to which {@link #bookingID} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setBookingID( BookingID pBookingID ) {
       // Assign value to attribute
       bookingID = pBookingID;
@@ -262,6 +281,7 @@ public class NotInlinedBeanParam extends Object implements ServiceObject {
    *
    * @return {@link String} Value to which {@link #header} is set.
    */
+  @JEAFCustomAnnotationTest
   public String getHeader( ) {
     return header;
   }
@@ -271,6 +291,7 @@ public class NotInlinedBeanParam extends Object implements ServiceObject {
    *
    * @param pHeader Value to which {@link #header} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setHeader( String pHeader ) {
     // Assign value to attribute
     header = pHeader;
@@ -290,6 +311,7 @@ public class NotInlinedBeanParam extends Object implements ServiceObject {
    *
    * @return {@link DoubleCode} Value to which {@link #doubleCode} is set.
    */
+  @JEAFCustomAnnotationTest
   public DoubleCode getDoubleCode( ) {
     return doubleCode;
   }
@@ -299,6 +321,7 @@ public class NotInlinedBeanParam extends Object implements ServiceObject {
    *
    * @param pDoubleCode Value to which {@link #doubleCode} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setDoubleCode( DoubleCode pDoubleCode ) {
     // Assign value to attribute
     doubleCode = pDoubleCode;
@@ -318,6 +341,7 @@ public class NotInlinedBeanParam extends Object implements ServiceObject {
    *
    * @return {@link ExtensibleEnum} Value to which {@link #extensibleEnum} is set.
    */
+  @JEAFCustomAnnotationTest
   public ExtensibleEnum getExtensibleEnum( ) {
     return extensibleEnum;
   }
@@ -327,6 +351,7 @@ public class NotInlinedBeanParam extends Object implements ServiceObject {
    *
    * @param pExtensibleEnum Value to which {@link #extensibleEnum} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setExtensibleEnum( ExtensibleEnum pExtensibleEnum ) {
     // Assign value to attribute
     extensibleEnum = pExtensibleEnum;
@@ -346,6 +371,7 @@ public class NotInlinedBeanParam extends Object implements ServiceObject {
    *
    * @return {@link BookingID} Value to which {@link #bookingID} is set.
    */
+  @JEAFCustomAnnotationTest
   public BookingID getBookingID( ) {
     return bookingID;
   }
@@ -355,6 +381,7 @@ public class NotInlinedBeanParam extends Object implements ServiceObject {
    *
    * @param pBookingID Value to which {@link #bookingID} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setBookingID( BookingID pBookingID ) {
     // Assign value to attribute
     bookingID = pBookingID;

@@ -6,6 +6,7 @@
 package com.anaptecs.jeaf.junit.deprecation;
 
 import com.anaptecs.jeaf.core.api.Service;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 
 /**
  * @author JEAF Generator
@@ -16,5 +17,6 @@ import com.anaptecs.jeaf.core.api.Service;
  */
 // @Something
 @Deprecated
+@JEAFCustomAnnotationTest
 public interface DeprecatedService extends Service {
 }

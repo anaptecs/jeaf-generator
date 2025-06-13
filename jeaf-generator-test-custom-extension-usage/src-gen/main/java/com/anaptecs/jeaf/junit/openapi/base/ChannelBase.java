@@ -10,9 +10,11 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
+@JEAFCustomAnnotationTest
 public abstract class ChannelBase extends Object implements ServiceObject {
   /**
    * Default serial version uid.
@@ -22,26 +24,31 @@ public abstract class ChannelBase extends Object implements ServiceObject {
   /**
    * Constant for the name of attribute "channelType".
    */
+  @JEAFCustomAnnotationTest
   public static final String CHANNELTYPE = "channelType";
 
   /**
    * Constant for the name of attribute "channelCode".
    */
+  @JEAFCustomAnnotationTest
   public static final String CHANNELCODE = "channelCode";
 
   /**
    * Constant for the name of attribute "code".
    */
+  @JEAFCustomAnnotationTest
   public static final String CODE = "code";
 
   /**
    * Constant for the name of attribute "selfServiceChannel".
    */
+  @JEAFCustomAnnotationTest
   public static final String SELFSERVICECHANNEL = "selfServiceChannel";
 
   /**
    * Constant for the name of attribute "reseller".
    */
+  @JEAFCustomAnnotationTest
   public static final String RESELLER = "reseller";
 
   // "com.anaptecs.jeaf.junit.openapi.base.ChannelType"
@@ -49,6 +56,7 @@ public abstract class ChannelBase extends Object implements ServiceObject {
   /**
    * Type of the channel
    */
+  @JEAFCustomAnnotationTest
   private ChannelType channelType;
 
   // "com.anaptecs.jeaf.junit.openapi.base.ChannelType"
@@ -59,6 +67,7 @@ public abstract class ChannelBase extends Object implements ServiceObject {
   /**
    * The business code of the channel
    */
+  @JEAFCustomAnnotationTest
   private ChannelCode channelCode;
 
   // "com.anaptecs.jeaf.junit.openapi.base.ChannelCode"
@@ -66,6 +75,7 @@ public abstract class ChannelBase extends Object implements ServiceObject {
 
   // "int"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private final int code;
 
   // "int"
@@ -77,6 +87,7 @@ public abstract class ChannelBase extends Object implements ServiceObject {
    * <br/>
    * <b>Default Value:</b> <code>true</code>
    */
+  @JEAFCustomAnnotationTest
   private final boolean selfServiceChannel;
 
   // "boolean"
@@ -84,6 +95,7 @@ public abstract class ChannelBase extends Object implements ServiceObject {
 
   // "com.anaptecs.jeaf.junit.openapi.base.Reseller"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private transient Reseller reseller;
 
   // "com.anaptecs.jeaf.junit.openapi.base.Reseller"
@@ -131,6 +143,7 @@ public abstract class ChannelBase extends Object implements ServiceObject {
      */
     // "com.anaptecs.jeaf.junit.openapi.base.ChannelType"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private ChannelType channelType;
 
     // "com.anaptecs.jeaf.junit.openapi.base.ChannelType"
@@ -141,6 +154,7 @@ public abstract class ChannelBase extends Object implements ServiceObject {
      */
     // "com.anaptecs.jeaf.junit.openapi.base.ChannelCode"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private ChannelCode channelCode;
 
     // "com.anaptecs.jeaf.junit.openapi.base.ChannelCode"
@@ -148,6 +162,7 @@ public abstract class ChannelBase extends Object implements ServiceObject {
 
     // "int"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private int code;
 
     // "int"
@@ -159,6 +174,7 @@ public abstract class ChannelBase extends Object implements ServiceObject {
      */
     // "boolean"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private boolean selfServiceChannel = true;
 
     // "boolean"
@@ -189,6 +205,7 @@ public abstract class ChannelBase extends Object implements ServiceObject {
      * @param pChannelType Value to which {@link #channelType} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public BuilderBase setChannelType( ChannelType pChannelType ) {
       channelType = pChannelType;
       return this;
@@ -206,6 +223,7 @@ public abstract class ChannelBase extends Object implements ServiceObject {
      * @param pChannelCode Value to which {@link #channelCode} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public BuilderBase setChannelCode( ChannelCode pChannelCode ) {
       channelCode = pChannelCode;
       return this;
@@ -223,6 +241,7 @@ public abstract class ChannelBase extends Object implements ServiceObject {
      * @param pCode Value to which {@link #code} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public BuilderBase setCode( int pCode ) {
       // Assign value to attribute
       code = pCode;
@@ -241,6 +260,7 @@ public abstract class ChannelBase extends Object implements ServiceObject {
      * @param pSelfServiceChannel Value to which {@link #selfServiceChannel} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public BuilderBase setSelfServiceChannel( boolean pSelfServiceChannel ) {
       // Assign value to attribute
       selfServiceChannel = pSelfServiceChannel;
@@ -283,6 +303,7 @@ public abstract class ChannelBase extends Object implements ServiceObject {
    *
    * @return {@link ChannelType} Value to which {@link #channelType} is set.
    */
+  @JEAFCustomAnnotationTest
   public ChannelType getChannelType( ) {
     return channelType;
   }
@@ -293,6 +314,7 @@ public abstract class ChannelBase extends Object implements ServiceObject {
    *
    * @param pChannelType Value to which {@link #channelType} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setChannelType( ChannelType pChannelType ) {
     channelType = pChannelType;
   }
@@ -300,6 +322,7 @@ public abstract class ChannelBase extends Object implements ServiceObject {
   /**
    * Method unsets {@link #channelType}.
    */
+  @JEAFCustomAnnotationTest
   public final void unsetChannelType( ) {
     channelType = null;
   }
@@ -319,6 +342,7 @@ public abstract class ChannelBase extends Object implements ServiceObject {
    *
    * @return {@link ChannelCode} Value to which {@link #channelCode} is set.
    */
+  @JEAFCustomAnnotationTest
   public ChannelCode getChannelCode( ) {
     return channelCode;
   }
@@ -329,6 +353,7 @@ public abstract class ChannelBase extends Object implements ServiceObject {
    *
    * @param pChannelCode Value to which {@link #channelCode} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setChannelCode( ChannelCode pChannelCode ) {
     channelCode = pChannelCode;
   }
@@ -336,6 +361,7 @@ public abstract class ChannelBase extends Object implements ServiceObject {
   /**
    * Method unsets {@link #channelCode}.
    */
+  @JEAFCustomAnnotationTest
   public final void unsetChannelCode( ) {
     channelCode = null;
   }
@@ -354,6 +380,7 @@ public abstract class ChannelBase extends Object implements ServiceObject {
    *
    * @return int Value to which {@link #code} is set.
    */
+  @JEAFCustomAnnotationTest
   public int getCode( ) {
     return code;
   }
@@ -372,6 +399,7 @@ public abstract class ChannelBase extends Object implements ServiceObject {
    *
    * @return boolean Value to which {@link #selfServiceChannel} is set.
    */
+  @JEAFCustomAnnotationTest
   @Deprecated
   public boolean getSelfServiceChannel( ) {
     return selfServiceChannel;
@@ -382,6 +410,7 @@ public abstract class ChannelBase extends Object implements ServiceObject {
    *
    * @return boolean Value to which {@link #selfServiceChannel} is set.
    */
+  @JEAFCustomAnnotationTest
   public boolean isSelfServiceChannel( ) {
     return selfServiceChannel;
   }
@@ -400,6 +429,7 @@ public abstract class ChannelBase extends Object implements ServiceObject {
    *
    * @return {@link Reseller} Value to which {@link #reseller} is set.
    */
+  @JEAFCustomAnnotationTest
   public Reseller getReseller( ) {
     return reseller;
   }
@@ -409,6 +439,7 @@ public abstract class ChannelBase extends Object implements ServiceObject {
    *
    * @param pReseller Value to which {@link #reseller} should be set.
    */
+  @JEAFCustomAnnotationTest
   void setReseller( Reseller pReseller ) {
     // Release already referenced object before setting a new association.
     if (reseller != null) {
@@ -420,6 +451,7 @@ public abstract class ChannelBase extends Object implements ServiceObject {
   /**
    * Method unsets {@link #reseller}.
    */
+  @JEAFCustomAnnotationTest
   final void unsetReseller( ) {
     reseller = null;
   }
@@ -438,6 +470,7 @@ public abstract class ChannelBase extends Object implements ServiceObject {
    *
    * @return {@link String} Value to which {@link #derivedSomething} is set.
    */
+  @JEAFCustomAnnotationTest
   public abstract String getDerivedSomething( );
 
   public void doSomethingGenerated( ) {

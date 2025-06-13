@@ -19,10 +19,12 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
 @Generated("Before Class Declaration. Here an annontation cloud be added.")
+@JEAFCustomAnnotationTest
 public class ParentClass extends Object implements ServiceObject {
   /**
    * Default serial version uid.
@@ -32,27 +34,32 @@ public class ParentClass extends Object implements ServiceObject {
   /**
    * Constant for the name of attribute "parentAttribute".
    */
+  @JEAFCustomAnnotationTest
   public static final String PARENTATTRIBUTE = "parentAttribute";
 
   /**
    * Constant for the name of attribute "ibans".
    */
+  @JEAFCustomAnnotationTest
   public static final String IBANS = "ibans";
 
   /**
    * Constant for the name of attribute "theBankAccount".
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   public static final String THEBANKACCOUNT = "theBankAccount";
 
   /**
    * Constant for the name of attribute "legacyBankAccounts".
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   public static final String LEGACYBANKACCOUNTS = "legacyBankAccounts";
 
   // "java.lang.String"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private String parentAttribute;
 
   // "java.lang.String"
@@ -60,6 +67,7 @@ public class ParentClass extends Object implements ServiceObject {
 
   // "com.anaptecs.jeaf.junit.openapi.base.IBAN"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private Set<IBAN> ibans;
 
   // "com.anaptecs.jeaf.junit.openapi.base.IBAN"
@@ -71,6 +79,7 @@ public class ParentClass extends Object implements ServiceObject {
    * I would like to document references to other types.
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   private BankAccount theBankAccount;
 
   // "com.anaptecs.jeaf.junit.openapi.base.BankAccount"
@@ -82,6 +91,7 @@ public class ParentClass extends Object implements ServiceObject {
    * Association is still there be SemVer compliant.
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   private List<BankAccount> legacyBankAccounts;
 
   // "com.anaptecs.jeaf.junit.openapi.base.BankAccount"
@@ -141,9 +151,11 @@ public class ParentClass extends Object implements ServiceObject {
   /**
    * Class implements builder to create a new instance of class <code>ParentClass</code>.
    */
+  @JEAFCustomAnnotationTest
   public static class Builder {
     // "java.lang.String"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private String parentAttribute;
 
     // "java.lang.String"
@@ -151,6 +163,7 @@ public class ParentClass extends Object implements ServiceObject {
 
     // "com.anaptecs.jeaf.junit.openapi.base.IBAN"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private Set<IBAN> ibans;
 
     // "com.anaptecs.jeaf.junit.openapi.base.IBAN"
@@ -162,6 +175,7 @@ public class ParentClass extends Object implements ServiceObject {
     // "com.anaptecs.jeaf.junit.openapi.base.BankAccount"
     @BuilderPropertyDeclaration
     @Deprecated
+    @JEAFCustomAnnotationTest
     private BankAccount theBankAccount;
 
     // "com.anaptecs.jeaf.junit.openapi.base.BankAccount"
@@ -173,6 +187,7 @@ public class ParentClass extends Object implements ServiceObject {
     // "com.anaptecs.jeaf.junit.openapi.base.BankAccount"
     @BuilderPropertyDeclaration
     @Deprecated
+    @JEAFCustomAnnotationTest
     private List<BankAccount> legacyBankAccounts;
 
     // "com.anaptecs.jeaf.junit.openapi.base.BankAccount"
@@ -203,6 +218,7 @@ public class ParentClass extends Object implements ServiceObject {
      * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setParentAttribute( String pParentAttribute ) {
       // Assign value to attribute
       parentAttribute = pParentAttribute;
@@ -221,6 +237,7 @@ public class ParentClass extends Object implements ServiceObject {
      * @param pIbans Collection to which {@link #ibans} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setIbans( Set<IBAN> pIbans ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pIbans != null) {
@@ -238,6 +255,7 @@ public class ParentClass extends Object implements ServiceObject {
      * @param pIbans Array of objects that should be added to {@link #ibans}. The parameter may be null.
      * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder addToIbans( IBAN... pIbans ) {
       if (pIbans != null) {
         if (ibans == null) {
@@ -261,6 +279,7 @@ public class ParentClass extends Object implements ServiceObject {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
+    @JEAFCustomAnnotationTest
     public Builder setTheBankAccount( BankAccount pTheBankAccount ) {
       theBankAccount = pTheBankAccount;
       return this;
@@ -279,6 +298,7 @@ public class ParentClass extends Object implements ServiceObject {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
+    @JEAFCustomAnnotationTest
     public Builder setLegacyBankAccounts( List<BankAccount> pLegacyBankAccounts ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pLegacyBankAccounts != null) {
@@ -298,6 +318,7 @@ public class ParentClass extends Object implements ServiceObject {
      * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
      */
     @Deprecated
+    @JEAFCustomAnnotationTest
     public Builder addToLegacyBankAccounts( BankAccount... pLegacyBankAccounts ) {
       if (pLegacyBankAccounts != null) {
         if (legacyBankAccounts == null) {
@@ -344,6 +365,7 @@ public class ParentClass extends Object implements ServiceObject {
    *
    * @return {@link String} Value to which {@link #parentAttribute} is set.
    */
+  @JEAFCustomAnnotationTest
   public String getParentAttribute( ) {
     return parentAttribute;
   }
@@ -353,6 +375,7 @@ public class ParentClass extends Object implements ServiceObject {
    *
    * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setParentAttribute( String pParentAttribute ) {
     // Assign value to attribute
     parentAttribute = pParentAttribute;
@@ -373,6 +396,7 @@ public class ParentClass extends Object implements ServiceObject {
    * @return {@link Set<IBAN>} Value to which {@link #ibans} is set. The method never returns null and the returned
    * collection is unmodifiable.
    */
+  @JEAFCustomAnnotationTest
   public Set<IBAN> getIbans( ) {
     // Return all IBAN objects as unmodifiable collection.
     return Collections.unmodifiableSet(ibans);
@@ -383,6 +407,7 @@ public class ParentClass extends Object implements ServiceObject {
    *
    * @param pIbans Object that should be added to {@link #ibans}. The parameter must not be null.
    */
+  @JEAFCustomAnnotationTest
   public void addToIbans( IBAN pIbans ) {
     // Check parameter "pIbans" for invalid value null.
     Check.checkInvalidParameterNull(pIbans, "pIbans");
@@ -395,6 +420,7 @@ public class ParentClass extends Object implements ServiceObject {
    *
    * @param pIbans Collection with all objects that should be added to {@link #ibans}. The parameter must not be null.
    */
+  @JEAFCustomAnnotationTest
   public void addToIbans( Collection<IBAN> pIbans ) {
     // Check parameter "pIbans" for invalid value null.
     Check.checkInvalidParameterNull(pIbans, "pIbans");
@@ -409,6 +435,7 @@ public class ParentClass extends Object implements ServiceObject {
    *
    * @param pIbans Object that should be removed from {@link #ibans}. The parameter must not be null.
    */
+  @JEAFCustomAnnotationTest
   public void removeFromIbans( IBAN pIbans ) {
     // Check parameter for invalid value null.
     Check.checkInvalidParameterNull(pIbans, "pIbans");
@@ -419,6 +446,7 @@ public class ParentClass extends Object implements ServiceObject {
   /**
    * Method removes all objects from {@link #ibans}.
    */
+  @JEAFCustomAnnotationTest
   public void clearIbans( ) {
     // Remove all objects from association "ibans".
     ibans.clear();
@@ -440,6 +468,7 @@ public class ParentClass extends Object implements ServiceObject {
    * @return {@link BankAccount} Value to which {@link #theBankAccount} is set.
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   public BankAccount getTheBankAccount( ) {
     return theBankAccount;
   }
@@ -451,6 +480,7 @@ public class ParentClass extends Object implements ServiceObject {
    * @param pTheBankAccount Value to which {@link #theBankAccount} should be set.
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   public void setTheBankAccount( BankAccount pTheBankAccount ) {
     theBankAccount = pTheBankAccount;
   }
@@ -459,6 +489,7 @@ public class ParentClass extends Object implements ServiceObject {
    * Method unsets {@link #theBankAccount}.
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   public final void unsetTheBankAccount( ) {
     theBankAccount = null;
   }
@@ -480,6 +511,7 @@ public class ParentClass extends Object implements ServiceObject {
    * and the returned collection is unmodifiable.
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   public List<BankAccount> getLegacyBankAccounts( ) {
     // Return all BankAccount objects as unmodifiable collection.
     return Collections.unmodifiableList(legacyBankAccounts);
@@ -492,6 +524,7 @@ public class ParentClass extends Object implements ServiceObject {
    * null.
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   public void addToLegacyBankAccounts( BankAccount pLegacyBankAccounts ) {
     // Check parameter "pLegacyBankAccounts" for invalid value null.
     Check.checkInvalidParameterNull(pLegacyBankAccounts, "pLegacyBankAccounts");
@@ -506,6 +539,7 @@ public class ParentClass extends Object implements ServiceObject {
    * parameter must not be null.
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   public void addToLegacyBankAccounts( Collection<BankAccount> pLegacyBankAccounts ) {
     // Check parameter "pLegacyBankAccounts" for invalid value null.
     Check.checkInvalidParameterNull(pLegacyBankAccounts, "pLegacyBankAccounts");
@@ -522,6 +556,7 @@ public class ParentClass extends Object implements ServiceObject {
    * be null.
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   public void removeFromLegacyBankAccounts( BankAccount pLegacyBankAccounts ) {
     // Check parameter for invalid value null.
     Check.checkInvalidParameterNull(pLegacyBankAccounts, "pLegacyBankAccounts");
@@ -533,6 +568,7 @@ public class ParentClass extends Object implements ServiceObject {
    * Method removes all objects from {@link #legacyBankAccounts}.
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   public void clearLegacyBankAccounts( ) {
     // Remove all objects from association "legacyBankAccounts".
     legacyBankAccounts.clear();

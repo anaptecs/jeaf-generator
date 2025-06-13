@@ -17,11 +17,13 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 import com.anaptecs.jeaf.junit.openapi.datatypes.MyDataType;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
 @Generated("Before Class Declaration. Here an annontation cloud be added.")
+@JEAFCustomAnnotationTest
 public class DataTypeUsage extends Object implements ServiceObject {
   /**
    * Default serial version uid.
@@ -31,15 +33,18 @@ public class DataTypeUsage extends Object implements ServiceObject {
   /**
    * Constant for the name of attribute "code".
    */
+  @JEAFCustomAnnotationTest
   public static final String CODE = "code";
 
   /**
    * Constant for the name of attribute "codes".
    */
+  @JEAFCustomAnnotationTest
   public static final String CODES = "codes";
 
   // "com.anaptecs.jeaf.junit.openapi.datatypes.MyDataType"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private MyDataType code;
 
   // "com.anaptecs.jeaf.junit.openapi.datatypes.MyDataType"
@@ -47,6 +52,7 @@ public class DataTypeUsage extends Object implements ServiceObject {
 
   // "com.anaptecs.jeaf.junit.openapi.datatypes.MyDataType"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private List<MyDataType> codes;
 
   // "com.anaptecs.jeaf.junit.openapi.datatypes.MyDataType"
@@ -94,9 +100,11 @@ public class DataTypeUsage extends Object implements ServiceObject {
   /**
    * Class implements builder to create a new instance of class <code>DataTypeUsage</code>.
    */
+  @JEAFCustomAnnotationTest
   public static class Builder {
     // "com.anaptecs.jeaf.junit.openapi.datatypes.MyDataType"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private MyDataType code;
 
     // "com.anaptecs.jeaf.junit.openapi.datatypes.MyDataType"
@@ -104,6 +112,7 @@ public class DataTypeUsage extends Object implements ServiceObject {
 
     // "com.anaptecs.jeaf.junit.openapi.datatypes.MyDataType"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private List<MyDataType> codes;
 
     // "com.anaptecs.jeaf.junit.openapi.datatypes.MyDataType"
@@ -132,6 +141,7 @@ public class DataTypeUsage extends Object implements ServiceObject {
      * @param pCode Value to which {@link #code} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setCode( MyDataType pCode ) {
       code = pCode;
       return this;
@@ -149,6 +159,7 @@ public class DataTypeUsage extends Object implements ServiceObject {
      * @param pCodes Collection to which {@link #codes} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setCodes( List<MyDataType> pCodes ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pCodes != null) {
@@ -166,6 +177,7 @@ public class DataTypeUsage extends Object implements ServiceObject {
      * @param pCodes Array of objects that should be added to {@link #codes}. The parameter may be null.
      * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder addToCodes( MyDataType... pCodes ) {
       if (pCodes != null) {
         if (codes == null) {
@@ -212,6 +224,7 @@ public class DataTypeUsage extends Object implements ServiceObject {
    *
    * @return {@link MyDataType} Value to which {@link #code} is set.
    */
+  @JEAFCustomAnnotationTest
   public MyDataType getCode( ) {
     return code;
   }
@@ -221,6 +234,7 @@ public class DataTypeUsage extends Object implements ServiceObject {
    *
    * @param pCode Value to which {@link #code} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setCode( MyDataType pCode ) {
     code = pCode;
   }
@@ -228,6 +242,7 @@ public class DataTypeUsage extends Object implements ServiceObject {
   /**
    * Method unsets {@link #code}.
    */
+  @JEAFCustomAnnotationTest
   public final void unsetCode( ) {
     code = null;
   }
@@ -247,6 +262,7 @@ public class DataTypeUsage extends Object implements ServiceObject {
    * @return {@link List<MyDataType>} Value to which {@link #codes} is set. The method never returns null and the
    * returned collection is unmodifiable.
    */
+  @JEAFCustomAnnotationTest
   public List<MyDataType> getCodes( ) {
     // Return all MyDataType objects as unmodifiable collection.
     return Collections.unmodifiableList(codes);
@@ -257,6 +273,7 @@ public class DataTypeUsage extends Object implements ServiceObject {
    *
    * @param pCodes Object that should be added to {@link #codes}. The parameter must not be null.
    */
+  @JEAFCustomAnnotationTest
   public void addToCodes( MyDataType pCodes ) {
     // Check parameter "pCodes" for invalid value null.
     Check.checkInvalidParameterNull(pCodes, "pCodes");
@@ -269,6 +286,7 @@ public class DataTypeUsage extends Object implements ServiceObject {
    *
    * @param pCodes Collection with all objects that should be added to {@link #codes}. The parameter must not be null.
    */
+  @JEAFCustomAnnotationTest
   public void addToCodes( Collection<MyDataType> pCodes ) {
     // Check parameter "pCodes" for invalid value null.
     Check.checkInvalidParameterNull(pCodes, "pCodes");
@@ -283,6 +301,7 @@ public class DataTypeUsage extends Object implements ServiceObject {
    *
    * @param pCodes Object that should be removed from {@link #codes}. The parameter must not be null.
    */
+  @JEAFCustomAnnotationTest
   public void removeFromCodes( MyDataType pCodes ) {
     // Check parameter for invalid value null.
     Check.checkInvalidParameterNull(pCodes, "pCodes");
@@ -293,6 +312,7 @@ public class DataTypeUsage extends Object implements ServiceObject {
   /**
    * Method removes all objects from {@link #codes}.
    */
+  @JEAFCustomAnnotationTest
   public void clearCodes( ) {
     // Remove all objects from association "codes".
     codes.clear();

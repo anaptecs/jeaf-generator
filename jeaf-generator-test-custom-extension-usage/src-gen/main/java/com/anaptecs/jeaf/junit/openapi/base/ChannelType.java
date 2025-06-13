@@ -5,6 +5,8 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
+
 /**
  * <p/>
  * <b>Alternate Name:</b> <code>Kanal</code>
@@ -12,6 +14,7 @@ package com.anaptecs.jeaf.junit.openapi.base;
  * @author JEAF Generator
  * @version JEAF Release 1.6.x
  */
+@JEAFCustomAnnotationTest
 public enum ChannelType {
   /**
    * counter <br/>
@@ -21,7 +24,11 @@ public enum ChannelType {
    * <p/>
    * <b>Alternate Name:</b> <code>BEDIENT</code>
    */
-  COUNTER("CNT"), CALL_CENTER("CC"), MOBILE("MOB"), TVM("TVM"),
+  @JEAFCustomAnnotationTest
+  COUNTER("CNT"), @JEAFCustomAnnotationTest
+  CALL_CENTER("CC"), @JEAFCustomAnnotationTest
+  MOBILE("MOB"), @JEAFCustomAnnotationTest
+  TVM("TVM"),
   /**
    * <br/>
    * <br/>
@@ -30,6 +37,7 @@ public enum ChannelType {
    * <p/>
    * <b>Breaking Change with 1.47.11:</b> Added new literal
    */
+  @JEAFCustomAnnotationTest
   WEB("WEB"),
   /**
    * <br/>
@@ -40,6 +48,7 @@ public enum ChannelType {
    * @deprecated I'm <code>DEPRECATED</code>. (<b>since:</b> TBD, <b>removed with:</b> TBD)
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   LEGACY_POS("PRISMA");
 
   /**
@@ -49,6 +58,7 @@ public enum ChannelType {
     code = pCode;
   }
 
+  @JEAFCustomAnnotationTest
   private final String code;
 
   /**
@@ -56,6 +66,7 @@ public enum ChannelType {
    *
    * @return {@link String} Value to which {@link #code} is set.
    */
+  @JEAFCustomAnnotationTest
   public String getCode( ) {
     return code;
   }

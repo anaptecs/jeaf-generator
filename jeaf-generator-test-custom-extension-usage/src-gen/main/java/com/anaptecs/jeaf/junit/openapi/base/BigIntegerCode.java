@@ -14,10 +14,12 @@ import javax.validation.constraints.Max;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
 @Generated("Before Class Declaration. Here an annontation cloud be added.")
+@JEAFCustomAnnotationTest
 public class BigIntegerCode extends Object implements ServiceObject {
   /**
    * Default serial version uid.
@@ -27,10 +29,12 @@ public class BigIntegerCode extends Object implements ServiceObject {
   /**
    * Constant for the name of attribute "code".
    */
+  @JEAFCustomAnnotationTest
   public static final String CODE = "code";
 
   // "java.math.BigInteger"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   @Max(value = 4711)
   private BigInteger code;
 
@@ -70,9 +74,11 @@ public class BigIntegerCode extends Object implements ServiceObject {
   /**
    * Class implements builder to create a new instance of class <code>BigIntegerCode</code>.
    */
+  @JEAFCustomAnnotationTest
   public static class Builder {
     // "java.math.BigInteger"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     @Max(value = 4711)
     private BigInteger code;
 
@@ -101,6 +107,7 @@ public class BigIntegerCode extends Object implements ServiceObject {
      * @param pCode Value to which {@link #code} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setCode( BigInteger pCode ) {
       // Assign value to attribute
       code = pCode;
@@ -143,6 +150,7 @@ public class BigIntegerCode extends Object implements ServiceObject {
    *
    * @return {@link BigInteger} Value to which {@link #code} is set.
    */
+  @JEAFCustomAnnotationTest
   public BigInteger getCode( ) {
     return code;
   }
@@ -152,6 +160,7 @@ public class BigIntegerCode extends Object implements ServiceObject {
    *
    * @param pCode Value to which {@link #code} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setCode( BigInteger pCode ) {
     // Assign value to attribute
     code = pCode;

@@ -7,7 +7,10 @@ package com.anaptecs.jeaf.junit.openapi.base;
 
 import javax.annotation.processing.Generated;
 
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
+
 @Generated("Before Class Declaration. Here an annontation cloud be added.")
+@JEAFCustomAnnotationTest
 public class Channel extends ChannelBase {
   /**
    * Default serial version uid.
@@ -61,6 +64,7 @@ public class Channel extends ChannelBase {
    *
    * @return {@link String} Value to which {@link #derivedSomething} is set.
    */
+  @JEAFCustomAnnotationTest
   @Override
   public String getDerivedSomething( ) {
     // TODO Implement method for derived property "derivedSomething".

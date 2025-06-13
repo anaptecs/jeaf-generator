@@ -13,6 +13,7 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 import com.anaptecs.jeaf.junit.openapi.base.Channel;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -26,6 +27,7 @@ import com.anaptecs.jeaf.xfun.api.checks.Check;
  * @author JEAF Generator
  * @version JEAF Release 1.6.x
  */
+@JEAFCustomAnnotationTest
 public class Sale extends Object implements ServiceObject {
   /**
    * Default serial version uid.
@@ -35,15 +37,18 @@ public class Sale extends Object implements ServiceObject {
   /**
    * Constant for the name of attribute "transactionAmount".
    */
+  @JEAFCustomAnnotationTest
   public static final String TRANSACTIONAMOUNT = "transactionAmount";
 
   /**
    * Constant for the name of attribute "sale".
    */
+  @JEAFCustomAnnotationTest
   public static final String SALE = "sale";
 
   // "java.math.BigDecimal"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private BigDecimal transactionAmount;
 
   // "java.math.BigDecimal"
@@ -51,6 +56,7 @@ public class Sale extends Object implements ServiceObject {
 
   // "com.anaptecs.jeaf.junit.openapi.base.Channel"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private Channel sale;
 
   // "com.anaptecs.jeaf.junit.openapi.base.Channel"
@@ -92,9 +98,11 @@ public class Sale extends Object implements ServiceObject {
   /**
    * Class implements builder to create a new instance of class <code>Sale</code>.
    */
+  @JEAFCustomAnnotationTest
   public static class Builder {
     // "java.math.BigDecimal"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private BigDecimal transactionAmount;
 
     // "java.math.BigDecimal"
@@ -102,6 +110,7 @@ public class Sale extends Object implements ServiceObject {
 
     // "com.anaptecs.jeaf.junit.openapi.base.Channel"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private Channel sale;
 
     // "com.anaptecs.jeaf.junit.openapi.base.Channel"
@@ -130,6 +139,7 @@ public class Sale extends Object implements ServiceObject {
      * @param pTransactionAmount Value to which {@link #transactionAmount} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setTransactionAmount( BigDecimal pTransactionAmount ) {
       // Assign value to attribute
       transactionAmount = pTransactionAmount;
@@ -148,6 +158,7 @@ public class Sale extends Object implements ServiceObject {
      * @param pSale Value to which {@link #sale} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setSale( Channel pSale ) {
       sale = pSale;
       return this;
@@ -188,6 +199,7 @@ public class Sale extends Object implements ServiceObject {
    *
    * @return {@link BigDecimal} Value to which {@link #transactionAmount} is set.
    */
+  @JEAFCustomAnnotationTest
   public BigDecimal getTransactionAmount( ) {
     return transactionAmount;
   }
@@ -197,6 +209,7 @@ public class Sale extends Object implements ServiceObject {
    *
    * @param pTransactionAmount Value to which {@link #transactionAmount} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setTransactionAmount( BigDecimal pTransactionAmount ) {
     // Assign value to attribute
     transactionAmount = pTransactionAmount;
@@ -216,6 +229,7 @@ public class Sale extends Object implements ServiceObject {
    *
    * @return {@link Channel} Value to which {@link #sale} is set.
    */
+  @JEAFCustomAnnotationTest
   public Channel getSale( ) {
     return sale;
   }
@@ -225,6 +239,7 @@ public class Sale extends Object implements ServiceObject {
    *
    * @param pSale Value to which {@link #sale} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setSale( Channel pSale ) {
     sale = pSale;
   }
@@ -232,6 +247,7 @@ public class Sale extends Object implements ServiceObject {
   /**
    * Method unsets {@link #sale}.
    */
+  @JEAFCustomAnnotationTest
   public final void unsetSale( ) {
     sale = null;
   }

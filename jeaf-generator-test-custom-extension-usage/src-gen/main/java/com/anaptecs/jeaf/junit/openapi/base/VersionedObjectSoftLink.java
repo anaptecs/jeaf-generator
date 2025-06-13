@@ -7,7 +7,10 @@ package com.anaptecs.jeaf.junit.openapi.base;
 
 import javax.annotation.processing.Generated;
 
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
+
 @Generated("Before Class Declaration. Here an annontation cloud be added.")
+@JEAFCustomAnnotationTest
 public class VersionedObjectSoftLink extends VersionedObjectSoftLinkBase {
   /**
    * Default serial version uid.

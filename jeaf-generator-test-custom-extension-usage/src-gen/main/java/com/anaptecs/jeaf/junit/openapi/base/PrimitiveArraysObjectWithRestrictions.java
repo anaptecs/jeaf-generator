@@ -16,10 +16,12 @@ import javax.validation.constraints.Size;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
 @Generated("Before Class Declaration. Here an annontation cloud be added.")
+@JEAFCustomAnnotationTest
 public class PrimitiveArraysObjectWithRestrictions extends Object implements ServiceObject {
   /**
    * Default serial version uid.
@@ -29,115 +31,138 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
   /**
    * Constant for the name of attribute "aBooleanArray".
    */
+  @JEAFCustomAnnotationTest
   public static final String ABOOLEANARRAY = "aBooleanArray";
 
   /**
    * Constant for the name of attribute "bBooleanArray".
    */
+  @JEAFCustomAnnotationTest
   public static final String BBOOLEANARRAY = "bBooleanArray";
 
   /**
    * Constant for the name of attribute "cBooleanArray".
    */
+  @JEAFCustomAnnotationTest
   public static final String CBOOLEANARRAY = "cBooleanArray";
 
   /**
    * Constant for the name of attribute "aByteArray".
    */
+  @JEAFCustomAnnotationTest
   public static final String ABYTEARRAY = "aByteArray";
 
   /**
    * Constant for the name of attribute "bByteArray".
    */
+  @JEAFCustomAnnotationTest
   public static final String BBYTEARRAY = "bByteArray";
 
   /**
    * Constant for the name of attribute "aShortArray".
    */
+  @JEAFCustomAnnotationTest
   public static final String ASHORTARRAY = "aShortArray";
 
   /**
    * Constant for the name of attribute "bShortArray".
    */
+  @JEAFCustomAnnotationTest
   public static final String BSHORTARRAY = "bShortArray";
 
   /**
    * Constant for the name of attribute "aIntegerArray".
    */
+  @JEAFCustomAnnotationTest
   public static final String AINTEGERARRAY = "aIntegerArray";
 
   /**
    * Constant for the name of attribute "bIntegerArray".
    */
+  @JEAFCustomAnnotationTest
   public static final String BINTEGERARRAY = "bIntegerArray";
 
   /**
    * Constant for the name of attribute "cIntegerArray".
    */
+  @JEAFCustomAnnotationTest
   public static final String CINTEGERARRAY = "cIntegerArray";
 
   /**
    * Constant for the name of attribute "aLongArray".
    */
+  @JEAFCustomAnnotationTest
   public static final String ALONGARRAY = "aLongArray";
 
   /**
    * Constant for the name of attribute "bLongArray".
    */
+  @JEAFCustomAnnotationTest
   public static final String BLONGARRAY = "bLongArray";
 
   /**
    * Constant for the name of attribute "aBigIntegerArray".
    */
+  @JEAFCustomAnnotationTest
   public static final String ABIGINTEGERARRAY = "aBigIntegerArray";
 
   /**
    * Constant for the name of attribute "aCharacterArray".
    */
+  @JEAFCustomAnnotationTest
   public static final String ACHARACTERARRAY = "aCharacterArray";
 
   /**
    * Constant for the name of attribute "bCharacterArray".
    */
+  @JEAFCustomAnnotationTest
   public static final String BCHARACTERARRAY = "bCharacterArray";
 
   /**
    * Constant for the name of attribute "aFloatArray".
    */
+  @JEAFCustomAnnotationTest
   public static final String AFLOATARRAY = "aFloatArray";
 
   /**
    * Constant for the name of attribute "bFloatArray".
    */
+  @JEAFCustomAnnotationTest
   public static final String BFLOATARRAY = "bFloatArray";
 
   /**
    * Constant for the name of attribute "aDoubleArray".
    */
+  @JEAFCustomAnnotationTest
   public static final String ADOUBLEARRAY = "aDoubleArray";
 
   /**
    * Constant for the name of attribute "bDoubleArray".
    */
+  @JEAFCustomAnnotationTest
   public static final String BDOUBLEARRAY = "bDoubleArray";
 
   /**
    * Constant for the name of attribute "aBigDecimalArray".
    */
+  @JEAFCustomAnnotationTest
   public static final String ABIGDECIMALARRAY = "aBigDecimalArray";
 
   /**
    * Constant for the name of attribute "aStringArray".
    */
+  @JEAFCustomAnnotationTest
   public static final String ASTRINGARRAY = "aStringArray";
 
   /**
    * Constant for the name of attribute "bStringArray".
    */
+  @JEAFCustomAnnotationTest
   public static final String BSTRINGARRAY = "bStringArray";
 
   // "boolean"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private boolean[] aBooleanArray;
 
   // "boolean"
@@ -145,6 +170,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
 
   // "java.lang.Boolean"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private Boolean[] bBooleanArray;
 
   // "java.lang.Boolean"
@@ -152,6 +178,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
 
   // "boolean"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private boolean[] cBooleanArray;
 
   // "boolean"
@@ -159,6 +186,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
 
   // "byte"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   @Size(min = 0, max = 32768)
   private byte[] aByteArray;
 
@@ -167,6 +195,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
 
   // "java.lang.Byte"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private Byte[] bByteArray;
 
   // "java.lang.Byte"
@@ -174,6 +203,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
 
   // "short"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private short[] aShortArray;
 
   // "short"
@@ -181,6 +211,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
 
   // "java.lang.Short"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private Short[] bShortArray;
 
   // "java.lang.Short"
@@ -188,6 +219,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
 
   // "int"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private int[] aIntegerArray;
 
   // "int"
@@ -195,6 +227,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
 
   // "java.lang.Integer"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private Integer[] bIntegerArray;
 
   // "java.lang.Integer"
@@ -202,6 +235,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
 
   // "Integer"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private Integer[] cIntegerArray;
 
   // "Integer"
@@ -209,6 +243,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
 
   // "long"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   @NotEmpty
   private long[] aLongArray;
 
@@ -217,6 +252,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
 
   // "java.lang.Long"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private Long[] bLongArray;
 
   // "java.lang.Long"
@@ -224,6 +260,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
 
   // "java.math.BigInteger"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private BigInteger[] aBigIntegerArray;
 
   // "java.math.BigInteger"
@@ -231,6 +268,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
 
   // "char"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private char[] aCharacterArray;
 
   // "char"
@@ -238,6 +276,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
 
   // "java.lang.Character"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private Character[] bCharacterArray;
 
   // "java.lang.Character"
@@ -245,6 +284,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
 
   // "float"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private float[] aFloatArray;
 
   // "float"
@@ -252,6 +292,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
 
   // "java.lang.Float"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private Float[] bFloatArray;
 
   // "java.lang.Float"
@@ -259,6 +300,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
 
   // "double"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   @Size(min = 4, max = 12)
   private double[] aDoubleArray;
 
@@ -267,6 +309,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
 
   // "java.lang.Double"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private Double[] bDoubleArray;
 
   // "java.lang.Double"
@@ -274,6 +317,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
 
   // "java.math.BigDecimal"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private BigDecimal[] aBigDecimalArray;
 
   // "java.math.BigDecimal"
@@ -281,6 +325,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
 
   // "String"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private String[] aStringArray;
 
   // "String"
@@ -288,6 +333,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
 
   // "String"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private String[] bStringArray;
 
   // "String"
@@ -389,9 +435,11 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
   /**
    * Class implements builder to create a new instance of class <code>PrimitiveArraysObjectWithRestrictions</code>.
    */
+  @JEAFCustomAnnotationTest
   public static class Builder {
     // "boolean"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private boolean[] aBooleanArray;
 
     // "boolean"
@@ -399,6 +447,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
 
     // "java.lang.Boolean"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private Boolean[] bBooleanArray;
 
     // "java.lang.Boolean"
@@ -406,6 +455,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
 
     // "boolean"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private boolean[] cBooleanArray;
 
     // "boolean"
@@ -413,6 +463,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
 
     // "byte"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     @Size(min = 0, max = 32768)
     private byte[] aByteArray;
 
@@ -421,6 +472,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
 
     // "java.lang.Byte"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private Byte[] bByteArray;
 
     // "java.lang.Byte"
@@ -428,6 +480,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
 
     // "short"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private short[] aShortArray;
 
     // "short"
@@ -435,6 +488,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
 
     // "java.lang.Short"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private Short[] bShortArray;
 
     // "java.lang.Short"
@@ -442,6 +496,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
 
     // "int"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private int[] aIntegerArray;
 
     // "int"
@@ -449,6 +504,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
 
     // "java.lang.Integer"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private Integer[] bIntegerArray;
 
     // "java.lang.Integer"
@@ -456,6 +512,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
 
     // "Integer"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private Integer[] cIntegerArray;
 
     // "Integer"
@@ -463,6 +520,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
 
     // "long"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     @NotEmpty
     private long[] aLongArray;
 
@@ -471,6 +529,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
 
     // "java.lang.Long"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private Long[] bLongArray;
 
     // "java.lang.Long"
@@ -478,6 +537,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
 
     // "java.math.BigInteger"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private BigInteger[] aBigIntegerArray;
 
     // "java.math.BigInteger"
@@ -485,6 +545,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
 
     // "char"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private char[] aCharacterArray;
 
     // "char"
@@ -492,6 +553,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
 
     // "java.lang.Character"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private Character[] bCharacterArray;
 
     // "java.lang.Character"
@@ -499,6 +561,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
 
     // "float"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private float[] aFloatArray;
 
     // "float"
@@ -506,6 +569,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
 
     // "java.lang.Float"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private Float[] bFloatArray;
 
     // "java.lang.Float"
@@ -513,6 +577,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
 
     // "double"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     @Size(min = 4, max = 12)
     private double[] aDoubleArray;
 
@@ -521,6 +586,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
 
     // "java.lang.Double"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private Double[] bDoubleArray;
 
     // "java.lang.Double"
@@ -528,6 +594,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
 
     // "java.math.BigDecimal"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private BigDecimal[] aBigDecimalArray;
 
     // "java.math.BigDecimal"
@@ -535,6 +602,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
 
     // "String"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private String[] aStringArray;
 
     // "String"
@@ -542,6 +610,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
 
     // "String"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private String[] bStringArray;
 
     // "String"
@@ -591,6 +660,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
      * @param pABooleanArray Value to which {@link #aBooleanArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setABooleanArray( boolean[] pABooleanArray ) {
       // Assign value to attribute
       if (pABooleanArray != null) {
@@ -615,6 +685,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
      * @param pBBooleanArray Collection to which {@link #bBooleanArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setBBooleanArray( Boolean[] pBBooleanArray ) {
       // Assign value to attribute
       if (pBBooleanArray != null) {
@@ -639,6 +710,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
      * @param pCBooleanArray Value to which {@link #cBooleanArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setCBooleanArray( boolean[] pCBooleanArray ) {
       // Assign value to attribute
       if (pCBooleanArray != null) {
@@ -663,6 +735,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
      * @param pAByteArray Value to which {@link #aByteArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setAByteArray( byte[] pAByteArray ) {
       // Assign value to attribute
       if (pAByteArray != null) {
@@ -687,6 +760,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
      * @param pBByteArray Collection to which {@link #bByteArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setBByteArray( Byte[] pBByteArray ) {
       // Assign value to attribute
       if (pBByteArray != null) {
@@ -711,6 +785,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
      * @param pAShortArray Value to which {@link #aShortArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setAShortArray( short[] pAShortArray ) {
       // Assign value to attribute
       if (pAShortArray != null) {
@@ -735,6 +810,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
      * @param pBShortArray Collection to which {@link #bShortArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setBShortArray( Short[] pBShortArray ) {
       // Assign value to attribute
       if (pBShortArray != null) {
@@ -759,6 +835,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
      * @param pAIntegerArray Value to which {@link #aIntegerArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setAIntegerArray( int[] pAIntegerArray ) {
       // Assign value to attribute
       if (pAIntegerArray != null) {
@@ -783,6 +860,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
      * @param pBIntegerArray Collection to which {@link #bIntegerArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setBIntegerArray( Integer[] pBIntegerArray ) {
       // Assign value to attribute
       if (pBIntegerArray != null) {
@@ -807,6 +885,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
      * @param pCIntegerArray Collection to which {@link #cIntegerArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setCIntegerArray( Integer[] pCIntegerArray ) {
       // Assign value to attribute
       if (pCIntegerArray != null) {
@@ -831,6 +910,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
      * @param pALongArray Value to which {@link #aLongArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setALongArray( long[] pALongArray ) {
       // Assign value to attribute
       if (pALongArray != null) {
@@ -855,6 +935,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
      * @param pBLongArray Collection to which {@link #bLongArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setBLongArray( Long[] pBLongArray ) {
       // Assign value to attribute
       if (pBLongArray != null) {
@@ -879,6 +960,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
      * @param pABigIntegerArray Collection to which {@link #aBigIntegerArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setABigIntegerArray( BigInteger[] pABigIntegerArray ) {
       // Assign value to attribute
       if (pABigIntegerArray != null) {
@@ -903,6 +985,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
      * @param pACharacterArray Value to which {@link #aCharacterArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setACharacterArray( char[] pACharacterArray ) {
       // Assign value to attribute
       if (pACharacterArray != null) {
@@ -927,6 +1010,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
      * @param pBCharacterArray Collection to which {@link #bCharacterArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setBCharacterArray( Character[] pBCharacterArray ) {
       // Assign value to attribute
       if (pBCharacterArray != null) {
@@ -951,6 +1035,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
      * @param pAFloatArray Value to which {@link #aFloatArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setAFloatArray( float[] pAFloatArray ) {
       // Assign value to attribute
       if (pAFloatArray != null) {
@@ -975,6 +1060,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
      * @param pBFloatArray Collection to which {@link #bFloatArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setBFloatArray( Float[] pBFloatArray ) {
       // Assign value to attribute
       if (pBFloatArray != null) {
@@ -999,6 +1085,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
      * @param pADoubleArray Value to which {@link #aDoubleArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setADoubleArray( double[] pADoubleArray ) {
       // Assign value to attribute
       if (pADoubleArray != null) {
@@ -1023,6 +1110,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
      * @param pBDoubleArray Collection to which {@link #bDoubleArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setBDoubleArray( Double[] pBDoubleArray ) {
       // Assign value to attribute
       if (pBDoubleArray != null) {
@@ -1047,6 +1135,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
      * @param pABigDecimalArray Collection to which {@link #aBigDecimalArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setABigDecimalArray( BigDecimal[] pABigDecimalArray ) {
       // Assign value to attribute
       if (pABigDecimalArray != null) {
@@ -1071,6 +1160,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
      * @param pAStringArray Collection to which {@link #aStringArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setAStringArray( String[] pAStringArray ) {
       // Assign value to attribute
       if (pAStringArray != null) {
@@ -1095,6 +1185,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
      * @param pBStringArray Collection to which {@link #bStringArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setBStringArray( String[] pBStringArray ) {
       // Assign value to attribute
       if (pBStringArray != null) {
@@ -1143,6 +1234,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
    *
    * @return boolean[] Value to which {@link #aBooleanArray} is set.
    */
+  @JEAFCustomAnnotationTest
   public boolean[] getABooleanArray( ) {
     boolean[] lReturnValue;
     if (aBooleanArray != null) {
@@ -1160,6 +1252,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
    *
    * @param pABooleanArray Value to which {@link #aBooleanArray} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setABooleanArray( boolean[] pABooleanArray ) {
     // Assign value to attribute
     if (pABooleanArray != null) {
@@ -1185,6 +1278,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
    *
    * @return {@link Boolean[]} Value to which {@link #bBooleanArray} is set.
    */
+  @JEAFCustomAnnotationTest
   public Boolean[] getBBooleanArray( ) {
     Boolean[] lReturnValue;
     if (bBooleanArray != null) {
@@ -1202,6 +1296,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
    *
    * @param pBBooleanArray Value to which {@link #bBooleanArray} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setBBooleanArray( Boolean[] pBBooleanArray ) {
     // Assign value to attribute
     if (pBBooleanArray != null) {
@@ -1227,6 +1322,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
    *
    * @return boolean[] Value to which {@link #cBooleanArray} is set.
    */
+  @JEAFCustomAnnotationTest
   public boolean[] getCBooleanArray( ) {
     boolean[] lReturnValue;
     if (cBooleanArray != null) {
@@ -1244,6 +1340,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
    *
    * @param pCBooleanArray Value to which {@link #cBooleanArray} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setCBooleanArray( boolean[] pCBooleanArray ) {
     // Assign value to attribute
     if (pCBooleanArray != null) {
@@ -1269,6 +1366,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
    *
    * @return byte[] Value to which {@link #aByteArray} is set.
    */
+  @JEAFCustomAnnotationTest
   public byte[] getAByteArray( ) {
     byte[] lReturnValue;
     if (aByteArray != null) {
@@ -1286,6 +1384,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
    *
    * @param pAByteArray Value to which {@link #aByteArray} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setAByteArray( byte[] pAByteArray ) {
     // Assign value to attribute
     if (pAByteArray != null) {
@@ -1311,6 +1410,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
    *
    * @return {@link Byte[]} Value to which {@link #bByteArray} is set.
    */
+  @JEAFCustomAnnotationTest
   public Byte[] getBByteArray( ) {
     Byte[] lReturnValue;
     if (bByteArray != null) {
@@ -1328,6 +1428,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
    *
    * @param pBByteArray Value to which {@link #bByteArray} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setBByteArray( Byte[] pBByteArray ) {
     // Assign value to attribute
     if (pBByteArray != null) {
@@ -1353,6 +1454,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
    *
    * @return short[] Value to which {@link #aShortArray} is set.
    */
+  @JEAFCustomAnnotationTest
   public short[] getAShortArray( ) {
     short[] lReturnValue;
     if (aShortArray != null) {
@@ -1370,6 +1472,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
    *
    * @param pAShortArray Value to which {@link #aShortArray} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setAShortArray( short[] pAShortArray ) {
     // Assign value to attribute
     if (pAShortArray != null) {
@@ -1395,6 +1498,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
    *
    * @return {@link Short[]} Value to which {@link #bShortArray} is set.
    */
+  @JEAFCustomAnnotationTest
   public Short[] getBShortArray( ) {
     Short[] lReturnValue;
     if (bShortArray != null) {
@@ -1412,6 +1516,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
    *
    * @param pBShortArray Value to which {@link #bShortArray} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setBShortArray( Short[] pBShortArray ) {
     // Assign value to attribute
     if (pBShortArray != null) {
@@ -1437,6 +1542,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
    *
    * @return int[] Value to which {@link #aIntegerArray} is set.
    */
+  @JEAFCustomAnnotationTest
   public int[] getAIntegerArray( ) {
     int[] lReturnValue;
     if (aIntegerArray != null) {
@@ -1454,6 +1560,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
    *
    * @param pAIntegerArray Value to which {@link #aIntegerArray} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setAIntegerArray( int[] pAIntegerArray ) {
     // Assign value to attribute
     if (pAIntegerArray != null) {
@@ -1479,6 +1586,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
    *
    * @return {@link Integer[]} Value to which {@link #bIntegerArray} is set.
    */
+  @JEAFCustomAnnotationTest
   public Integer[] getBIntegerArray( ) {
     Integer[] lReturnValue;
     if (bIntegerArray != null) {
@@ -1496,6 +1604,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
    *
    * @param pBIntegerArray Value to which {@link #bIntegerArray} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setBIntegerArray( Integer[] pBIntegerArray ) {
     // Assign value to attribute
     if (pBIntegerArray != null) {
@@ -1521,6 +1630,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
    *
    * @return {@link Integer[]} Value to which {@link #cIntegerArray} is set.
    */
+  @JEAFCustomAnnotationTest
   public Integer[] getCIntegerArray( ) {
     Integer[] lReturnValue;
     if (cIntegerArray != null) {
@@ -1538,6 +1648,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
    *
    * @param pCIntegerArray Value to which {@link #cIntegerArray} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setCIntegerArray( Integer[] pCIntegerArray ) {
     // Assign value to attribute
     if (pCIntegerArray != null) {
@@ -1563,6 +1674,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
    *
    * @return long[] Value to which {@link #aLongArray} is set.
    */
+  @JEAFCustomAnnotationTest
   public long[] getALongArray( ) {
     long[] lReturnValue;
     if (aLongArray != null) {
@@ -1580,6 +1692,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
    *
    * @param pALongArray Value to which {@link #aLongArray} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setALongArray( long[] pALongArray ) {
     // Assign value to attribute
     if (pALongArray != null) {
@@ -1605,6 +1718,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
    *
    * @return {@link Long[]} Value to which {@link #bLongArray} is set.
    */
+  @JEAFCustomAnnotationTest
   public Long[] getBLongArray( ) {
     Long[] lReturnValue;
     if (bLongArray != null) {
@@ -1622,6 +1736,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
    *
    * @param pBLongArray Value to which {@link #bLongArray} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setBLongArray( Long[] pBLongArray ) {
     // Assign value to attribute
     if (pBLongArray != null) {
@@ -1647,6 +1762,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
    *
    * @return {@link BigInteger[]} Value to which {@link #aBigIntegerArray} is set.
    */
+  @JEAFCustomAnnotationTest
   public BigInteger[] getABigIntegerArray( ) {
     BigInteger[] lReturnValue;
     if (aBigIntegerArray != null) {
@@ -1664,6 +1780,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
    *
    * @param pABigIntegerArray Value to which {@link #aBigIntegerArray} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setABigIntegerArray( BigInteger[] pABigIntegerArray ) {
     // Assign value to attribute
     if (pABigIntegerArray != null) {
@@ -1689,6 +1806,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
    *
    * @return char[] Value to which {@link #aCharacterArray} is set.
    */
+  @JEAFCustomAnnotationTest
   public char[] getACharacterArray( ) {
     char[] lReturnValue;
     if (aCharacterArray != null) {
@@ -1706,6 +1824,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
    *
    * @param pACharacterArray Value to which {@link #aCharacterArray} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setACharacterArray( char[] pACharacterArray ) {
     // Assign value to attribute
     if (pACharacterArray != null) {
@@ -1731,6 +1850,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
    *
    * @return {@link Character[]} Value to which {@link #bCharacterArray} is set.
    */
+  @JEAFCustomAnnotationTest
   public Character[] getBCharacterArray( ) {
     Character[] lReturnValue;
     if (bCharacterArray != null) {
@@ -1748,6 +1868,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
    *
    * @param pBCharacterArray Value to which {@link #bCharacterArray} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setBCharacterArray( Character[] pBCharacterArray ) {
     // Assign value to attribute
     if (pBCharacterArray != null) {
@@ -1773,6 +1894,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
    *
    * @return float[] Value to which {@link #aFloatArray} is set.
    */
+  @JEAFCustomAnnotationTest
   public float[] getAFloatArray( ) {
     float[] lReturnValue;
     if (aFloatArray != null) {
@@ -1790,6 +1912,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
    *
    * @param pAFloatArray Value to which {@link #aFloatArray} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setAFloatArray( float[] pAFloatArray ) {
     // Assign value to attribute
     if (pAFloatArray != null) {
@@ -1815,6 +1938,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
    *
    * @return {@link Float[]} Value to which {@link #bFloatArray} is set.
    */
+  @JEAFCustomAnnotationTest
   public Float[] getBFloatArray( ) {
     Float[] lReturnValue;
     if (bFloatArray != null) {
@@ -1832,6 +1956,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
    *
    * @param pBFloatArray Value to which {@link #bFloatArray} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setBFloatArray( Float[] pBFloatArray ) {
     // Assign value to attribute
     if (pBFloatArray != null) {
@@ -1857,6 +1982,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
    *
    * @return double[] Value to which {@link #aDoubleArray} is set.
    */
+  @JEAFCustomAnnotationTest
   public double[] getADoubleArray( ) {
     double[] lReturnValue;
     if (aDoubleArray != null) {
@@ -1874,6 +2000,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
    *
    * @param pADoubleArray Value to which {@link #aDoubleArray} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setADoubleArray( double[] pADoubleArray ) {
     // Assign value to attribute
     if (pADoubleArray != null) {
@@ -1899,6 +2026,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
    *
    * @return {@link Double[]} Value to which {@link #bDoubleArray} is set.
    */
+  @JEAFCustomAnnotationTest
   public Double[] getBDoubleArray( ) {
     Double[] lReturnValue;
     if (bDoubleArray != null) {
@@ -1916,6 +2044,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
    *
    * @param pBDoubleArray Value to which {@link #bDoubleArray} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setBDoubleArray( Double[] pBDoubleArray ) {
     // Assign value to attribute
     if (pBDoubleArray != null) {
@@ -1941,6 +2070,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
    *
    * @return {@link BigDecimal[]} Value to which {@link #aBigDecimalArray} is set.
    */
+  @JEAFCustomAnnotationTest
   public BigDecimal[] getABigDecimalArray( ) {
     BigDecimal[] lReturnValue;
     if (aBigDecimalArray != null) {
@@ -1958,6 +2088,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
    *
    * @param pABigDecimalArray Value to which {@link #aBigDecimalArray} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setABigDecimalArray( BigDecimal[] pABigDecimalArray ) {
     // Assign value to attribute
     if (pABigDecimalArray != null) {
@@ -1983,6 +2114,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
    *
    * @return {@link String[]} Value to which {@link #aStringArray} is set.
    */
+  @JEAFCustomAnnotationTest
   public String[] getAStringArray( ) {
     String[] lReturnValue;
     if (aStringArray != null) {
@@ -2000,6 +2132,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
    *
    * @param pAStringArray Value to which {@link #aStringArray} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setAStringArray( String[] pAStringArray ) {
     // Assign value to attribute
     if (pAStringArray != null) {
@@ -2025,6 +2158,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
    *
    * @return {@link String[]} Value to which {@link #bStringArray} is set.
    */
+  @JEAFCustomAnnotationTest
   public String[] getBStringArray( ) {
     String[] lReturnValue;
     if (bStringArray != null) {
@@ -2042,6 +2176,7 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
    *
    * @param pBStringArray Value to which {@link #bStringArray} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setBStringArray( String[] pBStringArray ) {
     // Assign value to attribute
     if (pBStringArray != null) {

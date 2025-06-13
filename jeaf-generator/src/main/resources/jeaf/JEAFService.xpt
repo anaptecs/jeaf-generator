@@ -23,7 +23,7 @@ package «packageName()»;
 
 «EXPAND functions::Javadoc::JavadocForType»
 «EXPAND jeafgenerator::api::ServiceInterfaceExtensionPoint::BeforeServiceInterfaceDeclaration»
-«EXPAND java::Helper::GenerateDeprecationAnnotation-»
+«EXPAND java::Helper::GenerateAnnotations-»
 public interface «this.getServiceName(reactive)» «IF this.getParentServices().size > 0»extends «FOREACH this.getParentServices() AS parentService SEPARATOR ", "»«parentService.getServiceNameFQN(reactive)»«ENDFOREACH»«ELSE»«IF isTargetRuntimeJEAF()»extends com.anaptecs.jeaf.core.api.Service«ENDIF»«ENDIF» {
   «EXPAND JEAFOperation::ServiceInterfaceOperation(reactive) FOREACH ownedOperation»
   
@@ -71,7 +71,7 @@ import com.anaptecs.jeaf.xfun.api.trace.Trace;
 /**
  * ServiceProxy class for JEAF service «name». 
  */
-«EXPAND java::Helper::GenerateDeprecationAnnotation-»
+«EXPAND java::Helper::GenerateAnnotations-»
 public final class «name»Proxy extends ServiceProxy implements «name» «IF generalization.size > 0», «this.getAllExtendedInterfaces()»«ENDIF» {
   /**
    * Serial version uid for the proxy class.
@@ -102,8 +102,8 @@ public final class «name»Proxy extends ServiceProxy implements «name» «IF g
      * Generated proxy implementation for method {@link «((uml::NamedElement)owner).fqn()»#«name»}
      */
     «IF this.returnResult().isMultivalued().first() == true»@SuppressWarnings("unchecked")«ENDIF» 
-    «EXPAND java::Helper::GenerateDeprecationAnnotation-»
-    «EXPAND java::Helper::GenerateDeprecationAnnotation FOR this.getReturnResult() -»
+    «EXPAND java::Helper::GenerateAnnotations-»
+    «EXPAND java::Helper::GenerateAnnotations FOR this.getReturnResult() -»
     «visibility» «getReturnTypeName()» «name» («EXPAND JEAFOperation::ParameterSignature(true, "JEAFService")») «getThrownExceptionsAsString()» {
         try {
             Command lCommand = new «this.getCommandClassName()»(«asParameterListNames()»);

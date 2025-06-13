@@ -5,11 +5,16 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
+@JEAFCustomAnnotationTest
 public final class Entity {
   public static enum EntityType {
-    DISCOUNT_CAMPAIGN, DISCOUNT_OFFER("DISOFF", DataUnit.COUPON), UNKNOWN("N/A", DataUnit.UNKNOWN);
+    @JEAFCustomAnnotationTest
+    DISCOUNT_CAMPAIGN, @JEAFCustomAnnotationTest
+    DISCOUNT_OFFER("DISOFF", DataUnit.COUPON), @JEAFCustomAnnotationTest
+    UNKNOWN("N/A", DataUnit.UNKNOWN);
 
     /**
      * Empty constructor is required for UNKNWON literal.
@@ -27,8 +32,10 @@ public final class Entity {
       dataUnit = pDataUnit;
     }
 
+    @JEAFCustomAnnotationTest
     private final String entityID;
 
+    @JEAFCustomAnnotationTest
     private DataUnit dataUnit;
 
     /**
@@ -36,6 +43,7 @@ public final class Entity {
      *
      * @return {@link String} Value to which {@link #entityID} is set.
      */
+    @JEAFCustomAnnotationTest
     public String getEntityID( ) {
       return entityID;
     }
@@ -45,15 +53,19 @@ public final class Entity {
      *
      * @return {@link DataUnit} Value to which {@link #dataUnit} is set.
      */
+    @JEAFCustomAnnotationTest
     public DataUnit getDataUnit( ) {
       return dataUnit;
     }
   }
 
+  @JEAFCustomAnnotationTest
   public static final Entity DISCOUNT_CAMPAIGN = new Entity(EntityType.DISCOUNT_CAMPAIGN);
 
+  @JEAFCustomAnnotationTest
   public static final Entity DISCOUNT_OFFER = new Entity(EntityType.DISCOUNT_OFFER);
 
+  @JEAFCustomAnnotationTest
   public static final Entity UNKNOWN = new Entity(EntityType.UNKNOWN);
 
   /**

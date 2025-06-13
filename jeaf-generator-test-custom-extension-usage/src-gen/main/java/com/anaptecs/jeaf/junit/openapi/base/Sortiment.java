@@ -18,10 +18,12 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
 @Generated("Before Class Declaration. Here an annontation cloud be added.")
+@JEAFCustomAnnotationTest
 public class Sortiment extends Object implements ServiceObject {
   /**
    * Default serial version uid.
@@ -31,15 +33,18 @@ public class Sortiment extends Object implements ServiceObject {
   /**
    * Constant for the name of attribute "products".
    */
+  @JEAFCustomAnnotationTest
   public static final String PRODUCTS = "products";
 
   /**
    * Constant for the name of attribute "value".
    */
+  @JEAFCustomAnnotationTest
   public static final String VALUE = "value";
 
   // "com.anaptecs.jeaf.junit.openapi.base.Product"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private Set<Product> products;
 
   /**
@@ -56,6 +61,7 @@ public class Sortiment extends Object implements ServiceObject {
    * <br/>
    * <b>Default Value:</b> <code>4711</code>
    */
+  @JEAFCustomAnnotationTest
   private final Integer value;
 
   // "java.lang.Integer"
@@ -112,9 +118,11 @@ public class Sortiment extends Object implements ServiceObject {
   /**
    * Class implements builder to create a new instance of class <code>Sortiment</code>.
    */
+  @JEAFCustomAnnotationTest
   public static class Builder {
     // "com.anaptecs.jeaf.junit.openapi.base.Product"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private Set<Product> products;
 
     // "com.anaptecs.jeaf.junit.openapi.base.Product"
@@ -126,6 +134,7 @@ public class Sortiment extends Object implements ServiceObject {
      */
     // "java.lang.Integer"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private Integer value = 4711;
 
     // "java.lang.Integer"
@@ -154,6 +163,7 @@ public class Sortiment extends Object implements ServiceObject {
      * @param pProducts Collection to which {@link #products} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setProducts( Set<Product> pProducts ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pProducts != null) {
@@ -171,6 +181,7 @@ public class Sortiment extends Object implements ServiceObject {
      * @param pProducts Array of objects that should be added to {@link #products}. The parameter may be null.
      * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder addToProducts( Product... pProducts ) {
       if (pProducts != null) {
         if (products == null) {
@@ -193,6 +204,7 @@ public class Sortiment extends Object implements ServiceObject {
      * @param pValue Value to which {@link #value} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setValue( Integer pValue ) {
       // Assign value to attribute
       value = pValue;
@@ -235,6 +247,7 @@ public class Sortiment extends Object implements ServiceObject {
    * @return {@link Set<Product>} Value to which {@link #products} is set. The method never returns null and the
    * returned collection is unmodifiable.
    */
+  @JEAFCustomAnnotationTest
   public Set<Product> getProducts( ) {
     // Due to restrictions in JSON serialization / deserialization bi-directional associations need a special handling
     // after an object was deserialized.
@@ -253,6 +266,7 @@ public class Sortiment extends Object implements ServiceObject {
    *
    * @param pProducts Object that should be added to {@link #products}. The parameter must not be null.
    */
+  @JEAFCustomAnnotationTest
   public void addToProducts( Product pProducts ) {
     // Check parameter "pProducts" for invalid value null.
     Check.checkInvalidParameterNull(pProducts, "pProducts");
@@ -271,6 +285,7 @@ public class Sortiment extends Object implements ServiceObject {
    * @param pProducts Collection with all objects that should be added to {@link #products}. The parameter must not be
    * null.
    */
+  @JEAFCustomAnnotationTest
   public void addToProducts( Collection<Product> pProducts ) {
     // Check parameter "pProducts" for invalid value null.
     Check.checkInvalidParameterNull(pProducts, "pProducts");
@@ -285,6 +300,7 @@ public class Sortiment extends Object implements ServiceObject {
    *
    * @param pProducts Object that should be removed from {@link #products}. The parameter must not be null.
    */
+  @JEAFCustomAnnotationTest
   public void removeFromProducts( Product pProducts ) {
     // Check parameter for invalid value null.
     Check.checkInvalidParameterNull(pProducts, "pProducts");
@@ -300,6 +316,7 @@ public class Sortiment extends Object implements ServiceObject {
   /**
    * Method removes all objects from {@link #products}.
    */
+  @JEAFCustomAnnotationTest
   public void clearProducts( ) {
     // Remove all objects from association "products".
     Collection<Product> lProducts = new HashSet<Product>(products);
@@ -324,6 +341,7 @@ public class Sortiment extends Object implements ServiceObject {
    *
    * @return {@link Integer} Value to which {@link #value} is set.
    */
+  @JEAFCustomAnnotationTest
   public Integer getValue( ) {
     return value;
   }

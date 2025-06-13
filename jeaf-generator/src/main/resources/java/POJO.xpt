@@ -30,7 +30,7 @@
 				«EXPAND java::Helper::GenerateGeneratedAnnotation»
 				«EXPAND java::Helper::GenerateSuppressWarningsAnnotation»
 				«EXPAND java::Validation::ValidationAnnotation»
-				«EXPAND java::Helper::GenerateDeprecationAnnotation-»
+				«EXPAND java::Helper::GenerateAnnotations-»
 				«EXPAND java::Jackson::JacksonClassAnnotations("") -»				
 				public «IF isAbstract»abstract«ENDIF» class «name»«this.getTemplateParams()» «EXPAND SuperClassDeclaration» «EXPAND InterfaceDeclarations» {
 					«IF makePOJOsSerializable()»
@@ -163,7 +163,7 @@
 				«EXPAND java::Helper::GenerateGeneratedAnnotation»
 				«EXPAND java::Helper::GenerateSuppressWarningsAnnotation»
 		        «EXPAND java::Validation::ValidationAnnotation -»      
-			    «EXPAND java::Helper::GenerateDeprecationAnnotation-»
+			    «EXPAND java::Helper::GenerateAnnotations-»
 			    «EXPAND java::Jackson::JacksonClassAnnotations("Base") -»
 				public abstract class «name»Base«this.getTemplateParams()» «EXPAND SuperClassDeclaration» «EXPAND InterfaceDeclarations» {
 					«IF makePOJOsSerializable()»
@@ -292,7 +292,7 @@
 				  
 				«EXPAND functions::Javadoc::JavadocForType»
 				«EXPAND java::Validation::ValidationAnnotation»
-				«EXPAND java::Helper::GenerateDeprecationAnnotation -»
+				«EXPAND java::Helper::GenerateAnnotations -»
 				public «IF isAbstract»abstract«ENDIF» class «name»«this.getTemplateParams()» extends «name»Base«this.getTemplateParams()» {
 					«IF makePOJOsSerializable()»
                     /**

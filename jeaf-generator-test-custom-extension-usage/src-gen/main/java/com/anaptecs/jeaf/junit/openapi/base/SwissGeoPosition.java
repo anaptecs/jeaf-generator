@@ -8,9 +8,11 @@ package com.anaptecs.jeaf.junit.openapi.base;
 import javax.annotation.processing.Generated;
 import javax.validation.ConstraintViolationException;
 
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 
 @Generated("Before Class Declaration. Here an annontation cloud be added.")
+@JEAFCustomAnnotationTest
 public class SwissGeoPosition extends GeoPosition {
   /**
    * Default serial version uid.
@@ -46,6 +48,7 @@ public class SwissGeoPosition extends GeoPosition {
   /**
    * Class implements builder to create a new instance of class <code>SwissGeoPosition</code>.
    */
+  @JEAFCustomAnnotationTest
   public static class Builder extends GeoPosition.Builder {
     /**
      * Use {@link SwissGeoPosition#builder()} instead of private constructor to create new builder.
@@ -67,6 +70,7 @@ public class SwissGeoPosition extends GeoPosition {
      * @param pName Value to which {@link #name} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     @Override
     public Builder setName( String pName ) {
       // Call super class implementation.
@@ -80,6 +84,7 @@ public class SwissGeoPosition extends GeoPosition {
      * @param pLongitude Value to which {@link #longitude} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     @Override
     public Builder setLongitude( int pLongitude ) {
       // Call super class implementation.
@@ -93,6 +98,7 @@ public class SwissGeoPosition extends GeoPosition {
      * @param pLatitude Value to which {@link #latitude} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     @Override
     public Builder setLatitude( int pLatitude ) {
       // Call super class implementation.

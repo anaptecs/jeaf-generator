@@ -18,6 +18,7 @@ import javax.validation.constraints.Size;
 
 import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 
 @Generated("Before Class Declaration. Here an annontation cloud be added.")
@@ -28,6 +29,7 @@ import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
  * @author JEAF Generator
  * @version JEAF Release 1.6.x
  */
+@JEAFCustomAnnotationTest
 public class UICStop extends Stop implements IStop {
   /**
    * Default serial version uid.
@@ -37,25 +39,30 @@ public class UICStop extends Stop implements IStop {
   /**
    * Constant for the name of attribute "uicCode".
    */
+  @JEAFCustomAnnotationTest
   public static final String UICCODE = "uicCode";
 
   /**
    * Constant for the name of attribute "priority".
    */
+  @JEAFCustomAnnotationTest
   public static final String PRIORITY = "priority";
 
   /**
    * Constant for the name of attribute "code".
    */
+  @JEAFCustomAnnotationTest
   public static final String CODE = "code";
 
   /**
    * Constant for the name of attribute "index2".
    */
+  @JEAFCustomAnnotationTest
   public static final String INDEX2 = "index2";
 
   // "String"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   @Size(min = 32, max = 255)
   private String uicCode;
 
@@ -64,6 +71,7 @@ public class UICStop extends Stop implements IStop {
 
   // "int"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   @DecimalMax(value = "32.777", inclusive = true)
   @DecimalMin(value = "1.025", inclusive = true)
   private int priority;
@@ -73,6 +81,7 @@ public class UICStop extends Stop implements IStop {
 
   // "long"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   @Min(value = 1000)
   @Max(value = 9999)
   private long code;
@@ -82,6 +91,7 @@ public class UICStop extends Stop implements IStop {
 
   // "byte"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   @Positive
   private byte index2;
 
@@ -130,9 +140,11 @@ public class UICStop extends Stop implements IStop {
   /**
    * Class implements builder to create a new instance of class <code>UICStop</code>.
    */
+  @JEAFCustomAnnotationTest
   public static class Builder extends Stop.Builder {
     // "String"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     @Size(min = 32, max = 255)
     private String uicCode;
 
@@ -141,6 +153,7 @@ public class UICStop extends Stop implements IStop {
 
     // "int"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     @DecimalMax(value = "32.777", inclusive = true)
     @DecimalMin(value = "1.025", inclusive = true)
     private int priority;
@@ -150,6 +163,7 @@ public class UICStop extends Stop implements IStop {
 
     // "long"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     @Min(value = 1000)
     @Max(value = 9999)
     private long code;
@@ -159,6 +173,7 @@ public class UICStop extends Stop implements IStop {
 
     // "byte"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     @Positive
     private byte index2;
 
@@ -192,6 +207,7 @@ public class UICStop extends Stop implements IStop {
      * @param pName Value to which {@link #name} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     @Override
     public Builder setName( String pName ) {
       // Call super class implementation.
@@ -205,6 +221,7 @@ public class UICStop extends Stop implements IStop {
      * @param pLinks Collection to which {@link #links} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     @Override
     public Builder setLinks( List<LinkObject> pLinks ) {
       // Call super class implementation.
@@ -218,6 +235,7 @@ public class UICStop extends Stop implements IStop {
      * @param pLinks Array of objects that should be added to {@link #links}. The parameter may be null.
      * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder addToLinks( LinkObject... pLinks ) {
       // Call super class implementation.
       super.addToLinks(pLinks);
@@ -230,6 +248,7 @@ public class UICStop extends Stop implements IStop {
      * @param pIndex Value to which {@link #index} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     @Override
     public Builder setIndex( byte pIndex ) {
       // Call super class implementation.
@@ -243,6 +262,7 @@ public class UICStop extends Stop implements IStop {
      * @param pTheSoftLink Value to which {@link #theSoftLink} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     @Override
     public Builder setTheSoftLink( SoftLink pTheSoftLink ) {
       // Call super class implementation.
@@ -256,6 +276,7 @@ public class UICStop extends Stop implements IStop {
      * @param pUicCode Value to which {@link #uicCode} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setUicCode( String pUicCode ) {
       // Assign value to attribute
       uicCode = pUicCode;
@@ -274,6 +295,7 @@ public class UICStop extends Stop implements IStop {
      * @param pPriority Value to which {@link #priority} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setPriority( int pPriority ) {
       // Assign value to attribute
       priority = pPriority;
@@ -292,6 +314,7 @@ public class UICStop extends Stop implements IStop {
      * @param pCode Value to which {@link #code} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setCode( long pCode ) {
       // Assign value to attribute
       code = pCode;
@@ -310,6 +333,7 @@ public class UICStop extends Stop implements IStop {
      * @param pIndex2 Value to which {@link #index2} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setIndex2( byte pIndex2 ) {
       // Assign value to attribute
       index2 = pIndex2;
@@ -351,6 +375,7 @@ public class UICStop extends Stop implements IStop {
    *
    * @return {@link String} Value to which {@link #uicCode} is set.
    */
+  @JEAFCustomAnnotationTest
   public String getUicCode( ) {
     return uicCode;
   }
@@ -360,6 +385,7 @@ public class UICStop extends Stop implements IStop {
    *
    * @param pUicCode Value to which {@link #uicCode} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setUicCode( String pUicCode ) {
     // Assign value to attribute
     uicCode = pUicCode;
@@ -379,6 +405,7 @@ public class UICStop extends Stop implements IStop {
    *
    * @return int Value to which {@link #priority} is set.
    */
+  @JEAFCustomAnnotationTest
   public int getPriority( ) {
     return priority;
   }
@@ -388,6 +415,7 @@ public class UICStop extends Stop implements IStop {
    *
    * @param pPriority Value to which {@link #priority} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setPriority( int pPriority ) {
     // Assign value to attribute
     priority = pPriority;
@@ -407,6 +435,7 @@ public class UICStop extends Stop implements IStop {
    *
    * @return long Value to which {@link #code} is set.
    */
+  @JEAFCustomAnnotationTest
   public long getCode( ) {
     return code;
   }
@@ -416,6 +445,7 @@ public class UICStop extends Stop implements IStop {
    *
    * @param pCode Value to which {@link #code} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setCode( long pCode ) {
     // Assign value to attribute
     code = pCode;
@@ -435,6 +465,7 @@ public class UICStop extends Stop implements IStop {
    *
    * @return byte Value to which {@link #index2} is set.
    */
+  @JEAFCustomAnnotationTest
   public byte getIndex2( ) {
     return index2;
   }
@@ -444,6 +475,7 @@ public class UICStop extends Stop implements IStop {
    *
    * @param pIndex2 Value to which {@link #index2} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setIndex2( byte pIndex2 ) {
     // Assign value to attribute
     index2 = pIndex2;

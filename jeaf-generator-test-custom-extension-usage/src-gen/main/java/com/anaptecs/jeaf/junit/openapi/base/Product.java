@@ -9,6 +9,8 @@ import java.util.Set;
 
 import javax.annotation.processing.Generated;
 
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
+
 @Generated("Before Class Declaration. Here an annontation cloud be added.")
 /**
  * Data type represents a product definition
@@ -18,6 +20,7 @@ import javax.annotation.processing.Generated;
  * @author JEAF Generator
  * @version JEAF Release 1.6.x
  */
+@JEAFCustomAnnotationTest
 public class Product extends ProductBase {
   /**
    * Default serial version uid.
@@ -72,6 +75,7 @@ public class Product extends ProductBase {
    * @return {@link Set<Channel>} Value to which {@link #theChannels} is set. The method never returns null and the
    * returned collection is unmodifiable.
    */
+  @JEAFCustomAnnotationTest
   @Override
   public Set<Channel> getTheChannels( ) {
     // TODO Implement method for derived property "theChannels".

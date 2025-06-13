@@ -21,10 +21,12 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
 @Generated("Before Class Declaration. Here an annontation cloud be added.")
+@JEAFCustomAnnotationTest
 public class DateQueryParamsBean extends Object implements ServiceObject {
   /**
    * Default serial version uid.
@@ -34,55 +36,66 @@ public class DateQueryParamsBean extends Object implements ServiceObject {
   /**
    * Constant for the name of attribute "offsetDateTime".
    */
+  @JEAFCustomAnnotationTest
   public static final String OFFSETDATETIME = "offsetDateTime";
 
   /**
    * Constant for the name of attribute "offsetTime".
    */
+  @JEAFCustomAnnotationTest
   public static final String OFFSETTIME = "offsetTime";
 
   /**
    * Constant for the name of attribute "localDateTime".
    */
+  @JEAFCustomAnnotationTest
   public static final String LOCALDATETIME = "localDateTime";
 
   /**
    * Constant for the name of attribute "localTime".
    */
+  @JEAFCustomAnnotationTest
   public static final String LOCALTIME = "localTime";
 
   /**
    * Constant for the name of attribute "localDate".
    */
+  @JEAFCustomAnnotationTest
   public static final String LOCALDATE = "localDate";
 
   /**
    * Constant for the name of attribute "utilDate".
    */
+  @JEAFCustomAnnotationTest
   public static final String UTILDATE = "utilDate";
 
   /**
    * Constant for the name of attribute "calendar".
    */
+  @JEAFCustomAnnotationTest
   public static final String CALENDAR = "calendar";
 
   /**
    * Constant for the name of attribute "sqlTimestamp".
    */
+  @JEAFCustomAnnotationTest
   public static final String SQLTIMESTAMP = "sqlTimestamp";
 
   /**
    * Constant for the name of attribute "sqlTime".
    */
+  @JEAFCustomAnnotationTest
   public static final String SQLTIME = "sqlTime";
 
   /**
    * Constant for the name of attribute "sqlDate".
    */
+  @JEAFCustomAnnotationTest
   public static final String SQLDATE = "sqlDate";
 
   // "java.time.OffsetDateTime"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private OffsetDateTime offsetDateTime;
 
   // "java.time.OffsetDateTime"
@@ -90,6 +103,7 @@ public class DateQueryParamsBean extends Object implements ServiceObject {
 
   // "java.time.OffsetTime"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private OffsetTime offsetTime;
 
   // "java.time.OffsetTime"
@@ -101,6 +115,7 @@ public class DateQueryParamsBean extends Object implements ServiceObject {
    * <p/>
    * <b>Breaking Change with 2.0:</b> Has to be in the past
    */
+  @JEAFCustomAnnotationTest
   private LocalDateTime localDateTime;
 
   // "java.time.LocalDateTime"
@@ -108,6 +123,7 @@ public class DateQueryParamsBean extends Object implements ServiceObject {
 
   // "java.time.LocalTime"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private LocalTime localTime;
 
   // "java.time.LocalTime"
@@ -115,6 +131,7 @@ public class DateQueryParamsBean extends Object implements ServiceObject {
 
   // "java.time.LocalDate"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private LocalDate localDate;
 
   // "java.time.LocalDate"
@@ -122,6 +139,7 @@ public class DateQueryParamsBean extends Object implements ServiceObject {
 
   // "java.util.Date"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private java.util.Date utilDate;
 
   // "java.util.Date"
@@ -129,6 +147,7 @@ public class DateQueryParamsBean extends Object implements ServiceObject {
 
   // "java.util.Calendar"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private Calendar calendar;
 
   // "java.util.Calendar"
@@ -136,6 +155,7 @@ public class DateQueryParamsBean extends Object implements ServiceObject {
 
   // "java.sql.Timestamp"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private Timestamp sqlTimestamp;
 
   // "java.sql.Timestamp"
@@ -143,6 +163,7 @@ public class DateQueryParamsBean extends Object implements ServiceObject {
 
   // "java.sql.Time"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private Time sqlTime;
 
   // "java.sql.Time"
@@ -150,6 +171,7 @@ public class DateQueryParamsBean extends Object implements ServiceObject {
 
   // "java.sql.Date"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private Date sqlDate;
 
   // "java.sql.Date"
@@ -215,9 +237,11 @@ public class DateQueryParamsBean extends Object implements ServiceObject {
   /**
    * Class implements builder to create a new instance of class <code>DateQueryParamsBean</code>.
    */
+  @JEAFCustomAnnotationTest
   public static class Builder {
     // "java.time.OffsetDateTime"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private OffsetDateTime offsetDateTime;
 
     // "java.time.OffsetDateTime"
@@ -225,6 +249,7 @@ public class DateQueryParamsBean extends Object implements ServiceObject {
 
     // "java.time.OffsetTime"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private OffsetTime offsetTime;
 
     // "java.time.OffsetTime"
@@ -236,6 +261,7 @@ public class DateQueryParamsBean extends Object implements ServiceObject {
      */
     // "java.time.LocalDateTime"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private LocalDateTime localDateTime;
 
     // "java.time.LocalDateTime"
@@ -243,6 +269,7 @@ public class DateQueryParamsBean extends Object implements ServiceObject {
 
     // "java.time.LocalTime"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private LocalTime localTime;
 
     // "java.time.LocalTime"
@@ -250,6 +277,7 @@ public class DateQueryParamsBean extends Object implements ServiceObject {
 
     // "java.time.LocalDate"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private LocalDate localDate;
 
     // "java.time.LocalDate"
@@ -257,6 +285,7 @@ public class DateQueryParamsBean extends Object implements ServiceObject {
 
     // "java.util.Date"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private java.util.Date utilDate;
 
     // "java.util.Date"
@@ -264,6 +293,7 @@ public class DateQueryParamsBean extends Object implements ServiceObject {
 
     // "java.util.Calendar"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private Calendar calendar;
 
     // "java.util.Calendar"
@@ -271,6 +301,7 @@ public class DateQueryParamsBean extends Object implements ServiceObject {
 
     // "java.sql.Timestamp"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private Timestamp sqlTimestamp;
 
     // "java.sql.Timestamp"
@@ -278,6 +309,7 @@ public class DateQueryParamsBean extends Object implements ServiceObject {
 
     // "java.sql.Time"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private Time sqlTime;
 
     // "java.sql.Time"
@@ -285,6 +317,7 @@ public class DateQueryParamsBean extends Object implements ServiceObject {
 
     // "java.sql.Date"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private Date sqlDate;
 
     // "java.sql.Date"
@@ -322,6 +355,7 @@ public class DateQueryParamsBean extends Object implements ServiceObject {
      * @param pOffsetDateTime Value to which {@link #offsetDateTime} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setOffsetDateTime( OffsetDateTime pOffsetDateTime ) {
       // Assign value to attribute
       offsetDateTime = pOffsetDateTime;
@@ -340,6 +374,7 @@ public class DateQueryParamsBean extends Object implements ServiceObject {
      * @param pOffsetTime Value to which {@link #offsetTime} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setOffsetTime( OffsetTime pOffsetTime ) {
       // Assign value to attribute
       offsetTime = pOffsetTime;
@@ -360,6 +395,7 @@ public class DateQueryParamsBean extends Object implements ServiceObject {
      * @param pLocalDateTime Value to which {@link #localDateTime} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setLocalDateTime( LocalDateTime pLocalDateTime ) {
       // Assign value to attribute
       localDateTime = pLocalDateTime;
@@ -378,6 +414,7 @@ public class DateQueryParamsBean extends Object implements ServiceObject {
      * @param pLocalTime Value to which {@link #localTime} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setLocalTime( LocalTime pLocalTime ) {
       // Assign value to attribute
       localTime = pLocalTime;
@@ -396,6 +433,7 @@ public class DateQueryParamsBean extends Object implements ServiceObject {
      * @param pLocalDate Value to which {@link #localDate} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setLocalDate( LocalDate pLocalDate ) {
       // Assign value to attribute
       localDate = pLocalDate;
@@ -414,6 +452,7 @@ public class DateQueryParamsBean extends Object implements ServiceObject {
      * @param pUtilDate Value to which {@link #utilDate} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setUtilDate( java.util.Date pUtilDate ) {
       // Assign value to attribute
       utilDate = pUtilDate;
@@ -432,6 +471,7 @@ public class DateQueryParamsBean extends Object implements ServiceObject {
      * @param pCalendar Value to which {@link #calendar} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setCalendar( Calendar pCalendar ) {
       // Assign value to attribute
       calendar = pCalendar;
@@ -450,6 +490,7 @@ public class DateQueryParamsBean extends Object implements ServiceObject {
      * @param pSqlTimestamp Value to which {@link #sqlTimestamp} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setSqlTimestamp( Timestamp pSqlTimestamp ) {
       // Assign value to attribute
       sqlTimestamp = pSqlTimestamp;
@@ -468,6 +509,7 @@ public class DateQueryParamsBean extends Object implements ServiceObject {
      * @param pSqlTime Value to which {@link #sqlTime} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setSqlTime( Time pSqlTime ) {
       // Assign value to attribute
       sqlTime = pSqlTime;
@@ -486,6 +528,7 @@ public class DateQueryParamsBean extends Object implements ServiceObject {
      * @param pSqlDate Value to which {@link #sqlDate} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setSqlDate( Date pSqlDate ) {
       // Assign value to attribute
       sqlDate = pSqlDate;
@@ -528,6 +571,7 @@ public class DateQueryParamsBean extends Object implements ServiceObject {
    *
    * @return {@link OffsetDateTime} Value to which {@link #offsetDateTime} is set.
    */
+  @JEAFCustomAnnotationTest
   public OffsetDateTime getOffsetDateTime( ) {
     return offsetDateTime;
   }
@@ -537,6 +581,7 @@ public class DateQueryParamsBean extends Object implements ServiceObject {
    *
    * @param pOffsetDateTime Value to which {@link #offsetDateTime} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setOffsetDateTime( OffsetDateTime pOffsetDateTime ) {
     // Assign value to attribute
     offsetDateTime = pOffsetDateTime;
@@ -556,6 +601,7 @@ public class DateQueryParamsBean extends Object implements ServiceObject {
    *
    * @return {@link OffsetTime} Value to which {@link #offsetTime} is set.
    */
+  @JEAFCustomAnnotationTest
   public OffsetTime getOffsetTime( ) {
     return offsetTime;
   }
@@ -565,6 +611,7 @@ public class DateQueryParamsBean extends Object implements ServiceObject {
    *
    * @param pOffsetTime Value to which {@link #offsetTime} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setOffsetTime( OffsetTime pOffsetTime ) {
     // Assign value to attribute
     offsetTime = pOffsetTime;
@@ -586,6 +633,7 @@ public class DateQueryParamsBean extends Object implements ServiceObject {
    *
    * @return {@link LocalDateTime} Value to which {@link #localDateTime} is set.
    */
+  @JEAFCustomAnnotationTest
   public LocalDateTime getLocalDateTime( ) {
     return localDateTime;
   }
@@ -597,6 +645,7 @@ public class DateQueryParamsBean extends Object implements ServiceObject {
    *
    * @param pLocalDateTime Value to which {@link #localDateTime} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setLocalDateTime( LocalDateTime pLocalDateTime ) {
     // Assign value to attribute
     localDateTime = pLocalDateTime;
@@ -616,6 +665,7 @@ public class DateQueryParamsBean extends Object implements ServiceObject {
    *
    * @return {@link LocalTime} Value to which {@link #localTime} is set.
    */
+  @JEAFCustomAnnotationTest
   public LocalTime getLocalTime( ) {
     return localTime;
   }
@@ -625,6 +675,7 @@ public class DateQueryParamsBean extends Object implements ServiceObject {
    *
    * @param pLocalTime Value to which {@link #localTime} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setLocalTime( LocalTime pLocalTime ) {
     // Assign value to attribute
     localTime = pLocalTime;
@@ -644,6 +695,7 @@ public class DateQueryParamsBean extends Object implements ServiceObject {
    *
    * @return {@link LocalDate} Value to which {@link #localDate} is set.
    */
+  @JEAFCustomAnnotationTest
   public LocalDate getLocalDate( ) {
     return localDate;
   }
@@ -653,6 +705,7 @@ public class DateQueryParamsBean extends Object implements ServiceObject {
    *
    * @param pLocalDate Value to which {@link #localDate} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setLocalDate( LocalDate pLocalDate ) {
     // Assign value to attribute
     localDate = pLocalDate;
@@ -672,6 +725,7 @@ public class DateQueryParamsBean extends Object implements ServiceObject {
    *
    * @return {@link java.util.Date} Value to which {@link #utilDate} is set.
    */
+  @JEAFCustomAnnotationTest
   public java.util.Date getUtilDate( ) {
     return utilDate;
   }
@@ -681,6 +735,7 @@ public class DateQueryParamsBean extends Object implements ServiceObject {
    *
    * @param pUtilDate Value to which {@link #utilDate} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setUtilDate( java.util.Date pUtilDate ) {
     // Assign value to attribute
     utilDate = pUtilDate;
@@ -700,6 +755,7 @@ public class DateQueryParamsBean extends Object implements ServiceObject {
    *
    * @return {@link Calendar} Value to which {@link #calendar} is set.
    */
+  @JEAFCustomAnnotationTest
   public Calendar getCalendar( ) {
     return calendar;
   }
@@ -709,6 +765,7 @@ public class DateQueryParamsBean extends Object implements ServiceObject {
    *
    * @param pCalendar Value to which {@link #calendar} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setCalendar( Calendar pCalendar ) {
     // Assign value to attribute
     calendar = pCalendar;
@@ -728,6 +785,7 @@ public class DateQueryParamsBean extends Object implements ServiceObject {
    *
    * @return {@link Timestamp} Value to which {@link #sqlTimestamp} is set.
    */
+  @JEAFCustomAnnotationTest
   public Timestamp getSqlTimestamp( ) {
     return sqlTimestamp;
   }
@@ -737,6 +795,7 @@ public class DateQueryParamsBean extends Object implements ServiceObject {
    *
    * @param pSqlTimestamp Value to which {@link #sqlTimestamp} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setSqlTimestamp( Timestamp pSqlTimestamp ) {
     // Assign value to attribute
     sqlTimestamp = pSqlTimestamp;
@@ -756,6 +815,7 @@ public class DateQueryParamsBean extends Object implements ServiceObject {
    *
    * @return {@link Time} Value to which {@link #sqlTime} is set.
    */
+  @JEAFCustomAnnotationTest
   public Time getSqlTime( ) {
     return sqlTime;
   }
@@ -765,6 +825,7 @@ public class DateQueryParamsBean extends Object implements ServiceObject {
    *
    * @param pSqlTime Value to which {@link #sqlTime} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setSqlTime( Time pSqlTime ) {
     // Assign value to attribute
     sqlTime = pSqlTime;
@@ -784,6 +845,7 @@ public class DateQueryParamsBean extends Object implements ServiceObject {
    *
    * @return {@link Date} Value to which {@link #sqlDate} is set.
    */
+  @JEAFCustomAnnotationTest
   public Date getSqlDate( ) {
     return sqlDate;
   }
@@ -793,6 +855,7 @@ public class DateQueryParamsBean extends Object implements ServiceObject {
    *
    * @param pSqlDate Value to which {@link #sqlDate} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setSqlDate( Date pSqlDate ) {
     // Assign value to attribute
     sqlDate = pSqlDate;

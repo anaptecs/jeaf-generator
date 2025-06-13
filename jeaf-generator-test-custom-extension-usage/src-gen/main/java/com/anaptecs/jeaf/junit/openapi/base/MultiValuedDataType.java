@@ -20,10 +20,12 @@ import javax.validation.constraints.Size;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
 @Generated("Before Class Declaration. Here an annontation cloud be added.")
+@JEAFCustomAnnotationTest
 public class MultiValuedDataType extends Object implements ServiceObject {
   /**
    * Default serial version uid.
@@ -33,26 +35,31 @@ public class MultiValuedDataType extends Object implements ServiceObject {
   /**
    * Constant for the name of attribute "stringCodeHeader".
    */
+  @JEAFCustomAnnotationTest
   public static final String STRINGCODEHEADER = "stringCodeHeader";
 
   /**
    * Constant for the name of attribute "longCodeQueryParam".
    */
+  @JEAFCustomAnnotationTest
   public static final String LONGCODEQUERYPARAM = "longCodeQueryParam";
 
   /**
    * Constant for the name of attribute "literals".
    */
+  @JEAFCustomAnnotationTest
   public static final String LITERALS = "literals";
 
   /**
    * Constant for the name of attribute "stringProperty".
    */
+  @JEAFCustomAnnotationTest
   public static final String STRINGPROPERTY = "stringProperty";
 
   /**
    * Constant for the name of attribute "longValues".
    */
+  @JEAFCustomAnnotationTest
   public static final String LONGVALUES = "longValues";
 
   // "com.anaptecs.jeaf.junit.openapi.base.StringCode"
@@ -60,6 +67,7 @@ public class MultiValuedDataType extends Object implements ServiceObject {
   /**
    * This is my multivalued test header
    */
+  @JEAFCustomAnnotationTest
   private List<StringCode> stringCodeHeader;
 
   // "com.anaptecs.jeaf.junit.openapi.base.StringCode"
@@ -70,6 +78,7 @@ public class MultiValuedDataType extends Object implements ServiceObject {
   /**
    * Multivalued query param
    */
+  @JEAFCustomAnnotationTest
   private List<LongCode> longCodeQueryParam;
 
   // "com.anaptecs.jeaf.junit.openapi.base.LongCode"
@@ -80,6 +89,7 @@ public class MultiValuedDataType extends Object implements ServiceObject {
   /**
    * so many literals are possible
    */
+  @JEAFCustomAnnotationTest
   private List<BooleanLiteralsEnum> literals;
 
   // "com.anaptecs.jeaf.junit.openapi.base.BooleanLiteralsEnum"
@@ -87,6 +97,7 @@ public class MultiValuedDataType extends Object implements ServiceObject {
 
   // "String"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   @Size(min = 32, max = 64)
   private String stringProperty;
 
@@ -98,6 +109,7 @@ public class MultiValuedDataType extends Object implements ServiceObject {
   /**
    * long values as multivalued header
    */
+  @JEAFCustomAnnotationTest
   @Min(value = 3270)
   @Max(value = 4711)
   private long[] longValues;
@@ -168,12 +180,14 @@ public class MultiValuedDataType extends Object implements ServiceObject {
   /**
    * Class implements builder to create a new instance of class <code>MultiValuedDataType</code>.
    */
+  @JEAFCustomAnnotationTest
   public static class Builder {
     /**
      * This is my multivalued test header
      */
     // "com.anaptecs.jeaf.junit.openapi.base.StringCode"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private List<StringCode> stringCodeHeader;
 
     // "com.anaptecs.jeaf.junit.openapi.base.StringCode"
@@ -184,6 +198,7 @@ public class MultiValuedDataType extends Object implements ServiceObject {
      */
     // "com.anaptecs.jeaf.junit.openapi.base.LongCode"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private List<LongCode> longCodeQueryParam;
 
     // "com.anaptecs.jeaf.junit.openapi.base.LongCode"
@@ -194,6 +209,7 @@ public class MultiValuedDataType extends Object implements ServiceObject {
      */
     // "com.anaptecs.jeaf.junit.openapi.base.BooleanLiteralsEnum"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private List<BooleanLiteralsEnum> literals;
 
     // "com.anaptecs.jeaf.junit.openapi.base.BooleanLiteralsEnum"
@@ -201,6 +217,7 @@ public class MultiValuedDataType extends Object implements ServiceObject {
 
     // "String"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     @Size(min = 32, max = 64)
     private String stringProperty;
 
@@ -212,6 +229,7 @@ public class MultiValuedDataType extends Object implements ServiceObject {
      */
     // "long"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     @Min(value = 3270)
     @Max(value = 4711)
     private long[] longValues;
@@ -246,6 +264,7 @@ public class MultiValuedDataType extends Object implements ServiceObject {
      * @param pStringCodeHeader Collection to which {@link #stringCodeHeader} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setStringCodeHeader( List<StringCode> pStringCodeHeader ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pStringCodeHeader != null) {
@@ -264,6 +283,7 @@ public class MultiValuedDataType extends Object implements ServiceObject {
      * null.
      * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder addToStringCodeHeader( StringCode... pStringCodeHeader ) {
       if (pStringCodeHeader != null) {
         if (stringCodeHeader == null) {
@@ -286,6 +306,7 @@ public class MultiValuedDataType extends Object implements ServiceObject {
      * @param pLongCodeQueryParam Collection to which {@link #longCodeQueryParam} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setLongCodeQueryParam( List<LongCode> pLongCodeQueryParam ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pLongCodeQueryParam != null) {
@@ -304,6 +325,7 @@ public class MultiValuedDataType extends Object implements ServiceObject {
      * may be null.
      * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder addToLongCodeQueryParam( LongCode... pLongCodeQueryParam ) {
       if (pLongCodeQueryParam != null) {
         if (longCodeQueryParam == null) {
@@ -326,6 +348,7 @@ public class MultiValuedDataType extends Object implements ServiceObject {
      * @param pLiterals Collection to which {@link #literals} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setLiterals( List<BooleanLiteralsEnum> pLiterals ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pLiterals != null) {
@@ -343,6 +366,7 @@ public class MultiValuedDataType extends Object implements ServiceObject {
      * @param pLiterals Array of objects that should be added to {@link #literals}. The parameter may be null.
      * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder addToLiterals( BooleanLiteralsEnum... pLiterals ) {
       if (pLiterals != null) {
         if (literals == null) {
@@ -359,6 +383,7 @@ public class MultiValuedDataType extends Object implements ServiceObject {
      * @param pLiterals Array with objects to which {@link #literals} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setLiterals( BooleanLiteralsEnum... pLiterals ) {
       // Copy the content of the passed array.
       if (pLiterals != null) {
@@ -382,6 +407,7 @@ public class MultiValuedDataType extends Object implements ServiceObject {
      * @param pStringProperty Value to which {@link #stringProperty} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setStringProperty( String pStringProperty ) {
       // Assign value to attribute
       stringProperty = pStringProperty;
@@ -400,6 +426,7 @@ public class MultiValuedDataType extends Object implements ServiceObject {
      * @param pLongValues Value to which {@link #longValues} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setLongValues( long[] pLongValues ) {
       // Assign value to attribute
       if (pLongValues != null) {
@@ -450,6 +477,7 @@ public class MultiValuedDataType extends Object implements ServiceObject {
    * @return {@link List<StringCode>} Value to which {@link #stringCodeHeader} is set. The method never returns null and
    * the returned collection is unmodifiable.
    */
+  @JEAFCustomAnnotationTest
   public List<StringCode> getStringCodeHeader( ) {
     // Return all StringCode objects as unmodifiable collection.
     return Collections.unmodifiableList(stringCodeHeader);
@@ -460,6 +488,7 @@ public class MultiValuedDataType extends Object implements ServiceObject {
    *
    * @param pStringCodeHeader Object that should be added to {@link #stringCodeHeader}. The parameter must not be null.
    */
+  @JEAFCustomAnnotationTest
   public void addToStringCodeHeader( StringCode pStringCodeHeader ) {
     // Check parameter "pStringCodeHeader" for invalid value null.
     Check.checkInvalidParameterNull(pStringCodeHeader, "pStringCodeHeader");
@@ -473,6 +502,7 @@ public class MultiValuedDataType extends Object implements ServiceObject {
    * @param pStringCodeHeader Collection with all objects that should be added to {@link #stringCodeHeader}. The
    * parameter must not be null.
    */
+  @JEAFCustomAnnotationTest
   public void addToStringCodeHeader( Collection<StringCode> pStringCodeHeader ) {
     // Check parameter "pStringCodeHeader" for invalid value null.
     Check.checkInvalidParameterNull(pStringCodeHeader, "pStringCodeHeader");
@@ -488,6 +518,7 @@ public class MultiValuedDataType extends Object implements ServiceObject {
    * @param pStringCodeHeader Object that should be removed from {@link #stringCodeHeader}. The parameter must not be
    * null.
    */
+  @JEAFCustomAnnotationTest
   public void removeFromStringCodeHeader( StringCode pStringCodeHeader ) {
     // Check parameter for invalid value null.
     Check.checkInvalidParameterNull(pStringCodeHeader, "pStringCodeHeader");
@@ -498,6 +529,7 @@ public class MultiValuedDataType extends Object implements ServiceObject {
   /**
    * Method removes all objects from {@link #stringCodeHeader}.
    */
+  @JEAFCustomAnnotationTest
   public void clearStringCodeHeader( ) {
     // Remove all objects from association "stringCodeHeader".
     stringCodeHeader.clear();
@@ -519,6 +551,7 @@ public class MultiValuedDataType extends Object implements ServiceObject {
    * @return {@link List<LongCode>} Value to which {@link #longCodeQueryParam} is set. The method never returns null and
    * the returned collection is unmodifiable.
    */
+  @JEAFCustomAnnotationTest
   public List<LongCode> getLongCodeQueryParam( ) {
     // Return all LongCode objects as unmodifiable collection.
     return Collections.unmodifiableList(longCodeQueryParam);
@@ -530,6 +563,7 @@ public class MultiValuedDataType extends Object implements ServiceObject {
    * @param pLongCodeQueryParam Object that should be added to {@link #longCodeQueryParam}. The parameter must not be
    * null.
    */
+  @JEAFCustomAnnotationTest
   public void addToLongCodeQueryParam( LongCode pLongCodeQueryParam ) {
     // Check parameter "pLongCodeQueryParam" for invalid value null.
     Check.checkInvalidParameterNull(pLongCodeQueryParam, "pLongCodeQueryParam");
@@ -543,6 +577,7 @@ public class MultiValuedDataType extends Object implements ServiceObject {
    * @param pLongCodeQueryParam Collection with all objects that should be added to {@link #longCodeQueryParam}. The
    * parameter must not be null.
    */
+  @JEAFCustomAnnotationTest
   public void addToLongCodeQueryParam( Collection<LongCode> pLongCodeQueryParam ) {
     // Check parameter "pLongCodeQueryParam" for invalid value null.
     Check.checkInvalidParameterNull(pLongCodeQueryParam, "pLongCodeQueryParam");
@@ -558,6 +593,7 @@ public class MultiValuedDataType extends Object implements ServiceObject {
    * @param pLongCodeQueryParam Object that should be removed from {@link #longCodeQueryParam}. The parameter must not
    * be null.
    */
+  @JEAFCustomAnnotationTest
   public void removeFromLongCodeQueryParam( LongCode pLongCodeQueryParam ) {
     // Check parameter for invalid value null.
     Check.checkInvalidParameterNull(pLongCodeQueryParam, "pLongCodeQueryParam");
@@ -568,6 +604,7 @@ public class MultiValuedDataType extends Object implements ServiceObject {
   /**
    * Method removes all objects from {@link #longCodeQueryParam}.
    */
+  @JEAFCustomAnnotationTest
   public void clearLongCodeQueryParam( ) {
     // Remove all objects from association "longCodeQueryParam".
     longCodeQueryParam.clear();
@@ -589,6 +626,7 @@ public class MultiValuedDataType extends Object implements ServiceObject {
    * @return {@link List<BooleanLiteralsEnum>} Value to which {@link #literals} is set. The method never returns null
    * and the returned collection is unmodifiable.
    */
+  @JEAFCustomAnnotationTest
   public List<BooleanLiteralsEnum> getLiterals( ) {
     // Return all BooleanLiteralsEnum objects as unmodifiable collection.
     return Collections.unmodifiableList(literals);
@@ -599,6 +637,7 @@ public class MultiValuedDataType extends Object implements ServiceObject {
    *
    * @param pLiterals Object that should be added to {@link #literals}. The parameter must not be null.
    */
+  @JEAFCustomAnnotationTest
   public void addToLiterals( BooleanLiteralsEnum pLiterals ) {
     // Check parameter "pLiterals" for invalid value null.
     Check.checkInvalidParameterNull(pLiterals, "pLiterals");
@@ -612,6 +651,7 @@ public class MultiValuedDataType extends Object implements ServiceObject {
    * @param pLiterals Collection with all objects that should be added to {@link #literals}. The parameter must not be
    * null.
    */
+  @JEAFCustomAnnotationTest
   public void addToLiterals( Collection<BooleanLiteralsEnum> pLiterals ) {
     // Check parameter "pLiterals" for invalid value null.
     Check.checkInvalidParameterNull(pLiterals, "pLiterals");
@@ -626,6 +666,7 @@ public class MultiValuedDataType extends Object implements ServiceObject {
    *
    * @param pLiterals Object that should be removed from {@link #literals}. The parameter must not be null.
    */
+  @JEAFCustomAnnotationTest
   public void removeFromLiterals( BooleanLiteralsEnum pLiterals ) {
     // Check parameter for invalid value null.
     Check.checkInvalidParameterNull(pLiterals, "pLiterals");
@@ -636,6 +677,7 @@ public class MultiValuedDataType extends Object implements ServiceObject {
   /**
    * Method removes all objects from {@link #literals}.
    */
+  @JEAFCustomAnnotationTest
   public void clearLiterals( ) {
     // Remove all objects from association "literals".
     literals.clear();
@@ -655,6 +697,7 @@ public class MultiValuedDataType extends Object implements ServiceObject {
    *
    * @return {@link String} Value to which {@link #stringProperty} is set.
    */
+  @JEAFCustomAnnotationTest
   public String getStringProperty( ) {
     return stringProperty;
   }
@@ -664,6 +707,7 @@ public class MultiValuedDataType extends Object implements ServiceObject {
    *
    * @param pStringProperty Value to which {@link #stringProperty} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setStringProperty( String pStringProperty ) {
     // Assign value to attribute
     stringProperty = pStringProperty;
@@ -684,6 +728,7 @@ public class MultiValuedDataType extends Object implements ServiceObject {
    *
    * @return long[] Value to which {@link #longValues} is set.
    */
+  @JEAFCustomAnnotationTest
   public long[] getLongValues( ) {
     long[] lReturnValue;
     if (longValues != null) {
@@ -702,6 +747,7 @@ public class MultiValuedDataType extends Object implements ServiceObject {
    *
    * @param pLongValues Value to which {@link #longValues} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setLongValues( long[] pLongValues ) {
     // Assign value to attribute
     if (pLongValues != null) {

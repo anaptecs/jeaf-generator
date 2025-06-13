@@ -18,10 +18,12 @@ import javax.validation.constraints.Size;
 
 import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
 @Generated("Before Class Declaration. Here an annontation cloud be added.")
+@JEAFCustomAnnotationTest
 public class ChildBB extends ChildB {
   /**
    * Default serial version uid.
@@ -31,34 +33,40 @@ public class ChildBB extends ChildB {
   /**
    * Constant for the name of attribute "childBBAttribute".
    */
+  @JEAFCustomAnnotationTest
   public static final String CHILDBBATTRIBUTE = "childBBAttribute";
 
   /**
    * Constant for the name of attribute "deprecatedAttribute".
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   public static final String DEPRECATEDATTRIBUTE = "deprecatedAttribute";
 
   /**
    * Constant for the name of attribute "deprecatedBs".
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   public static final String DEPRECATEDBS = "deprecatedBs";
 
   /**
    * Constant for the name of attribute "deprecatedParent".
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   public static final String DEPRECATEDPARENT = "deprecatedParent";
 
   /**
    * Constant for the name of attribute "deprecatedArray".
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   public static final String DEPRECATEDARRAY = "deprecatedArray";
 
   // "java.lang.Long"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private Long childBBAttribute;
 
   // "java.lang.Long"
@@ -70,6 +78,7 @@ public class ChildBB extends ChildB {
    * @deprecated Please keep <code>hands off</code>. (<b>since:</b> TBD, <b>removed with:</b> TBD)
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   private int deprecatedAttribute;
 
   // "int"
@@ -78,6 +87,7 @@ public class ChildBB extends ChildB {
   // "com.anaptecs.jeaf.junit.openapi.base.ChildB"
   @ClassPropertyDeclaration
   @Deprecated
+  @JEAFCustomAnnotationTest
   private Set<ChildB> deprecatedBs;
 
   // "com.anaptecs.jeaf.junit.openapi.base.ChildB"
@@ -86,6 +96,7 @@ public class ChildBB extends ChildB {
   // "com.anaptecs.jeaf.junit.openapi.base.ParentClass"
   @ClassPropertyDeclaration
   @Deprecated
+  @JEAFCustomAnnotationTest
   private ParentClass deprecatedParent;
 
   // "com.anaptecs.jeaf.junit.openapi.base.ParentClass"
@@ -94,6 +105,7 @@ public class ChildBB extends ChildB {
   // "byte"
   @ClassPropertyDeclaration
   @Deprecated
+  @JEAFCustomAnnotationTest
   @Size(min = 0, max = 4711)
   private byte[] deprecatedArray;
 
@@ -151,9 +163,11 @@ public class ChildBB extends ChildB {
   /**
    * Class implements builder to create a new instance of class <code>ChildBB</code>.
    */
+  @JEAFCustomAnnotationTest
   public static class Builder extends ChildB.Builder {
     // "java.lang.Long"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private Long childBBAttribute;
 
     // "java.lang.Long"
@@ -165,6 +179,7 @@ public class ChildBB extends ChildB {
     // "int"
     @BuilderPropertyDeclaration
     @Deprecated
+    @JEAFCustomAnnotationTest
     private int deprecatedAttribute;
 
     // "int"
@@ -173,6 +188,7 @@ public class ChildBB extends ChildB {
     // "com.anaptecs.jeaf.junit.openapi.base.ChildB"
     @BuilderPropertyDeclaration
     @Deprecated
+    @JEAFCustomAnnotationTest
     private Set<ChildB> deprecatedBs;
 
     // "com.anaptecs.jeaf.junit.openapi.base.ChildB"
@@ -181,6 +197,7 @@ public class ChildBB extends ChildB {
     // "com.anaptecs.jeaf.junit.openapi.base.ParentClass"
     @BuilderPropertyDeclaration
     @Deprecated
+    @JEAFCustomAnnotationTest
     private ParentClass deprecatedParent;
 
     // "com.anaptecs.jeaf.junit.openapi.base.ParentClass"
@@ -189,6 +206,7 @@ public class ChildBB extends ChildB {
     // "byte"
     @BuilderPropertyDeclaration
     @Deprecated
+    @JEAFCustomAnnotationTest
     @Size(min = 0, max = 4711)
     private byte[] deprecatedArray;
 
@@ -223,6 +241,7 @@ public class ChildBB extends ChildB {
      * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     @Override
     public Builder setParentAttribute( String pParentAttribute ) {
       // Call super class implementation.
@@ -236,6 +255,7 @@ public class ChildBB extends ChildB {
      * @param pIbans Collection to which {@link #ibans} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     @Override
     public Builder setIbans( Set<IBAN> pIbans ) {
       // Call super class implementation.
@@ -249,6 +269,7 @@ public class ChildBB extends ChildB {
      * @param pIbans Array of objects that should be added to {@link #ibans}. The parameter may be null.
      * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder addToIbans( IBAN... pIbans ) {
       // Call super class implementation.
       super.addToIbans(pIbans);
@@ -262,6 +283,7 @@ public class ChildBB extends ChildB {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
+    @JEAFCustomAnnotationTest
     @Override
     public Builder setTheBankAccount( BankAccount pTheBankAccount ) {
       // Call super class implementation.
@@ -276,6 +298,7 @@ public class ChildBB extends ChildB {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
+    @JEAFCustomAnnotationTest
     @Override
     public Builder setLegacyBankAccounts( List<BankAccount> pLegacyBankAccounts ) {
       // Call super class implementation.
@@ -291,6 +314,7 @@ public class ChildBB extends ChildB {
      * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
      */
     @Deprecated
+    @JEAFCustomAnnotationTest
     public Builder addToLegacyBankAccounts( BankAccount... pLegacyBankAccounts ) {
       // Call super class implementation.
       super.addToLegacyBankAccounts(pLegacyBankAccounts);
@@ -303,6 +327,7 @@ public class ChildBB extends ChildB {
      * @param pChildBAttribute Value to which {@link #childBAttribute} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     @Override
     public Builder setChildBAttribute( boolean[] pChildBAttribute ) {
       // Call super class implementation.
@@ -316,6 +341,7 @@ public class ChildBB extends ChildB {
      * @param pComposition Collection to which {@link #composition} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     @Override
     public Builder setComposition( Set<ParentClass> pComposition ) {
       // Call super class implementation.
@@ -329,6 +355,7 @@ public class ChildBB extends ChildB {
      * @param pComposition Array of objects that should be added to {@link #composition}. The parameter may be null.
      * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder addToComposition( ParentClass... pComposition ) {
       // Call super class implementation.
       super.addToComposition(pComposition);
@@ -341,6 +368,7 @@ public class ChildBB extends ChildB {
      * @param pChildBBAttribute Value to which {@link #childBBAttribute} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setChildBBAttribute( Long pChildBBAttribute ) {
       // Assign value to attribute
       childBBAttribute = pChildBBAttribute;
@@ -361,6 +389,7 @@ public class ChildBB extends ChildB {
      * @deprecated Please keep <code>hands off</code>. (<b>since:</b> TBD, <b>removed with:</b> TBD)
      */
     @Deprecated
+    @JEAFCustomAnnotationTest
     public Builder setDeprecatedAttribute( int pDeprecatedAttribute ) {
       // Assign value to attribute
       deprecatedAttribute = pDeprecatedAttribute;
@@ -380,6 +409,7 @@ public class ChildBB extends ChildB {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
+    @JEAFCustomAnnotationTest
     public Builder setDeprecatedBs( Set<ChildB> pDeprecatedBs ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pDeprecatedBs != null) {
@@ -398,6 +428,7 @@ public class ChildBB extends ChildB {
      * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
      */
     @Deprecated
+    @JEAFCustomAnnotationTest
     public Builder addToDeprecatedBs( ChildB... pDeprecatedBs ) {
       if (pDeprecatedBs != null) {
         if (deprecatedBs == null) {
@@ -421,6 +452,7 @@ public class ChildBB extends ChildB {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
+    @JEAFCustomAnnotationTest
     public Builder setDeprecatedParent( ParentClass pDeprecatedParent ) {
       deprecatedParent = pDeprecatedParent;
       return this;
@@ -439,6 +471,7 @@ public class ChildBB extends ChildB {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
+    @JEAFCustomAnnotationTest
     public Builder setDeprecatedArray( byte[] pDeprecatedArray ) {
       // Assign value to attribute
       if (pDeprecatedArray != null) {
@@ -486,6 +519,7 @@ public class ChildBB extends ChildB {
    *
    * @return {@link Long} Value to which {@link #childBBAttribute} is set.
    */
+  @JEAFCustomAnnotationTest
   public Long getChildBBAttribute( ) {
     return childBBAttribute;
   }
@@ -495,6 +529,7 @@ public class ChildBB extends ChildB {
    *
    * @param pChildBBAttribute Value to which {@link #childBBAttribute} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setChildBBAttribute( Long pChildBBAttribute ) {
     // Assign value to attribute
     childBBAttribute = pChildBBAttribute;
@@ -516,6 +551,7 @@ public class ChildBB extends ChildB {
    * @deprecated Please keep <code>hands off</code>. (<b>since:</b> TBD, <b>removed with:</b> TBD)
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   public int getDeprecatedAttribute( ) {
     return deprecatedAttribute;
   }
@@ -527,6 +563,7 @@ public class ChildBB extends ChildB {
    * @deprecated Please keep <code>hands off</code>. (<b>since:</b> TBD, <b>removed with:</b> TBD)
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   public void setDeprecatedAttribute( int pDeprecatedAttribute ) {
     // Assign value to attribute
     deprecatedAttribute = pDeprecatedAttribute;
@@ -548,6 +585,7 @@ public class ChildBB extends ChildB {
    * returned collection is unmodifiable.
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   public Set<ChildB> getDeprecatedBs( ) {
     // Return all ChildB objects as unmodifiable collection.
     return Collections.unmodifiableSet(deprecatedBs);
@@ -559,6 +597,7 @@ public class ChildBB extends ChildB {
    * @param pDeprecatedBs Object that should be added to {@link #deprecatedBs}. The parameter must not be null.
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   public void addToDeprecatedBs( ChildB pDeprecatedBs ) {
     // Check parameter "pDeprecatedBs" for invalid value null.
     Check.checkInvalidParameterNull(pDeprecatedBs, "pDeprecatedBs");
@@ -573,6 +612,7 @@ public class ChildBB extends ChildB {
    * not be null.
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   public void addToDeprecatedBs( Collection<ChildB> pDeprecatedBs ) {
     // Check parameter "pDeprecatedBs" for invalid value null.
     Check.checkInvalidParameterNull(pDeprecatedBs, "pDeprecatedBs");
@@ -588,6 +628,7 @@ public class ChildBB extends ChildB {
    * @param pDeprecatedBs Object that should be removed from {@link #deprecatedBs}. The parameter must not be null.
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   public void removeFromDeprecatedBs( ChildB pDeprecatedBs ) {
     // Check parameter for invalid value null.
     Check.checkInvalidParameterNull(pDeprecatedBs, "pDeprecatedBs");
@@ -599,6 +640,7 @@ public class ChildBB extends ChildB {
    * Method removes all objects from {@link #deprecatedBs}.
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   public void clearDeprecatedBs( ) {
     // Remove all objects from association "deprecatedBs".
     deprecatedBs.clear();
@@ -619,6 +661,7 @@ public class ChildBB extends ChildB {
    * @return {@link ParentClass} Value to which {@link #deprecatedParent} is set.
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   public ParentClass getDeprecatedParent( ) {
     return deprecatedParent;
   }
@@ -629,6 +672,7 @@ public class ChildBB extends ChildB {
    * @param pDeprecatedParent Value to which {@link #deprecatedParent} should be set.
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   public void setDeprecatedParent( ParentClass pDeprecatedParent ) {
     deprecatedParent = pDeprecatedParent;
   }
@@ -637,6 +681,7 @@ public class ChildBB extends ChildB {
    * Method unsets {@link #deprecatedParent}.
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   public final void unsetDeprecatedParent( ) {
     deprecatedParent = null;
   }
@@ -656,6 +701,7 @@ public class ChildBB extends ChildB {
    * @return byte[] Value to which {@link #deprecatedArray} is set.
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   public byte[] getDeprecatedArray( ) {
     byte[] lReturnValue;
     if (deprecatedArray != null) {
@@ -674,6 +720,7 @@ public class ChildBB extends ChildB {
    * @param pDeprecatedArray Value to which {@link #deprecatedArray} should be set.
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   public void setDeprecatedArray( byte[] pDeprecatedArray ) {
     // Assign value to attribute
     if (pDeprecatedArray != null) {

@@ -6,17 +6,21 @@
 package com.anaptecs.jeaf.junit.core;
 
 import com.anaptecs.jeaf.core.api.Service;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 // @Something
 
+@JEAFCustomAnnotationTest
 public interface DefaultService extends Service {
   /**
    */
+  @JEAFCustomAnnotationTest
   default void doNothing( ) {
     // Nothing to do.
   }
 
   /**
    */
+  @JEAFCustomAnnotationTest
   default void throwNYI( ) {
     throw new NotYetImplementedException("throwNYI('...') is not yet implemented.");
   }
@@ -24,12 +28,14 @@ public interface DefaultService extends Service {
   /**
    * @return int
    */
+  @JEAFCustomAnnotationTest
   default int customImpl( ) {
     return 4711;
   }
 
   /**
    */
+  @JEAFCustomAnnotationTest
   default void customTemplate( ) {
     System.out.println("Hey Guys, no AI, I'm only generated ;-)");
   }
@@ -37,6 +43,7 @@ public interface DefaultService extends Service {
   /**
    * @return {@link Double}
    */
+  @JEAFCustomAnnotationTest
   default Double customImplNoDefault( ) {
     return Double.valueOf(0);
   }
@@ -44,6 +51,7 @@ public interface DefaultService extends Service {
   /**
    * @return {@link Color}
    */
+  @JEAFCustomAnnotationTest
   default Color getColor( ) {
     return Color.BLACK;
   }
@@ -51,6 +59,7 @@ public interface DefaultService extends Service {
   /**
    * @return {@link Float}
    */
+  @JEAFCustomAnnotationTest
   default Float getFloatWithDefault( ) {
     return Float.valueOf(47.11f);
   }

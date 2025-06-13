@@ -16,10 +16,12 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
 @Generated("Before Class Declaration. Here an annontation cloud be added.")
+@JEAFCustomAnnotationTest
 public class DiscountOffer extends Object implements ServiceObject {
   /**
    * Default serial version uid.
@@ -30,6 +32,7 @@ public class DiscountOffer extends Object implements ServiceObject {
    * Constant for the name of attribute "campaigns".
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   public static final String CAMPAIGNS = "campaigns";
 
   // "com.anaptecs.jeaf.junit.openapi.base.Campaign"
@@ -40,6 +43,7 @@ public class DiscountOffer extends Object implements ServiceObject {
    * <code>com.anaptecs.jeaf.junit.openapi.base.Campaign</code><br/>
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   private Set<SoftLink> campaigns;
 
   // "com.anaptecs.jeaf.junit.openapi.base.Campaign"
@@ -84,6 +88,7 @@ public class DiscountOffer extends Object implements ServiceObject {
   /**
    * Class implements builder to create a new instance of class <code>DiscountOffer</code>.
    */
+  @JEAFCustomAnnotationTest
   public static class Builder {
     /**
      * <p/>
@@ -93,6 +98,7 @@ public class DiscountOffer extends Object implements ServiceObject {
     // "com.anaptecs.jeaf.junit.openapi.base.Campaign"
     @BuilderPropertyDeclaration
     @Deprecated
+    @JEAFCustomAnnotationTest
     private Set<SoftLink> campaigns;
 
     // "com.anaptecs.jeaf.junit.openapi.base.Campaign"
@@ -121,6 +127,7 @@ public class DiscountOffer extends Object implements ServiceObject {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
+    @JEAFCustomAnnotationTest
     public Builder setCampaigns( Set<SoftLink> pCampaigns ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pCampaigns != null) {
@@ -173,6 +180,7 @@ public class DiscountOffer extends Object implements ServiceObject {
    * returned collection is unmodifiable.
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   public Set<SoftLink> getCampaigns( ) {
     // Return all Campaign objects as unmodifiable collection.
     return Collections.unmodifiableSet(campaigns);
@@ -184,6 +192,7 @@ public class DiscountOffer extends Object implements ServiceObject {
    * @param pCampaigns Object that should be added to {@link #campaigns}. The parameter must not be null.
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   public void addToCampaigns( SoftLink pCampaigns ) {
     // Check parameter "pCampaigns" for invalid value null.
     Check.checkInvalidParameterNull(pCampaigns, "pCampaigns");
@@ -198,6 +207,7 @@ public class DiscountOffer extends Object implements ServiceObject {
    * null.
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   public void addToCampaigns( Collection<SoftLink> pCampaigns ) {
     // Check parameter "pCampaigns" for invalid value null.
     Check.checkInvalidParameterNull(pCampaigns, "pCampaigns");
@@ -213,6 +223,7 @@ public class DiscountOffer extends Object implements ServiceObject {
    * @param pCampaigns Object that should be removed from {@link #campaigns}. The parameter must not be null.
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   public void removeFromCampaigns( SoftLink pCampaigns ) {
     // Check parameter for invalid value null.
     Check.checkInvalidParameterNull(pCampaigns, "pCampaigns");
@@ -224,6 +235,7 @@ public class DiscountOffer extends Object implements ServiceObject {
    * Method removes all objects from {@link #campaigns}.
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   public void clearCampaigns( ) {
     // Remove all objects from association "campaigns".
     campaigns.clear();

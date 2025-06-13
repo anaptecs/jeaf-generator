@@ -18,6 +18,7 @@ import javax.validation.constraints.Size;
 
 import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
@@ -31,6 +32,7 @@ import com.anaptecs.jeaf.xfun.api.checks.Check;
  * @author JEAF Generator
  * @version JEAF Release 1.6.x
  */
+@JEAFCustomAnnotationTest
 public class ChildB extends ParentClass {
   /**
    * Default serial version uid.
@@ -40,11 +42,13 @@ public class ChildB extends ParentClass {
   /**
    * Constant for the name of attribute "childBAttribute".
    */
+  @JEAFCustomAnnotationTest
   public static final String CHILDBATTRIBUTE = "childBAttribute";
 
   /**
    * Constant for the name of attribute "composition".
    */
+  @JEAFCustomAnnotationTest
   public static final String COMPOSITION = "composition";
 
   // "boolean"
@@ -52,6 +56,7 @@ public class ChildB extends ParentClass {
   /**
    * A child attribute
    */
+  @JEAFCustomAnnotationTest
   @Size(min = 11, max = 42)
   private boolean[] childBAttribute;
 
@@ -63,6 +68,7 @@ public class ChildB extends ParentClass {
   /**
    * the composition
    */
+  @JEAFCustomAnnotationTest
   private Set<ParentClass> composition;
 
   // "com.anaptecs.jeaf.junit.openapi.base.ParentClass"
@@ -110,12 +116,14 @@ public class ChildB extends ParentClass {
   /**
    * Class implements builder to create a new instance of class <code>ChildB</code>.
    */
+  @JEAFCustomAnnotationTest
   public static class Builder extends ParentClass.Builder {
     /**
      * A child attribute
      */
     // "boolean"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     @Size(min = 11, max = 42)
     private boolean[] childBAttribute;
 
@@ -127,6 +135,7 @@ public class ChildB extends ParentClass {
      */
     // "com.anaptecs.jeaf.junit.openapi.base.ParentClass"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private Set<ParentClass> composition;
 
     // "com.anaptecs.jeaf.junit.openapi.base.ParentClass"
@@ -157,6 +166,7 @@ public class ChildB extends ParentClass {
      * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     @Override
     public Builder setParentAttribute( String pParentAttribute ) {
       // Call super class implementation.
@@ -170,6 +180,7 @@ public class ChildB extends ParentClass {
      * @param pIbans Collection to which {@link #ibans} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     @Override
     public Builder setIbans( Set<IBAN> pIbans ) {
       // Call super class implementation.
@@ -183,6 +194,7 @@ public class ChildB extends ParentClass {
      * @param pIbans Array of objects that should be added to {@link #ibans}. The parameter may be null.
      * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder addToIbans( IBAN... pIbans ) {
       // Call super class implementation.
       super.addToIbans(pIbans);
@@ -196,6 +208,7 @@ public class ChildB extends ParentClass {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
+    @JEAFCustomAnnotationTest
     @Override
     public Builder setTheBankAccount( BankAccount pTheBankAccount ) {
       // Call super class implementation.
@@ -210,6 +223,7 @@ public class ChildB extends ParentClass {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
+    @JEAFCustomAnnotationTest
     @Override
     public Builder setLegacyBankAccounts( List<BankAccount> pLegacyBankAccounts ) {
       // Call super class implementation.
@@ -225,6 +239,7 @@ public class ChildB extends ParentClass {
      * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
      */
     @Deprecated
+    @JEAFCustomAnnotationTest
     public Builder addToLegacyBankAccounts( BankAccount... pLegacyBankAccounts ) {
       // Call super class implementation.
       super.addToLegacyBankAccounts(pLegacyBankAccounts);
@@ -237,6 +252,7 @@ public class ChildB extends ParentClass {
      * @param pChildBAttribute Value to which {@link #childBAttribute} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setChildBAttribute( boolean[] pChildBAttribute ) {
       // Assign value to attribute
       if (pChildBAttribute != null) {
@@ -261,6 +277,7 @@ public class ChildB extends ParentClass {
      * @param pComposition Collection to which {@link #composition} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setComposition( Set<ParentClass> pComposition ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pComposition != null) {
@@ -278,6 +295,7 @@ public class ChildB extends ParentClass {
      * @param pComposition Array of objects that should be added to {@link #composition}. The parameter may be null.
      * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder addToComposition( ParentClass... pComposition ) {
       if (pComposition != null) {
         if (composition == null) {
@@ -324,6 +342,7 @@ public class ChildB extends ParentClass {
    *
    * @return boolean[] Value to which {@link #childBAttribute} is set.
    */
+  @JEAFCustomAnnotationTest
   public boolean[] getChildBAttribute( ) {
     boolean[] lReturnValue;
     if (childBAttribute != null) {
@@ -342,6 +361,7 @@ public class ChildB extends ParentClass {
    *
    * @param pChildBAttribute Value to which {@link #childBAttribute} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setChildBAttribute( boolean[] pChildBAttribute ) {
     // Assign value to attribute
     if (pChildBAttribute != null) {
@@ -369,6 +389,7 @@ public class ChildB extends ParentClass {
    * @return {@link Set<ParentClass>} Value to which {@link #composition} is set. The method never returns null and the
    * returned collection is unmodifiable.
    */
+  @JEAFCustomAnnotationTest
   public Set<ParentClass> getComposition( ) {
     // Return all ParentClass objects as unmodifiable collection.
     return Collections.unmodifiableSet(composition);
@@ -379,6 +400,7 @@ public class ChildB extends ParentClass {
    *
    * @param pComposition Object that should be added to {@link #composition}. The parameter must not be null.
    */
+  @JEAFCustomAnnotationTest
   public void addToComposition( ParentClass pComposition ) {
     // Check parameter "pComposition" for invalid value null.
     Check.checkInvalidParameterNull(pComposition, "pComposition");
@@ -392,6 +414,7 @@ public class ChildB extends ParentClass {
    * @param pComposition Collection with all objects that should be added to {@link #composition}. The parameter must
    * not be null.
    */
+  @JEAFCustomAnnotationTest
   public void addToComposition( Collection<ParentClass> pComposition ) {
     // Check parameter "pComposition" for invalid value null.
     Check.checkInvalidParameterNull(pComposition, "pComposition");
@@ -406,6 +429,7 @@ public class ChildB extends ParentClass {
    *
    * @param pComposition Object that should be removed from {@link #composition}. The parameter must not be null.
    */
+  @JEAFCustomAnnotationTest
   public void removeFromComposition( ParentClass pComposition ) {
     // Check parameter for invalid value null.
     Check.checkInvalidParameterNull(pComposition, "pComposition");
@@ -416,6 +440,7 @@ public class ChildB extends ParentClass {
   /**
    * Method removes all objects from {@link #composition}.
    */
+  @JEAFCustomAnnotationTest
   public void clearComposition( ) {
     // Remove all objects from association "composition".
     composition.clear();

@@ -10,9 +10,11 @@ import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 
 @Generated("Before Class Declaration. Here an annontation cloud be added.")
+@JEAFCustomAnnotationTest
 public class BusinessChild extends BusinessParent {
   /**
    * Default serial version uid.
@@ -22,10 +24,12 @@ public class BusinessChild extends BusinessParent {
   /**
    * Constant for the name of attribute "childAttribute".
    */
+  @JEAFCustomAnnotationTest
   public static final String CHILDATTRIBUTE = "childAttribute";
 
   // "String"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private String childAttribute;
 
   // "String"
@@ -64,9 +68,11 @@ public class BusinessChild extends BusinessParent {
   /**
    * Class implements builder to create a new instance of class <code>BusinessChild</code>.
    */
+  @JEAFCustomAnnotationTest
   public static class Builder extends BusinessParent.Builder {
     // "String"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private String childAttribute;
 
     // "String"
@@ -96,6 +102,7 @@ public class BusinessChild extends BusinessParent {
      * @param pTechAttribute Value to which {@link #techAttribute} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     @Override
     public Builder setTechAttribute( String pTechAttribute ) {
       // Call super class implementation.
@@ -109,6 +116,7 @@ public class BusinessChild extends BusinessParent {
      * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     @Override
     public Builder setParentAttribute( long pParentAttribute ) {
       // Call super class implementation.
@@ -122,6 +130,7 @@ public class BusinessChild extends BusinessParent {
      * @param pChildAttribute Value to which {@link #childAttribute} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setChildAttribute( String pChildAttribute ) {
       // Assign value to attribute
       childAttribute = pChildAttribute;
@@ -164,6 +173,7 @@ public class BusinessChild extends BusinessParent {
    *
    * @return {@link String} Value to which {@link #childAttribute} is set.
    */
+  @JEAFCustomAnnotationTest
   public String getChildAttribute( ) {
     return childAttribute;
   }
@@ -173,6 +183,7 @@ public class BusinessChild extends BusinessParent {
    *
    * @param pChildAttribute Value to which {@link #childAttribute} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setChildAttribute( String pChildAttribute ) {
     // Assign value to attribute
     childAttribute = pChildAttribute;

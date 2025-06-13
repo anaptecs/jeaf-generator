@@ -21,7 +21,7 @@
 /**
  * Class implements builder to create a new instance of class <code>«this.name»</code>.
  */
-«EXPAND java::Helper::GenerateDeprecationAnnotation-»
+«EXPAND java::Helper::GenerateAnnotations-»
 «IF generateJacksonAnnotations()»
 @com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder(withPrefix = "set")
 @com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown = true)

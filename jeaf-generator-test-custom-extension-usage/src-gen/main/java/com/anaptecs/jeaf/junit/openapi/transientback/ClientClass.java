@@ -18,10 +18,12 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
 @Generated("Before Class Declaration. Here an annontation cloud be added.")
+@JEAFCustomAnnotationTest
 public class ClientClass extends Object implements ServiceObject {
   /**
    * Default serial version uid.
@@ -31,20 +33,24 @@ public class ClientClass extends Object implements ServiceObject {
   /**
    * Constant for the name of attribute "transientMaster".
    */
+  @JEAFCustomAnnotationTest
   public static final String TRANSIENTMASTER = "transientMaster";
 
   /**
    * Constant for the name of attribute "name".
    */
+  @JEAFCustomAnnotationTest
   public static final String NAME = "name";
 
   /**
    * Constant for the name of attribute "manyMasters".
    */
+  @JEAFCustomAnnotationTest
   public static final String MANYMASTERS = "manyMasters";
 
   // "com.anaptecs.jeaf.junit.openapi.transientback.MasterClass"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private transient MasterClass transientMaster;
 
   // "com.anaptecs.jeaf.junit.openapi.transientback.MasterClass"
@@ -52,6 +58,7 @@ public class ClientClass extends Object implements ServiceObject {
 
   // "String"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private String name;
 
   // "String"
@@ -59,6 +66,7 @@ public class ClientClass extends Object implements ServiceObject {
 
   // "com.anaptecs.jeaf.junit.openapi.transientback.MasterClass"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private transient List<MasterClass> manyMasters;
 
   // "com.anaptecs.jeaf.junit.openapi.transientback.MasterClass"
@@ -99,9 +107,11 @@ public class ClientClass extends Object implements ServiceObject {
   /**
    * Class implements builder to create a new instance of class <code>ClientClass</code>.
    */
+  @JEAFCustomAnnotationTest
   public static class Builder {
     // "String"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private String name;
 
     // "String"
@@ -129,6 +139,7 @@ public class ClientClass extends Object implements ServiceObject {
      * @param pName Value to which {@link #name} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setName( String pName ) {
       // Assign value to attribute
       name = pName;
@@ -171,6 +182,7 @@ public class ClientClass extends Object implements ServiceObject {
    *
    * @return {@link MasterClass} Value to which {@link #transientMaster} is set.
    */
+  @JEAFCustomAnnotationTest
   public MasterClass getTransientMaster( ) {
     return transientMaster;
   }
@@ -180,6 +192,7 @@ public class ClientClass extends Object implements ServiceObject {
    *
    * @param pTransientMaster Value to which {@link #transientMaster} should be set.
    */
+  @JEAFCustomAnnotationTest
   void setTransientMaster( MasterClass pTransientMaster ) {
     // Release already referenced object before setting a new association.
     if (transientMaster != null) {
@@ -191,6 +204,7 @@ public class ClientClass extends Object implements ServiceObject {
   /**
    * Method unsets {@link #transientMaster}.
    */
+  @JEAFCustomAnnotationTest
   final void unsetTransientMaster( ) {
     transientMaster = null;
   }
@@ -209,6 +223,7 @@ public class ClientClass extends Object implements ServiceObject {
    *
    * @return {@link String} Value to which {@link #name} is set.
    */
+  @JEAFCustomAnnotationTest
   public String getName( ) {
     return name;
   }
@@ -218,6 +233,7 @@ public class ClientClass extends Object implements ServiceObject {
    *
    * @param pName Value to which {@link #name} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setName( String pName ) {
     // Assign value to attribute
     name = pName;
@@ -238,6 +254,7 @@ public class ClientClass extends Object implements ServiceObject {
    * @return {@link List<MasterClass>} Value to which {@link #manyMasters} is set. The method never returns null and the
    * returned collection is unmodifiable.
    */
+  @JEAFCustomAnnotationTest
   public List<MasterClass> getManyMasters( ) {
     // Return all MasterClass objects as unmodifiable collection.
     return Collections.unmodifiableList(manyMasters);
@@ -248,6 +265,7 @@ public class ClientClass extends Object implements ServiceObject {
    *
    * @param pManyMasters Object that should be added to {@link #manyMasters}. The parameter must not be null.
    */
+  @JEAFCustomAnnotationTest
   void addToManyMasters( MasterClass pManyMasters ) {
     // Check parameter "pManyMasters" for invalid value null.
     Check.checkInvalidParameterNull(pManyMasters, "pManyMasters");
@@ -261,6 +279,7 @@ public class ClientClass extends Object implements ServiceObject {
    * @param pManyMasters Collection with all objects that should be added to {@link #manyMasters}. The parameter must
    * not be null.
    */
+  @JEAFCustomAnnotationTest
   void addToManyMasters( Collection<MasterClass> pManyMasters ) {
     // Check parameter "pManyMasters" for invalid value null.
     Check.checkInvalidParameterNull(pManyMasters, "pManyMasters");
@@ -275,6 +294,7 @@ public class ClientClass extends Object implements ServiceObject {
    *
    * @param pManyMasters Object that should be removed from {@link #manyMasters}. The parameter must not be null.
    */
+  @JEAFCustomAnnotationTest
   void removeFromManyMasters( MasterClass pManyMasters ) {
     // Check parameter for invalid value null.
     Check.checkInvalidParameterNull(pManyMasters, "pManyMasters");
@@ -285,6 +305,7 @@ public class ClientClass extends Object implements ServiceObject {
   /**
    * Method removes all objects from {@link #manyMasters}.
    */
+  @JEAFCustomAnnotationTest
   void clearManyMasters( ) {
     // Remove all objects from association "manyMasters".
     Collection<MasterClass> lManyMasters = new HashSet<MasterClass>(manyMasters);

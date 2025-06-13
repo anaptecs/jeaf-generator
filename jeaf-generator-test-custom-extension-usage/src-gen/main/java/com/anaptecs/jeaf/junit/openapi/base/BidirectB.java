@@ -11,10 +11,12 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
 @Generated("Before Class Declaration. Here an annontation cloud be added.")
+@JEAFCustomAnnotationTest
 public class BidirectB extends Object implements ServiceObject {
   /**
    * Default serial version uid.
@@ -24,6 +26,7 @@ public class BidirectB extends Object implements ServiceObject {
   /**
    * Constant for the name of attribute "a".
    */
+  @JEAFCustomAnnotationTest
   public static final String A = "a";
 
   // "com.anaptecs.jeaf.junit.openapi.base.BidirectA"
@@ -31,6 +34,7 @@ public class BidirectB extends Object implements ServiceObject {
   /**
    * the A
    */
+  @JEAFCustomAnnotationTest
   private BidirectA a;
 
   /**
@@ -82,12 +86,14 @@ public class BidirectB extends Object implements ServiceObject {
   /**
    * Class implements builder to create a new instance of class <code>BidirectB</code>.
    */
+  @JEAFCustomAnnotationTest
   public static class Builder {
     /**
      * the A
      */
     // "com.anaptecs.jeaf.junit.openapi.base.BidirectA"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private BidirectA a;
 
     // "com.anaptecs.jeaf.junit.openapi.base.BidirectA"
@@ -115,6 +121,7 @@ public class BidirectB extends Object implements ServiceObject {
      * @param pA Value to which {@link #a} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setA( BidirectA pA ) {
       a = pA;
       return this;
@@ -156,6 +163,7 @@ public class BidirectB extends Object implements ServiceObject {
    *
    * @return {@link BidirectA} Value to which {@link #a} is set.
    */
+  @JEAFCustomAnnotationTest
   public BidirectA getA( ) {
     // Due to restrictions in JSON serialization / deserialization bi-directional associations need a special handling
     // after an object was deserialized.
@@ -172,6 +180,7 @@ public class BidirectB extends Object implements ServiceObject {
    *
    * @param pA Value to which {@link #a} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setA( BidirectA pA ) {
     // Release already referenced object before setting a new association.
     if (a != null) {
@@ -188,6 +197,7 @@ public class BidirectB extends Object implements ServiceObject {
   /**
    * Method unsets {@link #a}.
    */
+  @JEAFCustomAnnotationTest
   public final void unsetA( ) {
     // The association is set in both directions because within the UML model it is defined to be bidirectional.
     // In case that one side will be removed from the association the other side will also be removed.

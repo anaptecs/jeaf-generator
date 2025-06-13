@@ -10,9 +10,11 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
+@JEAFCustomAnnotationTest
 public abstract class ReadOnlyClientBase extends Object implements ServiceObject {
   /**
    * Default serial version uid.
@@ -22,15 +24,18 @@ public abstract class ReadOnlyClientBase extends Object implements ServiceObject
   /**
    * Constant for the name of attribute "name".
    */
+  @JEAFCustomAnnotationTest
   public static final String NAME = "name";
 
   /**
    * Constant for the name of attribute "transientMaster".
    */
+  @JEAFCustomAnnotationTest
   public static final String TRANSIENTMASTER = "transientMaster";
 
   // "String"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private final String name;
 
   // "String"
@@ -38,6 +43,7 @@ public abstract class ReadOnlyClientBase extends Object implements ServiceObject
 
   // "com.anaptecs.jeaf.junit.openapi.transientback.ReadOnlyMaster"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private transient ReadOnlyMaster transientMaster;
 
   // "com.anaptecs.jeaf.junit.openapi.transientback.ReadOnlyMaster"
@@ -73,6 +79,7 @@ public abstract class ReadOnlyClientBase extends Object implements ServiceObject
   public static abstract class BuilderBase {
     // "String"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private String name;
 
     // "String"
@@ -100,6 +107,7 @@ public abstract class ReadOnlyClientBase extends Object implements ServiceObject
      * @param pName Value to which {@link #name} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public BuilderBase setName( String pName ) {
       // Assign value to attribute
       name = pName;
@@ -142,6 +150,7 @@ public abstract class ReadOnlyClientBase extends Object implements ServiceObject
    *
    * @return {@link String} Value to which {@link #name} is set.
    */
+  @JEAFCustomAnnotationTest
   public String getName( ) {
     return name;
   }
@@ -160,6 +169,7 @@ public abstract class ReadOnlyClientBase extends Object implements ServiceObject
    *
    * @return {@link ReadOnlyMaster} Value to which {@link #transientMaster} is set.
    */
+  @JEAFCustomAnnotationTest
   public ReadOnlyMaster getTransientMaster( ) {
     return transientMaster;
   }
@@ -169,6 +179,7 @@ public abstract class ReadOnlyClientBase extends Object implements ServiceObject
    *
    * @param pTransientMaster Value to which {@link #transientMaster} should be set.
    */
+  @JEAFCustomAnnotationTest
   void setTransientMaster( ReadOnlyMaster pTransientMaster ) {
     transientMaster = pTransientMaster;
   }

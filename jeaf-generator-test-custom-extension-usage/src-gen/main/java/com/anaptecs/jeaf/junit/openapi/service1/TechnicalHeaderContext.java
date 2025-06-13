@@ -15,10 +15,12 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
 @Generated("Before Class Declaration. Here an annontation cloud be added.")
+@JEAFCustomAnnotationTest
 public class TechnicalHeaderContext extends Object implements ServiceObject {
   /**
    * Default serial version uid.
@@ -28,15 +30,18 @@ public class TechnicalHeaderContext extends Object implements ServiceObject {
   /**
    * Constant for the name of attribute "reseller".
    */
+  @JEAFCustomAnnotationTest
   public static final String RESELLER = "reseller";
 
   /**
    * Constant for the name of attribute "authenticationToken".
    */
+  @JEAFCustomAnnotationTest
   public static final String AUTHENTICATIONTOKEN = "authenticationToken";
 
   // "String"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private String reseller;
 
   // "String"
@@ -44,6 +49,7 @@ public class TechnicalHeaderContext extends Object implements ServiceObject {
 
   // "String"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private String authenticationToken;
 
   // "String"
@@ -92,9 +98,11 @@ public class TechnicalHeaderContext extends Object implements ServiceObject {
   /**
    * Class implements builder to create a new instance of class <code>TechnicalHeaderContext</code>.
    */
+  @JEAFCustomAnnotationTest
   public static class Builder {
     // "String"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private String reseller;
 
     // "String"
@@ -102,6 +110,7 @@ public class TechnicalHeaderContext extends Object implements ServiceObject {
 
     // "String"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private String authenticationToken;
 
     // "String"
@@ -137,6 +146,7 @@ public class TechnicalHeaderContext extends Object implements ServiceObject {
      * @param pReseller Value to which {@link #reseller} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setReseller( String pReseller ) {
       // Assign value to attribute
       reseller = pReseller;
@@ -155,6 +165,7 @@ public class TechnicalHeaderContext extends Object implements ServiceObject {
      * @param pAuthenticationToken Value to which {@link #authenticationToken} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setAuthenticationToken( String pAuthenticationToken ) {
       // Assign value to attribute
       authenticationToken = pAuthenticationToken;
@@ -214,6 +225,7 @@ public class TechnicalHeaderContext extends Object implements ServiceObject {
    *
    * @return {@link String} Value to which {@link #reseller} is set.
    */
+  @JEAFCustomAnnotationTest
   public String getReseller( ) {
     return reseller;
   }
@@ -223,6 +235,7 @@ public class TechnicalHeaderContext extends Object implements ServiceObject {
    *
    * @param pReseller Value to which {@link #reseller} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setReseller( String pReseller ) {
     // Assign value to attribute
     reseller = pReseller;
@@ -242,6 +255,7 @@ public class TechnicalHeaderContext extends Object implements ServiceObject {
    *
    * @return {@link String} Value to which {@link #authenticationToken} is set.
    */
+  @JEAFCustomAnnotationTest
   public String getAuthenticationToken( ) {
     return authenticationToken;
   }
@@ -251,6 +265,7 @@ public class TechnicalHeaderContext extends Object implements ServiceObject {
    *
    * @param pAuthenticationToken Value to which {@link #authenticationToken} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setAuthenticationToken( String pAuthenticationToken ) {
     // Assign value to attribute
     authenticationToken = pAuthenticationToken;

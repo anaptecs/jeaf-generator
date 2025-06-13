@@ -13,10 +13,12 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
 @Generated("Before Class Declaration. Here an annontation cloud be added.")
+@JEAFCustomAnnotationTest
 public class BigDecimalCode extends Object implements ServiceObject {
   /**
    * Default serial version uid.
@@ -26,10 +28,12 @@ public class BigDecimalCode extends Object implements ServiceObject {
   /**
    * Constant for the name of attribute "code".
    */
+  @JEAFCustomAnnotationTest
   public static final String CODE = "code";
 
   // "java.math.BigDecimal"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private BigDecimal code;
 
   // "java.math.BigDecimal"
@@ -68,9 +72,11 @@ public class BigDecimalCode extends Object implements ServiceObject {
   /**
    * Class implements builder to create a new instance of class <code>BigDecimalCode</code>.
    */
+  @JEAFCustomAnnotationTest
   public static class Builder {
     // "java.math.BigDecimal"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private BigDecimal code;
 
     // "java.math.BigDecimal"
@@ -98,6 +104,7 @@ public class BigDecimalCode extends Object implements ServiceObject {
      * @param pCode Value to which {@link #code} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setCode( BigDecimal pCode ) {
       // Assign value to attribute
       code = pCode;
@@ -140,6 +147,7 @@ public class BigDecimalCode extends Object implements ServiceObject {
    *
    * @return {@link BigDecimal} Value to which {@link #code} is set.
    */
+  @JEAFCustomAnnotationTest
   public BigDecimal getCode( ) {
     return code;
   }
@@ -149,6 +157,7 @@ public class BigDecimalCode extends Object implements ServiceObject {
    *
    * @param pCode Value to which {@link #code} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setCode( BigDecimal pCode ) {
     // Assign value to attribute
     code = pCode;

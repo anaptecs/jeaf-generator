@@ -19,7 +19,7 @@
 	«EXPAND functions::Javadoc::JavadocForType»
 	«EXPAND java::Helper::GenerateGeneratedAnnotation»
 	«EXPAND java::Helper::GenerateSuppressWarningsAnnotation»
-	«EXPAND java::Helper::GenerateDeprecationAnnotation-»
+	«EXPAND java::Helper::GenerateAnnotations-»
 	public «IF isAbstract»abstract«ENDIF» class «name» extends «IF !superClass.isEmpty»«superClass.get(0).fqn()»«ELSE»com.anaptecs.jeaf.core.api.QueryObject«ENDIF» {
 		/**
 		 * Default serial version uid.

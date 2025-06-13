@@ -17,10 +17,12 @@ import javax.validation.constraints.NotEmpty;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
 @Generated("Before Class Declaration. Here an annontation cloud be added.")
+@JEAFCustomAnnotationTest
 public class Context extends Object implements ServiceObject {
   /**
    * Default serial version uid.
@@ -30,35 +32,42 @@ public class Context extends Object implements ServiceObject {
   /**
    * Constant for the name of attribute "accessToken".
    */
+  @JEAFCustomAnnotationTest
   public static final String ACCESSTOKEN = "accessToken";
 
   /**
    * Constant for the name of attribute "language".
    */
+  @JEAFCustomAnnotationTest
   public static final String LANGUAGE = "language";
 
   /**
    * Constant for the name of attribute "resellerID".
    */
+  @JEAFCustomAnnotationTest
   public static final String RESELLERID = "resellerID";
 
   /**
    * Constant for the name of attribute "pathParam".
    */
+  @JEAFCustomAnnotationTest
   public static final String PATHPARAM = "pathParam";
 
   /**
    * Constant for the name of attribute "queryParam".
    */
+  @JEAFCustomAnnotationTest
   public static final String QUERYPARAM = "queryParam";
 
   /**
    * Constant for the name of attribute "intCode".
    */
+  @JEAFCustomAnnotationTest
   public static final String INTCODE = "intCode";
 
   // "java.lang.String"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   @NotEmpty
   private String accessToken;
 
@@ -74,6 +83,7 @@ public class Context extends Object implements ServiceObject {
    * <li><code>en</code></li>
    * </ul>
    */
+  @JEAFCustomAnnotationTest
   private Locale language;
 
   // "java.util.Locale"
@@ -81,6 +91,7 @@ public class Context extends Object implements ServiceObject {
 
   // "long"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private long resellerID;
 
   // "long"
@@ -88,6 +99,7 @@ public class Context extends Object implements ServiceObject {
 
   // "long"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private long pathParam;
 
   // "long"
@@ -95,6 +107,7 @@ public class Context extends Object implements ServiceObject {
 
   // "java.lang.String"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private String queryParam;
 
   // "java.lang.String"
@@ -102,6 +115,7 @@ public class Context extends Object implements ServiceObject {
 
   // "com.anaptecs.jeaf.junit.openapi.base.IntegerCodeType"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private IntegerCodeType intCode;
 
   // "com.anaptecs.jeaf.junit.openapi.base.IntegerCodeType"
@@ -162,9 +176,11 @@ public class Context extends Object implements ServiceObject {
   /**
    * Class implements builder to create a new instance of class <code>Context</code>.
    */
+  @JEAFCustomAnnotationTest
   public static class Builder {
     // "java.lang.String"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     @NotEmpty
     private String accessToken;
 
@@ -180,6 +196,7 @@ public class Context extends Object implements ServiceObject {
      */
     // "java.util.Locale"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private Locale language;
 
     // "java.util.Locale"
@@ -187,6 +204,7 @@ public class Context extends Object implements ServiceObject {
 
     // "long"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private long resellerID;
 
     // "long"
@@ -194,6 +212,7 @@ public class Context extends Object implements ServiceObject {
 
     // "long"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private long pathParam;
 
     // "long"
@@ -201,6 +220,7 @@ public class Context extends Object implements ServiceObject {
 
     // "java.lang.String"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private String queryParam;
 
     // "java.lang.String"
@@ -208,6 +228,7 @@ public class Context extends Object implements ServiceObject {
 
     // "com.anaptecs.jeaf.junit.openapi.base.IntegerCodeType"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private IntegerCodeType intCode;
 
     // "com.anaptecs.jeaf.junit.openapi.base.IntegerCodeType"
@@ -246,6 +267,7 @@ public class Context extends Object implements ServiceObject {
      * @param pAccessToken Value to which {@link #accessToken} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setAccessToken( String pAccessToken ) {
       // Assign value to attribute
       accessToken = pAccessToken;
@@ -264,6 +286,7 @@ public class Context extends Object implements ServiceObject {
      * @param pLanguage Value to which {@link #language} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setLanguage( Locale pLanguage ) {
       // Assign value to attribute
       language = pLanguage;
@@ -282,6 +305,7 @@ public class Context extends Object implements ServiceObject {
      * @param pResellerID Value to which {@link #resellerID} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setResellerID( long pResellerID ) {
       // Assign value to attribute
       resellerID = pResellerID;
@@ -300,6 +324,7 @@ public class Context extends Object implements ServiceObject {
      * @param pPathParam Value to which {@link #pathParam} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setPathParam( long pPathParam ) {
       // Assign value to attribute
       pathParam = pPathParam;
@@ -318,6 +343,7 @@ public class Context extends Object implements ServiceObject {
      * @param pQueryParam Value to which {@link #queryParam} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setQueryParam( String pQueryParam ) {
       // Assign value to attribute
       queryParam = pQueryParam;
@@ -336,6 +362,7 @@ public class Context extends Object implements ServiceObject {
      * @param pIntCode Value to which {@link #intCode} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setIntCode( IntegerCodeType pIntCode ) {
       // Assign value to attribute
       intCode = pIntCode;
@@ -394,6 +421,7 @@ public class Context extends Object implements ServiceObject {
    *
    * @return {@link String} Value to which {@link #accessToken} is set.
    */
+  @JEAFCustomAnnotationTest
   public String getAccessToken( ) {
     return accessToken;
   }
@@ -403,6 +431,7 @@ public class Context extends Object implements ServiceObject {
    *
    * @param pAccessToken Value to which {@link #accessToken} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setAccessToken( String pAccessToken ) {
     // Assign value to attribute
     accessToken = pAccessToken;
@@ -422,6 +451,7 @@ public class Context extends Object implements ServiceObject {
    *
    * @return {@link Locale} Value to which {@link #language} is set.
    */
+  @JEAFCustomAnnotationTest
   public Locale getLanguage( ) {
     return language;
   }
@@ -431,6 +461,7 @@ public class Context extends Object implements ServiceObject {
    *
    * @param pLanguage Value to which {@link #language} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setLanguage( Locale pLanguage ) {
     // Assign value to attribute
     language = pLanguage;
@@ -450,6 +481,7 @@ public class Context extends Object implements ServiceObject {
    *
    * @return long Value to which {@link #resellerID} is set.
    */
+  @JEAFCustomAnnotationTest
   public long getResellerID( ) {
     return resellerID;
   }
@@ -459,6 +491,7 @@ public class Context extends Object implements ServiceObject {
    *
    * @param pResellerID Value to which {@link #resellerID} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setResellerID( long pResellerID ) {
     // Assign value to attribute
     resellerID = pResellerID;
@@ -478,6 +511,7 @@ public class Context extends Object implements ServiceObject {
    *
    * @return long Value to which {@link #pathParam} is set.
    */
+  @JEAFCustomAnnotationTest
   public long getPathParam( ) {
     return pathParam;
   }
@@ -487,6 +521,7 @@ public class Context extends Object implements ServiceObject {
    *
    * @param pPathParam Value to which {@link #pathParam} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setPathParam( long pPathParam ) {
     // Assign value to attribute
     pathParam = pPathParam;
@@ -506,6 +541,7 @@ public class Context extends Object implements ServiceObject {
    *
    * @return {@link String} Value to which {@link #queryParam} is set.
    */
+  @JEAFCustomAnnotationTest
   public String getQueryParam( ) {
     return queryParam;
   }
@@ -515,6 +551,7 @@ public class Context extends Object implements ServiceObject {
    *
    * @param pQueryParam Value to which {@link #queryParam} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setQueryParam( String pQueryParam ) {
     // Assign value to attribute
     queryParam = pQueryParam;
@@ -534,6 +571,7 @@ public class Context extends Object implements ServiceObject {
    *
    * @return {@link IntegerCodeType} Value to which {@link #intCode} is set.
    */
+  @JEAFCustomAnnotationTest
   public IntegerCodeType getIntCode( ) {
     return intCode;
   }
@@ -543,6 +581,7 @@ public class Context extends Object implements ServiceObject {
    *
    * @param pIntCode Value to which {@link #intCode} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setIntCode( IntegerCodeType pIntCode ) {
     // Assign value to attribute
     intCode = pIntCode;

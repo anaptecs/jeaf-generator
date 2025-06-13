@@ -8,8 +8,11 @@ package com.anaptecs.jeaf.junit.openapi.base;
 import javax.annotation.processing.Generated;
 import javax.validation.Valid;
 
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
+
 @Generated("Before Class Declaration. Here an annontation cloud be added.")
 @Valid
+@JEAFCustomAnnotationTest
 public class Person extends PersonBase {
   /**
    * Default serial version uid.
@@ -61,6 +64,7 @@ public class Person extends PersonBase {
   /**
    * @return {@link String}
    */
+  @JEAFCustomAnnotationTest
   @Override
   public String getDisplayName( ) {
     // TODO: Implement business logic for method.

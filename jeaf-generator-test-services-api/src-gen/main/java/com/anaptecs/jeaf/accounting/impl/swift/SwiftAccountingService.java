@@ -7,8 +7,10 @@ package com.anaptecs.jeaf.accounting.impl.swift;
 
 import com.anaptecs.jeaf.accounting.Booking;
 import com.anaptecs.jeaf.core.api.Service;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 // @Something
 
+@JEAFCustomAnnotationTest
 public interface SwiftAccountingService extends Service {
   /**
    * Method performs a booking of the passed amount. Therefore besides the booking also the source and target account
@@ -19,5 +21,6 @@ public interface SwiftAccountingService extends Service {
    *
    * @param pBooking
    */
-  void performBooking( Booking pBooking );
+  @JEAFCustomAnnotationTest
+  void performBooking( @JEAFCustomAnnotationTest Booking pBooking );
 }

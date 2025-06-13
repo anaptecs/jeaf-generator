@@ -12,6 +12,7 @@ import javax.annotation.processing.Generated;
 
 import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 
 @Generated("Before Class Declaration. Here an annontation cloud be added.")
 /**
@@ -20,6 +21,7 @@ import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
  * @author JEAF Generator
  * @version JEAF Release 1.6.x
  */
+@JEAFCustomAnnotationTest
 public abstract class ChildA extends ParentClass {
   /**
    * Default serial version uid.
@@ -29,10 +31,12 @@ public abstract class ChildA extends ParentClass {
   /**
    * Constant for the name of attribute "childAAttribute".
    */
+  @JEAFCustomAnnotationTest
   public static final String CHILDAATTRIBUTE = "childAAttribute";
 
   // "int"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private int childAAttribute;
 
   // "int"
@@ -62,9 +66,11 @@ public abstract class ChildA extends ParentClass {
   /**
    * Class implements builder to create a new instance of class <code>ChildA</code>.
    */
+  @JEAFCustomAnnotationTest
   public static abstract class Builder extends ParentClass.Builder {
     // "int"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private int childAAttribute;
 
     // "int"
@@ -94,6 +100,7 @@ public abstract class ChildA extends ParentClass {
      * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     @Override
     public Builder setParentAttribute( String pParentAttribute ) {
       // Call super class implementation.
@@ -107,6 +114,7 @@ public abstract class ChildA extends ParentClass {
      * @param pIbans Collection to which {@link #ibans} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     @Override
     public Builder setIbans( Set<IBAN> pIbans ) {
       // Call super class implementation.
@@ -120,6 +128,7 @@ public abstract class ChildA extends ParentClass {
      * @param pIbans Array of objects that should be added to {@link #ibans}. The parameter may be null.
      * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder addToIbans( IBAN... pIbans ) {
       // Call super class implementation.
       super.addToIbans(pIbans);
@@ -133,6 +142,7 @@ public abstract class ChildA extends ParentClass {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
+    @JEAFCustomAnnotationTest
     @Override
     public Builder setTheBankAccount( BankAccount pTheBankAccount ) {
       // Call super class implementation.
@@ -147,6 +157,7 @@ public abstract class ChildA extends ParentClass {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
+    @JEAFCustomAnnotationTest
     @Override
     public Builder setLegacyBankAccounts( List<BankAccount> pLegacyBankAccounts ) {
       // Call super class implementation.
@@ -162,6 +173,7 @@ public abstract class ChildA extends ParentClass {
      * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
      */
     @Deprecated
+    @JEAFCustomAnnotationTest
     public Builder addToLegacyBankAccounts( BankAccount... pLegacyBankAccounts ) {
       // Call super class implementation.
       super.addToLegacyBankAccounts(pLegacyBankAccounts);
@@ -174,6 +186,7 @@ public abstract class ChildA extends ParentClass {
      * @param pChildAAttribute Value to which {@link #childAAttribute} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setChildAAttribute( int pChildAAttribute ) {
       // Assign value to attribute
       childAAttribute = pChildAAttribute;
@@ -193,6 +206,7 @@ public abstract class ChildA extends ParentClass {
    *
    * @return int Value to which {@link #childAAttribute} is set.
    */
+  @JEAFCustomAnnotationTest
   public int getChildAAttribute( ) {
     return childAAttribute;
   }
@@ -202,6 +216,7 @@ public abstract class ChildA extends ParentClass {
    *
    * @param pChildAAttribute Value to which {@link #childAAttribute} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setChildAAttribute( int pChildAAttribute ) {
     // Assign value to attribute
     childAAttribute = pChildAAttribute;

@@ -24,12 +24,14 @@ import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.core.api.ServiceObjectID;
 import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.anaptecs.jeaf.xfun.api.common.Identifiable;
 import com.anaptecs.jeaf.xfun.api.common.ObjectIdentity;
 
 @Valid
+@JEAFCustomAnnotationTest
 public abstract class ResellerBase extends Object implements ServiceObject, Identifiable<ServiceObjectID> {
   /**
    * Default serial version uid.
@@ -39,21 +41,25 @@ public abstract class ResellerBase extends Object implements ServiceObject, Iden
   /**
    * Constant for the name of attribute "channels".
    */
+  @JEAFCustomAnnotationTest
   public static final String CHANNELS = "channels";
 
   /**
    * Constant for the name of attribute "products".
    */
+  @JEAFCustomAnnotationTest
   public static final String PRODUCTS = "products";
 
   /**
    * Constant for the name of attribute "name".
    */
+  @JEAFCustomAnnotationTest
   public static final String NAME = "name";
 
   /**
    * Constant for the name of attribute "language".
    */
+  @JEAFCustomAnnotationTest
   public static final String LANGUAGE = "language";
 
   /**
@@ -63,6 +69,7 @@ public abstract class ResellerBase extends Object implements ServiceObject, Iden
 
   // "com.anaptecs.jeaf.junit.openapi.base.Channel"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private List<Channel> channels;
 
   /**
@@ -75,6 +82,7 @@ public abstract class ResellerBase extends Object implements ServiceObject, Iden
 
   // "com.anaptecs.jeaf.junit.openapi.base.Product"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private transient Set<Product> products;
 
   // "com.anaptecs.jeaf.junit.openapi.base.Product"
@@ -86,6 +94,7 @@ public abstract class ResellerBase extends Object implements ServiceObject, Iden
    * <p/>
    * <b>Breaking Change with 1.1:</b> Maximum size will be increased.
    */
+  @JEAFCustomAnnotationTest
   @NotBlank
   @Size(min = 0, max = 32)
   private String name;
@@ -95,6 +104,7 @@ public abstract class ResellerBase extends Object implements ServiceObject, Iden
 
   // "java.util.Locale"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private Locale language;
 
   // "java.util.Locale"
@@ -164,6 +174,7 @@ public abstract class ResellerBase extends Object implements ServiceObject, Iden
 
     // "com.anaptecs.jeaf.junit.openapi.base.Channel"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private List<Channel> channels;
 
     // "com.anaptecs.jeaf.junit.openapi.base.Channel"
@@ -175,6 +186,7 @@ public abstract class ResellerBase extends Object implements ServiceObject, Iden
      */
     // "java.lang.String"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     @NotBlank
     @Size(min = 0, max = 32)
     private String name;
@@ -184,6 +196,7 @@ public abstract class ResellerBase extends Object implements ServiceObject, Iden
 
     // "java.util.Locale"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private Locale language;
 
     // "java.util.Locale"
@@ -223,6 +236,7 @@ public abstract class ResellerBase extends Object implements ServiceObject, Iden
      * @param pChannels Collection to which {@link #channels} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public BuilderBase setChannels( List<Channel> pChannels ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pChannels != null) {
@@ -240,6 +254,7 @@ public abstract class ResellerBase extends Object implements ServiceObject, Iden
      * @param pChannels Array of objects that should be added to {@link #channels}. The parameter may be null.
      * @return {@link BuilderBase} Instance of this builder to support chaining. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public BuilderBase addToChannels( Channel... pChannels ) {
       if (pChannels != null) {
         if (channels == null) {
@@ -264,6 +279,7 @@ public abstract class ResellerBase extends Object implements ServiceObject, Iden
      * @param pName Value to which {@link #name} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public BuilderBase setName( String pName ) {
       // Assign value to attribute
       name = pName;
@@ -282,6 +298,7 @@ public abstract class ResellerBase extends Object implements ServiceObject, Iden
      * @param pLanguage Value to which {@link #language} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public BuilderBase setLanguage( Locale pLanguage ) {
       // Assign value to attribute
       language = pLanguage;
@@ -353,6 +370,7 @@ public abstract class ResellerBase extends Object implements ServiceObject, Iden
    * @return {@link List<Channel>} Value to which {@link #channels} is set. The method never returns null and the
    * returned collection is unmodifiable.
    */
+  @JEAFCustomAnnotationTest
   public List<Channel> getChannels( ) {
     // Due to restrictions in JSON serialization / deserialization bi-directional associations need a special handling
     // after an object was deserialized.
@@ -371,6 +389,7 @@ public abstract class ResellerBase extends Object implements ServiceObject, Iden
    *
    * @param pChannels Object that should be added to {@link #channels}. The parameter must not be null.
    */
+  @JEAFCustomAnnotationTest
   public void addToChannels( Channel pChannels ) {
     // Check parameter "pChannels" for invalid value null.
     Check.checkInvalidParameterNull(pChannels, "pChannels");
@@ -392,6 +411,7 @@ public abstract class ResellerBase extends Object implements ServiceObject, Iden
    * @param pChannels Collection with all objects that should be added to {@link #channels}. The parameter must not be
    * null.
    */
+  @JEAFCustomAnnotationTest
   public void addToChannels( Collection<Channel> pChannels ) {
     // Check parameter "pChannels" for invalid value null.
     Check.checkInvalidParameterNull(pChannels, "pChannels");
@@ -406,6 +426,7 @@ public abstract class ResellerBase extends Object implements ServiceObject, Iden
    *
    * @param pChannels Object that should be removed from {@link #channels}. The parameter must not be null.
    */
+  @JEAFCustomAnnotationTest
   public void removeFromChannels( Channel pChannels ) {
     // Check parameter for invalid value null.
     Check.checkInvalidParameterNull(pChannels, "pChannels");
@@ -421,6 +442,7 @@ public abstract class ResellerBase extends Object implements ServiceObject, Iden
   /**
    * Method removes all objects from {@link #channels}.
    */
+  @JEAFCustomAnnotationTest
   public void clearChannels( ) {
     // Remove all objects from association "channels".
     Collection<Channel> lChannels = new HashSet<Channel>(channels);
@@ -446,6 +468,7 @@ public abstract class ResellerBase extends Object implements ServiceObject, Iden
    * @return {@link Set<Product>} Value to which {@link #products} is set. The method never returns null and the
    * returned collection is unmodifiable.
    */
+  @JEAFCustomAnnotationTest
   public Set<Product> getProducts( ) {
     // Return all Product objects as unmodifiable collection.
     return Collections.unmodifiableSet(products);
@@ -456,6 +479,7 @@ public abstract class ResellerBase extends Object implements ServiceObject, Iden
    *
    * @param pProducts Object that should be added to {@link #products}. The parameter must not be null.
    */
+  @JEAFCustomAnnotationTest
   void addToProducts( Product pProducts ) {
     // Check parameter "pProducts" for invalid value null.
     Check.checkInvalidParameterNull(pProducts, "pProducts");
@@ -469,6 +493,7 @@ public abstract class ResellerBase extends Object implements ServiceObject, Iden
    * @param pProducts Collection with all objects that should be added to {@link #products}. The parameter must not be
    * null.
    */
+  @JEAFCustomAnnotationTest
   void addToProducts( Collection<Product> pProducts ) {
     // Check parameter "pProducts" for invalid value null.
     Check.checkInvalidParameterNull(pProducts, "pProducts");
@@ -483,6 +508,7 @@ public abstract class ResellerBase extends Object implements ServiceObject, Iden
    *
    * @param pProducts Object that should be removed from {@link #products}. The parameter must not be null.
    */
+  @JEAFCustomAnnotationTest
   void removeFromProducts( Product pProducts ) {
     // Check parameter for invalid value null.
     Check.checkInvalidParameterNull(pProducts, "pProducts");
@@ -493,6 +519,7 @@ public abstract class ResellerBase extends Object implements ServiceObject, Iden
   /**
    * Method removes all objects from {@link #products}.
    */
+  @JEAFCustomAnnotationTest
   void clearProducts( ) {
     // Remove all objects from association "products".
     Collection<Product> lProducts = new HashSet<Product>(products);
@@ -519,6 +546,7 @@ public abstract class ResellerBase extends Object implements ServiceObject, Iden
    *
    * @return {@link String} Value to which {@link #name} is set.
    */
+  @JEAFCustomAnnotationTest
   public String getName( ) {
     return name;
   }
@@ -530,6 +558,7 @@ public abstract class ResellerBase extends Object implements ServiceObject, Iden
    *
    * @param pName Value to which {@link #name} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setName( String pName ) {
     // Assign value to attribute
     name = pName;
@@ -549,6 +578,7 @@ public abstract class ResellerBase extends Object implements ServiceObject, Iden
    *
    * @return {@link Locale} Value to which {@link #language} is set.
    */
+  @JEAFCustomAnnotationTest
   public Locale getLanguage( ) {
     return language;
   }
@@ -558,6 +588,7 @@ public abstract class ResellerBase extends Object implements ServiceObject, Iden
    *
    * @param pLanguage Value to which {@link #language} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setLanguage( Locale pLanguage ) {
     // Assign value to attribute
     language = pLanguage;
@@ -575,11 +606,13 @@ public abstract class ResellerBase extends Object implements ServiceObject, Iden
   /**
    * @return {@link Integer}
    */
+  @JEAFCustomAnnotationTest
   public abstract Integer doSomething( );
 
   /**
    * @return double
    */
+  @JEAFCustomAnnotationTest
   public abstract double returnPrimitive( );
 
   public void doSomethingGenerated( ) {

@@ -11,6 +11,7 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
@@ -21,6 +22,7 @@ import com.anaptecs.jeaf.xfun.api.checks.Check;
  * @author JEAF Generator
  * @version JEAF Release 1.6.x
  */
+@JEAFCustomAnnotationTest
 public class BookingID extends Object implements ServiceObject {
   /**
    * Default serial version uid.
@@ -30,25 +32,30 @@ public class BookingID extends Object implements ServiceObject {
   /**
    * Constant for the name of attribute "referenceID".
    */
+  @JEAFCustomAnnotationTest
   public static final String REFERENCEID = "referenceID";
 
   /**
    * Constant for the name of attribute "externalRefID".
    */
+  @JEAFCustomAnnotationTest
   public static final String EXTERNALREFID = "externalRefID";
 
   /**
    * Constant for the name of attribute "inventory".
    */
+  @JEAFCustomAnnotationTest
   public static final String INVENTORY = "inventory";
 
   /**
    * Constant for the name of attribute "bookingCode".
    */
+  @JEAFCustomAnnotationTest
   public static final String BOOKINGCODE = "bookingCode";
 
   // "String"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private String referenceID;
 
   // "String"
@@ -56,6 +63,7 @@ public class BookingID extends Object implements ServiceObject {
 
   // "String"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private String externalRefID;
 
   // "String"
@@ -63,6 +71,7 @@ public class BookingID extends Object implements ServiceObject {
 
   // "com.anaptecs.jeaf.junit.openapi.base.InventoryType"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private InventoryType inventory;
 
   // "com.anaptecs.jeaf.junit.openapi.base.InventoryType"
@@ -70,6 +79,7 @@ public class BookingID extends Object implements ServiceObject {
 
   // "com.anaptecs.jeaf.junit.openapi.base.BookingCode"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private BookingCode bookingCode;
 
   // "com.anaptecs.jeaf.junit.openapi.base.BookingCode"
@@ -117,9 +127,11 @@ public class BookingID extends Object implements ServiceObject {
   /**
    * Class implements builder to create a new instance of class <code>BookingID</code>.
    */
+  @JEAFCustomAnnotationTest
   public static class Builder {
     // "String"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private String referenceID;
 
     // "String"
@@ -127,6 +139,7 @@ public class BookingID extends Object implements ServiceObject {
 
     // "String"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private String externalRefID;
 
     // "String"
@@ -134,6 +147,7 @@ public class BookingID extends Object implements ServiceObject {
 
     // "com.anaptecs.jeaf.junit.openapi.base.InventoryType"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private InventoryType inventory;
 
     // "com.anaptecs.jeaf.junit.openapi.base.InventoryType"
@@ -141,6 +155,7 @@ public class BookingID extends Object implements ServiceObject {
 
     // "com.anaptecs.jeaf.junit.openapi.base.BookingCode"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private BookingCode bookingCode;
 
     // "com.anaptecs.jeaf.junit.openapi.base.BookingCode"
@@ -171,6 +186,7 @@ public class BookingID extends Object implements ServiceObject {
      * @param pReferenceID Value to which {@link #referenceID} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setReferenceID( String pReferenceID ) {
       // Assign value to attribute
       referenceID = pReferenceID;
@@ -189,6 +205,7 @@ public class BookingID extends Object implements ServiceObject {
      * @param pExternalRefID Value to which {@link #externalRefID} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setExternalRefID( String pExternalRefID ) {
       // Assign value to attribute
       externalRefID = pExternalRefID;
@@ -207,6 +224,7 @@ public class BookingID extends Object implements ServiceObject {
      * @param pInventory Value to which {@link #inventory} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setInventory( InventoryType pInventory ) {
       inventory = pInventory;
       return this;
@@ -224,6 +242,7 @@ public class BookingID extends Object implements ServiceObject {
      * @param pBookingCode Value to which {@link #bookingCode} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setBookingCode( BookingCode pBookingCode ) {
       bookingCode = pBookingCode;
       return this;
@@ -264,6 +283,7 @@ public class BookingID extends Object implements ServiceObject {
    *
    * @return {@link String} Value to which {@link #referenceID} is set.
    */
+  @JEAFCustomAnnotationTest
   public String getReferenceID( ) {
     return referenceID;
   }
@@ -273,6 +293,7 @@ public class BookingID extends Object implements ServiceObject {
    *
    * @param pReferenceID Value to which {@link #referenceID} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setReferenceID( String pReferenceID ) {
     // Assign value to attribute
     referenceID = pReferenceID;
@@ -292,6 +313,7 @@ public class BookingID extends Object implements ServiceObject {
    *
    * @return {@link String} Value to which {@link #externalRefID} is set.
    */
+  @JEAFCustomAnnotationTest
   public String getExternalRefID( ) {
     return externalRefID;
   }
@@ -301,6 +323,7 @@ public class BookingID extends Object implements ServiceObject {
    *
    * @param pExternalRefID Value to which {@link #externalRefID} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setExternalRefID( String pExternalRefID ) {
     // Assign value to attribute
     externalRefID = pExternalRefID;
@@ -320,6 +343,7 @@ public class BookingID extends Object implements ServiceObject {
    *
    * @return {@link InventoryType} Value to which {@link #inventory} is set.
    */
+  @JEAFCustomAnnotationTest
   public InventoryType getInventory( ) {
     return inventory;
   }
@@ -329,6 +353,7 @@ public class BookingID extends Object implements ServiceObject {
    *
    * @param pInventory Value to which {@link #inventory} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setInventory( InventoryType pInventory ) {
     inventory = pInventory;
   }
@@ -336,6 +361,7 @@ public class BookingID extends Object implements ServiceObject {
   /**
    * Method unsets {@link #inventory}.
    */
+  @JEAFCustomAnnotationTest
   public final void unsetInventory( ) {
     inventory = null;
   }
@@ -354,6 +380,7 @@ public class BookingID extends Object implements ServiceObject {
    *
    * @return {@link BookingCode} Value to which {@link #bookingCode} is set.
    */
+  @JEAFCustomAnnotationTest
   public BookingCode getBookingCode( ) {
     return bookingCode;
   }
@@ -363,6 +390,7 @@ public class BookingID extends Object implements ServiceObject {
    *
    * @param pBookingCode Value to which {@link #bookingCode} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setBookingCode( BookingCode pBookingCode ) {
     bookingCode = pBookingCode;
   }
@@ -370,6 +398,7 @@ public class BookingID extends Object implements ServiceObject {
   /**
    * Method unsets {@link #bookingCode}.
    */
+  @JEAFCustomAnnotationTest
   public final void unsetBookingCode( ) {
     bookingCode = null;
   }

@@ -7,7 +7,10 @@ package com.anaptecs.jeaf.junit.openapi.base;
 
 import javax.annotation.processing.Generated;
 
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
+
 @Generated("Before Class Declaration. Here an annontation cloud be added.")
+@JEAFCustomAnnotationTest
 public abstract class StopPlaceRef extends PlaceRef {
   /**
    * Default serial version uid.
@@ -34,6 +37,7 @@ public abstract class StopPlaceRef extends PlaceRef {
   /**
    * Class implements builder to create a new instance of class <code>StopPlaceRef</code>.
    */
+  @JEAFCustomAnnotationTest
   public static abstract class Builder extends PlaceRef.Builder {
     /**
      * Use {@link StopPlaceRef#builder()} instead of private constructor to create new builder.
@@ -55,6 +59,7 @@ public abstract class StopPlaceRef extends PlaceRef {
      * @param pName Value to which {@link #name} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     @Override
     public Builder setName( String pName ) {
       // Call super class implementation.

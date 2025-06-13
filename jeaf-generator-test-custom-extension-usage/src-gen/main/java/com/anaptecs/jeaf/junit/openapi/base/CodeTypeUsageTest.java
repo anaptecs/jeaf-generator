@@ -18,10 +18,12 @@ import javax.validation.Valid;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
 @Generated("Before Class Declaration. Here an annontation cloud be added.")
+@JEAFCustomAnnotationTest
 public class CodeTypeUsageTest extends Object implements ServiceObject {
   /**
    * Default serial version uid.
@@ -31,30 +33,36 @@ public class CodeTypeUsageTest extends Object implements ServiceObject {
   /**
    * Constant for the name of attribute "booleanCode".
    */
+  @JEAFCustomAnnotationTest
   public static final String BOOLEANCODE = "booleanCode";
 
   /**
    * Constant for the name of attribute "booleanCodeAssociation".
    */
+  @JEAFCustomAnnotationTest
   public static final String BOOLEANCODEASSOCIATION = "booleanCodeAssociation";
 
   /**
    * Constant for the name of attribute "shortCodeTypeAssociation".
    */
+  @JEAFCustomAnnotationTest
   public static final String SHORTCODETYPEASSOCIATION = "shortCodeTypeAssociation";
 
   /**
    * Constant for the name of attribute "stringCode".
    */
+  @JEAFCustomAnnotationTest
   public static final String STRINGCODE = "stringCode";
 
   /**
    * Constant for the name of attribute "shortCode".
    */
+  @JEAFCustomAnnotationTest
   public static final String SHORTCODE = "shortCode";
 
   // "com.anaptecs.jeaf.junit.openapi.base.BooleanCodeType"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private BooleanCodeType booleanCode;
 
   // "com.anaptecs.jeaf.junit.openapi.base.BooleanCodeType"
@@ -62,6 +70,7 @@ public class CodeTypeUsageTest extends Object implements ServiceObject {
 
   // "com.anaptecs.jeaf.junit.openapi.base.BooleanCodeType"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private Set<BooleanCodeType> booleanCodeAssociation;
 
   // "com.anaptecs.jeaf.junit.openapi.base.BooleanCodeType"
@@ -69,6 +78,7 @@ public class CodeTypeUsageTest extends Object implements ServiceObject {
 
   // "com.anaptecs.jeaf.junit.openapi.base.ShortCodeType"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   @Valid
   private Set<ShortCodeType> shortCodeTypeAssociation;
 
@@ -77,6 +87,7 @@ public class CodeTypeUsageTest extends Object implements ServiceObject {
 
   // "com.anaptecs.jeaf.junit.openapi.base.StringCodeType"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private StringCodeType stringCode;
 
   // "com.anaptecs.jeaf.junit.openapi.base.StringCodeType"
@@ -84,6 +95,7 @@ public class CodeTypeUsageTest extends Object implements ServiceObject {
 
   // "com.anaptecs.jeaf.junit.openapi.base.ShortCode"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private ShortCode shortCode;
 
   // "com.anaptecs.jeaf.junit.openapi.base.ShortCode"
@@ -146,9 +158,11 @@ public class CodeTypeUsageTest extends Object implements ServiceObject {
   /**
    * Class implements builder to create a new instance of class <code>CodeTypeUsageTest</code>.
    */
+  @JEAFCustomAnnotationTest
   public static class Builder {
     // "com.anaptecs.jeaf.junit.openapi.base.BooleanCodeType"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private BooleanCodeType booleanCode;
 
     // "com.anaptecs.jeaf.junit.openapi.base.BooleanCodeType"
@@ -156,6 +170,7 @@ public class CodeTypeUsageTest extends Object implements ServiceObject {
 
     // "com.anaptecs.jeaf.junit.openapi.base.BooleanCodeType"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private Set<BooleanCodeType> booleanCodeAssociation;
 
     // "com.anaptecs.jeaf.junit.openapi.base.BooleanCodeType"
@@ -163,6 +178,7 @@ public class CodeTypeUsageTest extends Object implements ServiceObject {
 
     // "com.anaptecs.jeaf.junit.openapi.base.ShortCodeType"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private Set<ShortCodeType> shortCodeTypeAssociation;
 
     // "com.anaptecs.jeaf.junit.openapi.base.ShortCodeType"
@@ -170,6 +186,7 @@ public class CodeTypeUsageTest extends Object implements ServiceObject {
 
     // "com.anaptecs.jeaf.junit.openapi.base.StringCodeType"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private StringCodeType stringCode;
 
     // "com.anaptecs.jeaf.junit.openapi.base.StringCodeType"
@@ -177,6 +194,7 @@ public class CodeTypeUsageTest extends Object implements ServiceObject {
 
     // "com.anaptecs.jeaf.junit.openapi.base.ShortCode"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private ShortCode shortCode;
 
     // "com.anaptecs.jeaf.junit.openapi.base.ShortCode"
@@ -208,6 +226,7 @@ public class CodeTypeUsageTest extends Object implements ServiceObject {
      * @param pBooleanCode Value to which {@link #booleanCode} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setBooleanCode( BooleanCodeType pBooleanCode ) {
       // Assign value to attribute
       booleanCode = pBooleanCode;
@@ -226,6 +245,7 @@ public class CodeTypeUsageTest extends Object implements ServiceObject {
      * @param pBooleanCodeAssociation Collection to which {@link #booleanCodeAssociation} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setBooleanCodeAssociation( Set<BooleanCodeType> pBooleanCodeAssociation ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pBooleanCodeAssociation != null) {
@@ -244,6 +264,7 @@ public class CodeTypeUsageTest extends Object implements ServiceObject {
      * parameter may be null.
      * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder addToBooleanCodeAssociation( BooleanCodeType... pBooleanCodeAssociation ) {
       if (pBooleanCodeAssociation != null) {
         if (booleanCodeAssociation == null) {
@@ -266,6 +287,7 @@ public class CodeTypeUsageTest extends Object implements ServiceObject {
      * @param pShortCodeTypeAssociation Collection to which {@link #shortCodeTypeAssociation} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setShortCodeTypeAssociation( Set<ShortCodeType> pShortCodeTypeAssociation ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pShortCodeTypeAssociation != null) {
@@ -284,6 +306,7 @@ public class CodeTypeUsageTest extends Object implements ServiceObject {
      * parameter may be null.
      * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder addToShortCodeTypeAssociation( ShortCodeType... pShortCodeTypeAssociation ) {
       if (pShortCodeTypeAssociation != null) {
         if (shortCodeTypeAssociation == null) {
@@ -306,6 +329,7 @@ public class CodeTypeUsageTest extends Object implements ServiceObject {
      * @param pStringCode Value to which {@link #stringCode} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setStringCode( StringCodeType pStringCode ) {
       // Assign value to attribute
       stringCode = pStringCode;
@@ -324,6 +348,7 @@ public class CodeTypeUsageTest extends Object implements ServiceObject {
      * @param pShortCode Value to which {@link #shortCode} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setShortCode( ShortCode pShortCode ) {
       shortCode = pShortCode;
       return this;
@@ -365,6 +390,7 @@ public class CodeTypeUsageTest extends Object implements ServiceObject {
    *
    * @return {@link BooleanCodeType} Value to which {@link #booleanCode} is set.
    */
+  @JEAFCustomAnnotationTest
   public BooleanCodeType getBooleanCode( ) {
     return booleanCode;
   }
@@ -374,6 +400,7 @@ public class CodeTypeUsageTest extends Object implements ServiceObject {
    *
    * @param pBooleanCode Value to which {@link #booleanCode} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setBooleanCode( BooleanCodeType pBooleanCode ) {
     // Assign value to attribute
     booleanCode = pBooleanCode;
@@ -394,6 +421,7 @@ public class CodeTypeUsageTest extends Object implements ServiceObject {
    * @return {@link Set<BooleanCodeType>} Value to which {@link #booleanCodeAssociation} is set. The method never
    * returns null and the returned collection is unmodifiable.
    */
+  @JEAFCustomAnnotationTest
   public Set<BooleanCodeType> getBooleanCodeAssociation( ) {
     // Return all BooleanCodeType objects as unmodifiable collection.
     return Collections.unmodifiableSet(booleanCodeAssociation);
@@ -405,6 +433,7 @@ public class CodeTypeUsageTest extends Object implements ServiceObject {
    * @param pBooleanCodeAssociation Object that should be added to {@link #booleanCodeAssociation}. The parameter must
    * not be null.
    */
+  @JEAFCustomAnnotationTest
   public void addToBooleanCodeAssociation( BooleanCodeType pBooleanCodeAssociation ) {
     // Check parameter "pBooleanCodeAssociation" for invalid value null.
     Check.checkInvalidParameterNull(pBooleanCodeAssociation, "pBooleanCodeAssociation");
@@ -418,6 +447,7 @@ public class CodeTypeUsageTest extends Object implements ServiceObject {
    * @param pBooleanCodeAssociation Collection with all objects that should be added to {@link #booleanCodeAssociation}.
    * The parameter must not be null.
    */
+  @JEAFCustomAnnotationTest
   public void addToBooleanCodeAssociation( Collection<BooleanCodeType> pBooleanCodeAssociation ) {
     // Check parameter "pBooleanCodeAssociation" for invalid value null.
     Check.checkInvalidParameterNull(pBooleanCodeAssociation, "pBooleanCodeAssociation");
@@ -433,6 +463,7 @@ public class CodeTypeUsageTest extends Object implements ServiceObject {
    * @param pBooleanCodeAssociation Object that should be removed from {@link #booleanCodeAssociation}. The parameter
    * must not be null.
    */
+  @JEAFCustomAnnotationTest
   public void removeFromBooleanCodeAssociation( BooleanCodeType pBooleanCodeAssociation ) {
     // Check parameter for invalid value null.
     Check.checkInvalidParameterNull(pBooleanCodeAssociation, "pBooleanCodeAssociation");
@@ -443,6 +474,7 @@ public class CodeTypeUsageTest extends Object implements ServiceObject {
   /**
    * Method removes all objects from {@link #booleanCodeAssociation}.
    */
+  @JEAFCustomAnnotationTest
   public void clearBooleanCodeAssociation( ) {
     // Remove all objects from association "booleanCodeAssociation".
     booleanCodeAssociation.clear();
@@ -463,6 +495,7 @@ public class CodeTypeUsageTest extends Object implements ServiceObject {
    * @return {@link Set<ShortCodeType>} Value to which {@link #shortCodeTypeAssociation} is set. The method never
    * returns null and the returned collection is unmodifiable.
    */
+  @JEAFCustomAnnotationTest
   public Set<ShortCodeType> getShortCodeTypeAssociation( ) {
     // Return all ShortCodeType objects as unmodifiable collection.
     return Collections.unmodifiableSet(shortCodeTypeAssociation);
@@ -474,6 +507,7 @@ public class CodeTypeUsageTest extends Object implements ServiceObject {
    * @param pShortCodeTypeAssociation Object that should be added to {@link #shortCodeTypeAssociation}. The parameter
    * must not be null.
    */
+  @JEAFCustomAnnotationTest
   public void addToShortCodeTypeAssociation( ShortCodeType pShortCodeTypeAssociation ) {
     // Check parameter "pShortCodeTypeAssociation" for invalid value null.
     Check.checkInvalidParameterNull(pShortCodeTypeAssociation, "pShortCodeTypeAssociation");
@@ -487,6 +521,7 @@ public class CodeTypeUsageTest extends Object implements ServiceObject {
    * @param pShortCodeTypeAssociation Collection with all objects that should be added to
    * {@link #shortCodeTypeAssociation}. The parameter must not be null.
    */
+  @JEAFCustomAnnotationTest
   public void addToShortCodeTypeAssociation( Collection<ShortCodeType> pShortCodeTypeAssociation ) {
     // Check parameter "pShortCodeTypeAssociation" for invalid value null.
     Check.checkInvalidParameterNull(pShortCodeTypeAssociation, "pShortCodeTypeAssociation");
@@ -502,6 +537,7 @@ public class CodeTypeUsageTest extends Object implements ServiceObject {
    * @param pShortCodeTypeAssociation Object that should be removed from {@link #shortCodeTypeAssociation}. The
    * parameter must not be null.
    */
+  @JEAFCustomAnnotationTest
   public void removeFromShortCodeTypeAssociation( ShortCodeType pShortCodeTypeAssociation ) {
     // Check parameter for invalid value null.
     Check.checkInvalidParameterNull(pShortCodeTypeAssociation, "pShortCodeTypeAssociation");
@@ -512,6 +548,7 @@ public class CodeTypeUsageTest extends Object implements ServiceObject {
   /**
    * Method removes all objects from {@link #shortCodeTypeAssociation}.
    */
+  @JEAFCustomAnnotationTest
   public void clearShortCodeTypeAssociation( ) {
     // Remove all objects from association "shortCodeTypeAssociation".
     shortCodeTypeAssociation.clear();
@@ -531,6 +568,7 @@ public class CodeTypeUsageTest extends Object implements ServiceObject {
    *
    * @return {@link StringCodeType} Value to which {@link #stringCode} is set.
    */
+  @JEAFCustomAnnotationTest
   public StringCodeType getStringCode( ) {
     return stringCode;
   }
@@ -540,6 +578,7 @@ public class CodeTypeUsageTest extends Object implements ServiceObject {
    *
    * @param pStringCode Value to which {@link #stringCode} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setStringCode( StringCodeType pStringCode ) {
     // Assign value to attribute
     stringCode = pStringCode;
@@ -559,6 +598,7 @@ public class CodeTypeUsageTest extends Object implements ServiceObject {
    *
    * @return {@link ShortCode} Value to which {@link #shortCode} is set.
    */
+  @JEAFCustomAnnotationTest
   public ShortCode getShortCode( ) {
     return shortCode;
   }
@@ -568,6 +608,7 @@ public class CodeTypeUsageTest extends Object implements ServiceObject {
    *
    * @param pShortCode Value to which {@link #shortCode} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setShortCode( ShortCode pShortCode ) {
     shortCode = pShortCode;
   }
@@ -575,6 +616,7 @@ public class CodeTypeUsageTest extends Object implements ServiceObject {
   /**
    * Method unsets {@link #shortCode}.
    */
+  @JEAFCustomAnnotationTest
   public final void unsetShortCode( ) {
     shortCode = null;
   }

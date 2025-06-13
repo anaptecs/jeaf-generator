@@ -10,9 +10,11 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
+@JEAFCustomAnnotationTest
 public abstract class CompositeIDBase extends Object implements ServiceObject {
   /**
    * Default serial version uid.
@@ -22,15 +24,18 @@ public abstract class CompositeIDBase extends Object implements ServiceObject {
   /**
    * Constant for the name of attribute "primaryCode".
    */
+  @JEAFCustomAnnotationTest
   public static final String PRIMARYCODE = "primaryCode";
 
   /**
    * Constant for the name of attribute "secondaryCode".
    */
+  @JEAFCustomAnnotationTest
   public static final String SECONDARYCODE = "secondaryCode";
 
   // "long"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private long primaryCode;
 
   // "long"
@@ -38,6 +43,7 @@ public abstract class CompositeIDBase extends Object implements ServiceObject {
 
   // "long"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private long secondaryCode;
 
   // "long"
@@ -74,6 +80,7 @@ public abstract class CompositeIDBase extends Object implements ServiceObject {
   public static abstract class BuilderBase {
     // "long"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private long primaryCode;
 
     // "long"
@@ -81,6 +88,7 @@ public abstract class CompositeIDBase extends Object implements ServiceObject {
 
     // "long"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private long secondaryCode;
 
     // "long"
@@ -109,6 +117,7 @@ public abstract class CompositeIDBase extends Object implements ServiceObject {
      * @param pPrimaryCode Value to which {@link #primaryCode} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public BuilderBase setPrimaryCode( long pPrimaryCode ) {
       // Assign value to attribute
       primaryCode = pPrimaryCode;
@@ -127,6 +136,7 @@ public abstract class CompositeIDBase extends Object implements ServiceObject {
      * @param pSecondaryCode Value to which {@link #secondaryCode} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public BuilderBase setSecondaryCode( long pSecondaryCode ) {
       // Assign value to attribute
       secondaryCode = pSecondaryCode;
@@ -169,6 +179,7 @@ public abstract class CompositeIDBase extends Object implements ServiceObject {
    *
    * @return long Value to which {@link #primaryCode} is set.
    */
+  @JEAFCustomAnnotationTest
   public long getPrimaryCode( ) {
     return primaryCode;
   }
@@ -178,6 +189,7 @@ public abstract class CompositeIDBase extends Object implements ServiceObject {
    *
    * @param pPrimaryCode Value to which {@link #primaryCode} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setPrimaryCode( long pPrimaryCode ) {
     // Assign value to attribute
     primaryCode = pPrimaryCode;
@@ -197,6 +209,7 @@ public abstract class CompositeIDBase extends Object implements ServiceObject {
    *
    * @return long Value to which {@link #secondaryCode} is set.
    */
+  @JEAFCustomAnnotationTest
   public long getSecondaryCode( ) {
     return secondaryCode;
   }
@@ -206,6 +219,7 @@ public abstract class CompositeIDBase extends Object implements ServiceObject {
    *
    * @param pSecondaryCode Value to which {@link #secondaryCode} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setSecondaryCode( long pSecondaryCode ) {
     // Assign value to attribute
     secondaryCode = pSecondaryCode;

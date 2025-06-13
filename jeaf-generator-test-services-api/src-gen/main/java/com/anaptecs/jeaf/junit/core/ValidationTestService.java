@@ -11,49 +11,60 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 import com.anaptecs.jeaf.core.api.Service;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 // @Something
 
+@JEAFCustomAnnotationTest
 public interface ValidationTestService extends Service {
   /**
    * @param pString1
    * @param pString2
    * @return {@link String}
    */
+  @JEAFCustomAnnotationTest
   @NotNull
-  String validateInNOutput( @NotNull String pString1, @NotEmpty String pString2 );
+  String validateInNOutput( @JEAFCustomAnnotationTest @NotNull String pString1,
+      @JEAFCustomAnnotationTest @NotEmpty String pString2 );
 
   /**
    * @param pString1
    * @param pString2
    * @return {@link String}
    */
+  @JEAFCustomAnnotationTest
   @NotNull
-  String notValidOutput( String pString1, @NotEmpty String pString2 );
+  String notValidOutput( @JEAFCustomAnnotationTest String pString1,
+      @JEAFCustomAnnotationTest @NotEmpty String pString2 );
 
   /**
    * @param pString1
    * @param pString2
    * @return {@link String}
    */
+  @JEAFCustomAnnotationTest
   @NotNull
-  String validateOutputOnly( String pString1, String pString2 );
+  String validateOutputOnly( @JEAFCustomAnnotationTest String pString1, @JEAFCustomAnnotationTest String pString2 );
 
   /**
    * @param pString1
    * @param pInteger
    * @return {@link String}
    */
-  String validateInputOnly( String pString1, @Min(value = 4711) int pInteger );
+  @JEAFCustomAnnotationTest
+  String validateInputOnly( @JEAFCustomAnnotationTest String pString1,
+      @JEAFCustomAnnotationTest @Min(value = 4711) int pInteger );
 
   /**
    * @param pString1
    * @param pBool
    * @return {@link String}
    */
-  String noMethodValidation( String pString1, boolean pBool );
+  @JEAFCustomAnnotationTest
+  String noMethodValidation( @JEAFCustomAnnotationTest String pString1, @JEAFCustomAnnotationTest boolean pBool );
 
   /**
    * @param pTestObject
    */
-  void createValidationTestObject( @Valid ValidationTestObject pTestObject );
+  @JEAFCustomAnnotationTest
+  void createValidationTestObject( @JEAFCustomAnnotationTest @Valid ValidationTestObject pTestObject );
 }

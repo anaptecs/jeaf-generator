@@ -17,10 +17,12 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
 @Generated("Before Class Declaration. Here an annontation cloud be added.")
+@JEAFCustomAnnotationTest
 public class BidirectA extends Object implements ServiceObject {
   /**
    * Default serial version uid.
@@ -30,20 +32,24 @@ public class BidirectA extends Object implements ServiceObject {
   /**
    * Constant for the name of attribute "transientBs".
    */
+  @JEAFCustomAnnotationTest
   public static final String TRANSIENTBS = "transientBs";
 
   /**
    * Constant for the name of attribute "parent".
    */
+  @JEAFCustomAnnotationTest
   public static final String PARENT = "parent";
 
   /**
    * Constant for the name of attribute "transientChild".
    */
+  @JEAFCustomAnnotationTest
   public static final String TRANSIENTCHILD = "transientChild";
 
   // "com.anaptecs.jeaf.junit.openapi.base.BidirectB"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private transient Set<BidirectB> transientBs;
 
   // "com.anaptecs.jeaf.junit.openapi.base.BidirectB"
@@ -51,6 +57,7 @@ public class BidirectA extends Object implements ServiceObject {
 
   // "com.anaptecs.jeaf.junit.openapi.base.BidirectA"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private BidirectA parent;
 
   /**
@@ -63,6 +70,7 @@ public class BidirectA extends Object implements ServiceObject {
 
   // "com.anaptecs.jeaf.junit.openapi.base.BidirectA"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private transient BidirectA transientChild;
 
   // "com.anaptecs.jeaf.junit.openapi.base.BidirectA"
@@ -111,9 +119,11 @@ public class BidirectA extends Object implements ServiceObject {
   /**
    * Class implements builder to create a new instance of class <code>BidirectA</code>.
    */
+  @JEAFCustomAnnotationTest
   public static class Builder {
     // "com.anaptecs.jeaf.junit.openapi.base.BidirectA"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private BidirectA parent;
 
     // "com.anaptecs.jeaf.junit.openapi.base.BidirectA"
@@ -141,6 +151,7 @@ public class BidirectA extends Object implements ServiceObject {
      * @param pParent Value to which {@link #parent} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setParent( BidirectA pParent ) {
       parent = pParent;
       return this;
@@ -182,6 +193,7 @@ public class BidirectA extends Object implements ServiceObject {
    * @return {@link Set<BidirectB>} Value to which {@link #transientBs} is set. The method never returns null and the
    * returned collection is unmodifiable.
    */
+  @JEAFCustomAnnotationTest
   public Set<BidirectB> getTransientBs( ) {
     // Return all BidirectB objects as unmodifiable collection.
     return Collections.unmodifiableSet(transientBs);
@@ -192,6 +204,7 @@ public class BidirectA extends Object implements ServiceObject {
    *
    * @param pTransientBs Object that should be added to {@link #transientBs}. The parameter must not be null.
    */
+  @JEAFCustomAnnotationTest
   void addToTransientBs( BidirectB pTransientBs ) {
     // Check parameter "pTransientBs" for invalid value null.
     Check.checkInvalidParameterNull(pTransientBs, "pTransientBs");
@@ -205,6 +218,7 @@ public class BidirectA extends Object implements ServiceObject {
    * @param pTransientBs Collection with all objects that should be added to {@link #transientBs}. The parameter must
    * not be null.
    */
+  @JEAFCustomAnnotationTest
   void addToTransientBs( Collection<BidirectB> pTransientBs ) {
     // Check parameter "pTransientBs" for invalid value null.
     Check.checkInvalidParameterNull(pTransientBs, "pTransientBs");
@@ -219,6 +233,7 @@ public class BidirectA extends Object implements ServiceObject {
    *
    * @param pTransientBs Object that should be removed from {@link #transientBs}. The parameter must not be null.
    */
+  @JEAFCustomAnnotationTest
   void removeFromTransientBs( BidirectB pTransientBs ) {
     // Check parameter for invalid value null.
     Check.checkInvalidParameterNull(pTransientBs, "pTransientBs");
@@ -229,6 +244,7 @@ public class BidirectA extends Object implements ServiceObject {
   /**
    * Method removes all objects from {@link #transientBs}.
    */
+  @JEAFCustomAnnotationTest
   void clearTransientBs( ) {
     // Remove all objects from association "transientBs".
     Collection<BidirectB> lTransientBs = new HashSet<BidirectB>(transientBs);
@@ -253,6 +269,7 @@ public class BidirectA extends Object implements ServiceObject {
    *
    * @return {@link BidirectA} Value to which {@link #parent} is set.
    */
+  @JEAFCustomAnnotationTest
   public BidirectA getParent( ) {
     // Due to restrictions in JSON serialization / deserialization bi-directional associations need a special handling
     // after an object was deserialized.
@@ -268,6 +285,7 @@ public class BidirectA extends Object implements ServiceObject {
    *
    * @param pParent Value to which {@link #parent} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setParent( BidirectA pParent ) {
     // Release already referenced object before setting a new association.
     if (parent != null) {
@@ -284,6 +302,7 @@ public class BidirectA extends Object implements ServiceObject {
   /**
    * Method unsets {@link #parent}.
    */
+  @JEAFCustomAnnotationTest
   public final void unsetParent( ) {
     // The association is set in both directions because within the UML model it is defined to be bidirectional.
     // In case that one side will be removed from the association the other side will also be removed.
@@ -308,6 +327,7 @@ public class BidirectA extends Object implements ServiceObject {
    *
    * @return {@link BidirectA} Value to which {@link #transientChild} is set.
    */
+  @JEAFCustomAnnotationTest
   public BidirectA getTransientChild( ) {
     return transientChild;
   }
@@ -317,6 +337,7 @@ public class BidirectA extends Object implements ServiceObject {
    *
    * @param pTransientChild Value to which {@link #transientChild} should be set.
    */
+  @JEAFCustomAnnotationTest
   void setTransientChild( BidirectA pTransientChild ) {
     // Release already referenced object before setting a new association.
     if (transientChild != null) {
@@ -328,6 +349,7 @@ public class BidirectA extends Object implements ServiceObject {
   /**
    * Method unsets {@link #transientChild}.
    */
+  @JEAFCustomAnnotationTest
   final void unsetTransientChild( ) {
     transientChild = null;
   }
