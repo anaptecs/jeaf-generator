@@ -100,3 +100,10 @@ cached String openAPILiteralQuotationCharacter():
    
 cached String openAPIExampleQuotationCharacter():
    getSystemProperty("jeaf.generator.openAPIExampleQuotationCharacter", "");    
+   
+cached String nextMajorReleasePublishingDate():
+   getSystemProperty("jeaf.generator.nextMajorReleasePublishingDate", "");    
+
+cached String nextMajorReleaseVersion():
+   getSystemProperty("jeaf.generator.nextMajorReleaseVersion", "");    
+   

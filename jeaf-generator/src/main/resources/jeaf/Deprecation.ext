@@ -14,6 +14,7 @@ extension functions::QueryParam;
 extension functions::BeanParam;
 extension functions::JEAFDeprecated;
 extension functions::NamedElement;
+extension functions::SystemProperties;
 
 cached List[uml::NamedElement] getAllJavaDeprecations(uml::Package package):
     package.allOwnedElements().typeSelect(uml::NamedElement).select(e|e.isInGeneratorWhitelist()).select(e|e.hasJavaDeprecation());
@@ -37,13 +38,13 @@ cached List[uml::Package] getPackagesForRESTDeprecationsReport(uml::Model model)
     model.getAllRESTDeprecations().getNearestPackage().toSet().sortBy(e|e.qualifiedName());
     
 cached boolean isRemovableJavaDeprecation(uml::NamedElement element):
-	element.hasJavaDeprecation() && element.getDeprecationRemoval().javaIsRemovable();
+	element.hasJavaDeprecation() && element.getDeprecationRemoval().javaIsRemovable(nextMajorReleasePublishingDate());
 
 private boolean isRemovableJavaDeprecationInternal(JMM::JEAFDeprecated element):
-	element.removedWith.javaIsRemovable();
+	element.removedWith.javaIsRemovable(nextMajorReleasePublishingDate());
 	
-private boolean javaIsRemovable(String date):
-	JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.isDateInPast(java.lang.String);  
+private boolean javaIsRemovable(String referenceDate, String actualDate):
+	JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.isOverdue(java.lang.String, java.lang.String);  
     
 cached boolean hasJavaDeprecation(uml::Element element):
     if element.isClass()

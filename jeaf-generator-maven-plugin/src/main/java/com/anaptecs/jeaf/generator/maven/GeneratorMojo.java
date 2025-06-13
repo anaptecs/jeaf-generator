@@ -750,6 +750,19 @@ public class GeneratorMojo extends AbstractMojo {
   private Boolean generateModelReport;
 
   /**
+   * Parameter can be used to provide the publishing date of the next major version of an API. This date will used to
+   * identify which deprecation will be removed / breaking changes will become active with the next major version.
+   */
+  @Parameter(required = false, defaultValue = "")
+  private String nextMajorReleasePublishingDate = "";
+
+  /**
+   * Parameter can be used to provide the version number of the next major version of an API.
+   */
+  @Parameter(required = false, defaultValue = "")
+  private String nextMajorReleaseVersion = "";
+
+  /**
    * Switch enables the generation of a breaking changes report about the model parts which are configured to be
    * processed. Breaking changes report is based an model elements that are tagged with stereotype "BreakingChange".
    */
@@ -1796,6 +1809,14 @@ public class GeneratorMojo extends AbstractMojo {
       lLog.info("Generate Model Report                             " + generateModelReport);
     }
 
+    if (nextMajorReleasePublishingDate.isEmpty() == false) {
+      lLog.info("Next major release publishing date               " + nextMajorReleasePublishingDate);
+      if (nextMajorReleaseVersion.isEmpty() == false) {
+        lLog.info("Next major release version                       " + nextMajorReleaseVersion);
+      }
+      lLog.info(" ");
+    }
+
     if (generateBreakingChangesReport) {
       lLog.info("Generate Breaking Changes Report                  " + generateBreakingChangesReport);
       lLog.info("Breaking Changes Report Name                      " + breakingChangesReportName);
@@ -2171,6 +2192,9 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty("switch.gen.types.report.stereotypes", typesReportStereotypes);
 
       System.setProperty(PROPERTY_PREFIX + "generateModelReport", generateModelReport.toString());
+
+      System.setProperty(PROPERTY_PREFIX + "nextMajorReleasePublishingDate", nextMajorReleasePublishingDate);
+      System.setProperty(PROPERTY_PREFIX + "nextMajorReleaseVersion", nextMajorReleaseVersion);
 
       System.setProperty("switch.gen.breaking.changes.report", generateBreakingChangesReport.toString());
       System.setProperty("switch.gen.breaking.changes.report.name", breakingChangesReportName.toString());

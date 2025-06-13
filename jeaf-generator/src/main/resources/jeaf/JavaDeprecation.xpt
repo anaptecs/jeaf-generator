@@ -19,6 +19,7 @@
 «EXTENSION functions::BeanParam»
 «EXTENSION functions::JEAFDeprecated»
 «EXTENSION functions::NamedElement»
+«EXTENSION functions::SystemProperties»
 
 «EXTENSION org::openarchitectureware::util::stdlib::io»
 
@@ -39,7 +40,7 @@
 «DEFINE RemovableDeprecations FOR Model-»
 	«LET this.getAllRemoveableJavaDeprecations() AS deprecations -»
 		«IF deprecations.isEmpty == false -»
-## Overdue Deprecations
+## Deprecations planned to be removed with next major release «IF nextMajorReleaseVersion().length > 0»`«nextMajorReleaseVersion()»`«ENDIF» (planned publishing date «nextMajorReleasePublishingDate()»)
 
 <br>
 
