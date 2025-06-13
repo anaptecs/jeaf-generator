@@ -10,9 +10,11 @@ import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 
 @Generated("Before Class Declaration. Here an annontation cloud be added.")
+@JEAFCustomAnnotationTest
 public class BusinessA extends TechParent {
   /**
    * Default serial version uid.
@@ -22,10 +24,12 @@ public class BusinessA extends TechParent {
   /**
    * Constant for the name of attribute "businessAttribute".
    */
+  @JEAFCustomAnnotationTest
   public static final String BUSINESSATTRIBUTE = "businessAttribute";
 
   // "int"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private int businessAttribute;
 
   // "int"
@@ -64,9 +68,11 @@ public class BusinessA extends TechParent {
   /**
    * Class implements builder to create a new instance of class <code>BusinessA</code>.
    */
+  @JEAFCustomAnnotationTest
   public static class Builder extends TechParent.Builder {
     // "int"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private int businessAttribute;
 
     // "int"
@@ -96,6 +102,7 @@ public class BusinessA extends TechParent {
      * @param pTechAttribute Value to which {@link #techAttribute} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     @Override
     public Builder setTechAttribute( String pTechAttribute ) {
       // Call super class implementation.
@@ -109,6 +116,7 @@ public class BusinessA extends TechParent {
      * @param pBusinessAttribute Value to which {@link #businessAttribute} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setBusinessAttribute( int pBusinessAttribute ) {
       // Assign value to attribute
       businessAttribute = pBusinessAttribute;
@@ -150,6 +158,7 @@ public class BusinessA extends TechParent {
    *
    * @return int Value to which {@link #businessAttribute} is set.
    */
+  @JEAFCustomAnnotationTest
   public int getBusinessAttribute( ) {
     return businessAttribute;
   }
@@ -159,6 +168,7 @@ public class BusinessA extends TechParent {
    *
    * @param pBusinessAttribute Value to which {@link #businessAttribute} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setBusinessAttribute( int pBusinessAttribute ) {
     // Assign value to attribute
     businessAttribute = pBusinessAttribute;

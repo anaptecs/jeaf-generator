@@ -11,10 +11,12 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
 @Generated("Before Class Declaration. Here an annontation cloud be added.")
+@JEAFCustomAnnotationTest
 public class LinkObject extends Object implements ServiceObject {
   /**
    * Default serial version uid.
@@ -24,10 +26,12 @@ public class LinkObject extends Object implements ServiceObject {
   /**
    * Constant for the name of attribute "href".
    */
+  @JEAFCustomAnnotationTest
   public static final String HREF = "href";
 
   // "String"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private String href;
 
   // "String"
@@ -66,9 +70,11 @@ public class LinkObject extends Object implements ServiceObject {
   /**
    * Class implements builder to create a new instance of class <code>LinkObject</code>.
    */
+  @JEAFCustomAnnotationTest
   public static class Builder {
     // "String"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private String href;
 
     // "String"
@@ -96,6 +102,7 @@ public class LinkObject extends Object implements ServiceObject {
      * @param pHref Value to which {@link #href} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setHref( String pHref ) {
       // Assign value to attribute
       href = pHref;
@@ -137,6 +144,7 @@ public class LinkObject extends Object implements ServiceObject {
    *
    * @return {@link String} Value to which {@link #href} is set.
    */
+  @JEAFCustomAnnotationTest
   public String getHref( ) {
     return href;
   }
@@ -146,6 +154,7 @@ public class LinkObject extends Object implements ServiceObject {
    *
    * @param pHref Value to which {@link #href} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setHref( String pHref ) {
     // Assign value to attribute
     href = pHref;

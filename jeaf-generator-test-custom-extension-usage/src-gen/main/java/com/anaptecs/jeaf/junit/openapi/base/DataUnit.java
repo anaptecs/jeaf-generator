@@ -5,11 +5,15 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
+@JEAFCustomAnnotationTest
 public final class DataUnit {
   public static enum DataUnitType {
-    COUPON("CMP"), UNKNOWN("N/A");
+    @JEAFCustomAnnotationTest
+    COUPON("CMP"), @JEAFCustomAnnotationTest
+    UNKNOWN("N/A");
 
     /**
      * Empty constructor is required for UNKNWON literal.
@@ -25,6 +29,7 @@ public final class DataUnit {
       dataUnitID = pDataUnitID;
     }
 
+    @JEAFCustomAnnotationTest
     private final String dataUnitID;
 
     /**
@@ -32,13 +37,16 @@ public final class DataUnit {
      *
      * @return {@link String} Value to which {@link #dataUnitID} is set.
      */
+    @JEAFCustomAnnotationTest
     public String getDataUnitID( ) {
       return dataUnitID;
     }
   }
 
+  @JEAFCustomAnnotationTest
   public static final DataUnit COUPON = new DataUnit(DataUnitType.COUPON);
 
+  @JEAFCustomAnnotationTest
   public static final DataUnit UNKNOWN = new DataUnit(DataUnitType.UNKNOWN);
 
   /**

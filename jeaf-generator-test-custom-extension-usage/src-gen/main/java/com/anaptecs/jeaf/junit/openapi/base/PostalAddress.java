@@ -11,10 +11,12 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
 @Generated("Before Class Declaration. Here an annontation cloud be added.")
+@JEAFCustomAnnotationTest
 public class PostalAddress extends Object implements ServiceObject {
   /**
    * Default serial version uid.
@@ -24,25 +26,30 @@ public class PostalAddress extends Object implements ServiceObject {
   /**
    * Constant for the name of attribute "street".
    */
+  @JEAFCustomAnnotationTest
   public static final String STREET = "street";
 
   /**
    * Constant for the name of attribute "houseNumber".
    */
+  @JEAFCustomAnnotationTest
   public static final String HOUSENUMBER = "houseNumber";
 
   /**
    * Constant for the name of attribute "city".
    */
+  @JEAFCustomAnnotationTest
   public static final String CITY = "city";
 
   /**
    * Constant for the name of attribute "postalCode".
    */
+  @JEAFCustomAnnotationTest
   public static final String POSTALCODE = "postalCode";
 
   // "java.lang.String"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private String street;
 
   // "java.lang.String"
@@ -50,6 +57,7 @@ public class PostalAddress extends Object implements ServiceObject {
 
   // "java.lang.String"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private String houseNumber;
 
   // "java.lang.String"
@@ -57,6 +65,7 @@ public class PostalAddress extends Object implements ServiceObject {
 
   // "java.lang.String"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private String city;
 
   // "java.lang.String"
@@ -64,6 +73,7 @@ public class PostalAddress extends Object implements ServiceObject {
 
   // "int"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private int postalCode;
 
   // "int"
@@ -111,9 +121,11 @@ public class PostalAddress extends Object implements ServiceObject {
   /**
    * Class implements builder to create a new instance of class <code>PostalAddress</code>.
    */
+  @JEAFCustomAnnotationTest
   public static class Builder {
     // "java.lang.String"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private String street;
 
     // "java.lang.String"
@@ -121,6 +133,7 @@ public class PostalAddress extends Object implements ServiceObject {
 
     // "java.lang.String"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private String houseNumber;
 
     // "java.lang.String"
@@ -128,6 +141,7 @@ public class PostalAddress extends Object implements ServiceObject {
 
     // "java.lang.String"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private String city;
 
     // "java.lang.String"
@@ -135,6 +149,7 @@ public class PostalAddress extends Object implements ServiceObject {
 
     // "int"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private int postalCode;
 
     // "int"
@@ -165,6 +180,7 @@ public class PostalAddress extends Object implements ServiceObject {
      * @param pStreet Value to which {@link #street} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setStreet( String pStreet ) {
       // Assign value to attribute
       street = pStreet;
@@ -183,6 +199,7 @@ public class PostalAddress extends Object implements ServiceObject {
      * @param pHouseNumber Value to which {@link #houseNumber} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setHouseNumber( String pHouseNumber ) {
       // Assign value to attribute
       houseNumber = pHouseNumber;
@@ -201,6 +218,7 @@ public class PostalAddress extends Object implements ServiceObject {
      * @param pCity Value to which {@link #city} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setCity( String pCity ) {
       // Assign value to attribute
       city = pCity;
@@ -219,6 +237,7 @@ public class PostalAddress extends Object implements ServiceObject {
      * @param pPostalCode Value to which {@link #postalCode} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setPostalCode( int pPostalCode ) {
       // Assign value to attribute
       postalCode = pPostalCode;
@@ -261,6 +280,7 @@ public class PostalAddress extends Object implements ServiceObject {
    *
    * @return {@link String} Value to which {@link #street} is set.
    */
+  @JEAFCustomAnnotationTest
   public String getStreet( ) {
     return street;
   }
@@ -270,6 +290,7 @@ public class PostalAddress extends Object implements ServiceObject {
    *
    * @param pStreet Value to which {@link #street} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setStreet( String pStreet ) {
     // Assign value to attribute
     street = pStreet;
@@ -289,6 +310,7 @@ public class PostalAddress extends Object implements ServiceObject {
    *
    * @return {@link String} Value to which {@link #houseNumber} is set.
    */
+  @JEAFCustomAnnotationTest
   public String getHouseNumber( ) {
     return houseNumber;
   }
@@ -298,6 +320,7 @@ public class PostalAddress extends Object implements ServiceObject {
    *
    * @param pHouseNumber Value to which {@link #houseNumber} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setHouseNumber( String pHouseNumber ) {
     // Assign value to attribute
     houseNumber = pHouseNumber;
@@ -317,6 +340,7 @@ public class PostalAddress extends Object implements ServiceObject {
    *
    * @return {@link String} Value to which {@link #city} is set.
    */
+  @JEAFCustomAnnotationTest
   public String getCity( ) {
     return city;
   }
@@ -326,6 +350,7 @@ public class PostalAddress extends Object implements ServiceObject {
    *
    * @param pCity Value to which {@link #city} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setCity( String pCity ) {
     // Assign value to attribute
     city = pCity;
@@ -345,6 +370,7 @@ public class PostalAddress extends Object implements ServiceObject {
    *
    * @return int Value to which {@link #postalCode} is set.
    */
+  @JEAFCustomAnnotationTest
   public int getPostalCode( ) {
     return postalCode;
   }
@@ -354,6 +380,7 @@ public class PostalAddress extends Object implements ServiceObject {
    *
    * @param pPostalCode Value to which {@link #postalCode} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setPostalCode( int pPostalCode ) {
     // Assign value to attribute
     postalCode = pPostalCode;

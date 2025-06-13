@@ -21,13 +21,13 @@ package «packageName()»;
 «ENDIF»
 
 «EXPAND functions::Javadoc::JavadocForType»
-«EXPAND java::Helper::GenerateDeprecationAnnotation-»
+«EXPAND java::Helper::GenerateAnnotations-»
 
 «IF this.extensibleEnum == false || generateHeavyStyleExtensibleEnums() == false»
 	public enum «name» «IF this.general.isEmpty== false»implements «FOREACH this.general AS interface SEPARATOR ", "»«interface.fqn()»«ENDFOREACH»«ENDIF» {
 	«FOREACH this.ownedLiteral AS literal SEPARATOR ", "»
 	  «EXPAND functions::Javadoc::JavadocForLiteral FOR literal»
-	  «EXPAND java::Helper::GenerateDeprecationAnnotation FOR literal -»  
+	  «EXPAND java::Helper::GenerateAnnotations FOR literal -»  
 	  «literal.name»«IF literal.slot.size > 0»( 
 	  	«FOREACH literal.getOrderedSlots() AS slot SEPARATOR ", "»«slot.getSlotValue()»«ENDFOREACH»	  
 	  )«ENDIF»	  
@@ -117,7 +117,7 @@ public final class «name» {
   public static enum «name»Type {
 	«FOREACH this.ownedLiteral AS literal SEPARATOR ", "»
 	  «EXPAND functions::Javadoc::JavadocForLiteral FOR literal»
-	  «EXPAND java::Helper::GenerateDeprecationAnnotation FOR literal -»  
+	  «EXPAND java::Helper::GenerateAnnotations FOR literal -»  
 	  «literal.name»«IF literal.slot.size > 0»( 
 	  	«FOREACH literal.getOrderedSlots() AS slot SEPARATOR ", "»«IF slot.isEnumTypeSlot()»«slot.definingFeature.type.fqn()».«ENDIF»«IF slot.isStringTypeSlot()»"«ENDIF»«slot.value.first().stringValue()»«IF slot.isStringTypeSlot()»"«ENDIF»«IF slot.isFloatTypeSlot()»f«ENDIF»«ENDFOREACH»	  
 	  )«ENDIF»
@@ -167,7 +167,7 @@ public final class «name» {
 
   «FOREACH this.ownedLiteral AS literal»
   «EXPAND functions::Javadoc::JavadocForLiteral FOR literal»
-  «EXPAND java::Helper::GenerateDeprecationAnnotation FOR literal -»  
+  «EXPAND java::Helper::GenerateAnnotations FOR literal -»  
   public static final «name» «literal.name» = new «name»(«name»Type.«literal.name»);
   «ENDFOREACH»
 	
@@ -364,7 +364,7 @@ public final class «name» {
 		«getFileHeader()»
 		package «this.packageName()».serializers;
 		
-		«EXPAND java::Helper::GenerateDeprecationAnnotation-»
+		«EXPAND java::Helper::GenerateAnnotations-»
 		/**
 		 * Class implements a JSON / Jackson serializer for class «name».
 		 */
@@ -398,7 +398,7 @@ public final class «name» {
 		«getFileHeader()»
 		package «this.packageName()».serializers;
 		
-		«EXPAND java::Helper::GenerateDeprecationAnnotation-»
+		«EXPAND java::Helper::GenerateAnnotations-»
 		/**
 		 * Class implements a JSON / Jackson deserializer for class «name».
 		 */

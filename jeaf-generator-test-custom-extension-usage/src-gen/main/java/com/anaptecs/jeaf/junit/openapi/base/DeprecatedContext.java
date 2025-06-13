@@ -14,6 +14,7 @@ import javax.validation.constraints.NotEmpty;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
@@ -24,6 +25,7 @@ import com.anaptecs.jeaf.xfun.api.checks.Check;
  * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 2022-07-25)
  */
 @Deprecated
+@JEAFCustomAnnotationTest
 public class DeprecatedContext extends Object implements ServiceObject {
   /**
    * Default serial version uid.
@@ -33,25 +35,30 @@ public class DeprecatedContext extends Object implements ServiceObject {
   /**
    * Constant for the name of attribute "accessToken".
    */
+  @JEAFCustomAnnotationTest
   public static final String ACCESSTOKEN = "accessToken";
 
   /**
    * Constant for the name of attribute "language".
    */
+  @JEAFCustomAnnotationTest
   public static final String LANGUAGE = "language";
 
   /**
    * Constant for the name of attribute "resellerID".
    */
+  @JEAFCustomAnnotationTest
   public static final String RESELLERID = "resellerID";
 
   /**
    * Constant for the name of attribute "queryParam".
    */
+  @JEAFCustomAnnotationTest
   public static final String QUERYPARAM = "queryParam";
 
   // "java.lang.String"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   @NotEmpty
   private String accessToken;
 
@@ -67,6 +74,7 @@ public class DeprecatedContext extends Object implements ServiceObject {
    * <li><code>en</code></li>
    * </ul>
    */
+  @JEAFCustomAnnotationTest
   private Locale language;
 
   // "java.util.Locale"
@@ -74,6 +82,7 @@ public class DeprecatedContext extends Object implements ServiceObject {
 
   // "long"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private long resellerID;
 
   // "long"
@@ -81,6 +90,7 @@ public class DeprecatedContext extends Object implements ServiceObject {
 
   // "java.lang.String"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private String queryParam;
 
   // "java.lang.String"
@@ -129,9 +139,11 @@ public class DeprecatedContext extends Object implements ServiceObject {
    * Class implements builder to create a new instance of class <code>DeprecatedContext</code>.
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   public static class Builder {
     // "java.lang.String"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     @NotEmpty
     private String accessToken;
 
@@ -147,6 +159,7 @@ public class DeprecatedContext extends Object implements ServiceObject {
      */
     // "java.util.Locale"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private Locale language;
 
     // "java.util.Locale"
@@ -154,6 +167,7 @@ public class DeprecatedContext extends Object implements ServiceObject {
 
     // "long"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private long resellerID;
 
     // "long"
@@ -161,6 +175,7 @@ public class DeprecatedContext extends Object implements ServiceObject {
 
     // "java.lang.String"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private String queryParam;
 
     // "java.lang.String"
@@ -191,6 +206,7 @@ public class DeprecatedContext extends Object implements ServiceObject {
      * @param pAccessToken Value to which {@link #accessToken} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setAccessToken( String pAccessToken ) {
       // Assign value to attribute
       accessToken = pAccessToken;
@@ -209,6 +225,7 @@ public class DeprecatedContext extends Object implements ServiceObject {
      * @param pLanguage Value to which {@link #language} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setLanguage( Locale pLanguage ) {
       // Assign value to attribute
       language = pLanguage;
@@ -227,6 +244,7 @@ public class DeprecatedContext extends Object implements ServiceObject {
      * @param pResellerID Value to which {@link #resellerID} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setResellerID( long pResellerID ) {
       // Assign value to attribute
       resellerID = pResellerID;
@@ -245,6 +263,7 @@ public class DeprecatedContext extends Object implements ServiceObject {
      * @param pQueryParam Value to which {@link #queryParam} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setQueryParam( String pQueryParam ) {
       // Assign value to attribute
       queryParam = pQueryParam;
@@ -287,6 +306,7 @@ public class DeprecatedContext extends Object implements ServiceObject {
    *
    * @return {@link String} Value to which {@link #accessToken} is set.
    */
+  @JEAFCustomAnnotationTest
   public String getAccessToken( ) {
     return accessToken;
   }
@@ -296,6 +316,7 @@ public class DeprecatedContext extends Object implements ServiceObject {
    *
    * @param pAccessToken Value to which {@link #accessToken} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setAccessToken( String pAccessToken ) {
     // Assign value to attribute
     accessToken = pAccessToken;
@@ -315,6 +336,7 @@ public class DeprecatedContext extends Object implements ServiceObject {
    *
    * @return {@link Locale} Value to which {@link #language} is set.
    */
+  @JEAFCustomAnnotationTest
   public Locale getLanguage( ) {
     return language;
   }
@@ -324,6 +346,7 @@ public class DeprecatedContext extends Object implements ServiceObject {
    *
    * @param pLanguage Value to which {@link #language} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setLanguage( Locale pLanguage ) {
     // Assign value to attribute
     language = pLanguage;
@@ -343,6 +366,7 @@ public class DeprecatedContext extends Object implements ServiceObject {
    *
    * @return long Value to which {@link #resellerID} is set.
    */
+  @JEAFCustomAnnotationTest
   public long getResellerID( ) {
     return resellerID;
   }
@@ -352,6 +376,7 @@ public class DeprecatedContext extends Object implements ServiceObject {
    *
    * @param pResellerID Value to which {@link #resellerID} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setResellerID( long pResellerID ) {
     // Assign value to attribute
     resellerID = pResellerID;
@@ -371,6 +396,7 @@ public class DeprecatedContext extends Object implements ServiceObject {
    *
    * @return {@link String} Value to which {@link #queryParam} is set.
    */
+  @JEAFCustomAnnotationTest
   public String getQueryParam( ) {
     return queryParam;
   }
@@ -380,6 +406,7 @@ public class DeprecatedContext extends Object implements ServiceObject {
    *
    * @param pQueryParam Value to which {@link #queryParam} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setQueryParam( String pQueryParam ) {
     // Assign value to attribute
     queryParam = pQueryParam;

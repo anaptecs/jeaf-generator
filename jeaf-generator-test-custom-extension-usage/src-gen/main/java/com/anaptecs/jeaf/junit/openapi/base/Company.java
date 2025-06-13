@@ -12,10 +12,12 @@ import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.common.ObjectIdentity;
 
 @Generated("Before Class Declaration. Here an annontation cloud be added.")
+@JEAFCustomAnnotationTest
 public class Company extends Partner {
   /**
    * Default serial version uid.
@@ -25,15 +27,18 @@ public class Company extends Partner {
   /**
    * Constant for the name of attribute "name".
    */
+  @JEAFCustomAnnotationTest
   public static final String NAME = "name";
 
   /**
    * Constant for the name of attribute "code".
    */
+  @JEAFCustomAnnotationTest
   public static final String CODE = "code";
 
   // "java.lang.String"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private String name;
 
   // "java.lang.String"
@@ -41,6 +46,7 @@ public class Company extends Partner {
 
   // "com.anaptecs.jeaf.junit.openapi.base.StringCode"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private StringCode code;
 
   // "com.anaptecs.jeaf.junit.openapi.base.StringCode"
@@ -82,9 +88,11 @@ public class Company extends Partner {
   /**
    * Class implements builder to create a new instance of class <code>Company</code>.
    */
+  @JEAFCustomAnnotationTest
   public static class Builder extends Partner.Builder {
     // "java.lang.String"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private String name;
 
     // "java.lang.String"
@@ -92,6 +100,7 @@ public class Company extends Partner {
 
     // "com.anaptecs.jeaf.junit.openapi.base.StringCode"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private StringCode code;
 
     // "com.anaptecs.jeaf.junit.openapi.base.StringCode"
@@ -132,6 +141,7 @@ public class Company extends Partner {
      * @param pPostalAddresses Collection to which {@link #postalAddresses} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     @Override
     public Builder setPostalAddresses( List<PostalAddress> pPostalAddresses ) {
       // Call super class implementation.
@@ -146,6 +156,7 @@ public class Company extends Partner {
      * null.
      * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder addToPostalAddresses( PostalAddress... pPostalAddresses ) {
       // Call super class implementation.
       super.addToPostalAddresses(pPostalAddresses);
@@ -158,6 +169,7 @@ public class Company extends Partner {
      * @param pName Value to which {@link #name} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setName( String pName ) {
       // Assign value to attribute
       name = pName;
@@ -176,6 +188,7 @@ public class Company extends Partner {
      * @param pCode Value to which {@link #code} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setCode( StringCode pCode ) {
       code = pCode;
       return this;
@@ -216,6 +229,7 @@ public class Company extends Partner {
    *
    * @return {@link String} Value to which {@link #name} is set.
    */
+  @JEAFCustomAnnotationTest
   public String getName( ) {
     return name;
   }
@@ -225,6 +239,7 @@ public class Company extends Partner {
    *
    * @param pName Value to which {@link #name} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setName( String pName ) {
     // Assign value to attribute
     name = pName;
@@ -244,6 +259,7 @@ public class Company extends Partner {
    *
    * @return {@link StringCode} Value to which {@link #code} is set.
    */
+  @JEAFCustomAnnotationTest
   public StringCode getCode( ) {
     return code;
   }
@@ -253,6 +269,7 @@ public class Company extends Partner {
    *
    * @param pCode Value to which {@link #code} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setCode( StringCode pCode ) {
     code = pCode;
   }
@@ -260,6 +277,7 @@ public class Company extends Partner {
   /**
    * Method unsets {@link #code}.
    */
+  @JEAFCustomAnnotationTest
   public final void unsetCode( ) {
     code = null;
   }

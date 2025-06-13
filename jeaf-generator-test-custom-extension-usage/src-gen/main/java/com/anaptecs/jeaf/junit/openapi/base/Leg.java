@@ -17,10 +17,12 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
 @Generated("Before Class Declaration. Here an annontation cloud be added.")
+@JEAFCustomAnnotationTest
 public class Leg extends Object implements ServiceObject {
   /**
    * Default serial version uid.
@@ -30,20 +32,24 @@ public class Leg extends Object implements ServiceObject {
   /**
    * Constant for the name of attribute "start".
    */
+  @JEAFCustomAnnotationTest
   public static final String START = "start";
 
   /**
    * Constant for the name of attribute "stop".
    */
+  @JEAFCustomAnnotationTest
   public static final String STOP = "stop";
 
   /**
    * Constant for the name of attribute "stopovers".
    */
+  @JEAFCustomAnnotationTest
   public static final String STOPOVERS = "stopovers";
 
   // "com.anaptecs.jeaf.junit.openapi.base.PlaceRef"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private PlaceRef start;
 
   // "com.anaptecs.jeaf.junit.openapi.base.PlaceRef"
@@ -51,6 +57,7 @@ public class Leg extends Object implements ServiceObject {
 
   // "com.anaptecs.jeaf.junit.openapi.base.PlaceRef"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private PlaceRef stop;
 
   // "com.anaptecs.jeaf.junit.openapi.base.PlaceRef"
@@ -58,6 +65,7 @@ public class Leg extends Object implements ServiceObject {
 
   // "com.anaptecs.jeaf.junit.openapi.base.PlaceRef"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private List<PlaceRef> stopovers;
 
   // "com.anaptecs.jeaf.junit.openapi.base.PlaceRef"
@@ -108,9 +116,11 @@ public class Leg extends Object implements ServiceObject {
   /**
    * Class implements builder to create a new instance of class <code>Leg</code>.
    */
+  @JEAFCustomAnnotationTest
   public static class Builder {
     // "com.anaptecs.jeaf.junit.openapi.base.PlaceRef"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private PlaceRef start;
 
     // "com.anaptecs.jeaf.junit.openapi.base.PlaceRef"
@@ -118,6 +128,7 @@ public class Leg extends Object implements ServiceObject {
 
     // "com.anaptecs.jeaf.junit.openapi.base.PlaceRef"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private PlaceRef stop;
 
     // "com.anaptecs.jeaf.junit.openapi.base.PlaceRef"
@@ -125,6 +136,7 @@ public class Leg extends Object implements ServiceObject {
 
     // "com.anaptecs.jeaf.junit.openapi.base.PlaceRef"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private List<PlaceRef> stopovers;
 
     // "com.anaptecs.jeaf.junit.openapi.base.PlaceRef"
@@ -154,6 +166,7 @@ public class Leg extends Object implements ServiceObject {
      * @param pStart Value to which {@link #start} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setStart( PlaceRef pStart ) {
       start = pStart;
       return this;
@@ -171,6 +184,7 @@ public class Leg extends Object implements ServiceObject {
      * @param pStop Value to which {@link #stop} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setStop( PlaceRef pStop ) {
       stop = pStop;
       return this;
@@ -188,6 +202,7 @@ public class Leg extends Object implements ServiceObject {
      * @param pStopovers Collection to which {@link #stopovers} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setStopovers( List<PlaceRef> pStopovers ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pStopovers != null) {
@@ -205,6 +220,7 @@ public class Leg extends Object implements ServiceObject {
      * @param pStopovers Array of objects that should be added to {@link #stopovers}. The parameter may be null.
      * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder addToStopovers( PlaceRef... pStopovers ) {
       if (pStopovers != null) {
         if (stopovers == null) {
@@ -250,6 +266,7 @@ public class Leg extends Object implements ServiceObject {
    *
    * @return {@link PlaceRef} Value to which {@link #start} is set.
    */
+  @JEAFCustomAnnotationTest
   public PlaceRef getStart( ) {
     return start;
   }
@@ -259,6 +276,7 @@ public class Leg extends Object implements ServiceObject {
    *
    * @param pStart Value to which {@link #start} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setStart( PlaceRef pStart ) {
     start = pStart;
   }
@@ -266,6 +284,7 @@ public class Leg extends Object implements ServiceObject {
   /**
    * Method unsets {@link #start}.
    */
+  @JEAFCustomAnnotationTest
   public final void unsetStart( ) {
     start = null;
   }
@@ -284,6 +303,7 @@ public class Leg extends Object implements ServiceObject {
    *
    * @return {@link PlaceRef} Value to which {@link #stop} is set.
    */
+  @JEAFCustomAnnotationTest
   public PlaceRef getStop( ) {
     return stop;
   }
@@ -293,6 +313,7 @@ public class Leg extends Object implements ServiceObject {
    *
    * @param pStop Value to which {@link #stop} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setStop( PlaceRef pStop ) {
     stop = pStop;
   }
@@ -300,6 +321,7 @@ public class Leg extends Object implements ServiceObject {
   /**
    * Method unsets {@link #stop}.
    */
+  @JEAFCustomAnnotationTest
   public final void unsetStop( ) {
     stop = null;
   }
@@ -319,6 +341,7 @@ public class Leg extends Object implements ServiceObject {
    * @return {@link List<PlaceRef>} Value to which {@link #stopovers} is set. The method never returns null and the
    * returned collection is unmodifiable.
    */
+  @JEAFCustomAnnotationTest
   public List<PlaceRef> getStopovers( ) {
     // Return all PlaceRef objects as unmodifiable collection.
     return Collections.unmodifiableList(stopovers);
@@ -329,6 +352,7 @@ public class Leg extends Object implements ServiceObject {
    *
    * @param pStopovers Object that should be added to {@link #stopovers}. The parameter must not be null.
    */
+  @JEAFCustomAnnotationTest
   public void addToStopovers( PlaceRef pStopovers ) {
     // Check parameter "pStopovers" for invalid value null.
     Check.checkInvalidParameterNull(pStopovers, "pStopovers");
@@ -342,6 +366,7 @@ public class Leg extends Object implements ServiceObject {
    * @param pStopovers Collection with all objects that should be added to {@link #stopovers}. The parameter must not be
    * null.
    */
+  @JEAFCustomAnnotationTest
   public void addToStopovers( Collection<PlaceRef> pStopovers ) {
     // Check parameter "pStopovers" for invalid value null.
     Check.checkInvalidParameterNull(pStopovers, "pStopovers");
@@ -356,6 +381,7 @@ public class Leg extends Object implements ServiceObject {
    *
    * @param pStopovers Object that should be removed from {@link #stopovers}. The parameter must not be null.
    */
+  @JEAFCustomAnnotationTest
   public void removeFromStopovers( PlaceRef pStopovers ) {
     // Check parameter for invalid value null.
     Check.checkInvalidParameterNull(pStopovers, "pStopovers");
@@ -366,6 +392,7 @@ public class Leg extends Object implements ServiceObject {
   /**
    * Method removes all objects from {@link #stopovers}.
    */
+  @JEAFCustomAnnotationTest
   public void clearStopovers( ) {
     // Remove all objects from association "stopovers".
     stopovers.clear();

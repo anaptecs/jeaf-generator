@@ -11,10 +11,12 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
 @Generated("Before Class Declaration. Here an annontation cloud be added.")
+@JEAFCustomAnnotationTest
 public class MultivaluedQueryParamsBean extends Object implements ServiceObject {
   /**
    * Default serial version uid.
@@ -24,16 +26,19 @@ public class MultivaluedQueryParamsBean extends Object implements ServiceObject 
   /**
    * Constant for the name of attribute "intArray".
    */
+  @JEAFCustomAnnotationTest
   public static final String INTARRAY = "intArray";
 
   /**
    * Constant for the name of attribute "strings".
    */
+  @JEAFCustomAnnotationTest
   public static final String STRINGS = "strings";
 
   /**
    * Constant for the name of attribute "integers".
    */
+  @JEAFCustomAnnotationTest
   public static final String INTEGERS = "integers";
 
   // "int"
@@ -42,6 +47,7 @@ public class MultivaluedQueryParamsBean extends Object implements ServiceObject 
    * <p/>
    * <b>Breaking Change with 47.11:</b> At least one will become mandatory
    */
+  @JEAFCustomAnnotationTest
   private int[] intArray;
 
   // "int"
@@ -49,6 +55,7 @@ public class MultivaluedQueryParamsBean extends Object implements ServiceObject 
 
   // "String"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private String[] strings;
 
   // "String"
@@ -56,6 +63,7 @@ public class MultivaluedQueryParamsBean extends Object implements ServiceObject 
 
   // "Integer"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private Integer[] integers;
 
   // "Integer"
@@ -100,6 +108,7 @@ public class MultivaluedQueryParamsBean extends Object implements ServiceObject 
   /**
    * Class implements builder to create a new instance of class <code>MultivaluedQueryParamsBean</code>.
    */
+  @JEAFCustomAnnotationTest
   public static class Builder {
     /**
      * <p/>
@@ -107,6 +116,7 @@ public class MultivaluedQueryParamsBean extends Object implements ServiceObject 
      */
     // "int"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private int[] intArray;
 
     // "int"
@@ -114,6 +124,7 @@ public class MultivaluedQueryParamsBean extends Object implements ServiceObject 
 
     // "String"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private String[] strings;
 
     // "String"
@@ -121,6 +132,7 @@ public class MultivaluedQueryParamsBean extends Object implements ServiceObject 
 
     // "Integer"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private Integer[] integers;
 
     // "Integer"
@@ -153,6 +165,7 @@ public class MultivaluedQueryParamsBean extends Object implements ServiceObject 
      * @param pIntArray Value to which {@link #intArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setIntArray( int[] pIntArray ) {
       // Assign value to attribute
       if (pIntArray != null) {
@@ -177,6 +190,7 @@ public class MultivaluedQueryParamsBean extends Object implements ServiceObject 
      * @param pStrings Collection to which {@link #strings} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setStrings( String[] pStrings ) {
       // Assign value to attribute
       if (pStrings != null) {
@@ -201,6 +215,7 @@ public class MultivaluedQueryParamsBean extends Object implements ServiceObject 
      * @param pIntegers Collection to which {@link #integers} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setIntegers( Integer[] pIntegers ) {
       // Assign value to attribute
       if (pIntegers != null) {
@@ -251,6 +266,7 @@ public class MultivaluedQueryParamsBean extends Object implements ServiceObject 
    *
    * @return int[] Value to which {@link #intArray} is set.
    */
+  @JEAFCustomAnnotationTest
   public int[] getIntArray( ) {
     int[] lReturnValue;
     if (intArray != null) {
@@ -270,6 +286,7 @@ public class MultivaluedQueryParamsBean extends Object implements ServiceObject 
    *
    * @param pIntArray Value to which {@link #intArray} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setIntArray( int[] pIntArray ) {
     // Assign value to attribute
     if (pIntArray != null) {
@@ -295,6 +312,7 @@ public class MultivaluedQueryParamsBean extends Object implements ServiceObject 
    *
    * @return {@link String[]} Value to which {@link #strings} is set.
    */
+  @JEAFCustomAnnotationTest
   public String[] getStrings( ) {
     String[] lReturnValue;
     if (strings != null) {
@@ -312,6 +330,7 @@ public class MultivaluedQueryParamsBean extends Object implements ServiceObject 
    *
    * @param pStrings Value to which {@link #strings} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setStrings( String[] pStrings ) {
     // Assign value to attribute
     if (pStrings != null) {
@@ -337,6 +356,7 @@ public class MultivaluedQueryParamsBean extends Object implements ServiceObject 
    *
    * @return {@link Integer[]} Value to which {@link #integers} is set.
    */
+  @JEAFCustomAnnotationTest
   public Integer[] getIntegers( ) {
     Integer[] lReturnValue;
     if (integers != null) {
@@ -354,6 +374,7 @@ public class MultivaluedQueryParamsBean extends Object implements ServiceObject 
    *
    * @param pIntegers Value to which {@link #integers} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setIntegers( Integer[] pIntegers ) {
     // Assign value to attribute
     if (pIntegers != null) {

@@ -25,7 +25,31 @@
 			<type>zip</type>
 			<scope>provided</scope>
 		</dependency>
-		
+
+		<dependency>
+			<groupId>com.anaptecs.jeaf.rest</groupId>
+			<artifactId>jeaf-rest-resource-api</artifactId>
+			<version>${jeaf.rest.api.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.anaptecs.jeaf.rest</groupId>
+			<artifactId>jeaf-rest-request-executor-api</artifactId>
+			<version>${jeaf.rest.api.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.anaptecs.jeaf.workload</groupId>
+			<artifactId>jeaf-workload-rest-api</artifactId>
+			<version>${jeaf.workload.api.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>${javaee-api.version}</version>
+			<scope>provided</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -83,12 +107,19 @@
 					<!-- Define whitelist of package in UML model generator should take care when generating code. -->
 					<packages>
 						<package>com.anaptecs.jeaf.junit.openapi</package>
+						<package>com.anaptecs.jeaf.junit.rest</package>
+						<package>com.anaptecs.jeaf.junit.core</package>
+						<package>com.anaptecs.jeaf.junit.otherpackage</package>
 					</packages>
 
 					<!-- Define what should be generated. By default nothing is generated. -->
 					<generateServiceObjects>true</generateServiceObjects>
 					<javaGenericSoftLinkType>com.anaptecs.jeaf.junit.openapi.base.SoftLink</javaGenericSoftLinkType>
 					<generateHeavyExtensibleEnums>true</generateHeavyExtensibleEnums>
+					
+					<generateServiceInterfaces>true</generateServiceInterfaces>
+					<generateRESTResources>true</generateRESTResources>
+					<generateExceptionClasses>true</generateExceptionClasses>
 					
 					<generateOpenAPISpec>true</generateOpenAPISpec>
 					<validateOpenAPISpec>true</validateOpenAPISpec>

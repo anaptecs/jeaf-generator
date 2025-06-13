@@ -127,6 +127,11 @@
 «ENDDEFINE»
 
 
+«DEFINE GenerateAnnotations FOR uml::NamedElement»
+	«EXPAND GenerateDeprecationAnnotation»
+	«EXPAND jeafgenerator::api::AnnotationExtensionPoint::GenerateCustomAnnotations»
+«ENDDEFINE»
+
 «DEFINE GenerateDeprecationAnnotation FOR uml::NamedElement»
 	«IF this.isDeprecated()-»
 	@Deprecated
@@ -146,7 +151,7 @@
 				/**
 				 * Constant for the name of attribute "«attr.name»".
 				 */
-				«EXPAND java::Helper::GenerateDeprecationAnnotation FOR attr-»
+				«EXPAND java::Helper::GenerateAnnotations FOR attr-»
 				public static final String «attr.asInstanceVar().toUpperCase()» = "«attr.asInstanceVar()»";
 				«ENDIF»
 			«ENDFOREACH»

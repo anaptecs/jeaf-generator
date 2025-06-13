@@ -10,9 +10,11 @@ import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 
 @Generated("Before Class Declaration. Here an annontation cloud be added.")
+@JEAFCustomAnnotationTest
 public class BusinessParent extends TechParent {
   /**
    * Default serial version uid.
@@ -22,10 +24,12 @@ public class BusinessParent extends TechParent {
   /**
    * Constant for the name of attribute "parentAttribute".
    */
+  @JEAFCustomAnnotationTest
   public static final String PARENTATTRIBUTE = "parentAttribute";
 
   // "long"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private long parentAttribute;
 
   // "long"
@@ -64,9 +68,11 @@ public class BusinessParent extends TechParent {
   /**
    * Class implements builder to create a new instance of class <code>BusinessParent</code>.
    */
+  @JEAFCustomAnnotationTest
   public static class Builder extends TechParent.Builder {
     // "long"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private long parentAttribute;
 
     // "long"
@@ -96,6 +102,7 @@ public class BusinessParent extends TechParent {
      * @param pTechAttribute Value to which {@link #techAttribute} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     @Override
     public Builder setTechAttribute( String pTechAttribute ) {
       // Call super class implementation.
@@ -109,6 +116,7 @@ public class BusinessParent extends TechParent {
      * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setParentAttribute( long pParentAttribute ) {
       // Assign value to attribute
       parentAttribute = pParentAttribute;
@@ -151,6 +159,7 @@ public class BusinessParent extends TechParent {
    *
    * @return long Value to which {@link #parentAttribute} is set.
    */
+  @JEAFCustomAnnotationTest
   public long getParentAttribute( ) {
     return parentAttribute;
   }
@@ -160,6 +169,7 @@ public class BusinessParent extends TechParent {
    *
    * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setParentAttribute( long pParentAttribute ) {
     // Assign value to attribute
     parentAttribute = pParentAttribute;

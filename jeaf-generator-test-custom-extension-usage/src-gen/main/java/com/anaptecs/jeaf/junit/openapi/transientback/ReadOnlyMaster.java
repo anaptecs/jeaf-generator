@@ -16,10 +16,12 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
 @Generated("Before Class Declaration. Here an annontation cloud be added.")
+@JEAFCustomAnnotationTest
 public class ReadOnlyMaster extends Object implements ServiceObject {
   /**
    * Default serial version uid.
@@ -29,15 +31,18 @@ public class ReadOnlyMaster extends Object implements ServiceObject {
   /**
    * Constant for the name of attribute "name".
    */
+  @JEAFCustomAnnotationTest
   public static final String NAME = "name";
 
   /**
    * Constant for the name of attribute "clients".
    */
+  @JEAFCustomAnnotationTest
   public static final String CLIENTS = "clients";
 
   // "String"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private final String name;
 
   // "String"
@@ -45,6 +50,7 @@ public class ReadOnlyMaster extends Object implements ServiceObject {
 
   // "com.anaptecs.jeaf.junit.openapi.transientback.ReadOnlyClient"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private final List<ReadOnlyClient> clients;
 
   /**
@@ -106,9 +112,11 @@ public class ReadOnlyMaster extends Object implements ServiceObject {
   /**
    * Class implements builder to create a new instance of class <code>ReadOnlyMaster</code>.
    */
+  @JEAFCustomAnnotationTest
   public static class Builder {
     // "String"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private String name;
 
     // "String"
@@ -116,6 +124,7 @@ public class ReadOnlyMaster extends Object implements ServiceObject {
 
     // "com.anaptecs.jeaf.junit.openapi.transientback.ReadOnlyClient"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private List<ReadOnlyClient> clients;
 
     // "com.anaptecs.jeaf.junit.openapi.transientback.ReadOnlyClient"
@@ -144,6 +153,7 @@ public class ReadOnlyMaster extends Object implements ServiceObject {
      * @param pName Value to which {@link #name} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setName( String pName ) {
       // Assign value to attribute
       name = pName;
@@ -162,6 +172,7 @@ public class ReadOnlyMaster extends Object implements ServiceObject {
      * @param pClients Collection to which {@link #clients} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setClients( List<ReadOnlyClient> pClients ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pClients != null) {
@@ -179,6 +190,7 @@ public class ReadOnlyMaster extends Object implements ServiceObject {
      * @param pClients Array of objects that should be added to {@link #clients}. The parameter may be null.
      * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder addToClients( ReadOnlyClient... pClients ) {
       if (pClients != null) {
         if (clients == null) {
@@ -225,6 +237,7 @@ public class ReadOnlyMaster extends Object implements ServiceObject {
    *
    * @return {@link String} Value to which {@link #name} is set.
    */
+  @JEAFCustomAnnotationTest
   public String getName( ) {
     return name;
   }
@@ -244,6 +257,7 @@ public class ReadOnlyMaster extends Object implements ServiceObject {
    * @return {@link List<ReadOnlyClient>} Value to which {@link #clients} is set. The method never returns null and the
    * returned collection is unmodifiable.
    */
+  @JEAFCustomAnnotationTest
   public List<ReadOnlyClient> getClients( ) {
     // Due to restrictions in JSON serialization / deserialization bi-directional associations need a special handling
     // after an object was deserialized.

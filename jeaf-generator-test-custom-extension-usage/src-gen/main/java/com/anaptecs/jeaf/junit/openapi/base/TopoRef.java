@@ -8,9 +8,11 @@ package com.anaptecs.jeaf.junit.openapi.base;
 import javax.annotation.processing.Generated;
 import javax.validation.ConstraintViolationException;
 
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 
 @Generated("Before Class Declaration. Here an annontation cloud be added.")
+@JEAFCustomAnnotationTest
 public class TopoRef extends PlaceRef {
   /**
    * Default serial version uid.
@@ -46,6 +48,7 @@ public class TopoRef extends PlaceRef {
   /**
    * Class implements builder to create a new instance of class <code>TopoRef</code>.
    */
+  @JEAFCustomAnnotationTest
   public static class Builder extends PlaceRef.Builder {
     /**
      * Use {@link TopoRef#builder()} instead of private constructor to create new builder.
@@ -67,6 +70,7 @@ public class TopoRef extends PlaceRef {
      * @param pName Value to which {@link #name} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     @Override
     public Builder setName( String pName ) {
       // Call super class implementation.

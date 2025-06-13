@@ -6,13 +6,16 @@
 package com.anaptecs.jeaf.junit.deprecation;
 
 import com.anaptecs.jeaf.core.api.Service;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 // @Something
 
+@JEAFCustomAnnotationTest
 public interface ServiceWithDeprecations extends Service {
   /**
    * @deprecated Resources can no longer be explicitly be created. (<b>since:</b> 0.9, <b>removed with:</b> 1.2.3)
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   void createSomething( );
 
   /**
@@ -26,6 +29,8 @@ public interface ServiceWithDeprecations extends Service {
    * <b>Breaking Change with PI 13:</b> Parameter will be mandatory.
    * @param pContext
    */
-  void createSomething( JustAType pBody, @Deprecated String pHeader, @Deprecated String pQueryParam,
-      BeanParamWithDeprecations pContext );
+  @JEAFCustomAnnotationTest
+  void createSomething( @JEAFCustomAnnotationTest JustAType pBody, @Deprecated @JEAFCustomAnnotationTest String pHeader,
+      @Deprecated @JEAFCustomAnnotationTest String pQueryParam,
+      @JEAFCustomAnnotationTest BeanParamWithDeprecations pContext );
 }

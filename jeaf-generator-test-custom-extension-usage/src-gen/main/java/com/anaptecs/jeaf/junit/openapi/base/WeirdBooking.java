@@ -18,11 +18,13 @@ import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 import com.anaptecs.jeaf.junit.openapi.composite.ComplexBookingID;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
 @Generated("Before Class Declaration. Here an annontation cloud be added.")
+@JEAFCustomAnnotationTest
 public class WeirdBooking extends WeirdParent {
   /**
    * Default serial version uid.
@@ -32,35 +34,42 @@ public class WeirdBooking extends WeirdParent {
   /**
    * Constant for the name of attribute "booking".
    */
+  @JEAFCustomAnnotationTest
   public static final String BOOKING = "booking";
 
   /**
    * Constant for the name of attribute "additionalBookings".
    */
+  @JEAFCustomAnnotationTest
   public static final String ADDITIONALBOOKINGS = "additionalBookings";
 
   /**
    * Constant for the name of attribute "versionedObjectSoftLink".
    */
+  @JEAFCustomAnnotationTest
   public static final String VERSIONEDOBJECTSOFTLINK = "versionedObjectSoftLink";
 
   /**
    * Constant for the name of attribute "childProperty".
    */
+  @JEAFCustomAnnotationTest
   public static final String CHILDPROPERTY = "childProperty";
 
   /**
    * Constant for the name of attribute "realBooking".
    */
+  @JEAFCustomAnnotationTest
   public static final String REALBOOKING = "realBooking";
 
   /**
    * Constant for the name of attribute "inventories".
    */
+  @JEAFCustomAnnotationTest
   public static final String INVENTORIES = "inventories";
 
   // "com.anaptecs.jeaf.junit.openapi.composite.ComplexBookingID"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private ComplexBookingID booking;
 
   // "com.anaptecs.jeaf.junit.openapi.composite.ComplexBookingID"
@@ -71,6 +80,7 @@ public class WeirdBooking extends WeirdParent {
   /**
    * additional bookings
    */
+  @JEAFCustomAnnotationTest
   private List<ComplexBookingID> additionalBookings;
 
   // "com.anaptecs.jeaf.junit.openapi.composite.ComplexBookingID"
@@ -83,6 +93,7 @@ public class WeirdBooking extends WeirdParent {
    * 2nd line<br/>
    * 3rd line
    */
+  @JEAFCustomAnnotationTest
   private VersionedObjectSoftLink versionedObjectSoftLink;
 
   // "com.anaptecs.jeaf.junit.openapi.base.VersionedObjectSoftLink"
@@ -90,6 +101,7 @@ public class WeirdBooking extends WeirdParent {
 
   // "int"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private int childProperty;
 
   // "int"
@@ -102,6 +114,7 @@ public class WeirdBooking extends WeirdParent {
    * <p/>
    * <b>Breaking Change with 2.0:</b> Association will be mandatory.
    */
+  @JEAFCustomAnnotationTest
   private Booking realBooking;
 
   // "com.anaptecs.jeaf.junit.openapi.base.Booking"
@@ -113,6 +126,7 @@ public class WeirdBooking extends WeirdParent {
    * <p/>
    * <b>Breaking Change with 2.1:</b> Association will required at least 1 object.
    */
+  @JEAFCustomAnnotationTest
   private Set<InventoryType> inventories;
 
   // "com.anaptecs.jeaf.junit.openapi.base.InventoryType"
@@ -178,9 +192,11 @@ public class WeirdBooking extends WeirdParent {
   /**
    * Class implements builder to create a new instance of class <code>WeirdBooking</code>.
    */
+  @JEAFCustomAnnotationTest
   public static class Builder extends WeirdParent.Builder {
     // "com.anaptecs.jeaf.junit.openapi.composite.ComplexBookingID"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private ComplexBookingID booking;
 
     // "com.anaptecs.jeaf.junit.openapi.composite.ComplexBookingID"
@@ -191,6 +207,7 @@ public class WeirdBooking extends WeirdParent {
      */
     // "com.anaptecs.jeaf.junit.openapi.composite.ComplexBookingID"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private List<ComplexBookingID> additionalBookings;
 
     // "com.anaptecs.jeaf.junit.openapi.composite.ComplexBookingID"
@@ -203,6 +220,7 @@ public class WeirdBooking extends WeirdParent {
      */
     // "com.anaptecs.jeaf.junit.openapi.base.VersionedObjectSoftLink"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private VersionedObjectSoftLink versionedObjectSoftLink;
 
     // "com.anaptecs.jeaf.junit.openapi.base.VersionedObjectSoftLink"
@@ -210,6 +228,7 @@ public class WeirdBooking extends WeirdParent {
 
     // "int"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private int childProperty;
 
     // "int"
@@ -222,6 +241,7 @@ public class WeirdBooking extends WeirdParent {
      */
     // "com.anaptecs.jeaf.junit.openapi.base.Booking"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private Booking realBooking;
 
     // "com.anaptecs.jeaf.junit.openapi.base.Booking"
@@ -233,6 +253,7 @@ public class WeirdBooking extends WeirdParent {
      */
     // "com.anaptecs.jeaf.junit.openapi.base.InventoryType"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private Set<InventoryType> inventories;
 
     // "com.anaptecs.jeaf.junit.openapi.base.InventoryType"
@@ -267,6 +288,7 @@ public class WeirdBooking extends WeirdParent {
      * @param pSomeProperty Value to which {@link #someProperty} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     @Override
     public Builder setSomeProperty( String pSomeProperty ) {
       // Call super class implementation.
@@ -280,6 +302,7 @@ public class WeirdBooking extends WeirdParent {
      * @param pComplexBooking Value to which {@link #complexBooking} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     @Override
     public Builder setComplexBooking( ComplexBookingID pComplexBooking ) {
       // Call super class implementation.
@@ -293,6 +316,7 @@ public class WeirdBooking extends WeirdParent {
      * @param pComplexBookings Collection to which {@link #complexBookings} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     @Override
     public Builder setComplexBookings( Set<ComplexBookingID> pComplexBookings ) {
       // Call super class implementation.
@@ -307,6 +331,7 @@ public class WeirdBooking extends WeirdParent {
      * null.
      * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder addToComplexBookings( ComplexBookingID... pComplexBookings ) {
       // Call super class implementation.
       super.addToComplexBookings(pComplexBookings);
@@ -319,6 +344,7 @@ public class WeirdBooking extends WeirdParent {
      * @param pBooking Value to which {@link #booking} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setBooking( ComplexBookingID pBooking ) {
       booking = pBooking;
       return this;
@@ -336,6 +362,7 @@ public class WeirdBooking extends WeirdParent {
      * @param pAdditionalBookings Collection to which {@link #additionalBookings} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setAdditionalBookings( List<ComplexBookingID> pAdditionalBookings ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pAdditionalBookings != null) {
@@ -354,6 +381,7 @@ public class WeirdBooking extends WeirdParent {
      * may be null.
      * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder addToAdditionalBookings( ComplexBookingID... pAdditionalBookings ) {
       if (pAdditionalBookings != null) {
         if (additionalBookings == null) {
@@ -376,6 +404,7 @@ public class WeirdBooking extends WeirdParent {
      * @param pVersionedObjectSoftLink Value to which {@link #versionedObjectSoftLink} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setVersionedObjectSoftLink( VersionedObjectSoftLink pVersionedObjectSoftLink ) {
       versionedObjectSoftLink = pVersionedObjectSoftLink;
       return this;
@@ -393,6 +422,7 @@ public class WeirdBooking extends WeirdParent {
      * @param pChildProperty Value to which {@link #childProperty} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setChildProperty( int pChildProperty ) {
       // Assign value to attribute
       childProperty = pChildProperty;
@@ -413,6 +443,7 @@ public class WeirdBooking extends WeirdParent {
      * @param pRealBooking Value to which {@link #realBooking} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setRealBooking( Booking pRealBooking ) {
       realBooking = pRealBooking;
       return this;
@@ -432,6 +463,7 @@ public class WeirdBooking extends WeirdParent {
      * @param pInventories Collection to which {@link #inventories} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setInventories( Set<InventoryType> pInventories ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pInventories != null) {
@@ -451,6 +483,7 @@ public class WeirdBooking extends WeirdParent {
      * @param pInventories Array of objects that should be added to {@link #inventories}. The parameter may be null.
      * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder addToInventories( InventoryType... pInventories ) {
       if (pInventories != null) {
         if (inventories == null) {
@@ -469,6 +502,7 @@ public class WeirdBooking extends WeirdParent {
      * @param pInventories Array with objects to which {@link #inventories} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setInventories( InventoryType... pInventories ) {
       // Copy the content of the passed array.
       if (pInventories != null) {
@@ -516,6 +550,7 @@ public class WeirdBooking extends WeirdParent {
    *
    * @return {@link ComplexBookingID} Value to which {@link #booking} is set.
    */
+  @JEAFCustomAnnotationTest
   public ComplexBookingID getBooking( ) {
     return booking;
   }
@@ -525,6 +560,7 @@ public class WeirdBooking extends WeirdParent {
    *
    * @param pBooking Value to which {@link #booking} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setBooking( ComplexBookingID pBooking ) {
     booking = pBooking;
   }
@@ -532,6 +568,7 @@ public class WeirdBooking extends WeirdParent {
   /**
    * Method unsets {@link #booking}.
    */
+  @JEAFCustomAnnotationTest
   public final void unsetBooking( ) {
     booking = null;
   }
@@ -552,6 +589,7 @@ public class WeirdBooking extends WeirdParent {
    * @return {@link List<ComplexBookingID>} Value to which {@link #additionalBookings} is set. The method never returns
    * null and the returned collection is unmodifiable.
    */
+  @JEAFCustomAnnotationTest
   public List<ComplexBookingID> getAdditionalBookings( ) {
     // Return all ComplexBookingID objects as unmodifiable collection.
     return Collections.unmodifiableList(additionalBookings);
@@ -563,6 +601,7 @@ public class WeirdBooking extends WeirdParent {
    * @param pAdditionalBookings Object that should be added to {@link #additionalBookings}. The parameter must not be
    * null.
    */
+  @JEAFCustomAnnotationTest
   public void addToAdditionalBookings( ComplexBookingID pAdditionalBookings ) {
     // Check parameter "pAdditionalBookings" for invalid value null.
     Check.checkInvalidParameterNull(pAdditionalBookings, "pAdditionalBookings");
@@ -576,6 +615,7 @@ public class WeirdBooking extends WeirdParent {
    * @param pAdditionalBookings Collection with all objects that should be added to {@link #additionalBookings}. The
    * parameter must not be null.
    */
+  @JEAFCustomAnnotationTest
   public void addToAdditionalBookings( Collection<ComplexBookingID> pAdditionalBookings ) {
     // Check parameter "pAdditionalBookings" for invalid value null.
     Check.checkInvalidParameterNull(pAdditionalBookings, "pAdditionalBookings");
@@ -591,6 +631,7 @@ public class WeirdBooking extends WeirdParent {
    * @param pAdditionalBookings Object that should be removed from {@link #additionalBookings}. The parameter must not
    * be null.
    */
+  @JEAFCustomAnnotationTest
   public void removeFromAdditionalBookings( ComplexBookingID pAdditionalBookings ) {
     // Check parameter for invalid value null.
     Check.checkInvalidParameterNull(pAdditionalBookings, "pAdditionalBookings");
@@ -601,6 +642,7 @@ public class WeirdBooking extends WeirdParent {
   /**
    * Method removes all objects from {@link #additionalBookings}.
    */
+  @JEAFCustomAnnotationTest
   public void clearAdditionalBookings( ) {
     // Remove all objects from association "additionalBookings".
     additionalBookings.clear();
@@ -623,6 +665,7 @@ public class WeirdBooking extends WeirdParent {
    *
    * @return {@link VersionedObjectSoftLink} Value to which {@link #versionedObjectSoftLink} is set.
    */
+  @JEAFCustomAnnotationTest
   public VersionedObjectSoftLink getVersionedObjectSoftLink( ) {
     return versionedObjectSoftLink;
   }
@@ -635,6 +678,7 @@ public class WeirdBooking extends WeirdParent {
    *
    * @param pVersionedObjectSoftLink Value to which {@link #versionedObjectSoftLink} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setVersionedObjectSoftLink( VersionedObjectSoftLink pVersionedObjectSoftLink ) {
     versionedObjectSoftLink = pVersionedObjectSoftLink;
   }
@@ -642,6 +686,7 @@ public class WeirdBooking extends WeirdParent {
   /**
    * Method unsets {@link #versionedObjectSoftLink}.
    */
+  @JEAFCustomAnnotationTest
   public final void unsetVersionedObjectSoftLink( ) {
     versionedObjectSoftLink = null;
   }
@@ -660,6 +705,7 @@ public class WeirdBooking extends WeirdParent {
    *
    * @return int Value to which {@link #childProperty} is set.
    */
+  @JEAFCustomAnnotationTest
   public int getChildProperty( ) {
     return childProperty;
   }
@@ -669,6 +715,7 @@ public class WeirdBooking extends WeirdParent {
    *
    * @param pChildProperty Value to which {@link #childProperty} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setChildProperty( int pChildProperty ) {
     // Assign value to attribute
     childProperty = pChildProperty;
@@ -691,6 +738,7 @@ public class WeirdBooking extends WeirdParent {
    *
    * @return {@link Booking} Value to which {@link #realBooking} is set.
    */
+  @JEAFCustomAnnotationTest
   public Booking getRealBooking( ) {
     return realBooking;
   }
@@ -703,6 +751,7 @@ public class WeirdBooking extends WeirdParent {
    *
    * @param pRealBooking Value to which {@link #realBooking} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setRealBooking( Booking pRealBooking ) {
     realBooking = pRealBooking;
   }
@@ -710,6 +759,7 @@ public class WeirdBooking extends WeirdParent {
   /**
    * Method unsets {@link #realBooking}.
    */
+  @JEAFCustomAnnotationTest
   public final void unsetRealBooking( ) {
     realBooking = null;
   }
@@ -731,6 +781,7 @@ public class WeirdBooking extends WeirdParent {
    * @return {@link Set<InventoryType>} Value to which {@link #inventories} is set. The method never returns null and
    * the returned collection is unmodifiable.
    */
+  @JEAFCustomAnnotationTest
   public Set<InventoryType> getInventories( ) {
     // Return all InventoryType objects as unmodifiable collection.
     return Collections.unmodifiableSet(inventories);
@@ -743,6 +794,7 @@ public class WeirdBooking extends WeirdParent {
    *
    * @param pInventories Object that should be added to {@link #inventories}. The parameter must not be null.
    */
+  @JEAFCustomAnnotationTest
   public void addToInventories( InventoryType pInventories ) {
     // Check parameter "pInventories" for invalid value null.
     Check.checkInvalidParameterNull(pInventories, "pInventories");
@@ -758,6 +810,7 @@ public class WeirdBooking extends WeirdParent {
    * @param pInventories Collection with all objects that should be added to {@link #inventories}. The parameter must
    * not be null.
    */
+  @JEAFCustomAnnotationTest
   public void addToInventories( Collection<InventoryType> pInventories ) {
     // Check parameter "pInventories" for invalid value null.
     Check.checkInvalidParameterNull(pInventories, "pInventories");
@@ -772,6 +825,7 @@ public class WeirdBooking extends WeirdParent {
    *
    * @param pInventories Object that should be removed from {@link #inventories}. The parameter must not be null.
    */
+  @JEAFCustomAnnotationTest
   public void removeFromInventories( InventoryType pInventories ) {
     // Check parameter for invalid value null.
     Check.checkInvalidParameterNull(pInventories, "pInventories");
@@ -782,6 +836,7 @@ public class WeirdBooking extends WeirdParent {
   /**
    * Method removes all objects from {@link #inventories}.
    */
+  @JEAFCustomAnnotationTest
   public void clearInventories( ) {
     // Remove all objects from association "inventories".
     inventories.clear();

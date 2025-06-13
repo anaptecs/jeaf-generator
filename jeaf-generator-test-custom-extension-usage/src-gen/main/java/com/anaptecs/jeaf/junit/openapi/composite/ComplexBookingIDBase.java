@@ -16,11 +16,13 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 import com.anaptecs.jeaf.junit.openapi.base.BookingID;
 import com.anaptecs.jeaf.junit.openapi.base.ComplexBookingType;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
+@JEAFCustomAnnotationTest
 public abstract class ComplexBookingIDBase extends Object implements ServiceObject {
   /**
    * Default serial version uid.
@@ -30,26 +32,31 @@ public abstract class ComplexBookingIDBase extends Object implements ServiceObje
   /**
    * Constant for the name of attribute "internalID".
    */
+  @JEAFCustomAnnotationTest
   public static final String INTERNALID = "internalID";
 
   /**
    * Constant for the name of attribute "referenceID".
    */
+  @JEAFCustomAnnotationTest
   public static final String REFERENCEID = "referenceID";
 
   /**
    * Constant for the name of attribute "bookingIDs".
    */
+  @JEAFCustomAnnotationTest
   public static final String BOOKINGIDS = "bookingIDs";
 
   /**
    * Constant for the name of attribute "complexBookingType".
    */
+  @JEAFCustomAnnotationTest
   public static final String COMPLEXBOOKINGTYPE = "complexBookingType";
 
   /**
    * Constant for the name of attribute "anotherID".
    */
+  @JEAFCustomAnnotationTest
   public static final String ANOTHERID = "anotherID";
 
   // "long"
@@ -59,6 +66,7 @@ public abstract class ComplexBookingIDBase extends Object implements ServiceObje
    * 2nd line<br/>
    * 3rd line
    */
+  @JEAFCustomAnnotationTest
   private long internalID;
 
   // "long"
@@ -66,6 +74,7 @@ public abstract class ComplexBookingIDBase extends Object implements ServiceObje
 
   // "String"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private String referenceID;
 
   // "String"
@@ -73,6 +82,7 @@ public abstract class ComplexBookingIDBase extends Object implements ServiceObje
 
   // "com.anaptecs.jeaf.junit.openapi.base.BookingID"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private List<BookingID> bookingIDs;
 
   // "com.anaptecs.jeaf.junit.openapi.base.BookingID"
@@ -80,6 +90,7 @@ public abstract class ComplexBookingIDBase extends Object implements ServiceObje
 
   // "com.anaptecs.jeaf.junit.openapi.base.ComplexBookingType"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private ComplexBookingType complexBookingType;
 
   // "com.anaptecs.jeaf.junit.openapi.base.ComplexBookingType"
@@ -87,6 +98,7 @@ public abstract class ComplexBookingIDBase extends Object implements ServiceObje
 
   // "java.lang.Integer"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private Integer anotherID;
 
   // "java.lang.Integer"
@@ -143,6 +155,7 @@ public abstract class ComplexBookingIDBase extends Object implements ServiceObje
      */
     // "long"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private long internalID;
 
     // "long"
@@ -150,6 +163,7 @@ public abstract class ComplexBookingIDBase extends Object implements ServiceObje
 
     // "String"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private String referenceID;
 
     // "String"
@@ -157,6 +171,7 @@ public abstract class ComplexBookingIDBase extends Object implements ServiceObje
 
     // "com.anaptecs.jeaf.junit.openapi.base.BookingID"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private List<BookingID> bookingIDs;
 
     // "com.anaptecs.jeaf.junit.openapi.base.BookingID"
@@ -164,6 +179,7 @@ public abstract class ComplexBookingIDBase extends Object implements ServiceObje
 
     // "com.anaptecs.jeaf.junit.openapi.base.ComplexBookingType"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private ComplexBookingType complexBookingType;
 
     // "com.anaptecs.jeaf.junit.openapi.base.ComplexBookingType"
@@ -171,6 +187,7 @@ public abstract class ComplexBookingIDBase extends Object implements ServiceObje
 
     // "java.lang.Integer"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private Integer anotherID;
 
     // "java.lang.Integer"
@@ -202,6 +219,7 @@ public abstract class ComplexBookingIDBase extends Object implements ServiceObje
      * @param pInternalID Value to which {@link #internalID} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public BuilderBase setInternalID( long pInternalID ) {
       // Assign value to attribute
       internalID = pInternalID;
@@ -220,6 +238,7 @@ public abstract class ComplexBookingIDBase extends Object implements ServiceObje
      * @param pReferenceID Value to which {@link #referenceID} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public BuilderBase setReferenceID( String pReferenceID ) {
       // Assign value to attribute
       referenceID = pReferenceID;
@@ -238,6 +257,7 @@ public abstract class ComplexBookingIDBase extends Object implements ServiceObje
      * @param pBookingIDs Collection to which {@link #bookingIDs} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public BuilderBase setBookingIDs( List<BookingID> pBookingIDs ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pBookingIDs != null) {
@@ -255,6 +275,7 @@ public abstract class ComplexBookingIDBase extends Object implements ServiceObje
      * @param pBookingIDs Array of objects that should be added to {@link #bookingIDs}. The parameter may be null.
      * @return {@link BuilderBase} Instance of this builder to support chaining. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public BuilderBase addToBookingIDs( BookingID... pBookingIDs ) {
       if (pBookingIDs != null) {
         if (bookingIDs == null) {
@@ -277,6 +298,7 @@ public abstract class ComplexBookingIDBase extends Object implements ServiceObje
      * @param pComplexBookingType Value to which {@link #complexBookingType} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public BuilderBase setComplexBookingType( ComplexBookingType pComplexBookingType ) {
       complexBookingType = pComplexBookingType;
       return this;
@@ -294,6 +316,7 @@ public abstract class ComplexBookingIDBase extends Object implements ServiceObje
      * @param pAnotherID Value to which {@link #anotherID} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public BuilderBase setAnotherID( Integer pAnotherID ) {
       // Assign value to attribute
       anotherID = pAnotherID;
@@ -339,6 +362,7 @@ public abstract class ComplexBookingIDBase extends Object implements ServiceObje
    *
    * @return long Value to which {@link #internalID} is set.
    */
+  @JEAFCustomAnnotationTest
   public long getInternalID( ) {
     return internalID;
   }
@@ -351,6 +375,7 @@ public abstract class ComplexBookingIDBase extends Object implements ServiceObje
    *
    * @param pInternalID Value to which {@link #internalID} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setInternalID( long pInternalID ) {
     // Assign value to attribute
     internalID = pInternalID;
@@ -370,6 +395,7 @@ public abstract class ComplexBookingIDBase extends Object implements ServiceObje
    *
    * @return {@link String} Value to which {@link #referenceID} is set.
    */
+  @JEAFCustomAnnotationTest
   public String getReferenceID( ) {
     return referenceID;
   }
@@ -379,6 +405,7 @@ public abstract class ComplexBookingIDBase extends Object implements ServiceObje
    *
    * @param pReferenceID Value to which {@link #referenceID} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setReferenceID( String pReferenceID ) {
     // Assign value to attribute
     referenceID = pReferenceID;
@@ -399,6 +426,7 @@ public abstract class ComplexBookingIDBase extends Object implements ServiceObje
    * @return {@link List<BookingID>} Value to which {@link #bookingIDs} is set. The method never returns null and the
    * returned collection is unmodifiable.
    */
+  @JEAFCustomAnnotationTest
   public List<BookingID> getBookingIDs( ) {
     // Return all BookingID objects as unmodifiable collection.
     return Collections.unmodifiableList(bookingIDs);
@@ -409,6 +437,7 @@ public abstract class ComplexBookingIDBase extends Object implements ServiceObje
    *
    * @param pBookingIDs Object that should be added to {@link #bookingIDs}. The parameter must not be null.
    */
+  @JEAFCustomAnnotationTest
   public void addToBookingIDs( BookingID pBookingIDs ) {
     // Check parameter "pBookingIDs" for invalid value null.
     Check.checkInvalidParameterNull(pBookingIDs, "pBookingIDs");
@@ -422,6 +451,7 @@ public abstract class ComplexBookingIDBase extends Object implements ServiceObje
    * @param pBookingIDs Collection with all objects that should be added to {@link #bookingIDs}. The parameter must not
    * be null.
    */
+  @JEAFCustomAnnotationTest
   public void addToBookingIDs( Collection<BookingID> pBookingIDs ) {
     // Check parameter "pBookingIDs" for invalid value null.
     Check.checkInvalidParameterNull(pBookingIDs, "pBookingIDs");
@@ -436,6 +466,7 @@ public abstract class ComplexBookingIDBase extends Object implements ServiceObje
    *
    * @param pBookingIDs Object that should be removed from {@link #bookingIDs}. The parameter must not be null.
    */
+  @JEAFCustomAnnotationTest
   public void removeFromBookingIDs( BookingID pBookingIDs ) {
     // Check parameter for invalid value null.
     Check.checkInvalidParameterNull(pBookingIDs, "pBookingIDs");
@@ -446,6 +477,7 @@ public abstract class ComplexBookingIDBase extends Object implements ServiceObje
   /**
    * Method removes all objects from {@link #bookingIDs}.
    */
+  @JEAFCustomAnnotationTest
   public void clearBookingIDs( ) {
     // Remove all objects from association "bookingIDs".
     bookingIDs.clear();
@@ -465,6 +497,7 @@ public abstract class ComplexBookingIDBase extends Object implements ServiceObje
    *
    * @return {@link ComplexBookingType} Value to which {@link #complexBookingType} is set.
    */
+  @JEAFCustomAnnotationTest
   public ComplexBookingType getComplexBookingType( ) {
     return complexBookingType;
   }
@@ -474,6 +507,7 @@ public abstract class ComplexBookingIDBase extends Object implements ServiceObje
    *
    * @param pComplexBookingType Value to which {@link #complexBookingType} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setComplexBookingType( ComplexBookingType pComplexBookingType ) {
     complexBookingType = pComplexBookingType;
   }
@@ -481,6 +515,7 @@ public abstract class ComplexBookingIDBase extends Object implements ServiceObje
   /**
    * Method unsets {@link #complexBookingType}.
    */
+  @JEAFCustomAnnotationTest
   public final void unsetComplexBookingType( ) {
     complexBookingType = null;
   }
@@ -499,6 +534,7 @@ public abstract class ComplexBookingIDBase extends Object implements ServiceObje
    *
    * @return {@link Integer} Value to which {@link #anotherID} is set.
    */
+  @JEAFCustomAnnotationTest
   public Integer getAnotherID( ) {
     return anotherID;
   }
@@ -508,6 +544,7 @@ public abstract class ComplexBookingIDBase extends Object implements ServiceObje
    *
    * @param pAnotherID Value to which {@link #anotherID} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setAnotherID( Integer pAnotherID ) {
     // Assign value to attribute
     anotherID = pAnotherID;

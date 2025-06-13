@@ -5,6 +5,7 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
 /**
@@ -15,9 +16,12 @@ import com.anaptecs.jeaf.xfun.api.checks.Check;
  * @author JEAF Generator
  * @version JEAF Release 1.6.x
  */
+@JEAFCustomAnnotationTest
 public final class ComplexBookingType {
   public static enum ComplexBookingTypeType {
-    COMPLEX, VERY_COMPLEX,
+    @JEAFCustomAnnotationTest
+    COMPLEX, @JEAFCustomAnnotationTest
+    VERY_COMPLEX,
     /**
      * Literal UNKNOWN is used in case that an unknown literal of this enumeration is received e.g. via an external
      * interface.
@@ -25,8 +29,10 @@ public final class ComplexBookingType {
     UNKNOWN;
   }
 
+  @JEAFCustomAnnotationTest
   public static final ComplexBookingType COMPLEX = new ComplexBookingType(ComplexBookingTypeType.COMPLEX);
 
+  @JEAFCustomAnnotationTest
   public static final ComplexBookingType VERY_COMPLEX = new ComplexBookingType(ComplexBookingTypeType.VERY_COMPLEX);
 
   /**

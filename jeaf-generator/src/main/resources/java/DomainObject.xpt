@@ -20,7 +20,7 @@
 	«EXPAND functions::Javadoc::JavadocForType»
 	«EXPAND java::Helper::GenerateGeneratedAnnotation»
 	«EXPAND java::Helper::GenerateSuppressWarningsAnnotation»
-	«EXPAND java::Helper::GenerateDeprecationAnnotation-»
+	«EXPAND java::Helper::GenerateAnnotations-»
 	public «IF isAbstract»abstract«ENDIF» class «name» extends «IF !superClass.isEmpty»«superClass.get(0).fqn()»«ELSE»com.anaptecs.jeaf.core.api.DomainObject«ENDIF»«IF needsToImplementIdentifiable()==true» implements com.anaptecs.jeaf.xfun.api.common.Identifiable<«this.getObjectIDClassName()»>«ENDIF» {
 		/**
 		 * Default serial version uid.
@@ -75,7 +75,7 @@
       «EXPAND functions::Javadoc::JavadocForType»
 	  «EXPAND java::Helper::GenerateGeneratedAnnotation»
 	  «EXPAND java::Helper::GenerateSuppressWarningsAnnotation»
-      «EXPAND java::Helper::GenerateDeprecationAnnotation-»
+      «EXPAND java::Helper::GenerateAnnotations-»
       public abstract class «name»Base extends «IF !superClass.isEmpty»«superClass.get(0).fqn()»«ELSE»com.anaptecs.jeaf.core.api.DomainObject«ENDIF»«IF needsToImplementIdentifiable()==true» implements com.anaptecs.jeaf.xfun.api.common.Identifiable<«this.getObjectIDClassName()»>«ENDIF» {
         /**
          * Default serial version uid.
@@ -135,7 +135,7 @@
       package «this.packageName()»;
       
       «EXPAND functions::Javadoc::JavadocForType»
-      «EXPAND java::Helper::GenerateDeprecationAnnotation-»
+      «EXPAND java::Helper::GenerateAnnotations-»
       public «IF isAbstract»abstract«ENDIF» class «name» extends «name»Base {
         /**
          * Default serial version uid.

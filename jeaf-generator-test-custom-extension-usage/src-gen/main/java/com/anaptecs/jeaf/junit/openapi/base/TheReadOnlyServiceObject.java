@@ -16,10 +16,12 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
 @Generated("Before Class Declaration. Here an annontation cloud be added.")
+@JEAFCustomAnnotationTest
 public class TheReadOnlyServiceObject extends Object implements ServiceObject {
   /**
    * Default serial version uid.
@@ -29,26 +31,31 @@ public class TheReadOnlyServiceObject extends Object implements ServiceObject {
   /**
    * Constant for the name of attribute "name".
    */
+  @JEAFCustomAnnotationTest
   public static final String NAME = "name";
 
   /**
    * Constant for the name of attribute "bits".
    */
+  @JEAFCustomAnnotationTest
   public static final String BITS = "bits";
 
   /**
    * Constant for the name of attribute "bookingCodes".
    */
+  @JEAFCustomAnnotationTest
   public static final String BOOKINGCODES = "bookingCodes";
 
   /**
    * Constant for the name of attribute "inventoryType".
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   public static final String INVENTORYTYPE = "inventoryType";
 
   // "String"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private final String name;
 
   // "String"
@@ -60,6 +67,7 @@ public class TheReadOnlyServiceObject extends Object implements ServiceObject {
    * <p/>
    * <b>Breaking Change with PI 16:</b> At least one bit will be expected.
    */
+  @JEAFCustomAnnotationTest
   private final boolean[] bits;
 
   // "boolean"
@@ -67,6 +75,7 @@ public class TheReadOnlyServiceObject extends Object implements ServiceObject {
 
   // "com.anaptecs.jeaf.junit.openapi.base.BookingCode"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private final Set<BookingCode> bookingCodes;
 
   // "com.anaptecs.jeaf.junit.openapi.base.BookingCode"
@@ -78,6 +87,7 @@ public class TheReadOnlyServiceObject extends Object implements ServiceObject {
    * @deprecated Let's reproduce #65 (<b>since:</b> not too long, <b>removed with:</b> 99.9)
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   private final InventoryType inventoryType;
 
   // "com.anaptecs.jeaf.junit.openapi.base.InventoryType"
@@ -134,9 +144,11 @@ public class TheReadOnlyServiceObject extends Object implements ServiceObject {
   /**
    * Class implements builder to create a new instance of class <code>TheReadOnlyServiceObject</code>.
    */
+  @JEAFCustomAnnotationTest
   public static class Builder {
     // "String"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private String name;
 
     // "String"
@@ -148,6 +160,7 @@ public class TheReadOnlyServiceObject extends Object implements ServiceObject {
      */
     // "boolean"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private boolean[] bits;
 
     // "boolean"
@@ -155,6 +168,7 @@ public class TheReadOnlyServiceObject extends Object implements ServiceObject {
 
     // "com.anaptecs.jeaf.junit.openapi.base.BookingCode"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private Set<BookingCode> bookingCodes;
 
     // "com.anaptecs.jeaf.junit.openapi.base.BookingCode"
@@ -166,6 +180,7 @@ public class TheReadOnlyServiceObject extends Object implements ServiceObject {
     // "com.anaptecs.jeaf.junit.openapi.base.InventoryType"
     @BuilderPropertyDeclaration
     @Deprecated
+    @JEAFCustomAnnotationTest
     private InventoryType inventoryType;
 
     // "com.anaptecs.jeaf.junit.openapi.base.InventoryType"
@@ -197,6 +212,7 @@ public class TheReadOnlyServiceObject extends Object implements ServiceObject {
      * @param pName Value to which {@link #name} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setName( String pName ) {
       // Assign value to attribute
       name = pName;
@@ -217,6 +233,7 @@ public class TheReadOnlyServiceObject extends Object implements ServiceObject {
      * @param pBits Value to which {@link #bits} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setBits( boolean[] pBits ) {
       // Assign value to attribute
       if (pBits != null) {
@@ -241,6 +258,7 @@ public class TheReadOnlyServiceObject extends Object implements ServiceObject {
      * @param pBookingCodes Collection to which {@link #bookingCodes} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setBookingCodes( Set<BookingCode> pBookingCodes ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pBookingCodes != null) {
@@ -258,6 +276,7 @@ public class TheReadOnlyServiceObject extends Object implements ServiceObject {
      * @param pBookingCodes Array of objects that should be added to {@link #bookingCodes}. The parameter may be null.
      * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder addToBookingCodes( BookingCode... pBookingCodes ) {
       if (pBookingCodes != null) {
         if (bookingCodes == null) {
@@ -282,6 +301,7 @@ public class TheReadOnlyServiceObject extends Object implements ServiceObject {
      * @deprecated Let's reproduce #65 (<b>since:</b> not too long, <b>removed with:</b> 99.9)
      */
     @Deprecated
+    @JEAFCustomAnnotationTest
     public Builder setInventoryType( InventoryType pInventoryType ) {
       inventoryType = pInventoryType;
       return this;
@@ -323,6 +343,7 @@ public class TheReadOnlyServiceObject extends Object implements ServiceObject {
    *
    * @return {@link String} Value to which {@link #name} is set.
    */
+  @JEAFCustomAnnotationTest
   public String getName( ) {
     return name;
   }
@@ -343,6 +364,7 @@ public class TheReadOnlyServiceObject extends Object implements ServiceObject {
    *
    * @return boolean[] Value to which {@link #bits} is set.
    */
+  @JEAFCustomAnnotationTest
   public boolean[] getBits( ) {
     boolean[] lReturnValue;
     if (bits != null) {
@@ -370,6 +392,7 @@ public class TheReadOnlyServiceObject extends Object implements ServiceObject {
    * @return {@link Set<BookingCode>} Value to which {@link #bookingCodes} is set. The method never returns null and the
    * returned collection is unmodifiable.
    */
+  @JEAFCustomAnnotationTest
   public Set<BookingCode> getBookingCodes( ) {
     // Return all BookingCode objects as unmodifiable collection.
     return Collections.unmodifiableSet(bookingCodes);
@@ -391,6 +414,7 @@ public class TheReadOnlyServiceObject extends Object implements ServiceObject {
    * @deprecated Let's reproduce #65 (<b>since:</b> not too long, <b>removed with:</b> 99.9)
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   public InventoryType getInventoryType( ) {
     return inventoryType;
   }

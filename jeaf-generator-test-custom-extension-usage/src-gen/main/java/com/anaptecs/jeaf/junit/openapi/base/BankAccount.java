@@ -11,10 +11,12 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
 @Generated("Before Class Declaration. Here an annontation cloud be added.")
+@JEAFCustomAnnotationTest
 public class BankAccount extends Object implements ServiceObject {
   /**
    * Default serial version uid.
@@ -24,10 +26,12 @@ public class BankAccount extends Object implements ServiceObject {
   /**
    * Constant for the name of attribute "iban".
    */
+  @JEAFCustomAnnotationTest
   public static final String IBAN = "iban";
 
   // "String"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private String iban;
 
   // "String"
@@ -66,9 +70,11 @@ public class BankAccount extends Object implements ServiceObject {
   /**
    * Class implements builder to create a new instance of class <code>BankAccount</code>.
    */
+  @JEAFCustomAnnotationTest
   public static class Builder {
     // "String"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private String iban;
 
     // "String"
@@ -96,6 +102,7 @@ public class BankAccount extends Object implements ServiceObject {
      * @param pIban Value to which {@link #iban} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setIban( String pIban ) {
       // Assign value to attribute
       iban = pIban;
@@ -138,6 +145,7 @@ public class BankAccount extends Object implements ServiceObject {
    *
    * @return {@link String} Value to which {@link #iban} is set.
    */
+  @JEAFCustomAnnotationTest
   public String getIban( ) {
     return iban;
   }
@@ -147,6 +155,7 @@ public class BankAccount extends Object implements ServiceObject {
    *
    * @param pIban Value to which {@link #iban} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setIban( String pIban ) {
     // Assign value to attribute
     iban = pIban;

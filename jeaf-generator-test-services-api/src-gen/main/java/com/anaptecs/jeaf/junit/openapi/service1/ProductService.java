@@ -22,6 +22,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 
 import com.anaptecs.jeaf.core.api.Service;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 import com.anaptecs.jeaf.junit.openapi.base.BeanParameter;
 import com.anaptecs.jeaf.junit.openapi.base.BigDecimalCode;
 import com.anaptecs.jeaf.junit.openapi.base.BooleanLiteralsEnum;
@@ -49,31 +50,36 @@ import com.anaptecs.jeaf.junit.rest.generics.Pageable;
 import com.anaptecs.jeaf.junit.rest.generics.Response;
 // @Something
 
+@JEAFCustomAnnotationTest
 public interface ProductService extends Service {
   /**
    * Operation returns all available product.
    *
    * @return {@link List<Product>}
    */
+  @JEAFCustomAnnotationTest
   List<Product> getProducts( );
 
   /**
    * @param pProductID
    * @return {@link Product}
    */
-  Product getProduct( @NotEmpty String pProductID );
+  @JEAFCustomAnnotationTest
+  Product getProduct( @JEAFCustomAnnotationTest @NotEmpty String pProductID );
 
   /**
    * @param pProduct
    * @return boolean
    */
-  boolean createProduct( Product pProduct );
+  @JEAFCustomAnnotationTest
+  boolean createProduct( @JEAFCustomAnnotationTest Product pProduct );
 
   /**
    * @param pContext
    * @return {@link Sortiment}
    */
-  Sortiment getSortiment( Context pContext );
+  @JEAFCustomAnnotationTest
+  Sortiment getSortiment( @JEAFCustomAnnotationTest Context pContext );
 
   /**
    * @param pChannelCode
@@ -81,10 +87,12 @@ public interface ProductService extends Service {
    * <b>Breaking Change with 2.0:</b> Parameter will be mandatory
    * @return {@link ChannelCode}
    */
-  ChannelCode createChannelCode( @NotBlank String pChannelCode );
+  @JEAFCustomAnnotationTest
+  ChannelCode createChannelCode( @JEAFCustomAnnotationTest @NotBlank String pChannelCode );
 
   /**
    */
+  @JEAFCustomAnnotationTest
   void ping( );
 
   /**
@@ -92,18 +100,21 @@ public interface ProductService extends Service {
    * @deprecated This request is no longer supported. (<b>since:</b> 1.1.1, <b>removed with:</b> 2024-10-20)
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   String deprecatedOperation( );
 
   /**
    * @param pContext
    * @return {@link String}
    */
-  String deprecatedContext( DeprecatedContext pContext );
+  @JEAFCustomAnnotationTest
+  String deprecatedContext( @JEAFCustomAnnotationTest DeprecatedContext pContext );
 
   /**
    * @param pBeanParam
    */
-  void deprecatedBeanParam( BeanParameter pBeanParam );
+  @JEAFCustomAnnotationTest
+  void deprecatedBeanParam( @JEAFCustomAnnotationTest BeanParameter pBeanParam );
 
   /**
    * @param pParam1 <br/>
@@ -111,15 +122,17 @@ public interface ProductService extends Service {
    * @return {@link String} <br/>
    * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    */
+  @JEAFCustomAnnotationTest
   @Deprecated
-  String deprecatedParams( @Deprecated int pParam1 );
+  String deprecatedParams( @Deprecated @JEAFCustomAnnotationTest int pParam1 );
 
   /**
    * @param pBody <br/>
    * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    * @return {@link String}
    */
-  String deprecatedBody( @Deprecated String pBody );
+  @JEAFCustomAnnotationTest
+  String deprecatedBody( @Deprecated @JEAFCustomAnnotationTest String pBody );
 
   /**
    * Please be aware that deprecations on complex bodies are not supported. Instead the whole operation needs to be set
@@ -128,91 +141,106 @@ public interface ProductService extends Service {
    * @param pProduct <br/>
    * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    */
-  void deprectedComplexRequestBody( @Deprecated Product pProduct );
+  @JEAFCustomAnnotationTest
+  void deprectedComplexRequestBody( @Deprecated @JEAFCustomAnnotationTest Product pProduct );
 
   /**
    * @return {@link Product} <br/>
    * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    */
+  @JEAFCustomAnnotationTest
   @Deprecated
   Product deprecatedComplexReturn( );
 
   /**
    * @param pContext
    */
-  void loadSpecificThings( SpecialContext pContext );
+  @JEAFCustomAnnotationTest
+  void loadSpecificThings( @JEAFCustomAnnotationTest SpecialContext pContext );
 
   /**
    * @param pChannelCode Channel Code that should be created.
    * @return {@link ChannelCode} Created channel code
    */
-  ChannelCode createChannelCodeFromObject( ChannelCode pChannelCode );
+  @JEAFCustomAnnotationTest
+  ChannelCode createChannelCodeFromObject( @JEAFCustomAnnotationTest ChannelCode pChannelCode );
 
   /**
    * @param pCurrencies
    * @return {@link List<CurrencyCode>}
    */
-  List<CurrencyCode> addCurrencies( List<CurrencyCode> pCurrencies );
+  @JEAFCustomAnnotationTest
+  List<CurrencyCode> addCurrencies( @JEAFCustomAnnotationTest List<CurrencyCode> pCurrencies );
 
   /**
    * @param pCurrency
    * @return {@link CurrencyCode}
    */
-  CurrencyCode isCurrencySupported( CurrencyCode pCurrency );
+  @JEAFCustomAnnotationTest
+  CurrencyCode isCurrencySupported( @JEAFCustomAnnotationTest CurrencyCode pCurrency );
 
   /**
    * @param pStringCode
    * @return {@link IntegerCodeType}
    */
-  IntegerCodeType testCodeTypeUsage( StringCodeType pStringCode );
+  @JEAFCustomAnnotationTest
+  IntegerCodeType testCodeTypeUsage( @JEAFCustomAnnotationTest StringCodeType pStringCode );
 
   /**
    * @param pBeanParam
    * @return {@link String}
    */
-  String testLocalBeanParamType( LocalBeanParamType pBeanParam );
+  @JEAFCustomAnnotationTest
+  String testLocalBeanParamType( @JEAFCustomAnnotationTest LocalBeanParamType pBeanParam );
 
   /**
    * @param pParent
    * @return {@link String}
    */
-  String testExternalBeanParameterType( ParentBeanParamType pParent );
+  @JEAFCustomAnnotationTest
+  String testExternalBeanParameterType( @JEAFCustomAnnotationTest ParentBeanParamType pParent );
 
   /**
    * @param pChild
    * @return {@link String}
    */
-  String testChildBeanParameter( ChildBeanParameterType pChild );
+  @JEAFCustomAnnotationTest
+  String testChildBeanParameter( @JEAFCustomAnnotationTest ChildBeanParameterType pChild );
 
   /**
    * @param pIBAN
    * @return boolean
    */
-  boolean checkIBAN( String pIBAN );
+  @JEAFCustomAnnotationTest
+  boolean checkIBAN( @JEAFCustomAnnotationTest String pIBAN );
 
   /**
    * @param pChannelTypes
    * @return {@link List<Channel>}
    */
-  List<Channel> getChannels( List<ChannelType> pChannelTypes );
+  @JEAFCustomAnnotationTest
+  List<Channel> getChannels( @JEAFCustomAnnotationTest List<ChannelType> pChannelTypes );
 
   /**
    * @param pChannelType
    * @return {@link Channel}
    */
-  Channel getDefaultChannel( ChannelType pChannelType );
+  @JEAFCustomAnnotationTest
+  Channel getDefaultChannel( @JEAFCustomAnnotationTest ChannelType pChannelType );
 
   /**
    * @param pChannelCode
    * @return {@link List<CurrencyCode>}
    */
-  List<CurrencyCode> getSupportedCurrencies( ChannelCode pChannelCode );
+  @JEAFCustomAnnotationTest
+  List<CurrencyCode> getSupportedCurrencies( @JEAFCustomAnnotationTest ChannelCode pChannelCode );
 
   /**
    * @param pChannelCode
    * @return {@link List<CurrencyCode>}
    */
-  List<CurrencyCode> getSupportedCurrenciesAsync( ChannelCode pChannelCode );
+  @JEAFCustomAnnotationTest
+  List<CurrencyCode> getSupportedCurrenciesAsync( @JEAFCustomAnnotationTest ChannelCode pChannelCode );
 
   /**
    * @param pPath
@@ -227,98 +255,121 @@ public interface ProductService extends Service {
    * @param pSQLTime
    * @param pSQLDate
    */
-  void testDateQueryParams( String pPath, OffsetDateTime pStartTimestamp, OffsetTime pStartTime,
-      LocalDateTime pLocalStartTimestamp, LocalTime pLocalStartTime, LocalDate pLocalStartDate, Calendar pCalendar,
-      java.util.Date pUtilDate, Timestamp pSQLTimestamp, Time pSQLTime, Date pSQLDate );
+  @JEAFCustomAnnotationTest
+  void testDateQueryParams( @JEAFCustomAnnotationTest String pPath,
+      @JEAFCustomAnnotationTest OffsetDateTime pStartTimestamp, @JEAFCustomAnnotationTest OffsetTime pStartTime,
+      @JEAFCustomAnnotationTest LocalDateTime pLocalStartTimestamp, @JEAFCustomAnnotationTest LocalTime pLocalStartTime,
+      @JEAFCustomAnnotationTest LocalDate pLocalStartDate, @JEAFCustomAnnotationTest Calendar pCalendar,
+      @JEAFCustomAnnotationTest java.util.Date pUtilDate, @JEAFCustomAnnotationTest Timestamp pSQLTimestamp,
+      @JEAFCustomAnnotationTest Time pSQLTime, @JEAFCustomAnnotationTest Date pSQLDate );
 
   /**
    * @param pPath
    * @param pQueryParams
    */
-  void testDateQueryParamsBean( String pPath, DateQueryParamsBean pQueryParams );
+  @JEAFCustomAnnotationTest
+  void testDateQueryParamsBean( @JEAFCustomAnnotationTest String pPath,
+      @JEAFCustomAnnotationTest DateQueryParamsBean pQueryParams );
 
   /**
    * @param query1
    * @param query2
    * @return {@link String}
    */
-  String testOptionalQueryParams( String query1, int query2 );
+  @JEAFCustomAnnotationTest
+  String testOptionalQueryParams( @JEAFCustomAnnotationTest String query1, @JEAFCustomAnnotationTest int query2 );
 
   /**
    * @param authorization
    * @param pContentType
    * @param pAccept
    */
-  void testSpecialHeaderParams( String authorization, String pContentType, String pAccept );
+  @JEAFCustomAnnotationTest
+  void testSpecialHeaderParams( @JEAFCustomAnnotationTest String authorization,
+      @JEAFCustomAnnotationTest String pContentType, @JEAFCustomAnnotationTest String pAccept );
 
   /**
    * @param pContext
    * @return {@link String}
    */
-  String testTechnicalHeaderBean( TechnicalHeaderContext pContext );
+  @JEAFCustomAnnotationTest
+  String testTechnicalHeaderBean( @JEAFCustomAnnotationTest TechnicalHeaderContext pContext );
 
   /**
    * @param pReseller
    * @param pAuthenticationToken
    * @return {@link String}
    */
-  String testTechnicalHeaderParam( String pReseller );
+  @JEAFCustomAnnotationTest
+  String testTechnicalHeaderParam( @JEAFCustomAnnotationTest String pReseller );
 
   /**
    * @param pInlinedBeanParam
    */
-  void testNotInlinedBeanParam( NotInlinedBeanParam pInlinedBeanParam );
+  @JEAFCustomAnnotationTest
+  void testNotInlinedBeanParam( @JEAFCustomAnnotationTest NotInlinedBeanParam pInlinedBeanParam );
 
   /**
    * @param pIntegerArray
    */
-  void testPrimitiveArray( int[] pIntegerArray );
+  @JEAFCustomAnnotationTest
+  void testPrimitiveArray( @JEAFCustomAnnotationTest int[] pIntegerArray );
 
   /**
    * @param pIntValues
    * @return {@link String}
    */
-  String testPrimitiveArrayAsQueryParam( int[] pIntValues );
+  @JEAFCustomAnnotationTest
+  String testPrimitiveArrayAsQueryParam( @JEAFCustomAnnotationTest int[] pIntValues );
 
   /**
    * @param pCodes
    * @return {@link String}
    */
-  String testMultivaluedHeader( List<BigDecimalCode> pCodes );
+  @JEAFCustomAnnotationTest
+  String testMultivaluedHeader( @JEAFCustomAnnotationTest List<BigDecimalCode> pCodes );
 
   /**
    * @param pCodes
    * @param pEnums
    * @return {@link String}
    */
-  String testMultivaluedQueryParams( List<BigDecimalCode> pCodes, List<BooleanLiteralsEnum> pEnums );
+  @JEAFCustomAnnotationTest
+  String testMultivaluedQueryParams( @JEAFCustomAnnotationTest List<BigDecimalCode> pCodes,
+      @JEAFCustomAnnotationTest List<BooleanLiteralsEnum> pEnums );
 
   /**
    * @param pBeanParam
    * @param pTheEnum
    * @return {@link String}
    */
-  String testMulitValuedBeanParams( MultiValuedDataType pBeanParam, BooleanLiteralsEnum pTheEnum );
+  @JEAFCustomAnnotationTest
+  String testMulitValuedBeanParams( @JEAFCustomAnnotationTest MultiValuedDataType pBeanParam,
+      @JEAFCustomAnnotationTest BooleanLiteralsEnum pTheEnum );
 
   /**
    * @param pHeader
    * @param pContext
    */
-  void noReturnType( String pHeader, MultiValuedDataType pContext );
+  @JEAFCustomAnnotationTest
+  void noReturnType( @JEAFCustomAnnotationTest String pHeader, @JEAFCustomAnnotationTest MultiValuedDataType pContext );
 
   /**
    * @param pID
    */
-  void deleteSomething( String pID );
+  @JEAFCustomAnnotationTest
+  void deleteSomething( @JEAFCustomAnnotationTest String pID );
 
   /**
    * @return {@link GenericSingleValuedReponse<BusinessServiceObject>}
    */
+  @JEAFCustomAnnotationTest
   GenericSingleValuedReponse<BusinessServiceObject> genericSingleValueResponse( );
 
   /**
    * @return {@link GenericPageableResponse<BusinessServiceObject>}
    */
+  @JEAFCustomAnnotationTest
   GenericPageableResponse<BusinessServiceObject> genericMultiValueResponse( );
 
   /**
@@ -326,31 +377,38 @@ public interface ProductService extends Service {
    * @param pShortCodes
    * @param pJustAByte
    */
-  void testDataTypeWithRestrition( StringCode pStringCode, Set<ShortCode> pShortCodes,
-      @Min(value = 32) Byte pJustAByte );
+  @JEAFCustomAnnotationTest
+  void testDataTypeWithRestrition( @JEAFCustomAnnotationTest StringCode pStringCode,
+      @JEAFCustomAnnotationTest Set<ShortCode> pShortCodes,
+      @JEAFCustomAnnotationTest @Min(value = 32) Byte pJustAByte );
 
   /**
    * @param pContext
    */
-  void testContext( Context pContext );
+  @JEAFCustomAnnotationTest
+  void testContext( @JEAFCustomAnnotationTest Context pContext );
 
   /**
    * @return {@link Response<Pageable<BusinessServiceObject>>}
    */
+  @JEAFCustomAnnotationTest
   Response<Pageable<BusinessServiceObject>> testNestedGenericsResponse( );
 
   /**
    * @return {@link Response<List<Offer>>}
    */
+  @JEAFCustomAnnotationTest
   Response<List<Offer>> testNestedMultivaluedResponse( );
 
   /**
    * @return {@link Response<Offer>}
    */
+  @JEAFCustomAnnotationTest
   Response<Offer> testDuplicateGenerics1( );
 
   /**
    * @return {@link Response<Offer>}
    */
+  @JEAFCustomAnnotationTest
   Response<Offer> testDuplicateGenerics2( );
 }

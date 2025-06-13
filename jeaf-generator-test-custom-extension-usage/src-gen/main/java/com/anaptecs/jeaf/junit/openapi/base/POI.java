@@ -18,10 +18,12 @@ import javax.validation.constraints.Size;
 
 import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
 @Generated("Before Class Declaration. Here an annontation cloud be added.")
+@JEAFCustomAnnotationTest
 public class POI extends Stop {
   /**
    * Default serial version uid.
@@ -31,32 +33,38 @@ public class POI extends Stop {
   /**
    * Constant for the name of attribute "description".
    */
+  @JEAFCustomAnnotationTest
   public static final String DESCRIPTION = "description";
 
   /**
    * Constant for the name of attribute "theLink".
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   public static final String THELINK = "theLink";
 
   /**
    * Constant for the name of attribute "evenMoreLinks".
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   public static final String EVENMORELINKS = "evenMoreLinks";
 
   /**
    * Constant for the name of attribute "stops".
    */
+  @JEAFCustomAnnotationTest
   public static final String STOPS = "stops";
 
   /**
    * Constant for the name of attribute "bookingCodes".
    */
+  @JEAFCustomAnnotationTest
   public static final String BOOKINGCODES = "bookingCodes";
 
   // "String"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private String description;
 
   // "String"
@@ -70,6 +78,7 @@ public class POI extends Stop {
    * <code>LinkObject</code><br/>
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   private Long theLink;
 
   // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
@@ -83,6 +92,7 @@ public class POI extends Stop {
    * <code>LinkObject</code><br/>
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   private Set<SoftLink> evenMoreLinks;
 
   // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
@@ -94,6 +104,7 @@ public class POI extends Stop {
    * <p/>
    * <b>Breaking Change on 2024-12-24:</b> New mandatory association is required to support upcoming features.
    */
+  @JEAFCustomAnnotationTest
   @Size(min = 2, max = 42)
   private Set<UICStop> stops;
 
@@ -102,6 +113,7 @@ public class POI extends Stop {
 
   // "com.anaptecs.jeaf.junit.openapi.base.BookingCode"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private Set<BookingCode> bookingCodes;
 
   // "com.anaptecs.jeaf.junit.openapi.base.BookingCode"
@@ -170,9 +182,11 @@ public class POI extends Stop {
   /**
    * Class implements builder to create a new instance of class <code>POI</code>.
    */
+  @JEAFCustomAnnotationTest
   public static class Builder extends Stop.Builder {
     // "String"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private String description;
 
     // "String"
@@ -186,6 +200,7 @@ public class POI extends Stop {
     // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
     @BuilderPropertyDeclaration
     @Deprecated
+    @JEAFCustomAnnotationTest
     private Long theLink;
 
     // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
@@ -199,6 +214,7 @@ public class POI extends Stop {
     // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
     @BuilderPropertyDeclaration
     @Deprecated
+    @JEAFCustomAnnotationTest
     private Set<SoftLink> evenMoreLinks;
 
     // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
@@ -210,6 +226,7 @@ public class POI extends Stop {
      */
     // "com.anaptecs.jeaf.junit.openapi.base.UICStop"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private Set<UICStop> stops;
 
     // "com.anaptecs.jeaf.junit.openapi.base.UICStop"
@@ -217,6 +234,7 @@ public class POI extends Stop {
 
     // "com.anaptecs.jeaf.junit.openapi.base.BookingCode"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private Set<BookingCode> bookingCodes;
 
     // "com.anaptecs.jeaf.junit.openapi.base.BookingCode"
@@ -250,6 +268,7 @@ public class POI extends Stop {
      * @param pName Value to which {@link #name} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     @Override
     public Builder setName( String pName ) {
       // Call super class implementation.
@@ -263,6 +282,7 @@ public class POI extends Stop {
      * @param pLinks Collection to which {@link #links} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     @Override
     public Builder setLinks( List<LinkObject> pLinks ) {
       // Call super class implementation.
@@ -276,6 +296,7 @@ public class POI extends Stop {
      * @param pLinks Array of objects that should be added to {@link #links}. The parameter may be null.
      * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder addToLinks( LinkObject... pLinks ) {
       // Call super class implementation.
       super.addToLinks(pLinks);
@@ -288,6 +309,7 @@ public class POI extends Stop {
      * @param pIndex Value to which {@link #index} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     @Override
     public Builder setIndex( byte pIndex ) {
       // Call super class implementation.
@@ -301,6 +323,7 @@ public class POI extends Stop {
      * @param pTheSoftLink Value to which {@link #theSoftLink} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     @Override
     public Builder setTheSoftLink( SoftLink pTheSoftLink ) {
       // Call super class implementation.
@@ -314,6 +337,7 @@ public class POI extends Stop {
      * @param pDescription Value to which {@link #description} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setDescription( String pDescription ) {
       // Assign value to attribute
       description = pDescription;
@@ -333,6 +357,7 @@ public class POI extends Stop {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
+    @JEAFCustomAnnotationTest
     public Builder setTheLink( Long pTheLink ) {
       theLink = pTheLink;
       return this;
@@ -351,6 +376,7 @@ public class POI extends Stop {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
+    @JEAFCustomAnnotationTest
     public Builder setEvenMoreLinks( Set<SoftLink> pEvenMoreLinks ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pEvenMoreLinks != null) {
@@ -376,6 +402,7 @@ public class POI extends Stop {
      * @param pStops Collection to which {@link #stops} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setStops( Set<UICStop> pStops ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pStops != null) {
@@ -395,6 +422,7 @@ public class POI extends Stop {
      * @param pStops Array of objects that should be added to {@link #stops}. The parameter may be null.
      * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder addToStops( UICStop... pStops ) {
       if (pStops != null) {
         if (stops == null) {
@@ -417,6 +445,7 @@ public class POI extends Stop {
      * @param pBookingCodes Collection to which {@link #bookingCodes} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setBookingCodes( Set<BookingCode> pBookingCodes ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pBookingCodes != null) {
@@ -434,6 +463,7 @@ public class POI extends Stop {
      * @param pBookingCodes Array of objects that should be added to {@link #bookingCodes}. The parameter may be null.
      * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder addToBookingCodes( BookingCode... pBookingCodes ) {
       if (pBookingCodes != null) {
         if (bookingCodes == null) {
@@ -479,6 +509,7 @@ public class POI extends Stop {
    *
    * @return {@link String} Value to which {@link #description} is set.
    */
+  @JEAFCustomAnnotationTest
   public String getDescription( ) {
     return description;
   }
@@ -488,6 +519,7 @@ public class POI extends Stop {
    *
    * @param pDescription Value to which {@link #description} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setDescription( String pDescription ) {
     // Assign value to attribute
     description = pDescription;
@@ -511,6 +543,7 @@ public class POI extends Stop {
    * @return {@link Long} Value to which {@link #theLink} is set.
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   public Long getTheLink( ) {
     return theLink;
   }
@@ -521,6 +554,7 @@ public class POI extends Stop {
    * @param pTheLink Value to which {@link #theLink} should be set.
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   public void setTheLink( Long pTheLink ) {
     theLink = pTheLink;
   }
@@ -529,6 +563,7 @@ public class POI extends Stop {
    * Method unsets {@link #theLink}.
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   public final void unsetTheLink( ) {
     theLink = null;
   }
@@ -552,6 +587,7 @@ public class POI extends Stop {
    * returned collection is unmodifiable.
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   public Set<SoftLink> getEvenMoreLinks( ) {
     // Return all LinkObject objects as unmodifiable collection.
     return Collections.unmodifiableSet(evenMoreLinks);
@@ -563,6 +599,7 @@ public class POI extends Stop {
    * @param pEvenMoreLinks Object that should be added to {@link #evenMoreLinks}. The parameter must not be null.
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   public void addToEvenMoreLinks( SoftLink pEvenMoreLinks ) {
     // Check parameter "pEvenMoreLinks" for invalid value null.
     Check.checkInvalidParameterNull(pEvenMoreLinks, "pEvenMoreLinks");
@@ -577,6 +614,7 @@ public class POI extends Stop {
    * must not be null.
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   public void addToEvenMoreLinks( Collection<SoftLink> pEvenMoreLinks ) {
     // Check parameter "pEvenMoreLinks" for invalid value null.
     Check.checkInvalidParameterNull(pEvenMoreLinks, "pEvenMoreLinks");
@@ -592,6 +630,7 @@ public class POI extends Stop {
    * @param pEvenMoreLinks Object that should be removed from {@link #evenMoreLinks}. The parameter must not be null.
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   public void removeFromEvenMoreLinks( SoftLink pEvenMoreLinks ) {
     // Check parameter for invalid value null.
     Check.checkInvalidParameterNull(pEvenMoreLinks, "pEvenMoreLinks");
@@ -603,6 +642,7 @@ public class POI extends Stop {
    * Method removes all objects from {@link #evenMoreLinks}.
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   public void clearEvenMoreLinks( ) {
     // Remove all objects from association "evenMoreLinks".
     evenMoreLinks.clear();
@@ -625,6 +665,7 @@ public class POI extends Stop {
    * @return {@link Set<UICStop>} Value to which {@link #stops} is set. The method never returns null and the returned
    * collection is unmodifiable.
    */
+  @JEAFCustomAnnotationTest
   public Set<UICStop> getStops( ) {
     // Return all UICStop objects as unmodifiable collection.
     return Collections.unmodifiableSet(stops);
@@ -637,6 +678,7 @@ public class POI extends Stop {
    *
    * @param pStops Object that should be added to {@link #stops}. The parameter must not be null.
    */
+  @JEAFCustomAnnotationTest
   public void addToStops( UICStop pStops ) {
     // Check parameter "pStops" for invalid value null.
     Check.checkInvalidParameterNull(pStops, "pStops");
@@ -651,6 +693,7 @@ public class POI extends Stop {
    *
    * @param pStops Collection with all objects that should be added to {@link #stops}. The parameter must not be null.
    */
+  @JEAFCustomAnnotationTest
   public void addToStops( Collection<UICStop> pStops ) {
     // Check parameter "pStops" for invalid value null.
     Check.checkInvalidParameterNull(pStops, "pStops");
@@ -665,6 +708,7 @@ public class POI extends Stop {
    *
    * @param pStops Object that should be removed from {@link #stops}. The parameter must not be null.
    */
+  @JEAFCustomAnnotationTest
   public void removeFromStops( UICStop pStops ) {
     // Check parameter for invalid value null.
     Check.checkInvalidParameterNull(pStops, "pStops");
@@ -675,6 +719,7 @@ public class POI extends Stop {
   /**
    * Method removes all objects from {@link #stops}.
    */
+  @JEAFCustomAnnotationTest
   public void clearStops( ) {
     // Remove all objects from association "stops".
     stops.clear();
@@ -695,6 +740,7 @@ public class POI extends Stop {
    * @return {@link Set<BookingCode>} Value to which {@link #bookingCodes} is set. The method never returns null and the
    * returned collection is unmodifiable.
    */
+  @JEAFCustomAnnotationTest
   public Set<BookingCode> getBookingCodes( ) {
     // Return all BookingCode objects as unmodifiable collection.
     return Collections.unmodifiableSet(bookingCodes);
@@ -705,6 +751,7 @@ public class POI extends Stop {
    *
    * @param pBookingCodes Object that should be added to {@link #bookingCodes}. The parameter must not be null.
    */
+  @JEAFCustomAnnotationTest
   public void addToBookingCodes( BookingCode pBookingCodes ) {
     // Check parameter "pBookingCodes" for invalid value null.
     Check.checkInvalidParameterNull(pBookingCodes, "pBookingCodes");
@@ -718,6 +765,7 @@ public class POI extends Stop {
    * @param pBookingCodes Collection with all objects that should be added to {@link #bookingCodes}. The parameter must
    * not be null.
    */
+  @JEAFCustomAnnotationTest
   public void addToBookingCodes( Collection<BookingCode> pBookingCodes ) {
     // Check parameter "pBookingCodes" for invalid value null.
     Check.checkInvalidParameterNull(pBookingCodes, "pBookingCodes");
@@ -732,6 +780,7 @@ public class POI extends Stop {
    *
    * @param pBookingCodes Object that should be removed from {@link #bookingCodes}. The parameter must not be null.
    */
+  @JEAFCustomAnnotationTest
   public void removeFromBookingCodes( BookingCode pBookingCodes ) {
     // Check parameter for invalid value null.
     Check.checkInvalidParameterNull(pBookingCodes, "pBookingCodes");
@@ -742,6 +791,7 @@ public class POI extends Stop {
   /**
    * Method removes all objects from {@link #bookingCodes}.
    */
+  @JEAFCustomAnnotationTest
   public void clearBookingCodes( ) {
     // Remove all objects from association "bookingCodes".
     bookingCodes.clear();

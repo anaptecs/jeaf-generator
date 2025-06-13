@@ -8,8 +8,11 @@ package com.anaptecs.jeaf.junit.openapi.base;
 import javax.annotation.processing.Generated;
 import javax.validation.Valid;
 
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
+
 @Generated("Before Class Declaration. Here an annontation cloud be added.")
 @Valid
+@JEAFCustomAnnotationTest
 public class Reseller extends ResellerBase {
   /**
    * Default serial version uid.
@@ -61,6 +64,7 @@ public class Reseller extends ResellerBase {
   /**
    * @return {@link Integer}
    */
+  @JEAFCustomAnnotationTest
   @Override
   public Integer doSomething( ) {
     // TODO: Implement business logic for method.
@@ -70,6 +74,7 @@ public class Reseller extends ResellerBase {
   /**
    * @return double
    */
+  @JEAFCustomAnnotationTest
   @Override
   public double returnPrimitive( ) {
     // TODO: Implement business logic for method.

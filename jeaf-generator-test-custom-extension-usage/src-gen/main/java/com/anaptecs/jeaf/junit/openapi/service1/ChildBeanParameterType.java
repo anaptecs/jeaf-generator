@@ -10,10 +10,12 @@ import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 import com.anaptecs.jeaf.junit.openapi.base.ParentBeanParamType;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 
 @Generated("Before Class Declaration. Here an annontation cloud be added.")
+@JEAFCustomAnnotationTest
 public class ChildBeanParameterType extends ParentBeanParamType {
   /**
    * Default serial version uid.
@@ -23,10 +25,12 @@ public class ChildBeanParameterType extends ParentBeanParamType {
   /**
    * Constant for the name of attribute "childProperty".
    */
+  @JEAFCustomAnnotationTest
   public static final String CHILDPROPERTY = "childProperty";
 
   // "String"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private String childProperty;
 
   // "String"
@@ -65,9 +69,11 @@ public class ChildBeanParameterType extends ParentBeanParamType {
   /**
    * Class implements builder to create a new instance of class <code>ChildBeanParameterType</code>.
    */
+  @JEAFCustomAnnotationTest
   public static class Builder extends ParentBeanParamType.Builder {
     // "String"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private String childProperty;
 
     // "String"
@@ -98,6 +104,7 @@ public class ChildBeanParameterType extends ParentBeanParamType {
      * @param pNovaKey Value to which {@link #novaKey} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     @Override
     public Builder setNovaKey( String pNovaKey ) {
       // Call super class implementation.
@@ -111,6 +118,7 @@ public class ChildBeanParameterType extends ParentBeanParamType {
      * @param pTkID Value to which {@link #tkID} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     @Override
     public Builder setTkID( String pTkID ) {
       // Call super class implementation.
@@ -124,6 +132,7 @@ public class ChildBeanParameterType extends ParentBeanParamType {
      * @param pChildProperty Value to which {@link #childProperty} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setChildProperty( String pChildProperty ) {
       // Assign value to attribute
       childProperty = pChildProperty;
@@ -166,6 +175,7 @@ public class ChildBeanParameterType extends ParentBeanParamType {
    *
    * @return {@link String} Value to which {@link #childProperty} is set.
    */
+  @JEAFCustomAnnotationTest
   public String getChildProperty( ) {
     return childProperty;
   }
@@ -175,6 +185,7 @@ public class ChildBeanParameterType extends ParentBeanParamType {
    *
    * @param pChildProperty Value to which {@link #childProperty} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setChildProperty( String pChildProperty ) {
     // Assign value to attribute
     childProperty = pChildProperty;

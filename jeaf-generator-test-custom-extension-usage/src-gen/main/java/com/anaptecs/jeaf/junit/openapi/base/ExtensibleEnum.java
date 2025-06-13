@@ -5,11 +5,16 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
+@JEAFCustomAnnotationTest
 public final class ExtensibleEnum {
   public static enum ExtensibleEnumType {
-    RED, GREEN, BLUE,
+    @JEAFCustomAnnotationTest
+    RED, @JEAFCustomAnnotationTest
+    GREEN, @JEAFCustomAnnotationTest
+    BLUE,
     /**
      * Literal UNKNOWN is used in case that an unknown literal of this enumeration is received e.g. via an external
      * interface.
@@ -17,10 +22,13 @@ public final class ExtensibleEnum {
     UNKNOWN;
   }
 
+  @JEAFCustomAnnotationTest
   public static final ExtensibleEnum RED = new ExtensibleEnum(ExtensibleEnumType.RED);
 
+  @JEAFCustomAnnotationTest
   public static final ExtensibleEnum GREEN = new ExtensibleEnum(ExtensibleEnumType.GREEN);
 
+  @JEAFCustomAnnotationTest
   public static final ExtensibleEnum BLUE = new ExtensibleEnum(ExtensibleEnumType.BLUE);
 
   /**

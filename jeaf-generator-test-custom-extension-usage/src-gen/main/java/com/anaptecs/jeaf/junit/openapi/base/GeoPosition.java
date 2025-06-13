@@ -10,9 +10,11 @@ import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 
 @Generated("Before Class Declaration. Here an annontation cloud be added.")
+@JEAFCustomAnnotationTest
 public class GeoPosition extends PlaceRef {
   /**
    * Default serial version uid.
@@ -22,15 +24,18 @@ public class GeoPosition extends PlaceRef {
   /**
    * Constant for the name of attribute "longitude".
    */
+  @JEAFCustomAnnotationTest
   public static final String LONGITUDE = "longitude";
 
   /**
    * Constant for the name of attribute "latitude".
    */
+  @JEAFCustomAnnotationTest
   public static final String LATITUDE = "latitude";
 
   // "int"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private int longitude;
 
   // "int"
@@ -38,6 +43,7 @@ public class GeoPosition extends PlaceRef {
 
   // "int"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private int latitude;
 
   // "int"
@@ -79,9 +85,11 @@ public class GeoPosition extends PlaceRef {
   /**
    * Class implements builder to create a new instance of class <code>GeoPosition</code>.
    */
+  @JEAFCustomAnnotationTest
   public static class Builder extends PlaceRef.Builder {
     // "int"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private int longitude;
 
     // "int"
@@ -89,6 +97,7 @@ public class GeoPosition extends PlaceRef {
 
     // "int"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private int latitude;
 
     // "int"
@@ -119,6 +128,7 @@ public class GeoPosition extends PlaceRef {
      * @param pName Value to which {@link #name} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     @Override
     public Builder setName( String pName ) {
       // Call super class implementation.
@@ -132,6 +142,7 @@ public class GeoPosition extends PlaceRef {
      * @param pLongitude Value to which {@link #longitude} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setLongitude( int pLongitude ) {
       // Assign value to attribute
       longitude = pLongitude;
@@ -150,6 +161,7 @@ public class GeoPosition extends PlaceRef {
      * @param pLatitude Value to which {@link #latitude} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setLatitude( int pLatitude ) {
       // Assign value to attribute
       latitude = pLatitude;
@@ -192,6 +204,7 @@ public class GeoPosition extends PlaceRef {
    *
    * @return int Value to which {@link #longitude} is set.
    */
+  @JEAFCustomAnnotationTest
   public int getLongitude( ) {
     return longitude;
   }
@@ -201,6 +214,7 @@ public class GeoPosition extends PlaceRef {
    *
    * @param pLongitude Value to which {@link #longitude} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setLongitude( int pLongitude ) {
     // Assign value to attribute
     longitude = pLongitude;
@@ -220,6 +234,7 @@ public class GeoPosition extends PlaceRef {
    *
    * @return int Value to which {@link #latitude} is set.
    */
+  @JEAFCustomAnnotationTest
   public int getLatitude( ) {
     return latitude;
   }
@@ -229,6 +244,7 @@ public class GeoPosition extends PlaceRef {
    *
    * @param pLatitude Value to which {@link #latitude} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setLatitude( int pLatitude ) {
     // Assign value to attribute
     latitude = pLatitude;

@@ -13,10 +13,12 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
 @Generated("Before Class Declaration. Here an annontation cloud be added.")
+@JEAFCustomAnnotationTest
 public class BeanParameter extends Object implements ServiceObject {
   /**
    * Default serial version uid.
@@ -26,21 +28,25 @@ public class BeanParameter extends Object implements ServiceObject {
   /**
    * Constant for the name of attribute "accessToken".
    */
+  @JEAFCustomAnnotationTest
   public static final String ACCESSTOKEN = "accessToken";
 
   /**
    * Constant for the name of attribute "language".
    */
+  @JEAFCustomAnnotationTest
   public static final String LANGUAGE = "language";
 
   /**
    * Constant for the name of attribute "oldStyle".
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   public static final String OLDSTYLE = "oldStyle";
 
   // "java.lang.String"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private String accessToken;
 
   // "java.lang.String"
@@ -57,6 +63,7 @@ public class BeanParameter extends Object implements ServiceObject {
    * <li><code>en</code></li>
    * </ul>
    */
+  @JEAFCustomAnnotationTest
   private Locale language;
 
   // "java.util.Locale"
@@ -65,6 +72,7 @@ public class BeanParameter extends Object implements ServiceObject {
   // "java.lang.String"
   @ClassPropertyDeclaration
   @Deprecated
+  @JEAFCustomAnnotationTest
   private String oldStyle;
 
   // "java.lang.String"
@@ -109,9 +117,11 @@ public class BeanParameter extends Object implements ServiceObject {
   /**
    * Class implements builder to create a new instance of class <code>BeanParameter</code>.
    */
+  @JEAFCustomAnnotationTest
   public static class Builder {
     // "java.lang.String"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private String accessToken;
 
     // "java.lang.String"
@@ -128,6 +138,7 @@ public class BeanParameter extends Object implements ServiceObject {
      */
     // "java.util.Locale"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private Locale language;
 
     // "java.util.Locale"
@@ -136,6 +147,7 @@ public class BeanParameter extends Object implements ServiceObject {
     // "java.lang.String"
     @BuilderPropertyDeclaration
     @Deprecated
+    @JEAFCustomAnnotationTest
     private String oldStyle;
 
     // "java.lang.String"
@@ -165,6 +177,7 @@ public class BeanParameter extends Object implements ServiceObject {
      * @param pAccessToken Value to which {@link #accessToken} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setAccessToken( String pAccessToken ) {
       // Assign value to attribute
       accessToken = pAccessToken;
@@ -183,6 +196,7 @@ public class BeanParameter extends Object implements ServiceObject {
      * @param pLanguage Value to which {@link #language} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setLanguage( Locale pLanguage ) {
       // Assign value to attribute
       language = pLanguage;
@@ -202,6 +216,7 @@ public class BeanParameter extends Object implements ServiceObject {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
+    @JEAFCustomAnnotationTest
     public Builder setOldStyle( String pOldStyle ) {
       // Assign value to attribute
       oldStyle = pOldStyle;
@@ -244,6 +259,7 @@ public class BeanParameter extends Object implements ServiceObject {
    *
    * @return {@link String} Value to which {@link #accessToken} is set.
    */
+  @JEAFCustomAnnotationTest
   public String getAccessToken( ) {
     return accessToken;
   }
@@ -253,6 +269,7 @@ public class BeanParameter extends Object implements ServiceObject {
    *
    * @param pAccessToken Value to which {@link #accessToken} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setAccessToken( String pAccessToken ) {
     // Assign value to attribute
     accessToken = pAccessToken;
@@ -272,6 +289,7 @@ public class BeanParameter extends Object implements ServiceObject {
    *
    * @return {@link Locale} Value to which {@link #language} is set.
    */
+  @JEAFCustomAnnotationTest
   public Locale getLanguage( ) {
     return language;
   }
@@ -281,6 +299,7 @@ public class BeanParameter extends Object implements ServiceObject {
    *
    * @param pLanguage Value to which {@link #language} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setLanguage( Locale pLanguage ) {
     // Assign value to attribute
     language = pLanguage;
@@ -301,6 +320,7 @@ public class BeanParameter extends Object implements ServiceObject {
    * @return {@link String} Value to which {@link #oldStyle} is set.
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   public String getOldStyle( ) {
     return oldStyle;
   }
@@ -311,6 +331,7 @@ public class BeanParameter extends Object implements ServiceObject {
    * @param pOldStyle Value to which {@link #oldStyle} should be set.
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   public void setOldStyle( String pOldStyle ) {
     // Assign value to attribute
     oldStyle = pOldStyle;

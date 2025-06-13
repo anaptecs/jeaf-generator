@@ -6,12 +6,15 @@
 package com.anaptecs.jeaf.junit.core;
 
 import com.anaptecs.jeaf.core.api.Service;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 // @Something
 
+@JEAFCustomAnnotationTest
 public interface MailTestService extends Service {
   /**
    * Test of method createMessage(). Creates an empty MimeMessage.
    */
+  @JEAFCustomAnnotationTest
   void testCreateEmptyMessage( );
 
   /**
@@ -24,7 +27,10 @@ public interface MailTestService extends Service {
    * @param pContent
    * @param pSubject
    */
-  void testCreateFilledMessage( String pAddress, String pPersonal, String pCharSet, String pContent, String pSubject );
+  @JEAFCustomAnnotationTest
+  void testCreateFilledMessage( @JEAFCustomAnnotationTest String pAddress, @JEAFCustomAnnotationTest String pPersonal,
+      @JEAFCustomAnnotationTest String pCharSet, @JEAFCustomAnnotationTest String pContent,
+      @JEAFCustomAnnotationTest String pSubject );
 
   /**
    * Test of method sendMail( Message pMessage ).<br/>
@@ -36,7 +42,10 @@ public interface MailTestService extends Service {
    * @param pContent
    * @param pSubject
    */
-  void testSendMail( String pAddress, String pPersonal, String pCharSet, String pContent, String pSubject );
+  @JEAFCustomAnnotationTest
+  void testSendMail( @JEAFCustomAnnotationTest String pAddress, @JEAFCustomAnnotationTest String pPersonal,
+      @JEAFCustomAnnotationTest String pCharSet, @JEAFCustomAnnotationTest String pContent,
+      @JEAFCustomAnnotationTest String pSubject );
 
   /**
    * Test of method sendMail( String pContent, String pSubject, Set<Address> pRecipients ).<br/>
@@ -48,5 +57,8 @@ public interface MailTestService extends Service {
    * @param pContent
    * @param pSubject
    */
-  void testExtendedSendMail( String pAddress, String pPersonal, String pCharSet, String pContent, String pSubject );
+  @JEAFCustomAnnotationTest
+  void testExtendedSendMail( @JEAFCustomAnnotationTest String pAddress, @JEAFCustomAnnotationTest String pPersonal,
+      @JEAFCustomAnnotationTest String pCharSet, @JEAFCustomAnnotationTest String pContent,
+      @JEAFCustomAnnotationTest String pSubject );
 }

@@ -10,9 +10,11 @@ import javax.annotation.processing.Generated;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
 @Generated("Before Class Declaration. Here an annontation cloud be added.")
+@JEAFCustomAnnotationTest
 public abstract class PlaceRef extends Object implements ServiceObject {
   /**
    * Default serial version uid.
@@ -22,10 +24,12 @@ public abstract class PlaceRef extends Object implements ServiceObject {
   /**
    * Constant for the name of attribute "name".
    */
+  @JEAFCustomAnnotationTest
   public static final String NAME = "name";
 
   // "String"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private String name;
 
   // "String"
@@ -55,9 +59,11 @@ public abstract class PlaceRef extends Object implements ServiceObject {
   /**
    * Class implements builder to create a new instance of class <code>PlaceRef</code>.
    */
+  @JEAFCustomAnnotationTest
   public static abstract class Builder {
     // "String"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private String name;
 
     // "String"
@@ -85,6 +91,7 @@ public abstract class PlaceRef extends Object implements ServiceObject {
      * @param pName Value to which {@link #name} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setName( String pName ) {
       // Assign value to attribute
       name = pName;
@@ -104,6 +111,7 @@ public abstract class PlaceRef extends Object implements ServiceObject {
    *
    * @return {@link String} Value to which {@link #name} is set.
    */
+  @JEAFCustomAnnotationTest
   public String getName( ) {
     return name;
   }
@@ -113,6 +121,7 @@ public abstract class PlaceRef extends Object implements ServiceObject {
    *
    * @param pName Value to which {@link #name} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setName( String pName ) {
     // Assign value to attribute
     name = pName;

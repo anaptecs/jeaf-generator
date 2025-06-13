@@ -7,11 +7,14 @@ package com.anaptecs.jeaf.junit.core;
 
 import com.anaptecs.jeaf.core.api.Service;
 import com.anaptecs.jeaf.core.api.ServiceObjectID;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 // @Something
 
+@JEAFCustomAnnotationTest
 public interface InternalStuffService extends Service {
   /**
    * @param pObjectID
    */
-  void testFlush( ServiceObjectID pObjectID );
+  @JEAFCustomAnnotationTest
+  void testFlush( @JEAFCustomAnnotationTest ServiceObjectID pObjectID );
 }

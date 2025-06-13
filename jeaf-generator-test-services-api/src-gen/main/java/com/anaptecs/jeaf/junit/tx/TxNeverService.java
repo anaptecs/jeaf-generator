@@ -6,10 +6,13 @@
 package com.anaptecs.jeaf.junit.tx;
 
 import com.anaptecs.jeaf.core.api.Service;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 // @Something
 
+@JEAFCustomAnnotationTest
 public interface TxNeverService extends Service {
   /**
    */
+  @JEAFCustomAnnotationTest
   void testTransactionBehavior( );
 }

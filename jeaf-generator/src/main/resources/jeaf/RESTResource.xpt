@@ -33,7 +33,7 @@ package «packageName()».resource;
 	«IF consumes.size > 0»@«getEnterpriseJavaPackage()».ws.rs.Consumes(«IF consumes.size > 1»{«ENDIF»«FOREACH consumes AS mediaType SEPARATOR ","»«getEnterpriseJavaPackage()».ws.rs.core.MediaType.«mediaType»«ENDFOREACH»«IF consumes.size > 1»}«ENDIF»)«ENDIF»
 	«IF produces.size > 0»@«getEnterpriseJavaPackage()».ws.rs.Produces(«IF produces.size > 1»{«ENDIF»«FOREACH produces AS mediaType SEPARATOR ","»«getEnterpriseJavaPackage()».ws.rs.core.MediaType.«mediaType»«ENDFOREACH»«IF produces.size > 1»}«ENDIF»)«ENDIF»
 «ENDIF»
-«EXPAND java::Helper::GenerateDeprecationAnnotation -»
+«EXPAND java::Helper::GenerateAnnotations -»
 public class «this.getResourceName(reactive)» {
 	
 	«IF this.hasCompositeDataTypes() && generatePublicObjectView() == false»
@@ -223,8 +223,8 @@ public class «this.getResourceName(reactive)» {
 	«EXPAND HTTPMethods»
 	«IF consumes.size > 0»@«getEnterpriseJavaPackage()».ws.rs.Consumes(«IF consumes.size > 1»{«ENDIF»«FOREACH consumes AS mediaType SEPARATOR ","»«getEnterpriseJavaPackage()».ws.rs.core.MediaType.«mediaType»«ENDFOREACH»«IF consumes.size > 1»}«ENDIF»)«ENDIF»
 	«IF produces.size > 0»@«getEnterpriseJavaPackage()».ws.rs.Produces(«IF produces.size > 1»{«ENDIF»«FOREACH produces AS mediaType SEPARATOR ","»«getEnterpriseJavaPackage()».ws.rs.core.MediaType.«mediaType»«ENDFOREACH»«IF produces.size > 1»}«ENDIF»)«ENDIF»
-	«EXPAND java::Helper::GenerateDeprecationAnnotation-»
-	«EXPAND java::Helper::GenerateDeprecationAnnotation FOR this.getReturnResult()-»
+	«EXPAND java::Helper::GenerateAnnotations-»
+	«EXPAND java::Helper::GenerateAnnotations FOR this.getReturnResult()-»
 	«EXPAND java::Helper::NotNullAnnotationForParameter("RESTResource") FOR this.getReturnResult()-»
 	public «getEnterpriseJavaPackage()».ws.rs.core.Response  «name» («EXPAND RESTParameterSignature FOR this» «IF this.ownedParameter.select(e|e.hasParamCustomHeaders()).size > 0» «IF ownedParameter.select(e| e.isInputParameter() && e.isParameterSuppressed() == false).size > 0»,«ENDIF» @«getEnterpriseJavaPackage()».ws.rs.core.Context «getEnterpriseJavaPackage()».ws.rs.core.HttpHeaders pHeaders«ENDIF»)«getThrownExceptionsAsString()»{
 	  «IF this.hasDataTypeParameters()»
@@ -367,8 +367,8 @@ public class «this.getResourceName(reactive)» {
 	«IF produces.size > 0»produces = {«FOREACH produces AS mediaType SEPARATOR ","»"«mediaType.toOpenAPIContentType()»"«ENDFOREACH»},«ENDIF»
 	method = { «FOREACH httpMethods AS httpMethod SEPARATOR ","»org.springframework.web.bind.annotation.RequestMethod.«httpMethod»«ENDFOREACH»}
 	)
-	«EXPAND java::Helper::GenerateDeprecationAnnotation-»
-	«EXPAND java::Helper::GenerateDeprecationAnnotation FOR this.getReturnResult()-»
+	«EXPAND java::Helper::GenerateAnnotations-»
+	«EXPAND java::Helper::GenerateAnnotations FOR this.getReturnResult()-»
 	«EXPAND java::Helper::NotNullAnnotationForParameter("RESTResource") FOR this.getReturnResult()-»
 	public «getReturnTypeName().getReactiveAwareTypeName(reactive)»  «name» («EXPAND SpringRESTParameterSignature(reactive) FOR this» «IF this.ownedParameter.select(e|e.hasParamCustomHeaders()).size > 0» «IF ownedParameter.select(e| e.isInputParameter() && e.isParameterSuppressed() == false).size > 0»,«ENDIF» @org.springframework.web.bind.annotation.RequestHeader java.util.Map<String, String> pHeaders«ENDIF»«IF reactive»«IF ownedParameter.select(e| e.isInputParameter() && e.isParameterSuppressed() == false).size > 0»,«ENDIF» «getServerWebExchangeTypeName()» pServerWebExchange«ENDIF»)«getThrownExceptionsAsString()»{
 	  «IF this.hasBeanParameters()»
@@ -766,8 +766,8 @@ public class «this.getResourceName(reactive)» {
 	«EXPAND HTTPMethods»
 	«IF consumes.size > 0»@«getEnterpriseJavaPackage()».ws.rs.Consumes(«IF consumes.size > 1»{«ENDIF»«FOREACH consumes AS mediaType SEPARATOR ","»«getEnterpriseJavaPackage()».ws.rs.core.MediaType.«mediaType»«ENDFOREACH»«IF consumes.size > 1»}«ENDIF»)«ENDIF»
 	«IF produces.size > 0»@«getEnterpriseJavaPackage()».ws.rs.Produces(«IF produces.size > 1»{«ENDIF»«FOREACH produces AS mediaType SEPARATOR ","»«getEnterpriseJavaPackage()».ws.rs.core.MediaType.«mediaType»«ENDFOREACH»«IF produces.size > 1»}«ENDIF»)«ENDIF»
-	«EXPAND java::Helper::GenerateDeprecationAnnotation -»
-	«EXPAND java::Helper::GenerateDeprecationAnnotation FOR this.getReturnResult()-»
+	«EXPAND java::Helper::GenerateAnnotations -»
+	«EXPAND java::Helper::GenerateAnnotations FOR this.getReturnResult()-»
 	«EXPAND java::Helper::NotNullAnnotationForParameter("RESTResource") FOR this.getReturnResult()-»
 	public void  «name» (@«getEnterpriseJavaPackage()».ws.rs.container.Suspended «getEnterpriseJavaPackage()».ws.rs.container.AsyncResponse pAsyncResponse, @«getEnterpriseJavaPackage()».ws.rs.core.Context «getEnterpriseJavaPackage()».servlet.http.HttpServletRequest pRequest «IF this.hasInputParameters()»,«ENDIF» «EXPAND RESTParameterSignature FOR this»)«getThrownExceptionsAsString()»{
 	    // Lookup workload manager that takes care that the system will have an optimal throughput.
@@ -871,7 +871,7 @@ public class «this.getResourceName(reactive)» {
   @«getEnterpriseJavaPackage()».ws.rs.DefaultValue("«this.getDefaultValueForBasicType()»")
   «ENDIF»
 
-«EXPAND java::Helper::GenerateDeprecationAnnotation»
+«EXPAND java::Helper::GenerateAnnotations»
 «EXPAND java::Helper::NotNullAnnotationForParameter("RESTResource")»
 	«IF this.type.isOpenAPIDataType() && this.isRequestBody() == false»
 	  	«IF ((JMM::OpenAPIDataType) this.type).compositeDataType»
@@ -908,7 +908,7 @@ public class «this.getResourceName(reactive)» {
   @org.springframework.web.bind.annotation.RequestBody(required = «this.isRequired()»)
   «ENDIF-»
 
-  «EXPAND java::Helper::GenerateDeprecationAnnotation»
+  «EXPAND java::Helper::GenerateAnnotations»
   «IF this.isBeanParam() == false»
       «EXPAND java::Helper::NotNullAnnotationForParameter("RESTResource")»
 	  «IF this.type.isOpenAPIDataType() && this.isRequestBody() == false»
@@ -960,7 +960,7 @@ public class «this.getResourceName(reactive)» {
   @org.springframework.web.bind.annotation.CookieValue(name = "«EXPAND java::OpenAPI::RESTParamName FOR this»", required = «this.isRequiredProperty()»«IF this.isJEAFEnumerationProperty() && this.hasDefaultValueForEnumProperty()», defaultValue = "«this.getDefaultValueForEnumProperty()»"«ENDIF» «IF (this.type.isBasicType() || this.type.isPrimitiveType()) && this.hasDefaultValueForBasicTypeProperty()», defaultValue = "«this.getDefaultValueForBasicTypeProperty()»"«ENDIF»)
   «ENDIF-»
 
-  «EXPAND java::Helper::GenerateDeprecationAnnotation»
+  «EXPAND java::Helper::GenerateAnnotations»
   «EXPAND java::Helper::NotNullAnnotationForBeanParameter»
 	  «IF this.type.isOpenAPIDataType() »
 	  	«IF ((JMM::OpenAPIDataType) this.type).compositeDataType»

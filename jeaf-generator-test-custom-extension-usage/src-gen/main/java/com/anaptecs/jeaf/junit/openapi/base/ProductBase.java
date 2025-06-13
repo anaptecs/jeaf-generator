@@ -21,6 +21,7 @@ import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.core.api.ServiceObjectID;
 import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.anaptecs.jeaf.xfun.api.common.Identifiable;
@@ -34,6 +35,7 @@ import com.anaptecs.jeaf.xfun.api.common.ObjectIdentity;
  * @author JEAF Generator
  * @version JEAF Release 1.6.x
  */
+@JEAFCustomAnnotationTest
 public abstract class ProductBase extends Object implements ServiceObject, Identifiable<ServiceObjectID> {
   /**
    * Default serial version uid.
@@ -43,52 +45,62 @@ public abstract class ProductBase extends Object implements ServiceObject, Ident
   /**
    * Constant for the name of attribute "resellers".
    */
+  @JEAFCustomAnnotationTest
   public static final String RESELLERS = "resellers";
 
   /**
    * Constant for the name of attribute "name".
    */
+  @JEAFCustomAnnotationTest
   public static final String NAME = "name";
 
   /**
    * Constant for the name of attribute "image".
    */
+  @JEAFCustomAnnotationTest
   public static final String IMAGE = "image";
 
   /**
    * Constant for the name of attribute "link".
    */
+  @JEAFCustomAnnotationTest
   public static final String LINK = "link";
 
   /**
    * Constant for the name of attribute "productID".
    */
+  @JEAFCustomAnnotationTest
   public static final String PRODUCTID = "productID";
 
   /**
    * Constant for the name of attribute "supportedCurrencies".
    */
+  @JEAFCustomAnnotationTest
   public static final String SUPPORTEDCURRENCIES = "supportedCurrencies";
 
   /**
    * Constant for the name of attribute "productCodes".
    */
+  @JEAFCustomAnnotationTest
   public static final String PRODUCTCODES = "productCodes";
 
   /**
    * Constant for the name of attribute "description".
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   public static final String DESCRIPTION = "description";
 
   /**
    * Constant for the name of attribute "sortiments".
    */
+  @JEAFCustomAnnotationTest
   public static final String SORTIMENTS = "sortiments";
 
   /**
    * Constant for the name of attribute "uri".
    */
+  @JEAFCustomAnnotationTest
   public static final String URI = "uri";
 
   /**
@@ -98,6 +110,7 @@ public abstract class ProductBase extends Object implements ServiceObject, Ident
 
   // "com.anaptecs.jeaf.junit.openapi.base.Reseller"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private Set<Reseller> resellers;
 
   /**
@@ -110,6 +123,7 @@ public abstract class ProductBase extends Object implements ServiceObject, Ident
 
   // "java.lang.String"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   @Size(min = 12, max = Integer.MAX_VALUE)
   private String name;
 
@@ -121,6 +135,7 @@ public abstract class ProductBase extends Object implements ServiceObject, Ident
   /**
    * Image describing the product.
    */
+  @JEAFCustomAnnotationTest
   private byte[] image;
 
   // "byte"
@@ -135,6 +150,7 @@ public abstract class ProductBase extends Object implements ServiceObject, Ident
    * <li><code>https://www.company.com/products/1345-345</code></li>
    * </ul>
    */
+  @JEAFCustomAnnotationTest
   private URL link;
 
   // "java.net.URL"
@@ -142,6 +158,7 @@ public abstract class ProductBase extends Object implements ServiceObject, Ident
 
   // "java.util.UUID"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private final UUID productID;
 
   // "java.util.UUID"
@@ -149,6 +166,7 @@ public abstract class ProductBase extends Object implements ServiceObject, Ident
 
   // "com.anaptecs.jeaf.junit.openapi.base.CurrencyCode"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   @Size(min = 7, max = 42)
   private Set<CurrencyCode> supportedCurrencies;
 
@@ -157,6 +175,7 @@ public abstract class ProductBase extends Object implements ServiceObject, Ident
 
   // "com.anaptecs.jeaf.junit.openapi.base.ProductCode"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private Set<ProductCode> productCodes;
 
   // "com.anaptecs.jeaf.junit.openapi.base.ProductCode"
@@ -165,6 +184,7 @@ public abstract class ProductBase extends Object implements ServiceObject, Ident
   // "String"
   @ClassPropertyDeclaration
   @Deprecated
+  @JEAFCustomAnnotationTest
   private String description;
 
   // "String"
@@ -172,6 +192,7 @@ public abstract class ProductBase extends Object implements ServiceObject, Ident
 
   // "com.anaptecs.jeaf.junit.openapi.base.Sortiment"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private transient Set<Sortiment> sortiments;
 
   // "com.anaptecs.jeaf.junit.openapi.base.Sortiment"
@@ -183,6 +204,7 @@ public abstract class ProductBase extends Object implements ServiceObject, Ident
    * <br/>
    * <b>Default Value:</b> <code>"https://products.anaptecs.de/123456789"</code>
    */
+  @JEAFCustomAnnotationTest
   private String uri;
 
   // "String"
@@ -284,6 +306,7 @@ public abstract class ProductBase extends Object implements ServiceObject, Ident
 
     // "com.anaptecs.jeaf.junit.openapi.base.Reseller"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private Set<Reseller> resellers;
 
     // "com.anaptecs.jeaf.junit.openapi.base.Reseller"
@@ -291,6 +314,7 @@ public abstract class ProductBase extends Object implements ServiceObject, Ident
 
     // "java.lang.String"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     @Size(min = 12, max = Integer.MAX_VALUE)
     private String name;
 
@@ -302,6 +326,7 @@ public abstract class ProductBase extends Object implements ServiceObject, Ident
      */
     // "byte"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private byte[] image;
 
     // "byte"
@@ -316,6 +341,7 @@ public abstract class ProductBase extends Object implements ServiceObject, Ident
      */
     // "java.net.URL"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private URL link;
 
     // "java.net.URL"
@@ -323,6 +349,7 @@ public abstract class ProductBase extends Object implements ServiceObject, Ident
 
     // "java.util.UUID"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private UUID productID;
 
     // "java.util.UUID"
@@ -330,6 +357,7 @@ public abstract class ProductBase extends Object implements ServiceObject, Ident
 
     // "com.anaptecs.jeaf.junit.openapi.base.CurrencyCode"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private Set<CurrencyCode> supportedCurrencies;
 
     // "com.anaptecs.jeaf.junit.openapi.base.CurrencyCode"
@@ -337,6 +365,7 @@ public abstract class ProductBase extends Object implements ServiceObject, Ident
 
     // "com.anaptecs.jeaf.junit.openapi.base.ProductCode"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private Set<ProductCode> productCodes;
 
     // "com.anaptecs.jeaf.junit.openapi.base.ProductCode"
@@ -345,6 +374,7 @@ public abstract class ProductBase extends Object implements ServiceObject, Ident
     // "String"
     @BuilderPropertyDeclaration
     @Deprecated
+    @JEAFCustomAnnotationTest
     private String description;
 
     // "String"
@@ -356,6 +386,7 @@ public abstract class ProductBase extends Object implements ServiceObject, Ident
      */
     // "String"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private String uri = "https://products.anaptecs.de/123456789";
 
     // "String"
@@ -401,6 +432,7 @@ public abstract class ProductBase extends Object implements ServiceObject, Ident
      * @param pResellers Collection to which {@link #resellers} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public BuilderBase setResellers( Set<Reseller> pResellers ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pResellers != null) {
@@ -418,6 +450,7 @@ public abstract class ProductBase extends Object implements ServiceObject, Ident
      * @param pResellers Array of objects that should be added to {@link #resellers}. The parameter may be null.
      * @return {@link BuilderBase} Instance of this builder to support chaining. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public BuilderBase addToResellers( Reseller... pResellers ) {
       if (pResellers != null) {
         if (resellers == null) {
@@ -440,6 +473,7 @@ public abstract class ProductBase extends Object implements ServiceObject, Ident
      * @param pName Value to which {@link #name} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public BuilderBase setName( String pName ) {
       // Assign value to attribute
       name = pName;
@@ -458,6 +492,7 @@ public abstract class ProductBase extends Object implements ServiceObject, Ident
      * @param pImage Value to which {@link #image} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public BuilderBase setImage( byte[] pImage ) {
       // Assign value to attribute
       if (pImage != null) {
@@ -482,6 +517,7 @@ public abstract class ProductBase extends Object implements ServiceObject, Ident
      * @param pLink Value to which {@link #link} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public BuilderBase setLink( URL pLink ) {
       // Assign value to attribute
       link = pLink;
@@ -500,6 +536,7 @@ public abstract class ProductBase extends Object implements ServiceObject, Ident
      * @param pProductID Value to which {@link #productID} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public BuilderBase setProductID( UUID pProductID ) {
       // Assign value to attribute
       productID = pProductID;
@@ -518,6 +555,7 @@ public abstract class ProductBase extends Object implements ServiceObject, Ident
      * @param pSupportedCurrencies Collection to which {@link #supportedCurrencies} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public BuilderBase setSupportedCurrencies( Set<CurrencyCode> pSupportedCurrencies ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pSupportedCurrencies != null) {
@@ -536,6 +574,7 @@ public abstract class ProductBase extends Object implements ServiceObject, Ident
      * may be null.
      * @return {@link BuilderBase} Instance of this builder to support chaining. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public BuilderBase addToSupportedCurrencies( CurrencyCode... pSupportedCurrencies ) {
       if (pSupportedCurrencies != null) {
         if (supportedCurrencies == null) {
@@ -558,6 +597,7 @@ public abstract class ProductBase extends Object implements ServiceObject, Ident
      * @param pProductCodes Collection to which {@link #productCodes} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public BuilderBase setProductCodes( Set<ProductCode> pProductCodes ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pProductCodes != null) {
@@ -575,6 +615,7 @@ public abstract class ProductBase extends Object implements ServiceObject, Ident
      * @param pProductCodes Array of objects that should be added to {@link #productCodes}. The parameter may be null.
      * @return {@link BuilderBase} Instance of this builder to support chaining. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public BuilderBase addToProductCodes( ProductCode... pProductCodes ) {
       if (pProductCodes != null) {
         if (productCodes == null) {
@@ -598,6 +639,7 @@ public abstract class ProductBase extends Object implements ServiceObject, Ident
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
+    @JEAFCustomAnnotationTest
     public BuilderBase setDescription( String pDescription ) {
       // Assign value to attribute
       description = pDescription;
@@ -616,6 +658,7 @@ public abstract class ProductBase extends Object implements ServiceObject, Ident
      * @param pUri Value to which {@link #uri} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public BuilderBase setUri( String pUri ) {
       // Assign value to attribute
       uri = pUri;
@@ -687,6 +730,7 @@ public abstract class ProductBase extends Object implements ServiceObject, Ident
    * @return {@link Set<Reseller>} Value to which {@link #resellers} is set. The method never returns null and the
    * returned collection is unmodifiable.
    */
+  @JEAFCustomAnnotationTest
   public Set<Reseller> getResellers( ) {
     // Due to restrictions in JSON serialization / deserialization bi-directional associations need a special handling
     // after an object was deserialized.
@@ -705,6 +749,7 @@ public abstract class ProductBase extends Object implements ServiceObject, Ident
    *
    * @param pResellers Object that should be added to {@link #resellers}. The parameter must not be null.
    */
+  @JEAFCustomAnnotationTest
   public void addToResellers( Reseller pResellers ) {
     // Check parameter "pResellers" for invalid value null.
     Check.checkInvalidParameterNull(pResellers, "pResellers");
@@ -723,6 +768,7 @@ public abstract class ProductBase extends Object implements ServiceObject, Ident
    * @param pResellers Collection with all objects that should be added to {@link #resellers}. The parameter must not be
    * null.
    */
+  @JEAFCustomAnnotationTest
   public void addToResellers( Collection<Reseller> pResellers ) {
     // Check parameter "pResellers" for invalid value null.
     Check.checkInvalidParameterNull(pResellers, "pResellers");
@@ -737,6 +783,7 @@ public abstract class ProductBase extends Object implements ServiceObject, Ident
    *
    * @param pResellers Object that should be removed from {@link #resellers}. The parameter must not be null.
    */
+  @JEAFCustomAnnotationTest
   public void removeFromResellers( Reseller pResellers ) {
     // Check parameter for invalid value null.
     Check.checkInvalidParameterNull(pResellers, "pResellers");
@@ -752,6 +799,7 @@ public abstract class ProductBase extends Object implements ServiceObject, Ident
   /**
    * Method removes all objects from {@link #resellers}.
    */
+  @JEAFCustomAnnotationTest
   public void clearResellers( ) {
     // Remove all objects from association "resellers".
     Collection<Reseller> lResellers = new HashSet<Reseller>(resellers);
@@ -776,6 +824,7 @@ public abstract class ProductBase extends Object implements ServiceObject, Ident
    *
    * @return {@link String} Value to which {@link #name} is set.
    */
+  @JEAFCustomAnnotationTest
   public String getName( ) {
     return name;
   }
@@ -785,6 +834,7 @@ public abstract class ProductBase extends Object implements ServiceObject, Ident
    *
    * @param pName Value to which {@link #name} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setName( String pName ) {
     // Assign value to attribute
     name = pName;
@@ -805,6 +855,7 @@ public abstract class ProductBase extends Object implements ServiceObject, Ident
    *
    * @return byte[] Value to which {@link #image} is set.
    */
+  @JEAFCustomAnnotationTest
   public byte[] getImage( ) {
     byte[] lReturnValue;
     if (image != null) {
@@ -823,6 +874,7 @@ public abstract class ProductBase extends Object implements ServiceObject, Ident
    *
    * @param pImage Value to which {@link #image} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setImage( byte[] pImage ) {
     // Assign value to attribute
     if (pImage != null) {
@@ -848,6 +900,7 @@ public abstract class ProductBase extends Object implements ServiceObject, Ident
    *
    * @return {@link URL} Value to which {@link #link} is set.
    */
+  @JEAFCustomAnnotationTest
   public URL getLink( ) {
     return link;
   }
@@ -857,6 +910,7 @@ public abstract class ProductBase extends Object implements ServiceObject, Ident
    *
    * @param pLink Value to which {@link #link} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setLink( URL pLink ) {
     // Assign value to attribute
     link = pLink;
@@ -876,6 +930,7 @@ public abstract class ProductBase extends Object implements ServiceObject, Ident
    *
    * @return {@link UUID} Value to which {@link #productID} is set.
    */
+  @JEAFCustomAnnotationTest
   public UUID getProductID( ) {
     return productID;
   }
@@ -895,6 +950,7 @@ public abstract class ProductBase extends Object implements ServiceObject, Ident
    * @return {@link Set<CurrencyCode>} Value to which {@link #supportedCurrencies} is set. The method never returns null
    * and the returned collection is unmodifiable.
    */
+  @JEAFCustomAnnotationTest
   public Set<CurrencyCode> getSupportedCurrencies( ) {
     // Return all CurrencyCode objects as unmodifiable collection.
     return Collections.unmodifiableSet(supportedCurrencies);
@@ -906,6 +962,7 @@ public abstract class ProductBase extends Object implements ServiceObject, Ident
    * @param pSupportedCurrencies Object that should be added to {@link #supportedCurrencies}. The parameter must not be
    * null.
    */
+  @JEAFCustomAnnotationTest
   public void addToSupportedCurrencies( CurrencyCode pSupportedCurrencies ) {
     // Check parameter "pSupportedCurrencies" for invalid value null.
     Check.checkInvalidParameterNull(pSupportedCurrencies, "pSupportedCurrencies");
@@ -919,6 +976,7 @@ public abstract class ProductBase extends Object implements ServiceObject, Ident
    * @param pSupportedCurrencies Collection with all objects that should be added to {@link #supportedCurrencies}. The
    * parameter must not be null.
    */
+  @JEAFCustomAnnotationTest
   public void addToSupportedCurrencies( Collection<CurrencyCode> pSupportedCurrencies ) {
     // Check parameter "pSupportedCurrencies" for invalid value null.
     Check.checkInvalidParameterNull(pSupportedCurrencies, "pSupportedCurrencies");
@@ -934,6 +992,7 @@ public abstract class ProductBase extends Object implements ServiceObject, Ident
    * @param pSupportedCurrencies Object that should be removed from {@link #supportedCurrencies}. The parameter must not
    * be null.
    */
+  @JEAFCustomAnnotationTest
   public void removeFromSupportedCurrencies( CurrencyCode pSupportedCurrencies ) {
     // Check parameter for invalid value null.
     Check.checkInvalidParameterNull(pSupportedCurrencies, "pSupportedCurrencies");
@@ -944,6 +1003,7 @@ public abstract class ProductBase extends Object implements ServiceObject, Ident
   /**
    * Method removes all objects from {@link #supportedCurrencies}.
    */
+  @JEAFCustomAnnotationTest
   public void clearSupportedCurrencies( ) {
     // Remove all objects from association "supportedCurrencies".
     supportedCurrencies.clear();
@@ -964,6 +1024,7 @@ public abstract class ProductBase extends Object implements ServiceObject, Ident
    * @return {@link Set<ProductCode>} Value to which {@link #productCodes} is set. The method never returns null and the
    * returned collection is unmodifiable.
    */
+  @JEAFCustomAnnotationTest
   public Set<ProductCode> getProductCodes( ) {
     // Return all ProductCode objects as unmodifiable collection.
     return Collections.unmodifiableSet(productCodes);
@@ -974,6 +1035,7 @@ public abstract class ProductBase extends Object implements ServiceObject, Ident
    *
    * @param pProductCodes Object that should be added to {@link #productCodes}. The parameter must not be null.
    */
+  @JEAFCustomAnnotationTest
   public void addToProductCodes( ProductCode pProductCodes ) {
     // Check parameter "pProductCodes" for invalid value null.
     Check.checkInvalidParameterNull(pProductCodes, "pProductCodes");
@@ -987,6 +1049,7 @@ public abstract class ProductBase extends Object implements ServiceObject, Ident
    * @param pProductCodes Collection with all objects that should be added to {@link #productCodes}. The parameter must
    * not be null.
    */
+  @JEAFCustomAnnotationTest
   public void addToProductCodes( Collection<ProductCode> pProductCodes ) {
     // Check parameter "pProductCodes" for invalid value null.
     Check.checkInvalidParameterNull(pProductCodes, "pProductCodes");
@@ -1001,6 +1064,7 @@ public abstract class ProductBase extends Object implements ServiceObject, Ident
    *
    * @param pProductCodes Object that should be removed from {@link #productCodes}. The parameter must not be null.
    */
+  @JEAFCustomAnnotationTest
   public void removeFromProductCodes( ProductCode pProductCodes ) {
     // Check parameter for invalid value null.
     Check.checkInvalidParameterNull(pProductCodes, "pProductCodes");
@@ -1011,6 +1075,7 @@ public abstract class ProductBase extends Object implements ServiceObject, Ident
   /**
    * Method removes all objects from {@link #productCodes}.
    */
+  @JEAFCustomAnnotationTest
   public void clearProductCodes( ) {
     // Remove all objects from association "productCodes".
     productCodes.clear();
@@ -1031,6 +1096,7 @@ public abstract class ProductBase extends Object implements ServiceObject, Ident
    * @return {@link String} Value to which {@link #description} is set.
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   public String getDescription( ) {
     return description;
   }
@@ -1041,6 +1107,7 @@ public abstract class ProductBase extends Object implements ServiceObject, Ident
    * @param pDescription Value to which {@link #description} should be set.
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   public void setDescription( String pDescription ) {
     // Assign value to attribute
     description = pDescription;
@@ -1061,6 +1128,7 @@ public abstract class ProductBase extends Object implements ServiceObject, Ident
    * @return {@link Set<Sortiment>} Value to which {@link #sortiments} is set. The method never returns null and the
    * returned collection is unmodifiable.
    */
+  @JEAFCustomAnnotationTest
   public Set<Sortiment> getSortiments( ) {
     // Return all Sortiment objects as unmodifiable collection.
     return Collections.unmodifiableSet(sortiments);
@@ -1071,6 +1139,7 @@ public abstract class ProductBase extends Object implements ServiceObject, Ident
    *
    * @param pSortiments Object that should be added to {@link #sortiments}. The parameter must not be null.
    */
+  @JEAFCustomAnnotationTest
   void addToSortiments( Sortiment pSortiments ) {
     // Check parameter "pSortiments" for invalid value null.
     Check.checkInvalidParameterNull(pSortiments, "pSortiments");
@@ -1084,6 +1153,7 @@ public abstract class ProductBase extends Object implements ServiceObject, Ident
    * @param pSortiments Collection with all objects that should be added to {@link #sortiments}. The parameter must not
    * be null.
    */
+  @JEAFCustomAnnotationTest
   void addToSortiments( Collection<Sortiment> pSortiments ) {
     // Check parameter "pSortiments" for invalid value null.
     Check.checkInvalidParameterNull(pSortiments, "pSortiments");
@@ -1098,6 +1168,7 @@ public abstract class ProductBase extends Object implements ServiceObject, Ident
    *
    * @param pSortiments Object that should be removed from {@link #sortiments}. The parameter must not be null.
    */
+  @JEAFCustomAnnotationTest
   void removeFromSortiments( Sortiment pSortiments ) {
     // Check parameter for invalid value null.
     Check.checkInvalidParameterNull(pSortiments, "pSortiments");
@@ -1108,6 +1179,7 @@ public abstract class ProductBase extends Object implements ServiceObject, Ident
   /**
    * Method removes all objects from {@link #sortiments}.
    */
+  @JEAFCustomAnnotationTest
   void clearSortiments( ) {
     // Remove all objects from association "sortiments".
     Collection<Sortiment> lSortiments = new HashSet<Sortiment>(sortiments);
@@ -1132,6 +1204,7 @@ public abstract class ProductBase extends Object implements ServiceObject, Ident
    *
    * @return {@link String} Value to which {@link #uri} is set.
    */
+  @JEAFCustomAnnotationTest
   public String getUri( ) {
     return uri;
   }
@@ -1141,6 +1214,7 @@ public abstract class ProductBase extends Object implements ServiceObject, Ident
    *
    * @param pUri Value to which {@link #uri} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setUri( String pUri ) {
     // Assign value to attribute
     uri = pUri;
@@ -1161,6 +1235,7 @@ public abstract class ProductBase extends Object implements ServiceObject, Ident
    * @return {@link Set<Channel>} Value to which {@link #theChannels} is set. The method never returns null and the
    * returned collection is unmodifiable.
    */
+  @JEAFCustomAnnotationTest
   public abstract Set<Channel> getTheChannels( );
 
   public void doSomethingGenerated( ) {

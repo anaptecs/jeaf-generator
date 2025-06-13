@@ -24,7 +24,7 @@ import com.anaptecs.jeaf.xfun.api.info.VersionInfo;
  * 
  * @see com.anaptecs.jeaf.xfun.api.errorhandling.ApplicationException
  */
-«EXPAND java::Helper::GenerateDeprecationAnnotation-»
+«EXPAND java::Helper::GenerateAnnotations-»
 public final class «name» extends ApplicationException {
 
   /**
@@ -133,7 +133,7 @@ import com.anaptecs.jeaf.xfun.api.info.VersionInfo;
  * 
  * @see com.anaptecs.jeaf.xfun.api.errorhandling.SystemException
  */
-«EXPAND java::Helper::GenerateDeprecationAnnotation-»
+«EXPAND java::Helper::GenerateAnnotations-»
 public final class «name» extends SystemException {
   /**
    * Generated serial version uid for this class.

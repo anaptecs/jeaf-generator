@@ -18,10 +18,12 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
 @Generated("Before Class Declaration. Here an annontation cloud be added.")
+@JEAFCustomAnnotationTest
 public class Campaign extends Object implements ServiceObject {
   /**
    * Default serial version uid.
@@ -32,18 +34,21 @@ public class Campaign extends Object implements ServiceObject {
    * Constant for the name of attribute "theLink".
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   public static final String THELINK = "theLink";
 
   /**
    * Constant for the name of attribute "moreLinks".
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   public static final String MORELINKS = "moreLinks";
 
   /**
    * Constant for the name of attribute "discountOffers".
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   public static final String DISCOUNTOFFERS = "discountOffers";
 
   // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
@@ -57,6 +62,7 @@ public class Campaign extends Object implements ServiceObject {
    * @deprecated Please use &quot;moreLinks&quot; instead. (<b>since:</b> 2.3.1, <b>removed with:</b> 2.4)
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   private long theLink;
 
   // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
@@ -72,6 +78,7 @@ public class Campaign extends Object implements ServiceObject {
    * @deprecated No good any more (<b>since:</b> 1.2, <b>removed with:</b> 3.0)
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   private Set<Long> moreLinks;
 
   // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
@@ -85,6 +92,7 @@ public class Campaign extends Object implements ServiceObject {
    * <code>com.anaptecs.jeaf.junit.openapi.base.DiscountOffer</code><br/>
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   private List<String> discountOffers;
 
   // "com.anaptecs.jeaf.junit.openapi.base.DiscountOffer"
@@ -141,6 +149,7 @@ public class Campaign extends Object implements ServiceObject {
   /**
    * Class implements builder to create a new instance of class <code>Campaign</code>.
    */
+  @JEAFCustomAnnotationTest
   public static class Builder {
     /**
      * The magic link.
@@ -153,6 +162,7 @@ public class Campaign extends Object implements ServiceObject {
     // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
     @BuilderPropertyDeclaration
     @Deprecated
+    @JEAFCustomAnnotationTest
     private long theLink;
 
     // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
@@ -168,6 +178,7 @@ public class Campaign extends Object implements ServiceObject {
     // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
     @BuilderPropertyDeclaration
     @Deprecated
+    @JEAFCustomAnnotationTest
     private Set<Long> moreLinks;
 
     // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
@@ -181,6 +192,7 @@ public class Campaign extends Object implements ServiceObject {
     // "com.anaptecs.jeaf.junit.openapi.base.DiscountOffer"
     @BuilderPropertyDeclaration
     @Deprecated
+    @JEAFCustomAnnotationTest
     private List<String> discountOffers;
 
     // "com.anaptecs.jeaf.junit.openapi.base.DiscountOffer"
@@ -212,6 +224,7 @@ public class Campaign extends Object implements ServiceObject {
      * @deprecated Please use &quot;moreLinks&quot; instead. (<b>since:</b> 2.3.1, <b>removed with:</b> 2.4)
      */
     @Deprecated
+    @JEAFCustomAnnotationTest
     public Builder setTheLink( long pTheLink ) {
       theLink = pTheLink;
       return this;
@@ -231,6 +244,7 @@ public class Campaign extends Object implements ServiceObject {
      * @deprecated No good any more (<b>since:</b> 1.2, <b>removed with:</b> 3.0)
      */
     @Deprecated
+    @JEAFCustomAnnotationTest
     public Builder setMoreLinks( Set<Long> pMoreLinks ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pMoreLinks != null) {
@@ -255,6 +269,7 @@ public class Campaign extends Object implements ServiceObject {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
+    @JEAFCustomAnnotationTest
     public Builder setDiscountOffers( List<String> pDiscountOffers ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pDiscountOffers != null) {
@@ -307,6 +322,7 @@ public class Campaign extends Object implements ServiceObject {
    * @deprecated Please use &quot;moreLinks&quot; instead. (<b>since:</b> 2.3.1, <b>removed with:</b> 2.4)
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   public long getTheLink( ) {
     return theLink;
   }
@@ -319,6 +335,7 @@ public class Campaign extends Object implements ServiceObject {
    * @deprecated Please use &quot;moreLinks&quot; instead. (<b>since:</b> 2.3.1, <b>removed with:</b> 2.4)
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   public void setTheLink( long pTheLink ) {
     theLink = pTheLink;
   }
@@ -343,6 +360,7 @@ public class Campaign extends Object implements ServiceObject {
    * @deprecated No good any more (<b>since:</b> 1.2, <b>removed with:</b> 3.0)
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   public Set<Long> getMoreLinks( ) {
     // Return all LinkObject objects as unmodifiable collection.
     return Collections.unmodifiableSet(moreLinks);
@@ -355,6 +373,7 @@ public class Campaign extends Object implements ServiceObject {
    * @deprecated No good any more (<b>since:</b> 1.2, <b>removed with:</b> 3.0)
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   public void addToMoreLinks( Long pMoreLinks ) {
     // Check parameter "pMoreLinks" for invalid value null.
     Check.checkInvalidParameterNull(pMoreLinks, "pMoreLinks");
@@ -370,6 +389,7 @@ public class Campaign extends Object implements ServiceObject {
    * @deprecated No good any more (<b>since:</b> 1.2, <b>removed with:</b> 3.0)
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   public void addToMoreLinks( Collection<Long> pMoreLinks ) {
     // Check parameter "pMoreLinks" for invalid value null.
     Check.checkInvalidParameterNull(pMoreLinks, "pMoreLinks");
@@ -385,6 +405,7 @@ public class Campaign extends Object implements ServiceObject {
    * @param pMoreLinks Object that should be removed from {@link #moreLinks}. The parameter must not be null.
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   public void removeFromMoreLinks( Long pMoreLinks ) {
     // Check parameter for invalid value null.
     Check.checkInvalidParameterNull(pMoreLinks, "pMoreLinks");
@@ -396,6 +417,7 @@ public class Campaign extends Object implements ServiceObject {
    * Method removes all objects from {@link #moreLinks}.
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   public void clearMoreLinks( ) {
     // Remove all objects from association "moreLinks".
     moreLinks.clear();
@@ -420,6 +442,7 @@ public class Campaign extends Object implements ServiceObject {
    * returned collection is unmodifiable.
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   public List<String> getDiscountOffers( ) {
     // Return all DiscountOffer objects as unmodifiable collection.
     return Collections.unmodifiableList(discountOffers);
@@ -431,6 +454,7 @@ public class Campaign extends Object implements ServiceObject {
    * @param pDiscountOffers Object that should be added to {@link #discountOffers}. The parameter must not be null.
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   public void addToDiscountOffers( String pDiscountOffers ) {
     // Check parameter "pDiscountOffers" for invalid value null.
     Check.checkInvalidParameterNull(pDiscountOffers, "pDiscountOffers");
@@ -445,6 +469,7 @@ public class Campaign extends Object implements ServiceObject {
    * must not be null.
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   public void addToDiscountOffers( Collection<String> pDiscountOffers ) {
     // Check parameter "pDiscountOffers" for invalid value null.
     Check.checkInvalidParameterNull(pDiscountOffers, "pDiscountOffers");
@@ -460,6 +485,7 @@ public class Campaign extends Object implements ServiceObject {
    * @param pDiscountOffers Object that should be removed from {@link #discountOffers}. The parameter must not be null.
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   public void removeFromDiscountOffers( String pDiscountOffers ) {
     // Check parameter for invalid value null.
     Check.checkInvalidParameterNull(pDiscountOffers, "pDiscountOffers");
@@ -471,6 +497,7 @@ public class Campaign extends Object implements ServiceObject {
    * Method removes all objects from {@link #discountOffers}.
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   public void clearDiscountOffers( ) {
     // Remove all objects from association "discountOffers".
     discountOffers.clear();

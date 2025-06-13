@@ -13,7 +13,7 @@
 package «packageName()»;
 
 «EXPAND functions::Javadoc::JavadocForType»
-«EXPAND java::Helper::GenerateDeprecationAnnotation-»
+«EXPAND java::Helper::GenerateAnnotations-»
 public interface «name» extends «IF generalization.size > 0» «this.getAllExtendedInterfaces()» «ELSE»com.anaptecs.jeaf.core.api.ServiceProvider«ENDIF» {
 
 «EXPAND JEAFOperation::PlainInterfaceOperation("JEAFServiceProvider", false) FOREACH this.ownedOperation»
@@ -34,7 +34,7 @@ package «packageName()»;
 import com.anaptecs.jeaf.xfun.api.common.ComponentID;
 
 «EXPAND functions::Javadoc::JavadocForType»
-«EXPAND java::Helper::GenerateDeprecationAnnotation-»
+«EXPAND java::Helper::GenerateAnnotations-»
 abstract class «name»Base implements com.anaptecs.jeaf.core.spi.ServiceProviderImplementation, «this.getImplementedInterfaceNames()» {
 	«IF this.ownedAttribute.size > 0»
 	/**
@@ -72,7 +72,7 @@ abstract class «name»Base implements com.anaptecs.jeaf.core.spi.ServiceProvide
 	 * @return {@link «property.type.name»} Value of the property "«property.name»". The method returns null if no value for the
 	 * property is defined.
 	 */
-	«EXPAND java::Helper::GenerateDeprecationAnnotation FOR property-»
+	«EXPAND java::Helper::GenerateAnnotations FOR property-»
 	public «property.fqn()» «property.asGetter()»() {
         «IF property.type.isStringType()»
         return configuration.getConfigurationValue("«property.name»", java.lang.String.class);

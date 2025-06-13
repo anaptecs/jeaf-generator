@@ -17,10 +17,12 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
 @Generated("Before Class Declaration. Here an annontation cloud be added.")
+@JEAFCustomAnnotationTest
 public class PartnerContainer extends Object implements ServiceObject {
   /**
    * Default serial version uid.
@@ -30,10 +32,12 @@ public class PartnerContainer extends Object implements ServiceObject {
   /**
    * Constant for the name of attribute "partners".
    */
+  @JEAFCustomAnnotationTest
   public static final String PARTNERS = "partners";
 
   // "com.anaptecs.jeaf.junit.openapi.base.Partner"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private List<Partner> partners;
 
   // "com.anaptecs.jeaf.junit.openapi.base.Partner"
@@ -78,9 +82,11 @@ public class PartnerContainer extends Object implements ServiceObject {
   /**
    * Class implements builder to create a new instance of class <code>PartnerContainer</code>.
    */
+  @JEAFCustomAnnotationTest
   public static class Builder {
     // "com.anaptecs.jeaf.junit.openapi.base.Partner"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private List<Partner> partners;
 
     // "com.anaptecs.jeaf.junit.openapi.base.Partner"
@@ -108,6 +114,7 @@ public class PartnerContainer extends Object implements ServiceObject {
      * @param pPartners Collection to which {@link #partners} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setPartners( List<Partner> pPartners ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pPartners != null) {
@@ -125,6 +132,7 @@ public class PartnerContainer extends Object implements ServiceObject {
      * @param pPartners Array of objects that should be added to {@link #partners}. The parameter may be null.
      * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder addToPartners( Partner... pPartners ) {
       if (pPartners != null) {
         if (partners == null) {
@@ -172,6 +180,7 @@ public class PartnerContainer extends Object implements ServiceObject {
    * @return {@link List<Partner>} Value to which {@link #partners} is set. The method never returns null and the
    * returned collection is unmodifiable.
    */
+  @JEAFCustomAnnotationTest
   public List<Partner> getPartners( ) {
     // Return all Partner objects as unmodifiable collection.
     return Collections.unmodifiableList(partners);
@@ -182,6 +191,7 @@ public class PartnerContainer extends Object implements ServiceObject {
    *
    * @param pPartners Object that should be added to {@link #partners}. The parameter must not be null.
    */
+  @JEAFCustomAnnotationTest
   public void addToPartners( Partner pPartners ) {
     // Check parameter "pPartners" for invalid value null.
     Check.checkInvalidParameterNull(pPartners, "pPartners");
@@ -195,6 +205,7 @@ public class PartnerContainer extends Object implements ServiceObject {
    * @param pPartners Collection with all objects that should be added to {@link #partners}. The parameter must not be
    * null.
    */
+  @JEAFCustomAnnotationTest
   public void addToPartners( Collection<Partner> pPartners ) {
     // Check parameter "pPartners" for invalid value null.
     Check.checkInvalidParameterNull(pPartners, "pPartners");
@@ -209,6 +220,7 @@ public class PartnerContainer extends Object implements ServiceObject {
    *
    * @param pPartners Object that should be removed from {@link #partners}. The parameter must not be null.
    */
+  @JEAFCustomAnnotationTest
   public void removeFromPartners( Partner pPartners ) {
     // Check parameter for invalid value null.
     Check.checkInvalidParameterNull(pPartners, "pPartners");
@@ -219,6 +231,7 @@ public class PartnerContainer extends Object implements ServiceObject {
   /**
    * Method removes all objects from {@link #partners}.
    */
+  @JEAFCustomAnnotationTest
   public void clearPartners( ) {
     // Remove all objects from association "partners".
     partners.clear();

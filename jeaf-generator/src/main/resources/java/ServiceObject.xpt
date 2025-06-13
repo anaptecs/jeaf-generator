@@ -28,7 +28,7 @@
 	«EXPAND java::Helper::GenerateGeneratedAnnotation»
 	«EXPAND java::Helper::GenerateSuppressWarningsAnnotation»
 	«EXPAND java::Validation::ValidationAnnotation»
-	«EXPAND java::Helper::GenerateDeprecationAnnotation -»
+	«EXPAND java::Helper::GenerateAnnotations -»
 	«EXPAND java::Jackson::JacksonClassAnnotations("") -»
 	public «IF isAbstract»abstract«ENDIF» class «name»«this.getTemplateParams()» «EXPAND SuperClassDeclaration» «EXPAND InterfaceDeclarations» {
 		/**
@@ -144,7 +144,7 @@
 	  «EXPAND java::Helper::GenerateGeneratedAnnotation»
 	  «EXPAND java::Helper::GenerateSuppressWarningsAnnotation»
       «EXPAND java::Validation::ValidationAnnotation -»      
-      «EXPAND java::Helper::GenerateDeprecationAnnotation-»
+      «EXPAND java::Helper::GenerateAnnotations-»
       public abstract class «name»Base«this.getTemplateParams()» «EXPAND SuperClassDeclaration» «EXPAND InterfaceDeclarations» {
         /**
          * Default serial version uid.
@@ -259,7 +259,7 @@
       «EXPAND jeafgenerator::api::ClassExtensionPoint::BeforeClassDeclaration»
 	  «EXPAND functions::Javadoc::JavadocForType»
 	  «EXPAND java::Validation::ValidationAnnotation»
-	  «EXPAND java::Helper::GenerateDeprecationAnnotation -»
+	  «EXPAND java::Helper::GenerateAnnotations -»
 	  «EXPAND java::Jackson::JacksonClassAnnotations("Base") -»
 	  public «IF isAbstract»abstract«ENDIF» class «name»«this.getTemplateParams()» extends «name»Base«this.getTemplateParams()» {
 	    /**

@@ -18,12 +18,14 @@ import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.core.api.ServiceObjectID;
 import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.anaptecs.jeaf.xfun.api.common.Identifiable;
 import com.anaptecs.jeaf.xfun.api.common.ObjectIdentity;
 
 @Generated("Before Class Declaration. Here an annontation cloud be added.")
+@JEAFCustomAnnotationTest
 public class Partner extends Object implements ServiceObject, Identifiable<ServiceObjectID> {
   /**
    * Default serial version uid.
@@ -33,6 +35,7 @@ public class Partner extends Object implements ServiceObject, Identifiable<Servi
   /**
    * Constant for the name of attribute "postalAddresses".
    */
+  @JEAFCustomAnnotationTest
   public static final String POSTALADDRESSES = "postalAddresses";
 
   /**
@@ -42,6 +45,7 @@ public class Partner extends Object implements ServiceObject, Identifiable<Servi
 
   // "com.anaptecs.jeaf.junit.openapi.base.PostalAddress"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private List<PostalAddress> postalAddresses;
 
   // "com.anaptecs.jeaf.junit.openapi.base.PostalAddress"
@@ -95,6 +99,7 @@ public class Partner extends Object implements ServiceObject, Identifiable<Servi
   /**
    * Class implements builder to create a new instance of class <code>Partner</code>.
    */
+  @JEAFCustomAnnotationTest
   public static class Builder {
     /**
      * Reference to the identifier of this object. The reference may be null since an id is not mandatory.
@@ -103,6 +108,7 @@ public class Partner extends Object implements ServiceObject, Identifiable<Servi
 
     // "com.anaptecs.jeaf.junit.openapi.base.PostalAddress"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private List<PostalAddress> postalAddresses;
 
     // "com.anaptecs.jeaf.junit.openapi.base.PostalAddress"
@@ -140,6 +146,7 @@ public class Partner extends Object implements ServiceObject, Identifiable<Servi
      * @param pPostalAddresses Collection to which {@link #postalAddresses} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setPostalAddresses( List<PostalAddress> pPostalAddresses ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pPostalAddresses != null) {
@@ -158,6 +165,7 @@ public class Partner extends Object implements ServiceObject, Identifiable<Servi
      * null.
      * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder addToPostalAddresses( PostalAddress... pPostalAddresses ) {
       if (pPostalAddresses != null) {
         if (postalAddresses == null) {
@@ -233,6 +241,7 @@ public class Partner extends Object implements ServiceObject, Identifiable<Servi
    * @return {@link List<PostalAddress>} Value to which {@link #postalAddresses} is set. The method never returns null
    * and the returned collection is unmodifiable.
    */
+  @JEAFCustomAnnotationTest
   public List<PostalAddress> getPostalAddresses( ) {
     // Return all PostalAddress objects as unmodifiable collection.
     return Collections.unmodifiableList(postalAddresses);
@@ -243,6 +252,7 @@ public class Partner extends Object implements ServiceObject, Identifiable<Servi
    *
    * @param pPostalAddresses Object that should be added to {@link #postalAddresses}. The parameter must not be null.
    */
+  @JEAFCustomAnnotationTest
   public void addToPostalAddresses( PostalAddress pPostalAddresses ) {
     // Check parameter "pPostalAddresses" for invalid value null.
     Check.checkInvalidParameterNull(pPostalAddresses, "pPostalAddresses");
@@ -256,6 +266,7 @@ public class Partner extends Object implements ServiceObject, Identifiable<Servi
    * @param pPostalAddresses Collection with all objects that should be added to {@link #postalAddresses}. The parameter
    * must not be null.
    */
+  @JEAFCustomAnnotationTest
   public void addToPostalAddresses( Collection<PostalAddress> pPostalAddresses ) {
     // Check parameter "pPostalAddresses" for invalid value null.
     Check.checkInvalidParameterNull(pPostalAddresses, "pPostalAddresses");
@@ -271,6 +282,7 @@ public class Partner extends Object implements ServiceObject, Identifiable<Servi
    * @param pPostalAddresses Object that should be removed from {@link #postalAddresses}. The parameter must not be
    * null.
    */
+  @JEAFCustomAnnotationTest
   public void removeFromPostalAddresses( PostalAddress pPostalAddresses ) {
     // Check parameter for invalid value null.
     Check.checkInvalidParameterNull(pPostalAddresses, "pPostalAddresses");
@@ -281,6 +293,7 @@ public class Partner extends Object implements ServiceObject, Identifiable<Servi
   /**
    * Method removes all objects from {@link #postalAddresses}.
    */
+  @JEAFCustomAnnotationTest
   public void clearPostalAddresses( ) {
     // Remove all objects from association "postalAddresses".
     postalAddresses.clear();

@@ -12,10 +12,12 @@ import javax.validation.Valid;
 
 import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.common.ObjectIdentity;
 
 @Valid
+@JEAFCustomAnnotationTest
 public abstract class PersonBase extends Partner {
   /**
    * Default serial version uid.
@@ -25,11 +27,13 @@ public abstract class PersonBase extends Partner {
   /**
    * Constant for the name of attribute "surname".
    */
+  @JEAFCustomAnnotationTest
   public static final String SURNAME = "surname";
 
   /**
    * Constant for the name of attribute "firstName".
    */
+  @JEAFCustomAnnotationTest
   public static final String FIRSTNAME = "firstName";
 
   // "java.lang.String"
@@ -38,6 +42,7 @@ public abstract class PersonBase extends Partner {
    * <p/>
    * <b>Alternate Name:</b> <code>Vorname</code>
    */
+  @JEAFCustomAnnotationTest
   private String surname;
 
   // "java.lang.String"
@@ -45,6 +50,7 @@ public abstract class PersonBase extends Partner {
 
   // "java.lang.String"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private String firstName;
 
   // "java.lang.String"
@@ -85,6 +91,7 @@ public abstract class PersonBase extends Partner {
      */
     // "java.lang.String"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private String surname;
 
     // "java.lang.String"
@@ -92,6 +99,7 @@ public abstract class PersonBase extends Partner {
 
     // "java.lang.String"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private String firstName;
 
     // "java.lang.String"
@@ -132,6 +140,7 @@ public abstract class PersonBase extends Partner {
      * @param pPostalAddresses Collection to which {@link #postalAddresses} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     @Override
     public BuilderBase setPostalAddresses( List<PostalAddress> pPostalAddresses ) {
       // Call super class implementation.
@@ -146,6 +155,7 @@ public abstract class PersonBase extends Partner {
      * null.
      * @return {@link BuilderBase} Instance of this builder to support chaining. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public BuilderBase addToPostalAddresses( PostalAddress... pPostalAddresses ) {
       // Call super class implementation.
       super.addToPostalAddresses(pPostalAddresses);
@@ -158,6 +168,7 @@ public abstract class PersonBase extends Partner {
      * @param pSurname Value to which {@link #surname} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public BuilderBase setSurname( String pSurname ) {
       // Assign value to attribute
       surname = pSurname;
@@ -176,6 +187,7 @@ public abstract class PersonBase extends Partner {
      * @param pFirstName Value to which {@link #firstName} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public BuilderBase setFirstName( String pFirstName ) {
       // Assign value to attribute
       firstName = pFirstName;
@@ -217,6 +229,7 @@ public abstract class PersonBase extends Partner {
    *
    * @return {@link String} Value to which {@link #surname} is set.
    */
+  @JEAFCustomAnnotationTest
   public String getSurname( ) {
     return surname;
   }
@@ -226,6 +239,7 @@ public abstract class PersonBase extends Partner {
    *
    * @param pSurname Value to which {@link #surname} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setSurname( String pSurname ) {
     // Assign value to attribute
     surname = pSurname;
@@ -245,6 +259,7 @@ public abstract class PersonBase extends Partner {
    *
    * @return {@link String} Value to which {@link #firstName} is set.
    */
+  @JEAFCustomAnnotationTest
   public String getFirstName( ) {
     return firstName;
   }
@@ -254,6 +269,7 @@ public abstract class PersonBase extends Partner {
    *
    * @param pFirstName Value to which {@link #firstName} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setFirstName( String pFirstName ) {
     // Assign value to attribute
     firstName = pFirstName;
@@ -271,6 +287,7 @@ public abstract class PersonBase extends Partner {
   /**
    * @return {@link String}
    */
+  @JEAFCustomAnnotationTest
   public abstract String getDisplayName( );
 
   public void doSomethingGenerated( ) {

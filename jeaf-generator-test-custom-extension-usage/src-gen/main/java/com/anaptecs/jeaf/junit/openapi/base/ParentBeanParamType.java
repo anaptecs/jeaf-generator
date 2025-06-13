@@ -11,10 +11,12 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
 @Generated("Before Class Declaration. Here an annontation cloud be added.")
+@JEAFCustomAnnotationTest
 public class ParentBeanParamType extends Object implements ServiceObject {
   /**
    * Default serial version uid.
@@ -24,15 +26,18 @@ public class ParentBeanParamType extends Object implements ServiceObject {
   /**
    * Constant for the name of attribute "novaKey".
    */
+  @JEAFCustomAnnotationTest
   public static final String NOVAKEY = "novaKey";
 
   /**
    * Constant for the name of attribute "tkID".
    */
+  @JEAFCustomAnnotationTest
   public static final String TKID = "tkID";
 
   // "String"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private String novaKey;
 
   // "String"
@@ -40,6 +45,7 @@ public class ParentBeanParamType extends Object implements ServiceObject {
 
   // "String"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private String tkID;
 
   // "String"
@@ -81,9 +87,11 @@ public class ParentBeanParamType extends Object implements ServiceObject {
   /**
    * Class implements builder to create a new instance of class <code>ParentBeanParamType</code>.
    */
+  @JEAFCustomAnnotationTest
   public static class Builder {
     // "String"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private String novaKey;
 
     // "String"
@@ -91,6 +99,7 @@ public class ParentBeanParamType extends Object implements ServiceObject {
 
     // "String"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private String tkID;
 
     // "String"
@@ -120,6 +129,7 @@ public class ParentBeanParamType extends Object implements ServiceObject {
      * @param pNovaKey Value to which {@link #novaKey} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setNovaKey( String pNovaKey ) {
       // Assign value to attribute
       novaKey = pNovaKey;
@@ -138,6 +148,7 @@ public class ParentBeanParamType extends Object implements ServiceObject {
      * @param pTkID Value to which {@link #tkID} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setTkID( String pTkID ) {
       // Assign value to attribute
       tkID = pTkID;
@@ -180,6 +191,7 @@ public class ParentBeanParamType extends Object implements ServiceObject {
    *
    * @return {@link String} Value to which {@link #novaKey} is set.
    */
+  @JEAFCustomAnnotationTest
   public String getNovaKey( ) {
     return novaKey;
   }
@@ -189,6 +201,7 @@ public class ParentBeanParamType extends Object implements ServiceObject {
    *
    * @param pNovaKey Value to which {@link #novaKey} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setNovaKey( String pNovaKey ) {
     // Assign value to attribute
     novaKey = pNovaKey;
@@ -208,6 +221,7 @@ public class ParentBeanParamType extends Object implements ServiceObject {
    *
    * @return {@link String} Value to which {@link #tkID} is set.
    */
+  @JEAFCustomAnnotationTest
   public String getTkID( ) {
     return tkID;
   }
@@ -217,6 +231,7 @@ public class ParentBeanParamType extends Object implements ServiceObject {
    *
    * @param pTkID Value to which {@link #tkID} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setTkID( String pTkID ) {
     // Assign value to attribute
     tkID = pTkID;

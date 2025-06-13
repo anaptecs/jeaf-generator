@@ -17,7 +17,7 @@
 	 *
 	 * «this.getComment()»
 	 */
-	«EXPAND java::Helper::GenerateDeprecationAnnotation-»
+	«EXPAND java::Helper::GenerateAnnotations-»
     public interface «name» extends Activity {
 		/**
 		 * «this.getComment()»
@@ -25,8 +25,8 @@
 		 @param «param.name» «param.getComment()»«ENDFOREACH»
 		 «IF hasReturnParameter()»* @return «this.getReturnParameter().getTypeName()» «this.getReturnParameter().getComment()»«ENDIF-»
 		 */
-	    «IF hasReturnParameter()»«EXPAND java::Helper::GenerateDeprecationAnnotation FOR this.getReturnParameter()»«ENDIF»
-        «IF hasReturnParameter()»«this.getReturnParameter().getTypeName()»«ELSE»void«ENDIF» execute( «FOREACH this.getInputParameters().typeSelect(Parameter) AS param SEPARATOR ', '»«EXPAND java::Helper::GenerateDeprecationAnnotation FOR param» «param.getTypeName()» «param.name»«ENDFOREACH»);
+	    «IF hasReturnParameter()»«EXPAND java::Helper::GenerateAnnotations FOR this.getReturnParameter()»«ENDIF»
+        «IF hasReturnParameter()»«this.getReturnParameter().getTypeName()»«ELSE»void«ENDIF» execute( «FOREACH this.getInputParameters().typeSelect(Parameter) AS param SEPARATOR ', '»«EXPAND java::Helper::GenerateAnnotations FOR param» «param.getTypeName()» «param.name»«ENDFOREACH»);
     }
 	«ENDFILE»
 «ENDDEFINE»
@@ -43,7 +43,7 @@
 	 * «this.getComment()»	 
 	 */
 	@JEAFActivityImpl(activityInterface = «name».class)
-	«EXPAND java::Helper::GenerateDeprecationAnnotation-»
+	«EXPAND java::Helper::GenerateAnnotations-»
     public class «name»Impl implements  «name» {
 		/**
 		 * Create new instance of activity. 
@@ -57,9 +57,9 @@
 		 @param «param.name» «param.getComment()»«ENDFOREACH»
 		 «IF hasReturnParameter()»* @return «this.getReturnParameter().getTypeName()» «this.getReturnParameter().getComment()»«ENDIF-»
 		 */
-		«IF hasReturnParameter()»«EXPAND java::Helper::GenerateDeprecationAnnotation FOR this.getReturnParameter()»«ENDIF»
+		«IF hasReturnParameter()»«EXPAND java::Helper::GenerateAnnotations FOR this.getReturnParameter()»«ENDIF»
 		@Override
-		public «IF hasReturnParameter()»«this.getReturnParameter().getTypeName()»«ELSE»void«ENDIF» execute( «FOREACH this.getInputParameters().typeSelect(Parameter) AS param SEPARATOR ', '»«EXPAND java::Helper::GenerateDeprecationAnnotation FOR param» «param.getTypeName()» «param.name»«ENDFOREACH») {
+		public «IF hasReturnParameter()»«this.getReturnParameter().getTypeName()»«ELSE»void«ENDIF» execute( «FOREACH this.getInputParameters().typeSelect(Parameter) AS param SEPARATOR ', '»«EXPAND java::Helper::GenerateAnnotations FOR param» «param.getTypeName()» «param.name»«ENDFOREACH») {
 		  // TODO: Implement business logic for activity.
 		  «IF this.getReturnParameter().getTypeName() != "void"»
 			  «IF this.getReturnParameter().getTypeName() != "boolean"»

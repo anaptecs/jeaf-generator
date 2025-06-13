@@ -1,0 +1,13 @@
+«IMPORT uml»
+«EXTENSION functions::Parameter»
+«EXTENSION functions::Operation»
+
+«DEFINE GenerateCustomAnnotations FOR uml::NamedElement»
+«IF this.isParameter() == false»
+@com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest
+«ELSE»
+	«IF this.asParameter().isInputParam()»
+	@com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest
+	«ENDIF»
+«ENDIF»
+«ENDDEFINE»

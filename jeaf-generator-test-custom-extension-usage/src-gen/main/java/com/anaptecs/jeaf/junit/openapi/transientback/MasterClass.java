@@ -19,10 +19,12 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
 @Generated("Before Class Declaration. Here an annontation cloud be added.")
+@JEAFCustomAnnotationTest
 public class MasterClass extends Object implements ServiceObject {
   /**
    * Default serial version uid.
@@ -32,20 +34,24 @@ public class MasterClass extends Object implements ServiceObject {
   /**
    * Constant for the name of attribute "clients".
    */
+  @JEAFCustomAnnotationTest
   public static final String CLIENTS = "clients";
 
   /**
    * Constant for the name of attribute "name".
    */
+  @JEAFCustomAnnotationTest
   public static final String NAME = "name";
 
   /**
    * Constant for the name of attribute "singleClient".
    */
+  @JEAFCustomAnnotationTest
   public static final String SINGLECLIENT = "singleClient";
 
   // "com.anaptecs.jeaf.junit.openapi.transientback.ClientClass"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private List<ClientClass> clients;
 
   /**
@@ -58,6 +64,7 @@ public class MasterClass extends Object implements ServiceObject {
 
   // "String"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private String name;
 
   // "String"
@@ -65,6 +72,7 @@ public class MasterClass extends Object implements ServiceObject {
 
   // "com.anaptecs.jeaf.junit.openapi.transientback.ClientClass"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private ClientClass singleClient;
 
   /**
@@ -136,9 +144,11 @@ public class MasterClass extends Object implements ServiceObject {
   /**
    * Class implements builder to create a new instance of class <code>MasterClass</code>.
    */
+  @JEAFCustomAnnotationTest
   public static class Builder {
     // "com.anaptecs.jeaf.junit.openapi.transientback.ClientClass"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private List<ClientClass> clients;
 
     // "com.anaptecs.jeaf.junit.openapi.transientback.ClientClass"
@@ -146,6 +156,7 @@ public class MasterClass extends Object implements ServiceObject {
 
     // "String"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private String name;
 
     // "String"
@@ -153,6 +164,7 @@ public class MasterClass extends Object implements ServiceObject {
 
     // "com.anaptecs.jeaf.junit.openapi.transientback.ClientClass"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private ClientClass singleClient;
 
     // "com.anaptecs.jeaf.junit.openapi.transientback.ClientClass"
@@ -182,6 +194,7 @@ public class MasterClass extends Object implements ServiceObject {
      * @param pClients Collection to which {@link #clients} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setClients( List<ClientClass> pClients ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pClients != null) {
@@ -199,6 +212,7 @@ public class MasterClass extends Object implements ServiceObject {
      * @param pClients Array of objects that should be added to {@link #clients}. The parameter may be null.
      * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder addToClients( ClientClass... pClients ) {
       if (pClients != null) {
         if (clients == null) {
@@ -221,6 +235,7 @@ public class MasterClass extends Object implements ServiceObject {
      * @param pName Value to which {@link #name} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setName( String pName ) {
       // Assign value to attribute
       name = pName;
@@ -239,6 +254,7 @@ public class MasterClass extends Object implements ServiceObject {
      * @param pSingleClient Value to which {@link #singleClient} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setSingleClient( ClientClass pSingleClient ) {
       singleClient = pSingleClient;
       return this;
@@ -281,6 +297,7 @@ public class MasterClass extends Object implements ServiceObject {
    * @return {@link List<ClientClass>} Value to which {@link #clients} is set. The method never returns null and the
    * returned collection is unmodifiable.
    */
+  @JEAFCustomAnnotationTest
   public List<ClientClass> getClients( ) {
     // Due to restrictions in JSON serialization / deserialization bi-directional associations need a special handling
     // after an object was deserialized.
@@ -299,6 +316,7 @@ public class MasterClass extends Object implements ServiceObject {
    *
    * @param pClients Object that should be added to {@link #clients}. The parameter must not be null.
    */
+  @JEAFCustomAnnotationTest
   public void addToClients( ClientClass pClients ) {
     // Check parameter "pClients" for invalid value null.
     Check.checkInvalidParameterNull(pClients, "pClients");
@@ -320,6 +338,7 @@ public class MasterClass extends Object implements ServiceObject {
    * @param pClients Collection with all objects that should be added to {@link #clients}. The parameter must not be
    * null.
    */
+  @JEAFCustomAnnotationTest
   public void addToClients( Collection<ClientClass> pClients ) {
     // Check parameter "pClients" for invalid value null.
     Check.checkInvalidParameterNull(pClients, "pClients");
@@ -334,6 +353,7 @@ public class MasterClass extends Object implements ServiceObject {
    *
    * @param pClients Object that should be removed from {@link #clients}. The parameter must not be null.
    */
+  @JEAFCustomAnnotationTest
   public void removeFromClients( ClientClass pClients ) {
     // Check parameter for invalid value null.
     Check.checkInvalidParameterNull(pClients, "pClients");
@@ -349,6 +369,7 @@ public class MasterClass extends Object implements ServiceObject {
   /**
    * Method removes all objects from {@link #clients}.
    */
+  @JEAFCustomAnnotationTest
   public void clearClients( ) {
     // Remove all objects from association "clients".
     Collection<ClientClass> lClients = new HashSet<ClientClass>(clients);
@@ -373,6 +394,7 @@ public class MasterClass extends Object implements ServiceObject {
    *
    * @return {@link String} Value to which {@link #name} is set.
    */
+  @JEAFCustomAnnotationTest
   public String getName( ) {
     return name;
   }
@@ -382,6 +404,7 @@ public class MasterClass extends Object implements ServiceObject {
    *
    * @param pName Value to which {@link #name} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setName( String pName ) {
     // Assign value to attribute
     name = pName;
@@ -401,6 +424,7 @@ public class MasterClass extends Object implements ServiceObject {
    *
    * @return {@link ClientClass} Value to which {@link #singleClient} is set.
    */
+  @JEAFCustomAnnotationTest
   public ClientClass getSingleClient( ) {
     // Due to restrictions in JSON serialization / deserialization bi-directional associations need a special handling
     // after an object was deserialized.
@@ -416,6 +440,7 @@ public class MasterClass extends Object implements ServiceObject {
    *
    * @param pSingleClient Value to which {@link #singleClient} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setSingleClient( ClientClass pSingleClient ) {
     // Release already referenced object before setting a new association.
     if (singleClient != null) {
@@ -432,6 +457,7 @@ public class MasterClass extends Object implements ServiceObject {
   /**
    * Method unsets {@link #singleClient}.
    */
+  @JEAFCustomAnnotationTest
   public final void unsetSingleClient( ) {
     // The association is set in both directions because within the UML model it is defined to be bidirectional.
     // In case that one side will be removed from the association the other side will also be removed.

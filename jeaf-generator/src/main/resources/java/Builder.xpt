@@ -20,7 +20,7 @@
 /**
  * Class implements builder to create a new instance of class <code>«this.name»</code>.
  */
-«EXPAND java::Helper::GenerateDeprecationAnnotation-»
+«EXPAND java::Helper::GenerateAnnotations-»
 public static «IF isAbstract == true» abstract «ENDIF»class Builder«this.getTemplateParams()» «IF superClass.isEmpty == false»extends «superClass.get(0).fqnWithoutGenerics()».Builder«superClass.get(0).getTemplateParams()»«ENDIF» {
 	«REM»Generate instance variables for each property«ENDREM»
 	«IF needsToImplementIdentifiable() == true»
@@ -399,7 +399,7 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
 
 // processing the properties
 «DEFINE DoBuilderPropertyDeclaration FOR Property»
-	«EXPAND java::Helper::GenerateDeprecationAnnotation-»
+	«EXPAND java::Helper::GenerateAnnotations-»
 	«IF this.owner.asClass().hasGenericBuilder()»«EXPAND java::Jackson::JSONAlias»«ENDIF»
     «EXPAND Validation::ValidationAnnotation»
 	private «this.fqn()» «name»«IF this.isRealInitValue() && this.isMultivalued()== false » = «IF this.isJEAFEnumerationProperty()»«this.type.name».«ENDIF»«this.initValue()»«ENDIF»;
@@ -407,7 +407,7 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
 
 «DEFINE DoBuilderAssociationPropertyDeclaration FOR Property»
 	«IF isNavigable()»
-		«EXPAND java::Helper::GenerateDeprecationAnnotation-»
+		«EXPAND java::Helper::GenerateAnnotations-»
 		«IF this.owner.asClass().hasGenericBuilder()»«EXPAND java::Jackson::JSONAlias»«ENDIF»
 		«IF isMultivalued()»
 			private «this.fqn()» «asInstanceVar()»;
@@ -418,7 +418,7 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
 «ENDDEFINE»
 
 «DEFINE SoftLinkBuilderPropertyDeclaration FOR SoftLink»
-        «EXPAND java::Helper::GenerateDeprecationAnnotation-»
+        «EXPAND java::Helper::GenerateAnnotations-»
         «IF this.owner.asClass().hasGenericBuilder()»«EXPAND java::Jackson::JSONAlias»«ENDIF»
         «EXPAND Validation::ValidationAnnotation»
         «IF isMultivalued()»
@@ -450,7 +450,7 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
 
 «DEFINE CreateBuilderPropertySetter(String builderClassName) FOR Property»
 	«EXPAND functions::Javadoc::JavadocForBuilderSetter(builderClassName)»
-	«EXPAND java::Helper::GenerateDeprecationAnnotation-»
+	«EXPAND java::Helper::GenerateAnnotations-»
 	public «builderClassName»«owner.asClass().getTemplateParams()» «asSetter()»(«EXPAND java::Helper::NotNullAnnotationForProperty» «this.fqn()» «asParameter()») {
 		«IF this.generateBackwardCompatibility() == false»
 			// Assign value to attribute
@@ -488,7 +488,7 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
 «DEFINE CreateBuilderAssociationSetter(String builderClassName) FOR Property»
 	«IF isNavigable()»
         «EXPAND functions::Javadoc::JavadocForBuilderSetter(builderClassName)»
-        «EXPAND java::Helper::GenerateDeprecationAnnotation-»
+        «EXPAND java::Helper::GenerateAnnotations-»
 		«IF isMultivalued()»
 			public «builderClassName»«owner.asClass().getTemplateParams()» set«name.toFirstUpper()»(«EXPAND java::Helper::NotNullAnnotationForProperty» «this.fqn()» «asParameter()») {
 			    «IF this.generateBackwardCompatibility() == false»
@@ -510,7 +510,7 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
 			}
 
 	        «EXPAND functions::Javadoc::JavadocForBuilderAddTo(builderClassName)»
-	        «EXPAND java::Helper::GenerateDeprecationAnnotation-»
+	        «EXPAND java::Helper::GenerateAnnotations-»
             public «builderClassName»«owner.asClass().getTemplateParams()» addTo«name.toFirstUpper()»(«EXPAND java::Helper::NotNullAnnotationForProperty» «IF type.owner.isClassifierTemplateParameter()»@SuppressWarnings("unchecked") «ENDIF»«type.fqn()»... «asParameter()») {
                 «IF this.generateBackwardCompatibility() == false»
 	                if(«asParameter()» != null) {
@@ -540,7 +540,7 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
 «DEFINE CreateBuilderSoftLinkSetter(String builderClassName) FOR SoftLink»
     «IF isNavigable()»
         «EXPAND functions::Javadoc::JavadocForBuilderSetter(builderClassName)»
-        «EXPAND java::Helper::GenerateDeprecationAnnotation-»
+        «EXPAND java::Helper::GenerateAnnotations-»
         «IF isMultivalued()»
             public «builderClassName»«owner.asClass().getTemplateParams()» set«this.getSoftLinkPropertyName().toFirstUpper()»(«EXPAND java::Helper::NotNullAnnotationForProperty» «this.getCollectionType()»<«this.getMultivaluedJavaSoftLinkType()»> «asParameter()») {
                 «IF disableSaveCopyOfCollectionsInBuilders()»
@@ -570,7 +570,7 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
 	«IF isNavigable()»
 		«IF isMultivalued()»
 			«EXPAND functions::Javadoc::JavadocForBuilderVarArgsSetter(builderClassName)»
-			«EXPAND java::Helper::GenerateDeprecationAnnotation-»
+			«EXPAND java::Helper::GenerateAnnotations-»
 			public «builderClassName»«owner.asClass().getTemplateParams()» set«name.toFirstUpper()»(«EXPAND java::Helper::NotNullAnnotationForProperty» «this.type.fqn()»... «asParameter()») {
 			    // Copy the content of the passed array.
 			    if(«asParameter()» != null) {
@@ -600,7 +600,7 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
 
 «DEFINE OverwriteBuilderPropertySetter(String builderClassName) FOR Property»
 	«EXPAND functions::Javadoc::JavadocForBuilderSetter(builderClassName)»
-	«EXPAND java::Helper::GenerateDeprecationAnnotation-»
+	«EXPAND java::Helper::GenerateAnnotations-»
 	@Override
 	public «builderClassName» «asSetter()»(«this.fqn()» «asParameter()») {
 		// Call super class implementation.
@@ -612,7 +612,7 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
 «DEFINE OverwriteBuilderAssociationSetter(String builderClassName) FOR Property»
 	«IF isNavigable()»
 	    «EXPAND functions::Javadoc::JavadocForBuilderSetter(builderClassName)»
-	    «EXPAND java::Helper::GenerateDeprecationAnnotation-»
+	    «EXPAND java::Helper::GenerateAnnotations-»
 		«IF isMultivalued()»
 			@Override
 			public «builderClassName» set«name.toFirstUpper()»(«this.fqn()» «asParameter()») {
@@ -622,7 +622,7 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
 			}
 			
 			«EXPAND functions::Javadoc::JavadocForBuilderAddTo(builderClassName)»
-            «EXPAND java::Helper::GenerateDeprecationAnnotation-»
+            «EXPAND java::Helper::GenerateAnnotations-»
 			public «builderClassName» addTo«name.toFirstUpper()»(«type.fqn()»... «asParameter()») {
                 // Call super class implementation.
                 super.addTo«name.toFirstUpper()»(«asParameter()»);
@@ -631,7 +631,7 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
 			
 			«IF isEnumeration()»
 	            «EXPAND functions::Javadoc::JavadocForBuilderVarArgsSetter(builderClassName)»
-	            «EXPAND java::Helper::GenerateDeprecationAnnotation-»
+	            «EXPAND java::Helper::GenerateAnnotations-»
 	            @Override
 	            public «builderClassName» set«name.toFirstUpper()»(«this.type.fqn()»... «asParameter()») {
 	                // Call super class implementation.
@@ -653,7 +653,7 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
 «DEFINE OverwriteBuilderSoftLinkSetter(String builderClassName) FOR SoftLink»
     «IF isNavigable()»
 	    «EXPAND functions::Javadoc::JavadocForBuilderSetter(builderClassName)»
-	    «EXPAND java::Helper::GenerateDeprecationAnnotation-»
+	    «EXPAND java::Helper::GenerateAnnotations-»
         «IF isMultivalued()»
             @Override
             public «builderClassName» set«this.getSoftLinkPropertyName().toFirstUpper()»(«this.getCollectionType()»<«this.getMultivaluedJavaSoftLinkType()»> «asParameter()») {

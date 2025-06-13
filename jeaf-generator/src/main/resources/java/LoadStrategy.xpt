@@ -14,7 +14,7 @@
 	package «this.packageName()»;
 	
 	«EXPAND functions::Javadoc::JavadocForType»
-	«EXPAND java::Helper::GenerateDeprecationAnnotation-»
+	«EXPAND java::Helper::GenerateAnnotations-»
 	public final class «name» implements com.anaptecs.jeaf.core.api.LoadStrategy {
 		/**
 		 * Default serial version uid.
@@ -34,7 +34,7 @@
     «FOREACH this.attribute AS nextAttribute»
    
     «EXPAND functions::Javadoc::JavadocForProperty FOR nextAttribute»
-    «EXPAND java::Helper::GenerateDeprecationAnnotation FOR nextAttribute -»
+    «EXPAND java::Helper::GenerateAnnotations FOR nextAttribute -»
     private final boolean «nextAttribute.asInstanceVar()»;
     «ENDFOREACH»
     
@@ -49,7 +49,7 @@
     «FOREACH this.attribute AS nextAttribute»
    
     «EXPAND functions::Javadoc::JavadocForProperty FOR nextAttribute»
-    «EXPAND java::Helper::GenerateDeprecationAnnotation FOR nextAttribute -»
+    «EXPAND java::Helper::GenerateAnnotations FOR nextAttribute -»
     public boolean «nextAttribute.asInstanceVar()»() {
       return «nextAttribute.asInstanceVar()»;
     }

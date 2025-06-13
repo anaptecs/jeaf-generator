@@ -11,6 +11,7 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
@@ -21,6 +22,7 @@ import com.anaptecs.jeaf.xfun.api.checks.Check;
  * @author JEAF Generator
  * @version JEAF Release 1.6.x
  */
+@JEAFCustomAnnotationTest
 public class DirectedEdge extends Object implements ServiceObject {
   /**
    * Default serial version uid.
@@ -30,16 +32,19 @@ public class DirectedEdge extends Object implements ServiceObject {
   /**
    * Constant for the name of attribute "start".
    */
+  @JEAFCustomAnnotationTest
   public static final String START = "start";
 
   /**
    * Constant for the name of attribute "end".
    */
+  @JEAFCustomAnnotationTest
   public static final String END = "end";
 
   /**
    * Constant for the name of attribute "link".
    */
+  @JEAFCustomAnnotationTest
   public static final String LINK = "link";
 
   // "com.anaptecs.jeaf.junit.openapi.base.Stop"
@@ -47,6 +52,7 @@ public class DirectedEdge extends Object implements ServiceObject {
   /**
    * The start
    */
+  @JEAFCustomAnnotationTest
   private Stop start;
 
   // "com.anaptecs.jeaf.junit.openapi.base.Stop"
@@ -57,6 +63,7 @@ public class DirectedEdge extends Object implements ServiceObject {
   /**
    * The end
    */
+  @JEAFCustomAnnotationTest
   private Stop end;
 
   // "com.anaptecs.jeaf.junit.openapi.base.Stop"
@@ -67,6 +74,7 @@ public class DirectedEdge extends Object implements ServiceObject {
   /**
    * Another simple comment.
    */
+  @JEAFCustomAnnotationTest
   private String link;
 
   // "String"
@@ -111,12 +119,14 @@ public class DirectedEdge extends Object implements ServiceObject {
   /**
    * Class implements builder to create a new instance of class <code>DirectedEdge</code>.
    */
+  @JEAFCustomAnnotationTest
   public static class Builder {
     /**
      * The start
      */
     // "com.anaptecs.jeaf.junit.openapi.base.Stop"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private Stop start;
 
     // "com.anaptecs.jeaf.junit.openapi.base.Stop"
@@ -127,6 +137,7 @@ public class DirectedEdge extends Object implements ServiceObject {
      */
     // "com.anaptecs.jeaf.junit.openapi.base.Stop"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private Stop end;
 
     // "com.anaptecs.jeaf.junit.openapi.base.Stop"
@@ -137,6 +148,7 @@ public class DirectedEdge extends Object implements ServiceObject {
      */
     // "String"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private String link;
 
     // "String"
@@ -166,6 +178,7 @@ public class DirectedEdge extends Object implements ServiceObject {
      * @param pStart Value to which {@link #start} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setStart( Stop pStart ) {
       start = pStart;
       return this;
@@ -183,6 +196,7 @@ public class DirectedEdge extends Object implements ServiceObject {
      * @param pEnd Value to which {@link #end} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setEnd( Stop pEnd ) {
       end = pEnd;
       return this;
@@ -200,6 +214,7 @@ public class DirectedEdge extends Object implements ServiceObject {
      * @param pLink Value to which {@link #link} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setLink( String pLink ) {
       // Assign value to attribute
       link = pLink;
@@ -243,6 +258,7 @@ public class DirectedEdge extends Object implements ServiceObject {
    *
    * @return {@link Stop} Value to which {@link #start} is set.
    */
+  @JEAFCustomAnnotationTest
   public Stop getStart( ) {
     return start;
   }
@@ -253,6 +269,7 @@ public class DirectedEdge extends Object implements ServiceObject {
    *
    * @param pStart Value to which {@link #start} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setStart( Stop pStart ) {
     start = pStart;
   }
@@ -260,6 +277,7 @@ public class DirectedEdge extends Object implements ServiceObject {
   /**
    * Method unsets {@link #start}.
    */
+  @JEAFCustomAnnotationTest
   public final void unsetStart( ) {
     start = null;
   }
@@ -279,6 +297,7 @@ public class DirectedEdge extends Object implements ServiceObject {
    *
    * @return {@link Stop} Value to which {@link #end} is set.
    */
+  @JEAFCustomAnnotationTest
   public Stop getEnd( ) {
     return end;
   }
@@ -289,6 +308,7 @@ public class DirectedEdge extends Object implements ServiceObject {
    *
    * @param pEnd Value to which {@link #end} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setEnd( Stop pEnd ) {
     end = pEnd;
   }
@@ -296,6 +316,7 @@ public class DirectedEdge extends Object implements ServiceObject {
   /**
    * Method unsets {@link #end}.
    */
+  @JEAFCustomAnnotationTest
   public final void unsetEnd( ) {
     end = null;
   }
@@ -315,6 +336,7 @@ public class DirectedEdge extends Object implements ServiceObject {
    *
    * @return {@link String} Value to which {@link #link} is set.
    */
+  @JEAFCustomAnnotationTest
   public String getLink( ) {
     return link;
   }
@@ -325,6 +347,7 @@ public class DirectedEdge extends Object implements ServiceObject {
    *
    * @param pLink Value to which {@link #link} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setLink( String pLink ) {
     // Assign value to attribute
     link = pLink;

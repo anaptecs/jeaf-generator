@@ -85,7 +85,7 @@
 		«getFileHeader()»
 		package «this.packageName()»;
 		
-		«EXPAND java::Helper::GenerateDeprecationAnnotation-»
+		«EXPAND java::Helper::GenerateAnnotations-»
 		/**
 		 * Factory assembles all configured serializers / deserializers into a module.
 		 */
@@ -222,7 +222,7 @@
 		import com.fasterxml.jackson.databind.json.JsonMapper;
 		import com.fasterxml.jackson.databind.json.JsonMapper.Builder;
 
-		«EXPAND java::Helper::GenerateDeprecationAnnotation-»
+		«EXPAND java::Helper::GenerateAnnotations-»
 		/**
 		 * Object Mapper Factory can be used to create a Jackson {@link ObjectMapper} that can be used to serialize and deserialize objects to / from JSON using Jackson. 
 		 */

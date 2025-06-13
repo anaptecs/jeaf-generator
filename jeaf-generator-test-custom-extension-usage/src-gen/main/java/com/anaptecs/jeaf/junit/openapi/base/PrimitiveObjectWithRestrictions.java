@@ -24,10 +24,12 @@ import javax.validation.constraints.Size;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
 @Generated("Before Class Declaration. Here an annontation cloud be added.")
+@JEAFCustomAnnotationTest
 public class PrimitiveObjectWithRestrictions extends Object implements ServiceObject {
   /**
    * Default serial version uid.
@@ -37,111 +39,133 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
   /**
    * Constant for the name of attribute "aBoolean".
    */
+  @JEAFCustomAnnotationTest
   public static final String ABOOLEAN = "aBoolean";
 
   /**
    * Constant for the name of attribute "bBoolean".
    */
+  @JEAFCustomAnnotationTest
   public static final String BBOOLEAN = "bBoolean";
 
   /**
    * Constant for the name of attribute "cBoolean".
    */
+  @JEAFCustomAnnotationTest
   public static final String CBOOLEAN = "cBoolean";
 
   /**
    * Constant for the name of attribute "aByte".
    */
+  @JEAFCustomAnnotationTest
   public static final String ABYTE = "aByte";
 
   /**
    * Constant for the name of attribute "bByte".
    */
+  @JEAFCustomAnnotationTest
   public static final String BBYTE = "bByte";
 
   /**
    * Constant for the name of attribute "aShort".
    */
+  @JEAFCustomAnnotationTest
   public static final String ASHORT = "aShort";
 
   /**
    * Constant for the name of attribute "bShort".
    */
+  @JEAFCustomAnnotationTest
   public static final String BSHORT = "bShort";
 
   /**
    * Constant for the name of attribute "aInteger".
    */
+  @JEAFCustomAnnotationTest
   public static final String AINTEGER = "aInteger";
 
   /**
    * Constant for the name of attribute "bInteger".
    */
+  @JEAFCustomAnnotationTest
   public static final String BINTEGER = "bInteger";
 
   /**
    * Constant for the name of attribute "cInteger".
    */
+  @JEAFCustomAnnotationTest
   public static final String CINTEGER = "cInteger";
 
   /**
    * Constant for the name of attribute "aLong".
    */
+  @JEAFCustomAnnotationTest
   public static final String ALONG = "aLong";
 
   /**
    * Constant for the name of attribute "bLong".
    */
+  @JEAFCustomAnnotationTest
   public static final String BLONG = "bLong";
 
   /**
    * Constant for the name of attribute "aBigInteger".
    */
+  @JEAFCustomAnnotationTest
   public static final String ABIGINTEGER = "aBigInteger";
 
   /**
    * Constant for the name of attribute "aCharacter".
    */
+  @JEAFCustomAnnotationTest
   public static final String ACHARACTER = "aCharacter";
 
   /**
    * Constant for the name of attribute "bCharacter".
    */
+  @JEAFCustomAnnotationTest
   public static final String BCHARACTER = "bCharacter";
 
   /**
    * Constant for the name of attribute "aFloat".
    */
+  @JEAFCustomAnnotationTest
   public static final String AFLOAT = "aFloat";
 
   /**
    * Constant for the name of attribute "bFloat".
    */
+  @JEAFCustomAnnotationTest
   public static final String BFLOAT = "bFloat";
 
   /**
    * Constant for the name of attribute "aDouble".
    */
+  @JEAFCustomAnnotationTest
   public static final String ADOUBLE = "aDouble";
 
   /**
    * Constant for the name of attribute "bDouble".
    */
+  @JEAFCustomAnnotationTest
   public static final String BDOUBLE = "bDouble";
 
   /**
    * Constant for the name of attribute "aBigDecimal".
    */
+  @JEAFCustomAnnotationTest
   public static final String ABIGDECIMAL = "aBigDecimal";
 
   /**
    * Constant for the name of attribute "aString".
    */
+  @JEAFCustomAnnotationTest
   public static final String ASTRING = "aString";
 
   /**
    * Constant for the name of attribute "bString".
    */
+  @JEAFCustomAnnotationTest
   public static final String BSTRING = "bString";
 
   // "boolean"
@@ -150,6 +174,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
    * <br/>
    * <b>Default Value:</b> <code>true</code>
    */
+  @JEAFCustomAnnotationTest
   private boolean aBoolean;
 
   // "boolean"
@@ -157,6 +182,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
 
   // "java.lang.Boolean"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private Boolean bBoolean;
 
   // "java.lang.Boolean"
@@ -164,6 +190,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
 
   // "boolean"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private boolean cBoolean;
 
   // "boolean"
@@ -171,6 +198,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
 
   // "byte"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   @Negative
   private byte aByte;
 
@@ -179,6 +207,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
 
   // "java.lang.Byte"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   @NegativeOrZero
   private Byte bByte;
 
@@ -187,6 +216,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
 
   // "short"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   @Min(value = -237)
   private short aShort;
 
@@ -195,6 +225,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
 
   // "java.lang.Short"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   @Positive
   private Short bShort;
 
@@ -203,6 +234,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
 
   // "int"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   @PositiveOrZero
   private int aInteger;
 
@@ -211,6 +243,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
 
   // "java.lang.Integer"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   @Min(value = 4711)
   private Integer bInteger;
 
@@ -219,6 +252,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
 
   // "Integer"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   @Min(value = 100)
   @Max(value = 1000)
   private Integer cInteger;
@@ -228,6 +262,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
 
   // "long"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private long aLong;
 
   // "long"
@@ -235,6 +270,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
 
   // "java.lang.Long"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   @DecimalMax(value = "299792458", inclusive = false)
   private Long bLong;
 
@@ -243,6 +279,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
 
   // "java.math.BigInteger"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   @DecimalMax(value = "3.14159265359", inclusive = true)
   @DecimalMin(value = "-3.14159265359", inclusive = true)
   private BigInteger aBigInteger;
@@ -252,6 +289,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
 
   // "char"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private char aCharacter;
 
   // "char"
@@ -259,6 +297,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
 
   // "java.lang.Character"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private Character bCharacter;
 
   // "java.lang.Character"
@@ -266,6 +305,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
 
   // "float"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private float aFloat;
 
   // "float"
@@ -273,6 +313,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
 
   // "java.lang.Float"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private Float bFloat;
 
   // "java.lang.Float"
@@ -284,6 +325,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
    * <br/>
    * <b>Default Value:</b> <code>42.0</code>
    */
+  @JEAFCustomAnnotationTest
   private double aDouble;
 
   // "double"
@@ -291,6 +333,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
 
   // "java.lang.Double"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private Double bDouble;
 
   // "java.lang.Double"
@@ -298,6 +341,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
 
   // "java.math.BigDecimal"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   @DecimalMin(value = "4711.0815", inclusive = true)
   private BigDecimal aBigDecimal;
 
@@ -310,6 +354,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
    * <br/>
    * <b>Default Value:</b> <code>"Hello OpenAPI"</code>
    */
+  @JEAFCustomAnnotationTest
   @Size(min = 8, max = 32)
   private String aString;
 
@@ -318,6 +363,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
 
   // "String"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   @NotEmpty
   @Size(min = 0, max = 128)
   private String bString;
@@ -424,6 +470,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
   /**
    * Class implements builder to create a new instance of class <code>PrimitiveObjectWithRestrictions</code>.
    */
+  @JEAFCustomAnnotationTest
   public static class Builder {
     /**
      * <br/>
@@ -431,6 +478,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
      */
     // "boolean"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private boolean aBoolean = true;
 
     // "boolean"
@@ -438,6 +486,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
 
     // "java.lang.Boolean"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private Boolean bBoolean;
 
     // "java.lang.Boolean"
@@ -445,6 +494,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
 
     // "boolean"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private boolean cBoolean;
 
     // "boolean"
@@ -452,6 +502,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
 
     // "byte"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     @Negative
     private byte aByte;
 
@@ -460,6 +511,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
 
     // "java.lang.Byte"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     @NegativeOrZero
     private Byte bByte;
 
@@ -468,6 +520,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
 
     // "short"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     @Min(value = -237)
     private short aShort;
 
@@ -476,6 +529,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
 
     // "java.lang.Short"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     @Positive
     private Short bShort;
 
@@ -484,6 +538,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
 
     // "int"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     @PositiveOrZero
     private int aInteger;
 
@@ -492,6 +547,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
 
     // "java.lang.Integer"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     @Min(value = 4711)
     private Integer bInteger;
 
@@ -500,6 +556,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
 
     // "Integer"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     @Min(value = 100)
     @Max(value = 1000)
     private Integer cInteger;
@@ -509,6 +566,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
 
     // "long"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private long aLong;
 
     // "long"
@@ -516,6 +574,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
 
     // "java.lang.Long"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     @DecimalMax(value = "299792458", inclusive = false)
     private Long bLong;
 
@@ -524,6 +583,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
 
     // "java.math.BigInteger"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     @DecimalMax(value = "3.14159265359", inclusive = true)
     @DecimalMin(value = "-3.14159265359", inclusive = true)
     private BigInteger aBigInteger;
@@ -533,6 +593,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
 
     // "char"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private char aCharacter;
 
     // "char"
@@ -540,6 +601,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
 
     // "java.lang.Character"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private Character bCharacter;
 
     // "java.lang.Character"
@@ -547,6 +609,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
 
     // "float"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private float aFloat;
 
     // "float"
@@ -554,6 +617,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
 
     // "java.lang.Float"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private Float bFloat;
 
     // "java.lang.Float"
@@ -565,6 +629,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
      */
     // "double"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private double aDouble = 42.0;
 
     // "double"
@@ -572,6 +637,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
 
     // "java.lang.Double"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private Double bDouble;
 
     // "java.lang.Double"
@@ -579,6 +645,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
 
     // "java.math.BigDecimal"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     @DecimalMin(value = "4711.0815", inclusive = true)
     private BigDecimal aBigDecimal;
 
@@ -591,6 +658,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
      */
     // "String"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     @Size(min = 8, max = 32)
     private String aString = "Hello OpenAPI";
 
@@ -599,6 +667,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
 
     // "String"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     @NotEmpty
     @Size(min = 0, max = 128)
     private String bString;
@@ -650,6 +719,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
      * @param pABoolean Value to which {@link #aBoolean} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setABoolean( boolean pABoolean ) {
       // Assign value to attribute
       aBoolean = pABoolean;
@@ -668,6 +738,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
      * @param pBBoolean Value to which {@link #bBoolean} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setBBoolean( Boolean pBBoolean ) {
       // Assign value to attribute
       bBoolean = pBBoolean;
@@ -686,6 +757,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
      * @param pCBoolean Value to which {@link #cBoolean} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setCBoolean( boolean pCBoolean ) {
       // Assign value to attribute
       cBoolean = pCBoolean;
@@ -704,6 +776,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
      * @param pAByte Value to which {@link #aByte} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setAByte( byte pAByte ) {
       // Assign value to attribute
       aByte = pAByte;
@@ -722,6 +795,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
      * @param pBByte Value to which {@link #bByte} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setBByte( Byte pBByte ) {
       // Assign value to attribute
       bByte = pBByte;
@@ -740,6 +814,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
      * @param pAShort Value to which {@link #aShort} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setAShort( short pAShort ) {
       // Assign value to attribute
       aShort = pAShort;
@@ -758,6 +833,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
      * @param pBShort Value to which {@link #bShort} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setBShort( Short pBShort ) {
       // Assign value to attribute
       bShort = pBShort;
@@ -776,6 +852,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
      * @param pAInteger Value to which {@link #aInteger} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setAInteger( int pAInteger ) {
       // Assign value to attribute
       aInteger = pAInteger;
@@ -794,6 +871,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
      * @param pBInteger Value to which {@link #bInteger} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setBInteger( Integer pBInteger ) {
       // Assign value to attribute
       bInteger = pBInteger;
@@ -812,6 +890,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
      * @param pCInteger Value to which {@link #cInteger} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setCInteger( Integer pCInteger ) {
       // Assign value to attribute
       cInteger = pCInteger;
@@ -830,6 +909,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
      * @param pALong Value to which {@link #aLong} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setALong( long pALong ) {
       // Assign value to attribute
       aLong = pALong;
@@ -848,6 +928,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
      * @param pBLong Value to which {@link #bLong} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setBLong( Long pBLong ) {
       // Assign value to attribute
       bLong = pBLong;
@@ -866,6 +947,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
      * @param pABigInteger Value to which {@link #aBigInteger} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setABigInteger( BigInteger pABigInteger ) {
       // Assign value to attribute
       aBigInteger = pABigInteger;
@@ -884,6 +966,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
      * @param pACharacter Value to which {@link #aCharacter} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setACharacter( char pACharacter ) {
       // Assign value to attribute
       aCharacter = pACharacter;
@@ -902,6 +985,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
      * @param pBCharacter Value to which {@link #bCharacter} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setBCharacter( Character pBCharacter ) {
       // Assign value to attribute
       bCharacter = pBCharacter;
@@ -920,6 +1004,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
      * @param pAFloat Value to which {@link #aFloat} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setAFloat( float pAFloat ) {
       // Assign value to attribute
       aFloat = pAFloat;
@@ -938,6 +1023,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
      * @param pBFloat Value to which {@link #bFloat} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setBFloat( Float pBFloat ) {
       // Assign value to attribute
       bFloat = pBFloat;
@@ -956,6 +1042,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
      * @param pADouble Value to which {@link #aDouble} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setADouble( double pADouble ) {
       // Assign value to attribute
       aDouble = pADouble;
@@ -974,6 +1061,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
      * @param pBDouble Value to which {@link #bDouble} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setBDouble( Double pBDouble ) {
       // Assign value to attribute
       bDouble = pBDouble;
@@ -992,6 +1080,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
      * @param pABigDecimal Value to which {@link #aBigDecimal} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setABigDecimal( BigDecimal pABigDecimal ) {
       // Assign value to attribute
       aBigDecimal = pABigDecimal;
@@ -1010,6 +1099,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
      * @param pAString Value to which {@link #aString} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setAString( String pAString ) {
       // Assign value to attribute
       aString = pAString;
@@ -1028,6 +1118,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
      * @param pBString Value to which {@link #bString} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setBString( String pBString ) {
       // Assign value to attribute
       bString = pBString;
@@ -1070,6 +1161,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
    *
    * @return boolean Value to which {@link #aBoolean} is set.
    */
+  @JEAFCustomAnnotationTest
   @Deprecated
   public boolean getABoolean( ) {
     return aBoolean;
@@ -1080,6 +1172,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
    *
    * @return boolean Value to which {@link #aBoolean} is set.
    */
+  @JEAFCustomAnnotationTest
   public boolean isABoolean( ) {
     return aBoolean;
   }
@@ -1089,6 +1182,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
    *
    * @param pABoolean Value to which {@link #aBoolean} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setABoolean( boolean pABoolean ) {
     // Assign value to attribute
     aBoolean = pABoolean;
@@ -1108,6 +1202,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
    *
    * @return {@link Boolean} Value to which {@link #bBoolean} is set.
    */
+  @JEAFCustomAnnotationTest
   public Boolean getBBoolean( ) {
     return bBoolean;
   }
@@ -1117,6 +1212,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
    *
    * @param pBBoolean Value to which {@link #bBoolean} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setBBoolean( Boolean pBBoolean ) {
     // Assign value to attribute
     bBoolean = pBBoolean;
@@ -1136,6 +1232,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
    *
    * @return boolean Value to which {@link #cBoolean} is set.
    */
+  @JEAFCustomAnnotationTest
   @Deprecated
   public boolean getCBoolean( ) {
     return cBoolean;
@@ -1146,6 +1243,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
    *
    * @return boolean Value to which {@link #cBoolean} is set.
    */
+  @JEAFCustomAnnotationTest
   public boolean isCBoolean( ) {
     return cBoolean;
   }
@@ -1155,6 +1253,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
    *
    * @param pCBoolean Value to which {@link #cBoolean} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setCBoolean( boolean pCBoolean ) {
     // Assign value to attribute
     cBoolean = pCBoolean;
@@ -1174,6 +1273,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
    *
    * @return byte Value to which {@link #aByte} is set.
    */
+  @JEAFCustomAnnotationTest
   public byte getAByte( ) {
     return aByte;
   }
@@ -1183,6 +1283,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
    *
    * @param pAByte Value to which {@link #aByte} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setAByte( byte pAByte ) {
     // Assign value to attribute
     aByte = pAByte;
@@ -1202,6 +1303,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
    *
    * @return {@link Byte} Value to which {@link #bByte} is set.
    */
+  @JEAFCustomAnnotationTest
   public Byte getBByte( ) {
     return bByte;
   }
@@ -1211,6 +1313,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
    *
    * @param pBByte Value to which {@link #bByte} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setBByte( Byte pBByte ) {
     // Assign value to attribute
     bByte = pBByte;
@@ -1230,6 +1333,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
    *
    * @return short Value to which {@link #aShort} is set.
    */
+  @JEAFCustomAnnotationTest
   public short getAShort( ) {
     return aShort;
   }
@@ -1239,6 +1343,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
    *
    * @param pAShort Value to which {@link #aShort} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setAShort( short pAShort ) {
     // Assign value to attribute
     aShort = pAShort;
@@ -1258,6 +1363,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
    *
    * @return {@link Short} Value to which {@link #bShort} is set.
    */
+  @JEAFCustomAnnotationTest
   public Short getBShort( ) {
     return bShort;
   }
@@ -1267,6 +1373,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
    *
    * @param pBShort Value to which {@link #bShort} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setBShort( Short pBShort ) {
     // Assign value to attribute
     bShort = pBShort;
@@ -1286,6 +1393,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
    *
    * @return int Value to which {@link #aInteger} is set.
    */
+  @JEAFCustomAnnotationTest
   public int getAInteger( ) {
     return aInteger;
   }
@@ -1295,6 +1403,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
    *
    * @param pAInteger Value to which {@link #aInteger} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setAInteger( int pAInteger ) {
     // Assign value to attribute
     aInteger = pAInteger;
@@ -1314,6 +1423,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
    *
    * @return {@link Integer} Value to which {@link #bInteger} is set.
    */
+  @JEAFCustomAnnotationTest
   public Integer getBInteger( ) {
     return bInteger;
   }
@@ -1323,6 +1433,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
    *
    * @param pBInteger Value to which {@link #bInteger} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setBInteger( Integer pBInteger ) {
     // Assign value to attribute
     bInteger = pBInteger;
@@ -1342,6 +1453,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
    *
    * @return {@link Integer} Value to which {@link #cInteger} is set.
    */
+  @JEAFCustomAnnotationTest
   public Integer getCInteger( ) {
     return cInteger;
   }
@@ -1351,6 +1463,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
    *
    * @param pCInteger Value to which {@link #cInteger} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setCInteger( Integer pCInteger ) {
     // Assign value to attribute
     cInteger = pCInteger;
@@ -1370,6 +1483,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
    *
    * @return long Value to which {@link #aLong} is set.
    */
+  @JEAFCustomAnnotationTest
   public long getALong( ) {
     return aLong;
   }
@@ -1379,6 +1493,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
    *
    * @param pALong Value to which {@link #aLong} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setALong( long pALong ) {
     // Assign value to attribute
     aLong = pALong;
@@ -1398,6 +1513,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
    *
    * @return {@link Long} Value to which {@link #bLong} is set.
    */
+  @JEAFCustomAnnotationTest
   public Long getBLong( ) {
     return bLong;
   }
@@ -1407,6 +1523,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
    *
    * @param pBLong Value to which {@link #bLong} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setBLong( Long pBLong ) {
     // Assign value to attribute
     bLong = pBLong;
@@ -1426,6 +1543,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
    *
    * @return {@link BigInteger} Value to which {@link #aBigInteger} is set.
    */
+  @JEAFCustomAnnotationTest
   public BigInteger getABigInteger( ) {
     return aBigInteger;
   }
@@ -1435,6 +1553,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
    *
    * @param pABigInteger Value to which {@link #aBigInteger} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setABigInteger( BigInteger pABigInteger ) {
     // Assign value to attribute
     aBigInteger = pABigInteger;
@@ -1454,6 +1573,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
    *
    * @return char Value to which {@link #aCharacter} is set.
    */
+  @JEAFCustomAnnotationTest
   public char getACharacter( ) {
     return aCharacter;
   }
@@ -1463,6 +1583,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
    *
    * @param pACharacter Value to which {@link #aCharacter} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setACharacter( char pACharacter ) {
     // Assign value to attribute
     aCharacter = pACharacter;
@@ -1482,6 +1603,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
    *
    * @return {@link Character} Value to which {@link #bCharacter} is set.
    */
+  @JEAFCustomAnnotationTest
   public Character getBCharacter( ) {
     return bCharacter;
   }
@@ -1491,6 +1613,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
    *
    * @param pBCharacter Value to which {@link #bCharacter} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setBCharacter( Character pBCharacter ) {
     // Assign value to attribute
     bCharacter = pBCharacter;
@@ -1510,6 +1633,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
    *
    * @return float Value to which {@link #aFloat} is set.
    */
+  @JEAFCustomAnnotationTest
   public float getAFloat( ) {
     return aFloat;
   }
@@ -1519,6 +1643,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
    *
    * @param pAFloat Value to which {@link #aFloat} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setAFloat( float pAFloat ) {
     // Assign value to attribute
     aFloat = pAFloat;
@@ -1538,6 +1663,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
    *
    * @return {@link Float} Value to which {@link #bFloat} is set.
    */
+  @JEAFCustomAnnotationTest
   public Float getBFloat( ) {
     return bFloat;
   }
@@ -1547,6 +1673,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
    *
    * @param pBFloat Value to which {@link #bFloat} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setBFloat( Float pBFloat ) {
     // Assign value to attribute
     bFloat = pBFloat;
@@ -1566,6 +1693,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
    *
    * @return double Value to which {@link #aDouble} is set.
    */
+  @JEAFCustomAnnotationTest
   public double getADouble( ) {
     return aDouble;
   }
@@ -1575,6 +1703,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
    *
    * @param pADouble Value to which {@link #aDouble} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setADouble( double pADouble ) {
     // Assign value to attribute
     aDouble = pADouble;
@@ -1594,6 +1723,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
    *
    * @return {@link Double} Value to which {@link #bDouble} is set.
    */
+  @JEAFCustomAnnotationTest
   public Double getBDouble( ) {
     return bDouble;
   }
@@ -1603,6 +1733,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
    *
    * @param pBDouble Value to which {@link #bDouble} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setBDouble( Double pBDouble ) {
     // Assign value to attribute
     bDouble = pBDouble;
@@ -1622,6 +1753,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
    *
    * @return {@link BigDecimal} Value to which {@link #aBigDecimal} is set.
    */
+  @JEAFCustomAnnotationTest
   public BigDecimal getABigDecimal( ) {
     return aBigDecimal;
   }
@@ -1631,6 +1763,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
    *
    * @param pABigDecimal Value to which {@link #aBigDecimal} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setABigDecimal( BigDecimal pABigDecimal ) {
     // Assign value to attribute
     aBigDecimal = pABigDecimal;
@@ -1650,6 +1783,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
    *
    * @return {@link String} Value to which {@link #aString} is set.
    */
+  @JEAFCustomAnnotationTest
   public String getAString( ) {
     return aString;
   }
@@ -1659,6 +1793,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
    *
    * @param pAString Value to which {@link #aString} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setAString( String pAString ) {
     // Assign value to attribute
     aString = pAString;
@@ -1678,6 +1813,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
    *
    * @return {@link String} Value to which {@link #bString} is set.
    */
+  @JEAFCustomAnnotationTest
   public String getBString( ) {
     return bString;
   }
@@ -1687,6 +1823,7 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
    *
    * @param pBString Value to which {@link #bString} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setBString( String pBString ) {
     // Assign value to attribute
     bString = pBString;

@@ -12,9 +12,11 @@ import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 
 @Generated("Before Class Declaration. Here an annontation cloud be added.")
+@JEAFCustomAnnotationTest
 public class SpecialContext extends Context {
   /**
    * Default serial version uid.
@@ -24,21 +26,25 @@ public class SpecialContext extends Context {
   /**
    * Constant for the name of attribute "specificHeader".
    */
+  @JEAFCustomAnnotationTest
   public static final String SPECIFICHEADER = "specificHeader";
 
   /**
    * Constant for the name of attribute "deprecatedHeader".
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   public static final String DEPRECATEDHEADER = "deprecatedHeader";
 
   /**
    * Constant for the name of attribute "deprecatedType".
    */
+  @JEAFCustomAnnotationTest
   public static final String DEPRECATEDTYPE = "deprecatedType";
 
   // "String"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private String specificHeader;
 
   // "String"
@@ -50,6 +56,7 @@ public class SpecialContext extends Context {
    * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 2024-12-24)
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   private IntegerCode deprecatedHeader;
 
   // "com.anaptecs.jeaf.junit.openapi.base.IntegerCode"
@@ -57,6 +64,7 @@ public class SpecialContext extends Context {
 
   // "com.anaptecs.jeaf.junit.openapi.base.DeprecatedType"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private DeprecatedType deprecatedType;
 
   // "com.anaptecs.jeaf.junit.openapi.base.DeprecatedType"
@@ -101,9 +109,11 @@ public class SpecialContext extends Context {
   /**
    * Class implements builder to create a new instance of class <code>SpecialContext</code>.
    */
+  @JEAFCustomAnnotationTest
   public static class Builder extends Context.Builder {
     // "String"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private String specificHeader;
 
     // "String"
@@ -115,6 +125,7 @@ public class SpecialContext extends Context {
     // "com.anaptecs.jeaf.junit.openapi.base.IntegerCode"
     @BuilderPropertyDeclaration
     @Deprecated
+    @JEAFCustomAnnotationTest
     private IntegerCode deprecatedHeader;
 
     // "com.anaptecs.jeaf.junit.openapi.base.IntegerCode"
@@ -122,6 +133,7 @@ public class SpecialContext extends Context {
 
     // "com.anaptecs.jeaf.junit.openapi.base.DeprecatedType"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private DeprecatedType deprecatedType;
 
     // "com.anaptecs.jeaf.junit.openapi.base.DeprecatedType"
@@ -153,6 +165,7 @@ public class SpecialContext extends Context {
      * @param pAccessToken Value to which {@link #accessToken} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     @Override
     public Builder setAccessToken( String pAccessToken ) {
       // Call super class implementation.
@@ -166,6 +179,7 @@ public class SpecialContext extends Context {
      * @param pLanguage Value to which {@link #language} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     @Override
     public Builder setLanguage( Locale pLanguage ) {
       // Call super class implementation.
@@ -179,6 +193,7 @@ public class SpecialContext extends Context {
      * @param pResellerID Value to which {@link #resellerID} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     @Override
     public Builder setResellerID( long pResellerID ) {
       // Call super class implementation.
@@ -192,6 +207,7 @@ public class SpecialContext extends Context {
      * @param pPathParam Value to which {@link #pathParam} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     @Override
     public Builder setPathParam( long pPathParam ) {
       // Call super class implementation.
@@ -205,6 +221,7 @@ public class SpecialContext extends Context {
      * @param pQueryParam Value to which {@link #queryParam} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     @Override
     public Builder setQueryParam( String pQueryParam ) {
       // Call super class implementation.
@@ -218,6 +235,7 @@ public class SpecialContext extends Context {
      * @param pIntCode Value to which {@link #intCode} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     @Override
     public Builder setIntCode( IntegerCodeType pIntCode ) {
       // Call super class implementation.
@@ -236,6 +254,7 @@ public class SpecialContext extends Context {
      * @param pSpecificHeader Value to which {@link #specificHeader} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setSpecificHeader( String pSpecificHeader ) {
       // Assign value to attribute
       specificHeader = pSpecificHeader;
@@ -256,6 +275,7 @@ public class SpecialContext extends Context {
      * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 2024-12-24)
      */
     @Deprecated
+    @JEAFCustomAnnotationTest
     public Builder setDeprecatedHeader( IntegerCode pDeprecatedHeader ) {
       // Assign value to attribute
       deprecatedHeader = pDeprecatedHeader;
@@ -274,6 +294,7 @@ public class SpecialContext extends Context {
      * @param pDeprecatedType Value to which {@link #deprecatedType} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setDeprecatedType( DeprecatedType pDeprecatedType ) {
       // Assign value to attribute
       deprecatedType = pDeprecatedType;
@@ -316,6 +337,7 @@ public class SpecialContext extends Context {
    *
    * @return {@link String} Value to which {@link #specificHeader} is set.
    */
+  @JEAFCustomAnnotationTest
   public String getSpecificHeader( ) {
     return specificHeader;
   }
@@ -325,6 +347,7 @@ public class SpecialContext extends Context {
    *
    * @param pSpecificHeader Value to which {@link #specificHeader} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setSpecificHeader( String pSpecificHeader ) {
     // Assign value to attribute
     specificHeader = pSpecificHeader;
@@ -346,6 +369,7 @@ public class SpecialContext extends Context {
    * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 2024-12-24)
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   public IntegerCode getDeprecatedHeader( ) {
     return deprecatedHeader;
   }
@@ -357,6 +381,7 @@ public class SpecialContext extends Context {
    * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 2024-12-24)
    */
   @Deprecated
+  @JEAFCustomAnnotationTest
   public void setDeprecatedHeader( IntegerCode pDeprecatedHeader ) {
     // Assign value to attribute
     deprecatedHeader = pDeprecatedHeader;
@@ -376,6 +401,7 @@ public class SpecialContext extends Context {
    *
    * @return {@link DeprecatedType} Value to which {@link #deprecatedType} is set.
    */
+  @JEAFCustomAnnotationTest
   public DeprecatedType getDeprecatedType( ) {
     return deprecatedType;
   }
@@ -385,6 +411,7 @@ public class SpecialContext extends Context {
    *
    * @param pDeprecatedType Value to which {@link #deprecatedType} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setDeprecatedType( DeprecatedType pDeprecatedType ) {
     // Assign value to attribute
     deprecatedType = pDeprecatedType;

@@ -5,6 +5,18 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
+
+@JEAFCustomAnnotationTest
 public enum BooleanLiteralsEnum {
-  YES, ON, off, y, n, YEAH, NO, True, FaLsE;
+  @JEAFCustomAnnotationTest
+  YES, @JEAFCustomAnnotationTest
+  ON, @JEAFCustomAnnotationTest
+  off, @JEAFCustomAnnotationTest
+  y, @JEAFCustomAnnotationTest
+  n, @JEAFCustomAnnotationTest
+  YEAH, @JEAFCustomAnnotationTest
+  NO, @JEAFCustomAnnotationTest
+  True, @JEAFCustomAnnotationTest
+  FaLsE;
 }

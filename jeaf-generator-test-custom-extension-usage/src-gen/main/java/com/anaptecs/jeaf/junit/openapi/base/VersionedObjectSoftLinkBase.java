@@ -10,9 +10,11 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
+@JEAFCustomAnnotationTest
 public abstract class VersionedObjectSoftLinkBase extends Object implements ServiceObject {
   /**
    * Default serial version uid.
@@ -22,16 +24,19 @@ public abstract class VersionedObjectSoftLinkBase extends Object implements Serv
   /**
    * Constant for the name of attribute "objectID".
    */
+  @JEAFCustomAnnotationTest
   public static final String OBJECTID = "objectID";
 
   /**
    * Constant for the name of attribute "dataUnit".
    */
+  @JEAFCustomAnnotationTest
   public static final String DATAUNIT = "dataUnit";
 
   /**
    * Constant for the name of attribute "entity".
    */
+  @JEAFCustomAnnotationTest
   public static final String ENTITY = "entity";
 
   // "long"
@@ -39,6 +44,7 @@ public abstract class VersionedObjectSoftLinkBase extends Object implements Serv
   /**
    * Internal ID of a versioned object
    */
+  @JEAFCustomAnnotationTest
   private final long objectID;
 
   // "long"
@@ -46,6 +52,7 @@ public abstract class VersionedObjectSoftLinkBase extends Object implements Serv
 
   // "com.anaptecs.jeaf.junit.openapi.base.DataUnit"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private DataUnit dataUnit;
 
   // "com.anaptecs.jeaf.junit.openapi.base.DataUnit"
@@ -53,6 +60,7 @@ public abstract class VersionedObjectSoftLinkBase extends Object implements Serv
 
   // "com.anaptecs.jeaf.junit.openapi.base.Entity"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private Entity entity;
 
   // "com.anaptecs.jeaf.junit.openapi.base.Entity"
@@ -96,6 +104,7 @@ public abstract class VersionedObjectSoftLinkBase extends Object implements Serv
      */
     // "long"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private long objectID;
 
     // "long"
@@ -103,6 +112,7 @@ public abstract class VersionedObjectSoftLinkBase extends Object implements Serv
 
     // "com.anaptecs.jeaf.junit.openapi.base.DataUnit"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private DataUnit dataUnit;
 
     // "com.anaptecs.jeaf.junit.openapi.base.DataUnit"
@@ -110,6 +120,7 @@ public abstract class VersionedObjectSoftLinkBase extends Object implements Serv
 
     // "com.anaptecs.jeaf.junit.openapi.base.Entity"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private Entity entity;
 
     // "com.anaptecs.jeaf.junit.openapi.base.Entity"
@@ -140,6 +151,7 @@ public abstract class VersionedObjectSoftLinkBase extends Object implements Serv
      * @param pObjectID Value to which {@link #objectID} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public BuilderBase setObjectID( long pObjectID ) {
       // Assign value to attribute
       objectID = pObjectID;
@@ -158,6 +170,7 @@ public abstract class VersionedObjectSoftLinkBase extends Object implements Serv
      * @param pDataUnit Value to which {@link #dataUnit} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public BuilderBase setDataUnit( DataUnit pDataUnit ) {
       dataUnit = pDataUnit;
       return this;
@@ -175,6 +188,7 @@ public abstract class VersionedObjectSoftLinkBase extends Object implements Serv
      * @param pEntity Value to which {@link #entity} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public BuilderBase setEntity( Entity pEntity ) {
       entity = pEntity;
       return this;
@@ -217,6 +231,7 @@ public abstract class VersionedObjectSoftLinkBase extends Object implements Serv
    *
    * @return long Value to which {@link #objectID} is set.
    */
+  @JEAFCustomAnnotationTest
   public long getObjectID( ) {
     return objectID;
   }
@@ -235,6 +250,7 @@ public abstract class VersionedObjectSoftLinkBase extends Object implements Serv
    *
    * @return {@link DataUnit} Value to which {@link #dataUnit} is set.
    */
+  @JEAFCustomAnnotationTest
   public DataUnit getDataUnit( ) {
     return dataUnit;
   }
@@ -244,6 +260,7 @@ public abstract class VersionedObjectSoftLinkBase extends Object implements Serv
    *
    * @param pDataUnit Value to which {@link #dataUnit} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setDataUnit( DataUnit pDataUnit ) {
     dataUnit = pDataUnit;
   }
@@ -251,6 +268,7 @@ public abstract class VersionedObjectSoftLinkBase extends Object implements Serv
   /**
    * Method unsets {@link #dataUnit}.
    */
+  @JEAFCustomAnnotationTest
   public final void unsetDataUnit( ) {
     dataUnit = null;
   }
@@ -269,6 +287,7 @@ public abstract class VersionedObjectSoftLinkBase extends Object implements Serv
    *
    * @return {@link Entity} Value to which {@link #entity} is set.
    */
+  @JEAFCustomAnnotationTest
   public Entity getEntity( ) {
     return entity;
   }
@@ -278,6 +297,7 @@ public abstract class VersionedObjectSoftLinkBase extends Object implements Serv
    *
    * @param pEntity Value to which {@link #entity} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setEntity( Entity pEntity ) {
     entity = pEntity;
   }
@@ -285,6 +305,7 @@ public abstract class VersionedObjectSoftLinkBase extends Object implements Serv
   /**
    * Method unsets {@link #entity}.
    */
+  @JEAFCustomAnnotationTest
   public final void unsetEntity( ) {
     entity = null;
   }

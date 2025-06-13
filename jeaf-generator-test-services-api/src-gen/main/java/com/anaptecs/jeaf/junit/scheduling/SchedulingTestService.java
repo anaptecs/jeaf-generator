@@ -5,8 +5,10 @@
  */
 package com.anaptecs.jeaf.junit.scheduling;
 
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 import com.anaptecs.jeaf.services.scheduling.ScheduleableService;
 // @Something
 
+@JEAFCustomAnnotationTest
 public interface SchedulingTestService extends ScheduleableService {
 }

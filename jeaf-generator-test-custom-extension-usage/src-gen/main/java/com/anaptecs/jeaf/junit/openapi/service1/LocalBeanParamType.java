@@ -11,10 +11,12 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
+import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
 @Generated("Before Class Declaration. Here an annontation cloud be added.")
+@JEAFCustomAnnotationTest
 public class LocalBeanParamType extends Object implements ServiceObject {
   /**
    * Default serial version uid.
@@ -24,20 +26,24 @@ public class LocalBeanParamType extends Object implements ServiceObject {
   /**
    * Constant for the name of attribute "localKey".
    */
+  @JEAFCustomAnnotationTest
   public static final String LOCALKEY = "localKey";
 
   /**
    * Constant for the name of attribute "localID".
    */
+  @JEAFCustomAnnotationTest
   public static final String LOCALID = "localID";
 
   /**
    * Constant for the name of attribute "authorization".
    */
+  @JEAFCustomAnnotationTest
   public static final String AUTHORIZATION = "authorization";
 
   // "String"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private String localKey;
 
   // "String"
@@ -45,6 +51,7 @@ public class LocalBeanParamType extends Object implements ServiceObject {
 
   // "String"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private String localID;
 
   // "String"
@@ -52,6 +59,7 @@ public class LocalBeanParamType extends Object implements ServiceObject {
 
   // "String"
   @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
   private String authorization;
 
   // "String"
@@ -96,9 +104,11 @@ public class LocalBeanParamType extends Object implements ServiceObject {
   /**
    * Class implements builder to create a new instance of class <code>LocalBeanParamType</code>.
    */
+  @JEAFCustomAnnotationTest
   public static class Builder {
     // "String"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private String localKey;
 
     // "String"
@@ -106,6 +116,7 @@ public class LocalBeanParamType extends Object implements ServiceObject {
 
     // "String"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private String localID;
 
     // "String"
@@ -113,6 +124,7 @@ public class LocalBeanParamType extends Object implements ServiceObject {
 
     // "String"
     @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
     private String authorization;
 
     // "String"
@@ -142,6 +154,7 @@ public class LocalBeanParamType extends Object implements ServiceObject {
      * @param pLocalKey Value to which {@link #localKey} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setLocalKey( String pLocalKey ) {
       // Assign value to attribute
       localKey = pLocalKey;
@@ -160,6 +173,7 @@ public class LocalBeanParamType extends Object implements ServiceObject {
      * @param pLocalID Value to which {@link #localID} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setLocalID( String pLocalID ) {
       // Assign value to attribute
       localID = pLocalID;
@@ -178,6 +192,7 @@ public class LocalBeanParamType extends Object implements ServiceObject {
      * @param pAuthorization Value to which {@link #authorization} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JEAFCustomAnnotationTest
     public Builder setAuthorization( String pAuthorization ) {
       // Assign value to attribute
       authorization = pAuthorization;
@@ -220,6 +235,7 @@ public class LocalBeanParamType extends Object implements ServiceObject {
    *
    * @return {@link String} Value to which {@link #localKey} is set.
    */
+  @JEAFCustomAnnotationTest
   public String getLocalKey( ) {
     return localKey;
   }
@@ -229,6 +245,7 @@ public class LocalBeanParamType extends Object implements ServiceObject {
    *
    * @param pLocalKey Value to which {@link #localKey} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setLocalKey( String pLocalKey ) {
     // Assign value to attribute
     localKey = pLocalKey;
@@ -248,6 +265,7 @@ public class LocalBeanParamType extends Object implements ServiceObject {
    *
    * @return {@link String} Value to which {@link #localID} is set.
    */
+  @JEAFCustomAnnotationTest
   public String getLocalID( ) {
     return localID;
   }
@@ -257,6 +275,7 @@ public class LocalBeanParamType extends Object implements ServiceObject {
    *
    * @param pLocalID Value to which {@link #localID} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setLocalID( String pLocalID ) {
     // Assign value to attribute
     localID = pLocalID;
@@ -276,6 +295,7 @@ public class LocalBeanParamType extends Object implements ServiceObject {
    *
    * @return {@link String} Value to which {@link #authorization} is set.
    */
+  @JEAFCustomAnnotationTest
   public String getAuthorization( ) {
     return authorization;
   }
@@ -285,6 +305,7 @@ public class LocalBeanParamType extends Object implements ServiceObject {
    *
    * @param pAuthorization Value to which {@link #authorization} should be set.
    */
+  @JEAFCustomAnnotationTest
   public void setAuthorization( String pAuthorization ) {
     // Assign value to attribute
     authorization = pAuthorization;
