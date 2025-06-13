@@ -14,8 +14,8 @@ import java.util.Set;
 
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.anaptecs.spring.base.TimeUnit;
-import com.fasterxml.jackson.annotation.JsonSetter;
-import com.fasterxml.jackson.annotation.Nulls;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 public class MultivaluedQueryParamsBean {
   /**
@@ -49,25 +49,16 @@ public class MultivaluedQueryParamsBean {
 
   private Integer[] integers;
 
-  @JsonSetter(nulls = Nulls.SKIP)
   private Set<TimeUnit> timeUnits;
 
   private TimeUnit[] timeUnitArray;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  public MultivaluedQueryParamsBean( ) {
-    timeUnits = new HashSet<>();
-  }
 
   /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected MultivaluedQueryParamsBean( Builder pBuilder ) {
+  protected MultivaluedQueryParamsBean( MultivaluedQueryParamsBeanBuilder<?, ?> pBuilder ) {
     // Read attribute values from builder.
     intArray = pBuilder.intArray;
     strings = pBuilder.strings;
@@ -86,8 +77,8 @@ public class MultivaluedQueryParamsBean {
    *
    * @return {@link Builder} New builder that can be used to create new MultivaluedQueryParamsBean objects.
    */
-  public static Builder builder( ) {
-    return new Builder();
+  public static MultivaluedQueryParamsBeanBuilder<?, ?> builder( ) {
+    return new MultivaluedQueryParamsBeanBuilderImpl();
   }
 
   /**
@@ -97,14 +88,16 @@ public class MultivaluedQueryParamsBean {
    * @return {@link com.anaptecs.spring.service.MultivaluedQueryParamsBean}
    */
   public static MultivaluedQueryParamsBean of( ) {
-    MultivaluedQueryParamsBean.Builder lBuilder = MultivaluedQueryParamsBean.builder();
+    MultivaluedQueryParamsBeanBuilder<?, ?> lBuilder = MultivaluedQueryParamsBean.builder();
     return lBuilder.build();
   }
 
   /**
    * Class implements builder to create a new instance of class <code>MultivaluedQueryParamsBean</code>.
    */
-  public static class Builder {
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  public static abstract class MultivaluedQueryParamsBeanBuilder<T extends MultivaluedQueryParamsBean, B extends MultivaluedQueryParamsBeanBuilder<T, B>> {
     private int[] intArray;
 
     private String[] strings;
@@ -116,16 +109,16 @@ public class MultivaluedQueryParamsBean {
     private TimeUnit[] timeUnitArray;
 
     /**
-     * Use {@link MultivaluedQueryParamsBean#builder()} instead of private constructor to create new builder.
+     * Use {@link MultivaluedQueryParamsBeanBuilder#builder()} instead of private constructor to create new builder.
      */
-    protected Builder( ) {
+    protected MultivaluedQueryParamsBeanBuilder( ) {
     }
 
     /**
-     * Use {@link MultivaluedQueryParamsBean#builder(MultivaluedQueryParamsBean)} instead of private constructor to
-     * create new builder.
+     * Use {@link MultivaluedQueryParamsBeanBuilder#builder(MultivaluedQueryParamsBean)} instead of private constructor
+     * to create new builder.
      */
-    protected Builder( MultivaluedQueryParamsBean pObject ) {
+    protected MultivaluedQueryParamsBeanBuilder( MultivaluedQueryParamsBean pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setIntArray(pObject.intArray);
@@ -137,32 +130,12 @@ public class MultivaluedQueryParamsBean {
     }
 
     /**
-     * Method returns a new builder.
-     *
-     * @return {@link Builder} New builder that can be used to create new MultivaluedQueryParamsBean objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     *
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new MultivaluedQueryParamsBean objects. The method
-     * never returns null.
-     */
-    public static Builder newBuilder( MultivaluedQueryParamsBean pObject ) {
-      return new Builder(pObject);
-    }
-
-    /**
      * Method sets attribute {@link #intArray}.<br/>
      *
      * @param pIntArray Value to which {@link #intArray} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setIntArray( int[] pIntArray ) {
+    public B setIntArray( int[] pIntArray ) {
       // Assign value to attribute
       if (pIntArray != null) {
         intArray = new int[pIntArray.length];
@@ -171,16 +144,16 @@ public class MultivaluedQueryParamsBean {
       else {
         intArray = null;
       }
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #strings}.<br/>
      *
      * @param pStrings Collection to which {@link #strings} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setStrings( String[] pStrings ) {
+    public B setStrings( String[] pStrings ) {
       // Assign value to attribute
       if (pStrings != null) {
         strings = new String[pStrings.length];
@@ -189,16 +162,16 @@ public class MultivaluedQueryParamsBean {
       else {
         strings = null;
       }
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #integers}.<br/>
      *
      * @param pIntegers Collection to which {@link #integers} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setIntegers( Integer[] pIntegers ) {
+    public B setIntegers( Integer[] pIntegers ) {
       // Assign value to attribute
       if (pIntegers != null) {
         integers = new Integer[pIntegers.length];
@@ -207,16 +180,16 @@ public class MultivaluedQueryParamsBean {
       else {
         integers = null;
       }
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets association {@link #timeUnits}.<br/>
      *
      * @param pTimeUnits Collection to which {@link #timeUnits} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setTimeUnits( Set<TimeUnit> pTimeUnits ) {
+    public B setTimeUnits( Set<TimeUnit> pTimeUnits ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pTimeUnits != null) {
         timeUnits = new HashSet<TimeUnit>(pTimeUnits);
@@ -224,32 +197,32 @@ public class MultivaluedQueryParamsBean {
       else {
         timeUnits = null;
       }
-      return this;
+      return this.self();
     }
 
     /**
      * Method adds the passed objects to association {@link #timeUnits}.<br/>
      *
      * @param pTimeUnits Array of objects that should be added to {@link #timeUnits}. The parameter may be null.
-     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining. Method never returns null.
      */
-    public Builder addToTimeUnits( TimeUnit... pTimeUnits ) {
+    public B addToTimeUnits( TimeUnit... pTimeUnits ) {
       if (pTimeUnits != null) {
         if (timeUnits == null) {
           timeUnits = new HashSet<TimeUnit>();
         }
         timeUnits.addAll(Arrays.asList(pTimeUnits));
       }
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets association {@link #timeUnits}.<br/>
      *
      * @param pTimeUnits Array with objects to which {@link #timeUnits} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setTimeUnits( TimeUnit... pTimeUnits ) {
+    public B setTimeUnits( TimeUnit... pTimeUnits ) {
       // Copy the content of the passed array.
       if (pTimeUnits != null) {
         timeUnits = new HashSet<TimeUnit>(Arrays.asList(pTimeUnits));
@@ -257,16 +230,16 @@ public class MultivaluedQueryParamsBean {
       else {
         timeUnits = null;
       }
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #timeUnitArray}.<br/>
      *
      * @param pTimeUnitArray Collection to which {@link #timeUnitArray} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setTimeUnitArray( TimeUnit[] pTimeUnitArray ) {
+    public B setTimeUnitArray( TimeUnit[] pTimeUnitArray ) {
       // Assign value to attribute
       if (pTimeUnitArray != null) {
         timeUnitArray = new TimeUnit[pTimeUnitArray.length];
@@ -275,8 +248,13 @@ public class MultivaluedQueryParamsBean {
       else {
         timeUnitArray = null;
       }
-      return this;
+      return this.self();
     }
+
+    /**
+     * Method returns instance of this builder. Operation is part of generic builder pattern.
+     */
+    protected abstract B self( );
 
     /**
      * Method creates a new instance of class MultivaluedQueryParamsBean. The object will be initialized with the values
@@ -284,6 +262,24 @@ public class MultivaluedQueryParamsBean {
      *
      * @return MultivaluedQueryParamsBean Created object. The method never returns null.
      */
+    public abstract T build( );
+  }
+
+  static final class MultivaluedQueryParamsBeanBuilderImpl
+      extends MultivaluedQueryParamsBeanBuilder<MultivaluedQueryParamsBean, MultivaluedQueryParamsBeanBuilderImpl> {
+    protected MultivaluedQueryParamsBeanBuilderImpl( ) {
+    }
+
+    protected MultivaluedQueryParamsBeanBuilderImpl( MultivaluedQueryParamsBean pObject ) {
+      super(pObject);
+    }
+
+    @Override
+    protected MultivaluedQueryParamsBeanBuilderImpl self( ) {
+      return this;
+    }
+
+    @Override
     public MultivaluedQueryParamsBean build( ) {
       MultivaluedQueryParamsBean lObject = new MultivaluedQueryParamsBean(this);
       SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
@@ -592,7 +588,7 @@ public class MultivaluedQueryParamsBean {
    * @return {@link Builder} New builder that can be used to create new MultivaluedQueryParamsBean objects. The method
    * never returns null.
    */
-  public Builder toBuilder( ) {
-    return new Builder(this);
+  public MultivaluedQueryParamsBeanBuilder<?, ?> toBuilder( ) {
+    return new MultivaluedQueryParamsBeanBuilderImpl(this);
   }
 }

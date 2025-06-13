@@ -9,6 +9,8 @@ import java.util.Objects;
 
 import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 public class ParentBeanParamType {
   /**
@@ -51,18 +53,11 @@ public class ParentBeanParamType {
   private DoubleCode code;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  public ParentBeanParamType( ) {
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected ParentBeanParamType( Builder pBuilder ) {
+  protected ParentBeanParamType( ParentBeanParamTypeBuilder<?, ?> pBuilder ) {
     // Read attribute values from builder.
     novaKey = pBuilder.novaKey;
     tkID = pBuilder.tkID;
@@ -74,8 +69,8 @@ public class ParentBeanParamType {
    *
    * @return {@link Builder} New builder that can be used to create new ParentBeanParamType objects.
    */
-  public static Builder builder( ) {
-    return new Builder();
+  public static ParentBeanParamTypeBuilder<?, ?> builder( ) {
+    return new ParentBeanParamTypeBuilderImpl();
   }
 
   /**
@@ -91,7 +86,7 @@ public class ParentBeanParamType {
    * @return {@link com.anaptecs.spring.base.ParentBeanParamType}
    */
   public static ParentBeanParamType of( String pNovaKey, String pTkID, DoubleCode pCode ) {
-    ParentBeanParamType.Builder lBuilder = ParentBeanParamType.builder();
+    ParentBeanParamTypeBuilder<?, ?> lBuilder = ParentBeanParamType.builder();
     lBuilder.setNovaKey(pNovaKey);
     lBuilder.setTkID(pTkID);
     lBuilder.setCode(pCode);
@@ -101,7 +96,9 @@ public class ParentBeanParamType {
   /**
    * Class implements builder to create a new instance of class <code>ParentBeanParamType</code>.
    */
-  public static class Builder {
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  public static abstract class ParentBeanParamTypeBuilder<T extends ParentBeanParamType, B extends ParentBeanParamTypeBuilder<T, B>> {
     /**
      * <br/>
      * <b>Example(s):</b> <br/>
@@ -127,16 +124,16 @@ public class ParentBeanParamType {
     private DoubleCode code;
 
     /**
-     * Use {@link ParentBeanParamType#builder()} instead of private constructor to create new builder.
+     * Use {@link ParentBeanParamTypeBuilder#builder()} instead of private constructor to create new builder.
      */
-    protected Builder( ) {
+    protected ParentBeanParamTypeBuilder( ) {
     }
 
     /**
-     * Use {@link ParentBeanParamType#builder(ParentBeanParamType)} instead of private constructor to create new
+     * Use {@link ParentBeanParamTypeBuilder#builder(ParentBeanParamType)} instead of private constructor to create new
      * builder.
      */
-    protected Builder( ParentBeanParamType pObject ) {
+    protected ParentBeanParamTypeBuilder( ParentBeanParamType pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setNovaKey(pObject.novaKey);
@@ -146,60 +143,45 @@ public class ParentBeanParamType {
     }
 
     /**
-     * Method returns a new builder.
-     *
-     * @return {@link Builder} New builder that can be used to create new ParentBeanParamType objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     *
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new ParentBeanParamType objects. The method never
-     * returns null.
-     */
-    public static Builder newBuilder( ParentBeanParamType pObject ) {
-      return new Builder(pObject);
-    }
-
-    /**
      * Method sets attribute {@link #novaKey}.<br/>
      *
      * @param pNovaKey Value to which {@link #novaKey} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setNovaKey( @MyNotNullProperty String pNovaKey ) {
+    public B setNovaKey( @MyNotNullProperty String pNovaKey ) {
       // Assign value to attribute
       novaKey = pNovaKey;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #tkID}.<br/>
      *
      * @param pTkID Value to which {@link #tkID} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setTkID( @MyNotNullProperty String pTkID ) {
+    public B setTkID( @MyNotNullProperty String pTkID ) {
       // Assign value to attribute
       tkID = pTkID;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #code}.<br/>
      *
      * @param pCode Value to which {@link #code} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setCode( @MyNotNullProperty DoubleCode pCode ) {
+    public B setCode( @MyNotNullProperty DoubleCode pCode ) {
       // Assign value to attribute
       code = pCode;
-      return this;
+      return this.self();
     }
+
+    /**
+     * Method returns instance of this builder. Operation is part of generic builder pattern.
+     */
+    protected abstract B self( );
 
     /**
      * Method creates a new instance of class ParentBeanParamType. The object will be initialized with the values of the
@@ -207,6 +189,24 @@ public class ParentBeanParamType {
      *
      * @return ParentBeanParamType Created object. The method never returns null.
      */
+    public abstract T build( );
+  }
+
+  static final class ParentBeanParamTypeBuilderImpl
+      extends ParentBeanParamTypeBuilder<ParentBeanParamType, ParentBeanParamTypeBuilderImpl> {
+    protected ParentBeanParamTypeBuilderImpl( ) {
+    }
+
+    protected ParentBeanParamTypeBuilderImpl( ParentBeanParamType pObject ) {
+      super(pObject);
+    }
+
+    @Override
+    protected ParentBeanParamTypeBuilderImpl self( ) {
+      return this;
+    }
+
+    @Override
     public ParentBeanParamType build( ) {
       ParentBeanParamType lObject = new ParentBeanParamType(this);
       SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
@@ -347,7 +347,7 @@ public class ParentBeanParamType {
    * @return {@link Builder} New builder that can be used to create new ParentBeanParamType objects. The method never
    * returns null.
    */
-  public Builder toBuilder( ) {
-    return new Builder(this);
+  public ParentBeanParamTypeBuilder<?, ?> toBuilder( ) {
+    return new ParentBeanParamTypeBuilderImpl(this);
   }
 }

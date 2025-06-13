@@ -10,6 +10,8 @@ import java.util.Objects;
 
 import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 public class SpecialContext extends Context {
   /**
@@ -27,18 +29,11 @@ public class SpecialContext extends Context {
   private ChannelType channelType;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  public SpecialContext( ) {
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected SpecialContext( Builder pBuilder ) {
+  protected SpecialContext( SpecialContextBuilder<?, ?> pBuilder ) {
     // Call constructor of super class.
     super(pBuilder);
     // Read attribute values from builder.
@@ -51,8 +46,8 @@ public class SpecialContext extends Context {
    *
    * @return {@link Builder} New builder that can be used to create new SpecialContext objects.
    */
-  public static Builder builder( ) {
-    return new Builder();
+  public static SpecialContextBuilder<?, ?> builder( ) {
+    return new SpecialContextBuilderImpl();
   }
 
   /**
@@ -81,7 +76,7 @@ public class SpecialContext extends Context {
    */
   public static SpecialContext of( String pAccessToken, Locale pLanguage, long pResellerID, long pPathParam,
       String pQueryParam, String pLang, IntegerCodeType pIntCode, String pSpecificHeader, ChannelType pChannelType ) {
-    SpecialContext.Builder lBuilder = SpecialContext.builder();
+    SpecialContextBuilder<?, ?> lBuilder = SpecialContext.builder();
     lBuilder.setAccessToken(pAccessToken);
     lBuilder.setLanguage(pLanguage);
     lBuilder.setResellerID(pResellerID);
@@ -97,22 +92,25 @@ public class SpecialContext extends Context {
   /**
    * Class implements builder to create a new instance of class <code>SpecialContext</code>.
    */
-  public static class Builder extends Context.Builder {
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  public static abstract class SpecialContextBuilder<T extends SpecialContext, B extends SpecialContextBuilder<T, B>>
+      extends ContextBuilder<T, B> {
     private String specificHeader;
 
     private ChannelType channelType;
 
     /**
-     * Use {@link SpecialContext#builder()} instead of private constructor to create new builder.
+     * Use {@link SpecialContextBuilder#builder()} instead of private constructor to create new builder.
      */
-    protected Builder( ) {
+    protected SpecialContextBuilder( ) {
       super();
     }
 
     /**
-     * Use {@link SpecialContext#builder(SpecialContext)} instead of private constructor to create new builder.
+     * Use {@link SpecialContextBuilder#builder(SpecialContext)} instead of private constructor to create new builder.
      */
-    protected Builder( SpecialContext pObject ) {
+    protected SpecialContextBuilder( SpecialContext pObject ) {
       super(pObject);
       if (pObject != null) {
         // Read attribute values from passed object.
@@ -122,143 +120,27 @@ public class SpecialContext extends Context {
     }
 
     /**
-     * Method returns a new builder.
-     *
-     * @return {@link Builder} New builder that can be used to create new SpecialContext objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     *
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new SpecialContext objects. The method never
-     * returns null.
-     */
-    public static Builder newBuilder( SpecialContext pObject ) {
-      return new Builder(pObject);
-    }
-
-    /**
-     * Method sets attribute {@link #accessToken}.<br/>
-     *
-     * @param pAccessToken Value to which {@link #accessToken} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
-     */
-    @Override
-    public Builder setAccessToken( String pAccessToken ) {
-      // Call super class implementation.
-      super.setAccessToken(pAccessToken);
-      return this;
-    }
-
-    /**
-     * Method sets attribute {@link #language}.<br/>
-     *
-     * @param pLanguage Value to which {@link #language} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
-     */
-    @Override
-    public Builder setLanguage( Locale pLanguage ) {
-      // Call super class implementation.
-      super.setLanguage(pLanguage);
-      return this;
-    }
-
-    /**
-     * Method sets attribute {@link #resellerID}.<br/>
-     *
-     * @param pResellerID Value to which {@link #resellerID} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
-     */
-    @Override
-    public Builder setResellerID( long pResellerID ) {
-      // Call super class implementation.
-      super.setResellerID(pResellerID);
-      return this;
-    }
-
-    /**
-     * Method sets attribute {@link #pathParam}.<br/>
-     *
-     * @param pPathParam Value to which {@link #pathParam} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
-     */
-    @Override
-    public Builder setPathParam( long pPathParam ) {
-      // Call super class implementation.
-      super.setPathParam(pPathParam);
-      return this;
-    }
-
-    /**
-     * Method sets attribute {@link #queryParam}.<br/>
-     *
-     * @param pQueryParam Value to which {@link #queryParam} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
-     */
-    @Override
-    public Builder setQueryParam( String pQueryParam ) {
-      // Call super class implementation.
-      super.setQueryParam(pQueryParam);
-      return this;
-    }
-
-    /**
-     * Method sets attribute {@link #lang}.<br/>
-     *
-     * @param pLang Value to which {@link #lang} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
-     */
-    @Override
-    public Builder setLang( String pLang ) {
-      // Call super class implementation.
-      super.setLang(pLang);
-      return this;
-    }
-
-    /**
-     * Method sets attribute {@link #intCode}.<br/>
-     *
-     * @param pIntCode Value to which {@link #intCode} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
-     */
-    @Override
-    public Builder setIntCode( IntegerCodeType pIntCode ) {
-      // Call super class implementation.
-      super.setIntCode(pIntCode);
-      return this;
-    }
-
-    @Override
-    public Builder addCustomHeader( String pHeaderName, String pHeaderValue ) {
-      return (Builder) super.addCustomHeader(pHeaderName, pHeaderValue);
-    }
-
-    /**
      * Method sets attribute {@link #specificHeader}.<br/>
      *
      * @param pSpecificHeader Value to which {@link #specificHeader} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setSpecificHeader( @MyNotNullProperty String pSpecificHeader ) {
+    public B setSpecificHeader( @MyNotNullProperty String pSpecificHeader ) {
       // Assign value to attribute
       specificHeader = pSpecificHeader;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #channelType}.<br/>
      *
      * @param pChannelType Value to which {@link #channelType} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setChannelType( @MyNotNullProperty ChannelType pChannelType ) {
+    public B setChannelType( @MyNotNullProperty ChannelType pChannelType ) {
       // Assign value to attribute
       channelType = pChannelType;
-      return this;
+      return this.self();
     }
 
     /**
@@ -267,6 +149,24 @@ public class SpecialContext extends Context {
      *
      * @return SpecialContext Created object. The method never returns null.
      */
+    public abstract T build( );
+  }
+
+  static final class SpecialContextBuilderImpl
+      extends SpecialContextBuilder<SpecialContext, SpecialContextBuilderImpl> {
+    protected SpecialContextBuilderImpl( ) {
+    }
+
+    protected SpecialContextBuilderImpl( SpecialContext pObject ) {
+      super(pObject);
+    }
+
+    @Override
+    protected SpecialContextBuilderImpl self( ) {
+      return this;
+    }
+
+    @Override
     public SpecialContext build( ) {
       SpecialContext lObject = new SpecialContext(this);
       SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
@@ -383,7 +283,7 @@ public class SpecialContext extends Context {
    * @return {@link Builder} New builder that can be used to create new SpecialContext objects. The method never returns
    * null.
    */
-  public Builder toBuilder( ) {
-    return new Builder(this);
+  public SpecialContextBuilder<?, ?> toBuilder( ) {
+    return new SpecialContextBuilderImpl(this);
   }
 }

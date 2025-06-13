@@ -5,17 +5,15 @@
  */
 package com.anaptecs.jeaf.junit;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.UUID;
-
-import org.junit.jupiter.api.Test;
 
 import com.anaptecs.jeaf.core.api.ServiceObjectID;
 import com.anaptecs.jeaf.json.api.JSON;
@@ -46,6 +44,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.databind.type.CollectionType;
+import org.junit.jupiter.api.Test;
 
 public class JSONSerializationTest {
 
@@ -106,7 +105,7 @@ public class JSONSerializationTest {
     assertEquals("{\"objectType\":\"ChildBB\",\"childBBAttribute\":123456789,\"deprecatedAttribute\":0}", lValue);
 
     lDeserializedParent = lTools.read(lValue, ParentClass.class);
-    assert (lDeserializedParent instanceof ChildBB);
+    assert lDeserializedParent instanceof ChildBB;
 
     ChildAA lChildAA = ChildAA.builder().setChildAAttribute(4711).build();
     lChildBB.addToComposition(lChildAA);
@@ -116,7 +115,7 @@ public class JSONSerializationTest {
         lValue);
 
     lDeserializedParent = lTools.read(lValue, ParentClass.class);
-    assert (lDeserializedParent instanceof ChildBB);
+    assert lDeserializedParent instanceof ChildBB;
     ChildBB lDesserializedBB = (ChildBB) lDeserializedParent;
 
     assertEquals(1, lDesserializedBB.getComposition().size());

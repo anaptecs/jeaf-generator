@@ -118,7 +118,8 @@ public class PathlessServiceResource {
       @RequestHeader(name = "base64", required = false) String pBase64 ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
-    MultiValuedHeaderBeanParam.Builder lHeaderBeanBuilder = MultiValuedHeaderBeanParam.builder();
+    MultiValuedHeaderBeanParam.MultiValuedHeaderBeanParamBuilder<?, ?> lHeaderBeanBuilder =
+        MultiValuedHeaderBeanParam.builder();
     lHeaderBeanBuilder.setNames(pNames);
     lHeaderBeanBuilder.setInts(pInts);
     lHeaderBeanBuilder.setDoubles(pDoubles);
@@ -205,7 +206,7 @@ public class PathlessServiceResource {
       lHeaderBeanBuilder.setBase64(Base64.getDecoder().decode(pBase64));
     }
     MultiValuedHeaderBeanParam pHeaderBean = lHeaderBeanBuilder.build();
-    TechOnlyBeanParam.Builder lTechContextBuilder = TechOnlyBeanParam.builder();
+    TechOnlyBeanParam.TechOnlyBeanParamBuilder<?, ?> lTechContextBuilder = TechOnlyBeanParam.builder();
     TechOnlyBeanParam pTechContext = lTechContextBuilder.build();
     // Validate request parameter(s).
     validationExecutor.validateRequest(PathlessService.class, pHeaderBean);
@@ -234,7 +235,7 @@ public class PathlessServiceResource {
       @RequestParam(name = "startTimestamps", required = false) String[] pStartTimestampsAsBasicType ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
-    DataTypesQueryBean.Builder lQueryBuilder = DataTypesQueryBean.builder();
+    DataTypesQueryBean.DataTypesQueryBeanBuilder<?, ?> lQueryBuilder = DataTypesQueryBean.builder();
     // Handle bean parameter pQuery.longCodes
     if (pLongCodesAsBasicType != null) {
       LongCode[] lLongCodes = new LongCode[pLongCodesAsBasicType.length];

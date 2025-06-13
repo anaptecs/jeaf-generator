@@ -1,11 +1,9 @@
 package com.anaptecs.jeaf.junit;
 
-import static org.junit.Assert.assertNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import java.util.List;
-
-import org.junit.jupiter.api.Test;
 
 import com.anaptecs.jeaf.json.api.JSON;
 import com.anaptecs.jeaf.json.api.JSONTools;
@@ -13,6 +11,7 @@ import com.anaptecs.jeaf.junit.pojo.transientback.ClientClass;
 import com.anaptecs.jeaf.junit.pojo.transientback.MasterClass;
 import com.anaptecs.jeaf.junit.pojo.transientback.ReadOnlyClient;
 import com.anaptecs.jeaf.junit.pojo.transientback.ReadOnlyMaster;
+import org.junit.jupiter.api.Test;
 
 public class TransientBackReferenceTest {
   @Test

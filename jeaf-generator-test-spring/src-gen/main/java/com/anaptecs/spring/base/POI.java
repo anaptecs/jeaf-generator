@@ -5,21 +5,22 @@
  */
 package com.anaptecs.spring.base;
 
-import java.util.List;
 import java.util.Objects;
 
 import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonAutoDetect(
     fieldVisibility = JsonAutoDetect.Visibility.ANY,
     getterVisibility = JsonAutoDetect.Visibility.NONE,
     isGetterVisibility = JsonAutoDetect.Visibility.NONE,
     setterVisibility = JsonAutoDetect.Visibility.NONE,
     creatorVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonDeserialize(builder = POI.POIBuilderImpl.class)
 public class POI extends Stop {
   /**
    * Constant for the name of attribute "description".
@@ -29,18 +30,11 @@ public class POI extends Stop {
   private String description;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected POI( ) {
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected POI( Builder pBuilder ) {
+  protected POI( POIBuilder<?, ?> pBuilder ) {
     // Call constructor of super class.
     super(pBuilder);
     // Read attribute values from builder.
@@ -52,8 +46,8 @@ public class POI extends Stop {
    *
    * @return {@link Builder} New builder that can be used to create new POI objects.
    */
-  public static Builder builder( ) {
-    return new Builder();
+  public static POIBuilder<?, ?> builder( ) {
+    return new POIBuilderImpl();
   }
 
   /**
@@ -64,10 +58,10 @@ public class POI extends Stop {
    *
    * @param pDescription Value to which {@link #description} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.POI}
+   * @return {@link POI}
    */
   public static POI of( String pName, String pDescription ) {
-    POI.Builder lBuilder = POI.builder();
+    POIBuilder<?, ?> lBuilder = POI.builder();
     lBuilder.setName(pName);
     lBuilder.setDescription(pDescription);
     return lBuilder.build();
@@ -76,20 +70,22 @@ public class POI extends Stop {
   /**
    * Class implements builder to create a new instance of class <code>POI</code>.
    */
-  public static class Builder extends Stop.Builder {
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  public static abstract class POIBuilder<T extends POI, B extends POIBuilder<T, B>> extends StopBuilder<T, B> {
     private String description;
 
     /**
-     * Use {@link POI#builder()} instead of private constructor to create new builder.
+     * Use {@link POIBuilder#builder()} instead of private constructor to create new builder.
      */
-    protected Builder( ) {
+    protected POIBuilder( ) {
       super();
     }
 
     /**
-     * Use {@link POI#builder(POI)} instead of private constructor to create new builder.
+     * Use {@link POIBuilder#builder(POI)} instead of private constructor to create new builder.
      */
-    protected Builder( POI pObject ) {
+    protected POIBuilder( POI pObject ) {
       super(pObject);
       if (pObject != null) {
         // Read attribute values from passed object.
@@ -98,72 +94,15 @@ public class POI extends Stop {
     }
 
     /**
-     * Method returns a new builder.
-     *
-     * @return {@link Builder} New builder that can be used to create new POI objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     *
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new POI objects. The method never returns null.
-     */
-    public static Builder newBuilder( POI pObject ) {
-      return new Builder(pObject);
-    }
-
-    /**
-     * Method sets attribute {@link #name}.<br/>
-     *
-     * @param pName Value to which {@link #name} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
-     */
-    @Override
-    public Builder setName( String pName ) {
-      // Call super class implementation.
-      super.setName(pName);
-      return this;
-    }
-
-    /**
-     * Method sets association {@link #links}.<br/>
-     *
-     * @param pLinks Collection to which {@link #links} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
-     */
-    @Override
-    public Builder setLinks( List<LinkObject> pLinks ) {
-      // Call super class implementation.
-      super.setLinks(pLinks);
-      return this;
-    }
-
-    /**
-     * Method adds the passed objects to association {@link #links}.<br/>
-     *
-     * @param pLinks Array of objects that should be added to {@link #links}. The parameter may be null.
-     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
-     */
-    public Builder addToLinks( LinkObject... pLinks ) {
-      // Call super class implementation.
-      super.addToLinks(pLinks);
-      return this;
-    }
-
-    /**
      * Method sets attribute {@link #description}.<br/>
      *
      * @param pDescription Value to which {@link #description} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setDescription( @MyNotNullProperty String pDescription ) {
+    public B setDescription( @MyNotNullProperty String pDescription ) {
       // Assign value to attribute
       description = pDescription;
-      return this;
+      return this.self();
     }
 
     /**
@@ -171,6 +110,23 @@ public class POI extends Stop {
      *
      * @return POI Created object. The method never returns null.
      */
+    public abstract T build( );
+  }
+
+  static final class POIBuilderImpl extends POIBuilder<POI, POIBuilderImpl> {
+    protected POIBuilderImpl( ) {
+    }
+
+    protected POIBuilderImpl( POI pObject ) {
+      super(pObject);
+    }
+
+    @Override
+    protected POIBuilderImpl self( ) {
+      return this;
+    }
+
+    @Override
     public POI build( ) {
       POI lObject = new POI(this);
       SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
@@ -260,7 +216,7 @@ public class POI extends Stop {
    *
    * @return {@link Builder} New builder that can be used to create new POI objects. The method never returns null.
    */
-  public Builder toBuilder( ) {
-    return new Builder(this);
+  public POIBuilder<?, ?> toBuilder( ) {
+    return new POIBuilderImpl(this);
   }
 }

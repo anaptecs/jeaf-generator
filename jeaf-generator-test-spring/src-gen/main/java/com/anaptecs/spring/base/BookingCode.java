@@ -11,8 +11,8 @@ import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonAutoDetect(
     fieldVisibility = JsonAutoDetect.Visibility.ANY,
     getterVisibility = JsonAutoDetect.Visibility.NONE,
@@ -28,18 +28,11 @@ public class BookingCode {
   private String code;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected BookingCode( ) {
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected BookingCode( Builder pBuilder ) {
+  protected BookingCode( BookingCodeBuilder<?, ?> pBuilder ) {
     // Read attribute values from builder.
     code = pBuilder.code;
   }
@@ -49,8 +42,8 @@ public class BookingCode {
    *
    * @return {@link Builder} New builder that can be used to create new BookingCode objects.
    */
-  public static Builder builder( ) {
-    return new Builder();
+  public static BookingCodeBuilder<?, ?> builder( ) {
+    return new BookingCodeBuilderImpl();
   }
 
   /**
@@ -62,7 +55,7 @@ public class BookingCode {
    * @return {@link BookingCode}
    */
   public static BookingCode of( String pCode ) {
-    BookingCode.Builder lBuilder = BookingCode.builder();
+    BookingCodeBuilder<?, ?> lBuilder = BookingCode.builder();
     lBuilder.setCode(pCode);
     return lBuilder.build();
   }
@@ -70,19 +63,21 @@ public class BookingCode {
   /**
    * Class implements builder to create a new instance of class <code>BookingCode</code>.
    */
-  public static class Builder {
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  public static abstract class BookingCodeBuilder<T extends BookingCode, B extends BookingCodeBuilder<T, B>> {
     private String code;
 
     /**
-     * Use {@link BookingCode#builder()} instead of private constructor to create new builder.
+     * Use {@link BookingCodeBuilder#builder()} instead of private constructor to create new builder.
      */
-    protected Builder( ) {
+    protected BookingCodeBuilder( ) {
     }
 
     /**
-     * Use {@link BookingCode#builder(BookingCode)} instead of private constructor to create new builder.
+     * Use {@link BookingCodeBuilder#builder(BookingCode)} instead of private constructor to create new builder.
      */
-    protected Builder( BookingCode pObject ) {
+    protected BookingCodeBuilder( BookingCode pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setCode(pObject.code);
@@ -90,36 +85,21 @@ public class BookingCode {
     }
 
     /**
-     * Method returns a new builder.
-     *
-     * @return {@link Builder} New builder that can be used to create new BookingCode objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     *
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new BookingCode objects. The method never returns
-     * null.
-     */
-    public static Builder newBuilder( BookingCode pObject ) {
-      return new Builder(pObject);
-    }
-
-    /**
      * Method sets attribute {@link #code}.<br/>
      *
      * @param pCode Value to which {@link #code} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setCode( @MyNotNullProperty String pCode ) {
+    public B setCode( @MyNotNullProperty String pCode ) {
       // Assign value to attribute
       code = pCode;
-      return this;
+      return this.self();
     }
+
+    /**
+     * Method returns instance of this builder. Operation is part of generic builder pattern.
+     */
+    protected abstract B self( );
 
     /**
      * Method creates a new instance of class BookingCode. The object will be initialized with the values of the
@@ -127,6 +107,23 @@ public class BookingCode {
      *
      * @return BookingCode Created object. The method never returns null.
      */
+    public abstract T build( );
+  }
+
+  static final class BookingCodeBuilderImpl extends BookingCodeBuilder<BookingCode, BookingCodeBuilderImpl> {
+    protected BookingCodeBuilderImpl( ) {
+    }
+
+    protected BookingCodeBuilderImpl( BookingCode pObject ) {
+      super(pObject);
+    }
+
+    @Override
+    protected BookingCodeBuilderImpl self( ) {
+      return this;
+    }
+
+    @Override
     public BookingCode build( ) {
       BookingCode lObject = new BookingCode(this);
       SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
@@ -209,7 +206,7 @@ public class BookingCode {
    * @return {@link Builder} New builder that can be used to create new BookingCode objects. The method never returns
    * null.
    */
-  public Builder toBuilder( ) {
-    return new Builder(this);
+  public BookingCodeBuilder<?, ?> toBuilder( ) {
+    return new BookingCodeBuilderImpl(this);
   }
 }

@@ -5,7 +5,6 @@
  */
 package com.anaptecs.spring.base;
 
-import java.util.List;
 import java.util.Objects;
 
 import javax.validation.Valid;
@@ -14,15 +13,17 @@ import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Valid
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonAutoDetect(
     fieldVisibility = JsonAutoDetect.Visibility.ANY,
     getterVisibility = JsonAutoDetect.Visibility.NONE,
     isGetterVisibility = JsonAutoDetect.Visibility.NONE,
     setterVisibility = JsonAutoDetect.Visibility.NONE,
     creatorVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonDeserialize(builder = PersonBase.PersonBuilderImpl.class)
 public abstract class PersonBase extends Partner {
   /**
    * Constant for the name of attribute "surname".
@@ -39,18 +40,11 @@ public abstract class PersonBase extends Partner {
   private String firstName;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected PersonBase( ) {
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected PersonBase( BuilderBase pBuilder ) {
+  protected PersonBase( PersonBuilder<?, ?> pBuilder ) {
     // Call constructor of super class.
     super(pBuilder);
     // Read attribute values from builder.
@@ -59,24 +53,28 @@ public abstract class PersonBase extends Partner {
   }
 
   /**
-   * Class implements builder to create a new instance of class Person. As the class has read only attributes or
-   * associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>Person</code>.
    */
-  public static abstract class BuilderBase extends Partner.Builder {
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  public static abstract class PersonBuilder<T extends Person, B extends PersonBuilder<T, B>>
+      extends PartnerBuilder<T, B> {
     private String surname;
 
     private String firstName;
 
     /**
-     * Use {@link Person.builder()} instead of protected constructor to create new builder.
+     * Use {@link PersonBuilder#builder()} instead of private constructor to create new builder.
      */
-    protected BuilderBase( ) {
+    protected PersonBuilder( ) {
+      super();
     }
 
     /**
-     * Use {@link Person.builder(Person)} instead of protected constructor to create new builder.
+     * Use {@link PersonBuilder#builder(Person)} instead of private constructor to create new builder.
      */
-    protected BuilderBase( PersonBase pObject ) {
+    protected PersonBuilder( PersonBase pObject ) {
+      super(pObject);
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setSurname(pObject.surname);
@@ -85,53 +83,27 @@ public abstract class PersonBase extends Partner {
     }
 
     /**
-     * Method sets association {@link #postalAddresses}.<br/>
-     *
-     * @param pPostalAddresses Collection to which {@link #postalAddresses} should be set.
-     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
-     */
-    @Override
-    public BuilderBase setPostalAddresses( List<PostalAddress> pPostalAddresses ) {
-      // Call super class implementation.
-      super.setPostalAddresses(pPostalAddresses);
-      return this;
-    }
-
-    /**
-     * Method adds the passed objects to association {@link #postalAddresses}.<br/>
-     *
-     * @param pPostalAddresses Array of objects that should be added to {@link #postalAddresses}. The parameter may be
-     * null.
-     * @return {@link BuilderBase} Instance of this builder to support chaining. Method never returns null.
-     */
-    public BuilderBase addToPostalAddresses( PostalAddress... pPostalAddresses ) {
-      // Call super class implementation.
-      super.addToPostalAddresses(pPostalAddresses);
-      return this;
-    }
-
-    /**
      * Method sets attribute {@link #surname}.<br/>
      *
      * @param pSurname Value to which {@link #surname} should be set.
-     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setSurname( @MyNotNullProperty String pSurname ) {
+    public B setSurname( @MyNotNullProperty String pSurname ) {
       // Assign value to attribute
       surname = pSurname;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #firstName}.<br/>
      *
      * @param pFirstName Value to which {@link #firstName} should be set.
-     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setFirstName( @MyNotNullProperty String pFirstName ) {
+    public B setFirstName( @MyNotNullProperty String pFirstName ) {
       // Assign value to attribute
       firstName = pFirstName;
-      return this;
+      return this.self();
     }
 
     /**
@@ -139,6 +111,23 @@ public abstract class PersonBase extends Partner {
      *
      * @return Person Created object. The method never returns null.
      */
+    public abstract T build( );
+  }
+
+  static final class PersonBuilderImpl extends PersonBuilder<Person, PersonBuilderImpl> {
+    protected PersonBuilderImpl( ) {
+    }
+
+    protected PersonBuilderImpl( Person pObject ) {
+      super(pObject);
+    }
+
+    @Override
+    protected PersonBuilderImpl self( ) {
+      return this;
+    }
+
+    @Override
     public Person build( ) {
       Person lObject = new Person(this);
       SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
@@ -197,7 +186,7 @@ public abstract class PersonBase extends Partner {
    * @return {@link com.anaptecs.spring.base.Person}
    */
   public static Person of( String pSurname, String pFirstName ) {
-    Person.Builder lBuilder = Person.builder();
+    PersonBuilder<?, ?> lBuilder = Person.builder();
     lBuilder.setSurname(pSurname);
     lBuilder.setFirstName(pFirstName);
     return lBuilder.build();
@@ -276,7 +265,7 @@ public abstract class PersonBase extends Partner {
    *
    * @return {@link Builder} New builder that can be used to create new Person objects. The method never returns null.
    */
-  public Person.Builder toBuilder( ) {
-    return new Person.Builder((Person) this);
+  public PersonBuilder<?, ?> toBuilder( ) {
+    return new PersonBuilderImpl((Person) this);
   }
 }

@@ -17,16 +17,16 @@ import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonSetter;
-import com.fasterxml.jackson.annotation.Nulls;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonAutoDetect(
     fieldVisibility = JsonAutoDetect.Visibility.ANY,
     getterVisibility = JsonAutoDetect.Visibility.NONE,
     isGetterVisibility = JsonAutoDetect.Visibility.NONE,
     setterVisibility = JsonAutoDetect.Visibility.NONE,
     creatorVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonDeserialize(builder = CodeTypeUsageTest.CodeTypeUsageTestBuilderImpl.class)
 public class CodeTypeUsageTest {
   /**
    * Constant for the name of attribute "booleanCode".
@@ -55,10 +55,8 @@ public class CodeTypeUsageTest {
 
   private BooleanCodeType booleanCode;
 
-  @JsonSetter(nulls = Nulls.SKIP)
   private Set<BooleanCodeType> booleanCodeAssociation;
 
-  @JsonSetter(nulls = Nulls.SKIP)
   private Set<ShortCodeType> shortCodeTypeAssociation;
 
   private StringCodeType stringCode;
@@ -66,20 +64,11 @@ public class CodeTypeUsageTest {
   private CharacterCode characterCode;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected CodeTypeUsageTest( ) {
-    booleanCodeAssociation = new HashSet<>();
-    shortCodeTypeAssociation = new HashSet<>();
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected CodeTypeUsageTest( Builder pBuilder ) {
+  protected CodeTypeUsageTest( CodeTypeUsageTestBuilder<?, ?> pBuilder ) {
     // Read attribute values from builder.
     booleanCode = pBuilder.booleanCode;
     if (pBuilder.booleanCodeAssociation != null) {
@@ -103,8 +92,8 @@ public class CodeTypeUsageTest {
    *
    * @return {@link Builder} New builder that can be used to create new CodeTypeUsageTest objects.
    */
-  public static Builder builder( ) {
-    return new Builder();
+  public static CodeTypeUsageTestBuilder<?, ?> builder( ) {
+    return new CodeTypeUsageTestBuilderImpl();
   }
 
   /**
@@ -117,11 +106,11 @@ public class CodeTypeUsageTest {
    *
    * @param pStringCode Value to which {@link #stringCode} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.CodeTypeUsageTest}
+   * @return {@link CodeTypeUsageTest}
    */
   public static CodeTypeUsageTest of( BooleanCodeType pBooleanCode, Set<ShortCodeType> pShortCodeTypeAssociation,
       StringCodeType pStringCode ) {
-    CodeTypeUsageTest.Builder lBuilder = CodeTypeUsageTest.builder();
+    CodeTypeUsageTestBuilder<?, ?> lBuilder = CodeTypeUsageTest.builder();
     lBuilder.setBooleanCode(pBooleanCode);
     lBuilder.setShortCodeTypeAssociation(pShortCodeTypeAssociation);
     lBuilder.setStringCode(pStringCode);
@@ -131,7 +120,9 @@ public class CodeTypeUsageTest {
   /**
    * Class implements builder to create a new instance of class <code>CodeTypeUsageTest</code>.
    */
-  public static class Builder {
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  public static abstract class CodeTypeUsageTestBuilder<T extends CodeTypeUsageTest, B extends CodeTypeUsageTestBuilder<T, B>> {
     private BooleanCodeType booleanCode;
 
     private Set<BooleanCodeType> booleanCodeAssociation;
@@ -143,15 +134,16 @@ public class CodeTypeUsageTest {
     private CharacterCode characterCode;
 
     /**
-     * Use {@link CodeTypeUsageTest#builder()} instead of private constructor to create new builder.
+     * Use {@link CodeTypeUsageTestBuilder#builder()} instead of private constructor to create new builder.
      */
-    protected Builder( ) {
+    protected CodeTypeUsageTestBuilder( ) {
     }
 
     /**
-     * Use {@link CodeTypeUsageTest#builder(CodeTypeUsageTest)} instead of private constructor to create new builder.
+     * Use {@link CodeTypeUsageTestBuilder#builder(CodeTypeUsageTest)} instead of private constructor to create new
+     * builder.
      */
-    protected Builder( CodeTypeUsageTest pObject ) {
+    protected CodeTypeUsageTestBuilder( CodeTypeUsageTest pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setBooleanCode(pObject.booleanCode);
@@ -163,44 +155,24 @@ public class CodeTypeUsageTest {
     }
 
     /**
-     * Method returns a new builder.
-     *
-     * @return {@link Builder} New builder that can be used to create new CodeTypeUsageTest objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     *
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new CodeTypeUsageTest objects. The method never
-     * returns null.
-     */
-    public static Builder newBuilder( CodeTypeUsageTest pObject ) {
-      return new Builder(pObject);
-    }
-
-    /**
      * Method sets attribute {@link #booleanCode}.<br/>
      *
      * @param pBooleanCode Value to which {@link #booleanCode} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setBooleanCode( @MyNotNullProperty BooleanCodeType pBooleanCode ) {
+    public B setBooleanCode( @MyNotNullProperty BooleanCodeType pBooleanCode ) {
       // Assign value to attribute
       booleanCode = pBooleanCode;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets association {@link #booleanCodeAssociation}.<br/>
      *
      * @param pBooleanCodeAssociation Collection to which {@link #booleanCodeAssociation} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setBooleanCodeAssociation( Set<BooleanCodeType> pBooleanCodeAssociation ) {
+    public B setBooleanCodeAssociation( Set<BooleanCodeType> pBooleanCodeAssociation ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pBooleanCodeAssociation != null) {
         booleanCodeAssociation = new HashSet<BooleanCodeType>(pBooleanCodeAssociation);
@@ -208,7 +180,7 @@ public class CodeTypeUsageTest {
       else {
         booleanCodeAssociation = null;
       }
-      return this;
+      return this.self();
     }
 
     /**
@@ -216,25 +188,25 @@ public class CodeTypeUsageTest {
      *
      * @param pBooleanCodeAssociation Array of objects that should be added to {@link #booleanCodeAssociation}. The
      * parameter may be null.
-     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining. Method never returns null.
      */
-    public Builder addToBooleanCodeAssociation( BooleanCodeType... pBooleanCodeAssociation ) {
+    public B addToBooleanCodeAssociation( BooleanCodeType... pBooleanCodeAssociation ) {
       if (pBooleanCodeAssociation != null) {
         if (booleanCodeAssociation == null) {
           booleanCodeAssociation = new HashSet<BooleanCodeType>();
         }
         booleanCodeAssociation.addAll(Arrays.asList(pBooleanCodeAssociation));
       }
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets association {@link #shortCodeTypeAssociation}.<br/>
      *
      * @param pShortCodeTypeAssociation Collection to which {@link #shortCodeTypeAssociation} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setShortCodeTypeAssociation( @MyNotEmptyProperty Set<ShortCodeType> pShortCodeTypeAssociation ) {
+    public B setShortCodeTypeAssociation( @MyNotEmptyProperty Set<ShortCodeType> pShortCodeTypeAssociation ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pShortCodeTypeAssociation != null) {
         shortCodeTypeAssociation = new HashSet<ShortCodeType>(pShortCodeTypeAssociation);
@@ -242,7 +214,7 @@ public class CodeTypeUsageTest {
       else {
         shortCodeTypeAssociation = null;
       }
-      return this;
+      return this.self();
     }
 
     /**
@@ -250,40 +222,45 @@ public class CodeTypeUsageTest {
      *
      * @param pShortCodeTypeAssociation Array of objects that should be added to {@link #shortCodeTypeAssociation}. The
      * parameter may be null.
-     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining. Method never returns null.
      */
-    public Builder addToShortCodeTypeAssociation( @MyNotEmptyProperty ShortCodeType... pShortCodeTypeAssociation ) {
+    public B addToShortCodeTypeAssociation( @MyNotEmptyProperty ShortCodeType... pShortCodeTypeAssociation ) {
       if (pShortCodeTypeAssociation != null) {
         if (shortCodeTypeAssociation == null) {
           shortCodeTypeAssociation = new HashSet<ShortCodeType>();
         }
         shortCodeTypeAssociation.addAll(Arrays.asList(pShortCodeTypeAssociation));
       }
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #stringCode}.<br/>
      *
      * @param pStringCode Value to which {@link #stringCode} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setStringCode( @MyNotNullProperty StringCodeType pStringCode ) {
+    public B setStringCode( @MyNotNullProperty StringCodeType pStringCode ) {
       // Assign value to attribute
       stringCode = pStringCode;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets association {@link #characterCode}.<br/>
      *
      * @param pCharacterCode Value to which {@link #characterCode} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setCharacterCode( CharacterCode pCharacterCode ) {
+    public B setCharacterCode( CharacterCode pCharacterCode ) {
       characterCode = pCharacterCode;
-      return this;
+      return this.self();
     }
+
+    /**
+     * Method returns instance of this builder. Operation is part of generic builder pattern.
+     */
+    protected abstract B self( );
 
     /**
      * Method creates a new instance of class CodeTypeUsageTest. The object will be initialized with the values of the
@@ -291,6 +268,24 @@ public class CodeTypeUsageTest {
      *
      * @return CodeTypeUsageTest Created object. The method never returns null.
      */
+    public abstract T build( );
+  }
+
+  static final class CodeTypeUsageTestBuilderImpl
+      extends CodeTypeUsageTestBuilder<CodeTypeUsageTest, CodeTypeUsageTestBuilderImpl> {
+    protected CodeTypeUsageTestBuilderImpl( ) {
+    }
+
+    protected CodeTypeUsageTestBuilderImpl( CodeTypeUsageTest pObject ) {
+      super(pObject);
+    }
+
+    @Override
+    protected CodeTypeUsageTestBuilderImpl self( ) {
+      return this;
+    }
+
+    @Override
     public CodeTypeUsageTest build( ) {
       CodeTypeUsageTest lObject = new CodeTypeUsageTest(this);
       SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
@@ -587,7 +582,7 @@ public class CodeTypeUsageTest {
    * @return {@link Builder} New builder that can be used to create new CodeTypeUsageTest objects. The method never
    * returns null.
    */
-  public Builder toBuilder( ) {
-    return new Builder(this);
+  public CodeTypeUsageTestBuilder<?, ?> toBuilder( ) {
+    return new CodeTypeUsageTestBuilderImpl(this);
   }
 }

@@ -11,8 +11,8 @@ import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonAutoDetect(
     fieldVisibility = JsonAutoDetect.Visibility.ANY,
     getterVisibility = JsonAutoDetect.Visibility.NONE,
@@ -28,40 +28,34 @@ public abstract class DataTypeCustomSerializationBase {
   private String property1;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected DataTypeCustomSerializationBase( ) {
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected DataTypeCustomSerializationBase( BuilderBase pBuilder ) {
+  protected DataTypeCustomSerializationBase( DataTypeCustomSerializationBuilder<?, ?> pBuilder ) {
     // Read attribute values from builder.
     property1 = pBuilder.property1;
   }
 
   /**
-   * Class implements builder to create a new instance of class DataTypeCustomSerialization. As the class has read only
-   * attributes or associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>DataTypeCustomSerialization</code>.
    */
-  public static abstract class BuilderBase {
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  public static abstract class DataTypeCustomSerializationBuilder<T extends DataTypeCustomSerialization, B extends DataTypeCustomSerializationBuilder<T, B>> {
     private String property1;
 
     /**
-     * Use {@link DataTypeCustomSerialization.builder()} instead of protected constructor to create new builder.
+     * Use {@link DataTypeCustomSerializationBuilder#builder()} instead of private constructor to create new builder.
      */
-    protected BuilderBase( ) {
+    protected DataTypeCustomSerializationBuilder( ) {
     }
 
     /**
-     * Use {@link DataTypeCustomSerialization.builder(DataTypeCustomSerialization)} instead of protected constructor to
-     * create new builder.
+     * Use {@link DataTypeCustomSerializationBuilder#builder(DataTypeCustomSerialization)} instead of private
+     * constructor to create new builder.
      */
-    protected BuilderBase( DataTypeCustomSerializationBase pObject ) {
+    protected DataTypeCustomSerializationBuilder( DataTypeCustomSerializationBase pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setProperty1(pObject.property1);
@@ -72,13 +66,18 @@ public abstract class DataTypeCustomSerializationBase {
      * Method sets attribute {@link #property1}.<br/>
      *
      * @param pProperty1 Value to which {@link #property1} should be set.
-     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setProperty1( @MyNotNullProperty String pProperty1 ) {
+    public B setProperty1( @MyNotNullProperty String pProperty1 ) {
       // Assign value to attribute
       property1 = pProperty1;
-      return this;
+      return this.self();
     }
+
+    /**
+     * Method returns instance of this builder. Operation is part of generic builder pattern.
+     */
+    protected abstract B self( );
 
     /**
      * Method creates a new instance of class DataTypeCustomSerialization. The object will be initialized with the
@@ -86,6 +85,24 @@ public abstract class DataTypeCustomSerializationBase {
      *
      * @return DataTypeCustomSerialization Created object. The method never returns null.
      */
+    public abstract T build( );
+  }
+
+  static final class DataTypeCustomSerializationBuilderImpl
+      extends DataTypeCustomSerializationBuilder<DataTypeCustomSerialization, DataTypeCustomSerializationBuilderImpl> {
+    protected DataTypeCustomSerializationBuilderImpl( ) {
+    }
+
+    protected DataTypeCustomSerializationBuilderImpl( DataTypeCustomSerialization pObject ) {
+      super(pObject);
+    }
+
+    @Override
+    protected DataTypeCustomSerializationBuilderImpl self( ) {
+      return this;
+    }
+
+    @Override
     public DataTypeCustomSerialization build( ) {
       DataTypeCustomSerialization lObject = new DataTypeCustomSerialization(this);
       SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
@@ -122,7 +139,7 @@ public abstract class DataTypeCustomSerializationBase {
    * @return {@link DataTypeCustomSerialization}
    */
   public static DataTypeCustomSerialization of( String pProperty1 ) {
-    DataTypeCustomSerialization.Builder lBuilder = DataTypeCustomSerialization.builder();
+    DataTypeCustomSerializationBuilder<?, ?> lBuilder = DataTypeCustomSerialization.builder();
     lBuilder.setProperty1(pProperty1);
     return lBuilder.build();
   }
@@ -182,7 +199,7 @@ public abstract class DataTypeCustomSerializationBase {
    * @return {@link Builder} New builder that can be used to create new DataTypeCustomSerialization objects. The method
    * never returns null.
    */
-  public DataTypeCustomSerialization.Builder toBuilder( ) {
-    return new DataTypeCustomSerialization.Builder((DataTypeCustomSerialization) this);
+  public DataTypeCustomSerializationBuilder<?, ?> toBuilder( ) {
+    return new DataTypeCustomSerializationBuilderImpl((DataTypeCustomSerialization) this);
   }
 }

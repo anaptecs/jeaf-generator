@@ -9,6 +9,8 @@ import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 /**
  * Hello World!<br/>
@@ -36,7 +38,6 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "objectType", visible = true)
 @JsonAutoDetect(
     fieldVisibility = JsonAutoDetect.Visibility.ANY,
@@ -44,20 +45,14 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
     isGetterVisibility = JsonAutoDetect.Visibility.NONE,
     setterVisibility = JsonAutoDetect.Visibility.NONE,
     creatorVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonDeserialize(builder = NoSubTypesParent.NoSubTypesParentBuilderImpl.class)
 public class NoSubTypesParent {
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected NoSubTypesParent( ) {
-  }
-
   /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected NoSubTypesParent( Builder pBuilder ) {
+  protected NoSubTypesParent( NoSubTypesParentBuilder<?, ?> pBuilder ) {
   }
 
   /**
@@ -65,56 +60,44 @@ public class NoSubTypesParent {
    *
    * @return {@link Builder} New builder that can be used to create new NoSubTypesParent objects.
    */
-  public static Builder builder( ) {
-    return new Builder();
+  public static NoSubTypesParentBuilder<?, ?> builder( ) {
+    return new NoSubTypesParentBuilderImpl();
   }
 
   /**
    * Convenience method to create new instance of class NoSubTypesParent.
    *
    *
-   * @return {@link com.anaptecs.spring.base.NoSubTypesParent}
+   * @return {@link NoSubTypesParent}
    */
   public static NoSubTypesParent of( ) {
-    NoSubTypesParent.Builder lBuilder = NoSubTypesParent.builder();
+    NoSubTypesParentBuilder<?, ?> lBuilder = NoSubTypesParent.builder();
     return lBuilder.build();
   }
 
   /**
    * Class implements builder to create a new instance of class <code>NoSubTypesParent</code>.
    */
-  public static class Builder {
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  public static abstract class NoSubTypesParentBuilder<T extends NoSubTypesParent, B extends NoSubTypesParentBuilder<T, B>> {
     /**
-     * Use {@link NoSubTypesParent#builder()} instead of private constructor to create new builder.
+     * Use {@link NoSubTypesParentBuilder#builder()} instead of private constructor to create new builder.
      */
-    protected Builder( ) {
+    protected NoSubTypesParentBuilder( ) {
     }
 
     /**
-     * Use {@link NoSubTypesParent#builder(NoSubTypesParent)} instead of private constructor to create new builder.
+     * Use {@link NoSubTypesParentBuilder#builder(NoSubTypesParent)} instead of private constructor to create new
+     * builder.
      */
-    protected Builder( NoSubTypesParent pObject ) {
+    protected NoSubTypesParentBuilder( NoSubTypesParent pObject ) {
     }
 
     /**
-     * Method returns a new builder.
-     *
-     * @return {@link Builder} New builder that can be used to create new NoSubTypesParent objects.
+     * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     *
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new NoSubTypesParent objects. The method never
-     * returns null.
-     */
-    public static Builder newBuilder( NoSubTypesParent pObject ) {
-      return new Builder(pObject);
-    }
+    protected abstract B self( );
 
     /**
      * Method creates a new instance of class NoSubTypesParent. The object will be initialized with the values of the
@@ -122,6 +105,24 @@ public class NoSubTypesParent {
      *
      * @return NoSubTypesParent Created object. The method never returns null.
      */
+    public abstract T build( );
+  }
+
+  static final class NoSubTypesParentBuilderImpl
+      extends NoSubTypesParentBuilder<NoSubTypesParent, NoSubTypesParentBuilderImpl> {
+    protected NoSubTypesParentBuilderImpl( ) {
+    }
+
+    protected NoSubTypesParentBuilderImpl( NoSubTypesParent pObject ) {
+      super(pObject);
+    }
+
+    @Override
+    protected NoSubTypesParentBuilderImpl self( ) {
+      return this;
+    }
+
+    @Override
     public NoSubTypesParent build( ) {
       NoSubTypesParent lObject = new NoSubTypesParent(this);
       SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
@@ -183,7 +184,7 @@ public class NoSubTypesParent {
    * @return {@link Builder} New builder that can be used to create new NoSubTypesParent objects. The method never
    * returns null.
    */
-  public Builder toBuilder( ) {
-    return new Builder(this);
+  public NoSubTypesParentBuilder<?, ?> toBuilder( ) {
+    return new NoSubTypesParentBuilderImpl(this);
   }
 }

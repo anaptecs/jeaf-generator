@@ -156,7 +156,7 @@ public class ProductServiceResource {
       @RequestHeader Map<String, String> pHeaders ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
-    Context.Builder lContextBuilder = Context.builder();
+    Context.ContextBuilder<?, ?> lContextBuilder = Context.builder();
     lContextBuilder.setAccessToken(pAccessToken);
     lContextBuilder.setLanguage(pLanguage);
     lContextBuilder.setResellerID(pResellerID);
@@ -244,7 +244,7 @@ public class ProductServiceResource {
       @RequestParam(name = "q1", required = true) @MyNotNullRESTParam String pQueryParam ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
-    DeprecatedContext.Builder lContextBuilder = DeprecatedContext.builder();
+    DeprecatedContext.DeprecatedContextBuilder<?, ?> lContextBuilder = DeprecatedContext.builder();
     lContextBuilder.setAccessToken(pAccessToken);
     lContextBuilder.setLanguage(pLanguage);
     lContextBuilder.setResellerID(pResellerID);
@@ -272,7 +272,7 @@ public class ProductServiceResource {
       @RequestParam(name = "q2", required = true) @Deprecated @MyNotNullRESTParam String pOldStyle ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
-    BeanParameter.Builder lBeanParamBuilder = BeanParameter.builder();
+    BeanParameter.BeanParameterBuilder<?, ?> lBeanParamBuilder = BeanParameter.builder();
     lBeanParamBuilder.setAccessToken(pAccessToken);
     lBeanParamBuilder.setLanguage(pLanguage);
     lBeanParamBuilder.setOldStyle(pOldStyle);
@@ -369,7 +369,7 @@ public class ProductServiceResource {
       @RequestHeader Map<String, String> pHeaders ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
-    SpecialContext.Builder lContextBuilder = SpecialContext.builder();
+    SpecialContext.SpecialContextBuilder<?, ?> lContextBuilder = SpecialContext.builder();
     lContextBuilder.setAccessToken(pAccessToken);
     lContextBuilder.setLanguage(pLanguage);
     lContextBuilder.setResellerID(pResellerID);
@@ -476,7 +476,7 @@ public class ProductServiceResource {
       @RequestHeader(name = "localID", required = true) @MyNotNullRESTParam String pLocalID ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
-    LocalBeanParamType.Builder lBeanParamBuilder = LocalBeanParamType.builder();
+    LocalBeanParamType.LocalBeanParamTypeBuilder<?, ?> lBeanParamBuilder = LocalBeanParamType.builder();
     lBeanParamBuilder.setLocalKey(pLocalKey);
     lBeanParamBuilder.setLocalID(pLocalID);
     LocalBeanParamType pBeanParam = lBeanParamBuilder.build();
@@ -502,7 +502,7 @@ public class ProductServiceResource {
       @RequestHeader(name = "code", required = true) @MyNotNullRESTParam Double pCodeAsBasicType ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
-    ParentBeanParamType.Builder lParentBuilder = ParentBeanParamType.builder();
+    ParentBeanParamType.ParentBeanParamTypeBuilder<?, ?> lParentBuilder = ParentBeanParamType.builder();
     lParentBuilder.setNovaKey(pNovaKey);
     lParentBuilder.setTkID(pTkID);
     // Handle bean parameter pParent.code
@@ -533,7 +533,7 @@ public class ProductServiceResource {
       @RequestHeader(name = "X-Child-Property", required = true) @MyNotNullRESTParam String pChildProperty ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
-    ChildBeanParameterType.Builder lChildBuilder = ChildBeanParameterType.builder();
+    ChildBeanParameterType.ChildBeanParameterTypeBuilder<?, ?> lChildBuilder = ChildBeanParameterType.builder();
     lChildBuilder.setNovaKey(pNovaKey);
     lChildBuilder.setTkID(pTkID);
     // Handle bean parameter pChild.code
@@ -682,7 +682,7 @@ public class ProductServiceResource {
       @RequestParam(name = "sqlDate", required = true) @MyNotNullRESTParam String pSqlDateAsBasicType ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
-    DateQueryParamsBean.Builder lQueryParamsBuilder = DateQueryParamsBean.builder();
+    DateQueryParamsBean.DateQueryParamsBeanBuilder<?, ?> lQueryParamsBuilder = DateQueryParamsBean.builder();
     // Handle bean parameter pQueryParams.offsetDateTime
     if (pOffsetDateTimeAsBasicType != null) {
       lQueryParamsBuilder.setOffsetDateTime(OffsetDateTime.parse(pOffsetDateTimeAsBasicType));
@@ -873,7 +873,7 @@ public class ProductServiceResource {
       @RequestHeader(name = "SQL-Date", required = true) @MyNotNullRESTParam String pSqlDateAsBasicType ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
-    DateHeaderParamsBean.Builder lHeaderParamsBuilder = DateHeaderParamsBean.builder();
+    DateHeaderParamsBean.DateHeaderParamsBeanBuilder<?, ?> lHeaderParamsBuilder = DateHeaderParamsBean.builder();
     // Handle bean parameter pHeaderParams.offsetDateTime
     if (pOffsetDateTimeAsBasicType != null) {
       lHeaderParamsBuilder.setOffsetDateTime(OffsetDateTime.parse(pOffsetDateTimeAsBasicType));
@@ -965,7 +965,7 @@ public class ProductServiceResource {
       @RequestHeader Map<String, String> pHeaders ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
-    TechnicalHeaderContext.Builder lContextBuilder = TechnicalHeaderContext.builder();
+    TechnicalHeaderContext.TechnicalHeaderContextBuilder<?, ?> lContextBuilder = TechnicalHeaderContext.builder();
     lContextBuilder.setReseller(pReseller);
     // Add custom headers.
     for (Map.Entry<String, String> lNextEntry : pHeaders.entrySet()) {

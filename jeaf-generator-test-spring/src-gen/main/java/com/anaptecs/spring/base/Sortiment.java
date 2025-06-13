@@ -16,23 +16,22 @@ import java.util.Set;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonSetter;
-import com.fasterxml.jackson.annotation.Nulls;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonAutoDetect(
     fieldVisibility = JsonAutoDetect.Visibility.ANY,
     getterVisibility = JsonAutoDetect.Visibility.NONE,
     isGetterVisibility = JsonAutoDetect.Visibility.NONE,
     setterVisibility = JsonAutoDetect.Visibility.NONE,
     creatorVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonDeserialize(builder = Sortiment.SortimentBuilderImpl.class)
 public class Sortiment {
   /**
    * Constant for the name of attribute "products".
    */
   public static final String PRODUCTS = "products";
 
-  @JsonSetter(nulls = Nulls.SKIP)
   private Set<Product> products;
 
   /**
@@ -41,21 +40,11 @@ public class Sortiment {
   private transient boolean productsBackReferenceInitialized;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected Sortiment( ) {
-    products = new HashSet<>();
-    // Bidirectional back reference is not yet set up correctly
-    productsBackReferenceInitialized = false;
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected Sortiment( Builder pBuilder ) {
+  protected Sortiment( SortimentBuilder<?, ?> pBuilder ) {
     // Read attribute values from builder.
     if (pBuilder.products != null) {
       products = pBuilder.products;
@@ -76,8 +65,8 @@ public class Sortiment {
    *
    * @return {@link Builder} New builder that can be used to create new Sortiment objects.
    */
-  public static Builder builder( ) {
-    return new Builder();
+  public static SortimentBuilder<?, ?> builder( ) {
+    return new SortimentBuilderImpl();
   }
 
   /**
@@ -87,26 +76,28 @@ public class Sortiment {
    * @return {@link Sortiment}
    */
   public static Sortiment of( ) {
-    Sortiment.Builder lBuilder = Sortiment.builder();
+    SortimentBuilder<?, ?> lBuilder = Sortiment.builder();
     return lBuilder.build();
   }
 
   /**
    * Class implements builder to create a new instance of class <code>Sortiment</code>.
    */
-  public static class Builder {
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  public static abstract class SortimentBuilder<T extends Sortiment, B extends SortimentBuilder<T, B>> {
     private Set<Product> products;
 
     /**
-     * Use {@link Sortiment#builder()} instead of private constructor to create new builder.
+     * Use {@link SortimentBuilder#builder()} instead of private constructor to create new builder.
      */
-    protected Builder( ) {
+    protected SortimentBuilder( ) {
     }
 
     /**
-     * Use {@link Sortiment#builder(Sortiment)} instead of private constructor to create new builder.
+     * Use {@link SortimentBuilder#builder(Sortiment)} instead of private constructor to create new builder.
      */
-    protected Builder( Sortiment pObject ) {
+    protected SortimentBuilder( Sortiment pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setProducts(pObject.products);
@@ -114,32 +105,12 @@ public class Sortiment {
     }
 
     /**
-     * Method returns a new builder.
-     *
-     * @return {@link Builder} New builder that can be used to create new Sortiment objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     *
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new Sortiment objects. The method never returns
-     * null.
-     */
-    public static Builder newBuilder( Sortiment pObject ) {
-      return new Builder(pObject);
-    }
-
-    /**
      * Method sets association {@link #products}.<br/>
      *
      * @param pProducts Collection to which {@link #products} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setProducts( Set<Product> pProducts ) {
+    public B setProducts( Set<Product> pProducts ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pProducts != null) {
         products = new HashSet<Product>(pProducts);
@@ -147,30 +118,52 @@ public class Sortiment {
       else {
         products = null;
       }
-      return this;
+      return this.self();
     }
 
     /**
      * Method adds the passed objects to association {@link #products}.<br/>
      *
      * @param pProducts Array of objects that should be added to {@link #products}. The parameter may be null.
-     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining. Method never returns null.
      */
-    public Builder addToProducts( Product... pProducts ) {
+    public B addToProducts( Product... pProducts ) {
       if (pProducts != null) {
         if (products == null) {
           products = new HashSet<Product>();
         }
         products.addAll(Arrays.asList(pProducts));
       }
-      return this;
+      return this.self();
     }
+
+    /**
+     * Method returns instance of this builder. Operation is part of generic builder pattern.
+     */
+    protected abstract B self( );
 
     /**
      * Method creates a new instance of class Sortiment. The object will be initialized with the values of the builder.
      *
      * @return Sortiment Created object. The method never returns null.
      */
+    public abstract T build( );
+  }
+
+  static final class SortimentBuilderImpl extends SortimentBuilder<Sortiment, SortimentBuilderImpl> {
+    protected SortimentBuilderImpl( ) {
+    }
+
+    protected SortimentBuilderImpl( Sortiment pObject ) {
+      super(pObject);
+    }
+
+    @Override
+    protected SortimentBuilderImpl self( ) {
+      return this;
+    }
+
+    @Override
     public Sortiment build( ) {
       Sortiment lObject = new Sortiment(this);
       SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
@@ -327,7 +320,7 @@ public class Sortiment {
    * @return {@link Builder} New builder that can be used to create new Sortiment objects. The method never returns
    * null.
    */
-  public Builder toBuilder( ) {
-    return new Builder(this);
+  public SortimentBuilder<?, ?> toBuilder( ) {
+    return new SortimentBuilderImpl(this);
   }
 }

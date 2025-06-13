@@ -9,6 +9,8 @@ import java.util.Objects;
 
 import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 public class LocalBeanParamType {
   /**
@@ -26,18 +28,11 @@ public class LocalBeanParamType {
   private String localID;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  public LocalBeanParamType( ) {
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected LocalBeanParamType( Builder pBuilder ) {
+  protected LocalBeanParamType( LocalBeanParamTypeBuilder<?, ?> pBuilder ) {
     // Read attribute values from builder.
     localKey = pBuilder.localKey;
     localID = pBuilder.localID;
@@ -48,8 +43,8 @@ public class LocalBeanParamType {
    *
    * @return {@link Builder} New builder that can be used to create new LocalBeanParamType objects.
    */
-  public static Builder builder( ) {
-    return new Builder();
+  public static LocalBeanParamTypeBuilder<?, ?> builder( ) {
+    return new LocalBeanParamTypeBuilderImpl();
   }
 
   /**
@@ -63,7 +58,7 @@ public class LocalBeanParamType {
    * @return {@link com.anaptecs.spring.service.LocalBeanParamType}
    */
   public static LocalBeanParamType of( String pLocalKey, String pLocalID ) {
-    LocalBeanParamType.Builder lBuilder = LocalBeanParamType.builder();
+    LocalBeanParamTypeBuilder<?, ?> lBuilder = LocalBeanParamType.builder();
     lBuilder.setLocalKey(pLocalKey);
     lBuilder.setLocalID(pLocalID);
     return lBuilder.build();
@@ -72,21 +67,24 @@ public class LocalBeanParamType {
   /**
    * Class implements builder to create a new instance of class <code>LocalBeanParamType</code>.
    */
-  public static class Builder {
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  public static abstract class LocalBeanParamTypeBuilder<T extends LocalBeanParamType, B extends LocalBeanParamTypeBuilder<T, B>> {
     private String localKey;
 
     private String localID;
 
     /**
-     * Use {@link LocalBeanParamType#builder()} instead of private constructor to create new builder.
+     * Use {@link LocalBeanParamTypeBuilder#builder()} instead of private constructor to create new builder.
      */
-    protected Builder( ) {
+    protected LocalBeanParamTypeBuilder( ) {
     }
 
     /**
-     * Use {@link LocalBeanParamType#builder(LocalBeanParamType)} instead of private constructor to create new builder.
+     * Use {@link LocalBeanParamTypeBuilder#builder(LocalBeanParamType)} instead of private constructor to create new
+     * builder.
      */
-    protected Builder( LocalBeanParamType pObject ) {
+    protected LocalBeanParamTypeBuilder( LocalBeanParamType pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setLocalKey(pObject.localKey);
@@ -95,48 +93,33 @@ public class LocalBeanParamType {
     }
 
     /**
-     * Method returns a new builder.
-     *
-     * @return {@link Builder} New builder that can be used to create new LocalBeanParamType objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     *
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new LocalBeanParamType objects. The method never
-     * returns null.
-     */
-    public static Builder newBuilder( LocalBeanParamType pObject ) {
-      return new Builder(pObject);
-    }
-
-    /**
      * Method sets attribute {@link #localKey}.<br/>
      *
      * @param pLocalKey Value to which {@link #localKey} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setLocalKey( @MyNotNullProperty String pLocalKey ) {
+    public B setLocalKey( @MyNotNullProperty String pLocalKey ) {
       // Assign value to attribute
       localKey = pLocalKey;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #localID}.<br/>
      *
      * @param pLocalID Value to which {@link #localID} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setLocalID( @MyNotNullProperty String pLocalID ) {
+    public B setLocalID( @MyNotNullProperty String pLocalID ) {
       // Assign value to attribute
       localID = pLocalID;
-      return this;
+      return this.self();
     }
+
+    /**
+     * Method returns instance of this builder. Operation is part of generic builder pattern.
+     */
+    protected abstract B self( );
 
     /**
      * Method creates a new instance of class LocalBeanParamType. The object will be initialized with the values of the
@@ -144,6 +127,24 @@ public class LocalBeanParamType {
      *
      * @return LocalBeanParamType Created object. The method never returns null.
      */
+    public abstract T build( );
+  }
+
+  static final class LocalBeanParamTypeBuilderImpl
+      extends LocalBeanParamTypeBuilder<LocalBeanParamType, LocalBeanParamTypeBuilderImpl> {
+    protected LocalBeanParamTypeBuilderImpl( ) {
+    }
+
+    protected LocalBeanParamTypeBuilderImpl( LocalBeanParamType pObject ) {
+      super(pObject);
+    }
+
+    @Override
+    protected LocalBeanParamTypeBuilderImpl self( ) {
+      return this;
+    }
+
+    @Override
     public LocalBeanParamType build( ) {
       LocalBeanParamType lObject = new LocalBeanParamType(this);
       SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
@@ -258,7 +259,7 @@ public class LocalBeanParamType {
    * @return {@link Builder} New builder that can be used to create new LocalBeanParamType objects. The method never
    * returns null.
    */
-  public Builder toBuilder( ) {
-    return new Builder(this);
+  public LocalBeanParamTypeBuilder<?, ?> toBuilder( ) {
+    return new LocalBeanParamTypeBuilderImpl(this);
   }
 }

@@ -5,11 +5,11 @@
  */
 package com.anaptecs.spring.test;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -18,6 +18,19 @@ import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
+import com.anaptecs.jeaf.core.api.JEAF;
+import com.anaptecs.jeaf.fastlane.impl.FastLaneServer;
+import com.anaptecs.jeaf.fastlane.impl.WebContainerState;
+import com.anaptecs.jeaf.json.api.JSONMessages;
+import com.anaptecs.jeaf.json.problem.Problem;
+import com.anaptecs.jeaf.json.problem.RESTProblemException;
+import com.anaptecs.jeaf.tools.api.Tools;
+import com.anaptecs.jeaf.xfun.api.errorhandling.JEAFSystemException;
+import com.anaptecs.spring.base.ChannelCode;
+import com.anaptecs.spring.base.CurrencyCode;
+import com.anaptecs.spring.base.Product;
+import com.anaptecs.spring.service.RESTProductService;
+import com.fasterxml.jackson.databind.exc.MismatchedInputException;
 import org.apache.hc.client5.http.cookie.BasicCookieStore;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
@@ -38,20 +51,6 @@ import org.mockserver.integration.ClientAndServer;
 import org.mockserver.model.HttpRequest;
 import org.mockserver.model.HttpResponse;
 import org.mockserver.model.MediaType;
-
-import com.anaptecs.jeaf.core.api.JEAF;
-import com.anaptecs.jeaf.fastlane.impl.FastLaneServer;
-import com.anaptecs.jeaf.fastlane.impl.WebContainerState;
-import com.anaptecs.jeaf.json.api.JSONMessages;
-import com.anaptecs.jeaf.json.problem.Problem;
-import com.anaptecs.jeaf.json.problem.RESTProblemException;
-import com.anaptecs.jeaf.tools.api.Tools;
-import com.anaptecs.jeaf.xfun.api.errorhandling.JEAFSystemException;
-import com.anaptecs.spring.base.ChannelCode;
-import com.anaptecs.spring.base.CurrencyCode;
-import com.anaptecs.spring.base.Product;
-import com.anaptecs.spring.service.RESTProductService;
-import com.fasterxml.jackson.databind.exc.MismatchedInputException;
 
 public class JEAFRestControllerTest {
   private static FastLaneServer server;
@@ -138,19 +137,19 @@ public class JEAFRestControllerTest {
     }
   }
 
-  private static HttpRequest mockRequest( String pRequestURI, String pMethod ) {
+  private static HttpRequest mockRequest(String pRequestURI, String pMethod) {
     return HttpRequest.request().withPath(pRequestURI).withMethod(pMethod);
   }
 
-  private static HttpRequest mockRequest( String pRequestURI ) {
+  private static HttpRequest mockRequest(String pRequestURI) {
     return HttpRequest.request().withPath(pRequestURI);
   }
 
-  private static HttpResponse mockResponse( String pResponseBody ) {
+  private static HttpResponse mockResponse(String pResponseBody) {
     return HttpResponse.response().withDelay(TimeUnit.MILLISECONDS, 0).withStatusCode(200).withBody(pResponseBody);
   }
 
-  private static HttpResponse mockResponse( String pResponseBody, int pStatusCode, int pDelay ) {
+  private static HttpResponse mockResponse(String pResponseBody, int pStatusCode, int pDelay) {
     return HttpResponse.response().withDelay(TimeUnit.MILLISECONDS, pDelay).withStatusCode(pStatusCode)
         .withBody(pResponseBody);
   }

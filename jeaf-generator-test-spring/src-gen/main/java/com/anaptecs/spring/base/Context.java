@@ -15,6 +15,8 @@ import javax.validation.constraints.NotEmpty;
 
 import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 /**
  * Type with default comment.
@@ -88,18 +90,11 @@ public class Context {
   private Map<String, String> customHeaders = new HashMap<String, String>();
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  public Context( ) {
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected Context( Builder pBuilder ) {
+  protected Context( ContextBuilder<?, ?> pBuilder ) {
     // Read attribute values from builder.
     accessToken = pBuilder.accessToken;
     language = pBuilder.language;
@@ -117,8 +112,8 @@ public class Context {
    *
    * @return {@link Builder} New builder that can be used to create new Context objects.
    */
-  public static Builder builder( ) {
-    return new Builder();
+  public static ContextBuilder<?, ?> builder( ) {
+    return new ContextBuilderImpl();
   }
 
   /**
@@ -143,7 +138,7 @@ public class Context {
    */
   public static Context of( String pAccessToken, Locale pLanguage, long pResellerID, long pPathParam,
       String pQueryParam, String pLang, IntegerCodeType pIntCode ) {
-    Context.Builder lBuilder = Context.builder();
+    ContextBuilder<?, ?> lBuilder = Context.builder();
     lBuilder.setAccessToken(pAccessToken);
     lBuilder.setLanguage(pLanguage);
     lBuilder.setResellerID(pResellerID);
@@ -157,7 +152,9 @@ public class Context {
   /**
    * Class implements builder to create a new instance of class <code>Context</code>.
    */
-  public static class Builder {
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  public static abstract class ContextBuilder<T extends Context, B extends ContextBuilder<T, B>> {
     @NotEmpty
     private String accessToken;
 
@@ -188,15 +185,15 @@ public class Context {
     private Map<String, String> customHeaders = new HashMap<String, String>();
 
     /**
-     * Use {@link Context#builder()} instead of private constructor to create new builder.
+     * Use {@link ContextBuilder#builder()} instead of private constructor to create new builder.
      */
-    protected Builder( ) {
+    protected ContextBuilder( ) {
     }
 
     /**
-     * Use {@link Context#builder(Context)} instead of private constructor to create new builder.
+     * Use {@link ContextBuilder#builder(Context)} instead of private constructor to create new builder.
      */
-    protected Builder( Context pObject ) {
+    protected ContextBuilder( Context pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setAccessToken(pObject.accessToken);
@@ -211,107 +208,87 @@ public class Context {
     }
 
     /**
-     * Method returns a new builder.
-     *
-     * @return {@link Builder} New builder that can be used to create new Context objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     *
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new Context objects. The method never returns
-     * null.
-     */
-    public static Builder newBuilder( Context pObject ) {
-      return new Builder(pObject);
-    }
-
-    /**
      * Method sets attribute {@link #accessToken}.<br/>
      *
      * @param pAccessToken Value to which {@link #accessToken} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setAccessToken( @MyNotNullProperty String pAccessToken ) {
+    public B setAccessToken( @MyNotNullProperty String pAccessToken ) {
       // Assign value to attribute
       accessToken = pAccessToken;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #language}.<br/>
      *
      * @param pLanguage Value to which {@link #language} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setLanguage( @MyNotNullProperty Locale pLanguage ) {
+    public B setLanguage( @MyNotNullProperty Locale pLanguage ) {
       // Assign value to attribute
       language = pLanguage;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #resellerID}.<br/>
      *
      * @param pResellerID Value to which {@link #resellerID} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setResellerID( long pResellerID ) {
+    public B setResellerID( long pResellerID ) {
       // Assign value to attribute
       resellerID = pResellerID;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #pathParam}.<br/>
      *
      * @param pPathParam Value to which {@link #pathParam} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setPathParam( long pPathParam ) {
+    public B setPathParam( long pPathParam ) {
       // Assign value to attribute
       pathParam = pPathParam;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #queryParam}.<br/>
      *
      * @param pQueryParam Value to which {@link #queryParam} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setQueryParam( @MyNotNullProperty String pQueryParam ) {
+    public B setQueryParam( @MyNotNullProperty String pQueryParam ) {
       // Assign value to attribute
       queryParam = pQueryParam;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #lang}.<br/>
      *
      * @param pLang Value to which {@link #lang} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setLang( @MyNotNullProperty String pLang ) {
+    public B setLang( @MyNotNullProperty String pLang ) {
       // Assign value to attribute
       lang = pLang;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #intCode}.<br/>
      *
      * @param pIntCode Value to which {@link #intCode} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setIntCode( @MyNotNullProperty IntegerCodeType pIntCode ) {
+    public B setIntCode( @MyNotNullProperty IntegerCodeType pIntCode ) {
       // Assign value to attribute
       intCode = pIntCode;
-      return this;
+      return this.self();
     }
 
     /**
@@ -321,7 +298,7 @@ public class Context {
      * @param pHeaderName Name of the HTTP header. The parameter must not be null,
      * @param pHeaderValue Value of the http header the parameter may be null.
      */
-    public Builder addCustomHeader( String pHeaderName, String pHeaderValue ) {
+    public ContextBuilder addCustomHeader( String pHeaderName, String pHeaderValue ) {
       if (pHeaderName != null) {
         customHeaders.put(pHeaderName, pHeaderValue);
         return this;
@@ -332,10 +309,32 @@ public class Context {
     }
 
     /**
+     * Method returns instance of this builder. Operation is part of generic builder pattern.
+     */
+    protected abstract B self( );
+
+    /**
      * Method creates a new instance of class Context. The object will be initialized with the values of the builder.
      *
      * @return Context Created object. The method never returns null.
      */
+    public abstract T build( );
+  }
+
+  static final class ContextBuilderImpl extends ContextBuilder<Context, ContextBuilderImpl> {
+    protected ContextBuilderImpl( ) {
+    }
+
+    protected ContextBuilderImpl( Context pObject ) {
+      super(pObject);
+    }
+
+    @Override
+    protected ContextBuilderImpl self( ) {
+      return this;
+    }
+
+    @Override
     public Context build( ) {
       Context lObject = new Context(this);
       SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
@@ -601,7 +600,7 @@ public class Context {
    *
    * @return {@link Builder} New builder that can be used to create new Context objects. The method never returns null.
    */
-  public Builder toBuilder( ) {
-    return new Builder(this);
+  public ContextBuilder<?, ?> toBuilder( ) {
+    return new ContextBuilderImpl(this);
   }
 }

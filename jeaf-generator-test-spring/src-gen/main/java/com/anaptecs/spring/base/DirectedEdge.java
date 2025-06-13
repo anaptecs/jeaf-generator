@@ -12,14 +12,16 @@ import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonAutoDetect(
     fieldVisibility = JsonAutoDetect.Visibility.ANY,
     getterVisibility = JsonAutoDetect.Visibility.NONE,
     isGetterVisibility = JsonAutoDetect.Visibility.NONE,
     setterVisibility = JsonAutoDetect.Visibility.NONE,
     creatorVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonDeserialize(builder = DirectedEdge.DirectedEdgeBuilderImpl.class)
 public class DirectedEdge {
   /**
    * Constant for the name of attribute "start".
@@ -50,18 +52,11 @@ public class DirectedEdge {
   private String link;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected DirectedEdge( ) {
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected DirectedEdge( Builder pBuilder ) {
+  protected DirectedEdge( DirectedEdgeBuilder<?, ?> pBuilder ) {
     // Read attribute values from builder.
     start = pBuilder.start;
     end = pBuilder.end;
@@ -73,8 +68,8 @@ public class DirectedEdge {
    *
    * @return {@link Builder} New builder that can be used to create new DirectedEdge objects.
    */
-  public static Builder builder( ) {
-    return new Builder();
+  public static DirectedEdgeBuilder<?, ?> builder( ) {
+    return new DirectedEdgeBuilderImpl();
   }
 
   /**
@@ -85,10 +80,10 @@ public class DirectedEdge {
    *
    * @param pLink Value to which {@link #link} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.DirectedEdge}
+   * @return {@link DirectedEdge}
    */
   public static DirectedEdge of( Stop pEnd, String pLink ) {
-    DirectedEdge.Builder lBuilder = DirectedEdge.builder();
+    DirectedEdgeBuilder<?, ?> lBuilder = DirectedEdge.builder();
     lBuilder.setEnd(pEnd);
     lBuilder.setLink(pLink);
     return lBuilder.build();
@@ -97,7 +92,9 @@ public class DirectedEdge {
   /**
    * Class implements builder to create a new instance of class <code>DirectedEdge</code>.
    */
-  public static class Builder {
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  public static abstract class DirectedEdgeBuilder<T extends DirectedEdge, B extends DirectedEdgeBuilder<T, B>> {
     /**
      * The start
      */
@@ -108,18 +105,19 @@ public class DirectedEdge {
      */
     private Stop end;
 
+    @JsonProperty("previousName")
     private String link;
 
     /**
-     * Use {@link DirectedEdge#builder()} instead of private constructor to create new builder.
+     * Use {@link DirectedEdgeBuilder#builder()} instead of private constructor to create new builder.
      */
-    protected Builder( ) {
+    protected DirectedEdgeBuilder( ) {
     }
 
     /**
-     * Use {@link DirectedEdge#builder(DirectedEdge)} instead of private constructor to create new builder.
+     * Use {@link DirectedEdgeBuilder#builder(DirectedEdge)} instead of private constructor to create new builder.
      */
-    protected Builder( DirectedEdge pObject ) {
+    protected DirectedEdgeBuilder( DirectedEdge pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setStart(pObject.start);
@@ -129,58 +127,43 @@ public class DirectedEdge {
     }
 
     /**
-     * Method returns a new builder.
-     *
-     * @return {@link Builder} New builder that can be used to create new DirectedEdge objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     *
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new DirectedEdge objects. The method never returns
-     * null.
-     */
-    public static Builder newBuilder( DirectedEdge pObject ) {
-      return new Builder(pObject);
-    }
-
-    /**
      * Method sets association {@link #start}.<br/>
      *
      * @param pStart Value to which {@link #start} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setStart( Stop pStart ) {
+    public B setStart( Stop pStart ) {
       start = pStart;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets association {@link #end}.<br/>
      *
      * @param pEnd Value to which {@link #end} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setEnd( @MyNotNullProperty Stop pEnd ) {
+    public B setEnd( @MyNotNullProperty Stop pEnd ) {
       end = pEnd;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #link}.<br/>
      *
      * @param pLink Value to which {@link #link} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setLink( @MyNotNullProperty String pLink ) {
+    public B setLink( @MyNotNullProperty String pLink ) {
       // Assign value to attribute
       link = pLink;
-      return this;
+      return this.self();
     }
+
+    /**
+     * Method returns instance of this builder. Operation is part of generic builder pattern.
+     */
+    protected abstract B self( );
 
     /**
      * Method creates a new instance of class DirectedEdge. The object will be initialized with the values of the
@@ -188,6 +171,23 @@ public class DirectedEdge {
      *
      * @return DirectedEdge Created object. The method never returns null.
      */
+    public abstract T build( );
+  }
+
+  static final class DirectedEdgeBuilderImpl extends DirectedEdgeBuilder<DirectedEdge, DirectedEdgeBuilderImpl> {
+    protected DirectedEdgeBuilderImpl( ) {
+    }
+
+    protected DirectedEdgeBuilderImpl( DirectedEdge pObject ) {
+      super(pObject);
+    }
+
+    @Override
+    protected DirectedEdgeBuilderImpl self( ) {
+      return this;
+    }
+
+    @Override
     public DirectedEdge build( ) {
       DirectedEdge lObject = new DirectedEdge(this);
       SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
@@ -355,7 +355,7 @@ public class DirectedEdge {
    * @return {@link Builder} New builder that can be used to create new DirectedEdge objects. The method never returns
    * null.
    */
-  public Builder toBuilder( ) {
-    return new Builder(this);
+  public DirectedEdgeBuilder<?, ?> toBuilder( ) {
+    return new DirectedEdgeBuilderImpl(this);
   }
 }

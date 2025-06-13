@@ -9,6 +9,7 @@
 «EXTENSION functions::JEAFService»
 «EXTENSION functions::JEAFDeprecated»
 «EXTENSION functions::SystemProperties»
+«EXTENSION functions::Builder»
 
 
 «DEFINE GenerateToStringMethod FOR uml::Class»
@@ -387,7 +388,7 @@
 			   «ENDIF»
 		   «ENDFOREACH») {
 	
-		    «name».Builder lBuilder = «name».builder();
+		   «IF this.hasGenericBuilder()»«IF this.customizeGenericBuilder()»«name».«ENDIF»«this.builderName()»<?, ?>«ELSE»«name».Builder«ENDIF» lBuilder = «name».builder();
            «FOREACH this.getAllAttributesForOfOperation() AS attr»
                «IF attr.isSoftLink()»
                    lBuilder.set«attr.getSoftLinkPropertyName().toFirstUpper()»(«attr.getSoftLinkPropertyName().asParameter()»);

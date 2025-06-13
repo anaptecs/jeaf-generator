@@ -8,28 +8,23 @@ package com.anaptecs.spring.base;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonAutoDetect(
     fieldVisibility = JsonAutoDetect.Visibility.ANY,
     getterVisibility = JsonAutoDetect.Visibility.NONE,
     isGetterVisibility = JsonAutoDetect.Visibility.NONE,
     setterVisibility = JsonAutoDetect.Visibility.NONE,
     creatorVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonDeserialize(builder = SwissGeoPosition.SwissGeoPositionBuilderImpl.class)
 public class SwissGeoPosition extends GeoPosition {
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected SwissGeoPosition( ) {
-  }
-
   /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected SwissGeoPosition( Builder pBuilder ) {
+  protected SwissGeoPosition( SwissGeoPositionBuilder<?, ?> pBuilder ) {
     // Call constructor of super class.
     super(pBuilder);
   }
@@ -39,8 +34,8 @@ public class SwissGeoPosition extends GeoPosition {
    *
    * @return {@link Builder} New builder that can be used to create new SwissGeoPosition objects.
    */
-  public static Builder builder( ) {
-    return new Builder();
+  public static SwissGeoPositionBuilder<?, ?> builder( ) {
+    return new SwissGeoPositionBuilderImpl();
   }
 
   /**
@@ -55,10 +50,10 @@ public class SwissGeoPosition extends GeoPosition {
    *
    * @param pLatitude Value to which {@link #latitude} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.SwissGeoPosition}
+   * @return {@link SwissGeoPosition}
    */
   public static SwissGeoPosition of( String pName, MyType pType, int pLongitude, int pLatitude ) {
-    SwissGeoPosition.Builder lBuilder = SwissGeoPosition.builder();
+    SwissGeoPositionBuilder<?, ?> lBuilder = SwissGeoPosition.builder();
     lBuilder.setName(pName);
     lBuilder.setType(pType);
     lBuilder.setLongitude(pLongitude);
@@ -69,91 +64,23 @@ public class SwissGeoPosition extends GeoPosition {
   /**
    * Class implements builder to create a new instance of class <code>SwissGeoPosition</code>.
    */
-  public static class Builder extends GeoPosition.Builder {
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  public static abstract class SwissGeoPositionBuilder<T extends SwissGeoPosition, B extends SwissGeoPositionBuilder<T, B>>
+      extends GeoPositionBuilder<T, B> {
     /**
-     * Use {@link SwissGeoPosition#builder()} instead of private constructor to create new builder.
+     * Use {@link SwissGeoPositionBuilder#builder()} instead of private constructor to create new builder.
      */
-    protected Builder( ) {
+    protected SwissGeoPositionBuilder( ) {
       super();
     }
 
     /**
-     * Use {@link SwissGeoPosition#builder(SwissGeoPosition)} instead of private constructor to create new builder.
+     * Use {@link SwissGeoPositionBuilder#builder(SwissGeoPosition)} instead of private constructor to create new
+     * builder.
      */
-    protected Builder( SwissGeoPosition pObject ) {
+    protected SwissGeoPositionBuilder( SwissGeoPosition pObject ) {
       super(pObject);
-    }
-
-    /**
-     * Method returns a new builder.
-     *
-     * @return {@link Builder} New builder that can be used to create new SwissGeoPosition objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     *
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new SwissGeoPosition objects. The method never
-     * returns null.
-     */
-    public static Builder newBuilder( SwissGeoPosition pObject ) {
-      return new Builder(pObject);
-    }
-
-    /**
-     * Method sets attribute {@link #name}.<br/>
-     *
-     * @param pName Value to which {@link #name} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
-     */
-    @Override
-    public Builder setName( String pName ) {
-      // Call super class implementation.
-      super.setName(pName);
-      return this;
-    }
-
-    /**
-     * Method sets association {@link #type}.<br/>
-     *
-     * @param pType Value to which {@link #type} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
-     */
-    @Override
-    public Builder setType( MyType pType ) {
-      // Call super class implementation.
-      super.setType(pType);
-      return this;
-    }
-
-    /**
-     * Method sets attribute {@link #longitude}.<br/>
-     *
-     * @param pLongitude Value to which {@link #longitude} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
-     */
-    @Override
-    public Builder setLongitude( int pLongitude ) {
-      // Call super class implementation.
-      super.setLongitude(pLongitude);
-      return this;
-    }
-
-    /**
-     * Method sets attribute {@link #latitude}.<br/>
-     *
-     * @param pLatitude Value to which {@link #latitude} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
-     */
-    @Override
-    public Builder setLatitude( int pLatitude ) {
-      // Call super class implementation.
-      super.setLatitude(pLatitude);
-      return this;
     }
 
     /**
@@ -162,6 +89,24 @@ public class SwissGeoPosition extends GeoPosition {
      *
      * @return SwissGeoPosition Created object. The method never returns null.
      */
+    public abstract T build( );
+  }
+
+  static final class SwissGeoPositionBuilderImpl
+      extends SwissGeoPositionBuilder<SwissGeoPosition, SwissGeoPositionBuilderImpl> {
+    protected SwissGeoPositionBuilderImpl( ) {
+    }
+
+    protected SwissGeoPositionBuilderImpl( SwissGeoPosition pObject ) {
+      super(pObject);
+    }
+
+    @Override
+    protected SwissGeoPositionBuilderImpl self( ) {
+      return this;
+    }
+
+    @Override
     public SwissGeoPosition build( ) {
       SwissGeoPosition lObject = new SwissGeoPosition(this);
       SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
@@ -201,7 +146,7 @@ public class SwissGeoPosition extends GeoPosition {
    * @return {@link Builder} New builder that can be used to create new SwissGeoPosition objects. The method never
    * returns null.
    */
-  public Builder toBuilder( ) {
-    return new Builder(this);
+  public SwissGeoPositionBuilder<?, ?> toBuilder( ) {
+    return new SwissGeoPositionBuilderImpl(this);
   }
 }

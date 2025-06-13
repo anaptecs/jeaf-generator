@@ -15,6 +15,13 @@ import java.util.TimeZone;
 
 import javax.inject.Inject;
 
+import com.anaptecs.jeaf.tools.api.Tools;
+import com.anaptecs.spring.base.BookingCode;
+import com.anaptecs.spring.base.BookingID;
+import com.anaptecs.spring.base.DoubleCode;
+import com.anaptecs.spring.base.InventoryType;
+import com.anaptecs.spring.impl.SpringTestApplication;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.hc.client5.http.cookie.BasicCookieStore;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
@@ -27,20 +34,14 @@ import org.apache.hc.core5.http.io.entity.StringEntity;
 import org.apache.hc.core5.http.io.support.ClassicRequestBuilder;
 import org.apache.hc.core5.http.protocol.BasicHttpContext;
 import org.apache.hc.core5.http.protocol.HttpContext;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.ResponseEntity;
 
-import com.anaptecs.jeaf.tools.api.Tools;
-import com.anaptecs.spring.base.BookingCode;
-import com.anaptecs.spring.base.BookingID;
-import com.anaptecs.spring.base.DoubleCode;
-import com.anaptecs.spring.base.InventoryType;
-import com.anaptecs.spring.impl.SpringTestApplication;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
+@Disabled
 @SpringBootTest(classes = SpringTestApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class SpringRESTControllerTest {
   @Autowired

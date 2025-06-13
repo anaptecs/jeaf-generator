@@ -12,6 +12,8 @@ import java.util.Objects;
 
 import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 public class TechnicalHeaderContext {
   /**
@@ -27,18 +29,11 @@ public class TechnicalHeaderContext {
   private Map<String, String> customHeaders = new HashMap<String, String>();
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  public TechnicalHeaderContext( ) {
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected TechnicalHeaderContext( Builder pBuilder ) {
+  protected TechnicalHeaderContext( TechnicalHeaderContextBuilder<?, ?> pBuilder ) {
     // Read attribute values from builder.
     reseller = pBuilder.reseller;
     // Add request headers.
@@ -50,8 +45,8 @@ public class TechnicalHeaderContext {
    *
    * @return {@link Builder} New builder that can be used to create new TechnicalHeaderContext objects.
    */
-  public static Builder builder( ) {
-    return new Builder();
+  public static TechnicalHeaderContextBuilder<?, ?> builder( ) {
+    return new TechnicalHeaderContextBuilderImpl();
   }
 
   /**
@@ -63,7 +58,7 @@ public class TechnicalHeaderContext {
    * @return {@link com.anaptecs.spring.base.TechnicalHeaderContext}
    */
   public static TechnicalHeaderContext of( String pReseller ) {
-    TechnicalHeaderContext.Builder lBuilder = TechnicalHeaderContext.builder();
+    TechnicalHeaderContextBuilder<?, ?> lBuilder = TechnicalHeaderContext.builder();
     lBuilder.setReseller(pReseller);
     return lBuilder.build();
   }
@@ -71,7 +66,9 @@ public class TechnicalHeaderContext {
   /**
    * Class implements builder to create a new instance of class <code>TechnicalHeaderContext</code>.
    */
-  public static class Builder {
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  public static abstract class TechnicalHeaderContextBuilder<T extends TechnicalHeaderContext, B extends TechnicalHeaderContextBuilder<T, B>> {
     private String reseller;
 
     /**
@@ -80,16 +77,16 @@ public class TechnicalHeaderContext {
     private Map<String, String> customHeaders = new HashMap<String, String>();
 
     /**
-     * Use {@link TechnicalHeaderContext#builder()} instead of private constructor to create new builder.
+     * Use {@link TechnicalHeaderContextBuilder#builder()} instead of private constructor to create new builder.
      */
-    protected Builder( ) {
+    protected TechnicalHeaderContextBuilder( ) {
     }
 
     /**
-     * Use {@link TechnicalHeaderContext#builder(TechnicalHeaderContext)} instead of private constructor to create new
-     * builder.
+     * Use {@link TechnicalHeaderContextBuilder#builder(TechnicalHeaderContext)} instead of private constructor to
+     * create new builder.
      */
-    protected Builder( TechnicalHeaderContext pObject ) {
+    protected TechnicalHeaderContextBuilder( TechnicalHeaderContext pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setReseller(pObject.reseller);
@@ -98,35 +95,15 @@ public class TechnicalHeaderContext {
     }
 
     /**
-     * Method returns a new builder.
-     *
-     * @return {@link Builder} New builder that can be used to create new TechnicalHeaderContext objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     *
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new TechnicalHeaderContext objects. The method
-     * never returns null.
-     */
-    public static Builder newBuilder( TechnicalHeaderContext pObject ) {
-      return new Builder(pObject);
-    }
-
-    /**
      * Method sets attribute {@link #reseller}.<br/>
      *
      * @param pReseller Value to which {@link #reseller} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setReseller( @MyNotNullProperty String pReseller ) {
+    public B setReseller( @MyNotNullProperty String pReseller ) {
       // Assign value to attribute
       reseller = pReseller;
-      return this;
+      return this.self();
     }
 
     /**
@@ -136,7 +113,7 @@ public class TechnicalHeaderContext {
      * @param pHeaderName Name of the HTTP header. The parameter must not be null,
      * @param pHeaderValue Value of the http header the parameter may be null.
      */
-    public Builder addCustomHeader( String pHeaderName, String pHeaderValue ) {
+    public TechnicalHeaderContextBuilder addCustomHeader( String pHeaderName, String pHeaderValue ) {
       if (pHeaderName != null) {
         customHeaders.put(pHeaderName, pHeaderValue);
         return this;
@@ -147,11 +124,34 @@ public class TechnicalHeaderContext {
     }
 
     /**
+     * Method returns instance of this builder. Operation is part of generic builder pattern.
+     */
+    protected abstract B self( );
+
+    /**
      * Method creates a new instance of class TechnicalHeaderContext. The object will be initialized with the values of
      * the builder.
      *
      * @return TechnicalHeaderContext Created object. The method never returns null.
      */
+    public abstract T build( );
+  }
+
+  static final class TechnicalHeaderContextBuilderImpl
+      extends TechnicalHeaderContextBuilder<TechnicalHeaderContext, TechnicalHeaderContextBuilderImpl> {
+    protected TechnicalHeaderContextBuilderImpl( ) {
+    }
+
+    protected TechnicalHeaderContextBuilderImpl( TechnicalHeaderContext pObject ) {
+      super(pObject);
+    }
+
+    @Override
+    protected TechnicalHeaderContextBuilderImpl self( ) {
+      return this;
+    }
+
+    @Override
     public TechnicalHeaderContext build( ) {
       TechnicalHeaderContext lObject = new TechnicalHeaderContext(this);
       SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
@@ -267,7 +267,7 @@ public class TechnicalHeaderContext {
    * @return {@link Builder} New builder that can be used to create new TechnicalHeaderContext objects. The method never
    * returns null.
    */
-  public Builder toBuilder( ) {
-    return new Builder(this);
+  public TechnicalHeaderContextBuilder<?, ?> toBuilder( ) {
+    return new TechnicalHeaderContextBuilderImpl(this);
   }
 }

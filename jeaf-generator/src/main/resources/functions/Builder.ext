@@ -1,0 +1,45 @@
+extension java::Naming;
+extension functions::SystemProperties;
+extension functions::Class;
+extension java::GeneratorCommons;
+
+
+cached boolean hasGenericBuilder(uml::Class class):
+	class.getTemplateParams().length == 0 && useGenericBuilderPattern();
+    
+cached String genericBuilderName(uml::Class class):
+	class.name + "Builder";
+	
+cached String genericBuilderImplName(uml::Class class):
+	class.name + "BuilderImpl";	
+	
+cached String abstractBuilderName(uml::Class class):
+	if class.hasGenericBuilder() == false
+	then "Builder"
+	else
+		if class.customizeGenericBuilder()
+		then class.genericBuilderName()+"Base"
+		else class.genericBuilderName();
+
+cached String builderName(uml::Class class):
+	if class.hasGenericBuilder()
+	then class.genericBuilderName()
+	else "Builder";
+	
+cached String builderImplName(uml::Class class):
+	if class.hasGenericBuilder()
+	then class.genericBuilderImplName()
+	else "Builder";
+	
+cached String returnStatement(uml::Class class):
+	if class.hasGenericBuilder()
+	then "this.self()"
+	else "this";
+	
+cached boolean hasNonAbtractParent(uml::Class class):
+	if class.parents().size == 0 
+	then false
+	else 
+		if class.parents().first().isAbstract == false && class.parents().first().parents().isEmpty
+		then false
+		else class.parents().first().asClass().hasNonAbtractParent();

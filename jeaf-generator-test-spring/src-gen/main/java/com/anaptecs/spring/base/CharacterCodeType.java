@@ -8,8 +8,8 @@ package com.anaptecs.spring.base;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonAutoDetect(
     fieldVisibility = JsonAutoDetect.Visibility.ANY,
     getterVisibility = JsonAutoDetect.Visibility.NONE,
@@ -25,18 +25,11 @@ public class CharacterCodeType {
   private char code;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected CharacterCodeType( ) {
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected CharacterCodeType( Builder pBuilder ) {
+  protected CharacterCodeType( CharacterCodeTypeBuilder<?, ?> pBuilder ) {
     // Read attribute values from builder.
     code = pBuilder.code;
   }
@@ -46,8 +39,8 @@ public class CharacterCodeType {
    *
    * @return {@link Builder} New builder that can be used to create new CharacterCodeType objects.
    */
-  public static Builder builder( ) {
-    return new Builder();
+  public static CharacterCodeTypeBuilder<?, ?> builder( ) {
+    return new CharacterCodeTypeBuilderImpl();
   }
 
   /**
@@ -59,7 +52,7 @@ public class CharacterCodeType {
    * @return {@link CharacterCodeType}
    */
   public static CharacterCodeType of( char pCode ) {
-    CharacterCodeType.Builder lBuilder = CharacterCodeType.builder();
+    CharacterCodeTypeBuilder<?, ?> lBuilder = CharacterCodeType.builder();
     lBuilder.setCode(pCode);
     return lBuilder.build();
   }
@@ -67,19 +60,22 @@ public class CharacterCodeType {
   /**
    * Class implements builder to create a new instance of class <code>CharacterCodeType</code>.
    */
-  public static class Builder {
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  public static abstract class CharacterCodeTypeBuilder<T extends CharacterCodeType, B extends CharacterCodeTypeBuilder<T, B>> {
     private char code;
 
     /**
-     * Use {@link CharacterCodeType#builder()} instead of private constructor to create new builder.
+     * Use {@link CharacterCodeTypeBuilder#builder()} instead of private constructor to create new builder.
      */
-    protected Builder( ) {
+    protected CharacterCodeTypeBuilder( ) {
     }
 
     /**
-     * Use {@link CharacterCodeType#builder(CharacterCodeType)} instead of private constructor to create new builder.
+     * Use {@link CharacterCodeTypeBuilder#builder(CharacterCodeType)} instead of private constructor to create new
+     * builder.
      */
-    protected Builder( CharacterCodeType pObject ) {
+    protected CharacterCodeTypeBuilder( CharacterCodeType pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setCode(pObject.code);
@@ -87,36 +83,21 @@ public class CharacterCodeType {
     }
 
     /**
-     * Method returns a new builder.
-     *
-     * @return {@link Builder} New builder that can be used to create new CharacterCodeType objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     *
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new CharacterCodeType objects. The method never
-     * returns null.
-     */
-    public static Builder newBuilder( CharacterCodeType pObject ) {
-      return new Builder(pObject);
-    }
-
-    /**
      * Method sets attribute {@link #code}.<br/>
      *
      * @param pCode Value to which {@link #code} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setCode( char pCode ) {
+    public B setCode( char pCode ) {
       // Assign value to attribute
       code = pCode;
-      return this;
+      return this.self();
     }
+
+    /**
+     * Method returns instance of this builder. Operation is part of generic builder pattern.
+     */
+    protected abstract B self( );
 
     /**
      * Method creates a new instance of class CharacterCodeType. The object will be initialized with the values of the
@@ -124,6 +105,24 @@ public class CharacterCodeType {
      *
      * @return CharacterCodeType Created object. The method never returns null.
      */
+    public abstract T build( );
+  }
+
+  static final class CharacterCodeTypeBuilderImpl
+      extends CharacterCodeTypeBuilder<CharacterCodeType, CharacterCodeTypeBuilderImpl> {
+    protected CharacterCodeTypeBuilderImpl( ) {
+    }
+
+    protected CharacterCodeTypeBuilderImpl( CharacterCodeType pObject ) {
+      super(pObject);
+    }
+
+    @Override
+    protected CharacterCodeTypeBuilderImpl self( ) {
+      return this;
+    }
+
+    @Override
     public CharacterCodeType build( ) {
       CharacterCodeType lObject = new CharacterCodeType(this);
       SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
@@ -205,7 +204,7 @@ public class CharacterCodeType {
    * @return {@link Builder} New builder that can be used to create new CharacterCodeType objects. The method never
    * returns null.
    */
-  public Builder toBuilder( ) {
-    return new Builder(this);
+  public CharacterCodeTypeBuilder<?, ?> toBuilder( ) {
+    return new CharacterCodeTypeBuilderImpl(this);
   }
 }

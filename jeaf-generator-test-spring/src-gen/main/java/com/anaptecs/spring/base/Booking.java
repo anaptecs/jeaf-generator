@@ -16,16 +16,16 @@ import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonSetter;
-import com.fasterxml.jackson.annotation.Nulls;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonAutoDetect(
     fieldVisibility = JsonAutoDetect.Visibility.ANY,
     getterVisibility = JsonAutoDetect.Visibility.NONE,
     isGetterVisibility = JsonAutoDetect.Visibility.NONE,
     setterVisibility = JsonAutoDetect.Visibility.NONE,
     creatorVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonDeserialize(builder = Booking.BookingBuilderImpl.class)
 public class Booking {
   /**
    * Constant for the name of attribute "bookingID".
@@ -46,23 +46,14 @@ public class Booking {
 
   private String customerName;
 
-  @JsonSetter(nulls = Nulls.SKIP)
   private List<InventoryType> inventories;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected Booking( ) {
-    inventories = new ArrayList<>();
-  }
 
   /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected Booking( Builder pBuilder ) {
+  protected Booking( BookingBuilder<?, ?> pBuilder ) {
     // Read attribute values from builder.
     bookingID = pBuilder.bookingID;
     customerName = pBuilder.customerName;
@@ -79,8 +70,8 @@ public class Booking {
    *
    * @return {@link Builder} New builder that can be used to create new Booking objects.
    */
-  public static Builder builder( ) {
-    return new Builder();
+  public static BookingBuilder<?, ?> builder( ) {
+    return new BookingBuilderImpl();
   }
 
   /**
@@ -93,10 +84,10 @@ public class Booking {
    *
    * @param pInventories Value to which {@link #inventories} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.Booking}
+   * @return {@link Booking}
    */
   public static Booking of( BookingID pBookingID, String pCustomerName, List<InventoryType> pInventories ) {
-    Booking.Builder lBuilder = Booking.builder();
+    BookingBuilder<?, ?> lBuilder = Booking.builder();
     lBuilder.setBookingID(pBookingID);
     lBuilder.setCustomerName(pCustomerName);
     lBuilder.setInventories(pInventories);
@@ -106,7 +97,9 @@ public class Booking {
   /**
    * Class implements builder to create a new instance of class <code>Booking</code>.
    */
-  public static class Builder {
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  public static abstract class BookingBuilder<T extends Booking, B extends BookingBuilder<T, B>> {
     private BookingID bookingID;
 
     private String customerName;
@@ -114,15 +107,15 @@ public class Booking {
     private List<InventoryType> inventories;
 
     /**
-     * Use {@link Booking#builder()} instead of private constructor to create new builder.
+     * Use {@link BookingBuilder#builder()} instead of private constructor to create new builder.
      */
-    protected Builder( ) {
+    protected BookingBuilder( ) {
     }
 
     /**
-     * Use {@link Booking#builder(Booking)} instead of private constructor to create new builder.
+     * Use {@link BookingBuilder#builder(Booking)} instead of private constructor to create new builder.
      */
-    protected Builder( Booking pObject ) {
+    protected BookingBuilder( Booking pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setBookingID(pObject.bookingID);
@@ -132,55 +125,35 @@ public class Booking {
     }
 
     /**
-     * Method returns a new builder.
-     *
-     * @return {@link Builder} New builder that can be used to create new Booking objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     *
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new Booking objects. The method never returns
-     * null.
-     */
-    public static Builder newBuilder( Booking pObject ) {
-      return new Builder(pObject);
-    }
-
-    /**
      * Method sets association {@link #bookingID}.<br/>
      *
      * @param pBookingID Value to which {@link #bookingID} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setBookingID( @MyNotNullProperty BookingID pBookingID ) {
+    public B setBookingID( @MyNotNullProperty BookingID pBookingID ) {
       bookingID = pBookingID;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #customerName}.<br/>
      *
      * @param pCustomerName Value to which {@link #customerName} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setCustomerName( @MyNotNullProperty String pCustomerName ) {
+    public B setCustomerName( @MyNotNullProperty String pCustomerName ) {
       // Assign value to attribute
       customerName = pCustomerName;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets association {@link #inventories}.<br/>
      *
      * @param pInventories Collection to which {@link #inventories} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setInventories( List<InventoryType> pInventories ) {
+    public B setInventories( List<InventoryType> pInventories ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pInventories != null) {
         inventories = new ArrayList<InventoryType>(pInventories);
@@ -188,32 +161,32 @@ public class Booking {
       else {
         inventories = null;
       }
-      return this;
+      return this.self();
     }
 
     /**
      * Method adds the passed objects to association {@link #inventories}.<br/>
      *
      * @param pInventories Array of objects that should be added to {@link #inventories}. The parameter may be null.
-     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining. Method never returns null.
      */
-    public Builder addToInventories( InventoryType... pInventories ) {
+    public B addToInventories( InventoryType... pInventories ) {
       if (pInventories != null) {
         if (inventories == null) {
           inventories = new ArrayList<InventoryType>();
         }
         inventories.addAll(Arrays.asList(pInventories));
       }
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets association {@link #inventories}.<br/>
      *
      * @param pInventories Array with objects to which {@link #inventories} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setInventories( InventoryType... pInventories ) {
+    public B setInventories( InventoryType... pInventories ) {
       // Copy the content of the passed array.
       if (pInventories != null) {
         inventories = new ArrayList<InventoryType>(Arrays.asList(pInventories));
@@ -221,14 +194,36 @@ public class Booking {
       else {
         inventories = null;
       }
-      return this;
+      return this.self();
     }
+
+    /**
+     * Method returns instance of this builder. Operation is part of generic builder pattern.
+     */
+    protected abstract B self( );
 
     /**
      * Method creates a new instance of class Booking. The object will be initialized with the values of the builder.
      *
      * @return Booking Created object. The method never returns null.
      */
+    public abstract T build( );
+  }
+
+  static final class BookingBuilderImpl extends BookingBuilder<Booking, BookingBuilderImpl> {
+    protected BookingBuilderImpl( ) {
+    }
+
+    protected BookingBuilderImpl( Booking pObject ) {
+      super(pObject);
+    }
+
+    @Override
+    protected BookingBuilderImpl self( ) {
+      return this;
+    }
+
+    @Override
     public Booking build( ) {
       Booking lObject = new Booking(this);
       SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
@@ -425,7 +420,7 @@ public class Booking {
    *
    * @return {@link Builder} New builder that can be used to create new Booking objects. The method never returns null.
    */
-  public Builder toBuilder( ) {
-    return new Builder(this);
+  public BookingBuilder<?, ?> toBuilder( ) {
+    return new BookingBuilderImpl(this);
   }
 }

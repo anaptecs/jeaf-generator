@@ -17,9 +17,7 @@
 | Name | Type | Multiplicity | Constraints | Description |
 |------|------|:------------:|-------------|-------------|
 | `iban` | `int` | `1..1` |  |  |
-| `owner` | [`Customer`](#customer) | `1..1` |  |  |
 | `currency` | `java.util.Currency` | `1..1` |  |  |
-| `allBookings` | [`Booking`](#booking) | `0..*` |  |  |
 
 <br>
 
@@ -80,6 +78,7 @@
 
 | Name | Type | Multiplicity | Constraints | Description |
 |------|------|:------------:|-------------|-------------|
+| `tags` | `String` | `1..1` |  |  |
 
 <br>
 

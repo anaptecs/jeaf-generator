@@ -1353,6 +1353,13 @@ public class GeneratorMojo extends AbstractMojo {
   private Boolean enableLegacyBuilderStyle;
 
   /**
+   * Switch enables usage of so called generic builder pattern, which solves several problems especially in the area of
+   * inheritance and builders.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean useGenericBuilderPattern;
+
+  /**
    * Switch enables that JEAF Generator generates a builder(...) method that directly contains all mandatory fields.
    */
   @Parameter(required = false, defaultValue = "false")
@@ -1984,6 +1991,10 @@ public class GeneratorMojo extends AbstractMojo {
       lLog.info("Enable legacy builder style:                      " + enableLegacyBuilderStyle);
     }
 
+    if (useGenericBuilderPattern) {
+      lLog.info("Using generic builder pattern:                    " + useGenericBuilderPattern);
+    }
+
     if (generateBuilderWithAllMandatoryFields) {
       lLog.info("Generate builder with all manadatory fields:      " + generateBuilderWithAllMandatoryFields);
     }
@@ -2272,6 +2283,8 @@ public class GeneratorMojo extends AbstractMojo {
 
       System.setProperty("switch.gen.enable.detailed.toString", enableDetailedToStringMethod.toString());
       System.setProperty("switch.gen.enable.legacy.builder.style", enableLegacyBuilderStyle.toString());
+      System.setProperty(PROPERTY_PREFIX + "useGenericBuilderPattern", useGenericBuilderPattern.toString());
+
       System.setProperty("switch.gen.enable.builder.for.manadatory.fields",
           generateBuilderWithAllMandatoryFields.toString());
 

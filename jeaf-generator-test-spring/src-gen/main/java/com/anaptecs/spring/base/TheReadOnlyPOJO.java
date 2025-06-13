@@ -15,16 +15,16 @@ import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonSetter;
-import com.fasterxml.jackson.annotation.Nulls;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonAutoDetect(
     fieldVisibility = JsonAutoDetect.Visibility.ANY,
     getterVisibility = JsonAutoDetect.Visibility.NONE,
     isGetterVisibility = JsonAutoDetect.Visibility.NONE,
     setterVisibility = JsonAutoDetect.Visibility.NONE,
     creatorVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonDeserialize(builder = TheReadOnlyPOJO.TheReadOnlyPOJOBuilderImpl.class)
 public class TheReadOnlyPOJO {
   /**
    * Constant for the name of attribute "dataUnit".
@@ -52,26 +52,14 @@ public class TheReadOnlyPOJO {
 
   private final int[] ints;
 
-  @JsonSetter(nulls = Nulls.SKIP)
   private final List<Entity> entities;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected TheReadOnlyPOJO( ) {
-    dataUnit = null;
-    name = null;
-    ints = null;
-    entities = new ArrayList<>();
-  }
 
   /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected TheReadOnlyPOJO( Builder pBuilder ) {
+  protected TheReadOnlyPOJO( TheReadOnlyPOJOBuilder<?, ?> pBuilder ) {
     // Read attribute values from builder.
     dataUnit = pBuilder.dataUnit;
     name = pBuilder.name;
@@ -89,8 +77,8 @@ public class TheReadOnlyPOJO {
    *
    * @return {@link Builder} New builder that can be used to create new TheReadOnlyPOJO objects.
    */
-  public static Builder builder( ) {
-    return new Builder();
+  public static TheReadOnlyPOJOBuilder<?, ?> builder( ) {
+    return new TheReadOnlyPOJOBuilderImpl();
   }
 
   /**
@@ -99,10 +87,10 @@ public class TheReadOnlyPOJO {
    *
    * @param pName Value to which {@link #name} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.TheReadOnlyPOJO}
+   * @return {@link TheReadOnlyPOJO}
    */
   public static TheReadOnlyPOJO of( String pName ) {
-    TheReadOnlyPOJO.Builder lBuilder = TheReadOnlyPOJO.builder();
+    TheReadOnlyPOJOBuilder<?, ?> lBuilder = TheReadOnlyPOJO.builder();
     lBuilder.setName(pName);
     return lBuilder.build();
   }
@@ -110,7 +98,9 @@ public class TheReadOnlyPOJO {
   /**
    * Class implements builder to create a new instance of class <code>TheReadOnlyPOJO</code>.
    */
-  public static class Builder {
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  public static abstract class TheReadOnlyPOJOBuilder<T extends TheReadOnlyPOJO, B extends TheReadOnlyPOJOBuilder<T, B>> {
     private DataUnit dataUnit;
 
     private String name;
@@ -120,15 +110,15 @@ public class TheReadOnlyPOJO {
     private List<Entity> entities;
 
     /**
-     * Use {@link TheReadOnlyPOJO#builder()} instead of private constructor to create new builder.
+     * Use {@link TheReadOnlyPOJOBuilder#builder()} instead of private constructor to create new builder.
      */
-    protected Builder( ) {
+    protected TheReadOnlyPOJOBuilder( ) {
     }
 
     /**
-     * Use {@link TheReadOnlyPOJO#builder(TheReadOnlyPOJO)} instead of private constructor to create new builder.
+     * Use {@link TheReadOnlyPOJOBuilder#builder(TheReadOnlyPOJO)} instead of private constructor to create new builder.
      */
-    protected Builder( TheReadOnlyPOJO pObject ) {
+    protected TheReadOnlyPOJOBuilder( TheReadOnlyPOJO pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setDataUnit(pObject.dataUnit);
@@ -139,55 +129,35 @@ public class TheReadOnlyPOJO {
     }
 
     /**
-     * Method returns a new builder.
-     *
-     * @return {@link Builder} New builder that can be used to create new TheReadOnlyPOJO objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     *
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new TheReadOnlyPOJO objects. The method never
-     * returns null.
-     */
-    public static Builder newBuilder( TheReadOnlyPOJO pObject ) {
-      return new Builder(pObject);
-    }
-
-    /**
      * Method sets association {@link #dataUnit}.<br/>
      *
      * @param pDataUnit Value to which {@link #dataUnit} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setDataUnit( DataUnit pDataUnit ) {
+    public B setDataUnit( DataUnit pDataUnit ) {
       dataUnit = pDataUnit;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #name}.<br/>
      *
      * @param pName Value to which {@link #name} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setName( @MyNotNullProperty String pName ) {
+    public B setName( @MyNotNullProperty String pName ) {
       // Assign value to attribute
       name = pName;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #ints}.<br/>
      *
      * @param pInts Value to which {@link #ints} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setInts( int[] pInts ) {
+    public B setInts( int[] pInts ) {
       // Assign value to attribute
       if (pInts != null) {
         ints = new int[pInts.length];
@@ -196,16 +166,16 @@ public class TheReadOnlyPOJO {
       else {
         ints = null;
       }
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets association {@link #entities}.<br/>
      *
      * @param pEntities Collection to which {@link #entities} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setEntities( List<Entity> pEntities ) {
+    public B setEntities( List<Entity> pEntities ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pEntities != null) {
         entities = new ArrayList<Entity>(pEntities);
@@ -213,32 +183,32 @@ public class TheReadOnlyPOJO {
       else {
         entities = null;
       }
-      return this;
+      return this.self();
     }
 
     /**
      * Method adds the passed objects to association {@link #entities}.<br/>
      *
      * @param pEntities Array of objects that should be added to {@link #entities}. The parameter may be null.
-     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining. Method never returns null.
      */
-    public Builder addToEntities( Entity... pEntities ) {
+    public B addToEntities( Entity... pEntities ) {
       if (pEntities != null) {
         if (entities == null) {
           entities = new ArrayList<Entity>();
         }
         entities.addAll(Arrays.asList(pEntities));
       }
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets association {@link #entities}.<br/>
      *
      * @param pEntities Array with objects to which {@link #entities} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setEntities( Entity... pEntities ) {
+    public B setEntities( Entity... pEntities ) {
       // Copy the content of the passed array.
       if (pEntities != null) {
         entities = new ArrayList<Entity>(Arrays.asList(pEntities));
@@ -246,8 +216,13 @@ public class TheReadOnlyPOJO {
       else {
         entities = null;
       }
-      return this;
+      return this.self();
     }
+
+    /**
+     * Method returns instance of this builder. Operation is part of generic builder pattern.
+     */
+    protected abstract B self( );
 
     /**
      * Method creates a new instance of class TheReadOnlyPOJO. The object will be initialized with the values of the
@@ -255,6 +230,24 @@ public class TheReadOnlyPOJO {
      *
      * @return TheReadOnlyPOJO Created object. The method never returns null.
      */
+    public abstract T build( );
+  }
+
+  static final class TheReadOnlyPOJOBuilderImpl
+      extends TheReadOnlyPOJOBuilder<TheReadOnlyPOJO, TheReadOnlyPOJOBuilderImpl> {
+    protected TheReadOnlyPOJOBuilderImpl( ) {
+    }
+
+    protected TheReadOnlyPOJOBuilderImpl( TheReadOnlyPOJO pObject ) {
+      super(pObject);
+    }
+
+    @Override
+    protected TheReadOnlyPOJOBuilderImpl self( ) {
+      return this;
+    }
+
+    @Override
     public TheReadOnlyPOJO build( ) {
       TheReadOnlyPOJO lObject = new TheReadOnlyPOJO(this);
       SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
@@ -405,7 +398,7 @@ public class TheReadOnlyPOJO {
    * @return {@link Builder} New builder that can be used to create new TheReadOnlyPOJO objects. The method never
    * returns null.
    */
-  public Builder toBuilder( ) {
-    return new Builder(this);
+  public TheReadOnlyPOJOBuilder<?, ?> toBuilder( ) {
+    return new TheReadOnlyPOJOBuilderImpl(this);
   }
 }

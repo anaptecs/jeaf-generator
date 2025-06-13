@@ -8,28 +8,23 @@ package com.anaptecs.spring.base;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonAutoDetect(
     fieldVisibility = JsonAutoDetect.Visibility.ANY,
     getterVisibility = JsonAutoDetect.Visibility.NONE,
     isGetterVisibility = JsonAutoDetect.Visibility.NONE,
     setterVisibility = JsonAutoDetect.Visibility.NONE,
     creatorVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonDeserialize(builder = CHStopPlace.CHStopPlaceBuilderImpl.class)
 public class CHStopPlace extends StopPlaceRef {
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected CHStopPlace( ) {
-  }
-
   /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected CHStopPlace( Builder pBuilder ) {
+  protected CHStopPlace( CHStopPlaceBuilder<?, ?> pBuilder ) {
     // Call constructor of super class.
     super(pBuilder);
   }
@@ -39,8 +34,8 @@ public class CHStopPlace extends StopPlaceRef {
    *
    * @return {@link Builder} New builder that can be used to create new CHStopPlace objects.
    */
-  public static Builder builder( ) {
-    return new Builder();
+  public static CHStopPlaceBuilder<?, ?> builder( ) {
+    return new CHStopPlaceBuilderImpl();
   }
 
   /**
@@ -51,10 +46,10 @@ public class CHStopPlace extends StopPlaceRef {
    *
    * @param pType Value to which {@link #type} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.CHStopPlace}
+   * @return {@link CHStopPlace}
    */
   public static CHStopPlace of( String pName, MyType pType ) {
-    CHStopPlace.Builder lBuilder = CHStopPlace.builder();
+    CHStopPlaceBuilder<?, ?> lBuilder = CHStopPlace.builder();
     lBuilder.setName(pName);
     lBuilder.setType(pType);
     return lBuilder.build();
@@ -63,65 +58,22 @@ public class CHStopPlace extends StopPlaceRef {
   /**
    * Class implements builder to create a new instance of class <code>CHStopPlace</code>.
    */
-  public static class Builder extends StopPlaceRef.Builder {
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  public static abstract class CHStopPlaceBuilder<T extends CHStopPlace, B extends CHStopPlaceBuilder<T, B>>
+      extends StopPlaceRefBuilder<T, B> {
     /**
-     * Use {@link CHStopPlace#builder()} instead of private constructor to create new builder.
+     * Use {@link CHStopPlaceBuilder#builder()} instead of private constructor to create new builder.
      */
-    protected Builder( ) {
+    protected CHStopPlaceBuilder( ) {
       super();
     }
 
     /**
-     * Use {@link CHStopPlace#builder(CHStopPlace)} instead of private constructor to create new builder.
+     * Use {@link CHStopPlaceBuilder#builder(CHStopPlace)} instead of private constructor to create new builder.
      */
-    protected Builder( CHStopPlace pObject ) {
+    protected CHStopPlaceBuilder( CHStopPlace pObject ) {
       super(pObject);
-    }
-
-    /**
-     * Method returns a new builder.
-     *
-     * @return {@link Builder} New builder that can be used to create new CHStopPlace objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     *
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new CHStopPlace objects. The method never returns
-     * null.
-     */
-    public static Builder newBuilder( CHStopPlace pObject ) {
-      return new Builder(pObject);
-    }
-
-    /**
-     * Method sets attribute {@link #name}.<br/>
-     *
-     * @param pName Value to which {@link #name} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
-     */
-    @Override
-    public Builder setName( String pName ) {
-      // Call super class implementation.
-      super.setName(pName);
-      return this;
-    }
-
-    /**
-     * Method sets association {@link #type}.<br/>
-     *
-     * @param pType Value to which {@link #type} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
-     */
-    @Override
-    public Builder setType( MyType pType ) {
-      // Call super class implementation.
-      super.setType(pType);
-      return this;
     }
 
     /**
@@ -130,6 +82,23 @@ public class CHStopPlace extends StopPlaceRef {
      *
      * @return CHStopPlace Created object. The method never returns null.
      */
+    public abstract T build( );
+  }
+
+  static final class CHStopPlaceBuilderImpl extends CHStopPlaceBuilder<CHStopPlace, CHStopPlaceBuilderImpl> {
+    protected CHStopPlaceBuilderImpl( ) {
+    }
+
+    protected CHStopPlaceBuilderImpl( CHStopPlace pObject ) {
+      super(pObject);
+    }
+
+    @Override
+    protected CHStopPlaceBuilderImpl self( ) {
+      return this;
+    }
+
+    @Override
     public CHStopPlace build( ) {
       CHStopPlace lObject = new CHStopPlace(this);
       SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
@@ -169,7 +138,7 @@ public class CHStopPlace extends StopPlaceRef {
    * @return {@link Builder} New builder that can be used to create new CHStopPlace objects. The method never returns
    * null.
    */
-  public Builder toBuilder( ) {
-    return new Builder(this);
+  public CHStopPlaceBuilder<?, ?> toBuilder( ) {
+    return new CHStopPlaceBuilderImpl(this);
   }
 }

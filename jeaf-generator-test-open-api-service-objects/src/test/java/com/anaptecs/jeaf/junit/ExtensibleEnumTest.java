@@ -5,18 +5,17 @@
  */
 package com.anaptecs.jeaf.junit;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
-
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.anaptecs.jeaf.json.api.JSON;
 import com.anaptecs.jeaf.json.api.JSONTools;
 import com.anaptecs.jeaf.junit.openapi.base.EnumTest;
 import com.anaptecs.jeaf.junit.openapi.base.ExtensibleEnum;
 import com.anaptecs.jeaf.junit.openapi.base.ExtensibleEnum.ExtensibleEnumType;
+import org.junit.jupiter.api.Test;
 
 public class ExtensibleEnumTest {
   @Test

@@ -10,6 +10,8 @@
 «EXTENSION functions::SoftLink»
 «EXTENSION functions::AddToJSON»
 «EXTENSION functions::JEAFDeprecated»
+«EXTENSION functions::Builder»
+«EXTENSION functions::Class»
 
 // this properties should be processed
 // for now all properties should be processed
@@ -64,7 +66,7 @@
         «EXPAND java::Jackson::JSONAlias»
         «EXPAND Validation::ValidationAnnotation»
         «IF isMultivalued()»
-            «IF generateJacksonAnnotations() && isTransient() == false»
+            «IF generateJacksonAnnotations() && isTransient() == false && this.owner.asClass().hasGenericBuilder() == false»
             @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SKIP)
             «ENDIF»
             «IF generateValidationAnnotationsForAssociationsFromMultiplicity() && isStatic == false && isTransient() == false && isStereotypeApplied("Size") == false && lower > 0»@«getEnterpriseJavaPackage()».validation.constraints.Size(min = «lower»)«ENDIF»
@@ -97,7 +99,7 @@
 		«EXPAND java::Jackson::JSONAlias»
 		«EXPAND Validation::ValidationAnnotation»
 		«IF isMultivalued()»
-            «IF generateJacksonAnnotations() && isTransient() == false»
+            «IF generateJacksonAnnotations() && isTransient() == false && this.owner.asClass().hasGenericBuilder() == false»
             @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SKIP)
             «ENDIF»
 			«IF generateValidationAnnotationsForAssociationsFromMultiplicity() && isStatic == false && isTransient() == false && isStereotypeApplied("Size") == false && lower > 0»@«getEnterpriseJavaPackage()».validation.constraints.Size(min = «lower»)«ENDIF»

@@ -8,6 +8,8 @@
 «EXTENSION functions::TemplateParameter»
 «EXTENSION functions::SoftLink»
 «EXTENSION functions::JEAFDeprecated»
+«EXTENSION functions::Builder»
+«EXTENSION functions::POJO»
 
 «IMPORT JMM»
 
@@ -18,7 +20,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 «DEFINE POJOClass FOR POJO»
 	«IF generatePOJOs() == true»
-		«IF this.ownedOperation.size == 0 && this.hasCustomImplementation == false && this.hasDerivedProperties() == false && (this.compositeDataTypeCustomSerialization == false || (this.compositeDataTypeCustomSerialization == true && this.generateInternalViewOfCompositeDataType() == false))»
+		«IF this.requiresCustomImplementationForPOJO() == false»
 			«FILE packagePath() + "/" + name +".java" src_gen»
 				«getFileHeader()»
 				package «this.packageName()»;
@@ -29,7 +31,7 @@
 				«EXPAND java::Helper::GenerateSuppressWarningsAnnotation»
 				«EXPAND java::Validation::ValidationAnnotation»
 				«EXPAND java::Helper::GenerateDeprecationAnnotation-»
-				«EXPAND java::Jackson::JacksonClassAnnotations -»				
+				«EXPAND java::Jackson::JacksonClassAnnotations("") -»				
 				public «IF isAbstract»abstract«ENDIF» class «name»«this.getTemplateParams()» «EXPAND SuperClassDeclaration» «EXPAND InterfaceDeclarations» {
 					«IF makePOJOsSerializable()»
                     /**
@@ -55,6 +57,7 @@
 					
 					«EXPAND java::Helper::GenerateCustomHeadersField»
 					
+					«IF this.hasGenericBuilder() == false»
 					/**
 					 * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal" object creation builder should be used instead.
 					 */
@@ -64,13 +67,18 @@
 					  «ENDIF»
 					  «EXPAND POJOPlainConstructorInit»
 					}
+					«ENDIF»
 
 					/**
 					 * Initialize object using the passed builder.
 					 * 
 					 * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
 					 */
+					«IF this.hasGenericBuilder()»
+					protected «name»(«this.genericBuilderName()»<?,?> pBuilder) {
+					«ELSE»
 					protected «name»(Builder«this.getTemplateParams()» pBuilder) {
+					«ENDIF»
 						«IF superClass.isEmpty == false»        
 						// Call constructor of super class.
 						super(pBuilder);
@@ -100,7 +108,11 @@
 					«EXPAND java::Builder::StaticBuilderMethods FOR this»
 					«EXPAND java::Helper::GenerateValueOfForOpenAPIDataType FOR this»
 					«EXPAND java::Helper::GenerateOfForClass FOR this»
-					«EXPAND java::Builder::GenerateBuilder(this.getObjectIDClassName())»
+					«IF this.hasGenericBuilder()»
+						«EXPAND java::GenericBuilder::GenerateGenericBuilder»
+					«ELSE»
+						«EXPAND java::Builder::GenerateBuilder(this.getObjectIDClassName())»
+					«ENDIF»
 					
 					«IF this.isCompositeDataType()»
 						/**
@@ -152,7 +164,7 @@
 				«EXPAND java::Helper::GenerateSuppressWarningsAnnotation»
 		        «EXPAND java::Validation::ValidationAnnotation -»      
 			    «EXPAND java::Helper::GenerateDeprecationAnnotation-»
-			    «EXPAND java::Jackson::JacksonClassAnnotations -»
+			    «EXPAND java::Jackson::JacksonClassAnnotations("Base") -»
 				public abstract class «name»Base«this.getTemplateParams()» «EXPAND SuperClassDeclaration» «EXPAND InterfaceDeclarations» {
 					«IF makePOJOsSerializable()»
                     /**
@@ -179,6 +191,7 @@
 					
 					«EXPAND java::Helper::GenerateCustomHeadersField»
 					
+					«IF this.hasGenericBuilder() == false»
 					/**
 					 * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal" object creation builder should be used instead.
 					 */
@@ -188,13 +201,18 @@
 					  «ENDIF»
 					  «EXPAND POJOPlainConstructorInit»
 					}
+					«ENDIF»
 
 					/**
 					 * Initialize object using the passed builder.
 					 * 
 					 * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
 					 */
+					«IF this.hasGenericBuilder()»
+					protected «name»Base(«this.abstractBuilderName()»<?,?> pBuilder) {
+					«ELSE»
 					protected «name»Base(BuilderBase«this.getTemplateParams()» pBuilder) {
+					«ENDIF»
 					«IF superClass.isEmpty == false»        
 					// Call constructor of super class.
 					super(pBuilder);
@@ -221,8 +239,11 @@
 					}
 					
 					«REM»Generate builder«ENDREM»
-					«EXPAND java::Builder::GenerateBuilderBase (this.getObjectIDClassName())»
-					
+					«IF this.hasGenericBuilder()»
+						«EXPAND java::GenericBuilder::GenerateGenericBuilder»
+					«ELSE»
+						«EXPAND java::Builder::GenerateBuilderBase (this.getObjectIDClassName())»
+					«ENDIF»
 
 					«IF this.isCompositeDataType()»
 						/**
@@ -280,22 +301,34 @@
                     private static final long serialVersionUID = 1L;
 					«ENDIF»
 
+					«IF this.hasGenericBuilder() == false»
 					/**
 					 * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal" object creation builder should be used instead.
 					 */
 					protected «name»( ) {
 					}
+					«ENDIF»
 		
 					/**
 					 * Initialize object. Nothing special to do.
 					 */
-					protected «name»( «name».BuilderBase«this.getTemplateParams()» pBuilder ) {
+					«IF this.hasGenericBuilder()»
+					protected «name»(«this.genericBuilderName()»<?,?> pBuilder) {
+					«ELSE»
+					protected «name»(«name».BuilderBase«this.getTemplateParams()» pBuilder ) {
+					«ENDIF»
 					  super(pBuilder);
 					}
 					  
 					«EXPAND java::Builder::StaticBuilderMethods FOR this»
 					«EXPAND java::Helper::GenerateValueOfForOpenAPIDataType FOR this»
-					«EXPAND java::Builder::GenerateBuilderImpl»
+					«IF this.hasGenericBuilder()»
+						«IF this.customizeGenericBuilder»
+							«EXPAND java::GenericBuilder::GenerateCustomizableGenericBuilder»
+						«ENDIF»
+					«ELSE»
+						«EXPAND java::Builder::GenerateBuilderImpl»
+					«ENDIF»
 					
 					«EXPAND java::Attribute::EmptyGetterImplForDerivedProperty FOREACH this.getDerivedProperties()»
 					«EXPAND jeaf::JEAFOperation::BusinessOperationImpl FOREACH ownedOperation»

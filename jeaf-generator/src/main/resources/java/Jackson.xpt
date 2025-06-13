@@ -10,14 +10,15 @@
 «EXTENSION functions::SoftLink»
 «EXTENSION functions::SystemProperties»
 «EXTENSION functions::JEAFDeprecated»
+«EXTENSION functions::Builder»
 
 «IMPORT uml»
 «IMPORT JMM»
 
 
-«DEFINE JacksonClassAnnotations FOR Class»
+«DEFINE JacksonClassAnnotations(String ownerClassSuffix) FOR Class»
 	«IF generateJacksonAnnotations() && this.isStereotypeApplied("BeanParam") == false»
-		«IF enableSemVerForJSON() == true»
+		«IF enableSemVerForJSON() == true && this.hasGenericBuilder() == false»
 		@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown = true)
 		«ENDIF»
 		«IF (this.isTechnicalBaseClass() == false && this.superClass.size == 0 && this.getSubclasses().size > 0 ) ||
@@ -47,6 +48,9 @@
 	        @com.fasterxml.jackson.annotation.JsonPropertyOrder(value = {
 	           «FOREACH this.getAllPropertiesFromHierarchy().select(e|e.isTransient() == false) AS property SEPARATOR ", "»"«property.name»"«ENDFOREACH»
 	        })
+	    «ENDIF»
+	    «IF this.hasGenericBuilder() && this.isAbstract == false && this.isOpenAPIDataType() == false && this.hasCustomSerialization() == false»
+	    @com.fasterxml.jackson.databind.annotation.JsonDeserialize(builder = «this.fqn()»«ownerClassSuffix».«this.builderImplName()».class)
 	    «ENDIF»
 	«ENDIF»
 «ENDDEFINE»

@@ -1,0 +1,259 @@
+«EXTENSION java::Naming»
+«EXTENSION java::ObjectMapper»
+«EXTENSION java::GeneratorCommons»
+«EXTENSION java::OpenAPIFunctions»
+«EXTENSION java::Naming»
+«EXTENSION entity::ModelProperties»
+«EXTENSION functions::Class»
+«EXTENSION functions::ClassifierTemplateParameter»
+«EXTENSION functions::SoftLink»
+«EXTENSION functions::JEAFDeprecated»
+«EXTENSION functions::SystemProperties»
+«EXTENSION functions::BeanParam»
+«EXTENSION functions::Builder»
+«EXTENSION functions::POJO»
+
+
+«IMPORT uml»
+«IMPORT JMM»
+
+«DEFINE GenerateGenericBuilder FOR uml::Class»
+/**
+ * Class implements builder to create a new instance of class <code>«this.name»</code>.
+ */
+«EXPAND java::Helper::GenerateDeprecationAnnotation-»
+«IF generateJacksonAnnotations()»
+@com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder(withPrefix = "set")
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown = true)
+«ENDIF»
+public static abstract class «this.abstractBuilderName()»<T extends «name», B extends «this.abstractBuilderName()»<T, B>> «IF superClass.isEmpty == false»extends «superClass.get(0).builderName()»<T, B>«ENDIF» {
+	«REM»Generate instance variables for each property«ENDREM»
+	«IF needsToImplementIdentifiable() == true»
+	/**
+	 * Reference to the identifier of this object. The reference may be null since an id is not mandatory.
+	 */
+	private com.anaptecs.jeaf.xfun.api.common.ObjectIdentity<?> objectID;
+	«ENDIF»
+	
+	«REM»Generate instance variables for each property«ENDREM»
+	«IF this.isCompositeDataType()»
+		/**
+		 * String representation of this object.
+		 */
+		private String «this.getCompositeDateTypePublicFieldName()»;
+	«ELSE»
+		«FOREACH this.ownedAttribute.select(e|e.isPropertySuppressed() == false && e.belongsToTransientBidirectionalBackReference() == false && e.generateBackwardCompatibility() == false) AS attr»
+		    «EXPAND java::Builder::BuilderPropertyDeclaration FOR attr»
+		«ENDFOREACH»
+	«ENDIF»
+	
+	«EXPAND java::Helper::GenerateCustomHeadersField»
+
+    /**
+     * Use {@link «this.abstractBuilderName()»#builder()} instead of private constructor to create new builder.
+     */
+    protected «this.abstractBuilderName()»( ) {
+      «IF superClass.isEmpty == false»super();«ENDIF»
+    }
+
+    /**
+     * Use {@link «this.abstractBuilderName()»#builder(«this.name»)} instead of private constructor to create new builder.
+     */
+    protected «this.abstractBuilderName()»( «this.name»«IF this.requiresCustomImplementationForClass()»Base«ENDIF» «this.getTemplateParams()» pObject ) {
+      «IF superClass.isEmpty == false»super(pObject);«ENDIF»
+      «IF this.isCompositeDataType() || this.ownedAttribute.select(e|e.isPropertySuppressed() == false).isEmpty == false»
+      if (pObject != null) {
+        // Read attribute values from passed object.
+        «IF this.isCompositeDataType()»
+        	this.set«this.getCompositeDateTypePublicFieldName().toFirstUpper()»(pObject.«this.getCompositeDateTypePublicFieldName()»);
+        «ELSE»
+	        «FOREACH this.ownedAttribute.select(e|e.isPropertySuppressed() == false && e.belongsToTransientBidirectionalBackReference() == false && e.generateBackwardCompatibility() == false) AS attr»
+	           «IF attr.isStatic == false»
+	               «IF attr.isSoftLink()»
+	                   this.set«attr.getSoftLinkPropertyName().toFirstUpper()»(pObject.«attr.getSoftLinkPropertyName()»);
+	               «ELSE»
+	                   this.«attr.asSetter()»(pObject.«attr.name»);
+	               «ENDIF»
+	           «ENDIF»
+	        «ENDFOREACH»
+        «ENDIF»
+        «IF this.hasCustomHeaders()»
+            customHeaders = new java.util.HashMap<String,String>(pObject.customHeaders);
+        «ENDIF»
+      }
+      «ENDIF»
+    }
+
+	«IF needsToImplementIdentifiable() == true»
+	/**
+	 * Method sets the identifier for the object created using the builder. The reference may be null since an id is not mandatory.
+	 */
+	public B setID(com.anaptecs.jeaf.xfun.api.common.ObjectIdentity<?> pObjectID){
+		objectID = pObjectID;
+		return this.self();
+	}	
+	«ENDIF»	
+
+	«REM»Generate setters for each property of the builder«ENDREM»
+	«IF this.isCompositeDataType()»
+		/**
+		 * Method returns the String representation of this object.
+		 * 
+		 * @return String String representation of this object.
+		 */
+		public «this.abstractBuilderName()»«this.getTemplateParams()» set«this.getCompositeDateTypePublicFieldName().toFirstUpper()»( String p«this.getCompositeDateTypePublicFieldName().toFirstUpper()» ) {
+		  «this.getCompositeDateTypePublicFieldName()» = p«this.getCompositeDateTypePublicFieldName().toFirstUpper()»;
+		  return this;
+		}		
+	«ELSE»
+		«FOREACH this.ownedAttribute.select(e|e.isPropertySuppressed() == false && e.belongsToTransientBidirectionalBackReference() == false) AS attr»
+			«EXPAND java::Builder::BuilderSetter("B") FOR attr»
+		«ENDFOREACH»
+	«ENDIF»
+	
+    «IF this.hasCustomHeaders()»
+      /**
+       * Method adds the passed values as custom headers. The passed name and value of the http header must be compliant
+       * with guidelines about http headers.
+       * 
+       * @param pHeaderName Name of the HTTP header. The parameter must not be null,
+       * @param pHeaderValue Value of the http header the parameter may be null.
+       */
+      public «this.abstractBuilderName()» addCustomHeader( String pHeaderName, String pHeaderValue ) {
+        if (pHeaderName != null) {
+          customHeaders.put(pHeaderName, pHeaderValue);
+          return this;
+        }
+        else {
+          throw new IllegalArgumentException("Parameter 'pHeaderName' must not be null.");
+        }
+      }
+	«ENDIF»
+	
+    «EXPAND jeafgenerator::api::ClassExtensionPoint::CustomBuilderOperations»
+    
+    «IF this.superClass.isEmpty»
+    /**
+     * Method returns instance of this builder. Operation is part of generic builder pattern.
+     */    
+    protected abstract B self( );
+    «ENDIF»
+
+	«IF this.isAbstract == false»
+	/**
+	 * Method creates a new instance of class «this.name». The object will be initialized with the values of the
+	 * builder.
+	 * 
+	 * @return «this.name» Created object. The method never returns null.
+	 */
+    «IF this.hasNonAbtractParent()»@Override«ENDIF»
+    «IF this.customizeGenericBuilder()»
+    public T build() {
+        // Method already has an implementation as otherwise it would not be possible to overwrite it in custom builder implementation. Unfortunately this is a limitation of abstract static inner classes that are used to implement generic builder pattern.
+        throw new UnsupportedOperationException("This operation has to be overwritten by subclasses.");
+    };
+    «ELSE»
+    public abstract T build( );
+    «ENDIF»
+	 
+	 
+	«IF isTargetRuntimeJEAF()»
+	/**
+	 * Method creates a new validated instance of class «this.name». The object will be initialized with the values of the
+	 * builder and validated afterwards.
+	 * 
+	 * @return «this.name» Created and validated object. The method never returns null.
+	 * @throws ConstraintViolationException in case that one or more validations for the created object failed.
+	 */
+	public «this.name»«this.getTemplateParams()» buildValidated( ) throws «getEnterpriseJavaPackage()».validation.ConstraintViolationException {
+      «this.name»«this.getTemplateParams()» lObject = this.build();
+      com.anaptecs.jeaf.tools.api.validation.ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
+	}
+	«ENDIF»
+	«ENDIF»
+}
+	«IF this.isAbstract == false»
+static final class «this.genericBuilderImplName()» extends «IF this.customizeGenericBuilder()»«name».«ENDIF»«this.genericBuilderName()»<«name», «this.genericBuilderImplName()»> {
+	protected «this.genericBuilderImplName()»() {
+	}
+	
+	protected «this.genericBuilderImplName()»( «this.name»«this.getTemplateParams()» pObject ) {
+		super(pObject);
+	}
+	
+    @Override
+    protected «this.genericBuilderImplName()» self( ) {
+      return this;
+    }
+
+    «IF this.customizeGenericBuilder() == false»
+    @Override
+    public «name» build( ) {
+	  «IF this.validateOnBuild() || generateObjectValidationInBuilder()»
+	       «this.name»«this.getTemplateParams()» lObject = new «this.name»«this.getTemplateParams()»(this);
+	       «IF isTargetRuntimeJEAF()»
+	       com.anaptecs.jeaf.tools.api.validation.ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+	       «ENDIF»
+	       «IF isTargetRuntimeSpring()»
+	       com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+	       «ENDIF»
+	       return lObject;
+	  «ELSE»
+	  return new «this.name»«this.getTemplateParams()»(this);
+	  «ENDIF»
+    }
+    «ENDIF»
+}
+	«ENDIF»
+«ENDDEFINE»
+
+«DEFINE GenerateCustomizableGenericBuilder FOR uml::Class»
+/**
+ * Class implements builder to create a new instance of class <code>«this.name»</code>.
+ *
+ * This class is intended to contain additional custom implementations inside the builder. 
+ */
+«IF generateJacksonAnnotations()»
+@com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder(withPrefix = "set")
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown = true)
+«ENDIF»
+public static abstract class «this.builderName()»<T extends «name», B extends «this.builderName()»<T, B>> extends «this.abstractBuilderName()»<T, B> {
+    /**
+     * Use {@link «this.builderName()»#builder()} instead of private constructor to create new builder.
+     */
+    protected «this.builderName()»( ) {
+      super();
+    }
+
+    /**
+     * Use {@link «this.builderName()»#builder(«this.name»)} instead of private constructor to create new builder.
+     */
+    protected «this.builderName()»( «this.name»«this.getTemplateParams()» pObject ) {
+      super(pObject);
+    }
+    
+    «IF this.isAbstract == false»
+    @SuppressWarnings("unchecked")
+    @Override
+    public T build( ) {
+	  «IF this.validateOnBuild() || generateObjectValidationInBuilder()»
+	       «this.name»«this.getTemplateParams()» lObject = new «this.name»«this.getTemplateParams()»(this);
+	       «IF isTargetRuntimeJEAF()»
+	       com.anaptecs.jeaf.tools.api.validation.ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+	       «ENDIF»
+	       «IF isTargetRuntimeSpring()»
+	       com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+	       «ENDIF»
+	       return (T) lObject;
+	  «ELSE»
+	  return (T) new «this.name»«this.getTemplateParams()»(this);
+	  «ENDIF»
+    }
+    «ENDIF»
+    
+    
+    // TODO: Add your custom builder operations here.
+}
+
+«ENDDEFINE»

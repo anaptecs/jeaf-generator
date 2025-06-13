@@ -13,8 +13,9 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "objectType", visible = true)
 @JsonSubTypes({ @JsonSubTypes.Type(value = ChildAA.class, name = "ChildAA"),
   @JsonSubTypes.Type(value = ChildB.class, name = "ChildB"),
@@ -25,6 +26,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
     isGetterVisibility = JsonAutoDetect.Visibility.NONE,
     setterVisibility = JsonAutoDetect.Visibility.NONE,
     creatorVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonDeserialize(builder = ParentClass.ParentClassBuilderImpl.class)
 public class ParentClass {
   /**
    * Constant for the name of attribute "parentAttribute".
@@ -34,18 +36,11 @@ public class ParentClass {
   private String parentAttribute;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected ParentClass( ) {
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected ParentClass( Builder pBuilder ) {
+  protected ParentClass( ParentClassBuilder<?, ?> pBuilder ) {
     // Read attribute values from builder.
     parentAttribute = pBuilder.parentAttribute;
   }
@@ -55,8 +50,8 @@ public class ParentClass {
    *
    * @return {@link Builder} New builder that can be used to create new ParentClass objects.
    */
-  public static Builder builder( ) {
-    return new Builder();
+  public static ParentClassBuilder<?, ?> builder( ) {
+    return new ParentClassBuilderImpl();
   }
 
   /**
@@ -65,10 +60,10 @@ public class ParentClass {
    *
    * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.ParentClass}
+   * @return {@link ParentClass}
    */
   public static ParentClass of( String pParentAttribute ) {
-    ParentClass.Builder lBuilder = ParentClass.builder();
+    ParentClassBuilder<?, ?> lBuilder = ParentClass.builder();
     lBuilder.setParentAttribute(pParentAttribute);
     return lBuilder.build();
   }
@@ -76,19 +71,21 @@ public class ParentClass {
   /**
    * Class implements builder to create a new instance of class <code>ParentClass</code>.
    */
-  public static class Builder {
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  public static abstract class ParentClassBuilder<T extends ParentClass, B extends ParentClassBuilder<T, B>> {
     private String parentAttribute;
 
     /**
-     * Use {@link ParentClass#builder()} instead of private constructor to create new builder.
+     * Use {@link ParentClassBuilder#builder()} instead of private constructor to create new builder.
      */
-    protected Builder( ) {
+    protected ParentClassBuilder( ) {
     }
 
     /**
-     * Use {@link ParentClass#builder(ParentClass)} instead of private constructor to create new builder.
+     * Use {@link ParentClassBuilder#builder(ParentClass)} instead of private constructor to create new builder.
      */
-    protected Builder( ParentClass pObject ) {
+    protected ParentClassBuilder( ParentClass pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setParentAttribute(pObject.parentAttribute);
@@ -96,36 +93,21 @@ public class ParentClass {
     }
 
     /**
-     * Method returns a new builder.
-     *
-     * @return {@link Builder} New builder that can be used to create new ParentClass objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     *
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new ParentClass objects. The method never returns
-     * null.
-     */
-    public static Builder newBuilder( ParentClass pObject ) {
-      return new Builder(pObject);
-    }
-
-    /**
      * Method sets attribute {@link #parentAttribute}.<br/>
      *
      * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setParentAttribute( @MyNotNullProperty String pParentAttribute ) {
+    public B setParentAttribute( @MyNotNullProperty String pParentAttribute ) {
       // Assign value to attribute
       parentAttribute = pParentAttribute;
-      return this;
+      return this.self();
     }
+
+    /**
+     * Method returns instance of this builder. Operation is part of generic builder pattern.
+     */
+    protected abstract B self( );
 
     /**
      * Method creates a new instance of class ParentClass. The object will be initialized with the values of the
@@ -133,6 +115,23 @@ public class ParentClass {
      *
      * @return ParentClass Created object. The method never returns null.
      */
+    public abstract T build( );
+  }
+
+  static final class ParentClassBuilderImpl extends ParentClassBuilder<ParentClass, ParentClassBuilderImpl> {
+    protected ParentClassBuilderImpl( ) {
+    }
+
+    protected ParentClassBuilderImpl( ParentClass pObject ) {
+      super(pObject);
+    }
+
+    @Override
+    protected ParentClassBuilderImpl self( ) {
+      return this;
+    }
+
+    @Override
     public ParentClass build( ) {
       ParentClass lObject = new ParentClass(this);
       SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
@@ -222,7 +221,7 @@ public class ParentClass {
    * @return {@link Builder} New builder that can be used to create new ParentClass objects. The method never returns
    * null.
    */
-  public Builder toBuilder( ) {
-    return new Builder(this);
+  public ParentClassBuilder<?, ?> toBuilder( ) {
+    return new ParentClassBuilderImpl(this);
   }
 }

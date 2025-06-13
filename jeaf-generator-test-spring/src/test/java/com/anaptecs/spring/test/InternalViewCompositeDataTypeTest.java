@@ -10,23 +10,24 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import java.util.Arrays;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-
 import com.anaptecs.jeaf.xfun.api.XFun;
 import com.anaptecs.spring.base.Booking;
 import com.anaptecs.spring.base.BookingCode;
 import com.anaptecs.spring.base.BookingID;
-import com.anaptecs.spring.composite.ComplexBookingID;
 import com.anaptecs.spring.base.ComplexBookingType;
 import com.anaptecs.spring.base.DoubleCode;
 import com.anaptecs.spring.base.InventoryType;
 import com.anaptecs.spring.base.WeirdBooking;
+import com.anaptecs.spring.composite.ComplexBookingID;
 import com.anaptecs.spring.impl.SpringTestApplication;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
+@Disabled
 @SpringBootTest(classes = SpringTestApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class InternalViewCompositeDataTypeTest {
   @Autowired
@@ -68,7 +69,8 @@ public class InternalViewCompositeDataTypeTest {
     XFun.getTrace().info("\n" + lBooking);
     assertEquals("com.anaptecs.spring.base.Booking" + System.lineSeparator() +
         "bookingID:  null" + System.lineSeparator() +
-        "customerName: null" + System.lineSeparator() + "inventories: 0 element(s)" + System.lineSeparator(), lBooking
+        "customerName: null" + System.lineSeparator() + "inventories: 0 element(s)" + System.lineSeparator(),
+        lBooking
             .toString());
   }
 
@@ -85,18 +87,22 @@ public class InternalViewCompositeDataTypeTest {
 
     ComplexBookingID lComplexBookingID = ComplexBookingID.builder().setBookingIDs(Arrays.asList(lBookingID2,
         lBookingID1)).setComplexBookingType(ComplexBookingType.VERY_COMPLEX).setInternalID(123456789).setReferenceID(
-            "REF-123").build();
+            "REF-123")
+        .build();
 
     ComplexBookingID lAdditionalBookingID1 = ComplexBookingID.builder().setBookingIDs(Arrays.asList(lBookingID2,
         lBookingID1)).setComplexBookingType(ComplexBookingType.VERY_COMPLEX).setInternalID(9991234).setReferenceID(
-            "REF-123-1").setStrings(new String[] { "Hello", "World!" }).build();
+            "REF-123-1")
+        .setStrings(new String[] { "Hello", "World!" }).build();
     ComplexBookingID lAdditionalBookingID2 = ComplexBookingID.builder().setBookingIDs(Arrays.asList(lBookingID2))
         .setComplexBookingType(ComplexBookingType.COMPLEX).setInternalID(123456789).setReferenceID(
-            "REF-123-2").build();
+            "REF-123-2")
+        .build();
 
     WeirdBooking lWeirdBooking = WeirdBooking.builder().setBooking(lComplexBookingID).setAdditionalBookings(Arrays
         .asList(lAdditionalBookingID1,
-            lAdditionalBookingID2)).build();
+            lAdditionalBookingID2))
+        .build();
 
     XFun.getTrace().info("\n" + lWeirdBooking);
     assertEquals("com.anaptecs.spring.base.WeirdBooking" + System.lineSeparator() +

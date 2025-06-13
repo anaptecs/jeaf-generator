@@ -1,19 +1,11 @@
 package com.anaptecs.jeaf.fwk.tools.message.generator.test;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
 import java.util.Locale;
-
-import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
-import org.xmlunit.builder.DiffBuilder;
-import org.xmlunit.diff.Diff;
-import org.xmlunit.diff.Difference;
 
 import com.anaptecs.jeaf.fwk.tools.message.generator.ConversionResult;
 import com.anaptecs.jeaf.fwk.tools.message.generator.ExcelToMessageResourceConverter;
@@ -22,6 +14,13 @@ import com.anaptecs.jeaf.tools.api.Tools;
 import com.anaptecs.jeaf.tools.api.xml.XMLTools;
 import com.anaptecs.jeaf.xfun.api.checks.VerificationResult;
 import com.anaptecs.jeaf.xfun.api.errorhandling.FailureMessage;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
+import org.xmlunit.builder.DiffBuilder;
+import org.xmlunit.diff.Diff;
+import org.xmlunit.diff.Difference;
 
 /**
  * Copyright 2004 - 2020 anaptecs GmbH, Burgstr. 96, 72764 Reutlingen, Germany
@@ -68,7 +67,7 @@ public class ExcelTransformationTest {
         System.out.println(lNextDiff.toString());
       }
     }
-    assertFalse("Differences between expected and actual XML file found: " + lDiff.toString(), lDiff.hasDifferences());
+    assertFalse(lDiff.hasDifferences(), "Differences between expected and actual XML file found: " + lDiff.toString());
   }
 
   @Test

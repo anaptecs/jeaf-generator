@@ -17,16 +17,16 @@ import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.anaptecs.spring.composite.ComplexBookingID;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonSetter;
-import com.fasterxml.jackson.annotation.Nulls;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonAutoDetect(
     fieldVisibility = JsonAutoDetect.Visibility.ANY,
     getterVisibility = JsonAutoDetect.Visibility.NONE,
     isGetterVisibility = JsonAutoDetect.Visibility.NONE,
     setterVisibility = JsonAutoDetect.Visibility.NONE,
     creatorVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonDeserialize(builder = WeirdBooking.WeirdBookingBuilderImpl.class)
 public class WeirdBooking {
   /**
    * Constant for the name of attribute "booking".
@@ -40,23 +40,14 @@ public class WeirdBooking {
 
   private ComplexBookingID booking;
 
-  @JsonSetter(nulls = Nulls.SKIP)
   private List<ComplexBookingID> additionalBookings;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected WeirdBooking( ) {
-    additionalBookings = new ArrayList<>();
-  }
 
   /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected WeirdBooking( Builder pBuilder ) {
+  protected WeirdBooking( WeirdBookingBuilder<?, ?> pBuilder ) {
     // Read attribute values from builder.
     booking = pBuilder.booking;
     if (pBuilder.additionalBookings != null) {
@@ -72,8 +63,8 @@ public class WeirdBooking {
    *
    * @return {@link Builder} New builder that can be used to create new WeirdBooking objects.
    */
-  public static Builder builder( ) {
-    return new Builder();
+  public static WeirdBookingBuilder<?, ?> builder( ) {
+    return new WeirdBookingBuilderImpl();
   }
 
   /**
@@ -82,10 +73,10 @@ public class WeirdBooking {
    *
    * @param pBooking Value to which {@link #booking} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.WeirdBooking}
+   * @return {@link WeirdBooking}
    */
   public static WeirdBooking of( ComplexBookingID pBooking ) {
-    WeirdBooking.Builder lBuilder = WeirdBooking.builder();
+    WeirdBookingBuilder<?, ?> lBuilder = WeirdBooking.builder();
     lBuilder.setBooking(pBooking);
     return lBuilder.build();
   }
@@ -93,21 +84,23 @@ public class WeirdBooking {
   /**
    * Class implements builder to create a new instance of class <code>WeirdBooking</code>.
    */
-  public static class Builder {
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  public static abstract class WeirdBookingBuilder<T extends WeirdBooking, B extends WeirdBookingBuilder<T, B>> {
     private ComplexBookingID booking;
 
     private List<ComplexBookingID> additionalBookings;
 
     /**
-     * Use {@link WeirdBooking#builder()} instead of private constructor to create new builder.
+     * Use {@link WeirdBookingBuilder#builder()} instead of private constructor to create new builder.
      */
-    protected Builder( ) {
+    protected WeirdBookingBuilder( ) {
     }
 
     /**
-     * Use {@link WeirdBooking#builder(WeirdBooking)} instead of private constructor to create new builder.
+     * Use {@link WeirdBookingBuilder#builder(WeirdBooking)} instead of private constructor to create new builder.
      */
-    protected Builder( WeirdBooking pObject ) {
+    protected WeirdBookingBuilder( WeirdBooking pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setBooking(pObject.booking);
@@ -116,43 +109,23 @@ public class WeirdBooking {
     }
 
     /**
-     * Method returns a new builder.
-     *
-     * @return {@link Builder} New builder that can be used to create new WeirdBooking objects.
-     */
-    public static Builder newBuilder( ) {
-      return new Builder();
-    }
-
-    /**
-     * Method creates a new builder and initialize it with the data from the passed object.
-     *
-     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
-     * @return {@link Builder} New builder that can be used to create new WeirdBooking objects. The method never returns
-     * null.
-     */
-    public static Builder newBuilder( WeirdBooking pObject ) {
-      return new Builder(pObject);
-    }
-
-    /**
      * Method sets association {@link #booking}.<br/>
      *
      * @param pBooking Value to which {@link #booking} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setBooking( @MyNotNullProperty ComplexBookingID pBooking ) {
+    public B setBooking( @MyNotNullProperty ComplexBookingID pBooking ) {
       booking = pBooking;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets association {@link #additionalBookings}.<br/>
      *
      * @param pAdditionalBookings Collection to which {@link #additionalBookings} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setAdditionalBookings( List<ComplexBookingID> pAdditionalBookings ) {
+    public B setAdditionalBookings( List<ComplexBookingID> pAdditionalBookings ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pAdditionalBookings != null) {
         additionalBookings = new ArrayList<ComplexBookingID>(pAdditionalBookings);
@@ -160,7 +133,7 @@ public class WeirdBooking {
       else {
         additionalBookings = null;
       }
-      return this;
+      return this.self();
     }
 
     /**
@@ -168,17 +141,22 @@ public class WeirdBooking {
      *
      * @param pAdditionalBookings Array of objects that should be added to {@link #additionalBookings}. The parameter
      * may be null.
-     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining. Method never returns null.
      */
-    public Builder addToAdditionalBookings( ComplexBookingID... pAdditionalBookings ) {
+    public B addToAdditionalBookings( ComplexBookingID... pAdditionalBookings ) {
       if (pAdditionalBookings != null) {
         if (additionalBookings == null) {
           additionalBookings = new ArrayList<ComplexBookingID>();
         }
         additionalBookings.addAll(Arrays.asList(pAdditionalBookings));
       }
-      return this;
+      return this.self();
     }
+
+    /**
+     * Method returns instance of this builder. Operation is part of generic builder pattern.
+     */
+    protected abstract B self( );
 
     /**
      * Method creates a new instance of class WeirdBooking. The object will be initialized with the values of the
@@ -186,6 +164,23 @@ public class WeirdBooking {
      *
      * @return WeirdBooking Created object. The method never returns null.
      */
+    public abstract T build( );
+  }
+
+  static final class WeirdBookingBuilderImpl extends WeirdBookingBuilder<WeirdBooking, WeirdBookingBuilderImpl> {
+    protected WeirdBookingBuilderImpl( ) {
+    }
+
+    protected WeirdBookingBuilderImpl( WeirdBooking pObject ) {
+      super(pObject);
+    }
+
+    @Override
+    protected WeirdBookingBuilderImpl self( ) {
+      return this;
+    }
+
+    @Override
     public WeirdBooking build( ) {
       WeirdBooking lObject = new WeirdBooking(this);
       SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
@@ -359,7 +354,7 @@ public class WeirdBooking {
    * @return {@link Builder} New builder that can be used to create new WeirdBooking objects. The method never returns
    * null.
    */
-  public Builder toBuilder( ) {
-    return new Builder(this);
+  public WeirdBookingBuilder<?, ?> toBuilder( ) {
+    return new WeirdBookingBuilderImpl(this);
   }
 }

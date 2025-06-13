@@ -569,6 +569,22 @@ cached int getRESTDefaultSuccessStatusCode():
 cached int getRESTDefaultVoidStatusCode():
   JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getRESTDefaultVoidStatusCode();
   
+cached boolean hasCustomSerialization(uml::Type class):
+  if class.isStereotypeApplied("POJO")
+  then ((JMM::POJO) class).hasCustomSerialization
+  else 
+  		if class.isStereotypeApplied("ServiceObject")
+  		then ((JMM::ServiceObject) class).hasCustomSerialization
+  		else false;
+
+cached boolean customizeGenericBuilder(uml::Type class):
+  if class.isStereotypeApplied("POJO")
+  then ((JMM::POJO) class).customizeGenericBuilder
+  else 
+  		if class.isStereotypeApplied("ServiceObject")
+  		then ((JMM::ServiceObject) class).customizeGenericBuilder
+  		else false;
+
 cached boolean isCompositeDataType(uml::Type class):
   if generatePublicObjectView() == false
   then false

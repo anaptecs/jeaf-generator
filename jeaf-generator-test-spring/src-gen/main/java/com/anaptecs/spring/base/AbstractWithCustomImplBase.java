@@ -7,8 +7,8 @@ package com.anaptecs.spring.base;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonAutoDetect(
     fieldVisibility = JsonAutoDetect.Visibility.ANY,
     getterVisibility = JsonAutoDetect.Visibility.NONE,
@@ -24,40 +24,34 @@ public abstract class AbstractWithCustomImplBase {
   private int justAProperty;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected AbstractWithCustomImplBase( ) {
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected AbstractWithCustomImplBase( BuilderBase pBuilder ) {
+  protected AbstractWithCustomImplBase( AbstractWithCustomImplBuilder<?, ?> pBuilder ) {
     // Read attribute values from builder.
     justAProperty = pBuilder.justAProperty;
   }
 
   /**
-   * Class implements builder to create a new instance of class AbstractWithCustomImpl. As the class has read only
-   * attributes or associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>AbstractWithCustomImpl</code>.
    */
-  public static abstract class BuilderBase {
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  public static abstract class AbstractWithCustomImplBuilder<T extends AbstractWithCustomImpl, B extends AbstractWithCustomImplBuilder<T, B>> {
     private int justAProperty;
 
     /**
-     * Use {@link AbstractWithCustomImpl.builder()} instead of protected constructor to create new builder.
+     * Use {@link AbstractWithCustomImplBuilder#builder()} instead of private constructor to create new builder.
      */
-    protected BuilderBase( ) {
+    protected AbstractWithCustomImplBuilder( ) {
     }
 
     /**
-     * Use {@link AbstractWithCustomImpl.builder(AbstractWithCustomImpl)} instead of protected constructor to create new
-     * builder.
+     * Use {@link AbstractWithCustomImplBuilder#builder(AbstractWithCustomImpl)} instead of private constructor to
+     * create new builder.
      */
-    protected BuilderBase( AbstractWithCustomImplBase pObject ) {
+    protected AbstractWithCustomImplBuilder( AbstractWithCustomImplBase pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setJustAProperty(pObject.justAProperty);
@@ -68,13 +62,18 @@ public abstract class AbstractWithCustomImplBase {
      * Method sets attribute {@link #justAProperty}.<br/>
      *
      * @param pJustAProperty Value to which {@link #justAProperty} should be set.
-     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setJustAProperty( int pJustAProperty ) {
+    public B setJustAProperty( int pJustAProperty ) {
       // Assign value to attribute
       justAProperty = pJustAProperty;
-      return this;
+      return this.self();
     }
+
+    /**
+     * Method returns instance of this builder. Operation is part of generic builder pattern.
+     */
+    protected abstract B self( );
   }
 
   /**

@@ -12,8 +12,8 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type", visible = true)
 @JsonSubTypes({ @JsonSubTypes.Type(value = GeoPosition.class, name = "GeoPosition"),
   @JsonSubTypes.Type(value = SwissGeoPosition.class, name = "SwissGeoPosition"),
@@ -42,18 +42,11 @@ public abstract class PlaceRef {
   private MyType type;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected PlaceRef( ) {
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected PlaceRef( Builder pBuilder ) {
+  protected PlaceRef( PlaceRefBuilder<?, ?> pBuilder ) {
     // Read attribute values from builder.
     name = pBuilder.name;
     type = pBuilder.type;
@@ -62,21 +55,23 @@ public abstract class PlaceRef {
   /**
    * Class implements builder to create a new instance of class <code>PlaceRef</code>.
    */
-  public static abstract class Builder {
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  public static abstract class PlaceRefBuilder<T extends PlaceRef, B extends PlaceRefBuilder<T, B>> {
     private String name;
 
     private MyType type;
 
     /**
-     * Use {@link PlaceRef#builder()} instead of private constructor to create new builder.
+     * Use {@link PlaceRefBuilder#builder()} instead of private constructor to create new builder.
      */
-    protected Builder( ) {
+    protected PlaceRefBuilder( ) {
     }
 
     /**
-     * Use {@link PlaceRef#builder(PlaceRef)} instead of private constructor to create new builder.
+     * Use {@link PlaceRefBuilder#builder(PlaceRef)} instead of private constructor to create new builder.
      */
-    protected Builder( PlaceRef pObject ) {
+    protected PlaceRefBuilder( PlaceRef pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setName(pObject.name);
@@ -88,24 +83,29 @@ public abstract class PlaceRef {
      * Method sets attribute {@link #name}.<br/>
      *
      * @param pName Value to which {@link #name} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setName( @MyNotNullProperty String pName ) {
+    public B setName( @MyNotNullProperty String pName ) {
       // Assign value to attribute
       name = pName;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets association {@link #type}.<br/>
      *
      * @param pType Value to which {@link #type} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setType( @MyNotNullProperty MyType pType ) {
+    public B setType( @MyNotNullProperty MyType pType ) {
       type = pType;
-      return this;
+      return this.self();
     }
+
+    /**
+     * Method returns instance of this builder. Operation is part of generic builder pattern.
+     */
+    protected abstract B self( );
   }
 
   /**

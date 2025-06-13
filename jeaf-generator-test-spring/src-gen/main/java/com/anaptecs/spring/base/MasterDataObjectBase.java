@@ -19,9 +19,9 @@ import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonSetter;
-import com.fasterxml.jackson.annotation.Nulls;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonAutoDetect(
     fieldVisibility = JsonAutoDetect.Visibility.ANY,
     getterVisibility = JsonAutoDetect.Visibility.NONE,
@@ -31,6 +31,7 @@ import com.fasterxml.jackson.annotation.Nulls;
 @JsonPropertyOrder(
     value = { "dataUnits", "entity", "objectID", "internalProperty", "derivedProperty", "derivedDataUnits",
       "derivedEntity", "derivedArray", "derivedBoolean", "derivedInt", "derivedString" })
+@JsonDeserialize(builder = MasterDataObjectBase.MasterDataObjectBuilderImpl.class)
 public abstract class MasterDataObjectBase {
   /**
    * Constant for the name of attribute "dataUnits".
@@ -52,7 +53,6 @@ public abstract class MasterDataObjectBase {
    */
   public static final String INTERNALPROPERTY = "internalProperty";
 
-  @JsonSetter(nulls = Nulls.SKIP)
   private List<DataUnit> dataUnits;
 
   private Entity entity;
@@ -62,19 +62,11 @@ public abstract class MasterDataObjectBase {
   private String internalProperty;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected MasterDataObjectBase( ) {
-    dataUnits = new ArrayList<>();
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected MasterDataObjectBase( BuilderBase pBuilder ) {
+  protected MasterDataObjectBase( MasterDataObjectBuilder<?, ?> pBuilder ) {
     // Read attribute values from builder.
     if (pBuilder.dataUnits != null) {
       dataUnits = pBuilder.dataUnits;
@@ -88,10 +80,11 @@ public abstract class MasterDataObjectBase {
   }
 
   /**
-   * Class implements builder to create a new instance of class MasterDataObject. As the class has read only attributes
-   * or associations instances can not be created directly. Instead this builder class has to be used.
+   * Class implements builder to create a new instance of class <code>MasterDataObject</code>.
    */
-  public static abstract class BuilderBase {
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  public static abstract class MasterDataObjectBuilder<T extends MasterDataObject, B extends MasterDataObjectBuilder<T, B>> {
     private List<DataUnit> dataUnits;
 
     private Entity entity;
@@ -101,15 +94,16 @@ public abstract class MasterDataObjectBase {
     private String internalProperty;
 
     /**
-     * Use {@link MasterDataObject.builder()} instead of protected constructor to create new builder.
+     * Use {@link MasterDataObjectBuilder#builder()} instead of private constructor to create new builder.
      */
-    protected BuilderBase( ) {
+    protected MasterDataObjectBuilder( ) {
     }
 
     /**
-     * Use {@link MasterDataObject.builder(MasterDataObject)} instead of protected constructor to create new builder.
+     * Use {@link MasterDataObjectBuilder#builder(MasterDataObject)} instead of private constructor to create new
+     * builder.
      */
-    protected BuilderBase( MasterDataObjectBase pObject ) {
+    protected MasterDataObjectBuilder( MasterDataObjectBase pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setDataUnits(pObject.dataUnits);
@@ -123,9 +117,9 @@ public abstract class MasterDataObjectBase {
      * Method sets association {@link #dataUnits}.<br/>
      *
      * @param pDataUnits Collection to which {@link #dataUnits} should be set.
-     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setDataUnits( List<DataUnit> pDataUnits ) {
+    public B setDataUnits( List<DataUnit> pDataUnits ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pDataUnits != null) {
         dataUnits = new ArrayList<DataUnit>(pDataUnits);
@@ -133,32 +127,32 @@ public abstract class MasterDataObjectBase {
       else {
         dataUnits = null;
       }
-      return this;
+      return this.self();
     }
 
     /**
      * Method adds the passed objects to association {@link #dataUnits}.<br/>
      *
      * @param pDataUnits Array of objects that should be added to {@link #dataUnits}. The parameter may be null.
-     * @return {@link BuilderBase} Instance of this builder to support chaining. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining. Method never returns null.
      */
-    public BuilderBase addToDataUnits( DataUnit... pDataUnits ) {
+    public B addToDataUnits( DataUnit... pDataUnits ) {
       if (pDataUnits != null) {
         if (dataUnits == null) {
           dataUnits = new ArrayList<DataUnit>();
         }
         dataUnits.addAll(Arrays.asList(pDataUnits));
       }
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets association {@link #dataUnits}.<br/>
      *
      * @param pDataUnits Array with objects to which {@link #dataUnits} should be set.
-     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setDataUnits( DataUnit... pDataUnits ) {
+    public B setDataUnits( DataUnit... pDataUnits ) {
       // Copy the content of the passed array.
       if (pDataUnits != null) {
         dataUnits = new ArrayList<DataUnit>(Arrays.asList(pDataUnits));
@@ -166,43 +160,48 @@ public abstract class MasterDataObjectBase {
       else {
         dataUnits = null;
       }
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets association {@link #entity}.<br/>
      *
      * @param pEntity Value to which {@link #entity} should be set.
-     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setEntity( @MyNotNullProperty Entity pEntity ) {
+    public B setEntity( @MyNotNullProperty Entity pEntity ) {
       entity = pEntity;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #objectID}.<br/>
      *
      * @param pObjectID Value to which {@link #objectID} should be set.
-     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setObjectID( @MyNotNullProperty String pObjectID ) {
+    public B setObjectID( @MyNotNullProperty String pObjectID ) {
       // Assign value to attribute
       objectID = pObjectID;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #internalProperty}.<br/>
      *
      * @param pInternalProperty Value to which {@link #internalProperty} should be set.
-     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setInternalProperty( @MyNotNullProperty String pInternalProperty ) {
+    public B setInternalProperty( @MyNotNullProperty String pInternalProperty ) {
       // Assign value to attribute
       internalProperty = pInternalProperty;
-      return this;
+      return this.self();
     }
+
+    /**
+     * Method returns instance of this builder. Operation is part of generic builder pattern.
+     */
+    protected abstract B self( );
 
     /**
      * Method creates a new instance of class MasterDataObject. The object will be initialized with the values of the
@@ -210,6 +209,24 @@ public abstract class MasterDataObjectBase {
      *
      * @return MasterDataObject Created object. The method never returns null.
      */
+    public abstract T build( );
+  }
+
+  static final class MasterDataObjectBuilderImpl
+      extends MasterDataObjectBuilder<MasterDataObject, MasterDataObjectBuilderImpl> {
+    protected MasterDataObjectBuilderImpl( ) {
+    }
+
+    protected MasterDataObjectBuilderImpl( MasterDataObject pObject ) {
+      super(pObject);
+    }
+
+    @Override
+    protected MasterDataObjectBuilderImpl self( ) {
+      return this;
+    }
+
+    @Override
     public MasterDataObject build( ) {
       MasterDataObject lObject = new MasterDataObject(this);
       SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
@@ -348,7 +365,7 @@ public abstract class MasterDataObjectBase {
    * @return {@link com.anaptecs.spring.base.MasterDataObject}
    */
   public static MasterDataObject of( Entity pEntity, String pObjectID, String pInternalProperty ) {
-    MasterDataObject.Builder lBuilder = MasterDataObject.builder();
+    MasterDataObjectBuilder<?, ?> lBuilder = MasterDataObject.builder();
     lBuilder.setEntity(pEntity);
     lBuilder.setObjectID(pObjectID);
     lBuilder.setInternalProperty(pInternalProperty);
@@ -506,7 +523,7 @@ public abstract class MasterDataObjectBase {
    * @return {@link Builder} New builder that can be used to create new MasterDataObject objects. The method never
    * returns null.
    */
-  public MasterDataObject.Builder toBuilder( ) {
-    return new MasterDataObject.Builder((MasterDataObject) this);
+  public MasterDataObjectBuilder<?, ?> toBuilder( ) {
+    return new MasterDataObjectBuilderImpl((MasterDataObject) this);
   }
 }

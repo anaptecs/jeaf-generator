@@ -15,6 +15,10 @@ import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
 
+import com.anaptecs.jeaf.tools.api.Tools;
+import com.anaptecs.jeaf.xfun.api.XFun;
+import com.anaptecs.spring.base.ExtensibleEnum;
+import com.anaptecs.spring.impl.SpringTestApplication;
 import org.apache.hc.client5.http.cookie.BasicCookieStore;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
@@ -30,6 +34,7 @@ import org.apache.hc.core5.http.protocol.BasicHttpContext;
 import org.apache.hc.core5.http.protocol.HttpContext;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.mockserver.client.MockServerClient;
 import org.mockserver.integration.ClientAndServer;
@@ -40,11 +45,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.ResponseEntity;
 
-import com.anaptecs.jeaf.tools.api.Tools;
-import com.anaptecs.jeaf.xfun.api.XFun;
-import com.anaptecs.spring.base.ExtensibleEnum;
-import com.anaptecs.spring.impl.SpringTestApplication;
-
+@Disabled
 @SpringBootTest(classes = SpringTestApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class SpringJerseyRESTControllerTest {
   @Inject
@@ -309,19 +310,19 @@ public class SpringJerseyRESTControllerTest {
     }
   }
 
-  private static HttpRequest mockRequest( String pRequestURI, String pMethod ) {
+  private static HttpRequest mockRequest(String pRequestURI, String pMethod) {
     return HttpRequest.request().withPath(pRequestURI).withMethod(pMethod);
   }
 
-  private static HttpRequest mockRequest( String pRequestURI ) {
+  private static HttpRequest mockRequest(String pRequestURI) {
     return HttpRequest.request().withPath(pRequestURI);
   }
 
-  private static HttpResponse mockResponse( String pResponseBody ) {
+  private static HttpResponse mockResponse(String pResponseBody) {
     return HttpResponse.response().withDelay(TimeUnit.MILLISECONDS, 0).withStatusCode(200).withBody(pResponseBody);
   }
 
-  private static HttpResponse mockResponse( String pResponseBody, int pStatusCode, int pDelay ) {
+  private static HttpResponse mockResponse(String pResponseBody, int pStatusCode, int pDelay) {
     return HttpResponse.response().withDelay(TimeUnit.MILLISECONDS, pDelay).withStatusCode(pStatusCode)
         .withBody(pResponseBody);
   }

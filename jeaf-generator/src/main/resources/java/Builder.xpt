@@ -10,6 +10,7 @@
 «EXTENSION functions::JEAFDeprecated»
 «EXTENSION functions::SystemProperties»
 «EXTENSION functions::BeanParam»
+«EXTENSION functions::Builder»
 
 
 «IMPORT uml»
@@ -399,6 +400,7 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
 // processing the properties
 «DEFINE DoBuilderPropertyDeclaration FOR Property»
 	«EXPAND java::Helper::GenerateDeprecationAnnotation-»
+	«IF this.owner.asClass().hasGenericBuilder()»«EXPAND java::Jackson::JSONAlias»«ENDIF»
     «EXPAND Validation::ValidationAnnotation»
 	private «this.fqn()» «name»«IF this.isRealInitValue() && this.isMultivalued()== false » = «IF this.isJEAFEnumerationProperty()»«this.type.name».«ENDIF»«this.initValue()»«ENDIF»;
 «ENDDEFINE»
@@ -406,6 +408,7 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
 «DEFINE DoBuilderAssociationPropertyDeclaration FOR Property»
 	«IF isNavigable()»
 		«EXPAND java::Helper::GenerateDeprecationAnnotation-»
+		«IF this.owner.asClass().hasGenericBuilder()»«EXPAND java::Jackson::JSONAlias»«ENDIF»
 		«IF isMultivalued()»
 			private «this.fqn()» «asInstanceVar()»;
 		«ELSE»
@@ -416,6 +419,7 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
 
 «DEFINE SoftLinkBuilderPropertyDeclaration FOR SoftLink»
         «EXPAND java::Helper::GenerateDeprecationAnnotation-»
+        «IF this.owner.asClass().hasGenericBuilder()»«EXPAND java::Jackson::JSONAlias»«ENDIF»
         «EXPAND Validation::ValidationAnnotation»
         «IF isMultivalued()»
             «IF generateValidationAnnotationsForAssociationsFromMultiplicity() && isStatic == false && isTransient() == false && this.hasValidationStereotype() == false && lower > 0»@«getEnterpriseJavaPackage()».validation.constraints.Size(min = «lower»)«ENDIF»
@@ -477,7 +481,7 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
 		«ELSE»
 		    «EXPAND java::Helper::CallSetterForSuccessor»
 		«ENDIF»
-		return this;
+		return «this.owner.asClass().returnStatement()»;
 	}
 «ENDDEFINE»
 
@@ -502,7 +506,7 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
 			    «ELSE»
 			        «EXPAND java::Helper::CallSetterForSuccessor»
 			    «ENDIF»
-			    return this;
+			    return «this.owner.asClass().returnStatement()»;
 			}
 
 	        «EXPAND functions::Javadoc::JavadocForBuilderAddTo(builderClassName)»
@@ -518,7 +522,7 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
                 «ELSE»
                     «EXPAND java::Helper::CallAddToForSuccessor»
                 «ENDIF»
-                return this;
+                return «this.owner.asClass().returnStatement()»;
             }
 		«ELSE»
 			public «builderClassName»«owner.asClass().getTemplateParams()» «asSetter()» («EXPAND java::Helper::NotNullAnnotationForProperty» «type.fqn()» «asParameter()») {
@@ -527,7 +531,7 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
 				«ELSE»
 				    «EXPAND java::Helper::CallSetterForSuccessor»
 				«ENDIF»
-				return this;
+				return «this.owner.asClass().returnStatement()»;
 			}
 		«ENDIF»
 	«ENDIF»
@@ -550,12 +554,12 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
                   «this.getSoftLinkPropertyName()» = null;
                 }
                 «ENDIF»
-                return this;
+                return «this.owner.asClass().returnStatement()»;
             }
         «ELSE»
             public «builderClassName»«owner.asClass().getTemplateParams()» set«this.getSoftLinkPropertyName().toFirstUpper()» («EXPAND java::Helper::NotNullAnnotationForProperty» «this.getJavaSoftLinkType()» «asParameter()») {
                 «this.getSoftLinkPropertyName()» = «asParameter()»;
-                return this;
+                return «this.owner.asClass().returnStatement()»;
             }
         «ENDIF»
     «ENDIF»
@@ -575,7 +579,7 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
 			    else {
 			      «asInstanceVar()» = null;
 			    }
-			    return this;
+			    return «this.owner.asClass().returnStatement()»;
 			}
 		«ENDIF»
 	«ENDIF»
@@ -601,7 +605,7 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
 	public «builderClassName» «asSetter()»(«this.fqn()» «asParameter()») {
 		// Call super class implementation.
 		super.«asSetter()»(«asParameter()»);
-		return this;
+		return «this.owner.asClass().returnStatement()»;
 	}
 «ENDDEFINE»
 
@@ -614,7 +618,7 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
 			public «builderClassName» set«name.toFirstUpper()»(«this.fqn()» «asParameter()») {
 				// Call super class implementation.
 				super.set«name.toFirstUpper()»(«asParameter()»);
-				return this;
+				return «this.owner.asClass().returnStatement()»;
 			}
 			
 			«EXPAND functions::Javadoc::JavadocForBuilderAddTo(builderClassName)»
@@ -622,7 +626,7 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
 			public «builderClassName» addTo«name.toFirstUpper()»(«type.fqn()»... «asParameter()») {
                 // Call super class implementation.
                 super.addTo«name.toFirstUpper()»(«asParameter()»);
-                return this;
+                return «this.owner.asClass().returnStatement()»;
 			}
 			
 			«IF isEnumeration()»
@@ -632,7 +636,7 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
 	            public «builderClassName» set«name.toFirstUpper()»(«this.type.fqn()»... «asParameter()») {
 	                // Call super class implementation.
 	                super.set«name.toFirstUpper()»(«asParameter()»);
-	                return this;
+	                return «this.owner.asClass().returnStatement()»;
 	            }
 			«ENDIF»
 		«ELSE»
@@ -640,7 +644,7 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
 			public «builderClassName» «asSetter()» («type.fqn()» «asParameter()») {
 				// Call super class implementation.
 				super.«asSetter()»(«asParameter()»);
-				return this;
+				return «this.owner.asClass().returnStatement()»;
 			}
 		«ENDIF»
 	«ENDIF»
@@ -655,14 +659,14 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
             public «builderClassName» set«this.getSoftLinkPropertyName().toFirstUpper()»(«this.getCollectionType()»<«this.getMultivaluedJavaSoftLinkType()»> «asParameter()») {
                 // Call super class implementation.
                 super.set«this.getSoftLinkPropertyName().toFirstUpper()»(«asParameter()»);
-                return this;
+                return «this.owner.asClass().returnStatement()»;
             }
         «ELSE»
             @Override
             public «builderClassName» set«this.getSoftLinkPropertyName().toFirstUpper()» («this.getJavaSoftLinkType()» «asParameter()») {
                 // Call super class implementation.
                 super.set«this.getSoftLinkPropertyName().toFirstUpper()»(«asParameter()»);
-                return this;
+                return «this.owner.asClass().returnStatement()»;
             }
         «ENDIF»
     «ENDIF»
@@ -717,8 +721,12 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
      * 
      * @return {@link Builder} New builder that can be used to create new «this.name» objects.
      */
-    public static «this.getTemplateParams()» Builder«this.getTemplateParams()» builder() {
-      return new Builder«this.getTemplateParams()»();
+    «IF this.hasGenericBuilder()»
+    public static «this.builderName()»<?, ?>«this.getTemplateParams()» builder() {
+    «ELSE»
+    public static «this.getTemplateParams()» «this.builderName()»«this.getTemplateParams()» builder() {
+    «ENDIF»
+      return new «this.builderImplName()»«this.getTemplateParams()»();
     }
 
     «IF this.getTemplateParams().length > 0»
@@ -727,8 +735,8 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
      * 
      * @return {@link Builder} New builder that can be used to create new «this.name» objects.
      */
-    public static «this.getTemplateParams()» Builder«this.getTemplateParams()» builder(«FOREACH this.getTemplateParameterNames() AS name SEPARATOR ", "»  Class<«name»> pClass«name»«ENDFOREACH») {
-      return new Builder«this.getTemplateParams()»();
+    public static «this.getTemplateParams()» «this.builderName()»«this.getTemplateParams()» builder(«FOREACH this.getTemplateParameterNames() AS name SEPARATOR ", "»  Class<«name»> pClass«name»«ENDFOREACH») {
+      return new «this.builderImplName()»«this.getTemplateParams()»();
     }
     «ENDIF»
 
@@ -736,8 +744,8 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
    /**
     * Method creates a new builder and initializes it with the passed attributes.
     */
-    public static «this.getTemplateParams()» Builder«this.getTemplateParams()» builder(«FOREACH this.getRequiredPropertiesForBuilder() AS property SEPARATOR ", "» «IF property.isSoftLink()»«((SoftLink) property).getJavaSoftLinkType()» «ELSE»«property.type.fqn()» «ENDIF»p«property.name.toFirstUpper()»«ENDFOREACH») {
-      Builder«this.getTemplateParams()» lBuilder = builder();
+    public static «this.getTemplateParams()» «this.builderName()»«this.getTemplateParams()» builder(«FOREACH this.getRequiredPropertiesForBuilder() AS property SEPARATOR ", "» «IF property.isSoftLink()»«((SoftLink) property).getJavaSoftLinkType()» «ELSE»«property.type.fqn()» «ENDIF»p«property.name.toFirstUpper()»«ENDFOREACH») {
+      «this.builderName()»«this.getTemplateParams()» lBuilder = builder();
       «FOREACH this.getRequiredPropertiesForBuilder() AS property-»
 			lBuilder.«property.asSetter()»(p«property.name.toFirstUpper()»);
 		«ENDFOREACH -»
@@ -746,8 +754,8 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
     «ENDIF»
     
     «IF this.isCompositeDataType() »
-    public static «this.getTemplateParams()» Builder«this.getTemplateParams()» builder(String p«this.getCompositeDateTypePublicFieldName().toFirstUpper()») {
-      Builder lBuilder = builder( );
+    public static «this.getTemplateParams()» «this.builderName()»«this.getTemplateParams()» builder(String p«this.getCompositeDateTypePublicFieldName().toFirstUpper()») {
+      «this.builderName()» lBuilder = builder( );
       lBuilder.set«this.getCompositeDateTypePublicFieldName().toFirstUpper()»(p«this.getCompositeDateTypePublicFieldName().toFirstUpper()»);
       return lBuilder;
     }
@@ -761,9 +769,15 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
 	   * Method creates a new builder and initializes it with the data of this object.
 	   * @return {@link Builder} New builder that can be used to create new «this.name» objects. The method never returns null.
 	   */
+	  «IF this.hasGenericBuilder()»
+	  public «this.builderName()»<?, ?> toBuilder( ) {
+	    return new «this.builderImplName()»(this);
+	  }
+	  «ELSE»
 	  public Builder«this.getTemplateParams()» toBuilder( ) {
 	    return new Builder«this.getTemplateParams()»(this);
 	  }
+	  «ENDIF»
   «ENDIF»
 «ENDDEFINE»
 
@@ -773,9 +787,15 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
 	   * Method creates a new builder and initializes it with the data of this object.
 	   * @return {@link Builder} New builder that can be used to create new «this.name» objects. The method never returns null.
 	   */
+	  «IF this.hasGenericBuilder()»
+	  public «IF this.customizeGenericBuilder()»«name».«ENDIF»«this.builderName()»<?, ?> toBuilder( ) {
+	    return new «this.builderImplName()»((«name»«this.getTemplateParams()»)this);
+	  }
+	  «ELSE»
 	  public «name».Builder«this.getTemplateParams()» toBuilder( ) {
 	    return new «name».Builder«this.getTemplateParams()»((«name»«this.getTemplateParams()»)this);
 	  }
+	  «ENDIF»
   «ENDIF»
 «ENDDEFINE»
 
