@@ -55,6 +55,7 @@
 <br>
 	
 «ENDDEFINE»
+
 «DEFINE DeprecationsForPackage FOR Package-»
 ## Package `«this.fqn()»`
 «LET this.getJavaDeprecations() AS deprecations-»

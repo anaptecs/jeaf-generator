@@ -1,9 +1,19 @@
 extension java::GeneratorCommons;
 extension functions::NamedElement;
+extension functions::SystemProperties;
 
 
 cached List[uml::NamedElement] getAllBreakingChanges(uml::Package package):
     package.allOwnedElements().typeSelect(uml::NamedElement).select(e|e.isInGeneratorWhitelist()).select(e|e.isBreakingChange()).sortBy(e|e.getBreakingChangeActiveWith());
+    
+cached List[uml::NamedElement] getAllDueBreakingChanges(uml::Package package):
+	package.getAllBreakingChanges().select(e|e.isDueBreakingChange());
+	
+cached boolean isDueBreakingChange(uml::NamedElement element):
+	javaIsDue(element.getBreakingChangeActiveWith(), nextMajorReleasePublishingDate());
+
+private boolean javaIsDue(String referenceDate, String actualDate):
+	JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.isOverdue(java.lang.String, java.lang.String);  
     
 cached List[uml::NamedElement] getBreakingChanges(uml::Package package):
     package.allOwnedElements().typeSelect(uml::NamedElement).select(e|e.isInGeneratorWhitelist()).select(e|e.isBreakingChange() && e.getNearestPackage() == package).sortBy(e|e.getBreakingChangeActiveWith());
@@ -19,3 +29,4 @@ cached String getBreakingChangeDescription(uml::NamedElement change):
     
 cached String getBreakingChangeActiveWith(uml::NamedElement change):
     change.getStereotypeValue("BreakingChange", "activeWith");
+

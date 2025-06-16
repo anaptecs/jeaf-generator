@@ -2,6 +2,14 @@
 
 <br>
 
+## Breaking changes planned to be activated with next major release `4711.0` (planned publishing date 2024-12-24)
+
+| Element  | Details    | Description  | Active with |
+|----------|------------|--------------|:-----------:|
+| `com.anaptecs.jeaf.junit.openapi.base.POI` | `stops` | New mandatory association is required to support upcoming features. | 2024-12-24 | 
+
+<br>
+
 ## Package `com.anaptecs.jeaf.junit.deprecation`
 
 | Element  | Details    | Description  | Active with |
