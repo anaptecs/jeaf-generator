@@ -34,7 +34,7 @@
 # «getBreakingChangesReportName()»
 
 <br>
-
+«EXPAND DueBreakingChanges»
 «IF groupBreakingChangesReportByPackage() -»
 «FOREACH this.getPackagesForBreakingChangesReport() AS package-»
 ## Package `«package.qualifiedName()»`
@@ -67,6 +67,16 @@
 | No breaking changes declared. |
 «ENDIF-»
 «ENDDEFINE»
+
+
+«DEFINE DueBreakingChanges FOR Package»
+«IF this.getAllDueBreakingChanges().size > 0 -»
+## Breaking changes planned to be activated with next major release «IF nextMajorReleaseVersion().length > 0»`«nextMajorReleaseVersion()»`«ENDIF» (planned publishing date «nextMajorReleasePublishingDate()»)
+
+	«EXPAND BreakingChangesTable FOR this.getAllDueBreakingChanges()»
+<br>
+«ENDIF-»«ENDDEFINE»
+
 
 «DEFINE BreakingChangesTable FOR List[uml::NamedElement]-»
 | Element  | Details    | Description  | Active with |

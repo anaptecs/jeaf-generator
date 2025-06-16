@@ -2,7 +2,7 @@
 
 <br>
 
-## Overdue Deprecations
+## Deprecations planned to be removed with next major release `4711.0` (planned publishing date 2024-12-24)
 
 <br>
 
