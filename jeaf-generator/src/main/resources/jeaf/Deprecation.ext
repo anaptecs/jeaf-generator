@@ -44,7 +44,7 @@ private boolean isRemovableJavaDeprecationInternal(JMM::JEAFDeprecated element):
 	javaIsRemovable(nextMajorReleasePublishingDate(), element.removedWith);
 	
 private boolean javaIsRemovable(String referenceDate, String actualDate):
-	JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.isOverdue(java.lang.String, java.lang.String);  
+	JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.isAfter(java.lang.String, java.lang.String);  
     
 cached boolean hasJavaDeprecation(uml::Element element):
     if element.isClass()
