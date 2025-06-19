@@ -32,7 +32,12 @@ cached boolean hasTemplateParameter(uml::Class class):
     class.ownedTemplateSignature.ownedParameter.isEmpty == false;
     
 cached boolean generateOfOperationForClass(uml::Class class):
-    generateOfOperation() && (class.generateOfOperationForServiceObject() || class.generateOfOperationForPOJO() || generateOfOperationForOpenAPIDataType());
+    if generateOfOperation() && (class.generateOfOperationForServiceObject() || class.generateOfOperationForPOJO()) && class.isOpenAPIDataType() == false
+    then true
+    else
+    	if generateOfOperationForOpenAPIDataType() && (class.generateOfOperationForServiceObject() || class.generateOfOperationForPOJO()) && class.isOpenAPIDataType()
+    	then true
+    	else false;
     
 cached List[uml::Property] getAllAttributesForOfOperation(uml::Class class):
     if class.useOnlyRequiredPropertiesForOfMethod()

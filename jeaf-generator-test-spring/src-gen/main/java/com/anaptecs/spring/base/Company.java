@@ -5,7 +5,6 @@
  */
 package com.anaptecs.spring.base;
 
-import java.util.List;
 import java.util.Objects;
 
 import com.anaptecs.annotations.MyNotNullProperty;
@@ -49,23 +48,6 @@ public class Company extends Partner {
    */
   public static CompanyBuilder<?, ?> builder( ) {
     return new CompanyBuilderImpl();
-  }
-
-  /**
-   * Convenience method to create new instance of class Company.
-   *
-   *
-   * @param pPostalAddresses Value to which {@link #postalAddresses} should be set.
-   *
-   * @param pName Value to which {@link #name} should be set.
-   *
-   * @return {@link Company}
-   */
-  public static Company of( List<PostalAddress> pPostalAddresses, String pName ) {
-    CompanyBuilder<?, ?> lBuilder = Company.builder();
-    lBuilder.setPostalAddresses(pPostalAddresses);
-    lBuilder.setName(pName);
-    return lBuilder.build();
   }
 
   /**
