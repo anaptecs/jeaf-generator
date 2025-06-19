@@ -8,7 +8,7 @@ cached JMM::ServiceObject asServiceObject(uml::Element element):
     (JMM::ServiceObject) element;
 
 cached boolean generateOfOperationForServiceObject(uml::Class class):
-    if class.isServiceObject() && class.isOpenAPIDataType() == false
+    if class.isServiceObject()
     then class.asServiceObject().ofMethod.name != "NONE"
     else false;
     
