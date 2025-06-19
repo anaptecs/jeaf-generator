@@ -1810,9 +1810,9 @@ public class GeneratorMojo extends AbstractMojo {
     }
 
     if (nextMajorReleasePublishingDate.isEmpty() == false) {
-      lLog.info("Next major release publishing date               " + nextMajorReleasePublishingDate);
+      lLog.info("Next major release publishing date                " + nextMajorReleasePublishingDate);
       if (nextMajorReleaseVersion.isEmpty() == false) {
-        lLog.info("Next major release version                       " + nextMajorReleaseVersion);
+        lLog.info("Next major release version                        " + nextMajorReleaseVersion);
       }
       lLog.info(" ");
     }

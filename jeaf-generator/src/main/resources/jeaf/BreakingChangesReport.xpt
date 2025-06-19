@@ -70,8 +70,8 @@
 
 
 «DEFINE DueBreakingChanges FOR Package»
-«IF this.getAllDueBreakingChanges().size > 0 -»
 ## Breaking changes planned to be activated with next major release «IF nextMajorReleaseVersion().length > 0»`«nextMajorReleaseVersion()»`«ENDIF» (planned publishing date «nextMajorReleasePublishingDate()»)
+«IF this.getAllDueBreakingChanges().size > 0 -»
 
 	«EXPAND BreakingChangesTable FOR this.getAllDueBreakingChanges()»
 <br>

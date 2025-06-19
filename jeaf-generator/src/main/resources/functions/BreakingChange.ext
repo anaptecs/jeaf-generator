@@ -10,10 +10,10 @@ cached List[uml::NamedElement] getAllDueBreakingChanges(uml::Package package):
 	package.getAllBreakingChanges().select(e|e.isDueBreakingChange());
 	
 cached boolean isDueBreakingChange(uml::NamedElement element):
-	javaIsDue(element.getBreakingChangeActiveWith(), nextMajorReleasePublishingDate());
+	javaIsBefore(element.getBreakingChangeActiveWith(), nextMajorReleasePublishingDate());
 
-private boolean javaIsDue(String referenceDate, String actualDate):
-	JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.isOverdue(java.lang.String, java.lang.String);  
+private boolean javaIsBefore(String referenceDate, String actualDate):
+	JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.isBefore(java.lang.String, java.lang.String);  
     
 cached List[uml::NamedElement] getBreakingChanges(uml::Package package):
     package.allOwnedElements().typeSelect(uml::NamedElement).select(e|e.isInGeneratorWhitelist()).select(e|e.isBreakingChange() && e.getNearestPackage() == package).sortBy(e|e.getBreakingChangeActiveWith());

@@ -1901,7 +1901,7 @@ public class GeneratorCommons {
     return lDate;
   }
 
-  public static boolean isOverdue(String pReferenceDate, String pActualDate) {
+  public static boolean isAfter(String pReferenceDate, String pActualDate) {
     if (pReferenceDate != null && isLocalDate(pReferenceDate) && pActualDate != null && isLocalDate(pActualDate)) {
       return !asLocalDate(pReferenceDate).isAfter(asLocalDate(pActualDate));
     }
@@ -1909,4 +1909,13 @@ public class GeneratorCommons {
       return false;
     }
   }
+
+  public static boolean isBefore(String pReferenceDate, String pActualDate) {
+	    if (pReferenceDate != null && isLocalDate(pReferenceDate) && pActualDate != null && isLocalDate(pActualDate)) {
+	      return !asLocalDate(pActualDate).isBefore(asLocalDate(pReferenceDate));
+	    }
+	    else {
+	      return false;
+	    }
+	  }
 }
