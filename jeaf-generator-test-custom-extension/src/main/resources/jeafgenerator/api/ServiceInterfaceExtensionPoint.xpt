@@ -11,3 +11,7 @@
 «DEFINE ProvideDefaultImplementation FOR Operation»
 System.out.println("Hey Guys, no AI, I'm only generated ;-)");
 «ENDDEFINE»
+
+«DEFINE GenerateDefaultImplementation(boolean ractive) FOR Operation»
+System.out.println("Hey Guys, I'm generated too ;-)");
+«ENDDEFINE»

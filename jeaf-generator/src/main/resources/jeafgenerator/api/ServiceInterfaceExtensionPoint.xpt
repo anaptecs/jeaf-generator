@@ -7,5 +7,9 @@
 «DEFINE AfterOperationDeclaration FOR JEAFService»
 «ENDDEFINE»
 
+«REM»Template is deprecated. Please use variant with paramater "reactive" instead.«ENDREM»
 «DEFINE ProvideDefaultImplementation FOR Operation»
+«ENDDEFINE»
+
+«ENDDEFINE»«DEFINE GenerateDefaultImplementation(boolean ractive) FOR Operation»
 «ENDDEFINE»

@@ -50,6 +50,7 @@
 	           «ENDIF»
 	        «ELSEIF operationType.name == "CUSTOM_GENERATOR_TEMPLATE"»
                «EXPAND jeafgenerator::api::ServiceInterfaceExtensionPoint::ProvideDefaultImplementation»
+               «EXPAND jeafgenerator::api::ServiceInterfaceExtensionPoint::GenerateDefaultImplementation(reactive)»
 	        «ELSE»
 	           «IF getReturnTypeName() != "void"»
 	               «IF getReturnType().type.isPrimitiveType() || getReturnType().type.isBasicType()»

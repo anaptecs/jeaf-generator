@@ -38,6 +38,7 @@ public interface DefaultService extends Service {
   @JEAFCustomAnnotationTest
   default void customTemplate( ) {
     System.out.println("Hey Guys, no AI, I'm only generated ;-)");
+    System.out.println("Hey Guys, I'm generated too ;-)");
   }
 
   /**
