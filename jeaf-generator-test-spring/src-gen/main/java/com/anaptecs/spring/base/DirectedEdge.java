@@ -94,7 +94,7 @@ public class DirectedEdge {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class DirectedEdgeBuilder<T extends DirectedEdge, B extends DirectedEdgeBuilder<T, B>> {
+  public static abstract class DirectedEdgeBuilder<T extends DirectedEdge, S extends DirectedEdgeBuilder<T, S>> {
     /**
      * The start
      */
@@ -130,9 +130,9 @@ public class DirectedEdge {
      * Method sets association {@link #start}.<br/>
      *
      * @param pStart Value to which {@link #start} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setStart( Stop pStart ) {
+    public S setStart( Stop pStart ) {
       start = pStart;
       return this.self();
     }
@@ -141,9 +141,9 @@ public class DirectedEdge {
      * Method sets association {@link #end}.<br/>
      *
      * @param pEnd Value to which {@link #end} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setEnd( @MyNotNullProperty Stop pEnd ) {
+    public S setEnd( @MyNotNullProperty Stop pEnd ) {
       end = pEnd;
       return this.self();
     }
@@ -152,9 +152,9 @@ public class DirectedEdge {
      * Method sets attribute {@link #link}.<br/>
      *
      * @param pLink Value to which {@link #link} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setLink( @MyNotNullProperty String pLink ) {
+    public S setLink( @MyNotNullProperty String pLink ) {
       // Assign value to attribute
       link = pLink;
       return this.self();
@@ -163,7 +163,7 @@ public class DirectedEdge {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
 
     /**
      * Method creates a new instance of class DirectedEdge. The object will be initialized with the values of the

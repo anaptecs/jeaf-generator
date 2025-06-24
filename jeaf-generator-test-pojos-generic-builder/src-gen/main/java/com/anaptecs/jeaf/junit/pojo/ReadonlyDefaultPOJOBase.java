@@ -62,7 +62,7 @@ public abstract class ReadonlyDefaultPOJOBase {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class ReadonlyDefaultPOJOBuilder<T extends ReadonlyDefaultPOJO, B extends ReadonlyDefaultPOJOBuilder<T, B>> {
+  public static abstract class ReadonlyDefaultPOJOBuilder<T extends ReadonlyDefaultPOJO, S extends ReadonlyDefaultPOJOBuilder<T, S>> {
     /**
      * <br/>
      * <b>Default Value:</b> <code>4711</code>
@@ -97,9 +97,9 @@ public abstract class ReadonlyDefaultPOJOBase {
      * Method sets attribute {@link #readonlyDefault}.<br/>
      *
      * @param pReadonlyDefault Value to which {@link #readonlyDefault} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setReadonlyDefault( int pReadonlyDefault ) {
+    public S setReadonlyDefault( int pReadonlyDefault ) {
       // Assign value to attribute
       readonlyDefault = pReadonlyDefault;
       return this.self();
@@ -109,9 +109,9 @@ public abstract class ReadonlyDefaultPOJOBase {
      * Method sets attribute {@link #booleanDefault}.<br/>
      *
      * @param pBooleanDefault Value to which {@link #booleanDefault} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setBooleanDefault( Boolean pBooleanDefault ) {
+    public S setBooleanDefault( Boolean pBooleanDefault ) {
       // Assign value to attribute
       booleanDefault = pBooleanDefault;
       return this.self();
@@ -120,7 +120,7 @@ public abstract class ReadonlyDefaultPOJOBase {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
 
     /**
      * Method creates a new instance of class ReadonlyDefaultPOJO. The object will be initialized with the values of the

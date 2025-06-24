@@ -54,7 +54,7 @@ public abstract class AccountBase {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class AccountBuilder<T extends Account, B extends AccountBuilder<T, B>> {
+  public static abstract class AccountBuilder<T extends Account, S extends AccountBuilder<T, S>> {
     private int iban;
 
     private Currency currency;
@@ -80,9 +80,9 @@ public abstract class AccountBase {
      * Method sets attribute {@link #iban}.<br/>
      *
      * @param pIban Value to which {@link #iban} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setIban( int pIban ) {
+    public S setIban( int pIban ) {
       // Assign value to attribute
       iban = pIban;
       return this.self();
@@ -92,9 +92,9 @@ public abstract class AccountBase {
      * Method sets attribute {@link #currency}.<br/>
      *
      * @param pCurrency Value to which {@link #currency} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setCurrency( Currency pCurrency ) {
+    public S setCurrency( Currency pCurrency ) {
       // Assign value to attribute
       currency = pCurrency;
       return this.self();
@@ -103,7 +103,7 @@ public abstract class AccountBase {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
 
     /**
      * Method creates a new instance of class Account. The object will be initialized with the values of the builder.

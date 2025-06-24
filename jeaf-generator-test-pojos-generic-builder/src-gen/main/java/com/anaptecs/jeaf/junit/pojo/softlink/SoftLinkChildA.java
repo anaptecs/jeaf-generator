@@ -60,8 +60,8 @@ public class SoftLinkChildA extends SoftLinkParent {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class SoftLinkChildABuilder<T extends SoftLinkChildA, B extends SoftLinkChildABuilder<T, B>>
-      extends SoftLinkParentBuilder<T, B> {
+  public static abstract class SoftLinkChildABuilder<T extends SoftLinkChildA, S extends SoftLinkChildABuilder<T, S>>
+      extends SoftLinkParentBuilder<T, S> {
     /**
      * Use {@link SoftLinkChildABuilder#builder()} instead of private constructor to create new builder.
      */

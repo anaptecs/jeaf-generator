@@ -80,7 +80,7 @@ public abstract class BidirectionalABase {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class BidirectionalABuilder<T extends BidirectionalA, B extends BidirectionalABuilder<T, B>> {
+  public static abstract class BidirectionalABuilder<T extends BidirectionalA, S extends BidirectionalABuilder<T, S>> {
     private BidirectionalA child;
 
     /**
@@ -103,9 +103,9 @@ public abstract class BidirectionalABase {
      * Method sets association {@link #child}.<br/>
      *
      * @param pChild Value to which {@link #child} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setChild( BidirectionalA pChild ) {
+    public S setChild( BidirectionalA pChild ) {
       child = pChild;
       return this.self();
     }
@@ -113,7 +113,7 @@ public abstract class BidirectionalABase {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
 
     /**
      * Method creates a new instance of class BidirectionalA. The object will be initialized with the values of the

@@ -65,7 +65,7 @@ public class AnotherDataType {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class AnotherDataTypeBuilder<T extends AnotherDataType, B extends AnotherDataTypeBuilder<T, B>> {
+  public static abstract class AnotherDataTypeBuilder<T extends AnotherDataType, S extends AnotherDataTypeBuilder<T, S>> {
     private String data;
 
     /**
@@ -88,9 +88,9 @@ public class AnotherDataType {
      * Method sets attribute {@link #data}.<br/>
      *
      * @param pData Value to which {@link #data} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setData( @MyNotNullProperty String pData ) {
+    public S setData( @MyNotNullProperty String pData ) {
       // Assign value to attribute
       data = pData;
       return this.self();
@@ -99,7 +99,7 @@ public class AnotherDataType {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
 
     /**
      * Method creates a new instance of class AnotherDataType. The object will be initialized with the values of the

@@ -87,8 +87,8 @@ public class ImmutableChildPOJO extends ImmutablePOJOParent {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class ImmutableChildPOJOBuilder<T extends ImmutableChildPOJO, B extends ImmutableChildPOJOBuilder<T, B>>
-      extends ImmutablePOJOParentBuilder<T, B> {
+  public static abstract class ImmutableChildPOJOBuilder<T extends ImmutableChildPOJO, S extends ImmutableChildPOJOBuilder<T, S>>
+      extends ImmutablePOJOParentBuilder<T, S> {
     private String childAttribute;
 
     private Double anotherChildAttribute;
@@ -117,9 +117,9 @@ public class ImmutableChildPOJO extends ImmutablePOJOParent {
      * Method sets attribute {@link #childAttribute}.<br/>
      *
      * @param pChildAttribute Value to which {@link #childAttribute} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setChildAttribute( String pChildAttribute ) {
+    public S setChildAttribute( String pChildAttribute ) {
       // Assign value to attribute
       childAttribute = pChildAttribute;
       return this.self();
@@ -129,9 +129,9 @@ public class ImmutableChildPOJO extends ImmutablePOJOParent {
      * Method sets attribute {@link #anotherChildAttribute}.<br/>
      *
      * @param pAnotherChildAttribute Value to which {@link #anotherChildAttribute} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setAnotherChildAttribute( Double pAnotherChildAttribute ) {
+    public S setAnotherChildAttribute( Double pAnotherChildAttribute ) {
       // Assign value to attribute
       anotherChildAttribute = pAnotherChildAttribute;
       return this.self();

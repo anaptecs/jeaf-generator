@@ -78,7 +78,7 @@ public class SimpleBackwardCompatibility {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class SimpleBackwardCompatibilityBuilder<T extends SimpleBackwardCompatibility, B extends SimpleBackwardCompatibilityBuilder<T, B>> {
+  public static abstract class SimpleBackwardCompatibilityBuilder<T extends SimpleBackwardCompatibility, S extends SimpleBackwardCompatibilityBuilder<T, S>> {
     private String successorProperty;
 
     /**
@@ -102,10 +102,10 @@ public class SimpleBackwardCompatibility {
      * Method sets attribute {@link #deprecatedProperty}.<br/>
      *
      * @param pDeprecatedProperty Value to which {@link #deprecatedProperty} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
-    public B setDeprecatedProperty( @MyNotNullProperty String pDeprecatedProperty ) {
+    public S setDeprecatedProperty( @MyNotNullProperty String pDeprecatedProperty ) {
       // Delegate call to setSuccessorProperty(...)
       this.setSuccessorProperty(pDeprecatedProperty);
       return this.self();
@@ -115,9 +115,9 @@ public class SimpleBackwardCompatibility {
      * Method sets attribute {@link #successorProperty}.<br/>
      *
      * @param pSuccessorProperty Value to which {@link #successorProperty} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setSuccessorProperty( @MyNotNullProperty String pSuccessorProperty ) {
+    public S setSuccessorProperty( @MyNotNullProperty String pSuccessorProperty ) {
       // Assign value to attribute
       successorProperty = pSuccessorProperty;
       return this.self();
@@ -126,7 +126,7 @@ public class SimpleBackwardCompatibility {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
 
     /**
      * Method creates a new instance of class SimpleBackwardCompatibility. The object will be initialized with the

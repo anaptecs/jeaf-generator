@@ -116,7 +116,7 @@ public class BookingID {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class BookingIDBuilder<T extends BookingID, B extends BookingIDBuilder<T, B>> {
+  public static abstract class BookingIDBuilder<T extends BookingID, S extends BookingIDBuilder<T, S>> {
     private String publicBookingID;
 
     private String referenceID;
@@ -151,9 +151,9 @@ public class BookingID {
      * Method sets attribute {@link #publicBookingID}.<br/>
      *
      * @param pPublicBookingID Value to which {@link #publicBookingID} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setPublicBookingID( @MyNotNullProperty String pPublicBookingID ) {
+    public S setPublicBookingID( @MyNotNullProperty String pPublicBookingID ) {
       // Assign value to attribute
       publicBookingID = pPublicBookingID;
       return this.self();
@@ -163,9 +163,9 @@ public class BookingID {
      * Method sets attribute {@link #referenceID}.<br/>
      *
      * @param pReferenceID Value to which {@link #referenceID} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setReferenceID( @MyNotNullProperty String pReferenceID ) {
+    public S setReferenceID( @MyNotNullProperty String pReferenceID ) {
       // Assign value to attribute
       referenceID = pReferenceID;
       return this.self();
@@ -175,9 +175,9 @@ public class BookingID {
      * Method sets attribute {@link #externalRefID}.<br/>
      *
      * @param pExternalRefID Value to which {@link #externalRefID} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setExternalRefID( @MyNotNullProperty String pExternalRefID ) {
+    public S setExternalRefID( @MyNotNullProperty String pExternalRefID ) {
       // Assign value to attribute
       externalRefID = pExternalRefID;
       return this.self();
@@ -187,9 +187,9 @@ public class BookingID {
      * Method sets association {@link #inventory}.<br/>
      *
      * @param pInventory Value to which {@link #inventory} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setInventory( @MyNotNullProperty InventoryType pInventory ) {
+    public S setInventory( @MyNotNullProperty InventoryType pInventory ) {
       inventory = pInventory;
       return this.self();
     }
@@ -198,9 +198,9 @@ public class BookingID {
      * Method sets association {@link #bookingCode}.<br/>
      *
      * @param pBookingCode Value to which {@link #bookingCode} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setBookingCode( @MyNotNullProperty BookingCode pBookingCode ) {
+    public S setBookingCode( @MyNotNullProperty BookingCode pBookingCode ) {
       bookingCode = pBookingCode;
       return this.self();
     }
@@ -208,7 +208,7 @@ public class BookingID {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
 
     /**
      * Method creates a new instance of class BookingID. The object will be initialized with the values of the builder.

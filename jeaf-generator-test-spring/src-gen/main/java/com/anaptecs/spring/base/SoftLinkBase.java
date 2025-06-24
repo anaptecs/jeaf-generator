@@ -66,7 +66,7 @@ public abstract class SoftLinkBase {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class SoftLinkBuilder<T extends SoftLink, B extends SoftLinkBuilder<T, B>> {
+  public static abstract class SoftLinkBuilder<T extends SoftLink, S extends SoftLinkBuilder<T, S>> {
     private long objectID;
 
     private DataUnit dataUnit;
@@ -98,9 +98,9 @@ public abstract class SoftLinkBase {
      * Method sets attribute {@link #objectID}.<br/>
      *
      * @param pObjectID Value to which {@link #objectID} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setObjectID( long pObjectID ) {
+    public S setObjectID( long pObjectID ) {
       // Assign value to attribute
       objectID = pObjectID;
       return this.self();
@@ -110,9 +110,9 @@ public abstract class SoftLinkBase {
      * Method sets association {@link #dataUnit}.<br/>
      *
      * @param pDataUnit Value to which {@link #dataUnit} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setDataUnit( @MyNotNullProperty DataUnit pDataUnit ) {
+    public S setDataUnit( @MyNotNullProperty DataUnit pDataUnit ) {
       dataUnit = pDataUnit;
       return this.self();
     }
@@ -121,9 +121,9 @@ public abstract class SoftLinkBase {
      * Method sets association {@link #entity}.<br/>
      *
      * @param pEntity Value to which {@link #entity} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setEntity( @MyNotNullProperty Entity pEntity ) {
+    public S setEntity( @MyNotNullProperty Entity pEntity ) {
       entity = pEntity;
       return this.self();
     }
@@ -132,9 +132,9 @@ public abstract class SoftLinkBase {
      * Method sets attribute {@link #refrenceID}.<br/>
      *
      * @param pRefrenceID Value to which {@link #refrenceID} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setRefrenceID( @MyNotNullProperty String pRefrenceID ) {
+    public S setRefrenceID( @MyNotNullProperty String pRefrenceID ) {
       // Assign value to attribute
       refrenceID = pRefrenceID;
       return this.self();
@@ -143,7 +143,7 @@ public abstract class SoftLinkBase {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
 
     /**
      * Method creates a new instance of class SoftLink. The object will be initialized with the values of the builder.

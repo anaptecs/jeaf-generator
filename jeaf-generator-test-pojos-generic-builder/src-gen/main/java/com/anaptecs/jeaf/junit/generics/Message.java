@@ -67,7 +67,7 @@ public class Message {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class MessageBuilder<T extends Message, B extends MessageBuilder<T, B>> {
+  public static abstract class MessageBuilder<T extends Message, S extends MessageBuilder<T, S>> {
     private String text;
 
     /**
@@ -90,9 +90,9 @@ public class Message {
      * Method sets attribute {@link #text}.<br/>
      *
      * @param pText Value to which {@link #text} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setText( String pText ) {
+    public S setText( String pText ) {
       // Assign value to attribute
       text = pText;
       return this.self();
@@ -101,7 +101,7 @@ public class Message {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
 
     /**
      * Method creates a new instance of class Message. The object will be initialized with the values of the builder.

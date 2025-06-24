@@ -62,7 +62,7 @@ public abstract class AdvancedPOJOBase {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class AdvancedPOJOBuilder<T extends AdvancedPOJO, B extends AdvancedPOJOBuilder<T, B>> {
+  public static abstract class AdvancedPOJOBuilder<T extends AdvancedPOJO, S extends AdvancedPOJOBuilder<T, S>> {
     /**
      * <br/>
      * <b>Default Value:</b> <code>4711</code>
@@ -96,9 +96,9 @@ public abstract class AdvancedPOJOBase {
      * Method sets attribute {@link #readonlyDefault}.<br/>
      *
      * @param pReadonlyDefault Value to which {@link #readonlyDefault} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setReadonlyDefault( int pReadonlyDefault ) {
+    public S setReadonlyDefault( int pReadonlyDefault ) {
       // Assign value to attribute
       readonlyDefault = pReadonlyDefault;
       return this.self();
@@ -108,9 +108,9 @@ public abstract class AdvancedPOJOBase {
      * Method sets attribute {@link #intWithDefault}.<br/>
      *
      * @param pIntWithDefault Value to which {@link #intWithDefault} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setIntWithDefault( Integer pIntWithDefault ) {
+    public S setIntWithDefault( Integer pIntWithDefault ) {
       // Assign value to attribute
       intWithDefault = pIntWithDefault;
       return this.self();
@@ -119,7 +119,7 @@ public abstract class AdvancedPOJOBase {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
 
     /**
      * Method creates a new instance of class AdvancedPOJO. The object will be initialized with the values of the

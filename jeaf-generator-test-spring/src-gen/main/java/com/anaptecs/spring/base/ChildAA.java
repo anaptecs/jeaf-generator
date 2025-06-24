@@ -105,8 +105,8 @@ public class ChildAA extends ChildA {
   @Deprecated
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class ChildAABuilder<T extends ChildAA, B extends ChildAABuilder<T, B>>
-      extends ChildABuilder<T, B> {
+  public static abstract class ChildAABuilder<T extends ChildAA, S extends ChildAABuilder<T, S>>
+      extends ChildABuilder<T, S> {
     /**
      * Multi<br/>
      * line<br/>
@@ -143,9 +143,9 @@ public class ChildAA extends ChildA {
      * Method sets attribute {@link #childAAAttribute}.<br/>
      *
      * @param pChildAAAttribute Value to which {@link #childAAAttribute} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setChildAAAttribute( byte pChildAAAttribute ) {
+    public S setChildAAAttribute( byte pChildAAAttribute ) {
       // Assign value to attribute
       childAAAttribute = pChildAAAttribute;
       return this.self();
@@ -155,9 +155,9 @@ public class ChildAA extends ChildA {
      * Method sets attribute {@link #sizedArray}.<br/>
      *
      * @param pSizedArray Value to which {@link #sizedArray} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setSizedArray( int[] pSizedArray ) {
+    public S setSizedArray( int[] pSizedArray ) {
       // Assign value to attribute
       if (pSizedArray != null) {
         sizedArray = new int[pSizedArray.length];
@@ -173,9 +173,9 @@ public class ChildAA extends ChildA {
      * Method sets attribute {@link #requiredArray}.<br/>
      *
      * @param pRequiredArray Collection to which {@link #requiredArray} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setRequiredArray( @MyNotEmptyProperty String[] pRequiredArray ) {
+    public S setRequiredArray( @MyNotEmptyProperty String[] pRequiredArray ) {
       // Assign value to attribute
       if (pRequiredArray != null) {
         requiredArray = new String[pRequiredArray.length];

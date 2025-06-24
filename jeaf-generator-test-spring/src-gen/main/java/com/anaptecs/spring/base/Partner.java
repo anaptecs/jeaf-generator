@@ -78,7 +78,7 @@ public class Partner {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class PartnerBuilder<T extends Partner, B extends PartnerBuilder<T, B>> {
+  public static abstract class PartnerBuilder<T extends Partner, S extends PartnerBuilder<T, S>> {
     private List<PostalAddress> postalAddresses;
 
     /**
@@ -101,9 +101,9 @@ public class Partner {
      * Method sets association {@link #postalAddresses}.<br/>
      *
      * @param pPostalAddresses Collection to which {@link #postalAddresses} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setPostalAddresses( List<PostalAddress> pPostalAddresses ) {
+    public S setPostalAddresses( List<PostalAddress> pPostalAddresses ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pPostalAddresses != null) {
         postalAddresses = new ArrayList<PostalAddress>(pPostalAddresses);
@@ -119,9 +119,9 @@ public class Partner {
      *
      * @param pPostalAddresses Array of objects that should be added to {@link #postalAddresses}. The parameter may be
      * null.
-     * @return {@link B} Instance of this builder to support chaining. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining. Method never returns null.
      */
-    public B addToPostalAddresses( PostalAddress... pPostalAddresses ) {
+    public S addToPostalAddresses( PostalAddress... pPostalAddresses ) {
       if (pPostalAddresses != null) {
         if (postalAddresses == null) {
           postalAddresses = new ArrayList<PostalAddress>();
@@ -134,7 +134,7 @@ public class Partner {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
 
     /**
      * Method creates a new instance of class Partner. The object will be initialized with the values of the builder.

@@ -74,7 +74,7 @@ public class ReadOnlyClient {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class ReadOnlyClientBuilder<T extends ReadOnlyClient, B extends ReadOnlyClientBuilder<T, B>> {
+  public static abstract class ReadOnlyClientBuilder<T extends ReadOnlyClient, S extends ReadOnlyClientBuilder<T, S>> {
     private String name;
 
     /**
@@ -97,9 +97,9 @@ public class ReadOnlyClient {
      * Method sets attribute {@link #name}.<br/>
      *
      * @param pName Value to which {@link #name} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setName( String pName ) {
+    public S setName( String pName ) {
       // Assign value to attribute
       name = pName;
       return this.self();
@@ -108,7 +108,7 @@ public class ReadOnlyClient {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
 
     /**
      * Method creates a new instance of class ReadOnlyClient. The object will be initialized with the values of the

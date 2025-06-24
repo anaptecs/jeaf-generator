@@ -60,8 +60,8 @@ public class UICStopPlace extends StopPlaceRef {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class UICStopPlaceBuilder<T extends UICStopPlace, B extends UICStopPlaceBuilder<T, B>>
-      extends StopPlaceRefBuilder<T, B> {
+  public static abstract class UICStopPlaceBuilder<T extends UICStopPlace, S extends UICStopPlaceBuilder<T, S>>
+      extends StopPlaceRefBuilder<T, S> {
     /**
      * Use {@link UICStopPlaceBuilder#builder()} instead of private constructor to create new builder.
      */

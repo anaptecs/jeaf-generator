@@ -114,7 +114,7 @@ public class MasterClass {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class MasterClassBuilder<T extends MasterClass, B extends MasterClassBuilder<T, B>> {
+  public static abstract class MasterClassBuilder<T extends MasterClass, S extends MasterClassBuilder<T, S>> {
     private List<ClientClass> clients;
 
     private String name;
@@ -143,9 +143,9 @@ public class MasterClass {
      * Method sets association {@link #clients}.<br/>
      *
      * @param pClients Collection to which {@link #clients} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setClients( List<ClientClass> pClients ) {
+    public S setClients( List<ClientClass> pClients ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pClients != null) {
         clients = new ArrayList<ClientClass>(pClients);
@@ -160,9 +160,9 @@ public class MasterClass {
      * Method adds the passed objects to association {@link #clients}.<br/>
      *
      * @param pClients Array of objects that should be added to {@link #clients}. The parameter may be null.
-     * @return {@link B} Instance of this builder to support chaining. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining. Method never returns null.
      */
-    public B addToClients( ClientClass... pClients ) {
+    public S addToClients( ClientClass... pClients ) {
       if (pClients != null) {
         if (clients == null) {
           clients = new ArrayList<ClientClass>();
@@ -176,9 +176,9 @@ public class MasterClass {
      * Method sets attribute {@link #name}.<br/>
      *
      * @param pName Value to which {@link #name} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setName( String pName ) {
+    public S setName( String pName ) {
       // Assign value to attribute
       name = pName;
       return this.self();
@@ -188,9 +188,9 @@ public class MasterClass {
      * Method sets association {@link #singleClient}.<br/>
      *
      * @param pSingleClient Value to which {@link #singleClient} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setSingleClient( ClientClass pSingleClient ) {
+    public S setSingleClient( ClientClass pSingleClient ) {
       singleClient = pSingleClient;
       return this.self();
     }
@@ -198,7 +198,7 @@ public class MasterClass {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
 
     /**
      * Method creates a new instance of class MasterClass. The object will be initialized with the values of the

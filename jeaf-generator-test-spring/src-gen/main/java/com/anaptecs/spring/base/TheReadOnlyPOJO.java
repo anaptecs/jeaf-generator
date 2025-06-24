@@ -100,7 +100,7 @@ public class TheReadOnlyPOJO {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class TheReadOnlyPOJOBuilder<T extends TheReadOnlyPOJO, B extends TheReadOnlyPOJOBuilder<T, B>> {
+  public static abstract class TheReadOnlyPOJOBuilder<T extends TheReadOnlyPOJO, S extends TheReadOnlyPOJOBuilder<T, S>> {
     private DataUnit dataUnit;
 
     private String name;
@@ -132,9 +132,9 @@ public class TheReadOnlyPOJO {
      * Method sets association {@link #dataUnit}.<br/>
      *
      * @param pDataUnit Value to which {@link #dataUnit} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setDataUnit( DataUnit pDataUnit ) {
+    public S setDataUnit( DataUnit pDataUnit ) {
       dataUnit = pDataUnit;
       return this.self();
     }
@@ -143,9 +143,9 @@ public class TheReadOnlyPOJO {
      * Method sets attribute {@link #name}.<br/>
      *
      * @param pName Value to which {@link #name} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setName( @MyNotNullProperty String pName ) {
+    public S setName( @MyNotNullProperty String pName ) {
       // Assign value to attribute
       name = pName;
       return this.self();
@@ -155,9 +155,9 @@ public class TheReadOnlyPOJO {
      * Method sets attribute {@link #ints}.<br/>
      *
      * @param pInts Value to which {@link #ints} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setInts( int[] pInts ) {
+    public S setInts( int[] pInts ) {
       // Assign value to attribute
       if (pInts != null) {
         ints = new int[pInts.length];
@@ -173,9 +173,9 @@ public class TheReadOnlyPOJO {
      * Method sets association {@link #entities}.<br/>
      *
      * @param pEntities Collection to which {@link #entities} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setEntities( List<Entity> pEntities ) {
+    public S setEntities( List<Entity> pEntities ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pEntities != null) {
         entities = new ArrayList<Entity>(pEntities);
@@ -190,9 +190,9 @@ public class TheReadOnlyPOJO {
      * Method adds the passed objects to association {@link #entities}.<br/>
      *
      * @param pEntities Array of objects that should be added to {@link #entities}. The parameter may be null.
-     * @return {@link B} Instance of this builder to support chaining. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining. Method never returns null.
      */
-    public B addToEntities( Entity... pEntities ) {
+    public S addToEntities( Entity... pEntities ) {
       if (pEntities != null) {
         if (entities == null) {
           entities = new ArrayList<Entity>();
@@ -206,9 +206,9 @@ public class TheReadOnlyPOJO {
      * Method sets association {@link #entities}.<br/>
      *
      * @param pEntities Array with objects to which {@link #entities} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setEntities( Entity... pEntities ) {
+    public S setEntities( Entity... pEntities ) {
       // Copy the content of the passed array.
       if (pEntities != null) {
         entities = new ArrayList<Entity>(Arrays.asList(pEntities));
@@ -222,7 +222,7 @@ public class TheReadOnlyPOJO {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
 
     /**
      * Method creates a new instance of class TheReadOnlyPOJO. The object will be initialized with the values of the

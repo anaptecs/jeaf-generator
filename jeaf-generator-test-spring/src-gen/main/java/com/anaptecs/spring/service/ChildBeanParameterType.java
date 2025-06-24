@@ -71,8 +71,8 @@ public class ChildBeanParameterType extends ParentBeanParamType {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class ChildBeanParameterTypeBuilder<T extends ChildBeanParameterType, B extends ChildBeanParameterTypeBuilder<T, B>>
-      extends ParentBeanParamTypeBuilder<T, B> {
+  public static abstract class ChildBeanParameterTypeBuilder<T extends ChildBeanParameterType, S extends ChildBeanParameterTypeBuilder<T, S>>
+      extends ParentBeanParamTypeBuilder<T, S> {
     private String childProperty;
 
     /**
@@ -98,9 +98,9 @@ public class ChildBeanParameterType extends ParentBeanParamType {
      * Method sets attribute {@link #childProperty}.<br/>
      *
      * @param pChildProperty Value to which {@link #childProperty} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setChildProperty( @MyNotNullProperty String pChildProperty ) {
+    public S setChildProperty( @MyNotNullProperty String pChildProperty ) {
       // Assign value to attribute
       childProperty = pChildProperty;
       return this.self();

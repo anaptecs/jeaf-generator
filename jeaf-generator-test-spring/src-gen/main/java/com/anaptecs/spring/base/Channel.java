@@ -120,7 +120,7 @@ public class Channel {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class ChannelBuilder<T extends Channel, B extends ChannelBuilder<T, B>> {
+  public static abstract class ChannelBuilder<T extends Channel, S extends ChannelBuilder<T, S>> {
     /**
      * Type of the channel
      */
@@ -163,9 +163,9 @@ public class Channel {
      * Method sets association {@link #channelType}.<br/>
      *
      * @param pChannelType Value to which {@link #channelType} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setChannelType( @MyNotNullProperty ChannelType pChannelType ) {
+    public S setChannelType( @MyNotNullProperty ChannelType pChannelType ) {
       channelType = pChannelType;
       return this.self();
     }
@@ -174,9 +174,9 @@ public class Channel {
      * Method sets association {@link #channelCode}.<br/>
      *
      * @param pChannelCode Value to which {@link #channelCode} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setChannelCode( @MyNotNullProperty ChannelCode pChannelCode ) {
+    public S setChannelCode( @MyNotNullProperty ChannelCode pChannelCode ) {
       channelCode = pChannelCode;
       return this.self();
     }
@@ -185,9 +185,9 @@ public class Channel {
      * Method sets attribute {@link #code}.<br/>
      *
      * @param pCode Value to which {@link #code} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setCode( int pCode ) {
+    public S setCode( int pCode ) {
       // Assign value to attribute
       code = pCode;
       return this.self();
@@ -197,10 +197,10 @@ public class Channel {
      * Method sets attribute {@link #selfServiceChannel}.<br/>
      *
      * @param pSelfServiceChannel Value to which {@link #selfServiceChannel} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
-    public B setSelfServiceChannel( boolean pSelfServiceChannel ) {
+    public S setSelfServiceChannel( boolean pSelfServiceChannel ) {
       // Assign value to attribute
       selfServiceChannel = pSelfServiceChannel;
       return this.self();
@@ -209,7 +209,7 @@ public class Channel {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
 
     /**
      * Method creates a new instance of class Channel. The object will be initialized with the values of the builder.

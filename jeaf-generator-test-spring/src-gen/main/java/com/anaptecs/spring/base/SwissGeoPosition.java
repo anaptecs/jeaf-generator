@@ -66,8 +66,8 @@ public class SwissGeoPosition extends GeoPosition {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class SwissGeoPositionBuilder<T extends SwissGeoPosition, B extends SwissGeoPositionBuilder<T, B>>
-      extends GeoPositionBuilder<T, B> {
+  public static abstract class SwissGeoPositionBuilder<T extends SwissGeoPosition, S extends SwissGeoPositionBuilder<T, S>>
+      extends GeoPositionBuilder<T, S> {
     /**
      * Use {@link SwissGeoPositionBuilder#builder()} instead of private constructor to create new builder.
      */

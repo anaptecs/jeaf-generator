@@ -60,8 +60,8 @@ public class CHStopPlace extends StopPlaceRef {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class CHStopPlaceBuilder<T extends CHStopPlace, B extends CHStopPlaceBuilder<T, B>>
-      extends StopPlaceRefBuilder<T, B> {
+  public static abstract class CHStopPlaceBuilder<T extends CHStopPlace, S extends CHStopPlaceBuilder<T, S>>
+      extends StopPlaceRefBuilder<T, S> {
     /**
      * Use {@link CHStopPlaceBuilder#builder()} instead of private constructor to create new builder.
      */

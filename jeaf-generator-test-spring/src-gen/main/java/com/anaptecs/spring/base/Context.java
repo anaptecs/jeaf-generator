@@ -154,7 +154,7 @@ public class Context {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class ContextBuilder<T extends Context, B extends ContextBuilder<T, B>> {
+  public static abstract class ContextBuilder<T extends Context, S extends ContextBuilder<T, S>> {
     @NotEmpty
     private String accessToken;
 
@@ -211,9 +211,9 @@ public class Context {
      * Method sets attribute {@link #accessToken}.<br/>
      *
      * @param pAccessToken Value to which {@link #accessToken} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setAccessToken( @MyNotNullProperty String pAccessToken ) {
+    public S setAccessToken( @MyNotNullProperty String pAccessToken ) {
       // Assign value to attribute
       accessToken = pAccessToken;
       return this.self();
@@ -223,9 +223,9 @@ public class Context {
      * Method sets attribute {@link #language}.<br/>
      *
      * @param pLanguage Value to which {@link #language} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setLanguage( @MyNotNullProperty Locale pLanguage ) {
+    public S setLanguage( @MyNotNullProperty Locale pLanguage ) {
       // Assign value to attribute
       language = pLanguage;
       return this.self();
@@ -235,9 +235,9 @@ public class Context {
      * Method sets attribute {@link #resellerID}.<br/>
      *
      * @param pResellerID Value to which {@link #resellerID} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setResellerID( long pResellerID ) {
+    public S setResellerID( long pResellerID ) {
       // Assign value to attribute
       resellerID = pResellerID;
       return this.self();
@@ -247,9 +247,9 @@ public class Context {
      * Method sets attribute {@link #pathParam}.<br/>
      *
      * @param pPathParam Value to which {@link #pathParam} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setPathParam( long pPathParam ) {
+    public S setPathParam( long pPathParam ) {
       // Assign value to attribute
       pathParam = pPathParam;
       return this.self();
@@ -259,9 +259,9 @@ public class Context {
      * Method sets attribute {@link #queryParam}.<br/>
      *
      * @param pQueryParam Value to which {@link #queryParam} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setQueryParam( @MyNotNullProperty String pQueryParam ) {
+    public S setQueryParam( @MyNotNullProperty String pQueryParam ) {
       // Assign value to attribute
       queryParam = pQueryParam;
       return this.self();
@@ -271,9 +271,9 @@ public class Context {
      * Method sets attribute {@link #lang}.<br/>
      *
      * @param pLang Value to which {@link #lang} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setLang( @MyNotNullProperty String pLang ) {
+    public S setLang( @MyNotNullProperty String pLang ) {
       // Assign value to attribute
       lang = pLang;
       return this.self();
@@ -283,9 +283,9 @@ public class Context {
      * Method sets attribute {@link #intCode}.<br/>
      *
      * @param pIntCode Value to which {@link #intCode} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setIntCode( @MyNotNullProperty IntegerCodeType pIntCode ) {
+    public S setIntCode( @MyNotNullProperty IntegerCodeType pIntCode ) {
       // Assign value to attribute
       intCode = pIntCode;
       return this.self();
@@ -311,7 +311,7 @@ public class Context {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
 
     /**
      * Method creates a new instance of class Context. The object will be initialized with the values of the builder.

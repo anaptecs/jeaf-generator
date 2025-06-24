@@ -83,8 +83,8 @@ public class GeoPosition extends PlaceRef {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class GeoPositionBuilder<T extends GeoPosition, B extends GeoPositionBuilder<T, B>>
-      extends PlaceRefBuilder<T, B> {
+  public static abstract class GeoPositionBuilder<T extends GeoPosition, S extends GeoPositionBuilder<T, S>>
+      extends PlaceRefBuilder<T, S> {
     private int longitude;
 
     private int latitude;
@@ -112,9 +112,9 @@ public class GeoPosition extends PlaceRef {
      * Method sets attribute {@link #longitude}.<br/>
      *
      * @param pLongitude Value to which {@link #longitude} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setLongitude( int pLongitude ) {
+    public S setLongitude( int pLongitude ) {
       // Assign value to attribute
       longitude = pLongitude;
       return this.self();
@@ -124,9 +124,9 @@ public class GeoPosition extends PlaceRef {
      * Method sets attribute {@link #latitude}.<br/>
      *
      * @param pLatitude Value to which {@link #latitude} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setLatitude( int pLatitude ) {
+    public S setLatitude( int pLatitude ) {
       // Assign value to attribute
       latitude = pLatitude;
       return this.self();

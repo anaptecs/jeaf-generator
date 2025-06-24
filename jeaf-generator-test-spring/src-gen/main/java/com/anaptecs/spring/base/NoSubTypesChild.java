@@ -98,8 +98,8 @@ public class NoSubTypesChild extends NoSubTypesParent {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class NoSubTypesChildBuilder<T extends NoSubTypesChild, B extends NoSubTypesChildBuilder<T, B>>
-      extends NoSubTypesParentBuilder<T, B> {
+  public static abstract class NoSubTypesChildBuilder<T extends NoSubTypesChild, S extends NoSubTypesChildBuilder<T, S>>
+      extends NoSubTypesParentBuilder<T, S> {
     /**
      * Hello World!<br/>
      * <img src="https://raw.githubusercontent.com/anaptecs/emoji-images/master/imgs/1f428.png" alt="emoji github:koala"
@@ -153,9 +153,9 @@ public class NoSubTypesChild extends NoSubTypesParent {
      * Method sets attribute {@link #myProperty}.<br/>
      *
      * @param pMyProperty Value to which {@link #myProperty} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setMyProperty( @MyNotNullProperty String pMyProperty ) {
+    public S setMyProperty( @MyNotNullProperty String pMyProperty ) {
       // Assign value to attribute
       myProperty = pMyProperty;
       return this.self();

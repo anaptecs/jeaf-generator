@@ -78,7 +78,7 @@ public class ImmutablePOJO {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class ImmutablePOJOBuilder<T extends ImmutablePOJO, B extends ImmutablePOJOBuilder<T, B>> {
+  public static abstract class ImmutablePOJOBuilder<T extends ImmutablePOJO, S extends ImmutablePOJOBuilder<T, S>> {
     private String name;
 
     private Integer something;
@@ -104,9 +104,9 @@ public class ImmutablePOJO {
      * Method sets attribute {@link #name}.<br/>
      *
      * @param pName Value to which {@link #name} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setName( String pName ) {
+    public S setName( String pName ) {
       // Assign value to attribute
       name = pName;
       return this.self();
@@ -116,9 +116,9 @@ public class ImmutablePOJO {
      * Method sets attribute {@link #something}.<br/>
      *
      * @param pSomething Value to which {@link #something} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setSomething( Integer pSomething ) {
+    public S setSomething( Integer pSomething ) {
       // Assign value to attribute
       something = pSomething;
       return this.self();
@@ -127,7 +127,7 @@ public class ImmutablePOJO {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
 
     /**
      * Method creates a new instance of class ImmutablePOJO. The object will be initialized with the values of the

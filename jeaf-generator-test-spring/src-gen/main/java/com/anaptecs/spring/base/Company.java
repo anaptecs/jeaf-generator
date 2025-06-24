@@ -55,8 +55,8 @@ public class Company extends Partner {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class CompanyBuilder<T extends Company, B extends CompanyBuilder<T, B>>
-      extends PartnerBuilder<T, B> {
+  public static abstract class CompanyBuilder<T extends Company, S extends CompanyBuilder<T, S>>
+      extends PartnerBuilder<T, S> {
     private String name;
 
     /**
@@ -81,9 +81,9 @@ public class Company extends Partner {
      * Method sets attribute {@link #name}.<br/>
      *
      * @param pName Value to which {@link #name} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setName( @MyNotNullProperty String pName ) {
+    public S setName( @MyNotNullProperty String pName ) {
       // Assign value to attribute
       name = pName;
       return this.self();

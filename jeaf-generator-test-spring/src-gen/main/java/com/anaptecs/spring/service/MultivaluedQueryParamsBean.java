@@ -97,7 +97,7 @@ public class MultivaluedQueryParamsBean {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class MultivaluedQueryParamsBeanBuilder<T extends MultivaluedQueryParamsBean, B extends MultivaluedQueryParamsBeanBuilder<T, B>> {
+  public static abstract class MultivaluedQueryParamsBeanBuilder<T extends MultivaluedQueryParamsBean, S extends MultivaluedQueryParamsBeanBuilder<T, S>> {
     private int[] intArray;
 
     private String[] strings;
@@ -133,9 +133,9 @@ public class MultivaluedQueryParamsBean {
      * Method sets attribute {@link #intArray}.<br/>
      *
      * @param pIntArray Value to which {@link #intArray} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setIntArray( int[] pIntArray ) {
+    public S setIntArray( int[] pIntArray ) {
       // Assign value to attribute
       if (pIntArray != null) {
         intArray = new int[pIntArray.length];
@@ -151,9 +151,9 @@ public class MultivaluedQueryParamsBean {
      * Method sets attribute {@link #strings}.<br/>
      *
      * @param pStrings Collection to which {@link #strings} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setStrings( String[] pStrings ) {
+    public S setStrings( String[] pStrings ) {
       // Assign value to attribute
       if (pStrings != null) {
         strings = new String[pStrings.length];
@@ -169,9 +169,9 @@ public class MultivaluedQueryParamsBean {
      * Method sets attribute {@link #integers}.<br/>
      *
      * @param pIntegers Collection to which {@link #integers} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setIntegers( Integer[] pIntegers ) {
+    public S setIntegers( Integer[] pIntegers ) {
       // Assign value to attribute
       if (pIntegers != null) {
         integers = new Integer[pIntegers.length];
@@ -187,9 +187,9 @@ public class MultivaluedQueryParamsBean {
      * Method sets association {@link #timeUnits}.<br/>
      *
      * @param pTimeUnits Collection to which {@link #timeUnits} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setTimeUnits( Set<TimeUnit> pTimeUnits ) {
+    public S setTimeUnits( Set<TimeUnit> pTimeUnits ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pTimeUnits != null) {
         timeUnits = new HashSet<TimeUnit>(pTimeUnits);
@@ -204,9 +204,9 @@ public class MultivaluedQueryParamsBean {
      * Method adds the passed objects to association {@link #timeUnits}.<br/>
      *
      * @param pTimeUnits Array of objects that should be added to {@link #timeUnits}. The parameter may be null.
-     * @return {@link B} Instance of this builder to support chaining. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining. Method never returns null.
      */
-    public B addToTimeUnits( TimeUnit... pTimeUnits ) {
+    public S addToTimeUnits( TimeUnit... pTimeUnits ) {
       if (pTimeUnits != null) {
         if (timeUnits == null) {
           timeUnits = new HashSet<TimeUnit>();
@@ -220,9 +220,9 @@ public class MultivaluedQueryParamsBean {
      * Method sets association {@link #timeUnits}.<br/>
      *
      * @param pTimeUnits Array with objects to which {@link #timeUnits} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setTimeUnits( TimeUnit... pTimeUnits ) {
+    public S setTimeUnits( TimeUnit... pTimeUnits ) {
       // Copy the content of the passed array.
       if (pTimeUnits != null) {
         timeUnits = new HashSet<TimeUnit>(Arrays.asList(pTimeUnits));
@@ -237,9 +237,9 @@ public class MultivaluedQueryParamsBean {
      * Method sets attribute {@link #timeUnitArray}.<br/>
      *
      * @param pTimeUnitArray Collection to which {@link #timeUnitArray} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setTimeUnitArray( TimeUnit[] pTimeUnitArray ) {
+    public S setTimeUnitArray( TimeUnit[] pTimeUnitArray ) {
       // Assign value to attribute
       if (pTimeUnitArray != null) {
         timeUnitArray = new TimeUnit[pTimeUnitArray.length];
@@ -254,7 +254,7 @@ public class MultivaluedQueryParamsBean {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
 
     /**
      * Method creates a new instance of class MultivaluedQueryParamsBean. The object will be initialized with the values

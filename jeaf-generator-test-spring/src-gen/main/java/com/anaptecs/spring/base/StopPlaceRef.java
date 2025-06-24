@@ -31,8 +31,8 @@ public abstract class StopPlaceRef extends PlaceRef {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class StopPlaceRefBuilder<T extends StopPlaceRef, B extends StopPlaceRefBuilder<T, B>>
-      extends PlaceRefBuilder<T, B> {
+  public static abstract class StopPlaceRefBuilder<T extends StopPlaceRef, S extends StopPlaceRefBuilder<T, S>>
+      extends PlaceRefBuilder<T, S> {
     /**
      * Use {@link StopPlaceRefBuilder#builder()} instead of private constructor to create new builder.
      */

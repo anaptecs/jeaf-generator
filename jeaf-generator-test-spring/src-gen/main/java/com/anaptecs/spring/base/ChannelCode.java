@@ -82,7 +82,7 @@ public class ChannelCode {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class ChannelCodeBuilder<T extends ChannelCode, B extends ChannelCodeBuilder<T, B>> {
+  public static abstract class ChannelCodeBuilder<T extends ChannelCode, S extends ChannelCodeBuilder<T, S>> {
     /**
      * channel code <br/>
      * <b>Default Value:</b> <code>"WEBSHOP"</code> <br/>
@@ -114,9 +114,9 @@ public class ChannelCode {
      * Method sets attribute {@link #code}.<br/>
      *
      * @param pCode Value to which {@link #code} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setCode( @MyNotNullProperty String pCode ) {
+    public S setCode( @MyNotNullProperty String pCode ) {
       // Assign value to attribute
       code = pCode;
       return this.self();
@@ -125,7 +125,7 @@ public class ChannelCode {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
 
     /**
      * Method creates a new instance of class ChannelCode. The object will be initialized with the values of the

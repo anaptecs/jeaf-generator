@@ -67,7 +67,7 @@ public class LinkObject {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class LinkObjectBuilder<T extends LinkObject, B extends LinkObjectBuilder<T, B>> {
+  public static abstract class LinkObjectBuilder<T extends LinkObject, S extends LinkObjectBuilder<T, S>> {
     private String href;
 
     /**
@@ -90,9 +90,9 @@ public class LinkObject {
      * Method sets attribute {@link #href}.<br/>
      *
      * @param pHref Value to which {@link #href} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setHref( @MyNotNullProperty String pHref ) {
+    public S setHref( @MyNotNullProperty String pHref ) {
       // Assign value to attribute
       href = pHref;
       return this.self();
@@ -101,7 +101,7 @@ public class LinkObject {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
 
     /**
      * Method creates a new instance of class LinkObject. The object will be initialized with the values of the builder.

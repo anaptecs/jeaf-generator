@@ -119,7 +119,7 @@ public class ImmutableAssociationPOJO {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class ImmutableAssociationPOJOBuilder<T extends ImmutableAssociationPOJO, B extends ImmutableAssociationPOJOBuilder<T, B>> {
+  public static abstract class ImmutableAssociationPOJOBuilder<T extends ImmutableAssociationPOJO, S extends ImmutableAssociationPOJOBuilder<T, S>> {
     private boolean yetAnotherAttribute;
 
     private SortedSet<ImmutablePOJO> readonlyAssociation;
@@ -157,9 +157,9 @@ public class ImmutableAssociationPOJO {
      * Method sets attribute {@link #yetAnotherAttribute}.<br/>
      *
      * @param pYetAnotherAttribute Value to which {@link #yetAnotherAttribute} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setYetAnotherAttribute( boolean pYetAnotherAttribute ) {
+    public S setYetAnotherAttribute( boolean pYetAnotherAttribute ) {
       // Assign value to attribute
       yetAnotherAttribute = pYetAnotherAttribute;
       return this.self();
@@ -169,9 +169,9 @@ public class ImmutableAssociationPOJO {
      * Method sets association {@link #readonlyAssociation}.<br/>
      *
      * @param pReadonlyAssociation Collection to which {@link #readonlyAssociation} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setReadonlyAssociation( SortedSet<ImmutablePOJO> pReadonlyAssociation ) {
+    public S setReadonlyAssociation( SortedSet<ImmutablePOJO> pReadonlyAssociation ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pReadonlyAssociation != null) {
         readonlyAssociation = new TreeSet<ImmutablePOJO>(pReadonlyAssociation);
@@ -187,9 +187,9 @@ public class ImmutableAssociationPOJO {
      *
      * @param pReadonlyAssociation Array of objects that should be added to {@link #readonlyAssociation}. The parameter
      * may be null.
-     * @return {@link B} Instance of this builder to support chaining. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining. Method never returns null.
      */
-    public B addToReadonlyAssociation( ImmutablePOJO... pReadonlyAssociation ) {
+    public S addToReadonlyAssociation( ImmutablePOJO... pReadonlyAssociation ) {
       if (pReadonlyAssociation != null) {
         if (readonlyAssociation == null) {
           readonlyAssociation = new TreeSet<ImmutablePOJO>();
@@ -203,9 +203,9 @@ public class ImmutableAssociationPOJO {
      * Method sets association {@link #immutableChildPOJO}.<br/>
      *
      * @param pImmutableChildPOJO Value to which {@link #immutableChildPOJO} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setImmutableChildPOJO( ImmutableChildPOJO pImmutableChildPOJO ) {
+    public S setImmutableChildPOJO( ImmutableChildPOJO pImmutableChildPOJO ) {
       immutableChildPOJO = pImmutableChildPOJO;
       return this.self();
     }
@@ -214,10 +214,10 @@ public class ImmutableAssociationPOJO {
      * Method sets association {@link #deprecatedRefs}.<br/>
      *
      * @param pDeprecatedRefs Collection to which {@link #deprecatedRefs} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
-    public B setDeprecatedRefs( Set<ImmutableChildPOJO> pDeprecatedRefs ) {
+    public S setDeprecatedRefs( Set<ImmutableChildPOJO> pDeprecatedRefs ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pDeprecatedRefs != null) {
         deprecatedRefs = new HashSet<ImmutableChildPOJO>(pDeprecatedRefs);
@@ -233,10 +233,10 @@ public class ImmutableAssociationPOJO {
      *
      * @param pDeprecatedRefs Array of objects that should be added to {@link #deprecatedRefs}. The parameter may be
      * null.
-     * @return {@link B} Instance of this builder to support chaining. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining. Method never returns null.
      */
     @Deprecated
-    public B addToDeprecatedRefs( ImmutableChildPOJO... pDeprecatedRefs ) {
+    public S addToDeprecatedRefs( ImmutableChildPOJO... pDeprecatedRefs ) {
       if (pDeprecatedRefs != null) {
         if (deprecatedRefs == null) {
           deprecatedRefs = new HashSet<ImmutableChildPOJO>();
@@ -250,10 +250,10 @@ public class ImmutableAssociationPOJO {
      * Method sets association {@link #deprecatedRef}.<br/>
      *
      * @param pDeprecatedRef Value to which {@link #deprecatedRef} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
-    public B setDeprecatedRef( ChildPOJO pDeprecatedRef ) {
+    public S setDeprecatedRef( ChildPOJO pDeprecatedRef ) {
       deprecatedRef = pDeprecatedRef;
       return this.self();
     }
@@ -261,7 +261,7 @@ public class ImmutableAssociationPOJO {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
 
     /**
      * Method creates a new instance of class ImmutableAssociationPOJO. The object will be initialized with the values

@@ -106,7 +106,7 @@ public class DeprecatedContext {
   @Deprecated
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class DeprecatedContextBuilder<T extends DeprecatedContext, B extends DeprecatedContextBuilder<T, B>> {
+  public static abstract class DeprecatedContextBuilder<T extends DeprecatedContext, S extends DeprecatedContextBuilder<T, S>> {
     @NotEmpty
     private String accessToken;
 
@@ -149,9 +149,9 @@ public class DeprecatedContext {
      * Method sets attribute {@link #accessToken}.<br/>
      *
      * @param pAccessToken Value to which {@link #accessToken} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setAccessToken( @MyNotNullProperty String pAccessToken ) {
+    public S setAccessToken( @MyNotNullProperty String pAccessToken ) {
       // Assign value to attribute
       accessToken = pAccessToken;
       return this.self();
@@ -161,9 +161,9 @@ public class DeprecatedContext {
      * Method sets attribute {@link #language}.<br/>
      *
      * @param pLanguage Value to which {@link #language} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setLanguage( @MyNotNullProperty Locale pLanguage ) {
+    public S setLanguage( @MyNotNullProperty Locale pLanguage ) {
       // Assign value to attribute
       language = pLanguage;
       return this.self();
@@ -173,9 +173,9 @@ public class DeprecatedContext {
      * Method sets attribute {@link #resellerID}.<br/>
      *
      * @param pResellerID Value to which {@link #resellerID} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setResellerID( long pResellerID ) {
+    public S setResellerID( long pResellerID ) {
       // Assign value to attribute
       resellerID = pResellerID;
       return this.self();
@@ -185,9 +185,9 @@ public class DeprecatedContext {
      * Method sets attribute {@link #queryParam}.<br/>
      *
      * @param pQueryParam Value to which {@link #queryParam} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setQueryParam( @MyNotNullProperty String pQueryParam ) {
+    public S setQueryParam( @MyNotNullProperty String pQueryParam ) {
       // Assign value to attribute
       queryParam = pQueryParam;
       return this.self();
@@ -196,7 +196,7 @@ public class DeprecatedContext {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
 
     /**
      * Method creates a new instance of class DeprecatedContext. The object will be initialized with the values of the

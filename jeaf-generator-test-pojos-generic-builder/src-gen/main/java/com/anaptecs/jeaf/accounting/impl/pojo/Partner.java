@@ -23,8 +23,8 @@ public abstract class Partner extends PartnerBase {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class PartnerBuilder<T extends Partner, B extends PartnerBuilder<T, B>>
-      extends PartnerBuilderBase<T, B> {
+  public static abstract class PartnerBuilder<T extends Partner, S extends PartnerBuilder<T, S>>
+      extends PartnerBuilderBase<T, S> {
     /**
      * Use {@link PartnerBuilder#builder()} instead of private constructor to create new builder.
      */

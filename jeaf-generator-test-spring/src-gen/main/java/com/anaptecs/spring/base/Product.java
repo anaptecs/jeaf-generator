@@ -230,7 +230,7 @@ public class Product implements IProduct {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class ProductBuilder<T extends Product, B extends ProductBuilder<T, B>> {
+  public static abstract class ProductBuilder<T extends Product, S extends ProductBuilder<T, S>> {
     private Set<Reseller> resellers;
 
     @Size(min = 12, max = Integer.MAX_VALUE)
@@ -304,9 +304,9 @@ public class Product implements IProduct {
      * Method sets association {@link #resellers}.<br/>
      *
      * @param pResellers Collection to which {@link #resellers} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setResellers( Set<Reseller> pResellers ) {
+    public S setResellers( Set<Reseller> pResellers ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pResellers != null) {
         resellers = new HashSet<Reseller>(pResellers);
@@ -321,9 +321,9 @@ public class Product implements IProduct {
      * Method adds the passed objects to association {@link #resellers}.<br/>
      *
      * @param pResellers Array of objects that should be added to {@link #resellers}. The parameter may be null.
-     * @return {@link B} Instance of this builder to support chaining. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining. Method never returns null.
      */
-    public B addToResellers( Reseller... pResellers ) {
+    public S addToResellers( Reseller... pResellers ) {
       if (pResellers != null) {
         if (resellers == null) {
           resellers = new HashSet<Reseller>();
@@ -337,9 +337,9 @@ public class Product implements IProduct {
      * Method sets attribute {@link #name}.<br/>
      *
      * @param pName Value to which {@link #name} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setName( @MyNotNullProperty String pName ) {
+    public S setName( @MyNotNullProperty String pName ) {
       // Assign value to attribute
       name = pName;
       return this.self();
@@ -349,9 +349,9 @@ public class Product implements IProduct {
      * Method sets attribute {@link #image}.<br/>
      *
      * @param pImage Value to which {@link #image} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setImage( byte[] pImage ) {
+    public S setImage( byte[] pImage ) {
       // Assign value to attribute
       if (pImage != null) {
         image = new byte[pImage.length];
@@ -367,9 +367,9 @@ public class Product implements IProduct {
      * Method sets attribute {@link #link}.<br/>
      *
      * @param pLink Value to which {@link #link} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setLink( @MyNotNullProperty URL pLink ) {
+    public S setLink( @MyNotNullProperty URL pLink ) {
       // Assign value to attribute
       link = pLink;
       return this.self();
@@ -379,9 +379,9 @@ public class Product implements IProduct {
      * Method sets attribute {@link #productID}.<br/>
      *
      * @param pProductID Value to which {@link #productID} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setProductID( @MyNotNullProperty UUID pProductID ) {
+    public S setProductID( @MyNotNullProperty UUID pProductID ) {
       // Assign value to attribute
       productID = pProductID;
       return this.self();
@@ -391,9 +391,9 @@ public class Product implements IProduct {
      * Method sets association {@link #supportedCurrencies}.<br/>
      *
      * @param pSupportedCurrencies Collection to which {@link #supportedCurrencies} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setSupportedCurrencies( @MyNotEmptyProperty Set<CurrencyCode> pSupportedCurrencies ) {
+    public S setSupportedCurrencies( @MyNotEmptyProperty Set<CurrencyCode> pSupportedCurrencies ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pSupportedCurrencies != null) {
         supportedCurrencies = new HashSet<CurrencyCode>(pSupportedCurrencies);
@@ -409,9 +409,9 @@ public class Product implements IProduct {
      *
      * @param pSupportedCurrencies Array of objects that should be added to {@link #supportedCurrencies}. The parameter
      * may be null.
-     * @return {@link B} Instance of this builder to support chaining. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining. Method never returns null.
      */
-    public B addToSupportedCurrencies( @MyNotEmptyProperty CurrencyCode... pSupportedCurrencies ) {
+    public S addToSupportedCurrencies( @MyNotEmptyProperty CurrencyCode... pSupportedCurrencies ) {
       if (pSupportedCurrencies != null) {
         if (supportedCurrencies == null) {
           supportedCurrencies = new HashSet<CurrencyCode>();
@@ -425,9 +425,9 @@ public class Product implements IProduct {
      * Method sets association {@link #productCodes}.<br/>
      *
      * @param pProductCodes Collection to which {@link #productCodes} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setProductCodes( @MyNotEmptyProperty Set<ProductCode> pProductCodes ) {
+    public S setProductCodes( @MyNotEmptyProperty Set<ProductCode> pProductCodes ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pProductCodes != null) {
         productCodes = new HashSet<ProductCode>(pProductCodes);
@@ -442,9 +442,9 @@ public class Product implements IProduct {
      * Method adds the passed objects to association {@link #productCodes}.<br/>
      *
      * @param pProductCodes Array of objects that should be added to {@link #productCodes}. The parameter may be null.
-     * @return {@link B} Instance of this builder to support chaining. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining. Method never returns null.
      */
-    public B addToProductCodes( @MyNotEmptyProperty ProductCode... pProductCodes ) {
+    public S addToProductCodes( @MyNotEmptyProperty ProductCode... pProductCodes ) {
       if (pProductCodes != null) {
         if (productCodes == null) {
           productCodes = new HashSet<ProductCode>();
@@ -458,10 +458,10 @@ public class Product implements IProduct {
      * Method sets attribute {@link #description}.<br/>
      *
      * @param pDescription Value to which {@link #description} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
-    public B setDescription( @MyNotNullProperty String pDescription ) {
+    public S setDescription( @MyNotNullProperty String pDescription ) {
       // Assign value to attribute
       description = pDescription;
       return this.self();
@@ -471,9 +471,9 @@ public class Product implements IProduct {
      * Method sets attribute {@link #uri}.<br/>
      *
      * @param pUri Value to which {@link #uri} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setUri( @MyNotNullProperty String pUri ) {
+    public S setUri( @MyNotNullProperty String pUri ) {
       // Assign value to attribute
       uri = pUri;
       return this.self();
@@ -482,7 +482,7 @@ public class Product implements IProduct {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
 
     /**
      * Method creates a new instance of class Product. The object will be initialized with the values of the builder.

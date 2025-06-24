@@ -98,7 +98,7 @@ public class ParentBeanParamType {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class ParentBeanParamTypeBuilder<T extends ParentBeanParamType, B extends ParentBeanParamTypeBuilder<T, B>> {
+  public static abstract class ParentBeanParamTypeBuilder<T extends ParentBeanParamType, S extends ParentBeanParamTypeBuilder<T, S>> {
     /**
      * <br/>
      * <b>Example(s):</b> <br/>
@@ -146,9 +146,9 @@ public class ParentBeanParamType {
      * Method sets attribute {@link #novaKey}.<br/>
      *
      * @param pNovaKey Value to which {@link #novaKey} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setNovaKey( @MyNotNullProperty String pNovaKey ) {
+    public S setNovaKey( @MyNotNullProperty String pNovaKey ) {
       // Assign value to attribute
       novaKey = pNovaKey;
       return this.self();
@@ -158,9 +158,9 @@ public class ParentBeanParamType {
      * Method sets attribute {@link #tkID}.<br/>
      *
      * @param pTkID Value to which {@link #tkID} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setTkID( @MyNotNullProperty String pTkID ) {
+    public S setTkID( @MyNotNullProperty String pTkID ) {
       // Assign value to attribute
       tkID = pTkID;
       return this.self();
@@ -170,9 +170,9 @@ public class ParentBeanParamType {
      * Method sets attribute {@link #code}.<br/>
      *
      * @param pCode Value to which {@link #code} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setCode( @MyNotNullProperty DoubleCode pCode ) {
+    public S setCode( @MyNotNullProperty DoubleCode pCode ) {
       // Assign value to attribute
       code = pCode;
       return this.self();
@@ -181,7 +181,7 @@ public class ParentBeanParamType {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
 
     /**
      * Method creates a new instance of class ParentBeanParamType. The object will be initialized with the values of the

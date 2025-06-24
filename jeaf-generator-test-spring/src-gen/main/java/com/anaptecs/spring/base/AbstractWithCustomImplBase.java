@@ -38,7 +38,7 @@ public abstract class AbstractWithCustomImplBase {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class AbstractWithCustomImplBuilder<T extends AbstractWithCustomImpl, B extends AbstractWithCustomImplBuilder<T, B>> {
+  public static abstract class AbstractWithCustomImplBuilder<T extends AbstractWithCustomImpl, S extends AbstractWithCustomImplBuilder<T, S>> {
     private int justAProperty;
 
     /**
@@ -62,9 +62,9 @@ public abstract class AbstractWithCustomImplBase {
      * Method sets attribute {@link #justAProperty}.<br/>
      *
      * @param pJustAProperty Value to which {@link #justAProperty} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setJustAProperty( int pJustAProperty ) {
+    public S setJustAProperty( int pJustAProperty ) {
       // Assign value to attribute
       justAProperty = pJustAProperty;
       return this.self();
@@ -73,7 +73,7 @@ public abstract class AbstractWithCustomImplBase {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
   }
 
   /**

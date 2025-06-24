@@ -42,7 +42,7 @@ public abstract class DataTypeCustomSerializationBase {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class DataTypeCustomSerializationBuilder<T extends DataTypeCustomSerialization, B extends DataTypeCustomSerializationBuilder<T, B>> {
+  public static abstract class DataTypeCustomSerializationBuilder<T extends DataTypeCustomSerialization, S extends DataTypeCustomSerializationBuilder<T, S>> {
     private String property1;
 
     /**
@@ -66,9 +66,9 @@ public abstract class DataTypeCustomSerializationBase {
      * Method sets attribute {@link #property1}.<br/>
      *
      * @param pProperty1 Value to which {@link #property1} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setProperty1( @MyNotNullProperty String pProperty1 ) {
+    public S setProperty1( @MyNotNullProperty String pProperty1 ) {
       // Assign value to attribute
       property1 = pProperty1;
       return this.self();
@@ -77,7 +77,7 @@ public abstract class DataTypeCustomSerializationBase {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
 
     /**
      * Method creates a new instance of class DataTypeCustomSerialization. The object will be initialized with the

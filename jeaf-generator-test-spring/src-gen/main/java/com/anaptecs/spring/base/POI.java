@@ -72,7 +72,7 @@ public class POI extends Stop {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class POIBuilder<T extends POI, B extends POIBuilder<T, B>> extends StopBuilder<T, B> {
+  public static abstract class POIBuilder<T extends POI, S extends POIBuilder<T, S>> extends StopBuilder<T, S> {
     private String description;
 
     /**
@@ -97,9 +97,9 @@ public class POI extends Stop {
      * Method sets attribute {@link #description}.<br/>
      *
      * @param pDescription Value to which {@link #description} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setDescription( @MyNotNullProperty String pDescription ) {
+    public S setDescription( @MyNotNullProperty String pDescription ) {
       // Assign value to attribute
       description = pDescription;
       return this.self();

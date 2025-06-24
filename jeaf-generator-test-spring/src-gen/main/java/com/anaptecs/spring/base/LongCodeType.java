@@ -62,7 +62,7 @@ public class LongCodeType {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class LongCodeTypeBuilder<T extends LongCodeType, B extends LongCodeTypeBuilder<T, B>> {
+  public static abstract class LongCodeTypeBuilder<T extends LongCodeType, S extends LongCodeTypeBuilder<T, S>> {
     private long code;
 
     /**
@@ -85,9 +85,9 @@ public class LongCodeType {
      * Method sets attribute {@link #code}.<br/>
      *
      * @param pCode Value to which {@link #code} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setCode( long pCode ) {
+    public S setCode( long pCode ) {
       // Assign value to attribute
       code = pCode;
       return this.self();
@@ -96,7 +96,7 @@ public class LongCodeType {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
 
     /**
      * Method creates a new instance of class LongCodeType. The object will be initialized with the values of the

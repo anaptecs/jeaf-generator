@@ -112,7 +112,7 @@ public class POJOWithID implements Identifiable<ObjectID> {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class POJOWithIDBuilder<T extends POJOWithID, B extends POJOWithIDBuilder<T, B>> {
+  public static abstract class POJOWithIDBuilder<T extends POJOWithID, S extends POJOWithIDBuilder<T, S>> {
     /**
      * Reference to the identifier of this object. The reference may be null since an id is not mandatory.
      */
@@ -150,7 +150,7 @@ public class POJOWithID implements Identifiable<ObjectID> {
      * Method sets the identifier for the object created using the builder. The reference may be null since an id is not
      * mandatory.
      */
-    public B setID( ObjectIdentity<?> pObjectID ) {
+    public S setID( ObjectIdentity<?> pObjectID ) {
       objectID = pObjectID;
       return this.self();
     }
@@ -159,9 +159,9 @@ public class POJOWithID implements Identifiable<ObjectID> {
      * Method sets attribute {@link #attr}.<br/>
      *
      * @param pAttr Value to which {@link #attr} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setAttr( Double pAttr ) {
+    public S setAttr( Double pAttr ) {
       // Assign value to attribute
       attr = pAttr;
       return this.self();
@@ -171,9 +171,9 @@ public class POJOWithID implements Identifiable<ObjectID> {
      * Method sets attribute {@link #name}.<br/>
      *
      * @param pName Value to which {@link #name} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setName( String pName ) {
+    public S setName( String pName ) {
       // Assign value to attribute
       name = pName;
       return this.self();
@@ -183,9 +183,9 @@ public class POJOWithID implements Identifiable<ObjectID> {
      * Method sets attribute {@link #integerWithDefault}.<br/>
      *
      * @param pIntegerWithDefault Value to which {@link #integerWithDefault} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setIntegerWithDefault( Integer pIntegerWithDefault ) {
+    public S setIntegerWithDefault( Integer pIntegerWithDefault ) {
       // Assign value to attribute
       integerWithDefault = pIntegerWithDefault;
       return this.self();
@@ -194,7 +194,7 @@ public class POJOWithID implements Identifiable<ObjectID> {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
 
     /**
      * Method creates a new instance of class POJOWithID. The object will be initialized with the values of the builder.

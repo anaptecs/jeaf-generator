@@ -191,7 +191,7 @@ public class DataTypesQueryBean {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class DataTypesQueryBeanBuilder<T extends DataTypesQueryBean, B extends DataTypesQueryBeanBuilder<T, B>> {
+  public static abstract class DataTypesQueryBeanBuilder<T extends DataTypesQueryBean, S extends DataTypesQueryBeanBuilder<T, S>> {
     private LongCode[] longCodes;
 
     private IntegerCodeType[] codes;
@@ -248,9 +248,9 @@ public class DataTypesQueryBean {
      * Method sets attribute {@link #longCodes}.<br/>
      *
      * @param pLongCodes Collection to which {@link #longCodes} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setLongCodes( LongCode[] pLongCodes ) {
+    public S setLongCodes( LongCode[] pLongCodes ) {
       // Assign value to attribute
       if (pLongCodes != null) {
         longCodes = new LongCode[pLongCodes.length];
@@ -266,9 +266,9 @@ public class DataTypesQueryBean {
      * Method sets attribute {@link #codes}.<br/>
      *
      * @param pCodes Collection to which {@link #codes} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setCodes( IntegerCodeType[] pCodes ) {
+    public S setCodes( IntegerCodeType[] pCodes ) {
       // Assign value to attribute
       if (pCodes != null) {
         codes = new IntegerCodeType[pCodes.length];
@@ -284,9 +284,9 @@ public class DataTypesQueryBean {
      * Method sets association {@link #doubleCodes}.<br/>
      *
      * @param pDoubleCodes Collection to which {@link #doubleCodes} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setDoubleCodes( Set<DoubleCode> pDoubleCodes ) {
+    public S setDoubleCodes( Set<DoubleCode> pDoubleCodes ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pDoubleCodes != null) {
         doubleCodes = new HashSet<DoubleCode>(pDoubleCodes);
@@ -301,9 +301,9 @@ public class DataTypesQueryBean {
      * Method adds the passed objects to association {@link #doubleCodes}.<br/>
      *
      * @param pDoubleCodes Array of objects that should be added to {@link #doubleCodes}. The parameter may be null.
-     * @return {@link B} Instance of this builder to support chaining. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining. Method never returns null.
      */
-    public B addToDoubleCodes( DoubleCode... pDoubleCodes ) {
+    public S addToDoubleCodes( DoubleCode... pDoubleCodes ) {
       if (pDoubleCodes != null) {
         if (doubleCodes == null) {
           doubleCodes = new HashSet<DoubleCode>();
@@ -317,9 +317,9 @@ public class DataTypesQueryBean {
      * Method sets association {@link #bookingIDs}.<br/>
      *
      * @param pBookingIDs Collection to which {@link #bookingIDs} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setBookingIDs( Set<BookingID> pBookingIDs ) {
+    public S setBookingIDs( Set<BookingID> pBookingIDs ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pBookingIDs != null) {
         bookingIDs = new HashSet<BookingID>(pBookingIDs);
@@ -334,9 +334,9 @@ public class DataTypesQueryBean {
      * Method adds the passed objects to association {@link #bookingIDs}.<br/>
      *
      * @param pBookingIDs Array of objects that should be added to {@link #bookingIDs}. The parameter may be null.
-     * @return {@link B} Instance of this builder to support chaining. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining. Method never returns null.
      */
-    public B addToBookingIDs( BookingID... pBookingIDs ) {
+    public S addToBookingIDs( BookingID... pBookingIDs ) {
       if (pBookingIDs != null) {
         if (bookingIDs == null) {
           bookingIDs = new HashSet<BookingID>();
@@ -350,9 +350,9 @@ public class DataTypesQueryBean {
      * Method sets attribute {@link #bookingIDsArray}.<br/>
      *
      * @param pBookingIDsArray Collection to which {@link #bookingIDsArray} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setBookingIDsArray( BookingID[] pBookingIDsArray ) {
+    public S setBookingIDsArray( BookingID[] pBookingIDsArray ) {
       // Assign value to attribute
       if (pBookingIDsArray != null) {
         bookingIDsArray = new BookingID[pBookingIDsArray.length];
@@ -368,9 +368,9 @@ public class DataTypesQueryBean {
      * Method sets attribute {@link #offsetDateTime}.<br/>
      *
      * @param pOffsetDateTime Value to which {@link #offsetDateTime} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setOffsetDateTime( @MyNotNullProperty OffsetDateTime pOffsetDateTime ) {
+    public S setOffsetDateTime( @MyNotNullProperty OffsetDateTime pOffsetDateTime ) {
       // Assign value to attribute
       offsetDateTime = pOffsetDateTime;
       return this.self();
@@ -380,9 +380,9 @@ public class DataTypesQueryBean {
      * Method sets association {@link #offsetTime}.<br/>
      *
      * @param pOffsetTime Value to which {@link #offsetTime} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setOffsetTime( @MyNotNullProperty OffsetTime pOffsetTime ) {
+    public S setOffsetTime( @MyNotNullProperty OffsetTime pOffsetTime ) {
       offsetTime = pOffsetTime;
       return this.self();
     }
@@ -391,9 +391,9 @@ public class DataTypesQueryBean {
      * Method sets attribute {@link #localDateTime}.<br/>
      *
      * @param pLocalDateTime Value to which {@link #localDateTime} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setLocalDateTime( @MyNotNullProperty LocalDateTime pLocalDateTime ) {
+    public S setLocalDateTime( @MyNotNullProperty LocalDateTime pLocalDateTime ) {
       // Assign value to attribute
       localDateTime = pLocalDateTime;
       return this.self();
@@ -403,9 +403,9 @@ public class DataTypesQueryBean {
      * Method sets attribute {@link #localTime}.<br/>
      *
      * @param pLocalTime Value to which {@link #localTime} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setLocalTime( @MyNotNullProperty LocalTime pLocalTime ) {
+    public S setLocalTime( @MyNotNullProperty LocalTime pLocalTime ) {
       // Assign value to attribute
       localTime = pLocalTime;
       return this.self();
@@ -415,9 +415,9 @@ public class DataTypesQueryBean {
      * Method sets association {@link #timestamps}.<br/>
      *
      * @param pTimestamps Collection to which {@link #timestamps} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setTimestamps( List<LocalDateTime> pTimestamps ) {
+    public S setTimestamps( List<LocalDateTime> pTimestamps ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pTimestamps != null) {
         timestamps = new ArrayList<LocalDateTime>(pTimestamps);
@@ -432,9 +432,9 @@ public class DataTypesQueryBean {
      * Method adds the passed objects to association {@link #timestamps}.<br/>
      *
      * @param pTimestamps Array of objects that should be added to {@link #timestamps}. The parameter may be null.
-     * @return {@link B} Instance of this builder to support chaining. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining. Method never returns null.
      */
-    public B addToTimestamps( LocalDateTime... pTimestamps ) {
+    public S addToTimestamps( LocalDateTime... pTimestamps ) {
       if (pTimestamps != null) {
         if (timestamps == null) {
           timestamps = new ArrayList<LocalDateTime>();
@@ -448,9 +448,9 @@ public class DataTypesQueryBean {
      * Method sets association {@link #times}.<br/>
      *
      * @param pTimes Collection to which {@link #times} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setTimes( Set<OffsetTime> pTimes ) {
+    public S setTimes( Set<OffsetTime> pTimes ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pTimes != null) {
         times = new HashSet<OffsetTime>(pTimes);
@@ -465,9 +465,9 @@ public class DataTypesQueryBean {
      * Method adds the passed objects to association {@link #times}.<br/>
      *
      * @param pTimes Array of objects that should be added to {@link #times}. The parameter may be null.
-     * @return {@link B} Instance of this builder to support chaining. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining. Method never returns null.
      */
-    public B addToTimes( OffsetTime... pTimes ) {
+    public S addToTimes( OffsetTime... pTimes ) {
       if (pTimes != null) {
         if (times == null) {
           times = new HashSet<OffsetTime>();
@@ -481,9 +481,9 @@ public class DataTypesQueryBean {
      * Method sets attribute {@link #startTimestamps}.<br/>
      *
      * @param pStartTimestamps Collection to which {@link #startTimestamps} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setStartTimestamps( OffsetDateTime[] pStartTimestamps ) {
+    public S setStartTimestamps( OffsetDateTime[] pStartTimestamps ) {
       // Assign value to attribute
       if (pStartTimestamps != null) {
         startTimestamps = new OffsetDateTime[pStartTimestamps.length];
@@ -498,7 +498,7 @@ public class DataTypesQueryBean {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
 
     /**
      * Method creates a new instance of class DataTypesQueryBean. The object will be initialized with the values of the

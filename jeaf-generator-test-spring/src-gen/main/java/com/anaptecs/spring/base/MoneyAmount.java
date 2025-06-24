@@ -98,7 +98,7 @@ public class MoneyAmount {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class MoneyAmountBuilder<T extends MoneyAmount, B extends MoneyAmountBuilder<T, B>> {
+  public static abstract class MoneyAmountBuilder<T extends MoneyAmount, S extends MoneyAmountBuilder<T, S>> {
     /**
      * The amount of money. Attribute is always set.
      */
@@ -129,9 +129,9 @@ public class MoneyAmount {
      * Method sets attribute {@link #amount}.<br/>
      *
      * @param pAmount Value to which {@link #amount} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setAmount( @MyNotNullProperty BigDecimal pAmount ) {
+    public S setAmount( @MyNotNullProperty BigDecimal pAmount ) {
       // Assign value to attribute
       amount = pAmount;
       return this.self();
@@ -141,9 +141,9 @@ public class MoneyAmount {
      * Method sets attribute {@link #currencyCode}.<br/>
      *
      * @param pCurrencyCode Value to which {@link #currencyCode} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setCurrencyCode( @MyNotNullProperty CurrencyCode pCurrencyCode ) {
+    public S setCurrencyCode( @MyNotNullProperty CurrencyCode pCurrencyCode ) {
       // Assign value to attribute
       currencyCode = pCurrencyCode;
       return this.self();
@@ -152,7 +152,7 @@ public class MoneyAmount {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
 
     /**
      * Method creates a new instance of class MoneyAmount. The object will be initialized with the values of the

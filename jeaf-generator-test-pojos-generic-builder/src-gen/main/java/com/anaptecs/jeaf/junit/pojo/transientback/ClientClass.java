@@ -85,7 +85,7 @@ public class ClientClass {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class ClientClassBuilder<T extends ClientClass, B extends ClientClassBuilder<T, B>> {
+  public static abstract class ClientClassBuilder<T extends ClientClass, S extends ClientClassBuilder<T, S>> {
     private String name;
 
     /**
@@ -108,9 +108,9 @@ public class ClientClass {
      * Method sets attribute {@link #name}.<br/>
      *
      * @param pName Value to which {@link #name} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setName( String pName ) {
+    public S setName( String pName ) {
       // Assign value to attribute
       name = pName;
       return this.self();
@@ -119,7 +119,7 @@ public class ClientClass {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
 
     /**
      * Method creates a new instance of class ClientClass. The object will be initialized with the values of the

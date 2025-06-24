@@ -99,7 +99,7 @@ public class Booking {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class BookingBuilder<T extends Booking, B extends BookingBuilder<T, B>> {
+  public static abstract class BookingBuilder<T extends Booking, S extends BookingBuilder<T, S>> {
     private BookingID bookingID;
 
     private String customerName;
@@ -128,9 +128,9 @@ public class Booking {
      * Method sets association {@link #bookingID}.<br/>
      *
      * @param pBookingID Value to which {@link #bookingID} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setBookingID( @MyNotNullProperty BookingID pBookingID ) {
+    public S setBookingID( @MyNotNullProperty BookingID pBookingID ) {
       bookingID = pBookingID;
       return this.self();
     }
@@ -139,9 +139,9 @@ public class Booking {
      * Method sets attribute {@link #customerName}.<br/>
      *
      * @param pCustomerName Value to which {@link #customerName} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setCustomerName( @MyNotNullProperty String pCustomerName ) {
+    public S setCustomerName( @MyNotNullProperty String pCustomerName ) {
       // Assign value to attribute
       customerName = pCustomerName;
       return this.self();
@@ -151,9 +151,9 @@ public class Booking {
      * Method sets association {@link #inventories}.<br/>
      *
      * @param pInventories Collection to which {@link #inventories} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setInventories( List<InventoryType> pInventories ) {
+    public S setInventories( List<InventoryType> pInventories ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pInventories != null) {
         inventories = new ArrayList<InventoryType>(pInventories);
@@ -168,9 +168,9 @@ public class Booking {
      * Method adds the passed objects to association {@link #inventories}.<br/>
      *
      * @param pInventories Array of objects that should be added to {@link #inventories}. The parameter may be null.
-     * @return {@link B} Instance of this builder to support chaining. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining. Method never returns null.
      */
-    public B addToInventories( InventoryType... pInventories ) {
+    public S addToInventories( InventoryType... pInventories ) {
       if (pInventories != null) {
         if (inventories == null) {
           inventories = new ArrayList<InventoryType>();
@@ -184,9 +184,9 @@ public class Booking {
      * Method sets association {@link #inventories}.<br/>
      *
      * @param pInventories Array with objects to which {@link #inventories} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setInventories( InventoryType... pInventories ) {
+    public S setInventories( InventoryType... pInventories ) {
       // Copy the content of the passed array.
       if (pInventories != null) {
         inventories = new ArrayList<InventoryType>(Arrays.asList(pInventories));
@@ -200,7 +200,7 @@ public class Booking {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
 
     /**
      * Method creates a new instance of class Booking. The object will be initialized with the values of the builder.

@@ -108,7 +108,7 @@ public class BidirectionalB {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class BidirectionalBBuilder<T extends BidirectionalB, B extends BidirectionalBBuilder<T, B>> {
+  public static abstract class BidirectionalBBuilder<T extends BidirectionalB, S extends BidirectionalBBuilder<T, S>> {
     private List<BidirectionalA> as;
 
     private List<BidirectionalA> theAs;
@@ -134,9 +134,9 @@ public class BidirectionalB {
      * Method sets association {@link #as}.<br/>
      *
      * @param pAs Collection to which {@link #as} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setAs( List<BidirectionalA> pAs ) {
+    public S setAs( List<BidirectionalA> pAs ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pAs != null) {
         as = new ArrayList<BidirectionalA>(pAs);
@@ -151,9 +151,9 @@ public class BidirectionalB {
      * Method adds the passed objects to association {@link #as}.<br/>
      *
      * @param pAs Array of objects that should be added to {@link #as}. The parameter may be null.
-     * @return {@link B} Instance of this builder to support chaining. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining. Method never returns null.
      */
-    public B addToAs( BidirectionalA... pAs ) {
+    public S addToAs( BidirectionalA... pAs ) {
       if (pAs != null) {
         if (as == null) {
           as = new ArrayList<BidirectionalA>();
@@ -167,9 +167,9 @@ public class BidirectionalB {
      * Method sets association {@link #theAs}.<br/>
      *
      * @param pTheAs Collection to which {@link #theAs} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setTheAs( List<BidirectionalA> pTheAs ) {
+    public S setTheAs( List<BidirectionalA> pTheAs ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pTheAs != null) {
         theAs = new ArrayList<BidirectionalA>(pTheAs);
@@ -184,9 +184,9 @@ public class BidirectionalB {
      * Method adds the passed objects to association {@link #theAs}.<br/>
      *
      * @param pTheAs Array of objects that should be added to {@link #theAs}. The parameter may be null.
-     * @return {@link B} Instance of this builder to support chaining. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining. Method never returns null.
      */
-    public B addToTheAs( BidirectionalA... pTheAs ) {
+    public S addToTheAs( BidirectionalA... pTheAs ) {
       if (pTheAs != null) {
         if (theAs == null) {
           theAs = new ArrayList<BidirectionalA>();
@@ -199,7 +199,7 @@ public class BidirectionalB {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
 
     /**
      * Method creates a new instance of class BidirectionalB. The object will be initialized with the values of the

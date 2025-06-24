@@ -94,7 +94,7 @@ public class Stop {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class StopBuilder<T extends Stop, B extends StopBuilder<T, B>> {
+  public static abstract class StopBuilder<T extends Stop, S extends StopBuilder<T, S>> {
     @JsonAlias({ "bavName", "stopName" })
     private String name;
 
@@ -122,9 +122,9 @@ public class Stop {
      * Method sets attribute {@link #name}.<br/>
      *
      * @param pName Value to which {@link #name} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setName( @MyNotNullProperty String pName ) {
+    public S setName( @MyNotNullProperty String pName ) {
       // Assign value to attribute
       name = pName;
       return this.self();
@@ -134,9 +134,9 @@ public class Stop {
      * Method sets association {@link #links}.<br/>
      *
      * @param pLinks Collection to which {@link #links} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setLinks( List<LinkObject> pLinks ) {
+    public S setLinks( List<LinkObject> pLinks ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pLinks != null) {
         links = new ArrayList<LinkObject>(pLinks);
@@ -151,9 +151,9 @@ public class Stop {
      * Method adds the passed objects to association {@link #links}.<br/>
      *
      * @param pLinks Array of objects that should be added to {@link #links}. The parameter may be null.
-     * @return {@link B} Instance of this builder to support chaining. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining. Method never returns null.
      */
-    public B addToLinks( LinkObject... pLinks ) {
+    public S addToLinks( LinkObject... pLinks ) {
       if (pLinks != null) {
         if (links == null) {
           links = new ArrayList<LinkObject>();
@@ -166,7 +166,7 @@ public class Stop {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
 
     /**
      * Method creates a new instance of class Stop. The object will be initialized with the values of the builder.

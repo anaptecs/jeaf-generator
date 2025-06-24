@@ -68,7 +68,7 @@ public class TechnicalHeaderContext {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class TechnicalHeaderContextBuilder<T extends TechnicalHeaderContext, B extends TechnicalHeaderContextBuilder<T, B>> {
+  public static abstract class TechnicalHeaderContextBuilder<T extends TechnicalHeaderContext, S extends TechnicalHeaderContextBuilder<T, S>> {
     private String reseller;
 
     /**
@@ -98,9 +98,9 @@ public class TechnicalHeaderContext {
      * Method sets attribute {@link #reseller}.<br/>
      *
      * @param pReseller Value to which {@link #reseller} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setReseller( @MyNotNullProperty String pReseller ) {
+    public S setReseller( @MyNotNullProperty String pReseller ) {
       // Assign value to attribute
       reseller = pReseller;
       return this.self();
@@ -126,7 +126,7 @@ public class TechnicalHeaderContext {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
 
     /**
      * Method creates a new instance of class TechnicalHeaderContext. The object will be initialized with the values of

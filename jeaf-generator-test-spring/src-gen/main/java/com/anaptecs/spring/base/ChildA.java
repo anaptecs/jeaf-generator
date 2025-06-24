@@ -46,8 +46,8 @@ public abstract class ChildA extends ParentClass {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class ChildABuilder<T extends ChildA, B extends ChildABuilder<T, B>>
-      extends ParentClassBuilder<T, B> {
+  public static abstract class ChildABuilder<T extends ChildA, S extends ChildABuilder<T, S>>
+      extends ParentClassBuilder<T, S> {
     private int childAAttribute;
 
     /**
@@ -72,9 +72,9 @@ public abstract class ChildA extends ParentClass {
      * Method sets attribute {@link #childAAttribute}.<br/>
      *
      * @param pChildAAttribute Value to which {@link #childAAttribute} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setChildAAttribute( int pChildAAttribute ) {
+    public S setChildAAttribute( int pChildAAttribute ) {
       // Assign value to attribute
       childAAttribute = pChildAAttribute;
       return this.self();

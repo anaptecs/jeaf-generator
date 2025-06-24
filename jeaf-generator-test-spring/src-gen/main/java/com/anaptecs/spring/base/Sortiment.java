@@ -85,7 +85,7 @@ public class Sortiment {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class SortimentBuilder<T extends Sortiment, B extends SortimentBuilder<T, B>> {
+  public static abstract class SortimentBuilder<T extends Sortiment, S extends SortimentBuilder<T, S>> {
     private Set<Product> products;
 
     /**
@@ -108,9 +108,9 @@ public class Sortiment {
      * Method sets association {@link #products}.<br/>
      *
      * @param pProducts Collection to which {@link #products} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setProducts( Set<Product> pProducts ) {
+    public S setProducts( Set<Product> pProducts ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pProducts != null) {
         products = new HashSet<Product>(pProducts);
@@ -125,9 +125,9 @@ public class Sortiment {
      * Method adds the passed objects to association {@link #products}.<br/>
      *
      * @param pProducts Array of objects that should be added to {@link #products}. The parameter may be null.
-     * @return {@link B} Instance of this builder to support chaining. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining. Method never returns null.
      */
-    public B addToProducts( Product... pProducts ) {
+    public S addToProducts( Product... pProducts ) {
       if (pProducts != null) {
         if (products == null) {
           products = new HashSet<Product>();
@@ -140,7 +140,7 @@ public class Sortiment {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
 
     /**
      * Method creates a new instance of class Sortiment. The object will be initialized with the values of the builder.

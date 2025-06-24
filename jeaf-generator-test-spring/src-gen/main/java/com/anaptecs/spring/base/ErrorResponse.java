@@ -58,7 +58,7 @@ public class ErrorResponse {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class ErrorResponseBuilder<T extends ErrorResponse, B extends ErrorResponseBuilder<T, B>> {
+  public static abstract class ErrorResponseBuilder<T extends ErrorResponse, S extends ErrorResponseBuilder<T, S>> {
     /**
      * Use {@link ErrorResponseBuilder#builder()} instead of private constructor to create new builder.
      */
@@ -74,7 +74,7 @@ public class ErrorResponse {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
 
     /**
      * Method creates a new instance of class ErrorResponse. The object will be initialized with the values of the

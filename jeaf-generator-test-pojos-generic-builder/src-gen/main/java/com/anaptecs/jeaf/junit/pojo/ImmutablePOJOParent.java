@@ -81,8 +81,8 @@ public class ImmutablePOJOParent extends AbstractPOJO {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class ImmutablePOJOParentBuilder<T extends ImmutablePOJOParent, B extends ImmutablePOJOParentBuilder<T, B>>
-      extends AbstractPOJOBuilder<T, B> {
+  public static abstract class ImmutablePOJOParentBuilder<T extends ImmutablePOJOParent, S extends ImmutablePOJOParentBuilder<T, S>>
+      extends AbstractPOJOBuilder<T, S> {
     private String parentAttribute;
 
     private Integer anotherParentAttribute;
@@ -111,9 +111,9 @@ public class ImmutablePOJOParent extends AbstractPOJO {
      * Method sets attribute {@link #parentAttribute}.<br/>
      *
      * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setParentAttribute( String pParentAttribute ) {
+    public S setParentAttribute( String pParentAttribute ) {
       // Assign value to attribute
       parentAttribute = pParentAttribute;
       return this.self();
@@ -123,9 +123,9 @@ public class ImmutablePOJOParent extends AbstractPOJO {
      * Method sets attribute {@link #anotherParentAttribute}.<br/>
      *
      * @param pAnotherParentAttribute Value to which {@link #anotherParentAttribute} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setAnotherParentAttribute( Integer pAnotherParentAttribute ) {
+    public S setAnotherParentAttribute( Integer pAnotherParentAttribute ) {
       // Assign value to attribute
       anotherParentAttribute = pAnotherParentAttribute;
       return this.self();

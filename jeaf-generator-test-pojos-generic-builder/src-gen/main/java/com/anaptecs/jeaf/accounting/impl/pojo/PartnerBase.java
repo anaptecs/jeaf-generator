@@ -44,7 +44,7 @@ public abstract class PartnerBase {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class PartnerBuilderBase<T extends Partner, B extends PartnerBuilderBase<T, B>> {
+  public static abstract class PartnerBuilderBase<T extends Partner, S extends PartnerBuilderBase<T, S>> {
     private String tags;
 
     /**
@@ -67,9 +67,9 @@ public abstract class PartnerBase {
      * Method sets attribute {@link #tags}.<br/>
      *
      * @param pTags Value to which {@link #tags} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setTags( String pTags ) {
+    public S setTags( String pTags ) {
       // Assign value to attribute
       tags = pTags;
       return this.self();
@@ -78,7 +78,7 @@ public abstract class PartnerBase {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
   }
 
   /**
