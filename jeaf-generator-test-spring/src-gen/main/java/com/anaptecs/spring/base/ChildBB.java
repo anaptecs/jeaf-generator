@@ -116,7 +116,7 @@ public class ChildBB extends ChildB {
    * @return {@link ChildBB}
    */
   public static ChildBB of( String pParentAttribute, Long pChildBBAttribute, int pDeprecatedAttribute ) {
-    ChildBBBuilder<?, ?> lBuilder = ChildBB.builder();
+    var lBuilder = ChildBB.builder();
     lBuilder.setParentAttribute(pParentAttribute);
     lBuilder.setChildBBAttribute(pChildBBAttribute);
     lBuilder.setDeprecatedAttribute(pDeprecatedAttribute);

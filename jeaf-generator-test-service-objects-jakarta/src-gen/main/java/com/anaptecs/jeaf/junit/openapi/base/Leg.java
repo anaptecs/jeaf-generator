@@ -91,7 +91,7 @@ public class Leg implements ServiceObject {
    * @return {@link com.anaptecs.jeaf.junit.openapi.base.Leg}
    */
   public static Leg of( PlaceRef pStart, PlaceRef pStop ) {
-    Leg.Builder lBuilder = Leg.builder();
+    var lBuilder = Leg.builder();
     lBuilder.setStart(pStart);
     lBuilder.setStop(pStop);
     return lBuilder.build();

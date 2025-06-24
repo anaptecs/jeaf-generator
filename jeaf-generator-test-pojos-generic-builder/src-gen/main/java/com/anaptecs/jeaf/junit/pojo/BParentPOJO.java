@@ -61,7 +61,7 @@ public class BParentPOJO {
    * @return {@link BParentPOJO}
    */
   public static BParentPOJO of( String pParentAttribute ) {
-    BParentPOJOBuilder<?, ?> lBuilder = BParentPOJO.builder();
+    var lBuilder = BParentPOJO.builder();
     lBuilder.setParentAttribute(pParentAttribute);
     return lBuilder.build();
   }

@@ -52,7 +52,7 @@ public class BusinessServiceObject implements ServiceObject {
    * @return {@link com.anaptecs.jeaf.junit.rest.generics.BusinessServiceObject}
    */
   public static BusinessServiceObject of( ) {
-    BusinessServiceObject.Builder lBuilder = BusinessServiceObject.builder();
+    var lBuilder = BusinessServiceObject.builder();
     return lBuilder.build();
   }
 

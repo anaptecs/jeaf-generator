@@ -55,7 +55,7 @@ public class IntegerCode {
    * @return {@link IntegerCode}
    */
   public static IntegerCode of( Integer pCode ) {
-    IntegerCodeBuilder<?, ?> lBuilder = IntegerCode.builder();
+    var lBuilder = IntegerCode.builder();
     lBuilder.setCode(pCode);
     return lBuilder.build();
   }

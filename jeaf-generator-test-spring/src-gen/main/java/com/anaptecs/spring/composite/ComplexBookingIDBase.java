@@ -453,7 +453,7 @@ public abstract class ComplexBookingIDBase {
    */
   public static ComplexBookingID of( long pInternalID, String pReferenceID, List<BookingID> pBookingIDs,
       ComplexBookingType pComplexBookingType, Integer pAnotherID ) {
-    ComplexBookingIDBuilder<?, ?> lBuilder = ComplexBookingID.builder();
+    var lBuilder = ComplexBookingID.builder();
     lBuilder.setInternalID(pInternalID);
     lBuilder.setReferenceID(pReferenceID);
     lBuilder.setBookingIDs(pBookingIDs);

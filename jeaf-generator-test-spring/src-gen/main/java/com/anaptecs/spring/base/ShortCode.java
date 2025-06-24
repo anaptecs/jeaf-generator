@@ -55,7 +55,7 @@ public class ShortCode {
    * @return {@link ShortCode}
    */
   public static ShortCode of( Short pCode ) {
-    ShortCodeBuilder<?, ?> lBuilder = ShortCode.builder();
+    var lBuilder = ShortCode.builder();
     lBuilder.setCode(pCode);
     return lBuilder.build();
   }

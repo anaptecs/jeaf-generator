@@ -63,7 +63,7 @@ public class BusinessChild extends BusinessParent {
    * @return {@link BusinessChild}
    */
   public static BusinessChild of( String pTechAttribute, long pParentAttribute, String pChildAttribute ) {
-    BusinessChildBuilder<?, ?> lBuilder = BusinessChild.builder();
+    var lBuilder = BusinessChild.builder();
     lBuilder.setTechAttribute(pTechAttribute);
     lBuilder.setParentAttribute(pParentAttribute);
     lBuilder.setChildAttribute(pChildAttribute);

@@ -53,7 +53,7 @@ public class SwissGeoPosition extends GeoPosition {
    * @return {@link SwissGeoPosition}
    */
   public static SwissGeoPosition of( String pName, MyType pType, int pLongitude, int pLatitude ) {
-    SwissGeoPositionBuilder<?, ?> lBuilder = SwissGeoPosition.builder();
+    var lBuilder = SwissGeoPosition.builder();
     lBuilder.setName(pName);
     lBuilder.setType(pType);
     lBuilder.setLongitude(pLongitude);

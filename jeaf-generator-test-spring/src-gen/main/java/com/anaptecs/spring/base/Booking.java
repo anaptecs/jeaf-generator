@@ -87,7 +87,7 @@ public class Booking {
    * @return {@link Booking}
    */
   public static Booking of( BookingID pBookingID, String pCustomerName, List<InventoryType> pInventories ) {
-    BookingBuilder<?, ?> lBuilder = Booking.builder();
+    var lBuilder = Booking.builder();
     lBuilder.setBookingID(pBookingID);
     lBuilder.setCustomerName(pCustomerName);
     lBuilder.setInventories(pInventories);

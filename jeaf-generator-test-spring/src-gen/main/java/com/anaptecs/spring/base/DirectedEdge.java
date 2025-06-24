@@ -83,7 +83,7 @@ public class DirectedEdge {
    * @return {@link DirectedEdge}
    */
   public static DirectedEdge of( Stop pEnd, String pLink ) {
-    DirectedEdgeBuilder<?, ?> lBuilder = DirectedEdge.builder();
+    var lBuilder = DirectedEdge.builder();
     lBuilder.setEnd(pEnd);
     lBuilder.setLink(pLink);
     return lBuilder.build();

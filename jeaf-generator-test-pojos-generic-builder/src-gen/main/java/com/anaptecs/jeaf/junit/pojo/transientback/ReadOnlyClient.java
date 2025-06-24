@@ -64,7 +64,7 @@ public class ReadOnlyClient {
    * @return {@link ReadOnlyClient}
    */
   public static ReadOnlyClient of( String pName ) {
-    ReadOnlyClientBuilder<?, ?> lBuilder = ReadOnlyClient.builder();
+    var lBuilder = ReadOnlyClient.builder();
     lBuilder.setName(pName);
     return lBuilder.build();
   }

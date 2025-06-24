@@ -115,7 +115,7 @@ public class ParentClass implements ServiceObject {
    * @return {@link com.anaptecs.jeaf.junit.openapi.base.ParentClass}
    */
   public static ParentClass of( String pParentAttribute ) {
-    ParentClass.Builder lBuilder = ParentClass.builder();
+    var lBuilder = ParentClass.builder();
     lBuilder.setParentAttribute(pParentAttribute);
     return lBuilder.build();
   }

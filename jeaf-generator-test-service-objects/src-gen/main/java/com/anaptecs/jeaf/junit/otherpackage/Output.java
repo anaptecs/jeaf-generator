@@ -50,7 +50,7 @@ public class Output implements ServiceObject {
    * @return {@link com.anaptecs.jeaf.junit.otherpackage.Output}
    */
   public static Output of( ) {
-    Output.Builder lBuilder = Output.builder();
+    var lBuilder = Output.builder();
     return lBuilder.build();
   }
 

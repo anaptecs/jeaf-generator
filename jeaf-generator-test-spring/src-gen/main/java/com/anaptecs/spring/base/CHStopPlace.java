@@ -49,7 +49,7 @@ public class CHStopPlace extends StopPlaceRef {
    * @return {@link CHStopPlace}
    */
   public static CHStopPlace of( String pName, MyType pType ) {
-    CHStopPlaceBuilder<?, ?> lBuilder = CHStopPlace.builder();
+    var lBuilder = CHStopPlace.builder();
     lBuilder.setName(pName);
     lBuilder.setType(pType);
     return lBuilder.build();

@@ -55,7 +55,7 @@ public class AnotherDataType {
    * @return {@link AnotherDataType}
    */
   public static AnotherDataType of( String pData ) {
-    AnotherDataTypeBuilder<?, ?> lBuilder = AnotherDataType.builder();
+    var lBuilder = AnotherDataType.builder();
     lBuilder.setData(pData);
     return lBuilder.build();
   }

@@ -90,7 +90,7 @@ public class BeanParameter implements ServiceObject {
    * @return {@link com.anaptecs.jeaf.junit.openapi.base.BeanParameter}
    */
   public static BeanParameter of( String pAccessToken, Locale pLanguage, String pOldStyle ) {
-    BeanParameter.Builder lBuilder = BeanParameter.builder();
+    var lBuilder = BeanParameter.builder();
     lBuilder.setAccessToken(pAccessToken);
     lBuilder.setLanguage(pLanguage);
     lBuilder.setOldStyle(pOldStyle);

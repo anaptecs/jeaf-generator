@@ -72,7 +72,7 @@ public class ChannelCode {
    * @return {@link ChannelCode}
    */
   public static ChannelCode of( String pCode ) {
-    ChannelCodeBuilder<?, ?> lBuilder = ChannelCode.builder();
+    var lBuilder = ChannelCode.builder();
     lBuilder.setCode(pCode);
     return lBuilder.build();
   }

@@ -52,7 +52,7 @@ public class CHStopPlace extends StopPlaceRef {
    * @return {@link com.anaptecs.jeaf.junit.openapi.base.CHStopPlace}
    */
   public static CHStopPlace of( String pName ) {
-    CHStopPlace.Builder lBuilder = CHStopPlace.builder();
+    var lBuilder = CHStopPlace.builder();
     lBuilder.setName(pName);
     return lBuilder.build();
   }

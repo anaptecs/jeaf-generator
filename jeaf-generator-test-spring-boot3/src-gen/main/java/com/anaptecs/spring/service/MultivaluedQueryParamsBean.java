@@ -96,7 +96,7 @@ public class MultivaluedQueryParamsBean {
    * @return {@link com.anaptecs.spring.service.MultivaluedQueryParamsBean}
    */
   public static MultivaluedQueryParamsBean of( ) {
-    MultivaluedQueryParamsBean.Builder lBuilder = MultivaluedQueryParamsBean.builder();
+    var lBuilder = MultivaluedQueryParamsBean.builder();
     return lBuilder.build();
   }
 

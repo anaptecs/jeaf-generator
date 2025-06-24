@@ -73,7 +73,7 @@ public class ImmutablePOJO {
    * @return {@link com.anaptecs.jeaf.junit.pojo.ImmutablePOJO}
    */
   public static ImmutablePOJO of( String pName, Integer pSomething ) {
-    ImmutablePOJO.Builder lBuilder = ImmutablePOJO.builder();
+    var lBuilder = ImmutablePOJO.builder();
     lBuilder.setName(pName);
     lBuilder.setSomething(pSomething);
     return lBuilder.build();

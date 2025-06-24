@@ -50,7 +50,7 @@ public class Input implements ServiceObject {
    * @return {@link com.anaptecs.jeaf.junit.otherpackage.Input}
    */
   public static Input of( ) {
-    Input.Builder lBuilder = Input.builder();
+    var lBuilder = Input.builder();
     return lBuilder.build();
   }
 

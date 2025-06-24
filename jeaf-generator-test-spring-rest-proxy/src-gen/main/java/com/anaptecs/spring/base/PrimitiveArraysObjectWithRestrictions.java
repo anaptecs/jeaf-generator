@@ -226,7 +226,7 @@ public class PrimitiveArraysObjectWithRestrictions {
    * @return {@link com.anaptecs.spring.base.PrimitiveArraysObjectWithRestrictions}
    */
   public static PrimitiveArraysObjectWithRestrictions of( long[] pALongArray ) {
-    PrimitiveArraysObjectWithRestrictions.Builder lBuilder = PrimitiveArraysObjectWithRestrictions.builder();
+    var lBuilder = PrimitiveArraysObjectWithRestrictions.builder();
     lBuilder.setALongArray(pALongArray);
     return lBuilder.build();
   }

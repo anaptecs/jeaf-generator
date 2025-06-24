@@ -83,7 +83,7 @@ public class SchufaRequest implements ServiceObject {
    * @return {@link com.anaptecs.jeaf.accounting.impl.SchufaRequest}
    */
   public static SchufaRequest of( String pName, String pFirstName, Calendar pDateOfBirth ) {
-    SchufaRequest.Builder lBuilder = SchufaRequest.builder();
+    var lBuilder = SchufaRequest.builder();
     lBuilder.setName(pName);
     lBuilder.setFirstName(pFirstName);
     lBuilder.setDateOfBirth(pDateOfBirth);

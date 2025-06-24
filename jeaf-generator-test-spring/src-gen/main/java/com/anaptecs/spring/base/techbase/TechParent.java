@@ -57,7 +57,7 @@ public class TechParent {
    * @return {@link TechParent}
    */
   public static TechParent of( String pTechAttribute ) {
-    TechParentBuilder<?, ?> lBuilder = TechParent.builder();
+    var lBuilder = TechParent.builder();
     lBuilder.setTechAttribute(pTechAttribute);
     return lBuilder.build();
   }

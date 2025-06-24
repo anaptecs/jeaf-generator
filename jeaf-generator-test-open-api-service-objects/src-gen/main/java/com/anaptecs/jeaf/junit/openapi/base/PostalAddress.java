@@ -78,7 +78,7 @@ public class PostalAddress implements ServiceObject {
    * @return {@link com.anaptecs.jeaf.junit.openapi.base.PostalAddress}
    */
   public static PostalAddress of( String pStreet, String pHouseNumber, String pCity, int pPostalCode ) {
-    PostalAddress.Builder lBuilder = PostalAddress.builder();
+    var lBuilder = PostalAddress.builder();
     lBuilder.setStreet(pStreet);
     lBuilder.setHouseNumber(pHouseNumber);
     lBuilder.setCity(pCity);

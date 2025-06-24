@@ -57,7 +57,7 @@ public class IgnoringClass {
    * @return {@link IgnoringClass}
    */
   public static IgnoringClass of( Integer pAge ) {
-    IgnoringClassBuilder<?, ?> lBuilder = IgnoringClass.builder();
+    var lBuilder = IgnoringClass.builder();
     lBuilder.setAge(pAge);
     return lBuilder.build();
   }

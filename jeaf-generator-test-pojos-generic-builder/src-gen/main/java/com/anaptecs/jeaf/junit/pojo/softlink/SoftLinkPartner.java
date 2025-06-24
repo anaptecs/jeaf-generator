@@ -103,7 +103,7 @@ public class SoftLinkPartner {
    * @return {@link SoftLinkPartner}
    */
   public static SoftLinkPartner of( List<Long> pLongLinkIDs ) {
-    SoftLinkPartnerBuilder<?, ?> lBuilder = SoftLinkPartner.builder();
+    var lBuilder = SoftLinkPartner.builder();
     lBuilder.setLongLinkIDs(pLongLinkIDs);
     return lBuilder.build();
   }

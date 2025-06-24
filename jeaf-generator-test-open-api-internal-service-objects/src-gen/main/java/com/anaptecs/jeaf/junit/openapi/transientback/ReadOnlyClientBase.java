@@ -144,7 +144,7 @@ public abstract class ReadOnlyClientBase implements ServiceObject {
    * @return {@link com.anaptecs.jeaf.junit.openapi.transientback.ReadOnlyClient}
    */
   public static ReadOnlyClient of( String pName ) {
-    ReadOnlyClient.Builder lBuilder = ReadOnlyClient.builder();
+    var lBuilder = ReadOnlyClient.builder();
     lBuilder.setName(pName);
     return lBuilder.build();
   }

@@ -113,7 +113,7 @@ public class MultivaluedQueryParamsBean implements Serializable {
    * @return {@link com.anaptecs.spring.service.MultivaluedQueryParamsBean}
    */
   public static MultivaluedQueryParamsBean of( ) {
-    MultivaluedQueryParamsBean.Builder lBuilder = MultivaluedQueryParamsBean.builder();
+    var lBuilder = MultivaluedQueryParamsBean.builder();
     return lBuilder.build();
   }
 

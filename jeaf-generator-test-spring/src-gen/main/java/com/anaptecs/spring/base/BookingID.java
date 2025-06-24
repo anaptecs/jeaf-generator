@@ -102,7 +102,7 @@ public class BookingID {
    */
   public static BookingID of( String pPublicBookingID, String pReferenceID, String pExternalRefID,
       InventoryType pInventory, BookingCode pBookingCode ) {
-    BookingIDBuilder<?, ?> lBuilder = BookingID.builder();
+    var lBuilder = BookingID.builder();
     lBuilder.setPublicBookingID(pPublicBookingID);
     lBuilder.setReferenceID(pReferenceID);
     lBuilder.setExternalRefID(pExternalRefID);

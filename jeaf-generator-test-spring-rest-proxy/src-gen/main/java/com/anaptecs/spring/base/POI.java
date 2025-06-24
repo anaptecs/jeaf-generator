@@ -54,7 +54,7 @@ public class POI extends Stop {
    * @return {@link com.anaptecs.spring.base.POI}
    */
   public static POI of( String pName, String pDescription ) {
-    POI.Builder lBuilder = POI.builder();
+    var lBuilder = POI.builder();
     lBuilder.setName(pName);
     lBuilder.setDescription(pDescription);
     return lBuilder.build();

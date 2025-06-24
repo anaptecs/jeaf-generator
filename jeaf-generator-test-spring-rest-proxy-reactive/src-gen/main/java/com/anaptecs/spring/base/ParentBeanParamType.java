@@ -86,7 +86,7 @@ public class ParentBeanParamType {
    * @return {@link com.anaptecs.spring.base.ParentBeanParamType}
    */
   public static ParentBeanParamType of( String pNovaKey, String pTkID, DoubleCode pCode ) {
-    ParentBeanParamType.Builder lBuilder = ParentBeanParamType.builder();
+    var lBuilder = ParentBeanParamType.builder();
     lBuilder.setNovaKey(pNovaKey);
     lBuilder.setTkID(pTkID);
     lBuilder.setCode(pCode);

@@ -70,7 +70,7 @@ public class GeoPosition extends PlaceRef {
    * @return {@link GeoPosition}
    */
   public static GeoPosition of( String pName, MyType pType, int pLongitude, int pLatitude ) {
-    GeoPositionBuilder<?, ?> lBuilder = GeoPosition.builder();
+    var lBuilder = GeoPosition.builder();
     lBuilder.setName(pName);
     lBuilder.setType(pType);
     lBuilder.setLongitude(pLongitude);

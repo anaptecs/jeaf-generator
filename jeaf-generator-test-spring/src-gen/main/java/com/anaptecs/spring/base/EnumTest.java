@@ -75,7 +75,7 @@ public class EnumTest {
    * @return {@link EnumTest}
    */
   public static EnumTest of( ExtensibleEnum pProperty, ExtensibleEnum pEnumRef ) {
-    EnumTestBuilder<?, ?> lBuilder = EnumTest.builder();
+    var lBuilder = EnumTest.builder();
     lBuilder.setProperty(pProperty);
     lBuilder.setEnumRef(pEnumRef);
     return lBuilder.build();

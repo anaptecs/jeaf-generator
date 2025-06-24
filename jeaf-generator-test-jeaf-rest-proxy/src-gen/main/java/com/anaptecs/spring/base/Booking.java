@@ -108,7 +108,7 @@ public class Booking implements Serializable {
    * @return {@link com.anaptecs.spring.base.Booking}
    */
   public static Booking of( BookingID pBookingID, String pCustomerName, List<InventoryType> pInventories ) {
-    Booking.Builder lBuilder = Booking.builder();
+    var lBuilder = Booking.builder();
     lBuilder.setBookingID(pBookingID);
     lBuilder.setCustomerName(pCustomerName);
     lBuilder.setInventories(pInventories);

@@ -93,7 +93,7 @@ public class QueryBeanParam {
    * @return {@link com.anaptecs.spring.service.QueryBeanParam}
    */
   public static QueryBeanParam of( BookingCode pBookingCode, int pMaxResults ) {
-    QueryBeanParam.Builder lBuilder = QueryBeanParam.builder();
+    var lBuilder = QueryBeanParam.builder();
     lBuilder.setBookingCode(pBookingCode);
     lBuilder.setMaxResults(pMaxResults);
     return lBuilder.build();

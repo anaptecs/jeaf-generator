@@ -71,7 +71,7 @@ public class IgnoringClass implements ServiceObject {
    * @return {@link com.anaptecs.jeaf.junit.openapi.base.IgnoringClass}
    */
   public static IgnoringClass of( Integer pAge ) {
-    IgnoringClass.Builder lBuilder = IgnoringClass.builder();
+    var lBuilder = IgnoringClass.builder();
     lBuilder.setAge(pAge);
     return lBuilder.build();
   }

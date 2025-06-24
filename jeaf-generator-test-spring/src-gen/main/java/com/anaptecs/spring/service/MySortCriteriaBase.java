@@ -193,7 +193,7 @@ public abstract class MySortCriteriaBase {
    * @return {@link com.anaptecs.spring.service.MySortCriteria}
    */
   public static MySortCriteria of( SortOrder pSortOrder, MySortProperty pSortProperty ) {
-    MySortCriteriaBuilder<?, ?> lBuilder = MySortCriteria.builder();
+    var lBuilder = MySortCriteria.builder();
     lBuilder.setSortOrder(pSortOrder);
     lBuilder.setSortProperty(pSortProperty);
     return lBuilder.build();

@@ -87,7 +87,7 @@ public class MoneyAmount {
    * @return {@link MoneyAmount}
    */
   public static MoneyAmount of( BigDecimal pAmount, CurrencyCode pCurrencyCode ) {
-    MoneyAmountBuilder<?, ?> lBuilder = MoneyAmount.builder();
+    var lBuilder = MoneyAmount.builder();
     lBuilder.setAmount(pAmount);
     lBuilder.setCurrencyCode(pCurrencyCode);
     return lBuilder.build();

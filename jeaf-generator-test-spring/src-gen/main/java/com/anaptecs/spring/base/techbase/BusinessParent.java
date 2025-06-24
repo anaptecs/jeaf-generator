@@ -62,7 +62,7 @@ public class BusinessParent extends TechParent {
    * @return {@link BusinessParent}
    */
   public static BusinessParent of( String pTechAttribute, long pParentAttribute ) {
-    BusinessParentBuilder<?, ?> lBuilder = BusinessParent.builder();
+    var lBuilder = BusinessParent.builder();
     lBuilder.setTechAttribute(pTechAttribute);
     lBuilder.setParentAttribute(pParentAttribute);
     return lBuilder.build();

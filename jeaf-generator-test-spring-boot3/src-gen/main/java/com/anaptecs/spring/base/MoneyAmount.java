@@ -82,7 +82,7 @@ public class MoneyAmount {
    * @return {@link com.anaptecs.spring.base.MoneyAmount}
    */
   public static MoneyAmount of( BigDecimal pAmount, CurrencyCode pCurrencyCode ) {
-    MoneyAmount.Builder lBuilder = MoneyAmount.builder();
+    var lBuilder = MoneyAmount.builder();
     lBuilder.setAmount(pAmount);
     lBuilder.setCurrencyCode(pCurrencyCode);
     return lBuilder.build();

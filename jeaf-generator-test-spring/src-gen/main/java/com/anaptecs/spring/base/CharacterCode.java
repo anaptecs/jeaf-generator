@@ -58,7 +58,7 @@ public class CharacterCode {
    * @return {@link CharacterCode}
    */
   public static CharacterCode of( Character pCode ) {
-    CharacterCodeBuilder<?, ?> lBuilder = CharacterCode.builder();
+    var lBuilder = CharacterCode.builder();
     lBuilder.setCode(pCode);
     return lBuilder.build();
   }

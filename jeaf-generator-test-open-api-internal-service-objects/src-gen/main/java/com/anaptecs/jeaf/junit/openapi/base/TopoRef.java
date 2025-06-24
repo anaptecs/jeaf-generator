@@ -61,7 +61,7 @@ public class TopoRef extends PlaceRef {
    * @return {@link com.anaptecs.jeaf.junit.openapi.base.TopoRef}
    */
   public static TopoRef of( String pName ) {
-    TopoRef.Builder lBuilder = TopoRef.builder();
+    var lBuilder = TopoRef.builder();
     lBuilder.setName(pName);
     return lBuilder.build();
   }

@@ -46,7 +46,7 @@ public class ErrorResponse {
    * @return {@link com.anaptecs.spring.base.ErrorResponse}
    */
   public static ErrorResponse of( ) {
-    ErrorResponse.Builder lBuilder = ErrorResponse.builder();
+    var lBuilder = ErrorResponse.builder();
     return lBuilder.build();
   }
 

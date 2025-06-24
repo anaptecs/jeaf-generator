@@ -138,7 +138,7 @@ public class Context {
    */
   public static Context of( String pAccessToken, Locale pLanguage, long pResellerID, long pPathParam,
       String pQueryParam, String pLang, IntegerCodeType pIntCode ) {
-    ContextBuilder<?, ?> lBuilder = Context.builder();
+    var lBuilder = Context.builder();
     lBuilder.setAccessToken(pAccessToken);
     lBuilder.setLanguage(pLanguage);
     lBuilder.setResellerID(pResellerID);

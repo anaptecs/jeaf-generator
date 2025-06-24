@@ -80,7 +80,7 @@ public class AdvancedHeader {
    * @return {@link com.anaptecs.spring.service.AdvancedHeader}
    */
   public static AdvancedHeader of( BookingID pBookingID, BookingCode pBookingCode, DoubleCode pDoubleCode ) {
-    AdvancedHeaderBuilder<?, ?> lBuilder = AdvancedHeader.builder();
+    var lBuilder = AdvancedHeader.builder();
     lBuilder.setBookingID(pBookingID);
     lBuilder.setBookingCode(pBookingCode);
     lBuilder.setDoubleCode(pDoubleCode);

@@ -251,7 +251,7 @@ public class PrimitiveArraysObject {
    * @return {@link com.anaptecs.spring.base.PrimitiveArraysObject}
    */
   public static PrimitiveArraysObject of( String[] pCStringArray ) {
-    PrimitiveArraysObject.Builder lBuilder = PrimitiveArraysObject.builder();
+    var lBuilder = PrimitiveArraysObject.builder();
     lBuilder.setCStringArray(pCStringArray);
     return lBuilder.build();
   }

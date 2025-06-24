@@ -258,7 +258,7 @@ public abstract class ClassABase implements ServiceObject, Identifiable<ServiceO
    * @return {@link ClassA}
    */
   public static ClassA of( String pName ) {
-    ClassA.Builder lBuilder = ClassA.builder();
+    var lBuilder = ClassA.builder();
     lBuilder.setName(pName);
     return lBuilder.build();
   }

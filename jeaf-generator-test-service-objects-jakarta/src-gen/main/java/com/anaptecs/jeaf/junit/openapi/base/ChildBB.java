@@ -122,7 +122,7 @@ public class ChildBB extends ChildB {
    * @return {@link com.anaptecs.jeaf.junit.openapi.base.ChildBB}
    */
   public static ChildBB of( String pParentAttribute, Long pChildBBAttribute, int pDeprecatedAttribute ) {
-    ChildBB.Builder lBuilder = ChildBB.builder();
+    var lBuilder = ChildBB.builder();
     lBuilder.setParentAttribute(pParentAttribute);
     lBuilder.setChildBBAttribute(pChildBBAttribute);
     lBuilder.setDeprecatedAttribute(pDeprecatedAttribute);

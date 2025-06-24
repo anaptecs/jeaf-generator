@@ -73,7 +73,7 @@ public class ClientClass implements ServiceObject {
    * @return {@link ClientClass}
    */
   public static ClientClass of( String pName ) {
-    ClientClass.Builder lBuilder = ClientClass.builder();
+    var lBuilder = ClientClass.builder();
     lBuilder.setName(pName);
     return lBuilder.build();
   }

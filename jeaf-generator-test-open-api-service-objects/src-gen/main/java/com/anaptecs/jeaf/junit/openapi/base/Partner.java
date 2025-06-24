@@ -97,7 +97,7 @@ public class Partner implements ServiceObject, Identifiable<ServiceObjectID> {
    * @return {@link com.anaptecs.jeaf.junit.openapi.base.Partner}
    */
   public static Partner of( ) {
-    Partner.Builder lBuilder = Partner.builder();
+    var lBuilder = Partner.builder();
     return lBuilder.build();
   }
 

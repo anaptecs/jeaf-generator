@@ -136,7 +136,7 @@ public abstract class DataTypeWithDerivedPropertyBase {
    * @return {@link DataTypeWithDerivedProperty}
    */
   public static DataTypeWithDerivedProperty of( int pProperty ) {
-    DataTypeWithDerivedPropertyBuilder<?, ?> lBuilder = DataTypeWithDerivedProperty.builder();
+    var lBuilder = DataTypeWithDerivedProperty.builder();
     lBuilder.setProperty(pProperty);
     return lBuilder.build();
   }

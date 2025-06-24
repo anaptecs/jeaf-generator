@@ -90,7 +90,7 @@ public class Sortiment implements Serializable {
    * @return {@link Sortiment}
    */
   public static Sortiment of( ) {
-    Sortiment.Builder lBuilder = Sortiment.builder();
+    var lBuilder = Sortiment.builder();
     return lBuilder.build();
   }
 

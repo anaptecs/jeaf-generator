@@ -390,7 +390,7 @@ public abstract class ResellerBase {
    * @return {@link Reseller}
    */
   public static Reseller of( List<Channel> pChannels, String pName, Locale pLanguage ) {
-    Reseller.Builder lBuilder = Reseller.builder();
+    var lBuilder = Reseller.builder();
     lBuilder.setChannels(pChannels);
     lBuilder.setName(pName);
     lBuilder.setLanguage(pLanguage);

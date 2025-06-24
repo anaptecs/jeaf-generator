@@ -147,7 +147,7 @@ public class SimpleDatatypeServiceObject implements ServiceObject, Identifiable<
    */
   public static SimpleDatatypeServiceObject of( boolean pMyBoolean, byte pMyByte, char pMyChar, double pMyDouble,
       float pMyFloat, long pMyLong, short pMyShort ) {
-    SimpleDatatypeServiceObject.Builder lBuilder = SimpleDatatypeServiceObject.builder();
+    var lBuilder = SimpleDatatypeServiceObject.builder();
     lBuilder.setMyBoolean(pMyBoolean);
     lBuilder.setMyByte(pMyByte);
     lBuilder.setMyChar(pMyChar);

@@ -264,7 +264,7 @@ public class PrimitiveObject {
       short pAShort, Short pBShort, int pAInteger, Integer pBInteger, Integer pCInteger, long pALong, Long pBLong,
       BigInteger pABigInteger, char pACharacter, Character pBCharacter, float pAFloat, Float pBFloat, double pADouble,
       Double pBDouble, BigDecimal pABigDecimal, String pAString, String pBString ) {
-    PrimitiveObject.Builder lBuilder = PrimitiveObject.builder();
+    var lBuilder = PrimitiveObject.builder();
     lBuilder.setABoolean(pABoolean);
     lBuilder.setBBoolean(pBBoolean);
     lBuilder.setCBoolean(pCBoolean);

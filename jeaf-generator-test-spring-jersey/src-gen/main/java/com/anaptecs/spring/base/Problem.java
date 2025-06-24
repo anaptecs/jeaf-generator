@@ -101,7 +101,7 @@ public class Problem {
    * @return {@link com.anaptecs.spring.base.Problem}
    */
   public static Problem of( String pTitle, int pStatus, String pType, String pDetail, String pInstance ) {
-    Problem.Builder lBuilder = Problem.builder();
+    var lBuilder = Problem.builder();
     lBuilder.setTitle(pTitle);
     lBuilder.setStatus(pStatus);
     lBuilder.setType(pType);

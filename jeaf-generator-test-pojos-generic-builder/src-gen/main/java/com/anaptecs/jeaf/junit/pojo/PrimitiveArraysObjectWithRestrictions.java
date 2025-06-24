@@ -232,7 +232,7 @@ public class PrimitiveArraysObjectWithRestrictions {
    * @return {@link PrimitiveArraysObjectWithRestrictions}
    */
   public static PrimitiveArraysObjectWithRestrictions of( long[] pALongArray ) {
-    PrimitiveArraysObjectWithRestrictionsBuilder<?, ?> lBuilder = PrimitiveArraysObjectWithRestrictions.builder();
+    var lBuilder = PrimitiveArraysObjectWithRestrictions.builder();
     lBuilder.setALongArray(pALongArray);
     return lBuilder.build();
   }

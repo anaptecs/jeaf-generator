@@ -84,7 +84,7 @@ public abstract class YetAnotherPOJOBase {
    * @return {@link com.anaptecs.jeaf.junit.generics.YetAnotherPOJO}
    */
   public static YetAnotherPOJO of( ) {
-    YetAnotherPOJO.Builder lBuilder = YetAnotherPOJO.builder();
+    var lBuilder = YetAnotherPOJO.builder();
     return lBuilder.build();
   }
 

@@ -117,7 +117,7 @@ public class Campaign implements ServiceObject {
    * @return {@link com.anaptecs.jeaf.junit.openapi.base.Campaign}
    */
   public static Campaign of( Set<Long> pMoreLinks ) {
-    Campaign.Builder lBuilder = Campaign.builder();
+    var lBuilder = Campaign.builder();
     lBuilder.setMoreLinks(pMoreLinks);
     return lBuilder.build();
   }

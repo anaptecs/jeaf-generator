@@ -61,7 +61,7 @@ public class POI extends Stop {
    * @return {@link POI}
    */
   public static POI of( String pName, String pDescription ) {
-    POIBuilder<?, ?> lBuilder = POI.builder();
+    var lBuilder = POI.builder();
     lBuilder.setName(pName);
     lBuilder.setDescription(pDescription);
     return lBuilder.build();

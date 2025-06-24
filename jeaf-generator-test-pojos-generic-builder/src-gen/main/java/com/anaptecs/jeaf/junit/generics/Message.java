@@ -57,7 +57,7 @@ public class Message {
    * @return {@link Message}
    */
   public static Message of( String pText ) {
-    MessageBuilder<?, ?> lBuilder = Message.builder();
+    var lBuilder = Message.builder();
     lBuilder.setText(pText);
     return lBuilder.build();
   }

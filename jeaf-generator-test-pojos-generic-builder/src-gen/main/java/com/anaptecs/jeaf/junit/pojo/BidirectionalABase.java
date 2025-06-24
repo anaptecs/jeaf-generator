@@ -238,7 +238,7 @@ public abstract class BidirectionalABase {
    * @return {@link BidirectionalA}
    */
   public static BidirectionalA of( ) {
-    BidirectionalABuilder<?, ?> lBuilder = BidirectionalA.builder();
+    var lBuilder = BidirectionalA.builder();
     return lBuilder.build();
   }
 

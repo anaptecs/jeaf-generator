@@ -78,7 +78,7 @@ public class Duration {
    * @return {@link com.anaptecs.spring.base.Duration}
    */
   public static Duration of( int pValue, TimeUnit pTimeUnit ) {
-    Duration.Builder lBuilder = Duration.builder();
+    var lBuilder = Duration.builder();
     lBuilder.setValue(pValue);
     lBuilder.setTimeUnit(pTimeUnit);
     return lBuilder.build();

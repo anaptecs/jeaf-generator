@@ -71,7 +71,7 @@ public class PartnerContainer implements ServiceObject {
    * @return {@link com.anaptecs.jeaf.junit.openapi.base.PartnerContainer}
    */
   public static PartnerContainer of( ) {
-    PartnerContainer.Builder lBuilder = PartnerContainer.builder();
+    var lBuilder = PartnerContainer.builder();
     return lBuilder.build();
   }
 

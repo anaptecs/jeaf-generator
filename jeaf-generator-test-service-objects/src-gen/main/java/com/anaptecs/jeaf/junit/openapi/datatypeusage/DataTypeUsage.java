@@ -82,7 +82,7 @@ public class DataTypeUsage implements ServiceObject {
    * @return {@link com.anaptecs.jeaf.junit.openapi.datatypeusage.DataTypeUsage}
    */
   public static DataTypeUsage of( MyDataType pCode ) {
-    DataTypeUsage.Builder lBuilder = DataTypeUsage.builder();
+    var lBuilder = DataTypeUsage.builder();
     lBuilder.setCode(pCode);
     return lBuilder.build();
   }

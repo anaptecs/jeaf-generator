@@ -235,7 +235,7 @@ public class PrimitiveArraysObject {
    * @return {@link PrimitiveArraysObject}
    */
   public static PrimitiveArraysObject of( String[] pCStringArray ) {
-    PrimitiveArraysObjectBuilder<?, ?> lBuilder = PrimitiveArraysObject.builder();
+    var lBuilder = PrimitiveArraysObject.builder();
     lBuilder.setCStringArray(pCStringArray);
     return lBuilder.build();
   }

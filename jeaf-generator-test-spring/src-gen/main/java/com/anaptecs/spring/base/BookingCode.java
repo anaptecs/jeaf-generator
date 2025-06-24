@@ -55,7 +55,7 @@ public class BookingCode {
    * @return {@link BookingCode}
    */
   public static BookingCode of( String pCode ) {
-    BookingCodeBuilder<?, ?> lBuilder = BookingCode.builder();
+    var lBuilder = BookingCode.builder();
     lBuilder.setCode(pCode);
     return lBuilder.build();
   }

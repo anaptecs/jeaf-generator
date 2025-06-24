@@ -61,7 +61,7 @@ public class BusinessParent extends TechParent {
    * @return {@link com.anaptecs.jeaf.junit.openapi.techbase.BusinessParent}
    */
   public static BusinessParent of( String pTechAttribute, long pParentAttribute ) {
-    BusinessParent.Builder lBuilder = BusinessParent.builder();
+    var lBuilder = BusinessParent.builder();
     lBuilder.setTechAttribute(pTechAttribute);
     lBuilder.setParentAttribute(pParentAttribute);
     return lBuilder.build();

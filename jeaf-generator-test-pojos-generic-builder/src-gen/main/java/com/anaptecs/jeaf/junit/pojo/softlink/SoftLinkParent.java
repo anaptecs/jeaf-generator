@@ -103,7 +103,7 @@ public class SoftLinkParent {
    * @return {@link SoftLinkParent}
    */
   public static SoftLinkParent of( Set<SoftLinkID> pPartnerIDs, SoftLinkID pThePartnerID ) {
-    SoftLinkParentBuilder<?, ?> lBuilder = SoftLinkParent.builder();
+    var lBuilder = SoftLinkParent.builder();
     lBuilder.setPartnerIDs(pPartnerIDs);
     lBuilder.setThePartnerID(pThePartnerID);
     return lBuilder.build();

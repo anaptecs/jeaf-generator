@@ -77,7 +77,7 @@ public class LocalBeanParamType implements ServiceObject {
    * @return {@link com.anaptecs.jeaf.junit.openapi.service1.LocalBeanParamType}
    */
   public static LocalBeanParamType of( String pLocalKey, String pLocalID, String pAuthorization ) {
-    LocalBeanParamType.Builder lBuilder = LocalBeanParamType.builder();
+    var lBuilder = LocalBeanParamType.builder();
     lBuilder.setLocalKey(pLocalKey);
     lBuilder.setLocalID(pLocalID);
     lBuilder.setAuthorization(pAuthorization);

@@ -52,7 +52,7 @@ public class FloatCodeType {
    * @return {@link FloatCodeType}
    */
   public static FloatCodeType of( float pCode ) {
-    FloatCodeTypeBuilder<?, ?> lBuilder = FloatCodeType.builder();
+    var lBuilder = FloatCodeType.builder();
     lBuilder.setCode(pCode);
     return lBuilder.build();
   }

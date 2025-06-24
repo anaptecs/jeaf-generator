@@ -55,7 +55,7 @@ public class BusinessA extends TechParent {
    * @return {@link com.anaptecs.spring.base.techbase.BusinessA}
    */
   public static BusinessA of( String pTechAttribute, int pBusinessAttribute ) {
-    BusinessA.Builder lBuilder = BusinessA.builder();
+    var lBuilder = BusinessA.builder();
     lBuilder.setTechAttribute(pTechAttribute);
     lBuilder.setBusinessAttribute(pBusinessAttribute);
     return lBuilder.build();

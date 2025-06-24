@@ -94,7 +94,7 @@ public class EnumTest implements Serializable {
    * @return {@link com.anaptecs.spring.base.EnumTest}
    */
   public static EnumTest of( ExtensibleEnum pProperty, ExtensibleEnum pEnumRef ) {
-    EnumTest.Builder lBuilder = EnumTest.builder();
+    var lBuilder = EnumTest.builder();
     lBuilder.setProperty(pProperty);
     lBuilder.setEnumRef(pEnumRef);
     return lBuilder.build();

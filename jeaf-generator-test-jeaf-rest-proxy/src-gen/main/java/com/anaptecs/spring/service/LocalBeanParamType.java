@@ -85,7 +85,7 @@ public class LocalBeanParamType implements Serializable {
    * @return {@link com.anaptecs.spring.service.LocalBeanParamType}
    */
   public static LocalBeanParamType of( String pLocalKey, String pLocalID ) {
-    LocalBeanParamType.Builder lBuilder = LocalBeanParamType.builder();
+    var lBuilder = LocalBeanParamType.builder();
     lBuilder.setLocalKey(pLocalKey);
     lBuilder.setLocalID(pLocalID);
     return lBuilder.build();

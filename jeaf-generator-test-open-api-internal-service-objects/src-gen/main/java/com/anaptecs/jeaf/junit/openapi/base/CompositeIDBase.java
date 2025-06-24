@@ -166,7 +166,7 @@ public abstract class CompositeIDBase implements ServiceObject {
    * @return {@link com.anaptecs.jeaf.junit.openapi.base.CompositeID}
    */
   public static CompositeID of( long pPrimaryCode, long pSecondaryCode ) {
-    CompositeID.Builder lBuilder = CompositeID.builder();
+    var lBuilder = CompositeID.builder();
     lBuilder.setPrimaryCode(pPrimaryCode);
     lBuilder.setSecondaryCode(pSecondaryCode);
     return lBuilder.build();

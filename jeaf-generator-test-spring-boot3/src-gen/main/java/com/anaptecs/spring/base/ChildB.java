@@ -89,7 +89,7 @@ public class ChildB extends ParentClass {
    * @return {@link com.anaptecs.spring.base.ChildB}
    */
   public static ChildB of( String pParentAttribute ) {
-    ChildB.Builder lBuilder = ChildB.builder();
+    var lBuilder = ChildB.builder();
     lBuilder.setParentAttribute(pParentAttribute);
     return lBuilder.build();
   }

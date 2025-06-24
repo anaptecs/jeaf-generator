@@ -58,7 +58,7 @@ public class ProductCode {
    * @return {@link ProductCode}
    */
   public static ProductCode of( int pCode ) {
-    ProductCodeBuilder<?, ?> lBuilder = ProductCode.builder();
+    var lBuilder = ProductCode.builder();
     lBuilder.setCode(pCode);
     return lBuilder.build();
   }

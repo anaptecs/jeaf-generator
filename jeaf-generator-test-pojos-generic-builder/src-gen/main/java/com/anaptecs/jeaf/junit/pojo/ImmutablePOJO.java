@@ -67,7 +67,7 @@ public class ImmutablePOJO {
    * @return {@link ImmutablePOJO}
    */
   public static ImmutablePOJO of( String pName, Integer pSomething ) {
-    ImmutablePOJOBuilder<?, ?> lBuilder = ImmutablePOJO.builder();
+    var lBuilder = ImmutablePOJO.builder();
     lBuilder.setName(pName);
     lBuilder.setSomething(pSomething);
     return lBuilder.build();

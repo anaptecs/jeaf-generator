@@ -69,7 +69,7 @@ public class Partner {
    * @return {@link Partner}
    */
   public static Partner of( ) {
-    PartnerBuilder<?, ?> lBuilder = Partner.builder();
+    var lBuilder = Partner.builder();
     return lBuilder.build();
   }
 

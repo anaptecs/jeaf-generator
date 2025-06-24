@@ -69,7 +69,7 @@ public class BChildPOJO extends BParentPOJO {
    * @return {@link BChildPOJO}
    */
   public static BChildPOJO of( String pParentAttribute, byte pWeirdAttribute, Integer pChildAttribute ) {
-    BChildPOJOBuilder<?, ?> lBuilder = BChildPOJO.builder();
+    var lBuilder = BChildPOJO.builder();
     lBuilder.setParentAttribute(pParentAttribute);
     lBuilder.setWeirdAttribute(pWeirdAttribute);
     lBuilder.setChildAttribute(pChildAttribute);

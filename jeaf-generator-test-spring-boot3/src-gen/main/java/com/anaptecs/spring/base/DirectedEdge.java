@@ -79,7 +79,7 @@ public class DirectedEdge {
    * @return {@link com.anaptecs.spring.base.DirectedEdge}
    */
   public static DirectedEdge of( Stop pEnd, String pLink ) {
-    DirectedEdge.Builder lBuilder = DirectedEdge.builder();
+    var lBuilder = DirectedEdge.builder();
     lBuilder.setEnd(pEnd);
     lBuilder.setLink(pLink);
     return lBuilder.build();

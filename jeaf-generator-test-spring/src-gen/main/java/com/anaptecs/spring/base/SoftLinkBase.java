@@ -260,7 +260,7 @@ public abstract class SoftLinkBase {
    * @return {@link com.anaptecs.spring.base.SoftLink}
    */
   public static SoftLink of( long pObjectID, DataUnit pDataUnit, Entity pEntity, String pRefrenceID ) {
-    SoftLinkBuilder<?, ?> lBuilder = SoftLink.builder();
+    var lBuilder = SoftLink.builder();
     lBuilder.setObjectID(pObjectID);
     lBuilder.setDataUnit(pDataUnit);
     lBuilder.setEntity(pEntity);

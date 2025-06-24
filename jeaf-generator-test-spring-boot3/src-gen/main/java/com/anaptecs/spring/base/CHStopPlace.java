@@ -43,7 +43,7 @@ public class CHStopPlace extends StopPlaceRef {
    * @return {@link com.anaptecs.spring.base.CHStopPlace}
    */
   public static CHStopPlace of( String pName, MyType pType ) {
-    CHStopPlace.Builder lBuilder = CHStopPlace.builder();
+    var lBuilder = CHStopPlace.builder();
     lBuilder.setName(pName);
     lBuilder.setType(pType);
     return lBuilder.build();

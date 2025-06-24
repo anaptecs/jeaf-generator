@@ -58,7 +58,7 @@ public class Partner {
    * @return {@link com.anaptecs.spring.base.Partner}
    */
   public static Partner of( ) {
-    Partner.Builder lBuilder = Partner.builder();
+    var lBuilder = Partner.builder();
     return lBuilder.build();
   }
 

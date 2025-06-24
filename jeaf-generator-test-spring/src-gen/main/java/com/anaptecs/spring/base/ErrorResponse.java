@@ -49,7 +49,7 @@ public class ErrorResponse {
    * @return {@link ErrorResponse}
    */
   public static ErrorResponse of( ) {
-    ErrorResponseBuilder<?, ?> lBuilder = ErrorResponse.builder();
+    var lBuilder = ErrorResponse.builder();
     return lBuilder.build();
   }
 

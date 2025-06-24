@@ -71,7 +71,7 @@ public class OtherMappingObject implements ServiceObject {
    * @return {@link com.anaptecs.jeaf.junit.objectmapping.OtherMappingObject}
    */
   public static OtherMappingObject of( int pValue, String pName ) {
-    OtherMappingObject.Builder lBuilder = OtherMappingObject.builder();
+    var lBuilder = OtherMappingObject.builder();
     lBuilder.setValue(pValue);
     lBuilder.setName(pName);
     return lBuilder.build();

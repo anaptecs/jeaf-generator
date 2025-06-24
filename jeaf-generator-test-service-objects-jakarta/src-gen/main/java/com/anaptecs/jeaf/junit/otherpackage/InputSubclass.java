@@ -48,7 +48,7 @@ public class InputSubclass extends Input {
    * @return {@link com.anaptecs.jeaf.junit.otherpackage.InputSubclass}
    */
   public static InputSubclass of( ) {
-    InputSubclass.Builder lBuilder = InputSubclass.builder();
+    var lBuilder = InputSubclass.builder();
     return lBuilder.build();
   }
 

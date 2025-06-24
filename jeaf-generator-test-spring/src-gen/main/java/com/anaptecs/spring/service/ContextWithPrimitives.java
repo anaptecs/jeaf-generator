@@ -99,7 +99,7 @@ public class ContextWithPrimitives {
    */
   public static ContextWithPrimitives of( boolean pABoolean, Boolean pABooleanWrapper, int pAnInt, Integer pAnInteger,
       long pALong, Long pAVeryLong ) {
-    ContextWithPrimitivesBuilder<?, ?> lBuilder = ContextWithPrimitives.builder();
+    var lBuilder = ContextWithPrimitives.builder();
     lBuilder.setABoolean(pABoolean);
     lBuilder.setABooleanWrapper(pABooleanWrapper);
     lBuilder.setAnInt(pAnInt);

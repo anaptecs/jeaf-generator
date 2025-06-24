@@ -71,7 +71,7 @@ public class BidirectB {
    * @return {@link BidirectB}
    */
   public static BidirectB of( BidirectA pA ) {
-    BidirectBBuilder<?, ?> lBuilder = BidirectB.builder();
+    var lBuilder = BidirectB.builder();
     lBuilder.setA(pA);
     return lBuilder.build();
   }

@@ -52,7 +52,7 @@ public class BooleanCodeType {
    * @return {@link BooleanCodeType}
    */
   public static BooleanCodeType of( boolean pCode ) {
-    BooleanCodeTypeBuilder<?, ?> lBuilder = BooleanCodeType.builder();
+    var lBuilder = BooleanCodeType.builder();
     lBuilder.setCode(pCode);
     return lBuilder.build();
   }

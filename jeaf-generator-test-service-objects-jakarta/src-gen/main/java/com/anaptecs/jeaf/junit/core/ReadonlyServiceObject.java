@@ -77,7 +77,7 @@ public class ReadonlyServiceObject implements ServiceObject {
    * @return {@link com.anaptecs.jeaf.junit.core.ReadonlyServiceObject}
    */
   public static ReadonlyServiceObject of( String pReadonly, int pReadonlyDefault ) {
-    ReadonlyServiceObject.Builder lBuilder = ReadonlyServiceObject.builder();
+    var lBuilder = ReadonlyServiceObject.builder();
     lBuilder.setReadonly(pReadonly);
     lBuilder.setReadonlyDefault(pReadonlyDefault);
     return lBuilder.build();

@@ -76,7 +76,7 @@ public class BeanParameter {
    * @return {@link com.anaptecs.spring.base.BeanParameter}
    */
   public static BeanParameter of( String pAccessToken, Locale pLanguage, String pOldStyle ) {
-    BeanParameter.Builder lBuilder = BeanParameter.builder();
+    var lBuilder = BeanParameter.builder();
     lBuilder.setAccessToken(pAccessToken);
     lBuilder.setLanguage(pLanguage);
     lBuilder.setOldStyle(pOldStyle);

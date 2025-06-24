@@ -94,7 +94,7 @@ public class TheReadOnlyServiceObject implements ServiceObject {
    * @return {@link com.anaptecs.jeaf.junit.openapi.base.TheReadOnlyServiceObject}
    */
   public static TheReadOnlyServiceObject of( String pName ) {
-    TheReadOnlyServiceObject.Builder lBuilder = TheReadOnlyServiceObject.builder();
+    var lBuilder = TheReadOnlyServiceObject.builder();
     lBuilder.setName(pName);
     return lBuilder.build();
   }

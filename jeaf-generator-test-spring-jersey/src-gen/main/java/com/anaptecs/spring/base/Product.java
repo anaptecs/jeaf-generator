@@ -221,7 +221,7 @@ public class Product implements IProduct {
    */
   public static Product of( String pName, URL pLink, UUID pProductID, Set<CurrencyCode> pSupportedCurrencies,
       Set<ProductCode> pProductCodes, String pDescription, String pUri ) {
-    Product.Builder lBuilder = Product.builder();
+    var lBuilder = Product.builder();
     lBuilder.setName(pName);
     lBuilder.setLink(pLink);
     lBuilder.setProductID(pProductID);

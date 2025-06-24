@@ -98,7 +98,7 @@ public class ResponsibilityType implements ServiceObject, Identifiable<ServiceOb
    * @return {@link com.anaptecs.jeaf.accounting.ResponsibilityType}
    */
   public static ResponsibilityType of( String pType, Character pTypeChar, Byte pSortorder ) {
-    ResponsibilityType.Builder lBuilder = ResponsibilityType.builder();
+    var lBuilder = ResponsibilityType.builder();
     lBuilder.setType(pType);
     lBuilder.setTypeChar(pTypeChar);
     lBuilder.setSortorder(pSortorder);

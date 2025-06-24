@@ -86,7 +86,7 @@ public class BidirectA {
    * @return {@link BidirectA}
    */
   public static BidirectA of( BidirectA pParent ) {
-    BidirectA.Builder lBuilder = BidirectA.builder();
+    var lBuilder = BidirectA.builder();
     lBuilder.setParent(pParent);
     return lBuilder.build();
   }

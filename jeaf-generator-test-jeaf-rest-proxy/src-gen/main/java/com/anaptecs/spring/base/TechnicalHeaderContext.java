@@ -83,7 +83,7 @@ public class TechnicalHeaderContext implements Serializable {
    * @return {@link com.anaptecs.spring.base.TechnicalHeaderContext}
    */
   public static TechnicalHeaderContext of( String pReseller ) {
-    TechnicalHeaderContext.Builder lBuilder = TechnicalHeaderContext.builder();
+    var lBuilder = TechnicalHeaderContext.builder();
     lBuilder.setReseller(pReseller);
     return lBuilder.build();
   }

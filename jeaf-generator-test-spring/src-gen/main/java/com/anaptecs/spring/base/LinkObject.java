@@ -57,7 +57,7 @@ public class LinkObject {
    * @return {@link LinkObject}
    */
   public static LinkObject of( String pHref ) {
-    LinkObjectBuilder<?, ?> lBuilder = LinkObject.builder();
+    var lBuilder = LinkObject.builder();
     lBuilder.setHref(pHref);
     return lBuilder.build();
   }

@@ -61,7 +61,7 @@ public class UICStop extends Stop {
    * @return {@link UICStop}
    */
   public static UICStop of( String pName, String pUicCode ) {
-    UICStopBuilder<?, ?> lBuilder = UICStop.builder();
+    var lBuilder = UICStop.builder();
     lBuilder.setName(pName);
     lBuilder.setUicCode(pUicCode);
     return lBuilder.build();

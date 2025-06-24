@@ -88,7 +88,7 @@ public class ParentPOJO {
    * @return {@link com.anaptecs.jeaf.junit.pojo.ParentPOJO}
    */
   public static ParentPOJO of( String pParentAttribute, byte pWeirdAttribute, String pHello ) {
-    ParentPOJO.Builder lBuilder = ParentPOJO.builder();
+    var lBuilder = ParentPOJO.builder();
     lBuilder.setParentAttribute(pParentAttribute);
     lBuilder.setWeirdAttribute(pWeirdAttribute);
     lBuilder.setHello(pHello);

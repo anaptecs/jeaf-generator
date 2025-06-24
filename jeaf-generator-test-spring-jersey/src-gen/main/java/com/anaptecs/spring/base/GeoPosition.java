@@ -67,7 +67,7 @@ public class GeoPosition extends PlaceRef {
    * @return {@link com.anaptecs.spring.base.GeoPosition}
    */
   public static GeoPosition of( String pName, MyType pType, int pLongitude, int pLatitude ) {
-    GeoPosition.Builder lBuilder = GeoPosition.builder();
+    var lBuilder = GeoPosition.builder();
     lBuilder.setName(pName);
     lBuilder.setType(pType);
     lBuilder.setLongitude(pLongitude);

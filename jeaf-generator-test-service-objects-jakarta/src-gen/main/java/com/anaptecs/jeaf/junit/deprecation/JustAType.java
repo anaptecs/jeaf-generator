@@ -76,7 +76,7 @@ public class JustAType implements ServiceObject {
    * @return {@link com.anaptecs.jeaf.junit.deprecation.JustAType}
    */
   public static JustAType of( int pAttribute, double pLegacy ) {
-    JustAType.Builder lBuilder = JustAType.builder();
+    var lBuilder = JustAType.builder();
     lBuilder.setAttribute(pAttribute);
     lBuilder.setLegacy(pLegacy);
     return lBuilder.build();

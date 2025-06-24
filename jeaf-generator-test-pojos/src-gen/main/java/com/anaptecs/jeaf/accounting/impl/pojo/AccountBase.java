@@ -176,7 +176,7 @@ public abstract class AccountBase {
    * @return {@link com.anaptecs.jeaf.accounting.impl.pojo.Account}
    */
   public static Account of( int pIban, Currency pCurrency ) {
-    Account.Builder lBuilder = Account.builder();
+    var lBuilder = Account.builder();
     lBuilder.setIban(pIban);
     lBuilder.setCurrency(pCurrency);
     return lBuilder.build();

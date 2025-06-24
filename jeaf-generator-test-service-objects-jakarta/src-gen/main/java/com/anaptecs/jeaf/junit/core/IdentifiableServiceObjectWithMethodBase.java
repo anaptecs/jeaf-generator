@@ -195,7 +195,7 @@ public abstract class IdentifiableServiceObjectWithMethodBase implements Service
    * @return {@link com.anaptecs.jeaf.junit.core.IdentifiableServiceObjectWithMethod}
    */
   public static IdentifiableServiceObjectWithMethod of( Integer pHello ) {
-    IdentifiableServiceObjectWithMethod.Builder lBuilder = IdentifiableServiceObjectWithMethod.builder();
+    var lBuilder = IdentifiableServiceObjectWithMethod.builder();
     lBuilder.setHello(pHello);
     return lBuilder.build();
   }

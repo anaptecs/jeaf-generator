@@ -64,7 +64,7 @@ public class SubclassWithoutID extends IdentifiableServiceObject {
    * @return {@link com.anaptecs.jeaf.junit.core.SubclassWithoutID}
    */
   public static SubclassWithoutID of( Integer pHello, String pCountry, Boolean pAttr ) {
-    SubclassWithoutID.Builder lBuilder = SubclassWithoutID.builder();
+    var lBuilder = SubclassWithoutID.builder();
     lBuilder.setHello(pHello);
     lBuilder.setCountry(pCountry);
     lBuilder.setAttr(pAttr);

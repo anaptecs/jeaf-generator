@@ -74,7 +74,7 @@ public class BChildPOJO extends BParentPOJO {
    * @return {@link com.anaptecs.jeaf.junit.pojo.BChildPOJO}
    */
   public static BChildPOJO of( String pParentAttribute, byte pWeirdAttribute, Integer pChildAttribute ) {
-    BChildPOJO.Builder lBuilder = BChildPOJO.builder();
+    var lBuilder = BChildPOJO.builder();
     lBuilder.setParentAttribute(pParentAttribute);
     lBuilder.setWeirdAttribute(pWeirdAttribute);
     lBuilder.setChildAttribute(pChildAttribute);

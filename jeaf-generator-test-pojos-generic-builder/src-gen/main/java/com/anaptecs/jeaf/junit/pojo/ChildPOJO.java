@@ -76,7 +76,7 @@ public class ChildPOJO extends ParentPOJO {
    * @return {@link ChildPOJO}
    */
   public static ChildPOJO of( String pParentAttribute, byte pWeirdAttribute, String pHello, Integer pChildAttribute ) {
-    ChildPOJOBuilder<?, ?> lBuilder = ChildPOJO.builder();
+    var lBuilder = ChildPOJO.builder();
     lBuilder.setParentAttribute(pParentAttribute);
     lBuilder.setWeirdAttribute(pWeirdAttribute);
     lBuilder.setHello(pHello);

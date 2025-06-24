@@ -77,7 +77,7 @@ public class EnumTest implements ServiceObject {
    * @return {@link com.anaptecs.jeaf.junit.openapi.base.EnumTest}
    */
   public static EnumTest of( ExtensibleEnum pProperty, ExtensibleEnum pEnumRef ) {
-    EnumTest.Builder lBuilder = EnumTest.builder();
+    var lBuilder = EnumTest.builder();
     lBuilder.setProperty(pProperty);
     lBuilder.setEnumRef(pEnumRef);
     return lBuilder.build();

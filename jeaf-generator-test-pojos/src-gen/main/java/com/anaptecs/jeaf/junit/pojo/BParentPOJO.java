@@ -66,7 +66,7 @@ public class BParentPOJO {
    * @return {@link com.anaptecs.jeaf.junit.pojo.BParentPOJO}
    */
   public static BParentPOJO of( String pParentAttribute ) {
-    BParentPOJO.Builder lBuilder = BParentPOJO.builder();
+    var lBuilder = BParentPOJO.builder();
     lBuilder.setParentAttribute(pParentAttribute);
     return lBuilder.build();
   }

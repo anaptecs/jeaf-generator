@@ -85,7 +85,7 @@ public class Leg {
    * @return {@link Leg}
    */
   public static Leg of( PlaceRef pStart, PlaceRef pStop ) {
-    LegBuilder<?, ?> lBuilder = Leg.builder();
+    var lBuilder = Leg.builder();
     lBuilder.setStart(pStart);
     lBuilder.setStop(pStop);
     return lBuilder.build();

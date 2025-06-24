@@ -55,7 +55,7 @@ public class DoubleCode {
    * @return {@link DoubleCode}
    */
   public static DoubleCode of( Double pCode ) {
-    DoubleCodeBuilder<?, ?> lBuilder = DoubleCode.builder();
+    var lBuilder = DoubleCode.builder();
     lBuilder.setCode(pCode);
     return lBuilder.build();
   }

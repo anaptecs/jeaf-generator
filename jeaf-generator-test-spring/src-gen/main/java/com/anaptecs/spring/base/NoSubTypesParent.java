@@ -71,7 +71,7 @@ public class NoSubTypesParent {
    * @return {@link NoSubTypesParent}
    */
   public static NoSubTypesParent of( ) {
-    NoSubTypesParentBuilder<?, ?> lBuilder = NoSubTypesParent.builder();
+    var lBuilder = NoSubTypesParent.builder();
     return lBuilder.build();
   }
 

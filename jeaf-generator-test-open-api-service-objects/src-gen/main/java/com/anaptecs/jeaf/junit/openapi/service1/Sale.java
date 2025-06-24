@@ -75,7 +75,7 @@ public class Sale implements ServiceObject {
    * @return {@link com.anaptecs.jeaf.junit.openapi.service1.Sale}
    */
   public static Sale of( BigDecimal pTransactionAmount ) {
-    Sale.Builder lBuilder = Sale.builder();
+    var lBuilder = Sale.builder();
     lBuilder.setTransactionAmount(pTransactionAmount);
     return lBuilder.build();
   }

@@ -50,7 +50,7 @@ public class Offer implements ServiceObject {
    * @return {@link com.anaptecs.jeaf.junit.rest.generics.Offer}
    */
   public static Offer of( ) {
-    Offer.Builder lBuilder = Offer.builder();
+    var lBuilder = Offer.builder();
     return lBuilder.build();
   }
 

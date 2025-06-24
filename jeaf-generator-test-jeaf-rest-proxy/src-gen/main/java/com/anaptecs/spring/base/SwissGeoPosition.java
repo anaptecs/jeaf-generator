@@ -70,7 +70,7 @@ public class SwissGeoPosition extends GeoPosition {
    * @return {@link com.anaptecs.spring.base.SwissGeoPosition}
    */
   public static SwissGeoPosition of( String pName, MyType pType, int pLongitude, int pLatitude ) {
-    SwissGeoPosition.Builder lBuilder = SwissGeoPosition.builder();
+    var lBuilder = SwissGeoPosition.builder();
     lBuilder.setName(pName);
     lBuilder.setType(pType);
     lBuilder.setLongitude(pLongitude);

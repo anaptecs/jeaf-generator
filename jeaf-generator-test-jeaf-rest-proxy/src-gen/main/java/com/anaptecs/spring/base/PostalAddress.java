@@ -123,7 +123,7 @@ public class PostalAddress implements Serializable {
    */
   public static PostalAddress of( String pStreet, String pHouseNumber, String pCity, int pPostalCode,
       String pCountry ) {
-    PostalAddress.Builder lBuilder = PostalAddress.builder();
+    var lBuilder = PostalAddress.builder();
     lBuilder.setStreet(pStreet);
     lBuilder.setHouseNumber(pHouseNumber);
     lBuilder.setCity(pCity);

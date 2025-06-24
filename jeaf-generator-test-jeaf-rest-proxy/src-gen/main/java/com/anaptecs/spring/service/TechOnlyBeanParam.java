@@ -52,7 +52,7 @@ public class TechOnlyBeanParam implements Serializable {
    * @return {@link com.anaptecs.spring.service.TechOnlyBeanParam}
    */
   public static TechOnlyBeanParam of( ) {
-    TechOnlyBeanParam.Builder lBuilder = TechOnlyBeanParam.builder();
+    var lBuilder = TechOnlyBeanParam.builder();
     return lBuilder.build();
   }
 

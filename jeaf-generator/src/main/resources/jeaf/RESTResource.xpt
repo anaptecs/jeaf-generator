@@ -375,12 +375,7 @@ public class «this.getResourceName(reactive)» {
 	  // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the service interface but "only" our REST controller.
 	  «ENDIF»
 	  «FOREACH this.getBeanParams() AS beanParam»
-		  «IF beanParam.type.asClass().hasGenericBuilder()»
-		  «beanParam.type.fqn()».«beanParam.type.asClass().builderName()»<?, ?>
-		  «ELSE»
-		  «beanParam.getTypeName()».Builder
-		  «ENDIF»
-		   «beanParam.name.toLocalVar()»Builder = «beanParam.getTypeName()».builder();
+		  var «beanParam.name.toLocalVar()»Builder = «beanParam.getTypeName()».builder();
 		  «FOREACH beanParam.type.getAllAttributesFromHierarchy().select(e|e.isPropertySuppressed() == false) AS attribute»
 		  		«IF attribute.type.isOpenAPIDataType()»
   					// Handle bean parameter «beanParam.name».«attribute.name»
