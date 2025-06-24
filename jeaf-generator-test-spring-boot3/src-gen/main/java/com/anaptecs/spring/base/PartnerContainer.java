@@ -58,7 +58,7 @@ public class PartnerContainer {
    * @return {@link com.anaptecs.spring.base.PartnerContainer}
    */
   public static PartnerContainer of( ) {
-    PartnerContainer.Builder lBuilder = PartnerContainer.builder();
+    var lBuilder = PartnerContainer.builder();
     return lBuilder.build();
   }
 

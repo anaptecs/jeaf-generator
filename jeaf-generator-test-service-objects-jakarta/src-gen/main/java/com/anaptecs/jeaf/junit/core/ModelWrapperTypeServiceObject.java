@@ -71,7 +71,7 @@ public class ModelWrapperTypeServiceObject implements ServiceObject {
    * @return {@link com.anaptecs.jeaf.junit.core.ModelWrapperTypeServiceObject}
    */
   public static ModelWrapperTypeServiceObject of( boolean pABoolean, Integer pAInt ) {
-    ModelWrapperTypeServiceObject.Builder lBuilder = ModelWrapperTypeServiceObject.builder();
+    var lBuilder = ModelWrapperTypeServiceObject.builder();
     lBuilder.setABoolean(pABoolean);
     lBuilder.setAInt(pAInt);
     return lBuilder.build();

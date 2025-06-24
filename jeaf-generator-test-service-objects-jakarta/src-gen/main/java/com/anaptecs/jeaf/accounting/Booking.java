@@ -132,7 +132,7 @@ public class Booking implements ServiceObject {
    */
   public static Booking of( Double pAmount, Account pSource, Account pTarget, SecurityToken pToken,
       Set<Person> pRemitters ) {
-    Booking.Builder lBuilder = Booking.builder();
+    var lBuilder = Booking.builder();
     lBuilder.setAmount(pAmount);
     lBuilder.setSource(pSource);
     lBuilder.setTarget(pTarget);

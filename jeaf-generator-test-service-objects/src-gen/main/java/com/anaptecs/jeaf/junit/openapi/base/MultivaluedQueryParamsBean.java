@@ -79,7 +79,7 @@ public class MultivaluedQueryParamsBean implements ServiceObject {
    * @return {@link com.anaptecs.jeaf.junit.openapi.base.MultivaluedQueryParamsBean}
    */
   public static MultivaluedQueryParamsBean of( ) {
-    MultivaluedQueryParamsBean.Builder lBuilder = MultivaluedQueryParamsBean.builder();
+    var lBuilder = MultivaluedQueryParamsBean.builder();
     return lBuilder.build();
   }
 

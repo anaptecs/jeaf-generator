@@ -179,7 +179,7 @@ public class MultiValuedHeaderBeanParam {
    * @return {@link com.anaptecs.spring.service.MultiValuedHeaderBeanParam}
    */
   public static MultiValuedHeaderBeanParam of( int[] pInts ) {
-    MultiValuedHeaderBeanParamBuilder<?, ?> lBuilder = MultiValuedHeaderBeanParam.builder();
+    var lBuilder = MultiValuedHeaderBeanParam.builder();
     lBuilder.setInts(pInts);
     return lBuilder.build();
   }

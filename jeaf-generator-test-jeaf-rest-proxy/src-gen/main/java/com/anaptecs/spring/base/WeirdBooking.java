@@ -96,7 +96,7 @@ public class WeirdBooking implements Serializable {
    * @return {@link com.anaptecs.spring.base.WeirdBooking}
    */
   public static WeirdBooking of( ComplexBookingID pBooking ) {
-    WeirdBooking.Builder lBuilder = WeirdBooking.builder();
+    var lBuilder = WeirdBooking.builder();
     lBuilder.setBooking(pBooking);
     return lBuilder.build();
   }

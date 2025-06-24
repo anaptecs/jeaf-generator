@@ -100,7 +100,7 @@ public class POJOWithID implements Identifiable<ObjectID> {
    * @return {@link POJOWithID}
    */
   public static POJOWithID of( Double pAttr, String pName, Integer pIntegerWithDefault ) {
-    POJOWithIDBuilder<?, ?> lBuilder = POJOWithID.builder();
+    var lBuilder = POJOWithID.builder();
     lBuilder.setAttr(pAttr);
     lBuilder.setName(pName);
     lBuilder.setIntegerWithDefault(pIntegerWithDefault);

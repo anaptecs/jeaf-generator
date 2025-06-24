@@ -64,7 +64,7 @@ public class SubclassWithID extends IdentifiableServiceObject {
    * @return {@link com.anaptecs.jeaf.junit.core.SubclassWithID}
    */
   public static SubclassWithID of( Integer pHello, String pCountry, boolean pAttr ) {
-    SubclassWithID.Builder lBuilder = SubclassWithID.builder();
+    var lBuilder = SubclassWithID.builder();
     lBuilder.setHello(pHello);
     lBuilder.setCountry(pCountry);
     lBuilder.setAttr(pAttr);

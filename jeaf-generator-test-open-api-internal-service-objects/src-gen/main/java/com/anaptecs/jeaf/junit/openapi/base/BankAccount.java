@@ -71,7 +71,7 @@ public class BankAccount implements ServiceObject {
    * @return {@link com.anaptecs.jeaf.junit.openapi.base.BankAccount}
    */
   public static BankAccount of( String pIban ) {
-    BankAccount.Builder lBuilder = BankAccount.builder();
+    var lBuilder = BankAccount.builder();
     lBuilder.setIban(pIban);
     return lBuilder.build();
   }

@@ -60,7 +60,7 @@ public class ComplextTypeArrayPOJO {
    * @return {@link com.anaptecs.jeaf.junit.pojo.ComplextTypeArrayPOJO}
    */
   public static ComplextTypeArrayPOJO of( ) {
-    ComplextTypeArrayPOJO.Builder lBuilder = ComplextTypeArrayPOJO.builder();
+    var lBuilder = ComplextTypeArrayPOJO.builder();
     return lBuilder.build();
   }
 

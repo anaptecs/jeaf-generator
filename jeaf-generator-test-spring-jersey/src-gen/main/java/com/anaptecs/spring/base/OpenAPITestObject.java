@@ -143,7 +143,7 @@ public class OpenAPITestObject {
   public static OpenAPITestObject of( String pReadOnlyAttribute, String pReadWriteAttribute, int pWriteOnlyAttribute,
       Boolean pNullableAttribute, double pNotNullableAttribute, String pReadOnlyArray, String pReadWriteArray,
       int pWriteOnlyArray, double pNullableArray, double pNotNullableArray ) {
-    OpenAPITestObject.Builder lBuilder = OpenAPITestObject.builder();
+    var lBuilder = OpenAPITestObject.builder();
     lBuilder.setReadOnlyAttribute(pReadOnlyAttribute);
     lBuilder.setReadWriteAttribute(pReadWriteAttribute);
     lBuilder.setWriteOnlyAttribute(pWriteOnlyAttribute);

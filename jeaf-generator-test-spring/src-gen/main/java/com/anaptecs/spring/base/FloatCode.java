@@ -55,7 +55,7 @@ public class FloatCode {
    * @return {@link FloatCode}
    */
   public static FloatCode of( Float pCode ) {
-    FloatCodeBuilder<?, ?> lBuilder = FloatCode.builder();
+    var lBuilder = FloatCode.builder();
     lBuilder.setCode(pCode);
     return lBuilder.build();
   }

@@ -169,7 +169,7 @@ public abstract class SubclassWithIDnMethodBase extends IdentifiableServiceObjec
    * @return {@link com.anaptecs.jeaf.junit.core.SubclassWithIDnMethod}
    */
   public static SubclassWithIDnMethod of( Integer pHello, boolean pAttr ) {
-    SubclassWithIDnMethod.Builder lBuilder = SubclassWithIDnMethod.builder();
+    var lBuilder = SubclassWithIDnMethod.builder();
     lBuilder.setHello(pHello);
     lBuilder.setAttr(pAttr);
     return lBuilder.build();

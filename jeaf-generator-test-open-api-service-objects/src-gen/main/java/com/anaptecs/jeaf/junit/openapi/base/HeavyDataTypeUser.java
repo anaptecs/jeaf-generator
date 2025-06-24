@@ -105,7 +105,7 @@ public class HeavyDataTypeUser implements ServiceObject {
   public static HeavyDataTypeUser of( BooleanCode pBooleanCode, ByteCode pByteCode, ShortCode pShortCode,
       IntegerCode pIntegerCode, FloatCode pFloatCode, DoubleCode pDoubleCode, BigIntegerCode pBigInegerCode,
       BigDecimalCode pBigDecimalCode ) {
-    HeavyDataTypeUser.Builder lBuilder = HeavyDataTypeUser.builder();
+    var lBuilder = HeavyDataTypeUser.builder();
     lBuilder.setBooleanCode(pBooleanCode);
     lBuilder.setByteCode(pByteCode);
     lBuilder.setShortCode(pShortCode);

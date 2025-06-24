@@ -59,7 +59,7 @@ public class WrapperArrayServiceObject implements ServiceObject {
    * @return {@link com.anaptecs.jeaf.junit.core.WrapperArrayServiceObject}
    */
   public static WrapperArrayServiceObject of( ) {
-    WrapperArrayServiceObject.Builder lBuilder = WrapperArrayServiceObject.builder();
+    var lBuilder = WrapperArrayServiceObject.builder();
     return lBuilder.build();
   }
 

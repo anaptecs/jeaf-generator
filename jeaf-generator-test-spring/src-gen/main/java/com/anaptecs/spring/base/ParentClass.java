@@ -63,7 +63,7 @@ public class ParentClass {
    * @return {@link ParentClass}
    */
   public static ParentClass of( String pParentAttribute ) {
-    ParentClassBuilder<?, ?> lBuilder = ParentClass.builder();
+    var lBuilder = ParentClass.builder();
     lBuilder.setParentAttribute(pParentAttribute);
     return lBuilder.build();
   }

@@ -131,7 +131,7 @@ public class MultiValuedDataType implements ServiceObject {
    * @return {@link com.anaptecs.jeaf.junit.openapi.base.MultiValuedDataType}
    */
   public static MultiValuedDataType of( List<BooleanLiteralsEnum> pLiterals, String pStringProperty ) {
-    MultiValuedDataType.Builder lBuilder = MultiValuedDataType.builder();
+    var lBuilder = MultiValuedDataType.builder();
     lBuilder.setLiterals(pLiterals);
     lBuilder.setStringProperty(pStringProperty);
     return lBuilder.build();

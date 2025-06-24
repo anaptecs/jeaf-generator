@@ -60,7 +60,7 @@ public class MyBusinessObject {
    * @return {@link com.anaptecs.jeaf.junit.generics.MyBusinessObject}
    */
   public static MyBusinessObject of( int pMyBusinessAttribute ) {
-    MyBusinessObject.Builder lBuilder = MyBusinessObject.builder();
+    var lBuilder = MyBusinessObject.builder();
     lBuilder.setMyBusinessAttribute(pMyBusinessAttribute);
     return lBuilder.build();
   }

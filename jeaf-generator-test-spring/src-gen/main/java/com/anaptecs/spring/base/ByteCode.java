@@ -55,7 +55,7 @@ public class ByteCode {
    * @return {@link ByteCode}
    */
   public static ByteCode of( Byte pCode ) {
-    ByteCodeBuilder<?, ?> lBuilder = ByteCode.builder();
+    var lBuilder = ByteCode.builder();
     lBuilder.setCode(pCode);
     return lBuilder.build();
   }

@@ -122,7 +122,7 @@ public class CodeTypeUsageTest implements ServiceObject {
    */
   public static CodeTypeUsageTest of( BooleanCodeType pBooleanCode, Set<ShortCodeType> pShortCodeTypeAssociation,
       StringCodeType pStringCode, ShortCode pShortCode ) {
-    CodeTypeUsageTest.Builder lBuilder = CodeTypeUsageTest.builder();
+    var lBuilder = CodeTypeUsageTest.builder();
     lBuilder.setBooleanCode(pBooleanCode);
     lBuilder.setShortCodeTypeAssociation(pShortCodeTypeAssociation);
     lBuilder.setStringCode(pStringCode);

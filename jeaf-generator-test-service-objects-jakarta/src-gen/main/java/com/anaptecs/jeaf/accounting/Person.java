@@ -156,7 +156,7 @@ public class Person implements ServiceObject, Identifiable<ServiceObjectID> {
    * @return {@link Person}
    */
   public static Person of( String pName, String pFirstName, Calendar pDateOfBirth, Integer pAge, String pDisplayName ) {
-    Person.Builder lBuilder = Person.builder();
+    var lBuilder = Person.builder();
     lBuilder.setName(pName);
     lBuilder.setFirstName(pFirstName);
     lBuilder.setDateOfBirth(pDateOfBirth);

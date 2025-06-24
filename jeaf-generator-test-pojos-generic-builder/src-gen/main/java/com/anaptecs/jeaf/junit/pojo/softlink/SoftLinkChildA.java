@@ -49,7 +49,7 @@ public class SoftLinkChildA extends SoftLinkParent {
    * @return {@link SoftLinkChildA}
    */
   public static SoftLinkChildA of( Set<SoftLinkID> pPartnerIDs, SoftLinkID pThePartnerID ) {
-    SoftLinkChildABuilder<?, ?> lBuilder = SoftLinkChildA.builder();
+    var lBuilder = SoftLinkChildA.builder();
     lBuilder.setPartnerIDs(pPartnerIDs);
     lBuilder.setThePartnerID(pThePartnerID);
     return lBuilder.build();

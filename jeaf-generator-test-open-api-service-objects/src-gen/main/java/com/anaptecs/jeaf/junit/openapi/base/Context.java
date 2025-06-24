@@ -117,7 +117,7 @@ public class Context implements ServiceObject {
    */
   public static Context of( String pAccessToken, Locale pLanguage, long pResellerID, long pPathParam,
       String pQueryParam ) {
-    Context.Builder lBuilder = Context.builder();
+    var lBuilder = Context.builder();
     lBuilder.setAccessToken(pAccessToken);
     lBuilder.setLanguage(pLanguage);
     lBuilder.setResellerID(pResellerID);

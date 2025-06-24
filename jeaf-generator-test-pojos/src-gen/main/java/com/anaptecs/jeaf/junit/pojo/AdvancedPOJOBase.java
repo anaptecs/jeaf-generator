@@ -185,7 +185,7 @@ public abstract class AdvancedPOJOBase {
    * @return {@link com.anaptecs.jeaf.junit.pojo.AdvancedPOJO}
    */
   public static AdvancedPOJO of( int pReadonlyDefault, Integer pIntWithDefault ) {
-    AdvancedPOJO.Builder lBuilder = AdvancedPOJO.builder();
+    var lBuilder = AdvancedPOJO.builder();
     lBuilder.setReadonlyDefault(pReadonlyDefault);
     lBuilder.setIntWithDefault(pIntWithDefault);
     return lBuilder.build();

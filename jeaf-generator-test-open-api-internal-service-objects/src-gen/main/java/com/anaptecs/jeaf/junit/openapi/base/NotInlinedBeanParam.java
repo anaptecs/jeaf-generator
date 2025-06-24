@@ -101,7 +101,7 @@ public class NotInlinedBeanParam implements ServiceObject {
    */
   public static NotInlinedBeanParam of( String pHeader, DoubleCode pDoubleCode, ExtensibleEnum pExtensibleEnum,
       BookingID pBookingID ) {
-    NotInlinedBeanParam.Builder lBuilder = NotInlinedBeanParam.builder();
+    var lBuilder = NotInlinedBeanParam.builder();
     lBuilder.setHeader(pHeader);
     lBuilder.setDoubleCode(pDoubleCode);
     lBuilder.setExtensibleEnum(pExtensibleEnum);

@@ -104,7 +104,7 @@ public class ClassB implements ServiceObject, Identifiable<ServiceObjectID> {
    * @return {@link ClassB}
    */
   public static ClassB of( Integer pIntValue ) {
-    ClassB.Builder lBuilder = ClassB.builder();
+    var lBuilder = ClassB.builder();
     lBuilder.setIntValue(pIntValue);
     return lBuilder.build();
   }

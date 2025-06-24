@@ -115,7 +115,7 @@ public class SoftLinkPartner {
    * @return {@link com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkPartner}
    */
   public static SoftLinkPartner of( List<Long> pLongLinkIDs ) {
-    SoftLinkPartner.Builder lBuilder = SoftLinkPartner.builder();
+    var lBuilder = SoftLinkPartner.builder();
     lBuilder.setLongLinkIDs(pLongLinkIDs);
     return lBuilder.build();
   }

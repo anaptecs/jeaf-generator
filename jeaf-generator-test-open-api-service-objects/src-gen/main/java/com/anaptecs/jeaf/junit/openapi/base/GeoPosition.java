@@ -63,7 +63,7 @@ public class GeoPosition extends PlaceRef {
    * @return {@link com.anaptecs.jeaf.junit.openapi.base.GeoPosition}
    */
   public static GeoPosition of( String pName, int pLongitude, int pLatitude ) {
-    GeoPosition.Builder lBuilder = GeoPosition.builder();
+    var lBuilder = GeoPosition.builder();
     lBuilder.setName(pName);
     lBuilder.setLongitude(pLongitude);
     lBuilder.setLatitude(pLatitude);

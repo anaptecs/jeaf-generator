@@ -59,7 +59,7 @@ public class PrimitiveArrayServiceObject implements ServiceObject {
    * @return {@link com.anaptecs.jeaf.junit.core.PrimitiveArrayServiceObject}
    */
   public static PrimitiveArrayServiceObject of( ) {
-    PrimitiveArrayServiceObject.Builder lBuilder = PrimitiveArrayServiceObject.builder();
+    var lBuilder = PrimitiveArrayServiceObject.builder();
     return lBuilder.build();
   }
 

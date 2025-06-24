@@ -87,7 +87,7 @@ public class SecurityToken implements ServiceObject {
    * @return {@link SecurityToken}
    */
   public static SecurityToken of( Booking pBooking, Integer pValue ) {
-    SecurityToken.Builder lBuilder = SecurityToken.builder();
+    var lBuilder = SecurityToken.builder();
     lBuilder.setBooking(pBooking);
     lBuilder.setValue(pValue);
     return lBuilder.build();

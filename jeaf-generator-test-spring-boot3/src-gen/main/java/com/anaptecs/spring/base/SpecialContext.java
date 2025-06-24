@@ -80,7 +80,7 @@ public class SpecialContext extends Context {
    */
   public static SpecialContext of( String pAccessToken, Locale pLanguage, long pResellerID, long pPathParam,
       String pQueryParam, String pLang, IntegerCodeType pIntCode, String pSpecificHeader, ChannelType pChannelType ) {
-    SpecialContext.Builder lBuilder = SpecialContext.builder();
+    var lBuilder = SpecialContext.builder();
     lBuilder.setAccessToken(pAccessToken);
     lBuilder.setLanguage(pLanguage);
     lBuilder.setResellerID(pResellerID);

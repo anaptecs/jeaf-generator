@@ -193,7 +193,7 @@ public abstract class POJOWithIDnMethodBase implements Identifiable<ObjectID> {
    * @return {@link com.anaptecs.jeaf.junit.pojo.POJOWithIDnMethod}
    */
   public static POJOWithIDnMethod of( Double pAttr ) {
-    POJOWithIDnMethod.Builder lBuilder = POJOWithIDnMethod.builder();
+    var lBuilder = POJOWithIDnMethod.builder();
     lBuilder.setAttr(pAttr);
     return lBuilder.build();
   }

@@ -137,7 +137,7 @@ public class POI extends Stop {
    */
   public static POI of( String pName, byte pIndex, SoftLink pTheSoftLinkID, String pDescription, Long pTheLinkID,
       Set<UICStop> pStops, Set<BookingCode> pBookingCodes ) {
-    POI.Builder lBuilder = POI.builder();
+    var lBuilder = POI.builder();
     lBuilder.setName(pName);
     lBuilder.setIndex(pIndex);
     lBuilder.setTheSoftLinkID(pTheSoftLinkID);

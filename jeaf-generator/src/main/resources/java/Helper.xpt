@@ -393,7 +393,7 @@
 			   «ENDIF»
 		   «ENDFOREACH») {
 	
-		   «IF this.hasGenericBuilder()»«IF this.customizeGenericBuilder()»«name».«ENDIF»«this.builderName()»<?, ?>«ELSE»«name».Builder«ENDIF» lBuilder = «name».builder();
+		   var lBuilder = «name».builder();
            «FOREACH this.getAllAttributesForOfOperation() AS attr»
                «IF attr.isSoftLink()»
                    lBuilder.set«attr.getSoftLinkPropertyName().toFirstUpper()»(«attr.getSoftLinkPropertyName().asParameter()»);

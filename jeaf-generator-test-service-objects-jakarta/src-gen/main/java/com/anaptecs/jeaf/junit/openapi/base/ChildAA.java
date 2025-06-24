@@ -130,7 +130,7 @@ public class ChildAA extends ChildA {
    */
   public static ChildAA of( String pParentAttribute, int pChildAAttribute, byte pChildAAAttribute,
       Set<String> pRequiredArray, BigIntegerCode pBigIntegerCode ) {
-    ChildAA.Builder lBuilder = ChildAA.builder();
+    var lBuilder = ChildAA.builder();
     lBuilder.setParentAttribute(pParentAttribute);
     lBuilder.setChildAAttribute(pChildAAttribute);
     lBuilder.setChildAAAttribute(pChildAAAttribute);

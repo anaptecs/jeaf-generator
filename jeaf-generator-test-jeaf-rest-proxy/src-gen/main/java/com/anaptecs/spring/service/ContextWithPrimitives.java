@@ -136,7 +136,7 @@ public class ContextWithPrimitives implements Serializable {
    */
   public static ContextWithPrimitives of( boolean pABoolean, Boolean pABooleanWrapper, int pAnInt, Integer pAnInteger,
       long pALong, Long pAVeryLong ) {
-    ContextWithPrimitives.Builder lBuilder = ContextWithPrimitives.builder();
+    var lBuilder = ContextWithPrimitives.builder();
     lBuilder.setABoolean(pABoolean);
     lBuilder.setABooleanWrapper(pABooleanWrapper);
     lBuilder.setAnInt(pAnInt);

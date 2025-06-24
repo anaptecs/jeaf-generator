@@ -129,7 +129,7 @@ public class WeirdBooking extends WeirdParent {
   public static WeirdBooking of( String pSomeProperty, ComplexBookingID pComplexBooking,
       Set<ComplexBookingID> pComplexBookings, ComplexBookingID pBooking,
       VersionedObjectSoftLink pVersionedObjectSoftLink, int pChildProperty ) {
-    WeirdBooking.Builder lBuilder = WeirdBooking.builder();
+    var lBuilder = WeirdBooking.builder();
     lBuilder.setSomeProperty(pSomeProperty);
     lBuilder.setComplexBooking(pComplexBooking);
     lBuilder.setComplexBookings(pComplexBookings);

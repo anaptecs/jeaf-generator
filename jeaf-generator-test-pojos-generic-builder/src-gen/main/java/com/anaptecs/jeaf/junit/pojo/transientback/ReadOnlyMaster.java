@@ -85,7 +85,7 @@ public class ReadOnlyMaster {
    * @return {@link ReadOnlyMaster}
    */
   public static ReadOnlyMaster of( String pName ) {
-    ReadOnlyMasterBuilder<?, ?> lBuilder = ReadOnlyMaster.builder();
+    var lBuilder = ReadOnlyMaster.builder();
     lBuilder.setName(pName);
     return lBuilder.build();
   }

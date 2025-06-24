@@ -63,7 +63,7 @@ public class NoSubTypesParent {
    * @return {@link com.anaptecs.spring.base.NoSubTypesParent}
    */
   public static NoSubTypesParent of( ) {
-    NoSubTypesParent.Builder lBuilder = NoSubTypesParent.builder();
+    var lBuilder = NoSubTypesParent.builder();
     return lBuilder.build();
   }
 

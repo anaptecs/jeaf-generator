@@ -55,7 +55,7 @@ public class BooleanCode {
    * @return {@link BooleanCode}
    */
   public static BooleanCode of( Boolean pCode ) {
-    BooleanCodeBuilder<?, ?> lBuilder = BooleanCode.builder();
+    var lBuilder = BooleanCode.builder();
     lBuilder.setCode(pCode);
     return lBuilder.build();
   }

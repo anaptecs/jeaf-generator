@@ -588,7 +588,7 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
    * @return {@link Account}
    */
   public static Account of( Long pIban, BigDecimal pBalance, Set<Person> pAuthorizedPersons, ServiceObjectID pBankID ) {
-    Account.Builder lBuilder = Account.builder();
+    var lBuilder = Account.builder();
     lBuilder.setIban(pIban);
     lBuilder.setBalance(pBalance);
     lBuilder.setAuthorizedPersons(pAuthorizedPersons);

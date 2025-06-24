@@ -409,7 +409,7 @@ public abstract class PartiallyDeprecatedServiceObjectBase implements ServiceObj
    * @return {@link com.anaptecs.jeaf.junit.core.PartiallyDeprecatedServiceObject}
    */
   public static PartiallyDeprecatedServiceObject of( String pName, boolean pOutdated, int pReadonlyDefault ) {
-    PartiallyDeprecatedServiceObject.Builder lBuilder = PartiallyDeprecatedServiceObject.builder();
+    var lBuilder = PartiallyDeprecatedServiceObject.builder();
     lBuilder.setName(pName);
     lBuilder.setOutdated(pOutdated);
     lBuilder.setReadonlyDefault(pReadonlyDefault);

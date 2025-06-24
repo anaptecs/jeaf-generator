@@ -76,7 +76,7 @@ public class Sortiment {
    * @return {@link Sortiment}
    */
   public static Sortiment of( ) {
-    SortimentBuilder<?, ?> lBuilder = Sortiment.builder();
+    var lBuilder = Sortiment.builder();
     return lBuilder.build();
   }
 

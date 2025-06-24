@@ -52,7 +52,7 @@ public class Message implements ServiceObject {
    * @return {@link com.anaptecs.jeaf.junit.rest.generics.Message}
    */
   public static Message of( ) {
-    Message.Builder lBuilder = Message.builder();
+    var lBuilder = Message.builder();
     return lBuilder.build();
   }
 

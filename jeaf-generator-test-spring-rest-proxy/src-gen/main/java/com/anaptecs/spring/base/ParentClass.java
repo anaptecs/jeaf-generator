@@ -48,7 +48,7 @@ public class ParentClass {
    * @return {@link com.anaptecs.spring.base.ParentClass}
    */
   public static ParentClass of( String pParentAttribute ) {
-    ParentClass.Builder lBuilder = ParentClass.builder();
+    var lBuilder = ParentClass.builder();
     lBuilder.setParentAttribute(pParentAttribute);
     return lBuilder.build();
   }

@@ -75,7 +75,7 @@ public class Individual extends Customer {
    */
   public static Individual of( Boolean pActive, String pStreet, Integer pZipCode, String pCity, String pCountry,
       Person pPerson ) {
-    Individual.Builder lBuilder = Individual.builder();
+    var lBuilder = Individual.builder();
     lBuilder.setActive(pActive);
     lBuilder.setStreet(pStreet);
     lBuilder.setZipCode(pZipCode);

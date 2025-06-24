@@ -104,7 +104,7 @@ public class MasterClass {
    * @return {@link MasterClass}
    */
   public static MasterClass of( String pName ) {
-    MasterClassBuilder<?, ?> lBuilder = MasterClass.builder();
+    var lBuilder = MasterClass.builder();
     lBuilder.setName(pName);
     return lBuilder.build();
   }

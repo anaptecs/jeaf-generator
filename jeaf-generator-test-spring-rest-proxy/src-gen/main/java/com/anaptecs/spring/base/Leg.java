@@ -78,7 +78,7 @@ public class Leg {
    * @return {@link com.anaptecs.spring.base.Leg}
    */
   public static Leg of( PlaceRef pStart, PlaceRef pStop ) {
-    Leg.Builder lBuilder = Leg.builder();
+    var lBuilder = Leg.builder();
     lBuilder.setStart(pStart);
     lBuilder.setStop(pStop);
     return lBuilder.build();

@@ -70,7 +70,7 @@ public class Booking implements ServiceObject {
    * @return {@link com.anaptecs.jeaf.junit.openapi.base.Booking}
    */
   public static Booking of( BookingID pBookingID ) {
-    Booking.Builder lBuilder = Booking.builder();
+    var lBuilder = Booking.builder();
     lBuilder.setBookingID(pBookingID);
     return lBuilder.build();
   }

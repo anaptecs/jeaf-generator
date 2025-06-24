@@ -101,7 +101,7 @@ public class Company extends Customer {
    */
   public static Company of( Boolean pActive, String pStreet, Integer pZipCode, String pCity, String pCountry,
       String pName, Long pRegistrationNumber, Long pTaxNumber, String pAttendant ) {
-    Company.Builder lBuilder = Company.builder();
+    var lBuilder = Company.builder();
     lBuilder.setActive(pActive);
     lBuilder.setStreet(pStreet);
     lBuilder.setZipCode(pZipCode);

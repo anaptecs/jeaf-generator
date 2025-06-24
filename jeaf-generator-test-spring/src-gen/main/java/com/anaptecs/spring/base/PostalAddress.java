@@ -102,7 +102,7 @@ public class PostalAddress {
    */
   public static PostalAddress of( String pStreet, String pHouseNumber, String pCity, int pPostalCode,
       String pCountry ) {
-    PostalAddressBuilder<?, ?> lBuilder = PostalAddress.builder();
+    var lBuilder = PostalAddress.builder();
     lBuilder.setStreet(pStreet);
     lBuilder.setHouseNumber(pHouseNumber);
     lBuilder.setCity(pCity);

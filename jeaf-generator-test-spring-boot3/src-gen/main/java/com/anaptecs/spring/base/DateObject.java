@@ -119,7 +119,7 @@ public class DateObject {
    */
   public static DateObject of( LocalTime pLocalTime, LocalDate pLocalDate, LocalDateTime pLocalDateTime,
       Calendar pCalendar, Date pSqlDate, java.util.Date pUtilDate ) {
-    DateObject.Builder lBuilder = DateObject.builder();
+    var lBuilder = DateObject.builder();
     lBuilder.setLocalTime(pLocalTime);
     lBuilder.setLocalDate(pLocalDate);
     lBuilder.setLocalDateTime(pLocalDateTime);

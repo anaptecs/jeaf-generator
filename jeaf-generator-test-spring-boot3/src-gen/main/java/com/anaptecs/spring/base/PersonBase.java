@@ -163,7 +163,7 @@ public abstract class PersonBase extends Partner {
    * @return {@link com.anaptecs.spring.base.Person}
    */
   public static Person of( String pSurname, String pFirstName ) {
-    Person.Builder lBuilder = Person.builder();
+    var lBuilder = Person.builder();
     lBuilder.setSurname(pSurname);
     lBuilder.setFirstName(pFirstName);
     return lBuilder.build();

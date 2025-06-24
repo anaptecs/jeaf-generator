@@ -109,7 +109,7 @@ public class MasterClass implements ServiceObject {
    * @return {@link MasterClass}
    */
   public static MasterClass of( String pName ) {
-    MasterClass.Builder lBuilder = MasterClass.builder();
+    var lBuilder = MasterClass.builder();
     lBuilder.setName(pName);
     return lBuilder.build();
   }

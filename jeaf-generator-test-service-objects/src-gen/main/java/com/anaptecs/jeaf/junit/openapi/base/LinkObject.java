@@ -61,7 +61,7 @@ public class LinkObject implements ServiceObject {
    * @return {@link com.anaptecs.jeaf.junit.openapi.base.LinkObject}
    */
   public static LinkObject of( String pHref ) {
-    LinkObject.Builder lBuilder = LinkObject.builder();
+    var lBuilder = LinkObject.builder();
     lBuilder.setHref(pHref);
     return lBuilder.build();
   }

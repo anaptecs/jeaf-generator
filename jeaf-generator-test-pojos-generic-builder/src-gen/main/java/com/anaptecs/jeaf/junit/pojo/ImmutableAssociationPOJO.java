@@ -109,7 +109,7 @@ public class ImmutableAssociationPOJO {
    * @return {@link ImmutableAssociationPOJO}
    */
   public static ImmutableAssociationPOJO of( boolean pYetAnotherAttribute ) {
-    ImmutableAssociationPOJOBuilder<?, ?> lBuilder = ImmutableAssociationPOJO.builder();
+    var lBuilder = ImmutableAssociationPOJO.builder();
     lBuilder.setYetAnotherAttribute(pYetAnotherAttribute);
     return lBuilder.build();
   }

@@ -52,7 +52,7 @@ public class LongCodeType {
    * @return {@link LongCodeType}
    */
   public static LongCodeType of( long pCode ) {
-    LongCodeTypeBuilder<?, ?> lBuilder = LongCodeType.builder();
+    var lBuilder = LongCodeType.builder();
     lBuilder.setCode(pCode);
     return lBuilder.build();
   }

@@ -115,7 +115,7 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
    * @return {@link com.anaptecs.jeaf.junit.objectmapping.PrimitiveReferenceServiceObject}
    */
   public static PrimitiveReferenceServiceObject of( ) {
-    PrimitiveReferenceServiceObject.Builder lBuilder = PrimitiveReferenceServiceObject.builder();
+    var lBuilder = PrimitiveReferenceServiceObject.builder();
     return lBuilder.build();
   }
 

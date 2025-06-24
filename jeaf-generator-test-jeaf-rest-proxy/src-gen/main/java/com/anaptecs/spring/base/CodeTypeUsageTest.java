@@ -132,7 +132,7 @@ public class CodeTypeUsageTest implements Serializable {
    */
   public static CodeTypeUsageTest of( BooleanCodeType pBooleanCode, Set<ShortCodeType> pShortCodeTypeAssociation,
       StringCodeType pStringCode ) {
-    CodeTypeUsageTest.Builder lBuilder = CodeTypeUsageTest.builder();
+    var lBuilder = CodeTypeUsageTest.builder();
     lBuilder.setBooleanCode(pBooleanCode);
     lBuilder.setShortCodeTypeAssociation(pShortCodeTypeAssociation);
     lBuilder.setStringCode(pStringCode);

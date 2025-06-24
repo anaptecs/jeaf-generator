@@ -79,7 +79,7 @@ public class SimpleAssociationBackwardCompatibility {
    * @return {@link com.anaptecs.spring.base.backward.SimpleAssociationBackwardCompatibility}
    */
   public static SimpleAssociationBackwardCompatibility of( ) {
-    SimpleAssociationBackwardCompatibility.Builder lBuilder = SimpleAssociationBackwardCompatibility.builder();
+    var lBuilder = SimpleAssociationBackwardCompatibility.builder();
     return lBuilder.build();
   }
 

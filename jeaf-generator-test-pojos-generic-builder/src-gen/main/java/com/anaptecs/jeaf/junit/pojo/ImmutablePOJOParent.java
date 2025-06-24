@@ -69,7 +69,7 @@ public class ImmutablePOJOParent extends AbstractPOJO {
    */
   public static ImmutablePOJOParent of( String pAbtractAttr, String pParentAttribute,
       Integer pAnotherParentAttribute ) {
-    ImmutablePOJOParentBuilder<?, ?> lBuilder = ImmutablePOJOParent.builder();
+    var lBuilder = ImmutablePOJOParent.builder();
     lBuilder.setAbtractAttr(pAbtractAttr);
     lBuilder.setParentAttribute(pParentAttribute);
     lBuilder.setAnotherParentAttribute(pAnotherParentAttribute);

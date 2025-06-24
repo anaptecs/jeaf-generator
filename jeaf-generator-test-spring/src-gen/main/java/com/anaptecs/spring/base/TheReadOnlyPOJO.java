@@ -90,7 +90,7 @@ public class TheReadOnlyPOJO {
    * @return {@link TheReadOnlyPOJO}
    */
   public static TheReadOnlyPOJO of( String pName ) {
-    TheReadOnlyPOJOBuilder<?, ?> lBuilder = TheReadOnlyPOJO.builder();
+    var lBuilder = TheReadOnlyPOJO.builder();
     lBuilder.setName(pName);
     return lBuilder.build();
   }

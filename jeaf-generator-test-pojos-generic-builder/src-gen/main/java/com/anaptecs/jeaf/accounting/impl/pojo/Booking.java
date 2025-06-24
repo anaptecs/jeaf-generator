@@ -101,7 +101,7 @@ public class Booking {
    */
   public static Booking of( Account pSourceAccount, Account pTargetAccount, BigDecimal pAmount, Currency pCurrency,
       Calendar pExecutionTimestamp ) {
-    BookingBuilder<?, ?> lBuilder = Booking.builder();
+    var lBuilder = Booking.builder();
     lBuilder.setSourceAccount(pSourceAccount);
     lBuilder.setTargetAccount(pTargetAccount);
     lBuilder.setAmount(pAmount);

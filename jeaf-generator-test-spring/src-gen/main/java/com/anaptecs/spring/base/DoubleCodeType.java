@@ -52,7 +52,7 @@ public class DoubleCodeType {
    * @return {@link DoubleCodeType}
    */
   public static DoubleCodeType of( double pCode ) {
-    DoubleCodeTypeBuilder<?, ?> lBuilder = DoubleCodeType.builder();
+    var lBuilder = DoubleCodeType.builder();
     lBuilder.setCode(pCode);
     return lBuilder.build();
   }

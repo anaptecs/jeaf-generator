@@ -300,7 +300,7 @@ public abstract class AndOneMorePOJOBase {
    */
   public static AndOneMorePOJO of( GenericResponsePOJO<MyBusinessObject> pGenericProperty,
       MultiTemplateClass<Message, TemplateEnumTest> pMultiTemplateClassImpl ) {
-    AndOneMorePOJOBuilder<?, ?> lBuilder = AndOneMorePOJO.builder();
+    var lBuilder = AndOneMorePOJO.builder();
     lBuilder.setGenericProperty(pGenericProperty);
     lBuilder.setMultiTemplateClassImpl(pMultiTemplateClassImpl);
     return lBuilder.build();

@@ -180,7 +180,7 @@ public class RESTProductServiceResource {
       @RequestHeader Map<String, String> pHeaders ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
-    Context.ContextBuilder<?, ?> lContextBuilder = Context.builder();
+    var lContextBuilder = Context.builder();
     lContextBuilder.setAccessToken(pAccessToken);
     lContextBuilder.setLanguage(pLanguage);
     lContextBuilder.setResellerID(pResellerID);
@@ -502,7 +502,7 @@ public class RESTProductServiceResource {
       @RequestParam(name = "sqlDate", required = true) @MyNotNullRESTParam String pSqlDateAsBasicType ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
-    DateQueryParamsBean.DateQueryParamsBeanBuilder<?, ?> lQueryParamsBuilder = DateQueryParamsBean.builder();
+    var lQueryParamsBuilder = DateQueryParamsBean.builder();
     // Handle bean parameter pQueryParams.offsetDateTime
     if (pOffsetDateTimeAsBasicType != null) {
       lQueryParamsBuilder.setOffsetDateTime(OffsetDateTime.parse(pOffsetDateTimeAsBasicType));
@@ -711,7 +711,7 @@ public class RESTProductServiceResource {
       @RequestHeader(name = "SQL-Date", required = true) @MyNotNullRESTParam String pSqlDateAsBasicType ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
-    DateHeaderParamsBean.DateHeaderParamsBeanBuilder<?, ?> lHeaderParamsBuilder = DateHeaderParamsBean.builder();
+    var lHeaderParamsBuilder = DateHeaderParamsBean.builder();
     // Handle bean parameter pHeaderParams.offsetDateTime
     if (pOffsetDateTimeAsBasicType != null) {
       lHeaderParamsBuilder.setOffsetDateTime(OffsetDateTime.parse(pOffsetDateTimeAsBasicType));
@@ -794,7 +794,7 @@ public class RESTProductServiceResource {
       @RequestHeader Map<String, String> pHeaders ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
-    SpecialContext.SpecialContextBuilder<?, ?> lContextBuilder = SpecialContext.builder();
+    var lContextBuilder = SpecialContext.builder();
     lContextBuilder.setAccessToken(pAccessToken);
     lContextBuilder.setLanguage(pLanguage);
     lContextBuilder.setResellerID(pResellerID);
@@ -906,7 +906,7 @@ public class RESTProductServiceResource {
       @RequestHeader(name = "DoubleCode", required = true) @MyNotNullRESTParam Double pDoubleCodeAsBasicType ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
-    AdvancedHeader.AdvancedHeaderBuilder<?, ?> lContextBuilder = AdvancedHeader.builder();
+    var lContextBuilder = AdvancedHeader.builder();
     // Handle bean parameter pContext.bookingID
     if (pBookingIDAsBasicType != null) {
       lContextBuilder.setBookingID(this.deserializeCompositeDataType(pBookingIDAsBasicType, BookingID.class));
@@ -985,7 +985,7 @@ public class RESTProductServiceResource {
       @RequestParam(name = "sortCriteria", required = false) String[] pSortCriteriaAsBasicType ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
-    QueryBeanParam.QueryBeanParamBuilder<?, ?> lBeanParamBuilder = QueryBeanParam.builder();
+    var lBeanParamBuilder = QueryBeanParam.builder();
     // Handle bean parameter pBeanParam.bookingCode
     if (pBookingCodeAsBasicType != null) {
       lBeanParamBuilder.setBookingCode(BookingCode.builder().setCode(pBookingCodeAsBasicType).build());
@@ -1077,8 +1077,7 @@ public class RESTProductServiceResource {
       @RequestParam(name = "timeUnitArray", required = false) TimeUnit[] pTimeUnitArray ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
-    MultivaluedQueryParamsBean.MultivaluedQueryParamsBeanBuilder<?, ?> lBeanBuilder =
-        MultivaluedQueryParamsBean.builder();
+    var lBeanBuilder = MultivaluedQueryParamsBean.builder();
     lBeanBuilder.setIntArray(pIntArray);
     lBeanBuilder.setStrings(pStrings);
     lBeanBuilder.setIntegers(pIntegers);
@@ -1192,7 +1191,7 @@ public class RESTProductServiceResource {
       @RequestParam(name = "startTimestamps", required = false) String[] pStartTimestampsAsBasicType ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
-    DataTypesQueryBean.DataTypesQueryBeanBuilder<?, ?> lQueryBeanBuilder = DataTypesQueryBean.builder();
+    var lQueryBeanBuilder = DataTypesQueryBean.builder();
     // Handle bean parameter pQueryBean.longCodes
     if (pLongCodesAsBasicType != null) {
       LongCode[] lLongCodes = new LongCode[pLongCodesAsBasicType.length];
@@ -1309,8 +1308,7 @@ public class RESTProductServiceResource {
       @RequestHeader(name = "base64", required = false) String pBase64 ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
-    MultiValuedHeaderBeanParam.MultiValuedHeaderBeanParamBuilder<?, ?> lMultiValuedBeanBuilder =
-        MultiValuedHeaderBeanParam.builder();
+    var lMultiValuedBeanBuilder = MultiValuedHeaderBeanParam.builder();
     lMultiValuedBeanBuilder.setNames(pNames);
     lMultiValuedBeanBuilder.setInts(pInts);
     lMultiValuedBeanBuilder.setDoubles(pDoubles);
@@ -1527,7 +1525,7 @@ public class RESTProductServiceResource {
       @RequestParam(name = "aVeryLong", required = true) @MyNotNullRESTParam Long pAVeryLong ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
-    ContextWithPrimitives.ContextWithPrimitivesBuilder<?, ?> lContextBuilder = ContextWithPrimitives.builder();
+    var lContextBuilder = ContextWithPrimitives.builder();
     lContextBuilder.setABoolean(pABoolean);
     lContextBuilder.setABooleanWrapper(pABooleanWrapper);
     lContextBuilder.setAnInt(pAnInt);

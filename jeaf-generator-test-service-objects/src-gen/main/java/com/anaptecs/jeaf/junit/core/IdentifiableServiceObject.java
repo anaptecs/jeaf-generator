@@ -88,7 +88,7 @@ public class IdentifiableServiceObject implements ServiceObject, Identifiable<Se
    * @return {@link com.anaptecs.jeaf.junit.core.IdentifiableServiceObject}
    */
   public static IdentifiableServiceObject of( Integer pHello, String pCountry ) {
-    IdentifiableServiceObject.Builder lBuilder = IdentifiableServiceObject.builder();
+    var lBuilder = IdentifiableServiceObject.builder();
     lBuilder.setHello(pHello);
     lBuilder.setCountry(pCountry);
     return lBuilder.build();

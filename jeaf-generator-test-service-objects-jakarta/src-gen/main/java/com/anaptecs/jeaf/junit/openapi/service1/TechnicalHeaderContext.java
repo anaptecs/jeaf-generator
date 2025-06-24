@@ -82,7 +82,7 @@ public class TechnicalHeaderContext implements ServiceObject {
    * @return {@link com.anaptecs.jeaf.junit.openapi.service1.TechnicalHeaderContext}
    */
   public static TechnicalHeaderContext of( String pReseller, String pAuthenticationToken ) {
-    TechnicalHeaderContext.Builder lBuilder = TechnicalHeaderContext.builder();
+    var lBuilder = TechnicalHeaderContext.builder();
     lBuilder.setReseller(pReseller);
     lBuilder.setAuthenticationToken(pAuthenticationToken);
     return lBuilder.build();

@@ -130,7 +130,7 @@ public class WrapperDatatypeServiceObject implements ServiceObject {
    */
   public static WrapperDatatypeServiceObject of( Boolean pMyBoolean, Byte pMyByte, Character pMyCharacter,
       Double pMyDouble, Float pMyFloat, Long pMyLong, Short pMyShort ) {
-    WrapperDatatypeServiceObject.Builder lBuilder = WrapperDatatypeServiceObject.builder();
+    var lBuilder = WrapperDatatypeServiceObject.builder();
     lBuilder.setMyBoolean(pMyBoolean);
     lBuilder.setMyByte(pMyByte);
     lBuilder.setMyCharacter(pMyCharacter);

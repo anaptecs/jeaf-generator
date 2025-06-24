@@ -139,7 +139,7 @@ public abstract class DataTypeCustomSerializationBase {
    * @return {@link DataTypeCustomSerialization}
    */
   public static DataTypeCustomSerialization of( String pProperty1 ) {
-    DataTypeCustomSerializationBuilder<?, ?> lBuilder = DataTypeCustomSerialization.builder();
+    var lBuilder = DataTypeCustomSerialization.builder();
     lBuilder.setProperty1(pProperty1);
     return lBuilder.build();
   }

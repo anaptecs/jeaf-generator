@@ -91,7 +91,7 @@ public class ChildAA extends ChildA {
    */
   public static ChildAA of( String pParentAttribute, int pChildAAttribute, byte pChildAAAttribute,
       String[] pRequiredArray ) {
-    ChildAABuilder<?, ?> lBuilder = ChildAA.builder();
+    var lBuilder = ChildAA.builder();
     lBuilder.setParentAttribute(pParentAttribute);
     lBuilder.setChildAAttribute(pChildAAttribute);
     lBuilder.setChildAAAttribute(pChildAAAttribute);

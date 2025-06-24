@@ -98,7 +98,7 @@ public class WeirdParent implements ServiceObject {
    */
   public static WeirdParent of( String pSomeProperty, ComplexBookingID pComplexBooking,
       Set<ComplexBookingID> pComplexBookings ) {
-    WeirdParent.Builder lBuilder = WeirdParent.builder();
+    var lBuilder = WeirdParent.builder();
     lBuilder.setSomeProperty(pSomeProperty);
     lBuilder.setComplexBooking(pComplexBooking);
     lBuilder.setComplexBookings(pComplexBookings);

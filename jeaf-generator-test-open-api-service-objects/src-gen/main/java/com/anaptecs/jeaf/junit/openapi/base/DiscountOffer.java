@@ -75,7 +75,7 @@ public class DiscountOffer implements ServiceObject {
    * @return {@link com.anaptecs.jeaf.junit.openapi.base.DiscountOffer}
    */
   public static DiscountOffer of( ) {
-    DiscountOffer.Builder lBuilder = DiscountOffer.builder();
+    var lBuilder = DiscountOffer.builder();
     return lBuilder.build();
   }
 

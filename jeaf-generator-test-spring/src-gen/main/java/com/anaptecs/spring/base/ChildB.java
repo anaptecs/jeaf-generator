@@ -94,7 +94,7 @@ public class ChildB extends ParentClass {
    * @return {@link ChildB}
    */
   public static ChildB of( String pParentAttribute ) {
-    ChildBBuilder<?, ?> lBuilder = ChildB.builder();
+    var lBuilder = ChildB.builder();
     lBuilder.setParentAttribute(pParentAttribute);
     return lBuilder.build();
   }

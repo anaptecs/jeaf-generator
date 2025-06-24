@@ -204,7 +204,7 @@ public class DataTypesQueryBean {
    */
   public static DataTypesQueryBean of( OffsetDateTime pOffsetDateTime, OffsetTime pOffsetTime,
       LocalDateTime pLocalDateTime, LocalTime pLocalTime ) {
-    DataTypesQueryBean.Builder lBuilder = DataTypesQueryBean.builder();
+    var lBuilder = DataTypesQueryBean.builder();
     lBuilder.setOffsetDateTime(pOffsetDateTime);
     lBuilder.setOffsetTime(pOffsetTime);
     lBuilder.setLocalDateTime(pLocalDateTime);

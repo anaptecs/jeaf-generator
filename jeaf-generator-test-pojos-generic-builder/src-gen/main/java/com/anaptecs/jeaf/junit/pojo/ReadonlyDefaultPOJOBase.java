@@ -193,7 +193,7 @@ public abstract class ReadonlyDefaultPOJOBase {
    * @return {@link com.anaptecs.jeaf.junit.pojo.ReadonlyDefaultPOJO}
    */
   public static ReadonlyDefaultPOJO of( int pReadonlyDefault, Boolean pBooleanDefault ) {
-    ReadonlyDefaultPOJOBuilder<?, ?> lBuilder = ReadonlyDefaultPOJO.builder();
+    var lBuilder = ReadonlyDefaultPOJO.builder();
     lBuilder.setReadonlyDefault(pReadonlyDefault);
     lBuilder.setBooleanDefault(pBooleanDefault);
     return lBuilder.build();

@@ -132,7 +132,7 @@ public class WrapperTypesServiceObject implements ServiceObject {
    */
   public static WrapperTypesServiceObject of( Boolean pABoolean, Byte pAByte, Short pAShort, Integer pAInt, Long pALong,
       Float pAFloat, Double pADouble, Character pAChar ) {
-    WrapperTypesServiceObject.Builder lBuilder = WrapperTypesServiceObject.builder();
+    var lBuilder = WrapperTypesServiceObject.builder();
     lBuilder.setABoolean(pABoolean);
     lBuilder.setAByte(pAByte);
     lBuilder.setAShort(pAShort);

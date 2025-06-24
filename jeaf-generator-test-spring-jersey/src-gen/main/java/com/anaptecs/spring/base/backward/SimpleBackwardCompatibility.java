@@ -61,7 +61,7 @@ public class SimpleBackwardCompatibility {
    * @return {@link com.anaptecs.spring.base.backward.SimpleBackwardCompatibility}
    */
   public static SimpleBackwardCompatibility of( String pDeprecatedProperty, String pSuccessorProperty ) {
-    SimpleBackwardCompatibility.Builder lBuilder = SimpleBackwardCompatibility.builder();
+    var lBuilder = SimpleBackwardCompatibility.builder();
     lBuilder.setDeprecatedProperty(pDeprecatedProperty);
     lBuilder.setSuccessorProperty(pSuccessorProperty);
     return lBuilder.build();

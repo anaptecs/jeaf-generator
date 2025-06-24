@@ -52,7 +52,7 @@ public class CharacterCodeType {
    * @return {@link CharacterCodeType}
    */
   public static CharacterCodeType of( char pCode ) {
-    CharacterCodeTypeBuilder<?, ?> lBuilder = CharacterCodeType.builder();
+    var lBuilder = CharacterCodeType.builder();
     lBuilder.setCode(pCode);
     return lBuilder.build();
   }

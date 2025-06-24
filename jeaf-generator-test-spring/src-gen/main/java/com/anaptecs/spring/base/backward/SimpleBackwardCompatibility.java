@@ -67,7 +67,7 @@ public class SimpleBackwardCompatibility {
    * @return {@link SimpleBackwardCompatibility}
    */
   public static SimpleBackwardCompatibility of( String pDeprecatedProperty, String pSuccessorProperty ) {
-    SimpleBackwardCompatibilityBuilder<?, ?> lBuilder = SimpleBackwardCompatibility.builder();
+    var lBuilder = SimpleBackwardCompatibility.builder();
     lBuilder.setDeprecatedProperty(pDeprecatedProperty);
     lBuilder.setSuccessorProperty(pSuccessorProperty);
     return lBuilder.build();

@@ -88,7 +88,7 @@ public class NoSubTypesChild extends NoSubTypesParent {
    * @return {@link NoSubTypesChild}
    */
   public static NoSubTypesChild of( String pMyProperty ) {
-    NoSubTypesChildBuilder<?, ?> lBuilder = NoSubTypesChild.builder();
+    var lBuilder = NoSubTypesChild.builder();
     lBuilder.setMyProperty(pMyProperty);
     return lBuilder.build();
   }

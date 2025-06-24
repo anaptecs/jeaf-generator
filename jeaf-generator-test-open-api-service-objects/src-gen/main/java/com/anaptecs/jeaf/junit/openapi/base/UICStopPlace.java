@@ -52,7 +52,7 @@ public class UICStopPlace extends StopPlaceRef {
    * @return {@link com.anaptecs.jeaf.junit.openapi.base.UICStopPlace}
    */
   public static UICStopPlace of( String pName ) {
-    UICStopPlace.Builder lBuilder = UICStopPlace.builder();
+    var lBuilder = UICStopPlace.builder();
     lBuilder.setName(pName);
     return lBuilder.build();
   }

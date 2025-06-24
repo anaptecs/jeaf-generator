@@ -77,7 +77,7 @@ public class MutableChildPOJO extends ImmutablePOJOParent {
    */
   public static MutableChildPOJO of( String pAbtractAttr, String pParentAttribute, Integer pAnotherParentAttribute,
       Integer pWriteable, Boolean pBooleanDefault ) {
-    MutableChildPOJOBuilder<?, ?> lBuilder = MutableChildPOJO.builder();
+    var lBuilder = MutableChildPOJO.builder();
     lBuilder.setAbtractAttr(pAbtractAttr);
     lBuilder.setParentAttribute(pParentAttribute);
     lBuilder.setAnotherParentAttribute(pAnotherParentAttribute);

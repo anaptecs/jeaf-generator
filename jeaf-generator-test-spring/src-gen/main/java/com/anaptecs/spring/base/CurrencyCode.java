@@ -66,7 +66,7 @@ public class CurrencyCode {
    * @return {@link CurrencyCode}
    */
   public static CurrencyCode of( String pCode ) {
-    CurrencyCodeBuilder<?, ?> lBuilder = CurrencyCode.builder();
+    var lBuilder = CurrencyCode.builder();
     lBuilder.setCode(pCode);
     return lBuilder.build();
   }

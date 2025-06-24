@@ -102,7 +102,7 @@ public class Problem {
    * @return {@link Problem}
    */
   public static Problem of( String pTitle, int pStatus, String pType, String pDetail, String pInstance ) {
-    ProblemBuilder<?, ?> lBuilder = Problem.builder();
+    var lBuilder = Problem.builder();
     lBuilder.setTitle(pTitle);
     lBuilder.setStatus(pStatus);
     lBuilder.setType(pType);

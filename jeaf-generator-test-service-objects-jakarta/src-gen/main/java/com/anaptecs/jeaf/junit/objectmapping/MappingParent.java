@@ -61,7 +61,7 @@ public class MappingParent implements ServiceObject {
    * @return {@link com.anaptecs.jeaf.junit.objectmapping.MappingParent}
    */
   public static MappingParent of( String pName ) {
-    MappingParent.Builder lBuilder = MappingParent.builder();
+    var lBuilder = MappingParent.builder();
     lBuilder.setName(pName);
     return lBuilder.build();
   }

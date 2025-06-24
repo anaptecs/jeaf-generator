@@ -1138,8 +1138,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
    * @return {@link com.anaptecs.jeaf.junit.pojo.CustomPrimitiveArraysObjectWithRestrictions}
    */
   public static CustomPrimitiveArraysObjectWithRestrictions of( long[] pALongArray ) {
-    CustomPrimitiveArraysObjectWithRestrictionsBuilder<?, ?> lBuilder =
-        CustomPrimitiveArraysObjectWithRestrictions.builder();
+    var lBuilder = CustomPrimitiveArraysObjectWithRestrictions.builder();
     lBuilder.setALongArray(pALongArray);
     return lBuilder.build();
   }

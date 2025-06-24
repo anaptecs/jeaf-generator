@@ -49,7 +49,7 @@ public class TopoRef extends PlaceRef {
    * @return {@link TopoRef}
    */
   public static TopoRef of( String pName, MyType pType ) {
-    TopoRefBuilder<?, ?> lBuilder = TopoRef.builder();
+    var lBuilder = TopoRef.builder();
     lBuilder.setName(pName);
     lBuilder.setType(pType);
     return lBuilder.build();

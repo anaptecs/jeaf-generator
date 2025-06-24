@@ -64,7 +64,7 @@ public class PartnerContainer {
    * @return {@link PartnerContainer}
    */
   public static PartnerContainer of( ) {
-    PartnerContainerBuilder<?, ?> lBuilder = PartnerContainer.builder();
+    var lBuilder = PartnerContainer.builder();
     return lBuilder.build();
   }
 

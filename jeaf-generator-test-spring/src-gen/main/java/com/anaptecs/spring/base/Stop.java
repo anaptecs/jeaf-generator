@@ -84,7 +84,7 @@ public class Stop {
    * @return {@link Stop}
    */
   public static Stop of( String pName ) {
-    StopBuilder<?, ?> lBuilder = Stop.builder();
+    var lBuilder = Stop.builder();
     lBuilder.setName(pName);
     return lBuilder.build();
   }

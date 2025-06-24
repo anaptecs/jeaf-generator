@@ -55,7 +55,7 @@ public class StringCode {
    * @return {@link StringCode}
    */
   public static StringCode of( String pCode ) {
-    StringCodeBuilder<?, ?> lBuilder = StringCode.builder();
+    var lBuilder = StringCode.builder();
     lBuilder.setCode(pCode);
     return lBuilder.build();
   }

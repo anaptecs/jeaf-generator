@@ -54,7 +54,7 @@ public class SwissGeoPosition extends GeoPosition {
    * @return {@link com.anaptecs.jeaf.junit.openapi.base.SwissGeoPosition}
    */
   public static SwissGeoPosition of( String pName, int pLongitude, int pLatitude ) {
-    SwissGeoPosition.Builder lBuilder = SwissGeoPosition.builder();
+    var lBuilder = SwissGeoPosition.builder();
     lBuilder.setName(pName);
     lBuilder.setLongitude(pLongitude);
     lBuilder.setLatitude(pLatitude);

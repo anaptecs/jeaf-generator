@@ -92,7 +92,7 @@ public class DeprecatedContext {
    * @return {@link com.anaptecs.spring.base.DeprecatedContext}
    */
   public static DeprecatedContext of( String pAccessToken, Locale pLanguage, long pResellerID, String pQueryParam ) {
-    DeprecatedContextBuilder<?, ?> lBuilder = DeprecatedContext.builder();
+    var lBuilder = DeprecatedContext.builder();
     lBuilder.setAccessToken(pAccessToken);
     lBuilder.setLanguage(pLanguage);
     lBuilder.setResellerID(pResellerID);

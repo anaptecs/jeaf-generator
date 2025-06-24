@@ -79,7 +79,7 @@ public class ValidationTestObject implements ServiceObject {
    * @return {@link com.anaptecs.jeaf.junit.core.ValidationTestObject}
    */
   public static ValidationTestObject of( String pMyEMail, Calendar pDateOfBirth ) {
-    ValidationTestObject.Builder lBuilder = ValidationTestObject.builder();
+    var lBuilder = ValidationTestObject.builder();
     lBuilder.setMyEMail(pMyEMail);
     lBuilder.setDateOfBirth(pDateOfBirth);
     return lBuilder.build();

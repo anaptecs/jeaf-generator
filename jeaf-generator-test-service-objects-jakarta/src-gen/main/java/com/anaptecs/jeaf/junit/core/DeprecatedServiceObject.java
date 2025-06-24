@@ -62,7 +62,7 @@ public class DeprecatedServiceObject implements ServiceObject {
    * @return {@link com.anaptecs.jeaf.junit.core.DeprecatedServiceObject}
    */
   public static DeprecatedServiceObject of( String pName ) {
-    DeprecatedServiceObject.Builder lBuilder = DeprecatedServiceObject.builder();
+    var lBuilder = DeprecatedServiceObject.builder();
     lBuilder.setName(pName);
     return lBuilder.build();
   }

@@ -51,7 +51,7 @@ public class TechParent {
    * @return {@link com.anaptecs.spring.base.techbase.TechParent}
    */
   public static TechParent of( String pTechAttribute ) {
-    TechParent.Builder lBuilder = TechParent.builder();
+    var lBuilder = TechParent.builder();
     lBuilder.setTechAttribute(pTechAttribute);
     return lBuilder.build();
   }

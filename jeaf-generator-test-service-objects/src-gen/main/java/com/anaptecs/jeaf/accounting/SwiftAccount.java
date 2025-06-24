@@ -75,7 +75,7 @@ public class SwiftAccount extends Account {
    */
   public static SwiftAccount of( Long pIban, BigDecimal pBalance, Set<Person> pAuthorizedPersons,
       ServiceObjectID pBankID, String pBic ) {
-    SwiftAccount.Builder lBuilder = SwiftAccount.builder();
+    var lBuilder = SwiftAccount.builder();
     lBuilder.setIban(pIban);
     lBuilder.setBalance(pBalance);
     lBuilder.setAuthorizedPersons(pAuthorizedPersons);

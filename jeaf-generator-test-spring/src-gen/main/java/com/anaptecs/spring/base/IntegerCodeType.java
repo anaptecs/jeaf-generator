@@ -52,7 +52,7 @@ public class IntegerCodeType {
    * @return {@link IntegerCodeType}
    */
   public static IntegerCodeType of( int pCode ) {
-    IntegerCodeTypeBuilder<?, ?> lBuilder = IntegerCodeType.builder();
+    var lBuilder = IntegerCodeType.builder();
     lBuilder.setCode(pCode);
     return lBuilder.build();
   }

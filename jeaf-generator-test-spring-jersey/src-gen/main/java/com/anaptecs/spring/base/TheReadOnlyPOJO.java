@@ -92,7 +92,7 @@ public class TheReadOnlyPOJO {
    * @return {@link com.anaptecs.spring.base.TheReadOnlyPOJO}
    */
   public static TheReadOnlyPOJO of( String pName ) {
-    TheReadOnlyPOJO.Builder lBuilder = TheReadOnlyPOJO.builder();
+    var lBuilder = TheReadOnlyPOJO.builder();
     lBuilder.setName(pName);
     return lBuilder.build();
   }

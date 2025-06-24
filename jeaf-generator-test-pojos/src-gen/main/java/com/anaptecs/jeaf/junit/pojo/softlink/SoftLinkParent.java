@@ -114,7 +114,7 @@ public class SoftLinkParent {
    * @return {@link com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkParent}
    */
   public static SoftLinkParent of( Set<SoftLinkID> pPartnerIDs, SoftLinkID pThePartnerID ) {
-    SoftLinkParent.Builder lBuilder = SoftLinkParent.builder();
+    var lBuilder = SoftLinkParent.builder();
     lBuilder.setPartnerIDs(pPartnerIDs);
     lBuilder.setThePartnerID(pThePartnerID);
     return lBuilder.build();

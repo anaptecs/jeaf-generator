@@ -62,7 +62,7 @@ public class Message {
    * @return {@link com.anaptecs.jeaf.junit.generics.Message}
    */
   public static Message of( String pText ) {
-    Message.Builder lBuilder = Message.builder();
+    var lBuilder = Message.builder();
     lBuilder.setText(pText);
     return lBuilder.build();
   }

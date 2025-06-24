@@ -59,7 +59,7 @@ public class ComplexArrayServiceObject implements ServiceObject {
    * @return {@link com.anaptecs.jeaf.junit.core.ComplexArrayServiceObject}
    */
   public static ComplexArrayServiceObject of( ) {
-    ComplexArrayServiceObject.Builder lBuilder = ComplexArrayServiceObject.builder();
+    var lBuilder = ComplexArrayServiceObject.builder();
     return lBuilder.build();
   }
 

@@ -476,7 +476,7 @@ public abstract class TestServiceObjectBase implements ServiceObject {
    * @return {@link com.anaptecs.jeaf.junit.core.TestServiceObject}
    */
   public static TestServiceObject of( String pKey, String pInfo, int pSomeTest, Set<String> pDummy2 ) {
-    TestServiceObject.Builder lBuilder = TestServiceObject.builder();
+    var lBuilder = TestServiceObject.builder();
     lBuilder.setKey(pKey);
     lBuilder.setInfo(pInfo);
     lBuilder.setSomeTest(pSomeTest);

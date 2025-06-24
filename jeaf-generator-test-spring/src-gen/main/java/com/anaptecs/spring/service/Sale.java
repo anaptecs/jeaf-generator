@@ -67,7 +67,7 @@ public class Sale {
    * @return {@link Sale}
    */
   public static Sale of( BigDecimal pTransactionAmount ) {
-    SaleBuilder<?, ?> lBuilder = Sale.builder();
+    var lBuilder = Sale.builder();
     lBuilder.setTransactionAmount(pTransactionAmount);
     return lBuilder.build();
   }

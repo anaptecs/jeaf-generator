@@ -108,7 +108,7 @@ public class DeprecatedContext implements ServiceObject {
    * @return {@link com.anaptecs.jeaf.junit.openapi.base.DeprecatedContext}
    */
   public static DeprecatedContext of( String pAccessToken, Locale pLanguage, long pResellerID, String pQueryParam ) {
-    DeprecatedContext.Builder lBuilder = DeprecatedContext.builder();
+    var lBuilder = DeprecatedContext.builder();
     lBuilder.setAccessToken(pAccessToken);
     lBuilder.setLanguage(pLanguage);
     lBuilder.setResellerID(pResellerID);

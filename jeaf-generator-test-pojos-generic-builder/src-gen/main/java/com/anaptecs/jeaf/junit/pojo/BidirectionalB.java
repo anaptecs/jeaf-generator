@@ -99,7 +99,7 @@ public class BidirectionalB {
    * @return {@link BidirectionalB}
    */
   public static BidirectionalB of( ) {
-    BidirectionalBBuilder<?, ?> lBuilder = BidirectionalB.builder();
+    var lBuilder = BidirectionalB.builder();
     return lBuilder.build();
   }
 

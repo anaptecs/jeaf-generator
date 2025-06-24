@@ -107,7 +107,7 @@ public class Stop implements ServiceObject {
    * @return {@link com.anaptecs.jeaf.junit.openapi.base.Stop}
    */
   public static Stop of( String pName, byte pIndex, SoftLink pTheSoftLinkID ) {
-    Stop.Builder lBuilder = Stop.builder();
+    var lBuilder = Stop.builder();
     lBuilder.setName(pName);
     lBuilder.setIndex(pIndex);
     lBuilder.setTheSoftLinkID(pTheSoftLinkID);

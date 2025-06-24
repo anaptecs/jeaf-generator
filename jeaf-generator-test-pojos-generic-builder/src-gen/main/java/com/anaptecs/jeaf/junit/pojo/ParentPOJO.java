@@ -83,7 +83,7 @@ public class ParentPOJO {
    * @return {@link ParentPOJO}
    */
   public static ParentPOJO of( String pParentAttribute, byte pWeirdAttribute, String pHello ) {
-    ParentPOJOBuilder<?, ?> lBuilder = ParentPOJO.builder();
+    var lBuilder = ParentPOJO.builder();
     lBuilder.setParentAttribute(pParentAttribute);
     lBuilder.setWeirdAttribute(pWeirdAttribute);
     lBuilder.setHello(pHello);

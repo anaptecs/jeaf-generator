@@ -55,7 +55,7 @@ public class MyBusinessObject {
    * @return {@link MyBusinessObject}
    */
   public static MyBusinessObject of( int pMyBusinessAttribute ) {
-    MyBusinessObjectBuilder<?, ?> lBuilder = MyBusinessObject.builder();
+    var lBuilder = MyBusinessObject.builder();
     lBuilder.setMyBusinessAttribute(pMyBusinessAttribute);
     return lBuilder.build();
   }

@@ -118,7 +118,7 @@ public class UICStop extends Stop implements IStop {
    */
   public static UICStop of( String pName, byte pIndex, SoftLink pTheSoftLink, String pUicCode, int pPriority,
       long pCode, byte pIndex2 ) {
-    UICStop.Builder lBuilder = UICStop.builder();
+    var lBuilder = UICStop.builder();
     lBuilder.setName(pName);
     lBuilder.setIndex(pIndex);
     lBuilder.setTheSoftLink(pTheSoftLink);

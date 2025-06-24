@@ -73,7 +73,7 @@ public class LinkObject implements Serializable {
    * @return {@link com.anaptecs.spring.base.LinkObject}
    */
   public static LinkObject of( String pHref ) {
-    LinkObject.Builder lBuilder = LinkObject.builder();
+    var lBuilder = LinkObject.builder();
     lBuilder.setHref(pHref);
     return lBuilder.build();
   }

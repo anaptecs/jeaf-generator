@@ -55,7 +55,7 @@ public class LongCode {
    * @return {@link LongCode}
    */
   public static LongCode of( Long pCode ) {
-    LongCodeBuilder<?, ?> lBuilder = LongCode.builder();
+    var lBuilder = LongCode.builder();
     lBuilder.setCode(pCode);
     return lBuilder.build();
   }

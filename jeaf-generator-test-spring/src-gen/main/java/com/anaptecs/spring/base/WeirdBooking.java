@@ -76,7 +76,7 @@ public class WeirdBooking {
    * @return {@link WeirdBooking}
    */
   public static WeirdBooking of( ComplexBookingID pBooking ) {
-    WeirdBookingBuilder<?, ?> lBuilder = WeirdBooking.builder();
+    var lBuilder = WeirdBooking.builder();
     lBuilder.setBooking(pBooking);
     return lBuilder.build();
   }

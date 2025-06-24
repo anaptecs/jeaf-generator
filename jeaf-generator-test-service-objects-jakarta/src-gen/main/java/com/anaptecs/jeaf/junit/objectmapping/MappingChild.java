@@ -61,7 +61,7 @@ public class MappingChild extends MappingParent {
    * @return {@link com.anaptecs.jeaf.junit.objectmapping.MappingChild}
    */
   public static MappingChild of( String pName, int pValue ) {
-    MappingChild.Builder lBuilder = MappingChild.builder();
+    var lBuilder = MappingChild.builder();
     lBuilder.setName(pName);
     lBuilder.setValue(pValue);
     return lBuilder.build();

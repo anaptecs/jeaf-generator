@@ -46,7 +46,7 @@ public class UICStopPlace extends StopPlaceRef {
    * @return {@link com.anaptecs.spring.base.UICStopPlace}
    */
   public static UICStopPlace of( String pName, MyType pType ) {
-    UICStopPlace.Builder lBuilder = UICStopPlace.builder();
+    var lBuilder = UICStopPlace.builder();
     lBuilder.setName(pName);
     lBuilder.setType(pType);
     return lBuilder.build();

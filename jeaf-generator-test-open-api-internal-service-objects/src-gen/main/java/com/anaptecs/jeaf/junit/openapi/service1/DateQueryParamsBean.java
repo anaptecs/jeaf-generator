@@ -162,7 +162,7 @@ public class DateQueryParamsBean implements ServiceObject {
   public static DateQueryParamsBean of( OffsetDateTime pOffsetDateTime, OffsetTime pOffsetTime,
       LocalDateTime pLocalDateTime, LocalTime pLocalTime, LocalDate pLocalDate, java.util.Date pUtilDate,
       Calendar pCalendar, Timestamp pSqlTimestamp, Time pSqlTime, Date pSqlDate ) {
-    DateQueryParamsBean.Builder lBuilder = DateQueryParamsBean.builder();
+    var lBuilder = DateQueryParamsBean.builder();
     lBuilder.setOffsetDateTime(pOffsetDateTime);
     lBuilder.setOffsetTime(pOffsetTime);
     lBuilder.setLocalDateTime(pLocalDateTime);

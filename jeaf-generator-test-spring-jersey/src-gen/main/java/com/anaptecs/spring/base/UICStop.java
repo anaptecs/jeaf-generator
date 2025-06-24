@@ -58,7 +58,7 @@ public class UICStop extends Stop {
    * @return {@link com.anaptecs.spring.base.UICStop}
    */
   public static UICStop of( String pName, String pUicCode ) {
-    UICStop.Builder lBuilder = UICStop.builder();
+    var lBuilder = UICStop.builder();
     lBuilder.setName(pName);
     lBuilder.setUicCode(pUicCode);
     return lBuilder.build();

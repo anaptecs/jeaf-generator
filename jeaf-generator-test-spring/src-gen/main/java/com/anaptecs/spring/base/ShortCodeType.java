@@ -52,7 +52,7 @@ public class ShortCodeType {
    * @return {@link ShortCodeType}
    */
   public static ShortCodeType of( short pCode ) {
-    ShortCodeTypeBuilder<?, ?> lBuilder = ShortCodeType.builder();
+    var lBuilder = ShortCodeType.builder();
     lBuilder.setCode(pCode);
     return lBuilder.build();
   }

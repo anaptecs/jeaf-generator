@@ -123,7 +123,7 @@ public class ImmutableAssociationPOJO {
    * @return {@link com.anaptecs.jeaf.junit.pojo.ImmutableAssociationPOJO}
    */
   public static ImmutableAssociationPOJO of( boolean pYetAnotherAttribute ) {
-    ImmutableAssociationPOJO.Builder lBuilder = ImmutableAssociationPOJO.builder();
+    var lBuilder = ImmutableAssociationPOJO.builder();
     lBuilder.setYetAnotherAttribute(pYetAnotherAttribute);
     return lBuilder.build();
   }

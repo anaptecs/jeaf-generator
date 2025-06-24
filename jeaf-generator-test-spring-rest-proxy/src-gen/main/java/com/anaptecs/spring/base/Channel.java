@@ -100,7 +100,7 @@ public class Channel {
    */
   public static Channel of( ChannelType pChannelType, ChannelCode pChannelCode, int pCode,
       boolean pSelfServiceChannel ) {
-    Channel.Builder lBuilder = Channel.builder();
+    var lBuilder = Channel.builder();
     lBuilder.setChannelType(pChannelType);
     lBuilder.setChannelCode(pChannelCode);
     lBuilder.setCode(pCode);

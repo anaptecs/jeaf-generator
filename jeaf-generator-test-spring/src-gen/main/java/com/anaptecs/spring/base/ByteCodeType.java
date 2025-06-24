@@ -52,7 +52,7 @@ public class ByteCodeType {
    * @return {@link ByteCodeType}
    */
   public static ByteCodeType of( byte pCode ) {
-    ByteCodeTypeBuilder<?, ?> lBuilder = ByteCodeType.builder();
+    var lBuilder = ByteCodeType.builder();
     lBuilder.setCode(pCode);
     return lBuilder.build();
   }

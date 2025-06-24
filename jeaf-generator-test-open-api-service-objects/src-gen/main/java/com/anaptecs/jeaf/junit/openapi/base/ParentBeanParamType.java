@@ -70,7 +70,7 @@ public class ParentBeanParamType implements ServiceObject {
    * @return {@link com.anaptecs.jeaf.junit.openapi.base.ParentBeanParamType}
    */
   public static ParentBeanParamType of( String pNovaKey, String pTkID ) {
-    ParentBeanParamType.Builder lBuilder = ParentBeanParamType.builder();
+    var lBuilder = ParentBeanParamType.builder();
     lBuilder.setNovaKey(pNovaKey);
     lBuilder.setTkID(pTkID);
     return lBuilder.build();

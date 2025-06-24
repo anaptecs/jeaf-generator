@@ -107,7 +107,7 @@ public class Sortiment implements ServiceObject {
    * @return {@link Sortiment}
    */
   public static Sortiment of( Integer pValue ) {
-    Sortiment.Builder lBuilder = Sortiment.builder();
+    var lBuilder = Sortiment.builder();
     lBuilder.setValue(pValue);
     return lBuilder.build();
   }

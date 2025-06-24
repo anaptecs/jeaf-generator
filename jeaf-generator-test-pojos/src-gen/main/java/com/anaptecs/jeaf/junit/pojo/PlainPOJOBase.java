@@ -179,7 +179,7 @@ public abstract class PlainPOJOBase {
    * @return {@link com.anaptecs.jeaf.junit.pojo.PlainPOJO}
    */
   public static PlainPOJO of( String pHello, Integer pWorld ) {
-    PlainPOJO.Builder lBuilder = PlainPOJO.builder();
+    var lBuilder = PlainPOJO.builder();
     lBuilder.setHello(pHello);
     lBuilder.setWorld(pWorld);
     return lBuilder.build();

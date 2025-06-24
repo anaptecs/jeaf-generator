@@ -365,7 +365,7 @@ public abstract class MasterDataObjectBase {
    * @return {@link com.anaptecs.spring.base.MasterDataObject}
    */
   public static MasterDataObject of( Entity pEntity, String pObjectID, String pInternalProperty ) {
-    MasterDataObjectBuilder<?, ?> lBuilder = MasterDataObject.builder();
+    var lBuilder = MasterDataObject.builder();
     lBuilder.setEntity(pEntity);
     lBuilder.setObjectID(pObjectID);
     lBuilder.setInternalProperty(pInternalProperty);

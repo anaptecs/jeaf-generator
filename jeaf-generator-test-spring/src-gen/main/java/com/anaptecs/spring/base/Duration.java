@@ -83,7 +83,7 @@ public class Duration {
    * @return {@link Duration}
    */
   public static Duration of( int pValue, TimeUnit pTimeUnit ) {
-    DurationBuilder<?, ?> lBuilder = Duration.builder();
+    var lBuilder = Duration.builder();
     lBuilder.setValue(pValue);
     lBuilder.setTimeUnit(pTimeUnit);
     return lBuilder.build();

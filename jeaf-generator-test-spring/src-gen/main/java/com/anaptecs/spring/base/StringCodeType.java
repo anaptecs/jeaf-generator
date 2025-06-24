@@ -55,7 +55,7 @@ public class StringCodeType {
    * @return {@link StringCodeType}
    */
   public static StringCodeType of( String pCode ) {
-    StringCodeTypeBuilder<?, ?> lBuilder = StringCodeType.builder();
+    var lBuilder = StringCodeType.builder();
     lBuilder.setCode(pCode);
     return lBuilder.build();
   }

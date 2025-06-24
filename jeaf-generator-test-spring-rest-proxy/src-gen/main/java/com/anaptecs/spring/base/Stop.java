@@ -68,7 +68,7 @@ public class Stop {
    * @return {@link com.anaptecs.spring.base.Stop}
    */
   public static Stop of( String pName ) {
-    Stop.Builder lBuilder = Stop.builder();
+    var lBuilder = Stop.builder();
     lBuilder.setName(pName);
     return lBuilder.build();
   }

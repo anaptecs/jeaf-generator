@@ -87,7 +87,7 @@ public class SimpleAssociationBackwardCompatibility {
    * @return {@link SimpleAssociationBackwardCompatibility}
    */
   public static SimpleAssociationBackwardCompatibility of( ) {
-    SimpleAssociationBackwardCompatibilityBuilder<?, ?> lBuilder = SimpleAssociationBackwardCompatibility.builder();
+    var lBuilder = SimpleAssociationBackwardCompatibility.builder();
     return lBuilder.build();
   }
 

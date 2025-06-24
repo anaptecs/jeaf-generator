@@ -132,7 +132,7 @@ public class PrimitiveServiceObject implements ServiceObject {
    */
   public static PrimitiveServiceObject of( boolean pABoolean, byte pAByte, short pAShort, int pAInt, long pALong,
       float pAFloat, double pADouble, char pAChar ) {
-    PrimitiveServiceObject.Builder lBuilder = PrimitiveServiceObject.builder();
+    var lBuilder = PrimitiveServiceObject.builder();
     lBuilder.setABoolean(pABoolean);
     lBuilder.setAByte(pAByte);
     lBuilder.setAShort(pAShort);

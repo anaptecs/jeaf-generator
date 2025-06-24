@@ -70,7 +70,7 @@ public class Company extends Partner {
    * @return {@link com.anaptecs.jeaf.junit.openapi.base.Company}
    */
   public static Company of( String pName ) {
-    Company.Builder lBuilder = Company.builder();
+    var lBuilder = Company.builder();
     lBuilder.setName(pName);
     return lBuilder.build();
   }

@@ -55,7 +55,7 @@ public class ComplextTypeArrayPOJO {
    * @return {@link ComplextTypeArrayPOJO}
    */
   public static ComplextTypeArrayPOJO of( ) {
-    ComplextTypeArrayPOJOBuilder<?, ?> lBuilder = ComplextTypeArrayPOJO.builder();
+    var lBuilder = ComplextTypeArrayPOJO.builder();
     return lBuilder.build();
   }
 
