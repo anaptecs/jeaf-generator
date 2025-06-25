@@ -12,7 +12,7 @@ public class AdvancedPOJO extends AdvancedPOJOBase {
   /**
    * Initialize object. Nothing special to do.
    */
-  protected AdvancedPOJO( AdvancedPOJOBuilder<?, ?> pBuilder ) {
+  protected AdvancedPOJO( AdvancedPOJO.BuilderBase pBuilder ) {
     super(pBuilder);
   }
 
@@ -21,8 +21,27 @@ public class AdvancedPOJO extends AdvancedPOJOBase {
    *
    * @return {@link Builder} New builder that can be used to create new AdvancedPOJO objects.
    */
-  public static AdvancedPOJOBuilder<?, ?> builder( ) {
-    return new AdvancedPOJOBuilderImpl();
+  public static Builder builder( ) {
+    return new Builder();
+  }
+
+  /**
+   * Class implements builder to create a new instance of class AdvancedPOJO. As the class has readonly attributes or
+   * associations instances can not be created directly. Instead this builder class has to be used.
+   */
+  public static class Builder extends AdvancedPOJO.BuilderBase {
+    /**
+     * Use {@link AdvancedPOJO#builder()} instead of protected constructor to create new builder.
+     */
+    protected Builder( ) {
+    }
+
+    /**
+     * Use {@link AdvancedPOJO#builder(AdvancedPOJO)} instead of protected constructor to create new builder.
+     */
+    protected Builder( AdvancedPOJO pObject ) {
+      super(pObject);
+    }
   }
 
   /**

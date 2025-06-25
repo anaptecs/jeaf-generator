@@ -12,8 +12,10 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(builder = TechParent.Builder.class)
 public class TechParent implements Serializable {
   /**
    * Default serial version UID.
@@ -26,13 +28,6 @@ public class TechParent implements Serializable {
   public static final String TECHATTRIBUTE = "techAttribute";
 
   private String techAttribute;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected TechParent( ) {
-  }
 
   /**
    * Initialize object using the passed builder.
@@ -70,7 +65,7 @@ public class TechParent implements Serializable {
    *
    * @param pTechAttribute Value to which {@link #techAttribute} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.techbase.TechParent}
+   * @return {@link TechParent}
    */
   public static TechParent of( String pTechAttribute ) {
     var lBuilder = TechParent.builder();
@@ -81,6 +76,8 @@ public class TechParent implements Serializable {
   /**
    * Class implements builder to create a new instance of class <code>TechParent</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     private String techAttribute;
 

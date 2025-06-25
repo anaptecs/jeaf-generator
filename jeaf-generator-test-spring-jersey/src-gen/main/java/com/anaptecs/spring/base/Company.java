@@ -8,8 +8,10 @@ package com.anaptecs.spring.base;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(builder = Company.Builder.class)
 public class Company extends Partner {
   /**
    * Constant for the name of attribute "name".
@@ -17,13 +19,6 @@ public class Company extends Partner {
   public static final String NAME = "name";
 
   private String name;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected Company( ) {
-  }
 
   /**
    * Initialize object using the passed builder.
@@ -49,6 +44,8 @@ public class Company extends Partner {
   /**
    * Class implements builder to create a new instance of class <code>Company</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder extends Partner.Builder {
     private String name;
 

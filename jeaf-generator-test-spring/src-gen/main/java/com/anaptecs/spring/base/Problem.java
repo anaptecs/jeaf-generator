@@ -22,7 +22,7 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
     isGetterVisibility = JsonAutoDetect.Visibility.NONE,
     setterVisibility = JsonAutoDetect.Visibility.NONE,
     creatorVisibility = JsonAutoDetect.Visibility.ANY)
-@JsonDeserialize(builder = Problem.ProblemBuilderImpl.class)
+@JsonDeserialize(builder = Problem.Builder.class)
 public class Problem {
   /**
    * Constant for the name of attribute "title".
@@ -67,7 +67,7 @@ public class Problem {
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected Problem( ProblemBuilder<?, ?> pBuilder ) {
+  protected Problem( Builder pBuilder ) {
     // Read attribute values from builder.
     title = pBuilder.title;
     status = pBuilder.status;
@@ -81,8 +81,8 @@ public class Problem {
    *
    * @return {@link Builder} New builder that can be used to create new Problem objects.
    */
-  public static ProblemBuilder<?, ?> builder( ) {
-    return new ProblemBuilderImpl();
+  public static Builder builder( ) {
+    return new Builder();
   }
 
   /**
@@ -116,7 +116,7 @@ public class Problem {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class ProblemBuilder<T extends Problem, B extends ProblemBuilder<T, B>> {
+  public static class Builder {
     @NotNull
     private String title;
 
@@ -131,15 +131,15 @@ public class Problem {
     private String instance;
 
     /**
-     * Use {@link ProblemBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link Problem#builder()} instead of private constructor to create new builder.
      */
-    protected ProblemBuilder( ) {
+    protected Builder( ) {
     }
 
     /**
-     * Use {@link ProblemBuilder#builder(Problem)} instead of private constructor to create new builder.
+     * Use {@link Problem#builder(Problem)} instead of private constructor to create new builder.
      */
-    protected ProblemBuilder( Problem pObject ) {
+    protected Builder( Problem pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setTitle(pObject.title);
@@ -151,92 +151,90 @@ public class Problem {
     }
 
     /**
+     * Method returns a new builder.
+     *
+     * @return {@link Builder} New builder that can be used to create new Problem objects.
+     */
+    public static Builder newBuilder( ) {
+      return new Builder();
+    }
+
+    /**
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new Problem objects. The method never returns
+     * null.
+     */
+    public static Builder newBuilder( Problem pObject ) {
+      return new Builder(pObject);
+    }
+
+    /**
      * Method sets attribute {@link #title}.<br/>
      *
      * @param pTitle Value to which {@link #title} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setTitle( @MyNotNullProperty String pTitle ) {
+    public Builder setTitle( @MyNotNullProperty String pTitle ) {
       // Assign value to attribute
       title = pTitle;
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets attribute {@link #status}.<br/>
      *
      * @param pStatus Value to which {@link #status} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setStatus( int pStatus ) {
+    public Builder setStatus( int pStatus ) {
       // Assign value to attribute
       status = pStatus;
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets attribute {@link #type}.<br/>
      *
      * @param pType Value to which {@link #type} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setType( @MyNotNullProperty String pType ) {
+    public Builder setType( @MyNotNullProperty String pType ) {
       // Assign value to attribute
       type = pType;
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets attribute {@link #detail}.<br/>
      *
      * @param pDetail Value to which {@link #detail} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setDetail( @MyNotNullProperty String pDetail ) {
+    public Builder setDetail( @MyNotNullProperty String pDetail ) {
       // Assign value to attribute
       detail = pDetail;
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets attribute {@link #instance}.<br/>
      *
      * @param pInstance Value to which {@link #instance} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setInstance( @MyNotNullProperty String pInstance ) {
+    public Builder setInstance( @MyNotNullProperty String pInstance ) {
       // Assign value to attribute
       instance = pInstance;
-      return this.self();
+      return this;
     }
-
-    /**
-     * Method returns instance of this builder. Operation is part of generic builder pattern.
-     */
-    protected abstract B self( );
 
     /**
      * Method creates a new instance of class Problem. The object will be initialized with the values of the builder.
      *
      * @return Problem Created object. The method never returns null.
      */
-    public abstract T build( );
-  }
-
-  static final class ProblemBuilderImpl extends ProblemBuilder<Problem, ProblemBuilderImpl> {
-    protected ProblemBuilderImpl( ) {
-    }
-
-    protected ProblemBuilderImpl( Problem pObject ) {
-      super(pObject);
-    }
-
-    @Override
-    protected ProblemBuilderImpl self( ) {
-      return this;
-    }
-
-    @Override
     public Problem build( ) {
       Problem lObject = new Problem(this);
       SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
@@ -375,7 +373,7 @@ public class Problem {
    *
    * @return {@link Builder} New builder that can be used to create new Problem objects. The method never returns null.
    */
-  public ProblemBuilder<?, ?> toBuilder( ) {
-    return new ProblemBuilderImpl(this);
+  public Builder toBuilder( ) {
+    return new Builder(this);
   }
 }

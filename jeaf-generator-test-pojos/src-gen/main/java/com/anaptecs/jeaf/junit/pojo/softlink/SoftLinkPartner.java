@@ -21,10 +21,12 @@ import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.annotation.Nulls;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(builder = SoftLinkPartner.Builder.class)
 public class SoftLinkPartner {
   /**
    * Constant for the name of attribute "theBackLink".
@@ -65,15 +67,6 @@ public class SoftLinkPartner {
   private List<Long> longLinkIDs;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected SoftLinkPartner( ) {
-    childLinkIDs = new HashSet<>();
-    longLinkIDs = new ArrayList<>();
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
@@ -112,7 +105,7 @@ public class SoftLinkPartner {
    *
    * @param pLongLinks Value to which {@link #longLinks} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkPartner}
+   * @return {@link SoftLinkPartner}
    */
   public static SoftLinkPartner of( List<Long> pLongLinkIDs ) {
     var lBuilder = SoftLinkPartner.builder();
@@ -123,6 +116,8 @@ public class SoftLinkPartner {
   /**
    * Class implements builder to create a new instance of class <code>SoftLinkPartner</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     /**
      * <p/>

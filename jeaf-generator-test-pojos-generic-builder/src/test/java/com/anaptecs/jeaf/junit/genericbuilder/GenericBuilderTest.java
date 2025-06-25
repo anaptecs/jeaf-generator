@@ -8,7 +8,6 @@ import java.util.Locale;
 
 import com.anaptecs.jeaf.accounting.impl.pojo.Account;
 import com.anaptecs.jeaf.accounting.impl.pojo.Booking;
-import com.anaptecs.jeaf.accounting.impl.pojo.Booking.BookingBuilder;
 import com.anaptecs.jeaf.accounting.impl.pojo.Customer;
 import com.anaptecs.jeaf.accounting.impl.pojo.Customer.CustomerBuilder;
 import com.anaptecs.jeaf.json.api.JSON;
@@ -87,7 +86,8 @@ public class GenericBuilderTest {
         .addToAccounts(lAccountDaisy)
         .build();
 
-    BookingBuilder<?, ?> lBookingBuilder = Booking.builder();
+    Booking.Builder lBookingBuilder = Booking.builder();
+    var lVarBuilder = Booking.builder();
     Booking lBooking = Booking.builder()
         .setAmount(BigDecimal.TEN)
         .setCurrency(lCurrency)

@@ -8,8 +8,10 @@ package com.anaptecs.spring.base;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(builder = POI.Builder.class)
 public class POI extends Stop {
   /**
    * Constant for the name of attribute "description".
@@ -17,13 +19,6 @@ public class POI extends Stop {
   public static final String DESCRIPTION = "description";
 
   private String description;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected POI( ) {
-  }
 
   /**
    * Initialize object using the passed builder.
@@ -54,7 +49,7 @@ public class POI extends Stop {
    *
    * @param pDescription Value to which {@link #description} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.POI}
+   * @return {@link POI}
    */
   public static POI of( String pName, String pDescription ) {
     var lBuilder = POI.builder();
@@ -66,6 +61,8 @@ public class POI extends Stop {
   /**
    * Class implements builder to create a new instance of class <code>POI</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder extends Stop.Builder {
     private String description;
 

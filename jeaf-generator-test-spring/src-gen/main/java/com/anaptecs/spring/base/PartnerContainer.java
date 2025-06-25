@@ -15,6 +15,8 @@ import java.util.Objects;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
@@ -24,13 +26,14 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
     isGetterVisibility = JsonAutoDetect.Visibility.NONE,
     setterVisibility = JsonAutoDetect.Visibility.NONE,
     creatorVisibility = JsonAutoDetect.Visibility.ANY)
-@JsonDeserialize(builder = PartnerContainer.PartnerContainerBuilderImpl.class)
+@JsonDeserialize(builder = PartnerContainer.Builder.class)
 public class PartnerContainer {
   /**
    * Constant for the name of attribute "partners".
    */
   public static final String PARTNERS = "partners";
 
+  @JsonSetter(nulls = Nulls.SKIP)
   private List<Partner> partners;
 
   /**
@@ -38,7 +41,7 @@ public class PartnerContainer {
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected PartnerContainer( PartnerContainerBuilder<?, ?> pBuilder ) {
+  protected PartnerContainer( Builder pBuilder ) {
     // Read attribute values from builder.
     if (pBuilder.partners != null) {
       partners = pBuilder.partners;
@@ -53,8 +56,8 @@ public class PartnerContainer {
    *
    * @return {@link Builder} New builder that can be used to create new PartnerContainer objects.
    */
-  public static PartnerContainerBuilder<?, ?> builder( ) {
-    return new PartnerContainerBuilderImpl();
+  public static Builder builder( ) {
+    return new Builder();
   }
 
   /**
@@ -73,20 +76,19 @@ public class PartnerContainer {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class PartnerContainerBuilder<T extends PartnerContainer, B extends PartnerContainerBuilder<T, B>> {
+  public static class Builder {
     private List<Partner> partners;
 
     /**
-     * Use {@link PartnerContainerBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link PartnerContainer#builder()} instead of private constructor to create new builder.
      */
-    protected PartnerContainerBuilder( ) {
+    protected Builder( ) {
     }
 
     /**
-     * Use {@link PartnerContainerBuilder#builder(PartnerContainer)} instead of private constructor to create new
-     * builder.
+     * Use {@link PartnerContainer#builder(PartnerContainer)} instead of private constructor to create new builder.
      */
-    protected PartnerContainerBuilder( PartnerContainer pObject ) {
+    protected Builder( PartnerContainer pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setPartners(pObject.partners);
@@ -94,12 +96,32 @@ public class PartnerContainer {
     }
 
     /**
+     * Method returns a new builder.
+     *
+     * @return {@link Builder} New builder that can be used to create new PartnerContainer objects.
+     */
+    public static Builder newBuilder( ) {
+      return new Builder();
+    }
+
+    /**
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new PartnerContainer objects. The method never
+     * returns null.
+     */
+    public static Builder newBuilder( PartnerContainer pObject ) {
+      return new Builder(pObject);
+    }
+
+    /**
      * Method sets association {@link #partners}.<br/>
      *
      * @param pPartners Collection to which {@link #partners} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setPartners( List<Partner> pPartners ) {
+    public Builder setPartners( List<Partner> pPartners ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pPartners != null) {
         partners = new ArrayList<Partner>(pPartners);
@@ -107,29 +129,24 @@ public class PartnerContainer {
       else {
         partners = null;
       }
-      return this.self();
+      return this;
     }
 
     /**
      * Method adds the passed objects to association {@link #partners}.<br/>
      *
      * @param pPartners Array of objects that should be added to {@link #partners}. The parameter may be null.
-     * @return {@link B} Instance of this builder to support chaining. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
      */
-    public B addToPartners( Partner... pPartners ) {
+    public Builder addToPartners( Partner... pPartners ) {
       if (pPartners != null) {
         if (partners == null) {
           partners = new ArrayList<Partner>();
         }
         partners.addAll(Arrays.asList(pPartners));
       }
-      return this.self();
+      return this;
     }
-
-    /**
-     * Method returns instance of this builder. Operation is part of generic builder pattern.
-     */
-    protected abstract B self( );
 
     /**
      * Method creates a new instance of class PartnerContainer. The object will be initialized with the values of the
@@ -137,24 +154,6 @@ public class PartnerContainer {
      *
      * @return PartnerContainer Created object. The method never returns null.
      */
-    public abstract T build( );
-  }
-
-  static final class PartnerContainerBuilderImpl
-      extends PartnerContainerBuilder<PartnerContainer, PartnerContainerBuilderImpl> {
-    protected PartnerContainerBuilderImpl( ) {
-    }
-
-    protected PartnerContainerBuilderImpl( PartnerContainer pObject ) {
-      super(pObject);
-    }
-
-    @Override
-    protected PartnerContainerBuilderImpl self( ) {
-      return this;
-    }
-
-    @Override
     public PartnerContainer build( ) {
       PartnerContainer lObject = new PartnerContainer(this);
       SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
@@ -288,7 +287,7 @@ public class PartnerContainer {
    * @return {@link Builder} New builder that can be used to create new PartnerContainer objects. The method never
    * returns null.
    */
-  public PartnerContainerBuilder<?, ?> toBuilder( ) {
-    return new PartnerContainerBuilderImpl(this);
+  public Builder toBuilder( ) {
+    return new Builder(this);
   }
 }

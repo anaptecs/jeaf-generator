@@ -9,8 +9,10 @@ import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(builder = GeoPosition.Builder.class)
 public class GeoPosition extends PlaceRef {
   /**
    * Default serial version UID.
@@ -30,13 +32,6 @@ public class GeoPosition extends PlaceRef {
   private int longitude;
 
   private int latitude;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected GeoPosition( ) {
-  }
 
   /**
    * Initialize object using the passed builder.
@@ -84,7 +79,7 @@ public class GeoPosition extends PlaceRef {
    *
    * @param pLatitude Value to which {@link #latitude} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.GeoPosition}
+   * @return {@link GeoPosition}
    */
   public static GeoPosition of( String pName, MyType pType, int pLongitude, int pLatitude ) {
     var lBuilder = GeoPosition.builder();
@@ -98,6 +93,8 @@ public class GeoPosition extends PlaceRef {
   /**
    * Class implements builder to create a new instance of class <code>GeoPosition</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder extends PlaceRef.Builder {
     private int longitude;
 

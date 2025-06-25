@@ -16,6 +16,7 @@ import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.junit.openapi.base.Channel;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
  * Chännel<br/>
@@ -93,6 +94,7 @@ public class Sale implements ServiceObject {
   /**
    * Class implements builder to create a new instance of class <code>Sale</code>.
    */
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     private BigDecimal transactionAmount;
 

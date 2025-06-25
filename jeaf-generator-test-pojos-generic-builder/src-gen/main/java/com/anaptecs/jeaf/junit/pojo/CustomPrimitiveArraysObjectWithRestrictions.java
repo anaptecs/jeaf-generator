@@ -10,7 +10,7 @@ public class CustomPrimitiveArraysObjectWithRestrictions extends CustomPrimitive
    * Initialize object. Nothing special to do.
    */
   protected CustomPrimitiveArraysObjectWithRestrictions(
-      CustomPrimitiveArraysObjectWithRestrictionsBuilder<?, ?> pBuilder ) {
+      CustomPrimitiveArraysObjectWithRestrictions.BuilderBase pBuilder ) {
     super(pBuilder);
   }
 
@@ -20,7 +20,29 @@ public class CustomPrimitiveArraysObjectWithRestrictions extends CustomPrimitive
    * @return {@link Builder} New builder that can be used to create new CustomPrimitiveArraysObjectWithRestrictions
    * objects.
    */
-  public static CustomPrimitiveArraysObjectWithRestrictionsBuilder<?, ?> builder( ) {
-    return new CustomPrimitiveArraysObjectWithRestrictionsBuilderImpl();
+  public static Builder builder( ) {
+    return new Builder();
+  }
+
+  /**
+   * Class implements builder to create a new instance of class CustomPrimitiveArraysObjectWithRestrictions. As the
+   * class has readonly attributes or associations instances can not be created directly. Instead this builder class has
+   * to be used.
+   */
+  public static class Builder extends CustomPrimitiveArraysObjectWithRestrictions.BuilderBase {
+    /**
+     * Use {@link CustomPrimitiveArraysObjectWithRestrictions#builder()} instead of protected constructor to create new
+     * builder.
+     */
+    protected Builder( ) {
+    }
+
+    /**
+     * Use {@link CustomPrimitiveArraysObjectWithRestrictions#builder(CustomPrimitiveArraysObjectWithRestrictions)}
+     * instead of protected constructor to create new builder.
+     */
+    protected Builder( CustomPrimitiveArraysObjectWithRestrictions pObject ) {
+      super(pObject);
+    }
   }
 }

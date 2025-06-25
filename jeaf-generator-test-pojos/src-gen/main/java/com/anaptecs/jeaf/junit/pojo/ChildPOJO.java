@@ -13,6 +13,8 @@ import javax.validation.constraints.NotNull;
 
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 /**
  * This is the first line of the first comment<br/>
@@ -28,7 +30,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
 @Deprecated
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(builder = ChildPOJO.Builder.class)
 public class ChildPOJO extends ParentPOJO {
   /**
    * Constant for the name of attribute "childAttribute".
@@ -37,13 +39,6 @@ public class ChildPOJO extends ParentPOJO {
 
   @NotNull
   private Integer childAttribute;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected ChildPOJO( ) {
-  }
 
   /**
    * Initialize object using the passed builder.
@@ -78,7 +73,7 @@ public class ChildPOJO extends ParentPOJO {
    *
    * @param pChildAttribute Value to which {@link #childAttribute} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.pojo.ChildPOJO}
+   * @return {@link ChildPOJO}
    */
   public static ChildPOJO of( String pParentAttribute, byte pWeirdAttribute, String pHello, Integer pChildAttribute ) {
     var lBuilder = ChildPOJO.builder();
@@ -92,6 +87,8 @@ public class ChildPOJO extends ParentPOJO {
   /**
    * Class implements builder to create a new instance of class <code>ChildPOJO</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   @Deprecated
   public static class Builder extends ParentPOJO.Builder {
     @NotNull

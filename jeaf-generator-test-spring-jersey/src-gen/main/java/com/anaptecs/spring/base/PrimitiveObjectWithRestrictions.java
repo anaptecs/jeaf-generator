@@ -20,8 +20,10 @@ import javax.validation.constraints.PositiveOrZero;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(builder = PrimitiveObjectWithRestrictions.Builder.class)
 public class PrimitiveObjectWithRestrictions {
   /**
    * Constant for the name of attribute "aBoolean".
@@ -205,16 +207,6 @@ public class PrimitiveObjectWithRestrictions {
   private String bString;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected PrimitiveObjectWithRestrictions( ) {
-    aBoolean = true;
-    aDouble = 42.0;
-    aString = "Hello OpenAPI";
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
@@ -302,7 +294,7 @@ public class PrimitiveObjectWithRestrictions {
    *
    * @param pBString Value to which {@link #bString} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.PrimitiveObjectWithRestrictions}
+   * @return {@link PrimitiveObjectWithRestrictions}
    */
   public static PrimitiveObjectWithRestrictions of( boolean pABoolean, Boolean pBBoolean, boolean pCBoolean,
       byte pAByte, Byte pBByte, short pAShort, Short pBShort, int pAInteger, Integer pBInteger, Integer pCInteger,
@@ -337,6 +329,8 @@ public class PrimitiveObjectWithRestrictions {
   /**
    * Class implements builder to create a new instance of class <code>PrimitiveObjectWithRestrictions</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     /**
      * <br/>

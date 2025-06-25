@@ -19,10 +19,12 @@ import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.annotation.Nulls;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(builder = SoftLinkChildB.Builder.class)
 public class SoftLinkChildB extends SoftLinkParent {
   /**
    * Constant for the name of attribute "heyBrother".
@@ -62,14 +64,6 @@ public class SoftLinkChildB extends SoftLinkParent {
   private SoftLinkID oneLinkID;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected SoftLinkChildB( ) {
-    softLinkPartnerIDs = new HashSet<>();
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
@@ -107,7 +101,7 @@ public class SoftLinkChildB extends SoftLinkParent {
    *
    * @param pOneLink Value to which {@link #oneLink} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkChildB}
+   * @return {@link SoftLinkChildB}
    */
   public static SoftLinkChildB of( Set<SoftLinkID> pPartnerIDs, SoftLinkID pThePartnerID, SoftLinkID pOneLinkID ) {
     var lBuilder = SoftLinkChildB.builder();
@@ -120,6 +114,8 @@ public class SoftLinkChildB extends SoftLinkParent {
   /**
    * Class implements builder to create a new instance of class <code>SoftLinkChildB</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder extends SoftLinkParent.Builder {
     /**
      * <p/>

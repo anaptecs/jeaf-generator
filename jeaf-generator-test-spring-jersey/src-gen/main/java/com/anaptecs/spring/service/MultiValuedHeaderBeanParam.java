@@ -20,8 +20,10 @@ import javax.ws.rs.HeaderParam;
 
 import com.anaptecs.spring.base.StringCode;
 import com.anaptecs.spring.base.TimeUnit;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.annotation.Nulls;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 public class MultiValuedHeaderBeanParam {
   /**
@@ -140,16 +142,6 @@ public class MultiValuedHeaderBeanParam {
   private byte[] base64;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  public MultiValuedHeaderBeanParam( ) {
-    stringCodeList = new HashSet<>();
-    timestamps = new HashSet<>();
-    timeUnits = new HashSet<>();
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
@@ -213,6 +205,8 @@ public class MultiValuedHeaderBeanParam {
   /**
    * Class implements builder to create a new instance of class <code>MultiValuedHeaderBeanParam</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     private String[] names;
 

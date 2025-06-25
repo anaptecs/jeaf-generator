@@ -39,32 +39,33 @@ public abstract class MySortCriteriaBase {
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected MySortCriteriaBase( MySortCriteriaBuilder<?, ?> pBuilder ) {
+  protected MySortCriteriaBase( BuilderBase pBuilder ) {
     // Read attribute values from builder.
     sortOrder = pBuilder.sortOrder;
     sortProperty = pBuilder.sortProperty;
   }
 
   /**
-   * Class implements builder to create a new instance of class <code>MySortCriteria</code>.
+   * Class implements builder to create a new instance of class MySortCriteria. As the class has read only attributes or
+   * associations instances can not be created directly. Instead this builder class has to be used.
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class MySortCriteriaBuilder<T extends MySortCriteria, B extends MySortCriteriaBuilder<T, B>> {
+  public static abstract class BuilderBase {
     private SortOrder sortOrder;
 
     private MySortProperty sortProperty;
 
     /**
-     * Use {@link MySortCriteriaBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link MySortCriteria.builder()} instead of protected constructor to create new builder.
      */
-    protected MySortCriteriaBuilder( ) {
+    protected BuilderBase( ) {
     }
 
     /**
-     * Use {@link MySortCriteriaBuilder#builder(MySortCriteria)} instead of private constructor to create new builder.
+     * Use {@link MySortCriteria.builder(MySortCriteria)} instead of protected constructor to create new builder.
      */
-    protected MySortCriteriaBuilder( MySortCriteriaBase pObject ) {
+    protected BuilderBase( MySortCriteriaBase pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setSortOrder(pObject.sortOrder);
@@ -76,28 +77,23 @@ public abstract class MySortCriteriaBase {
      * Method sets association {@link #sortOrder}.<br/>
      *
      * @param pSortOrder Value to which {@link #sortOrder} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setSortOrder( @MyNotNullProperty SortOrder pSortOrder ) {
+    public BuilderBase setSortOrder( @MyNotNullProperty SortOrder pSortOrder ) {
       sortOrder = pSortOrder;
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets association {@link #sortProperty}.<br/>
      *
      * @param pSortProperty Value to which {@link #sortProperty} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setSortProperty( @MyNotNullProperty MySortProperty pSortProperty ) {
+    public BuilderBase setSortProperty( @MyNotNullProperty MySortProperty pSortProperty ) {
       sortProperty = pSortProperty;
-      return this.self();
+      return this;
     }
-
-    /**
-     * Method returns instance of this builder. Operation is part of generic builder pattern.
-     */
-    protected abstract B self( );
 
     /**
      * Method creates a new instance of class MySortCriteria. The object will be initialized with the values of the
@@ -105,24 +101,6 @@ public abstract class MySortCriteriaBase {
      *
      * @return MySortCriteria Created object. The method never returns null.
      */
-    public abstract T build( );
-  }
-
-  static final class MySortCriteriaBuilderImpl
-      extends MySortCriteriaBuilder<MySortCriteria, MySortCriteriaBuilderImpl> {
-    protected MySortCriteriaBuilderImpl( ) {
-    }
-
-    protected MySortCriteriaBuilderImpl( MySortCriteria pObject ) {
-      super(pObject);
-    }
-
-    @Override
-    protected MySortCriteriaBuilderImpl self( ) {
-      return this;
-    }
-
-    @Override
     public MySortCriteria build( ) {
       MySortCriteria lObject = new MySortCriteria(this);
       SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
@@ -266,7 +244,7 @@ public abstract class MySortCriteriaBase {
    * @return {@link Builder} New builder that can be used to create new MySortCriteria objects. The method never returns
    * null.
    */
-  public MySortCriteriaBuilder<?, ?> toBuilder( ) {
-    return new MySortCriteriaBuilderImpl((MySortCriteria) this);
+  public MySortCriteria.Builder toBuilder( ) {
+    return new MySortCriteria.Builder((MySortCriteria) this);
   }
 }

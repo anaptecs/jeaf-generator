@@ -22,10 +22,12 @@ import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.annotation.Nulls;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(builder = ImmutableAssociationPOJO.Builder.class)
 public class ImmutableAssociationPOJO {
   /**
    * Constant for the name of attribute "yetAnotherAttribute".
@@ -69,17 +71,6 @@ public class ImmutableAssociationPOJO {
   private ChildPOJO deprecatedRef;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected ImmutableAssociationPOJO( ) {
-    yetAnotherAttribute = false;
-    readonlyAssociation = new TreeSet<>();
-    immutableChildPOJO = null;
-    deprecatedRefs = new HashSet<>();
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
@@ -120,7 +111,7 @@ public class ImmutableAssociationPOJO {
    *
    * @param pYetAnotherAttribute Value to which {@link #yetAnotherAttribute} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.pojo.ImmutableAssociationPOJO}
+   * @return {@link ImmutableAssociationPOJO}
    */
   public static ImmutableAssociationPOJO of( boolean pYetAnotherAttribute ) {
     var lBuilder = ImmutableAssociationPOJO.builder();
@@ -131,6 +122,8 @@ public class ImmutableAssociationPOJO {
   /**
    * Class implements builder to create a new instance of class <code>ImmutableAssociationPOJO</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     private boolean yetAnotherAttribute;
 

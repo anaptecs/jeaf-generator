@@ -12,11 +12,13 @@ import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
 @Deprecated
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(builder = BChildPOJO.Builder.class)
 public class BChildPOJO extends BParentPOJO {
   /**
    * Constant for the name of attribute "weirdAttribute".
@@ -31,13 +33,6 @@ public class BChildPOJO extends BParentPOJO {
   private byte weirdAttribute;
 
   private Integer childAttribute;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected BChildPOJO( ) {
-  }
 
   /**
    * Initialize object using the passed builder.
@@ -71,7 +66,7 @@ public class BChildPOJO extends BParentPOJO {
    *
    * @param pChildAttribute Value to which {@link #childAttribute} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.pojo.BChildPOJO}
+   * @return {@link BChildPOJO}
    */
   public static BChildPOJO of( String pParentAttribute, byte pWeirdAttribute, Integer pChildAttribute ) {
     var lBuilder = BChildPOJO.builder();
@@ -84,6 +79,8 @@ public class BChildPOJO extends BParentPOJO {
   /**
    * Class implements builder to create a new instance of class <code>BChildPOJO</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   @Deprecated
   public static class Builder extends BParentPOJO.Builder {
     private byte weirdAttribute;

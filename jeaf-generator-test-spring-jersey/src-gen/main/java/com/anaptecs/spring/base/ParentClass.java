@@ -8,12 +8,14 @@ package com.anaptecs.spring.base;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "objectType", visible = true)
 @JsonSubTypes({ @JsonSubTypes.Type(value = ChildAA.class, name = "ChildAA"),
   @JsonSubTypes.Type(value = ChildB.class, name = "ChildB"),
   @JsonSubTypes.Type(value = ChildBB.class, name = "ChildBB") })
+@JsonDeserialize(builder = ParentClass.Builder.class)
 public class ParentClass {
   /**
    * Constant for the name of attribute "parentAttribute".
@@ -21,13 +23,6 @@ public class ParentClass {
   public static final String PARENTATTRIBUTE = "parentAttribute";
 
   private String parentAttribute;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected ParentClass( ) {
-  }
 
   /**
    * Initialize object using the passed builder.
@@ -54,7 +49,7 @@ public class ParentClass {
    *
    * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.ParentClass}
+   * @return {@link ParentClass}
    */
   public static ParentClass of( String pParentAttribute ) {
     var lBuilder = ParentClass.builder();
@@ -65,6 +60,8 @@ public class ParentClass {
   /**
    * Class implements builder to create a new instance of class <code>ParentClass</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     private String parentAttribute;
 

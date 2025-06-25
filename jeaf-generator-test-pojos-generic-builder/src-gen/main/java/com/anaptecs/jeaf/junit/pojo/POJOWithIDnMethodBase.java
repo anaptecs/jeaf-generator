@@ -24,7 +24,7 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
 @JsonIdentityInfo(property = "objectID", generator = ObjectIdGenerators.PropertyGenerator.class)
-@JsonDeserialize(builder = POJOWithIDnMethodBase.POJOWithIDnMethodBuilderImpl.class)
+@JsonDeserialize(builder = POJOWithIDnMethod.Builder.class)
 public abstract class POJOWithIDnMethodBase implements Identifiable<ObjectID> {
   /**
    * Constant for the name of attribute "attr".
@@ -43,7 +43,7 @@ public abstract class POJOWithIDnMethodBase implements Identifiable<ObjectID> {
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected POJOWithIDnMethodBase( POJOWithIDnMethodBuilder<?, ?> pBuilder ) {
+  protected POJOWithIDnMethodBase( BuilderBase pBuilder ) {
     // Ensure that builder is not null.
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read object ID.
@@ -59,11 +59,12 @@ public abstract class POJOWithIDnMethodBase implements Identifiable<ObjectID> {
   }
 
   /**
-   * Class implements builder to create a new instance of class <code>POJOWithIDnMethod</code>.
+   * Class implements builder to create a new instance of class POJOWithIDnMethod. As the class has read only attributes
+   * or associations instances can not be created directly. Instead this builder class has to be used.
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class POJOWithIDnMethodBuilder<T extends POJOWithIDnMethod, B extends POJOWithIDnMethodBuilder<T, B>> {
+  public static abstract class BuilderBase {
     /**
      * Reference to the identifier of this object. The reference may be null since an id is not mandatory.
      */
@@ -72,18 +73,18 @@ public abstract class POJOWithIDnMethodBase implements Identifiable<ObjectID> {
     private Double attr;
 
     /**
-     * Use {@link POJOWithIDnMethodBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link POJOWithIDnMethod.builder()} instead of protected constructor to create new builder.
      */
-    protected POJOWithIDnMethodBuilder( ) {
+    protected BuilderBase( ) {
     }
 
     /**
-     * Use {@link POJOWithIDnMethodBuilder#builder(POJOWithIDnMethod)} instead of private constructor to create new
-     * builder.
+     * Use {@link POJOWithIDnMethod.builder(POJOWithIDnMethod)} instead of protected constructor to create new builder.
      */
-    protected POJOWithIDnMethodBuilder( POJOWithIDnMethodBase pObject ) {
+    protected BuilderBase( POJOWithIDnMethodBase pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
+        objectID = pObject.objectID;
         this.setAttr(pObject.attr);
       }
     }
@@ -92,27 +93,22 @@ public abstract class POJOWithIDnMethodBase implements Identifiable<ObjectID> {
      * Method sets the identifier for the object created using the builder. The reference may be null since an id is not
      * mandatory.
      */
-    public B setID( ObjectIdentity<?> pObjectID ) {
+    public BuilderBase setID( ObjectIdentity<?> pObjectID ) {
       objectID = pObjectID;
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets attribute {@link #attr}.<br/>
      *
      * @param pAttr Value to which {@link #attr} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setAttr( Double pAttr ) {
+    public BuilderBase setAttr( Double pAttr ) {
       // Assign value to attribute
       attr = pAttr;
-      return this.self();
+      return this;
     }
-
-    /**
-     * Method returns instance of this builder. Operation is part of generic builder pattern.
-     */
-    protected abstract B self( );
 
     /**
      * Method creates a new instance of class POJOWithIDnMethod. The object will be initialized with the values of the
@@ -120,7 +116,9 @@ public abstract class POJOWithIDnMethodBase implements Identifiable<ObjectID> {
      *
      * @return POJOWithIDnMethod Created object. The method never returns null.
      */
-    public abstract T build( );
+    public POJOWithIDnMethod build( ) {
+      return new POJOWithIDnMethod(this);
+    }
 
     /**
      * Method creates a new validated instance of class POJOWithIDnMethod. The object will be initialized with the
@@ -130,29 +128,9 @@ public abstract class POJOWithIDnMethodBase implements Identifiable<ObjectID> {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public POJOWithIDnMethod buildValidated( ) throws ConstraintViolationException {
-      POJOWithIDnMethod lObject = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
-      return lObject;
-    }
-  }
-
-  static final class POJOWithIDnMethodBuilderImpl
-      extends POJOWithIDnMethodBuilder<POJOWithIDnMethod, POJOWithIDnMethodBuilderImpl> {
-    protected POJOWithIDnMethodBuilderImpl( ) {
-    }
-
-    protected POJOWithIDnMethodBuilderImpl( POJOWithIDnMethod pObject ) {
-      super(pObject);
-    }
-
-    @Override
-    protected POJOWithIDnMethodBuilderImpl self( ) {
-      return this;
-    }
-
-    @Override
-    public POJOWithIDnMethod build( ) {
-      return new POJOWithIDnMethod(this);
+      POJOWithIDnMethod lPOJO = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
+      return lPOJO;
     }
   }
 
@@ -198,7 +176,7 @@ public abstract class POJOWithIDnMethodBase implements Identifiable<ObjectID> {
    *
    * @param pAttr Value to which {@link #attr} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.pojo.POJOWithIDnMethod}
+   * @return {@link POJOWithIDnMethod}
    */
   public static POJOWithIDnMethod of( Double pAttr ) {
     var lBuilder = POJOWithIDnMethod.builder();
@@ -273,7 +251,7 @@ public abstract class POJOWithIDnMethodBase implements Identifiable<ObjectID> {
    * @return {@link Builder} New builder that can be used to create new POJOWithIDnMethod objects. The method never
    * returns null.
    */
-  public POJOWithIDnMethodBuilder<?, ?> toBuilder( ) {
-    return new POJOWithIDnMethodBuilderImpl((POJOWithIDnMethod) this);
+  public POJOWithIDnMethod.Builder toBuilder( ) {
+    return new POJOWithIDnMethod.Builder((POJOWithIDnMethod) this);
   }
 }

@@ -19,8 +19,10 @@ import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.annotation.Nulls;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(builder = PartnerContainer.Builder.class)
 public class PartnerContainer implements Serializable {
   /**
    * Default serial version UID.
@@ -34,14 +36,6 @@ public class PartnerContainer implements Serializable {
 
   @JsonSetter(nulls = Nulls.SKIP)
   private List<Partner> partners;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected PartnerContainer( ) {
-    partners = new ArrayList<>();
-  }
 
   /**
    * Initialize object using the passed builder.
@@ -73,7 +67,7 @@ public class PartnerContainer implements Serializable {
    * Convenience method to create new instance of class PartnerContainer.
    *
    *
-   * @return {@link com.anaptecs.spring.base.PartnerContainer}
+   * @return {@link PartnerContainer}
    */
   public static PartnerContainer of( ) {
     var lBuilder = PartnerContainer.builder();
@@ -83,6 +77,8 @@ public class PartnerContainer implements Serializable {
   /**
    * Class implements builder to create a new instance of class <code>PartnerContainer</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     private List<Partner> partners;
 

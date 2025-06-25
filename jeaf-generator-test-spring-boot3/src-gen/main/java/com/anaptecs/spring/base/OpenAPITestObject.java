@@ -79,23 +79,6 @@ public class OpenAPITestObject {
   private final double notNullableArray;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected OpenAPITestObject( ) {
-    readOnlyAttribute = null;
-    readWriteAttribute = null;
-    writeOnlyAttribute = 0;
-    nullableAttribute = null;
-    notNullableAttribute = 0;
-    readOnlyArray = null;
-    readWriteArray = null;
-    writeOnlyArray = 0;
-    nullableArray = 0;
-    notNullableArray = 0;
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.

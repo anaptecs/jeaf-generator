@@ -32,7 +32,7 @@ public class BooleanCode {
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected BooleanCode( BooleanCodeBuilder<?, ?> pBuilder ) {
+  protected BooleanCode( Builder pBuilder ) {
     // Read attribute values from builder.
     code = pBuilder.code;
   }
@@ -42,8 +42,8 @@ public class BooleanCode {
    *
    * @return {@link Builder} New builder that can be used to create new BooleanCode objects.
    */
-  public static BooleanCodeBuilder<?, ?> builder( ) {
-    return new BooleanCodeBuilderImpl();
+  public static Builder builder( ) {
+    return new Builder();
   }
 
   /**
@@ -65,19 +65,19 @@ public class BooleanCode {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class BooleanCodeBuilder<T extends BooleanCode, B extends BooleanCodeBuilder<T, B>> {
+  public static class Builder {
     private Boolean code;
 
     /**
-     * Use {@link BooleanCodeBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link BooleanCode#builder()} instead of private constructor to create new builder.
      */
-    protected BooleanCodeBuilder( ) {
+    protected Builder( ) {
     }
 
     /**
-     * Use {@link BooleanCodeBuilder#builder(BooleanCode)} instead of private constructor to create new builder.
+     * Use {@link BooleanCode#builder(BooleanCode)} instead of private constructor to create new builder.
      */
-    protected BooleanCodeBuilder( BooleanCode pObject ) {
+    protected Builder( BooleanCode pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setCode(pObject.code);
@@ -85,21 +85,36 @@ public class BooleanCode {
     }
 
     /**
-     * Method sets attribute {@link #code}.<br/>
+     * Method returns a new builder.
      *
-     * @param pCode Value to which {@link #code} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} New builder that can be used to create new BooleanCode objects.
      */
-    public B setCode( @MyNotNullProperty Boolean pCode ) {
-      // Assign value to attribute
-      code = pCode;
-      return this.self();
+    public static Builder newBuilder( ) {
+      return new Builder();
     }
 
     /**
-     * Method returns instance of this builder. Operation is part of generic builder pattern.
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new BooleanCode objects. The method never returns
+     * null.
      */
-    protected abstract B self( );
+    public static Builder newBuilder( BooleanCode pObject ) {
+      return new Builder(pObject);
+    }
+
+    /**
+     * Method sets attribute {@link #code}.<br/>
+     *
+     * @param pCode Value to which {@link #code} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    public Builder setCode( @MyNotNullProperty Boolean pCode ) {
+      // Assign value to attribute
+      code = pCode;
+      return this;
+    }
 
     /**
      * Method creates a new instance of class BooleanCode. The object will be initialized with the values of the
@@ -107,23 +122,6 @@ public class BooleanCode {
      *
      * @return BooleanCode Created object. The method never returns null.
      */
-    public abstract T build( );
-  }
-
-  static final class BooleanCodeBuilderImpl extends BooleanCodeBuilder<BooleanCode, BooleanCodeBuilderImpl> {
-    protected BooleanCodeBuilderImpl( ) {
-    }
-
-    protected BooleanCodeBuilderImpl( BooleanCode pObject ) {
-      super(pObject);
-    }
-
-    @Override
-    protected BooleanCodeBuilderImpl self( ) {
-      return this;
-    }
-
-    @Override
     public BooleanCode build( ) {
       BooleanCode lObject = new BooleanCode(this);
       SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
@@ -206,7 +204,7 @@ public class BooleanCode {
    * @return {@link Builder} New builder that can be used to create new BooleanCode objects. The method never returns
    * null.
    */
-  public BooleanCodeBuilder<?, ?> toBuilder( ) {
-    return new BooleanCodeBuilderImpl(this);
+  public Builder toBuilder( ) {
+    return new Builder(this);
   }
 }

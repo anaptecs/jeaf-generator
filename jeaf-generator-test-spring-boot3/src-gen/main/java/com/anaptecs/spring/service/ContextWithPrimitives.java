@@ -51,19 +51,6 @@ public class ContextWithPrimitives {
   private final Long aVeryLong;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  public ContextWithPrimitives( ) {
-    aBoolean = false;
-    aBooleanWrapper = null;
-    anInt = 0;
-    anInteger = null;
-    aLong = 0;
-    aVeryLong = null;
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.

@@ -18,8 +18,10 @@ import javax.ws.rs.QueryParam;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.anaptecs.spring.base.TimeUnit;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.annotation.Nulls;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 public class MultivaluedQueryParamsBean implements Serializable {
   /**
@@ -69,14 +71,6 @@ public class MultivaluedQueryParamsBean implements Serializable {
   private TimeUnit[] timeUnitArray;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  public MultivaluedQueryParamsBean( ) {
-    timeUnits = new HashSet<>();
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
@@ -120,6 +114,8 @@ public class MultivaluedQueryParamsBean implements Serializable {
   /**
    * Class implements builder to create a new instance of class <code>MultivaluedQueryParamsBean</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     private int[] intArray;
 

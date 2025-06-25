@@ -22,10 +22,12 @@ import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.annotation.Nulls;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(builder = Customer.Builder.class)
 public abstract class CustomerBase extends Partner {
   /**
    * Constant for the name of attribute "name".
@@ -60,14 +62,6 @@ public abstract class CustomerBase extends Partner {
   private Set<Account> accounts;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected CustomerBase( ) {
-    accounts = new HashSet<>();
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
@@ -91,6 +85,8 @@ public abstract class CustomerBase extends Partner {
    * Class implements builder to create a new instance of class Customer. As the class has read only attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static abstract class BuilderBase extends Partner.Builder {
     @NotBlank
     private String name;
@@ -354,7 +350,7 @@ public abstract class CustomerBase extends Partner {
    *
    * @param pEmail Value to which {@link #email} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.accounting.impl.pojo.Customer}
+   * @return {@link Customer}
    */
   public static Customer of( String pTags, String pName, String pFirstName, String pEmail ) {
     var lBuilder = Customer.builder();

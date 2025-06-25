@@ -19,7 +19,7 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
-@JsonDeserialize(builder = PlainPOJOBase.PlainPOJOBuilderImpl.class)
+@JsonDeserialize(builder = PlainPOJO.Builder.class)
 public abstract class PlainPOJOBase {
   /**
    * Constant for the name of attribute "hello".
@@ -41,7 +41,7 @@ public abstract class PlainPOJOBase {
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected PlainPOJOBase( PlainPOJOBuilder<?, ?> pBuilder ) {
+  protected PlainPOJOBase( BuilderBase pBuilder ) {
     // Ensure that builder is not null.
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
@@ -50,26 +50,27 @@ public abstract class PlainPOJOBase {
   }
 
   /**
-   * Class implements builder to create a new instance of class <code>PlainPOJO</code>.
+   * Class implements builder to create a new instance of class PlainPOJO. As the class has read only attributes or
+   * associations instances can not be created directly. Instead this builder class has to be used.
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class PlainPOJOBuilder<T extends PlainPOJO, B extends PlainPOJOBuilder<T, B>> {
+  public static abstract class BuilderBase {
     private String hello;
 
     @PositiveOrZero
     private Integer world;
 
     /**
-     * Use {@link PlainPOJOBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link PlainPOJO.builder()} instead of protected constructor to create new builder.
      */
-    protected PlainPOJOBuilder( ) {
+    protected BuilderBase( ) {
     }
 
     /**
-     * Use {@link PlainPOJOBuilder#builder(PlainPOJO)} instead of private constructor to create new builder.
+     * Use {@link PlainPOJO.builder(PlainPOJO)} instead of protected constructor to create new builder.
      */
-    protected PlainPOJOBuilder( PlainPOJOBase pObject ) {
+    protected BuilderBase( PlainPOJOBase pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setHello(pObject.hello);
@@ -81,37 +82,36 @@ public abstract class PlainPOJOBase {
      * Method sets attribute {@link #hello}.<br/>
      *
      * @param pHello Value to which {@link #hello} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setHello( String pHello ) {
+    public BuilderBase setHello( String pHello ) {
       // Assign value to attribute
       hello = pHello;
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets attribute {@link #world}.<br/>
      *
      * @param pWorld Value to which {@link #world} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setWorld( Integer pWorld ) {
+    public BuilderBase setWorld( Integer pWorld ) {
       // Assign value to attribute
       world = pWorld;
-      return this.self();
+      return this;
     }
-
-    /**
-     * Method returns instance of this builder. Operation is part of generic builder pattern.
-     */
-    protected abstract B self( );
 
     /**
      * Method creates a new instance of class PlainPOJO. The object will be initialized with the values of the builder.
      *
      * @return PlainPOJO Created object. The method never returns null.
      */
-    public abstract T build( );
+    public PlainPOJO build( ) {
+      PlainPOJO lObject = new PlainPOJO(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
+    }
 
     /**
      * Method creates a new validated instance of class PlainPOJO. The object will be initialized with the values of the
@@ -121,30 +121,9 @@ public abstract class PlainPOJOBase {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public PlainPOJO buildValidated( ) throws ConstraintViolationException {
-      PlainPOJO lObject = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
-      return lObject;
-    }
-  }
-
-  static final class PlainPOJOBuilderImpl extends PlainPOJOBuilder<PlainPOJO, PlainPOJOBuilderImpl> {
-    protected PlainPOJOBuilderImpl( ) {
-    }
-
-    protected PlainPOJOBuilderImpl( PlainPOJO pObject ) {
-      super(pObject);
-    }
-
-    @Override
-    protected PlainPOJOBuilderImpl self( ) {
-      return this;
-    }
-
-    @Override
-    public PlainPOJO build( ) {
-      PlainPOJO lObject = new PlainPOJO(this);
-      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
-      return lObject;
+      PlainPOJO lPOJO = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
+      return lPOJO;
     }
   }
 
@@ -174,7 +153,7 @@ public abstract class PlainPOJOBase {
    *
    * @param pWorld Value to which {@link #world} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.pojo.PlainPOJO}
+   * @return {@link PlainPOJO}
    */
   public static PlainPOJO of( String pHello, Integer pWorld ) {
     var lBuilder = PlainPOJO.builder();
@@ -265,7 +244,7 @@ public abstract class PlainPOJOBase {
    * @return {@link Builder} New builder that can be used to create new PlainPOJO objects. The method never returns
    * null.
    */
-  public PlainPOJOBuilder<?, ?> toBuilder( ) {
-    return new PlainPOJOBuilderImpl((PlainPOJO) this);
+  public PlainPOJO.Builder toBuilder( ) {
+    return new PlainPOJO.Builder((PlainPOJO) this);
   }
 }

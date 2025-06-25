@@ -16,7 +16,7 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
-@JsonDeserialize(builder = MyBusinessObject.MyBusinessObjectBuilderImpl.class)
+@JsonDeserialize(builder = MyBusinessObject.Builder.class)
 public class MyBusinessObject {
   /**
    * Constant for the name of attribute "myBusinessAttribute".
@@ -30,7 +30,7 @@ public class MyBusinessObject {
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected MyBusinessObject( MyBusinessObjectBuilder<?, ?> pBuilder ) {
+  protected MyBusinessObject( Builder pBuilder ) {
     // Ensure that builder is not null.
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
@@ -42,8 +42,8 @@ public class MyBusinessObject {
    *
    * @return {@link Builder} New builder that can be used to create new MyBusinessObject objects.
    */
-  public static MyBusinessObjectBuilder<?, ?> builder( ) {
-    return new MyBusinessObjectBuilderImpl();
+  public static Builder builder( ) {
+    return new Builder();
   }
 
   /**
@@ -65,20 +65,19 @@ public class MyBusinessObject {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class MyBusinessObjectBuilder<T extends MyBusinessObject, B extends MyBusinessObjectBuilder<T, B>> {
+  public static class Builder {
     private int myBusinessAttribute;
 
     /**
-     * Use {@link MyBusinessObjectBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link MyBusinessObject#builder()} instead of private constructor to create new builder.
      */
-    protected MyBusinessObjectBuilder( ) {
+    protected Builder( ) {
     }
 
     /**
-     * Use {@link MyBusinessObjectBuilder#builder(MyBusinessObject)} instead of private constructor to create new
-     * builder.
+     * Use {@link MyBusinessObject#builder(MyBusinessObject)} instead of private constructor to create new builder.
      */
-    protected MyBusinessObjectBuilder( MyBusinessObject pObject ) {
+    protected Builder( MyBusinessObject pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setMyBusinessAttribute(pObject.myBusinessAttribute);
@@ -89,18 +88,13 @@ public class MyBusinessObject {
      * Method sets attribute {@link #myBusinessAttribute}.<br/>
      *
      * @param pMyBusinessAttribute Value to which {@link #myBusinessAttribute} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setMyBusinessAttribute( int pMyBusinessAttribute ) {
+    public Builder setMyBusinessAttribute( int pMyBusinessAttribute ) {
       // Assign value to attribute
       myBusinessAttribute = pMyBusinessAttribute;
-      return this.self();
+      return this;
     }
-
-    /**
-     * Method returns instance of this builder. Operation is part of generic builder pattern.
-     */
-    protected abstract B self( );
 
     /**
      * Method creates a new instance of class MyBusinessObject. The object will be initialized with the values of the
@@ -108,7 +102,9 @@ public class MyBusinessObject {
      *
      * @return MyBusinessObject Created object. The method never returns null.
      */
-    public abstract T build( );
+    public MyBusinessObject build( ) {
+      return new MyBusinessObject(this);
+    }
 
     /**
      * Method creates a new validated instance of class MyBusinessObject. The object will be initialized with the values
@@ -121,26 +117,6 @@ public class MyBusinessObject {
       MyBusinessObject lObject = this.build();
       ValidationTools.getValidationTools().enforceObjectValidation(lObject);
       return lObject;
-    }
-  }
-
-  static final class MyBusinessObjectBuilderImpl
-      extends MyBusinessObjectBuilder<MyBusinessObject, MyBusinessObjectBuilderImpl> {
-    protected MyBusinessObjectBuilderImpl( ) {
-    }
-
-    protected MyBusinessObjectBuilderImpl( MyBusinessObject pObject ) {
-      super(pObject);
-    }
-
-    @Override
-    protected MyBusinessObjectBuilderImpl self( ) {
-      return this;
-    }
-
-    @Override
-    public MyBusinessObject build( ) {
-      return new MyBusinessObject(this);
     }
   }
 
@@ -215,7 +191,7 @@ public class MyBusinessObject {
    * @return {@link Builder} New builder that can be used to create new MyBusinessObject objects. The method never
    * returns null.
    */
-  public MyBusinessObjectBuilder<?, ?> toBuilder( ) {
-    return new MyBusinessObjectBuilderImpl(this);
+  public Builder toBuilder( ) {
+    return new Builder(this);
   }
 }

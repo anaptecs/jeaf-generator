@@ -9,7 +9,7 @@ public class YetAnotherPOJO extends YetAnotherPOJOBase {
   /**
    * Initialize object. Nothing special to do.
    */
-  protected YetAnotherPOJO( YetAnotherPOJOBuilder<?, ?> pBuilder ) {
+  protected YetAnotherPOJO( YetAnotherPOJO.BuilderBase pBuilder ) {
     super(pBuilder);
   }
 
@@ -18,8 +18,27 @@ public class YetAnotherPOJO extends YetAnotherPOJOBase {
    *
    * @return {@link Builder} New builder that can be used to create new YetAnotherPOJO objects.
    */
-  public static YetAnotherPOJOBuilder<?, ?> builder( ) {
-    return new YetAnotherPOJOBuilderImpl();
+  public static Builder builder( ) {
+    return new Builder();
+  }
+
+  /**
+   * Class implements builder to create a new instance of class YetAnotherPOJO. As the class has readonly attributes or
+   * associations instances can not be created directly. Instead this builder class has to be used.
+   */
+  public static class Builder extends YetAnotherPOJO.BuilderBase {
+    /**
+     * Use {@link YetAnotherPOJO#builder()} instead of protected constructor to create new builder.
+     */
+    protected Builder( ) {
+    }
+
+    /**
+     * Use {@link YetAnotherPOJO#builder(YetAnotherPOJO)} instead of protected constructor to create new builder.
+     */
+    protected Builder( YetAnotherPOJO pObject ) {
+      super(pObject);
+    }
   }
 
   /**

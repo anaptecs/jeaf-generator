@@ -15,12 +15,14 @@ import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "objectType", visible = true)
 @JsonSubTypes({ @JsonSubTypes.Type(value = ChildPOJO.class, name = "ChildPOJO") })
+@JsonDeserialize(builder = ParentPOJO.Builder.class)
 public class ParentPOJO {
   /**
    * Constant for the name of attribute "parentAttribute".
@@ -44,13 +46,6 @@ public class ParentPOJO {
   private byte weirdAttribute;
 
   private String hello;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected ParentPOJO( ) {
-  }
 
   /**
    * Initialize object using the passed builder.
@@ -85,7 +80,7 @@ public class ParentPOJO {
    *
    * @param pHello Value to which {@link #hello} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.pojo.ParentPOJO}
+   * @return {@link ParentPOJO}
    */
   public static ParentPOJO of( String pParentAttribute, byte pWeirdAttribute, String pHello ) {
     var lBuilder = ParentPOJO.builder();
@@ -98,6 +93,8 @@ public class ParentPOJO {
   /**
    * Class implements builder to create a new instance of class <code>ParentPOJO</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     private String parentAttribute;
 

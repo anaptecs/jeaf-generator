@@ -23,11 +23,13 @@ import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.Nulls;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "objectType", visible = true)
 @JsonSubTypes({ @JsonSubTypes.Type(value = POI.class, name = "POI"),
   @JsonSubTypes.Type(value = UICStop.class, name = "UICStop") })
+@JsonDeserialize(builder = Stop.Builder.class)
 public class Stop implements Serializable {
   /**
    * Default serial version UID.
@@ -50,14 +52,6 @@ public class Stop implements Serializable {
   @JsonProperty("_links")
   @JsonSetter(nulls = Nulls.SKIP)
   private List<LinkObject> links;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected Stop( ) {
-    links = new ArrayList<>();
-  }
 
   /**
    * Initialize object using the passed builder.
@@ -101,7 +95,7 @@ public class Stop implements Serializable {
    *
    * @param pName Value to which {@link #name} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.Stop}
+   * @return {@link Stop}
    */
   public static Stop of( String pName ) {
     var lBuilder = Stop.builder();
@@ -112,9 +106,13 @@ public class Stop implements Serializable {
   /**
    * Class implements builder to create a new instance of class <code>Stop</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
+    @JsonAlias({ "bavName", "stopName" })
     private String name;
 
+    @JsonProperty("_links")
     private List<LinkObject> links;
 
     /**

@@ -9,6 +9,7 @@ import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Valid
 public class SwissGeoPosition extends GeoPosition {
@@ -77,6 +78,7 @@ public class SwissGeoPosition extends GeoPosition {
   /**
    * Class implements builder to create a new instance of class <code>SwissGeoPosition</code>.
    */
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder extends GeoPosition.Builder {
     /**
      * Use {@link SwissGeoPosition#builder()} instead of private constructor to create new builder.

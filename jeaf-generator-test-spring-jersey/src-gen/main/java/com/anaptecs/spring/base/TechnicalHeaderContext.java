@@ -11,6 +11,9 @@ import java.util.Map;
 
 import javax.ws.rs.HeaderParam;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+
 public class TechnicalHeaderContext {
   /**
    * Constant for the name of attribute "reseller".
@@ -24,13 +27,6 @@ public class TechnicalHeaderContext {
    * Map contains all custom headers that were set on the object.
    */
   private Map<String, String> customHeaders = new HashMap<String, String>();
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  public TechnicalHeaderContext( ) {
-  }
 
   /**
    * Initialize object using the passed builder.
@@ -70,6 +66,8 @@ public class TechnicalHeaderContext {
   /**
    * Class implements builder to create a new instance of class <code>TechnicalHeaderContext</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     private String reseller;
 

@@ -10,6 +10,8 @@ import java.util.Set;
 
 import javax.validation.Valid;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  * single line class comment
  *
@@ -47,6 +49,7 @@ public abstract class ChildA extends ParentClass {
   /**
    * Class implements builder to create a new instance of class <code>ChildA</code>.
    */
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static abstract class Builder extends ParentClass.Builder {
     private int childAAttribute;
 

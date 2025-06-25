@@ -28,30 +28,31 @@ public abstract class AbstractWithCustomImplBase {
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected AbstractWithCustomImplBase( AbstractWithCustomImplBuilder<?, ?> pBuilder ) {
+  protected AbstractWithCustomImplBase( BuilderBase pBuilder ) {
     // Read attribute values from builder.
     justAProperty = pBuilder.justAProperty;
   }
 
   /**
-   * Class implements builder to create a new instance of class <code>AbstractWithCustomImpl</code>.
+   * Class implements builder to create a new instance of class AbstractWithCustomImpl. As the class has read only
+   * attributes or associations instances can not be created directly. Instead this builder class has to be used.
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class AbstractWithCustomImplBuilder<T extends AbstractWithCustomImpl, B extends AbstractWithCustomImplBuilder<T, B>> {
+  public static abstract class BuilderBase {
     private int justAProperty;
 
     /**
-     * Use {@link AbstractWithCustomImplBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link AbstractWithCustomImpl.builder()} instead of protected constructor to create new builder.
      */
-    protected AbstractWithCustomImplBuilder( ) {
+    protected BuilderBase( ) {
     }
 
     /**
-     * Use {@link AbstractWithCustomImplBuilder#builder(AbstractWithCustomImpl)} instead of private constructor to
-     * create new builder.
+     * Use {@link AbstractWithCustomImpl.builder(AbstractWithCustomImpl)} instead of protected constructor to create new
+     * builder.
      */
-    protected AbstractWithCustomImplBuilder( AbstractWithCustomImplBase pObject ) {
+    protected BuilderBase( AbstractWithCustomImplBase pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setJustAProperty(pObject.justAProperty);
@@ -62,18 +63,13 @@ public abstract class AbstractWithCustomImplBase {
      * Method sets attribute {@link #justAProperty}.<br/>
      *
      * @param pJustAProperty Value to which {@link #justAProperty} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setJustAProperty( int pJustAProperty ) {
+    public BuilderBase setJustAProperty( int pJustAProperty ) {
       // Assign value to attribute
       justAProperty = pJustAProperty;
-      return this.self();
+      return this;
     }
-
-    /**
-     * Method returns instance of this builder. Operation is part of generic builder pattern.
-     */
-    protected abstract B self( );
   }
 
   /**

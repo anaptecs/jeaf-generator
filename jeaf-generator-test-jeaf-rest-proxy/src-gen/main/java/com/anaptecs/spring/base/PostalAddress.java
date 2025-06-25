@@ -12,8 +12,10 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(builder = PostalAddress.Builder.class)
 public class PostalAddress implements Serializable {
   /**
    * Default serial version UID.
@@ -58,14 +60,6 @@ public class PostalAddress implements Serializable {
    * <b>Default Value:</b> <code>"Germany"</code>
    */
   private String country;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected PostalAddress( ) {
-    country = "Germany";
-  }
 
   /**
    * Initialize object using the passed builder.
@@ -119,7 +113,7 @@ public class PostalAddress implements Serializable {
    *
    * @param pCountry Value to which {@link #country} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.PostalAddress}
+   * @return {@link PostalAddress}
    */
   public static PostalAddress of( String pStreet, String pHouseNumber, String pCity, int pPostalCode,
       String pCountry ) {
@@ -135,6 +129,8 @@ public class PostalAddress implements Serializable {
   /**
    * Class implements builder to create a new instance of class <code>PostalAddress</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     private String street;
 

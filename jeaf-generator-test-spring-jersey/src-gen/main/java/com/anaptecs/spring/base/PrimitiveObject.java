@@ -9,8 +9,10 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(builder = PrimitiveObject.Builder.class)
 public class PrimitiveObject {
   /**
    * Constant for the name of attribute "aBoolean".
@@ -167,13 +169,6 @@ public class PrimitiveObject {
   private String bString;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected PrimitiveObject( ) {
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
@@ -261,7 +256,7 @@ public class PrimitiveObject {
    *
    * @param pBString Value to which {@link #bString} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.PrimitiveObject}
+   * @return {@link PrimitiveObject}
    */
   public static PrimitiveObject of( boolean pABoolean, Boolean pBBoolean, boolean pCBoolean, byte pAByte, Byte pBByte,
       short pAShort, Short pBShort, int pAInteger, Integer pBInteger, Integer pCInteger, long pALong, Long pBLong,
@@ -296,6 +291,8 @@ public class PrimitiveObject {
   /**
    * Class implements builder to create a new instance of class <code>PrimitiveObject</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     private boolean aBoolean;
 

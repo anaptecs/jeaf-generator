@@ -16,8 +16,10 @@ import javax.validation.constraints.Size;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.annotation.Nulls;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(builder = ChildBB.Builder.class)
 public class ChildBB extends ChildB {
   /**
    * Constant for the name of attribute "childBBAttribute".
@@ -65,14 +67,6 @@ public class ChildBB extends ChildB {
   private byte[] deprecatedArray;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected ChildBB( ) {
-    deprecatedBs = new HashSet<>();
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
@@ -112,7 +106,7 @@ public class ChildBB extends ChildB {
    *
    * @param pDeprecatedAttribute Value to which {@link #deprecatedAttribute} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.ChildBB}
+   * @return {@link ChildBB}
    */
   public static ChildBB of( String pParentAttribute, Long pChildBBAttribute, int pDeprecatedAttribute ) {
     var lBuilder = ChildBB.builder();
@@ -125,6 +119,8 @@ public class ChildBB extends ChildB {
   /**
    * Class implements builder to create a new instance of class <code>ChildBB</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder extends ChildB.Builder {
     private Long childBBAttribute;
 

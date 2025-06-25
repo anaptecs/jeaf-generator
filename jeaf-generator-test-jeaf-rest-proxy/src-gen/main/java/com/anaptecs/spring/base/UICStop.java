@@ -11,8 +11,10 @@ import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(builder = UICStop.Builder.class)
 public class UICStop extends Stop {
   /**
    * Default serial version UID.
@@ -25,13 +27,6 @@ public class UICStop extends Stop {
   public static final String UICCODE = "uicCode";
 
   private String uicCode;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected UICStop( ) {
-  }
 
   /**
    * Initialize object using the passed builder.
@@ -72,7 +67,7 @@ public class UICStop extends Stop {
    *
    * @param pUicCode Value to which {@link #uicCode} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.UICStop}
+   * @return {@link UICStop}
    */
   public static UICStop of( String pName, String pUicCode ) {
     var lBuilder = UICStop.builder();
@@ -84,6 +79,8 @@ public class UICStop extends Stop {
   /**
    * Class implements builder to create a new instance of class <code>UICStop</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder extends Stop.Builder {
     private String uicCode;
 

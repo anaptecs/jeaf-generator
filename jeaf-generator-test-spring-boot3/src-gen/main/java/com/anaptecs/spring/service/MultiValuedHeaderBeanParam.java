@@ -119,27 +119,6 @@ public class MultiValuedHeaderBeanParam {
   private final byte[] base64;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  public MultiValuedHeaderBeanParam( ) {
-    names = null;
-    ints = null;
-    doubles = null;
-    codes = null;
-    stringCodeList = new HashSet<>();
-    startDate = null;
-    dates = null;
-    timestamps = new HashSet<>();
-    calendars = null;
-    utilDates = null;
-    sqlTimestamps = null;
-    timeUnits = new HashSet<>();
-    timeUnitArray = null;
-    base64 = null;
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.

@@ -5,8 +5,8 @@ extension java::GeneratorCommons;
 
 
 cached boolean hasGenericBuilder(uml::Class class):
-	class.getTemplateParams().length == 0 && useGenericBuilderPattern();
-    
+	class.getTemplateParams().length == 0 && useGenericBuilderPattern() && class.belongsToClassHierarchy();
+	
 cached String genericBuilderName(uml::Class class):
 	class.name + "Builder";
 	

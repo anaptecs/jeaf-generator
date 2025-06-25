@@ -20,9 +20,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.annotation.Nulls;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonPropertyOrder(value = { "deprecatedLinks", "newLinks", "oldSingleLink", "newSingleLink" })
+@JsonDeserialize(builder = SimpleAssociationBackwardCompatibility.Builder.class)
 public class SimpleAssociationBackwardCompatibility implements Serializable {
   /**
    * Default serial version UID.
@@ -57,14 +59,6 @@ public class SimpleAssociationBackwardCompatibility implements Serializable {
   private SimpleBackwardCompatibility newSingleLink;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected SimpleAssociationBackwardCompatibility( ) {
-    newLinks = new ArrayList<>();
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
@@ -95,7 +89,7 @@ public class SimpleAssociationBackwardCompatibility implements Serializable {
    * Convenience method to create new instance of class SimpleAssociationBackwardCompatibility.
    *
    *
-   * @return {@link com.anaptecs.spring.base.backward.SimpleAssociationBackwardCompatibility}
+   * @return {@link SimpleAssociationBackwardCompatibility}
    */
   public static SimpleAssociationBackwardCompatibility of( ) {
     var lBuilder = SimpleAssociationBackwardCompatibility.builder();
@@ -105,6 +99,8 @@ public class SimpleAssociationBackwardCompatibility implements Serializable {
   /**
    * Class implements builder to create a new instance of class <code>SimpleAssociationBackwardCompatibility</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     private List<SimpleBackwardCompatibility> newLinks;
 

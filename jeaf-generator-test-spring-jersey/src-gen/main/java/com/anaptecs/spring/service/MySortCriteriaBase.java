@@ -6,8 +6,8 @@
 package com.anaptecs.spring.service;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 public abstract class MySortCriteriaBase {
   /**
    * Constant for the name of attribute "sortOrder".
@@ -24,13 +24,6 @@ public abstract class MySortCriteriaBase {
   private MySortProperty sortProperty;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected MySortCriteriaBase( ) {
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
@@ -45,6 +38,8 @@ public abstract class MySortCriteriaBase {
    * Class implements builder to create a new instance of class MySortCriteria. As the class has read only attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static abstract class BuilderBase {
     private SortOrder sortOrder;
 

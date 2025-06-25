@@ -21,15 +21,6 @@ public class GeoPosition extends PlaceRef {
   private final int latitude;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected GeoPosition( ) {
-    longitude = 0;
-    latitude = 0;
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.

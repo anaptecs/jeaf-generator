@@ -13,8 +13,8 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 public abstract class ComplexBookingIDBase implements Serializable {
   /**
    * Default serial version UID.
@@ -32,14 +32,6 @@ public abstract class ComplexBookingIDBase implements Serializable {
   private final String bookingID;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected ComplexBookingIDBase( ) {
-    bookingID = null;
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
@@ -55,6 +47,8 @@ public abstract class ComplexBookingIDBase implements Serializable {
    * Class implements builder to create a new instance of class ComplexBookingID. As the class has read only attributes
    * or associations instances can not be created directly. Instead this builder class has to be used.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static abstract class BuilderBase {
     /**
      * String representation of this object.

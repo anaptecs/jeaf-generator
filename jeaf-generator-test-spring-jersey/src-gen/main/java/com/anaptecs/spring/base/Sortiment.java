@@ -15,8 +15,10 @@ import java.util.Set;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.annotation.Nulls;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(builder = Sortiment.Builder.class)
 public class Sortiment {
   /**
    * Constant for the name of attribute "products".
@@ -30,16 +32,6 @@ public class Sortiment {
    * Attribute is required for correct handling of bidirectional associations in case of deserialization.
    */
   private transient boolean productsBackReferenceInitialized;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected Sortiment( ) {
-    products = new HashSet<>();
-    // Bidirectional back reference is not yet set up correctly
-    productsBackReferenceInitialized = false;
-  }
 
   /**
    * Initialize object using the passed builder.
@@ -85,6 +77,8 @@ public class Sortiment {
   /**
    * Class implements builder to create a new instance of class <code>Sortiment</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     private Set<Product> products;
 

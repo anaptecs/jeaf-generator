@@ -12,8 +12,10 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(builder = LinkObject.Builder.class)
 public class LinkObject implements Serializable {
   /**
    * Default serial version UID.
@@ -26,13 +28,6 @@ public class LinkObject implements Serializable {
   public static final String HREF = "href";
 
   private String href;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected LinkObject( ) {
-  }
 
   /**
    * Initialize object using the passed builder.
@@ -70,7 +65,7 @@ public class LinkObject implements Serializable {
    *
    * @param pHref Value to which {@link #href} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.LinkObject}
+   * @return {@link LinkObject}
    */
   public static LinkObject of( String pHref ) {
     var lBuilder = LinkObject.builder();
@@ -81,6 +76,8 @@ public class LinkObject implements Serializable {
   /**
    * Class implements builder to create a new instance of class <code>LinkObject</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     private String href;
 

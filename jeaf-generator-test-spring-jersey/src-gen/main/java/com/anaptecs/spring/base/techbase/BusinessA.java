@@ -6,8 +6,10 @@
 package com.anaptecs.spring.base.techbase;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(builder = BusinessA.Builder.class)
 public class BusinessA extends TechParent {
   /**
    * Constant for the name of attribute "businessAttribute".
@@ -15,13 +17,6 @@ public class BusinessA extends TechParent {
   public static final String BUSINESSATTRIBUTE = "businessAttribute";
 
   private int businessAttribute;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected BusinessA( ) {
-  }
 
   /**
    * Initialize object using the passed builder.
@@ -52,7 +47,7 @@ public class BusinessA extends TechParent {
    *
    * @param pBusinessAttribute Value to which {@link #businessAttribute} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.techbase.BusinessA}
+   * @return {@link BusinessA}
    */
   public static BusinessA of( String pTechAttribute, int pBusinessAttribute ) {
     var lBuilder = BusinessA.builder();
@@ -64,6 +59,8 @@ public class BusinessA extends TechParent {
   /**
    * Class implements builder to create a new instance of class <code>BusinessA</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder extends TechParent.Builder {
     private int businessAttribute;
 

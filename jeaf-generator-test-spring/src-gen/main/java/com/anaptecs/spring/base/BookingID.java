@@ -66,7 +66,7 @@ public class BookingID {
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected BookingID( BookingIDBuilder<?, ?> pBuilder ) {
+  protected BookingID( Builder pBuilder ) {
     // Read attribute values from builder.
     publicBookingID = pBuilder.publicBookingID;
     referenceID = pBuilder.referenceID;
@@ -80,8 +80,8 @@ public class BookingID {
    *
    * @return {@link Builder} New builder that can be used to create new BookingID objects.
    */
-  public static BookingIDBuilder<?, ?> builder( ) {
-    return new BookingIDBuilderImpl();
+  public static Builder builder( ) {
+    return new Builder();
   }
 
   /**
@@ -116,7 +116,7 @@ public class BookingID {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class BookingIDBuilder<T extends BookingID, B extends BookingIDBuilder<T, B>> {
+  public static class Builder {
     private String publicBookingID;
 
     private String referenceID;
@@ -128,15 +128,15 @@ public class BookingID {
     private BookingCode bookingCode;
 
     /**
-     * Use {@link BookingIDBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link BookingID#builder()} instead of private constructor to create new builder.
      */
-    protected BookingIDBuilder( ) {
+    protected Builder( ) {
     }
 
     /**
-     * Use {@link BookingIDBuilder#builder(BookingID)} instead of private constructor to create new builder.
+     * Use {@link BookingID#builder(BookingID)} instead of private constructor to create new builder.
      */
-    protected BookingIDBuilder( BookingID pObject ) {
+    protected Builder( BookingID pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setPublicBookingID(pObject.publicBookingID);
@@ -148,90 +148,88 @@ public class BookingID {
     }
 
     /**
+     * Method returns a new builder.
+     *
+     * @return {@link Builder} New builder that can be used to create new BookingID objects.
+     */
+    public static Builder newBuilder( ) {
+      return new Builder();
+    }
+
+    /**
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new BookingID objects. The method never returns
+     * null.
+     */
+    public static Builder newBuilder( BookingID pObject ) {
+      return new Builder(pObject);
+    }
+
+    /**
      * Method sets attribute {@link #publicBookingID}.<br/>
      *
      * @param pPublicBookingID Value to which {@link #publicBookingID} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setPublicBookingID( @MyNotNullProperty String pPublicBookingID ) {
+    public Builder setPublicBookingID( @MyNotNullProperty String pPublicBookingID ) {
       // Assign value to attribute
       publicBookingID = pPublicBookingID;
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets attribute {@link #referenceID}.<br/>
      *
      * @param pReferenceID Value to which {@link #referenceID} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setReferenceID( @MyNotNullProperty String pReferenceID ) {
+    public Builder setReferenceID( @MyNotNullProperty String pReferenceID ) {
       // Assign value to attribute
       referenceID = pReferenceID;
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets attribute {@link #externalRefID}.<br/>
      *
      * @param pExternalRefID Value to which {@link #externalRefID} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setExternalRefID( @MyNotNullProperty String pExternalRefID ) {
+    public Builder setExternalRefID( @MyNotNullProperty String pExternalRefID ) {
       // Assign value to attribute
       externalRefID = pExternalRefID;
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets association {@link #inventory}.<br/>
      *
      * @param pInventory Value to which {@link #inventory} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setInventory( @MyNotNullProperty InventoryType pInventory ) {
+    public Builder setInventory( @MyNotNullProperty InventoryType pInventory ) {
       inventory = pInventory;
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets association {@link #bookingCode}.<br/>
      *
      * @param pBookingCode Value to which {@link #bookingCode} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setBookingCode( @MyNotNullProperty BookingCode pBookingCode ) {
+    public Builder setBookingCode( @MyNotNullProperty BookingCode pBookingCode ) {
       bookingCode = pBookingCode;
-      return this.self();
+      return this;
     }
-
-    /**
-     * Method returns instance of this builder. Operation is part of generic builder pattern.
-     */
-    protected abstract B self( );
 
     /**
      * Method creates a new instance of class BookingID. The object will be initialized with the values of the builder.
      *
      * @return BookingID Created object. The method never returns null.
      */
-    public abstract T build( );
-  }
-
-  static final class BookingIDBuilderImpl extends BookingIDBuilder<BookingID, BookingIDBuilderImpl> {
-    protected BookingIDBuilderImpl( ) {
-    }
-
-    protected BookingIDBuilderImpl( BookingID pObject ) {
-      super(pObject);
-    }
-
-    @Override
-    protected BookingIDBuilderImpl self( ) {
-      return this;
-    }
-
-    @Override
     public BookingID build( ) {
       BookingID lObject = new BookingID(this);
       SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
@@ -377,7 +375,7 @@ public class BookingID {
    * @return {@link Builder} New builder that can be used to create new BookingID objects. The method never returns
    * null.
    */
-  public BookingIDBuilder<?, ?> toBuilder( ) {
-    return new BookingIDBuilderImpl(this);
+  public Builder toBuilder( ) {
+    return new Builder(this);
   }
 }

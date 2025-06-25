@@ -21,7 +21,7 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
     isGetterVisibility = JsonAutoDetect.Visibility.NONE,
     setterVisibility = JsonAutoDetect.Visibility.NONE,
     creatorVisibility = JsonAutoDetect.Visibility.ANY)
-@JsonDeserialize(builder = BeanParameter.BeanParameterBuilderImpl.class)
+@JsonDeserialize(builder = BeanParameter.Builder.class)
 public class BeanParameter {
   /**
    * Constant for the name of attribute "accessToken".
@@ -51,7 +51,7 @@ public class BeanParameter {
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected BeanParameter( BeanParameterBuilder<?, ?> pBuilder ) {
+  protected BeanParameter( Builder pBuilder ) {
     // Read attribute values from builder.
     accessToken = pBuilder.accessToken;
     language = pBuilder.language;
@@ -63,8 +63,8 @@ public class BeanParameter {
    *
    * @return {@link Builder} New builder that can be used to create new BeanParameter objects.
    */
-  public static BeanParameterBuilder<?, ?> builder( ) {
-    return new BeanParameterBuilderImpl();
+  public static Builder builder( ) {
+    return new Builder();
   }
 
   /**
@@ -92,7 +92,7 @@ public class BeanParameter {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class BeanParameterBuilder<T extends BeanParameter, B extends BeanParameterBuilder<T, B>> {
+  public static class Builder {
     private String accessToken;
 
     private Locale language;
@@ -101,15 +101,15 @@ public class BeanParameter {
     private String oldStyle;
 
     /**
-     * Use {@link BeanParameterBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link BeanParameter#builder()} instead of private constructor to create new builder.
      */
-    protected BeanParameterBuilder( ) {
+    protected Builder( ) {
     }
 
     /**
-     * Use {@link BeanParameterBuilder#builder(BeanParameter)} instead of private constructor to create new builder.
+     * Use {@link BeanParameter#builder(BeanParameter)} instead of private constructor to create new builder.
      */
-    protected BeanParameterBuilder( BeanParameter pObject ) {
+    protected Builder( BeanParameter pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setAccessToken(pObject.accessToken);
@@ -119,46 +119,61 @@ public class BeanParameter {
     }
 
     /**
+     * Method returns a new builder.
+     *
+     * @return {@link Builder} New builder that can be used to create new BeanParameter objects.
+     */
+    public static Builder newBuilder( ) {
+      return new Builder();
+    }
+
+    /**
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new BeanParameter objects. The method never
+     * returns null.
+     */
+    public static Builder newBuilder( BeanParameter pObject ) {
+      return new Builder(pObject);
+    }
+
+    /**
      * Method sets attribute {@link #accessToken}.<br/>
      *
      * @param pAccessToken Value to which {@link #accessToken} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setAccessToken( @MyNotNullProperty String pAccessToken ) {
+    public Builder setAccessToken( @MyNotNullProperty String pAccessToken ) {
       // Assign value to attribute
       accessToken = pAccessToken;
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets attribute {@link #language}.<br/>
      *
      * @param pLanguage Value to which {@link #language} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setLanguage( @MyNotNullProperty Locale pLanguage ) {
+    public Builder setLanguage( @MyNotNullProperty Locale pLanguage ) {
       // Assign value to attribute
       language = pLanguage;
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets attribute {@link #oldStyle}.<br/>
      *
      * @param pOldStyle Value to which {@link #oldStyle} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
-    public B setOldStyle( @MyNotNullProperty String pOldStyle ) {
+    public Builder setOldStyle( @MyNotNullProperty String pOldStyle ) {
       // Assign value to attribute
       oldStyle = pOldStyle;
-      return this.self();
+      return this;
     }
-
-    /**
-     * Method returns instance of this builder. Operation is part of generic builder pattern.
-     */
-    protected abstract B self( );
 
     /**
      * Method creates a new instance of class BeanParameter. The object will be initialized with the values of the
@@ -166,23 +181,6 @@ public class BeanParameter {
      *
      * @return BeanParameter Created object. The method never returns null.
      */
-    public abstract T build( );
-  }
-
-  static final class BeanParameterBuilderImpl extends BeanParameterBuilder<BeanParameter, BeanParameterBuilderImpl> {
-    protected BeanParameterBuilderImpl( ) {
-    }
-
-    protected BeanParameterBuilderImpl( BeanParameter pObject ) {
-      super(pObject);
-    }
-
-    @Override
-    protected BeanParameterBuilderImpl self( ) {
-      return this;
-    }
-
-    @Override
     public BeanParameter build( ) {
       BeanParameter lObject = new BeanParameter(this);
       SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
@@ -325,7 +323,7 @@ public class BeanParameter {
    * @return {@link Builder} New builder that can be used to create new BeanParameter objects. The method never returns
    * null.
    */
-  public BeanParameterBuilder<?, ?> toBuilder( ) {
-    return new BeanParameterBuilderImpl(this);
+  public Builder toBuilder( ) {
+    return new Builder(this);
   }
 }

@@ -1,7 +1,7 @@
 
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.spring.composite;
@@ -13,13 +13,6 @@ public class ComplexBookingID extends ComplexBookingIDBase {
   private static final long serialVersionUID = 1L;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected ComplexBookingID( ) {
-  }
-
-  /**
    * Initialize object. Nothing special to do.
    */
   protected ComplexBookingID( ComplexBookingID.BuilderBase pBuilder ) {
@@ -28,7 +21,7 @@ public class ComplexBookingID extends ComplexBookingIDBase {
 
   /**
    * Method returns a new builder.
-   * 
+   *
    * @return {@link Builder} New builder that can be used to create new ComplexBookingID objects.
    */
   public static Builder builder( ) {
@@ -37,16 +30,16 @@ public class ComplexBookingID extends ComplexBookingIDBase {
 
   /**
    * Method creates a new builder and initialize it with the data from the passed object.
-   * 
+   *
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new ComplexBookingID objects. The method never
    * returns null.
    */
-  public static Builder builder( com.anaptecs.spring.composite.ComplexBookingID pObject ) {
+  public static Builder builder(com.anaptecs.spring.composite.ComplexBookingID pObject) {
     return new Builder(pObject);
   }
 
-  public static Builder builder( String pBookingID ) {
+  public static Builder builder(String pBookingID) {
     Builder lBuilder = builder();
     lBuilder.setBookingID(pBookingID);
     return lBuilder;

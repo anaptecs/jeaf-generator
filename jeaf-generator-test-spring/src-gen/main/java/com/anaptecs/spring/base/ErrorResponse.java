@@ -23,14 +23,14 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
     isGetterVisibility = JsonAutoDetect.Visibility.NONE,
     setterVisibility = JsonAutoDetect.Visibility.NONE,
     creatorVisibility = JsonAutoDetect.Visibility.ANY)
-@JsonDeserialize(builder = ErrorResponse.ErrorResponseBuilderImpl.class)
+@JsonDeserialize(builder = ErrorResponse.Builder.class)
 public class ErrorResponse {
   /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected ErrorResponse( ErrorResponseBuilder<?, ?> pBuilder ) {
+  protected ErrorResponse( Builder pBuilder ) {
   }
 
   /**
@@ -38,8 +38,8 @@ public class ErrorResponse {
    *
    * @return {@link Builder} New builder that can be used to create new ErrorResponse objects.
    */
-  public static ErrorResponseBuilder<?, ?> builder( ) {
-    return new ErrorResponseBuilderImpl();
+  public static Builder builder( ) {
+    return new Builder();
   }
 
   /**
@@ -58,23 +58,38 @@ public class ErrorResponse {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class ErrorResponseBuilder<T extends ErrorResponse, B extends ErrorResponseBuilder<T, B>> {
+  public static class Builder {
     /**
-     * Use {@link ErrorResponseBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link ErrorResponse#builder()} instead of private constructor to create new builder.
      */
-    protected ErrorResponseBuilder( ) {
+    protected Builder( ) {
     }
 
     /**
-     * Use {@link ErrorResponseBuilder#builder(ErrorResponse)} instead of private constructor to create new builder.
+     * Use {@link ErrorResponse#builder(ErrorResponse)} instead of private constructor to create new builder.
      */
-    protected ErrorResponseBuilder( ErrorResponse pObject ) {
+    protected Builder( ErrorResponse pObject ) {
     }
 
     /**
-     * Method returns instance of this builder. Operation is part of generic builder pattern.
+     * Method returns a new builder.
+     *
+     * @return {@link Builder} New builder that can be used to create new ErrorResponse objects.
      */
-    protected abstract B self( );
+    public static Builder newBuilder( ) {
+      return new Builder();
+    }
+
+    /**
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new ErrorResponse objects. The method never
+     * returns null.
+     */
+    public static Builder newBuilder( ErrorResponse pObject ) {
+      return new Builder(pObject);
+    }
 
     /**
      * Method creates a new instance of class ErrorResponse. The object will be initialized with the values of the
@@ -82,23 +97,6 @@ public class ErrorResponse {
      *
      * @return ErrorResponse Created object. The method never returns null.
      */
-    public abstract T build( );
-  }
-
-  static final class ErrorResponseBuilderImpl extends ErrorResponseBuilder<ErrorResponse, ErrorResponseBuilderImpl> {
-    protected ErrorResponseBuilderImpl( ) {
-    }
-
-    protected ErrorResponseBuilderImpl( ErrorResponse pObject ) {
-      super(pObject);
-    }
-
-    @Override
-    protected ErrorResponseBuilderImpl self( ) {
-      return this;
-    }
-
-    @Override
     public ErrorResponse build( ) {
       ErrorResponse lObject = new ErrorResponse(this);
       SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
@@ -160,7 +158,7 @@ public class ErrorResponse {
    * @return {@link Builder} New builder that can be used to create new ErrorResponse objects. The method never returns
    * null.
    */
-  public ErrorResponseBuilder<?, ?> toBuilder( ) {
-    return new ErrorResponseBuilderImpl(this);
+  public Builder toBuilder( ) {
+    return new Builder(this);
   }
 }

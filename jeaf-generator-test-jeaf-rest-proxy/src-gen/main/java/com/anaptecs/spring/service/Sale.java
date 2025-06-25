@@ -14,8 +14,10 @@ import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.anaptecs.spring.base.Channel;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(builder = Sale.Builder.class)
 public class Sale implements Serializable {
   /**
    * Default serial version UID.
@@ -35,13 +37,6 @@ public class Sale implements Serializable {
   private BigDecimal transactionAmount;
 
   private Channel sale;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected Sale( ) {
-  }
 
   /**
    * Initialize object using the passed builder.
@@ -80,7 +75,7 @@ public class Sale implements Serializable {
    *
    * @param pTransactionAmount Value to which {@link #transactionAmount} should be set.
    *
-   * @return {@link com.anaptecs.spring.service.Sale}
+   * @return {@link Sale}
    */
   public static Sale of( BigDecimal pTransactionAmount ) {
     var lBuilder = Sale.builder();
@@ -91,6 +86,8 @@ public class Sale implements Serializable {
   /**
    * Class implements builder to create a new instance of class <code>Sale</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     private BigDecimal transactionAmount;
 

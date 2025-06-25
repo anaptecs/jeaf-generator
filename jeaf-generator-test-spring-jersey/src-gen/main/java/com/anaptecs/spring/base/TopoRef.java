@@ -6,16 +6,11 @@
 package com.anaptecs.spring.base;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(builder = TopoRef.Builder.class)
 public class TopoRef extends PlaceRef {
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected TopoRef( ) {
-  }
-
   /**
    * Initialize object using the passed builder.
    *
@@ -43,7 +38,7 @@ public class TopoRef extends PlaceRef {
    *
    * @param pType Value to which {@link #type} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.TopoRef}
+   * @return {@link TopoRef}
    */
   public static TopoRef of( String pName, MyType pType ) {
     var lBuilder = TopoRef.builder();
@@ -55,6 +50,8 @@ public class TopoRef extends PlaceRef {
   /**
    * Class implements builder to create a new instance of class <code>TopoRef</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder extends PlaceRef.Builder {
     /**
      * Use {@link TopoRef#builder()} instead of private constructor to create new builder.

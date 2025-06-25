@@ -16,11 +16,13 @@ import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.Nulls;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "objectType", visible = true)
 @JsonSubTypes({ @JsonSubTypes.Type(value = Company.class, name = "Company"),
   @JsonSubTypes.Type(value = Person.class, name = "Person") })
+@JsonDeserialize(builder = Partner.Builder.class)
 public class Partner {
   /**
    * Constant for the name of attribute "postalAddresses".
@@ -29,14 +31,6 @@ public class Partner {
 
   @JsonSetter(nulls = Nulls.SKIP)
   private List<PostalAddress> postalAddresses;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected Partner( ) {
-    postalAddresses = new ArrayList<>();
-  }
 
   /**
    * Initialize object using the passed builder.
@@ -66,7 +60,7 @@ public class Partner {
    * Convenience method to create new instance of class Partner.
    *
    *
-   * @return {@link com.anaptecs.spring.base.Partner}
+   * @return {@link Partner}
    */
   public static Partner of( ) {
     var lBuilder = Partner.builder();
@@ -76,6 +70,8 @@ public class Partner {
   /**
    * Class implements builder to create a new instance of class <code>Partner</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     private List<PostalAddress> postalAddresses;
 

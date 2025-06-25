@@ -10,6 +10,8 @@ import java.math.BigDecimal;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 /**
  * Type represents an amount of money.<br/>
@@ -23,7 +25,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(builder = MoneyAmount.Builder.class)
 public class MoneyAmount {
   /**
    * Constant for the name of attribute "amount".
@@ -43,15 +45,6 @@ public class MoneyAmount {
 
   @NotNull
   private final CurrencyCode currencyCode;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected MoneyAmount( ) {
-    amount = null;
-    currencyCode = null;
-  }
 
   /**
    * Initialize object using the passed builder.
@@ -81,7 +74,7 @@ public class MoneyAmount {
    *
    * @param pCurrencyCode Value to which {@link #currencyCode} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.MoneyAmount}
+   * @return {@link MoneyAmount}
    */
   public static MoneyAmount of( BigDecimal pAmount, CurrencyCode pCurrencyCode ) {
     var lBuilder = MoneyAmount.builder();
@@ -93,6 +86,8 @@ public class MoneyAmount {
   /**
    * Class implements builder to create a new instance of class <code>MoneyAmount</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     /**
      * The amount of money. Attribute is always set.

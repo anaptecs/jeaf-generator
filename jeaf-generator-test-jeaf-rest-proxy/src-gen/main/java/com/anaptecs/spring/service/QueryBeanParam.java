@@ -18,8 +18,10 @@ import javax.ws.rs.QueryParam;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.anaptecs.spring.base.BookingCode;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.annotation.Nulls;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 public class QueryBeanParam implements Serializable {
   /**
@@ -55,15 +57,6 @@ public class QueryBeanParam implements Serializable {
   @QueryParam("sortCriteria")
   @JsonSetter(nulls = Nulls.SKIP)
   private List<MySortCriteria> sortCriteria;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  public QueryBeanParam( ) {
-    maxResults = 47;
-    sortCriteria = new ArrayList<>();
-  }
 
   /**
    * Initialize object using the passed builder.
@@ -123,6 +116,8 @@ public class QueryBeanParam implements Serializable {
   /**
    * Class implements builder to create a new instance of class <code>QueryBeanParam</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     private BookingCode bookingCode;
 

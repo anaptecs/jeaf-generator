@@ -10,13 +10,6 @@ import jakarta.validation.Valid;
 @Valid
 public class Person extends PersonBase {
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected Person( ) {
-  }
-
-  /**
    * Initialize object. Nothing special to do.
    */
   protected Person( Person.BuilderBase pBuilder ) {

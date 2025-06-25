@@ -6,8 +6,8 @@
 package com.anaptecs.spring.base;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class BookingID {
   /**
    * Constant for the name of attribute "publicBookingID".
@@ -51,18 +51,6 @@ public class BookingID {
   private final BookingCode bookingCode;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected BookingID( ) {
-    publicBookingID = null;
-    referenceID = null;
-    externalRefID = null;
-    inventory = null;
-    bookingCode = null;
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
@@ -102,6 +90,8 @@ public class BookingID {
   /**
    * Class implements builder to create a new instance of class <code>BookingID</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     private String publicBookingID;
 

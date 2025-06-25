@@ -13,10 +13,12 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(builder = ComplextTypeArrayPOJO.Builder.class)
 public class ComplextTypeArrayPOJO {
   /**
    * Constant for the name of attribute "plainPOJOs".
@@ -24,13 +26,6 @@ public class ComplextTypeArrayPOJO {
   public static final String PLAINPOJOS = "plainPOJOs";
 
   private PlainPOJO[] plainPOJOs;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected ComplextTypeArrayPOJO( ) {
-  }
 
   /**
    * Initialize object using the passed builder.
@@ -57,7 +52,7 @@ public class ComplextTypeArrayPOJO {
    * Convenience method to create new instance of class ComplextTypeArrayPOJO.
    *
    *
-   * @return {@link com.anaptecs.jeaf.junit.pojo.ComplextTypeArrayPOJO}
+   * @return {@link ComplextTypeArrayPOJO}
    */
   public static ComplextTypeArrayPOJO of( ) {
     var lBuilder = ComplextTypeArrayPOJO.builder();
@@ -67,6 +62,8 @@ public class ComplextTypeArrayPOJO {
   /**
    * Class implements builder to create a new instance of class <code>ComplextTypeArrayPOJO</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     private PlainPOJO[] plainPOJOs;
 

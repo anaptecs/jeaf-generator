@@ -15,6 +15,7 @@ import javax.validation.constraints.NotNull;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Valid
 public class IntegerCode implements ServiceObject {
@@ -67,6 +68,7 @@ public class IntegerCode implements ServiceObject {
   /**
    * Class implements builder to create a new instance of class <code>IntegerCode</code>.
    */
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     @Min(value = 1234)
     private Integer code;

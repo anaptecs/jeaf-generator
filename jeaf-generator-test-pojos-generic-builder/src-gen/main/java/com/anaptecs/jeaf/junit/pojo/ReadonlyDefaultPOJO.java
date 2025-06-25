@@ -12,7 +12,7 @@ public class ReadonlyDefaultPOJO extends ReadonlyDefaultPOJOBase {
   /**
    * Initialize object. Nothing special to do.
    */
-  protected ReadonlyDefaultPOJO( ReadonlyDefaultPOJOBuilder<?, ?> pBuilder ) {
+  protected ReadonlyDefaultPOJO( ReadonlyDefaultPOJO.BuilderBase pBuilder ) {
     super(pBuilder);
   }
 
@@ -21,7 +21,27 @@ public class ReadonlyDefaultPOJO extends ReadonlyDefaultPOJOBase {
    *
    * @return {@link Builder} New builder that can be used to create new ReadonlyDefaultPOJO objects.
    */
-  public static ReadonlyDefaultPOJOBuilder<?, ?> builder( ) {
-    return new ReadonlyDefaultPOJOBuilderImpl();
+  public static Builder builder( ) {
+    return new Builder();
+  }
+
+  /**
+   * Class implements builder to create a new instance of class ReadonlyDefaultPOJO. As the class has readonly
+   * attributes or associations instances can not be created directly. Instead this builder class has to be used.
+   */
+  public static class Builder extends ReadonlyDefaultPOJO.BuilderBase {
+    /**
+     * Use {@link ReadonlyDefaultPOJO#builder()} instead of protected constructor to create new builder.
+     */
+    protected Builder( ) {
+    }
+
+    /**
+     * Use {@link ReadonlyDefaultPOJO#builder(ReadonlyDefaultPOJO)} instead of protected constructor to create new
+     * builder.
+     */
+    protected Builder( ReadonlyDefaultPOJO pObject ) {
+      super(pObject);
+    }
   }
 }

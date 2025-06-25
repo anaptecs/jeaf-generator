@@ -17,12 +17,14 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
-@JsonDeserialize(builder = BidirectionalB.BidirectionalBBuilderImpl.class)
+@JsonDeserialize(builder = BidirectionalB.Builder.class)
 public class BidirectionalB {
   /**
    * Constant for the name of attribute "as".
@@ -34,6 +36,7 @@ public class BidirectionalB {
    */
   public static final String THEAS = "theAs";
 
+  @JsonSetter(nulls = Nulls.SKIP)
   private final List<BidirectionalA> as;
 
   /**
@@ -41,6 +44,7 @@ public class BidirectionalB {
    */
   private transient boolean asBackReferenceInitialized;
 
+  @JsonSetter(nulls = Nulls.SKIP)
   private final List<BidirectionalA> theAs;
 
   /**
@@ -53,7 +57,7 @@ public class BidirectionalB {
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected BidirectionalB( BidirectionalBBuilder<?, ?> pBuilder ) {
+  protected BidirectionalB( Builder pBuilder ) {
     // Ensure that builder is not null.
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
@@ -88,8 +92,8 @@ public class BidirectionalB {
    *
    * @return {@link Builder} New builder that can be used to create new BidirectionalB objects.
    */
-  public static BidirectionalBBuilder<?, ?> builder( ) {
-    return new BidirectionalBBuilderImpl();
+  public static Builder builder( ) {
+    return new Builder();
   }
 
   /**
@@ -108,21 +112,21 @@ public class BidirectionalB {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class BidirectionalBBuilder<T extends BidirectionalB, B extends BidirectionalBBuilder<T, B>> {
+  public static class Builder {
     private List<BidirectionalA> as;
 
     private List<BidirectionalA> theAs;
 
     /**
-     * Use {@link BidirectionalBBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link BidirectionalB#builder()} instead of private constructor to create new builder.
      */
-    protected BidirectionalBBuilder( ) {
+    protected Builder( ) {
     }
 
     /**
-     * Use {@link BidirectionalBBuilder#builder(BidirectionalB)} instead of private constructor to create new builder.
+     * Use {@link BidirectionalB#builder(BidirectionalB)} instead of private constructor to create new builder.
      */
-    protected BidirectionalBBuilder( BidirectionalB pObject ) {
+    protected Builder( BidirectionalB pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setAs(pObject.as);
@@ -134,9 +138,9 @@ public class BidirectionalB {
      * Method sets association {@link #as}.<br/>
      *
      * @param pAs Collection to which {@link #as} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setAs( List<BidirectionalA> pAs ) {
+    public Builder setAs( List<BidirectionalA> pAs ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pAs != null) {
         as = new ArrayList<BidirectionalA>(pAs);
@@ -144,32 +148,32 @@ public class BidirectionalB {
       else {
         as = null;
       }
-      return this.self();
+      return this;
     }
 
     /**
      * Method adds the passed objects to association {@link #as}.<br/>
      *
      * @param pAs Array of objects that should be added to {@link #as}. The parameter may be null.
-     * @return {@link B} Instance of this builder to support chaining. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
      */
-    public B addToAs( BidirectionalA... pAs ) {
+    public Builder addToAs( BidirectionalA... pAs ) {
       if (pAs != null) {
         if (as == null) {
           as = new ArrayList<BidirectionalA>();
         }
         as.addAll(Arrays.asList(pAs));
       }
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets association {@link #theAs}.<br/>
      *
      * @param pTheAs Collection to which {@link #theAs} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setTheAs( List<BidirectionalA> pTheAs ) {
+    public Builder setTheAs( List<BidirectionalA> pTheAs ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pTheAs != null) {
         theAs = new ArrayList<BidirectionalA>(pTheAs);
@@ -177,29 +181,24 @@ public class BidirectionalB {
       else {
         theAs = null;
       }
-      return this.self();
+      return this;
     }
 
     /**
      * Method adds the passed objects to association {@link #theAs}.<br/>
      *
      * @param pTheAs Array of objects that should be added to {@link #theAs}. The parameter may be null.
-     * @return {@link B} Instance of this builder to support chaining. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
      */
-    public B addToTheAs( BidirectionalA... pTheAs ) {
+    public Builder addToTheAs( BidirectionalA... pTheAs ) {
       if (pTheAs != null) {
         if (theAs == null) {
           theAs = new ArrayList<BidirectionalA>();
         }
         theAs.addAll(Arrays.asList(pTheAs));
       }
-      return this.self();
+      return this;
     }
-
-    /**
-     * Method returns instance of this builder. Operation is part of generic builder pattern.
-     */
-    protected abstract B self( );
 
     /**
      * Method creates a new instance of class BidirectionalB. The object will be initialized with the values of the
@@ -207,7 +206,9 @@ public class BidirectionalB {
      *
      * @return BidirectionalB Created object. The method never returns null.
      */
-    public abstract T build( );
+    public BidirectionalB build( ) {
+      return new BidirectionalB(this);
+    }
 
     /**
      * Method creates a new validated instance of class BidirectionalB. The object will be initialized with the values
@@ -220,26 +221,6 @@ public class BidirectionalB {
       BidirectionalB lObject = this.build();
       ValidationTools.getValidationTools().enforceObjectValidation(lObject);
       return lObject;
-    }
-  }
-
-  static final class BidirectionalBBuilderImpl
-      extends BidirectionalBBuilder<BidirectionalB, BidirectionalBBuilderImpl> {
-    protected BidirectionalBBuilderImpl( ) {
-    }
-
-    protected BidirectionalBBuilderImpl( BidirectionalB pObject ) {
-      super(pObject);
-    }
-
-    @Override
-    protected BidirectionalBBuilderImpl self( ) {
-      return this;
-    }
-
-    @Override
-    public BidirectionalB build( ) {
-      return new BidirectionalB(this);
     }
   }
 
@@ -372,7 +353,7 @@ public class BidirectionalB {
    * @return {@link Builder} New builder that can be used to create new BidirectionalB objects. The method never returns
    * null.
    */
-  public BidirectionalBBuilder<?, ?> toBuilder( ) {
-    return new BidirectionalBBuilderImpl(this);
+  public Builder toBuilder( ) {
+    return new Builder(this);
   }
 }

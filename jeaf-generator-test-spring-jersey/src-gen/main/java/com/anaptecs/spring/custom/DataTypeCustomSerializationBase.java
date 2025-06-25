@@ -8,8 +8,8 @@ package com.anaptecs.spring.custom;
 import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 public abstract class DataTypeCustomSerializationBase {
   /**
    * Constant for the name of attribute "property1".
@@ -17,13 +17,6 @@ public abstract class DataTypeCustomSerializationBase {
   public static final String PROPERTY1 = "property1";
 
   private String property1;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected DataTypeCustomSerializationBase( ) {
-  }
 
   /**
    * Initialize object using the passed builder.
@@ -39,6 +32,8 @@ public abstract class DataTypeCustomSerializationBase {
    * Class implements builder to create a new instance of class DataTypeCustomSerialization. As the class has read only
    * attributes or associations instances can not be created directly. Instead this builder class has to be used.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static abstract class BuilderBase {
     private String property1;
 

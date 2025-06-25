@@ -7,6 +7,9 @@ package com.anaptecs.spring.base;
 
 import javax.ws.rs.HeaderParam;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+
 public class ParentBeanParamType {
   /**
    * Constant for the name of attribute "novaKey".
@@ -49,13 +52,6 @@ public class ParentBeanParamType {
    */
   @HeaderParam("code")
   private DoubleCode code;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  public ParentBeanParamType( ) {
-  }
 
   /**
    * Initialize object using the passed builder.
@@ -101,6 +97,8 @@ public class ParentBeanParamType {
   /**
    * Class implements builder to create a new instance of class <code>ParentBeanParamType</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     /**
      * <br/>

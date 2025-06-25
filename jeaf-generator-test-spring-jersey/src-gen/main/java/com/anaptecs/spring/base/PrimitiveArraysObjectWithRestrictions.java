@@ -13,8 +13,10 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(builder = PrimitiveArraysObjectWithRestrictions.Builder.class)
 public class PrimitiveArraysObjectWithRestrictions {
   /**
    * Constant for the name of attribute "aBooleanArray".
@@ -174,13 +176,6 @@ public class PrimitiveArraysObjectWithRestrictions {
   private String[] bStringArray;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected PrimitiveArraysObjectWithRestrictions( ) {
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
@@ -226,7 +221,7 @@ public class PrimitiveArraysObjectWithRestrictions {
    *
    * @param pALongArray Value to which {@link #aLongArray} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.PrimitiveArraysObjectWithRestrictions}
+   * @return {@link PrimitiveArraysObjectWithRestrictions}
    */
   public static PrimitiveArraysObjectWithRestrictions of( long[] pALongArray ) {
     var lBuilder = PrimitiveArraysObjectWithRestrictions.builder();
@@ -237,6 +232,8 @@ public class PrimitiveArraysObjectWithRestrictions {
   /**
    * Class implements builder to create a new instance of class <code>PrimitiveArraysObjectWithRestrictions</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     private boolean[] aBooleanArray;
 

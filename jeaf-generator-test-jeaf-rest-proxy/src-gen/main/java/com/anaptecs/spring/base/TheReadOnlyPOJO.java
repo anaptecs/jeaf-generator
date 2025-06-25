@@ -18,8 +18,10 @@ import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.annotation.Nulls;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(builder = TheReadOnlyPOJO.Builder.class)
 public class TheReadOnlyPOJO implements Serializable {
   /**
    * Default serial version UID.
@@ -54,17 +56,6 @@ public class TheReadOnlyPOJO implements Serializable {
 
   @JsonSetter(nulls = Nulls.SKIP)
   private final List<Entity> entities;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected TheReadOnlyPOJO( ) {
-    dataUnit = null;
-    name = null;
-    ints = null;
-    entities = new ArrayList<>();
-  }
 
   /**
    * Initialize object using the passed builder.
@@ -110,7 +101,7 @@ public class TheReadOnlyPOJO implements Serializable {
    *
    * @param pName Value to which {@link #name} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.TheReadOnlyPOJO}
+   * @return {@link TheReadOnlyPOJO}
    */
   public static TheReadOnlyPOJO of( String pName ) {
     var lBuilder = TheReadOnlyPOJO.builder();
@@ -121,6 +112,8 @@ public class TheReadOnlyPOJO implements Serializable {
   /**
    * Class implements builder to create a new instance of class <code>TheReadOnlyPOJO</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     private DataUnit dataUnit;
 

@@ -20,7 +20,7 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
     isGetterVisibility = JsonAutoDetect.Visibility.NONE,
     setterVisibility = JsonAutoDetect.Visibility.NONE,
     creatorVisibility = JsonAutoDetect.Visibility.ANY)
-@JsonDeserialize(builder = PostalAddress.PostalAddressBuilderImpl.class)
+@JsonDeserialize(builder = PostalAddress.Builder.class)
 public class PostalAddress {
   /**
    * Constant for the name of attribute "street".
@@ -66,7 +66,7 @@ public class PostalAddress {
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected PostalAddress( PostalAddressBuilder<?, ?> pBuilder ) {
+  protected PostalAddress( Builder pBuilder ) {
     // Read attribute values from builder.
     street = pBuilder.street;
     houseNumber = pBuilder.houseNumber;
@@ -80,8 +80,8 @@ public class PostalAddress {
    *
    * @return {@link Builder} New builder that can be used to create new PostalAddress objects.
    */
-  public static PostalAddressBuilder<?, ?> builder( ) {
-    return new PostalAddressBuilderImpl();
+  public static Builder builder( ) {
+    return new Builder();
   }
 
   /**
@@ -116,7 +116,7 @@ public class PostalAddress {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class PostalAddressBuilder<T extends PostalAddress, B extends PostalAddressBuilder<T, B>> {
+  public static class Builder {
     private String street;
 
     private String houseNumber;
@@ -132,15 +132,15 @@ public class PostalAddress {
     private String country = "Germany";
 
     /**
-     * Use {@link PostalAddressBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link PostalAddress#builder()} instead of private constructor to create new builder.
      */
-    protected PostalAddressBuilder( ) {
+    protected Builder( ) {
     }
 
     /**
-     * Use {@link PostalAddressBuilder#builder(PostalAddress)} instead of private constructor to create new builder.
+     * Use {@link PostalAddress#builder(PostalAddress)} instead of private constructor to create new builder.
      */
-    protected PostalAddressBuilder( PostalAddress pObject ) {
+    protected Builder( PostalAddress pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setStreet(pObject.street);
@@ -152,69 +152,84 @@ public class PostalAddress {
     }
 
     /**
+     * Method returns a new builder.
+     *
+     * @return {@link Builder} New builder that can be used to create new PostalAddress objects.
+     */
+    public static Builder newBuilder( ) {
+      return new Builder();
+    }
+
+    /**
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new PostalAddress objects. The method never
+     * returns null.
+     */
+    public static Builder newBuilder( PostalAddress pObject ) {
+      return new Builder(pObject);
+    }
+
+    /**
      * Method sets attribute {@link #street}.<br/>
      *
      * @param pStreet Value to which {@link #street} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setStreet( @MyNotNullProperty String pStreet ) {
+    public Builder setStreet( @MyNotNullProperty String pStreet ) {
       // Assign value to attribute
       street = pStreet;
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets attribute {@link #houseNumber}.<br/>
      *
      * @param pHouseNumber Value to which {@link #houseNumber} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setHouseNumber( @MyNotNullProperty String pHouseNumber ) {
+    public Builder setHouseNumber( @MyNotNullProperty String pHouseNumber ) {
       // Assign value to attribute
       houseNumber = pHouseNumber;
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets attribute {@link #city}.<br/>
      *
      * @param pCity Value to which {@link #city} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setCity( @MyNotNullProperty String pCity ) {
+    public Builder setCity( @MyNotNullProperty String pCity ) {
       // Assign value to attribute
       city = pCity;
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets attribute {@link #postalCode}.<br/>
      *
      * @param pPostalCode Value to which {@link #postalCode} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setPostalCode( int pPostalCode ) {
+    public Builder setPostalCode( int pPostalCode ) {
       // Assign value to attribute
       postalCode = pPostalCode;
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets attribute {@link #country}.<br/>
      *
      * @param pCountry Value to which {@link #country} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setCountry( @MyNotNullProperty String pCountry ) {
+    public Builder setCountry( @MyNotNullProperty String pCountry ) {
       // Assign value to attribute
       country = pCountry;
-      return this.self();
+      return this;
     }
-
-    /**
-     * Method returns instance of this builder. Operation is part of generic builder pattern.
-     */
-    protected abstract B self( );
 
     /**
      * Method creates a new instance of class PostalAddress. The object will be initialized with the values of the
@@ -222,23 +237,6 @@ public class PostalAddress {
      *
      * @return PostalAddress Created object. The method never returns null.
      */
-    public abstract T build( );
-  }
-
-  static final class PostalAddressBuilderImpl extends PostalAddressBuilder<PostalAddress, PostalAddressBuilderImpl> {
-    protected PostalAddressBuilderImpl( ) {
-    }
-
-    protected PostalAddressBuilderImpl( PostalAddress pObject ) {
-      super(pObject);
-    }
-
-    @Override
-    protected PostalAddressBuilderImpl self( ) {
-      return this;
-    }
-
-    @Override
     public PostalAddress build( ) {
       PostalAddress lObject = new PostalAddress(this);
       SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
@@ -429,7 +427,7 @@ public class PostalAddress {
    * @return {@link Builder} New builder that can be used to create new PostalAddress objects. The method never returns
    * null.
    */
-  public PostalAddressBuilder<?, ?> toBuilder( ) {
-    return new PostalAddressBuilderImpl(this);
+  public Builder toBuilder( ) {
+    return new Builder(this);
   }
 }

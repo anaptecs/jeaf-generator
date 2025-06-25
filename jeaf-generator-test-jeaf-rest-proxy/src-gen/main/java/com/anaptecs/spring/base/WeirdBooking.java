@@ -20,8 +20,10 @@ import com.anaptecs.spring.composite.ComplexBookingID;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.annotation.Nulls;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(builder = WeirdBooking.Builder.class)
 public class WeirdBooking implements Serializable {
   /**
    * Default serial version UID.
@@ -42,14 +44,6 @@ public class WeirdBooking implements Serializable {
 
   @JsonSetter(nulls = Nulls.SKIP)
   private List<ComplexBookingID> additionalBookings;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected WeirdBooking( ) {
-    additionalBookings = new ArrayList<>();
-  }
 
   /**
    * Initialize object using the passed builder.
@@ -93,7 +87,7 @@ public class WeirdBooking implements Serializable {
    *
    * @param pBooking Value to which {@link #booking} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.WeirdBooking}
+   * @return {@link WeirdBooking}
    */
   public static WeirdBooking of( ComplexBookingID pBooking ) {
     var lBuilder = WeirdBooking.builder();
@@ -104,6 +98,8 @@ public class WeirdBooking implements Serializable {
   /**
    * Class implements builder to create a new instance of class <code>WeirdBooking</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     private ComplexBookingID booking;
 

@@ -26,9 +26,11 @@ import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.annotation.Nulls;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Valid
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(builder = Reseller.Builder.class)
 public abstract class ResellerBase implements Serializable {
   /**
    * Default serial version UID.
@@ -78,17 +80,6 @@ public abstract class ResellerBase implements Serializable {
   private Locale language;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected ResellerBase( ) {
-    channels = new ArrayList<>();
-    // Bidirectional back reference is not yet set up correctly
-    channelsBackReferenceInitialized = false;
-    products = new HashSet<>();
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
@@ -118,6 +109,8 @@ public abstract class ResellerBase implements Serializable {
    * Class implements builder to create a new instance of class Reseller. As the class has read only attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static abstract class BuilderBase {
     private List<Channel> channels;
 
