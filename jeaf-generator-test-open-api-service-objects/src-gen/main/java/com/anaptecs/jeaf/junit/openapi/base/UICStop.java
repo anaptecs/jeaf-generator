@@ -5,7 +5,11 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
@@ -17,8 +21,12 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
 
+import com.anaptecs.annotations.MyNotEmptyProperty;
 import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
+import com.anaptecs.jeaf.xfun.api.checks.Check;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 
 /**
  * <p/>
@@ -49,11 +57,21 @@ public class UICStop extends Stop implements IStop {
   @Positive
   private byte index2;
 
+  @JsonSetter(nulls = Nulls.SKIP)
+  @Size(min = 1)
+  @NotNull
+  private Set<InlineStopType> inlineStopTypes;
+
+  @Deprecated
+  @NotNull
+  private InlineStopType inlineStopType;
+
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   protected UICStop( ) {
+    inlineStopTypes = new HashSet<>();
   }
 
   /**
@@ -69,6 +87,13 @@ public class UICStop extends Stop implements IStop {
     priority = pBuilder.priority;
     code = pBuilder.code;
     index2 = pBuilder.index2;
+    if (pBuilder.inlineStopTypes != null) {
+      inlineStopTypes = pBuilder.inlineStopTypes;
+    }
+    else {
+      inlineStopTypes = new HashSet<>();
+    }
+    inlineStopType = pBuilder.inlineStopType;
   }
 
   /**
@@ -98,10 +123,14 @@ public class UICStop extends Stop implements IStop {
    *
    * @param pIndex2 Value to which {@link #index2} should be set.
    *
+   * @param pInlineStopTypes Value to which {@link #inlineStopTypes} should be set.
+   *
+   * @param pInlineStopType Value to which {@link #inlineStopType} should be set.
+   *
    * @return {@link com.anaptecs.jeaf.junit.openapi.base.UICStop}
    */
   public static UICStop of( String pName, byte pIndex, SoftLink pTheSoftLinkID, String pUicCode, int pPriority,
-      long pCode, byte pIndex2 ) {
+      long pCode, byte pIndex2, Set<InlineStopType> pInlineStopTypes, InlineStopType pInlineStopType ) {
     var lBuilder = UICStop.builder();
     lBuilder.setName(pName);
     lBuilder.setIndex(pIndex);
@@ -110,6 +139,8 @@ public class UICStop extends Stop implements IStop {
     lBuilder.setPriority(pPriority);
     lBuilder.setCode(pCode);
     lBuilder.setIndex2(pIndex2);
+    lBuilder.setInlineStopTypes(pInlineStopTypes);
+    lBuilder.setInlineStopType(pInlineStopType);
     return lBuilder.build();
   }
 
@@ -131,6 +162,11 @@ public class UICStop extends Stop implements IStop {
     @Positive
     private byte index2;
 
+    private Set<InlineStopType> inlineStopTypes;
+
+    @Deprecated
+    private InlineStopType inlineStopType;
+
     /**
      * Use {@link UICStop#builder()} instead of private constructor to create new builder.
      */
@@ -149,6 +185,8 @@ public class UICStop extends Stop implements IStop {
         this.setPriority(pObject.priority);
         this.setCode(pObject.code);
         this.setIndex2(pObject.index2);
+        this.setInlineStopTypes(pObject.inlineStopTypes);
+        this.setInlineStopType(pObject.inlineStopType);
       }
     }
 
@@ -265,6 +303,69 @@ public class UICStop extends Stop implements IStop {
     }
 
     /**
+     * Method sets association {@link #inlineStopTypes}.<br/>
+     *
+     * @param pInlineStopTypes Collection to which {@link #inlineStopTypes} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    public Builder setInlineStopTypes( @MyNotEmptyProperty Set<InlineStopType> pInlineStopTypes ) {
+      // To ensure immutability we have to copy the content of the passed collection.
+      if (pInlineStopTypes != null) {
+        inlineStopTypes = new HashSet<InlineStopType>(pInlineStopTypes);
+      }
+      else {
+        inlineStopTypes = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method adds the passed objects to association {@link #inlineStopTypes}.<br/>
+     *
+     * @param pInlineStopTypes Array of objects that should be added to {@link #inlineStopTypes}. The parameter may be
+     * null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToInlineStopTypes( @MyNotEmptyProperty InlineStopType... pInlineStopTypes ) {
+      if (pInlineStopTypes != null) {
+        if (inlineStopTypes == null) {
+          inlineStopTypes = new HashSet<InlineStopType>();
+        }
+        inlineStopTypes.addAll(Arrays.asList(pInlineStopTypes));
+      }
+      return this;
+    }
+
+    /**
+     * Method sets association {@link #inlineStopTypes}.<br/>
+     *
+     * @param pInlineStopTypes Array with objects to which {@link #inlineStopTypes} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    public Builder setInlineStopTypes( @MyNotEmptyProperty InlineStopType... pInlineStopTypes ) {
+      // Copy the content of the passed array.
+      if (pInlineStopTypes != null) {
+        inlineStopTypes = new HashSet<InlineStopType>(Arrays.asList(pInlineStopTypes));
+      }
+      else {
+        inlineStopTypes = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method sets association {@link #inlineStopType}.<br/>
+     *
+     * @param pInlineStopType Value to which {@link #inlineStopType} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    @Deprecated
+    public Builder setInlineStopType( @MyNotNullProperty InlineStopType pInlineStopType ) {
+      inlineStopType = pInlineStopType;
+      return this;
+    }
+
+    /**
      * Method creates a new instance of class UICStop. The object will be initialized with the values of the builder.
      *
      * @return UICStop Created object. The method never returns null.
@@ -365,6 +466,95 @@ public class UICStop extends Stop implements IStop {
   }
 
   /**
+   * Method returns association {@link #inlineStopTypes}.<br/>
+   *
+   * @return {@link Set<InlineStopType>} Value to which {@link #inlineStopTypes} is set. The method never returns null
+   * and the returned collection is modifiable.
+   */
+  @MyNotEmptyProperty
+  public Set<InlineStopType> getInlineStopTypes( ) {
+    // Return all InlineStopType objects directly without any protection against modification.
+    return inlineStopTypes;
+  }
+
+  /**
+   * Method adds the passed object to {@link #inlineStopTypes}.
+   *
+   * @param pInlineStopTypes Object that should be added to {@link #inlineStopTypes}. The parameter must not be null.
+   */
+  public void addToInlineStopTypes( InlineStopType pInlineStopTypes ) {
+    // Check parameter "pInlineStopTypes" for invalid value null.
+    Check.checkInvalidParameterNull(pInlineStopTypes, "pInlineStopTypes");
+    // Add passed object to collection of associated InlineStopType objects.
+    inlineStopTypes.add(pInlineStopTypes);
+  }
+
+  /**
+   * Method adds all passed objects to {@link #inlineStopTypes}.
+   *
+   * @param pInlineStopTypes Collection with all objects that should be added to {@link #inlineStopTypes}. The parameter
+   * must not be null.
+   */
+  public void addToInlineStopTypes( Collection<InlineStopType> pInlineStopTypes ) {
+    // Check parameter "pInlineStopTypes" for invalid value null.
+    Check.checkInvalidParameterNull(pInlineStopTypes, "pInlineStopTypes");
+    // Add all passed objects.
+    for (InlineStopType lNextObject : pInlineStopTypes) {
+      this.addToInlineStopTypes(lNextObject);
+    }
+  }
+
+  /**
+   * Method removes the passed object from {@link #inlineStopTypes}.<br/>
+   *
+   * @param pInlineStopTypes Object that should be removed from {@link #inlineStopTypes}. The parameter must not be
+   * null.
+   */
+  public void removeFromInlineStopTypes( InlineStopType pInlineStopTypes ) {
+    // Check parameter for invalid value null.
+    Check.checkInvalidParameterNull(pInlineStopTypes, "pInlineStopTypes");
+    // Remove passed object from collection of associated InlineStopType objects.
+    inlineStopTypes.remove(pInlineStopTypes);
+  }
+
+  /**
+   * Method removes all objects from {@link #inlineStopTypes}.
+   */
+  public void clearInlineStopTypes( ) {
+    // Remove all objects from association "inlineStopTypes".
+    inlineStopTypes.clear();
+  }
+
+  /**
+   * Method returns association {@link #inlineStopType}.<br/>
+   *
+   * @return {@link InlineStopType} Value to which {@link #inlineStopType} is set.
+   */
+  @Deprecated
+  @MyNotNullProperty
+  public InlineStopType getInlineStopType( ) {
+    return inlineStopType;
+  }
+
+  /**
+   * Method sets association {@link #inlineStopType}.<br/>
+   *
+   * @param pInlineStopType Value to which {@link #inlineStopType} should be set.
+   */
+  @Deprecated
+  public void setInlineStopType( @MyNotNullProperty InlineStopType pInlineStopType ) {
+    inlineStopType = pInlineStopType;
+  }
+
+  /**
+   * Method unsets {@link #inlineStopType}.
+   */
+  @Deprecated
+  public final void unsetInlineStopType( ) {
+    inlineStopType = null;
+  }
+
+  /**
    * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
@@ -388,6 +578,27 @@ public class UICStop extends Stop implements IStop {
     lBuilder.append(pIndent);
     lBuilder.append("index2: ");
     lBuilder.append(index2);
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("inlineStopTypes: ");
+    if (inlineStopTypes != null) {
+      lBuilder.append(inlineStopTypes.size());
+      lBuilder.append(" element(s)");
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    if (inlineStopTypes != null) {
+      for (InlineStopType lNext : inlineStopTypes) {
+        lBuilder.append(pIndent + "    ");
+        lBuilder.append(lNext.toString());
+        lBuilder.append(System.lineSeparator());
+      }
+    }
+    lBuilder.append(pIndent);
+    lBuilder.append("inlineStopType: ");
+    lBuilder.append(inlineStopType);
     lBuilder.append(System.lineSeparator());
     return lBuilder;
   }

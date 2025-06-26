@@ -5,11 +5,13 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
 import javax.validation.ConstraintViolationException;
@@ -34,6 +36,17 @@ public class Sortiment implements ServiceObject {
    */
   public static final String VALUE = "value";
 
+  /**
+   * Constant for the name of attribute "inlineSortimentType".
+   */
+  public static final String INLINESORTIMENTTYPE = "inlineSortimentType";
+
+  /**
+   * Constant for the name of attribute "types".
+   */
+  @Deprecated
+  public static final String TYPES = "types";
+
   private Set<Product> products;
 
   /**
@@ -47,6 +60,11 @@ public class Sortiment implements ServiceObject {
    */
   private final Integer value;
 
+  private InlineSortimentType inlineSortimentType;
+
+  @Deprecated
+  private List<InlineSortimentType> types;
+
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
@@ -56,6 +74,7 @@ public class Sortiment implements ServiceObject {
     // Bidirectional back reference is not yet set up correctly
     productsBackReferenceInitialized = false;
     value = 4711;
+    types = new ArrayList<>();
   }
 
   /**
@@ -80,6 +99,13 @@ public class Sortiment implements ServiceObject {
     // Bidirectional back reference is set up correctly as a builder is used.
     productsBackReferenceInitialized = true;
     value = pBuilder.value;
+    inlineSortimentType = pBuilder.inlineSortimentType;
+    if (pBuilder.types != null) {
+      types = pBuilder.types;
+    }
+    else {
+      types = new ArrayList<>();
+    }
   }
 
   /**
@@ -117,6 +143,11 @@ public class Sortiment implements ServiceObject {
      */
     private Integer value = 4711;
 
+    private InlineSortimentType inlineSortimentType;
+
+    @Deprecated
+    private List<InlineSortimentType> types;
+
     /**
      * Use {@link Sortiment#builder()} instead of private constructor to create new builder.
      */
@@ -131,6 +162,8 @@ public class Sortiment implements ServiceObject {
         // Read attribute values from passed object.
         this.setProducts(pObject.products);
         this.setValue(pObject.value);
+        this.setInlineSortimentType(pObject.inlineSortimentType);
+        this.setTypes(pObject.types);
       }
     }
 
@@ -170,6 +203,64 @@ public class Sortiment implements ServiceObject {
     public Builder setValue( Integer pValue ) {
       // Assign value to attribute
       value = pValue;
+      return this;
+    }
+
+    /**
+     * Method sets association {@link #inlineSortimentType}.<br/>
+     *
+     * @param pInlineSortimentType Value to which {@link #inlineSortimentType} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    public Builder setInlineSortimentType( InlineSortimentType pInlineSortimentType ) {
+      inlineSortimentType = pInlineSortimentType;
+      return this;
+    }
+
+    /**
+     * Method sets association {@link #types}.<br/>
+     *
+     * @param pTypes Collection to which {@link #types} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    @Deprecated
+    public Builder setTypes( List<InlineSortimentType> pTypes ) {
+      types = pTypes;
+      return this;
+    }
+
+    /**
+     * Method adds the passed objects to association {@link #types}.<br/>
+     *
+     * @param pTypes Array of objects that should be added to {@link #types}. The parameter may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    @Deprecated
+    public Builder addToTypes( InlineSortimentType... pTypes ) {
+      if (pTypes != null) {
+        if (types == null) {
+          types = new ArrayList<InlineSortimentType>();
+        }
+        types.addAll(Arrays.asList(pTypes));
+      }
+      return this;
+    }
+
+    /**
+     * Method sets association {@link #types}.<br/>
+     *
+     * @param pTypes Array with objects to which {@link #types} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    @Deprecated
+    public Builder setTypes( InlineSortimentType... pTypes ) {
+      // Copy the content of the passed array.
+      if (pTypes != null) {
+        types = new ArrayList<InlineSortimentType>(Arrays.asList(pTypes));
+      }
+      else {
+        types = null;
+      }
       return this;
     }
 
@@ -286,6 +377,93 @@ public class Sortiment implements ServiceObject {
    */
   public Integer getValue( ) {
     return value;
+  }
+
+  /**
+   * Method returns association {@link #inlineSortimentType}.<br/>
+   *
+   * @return {@link InlineSortimentType} Value to which {@link #inlineSortimentType} is set.
+   */
+  public InlineSortimentType getInlineSortimentType( ) {
+    return inlineSortimentType;
+  }
+
+  /**
+   * Method sets association {@link #inlineSortimentType}.<br/>
+   *
+   * @param pInlineSortimentType Value to which {@link #inlineSortimentType} should be set.
+   */
+  public void setInlineSortimentType( InlineSortimentType pInlineSortimentType ) {
+    inlineSortimentType = pInlineSortimentType;
+  }
+
+  /**
+   * Method unsets {@link #inlineSortimentType}.
+   */
+  public final void unsetInlineSortimentType( ) {
+    inlineSortimentType = null;
+  }
+
+  /**
+   * Method returns association {@link #types}.<br/>
+   *
+   * @return {@link List<InlineSortimentType>} Value to which {@link #types} is set. The method never returns null and
+   * the returned collection is unmodifiable.
+   */
+  @Deprecated
+  public List<InlineSortimentType> getTypes( ) {
+    // Return all InlineSortimentType objects as unmodifiable collection.
+    return Collections.unmodifiableList(types);
+  }
+
+  /**
+   * Method adds the passed object to {@link #types}.
+   *
+   * @param pTypes Object that should be added to {@link #types}. The parameter must not be null.
+   */
+  @Deprecated
+  public void addToTypes( InlineSortimentType pTypes ) {
+    // Check parameter "pTypes" for invalid value null.
+    Check.checkInvalidParameterNull(pTypes, "pTypes");
+    // Add passed object to collection of associated InlineSortimentType objects.
+    types.add(pTypes);
+  }
+
+  /**
+   * Method adds all passed objects to {@link #types}.
+   *
+   * @param pTypes Collection with all objects that should be added to {@link #types}. The parameter must not be null.
+   */
+  @Deprecated
+  public void addToTypes( Collection<InlineSortimentType> pTypes ) {
+    // Check parameter "pTypes" for invalid value null.
+    Check.checkInvalidParameterNull(pTypes, "pTypes");
+    // Add all passed objects.
+    for (InlineSortimentType lNextObject : pTypes) {
+      this.addToTypes(lNextObject);
+    }
+  }
+
+  /**
+   * Method removes the passed object from {@link #types}.<br/>
+   *
+   * @param pTypes Object that should be removed from {@link #types}. The parameter must not be null.
+   */
+  @Deprecated
+  public void removeFromTypes( InlineSortimentType pTypes ) {
+    // Check parameter for invalid value null.
+    Check.checkInvalidParameterNull(pTypes, "pTypes");
+    // Remove passed object from collection of associated InlineSortimentType objects.
+    types.remove(pTypes);
+  }
+
+  /**
+   * Method removes all objects from {@link #types}.
+   */
+  @Deprecated
+  public void clearTypes( ) {
+    // Remove all objects from association "types".
+    types.clear();
   }
 
   /**

@@ -33,6 +33,12 @@ public class Sortiment {
   @JsonProperty("value")
   private Integer value = 4711;
 
+  @JsonProperty("inlineSortimentType")
+  private String inlineSortimentType = null;
+
+  @JsonProperty("types")
+  private List<String> types = null;
+
   public Sortiment products(List<Product> products) {
     this.products = products;
     return this;
@@ -77,6 +83,50 @@ public class Sortiment {
     this.value = value;
   }
 
+  public Sortiment inlineSortimentType(String inlineSortimentType) {
+    this.inlineSortimentType = inlineSortimentType;
+    return this;
+  }
+
+   /**
+   * Get inlineSortimentType
+   * @return inlineSortimentType
+  **/
+  @Schema(description = "")
+  public String getInlineSortimentType() {
+    return inlineSortimentType;
+  }
+
+  public void setInlineSortimentType(String inlineSortimentType) {
+    this.inlineSortimentType = inlineSortimentType;
+  }
+
+  public Sortiment types(List<String> types) {
+    this.types = types;
+    return this;
+  }
+
+  public Sortiment addTypesItem(String typesItem) {
+    if (this.types == null) {
+      this.types = new ArrayList<>();
+    }
+    this.types.add(typesItem);
+    return this;
+  }
+
+   /**
+   * Get types
+   * @return types
+  **/
+  @Schema(description = "")
+  public List<String> getTypes() {
+    return types;
+  }
+
+  public void setTypes(List<String> types) {
+    this.types = types;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -88,12 +138,14 @@ public class Sortiment {
     }
     Sortiment sortiment = (Sortiment) o;
     return Objects.equals(this.products, sortiment.products) &&
-        Objects.equals(this.value, sortiment.value);
+        Objects.equals(this.value, sortiment.value) &&
+        Objects.equals(this.inlineSortimentType, sortiment.inlineSortimentType) &&
+        Objects.equals(this.types, sortiment.types);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(products, value);
+    return Objects.hash(products, value, inlineSortimentType, types);
   }
 
 
@@ -104,6 +156,8 @@ public class Sortiment {
     
     sb.append("    products: ").append(toIndentedString(products)).append("\n");
     sb.append("    value: ").append(toIndentedString(value)).append("\n");
+    sb.append("    inlineSortimentType: ").append(toIndentedString(inlineSortimentType)).append("\n");
+    sb.append("    types: ").append(toIndentedString(types)).append("\n");
     sb.append("}");
     return sb.toString();
   }

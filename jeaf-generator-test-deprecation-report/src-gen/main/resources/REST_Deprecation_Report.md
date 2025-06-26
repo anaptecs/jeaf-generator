@@ -83,6 +83,10 @@
 | `ParentClass` | |  |  |  |
 |   | `theBankAccount` |  |  |  |
 |   | `legacyBankAccounts` |  |  |  |
+| `Sortiment` | |  |  |  |
+|   | `types` |  |  |  |
+| `UICStop` | |  |  |  |
+|   | `inlineStopType` |  |  |  |
 
 <br>
 

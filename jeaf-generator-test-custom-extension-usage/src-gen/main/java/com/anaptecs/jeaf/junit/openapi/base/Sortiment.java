@@ -5,11 +5,13 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
 import javax.annotation.processing.Generated;
@@ -42,6 +44,19 @@ public class Sortiment extends Object implements ServiceObject {
   @JEAFCustomAnnotationTest
   public static final String VALUE = "value";
 
+  /**
+   * Constant for the name of attribute "inlineSortimentType".
+   */
+  @JEAFCustomAnnotationTest
+  public static final String INLINESORTIMENTTYPE = "inlineSortimentType";
+
+  /**
+   * Constant for the name of attribute "types".
+   */
+  @Deprecated
+  @JEAFCustomAnnotationTest
+  public static final String TYPES = "types";
+
   // "com.anaptecs.jeaf.junit.openapi.base.Product"
   @ClassPropertyDeclaration
   @JEAFCustomAnnotationTest
@@ -67,6 +82,23 @@ public class Sortiment extends Object implements ServiceObject {
   // "java.lang.Integer"
   private int valueXYZ = 0;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.InlineSortimentType"
+  @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
+  private InlineSortimentType inlineSortimentType;
+
+  // "com.anaptecs.jeaf.junit.openapi.base.InlineSortimentType"
+  private int inlineSortimentTypeXYZ = 0;
+
+  // "com.anaptecs.jeaf.junit.openapi.base.InlineSortimentType"
+  @ClassPropertyDeclaration
+  @Deprecated
+  @JEAFCustomAnnotationTest
+  private List<InlineSortimentType> types;
+
+  // "com.anaptecs.jeaf.junit.openapi.base.InlineSortimentType"
+  private int typesXYZ = 0;
+
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
@@ -76,6 +108,7 @@ public class Sortiment extends Object implements ServiceObject {
     // Bidirectional back reference is not yet set up correctly
     productsBackReferenceInitialized = false;
     value = 4711;
+    types = new ArrayList<>();
   }
 
   /**
@@ -104,6 +137,17 @@ public class Sortiment extends Object implements ServiceObject {
     value = pBuilder.value;
     // "java.lang.Integer"
     valueXYZ = pBuilder.valueXYZ;
+    inlineSortimentType = pBuilder.inlineSortimentType;
+    // "com.anaptecs.jeaf.junit.openapi.base.InlineSortimentType"
+    inlineSortimentTypeXYZ = pBuilder.inlineSortimentTypeXYZ;
+    if (pBuilder.types != null) {
+      types = pBuilder.types;
+    }
+    else {
+      types = new ArrayList<>();
+    }
+    // "com.anaptecs.jeaf.junit.openapi.base.InlineSortimentType"
+    typesXYZ = pBuilder.typesXYZ;
   }
 
   /**
@@ -140,6 +184,23 @@ public class Sortiment extends Object implements ServiceObject {
     // "java.lang.Integer"
     private int valueXYZ = 0;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.InlineSortimentType"
+    @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
+    private InlineSortimentType inlineSortimentType;
+
+    // "com.anaptecs.jeaf.junit.openapi.base.InlineSortimentType"
+    private int inlineSortimentTypeXYZ = 0;
+
+    // "com.anaptecs.jeaf.junit.openapi.base.InlineSortimentType"
+    @BuilderPropertyDeclaration
+    @Deprecated
+    @JEAFCustomAnnotationTest
+    private List<InlineSortimentType> types;
+
+    // "com.anaptecs.jeaf.junit.openapi.base.InlineSortimentType"
+    private int typesXYZ = 0;
+
     /**
      * Use {@link Sortiment#builder()} instead of private constructor to create new builder.
      */
@@ -154,6 +215,8 @@ public class Sortiment extends Object implements ServiceObject {
         // Read attribute values from passed object.
         this.setProducts(pObject.products);
         this.setValue(pObject.value);
+        this.setInlineSortimentType(pObject.inlineSortimentType);
+        this.setTypes(pObject.types);
       }
     }
 
@@ -214,6 +277,86 @@ public class Sortiment extends Object implements ServiceObject {
     public Builder setValueXYZ( int value ) {
       // "java.lang.Integer"
       valueXYZ = value;
+      return this;
+    }
+
+    /**
+     * Method sets association {@link #inlineSortimentType}.<br/>
+     *
+     * @param pInlineSortimentType Value to which {@link #inlineSortimentType} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    @JEAFCustomAnnotationTest
+    public Builder setInlineSortimentType( InlineSortimentType pInlineSortimentType ) {
+      inlineSortimentType = pInlineSortimentType;
+      return this;
+    }
+
+    public Builder setInlineSortimentTypeXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.InlineSortimentType"
+      inlineSortimentTypeXYZ = value;
+      return this;
+    }
+
+    /**
+     * Method sets association {@link #types}.<br/>
+     *
+     * @param pTypes Collection to which {@link #types} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    @Deprecated
+    @JEAFCustomAnnotationTest
+    public Builder setTypes( List<InlineSortimentType> pTypes ) {
+      // To ensure immutability we have to copy the content of the passed collection.
+      if (pTypes != null) {
+        types = new ArrayList<InlineSortimentType>(pTypes);
+      }
+      else {
+        types = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method adds the passed objects to association {@link #types}.<br/>
+     *
+     * @param pTypes Array of objects that should be added to {@link #types}. The parameter may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    @Deprecated
+    @JEAFCustomAnnotationTest
+    public Builder addToTypes( InlineSortimentType... pTypes ) {
+      if (pTypes != null) {
+        if (types == null) {
+          types = new ArrayList<InlineSortimentType>();
+        }
+        types.addAll(Arrays.asList(pTypes));
+      }
+      return this;
+    }
+
+    /**
+     * Method sets association {@link #types}.<br/>
+     *
+     * @param pTypes Array with objects to which {@link #types} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    @Deprecated
+    @JEAFCustomAnnotationTest
+    public Builder setTypes( InlineSortimentType... pTypes ) {
+      // Copy the content of the passed array.
+      if (pTypes != null) {
+        types = new ArrayList<InlineSortimentType>(Arrays.asList(pTypes));
+      }
+      else {
+        types = null;
+      }
+      return this;
+    }
+
+    public Builder setTypesXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.InlineSortimentType"
+      typesXYZ = value;
       return this;
     }
     // Ooops, I also forgot to implement that for our builders ;-(
@@ -353,6 +496,119 @@ public class Sortiment extends Object implements ServiceObject {
 
   public void setValueXYZ( int value ) {
     valueXYZ = value;
+  }
+
+  /**
+   * Method returns association {@link #inlineSortimentType}.<br/>
+   *
+   * @return {@link InlineSortimentType} Value to which {@link #inlineSortimentType} is set.
+   */
+  @JEAFCustomAnnotationTest
+  public InlineSortimentType getInlineSortimentType( ) {
+    return inlineSortimentType;
+  }
+
+  /**
+   * Method sets association {@link #inlineSortimentType}.<br/>
+   *
+   * @param pInlineSortimentType Value to which {@link #inlineSortimentType} should be set.
+   */
+  @JEAFCustomAnnotationTest
+  public void setInlineSortimentType( InlineSortimentType pInlineSortimentType ) {
+    inlineSortimentType = pInlineSortimentType;
+  }
+
+  /**
+   * Method unsets {@link #inlineSortimentType}.
+   */
+  @JEAFCustomAnnotationTest
+  public final void unsetInlineSortimentType( ) {
+    inlineSortimentType = null;
+  }
+
+  public int getInlineSortimentTypeXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.InlineSortimentType"
+    return inlineSortimentTypeXYZ;
+  }
+
+  public void setInlineSortimentTypeXYZ( int value ) {
+    inlineSortimentTypeXYZ = value;
+  }
+
+  /**
+   * Method returns association {@link #types}.<br/>
+   *
+   * @return {@link List<InlineSortimentType>} Value to which {@link #types} is set. The method never returns null and
+   * the returned collection is unmodifiable.
+   */
+  @Deprecated
+  @JEAFCustomAnnotationTest
+  public List<InlineSortimentType> getTypes( ) {
+    // Return all InlineSortimentType objects as unmodifiable collection.
+    return Collections.unmodifiableList(types);
+  }
+
+  /**
+   * Method adds the passed object to {@link #types}.
+   *
+   * @param pTypes Object that should be added to {@link #types}. The parameter must not be null.
+   */
+  @Deprecated
+  @JEAFCustomAnnotationTest
+  public void addToTypes( InlineSortimentType pTypes ) {
+    // Check parameter "pTypes" for invalid value null.
+    Check.checkInvalidParameterNull(pTypes, "pTypes");
+    // Add passed object to collection of associated InlineSortimentType objects.
+    types.add(pTypes);
+  }
+
+  /**
+   * Method adds all passed objects to {@link #types}.
+   *
+   * @param pTypes Collection with all objects that should be added to {@link #types}. The parameter must not be null.
+   */
+  @Deprecated
+  @JEAFCustomAnnotationTest
+  public void addToTypes( Collection<InlineSortimentType> pTypes ) {
+    // Check parameter "pTypes" for invalid value null.
+    Check.checkInvalidParameterNull(pTypes, "pTypes");
+    // Add all passed objects.
+    for (InlineSortimentType lNextObject : pTypes) {
+      this.addToTypes(lNextObject);
+    }
+  }
+
+  /**
+   * Method removes the passed object from {@link #types}.<br/>
+   *
+   * @param pTypes Object that should be removed from {@link #types}. The parameter must not be null.
+   */
+  @Deprecated
+  @JEAFCustomAnnotationTest
+  public void removeFromTypes( InlineSortimentType pTypes ) {
+    // Check parameter for invalid value null.
+    Check.checkInvalidParameterNull(pTypes, "pTypes");
+    // Remove passed object from collection of associated InlineSortimentType objects.
+    types.remove(pTypes);
+  }
+
+  /**
+   * Method removes all objects from {@link #types}.
+   */
+  @Deprecated
+  @JEAFCustomAnnotationTest
+  public void clearTypes( ) {
+    // Remove all objects from association "types".
+    types.clear();
+  }
+
+  public int getTypesXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.InlineSortimentType"
+    return typesXYZ;
+  }
+
+  public void setTypesXYZ( int value ) {
+    typesXYZ = value;
   }
 
   public void doSomethingGenerated( ) {

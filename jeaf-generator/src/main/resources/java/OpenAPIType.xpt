@@ -6,6 +6,7 @@
 «EXTENSION functions::SystemProperties»
 «EXTENSION functions::Property»
 «EXTENSION functions::OpenAPIDataType»
+«EXTENSION functions::OpenAPIEnumeration»
 
 «IMPORT uml»
 «IMPORT JMM»
@@ -74,6 +75,8 @@
         «attribute.getAttributeName()»:
           «IF attribute.type.isOpenAPIDataType() && ((OpenAPIDataType) attribute.type).inline == true -»
           «EXPAND java::OpenAPIDataType::GenerateOpenAPIDataType(spec, attribute, "", true) FOR (OpenAPIDataType) attribute.type -»
+          «ELSEIF attribute.type.isOpenAPIEnumeration() && attribute.type.asOpenAPIType().inline == true -»
+          «EXPAND java::OpenAPIEnumeration::InlineOpenAPIEnumeration(attribute, "") FOR attribute.type.asOpenAPIType() -»
           «ELSE -»
           «IF attribute.hasComment() -»
             «IF attribute.type.isBasicOpenAPIType() == false && attribute.isMultivalued() == false && attribute.isSoftLink() == false-»
@@ -275,6 +278,8 @@
             «attribute.getAttributeName()»:
           «IF attribute.type.isOpenAPIDataType() && ((OpenAPIDataType) attribute.type).inline == true -»
           «EXPAND java::OpenAPIDataType::GenerateOpenAPIDataType(spec, attribute, "    ", true) FOR (OpenAPIDataType) attribute.type -»
+          «ELSEIF attribute.type.isOpenAPIEnumeration() && attribute.type.asOpenAPIType().inline == true -»
+          «EXPAND java::OpenAPIEnumeration::InlineOpenAPIEnumeration(attribute, "    ") FOR attribute.type.asOpenAPIType() -»
           «ELSE -»
           «IF attribute.hasComment() -»
             «IF attribute.type.isBasicOpenAPIType() == false && attribute.isMultivalued() == false && attribute.isSoftLink() == false-»
