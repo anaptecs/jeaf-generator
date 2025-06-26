@@ -17,8 +17,6 @@ import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.anaptecs.spring.composite.ComplexBookingID;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonSetter;
-import com.fasterxml.jackson.annotation.Nulls;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
@@ -42,7 +40,6 @@ public class WeirdBooking {
 
   private ComplexBookingID booking;
 
-  @JsonSetter(nulls = Nulls.SKIP)
   private List<ComplexBookingID> additionalBookings;
 
   /**

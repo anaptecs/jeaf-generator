@@ -16,8 +16,6 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonSetter;
-import com.fasterxml.jackson.annotation.Nulls;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
@@ -54,7 +52,6 @@ public class TheReadOnlyPOJO implements Serializable {
 
   private final int[] ints;
 
-  @JsonSetter(nulls = Nulls.SKIP)
   private final List<Entity> entities;
 
   /**

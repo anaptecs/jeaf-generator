@@ -25,8 +25,6 @@ import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.anaptecs.spring.base.StringCode;
 import com.anaptecs.spring.base.TimeUnit;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonSetter;
-import com.fasterxml.jackson.annotation.Nulls;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 public class MultiValuedHeaderBeanParam implements Serializable {
@@ -118,7 +116,6 @@ public class MultiValuedHeaderBeanParam implements Serializable {
   private StringCode[] codes;
 
   @HeaderParam("stringCodeList")
-  @JsonSetter(nulls = Nulls.SKIP)
   private Set<StringCode> stringCodeList;
 
   @HeaderParam("startDate")
@@ -128,7 +125,6 @@ public class MultiValuedHeaderBeanParam implements Serializable {
   private LocalDate[] dates;
 
   @HeaderParam("timestamps")
-  @JsonSetter(nulls = Nulls.SKIP)
   private Set<LocalDateTime> timestamps;
 
   @HeaderParam("calendars")
@@ -141,7 +137,6 @@ public class MultiValuedHeaderBeanParam implements Serializable {
   private Timestamp[] sqlTimestamps;
 
   @HeaderParam("timeUnits")
-  @JsonSetter(nulls = Nulls.SKIP)
   private Set<TimeUnit> timeUnits;
 
   @HeaderParam("timeUnitArray")

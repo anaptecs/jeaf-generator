@@ -20,8 +20,6 @@ import javax.validation.constraints.NotBlank;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonSetter;
-import com.fasterxml.jackson.annotation.Nulls;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
@@ -58,7 +56,6 @@ public abstract class CustomerBase extends Partner {
   @Email()
   private String email;
 
-  @JsonSetter(nulls = Nulls.SKIP)
   private Set<Account> accounts;
 
   /**

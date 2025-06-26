@@ -6,7 +6,6 @@
 package com.anaptecs.spring.service;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 public abstract class MySortCriteriaBase {
   /**
@@ -38,7 +37,6 @@ public abstract class MySortCriteriaBase {
    * Class implements builder to create a new instance of class MySortCriteria. As the class has read only attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
-  @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static abstract class BuilderBase {
     private SortOrder sortOrder;

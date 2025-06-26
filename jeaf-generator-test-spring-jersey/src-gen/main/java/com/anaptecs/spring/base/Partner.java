@@ -12,10 +12,8 @@ import java.util.Collections;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.Nulls;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
@@ -29,7 +27,6 @@ public class Partner {
    */
   public static final String POSTALADDRESSES = "postalAddresses";
 
-  @JsonSetter(nulls = Nulls.SKIP)
   private List<PostalAddress> postalAddresses;
 
   /**

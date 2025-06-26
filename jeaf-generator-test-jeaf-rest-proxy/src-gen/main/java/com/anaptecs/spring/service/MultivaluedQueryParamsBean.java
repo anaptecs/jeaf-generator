@@ -19,8 +19,6 @@ import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.anaptecs.spring.base.TimeUnit;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonSetter;
-import com.fasterxml.jackson.annotation.Nulls;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 public class MultivaluedQueryParamsBean implements Serializable {
@@ -64,7 +62,6 @@ public class MultivaluedQueryParamsBean implements Serializable {
   private Integer[] integers;
 
   @QueryParam("timeUnits")
-  @JsonSetter(nulls = Nulls.SKIP)
   private Set<TimeUnit> timeUnits;
 
   @QueryParam("timeUnitArray")

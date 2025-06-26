@@ -15,8 +15,6 @@ import javax.ws.rs.QueryParam;
 
 import com.anaptecs.spring.base.TimeUnit;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonSetter;
-import com.fasterxml.jackson.annotation.Nulls;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 public class MultivaluedQueryParamsBean {
@@ -55,7 +53,6 @@ public class MultivaluedQueryParamsBean {
   private Integer[] integers;
 
   @QueryParam("timeUnits")
-  @JsonSetter(nulls = Nulls.SKIP)
   private Set<TimeUnit> timeUnits;
 
   @QueryParam("timeUnitArray")

@@ -15,8 +15,6 @@ import javax.ws.rs.QueryParam;
 
 import com.anaptecs.spring.base.BookingCode;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonSetter;
-import com.fasterxml.jackson.annotation.Nulls;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 public class QueryBeanParam {
@@ -46,7 +44,6 @@ public class QueryBeanParam {
   private int maxResults;
 
   @QueryParam("sortCriteria")
-  @JsonSetter(nulls = Nulls.SKIP)
   private List<MySortCriteria> sortCriteria;
 
   /**

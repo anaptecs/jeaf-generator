@@ -19,8 +19,6 @@ import com.anaptecs.spring.base.BookingID;
 import com.anaptecs.spring.base.ComplexBookingType;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonSetter;
-import com.fasterxml.jackson.annotation.Nulls;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @JsonAutoDetect(
@@ -64,7 +62,6 @@ public abstract class ComplexBookingIDBase {
 
   private String referenceID;
 
-  @JsonSetter(nulls = Nulls.SKIP)
   private List<BookingID> bookingIDs;
 
   private ComplexBookingType complexBookingType;

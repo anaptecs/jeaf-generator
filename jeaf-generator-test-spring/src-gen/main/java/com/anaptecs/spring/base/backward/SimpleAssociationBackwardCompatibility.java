@@ -16,8 +16,6 @@ import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.fasterxml.jackson.annotation.JsonSetter;
-import com.fasterxml.jackson.annotation.Nulls;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
@@ -52,7 +50,6 @@ public class SimpleAssociationBackwardCompatibility {
    */
   public static final String NEWSINGLELINK = "newSingleLink";
 
-  @JsonSetter(nulls = Nulls.SKIP)
   private List<SimpleBackwardCompatibility> newLinks;
 
   private SimpleBackwardCompatibility newSingleLink;

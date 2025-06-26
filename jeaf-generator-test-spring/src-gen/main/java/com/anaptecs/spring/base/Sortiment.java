@@ -16,8 +16,6 @@ import java.util.Set;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonSetter;
-import com.fasterxml.jackson.annotation.Nulls;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
@@ -34,7 +32,6 @@ public class Sortiment {
    */
   public static final String PRODUCTS = "products";
 
-  @JsonSetter(nulls = Nulls.SKIP)
   private Set<Product> products;
 
   /**

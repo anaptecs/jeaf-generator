@@ -12,8 +12,6 @@ import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 public class SoftLink implements Serializable {
   /**
@@ -61,8 +59,6 @@ public class SoftLink implements Serializable {
   /**
    * Class implements builder to create a new instance of class <code>SoftLink</code>.
    */
-  @JsonPOJOBuilder(withPrefix = "set")
-  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     /**
      * String representation of this object.

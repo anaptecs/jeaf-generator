@@ -22,8 +22,6 @@ import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.anaptecs.spring.base.StringCode;
 import com.anaptecs.spring.base.TimeUnit;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonSetter;
-import com.fasterxml.jackson.annotation.Nulls;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 public class MultiValuedHeaderBeanParam {
@@ -105,14 +103,12 @@ public class MultiValuedHeaderBeanParam {
 
   private StringCode[] codes;
 
-  @JsonSetter(nulls = Nulls.SKIP)
   private Set<StringCode> stringCodeList;
 
   public LocalDate startDate;
 
   private LocalDate[] dates;
 
-  @JsonSetter(nulls = Nulls.SKIP)
   private Set<LocalDateTime> timestamps;
 
   private Calendar[] calendars;
@@ -121,7 +117,6 @@ public class MultiValuedHeaderBeanParam {
 
   private Timestamp[] sqlTimestamps;
 
-  @JsonSetter(nulls = Nulls.SKIP)
   private Set<TimeUnit> timeUnits;
 
   private TimeUnit[] timeUnitArray;
