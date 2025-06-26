@@ -9,7 +9,7 @@ public class BidirectionalA extends BidirectionalABase {
   /**
    * Initialize object. Nothing special to do.
    */
-  protected BidirectionalA( BidirectionalABuilder<?, ?> pBuilder ) {
+  protected BidirectionalA( BidirectionalA.BuilderBase pBuilder ) {
     super(pBuilder);
   }
 
@@ -18,7 +18,26 @@ public class BidirectionalA extends BidirectionalABase {
    *
    * @return {@link Builder} New builder that can be used to create new BidirectionalA objects.
    */
-  public static BidirectionalABuilder<?, ?> builder( ) {
-    return new BidirectionalABuilderImpl();
+  public static Builder builder( ) {
+    return new Builder();
+  }
+
+  /**
+   * Class implements builder to create a new instance of class BidirectionalA. As the class has readonly attributes or
+   * associations instances can not be created directly. Instead this builder class has to be used.
+   */
+  public static class Builder extends BidirectionalA.BuilderBase {
+    /**
+     * Use {@link BidirectionalA#builder()} instead of protected constructor to create new builder.
+     */
+    protected Builder( ) {
+    }
+
+    /**
+     * Use {@link BidirectionalA#builder(BidirectionalA)} instead of protected constructor to create new builder.
+     */
+    protected Builder( BidirectionalA pObject ) {
+      super(pObject);
+    }
   }
 }

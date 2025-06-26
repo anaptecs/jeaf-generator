@@ -9,6 +9,7 @@ import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Valid
 public class GeoPosition extends PlaceRef {
@@ -73,6 +74,7 @@ public class GeoPosition extends PlaceRef {
   /**
    * Class implements builder to create a new instance of class <code>GeoPosition</code>.
    */
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder extends PlaceRef.Builder {
     private int longitude;
 

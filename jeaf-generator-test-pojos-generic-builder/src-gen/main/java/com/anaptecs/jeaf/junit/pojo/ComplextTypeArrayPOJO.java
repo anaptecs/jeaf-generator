@@ -18,7 +18,7 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
-@JsonDeserialize(builder = ComplextTypeArrayPOJO.ComplextTypeArrayPOJOBuilderImpl.class)
+@JsonDeserialize(builder = ComplextTypeArrayPOJO.Builder.class)
 public class ComplextTypeArrayPOJO {
   /**
    * Constant for the name of attribute "plainPOJOs".
@@ -32,7 +32,7 @@ public class ComplextTypeArrayPOJO {
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected ComplextTypeArrayPOJO( ComplextTypeArrayPOJOBuilder<?, ?> pBuilder ) {
+  protected ComplextTypeArrayPOJO( Builder pBuilder ) {
     // Ensure that builder is not null.
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
@@ -44,8 +44,8 @@ public class ComplextTypeArrayPOJO {
    *
    * @return {@link Builder} New builder that can be used to create new ComplextTypeArrayPOJO objects.
    */
-  public static ComplextTypeArrayPOJOBuilder<?, ?> builder( ) {
-    return new ComplextTypeArrayPOJOBuilderImpl();
+  public static Builder builder( ) {
+    return new Builder();
   }
 
   /**
@@ -64,20 +64,20 @@ public class ComplextTypeArrayPOJO {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class ComplextTypeArrayPOJOBuilder<T extends ComplextTypeArrayPOJO, B extends ComplextTypeArrayPOJOBuilder<T, B>> {
+  public static class Builder {
     private PlainPOJO[] plainPOJOs;
 
     /**
-     * Use {@link ComplextTypeArrayPOJOBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link ComplextTypeArrayPOJO#builder()} instead of private constructor to create new builder.
      */
-    protected ComplextTypeArrayPOJOBuilder( ) {
+    protected Builder( ) {
     }
 
     /**
-     * Use {@link ComplextTypeArrayPOJOBuilder#builder(ComplextTypeArrayPOJO)} instead of private constructor to create
-     * new builder.
+     * Use {@link ComplextTypeArrayPOJO#builder(ComplextTypeArrayPOJO)} instead of private constructor to create new
+     * builder.
      */
-    protected ComplextTypeArrayPOJOBuilder( ComplextTypeArrayPOJO pObject ) {
+    protected Builder( ComplextTypeArrayPOJO pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setPlainPOJOs(pObject.plainPOJOs);
@@ -88,9 +88,9 @@ public class ComplextTypeArrayPOJO {
      * Method sets attribute {@link #plainPOJOs}.<br/>
      *
      * @param pPlainPOJOs Collection to which {@link #plainPOJOs} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setPlainPOJOs( PlainPOJO[] pPlainPOJOs ) {
+    public Builder setPlainPOJOs( PlainPOJO[] pPlainPOJOs ) {
       // Assign value to attribute
       if (pPlainPOJOs != null) {
         plainPOJOs = new PlainPOJO[pPlainPOJOs.length];
@@ -99,13 +99,8 @@ public class ComplextTypeArrayPOJO {
       else {
         plainPOJOs = null;
       }
-      return this.self();
+      return this;
     }
-
-    /**
-     * Method returns instance of this builder. Operation is part of generic builder pattern.
-     */
-    protected abstract B self( );
 
     /**
      * Method creates a new instance of class ComplextTypeArrayPOJO. The object will be initialized with the values of
@@ -113,7 +108,9 @@ public class ComplextTypeArrayPOJO {
      *
      * @return ComplextTypeArrayPOJO Created object. The method never returns null.
      */
-    public abstract T build( );
+    public ComplextTypeArrayPOJO build( ) {
+      return new ComplextTypeArrayPOJO(this);
+    }
 
     /**
      * Method creates a new validated instance of class ComplextTypeArrayPOJO. The object will be initialized with the
@@ -126,26 +123,6 @@ public class ComplextTypeArrayPOJO {
       ComplextTypeArrayPOJO lObject = this.build();
       ValidationTools.getValidationTools().enforceObjectValidation(lObject);
       return lObject;
-    }
-  }
-
-  static final class ComplextTypeArrayPOJOBuilderImpl
-      extends ComplextTypeArrayPOJOBuilder<ComplextTypeArrayPOJO, ComplextTypeArrayPOJOBuilderImpl> {
-    protected ComplextTypeArrayPOJOBuilderImpl( ) {
-    }
-
-    protected ComplextTypeArrayPOJOBuilderImpl( ComplextTypeArrayPOJO pObject ) {
-      super(pObject);
-    }
-
-    @Override
-    protected ComplextTypeArrayPOJOBuilderImpl self( ) {
-      return this;
-    }
-
-    @Override
-    public ComplextTypeArrayPOJO build( ) {
-      return new ComplextTypeArrayPOJO(this);
     }
   }
 
@@ -233,7 +210,7 @@ public class ComplextTypeArrayPOJO {
    * @return {@link Builder} New builder that can be used to create new ComplextTypeArrayPOJO objects. The method never
    * returns null.
    */
-  public ComplextTypeArrayPOJOBuilder<?, ?> toBuilder( ) {
-    return new ComplextTypeArrayPOJOBuilderImpl(this);
+  public Builder toBuilder( ) {
+    return new Builder(this);
   }
 }

@@ -15,7 +15,7 @@ public class TechOnlyBeanParam {
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected TechOnlyBeanParam( TechOnlyBeanParamBuilder<?, ?> pBuilder ) {
+  protected TechOnlyBeanParam( Builder pBuilder ) {
     // Read attribute values from builder.
   }
 
@@ -24,8 +24,8 @@ public class TechOnlyBeanParam {
    *
    * @return {@link Builder} New builder that can be used to create new TechOnlyBeanParam objects.
    */
-  public static TechOnlyBeanParamBuilder<?, ?> builder( ) {
-    return new TechOnlyBeanParamBuilderImpl();
+  public static Builder builder( ) {
+    return new Builder();
   }
 
   /**
@@ -44,24 +44,38 @@ public class TechOnlyBeanParam {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class TechOnlyBeanParamBuilder<T extends TechOnlyBeanParam, B extends TechOnlyBeanParamBuilder<T, B>> {
+  public static class Builder {
     /**
-     * Use {@link TechOnlyBeanParamBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link TechOnlyBeanParam#builder()} instead of private constructor to create new builder.
      */
-    protected TechOnlyBeanParamBuilder( ) {
+    protected Builder( ) {
     }
 
     /**
-     * Use {@link TechOnlyBeanParamBuilder#builder(TechOnlyBeanParam)} instead of private constructor to create new
-     * builder.
+     * Use {@link TechOnlyBeanParam#builder(TechOnlyBeanParam)} instead of private constructor to create new builder.
      */
-    protected TechOnlyBeanParamBuilder( TechOnlyBeanParam pObject ) {
+    protected Builder( TechOnlyBeanParam pObject ) {
     }
 
     /**
-     * Method returns instance of this builder. Operation is part of generic builder pattern.
+     * Method returns a new builder.
+     *
+     * @return {@link Builder} New builder that can be used to create new TechOnlyBeanParam objects.
      */
-    protected abstract B self( );
+    public static Builder newBuilder( ) {
+      return new Builder();
+    }
+
+    /**
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new TechOnlyBeanParam objects. The method never
+     * returns null.
+     */
+    public static Builder newBuilder( TechOnlyBeanParam pObject ) {
+      return new Builder(pObject);
+    }
 
     /**
      * Method creates a new instance of class TechOnlyBeanParam. The object will be initialized with the values of the
@@ -69,24 +83,6 @@ public class TechOnlyBeanParam {
      *
      * @return TechOnlyBeanParam Created object. The method never returns null.
      */
-    public abstract T build( );
-  }
-
-  static final class TechOnlyBeanParamBuilderImpl
-      extends TechOnlyBeanParamBuilder<TechOnlyBeanParam, TechOnlyBeanParamBuilderImpl> {
-    protected TechOnlyBeanParamBuilderImpl( ) {
-    }
-
-    protected TechOnlyBeanParamBuilderImpl( TechOnlyBeanParam pObject ) {
-      super(pObject);
-    }
-
-    @Override
-    protected TechOnlyBeanParamBuilderImpl self( ) {
-      return this;
-    }
-
-    @Override
     public TechOnlyBeanParam build( ) {
       TechOnlyBeanParam lObject = new TechOnlyBeanParam(this);
       SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
@@ -148,7 +144,7 @@ public class TechOnlyBeanParam {
    * @return {@link Builder} New builder that can be used to create new TechOnlyBeanParam objects. The method never
    * returns null.
    */
-  public TechOnlyBeanParamBuilder<?, ?> toBuilder( ) {
-    return new TechOnlyBeanParamBuilderImpl(this);
+  public Builder toBuilder( ) {
+    return new Builder(this);
   }
 }

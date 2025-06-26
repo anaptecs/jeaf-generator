@@ -6,8 +6,8 @@
 package com.anaptecs.spring.base;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class ShortCodeType {
   /**
    * Constant for the name of attribute "code".
@@ -15,13 +15,6 @@ public class ShortCodeType {
   public static final String CODE = "code";
 
   private short code;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected ShortCodeType( ) {
-  }
 
   /**
    * Initialize object using the passed builder.
@@ -59,6 +52,8 @@ public class ShortCodeType {
   /**
    * Class implements builder to create a new instance of class <code>ShortCodeType</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     private short code;
 

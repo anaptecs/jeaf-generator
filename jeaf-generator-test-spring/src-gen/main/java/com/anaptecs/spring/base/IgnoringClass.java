@@ -20,7 +20,7 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
     isGetterVisibility = JsonAutoDetect.Visibility.NONE,
     setterVisibility = JsonAutoDetect.Visibility.NONE,
     creatorVisibility = JsonAutoDetect.Visibility.ANY)
-@JsonDeserialize(builder = IgnoringClass.IgnoringClassBuilderImpl.class)
+@JsonDeserialize(builder = IgnoringClass.Builder.class)
 public class IgnoringClass {
   /**
    * Constant for the name of attribute "age".
@@ -34,7 +34,7 @@ public class IgnoringClass {
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected IgnoringClass( IgnoringClassBuilder<?, ?> pBuilder ) {
+  protected IgnoringClass( Builder pBuilder ) {
     // Read attribute values from builder.
     age = pBuilder.age;
   }
@@ -44,8 +44,8 @@ public class IgnoringClass {
    *
    * @return {@link Builder} New builder that can be used to create new IgnoringClass objects.
    */
-  public static IgnoringClassBuilder<?, ?> builder( ) {
-    return new IgnoringClassBuilderImpl();
+  public static Builder builder( ) {
+    return new Builder();
   }
 
   /**
@@ -67,19 +67,19 @@ public class IgnoringClass {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class IgnoringClassBuilder<T extends IgnoringClass, B extends IgnoringClassBuilder<T, B>> {
+  public static class Builder {
     private Integer age;
 
     /**
-     * Use {@link IgnoringClassBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link IgnoringClass#builder()} instead of private constructor to create new builder.
      */
-    protected IgnoringClassBuilder( ) {
+    protected Builder( ) {
     }
 
     /**
-     * Use {@link IgnoringClassBuilder#builder(IgnoringClass)} instead of private constructor to create new builder.
+     * Use {@link IgnoringClass#builder(IgnoringClass)} instead of private constructor to create new builder.
      */
-    protected IgnoringClassBuilder( IgnoringClass pObject ) {
+    protected Builder( IgnoringClass pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setAge(pObject.age);
@@ -87,21 +87,36 @@ public class IgnoringClass {
     }
 
     /**
-     * Method sets attribute {@link #age}.<br/>
+     * Method returns a new builder.
      *
-     * @param pAge Value to which {@link #age} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} New builder that can be used to create new IgnoringClass objects.
      */
-    public B setAge( @MyNotNullProperty Integer pAge ) {
-      // Assign value to attribute
-      age = pAge;
-      return this.self();
+    public static Builder newBuilder( ) {
+      return new Builder();
     }
 
     /**
-     * Method returns instance of this builder. Operation is part of generic builder pattern.
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new IgnoringClass objects. The method never
+     * returns null.
      */
-    protected abstract B self( );
+    public static Builder newBuilder( IgnoringClass pObject ) {
+      return new Builder(pObject);
+    }
+
+    /**
+     * Method sets attribute {@link #age}.<br/>
+     *
+     * @param pAge Value to which {@link #age} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    public Builder setAge( @MyNotNullProperty Integer pAge ) {
+      // Assign value to attribute
+      age = pAge;
+      return this;
+    }
 
     /**
      * Method creates a new instance of class IgnoringClass. The object will be initialized with the values of the
@@ -109,23 +124,6 @@ public class IgnoringClass {
      *
      * @return IgnoringClass Created object. The method never returns null.
      */
-    public abstract T build( );
-  }
-
-  static final class IgnoringClassBuilderImpl extends IgnoringClassBuilder<IgnoringClass, IgnoringClassBuilderImpl> {
-    protected IgnoringClassBuilderImpl( ) {
-    }
-
-    protected IgnoringClassBuilderImpl( IgnoringClass pObject ) {
-      super(pObject);
-    }
-
-    @Override
-    protected IgnoringClassBuilderImpl self( ) {
-      return this;
-    }
-
-    @Override
     public IgnoringClass build( ) {
       IgnoringClass lObject = new IgnoringClass(this);
       SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
@@ -215,7 +213,7 @@ public class IgnoringClass {
    * @return {@link Builder} New builder that can be used to create new IgnoringClass objects. The method never returns
    * null.
    */
-  public IgnoringClassBuilder<?, ?> toBuilder( ) {
-    return new IgnoringClassBuilderImpl(this);
+  public Builder toBuilder( ) {
+    return new Builder(this);
   }
 }

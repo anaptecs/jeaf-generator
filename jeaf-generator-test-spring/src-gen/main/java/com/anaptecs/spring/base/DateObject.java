@@ -25,7 +25,7 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
     isGetterVisibility = JsonAutoDetect.Visibility.NONE,
     setterVisibility = JsonAutoDetect.Visibility.NONE,
     creatorVisibility = JsonAutoDetect.Visibility.ANY)
-@JsonDeserialize(builder = DateObject.DateObjectBuilderImpl.class)
+@JsonDeserialize(builder = DateObject.Builder.class)
 public class DateObject {
   /**
    * Constant for the name of attribute "localTime".
@@ -81,7 +81,7 @@ public class DateObject {
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected DateObject( DateObjectBuilder<?, ?> pBuilder ) {
+  protected DateObject( Builder pBuilder ) {
     // Read attribute values from builder.
     localTime = pBuilder.localTime;
     localDate = pBuilder.localDate;
@@ -96,8 +96,8 @@ public class DateObject {
    *
    * @return {@link Builder} New builder that can be used to create new DateObject objects.
    */
-  public static DateObjectBuilder<?, ?> builder( ) {
-    return new DateObjectBuilderImpl();
+  public static Builder builder( ) {
+    return new Builder();
   }
 
   /**
@@ -135,7 +135,7 @@ public class DateObject {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class DateObjectBuilder<T extends DateObject, B extends DateObjectBuilder<T, B>> {
+  public static class Builder {
     /**
      * <br/>
      * <b>Example(s):</b> <br/>
@@ -156,15 +156,15 @@ public class DateObject {
     private java.util.Date utilDate;
 
     /**
-     * Use {@link DateObjectBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link DateObject#builder()} instead of private constructor to create new builder.
      */
-    protected DateObjectBuilder( ) {
+    protected Builder( ) {
     }
 
     /**
-     * Use {@link DateObjectBuilder#builder(DateObject)} instead of private constructor to create new builder.
+     * Use {@link DateObject#builder(DateObject)} instead of private constructor to create new builder.
      */
-    protected DateObjectBuilder( DateObject pObject ) {
+    protected Builder( DateObject pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setLocalTime(pObject.localTime);
@@ -177,104 +177,102 @@ public class DateObject {
     }
 
     /**
+     * Method returns a new builder.
+     *
+     * @return {@link Builder} New builder that can be used to create new DateObject objects.
+     */
+    public static Builder newBuilder( ) {
+      return new Builder();
+    }
+
+    /**
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new DateObject objects. The method never returns
+     * null.
+     */
+    public static Builder newBuilder( DateObject pObject ) {
+      return new Builder(pObject);
+    }
+
+    /**
      * Method sets attribute {@link #localTime}.<br/>
      *
      * @param pLocalTime Value to which {@link #localTime} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setLocalTime( @MyNotNullProperty LocalTime pLocalTime ) {
+    public Builder setLocalTime( @MyNotNullProperty LocalTime pLocalTime ) {
       // Assign value to attribute
       localTime = pLocalTime;
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets attribute {@link #localDate}.<br/>
      *
      * @param pLocalDate Value to which {@link #localDate} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setLocalDate( @MyNotNullProperty LocalDate pLocalDate ) {
+    public Builder setLocalDate( @MyNotNullProperty LocalDate pLocalDate ) {
       // Assign value to attribute
       localDate = pLocalDate;
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets attribute {@link #localDateTime}.<br/>
      *
      * @param pLocalDateTime Value to which {@link #localDateTime} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setLocalDateTime( @MyNotNullProperty LocalDateTime pLocalDateTime ) {
+    public Builder setLocalDateTime( @MyNotNullProperty LocalDateTime pLocalDateTime ) {
       // Assign value to attribute
       localDateTime = pLocalDateTime;
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets attribute {@link #calendar}.<br/>
      *
      * @param pCalendar Value to which {@link #calendar} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setCalendar( @MyNotNullProperty Calendar pCalendar ) {
+    public Builder setCalendar( @MyNotNullProperty Calendar pCalendar ) {
       // Assign value to attribute
       calendar = pCalendar;
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets attribute {@link #sqlDate}.<br/>
      *
      * @param pSqlDate Value to which {@link #sqlDate} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setSqlDate( @MyNotNullProperty Date pSqlDate ) {
+    public Builder setSqlDate( @MyNotNullProperty Date pSqlDate ) {
       // Assign value to attribute
       sqlDate = pSqlDate;
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets attribute {@link #utilDate}.<br/>
      *
      * @param pUtilDate Value to which {@link #utilDate} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setUtilDate( @MyNotNullProperty java.util.Date pUtilDate ) {
+    public Builder setUtilDate( @MyNotNullProperty java.util.Date pUtilDate ) {
       // Assign value to attribute
       utilDate = pUtilDate;
-      return this.self();
+      return this;
     }
-
-    /**
-     * Method returns instance of this builder. Operation is part of generic builder pattern.
-     */
-    protected abstract B self( );
 
     /**
      * Method creates a new instance of class DateObject. The object will be initialized with the values of the builder.
      *
      * @return DateObject Created object. The method never returns null.
      */
-    public abstract T build( );
-  }
-
-  static final class DateObjectBuilderImpl extends DateObjectBuilder<DateObject, DateObjectBuilderImpl> {
-    protected DateObjectBuilderImpl( ) {
-    }
-
-    protected DateObjectBuilderImpl( DateObject pObject ) {
-      super(pObject);
-    }
-
-    @Override
-    protected DateObjectBuilderImpl self( ) {
-      return this;
-    }
-
-    @Override
     public DateObject build( ) {
       DateObject lObject = new DateObject(this);
       SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
@@ -491,7 +489,7 @@ public class DateObject {
    * @return {@link Builder} New builder that can be used to create new DateObject objects. The method never returns
    * null.
    */
-  public DateObjectBuilder<?, ?> toBuilder( ) {
-    return new DateObjectBuilderImpl(this);
+  public Builder toBuilder( ) {
+    return new Builder(this);
   }
 }

@@ -25,7 +25,7 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
     isGetterVisibility = JsonAutoDetect.Visibility.NONE,
     setterVisibility = JsonAutoDetect.Visibility.NONE,
     creatorVisibility = JsonAutoDetect.Visibility.ANY)
-@JsonDeserialize(builder = Leg.LegBuilderImpl.class)
+@JsonDeserialize(builder = Leg.Builder.class)
 public class Leg {
   /**
    * Constant for the name of attribute "start".
@@ -53,7 +53,7 @@ public class Leg {
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected Leg( LegBuilder<?, ?> pBuilder ) {
+  protected Leg( Builder pBuilder ) {
     // Read attribute values from builder.
     start = pBuilder.start;
     stop = pBuilder.stop;
@@ -70,8 +70,8 @@ public class Leg {
    *
    * @return {@link Builder} New builder that can be used to create new Leg objects.
    */
-  public static LegBuilder<?, ?> builder( ) {
-    return new LegBuilderImpl();
+  public static Builder builder( ) {
+    return new Builder();
   }
 
   /**
@@ -96,7 +96,7 @@ public class Leg {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class LegBuilder<T extends Leg, B extends LegBuilder<T, B>> {
+  public static class Builder {
     private PlaceRef start;
 
     private PlaceRef stop;
@@ -104,15 +104,15 @@ public class Leg {
     private List<PlaceRef> stopovers;
 
     /**
-     * Use {@link LegBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link Leg#builder()} instead of private constructor to create new builder.
      */
-    protected LegBuilder( ) {
+    protected Builder( ) {
     }
 
     /**
-     * Use {@link LegBuilder#builder(Leg)} instead of private constructor to create new builder.
+     * Use {@link Leg#builder(Leg)} instead of private constructor to create new builder.
      */
-    protected LegBuilder( Leg pObject ) {
+    protected Builder( Leg pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setStart(pObject.start);
@@ -122,34 +122,53 @@ public class Leg {
     }
 
     /**
+     * Method returns a new builder.
+     *
+     * @return {@link Builder} New builder that can be used to create new Leg objects.
+     */
+    public static Builder newBuilder( ) {
+      return new Builder();
+    }
+
+    /**
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new Leg objects. The method never returns null.
+     */
+    public static Builder newBuilder( Leg pObject ) {
+      return new Builder(pObject);
+    }
+
+    /**
      * Method sets association {@link #start}.<br/>
      *
      * @param pStart Value to which {@link #start} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setStart( @MyNotNullProperty PlaceRef pStart ) {
+    public Builder setStart( @MyNotNullProperty PlaceRef pStart ) {
       start = pStart;
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets association {@link #stop}.<br/>
      *
      * @param pStop Value to which {@link #stop} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setStop( @MyNotNullProperty PlaceRef pStop ) {
+    public Builder setStop( @MyNotNullProperty PlaceRef pStop ) {
       stop = pStop;
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets association {@link #stopovers}.<br/>
      *
      * @param pStopovers Collection to which {@link #stopovers} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setStopovers( List<PlaceRef> pStopovers ) {
+    public Builder setStopovers( List<PlaceRef> pStopovers ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pStopovers != null) {
         stopovers = new ArrayList<PlaceRef>(pStopovers);
@@ -157,52 +176,30 @@ public class Leg {
       else {
         stopovers = null;
       }
-      return this.self();
+      return this;
     }
 
     /**
      * Method adds the passed objects to association {@link #stopovers}.<br/>
      *
      * @param pStopovers Array of objects that should be added to {@link #stopovers}. The parameter may be null.
-     * @return {@link B} Instance of this builder to support chaining. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
      */
-    public B addToStopovers( PlaceRef... pStopovers ) {
+    public Builder addToStopovers( PlaceRef... pStopovers ) {
       if (pStopovers != null) {
         if (stopovers == null) {
           stopovers = new ArrayList<PlaceRef>();
         }
         stopovers.addAll(Arrays.asList(pStopovers));
       }
-      return this.self();
+      return this;
     }
-
-    /**
-     * Method returns instance of this builder. Operation is part of generic builder pattern.
-     */
-    protected abstract B self( );
 
     /**
      * Method creates a new instance of class Leg. The object will be initialized with the values of the builder.
      *
      * @return Leg Created object. The method never returns null.
      */
-    public abstract T build( );
-  }
-
-  static final class LegBuilderImpl extends LegBuilder<Leg, LegBuilderImpl> {
-    protected LegBuilderImpl( ) {
-    }
-
-    protected LegBuilderImpl( Leg pObject ) {
-      super(pObject);
-    }
-
-    @Override
-    protected LegBuilderImpl self( ) {
-      return this;
-    }
-
-    @Override
     public Leg build( ) {
       Leg lObject = new Leg(this);
       SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
@@ -410,7 +407,7 @@ public class Leg {
    *
    * @return {@link Builder} New builder that can be used to create new Leg objects. The method never returns null.
    */
-  public LegBuilder<?, ?> toBuilder( ) {
-    return new LegBuilderImpl(this);
+  public Builder toBuilder( ) {
+    return new Builder(this);
   }
 }

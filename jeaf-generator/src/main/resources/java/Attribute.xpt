@@ -66,7 +66,7 @@
         «EXPAND java::Jackson::JSONAlias»
         «EXPAND Validation::ValidationAnnotation»
         «IF isMultivalued()»
-            «IF generateJacksonAnnotations() && isTransient() == false && this.owner.asClass().hasGenericBuilder() == false»
+            «IF generateJacksonAnnotations() && isTransient() == false && this.owner.asClass().isPOJO() == false»
             @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SKIP)
             «ENDIF»
             «IF generateValidationAnnotationsForAssociationsFromMultiplicity() && isStatic == false && isTransient() == false && isStereotypeApplied("Size") == false && lower > 0»@«getEnterpriseJavaPackage()».validation.constraints.Size(min = «lower»)«ENDIF»
@@ -99,7 +99,7 @@
 		«EXPAND java::Jackson::JSONAlias»
 		«EXPAND Validation::ValidationAnnotation»
 		«IF isMultivalued()»
-            «IF generateJacksonAnnotations() && isTransient() == false && this.owner.asClass().hasGenericBuilder() == false»
+            «IF generateJacksonAnnotations() && isTransient() == false && this.owner.asClass().isPOJO() == false»
             @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SKIP)
             «ENDIF»
 			«IF generateValidationAnnotationsForAssociationsFromMultiplicity() && isStatic == false && isTransient() == false && isStereotypeApplied("Size") == false && lower > 0»@«getEnterpriseJavaPackage()».validation.constraints.Size(min = «lower»)«ENDIF»

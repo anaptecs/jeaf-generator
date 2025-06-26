@@ -18,7 +18,7 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
-@JsonDeserialize(builder = Message.MessageBuilderImpl.class)
+@JsonDeserialize(builder = Message.Builder.class)
 public class Message {
   /**
    * Constant for the name of attribute "text".
@@ -32,7 +32,7 @@ public class Message {
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected Message( MessageBuilder<?, ?> pBuilder ) {
+  protected Message( Builder pBuilder ) {
     // Ensure that builder is not null.
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
@@ -44,8 +44,8 @@ public class Message {
    *
    * @return {@link Builder} New builder that can be used to create new Message objects.
    */
-  public static MessageBuilder<?, ?> builder( ) {
-    return new MessageBuilderImpl();
+  public static Builder builder( ) {
+    return new Builder();
   }
 
   /**
@@ -67,19 +67,19 @@ public class Message {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class MessageBuilder<T extends Message, B extends MessageBuilder<T, B>> {
+  public static class Builder {
     private String text;
 
     /**
-     * Use {@link MessageBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link Message#builder()} instead of private constructor to create new builder.
      */
-    protected MessageBuilder( ) {
+    protected Builder( ) {
     }
 
     /**
-     * Use {@link MessageBuilder#builder(Message)} instead of private constructor to create new builder.
+     * Use {@link Message#builder(Message)} instead of private constructor to create new builder.
      */
-    protected MessageBuilder( Message pObject ) {
+    protected Builder( Message pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setText(pObject.text);
@@ -90,25 +90,22 @@ public class Message {
      * Method sets attribute {@link #text}.<br/>
      *
      * @param pText Value to which {@link #text} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setText( String pText ) {
+    public Builder setText( String pText ) {
       // Assign value to attribute
       text = pText;
-      return this.self();
+      return this;
     }
-
-    /**
-     * Method returns instance of this builder. Operation is part of generic builder pattern.
-     */
-    protected abstract B self( );
 
     /**
      * Method creates a new instance of class Message. The object will be initialized with the values of the builder.
      *
      * @return Message Created object. The method never returns null.
      */
-    public abstract T build( );
+    public Message build( ) {
+      return new Message(this);
+    }
 
     /**
      * Method creates a new validated instance of class Message. The object will be initialized with the values of the
@@ -121,25 +118,6 @@ public class Message {
       Message lObject = this.build();
       ValidationTools.getValidationTools().enforceObjectValidation(lObject);
       return lObject;
-    }
-  }
-
-  static final class MessageBuilderImpl extends MessageBuilder<Message, MessageBuilderImpl> {
-    protected MessageBuilderImpl( ) {
-    }
-
-    protected MessageBuilderImpl( Message pObject ) {
-      super(pObject);
-    }
-
-    @Override
-    protected MessageBuilderImpl self( ) {
-      return this;
-    }
-
-    @Override
-    public Message build( ) {
-      return new Message(this);
     }
   }
 
@@ -213,7 +191,7 @@ public class Message {
    *
    * @return {@link Builder} New builder that can be used to create new Message objects. The method never returns null.
    */
-  public MessageBuilder<?, ?> toBuilder( ) {
-    return new MessageBuilderImpl(this);
+  public Builder toBuilder( ) {
+    return new Builder(this);
   }
 }

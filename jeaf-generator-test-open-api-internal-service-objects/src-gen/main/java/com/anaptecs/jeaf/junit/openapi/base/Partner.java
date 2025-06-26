@@ -106,6 +106,7 @@ public class Partner implements ServiceObject, Identifiable<ServiceObjectID> {
   /**
    * Class implements builder to create a new instance of class <code>Partner</code>.
    */
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     /**
      * Reference to the identifier of this object. The reference may be null since an id is not mandatory.

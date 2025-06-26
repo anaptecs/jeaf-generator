@@ -22,7 +22,7 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
     isGetterVisibility = JsonAutoDetect.Visibility.NONE,
     setterVisibility = JsonAutoDetect.Visibility.NONE,
     creatorVisibility = JsonAutoDetect.Visibility.ANY)
-@JsonDeserialize(builder = Sale.SaleBuilderImpl.class)
+@JsonDeserialize(builder = Sale.Builder.class)
 public class Sale {
   /**
    * Constant for the name of attribute "transactionAmount".
@@ -43,7 +43,7 @@ public class Sale {
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected Sale( SaleBuilder<?, ?> pBuilder ) {
+  protected Sale( Builder pBuilder ) {
     // Read attribute values from builder.
     transactionAmount = pBuilder.transactionAmount;
     sale = pBuilder.sale;
@@ -54,8 +54,8 @@ public class Sale {
    *
    * @return {@link Builder} New builder that can be used to create new Sale objects.
    */
-  public static SaleBuilder<?, ?> builder( ) {
-    return new SaleBuilderImpl();
+  public static Builder builder( ) {
+    return new Builder();
   }
 
   /**
@@ -77,21 +77,21 @@ public class Sale {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class SaleBuilder<T extends Sale, B extends SaleBuilder<T, B>> {
+  public static class Builder {
     private BigDecimal transactionAmount;
 
     private Channel sale;
 
     /**
-     * Use {@link SaleBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link Sale#builder()} instead of private constructor to create new builder.
      */
-    protected SaleBuilder( ) {
+    protected Builder( ) {
     }
 
     /**
-     * Use {@link SaleBuilder#builder(Sale)} instead of private constructor to create new builder.
+     * Use {@link Sale#builder(Sale)} instead of private constructor to create new builder.
      */
-    protected SaleBuilder( Sale pObject ) {
+    protected Builder( Sale pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setTransactionAmount(pObject.transactionAmount);
@@ -100,55 +100,52 @@ public class Sale {
     }
 
     /**
+     * Method returns a new builder.
+     *
+     * @return {@link Builder} New builder that can be used to create new Sale objects.
+     */
+    public static Builder newBuilder( ) {
+      return new Builder();
+    }
+
+    /**
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new Sale objects. The method never returns null.
+     */
+    public static Builder newBuilder( Sale pObject ) {
+      return new Builder(pObject);
+    }
+
+    /**
      * Method sets attribute {@link #transactionAmount}.<br/>
      *
      * @param pTransactionAmount Value to which {@link #transactionAmount} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setTransactionAmount( @MyNotNullProperty BigDecimal pTransactionAmount ) {
+    public Builder setTransactionAmount( @MyNotNullProperty BigDecimal pTransactionAmount ) {
       // Assign value to attribute
       transactionAmount = pTransactionAmount;
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets association {@link #sale}.<br/>
      *
      * @param pSale Value to which {@link #sale} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setSale( Channel pSale ) {
+    public Builder setSale( Channel pSale ) {
       sale = pSale;
-      return this.self();
+      return this;
     }
-
-    /**
-     * Method returns instance of this builder. Operation is part of generic builder pattern.
-     */
-    protected abstract B self( );
 
     /**
      * Method creates a new instance of class Sale. The object will be initialized with the values of the builder.
      *
      * @return Sale Created object. The method never returns null.
      */
-    public abstract T build( );
-  }
-
-  static final class SaleBuilderImpl extends SaleBuilder<Sale, SaleBuilderImpl> {
-    protected SaleBuilderImpl( ) {
-    }
-
-    protected SaleBuilderImpl( Sale pObject ) {
-      super(pObject);
-    }
-
-    @Override
-    protected SaleBuilderImpl self( ) {
-      return this;
-    }
-
-    @Override
     public Sale build( ) {
       Sale lObject = new Sale(this);
       SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
@@ -273,7 +270,7 @@ public class Sale {
    *
    * @return {@link Builder} New builder that can be used to create new Sale objects. The method never returns null.
    */
-  public SaleBuilder<?, ?> toBuilder( ) {
-    return new SaleBuilderImpl(this);
+  public Builder toBuilder( ) {
+    return new Builder(this);
   }
 }

@@ -11,10 +11,12 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(builder = MyBusinessObject.Builder.class)
 public class MyBusinessObject {
   /**
    * Constant for the name of attribute "myBusinessAttribute".
@@ -22,13 +24,6 @@ public class MyBusinessObject {
   public static final String MYBUSINESSATTRIBUTE = "myBusinessAttribute";
 
   private int myBusinessAttribute;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected MyBusinessObject( ) {
-  }
 
   /**
    * Initialize object using the passed builder.
@@ -57,7 +52,7 @@ public class MyBusinessObject {
    *
    * @param pMyBusinessAttribute Value to which {@link #myBusinessAttribute} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.generics.MyBusinessObject}
+   * @return {@link MyBusinessObject}
    */
   public static MyBusinessObject of( int pMyBusinessAttribute ) {
     var lBuilder = MyBusinessObject.builder();
@@ -68,6 +63,8 @@ public class MyBusinessObject {
   /**
    * Class implements builder to create a new instance of class <code>MyBusinessObject</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     private int myBusinessAttribute;
 

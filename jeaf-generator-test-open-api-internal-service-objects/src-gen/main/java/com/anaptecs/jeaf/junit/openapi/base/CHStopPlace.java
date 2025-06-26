@@ -9,6 +9,7 @@ import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Valid
 public class CHStopPlace extends StopPlaceRef {
@@ -69,6 +70,7 @@ public class CHStopPlace extends StopPlaceRef {
   /**
    * Class implements builder to create a new instance of class <code>CHStopPlace</code>.
    */
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder extends StopPlaceRef.Builder {
     /**
      * Use {@link CHStopPlace#builder()} instead of private constructor to create new builder.

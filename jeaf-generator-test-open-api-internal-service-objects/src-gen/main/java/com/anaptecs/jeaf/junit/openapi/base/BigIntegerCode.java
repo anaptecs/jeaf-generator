@@ -16,6 +16,7 @@ import javax.validation.constraints.NotNull;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Valid
 public class BigIntegerCode implements ServiceObject {
@@ -68,6 +69,7 @@ public class BigIntegerCode implements ServiceObject {
   /**
    * Class implements builder to create a new instance of class <code>BigIntegerCode</code>.
    */
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     @Max(value = 4711)
     private BigInteger code;

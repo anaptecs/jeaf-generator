@@ -6,8 +6,10 @@
 package com.anaptecs.spring.base;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(builder = NoSubTypesChild.Builder.class)
 public class NoSubTypesChild extends NoSubTypesParent {
   /**
    * Constant for the name of attribute "myProperty".
@@ -46,13 +48,6 @@ public class NoSubTypesChild extends NoSubTypesParent {
   private String myProperty;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected NoSubTypesChild( ) {
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
@@ -79,7 +74,7 @@ public class NoSubTypesChild extends NoSubTypesParent {
    *
    * @param pMyProperty Value to which {@link #myProperty} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.NoSubTypesChild}
+   * @return {@link NoSubTypesChild}
    */
   public static NoSubTypesChild of( String pMyProperty ) {
     var lBuilder = NoSubTypesChild.builder();
@@ -90,6 +85,8 @@ public class NoSubTypesChild extends NoSubTypesParent {
   /**
    * Class implements builder to create a new instance of class <code>NoSubTypesChild</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder extends NoSubTypesParent.Builder {
     /**
      * Hello World!<br/>

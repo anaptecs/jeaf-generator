@@ -10,8 +10,8 @@ import java.util.Objects;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class CurrencyCode {
   /**
    * Constant for the name of attribute "code".
@@ -28,14 +28,6 @@ public class CurrencyCode {
    */
   @Size(min = 3, max = 3)
   private String code;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected CurrencyCode( ) {
-    code = "CHF";
-  }
 
   /**
    * Initialize object using the passed builder.
@@ -73,6 +65,8 @@ public class CurrencyCode {
   /**
    * Class implements builder to create a new instance of class <code>CurrencyCode</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     /**
      * ISO 4217 currency code. <br/>

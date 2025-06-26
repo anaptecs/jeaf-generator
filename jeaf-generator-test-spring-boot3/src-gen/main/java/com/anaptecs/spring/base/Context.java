@@ -85,20 +85,6 @@ public class Context {
   private Map<String, String> customHeaders = new HashMap<String, String>();
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  public Context( ) {
-    accessToken = null;
-    language = null;
-    resellerID = 0;
-    pathParam = 0;
-    queryParam = null;
-    lang = null;
-    intCode = null;
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.

@@ -165,35 +165,6 @@ public class PrimitiveObject {
   private final String bString;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected PrimitiveObject( ) {
-    aBoolean = false;
-    bBoolean = null;
-    cBoolean = false;
-    aByte = 0;
-    bByte = null;
-    aShort = 0;
-    bShort = null;
-    aInteger = 0;
-    bInteger = null;
-    cInteger = null;
-    aLong = 0;
-    bLong = null;
-    aBigInteger = null;
-    aCharacter = 0;
-    bCharacter = null;
-    aFloat = 0;
-    bFloat = null;
-    aDouble = 0;
-    bDouble = null;
-    aBigDecimal = null;
-    aString = null;
-    bString = null;
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.

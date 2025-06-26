@@ -15,10 +15,12 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(builder = Account.Builder.class)
 public abstract class AccountBase {
   /**
    * Constant for the name of attribute "iban".
@@ -33,13 +35,6 @@ public abstract class AccountBase {
   private int iban;
 
   private Currency currency;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected AccountBase( ) {
-  }
 
   /**
    * Initialize object using the passed builder.
@@ -58,6 +53,8 @@ public abstract class AccountBase {
    * Class implements builder to create a new instance of class Account. As the class has read only attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static abstract class BuilderBase {
     private int iban;
 
@@ -173,7 +170,7 @@ public abstract class AccountBase {
    *
    * @param pCurrency Value to which {@link #currency} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.accounting.impl.pojo.Account}
+   * @return {@link Account}
    */
   public static Account of( int pIban, Currency pCurrency ) {
     var lBuilder = Account.builder();

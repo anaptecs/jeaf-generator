@@ -5,19 +5,18 @@
  */
 package com.anaptecs.jeaf.junit.pojo;
 
-import com.anaptecs.jeaf.junit.pojo.ImmutablePOJO.ImmutablePOJOBuilder;
-import com.anaptecs.jeaf.junit.pojo.POJOWithIDnMethodBase.POJOWithIDnMethodBuilder;
+import com.anaptecs.jeaf.junit.pojo.ImmutablePOJO.Builder;
 import com.anaptecs.jeaf.xfun.api.common.ObjectID;
 
 public class BuilderTest {
   public void testBuilder( ) {
-    ImmutablePOJOBuilder<?, ?> lBuilder = ImmutablePOJO.builder();
+    Builder lBuilder = ImmutablePOJO.builder();
     ImmutablePOJO lPOJO = lBuilder.setName("Hello").setSomething(4711).build();
     lPOJO = lBuilder.setName("Hello").setSomething(4711).buildValidated();
 
     lBuilder = lPOJO.toBuilder();
 
-    POJOWithIDnMethodBuilder<?, ?> lNewBuilder = POJOWithIDnMethod.builder();
+    var lNewBuilder = POJOWithIDnMethod.builder();
     POJOWithIDnMethod lPOJOwithIDnMethod = lNewBuilder.setID(null).build();
     ObjectID lObjectID = lPOJOwithIDnMethod.getID();
     lObjectID.toString();

@@ -48,18 +48,6 @@ public class CodeTypeUsageTest {
   private final CharacterCode characterCode;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected CodeTypeUsageTest( ) {
-    booleanCode = null;
-    booleanCodeAssociation = new HashSet<>();
-    shortCodeTypeAssociation = new HashSet<>();
-    stringCode = null;
-    characterCode = null;
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.

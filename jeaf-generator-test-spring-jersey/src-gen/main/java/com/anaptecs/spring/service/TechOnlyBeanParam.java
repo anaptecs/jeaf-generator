@@ -5,14 +5,10 @@
  */
 package com.anaptecs.spring.service;
 
-public class TechOnlyBeanParam {
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  public TechOnlyBeanParam( ) {
-  }
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
+public class TechOnlyBeanParam {
   /**
    * Initialize object using the passed builder.
    *
@@ -45,6 +41,8 @@ public class TechOnlyBeanParam {
   /**
    * Class implements builder to create a new instance of class <code>TechOnlyBeanParam</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     /**
      * Use {@link TechOnlyBeanParam#builder()} instead of private constructor to create new builder.

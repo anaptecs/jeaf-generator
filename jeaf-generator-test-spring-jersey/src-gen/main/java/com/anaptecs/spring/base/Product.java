@@ -17,8 +17,8 @@ import java.util.UUID;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonSetter;
-import com.fasterxml.jackson.annotation.Nulls;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 /**
  * Data type represents a product definition
@@ -26,7 +26,7 @@ import com.fasterxml.jackson.annotation.Nulls;
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(builder = Product.Builder.class)
 public class Product implements IProduct {
   /**
    * Constant for the name of attribute "resellers".
@@ -79,7 +79,6 @@ public class Product implements IProduct {
    */
   public static final String URI = "uri";
 
-  @JsonSetter(nulls = Nulls.SKIP)
   private Set<Reseller> resellers;
 
   /**
@@ -108,10 +107,8 @@ public class Product implements IProduct {
   private final UUID productID;
 
   @Size(min = 7, max = 42)
-  @JsonSetter(nulls = Nulls.SKIP)
   private Set<CurrencyCode> supportedCurrencies;
 
-  @JsonSetter(nulls = Nulls.SKIP)
   private Set<ProductCode> productCodes;
 
   /**
@@ -134,21 +131,6 @@ public class Product implements IProduct {
    * <b>Default Value:</b> <code>"https://products.anaptecs.de/123456789"</code>
    */
   private String uri;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected Product( ) {
-    resellers = new HashSet<>();
-    // Bidirectional back reference is not yet set up correctly
-    resellersBackReferenceInitialized = false;
-    productID = null;
-    supportedCurrencies = new HashSet<>();
-    productCodes = new HashSet<>();
-    sortiments = new HashSet<>();
-    uri = "https://products.anaptecs.de/123456789";
-  }
 
   /**
    * Initialize object using the passed builder.
@@ -235,6 +217,8 @@ public class Product implements IProduct {
   /**
    * Class implements builder to create a new instance of class <code>Product</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     private Set<Reseller> resellers;
 

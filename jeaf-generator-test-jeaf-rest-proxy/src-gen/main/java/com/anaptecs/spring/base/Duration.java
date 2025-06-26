@@ -12,6 +12,8 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 /**
  * Type represents a duration.<br/>
@@ -25,7 +27,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(builder = Duration.Builder.class)
 public class Duration implements Serializable {
   /**
    * Default serial version UID.
@@ -49,14 +51,6 @@ public class Duration implements Serializable {
    * <b>Default Value:</b> <code>DAY</code>
    */
   private TimeUnit timeUnit;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected Duration( ) {
-    timeUnit = TimeUnit.DAY;
-  }
 
   /**
    * Initialize object using the passed builder.
@@ -98,7 +92,7 @@ public class Duration implements Serializable {
    *
    * @param pTimeUnit Value to which {@link #timeUnit} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.Duration}
+   * @return {@link Duration}
    */
   public static Duration of( int pValue, TimeUnit pTimeUnit ) {
     var lBuilder = Duration.builder();
@@ -110,6 +104,8 @@ public class Duration implements Serializable {
   /**
    * Class implements builder to create a new instance of class <code>Duration</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     private int value;
 

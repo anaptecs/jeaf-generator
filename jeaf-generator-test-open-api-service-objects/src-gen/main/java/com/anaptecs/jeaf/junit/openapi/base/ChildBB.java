@@ -19,6 +19,7 @@ import javax.validation.constraints.Size;
 import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.annotation.Nulls;
 
@@ -110,6 +111,7 @@ public class ChildBB extends ChildB {
   /**
    * Class implements builder to create a new instance of class <code>ChildBB</code>.
    */
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder extends ChildB.Builder {
     private Long childBBAttribute;
 

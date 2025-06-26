@@ -50,18 +50,6 @@ public class MultivaluedQueryParamsBean {
   private final TimeUnit[] timeUnitArray;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  public MultivaluedQueryParamsBean( ) {
-    intArray = null;
-    strings = null;
-    integers = null;
-    timeUnits = new HashSet<>();
-    timeUnitArray = null;
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.

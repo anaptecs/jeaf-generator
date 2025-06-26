@@ -12,10 +12,12 @@ import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(builder = ImmutableChildPOJO.Builder.class)
 public class ImmutableChildPOJO extends ImmutablePOJOParent {
   /**
    * Constant for the name of attribute "childAttribute".
@@ -30,14 +32,6 @@ public class ImmutableChildPOJO extends ImmutablePOJOParent {
   private String childAttribute;
 
   private final Double anotherChildAttribute;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected ImmutableChildPOJO( ) {
-    anotherChildAttribute = null;
-  }
 
   /**
    * Initialize object using the passed builder.
@@ -75,7 +69,7 @@ public class ImmutableChildPOJO extends ImmutablePOJOParent {
    *
    * @param pAnotherChildAttribute Value to which {@link #anotherChildAttribute} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.pojo.ImmutableChildPOJO}
+   * @return {@link ImmutableChildPOJO}
    */
   public static ImmutableChildPOJO of( String pAbtractAttr, String pParentAttribute, Integer pAnotherParentAttribute,
       String pChildAttribute, Double pAnotherChildAttribute ) {
@@ -91,6 +85,8 @@ public class ImmutableChildPOJO extends ImmutablePOJOParent {
   /**
    * Class implements builder to create a new instance of class <code>ImmutableChildPOJO</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder extends ImmutablePOJOParent.Builder {
     private String childAttribute;
 

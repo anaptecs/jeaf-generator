@@ -6,6 +6,7 @@
 package com.anaptecs.spring.base;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 /**
  * single line class comment
@@ -13,7 +14,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */
-@JsonIgnoreProperties(ignoreUnknown = true)
 public abstract class ChildA extends ParentClass {
   /**
    * Constant for the name of attribute "childAAttribute".
@@ -21,13 +21,6 @@ public abstract class ChildA extends ParentClass {
   public static final String CHILDAATTRIBUTE = "childAAttribute";
 
   private int childAAttribute;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected ChildA( ) {
-  }
 
   /**
    * Initialize object using the passed builder.
@@ -44,6 +37,8 @@ public abstract class ChildA extends ParentClass {
   /**
    * Class implements builder to create a new instance of class <code>ChildA</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static abstract class Builder extends ParentClass.Builder {
     private int childAAttribute;
 

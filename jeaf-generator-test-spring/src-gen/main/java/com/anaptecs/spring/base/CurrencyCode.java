@@ -43,7 +43,7 @@ public class CurrencyCode {
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected CurrencyCode( CurrencyCodeBuilder<?, ?> pBuilder ) {
+  protected CurrencyCode( Builder pBuilder ) {
     // Read attribute values from builder.
     code = pBuilder.code;
   }
@@ -53,8 +53,8 @@ public class CurrencyCode {
    *
    * @return {@link Builder} New builder that can be used to create new CurrencyCode objects.
    */
-  public static CurrencyCodeBuilder<?, ?> builder( ) {
-    return new CurrencyCodeBuilderImpl();
+  public static Builder builder( ) {
+    return new Builder();
   }
 
   /**
@@ -76,7 +76,7 @@ public class CurrencyCode {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class CurrencyCodeBuilder<T extends CurrencyCode, B extends CurrencyCodeBuilder<T, B>> {
+  public static class Builder {
     /**
      * ISO 4217 currency code. <br/>
      * <b>Default Value:</b> <code>"CHF"</code> <br/>
@@ -89,15 +89,15 @@ public class CurrencyCode {
     private String code = "CHF";
 
     /**
-     * Use {@link CurrencyCodeBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link CurrencyCode#builder()} instead of private constructor to create new builder.
      */
-    protected CurrencyCodeBuilder( ) {
+    protected Builder( ) {
     }
 
     /**
-     * Use {@link CurrencyCodeBuilder#builder(CurrencyCode)} instead of private constructor to create new builder.
+     * Use {@link CurrencyCode#builder(CurrencyCode)} instead of private constructor to create new builder.
      */
-    protected CurrencyCodeBuilder( CurrencyCode pObject ) {
+    protected Builder( CurrencyCode pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setCode(pObject.code);
@@ -105,21 +105,36 @@ public class CurrencyCode {
     }
 
     /**
-     * Method sets attribute {@link #code}.<br/>
+     * Method returns a new builder.
      *
-     * @param pCode Value to which {@link #code} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} New builder that can be used to create new CurrencyCode objects.
      */
-    public B setCode( @MyNotNullProperty String pCode ) {
-      // Assign value to attribute
-      code = pCode;
-      return this.self();
+    public static Builder newBuilder( ) {
+      return new Builder();
     }
 
     /**
-     * Method returns instance of this builder. Operation is part of generic builder pattern.
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new CurrencyCode objects. The method never returns
+     * null.
      */
-    protected abstract B self( );
+    public static Builder newBuilder( CurrencyCode pObject ) {
+      return new Builder(pObject);
+    }
+
+    /**
+     * Method sets attribute {@link #code}.<br/>
+     *
+     * @param pCode Value to which {@link #code} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    public Builder setCode( @MyNotNullProperty String pCode ) {
+      // Assign value to attribute
+      code = pCode;
+      return this;
+    }
 
     /**
      * Method creates a new instance of class CurrencyCode. The object will be initialized with the values of the
@@ -127,23 +142,6 @@ public class CurrencyCode {
      *
      * @return CurrencyCode Created object. The method never returns null.
      */
-    public abstract T build( );
-  }
-
-  static final class CurrencyCodeBuilderImpl extends CurrencyCodeBuilder<CurrencyCode, CurrencyCodeBuilderImpl> {
-    protected CurrencyCodeBuilderImpl( ) {
-    }
-
-    protected CurrencyCodeBuilderImpl( CurrencyCode pObject ) {
-      super(pObject);
-    }
-
-    @Override
-    protected CurrencyCodeBuilderImpl self( ) {
-      return this;
-    }
-
-    @Override
     public CurrencyCode build( ) {
       CurrencyCode lObject = new CurrencyCode(this);
       SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
@@ -228,7 +226,7 @@ public class CurrencyCode {
    * @return {@link Builder} New builder that can be used to create new CurrencyCode objects. The method never returns
    * null.
    */
-  public CurrencyCodeBuilder<?, ?> toBuilder( ) {
-    return new CurrencyCodeBuilderImpl(this);
+  public Builder toBuilder( ) {
+    return new Builder(this);
   }
 }

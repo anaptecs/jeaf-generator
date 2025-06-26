@@ -22,8 +22,7 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
-@JsonDeserialize(
-    builder = CustomPrimitiveArraysObjectWithRestrictionsBase.CustomPrimitiveArraysObjectWithRestrictionsBuilderImpl.class)
+@JsonDeserialize(builder = CustomPrimitiveArraysObjectWithRestrictions.Builder.class)
 public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
   /**
    * Constant for the name of attribute "aBooleanArray".
@@ -187,8 +186,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected CustomPrimitiveArraysObjectWithRestrictionsBase(
-      CustomPrimitiveArraysObjectWithRestrictionsBuilder<?, ?> pBuilder ) {
+  protected CustomPrimitiveArraysObjectWithRestrictionsBase( BuilderBase pBuilder ) {
     // Ensure that builder is not null.
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
@@ -217,12 +215,13 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
   }
 
   /**
-   * Class implements builder to create a new instance of class
-   * <code>CustomPrimitiveArraysObjectWithRestrictions</code>.
+   * Class implements builder to create a new instance of class CustomPrimitiveArraysObjectWithRestrictions. As the
+   * class has read only attributes or associations instances can not be created directly. Instead this builder class
+   * has to be used.
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class CustomPrimitiveArraysObjectWithRestrictionsBuilder<T extends CustomPrimitiveArraysObjectWithRestrictions, B extends CustomPrimitiveArraysObjectWithRestrictionsBuilder<T, B>> {
+  public static abstract class BuilderBase {
     private boolean[] aBooleanArray;
 
     private Boolean[] bBooleanArray;
@@ -271,19 +270,17 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
     private String[] bStringArray;
 
     /**
-     * Use {@link CustomPrimitiveArraysObjectWithRestrictionsBuilder#builder()} instead of private constructor to create
-     * new builder.
+     * Use {@link CustomPrimitiveArraysObjectWithRestrictions.builder()} instead of protected constructor to create new
+     * builder.
      */
-    protected CustomPrimitiveArraysObjectWithRestrictionsBuilder( ) {
+    protected BuilderBase( ) {
     }
 
     /**
-     * Use
-     * {@link CustomPrimitiveArraysObjectWithRestrictionsBuilder#builder(CustomPrimitiveArraysObjectWithRestrictions)}
-     * instead of private constructor to create new builder.
+     * Use {@link CustomPrimitiveArraysObjectWithRestrictions.builder(CustomPrimitiveArraysObjectWithRestrictions)}
+     * instead of protected constructor to create new builder.
      */
-    protected CustomPrimitiveArraysObjectWithRestrictionsBuilder(
-        CustomPrimitiveArraysObjectWithRestrictionsBase pObject ) {
+    protected BuilderBase( CustomPrimitiveArraysObjectWithRestrictionsBase pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setABooleanArray(pObject.aBooleanArray);
@@ -315,9 +312,9 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
      * Method sets attribute {@link #aBooleanArray}.<br/>
      *
      * @param pABooleanArray Value to which {@link #aBooleanArray} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setABooleanArray( boolean[] pABooleanArray ) {
+    public BuilderBase setABooleanArray( boolean[] pABooleanArray ) {
       // Assign value to attribute
       if (pABooleanArray != null) {
         aBooleanArray = new boolean[pABooleanArray.length];
@@ -326,16 +323,16 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
       else {
         aBooleanArray = null;
       }
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets attribute {@link #bBooleanArray}.<br/>
      *
      * @param pBBooleanArray Collection to which {@link #bBooleanArray} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setBBooleanArray( Boolean[] pBBooleanArray ) {
+    public BuilderBase setBBooleanArray( Boolean[] pBBooleanArray ) {
       // Assign value to attribute
       if (pBBooleanArray != null) {
         bBooleanArray = new Boolean[pBBooleanArray.length];
@@ -344,16 +341,16 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
       else {
         bBooleanArray = null;
       }
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets attribute {@link #cBooleanArray}.<br/>
      *
      * @param pCBooleanArray Value to which {@link #cBooleanArray} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setCBooleanArray( boolean[] pCBooleanArray ) {
+    public BuilderBase setCBooleanArray( boolean[] pCBooleanArray ) {
       // Assign value to attribute
       if (pCBooleanArray != null) {
         cBooleanArray = new boolean[pCBooleanArray.length];
@@ -362,16 +359,16 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
       else {
         cBooleanArray = null;
       }
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets attribute {@link #aByteArray}.<br/>
      *
      * @param pAByteArray Value to which {@link #aByteArray} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setAByteArray( byte[] pAByteArray ) {
+    public BuilderBase setAByteArray( byte[] pAByteArray ) {
       // Assign value to attribute
       if (pAByteArray != null) {
         aByteArray = new byte[pAByteArray.length];
@@ -380,16 +377,16 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
       else {
         aByteArray = null;
       }
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets attribute {@link #bByteArray}.<br/>
      *
      * @param pBByteArray Collection to which {@link #bByteArray} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setBByteArray( Byte[] pBByteArray ) {
+    public BuilderBase setBByteArray( Byte[] pBByteArray ) {
       // Assign value to attribute
       if (pBByteArray != null) {
         bByteArray = new Byte[pBByteArray.length];
@@ -398,16 +395,16 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
       else {
         bByteArray = null;
       }
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets attribute {@link #aShortArray}.<br/>
      *
      * @param pAShortArray Value to which {@link #aShortArray} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setAShortArray( short[] pAShortArray ) {
+    public BuilderBase setAShortArray( short[] pAShortArray ) {
       // Assign value to attribute
       if (pAShortArray != null) {
         aShortArray = new short[pAShortArray.length];
@@ -416,16 +413,16 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
       else {
         aShortArray = null;
       }
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets attribute {@link #bShortArray}.<br/>
      *
      * @param pBShortArray Collection to which {@link #bShortArray} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setBShortArray( Short[] pBShortArray ) {
+    public BuilderBase setBShortArray( Short[] pBShortArray ) {
       // Assign value to attribute
       if (pBShortArray != null) {
         bShortArray = new Short[pBShortArray.length];
@@ -434,16 +431,16 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
       else {
         bShortArray = null;
       }
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets attribute {@link #aIntegerArray}.<br/>
      *
      * @param pAIntegerArray Value to which {@link #aIntegerArray} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setAIntegerArray( int[] pAIntegerArray ) {
+    public BuilderBase setAIntegerArray( int[] pAIntegerArray ) {
       // Assign value to attribute
       if (pAIntegerArray != null) {
         aIntegerArray = new int[pAIntegerArray.length];
@@ -452,16 +449,16 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
       else {
         aIntegerArray = null;
       }
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets attribute {@link #bIntegerArray}.<br/>
      *
      * @param pBIntegerArray Collection to which {@link #bIntegerArray} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setBIntegerArray( Integer[] pBIntegerArray ) {
+    public BuilderBase setBIntegerArray( Integer[] pBIntegerArray ) {
       // Assign value to attribute
       if (pBIntegerArray != null) {
         bIntegerArray = new Integer[pBIntegerArray.length];
@@ -470,16 +467,16 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
       else {
         bIntegerArray = null;
       }
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets attribute {@link #cIntegerArray}.<br/>
      *
      * @param pCIntegerArray Collection to which {@link #cIntegerArray} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setCIntegerArray( Integer[] pCIntegerArray ) {
+    public BuilderBase setCIntegerArray( Integer[] pCIntegerArray ) {
       // Assign value to attribute
       if (pCIntegerArray != null) {
         cIntegerArray = new Integer[pCIntegerArray.length];
@@ -488,16 +485,16 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
       else {
         cIntegerArray = null;
       }
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets attribute {@link #aLongArray}.<br/>
      *
      * @param pALongArray Value to which {@link #aLongArray} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setALongArray( long[] pALongArray ) {
+    public BuilderBase setALongArray( long[] pALongArray ) {
       // Assign value to attribute
       if (pALongArray != null) {
         aLongArray = new long[pALongArray.length];
@@ -506,16 +503,16 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
       else {
         aLongArray = null;
       }
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets attribute {@link #bLongArray}.<br/>
      *
      * @param pBLongArray Collection to which {@link #bLongArray} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setBLongArray( Long[] pBLongArray ) {
+    public BuilderBase setBLongArray( Long[] pBLongArray ) {
       // Assign value to attribute
       if (pBLongArray != null) {
         bLongArray = new Long[pBLongArray.length];
@@ -524,16 +521,16 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
       else {
         bLongArray = null;
       }
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets attribute {@link #aBigIntegerArray}.<br/>
      *
      * @param pABigIntegerArray Collection to which {@link #aBigIntegerArray} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setABigIntegerArray( BigInteger[] pABigIntegerArray ) {
+    public BuilderBase setABigIntegerArray( BigInteger[] pABigIntegerArray ) {
       // Assign value to attribute
       if (pABigIntegerArray != null) {
         aBigIntegerArray = new BigInteger[pABigIntegerArray.length];
@@ -542,16 +539,16 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
       else {
         aBigIntegerArray = null;
       }
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets attribute {@link #aCharacterArray}.<br/>
      *
      * @param pACharacterArray Value to which {@link #aCharacterArray} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setACharacterArray( char[] pACharacterArray ) {
+    public BuilderBase setACharacterArray( char[] pACharacterArray ) {
       // Assign value to attribute
       if (pACharacterArray != null) {
         aCharacterArray = new char[pACharacterArray.length];
@@ -560,16 +557,16 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
       else {
         aCharacterArray = null;
       }
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets attribute {@link #bCharacterArray}.<br/>
      *
      * @param pBCharacterArray Collection to which {@link #bCharacterArray} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setBCharacterArray( Character[] pBCharacterArray ) {
+    public BuilderBase setBCharacterArray( Character[] pBCharacterArray ) {
       // Assign value to attribute
       if (pBCharacterArray != null) {
         bCharacterArray = new Character[pBCharacterArray.length];
@@ -578,16 +575,16 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
       else {
         bCharacterArray = null;
       }
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets attribute {@link #aFloatArray}.<br/>
      *
      * @param pAFloatArray Value to which {@link #aFloatArray} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setAFloatArray( float[] pAFloatArray ) {
+    public BuilderBase setAFloatArray( float[] pAFloatArray ) {
       // Assign value to attribute
       if (pAFloatArray != null) {
         aFloatArray = new float[pAFloatArray.length];
@@ -596,16 +593,16 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
       else {
         aFloatArray = null;
       }
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets attribute {@link #bFloatArray}.<br/>
      *
      * @param pBFloatArray Collection to which {@link #bFloatArray} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setBFloatArray( Float[] pBFloatArray ) {
+    public BuilderBase setBFloatArray( Float[] pBFloatArray ) {
       // Assign value to attribute
       if (pBFloatArray != null) {
         bFloatArray = new Float[pBFloatArray.length];
@@ -614,16 +611,16 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
       else {
         bFloatArray = null;
       }
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets attribute {@link #aDoubleArray}.<br/>
      *
      * @param pADoubleArray Value to which {@link #aDoubleArray} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setADoubleArray( double[] pADoubleArray ) {
+    public BuilderBase setADoubleArray( double[] pADoubleArray ) {
       // Assign value to attribute
       if (pADoubleArray != null) {
         aDoubleArray = new double[pADoubleArray.length];
@@ -632,16 +629,16 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
       else {
         aDoubleArray = null;
       }
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets attribute {@link #bDoubleArray}.<br/>
      *
      * @param pBDoubleArray Collection to which {@link #bDoubleArray} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setBDoubleArray( Double[] pBDoubleArray ) {
+    public BuilderBase setBDoubleArray( Double[] pBDoubleArray ) {
       // Assign value to attribute
       if (pBDoubleArray != null) {
         bDoubleArray = new Double[pBDoubleArray.length];
@@ -650,16 +647,16 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
       else {
         bDoubleArray = null;
       }
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets attribute {@link #aBigDecimalArray}.<br/>
      *
      * @param pABigDecimalArray Collection to which {@link #aBigDecimalArray} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setABigDecimalArray( BigDecimal[] pABigDecimalArray ) {
+    public BuilderBase setABigDecimalArray( BigDecimal[] pABigDecimalArray ) {
       // Assign value to attribute
       if (pABigDecimalArray != null) {
         aBigDecimalArray = new BigDecimal[pABigDecimalArray.length];
@@ -668,16 +665,16 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
       else {
         aBigDecimalArray = null;
       }
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets attribute {@link #aStringArray}.<br/>
      *
      * @param pAStringArray Collection to which {@link #aStringArray} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setAStringArray( String[] pAStringArray ) {
+    public BuilderBase setAStringArray( String[] pAStringArray ) {
       // Assign value to attribute
       if (pAStringArray != null) {
         aStringArray = new String[pAStringArray.length];
@@ -686,16 +683,16 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
       else {
         aStringArray = null;
       }
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets attribute {@link #bStringArray}.<br/>
      *
      * @param pBStringArray Collection to which {@link #bStringArray} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setBStringArray( String[] pBStringArray ) {
+    public BuilderBase setBStringArray( String[] pBStringArray ) {
       // Assign value to attribute
       if (pBStringArray != null) {
         bStringArray = new String[pBStringArray.length];
@@ -704,13 +701,8 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
       else {
         bStringArray = null;
       }
-      return this.self();
+      return this;
     }
-
-    /**
-     * Method returns instance of this builder. Operation is part of generic builder pattern.
-     */
-    protected abstract B self( );
 
     /**
      * Method creates a new instance of class CustomPrimitiveArraysObjectWithRestrictions. The object will be
@@ -718,7 +710,9 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
      *
      * @return CustomPrimitiveArraysObjectWithRestrictions Created object. The method never returns null.
      */
-    public abstract T build( );
+    public CustomPrimitiveArraysObjectWithRestrictions build( ) {
+      return new CustomPrimitiveArraysObjectWithRestrictions(this);
+    }
 
     /**
      * Method creates a new validated instance of class CustomPrimitiveArraysObjectWithRestrictions. The object will be
@@ -728,30 +722,9 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public CustomPrimitiveArraysObjectWithRestrictions buildValidated( ) throws ConstraintViolationException {
-      CustomPrimitiveArraysObjectWithRestrictions lObject = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
-      return lObject;
-    }
-  }
-
-  static final class CustomPrimitiveArraysObjectWithRestrictionsBuilderImpl extends
-      CustomPrimitiveArraysObjectWithRestrictionsBuilder<CustomPrimitiveArraysObjectWithRestrictions, CustomPrimitiveArraysObjectWithRestrictionsBuilderImpl> {
-    protected CustomPrimitiveArraysObjectWithRestrictionsBuilderImpl( ) {
-    }
-
-    protected CustomPrimitiveArraysObjectWithRestrictionsBuilderImpl(
-        CustomPrimitiveArraysObjectWithRestrictions pObject ) {
-      super(pObject);
-    }
-
-    @Override
-    protected CustomPrimitiveArraysObjectWithRestrictionsBuilderImpl self( ) {
-      return this;
-    }
-
-    @Override
-    public CustomPrimitiveArraysObjectWithRestrictions build( ) {
-      return new CustomPrimitiveArraysObjectWithRestrictions(this);
+      CustomPrimitiveArraysObjectWithRestrictions lPOJO = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
+      return lPOJO;
     }
   }
 
@@ -1135,7 +1108,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
    *
    * @param pALongArray Value to which {@link #aLongArray} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.pojo.CustomPrimitiveArraysObjectWithRestrictions}
+   * @return {@link CustomPrimitiveArraysObjectWithRestrictions}
    */
   public static CustomPrimitiveArraysObjectWithRestrictions of( long[] pALongArray ) {
     var lBuilder = CustomPrimitiveArraysObjectWithRestrictions.builder();
@@ -1433,8 +1406,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
    * @return {@link Builder} New builder that can be used to create new CustomPrimitiveArraysObjectWithRestrictions
    * objects. The method never returns null.
    */
-  public CustomPrimitiveArraysObjectWithRestrictionsBuilder<?, ?> toBuilder( ) {
-    return new CustomPrimitiveArraysObjectWithRestrictionsBuilderImpl(
-        (CustomPrimitiveArraysObjectWithRestrictions) this);
+  public CustomPrimitiveArraysObjectWithRestrictions.Builder toBuilder( ) {
+    return new CustomPrimitiveArraysObjectWithRestrictions.Builder((CustomPrimitiveArraysObjectWithRestrictions) this);
   }
 }

@@ -13,9 +13,11 @@ import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonPropertyOrder(value = { "deprecatedProperty", "successorProperty" })
+@JsonDeserialize(builder = SimpleBackwardCompatibility.Builder.class)
 public class SimpleBackwardCompatibility implements Serializable {
   /**
    * Default serial version UID.
@@ -34,13 +36,6 @@ public class SimpleBackwardCompatibility implements Serializable {
   public static final String SUCCESSORPROPERTY = "successorProperty";
 
   private String successorProperty;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected SimpleBackwardCompatibility( ) {
-  }
 
   /**
    * Initialize object using the passed builder.
@@ -81,7 +76,7 @@ public class SimpleBackwardCompatibility implements Serializable {
    *
    * @param pSuccessorProperty Value to which {@link #successorProperty} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.backward.SimpleBackwardCompatibility}
+   * @return {@link SimpleBackwardCompatibility}
    */
   public static SimpleBackwardCompatibility of( String pDeprecatedProperty, String pSuccessorProperty ) {
     var lBuilder = SimpleBackwardCompatibility.builder();
@@ -93,6 +88,8 @@ public class SimpleBackwardCompatibility implements Serializable {
   /**
    * Class implements builder to create a new instance of class <code>SimpleBackwardCompatibility</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     private String successorProperty;
 

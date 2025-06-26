@@ -20,7 +20,7 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
-@JsonDeserialize(builder = AccountBase.AccountBuilderImpl.class)
+@JsonDeserialize(builder = Account.Builder.class)
 public abstract class AccountBase {
   /**
    * Constant for the name of attribute "iban".
@@ -41,7 +41,7 @@ public abstract class AccountBase {
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected AccountBase( AccountBuilder<?, ?> pBuilder ) {
+  protected AccountBase( BuilderBase pBuilder ) {
     // Ensure that builder is not null.
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
@@ -50,25 +50,26 @@ public abstract class AccountBase {
   }
 
   /**
-   * Class implements builder to create a new instance of class <code>Account</code>.
+   * Class implements builder to create a new instance of class Account. As the class has read only attributes or
+   * associations instances can not be created directly. Instead this builder class has to be used.
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class AccountBuilder<T extends Account, B extends AccountBuilder<T, B>> {
+  public static abstract class BuilderBase {
     private int iban;
 
     private Currency currency;
 
     /**
-     * Use {@link AccountBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link Account.builder()} instead of protected constructor to create new builder.
      */
-    protected AccountBuilder( ) {
+    protected BuilderBase( ) {
     }
 
     /**
-     * Use {@link AccountBuilder#builder(Account)} instead of private constructor to create new builder.
+     * Use {@link Account.builder(Account)} instead of protected constructor to create new builder.
      */
-    protected AccountBuilder( AccountBase pObject ) {
+    protected BuilderBase( AccountBase pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setIban(pObject.iban);
@@ -80,37 +81,34 @@ public abstract class AccountBase {
      * Method sets attribute {@link #iban}.<br/>
      *
      * @param pIban Value to which {@link #iban} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setIban( int pIban ) {
+    public BuilderBase setIban( int pIban ) {
       // Assign value to attribute
       iban = pIban;
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets attribute {@link #currency}.<br/>
      *
      * @param pCurrency Value to which {@link #currency} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setCurrency( Currency pCurrency ) {
+    public BuilderBase setCurrency( Currency pCurrency ) {
       // Assign value to attribute
       currency = pCurrency;
-      return this.self();
+      return this;
     }
-
-    /**
-     * Method returns instance of this builder. Operation is part of generic builder pattern.
-     */
-    protected abstract B self( );
 
     /**
      * Method creates a new instance of class Account. The object will be initialized with the values of the builder.
      *
      * @return Account Created object. The method never returns null.
      */
-    public abstract T build( );
+    public Account build( ) {
+      return new Account(this);
+    }
 
     /**
      * Method creates a new validated instance of class Account. The object will be initialized with the values of the
@@ -120,28 +118,9 @@ public abstract class AccountBase {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public Account buildValidated( ) throws ConstraintViolationException {
-      Account lObject = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
-      return lObject;
-    }
-  }
-
-  static final class AccountBuilderImpl extends AccountBuilder<Account, AccountBuilderImpl> {
-    protected AccountBuilderImpl( ) {
-    }
-
-    protected AccountBuilderImpl( Account pObject ) {
-      super(pObject);
-    }
-
-    @Override
-    protected AccountBuilderImpl self( ) {
-      return this;
-    }
-
-    @Override
-    public Account build( ) {
-      return new Account(this);
+      Account lPOJO = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
+      return lPOJO;
     }
   }
 
@@ -171,7 +150,7 @@ public abstract class AccountBase {
    *
    * @param pCurrency Value to which {@link #currency} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.accounting.impl.pojo.Account}
+   * @return {@link Account}
    */
   public static Account of( int pIban, Currency pCurrency ) {
     var lBuilder = Account.builder();
@@ -251,7 +230,7 @@ public abstract class AccountBase {
    *
    * @return {@link Builder} New builder that can be used to create new Account objects. The method never returns null.
    */
-  public AccountBuilder<?, ?> toBuilder( ) {
-    return new AccountBuilderImpl((Account) this);
+  public Account.Builder toBuilder( ) {
+    return new Account.Builder((Account) this);
   }
 }

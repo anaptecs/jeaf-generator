@@ -9,6 +9,8 @@ import javax.ws.rs.HeaderParam;
 
 import com.anaptecs.spring.base.DoubleCode;
 import com.anaptecs.spring.base.ParentBeanParamType;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 public class ChildBeanParameterType extends ParentBeanParamType {
   /**
@@ -18,13 +20,6 @@ public class ChildBeanParameterType extends ParentBeanParamType {
 
   @HeaderParam("X-Child-Property")
   private String childProperty;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  public ChildBeanParameterType( ) {
-  }
 
   /**
    * Initialize object using the passed builder.
@@ -73,6 +68,8 @@ public class ChildBeanParameterType extends ParentBeanParamType {
   /**
    * Class implements builder to create a new instance of class <code>ChildBeanParameterType</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder extends ParentBeanParamType.Builder {
     private String childProperty;
 

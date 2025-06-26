@@ -9,20 +9,15 @@ import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(builder = UICStopPlace.Builder.class)
 public class UICStopPlace extends StopPlaceRef {
   /**
    * Default serial version UID.
    */
   private static final long serialVersionUID = 1L;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected UICStopPlace( ) {
-  }
 
   /**
    * Initialize object using the passed builder.
@@ -61,7 +56,7 @@ public class UICStopPlace extends StopPlaceRef {
    *
    * @param pType Value to which {@link #type} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.UICStopPlace}
+   * @return {@link UICStopPlace}
    */
   public static UICStopPlace of( String pName, MyType pType ) {
     var lBuilder = UICStopPlace.builder();
@@ -73,6 +68,8 @@ public class UICStopPlace extends StopPlaceRef {
   /**
    * Class implements builder to create a new instance of class <code>UICStopPlace</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder extends StopPlaceRef.Builder {
     /**
      * Use {@link UICStopPlace#builder()} instead of private constructor to create new builder.

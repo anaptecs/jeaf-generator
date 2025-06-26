@@ -5,6 +5,7 @@ extension functions::ServiceObject;
 extension java::GeneratorCommons;
 extension java::OpenAPIFunctions;
 
+
 cached boolean isClass(uml::Element element):
 	if element != null
     then element.isInstanceOf("org.eclipse.uml2.uml.Class")
@@ -30,6 +31,15 @@ cached boolean hasOnlyTransientBidirectionalAssociations(uml::Class class):
     
 cached boolean hasTemplateParameter(uml::Class class):
     class.ownedTemplateSignature.ownedParameter.isEmpty == false;
+    
+cached boolean belongsToClassHierarchy(uml::Class class):
+	if class.superClass.isEmpty && class.getSubclasses().isEmpty
+	then false
+	else true; 
+	
+private List getSubclasses(uml::Class e) :
+   JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.getSubclasses(org.eclipse.uml2.uml.Class);
+	
     
 cached boolean generateOfOperationForClass(uml::Class class):
     if ( class.generateOfOperationForServiceObject(generateOfOperation()) || class.generateOfOperationForPOJO(generateOfOperation())) && class.isOpenAPIDataType() == false

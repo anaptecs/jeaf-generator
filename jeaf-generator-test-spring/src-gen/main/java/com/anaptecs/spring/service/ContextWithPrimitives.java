@@ -60,7 +60,7 @@ public class ContextWithPrimitives {
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected ContextWithPrimitives( ContextWithPrimitivesBuilder<?, ?> pBuilder ) {
+  protected ContextWithPrimitives( Builder pBuilder ) {
     // Read attribute values from builder.
     aBoolean = pBuilder.aBoolean;
     aBooleanWrapper = pBuilder.aBooleanWrapper;
@@ -75,8 +75,8 @@ public class ContextWithPrimitives {
    *
    * @return {@link Builder} New builder that can be used to create new ContextWithPrimitives objects.
    */
-  public static ContextWithPrimitivesBuilder<?, ?> builder( ) {
-    return new ContextWithPrimitivesBuilderImpl();
+  public static Builder builder( ) {
+    return new Builder();
   }
 
   /**
@@ -114,7 +114,7 @@ public class ContextWithPrimitives {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class ContextWithPrimitivesBuilder<T extends ContextWithPrimitives, B extends ContextWithPrimitivesBuilder<T, B>> {
+  public static class Builder {
     private boolean aBoolean;
 
     private Boolean aBooleanWrapper;
@@ -128,16 +128,16 @@ public class ContextWithPrimitives {
     private Long aVeryLong;
 
     /**
-     * Use {@link ContextWithPrimitivesBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link ContextWithPrimitives#builder()} instead of private constructor to create new builder.
      */
-    protected ContextWithPrimitivesBuilder( ) {
+    protected Builder( ) {
     }
 
     /**
-     * Use {@link ContextWithPrimitivesBuilder#builder(ContextWithPrimitives)} instead of private constructor to create
-     * new builder.
+     * Use {@link ContextWithPrimitives#builder(ContextWithPrimitives)} instead of private constructor to create new
+     * builder.
      */
-    protected ContextWithPrimitivesBuilder( ContextWithPrimitives pObject ) {
+    protected Builder( ContextWithPrimitives pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setABoolean(pObject.aBoolean);
@@ -150,81 +150,96 @@ public class ContextWithPrimitives {
     }
 
     /**
+     * Method returns a new builder.
+     *
+     * @return {@link Builder} New builder that can be used to create new ContextWithPrimitives objects.
+     */
+    public static Builder newBuilder( ) {
+      return new Builder();
+    }
+
+    /**
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new ContextWithPrimitives objects. The method
+     * never returns null.
+     */
+    public static Builder newBuilder( ContextWithPrimitives pObject ) {
+      return new Builder(pObject);
+    }
+
+    /**
      * Method sets attribute {@link #aBoolean}.<br/>
      *
      * @param pABoolean Value to which {@link #aBoolean} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setABoolean( boolean pABoolean ) {
+    public Builder setABoolean( boolean pABoolean ) {
       // Assign value to attribute
       aBoolean = pABoolean;
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets attribute {@link #aBooleanWrapper}.<br/>
      *
      * @param pABooleanWrapper Value to which {@link #aBooleanWrapper} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setABooleanWrapper( @MyNotNullProperty Boolean pABooleanWrapper ) {
+    public Builder setABooleanWrapper( @MyNotNullProperty Boolean pABooleanWrapper ) {
       // Assign value to attribute
       aBooleanWrapper = pABooleanWrapper;
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets attribute {@link #anInt}.<br/>
      *
      * @param pAnInt Value to which {@link #anInt} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setAnInt( int pAnInt ) {
+    public Builder setAnInt( int pAnInt ) {
       // Assign value to attribute
       anInt = pAnInt;
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets attribute {@link #anInteger}.<br/>
      *
      * @param pAnInteger Value to which {@link #anInteger} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setAnInteger( @MyNotNullProperty Integer pAnInteger ) {
+    public Builder setAnInteger( @MyNotNullProperty Integer pAnInteger ) {
       // Assign value to attribute
       anInteger = pAnInteger;
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets attribute {@link #aLong}.<br/>
      *
      * @param pALong Value to which {@link #aLong} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setALong( long pALong ) {
+    public Builder setALong( long pALong ) {
       // Assign value to attribute
       aLong = pALong;
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets attribute {@link #aVeryLong}.<br/>
      *
      * @param pAVeryLong Value to which {@link #aVeryLong} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setAVeryLong( @MyNotNullProperty Long pAVeryLong ) {
+    public Builder setAVeryLong( @MyNotNullProperty Long pAVeryLong ) {
       // Assign value to attribute
       aVeryLong = pAVeryLong;
-      return this.self();
+      return this;
     }
-
-    /**
-     * Method returns instance of this builder. Operation is part of generic builder pattern.
-     */
-    protected abstract B self( );
 
     /**
      * Method creates a new instance of class ContextWithPrimitives. The object will be initialized with the values of
@@ -232,24 +247,6 @@ public class ContextWithPrimitives {
      *
      * @return ContextWithPrimitives Created object. The method never returns null.
      */
-    public abstract T build( );
-  }
-
-  static final class ContextWithPrimitivesBuilderImpl
-      extends ContextWithPrimitivesBuilder<ContextWithPrimitives, ContextWithPrimitivesBuilderImpl> {
-    protected ContextWithPrimitivesBuilderImpl( ) {
-    }
-
-    protected ContextWithPrimitivesBuilderImpl( ContextWithPrimitives pObject ) {
-      super(pObject);
-    }
-
-    @Override
-    protected ContextWithPrimitivesBuilderImpl self( ) {
-      return this;
-    }
-
-    @Override
     public ContextWithPrimitives build( ) {
       ContextWithPrimitives lObject = new ContextWithPrimitives(this);
       SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
@@ -473,7 +470,7 @@ public class ContextWithPrimitives {
    * @return {@link Builder} New builder that can be used to create new ContextWithPrimitives objects. The method never
    * returns null.
    */
-  public ContextWithPrimitivesBuilder<?, ?> toBuilder( ) {
-    return new ContextWithPrimitivesBuilderImpl(this);
+  public Builder toBuilder( ) {
+    return new Builder(this);
   }
 }

@@ -57,7 +57,7 @@
 					
 					«EXPAND java::Helper::GenerateCustomHeadersField»
 					
-					«IF this.hasGenericBuilder() == false»
+					«IF this.hasTemplateParameter()»
 					/**
 					 * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal" object creation builder should be used instead.
 					 */
@@ -191,7 +191,7 @@
 					
 					«EXPAND java::Helper::GenerateCustomHeadersField»
 					
-					«IF this.hasGenericBuilder() == false»
+					«IF this.hasTemplateParameter()»
 					/**
 					 * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal" object creation builder should be used instead.
 					 */
@@ -301,7 +301,7 @@
                     private static final long serialVersionUID = 1L;
 					«ENDIF»
 
-					«IF this.hasGenericBuilder() == false»
+					«IF this.hasTemplateParameter()»
 					/**
 					 * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal" object creation builder should be used instead.
 					 */

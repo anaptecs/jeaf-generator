@@ -34,7 +34,6 @@ import com.anaptecs.spring.base.DeprecatedContext;
 import com.anaptecs.spring.base.IntegerCodeType;
 import com.anaptecs.spring.base.ParentBeanParamType;
 import com.anaptecs.spring.base.Product;
-import com.anaptecs.spring.base.Product.ProductBuilder;
 import com.anaptecs.spring.base.Sortiment;
 import com.anaptecs.spring.base.SpecialContext;
 import com.anaptecs.spring.base.StringCodeType;
@@ -51,7 +50,7 @@ public class ProductServiceImpl implements ProductService {
 
   @Override
   public List<Product> getProducts( ) {
-    ProductBuilder<?, ?> lBuilder = Product.builder();
+    var lBuilder = Product.builder();
     lBuilder.setName("Cool Product");
 
     List<Product> lProducts = new ArrayList<>();

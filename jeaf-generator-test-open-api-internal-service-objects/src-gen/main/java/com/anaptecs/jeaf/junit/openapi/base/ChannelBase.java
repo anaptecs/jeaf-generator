@@ -14,6 +14,7 @@ import javax.validation.constraints.NotNull;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Valid
 public abstract class ChannelBase implements ServiceObject {
@@ -74,6 +75,7 @@ public abstract class ChannelBase implements ServiceObject {
    * Class implements builder to create a new instance of class Channel. As the class has read only attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static abstract class BuilderBase {
     /**
      * Type of the channel

@@ -7,13 +7,6 @@ package com.anaptecs.spring.base;
 
 public class SoftLink extends SoftLinkBase {
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected SoftLink( ) {
-  }
-
-  /**
    * Initialize object. Nothing special to do.
    */
   protected SoftLink( SoftLink.BuilderBase pBuilder ) {

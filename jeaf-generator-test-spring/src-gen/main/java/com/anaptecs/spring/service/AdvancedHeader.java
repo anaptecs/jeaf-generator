@@ -51,7 +51,7 @@ public class AdvancedHeader {
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected AdvancedHeader( AdvancedHeaderBuilder<?, ?> pBuilder ) {
+  protected AdvancedHeader( Builder pBuilder ) {
     // Read attribute values from builder.
     bookingID = pBuilder.bookingID;
     bookingCode = pBuilder.bookingCode;
@@ -63,8 +63,8 @@ public class AdvancedHeader {
    *
    * @return {@link Builder} New builder that can be used to create new AdvancedHeader objects.
    */
-  public static AdvancedHeaderBuilder<?, ?> builder( ) {
-    return new AdvancedHeaderBuilderImpl();
+  public static Builder builder( ) {
+    return new Builder();
   }
 
   /**
@@ -92,7 +92,7 @@ public class AdvancedHeader {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class AdvancedHeaderBuilder<T extends AdvancedHeader, B extends AdvancedHeaderBuilder<T, B>> {
+  public static class Builder {
     /**
      * <br/>
      * <b>Example(s):</b> <br/>
@@ -109,15 +109,15 @@ public class AdvancedHeader {
     private DoubleCode doubleCode;
 
     /**
-     * Use {@link AdvancedHeaderBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link AdvancedHeader#builder()} instead of private constructor to create new builder.
      */
-    protected AdvancedHeaderBuilder( ) {
+    protected Builder( ) {
     }
 
     /**
-     * Use {@link AdvancedHeaderBuilder#builder(AdvancedHeader)} instead of private constructor to create new builder.
+     * Use {@link AdvancedHeader#builder(AdvancedHeader)} instead of private constructor to create new builder.
      */
-    protected AdvancedHeaderBuilder( AdvancedHeader pObject ) {
+    protected Builder( AdvancedHeader pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setBookingID(pObject.bookingID);
@@ -127,45 +127,60 @@ public class AdvancedHeader {
     }
 
     /**
+     * Method returns a new builder.
+     *
+     * @return {@link Builder} New builder that can be used to create new AdvancedHeader objects.
+     */
+    public static Builder newBuilder( ) {
+      return new Builder();
+    }
+
+    /**
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new AdvancedHeader objects. The method never
+     * returns null.
+     */
+    public static Builder newBuilder( AdvancedHeader pObject ) {
+      return new Builder(pObject);
+    }
+
+    /**
      * Method sets attribute {@link #bookingID}.<br/>
      *
      * @param pBookingID Value to which {@link #bookingID} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setBookingID( @MyNotNullProperty BookingID pBookingID ) {
+    public Builder setBookingID( @MyNotNullProperty BookingID pBookingID ) {
       // Assign value to attribute
       bookingID = pBookingID;
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets attribute {@link #bookingCode}.<br/>
      *
      * @param pBookingCode Value to which {@link #bookingCode} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setBookingCode( @MyNotNullProperty BookingCode pBookingCode ) {
+    public Builder setBookingCode( @MyNotNullProperty BookingCode pBookingCode ) {
       // Assign value to attribute
       bookingCode = pBookingCode;
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets attribute {@link #doubleCode}.<br/>
      *
      * @param pDoubleCode Value to which {@link #doubleCode} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setDoubleCode( @MyNotNullProperty DoubleCode pDoubleCode ) {
+    public Builder setDoubleCode( @MyNotNullProperty DoubleCode pDoubleCode ) {
       // Assign value to attribute
       doubleCode = pDoubleCode;
-      return this.self();
+      return this;
     }
-
-    /**
-     * Method returns instance of this builder. Operation is part of generic builder pattern.
-     */
-    protected abstract B self( );
 
     /**
      * Method creates a new instance of class AdvancedHeader. The object will be initialized with the values of the
@@ -173,24 +188,6 @@ public class AdvancedHeader {
      *
      * @return AdvancedHeader Created object. The method never returns null.
      */
-    public abstract T build( );
-  }
-
-  static final class AdvancedHeaderBuilderImpl
-      extends AdvancedHeaderBuilder<AdvancedHeader, AdvancedHeaderBuilderImpl> {
-    protected AdvancedHeaderBuilderImpl( ) {
-    }
-
-    protected AdvancedHeaderBuilderImpl( AdvancedHeader pObject ) {
-      super(pObject);
-    }
-
-    @Override
-    protected AdvancedHeaderBuilderImpl self( ) {
-      return this;
-    }
-
-    @Override
     public AdvancedHeader build( ) {
       AdvancedHeader lObject = new AdvancedHeader(this);
       SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
@@ -331,7 +328,7 @@ public class AdvancedHeader {
    * @return {@link Builder} New builder that can be used to create new AdvancedHeader objects. The method never returns
    * null.
    */
-  public AdvancedHeaderBuilder<?, ?> toBuilder( ) {
-    return new AdvancedHeaderBuilderImpl(this);
+  public Builder toBuilder( ) {
+    return new Builder(this);
   }
 }

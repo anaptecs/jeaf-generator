@@ -50,18 +50,6 @@ public class BookingID {
   private final BookingCode bookingCode;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected BookingID( ) {
-    publicBookingID = null;
-    referenceID = null;
-    externalRefID = null;
-    inventory = null;
-    bookingCode = null;
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.

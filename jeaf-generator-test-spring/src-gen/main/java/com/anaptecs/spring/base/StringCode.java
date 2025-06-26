@@ -32,7 +32,7 @@ public class StringCode {
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected StringCode( StringCodeBuilder<?, ?> pBuilder ) {
+  protected StringCode( Builder pBuilder ) {
     // Read attribute values from builder.
     code = pBuilder.code;
   }
@@ -42,8 +42,8 @@ public class StringCode {
    *
    * @return {@link Builder} New builder that can be used to create new StringCode objects.
    */
-  public static StringCodeBuilder<?, ?> builder( ) {
-    return new StringCodeBuilderImpl();
+  public static Builder builder( ) {
+    return new Builder();
   }
 
   /**
@@ -65,19 +65,19 @@ public class StringCode {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class StringCodeBuilder<T extends StringCode, B extends StringCodeBuilder<T, B>> {
+  public static class Builder {
     private String code;
 
     /**
-     * Use {@link StringCodeBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link StringCode#builder()} instead of private constructor to create new builder.
      */
-    protected StringCodeBuilder( ) {
+    protected Builder( ) {
     }
 
     /**
-     * Use {@link StringCodeBuilder#builder(StringCode)} instead of private constructor to create new builder.
+     * Use {@link StringCode#builder(StringCode)} instead of private constructor to create new builder.
      */
-    protected StringCodeBuilder( StringCode pObject ) {
+    protected Builder( StringCode pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setCode(pObject.code);
@@ -85,44 +85,42 @@ public class StringCode {
     }
 
     /**
-     * Method sets attribute {@link #code}.<br/>
+     * Method returns a new builder.
      *
-     * @param pCode Value to which {@link #code} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} New builder that can be used to create new StringCode objects.
      */
-    public B setCode( @MyNotNullProperty String pCode ) {
-      // Assign value to attribute
-      code = pCode;
-      return this.self();
+    public static Builder newBuilder( ) {
+      return new Builder();
     }
 
     /**
-     * Method returns instance of this builder. Operation is part of generic builder pattern.
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new StringCode objects. The method never returns
+     * null.
      */
-    protected abstract B self( );
+    public static Builder newBuilder( StringCode pObject ) {
+      return new Builder(pObject);
+    }
+
+    /**
+     * Method sets attribute {@link #code}.<br/>
+     *
+     * @param pCode Value to which {@link #code} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    public Builder setCode( @MyNotNullProperty String pCode ) {
+      // Assign value to attribute
+      code = pCode;
+      return this;
+    }
 
     /**
      * Method creates a new instance of class StringCode. The object will be initialized with the values of the builder.
      *
      * @return StringCode Created object. The method never returns null.
      */
-    public abstract T build( );
-  }
-
-  static final class StringCodeBuilderImpl extends StringCodeBuilder<StringCode, StringCodeBuilderImpl> {
-    protected StringCodeBuilderImpl( ) {
-    }
-
-    protected StringCodeBuilderImpl( StringCode pObject ) {
-      super(pObject);
-    }
-
-    @Override
-    protected StringCodeBuilderImpl self( ) {
-      return this;
-    }
-
-    @Override
     public StringCode build( ) {
       StringCode lObject = new StringCode(this);
       SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
@@ -205,7 +203,7 @@ public class StringCode {
    * @return {@link Builder} New builder that can be used to create new StringCode objects. The method never returns
    * null.
    */
-  public StringCodeBuilder<?, ?> toBuilder( ) {
-    return new StringCodeBuilderImpl(this);
+  public Builder toBuilder( ) {
+    return new Builder(this);
   }
 }

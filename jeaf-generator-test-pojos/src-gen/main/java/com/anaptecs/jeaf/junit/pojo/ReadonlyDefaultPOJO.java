@@ -10,13 +10,6 @@ import javax.validation.Valid;
 @Valid
 public class ReadonlyDefaultPOJO extends ReadonlyDefaultPOJOBase {
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected ReadonlyDefaultPOJO( ) {
-  }
-
-  /**
    * Initialize object. Nothing special to do.
    */
   protected ReadonlyDefaultPOJO( ReadonlyDefaultPOJO.BuilderBase pBuilder ) {

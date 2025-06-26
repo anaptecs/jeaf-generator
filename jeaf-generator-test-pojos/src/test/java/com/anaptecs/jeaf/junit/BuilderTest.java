@@ -64,8 +64,8 @@ class BuilderTest {
     assertEquals(true, lPojo.getYetAnotherAttribute());
     assertNull(lPojo.getImmutableChildPOJO());
 
-    // Test empty constructor
-    lPojo = new MyImmutableAssociationPOJO();
+    // Test empty object
+    lPojo = ImmutableAssociationPOJO.builder().build();
     assertNotNull(lPojo.getDeprecatedRefs());
     assertNotNull(lPojo.getReadonlyAssociation());
     assertEquals(false, lPojo.getYetAnotherAttribute());
@@ -85,11 +85,4 @@ class BuilderTest {
     MultiTemplateClass<String, Integer> multiTemplateClass = builder.build();
     builder = multiTemplateClass.toBuilder();
   }
-}
-
-class MyImmutableAssociationPOJO extends ImmutableAssociationPOJO {
-
-  MyImmutableAssociationPOJO( ) {
-  }
-
 }

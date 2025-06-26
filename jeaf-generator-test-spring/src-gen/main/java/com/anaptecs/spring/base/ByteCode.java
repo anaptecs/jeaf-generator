@@ -32,7 +32,7 @@ public class ByteCode {
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected ByteCode( ByteCodeBuilder<?, ?> pBuilder ) {
+  protected ByteCode( Builder pBuilder ) {
     // Read attribute values from builder.
     code = pBuilder.code;
   }
@@ -42,8 +42,8 @@ public class ByteCode {
    *
    * @return {@link Builder} New builder that can be used to create new ByteCode objects.
    */
-  public static ByteCodeBuilder<?, ?> builder( ) {
-    return new ByteCodeBuilderImpl();
+  public static Builder builder( ) {
+    return new Builder();
   }
 
   /**
@@ -65,19 +65,19 @@ public class ByteCode {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class ByteCodeBuilder<T extends ByteCode, B extends ByteCodeBuilder<T, B>> {
+  public static class Builder {
     private Byte code;
 
     /**
-     * Use {@link ByteCodeBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link ByteCode#builder()} instead of private constructor to create new builder.
      */
-    protected ByteCodeBuilder( ) {
+    protected Builder( ) {
     }
 
     /**
-     * Use {@link ByteCodeBuilder#builder(ByteCode)} instead of private constructor to create new builder.
+     * Use {@link ByteCode#builder(ByteCode)} instead of private constructor to create new builder.
      */
-    protected ByteCodeBuilder( ByteCode pObject ) {
+    protected Builder( ByteCode pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setCode(pObject.code);
@@ -85,44 +85,42 @@ public class ByteCode {
     }
 
     /**
-     * Method sets attribute {@link #code}.<br/>
+     * Method returns a new builder.
      *
-     * @param pCode Value to which {@link #code} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} New builder that can be used to create new ByteCode objects.
      */
-    public B setCode( @MyNotNullProperty Byte pCode ) {
-      // Assign value to attribute
-      code = pCode;
-      return this.self();
+    public static Builder newBuilder( ) {
+      return new Builder();
     }
 
     /**
-     * Method returns instance of this builder. Operation is part of generic builder pattern.
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new ByteCode objects. The method never returns
+     * null.
      */
-    protected abstract B self( );
+    public static Builder newBuilder( ByteCode pObject ) {
+      return new Builder(pObject);
+    }
+
+    /**
+     * Method sets attribute {@link #code}.<br/>
+     *
+     * @param pCode Value to which {@link #code} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    public Builder setCode( @MyNotNullProperty Byte pCode ) {
+      // Assign value to attribute
+      code = pCode;
+      return this;
+    }
 
     /**
      * Method creates a new instance of class ByteCode. The object will be initialized with the values of the builder.
      *
      * @return ByteCode Created object. The method never returns null.
      */
-    public abstract T build( );
-  }
-
-  static final class ByteCodeBuilderImpl extends ByteCodeBuilder<ByteCode, ByteCodeBuilderImpl> {
-    protected ByteCodeBuilderImpl( ) {
-    }
-
-    protected ByteCodeBuilderImpl( ByteCode pObject ) {
-      super(pObject);
-    }
-
-    @Override
-    protected ByteCodeBuilderImpl self( ) {
-      return this;
-    }
-
-    @Override
     public ByteCode build( ) {
       ByteCode lObject = new ByteCode(this);
       SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
@@ -204,7 +202,7 @@ public class ByteCode {
    *
    * @return {@link Builder} New builder that can be used to create new ByteCode objects. The method never returns null.
    */
-  public ByteCodeBuilder<?, ?> toBuilder( ) {
-    return new ByteCodeBuilderImpl(this);
+  public Builder toBuilder( ) {
+    return new Builder(this);
   }
 }

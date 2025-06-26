@@ -14,11 +14,13 @@ import javax.validation.Valid;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
 @Valid
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(builder = ReadonlyDefaultPOJO.Builder.class)
 public abstract class ReadonlyDefaultPOJOBase {
   /**
    * Constant for the name of attribute "readonlyDefault".
@@ -43,15 +45,6 @@ public abstract class ReadonlyDefaultPOJOBase {
   private Boolean booleanDefault;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected ReadonlyDefaultPOJOBase( ) {
-    readonlyDefault = 4711;
-    booleanDefault = true;
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
@@ -68,6 +61,8 @@ public abstract class ReadonlyDefaultPOJOBase {
    * Class implements builder to create a new instance of class ReadonlyDefaultPOJO. As the class has read only
    * attributes or associations instances can not be created directly. Instead this builder class has to be used.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static abstract class BuilderBase {
     /**
      * <br/>
@@ -183,7 +178,7 @@ public abstract class ReadonlyDefaultPOJOBase {
    *
    * @param pBooleanDefault Value to which {@link #booleanDefault} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.pojo.ReadonlyDefaultPOJO}
+   * @return {@link ReadonlyDefaultPOJO}
    */
   public static ReadonlyDefaultPOJO of( int pReadonlyDefault, Boolean pBooleanDefault ) {
     var lBuilder = ReadonlyDefaultPOJO.builder();

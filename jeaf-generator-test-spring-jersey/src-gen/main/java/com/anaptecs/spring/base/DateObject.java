@@ -12,8 +12,10 @@ import java.time.LocalTime;
 import java.util.Calendar;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(builder = DateObject.Builder.class)
 public class DateObject {
   /**
    * Constant for the name of attribute "localTime".
@@ -65,13 +67,6 @@ public class DateObject {
   private java.util.Date utilDate;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected DateObject( ) {
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
@@ -111,7 +106,7 @@ public class DateObject {
    *
    * @param pUtilDate Value to which {@link #utilDate} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.DateObject}
+   * @return {@link DateObject}
    */
   public static DateObject of( LocalTime pLocalTime, LocalDate pLocalDate, LocalDateTime pLocalDateTime,
       Calendar pCalendar, Date pSqlDate, java.util.Date pUtilDate ) {
@@ -128,6 +123,8 @@ public class DateObject {
   /**
    * Class implements builder to create a new instance of class <code>DateObject</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     /**
      * <br/>

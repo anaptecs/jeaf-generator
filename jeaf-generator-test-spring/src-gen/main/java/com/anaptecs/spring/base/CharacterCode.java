@@ -35,7 +35,7 @@ public class CharacterCode {
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected CharacterCode( CharacterCodeBuilder<?, ?> pBuilder ) {
+  protected CharacterCode( Builder pBuilder ) {
     // Read attribute values from builder.
     code = pBuilder.code;
   }
@@ -45,8 +45,8 @@ public class CharacterCode {
    *
    * @return {@link Builder} New builder that can be used to create new CharacterCode objects.
    */
-  public static CharacterCodeBuilder<?, ?> builder( ) {
-    return new CharacterCodeBuilderImpl();
+  public static Builder builder( ) {
+    return new Builder();
   }
 
   /**
@@ -68,22 +68,22 @@ public class CharacterCode {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class CharacterCodeBuilder<T extends CharacterCode, B extends CharacterCodeBuilder<T, B>> {
+  public static class Builder {
     /**
      * Just a character
      */
     private Character code;
 
     /**
-     * Use {@link CharacterCodeBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link CharacterCode#builder()} instead of private constructor to create new builder.
      */
-    protected CharacterCodeBuilder( ) {
+    protected Builder( ) {
     }
 
     /**
-     * Use {@link CharacterCodeBuilder#builder(CharacterCode)} instead of private constructor to create new builder.
+     * Use {@link CharacterCode#builder(CharacterCode)} instead of private constructor to create new builder.
      */
-    protected CharacterCodeBuilder( CharacterCode pObject ) {
+    protected Builder( CharacterCode pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setCode(pObject.code);
@@ -91,21 +91,36 @@ public class CharacterCode {
     }
 
     /**
-     * Method sets attribute {@link #code}.<br/>
+     * Method returns a new builder.
      *
-     * @param pCode Value to which {@link #code} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} New builder that can be used to create new CharacterCode objects.
      */
-    public B setCode( @MyNotNullProperty Character pCode ) {
-      // Assign value to attribute
-      code = pCode;
-      return this.self();
+    public static Builder newBuilder( ) {
+      return new Builder();
     }
 
     /**
-     * Method returns instance of this builder. Operation is part of generic builder pattern.
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new CharacterCode objects. The method never
+     * returns null.
      */
-    protected abstract B self( );
+    public static Builder newBuilder( CharacterCode pObject ) {
+      return new Builder(pObject);
+    }
+
+    /**
+     * Method sets attribute {@link #code}.<br/>
+     *
+     * @param pCode Value to which {@link #code} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    public Builder setCode( @MyNotNullProperty Character pCode ) {
+      // Assign value to attribute
+      code = pCode;
+      return this;
+    }
 
     /**
      * Method creates a new instance of class CharacterCode. The object will be initialized with the values of the
@@ -113,23 +128,6 @@ public class CharacterCode {
      *
      * @return CharacterCode Created object. The method never returns null.
      */
-    public abstract T build( );
-  }
-
-  static final class CharacterCodeBuilderImpl extends CharacterCodeBuilder<CharacterCode, CharacterCodeBuilderImpl> {
-    protected CharacterCodeBuilderImpl( ) {
-    }
-
-    protected CharacterCodeBuilderImpl( CharacterCode pObject ) {
-      super(pObject);
-    }
-
-    @Override
-    protected CharacterCodeBuilderImpl self( ) {
-      return this;
-    }
-
-    @Override
     public CharacterCode build( ) {
       CharacterCode lObject = new CharacterCode(this);
       SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
@@ -214,7 +212,7 @@ public class CharacterCode {
    * @return {@link Builder} New builder that can be used to create new CharacterCode objects. The method never returns
    * null.
    */
-  public CharacterCodeBuilder<?, ?> toBuilder( ) {
-    return new CharacterCodeBuilderImpl(this);
+  public Builder toBuilder( ) {
+    return new Builder(this);
   }
 }

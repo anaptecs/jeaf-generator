@@ -20,7 +20,7 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
     isGetterVisibility = JsonAutoDetect.Visibility.NONE,
     setterVisibility = JsonAutoDetect.Visibility.NONE,
     creatorVisibility = JsonAutoDetect.Visibility.ANY)
-@JsonDeserialize(builder = EnumTest.EnumTestBuilderImpl.class)
+@JsonDeserialize(builder = EnumTest.Builder.class)
 public class EnumTest {
   /**
    * Constant for the name of attribute "property".
@@ -49,7 +49,7 @@ public class EnumTest {
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected EnumTest( EnumTestBuilder<?, ?> pBuilder ) {
+  protected EnumTest( Builder pBuilder ) {
     // Read attribute values from builder.
     property = pBuilder.property;
     enumRef = pBuilder.enumRef;
@@ -60,8 +60,8 @@ public class EnumTest {
    *
    * @return {@link Builder} New builder that can be used to create new EnumTest objects.
    */
-  public static EnumTestBuilder<?, ?> builder( ) {
-    return new EnumTestBuilderImpl();
+  public static Builder builder( ) {
+    return new Builder();
   }
 
   /**
@@ -86,7 +86,7 @@ public class EnumTest {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class EnumTestBuilder<T extends EnumTest, B extends EnumTestBuilder<T, B>> {
+  public static class Builder {
     /**
      * <br/>
      * <b>Default Value:</b> <code>GREEN</code>
@@ -100,15 +100,15 @@ public class EnumTest {
     private ExtensibleEnum enumRef = ExtensibleEnum.RED;
 
     /**
-     * Use {@link EnumTestBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link EnumTest#builder()} instead of private constructor to create new builder.
      */
-    protected EnumTestBuilder( ) {
+    protected Builder( ) {
     }
 
     /**
-     * Use {@link EnumTestBuilder#builder(EnumTest)} instead of private constructor to create new builder.
+     * Use {@link EnumTest#builder(EnumTest)} instead of private constructor to create new builder.
      */
-    protected EnumTestBuilder( EnumTest pObject ) {
+    protected Builder( EnumTest pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setProperty(pObject.property);
@@ -117,55 +117,53 @@ public class EnumTest {
     }
 
     /**
+     * Method returns a new builder.
+     *
+     * @return {@link Builder} New builder that can be used to create new EnumTest objects.
+     */
+    public static Builder newBuilder( ) {
+      return new Builder();
+    }
+
+    /**
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new EnumTest objects. The method never returns
+     * null.
+     */
+    public static Builder newBuilder( EnumTest pObject ) {
+      return new Builder(pObject);
+    }
+
+    /**
      * Method sets attribute {@link #property}.<br/>
      *
      * @param pProperty Value to which {@link #property} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setProperty( @MyNotNullProperty ExtensibleEnum pProperty ) {
+    public Builder setProperty( @MyNotNullProperty ExtensibleEnum pProperty ) {
       // Assign value to attribute
       property = pProperty;
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets association {@link #enumRef}.<br/>
      *
      * @param pEnumRef Value to which {@link #enumRef} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setEnumRef( @MyNotNullProperty ExtensibleEnum pEnumRef ) {
+    public Builder setEnumRef( @MyNotNullProperty ExtensibleEnum pEnumRef ) {
       enumRef = pEnumRef;
-      return this.self();
+      return this;
     }
-
-    /**
-     * Method returns instance of this builder. Operation is part of generic builder pattern.
-     */
-    protected abstract B self( );
 
     /**
      * Method creates a new instance of class EnumTest. The object will be initialized with the values of the builder.
      *
      * @return EnumTest Created object. The method never returns null.
      */
-    public abstract T build( );
-  }
-
-  static final class EnumTestBuilderImpl extends EnumTestBuilder<EnumTest, EnumTestBuilderImpl> {
-    protected EnumTestBuilderImpl( ) {
-    }
-
-    protected EnumTestBuilderImpl( EnumTest pObject ) {
-      super(pObject);
-    }
-
-    @Override
-    protected EnumTestBuilderImpl self( ) {
-      return this;
-    }
-
-    @Override
     public EnumTest build( ) {
       EnumTest lObject = new EnumTest(this);
       SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
@@ -285,7 +283,7 @@ public class EnumTest {
    *
    * @return {@link Builder} New builder that can be used to create new EnumTest objects. The method never returns null.
    */
-  public EnumTestBuilder<?, ?> toBuilder( ) {
-    return new EnumTestBuilderImpl(this);
+  public Builder toBuilder( ) {
+    return new Builder(this);
   }
 }

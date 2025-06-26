@@ -9,7 +9,7 @@ public class AndOneMorePOJO extends AndOneMorePOJOBase {
   /**
    * Initialize object. Nothing special to do.
    */
-  protected AndOneMorePOJO( AndOneMorePOJOBuilder<?, ?> pBuilder ) {
+  protected AndOneMorePOJO( AndOneMorePOJO.BuilderBase pBuilder ) {
     super(pBuilder);
   }
 
@@ -18,8 +18,27 @@ public class AndOneMorePOJO extends AndOneMorePOJOBase {
    *
    * @return {@link Builder} New builder that can be used to create new AndOneMorePOJO objects.
    */
-  public static AndOneMorePOJOBuilder<?, ?> builder( ) {
-    return new AndOneMorePOJOBuilderImpl();
+  public static Builder builder( ) {
+    return new Builder();
+  }
+
+  /**
+   * Class implements builder to create a new instance of class AndOneMorePOJO. As the class has readonly attributes or
+   * associations instances can not be created directly. Instead this builder class has to be used.
+   */
+  public static class Builder extends AndOneMorePOJO.BuilderBase {
+    /**
+     * Use {@link AndOneMorePOJO#builder()} instead of protected constructor to create new builder.
+     */
+    protected Builder( ) {
+    }
+
+    /**
+     * Use {@link AndOneMorePOJO#builder(AndOneMorePOJO)} instead of protected constructor to create new builder.
+     */
+    protected Builder( AndOneMorePOJO pObject ) {
+      super(pObject);
+    }
   }
 
   /**

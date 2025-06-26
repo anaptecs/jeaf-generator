@@ -19,6 +19,7 @@ import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
 
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
  * <p/>
@@ -132,6 +133,7 @@ public class UICStop extends Stop implements IStop {
   /**
    * Class implements builder to create a new instance of class <code>UICStop</code>.
    */
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder extends Stop.Builder {
     @Size(min = 32, max = 255)
     private String uicCode;

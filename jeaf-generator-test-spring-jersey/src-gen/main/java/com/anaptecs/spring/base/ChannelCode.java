@@ -10,8 +10,8 @@ import java.util.Objects;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class ChannelCode {
   /**
    * Constant for the name of attribute "code".
@@ -34,14 +34,6 @@ public class ChannelCode {
    */
   @NotNull
   private String code;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected ChannelCode( ) {
-    code = "WEBSHOP";
-  }
 
   /**
    * Initialize object using the passed builder.
@@ -78,6 +70,8 @@ public class ChannelCode {
   /**
    * Class implements builder to create a new instance of class <code>ChannelCode</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     /**
      * channel code <br/>

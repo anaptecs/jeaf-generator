@@ -6,8 +6,10 @@
 package com.anaptecs.spring.base;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(builder = EnumTest.Builder.class)
 public class EnumTest {
   /**
    * Constant for the name of attribute "property".
@@ -30,15 +32,6 @@ public class EnumTest {
    * <b>Default Value:</b> <code>RED</code>
    */
   private ExtensibleEnum enumRef;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected EnumTest( ) {
-    property = ExtensibleEnum.GREEN;
-    enumRef = ExtensibleEnum.RED;
-  }
 
   /**
    * Initialize object using the passed builder.
@@ -68,7 +61,7 @@ public class EnumTest {
    *
    * @param pEnumRef Value to which {@link #enumRef} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.EnumTest}
+   * @return {@link EnumTest}
    */
   public static EnumTest of( ExtensibleEnum pProperty, ExtensibleEnum pEnumRef ) {
     var lBuilder = EnumTest.builder();
@@ -80,6 +73,8 @@ public class EnumTest {
   /**
    * Class implements builder to create a new instance of class <code>EnumTest</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     /**
      * <br/>

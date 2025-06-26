@@ -88,23 +88,6 @@ public class DateQueryParamsBean {
   private final Date sqlDate;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  public DateQueryParamsBean( ) {
-    offsetDateTime = null;
-    offsetTime = null;
-    localDateTime = null;
-    localTime = null;
-    localDate = null;
-    utilDate = null;
-    calendar = null;
-    sqlTimestamp = null;
-    sqlTime = null;
-    sqlDate = null;
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.

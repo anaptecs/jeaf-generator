@@ -14,8 +14,8 @@ import javax.validation.constraints.NotNull;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class ChannelCode implements Serializable {
   /**
    * Default serial version UID.
@@ -43,14 +43,6 @@ public class ChannelCode implements Serializable {
    */
   @NotNull
   private String code;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected ChannelCode( ) {
-    code = "WEBSHOP";
-  }
 
   /**
    * Initialize object using the passed builder.
@@ -85,6 +77,8 @@ public class ChannelCode implements Serializable {
   /**
    * Class implements builder to create a new instance of class <code>ChannelCode</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     /**
      * channel code <br/>

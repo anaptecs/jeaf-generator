@@ -54,6 +54,7 @@ public abstract class PlaceRef implements ServiceObject {
   /**
    * Class implements builder to create a new instance of class <code>PlaceRef</code>.
    */
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static abstract class Builder {
     private String name;
 

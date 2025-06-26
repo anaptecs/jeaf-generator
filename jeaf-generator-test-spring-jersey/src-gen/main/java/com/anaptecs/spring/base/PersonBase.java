@@ -10,9 +10,11 @@ import java.util.List;
 import javax.validation.Valid;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Valid
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(builder = Person.Builder.class)
 public abstract class PersonBase extends Partner {
   /**
    * Constant for the name of attribute "surname".
@@ -27,13 +29,6 @@ public abstract class PersonBase extends Partner {
   private String surname;
 
   private String firstName;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected PersonBase( ) {
-  }
 
   /**
    * Initialize object using the passed builder.
@@ -52,6 +47,8 @@ public abstract class PersonBase extends Partner {
    * Class implements builder to create a new instance of class Person. As the class has read only attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static abstract class BuilderBase extends Partner.Builder {
     private String surname;
 
@@ -180,7 +177,7 @@ public abstract class PersonBase extends Partner {
    *
    * @param pFirstName Value to which {@link #firstName} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.Person}
+   * @return {@link Person}
    */
   public static Person of( String pSurname, String pFirstName ) {
     var lBuilder = Person.builder();

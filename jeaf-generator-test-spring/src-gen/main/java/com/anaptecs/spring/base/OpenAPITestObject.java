@@ -20,7 +20,7 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
     isGetterVisibility = JsonAutoDetect.Visibility.NONE,
     setterVisibility = JsonAutoDetect.Visibility.NONE,
     creatorVisibility = JsonAutoDetect.Visibility.ANY)
-@JsonDeserialize(builder = OpenAPITestObject.OpenAPITestObjectBuilderImpl.class)
+@JsonDeserialize(builder = OpenAPITestObject.Builder.class)
 public class OpenAPITestObject {
   /**
    * Constant for the name of attribute "readOnlyAttribute".
@@ -97,7 +97,7 @@ public class OpenAPITestObject {
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected OpenAPITestObject( OpenAPITestObjectBuilder<?, ?> pBuilder ) {
+  protected OpenAPITestObject( Builder pBuilder ) {
     // Read attribute values from builder.
     readOnlyAttribute = pBuilder.readOnlyAttribute;
     readWriteAttribute = pBuilder.readWriteAttribute;
@@ -116,8 +116,8 @@ public class OpenAPITestObject {
    *
    * @return {@link Builder} New builder that can be used to create new OpenAPITestObject objects.
    */
-  public static OpenAPITestObjectBuilder<?, ?> builder( ) {
-    return new OpenAPITestObjectBuilderImpl();
+  public static Builder builder( ) {
+    return new Builder();
   }
 
   /**
@@ -168,7 +168,7 @@ public class OpenAPITestObject {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class OpenAPITestObjectBuilder<T extends OpenAPITestObject, B extends OpenAPITestObjectBuilder<T, B>> {
+  public static class Builder {
     private String readOnlyAttribute;
 
     private String readWriteAttribute;
@@ -190,16 +190,15 @@ public class OpenAPITestObject {
     private double notNullableArray;
 
     /**
-     * Use {@link OpenAPITestObjectBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link OpenAPITestObject#builder()} instead of private constructor to create new builder.
      */
-    protected OpenAPITestObjectBuilder( ) {
+    protected Builder( ) {
     }
 
     /**
-     * Use {@link OpenAPITestObjectBuilder#builder(OpenAPITestObject)} instead of private constructor to create new
-     * builder.
+     * Use {@link OpenAPITestObject#builder(OpenAPITestObject)} instead of private constructor to create new builder.
      */
-    protected OpenAPITestObjectBuilder( OpenAPITestObject pObject ) {
+    protected Builder( OpenAPITestObject pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setReadOnlyAttribute(pObject.readOnlyAttribute);
@@ -216,129 +215,144 @@ public class OpenAPITestObject {
     }
 
     /**
+     * Method returns a new builder.
+     *
+     * @return {@link Builder} New builder that can be used to create new OpenAPITestObject objects.
+     */
+    public static Builder newBuilder( ) {
+      return new Builder();
+    }
+
+    /**
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new OpenAPITestObject objects. The method never
+     * returns null.
+     */
+    public static Builder newBuilder( OpenAPITestObject pObject ) {
+      return new Builder(pObject);
+    }
+
+    /**
      * Method sets attribute {@link #readOnlyAttribute}.<br/>
      *
      * @param pReadOnlyAttribute Value to which {@link #readOnlyAttribute} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setReadOnlyAttribute( @MyNotNullProperty String pReadOnlyAttribute ) {
+    public Builder setReadOnlyAttribute( @MyNotNullProperty String pReadOnlyAttribute ) {
       // Assign value to attribute
       readOnlyAttribute = pReadOnlyAttribute;
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets attribute {@link #readWriteAttribute}.<br/>
      *
      * @param pReadWriteAttribute Value to which {@link #readWriteAttribute} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setReadWriteAttribute( @MyNotNullProperty String pReadWriteAttribute ) {
+    public Builder setReadWriteAttribute( @MyNotNullProperty String pReadWriteAttribute ) {
       // Assign value to attribute
       readWriteAttribute = pReadWriteAttribute;
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets attribute {@link #writeOnlyAttribute}.<br/>
      *
      * @param pWriteOnlyAttribute Value to which {@link #writeOnlyAttribute} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setWriteOnlyAttribute( int pWriteOnlyAttribute ) {
+    public Builder setWriteOnlyAttribute( int pWriteOnlyAttribute ) {
       // Assign value to attribute
       writeOnlyAttribute = pWriteOnlyAttribute;
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets attribute {@link #nullableAttribute}.<br/>
      *
      * @param pNullableAttribute Value to which {@link #nullableAttribute} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setNullableAttribute( @MyNotNullProperty Boolean pNullableAttribute ) {
+    public Builder setNullableAttribute( @MyNotNullProperty Boolean pNullableAttribute ) {
       // Assign value to attribute
       nullableAttribute = pNullableAttribute;
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets attribute {@link #notNullableAttribute}.<br/>
      *
      * @param pNotNullableAttribute Value to which {@link #notNullableAttribute} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setNotNullableAttribute( double pNotNullableAttribute ) {
+    public Builder setNotNullableAttribute( double pNotNullableAttribute ) {
       // Assign value to attribute
       notNullableAttribute = pNotNullableAttribute;
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets attribute {@link #readOnlyArray}.<br/>
      *
      * @param pReadOnlyArray Value to which {@link #readOnlyArray} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setReadOnlyArray( @MyNotNullProperty String pReadOnlyArray ) {
+    public Builder setReadOnlyArray( @MyNotNullProperty String pReadOnlyArray ) {
       // Assign value to attribute
       readOnlyArray = pReadOnlyArray;
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets attribute {@link #readWriteArray}.<br/>
      *
      * @param pReadWriteArray Value to which {@link #readWriteArray} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setReadWriteArray( @MyNotNullProperty String pReadWriteArray ) {
+    public Builder setReadWriteArray( @MyNotNullProperty String pReadWriteArray ) {
       // Assign value to attribute
       readWriteArray = pReadWriteArray;
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets attribute {@link #writeOnlyArray}.<br/>
      *
      * @param pWriteOnlyArray Value to which {@link #writeOnlyArray} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setWriteOnlyArray( int pWriteOnlyArray ) {
+    public Builder setWriteOnlyArray( int pWriteOnlyArray ) {
       // Assign value to attribute
       writeOnlyArray = pWriteOnlyArray;
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets attribute {@link #nullableArray}.<br/>
      *
      * @param pNullableArray Value to which {@link #nullableArray} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setNullableArray( double pNullableArray ) {
+    public Builder setNullableArray( double pNullableArray ) {
       // Assign value to attribute
       nullableArray = pNullableArray;
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets attribute {@link #notNullableArray}.<br/>
      *
      * @param pNotNullableArray Value to which {@link #notNullableArray} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setNotNullableArray( double pNotNullableArray ) {
+    public Builder setNotNullableArray( double pNotNullableArray ) {
       // Assign value to attribute
       notNullableArray = pNotNullableArray;
-      return this.self();
+      return this;
     }
-
-    /**
-     * Method returns instance of this builder. Operation is part of generic builder pattern.
-     */
-    protected abstract B self( );
 
     /**
      * Method creates a new instance of class OpenAPITestObject. The object will be initialized with the values of the
@@ -346,24 +360,6 @@ public class OpenAPITestObject {
      *
      * @return OpenAPITestObject Created object. The method never returns null.
      */
-    public abstract T build( );
-  }
-
-  static final class OpenAPITestObjectBuilderImpl
-      extends OpenAPITestObjectBuilder<OpenAPITestObject, OpenAPITestObjectBuilderImpl> {
-    protected OpenAPITestObjectBuilderImpl( ) {
-    }
-
-    protected OpenAPITestObjectBuilderImpl( OpenAPITestObject pObject ) {
-      super(pObject);
-    }
-
-    @Override
-    protected OpenAPITestObjectBuilderImpl self( ) {
-      return this;
-    }
-
-    @Override
     public OpenAPITestObject build( ) {
       OpenAPITestObject lObject = new OpenAPITestObject(this);
       SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
@@ -681,7 +677,7 @@ public class OpenAPITestObject {
    * @return {@link Builder} New builder that can be used to create new OpenAPITestObject objects. The method never
    * returns null.
    */
-  public OpenAPITestObjectBuilder<?, ?> toBuilder( ) {
-    return new OpenAPITestObjectBuilderImpl(this);
+  public Builder toBuilder( ) {
+    return new Builder(this);
   }
 }

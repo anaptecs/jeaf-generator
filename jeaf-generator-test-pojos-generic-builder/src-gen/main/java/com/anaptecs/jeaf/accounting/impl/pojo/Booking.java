@@ -21,7 +21,7 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
-@JsonDeserialize(builder = Booking.BookingBuilderImpl.class)
+@JsonDeserialize(builder = Booking.Builder.class)
 public class Booking {
   /**
    * Constant for the name of attribute "sourceAccount".
@@ -63,7 +63,7 @@ public class Booking {
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected Booking( BookingBuilder<?, ?> pBuilder ) {
+  protected Booking( Builder pBuilder ) {
     // Ensure that builder is not null.
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
@@ -79,8 +79,8 @@ public class Booking {
    *
    * @return {@link Builder} New builder that can be used to create new Booking objects.
    */
-  public static BookingBuilder<?, ?> builder( ) {
-    return new BookingBuilderImpl();
+  public static Builder builder( ) {
+    return new Builder();
   }
 
   /**
@@ -115,7 +115,7 @@ public class Booking {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class BookingBuilder<T extends Booking, B extends BookingBuilder<T, B>> {
+  public static class Builder {
     private Account sourceAccount;
 
     private Account targetAccount;
@@ -127,15 +127,15 @@ public class Booking {
     private Calendar executionTimestamp;
 
     /**
-     * Use {@link BookingBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link Booking#builder()} instead of private constructor to create new builder.
      */
-    protected BookingBuilder( ) {
+    protected Builder( ) {
     }
 
     /**
-     * Use {@link BookingBuilder#builder(Booking)} instead of private constructor to create new builder.
+     * Use {@link Booking#builder(Booking)} instead of private constructor to create new builder.
      */
-    protected BookingBuilder( Booking pObject ) {
+    protected Builder( Booking pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setSourceAccount(pObject.sourceAccount);
@@ -150,71 +150,68 @@ public class Booking {
      * Method sets association {@link #sourceAccount}.<br/>
      *
      * @param pSourceAccount Value to which {@link #sourceAccount} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setSourceAccount( Account pSourceAccount ) {
+    public Builder setSourceAccount( Account pSourceAccount ) {
       sourceAccount = pSourceAccount;
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets association {@link #targetAccount}.<br/>
      *
      * @param pTargetAccount Value to which {@link #targetAccount} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setTargetAccount( Account pTargetAccount ) {
+    public Builder setTargetAccount( Account pTargetAccount ) {
       targetAccount = pTargetAccount;
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets attribute {@link #amount}.<br/>
      *
      * @param pAmount Value to which {@link #amount} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setAmount( BigDecimal pAmount ) {
+    public Builder setAmount( BigDecimal pAmount ) {
       // Assign value to attribute
       amount = pAmount;
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets attribute {@link #currency}.<br/>
      *
      * @param pCurrency Value to which {@link #currency} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setCurrency( Currency pCurrency ) {
+    public Builder setCurrency( Currency pCurrency ) {
       // Assign value to attribute
       currency = pCurrency;
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets attribute {@link #executionTimestamp}.<br/>
      *
      * @param pExecutionTimestamp Value to which {@link #executionTimestamp} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setExecutionTimestamp( Calendar pExecutionTimestamp ) {
+    public Builder setExecutionTimestamp( Calendar pExecutionTimestamp ) {
       // Assign value to attribute
       executionTimestamp = pExecutionTimestamp;
-      return this.self();
+      return this;
     }
-
-    /**
-     * Method returns instance of this builder. Operation is part of generic builder pattern.
-     */
-    protected abstract B self( );
 
     /**
      * Method creates a new instance of class Booking. The object will be initialized with the values of the builder.
      *
      * @return Booking Created object. The method never returns null.
      */
-    public abstract T build( );
+    public Booking build( ) {
+      return new Booking(this);
+    }
 
     /**
      * Method creates a new validated instance of class Booking. The object will be initialized with the values of the
@@ -227,25 +224,6 @@ public class Booking {
       Booking lObject = this.build();
       ValidationTools.getValidationTools().enforceObjectValidation(lObject);
       return lObject;
-    }
-  }
-
-  static final class BookingBuilderImpl extends BookingBuilder<Booking, BookingBuilderImpl> {
-    protected BookingBuilderImpl( ) {
-    }
-
-    protected BookingBuilderImpl( Booking pObject ) {
-      super(pObject);
-    }
-
-    @Override
-    protected BookingBuilderImpl self( ) {
-      return this;
-    }
-
-    @Override
-    public Booking build( ) {
-      return new Booking(this);
     }
   }
 
@@ -389,7 +367,7 @@ public class Booking {
    *
    * @return {@link Builder} New builder that can be used to create new Booking objects. The method never returns null.
    */
-  public BookingBuilder<?, ?> toBuilder( ) {
-    return new BookingBuilderImpl(this);
+  public Builder toBuilder( ) {
+    return new Builder(this);
   }
 }
