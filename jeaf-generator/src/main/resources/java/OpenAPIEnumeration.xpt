@@ -74,29 +74,51 @@
 «DEFINE InlineOpenAPIEnumeration(Property ownerAttribute, String indentation) FOR OpenAPIEnumeration -»
           «IF ownerAttribute.hasComment() -»
               «IF ownerAttribute.hasMultiLineComment()-»
-          description: «getOpenAPICommentStyle()»
+«indentation»          description: «getOpenAPICommentStyle()»
             «ownerAttribute.getCommentForOpenAPIDescription("            ")»
               «ELSE-»
-          description: «ownerAttribute.getCommentForOpenAPIDescription("            ")»
+«indentation»          description: «ownerAttribute.getCommentForOpenAPIDescription("            ")»
               «ENDIF-»
           «ENDIF-»
-          type: string
+          «IF ownerAttribute.isMultivalued() == false -»
+«indentation»          type: string
           «IF ownerAttribute.defaultValue != null -»
-          default: '«ownerAttribute.defaultValue.stringValue()»'
+«indentation»          default: '«ownerAttribute.defaultValue.stringValue()»'
           «ELSEIF this.hasDefaultLiteral()-»
-          default: «openAPILiteralQuotationCharacter()»«this.getDefaultLiteral().getLiteralName()»«openAPILiteralQuotationCharacter()»
+«indentation»          default: «openAPILiteralQuotationCharacter()»«this.getDefaultLiteral().getLiteralName()»«openAPILiteralQuotationCharacter()»
           «ENDIF-»
           «IF this.extensibleEnum == true-»
-          x-extensible-enum:
+«indentation»          x-extensible-enum:
           «ELSE-»
-          enum:
+«indentation»          enum:
           «ENDIF-»
           «FOREACH this.getPulicLiterals() AS literal-»        
-            - «openAPILiteralQuotationCharacter()»«literal.getLiteralName()»«openAPILiteralQuotationCharacter()»
+«indentation»            - «openAPILiteralQuotationCharacter()»«literal.getLiteralName()»«openAPILiteralQuotationCharacter()»
           «ENDFOREACH-»
           «IF this.hasDynamicLiterals -»
 	        «FOREACH this.getDynamicLiteralNames() AS dynamicLiteral -»
-            - «openAPILiteralQuotationCharacter()»«dynamicLiteral»«openAPILiteralQuotationCharacter()»
+«indentation»            - «openAPILiteralQuotationCharacter()»«dynamicLiteral»«openAPILiteralQuotationCharacter()»
 	        «ENDFOREACH-»
+          «ENDIF-»
+          «ELSE-»
+«indentation»          type: array
+«indentation»          items:
+«indentation»            type: string
+            «IF this.extensibleEnum == true-»
+«indentation»            x-extensible-enum:
+            «ELSE-»
+«indentation»            enum:
+            «ENDIF-»
+            «FOREACH this.getPulicLiterals() AS literal-»        
+«indentation»              - «openAPILiteralQuotationCharacter()»«literal.getLiteralName()»«openAPILiteralQuotationCharacter()»
+            «ENDFOREACH-»
+            «IF this.hasDynamicLiterals -»
+	          «FOREACH this.getDynamicLiteralNames() AS dynamicLiteral -»
+«indentation»              - «openAPILiteralQuotationCharacter()»«dynamicLiteral»«openAPILiteralQuotationCharacter()»
+	          «ENDFOREACH-»
+            «ENDIF-»
+          «ENDIF-»
+          «IF ownerAttribute.isDeprecated() -»
+«indentation»          deprecated: true
           «ENDIF-»
 «ENDDEFINE»
