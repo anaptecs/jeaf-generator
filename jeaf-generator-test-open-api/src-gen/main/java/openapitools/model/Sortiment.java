@@ -34,7 +34,8 @@ import openapitools.JSON;
  */
 @JsonPropertyOrder({
   Sortiment.JSON_PROPERTY_PRODUCTS,
-  Sortiment.JSON_PROPERTY_VALUE
+  Sortiment.JSON_PROPERTY_VALUE,
+  Sortiment.JSON_PROPERTY_INLINE_SORTIMENT_TYPE
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class Sortiment {
@@ -45,6 +46,10 @@ public class Sortiment {
   public static final String JSON_PROPERTY_VALUE = "value";
   @javax.annotation.Nonnull
   private Integer value = 4711;
+
+  public static final String JSON_PROPERTY_INLINE_SORTIMENT_TYPE = "inlineSortimentType";
+  @javax.annotation.Nullable
+  private String inlineSortimentType;
 
   public Sortiment() { 
   }
@@ -107,6 +112,31 @@ public class Sortiment {
   }
 
 
+  public Sortiment inlineSortimentType(@javax.annotation.Nullable String inlineSortimentType) {
+    this.inlineSortimentType = inlineSortimentType;
+    return this;
+  }
+
+  /**
+   * Get inlineSortimentType
+   * @return inlineSortimentType
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_INLINE_SORTIMENT_TYPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getInlineSortimentType() {
+    return inlineSortimentType;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_INLINE_SORTIMENT_TYPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setInlineSortimentType(@javax.annotation.Nullable String inlineSortimentType) {
+    this.inlineSortimentType = inlineSortimentType;
+  }
+
+
   /**
    * Return true if this Sortiment object is equal to o.
    */
@@ -120,12 +150,13 @@ public class Sortiment {
     }
     Sortiment sortiment = (Sortiment) o;
     return Objects.equals(this.products, sortiment.products) &&
-        Objects.equals(this.value, sortiment.value);
+        Objects.equals(this.value, sortiment.value) &&
+        Objects.equals(this.inlineSortimentType, sortiment.inlineSortimentType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(products, value);
+    return Objects.hash(products, value, inlineSortimentType);
   }
 
   @Override
@@ -134,6 +165,7 @@ public class Sortiment {
     sb.append("class Sortiment {\n");
     sb.append("    products: ").append(toIndentedString(products)).append("\n");
     sb.append("    value: ").append(toIndentedString(value)).append("\n");
+    sb.append("    inlineSortimentType: ").append(toIndentedString(inlineSortimentType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

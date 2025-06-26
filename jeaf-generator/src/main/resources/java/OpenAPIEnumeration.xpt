@@ -11,6 +11,7 @@
 «EXTENSION jeafgenerator::api::OpenAPIEnumExtensionPoint»
 
 «DEFINE GenerateOpenAPIEnum FOR OpenAPIEnumeration -»
+    «IF this.inline == false-»
     «IF suppressClassNameCommentInOpenAPISpec() == false -»
     # «this.fqn()»
     «ENDIF-»
@@ -66,4 +67,36 @@
       «IF this.hasDefaultLiteral()-»
       default: «openAPILiteralQuotationCharacter()»«this.getDefaultLiteral().getLiteralName()»«openAPILiteralQuotationCharacter()»
       «ENDIF-»
+
+      «ENDIF-»
+«ENDDEFINE»
+
+«DEFINE InlineOpenAPIEnumeration(Property ownerAttribute, String indentation) FOR OpenAPIEnumeration -»
+          «IF ownerAttribute.hasComment() -»
+              «IF ownerAttribute.hasMultiLineComment()-»
+          description: «getOpenAPICommentStyle()»
+            «ownerAttribute.getCommentForOpenAPIDescription("            ")»
+              «ELSE-»
+          description: «ownerAttribute.getCommentForOpenAPIDescription("            ")»
+              «ENDIF-»
+          «ENDIF-»
+          type: string
+          «IF ownerAttribute.defaultValue != null -»
+          default: '«ownerAttribute.defaultValue.stringValue()»'
+          «ELSEIF this.hasDefaultLiteral()-»
+          default: «openAPILiteralQuotationCharacter()»«this.getDefaultLiteral().getLiteralName()»«openAPILiteralQuotationCharacter()»
+          «ENDIF-»
+          «IF this.extensibleEnum == true-»
+          x-extensible-enum:
+          «ELSE-»
+          enum:
+          «ENDIF-»
+          «FOREACH this.getPulicLiterals() AS literal-»        
+            - «openAPILiteralQuotationCharacter()»«literal.getLiteralName()»«openAPILiteralQuotationCharacter()»
+          «ENDFOREACH-»
+          «IF this.hasDynamicLiterals -»
+	        «FOREACH this.getDynamicLiteralNames() AS dynamicLiteral -»
+            - «openAPILiteralQuotationCharacter()»«dynamicLiteral»«openAPILiteralQuotationCharacter()»
+	        «ENDFOREACH-»
+          «ENDIF-»
 «ENDDEFINE»

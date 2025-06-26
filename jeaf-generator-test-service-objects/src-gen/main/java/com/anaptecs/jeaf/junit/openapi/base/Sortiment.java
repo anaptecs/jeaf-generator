@@ -34,6 +34,11 @@ public class Sortiment implements ServiceObject {
    */
   public static final String VALUE = "value";
 
+  /**
+   * Constant for the name of attribute "inlineSortimentType".
+   */
+  public static final String INLINESORTIMENTTYPE = "inlineSortimentType";
+
   private Set<Product> products;
 
   /**
@@ -46,6 +51,8 @@ public class Sortiment implements ServiceObject {
    * <b>Default Value:</b> <code>4711</code>
    */
   private final Integer value;
+
+  private InlineSortimentType inlineSortimentType;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
@@ -80,6 +87,7 @@ public class Sortiment implements ServiceObject {
     // Bidirectional back reference is set up correctly as a builder is used.
     productsBackReferenceInitialized = true;
     value = pBuilder.value;
+    inlineSortimentType = pBuilder.inlineSortimentType;
   }
 
   /**
@@ -117,6 +125,8 @@ public class Sortiment implements ServiceObject {
      */
     private Integer value = 4711;
 
+    private InlineSortimentType inlineSortimentType;
+
     /**
      * Use {@link Sortiment#builder()} instead of private constructor to create new builder.
      */
@@ -131,6 +141,7 @@ public class Sortiment implements ServiceObject {
         // Read attribute values from passed object.
         this.setProducts(pObject.products);
         this.setValue(pObject.value);
+        this.setInlineSortimentType(pObject.inlineSortimentType);
       }
     }
 
@@ -170,6 +181,17 @@ public class Sortiment implements ServiceObject {
     public Builder setValue( Integer pValue ) {
       // Assign value to attribute
       value = pValue;
+      return this;
+    }
+
+    /**
+     * Method sets association {@link #inlineSortimentType}.<br/>
+     *
+     * @param pInlineSortimentType Value to which {@link #inlineSortimentType} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    public Builder setInlineSortimentType( InlineSortimentType pInlineSortimentType ) {
+      inlineSortimentType = pInlineSortimentType;
       return this;
     }
 
@@ -286,6 +308,31 @@ public class Sortiment implements ServiceObject {
    */
   public Integer getValue( ) {
     return value;
+  }
+
+  /**
+   * Method returns association {@link #inlineSortimentType}.<br/>
+   *
+   * @return {@link InlineSortimentType} Value to which {@link #inlineSortimentType} is set.
+   */
+  public InlineSortimentType getInlineSortimentType( ) {
+    return inlineSortimentType;
+  }
+
+  /**
+   * Method sets association {@link #inlineSortimentType}.<br/>
+   *
+   * @param pInlineSortimentType Value to which {@link #inlineSortimentType} should be set.
+   */
+  public void setInlineSortimentType( InlineSortimentType pInlineSortimentType ) {
+    inlineSortimentType = pInlineSortimentType;
+  }
+
+  /**
+   * Method unsets {@link #inlineSortimentType}.
+   */
+  public final void unsetInlineSortimentType( ) {
+    inlineSortimentType = null;
   }
 
   /**

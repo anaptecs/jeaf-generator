@@ -1843,6 +1843,11 @@ components:
           format: int32
           nullable: false
           default: 4711
+        inlineSortimentType:
+          type: string
+          x-extensible-enum:
+            - B2C_SORTIMENT
+            - EMPLOYEE_SORTIMENT
 
     # com.anaptecs.jeaf.junit.openapi.base.Stop
     Stop:

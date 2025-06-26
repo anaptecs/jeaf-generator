@@ -42,6 +42,12 @@ public class Sortiment extends Object implements ServiceObject {
   @JEAFCustomAnnotationTest
   public static final String VALUE = "value";
 
+  /**
+   * Constant for the name of attribute "inlineSortimentType".
+   */
+  @JEAFCustomAnnotationTest
+  public static final String INLINESORTIMENTTYPE = "inlineSortimentType";
+
   // "com.anaptecs.jeaf.junit.openapi.base.Product"
   @ClassPropertyDeclaration
   @JEAFCustomAnnotationTest
@@ -66,6 +72,14 @@ public class Sortiment extends Object implements ServiceObject {
 
   // "java.lang.Integer"
   private int valueXYZ = 0;
+
+  // "com.anaptecs.jeaf.junit.openapi.base.InlineSortimentType"
+  @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
+  private InlineSortimentType inlineSortimentType;
+
+  // "com.anaptecs.jeaf.junit.openapi.base.InlineSortimentType"
+  private int inlineSortimentTypeXYZ = 0;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
@@ -104,6 +118,9 @@ public class Sortiment extends Object implements ServiceObject {
     value = pBuilder.value;
     // "java.lang.Integer"
     valueXYZ = pBuilder.valueXYZ;
+    inlineSortimentType = pBuilder.inlineSortimentType;
+    // "com.anaptecs.jeaf.junit.openapi.base.InlineSortimentType"
+    inlineSortimentTypeXYZ = pBuilder.inlineSortimentTypeXYZ;
   }
 
   /**
@@ -140,6 +157,14 @@ public class Sortiment extends Object implements ServiceObject {
     // "java.lang.Integer"
     private int valueXYZ = 0;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.InlineSortimentType"
+    @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
+    private InlineSortimentType inlineSortimentType;
+
+    // "com.anaptecs.jeaf.junit.openapi.base.InlineSortimentType"
+    private int inlineSortimentTypeXYZ = 0;
+
     /**
      * Use {@link Sortiment#builder()} instead of private constructor to create new builder.
      */
@@ -154,6 +179,7 @@ public class Sortiment extends Object implements ServiceObject {
         // Read attribute values from passed object.
         this.setProducts(pObject.products);
         this.setValue(pObject.value);
+        this.setInlineSortimentType(pObject.inlineSortimentType);
       }
     }
 
@@ -214,6 +240,24 @@ public class Sortiment extends Object implements ServiceObject {
     public Builder setValueXYZ( int value ) {
       // "java.lang.Integer"
       valueXYZ = value;
+      return this;
+    }
+
+    /**
+     * Method sets association {@link #inlineSortimentType}.<br/>
+     *
+     * @param pInlineSortimentType Value to which {@link #inlineSortimentType} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    @JEAFCustomAnnotationTest
+    public Builder setInlineSortimentType( InlineSortimentType pInlineSortimentType ) {
+      inlineSortimentType = pInlineSortimentType;
+      return this;
+    }
+
+    public Builder setInlineSortimentTypeXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.InlineSortimentType"
+      inlineSortimentTypeXYZ = value;
       return this;
     }
     // Ooops, I also forgot to implement that for our builders ;-(
@@ -353,6 +397,43 @@ public class Sortiment extends Object implements ServiceObject {
 
   public void setValueXYZ( int value ) {
     valueXYZ = value;
+  }
+
+  /**
+   * Method returns association {@link #inlineSortimentType}.<br/>
+   *
+   * @return {@link InlineSortimentType} Value to which {@link #inlineSortimentType} is set.
+   */
+  @JEAFCustomAnnotationTest
+  public InlineSortimentType getInlineSortimentType( ) {
+    return inlineSortimentType;
+  }
+
+  /**
+   * Method sets association {@link #inlineSortimentType}.<br/>
+   *
+   * @param pInlineSortimentType Value to which {@link #inlineSortimentType} should be set.
+   */
+  @JEAFCustomAnnotationTest
+  public void setInlineSortimentType( InlineSortimentType pInlineSortimentType ) {
+    inlineSortimentType = pInlineSortimentType;
+  }
+
+  /**
+   * Method unsets {@link #inlineSortimentType}.
+   */
+  @JEAFCustomAnnotationTest
+  public final void unsetInlineSortimentType( ) {
+    inlineSortimentType = null;
+  }
+
+  public int getInlineSortimentTypeXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.InlineSortimentType"
+    return inlineSortimentTypeXYZ;
+  }
+
+  public void setInlineSortimentTypeXYZ( int value ) {
+    inlineSortimentTypeXYZ = value;
   }
 
   public void doSomethingGenerated( ) {

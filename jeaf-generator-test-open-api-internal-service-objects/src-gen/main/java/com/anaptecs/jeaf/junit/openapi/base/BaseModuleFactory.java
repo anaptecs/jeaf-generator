@@ -51,6 +51,8 @@ import com.anaptecs.jeaf.junit.openapi.base.serializers.FloatCodeTypeDeserialize
 import com.anaptecs.jeaf.junit.openapi.base.serializers.FloatCodeTypeSerializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.IBANDeserializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.IBANSerializer;
+import com.anaptecs.jeaf.junit.openapi.base.serializers.InlineSortimentTypeDeserializer;
+import com.anaptecs.jeaf.junit.openapi.base.serializers.InlineSortimentTypeSerializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.IntegerCodeDeserializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.IntegerCodeSerializer;
 import com.anaptecs.jeaf.junit.openapi.base.serializers.IntegerCodeTypeDeserializer;
@@ -152,6 +154,8 @@ public class BaseModuleFactory implements ObjectMapperModuleFactory {
     lModule.addDeserializer(Entity.class, new EntityDeserializer());
     lModule.addSerializer(ExtensibleEnum.class, new ExtensibleEnumSerializer());
     lModule.addDeserializer(ExtensibleEnum.class, new ExtensibleEnumDeserializer());
+    lModule.addSerializer(InlineSortimentType.class, new InlineSortimentTypeSerializer());
+    lModule.addDeserializer(InlineSortimentType.class, new InlineSortimentTypeDeserializer());
     // Return created module.
     return lModule;
   }
@@ -238,6 +242,8 @@ public class BaseModuleFactory implements ObjectMapperModuleFactory {
     lModule.addDeserializer(Entity.class, new EntityDeserializer());
     lModule.addSerializer(ExtensibleEnum.class, new ExtensibleEnumSerializer());
     lModule.addDeserializer(ExtensibleEnum.class, new ExtensibleEnumDeserializer());
+    lModule.addSerializer(InlineSortimentType.class, new InlineSortimentTypeSerializer());
+    lModule.addDeserializer(InlineSortimentType.class, new InlineSortimentTypeDeserializer());
     // Return created module.
     return lModule;
   }

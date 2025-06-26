@@ -104,6 +104,17 @@ Test for enums with dynamic literals.
 | `BLUE` |  |
 | `UNKNOWN` | Please be aware that this enum is an extensible enum. This means that new literals can be introduced without prior notice. |
 
+## InlineSortimentType
+
+
+### Literals
+
+| Name | Description |
+|------|-------------|
+| `B2C_SORTIMENT` |  |
+| `EMPLOYEE_SORTIMENT` |  |
+| `UNKNOWN` | Please be aware that this enum is an extensible enum. This means that new literals can be introduced without prior notice. |
+
 ## InventoryType
 
 

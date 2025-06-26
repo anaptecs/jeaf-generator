@@ -33,6 +33,9 @@ public class Sortiment {
   @JsonProperty("value")
   private Integer value = 4711;
 
+  @JsonProperty("inlineSortimentType")
+  private String inlineSortimentType = null;
+
   public Sortiment products(List<Product> products) {
     this.products = products;
     return this;
@@ -77,6 +80,24 @@ public class Sortiment {
     this.value = value;
   }
 
+  public Sortiment inlineSortimentType(String inlineSortimentType) {
+    this.inlineSortimentType = inlineSortimentType;
+    return this;
+  }
+
+   /**
+   * Get inlineSortimentType
+   * @return inlineSortimentType
+  **/
+  @Schema(description = "")
+  public String getInlineSortimentType() {
+    return inlineSortimentType;
+  }
+
+  public void setInlineSortimentType(String inlineSortimentType) {
+    this.inlineSortimentType = inlineSortimentType;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -88,12 +109,13 @@ public class Sortiment {
     }
     Sortiment sortiment = (Sortiment) o;
     return Objects.equals(this.products, sortiment.products) &&
-        Objects.equals(this.value, sortiment.value);
+        Objects.equals(this.value, sortiment.value) &&
+        Objects.equals(this.inlineSortimentType, sortiment.inlineSortimentType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(products, value);
+    return Objects.hash(products, value, inlineSortimentType);
   }
 
 
@@ -104,6 +126,7 @@ public class Sortiment {
     
     sb.append("    products: ").append(toIndentedString(products)).append("\n");
     sb.append("    value: ").append(toIndentedString(value)).append("\n");
+    sb.append("    inlineSortimentType: ").append(toIndentedString(inlineSortimentType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

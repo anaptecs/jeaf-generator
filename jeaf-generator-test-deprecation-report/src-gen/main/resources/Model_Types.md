@@ -151,6 +151,7 @@ ImmutableAssociationPOJO |   |  |
 ImmutableChildPOJO |   |  |
 ImmutablePOJO |   |  |
 ImmutablePOJOParent |   |  |
+InlineSortimentType |   |  |
 Input |   |  |
 InputSubclass |   |  |
 IntegerCode |   |  |
@@ -386,6 +387,7 @@ GeoPosition |   |  |
 HeavyDataTypeUser |   |  |
 IBAN |   |  |
 IgnoringClass |   |  |
+InlineSortimentType |   |  |
 IntegerCode |   |  |
 IntegerCodeType |   |  |
 InventoryType |   |  |
