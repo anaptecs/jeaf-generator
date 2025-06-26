@@ -360,7 +360,7 @@
 «ENDDEFINE»
 
 «DEFINE GenerateOfForClass FOR uml::Class»
-    «IF this.generateOfOperationForClass() && this.isCompositeDataType() == false && isAbstract == false && getTemplateParams().length == 0»
+    «IF this.generateOfOperationForClass() && this.isCompositeDataType() == false && isAbstract == false»
 	  /**
 	   * Convenience method to create new instance of class «name».
 	   * 
@@ -369,7 +369,8 @@
        * «ENDFOREACH»
 	   * @return {@link «this.fqn()»}
 	   */
-	   public static «name» of(
+	   «IF this.hasTemplateParameter()»@SuppressWarnings("unchecked")«ENDIF»
+	   public static «this.getTemplateParams()» «this.fqn()» of(
 		   «FOREACH this.getAllAttributesForOfOperation() AS attr SEPARATOR ", "»
 			   «IF attr.isSoftLink()»
 			     «IF attr.isMultivalued()»
@@ -401,7 +402,7 @@
                    lBuilder.«attr.asSetter()»(«attr.asParameter()»);
                «ENDIF»
            «ENDFOREACH»
-		    return lBuilder.build();
+		    return «IF this.hasTemplateParameter()»(«this.fqn()») «ENDIF» lBuilder.build();
 	  }
     «ENDIF»
 «ENDDEFINE»

@@ -114,7 +114,7 @@ public class Campaign implements ServiceObject {
    *
    * @param pMoreLinks Value to which {@link #moreLinks} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.openapi.base.Campaign}
+   * @return {@link Campaign}
    */
   public static Campaign of( Set<Long> pMoreLinks ) {
     var lBuilder = Campaign.builder();

@@ -95,7 +95,7 @@ public class ResponsibilityType implements ServiceObject, Identifiable<ServiceOb
    *
    * @param pSortorder Value to which {@link #sortorder} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.accounting.ResponsibilityType}
+   * @return {@link ResponsibilityType}
    */
   public static ResponsibilityType of( String pType, Character pTypeChar, Byte pSortorder ) {
     var lBuilder = ResponsibilityType.builder();

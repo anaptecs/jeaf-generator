@@ -146,7 +146,7 @@ public class POI extends Stop {
    *
    * @param pBookingCodes Value to which {@link #bookingCodes} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.openapi.base.POI}
+   * @return {@link POI}
    */
   public static POI of( String pName, byte pIndex, SoftLink pTheSoftLink, String pDescription, Long pTheLink,
       Set<UICStop> pStops, Set<BookingCode> pBookingCodes ) {

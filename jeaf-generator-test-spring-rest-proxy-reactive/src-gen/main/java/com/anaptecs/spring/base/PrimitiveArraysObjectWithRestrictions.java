@@ -223,7 +223,7 @@ public class PrimitiveArraysObjectWithRestrictions {
    *
    * @param pALongArray Value to which {@link #aLongArray} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.PrimitiveArraysObjectWithRestrictions}
+   * @return {@link PrimitiveArraysObjectWithRestrictions}
    */
   public static PrimitiveArraysObjectWithRestrictions of( long[] pALongArray ) {
     var lBuilder = PrimitiveArraysObjectWithRestrictions.builder();

@@ -40,7 +40,7 @@ public class ErrorResponse {
    * Convenience method to create new instance of class ErrorResponse.
    *
    *
-   * @return {@link com.anaptecs.spring.base.ErrorResponse}
+   * @return {@link ErrorResponse}
    */
   public static ErrorResponse of( ) {
     var lBuilder = ErrorResponse.builder();

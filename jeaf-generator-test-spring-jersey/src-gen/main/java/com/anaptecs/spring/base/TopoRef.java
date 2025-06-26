@@ -43,7 +43,7 @@ public class TopoRef extends PlaceRef {
    *
    * @param pType Value to which {@link #type} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.TopoRef}
+   * @return {@link TopoRef}
    */
   public static TopoRef of( String pName, MyType pType ) {
     var lBuilder = TopoRef.builder();

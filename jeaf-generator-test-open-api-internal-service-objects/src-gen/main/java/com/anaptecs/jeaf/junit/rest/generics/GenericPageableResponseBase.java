@@ -242,6 +242,18 @@ public abstract class GenericPageableResponseBase<T> extends AbstractResponse<T>
     values.clear();
   }
 
+  /**
+   * Convenience method to create new instance of class GenericPageableResponse.
+   *
+   *
+   * @return {@link GenericPageableResponse<T>}
+   */
+  @SuppressWarnings("unchecked")
+  public static <T> GenericPageableResponse<T> of( ) {
+    var lBuilder = GenericPageableResponse.builder();
+    return (GenericPageableResponse<T>) lBuilder.build();
+  }
+
   @Override
   public int hashCode( ) {
     final int lPrime = 31;

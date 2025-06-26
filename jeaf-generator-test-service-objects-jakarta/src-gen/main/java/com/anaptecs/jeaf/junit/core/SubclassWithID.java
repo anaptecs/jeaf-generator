@@ -61,7 +61,7 @@ public class SubclassWithID extends IdentifiableServiceObject {
    *
    * @param pAttr Value to which {@link #attr} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.core.SubclassWithID}
+   * @return {@link SubclassWithID}
    */
   public static SubclassWithID of( Integer pHello, String pCountry, boolean pAttr ) {
     var lBuilder = SubclassWithID.builder();

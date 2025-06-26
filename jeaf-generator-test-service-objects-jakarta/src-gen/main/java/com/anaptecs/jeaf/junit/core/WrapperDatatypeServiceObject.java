@@ -126,7 +126,7 @@ public class WrapperDatatypeServiceObject implements ServiceObject {
    *
    * @param pMyShort Value to which {@link #myShort} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.core.WrapperDatatypeServiceObject}
+   * @return {@link WrapperDatatypeServiceObject}
    */
   public static WrapperDatatypeServiceObject of( Boolean pMyBoolean, Byte pMyByte, Character pMyCharacter,
       Double pMyDouble, Float pMyFloat, Long pMyLong, Short pMyShort ) {

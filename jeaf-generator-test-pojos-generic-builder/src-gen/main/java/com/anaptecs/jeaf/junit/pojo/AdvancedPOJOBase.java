@@ -188,7 +188,7 @@ public abstract class AdvancedPOJOBase {
    *
    * @param pIntWithDefault Value to which {@link #intWithDefault} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.pojo.AdvancedPOJO}
+   * @return {@link AdvancedPOJO}
    */
   public static AdvancedPOJO of( int pReadonlyDefault, Integer pIntWithDefault ) {
     var lBuilder = AdvancedPOJO.builder();

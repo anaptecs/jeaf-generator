@@ -73,7 +73,7 @@ public class PartnerContainer implements Serializable {
    * Convenience method to create new instance of class PartnerContainer.
    *
    *
-   * @return {@link com.anaptecs.spring.base.PartnerContainer}
+   * @return {@link PartnerContainer}
    */
   public static PartnerContainer of( ) {
     var lBuilder = PartnerContainer.builder();

@@ -180,7 +180,7 @@ public abstract class PersonBase extends Partner {
    *
    * @param pFirstName Value to which {@link #firstName} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.Person}
+   * @return {@link Person}
    */
   public static Person of( String pSurname, String pFirstName ) {
     var lBuilder = Person.builder();

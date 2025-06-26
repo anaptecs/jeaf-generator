@@ -73,7 +73,7 @@ public class JustAType implements ServiceObject {
    *
    * @param pLegacy Value to which {@link #legacy} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.deprecation.JustAType}
+   * @return {@link JustAType}
    */
   public static JustAType of( int pAttribute, double pLegacy ) {
     var lBuilder = JustAType.builder();

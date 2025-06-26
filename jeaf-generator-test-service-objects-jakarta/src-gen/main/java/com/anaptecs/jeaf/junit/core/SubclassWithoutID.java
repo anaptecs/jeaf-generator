@@ -61,7 +61,7 @@ public class SubclassWithoutID extends IdentifiableServiceObject {
    *
    * @param pAttr Value to which {@link #attr} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.core.SubclassWithoutID}
+   * @return {@link SubclassWithoutID}
    */
   public static SubclassWithoutID of( Integer pHello, String pCountry, Boolean pAttr ) {
     var lBuilder = SubclassWithoutID.builder();

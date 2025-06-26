@@ -63,7 +63,7 @@ public class BParentPOJO {
    *
    * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.pojo.BParentPOJO}
+   * @return {@link BParentPOJO}
    */
   public static BParentPOJO of( String pParentAttribute ) {
     var lBuilder = BParentPOJO.builder();

@@ -93,7 +93,7 @@ public class PostalAddress {
    *
    * @param pCountry Value to which {@link #country} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.PostalAddress}
+   * @return {@link PostalAddress}
    */
   public static PostalAddress of( String pStreet, String pHouseNumber, String pCity, int pPostalCode,
       String pCountry ) {

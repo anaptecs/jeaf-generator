@@ -127,7 +127,7 @@ public class UICStop extends Stop implements IStop {
    *
    * @param pInlineStopType Value to which {@link #inlineStopType} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.openapi.base.UICStop}
+   * @return {@link UICStop}
    */
   public static UICStop of( String pName, byte pIndex, SoftLink pTheSoftLinkID, String pUicCode, int pPriority,
       long pCode, byte pIndex2, Set<InlineStopType> pInlineStopTypes, InlineStopType pInlineStopType ) {

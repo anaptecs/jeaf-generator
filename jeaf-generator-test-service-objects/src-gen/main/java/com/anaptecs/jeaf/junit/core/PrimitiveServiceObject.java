@@ -128,7 +128,7 @@ public class PrimitiveServiceObject implements ServiceObject {
    *
    * @param pAChar Value to which {@link #aChar} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.core.PrimitiveServiceObject}
+   * @return {@link PrimitiveServiceObject}
    */
   public static PrimitiveServiceObject of( boolean pABoolean, byte pAByte, short pAShort, int pAInt, long pALong,
       float pAFloat, double pADouble, char pAChar ) {

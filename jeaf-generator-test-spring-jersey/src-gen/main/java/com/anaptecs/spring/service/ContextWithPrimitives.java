@@ -104,7 +104,7 @@ public class ContextWithPrimitives {
    *
    * @param pAVeryLong Value to which {@link #aVeryLong} should be set.
    *
-   * @return {@link com.anaptecs.spring.service.ContextWithPrimitives}
+   * @return {@link ContextWithPrimitives}
    */
   public static ContextWithPrimitives of( boolean pABoolean, Boolean pABooleanWrapper, int pAnInt, Integer pAnInteger,
       long pALong, Long pAVeryLong ) {

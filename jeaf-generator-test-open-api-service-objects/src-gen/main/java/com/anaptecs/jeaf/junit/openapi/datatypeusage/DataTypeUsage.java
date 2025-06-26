@@ -76,7 +76,7 @@ public class DataTypeUsage implements ServiceObject {
    *
    * @param pCode Value to which {@link #code} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.openapi.datatypeusage.DataTypeUsage}
+   * @return {@link DataTypeUsage}
    */
   public static DataTypeUsage of( MyDataType pCode ) {
     var lBuilder = DataTypeUsage.builder();

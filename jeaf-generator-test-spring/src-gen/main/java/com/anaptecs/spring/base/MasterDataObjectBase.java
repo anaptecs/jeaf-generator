@@ -362,7 +362,7 @@ public abstract class MasterDataObjectBase {
    *
    * @param pInternalProperty Value to which {@link #internalProperty} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.MasterDataObject}
+   * @return {@link MasterDataObject}
    */
   public static MasterDataObject of( Entity pEntity, String pObjectID, String pInternalProperty ) {
     var lBuilder = MasterDataObject.builder();

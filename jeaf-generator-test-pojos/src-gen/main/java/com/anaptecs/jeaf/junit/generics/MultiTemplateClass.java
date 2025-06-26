@@ -79,6 +79,24 @@ public class MultiTemplateClass<T, E> {
   }
 
   /**
+   * Convenience method to create new instance of class MultiTemplateClass.
+   *
+   *
+   * @param pObject Value to which {@link #object} should be set.
+   *
+   * @param pNewState Value to which {@link #newState} should be set.
+   *
+   * @return {@link MultiTemplateClass<T, E>}
+   */
+  @SuppressWarnings("unchecked")
+  public static <T, E> MultiTemplateClass<T, E> of( T pObject, E pNewState ) {
+    var lBuilder = MultiTemplateClass.builder();
+    lBuilder.setObject(pObject);
+    lBuilder.setNewState(pNewState);
+    return (MultiTemplateClass<T, E>) lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>MultiTemplateClass</code>.
    */
   public static class Builder<T, E> {

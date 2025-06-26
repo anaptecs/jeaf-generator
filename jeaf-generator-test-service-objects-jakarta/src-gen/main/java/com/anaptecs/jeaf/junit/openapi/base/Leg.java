@@ -88,7 +88,7 @@ public class Leg implements ServiceObject {
    *
    * @param pStop Value to which {@link #stop} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.openapi.base.Leg}
+   * @return {@link Leg}
    */
   public static Leg of( PlaceRef pStart, PlaceRef pStop ) {
     var lBuilder = Leg.builder();

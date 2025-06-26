@@ -102,7 +102,7 @@ public class Booking {
    *
    * @param pExecutionTimestamp Value to which {@link #executionTimestamp} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.accounting.impl.pojo.Booking}
+   * @return {@link Booking}
    */
   public static Booking of( Account pSourceAccount, Account pTargetAccount, BigDecimal pAmount, Currency pCurrency,
       Calendar pExecutionTimestamp ) {

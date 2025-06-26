@@ -78,7 +78,7 @@ public class Partner implements Serializable {
    * Convenience method to create new instance of class Partner.
    *
    *
-   * @return {@link com.anaptecs.spring.base.Partner}
+   * @return {@link Partner}
    */
   public static Partner of( ) {
     var lBuilder = Partner.builder();

@@ -102,7 +102,7 @@ public class MoneyAmount implements Serializable {
    *
    * @param pCurrencyCode Value to which {@link #currencyCode} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.MoneyAmount}
+   * @return {@link MoneyAmount}
    */
   public static MoneyAmount of( BigDecimal pAmount, CurrencyCode pCurrencyCode ) {
     var lBuilder = MoneyAmount.builder();

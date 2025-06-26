@@ -79,7 +79,7 @@ public class NoSubTypesChild extends NoSubTypesParent {
    *
    * @param pMyProperty Value to which {@link #myProperty} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.NoSubTypesChild}
+   * @return {@link NoSubTypesChild}
    */
   public static NoSubTypesChild of( String pMyProperty ) {
     var lBuilder = NoSubTypesChild.builder();

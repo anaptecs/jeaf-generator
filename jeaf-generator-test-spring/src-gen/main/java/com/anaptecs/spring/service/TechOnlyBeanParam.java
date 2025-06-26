@@ -32,7 +32,7 @@ public class TechOnlyBeanParam {
    * Convenience method to create new instance of class TechOnlyBeanParam.
    *
    *
-   * @return {@link com.anaptecs.spring.service.TechOnlyBeanParam}
+   * @return {@link TechOnlyBeanParam}
    */
   public static TechOnlyBeanParam of( ) {
     var lBuilder = TechOnlyBeanParam.builder();

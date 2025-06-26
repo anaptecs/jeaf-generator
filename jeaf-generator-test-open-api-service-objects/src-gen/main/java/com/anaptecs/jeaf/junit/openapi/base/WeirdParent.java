@@ -94,7 +94,7 @@ public class WeirdParent implements ServiceObject {
    *
    * @param pComplexBookings Value to which {@link #complexBookings} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.openapi.base.WeirdParent}
+   * @return {@link WeirdParent}
    */
   public static WeirdParent of( String pSomeProperty, ComplexBookingID pComplexBooking,
       Set<ComplexBookingID> pComplexBookings ) {

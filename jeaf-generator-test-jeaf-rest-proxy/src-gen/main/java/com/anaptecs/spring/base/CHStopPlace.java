@@ -61,7 +61,7 @@ public class CHStopPlace extends StopPlaceRef {
    *
    * @param pType Value to which {@link #type} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.CHStopPlace}
+   * @return {@link CHStopPlace}
    */
   public static CHStopPlace of( String pName, MyType pType ) {
     var lBuilder = CHStopPlace.builder();

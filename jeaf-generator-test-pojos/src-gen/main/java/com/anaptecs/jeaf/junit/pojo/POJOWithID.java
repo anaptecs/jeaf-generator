@@ -104,7 +104,7 @@ public class POJOWithID implements Identifiable<ObjectID> {
    *
    * @param pIntegerWithDefault Value to which {@link #integerWithDefault} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.pojo.POJOWithID}
+   * @return {@link POJOWithID}
    */
   public static POJOWithID of( Double pAttr, String pName, Integer pIntegerWithDefault ) {
     var lBuilder = POJOWithID.builder();

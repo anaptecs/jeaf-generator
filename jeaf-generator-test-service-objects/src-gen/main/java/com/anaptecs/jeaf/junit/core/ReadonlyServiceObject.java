@@ -74,7 +74,7 @@ public class ReadonlyServiceObject implements ServiceObject {
    *
    * @param pReadonlyDefault Value to which {@link #readonlyDefault} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.core.ReadonlyServiceObject}
+   * @return {@link ReadonlyServiceObject}
    */
   public static ReadonlyServiceObject of( String pReadonly, int pReadonlyDefault ) {
     var lBuilder = ReadonlyServiceObject.builder();

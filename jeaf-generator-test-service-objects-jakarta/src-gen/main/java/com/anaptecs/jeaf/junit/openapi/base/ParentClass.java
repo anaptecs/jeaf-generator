@@ -112,7 +112,7 @@ public class ParentClass implements ServiceObject {
    *
    * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.openapi.base.ParentClass}
+   * @return {@link ParentClass}
    */
   public static ParentClass of( String pParentAttribute ) {
     var lBuilder = ParentClass.builder();

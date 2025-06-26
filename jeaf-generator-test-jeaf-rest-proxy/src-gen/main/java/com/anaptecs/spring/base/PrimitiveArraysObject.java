@@ -239,7 +239,7 @@ public class PrimitiveArraysObject implements Serializable {
    *
    * @param pCStringArray Value to which {@link #cStringArray} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.PrimitiveArraysObject}
+   * @return {@link PrimitiveArraysObject}
    */
   public static PrimitiveArraysObject of( String[] pCStringArray ) {
     var lBuilder = PrimitiveArraysObject.builder();

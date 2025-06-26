@@ -68,7 +68,7 @@ public class SessionContextValues implements ServiceObject {
    *
    * @param pCounter Value to which {@link #counter} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.core.SessionContextValues}
+   * @return {@link SessionContextValues}
    */
   public static SessionContextValues of( String pTimestamp, Integer pCounter ) {
     var lBuilder = SessionContextValues.builder();

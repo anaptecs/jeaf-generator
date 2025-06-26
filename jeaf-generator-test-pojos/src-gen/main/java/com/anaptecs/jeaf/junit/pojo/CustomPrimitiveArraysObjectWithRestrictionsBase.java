@@ -1448,7 +1448,7 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
    *
    * @param pALongArray Value to which {@link #aLongArray} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.pojo.CustomPrimitiveArraysObjectWithRestrictions}
+   * @return {@link CustomPrimitiveArraysObjectWithRestrictions}
    */
   public static CustomPrimitiveArraysObjectWithRestrictions of( long[] pALongArray ) {
     var lBuilder = CustomPrimitiveArraysObjectWithRestrictions.builder();

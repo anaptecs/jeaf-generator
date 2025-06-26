@@ -190,7 +190,7 @@ public abstract class MySortCriteriaBase {
    *
    * @param pSortProperty Value to which {@link #sortProperty} should be set.
    *
-   * @return {@link com.anaptecs.spring.service.MySortCriteria}
+   * @return {@link MySortCriteria}
    */
   public static MySortCriteria of( SortOrder pSortOrder, MySortProperty pSortProperty ) {
     var lBuilder = MySortCriteria.builder();

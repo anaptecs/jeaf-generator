@@ -278,7 +278,7 @@ public abstract class AccountInfoBase implements ServiceObject, Identifiable<Ser
    *
    * @param pBankID Value to which {@link #bankID} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.accounting.AccountInfo}
+   * @return {@link AccountInfo}
    */
   public static AccountInfo of( Long pIban, Double pBalance, ServiceObjectID pBankID ) {
     var lBuilder = AccountInfo.builder();

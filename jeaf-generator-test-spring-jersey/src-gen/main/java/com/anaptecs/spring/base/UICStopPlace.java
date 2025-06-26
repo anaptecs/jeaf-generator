@@ -43,7 +43,7 @@ public class UICStopPlace extends StopPlaceRef {
    *
    * @param pType Value to which {@link #type} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.UICStopPlace}
+   * @return {@link UICStopPlace}
    */
   public static UICStopPlace of( String pName, MyType pType ) {
     var lBuilder = UICStopPlace.builder();

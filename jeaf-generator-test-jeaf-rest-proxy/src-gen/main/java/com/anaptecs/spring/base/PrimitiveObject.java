@@ -306,7 +306,7 @@ public class PrimitiveObject implements Serializable {
    *
    * @param pBString Value to which {@link #bString} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.PrimitiveObject}
+   * @return {@link PrimitiveObject}
    */
   public static PrimitiveObject of( boolean pABoolean, Boolean pBBoolean, boolean pCBoolean, byte pAByte, Byte pBByte,
       short pAShort, Short pBShort, int pAInteger, Integer pBInteger, Integer pCInteger, long pALong, Long pBLong,

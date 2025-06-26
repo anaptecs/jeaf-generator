@@ -107,7 +107,7 @@ public class SpecialContext extends Context {
    *
    * @param pDeprecatedType Value to which {@link #deprecatedType} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.openapi.base.SpecialContext}
+   * @return {@link SpecialContext}
    */
   public static SpecialContext of( String pAccessToken, Locale pLanguage, long pResellerID, long pPathParam,
       String pQueryParam, String pSpecificHeader, IntegerCode pDeprecatedHeader, DeprecatedType pDeprecatedType ) {

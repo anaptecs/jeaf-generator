@@ -65,7 +65,7 @@ public class EnumTest {
    *
    * @param pEnumRef Value to which {@link #enumRef} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.EnumTest}
+   * @return {@link EnumTest}
    */
   public static EnumTest of( ExtensibleEnum pProperty, ExtensibleEnum pEnumRef ) {
     var lBuilder = EnumTest.builder();

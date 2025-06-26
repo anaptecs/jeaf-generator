@@ -242,6 +242,18 @@ public abstract class GenericPageableResponseBase<T> extends AbstractResponse<T>
   }
 
   /**
+   * Convenience method to create new instance of class GenericPageableResponse.
+   *
+   *
+   * @return {@link GenericPageableResponse<T>}
+   */
+  @SuppressWarnings("unchecked")
+  public static <T> GenericPageableResponse<T> of( ) {
+    var lBuilder = GenericPageableResponse.builder();
+    return (GenericPageableResponse<T>) lBuilder.build();
+  }
+
+  /**
    * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *

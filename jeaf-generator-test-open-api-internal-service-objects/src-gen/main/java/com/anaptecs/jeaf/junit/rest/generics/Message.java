@@ -49,7 +49,7 @@ public class Message implements ServiceObject {
    * Convenience method to create new instance of class Message.
    *
    *
-   * @return {@link com.anaptecs.jeaf.junit.rest.generics.Message}
+   * @return {@link Message}
    */
   public static Message of( ) {
     var lBuilder = Message.builder();

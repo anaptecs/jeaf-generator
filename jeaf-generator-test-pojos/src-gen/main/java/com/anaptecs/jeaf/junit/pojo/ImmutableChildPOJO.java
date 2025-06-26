@@ -75,7 +75,7 @@ public class ImmutableChildPOJO extends ImmutablePOJOParent {
    *
    * @param pAnotherChildAttribute Value to which {@link #anotherChildAttribute} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.pojo.ImmutableChildPOJO}
+   * @return {@link ImmutableChildPOJO}
    */
   public static ImmutableChildPOJO of( String pAbtractAttr, String pParentAttribute, Integer pAnotherParentAttribute,
       String pChildAttribute, Double pAnotherChildAttribute ) {

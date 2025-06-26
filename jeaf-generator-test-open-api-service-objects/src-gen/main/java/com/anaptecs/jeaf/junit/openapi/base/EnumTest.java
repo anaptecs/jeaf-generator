@@ -74,7 +74,7 @@ public class EnumTest implements ServiceObject {
    *
    * @param pEnumRef Value to which {@link #enumRef} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.openapi.base.EnumTest}
+   * @return {@link EnumTest}
    */
   public static EnumTest of( ExtensibleEnum pProperty, ExtensibleEnum pEnumRef ) {
     var lBuilder = EnumTest.builder();

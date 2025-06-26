@@ -140,7 +140,7 @@ public abstract class ReadOnlyClientBase implements ServiceObject {
    *
    * @param pName Value to which {@link #name} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.openapi.transientback.ReadOnlyClient}
+   * @return {@link ReadOnlyClient}
    */
   public static ReadOnlyClient of( String pName ) {
     var lBuilder = ReadOnlyClient.builder();

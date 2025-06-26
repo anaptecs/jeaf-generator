@@ -83,7 +83,7 @@ public class SimpleAssociationBackwardCompatibility {
    * Convenience method to create new instance of class SimpleAssociationBackwardCompatibility.
    *
    *
-   * @return {@link com.anaptecs.spring.base.backward.SimpleAssociationBackwardCompatibility}
+   * @return {@link SimpleAssociationBackwardCompatibility}
    */
   public static SimpleAssociationBackwardCompatibility of( ) {
     var lBuilder = SimpleAssociationBackwardCompatibility.builder();

@@ -145,7 +145,7 @@ public class WeirdBooking extends WeirdParent {
    *
    * @param pChildProperty Value to which {@link #childProperty} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.openapi.base.WeirdBooking}
+   * @return {@link WeirdBooking}
    */
   public static WeirdBooking of( String pSomeProperty, ComplexBookingID pComplexBooking,
       Set<ComplexBookingID> pComplexBookings, ComplexBookingID pBooking,
