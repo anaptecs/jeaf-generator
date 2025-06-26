@@ -212,10 +212,14 @@
 | `ParentClass` | |  |  |  |
 |   | `theBankAccount` |  |  |  |
 |   | `legacyBankAccounts` |  |  |  |
+| `Sortiment` | |  |  |  |
+|   | `types` |  |  |  |
 | `SpecialContext` | |  |  |  |
 |   | `deprecatedHeader` |  |  | 2024-12-24 |
 | `TheReadOnlyServiceObject` | |  |  |  |
 |   | `inventoryType` | Let's reproduce #65 | not too long | 99.9 |
+| `UICStop` | |  |  |  |
+|   | `inlineStopType` |  |  |  |
 
 <br>
 

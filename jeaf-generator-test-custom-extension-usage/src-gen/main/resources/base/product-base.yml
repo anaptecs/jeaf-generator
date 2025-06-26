@@ -1896,6 +1896,14 @@ components:
           x-extensible-enum:
             - 'B2C_SORTIMENT'
             - 'EMPLOYEE_SORTIMENT'
+        types:
+          type: array
+          items:
+            type: string
+            x-extensible-enum:
+              - 'B2C_SORTIMENT'
+              - 'EMPLOYEE_SORTIMENT'
+          deprecated: true
 
     # com.anaptecs.jeaf.junit.openapi.base.Stop
     Stop:
@@ -2015,6 +2023,8 @@ components:
             - priority
             - code
             - index2
+            - inlineStopTypes
+            - inlineStopType
           properties:
             uicCode:
               type: string
@@ -2038,6 +2048,19 @@ components:
               format: int32
               exclusiveMinimum: 0
               nullable: false
+            inlineStopTypes:
+              type: array
+              items:
+                type: string
+                enum:
+                  - 'REAL_STOP'
+                  - 'VIRTUAL_STOP'
+            inlineStopType:
+              type: string
+              enum:
+                - 'REAL_STOP'
+                - 'VIRTUAL_STOP'
+              deprecated: true
 
     # com.anaptecs.jeaf.junit.openapi.base.UICStopPlace
     UICStopPlace:

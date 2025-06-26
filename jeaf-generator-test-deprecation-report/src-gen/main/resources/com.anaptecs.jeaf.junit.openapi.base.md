@@ -115,6 +115,16 @@ Test for enums with dynamic literals.
 | `EMPLOYEE_SORTIMENT` |  |
 | `UNKNOWN` | Please be aware that this enum is an extensible enum. This means that new literals can be introduced without prior notice. |
 
+## InlineStopType
+
+
+### Literals
+
+| Name | Description |
+|------|-------------|
+| `REAL_STOP` |  |
+| `VIRTUAL_STOP` |  |
+
 ## InventoryType
 
 

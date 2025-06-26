@@ -5,7 +5,12 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.annotation.processing.Generated;
 import javax.validation.ConstraintViolationException;
@@ -20,6 +25,7 @@ import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
+import com.anaptecs.jeaf.xfun.api.checks.Check;
 
 @Generated("Before Class Declaration. Here an annontation cloud be added.")
 /**
@@ -60,6 +66,19 @@ public class UICStop extends Stop implements IStop {
   @JEAFCustomAnnotationTest
   public static final String INDEX2 = "index2";
 
+  /**
+   * Constant for the name of attribute "inlineStopTypes".
+   */
+  @JEAFCustomAnnotationTest
+  public static final String INLINESTOPTYPES = "inlineStopTypes";
+
+  /**
+   * Constant for the name of attribute "inlineStopType".
+   */
+  @Deprecated
+  @JEAFCustomAnnotationTest
+  public static final String INLINESTOPTYPE = "inlineStopType";
+
   // "String"
   @ClassPropertyDeclaration
   @JEAFCustomAnnotationTest
@@ -98,11 +117,29 @@ public class UICStop extends Stop implements IStop {
   // "byte"
   private int index2XYZ = 0;
 
+  // "com.anaptecs.jeaf.junit.openapi.base.InlineStopType"
+  @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
+  private Set<InlineStopType> inlineStopTypes;
+
+  // "com.anaptecs.jeaf.junit.openapi.base.InlineStopType"
+  private int inlineStopTypesXYZ = 0;
+
+  // "com.anaptecs.jeaf.junit.openapi.base.InlineStopType"
+  @ClassPropertyDeclaration
+  @Deprecated
+  @JEAFCustomAnnotationTest
+  private InlineStopType inlineStopType;
+
+  // "com.anaptecs.jeaf.junit.openapi.base.InlineStopType"
+  private int inlineStopTypeXYZ = 0;
+
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
   protected UICStop( ) {
+    inlineStopTypes = new HashSet<>();
   }
 
   /**
@@ -126,6 +163,17 @@ public class UICStop extends Stop implements IStop {
     index2 = pBuilder.index2;
     // "byte"
     index2XYZ = pBuilder.index2XYZ;
+    if (pBuilder.inlineStopTypes != null) {
+      inlineStopTypes = pBuilder.inlineStopTypes;
+    }
+    else {
+      inlineStopTypes = new HashSet<>();
+    }
+    // "com.anaptecs.jeaf.junit.openapi.base.InlineStopType"
+    inlineStopTypesXYZ = pBuilder.inlineStopTypesXYZ;
+    inlineStopType = pBuilder.inlineStopType;
+    // "com.anaptecs.jeaf.junit.openapi.base.InlineStopType"
+    inlineStopTypeXYZ = pBuilder.inlineStopTypeXYZ;
   }
 
   /**
@@ -180,6 +228,23 @@ public class UICStop extends Stop implements IStop {
     // "byte"
     private int index2XYZ = 0;
 
+    // "com.anaptecs.jeaf.junit.openapi.base.InlineStopType"
+    @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
+    private Set<InlineStopType> inlineStopTypes;
+
+    // "com.anaptecs.jeaf.junit.openapi.base.InlineStopType"
+    private int inlineStopTypesXYZ = 0;
+
+    // "com.anaptecs.jeaf.junit.openapi.base.InlineStopType"
+    @BuilderPropertyDeclaration
+    @Deprecated
+    @JEAFCustomAnnotationTest
+    private InlineStopType inlineStopType;
+
+    // "com.anaptecs.jeaf.junit.openapi.base.InlineStopType"
+    private int inlineStopTypeXYZ = 0;
+
     /**
      * Use {@link UICStop#builder()} instead of private constructor to create new builder.
      */
@@ -198,6 +263,8 @@ public class UICStop extends Stop implements IStop {
         this.setPriority(pObject.priority);
         this.setCode(pObject.code);
         this.setIndex2(pObject.index2);
+        this.setInlineStopTypes(pObject.inlineStopTypes);
+        this.setInlineStopType(pObject.inlineStopType);
       }
     }
 
@@ -345,6 +412,85 @@ public class UICStop extends Stop implements IStop {
       index2XYZ = value;
       return this;
     }
+
+    /**
+     * Method sets association {@link #inlineStopTypes}.<br/>
+     *
+     * @param pInlineStopTypes Collection to which {@link #inlineStopTypes} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    @JEAFCustomAnnotationTest
+    public Builder setInlineStopTypes( Set<InlineStopType> pInlineStopTypes ) {
+      // To ensure immutability we have to copy the content of the passed collection.
+      if (pInlineStopTypes != null) {
+        inlineStopTypes = new HashSet<InlineStopType>(pInlineStopTypes);
+      }
+      else {
+        inlineStopTypes = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method adds the passed objects to association {@link #inlineStopTypes}.<br/>
+     *
+     * @param pInlineStopTypes Array of objects that should be added to {@link #inlineStopTypes}. The parameter may be
+     * null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    @JEAFCustomAnnotationTest
+    public Builder addToInlineStopTypes( InlineStopType... pInlineStopTypes ) {
+      if (pInlineStopTypes != null) {
+        if (inlineStopTypes == null) {
+          inlineStopTypes = new HashSet<InlineStopType>();
+        }
+        inlineStopTypes.addAll(Arrays.asList(pInlineStopTypes));
+      }
+      return this;
+    }
+
+    /**
+     * Method sets association {@link #inlineStopTypes}.<br/>
+     *
+     * @param pInlineStopTypes Array with objects to which {@link #inlineStopTypes} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    @JEAFCustomAnnotationTest
+    public Builder setInlineStopTypes( InlineStopType... pInlineStopTypes ) {
+      // Copy the content of the passed array.
+      if (pInlineStopTypes != null) {
+        inlineStopTypes = new HashSet<InlineStopType>(Arrays.asList(pInlineStopTypes));
+      }
+      else {
+        inlineStopTypes = null;
+      }
+      return this;
+    }
+
+    public Builder setInlineStopTypesXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.InlineStopType"
+      inlineStopTypesXYZ = value;
+      return this;
+    }
+
+    /**
+     * Method sets association {@link #inlineStopType}.<br/>
+     *
+     * @param pInlineStopType Value to which {@link #inlineStopType} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    @Deprecated
+    @JEAFCustomAnnotationTest
+    public Builder setInlineStopType( InlineStopType pInlineStopType ) {
+      inlineStopType = pInlineStopType;
+      return this;
+    }
+
+    public Builder setInlineStopTypeXYZ( int value ) {
+      // "com.anaptecs.jeaf.junit.openapi.base.InlineStopType"
+      inlineStopTypeXYZ = value;
+      return this;
+    }
     // Ooops, I also forgot to implement that for our builders ;-(
 
     /**
@@ -488,6 +634,119 @@ public class UICStop extends Stop implements IStop {
 
   public void setIndex2XYZ( int value ) {
     index2XYZ = value;
+  }
+
+  /**
+   * Method returns association {@link #inlineStopTypes}.<br/>
+   *
+   * @return {@link Set<InlineStopType>} Value to which {@link #inlineStopTypes} is set. The method never returns null
+   * and the returned collection is unmodifiable.
+   */
+  @JEAFCustomAnnotationTest
+  public Set<InlineStopType> getInlineStopTypes( ) {
+    // Return all InlineStopType objects as unmodifiable collection.
+    return Collections.unmodifiableSet(inlineStopTypes);
+  }
+
+  /**
+   * Method adds the passed object to {@link #inlineStopTypes}.
+   *
+   * @param pInlineStopTypes Object that should be added to {@link #inlineStopTypes}. The parameter must not be null.
+   */
+  @JEAFCustomAnnotationTest
+  public void addToInlineStopTypes( InlineStopType pInlineStopTypes ) {
+    // Check parameter "pInlineStopTypes" for invalid value null.
+    Check.checkInvalidParameterNull(pInlineStopTypes, "pInlineStopTypes");
+    // Add passed object to collection of associated InlineStopType objects.
+    inlineStopTypes.add(pInlineStopTypes);
+  }
+
+  /**
+   * Method adds all passed objects to {@link #inlineStopTypes}.
+   *
+   * @param pInlineStopTypes Collection with all objects that should be added to {@link #inlineStopTypes}. The parameter
+   * must not be null.
+   */
+  @JEAFCustomAnnotationTest
+  public void addToInlineStopTypes( Collection<InlineStopType> pInlineStopTypes ) {
+    // Check parameter "pInlineStopTypes" for invalid value null.
+    Check.checkInvalidParameterNull(pInlineStopTypes, "pInlineStopTypes");
+    // Add all passed objects.
+    for (InlineStopType lNextObject : pInlineStopTypes) {
+      this.addToInlineStopTypes(lNextObject);
+    }
+  }
+
+  /**
+   * Method removes the passed object from {@link #inlineStopTypes}.<br/>
+   *
+   * @param pInlineStopTypes Object that should be removed from {@link #inlineStopTypes}. The parameter must not be
+   * null.
+   */
+  @JEAFCustomAnnotationTest
+  public void removeFromInlineStopTypes( InlineStopType pInlineStopTypes ) {
+    // Check parameter for invalid value null.
+    Check.checkInvalidParameterNull(pInlineStopTypes, "pInlineStopTypes");
+    // Remove passed object from collection of associated InlineStopType objects.
+    inlineStopTypes.remove(pInlineStopTypes);
+  }
+
+  /**
+   * Method removes all objects from {@link #inlineStopTypes}.
+   */
+  @JEAFCustomAnnotationTest
+  public void clearInlineStopTypes( ) {
+    // Remove all objects from association "inlineStopTypes".
+    inlineStopTypes.clear();
+  }
+
+  public int getInlineStopTypesXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.InlineStopType"
+    return inlineStopTypesXYZ;
+  }
+
+  public void setInlineStopTypesXYZ( int value ) {
+    inlineStopTypesXYZ = value;
+  }
+
+  /**
+   * Method returns association {@link #inlineStopType}.<br/>
+   *
+   * @return {@link InlineStopType} Value to which {@link #inlineStopType} is set.
+   */
+  @Deprecated
+  @JEAFCustomAnnotationTest
+  public InlineStopType getInlineStopType( ) {
+    return inlineStopType;
+  }
+
+  /**
+   * Method sets association {@link #inlineStopType}.<br/>
+   *
+   * @param pInlineStopType Value to which {@link #inlineStopType} should be set.
+   */
+  @Deprecated
+  @JEAFCustomAnnotationTest
+  public void setInlineStopType( InlineStopType pInlineStopType ) {
+    inlineStopType = pInlineStopType;
+  }
+
+  /**
+   * Method unsets {@link #inlineStopType}.
+   */
+  @Deprecated
+  @JEAFCustomAnnotationTest
+  public final void unsetInlineStopType( ) {
+    inlineStopType = null;
+  }
+
+  public int getInlineStopTypeXYZ( ) {
+    // "com.anaptecs.jeaf.junit.openapi.base.InlineStopType"
+    return inlineStopTypeXYZ;
+  }
+
+  public void setInlineStopTypeXYZ( int value ) {
+    inlineStopTypeXYZ = value;
   }
 
   public void doSomethingGenerated( ) {

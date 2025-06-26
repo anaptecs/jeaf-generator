@@ -48,6 +48,7 @@ public class Sortiment implements ServiceObject {
 
   private InlineSortimentType inlineSortimentType;
 
+  @Deprecated
   @JsonSetter(nulls = Nulls.SKIP)
   private List<InlineSortimentType> types;
 
@@ -131,6 +132,7 @@ public class Sortiment implements ServiceObject {
 
     private InlineSortimentType inlineSortimentType;
 
+    @Deprecated
     private List<InlineSortimentType> types;
 
     /**
@@ -214,6 +216,7 @@ public class Sortiment implements ServiceObject {
      * @param pTypes Collection to which {@link #types} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @Deprecated
     public Builder setTypes( List<InlineSortimentType> pTypes ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pTypes != null) {
@@ -231,6 +234,7 @@ public class Sortiment implements ServiceObject {
      * @param pTypes Array of objects that should be added to {@link #types}. The parameter may be null.
      * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
      */
+    @Deprecated
     public Builder addToTypes( InlineSortimentType... pTypes ) {
       if (pTypes != null) {
         if (types == null) {
@@ -247,6 +251,7 @@ public class Sortiment implements ServiceObject {
      * @param pTypes Array with objects to which {@link #types} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @Deprecated
     public Builder setTypes( InlineSortimentType... pTypes ) {
       // Copy the content of the passed array.
       if (pTypes != null) {
@@ -403,6 +408,7 @@ public class Sortiment implements ServiceObject {
    * @return {@link List<InlineSortimentType>} Value to which {@link #types} is set. The method never returns null and
    * the returned collection is modifiable.
    */
+  @Deprecated
   public List<InlineSortimentType> getTypes( ) {
     // Return all InlineSortimentType objects directly without any protection against modification.
     return types;
@@ -413,6 +419,7 @@ public class Sortiment implements ServiceObject {
    *
    * @param pTypes Object that should be added to {@link #types}. The parameter must not be null.
    */
+  @Deprecated
   public void addToTypes( InlineSortimentType pTypes ) {
     // Check parameter "pTypes" for invalid value null.
     Check.checkInvalidParameterNull(pTypes, "pTypes");
@@ -425,6 +432,7 @@ public class Sortiment implements ServiceObject {
    *
    * @param pTypes Collection with all objects that should be added to {@link #types}. The parameter must not be null.
    */
+  @Deprecated
   public void addToTypes( Collection<InlineSortimentType> pTypes ) {
     // Check parameter "pTypes" for invalid value null.
     Check.checkInvalidParameterNull(pTypes, "pTypes");
@@ -439,6 +447,7 @@ public class Sortiment implements ServiceObject {
    *
    * @param pTypes Object that should be removed from {@link #types}. The parameter must not be null.
    */
+  @Deprecated
   public void removeFromTypes( InlineSortimentType pTypes ) {
     // Check parameter for invalid value null.
     Check.checkInvalidParameterNull(pTypes, "pTypes");
@@ -449,6 +458,7 @@ public class Sortiment implements ServiceObject {
   /**
    * Method removes all objects from {@link #types}.
    */
+  @Deprecated
   public void clearTypes( ) {
     // Remove all objects from association "types".
     types.clear();

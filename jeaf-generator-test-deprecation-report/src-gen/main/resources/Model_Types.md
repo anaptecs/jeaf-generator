@@ -152,6 +152,7 @@ ImmutableChildPOJO |   |  |
 ImmutablePOJO |   |  |
 ImmutablePOJOParent |   |  |
 InlineSortimentType |   |  |
+InlineStopType |   |  |
 Input |   |  |
 InputSubclass |   |  |
 IntegerCode |   |  |
@@ -388,6 +389,7 @@ HeavyDataTypeUser |   |  |
 IBAN |   |  |
 IgnoringClass |   |  |
 InlineSortimentType |   |  |
+InlineStopType |   |  |
 IntegerCode |   |  |
 IntegerCodeType |   |  |
 InventoryType |   |  |
