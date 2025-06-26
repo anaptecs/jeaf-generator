@@ -20,6 +20,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.util.ArrayList;
 import java.util.List;
 /**
  *  &lt;br&gt;&lt;br&gt; Alternate Name: Haltestelle 
@@ -38,6 +39,74 @@ public class UICStop extends Stop {
 
   @JsonProperty("index2")
   private Integer index2 = null;
+
+  /**
+   * Gets or Sets inlineStopTypes
+   */
+  public enum InlineStopTypesEnum {
+    REAL_STOP("REAL_STOP"),
+    VIRTUAL_STOP("VIRTUAL_STOP");
+
+    private String value;
+
+    InlineStopTypesEnum(String value) {
+      this.value = value;
+    }
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+    @JsonCreator
+    public static InlineStopTypesEnum fromValue(String input) {
+      for (InlineStopTypesEnum b : InlineStopTypesEnum.values()) {
+        if (b.value.equals(input)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+  }  @JsonProperty("inlineStopTypes")
+  private List<InlineStopTypesEnum> inlineStopTypes = new ArrayList<>();
+
+  /**
+   * Gets or Sets inlineStopType
+   */
+  public enum InlineStopTypeEnum {
+    REAL_STOP("REAL_STOP"),
+    VIRTUAL_STOP("VIRTUAL_STOP");
+
+    private String value;
+
+    InlineStopTypeEnum(String value) {
+      this.value = value;
+    }
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+    @JsonCreator
+    public static InlineStopTypeEnum fromValue(String input) {
+      for (InlineStopTypeEnum b : InlineStopTypeEnum.values()) {
+        if (b.value.equals(input)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+  }  @JsonProperty("inlineStopType")
+  private InlineStopTypeEnum inlineStopType = null;
 
   public UICStop uicCode(String uicCode) {
     this.uicCode = uicCode;
@@ -116,6 +185,47 @@ public class UICStop extends Stop {
     this.index2 = index2;
   }
 
+  public UICStop inlineStopTypes(List<InlineStopTypesEnum> inlineStopTypes) {
+    this.inlineStopTypes = inlineStopTypes;
+    return this;
+  }
+
+  public UICStop addInlineStopTypesItem(InlineStopTypesEnum inlineStopTypesItem) {
+    this.inlineStopTypes.add(inlineStopTypesItem);
+    return this;
+  }
+
+   /**
+   * Get inlineStopTypes
+   * @return inlineStopTypes
+  **/
+  @Schema(required = true, description = "")
+  public List<InlineStopTypesEnum> getInlineStopTypes() {
+    return inlineStopTypes;
+  }
+
+  public void setInlineStopTypes(List<InlineStopTypesEnum> inlineStopTypes) {
+    this.inlineStopTypes = inlineStopTypes;
+  }
+
+  public UICStop inlineStopType(InlineStopTypeEnum inlineStopType) {
+    this.inlineStopType = inlineStopType;
+    return this;
+  }
+
+   /**
+   * Get inlineStopType
+   * @return inlineStopType
+  **/
+  @Schema(required = true, description = "")
+  public InlineStopTypeEnum getInlineStopType() {
+    return inlineStopType;
+  }
+
+  public void setInlineStopType(InlineStopTypeEnum inlineStopType) {
+    this.inlineStopType = inlineStopType;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -130,12 +240,14 @@ public class UICStop extends Stop {
         Objects.equals(this.priority, uiCStop.priority) &&
         Objects.equals(this.code, uiCStop.code) &&
         Objects.equals(this.index2, uiCStop.index2) &&
+        Objects.equals(this.inlineStopTypes, uiCStop.inlineStopTypes) &&
+        Objects.equals(this.inlineStopType, uiCStop.inlineStopType) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(uicCode, priority, code, index2, super.hashCode());
+    return Objects.hash(uicCode, priority, code, index2, inlineStopTypes, inlineStopType, super.hashCode());
   }
 
 
@@ -148,6 +260,8 @@ public class UICStop extends Stop {
     sb.append("    priority: ").append(toIndentedString(priority)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    index2: ").append(toIndentedString(index2)).append("\n");
+    sb.append("    inlineStopTypes: ").append(toIndentedString(inlineStopTypes)).append("\n");
+    sb.append("    inlineStopType: ").append(toIndentedString(inlineStopType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

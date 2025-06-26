@@ -40,7 +40,9 @@ import openapitools.JSON;
   UICStop.JSON_PROPERTY_UIC_CODE,
   UICStop.JSON_PROPERTY_PRIORITY,
   UICStop.JSON_PROPERTY_CODE,
-  UICStop.JSON_PROPERTY_INDEX2
+  UICStop.JSON_PROPERTY_INDEX2,
+  UICStop.JSON_PROPERTY_INLINE_STOP_TYPES,
+  UICStop.JSON_PROPERTY_INLINE_STOP_TYPE
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 @JsonIgnoreProperties(
@@ -65,6 +67,85 @@ public class UICStop extends Stop {
   public static final String JSON_PROPERTY_INDEX2 = "index2";
   @javax.annotation.Nonnull
   private Integer index2;
+
+  /**
+   * Gets or Sets inlineStopTypes
+   */
+  public enum InlineStopTypesEnum {
+    REAL_STOP(String.valueOf("REAL_STOP")),
+    
+    VIRTUAL_STOP(String.valueOf("VIRTUAL_STOP"));
+
+    private String value;
+
+    InlineStopTypesEnum(String value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static InlineStopTypesEnum fromValue(String value) {
+      for (InlineStopTypesEnum b : InlineStopTypesEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
+
+  public static final String JSON_PROPERTY_INLINE_STOP_TYPES = "inlineStopTypes";
+  @javax.annotation.Nonnull
+  private List<InlineStopTypesEnum> inlineStopTypes = new ArrayList<>();
+
+  /**
+   * Gets or Sets inlineStopType
+   */
+  public enum InlineStopTypeEnum {
+    REAL_STOP(String.valueOf("REAL_STOP")),
+    
+    VIRTUAL_STOP(String.valueOf("VIRTUAL_STOP"));
+
+    private String value;
+
+    InlineStopTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static InlineStopTypeEnum fromValue(String value) {
+      for (InlineStopTypeEnum b : InlineStopTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
+
+  public static final String JSON_PROPERTY_INLINE_STOP_TYPE = "inlineStopType";
+  @Deprecated
+  @javax.annotation.Nonnull
+  private InlineStopTypeEnum inlineStopType;
 
   public UICStop() { 
   }
@@ -174,6 +255,68 @@ public class UICStop extends Stop {
   }
 
 
+  public UICStop inlineStopTypes(@javax.annotation.Nonnull List<InlineStopTypesEnum> inlineStopTypes) {
+    this.inlineStopTypes = inlineStopTypes;
+    return this;
+  }
+
+  public UICStop addInlineStopTypesItem(InlineStopTypesEnum inlineStopTypesItem) {
+    if (this.inlineStopTypes == null) {
+      this.inlineStopTypes = new ArrayList<>();
+    }
+    this.inlineStopTypes.add(inlineStopTypesItem);
+    return this;
+  }
+
+  /**
+   * Get inlineStopTypes
+   * @return inlineStopTypes
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_INLINE_STOP_TYPES)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public List<InlineStopTypesEnum> getInlineStopTypes() {
+    return inlineStopTypes;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_INLINE_STOP_TYPES)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setInlineStopTypes(@javax.annotation.Nonnull List<InlineStopTypesEnum> inlineStopTypes) {
+    this.inlineStopTypes = inlineStopTypes;
+  }
+
+
+  @Deprecated
+  public UICStop inlineStopType(@javax.annotation.Nonnull InlineStopTypeEnum inlineStopType) {
+    this.inlineStopType = inlineStopType;
+    return this;
+  }
+
+  /**
+   * Get inlineStopType
+   * @return inlineStopType
+   * @deprecated
+   */
+  @Deprecated
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_INLINE_STOP_TYPE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public InlineStopTypeEnum getInlineStopType() {
+    return inlineStopType;
+  }
+
+
+  @Deprecated
+  @JsonProperty(JSON_PROPERTY_INLINE_STOP_TYPE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setInlineStopType(@javax.annotation.Nonnull InlineStopTypeEnum inlineStopType) {
+    this.inlineStopType = inlineStopType;
+  }
+
+
   /**
    * Return true if this UICStop object is equal to o.
    */
@@ -190,12 +333,14 @@ public class UICStop extends Stop {
         Objects.equals(this.priority, uiCStop.priority) &&
         Objects.equals(this.code, uiCStop.code) &&
         Objects.equals(this.index2, uiCStop.index2) &&
+        Objects.equals(this.inlineStopTypes, uiCStop.inlineStopTypes) &&
+        Objects.equals(this.inlineStopType, uiCStop.inlineStopType) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(uicCode, priority, code, index2, super.hashCode());
+    return Objects.hash(uicCode, priority, code, index2, inlineStopTypes, inlineStopType, super.hashCode());
   }
 
   @Override
@@ -207,6 +352,8 @@ public class UICStop extends Stop {
     sb.append("    priority: ").append(toIndentedString(priority)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    index2: ").append(toIndentedString(index2)).append("\n");
+    sb.append("    inlineStopTypes: ").append(toIndentedString(inlineStopTypes)).append("\n");
+    sb.append("    inlineStopType: ").append(toIndentedString(inlineStopType)).append("\n");
     sb.append("}");
     return sb.toString();
   }
