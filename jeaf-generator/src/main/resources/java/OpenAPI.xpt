@@ -595,10 +595,27 @@ components:
       «ELSE -»
       description: TODO Please add comment to error response type
       «ENDIF-»
+      «IF this.getResponseTypes().isEmpty == false -»
       content:
         «this.contentType.name.toOpenAPIContentType()»:
           schema:
             $ref: «this.getResponseType().getOpenAPIType(spec)»
+      «ENDIF-»
+      «IF this.hasResponseHeaderGroupsForResponseType() -»
+      headers:
+        «FOREACH this.getHeaderFieldsForResponseType().sortBy(e|e.name) AS headerField -»
+        «headerField.name»:
+          schema:
+            type: «headerField.type.getOpenAPIType(spec)»
+            «IF headerField.defaultValue != null-»
+            default: '«headerField.defaultValue.stringValue().replaceAll("\"", "")»'
+            «ENDIF-»
+            «IF headerField.hasComment()-»
+            description: «getOpenAPICommentStyle()»
+              «headerField.getCommentForOpenAPIDescription("                    ")»
+            «ENDIF-»
+        «ENDFOREACH-»
+      «ENDIF-»
 
 «ENDDEFINE»
 
