@@ -47,7 +47,7 @@ public class Input implements ServiceObject {
    * Convenience method to create new instance of class Input.
    *
    *
-   * @return {@link com.anaptecs.jeaf.junit.otherpackage.Input}
+   * @return {@link Input}
    */
   public static Input of( ) {
     var lBuilder = Input.builder();

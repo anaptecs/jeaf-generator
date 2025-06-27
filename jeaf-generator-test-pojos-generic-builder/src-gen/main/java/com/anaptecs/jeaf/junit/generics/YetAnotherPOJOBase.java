@@ -97,7 +97,7 @@ public abstract class YetAnotherPOJOBase {
    * Convenience method to create new instance of class YetAnotherPOJO.
    *
    *
-   * @return {@link com.anaptecs.jeaf.junit.generics.YetAnotherPOJO}
+   * @return {@link YetAnotherPOJO}
    */
   public static YetAnotherPOJO of( ) {
     var lBuilder = YetAnotherPOJO.builder();

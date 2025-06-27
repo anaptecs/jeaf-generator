@@ -111,7 +111,7 @@ public class Bank implements ServiceObject, Identifiable<ServiceObjectID> {
    *
    * @param pType Value to which {@link #type} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.accounting.Bank}
+   * @return {@link Bank}
    */
   public static Bank of( String pName, Long pCode, BankType pType ) {
     var lBuilder = Bank.builder();

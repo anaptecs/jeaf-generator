@@ -76,7 +76,7 @@ public class DirectedEdge {
    *
    * @param pLink Value to which {@link #link} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.DirectedEdge}
+   * @return {@link DirectedEdge}
    */
   public static DirectedEdge of( Stop pEnd, String pLink ) {
     var lBuilder = DirectedEdge.builder();

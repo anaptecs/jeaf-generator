@@ -59,7 +59,7 @@ public class Message {
    *
    * @param pText Value to which {@link #text} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.generics.Message}
+   * @return {@link Message}
    */
   public static Message of( String pText ) {
     var lBuilder = Message.builder();

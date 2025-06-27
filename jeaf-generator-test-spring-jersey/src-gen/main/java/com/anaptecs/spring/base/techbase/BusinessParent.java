@@ -56,7 +56,7 @@ public class BusinessParent extends TechParent {
    *
    * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.techbase.BusinessParent}
+   * @return {@link BusinessParent}
    */
   public static BusinessParent of( String pTechAttribute, long pParentAttribute ) {
     var lBuilder = BusinessParent.builder();

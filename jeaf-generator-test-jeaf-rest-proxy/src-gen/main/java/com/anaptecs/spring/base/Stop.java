@@ -101,7 +101,7 @@ public class Stop implements Serializable {
    *
    * @param pName Value to which {@link #name} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.Stop}
+   * @return {@link Stop}
    */
   public static Stop of( String pName ) {
     var lBuilder = Stop.builder();

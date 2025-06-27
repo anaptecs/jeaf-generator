@@ -93,7 +93,7 @@ public class MultivaluedQueryParamsBean {
    * Convenience method to create new instance of class MultivaluedQueryParamsBean.
    *
    *
-   * @return {@link com.anaptecs.spring.service.MultivaluedQueryParamsBean}
+   * @return {@link MultivaluedQueryParamsBean}
    */
   public static MultivaluedQueryParamsBean of( ) {
     var lBuilder = MultivaluedQueryParamsBean.builder();

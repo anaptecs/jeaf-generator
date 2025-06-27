@@ -131,7 +131,7 @@ public class ChildBB extends ChildB {
    *
    * @param pDeprecatedAttribute Value to which {@link #deprecatedAttribute} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.ChildBB}
+   * @return {@link ChildBB}
    */
   public static ChildBB of( String pParentAttribute, Long pChildBBAttribute, int pDeprecatedAttribute ) {
     var lBuilder = ChildBB.builder();

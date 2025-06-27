@@ -70,7 +70,7 @@ public class IgnoringClass implements Serializable {
    *
    * @param pAge Value to which {@link #age} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.IgnoringClass}
+   * @return {@link IgnoringClass}
    */
   public static IgnoringClass of( Integer pAge ) {
     var lBuilder = IgnoringClass.builder();

@@ -112,7 +112,7 @@ public class SoftLinkPartner {
    *
    * @param pLongLinks Value to which {@link #longLinks} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkPartner}
+   * @return {@link SoftLinkPartner}
    */
   public static SoftLinkPartner of( List<Long> pLongLinkIDs ) {
     var lBuilder = SoftLinkPartner.builder();

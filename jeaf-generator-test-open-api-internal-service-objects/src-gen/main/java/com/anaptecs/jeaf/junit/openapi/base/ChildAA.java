@@ -114,7 +114,7 @@ public class ChildAA extends ChildA {
    *
    * @param pBigIntegerCode Value to which {@link #bigIntegerCode} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.openapi.base.ChildAA}
+   * @return {@link ChildAA}
    */
   public static ChildAA of( String pParentAttribute, int pChildAAttribute, byte pChildAAAttribute,
       String[] pRequiredArray, BigIntegerCode pBigIntegerCode ) {

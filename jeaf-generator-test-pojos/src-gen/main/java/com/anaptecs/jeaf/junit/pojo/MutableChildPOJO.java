@@ -79,7 +79,7 @@ public class MutableChildPOJO extends ImmutablePOJOParent {
    *
    * @param pBooleanDefault Value to which {@link #booleanDefault} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.pojo.MutableChildPOJO}
+   * @return {@link MutableChildPOJO}
    */
   public static MutableChildPOJO of( String pAbtractAttr, String pParentAttribute, Integer pAnotherParentAttribute,
       Integer pWriteable, Boolean pBooleanDefault ) {

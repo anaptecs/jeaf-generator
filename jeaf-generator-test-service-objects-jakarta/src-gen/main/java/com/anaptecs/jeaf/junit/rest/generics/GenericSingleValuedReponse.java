@@ -62,6 +62,21 @@ public class GenericSingleValuedReponse<T> extends AbstractResponse<T> {
   }
 
   /**
+   * Convenience method to create new instance of class GenericSingleValuedReponse.
+   *
+   *
+   * @param pValue Value to which {@link #value} should be set.
+   *
+   * @return {@link GenericSingleValuedReponse<T>}
+   */
+  @SuppressWarnings("unchecked")
+  public static <T> GenericSingleValuedReponse<T> of( T pValue ) {
+    var lBuilder = GenericSingleValuedReponse.builder();
+    lBuilder.setValue(pValue);
+    return (GenericSingleValuedReponse<T>) lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>GenericSingleValuedReponse</code>.
    */
   public static class Builder<T> extends AbstractResponse.Builder<T> {

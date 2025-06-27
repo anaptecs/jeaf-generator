@@ -120,7 +120,7 @@ public class ImmutableAssociationPOJO {
    *
    * @param pYetAnotherAttribute Value to which {@link #yetAnotherAttribute} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.pojo.ImmutableAssociationPOJO}
+   * @return {@link ImmutableAssociationPOJO}
    */
   public static ImmutableAssociationPOJO of( boolean pYetAnotherAttribute ) {
     var lBuilder = ImmutableAssociationPOJO.builder();

@@ -99,7 +99,7 @@ public class CodeTypeUsageTest {
    *
    * @param pStringCode Value to which {@link #stringCode} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.CodeTypeUsageTest}
+   * @return {@link CodeTypeUsageTest}
    */
   public static CodeTypeUsageTest of( BooleanCodeType pBooleanCode, Set<ShortCodeType> pShortCodeTypeAssociation,
       StringCodeType pStringCode ) {

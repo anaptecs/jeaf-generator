@@ -200,7 +200,7 @@ public class DataTypesQueryBean {
    *
    * @param pLocalTime Value to which {@link #localTime} should be set.
    *
-   * @return {@link com.anaptecs.spring.service.DataTypesQueryBean}
+   * @return {@link DataTypesQueryBean}
    */
   public static DataTypesQueryBean of( OffsetDateTime pOffsetDateTime, OffsetTime pOffsetTime,
       LocalDateTime pLocalDateTime, LocalTime pLocalTime ) {

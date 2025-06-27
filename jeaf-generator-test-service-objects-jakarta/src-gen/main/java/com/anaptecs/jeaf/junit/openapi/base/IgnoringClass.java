@@ -58,7 +58,7 @@ public class IgnoringClass implements ServiceObject {
    *
    * @param pAge Value to which {@link #age} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.openapi.base.IgnoringClass}
+   * @return {@link IgnoringClass}
    */
   public static IgnoringClass of( Integer pAge ) {
     var lBuilder = IgnoringClass.builder();

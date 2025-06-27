@@ -162,7 +162,7 @@ public class DateQueryParamsBean implements ServiceObject {
    *
    * @param pSqlDate Value to which {@link #sqlDate} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.openapi.service1.DateQueryParamsBean}
+   * @return {@link DateQueryParamsBean}
    */
   public static DateQueryParamsBean of( OffsetDateTime pOffsetDateTime, OffsetTime pOffsetTime,
       LocalDateTime pLocalDateTime, LocalTime pLocalTime, LocalDate pLocalDate, java.util.Date pUtilDate,

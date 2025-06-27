@@ -60,7 +60,7 @@ public class PrincipalWrapper implements ServiceObject {
    *
    * @param pLPrincipal Value to which {@link #lPrincipal} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.core.PrincipalWrapper}
+   * @return {@link PrincipalWrapper}
    */
   public static PrincipalWrapper of( Principal pLPrincipal ) {
     var lBuilder = PrincipalWrapper.builder();

@@ -58,7 +58,7 @@ public class MappingParent implements ServiceObject {
    *
    * @param pName Value to which {@link #name} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.objectmapping.MappingParent}
+   * @return {@link MappingParent}
    */
   public static MappingParent of( String pName ) {
     var lBuilder = MappingParent.builder();

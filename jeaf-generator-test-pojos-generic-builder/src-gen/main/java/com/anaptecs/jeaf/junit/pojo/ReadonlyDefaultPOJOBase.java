@@ -190,7 +190,7 @@ public abstract class ReadonlyDefaultPOJOBase {
    *
    * @param pBooleanDefault Value to which {@link #booleanDefault} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.pojo.ReadonlyDefaultPOJO}
+   * @return {@link ReadonlyDefaultPOJO}
    */
   public static ReadonlyDefaultPOJO of( int pReadonlyDefault, Boolean pBooleanDefault ) {
     var lBuilder = ReadonlyDefaultPOJO.builder();

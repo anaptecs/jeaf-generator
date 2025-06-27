@@ -86,7 +86,7 @@ public class ChildB extends ParentClass {
    *
    * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.ChildB}
+   * @return {@link ChildB}
    */
   public static ChildB of( String pParentAttribute ) {
     var lBuilder = ChildB.builder();

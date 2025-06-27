@@ -128,7 +128,7 @@ public class WrapperTypesServiceObject implements ServiceObject {
    *
    * @param pAChar Value to which {@link #aChar} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.core.WrapperTypesServiceObject}
+   * @return {@link WrapperTypesServiceObject}
    */
   public static WrapperTypesServiceObject of( Boolean pABoolean, Byte pAByte, Short pAShort, Integer pAInt, Long pALong,
       Float pAFloat, Double pADouble, Character pAChar ) {

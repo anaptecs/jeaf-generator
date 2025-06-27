@@ -67,7 +67,7 @@ public class WeirdBooking {
    *
    * @param pBooking Value to which {@link #booking} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.WeirdBooking}
+   * @return {@link WeirdBooking}
    */
   public static WeirdBooking of( ComplexBookingID pBooking ) {
     var lBuilder = WeirdBooking.builder();

@@ -85,7 +85,7 @@ public class ParentPOJO {
    *
    * @param pHello Value to which {@link #hello} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.pojo.ParentPOJO}
+   * @return {@link ParentPOJO}
    */
   public static ParentPOJO of( String pParentAttribute, byte pWeirdAttribute, String pHello ) {
     var lBuilder = ParentPOJO.builder();

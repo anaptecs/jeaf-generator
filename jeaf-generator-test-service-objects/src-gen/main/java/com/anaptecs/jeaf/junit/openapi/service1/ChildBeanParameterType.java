@@ -61,7 +61,7 @@ public class ChildBeanParameterType extends ParentBeanParamType {
    *
    * @param pChildProperty Value to which {@link #childProperty} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.openapi.service1.ChildBeanParameterType}
+   * @return {@link ChildBeanParameterType}
    */
   public static ChildBeanParameterType of( String pNovaKey, String pTkID, String pChildProperty ) {
     var lBuilder = ChildBeanParameterType.builder();

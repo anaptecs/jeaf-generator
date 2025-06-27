@@ -181,7 +181,7 @@ public class MultiValuedHeaderBeanParam {
    *
    * @param pInts Value to which {@link #ints} should be set.
    *
-   * @return {@link com.anaptecs.spring.service.MultiValuedHeaderBeanParam}
+   * @return {@link MultiValuedHeaderBeanParam}
    */
   public static MultiValuedHeaderBeanParam of( int[] pInts ) {
     var lBuilder = MultiValuedHeaderBeanParam.builder();

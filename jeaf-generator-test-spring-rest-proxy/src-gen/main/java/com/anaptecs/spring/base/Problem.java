@@ -95,7 +95,7 @@ public class Problem {
    *
    * @param pInstance Value to which {@link #instance} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.Problem}
+   * @return {@link Problem}
    */
   public static Problem of( String pTitle, int pStatus, String pType, String pDetail, String pInstance ) {
     var lBuilder = Problem.builder();

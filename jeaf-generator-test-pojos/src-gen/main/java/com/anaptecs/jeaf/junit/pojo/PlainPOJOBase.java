@@ -176,7 +176,7 @@ public abstract class PlainPOJOBase {
    *
    * @param pWorld Value to which {@link #world} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.pojo.PlainPOJO}
+   * @return {@link PlainPOJO}
    */
   public static PlainPOJO of( String pHello, Integer pWorld ) {
     var lBuilder = PlainPOJO.builder();

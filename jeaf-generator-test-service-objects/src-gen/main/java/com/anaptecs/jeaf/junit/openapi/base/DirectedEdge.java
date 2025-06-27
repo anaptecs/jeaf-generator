@@ -91,7 +91,7 @@ public class DirectedEdge implements ServiceObject {
    *
    * @param pLink Value to which {@link #link} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.openapi.base.DirectedEdge}
+   * @return {@link DirectedEdge}
    */
   public static DirectedEdge of( Stop pEnd, String pLink ) {
     var lBuilder = DirectedEdge.builder();

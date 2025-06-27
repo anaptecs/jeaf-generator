@@ -60,7 +60,7 @@ public class GeoPosition extends PlaceRef {
    *
    * @param pLatitude Value to which {@link #latitude} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.openapi.base.GeoPosition}
+   * @return {@link GeoPosition}
    */
   public static GeoPosition of( String pName, int pLongitude, int pLatitude ) {
     var lBuilder = GeoPosition.builder();

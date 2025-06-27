@@ -49,7 +49,7 @@ public class BusinessServiceObject implements ServiceObject {
    * Convenience method to create new instance of class BusinessServiceObject.
    *
    *
-   * @return {@link com.anaptecs.jeaf.junit.rest.generics.BusinessServiceObject}
+   * @return {@link BusinessServiceObject}
    */
   public static BusinessServiceObject of( ) {
     var lBuilder = BusinessServiceObject.builder();

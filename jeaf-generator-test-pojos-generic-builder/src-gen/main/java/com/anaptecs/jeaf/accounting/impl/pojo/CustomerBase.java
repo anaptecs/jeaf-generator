@@ -274,7 +274,7 @@ public abstract class CustomerBase extends Partner {
    *
    * @param pEmail Value to which {@link #email} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.accounting.impl.pojo.Customer}
+   * @return {@link Customer}
    */
   public static Customer of( String pTags, String pName, String pFirstName, String pEmail ) {
     var lBuilder = Customer.builder();

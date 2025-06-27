@@ -70,7 +70,7 @@ public class ImmutablePOJO {
    *
    * @param pSomething Value to which {@link #something} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.pojo.ImmutablePOJO}
+   * @return {@link ImmutablePOJO}
    */
   public static ImmutablePOJO of( String pName, Integer pSomething ) {
     var lBuilder = ImmutablePOJO.builder();

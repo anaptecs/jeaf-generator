@@ -78,7 +78,7 @@ public class ChildPOJO extends ParentPOJO {
    *
    * @param pChildAttribute Value to which {@link #childAttribute} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.pojo.ChildPOJO}
+   * @return {@link ChildPOJO}
    */
   public static ChildPOJO of( String pParentAttribute, byte pWeirdAttribute, String pHello, Integer pChildAttribute ) {
     var lBuilder = ChildPOJO.builder();

@@ -111,7 +111,7 @@ public class DateObject {
    *
    * @param pUtilDate Value to which {@link #utilDate} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.DateObject}
+   * @return {@link DateObject}
    */
   public static DateObject of( LocalTime pLocalTime, LocalDate pLocalDate, LocalDateTime pLocalDateTime,
       Calendar pCalendar, Date pSqlDate, java.util.Date pUtilDate ) {

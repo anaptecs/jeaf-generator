@@ -72,7 +72,7 @@ public class Sale implements ServiceObject {
    *
    * @param pTransactionAmount Value to which {@link #transactionAmount} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.openapi.service1.Sale}
+   * @return {@link Sale}
    */
   public static Sale of( BigDecimal pTransactionAmount ) {
     var lBuilder = Sale.builder();

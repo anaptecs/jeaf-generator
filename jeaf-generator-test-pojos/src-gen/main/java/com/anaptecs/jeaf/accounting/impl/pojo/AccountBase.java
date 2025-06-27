@@ -173,7 +173,7 @@ public abstract class AccountBase {
    *
    * @param pCurrency Value to which {@link #currency} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.accounting.impl.pojo.Account}
+   * @return {@link Account}
    */
   public static Account of( int pIban, Currency pCurrency ) {
     var lBuilder = Account.builder();

@@ -473,7 +473,7 @@ public abstract class TestServiceObjectBase implements ServiceObject {
    *
    * @param pDummy2 Value to which {@link #dummy2} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.core.TestServiceObject}
+   * @return {@link TestServiceObject}
    */
   public static TestServiceObject of( String pKey, String pInfo, int pSomeTest, Set<String> pDummy2 ) {
     var lBuilder = TestServiceObject.builder();

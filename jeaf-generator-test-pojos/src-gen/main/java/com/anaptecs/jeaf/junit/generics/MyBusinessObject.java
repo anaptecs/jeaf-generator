@@ -57,7 +57,7 @@ public class MyBusinessObject {
    *
    * @param pMyBusinessAttribute Value to which {@link #myBusinessAttribute} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.generics.MyBusinessObject}
+   * @return {@link MyBusinessObject}
    */
   public static MyBusinessObject of( int pMyBusinessAttribute ) {
     var lBuilder = MyBusinessObject.builder();

@@ -97,7 +97,7 @@ public class Company extends Customer {
    *
    * @param pAttendant Value to which {@link #attendant} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.accounting.Company}
+   * @return {@link Company}
    */
   public static Company of( Boolean pActive, String pStreet, Integer pZipCode, String pCity, String pCountry,
       String pName, Long pRegistrationNumber, Long pTaxNumber, String pAttendant ) {

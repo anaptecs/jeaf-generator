@@ -110,7 +110,7 @@ public class TheReadOnlyPOJO implements Serializable {
    *
    * @param pName Value to which {@link #name} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.TheReadOnlyPOJO}
+   * @return {@link TheReadOnlyPOJO}
    */
   public static TheReadOnlyPOJO of( String pName ) {
     var lBuilder = TheReadOnlyPOJO.builder();

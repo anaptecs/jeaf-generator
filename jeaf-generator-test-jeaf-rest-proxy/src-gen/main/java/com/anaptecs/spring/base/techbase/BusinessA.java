@@ -70,7 +70,7 @@ public class BusinessA extends TechParent {
    *
    * @param pBusinessAttribute Value to which {@link #businessAttribute} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.techbase.BusinessA}
+   * @return {@link BusinessA}
    */
   public static BusinessA of( String pTechAttribute, int pBusinessAttribute ) {
     var lBuilder = BusinessA.builder();

@@ -76,6 +76,21 @@ public class Pageable<T> implements ServiceObject {
   }
 
   /**
+   * Convenience method to create new instance of class Pageable.
+   *
+   *
+   * @param pSize Value to which {@link #size} should be set.
+   *
+   * @return {@link Pageable<T>}
+   */
+  @SuppressWarnings("unchecked")
+  public static <T> Pageable<T> of( int pSize ) {
+    var lBuilder = Pageable.builder();
+    lBuilder.setSize(pSize);
+    return (Pageable<T>) lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>Pageable</code>.
    */
   public static class Builder<T> {

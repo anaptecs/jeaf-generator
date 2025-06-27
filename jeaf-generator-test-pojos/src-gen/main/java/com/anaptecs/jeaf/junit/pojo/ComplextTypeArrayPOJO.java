@@ -57,7 +57,7 @@ public class ComplextTypeArrayPOJO {
    * Convenience method to create new instance of class ComplextTypeArrayPOJO.
    *
    *
-   * @return {@link com.anaptecs.jeaf.junit.pojo.ComplextTypeArrayPOJO}
+   * @return {@link ComplextTypeArrayPOJO}
    */
   public static ComplextTypeArrayPOJO of( ) {
     var lBuilder = ComplextTypeArrayPOJO.builder();

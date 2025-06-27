@@ -145,7 +145,7 @@ public class DateHeaderParamsBean {
    *
    * @param pSqlDate Value to which {@link #sqlDate} should be set.
    *
-   * @return {@link com.anaptecs.spring.service.DateHeaderParamsBean}
+   * @return {@link DateHeaderParamsBean}
    */
   public static DateHeaderParamsBean of( OffsetDateTime pOffsetDateTime, OffsetTime pOffsetTime,
       LocalDateTime pLocalDateTime, LocalTime pLocalTime, LocalDate pLocalDate, java.util.Date pUtilDate,

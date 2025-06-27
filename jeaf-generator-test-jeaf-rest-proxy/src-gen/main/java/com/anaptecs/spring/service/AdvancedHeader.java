@@ -104,7 +104,7 @@ public class AdvancedHeader implements Serializable {
    *
    * @param pDoubleCode Value to which {@link #doubleCode} should be set.
    *
-   * @return {@link com.anaptecs.spring.service.AdvancedHeader}
+   * @return {@link AdvancedHeader}
    */
   public static AdvancedHeader of( BookingID pBookingID, BookingCode pBookingCode, DoubleCode pDoubleCode ) {
     var lBuilder = AdvancedHeader.builder();

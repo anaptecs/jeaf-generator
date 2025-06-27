@@ -405,7 +405,7 @@ public abstract class AndOneMorePOJOBase {
    *
    * @param pMultiTemplateClassImpl Value to which {@link #multiTemplateClassImpl} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.generics.AndOneMorePOJO}
+   * @return {@link AndOneMorePOJO}
    */
   public static AndOneMorePOJO of( GenericResponsePOJO<MyBusinessObject> pGenericProperty,
       MultiTemplateClass<Message, TemplateEnumTest> pMultiTemplateClassImpl ) {

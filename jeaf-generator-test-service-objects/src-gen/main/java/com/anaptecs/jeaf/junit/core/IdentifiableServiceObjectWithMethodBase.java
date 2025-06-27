@@ -192,7 +192,7 @@ public abstract class IdentifiableServiceObjectWithMethodBase implements Service
    *
    * @param pHello Value to which {@link #hello} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.core.IdentifiableServiceObjectWithMethod}
+   * @return {@link IdentifiableServiceObjectWithMethod}
    */
   public static IdentifiableServiceObjectWithMethod of( Integer pHello ) {
     var lBuilder = IdentifiableServiceObjectWithMethod.builder();

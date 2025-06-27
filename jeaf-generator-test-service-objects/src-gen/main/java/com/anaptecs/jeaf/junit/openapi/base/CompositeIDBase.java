@@ -173,7 +173,7 @@ public abstract class CompositeIDBase implements ServiceObject {
    *
    * @param pSecondaryCode Value to which {@link #secondaryCode} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.openapi.base.CompositeID}
+   * @return {@link CompositeID}
    */
   public static CompositeID of( long pPrimaryCode, long pSecondaryCode ) {
     var lBuilder = CompositeID.builder();
