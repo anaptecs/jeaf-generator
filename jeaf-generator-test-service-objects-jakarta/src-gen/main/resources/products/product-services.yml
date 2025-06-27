@@ -1344,6 +1344,8 @@ paths:
           description: |
             In case that a request was successful only status code 204 will be returned but no response content will be provided (aka as return type 'void' in many programming languages).
     
+        '303':
+          $ref: '#/components/responses/ContentLessResponse'
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
@@ -1915,6 +1917,17 @@ components:
         application/problem+json:
           schema:
             $ref: '../base/product-base.yml#/components/schemas/Problem'
+
+    # com.anaptecs.jeaf.junit.openapi.service1.ContentLessResponse
+    ContentLessResponse:
+      description: TODO Please add comment to error response type
+      headers:
+        Max-TTL:
+          schema:
+            type: integer
+        Yet-Another-Header:
+          schema:
+            type: boolean
 
     # com.anaptecs.jeaf.junit.openapi.service1.CustomErrorResponse
     CustomErrorResponse:

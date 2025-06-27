@@ -43,7 +43,7 @@ context Model if runChecks() ERROR this.getErrorMessage("9114", {}): this.hasVal
 
 
 // Checks for stereotype OpenAPIResponse
-context OpenAPIResponse if runChecks("OpenAPIResponse") && ignore() == false ERROR this.getErrorMessage("9115", {name}): this.getResponseTypes().size == 1;
+context OpenAPIResponse if runChecks("OpenAPIResponse") && ignore() == false ERROR this.getErrorMessage("9115", {name}): this.getResponseTypes().size <= 1;
 
 // Checks for stereotype OpenAPIType
 context OpenAPIType if runChecks("OpenAPIType") && ignore() == false ERROR this.getErrorMessage("9124", {"OpenAPIType", name}): ownedAttribute.select(e|e.isPropertySuppressed() == false).forAll( a | a.type != null);
