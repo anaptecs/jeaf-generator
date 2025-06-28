@@ -62,7 +62,7 @@ public class ShortCodeType {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class ShortCodeTypeBuilder<T extends ShortCodeType, B extends ShortCodeTypeBuilder<T, B>> {
+  public static abstract class ShortCodeTypeBuilder<T extends ShortCodeType, S extends ShortCodeTypeBuilder<T, S>> {
     private short code;
 
     /**
@@ -85,9 +85,9 @@ public class ShortCodeType {
      * Method sets attribute {@link #code}.<br/>
      *
      * @param pCode Value to which {@link #code} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setCode( short pCode ) {
+    public S setCode( short pCode ) {
       // Assign value to attribute
       code = pCode;
       return this.self();
@@ -96,7 +96,7 @@ public class ShortCodeType {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
 
     /**
      * Method creates a new instance of class ShortCodeType. The object will be initialized with the values of the

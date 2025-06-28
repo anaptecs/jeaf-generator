@@ -111,8 +111,8 @@ public class SoftLinkChildB extends SoftLinkParent {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class SoftLinkChildBBuilder<T extends SoftLinkChildB, B extends SoftLinkChildBBuilder<T, B>>
-      extends SoftLinkParentBuilder<T, B> {
+  public static abstract class SoftLinkChildBBuilder<T extends SoftLinkChildB, S extends SoftLinkChildBBuilder<T, S>>
+      extends SoftLinkParentBuilder<T, S> {
     /**
      * <p/>
      * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #heyBrother} is
@@ -158,9 +158,9 @@ public class SoftLinkChildB extends SoftLinkParent {
      * Method sets association {@link #heyBrother}.<br/>
      *
      * @param pHeyBrother Value to which {@link #heyBrother} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setHeyBrotherID( String pHeyBrother ) {
+    public S setHeyBrotherID( String pHeyBrother ) {
       heyBrotherID = pHeyBrother;
       return this.self();
     }
@@ -169,9 +169,9 @@ public class SoftLinkChildB extends SoftLinkParent {
      * Method sets association {@link #softLinkPartners}.<br/>
      *
      * @param pSoftLinkPartners Collection to which {@link #softLinkPartners} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setSoftLinkPartnerIDs( Set<String> pSoftLinkPartners ) {
+    public S setSoftLinkPartnerIDs( Set<String> pSoftLinkPartners ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pSoftLinkPartners != null) {
         softLinkPartnerIDs = new HashSet<String>(pSoftLinkPartners);
@@ -186,9 +186,9 @@ public class SoftLinkChildB extends SoftLinkParent {
      * Method sets association {@link #oneLink}.<br/>
      *
      * @param pOneLink Value to which {@link #oneLink} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setOneLinkID( SoftLinkID pOneLink ) {
+    public S setOneLinkID( SoftLinkID pOneLink ) {
       oneLinkID = pOneLink;
       return this.self();
     }

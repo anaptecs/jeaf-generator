@@ -54,7 +54,7 @@ public abstract class PlainPOJOBase {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class PlainPOJOBuilder<T extends PlainPOJO, B extends PlainPOJOBuilder<T, B>> {
+  public static abstract class PlainPOJOBuilder<T extends PlainPOJO, S extends PlainPOJOBuilder<T, S>> {
     private String hello;
 
     @PositiveOrZero
@@ -81,9 +81,9 @@ public abstract class PlainPOJOBase {
      * Method sets attribute {@link #hello}.<br/>
      *
      * @param pHello Value to which {@link #hello} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setHello( String pHello ) {
+    public S setHello( String pHello ) {
       // Assign value to attribute
       hello = pHello;
       return this.self();
@@ -93,9 +93,9 @@ public abstract class PlainPOJOBase {
      * Method sets attribute {@link #world}.<br/>
      *
      * @param pWorld Value to which {@link #world} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setWorld( Integer pWorld ) {
+    public S setWorld( Integer pWorld ) {
       // Assign value to attribute
       world = pWorld;
       return this.self();
@@ -104,7 +104,7 @@ public abstract class PlainPOJOBase {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
 
     /**
      * Method creates a new instance of class PlainPOJO. The object will be initialized with the values of the builder.

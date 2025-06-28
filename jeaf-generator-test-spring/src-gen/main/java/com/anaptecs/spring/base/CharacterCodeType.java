@@ -62,7 +62,7 @@ public class CharacterCodeType {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class CharacterCodeTypeBuilder<T extends CharacterCodeType, B extends CharacterCodeTypeBuilder<T, B>> {
+  public static abstract class CharacterCodeTypeBuilder<T extends CharacterCodeType, S extends CharacterCodeTypeBuilder<T, S>> {
     private char code;
 
     /**
@@ -86,9 +86,9 @@ public class CharacterCodeType {
      * Method sets attribute {@link #code}.<br/>
      *
      * @param pCode Value to which {@link #code} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setCode( char pCode ) {
+    public S setCode( char pCode ) {
       // Assign value to attribute
       code = pCode;
       return this.self();
@@ -97,7 +97,7 @@ public class CharacterCodeType {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
 
     /**
      * Method creates a new instance of class CharacterCodeType. The object will be initialized with the values of the

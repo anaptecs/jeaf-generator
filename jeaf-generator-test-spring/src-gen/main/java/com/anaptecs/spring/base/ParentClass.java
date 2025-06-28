@@ -73,7 +73,7 @@ public class ParentClass {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class ParentClassBuilder<T extends ParentClass, B extends ParentClassBuilder<T, B>> {
+  public static abstract class ParentClassBuilder<T extends ParentClass, S extends ParentClassBuilder<T, S>> {
     private String parentAttribute;
 
     /**
@@ -96,9 +96,9 @@ public class ParentClass {
      * Method sets attribute {@link #parentAttribute}.<br/>
      *
      * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setParentAttribute( @MyNotNullProperty String pParentAttribute ) {
+    public S setParentAttribute( @MyNotNullProperty String pParentAttribute ) {
       // Assign value to attribute
       parentAttribute = pParentAttribute;
       return this.self();
@@ -107,7 +107,7 @@ public class ParentClass {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
 
     /**
      * Method creates a new instance of class ParentClass. The object will be initialized with the values of the

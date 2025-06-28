@@ -46,7 +46,7 @@ public abstract class AbstractPOJO {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class AbstractPOJOBuilder<T extends AbstractPOJO, B extends AbstractPOJOBuilder<T, B>> {
+  public static abstract class AbstractPOJOBuilder<T extends AbstractPOJO, S extends AbstractPOJOBuilder<T, S>> {
     private String abtractAttr;
 
     /**
@@ -69,9 +69,9 @@ public abstract class AbstractPOJO {
      * Method sets attribute {@link #abtractAttr}.<br/>
      *
      * @param pAbtractAttr Value to which {@link #abtractAttr} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setAbtractAttr( String pAbtractAttr ) {
+    public S setAbtractAttr( String pAbtractAttr ) {
       // Assign value to attribute
       abtractAttr = pAbtractAttr;
       return this.self();
@@ -80,7 +80,7 @@ public abstract class AbstractPOJO {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
   }
 
   /**

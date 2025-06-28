@@ -33,7 +33,7 @@ public abstract class YetAnotherPOJOBase {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class YetAnotherPOJOBuilder<T extends YetAnotherPOJO, B extends YetAnotherPOJOBuilder<T, B>> {
+  public static abstract class YetAnotherPOJOBuilder<T extends YetAnotherPOJO, S extends YetAnotherPOJOBuilder<T, S>> {
     /**
      * Use {@link YetAnotherPOJOBuilder#builder()} instead of private constructor to create new builder.
      */
@@ -49,7 +49,7 @@ public abstract class YetAnotherPOJOBase {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
 
     /**
      * Method creates a new instance of class YetAnotherPOJO. The object will be initialized with the values of the

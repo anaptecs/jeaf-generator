@@ -113,7 +113,7 @@ public class SoftLinkPartner {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class SoftLinkPartnerBuilder<T extends SoftLinkPartner, B extends SoftLinkPartnerBuilder<T, B>> {
+  public static abstract class SoftLinkPartnerBuilder<T extends SoftLinkPartner, S extends SoftLinkPartnerBuilder<T, S>> {
     /**
      * <p/>
      * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #theBackLink} is
@@ -157,9 +157,9 @@ public class SoftLinkPartner {
      * Method sets association {@link #theBackLink}.<br/>
      *
      * @param pTheBackLink Value to which {@link #theBackLink} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setTheBackLinkID( String pTheBackLink ) {
+    public S setTheBackLinkID( String pTheBackLink ) {
       theBackLinkID = pTheBackLink;
       return this.self();
     }
@@ -168,9 +168,9 @@ public class SoftLinkPartner {
      * Method sets association {@link #childLinks}.<br/>
      *
      * @param pChildLinks Collection to which {@link #childLinks} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setChildLinkIDs( Set<SoftLinkID> pChildLinks ) {
+    public S setChildLinkIDs( Set<SoftLinkID> pChildLinks ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pChildLinks != null) {
         childLinkIDs = new HashSet<SoftLinkID>(pChildLinks);
@@ -185,9 +185,9 @@ public class SoftLinkPartner {
      * Method sets association {@link #longLinks}.<br/>
      *
      * @param pLongLinks Collection to which {@link #longLinks} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setLongLinkIDs( List<Long> pLongLinks ) {
+    public S setLongLinkIDs( List<Long> pLongLinks ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pLongLinks != null) {
         longLinkIDs = new ArrayList<Long>(pLongLinks);
@@ -201,7 +201,7 @@ public class SoftLinkPartner {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
 
     /**
      * Method creates a new instance of class SoftLinkPartner. The object will be initialized with the values of the

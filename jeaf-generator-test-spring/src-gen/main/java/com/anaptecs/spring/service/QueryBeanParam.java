@@ -92,7 +92,7 @@ public class QueryBeanParam {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class QueryBeanParamBuilder<T extends QueryBeanParam, B extends QueryBeanParamBuilder<T, B>> {
+  public static abstract class QueryBeanParamBuilder<T extends QueryBeanParam, S extends QueryBeanParamBuilder<T, S>> {
     private BookingCode bookingCode;
 
     /**
@@ -125,9 +125,9 @@ public class QueryBeanParam {
      * Method sets attribute {@link #bookingCode}.<br/>
      *
      * @param pBookingCode Value to which {@link #bookingCode} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setBookingCode( @MyNotNullProperty BookingCode pBookingCode ) {
+    public S setBookingCode( @MyNotNullProperty BookingCode pBookingCode ) {
       // Assign value to attribute
       bookingCode = pBookingCode;
       return this.self();
@@ -137,9 +137,9 @@ public class QueryBeanParam {
      * Method sets attribute {@link #maxResults}.<br/>
      *
      * @param pMaxResults Value to which {@link #maxResults} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setMaxResults( int pMaxResults ) {
+    public S setMaxResults( int pMaxResults ) {
       // Assign value to attribute
       maxResults = pMaxResults;
       return this.self();
@@ -149,9 +149,9 @@ public class QueryBeanParam {
      * Method sets association {@link #sortCriteria}.<br/>
      *
      * @param pSortCriteria Collection to which {@link #sortCriteria} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setSortCriteria( List<MySortCriteria> pSortCriteria ) {
+    public S setSortCriteria( List<MySortCriteria> pSortCriteria ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pSortCriteria != null) {
         sortCriteria = new ArrayList<MySortCriteria>(pSortCriteria);
@@ -166,9 +166,9 @@ public class QueryBeanParam {
      * Method adds the passed objects to association {@link #sortCriteria}.<br/>
      *
      * @param pSortCriteria Array of objects that should be added to {@link #sortCriteria}. The parameter may be null.
-     * @return {@link B} Instance of this builder to support chaining. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining. Method never returns null.
      */
-    public B addToSortCriteria( MySortCriteria... pSortCriteria ) {
+    public S addToSortCriteria( MySortCriteria... pSortCriteria ) {
       if (pSortCriteria != null) {
         if (sortCriteria == null) {
           sortCriteria = new ArrayList<MySortCriteria>();
@@ -181,7 +181,7 @@ public class QueryBeanParam {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
 
     /**
      * Method creates a new instance of class QueryBeanParam. The object will be initialized with the values of the

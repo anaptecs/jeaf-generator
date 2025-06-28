@@ -91,8 +91,8 @@ public class MutableChildPOJO extends ImmutablePOJOParent {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class MutableChildPOJOBuilder<T extends MutableChildPOJO, B extends MutableChildPOJOBuilder<T, B>>
-      extends ImmutablePOJOParentBuilder<T, B> {
+  public static abstract class MutableChildPOJOBuilder<T extends MutableChildPOJO, S extends MutableChildPOJOBuilder<T, S>>
+      extends ImmutablePOJOParentBuilder<T, S> {
     private Integer writeable;
 
     /**
@@ -125,9 +125,9 @@ public class MutableChildPOJO extends ImmutablePOJOParent {
      * Method sets attribute {@link #writeable}.<br/>
      *
      * @param pWriteable Value to which {@link #writeable} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setWriteable( Integer pWriteable ) {
+    public S setWriteable( Integer pWriteable ) {
       // Assign value to attribute
       writeable = pWriteable;
       return this.self();
@@ -137,9 +137,9 @@ public class MutableChildPOJO extends ImmutablePOJOParent {
      * Method sets attribute {@link #booleanDefault}.<br/>
      *
      * @param pBooleanDefault Value to which {@link #booleanDefault} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setBooleanDefault( Boolean pBooleanDefault ) {
+    public S setBooleanDefault( Boolean pBooleanDefault ) {
       // Assign value to attribute
       booleanDefault = pBooleanDefault;
       return this.self();

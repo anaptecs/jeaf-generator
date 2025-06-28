@@ -245,7 +245,7 @@ public class PrimitiveArraysObject {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class PrimitiveArraysObjectBuilder<T extends PrimitiveArraysObject, B extends PrimitiveArraysObjectBuilder<T, B>> {
+  public static abstract class PrimitiveArraysObjectBuilder<T extends PrimitiveArraysObject, S extends PrimitiveArraysObjectBuilder<T, S>> {
     private boolean[] aBooleanArray;
 
     private Boolean[] bBooleanArray;
@@ -335,9 +335,9 @@ public class PrimitiveArraysObject {
      * Method sets attribute {@link #aBooleanArray}.<br/>
      *
      * @param pABooleanArray Value to which {@link #aBooleanArray} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setABooleanArray( boolean[] pABooleanArray ) {
+    public S setABooleanArray( boolean[] pABooleanArray ) {
       // Assign value to attribute
       if (pABooleanArray != null) {
         aBooleanArray = new boolean[pABooleanArray.length];
@@ -353,9 +353,9 @@ public class PrimitiveArraysObject {
      * Method sets attribute {@link #bBooleanArray}.<br/>
      *
      * @param pBBooleanArray Collection to which {@link #bBooleanArray} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setBBooleanArray( Boolean[] pBBooleanArray ) {
+    public S setBBooleanArray( Boolean[] pBBooleanArray ) {
       // Assign value to attribute
       if (pBBooleanArray != null) {
         bBooleanArray = new Boolean[pBBooleanArray.length];
@@ -371,9 +371,9 @@ public class PrimitiveArraysObject {
      * Method sets attribute {@link #cBooleanArray}.<br/>
      *
      * @param pCBooleanArray Value to which {@link #cBooleanArray} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setCBooleanArray( boolean[] pCBooleanArray ) {
+    public S setCBooleanArray( boolean[] pCBooleanArray ) {
       // Assign value to attribute
       if (pCBooleanArray != null) {
         cBooleanArray = new boolean[pCBooleanArray.length];
@@ -389,9 +389,9 @@ public class PrimitiveArraysObject {
      * Method sets attribute {@link #aByteArray}.<br/>
      *
      * @param pAByteArray Value to which {@link #aByteArray} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setAByteArray( byte[] pAByteArray ) {
+    public S setAByteArray( byte[] pAByteArray ) {
       // Assign value to attribute
       if (pAByteArray != null) {
         aByteArray = new byte[pAByteArray.length];
@@ -407,9 +407,9 @@ public class PrimitiveArraysObject {
      * Method sets attribute {@link #bByteArray}.<br/>
      *
      * @param pBByteArray Collection to which {@link #bByteArray} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setBByteArray( Byte[] pBByteArray ) {
+    public S setBByteArray( Byte[] pBByteArray ) {
       // Assign value to attribute
       if (pBByteArray != null) {
         bByteArray = new Byte[pBByteArray.length];
@@ -425,9 +425,9 @@ public class PrimitiveArraysObject {
      * Method sets attribute {@link #aShortArray}.<br/>
      *
      * @param pAShortArray Value to which {@link #aShortArray} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setAShortArray( short[] pAShortArray ) {
+    public S setAShortArray( short[] pAShortArray ) {
       // Assign value to attribute
       if (pAShortArray != null) {
         aShortArray = new short[pAShortArray.length];
@@ -443,9 +443,9 @@ public class PrimitiveArraysObject {
      * Method sets attribute {@link #bShortArray}.<br/>
      *
      * @param pBShortArray Collection to which {@link #bShortArray} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setBShortArray( Short[] pBShortArray ) {
+    public S setBShortArray( Short[] pBShortArray ) {
       // Assign value to attribute
       if (pBShortArray != null) {
         bShortArray = new Short[pBShortArray.length];
@@ -461,9 +461,9 @@ public class PrimitiveArraysObject {
      * Method sets attribute {@link #aIntegerArray}.<br/>
      *
      * @param pAIntegerArray Value to which {@link #aIntegerArray} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setAIntegerArray( int[] pAIntegerArray ) {
+    public S setAIntegerArray( int[] pAIntegerArray ) {
       // Assign value to attribute
       if (pAIntegerArray != null) {
         aIntegerArray = new int[pAIntegerArray.length];
@@ -479,9 +479,9 @@ public class PrimitiveArraysObject {
      * Method sets attribute {@link #bIntegerArray}.<br/>
      *
      * @param pBIntegerArray Collection to which {@link #bIntegerArray} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setBIntegerArray( Integer[] pBIntegerArray ) {
+    public S setBIntegerArray( Integer[] pBIntegerArray ) {
       // Assign value to attribute
       if (pBIntegerArray != null) {
         bIntegerArray = new Integer[pBIntegerArray.length];
@@ -497,9 +497,9 @@ public class PrimitiveArraysObject {
      * Method sets attribute {@link #cIntegerArray}.<br/>
      *
      * @param pCIntegerArray Collection to which {@link #cIntegerArray} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setCIntegerArray( Integer[] pCIntegerArray ) {
+    public S setCIntegerArray( Integer[] pCIntegerArray ) {
       // Assign value to attribute
       if (pCIntegerArray != null) {
         cIntegerArray = new Integer[pCIntegerArray.length];
@@ -515,9 +515,9 @@ public class PrimitiveArraysObject {
      * Method sets attribute {@link #aLongArray}.<br/>
      *
      * @param pALongArray Value to which {@link #aLongArray} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setALongArray( long[] pALongArray ) {
+    public S setALongArray( long[] pALongArray ) {
       // Assign value to attribute
       if (pALongArray != null) {
         aLongArray = new long[pALongArray.length];
@@ -533,9 +533,9 @@ public class PrimitiveArraysObject {
      * Method sets attribute {@link #bLongArray}.<br/>
      *
      * @param pBLongArray Collection to which {@link #bLongArray} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setBLongArray( Long[] pBLongArray ) {
+    public S setBLongArray( Long[] pBLongArray ) {
       // Assign value to attribute
       if (pBLongArray != null) {
         bLongArray = new Long[pBLongArray.length];
@@ -551,9 +551,9 @@ public class PrimitiveArraysObject {
      * Method sets attribute {@link #aBigIntegerArray}.<br/>
      *
      * @param pABigIntegerArray Collection to which {@link #aBigIntegerArray} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setABigIntegerArray( BigInteger[] pABigIntegerArray ) {
+    public S setABigIntegerArray( BigInteger[] pABigIntegerArray ) {
       // Assign value to attribute
       if (pABigIntegerArray != null) {
         aBigIntegerArray = new BigInteger[pABigIntegerArray.length];
@@ -569,9 +569,9 @@ public class PrimitiveArraysObject {
      * Method sets attribute {@link #aCharacterArray}.<br/>
      *
      * @param pACharacterArray Value to which {@link #aCharacterArray} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setACharacterArray( char[] pACharacterArray ) {
+    public S setACharacterArray( char[] pACharacterArray ) {
       // Assign value to attribute
       if (pACharacterArray != null) {
         aCharacterArray = new char[pACharacterArray.length];
@@ -587,9 +587,9 @@ public class PrimitiveArraysObject {
      * Method sets attribute {@link #bCharacterArray}.<br/>
      *
      * @param pBCharacterArray Collection to which {@link #bCharacterArray} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setBCharacterArray( Character[] pBCharacterArray ) {
+    public S setBCharacterArray( Character[] pBCharacterArray ) {
       // Assign value to attribute
       if (pBCharacterArray != null) {
         bCharacterArray = new Character[pBCharacterArray.length];
@@ -605,9 +605,9 @@ public class PrimitiveArraysObject {
      * Method sets attribute {@link #aFloatArray}.<br/>
      *
      * @param pAFloatArray Value to which {@link #aFloatArray} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setAFloatArray( float[] pAFloatArray ) {
+    public S setAFloatArray( float[] pAFloatArray ) {
       // Assign value to attribute
       if (pAFloatArray != null) {
         aFloatArray = new float[pAFloatArray.length];
@@ -623,9 +623,9 @@ public class PrimitiveArraysObject {
      * Method sets attribute {@link #bFloatArray}.<br/>
      *
      * @param pBFloatArray Collection to which {@link #bFloatArray} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setBFloatArray( Float[] pBFloatArray ) {
+    public S setBFloatArray( Float[] pBFloatArray ) {
       // Assign value to attribute
       if (pBFloatArray != null) {
         bFloatArray = new Float[pBFloatArray.length];
@@ -641,9 +641,9 @@ public class PrimitiveArraysObject {
      * Method sets attribute {@link #aDoubleArray}.<br/>
      *
      * @param pADoubleArray Value to which {@link #aDoubleArray} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setADoubleArray( double[] pADoubleArray ) {
+    public S setADoubleArray( double[] pADoubleArray ) {
       // Assign value to attribute
       if (pADoubleArray != null) {
         aDoubleArray = new double[pADoubleArray.length];
@@ -659,9 +659,9 @@ public class PrimitiveArraysObject {
      * Method sets attribute {@link #bDoubleArray}.<br/>
      *
      * @param pBDoubleArray Collection to which {@link #bDoubleArray} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setBDoubleArray( Double[] pBDoubleArray ) {
+    public S setBDoubleArray( Double[] pBDoubleArray ) {
       // Assign value to attribute
       if (pBDoubleArray != null) {
         bDoubleArray = new Double[pBDoubleArray.length];
@@ -677,9 +677,9 @@ public class PrimitiveArraysObject {
      * Method sets attribute {@link #aBigDecimalArray}.<br/>
      *
      * @param pABigDecimalArray Collection to which {@link #aBigDecimalArray} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setABigDecimalArray( BigDecimal[] pABigDecimalArray ) {
+    public S setABigDecimalArray( BigDecimal[] pABigDecimalArray ) {
       // Assign value to attribute
       if (pABigDecimalArray != null) {
         aBigDecimalArray = new BigDecimal[pABigDecimalArray.length];
@@ -695,9 +695,9 @@ public class PrimitiveArraysObject {
      * Method sets attribute {@link #aStringArray}.<br/>
      *
      * @param pAStringArray Collection to which {@link #aStringArray} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setAStringArray( String[] pAStringArray ) {
+    public S setAStringArray( String[] pAStringArray ) {
       // Assign value to attribute
       if (pAStringArray != null) {
         aStringArray = new String[pAStringArray.length];
@@ -713,9 +713,9 @@ public class PrimitiveArraysObject {
      * Method sets attribute {@link #bStringArray}.<br/>
      *
      * @param pBStringArray Collection to which {@link #bStringArray} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setBStringArray( String[] pBStringArray ) {
+    public S setBStringArray( String[] pBStringArray ) {
       // Assign value to attribute
       if (pBStringArray != null) {
         bStringArray = new String[pBStringArray.length];
@@ -731,9 +731,9 @@ public class PrimitiveArraysObject {
      * Method sets attribute {@link #cStringArray}.<br/>
      *
      * @param pCStringArray Collection to which {@link #cStringArray} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setCStringArray( @MyNotEmptyProperty String[] pCStringArray ) {
+    public S setCStringArray( @MyNotEmptyProperty String[] pCStringArray ) {
       // Assign value to attribute
       if (pCStringArray != null) {
         cStringArray = new String[pCStringArray.length];
@@ -748,7 +748,7 @@ public class PrimitiveArraysObject {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
 
     /**
      * Method creates a new instance of class PrimitiveArraysObject. The object will be initialized with the values of

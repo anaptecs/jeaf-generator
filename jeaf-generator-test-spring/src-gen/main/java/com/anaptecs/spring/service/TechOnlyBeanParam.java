@@ -44,7 +44,7 @@ public class TechOnlyBeanParam {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class TechOnlyBeanParamBuilder<T extends TechOnlyBeanParam, B extends TechOnlyBeanParamBuilder<T, B>> {
+  public static abstract class TechOnlyBeanParamBuilder<T extends TechOnlyBeanParam, S extends TechOnlyBeanParamBuilder<T, S>> {
     /**
      * Use {@link TechOnlyBeanParamBuilder#builder()} instead of private constructor to create new builder.
      */
@@ -61,7 +61,7 @@ public class TechOnlyBeanParam {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
 
     /**
      * Method creates a new instance of class TechOnlyBeanParam. The object will be initialized with the values of the

@@ -95,7 +95,7 @@ public class ReadOnlyMaster {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class ReadOnlyMasterBuilder<T extends ReadOnlyMaster, B extends ReadOnlyMasterBuilder<T, B>> {
+  public static abstract class ReadOnlyMasterBuilder<T extends ReadOnlyMaster, S extends ReadOnlyMasterBuilder<T, S>> {
     private String name;
 
     private List<ReadOnlyClient> clients;
@@ -121,9 +121,9 @@ public class ReadOnlyMaster {
      * Method sets attribute {@link #name}.<br/>
      *
      * @param pName Value to which {@link #name} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setName( String pName ) {
+    public S setName( String pName ) {
       // Assign value to attribute
       name = pName;
       return this.self();
@@ -133,9 +133,9 @@ public class ReadOnlyMaster {
      * Method sets association {@link #clients}.<br/>
      *
      * @param pClients Collection to which {@link #clients} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setClients( List<ReadOnlyClient> pClients ) {
+    public S setClients( List<ReadOnlyClient> pClients ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pClients != null) {
         clients = new ArrayList<ReadOnlyClient>(pClients);
@@ -150,9 +150,9 @@ public class ReadOnlyMaster {
      * Method adds the passed objects to association {@link #clients}.<br/>
      *
      * @param pClients Array of objects that should be added to {@link #clients}. The parameter may be null.
-     * @return {@link B} Instance of this builder to support chaining. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining. Method never returns null.
      */
-    public B addToClients( ReadOnlyClient... pClients ) {
+    public S addToClients( ReadOnlyClient... pClients ) {
       if (pClients != null) {
         if (clients == null) {
           clients = new ArrayList<ReadOnlyClient>();
@@ -165,7 +165,7 @@ public class ReadOnlyMaster {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
 
     /**
      * Method creates a new instance of class ReadOnlyMaster. The object will be initialized with the values of the

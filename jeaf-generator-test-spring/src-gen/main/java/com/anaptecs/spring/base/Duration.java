@@ -94,7 +94,7 @@ public class Duration {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class DurationBuilder<T extends Duration, B extends DurationBuilder<T, B>> {
+  public static abstract class DurationBuilder<T extends Duration, S extends DurationBuilder<T, S>> {
     private int value;
 
     /**
@@ -124,9 +124,9 @@ public class Duration {
      * Method sets attribute {@link #value}.<br/>
      *
      * @param pValue Value to which {@link #value} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setValue( int pValue ) {
+    public S setValue( int pValue ) {
       // Assign value to attribute
       value = pValue;
       return this.self();
@@ -136,9 +136,9 @@ public class Duration {
      * Method sets attribute {@link #timeUnit}.<br/>
      *
      * @param pTimeUnit Value to which {@link #timeUnit} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setTimeUnit( @MyNotNullProperty TimeUnit pTimeUnit ) {
+    public S setTimeUnit( @MyNotNullProperty TimeUnit pTimeUnit ) {
       // Assign value to attribute
       timeUnit = pTimeUnit;
       return this.self();
@@ -147,7 +147,7 @@ public class Duration {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
 
     /**
      * Method creates a new instance of class Duration. The object will be initialized with the values of the builder.

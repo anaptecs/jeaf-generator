@@ -73,7 +73,7 @@ public class PartnerContainer {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class PartnerContainerBuilder<T extends PartnerContainer, B extends PartnerContainerBuilder<T, B>> {
+  public static abstract class PartnerContainerBuilder<T extends PartnerContainer, S extends PartnerContainerBuilder<T, S>> {
     private List<Partner> partners;
 
     /**
@@ -97,9 +97,9 @@ public class PartnerContainer {
      * Method sets association {@link #partners}.<br/>
      *
      * @param pPartners Collection to which {@link #partners} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setPartners( List<Partner> pPartners ) {
+    public S setPartners( List<Partner> pPartners ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pPartners != null) {
         partners = new ArrayList<Partner>(pPartners);
@@ -114,9 +114,9 @@ public class PartnerContainer {
      * Method adds the passed objects to association {@link #partners}.<br/>
      *
      * @param pPartners Array of objects that should be added to {@link #partners}. The parameter may be null.
-     * @return {@link B} Instance of this builder to support chaining. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining. Method never returns null.
      */
-    public B addToPartners( Partner... pPartners ) {
+    public S addToPartners( Partner... pPartners ) {
       if (pPartners != null) {
         if (partners == null) {
           partners = new ArrayList<Partner>();
@@ -129,7 +129,7 @@ public class PartnerContainer {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
 
     /**
      * Method creates a new instance of class PartnerContainer. The object will be initialized with the values of the

@@ -65,7 +65,7 @@ public class FloatCode {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class FloatCodeBuilder<T extends FloatCode, B extends FloatCodeBuilder<T, B>> {
+  public static abstract class FloatCodeBuilder<T extends FloatCode, S extends FloatCodeBuilder<T, S>> {
     private Float code;
 
     /**
@@ -88,9 +88,9 @@ public class FloatCode {
      * Method sets attribute {@link #code}.<br/>
      *
      * @param pCode Value to which {@link #code} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setCode( @MyNotNullProperty Float pCode ) {
+    public S setCode( @MyNotNullProperty Float pCode ) {
       // Assign value to attribute
       code = pCode;
       return this.self();
@@ -99,7 +99,7 @@ public class FloatCode {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
 
     /**
      * Method creates a new instance of class FloatCode. The object will be initialized with the values of the builder.

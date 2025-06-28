@@ -64,7 +64,7 @@ public class ComplextTypeArrayPOJO {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class ComplextTypeArrayPOJOBuilder<T extends ComplextTypeArrayPOJO, B extends ComplextTypeArrayPOJOBuilder<T, B>> {
+  public static abstract class ComplextTypeArrayPOJOBuilder<T extends ComplextTypeArrayPOJO, S extends ComplextTypeArrayPOJOBuilder<T, S>> {
     private PlainPOJO[] plainPOJOs;
 
     /**
@@ -88,9 +88,9 @@ public class ComplextTypeArrayPOJO {
      * Method sets attribute {@link #plainPOJOs}.<br/>
      *
      * @param pPlainPOJOs Collection to which {@link #plainPOJOs} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setPlainPOJOs( PlainPOJO[] pPlainPOJOs ) {
+    public S setPlainPOJOs( PlainPOJO[] pPlainPOJOs ) {
       // Assign value to attribute
       if (pPlainPOJOs != null) {
         plainPOJOs = new PlainPOJO[pPlainPOJOs.length];
@@ -105,7 +105,7 @@ public class ComplextTypeArrayPOJO {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
 
     /**
      * Method creates a new instance of class ComplextTypeArrayPOJO. The object will be initialized with the values of

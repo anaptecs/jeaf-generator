@@ -96,7 +96,7 @@ public class SimpleAssociationBackwardCompatibility {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class SimpleAssociationBackwardCompatibilityBuilder<T extends SimpleAssociationBackwardCompatibility, B extends SimpleAssociationBackwardCompatibilityBuilder<T, B>> {
+  public static abstract class SimpleAssociationBackwardCompatibilityBuilder<T extends SimpleAssociationBackwardCompatibility, S extends SimpleAssociationBackwardCompatibilityBuilder<T, S>> {
     private List<SimpleBackwardCompatibility> newLinks;
 
     private SimpleBackwardCompatibility newSingleLink;
@@ -124,11 +124,11 @@ public class SimpleAssociationBackwardCompatibility {
      * Method sets association {@link #deprecatedLinks}.<br/>
      *
      * @param pDeprecatedLinks Collection to which {@link #deprecatedLinks} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      * @deprecated Wrong type. Switch to <code>newLink</code> instead. (<b>since:</b> 2.0, <b>removed with:</b> 3.0)
      */
     @Deprecated
-    public B setDeprecatedLinks( List<SimpleBackwardCompatibility> pDeprecatedLinks ) {
+    public S setDeprecatedLinks( List<SimpleBackwardCompatibility> pDeprecatedLinks ) {
       // Delegate call to setNewLinks(...)
       this.setNewLinks(pDeprecatedLinks);
       return this.self();
@@ -139,11 +139,11 @@ public class SimpleAssociationBackwardCompatibility {
      *
      * @param pDeprecatedLinks Array of objects that should be added to {@link #deprecatedLinks}. The parameter may be
      * null.
-     * @return {@link B} Instance of this builder to support chaining. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining. Method never returns null.
      * @deprecated Wrong type. Switch to <code>newLink</code> instead. (<b>since:</b> 2.0, <b>removed with:</b> 3.0)
      */
     @Deprecated
-    public B addToDeprecatedLinks( SimpleBackwardCompatibility... pDeprecatedLinks ) {
+    public S addToDeprecatedLinks( SimpleBackwardCompatibility... pDeprecatedLinks ) {
       // Delegate call to addToNewLinks(...)
       this.addToNewLinks(pDeprecatedLinks);
       return this.self();
@@ -153,9 +153,9 @@ public class SimpleAssociationBackwardCompatibility {
      * Method sets association {@link #newLinks}.<br/>
      *
      * @param pNewLinks Collection to which {@link #newLinks} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setNewLinks( List<SimpleBackwardCompatibility> pNewLinks ) {
+    public S setNewLinks( List<SimpleBackwardCompatibility> pNewLinks ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pNewLinks != null) {
         newLinks = new ArrayList<SimpleBackwardCompatibility>(pNewLinks);
@@ -170,9 +170,9 @@ public class SimpleAssociationBackwardCompatibility {
      * Method adds the passed objects to association {@link #newLinks}.<br/>
      *
      * @param pNewLinks Array of objects that should be added to {@link #newLinks}. The parameter may be null.
-     * @return {@link B} Instance of this builder to support chaining. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining. Method never returns null.
      */
-    public B addToNewLinks( SimpleBackwardCompatibility... pNewLinks ) {
+    public S addToNewLinks( SimpleBackwardCompatibility... pNewLinks ) {
       if (pNewLinks != null) {
         if (newLinks == null) {
           newLinks = new ArrayList<SimpleBackwardCompatibility>();
@@ -186,10 +186,10 @@ public class SimpleAssociationBackwardCompatibility {
      * Method sets association {@link #oldSingleLink}.<br/>
      *
      * @param pOldSingleLink Value to which {@link #oldSingleLink} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
-    public B setOldSingleLink( SimpleBackwardCompatibility pOldSingleLink ) {
+    public S setOldSingleLink( SimpleBackwardCompatibility pOldSingleLink ) {
       // Delegate call to setNewSingleLink(...)
       this.setNewSingleLink(pOldSingleLink);
       return this.self();
@@ -199,9 +199,9 @@ public class SimpleAssociationBackwardCompatibility {
      * Method sets association {@link #newSingleLink}.<br/>
      *
      * @param pNewSingleLink Value to which {@link #newSingleLink} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setNewSingleLink( SimpleBackwardCompatibility pNewSingleLink ) {
+    public S setNewSingleLink( SimpleBackwardCompatibility pNewSingleLink ) {
       newSingleLink = pNewSingleLink;
       return this.self();
     }
@@ -209,7 +209,7 @@ public class SimpleAssociationBackwardCompatibility {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
 
     /**
      * Method creates a new instance of class SimpleAssociationBackwardCompatibility. The object will be initialized

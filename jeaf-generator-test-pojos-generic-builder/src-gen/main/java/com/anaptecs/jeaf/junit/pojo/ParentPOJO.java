@@ -95,7 +95,7 @@ public class ParentPOJO {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class ParentPOJOBuilder<T extends ParentPOJO, B extends ParentPOJOBuilder<T, B>> {
+  public static abstract class ParentPOJOBuilder<T extends ParentPOJO, S extends ParentPOJOBuilder<T, S>> {
     private String parentAttribute;
 
     @Deprecated
@@ -125,9 +125,9 @@ public class ParentPOJO {
      * Method sets attribute {@link #parentAttribute}.<br/>
      *
      * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setParentAttribute( String pParentAttribute ) {
+    public S setParentAttribute( String pParentAttribute ) {
       // Assign value to attribute
       parentAttribute = pParentAttribute;
       return this.self();
@@ -137,10 +137,10 @@ public class ParentPOJO {
      * Method sets attribute {@link #weirdAttribute}.<br/>
      *
      * @param pWeirdAttribute Value to which {@link #weirdAttribute} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
-    public B setWeirdAttribute( byte pWeirdAttribute ) {
+    public S setWeirdAttribute( byte pWeirdAttribute ) {
       // Assign value to attribute
       weirdAttribute = pWeirdAttribute;
       return this.self();
@@ -150,9 +150,9 @@ public class ParentPOJO {
      * Method sets attribute {@link #hello}.<br/>
      *
      * @param pHello Value to which {@link #hello} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setHello( String pHello ) {
+    public S setHello( String pHello ) {
       // Assign value to attribute
       hello = pHello;
       return this.self();
@@ -161,7 +161,7 @@ public class ParentPOJO {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
 
     /**
      * Method creates a new instance of class ParentPOJO. The object will be initialized with the values of the builder.

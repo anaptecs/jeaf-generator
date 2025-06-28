@@ -84,7 +84,7 @@ public abstract class MasterDataObjectBase {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class MasterDataObjectBuilder<T extends MasterDataObject, B extends MasterDataObjectBuilder<T, B>> {
+  public static abstract class MasterDataObjectBuilder<T extends MasterDataObject, S extends MasterDataObjectBuilder<T, S>> {
     private List<DataUnit> dataUnits;
 
     private Entity entity;
@@ -117,9 +117,9 @@ public abstract class MasterDataObjectBase {
      * Method sets association {@link #dataUnits}.<br/>
      *
      * @param pDataUnits Collection to which {@link #dataUnits} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setDataUnits( List<DataUnit> pDataUnits ) {
+    public S setDataUnits( List<DataUnit> pDataUnits ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pDataUnits != null) {
         dataUnits = new ArrayList<DataUnit>(pDataUnits);
@@ -134,9 +134,9 @@ public abstract class MasterDataObjectBase {
      * Method adds the passed objects to association {@link #dataUnits}.<br/>
      *
      * @param pDataUnits Array of objects that should be added to {@link #dataUnits}. The parameter may be null.
-     * @return {@link B} Instance of this builder to support chaining. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining. Method never returns null.
      */
-    public B addToDataUnits( DataUnit... pDataUnits ) {
+    public S addToDataUnits( DataUnit... pDataUnits ) {
       if (pDataUnits != null) {
         if (dataUnits == null) {
           dataUnits = new ArrayList<DataUnit>();
@@ -150,9 +150,9 @@ public abstract class MasterDataObjectBase {
      * Method sets association {@link #dataUnits}.<br/>
      *
      * @param pDataUnits Array with objects to which {@link #dataUnits} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setDataUnits( DataUnit... pDataUnits ) {
+    public S setDataUnits( DataUnit... pDataUnits ) {
       // Copy the content of the passed array.
       if (pDataUnits != null) {
         dataUnits = new ArrayList<DataUnit>(Arrays.asList(pDataUnits));
@@ -167,9 +167,9 @@ public abstract class MasterDataObjectBase {
      * Method sets association {@link #entity}.<br/>
      *
      * @param pEntity Value to which {@link #entity} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setEntity( @MyNotNullProperty Entity pEntity ) {
+    public S setEntity( @MyNotNullProperty Entity pEntity ) {
       entity = pEntity;
       return this.self();
     }
@@ -178,9 +178,9 @@ public abstract class MasterDataObjectBase {
      * Method sets attribute {@link #objectID}.<br/>
      *
      * @param pObjectID Value to which {@link #objectID} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setObjectID( @MyNotNullProperty String pObjectID ) {
+    public S setObjectID( @MyNotNullProperty String pObjectID ) {
       // Assign value to attribute
       objectID = pObjectID;
       return this.self();
@@ -190,9 +190,9 @@ public abstract class MasterDataObjectBase {
      * Method sets attribute {@link #internalProperty}.<br/>
      *
      * @param pInternalProperty Value to which {@link #internalProperty} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setInternalProperty( @MyNotNullProperty String pInternalProperty ) {
+    public S setInternalProperty( @MyNotNullProperty String pInternalProperty ) {
       // Assign value to attribute
       internalProperty = pInternalProperty;
       return this.self();
@@ -201,7 +201,7 @@ public abstract class MasterDataObjectBase {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
 
     /**
      * Method creates a new instance of class MasterDataObject. The object will be initialized with the values of the

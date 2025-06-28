@@ -67,7 +67,7 @@ public class IgnoringClass {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class IgnoringClassBuilder<T extends IgnoringClass, B extends IgnoringClassBuilder<T, B>> {
+  public static abstract class IgnoringClassBuilder<T extends IgnoringClass, S extends IgnoringClassBuilder<T, S>> {
     private Integer age;
 
     /**
@@ -90,9 +90,9 @@ public class IgnoringClass {
      * Method sets attribute {@link #age}.<br/>
      *
      * @param pAge Value to which {@link #age} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setAge( @MyNotNullProperty Integer pAge ) {
+    public S setAge( @MyNotNullProperty Integer pAge ) {
       // Assign value to attribute
       age = pAge;
       return this.self();
@@ -101,7 +101,7 @@ public class IgnoringClass {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
 
     /**
      * Method creates a new instance of class IgnoringClass. The object will be initialized with the values of the

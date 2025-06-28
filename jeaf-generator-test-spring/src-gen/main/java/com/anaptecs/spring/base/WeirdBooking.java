@@ -86,7 +86,7 @@ public class WeirdBooking {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class WeirdBookingBuilder<T extends WeirdBooking, B extends WeirdBookingBuilder<T, B>> {
+  public static abstract class WeirdBookingBuilder<T extends WeirdBooking, S extends WeirdBookingBuilder<T, S>> {
     private ComplexBookingID booking;
 
     private List<ComplexBookingID> additionalBookings;
@@ -112,9 +112,9 @@ public class WeirdBooking {
      * Method sets association {@link #booking}.<br/>
      *
      * @param pBooking Value to which {@link #booking} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setBooking( @MyNotNullProperty ComplexBookingID pBooking ) {
+    public S setBooking( @MyNotNullProperty ComplexBookingID pBooking ) {
       booking = pBooking;
       return this.self();
     }
@@ -123,9 +123,9 @@ public class WeirdBooking {
      * Method sets association {@link #additionalBookings}.<br/>
      *
      * @param pAdditionalBookings Collection to which {@link #additionalBookings} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setAdditionalBookings( List<ComplexBookingID> pAdditionalBookings ) {
+    public S setAdditionalBookings( List<ComplexBookingID> pAdditionalBookings ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pAdditionalBookings != null) {
         additionalBookings = new ArrayList<ComplexBookingID>(pAdditionalBookings);
@@ -141,9 +141,9 @@ public class WeirdBooking {
      *
      * @param pAdditionalBookings Array of objects that should be added to {@link #additionalBookings}. The parameter
      * may be null.
-     * @return {@link B} Instance of this builder to support chaining. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining. Method never returns null.
      */
-    public B addToAdditionalBookings( ComplexBookingID... pAdditionalBookings ) {
+    public S addToAdditionalBookings( ComplexBookingID... pAdditionalBookings ) {
       if (pAdditionalBookings != null) {
         if (additionalBookings == null) {
           additionalBookings = new ArrayList<ComplexBookingID>();
@@ -156,7 +156,7 @@ public class WeirdBooking {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
 
     /**
      * Method creates a new instance of class WeirdBooking. The object will be initialized with the values of the

@@ -86,7 +86,7 @@ public class EnumTest {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class EnumTestBuilder<T extends EnumTest, B extends EnumTestBuilder<T, B>> {
+  public static abstract class EnumTestBuilder<T extends EnumTest, S extends EnumTestBuilder<T, S>> {
     /**
      * <br/>
      * <b>Default Value:</b> <code>GREEN</code>
@@ -120,9 +120,9 @@ public class EnumTest {
      * Method sets attribute {@link #property}.<br/>
      *
      * @param pProperty Value to which {@link #property} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setProperty( @MyNotNullProperty ExtensibleEnum pProperty ) {
+    public S setProperty( @MyNotNullProperty ExtensibleEnum pProperty ) {
       // Assign value to attribute
       property = pProperty;
       return this.self();
@@ -132,9 +132,9 @@ public class EnumTest {
      * Method sets association {@link #enumRef}.<br/>
      *
      * @param pEnumRef Value to which {@link #enumRef} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setEnumRef( @MyNotNullProperty ExtensibleEnum pEnumRef ) {
+    public S setEnumRef( @MyNotNullProperty ExtensibleEnum pEnumRef ) {
       enumRef = pEnumRef;
       return this.self();
     }
@@ -142,7 +142,7 @@ public class EnumTest {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
 
     /**
      * Method creates a new instance of class EnumTest. The object will be initialized with the values of the builder.

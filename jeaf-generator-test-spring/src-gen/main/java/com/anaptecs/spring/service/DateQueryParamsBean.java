@@ -168,7 +168,7 @@ public class DateQueryParamsBean {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class DateQueryParamsBeanBuilder<T extends DateQueryParamsBean, B extends DateQueryParamsBeanBuilder<T, B>> {
+  public static abstract class DateQueryParamsBeanBuilder<T extends DateQueryParamsBean, S extends DateQueryParamsBeanBuilder<T, S>> {
     private OffsetDateTime offsetDateTime;
 
     private OffsetTime offsetTime;
@@ -219,9 +219,9 @@ public class DateQueryParamsBean {
      * Method sets attribute {@link #offsetDateTime}.<br/>
      *
      * @param pOffsetDateTime Value to which {@link #offsetDateTime} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setOffsetDateTime( @MyNotNullProperty OffsetDateTime pOffsetDateTime ) {
+    public S setOffsetDateTime( @MyNotNullProperty OffsetDateTime pOffsetDateTime ) {
       // Assign value to attribute
       offsetDateTime = pOffsetDateTime;
       return this.self();
@@ -231,9 +231,9 @@ public class DateQueryParamsBean {
      * Method sets attribute {@link #offsetTime}.<br/>
      *
      * @param pOffsetTime Value to which {@link #offsetTime} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setOffsetTime( @MyNotNullProperty OffsetTime pOffsetTime ) {
+    public S setOffsetTime( @MyNotNullProperty OffsetTime pOffsetTime ) {
       // Assign value to attribute
       offsetTime = pOffsetTime;
       return this.self();
@@ -243,9 +243,9 @@ public class DateQueryParamsBean {
      * Method sets attribute {@link #localDateTime}.<br/>
      *
      * @param pLocalDateTime Value to which {@link #localDateTime} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setLocalDateTime( @MyNotNullProperty LocalDateTime pLocalDateTime ) {
+    public S setLocalDateTime( @MyNotNullProperty LocalDateTime pLocalDateTime ) {
       // Assign value to attribute
       localDateTime = pLocalDateTime;
       return this.self();
@@ -255,9 +255,9 @@ public class DateQueryParamsBean {
      * Method sets attribute {@link #localTime}.<br/>
      *
      * @param pLocalTime Value to which {@link #localTime} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setLocalTime( @MyNotNullProperty LocalTime pLocalTime ) {
+    public S setLocalTime( @MyNotNullProperty LocalTime pLocalTime ) {
       // Assign value to attribute
       localTime = pLocalTime;
       return this.self();
@@ -267,9 +267,9 @@ public class DateQueryParamsBean {
      * Method sets attribute {@link #localDate}.<br/>
      *
      * @param pLocalDate Value to which {@link #localDate} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setLocalDate( @MyNotNullProperty LocalDate pLocalDate ) {
+    public S setLocalDate( @MyNotNullProperty LocalDate pLocalDate ) {
       // Assign value to attribute
       localDate = pLocalDate;
       return this.self();
@@ -279,9 +279,9 @@ public class DateQueryParamsBean {
      * Method sets attribute {@link #utilDate}.<br/>
      *
      * @param pUtilDate Value to which {@link #utilDate} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setUtilDate( @MyNotNullProperty java.util.Date pUtilDate ) {
+    public S setUtilDate( @MyNotNullProperty java.util.Date pUtilDate ) {
       // Assign value to attribute
       utilDate = pUtilDate;
       return this.self();
@@ -291,9 +291,9 @@ public class DateQueryParamsBean {
      * Method sets attribute {@link #calendar}.<br/>
      *
      * @param pCalendar Value to which {@link #calendar} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setCalendar( @MyNotNullProperty Calendar pCalendar ) {
+    public S setCalendar( @MyNotNullProperty Calendar pCalendar ) {
       // Assign value to attribute
       calendar = pCalendar;
       return this.self();
@@ -303,9 +303,9 @@ public class DateQueryParamsBean {
      * Method sets attribute {@link #sqlTimestamp}.<br/>
      *
      * @param pSqlTimestamp Value to which {@link #sqlTimestamp} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setSqlTimestamp( @MyNotNullProperty Timestamp pSqlTimestamp ) {
+    public S setSqlTimestamp( @MyNotNullProperty Timestamp pSqlTimestamp ) {
       // Assign value to attribute
       sqlTimestamp = pSqlTimestamp;
       return this.self();
@@ -315,9 +315,9 @@ public class DateQueryParamsBean {
      * Method sets attribute {@link #sqlTime}.<br/>
      *
      * @param pSqlTime Value to which {@link #sqlTime} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setSqlTime( @MyNotNullProperty Time pSqlTime ) {
+    public S setSqlTime( @MyNotNullProperty Time pSqlTime ) {
       // Assign value to attribute
       sqlTime = pSqlTime;
       return this.self();
@@ -327,9 +327,9 @@ public class DateQueryParamsBean {
      * Method sets attribute {@link #sqlDate}.<br/>
      *
      * @param pSqlDate Value to which {@link #sqlDate} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setSqlDate( @MyNotNullProperty Date pSqlDate ) {
+    public S setSqlDate( @MyNotNullProperty Date pSqlDate ) {
       // Assign value to attribute
       sqlDate = pSqlDate;
       return this.self();
@@ -338,7 +338,7 @@ public class DateQueryParamsBean {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
 
     /**
      * Method creates a new instance of class DateQueryParamsBean. The object will be initialized with the values of the

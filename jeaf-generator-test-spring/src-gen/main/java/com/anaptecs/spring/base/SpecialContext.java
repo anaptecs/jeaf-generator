@@ -94,8 +94,8 @@ public class SpecialContext extends Context {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class SpecialContextBuilder<T extends SpecialContext, B extends SpecialContextBuilder<T, B>>
-      extends ContextBuilder<T, B> {
+  public static abstract class SpecialContextBuilder<T extends SpecialContext, S extends SpecialContextBuilder<T, S>>
+      extends ContextBuilder<T, S> {
     private String specificHeader;
 
     private ChannelType channelType;
@@ -123,9 +123,9 @@ public class SpecialContext extends Context {
      * Method sets attribute {@link #specificHeader}.<br/>
      *
      * @param pSpecificHeader Value to which {@link #specificHeader} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setSpecificHeader( @MyNotNullProperty String pSpecificHeader ) {
+    public S setSpecificHeader( @MyNotNullProperty String pSpecificHeader ) {
       // Assign value to attribute
       specificHeader = pSpecificHeader;
       return this.self();
@@ -135,9 +135,9 @@ public class SpecialContext extends Context {
      * Method sets attribute {@link #channelType}.<br/>
      *
      * @param pChannelType Value to which {@link #channelType} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setChannelType( @MyNotNullProperty ChannelType pChannelType ) {
+    public S setChannelType( @MyNotNullProperty ChannelType pChannelType ) {
       // Assign value to attribute
       channelType = pChannelType;
       return this.self();

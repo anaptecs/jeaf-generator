@@ -76,7 +76,7 @@ public class CurrencyCode {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class CurrencyCodeBuilder<T extends CurrencyCode, B extends CurrencyCodeBuilder<T, B>> {
+  public static abstract class CurrencyCodeBuilder<T extends CurrencyCode, S extends CurrencyCodeBuilder<T, S>> {
     /**
      * ISO 4217 currency code. <br/>
      * <b>Default Value:</b> <code>"CHF"</code> <br/>
@@ -108,9 +108,9 @@ public class CurrencyCode {
      * Method sets attribute {@link #code}.<br/>
      *
      * @param pCode Value to which {@link #code} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setCode( @MyNotNullProperty String pCode ) {
+    public S setCode( @MyNotNullProperty String pCode ) {
       // Assign value to attribute
       code = pCode;
       return this.self();
@@ -119,7 +119,7 @@ public class CurrencyCode {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
 
     /**
      * Method creates a new instance of class CurrencyCode. The object will be initialized with the values of the

@@ -115,7 +115,7 @@ public class Booking {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class BookingBuilder<T extends Booking, B extends BookingBuilder<T, B>> {
+  public static abstract class BookingBuilder<T extends Booking, S extends BookingBuilder<T, S>> {
     private Account sourceAccount;
 
     private Account targetAccount;
@@ -150,9 +150,9 @@ public class Booking {
      * Method sets association {@link #sourceAccount}.<br/>
      *
      * @param pSourceAccount Value to which {@link #sourceAccount} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setSourceAccount( Account pSourceAccount ) {
+    public S setSourceAccount( Account pSourceAccount ) {
       sourceAccount = pSourceAccount;
       return this.self();
     }
@@ -161,9 +161,9 @@ public class Booking {
      * Method sets association {@link #targetAccount}.<br/>
      *
      * @param pTargetAccount Value to which {@link #targetAccount} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setTargetAccount( Account pTargetAccount ) {
+    public S setTargetAccount( Account pTargetAccount ) {
       targetAccount = pTargetAccount;
       return this.self();
     }
@@ -172,9 +172,9 @@ public class Booking {
      * Method sets attribute {@link #amount}.<br/>
      *
      * @param pAmount Value to which {@link #amount} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setAmount( BigDecimal pAmount ) {
+    public S setAmount( BigDecimal pAmount ) {
       // Assign value to attribute
       amount = pAmount;
       return this.self();
@@ -184,9 +184,9 @@ public class Booking {
      * Method sets attribute {@link #currency}.<br/>
      *
      * @param pCurrency Value to which {@link #currency} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setCurrency( Currency pCurrency ) {
+    public S setCurrency( Currency pCurrency ) {
       // Assign value to attribute
       currency = pCurrency;
       return this.self();
@@ -196,9 +196,9 @@ public class Booking {
      * Method sets attribute {@link #executionTimestamp}.<br/>
      *
      * @param pExecutionTimestamp Value to which {@link #executionTimestamp} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setExecutionTimestamp( Calendar pExecutionTimestamp ) {
+    public S setExecutionTimestamp( Calendar pExecutionTimestamp ) {
       // Assign value to attribute
       executionTimestamp = pExecutionTimestamp;
       return this.self();
@@ -207,7 +207,7 @@ public class Booking {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
 
     /**
      * Method creates a new instance of class Booking. The object will be initialized with the values of the builder.

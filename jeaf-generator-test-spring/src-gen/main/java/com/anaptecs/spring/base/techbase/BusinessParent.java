@@ -73,8 +73,8 @@ public class BusinessParent extends TechParent {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class BusinessParentBuilder<T extends BusinessParent, B extends BusinessParentBuilder<T, B>>
-      extends TechParentBuilder<T, B> {
+  public static abstract class BusinessParentBuilder<T extends BusinessParent, S extends BusinessParentBuilder<T, S>>
+      extends TechParentBuilder<T, S> {
     private long parentAttribute;
 
     /**
@@ -99,9 +99,9 @@ public class BusinessParent extends TechParent {
      * Method sets attribute {@link #parentAttribute}.<br/>
      *
      * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setParentAttribute( long pParentAttribute ) {
+    public S setParentAttribute( long pParentAttribute ) {
       // Assign value to attribute
       parentAttribute = pParentAttribute;
       return this.self();

@@ -82,8 +82,8 @@ public class BChildPOJO extends BParentPOJO {
   @Deprecated
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class BChildPOJOBuilder<T extends BChildPOJO, B extends BChildPOJOBuilder<T, B>>
-      extends BParentPOJOBuilder<T, B> {
+  public static abstract class BChildPOJOBuilder<T extends BChildPOJO, S extends BChildPOJOBuilder<T, S>>
+      extends BParentPOJOBuilder<T, S> {
     private byte weirdAttribute;
 
     private Integer childAttribute;
@@ -111,9 +111,9 @@ public class BChildPOJO extends BParentPOJO {
      * Method sets attribute {@link #weirdAttribute}.<br/>
      *
      * @param pWeirdAttribute Value to which {@link #weirdAttribute} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setWeirdAttribute( byte pWeirdAttribute ) {
+    public S setWeirdAttribute( byte pWeirdAttribute ) {
       // Assign value to attribute
       weirdAttribute = pWeirdAttribute;
       return this.self();
@@ -123,9 +123,9 @@ public class BChildPOJO extends BParentPOJO {
      * Method sets attribute {@link #childAttribute}.<br/>
      *
      * @param pChildAttribute Value to which {@link #childAttribute} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setChildAttribute( Integer pChildAttribute ) {
+    public S setChildAttribute( Integer pChildAttribute ) {
       // Assign value to attribute
       childAttribute = pChildAttribute;
       return this.self();

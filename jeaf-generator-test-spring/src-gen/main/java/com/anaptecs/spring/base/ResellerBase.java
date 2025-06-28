@@ -107,7 +107,7 @@ public abstract class ResellerBase {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class ResellerBuilder<T extends Reseller, B extends ResellerBuilder<T, B>> {
+  public static abstract class ResellerBuilder<T extends Reseller, S extends ResellerBuilder<T, S>> {
     private List<Channel> channels;
 
     @NotBlank
@@ -138,9 +138,9 @@ public abstract class ResellerBase {
      * Method sets association {@link #channels}.<br/>
      *
      * @param pChannels Collection to which {@link #channels} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setChannels( @MyNotEmptyProperty List<Channel> pChannels ) {
+    public S setChannels( @MyNotEmptyProperty List<Channel> pChannels ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pChannels != null) {
         channels = new ArrayList<Channel>(pChannels);
@@ -155,9 +155,9 @@ public abstract class ResellerBase {
      * Method adds the passed objects to association {@link #channels}.<br/>
      *
      * @param pChannels Array of objects that should be added to {@link #channels}. The parameter may be null.
-     * @return {@link B} Instance of this builder to support chaining. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining. Method never returns null.
      */
-    public B addToChannels( @MyNotEmptyProperty Channel... pChannels ) {
+    public S addToChannels( @MyNotEmptyProperty Channel... pChannels ) {
       if (pChannels != null) {
         if (channels == null) {
           channels = new ArrayList<Channel>();
@@ -171,9 +171,9 @@ public abstract class ResellerBase {
      * Method sets attribute {@link #name}.<br/>
      *
      * @param pName Value to which {@link #name} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setName( @MyNotNullProperty String pName ) {
+    public S setName( @MyNotNullProperty String pName ) {
       // Assign value to attribute
       name = pName;
       return this.self();
@@ -183,9 +183,9 @@ public abstract class ResellerBase {
      * Method sets attribute {@link #language}.<br/>
      *
      * @param pLanguage Value to which {@link #language} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setLanguage( @MyNotNullProperty Locale pLanguage ) {
+    public S setLanguage( @MyNotNullProperty Locale pLanguage ) {
       // Assign value to attribute
       language = pLanguage;
       return this.self();
@@ -194,7 +194,7 @@ public abstract class ResellerBase {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
 
     /**
      * Method creates a new instance of class Reseller. The object will be initialized with the values of the builder.

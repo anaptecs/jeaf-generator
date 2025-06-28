@@ -82,7 +82,7 @@ public abstract class AndOneMorePOJOBase {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class AndOneMorePOJOBuilder<T extends AndOneMorePOJO, B extends AndOneMorePOJOBuilder<T, B>> {
+  public static abstract class AndOneMorePOJOBuilder<T extends AndOneMorePOJO, S extends AndOneMorePOJOBuilder<T, S>> {
     private GenericResponsePOJO<MyBusinessObject> genericProperty;
 
     private Set<GenericResponsePOJO<MyBusinessObject>> genericResponses;
@@ -114,9 +114,9 @@ public abstract class AndOneMorePOJOBase {
      * Method sets attribute {@link #genericProperty}.<br/>
      *
      * @param pGenericProperty Value to which {@link #genericProperty} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setGenericProperty( GenericResponsePOJO<MyBusinessObject> pGenericProperty ) {
+    public S setGenericProperty( GenericResponsePOJO<MyBusinessObject> pGenericProperty ) {
       // Assign value to attribute
       genericProperty = pGenericProperty;
       return this.self();
@@ -126,9 +126,9 @@ public abstract class AndOneMorePOJOBase {
      * Method sets association {@link #genericResponses}.<br/>
      *
      * @param pGenericResponses Collection to which {@link #genericResponses} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setGenericResponses( Set<GenericResponsePOJO<MyBusinessObject>> pGenericResponses ) {
+    public S setGenericResponses( Set<GenericResponsePOJO<MyBusinessObject>> pGenericResponses ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pGenericResponses != null) {
         genericResponses = new HashSet<GenericResponsePOJO<MyBusinessObject>>(pGenericResponses);
@@ -144,9 +144,9 @@ public abstract class AndOneMorePOJOBase {
      *
      * @param pGenericResponses Array of objects that should be added to {@link #genericResponses}. The parameter may be
      * null.
-     * @return {@link B} Instance of this builder to support chaining. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining. Method never returns null.
      */
-    public B addToGenericResponses( GenericResponsePOJO<MyBusinessObject>... pGenericResponses ) {
+    public S addToGenericResponses( GenericResponsePOJO<MyBusinessObject>... pGenericResponses ) {
       if (pGenericResponses != null) {
         if (genericResponses == null) {
           genericResponses = new HashSet<GenericResponsePOJO<MyBusinessObject>>();
@@ -160,9 +160,9 @@ public abstract class AndOneMorePOJOBase {
      * Method sets association {@link #multiTemplateClassImpl}.<br/>
      *
      * @param pMultiTemplateClassImpl Value to which {@link #multiTemplateClassImpl} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setMultiTemplateClassImpl( MultiTemplateClass<Message, TemplateEnumTest> pMultiTemplateClassImpl ) {
+    public S setMultiTemplateClassImpl( MultiTemplateClass<Message, TemplateEnumTest> pMultiTemplateClassImpl ) {
       multiTemplateClassImpl = pMultiTemplateClassImpl;
       return this.self();
     }
@@ -171,9 +171,9 @@ public abstract class AndOneMorePOJOBase {
      * Method sets association {@link #many}.<br/>
      *
      * @param pMany Collection to which {@link #many} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setMany( Set<MultiTemplateClass<Message, TemplateEnumTest>> pMany ) {
+    public S setMany( Set<MultiTemplateClass<Message, TemplateEnumTest>> pMany ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pMany != null) {
         many = new HashSet<MultiTemplateClass<Message, TemplateEnumTest>>(pMany);
@@ -188,9 +188,9 @@ public abstract class AndOneMorePOJOBase {
      * Method adds the passed objects to association {@link #many}.<br/>
      *
      * @param pMany Array of objects that should be added to {@link #many}. The parameter may be null.
-     * @return {@link B} Instance of this builder to support chaining. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining. Method never returns null.
      */
-    public B addToMany( MultiTemplateClass<Message, TemplateEnumTest>... pMany ) {
+    public S addToMany( MultiTemplateClass<Message, TemplateEnumTest>... pMany ) {
       if (pMany != null) {
         if (many == null) {
           many = new HashSet<MultiTemplateClass<Message, TemplateEnumTest>>();
@@ -203,7 +203,7 @@ public abstract class AndOneMorePOJOBase {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
 
     /**
      * Method creates a new instance of class AndOneMorePOJO. The object will be initialized with the values of the

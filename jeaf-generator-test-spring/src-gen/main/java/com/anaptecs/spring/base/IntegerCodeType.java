@@ -62,7 +62,7 @@ public class IntegerCodeType {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class IntegerCodeTypeBuilder<T extends IntegerCodeType, B extends IntegerCodeTypeBuilder<T, B>> {
+  public static abstract class IntegerCodeTypeBuilder<T extends IntegerCodeType, S extends IntegerCodeTypeBuilder<T, S>> {
     private int code;
 
     /**
@@ -85,9 +85,9 @@ public class IntegerCodeType {
      * Method sets attribute {@link #code}.<br/>
      *
      * @param pCode Value to which {@link #code} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setCode( int pCode ) {
+    public S setCode( int pCode ) {
       // Assign value to attribute
       code = pCode;
       return this.self();
@@ -96,7 +96,7 @@ public class IntegerCodeType {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
 
     /**
      * Method creates a new instance of class IntegerCodeType. The object will be initialized with the values of the

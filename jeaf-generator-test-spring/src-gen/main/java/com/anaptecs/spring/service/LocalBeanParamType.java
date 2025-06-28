@@ -69,7 +69,7 @@ public class LocalBeanParamType {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class LocalBeanParamTypeBuilder<T extends LocalBeanParamType, B extends LocalBeanParamTypeBuilder<T, B>> {
+  public static abstract class LocalBeanParamTypeBuilder<T extends LocalBeanParamType, S extends LocalBeanParamTypeBuilder<T, S>> {
     private String localKey;
 
     private String localID;
@@ -96,9 +96,9 @@ public class LocalBeanParamType {
      * Method sets attribute {@link #localKey}.<br/>
      *
      * @param pLocalKey Value to which {@link #localKey} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setLocalKey( @MyNotNullProperty String pLocalKey ) {
+    public S setLocalKey( @MyNotNullProperty String pLocalKey ) {
       // Assign value to attribute
       localKey = pLocalKey;
       return this.self();
@@ -108,9 +108,9 @@ public class LocalBeanParamType {
      * Method sets attribute {@link #localID}.<br/>
      *
      * @param pLocalID Value to which {@link #localID} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setLocalID( @MyNotNullProperty String pLocalID ) {
+    public S setLocalID( @MyNotNullProperty String pLocalID ) {
       // Assign value to attribute
       localID = pLocalID;
       return this.self();
@@ -119,7 +119,7 @@ public class LocalBeanParamType {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
 
     /**
      * Method creates a new instance of class LocalBeanParamType. The object will be initialized with the values of the

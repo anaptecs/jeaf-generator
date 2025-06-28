@@ -81,8 +81,8 @@ public abstract class CustomerBase extends Partner {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class CustomerBuilderBase<T extends Customer, B extends CustomerBuilderBase<T, B>>
-      extends PartnerBuilder<T, B> {
+  public static abstract class CustomerBuilderBase<T extends Customer, S extends CustomerBuilderBase<T, S>>
+      extends PartnerBuilder<T, S> {
     @NotBlank
     private String name;
 
@@ -119,9 +119,9 @@ public abstract class CustomerBase extends Partner {
      * Method sets attribute {@link #name}.<br/>
      *
      * @param pName Value to which {@link #name} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setName( String pName ) {
+    public S setName( String pName ) {
       // Assign value to attribute
       name = pName;
       return this.self();
@@ -131,9 +131,9 @@ public abstract class CustomerBase extends Partner {
      * Method sets attribute {@link #firstName}.<br/>
      *
      * @param pFirstName Value to which {@link #firstName} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setFirstName( String pFirstName ) {
+    public S setFirstName( String pFirstName ) {
       // Assign value to attribute
       firstName = pFirstName;
       return this.self();
@@ -143,9 +143,9 @@ public abstract class CustomerBase extends Partner {
      * Method sets attribute {@link #email}.<br/>
      *
      * @param pEmail Value to which {@link #email} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setEmail( String pEmail ) {
+    public S setEmail( String pEmail ) {
       // Assign value to attribute
       email = pEmail;
       return this.self();
@@ -155,9 +155,9 @@ public abstract class CustomerBase extends Partner {
      * Method sets association {@link #accounts}.<br/>
      *
      * @param pAccounts Collection to which {@link #accounts} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setAccounts( Set<Account> pAccounts ) {
+    public S setAccounts( Set<Account> pAccounts ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pAccounts != null) {
         accounts = new HashSet<Account>(pAccounts);
@@ -172,9 +172,9 @@ public abstract class CustomerBase extends Partner {
      * Method adds the passed objects to association {@link #accounts}.<br/>
      *
      * @param pAccounts Array of objects that should be added to {@link #accounts}. The parameter may be null.
-     * @return {@link B} Instance of this builder to support chaining. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining. Method never returns null.
      */
-    public B addToAccounts( Account... pAccounts ) {
+    public S addToAccounts( Account... pAccounts ) {
       if (pAccounts != null) {
         if (accounts == null) {
           accounts = new HashSet<Account>();

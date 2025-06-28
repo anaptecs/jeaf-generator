@@ -32,8 +32,8 @@ public class Customer extends CustomerBase {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class CustomerBuilder<T extends Customer, B extends CustomerBuilder<T, B>>
-      extends CustomerBuilderBase<T, B> {
+  public static abstract class CustomerBuilder<T extends Customer, S extends CustomerBuilder<T, S>>
+      extends CustomerBuilderBase<T, S> {
     /**
      * Use {@link CustomerBuilder#builder()} instead of private constructor to create new builder.
      */

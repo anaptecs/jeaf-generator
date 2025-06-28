@@ -72,8 +72,8 @@ public class UICStop extends Stop {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class UICStopBuilder<T extends UICStop, B extends UICStopBuilder<T, B>>
-      extends StopBuilder<T, B> {
+  public static abstract class UICStopBuilder<T extends UICStop, S extends UICStopBuilder<T, S>>
+      extends StopBuilder<T, S> {
     private String uicCode;
 
     /**
@@ -98,9 +98,9 @@ public class UICStop extends Stop {
      * Method sets attribute {@link #uicCode}.<br/>
      *
      * @param pUicCode Value to which {@link #uicCode} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setUicCode( @MyNotNullProperty String pUicCode ) {
+    public S setUicCode( @MyNotNullProperty String pUicCode ) {
       // Assign value to attribute
       uicCode = pUicCode;
       return this.self();

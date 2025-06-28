@@ -122,7 +122,7 @@ public class CodeTypeUsageTest {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class CodeTypeUsageTestBuilder<T extends CodeTypeUsageTest, B extends CodeTypeUsageTestBuilder<T, B>> {
+  public static abstract class CodeTypeUsageTestBuilder<T extends CodeTypeUsageTest, S extends CodeTypeUsageTestBuilder<T, S>> {
     private BooleanCodeType booleanCode;
 
     private Set<BooleanCodeType> booleanCodeAssociation;
@@ -158,9 +158,9 @@ public class CodeTypeUsageTest {
      * Method sets attribute {@link #booleanCode}.<br/>
      *
      * @param pBooleanCode Value to which {@link #booleanCode} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setBooleanCode( @MyNotNullProperty BooleanCodeType pBooleanCode ) {
+    public S setBooleanCode( @MyNotNullProperty BooleanCodeType pBooleanCode ) {
       // Assign value to attribute
       booleanCode = pBooleanCode;
       return this.self();
@@ -170,9 +170,9 @@ public class CodeTypeUsageTest {
      * Method sets association {@link #booleanCodeAssociation}.<br/>
      *
      * @param pBooleanCodeAssociation Collection to which {@link #booleanCodeAssociation} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setBooleanCodeAssociation( Set<BooleanCodeType> pBooleanCodeAssociation ) {
+    public S setBooleanCodeAssociation( Set<BooleanCodeType> pBooleanCodeAssociation ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pBooleanCodeAssociation != null) {
         booleanCodeAssociation = new HashSet<BooleanCodeType>(pBooleanCodeAssociation);
@@ -188,9 +188,9 @@ public class CodeTypeUsageTest {
      *
      * @param pBooleanCodeAssociation Array of objects that should be added to {@link #booleanCodeAssociation}. The
      * parameter may be null.
-     * @return {@link B} Instance of this builder to support chaining. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining. Method never returns null.
      */
-    public B addToBooleanCodeAssociation( BooleanCodeType... pBooleanCodeAssociation ) {
+    public S addToBooleanCodeAssociation( BooleanCodeType... pBooleanCodeAssociation ) {
       if (pBooleanCodeAssociation != null) {
         if (booleanCodeAssociation == null) {
           booleanCodeAssociation = new HashSet<BooleanCodeType>();
@@ -204,9 +204,9 @@ public class CodeTypeUsageTest {
      * Method sets association {@link #shortCodeTypeAssociation}.<br/>
      *
      * @param pShortCodeTypeAssociation Collection to which {@link #shortCodeTypeAssociation} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setShortCodeTypeAssociation( @MyNotEmptyProperty Set<ShortCodeType> pShortCodeTypeAssociation ) {
+    public S setShortCodeTypeAssociation( @MyNotEmptyProperty Set<ShortCodeType> pShortCodeTypeAssociation ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pShortCodeTypeAssociation != null) {
         shortCodeTypeAssociation = new HashSet<ShortCodeType>(pShortCodeTypeAssociation);
@@ -222,9 +222,9 @@ public class CodeTypeUsageTest {
      *
      * @param pShortCodeTypeAssociation Array of objects that should be added to {@link #shortCodeTypeAssociation}. The
      * parameter may be null.
-     * @return {@link B} Instance of this builder to support chaining. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining. Method never returns null.
      */
-    public B addToShortCodeTypeAssociation( @MyNotEmptyProperty ShortCodeType... pShortCodeTypeAssociation ) {
+    public S addToShortCodeTypeAssociation( @MyNotEmptyProperty ShortCodeType... pShortCodeTypeAssociation ) {
       if (pShortCodeTypeAssociation != null) {
         if (shortCodeTypeAssociation == null) {
           shortCodeTypeAssociation = new HashSet<ShortCodeType>();
@@ -238,9 +238,9 @@ public class CodeTypeUsageTest {
      * Method sets attribute {@link #stringCode}.<br/>
      *
      * @param pStringCode Value to which {@link #stringCode} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setStringCode( @MyNotNullProperty StringCodeType pStringCode ) {
+    public S setStringCode( @MyNotNullProperty StringCodeType pStringCode ) {
       // Assign value to attribute
       stringCode = pStringCode;
       return this.self();
@@ -250,9 +250,9 @@ public class CodeTypeUsageTest {
      * Method sets association {@link #characterCode}.<br/>
      *
      * @param pCharacterCode Value to which {@link #characterCode} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setCharacterCode( CharacterCode pCharacterCode ) {
+    public S setCharacterCode( CharacterCode pCharacterCode ) {
       characterCode = pCharacterCode;
       return this.self();
     }
@@ -260,7 +260,7 @@ public class CodeTypeUsageTest {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
 
     /**
      * Method creates a new instance of class CodeTypeUsageTest. The object will be initialized with the values of the

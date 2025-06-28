@@ -50,7 +50,7 @@ public abstract class MySortCriteriaBase {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class MySortCriteriaBuilder<T extends MySortCriteria, B extends MySortCriteriaBuilder<T, B>> {
+  public static abstract class MySortCriteriaBuilder<T extends MySortCriteria, S extends MySortCriteriaBuilder<T, S>> {
     private SortOrder sortOrder;
 
     private MySortProperty sortProperty;
@@ -76,9 +76,9 @@ public abstract class MySortCriteriaBase {
      * Method sets association {@link #sortOrder}.<br/>
      *
      * @param pSortOrder Value to which {@link #sortOrder} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setSortOrder( @MyNotNullProperty SortOrder pSortOrder ) {
+    public S setSortOrder( @MyNotNullProperty SortOrder pSortOrder ) {
       sortOrder = pSortOrder;
       return this.self();
     }
@@ -87,9 +87,9 @@ public abstract class MySortCriteriaBase {
      * Method sets association {@link #sortProperty}.<br/>
      *
      * @param pSortProperty Value to which {@link #sortProperty} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setSortProperty( @MyNotNullProperty MySortProperty pSortProperty ) {
+    public S setSortProperty( @MyNotNullProperty MySortProperty pSortProperty ) {
       sortProperty = pSortProperty;
       return this.self();
     }
@@ -97,7 +97,7 @@ public abstract class MySortCriteriaBase {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
 
     /**
      * Method creates a new instance of class MySortCriteria. The object will be initialized with the values of the

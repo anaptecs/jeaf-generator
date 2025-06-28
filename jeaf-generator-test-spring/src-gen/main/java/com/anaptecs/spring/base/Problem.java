@@ -116,7 +116,7 @@ public class Problem {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class ProblemBuilder<T extends Problem, B extends ProblemBuilder<T, B>> {
+  public static abstract class ProblemBuilder<T extends Problem, S extends ProblemBuilder<T, S>> {
     @NotNull
     private String title;
 
@@ -154,9 +154,9 @@ public class Problem {
      * Method sets attribute {@link #title}.<br/>
      *
      * @param pTitle Value to which {@link #title} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setTitle( @MyNotNullProperty String pTitle ) {
+    public S setTitle( @MyNotNullProperty String pTitle ) {
       // Assign value to attribute
       title = pTitle;
       return this.self();
@@ -166,9 +166,9 @@ public class Problem {
      * Method sets attribute {@link #status}.<br/>
      *
      * @param pStatus Value to which {@link #status} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setStatus( int pStatus ) {
+    public S setStatus( int pStatus ) {
       // Assign value to attribute
       status = pStatus;
       return this.self();
@@ -178,9 +178,9 @@ public class Problem {
      * Method sets attribute {@link #type}.<br/>
      *
      * @param pType Value to which {@link #type} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setType( @MyNotNullProperty String pType ) {
+    public S setType( @MyNotNullProperty String pType ) {
       // Assign value to attribute
       type = pType;
       return this.self();
@@ -190,9 +190,9 @@ public class Problem {
      * Method sets attribute {@link #detail}.<br/>
      *
      * @param pDetail Value to which {@link #detail} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setDetail( @MyNotNullProperty String pDetail ) {
+    public S setDetail( @MyNotNullProperty String pDetail ) {
       // Assign value to attribute
       detail = pDetail;
       return this.self();
@@ -202,9 +202,9 @@ public class Problem {
      * Method sets attribute {@link #instance}.<br/>
      *
      * @param pInstance Value to which {@link #instance} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setInstance( @MyNotNullProperty String pInstance ) {
+    public S setInstance( @MyNotNullProperty String pInstance ) {
       // Assign value to attribute
       instance = pInstance;
       return this.self();
@@ -213,7 +213,7 @@ public class Problem {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
 
     /**
      * Method creates a new instance of class Problem. The object will be initialized with the values of the builder.

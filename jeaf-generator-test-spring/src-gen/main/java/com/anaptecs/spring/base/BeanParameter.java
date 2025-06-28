@@ -92,7 +92,7 @@ public class BeanParameter {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class BeanParameterBuilder<T extends BeanParameter, B extends BeanParameterBuilder<T, B>> {
+  public static abstract class BeanParameterBuilder<T extends BeanParameter, S extends BeanParameterBuilder<T, S>> {
     private String accessToken;
 
     private Locale language;
@@ -122,9 +122,9 @@ public class BeanParameter {
      * Method sets attribute {@link #accessToken}.<br/>
      *
      * @param pAccessToken Value to which {@link #accessToken} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setAccessToken( @MyNotNullProperty String pAccessToken ) {
+    public S setAccessToken( @MyNotNullProperty String pAccessToken ) {
       // Assign value to attribute
       accessToken = pAccessToken;
       return this.self();
@@ -134,9 +134,9 @@ public class BeanParameter {
      * Method sets attribute {@link #language}.<br/>
      *
      * @param pLanguage Value to which {@link #language} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setLanguage( @MyNotNullProperty Locale pLanguage ) {
+    public S setLanguage( @MyNotNullProperty Locale pLanguage ) {
       // Assign value to attribute
       language = pLanguage;
       return this.self();
@@ -146,10 +146,10 @@ public class BeanParameter {
      * Method sets attribute {@link #oldStyle}.<br/>
      *
      * @param pOldStyle Value to which {@link #oldStyle} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
-    public B setOldStyle( @MyNotNullProperty String pOldStyle ) {
+    public S setOldStyle( @MyNotNullProperty String pOldStyle ) {
       // Assign value to attribute
       oldStyle = pOldStyle;
       return this.self();
@@ -158,7 +158,7 @@ public class BeanParameter {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
 
     /**
      * Method creates a new instance of class BeanParameter. The object will be initialized with the values of the

@@ -90,8 +90,8 @@ public class ChildPOJO extends ParentPOJO {
   @Deprecated
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class ChildPOJOBuilder<T extends ChildPOJO, B extends ChildPOJOBuilder<T, B>>
-      extends ParentPOJOBuilder<T, B> {
+  public static abstract class ChildPOJOBuilder<T extends ChildPOJO, S extends ChildPOJOBuilder<T, S>>
+      extends ParentPOJOBuilder<T, S> {
     @NotNull
     private Integer childAttribute;
 
@@ -117,9 +117,9 @@ public class ChildPOJO extends ParentPOJO {
      * Method sets attribute {@link #childAttribute}.<br/>
      *
      * @param pChildAttribute Value to which {@link #childAttribute} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setChildAttribute( Integer pChildAttribute ) {
+    public S setChildAttribute( Integer pChildAttribute ) {
       // Assign value to attribute
       childAttribute = pChildAttribute;
       return this.self();

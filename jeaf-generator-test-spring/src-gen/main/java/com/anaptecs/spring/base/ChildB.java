@@ -104,8 +104,8 @@ public class ChildB extends ParentClass {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class ChildBBuilder<T extends ChildB, B extends ChildBBuilder<T, B>>
-      extends ParentClassBuilder<T, B> {
+  public static abstract class ChildBBuilder<T extends ChildB, S extends ChildBBuilder<T, S>>
+      extends ParentClassBuilder<T, S> {
     /**
      * A child attribute
      */
@@ -140,9 +140,9 @@ public class ChildB extends ParentClass {
      * Method sets attribute {@link #childBAttribute}.<br/>
      *
      * @param pChildBAttribute Value to which {@link #childBAttribute} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setChildBAttribute( boolean[] pChildBAttribute ) {
+    public S setChildBAttribute( boolean[] pChildBAttribute ) {
       // Assign value to attribute
       if (pChildBAttribute != null) {
         childBAttribute = new boolean[pChildBAttribute.length];
@@ -158,9 +158,9 @@ public class ChildB extends ParentClass {
      * Method sets association {@link #composition}.<br/>
      *
      * @param pComposition Collection to which {@link #composition} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setComposition( Set<ParentClass> pComposition ) {
+    public S setComposition( Set<ParentClass> pComposition ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pComposition != null) {
         composition = new HashSet<ParentClass>(pComposition);
@@ -175,9 +175,9 @@ public class ChildB extends ParentClass {
      * Method adds the passed objects to association {@link #composition}.<br/>
      *
      * @param pComposition Array of objects that should be added to {@link #composition}. The parameter may be null.
-     * @return {@link B} Instance of this builder to support chaining. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining. Method never returns null.
      */
-    public B addToComposition( ParentClass... pComposition ) {
+    public S addToComposition( ParentClass... pComposition ) {
       if (pComposition != null) {
         if (composition == null) {
           composition = new HashSet<ParentClass>();

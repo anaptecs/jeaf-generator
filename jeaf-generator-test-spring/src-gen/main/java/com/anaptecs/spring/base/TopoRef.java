@@ -60,8 +60,8 @@ public class TopoRef extends PlaceRef {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class TopoRefBuilder<T extends TopoRef, B extends TopoRefBuilder<T, B>>
-      extends PlaceRefBuilder<T, B> {
+  public static abstract class TopoRefBuilder<T extends TopoRef, S extends TopoRefBuilder<T, S>>
+      extends PlaceRefBuilder<T, S> {
     /**
      * Use {@link TopoRefBuilder#builder()} instead of private constructor to create new builder.
      */

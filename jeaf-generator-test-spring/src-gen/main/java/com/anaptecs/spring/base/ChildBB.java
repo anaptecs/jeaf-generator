@@ -128,8 +128,8 @@ public class ChildBB extends ChildB {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class ChildBBBuilder<T extends ChildBB, B extends ChildBBBuilder<T, B>>
-      extends ChildBBuilder<T, B> {
+  public static abstract class ChildBBBuilder<T extends ChildBB, S extends ChildBBBuilder<T, S>>
+      extends ChildBBuilder<T, S> {
     private Long childBBAttribute;
 
     @Deprecated
@@ -171,9 +171,9 @@ public class ChildBB extends ChildB {
      * Method sets attribute {@link #childBBAttribute}.<br/>
      *
      * @param pChildBBAttribute Value to which {@link #childBBAttribute} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setChildBBAttribute( @MyNotNullProperty Long pChildBBAttribute ) {
+    public S setChildBBAttribute( @MyNotNullProperty Long pChildBBAttribute ) {
       // Assign value to attribute
       childBBAttribute = pChildBBAttribute;
       return this.self();
@@ -183,10 +183,10 @@ public class ChildBB extends ChildB {
      * Method sets attribute {@link #deprecatedAttribute}.<br/>
      *
      * @param pDeprecatedAttribute Value to which {@link #deprecatedAttribute} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
-    public B setDeprecatedAttribute( int pDeprecatedAttribute ) {
+    public S setDeprecatedAttribute( int pDeprecatedAttribute ) {
       // Assign value to attribute
       deprecatedAttribute = pDeprecatedAttribute;
       return this.self();
@@ -196,10 +196,10 @@ public class ChildBB extends ChildB {
      * Method sets association {@link #deprecatedBs}.<br/>
      *
      * @param pDeprecatedBs Collection to which {@link #deprecatedBs} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
-    public B setDeprecatedBs( Set<ChildB> pDeprecatedBs ) {
+    public S setDeprecatedBs( Set<ChildB> pDeprecatedBs ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pDeprecatedBs != null) {
         deprecatedBs = new HashSet<ChildB>(pDeprecatedBs);
@@ -214,10 +214,10 @@ public class ChildBB extends ChildB {
      * Method adds the passed objects to association {@link #deprecatedBs}.<br/>
      *
      * @param pDeprecatedBs Array of objects that should be added to {@link #deprecatedBs}. The parameter may be null.
-     * @return {@link B} Instance of this builder to support chaining. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining. Method never returns null.
      */
     @Deprecated
-    public B addToDeprecatedBs( ChildB... pDeprecatedBs ) {
+    public S addToDeprecatedBs( ChildB... pDeprecatedBs ) {
       if (pDeprecatedBs != null) {
         if (deprecatedBs == null) {
           deprecatedBs = new HashSet<ChildB>();
@@ -231,10 +231,10 @@ public class ChildBB extends ChildB {
      * Method sets association {@link #deprecatedParent}.<br/>
      *
      * @param pDeprecatedParent Value to which {@link #deprecatedParent} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
-    public B setDeprecatedParent( ParentClass pDeprecatedParent ) {
+    public S setDeprecatedParent( ParentClass pDeprecatedParent ) {
       deprecatedParent = pDeprecatedParent;
       return this.self();
     }
@@ -243,10 +243,10 @@ public class ChildBB extends ChildB {
      * Method sets attribute {@link #deprecatedArray}.<br/>
      *
      * @param pDeprecatedArray Value to which {@link #deprecatedArray} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
-    public B setDeprecatedArray( byte[] pDeprecatedArray ) {
+    public S setDeprecatedArray( byte[] pDeprecatedArray ) {
       // Assign value to attribute
       if (pDeprecatedArray != null) {
         deprecatedArray = new byte[pDeprecatedArray.length];

@@ -40,7 +40,7 @@ public abstract class DataTypeWithDerivedPropertyBase {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class DataTypeWithDerivedPropertyBuilder<T extends DataTypeWithDerivedProperty, B extends DataTypeWithDerivedPropertyBuilder<T, B>> {
+  public static abstract class DataTypeWithDerivedPropertyBuilder<T extends DataTypeWithDerivedProperty, S extends DataTypeWithDerivedPropertyBuilder<T, S>> {
     private int property;
 
     /**
@@ -64,9 +64,9 @@ public abstract class DataTypeWithDerivedPropertyBase {
      * Method sets attribute {@link #property}.<br/>
      *
      * @param pProperty Value to which {@link #property} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setProperty( int pProperty ) {
+    public S setProperty( int pProperty ) {
       // Assign value to attribute
       property = pProperty;
       return this.self();
@@ -75,7 +75,7 @@ public abstract class DataTypeWithDerivedPropertyBase {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
 
     /**
      * Method creates a new instance of class DataTypeWithDerivedProperty. The object will be initialized with the

@@ -65,7 +65,7 @@ public class MyBusinessObject {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class MyBusinessObjectBuilder<T extends MyBusinessObject, B extends MyBusinessObjectBuilder<T, B>> {
+  public static abstract class MyBusinessObjectBuilder<T extends MyBusinessObject, S extends MyBusinessObjectBuilder<T, S>> {
     private int myBusinessAttribute;
 
     /**
@@ -89,9 +89,9 @@ public class MyBusinessObject {
      * Method sets attribute {@link #myBusinessAttribute}.<br/>
      *
      * @param pMyBusinessAttribute Value to which {@link #myBusinessAttribute} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setMyBusinessAttribute( int pMyBusinessAttribute ) {
+    public S setMyBusinessAttribute( int pMyBusinessAttribute ) {
       // Assign value to attribute
       myBusinessAttribute = pMyBusinessAttribute;
       return this.self();
@@ -100,7 +100,7 @@ public class MyBusinessObject {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
 
     /**
      * Method creates a new instance of class MyBusinessObject. The object will be initialized with the values of the

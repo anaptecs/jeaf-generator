@@ -92,7 +92,7 @@ public class AdvancedHeader {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class AdvancedHeaderBuilder<T extends AdvancedHeader, B extends AdvancedHeaderBuilder<T, B>> {
+  public static abstract class AdvancedHeaderBuilder<T extends AdvancedHeader, S extends AdvancedHeaderBuilder<T, S>> {
     /**
      * <br/>
      * <b>Example(s):</b> <br/>
@@ -130,9 +130,9 @@ public class AdvancedHeader {
      * Method sets attribute {@link #bookingID}.<br/>
      *
      * @param pBookingID Value to which {@link #bookingID} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setBookingID( @MyNotNullProperty BookingID pBookingID ) {
+    public S setBookingID( @MyNotNullProperty BookingID pBookingID ) {
       // Assign value to attribute
       bookingID = pBookingID;
       return this.self();
@@ -142,9 +142,9 @@ public class AdvancedHeader {
      * Method sets attribute {@link #bookingCode}.<br/>
      *
      * @param pBookingCode Value to which {@link #bookingCode} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setBookingCode( @MyNotNullProperty BookingCode pBookingCode ) {
+    public S setBookingCode( @MyNotNullProperty BookingCode pBookingCode ) {
       // Assign value to attribute
       bookingCode = pBookingCode;
       return this.self();
@@ -154,9 +154,9 @@ public class AdvancedHeader {
      * Method sets attribute {@link #doubleCode}.<br/>
      *
      * @param pDoubleCode Value to which {@link #doubleCode} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setDoubleCode( @MyNotNullProperty DoubleCode pDoubleCode ) {
+    public S setDoubleCode( @MyNotNullProperty DoubleCode pDoubleCode ) {
       // Assign value to attribute
       doubleCode = pDoubleCode;
       return this.self();
@@ -165,7 +165,7 @@ public class AdvancedHeader {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
 
     /**
      * Method creates a new instance of class AdvancedHeader. The object will be initialized with the values of the

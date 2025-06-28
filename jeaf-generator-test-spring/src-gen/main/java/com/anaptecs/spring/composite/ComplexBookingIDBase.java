@@ -95,7 +95,7 @@ public abstract class ComplexBookingIDBase {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class ComplexBookingIDBuilder<T extends ComplexBookingID, B extends ComplexBookingIDBuilder<T, B>> {
+  public static abstract class ComplexBookingIDBuilder<T extends ComplexBookingID, S extends ComplexBookingIDBuilder<T, S>> {
     private long internalID;
 
     private String referenceID;
@@ -134,9 +134,9 @@ public abstract class ComplexBookingIDBase {
      * Method sets attribute {@link #internalID}.<br/>
      *
      * @param pInternalID Value to which {@link #internalID} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setInternalID( long pInternalID ) {
+    public S setInternalID( long pInternalID ) {
       // Assign value to attribute
       internalID = pInternalID;
       return this.self();
@@ -146,9 +146,9 @@ public abstract class ComplexBookingIDBase {
      * Method sets attribute {@link #referenceID}.<br/>
      *
      * @param pReferenceID Value to which {@link #referenceID} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setReferenceID( @MyNotNullProperty String pReferenceID ) {
+    public S setReferenceID( @MyNotNullProperty String pReferenceID ) {
       // Assign value to attribute
       referenceID = pReferenceID;
       return this.self();
@@ -158,9 +158,9 @@ public abstract class ComplexBookingIDBase {
      * Method sets association {@link #bookingIDs}.<br/>
      *
      * @param pBookingIDs Collection to which {@link #bookingIDs} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setBookingIDs( @MyNotEmptyProperty List<BookingID> pBookingIDs ) {
+    public S setBookingIDs( @MyNotEmptyProperty List<BookingID> pBookingIDs ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pBookingIDs != null) {
         bookingIDs = new ArrayList<BookingID>(pBookingIDs);
@@ -175,9 +175,9 @@ public abstract class ComplexBookingIDBase {
      * Method adds the passed objects to association {@link #bookingIDs}.<br/>
      *
      * @param pBookingIDs Array of objects that should be added to {@link #bookingIDs}. The parameter may be null.
-     * @return {@link B} Instance of this builder to support chaining. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining. Method never returns null.
      */
-    public B addToBookingIDs( @MyNotEmptyProperty BookingID... pBookingIDs ) {
+    public S addToBookingIDs( @MyNotEmptyProperty BookingID... pBookingIDs ) {
       if (pBookingIDs != null) {
         if (bookingIDs == null) {
           bookingIDs = new ArrayList<BookingID>();
@@ -191,9 +191,9 @@ public abstract class ComplexBookingIDBase {
      * Method sets association {@link #complexBookingType}.<br/>
      *
      * @param pComplexBookingType Value to which {@link #complexBookingType} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setComplexBookingType( @MyNotNullProperty ComplexBookingType pComplexBookingType ) {
+    public S setComplexBookingType( @MyNotNullProperty ComplexBookingType pComplexBookingType ) {
       complexBookingType = pComplexBookingType;
       return this.self();
     }
@@ -202,9 +202,9 @@ public abstract class ComplexBookingIDBase {
      * Method sets attribute {@link #anotherID}.<br/>
      *
      * @param pAnotherID Value to which {@link #anotherID} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setAnotherID( @MyNotNullProperty Integer pAnotherID ) {
+    public S setAnotherID( @MyNotNullProperty Integer pAnotherID ) {
       // Assign value to attribute
       anotherID = pAnotherID;
       return this.self();
@@ -214,9 +214,9 @@ public abstract class ComplexBookingIDBase {
      * Method sets attribute {@link #strings}.<br/>
      *
      * @param pStrings Collection to which {@link #strings} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setStrings( String[] pStrings ) {
+    public S setStrings( String[] pStrings ) {
       // Assign value to attribute
       if (pStrings != null) {
         strings = new String[pStrings.length];
@@ -231,7 +231,7 @@ public abstract class ComplexBookingIDBase {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
 
     /**
      * Method creates a new instance of class ComplexBookingID. The object will be initialized with the values of the

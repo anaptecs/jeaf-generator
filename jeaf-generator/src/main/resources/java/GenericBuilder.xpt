@@ -26,7 +26,7 @@
 @com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder(withPrefix = "set")
 @com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown = true)
 «ENDIF»
-public static abstract class «this.abstractBuilderName()»<T extends «name», B extends «this.abstractBuilderName()»<T, B>> «IF superClass.isEmpty == false»extends «superClass.get(0).builderName()»<T, B>«ENDIF» {
+public static abstract class «this.abstractBuilderName()»<T extends «name», S extends «this.abstractBuilderName()»<T, S>> «IF superClass.isEmpty == false»extends «superClass.get(0).builderName()»<T, S>«ENDIF» {
 	«REM»Generate instance variables for each property«ENDREM»
 	«IF needsToImplementIdentifiable() == true»
 	/**
@@ -88,7 +88,7 @@ public static abstract class «this.abstractBuilderName()»<T extends «name», 
 	/**
 	 * Method sets the identifier for the object created using the builder. The reference may be null since an id is not mandatory.
 	 */
-	public B setID(com.anaptecs.jeaf.xfun.api.common.ObjectIdentity<?> pObjectID){
+	public S setID(com.anaptecs.jeaf.xfun.api.common.ObjectIdentity<?> pObjectID){
 		objectID = pObjectID;
 		return this.self();
 	}	
@@ -107,7 +107,7 @@ public static abstract class «this.abstractBuilderName()»<T extends «name», 
 		}		
 	«ELSE»
 		«FOREACH this.ownedAttribute.select(e|e.isPropertySuppressed() == false && e.belongsToTransientBidirectionalBackReference() == false) AS attr»
-			«EXPAND java::Builder::BuilderSetter("B") FOR attr»
+			«EXPAND java::Builder::BuilderSetter("S") FOR attr»
 		«ENDFOREACH»
 	«ENDIF»
 	
@@ -136,7 +136,7 @@ public static abstract class «this.abstractBuilderName()»<T extends «name», 
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */    
-    protected abstract B self( );
+    protected abstract S self( );
     «ENDIF»
 
 	«IF this.isAbstract == false»
@@ -218,7 +218,7 @@ static final class «this.genericBuilderImplName()» extends «IF this.customize
 @com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder(withPrefix = "set")
 @com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown = true)
 «ENDIF»
-public static abstract class «this.builderName()»<T extends «name», B extends «this.builderName()»<T, B>> extends «this.abstractBuilderName()»<T, B> {
+public static abstract class «this.builderName()»<T extends «name», S extends «this.builderName()»<T, S>> extends «this.abstractBuilderName()»<T, S> {
     /**
      * Use {@link «this.builderName()»#builder()} instead of private constructor to create new builder.
      */

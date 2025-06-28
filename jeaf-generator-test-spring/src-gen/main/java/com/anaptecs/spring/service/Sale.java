@@ -77,7 +77,7 @@ public class Sale {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class SaleBuilder<T extends Sale, B extends SaleBuilder<T, B>> {
+  public static abstract class SaleBuilder<T extends Sale, S extends SaleBuilder<T, S>> {
     private BigDecimal transactionAmount;
 
     private Channel sale;
@@ -103,9 +103,9 @@ public class Sale {
      * Method sets attribute {@link #transactionAmount}.<br/>
      *
      * @param pTransactionAmount Value to which {@link #transactionAmount} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setTransactionAmount( @MyNotNullProperty BigDecimal pTransactionAmount ) {
+    public S setTransactionAmount( @MyNotNullProperty BigDecimal pTransactionAmount ) {
       // Assign value to attribute
       transactionAmount = pTransactionAmount;
       return this.self();
@@ -115,9 +115,9 @@ public class Sale {
      * Method sets association {@link #sale}.<br/>
      *
      * @param pSale Value to which {@link #sale} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setSale( Channel pSale ) {
+    public S setSale( Channel pSale ) {
       sale = pSale;
       return this.self();
     }
@@ -125,7 +125,7 @@ public class Sale {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
 
     /**
      * Method creates a new instance of class Sale. The object will be initialized with the values of the builder.

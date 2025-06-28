@@ -114,7 +114,7 @@ public class ContextWithPrimitives {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class ContextWithPrimitivesBuilder<T extends ContextWithPrimitives, B extends ContextWithPrimitivesBuilder<T, B>> {
+  public static abstract class ContextWithPrimitivesBuilder<T extends ContextWithPrimitives, S extends ContextWithPrimitivesBuilder<T, S>> {
     private boolean aBoolean;
 
     private Boolean aBooleanWrapper;
@@ -153,9 +153,9 @@ public class ContextWithPrimitives {
      * Method sets attribute {@link #aBoolean}.<br/>
      *
      * @param pABoolean Value to which {@link #aBoolean} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setABoolean( boolean pABoolean ) {
+    public S setABoolean( boolean pABoolean ) {
       // Assign value to attribute
       aBoolean = pABoolean;
       return this.self();
@@ -165,9 +165,9 @@ public class ContextWithPrimitives {
      * Method sets attribute {@link #aBooleanWrapper}.<br/>
      *
      * @param pABooleanWrapper Value to which {@link #aBooleanWrapper} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setABooleanWrapper( @MyNotNullProperty Boolean pABooleanWrapper ) {
+    public S setABooleanWrapper( @MyNotNullProperty Boolean pABooleanWrapper ) {
       // Assign value to attribute
       aBooleanWrapper = pABooleanWrapper;
       return this.self();
@@ -177,9 +177,9 @@ public class ContextWithPrimitives {
      * Method sets attribute {@link #anInt}.<br/>
      *
      * @param pAnInt Value to which {@link #anInt} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setAnInt( int pAnInt ) {
+    public S setAnInt( int pAnInt ) {
       // Assign value to attribute
       anInt = pAnInt;
       return this.self();
@@ -189,9 +189,9 @@ public class ContextWithPrimitives {
      * Method sets attribute {@link #anInteger}.<br/>
      *
      * @param pAnInteger Value to which {@link #anInteger} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setAnInteger( @MyNotNullProperty Integer pAnInteger ) {
+    public S setAnInteger( @MyNotNullProperty Integer pAnInteger ) {
       // Assign value to attribute
       anInteger = pAnInteger;
       return this.self();
@@ -201,9 +201,9 @@ public class ContextWithPrimitives {
      * Method sets attribute {@link #aLong}.<br/>
      *
      * @param pALong Value to which {@link #aLong} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setALong( long pALong ) {
+    public S setALong( long pALong ) {
       // Assign value to attribute
       aLong = pALong;
       return this.self();
@@ -213,9 +213,9 @@ public class ContextWithPrimitives {
      * Method sets attribute {@link #aVeryLong}.<br/>
      *
      * @param pAVeryLong Value to which {@link #aVeryLong} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setAVeryLong( @MyNotNullProperty Long pAVeryLong ) {
+    public S setAVeryLong( @MyNotNullProperty Long pAVeryLong ) {
       // Assign value to attribute
       aVeryLong = pAVeryLong;
       return this.self();
@@ -224,7 +224,7 @@ public class ContextWithPrimitives {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
 
     /**
      * Method creates a new instance of class ContextWithPrimitives. The object will be initialized with the values of

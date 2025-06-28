@@ -96,7 +96,7 @@ public class Leg {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class LegBuilder<T extends Leg, B extends LegBuilder<T, B>> {
+  public static abstract class LegBuilder<T extends Leg, S extends LegBuilder<T, S>> {
     private PlaceRef start;
 
     private PlaceRef stop;
@@ -125,9 +125,9 @@ public class Leg {
      * Method sets association {@link #start}.<br/>
      *
      * @param pStart Value to which {@link #start} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setStart( @MyNotNullProperty PlaceRef pStart ) {
+    public S setStart( @MyNotNullProperty PlaceRef pStart ) {
       start = pStart;
       return this.self();
     }
@@ -136,9 +136,9 @@ public class Leg {
      * Method sets association {@link #stop}.<br/>
      *
      * @param pStop Value to which {@link #stop} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setStop( @MyNotNullProperty PlaceRef pStop ) {
+    public S setStop( @MyNotNullProperty PlaceRef pStop ) {
       stop = pStop;
       return this.self();
     }
@@ -147,9 +147,9 @@ public class Leg {
      * Method sets association {@link #stopovers}.<br/>
      *
      * @param pStopovers Collection to which {@link #stopovers} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setStopovers( List<PlaceRef> pStopovers ) {
+    public S setStopovers( List<PlaceRef> pStopovers ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pStopovers != null) {
         stopovers = new ArrayList<PlaceRef>(pStopovers);
@@ -164,9 +164,9 @@ public class Leg {
      * Method adds the passed objects to association {@link #stopovers}.<br/>
      *
      * @param pStopovers Array of objects that should be added to {@link #stopovers}. The parameter may be null.
-     * @return {@link B} Instance of this builder to support chaining. Method never returns null.
+     * @return {@link S} Instance of this builder to support chaining. Method never returns null.
      */
-    public B addToStopovers( PlaceRef... pStopovers ) {
+    public S addToStopovers( PlaceRef... pStopovers ) {
       if (pStopovers != null) {
         if (stopovers == null) {
           stopovers = new ArrayList<PlaceRef>();
@@ -179,7 +179,7 @@ public class Leg {
     /**
      * Method returns instance of this builder. Operation is part of generic builder pattern.
      */
-    protected abstract B self( );
+    protected abstract S self( );
 
     /**
      * Method creates a new instance of class Leg. The object will be initialized with the values of the builder.
