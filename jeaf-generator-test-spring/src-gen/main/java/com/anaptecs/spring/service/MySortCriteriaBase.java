@@ -46,6 +46,15 @@ public abstract class MySortCriteriaBase {
   }
 
   /**
+   * Constructor is intended to be used by #of() operation to efficiently created new objects by avoiding using of
+   * builder.
+   */
+  MySortCriteriaBase( SortOrder pSortOrder, MySortProperty pSortProperty ) {
+    sortOrder = pSortOrder;
+    sortProperty = pSortProperty;
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>MySortCriteria</code>.
    */
   @JsonPOJOBuilder(withPrefix = "set")
@@ -193,10 +202,7 @@ public abstract class MySortCriteriaBase {
    * @return {@link MySortCriteria}
    */
   public static MySortCriteria of( SortOrder pSortOrder, MySortProperty pSortProperty ) {
-    var lBuilder = MySortCriteria.builder();
-    lBuilder.setSortOrder(pSortOrder);
-    lBuilder.setSortProperty(pSortProperty);
-    return lBuilder.build();
+    return new MySortCriteria(pSortOrder, pSortProperty);
   }
 
   @Override

@@ -35,6 +35,14 @@ public class DoubleCodeType {
   }
 
   /**
+   * Constructor is intended to be used by #of() operation to efficiently created new objects by avoiding using of
+   * builder.
+   */
+  private DoubleCodeType( double pCode ) {
+    code = pCode;
+  }
+
+  /**
    * Method returns a new builder.
    *
    * @return {@link Builder} New builder that can be used to create new DoubleCodeType objects.
@@ -52,9 +60,7 @@ public class DoubleCodeType {
    * @return {@link DoubleCodeType}
    */
   public static DoubleCodeType of( double pCode ) {
-    var lBuilder = DoubleCodeType.builder();
-    lBuilder.setCode(pCode);
-    return lBuilder.build();
+    return new DoubleCodeType(pCode);
   }
 
   /**

@@ -103,6 +103,8 @@
 						«ENDIF»
 						«EXPAND POJOBuilderConstructorInit»
 					}
+					
+					«EXPAND java::OpenAPIDataType::GenerateValueConstructor(name, false)»
 					  
 					«REM»Generate builder«ENDREM»
 					«EXPAND java::Builder::StaticBuilderMethods FOR this»
@@ -238,6 +240,8 @@
 					«EXPAND POJOBuilderConstructorInit»
 					}
 					
+					«EXPAND java::OpenAPIDataType::GenerateValueConstructor(name + "Base", true)»
+					
 					«REM»Generate builder«ENDREM»
 					«IF this.hasGenericBuilder()»
 						«EXPAND java::GenericBuilder::GenerateGenericBuilder»
@@ -319,6 +323,8 @@
 					«ENDIF»
 					  super(pBuilder);
 					}
+					
+					«EXPAND java::OpenAPIDataType::GenerateValueConstructorForCustomClass»
 					  
 					«EXPAND java::Builder::StaticBuilderMethods FOR this»
 					«EXPAND java::Helper::GenerateValueOfForOpenAPIDataType FOR this»

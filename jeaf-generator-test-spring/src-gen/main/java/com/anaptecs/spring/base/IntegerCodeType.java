@@ -35,6 +35,14 @@ public class IntegerCodeType {
   }
 
   /**
+   * Constructor is intended to be used by #of() operation to efficiently created new objects by avoiding using of
+   * builder.
+   */
+  private IntegerCodeType( int pCode ) {
+    code = pCode;
+  }
+
+  /**
    * Method returns a new builder.
    *
    * @return {@link Builder} New builder that can be used to create new IntegerCodeType objects.
@@ -52,9 +60,7 @@ public class IntegerCodeType {
    * @return {@link IntegerCodeType}
    */
   public static IntegerCodeType of( int pCode ) {
-    var lBuilder = IntegerCodeType.builder();
-    lBuilder.setCode(pCode);
-    return lBuilder.build();
+    return new IntegerCodeType(pCode);
   }
 
   /**

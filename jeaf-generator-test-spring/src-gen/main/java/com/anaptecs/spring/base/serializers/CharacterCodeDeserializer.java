@@ -23,7 +23,7 @@ public class CharacterCodeDeserializer extends JsonDeserializer<CharacterCode> {
     // Parse JSON content.
     JsonNode lNode = pParser.getCodec().readTree(pParser);
     if (lNode instanceof TextNode) {
-      return CharacterCode.builder().setCode(lNode.asText().charAt(0)).build();
+      return CharacterCode.of(lNode.asText().charAt(0));
     }
     // Node is not of expected type.
     else {

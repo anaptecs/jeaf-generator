@@ -38,6 +38,14 @@ public class BookingCode {
   }
 
   /**
+   * Constructor is intended to be used by #of() operation to efficiently created new objects by avoiding using of
+   * builder.
+   */
+  private BookingCode( String pCode ) {
+    code = pCode;
+  }
+
+  /**
    * Method returns a new builder.
    *
    * @return {@link Builder} New builder that can be used to create new BookingCode objects.
@@ -55,9 +63,7 @@ public class BookingCode {
    * @return {@link BookingCode}
    */
   public static BookingCode of( String pCode ) {
-    var lBuilder = BookingCode.builder();
-    lBuilder.setCode(pCode);
-    return lBuilder.build();
+    return new BookingCode(pCode);
   }
 
   /**

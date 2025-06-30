@@ -24,7 +24,7 @@ public class FloatCodeDeserializer extends JsonDeserializer<FloatCode> {
     JsonNode lNode = pParser.getCodec().readTree(pParser);
     if (lNode instanceof NumericNode) {
       NumericNode lNumericNode = (NumericNode) lNode;
-      return FloatCode.builder().setCode((float) lNumericNode.doubleValue()).build();
+      return FloatCode.of((float) lNumericNode.doubleValue());
     }
     // Node is not of expected type.
     else {

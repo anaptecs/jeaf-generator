@@ -41,6 +41,14 @@ public class CharacterCode {
   }
 
   /**
+   * Constructor is intended to be used by #of() operation to efficiently created new objects by avoiding using of
+   * builder.
+   */
+  private CharacterCode( Character pCode ) {
+    code = pCode;
+  }
+
+  /**
    * Method returns a new builder.
    *
    * @return {@link Builder} New builder that can be used to create new CharacterCode objects.
@@ -58,9 +66,7 @@ public class CharacterCode {
    * @return {@link CharacterCode}
    */
   public static CharacterCode of( Character pCode ) {
-    var lBuilder = CharacterCode.builder();
-    lBuilder.setCode(pCode);
-    return lBuilder.build();
+    return new CharacterCode(pCode);
   }
 
   /**

@@ -38,6 +38,14 @@ public class StringCode {
   }
 
   /**
+   * Constructor is intended to be used by #of() operation to efficiently created new objects by avoiding using of
+   * builder.
+   */
+  private StringCode( String pCode ) {
+    code = pCode;
+  }
+
+  /**
    * Method returns a new builder.
    *
    * @return {@link Builder} New builder that can be used to create new StringCode objects.
@@ -55,9 +63,7 @@ public class StringCode {
    * @return {@link StringCode}
    */
   public static StringCode of( String pCode ) {
-    var lBuilder = StringCode.builder();
-    lBuilder.setCode(pCode);
-    return lBuilder.build();
+    return new StringCode(pCode);
   }
 
   /**

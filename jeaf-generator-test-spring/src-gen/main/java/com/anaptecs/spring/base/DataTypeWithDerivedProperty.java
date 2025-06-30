@@ -16,6 +16,14 @@ public class DataTypeWithDerivedProperty extends DataTypeWithDerivedPropertyBase
   }
 
   /**
+   * Constructor is intended to be used by #of() operation to efficiently created new objects by avoiding using of
+   * builder.
+   */
+  DataTypeWithDerivedProperty( int pProperty ) {
+    super(pProperty);
+  }
+
+  /**
    * Method returns a new builder.
    *
    * @return {@link Builder} New builder that can be used to create new DataTypeWithDerivedProperty objects.

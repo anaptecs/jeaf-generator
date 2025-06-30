@@ -9,6 +9,40 @@
 «IMPORT uml»
 «IMPORT JMM»
 
+«DEFINE GenerateValueConstructor(String className, boolean hasCustomImpl) FOR Class»
+	«IF this.isOpenAPIDataType() && this.generateOfOperationForClass()»
+	/**
+	 * Constructor is intended to be used by #of() operation to efficiently created new objects by avoiding using of builder.
+	 */
+	«IF hasCustomImpl == false»private «ENDIF»«className»(
+	   «FOREACH this.getAllAttributesForOfOperation() AS attr SEPARATOR ", "»
+	   	   «attr.fqn()» «attr.asParameter()»
+	   «ENDFOREACH») {
+	   
+	   «FOREACH this.getAllAttributesForOfOperation() AS attr»
+	   «attr.name» = «attr.asParameter()»;
+	   «ENDFOREACH»
+	}
+	«ENDIF»
+«ENDDEFINE»
+
+«DEFINE GenerateValueConstructorForCustomClass FOR Class»
+	«IF this.isOpenAPIDataType() && this.generateOfOperationForClass()»
+	/**
+	 * Constructor is intended to be used by #of() operation to efficiently created new objects by avoiding using of builder.
+	 */
+	«name»(
+	   «FOREACH this.getAllAttributesForOfOperation() AS attr SEPARATOR ", "»
+	   	   «attr.fqn()» «attr.asParameter()»
+	   «ENDFOREACH») {
+	   super(	   
+	       «FOREACH this.getAllAttributesForOfOperation() AS attr SEPARATOR ", "»«attr.asParameter()»«ENDFOREACH»
+	   );
+	}
+	«ENDIF»
+«ENDDEFINE»
+
+
 «DEFINE GenerateOpenAPIDataType(OpenAPI3Specification spec, Property ownerAttribute, String indentation, boolean addDescription) FOR OpenAPIDataType -»
   «LET this.ownedAttribute.select(e|e.isStatic == false).first() AS attribute -»
     «IF this.inline == true -»
@@ -374,55 +408,55 @@
 				    «LET this.ownedAttribute.select(e|e.isStatic == false).first() AS attr»
 					    «IF attr.type.isBooleanType()»
 					    if (lNode instanceof com.fasterxml.jackson.databind.node.BooleanNode) {
-				        return «this.fqn()».builder().«attr.asSetter()»(lNode.asBoolean()).build();
+				        return «this.fqn()»«IF this.generateOfOperationForClass()».of«ELSE».builder().«attr.asSetter()»«ENDIF»(lNode.asBoolean())«IF this.generateOfOperationForClass() == false».build()«ENDIF»;
 				        «ENDIF»
 					    «IF attr.type.isStringType()»
 					    if (lNode instanceof com.fasterxml.jackson.databind.node.TextNode) {
-				        return «this.fqn()».builder().«attr.asSetter()»(lNode.asText()).build();
+				        return «this.fqn()»«IF this.generateOfOperationForClass()».of«ELSE».builder().«attr.asSetter()»«ENDIF»(lNode.asText())«IF this.generateOfOperationForClass() == false».build()«ENDIF»;
 				        «ENDIF»
 					    «IF attr.type.isCharacterType()»
 					    if (lNode instanceof com.fasterxml.jackson.databind.node.TextNode) {
-				        return «this.fqn()».builder().«attr.asSetter()»(lNode.asText().charAt(0)).build();
+				        return «this.fqn()»«IF this.generateOfOperationForClass()».of«ELSE».builder().«attr.asSetter()»«ENDIF»(lNode.asText().charAt(0))«IF this.generateOfOperationForClass() == false».build()«ENDIF»;
 				        «ENDIF»
 				        «IF attr.type.isByteType()»
 					    if (lNode instanceof com.fasterxml.jackson.databind.node.NumericNode) {
 					    com.fasterxml.jackson.databind.node.NumericNode lNumericNode = (com.fasterxml.jackson.databind.node.NumericNode) lNode;
-				        return «this.fqn()».builder().«attr.asSetter()»((byte)lNumericNode.intValue()).build();
+				        return «this.fqn()»«IF this.generateOfOperationForClass()».of«ELSE».builder().«attr.asSetter()»«ENDIF»((byte)lNumericNode.intValue())«IF this.generateOfOperationForClass() == false».build()«ENDIF»;
 				        «ENDIF»
 				        «IF attr.type.isShortType()»
 					    if (lNode instanceof com.fasterxml.jackson.databind.node.NumericNode) {
 					    com.fasterxml.jackson.databind.node.NumericNode lNumericNode = (com.fasterxml.jackson.databind.node.NumericNode) lNode;
-				        return «this.fqn()».builder().«attr.asSetter()»((short)lNumericNode.intValue()).build();
+				        return «this.fqn()»«IF this.generateOfOperationForClass()».of«ELSE».builder().«attr.asSetter()»«ENDIF»((short)lNumericNode.intValue())«IF this.generateOfOperationForClass() == false».build()«ENDIF»;
 				        «ENDIF»
 				        «IF attr.type.isIntegerType()»
 					    if (lNode instanceof com.fasterxml.jackson.databind.node.NumericNode) {
 					    com.fasterxml.jackson.databind.node.NumericNode lNumericNode = (com.fasterxml.jackson.databind.node.NumericNode) lNode;
-				        return «this.fqn()».builder().«attr.asSetter()»(lNumericNode.intValue()).build();
+				        return «this.fqn()»«IF this.generateOfOperationForClass()».of«ELSE».builder().«attr.asSetter()»«ENDIF»(lNumericNode.intValue())«IF this.generateOfOperationForClass() == false».build()«ENDIF»;
 				        «ENDIF»
 				        «IF attr.type.isLongType()»
 					    if (lNode instanceof com.fasterxml.jackson.databind.node.NumericNode) {
 					    com.fasterxml.jackson.databind.node.NumericNode lNumericNode = (com.fasterxml.jackson.databind.node.NumericNode) lNode;
-				        return «this.fqn()».builder().«attr.asSetter()»(lNumericNode.longValue()).build();
+				        return «this.fqn()»«IF this.generateOfOperationForClass()».of«ELSE».builder().«attr.asSetter()»«ENDIF»(lNumericNode.longValue())«IF this.generateOfOperationForClass() == false».build()«ENDIF»;
 				        «ENDIF»
 				        «IF attr.type.isFloatType()»
 					    if (lNode instanceof com.fasterxml.jackson.databind.node.NumericNode) {
 					    com.fasterxml.jackson.databind.node.NumericNode lNumericNode = (com.fasterxml.jackson.databind.node.NumericNode) lNode;
-				        return «this.fqn()».builder().«attr.asSetter()»((float)lNumericNode.doubleValue()).build();
+				        return «this.fqn()»«IF this.generateOfOperationForClass()».of«ELSE».builder().«attr.asSetter()»«ENDIF»((float)lNumericNode.doubleValue())«IF this.generateOfOperationForClass() == false».build()«ENDIF»;
 				        «ENDIF»
 				        «IF attr.type.isDoubleType()»
 					    if (lNode instanceof com.fasterxml.jackson.databind.node.NumericNode) {
 					    com.fasterxml.jackson.databind.node.NumericNode lNumericNode = (com.fasterxml.jackson.databind.node.NumericNode) lNode;
-				        return «this.fqn()».builder().«attr.asSetter()»(lNumericNode.doubleValue()).build();
+				        return «this.fqn()»«IF this.generateOfOperationForClass()».of«ELSE».builder().«attr.asSetter()»«ENDIF»(lNumericNode.doubleValue())«IF this.generateOfOperationForClass() == false».build()«ENDIF»;
 				        «ENDIF»
 				        «IF attr.type.isBigInteger()»
 					    if (lNode instanceof com.fasterxml.jackson.databind.node.NumericNode) {
 					    com.fasterxml.jackson.databind.node.NumericNode lNumericNode = (com.fasterxml.jackson.databind.node.NumericNode) lNode;
-				        return «this.fqn()».builder().«attr.asSetter()»(lNumericNode.bigIntegerValue()).build();
+				        return «this.fqn()»«IF this.generateOfOperationForClass()».of«ELSE».builder().«attr.asSetter()»«ENDIF»(lNumericNode.bigIntegerValue())«IF this.generateOfOperationForClass() == false».build()«ENDIF»;
 				        «ENDIF»
 				        «IF attr.type.isBigDecimal()»
 					    if (lNode instanceof com.fasterxml.jackson.databind.node.NumericNode) {
 					    com.fasterxml.jackson.databind.node.NumericNode lNumericNode = (com.fasterxml.jackson.databind.node.NumericNode) lNode;
-				        return «this.fqn()».builder().«attr.asSetter()»(lNumericNode.decimalValue()).build();
+				        return «this.fqn()»«IF this.generateOfOperationForClass()».of«ELSE».builder().«attr.asSetter()»«ENDIF»(lNumericNode.decimalValue())«IF this.generateOfOperationForClass() == false».build()«ENDIF»;
 				        «ENDIF»
 				    «ENDLET»
 		    	«ENDIF»
@@ -454,3 +488,4 @@
 	}
 	«ENDFILE»
 «ENDDEFINE»
+

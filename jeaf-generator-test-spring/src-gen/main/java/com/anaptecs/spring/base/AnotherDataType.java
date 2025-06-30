@@ -38,6 +38,14 @@ public class AnotherDataType {
   }
 
   /**
+   * Constructor is intended to be used by #of() operation to efficiently created new objects by avoiding using of
+   * builder.
+   */
+  private AnotherDataType( String pData ) {
+    data = pData;
+  }
+
+  /**
    * Method returns a new builder.
    *
    * @return {@link Builder} New builder that can be used to create new AnotherDataType objects.
@@ -55,9 +63,7 @@ public class AnotherDataType {
    * @return {@link AnotherDataType}
    */
   public static AnotherDataType of( String pData ) {
-    var lBuilder = AnotherDataType.builder();
-    lBuilder.setData(pData);
-    return lBuilder.build();
+    return new AnotherDataType(pData);
   }
 
   /**

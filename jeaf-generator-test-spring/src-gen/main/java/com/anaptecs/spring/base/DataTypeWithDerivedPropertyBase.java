@@ -36,6 +36,14 @@ public abstract class DataTypeWithDerivedPropertyBase {
   }
 
   /**
+   * Constructor is intended to be used by #of() operation to efficiently created new objects by avoiding using of
+   * builder.
+   */
+  DataTypeWithDerivedPropertyBase( int pProperty ) {
+    property = pProperty;
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>DataTypeWithDerivedProperty</code>.
    */
   @JsonPOJOBuilder(withPrefix = "set")
@@ -136,9 +144,7 @@ public abstract class DataTypeWithDerivedPropertyBase {
    * @return {@link DataTypeWithDerivedProperty}
    */
   public static DataTypeWithDerivedProperty of( int pProperty ) {
-    var lBuilder = DataTypeWithDerivedProperty.builder();
-    lBuilder.setProperty(pProperty);
-    return lBuilder.build();
+    return new DataTypeWithDerivedProperty(pProperty);
   }
 
   /**

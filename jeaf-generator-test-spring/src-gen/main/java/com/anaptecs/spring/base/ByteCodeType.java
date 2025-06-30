@@ -35,6 +35,14 @@ public class ByteCodeType {
   }
 
   /**
+   * Constructor is intended to be used by #of() operation to efficiently created new objects by avoiding using of
+   * builder.
+   */
+  private ByteCodeType( byte pCode ) {
+    code = pCode;
+  }
+
+  /**
    * Method returns a new builder.
    *
    * @return {@link Builder} New builder that can be used to create new ByteCodeType objects.
@@ -52,9 +60,7 @@ public class ByteCodeType {
    * @return {@link ByteCodeType}
    */
   public static ByteCodeType of( byte pCode ) {
-    var lBuilder = ByteCodeType.builder();
-    lBuilder.setCode(pCode);
-    return lBuilder.build();
+    return new ByteCodeType(pCode);
   }
 
   /**

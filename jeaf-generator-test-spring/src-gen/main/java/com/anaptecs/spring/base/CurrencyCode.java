@@ -49,6 +49,14 @@ public class CurrencyCode {
   }
 
   /**
+   * Constructor is intended to be used by #of() operation to efficiently created new objects by avoiding using of
+   * builder.
+   */
+  private CurrencyCode( String pCode ) {
+    code = pCode;
+  }
+
+  /**
    * Method returns a new builder.
    *
    * @return {@link Builder} New builder that can be used to create new CurrencyCode objects.
@@ -66,9 +74,7 @@ public class CurrencyCode {
    * @return {@link CurrencyCode}
    */
   public static CurrencyCode of( String pCode ) {
-    var lBuilder = CurrencyCode.builder();
-    lBuilder.setCode(pCode);
-    return lBuilder.build();
+    return new CurrencyCode(pCode);
   }
 
   /**

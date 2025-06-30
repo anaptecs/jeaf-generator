@@ -35,6 +35,14 @@ public class FloatCodeType {
   }
 
   /**
+   * Constructor is intended to be used by #of() operation to efficiently created new objects by avoiding using of
+   * builder.
+   */
+  private FloatCodeType( float pCode ) {
+    code = pCode;
+  }
+
+  /**
    * Method returns a new builder.
    *
    * @return {@link Builder} New builder that can be used to create new FloatCodeType objects.
@@ -52,9 +60,7 @@ public class FloatCodeType {
    * @return {@link FloatCodeType}
    */
   public static FloatCodeType of( float pCode ) {
-    var lBuilder = FloatCodeType.builder();
-    lBuilder.setCode(pCode);
-    return lBuilder.build();
+    return new FloatCodeType(pCode);
   }
 
   /**

@@ -38,6 +38,14 @@ public class BooleanCode {
   }
 
   /**
+   * Constructor is intended to be used by #of() operation to efficiently created new objects by avoiding using of
+   * builder.
+   */
+  private BooleanCode( Boolean pCode ) {
+    code = pCode;
+  }
+
+  /**
    * Method returns a new builder.
    *
    * @return {@link Builder} New builder that can be used to create new BooleanCode objects.
@@ -55,9 +63,7 @@ public class BooleanCode {
    * @return {@link BooleanCode}
    */
   public static BooleanCode of( Boolean pCode ) {
-    var lBuilder = BooleanCode.builder();
-    lBuilder.setCode(pCode);
-    return lBuilder.build();
+    return new BooleanCode(pCode);
   }
 
   /**
