@@ -37,7 +37,7 @@ public class SwissGeoPosition extends GeoPosition {
    *
    * @param pLatitude Value to which {@link #latitude} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.SwissGeoPosition}
+   * @return {@link SwissGeoPosition}
    */
   public static SwissGeoPosition of( String pName, MyType pType, int pLongitude, int pLatitude ) {
     var lBuilder = SwissGeoPosition.builder();

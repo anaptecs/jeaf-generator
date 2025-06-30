@@ -54,7 +54,7 @@ public class ChildBeanParameterType extends ParentBeanParamType {
    *
    * @param pChildProperty Value to which {@link #childProperty} should be set.
    *
-   * @return {@link com.anaptecs.spring.service.ChildBeanParameterType}
+   * @return {@link ChildBeanParameterType}
    */
   public static ChildBeanParameterType of( String pNovaKey, String pTkID, DoubleCode pCode, String pChildProperty ) {
     var lBuilder = ChildBeanParameterType.builder();

@@ -38,7 +38,7 @@ public class LinkObject {
    *
    * @param pHref Value to which {@link #href} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.LinkObject}
+   * @return {@link LinkObject}
    */
   public static LinkObject of( String pHref ) {
     var lBuilder = LinkObject.builder();

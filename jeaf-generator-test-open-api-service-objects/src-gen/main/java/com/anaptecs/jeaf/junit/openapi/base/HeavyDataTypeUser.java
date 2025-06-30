@@ -101,7 +101,7 @@ public class HeavyDataTypeUser implements ServiceObject {
    *
    * @param pBigDecimalCode Value to which {@link #bigDecimalCode} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.openapi.base.HeavyDataTypeUser}
+   * @return {@link HeavyDataTypeUser}
    */
   public static HeavyDataTypeUser of( BooleanCode pBooleanCode, ByteCode pByteCode, ShortCode pShortCode,
       IntegerCode pIntegerCode, FloatCode pFloatCode, DoubleCode pDoubleCode, BigIntegerCode pBigInegerCode,

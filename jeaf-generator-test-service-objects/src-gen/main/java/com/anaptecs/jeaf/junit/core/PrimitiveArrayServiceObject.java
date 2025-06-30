@@ -56,7 +56,7 @@ public class PrimitiveArrayServiceObject implements ServiceObject {
    * Convenience method to create new instance of class PrimitiveArrayServiceObject.
    *
    *
-   * @return {@link com.anaptecs.jeaf.junit.core.PrimitiveArrayServiceObject}
+   * @return {@link PrimitiveArrayServiceObject}
    */
   public static PrimitiveArrayServiceObject of( ) {
     var lBuilder = PrimitiveArrayServiceObject.builder();

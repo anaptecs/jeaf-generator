@@ -93,7 +93,7 @@ public class DeprecatedContext {
    *
    * @param pQueryParam Value to which {@link #queryParam} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.DeprecatedContext}
+   * @return {@link DeprecatedContext}
    */
   public static DeprecatedContext of( String pAccessToken, Locale pLanguage, long pResellerID, String pQueryParam ) {
     var lBuilder = DeprecatedContext.builder();

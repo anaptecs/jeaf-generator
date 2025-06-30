@@ -70,7 +70,7 @@ public class PartnerContainer implements ServiceObject {
    * Convenience method to create new instance of class PartnerContainer.
    *
    *
-   * @return {@link com.anaptecs.jeaf.junit.openapi.base.PartnerContainer}
+   * @return {@link PartnerContainer}
    */
   public static PartnerContainer of( ) {
     var lBuilder = PartnerContainer.builder();

@@ -59,7 +59,7 @@ public class TechParent implements ServiceObject {
    *
    * @param pTechAttribute Value to which {@link #techAttribute} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.openapi.techbase.TechParent}
+   * @return {@link TechParent}
    */
   public static TechParent of( String pTechAttribute ) {
     var lBuilder = TechParent.builder();

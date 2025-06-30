@@ -74,7 +74,7 @@ public class BeanParamWithDeprecations implements ServiceObject {
    *
    * @param pDeprecatedHeader Value to which {@link #deprecatedHeader} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.deprecation.BeanParamWithDeprecations}
+   * @return {@link BeanParamWithDeprecations}
    */
   public static BeanParamWithDeprecations of( String pHeader1, String pDeprecatedHeader ) {
     var lBuilder = BeanParamWithDeprecations.builder();

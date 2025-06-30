@@ -406,7 +406,7 @@ public abstract class PartiallyDeprecatedServiceObjectBase implements ServiceObj
    *
    * @param pReadonlyDefault Value to which {@link #readonlyDefault} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.core.PartiallyDeprecatedServiceObject}
+   * @return {@link PartiallyDeprecatedServiceObject}
    */
   public static PartiallyDeprecatedServiceObject of( String pName, boolean pOutdated, int pReadonlyDefault ) {
     var lBuilder = PartiallyDeprecatedServiceObject.builder();

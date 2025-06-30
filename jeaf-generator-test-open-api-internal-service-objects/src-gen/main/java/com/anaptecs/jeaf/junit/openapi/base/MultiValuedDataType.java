@@ -139,7 +139,7 @@ public class MultiValuedDataType implements ServiceObject {
    *
    * @param pStringProperty Value to which {@link #stringProperty} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.openapi.base.MultiValuedDataType}
+   * @return {@link MultiValuedDataType}
    */
   public static MultiValuedDataType of( List<BooleanLiteralsEnum> pLiterals, String pStringProperty ) {
     var lBuilder = MultiValuedDataType.builder();

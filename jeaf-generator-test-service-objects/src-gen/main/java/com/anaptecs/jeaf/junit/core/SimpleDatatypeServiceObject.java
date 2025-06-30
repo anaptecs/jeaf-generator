@@ -143,7 +143,7 @@ public class SimpleDatatypeServiceObject implements ServiceObject, Identifiable<
    *
    * @param pMyShort Value to which {@link #myShort} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.core.SimpleDatatypeServiceObject}
+   * @return {@link SimpleDatatypeServiceObject}
    */
   public static SimpleDatatypeServiceObject of( boolean pMyBoolean, byte pMyByte, char pMyChar, double pMyDouble,
       float pMyFloat, long pMyLong, short pMyShort ) {

@@ -240,6 +240,21 @@ public abstract class GenericResponsePOJOBase<T> {
     return value;
   }
 
+  /**
+   * Convenience method to create new instance of class GenericResponsePOJO.
+   *
+   *
+   * @param pValue Value to which {@link #value} should be set.
+   *
+   * @return {@link GenericResponsePOJO<T>}
+   */
+  @SuppressWarnings("unchecked")
+  public static <T> GenericResponsePOJO<T> of( T pValue ) {
+    var lBuilder = GenericResponsePOJO.builder();
+    lBuilder.setValue(pValue);
+    return (GenericResponsePOJO<T>) lBuilder.build();
+  }
+
   @Override
   public int hashCode( ) {
     final int lPrime = 31;

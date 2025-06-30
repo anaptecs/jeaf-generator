@@ -89,7 +89,7 @@ public class Channel {
    *
    * @param pSelfServiceChannel Value to which {@link #selfServiceChannel} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.Channel}
+   * @return {@link Channel}
    */
   public static Channel of( ChannelType pChannelType, ChannelCode pChannelCode, int pCode,
       boolean pSelfServiceChannel ) {

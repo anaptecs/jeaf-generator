@@ -103,7 +103,7 @@ public class ParentBeanParamType implements Serializable {
    *
    * @param pCode Value to which {@link #code} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.ParentBeanParamType}
+   * @return {@link ParentBeanParamType}
    */
   public static ParentBeanParamType of( String pNovaKey, String pTkID, DoubleCode pCode ) {
     var lBuilder = ParentBeanParamType.builder();

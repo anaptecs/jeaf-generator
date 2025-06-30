@@ -128,7 +128,7 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
    *
    * @param pALongArray Value to which {@link #aLongArray} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.openapi.base.PrimitiveArraysObjectWithRestrictions}
+   * @return {@link PrimitiveArraysObjectWithRestrictions}
    */
   public static PrimitiveArraysObjectWithRestrictions of( long[] pALongArray ) {
     var lBuilder = PrimitiveArraysObjectWithRestrictions.builder();

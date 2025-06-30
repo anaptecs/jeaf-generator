@@ -76,7 +76,7 @@ public class ValidationTestObject implements ServiceObject {
    *
    * @param pDateOfBirth Value to which {@link #dateOfBirth} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.core.ValidationTestObject}
+   * @return {@link ValidationTestObject}
    */
   public static ValidationTestObject of( String pMyEMail, Calendar pDateOfBirth ) {
     var lBuilder = ValidationTestObject.builder();

@@ -88,7 +88,7 @@ public class BeanParameter implements ServiceObject {
    *
    * @param pOldStyle Value to which {@link #oldStyle} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.openapi.base.BeanParameter}
+   * @return {@link BeanParameter}
    */
   public static BeanParameter of( String pAccessToken, Locale pLanguage, String pOldStyle ) {
     var lBuilder = BeanParameter.builder();

@@ -47,7 +47,7 @@ public class CHStopPlace extends StopPlaceRef {
    *
    * @param pName Value to which {@link #name} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.openapi.base.CHStopPlace}
+   * @return {@link CHStopPlace}
    */
   public static CHStopPlace of( String pName ) {
     var lBuilder = CHStopPlace.builder();

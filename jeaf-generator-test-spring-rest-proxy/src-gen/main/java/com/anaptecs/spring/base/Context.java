@@ -128,7 +128,7 @@ public class Context {
    *
    * @param pIntCode Value to which {@link #intCode} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.Context}
+   * @return {@link Context}
    */
   public static Context of( String pAccessToken, Locale pLanguage, long pResellerID, long pPathParam,
       String pQueryParam, String pLang, IntegerCodeType pIntCode ) {

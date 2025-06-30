@@ -47,7 +47,7 @@ public class Output implements ServiceObject {
    * Convenience method to create new instance of class Output.
    *
    *
-   * @return {@link com.anaptecs.jeaf.junit.otherpackage.Output}
+   * @return {@link Output}
    */
   public static Output of( ) {
     var lBuilder = Output.builder();

@@ -56,7 +56,7 @@ public class ModelWrapperArrayServiceObject implements ServiceObject {
    * Convenience method to create new instance of class ModelWrapperArrayServiceObject.
    *
    *
-   * @return {@link com.anaptecs.jeaf.junit.core.ModelWrapperArrayServiceObject}
+   * @return {@link ModelWrapperArrayServiceObject}
    */
   public static ModelWrapperArrayServiceObject of( ) {
     var lBuilder = ModelWrapperArrayServiceObject.builder();

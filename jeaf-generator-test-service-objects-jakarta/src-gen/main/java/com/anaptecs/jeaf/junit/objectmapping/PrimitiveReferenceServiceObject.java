@@ -112,7 +112,7 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
    * Convenience method to create new instance of class PrimitiveReferenceServiceObject.
    *
    *
-   * @return {@link com.anaptecs.jeaf.junit.objectmapping.PrimitiveReferenceServiceObject}
+   * @return {@link PrimitiveReferenceServiceObject}
    */
   public static PrimitiveReferenceServiceObject of( ) {
     var lBuilder = PrimitiveReferenceServiceObject.builder();

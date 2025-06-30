@@ -45,7 +45,7 @@ public class POI extends Stop {
    *
    * @param pDescription Value to which {@link #description} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.POI}
+   * @return {@link POI}
    */
   public static POI of( String pName, String pDescription ) {
     var lBuilder = POI.builder();

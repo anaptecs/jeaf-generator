@@ -56,7 +56,7 @@ public class WrapperArrayServiceObject implements ServiceObject {
    * Convenience method to create new instance of class WrapperArrayServiceObject.
    *
    *
-   * @return {@link com.anaptecs.jeaf.junit.core.WrapperArrayServiceObject}
+   * @return {@link WrapperArrayServiceObject}
    */
   public static WrapperArrayServiceObject of( ) {
     var lBuilder = WrapperArrayServiceObject.builder();

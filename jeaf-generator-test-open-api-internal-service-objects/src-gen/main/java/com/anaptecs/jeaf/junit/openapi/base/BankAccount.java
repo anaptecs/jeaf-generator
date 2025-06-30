@@ -69,7 +69,7 @@ public class BankAccount implements ServiceObject {
    *
    * @param pIban Value to which {@link #iban} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.openapi.base.BankAccount}
+   * @return {@link BankAccount}
    */
   public static BankAccount of( String pIban ) {
     var lBuilder = BankAccount.builder();

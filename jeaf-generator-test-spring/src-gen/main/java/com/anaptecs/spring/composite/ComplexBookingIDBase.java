@@ -426,7 +426,7 @@ public abstract class ComplexBookingIDBase {
    *
    * @param pAnotherID Value to which {@link #anotherID} should be set.
    *
-   * @return {@link com.anaptecs.spring.composite.ComplexBookingID}
+   * @return {@link ComplexBookingID}
    */
   public static ComplexBookingID of( long pInternalID, String pReferenceID, List<BookingID> pBookingIDs,
       ComplexBookingType pComplexBookingType, Integer pAnotherID ) {

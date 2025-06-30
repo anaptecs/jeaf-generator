@@ -234,7 +234,7 @@ public abstract class SoftLinkBase {
    *
    * @param pRefrenceID Value to which {@link #refrenceID} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.SoftLink}
+   * @return {@link SoftLink}
    */
   public static SoftLink of( long pObjectID, DataUnit pDataUnit, Entity pEntity, String pRefrenceID ) {
     var lBuilder = SoftLink.builder();

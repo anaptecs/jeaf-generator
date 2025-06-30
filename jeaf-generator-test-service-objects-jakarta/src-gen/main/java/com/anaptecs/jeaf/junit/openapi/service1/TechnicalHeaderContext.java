@@ -79,7 +79,7 @@ public class TechnicalHeaderContext implements ServiceObject {
    *
    * @param pAuthenticationToken Value to which {@link #authenticationToken} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.openapi.service1.TechnicalHeaderContext}
+   * @return {@link TechnicalHeaderContext}
    */
   public static TechnicalHeaderContext of( String pReseller, String pAuthenticationToken ) {
     var lBuilder = TechnicalHeaderContext.builder();

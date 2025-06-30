@@ -73,7 +73,7 @@ public class ChildAA extends ChildA {
    *
    * @param pRequiredArray Value to which {@link #requiredArray} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.ChildAA}
+   * @return {@link ChildAA}
    */
   public static ChildAA of( String pParentAttribute, int pChildAAttribute, byte pChildAAAttribute,
       String[] pRequiredArray ) {

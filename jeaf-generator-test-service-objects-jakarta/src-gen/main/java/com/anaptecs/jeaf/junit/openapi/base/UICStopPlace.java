@@ -47,7 +47,7 @@ public class UICStopPlace extends StopPlaceRef {
    *
    * @param pName Value to which {@link #name} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.openapi.base.UICStopPlace}
+   * @return {@link UICStopPlace}
    */
   public static UICStopPlace of( String pName ) {
     var lBuilder = UICStopPlace.builder();

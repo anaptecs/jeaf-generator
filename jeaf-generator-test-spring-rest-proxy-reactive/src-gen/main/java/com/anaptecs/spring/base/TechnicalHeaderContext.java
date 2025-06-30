@@ -49,7 +49,7 @@ public class TechnicalHeaderContext {
    *
    * @param pReseller Value to which {@link #reseller} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.TechnicalHeaderContext}
+   * @return {@link TechnicalHeaderContext}
    */
   public static TechnicalHeaderContext of( String pReseller ) {
     var lBuilder = TechnicalHeaderContext.builder();

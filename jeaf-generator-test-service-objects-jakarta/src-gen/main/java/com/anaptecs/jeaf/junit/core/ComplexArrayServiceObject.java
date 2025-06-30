@@ -62,7 +62,7 @@ public class ComplexArrayServiceObject implements ServiceObject {
    * Convenience method to create new instance of class ComplexArrayServiceObject.
    *
    *
-   * @return {@link com.anaptecs.jeaf.junit.core.ComplexArrayServiceObject}
+   * @return {@link ComplexArrayServiceObject}
    */
   public static ComplexArrayServiceObject of( ) {
     var lBuilder = ComplexArrayServiceObject.builder();

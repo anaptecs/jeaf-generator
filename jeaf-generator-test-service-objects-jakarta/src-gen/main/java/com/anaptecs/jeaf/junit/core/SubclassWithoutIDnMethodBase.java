@@ -156,7 +156,7 @@ public abstract class SubclassWithoutIDnMethodBase extends IdentifiableServiceOb
    *
    * @param pAttr Value to which {@link #attr} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.core.SubclassWithoutIDnMethod}
+   * @return {@link SubclassWithoutIDnMethod}
    */
   public static SubclassWithoutIDnMethod of( Integer pHello, Boolean pAttr ) {
     var lBuilder = SubclassWithoutIDnMethod.builder();

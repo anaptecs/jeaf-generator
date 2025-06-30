@@ -105,7 +105,7 @@ public class CodeTypeUsageTest implements ServiceObject {
    *
    * @param pShortCode Value to which {@link #shortCode} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.openapi.base.CodeTypeUsageTest}
+   * @return {@link CodeTypeUsageTest}
    */
   public static CodeTypeUsageTest of( BooleanCodeType pBooleanCode, Set<ShortCodeType> pShortCodeTypeAssociation,
       StringCodeType pStringCode, ShortCode pShortCode ) {

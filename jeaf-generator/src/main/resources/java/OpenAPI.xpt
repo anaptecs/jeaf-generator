@@ -194,13 +194,13 @@ components:
           «IF element.isStereotypeApplied("OpenAPIDataType") -»
             «EXPAND java::OpenAPIDataType::GenerateOpenAPIDataType(this, null, "", true) FOR ((OpenAPIDataType) element)»
           «ELSE-»
-«EXPAND OpenAPIEnumeration::GenerateOpenAPIEnum FOR ((OpenAPIEnumeration) element)»
+«EXPAND OpenAPIEnumeration::GenerateOpenAPIEnum FOR ((OpenAPIEnumeration) element)-»
           «ENDIF-»
         «ENDIF-»
       «ENDFOREACH-»
     «ELSE-»
       «EXPAND java::OpenAPIType::GenerateOpenAPIType(this) FOREACH this.getOpenAPITypes().sortBy(e|e.name)»
-      «EXPAND OpenAPIEnumeration::GenerateOpenAPIEnum FOREACH this.getOpenAPIEnums().sortBy(e|e.name)»
+      «EXPAND OpenAPIEnumeration::GenerateOpenAPIEnum FOREACH this.getOpenAPIEnums().sortBy(e|e.name)-»
       «EXPAND java::OpenAPIDataType::GenerateOpenAPIDataType(this, null, "", true) FOREACH this.getOpenAPIDataTypes().select(e|e.inline == false).sortBy(e|e.name)»
     «ENDIF-»
   «ENDIF -»
@@ -595,10 +595,27 @@ components:
       «ELSE -»
       description: TODO Please add comment to error response type
       «ENDIF-»
+      «IF this.getResponseTypes().isEmpty == false -»
       content:
         «this.contentType.name.toOpenAPIContentType()»:
           schema:
             $ref: «this.getResponseType().getOpenAPIType(spec)»
+      «ENDIF-»
+      «IF this.hasResponseHeaderGroupsForResponseType() -»
+      headers:
+        «FOREACH this.getHeaderFieldsForResponseType().sortBy(e|e.name) AS headerField -»
+        «headerField.name»:
+          schema:
+            type: «headerField.type.getOpenAPIType(spec)»
+            «IF headerField.defaultValue != null-»
+            default: '«headerField.defaultValue.stringValue().replaceAll("\"", "")»'
+            «ENDIF-»
+            «IF headerField.hasComment()-»
+            description: «getOpenAPICommentStyle()»
+              «headerField.getCommentForOpenAPIDescription("                    ")»
+            «ENDIF-»
+        «ENDFOREACH-»
+      «ENDIF-»
 
 «ENDDEFINE»
 

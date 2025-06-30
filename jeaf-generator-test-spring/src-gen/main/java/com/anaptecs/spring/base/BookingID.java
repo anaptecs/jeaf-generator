@@ -98,7 +98,7 @@ public class BookingID {
    *
    * @param pBookingCode Value to which {@link #bookingCode} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.BookingID}
+   * @return {@link BookingID}
    */
   public static BookingID of( String pPublicBookingID, String pReferenceID, String pExternalRefID,
       InventoryType pInventory, BookingCode pBookingCode ) {

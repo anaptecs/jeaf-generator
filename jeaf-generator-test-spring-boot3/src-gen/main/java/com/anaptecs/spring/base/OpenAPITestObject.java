@@ -130,7 +130,7 @@ public class OpenAPITestObject {
    *
    * @param pNotNullableArray Value to which {@link #notNullableArray} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.OpenAPITestObject}
+   * @return {@link OpenAPITestObject}
    */
   public static OpenAPITestObject of( String pReadOnlyAttribute, String pReadWriteAttribute, int pWriteOnlyAttribute,
       Boolean pNullableAttribute, double pNotNullableAttribute, String pReadOnlyArray, String pReadWriteArray,

@@ -66,7 +66,7 @@ public class Duration {
    *
    * @param pTimeUnit Value to which {@link #timeUnit} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.Duration}
+   * @return {@link Duration}
    */
   public static Duration of( int pValue, TimeUnit pTimeUnit ) {
     var lBuilder = Duration.builder();

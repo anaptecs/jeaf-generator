@@ -129,7 +129,7 @@ public class Context implements ServiceObject {
    *
    * @param pQueryParam Value to which {@link #queryParam} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.openapi.base.Context}
+   * @return {@link Context}
    */
   public static Context of( String pAccessToken, Locale pLanguage, long pResellerID, long pPathParam,
       String pQueryParam ) {

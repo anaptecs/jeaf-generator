@@ -48,7 +48,7 @@ public class SimpleBackwardCompatibility {
    *
    * @param pSuccessorProperty Value to which {@link #successorProperty} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.backward.SimpleBackwardCompatibility}
+   * @return {@link SimpleBackwardCompatibility}
    */
   public static SimpleBackwardCompatibility of( String pDeprecatedProperty, String pSuccessorProperty ) {
     var lBuilder = SimpleBackwardCompatibility.builder();

@@ -59,7 +59,7 @@ public class DeprecatedServiceObject implements ServiceObject {
    *
    * @param pName Value to which {@link #name} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.core.DeprecatedServiceObject}
+   * @return {@link DeprecatedServiceObject}
    */
   public static DeprecatedServiceObject of( String pName ) {
     var lBuilder = DeprecatedServiceObject.builder();

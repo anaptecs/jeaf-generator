@@ -53,7 +53,7 @@ public class NoSubTypesParent {
    * Convenience method to create new instance of class NoSubTypesParent.
    *
    *
-   * @return {@link com.anaptecs.spring.base.NoSubTypesParent}
+   * @return {@link NoSubTypesParent}
    */
   public static NoSubTypesParent of( ) {
     var lBuilder = NoSubTypesParent.builder();

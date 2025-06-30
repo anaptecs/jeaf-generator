@@ -50,7 +50,7 @@ public class Offer implements ServiceObject {
    * Convenience method to create new instance of class Offer.
    *
    *
-   * @return {@link com.anaptecs.jeaf.junit.rest.generics.Offer}
+   * @return {@link Offer}
    */
   public static Offer of( ) {
     var lBuilder = Offer.builder();

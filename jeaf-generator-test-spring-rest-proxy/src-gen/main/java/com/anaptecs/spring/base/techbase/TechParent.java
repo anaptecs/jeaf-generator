@@ -38,7 +38,7 @@ public class TechParent {
    *
    * @param pTechAttribute Value to which {@link #techAttribute} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.techbase.TechParent}
+   * @return {@link TechParent}
    */
   public static TechParent of( String pTechAttribute ) {
     var lBuilder = TechParent.builder();

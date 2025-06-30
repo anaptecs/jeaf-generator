@@ -45,7 +45,7 @@ public class InputSubclass extends Input {
    * Convenience method to create new instance of class InputSubclass.
    *
    *
-   * @return {@link com.anaptecs.jeaf.junit.otherpackage.InputSubclass}
+   * @return {@link InputSubclass}
    */
   public static InputSubclass of( ) {
     var lBuilder = InputSubclass.builder();

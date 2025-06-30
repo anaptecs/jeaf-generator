@@ -82,6 +82,18 @@ public class Response<T> implements ServiceObject {
   }
 
   /**
+   * Convenience method to create new instance of class Response.
+   *
+   *
+   * @return {@link Response<T>}
+   */
+  @SuppressWarnings("unchecked")
+  public static <T> Response<T> of( ) {
+    var lBuilder = Response.builder();
+    return (Response<T>) lBuilder.build();
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>Response</code>.
    */
   public static class Builder<T> {

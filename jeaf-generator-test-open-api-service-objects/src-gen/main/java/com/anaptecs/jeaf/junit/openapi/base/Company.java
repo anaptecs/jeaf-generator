@@ -63,7 +63,7 @@ public class Company extends Partner {
    *
    * @param pName Value to which {@link #name} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.openapi.base.Company}
+   * @return {@link Company}
    */
   public static Company of( String pName ) {
     var lBuilder = Company.builder();

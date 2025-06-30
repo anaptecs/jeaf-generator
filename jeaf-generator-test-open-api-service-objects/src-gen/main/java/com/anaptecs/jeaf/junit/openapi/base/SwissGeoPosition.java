@@ -54,7 +54,7 @@ public class SwissGeoPosition extends GeoPosition {
    *
    * @param pLatitude Value to which {@link #latitude} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.openapi.base.SwissGeoPosition}
+   * @return {@link SwissGeoPosition}
    */
   public static SwissGeoPosition of( String pName, int pLongitude, int pLatitude ) {
     var lBuilder = SwissGeoPosition.builder();

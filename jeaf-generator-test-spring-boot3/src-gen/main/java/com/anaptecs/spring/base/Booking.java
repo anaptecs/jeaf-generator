@@ -69,7 +69,7 @@ public class Booking {
    *
    * @param pInventories Value to which {@link #inventories} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.Booking}
+   * @return {@link Booking}
    */
   public static Booking of( BookingID pBookingID, String pCustomerName, List<InventoryType> pInventories ) {
     var lBuilder = Booking.builder();

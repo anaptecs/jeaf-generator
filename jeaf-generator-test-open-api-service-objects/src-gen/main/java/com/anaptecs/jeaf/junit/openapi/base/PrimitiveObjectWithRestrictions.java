@@ -218,7 +218,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
    *
    * @param pBString Value to which {@link #bString} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.openapi.base.PrimitiveObjectWithRestrictions}
+   * @return {@link PrimitiveObjectWithRestrictions}
    */
   public static PrimitiveObjectWithRestrictions of( boolean pABoolean, Boolean pBBoolean, boolean pCBoolean,
       byte pAByte, Byte pBByte, short pAShort, Short pBShort, int pAInteger, Integer pBInteger, Integer pCInteger,

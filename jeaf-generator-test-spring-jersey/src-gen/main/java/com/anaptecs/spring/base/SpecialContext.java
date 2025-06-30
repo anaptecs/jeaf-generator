@@ -74,7 +74,7 @@ public class SpecialContext extends Context {
    *
    * @param pChannelType Value to which {@link #channelType} should be set.
    *
-   * @return {@link com.anaptecs.spring.base.SpecialContext}
+   * @return {@link SpecialContext}
    */
   public static SpecialContext of( String pAccessToken, Locale pLanguage, long pResellerID, long pPathParam,
       String pQueryParam, String pLang, IntegerCodeType pIntCode, String pSpecificHeader, ChannelType pChannelType ) {

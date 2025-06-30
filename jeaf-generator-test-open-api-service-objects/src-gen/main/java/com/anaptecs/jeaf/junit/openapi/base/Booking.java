@@ -68,7 +68,7 @@ public class Booking implements ServiceObject {
    *
    * @param pBookingID Value to which {@link #bookingID} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.openapi.base.Booking}
+   * @return {@link Booking}
    */
   public static Booking of( BookingID pBookingID ) {
     var lBuilder = Booking.builder();

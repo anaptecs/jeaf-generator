@@ -71,7 +71,7 @@ public class SwiftAccount extends Account {
    *
    * @param pBic Value to which {@link #bic} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.accounting.SwiftAccount}
+   * @return {@link SwiftAccount}
    */
   public static SwiftAccount of( Long pIban, BigDecimal pBalance, Set<Person> pAuthorizedPersons,
       ServiceObjectID pBankID, String pBic ) {

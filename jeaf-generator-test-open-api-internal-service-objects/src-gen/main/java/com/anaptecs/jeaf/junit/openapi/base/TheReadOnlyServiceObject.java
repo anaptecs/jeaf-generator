@@ -102,7 +102,7 @@ public class TheReadOnlyServiceObject implements ServiceObject {
    *
    * @param pName Value to which {@link #name} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.openapi.base.TheReadOnlyServiceObject}
+   * @return {@link TheReadOnlyServiceObject}
    */
   public static TheReadOnlyServiceObject of( String pName ) {
     var lBuilder = TheReadOnlyServiceObject.builder();

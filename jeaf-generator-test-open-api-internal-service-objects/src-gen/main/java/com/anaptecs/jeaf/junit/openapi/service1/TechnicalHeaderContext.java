@@ -81,7 +81,7 @@ public class TechnicalHeaderContext implements ServiceObject {
    *
    * @param pReseller Value to which {@link #reseller} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.openapi.service1.TechnicalHeaderContext}
+   * @return {@link TechnicalHeaderContext}
    */
   public static TechnicalHeaderContext of( String pReseller ) {
     var lBuilder = TechnicalHeaderContext.builder();

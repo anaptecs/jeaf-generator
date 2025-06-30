@@ -58,7 +58,7 @@ public class MappingChild extends MappingParent {
    *
    * @param pValue Value to which {@link #value} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.objectmapping.MappingChild}
+   * @return {@link MappingChild}
    */
   public static MappingChild of( String pName, int pValue ) {
     var lBuilder = MappingChild.builder();

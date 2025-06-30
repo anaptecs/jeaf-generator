@@ -101,7 +101,7 @@ public class QueryBeanParam implements Serializable {
    *
    * @param pMaxResults Value to which {@link #maxResults} should be set.
    *
-   * @return {@link com.anaptecs.spring.service.QueryBeanParam}
+   * @return {@link QueryBeanParam}
    */
   public static QueryBeanParam of( BookingCode pBookingCode, int pMaxResults ) {
     var lBuilder = QueryBeanParam.builder();

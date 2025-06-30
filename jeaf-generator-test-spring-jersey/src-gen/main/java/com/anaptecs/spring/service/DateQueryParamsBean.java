@@ -153,7 +153,7 @@ public class DateQueryParamsBean {
    *
    * @param pSqlDate Value to which {@link #sqlDate} should be set.
    *
-   * @return {@link com.anaptecs.spring.service.DateQueryParamsBean}
+   * @return {@link DateQueryParamsBean}
    */
   public static DateQueryParamsBean of( OffsetDateTime pOffsetDateTime, OffsetTime pOffsetTime,
       LocalDateTime pLocalDateTime, LocalTime pLocalTime, LocalDate pLocalDate, java.util.Date pUtilDate,

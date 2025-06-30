@@ -82,7 +82,7 @@ public class NotInlinedBeanParam implements ServiceObject {
    *
    * @param pBookingID Value to which {@link #bookingID} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.openapi.base.NotInlinedBeanParam}
+   * @return {@link NotInlinedBeanParam}
    */
   public static NotInlinedBeanParam of( String pHeader, DoubleCode pDoubleCode, ExtensibleEnum pExtensibleEnum,
       BookingID pBookingID ) {

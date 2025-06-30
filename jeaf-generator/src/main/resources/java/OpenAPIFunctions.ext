@@ -417,7 +417,7 @@ List[JMM::OpenAPIResponse] getCustomResponses(JMM::OpenAPI3Specification spec):
    spec.clientDependency.supplier.typeSelect(JMM::OpenAPIResponse);
    
 cached List[uml::Class] getResponseHeaderGroups(uml::Operation operation) :
-  operation.clientDependency.supplier.typeSelect(JMM::ResponseHeaderGroup).addAll(operation.interface.clientDependency.supplier.typeSelect(JMM::ResponseHeaderGroup)).toSet();
+  operation.clientDependency.supplier.typeSelect(JMM::ResponseHeaderGroup).addAll(operation.interface.clientDependency.supplier.typeSelect(JMM::ResponseHeaderGroup)).toSet().sortBy(e|e.name);
   
 cached List[uml::Property] getHeaderFields(uml::Operation operation) :
    operation.getResponseHeaderGroups().ownedAttribute;
@@ -425,6 +425,15 @@ cached List[uml::Property] getHeaderFields(uml::Operation operation) :
 cached boolean hasResponseHeaderFields(uml::Operation operation) :
   operation.getResponseHeaderGroups().size > 0; 
 
+cached List[uml::Class] getResponseHeaderGroupsForResponseType(uml::Class response) :
+  response.clientDependency.supplier.typeSelect(JMM::ResponseHeaderGroup).toSet().sortBy(e|e.name);
+  
+cached boolean hasResponseHeaderGroupsForResponseType(uml::Class response):
+  response.getResponseHeaderGroupsForResponseType().size > 0;
+  
+cached List[uml::Property] getHeaderFieldsForResponseType(uml::Class response) :
+   response.getResponseHeaderGroupsForResponseType().ownedAttribute;
+  
 cached boolean hasCustomResponse(JMM::OpenAPI3Specification spec):
   getCustomResponses(spec).size > 0;
   

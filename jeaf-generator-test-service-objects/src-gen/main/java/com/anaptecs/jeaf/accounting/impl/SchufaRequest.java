@@ -80,7 +80,7 @@ public class SchufaRequest implements ServiceObject {
    *
    * @param pDateOfBirth Value to which {@link #dateOfBirth} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.accounting.impl.SchufaRequest}
+   * @return {@link SchufaRequest}
    */
   public static SchufaRequest of( String pName, String pFirstName, Calendar pDateOfBirth ) {
     var lBuilder = SchufaRequest.builder();

@@ -60,7 +60,7 @@ public class BusinessChild extends BusinessParent {
    *
    * @param pChildAttribute Value to which {@link #childAttribute} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.openapi.techbase.BusinessChild}
+   * @return {@link BusinessChild}
    */
   public static BusinessChild of( String pTechAttribute, long pParentAttribute, String pChildAttribute ) {
     var lBuilder = BusinessChild.builder();

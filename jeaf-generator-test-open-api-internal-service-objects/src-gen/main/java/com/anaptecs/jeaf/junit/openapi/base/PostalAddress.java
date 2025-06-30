@@ -89,7 +89,7 @@ public class PostalAddress implements ServiceObject {
    *
    * @param pPostalCode Value to which {@link #postalCode} should be set.
    *
-   * @return {@link com.anaptecs.jeaf.junit.openapi.base.PostalAddress}
+   * @return {@link PostalAddress}
    */
   public static PostalAddress of( String pStreet, String pHouseNumber, String pCity, int pPostalCode ) {
     var lBuilder = PostalAddress.builder();
