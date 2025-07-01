@@ -7,13 +7,6 @@ package com.anaptecs.jeaf.junit.generics;
 
 public class YetAnotherPOJO extends YetAnotherPOJOBase {
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected YetAnotherPOJO( ) {
-  }
-
-  /**
    * Initialize object. Nothing special to do.
    */
   protected YetAnotherPOJO( YetAnotherPOJO.BuilderBase pBuilder ) {

@@ -15,12 +15,13 @@ import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonSetter;
-import com.fasterxml.jackson.annotation.Nulls;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonPropertyOrder(
     value = { "dataUnits", "entity", "objectID", "internalProperty", "derivedProperty", "derivedDataUnits",
       "derivedEntity", "derivedArray", "derivedBoolean", "derivedInt", "derivedString" })
+@JsonDeserialize(builder = MasterDataObject.Builder.class)
 public abstract class MasterDataObjectBase {
   /**
    * Constant for the name of attribute "dataUnits".
@@ -42,7 +43,6 @@ public abstract class MasterDataObjectBase {
    */
   public static final String INTERNALPROPERTY = "internalProperty";
 
-  @JsonSetter(nulls = Nulls.SKIP)
   private List<DataUnit> dataUnits;
 
   private Entity entity;
@@ -50,14 +50,6 @@ public abstract class MasterDataObjectBase {
   private String objectID;
 
   private String internalProperty;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected MasterDataObjectBase( ) {
-    dataUnits = new ArrayList<>();
-  }
 
   /**
    * Initialize object using the passed builder.
@@ -81,6 +73,8 @@ public abstract class MasterDataObjectBase {
    * Class implements builder to create a new instance of class MasterDataObject. As the class has read only attributes
    * or associations instances can not be created directly. Instead this builder class has to be used.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static abstract class BuilderBase {
     private List<DataUnit> dataUnits;
 

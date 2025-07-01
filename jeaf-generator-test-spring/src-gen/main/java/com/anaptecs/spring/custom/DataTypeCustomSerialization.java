@@ -9,7 +9,7 @@ public class DataTypeCustomSerialization extends DataTypeCustomSerializationBase
   /**
    * Initialize object. Nothing special to do.
    */
-  protected DataTypeCustomSerialization( DataTypeCustomSerializationBuilder<?, ?> pBuilder ) {
+  protected DataTypeCustomSerialization( DataTypeCustomSerialization.BuilderBase pBuilder ) {
     super(pBuilder);
   }
 
@@ -18,8 +18,48 @@ public class DataTypeCustomSerialization extends DataTypeCustomSerializationBase
    *
    * @return {@link Builder} New builder that can be used to create new DataTypeCustomSerialization objects.
    */
-  public static DataTypeCustomSerializationBuilder<?, ?> builder( ) {
-    return new DataTypeCustomSerializationBuilderImpl();
+  public static Builder builder( ) {
+    return new Builder();
+  }
+
+  /**
+   * Class implements builder to create a new instance of class DataTypeCustomSerialization. As the class has readonly
+   * attributes or associations instances can not be created directly. Instead this builder class has to be used.
+   */
+  public static class Builder extends DataTypeCustomSerialization.BuilderBase {
+    /**
+     * Use {@link DataTypeCustomSerialization#builder()} instead of protected constructor to create new builder.
+     */
+    protected Builder( ) {
+    }
+
+    /**
+     * Use {@link DataTypeCustomSerialization#builder(DataTypeCustomSerialization)} instead of protected constructor to
+     * create new builder.
+     */
+    protected Builder( DataTypeCustomSerialization pObject ) {
+      super(pObject);
+    }
+
+    /**
+     * Method returns a new builder.
+     *
+     * @return {@link Builder} New builder that can be used to create new DataTypeCustomSerialization objects.
+     */
+    public static Builder newBuilder( ) {
+      return new Builder();
+    }
+
+    /**
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new POJOWithIDnMethod objects. The method never
+     * returns null.
+     */
+    public static Builder newBuilder( DataTypeCustomSerialization pObject ) {
+      return new Builder(pObject);
+    }
   }
 
   /**

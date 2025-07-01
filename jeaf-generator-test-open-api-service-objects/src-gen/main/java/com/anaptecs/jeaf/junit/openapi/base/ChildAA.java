@@ -17,6 +17,7 @@ import javax.validation.constraints.Size;
 import com.anaptecs.annotations.MyNotEmptyProperty;
 import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
  * @author JEAF Generator
@@ -115,6 +116,7 @@ public class ChildAA extends ChildA {
   /**
    * Class implements builder to create a new instance of class <code>ChildAA</code>.
    */
+  @JsonIgnoreProperties(ignoreUnknown = true)
   @Deprecated
   public static class Builder extends ChildA.Builder {
     /**

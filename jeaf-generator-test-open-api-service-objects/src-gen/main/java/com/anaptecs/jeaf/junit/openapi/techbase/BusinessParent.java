@@ -73,6 +73,7 @@ public class BusinessParent extends TechParent {
   /**
    * Class implements builder to create a new instance of class <code>BusinessParent</code>.
    */
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder extends TechParent.Builder {
     private long parentAttribute;
 

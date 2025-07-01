@@ -11,6 +11,7 @@
 «EXTENSION functions::SystemProperties»
 «EXTENSION functions::BeanParam»
 «EXTENSION functions::Builder»
+«EXTENSION functions::POJO»
 
 
 «IMPORT uml»
@@ -20,6 +21,13 @@
 /**
  * Class implements builder to create a new instance of class <code>«this.name»</code>.
  */
+ 
+«IF generateJacksonAnnotations() && this.hasTemplateParameter() == false && this.hasCustomSerialization() == false && this.isCompositeDataType() == false»
+	«IF this.isPOJO()  && this.asPOJO().compositeDataTypeCustomSerialization == false»
+	@com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder(withPrefix = "set")
+	«ENDIF»
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown = true)
+«ENDIF»
 «EXPAND java::Helper::GenerateAnnotations-»
 public static «IF isAbstract == true» abstract «ENDIF»class Builder«this.getTemplateParams()» «IF superClass.isEmpty == false»extends «superClass.get(0).fqnWithoutGenerics()».Builder«superClass.get(0).getTemplateParams()»«ENDIF» {
 	«REM»Generate instance variables for each property«ENDREM»
@@ -217,6 +225,12 @@ public static «IF isAbstract == true» abstract «ENDIF»class Builder«this.ge
 /**
  * Class implements builder to create a new instance of class «this.name». As the class has read only attributes or associations instances can not be created directly. Instead this builder class has to be used.
  */
+«IF generateJacksonAnnotations() && this.hasTemplateParameter() == false && this.hasCustomSerialization() == false»
+	«IF this.isPOJO() && this.asPOJO().compositeDataTypeCustomSerialization == false»
+	@com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder(withPrefix = "set")
+	«ENDIF»
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown = true)
+«ENDIF»
 public static abstract class BuilderBase«this.getTemplateParams()» «IF superClass.isEmpty == false»extends «superClass.get(0).fqnWithoutGenerics()».Builder«superClass.get(0).getTemplateParams()»«ENDIF» {
 	«REM»Generate instance variables for each property«ENDREM»
 	«IF needsToImplementIdentifiable() == true»
@@ -400,7 +414,7 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
 // processing the properties
 «DEFINE DoBuilderPropertyDeclaration FOR Property»
 	«EXPAND java::Helper::GenerateAnnotations-»
-	«IF this.owner.asClass().hasGenericBuilder()»«EXPAND java::Jackson::JSONAlias»«ENDIF»
+	«IF this.owner.asClass().isPOJO()»«EXPAND java::Jackson::JSONAlias»«ENDIF»
     «EXPAND Validation::ValidationAnnotation»
 	private «this.fqn()» «name»«IF this.isRealInitValue() && this.isMultivalued()== false » = «IF this.isJEAFEnumerationProperty()»«this.type.name».«ENDIF»«this.initValue()»«ENDIF»;
 «ENDDEFINE»
@@ -408,7 +422,7 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
 «DEFINE DoBuilderAssociationPropertyDeclaration FOR Property»
 	«IF isNavigable()»
 		«EXPAND java::Helper::GenerateAnnotations-»
-		«IF this.owner.asClass().hasGenericBuilder()»«EXPAND java::Jackson::JSONAlias»«ENDIF»
+		«IF this.owner.asClass().isPOJO()»«EXPAND java::Jackson::JSONAlias»«ENDIF»
 		«IF isMultivalued()»
 			private «this.fqn()» «asInstanceVar()»;
 		«ELSE»
@@ -419,7 +433,7 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
 
 «DEFINE SoftLinkBuilderPropertyDeclaration FOR SoftLink»
         «EXPAND java::Helper::GenerateAnnotations-»
-        «IF this.owner.asClass().hasGenericBuilder()»«EXPAND java::Jackson::JSONAlias»«ENDIF»
+        «IF this.owner.asClass().isPOJO()»«EXPAND java::Jackson::JSONAlias»«ENDIF»
         «EXPAND Validation::ValidationAnnotation»
         «IF isMultivalued()»
             «IF generateValidationAnnotationsForAssociationsFromMultiplicity() && isStatic == false && isTransient() == false && this.hasValidationStereotype() == false && lower > 0»@«getEnterpriseJavaPackage()».validation.constraints.Size(min = «lower»)«ENDIF»

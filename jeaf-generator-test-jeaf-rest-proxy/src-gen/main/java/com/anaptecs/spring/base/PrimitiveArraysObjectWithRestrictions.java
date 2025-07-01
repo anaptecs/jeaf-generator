@@ -16,8 +16,10 @@ import javax.validation.constraints.Size;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(builder = PrimitiveArraysObjectWithRestrictions.Builder.class)
 public class PrimitiveArraysObjectWithRestrictions implements Serializable {
   /**
    * Default serial version UID.
@@ -182,13 +184,6 @@ public class PrimitiveArraysObjectWithRestrictions implements Serializable {
   private String[] bStringArray;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected PrimitiveArraysObjectWithRestrictions( ) {
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
@@ -247,6 +242,8 @@ public class PrimitiveArraysObjectWithRestrictions implements Serializable {
   /**
    * Class implements builder to create a new instance of class <code>PrimitiveArraysObjectWithRestrictions</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     private boolean[] aBooleanArray;
 

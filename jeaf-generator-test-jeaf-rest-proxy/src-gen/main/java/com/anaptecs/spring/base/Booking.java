@@ -17,10 +17,10 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonSetter;
-import com.fasterxml.jackson.annotation.Nulls;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(builder = Booking.Builder.class)
 public class Booking implements Serializable {
   /**
    * Default serial version UID.
@@ -46,16 +46,7 @@ public class Booking implements Serializable {
 
   private String customerName;
 
-  @JsonSetter(nulls = Nulls.SKIP)
   private List<InventoryType> inventories;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected Booking( ) {
-    inventories = new ArrayList<>();
-  }
 
   /**
    * Initialize object using the passed builder.
@@ -118,6 +109,8 @@ public class Booking implements Serializable {
   /**
    * Class implements builder to create a new instance of class <code>Booking</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     private BookingID bookingID;
 

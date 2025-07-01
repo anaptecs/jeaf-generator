@@ -7,13 +7,6 @@ package com.anaptecs.spring.composite;
 
 public class ComplexBookingID extends ComplexBookingIDBase {
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected ComplexBookingID( ) {
-  }
-
-  /**
    * Initialize object. Nothing special to do.
    */
   protected ComplexBookingID( ComplexBookingID.BuilderBase pBuilder ) {

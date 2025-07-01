@@ -29,7 +29,7 @@ public class IntegerCodeType {
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected IntegerCodeType( IntegerCodeTypeBuilder<?, ?> pBuilder ) {
+  protected IntegerCodeType( Builder pBuilder ) {
     // Read attribute values from builder.
     code = pBuilder.code;
   }
@@ -39,8 +39,8 @@ public class IntegerCodeType {
    *
    * @return {@link Builder} New builder that can be used to create new IntegerCodeType objects.
    */
-  public static IntegerCodeTypeBuilder<?, ?> builder( ) {
-    return new IntegerCodeTypeBuilderImpl();
+  public static Builder builder( ) {
+    return new Builder();
   }
 
   /**
@@ -62,19 +62,19 @@ public class IntegerCodeType {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class IntegerCodeTypeBuilder<T extends IntegerCodeType, B extends IntegerCodeTypeBuilder<T, B>> {
+  public static class Builder {
     private int code;
 
     /**
-     * Use {@link IntegerCodeTypeBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link IntegerCodeType#builder()} instead of private constructor to create new builder.
      */
-    protected IntegerCodeTypeBuilder( ) {
+    protected Builder( ) {
     }
 
     /**
-     * Use {@link IntegerCodeTypeBuilder#builder(IntegerCodeType)} instead of private constructor to create new builder.
+     * Use {@link IntegerCodeType#builder(IntegerCodeType)} instead of private constructor to create new builder.
      */
-    protected IntegerCodeTypeBuilder( IntegerCodeType pObject ) {
+    protected Builder( IntegerCodeType pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setCode(pObject.code);
@@ -82,21 +82,36 @@ public class IntegerCodeType {
     }
 
     /**
-     * Method sets attribute {@link #code}.<br/>
+     * Method returns a new builder.
      *
-     * @param pCode Value to which {@link #code} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} New builder that can be used to create new IntegerCodeType objects.
      */
-    public B setCode( int pCode ) {
-      // Assign value to attribute
-      code = pCode;
-      return this.self();
+    public static Builder newBuilder( ) {
+      return new Builder();
     }
 
     /**
-     * Method returns instance of this builder. Operation is part of generic builder pattern.
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new IntegerCodeType objects. The method never
+     * returns null.
      */
-    protected abstract B self( );
+    public static Builder newBuilder( IntegerCodeType pObject ) {
+      return new Builder(pObject);
+    }
+
+    /**
+     * Method sets attribute {@link #code}.<br/>
+     *
+     * @param pCode Value to which {@link #code} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    public Builder setCode( int pCode ) {
+      // Assign value to attribute
+      code = pCode;
+      return this;
+    }
 
     /**
      * Method creates a new instance of class IntegerCodeType. The object will be initialized with the values of the
@@ -104,24 +119,6 @@ public class IntegerCodeType {
      *
      * @return IntegerCodeType Created object. The method never returns null.
      */
-    public abstract T build( );
-  }
-
-  static final class IntegerCodeTypeBuilderImpl
-      extends IntegerCodeTypeBuilder<IntegerCodeType, IntegerCodeTypeBuilderImpl> {
-    protected IntegerCodeTypeBuilderImpl( ) {
-    }
-
-    protected IntegerCodeTypeBuilderImpl( IntegerCodeType pObject ) {
-      super(pObject);
-    }
-
-    @Override
-    protected IntegerCodeTypeBuilderImpl self( ) {
-      return this;
-    }
-
-    @Override
     public IntegerCodeType build( ) {
       IntegerCodeType lObject = new IntegerCodeType(this);
       SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
@@ -203,7 +200,7 @@ public class IntegerCodeType {
    * @return {@link Builder} New builder that can be used to create new IntegerCodeType objects. The method never
    * returns null.
    */
-  public IntegerCodeTypeBuilder<?, ?> toBuilder( ) {
-    return new IntegerCodeTypeBuilderImpl(this);
+  public Builder toBuilder( ) {
+    return new Builder(this);
   }
 }

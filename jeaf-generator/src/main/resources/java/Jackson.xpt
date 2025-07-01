@@ -18,9 +18,6 @@
 
 «DEFINE JacksonClassAnnotations(String ownerClassSuffix) FOR Class»
 	«IF generateJacksonAnnotations() && this.isStereotypeApplied("BeanParam") == false»
-		«IF enableSemVerForJSON() == true && this.hasGenericBuilder() == false»
-		@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown = true)
-		«ENDIF»
 		«IF (this.isTechnicalBaseClass() == false && this.superClass.size == 0 && this.getSubclasses().size > 0 ) ||
 		     (superClass.size > 0 && superClass.first().isTechnicalBaseClass() && this.isTechnicalBaseClass() == false && this.getSubclasses().size > 0) »
 		  «IF enableSemVerForJSON() == false»
@@ -34,24 +31,27 @@
 		 «ENDIF»
 		«ENDIF»
 		«IF needsToImplementIdentifiable() == true»
-		@com.fasterxml.jackson.annotation.JsonIdentityInfo(property = "objectID", generator = com.fasterxml.jackson.annotation.ObjectIdGenerators.PropertyGenerator.class)
+			@com.fasterxml.jackson.annotation.JsonIdentityInfo(property = "objectID", generator = com.fasterxml.jackson.annotation.ObjectIdGenerators.PropertyGenerator.class)
 		«ENDIF»
 		«IF generateJSONAutoDetectAnnotationOnClass()»
-		@com.fasterxml.jackson.annotation.JsonAutoDetect(
-		     fieldVisibility = com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.ANY,
-		     getterVisibility = com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.NONE,
-		     isGetterVisibility = com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.NONE,
-		     setterVisibility = com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.NONE,
-		     creatorVisibility = JsonAutoDetect.Visibility.ANY)
+			@com.fasterxml.jackson.annotation.JsonAutoDetect(
+			     fieldVisibility = com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.ANY,
+			     getterVisibility = com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.NONE,
+			     isGetterVisibility = com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.NONE,
+			     setterVisibility = com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.NONE,
+			     creatorVisibility = JsonAutoDetect.Visibility.ANY)
 		«ENDIF»
 	    «IF this.hasAddToJSONProperty() || this.hasPropertyWithBckwardCompatibility()»
 	        @com.fasterxml.jackson.annotation.JsonPropertyOrder(value = {
 	           «FOREACH this.getAllPropertiesFromHierarchy().select(e|e.isTransient() == false) AS property SEPARATOR ", "»"«property.name»"«ENDFOREACH»
 	        })
 	    «ENDIF»
-	    «IF this.hasGenericBuilder() && this.isAbstract == false && this.isOpenAPIDataType() == false && this.hasCustomSerialization() == false»
-	    @com.fasterxml.jackson.databind.annotation.JsonDeserialize(builder = «this.fqn()»«ownerClassSuffix».«this.builderImplName()».class)
+	    «IF this.isAbstract == false && this.isOpenAPIDataType() == false && this.hasCustomSerialization() == false && this.hasTemplateParameter() == false && this.isPOJO()»
+	    	@com.fasterxml.jackson.databind.annotation.JsonDeserialize(builder = «this.fqn()»«IF this.hasGenericBuilder()»«ownerClassSuffix»«ENDIF».«this.builderImplName()».class)
 	    «ENDIF»
+		«IF enableSemVerForJSON() && this.hasTemplateParameter() && this.isPOJO()»
+			@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown = true)
+		«ENDIF»
 	«ENDIF»
 «ENDDEFINE»
 

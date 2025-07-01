@@ -6,8 +6,10 @@
 package com.anaptecs.spring.base;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(builder = PostalAddress.Builder.class)
 public class PostalAddress {
   /**
    * Constant for the name of attribute "street".
@@ -47,14 +49,6 @@ public class PostalAddress {
    * <b>Default Value:</b> <code>"Germany"</code>
    */
   private String country;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected PostalAddress( ) {
-    country = "Germany";
-  }
 
   /**
    * Initialize object using the passed builder.
@@ -109,6 +103,8 @@ public class PostalAddress {
   /**
    * Class implements builder to create a new instance of class <code>PostalAddress</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     private String street;
 

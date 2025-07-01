@@ -17,10 +17,10 @@ import javax.validation.constraints.Size;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonSetter;
-import com.fasterxml.jackson.annotation.Nulls;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(builder = ChildBB.Builder.class)
 public class ChildBB extends ChildB {
   /**
    * Default serial version UID.
@@ -62,7 +62,6 @@ public class ChildBB extends ChildB {
   private int deprecatedAttribute;
 
   @Deprecated
-  @JsonSetter(nulls = Nulls.SKIP)
   private Set<ChildB> deprecatedBs;
 
   @Deprecated
@@ -71,14 +70,6 @@ public class ChildBB extends ChildB {
   @Deprecated
   @Size(min = 0, max = 4711)
   private byte[] deprecatedArray;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected ChildBB( ) {
-    deprecatedBs = new HashSet<>();
-  }
 
   /**
    * Initialize object using the passed builder.
@@ -144,6 +135,8 @@ public class ChildBB extends ChildB {
   /**
    * Class implements builder to create a new instance of class <code>ChildBB</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder extends ChildB.Builder {
     private Long childBBAttribute;
 

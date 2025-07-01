@@ -6,8 +6,10 @@
 package com.anaptecs.spring.base;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(builder = GeoPosition.Builder.class)
 public class GeoPosition extends PlaceRef {
   /**
    * Constant for the name of attribute "longitude".
@@ -22,13 +24,6 @@ public class GeoPosition extends PlaceRef {
   private int longitude;
 
   private int latitude;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected GeoPosition( ) {
-  }
 
   /**
    * Initialize object using the passed builder.
@@ -78,6 +73,8 @@ public class GeoPosition extends PlaceRef {
   /**
    * Class implements builder to create a new instance of class <code>GeoPosition</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder extends PlaceRef.Builder {
     private int longitude;
 

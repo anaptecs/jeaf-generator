@@ -25,7 +25,7 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
     isGetterVisibility = JsonAutoDetect.Visibility.NONE,
     setterVisibility = JsonAutoDetect.Visibility.NONE,
     creatorVisibility = JsonAutoDetect.Visibility.ANY)
-@JsonDeserialize(builder = BidirectA.BidirectABuilderImpl.class)
+@JsonDeserialize(builder = BidirectA.Builder.class)
 public class BidirectA {
   /**
    * Constant for the name of attribute "transientBs".
@@ -58,7 +58,7 @@ public class BidirectA {
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected BidirectA( BidirectABuilder<?, ?> pBuilder ) {
+  protected BidirectA( Builder pBuilder ) {
     // Read attribute values from builder.
     transientBs = new HashSet<>();
     parent = pBuilder.parent;
@@ -75,8 +75,8 @@ public class BidirectA {
    *
    * @return {@link Builder} New builder that can be used to create new BidirectA objects.
    */
-  public static BidirectABuilder<?, ?> builder( ) {
-    return new BidirectABuilderImpl();
+  public static Builder builder( ) {
+    return new Builder();
   }
 
   /**
@@ -98,19 +98,19 @@ public class BidirectA {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class BidirectABuilder<T extends BidirectA, B extends BidirectABuilder<T, B>> {
+  public static class Builder {
     private BidirectA parent;
 
     /**
-     * Use {@link BidirectABuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link BidirectA#builder()} instead of private constructor to create new builder.
      */
-    protected BidirectABuilder( ) {
+    protected Builder( ) {
     }
 
     /**
-     * Use {@link BidirectABuilder#builder(BidirectA)} instead of private constructor to create new builder.
+     * Use {@link BidirectA#builder(BidirectA)} instead of private constructor to create new builder.
      */
-    protected BidirectABuilder( BidirectA pObject ) {
+    protected Builder( BidirectA pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setParent(pObject.parent);
@@ -118,43 +118,41 @@ public class BidirectA {
     }
 
     /**
-     * Method sets association {@link #parent}.<br/>
+     * Method returns a new builder.
      *
-     * @param pParent Value to which {@link #parent} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} New builder that can be used to create new BidirectA objects.
      */
-    public B setParent( @MyNotNullProperty BidirectA pParent ) {
-      parent = pParent;
-      return this.self();
+    public static Builder newBuilder( ) {
+      return new Builder();
     }
 
     /**
-     * Method returns instance of this builder. Operation is part of generic builder pattern.
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new BidirectA objects. The method never returns
+     * null.
      */
-    protected abstract B self( );
+    public static Builder newBuilder( BidirectA pObject ) {
+      return new Builder(pObject);
+    }
+
+    /**
+     * Method sets association {@link #parent}.<br/>
+     *
+     * @param pParent Value to which {@link #parent} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    public Builder setParent( @MyNotNullProperty BidirectA pParent ) {
+      parent = pParent;
+      return this;
+    }
 
     /**
      * Method creates a new instance of class BidirectA. The object will be initialized with the values of the builder.
      *
      * @return BidirectA Created object. The method never returns null.
      */
-    public abstract T build( );
-  }
-
-  static final class BidirectABuilderImpl extends BidirectABuilder<BidirectA, BidirectABuilderImpl> {
-    protected BidirectABuilderImpl( ) {
-    }
-
-    protected BidirectABuilderImpl( BidirectA pObject ) {
-      super(pObject);
-    }
-
-    @Override
-    protected BidirectABuilderImpl self( ) {
-      return this;
-    }
-
-    @Override
     public BidirectA build( ) {
       BidirectA lObject = new BidirectA(this);
       SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
@@ -364,7 +362,7 @@ public class BidirectA {
    * @return {@link Builder} New builder that can be used to create new BidirectA objects. The method never returns
    * null.
    */
-  public BidirectABuilder<?, ?> toBuilder( ) {
-    return new BidirectABuilderImpl(this);
+  public Builder toBuilder( ) {
+    return new Builder(this);
   }
 }

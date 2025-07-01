@@ -14,6 +14,7 @@ import javax.validation.constraints.NotNull;
 import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.common.ObjectIdentity;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Valid
 public abstract class PersonBase extends Partner {
@@ -56,6 +57,7 @@ public abstract class PersonBase extends Partner {
    * Class implements builder to create a new instance of class Person. As the class has read only attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static abstract class BuilderBase extends Partner.Builder {
     /**
      * <p/>

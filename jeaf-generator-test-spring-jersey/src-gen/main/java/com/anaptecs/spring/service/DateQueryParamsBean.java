@@ -17,6 +17,9 @@ import java.util.Calendar;
 
 import javax.ws.rs.QueryParam;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+
 public class DateQueryParamsBean {
   /**
    * Constant for the name of attribute "offsetDateTime".
@@ -99,13 +102,6 @@ public class DateQueryParamsBean {
   private Date sqlDate;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  public DateQueryParamsBean( ) {
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
@@ -179,6 +175,8 @@ public class DateQueryParamsBean {
   /**
    * Class implements builder to create a new instance of class <code>DateQueryParamsBean</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     private OffsetDateTime offsetDateTime;
 

@@ -13,10 +13,10 @@ import java.util.List;
 
 import com.anaptecs.spring.composite.ComplexBookingID;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonSetter;
-import com.fasterxml.jackson.annotation.Nulls;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(builder = WeirdBooking.Builder.class)
 public class WeirdBooking {
   /**
    * Constant for the name of attribute "booking".
@@ -30,16 +30,7 @@ public class WeirdBooking {
 
   private ComplexBookingID booking;
 
-  @JsonSetter(nulls = Nulls.SKIP)
   private List<ComplexBookingID> additionalBookings;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected WeirdBooking( ) {
-    additionalBookings = new ArrayList<>();
-  }
 
   /**
    * Initialize object using the passed builder.
@@ -83,6 +74,8 @@ public class WeirdBooking {
   /**
    * Class implements builder to create a new instance of class <code>WeirdBooking</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     private ComplexBookingID booking;
 

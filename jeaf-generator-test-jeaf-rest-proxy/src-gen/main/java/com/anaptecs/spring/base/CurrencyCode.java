@@ -14,8 +14,8 @@ import javax.validation.constraints.Size;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class CurrencyCode implements Serializable {
   /**
    * Default serial version UID.
@@ -37,14 +37,6 @@ public class CurrencyCode implements Serializable {
    */
   @Size(min = 3, max = 3)
   private String code;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected CurrencyCode( ) {
-    code = "CHF";
-  }
 
   /**
    * Initialize object using the passed builder.
@@ -79,6 +71,8 @@ public class CurrencyCode implements Serializable {
   /**
    * Class implements builder to create a new instance of class <code>CurrencyCode</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     /**
      * ISO 4217 currency code. <br/>

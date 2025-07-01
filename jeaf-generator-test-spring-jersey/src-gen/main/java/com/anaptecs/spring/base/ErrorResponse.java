@@ -6,6 +6,8 @@
 package com.anaptecs.spring.base;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 /**
  * Generic error response type that is used in all cases.
@@ -13,15 +15,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(builder = ErrorResponse.Builder.class)
 public class ErrorResponse {
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected ErrorResponse( ) {
-  }
-
   /**
    * Initialize object using the passed builder.
    *
@@ -53,6 +48,8 @@ public class ErrorResponse {
   /**
    * Class implements builder to create a new instance of class <code>ErrorResponse</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     /**
      * Use {@link ErrorResponse#builder()} instead of private constructor to create new builder.

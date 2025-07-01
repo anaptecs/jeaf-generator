@@ -35,7 +35,7 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
     isGetterVisibility = JsonAutoDetect.Visibility.NONE,
     setterVisibility = JsonAutoDetect.Visibility.NONE,
     creatorVisibility = JsonAutoDetect.Visibility.ANY)
-@JsonDeserialize(builder = MoneyAmount.MoneyAmountBuilderImpl.class)
+@JsonDeserialize(builder = MoneyAmount.Builder.class)
 public class MoneyAmount {
   /**
    * Constant for the name of attribute "amount".
@@ -61,7 +61,7 @@ public class MoneyAmount {
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected MoneyAmount( MoneyAmountBuilder<?, ?> pBuilder ) {
+  protected MoneyAmount( Builder pBuilder ) {
     // Read attribute values from builder.
     amount = pBuilder.amount;
     currencyCode = pBuilder.currencyCode;
@@ -72,8 +72,8 @@ public class MoneyAmount {
    *
    * @return {@link Builder} New builder that can be used to create new MoneyAmount objects.
    */
-  public static MoneyAmountBuilder<?, ?> builder( ) {
-    return new MoneyAmountBuilderImpl();
+  public static Builder builder( ) {
+    return new Builder();
   }
 
   /**
@@ -98,7 +98,7 @@ public class MoneyAmount {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class MoneyAmountBuilder<T extends MoneyAmount, B extends MoneyAmountBuilder<T, B>> {
+  public static class Builder {
     /**
      * The amount of money. Attribute is always set.
      */
@@ -109,15 +109,15 @@ public class MoneyAmount {
     private CurrencyCode currencyCode;
 
     /**
-     * Use {@link MoneyAmountBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link MoneyAmount#builder()} instead of private constructor to create new builder.
      */
-    protected MoneyAmountBuilder( ) {
+    protected Builder( ) {
     }
 
     /**
-     * Use {@link MoneyAmountBuilder#builder(MoneyAmount)} instead of private constructor to create new builder.
+     * Use {@link MoneyAmount#builder(MoneyAmount)} instead of private constructor to create new builder.
      */
-    protected MoneyAmountBuilder( MoneyAmount pObject ) {
+    protected Builder( MoneyAmount pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setAmount(pObject.amount);
@@ -126,33 +126,48 @@ public class MoneyAmount {
     }
 
     /**
+     * Method returns a new builder.
+     *
+     * @return {@link Builder} New builder that can be used to create new MoneyAmount objects.
+     */
+    public static Builder newBuilder( ) {
+      return new Builder();
+    }
+
+    /**
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new MoneyAmount objects. The method never returns
+     * null.
+     */
+    public static Builder newBuilder( MoneyAmount pObject ) {
+      return new Builder(pObject);
+    }
+
+    /**
      * Method sets attribute {@link #amount}.<br/>
      *
      * @param pAmount Value to which {@link #amount} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setAmount( @MyNotNullProperty BigDecimal pAmount ) {
+    public Builder setAmount( @MyNotNullProperty BigDecimal pAmount ) {
       // Assign value to attribute
       amount = pAmount;
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets attribute {@link #currencyCode}.<br/>
      *
      * @param pCurrencyCode Value to which {@link #currencyCode} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setCurrencyCode( @MyNotNullProperty CurrencyCode pCurrencyCode ) {
+    public Builder setCurrencyCode( @MyNotNullProperty CurrencyCode pCurrencyCode ) {
       // Assign value to attribute
       currencyCode = pCurrencyCode;
-      return this.self();
+      return this;
     }
-
-    /**
-     * Method returns instance of this builder. Operation is part of generic builder pattern.
-     */
-    protected abstract B self( );
 
     /**
      * Method creates a new instance of class MoneyAmount. The object will be initialized with the values of the
@@ -160,23 +175,6 @@ public class MoneyAmount {
      *
      * @return MoneyAmount Created object. The method never returns null.
      */
-    public abstract T build( );
-  }
-
-  static final class MoneyAmountBuilderImpl extends MoneyAmountBuilder<MoneyAmount, MoneyAmountBuilderImpl> {
-    protected MoneyAmountBuilderImpl( ) {
-    }
-
-    protected MoneyAmountBuilderImpl( MoneyAmount pObject ) {
-      super(pObject);
-    }
-
-    @Override
-    protected MoneyAmountBuilderImpl self( ) {
-      return this;
-    }
-
-    @Override
     public MoneyAmount build( ) {
       MoneyAmount lObject = new MoneyAmount(this);
       SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
@@ -272,7 +270,7 @@ public class MoneyAmount {
    * @return {@link Builder} New builder that can be used to create new MoneyAmount objects. The method never returns
    * null.
    */
-  public MoneyAmountBuilder<?, ?> toBuilder( ) {
-    return new MoneyAmountBuilderImpl(this);
+  public Builder toBuilder( ) {
+    return new Builder(this);
   }
 }

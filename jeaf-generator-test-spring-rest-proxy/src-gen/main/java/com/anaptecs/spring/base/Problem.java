@@ -47,18 +47,6 @@ public class Problem {
   private final String instance;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected Problem( ) {
-    title = null;
-    status = 0;
-    type = null;
-    detail = null;
-    instance = null;
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.

@@ -10,9 +10,11 @@ import java.util.Arrays;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Deprecated
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(builder = ChildAA.Builder.class)
 public class ChildAA extends ChildA {
   /**
    * Constant for the name of attribute "childAAAttribute".
@@ -40,13 +42,6 @@ public class ChildAA extends ChildA {
   private int[] sizedArray;
 
   private String[] requiredArray;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected ChildAA( ) {
-  }
 
   /**
    * Initialize object using the passed builder.
@@ -98,6 +93,8 @@ public class ChildAA extends ChildA {
   /**
    * Class implements builder to create a new instance of class <code>ChildAA</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   @Deprecated
   public static class Builder extends ChildA.Builder {
     /**

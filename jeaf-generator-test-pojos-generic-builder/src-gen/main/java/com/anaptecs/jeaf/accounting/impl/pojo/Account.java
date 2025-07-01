@@ -11,7 +11,7 @@ public class Account extends AccountBase {
   /**
    * Initialize object. Nothing special to do.
    */
-  protected Account( AccountBuilder<?, ?> pBuilder ) {
+  protected Account( Account.BuilderBase pBuilder ) {
     super(pBuilder);
   }
 
@@ -20,8 +20,27 @@ public class Account extends AccountBase {
    *
    * @return {@link Builder} New builder that can be used to create new Account objects.
    */
-  public static AccountBuilder<?, ?> builder( ) {
-    return new AccountBuilderImpl();
+  public static Builder builder( ) {
+    return new Builder();
+  }
+
+  /**
+   * Class implements builder to create a new instance of class Account. As the class has readonly attributes or
+   * associations instances can not be created directly. Instead this builder class has to be used.
+   */
+  public static class Builder extends Account.BuilderBase {
+    /**
+     * Use {@link Account#builder()} instead of protected constructor to create new builder.
+     */
+    protected Builder( ) {
+    }
+
+    /**
+     * Use {@link Account#builder(Account)} instead of protected constructor to create new builder.
+     */
+    protected Builder( Account pObject ) {
+      super(pObject);
+    }
   }
 
   /**

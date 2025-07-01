@@ -7,6 +7,8 @@ package com.anaptecs.jeaf.junit.openapi.base;
 
 import javax.validation.Valid;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Valid
 public abstract class StopPlaceRef extends PlaceRef {
   /**
@@ -34,6 +36,7 @@ public abstract class StopPlaceRef extends PlaceRef {
   /**
    * Class implements builder to create a new instance of class <code>StopPlaceRef</code>.
    */
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static abstract class Builder extends PlaceRef.Builder {
     /**
      * Use {@link StopPlaceRef#builder()} instead of private constructor to create new builder.

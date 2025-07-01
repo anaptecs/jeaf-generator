@@ -23,7 +23,7 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
-@JsonDeserialize(builder = SoftLinkPartner.SoftLinkPartnerBuilderImpl.class)
+@JsonDeserialize(builder = SoftLinkPartner.Builder.class)
 public class SoftLinkPartner {
   /**
    * Constant for the name of attribute "theBackLink".
@@ -66,7 +66,7 @@ public class SoftLinkPartner {
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected SoftLinkPartner( SoftLinkPartnerBuilder<?, ?> pBuilder ) {
+  protected SoftLinkPartner( Builder pBuilder ) {
     // Ensure that builder is not null.
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
@@ -90,8 +90,8 @@ public class SoftLinkPartner {
    *
    * @return {@link Builder} New builder that can be used to create new SoftLinkPartner objects.
    */
-  public static SoftLinkPartnerBuilder<?, ?> builder( ) {
-    return new SoftLinkPartnerBuilderImpl();
+  public static Builder builder( ) {
+    return new Builder();
   }
 
   /**
@@ -113,7 +113,7 @@ public class SoftLinkPartner {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class SoftLinkPartnerBuilder<T extends SoftLinkPartner, B extends SoftLinkPartnerBuilder<T, B>> {
+  public static class Builder {
     /**
      * <p/>
      * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #theBackLink} is
@@ -136,15 +136,15 @@ public class SoftLinkPartner {
     private List<Long> longLinkIDs;
 
     /**
-     * Use {@link SoftLinkPartnerBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link SoftLinkPartner#builder()} instead of private constructor to create new builder.
      */
-    protected SoftLinkPartnerBuilder( ) {
+    protected Builder( ) {
     }
 
     /**
-     * Use {@link SoftLinkPartnerBuilder#builder(SoftLinkPartner)} instead of private constructor to create new builder.
+     * Use {@link SoftLinkPartner#builder(SoftLinkPartner)} instead of private constructor to create new builder.
      */
-    protected SoftLinkPartnerBuilder( SoftLinkPartner pObject ) {
+    protected Builder( SoftLinkPartner pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setTheBackLinkID(pObject.theBackLinkID);
@@ -157,20 +157,20 @@ public class SoftLinkPartner {
      * Method sets association {@link #theBackLink}.<br/>
      *
      * @param pTheBackLink Value to which {@link #theBackLink} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setTheBackLinkID( String pTheBackLink ) {
+    public Builder setTheBackLinkID( String pTheBackLink ) {
       theBackLinkID = pTheBackLink;
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets association {@link #childLinks}.<br/>
      *
      * @param pChildLinks Collection to which {@link #childLinks} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setChildLinkIDs( Set<SoftLinkID> pChildLinks ) {
+    public Builder setChildLinkIDs( Set<SoftLinkID> pChildLinks ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pChildLinks != null) {
         childLinkIDs = new HashSet<SoftLinkID>(pChildLinks);
@@ -178,16 +178,16 @@ public class SoftLinkPartner {
       else {
         childLinkIDs = null;
       }
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets association {@link #longLinks}.<br/>
      *
      * @param pLongLinks Collection to which {@link #longLinks} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setLongLinkIDs( List<Long> pLongLinks ) {
+    public Builder setLongLinkIDs( List<Long> pLongLinks ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pLongLinks != null) {
         longLinkIDs = new ArrayList<Long>(pLongLinks);
@@ -195,13 +195,8 @@ public class SoftLinkPartner {
       else {
         longLinkIDs = null;
       }
-      return this.self();
+      return this;
     }
-
-    /**
-     * Method returns instance of this builder. Operation is part of generic builder pattern.
-     */
-    protected abstract B self( );
 
     /**
      * Method creates a new instance of class SoftLinkPartner. The object will be initialized with the values of the
@@ -209,7 +204,9 @@ public class SoftLinkPartner {
      *
      * @return SoftLinkPartner Created object. The method never returns null.
      */
-    public abstract T build( );
+    public SoftLinkPartner build( ) {
+      return new SoftLinkPartner(this);
+    }
 
     /**
      * Method creates a new validated instance of class SoftLinkPartner. The object will be initialized with the values
@@ -222,26 +219,6 @@ public class SoftLinkPartner {
       SoftLinkPartner lObject = this.build();
       ValidationTools.getValidationTools().enforceObjectValidation(lObject);
       return lObject;
-    }
-  }
-
-  static final class SoftLinkPartnerBuilderImpl
-      extends SoftLinkPartnerBuilder<SoftLinkPartner, SoftLinkPartnerBuilderImpl> {
-    protected SoftLinkPartnerBuilderImpl( ) {
-    }
-
-    protected SoftLinkPartnerBuilderImpl( SoftLinkPartner pObject ) {
-      super(pObject);
-    }
-
-    @Override
-    protected SoftLinkPartnerBuilderImpl self( ) {
-      return this;
-    }
-
-    @Override
-    public SoftLinkPartner build( ) {
-      return new SoftLinkPartner(this);
     }
   }
 
@@ -384,7 +361,7 @@ public class SoftLinkPartner {
    * @return {@link Builder} New builder that can be used to create new SoftLinkPartner objects. The method never
    * returns null.
    */
-  public SoftLinkPartnerBuilder<?, ?> toBuilder( ) {
-    return new SoftLinkPartnerBuilderImpl(this);
+  public Builder toBuilder( ) {
+    return new Builder(this);
   }
 }

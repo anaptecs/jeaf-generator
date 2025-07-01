@@ -20,6 +20,8 @@ import javax.ws.rs.QueryParam;
 
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 /**
  * Type with default comment.
@@ -102,13 +104,6 @@ public class Context implements Serializable {
   private Map<String, String> customHeaders = new HashMap<String, String>();
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  public Context( ) {
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
@@ -189,6 +184,8 @@ public class Context implements Serializable {
   /**
    * Class implements builder to create a new instance of class <code>Context</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     @NotEmpty
     private String accessToken;

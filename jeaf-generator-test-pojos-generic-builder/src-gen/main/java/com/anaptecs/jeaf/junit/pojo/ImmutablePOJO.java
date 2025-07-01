@@ -18,7 +18,7 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
-@JsonDeserialize(builder = ImmutablePOJO.ImmutablePOJOBuilderImpl.class)
+@JsonDeserialize(builder = ImmutablePOJO.Builder.class)
 public class ImmutablePOJO {
   /**
    * Constant for the name of attribute "name".
@@ -39,7 +39,7 @@ public class ImmutablePOJO {
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected ImmutablePOJO( ImmutablePOJOBuilder<?, ?> pBuilder ) {
+  protected ImmutablePOJO( Builder pBuilder ) {
     // Ensure that builder is not null.
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
@@ -52,8 +52,8 @@ public class ImmutablePOJO {
    *
    * @return {@link Builder} New builder that can be used to create new ImmutablePOJO objects.
    */
-  public static ImmutablePOJOBuilder<?, ?> builder( ) {
-    return new ImmutablePOJOBuilderImpl();
+  public static Builder builder( ) {
+    return new Builder();
   }
 
   /**
@@ -78,21 +78,21 @@ public class ImmutablePOJO {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class ImmutablePOJOBuilder<T extends ImmutablePOJO, B extends ImmutablePOJOBuilder<T, B>> {
+  public static class Builder {
     private String name;
 
     private Integer something;
 
     /**
-     * Use {@link ImmutablePOJOBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link ImmutablePOJO#builder()} instead of private constructor to create new builder.
      */
-    protected ImmutablePOJOBuilder( ) {
+    protected Builder( ) {
     }
 
     /**
-     * Use {@link ImmutablePOJOBuilder#builder(ImmutablePOJO)} instead of private constructor to create new builder.
+     * Use {@link ImmutablePOJO#builder(ImmutablePOJO)} instead of private constructor to create new builder.
      */
-    protected ImmutablePOJOBuilder( ImmutablePOJO pObject ) {
+    protected Builder( ImmutablePOJO pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setName(pObject.name);
@@ -104,30 +104,25 @@ public class ImmutablePOJO {
      * Method sets attribute {@link #name}.<br/>
      *
      * @param pName Value to which {@link #name} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setName( String pName ) {
+    public Builder setName( String pName ) {
       // Assign value to attribute
       name = pName;
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets attribute {@link #something}.<br/>
      *
      * @param pSomething Value to which {@link #something} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setSomething( Integer pSomething ) {
+    public Builder setSomething( Integer pSomething ) {
       // Assign value to attribute
       something = pSomething;
-      return this.self();
+      return this;
     }
-
-    /**
-     * Method returns instance of this builder. Operation is part of generic builder pattern.
-     */
-    protected abstract B self( );
 
     /**
      * Method creates a new instance of class ImmutablePOJO. The object will be initialized with the values of the
@@ -135,7 +130,11 @@ public class ImmutablePOJO {
      *
      * @return ImmutablePOJO Created object. The method never returns null.
      */
-    public abstract T build( );
+    public ImmutablePOJO build( ) {
+      ImmutablePOJO lObject = new ImmutablePOJO(this);
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
+    }
 
     /**
      * Method creates a new validated instance of class ImmutablePOJO. The object will be initialized with the values of
@@ -146,27 +145,6 @@ public class ImmutablePOJO {
      */
     public ImmutablePOJO buildValidated( ) throws ConstraintViolationException {
       ImmutablePOJO lObject = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
-      return lObject;
-    }
-  }
-
-  static final class ImmutablePOJOBuilderImpl extends ImmutablePOJOBuilder<ImmutablePOJO, ImmutablePOJOBuilderImpl> {
-    protected ImmutablePOJOBuilderImpl( ) {
-    }
-
-    protected ImmutablePOJOBuilderImpl( ImmutablePOJO pObject ) {
-      super(pObject);
-    }
-
-    @Override
-    protected ImmutablePOJOBuilderImpl self( ) {
-      return this;
-    }
-
-    @Override
-    public ImmutablePOJO build( ) {
-      ImmutablePOJO lObject = new ImmutablePOJO(this);
       ValidationTools.getValidationTools().enforceObjectValidation(lObject);
       return lObject;
     }
@@ -257,7 +235,7 @@ public class ImmutablePOJO {
    * @return {@link Builder} New builder that can be used to create new ImmutablePOJO objects. The method never returns
    * null.
    */
-  public ImmutablePOJOBuilder<?, ?> toBuilder( ) {
-    return new ImmutablePOJOBuilderImpl(this);
+  public Builder toBuilder( ) {
+    return new Builder(this);
   }
 }

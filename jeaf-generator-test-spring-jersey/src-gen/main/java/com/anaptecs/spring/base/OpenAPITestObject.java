@@ -6,8 +6,10 @@
 package com.anaptecs.spring.base;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(builder = OpenAPITestObject.Builder.class)
 public class OpenAPITestObject {
   /**
    * Constant for the name of attribute "readOnlyAttribute".
@@ -78,13 +80,6 @@ public class OpenAPITestObject {
   private double nullableArray;
 
   private double notNullableArray;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected OpenAPITestObject( ) {
-  }
 
   /**
    * Initialize object using the passed builder.
@@ -160,6 +155,8 @@ public class OpenAPITestObject {
   /**
    * Class implements builder to create a new instance of class <code>OpenAPITestObject</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     private String readOnlyAttribute;
 

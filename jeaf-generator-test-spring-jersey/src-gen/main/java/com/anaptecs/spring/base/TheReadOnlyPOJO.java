@@ -11,10 +11,10 @@ import java.util.Collections;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonSetter;
-import com.fasterxml.jackson.annotation.Nulls;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(builder = TheReadOnlyPOJO.Builder.class)
 public class TheReadOnlyPOJO {
   /**
    * Constant for the name of attribute "dataUnit".
@@ -42,19 +42,7 @@ public class TheReadOnlyPOJO {
 
   private final int[] ints;
 
-  @JsonSetter(nulls = Nulls.SKIP)
   private final List<Entity> entities;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected TheReadOnlyPOJO( ) {
-    dataUnit = null;
-    name = null;
-    ints = null;
-    entities = new ArrayList<>();
-  }
 
   /**
    * Initialize object using the passed builder.
@@ -100,6 +88,8 @@ public class TheReadOnlyPOJO {
   /**
    * Class implements builder to create a new instance of class <code>TheReadOnlyPOJO</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     private DataUnit dataUnit;
 

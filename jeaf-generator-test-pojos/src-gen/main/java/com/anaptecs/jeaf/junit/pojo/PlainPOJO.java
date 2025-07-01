@@ -7,13 +7,6 @@ package com.anaptecs.jeaf.junit.pojo;
 
 public class PlainPOJO extends PlainPOJOBase {
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected PlainPOJO( ) {
-  }
-
-  /**
    * Initialize object. Nothing special to do.
    */
   protected PlainPOJO( PlainPOJO.BuilderBase pBuilder ) {

@@ -20,12 +20,12 @@ import javax.validation.constraints.NotBlank;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonSetter;
-import com.fasterxml.jackson.annotation.Nulls;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(builder = Customer.Builder.class)
 public abstract class CustomerBase extends Partner {
   /**
    * Constant for the name of attribute "name".
@@ -56,16 +56,7 @@ public abstract class CustomerBase extends Partner {
   @Email()
   private String email;
 
-  @JsonSetter(nulls = Nulls.SKIP)
   private Set<Account> accounts;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected CustomerBase( ) {
-    accounts = new HashSet<>();
-  }
 
   /**
    * Initialize object using the passed builder.
@@ -91,6 +82,8 @@ public abstract class CustomerBase extends Partner {
    * Class implements builder to create a new instance of class Customer. As the class has read only attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static abstract class BuilderBase extends Partner.Builder {
     @NotBlank
     private String name;

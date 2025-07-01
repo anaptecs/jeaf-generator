@@ -172,36 +172,6 @@ public class PrimitiveArraysObject {
   private final String[] cStringArray;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected PrimitiveArraysObject( ) {
-    aBooleanArray = null;
-    bBooleanArray = null;
-    cBooleanArray = null;
-    aByteArray = null;
-    bByteArray = null;
-    aShortArray = null;
-    bShortArray = null;
-    aIntegerArray = null;
-    bIntegerArray = null;
-    cIntegerArray = null;
-    aLongArray = null;
-    bLongArray = null;
-    aBigIntegerArray = null;
-    aCharacterArray = null;
-    bCharacterArray = null;
-    aFloatArray = null;
-    bFloatArray = null;
-    aDoubleArray = null;
-    bDoubleArray = null;
-    aBigDecimalArray = null;
-    aStringArray = null;
-    bStringArray = null;
-    cStringArray = null;
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
