@@ -9,8 +9,10 @@ import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(builder = BusinessChild.Builder.class)
 public class BusinessChild extends BusinessParent {
   /**
    * Default serial version UID.
@@ -23,13 +25,6 @@ public class BusinessChild extends BusinessParent {
   public static final String CHILDATTRIBUTE = "childAttribute";
 
   private String childAttribute;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected BusinessChild( ) {
-  }
 
   /**
    * Initialize object using the passed builder.
@@ -86,6 +81,8 @@ public class BusinessChild extends BusinessParent {
   /**
    * Class implements builder to create a new instance of class <code>BusinessChild</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder extends BusinessParent.Builder {
     private String childAttribute;
 

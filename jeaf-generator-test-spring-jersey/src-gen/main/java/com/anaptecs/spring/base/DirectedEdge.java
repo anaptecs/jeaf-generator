@@ -8,8 +8,10 @@ package com.anaptecs.spring.base;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(builder = DirectedEdge.Builder.class)
 public class DirectedEdge {
   /**
    * Constant for the name of attribute "start".
@@ -38,13 +40,6 @@ public class DirectedEdge {
 
   @JsonProperty("previousName")
   private String link;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected DirectedEdge( ) {
-  }
 
   /**
    * Initialize object using the passed builder.
@@ -87,6 +82,8 @@ public class DirectedEdge {
   /**
    * Class implements builder to create a new instance of class <code>DirectedEdge</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     /**
      * The start
@@ -98,6 +95,7 @@ public class DirectedEdge {
      */
     private Stop end;
 
+    @JsonProperty("previousName")
     private String link;
 
     /**

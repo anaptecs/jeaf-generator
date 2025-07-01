@@ -29,7 +29,7 @@ public class ShortCodeType {
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected ShortCodeType( ShortCodeTypeBuilder<?, ?> pBuilder ) {
+  protected ShortCodeType( Builder pBuilder ) {
     // Read attribute values from builder.
     code = pBuilder.code;
   }
@@ -47,8 +47,8 @@ public class ShortCodeType {
    *
    * @return {@link Builder} New builder that can be used to create new ShortCodeType objects.
    */
-  public static ShortCodeTypeBuilder<?, ?> builder( ) {
-    return new ShortCodeTypeBuilderImpl();
+  public static Builder builder( ) {
+    return new Builder();
   }
 
   /**
@@ -68,19 +68,19 @@ public class ShortCodeType {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class ShortCodeTypeBuilder<T extends ShortCodeType, B extends ShortCodeTypeBuilder<T, B>> {
+  public static class Builder {
     private short code;
 
     /**
-     * Use {@link ShortCodeTypeBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link ShortCodeType#builder()} instead of private constructor to create new builder.
      */
-    protected ShortCodeTypeBuilder( ) {
+    protected Builder( ) {
     }
 
     /**
-     * Use {@link ShortCodeTypeBuilder#builder(ShortCodeType)} instead of private constructor to create new builder.
+     * Use {@link ShortCodeType#builder(ShortCodeType)} instead of private constructor to create new builder.
      */
-    protected ShortCodeTypeBuilder( ShortCodeType pObject ) {
+    protected Builder( ShortCodeType pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setCode(pObject.code);
@@ -88,21 +88,36 @@ public class ShortCodeType {
     }
 
     /**
-     * Method sets attribute {@link #code}.<br/>
+     * Method returns a new builder.
      *
-     * @param pCode Value to which {@link #code} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} New builder that can be used to create new ShortCodeType objects.
      */
-    public B setCode( short pCode ) {
-      // Assign value to attribute
-      code = pCode;
-      return this.self();
+    public static Builder newBuilder( ) {
+      return new Builder();
     }
 
     /**
-     * Method returns instance of this builder. Operation is part of generic builder pattern.
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new ShortCodeType objects. The method never
+     * returns null.
      */
-    protected abstract B self( );
+    public static Builder newBuilder( ShortCodeType pObject ) {
+      return new Builder(pObject);
+    }
+
+    /**
+     * Method sets attribute {@link #code}.<br/>
+     *
+     * @param pCode Value to which {@link #code} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    public Builder setCode( short pCode ) {
+      // Assign value to attribute
+      code = pCode;
+      return this;
+    }
 
     /**
      * Method creates a new instance of class ShortCodeType. The object will be initialized with the values of the
@@ -110,23 +125,6 @@ public class ShortCodeType {
      *
      * @return ShortCodeType Created object. The method never returns null.
      */
-    public abstract T build( );
-  }
-
-  static final class ShortCodeTypeBuilderImpl extends ShortCodeTypeBuilder<ShortCodeType, ShortCodeTypeBuilderImpl> {
-    protected ShortCodeTypeBuilderImpl( ) {
-    }
-
-    protected ShortCodeTypeBuilderImpl( ShortCodeType pObject ) {
-      super(pObject);
-    }
-
-    @Override
-    protected ShortCodeTypeBuilderImpl self( ) {
-      return this;
-    }
-
-    @Override
     public ShortCodeType build( ) {
       ShortCodeType lObject = new ShortCodeType(this);
       SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
@@ -208,7 +206,7 @@ public class ShortCodeType {
    * @return {@link Builder} New builder that can be used to create new ShortCodeType objects. The method never returns
    * null.
    */
-  public ShortCodeTypeBuilder<?, ?> toBuilder( ) {
-    return new ShortCodeTypeBuilderImpl(this);
+  public Builder toBuilder( ) {
+    return new Builder(this);
   }
 }

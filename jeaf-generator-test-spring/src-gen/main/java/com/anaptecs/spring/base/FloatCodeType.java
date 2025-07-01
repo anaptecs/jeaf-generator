@@ -29,7 +29,7 @@ public class FloatCodeType {
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected FloatCodeType( FloatCodeTypeBuilder<?, ?> pBuilder ) {
+  protected FloatCodeType( Builder pBuilder ) {
     // Read attribute values from builder.
     code = pBuilder.code;
   }
@@ -47,8 +47,8 @@ public class FloatCodeType {
    *
    * @return {@link Builder} New builder that can be used to create new FloatCodeType objects.
    */
-  public static FloatCodeTypeBuilder<?, ?> builder( ) {
-    return new FloatCodeTypeBuilderImpl();
+  public static Builder builder( ) {
+    return new Builder();
   }
 
   /**
@@ -68,19 +68,19 @@ public class FloatCodeType {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class FloatCodeTypeBuilder<T extends FloatCodeType, B extends FloatCodeTypeBuilder<T, B>> {
+  public static class Builder {
     private float code;
 
     /**
-     * Use {@link FloatCodeTypeBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link FloatCodeType#builder()} instead of private constructor to create new builder.
      */
-    protected FloatCodeTypeBuilder( ) {
+    protected Builder( ) {
     }
 
     /**
-     * Use {@link FloatCodeTypeBuilder#builder(FloatCodeType)} instead of private constructor to create new builder.
+     * Use {@link FloatCodeType#builder(FloatCodeType)} instead of private constructor to create new builder.
      */
-    protected FloatCodeTypeBuilder( FloatCodeType pObject ) {
+    protected Builder( FloatCodeType pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setCode(pObject.code);
@@ -88,21 +88,36 @@ public class FloatCodeType {
     }
 
     /**
-     * Method sets attribute {@link #code}.<br/>
+     * Method returns a new builder.
      *
-     * @param pCode Value to which {@link #code} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} New builder that can be used to create new FloatCodeType objects.
      */
-    public B setCode( float pCode ) {
-      // Assign value to attribute
-      code = pCode;
-      return this.self();
+    public static Builder newBuilder( ) {
+      return new Builder();
     }
 
     /**
-     * Method returns instance of this builder. Operation is part of generic builder pattern.
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new FloatCodeType objects. The method never
+     * returns null.
      */
-    protected abstract B self( );
+    public static Builder newBuilder( FloatCodeType pObject ) {
+      return new Builder(pObject);
+    }
+
+    /**
+     * Method sets attribute {@link #code}.<br/>
+     *
+     * @param pCode Value to which {@link #code} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    public Builder setCode( float pCode ) {
+      // Assign value to attribute
+      code = pCode;
+      return this;
+    }
 
     /**
      * Method creates a new instance of class FloatCodeType. The object will be initialized with the values of the
@@ -110,23 +125,6 @@ public class FloatCodeType {
      *
      * @return FloatCodeType Created object. The method never returns null.
      */
-    public abstract T build( );
-  }
-
-  static final class FloatCodeTypeBuilderImpl extends FloatCodeTypeBuilder<FloatCodeType, FloatCodeTypeBuilderImpl> {
-    protected FloatCodeTypeBuilderImpl( ) {
-    }
-
-    protected FloatCodeTypeBuilderImpl( FloatCodeType pObject ) {
-      super(pObject);
-    }
-
-    @Override
-    protected FloatCodeTypeBuilderImpl self( ) {
-      return this;
-    }
-
-    @Override
     public FloatCodeType build( ) {
       FloatCodeType lObject = new FloatCodeType(this);
       SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
@@ -208,7 +206,7 @@ public class FloatCodeType {
    * @return {@link Builder} New builder that can be used to create new FloatCodeType objects. The method never returns
    * null.
    */
-  public FloatCodeTypeBuilder<?, ?> toBuilder( ) {
-    return new FloatCodeTypeBuilderImpl(this);
+  public Builder toBuilder( ) {
+    return new Builder(this);
   }
 }

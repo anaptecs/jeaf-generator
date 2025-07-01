@@ -15,8 +15,10 @@ import javax.ws.rs.QueryParam;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(builder = BeanParameter.Builder.class)
 public class BeanParameter implements Serializable {
   /**
    * Default serial version UID.
@@ -48,13 +50,6 @@ public class BeanParameter implements Serializable {
   @Deprecated
   @QueryParam("q2")
   private String oldStyle;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected BeanParameter( ) {
-  }
 
   /**
    * Initialize object using the passed builder.
@@ -113,6 +108,8 @@ public class BeanParameter implements Serializable {
   /**
    * Class implements builder to create a new instance of class <code>BeanParameter</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     private String accessToken;
 

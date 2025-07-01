@@ -17,8 +17,8 @@ import javax.validation.constraints.Size;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonSetter;
-import com.fasterxml.jackson.annotation.Nulls;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 /**
  * Multi<br/>
@@ -29,7 +29,7 @@ import com.fasterxml.jackson.annotation.Nulls;
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(builder = ChildB.Builder.class)
 public class ChildB extends ParentClass {
   /**
    * Default serial version UID.
@@ -55,16 +55,7 @@ public class ChildB extends ParentClass {
   /**
    * the composition
    */
-  @JsonSetter(nulls = Nulls.SKIP)
   private Set<ParentClass> composition;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected ChildB( ) {
-    composition = new HashSet<>();
-  }
 
   /**
    * Initialize object using the passed builder.
@@ -119,6 +110,8 @@ public class ChildB extends ParentClass {
   /**
    * Class implements builder to create a new instance of class <code>ChildB</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder extends ParentClass.Builder {
     /**
      * A child attribute

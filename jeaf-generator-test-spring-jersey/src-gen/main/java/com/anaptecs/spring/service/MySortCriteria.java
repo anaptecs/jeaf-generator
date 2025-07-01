@@ -7,13 +7,6 @@ package com.anaptecs.spring.service;
 
 public class MySortCriteria extends MySortCriteriaBase {
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected MySortCriteria( ) {
-  }
-
-  /**
    * Initialize object. Nothing special to do.
    */
   protected MySortCriteria( MySortCriteria.BuilderBase pBuilder ) {

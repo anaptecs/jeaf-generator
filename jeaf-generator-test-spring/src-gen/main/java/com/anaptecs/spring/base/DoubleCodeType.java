@@ -29,7 +29,7 @@ public class DoubleCodeType {
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected DoubleCodeType( DoubleCodeTypeBuilder<?, ?> pBuilder ) {
+  protected DoubleCodeType( Builder pBuilder ) {
     // Read attribute values from builder.
     code = pBuilder.code;
   }
@@ -47,8 +47,8 @@ public class DoubleCodeType {
    *
    * @return {@link Builder} New builder that can be used to create new DoubleCodeType objects.
    */
-  public static DoubleCodeTypeBuilder<?, ?> builder( ) {
-    return new DoubleCodeTypeBuilderImpl();
+  public static Builder builder( ) {
+    return new Builder();
   }
 
   /**
@@ -68,19 +68,19 @@ public class DoubleCodeType {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class DoubleCodeTypeBuilder<T extends DoubleCodeType, B extends DoubleCodeTypeBuilder<T, B>> {
+  public static class Builder {
     private double code;
 
     /**
-     * Use {@link DoubleCodeTypeBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link DoubleCodeType#builder()} instead of private constructor to create new builder.
      */
-    protected DoubleCodeTypeBuilder( ) {
+    protected Builder( ) {
     }
 
     /**
-     * Use {@link DoubleCodeTypeBuilder#builder(DoubleCodeType)} instead of private constructor to create new builder.
+     * Use {@link DoubleCodeType#builder(DoubleCodeType)} instead of private constructor to create new builder.
      */
-    protected DoubleCodeTypeBuilder( DoubleCodeType pObject ) {
+    protected Builder( DoubleCodeType pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setCode(pObject.code);
@@ -88,21 +88,36 @@ public class DoubleCodeType {
     }
 
     /**
-     * Method sets attribute {@link #code}.<br/>
+     * Method returns a new builder.
      *
-     * @param pCode Value to which {@link #code} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} New builder that can be used to create new DoubleCodeType objects.
      */
-    public B setCode( double pCode ) {
-      // Assign value to attribute
-      code = pCode;
-      return this.self();
+    public static Builder newBuilder( ) {
+      return new Builder();
     }
 
     /**
-     * Method returns instance of this builder. Operation is part of generic builder pattern.
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new DoubleCodeType objects. The method never
+     * returns null.
      */
-    protected abstract B self( );
+    public static Builder newBuilder( DoubleCodeType pObject ) {
+      return new Builder(pObject);
+    }
+
+    /**
+     * Method sets attribute {@link #code}.<br/>
+     *
+     * @param pCode Value to which {@link #code} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    public Builder setCode( double pCode ) {
+      // Assign value to attribute
+      code = pCode;
+      return this;
+    }
 
     /**
      * Method creates a new instance of class DoubleCodeType. The object will be initialized with the values of the
@@ -110,24 +125,6 @@ public class DoubleCodeType {
      *
      * @return DoubleCodeType Created object. The method never returns null.
      */
-    public abstract T build( );
-  }
-
-  static final class DoubleCodeTypeBuilderImpl
-      extends DoubleCodeTypeBuilder<DoubleCodeType, DoubleCodeTypeBuilderImpl> {
-    protected DoubleCodeTypeBuilderImpl( ) {
-    }
-
-    protected DoubleCodeTypeBuilderImpl( DoubleCodeType pObject ) {
-      super(pObject);
-    }
-
-    @Override
-    protected DoubleCodeTypeBuilderImpl self( ) {
-      return this;
-    }
-
-    @Override
     public DoubleCodeType build( ) {
       DoubleCodeType lObject = new DoubleCodeType(this);
       SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
@@ -209,7 +206,7 @@ public class DoubleCodeType {
    * @return {@link Builder} New builder that can be used to create new DoubleCodeType objects. The method never returns
    * null.
    */
-  public DoubleCodeTypeBuilder<?, ?> toBuilder( ) {
-    return new DoubleCodeTypeBuilderImpl(this);
+  public Builder toBuilder( ) {
+    return new Builder(this);
   }
 }

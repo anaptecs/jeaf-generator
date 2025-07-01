@@ -17,10 +17,12 @@ import javax.validation.constraints.Size;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(builder = CustomPrimitiveArraysObjectWithRestrictions.Builder.class)
 public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
   /**
    * Constant for the name of attribute "aBooleanArray".
@@ -180,14 +182,6 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
   private String[] bStringArray;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected CustomPrimitiveArraysObjectWithRestrictionsBase( ) {
-    aIntegerArray = null;
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
@@ -225,6 +219,8 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
    * class has read only attributes or associations instances can not be created directly. Instead this builder class
    * has to be used.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static abstract class BuilderBase {
     private boolean[] aBooleanArray;
 

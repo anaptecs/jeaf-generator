@@ -6,8 +6,8 @@
 package com.anaptecs.spring.base;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class LongCodeType {
   /**
    * Constant for the name of attribute "code".
@@ -15,13 +15,6 @@ public class LongCodeType {
   public static final String CODE = "code";
 
   private long code;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected LongCodeType( ) {
-  }
 
   /**
    * Initialize object using the passed builder.
@@ -59,6 +52,8 @@ public class LongCodeType {
   /**
    * Class implements builder to create a new instance of class <code>LongCodeType</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     private long code;
 

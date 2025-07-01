@@ -16,40 +16,39 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
-@JsonDeserialize(builder = YetAnotherPOJOBase.YetAnotherPOJOBuilderImpl.class)
+@JsonDeserialize(builder = YetAnotherPOJO.Builder.class)
 public abstract class YetAnotherPOJOBase {
   /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected YetAnotherPOJOBase( YetAnotherPOJOBuilder<?, ?> pBuilder ) {
+  protected YetAnotherPOJOBase( BuilderBase pBuilder ) {
     // Ensure that builder is not null.
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
   }
 
   /**
-   * Class implements builder to create a new instance of class <code>YetAnotherPOJO</code>.
+   * Class implements builder to create a new instance of class YetAnotherPOJO. As the class has read only attributes or
+   * associations instances can not be created directly. Instead this builder class has to be used.
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class YetAnotherPOJOBuilder<T extends YetAnotherPOJO, B extends YetAnotherPOJOBuilder<T, B>> {
+  public static abstract class BuilderBase {
     /**
-     * Use {@link YetAnotherPOJOBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link YetAnotherPOJO.builder()} instead of protected constructor to create new builder.
      */
-    protected YetAnotherPOJOBuilder( ) {
+    protected BuilderBase( ) {
     }
 
     /**
-     * Use {@link YetAnotherPOJOBuilder#builder(YetAnotherPOJO)} instead of private constructor to create new builder.
+     * Use {@link YetAnotherPOJO.builder(YetAnotherPOJO)} instead of protected constructor to create new builder.
      */
-    protected YetAnotherPOJOBuilder( YetAnotherPOJOBase pObject ) {
+    protected BuilderBase( YetAnotherPOJOBase pObject ) {
+      if (pObject != null) {
+        // Read attribute values from passed object.
+      }
     }
-
-    /**
-     * Method returns instance of this builder. Operation is part of generic builder pattern.
-     */
-    protected abstract B self( );
 
     /**
      * Method creates a new instance of class YetAnotherPOJO. The object will be initialized with the values of the
@@ -57,7 +56,9 @@ public abstract class YetAnotherPOJOBase {
      *
      * @return YetAnotherPOJO Created object. The method never returns null.
      */
-    public abstract T build( );
+    public YetAnotherPOJO build( ) {
+      return new YetAnotherPOJO(this);
+    }
 
     /**
      * Method creates a new validated instance of class YetAnotherPOJO. The object will be initialized with the values
@@ -67,29 +68,9 @@ public abstract class YetAnotherPOJOBase {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public YetAnotherPOJO buildValidated( ) throws ConstraintViolationException {
-      YetAnotherPOJO lObject = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
-      return lObject;
-    }
-  }
-
-  static final class YetAnotherPOJOBuilderImpl
-      extends YetAnotherPOJOBuilder<YetAnotherPOJO, YetAnotherPOJOBuilderImpl> {
-    protected YetAnotherPOJOBuilderImpl( ) {
-    }
-
-    protected YetAnotherPOJOBuilderImpl( YetAnotherPOJO pObject ) {
-      super(pObject);
-    }
-
-    @Override
-    protected YetAnotherPOJOBuilderImpl self( ) {
-      return this;
-    }
-
-    @Override
-    public YetAnotherPOJO build( ) {
-      return new YetAnotherPOJO(this);
+      YetAnotherPOJO lPOJO = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
+      return lPOJO;
     }
   }
 
@@ -163,7 +144,7 @@ public abstract class YetAnotherPOJOBase {
    * @return {@link Builder} New builder that can be used to create new YetAnotherPOJO objects. The method never returns
    * null.
    */
-  public YetAnotherPOJOBuilder<?, ?> toBuilder( ) {
-    return new YetAnotherPOJOBuilderImpl((YetAnotherPOJO) this);
+  public YetAnotherPOJO.Builder toBuilder( ) {
+    return new YetAnotherPOJO.Builder((YetAnotherPOJO) this);
   }
 }

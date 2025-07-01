@@ -9,6 +9,7 @@ import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Valid
 public class TopoRef extends PlaceRef {
@@ -60,6 +61,7 @@ public class TopoRef extends PlaceRef {
   /**
    * Class implements builder to create a new instance of class <code>TopoRef</code>.
    */
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder extends PlaceRef.Builder {
     /**
      * Use {@link TopoRef#builder()} instead of private constructor to create new builder.

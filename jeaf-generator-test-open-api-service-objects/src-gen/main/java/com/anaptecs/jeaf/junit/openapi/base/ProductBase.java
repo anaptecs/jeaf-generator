@@ -26,6 +26,7 @@ import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.anaptecs.jeaf.xfun.api.common.Identifiable;
 import com.anaptecs.jeaf.xfun.api.common.ObjectIdentity;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.annotation.Nulls;
 
@@ -172,6 +173,7 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
    * Class implements builder to create a new instance of class Product. As the class has read only attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static abstract class BuilderBase {
     /**
      * Reference to the identifier of this object. The reference may be null since an id is not mandatory.

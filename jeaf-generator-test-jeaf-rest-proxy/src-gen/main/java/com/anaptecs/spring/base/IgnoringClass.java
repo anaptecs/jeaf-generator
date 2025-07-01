@@ -12,8 +12,10 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(builder = IgnoringClass.Builder.class)
 public class IgnoringClass implements Serializable {
   /**
    * Default serial version UID.
@@ -26,13 +28,6 @@ public class IgnoringClass implements Serializable {
   public static final String AGE = "age";
 
   private Integer age;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected IgnoringClass( ) {
-  }
 
   /**
    * Initialize object using the passed builder.
@@ -81,6 +76,8 @@ public class IgnoringClass implements Serializable {
   /**
    * Class implements builder to create a new instance of class <code>IgnoringClass</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     private Integer age;
 

@@ -32,7 +32,7 @@ public class IntegerCode {
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected IntegerCode( IntegerCodeBuilder<?, ?> pBuilder ) {
+  protected IntegerCode( Builder pBuilder ) {
     // Read attribute values from builder.
     code = pBuilder.code;
   }
@@ -50,8 +50,8 @@ public class IntegerCode {
    *
    * @return {@link Builder} New builder that can be used to create new IntegerCode objects.
    */
-  public static IntegerCodeBuilder<?, ?> builder( ) {
-    return new IntegerCodeBuilderImpl();
+  public static Builder builder( ) {
+    return new Builder();
   }
 
   /**
@@ -71,19 +71,19 @@ public class IntegerCode {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class IntegerCodeBuilder<T extends IntegerCode, B extends IntegerCodeBuilder<T, B>> {
+  public static class Builder {
     private Integer code;
 
     /**
-     * Use {@link IntegerCodeBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link IntegerCode#builder()} instead of private constructor to create new builder.
      */
-    protected IntegerCodeBuilder( ) {
+    protected Builder( ) {
     }
 
     /**
-     * Use {@link IntegerCodeBuilder#builder(IntegerCode)} instead of private constructor to create new builder.
+     * Use {@link IntegerCode#builder(IntegerCode)} instead of private constructor to create new builder.
      */
-    protected IntegerCodeBuilder( IntegerCode pObject ) {
+    protected Builder( IntegerCode pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setCode(pObject.code);
@@ -91,21 +91,36 @@ public class IntegerCode {
     }
 
     /**
-     * Method sets attribute {@link #code}.<br/>
+     * Method returns a new builder.
      *
-     * @param pCode Value to which {@link #code} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} New builder that can be used to create new IntegerCode objects.
      */
-    public B setCode( @MyNotNullProperty Integer pCode ) {
-      // Assign value to attribute
-      code = pCode;
-      return this.self();
+    public static Builder newBuilder( ) {
+      return new Builder();
     }
 
     /**
-     * Method returns instance of this builder. Operation is part of generic builder pattern.
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new IntegerCode objects. The method never returns
+     * null.
      */
-    protected abstract B self( );
+    public static Builder newBuilder( IntegerCode pObject ) {
+      return new Builder(pObject);
+    }
+
+    /**
+     * Method sets attribute {@link #code}.<br/>
+     *
+     * @param pCode Value to which {@link #code} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    public Builder setCode( @MyNotNullProperty Integer pCode ) {
+      // Assign value to attribute
+      code = pCode;
+      return this;
+    }
 
     /**
      * Method creates a new instance of class IntegerCode. The object will be initialized with the values of the
@@ -113,23 +128,6 @@ public class IntegerCode {
      *
      * @return IntegerCode Created object. The method never returns null.
      */
-    public abstract T build( );
-  }
-
-  static final class IntegerCodeBuilderImpl extends IntegerCodeBuilder<IntegerCode, IntegerCodeBuilderImpl> {
-    protected IntegerCodeBuilderImpl( ) {
-    }
-
-    protected IntegerCodeBuilderImpl( IntegerCode pObject ) {
-      super(pObject);
-    }
-
-    @Override
-    protected IntegerCodeBuilderImpl self( ) {
-      return this;
-    }
-
-    @Override
     public IntegerCode build( ) {
       IntegerCode lObject = new IntegerCode(this);
       SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
@@ -212,7 +210,7 @@ public class IntegerCode {
    * @return {@link Builder} New builder that can be used to create new IntegerCode objects. The method never returns
    * null.
    */
-  public IntegerCodeBuilder<?, ?> toBuilder( ) {
-    return new IntegerCodeBuilderImpl(this);
+  public Builder toBuilder( ) {
+    return new Builder(this);
   }
 }

@@ -21,7 +21,7 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
     isGetterVisibility = JsonAutoDetect.Visibility.NONE,
     setterVisibility = JsonAutoDetect.Visibility.NONE,
     creatorVisibility = JsonAutoDetect.Visibility.ANY)
-@JsonDeserialize(builder = DirectedEdge.DirectedEdgeBuilderImpl.class)
+@JsonDeserialize(builder = DirectedEdge.Builder.class)
 public class DirectedEdge {
   /**
    * Constant for the name of attribute "start".
@@ -56,7 +56,7 @@ public class DirectedEdge {
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected DirectedEdge( DirectedEdgeBuilder<?, ?> pBuilder ) {
+  protected DirectedEdge( Builder pBuilder ) {
     // Read attribute values from builder.
     start = pBuilder.start;
     end = pBuilder.end;
@@ -68,8 +68,8 @@ public class DirectedEdge {
    *
    * @return {@link Builder} New builder that can be used to create new DirectedEdge objects.
    */
-  public static DirectedEdgeBuilder<?, ?> builder( ) {
-    return new DirectedEdgeBuilderImpl();
+  public static Builder builder( ) {
+    return new Builder();
   }
 
   /**
@@ -94,7 +94,7 @@ public class DirectedEdge {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class DirectedEdgeBuilder<T extends DirectedEdge, B extends DirectedEdgeBuilder<T, B>> {
+  public static class Builder {
     /**
      * The start
      */
@@ -109,15 +109,15 @@ public class DirectedEdge {
     private String link;
 
     /**
-     * Use {@link DirectedEdgeBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link DirectedEdge#builder()} instead of private constructor to create new builder.
      */
-    protected DirectedEdgeBuilder( ) {
+    protected Builder( ) {
     }
 
     /**
-     * Use {@link DirectedEdgeBuilder#builder(DirectedEdge)} instead of private constructor to create new builder.
+     * Use {@link DirectedEdge#builder(DirectedEdge)} instead of private constructor to create new builder.
      */
-    protected DirectedEdgeBuilder( DirectedEdge pObject ) {
+    protected Builder( DirectedEdge pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setStart(pObject.start);
@@ -127,43 +127,58 @@ public class DirectedEdge {
     }
 
     /**
+     * Method returns a new builder.
+     *
+     * @return {@link Builder} New builder that can be used to create new DirectedEdge objects.
+     */
+    public static Builder newBuilder( ) {
+      return new Builder();
+    }
+
+    /**
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new DirectedEdge objects. The method never returns
+     * null.
+     */
+    public static Builder newBuilder( DirectedEdge pObject ) {
+      return new Builder(pObject);
+    }
+
+    /**
      * Method sets association {@link #start}.<br/>
      *
      * @param pStart Value to which {@link #start} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setStart( Stop pStart ) {
+    public Builder setStart( Stop pStart ) {
       start = pStart;
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets association {@link #end}.<br/>
      *
      * @param pEnd Value to which {@link #end} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setEnd( @MyNotNullProperty Stop pEnd ) {
+    public Builder setEnd( @MyNotNullProperty Stop pEnd ) {
       end = pEnd;
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets attribute {@link #link}.<br/>
      *
      * @param pLink Value to which {@link #link} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setLink( @MyNotNullProperty String pLink ) {
+    public Builder setLink( @MyNotNullProperty String pLink ) {
       // Assign value to attribute
       link = pLink;
-      return this.self();
+      return this;
     }
-
-    /**
-     * Method returns instance of this builder. Operation is part of generic builder pattern.
-     */
-    protected abstract B self( );
 
     /**
      * Method creates a new instance of class DirectedEdge. The object will be initialized with the values of the
@@ -171,23 +186,6 @@ public class DirectedEdge {
      *
      * @return DirectedEdge Created object. The method never returns null.
      */
-    public abstract T build( );
-  }
-
-  static final class DirectedEdgeBuilderImpl extends DirectedEdgeBuilder<DirectedEdge, DirectedEdgeBuilderImpl> {
-    protected DirectedEdgeBuilderImpl( ) {
-    }
-
-    protected DirectedEdgeBuilderImpl( DirectedEdge pObject ) {
-      super(pObject);
-    }
-
-    @Override
-    protected DirectedEdgeBuilderImpl self( ) {
-      return this;
-    }
-
-    @Override
     public DirectedEdge build( ) {
       DirectedEdge lObject = new DirectedEdge(this);
       SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
@@ -355,7 +353,7 @@ public class DirectedEdge {
    * @return {@link Builder} New builder that can be used to create new DirectedEdge objects. The method never returns
    * null.
    */
-  public DirectedEdgeBuilder<?, ?> toBuilder( ) {
-    return new DirectedEdgeBuilderImpl(this);
+  public Builder toBuilder( ) {
+    return new Builder(this);
   }
 }

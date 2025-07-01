@@ -29,7 +29,7 @@ public class ByteCodeType {
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected ByteCodeType( ByteCodeTypeBuilder<?, ?> pBuilder ) {
+  protected ByteCodeType( Builder pBuilder ) {
     // Read attribute values from builder.
     code = pBuilder.code;
   }
@@ -47,8 +47,8 @@ public class ByteCodeType {
    *
    * @return {@link Builder} New builder that can be used to create new ByteCodeType objects.
    */
-  public static ByteCodeTypeBuilder<?, ?> builder( ) {
-    return new ByteCodeTypeBuilderImpl();
+  public static Builder builder( ) {
+    return new Builder();
   }
 
   /**
@@ -68,19 +68,19 @@ public class ByteCodeType {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class ByteCodeTypeBuilder<T extends ByteCodeType, B extends ByteCodeTypeBuilder<T, B>> {
+  public static class Builder {
     private byte code;
 
     /**
-     * Use {@link ByteCodeTypeBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link ByteCodeType#builder()} instead of private constructor to create new builder.
      */
-    protected ByteCodeTypeBuilder( ) {
+    protected Builder( ) {
     }
 
     /**
-     * Use {@link ByteCodeTypeBuilder#builder(ByteCodeType)} instead of private constructor to create new builder.
+     * Use {@link ByteCodeType#builder(ByteCodeType)} instead of private constructor to create new builder.
      */
-    protected ByteCodeTypeBuilder( ByteCodeType pObject ) {
+    protected Builder( ByteCodeType pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setCode(pObject.code);
@@ -88,21 +88,36 @@ public class ByteCodeType {
     }
 
     /**
-     * Method sets attribute {@link #code}.<br/>
+     * Method returns a new builder.
      *
-     * @param pCode Value to which {@link #code} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} New builder that can be used to create new ByteCodeType objects.
      */
-    public B setCode( byte pCode ) {
-      // Assign value to attribute
-      code = pCode;
-      return this.self();
+    public static Builder newBuilder( ) {
+      return new Builder();
     }
 
     /**
-     * Method returns instance of this builder. Operation is part of generic builder pattern.
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new ByteCodeType objects. The method never returns
+     * null.
      */
-    protected abstract B self( );
+    public static Builder newBuilder( ByteCodeType pObject ) {
+      return new Builder(pObject);
+    }
+
+    /**
+     * Method sets attribute {@link #code}.<br/>
+     *
+     * @param pCode Value to which {@link #code} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    public Builder setCode( byte pCode ) {
+      // Assign value to attribute
+      code = pCode;
+      return this;
+    }
 
     /**
      * Method creates a new instance of class ByteCodeType. The object will be initialized with the values of the
@@ -110,23 +125,6 @@ public class ByteCodeType {
      *
      * @return ByteCodeType Created object. The method never returns null.
      */
-    public abstract T build( );
-  }
-
-  static final class ByteCodeTypeBuilderImpl extends ByteCodeTypeBuilder<ByteCodeType, ByteCodeTypeBuilderImpl> {
-    protected ByteCodeTypeBuilderImpl( ) {
-    }
-
-    protected ByteCodeTypeBuilderImpl( ByteCodeType pObject ) {
-      super(pObject);
-    }
-
-    @Override
-    protected ByteCodeTypeBuilderImpl self( ) {
-      return this;
-    }
-
-    @Override
     public ByteCodeType build( ) {
       ByteCodeType lObject = new ByteCodeType(this);
       SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
@@ -208,7 +206,7 @@ public class ByteCodeType {
    * @return {@link Builder} New builder that can be used to create new ByteCodeType objects. The method never returns
    * null.
    */
-  public ByteCodeTypeBuilder<?, ?> toBuilder( ) {
-    return new ByteCodeTypeBuilderImpl(this);
+  public Builder toBuilder( ) {
+    return new Builder(this);
   }
 }

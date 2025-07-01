@@ -23,8 +23,8 @@ import com.anaptecs.spring.base.BookingID;
 import com.anaptecs.spring.base.DoubleCode;
 import com.anaptecs.spring.base.IntegerCodeType;
 import com.anaptecs.spring.base.LongCode;
-import com.fasterxml.jackson.annotation.JsonSetter;
-import com.fasterxml.jackson.annotation.Nulls;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 public class DataTypesQueryBean {
   /**
@@ -94,11 +94,9 @@ public class DataTypesQueryBean {
   private IntegerCodeType[] codes;
 
   @QueryParam("doubleCodes")
-  @JsonSetter(nulls = Nulls.SKIP)
   private Set<DoubleCode> doubleCodes;
 
   @QueryParam("bookingIDs")
-  @JsonSetter(nulls = Nulls.SKIP)
   private Set<BookingID> bookingIDs;
 
   @QueryParam("bookingIDsArray")
@@ -117,26 +115,13 @@ public class DataTypesQueryBean {
   private LocalTime localTime;
 
   @QueryParam("timestamps")
-  @JsonSetter(nulls = Nulls.SKIP)
   private List<LocalDateTime> timestamps;
 
   @QueryParam("times")
-  @JsonSetter(nulls = Nulls.SKIP)
   private Set<OffsetTime> times;
 
   @QueryParam("startTimestamps")
   private OffsetDateTime[] startTimestamps;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  public DataTypesQueryBean( ) {
-    doubleCodes = new HashSet<>();
-    bookingIDs = new HashSet<>();
-    timestamps = new ArrayList<>();
-    times = new HashSet<>();
-  }
 
   /**
    * Initialize object using the passed builder.
@@ -215,6 +200,8 @@ public class DataTypesQueryBean {
   /**
    * Class implements builder to create a new instance of class <code>DataTypesQueryBean</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     private LongCode[] longCodes;
 

@@ -21,6 +21,7 @@ import com.anaptecs.jeaf.junit.openapi.base.BookingID;
 import com.anaptecs.jeaf.junit.openapi.base.ComplexBookingType;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.annotation.Nulls;
 
@@ -86,6 +87,7 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
    * Class implements builder to create a new instance of class ComplexBookingID. As the class has read only attributes
    * or associations instances can not be created directly. Instead this builder class has to be used.
    */
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static abstract class BuilderBase {
     /**
      * Internal ID<br/>

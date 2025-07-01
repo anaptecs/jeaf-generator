@@ -18,11 +18,13 @@ import com.anaptecs.jeaf.xfun.api.common.ObjectIdentity;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonIdentityInfo(property = "objectID", generator = ObjectIdGenerators.PropertyGenerator.class)
+@JsonDeserialize(builder = POJOWithID.Builder.class)
 public class POJOWithID implements Identifiable<ObjectID> {
   /**
    * Constant for the name of attribute "attr".
@@ -53,15 +55,6 @@ public class POJOWithID implements Identifiable<ObjectID> {
    * <b>Default Value:</b> <code>47110815</code>
    */
   private final Integer integerWithDefault;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected POJOWithID( ) {
-    objectID = null;
-    integerWithDefault = 47110815;
-  }
 
   /**
    * Initialize object using the passed builder.
@@ -117,6 +110,8 @@ public class POJOWithID implements Identifiable<ObjectID> {
   /**
    * Class implements builder to create a new instance of class <code>POJOWithID</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     /**
      * Reference to the identifier of this object. The reference may be null since an id is not mandatory.

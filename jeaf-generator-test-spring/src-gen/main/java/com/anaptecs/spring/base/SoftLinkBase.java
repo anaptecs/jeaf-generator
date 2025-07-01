@@ -11,7 +11,6 @@ import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @JsonAutoDetect(
     fieldVisibility = JsonAutoDetect.Visibility.ANY,
@@ -53,7 +52,7 @@ public abstract class SoftLinkBase {
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected SoftLinkBase( SoftLinkBuilder<?, ?> pBuilder ) {
+  protected SoftLinkBase( BuilderBase pBuilder ) {
     // Read attribute values from builder.
     objectID = pBuilder.objectID;
     dataUnit = pBuilder.dataUnit;
@@ -73,11 +72,11 @@ public abstract class SoftLinkBase {
   }
 
   /**
-   * Class implements builder to create a new instance of class <code>SoftLink</code>.
+   * Class implements builder to create a new instance of class SoftLink. As the class has read only attributes or
+   * associations instances can not be created directly. Instead this builder class has to be used.
    */
-  @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class SoftLinkBuilder<T extends SoftLink, B extends SoftLinkBuilder<T, B>> {
+  public static abstract class BuilderBase {
     private long objectID;
 
     private DataUnit dataUnit;
@@ -87,15 +86,15 @@ public abstract class SoftLinkBase {
     private String refrenceID;
 
     /**
-     * Use {@link SoftLinkBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link SoftLink.builder()} instead of protected constructor to create new builder.
      */
-    protected SoftLinkBuilder( ) {
+    protected BuilderBase( ) {
     }
 
     /**
-     * Use {@link SoftLinkBuilder#builder(SoftLink)} instead of private constructor to create new builder.
+     * Use {@link SoftLink.builder(SoftLink)} instead of protected constructor to create new builder.
      */
-    protected SoftLinkBuilder( SoftLinkBase pObject ) {
+    protected BuilderBase( SoftLinkBase pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setObjectID(pObject.objectID);
@@ -109,75 +108,53 @@ public abstract class SoftLinkBase {
      * Method sets attribute {@link #objectID}.<br/>
      *
      * @param pObjectID Value to which {@link #objectID} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setObjectID( long pObjectID ) {
+    public BuilderBase setObjectID( long pObjectID ) {
       // Assign value to attribute
       objectID = pObjectID;
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets association {@link #dataUnit}.<br/>
      *
      * @param pDataUnit Value to which {@link #dataUnit} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setDataUnit( @MyNotNullProperty DataUnit pDataUnit ) {
+    public BuilderBase setDataUnit( @MyNotNullProperty DataUnit pDataUnit ) {
       dataUnit = pDataUnit;
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets association {@link #entity}.<br/>
      *
      * @param pEntity Value to which {@link #entity} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setEntity( @MyNotNullProperty Entity pEntity ) {
+    public BuilderBase setEntity( @MyNotNullProperty Entity pEntity ) {
       entity = pEntity;
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets attribute {@link #refrenceID}.<br/>
      *
      * @param pRefrenceID Value to which {@link #refrenceID} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setRefrenceID( @MyNotNullProperty String pRefrenceID ) {
+    public BuilderBase setRefrenceID( @MyNotNullProperty String pRefrenceID ) {
       // Assign value to attribute
       refrenceID = pRefrenceID;
-      return this.self();
+      return this;
     }
-
-    /**
-     * Method returns instance of this builder. Operation is part of generic builder pattern.
-     */
-    protected abstract B self( );
 
     /**
      * Method creates a new instance of class SoftLink. The object will be initialized with the values of the builder.
      *
      * @return SoftLink Created object. The method never returns null.
      */
-    public abstract T build( );
-  }
-
-  static final class SoftLinkBuilderImpl extends SoftLinkBuilder<SoftLink, SoftLinkBuilderImpl> {
-    protected SoftLinkBuilderImpl( ) {
-    }
-
-    protected SoftLinkBuilderImpl( SoftLink pObject ) {
-      super(pObject);
-    }
-
-    @Override
-    protected SoftLinkBuilderImpl self( ) {
-      return this;
-    }
-
-    @Override
     public SoftLink build( ) {
       SoftLink lObject = new SoftLink(this);
       SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
@@ -351,7 +328,7 @@ public abstract class SoftLinkBase {
    *
    * @return {@link Builder} New builder that can be used to create new SoftLink objects. The method never returns null.
    */
-  public SoftLinkBuilder<?, ?> toBuilder( ) {
-    return new SoftLinkBuilderImpl((SoftLink) this);
+  public SoftLink.Builder toBuilder( ) {
+    return new SoftLink.Builder((SoftLink) this);
   }
 }

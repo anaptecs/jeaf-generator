@@ -18,11 +18,13 @@ import com.anaptecs.jeaf.xfun.api.common.ObjectIdentity;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonIdentityInfo(property = "objectID", generator = ObjectIdGenerators.PropertyGenerator.class)
+@JsonDeserialize(builder = POJOWithIDnMethod.Builder.class)
 public abstract class POJOWithIDnMethodBase implements Identifiable<ObjectID> {
   /**
    * Constant for the name of attribute "attr".
@@ -35,14 +37,6 @@ public abstract class POJOWithIDnMethodBase implements Identifiable<ObjectID> {
   private final ObjectID objectID;
 
   private Double attr;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected POJOWithIDnMethodBase( ) {
-    objectID = null;
-  }
 
   /**
    * Initialize object using the passed builder.
@@ -68,6 +62,8 @@ public abstract class POJOWithIDnMethodBase implements Identifiable<ObjectID> {
    * Class implements builder to create a new instance of class POJOWithIDnMethod. As the class has read only attributes
    * or associations instances can not be created directly. Instead this builder class has to be used.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static abstract class BuilderBase {
     /**
      * Reference to the identifier of this object. The reference may be null since an id is not mandatory.

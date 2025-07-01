@@ -130,6 +130,7 @@ public class Stop implements ServiceObject {
   /**
    * Class implements builder to create a new instance of class <code>Stop</code>.
    */
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     private String name;
 

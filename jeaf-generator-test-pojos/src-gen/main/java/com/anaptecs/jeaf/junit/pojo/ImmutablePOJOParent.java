@@ -12,10 +12,12 @@ import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(builder = ImmutablePOJOParent.Builder.class)
 public class ImmutablePOJOParent extends AbstractPOJO {
   /**
    * Constant for the name of attribute "parentAttribute".
@@ -30,14 +32,6 @@ public class ImmutablePOJOParent extends AbstractPOJO {
   private final String parentAttribute;
 
   private Integer anotherParentAttribute;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected ImmutablePOJOParent( ) {
-    parentAttribute = null;
-  }
 
   /**
    * Initialize object using the passed builder.
@@ -85,6 +79,8 @@ public class ImmutablePOJOParent extends AbstractPOJO {
   /**
    * Class implements builder to create a new instance of class <code>ImmutablePOJOParent</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder extends AbstractPOJO.Builder {
     private String parentAttribute;
 

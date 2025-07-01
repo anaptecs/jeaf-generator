@@ -9,13 +9,6 @@ import java.util.List;
 
 public class MasterDataObject extends MasterDataObjectBase {
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected MasterDataObject( ) {
-  }
-
-  /**
    * Initialize object. Nothing special to do.
    */
   protected MasterDataObject( MasterDataObject.BuilderBase pBuilder ) {

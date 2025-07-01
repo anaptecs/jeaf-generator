@@ -20,8 +20,8 @@ import javax.ws.rs.HeaderParam;
 
 import com.anaptecs.spring.base.StringCode;
 import com.anaptecs.spring.base.TimeUnit;
-import com.fasterxml.jackson.annotation.JsonSetter;
-import com.fasterxml.jackson.annotation.Nulls;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 public class MultiValuedHeaderBeanParam {
   /**
@@ -107,7 +107,6 @@ public class MultiValuedHeaderBeanParam {
   private StringCode[] codes;
 
   @HeaderParam("stringCodeList")
-  @JsonSetter(nulls = Nulls.SKIP)
   private Set<StringCode> stringCodeList;
 
   @HeaderParam("startDate")
@@ -117,7 +116,6 @@ public class MultiValuedHeaderBeanParam {
   private LocalDate[] dates;
 
   @HeaderParam("timestamps")
-  @JsonSetter(nulls = Nulls.SKIP)
   private Set<LocalDateTime> timestamps;
 
   @HeaderParam("calendars")
@@ -130,7 +128,6 @@ public class MultiValuedHeaderBeanParam {
   private Timestamp[] sqlTimestamps;
 
   @HeaderParam("timeUnits")
-  @JsonSetter(nulls = Nulls.SKIP)
   private Set<TimeUnit> timeUnits;
 
   @HeaderParam("timeUnitArray")
@@ -138,16 +135,6 @@ public class MultiValuedHeaderBeanParam {
 
   @HeaderParam("base64")
   private byte[] base64;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  public MultiValuedHeaderBeanParam( ) {
-    stringCodeList = new HashSet<>();
-    timestamps = new HashSet<>();
-    timeUnits = new HashSet<>();
-  }
 
   /**
    * Initialize object using the passed builder.
@@ -213,6 +200,8 @@ public class MultiValuedHeaderBeanParam {
   /**
    * Class implements builder to create a new instance of class <code>MultiValuedHeaderBeanParam</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     private String[] names;
 

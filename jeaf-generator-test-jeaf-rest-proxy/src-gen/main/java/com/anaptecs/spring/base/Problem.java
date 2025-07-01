@@ -13,8 +13,10 @@ import javax.validation.constraints.NotNull;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(builder = Problem.Builder.class)
 public class Problem implements Serializable {
   /**
    * Default serial version UID.
@@ -58,18 +60,6 @@ public class Problem implements Serializable {
   private final String detail;
 
   private final String instance;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected Problem( ) {
-    title = null;
-    status = 0;
-    type = null;
-    detail = null;
-    instance = null;
-  }
 
   /**
    * Initialize object using the passed builder.
@@ -138,6 +128,8 @@ public class Problem implements Serializable {
   /**
    * Class implements builder to create a new instance of class <code>Problem</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     @NotNull
     private String title;

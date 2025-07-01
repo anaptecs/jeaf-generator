@@ -6,8 +6,10 @@
 package com.anaptecs.spring.base;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(builder = BidirectB.Builder.class)
 public class BidirectB {
   /**
    * Constant for the name of attribute "a".
@@ -23,15 +25,6 @@ public class BidirectB {
    * Attribute is required for correct handling of bidirectional associations in case of deserialization.
    */
   private transient boolean aBackReferenceInitialized;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected BidirectB( ) {
-    // Bidirectional back reference is not yet set up correctly
-    aBackReferenceInitialized = false;
-  }
 
   /**
    * Initialize object using the passed builder.
@@ -75,6 +68,8 @@ public class BidirectB {
   /**
    * Class implements builder to create a new instance of class <code>BidirectB</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     /**
      * the A

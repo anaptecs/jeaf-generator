@@ -21,7 +21,7 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
-@JsonDeserialize(builder = BidirectionalABase.BidirectionalABuilderImpl.class)
+@JsonDeserialize(builder = BidirectionalA.Builder.class)
 public abstract class BidirectionalABase {
   /**
    * Constant for the name of attribute "transientB".
@@ -61,7 +61,7 @@ public abstract class BidirectionalABase {
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected BidirectionalABase( BidirectionalABuilder<?, ?> pBuilder ) {
+  protected BidirectionalABase( BuilderBase pBuilder ) {
     // Ensure that builder is not null.
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
@@ -76,23 +76,24 @@ public abstract class BidirectionalABase {
   }
 
   /**
-   * Class implements builder to create a new instance of class <code>BidirectionalA</code>.
+   * Class implements builder to create a new instance of class BidirectionalA. As the class has read only attributes or
+   * associations instances can not be created directly. Instead this builder class has to be used.
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class BidirectionalABuilder<T extends BidirectionalA, B extends BidirectionalABuilder<T, B>> {
+  public static abstract class BuilderBase {
     private BidirectionalA child;
 
     /**
-     * Use {@link BidirectionalABuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link BidirectionalA.builder()} instead of protected constructor to create new builder.
      */
-    protected BidirectionalABuilder( ) {
+    protected BuilderBase( ) {
     }
 
     /**
-     * Use {@link BidirectionalABuilder#builder(BidirectionalA)} instead of private constructor to create new builder.
+     * Use {@link BidirectionalA.builder(BidirectionalA)} instead of protected constructor to create new builder.
      */
-    protected BidirectionalABuilder( BidirectionalABase pObject ) {
+    protected BuilderBase( BidirectionalABase pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setChild(pObject.child);
@@ -103,17 +104,12 @@ public abstract class BidirectionalABase {
      * Method sets association {@link #child}.<br/>
      *
      * @param pChild Value to which {@link #child} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setChild( BidirectionalA pChild ) {
+    public BuilderBase setChild( BidirectionalA pChild ) {
       child = pChild;
-      return this.self();
+      return this;
     }
-
-    /**
-     * Method returns instance of this builder. Operation is part of generic builder pattern.
-     */
-    protected abstract B self( );
 
     /**
      * Method creates a new instance of class BidirectionalA. The object will be initialized with the values of the
@@ -121,7 +117,9 @@ public abstract class BidirectionalABase {
      *
      * @return BidirectionalA Created object. The method never returns null.
      */
-    public abstract T build( );
+    public BidirectionalA build( ) {
+      return new BidirectionalA(this);
+    }
 
     /**
      * Method creates a new validated instance of class BidirectionalA. The object will be initialized with the values
@@ -131,29 +129,9 @@ public abstract class BidirectionalABase {
      * @throws ConstraintViolationException in case that one or more validations for the created object failed.
      */
     public BidirectionalA buildValidated( ) throws ConstraintViolationException {
-      BidirectionalA lObject = this.build();
-      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
-      return lObject;
-    }
-  }
-
-  static final class BidirectionalABuilderImpl
-      extends BidirectionalABuilder<BidirectionalA, BidirectionalABuilderImpl> {
-    protected BidirectionalABuilderImpl( ) {
-    }
-
-    protected BidirectionalABuilderImpl( BidirectionalA pObject ) {
-      super(pObject);
-    }
-
-    @Override
-    protected BidirectionalABuilderImpl self( ) {
-      return this;
-    }
-
-    @Override
-    public BidirectionalA build( ) {
-      return new BidirectionalA(this);
+      BidirectionalA lPOJO = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
+      return lPOJO;
     }
   }
 
@@ -310,7 +288,7 @@ public abstract class BidirectionalABase {
    * @return {@link Builder} New builder that can be used to create new BidirectionalA objects. The method never returns
    * null.
    */
-  public BidirectionalABuilder<?, ?> toBuilder( ) {
-    return new BidirectionalABuilderImpl((BidirectionalA) this);
+  public BidirectionalA.Builder toBuilder( ) {
+    return new BidirectionalA.Builder((BidirectionalA) this);
   }
 }

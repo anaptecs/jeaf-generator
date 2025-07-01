@@ -8,8 +8,8 @@ package com.anaptecs.spring.base;
 import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class DoubleCode {
   /**
    * Constant for the name of attribute "code".
@@ -17,13 +17,6 @@ public class DoubleCode {
   public static final String CODE = "code";
 
   private Double code;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected DoubleCode( ) {
-  }
 
   /**
    * Initialize object using the passed builder.
@@ -60,6 +53,8 @@ public class DoubleCode {
   /**
    * Class implements builder to create a new instance of class <code>DoubleCode</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     private Double code;
 

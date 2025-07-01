@@ -31,7 +31,7 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 @JsonPropertyOrder(
     value = { "dataUnits", "entity", "objectID", "internalProperty", "derivedProperty", "derivedDataUnits",
       "derivedEntity", "derivedArray", "derivedBoolean", "derivedInt", "derivedString" })
-@JsonDeserialize(builder = MasterDataObjectBase.MasterDataObjectBuilderImpl.class)
+@JsonDeserialize(builder = MasterDataObject.Builder.class)
 public abstract class MasterDataObjectBase {
   /**
    * Constant for the name of attribute "dataUnits".
@@ -66,7 +66,7 @@ public abstract class MasterDataObjectBase {
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected MasterDataObjectBase( MasterDataObjectBuilder<?, ?> pBuilder ) {
+  protected MasterDataObjectBase( BuilderBase pBuilder ) {
     // Read attribute values from builder.
     if (pBuilder.dataUnits != null) {
       dataUnits = pBuilder.dataUnits;
@@ -80,11 +80,12 @@ public abstract class MasterDataObjectBase {
   }
 
   /**
-   * Class implements builder to create a new instance of class <code>MasterDataObject</code>.
+   * Class implements builder to create a new instance of class MasterDataObject. As the class has read only attributes
+   * or associations instances can not be created directly. Instead this builder class has to be used.
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class MasterDataObjectBuilder<T extends MasterDataObject, B extends MasterDataObjectBuilder<T, B>> {
+  public static abstract class BuilderBase {
     private List<DataUnit> dataUnits;
 
     private Entity entity;
@@ -94,16 +95,15 @@ public abstract class MasterDataObjectBase {
     private String internalProperty;
 
     /**
-     * Use {@link MasterDataObjectBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link MasterDataObject.builder()} instead of protected constructor to create new builder.
      */
-    protected MasterDataObjectBuilder( ) {
+    protected BuilderBase( ) {
     }
 
     /**
-     * Use {@link MasterDataObjectBuilder#builder(MasterDataObject)} instead of private constructor to create new
-     * builder.
+     * Use {@link MasterDataObject.builder(MasterDataObject)} instead of protected constructor to create new builder.
      */
-    protected MasterDataObjectBuilder( MasterDataObjectBase pObject ) {
+    protected BuilderBase( MasterDataObjectBase pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setDataUnits(pObject.dataUnits);
@@ -117,9 +117,9 @@ public abstract class MasterDataObjectBase {
      * Method sets association {@link #dataUnits}.<br/>
      *
      * @param pDataUnits Collection to which {@link #dataUnits} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setDataUnits( List<DataUnit> pDataUnits ) {
+    public BuilderBase setDataUnits( List<DataUnit> pDataUnits ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pDataUnits != null) {
         dataUnits = new ArrayList<DataUnit>(pDataUnits);
@@ -127,32 +127,32 @@ public abstract class MasterDataObjectBase {
       else {
         dataUnits = null;
       }
-      return this.self();
+      return this;
     }
 
     /**
      * Method adds the passed objects to association {@link #dataUnits}.<br/>
      *
      * @param pDataUnits Array of objects that should be added to {@link #dataUnits}. The parameter may be null.
-     * @return {@link B} Instance of this builder to support chaining. Method never returns null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining. Method never returns null.
      */
-    public B addToDataUnits( DataUnit... pDataUnits ) {
+    public BuilderBase addToDataUnits( DataUnit... pDataUnits ) {
       if (pDataUnits != null) {
         if (dataUnits == null) {
           dataUnits = new ArrayList<DataUnit>();
         }
         dataUnits.addAll(Arrays.asList(pDataUnits));
       }
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets association {@link #dataUnits}.<br/>
      *
      * @param pDataUnits Array with objects to which {@link #dataUnits} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setDataUnits( DataUnit... pDataUnits ) {
+    public BuilderBase setDataUnits( DataUnit... pDataUnits ) {
       // Copy the content of the passed array.
       if (pDataUnits != null) {
         dataUnits = new ArrayList<DataUnit>(Arrays.asList(pDataUnits));
@@ -160,48 +160,43 @@ public abstract class MasterDataObjectBase {
       else {
         dataUnits = null;
       }
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets association {@link #entity}.<br/>
      *
      * @param pEntity Value to which {@link #entity} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setEntity( @MyNotNullProperty Entity pEntity ) {
+    public BuilderBase setEntity( @MyNotNullProperty Entity pEntity ) {
       entity = pEntity;
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets attribute {@link #objectID}.<br/>
      *
      * @param pObjectID Value to which {@link #objectID} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setObjectID( @MyNotNullProperty String pObjectID ) {
+    public BuilderBase setObjectID( @MyNotNullProperty String pObjectID ) {
       // Assign value to attribute
       objectID = pObjectID;
-      return this.self();
+      return this;
     }
 
     /**
      * Method sets attribute {@link #internalProperty}.<br/>
      *
      * @param pInternalProperty Value to which {@link #internalProperty} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setInternalProperty( @MyNotNullProperty String pInternalProperty ) {
+    public BuilderBase setInternalProperty( @MyNotNullProperty String pInternalProperty ) {
       // Assign value to attribute
       internalProperty = pInternalProperty;
-      return this.self();
+      return this;
     }
-
-    /**
-     * Method returns instance of this builder. Operation is part of generic builder pattern.
-     */
-    protected abstract B self( );
 
     /**
      * Method creates a new instance of class MasterDataObject. The object will be initialized with the values of the
@@ -209,24 +204,6 @@ public abstract class MasterDataObjectBase {
      *
      * @return MasterDataObject Created object. The method never returns null.
      */
-    public abstract T build( );
-  }
-
-  static final class MasterDataObjectBuilderImpl
-      extends MasterDataObjectBuilder<MasterDataObject, MasterDataObjectBuilderImpl> {
-    protected MasterDataObjectBuilderImpl( ) {
-    }
-
-    protected MasterDataObjectBuilderImpl( MasterDataObject pObject ) {
-      super(pObject);
-    }
-
-    @Override
-    protected MasterDataObjectBuilderImpl self( ) {
-      return this;
-    }
-
-    @Override
     public MasterDataObject build( ) {
       MasterDataObject lObject = new MasterDataObject(this);
       SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
@@ -523,7 +500,7 @@ public abstract class MasterDataObjectBase {
    * @return {@link Builder} New builder that can be used to create new MasterDataObject objects. The method never
    * returns null.
    */
-  public MasterDataObjectBuilder<?, ?> toBuilder( ) {
-    return new MasterDataObjectBuilderImpl((MasterDataObject) this);
+  public MasterDataObject.Builder toBuilder( ) {
+    return new MasterDataObject.Builder((MasterDataObject) this);
   }
 }

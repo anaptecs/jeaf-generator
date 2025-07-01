@@ -12,6 +12,7 @@ import javax.validation.constraints.Positive;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Valid
 public class ProductCode implements ServiceObject {
@@ -54,6 +55,7 @@ public class ProductCode implements ServiceObject {
   /**
    * Class implements builder to create a new instance of class <code>ProductCode</code>.
    */
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     @Positive
     private int code;

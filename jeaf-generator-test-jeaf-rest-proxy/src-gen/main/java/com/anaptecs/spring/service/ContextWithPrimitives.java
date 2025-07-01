@@ -13,6 +13,8 @@ import javax.ws.rs.QueryParam;
 
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 public class ContextWithPrimitives implements Serializable {
   /**
@@ -67,13 +69,6 @@ public class ContextWithPrimitives implements Serializable {
 
   @QueryParam("aVeryLong")
   private Long aVeryLong;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  public ContextWithPrimitives( ) {
-  }
 
   /**
    * Initialize object using the passed builder.
@@ -149,6 +144,8 @@ public class ContextWithPrimitives implements Serializable {
   /**
    * Class implements builder to create a new instance of class <code>ContextWithPrimitives</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     private boolean aBoolean;
 

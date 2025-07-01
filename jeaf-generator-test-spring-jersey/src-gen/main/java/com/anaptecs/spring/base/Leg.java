@@ -12,10 +12,10 @@ import java.util.Collections;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonSetter;
-import com.fasterxml.jackson.annotation.Nulls;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(builder = Leg.Builder.class)
 public class Leg {
   /**
    * Constant for the name of attribute "start".
@@ -36,16 +36,7 @@ public class Leg {
 
   private PlaceRef stop;
 
-  @JsonSetter(nulls = Nulls.SKIP)
   private List<PlaceRef> stopovers;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected Leg( ) {
-    stopovers = new ArrayList<>();
-  }
 
   /**
    * Initialize object using the passed builder.
@@ -93,6 +84,8 @@ public class Leg {
   /**
    * Class implements builder to create a new instance of class <code>Leg</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     private PlaceRef start;
 

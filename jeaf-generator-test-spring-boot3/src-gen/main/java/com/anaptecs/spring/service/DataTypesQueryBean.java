@@ -108,25 +108,6 @@ public class DataTypesQueryBean {
   private final OffsetDateTime[] startTimestamps;
 
   /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  public DataTypesQueryBean( ) {
-    longCodes = null;
-    codes = null;
-    doubleCodes = new HashSet<>();
-    bookingIDs = new HashSet<>();
-    bookingIDsArray = null;
-    offsetDateTime = null;
-    offsetTime = null;
-    localDateTime = null;
-    localTime = null;
-    timestamps = new ArrayList<>();
-    times = new HashSet<>();
-    startTimestamps = null;
-  }
-
-  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.

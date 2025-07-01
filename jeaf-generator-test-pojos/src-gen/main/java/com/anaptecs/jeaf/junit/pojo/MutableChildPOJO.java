@@ -12,10 +12,12 @@ import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(builder = MutableChildPOJO.Builder.class)
 public class MutableChildPOJO extends ImmutablePOJOParent {
   /**
    * Constant for the name of attribute "writeable".
@@ -34,14 +36,6 @@ public class MutableChildPOJO extends ImmutablePOJOParent {
    * <b>Default Value:</b> <code>true</code>
    */
   private final Boolean booleanDefault;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected MutableChildPOJO( ) {
-    booleanDefault = true;
-  }
 
   /**
    * Initialize object using the passed builder.
@@ -95,6 +89,8 @@ public class MutableChildPOJO extends ImmutablePOJOParent {
   /**
    * Class implements builder to create a new instance of class <code>MutableChildPOJO</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder extends ImmutablePOJOParent.Builder {
     private Integer writeable;
 

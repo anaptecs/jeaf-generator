@@ -11,18 +11,13 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(builder = YetAnotherPOJO.Builder.class)
 public abstract class YetAnotherPOJOBase {
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  protected YetAnotherPOJOBase( ) {
-  }
-
   /**
    * Initialize object using the passed builder.
    *
@@ -37,6 +32,8 @@ public abstract class YetAnotherPOJOBase {
    * Class implements builder to create a new instance of class YetAnotherPOJO. As the class has read only attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static abstract class BuilderBase {
     /**
      * Use {@link YetAnotherPOJO.builder()} instead of protected constructor to create new builder.

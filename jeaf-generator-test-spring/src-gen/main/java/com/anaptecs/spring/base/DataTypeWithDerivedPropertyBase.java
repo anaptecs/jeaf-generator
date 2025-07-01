@@ -30,7 +30,7 @@ public abstract class DataTypeWithDerivedPropertyBase {
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected DataTypeWithDerivedPropertyBase( DataTypeWithDerivedPropertyBuilder<?, ?> pBuilder ) {
+  protected DataTypeWithDerivedPropertyBase( BuilderBase pBuilder ) {
     // Read attribute values from builder.
     property = pBuilder.property;
   }
@@ -44,24 +44,25 @@ public abstract class DataTypeWithDerivedPropertyBase {
   }
 
   /**
-   * Class implements builder to create a new instance of class <code>DataTypeWithDerivedProperty</code>.
+   * Class implements builder to create a new instance of class DataTypeWithDerivedProperty. As the class has read only
+   * attributes or associations instances can not be created directly. Instead this builder class has to be used.
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class DataTypeWithDerivedPropertyBuilder<T extends DataTypeWithDerivedProperty, B extends DataTypeWithDerivedPropertyBuilder<T, B>> {
+  public static abstract class BuilderBase {
     private int property;
 
     /**
-     * Use {@link DataTypeWithDerivedPropertyBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link DataTypeWithDerivedProperty.builder()} instead of protected constructor to create new builder.
      */
-    protected DataTypeWithDerivedPropertyBuilder( ) {
+    protected BuilderBase( ) {
     }
 
     /**
-     * Use {@link DataTypeWithDerivedPropertyBuilder#builder(DataTypeWithDerivedProperty)} instead of private
-     * constructor to create new builder.
+     * Use {@link DataTypeWithDerivedProperty.builder(DataTypeWithDerivedProperty)} instead of protected constructor to
+     * create new builder.
      */
-    protected DataTypeWithDerivedPropertyBuilder( DataTypeWithDerivedPropertyBase pObject ) {
+    protected BuilderBase( DataTypeWithDerivedPropertyBase pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setProperty(pObject.property);
@@ -72,18 +73,13 @@ public abstract class DataTypeWithDerivedPropertyBase {
      * Method sets attribute {@link #property}.<br/>
      *
      * @param pProperty Value to which {@link #property} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setProperty( int pProperty ) {
+    public BuilderBase setProperty( int pProperty ) {
       // Assign value to attribute
       property = pProperty;
-      return this.self();
+      return this;
     }
-
-    /**
-     * Method returns instance of this builder. Operation is part of generic builder pattern.
-     */
-    protected abstract B self( );
 
     /**
      * Method creates a new instance of class DataTypeWithDerivedProperty. The object will be initialized with the
@@ -91,24 +87,6 @@ public abstract class DataTypeWithDerivedPropertyBase {
      *
      * @return DataTypeWithDerivedProperty Created object. The method never returns null.
      */
-    public abstract T build( );
-  }
-
-  static final class DataTypeWithDerivedPropertyBuilderImpl
-      extends DataTypeWithDerivedPropertyBuilder<DataTypeWithDerivedProperty, DataTypeWithDerivedPropertyBuilderImpl> {
-    protected DataTypeWithDerivedPropertyBuilderImpl( ) {
-    }
-
-    protected DataTypeWithDerivedPropertyBuilderImpl( DataTypeWithDerivedProperty pObject ) {
-      super(pObject);
-    }
-
-    @Override
-    protected DataTypeWithDerivedPropertyBuilderImpl self( ) {
-      return this;
-    }
-
-    @Override
     public DataTypeWithDerivedProperty build( ) {
       DataTypeWithDerivedProperty lObject = new DataTypeWithDerivedProperty(this);
       SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
@@ -210,7 +188,7 @@ public abstract class DataTypeWithDerivedPropertyBase {
    * @return {@link Builder} New builder that can be used to create new DataTypeWithDerivedProperty objects. The method
    * never returns null.
    */
-  public DataTypeWithDerivedPropertyBuilder<?, ?> toBuilder( ) {
-    return new DataTypeWithDerivedPropertyBuilderImpl((DataTypeWithDerivedProperty) this);
+  public DataTypeWithDerivedProperty.Builder toBuilder( ) {
+    return new DataTypeWithDerivedProperty.Builder((DataTypeWithDerivedProperty) this);
   }
 }

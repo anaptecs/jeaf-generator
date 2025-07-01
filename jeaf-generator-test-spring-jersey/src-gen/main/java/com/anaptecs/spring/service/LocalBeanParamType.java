@@ -7,6 +7,9 @@ package com.anaptecs.spring.service;
 
 import javax.ws.rs.HeaderParam;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+
 public class LocalBeanParamType {
   /**
    * Constant for the name of attribute "localKey".
@@ -23,13 +26,6 @@ public class LocalBeanParamType {
 
   @HeaderParam("localID")
   private String localID;
-
-  /**
-   * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
-   * object creation builder should be used instead.
-   */
-  public LocalBeanParamType( ) {
-  }
 
   /**
    * Initialize object using the passed builder.
@@ -71,6 +67,8 @@ public class LocalBeanParamType {
   /**
    * Class implements builder to create a new instance of class <code>LocalBeanParamType</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     private String localKey;
 

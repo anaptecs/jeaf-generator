@@ -9,7 +9,7 @@ public class SoftLink extends SoftLinkBase {
   /**
    * Initialize object. Nothing special to do.
    */
-  protected SoftLink( SoftLinkBuilder<?, ?> pBuilder ) {
+  protected SoftLink( SoftLink.BuilderBase pBuilder ) {
     super(pBuilder);
   }
 
@@ -26,8 +26,47 @@ public class SoftLink extends SoftLinkBase {
    *
    * @return {@link Builder} New builder that can be used to create new SoftLink objects.
    */
-  public static SoftLinkBuilder<?, ?> builder( ) {
-    return new SoftLinkBuilderImpl();
+  public static Builder builder( ) {
+    return new Builder();
+  }
+
+  /**
+   * Class implements builder to create a new instance of class SoftLink. As the class has readonly attributes or
+   * associations instances can not be created directly. Instead this builder class has to be used.
+   */
+  public static class Builder extends SoftLink.BuilderBase {
+    /**
+     * Use {@link SoftLink#builder()} instead of protected constructor to create new builder.
+     */
+    protected Builder( ) {
+    }
+
+    /**
+     * Use {@link SoftLink#builder(SoftLink)} instead of protected constructor to create new builder.
+     */
+    protected Builder( SoftLink pObject ) {
+      super(pObject);
+    }
+
+    /**
+     * Method returns a new builder.
+     *
+     * @return {@link Builder} New builder that can be used to create new SoftLink objects.
+     */
+    public static Builder newBuilder( ) {
+      return new Builder();
+    }
+
+    /**
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new POJOWithIDnMethod objects. The method never
+     * returns null.
+     */
+    public static Builder newBuilder( SoftLink pObject ) {
+      return new Builder(pObject);
+    }
   }
 
   /**

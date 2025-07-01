@@ -32,7 +32,7 @@ public class AnotherDataType {
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected AnotherDataType( AnotherDataTypeBuilder<?, ?> pBuilder ) {
+  protected AnotherDataType( Builder pBuilder ) {
     // Read attribute values from builder.
     data = pBuilder.data;
   }
@@ -50,8 +50,8 @@ public class AnotherDataType {
    *
    * @return {@link Builder} New builder that can be used to create new AnotherDataType objects.
    */
-  public static AnotherDataTypeBuilder<?, ?> builder( ) {
-    return new AnotherDataTypeBuilderImpl();
+  public static Builder builder( ) {
+    return new Builder();
   }
 
   /**
@@ -71,19 +71,19 @@ public class AnotherDataType {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class AnotherDataTypeBuilder<T extends AnotherDataType, B extends AnotherDataTypeBuilder<T, B>> {
+  public static class Builder {
     private String data;
 
     /**
-     * Use {@link AnotherDataTypeBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link AnotherDataType#builder()} instead of private constructor to create new builder.
      */
-    protected AnotherDataTypeBuilder( ) {
+    protected Builder( ) {
     }
 
     /**
-     * Use {@link AnotherDataTypeBuilder#builder(AnotherDataType)} instead of private constructor to create new builder.
+     * Use {@link AnotherDataType#builder(AnotherDataType)} instead of private constructor to create new builder.
      */
-    protected AnotherDataTypeBuilder( AnotherDataType pObject ) {
+    protected Builder( AnotherDataType pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setData(pObject.data);
@@ -91,21 +91,36 @@ public class AnotherDataType {
     }
 
     /**
-     * Method sets attribute {@link #data}.<br/>
+     * Method returns a new builder.
      *
-     * @param pData Value to which {@link #data} should be set.
-     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link Builder} New builder that can be used to create new AnotherDataType objects.
      */
-    public B setData( @MyNotNullProperty String pData ) {
-      // Assign value to attribute
-      data = pData;
-      return this.self();
+    public static Builder newBuilder( ) {
+      return new Builder();
     }
 
     /**
-     * Method returns instance of this builder. Operation is part of generic builder pattern.
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new AnotherDataType objects. The method never
+     * returns null.
      */
-    protected abstract B self( );
+    public static Builder newBuilder( AnotherDataType pObject ) {
+      return new Builder(pObject);
+    }
+
+    /**
+     * Method sets attribute {@link #data}.<br/>
+     *
+     * @param pData Value to which {@link #data} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    public Builder setData( @MyNotNullProperty String pData ) {
+      // Assign value to attribute
+      data = pData;
+      return this;
+    }
 
     /**
      * Method creates a new instance of class AnotherDataType. The object will be initialized with the values of the
@@ -113,24 +128,6 @@ public class AnotherDataType {
      *
      * @return AnotherDataType Created object. The method never returns null.
      */
-    public abstract T build( );
-  }
-
-  static final class AnotherDataTypeBuilderImpl
-      extends AnotherDataTypeBuilder<AnotherDataType, AnotherDataTypeBuilderImpl> {
-    protected AnotherDataTypeBuilderImpl( ) {
-    }
-
-    protected AnotherDataTypeBuilderImpl( AnotherDataType pObject ) {
-      super(pObject);
-    }
-
-    @Override
-    protected AnotherDataTypeBuilderImpl self( ) {
-      return this;
-    }
-
-    @Override
     public AnotherDataType build( ) {
       AnotherDataType lObject = new AnotherDataType(this);
       SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
@@ -213,7 +210,7 @@ public class AnotherDataType {
    * @return {@link Builder} New builder that can be used to create new AnotherDataType objects. The method never
    * returns null.
    */
-  public AnotherDataTypeBuilder<?, ?> toBuilder( ) {
-    return new AnotherDataTypeBuilderImpl(this);
+  public Builder toBuilder( ) {
+    return new Builder(this);
   }
 }
