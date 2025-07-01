@@ -79,7 +79,7 @@ public class ChildB extends ParentClass {
   /**
    * Method returns a new builder.
    *
-   * @return {@link Builder} New builder that can be used to create new ChildB objects.
+   * @return {@link ChildBBuilder} New builder that can be used to create new ChildB objects.
    */
   public static ChildBBuilder<?, ?> builder( ) {
     return new ChildBBuilderImpl();
@@ -118,14 +118,14 @@ public class ChildB extends ParentClass {
     private Set<ParentClass> composition;
 
     /**
-     * Use {@link ChildBBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link ChildB#builder()} instead of private constructor to create new builder.
      */
     protected ChildBBuilder( ) {
       super();
     }
 
     /**
-     * Use {@link ChildBBuilder#builder(ChildB)} instead of private constructor to create new builder.
+     * Use {@link ChildB#builder(ChildB)} instead of private constructor to create new builder.
      */
     protected ChildBBuilder( ChildB pObject ) {
       super(pObject);
@@ -387,7 +387,8 @@ public class ChildB extends ParentClass {
   /**
    * Method creates a new builder and initializes it with the data of this object.
    *
-   * @return {@link Builder} New builder that can be used to create new ChildB objects. The method never returns null.
+   * @return {@link ChildBBuilder} New builder that can be used to create new ChildB objects. The method never returns
+   * null.
    */
   public ChildBBuilder<?, ?> toBuilder( ) {
     return new ChildBBuilderImpl(this);

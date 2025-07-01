@@ -32,7 +32,7 @@ public class UICStopPlace extends StopPlaceRef {
   /**
    * Method returns a new builder.
    *
-   * @return {@link Builder} New builder that can be used to create new UICStopPlace objects.
+   * @return {@link UICStopPlaceBuilder} New builder that can be used to create new UICStopPlace objects.
    */
   public static UICStopPlaceBuilder<?, ?> builder( ) {
     return new UICStopPlaceBuilderImpl();
@@ -63,14 +63,14 @@ public class UICStopPlace extends StopPlaceRef {
   public static abstract class UICStopPlaceBuilder<T extends UICStopPlace, B extends UICStopPlaceBuilder<T, B>>
       extends StopPlaceRefBuilder<T, B> {
     /**
-     * Use {@link UICStopPlaceBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link UICStopPlace#builder()} instead of private constructor to create new builder.
      */
     protected UICStopPlaceBuilder( ) {
       super();
     }
 
     /**
-     * Use {@link UICStopPlaceBuilder#builder(UICStopPlace)} instead of private constructor to create new builder.
+     * Use {@link UICStopPlace#builder(UICStopPlace)} instead of private constructor to create new builder.
      */
     protected UICStopPlaceBuilder( UICStopPlace pObject ) {
       super(pObject);
@@ -135,8 +135,8 @@ public class UICStopPlace extends StopPlaceRef {
   /**
    * Method creates a new builder and initializes it with the data of this object.
    *
-   * @return {@link Builder} New builder that can be used to create new UICStopPlace objects. The method never returns
-   * null.
+   * @return {@link UICStopPlaceBuilder} New builder that can be used to create new UICStopPlace objects. The method
+   * never returns null.
    */
   public UICStopPlaceBuilder<?, ?> toBuilder( ) {
     return new UICStopPlaceBuilderImpl(this);

@@ -69,7 +69,7 @@ public class ChildAA extends ChildA {
   /**
    * Method returns a new builder.
    *
-   * @return {@link Builder} New builder that can be used to create new ChildAA objects.
+   * @return {@link ChildAABuilder} New builder that can be used to create new ChildAA objects.
    */
   public static ChildAABuilder<?, ?> builder( ) {
     return new ChildAABuilderImpl();
@@ -120,14 +120,14 @@ public class ChildAA extends ChildA {
     private String[] requiredArray;
 
     /**
-     * Use {@link ChildAABuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link ChildAA#builder()} instead of private constructor to create new builder.
      */
     protected ChildAABuilder( ) {
       super();
     }
 
     /**
-     * Use {@link ChildAABuilder#builder(ChildAA)} instead of private constructor to create new builder.
+     * Use {@link ChildAA#builder(ChildAA)} instead of private constructor to create new builder.
      */
     protected ChildAABuilder( ChildAA pObject ) {
       super(pObject);
@@ -389,7 +389,8 @@ public class ChildAA extends ChildA {
   /**
    * Method creates a new builder and initializes it with the data of this object.
    *
-   * @return {@link Builder} New builder that can be used to create new ChildAA objects. The method never returns null.
+   * @return {@link ChildAABuilder} New builder that can be used to create new ChildAA objects. The method never returns
+   * null.
    */
   public ChildAABuilder<?, ?> toBuilder( ) {
     return new ChildAABuilderImpl(this);

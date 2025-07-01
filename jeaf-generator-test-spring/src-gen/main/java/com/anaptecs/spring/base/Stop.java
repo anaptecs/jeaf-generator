@@ -69,7 +69,7 @@ public class Stop {
   /**
    * Method returns a new builder.
    *
-   * @return {@link Builder} New builder that can be used to create new Stop objects.
+   * @return {@link StopBuilder} New builder that can be used to create new Stop objects.
    */
   public static StopBuilder<?, ?> builder( ) {
     return new StopBuilderImpl();
@@ -102,13 +102,13 @@ public class Stop {
     private List<LinkObject> links;
 
     /**
-     * Use {@link StopBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link Stop#builder()} instead of private constructor to create new builder.
      */
     protected StopBuilder( ) {
     }
 
     /**
-     * Use {@link StopBuilder#builder(Stop)} instead of private constructor to create new builder.
+     * Use {@link Stop#builder(Stop)} instead of private constructor to create new builder.
      */
     protected StopBuilder( Stop pObject ) {
       if (pObject != null) {
@@ -344,7 +344,7 @@ public class Stop {
   /**
    * Method creates a new builder and initializes it with the data of this object.
    *
-   * @return {@link Builder} New builder that can be used to create new Stop objects. The method never returns null.
+   * @return {@link StopBuilder} New builder that can be used to create new Stop objects. The method never returns null.
    */
   public StopBuilder<?, ?> toBuilder( ) {
     return new StopBuilderImpl(this);

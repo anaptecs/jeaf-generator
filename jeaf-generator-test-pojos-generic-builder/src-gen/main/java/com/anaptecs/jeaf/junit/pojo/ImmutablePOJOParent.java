@@ -49,7 +49,7 @@ public class ImmutablePOJOParent extends AbstractPOJO {
   /**
    * Method returns a new builder.
    *
-   * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects.
+   * @return {@link ImmutablePOJOParentBuilder} New builder that can be used to create new ImmutablePOJOParent objects.
    */
   public static ImmutablePOJOParentBuilder<?, ?> builder( ) {
     return new ImmutablePOJOParentBuilderImpl();
@@ -88,14 +88,14 @@ public class ImmutablePOJOParent extends AbstractPOJO {
     private Integer anotherParentAttribute;
 
     /**
-     * Use {@link ImmutablePOJOParentBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link ImmutablePOJOParent#builder()} instead of private constructor to create new builder.
      */
     protected ImmutablePOJOParentBuilder( ) {
       super();
     }
 
     /**
-     * Use {@link ImmutablePOJOParentBuilder#builder(ImmutablePOJOParent)} instead of private constructor to create new
+     * Use {@link ImmutablePOJOParent#builder(ImmutablePOJOParent)} instead of private constructor to create new
      * builder.
      */
     protected ImmutablePOJOParentBuilder( ImmutablePOJOParent pObject ) {
@@ -257,8 +257,8 @@ public class ImmutablePOJOParent extends AbstractPOJO {
   /**
    * Method creates a new builder and initializes it with the data of this object.
    *
-   * @return {@link Builder} New builder that can be used to create new ImmutablePOJOParent objects. The method never
-   * returns null.
+   * @return {@link ImmutablePOJOParentBuilder} New builder that can be used to create new ImmutablePOJOParent objects.
+   * The method never returns null.
    */
   public ImmutablePOJOParentBuilder<?, ?> toBuilder( ) {
     return new ImmutablePOJOParentBuilderImpl(this);

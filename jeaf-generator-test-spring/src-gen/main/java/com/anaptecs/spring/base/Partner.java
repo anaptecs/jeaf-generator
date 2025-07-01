@@ -56,7 +56,7 @@ public class Partner {
   /**
    * Method returns a new builder.
    *
-   * @return {@link Builder} New builder that can be used to create new Partner objects.
+   * @return {@link PartnerBuilder} New builder that can be used to create new Partner objects.
    */
   public static PartnerBuilder<?, ?> builder( ) {
     return new PartnerBuilderImpl();
@@ -82,13 +82,13 @@ public class Partner {
     private List<PostalAddress> postalAddresses;
 
     /**
-     * Use {@link PartnerBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link Partner#builder()} instead of private constructor to create new builder.
      */
     protected PartnerBuilder( ) {
     }
 
     /**
-     * Use {@link PartnerBuilder#builder(Partner)} instead of private constructor to create new builder.
+     * Use {@link Partner#builder(Partner)} instead of private constructor to create new builder.
      */
     protected PartnerBuilder( Partner pObject ) {
       if (pObject != null) {
@@ -289,7 +289,8 @@ public class Partner {
   /**
    * Method creates a new builder and initializes it with the data of this object.
    *
-   * @return {@link Builder} New builder that can be used to create new Partner objects. The method never returns null.
+   * @return {@link PartnerBuilder} New builder that can be used to create new Partner objects. The method never returns
+   * null.
    */
   public PartnerBuilder<?, ?> toBuilder( ) {
     return new PartnerBuilderImpl(this);

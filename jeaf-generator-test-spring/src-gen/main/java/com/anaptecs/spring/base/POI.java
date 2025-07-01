@@ -44,7 +44,7 @@ public class POI extends Stop {
   /**
    * Method returns a new builder.
    *
-   * @return {@link Builder} New builder that can be used to create new POI objects.
+   * @return {@link POIBuilder} New builder that can be used to create new POI objects.
    */
   public static POIBuilder<?, ?> builder( ) {
     return new POIBuilderImpl();
@@ -76,14 +76,14 @@ public class POI extends Stop {
     private String description;
 
     /**
-     * Use {@link POIBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link POI#builder()} instead of private constructor to create new builder.
      */
     protected POIBuilder( ) {
       super();
     }
 
     /**
-     * Use {@link POIBuilder#builder(POI)} instead of private constructor to create new builder.
+     * Use {@link POI#builder(POI)} instead of private constructor to create new builder.
      */
     protected POIBuilder( POI pObject ) {
       super(pObject);
@@ -214,7 +214,7 @@ public class POI extends Stop {
   /**
    * Method creates a new builder and initializes it with the data of this object.
    *
-   * @return {@link Builder} New builder that can be used to create new POI objects. The method never returns null.
+   * @return {@link POIBuilder} New builder that can be used to create new POI objects. The method never returns null.
    */
   public POIBuilder<?, ?> toBuilder( ) {
     return new POIBuilderImpl(this);

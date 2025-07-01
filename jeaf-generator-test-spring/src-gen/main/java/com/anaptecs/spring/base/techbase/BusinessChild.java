@@ -44,7 +44,7 @@ public class BusinessChild extends BusinessParent {
   /**
    * Method returns a new builder.
    *
-   * @return {@link Builder} New builder that can be used to create new BusinessChild objects.
+   * @return {@link BusinessChildBuilder} New builder that can be used to create new BusinessChild objects.
    */
   public static BusinessChildBuilder<?, ?> builder( ) {
     return new BusinessChildBuilderImpl();
@@ -80,14 +80,14 @@ public class BusinessChild extends BusinessParent {
     private String childAttribute;
 
     /**
-     * Use {@link BusinessChildBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link BusinessChild#builder()} instead of private constructor to create new builder.
      */
     protected BusinessChildBuilder( ) {
       super();
     }
 
     /**
-     * Use {@link BusinessChildBuilder#builder(BusinessChild)} instead of private constructor to create new builder.
+     * Use {@link BusinessChild#builder(BusinessChild)} instead of private constructor to create new builder.
      */
     protected BusinessChildBuilder( BusinessChild pObject ) {
       super(pObject);
@@ -219,8 +219,8 @@ public class BusinessChild extends BusinessParent {
   /**
    * Method creates a new builder and initializes it with the data of this object.
    *
-   * @return {@link Builder} New builder that can be used to create new BusinessChild objects. The method never returns
-   * null.
+   * @return {@link BusinessChildBuilder} New builder that can be used to create new BusinessChild objects. The method
+   * never returns null.
    */
   public BusinessChildBuilder<?, ?> toBuilder( ) {
     return new BusinessChildBuilderImpl(this);

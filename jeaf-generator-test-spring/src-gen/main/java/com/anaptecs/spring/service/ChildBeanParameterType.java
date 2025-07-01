@@ -37,7 +37,8 @@ public class ChildBeanParameterType extends ParentBeanParamType {
   /**
    * Method returns a new builder.
    *
-   * @return {@link Builder} New builder that can be used to create new ChildBeanParameterType objects.
+   * @return {@link ChildBeanParameterTypeBuilder} New builder that can be used to create new ChildBeanParameterType
+   * objects.
    */
   public static ChildBeanParameterTypeBuilder<?, ?> builder( ) {
     return new ChildBeanParameterTypeBuilderImpl();
@@ -76,15 +77,15 @@ public class ChildBeanParameterType extends ParentBeanParamType {
     private String childProperty;
 
     /**
-     * Use {@link ChildBeanParameterTypeBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link ChildBeanParameterType#builder()} instead of private constructor to create new builder.
      */
     protected ChildBeanParameterTypeBuilder( ) {
       super();
     }
 
     /**
-     * Use {@link ChildBeanParameterTypeBuilder#builder(ChildBeanParameterType)} instead of private constructor to
-     * create new builder.
+     * Use {@link ChildBeanParameterType#builder(ChildBeanParameterType)} instead of private constructor to create new
+     * builder.
      */
     protected ChildBeanParameterTypeBuilder( ChildBeanParameterType pObject ) {
       super(pObject);
@@ -217,8 +218,8 @@ public class ChildBeanParameterType extends ParentBeanParamType {
   /**
    * Method creates a new builder and initializes it with the data of this object.
    *
-   * @return {@link Builder} New builder that can be used to create new ChildBeanParameterType objects. The method never
-   * returns null.
+   * @return {@link ChildBeanParameterTypeBuilder} New builder that can be used to create new ChildBeanParameterType
+   * objects. The method never returns null.
    */
   public ChildBeanParameterTypeBuilder<?, ?> toBuilder( ) {
     return new ChildBeanParameterTypeBuilderImpl(this);

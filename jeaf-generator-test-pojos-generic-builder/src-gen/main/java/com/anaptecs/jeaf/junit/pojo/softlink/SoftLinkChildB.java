@@ -80,7 +80,7 @@ public class SoftLinkChildB extends SoftLinkParent {
   /**
    * Method returns a new builder.
    *
-   * @return {@link Builder} New builder that can be used to create new SoftLinkChildB objects.
+   * @return {@link SoftLinkChildBBuilder} New builder that can be used to create new SoftLinkChildB objects.
    */
   public static SoftLinkChildBBuilder<?, ?> builder( ) {
     return new SoftLinkChildBBuilderImpl();
@@ -135,14 +135,14 @@ public class SoftLinkChildB extends SoftLinkParent {
     private SoftLinkID oneLinkID;
 
     /**
-     * Use {@link SoftLinkChildBBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link SoftLinkChildB#builder()} instead of private constructor to create new builder.
      */
     protected SoftLinkChildBBuilder( ) {
       super();
     }
 
     /**
-     * Use {@link SoftLinkChildBBuilder#builder(SoftLinkChildB)} instead of private constructor to create new builder.
+     * Use {@link SoftLinkChildB#builder(SoftLinkChildB)} instead of private constructor to create new builder.
      */
     protected SoftLinkChildBBuilder( SoftLinkChildB pObject ) {
       super(pObject);
@@ -358,8 +358,8 @@ public class SoftLinkChildB extends SoftLinkParent {
   /**
    * Method creates a new builder and initializes it with the data of this object.
    *
-   * @return {@link Builder} New builder that can be used to create new SoftLinkChildB objects. The method never returns
-   * null.
+   * @return {@link SoftLinkChildBBuilder} New builder that can be used to create new SoftLinkChildB objects. The method
+   * never returns null.
    */
   public SoftLinkChildBBuilder<?, ?> toBuilder( ) {
     return new SoftLinkChildBBuilderImpl(this);

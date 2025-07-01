@@ -44,7 +44,7 @@ public class SpecialContext extends Context {
   /**
    * Method returns a new builder.
    *
-   * @return {@link Builder} New builder that can be used to create new SpecialContext objects.
+   * @return {@link SpecialContextBuilder} New builder that can be used to create new SpecialContext objects.
    */
   public static SpecialContextBuilder<?, ?> builder( ) {
     return new SpecialContextBuilderImpl();
@@ -101,14 +101,14 @@ public class SpecialContext extends Context {
     private ChannelType channelType;
 
     /**
-     * Use {@link SpecialContextBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link SpecialContext#builder()} instead of private constructor to create new builder.
      */
     protected SpecialContextBuilder( ) {
       super();
     }
 
     /**
-     * Use {@link SpecialContextBuilder#builder(SpecialContext)} instead of private constructor to create new builder.
+     * Use {@link SpecialContext#builder(SpecialContext)} instead of private constructor to create new builder.
      */
     protected SpecialContextBuilder( SpecialContext pObject ) {
       super(pObject);
@@ -280,8 +280,8 @@ public class SpecialContext extends Context {
   /**
    * Method creates a new builder and initializes it with the data of this object.
    *
-   * @return {@link Builder} New builder that can be used to create new SpecialContext objects. The method never returns
-   * null.
+   * @return {@link SpecialContextBuilder} New builder that can be used to create new SpecialContext objects. The method
+   * never returns null.
    */
   public SpecialContextBuilder<?, ?> toBuilder( ) {
     return new SpecialContextBuilderImpl(this);

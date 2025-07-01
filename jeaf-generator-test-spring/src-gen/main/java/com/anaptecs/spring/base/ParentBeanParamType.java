@@ -67,7 +67,7 @@ public class ParentBeanParamType {
   /**
    * Method returns a new builder.
    *
-   * @return {@link Builder} New builder that can be used to create new ParentBeanParamType objects.
+   * @return {@link ParentBeanParamTypeBuilder} New builder that can be used to create new ParentBeanParamType objects.
    */
   public static ParentBeanParamTypeBuilder<?, ?> builder( ) {
     return new ParentBeanParamTypeBuilderImpl();
@@ -124,13 +124,13 @@ public class ParentBeanParamType {
     private DoubleCode code;
 
     /**
-     * Use {@link ParentBeanParamTypeBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link ParentBeanParamType#builder()} instead of private constructor to create new builder.
      */
     protected ParentBeanParamTypeBuilder( ) {
     }
 
     /**
-     * Use {@link ParentBeanParamTypeBuilder#builder(ParentBeanParamType)} instead of private constructor to create new
+     * Use {@link ParentBeanParamType#builder(ParentBeanParamType)} instead of private constructor to create new
      * builder.
      */
     protected ParentBeanParamTypeBuilder( ParentBeanParamType pObject ) {
@@ -344,8 +344,8 @@ public class ParentBeanParamType {
   /**
    * Method creates a new builder and initializes it with the data of this object.
    *
-   * @return {@link Builder} New builder that can be used to create new ParentBeanParamType objects. The method never
-   * returns null.
+   * @return {@link ParentBeanParamTypeBuilder} New builder that can be used to create new ParentBeanParamType objects.
+   * The method never returns null.
    */
   public ParentBeanParamTypeBuilder<?, ?> toBuilder( ) {
     return new ParentBeanParamTypeBuilderImpl(this);

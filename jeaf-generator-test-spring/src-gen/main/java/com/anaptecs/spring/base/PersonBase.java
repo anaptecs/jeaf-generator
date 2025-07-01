@@ -64,14 +64,14 @@ public abstract class PersonBase extends Partner {
     private String firstName;
 
     /**
-     * Use {@link PersonBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link Person#builder()} instead of private constructor to create new builder.
      */
     protected PersonBuilder( ) {
       super();
     }
 
     /**
-     * Use {@link PersonBuilder#builder(Person)} instead of private constructor to create new builder.
+     * Use {@link Person#builder(Person)} instead of private constructor to create new builder.
      */
     protected PersonBuilder( PersonBase pObject ) {
       super(pObject);
@@ -263,7 +263,8 @@ public abstract class PersonBase extends Partner {
   /**
    * Method creates a new builder and initializes it with the data of this object.
    *
-   * @return {@link Builder} New builder that can be used to create new Person objects. The method never returns null.
+   * @return {@link PersonBuilder} New builder that can be used to create new Person objects. The method never returns
+   * null.
    */
   public PersonBuilder<?, ?> toBuilder( ) {
     return new PersonBuilderImpl((Person) this);

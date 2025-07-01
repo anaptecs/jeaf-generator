@@ -86,7 +86,7 @@ public class SoftLinkParent {
   /**
    * Method returns a new builder.
    *
-   * @return {@link Builder} New builder that can be used to create new SoftLinkParent objects.
+   * @return {@link SoftLinkParentBuilder} New builder that can be used to create new SoftLinkParent objects.
    */
   public static SoftLinkParentBuilder<?, ?> builder( ) {
     return new SoftLinkParentBuilderImpl();
@@ -137,13 +137,13 @@ public class SoftLinkParent {
     private SoftLinkID readonlyPartnerID;
 
     /**
-     * Use {@link SoftLinkParentBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link SoftLinkParent#builder()} instead of private constructor to create new builder.
      */
     protected SoftLinkParentBuilder( ) {
     }
 
     /**
-     * Use {@link SoftLinkParentBuilder#builder(SoftLinkParent)} instead of private constructor to create new builder.
+     * Use {@link SoftLinkParent#builder(SoftLinkParent)} instead of private constructor to create new builder.
      */
     protected SoftLinkParentBuilder( SoftLinkParent pObject ) {
       if (pObject != null) {
@@ -361,8 +361,8 @@ public class SoftLinkParent {
   /**
    * Method creates a new builder and initializes it with the data of this object.
    *
-   * @return {@link Builder} New builder that can be used to create new SoftLinkParent objects. The method never returns
-   * null.
+   * @return {@link SoftLinkParentBuilder} New builder that can be used to create new SoftLinkParent objects. The method
+   * never returns null.
    */
   public SoftLinkParentBuilder<?, ?> toBuilder( ) {
     return new SoftLinkParentBuilderImpl(this);

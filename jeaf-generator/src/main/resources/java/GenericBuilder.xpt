@@ -50,14 +50,14 @@ public static abstract class «this.abstractBuilderName()»<T extends «name», 
 	«EXPAND java::Helper::GenerateCustomHeadersField»
 
     /**
-     * Use {@link «this.abstractBuilderName()»#builder()} instead of private constructor to create new builder.
+     * Use {@link «name»#builder()} instead of private constructor to create new builder.
      */
     protected «this.abstractBuilderName()»( ) {
       «IF superClass.isEmpty == false»super();«ENDIF»
     }
 
     /**
-     * Use {@link «this.abstractBuilderName()»#builder(«this.name»)} instead of private constructor to create new builder.
+     * Use {@link «name»#builder(«this.name»)} instead of private constructor to create new builder.
      */
     protected «this.abstractBuilderName()»( «this.name»«IF this.requiresCustomImplementationForClass()»Base«ENDIF» «this.getTemplateParams()» pObject ) {
       «IF superClass.isEmpty == false»super(pObject);«ENDIF»
@@ -220,14 +220,14 @@ static final class «this.genericBuilderImplName()» extends «IF this.customize
 «ENDIF»
 public static abstract class «this.builderName()»<T extends «name», B extends «this.builderName()»<T, B>> extends «this.abstractBuilderName()»<T, B> {
     /**
-     * Use {@link «this.builderName()»#builder()} instead of private constructor to create new builder.
+     * Use {@link «name»#builder()} instead of private constructor to create new builder.
      */
     protected «this.builderName()»( ) {
       super();
     }
 
     /**
-     * Use {@link «this.builderName()»#builder(«this.name»)} instead of private constructor to create new builder.
+     * Use {@link «name»#builder(«this.name»)} instead of private constructor to create new builder.
      */
     protected «this.builderName()»( «this.name»«this.getTemplateParams()» pObject ) {
       super(pObject);

@@ -32,7 +32,7 @@ public class SwissGeoPosition extends GeoPosition {
   /**
    * Method returns a new builder.
    *
-   * @return {@link Builder} New builder that can be used to create new SwissGeoPosition objects.
+   * @return {@link SwissGeoPositionBuilder} New builder that can be used to create new SwissGeoPosition objects.
    */
   public static SwissGeoPositionBuilder<?, ?> builder( ) {
     return new SwissGeoPositionBuilderImpl();
@@ -69,15 +69,14 @@ public class SwissGeoPosition extends GeoPosition {
   public static abstract class SwissGeoPositionBuilder<T extends SwissGeoPosition, B extends SwissGeoPositionBuilder<T, B>>
       extends GeoPositionBuilder<T, B> {
     /**
-     * Use {@link SwissGeoPositionBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link SwissGeoPosition#builder()} instead of private constructor to create new builder.
      */
     protected SwissGeoPositionBuilder( ) {
       super();
     }
 
     /**
-     * Use {@link SwissGeoPositionBuilder#builder(SwissGeoPosition)} instead of private constructor to create new
-     * builder.
+     * Use {@link SwissGeoPosition#builder(SwissGeoPosition)} instead of private constructor to create new builder.
      */
     protected SwissGeoPositionBuilder( SwissGeoPosition pObject ) {
       super(pObject);
@@ -143,8 +142,8 @@ public class SwissGeoPosition extends GeoPosition {
   /**
    * Method creates a new builder and initializes it with the data of this object.
    *
-   * @return {@link Builder} New builder that can be used to create new SwissGeoPosition objects. The method never
-   * returns null.
+   * @return {@link SwissGeoPositionBuilder} New builder that can be used to create new SwissGeoPosition objects. The
+   * method never returns null.
    */
   public SwissGeoPositionBuilder<?, ?> toBuilder( ) {
     return new SwissGeoPositionBuilderImpl(this);

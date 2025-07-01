@@ -26,14 +26,14 @@ public abstract class Partner extends PartnerBase {
   public static abstract class PartnerBuilder<T extends Partner, B extends PartnerBuilder<T, B>>
       extends PartnerBuilderBase<T, B> {
     /**
-     * Use {@link PartnerBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link Partner#builder()} instead of private constructor to create new builder.
      */
     protected PartnerBuilder( ) {
       super();
     }
 
     /**
-     * Use {@link PartnerBuilder#builder(Partner)} instead of private constructor to create new builder.
+     * Use {@link Partner#builder(Partner)} instead of private constructor to create new builder.
      */
     protected PartnerBuilder( Partner pObject ) {
       super(pObject);

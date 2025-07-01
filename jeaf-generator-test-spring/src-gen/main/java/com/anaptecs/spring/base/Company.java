@@ -44,7 +44,7 @@ public class Company extends Partner {
   /**
    * Method returns a new builder.
    *
-   * @return {@link Builder} New builder that can be used to create new Company objects.
+   * @return {@link CompanyBuilder} New builder that can be used to create new Company objects.
    */
   public static CompanyBuilder<?, ?> builder( ) {
     return new CompanyBuilderImpl();
@@ -60,14 +60,14 @@ public class Company extends Partner {
     private String name;
 
     /**
-     * Use {@link CompanyBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link Company#builder()} instead of private constructor to create new builder.
      */
     protected CompanyBuilder( ) {
       super();
     }
 
     /**
-     * Use {@link CompanyBuilder#builder(Company)} instead of private constructor to create new builder.
+     * Use {@link Company#builder(Company)} instead of private constructor to create new builder.
      */
     protected CompanyBuilder( Company pObject ) {
       super(pObject);
@@ -198,7 +198,8 @@ public class Company extends Partner {
   /**
    * Method creates a new builder and initializes it with the data of this object.
    *
-   * @return {@link Builder} New builder that can be used to create new Company objects. The method never returns null.
+   * @return {@link CompanyBuilder} New builder that can be used to create new Company objects. The method never returns
+   * null.
    */
   public CompanyBuilder<?, ?> toBuilder( ) {
     return new CompanyBuilderImpl(this);

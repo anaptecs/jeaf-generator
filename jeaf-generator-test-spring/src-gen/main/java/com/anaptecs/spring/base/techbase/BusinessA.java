@@ -41,7 +41,7 @@ public class BusinessA extends TechParent {
   /**
    * Method returns a new builder.
    *
-   * @return {@link Builder} New builder that can be used to create new BusinessA objects.
+   * @return {@link BusinessABuilder} New builder that can be used to create new BusinessA objects.
    */
   public static BusinessABuilder<?, ?> builder( ) {
     return new BusinessABuilderImpl();
@@ -74,14 +74,14 @@ public class BusinessA extends TechParent {
     private int businessAttribute;
 
     /**
-     * Use {@link BusinessABuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link BusinessA#builder()} instead of private constructor to create new builder.
      */
     protected BusinessABuilder( ) {
       super();
     }
 
     /**
-     * Use {@link BusinessABuilder#builder(BusinessA)} instead of private constructor to create new builder.
+     * Use {@link BusinessA#builder(BusinessA)} instead of private constructor to create new builder.
      */
     protected BusinessABuilder( BusinessA pObject ) {
       super(pObject);
@@ -211,8 +211,8 @@ public class BusinessA extends TechParent {
   /**
    * Method creates a new builder and initializes it with the data of this object.
    *
-   * @return {@link Builder} New builder that can be used to create new BusinessA objects. The method never returns
-   * null.
+   * @return {@link BusinessABuilder} New builder that can be used to create new BusinessA objects. The method never
+   * returns null.
    */
   public BusinessABuilder<?, ?> toBuilder( ) {
     return new BusinessABuilderImpl(this);
