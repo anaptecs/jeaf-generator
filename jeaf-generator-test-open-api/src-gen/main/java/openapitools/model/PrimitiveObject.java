@@ -53,7 +53,7 @@ import openapitools.JSON;
   PrimitiveObject.JSON_PROPERTY_A_STRING,
   PrimitiveObject.JSON_PROPERTY_B_STRING
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
 public class PrimitiveObject {
   public static final String JSON_PROPERTY_A_BOOLEAN = "aBoolean";
   @javax.annotation.Nonnull

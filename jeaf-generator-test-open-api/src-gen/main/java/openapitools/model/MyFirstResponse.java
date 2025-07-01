@@ -35,7 +35,7 @@ import openapitools.JSON;
   MyFirstResponse.JSON_PROPERTY_MESSAGES,
   MyFirstResponse.JSON_PROPERTY_DATA
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
 public class MyFirstResponse {
   public static final String JSON_PROPERTY_MESSAGES = "messages";
   @javax.annotation.Nullable
