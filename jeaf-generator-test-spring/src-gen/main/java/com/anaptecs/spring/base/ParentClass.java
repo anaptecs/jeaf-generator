@@ -48,7 +48,7 @@ public class ParentClass {
   /**
    * Method returns a new builder.
    *
-   * @return {@link Builder} New builder that can be used to create new ParentClass objects.
+   * @return {@link ParentClassBuilder} New builder that can be used to create new ParentClass objects.
    */
   public static ParentClassBuilder<?, ?> builder( ) {
     return new ParentClassBuilderImpl();
@@ -77,13 +77,13 @@ public class ParentClass {
     private String parentAttribute;
 
     /**
-     * Use {@link ParentClassBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link ParentClass#builder()} instead of private constructor to create new builder.
      */
     protected ParentClassBuilder( ) {
     }
 
     /**
-     * Use {@link ParentClassBuilder#builder(ParentClass)} instead of private constructor to create new builder.
+     * Use {@link ParentClass#builder(ParentClass)} instead of private constructor to create new builder.
      */
     protected ParentClassBuilder( ParentClass pObject ) {
       if (pObject != null) {
@@ -218,8 +218,8 @@ public class ParentClass {
   /**
    * Method creates a new builder and initializes it with the data of this object.
    *
-   * @return {@link Builder} New builder that can be used to create new ParentClass objects. The method never returns
-   * null.
+   * @return {@link ParentClassBuilder} New builder that can be used to create new ParentClass objects. The method never
+   * returns null.
    */
   public ParentClassBuilder<?, ?> toBuilder( ) {
     return new ParentClassBuilderImpl(this);

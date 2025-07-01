@@ -73,7 +73,7 @@ public class NoSubTypesChild extends NoSubTypesParent {
   /**
    * Method returns a new builder.
    *
-   * @return {@link Builder} New builder that can be used to create new NoSubTypesChild objects.
+   * @return {@link NoSubTypesChildBuilder} New builder that can be used to create new NoSubTypesChild objects.
    */
   public static NoSubTypesChildBuilder<?, ?> builder( ) {
     return new NoSubTypesChildBuilderImpl();
@@ -132,14 +132,14 @@ public class NoSubTypesChild extends NoSubTypesParent {
     private String myProperty;
 
     /**
-     * Use {@link NoSubTypesChildBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link NoSubTypesChild#builder()} instead of private constructor to create new builder.
      */
     protected NoSubTypesChildBuilder( ) {
       super();
     }
 
     /**
-     * Use {@link NoSubTypesChildBuilder#builder(NoSubTypesChild)} instead of private constructor to create new builder.
+     * Use {@link NoSubTypesChild#builder(NoSubTypesChild)} instead of private constructor to create new builder.
      */
     protected NoSubTypesChildBuilder( NoSubTypesChild pObject ) {
       super(pObject);
@@ -326,8 +326,8 @@ public class NoSubTypesChild extends NoSubTypesParent {
   /**
    * Method creates a new builder and initializes it with the data of this object.
    *
-   * @return {@link Builder} New builder that can be used to create new NoSubTypesChild objects. The method never
-   * returns null.
+   * @return {@link NoSubTypesChildBuilder} New builder that can be used to create new NoSubTypesChild objects. The
+   * method never returns null.
    */
   public NoSubTypesChildBuilder<?, ?> toBuilder( ) {
     return new NoSubTypesChildBuilderImpl(this);

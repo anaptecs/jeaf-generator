@@ -53,7 +53,7 @@ public class MutableChildPOJO extends ImmutablePOJOParent {
   /**
    * Method returns a new builder.
    *
-   * @return {@link Builder} New builder that can be used to create new MutableChildPOJO objects.
+   * @return {@link MutableChildPOJOBuilder} New builder that can be used to create new MutableChildPOJO objects.
    */
   public static MutableChildPOJOBuilder<?, ?> builder( ) {
     return new MutableChildPOJOBuilderImpl();
@@ -102,15 +102,14 @@ public class MutableChildPOJO extends ImmutablePOJOParent {
     private Boolean booleanDefault = true;
 
     /**
-     * Use {@link MutableChildPOJOBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link MutableChildPOJO#builder()} instead of private constructor to create new builder.
      */
     protected MutableChildPOJOBuilder( ) {
       super();
     }
 
     /**
-     * Use {@link MutableChildPOJOBuilder#builder(MutableChildPOJO)} instead of private constructor to create new
-     * builder.
+     * Use {@link MutableChildPOJO#builder(MutableChildPOJO)} instead of private constructor to create new builder.
      */
     protected MutableChildPOJOBuilder( MutableChildPOJO pObject ) {
       super(pObject);
@@ -270,8 +269,8 @@ public class MutableChildPOJO extends ImmutablePOJOParent {
   /**
    * Method creates a new builder and initializes it with the data of this object.
    *
-   * @return {@link Builder} New builder that can be used to create new MutableChildPOJO objects. The method never
-   * returns null.
+   * @return {@link MutableChildPOJOBuilder} New builder that can be used to create new MutableChildPOJO objects. The
+   * method never returns null.
    */
   public MutableChildPOJOBuilder<?, ?> toBuilder( ) {
     return new MutableChildPOJOBuilderImpl(this);

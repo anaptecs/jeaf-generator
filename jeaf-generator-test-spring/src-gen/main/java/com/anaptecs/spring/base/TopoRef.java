@@ -32,7 +32,7 @@ public class TopoRef extends PlaceRef {
   /**
    * Method returns a new builder.
    *
-   * @return {@link Builder} New builder that can be used to create new TopoRef objects.
+   * @return {@link TopoRefBuilder} New builder that can be used to create new TopoRef objects.
    */
   public static TopoRefBuilder<?, ?> builder( ) {
     return new TopoRefBuilderImpl();
@@ -63,14 +63,14 @@ public class TopoRef extends PlaceRef {
   public static abstract class TopoRefBuilder<T extends TopoRef, B extends TopoRefBuilder<T, B>>
       extends PlaceRefBuilder<T, B> {
     /**
-     * Use {@link TopoRefBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link TopoRef#builder()} instead of private constructor to create new builder.
      */
     protected TopoRefBuilder( ) {
       super();
     }
 
     /**
-     * Use {@link TopoRefBuilder#builder(TopoRef)} instead of private constructor to create new builder.
+     * Use {@link TopoRef#builder(TopoRef)} instead of private constructor to create new builder.
      */
     protected TopoRefBuilder( TopoRef pObject ) {
       super(pObject);
@@ -134,7 +134,8 @@ public class TopoRef extends PlaceRef {
   /**
    * Method creates a new builder and initializes it with the data of this object.
    *
-   * @return {@link Builder} New builder that can be used to create new TopoRef objects. The method never returns null.
+   * @return {@link TopoRefBuilder} New builder that can be used to create new TopoRef objects. The method never returns
+   * null.
    */
   public TopoRefBuilder<?, ?> toBuilder( ) {
     return new TopoRefBuilderImpl(this);

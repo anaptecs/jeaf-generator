@@ -21,7 +21,7 @@ public class Person extends PersonBase {
   /**
    * Method returns a new builder.
    *
-   * @return {@link Builder} New builder that can be used to create new Person objects.
+   * @return {@link PersonBuilder} New builder that can be used to create new Person objects.
    */
   public static PersonBuilder<?, ?> builder( ) {
     return new PersonBuilderImpl();

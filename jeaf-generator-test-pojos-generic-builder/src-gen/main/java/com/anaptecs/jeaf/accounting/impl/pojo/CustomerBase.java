@@ -95,14 +95,14 @@ public abstract class CustomerBase extends Partner {
     private Set<Account> accounts;
 
     /**
-     * Use {@link CustomerBuilderBase#builder()} instead of private constructor to create new builder.
+     * Use {@link Customer#builder()} instead of private constructor to create new builder.
      */
     protected CustomerBuilderBase( ) {
       super();
     }
 
     /**
-     * Use {@link CustomerBuilderBase#builder(Customer)} instead of private constructor to create new builder.
+     * Use {@link Customer#builder(Customer)} instead of private constructor to create new builder.
      */
     protected CustomerBuilderBase( CustomerBase pObject ) {
       super(pObject);
@@ -378,7 +378,8 @@ public abstract class CustomerBase extends Partner {
   /**
    * Method creates a new builder and initializes it with the data of this object.
    *
-   * @return {@link Builder} New builder that can be used to create new Customer objects. The method never returns null.
+   * @return {@link CustomerBuilder} New builder that can be used to create new Customer objects. The method never
+   * returns null.
    */
   public Customer.CustomerBuilder<?, ?> toBuilder( ) {
     return new CustomerBuilderImpl((Customer) this);

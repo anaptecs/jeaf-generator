@@ -51,14 +51,14 @@ public abstract class ChildA extends ParentClass {
     private int childAAttribute;
 
     /**
-     * Use {@link ChildABuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link ChildA#builder()} instead of private constructor to create new builder.
      */
     protected ChildABuilder( ) {
       super();
     }
 
     /**
-     * Use {@link ChildABuilder#builder(ChildA)} instead of private constructor to create new builder.
+     * Use {@link ChildA#builder(ChildA)} instead of private constructor to create new builder.
      */
     protected ChildABuilder( ChildA pObject ) {
       super(pObject);

@@ -32,7 +32,7 @@ public class CHStopPlace extends StopPlaceRef {
   /**
    * Method returns a new builder.
    *
-   * @return {@link Builder} New builder that can be used to create new CHStopPlace objects.
+   * @return {@link CHStopPlaceBuilder} New builder that can be used to create new CHStopPlace objects.
    */
   public static CHStopPlaceBuilder<?, ?> builder( ) {
     return new CHStopPlaceBuilderImpl();
@@ -63,14 +63,14 @@ public class CHStopPlace extends StopPlaceRef {
   public static abstract class CHStopPlaceBuilder<T extends CHStopPlace, B extends CHStopPlaceBuilder<T, B>>
       extends StopPlaceRefBuilder<T, B> {
     /**
-     * Use {@link CHStopPlaceBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link CHStopPlace#builder()} instead of private constructor to create new builder.
      */
     protected CHStopPlaceBuilder( ) {
       super();
     }
 
     /**
-     * Use {@link CHStopPlaceBuilder#builder(CHStopPlace)} instead of private constructor to create new builder.
+     * Use {@link CHStopPlace#builder(CHStopPlace)} instead of private constructor to create new builder.
      */
     protected CHStopPlaceBuilder( CHStopPlace pObject ) {
       super(pObject);
@@ -135,8 +135,8 @@ public class CHStopPlace extends StopPlaceRef {
   /**
    * Method creates a new builder and initializes it with the data of this object.
    *
-   * @return {@link Builder} New builder that can be used to create new CHStopPlace objects. The method never returns
-   * null.
+   * @return {@link CHStopPlaceBuilder} New builder that can be used to create new CHStopPlace objects. The method never
+   * returns null.
    */
   public CHStopPlaceBuilder<?, ?> toBuilder( ) {
     return new CHStopPlaceBuilderImpl(this);

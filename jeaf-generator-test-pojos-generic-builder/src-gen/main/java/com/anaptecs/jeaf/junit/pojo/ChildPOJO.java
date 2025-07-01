@@ -55,7 +55,7 @@ public class ChildPOJO extends ParentPOJO {
   /**
    * Method returns a new builder.
    *
-   * @return {@link Builder} New builder that can be used to create new ChildPOJO objects.
+   * @return {@link ChildPOJOBuilder} New builder that can be used to create new ChildPOJO objects.
    */
   public static ChildPOJOBuilder<?, ?> builder( ) {
     return new ChildPOJOBuilderImpl();
@@ -96,14 +96,14 @@ public class ChildPOJO extends ParentPOJO {
     private Integer childAttribute;
 
     /**
-     * Use {@link ChildPOJOBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link ChildPOJO#builder()} instead of private constructor to create new builder.
      */
     protected ChildPOJOBuilder( ) {
       super();
     }
 
     /**
-     * Use {@link ChildPOJOBuilder#builder(ChildPOJO)} instead of private constructor to create new builder.
+     * Use {@link ChildPOJO#builder(ChildPOJO)} instead of private constructor to create new builder.
      */
     protected ChildPOJOBuilder( ChildPOJO pObject ) {
       super(pObject);
@@ -234,8 +234,8 @@ public class ChildPOJO extends ParentPOJO {
   /**
    * Method creates a new builder and initializes it with the data of this object.
    *
-   * @return {@link Builder} New builder that can be used to create new ChildPOJO objects. The method never returns
-   * null.
+   * @return {@link ChildPOJOBuilder} New builder that can be used to create new ChildPOJO objects. The method never
+   * returns null.
    */
   public ChildPOJOBuilder<?, ?> toBuilder( ) {
     return new ChildPOJOBuilderImpl(this);

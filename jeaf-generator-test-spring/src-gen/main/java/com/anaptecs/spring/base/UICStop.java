@@ -44,7 +44,7 @@ public class UICStop extends Stop {
   /**
    * Method returns a new builder.
    *
-   * @return {@link Builder} New builder that can be used to create new UICStop objects.
+   * @return {@link UICStopBuilder} New builder that can be used to create new UICStop objects.
    */
   public static UICStopBuilder<?, ?> builder( ) {
     return new UICStopBuilderImpl();
@@ -77,14 +77,14 @@ public class UICStop extends Stop {
     private String uicCode;
 
     /**
-     * Use {@link UICStopBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link UICStop#builder()} instead of private constructor to create new builder.
      */
     protected UICStopBuilder( ) {
       super();
     }
 
     /**
-     * Use {@link UICStopBuilder#builder(UICStop)} instead of private constructor to create new builder.
+     * Use {@link UICStop#builder(UICStop)} instead of private constructor to create new builder.
      */
     protected UICStopBuilder( UICStop pObject ) {
       super(pObject);
@@ -215,7 +215,8 @@ public class UICStop extends Stop {
   /**
    * Method creates a new builder and initializes it with the data of this object.
    *
-   * @return {@link Builder} New builder that can be used to create new UICStop objects. The method never returns null.
+   * @return {@link UICStopBuilder} New builder that can be used to create new UICStop objects. The method never returns
+   * null.
    */
   public UICStopBuilder<?, ?> toBuilder( ) {
     return new UICStopBuilderImpl(this);

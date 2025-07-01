@@ -97,7 +97,7 @@ public class ChildBB extends ChildB {
   /**
    * Method returns a new builder.
    *
-   * @return {@link Builder} New builder that can be used to create new ChildBB objects.
+   * @return {@link ChildBBBuilder} New builder that can be used to create new ChildBB objects.
    */
   public static ChildBBBuilder<?, ?> builder( ) {
     return new ChildBBBuilderImpl();
@@ -146,14 +146,14 @@ public class ChildBB extends ChildB {
     private byte[] deprecatedArray;
 
     /**
-     * Use {@link ChildBBBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link ChildBB#builder()} instead of private constructor to create new builder.
      */
     protected ChildBBBuilder( ) {
       super();
     }
 
     /**
-     * Use {@link ChildBBBuilder#builder(ChildBB)} instead of private constructor to create new builder.
+     * Use {@link ChildBB#builder(ChildBB)} instead of private constructor to create new builder.
      */
     protected ChildBBBuilder( ChildBB pObject ) {
       super(pObject);
@@ -554,7 +554,8 @@ public class ChildBB extends ChildB {
   /**
    * Method creates a new builder and initializes it with the data of this object.
    *
-   * @return {@link Builder} New builder that can be used to create new ChildBB objects. The method never returns null.
+   * @return {@link ChildBBBuilder} New builder that can be used to create new ChildBB objects. The method never returns
+   * null.
    */
   public ChildBBBuilder<?, ?> toBuilder( ) {
     return new ChildBBBuilderImpl(this);

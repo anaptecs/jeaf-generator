@@ -48,13 +48,13 @@ public abstract class PartnerBase {
     private String tags;
 
     /**
-     * Use {@link PartnerBuilderBase#builder()} instead of private constructor to create new builder.
+     * Use {@link Partner#builder()} instead of private constructor to create new builder.
      */
     protected PartnerBuilderBase( ) {
     }
 
     /**
-     * Use {@link PartnerBuilderBase#builder(Partner)} instead of private constructor to create new builder.
+     * Use {@link Partner#builder(Partner)} instead of private constructor to create new builder.
      */
     protected PartnerBuilderBase( PartnerBase pObject ) {
       if (pObject != null) {

@@ -49,7 +49,7 @@ public class GeoPosition extends PlaceRef {
   /**
    * Method returns a new builder.
    *
-   * @return {@link Builder} New builder that can be used to create new GeoPosition objects.
+   * @return {@link GeoPositionBuilder} New builder that can be used to create new GeoPosition objects.
    */
   public static GeoPositionBuilder<?, ?> builder( ) {
     return new GeoPositionBuilderImpl();
@@ -90,14 +90,14 @@ public class GeoPosition extends PlaceRef {
     private int latitude;
 
     /**
-     * Use {@link GeoPositionBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link GeoPosition#builder()} instead of private constructor to create new builder.
      */
     protected GeoPositionBuilder( ) {
       super();
     }
 
     /**
-     * Use {@link GeoPositionBuilder#builder(GeoPosition)} instead of private constructor to create new builder.
+     * Use {@link GeoPosition#builder(GeoPosition)} instead of private constructor to create new builder.
      */
     protected GeoPositionBuilder( GeoPosition pObject ) {
       super(pObject);
@@ -265,8 +265,8 @@ public class GeoPosition extends PlaceRef {
   /**
    * Method creates a new builder and initializes it with the data of this object.
    *
-   * @return {@link Builder} New builder that can be used to create new GeoPosition objects. The method never returns
-   * null.
+   * @return {@link GeoPositionBuilder} New builder that can be used to create new GeoPosition objects. The method never
+   * returns null.
    */
   public GeoPositionBuilder<?, ?> toBuilder( ) {
     return new GeoPositionBuilderImpl(this);

@@ -42,7 +42,7 @@ public class TechParent {
   /**
    * Method returns a new builder.
    *
-   * @return {@link Builder} New builder that can be used to create new TechParent objects.
+   * @return {@link TechParentBuilder} New builder that can be used to create new TechParent objects.
    */
   public static TechParentBuilder<?, ?> builder( ) {
     return new TechParentBuilderImpl();
@@ -71,13 +71,13 @@ public class TechParent {
     private String techAttribute;
 
     /**
-     * Use {@link TechParentBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link TechParent#builder()} instead of private constructor to create new builder.
      */
     protected TechParentBuilder( ) {
     }
 
     /**
-     * Use {@link TechParentBuilder#builder(TechParent)} instead of private constructor to create new builder.
+     * Use {@link TechParent#builder(TechParent)} instead of private constructor to create new builder.
      */
     protected TechParentBuilder( TechParent pObject ) {
       if (pObject != null) {
@@ -211,8 +211,8 @@ public class TechParent {
   /**
    * Method creates a new builder and initializes it with the data of this object.
    *
-   * @return {@link Builder} New builder that can be used to create new TechParent objects. The method never returns
-   * null.
+   * @return {@link TechParentBuilder} New builder that can be used to create new TechParent objects. The method never
+   * returns null.
    */
   public TechParentBuilder<?, ?> toBuilder( ) {
     return new TechParentBuilderImpl(this);

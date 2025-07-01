@@ -733,7 +733,7 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new «this.name» objects.
+     * @return {@link «this.builderName()»} New builder that can be used to create new «this.name» objects.
      */
     «IF this.hasGenericBuilder()»
     public static «this.builderName()»<?, ?>«this.getTemplateParams()» builder() {
@@ -747,7 +747,7 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
     /**
      * Method returns a new builder.
      * 
-     * @return {@link Builder} New builder that can be used to create new «this.name» objects.
+     * @return {@link «this.builderName()»} New builder that can be used to create new «this.name» objects.
      */
     public static «this.getTemplateParams()» «this.builderName()»«this.getTemplateParams()» builder(«FOREACH this.getTemplateParameterNames() AS name SEPARATOR ", "»  Class<«name»> pClass«name»«ENDFOREACH») {
       return new «this.builderImplName()»«this.getTemplateParams()»();
@@ -781,7 +781,7 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
   «IF this.isAbstract == false»
 	  /**
 	   * Method creates a new builder and initializes it with the data of this object.
-	   * @return {@link Builder} New builder that can be used to create new «this.name» objects. The method never returns null.
+	   * @return {@link «this.builderName()»} New builder that can be used to create new «this.name» objects. The method never returns null.
 	   */
 	  «IF this.hasGenericBuilder()»
 	  public «this.builderName()»<?, ?> toBuilder( ) {
@@ -799,7 +799,7 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
   «IF this.isAbstract == false»
 	  /**
 	   * Method creates a new builder and initializes it with the data of this object.
-	   * @return {@link Builder} New builder that can be used to create new «this.name» objects. The method never returns null.
+	   * @return {@link «this.builderName()»} New builder that can be used to create new «this.name» objects. The method never returns null.
 	   */
 	  «IF this.hasGenericBuilder()»
 	  public «IF this.customizeGenericBuilder()»«name».«ENDIF»«this.builderName()»<?, ?> toBuilder( ) {

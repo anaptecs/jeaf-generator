@@ -19,7 +19,7 @@ public class Customer extends CustomerBase {
   /**
    * Method returns a new builder.
    *
-   * @return {@link Builder} New builder that can be used to create new Customer objects.
+   * @return {@link CustomerBuilder} New builder that can be used to create new Customer objects.
    */
   public static CustomerBuilder<?, ?> builder( ) {
     return new CustomerBuilderImpl();
@@ -35,14 +35,14 @@ public class Customer extends CustomerBase {
   public static abstract class CustomerBuilder<T extends Customer, B extends CustomerBuilder<T, B>>
       extends CustomerBuilderBase<T, B> {
     /**
-     * Use {@link CustomerBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link Customer#builder()} instead of private constructor to create new builder.
      */
     protected CustomerBuilder( ) {
       super();
     }
 
     /**
-     * Use {@link CustomerBuilder#builder(Customer)} instead of private constructor to create new builder.
+     * Use {@link Customer#builder(Customer)} instead of private constructor to create new builder.
      */
     protected CustomerBuilder( Customer pObject ) {
       super(pObject);

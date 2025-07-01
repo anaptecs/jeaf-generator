@@ -32,7 +32,7 @@ public class SoftLinkChildA extends SoftLinkParent {
   /**
    * Method returns a new builder.
    *
-   * @return {@link Builder} New builder that can be used to create new SoftLinkChildA objects.
+   * @return {@link SoftLinkChildABuilder} New builder that can be used to create new SoftLinkChildA objects.
    */
   public static SoftLinkChildABuilder<?, ?> builder( ) {
     return new SoftLinkChildABuilderImpl();
@@ -63,14 +63,14 @@ public class SoftLinkChildA extends SoftLinkParent {
   public static abstract class SoftLinkChildABuilder<T extends SoftLinkChildA, B extends SoftLinkChildABuilder<T, B>>
       extends SoftLinkParentBuilder<T, B> {
     /**
-     * Use {@link SoftLinkChildABuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link SoftLinkChildA#builder()} instead of private constructor to create new builder.
      */
     protected SoftLinkChildABuilder( ) {
       super();
     }
 
     /**
-     * Use {@link SoftLinkChildABuilder#builder(SoftLinkChildA)} instead of private constructor to create new builder.
+     * Use {@link SoftLinkChildA#builder(SoftLinkChildA)} instead of private constructor to create new builder.
      */
     protected SoftLinkChildABuilder( SoftLinkChildA pObject ) {
       super(pObject);
@@ -147,8 +147,8 @@ public class SoftLinkChildA extends SoftLinkParent {
   /**
    * Method creates a new builder and initializes it with the data of this object.
    *
-   * @return {@link Builder} New builder that can be used to create new SoftLinkChildA objects. The method never returns
-   * null.
+   * @return {@link SoftLinkChildABuilder} New builder that can be used to create new SoftLinkChildA objects. The method
+   * never returns null.
    */
   public SoftLinkChildABuilder<?, ?> toBuilder( ) {
     return new SoftLinkChildABuilderImpl(this);

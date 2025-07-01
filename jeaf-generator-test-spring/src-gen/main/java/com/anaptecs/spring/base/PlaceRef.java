@@ -63,13 +63,13 @@ public abstract class PlaceRef {
     private MyType type;
 
     /**
-     * Use {@link PlaceRefBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link PlaceRef#builder()} instead of private constructor to create new builder.
      */
     protected PlaceRefBuilder( ) {
     }
 
     /**
-     * Use {@link PlaceRefBuilder#builder(PlaceRef)} instead of private constructor to create new builder.
+     * Use {@link PlaceRef#builder(PlaceRef)} instead of private constructor to create new builder.
      */
     protected PlaceRefBuilder( PlaceRef pObject ) {
       if (pObject != null) {

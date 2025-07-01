@@ -58,7 +58,7 @@ public class NoSubTypesParent {
   /**
    * Method returns a new builder.
    *
-   * @return {@link Builder} New builder that can be used to create new NoSubTypesParent objects.
+   * @return {@link NoSubTypesParentBuilder} New builder that can be used to create new NoSubTypesParent objects.
    */
   public static NoSubTypesParentBuilder<?, ?> builder( ) {
     return new NoSubTypesParentBuilderImpl();
@@ -82,14 +82,13 @@ public class NoSubTypesParent {
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static abstract class NoSubTypesParentBuilder<T extends NoSubTypesParent, B extends NoSubTypesParentBuilder<T, B>> {
     /**
-     * Use {@link NoSubTypesParentBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link NoSubTypesParent#builder()} instead of private constructor to create new builder.
      */
     protected NoSubTypesParentBuilder( ) {
     }
 
     /**
-     * Use {@link NoSubTypesParentBuilder#builder(NoSubTypesParent)} instead of private constructor to create new
-     * builder.
+     * Use {@link NoSubTypesParent#builder(NoSubTypesParent)} instead of private constructor to create new builder.
      */
     protected NoSubTypesParentBuilder( NoSubTypesParent pObject ) {
     }
@@ -181,8 +180,8 @@ public class NoSubTypesParent {
   /**
    * Method creates a new builder and initializes it with the data of this object.
    *
-   * @return {@link Builder} New builder that can be used to create new NoSubTypesParent objects. The method never
-   * returns null.
+   * @return {@link NoSubTypesParentBuilder} New builder that can be used to create new NoSubTypesParent objects. The
+   * method never returns null.
    */
   public NoSubTypesParentBuilder<?, ?> toBuilder( ) {
     return new NoSubTypesParentBuilderImpl(this);

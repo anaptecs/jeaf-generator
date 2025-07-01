@@ -50,7 +50,7 @@ public class BChildPOJO extends BParentPOJO {
   /**
    * Method returns a new builder.
    *
-   * @return {@link Builder} New builder that can be used to create new BChildPOJO objects.
+   * @return {@link BChildPOJOBuilder} New builder that can be used to create new BChildPOJO objects.
    */
   public static BChildPOJOBuilder<?, ?> builder( ) {
     return new BChildPOJOBuilderImpl();
@@ -89,14 +89,14 @@ public class BChildPOJO extends BParentPOJO {
     private Integer childAttribute;
 
     /**
-     * Use {@link BChildPOJOBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link BChildPOJO#builder()} instead of private constructor to create new builder.
      */
     protected BChildPOJOBuilder( ) {
       super();
     }
 
     /**
-     * Use {@link BChildPOJOBuilder#builder(BChildPOJO)} instead of private constructor to create new builder.
+     * Use {@link BChildPOJO#builder(BChildPOJO)} instead of private constructor to create new builder.
      */
     protected BChildPOJOBuilder( BChildPOJO pObject ) {
       super(pObject);
@@ -254,8 +254,8 @@ public class BChildPOJO extends BParentPOJO {
   /**
    * Method creates a new builder and initializes it with the data of this object.
    *
-   * @return {@link Builder} New builder that can be used to create new BChildPOJO objects. The method never returns
-   * null.
+   * @return {@link BChildPOJOBuilder} New builder that can be used to create new BChildPOJO objects. The method never
+   * returns null.
    */
   public BChildPOJOBuilder<?, ?> toBuilder( ) {
     return new BChildPOJOBuilderImpl(this);

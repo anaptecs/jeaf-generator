@@ -110,7 +110,7 @@ public class Context {
   /**
    * Method returns a new builder.
    *
-   * @return {@link Builder} New builder that can be used to create new Context objects.
+   * @return {@link ContextBuilder} New builder that can be used to create new Context objects.
    */
   public static ContextBuilder<?, ?> builder( ) {
     return new ContextBuilderImpl();
@@ -185,13 +185,13 @@ public class Context {
     private Map<String, String> customHeaders = new HashMap<String, String>();
 
     /**
-     * Use {@link ContextBuilder#builder()} instead of private constructor to create new builder.
+     * Use {@link Context#builder()} instead of private constructor to create new builder.
      */
     protected ContextBuilder( ) {
     }
 
     /**
-     * Use {@link ContextBuilder#builder(Context)} instead of private constructor to create new builder.
+     * Use {@link Context#builder(Context)} instead of private constructor to create new builder.
      */
     protected ContextBuilder( Context pObject ) {
       if (pObject != null) {
@@ -598,7 +598,8 @@ public class Context {
   /**
    * Method creates a new builder and initializes it with the data of this object.
    *
-   * @return {@link Builder} New builder that can be used to create new Context objects. The method never returns null.
+   * @return {@link ContextBuilder} New builder that can be used to create new Context objects. The method never returns
+   * null.
    */
   public ContextBuilder<?, ?> toBuilder( ) {
     return new ContextBuilderImpl(this);
