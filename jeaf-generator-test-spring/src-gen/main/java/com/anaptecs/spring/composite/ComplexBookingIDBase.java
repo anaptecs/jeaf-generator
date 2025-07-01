@@ -91,6 +91,19 @@ public abstract class ComplexBookingIDBase {
   }
 
   /**
+   * Constructor is intended to be used by #of() operation to efficiently created new objects by avoiding using of
+   * builder.
+   */
+  ComplexBookingIDBase( long pInternalID, String pReferenceID, List<BookingID> pBookingIDs,
+      ComplexBookingType pComplexBookingType, Integer pAnotherID ) {
+    internalID = pInternalID;
+    referenceID = pReferenceID;
+    bookingIDs = pBookingIDs;
+    complexBookingType = pComplexBookingType;
+    anotherID = pAnotherID;
+  }
+
+  /**
    * Class implements builder to create a new instance of class ComplexBookingID. As the class has read only attributes
    * or associations instances can not be created directly. Instead this builder class has to be used.
    */
@@ -430,13 +443,7 @@ public abstract class ComplexBookingIDBase {
    */
   public static ComplexBookingID of( long pInternalID, String pReferenceID, List<BookingID> pBookingIDs,
       ComplexBookingType pComplexBookingType, Integer pAnotherID ) {
-    var lBuilder = ComplexBookingID.builder();
-    lBuilder.setInternalID(pInternalID);
-    lBuilder.setReferenceID(pReferenceID);
-    lBuilder.setBookingIDs(pBookingIDs);
-    lBuilder.setComplexBookingType(pComplexBookingType);
-    lBuilder.setAnotherID(pAnotherID);
-    return lBuilder.build();
+    return new ComplexBookingID(pInternalID, pReferenceID, pBookingIDs, pComplexBookingType, pAnotherID);
   }
 
   @Override

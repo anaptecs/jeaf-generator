@@ -23,7 +23,7 @@ public class AnotherDataTypeDeserializer extends JsonDeserializer<AnotherDataTyp
     // Parse JSON content.
     JsonNode lNode = pParser.getCodec().readTree(pParser);
     if (lNode instanceof TextNode) {
-      return AnotherDataType.builder().setData(lNode.asText()).build();
+      return AnotherDataType.of(lNode.asText());
     }
     // Node is not of expected type.
     else {

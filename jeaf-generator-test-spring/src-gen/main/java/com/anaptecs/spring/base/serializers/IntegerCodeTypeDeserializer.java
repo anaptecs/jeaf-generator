@@ -24,7 +24,7 @@ public class IntegerCodeTypeDeserializer extends JsonDeserializer<IntegerCodeTyp
     JsonNode lNode = pParser.getCodec().readTree(pParser);
     if (lNode instanceof NumericNode) {
       NumericNode lNumericNode = (NumericNode) lNode;
-      return IntegerCodeType.builder().setCode(lNumericNode.intValue()).build();
+      return IntegerCodeType.of(lNumericNode.intValue());
     }
     // Node is not of expected type.
     else {

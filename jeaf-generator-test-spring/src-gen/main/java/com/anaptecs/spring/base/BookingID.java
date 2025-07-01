@@ -76,6 +76,19 @@ public class BookingID {
   }
 
   /**
+   * Constructor is intended to be used by #of() operation to efficiently created new objects by avoiding using of
+   * builder.
+   */
+  private BookingID( String pPublicBookingID, String pReferenceID, String pExternalRefID, InventoryType pInventory,
+      BookingCode pBookingCode ) {
+    publicBookingID = pPublicBookingID;
+    referenceID = pReferenceID;
+    externalRefID = pExternalRefID;
+    inventory = pInventory;
+    bookingCode = pBookingCode;
+  }
+
+  /**
    * Method returns a new builder.
    *
    * @return {@link Builder} New builder that can be used to create new BookingID objects.
@@ -102,13 +115,7 @@ public class BookingID {
    */
   public static BookingID of( String pPublicBookingID, String pReferenceID, String pExternalRefID,
       InventoryType pInventory, BookingCode pBookingCode ) {
-    var lBuilder = BookingID.builder();
-    lBuilder.setPublicBookingID(pPublicBookingID);
-    lBuilder.setReferenceID(pReferenceID);
-    lBuilder.setExternalRefID(pExternalRefID);
-    lBuilder.setInventory(pInventory);
-    lBuilder.setBookingCode(pBookingCode);
-    return lBuilder.build();
+    return new BookingID(pPublicBookingID, pReferenceID, pExternalRefID, pInventory, pBookingCode);
   }
 
   /**

@@ -23,7 +23,7 @@ public class ChannelCodeDeserializer extends JsonDeserializer<ChannelCode> {
     // Parse JSON content.
     JsonNode lNode = pParser.getCodec().readTree(pParser);
     if (lNode instanceof TextNode) {
-      return ChannelCode.builder().setCode(lNode.asText()).build();
+      return ChannelCode.of(lNode.asText());
     }
     // Node is not of expected type.
     else {

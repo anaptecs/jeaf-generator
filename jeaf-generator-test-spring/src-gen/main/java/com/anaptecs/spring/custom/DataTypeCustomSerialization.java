@@ -14,6 +14,14 @@ public class DataTypeCustomSerialization extends DataTypeCustomSerializationBase
   }
 
   /**
+   * Constructor is intended to be used by #of() operation to efficiently created new objects by avoiding using of
+   * builder.
+   */
+  DataTypeCustomSerialization( String pProperty1 ) {
+    super(pProperty1);
+  }
+
+  /**
    * Method returns a new builder.
    *
    * @return {@link Builder} New builder that can be used to create new DataTypeCustomSerialization objects.

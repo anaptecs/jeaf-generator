@@ -61,6 +61,17 @@ public abstract class SoftLinkBase {
   }
 
   /**
+   * Constructor is intended to be used by #of() operation to efficiently created new objects by avoiding using of
+   * builder.
+   */
+  SoftLinkBase( long pObjectID, DataUnit pDataUnit, Entity pEntity, String pRefrenceID ) {
+    objectID = pObjectID;
+    dataUnit = pDataUnit;
+    entity = pEntity;
+    refrenceID = pRefrenceID;
+  }
+
+  /**
    * Class implements builder to create a new instance of class SoftLink. As the class has read only attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
@@ -237,12 +248,7 @@ public abstract class SoftLinkBase {
    * @return {@link SoftLink}
    */
   public static SoftLink of( long pObjectID, DataUnit pDataUnit, Entity pEntity, String pRefrenceID ) {
-    var lBuilder = SoftLink.builder();
-    lBuilder.setObjectID(pObjectID);
-    lBuilder.setDataUnit(pDataUnit);
-    lBuilder.setEntity(pEntity);
-    lBuilder.setRefrenceID(pRefrenceID);
-    return lBuilder.build();
+    return new SoftLink(pObjectID, pDataUnit, pEntity, pRefrenceID);
   }
 
   @Override

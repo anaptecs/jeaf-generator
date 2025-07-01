@@ -35,6 +35,14 @@ public class ShortCodeType {
   }
 
   /**
+   * Constructor is intended to be used by #of() operation to efficiently created new objects by avoiding using of
+   * builder.
+   */
+  private ShortCodeType( short pCode ) {
+    code = pCode;
+  }
+
+  /**
    * Method returns a new builder.
    *
    * @return {@link Builder} New builder that can be used to create new ShortCodeType objects.
@@ -52,9 +60,7 @@ public class ShortCodeType {
    * @return {@link ShortCodeType}
    */
   public static ShortCodeType of( short pCode ) {
-    var lBuilder = ShortCodeType.builder();
-    lBuilder.setCode(pCode);
-    return lBuilder.build();
+    return new ShortCodeType(pCode);
   }
 
   /**

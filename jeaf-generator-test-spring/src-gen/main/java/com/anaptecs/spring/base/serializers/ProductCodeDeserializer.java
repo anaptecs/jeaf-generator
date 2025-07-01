@@ -24,7 +24,7 @@ public class ProductCodeDeserializer extends JsonDeserializer<ProductCode> {
     JsonNode lNode = pParser.getCodec().readTree(pParser);
     if (lNode instanceof NumericNode) {
       NumericNode lNumericNode = (NumericNode) lNode;
-      return ProductCode.builder().setCode(lNumericNode.intValue()).build();
+      return ProductCode.of(lNumericNode.intValue());
     }
     // Node is not of expected type.
     else {

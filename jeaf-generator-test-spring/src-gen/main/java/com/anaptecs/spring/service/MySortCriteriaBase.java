@@ -45,6 +45,15 @@ public abstract class MySortCriteriaBase {
   }
 
   /**
+   * Constructor is intended to be used by #of() operation to efficiently created new objects by avoiding using of
+   * builder.
+   */
+  MySortCriteriaBase( SortOrder pSortOrder, MySortProperty pSortProperty ) {
+    sortOrder = pSortOrder;
+    sortProperty = pSortProperty;
+  }
+
+  /**
    * Class implements builder to create a new instance of class MySortCriteria. As the class has read only attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
@@ -169,10 +178,7 @@ public abstract class MySortCriteriaBase {
    * @return {@link MySortCriteria}
    */
   public static MySortCriteria of( SortOrder pSortOrder, MySortProperty pSortProperty ) {
-    var lBuilder = MySortCriteria.builder();
-    lBuilder.setSortOrder(pSortOrder);
-    lBuilder.setSortProperty(pSortProperty);
-    return lBuilder.build();
+    return new MySortCriteria(pSortOrder, pSortProperty);
   }
 
   @Override

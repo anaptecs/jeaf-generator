@@ -38,6 +38,14 @@ public class StringCodeType {
   }
 
   /**
+   * Constructor is intended to be used by #of() operation to efficiently created new objects by avoiding using of
+   * builder.
+   */
+  private StringCodeType( String pCode ) {
+    code = pCode;
+  }
+
+  /**
    * Method returns a new builder.
    *
    * @return {@link Builder} New builder that can be used to create new StringCodeType objects.
@@ -55,9 +63,7 @@ public class StringCodeType {
    * @return {@link StringCodeType}
    */
   public static StringCodeType of( String pCode ) {
-    var lBuilder = StringCodeType.builder();
-    lBuilder.setCode(pCode);
-    return lBuilder.build();
+    return new StringCodeType(pCode);
   }
 
   /**

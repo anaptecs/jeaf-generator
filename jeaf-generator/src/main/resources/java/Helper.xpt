@@ -394,15 +394,23 @@
 			   «ENDIF»
 		   «ENDFOREACH») {
 	
-		   var lBuilder = «name».builder();
-           «FOREACH this.getAllAttributesForOfOperation() AS attr»
-               «IF attr.isSoftLink()»
-                   lBuilder.set«attr.getSoftLinkPropertyName().toFirstUpper()»(«attr.getSoftLinkPropertyName().asParameter()»);
-               «ELSE»
-                   lBuilder.«attr.asSetter()»(«attr.asParameter()»);
-               «ENDIF»
-           «ENDFOREACH»
-		    return «IF this.hasTemplateParameter()»(«this.fqn()») «ENDIF» lBuilder.build();
+		   «IF this.isOpenAPIDataType() && this.generateOfOperationForClass()»
+		   	   return new «name»(
+		   	   		«FOREACH this.getAllAttributesForOfOperation() AS attr SEPARATOR ", "»
+		   	   		«attr.asParameter()»
+		   	   		«ENDFOREACH»
+		   	   );
+		   «ELSE»
+			   var lBuilder = «name».builder();
+	           «FOREACH this.getAllAttributesForOfOperation() AS attr»
+	               «IF attr.isSoftLink()»
+	                   lBuilder.set«attr.getSoftLinkPropertyName().toFirstUpper()»(«attr.getSoftLinkPropertyName().asParameter()»);
+	               «ELSE»
+	                   lBuilder.«attr.asSetter()»(«attr.asParameter()»);
+	               «ENDIF»
+	           «ENDFOREACH»
+			   return «IF this.hasTemplateParameter()»(«this.fqn()») «ENDIF» lBuilder.build();
+		   «ENDIF»
 	  }
     «ENDIF»
 «ENDDEFINE»

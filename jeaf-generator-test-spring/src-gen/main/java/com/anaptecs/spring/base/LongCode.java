@@ -38,6 +38,14 @@ public class LongCode {
   }
 
   /**
+   * Constructor is intended to be used by #of() operation to efficiently created new objects by avoiding using of
+   * builder.
+   */
+  private LongCode( Long pCode ) {
+    code = pCode;
+  }
+
+  /**
    * Method returns a new builder.
    *
    * @return {@link Builder} New builder that can be used to create new LongCode objects.
@@ -55,9 +63,7 @@ public class LongCode {
    * @return {@link LongCode}
    */
   public static LongCode of( Long pCode ) {
-    var lBuilder = LongCode.builder();
-    lBuilder.setCode(pCode);
-    return lBuilder.build();
+    return new LongCode(pCode);
   }
 
   /**

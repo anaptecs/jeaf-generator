@@ -14,6 +14,14 @@ public class MySortCriteria extends MySortCriteriaBase {
   }
 
   /**
+   * Constructor is intended to be used by #of() operation to efficiently created new objects by avoiding using of
+   * builder.
+   */
+  MySortCriteria( SortOrder pSortOrder, MySortProperty pSortProperty ) {
+    super(pSortOrder, pSortProperty);
+  }
+
+  /**
    * Method returns a new builder.
    *
    * @return {@link Builder} New builder that can be used to create new MySortCriteria objects.

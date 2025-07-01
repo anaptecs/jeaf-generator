@@ -92,6 +92,8 @@
 			«ENDIF»
 			«EXPAND ServiceObjectBuilderConstructorInit»
 		}
+		
+		«EXPAND java::OpenAPIDataType::GenerateValueConstructor(name, false)»
 		  
 		«REM»Generate builder«ENDREM»
 		«EXPAND java::Builder::StaticBuilderMethods FOR this»
@@ -208,6 +210,8 @@
 		«EXPAND ServiceObjectBuilderConstructorInit»
 		}
 		
+		«EXPAND java::OpenAPIDataType::GenerateValueConstructor(name + "Base", true)»
+		
 		«REM»Generate builder«ENDREM»
 		«EXPAND java::Builder::GenerateBuilderBase (this.getObjectIDClassName())»
 					
@@ -279,6 +283,8 @@
 		protected «name»( «name».BuilderBase«this.getTemplateParams()» pBuilder ) {
 		  super(pBuilder);
 		}
+		
+		«EXPAND java::OpenAPIDataType::GenerateValueConstructorForCustomClass»
 		  
 		«EXPAND java::Builder::StaticBuilderMethods FOR this»
 		«EXPAND java::Helper::GenerateValueOfForOpenAPIDataType FOR this»

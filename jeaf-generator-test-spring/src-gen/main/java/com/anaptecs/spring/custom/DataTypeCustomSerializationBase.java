@@ -37,6 +37,14 @@ public abstract class DataTypeCustomSerializationBase {
   }
 
   /**
+   * Constructor is intended to be used by #of() operation to efficiently created new objects by avoiding using of
+   * builder.
+   */
+  DataTypeCustomSerializationBase( String pProperty1 ) {
+    property1 = pProperty1;
+  }
+
+  /**
    * Class implements builder to create a new instance of class DataTypeCustomSerialization. As the class has read only
    * attributes or associations instances can not be created directly. Instead this builder class has to be used.
    */
@@ -115,9 +123,7 @@ public abstract class DataTypeCustomSerializationBase {
    * @return {@link DataTypeCustomSerialization}
    */
   public static DataTypeCustomSerialization of( String pProperty1 ) {
-    var lBuilder = DataTypeCustomSerialization.builder();
-    lBuilder.setProperty1(pProperty1);
-    return lBuilder.build();
+    return new DataTypeCustomSerialization(pProperty1);
   }
 
   @Override

@@ -41,6 +41,14 @@ public class ProductCode {
   }
 
   /**
+   * Constructor is intended to be used by #of() operation to efficiently created new objects by avoiding using of
+   * builder.
+   */
+  private ProductCode( int pCode ) {
+    code = pCode;
+  }
+
+  /**
    * Method returns a new builder.
    *
    * @return {@link Builder} New builder that can be used to create new ProductCode objects.
@@ -58,9 +66,7 @@ public class ProductCode {
    * @return {@link ProductCode}
    */
   public static ProductCode of( int pCode ) {
-    var lBuilder = ProductCode.builder();
-    lBuilder.setCode(pCode);
-    return lBuilder.build();
+    return new ProductCode(pCode);
   }
 
   /**

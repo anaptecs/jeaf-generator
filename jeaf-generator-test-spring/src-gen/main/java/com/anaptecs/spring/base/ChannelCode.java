@@ -55,6 +55,14 @@ public class ChannelCode {
   }
 
   /**
+   * Constructor is intended to be used by #of() operation to efficiently created new objects by avoiding using of
+   * builder.
+   */
+  private ChannelCode( String pCode ) {
+    code = pCode;
+  }
+
+  /**
    * Method returns a new builder.
    *
    * @return {@link Builder} New builder that can be used to create new ChannelCode objects.
@@ -72,9 +80,7 @@ public class ChannelCode {
    * @return {@link ChannelCode}
    */
   public static ChannelCode of( String pCode ) {
-    var lBuilder = ChannelCode.builder();
-    lBuilder.setCode(pCode);
-    return lBuilder.build();
+    return new ChannelCode(pCode);
   }
 
   /**
