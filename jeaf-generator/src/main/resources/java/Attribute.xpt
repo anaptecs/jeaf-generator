@@ -17,7 +17,6 @@
 // for now all properties should be processed
 «DEFINE PropertyDeclaration FOR Property»
     «IF this.generateBackwardCompatibility() == false»
-	    «EXPAND jeafgenerator::api::ClassExtensionPoint::BeforeClassPropertyDeclaration(this.type.fqn())»
 	    «IF this.isSoftLink()»
 	        «EXPAND SoftLinkPropertyDeclaration FOR (SoftLink) this»
 	    «ELSEIF this.association == null»
@@ -49,6 +48,7 @@
 // processing the properties
 «DEFINE DoPropertyDeclaration FOR Property»
 	«EXPAND functions::Javadoc::JavadocForProperty»
+    «EXPAND jeafgenerator::api::ClassExtensionPoint::BeforeClassPropertyDeclaration(this.type.fqn())»
     «EXPAND java::Helper::GenerateAnnotations-»
 	«EXPAND RESTParamAnnotation»
 	«EXPAND java::Jackson::JSONAlias»
@@ -61,6 +61,7 @@
 // processing the properties
 «DEFINE SoftLinkPropertyDeclaration FOR SoftLink»
         «EXPAND functions::Javadoc::JavadocForProperty»
+        «EXPAND jeafgenerator::api::ClassExtensionPoint::BeforeClassPropertyDeclaration(this.type.fqn())»
         «EXPAND java::Helper::GenerateAnnotations-»
         «EXPAND RESTParamAnnotation»
         «EXPAND java::Jackson::JSONAlias»
@@ -94,6 +95,7 @@
 «DEFINE DoAssociationPropertyDeclaration FOR Property»
 	«EXPAND functions::Javadoc::JavadocForProperty»
 	«IF isNavigable()»
+		«EXPAND jeafgenerator::api::ClassExtensionPoint::BeforeClassPropertyDeclaration(this.type.fqn())»
 		«EXPAND java::Helper::GenerateAnnotations-»
 		«EXPAND RESTParamAnnotation»
 		«EXPAND java::Jackson::JSONAlias»

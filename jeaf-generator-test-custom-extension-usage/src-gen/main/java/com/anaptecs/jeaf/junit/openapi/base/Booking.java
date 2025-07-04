@@ -29,23 +29,23 @@ public class Booking extends Object implements ServiceObject {
   @JEAFCustomAnnotationTest
   public static final String BOOKINGID = "bookingID";
 
-  // "com.anaptecs.jeaf.junit.openapi.base.BookingID"
-  @ClassPropertyDeclaration
   /**
    * ID of the booking
    */
+  // "com.anaptecs.jeaf.junit.openapi.base.BookingID"
+  @ClassPropertyDeclaration
   @JEAFCustomAnnotationTest
   private BookingID bookingID;
 
   // "com.anaptecs.jeaf.junit.openapi.base.BookingID"
   private int bookingIDXYZ = 0;
 
-  // "int"
-  @ClassPropertyDeclaration
   /**
    * <br/>
    * <b>Default Value:</b> <code>42</code>
    */
+  // "int"
+  @ClassPropertyDeclaration
   @JEAFCustomAnnotationTest
   private static final int MAGIC_NUMER = 42;
 

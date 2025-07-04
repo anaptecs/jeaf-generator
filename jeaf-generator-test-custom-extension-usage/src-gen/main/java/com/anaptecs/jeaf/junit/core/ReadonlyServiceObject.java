@@ -43,12 +43,12 @@ public class ReadonlyServiceObject extends Object implements ServiceObject {
   // "String"
   private int readonlyXYZ = 0;
 
-  // "int"
-  @ClassPropertyDeclaration
   /**
    * <br/>
    * <b>Default Value:</b> <code>4711</code>
    */
+  // "int"
+  @ClassPropertyDeclaration
   @JEAFCustomAnnotationTest
   private final int readonlyDefault;
 

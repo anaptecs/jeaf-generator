@@ -50,11 +50,11 @@ public class SpecialContext extends Context {
   // "String"
   private int specificHeaderXYZ = 0;
 
-  // "com.anaptecs.jeaf.junit.openapi.base.IntegerCode"
-  @ClassPropertyDeclaration
   /**
    * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 2024-12-24)
    */
+  // "com.anaptecs.jeaf.junit.openapi.base.IntegerCode"
+  @ClassPropertyDeclaration
   @Deprecated
   @JEAFCustomAnnotationTest
   private IntegerCode deprecatedHeader;

@@ -70,13 +70,13 @@ public class POI extends Stop {
   // "String"
   private int descriptionXYZ = 0;
 
-  // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
-  @ClassPropertyDeclaration
   /**
    * <p/>
    * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #theLink} is
    * <code>LinkObject</code><br/>
    */
+  // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
+  @ClassPropertyDeclaration
   @Deprecated
   @JEAFCustomAnnotationTest
   private Long theLink;
@@ -84,13 +84,13 @@ public class POI extends Stop {
   // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
   private int theLinkXYZ = 0;
 
-  // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
-  @ClassPropertyDeclaration
   /**
    * <p/>
    * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #evenMoreLinks} is
    * <code>LinkObject</code><br/>
    */
+  // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
+  @ClassPropertyDeclaration
   @Deprecated
   @JEAFCustomAnnotationTest
   private Set<SoftLink> evenMoreLinks;
@@ -98,12 +98,12 @@ public class POI extends Stop {
   // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
   private int evenMoreLinksXYZ = 0;
 
-  // "com.anaptecs.jeaf.junit.openapi.base.UICStop"
-  @ClassPropertyDeclaration
   /**
    * <p/>
    * <b>Breaking Change on 2024-12-24:</b> New mandatory association is required to support upcoming features.
    */
+  // "com.anaptecs.jeaf.junit.openapi.base.UICStop"
+  @ClassPropertyDeclaration
   @JEAFCustomAnnotationTest
   @Size(min = 2, max = 42)
   private Set<UICStop> stops;

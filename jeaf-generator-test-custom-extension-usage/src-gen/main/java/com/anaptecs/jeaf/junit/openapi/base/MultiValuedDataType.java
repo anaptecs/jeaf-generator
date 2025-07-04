@@ -62,33 +62,33 @@ public class MultiValuedDataType extends Object implements ServiceObject {
   @JEAFCustomAnnotationTest
   public static final String LONGVALUES = "longValues";
 
-  // "com.anaptecs.jeaf.junit.openapi.base.StringCode"
-  @ClassPropertyDeclaration
   /**
    * This is my multivalued test header
    */
+  // "com.anaptecs.jeaf.junit.openapi.base.StringCode"
+  @ClassPropertyDeclaration
   @JEAFCustomAnnotationTest
   private List<StringCode> stringCodeHeader;
 
   // "com.anaptecs.jeaf.junit.openapi.base.StringCode"
   private int stringCodeHeaderXYZ = 0;
 
-  // "com.anaptecs.jeaf.junit.openapi.base.LongCode"
-  @ClassPropertyDeclaration
   /**
    * Multivalued query param
    */
+  // "com.anaptecs.jeaf.junit.openapi.base.LongCode"
+  @ClassPropertyDeclaration
   @JEAFCustomAnnotationTest
   private List<LongCode> longCodeQueryParam;
 
   // "com.anaptecs.jeaf.junit.openapi.base.LongCode"
   private int longCodeQueryParamXYZ = 0;
 
-  // "com.anaptecs.jeaf.junit.openapi.base.BooleanLiteralsEnum"
-  @ClassPropertyDeclaration
   /**
    * so many literals are possible
    */
+  // "com.anaptecs.jeaf.junit.openapi.base.BooleanLiteralsEnum"
+  @ClassPropertyDeclaration
   @JEAFCustomAnnotationTest
   private List<BooleanLiteralsEnum> literals;
 
@@ -104,11 +104,11 @@ public class MultiValuedDataType extends Object implements ServiceObject {
   // "String"
   private int stringPropertyXYZ = 0;
 
-  // "long"
-  @ClassPropertyDeclaration
   /**
    * long values as multivalued header
    */
+  // "long"
+  @ClassPropertyDeclaration
   @JEAFCustomAnnotationTest
   @Min(value = 3270)
   @Max(value = 4711)

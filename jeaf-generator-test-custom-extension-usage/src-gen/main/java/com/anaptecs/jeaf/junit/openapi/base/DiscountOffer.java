@@ -35,13 +35,13 @@ public class DiscountOffer extends Object implements ServiceObject {
   @JEAFCustomAnnotationTest
   public static final String CAMPAIGNS = "campaigns";
 
-  // "com.anaptecs.jeaf.junit.openapi.base.Campaign"
-  @ClassPropertyDeclaration
   /**
    * <p/>
    * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #campaigns} is
    * <code>com.anaptecs.jeaf.junit.openapi.base.Campaign</code><br/>
    */
+  // "com.anaptecs.jeaf.junit.openapi.base.Campaign"
+  @ClassPropertyDeclaration
   @Deprecated
   @JEAFCustomAnnotationTest
   private Set<SoftLink> campaigns;

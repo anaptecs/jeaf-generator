@@ -72,11 +72,11 @@ public class ChildBB extends ChildB {
   // "java.lang.Long"
   private int childBBAttributeXYZ = 0;
 
-  // "int"
-  @ClassPropertyDeclaration
   /**
    * @deprecated Please keep <code>hands off</code>. (<b>since:</b> TBD, <b>removed with:</b> TBD)
    */
+  // "int"
+  @ClassPropertyDeclaration
   @Deprecated
   @JEAFCustomAnnotationTest
   private int deprecatedAttribute;

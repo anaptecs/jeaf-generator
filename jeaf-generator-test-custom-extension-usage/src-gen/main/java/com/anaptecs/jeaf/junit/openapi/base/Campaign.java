@@ -51,8 +51,6 @@ public class Campaign extends Object implements ServiceObject {
   @JEAFCustomAnnotationTest
   public static final String DISCOUNTOFFERS = "discountOffers";
 
-  // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
-  @ClassPropertyDeclaration
   /**
    * The magic link.
    * <p/>
@@ -61,6 +59,8 @@ public class Campaign extends Object implements ServiceObject {
    *
    * @deprecated Please use &quot;moreLinks&quot; instead. (<b>since:</b> 2.3.1, <b>removed with:</b> 2.4)
    */
+  // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
+  @ClassPropertyDeclaration
   @Deprecated
   @JEAFCustomAnnotationTest
   private long theLink;
@@ -68,8 +68,6 @@ public class Campaign extends Object implements ServiceObject {
   // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
   private int theLinkXYZ = 0;
 
-  // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
-  @ClassPropertyDeclaration
   /**
    * <p/>
    * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #moreLinks} is
@@ -77,6 +75,8 @@ public class Campaign extends Object implements ServiceObject {
    *
    * @deprecated No good any more (<b>since:</b> 1.2, <b>removed with:</b> 3.0)
    */
+  // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
+  @ClassPropertyDeclaration
   @Deprecated
   @JEAFCustomAnnotationTest
   private Set<Long> moreLinks;
@@ -84,13 +84,13 @@ public class Campaign extends Object implements ServiceObject {
   // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
   private int moreLinksXYZ = 0;
 
-  // "com.anaptecs.jeaf.junit.openapi.base.DiscountOffer"
-  @ClassPropertyDeclaration
   /**
    * <p/>
    * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #discountOffers} is
    * <code>com.anaptecs.jeaf.junit.openapi.base.DiscountOffer</code><br/>
    */
+  // "com.anaptecs.jeaf.junit.openapi.base.DiscountOffer"
+  @ClassPropertyDeclaration
   @Deprecated
   @JEAFCustomAnnotationTest
   private List<String> discountOffers;

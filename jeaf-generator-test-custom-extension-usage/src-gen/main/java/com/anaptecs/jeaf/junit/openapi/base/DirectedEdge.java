@@ -47,33 +47,33 @@ public class DirectedEdge extends Object implements ServiceObject {
   @JEAFCustomAnnotationTest
   public static final String LINK = "link";
 
-  // "com.anaptecs.jeaf.junit.openapi.base.Stop"
-  @ClassPropertyDeclaration
   /**
    * The start
    */
+  // "com.anaptecs.jeaf.junit.openapi.base.Stop"
+  @ClassPropertyDeclaration
   @JEAFCustomAnnotationTest
   private Stop start;
 
   // "com.anaptecs.jeaf.junit.openapi.base.Stop"
   private int startXYZ = 0;
 
-  // "com.anaptecs.jeaf.junit.openapi.base.Stop"
-  @ClassPropertyDeclaration
   /**
    * The end
    */
+  // "com.anaptecs.jeaf.junit.openapi.base.Stop"
+  @ClassPropertyDeclaration
   @JEAFCustomAnnotationTest
   private Stop end;
 
   // "com.anaptecs.jeaf.junit.openapi.base.Stop"
   private int endXYZ = 0;
 
-  // "String"
-  @ClassPropertyDeclaration
   /**
    * Another simple comment.
    */
+  // "String"
+  @ClassPropertyDeclaration
   @JEAFCustomAnnotationTest
   private String link;
 

@@ -70,12 +70,12 @@ public class Sortiment extends Object implements ServiceObject {
   // "com.anaptecs.jeaf.junit.openapi.base.Product"
   private int productsXYZ = 0;
 
-  // "java.lang.Integer"
-  @ClassPropertyDeclaration
   /**
    * <br/>
    * <b>Default Value:</b> <code>4711</code>
    */
+  // "java.lang.Integer"
+  @ClassPropertyDeclaration
   @JEAFCustomAnnotationTest
   private final Integer value;
 

@@ -109,12 +109,12 @@ public class DateQueryParamsBean extends Object implements ServiceObject {
   // "java.time.OffsetTime"
   private int offsetTimeXYZ = 0;
 
-  // "java.time.LocalDateTime"
-  @ClassPropertyDeclaration
   /**
    * <p/>
    * <b>Breaking Change with 2.0:</b> Has to be in the past
    */
+  // "java.time.LocalDateTime"
+  @ClassPropertyDeclaration
   @JEAFCustomAnnotationTest
   private LocalDateTime localDateTime;
 

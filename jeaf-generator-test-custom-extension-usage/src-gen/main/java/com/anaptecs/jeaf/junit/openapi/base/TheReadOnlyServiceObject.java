@@ -61,12 +61,12 @@ public class TheReadOnlyServiceObject extends Object implements ServiceObject {
   // "String"
   private int nameXYZ = 0;
 
-  // "boolean"
-  @ClassPropertyDeclaration
   /**
    * <p/>
    * <b>Breaking Change with PI 16:</b> At least one bit will be expected.
    */
+  // "boolean"
+  @ClassPropertyDeclaration
   @JEAFCustomAnnotationTest
   private final boolean[] bits;
 
@@ -81,11 +81,11 @@ public class TheReadOnlyServiceObject extends Object implements ServiceObject {
   // "com.anaptecs.jeaf.junit.openapi.base.BookingCode"
   private int bookingCodesXYZ = 0;
 
-  // "com.anaptecs.jeaf.junit.openapi.base.InventoryType"
-  @ClassPropertyDeclaration
   /**
    * @deprecated Let's reproduce #65 (<b>since:</b> not too long, <b>removed with:</b> 99.9)
    */
+  // "com.anaptecs.jeaf.junit.openapi.base.InventoryType"
+  @ClassPropertyDeclaration
   @Deprecated
   @JEAFCustomAnnotationTest
   private final InventoryType inventoryType;

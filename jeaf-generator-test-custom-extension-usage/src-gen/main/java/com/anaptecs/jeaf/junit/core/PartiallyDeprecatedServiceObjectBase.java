@@ -95,12 +95,12 @@ public abstract class PartiallyDeprecatedServiceObjectBase extends Object implem
   // "com.anaptecs.jeaf.junit.core.ValidationTestObject"
   private int deprecatedRefsXYZ = 0;
 
-  // "int"
-  @ClassPropertyDeclaration
   /**
    * <br/>
    * <b>Default Value:</b> <code>4711</code>
    */
+  // "int"
+  @ClassPropertyDeclaration
   @JEAFCustomAnnotationTest
   private final int readonlyDefault;
 

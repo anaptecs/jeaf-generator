@@ -39,11 +39,11 @@ public abstract class VersionedObjectSoftLinkBase extends Object implements Serv
   @JEAFCustomAnnotationTest
   public static final String ENTITY = "entity";
 
-  // "long"
-  @ClassPropertyDeclaration
   /**
    * Internal ID of a versioned object
    */
+  // "long"
+  @ClassPropertyDeclaration
   @JEAFCustomAnnotationTest
   private final long objectID;
 
