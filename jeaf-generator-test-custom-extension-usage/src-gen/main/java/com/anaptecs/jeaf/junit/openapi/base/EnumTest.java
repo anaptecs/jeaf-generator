@@ -35,24 +35,24 @@ public class EnumTest extends Object implements ServiceObject {
   @JEAFCustomAnnotationTest
   public static final String ENUMREF = "enumRef";
 
-  // "com.anaptecs.jeaf.junit.openapi.base.ExtensibleEnum"
-  @ClassPropertyDeclaration
   /**
    * <br/>
    * <b>Default Value:</b> <code>GREEN</code>
    */
+  // "com.anaptecs.jeaf.junit.openapi.base.ExtensibleEnum"
+  @ClassPropertyDeclaration
   @JEAFCustomAnnotationTest
   private ExtensibleEnum property;
 
   // "com.anaptecs.jeaf.junit.openapi.base.ExtensibleEnum"
   private int propertyXYZ = 0;
 
-  // "com.anaptecs.jeaf.junit.openapi.base.ExtensibleEnum"
-  @ClassPropertyDeclaration
   /**
    * <br/>
    * <b>Default Value:</b> <code>RED</code>
    */
+  // "com.anaptecs.jeaf.junit.openapi.base.ExtensibleEnum"
+  @ClassPropertyDeclaration
   @JEAFCustomAnnotationTest
   private ExtensibleEnum enumRef;
 

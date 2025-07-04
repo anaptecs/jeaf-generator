@@ -51,22 +51,22 @@ public abstract class ChannelBase extends Object implements ServiceObject {
   @JEAFCustomAnnotationTest
   public static final String RESELLER = "reseller";
 
-  // "com.anaptecs.jeaf.junit.openapi.base.ChannelType"
-  @ClassPropertyDeclaration
   /**
    * Type of the channel
    */
+  // "com.anaptecs.jeaf.junit.openapi.base.ChannelType"
+  @ClassPropertyDeclaration
   @JEAFCustomAnnotationTest
   private ChannelType channelType;
 
   // "com.anaptecs.jeaf.junit.openapi.base.ChannelType"
   private int channelTypeXYZ = 0;
 
-  // "com.anaptecs.jeaf.junit.openapi.base.ChannelCode"
-  @ClassPropertyDeclaration
   /**
    * The business code of the channel
    */
+  // "com.anaptecs.jeaf.junit.openapi.base.ChannelCode"
+  @ClassPropertyDeclaration
   @JEAFCustomAnnotationTest
   private ChannelCode channelCode;
 
@@ -81,12 +81,12 @@ public abstract class ChannelBase extends Object implements ServiceObject {
   // "int"
   private int codeXYZ = 0;
 
-  // "boolean"
-  @ClassPropertyDeclaration
   /**
    * <br/>
    * <b>Default Value:</b> <code>true</code>
    */
+  // "boolean"
+  @ClassPropertyDeclaration
   @JEAFCustomAnnotationTest
   private final boolean selfServiceChannel;
 

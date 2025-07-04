@@ -30,8 +30,6 @@ public class ChannelCode extends Object implements ServiceObject {
   @JEAFCustomAnnotationTest
   public static final String CODE = "code";
 
-  // "String"
-  @ClassPropertyDeclaration
   /**
    * <br/>
    * <b>Default Value:</b> <code>"WEBSHOP"</code> <br/>
@@ -41,6 +39,8 @@ public class ChannelCode extends Object implements ServiceObject {
    * <li><code>WEBSHOP</code></li>
    * </ul>
    */
+  // "String"
+  @ClassPropertyDeclaration
   @JEAFCustomAnnotationTest
   @NotNull
   private String code;

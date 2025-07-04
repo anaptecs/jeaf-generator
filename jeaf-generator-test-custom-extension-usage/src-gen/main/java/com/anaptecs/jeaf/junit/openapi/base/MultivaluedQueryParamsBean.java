@@ -41,12 +41,12 @@ public class MultivaluedQueryParamsBean extends Object implements ServiceObject 
   @JEAFCustomAnnotationTest
   public static final String INTEGERS = "integers";
 
-  // "int"
-  @ClassPropertyDeclaration
   /**
    * <p/>
    * <b>Breaking Change with 47.11:</b> At least one will become mandatory
    */
+  // "int"
+  @ClassPropertyDeclaration
   @JEAFCustomAnnotationTest
   private int[] intArray;
 

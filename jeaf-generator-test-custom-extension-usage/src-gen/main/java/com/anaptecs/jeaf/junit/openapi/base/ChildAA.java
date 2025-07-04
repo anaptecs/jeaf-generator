@@ -68,13 +68,13 @@ public class ChildAA extends ChildA {
   @JEAFCustomAnnotationTest
   public static final String CODES = "codes";
 
-  // "byte"
-  @ClassPropertyDeclaration
   /**
    * Multi<br/>
    * line<br/>
    * docs
    */
+  // "byte"
+  @ClassPropertyDeclaration
   @JEAFCustomAnnotationTest
   private byte childAAAttribute;
 

@@ -81,13 +81,13 @@ public class Stop extends Object implements ServiceObject {
   // "byte"
   private int indexXYZ = 0;
 
-  // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
-  @ClassPropertyDeclaration
   /**
    * <p/>
    * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #theSoftLink} is
    * <code>LinkObject</code><br/>
    */
+  // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
+  @ClassPropertyDeclaration
   @JEAFCustomAnnotationTest
   private SoftLink theSoftLink;
 

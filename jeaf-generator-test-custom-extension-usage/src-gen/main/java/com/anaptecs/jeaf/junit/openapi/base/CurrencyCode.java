@@ -30,8 +30,6 @@ public class CurrencyCode extends Object implements ServiceObject {
   @JEAFCustomAnnotationTest
   public static final String CODE = "code";
 
-  // "String"
-  @ClassPropertyDeclaration
   /**
    * ISO 4217 currency code. <br/>
    * <b>Default Value:</b> <code>"CHF"</code> <br/>
@@ -40,6 +38,8 @@ public class CurrencyCode extends Object implements ServiceObject {
    * <li><code>CHF</code></li>
    * </ul>
    */
+  // "String"
+  @ClassPropertyDeclaration
   @JEAFCustomAnnotationTest
   @Size(min = 3, max = 3)
   private String code;

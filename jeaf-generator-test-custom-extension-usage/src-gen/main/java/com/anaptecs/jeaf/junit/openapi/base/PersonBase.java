@@ -36,12 +36,12 @@ public abstract class PersonBase extends Partner {
   @JEAFCustomAnnotationTest
   public static final String FIRSTNAME = "firstName";
 
-  // "java.lang.String"
-  @ClassPropertyDeclaration
   /**
    * <p/>
    * <b>Alternate Name:</b> <code>Vorname</code>
    */
+  // "java.lang.String"
+  @ClassPropertyDeclaration
   @JEAFCustomAnnotationTest
   private String surname;
 

@@ -59,13 +59,13 @@ public abstract class ComplexBookingIDBase extends Object implements ServiceObje
   @JEAFCustomAnnotationTest
   public static final String ANOTHERID = "anotherID";
 
-  // "long"
-  @ClassPropertyDeclaration
   /**
    * Internal ID<br/>
    * 2nd line<br/>
    * 3rd line
    */
+  // "long"
+  @ClassPropertyDeclaration
   @JEAFCustomAnnotationTest
   private long internalID;
 

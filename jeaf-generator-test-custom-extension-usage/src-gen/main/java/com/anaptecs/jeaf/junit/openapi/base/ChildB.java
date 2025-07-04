@@ -51,11 +51,11 @@ public class ChildB extends ParentClass {
   @JEAFCustomAnnotationTest
   public static final String COMPOSITION = "composition";
 
-  // "boolean"
-  @ClassPropertyDeclaration
   /**
    * A child attribute
    */
+  // "boolean"
+  @ClassPropertyDeclaration
   @JEAFCustomAnnotationTest
   @Size(min = 11, max = 42)
   private boolean[] childBAttribute;
@@ -63,11 +63,11 @@ public class ChildB extends ParentClass {
   // "boolean"
   private int childBAttributeXYZ = 0;
 
-  // "com.anaptecs.jeaf.junit.openapi.base.ParentClass"
-  @ClassPropertyDeclaration
   /**
    * the composition
    */
+  // "com.anaptecs.jeaf.junit.openapi.base.ParentClass"
+  @ClassPropertyDeclaration
   @JEAFCustomAnnotationTest
   private Set<ParentClass> composition;
 

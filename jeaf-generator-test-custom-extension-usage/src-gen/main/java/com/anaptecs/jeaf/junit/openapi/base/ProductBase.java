@@ -130,19 +130,17 @@ public abstract class ProductBase extends Object implements ServiceObject, Ident
   // "java.lang.String"
   private int nameXYZ = 0;
 
-  // "byte"
-  @ClassPropertyDeclaration
   /**
    * Image describing the product.
    */
+  // "byte"
+  @ClassPropertyDeclaration
   @JEAFCustomAnnotationTest
   private byte[] image;
 
   // "byte"
   private int imageXYZ = 0;
 
-  // "java.net.URL"
-  @ClassPropertyDeclaration
   /**
    * <br/>
    * <b>Example(s):</b> <br/>
@@ -150,6 +148,8 @@ public abstract class ProductBase extends Object implements ServiceObject, Ident
    * <li><code>https://www.company.com/products/1345-345</code></li>
    * </ul>
    */
+  // "java.net.URL"
+  @ClassPropertyDeclaration
   @JEAFCustomAnnotationTest
   private URL link;
 
@@ -198,12 +198,12 @@ public abstract class ProductBase extends Object implements ServiceObject, Ident
   // "com.anaptecs.jeaf.junit.openapi.base.Sortiment"
   private int sortimentsXYZ = 0;
 
-  // "String"
-  @ClassPropertyDeclaration
   /**
    * <br/>
    * <b>Default Value:</b> <code>"https://products.anaptecs.de/123456789"</code>
    */
+  // "String"
+  @ClassPropertyDeclaration
   @JEAFCustomAnnotationTest
   private String uri;
 

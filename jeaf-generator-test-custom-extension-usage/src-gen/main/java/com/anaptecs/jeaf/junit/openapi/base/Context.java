@@ -74,8 +74,6 @@ public class Context extends Object implements ServiceObject {
   // "java.lang.String"
   private int accessTokenXYZ = 0;
 
-  // "java.util.Locale"
-  @ClassPropertyDeclaration
   /**
    * <br/>
    * <b>Example(s):</b> <br/>
@@ -83,6 +81,8 @@ public class Context extends Object implements ServiceObject {
    * <li><code>en</code></li>
    * </ul>
    */
+  // "java.util.Locale"
+  @ClassPropertyDeclaration
   @JEAFCustomAnnotationTest
   private Locale language;
 

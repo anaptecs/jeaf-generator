@@ -5,6 +5,7 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
+import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
@@ -29,6 +30,8 @@ public final class DataUnit {
       dataUnitID = pDataUnitID;
     }
 
+    // "String"
+    @ClassPropertyDeclaration
     @JEAFCustomAnnotationTest
     private final String dataUnitID;
 

@@ -73,11 +73,11 @@ public class ParentClass extends Object implements ServiceObject {
   // "com.anaptecs.jeaf.junit.openapi.base.IBAN"
   private int ibansXYZ = 0;
 
-  // "com.anaptecs.jeaf.junit.openapi.base.BankAccount"
-  @ClassPropertyDeclaration
   /**
    * I would like to document references to other types.
    */
+  // "com.anaptecs.jeaf.junit.openapi.base.BankAccount"
+  @ClassPropertyDeclaration
   @Deprecated
   @JEAFCustomAnnotationTest
   private BankAccount theBankAccount;
@@ -85,11 +85,11 @@ public class ParentClass extends Object implements ServiceObject {
   // "com.anaptecs.jeaf.junit.openapi.base.BankAccount"
   private int theBankAccountXYZ = 0;
 
-  // "com.anaptecs.jeaf.junit.openapi.base.BankAccount"
-  @ClassPropertyDeclaration
   /**
    * Association is still there be SemVer compliant.
    */
+  // "com.anaptecs.jeaf.junit.openapi.base.BankAccount"
+  @ClassPropertyDeclaration
   @Deprecated
   @JEAFCustomAnnotationTest
   private List<BankAccount> legacyBankAccounts;

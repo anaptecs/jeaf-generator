@@ -29,11 +29,11 @@ public class BidirectB extends Object implements ServiceObject {
   @JEAFCustomAnnotationTest
   public static final String A = "a";
 
-  // "com.anaptecs.jeaf.junit.openapi.base.BidirectA"
-  @ClassPropertyDeclaration
   /**
    * the A
    */
+  // "com.anaptecs.jeaf.junit.openapi.base.BidirectA"
+  @ClassPropertyDeclaration
   @JEAFCustomAnnotationTest
   private BidirectA a;
 

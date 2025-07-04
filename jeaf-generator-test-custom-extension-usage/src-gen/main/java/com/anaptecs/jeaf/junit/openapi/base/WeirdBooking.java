@@ -75,24 +75,24 @@ public class WeirdBooking extends WeirdParent {
   // "com.anaptecs.jeaf.junit.openapi.composite.ComplexBookingID"
   private int bookingXYZ = 0;
 
-  // "com.anaptecs.jeaf.junit.openapi.composite.ComplexBookingID"
-  @ClassPropertyDeclaration
   /**
    * additional bookings
    */
+  // "com.anaptecs.jeaf.junit.openapi.composite.ComplexBookingID"
+  @ClassPropertyDeclaration
   @JEAFCustomAnnotationTest
   private List<ComplexBookingID> additionalBookings;
 
   // "com.anaptecs.jeaf.junit.openapi.composite.ComplexBookingID"
   private int additionalBookingsXYZ = 0;
 
-  // "com.anaptecs.jeaf.junit.openapi.base.VersionedObjectSoftLink"
-  @ClassPropertyDeclaration
   /**
    * soft link<br/>
    * 2nd line<br/>
    * 3rd line
    */
+  // "com.anaptecs.jeaf.junit.openapi.base.VersionedObjectSoftLink"
+  @ClassPropertyDeclaration
   @JEAFCustomAnnotationTest
   private VersionedObjectSoftLink versionedObjectSoftLink;
 
@@ -107,25 +107,25 @@ public class WeirdBooking extends WeirdParent {
   // "int"
   private int childPropertyXYZ = 0;
 
-  // "com.anaptecs.jeaf.junit.openapi.base.Booking"
-  @ClassPropertyDeclaration
   /**
    * the real booking
    * <p/>
    * <b>Breaking Change with 2.0:</b> Association will be mandatory.
    */
+  // "com.anaptecs.jeaf.junit.openapi.base.Booking"
+  @ClassPropertyDeclaration
   @JEAFCustomAnnotationTest
   private Booking realBooking;
 
   // "com.anaptecs.jeaf.junit.openapi.base.Booking"
   private int realBookingXYZ = 0;
 
-  // "com.anaptecs.jeaf.junit.openapi.base.InventoryType"
-  @ClassPropertyDeclaration
   /**
    * <p/>
    * <b>Breaking Change with 2.1:</b> Association will required at least 1 object.
    */
+  // "com.anaptecs.jeaf.junit.openapi.base.InventoryType"
+  @ClassPropertyDeclaration
   @JEAFCustomAnnotationTest
   private Set<InventoryType> inventories;
 

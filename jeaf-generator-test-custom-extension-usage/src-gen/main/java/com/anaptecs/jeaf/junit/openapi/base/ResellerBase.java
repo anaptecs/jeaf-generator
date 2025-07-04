@@ -88,12 +88,12 @@ public abstract class ResellerBase extends Object implements ServiceObject, Iden
   // "com.anaptecs.jeaf.junit.openapi.base.Product"
   private int productsXYZ = 0;
 
-  // "java.lang.String"
-  @ClassPropertyDeclaration
   /**
    * <p/>
    * <b>Breaking Change with 1.1:</b> Maximum size will be increased.
    */
+  // "java.lang.String"
+  @ClassPropertyDeclaration
   @JEAFCustomAnnotationTest
   @NotBlank
   @Size(min = 0, max = 32)

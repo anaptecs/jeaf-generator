@@ -5,6 +5,7 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
+import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 
 /**
@@ -58,6 +59,8 @@ public enum ChannelType {
     code = pCode;
   }
 
+  // "String"
+  @ClassPropertyDeclaration
   @JEAFCustomAnnotationTest
   private final String code;
 

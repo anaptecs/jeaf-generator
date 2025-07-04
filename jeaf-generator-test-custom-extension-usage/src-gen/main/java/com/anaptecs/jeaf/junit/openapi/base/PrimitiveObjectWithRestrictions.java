@@ -168,12 +168,12 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
   @JEAFCustomAnnotationTest
   public static final String BSTRING = "bString";
 
-  // "boolean"
-  @ClassPropertyDeclaration
   /**
    * <br/>
    * <b>Default Value:</b> <code>true</code>
    */
+  // "boolean"
+  @ClassPropertyDeclaration
   @JEAFCustomAnnotationTest
   private boolean aBoolean;
 
@@ -319,12 +319,12 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
   // "java.lang.Float"
   private int bFloatXYZ = 0;
 
-  // "double"
-  @ClassPropertyDeclaration
   /**
    * <br/>
    * <b>Default Value:</b> <code>42.0</code>
    */
+  // "double"
+  @ClassPropertyDeclaration
   @JEAFCustomAnnotationTest
   private double aDouble;
 
@@ -348,12 +348,12 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
   // "java.math.BigDecimal"
   private int aBigDecimalXYZ = 0;
 
-  // "String"
-  @ClassPropertyDeclaration
   /**
    * <br/>
    * <b>Default Value:</b> <code>"Hello OpenAPI"</code>
    */
+  // "String"
+  @ClassPropertyDeclaration
   @JEAFCustomAnnotationTest
   @Size(min = 8, max = 32)
   private String aString;
