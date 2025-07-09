@@ -105,7 +105,13 @@ public class «this.getResourceName(reactive)» {
 			 * 
 			 * @param p«name» Dependency on concrete {@link «this.fqn()»} implementation that should be used.
 			 «IF this.hasCompositeDataTypes() -»
-			 * @param pCompositeTypeConverter Composite type converter is used convert types from their string representation to a real object that can be processed internally.
+			 * @param pObjectMapper Object mapper that should be used to convert composite data types from their string representation to a real object that can be processed internally.
+			 «ENDIF -»
+			 «IF generateRESTRequestValidation() || generateRESTResponseValidation() -»
+			 * @param pValidationExecutor Validation executor for request / response validation.
+			 «ENDIF-»
+			 «IF this.requiresCustomHeadersFilter() -»
+			 * @param pCustomHeaderFilter Filter for custom header fields.
 			 «ENDIF -»
 			 */
 			public «this.getResourceName(reactive)»( «this.asJEAFService().getServiceNameFQN(reactive)» p«name» «IF this.hasCompositeDataTypes()», com.fasterxml.jackson.databind.ObjectMapper pObjectMapper«ENDIF»«IF generateRESTRequestValidation() || generateRESTResponseValidation()», com.anaptecs.jeaf.validation.api.ValidationExecutor pValidationExecutor«ENDIF»«IF this.requiresCustomHeadersFilter()», com.anaptecs.jeaf.rest.resource.api.CustomHeaderFilter pCustomHeaderFilter«ENDIF») {

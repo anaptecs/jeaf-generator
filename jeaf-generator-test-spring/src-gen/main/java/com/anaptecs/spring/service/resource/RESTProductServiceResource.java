@@ -102,8 +102,10 @@ public class RESTProductServiceResource {
    * Initialize object.
    *
    * @param pRESTProductService Dependency on concrete {@link RESTProductService} implementation that should be used.
-   * @param pCompositeTypeConverter Composite type converter is used convert types from their string representation to a
-   * real object that can be processed internally.
+   * @param pObjectMapper Object mapper that should be used to convert composite data types from their string
+   * representation to a real object that can be processed internally.
+   * @param pValidationExecutor Validation executor for request / response validation.
+   * @param pCustomHeaderFilter Filter for custom header fields.
    */
   public RESTProductServiceResource( RESTProductService pRESTProductService, ObjectMapper pObjectMapper,
       ValidationExecutor pValidationExecutor, CustomHeaderFilter pCustomHeaderFilter ) {

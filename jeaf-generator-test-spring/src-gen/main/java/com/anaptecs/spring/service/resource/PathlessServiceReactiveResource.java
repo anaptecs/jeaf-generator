@@ -73,8 +73,9 @@ public class PathlessServiceReactiveResource {
    *
    * @param pPathlessService Dependency on concrete {@link com.anaptecs.spring.service.PathlessService} implementation
    * that should be used.
-   * @param pCompositeTypeConverter Composite type converter is used convert types from their string representation to a
-   * real object that can be processed internally.
+   * @param pObjectMapper Object mapper that should be used to convert composite data types from their string
+   * representation to a real object that can be processed internally.
+   * @param pValidationExecutor Validation executor for request / response validation.
    */
   public PathlessServiceReactiveResource( PathlessServiceReactive pPathlessService, ObjectMapper pObjectMapper,
       ValidationExecutor pValidationExecutor ) {

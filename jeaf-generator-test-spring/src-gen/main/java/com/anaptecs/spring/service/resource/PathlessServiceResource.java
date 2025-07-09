@@ -70,8 +70,9 @@ public class PathlessServiceResource {
    * Initialize object.
    *
    * @param pPathlessService Dependency on concrete {@link PathlessService} implementation that should be used.
-   * @param pCompositeTypeConverter Composite type converter is used convert types from their string representation to a
-   * real object that can be processed internally.
+   * @param pObjectMapper Object mapper that should be used to convert composite data types from their string
+   * representation to a real object that can be processed internally.
+   * @param pValidationExecutor Validation executor for request / response validation.
    */
   public PathlessServiceResource( PathlessService pPathlessService, ObjectMapper pObjectMapper,
       ValidationExecutor pValidationExecutor ) {

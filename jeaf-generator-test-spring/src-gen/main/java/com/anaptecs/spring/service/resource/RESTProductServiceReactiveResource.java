@@ -105,8 +105,10 @@ public class RESTProductServiceReactiveResource {
    *
    * @param pRESTProductService Dependency on concrete {@link com.anaptecs.spring.service.RESTProductService}
    * implementation that should be used.
-   * @param pCompositeTypeConverter Composite type converter is used convert types from their string representation to a
-   * real object that can be processed internally.
+   * @param pObjectMapper Object mapper that should be used to convert composite data types from their string
+   * representation to a real object that can be processed internally.
+   * @param pValidationExecutor Validation executor for request / response validation.
+   * @param pCustomHeaderFilter Filter for custom header fields.
    */
   public RESTProductServiceReactiveResource( RESTProductServiceReactive pRESTProductService, ObjectMapper pObjectMapper,
       ValidationExecutor pValidationExecutor, CustomHeaderFilter pCustomHeaderFilter ) {

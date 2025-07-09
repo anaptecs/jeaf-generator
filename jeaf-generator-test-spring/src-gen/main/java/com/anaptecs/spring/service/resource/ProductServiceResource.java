@@ -82,6 +82,8 @@ public class ProductServiceResource {
    * Initialize object.
    *
    * @param pProductService Dependency on concrete {@link ProductService} implementation that should be used.
+   * @param pValidationExecutor Validation executor for request / response validation.
+   * @param pCustomHeaderFilter Filter for custom header fields.
    */
   public ProductServiceResource( ProductService pProductService, ValidationExecutor pValidationExecutor,
       CustomHeaderFilter pCustomHeaderFilter ) {

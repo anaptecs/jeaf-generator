@@ -85,6 +85,7 @@ public class ProductServiceRESTProxyReactive implements ProductServiceReactive {
    * Initialize object.
    *
    * @param pRequestExecutor Dependency on concrete {@link RESTRequestExecutor} implementation that should be used.
+   * @param pValidationExecutor Validation executor for request / response validation.
    */
   public ProductServiceRESTProxyReactive( RESTRequestExecutorReactive pRequestExecutor,
       ValidationExecutor pValidationExecutor ) {
