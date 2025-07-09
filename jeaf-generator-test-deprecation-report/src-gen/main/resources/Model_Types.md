@@ -182,6 +182,7 @@ MyEnumWithInterface |   |  |
 MyType |   |  |
 NotInlinedBeanParam |   |  |
 Offer |   |  |
+OptionalDataType |   |  |
 OtherMappingObject |   |  |
 Output |   |  |
 POI |   |  |
@@ -524,6 +525,7 @@ ImmutablePOJOParent |   |  |
 MasterClass |   |  |
 MutableChildPOJO |   |  |
 MyType |   |  |
+OptionalDataType |   |  |
 POJOWithID |   |  |
 POJOWithIDnMethod |   |  |
 ParentPOJO |   |  |
