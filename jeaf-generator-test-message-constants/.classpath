@@ -42,6 +42,17 @@
 			<attribute name="optional" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="src" path="target/generated-sources/annotations">
+		<attributes>
+			<attribute name="optional" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="src" output="target/test-classes" path="target/generated-test-sources/test-annotations">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="optional" value="true"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="src" output="target/classes" path="src-gen/main/java">
 		<attributes>
 			<attribute name="optional" value="true"/>
@@ -56,25 +67,14 @@
 	</classpathentry>
 	<classpathentry kind="src" output="target/test-classes" path="src-gen/test/java">
 		<attributes>
-			<attribute name="test" value="true"/>
 			<attribute name="optional" value="true"/>
 			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="test" value="true"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry excluding="**" kind="src" output="target/test-classes" path="src-gen/test/resources">
 		<attributes>
-			<attribute name="test" value="true"/>
 			<attribute name="maven.pomderived" value="true"/>
-			<attribute name="optional" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="src" path="target/generated-sources/annotations">
-		<attributes>
-			<attribute name="optional" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="src" output="target/test-classes" path="target/generated-test-sources/test-annotations">
-		<attributes>
 			<attribute name="test" value="true"/>
 			<attribute name="optional" value="true"/>
 		</attributes>
