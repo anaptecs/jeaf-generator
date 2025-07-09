@@ -173,6 +173,9 @@ public class «this.getRESTProxyName(reactive)» implements «this.asJEAFService
    * Initialize object.
    * 
    * @param pRequestExecutor Dependency on concrete {@link RESTRequestExecutor} implementation that should be used.
+  «IF generateRESTRequestValidation() || generateRESTResponseValidation() -»
+   * @param pValidationExecutor Validation executor for request / response validation.
+  «ENDIF-»
    */
   public «this.getRESTProxyName(reactive)»( «IF reactive»com.anaptecs.jeaf.rest.executor.api.reactive.RESTRequestExecutorReactive«ELSE»com.anaptecs.jeaf.rest.executor.api.RESTRequestExecutor«ENDIF» pRequestExecutor «IF generateRESTRequestValidation() || generateRESTResponseValidation()», com.anaptecs.jeaf.validation.api.ValidationExecutor pValidationExecutor«ENDIF» ) {
     requestExecutor = pRequestExecutor;

@@ -38,8 +38,8 @@ public class BooleanCode {
   }
 
   /**
-   * Constructor is intended to be used by #of() operation to efficiently created new objects by avoiding using of
-   * builder.
+   * Constructor is intended to be used by <code>of(...)</code> operation to efficiently create new objects by avoiding
+   * usage of builder.
    */
   private BooleanCode( Boolean pCode ) {
     code = pCode;

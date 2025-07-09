@@ -69,6 +69,7 @@ public class PathlessServiceRESTProxy implements PathlessService {
    * Initialize object.
    *
    * @param pRequestExecutor Dependency on concrete {@link RESTRequestExecutor} implementation that should be used.
+   * @param pValidationExecutor Validation executor for request / response validation.
    */
   public PathlessServiceRESTProxy( RESTRequestExecutor pRequestExecutor, ValidationExecutor pValidationExecutor ) {
     requestExecutor = pRequestExecutor;

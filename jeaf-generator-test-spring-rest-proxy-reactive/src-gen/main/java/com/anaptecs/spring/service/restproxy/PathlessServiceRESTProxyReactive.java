@@ -71,6 +71,7 @@ public class PathlessServiceRESTProxyReactive implements PathlessServiceReactive
    * Initialize object.
    *
    * @param pRequestExecutor Dependency on concrete {@link RESTRequestExecutor} implementation that should be used.
+   * @param pValidationExecutor Validation executor for request / response validation.
    */
   public PathlessServiceRESTProxyReactive( RESTRequestExecutorReactive pRequestExecutor,
       ValidationExecutor pValidationExecutor ) {

@@ -38,8 +38,8 @@ public class OptionalDataType {
   }
 
   /**
-   * Constructor is intended to be used by <code>of(...)</code> operation to efficiently created new objects by avoiding
-   * using of builder.
+   * Constructor is intended to be used by <code>of(...)</code> operation to efficiently create new objects by avoiding
+   * usage of builder.
    */
   private OptionalDataType( String pOptionalCode ) {
     optionalCode = pOptionalCode;
@@ -62,7 +62,7 @@ public class OptionalDataType {
    *
    * @return {@link OptionalDataType}
    */
-  public static OptionalDataType of(String pOptionalCode) {
+  public static OptionalDataType of( String pOptionalCode ) {
     return new OptionalDataType(pOptionalCode);
   }
 
@@ -96,7 +96,7 @@ public class OptionalDataType {
      * @param pOptionalCode Value to which {@link #optionalCode} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setOptionalCode(String pOptionalCode) {
+    public Builder setOptionalCode( String pOptionalCode ) {
       // Assign value to attribute
       optionalCode = pOptionalCode;
       return this;
@@ -141,7 +141,7 @@ public class OptionalDataType {
   }
 
   @Override
-  public boolean equals(Object pOtherObject) {
+  public boolean equals( Object pOtherObject ) {
     boolean lEquals;
     if (this == pOtherObject) {
       lEquals = true;
@@ -161,7 +161,7 @@ public class OptionalDataType {
    *
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.
    */
-  public StringBuilder toStringBuilder(String pIndent) {
+  public StringBuilder toStringBuilder( String pIndent ) {
     StringBuilder lBuilder = new StringBuilder();
     lBuilder.append(pIndent);
     lBuilder.append(this.getClass().getName());

@@ -14,8 +14,8 @@ public class SoftLink extends SoftLinkBase {
   }
 
   /**
-   * Constructor is intended to be used by #of() operation to efficiently created new objects by avoiding using of
-   * builder.
+   * Constructor is intended to be used by <code>of(...)</code> operation to efficiently create new objects by avoiding
+   * usage of builder.
    */
   SoftLink( long pObjectID, DataUnit pDataUnit, Entity pEntity, String pRefrenceID ) {
     super(pObjectID, pDataUnit, pEntity, pRefrenceID);

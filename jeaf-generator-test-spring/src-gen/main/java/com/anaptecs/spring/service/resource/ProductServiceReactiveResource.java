@@ -85,6 +85,8 @@ public class ProductServiceReactiveResource {
    *
    * @param pProductService Dependency on concrete {@link com.anaptecs.spring.service.ProductService} implementation
    * that should be used.
+   * @param pValidationExecutor Validation executor for request / response validation.
+   * @param pCustomHeaderFilter Filter for custom header fields.
    */
   public ProductServiceReactiveResource( ProductServiceReactive pProductService, ValidationExecutor pValidationExecutor,
       CustomHeaderFilter pCustomHeaderFilter ) {

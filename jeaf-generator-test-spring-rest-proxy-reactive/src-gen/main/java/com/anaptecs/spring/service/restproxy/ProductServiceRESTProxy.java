@@ -83,6 +83,7 @@ public class ProductServiceRESTProxy implements ProductService {
    * Initialize object.
    *
    * @param pRequestExecutor Dependency on concrete {@link RESTRequestExecutor} implementation that should be used.
+   * @param pValidationExecutor Validation executor for request / response validation.
    */
   public ProductServiceRESTProxy( RESTRequestExecutor pRequestExecutor, ValidationExecutor pValidationExecutor ) {
     requestExecutor = pRequestExecutor;
