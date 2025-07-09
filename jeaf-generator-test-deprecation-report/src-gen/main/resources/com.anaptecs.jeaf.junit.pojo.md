@@ -274,6 +274,20 @@ This is the first line of the first comment
 
 <br>
 
+## OptionalDataType
+
+
+
+<br>
+
+**Properties / Associations**
+
+| Name | Type | Multiplicity | Constraints | Description |
+|------|------|:------------:|-------------|-------------|
+| `optionalCode` | `String` | `0..1` |  |  |
+
+<br>
+
 ## POJOWithID
 
 

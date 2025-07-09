@@ -56,9 +56,12 @@ cached List[uml::Property] getAllAttributesForOfOperation(uml::Class class):
     //class.getAllAttributes().select(e|e.isPropertySuppressed() == false);
     
 private boolean useOnlyRequiredPropertiesForOfMethod(uml::Class class):
-    if class.getOfMethodType() == null || class.getOfMethodType() == "REQUIRED_PROPERTIES" || class.getOfMethodType() == "DEFAULT"
-    then true
-    else false;
+	if class.isOpenAPIDataType() && class.getAllPropertiesFromHierarchy().select(e|e.isPropertySuppressed() == false && e.belongsToTransientBidirectionalBackReference() == false && e.isStatic == false).size == 1
+	then false
+	else
+		if class.getOfMethodType() == null || class.getOfMethodType() == "REQUIRED_PROPERTIES" || class.getOfMethodType() == "DEFAULT"
+    	then true
+    	else false;
 
 
 private String getOfMethodType(uml::Class class):
