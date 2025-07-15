@@ -4,6 +4,7 @@
 <br>
 
 **Service `AccountingBasicDataService`**
+
 | Operation        | REST Resource Path |
 |------------------|--------------------|
 | `createBank(Bank)` |  |
@@ -15,6 +16,7 @@
 <br>
 
 **Service `AccountingService`**
+
 | Operation        | REST Resource Path |
 |------------------|--------------------|
 | `createAccount(Customer, Person)` |  |
@@ -32,6 +34,7 @@
 <br>
 
 **Service `AccountingBasicDataService`**
+
 | Operation        | REST Resource Path |
 |------------------|--------------------|
 | `createBank(Bank)` |  |
@@ -41,6 +44,7 @@
 <br>
 
 **Service `AccountingService`**
+
 | Operation        | REST Resource Path |
 |------------------|--------------------|
 | `createAccount(Customer, Person)` |  |
@@ -58,6 +62,7 @@
 <br>
 
 **Service `RESTProductService`**
+
 | Operation        | REST Resource Path |
 |------------------|--------------------|
 | `getProducts(int)` | `/rest-products [GET]` |
@@ -68,6 +73,7 @@
 <br>
 
 **Service `RESTProductService`**
+
 | Operation        | REST Resource Path |
 |------------------|--------------------|
 | `createChannelCode(String)` | `/rest-products/ChannelCode [POST]` |
@@ -112,6 +118,7 @@
 <br>
 
 **Service `AccountingService`**
+
 | Operation        | REST Resource Path |
 |------------------|--------------------|
 | `performBooking(Booking, SecurityToken)` | `/api/v1/accounting/bookings [PUT]` |
@@ -120,6 +127,7 @@
 <br>
 
 **Service `JEAFSecurityTestService`**
+
 | Operation        | REST Resource Path |
 |------------------|--------------------|
 | `checkCurrentAnonymousUser()` |  |
@@ -131,6 +139,7 @@
 <br>
 
 **Service `AccountingService`**
+
 | Operation        | REST Resource Path |
 |------------------|--------------------|
 | `unlock(Account)` |  |

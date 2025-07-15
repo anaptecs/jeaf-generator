@@ -24,6 +24,7 @@
 <br>
 
 **Service `«service.name»`**
+
 | Operation        | REST Resource Path |
 |------------------|--------------------|
 «FOREACH securityRole.getAuthorizedOperations(service) AS operation -»
