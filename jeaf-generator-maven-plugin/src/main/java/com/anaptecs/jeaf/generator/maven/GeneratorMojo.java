@@ -889,6 +889,17 @@ public class GeneratorMojo extends AbstractMojo {
   private Boolean validateOpenAPISpec;
 
   /**
+   * Switch defines if during the validation process for OpenAPI specs not only the spec file itself but also all
+   * referenced files should be validated. By default this is enabled to ensure a valid chain of OpenAPI specs.<br>
+   * <br>
+   * However, this also requires that not only the generated OpenAPI spec but also all directly and indirectly
+   * referenced ones are available on the file system for validation. Due to that it is possible to disable check of
+   * referenced spec files.
+   */
+  @Parameter(required = false, defaultValue = "true")
+  private Boolean validateReferencedOpenAPISpecs;
+
+  /**
    * Parameter defines which OpenAPI version is used when generating OpenAPI specifications. As there are breaking
    * changes between OpenAPI 3.0 and 3.1 unfortunately it is required to define that as part of the Maven build.
    * Depending on the OpenAPI version different checks on the model have to be applied. <br>
@@ -1856,6 +1867,9 @@ public class GeneratorMojo extends AbstractMojo {
     if (generateOpenAPISpec) {
       lLog.info("Generate OpenAPI Specification:                   " + generateOpenAPISpec);
       lLog.info("Validate OpenAPI Specification:                   " + validateOpenAPISpec);
+      if (validateOpenAPISpec) {
+        lLog.info("Validate referenced OpenAPI Specifications:       " + validateReferencedOpenAPISpecs);
+      }
       lLog.info("Disable OpenAPI Dependency Checks:                " + disableOpenAPIDependencyChecks);
       lLog.info("OpenAPI spec reference default location:          " + openAPISpecReferenceDefaultLocation);
       lLog.info("OpenAPI Version:                                  " + openAPIVersion.name());
@@ -2935,7 +2949,7 @@ public class GeneratorMojo extends AbstractMojo {
         this.getLog().info("Validating OpenAPI specification " + lNextOpenAPISpec);
 
         // Validate OpenAPI spec.
-        List<String> lErrorMessages = this.validateOpenAPISpec(lNextOpenAPISpec);
+        List<String> lErrorMessages = this.validateOpenAPISpec(lNextOpenAPISpec, validateReferencedOpenAPISpecs);
 
         if (lErrorMessages.isEmpty() == false) {
           lInvalidSpecs.add(lNextOpenAPISpec);
@@ -2961,9 +2975,9 @@ public class GeneratorMojo extends AbstractMojo {
     }
   }
 
-  private List<String> validateOpenAPISpec(String pFileName) {
+  private List<String> validateOpenAPISpec(String pFileName, boolean pValidateReferencedOpenAPISpecs) {
     ParseOptions lOptions = new ParseOptions();
-    lOptions.setResolve(true);
+    lOptions.setResolve(pValidateReferencedOpenAPISpecs);
 
     // Workaround for https://github.com/OpenAPITools/openapi-generator/issues/14648
     SwaggerParseResult lResult =
