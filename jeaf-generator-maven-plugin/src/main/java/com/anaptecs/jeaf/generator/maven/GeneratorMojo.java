@@ -2055,6 +2055,14 @@ public class GeneratorMojo extends AbstractMojo {
       }
     }
 
+    if (customCheckFiles.isEmpty() == false) {
+      lLog.info(" ");
+      lLog.info("Custom Check Files:");
+      for (String lNextFile : customCheckFiles) {
+        lLog.info("                                                  " + lNextFile);
+      }
+    }
+
     lLog.info(" ");
     lLog.info("Javadoc Company Tag:                              " + fileHeaderCompany);
     lLog.info("Javadoc Author Tag:                               " + fileHeaderAuthor);
