@@ -6,7 +6,7 @@
 # JEAF Generator
 JEAF Generator uses UML models to generate code for Spring, REST, OpenAPI, Java and others.
 
-Boost your software development efficiency and time-to-market. Bye bye handwritten boiler blade code. Let your developers concentrate on what is really important: delivering business features
+Boost your software development efficiency and time-to-market. Bye bye handwritten boiler blade code. Let your developers concentrate on what is really important: delivering business features.
 
 This repository contains the source code for JEAF Generator. JEAF Generator can be used for code generation based on UML models. Besides the code of the generator itself the repository also contains lot's of test projects that are used to ensure quality. 
 
