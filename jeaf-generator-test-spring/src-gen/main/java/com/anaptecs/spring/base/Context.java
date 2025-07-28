@@ -298,10 +298,10 @@ public class Context {
      * @param pHeaderName Name of the HTTP header. The parameter must not be null,
      * @param pHeaderValue Value of the http header the parameter may be null.
      */
-    public ContextBuilder addCustomHeader( String pHeaderName, String pHeaderValue ) {
+    public B addCustomHeader( String pHeaderName, String pHeaderValue ) {
       if (pHeaderName != null) {
         customHeaders.put(pHeaderName, pHeaderValue);
-        return this;
+        return this.self();
       }
       else {
         throw new IllegalArgumentException("Parameter 'pHeaderName' must not be null.");

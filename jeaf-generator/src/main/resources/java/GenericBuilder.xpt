@@ -101,9 +101,9 @@ public static abstract class «this.abstractBuilderName()»<T extends «name», 
 		 * 
 		 * @return String String representation of this object.
 		 */
-		public «this.abstractBuilderName()»«this.getTemplateParams()» set«this.getCompositeDateTypePublicFieldName().toFirstUpper()»( String p«this.getCompositeDateTypePublicFieldName().toFirstUpper()» ) {
+		public B set«this.getCompositeDateTypePublicFieldName().toFirstUpper()»( String p«this.getCompositeDateTypePublicFieldName().toFirstUpper()» ) {
 		  «this.getCompositeDateTypePublicFieldName()» = p«this.getCompositeDateTypePublicFieldName().toFirstUpper()»;
-		  return this;
+		  return this.self();
 		}		
 	«ELSE»
 		«FOREACH this.ownedAttribute.select(e|e.isPropertySuppressed() == false && e.belongsToTransientBidirectionalBackReference() == false) AS attr»
@@ -119,10 +119,10 @@ public static abstract class «this.abstractBuilderName()»<T extends «name», 
        * @param pHeaderName Name of the HTTP header. The parameter must not be null,
        * @param pHeaderValue Value of the http header the parameter may be null.
        */
-      public «this.abstractBuilderName()» addCustomHeader( String pHeaderName, String pHeaderValue ) {
+      public B addCustomHeader( String pHeaderName, String pHeaderValue ) {
         if (pHeaderName != null) {
           customHeaders.put(pHeaderName, pHeaderValue);
-          return this;
+          return this.self();
         }
         else {
           throw new IllegalArgumentException("Parameter 'pHeaderName' must not be null.");
