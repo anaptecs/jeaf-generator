@@ -1,0 +1,19 @@
+«IMPORT uml»
+«IMPORT JMM»
+«EXTENSION java::Naming»
+«EXTENSION java::GeneratorCommons»
+«EXTENSION java::CustomValidationCommons»
+«EXTENSION java::OpenAPIFunctions»
+«EXTENSION functions::SystemProperties»
+«EXTENSION functions::JEAFEnumeration»
+«EXTENSION functions::OpenAPISpecification»
+«EXTENSION org::openarchitectureware::util::stdlib::io»
+
+
+«DEFINE Root FOR Model»
+	«clearCaches()»
+	
+	«IF generateOpenAPISpec() == true»
+		«EXPAND java::OpenAPI::GenerateAllOpenAPISpecs»
+	«ENDIF»
+«ENDDEFINE» 

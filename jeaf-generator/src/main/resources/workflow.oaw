@@ -71,6 +71,32 @@
 		<prExcludes value="*.xml"/>		
     </component>
     
+    <!-- Run Generator for OpenAPI -->
+    <component id="generator" class="org.openarchitectureware.xpand2.Generator" skipOnErrors="true">
+		<metaModel idRef="UmlMM"/>
+		<metaModel idRef="${profile.name}"/>
+		<metaModel idRef="CustomProfile"/>
+
+		<fileEncoding value="UTF-8"/>
+		<!-- Fuer jedes 'model' im slot model rufe Define 'Root' im template 'Root' auf -->
+		<expand value="OpenAPIRoot::Root FOR ${output.slot}"/>
+		
+		<outlet name="src_gen" path="${path.src.gen}/" overwrite="true"/>
+		<outlet name="src" path="${path.src}/" overwrite="false"/>
+		<outlet name="res_gen"  path="${path.res.gen}/" overwrite="true"/>
+		<outlet name="res"  path="${path.res}/" overwrite="false"/>
+        <outlet name="src_test_gen" path="${path.src.test.gen}/" overwrite="true"/>
+        <outlet name="src_test" path="${path.src.test}/" overwrite="false"/>
+        <outlet name="res_test_gen"  path="${path.res.test.gen}/" overwrite="true"/>
+        <outlet name="res_test"  path="${path.res.test}/" overwrite="false"/>
+		<outlet path="error" />
+		
+		<!-- protected regions configuration -->
+		<prSrcPaths value="${path.src.gen}"/>
+		<prDefaultExcludes value="true"/>
+		<prExcludes value="*.xml"/>		
+    </component>
+    
     <!-- Write log message to console -->
     <component id="generator" class="org.openarchitectureware.xpand2.Generator" skipOnErrors="true">
 		<metaModel idRef="UmlMM"/>

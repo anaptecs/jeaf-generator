@@ -136,14 +136,16 @@
 
 					<!-- Define whitelist of package in UML model generator should take care when generating code. -->
 					<packages>
-						<package>com.anaptecs.jeaf.accounting</package>
-						<package>com.anaptecs.jeaf.junit</package>
+						<package>com.anaptecs.jeaf.junit.openapi.service1</package>
+						<package>com.anaptecs.jeaf.junit.openapi.datatypeusage</package>
 						<package>TestProfile</package>
 					</packages>
 
 					<!-- Define what should be generated. By default nothing is generated. -->
 					<generateOpenAPISpec>true</generateOpenAPISpec>
 					<validateOpenAPISpec>true</validateOpenAPISpec>
+					<useTransitiveOpenAPIDependencies>true</useTransitiveOpenAPIDependencies>
+					<generateDependentOpenAPISpecs>true</generateDependentOpenAPISpecs>
 					<openAPIVersion>OPEN_API_3_0</openAPIVersion>
 					<enableYAML11Compatibility>true</enableYAML11Compatibility>
 					

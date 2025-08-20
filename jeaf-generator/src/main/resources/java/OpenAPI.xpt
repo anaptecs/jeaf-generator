@@ -16,6 +16,27 @@
 
 «EXTENSION org::openarchitectureware::util::stdlib::io»
 
+«DEFINE GenerateAllOpenAPISpecs FOR Model»
+	«LET this.allOwnedElements().typeSelect(OpenAPI3Specification).select(e|e.isInGeneratorWhitelist()) AS allSpecs»
+	«EXPAND java::OpenAPI::RegisterLocalTypes FOREACH allSpecs»
+	
+	«FOREACH allSpecs AS spec»
+		«info("Processing «OpenAPI3Specification» " + spec.name + " (" + (spec.getNearestPackage().fqn()) + ")")»
+		«info("Dependent Specs: " + spec.getDependentOpenAPISpecs(true).name)»
+		«EXPAND java::OpenAPI::GenerateOpenAPI FOR spec»
+	«ENDFOREACH»
+	
+	«IF generateDependentOpenAPISpecs()»
+		«FOREACH allSpecs.getDependentOpenAPISpecs(useTransitiveOpenAPIDependencies()) AS dependentSpec»
+			«info("Processing dependent «OpenAPI3Specification» " + dependentSpec.name + " (" + (dependentSpec.getNearestPackage().fqn()) + ")")»
+			«EXPAND java::OpenAPI::GenerateOpenAPI FOR dependentSpec»
+		«ENDFOREACH»
+	«ENDIF»
+	
+	«ENDLET»
+«ENDDEFINE»
+
+
 «DEFINE GenerateOpenAPI FOR OpenAPI3Specification»
 	«FILE resourceName res_gen-»
 openapi: «getOpenAPIVersion()»
@@ -216,7 +237,7 @@ components:
 	«EXPAND RegisterLocalType(this) FOREACH this.getOpenAPIDataTypes()»
 	«EXPAND RegisterLocalParameter(this) FOREACH this.getOpenAPIParameters()»
 	
-	«FOREACH this.clientDependency.typeSelect(OpenAPISpecReference) AS dependency»
+	«FOREACH this.getOpenAPIDependencies(useTransitiveOpenAPIDependencies()) AS dependency»
 	  «FOREACH dependency.supplier.typeSelect(OpenAPI3Specification) AS dependentSpec»
 	    «IF dependency.getOpenAPISpecReferenceLocation().length > 0»
 	    «registerSpecDependency(this, dependentSpec, dependency.getOpenAPISpecReferenceLocation() + dependentSpec.resourceName)»

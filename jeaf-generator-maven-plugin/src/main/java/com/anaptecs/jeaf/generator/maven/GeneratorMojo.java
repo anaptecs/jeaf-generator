@@ -875,6 +875,23 @@ public class GeneratorMojo extends AbstractMojo {
   private Boolean generateOpenAPISpec;
 
   /**
+   * Switch defines if when an OpenAPI specification is generated then also its dependent specification should be
+   * generated independent of the generator white list.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean generateDependentOpenAPISpecs;
+
+  /**
+   * Switch defines if dependencies from a OpenAPI specification to another one should be treated as transitive or not.
+   * By default only explicit dependencies are taken into account.
+   *
+   * However, this is a contradiction to e.g. to Maven where dependencies are always transitive. If you want JEAF
+   * Generator to do so as well then you need to set this switch to <code>true</code>.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean useTransitiveOpenAPIDependencies;
+
+  /**
    * By default JEAF Generator runs a dependency check for OpenAPI specifications to ensure that all types that are
    * referenced from another OpenAPI spec can be resolved. If you want to disable these checks for whatever reason you
    * can set this switch to <code>true</code>.
@@ -1866,6 +1883,8 @@ public class GeneratorMojo extends AbstractMojo {
 
     if (generateOpenAPISpec) {
       lLog.info("Generate OpenAPI Specification:                   " + generateOpenAPISpec);
+      lLog.info("Generate dependent OpenAPI Specifications:        " + generateDependentOpenAPISpecs);
+      lLog.info("Use transitive OpenAPI dependencies:              " + useTransitiveOpenAPIDependencies);
       lLog.info("Validate OpenAPI Specification:                   " + validateOpenAPISpec);
       if (validateOpenAPISpec) {
         lLog.info("Validate referenced OpenAPI Specifications:       " + validateReferencedOpenAPISpecs);
@@ -2242,6 +2261,9 @@ public class GeneratorMojo extends AbstractMojo {
           listUnsecuredRESTEndpoints.toString());
 
       System.setProperty("switch.gen.openapispec", generateOpenAPISpec.toString());
+      System.setProperty(PROPERTY_PREFIX + "generateDependentOpenAPISpecs", generateDependentOpenAPISpecs.toString());
+      System.setProperty(PROPERTY_PREFIX + "useTransitiveOpenAPIDependencies",
+          useTransitiveOpenAPIDependencies.toString());
       System.setProperty("switch.gen.openapi.checkOpenAPIDependencies",
           Boolean.toString(!disableOpenAPIDependencyChecks));
       System.setProperty("switch.gen.openapi.version", openAPIVersion.name());
