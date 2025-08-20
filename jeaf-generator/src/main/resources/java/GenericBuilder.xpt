@@ -151,7 +151,7 @@ public static abstract class «this.abstractBuilderName()»<T extends «name», 
     public T build() {
         // Method already has an implementation as otherwise it would not be possible to overwrite it in custom builder implementation. Unfortunately this is a limitation of abstract static inner classes that are used to implement generic builder pattern.
         throw new UnsupportedOperationException("This operation has to be overwritten by subclasses.");
-    };
+    }
     «ELSE»
     public abstract T build( );
     «ENDIF»

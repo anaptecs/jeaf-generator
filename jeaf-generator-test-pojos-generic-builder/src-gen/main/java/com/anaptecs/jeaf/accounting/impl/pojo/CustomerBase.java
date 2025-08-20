@@ -194,7 +194,7 @@ public abstract class CustomerBase extends Partner {
       // implementation. Unfortunately this is a limitation of abstract static inner classes that are used to implement
       // generic builder pattern.
       throw new UnsupportedOperationException("This operation has to be overwritten by subclasses.");
-    };
+    }
 
     /**
      * Method creates a new validated instance of class Customer. The object will be initialized with the values of the
