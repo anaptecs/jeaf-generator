@@ -557,7 +557,6 @@ cached boolean isTemplateProperty(uml::Class class, uml::Property property):
      
 cached uml::Class getTemplateBindingType(uml::Class class, uml::Property property):
 	class.templateBinding.first().parameterSubstitution.selectFirst(e|e.formal.getTemplateParameterName() == property.type.name).actual.first().asClass();
-    //class.templateBinding.first().parameterSubstitution.first().actual.first().asClass();
     
 cached boolean hasMultivaluedTemplateBinding(uml::Class class, uml::Property property):
     isTemplateProperty(class, property) && class.hasMultivaluedTemplateBinding();

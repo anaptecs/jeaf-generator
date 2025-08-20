@@ -10,7 +10,6 @@ cached boolean isOpenAPISpecification(uml::Element element):
     
 cached OpenAPI3Specification asOpenAPISpecification(uml::Element element):
     (OpenAPI3Specification) element;
-    
 
 cached String getContactName(OpenAPI3Specification spec):
     if spec.contactName.length > 0
@@ -60,13 +59,41 @@ private cached String getOpenAPILicenseURLFromSystemProperties():
 private cached String getOpenAPITermsOfUseURLFromSystemProperties():
     getSystemProperty("switch.gen.openapi.openAPITermsOfUseURL", "");
     
-cached boolean hasDependency(OpenAPI3Specification source, OpenAPI3Specification target):
-    source.getDependentOpenAPISpecs().contains(target);
-    
-cached List[OpenAPI3Specification] getDependentOpenAPISpecs(OpenAPI3Specification source):
-    source.getRelationships().typeSelect(Dependency).supplier.typeSelect(OpenAPI3Specification);
-    
 cached boolean runOpenAPIDependencyCheck():
     getBooleanSystemProperty("switch.gen.openapi.checkOpenAPIDependencies", true);
+    
+cached boolean useTransitiveOpenAPIDependencies():
+	getBooleanSystemProperty("jeaf.generator.useTransitiveOpenAPIDependencies", true);
+    
+cached boolean generateDependentOpenAPISpecs():
+	getBooleanSystemProperty("jeaf.generator.generateDependentOpenAPISpecs", true);
+    
+cached boolean hasDependency(OpenAPI3Specification source, OpenAPI3Specification target):
+    source.getDependentOpenAPISpecs(useTransitiveOpenAPIDependencies()).contains(target);
+    
+cached List[OpenAPI3Specification] getDependentOpenAPISpecs(OpenAPI3Specification spec):
+    spec.getDirectOpenAPIDependencies().getOpenAPISpecFromDependency();
+    
+cached List[OpenAPI3Specification] getDependentOpenAPISpecs(OpenAPI3Specification spec, boolean transitiv):
+	if transitiv == false
+	then spec.getDependentOpenAPISpecs()
+	else {spec}.toList().getOpenAPIDependencies(true).getOpenAPISpecFromDependency().toSet();
+	
+private List[OpenAPISpecReference] getDirectOpenAPIDependencies(OpenAPI3Specification spec):
+	spec.clientDependency.typeSelect(OpenAPISpecReference);
+
+cached List[OpenAPISpecReference] getOpenAPIDependencies(OpenAPI3Specification spec, boolean transitive):
+	if transitive == false
+	then spec.getDirectOpenAPIDependencies()
+	else {spec}.toList().getRecursiveOpenAPIDependencies().toSet();
+	
+private List[OpenAPISpecReference] getRecursiveOpenAPIDependencies(List[OpenAPI3Specification] specs):
+	if specs.getDirectOpenAPIDependencies().isEmpty == false
+	then specs.getDirectOpenAPIDependencies().addAll(specs.getDirectOpenAPIDependencies().getOpenAPISpecFromDependency().getRecursiveOpenAPIDependencies())
+	else {};
+
+cached OpenAPI3Specification getOpenAPISpecFromDependency(OpenAPISpecReference dependency):
+	dependency.supplier.typeSelect(OpenAPI3Specification);
+	
     
     

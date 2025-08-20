@@ -6,6 +6,7 @@
 «EXTENSION java::OpenAPIFunctions»
 «EXTENSION functions::SystemProperties»
 «EXTENSION functions::JEAFEnumeration»
+«EXTENSION functions::OpenAPISpecification»
 «EXTENSION org::openarchitectureware::util::stdlib::io»
 
 
@@ -55,10 +56,6 @@
 		«EXPAND GenerateCustomConstraints»
 	«ENDIF»
 	
-	«IF generateOpenAPISpec() == true»
-		«EXPAND java::OpenAPI::RegisterLocalTypes FOREACH this.allOwnedElements().typeSelect(OpenAPI3Specification).select(e|e.isInGeneratorWhitelist())»
-	«ENDIF»
-
     «IF generateJSONSerializers() == true»
 	    «FOREACH this.allOwnedElements().typeSelect(OpenAPIDataType) AS dataType»
 		    «IF dataType.isInGeneratorWhitelist() == true»
@@ -244,13 +241,6 @@
 		«info("Processing «JEAFActivity» " + this.name + " (" + (this.fqn()) + ")")»
     	«EXPAND jeaf::JEAFActivity::GenerateActivityImplClass»
 	«ENDIF»
-«ENDDEFINE»
-
-«DEFINE Root FOR OpenAPI3Specification»
-    «IF generateOpenAPISpec() == true && this.isInGeneratorWhitelist() == true»
-		«info("Processing «OpenAPI3Specification» " + this.name + " (" + (this.fqn()) + ")")»
-    	«EXPAND java::OpenAPI::GenerateOpenAPI»
-    «ENDIF»
 «ENDDEFINE»
 
 «DEFINE Root FOR ModuleFactory»
