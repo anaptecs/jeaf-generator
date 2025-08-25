@@ -58,7 +58,7 @@ cached boolean referencesRESTResources(JMM::OpenAPI3Specification spec):
 	spec.getRESTResources().size > 0;
 	
 cached List[JMM::RESTResource] getRESTResources(JMM::OpenAPI3Specification spec):
-	spec.clientDependency.supplier.typeSelect(JMM::RESTResource).select(e|e.isInGeneratorWhitelist()).sortBy(e|e.name).sortBy(e|e.getOrderNumber());
+	spec.clientDependency.supplier.typeSelect(JMM::RESTResource).select(e|e.ignore() == false).sortBy(e|e.name).sortBy(e|e.getOrderNumber());
 	
 cached List[JMM::RESTOperation] getRESTOperations(JMM::RESTResource service, String pPath):
    service.getAllOperations().typeSelect(JMM::RESTOperation).select(e|e.getRESTOperationPath(service) == pPath);
