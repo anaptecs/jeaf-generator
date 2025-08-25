@@ -26,7 +26,7 @@ For further details please have a look on [Maven Integration](https://www.jeaf-g
 
 <br>
 
-### Verisoning Schema
+### Versioning Schema
 Concerning the version numbers of JEAF Generator Maven Plugin we stick to `MAJOR.MINOR.PATCH` version scheme: 
 * `MAJOR`: We increase the major version if the generated code will become incompatible due to generator changes
 * `MINOR`: We will increase the minor version when changes to the Maven Plugin configuration or UML model are required before upgrading to a new version
