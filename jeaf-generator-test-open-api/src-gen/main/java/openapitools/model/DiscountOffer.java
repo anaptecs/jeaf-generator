@@ -38,7 +38,7 @@ import openapitools.JSON;
 @JsonPropertyOrder({
   DiscountOffer.JSON_PROPERTY_CAMPAIGN_I_DS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
 public class DiscountOffer {
   public static final String JSON_PROPERTY_CAMPAIGN_I_DS = "campaignIDs";
   @Deprecated

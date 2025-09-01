@@ -36,7 +36,7 @@ import openapitools.JSON;
   MultiTemplateClassImpl.JSON_PROPERTY_PREVIOUS_STATE,
   MultiTemplateClassImpl.JSON_PROPERTY_NEW_STATE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
 public class MultiTemplateClassImpl {
   public static final String JSON_PROPERTY_OBJECT = "object";
   @javax.annotation.Nonnull
