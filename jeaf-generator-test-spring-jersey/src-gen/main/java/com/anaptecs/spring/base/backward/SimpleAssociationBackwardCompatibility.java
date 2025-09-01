@@ -220,8 +220,8 @@ public class SimpleAssociationBackwardCompatibility {
    * returns null and the returned collection is unmodifiable.
    * @deprecated Wrong type. Switch to <code>newLink</code> instead. (<b>since:</b> 2.0, <b>removed with:</b> 3.0)
    */
-  @JsonGetter
   @Deprecated
+  @JsonGetter
   public List<SimpleBackwardCompatibility> getDeprecatedLinks( ) {
     // Delegate call to getNewLinks(...)
     return this.getNewLinks();
@@ -332,8 +332,8 @@ public class SimpleAssociationBackwardCompatibility {
    *
    * @return {@link SimpleBackwardCompatibility} Value to which {@link #oldSingleLink} is set.
    */
-  @JsonGetter
   @Deprecated
+  @JsonGetter
   public SimpleBackwardCompatibility getOldSingleLink( ) {
     // Delegate call to getNewSingleLink(...)
     return this.getNewSingleLink();
