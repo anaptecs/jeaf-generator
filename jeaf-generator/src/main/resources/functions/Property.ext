@@ -1,6 +1,8 @@
 import uml;
 import JMM;
 
+extension functions::Class;
+extension functions::JEAFDeprecated;
 extension functions::TypeChecks;
 extension functions::SoftLink;
 extension functions::OpenAPISpecification;
@@ -76,3 +78,11 @@ cached String getJavaWrapperTypeNameForType(uml::Type type):
     then "java.lang.Double"
     else type.name.toFirstUpper();
 
+
+cached uml::Property getPredecessorProperty(uml::Property property):
+	if property.owner.isClass()
+	then property.owner.asClass().getAllPropertiesFromHierarchy().selectFirst(e|e.isJEAFDeprecated() && e.generateBackwardCompatibility() && e.getSuccessorName() == property.name);
+
+cached boolean hasPredecessorProperty(uml::Property property):
+	property.getPredecessorProperty() != null;
+	

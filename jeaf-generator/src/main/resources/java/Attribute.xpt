@@ -12,6 +12,7 @@
 «EXTENSION functions::JEAFDeprecated»
 «EXTENSION functions::Builder»
 «EXTENSION functions::Class»
+«EXTENSION functions::Property»
 
 // this properties should be processed
 // for now all properties should be processed
@@ -141,6 +142,9 @@
 	«IF this.isDeprecated() == false && type.isPrimitiveType() && type.isBooleanType() && this.isMultivalued() == false-»
     @Deprecated
     «ENDIF-»	
+	«IF generateJacksonAnnotations() && this.generateBackwardCompatibility()»
+	@com.fasterxml.jackson.annotation.JsonGetter
+	«ENDIF»
     «EXPAND java::Helper::NotNullAnnotationForProperty»
 	«IF this.isInternalProperty() == false»public«ENDIF» «this.fqn()» «asGetter()»() {
 	    «IF this.owner.isEnumeration() && this.isMultivalued()»
@@ -429,6 +433,9 @@
 «DEFINE ToOneAccessorMethods FOR Property»
     «EXPAND functions::Javadoc::JavadocForPropertyGetter»
     «EXPAND java::Helper::GenerateAnnotations-»
+	«IF generateJacksonAnnotations() && this.generateBackwardCompatibility()»
+	@com.fasterxml.jackson.annotation.JsonGetter
+	«ENDIF»
     «EXPAND java::Helper::NotNullAnnotationForProperty»
 	«IF this.isInternalProperty() == false»public«ENDIF» «type.fqn()» «asGetter()» () {
     «IF ((NamedElement)this.owner).isPersistentObject()»
@@ -514,6 +521,9 @@
 «DEFINE ToManyAccessorMethods FOR Property»
     «EXPAND functions::Javadoc::JavadocForPropertyGetter»
     «EXPAND java::Helper::GenerateAnnotations-»
+	«IF generateJacksonAnnotations() && this.generateBackwardCompatibility()»
+	@com.fasterxml.jackson.annotation.JsonGetter
+	«ENDIF»
     «EXPAND java::Helper::NotNullAnnotationForProperty»
 	«IF this.isInternalProperty() == false»public«ENDIF» «this.fqn()» «asGetter()» () {
 	    «IF this.generateBackwardCompatibility() == false»

@@ -11,6 +11,8 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
+import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -41,8 +43,10 @@ public class SimpleAssociationBackwardCompatibility {
    */
   public static final String NEWSINGLELINK = "newSingleLink";
 
+  @JsonAlias({ "deprecatedLinks" })
   private List<SimpleBackwardCompatibility> newLinks;
 
+  @JsonAlias({ "oldSingleLink" })
   private SimpleBackwardCompatibility newSingleLink;
 
   /**
@@ -87,8 +91,10 @@ public class SimpleAssociationBackwardCompatibility {
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
+    @JsonAlias({ "deprecatedLinks" })
     private List<SimpleBackwardCompatibility> newLinks;
 
+    @JsonAlias({ "oldSingleLink" })
     private SimpleBackwardCompatibility newSingleLink;
 
     /**
@@ -215,6 +221,7 @@ public class SimpleAssociationBackwardCompatibility {
    * @deprecated Wrong type. Switch to <code>newLink</code> instead. (<b>since:</b> 2.0, <b>removed with:</b> 3.0)
    */
   @Deprecated
+  @JsonGetter
   public List<SimpleBackwardCompatibility> getDeprecatedLinks( ) {
     // Delegate call to getNewLinks(...)
     return this.getNewLinks();
@@ -326,6 +333,7 @@ public class SimpleAssociationBackwardCompatibility {
    * @return {@link SimpleBackwardCompatibility} Value to which {@link #oldSingleLink} is set.
    */
   @Deprecated
+  @JsonGetter
   public SimpleBackwardCompatibility getOldSingleLink( ) {
     // Delegate call to getNewSingleLink(...)
     return this.getNewSingleLink();

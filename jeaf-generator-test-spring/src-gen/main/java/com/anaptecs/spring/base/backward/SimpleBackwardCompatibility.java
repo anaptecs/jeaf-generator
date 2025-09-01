@@ -9,7 +9,9 @@ import java.util.Objects;
 
 import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -35,6 +37,7 @@ public class SimpleBackwardCompatibility {
    */
   public static final String SUCCESSORPROPERTY = "successorProperty";
 
+  @JsonAlias({ "deprecatedProperty" })
   private String successorProperty;
 
   /**
@@ -79,6 +82,7 @@ public class SimpleBackwardCompatibility {
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
+    @JsonAlias({ "deprecatedProperty" })
     private String successorProperty;
 
     /**
@@ -163,6 +167,7 @@ public class SimpleBackwardCompatibility {
    * @return {@link String} Value to which {@link #deprecatedProperty} is set.
    */
   @Deprecated
+  @JsonGetter
   @MyNotNullProperty
   public String getDeprecatedProperty( ) {
     // Delegate call to getSuccessorProperty(...)

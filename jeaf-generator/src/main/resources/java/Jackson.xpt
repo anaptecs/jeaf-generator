@@ -5,6 +5,7 @@
 «EXTENSION entity::ModelProperties»
 «EXTENSION java::OpenAPIFunctions»
 «EXTENSION functions::Class»
+«EXTENSION functions::Property»
 «EXTENSION functions::AddToJSON»
 «EXTENSION functions::JSONAlias»
 «EXTENSION functions::SoftLink»
@@ -76,6 +77,8 @@
 		
 		«IF this.isJSONAlias()»
 		    @com.fasterxml.jackson.annotation.JsonAlias({«FOREACH this.asJSONAlias().aliasNames AS aliasName SEPARATOR ", "»"«aliasName»"«ENDFOREACH»})
+		«ELSEIF this.hasPredecessorProperty()»
+			@com.fasterxml.jackson.annotation.JsonAlias({"«this.getPredecessorProperty().name»"})
 		«ENDIF»
 	«ENDIF»
 «ENDDEFINE»
