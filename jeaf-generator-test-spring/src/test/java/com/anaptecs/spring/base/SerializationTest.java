@@ -9,23 +9,19 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.IOException;
 
+import com.anaptecs.jeaf.rest.composite.impl.kryo.KryoCompositeTypeConverter;
+import com.anaptecs.spring.base.backward.SimpleBackwardCompatibility;
+import com.anaptecs.spring.base.serializers.ObjectMapperFactory;
 import com.anaptecs.spring.base.techbase.BusinessA;
 import com.anaptecs.spring.base.techbase.BusinessChild;
 import com.anaptecs.spring.base.techbase.BusinessParent;
 import com.anaptecs.spring.base.techbase.TechParent;
-import com.anaptecs.spring.impl.SpringTestApplication;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 
-@Disabled
-@SpringBootTest(classes = SpringTestApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class SerializationTest {
-  @Autowired
-  private ObjectMapper objectMapper;
+  private ObjectMapper objectMapper = ObjectMapperFactory.createObjectMapper(new KryoCompositeTypeConverter());
 
   @Test
   void testTechnicalBaseClasses( ) throws IOException {
@@ -86,6 +82,33 @@ public class SerializationTest {
     assertEquals("47110815", lReadObject.getObjectID());
     assertEquals(Entity.DISCOUNT_CAMPAIGN, lReadObject.getEntity());
     assertEquals(DataUnit.UNKNOWN, lReadObject.getDataUnits().get(0));
+  }
+
+  @Test
+  void testJSONBackwardCompatibility( ) throws JsonProcessingException {
+    SimpleBackwardCompatibility lObject =
+        SimpleBackwardCompatibility.builder().setSuccessorProperty("successor").build();
+    String lJSON = objectMapper.writeValueAsString(lObject);
+    assertEquals("{\"deprecatedProperty\":\"successor\",\"successorProperty\":\"successor\"}", lJSON);
+
+    SimpleBackwardCompatibility lReadObject = objectMapper.readValue(lJSON, SimpleBackwardCompatibility.class);
+    assertEquals("successor", lReadObject.getSuccessorProperty());
+    assertEquals("successor", lReadObject.getDeprecatedProperty());
+
+    lReadObject = objectMapper.readValue("{\"deprecatedProperty\":\"successor\"}", SimpleBackwardCompatibility.class);
+    assertEquals("successor", lReadObject.getSuccessorProperty());
+    assertEquals("successor", lReadObject.getDeprecatedProperty());
+
+    lReadObject = objectMapper.readValue("{\"deprecatedProperty\":\"OLDVALUE\",\"successorProperty\":\"successor\"}",
+        SimpleBackwardCompatibility.class);
+    assertEquals("successor", lReadObject.getSuccessorProperty());
+    assertEquals("successor", lReadObject.getDeprecatedProperty());
+
+    lReadObject =
+        objectMapper.readValue("{\"successorProperty\":\"successor\", \"deprecatedProperty\":\"OLDVALUE\"}",
+            SimpleBackwardCompatibility.class);
+    assertEquals("OLDVALUE", lReadObject.getSuccessorProperty());
+    assertEquals("OLDVALUE", lReadObject.getDeprecatedProperty());
   }
 
 }

@@ -16,6 +16,8 @@ import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
+import com.fasterxml.jackson.annotation.JsonAlias;
+import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -51,8 +53,10 @@ public class SimpleAssociationBackwardCompatibility implements Serializable {
    */
   public static final String NEWSINGLELINK = "newSingleLink";
 
+  @JsonAlias({ "deprecatedLinks" })
   private List<SimpleBackwardCompatibility> newLinks;
 
+  @JsonAlias({ "oldSingleLink" })
   private SimpleBackwardCompatibility newSingleLink;
 
   /**
@@ -99,8 +103,10 @@ public class SimpleAssociationBackwardCompatibility implements Serializable {
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
+    @JsonAlias({ "deprecatedLinks" })
     private List<SimpleBackwardCompatibility> newLinks;
 
+    @JsonAlias({ "oldSingleLink" })
     private SimpleBackwardCompatibility newSingleLink;
 
     /**
@@ -239,6 +245,7 @@ public class SimpleAssociationBackwardCompatibility implements Serializable {
    * returns null and the returned collection is unmodifiable.
    * @deprecated Wrong type. Switch to <code>newLink</code> instead. (<b>since:</b> 2.0, <b>removed with:</b> 3.0)
    */
+  @JsonGetter
   @Deprecated
   public List<SimpleBackwardCompatibility> getDeprecatedLinks( ) {
     // Delegate call to getNewLinks(...)
@@ -358,6 +365,7 @@ public class SimpleAssociationBackwardCompatibility implements Serializable {
    *
    * @return {@link SimpleBackwardCompatibility} Value to which {@link #oldSingleLink} is set.
    */
+  @JsonGetter
   @Deprecated
   public SimpleBackwardCompatibility getOldSingleLink( ) {
     // Delegate call to getNewSingleLink(...)

@@ -11,6 +11,8 @@ import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
+import com.fasterxml.jackson.annotation.JsonAlias;
+import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -35,6 +37,7 @@ public class SimpleBackwardCompatibility implements Serializable {
    */
   public static final String SUCCESSORPROPERTY = "successorProperty";
 
+  @JsonAlias({ "deprecatedProperty" })
   private String successorProperty;
 
   /**
@@ -91,6 +94,7 @@ public class SimpleBackwardCompatibility implements Serializable {
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
+    @JsonAlias({ "deprecatedProperty" })
     private String successorProperty;
 
     /**
@@ -166,6 +170,7 @@ public class SimpleBackwardCompatibility implements Serializable {
    * @return {@link String} Value to which {@link #deprecatedProperty} is set.
    */
   @Deprecated
+  @JsonGetter
   public String getDeprecatedProperty( ) {
     // Delegate call to getSuccessorProperty(...)
     return this.getSuccessorProperty();
