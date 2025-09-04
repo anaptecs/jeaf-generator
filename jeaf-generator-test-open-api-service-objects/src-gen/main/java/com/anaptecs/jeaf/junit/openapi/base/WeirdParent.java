@@ -67,12 +67,7 @@ public class WeirdParent implements ServiceObject {
     // Read attribute values from builder.
     someProperty = pBuilder.someProperty;
     complexBooking = pBuilder.complexBooking;
-    if (pBuilder.complexBookings != null) {
-      complexBookings = pBuilder.complexBookings;
-    }
-    else {
-      complexBookings = new HashSet<>();
-    }
+    complexBookings = (pBuilder.complexBookings == null) ? new HashSet<>() : pBuilder.complexBookings;
   }
 
   /**

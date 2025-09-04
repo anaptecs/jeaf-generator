@@ -53,12 +53,7 @@ public class DiscountOffer implements ServiceObject {
     // Ensure that builder is not null.
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
-    if (pBuilder.campaigns != null) {
-      campaigns = pBuilder.campaigns;
-    }
-    else {
-      campaigns = new HashSet<>();
-    }
+    campaigns = (pBuilder.campaigns == null) ? new HashSet<>() : pBuilder.campaigns;
   }
 
   /**

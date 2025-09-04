@@ -84,12 +84,7 @@ public class ChildBB extends ChildB {
     // Read attribute values from builder.
     childBBAttribute = pBuilder.childBBAttribute;
     deprecatedAttribute = pBuilder.deprecatedAttribute;
-    if (pBuilder.deprecatedBs != null) {
-      deprecatedBs = pBuilder.deprecatedBs;
-    }
-    else {
-      deprecatedBs = new HashSet<>();
-    }
+    deprecatedBs = (pBuilder.deprecatedBs == null) ? new HashSet<>() : pBuilder.deprecatedBs;
     deprecatedParent = pBuilder.deprecatedParent;
     deprecatedArray = pBuilder.deprecatedArray;
   }

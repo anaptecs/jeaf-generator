@@ -814,3 +814,99 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
 «ENDDEFINE»
 
 
+«DEFINE BuilderConstructorInit FOR Class»
+	«IF this.isCompositeDataType()»
+		«this.getCompositeDateTypePublicFieldName()» = pBuilder.«this.getCompositeDateTypePublicFieldName()»;
+	«ELSE»
+		«FOREACH this.ownedAttribute.select(e|e.isPropertySuppressed() == false && e.generateBackwardCompatibility() == false) AS attr»
+			«IF attr.association == null»
+				«IF attr.isStatic == false»
+					«IF attr.isSoftLink()»
+					   «attr.getSoftLinkPropertyName()» = pBuilder.«attr.getSoftLinkPropertyName()»;
+					«ELSE»
+					   «attr.name» = pBuilder.«attr.name»;
+					«ENDIF»
+				«ENDIF»
+			«ELSE»
+				«IF attr.isMultivalued()»
+					«IF attr.isStatic == false»
+						«IF attr.belongsToTransientBidirectionalBackReference() == false»
+							«IF attr.isSoftLink()»
+	                            «attr.getSoftLinkPropertyName()» = (pBuilder.«attr.getSoftLinkPropertyName()» == null) ?
+		                        «IF attr.isReadOnly()»
+			                        «IF attr.isList() || attr.isSet()»«attr.getCollectionType()».of()«ELSE»java.util.Collections.empty«attr.getCollectionTypeShort()»()«ENDIF»
+		                        «ELSE»
+			                        new «attr.getCollectionImplType()»<>()
+		                        «ENDIF»
+		                        :
+	                            «IF attr.isReadOnly()»
+                            	   «IF attr.isList() || attr.isSet()»«attr.getCollectionType()».copyOf«ELSE»java.util.Collections.unmodifiable«attr.getCollectionTypeShort()»«ENDIF»(pBuilder.«attr.getSoftLinkPropertyName()»);
+	                            «ELSE»
+								   pBuilder.«attr.getSoftLinkPropertyName()»;
+								«ENDIF»
+							«ELSE»
+	                            «attr.name» = (pBuilder.«attr.name» == null) ?
+	    						«IF attr.isReadOnly()»
+		    						«IF attr.isList() || attr.isSet()»«attr.getCollectionType()».of()«ELSE»java.util.Collections.empty«attr.getCollectionTypeShort()»()«ENDIF»
+	    						«ELSE»
+		    						new «attr.getCollectionImplType()»<>()
+	    						«ENDIF»
+	                            :
+								«IF attr.isReadOnly()»
+									«IF attr.isList() || attr.isSet()»«attr.getCollectionType()».copyOf«ELSE»java.util.Collections.unmodifiable«attr.getCollectionTypeShort()»«ENDIF»(pBuilder.«attr.name»);
+								«ELSE»
+									pBuilder.«attr.name»;
+								«ENDIF»
+							«ENDIF»
+
+                            «IF attr.opposite != null && attr.opposite.isNavigable() == true»
+                               // As association is bidirectional we also have to set it in the other direction.
+                               for(«attr.type.fqn()» lNext : «attr.name») {
+                                   «IF attr.opposite.isMultivalued()»
+                                       lNext.addTo«attr.opposite.name.toFirstUpper()»((«attr.opposite.type.fqn()») this);
+                                   «ELSE»
+                                       lNext.«attr.opposite.asSetter()»((«attr.opposite.type.fqn()») this);
+                                   «ENDIF»
+                               } 
+                            «ENDIF»
+                    	«ELSE»
+                    		«attr.name» = new «attr.getCollectionImplType()»<>();
+                    	«ENDIF»
+					«ENDIF»
+				«ELSE»
+					«IF attr.isStatic == false && attr.belongsToTransientBidirectionalBackReference() == false»
+						«IF attr.isSoftLink()»
+						  «attr.getSoftLinkPropertyName()» = pBuilder.«attr.getSoftLinkPropertyName()»;
+						«ELSE»
+						  «attr.name» = pBuilder.«attr.name»;
+						«ENDIF»
+                        «IF attr.opposite != null && attr.opposite.isNavigable() == true»
+                            if(«attr.name» != null) {
+                               // As association is bidirectional we also have to set it in the other direction.
+                               «IF attr.opposite.isMultivalued()»
+                                   «attr.name».addTo«attr.opposite.name.toFirstUpper()»((«attr.opposite.type.fqn()») this);
+                               «ELSE»
+                                   «attr.name».«attr.opposite.asSetter()»((«attr.opposite.type.fqn()») this);
+                               «ENDIF»
+                            }
+                        «ENDIF»
+					«ENDIF»			  	
+				«ENDIF»
+			«ENDIF»			  
+			«IF attr.isTransientBidirectionalBackReference()»
+				// Bidirectional back reference is set up correctly as a builder is used.
+				«attr.asInstanceVar()»BackReferenceInitialized = true;
+			«ENDIF»
+			
+            «IF attr.isTransient() == false && attr.isStatic == false»
+                «EXPAND jeafgenerator::api::ClassExtensionPoint::AfterBuilderConstructorPropertyInit(attr.type.fqn(), "pBuilder") FOR attr»
+            «ENDIF»
+		«ENDFOREACH»
+		«IF this.hasCustomHeaders()»
+            // Add request headers.
+            customHeaders = pBuilder.customHeaders;
+        «ENDIF»
+	«ENDIF»
+«ENDDEFINE»
+
+

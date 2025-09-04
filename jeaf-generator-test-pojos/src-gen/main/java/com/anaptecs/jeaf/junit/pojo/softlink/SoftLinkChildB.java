@@ -70,12 +70,7 @@ public class SoftLinkChildB extends SoftLinkParent {
     super(pBuilder);
     // Read attribute values from builder.
     heyBrotherID = pBuilder.heyBrotherID;
-    if (pBuilder.softLinkPartnerIDs != null) {
-      softLinkPartnerIDs = pBuilder.softLinkPartnerIDs;
-    }
-    else {
-      softLinkPartnerIDs = new HashSet<>();
-    }
+    softLinkPartnerIDs = (pBuilder.softLinkPartnerIDs == null) ? new HashSet<>() : pBuilder.softLinkPartnerIDs;
     oneLinkID = pBuilder.oneLinkID;
   }
 

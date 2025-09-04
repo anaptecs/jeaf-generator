@@ -104,15 +104,10 @@ public class MasterClass extends Object implements ServiceObject {
     // Ensure that builder is not null.
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
-    if (pBuilder.clients != null) {
-      clients = pBuilder.clients;
-      // As association is bidirectional we also have to set it in the other direction.
-      for (ClientClass lNext : clients) {
-        lNext.setTransientMaster((MasterClass) this);
-      }
-    }
-    else {
-      clients = new ArrayList<>();
+    clients = (pBuilder.clients == null) ? new ArrayList<>() : pBuilder.clients;
+    // As association is bidirectional we also have to set it in the other direction.
+    for (ClientClass lNext : clients) {
+      lNext.setTransientMaster((MasterClass) this);
     }
     // Bidirectional back reference is set up correctly as a builder is used.
     clientsBackReferenceInitialized = true;

@@ -153,12 +153,7 @@ public class WeirdBooking extends WeirdParent {
     booking = pBuilder.booking;
     // "com.anaptecs.jeaf.junit.openapi.composite.ComplexBookingID"
     bookingXYZ = pBuilder.bookingXYZ;
-    if (pBuilder.additionalBookings != null) {
-      additionalBookings = pBuilder.additionalBookings;
-    }
-    else {
-      additionalBookings = new ArrayList<>();
-    }
+    additionalBookings = (pBuilder.additionalBookings == null) ? new ArrayList<>() : pBuilder.additionalBookings;
     // "com.anaptecs.jeaf.junit.openapi.composite.ComplexBookingID"
     additionalBookingsXYZ = pBuilder.additionalBookingsXYZ;
     versionedObjectSoftLink = pBuilder.versionedObjectSoftLink;
@@ -170,12 +165,7 @@ public class WeirdBooking extends WeirdParent {
     realBooking = pBuilder.realBooking;
     // "com.anaptecs.jeaf.junit.openapi.base.Booking"
     realBookingXYZ = pBuilder.realBookingXYZ;
-    if (pBuilder.inventories != null) {
-      inventories = pBuilder.inventories;
-    }
-    else {
-      inventories = new HashSet<>();
-    }
+    inventories = (pBuilder.inventories == null) ? new HashSet<>() : pBuilder.inventories;
     // "com.anaptecs.jeaf.junit.openapi.base.InventoryType"
     inventoriesXYZ = pBuilder.inventoriesXYZ;
   }

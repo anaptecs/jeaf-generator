@@ -95,12 +95,7 @@ public class WeirdParent extends Object implements ServiceObject {
     complexBooking = pBuilder.complexBooking;
     // "com.anaptecs.jeaf.junit.openapi.composite.ComplexBookingID"
     complexBookingXYZ = pBuilder.complexBookingXYZ;
-    if (pBuilder.complexBookings != null) {
-      complexBookings = pBuilder.complexBookings;
-    }
-    else {
-      complexBookings = new HashSet<>();
-    }
+    complexBookings = (pBuilder.complexBookings == null) ? new HashSet<>() : pBuilder.complexBookings;
     // "com.anaptecs.jeaf.junit.openapi.composite.ComplexBookingID"
     complexBookingsXYZ = pBuilder.complexBookingsXYZ;
   }

@@ -74,12 +74,7 @@ public class Response<T> extends Object implements ServiceObject {
     // Ensure that builder is not null.
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
-    if (pBuilder.messages != null) {
-      messages = pBuilder.messages;
-    }
-    else {
-      messages = new ArrayList<>();
-    }
+    messages = (pBuilder.messages == null) ? new ArrayList<>() : pBuilder.messages;
     // "com.anaptecs.jeaf.junit.rest.generics.Message"
     messagesXYZ = pBuilder.messagesXYZ;
     data = pBuilder.data;

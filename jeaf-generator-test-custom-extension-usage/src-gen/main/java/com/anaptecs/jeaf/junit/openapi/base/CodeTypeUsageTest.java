@@ -122,20 +122,12 @@ public class CodeTypeUsageTest extends Object implements ServiceObject {
     booleanCode = pBuilder.booleanCode;
     // "com.anaptecs.jeaf.junit.openapi.base.BooleanCodeType"
     booleanCodeXYZ = pBuilder.booleanCodeXYZ;
-    if (pBuilder.booleanCodeAssociation != null) {
-      booleanCodeAssociation = pBuilder.booleanCodeAssociation;
-    }
-    else {
-      booleanCodeAssociation = new HashSet<>();
-    }
+    booleanCodeAssociation =
+        (pBuilder.booleanCodeAssociation == null) ? new HashSet<>() : pBuilder.booleanCodeAssociation;
     // "com.anaptecs.jeaf.junit.openapi.base.BooleanCodeType"
     booleanCodeAssociationXYZ = pBuilder.booleanCodeAssociationXYZ;
-    if (pBuilder.shortCodeTypeAssociation != null) {
-      shortCodeTypeAssociation = pBuilder.shortCodeTypeAssociation;
-    }
-    else {
-      shortCodeTypeAssociation = new HashSet<>();
-    }
+    shortCodeTypeAssociation =
+        (pBuilder.shortCodeTypeAssociation == null) ? new HashSet<>() : pBuilder.shortCodeTypeAssociation;
     // "com.anaptecs.jeaf.junit.openapi.base.ShortCodeType"
     shortCodeTypeAssociationXYZ = pBuilder.shortCodeTypeAssociationXYZ;
     stringCode = pBuilder.stringCode;

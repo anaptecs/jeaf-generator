@@ -89,12 +89,7 @@ public abstract class PartiallyDeprecatedServiceObjectBase implements ServiceObj
     name = pBuilder.name;
     outdated = pBuilder.outdated;
     deprecatedRef = pBuilder.deprecatedRef;
-    if (pBuilder.deprecatedRefs != null) {
-      deprecatedRefs = pBuilder.deprecatedRefs;
-    }
-    else {
-      deprecatedRefs = new HashSet<>();
-    }
+    deprecatedRefs = (pBuilder.deprecatedRefs == null) ? new HashSet<>() : pBuilder.deprecatedRefs;
     readonlyDefault = pBuilder.readonlyDefault;
   }
 

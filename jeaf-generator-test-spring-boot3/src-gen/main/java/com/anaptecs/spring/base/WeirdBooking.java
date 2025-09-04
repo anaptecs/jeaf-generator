@@ -7,7 +7,6 @@ package com.anaptecs.spring.base;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -36,12 +35,7 @@ public class WeirdBooking {
   protected WeirdBooking( Builder pBuilder ) {
     // Read attribute values from builder.
     booking = pBuilder.booking;
-    if (pBuilder.additionalBookings != null) {
-      additionalBookings = pBuilder.additionalBookings;
-    }
-    else {
-      additionalBookings = new ArrayList<>();
-    }
+    additionalBookings = (pBuilder.additionalBookings == null) ? List.of() : List.copyOf(pBuilder.additionalBookings);
   }
 
   /**
@@ -158,8 +152,7 @@ public class WeirdBooking {
    * null and the returned collection is unmodifiable.
    */
   public List<ComplexBookingID> getAdditionalBookings( ) {
-    // Return all ComplexBookingID objects as unmodifiable collection.
-    return Collections.unmodifiableList(additionalBookings);
+    return additionalBookings;
   }
 
   @Override

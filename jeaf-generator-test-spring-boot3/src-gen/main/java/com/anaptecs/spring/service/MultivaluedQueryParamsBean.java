@@ -6,7 +6,6 @@
 package com.anaptecs.spring.service;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -59,12 +58,7 @@ public class MultivaluedQueryParamsBean {
     intArray = pBuilder.intArray;
     strings = pBuilder.strings;
     integers = pBuilder.integers;
-    if (pBuilder.timeUnits != null) {
-      timeUnits = pBuilder.timeUnits;
-    }
-    else {
-      timeUnits = new HashSet<>();
-    }
+    timeUnits = (pBuilder.timeUnits == null) ? Set.of() : Set.copyOf(pBuilder.timeUnits);
     timeUnitArray = pBuilder.timeUnitArray;
   }
 
@@ -308,8 +302,7 @@ public class MultivaluedQueryParamsBean {
    * returned collection is unmodifiable.
    */
   public Set<TimeUnit> getTimeUnits( ) {
-    // Return all TimeUnit objects as unmodifiable collection.
-    return Collections.unmodifiableSet(timeUnits);
+    return timeUnits;
   }
 
   /**

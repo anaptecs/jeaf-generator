@@ -7,7 +7,6 @@ package com.anaptecs.spring.base;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -54,12 +53,7 @@ public class TheReadOnlyPOJO {
     dataUnit = pBuilder.dataUnit;
     name = pBuilder.name;
     ints = pBuilder.ints;
-    if (pBuilder.entities != null) {
-      entities = pBuilder.entities;
-    }
-    else {
-      entities = new ArrayList<>();
-    }
+    entities = (pBuilder.entities == null) ? List.of() : List.copyOf(pBuilder.entities);
   }
 
   /**
@@ -262,8 +256,7 @@ public class TheReadOnlyPOJO {
    * returned collection is unmodifiable.
    */
   public List<Entity> getEntities( ) {
-    // Return all Entity objects as unmodifiable collection.
-    return Collections.unmodifiableList(entities);
+    return entities;
   }
 
   /**

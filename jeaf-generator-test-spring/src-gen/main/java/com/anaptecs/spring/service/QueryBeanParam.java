@@ -53,12 +53,7 @@ public class QueryBeanParam {
     // Read attribute values from builder.
     bookingCode = pBuilder.bookingCode;
     maxResults = pBuilder.maxResults;
-    if (pBuilder.sortCriteria != null) {
-      sortCriteria = pBuilder.sortCriteria;
-    }
-    else {
-      sortCriteria = new ArrayList<>();
-    }
+    sortCriteria = (pBuilder.sortCriteria == null) ? new ArrayList<>() : pBuilder.sortCriteria;
   }
 
   /**

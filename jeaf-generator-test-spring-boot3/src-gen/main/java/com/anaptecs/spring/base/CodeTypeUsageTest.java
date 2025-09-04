@@ -6,7 +6,6 @@
 package com.anaptecs.spring.base;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -55,18 +54,10 @@ public class CodeTypeUsageTest {
   protected CodeTypeUsageTest( Builder pBuilder ) {
     // Read attribute values from builder.
     booleanCode = pBuilder.booleanCode;
-    if (pBuilder.booleanCodeAssociation != null) {
-      booleanCodeAssociation = pBuilder.booleanCodeAssociation;
-    }
-    else {
-      booleanCodeAssociation = new HashSet<>();
-    }
-    if (pBuilder.shortCodeTypeAssociation != null) {
-      shortCodeTypeAssociation = pBuilder.shortCodeTypeAssociation;
-    }
-    else {
-      shortCodeTypeAssociation = new HashSet<>();
-    }
+    booleanCodeAssociation =
+        (pBuilder.booleanCodeAssociation == null) ? Set.of() : Set.copyOf(pBuilder.booleanCodeAssociation);
+    shortCodeTypeAssociation =
+        (pBuilder.shortCodeTypeAssociation == null) ? Set.of() : Set.copyOf(pBuilder.shortCodeTypeAssociation);
     stringCode = pBuilder.stringCode;
     characterCode = pBuilder.characterCode;
   }
@@ -253,8 +244,7 @@ public class CodeTypeUsageTest {
    * returns null and the returned collection is unmodifiable.
    */
   public Set<BooleanCodeType> getBooleanCodeAssociation( ) {
-    // Return all BooleanCodeType objects as unmodifiable collection.
-    return Collections.unmodifiableSet(booleanCodeAssociation);
+    return booleanCodeAssociation;
   }
 
   /**
@@ -264,8 +254,7 @@ public class CodeTypeUsageTest {
    * returns null and the returned collection is unmodifiable.
    */
   public Set<ShortCodeType> getShortCodeTypeAssociation( ) {
-    // Return all ShortCodeType objects as unmodifiable collection.
-    return Collections.unmodifiableSet(shortCodeTypeAssociation);
+    return shortCodeTypeAssociation;
   }
 
   /**

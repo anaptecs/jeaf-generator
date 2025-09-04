@@ -163,12 +163,7 @@ public class UICStop extends Stop implements IStop {
     index2 = pBuilder.index2;
     // "byte"
     index2XYZ = pBuilder.index2XYZ;
-    if (pBuilder.inlineStopTypes != null) {
-      inlineStopTypes = pBuilder.inlineStopTypes;
-    }
-    else {
-      inlineStopTypes = new HashSet<>();
-    }
+    inlineStopTypes = (pBuilder.inlineStopTypes == null) ? new HashSet<>() : pBuilder.inlineStopTypes;
     // "com.anaptecs.jeaf.junit.openapi.base.InlineStopType"
     inlineStopTypesXYZ = pBuilder.inlineStopTypesXYZ;
     inlineStopType = pBuilder.inlineStopType;

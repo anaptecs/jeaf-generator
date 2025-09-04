@@ -52,12 +52,7 @@ public class WeirdBooking implements Serializable {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     booking = pBuilder.booking;
-    if (pBuilder.additionalBookings != null) {
-      additionalBookings = pBuilder.additionalBookings;
-    }
-    else {
-      additionalBookings = new ArrayList<>();
-    }
+    additionalBookings = (pBuilder.additionalBookings == null) ? new ArrayList<>() : pBuilder.additionalBookings;
   }
 
   /**

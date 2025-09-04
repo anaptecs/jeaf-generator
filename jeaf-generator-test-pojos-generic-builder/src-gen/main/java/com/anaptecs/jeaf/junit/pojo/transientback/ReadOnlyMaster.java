@@ -7,7 +7,6 @@ package com.anaptecs.jeaf.junit.pojo.transientback;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -53,15 +52,10 @@ public class ReadOnlyMaster {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     name = pBuilder.name;
-    if (pBuilder.clients != null) {
-      clients = pBuilder.clients;
-      // As association is bidirectional we also have to set it in the other direction.
-      for (ReadOnlyClient lNext : clients) {
-        lNext.setTransientMaster((ReadOnlyMaster) this);
-      }
-    }
-    else {
-      clients = new ArrayList<>();
+    clients = (pBuilder.clients == null) ? List.of() : List.copyOf(pBuilder.clients);
+    // As association is bidirectional we also have to set it in the other direction.
+    for (ReadOnlyClient lNext : clients) {
+      lNext.setTransientMaster((ReadOnlyMaster) this);
     }
     // Bidirectional back reference is set up correctly as a builder is used.
     clientsBackReferenceInitialized = true;
@@ -210,8 +204,7 @@ public class ReadOnlyMaster {
         lNext.setTransientMaster((ReadOnlyMaster) this);
       }
     }
-    // Return all ReadOnlyClient objects as unmodifiable collection.
-    return Collections.unmodifiableList(clients);
+    return clients;
   }
 
   @Override

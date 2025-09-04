@@ -68,12 +68,7 @@ public abstract class MasterDataObjectBase {
    */
   protected MasterDataObjectBase( BuilderBase pBuilder ) {
     // Read attribute values from builder.
-    if (pBuilder.dataUnits != null) {
-      dataUnits = pBuilder.dataUnits;
-    }
-    else {
-      dataUnits = new ArrayList<>();
-    }
+    dataUnits = (pBuilder.dataUnits == null) ? new ArrayList<>() : pBuilder.dataUnits;
     entity = pBuilder.entity;
     objectID = pBuilder.objectID;
     internalProperty = pBuilder.internalProperty;

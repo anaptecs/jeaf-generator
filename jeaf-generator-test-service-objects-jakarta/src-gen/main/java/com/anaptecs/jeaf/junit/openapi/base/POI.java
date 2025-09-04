@@ -99,24 +99,9 @@ public class POI extends Stop {
     // Read attribute values from builder.
     description = pBuilder.description;
     theLink = pBuilder.theLink;
-    if (pBuilder.evenMoreLinks != null) {
-      evenMoreLinks = pBuilder.evenMoreLinks;
-    }
-    else {
-      evenMoreLinks = new HashSet<>();
-    }
-    if (pBuilder.stops != null) {
-      stops = pBuilder.stops;
-    }
-    else {
-      stops = new HashSet<>();
-    }
-    if (pBuilder.bookingCodes != null) {
-      bookingCodes = pBuilder.bookingCodes;
-    }
-    else {
-      bookingCodes = new HashSet<>();
-    }
+    evenMoreLinks = (pBuilder.evenMoreLinks == null) ? new HashSet<>() : pBuilder.evenMoreLinks;
+    stops = (pBuilder.stops == null) ? new HashSet<>() : pBuilder.stops;
+    bookingCodes = (pBuilder.bookingCodes == null) ? new HashSet<>() : pBuilder.bookingCodes;
   }
 
   /**

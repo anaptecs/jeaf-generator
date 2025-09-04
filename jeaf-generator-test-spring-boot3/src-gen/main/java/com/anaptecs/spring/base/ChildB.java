@@ -6,7 +6,6 @@
 package com.anaptecs.spring.base;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -54,12 +53,7 @@ public class ChildB extends ParentClass {
     super(pBuilder);
     // Read attribute values from builder.
     childBAttribute = pBuilder.childBAttribute;
-    if (pBuilder.composition != null) {
-      composition = pBuilder.composition;
-    }
-    else {
-      composition = new HashSet<>();
-    }
+    composition = (pBuilder.composition == null) ? Set.of() : Set.copyOf(pBuilder.composition);
   }
 
   /**
@@ -213,8 +207,7 @@ public class ChildB extends ParentClass {
    * returned collection is unmodifiable.
    */
   public Set<ParentClass> getComposition( ) {
-    // Return all ParentClass objects as unmodifiable collection.
-    return Collections.unmodifiableSet(composition);
+    return composition;
   }
 
   @Override

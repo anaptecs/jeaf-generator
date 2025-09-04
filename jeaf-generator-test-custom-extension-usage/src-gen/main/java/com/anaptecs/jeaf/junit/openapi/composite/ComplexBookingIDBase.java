@@ -127,12 +127,7 @@ public abstract class ComplexBookingIDBase extends Object implements ServiceObje
     referenceID = pBuilder.referenceID;
     // "String"
     referenceIDXYZ = pBuilder.referenceIDXYZ;
-    if (pBuilder.bookingIDs != null) {
-      bookingIDs = pBuilder.bookingIDs;
-    }
-    else {
-      bookingIDs = new ArrayList<>();
-    }
+    bookingIDs = (pBuilder.bookingIDs == null) ? new ArrayList<>() : pBuilder.bookingIDs;
     // "com.anaptecs.jeaf.junit.openapi.base.BookingID"
     bookingIDsXYZ = pBuilder.bookingIDsXYZ;
     complexBookingType = pBuilder.complexBookingType;

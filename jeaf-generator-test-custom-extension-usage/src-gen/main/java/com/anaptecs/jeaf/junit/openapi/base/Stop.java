@@ -114,12 +114,7 @@ public class Stop extends Object implements ServiceObject {
     name = pBuilder.name;
     // "String"
     nameXYZ = pBuilder.nameXYZ;
-    if (pBuilder.links != null) {
-      links = pBuilder.links;
-    }
-    else {
-      links = new ArrayList<>();
-    }
+    links = (pBuilder.links == null) ? new ArrayList<>() : pBuilder.links;
     // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
     linksXYZ = pBuilder.linksXYZ;
     index = pBuilder.index;

@@ -121,35 +121,15 @@ public class DataTypesQueryBean {
     // Read attribute values from builder.
     longCodes = pBuilder.longCodes;
     codes = pBuilder.codes;
-    if (pBuilder.doubleCodes != null) {
-      doubleCodes = pBuilder.doubleCodes;
-    }
-    else {
-      doubleCodes = new HashSet<>();
-    }
-    if (pBuilder.bookingIDs != null) {
-      bookingIDs = pBuilder.bookingIDs;
-    }
-    else {
-      bookingIDs = new HashSet<>();
-    }
+    doubleCodes = (pBuilder.doubleCodes == null) ? new HashSet<>() : pBuilder.doubleCodes;
+    bookingIDs = (pBuilder.bookingIDs == null) ? new HashSet<>() : pBuilder.bookingIDs;
     bookingIDsArray = pBuilder.bookingIDsArray;
     offsetDateTime = pBuilder.offsetDateTime;
     offsetTime = pBuilder.offsetTime;
     localDateTime = pBuilder.localDateTime;
     localTime = pBuilder.localTime;
-    if (pBuilder.timestamps != null) {
-      timestamps = pBuilder.timestamps;
-    }
-    else {
-      timestamps = new ArrayList<>();
-    }
-    if (pBuilder.times != null) {
-      times = pBuilder.times;
-    }
-    else {
-      times = new HashSet<>();
-    }
+    timestamps = (pBuilder.timestamps == null) ? new ArrayList<>() : pBuilder.timestamps;
+    times = (pBuilder.times == null) ? new HashSet<>() : pBuilder.times;
     startTimestamps = pBuilder.startTimestamps;
   }
 

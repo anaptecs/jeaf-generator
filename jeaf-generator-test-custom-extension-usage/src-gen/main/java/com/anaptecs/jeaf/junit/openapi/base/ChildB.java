@@ -94,12 +94,7 @@ public class ChildB extends ParentClass {
     childBAttribute = pBuilder.childBAttribute;
     // "boolean"
     childBAttributeXYZ = pBuilder.childBAttributeXYZ;
-    if (pBuilder.composition != null) {
-      composition = pBuilder.composition;
-    }
-    else {
-      composition = new HashSet<>();
-    }
+    composition = (pBuilder.composition == null) ? new HashSet<>() : pBuilder.composition;
     // "com.anaptecs.jeaf.junit.openapi.base.ParentClass"
     compositionXYZ = pBuilder.compositionXYZ;
   }

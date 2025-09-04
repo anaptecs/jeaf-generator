@@ -93,15 +93,10 @@ public class ClassB extends Object implements ServiceObject, Identifiable<Servic
       objectID = null;
     }
     // Read attribute values from builder.
-    if (pBuilder.manyAs != null) {
-      manyAs = pBuilder.manyAs;
-      // As association is bidirectional we also have to set it in the other direction.
-      for (ClassA lNext : manyAs) {
-        lNext.setOneB((ClassB) this);
-      }
-    }
-    else {
-      manyAs = new TreeSet<>();
+    manyAs = (pBuilder.manyAs == null) ? new TreeSet<>() : pBuilder.manyAs;
+    // As association is bidirectional we also have to set it in the other direction.
+    for (ClassA lNext : manyAs) {
+      lNext.setOneB((ClassB) this);
     }
     // "com.anaptecs.jeaf.junit.core.ClassA"
     manyAsXYZ = pBuilder.manyAsXYZ;

@@ -7,7 +7,6 @@ package com.anaptecs.jeaf.junit.generics;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -62,18 +61,8 @@ public abstract class GenericResponsePOJOBase<T> {
     // Ensure that builder is not null.
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
-    if (pBuilder.errors != null) {
-      errors = pBuilder.errors;
-    }
-    else {
-      errors = new ArrayList<>();
-    }
-    if (pBuilder.warnings != null) {
-      warnings = pBuilder.warnings;
-    }
-    else {
-      warnings = new ArrayList<>();
-    }
+    errors = (pBuilder.errors == null) ? List.of() : List.copyOf(pBuilder.errors);
+    warnings = (pBuilder.warnings == null) ? List.of() : List.copyOf(pBuilder.warnings);
     value = pBuilder.value;
   }
 
@@ -216,8 +205,7 @@ public abstract class GenericResponsePOJOBase<T> {
    * collection is unmodifiable.
    */
   public List<Message> getErrors( ) {
-    // Return all Message objects as unmodifiable collection.
-    return Collections.unmodifiableList(errors);
+    return errors;
   }
 
   /**
@@ -227,8 +215,7 @@ public abstract class GenericResponsePOJOBase<T> {
    * returned collection is unmodifiable.
    */
   public List<Message> getWarnings( ) {
-    // Return all Message objects as unmodifiable collection.
-    return Collections.unmodifiableList(warnings);
+    return warnings;
   }
 
   /**

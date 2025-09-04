@@ -6,7 +6,6 @@
 package com.anaptecs.jeaf.junit.openapi.base;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -119,12 +118,7 @@ public class TheReadOnlyServiceObject extends Object implements ServiceObject {
     bits = pBuilder.bits;
     // "boolean"
     bitsXYZ = pBuilder.bitsXYZ;
-    if (pBuilder.bookingCodes != null) {
-      bookingCodes = pBuilder.bookingCodes;
-    }
-    else {
-      bookingCodes = new HashSet<>();
-    }
+    bookingCodes = (pBuilder.bookingCodes == null) ? Set.of() : Set.copyOf(pBuilder.bookingCodes);
     // "com.anaptecs.jeaf.junit.openapi.base.BookingCode"
     bookingCodesXYZ = pBuilder.bookingCodesXYZ;
     inventoryType = pBuilder.inventoryType;
@@ -394,8 +388,7 @@ public class TheReadOnlyServiceObject extends Object implements ServiceObject {
    */
   @JEAFCustomAnnotationTest
   public Set<BookingCode> getBookingCodes( ) {
-    // Return all BookingCode objects as unmodifiable collection.
-    return Collections.unmodifiableSet(bookingCodes);
+    return bookingCodes;
   }
 
   public int getBookingCodesXYZ( ) {

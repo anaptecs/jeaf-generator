@@ -68,12 +68,7 @@ public abstract class ComplexBookingIDBase {
     // Read attribute values from builder.
     internalID = pBuilder.internalID;
     referenceID = pBuilder.referenceID;
-    if (pBuilder.bookingIDs != null) {
-      bookingIDs = pBuilder.bookingIDs;
-    }
-    else {
-      bookingIDs = new ArrayList<>();
-    }
+    bookingIDs = (pBuilder.bookingIDs == null) ? new ArrayList<>() : pBuilder.bookingIDs;
     complexBookingType = pBuilder.complexBookingType;
     anotherID = pBuilder.anotherID;
     strings = pBuilder.strings;

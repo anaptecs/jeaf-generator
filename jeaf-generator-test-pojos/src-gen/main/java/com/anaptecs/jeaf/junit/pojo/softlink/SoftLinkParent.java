@@ -74,12 +74,7 @@ public class SoftLinkParent {
     // Ensure that builder is not null.
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
-    if (pBuilder.partnerIDs != null) {
-      partnerIDs = pBuilder.partnerIDs;
-    }
-    else {
-      partnerIDs = new HashSet<>();
-    }
+    partnerIDs = (pBuilder.partnerIDs == null) ? new HashSet<>() : pBuilder.partnerIDs;
     thePartnerID = pBuilder.thePartnerID;
     readonlyPartnerID = pBuilder.readonlyPartnerID;
   }

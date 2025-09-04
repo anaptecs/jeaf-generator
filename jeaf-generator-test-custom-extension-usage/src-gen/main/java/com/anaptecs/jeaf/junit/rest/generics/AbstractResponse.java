@@ -73,20 +73,10 @@ public abstract class AbstractResponse<T> extends Object implements ServiceObjec
     // Ensure that builder is not null.
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
-    if (pBuilder.errors != null) {
-      errors = pBuilder.errors;
-    }
-    else {
-      errors = new ArrayList<>();
-    }
+    errors = (pBuilder.errors == null) ? new ArrayList<>() : pBuilder.errors;
     // "com.anaptecs.jeaf.junit.rest.generics.Message"
     errorsXYZ = pBuilder.errorsXYZ;
-    if (pBuilder.warnings != null) {
-      warnings = pBuilder.warnings;
-    }
-    else {
-      warnings = new ArrayList<>();
-    }
+    warnings = (pBuilder.warnings == null) ? new ArrayList<>() : pBuilder.warnings;
     // "com.anaptecs.jeaf.junit.rest.generics.Message"
     warningsXYZ = pBuilder.warningsXYZ;
   }

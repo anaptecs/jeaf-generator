@@ -36,12 +36,7 @@ public class WeirdBooking {
   protected WeirdBooking( Builder pBuilder ) {
     // Read attribute values from builder.
     booking = pBuilder.booking;
-    if (pBuilder.additionalBookings != null) {
-      additionalBookings = pBuilder.additionalBookings;
-    }
-    else {
-      additionalBookings = new ArrayList<>();
-    }
+    additionalBookings = (pBuilder.additionalBookings == null) ? new ArrayList<>() : pBuilder.additionalBookings;
   }
 
   /**

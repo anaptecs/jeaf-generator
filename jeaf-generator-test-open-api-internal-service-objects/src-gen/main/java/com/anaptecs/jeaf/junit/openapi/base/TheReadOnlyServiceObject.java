@@ -69,12 +69,7 @@ public class TheReadOnlyServiceObject implements ServiceObject {
     // Read attribute values from builder.
     name = pBuilder.name;
     bits = pBuilder.bits;
-    if (pBuilder.bookingCodes != null) {
-      bookingCodes = pBuilder.bookingCodes;
-    }
-    else {
-      bookingCodes = new HashSet<>();
-    }
+    bookingCodes = (pBuilder.bookingCodes == null) ? Set.of() : Set.copyOf(pBuilder.bookingCodes);
     inventoryType = pBuilder.inventoryType;
   }
 

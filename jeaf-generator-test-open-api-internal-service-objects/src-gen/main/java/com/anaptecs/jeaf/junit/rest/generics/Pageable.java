@@ -49,12 +49,7 @@ public class Pageable<T> implements ServiceObject {
     // Ensure that builder is not null.
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
-    if (pBuilder.objects != null) {
-      objects = pBuilder.objects;
-    }
-    else {
-      objects = new ArrayList<>();
-    }
+    objects = (pBuilder.objects == null) ? new ArrayList<>() : pBuilder.objects;
     size = pBuilder.size;
   }
 

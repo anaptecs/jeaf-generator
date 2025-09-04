@@ -64,12 +64,7 @@ public class Partner implements ServiceObject, Identifiable<ServiceObjectID> {
       objectID = null;
     }
     // Read attribute values from builder.
-    if (pBuilder.postalAddresses != null) {
-      postalAddresses = pBuilder.postalAddresses;
-    }
-    else {
-      postalAddresses = new ArrayList<>();
-    }
+    postalAddresses = (pBuilder.postalAddresses == null) ? new ArrayList<>() : pBuilder.postalAddresses;
   }
 
   /**

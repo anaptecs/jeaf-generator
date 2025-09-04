@@ -55,18 +55,8 @@ public abstract class AbstractResponse<T> implements ServiceObject {
     // Ensure that builder is not null.
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
-    if (pBuilder.errors != null) {
-      errors = pBuilder.errors;
-    }
-    else {
-      errors = new ArrayList<>();
-    }
-    if (pBuilder.warnings != null) {
-      warnings = pBuilder.warnings;
-    }
-    else {
-      warnings = new ArrayList<>();
-    }
+    errors = (pBuilder.errors == null) ? new ArrayList<>() : pBuilder.errors;
+    warnings = (pBuilder.warnings == null) ? new ArrayList<>() : pBuilder.warnings;
   }
 
   /**

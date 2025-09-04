@@ -7,7 +7,6 @@ package com.anaptecs.spring.composite;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -66,12 +65,7 @@ public abstract class ComplexBookingIDBase {
     // Read attribute values from builder.
     internalID = pBuilder.internalID;
     referenceID = pBuilder.referenceID;
-    if (pBuilder.bookingIDs != null) {
-      bookingIDs = pBuilder.bookingIDs;
-    }
-    else {
-      bookingIDs = new ArrayList<>();
-    }
+    bookingIDs = (pBuilder.bookingIDs == null) ? List.of() : List.copyOf(pBuilder.bookingIDs);
     complexBookingType = pBuilder.complexBookingType;
     anotherID = pBuilder.anotherID;
     strings = pBuilder.strings;
@@ -243,8 +237,7 @@ public abstract class ComplexBookingIDBase {
    * returned collection is unmodifiable.
    */
   public List<BookingID> getBookingIDs( ) {
-    // Return all BookingID objects as unmodifiable collection.
-    return Collections.unmodifiableList(bookingIDs);
+    return bookingIDs;
   }
 
   /**

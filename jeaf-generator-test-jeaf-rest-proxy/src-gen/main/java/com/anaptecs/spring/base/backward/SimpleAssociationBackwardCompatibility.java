@@ -68,12 +68,7 @@ public class SimpleAssociationBackwardCompatibility implements Serializable {
     // Ensure that builder is not null.
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
-    if (pBuilder.newLinks != null) {
-      newLinks = pBuilder.newLinks;
-    }
-    else {
-      newLinks = new ArrayList<>();
-    }
+    newLinks = (pBuilder.newLinks == null) ? new ArrayList<>() : pBuilder.newLinks;
     newSingleLink = pBuilder.newSingleLink;
   }
 

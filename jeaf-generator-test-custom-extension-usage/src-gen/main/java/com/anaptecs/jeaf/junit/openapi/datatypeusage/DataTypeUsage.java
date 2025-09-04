@@ -78,12 +78,7 @@ public class DataTypeUsage extends Object implements ServiceObject {
     code = pBuilder.code;
     // "com.anaptecs.jeaf.junit.openapi.datatypes.MyDataType"
     codeXYZ = pBuilder.codeXYZ;
-    if (pBuilder.codes != null) {
-      codes = pBuilder.codes;
-    }
-    else {
-      codes = new ArrayList<>();
-    }
+    codes = (pBuilder.codes == null) ? new ArrayList<>() : pBuilder.codes;
     // "com.anaptecs.jeaf.junit.openapi.datatypes.MyDataType"
     codesXYZ = pBuilder.codesXYZ;
   }

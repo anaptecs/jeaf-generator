@@ -72,18 +72,8 @@ public class SoftLinkPartner {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     theBackLinkID = pBuilder.theBackLinkID;
-    if (pBuilder.childLinkIDs != null) {
-      childLinkIDs = pBuilder.childLinkIDs;
-    }
-    else {
-      childLinkIDs = new HashSet<>();
-    }
-    if (pBuilder.longLinkIDs != null) {
-      longLinkIDs = pBuilder.longLinkIDs;
-    }
-    else {
-      longLinkIDs = new ArrayList<>();
-    }
+    childLinkIDs = (pBuilder.childLinkIDs == null) ? Set.of() : Set.copyOf(pBuilder.childLinkIDs);
+    longLinkIDs = (pBuilder.longLinkIDs == null) ? new ArrayList<>() : pBuilder.longLinkIDs;
   }
 
   /**
@@ -261,8 +251,7 @@ public class SoftLinkPartner {
    * returned collection is unmodifiable.
    */
   public Set<SoftLinkID> getChildLinkIDs( ) {
-    // Return all SoftLinkChildA objects as unmodifiable collection.
-    return Collections.unmodifiableSet(childLinkIDs);
+    return childLinkIDs;
   }
 
   /**

@@ -325,11 +325,15 @@
         }
         «ENDIF»
         «IF disableCollectionImmutability()»
-        // Return all «this.type.name» objects directly without any protection against modification.
-        return «this.getSoftLinkPropertyName()»;
+	        // Return all «this.type.name» objects directly without any protection against modification.
+	        return «this.getSoftLinkPropertyName()»;
         «ELSE»
-        // Return all «this.type.name» objects as unmodifiable collection.
-        return java.util.Collections.unmodifiable«this.getCollectionTypeShort()»(«this.getSoftLinkPropertyName()»);
+        	«IF this.isReadOnly()»
+        		return «this.getSoftLinkPropertyName()»;
+        	«ELSE»
+		        // Return all «this.type.name» objects as unmodifiable collection.
+		        return java.util.Collections.unmodifiable«this.getCollectionTypeShort()»(«this.getSoftLinkPropertyName()»);
+        	«ENDIF»
         «ENDIF»
     }
     
@@ -541,11 +545,15 @@
 		    }
 		    «ENDIF»
 		    «IF disableCollectionImmutability()»
-		    // Return all «this.type.name» objects directly without any protection against modification.
-			return «asInstanceVar()»;
+			    // Return all «this.type.name» objects directly without any protection against modification.
+				return «asInstanceVar()»;
 		    «ELSE»
-		    // Return all «this.type.name» objects as unmodifiable collection.
-			return java.util.Collections.unmodifiable«this.getCollectionTypeShort()»(«asInstanceVar()»);
+		    	«IF this.isReadOnly() && this.belongsToTransientBidirectionalBackReference() == false»
+		    		return «asInstanceVar()»;
+		    	«ELSE»
+				    // Return all «this.type.name» objects as unmodifiable collection.
+					return java.util.Collections.unmodifiable«this.getCollectionTypeShort()»(«asInstanceVar()»);
+				«ENDIF»
 			«ENDIF»
 		«ELSE»
 		    «EXPAND java::Helper::CallGetterForSuccessor»

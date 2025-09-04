@@ -60,27 +60,17 @@ public class BidirectionalB {
     // Ensure that builder is not null.
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
-    if (pBuilder.as != null) {
-      as = pBuilder.as;
-      // As association is bidirectional we also have to set it in the other direction.
-      for (BidirectionalA lNext : as) {
-        lNext.setTransientB((BidirectionalB) this);
-      }
-    }
-    else {
-      as = new ArrayList<>();
+    as = (pBuilder.as == null) ? new ArrayList<>() : pBuilder.as;
+    // As association is bidirectional we also have to set it in the other direction.
+    for (BidirectionalA lNext : as) {
+      lNext.setTransientB((BidirectionalB) this);
     }
     // Bidirectional back reference is set up correctly as a builder is used.
     asBackReferenceInitialized = true;
-    if (pBuilder.theAs != null) {
-      theAs = pBuilder.theAs;
-      // As association is bidirectional we also have to set it in the other direction.
-      for (BidirectionalA lNext : theAs) {
-        lNext.addToTransientBs((BidirectionalB) this);
-      }
-    }
-    else {
-      theAs = new ArrayList<>();
+    theAs = (pBuilder.theAs == null) ? new ArrayList<>() : pBuilder.theAs;
+    // As association is bidirectional we also have to set it in the other direction.
+    for (BidirectionalA lNext : theAs) {
+      lNext.addToTransientBs((BidirectionalB) this);
     }
     // Bidirectional back reference is set up correctly as a builder is used.
     theAsBackReferenceInitialized = true;

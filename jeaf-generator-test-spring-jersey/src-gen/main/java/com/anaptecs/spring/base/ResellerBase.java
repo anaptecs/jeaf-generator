@@ -75,15 +75,10 @@ public abstract class ResellerBase {
    */
   protected ResellerBase( BuilderBase pBuilder ) {
     // Read attribute values from builder.
-    if (pBuilder.channels != null) {
-      channels = pBuilder.channels;
-      // As association is bidirectional we also have to set it in the other direction.
-      for (Channel lNext : channels) {
-        lNext.setReseller((Reseller) this);
-      }
-    }
-    else {
-      channels = new ArrayList<>();
+    channels = (pBuilder.channels == null) ? new ArrayList<>() : pBuilder.channels;
+    // As association is bidirectional we also have to set it in the other direction.
+    for (Channel lNext : channels) {
+      lNext.setReseller((Reseller) this);
     }
     // Bidirectional back reference is set up correctly as a builder is used.
     channelsBackReferenceInitialized = true;

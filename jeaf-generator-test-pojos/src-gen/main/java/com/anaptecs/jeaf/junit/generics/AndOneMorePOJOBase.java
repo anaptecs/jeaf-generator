@@ -63,19 +63,9 @@ public abstract class AndOneMorePOJOBase {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     genericProperty = pBuilder.genericProperty;
-    if (pBuilder.genericResponses != null) {
-      genericResponses = pBuilder.genericResponses;
-    }
-    else {
-      genericResponses = new HashSet<>();
-    }
+    genericResponses = (pBuilder.genericResponses == null) ? new HashSet<>() : pBuilder.genericResponses;
     multiTemplateClassImpl = pBuilder.multiTemplateClassImpl;
-    if (pBuilder.many != null) {
-      many = pBuilder.many;
-    }
-    else {
-      many = new HashSet<>();
-    }
+    many = (pBuilder.many == null) ? new HashSet<>() : pBuilder.many;
   }
 
   /**
