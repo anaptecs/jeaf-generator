@@ -15,6 +15,7 @@ import javax.validation.ConstraintViolationException;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
+import com.anaptecs.jeaf.accounting.impl.pojo.Customer.CustomerBuilder;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -67,7 +68,7 @@ public abstract class CustomerBase extends Partner {
     name = pBuilder.name;
     firstName = pBuilder.firstName;
     email = pBuilder.email;
-    accounts = (pBuilder.accounts == null) ? Set.of() : Set.copyOf(pBuilder.accounts);
+    accounts = pBuilder.accounts == null ? Set.of() : Set.copyOf(pBuilder.accounts);
   }
 
   /**
@@ -87,6 +88,8 @@ public abstract class CustomerBase extends Partner {
     private String email;
 
     private Set<Account> accounts;
+
+    private boolean accountsDirty;
 
     /**
      * Use {@link Customer#builder()} instead of private constructor to create new builder.
@@ -115,7 +118,7 @@ public abstract class CustomerBase extends Partner {
      * @param pName Value to which {@link #name} should be set.
      * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setName( String pName ) {
+    public B setName(String pName) {
       // Assign value to attribute
       name = pName;
       return this.self();
@@ -127,7 +130,7 @@ public abstract class CustomerBase extends Partner {
      * @param pFirstName Value to which {@link #firstName} should be set.
      * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setFirstName( String pFirstName ) {
+    public B setFirstName(String pFirstName) {
       // Assign value to attribute
       firstName = pFirstName;
       return this.self();
@@ -139,7 +142,7 @@ public abstract class CustomerBase extends Partner {
      * @param pEmail Value to which {@link #email} should be set.
      * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setEmail( String pEmail ) {
+    public B setEmail(String pEmail) {
       // Assign value to attribute
       email = pEmail;
       return this.self();
@@ -151,13 +154,21 @@ public abstract class CustomerBase extends Partner {
      * @param pAccounts Collection to which {@link #accounts} should be set.
      * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public B setAccounts( Set<Account> pAccounts ) {
+    public B setAccounts(Set<Account> pAccounts) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pAccounts != null) {
-        accounts = new HashSet<Account>(pAccounts);
+        accounts = pAccounts;
       }
       else {
         accounts = null;
+      }
+      accountsDirty = true;
+      return this.self();
+    }
+
+    public B setAccounts(Account... pAccounts) {
+      if (pAccounts != null) {
+        accounts = new HashSet<>(Arrays.asList(pAccounts));
       }
       return this.self();
     }
@@ -168,10 +179,14 @@ public abstract class CustomerBase extends Partner {
      * @param pAccounts Array of objects that should be added to {@link #accounts}. The parameter may be null.
      * @return {@link B} Instance of this builder to support chaining. Method never returns null.
      */
-    public B addToAccounts( Account... pAccounts ) {
+    public B addToAccounts(Account... pAccounts) {
       if (pAccounts != null) {
         if (accounts == null) {
           accounts = new HashSet<Account>();
+        }
+        else if (accountsDirty) {
+          accounts = new HashSet<Account>(accounts);
+          accountsDirty = false;
         }
         accounts.addAll(Arrays.asList(pAccounts));
       }
@@ -269,7 +284,7 @@ public abstract class CustomerBase extends Partner {
    *
    * @return {@link Customer}
    */
-  public static Customer of( String pTags, String pName, String pFirstName, String pEmail ) {
+  public static Customer of(String pTags, String pName, String pFirstName, String pEmail) {
     var lBuilder = Customer.builder();
     lBuilder.setTags(pTags);
     lBuilder.setName(pName);
@@ -295,7 +310,7 @@ public abstract class CustomerBase extends Partner {
   }
 
   @Override
-  public boolean equals( Object pObject ) {
+  public boolean equals(Object pObject) {
     boolean lEquals;
     if (this == pObject) {
       lEquals = true;
@@ -324,7 +339,7 @@ public abstract class CustomerBase extends Partner {
    * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.
    */
   @Override
-  public StringBuilder toStringBuilder( String pIndent ) {
+  public StringBuilder toStringBuilder(String pIndent) {
     StringBuilder lBuilder = super.toStringBuilder(pIndent);
     lBuilder.append(pIndent);
     lBuilder.append("name: ");
