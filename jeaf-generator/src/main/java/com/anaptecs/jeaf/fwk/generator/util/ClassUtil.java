@@ -829,7 +829,8 @@ public class ClassUtil {
         lResult = lName;
       }
     }
-    return lResult;
+    // Workaround for Java 24, 25 and higher.
+    return lResult.replaceFirst("Java SE 8.", "");
   }
 
   public static boolean isModelLibrary( Package pPackage ) {
