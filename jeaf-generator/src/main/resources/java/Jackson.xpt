@@ -12,6 +12,7 @@
 «EXTENSION functions::SystemProperties»
 «EXTENSION functions::JEAFDeprecated»
 «EXTENSION functions::Builder»
+«EXTENSION jeaf::RESTFunctions»
 
 «IMPORT uml»
 «IMPORT JMM»
@@ -77,7 +78,7 @@
 		
 		«IF this.isJSONAlias()»
 		    @com.fasterxml.jackson.annotation.JsonAlias({«FOREACH this.asJSONAlias().aliasNames AS aliasName SEPARATOR ", "»"«aliasName»"«ENDFOREACH»})
-		«ELSEIF this.hasPredecessorProperty()»
+		«ELSEIF this.hasPredecessorProperty() && this.isQueryParamProperty() == false && this.isPathParamProperty() == false && this.isHeaderParamProperty() == false»
 			@com.fasterxml.jackson.annotation.JsonAlias({"«this.getPredecessorProperty().name»"})
 		«ENDIF»
 	«ENDIF»
