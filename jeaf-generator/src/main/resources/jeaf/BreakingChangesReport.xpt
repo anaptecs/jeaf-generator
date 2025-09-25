@@ -94,3 +94,20 @@
 | No breaking changes declared. |
 «ENDIF-»
 «ENDDEFINE»
+
+«DEFINE BreakingChangesCSV FOR Model»
+«FILE getBreakingChangesCSVFileName() res_gen-»
+Element;Package;Details;Description;Active with;
+«FOREACH this.getPackagesForBreakingChangesReport() AS package-»
+«FOREACH package.getBreakingChanges() AS change-»
+        «IF change.isProperty() || change.isEnumerationLiteral() -»
+«change.owner.asNamedElement().name»;«package.qualifiedName()»;«change.name»;«change.getBreakingChangeDescription()»;«change.getBreakingChangeActiveWith()»; 
+       «ELSEIF change.isParameter() -»
+«change.owner.owner.asNamedElement().name».«change.owner.asNamedElement().name»;«package.qualifiedName()»;«change.name»;«change.getBreakingChangeDescription()»;«change.getBreakingChangeActiveWith()»; 
+       «ELSE -»
+«change.name»;«package.qualifiedName()»;«change.getBreakingChangeDescription()»;«change.getBreakingChangeActiveWith()»; 
+       «ENDIF-»
+«ENDFOREACH-»
+«ENDFOREACH-»
+«ENDFILE»
+«ENDDEFINE»

@@ -30,6 +30,7 @@
     «IF generateBreakingChangesReport()»
        «info("Generating Breaking Changes Report")»
        «EXPAND jeaf::BreakingChangesReport::BreakingChangesReport»
+       «EXPAND jeaf::BreakingChangesReport::BreakingChangesCSV»
     «ENDIF»
     
 	«IF generateRESTDeprecationReport()»
@@ -40,6 +41,7 @@
     «IF generateJavaDeprecationReport()»
        «info("Generating Java Deprecation Report")»
        «EXPAND jeaf::JavaDeprecation::JavaDeprecationReport»
+       «EXPAND jeaf::JavaDeprecation::DeprecationsCSV»
     «ENDIF»
     
     «IF generateSecurityRolesReport()»

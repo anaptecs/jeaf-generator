@@ -173,6 +173,9 @@ cached String getBreakingChangesReportName():
 cached String getBreakingChangesReportFileName():
     getBreakingChangesReportFileNameProperty() + getDeprecationReportFileExtension();   
 
+cached String getBreakingChangesCSVFileName():
+    getBreakingChangesReportFileNameProperty() + ".csv";   
+
 private cached String getBreakingChangesReportFileNameProperty():    
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getBreakingChangesReportFileName();
     
@@ -196,6 +199,9 @@ cached String getJavaDeprecationReportName():
     
 cached String getJavaDeprecationReportFileName():
     getJavaDeprecationReportFileNameProperty() + getDeprecationReportFileExtension();
+    
+cached String getDeprecationCSVFileName():
+    getJavaDeprecationReportFileNameProperty() + ".csv";
     
 private cached String getJavaDeprecationReportFileNameProperty():    
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getJavaDeprecationReportFileName();
