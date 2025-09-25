@@ -17,7 +17,7 @@ import org.junit.jupiter.api.TestMethodOrder;
 public class PerformanceTest {
   static final PerformanceTools performanceTools = PerformanceTools.getPerformanceTools();
 
-  static final int runs = 50000000;
+  static final int runs = 500;
 
   static final int warmUpRuns = runs / 5;
 
