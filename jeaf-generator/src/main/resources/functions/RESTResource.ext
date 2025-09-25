@@ -4,6 +4,7 @@ extension functions::RESTOperation;
 extension jeaf::RESTFunctions;
 extension jeaf::RESTFunctions;
 extension java::Naming;
+extension java::OpenAPIFunctions;
 
 cached boolean isRESTResource(uml::Element element):
     element.isStereotypeApplied("RESTResource");
@@ -12,7 +13,7 @@ cached JMM::RESTResource asRESTResource(uml::Element element):
     (JMM::RESTResource) element;
     
 cached boolean requiresCustomHeadersFilter(JMM::RESTResource resource):
-    filterCustomHeaders() && resource.ownedOperation.typeSelect(JMM::RESTOperation).select(e|e.requiresCustomHeadersFilterForOperation()).isEmpty == false;
+    filterCustomHeaders() && resource.getAllOperations().typeSelect(JMM::RESTOperation).select(e|e.requiresCustomHeadersFilterForOperation()).isEmpty == false;
     
 private requiresCustomHeadersFilterForOperation(JMM::RESTOperation operation):
 	operation.getBeanParamsForRESTOperation().select(e|e.supportsCustomHeaders()).isEmpty == false;

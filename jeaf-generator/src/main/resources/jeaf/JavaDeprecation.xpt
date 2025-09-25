@@ -47,7 +47,7 @@
 | Package | Type | Property / Operation | Description | Deprecated since | Planned to be removed |
 |---------|------|----------------------|-------------|------------------|-----------------------|
 «FOREACH deprecations AS element -»
-| `«element.getNearestPackage().qualifiedName()»` | «IF element.isClass() || element.isInterface()»`«element.asNamedElement().name »`«ELSE»`«element.owner.asNamedElement().name »`«ENDIF» | «IF !element.isClass() &&  !element.isInterface()»`«element.name »`«ENDIF» | «element.getDeprecationDescriptionForMarkup()» | «element.getDeprecatedSince()» | «element.getDeprecationRemoval()» |   
+| `«element.getNearestPackage().qualifiedName()»` | «IF element.isClass() || element.isInterface() || element.isEnumeration()»`«element.asNamedElement().name »`«ELSE»`«element.owner.asNamedElement().name »`«ENDIF» | «IF !element.isClass() &&  !element.isInterface()»`«element.name »`«ENDIF» | «element.getDeprecationDescriptionForMarkup()» | «element.getDeprecatedSince()» | «element.getDeprecationRemoval()» |   
 «ENDFOREACH -» 
 «ENDIF -»
 «ENDLET -»
@@ -167,5 +167,18 @@ No deprecations published.
 «DEFINE OperationParamName FOR Parameter-»
 «this.type.name» «this.name»«ENDDEFINE»
 
+
+«DEFINE DeprecationsCSV FOR Model»
+«FILE getDeprecationCSVFileName() res_gen-»
+Type;Package;Property / Operation;HTTP Header;Description;Deprecated since;Planned to be removed;
+«FOREACH this.getPackagesForJavaDeprecationsReport() AS package-»
+«FOREACH package.getJavaDeprecations() AS deprecation-»
+«IF deprecation.isDeprecated()-»
+«IF deprecation.isClass() || deprecation.isInterface() || deprecation.isEnumeration()»«deprecation.asNamedElement().name »«ELSE»«deprecation.owner.asNamedElement().name »«ENDIF»;«deprecation.getNearestPackage().qualifiedName()»;«IF !deprecation.isClass() &&  !deprecation.isInterface()»«deprecation.name »«ENDIF»;«IF deprecation.isHeaderParam()»«deprecation.asHeaderParam().getHeaderParamName()»«ENDIF»;«deprecation.getDeprecationDescriptionForMarkup()»;="«deprecation.getDeprecatedSince()»";«deprecation.getDeprecationRemoval()»;
+«ENDIF-»
+«ENDFOREACH -»
+«ENDFOREACH -»
+«ENDFILE»
+«ENDDEFINE»
 
 
