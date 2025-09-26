@@ -55,7 +55,6 @@ context POJO if runChecks("POJO") && ignore() == false && compositeDataType ERRO
 context POJO if runChecks("POJO") && ignore() == false && (generateEqualsAndHashCode() || generateEqualsAndHashCodeForStandardClasses()) WARNING this.getWarningMessage("9163", {this.fqn()}): this.hasBidirectionalAssociations() == false || this.hasOnlyTransientBidirectionalAssociations();
 
 context POJO if runChecks("POJO") && ignore() == false && templateBinding.isEmpty == false ERROR this.getErrorMessage("9167", {owner.asNamedElement().fqn() + "." + name}): templateBinding.first().parameterSubstitution.isEmpty == false && templateBinding.first().parameterSubstitution.first().actual != null;
-context POJO if runChecks("POJO") && ignore() == false && templateBinding.isEmpty == false ERROR this.getErrorMessage("9168", {this.fqn()}): templateBinding.size > 1;
 
 context Property if isNavigable() && class != null && class.isStereotypeApplied("POJO") && runChecks() && ignore() == false ERROR this.getErrorMessage("9135", {class.name, type.name}):	!isUnnamed();
 context CompositeDataTypePublicField if ((NamedElement) owner).runChecks("POJO") && ignore() == false ERROR this.getErrorMessage("9157", {((NamedElement)owner).name + "." + name}): this.type.isStringType();
@@ -66,6 +65,11 @@ context SoftLink if ((NamedElement) owner).runChecks("POJO") && ignore() == fals
 context POJO if runChecks("POJO") && ignore() == false ERROR this.getErrorMessage("9170", {name, "class", this.fqn()}): this.isValidIdentifierName();
 context Property if owner.asNamedElement().runChecks("POJO") && owner.isStereotypeApplied("POJO") && ignore() == false  ERROR this.getErrorMessage("9170", {name, "property", owner.asNamedElement().fqn()}): this.isValidIdentifierName();
 context Operation if owner.asNamedElement().runChecks("POJO") && owner.isStereotypeApplied("POJO") && ignore() == false ERROR this.getErrorMessage("9170", {name, "operation", owner.asNamedElement().fqn()}): this.isValidIdentifierName();
+
+// Checks for template bindings
+context Class if this.getNearestPackage().runChecks() && ignore() == false && templateBinding.isEmpty == false ERROR this.getErrorMessage("9168", {this.getNearestPackage().qualifiedName() + "." + this.name}): templateBinding.size == 1;
+context Class if this.getNearestPackage().runChecks() && ignore() == false && templateBinding.size == 1 ERROR this.getErrorMessage("9178", {this.getNearestPackage().qualifiedName() + "." + this.name}): templateBinding.parameterSubstitution.size > 0;
+context Class if this.getNearestPackage().runChecks() && ignore() == false && templateBinding.size == 1 ERROR this.getErrorMessage("9178", {this.getNearestPackage().qualifiedName() + "." + this.name}): templateBinding.parameterSubstitution.select(e|e.actual.size == 0).size == 0;
 
 
 // Checks for stereotype DomainObject

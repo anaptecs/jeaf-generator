@@ -47,11 +47,13 @@ public class TemplateParameterHelper {
 		Map<String, String> lMapping = new HashMap<String, String>();
 		for (TemplateParameterSubstitution lNext : lParameterSubstitutions) {
 			EList<ParameterableElement> lActuals = lNext.getActuals();
-			ParameterableElement lParameterableElement = lActuals.get(0);
-			NamedElement lTemplateParamName = (NamedElement) lNext.getFormal().getParameteredElement();
-			NamedElement lActual = (NamedElement) lParameterableElement;
-			String lFullyQualifiedName = Naming.getFullyQualifiedName(lActual);
-			lMapping.put(lTemplateParamName.getName(), lFullyQualifiedName);
+			if(lActuals.size() > 0) {
+				ParameterableElement lParameterableElement = lActuals.get(0);
+				NamedElement lTemplateParamName = (NamedElement) lNext.getFormal().getParameteredElement();
+				NamedElement lActual = (NamedElement) lParameterableElement;
+				String lFullyQualifiedName = Naming.getFullyQualifiedName(lActual);
+				lMapping.put(lTemplateParamName.getName(), lFullyQualifiedName);
+			}
 		}
 		return lMapping;
 	}

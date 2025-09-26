@@ -440,6 +440,14 @@ This is the first line of the first comment
 <br>
 
 # Enumerations
+## EmptyEnum
+
+
+### Literals
+
+| Name | Description |
+|------|-------------|
+
 ## EnumWithProperties
 
 
