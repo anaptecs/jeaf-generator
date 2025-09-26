@@ -36,7 +36,7 @@ package «packageName()»;
 	   «EXPAND jeafgenerator::api::JavaEnumerationExtensionPoint::AddDynamicLiterals» 
 	«ENDIF»
 	«IF extensibleEnum && this.hasUnknownLiteral() == false»
-	   ,
+	   «IF this.ownedLiteral.isEmpty == false»,«ENDIF»
 		/**
 		 * Literal UNKNOWN is used in case that an unknown literal of this enumeration is received e.g. via an external interface. 
 		 */
@@ -123,7 +123,7 @@ public final class «name» {
 	  )«ENDIF»
 	«ENDFOREACH»
 	  «IF extensibleEnum && this.hasUnknownLiteral() == false»
-	  ,
+	  «IF this.ownedLiteral.isEmpty == false»,«ENDIF»
 	  /**
 	   * Literal UNKNOWN is used in case that an unknown literal of this enumeration is received e.g. via an external interface. 
 	   */
