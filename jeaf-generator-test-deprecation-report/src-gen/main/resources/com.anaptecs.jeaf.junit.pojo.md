@@ -448,6 +448,15 @@ This is the first line of the first comment
 | Name | Description |
 |------|-------------|
 
+## EmptyExentibleEnum
+
+
+### Literals
+
+| Name | Description |
+|------|-------------|
+| `UNKNOWN` | Please be aware that this enum is an extensible enum. This means that new literals can be introduced without prior notice. |
+
 ## EnumWithProperties
 
 

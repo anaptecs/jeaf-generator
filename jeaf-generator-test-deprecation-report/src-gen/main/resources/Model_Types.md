@@ -130,6 +130,7 @@ DoubleCodeType |   |  |
 DynamicEnum |   | Test for enums with dynamic literals. |
 DynamicExtensibleEnum |   |  |
 EmptyEnum |   |  |
+EmptyExentibleEnum |   |  |
 Entity |   |  |
 EnumTest |   |  |
 EnumWithDeprecatedProperty |   |  |
@@ -518,6 +519,7 @@ ClientClass |   |  |
 ComplextTypeArrayPOJO |   |  |
 CustomPrimitiveArraysObjectWithRestrictions |   |  |
 EmptyEnum |   |  |
+EmptyExentibleEnum |   |  |
 EnumWithProperties |   |  |
 ExtensibleEnumWithProperties |   |  |
 ImmutableAssociationPOJO |   |  |
