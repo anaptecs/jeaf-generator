@@ -16,6 +16,7 @@ package openapitools.model;
 import java.util.Objects;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.Locale;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -32,7 +33,7 @@ import openapitools.JSON;
 @JsonPropertyOrder({
   IgnoringClass.JSON_PROPERTY_AGE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
 public class IgnoringClass {
   public static final String JSON_PROPERTY_AGE = "age";
   @javax.annotation.Nonnull
@@ -51,7 +52,7 @@ public class IgnoringClass {
    * @return age
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_AGE)
+  @JsonProperty(value = JSON_PROPERTY_AGE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Integer getAge() {
@@ -59,7 +60,7 @@ public class IgnoringClass {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_AGE)
+  @JsonProperty(value = JSON_PROPERTY_AGE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setAge(@javax.annotation.Nonnull Integer age) {
     this.age = age;

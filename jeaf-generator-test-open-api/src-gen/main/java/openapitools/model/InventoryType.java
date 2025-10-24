@@ -16,12 +16,14 @@ package openapitools.model;
 import java.util.Objects;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.Locale;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import openapitools.JSON;
 
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import java.util.Locale;
 
 /**
  * Valid Values: - SBB - SNCF - DB:      &lt;br&gt;&lt;br&gt;     Breaking Change with 3.x: New literal will occur 

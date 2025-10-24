@@ -16,6 +16,7 @@ package openapitools.model;
 import java.util.Objects;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.Locale;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -39,7 +40,7 @@ import openapitools.JSON;
   HeavyDataTypeUser.JSON_PROPERTY_BIG_INEGER_CODE,
   HeavyDataTypeUser.JSON_PROPERTY_BIG_DECIMAL_CODE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
 public class HeavyDataTypeUser {
   public static final String JSON_PROPERTY_BOOLEAN_CODE = "booleanCode";
   @javax.annotation.Nonnull
@@ -86,7 +87,7 @@ public class HeavyDataTypeUser {
    * @return booleanCode
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_BOOLEAN_CODE)
+  @JsonProperty(value = JSON_PROPERTY_BOOLEAN_CODE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Boolean getBooleanCode() {
@@ -94,7 +95,7 @@ public class HeavyDataTypeUser {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_BOOLEAN_CODE)
+  @JsonProperty(value = JSON_PROPERTY_BOOLEAN_CODE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setBooleanCode(@javax.annotation.Nonnull Boolean booleanCode) {
     this.booleanCode = booleanCode;
@@ -111,7 +112,7 @@ public class HeavyDataTypeUser {
    * @return byteCode
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_BYTE_CODE)
+  @JsonProperty(value = JSON_PROPERTY_BYTE_CODE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Integer getByteCode() {
@@ -119,7 +120,7 @@ public class HeavyDataTypeUser {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_BYTE_CODE)
+  @JsonProperty(value = JSON_PROPERTY_BYTE_CODE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setByteCode(@javax.annotation.Nonnull Integer byteCode) {
     this.byteCode = byteCode;
@@ -137,7 +138,7 @@ public class HeavyDataTypeUser {
    * @return shortCode
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_SHORT_CODE)
+  @JsonProperty(value = JSON_PROPERTY_SHORT_CODE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Integer getShortCode() {
@@ -145,7 +146,7 @@ public class HeavyDataTypeUser {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_SHORT_CODE)
+  @JsonProperty(value = JSON_PROPERTY_SHORT_CODE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setShortCode(@javax.annotation.Nonnull Integer shortCode) {
     this.shortCode = shortCode;
@@ -163,7 +164,7 @@ public class HeavyDataTypeUser {
    * @return integerCode
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_INTEGER_CODE)
+  @JsonProperty(value = JSON_PROPERTY_INTEGER_CODE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Integer getIntegerCode() {
@@ -171,7 +172,7 @@ public class HeavyDataTypeUser {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_INTEGER_CODE)
+  @JsonProperty(value = JSON_PROPERTY_INTEGER_CODE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setIntegerCode(@javax.annotation.Nonnull Integer integerCode) {
     this.integerCode = integerCode;
@@ -188,7 +189,7 @@ public class HeavyDataTypeUser {
    * @return floatCode
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_FLOAT_CODE)
+  @JsonProperty(value = JSON_PROPERTY_FLOAT_CODE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Float getFloatCode() {
@@ -196,7 +197,7 @@ public class HeavyDataTypeUser {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_FLOAT_CODE)
+  @JsonProperty(value = JSON_PROPERTY_FLOAT_CODE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setFloatCode(@javax.annotation.Nonnull Float floatCode) {
     this.floatCode = floatCode;
@@ -213,7 +214,7 @@ public class HeavyDataTypeUser {
    * @return doubleCode
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_DOUBLE_CODE)
+  @JsonProperty(value = JSON_PROPERTY_DOUBLE_CODE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Double getDoubleCode() {
@@ -221,7 +222,7 @@ public class HeavyDataTypeUser {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DOUBLE_CODE)
+  @JsonProperty(value = JSON_PROPERTY_DOUBLE_CODE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setDoubleCode(@javax.annotation.Nonnull Double doubleCode) {
     this.doubleCode = doubleCode;
@@ -239,7 +240,7 @@ public class HeavyDataTypeUser {
    * @return bigInegerCode
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_BIG_INEGER_CODE)
+  @JsonProperty(value = JSON_PROPERTY_BIG_INEGER_CODE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Long getBigInegerCode() {
@@ -247,7 +248,7 @@ public class HeavyDataTypeUser {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_BIG_INEGER_CODE)
+  @JsonProperty(value = JSON_PROPERTY_BIG_INEGER_CODE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setBigInegerCode(@javax.annotation.Nonnull Long bigInegerCode) {
     this.bigInegerCode = bigInegerCode;
@@ -264,7 +265,7 @@ public class HeavyDataTypeUser {
    * @return bigDecimalCode
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_BIG_DECIMAL_CODE)
+  @JsonProperty(value = JSON_PROPERTY_BIG_DECIMAL_CODE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Double getBigDecimalCode() {
@@ -272,7 +273,7 @@ public class HeavyDataTypeUser {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_BIG_DECIMAL_CODE)
+  @JsonProperty(value = JSON_PROPERTY_BIG_DECIMAL_CODE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setBigDecimalCode(@javax.annotation.Nonnull Double bigDecimalCode) {
     this.bigDecimalCode = bigDecimalCode;

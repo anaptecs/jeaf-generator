@@ -16,6 +16,7 @@ package openapitools.model;
 import java.util.Objects;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.Locale;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -35,7 +36,7 @@ import openapitools.JSON;
   DirectedEdge.JSON_PROPERTY_END,
   DirectedEdge.JSON_PROPERTY_PREVIOUS_NAME
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
 public class DirectedEdge {
   public static final String JSON_PROPERTY_START = "start";
   @javax.annotation.Nullable
@@ -62,7 +63,7 @@ public class DirectedEdge {
    * @return start
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_START)
+  @JsonProperty(value = JSON_PROPERTY_START, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Stop getStart() {
@@ -70,7 +71,7 @@ public class DirectedEdge {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_START)
+  @JsonProperty(value = JSON_PROPERTY_START, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setStart(@javax.annotation.Nullable Stop start) {
     this.start = start;
@@ -87,7 +88,7 @@ public class DirectedEdge {
    * @return end
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_END)
+  @JsonProperty(value = JSON_PROPERTY_END, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Stop getEnd() {
@@ -95,7 +96,7 @@ public class DirectedEdge {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_END)
+  @JsonProperty(value = JSON_PROPERTY_END, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setEnd(@javax.annotation.Nonnull Stop end) {
     this.end = end;
@@ -112,7 +113,7 @@ public class DirectedEdge {
    * @return previousName
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_PREVIOUS_NAME)
+  @JsonProperty(value = JSON_PROPERTY_PREVIOUS_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getPreviousName() {
@@ -120,7 +121,7 @@ public class DirectedEdge {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_PREVIOUS_NAME)
+  @JsonProperty(value = JSON_PROPERTY_PREVIOUS_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setPreviousName(@javax.annotation.Nonnull String previousName) {
     this.previousName = previousName;

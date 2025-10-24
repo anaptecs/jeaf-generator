@@ -16,6 +16,7 @@ package openapitools.model;
 import java.util.Objects;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.Locale;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -38,7 +39,7 @@ import openapitools.JSON;
   Sortiment.JSON_PROPERTY_INLINE_SORTIMENT_TYPE,
   Sortiment.JSON_PROPERTY_TYPES
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
 public class Sortiment {
   public static final String JSON_PROPERTY_PRODUCTS = "products";
   @javax.annotation.Nullable
@@ -78,7 +79,7 @@ public class Sortiment {
    * @return products
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_PRODUCTS)
+  @JsonProperty(value = JSON_PROPERTY_PRODUCTS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<Product> getProducts() {
@@ -86,7 +87,7 @@ public class Sortiment {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_PRODUCTS)
+  @JsonProperty(value = JSON_PROPERTY_PRODUCTS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setProducts(@javax.annotation.Nullable List<Product> products) {
     this.products = products;
@@ -103,7 +104,7 @@ public class Sortiment {
    * @return value
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_VALUE)
+  @JsonProperty(value = JSON_PROPERTY_VALUE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Integer getValue() {
@@ -111,7 +112,7 @@ public class Sortiment {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_VALUE)
+  @JsonProperty(value = JSON_PROPERTY_VALUE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setValue(@javax.annotation.Nonnull Integer value) {
     this.value = value;
@@ -128,7 +129,7 @@ public class Sortiment {
    * @return inlineSortimentType
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_INLINE_SORTIMENT_TYPE)
+  @JsonProperty(value = JSON_PROPERTY_INLINE_SORTIMENT_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getInlineSortimentType() {
@@ -136,7 +137,7 @@ public class Sortiment {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_INLINE_SORTIMENT_TYPE)
+  @JsonProperty(value = JSON_PROPERTY_INLINE_SORTIMENT_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setInlineSortimentType(@javax.annotation.Nullable String inlineSortimentType) {
     this.inlineSortimentType = inlineSortimentType;
@@ -164,7 +165,7 @@ public class Sortiment {
    */
   @Deprecated
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_TYPES)
+  @JsonProperty(value = JSON_PROPERTY_TYPES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<String> getTypes() {
@@ -173,7 +174,7 @@ public class Sortiment {
 
 
   @Deprecated
-  @JsonProperty(JSON_PROPERTY_TYPES)
+  @JsonProperty(value = JSON_PROPERTY_TYPES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setTypes(@javax.annotation.Nullable List<String> types) {
     this.types = types;

@@ -16,6 +16,7 @@ package openapitools.model;
 import java.util.Objects;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.Locale;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -35,7 +36,7 @@ import openapitools.JSON;
   MyFirstResponse.JSON_PROPERTY_MESSAGES,
   MyFirstResponse.JSON_PROPERTY_DATA
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
 public class MyFirstResponse {
   public static final String JSON_PROPERTY_MESSAGES = "messages";
   @javax.annotation.Nullable
@@ -66,7 +67,7 @@ public class MyFirstResponse {
    * @return messages
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_MESSAGES)
+  @JsonProperty(value = JSON_PROPERTY_MESSAGES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<Object> getMessages() {
@@ -74,7 +75,7 @@ public class MyFirstResponse {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_MESSAGES)
+  @JsonProperty(value = JSON_PROPERTY_MESSAGES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setMessages(@javax.annotation.Nullable List<Object> messages) {
     this.messages = messages;
@@ -91,7 +92,7 @@ public class MyFirstResponse {
    * @return data
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_DATA)
+  @JsonProperty(value = JSON_PROPERTY_DATA, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Object getData() {
@@ -99,7 +100,7 @@ public class MyFirstResponse {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DATA)
+  @JsonProperty(value = JSON_PROPERTY_DATA, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setData(@javax.annotation.Nullable Object data) {
     this.data = data;

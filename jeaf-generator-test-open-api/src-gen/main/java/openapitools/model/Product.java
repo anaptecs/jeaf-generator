@@ -16,6 +16,7 @@ package openapitools.model;
 import java.util.Objects;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.Locale;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -48,7 +49,7 @@ import openapitools.JSON;
   Product.JSON_PROPERTY_DESCRIPTION,
   Product.JSON_PROPERTY_URI
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
 public class Product {
   public static final String JSON_PROPERTY_RESELLERS = "resellers";
   @javax.annotation.Nullable
@@ -107,7 +108,7 @@ public class Product {
    * @return resellers
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_RESELLERS)
+  @JsonProperty(value = JSON_PROPERTY_RESELLERS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<Reseller> getResellers() {
@@ -115,7 +116,7 @@ public class Product {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_RESELLERS)
+  @JsonProperty(value = JSON_PROPERTY_RESELLERS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setResellers(@javax.annotation.Nullable List<Reseller> resellers) {
     this.resellers = resellers;
@@ -132,7 +133,7 @@ public class Product {
    * @return name
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getName() {
@@ -140,7 +141,7 @@ public class Product {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setName(@javax.annotation.Nonnull String name) {
     this.name = name;
@@ -163,7 +164,7 @@ public class Product {
         return image.orElse(null);
   }
 
-  @JsonProperty(JSON_PROPERTY_IMAGE)
+  @JsonProperty(value = JSON_PROPERTY_IMAGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public JsonNullable<byte[]> getImage_JsonNullable() {
@@ -190,7 +191,7 @@ public class Product {
    * @return link
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_LINK)
+  @JsonProperty(value = JSON_PROPERTY_LINK, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getLink() {
@@ -198,7 +199,7 @@ public class Product {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_LINK)
+  @JsonProperty(value = JSON_PROPERTY_LINK, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setLink(@javax.annotation.Nonnull String link) {
     this.link = link;
@@ -215,7 +216,7 @@ public class Product {
    * @return productID
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_PRODUCT_I_D)
+  @JsonProperty(value = JSON_PROPERTY_PRODUCT_I_D, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getProductID() {
@@ -223,7 +224,7 @@ public class Product {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_PRODUCT_I_D)
+  @JsonProperty(value = JSON_PROPERTY_PRODUCT_I_D, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setProductID(@javax.annotation.Nonnull String productID) {
     this.productID = productID;
@@ -248,7 +249,7 @@ public class Product {
    * @return supportedCurrencies
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_SUPPORTED_CURRENCIES)
+  @JsonProperty(value = JSON_PROPERTY_SUPPORTED_CURRENCIES, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public List<String> getSupportedCurrencies() {
@@ -256,7 +257,7 @@ public class Product {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_SUPPORTED_CURRENCIES)
+  @JsonProperty(value = JSON_PROPERTY_SUPPORTED_CURRENCIES, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setSupportedCurrencies(@javax.annotation.Nonnull List<String> supportedCurrencies) {
     this.supportedCurrencies = supportedCurrencies;
@@ -281,7 +282,7 @@ public class Product {
    * @return productCodes
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_PRODUCT_CODES)
+  @JsonProperty(value = JSON_PROPERTY_PRODUCT_CODES, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public List<Integer> getProductCodes() {
@@ -289,7 +290,7 @@ public class Product {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_PRODUCT_CODES)
+  @JsonProperty(value = JSON_PROPERTY_PRODUCT_CODES, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setProductCodes(@javax.annotation.Nonnull List<Integer> productCodes) {
     this.productCodes = productCodes;
@@ -309,7 +310,7 @@ public class Product {
    */
   @Deprecated
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonProperty(value = JSON_PROPERTY_DESCRIPTION, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getDescription() {
@@ -318,7 +319,7 @@ public class Product {
 
 
   @Deprecated
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonProperty(value = JSON_PROPERTY_DESCRIPTION, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setDescription(@javax.annotation.Nonnull String description) {
     this.description = description;
@@ -335,7 +336,7 @@ public class Product {
    * @return uri
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_URI)
+  @JsonProperty(value = JSON_PROPERTY_URI, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public URI getUri() {
@@ -343,7 +344,7 @@ public class Product {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_URI)
+  @JsonProperty(value = JSON_PROPERTY_URI, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setUri(@javax.annotation.Nonnull URI uri) {
     this.uri = uri;

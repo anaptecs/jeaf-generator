@@ -16,6 +16,7 @@ package openapitools.model;
 import java.util.Objects;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.Locale;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -39,7 +40,7 @@ import openapitools.JSON;
   AndOneMorePOJO.JSON_PROPERTY_MULTI_TEMPLATE_CLASS_IMPL,
   AndOneMorePOJO.JSON_PROPERTY_MANY
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
 public class AndOneMorePOJO {
   public static final String JSON_PROPERTY_GENERIC_PROPERTY = "genericProperty";
   @javax.annotation.Nonnull
@@ -70,7 +71,7 @@ public class AndOneMorePOJO {
    * @return genericProperty
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_GENERIC_PROPERTY)
+  @JsonProperty(value = JSON_PROPERTY_GENERIC_PROPERTY, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public DoSomethingResponse getGenericProperty() {
@@ -78,7 +79,7 @@ public class AndOneMorePOJO {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_GENERIC_PROPERTY)
+  @JsonProperty(value = JSON_PROPERTY_GENERIC_PROPERTY, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setGenericProperty(@javax.annotation.Nonnull DoSomethingResponse genericProperty) {
     this.genericProperty = genericProperty;
@@ -103,7 +104,7 @@ public class AndOneMorePOJO {
    * @return genericResponses
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_GENERIC_RESPONSES)
+  @JsonProperty(value = JSON_PROPERTY_GENERIC_RESPONSES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<DoSomethingResponse> getGenericResponses() {
@@ -111,7 +112,7 @@ public class AndOneMorePOJO {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_GENERIC_RESPONSES)
+  @JsonProperty(value = JSON_PROPERTY_GENERIC_RESPONSES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setGenericResponses(@javax.annotation.Nullable List<DoSomethingResponse> genericResponses) {
     this.genericResponses = genericResponses;
@@ -128,7 +129,7 @@ public class AndOneMorePOJO {
    * @return multiTemplateClassImpl
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_MULTI_TEMPLATE_CLASS_IMPL)
+  @JsonProperty(value = JSON_PROPERTY_MULTI_TEMPLATE_CLASS_IMPL, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public MultiTemplateClassImpl getMultiTemplateClassImpl() {
@@ -136,7 +137,7 @@ public class AndOneMorePOJO {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_MULTI_TEMPLATE_CLASS_IMPL)
+  @JsonProperty(value = JSON_PROPERTY_MULTI_TEMPLATE_CLASS_IMPL, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setMultiTemplateClassImpl(@javax.annotation.Nonnull MultiTemplateClassImpl multiTemplateClassImpl) {
     this.multiTemplateClassImpl = multiTemplateClassImpl;
@@ -161,7 +162,7 @@ public class AndOneMorePOJO {
    * @return many
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_MANY)
+  @JsonProperty(value = JSON_PROPERTY_MANY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<MultiTemplateClassImpl> getMany() {
@@ -169,7 +170,7 @@ public class AndOneMorePOJO {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_MANY)
+  @JsonProperty(value = JSON_PROPERTY_MANY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setMany(@javax.annotation.Nullable List<MultiTemplateClassImpl> many) {
     this.many = many;

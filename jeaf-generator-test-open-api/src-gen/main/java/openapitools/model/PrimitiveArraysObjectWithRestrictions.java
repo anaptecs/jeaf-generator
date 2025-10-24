@@ -16,6 +16,7 @@ package openapitools.model;
 import java.util.Objects;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.Locale;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -59,7 +60,7 @@ import openapitools.JSON;
   PrimitiveArraysObjectWithRestrictions.JSON_PROPERTY_A_STRING_ARRAY,
   PrimitiveArraysObjectWithRestrictions.JSON_PROPERTY_B_STRING_ARRAY
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
 public class PrimitiveArraysObjectWithRestrictions {
   public static final String JSON_PROPERTY_A_BOOLEAN_ARRAY = "aBooleanArray";
   private JsonNullable<List<Boolean>> aBooleanArray = JsonNullable.<List<Boolean>>undefined();
@@ -159,7 +160,7 @@ public class PrimitiveArraysObjectWithRestrictions {
         return aBooleanArray.orElse(null);
   }
 
-  @JsonProperty(JSON_PROPERTY_A_BOOLEAN_ARRAY)
+  @JsonProperty(value = JSON_PROPERTY_A_BOOLEAN_ARRAY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public JsonNullable<List<Boolean>> getaBooleanArray_JsonNullable() {
@@ -204,7 +205,7 @@ public class PrimitiveArraysObjectWithRestrictions {
         return bBooleanArray.orElse(null);
   }
 
-  @JsonProperty(JSON_PROPERTY_B_BOOLEAN_ARRAY)
+  @JsonProperty(value = JSON_PROPERTY_B_BOOLEAN_ARRAY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public JsonNullable<List<Boolean>> getbBooleanArray_JsonNullable() {
@@ -249,7 +250,7 @@ public class PrimitiveArraysObjectWithRestrictions {
         return cBooleanArray.orElse(null);
   }
 
-  @JsonProperty(JSON_PROPERTY_C_BOOLEAN_ARRAY)
+  @JsonProperty(value = JSON_PROPERTY_C_BOOLEAN_ARRAY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public JsonNullable<List<Boolean>> getcBooleanArray_JsonNullable() {
@@ -282,7 +283,7 @@ public class PrimitiveArraysObjectWithRestrictions {
         return aByteArray.orElse(null);
   }
 
-  @JsonProperty(JSON_PROPERTY_A_BYTE_ARRAY)
+  @JsonProperty(value = JSON_PROPERTY_A_BYTE_ARRAY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public JsonNullable<byte[]> getaByteArray_JsonNullable() {
@@ -315,7 +316,7 @@ public class PrimitiveArraysObjectWithRestrictions {
         return bByteArray.orElse(null);
   }
 
-  @JsonProperty(JSON_PROPERTY_B_BYTE_ARRAY)
+  @JsonProperty(value = JSON_PROPERTY_B_BYTE_ARRAY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public JsonNullable<byte[]> getbByteArray_JsonNullable() {
@@ -360,7 +361,7 @@ public class PrimitiveArraysObjectWithRestrictions {
         return aShortArray.orElse(null);
   }
 
-  @JsonProperty(JSON_PROPERTY_A_SHORT_ARRAY)
+  @JsonProperty(value = JSON_PROPERTY_A_SHORT_ARRAY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public JsonNullable<List<Integer>> getaShortArray_JsonNullable() {
@@ -405,7 +406,7 @@ public class PrimitiveArraysObjectWithRestrictions {
         return bShortArray.orElse(null);
   }
 
-  @JsonProperty(JSON_PROPERTY_B_SHORT_ARRAY)
+  @JsonProperty(value = JSON_PROPERTY_B_SHORT_ARRAY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public JsonNullable<List<Integer>> getbShortArray_JsonNullable() {
@@ -450,7 +451,7 @@ public class PrimitiveArraysObjectWithRestrictions {
         return aIntegerArray.orElse(null);
   }
 
-  @JsonProperty(JSON_PROPERTY_A_INTEGER_ARRAY)
+  @JsonProperty(value = JSON_PROPERTY_A_INTEGER_ARRAY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public JsonNullable<List<Integer>> getaIntegerArray_JsonNullable() {
@@ -495,7 +496,7 @@ public class PrimitiveArraysObjectWithRestrictions {
         return bIntegerArray.orElse(null);
   }
 
-  @JsonProperty(JSON_PROPERTY_B_INTEGER_ARRAY)
+  @JsonProperty(value = JSON_PROPERTY_B_INTEGER_ARRAY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public JsonNullable<List<Integer>> getbIntegerArray_JsonNullable() {
@@ -540,7 +541,7 @@ public class PrimitiveArraysObjectWithRestrictions {
         return cIntegerArray.orElse(null);
   }
 
-  @JsonProperty(JSON_PROPERTY_C_INTEGER_ARRAY)
+  @JsonProperty(value = JSON_PROPERTY_C_INTEGER_ARRAY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public JsonNullable<List<Integer>> getcIntegerArray_JsonNullable() {
@@ -575,7 +576,7 @@ public class PrimitiveArraysObjectWithRestrictions {
    * @return aLongArray
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_A_LONG_ARRAY)
+  @JsonProperty(value = JSON_PROPERTY_A_LONG_ARRAY, required = false)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public List<Long> getaLongArray() {
@@ -583,7 +584,7 @@ public class PrimitiveArraysObjectWithRestrictions {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_A_LONG_ARRAY)
+  @JsonProperty(value = JSON_PROPERTY_A_LONG_ARRAY, required = false)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setaLongArray(@javax.annotation.Nullable List<Long> aLongArray) {
     this.aLongArray = aLongArray;
@@ -618,7 +619,7 @@ public class PrimitiveArraysObjectWithRestrictions {
         return bLongArray.orElse(null);
   }
 
-  @JsonProperty(JSON_PROPERTY_B_LONG_ARRAY)
+  @JsonProperty(value = JSON_PROPERTY_B_LONG_ARRAY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public JsonNullable<List<Long>> getbLongArray_JsonNullable() {
@@ -663,7 +664,7 @@ public class PrimitiveArraysObjectWithRestrictions {
         return aBigIntegerArray.orElse(null);
   }
 
-  @JsonProperty(JSON_PROPERTY_A_BIG_INTEGER_ARRAY)
+  @JsonProperty(value = JSON_PROPERTY_A_BIG_INTEGER_ARRAY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public JsonNullable<List<Long>> getaBigIntegerArray_JsonNullable() {
@@ -708,7 +709,7 @@ public class PrimitiveArraysObjectWithRestrictions {
         return aCharacterArray.orElse(null);
   }
 
-  @JsonProperty(JSON_PROPERTY_A_CHARACTER_ARRAY)
+  @JsonProperty(value = JSON_PROPERTY_A_CHARACTER_ARRAY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public JsonNullable<List<String>> getaCharacterArray_JsonNullable() {
@@ -753,7 +754,7 @@ public class PrimitiveArraysObjectWithRestrictions {
         return bCharacterArray.orElse(null);
   }
 
-  @JsonProperty(JSON_PROPERTY_B_CHARACTER_ARRAY)
+  @JsonProperty(value = JSON_PROPERTY_B_CHARACTER_ARRAY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public JsonNullable<List<String>> getbCharacterArray_JsonNullable() {
@@ -798,7 +799,7 @@ public class PrimitiveArraysObjectWithRestrictions {
         return aFloatArray.orElse(null);
   }
 
-  @JsonProperty(JSON_PROPERTY_A_FLOAT_ARRAY)
+  @JsonProperty(value = JSON_PROPERTY_A_FLOAT_ARRAY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public JsonNullable<List<Float>> getaFloatArray_JsonNullable() {
@@ -843,7 +844,7 @@ public class PrimitiveArraysObjectWithRestrictions {
         return bFloatArray.orElse(null);
   }
 
-  @JsonProperty(JSON_PROPERTY_B_FLOAT_ARRAY)
+  @JsonProperty(value = JSON_PROPERTY_B_FLOAT_ARRAY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public JsonNullable<List<Float>> getbFloatArray_JsonNullable() {
@@ -888,7 +889,7 @@ public class PrimitiveArraysObjectWithRestrictions {
         return aDoubleArray.orElse(null);
   }
 
-  @JsonProperty(JSON_PROPERTY_A_DOUBLE_ARRAY)
+  @JsonProperty(value = JSON_PROPERTY_A_DOUBLE_ARRAY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public JsonNullable<List<Double>> getaDoubleArray_JsonNullable() {
@@ -933,7 +934,7 @@ public class PrimitiveArraysObjectWithRestrictions {
         return bDoubleArray.orElse(null);
   }
 
-  @JsonProperty(JSON_PROPERTY_B_DOUBLE_ARRAY)
+  @JsonProperty(value = JSON_PROPERTY_B_DOUBLE_ARRAY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public JsonNullable<List<Double>> getbDoubleArray_JsonNullable() {
@@ -978,7 +979,7 @@ public class PrimitiveArraysObjectWithRestrictions {
         return aBigDecimalArray.orElse(null);
   }
 
-  @JsonProperty(JSON_PROPERTY_A_BIG_DECIMAL_ARRAY)
+  @JsonProperty(value = JSON_PROPERTY_A_BIG_DECIMAL_ARRAY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public JsonNullable<List<Double>> getaBigDecimalArray_JsonNullable() {
@@ -1023,7 +1024,7 @@ public class PrimitiveArraysObjectWithRestrictions {
         return aStringArray.orElse(null);
   }
 
-  @JsonProperty(JSON_PROPERTY_A_STRING_ARRAY)
+  @JsonProperty(value = JSON_PROPERTY_A_STRING_ARRAY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public JsonNullable<List<String>> getaStringArray_JsonNullable() {
@@ -1068,7 +1069,7 @@ public class PrimitiveArraysObjectWithRestrictions {
         return bStringArray.orElse(null);
   }
 
-  @JsonProperty(JSON_PROPERTY_B_STRING_ARRAY)
+  @JsonProperty(value = JSON_PROPERTY_B_STRING_ARRAY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public JsonNullable<List<String>> getbStringArray_JsonNullable() {

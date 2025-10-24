@@ -16,6 +16,7 @@ package openapitools.model;
 import java.util.Objects;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.Locale;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -39,7 +40,7 @@ import openapitools.JSON;
   DateObject.JSON_PROPERTY_SQL_DATE,
   DateObject.JSON_PROPERTY_UTIL_DATE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
 public class DateObject {
   public static final String JSON_PROPERTY_LOCAL_TIME = "localTime";
   @javax.annotation.Nonnull
@@ -78,7 +79,7 @@ public class DateObject {
    * @return _localTime
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_LOCAL_TIME)
+  @JsonProperty(value = JSON_PROPERTY_LOCAL_TIME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getLocalTime() {
@@ -86,7 +87,7 @@ public class DateObject {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_LOCAL_TIME)
+  @JsonProperty(value = JSON_PROPERTY_LOCAL_TIME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setLocalTime(@javax.annotation.Nonnull String _localTime) {
     this._localTime = _localTime;
@@ -103,7 +104,7 @@ public class DateObject {
    * @return _localDate
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_LOCAL_DATE)
+  @JsonProperty(value = JSON_PROPERTY_LOCAL_DATE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public LocalDate getLocalDate() {
@@ -111,7 +112,7 @@ public class DateObject {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_LOCAL_DATE)
+  @JsonProperty(value = JSON_PROPERTY_LOCAL_DATE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setLocalDate(@javax.annotation.Nonnull LocalDate _localDate) {
     this._localDate = _localDate;
@@ -128,7 +129,7 @@ public class DateObject {
    * @return localDateTime
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_LOCAL_DATE_TIME)
+  @JsonProperty(value = JSON_PROPERTY_LOCAL_DATE_TIME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public OffsetDateTime getLocalDateTime() {
@@ -136,7 +137,7 @@ public class DateObject {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_LOCAL_DATE_TIME)
+  @JsonProperty(value = JSON_PROPERTY_LOCAL_DATE_TIME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setLocalDateTime(@javax.annotation.Nonnull OffsetDateTime localDateTime) {
     this.localDateTime = localDateTime;
@@ -153,7 +154,7 @@ public class DateObject {
    * @return calendar
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_CALENDAR)
+  @JsonProperty(value = JSON_PROPERTY_CALENDAR, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public OffsetDateTime getCalendar() {
@@ -161,7 +162,7 @@ public class DateObject {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CALENDAR)
+  @JsonProperty(value = JSON_PROPERTY_CALENDAR, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setCalendar(@javax.annotation.Nonnull OffsetDateTime calendar) {
     this.calendar = calendar;
@@ -178,7 +179,7 @@ public class DateObject {
    * @return sqlDate
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_SQL_DATE)
+  @JsonProperty(value = JSON_PROPERTY_SQL_DATE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public LocalDate getSqlDate() {
@@ -186,7 +187,7 @@ public class DateObject {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_SQL_DATE)
+  @JsonProperty(value = JSON_PROPERTY_SQL_DATE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setSqlDate(@javax.annotation.Nonnull LocalDate sqlDate) {
     this.sqlDate = sqlDate;
@@ -203,7 +204,7 @@ public class DateObject {
    * @return utilDate
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_UTIL_DATE)
+  @JsonProperty(value = JSON_PROPERTY_UTIL_DATE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public OffsetDateTime getUtilDate() {
@@ -211,7 +212,7 @@ public class DateObject {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_UTIL_DATE)
+  @JsonProperty(value = JSON_PROPERTY_UTIL_DATE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setUtilDate(@javax.annotation.Nonnull OffsetDateTime utilDate) {
     this.utilDate = utilDate;

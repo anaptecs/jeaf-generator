@@ -16,6 +16,7 @@ package openapitools.model;
 import java.util.Objects;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.Locale;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -35,7 +36,7 @@ import openapitools.JSON;
   PostalAddress.JSON_PROPERTY_CITY,
   PostalAddress.JSON_PROPERTY_POSTAL_CODE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
 public class PostalAddress {
   public static final String JSON_PROPERTY_STREET = "street";
   @javax.annotation.Nonnull
@@ -66,7 +67,7 @@ public class PostalAddress {
    * @return street
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_STREET)
+  @JsonProperty(value = JSON_PROPERTY_STREET, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getStreet() {
@@ -74,7 +75,7 @@ public class PostalAddress {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_STREET)
+  @JsonProperty(value = JSON_PROPERTY_STREET, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setStreet(@javax.annotation.Nonnull String street) {
     this.street = street;
@@ -91,7 +92,7 @@ public class PostalAddress {
    * @return houseNumber
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_HOUSE_NUMBER)
+  @JsonProperty(value = JSON_PROPERTY_HOUSE_NUMBER, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getHouseNumber() {
@@ -99,7 +100,7 @@ public class PostalAddress {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_HOUSE_NUMBER)
+  @JsonProperty(value = JSON_PROPERTY_HOUSE_NUMBER, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setHouseNumber(@javax.annotation.Nonnull String houseNumber) {
     this.houseNumber = houseNumber;
@@ -116,7 +117,7 @@ public class PostalAddress {
    * @return city
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_CITY)
+  @JsonProperty(value = JSON_PROPERTY_CITY, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getCity() {
@@ -124,7 +125,7 @@ public class PostalAddress {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CITY)
+  @JsonProperty(value = JSON_PROPERTY_CITY, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setCity(@javax.annotation.Nonnull String city) {
     this.city = city;
@@ -141,7 +142,7 @@ public class PostalAddress {
    * @return postalCode
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_POSTAL_CODE)
+  @JsonProperty(value = JSON_PROPERTY_POSTAL_CODE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Integer getPostalCode() {
@@ -149,7 +150,7 @@ public class PostalAddress {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_POSTAL_CODE)
+  @JsonProperty(value = JSON_PROPERTY_POSTAL_CODE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setPostalCode(@javax.annotation.Nonnull Integer postalCode) {
     this.postalCode = postalCode;

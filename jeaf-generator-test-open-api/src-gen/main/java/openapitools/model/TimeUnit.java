@@ -16,12 +16,14 @@ package openapitools.model;
 import java.util.Objects;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.Locale;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import openapitools.JSON;
 
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import java.util.Locale;
 
 /**
  * Enumeration represents time units.       NOVA 14 Mapping * nova-base.xsd.ZeitEinheit &lt;br&gt;&lt;br&gt; Alternate Name: Zeiteinheit &lt;br&gt;&lt;br&gt; Valid Values: - MINUTE: Literal represents time unit \&quot;minutes\&quot;. - HOUR - DAY - WEEK: Literal represents time unit \&quot;weeks\&quot;.     This is the comments second line ;-) - MONTH - YEAR 

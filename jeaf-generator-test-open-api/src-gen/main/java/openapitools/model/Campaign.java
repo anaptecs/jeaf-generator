@@ -16,6 +16,7 @@ package openapitools.model;
 import java.util.Objects;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.Locale;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -40,7 +41,7 @@ import openapitools.JSON;
   Campaign.JSON_PROPERTY_MORE_LINK_I_DS,
   Campaign.JSON_PROPERTY_DISCOUNT_OFFER_I_DS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
 public class Campaign {
   public static final String JSON_PROPERTY_THE_LINK_I_D = "theLinkID";
   @Deprecated
@@ -77,7 +78,7 @@ public class Campaign {
         return theLinkID.orElse(null);
   }
 
-  @JsonProperty(JSON_PROPERTY_THE_LINK_I_D)
+  @JsonProperty(value = JSON_PROPERTY_THE_LINK_I_D, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public JsonNullable<Long> getTheLinkID_JsonNullable() {
@@ -116,7 +117,7 @@ public class Campaign {
    */
   @Deprecated
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_MORE_LINK_I_DS)
+  @JsonProperty(value = JSON_PROPERTY_MORE_LINK_I_DS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public List<Long> getMoreLinkIDs() {
@@ -125,7 +126,7 @@ public class Campaign {
 
 
   @Deprecated
-  @JsonProperty(JSON_PROPERTY_MORE_LINK_I_DS)
+  @JsonProperty(value = JSON_PROPERTY_MORE_LINK_I_DS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setMoreLinkIDs(@javax.annotation.Nonnull List<Long> moreLinkIDs) {
     this.moreLinkIDs = moreLinkIDs;
@@ -163,7 +164,7 @@ public class Campaign {
         return discountOfferIDs.orElse(null);
   }
 
-  @JsonProperty(JSON_PROPERTY_DISCOUNT_OFFER_I_DS)
+  @JsonProperty(value = JSON_PROPERTY_DISCOUNT_OFFER_I_DS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public JsonNullable<List<String>> getDiscountOfferIDs_JsonNullable() {

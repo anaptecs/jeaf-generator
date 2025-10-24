@@ -16,6 +16,7 @@ package openapitools.model;
 import java.util.Objects;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.Locale;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -37,7 +38,7 @@ import openapitools.JSON;
   Leg.JSON_PROPERTY_STOP,
   Leg.JSON_PROPERTY_STOPOVERS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
 public class Leg {
   public static final String JSON_PROPERTY_START = "start";
   @javax.annotation.Nonnull
@@ -64,7 +65,7 @@ public class Leg {
    * @return start
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_START)
+  @JsonProperty(value = JSON_PROPERTY_START, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public PlaceRef getStart() {
@@ -72,7 +73,7 @@ public class Leg {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_START)
+  @JsonProperty(value = JSON_PROPERTY_START, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setStart(@javax.annotation.Nonnull PlaceRef start) {
     this.start = start;
@@ -89,7 +90,7 @@ public class Leg {
    * @return stop
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_STOP)
+  @JsonProperty(value = JSON_PROPERTY_STOP, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public PlaceRef getStop() {
@@ -97,7 +98,7 @@ public class Leg {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_STOP)
+  @JsonProperty(value = JSON_PROPERTY_STOP, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setStop(@javax.annotation.Nonnull PlaceRef stop) {
     this.stop = stop;
@@ -122,7 +123,7 @@ public class Leg {
    * @return stopovers
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_STOPOVERS)
+  @JsonProperty(value = JSON_PROPERTY_STOPOVERS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<PlaceRef> getStopovers() {
@@ -130,7 +131,7 @@ public class Leg {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_STOPOVERS)
+  @JsonProperty(value = JSON_PROPERTY_STOPOVERS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setStopovers(@javax.annotation.Nullable List<PlaceRef> stopovers) {
     this.stopovers = stopovers;

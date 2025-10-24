@@ -16,6 +16,7 @@ package openapitools.model;
 import java.util.Objects;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.Locale;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -53,7 +54,7 @@ import openapitools.JSON;
   PrimitiveObjectWithRestrictions.JSON_PROPERTY_A_STRING,
   PrimitiveObjectWithRestrictions.JSON_PROPERTY_B_STRING
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
 public class PrimitiveObjectWithRestrictions {
   public static final String JSON_PROPERTY_A_BOOLEAN = "aBoolean";
   @javax.annotation.Nonnull
@@ -156,7 +157,7 @@ public class PrimitiveObjectWithRestrictions {
    * @return aBoolean
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_A_BOOLEAN)
+  @JsonProperty(value = JSON_PROPERTY_A_BOOLEAN, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Boolean getaBoolean() {
@@ -164,7 +165,7 @@ public class PrimitiveObjectWithRestrictions {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_A_BOOLEAN)
+  @JsonProperty(value = JSON_PROPERTY_A_BOOLEAN, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setaBoolean(@javax.annotation.Nonnull Boolean aBoolean) {
     this.aBoolean = aBoolean;
@@ -181,7 +182,7 @@ public class PrimitiveObjectWithRestrictions {
    * @return bBoolean
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_B_BOOLEAN)
+  @JsonProperty(value = JSON_PROPERTY_B_BOOLEAN, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Boolean getbBoolean() {
@@ -189,7 +190,7 @@ public class PrimitiveObjectWithRestrictions {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_B_BOOLEAN)
+  @JsonProperty(value = JSON_PROPERTY_B_BOOLEAN, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setbBoolean(@javax.annotation.Nonnull Boolean bBoolean) {
     this.bBoolean = bBoolean;
@@ -206,7 +207,7 @@ public class PrimitiveObjectWithRestrictions {
    * @return cBoolean
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_C_BOOLEAN)
+  @JsonProperty(value = JSON_PROPERTY_C_BOOLEAN, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Boolean getcBoolean() {
@@ -214,7 +215,7 @@ public class PrimitiveObjectWithRestrictions {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_C_BOOLEAN)
+  @JsonProperty(value = JSON_PROPERTY_C_BOOLEAN, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setcBoolean(@javax.annotation.Nonnull Boolean cBoolean) {
     this.cBoolean = cBoolean;
@@ -232,7 +233,7 @@ public class PrimitiveObjectWithRestrictions {
    * @return aByte
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_A_BYTE)
+  @JsonProperty(value = JSON_PROPERTY_A_BYTE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Integer getaByte() {
@@ -240,7 +241,7 @@ public class PrimitiveObjectWithRestrictions {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_A_BYTE)
+  @JsonProperty(value = JSON_PROPERTY_A_BYTE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setaByte(@javax.annotation.Nonnull Integer aByte) {
     this.aByte = aByte;
@@ -258,7 +259,7 @@ public class PrimitiveObjectWithRestrictions {
    * @return bByte
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_B_BYTE)
+  @JsonProperty(value = JSON_PROPERTY_B_BYTE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Integer getbByte() {
@@ -266,7 +267,7 @@ public class PrimitiveObjectWithRestrictions {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_B_BYTE)
+  @JsonProperty(value = JSON_PROPERTY_B_BYTE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setbByte(@javax.annotation.Nonnull Integer bByte) {
     this.bByte = bByte;
@@ -284,7 +285,7 @@ public class PrimitiveObjectWithRestrictions {
    * @return aShort
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_A_SHORT)
+  @JsonProperty(value = JSON_PROPERTY_A_SHORT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Integer getaShort() {
@@ -292,7 +293,7 @@ public class PrimitiveObjectWithRestrictions {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_A_SHORT)
+  @JsonProperty(value = JSON_PROPERTY_A_SHORT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setaShort(@javax.annotation.Nonnull Integer aShort) {
     this.aShort = aShort;
@@ -310,7 +311,7 @@ public class PrimitiveObjectWithRestrictions {
    * @return bShort
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_B_SHORT)
+  @JsonProperty(value = JSON_PROPERTY_B_SHORT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Integer getbShort() {
@@ -318,7 +319,7 @@ public class PrimitiveObjectWithRestrictions {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_B_SHORT)
+  @JsonProperty(value = JSON_PROPERTY_B_SHORT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setbShort(@javax.annotation.Nonnull Integer bShort) {
     this.bShort = bShort;
@@ -336,7 +337,7 @@ public class PrimitiveObjectWithRestrictions {
    * @return aInteger
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_A_INTEGER)
+  @JsonProperty(value = JSON_PROPERTY_A_INTEGER, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Integer getaInteger() {
@@ -344,7 +345,7 @@ public class PrimitiveObjectWithRestrictions {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_A_INTEGER)
+  @JsonProperty(value = JSON_PROPERTY_A_INTEGER, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setaInteger(@javax.annotation.Nonnull Integer aInteger) {
     this.aInteger = aInteger;
@@ -362,7 +363,7 @@ public class PrimitiveObjectWithRestrictions {
    * @return bInteger
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_B_INTEGER)
+  @JsonProperty(value = JSON_PROPERTY_B_INTEGER, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Integer getbInteger() {
@@ -370,7 +371,7 @@ public class PrimitiveObjectWithRestrictions {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_B_INTEGER)
+  @JsonProperty(value = JSON_PROPERTY_B_INTEGER, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setbInteger(@javax.annotation.Nonnull Integer bInteger) {
     this.bInteger = bInteger;
@@ -389,7 +390,7 @@ public class PrimitiveObjectWithRestrictions {
    * @return cInteger
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_C_INTEGER)
+  @JsonProperty(value = JSON_PROPERTY_C_INTEGER, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Integer getcInteger() {
@@ -397,7 +398,7 @@ public class PrimitiveObjectWithRestrictions {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_C_INTEGER)
+  @JsonProperty(value = JSON_PROPERTY_C_INTEGER, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setcInteger(@javax.annotation.Nonnull Integer cInteger) {
     this.cInteger = cInteger;
@@ -414,7 +415,7 @@ public class PrimitiveObjectWithRestrictions {
    * @return aLong
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_A_LONG)
+  @JsonProperty(value = JSON_PROPERTY_A_LONG, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Long getaLong() {
@@ -422,7 +423,7 @@ public class PrimitiveObjectWithRestrictions {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_A_LONG)
+  @JsonProperty(value = JSON_PROPERTY_A_LONG, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setaLong(@javax.annotation.Nonnull Long aLong) {
     this.aLong = aLong;
@@ -440,7 +441,7 @@ public class PrimitiveObjectWithRestrictions {
    * @return bLong
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_B_LONG)
+  @JsonProperty(value = JSON_PROPERTY_B_LONG, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Long getbLong() {
@@ -448,7 +449,7 @@ public class PrimitiveObjectWithRestrictions {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_B_LONG)
+  @JsonProperty(value = JSON_PROPERTY_B_LONG, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setbLong(@javax.annotation.Nonnull Long bLong) {
     this.bLong = bLong;
@@ -467,7 +468,7 @@ public class PrimitiveObjectWithRestrictions {
    * @return aBigInteger
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_A_BIG_INTEGER)
+  @JsonProperty(value = JSON_PROPERTY_A_BIG_INTEGER, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Long getaBigInteger() {
@@ -475,7 +476,7 @@ public class PrimitiveObjectWithRestrictions {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_A_BIG_INTEGER)
+  @JsonProperty(value = JSON_PROPERTY_A_BIG_INTEGER, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setaBigInteger(@javax.annotation.Nonnull Long aBigInteger) {
     this.aBigInteger = aBigInteger;
@@ -492,7 +493,7 @@ public class PrimitiveObjectWithRestrictions {
    * @return aCharacter
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_A_CHARACTER)
+  @JsonProperty(value = JSON_PROPERTY_A_CHARACTER, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getaCharacter() {
@@ -500,7 +501,7 @@ public class PrimitiveObjectWithRestrictions {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_A_CHARACTER)
+  @JsonProperty(value = JSON_PROPERTY_A_CHARACTER, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setaCharacter(@javax.annotation.Nonnull String aCharacter) {
     this.aCharacter = aCharacter;
@@ -517,7 +518,7 @@ public class PrimitiveObjectWithRestrictions {
    * @return bCharacter
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_B_CHARACTER)
+  @JsonProperty(value = JSON_PROPERTY_B_CHARACTER, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getbCharacter() {
@@ -525,7 +526,7 @@ public class PrimitiveObjectWithRestrictions {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_B_CHARACTER)
+  @JsonProperty(value = JSON_PROPERTY_B_CHARACTER, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setbCharacter(@javax.annotation.Nonnull String bCharacter) {
     this.bCharacter = bCharacter;
@@ -542,7 +543,7 @@ public class PrimitiveObjectWithRestrictions {
    * @return aFloat
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_A_FLOAT)
+  @JsonProperty(value = JSON_PROPERTY_A_FLOAT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Float getaFloat() {
@@ -550,7 +551,7 @@ public class PrimitiveObjectWithRestrictions {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_A_FLOAT)
+  @JsonProperty(value = JSON_PROPERTY_A_FLOAT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setaFloat(@javax.annotation.Nonnull Float aFloat) {
     this.aFloat = aFloat;
@@ -567,7 +568,7 @@ public class PrimitiveObjectWithRestrictions {
    * @return bFloat
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_B_FLOAT)
+  @JsonProperty(value = JSON_PROPERTY_B_FLOAT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Float getbFloat() {
@@ -575,7 +576,7 @@ public class PrimitiveObjectWithRestrictions {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_B_FLOAT)
+  @JsonProperty(value = JSON_PROPERTY_B_FLOAT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setbFloat(@javax.annotation.Nonnull Float bFloat) {
     this.bFloat = bFloat;
@@ -592,7 +593,7 @@ public class PrimitiveObjectWithRestrictions {
    * @return aDouble
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_A_DOUBLE)
+  @JsonProperty(value = JSON_PROPERTY_A_DOUBLE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Double getaDouble() {
@@ -600,7 +601,7 @@ public class PrimitiveObjectWithRestrictions {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_A_DOUBLE)
+  @JsonProperty(value = JSON_PROPERTY_A_DOUBLE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setaDouble(@javax.annotation.Nonnull Double aDouble) {
     this.aDouble = aDouble;
@@ -617,7 +618,7 @@ public class PrimitiveObjectWithRestrictions {
    * @return bDouble
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_B_DOUBLE)
+  @JsonProperty(value = JSON_PROPERTY_B_DOUBLE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Double getbDouble() {
@@ -625,7 +626,7 @@ public class PrimitiveObjectWithRestrictions {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_B_DOUBLE)
+  @JsonProperty(value = JSON_PROPERTY_B_DOUBLE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setbDouble(@javax.annotation.Nonnull Double bDouble) {
     this.bDouble = bDouble;
@@ -643,7 +644,7 @@ public class PrimitiveObjectWithRestrictions {
    * @return aBigDecimal
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_A_BIG_DECIMAL)
+  @JsonProperty(value = JSON_PROPERTY_A_BIG_DECIMAL, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Double getaBigDecimal() {
@@ -651,7 +652,7 @@ public class PrimitiveObjectWithRestrictions {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_A_BIG_DECIMAL)
+  @JsonProperty(value = JSON_PROPERTY_A_BIG_DECIMAL, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setaBigDecimal(@javax.annotation.Nonnull Double aBigDecimal) {
     this.aBigDecimal = aBigDecimal;
@@ -668,7 +669,7 @@ public class PrimitiveObjectWithRestrictions {
    * @return aString
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_A_STRING)
+  @JsonProperty(value = JSON_PROPERTY_A_STRING, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getaString() {
@@ -676,7 +677,7 @@ public class PrimitiveObjectWithRestrictions {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_A_STRING)
+  @JsonProperty(value = JSON_PROPERTY_A_STRING, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setaString(@javax.annotation.Nonnull String aString) {
     this.aString = aString;
@@ -693,7 +694,7 @@ public class PrimitiveObjectWithRestrictions {
    * @return bString
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_B_STRING)
+  @JsonProperty(value = JSON_PROPERTY_B_STRING, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getbString() {
@@ -701,7 +702,7 @@ public class PrimitiveObjectWithRestrictions {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_B_STRING)
+  @JsonProperty(value = JSON_PROPERTY_B_STRING, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setbString(@javax.annotation.Nonnull String bString) {
     this.bString = bString;

@@ -16,6 +16,7 @@ package openapitools.model;
 import java.util.Objects;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.Locale;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -32,7 +33,7 @@ import openapitools.JSON;
 @JsonPropertyOrder({
   BankAccount.JSON_PROPERTY_IBAN
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
 public class BankAccount {
   public static final String JSON_PROPERTY_IBAN = "iban";
   @javax.annotation.Nonnull
@@ -51,7 +52,7 @@ public class BankAccount {
    * @return iban
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_IBAN)
+  @JsonProperty(value = JSON_PROPERTY_IBAN, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getIban() {
@@ -59,7 +60,7 @@ public class BankAccount {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_IBAN)
+  @JsonProperty(value = JSON_PROPERTY_IBAN, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setIban(@javax.annotation.Nonnull String iban) {
     this.iban = iban;

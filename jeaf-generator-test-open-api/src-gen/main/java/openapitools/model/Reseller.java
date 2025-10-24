@@ -16,6 +16,7 @@ package openapitools.model;
 import java.util.Objects;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.Locale;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -37,7 +38,7 @@ import openapitools.JSON;
   Reseller.JSON_PROPERTY_NAME,
   Reseller.JSON_PROPERTY_LANGUAGE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
 public class Reseller {
   public static final String JSON_PROPERTY_CHANNELS = "channels";
   @javax.annotation.Nonnull
@@ -72,7 +73,7 @@ public class Reseller {
    * @return channels
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_CHANNELS)
+  @JsonProperty(value = JSON_PROPERTY_CHANNELS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public List<Channel> getChannels() {
@@ -80,7 +81,7 @@ public class Reseller {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CHANNELS)
+  @JsonProperty(value = JSON_PROPERTY_CHANNELS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setChannels(@javax.annotation.Nonnull List<Channel> channels) {
     this.channels = channels;
@@ -97,7 +98,7 @@ public class Reseller {
    * @return name
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getName() {
@@ -105,7 +106,7 @@ public class Reseller {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setName(@javax.annotation.Nonnull String name) {
     this.name = name;
@@ -122,7 +123,7 @@ public class Reseller {
    * @return language
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_LANGUAGE)
+  @JsonProperty(value = JSON_PROPERTY_LANGUAGE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getLanguage() {
@@ -130,7 +131,7 @@ public class Reseller {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_LANGUAGE)
+  @JsonProperty(value = JSON_PROPERTY_LANGUAGE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setLanguage(@javax.annotation.Nonnull String language) {
     this.language = language;

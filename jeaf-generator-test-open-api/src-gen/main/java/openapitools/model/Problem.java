@@ -16,6 +16,7 @@ package openapitools.model;
 import java.util.Objects;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.Locale;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -36,7 +37,7 @@ import openapitools.JSON;
   Problem.JSON_PROPERTY_DETAIL,
   Problem.JSON_PROPERTY_INSTANCE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
 public class Problem {
   public static final String JSON_PROPERTY_TITLE = "title";
   @javax.annotation.Nonnull
@@ -71,7 +72,7 @@ public class Problem {
    * @return title
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_TITLE)
+  @JsonProperty(value = JSON_PROPERTY_TITLE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getTitle() {
@@ -79,7 +80,7 @@ public class Problem {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_TITLE)
+  @JsonProperty(value = JSON_PROPERTY_TITLE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setTitle(@javax.annotation.Nonnull String title) {
     this.title = title;
@@ -96,7 +97,7 @@ public class Problem {
    * @return status
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_STATUS)
+  @JsonProperty(value = JSON_PROPERTY_STATUS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Integer getStatus() {
@@ -104,7 +105,7 @@ public class Problem {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_STATUS)
+  @JsonProperty(value = JSON_PROPERTY_STATUS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setStatus(@javax.annotation.Nonnull Integer status) {
     this.status = status;
@@ -121,7 +122,7 @@ public class Problem {
    * @return type
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_TYPE)
+  @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getType() {
@@ -129,7 +130,7 @@ public class Problem {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_TYPE)
+  @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setType(@javax.annotation.Nonnull String type) {
     this.type = type;
@@ -146,7 +147,7 @@ public class Problem {
    * @return detail
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_DETAIL)
+  @JsonProperty(value = JSON_PROPERTY_DETAIL, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getDetail() {
@@ -154,7 +155,7 @@ public class Problem {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DETAIL)
+  @JsonProperty(value = JSON_PROPERTY_DETAIL, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setDetail(@javax.annotation.Nonnull String detail) {
     this.detail = detail;
@@ -171,7 +172,7 @@ public class Problem {
    * @return instance
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_INSTANCE)
+  @JsonProperty(value = JSON_PROPERTY_INSTANCE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getInstance() {
@@ -179,7 +180,7 @@ public class Problem {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_INSTANCE)
+  @JsonProperty(value = JSON_PROPERTY_INSTANCE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setInstance(@javax.annotation.Nonnull String instance) {
     this.instance = instance;

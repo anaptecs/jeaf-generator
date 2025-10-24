@@ -16,6 +16,7 @@ package openapitools.model;
 import java.util.Objects;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.Locale;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -36,7 +37,7 @@ import openapitools.JSON;
   Channel.JSON_PROPERTY_CODE,
   Channel.JSON_PROPERTY_SELF_SERVICE_CHANNEL
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
 public class Channel {
   public static final String JSON_PROPERTY_CHANNEL_TYPE = "channelType";
   @javax.annotation.Nonnull
@@ -67,7 +68,7 @@ public class Channel {
    * @return channelType
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_CHANNEL_TYPE)
+  @JsonProperty(value = JSON_PROPERTY_CHANNEL_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public ChannelType getChannelType() {
@@ -75,7 +76,7 @@ public class Channel {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CHANNEL_TYPE)
+  @JsonProperty(value = JSON_PROPERTY_CHANNEL_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setChannelType(@javax.annotation.Nonnull ChannelType channelType) {
     this.channelType = channelType;
@@ -92,7 +93,7 @@ public class Channel {
    * @return channelCode
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_CHANNEL_CODE)
+  @JsonProperty(value = JSON_PROPERTY_CHANNEL_CODE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getChannelCode() {
@@ -100,7 +101,7 @@ public class Channel {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CHANNEL_CODE)
+  @JsonProperty(value = JSON_PROPERTY_CHANNEL_CODE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setChannelCode(@javax.annotation.Nonnull String channelCode) {
     this.channelCode = channelCode;
@@ -117,7 +118,7 @@ public class Channel {
    * @return code
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_CODE)
+  @JsonProperty(value = JSON_PROPERTY_CODE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Integer getCode() {
@@ -125,7 +126,7 @@ public class Channel {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CODE)
+  @JsonProperty(value = JSON_PROPERTY_CODE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setCode(@javax.annotation.Nonnull Integer code) {
     this.code = code;
@@ -142,7 +143,7 @@ public class Channel {
    * @return selfServiceChannel
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_SELF_SERVICE_CHANNEL)
+  @JsonProperty(value = JSON_PROPERTY_SELF_SERVICE_CHANNEL, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Boolean getSelfServiceChannel() {
@@ -150,7 +151,7 @@ public class Channel {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_SELF_SERVICE_CHANNEL)
+  @JsonProperty(value = JSON_PROPERTY_SELF_SERVICE_CHANNEL, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setSelfServiceChannel(@javax.annotation.Nonnull Boolean selfServiceChannel) {
     this.selfServiceChannel = selfServiceChannel;

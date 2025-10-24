@@ -16,6 +16,7 @@ package openapitools.model;
 import java.util.Objects;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.Locale;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -33,7 +34,7 @@ import openapitools.JSON;
 @JsonPropertyOrder({
   BidirectB.JSON_PROPERTY_A
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
 public class BidirectB {
   public static final String JSON_PROPERTY_A = "a";
   @javax.annotation.Nonnull
@@ -52,7 +53,7 @@ public class BidirectB {
    * @return a
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_A)
+  @JsonProperty(value = JSON_PROPERTY_A, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public BidirectA getA() {
@@ -60,7 +61,7 @@ public class BidirectB {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_A)
+  @JsonProperty(value = JSON_PROPERTY_A, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setA(@javax.annotation.Nonnull BidirectA a) {
     this.a = a;

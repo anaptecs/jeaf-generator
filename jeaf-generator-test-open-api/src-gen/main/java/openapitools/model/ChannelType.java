@@ -16,12 +16,14 @@ package openapitools.model;
 import java.util.Objects;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.Locale;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import openapitools.JSON;
 
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import java.util.Locale;
 
 /**
  *  &lt;br&gt;&lt;br&gt; Alternate Name: Kanal &lt;br&gt;&lt;br&gt; Valid Values: - COUNTER: counter     &lt;br&gt;&lt;br&gt;     Alternate Name: BEDIENT (Properties: &#x60;code &#x3D; \&quot;CNT\&quot;&#x60;) - CALL_CENTER - MOBILE - TVM - WEB:      &lt;br&gt;&lt;br&gt;     Breaking Change with 1.47.11: Added new literal (Properties: &#x60;code &#x3D; \&quot;WEB\&quot;&#x60;) - @Deprecated LEGACY_POS:      &lt;br&gt;&lt;br&gt;     Deprecated: I&#39;m &#x60;DEPRECATED&#x60;. (since: , removed with: ) (Properties: &#x60;code &#x3D; \&quot;PRISMA\&quot;&#x60;) 

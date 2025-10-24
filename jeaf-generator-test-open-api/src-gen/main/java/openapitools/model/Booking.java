@@ -16,6 +16,7 @@ package openapitools.model;
 import java.util.Objects;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.Locale;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -32,7 +33,7 @@ import openapitools.JSON;
 @JsonPropertyOrder({
   Booking.JSON_PROPERTY_BOOKING_I_D
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
 public class Booking {
   public static final String JSON_PROPERTY_BOOKING_I_D = "bookingID";
   @javax.annotation.Nonnull
@@ -51,7 +52,7 @@ public class Booking {
    * @return bookingID
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_BOOKING_I_D)
+  @JsonProperty(value = JSON_PROPERTY_BOOKING_I_D, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getBookingID() {
@@ -59,7 +60,7 @@ public class Booking {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_BOOKING_I_D)
+  @JsonProperty(value = JSON_PROPERTY_BOOKING_I_D, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setBookingID(@javax.annotation.Nonnull String bookingID) {
     this.bookingID = bookingID;

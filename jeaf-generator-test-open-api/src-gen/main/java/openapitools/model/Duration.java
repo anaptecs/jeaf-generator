@@ -16,6 +16,7 @@ package openapitools.model;
 import java.util.Objects;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.Locale;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -34,7 +35,7 @@ import openapitools.JSON;
   Duration.JSON_PROPERTY_VALUE,
   Duration.JSON_PROPERTY_TIME_UNIT
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
 public class Duration {
   public static final String JSON_PROPERTY_VALUE = "value";
   @javax.annotation.Nonnull
@@ -57,7 +58,7 @@ public class Duration {
    * @return value
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_VALUE)
+  @JsonProperty(value = JSON_PROPERTY_VALUE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Integer getValue() {
@@ -65,7 +66,7 @@ public class Duration {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_VALUE)
+  @JsonProperty(value = JSON_PROPERTY_VALUE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setValue(@javax.annotation.Nonnull Integer value) {
     this.value = value;
@@ -82,7 +83,7 @@ public class Duration {
    * @return timeUnit
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_TIME_UNIT)
+  @JsonProperty(value = JSON_PROPERTY_TIME_UNIT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public TimeUnit getTimeUnit() {
@@ -90,7 +91,7 @@ public class Duration {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_TIME_UNIT)
+  @JsonProperty(value = JSON_PROPERTY_TIME_UNIT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setTimeUnit(@javax.annotation.Nonnull TimeUnit timeUnit) {
     this.timeUnit = timeUnit;

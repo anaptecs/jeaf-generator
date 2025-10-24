@@ -16,6 +16,7 @@ package openapitools.model;
 import java.util.Objects;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.Locale;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -33,7 +34,7 @@ import openapitools.JSON;
   EnumTest.JSON_PROPERTY_PROPERTY,
   EnumTest.JSON_PROPERTY_ENUM_REF
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
 public class EnumTest {
   public static final String JSON_PROPERTY_PROPERTY = "property";
   @javax.annotation.Nonnull
@@ -56,7 +57,7 @@ public class EnumTest {
    * @return property
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_PROPERTY)
+  @JsonProperty(value = JSON_PROPERTY_PROPERTY, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getProperty() {
@@ -64,7 +65,7 @@ public class EnumTest {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_PROPERTY)
+  @JsonProperty(value = JSON_PROPERTY_PROPERTY, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setProperty(@javax.annotation.Nonnull String property) {
     this.property = property;
@@ -81,7 +82,7 @@ public class EnumTest {
    * @return enumRef
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ENUM_REF)
+  @JsonProperty(value = JSON_PROPERTY_ENUM_REF, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getEnumRef() {
@@ -89,7 +90,7 @@ public class EnumTest {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ENUM_REF)
+  @JsonProperty(value = JSON_PROPERTY_ENUM_REF, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setEnumRef(@javax.annotation.Nonnull String enumRef) {
     this.enumRef = enumRef;
