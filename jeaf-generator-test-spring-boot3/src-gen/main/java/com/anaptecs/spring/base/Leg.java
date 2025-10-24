@@ -7,7 +7,6 @@ package com.anaptecs.spring.base;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -42,12 +41,7 @@ public class Leg {
     // Read attribute values from builder.
     start = pBuilder.start;
     stop = pBuilder.stop;
-    if (pBuilder.stopovers != null) {
-      stopovers = pBuilder.stopovers;
-    }
-    else {
-      stopovers = new ArrayList<>();
-    }
+    stopovers = (pBuilder.stopovers == null) ? List.of() : List.copyOf(pBuilder.stopovers);
   }
 
   /**
@@ -188,8 +182,7 @@ public class Leg {
    * returned collection is unmodifiable.
    */
   public List<PlaceRef> getStopovers( ) {
-    // Return all PlaceRef objects as unmodifiable collection.
-    return Collections.unmodifiableList(stopovers);
+    return stopovers;
   }
 
   @Override

@@ -50,12 +50,7 @@ public class Response<T> implements ServiceObject {
     // Ensure that builder is not null.
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
-    if (pBuilder.messages != null) {
-      messages = pBuilder.messages;
-    }
-    else {
-      messages = new ArrayList<>();
-    }
+    messages = (pBuilder.messages == null) ? new ArrayList<>() : pBuilder.messages;
     data = pBuilder.data;
   }
 

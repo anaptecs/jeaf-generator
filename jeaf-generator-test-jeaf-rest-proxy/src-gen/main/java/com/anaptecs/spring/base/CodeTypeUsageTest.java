@@ -72,18 +72,10 @@ public class CodeTypeUsageTest implements Serializable {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     booleanCode = pBuilder.booleanCode;
-    if (pBuilder.booleanCodeAssociation != null) {
-      booleanCodeAssociation = pBuilder.booleanCodeAssociation;
-    }
-    else {
-      booleanCodeAssociation = new HashSet<>();
-    }
-    if (pBuilder.shortCodeTypeAssociation != null) {
-      shortCodeTypeAssociation = pBuilder.shortCodeTypeAssociation;
-    }
-    else {
-      shortCodeTypeAssociation = new HashSet<>();
-    }
+    booleanCodeAssociation =
+        (pBuilder.booleanCodeAssociation == null) ? new HashSet<>() : pBuilder.booleanCodeAssociation;
+    shortCodeTypeAssociation =
+        (pBuilder.shortCodeTypeAssociation == null) ? new HashSet<>() : pBuilder.shortCodeTypeAssociation;
     stringCode = pBuilder.stringCode;
     characterCode = pBuilder.characterCode;
   }

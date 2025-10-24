@@ -7,7 +7,6 @@ package com.anaptecs.spring.base;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -47,12 +46,7 @@ public abstract class MasterDataObjectBase {
    */
   protected MasterDataObjectBase( BuilderBase pBuilder ) {
     // Read attribute values from builder.
-    if (pBuilder.dataUnits != null) {
-      dataUnits = pBuilder.dataUnits;
-    }
-    else {
-      dataUnits = new ArrayList<>();
-    }
+    dataUnits = (pBuilder.dataUnits == null) ? List.of() : List.copyOf(pBuilder.dataUnits);
     entity = pBuilder.entity;
     objectID = pBuilder.objectID;
     internalProperty = pBuilder.internalProperty;
@@ -187,8 +181,7 @@ public abstract class MasterDataObjectBase {
    * returned collection is unmodifiable.
    */
   List<DataUnit> getDataUnits( ) {
-    // Return all DataUnit objects as unmodifiable collection.
-    return Collections.unmodifiableList(dataUnits);
+    return dataUnits;
   }
 
   /**

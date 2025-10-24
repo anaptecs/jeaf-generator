@@ -11,7 +11,6 @@ import java.time.OffsetDateTime;
 import java.time.OffsetTime;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
@@ -116,35 +115,15 @@ public class DataTypesQueryBean {
     // Read attribute values from builder.
     longCodes = pBuilder.longCodes;
     codes = pBuilder.codes;
-    if (pBuilder.doubleCodes != null) {
-      doubleCodes = pBuilder.doubleCodes;
-    }
-    else {
-      doubleCodes = new HashSet<>();
-    }
-    if (pBuilder.bookingIDs != null) {
-      bookingIDs = pBuilder.bookingIDs;
-    }
-    else {
-      bookingIDs = new HashSet<>();
-    }
+    doubleCodes = (pBuilder.doubleCodes == null) ? Set.of() : Set.copyOf(pBuilder.doubleCodes);
+    bookingIDs = (pBuilder.bookingIDs == null) ? Set.of() : Set.copyOf(pBuilder.bookingIDs);
     bookingIDsArray = pBuilder.bookingIDsArray;
     offsetDateTime = pBuilder.offsetDateTime;
     offsetTime = pBuilder.offsetTime;
     localDateTime = pBuilder.localDateTime;
     localTime = pBuilder.localTime;
-    if (pBuilder.timestamps != null) {
-      timestamps = pBuilder.timestamps;
-    }
-    else {
-      timestamps = new ArrayList<>();
-    }
-    if (pBuilder.times != null) {
-      times = pBuilder.times;
-    }
-    else {
-      times = new HashSet<>();
-    }
+    timestamps = (pBuilder.timestamps == null) ? List.of() : List.copyOf(pBuilder.timestamps);
+    times = (pBuilder.times == null) ? Set.of() : Set.copyOf(pBuilder.times);
     startTimestamps = pBuilder.startTimestamps;
   }
 
@@ -515,8 +494,7 @@ public class DataTypesQueryBean {
    * returned collection is unmodifiable.
    */
   public Set<DoubleCode> getDoubleCodes( ) {
-    // Return all DoubleCode objects as unmodifiable collection.
-    return Collections.unmodifiableSet(doubleCodes);
+    return doubleCodes;
   }
 
   /**
@@ -526,8 +504,7 @@ public class DataTypesQueryBean {
    * returned collection is unmodifiable.
    */
   public Set<BookingID> getBookingIDs( ) {
-    // Return all BookingID objects as unmodifiable collection.
-    return Collections.unmodifiableSet(bookingIDs);
+    return bookingIDs;
   }
 
   /**
@@ -590,8 +567,7 @@ public class DataTypesQueryBean {
    * the returned collection is unmodifiable.
    */
   public List<LocalDateTime> getTimestamps( ) {
-    // Return all LocalDateTime objects as unmodifiable collection.
-    return Collections.unmodifiableList(timestamps);
+    return timestamps;
   }
 
   /**
@@ -601,8 +577,7 @@ public class DataTypesQueryBean {
    * returned collection is unmodifiable.
    */
   public Set<OffsetTime> getTimes( ) {
-    // Return all OffsetTime objects as unmodifiable collection.
-    return Collections.unmodifiableSet(times);
+    return times;
   }
 
   /**

@@ -134,12 +134,7 @@ public abstract class PartiallyDeprecatedServiceObjectBase extends Object implem
     deprecatedRef = pBuilder.deprecatedRef;
     // "com.anaptecs.jeaf.junit.core.DeprecatedServiceObject"
     deprecatedRefXYZ = pBuilder.deprecatedRefXYZ;
-    if (pBuilder.deprecatedRefs != null) {
-      deprecatedRefs = pBuilder.deprecatedRefs;
-    }
-    else {
-      deprecatedRefs = new HashSet<>();
-    }
+    deprecatedRefs = (pBuilder.deprecatedRefs == null) ? new HashSet<>() : pBuilder.deprecatedRefs;
     // "com.anaptecs.jeaf.junit.core.ValidationTestObject"
     deprecatedRefsXYZ = pBuilder.deprecatedRefsXYZ;
     readonlyDefault = pBuilder.readonlyDefault;

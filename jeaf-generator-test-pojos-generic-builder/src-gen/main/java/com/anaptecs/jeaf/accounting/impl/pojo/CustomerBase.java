@@ -6,7 +6,6 @@
 package com.anaptecs.jeaf.accounting.impl.pojo;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -68,12 +67,7 @@ public abstract class CustomerBase extends Partner {
     name = pBuilder.name;
     firstName = pBuilder.firstName;
     email = pBuilder.email;
-    if (pBuilder.accounts != null) {
-      accounts = pBuilder.accounts;
-    }
-    else {
-      accounts = new HashSet<>();
-    }
+    accounts = (pBuilder.accounts == null) ? Set.of() : Set.copyOf(pBuilder.accounts);
   }
 
   /**
@@ -258,8 +252,7 @@ public abstract class CustomerBase extends Partner {
    * returned collection is unmodifiable.
    */
   public Set<Account> getAccounts( ) {
-    // Return all Account objects as unmodifiable collection.
-    return Collections.unmodifiableSet(accounts);
+    return accounts;
   }
 
   /**

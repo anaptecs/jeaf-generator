@@ -7,7 +7,6 @@ package com.anaptecs.spring.base;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -26,12 +25,7 @@ public class PartnerContainer {
    */
   protected PartnerContainer( Builder pBuilder ) {
     // Read attribute values from builder.
-    if (pBuilder.partners != null) {
-      partners = pBuilder.partners;
-    }
-    else {
-      partners = new ArrayList<>();
-    }
+    partners = (pBuilder.partners == null) ? List.of() : List.copyOf(pBuilder.partners);
   }
 
   /**
@@ -121,8 +115,7 @@ public class PartnerContainer {
    * returned collection is unmodifiable.
    */
   public List<Partner> getPartners( ) {
-    // Return all Partner objects as unmodifiable collection.
-    return Collections.unmodifiableList(partners);
+    return partners;
   }
 
   @Override

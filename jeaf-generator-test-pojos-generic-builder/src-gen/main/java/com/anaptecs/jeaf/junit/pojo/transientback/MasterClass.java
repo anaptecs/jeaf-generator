@@ -7,7 +7,6 @@ package com.anaptecs.jeaf.junit.pojo.transientback;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -64,15 +63,10 @@ public class MasterClass {
     // Ensure that builder is not null.
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
-    if (pBuilder.clients != null) {
-      clients = pBuilder.clients;
-      // As association is bidirectional we also have to set it in the other direction.
-      for (ClientClass lNext : clients) {
-        lNext.setTransientMaster((MasterClass) this);
-      }
-    }
-    else {
-      clients = new ArrayList<>();
+    clients = (pBuilder.clients == null) ? List.of() : List.copyOf(pBuilder.clients);
+    // As association is bidirectional we also have to set it in the other direction.
+    for (ClientClass lNext : clients) {
+      lNext.setTransientMaster((MasterClass) this);
     }
     // Bidirectional back reference is set up correctly as a builder is used.
     clientsBackReferenceInitialized = true;
@@ -234,8 +228,7 @@ public class MasterClass {
         lNext.setTransientMaster((MasterClass) this);
       }
     }
-    // Return all ClientClass objects as unmodifiable collection.
-    return Collections.unmodifiableList(clients);
+    return clients;
   }
 
   /**

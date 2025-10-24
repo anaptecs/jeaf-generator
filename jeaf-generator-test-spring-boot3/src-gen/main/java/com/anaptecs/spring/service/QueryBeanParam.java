@@ -7,7 +7,6 @@ package com.anaptecs.spring.service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -48,12 +47,7 @@ public class QueryBeanParam {
     // Read attribute values from builder.
     bookingCode = pBuilder.bookingCode;
     maxResults = pBuilder.maxResults;
-    if (pBuilder.sortCriteria != null) {
-      sortCriteria = pBuilder.sortCriteria;
-    }
-    else {
-      sortCriteria = new ArrayList<>();
-    }
+    sortCriteria = (pBuilder.sortCriteria == null) ? List.of() : List.copyOf(pBuilder.sortCriteria);
   }
 
   /**
@@ -201,8 +195,7 @@ public class QueryBeanParam {
    * the returned collection is unmodifiable.
    */
   public List<MySortCriteria> getSortCriteria( ) {
-    // Return all MySortCriteria objects as unmodifiable collection.
-    return Collections.unmodifiableList(sortCriteria);
+    return sortCriteria;
   }
 
   @Override

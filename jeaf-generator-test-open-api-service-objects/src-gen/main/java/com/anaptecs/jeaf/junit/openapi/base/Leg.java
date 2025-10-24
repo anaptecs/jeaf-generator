@@ -57,12 +57,7 @@ public class Leg implements ServiceObject {
     // Read attribute values from builder.
     start = pBuilder.start;
     stop = pBuilder.stop;
-    if (pBuilder.stopovers != null) {
-      stopovers = pBuilder.stopovers;
-    }
-    else {
-      stopovers = new ArrayList<>();
-    }
+    stopovers = (pBuilder.stopovers == null) ? new ArrayList<>() : pBuilder.stopovers;
   }
 
   /**

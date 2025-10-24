@@ -5,7 +5,6 @@
  */
 package com.anaptecs.jeaf.junit.pojo.softlink;
 
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -68,12 +67,7 @@ public class SoftLinkChildB extends SoftLinkParent {
     super(pBuilder);
     // Read attribute values from builder.
     heyBrotherID = pBuilder.heyBrotherID;
-    if (pBuilder.softLinkPartnerIDs != null) {
-      softLinkPartnerIDs = pBuilder.softLinkPartnerIDs;
-    }
-    else {
-      softLinkPartnerIDs = new HashSet<>();
-    }
+    softLinkPartnerIDs = (pBuilder.softLinkPartnerIDs == null) ? Set.of() : Set.copyOf(pBuilder.softLinkPartnerIDs);
     oneLinkID = pBuilder.oneLinkID;
   }
 
@@ -257,8 +251,7 @@ public class SoftLinkChildB extends SoftLinkParent {
    * returned collection is unmodifiable.
    */
   public Set<String> getSoftLinkPartnerIDs( ) {
-    // Return all SoftLinkPartner objects as unmodifiable collection.
-    return Collections.unmodifiableSet(softLinkPartnerIDs);
+    return softLinkPartnerIDs;
   }
 
   /**

@@ -56,12 +56,7 @@ public class DataTypeUsage implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     code = pBuilder.code;
-    if (pBuilder.codes != null) {
-      codes = pBuilder.codes;
-    }
-    else {
-      codes = new ArrayList<>();
-    }
+    codes = (pBuilder.codes == null) ? new ArrayList<>() : pBuilder.codes;
   }
 
   /**

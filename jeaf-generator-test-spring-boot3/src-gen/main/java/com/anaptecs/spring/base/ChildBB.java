@@ -6,7 +6,6 @@
 package com.anaptecs.spring.base;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -69,12 +68,7 @@ public class ChildBB extends ChildB {
     // Read attribute values from builder.
     childBBAttribute = pBuilder.childBBAttribute;
     deprecatedAttribute = pBuilder.deprecatedAttribute;
-    if (pBuilder.deprecatedBs != null) {
-      deprecatedBs = pBuilder.deprecatedBs;
-    }
-    else {
-      deprecatedBs = new HashSet<>();
-    }
+    deprecatedBs = (pBuilder.deprecatedBs == null) ? Set.of() : Set.copyOf(pBuilder.deprecatedBs);
     deprecatedParent = pBuilder.deprecatedParent;
     deprecatedArray = pBuilder.deprecatedArray;
   }
@@ -322,8 +316,7 @@ public class ChildBB extends ChildB {
    */
   @Deprecated
   public Set<ChildB> getDeprecatedBs( ) {
-    // Return all ChildB objects as unmodifiable collection.
-    return Collections.unmodifiableSet(deprecatedBs);
+    return deprecatedBs;
   }
 
   /**

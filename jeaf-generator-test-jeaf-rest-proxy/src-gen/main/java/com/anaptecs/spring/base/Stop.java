@@ -60,12 +60,7 @@ public class Stop implements Serializable {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     name = pBuilder.name;
-    if (pBuilder.links != null) {
-      links = pBuilder.links;
-    }
-    else {
-      links = new ArrayList<>();
-    }
+    links = (pBuilder.links == null) ? new ArrayList<>() : pBuilder.links;
   }
 
   /**

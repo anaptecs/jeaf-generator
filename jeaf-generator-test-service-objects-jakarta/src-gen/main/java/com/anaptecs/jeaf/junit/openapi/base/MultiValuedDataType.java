@@ -95,24 +95,9 @@ public class MultiValuedDataType implements ServiceObject {
     // Ensure that builder is not null.
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
-    if (pBuilder.stringCodeHeader != null) {
-      stringCodeHeader = pBuilder.stringCodeHeader;
-    }
-    else {
-      stringCodeHeader = new ArrayList<>();
-    }
-    if (pBuilder.longCodeQueryParam != null) {
-      longCodeQueryParam = pBuilder.longCodeQueryParam;
-    }
-    else {
-      longCodeQueryParam = new ArrayList<>();
-    }
-    if (pBuilder.literals != null) {
-      literals = pBuilder.literals;
-    }
-    else {
-      literals = new ArrayList<>();
-    }
+    stringCodeHeader = (pBuilder.stringCodeHeader == null) ? new ArrayList<>() : pBuilder.stringCodeHeader;
+    longCodeQueryParam = (pBuilder.longCodeQueryParam == null) ? new ArrayList<>() : pBuilder.longCodeQueryParam;
+    literals = (pBuilder.literals == null) ? new ArrayList<>() : pBuilder.literals;
     stringProperty = pBuilder.stringProperty;
     longValues = pBuilder.longValues;
   }

@@ -147,29 +147,14 @@ public class MultiValuedHeaderBeanParam {
     ints = pBuilder.ints;
     doubles = pBuilder.doubles;
     codes = pBuilder.codes;
-    if (pBuilder.stringCodeList != null) {
-      stringCodeList = pBuilder.stringCodeList;
-    }
-    else {
-      stringCodeList = new HashSet<>();
-    }
+    stringCodeList = (pBuilder.stringCodeList == null) ? new HashSet<>() : pBuilder.stringCodeList;
     startDate = pBuilder.startDate;
     dates = pBuilder.dates;
-    if (pBuilder.timestamps != null) {
-      timestamps = pBuilder.timestamps;
-    }
-    else {
-      timestamps = new HashSet<>();
-    }
+    timestamps = (pBuilder.timestamps == null) ? new HashSet<>() : pBuilder.timestamps;
     calendars = pBuilder.calendars;
     utilDates = pBuilder.utilDates;
     sqlTimestamps = pBuilder.sqlTimestamps;
-    if (pBuilder.timeUnits != null) {
-      timeUnits = pBuilder.timeUnits;
-    }
-    else {
-      timeUnits = new HashSet<>();
-    }
+    timeUnits = (pBuilder.timeUnits == null) ? new HashSet<>() : pBuilder.timeUnits;
     timeUnitArray = pBuilder.timeUnitArray;
     base64 = pBuilder.base64;
   }

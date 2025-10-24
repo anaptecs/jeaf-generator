@@ -59,12 +59,7 @@ public class Booking implements Serializable {
     // Read attribute values from builder.
     bookingID = pBuilder.bookingID;
     customerName = pBuilder.customerName;
-    if (pBuilder.inventories != null) {
-      inventories = pBuilder.inventories;
-    }
-    else {
-      inventories = new ArrayList<>();
-    }
+    inventories = (pBuilder.inventories == null) ? new ArrayList<>() : pBuilder.inventories;
   }
 
   /**

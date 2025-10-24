@@ -120,15 +120,10 @@ public class Sortiment extends Object implements ServiceObject {
     // Ensure that builder is not null.
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
-    if (pBuilder.products != null) {
-      products = pBuilder.products;
-      // As association is bidirectional we also have to set it in the other direction.
-      for (Product lNext : products) {
-        lNext.addToSortiments((Sortiment) this);
-      }
-    }
-    else {
-      products = new HashSet<>();
+    products = (pBuilder.products == null) ? new HashSet<>() : pBuilder.products;
+    // As association is bidirectional we also have to set it in the other direction.
+    for (Product lNext : products) {
+      lNext.addToSortiments((Sortiment) this);
     }
     // Bidirectional back reference is set up correctly as a builder is used.
     productsBackReferenceInitialized = true;
@@ -140,12 +135,7 @@ public class Sortiment extends Object implements ServiceObject {
     inlineSortimentType = pBuilder.inlineSortimentType;
     // "com.anaptecs.jeaf.junit.openapi.base.InlineSortimentType"
     inlineSortimentTypeXYZ = pBuilder.inlineSortimentTypeXYZ;
-    if (pBuilder.types != null) {
-      types = pBuilder.types;
-    }
-    else {
-      types = new ArrayList<>();
-    }
+    types = (pBuilder.types == null) ? new ArrayList<>() : pBuilder.types;
     // "com.anaptecs.jeaf.junit.openapi.base.InlineSortimentType"
     typesXYZ = pBuilder.typesXYZ;
   }

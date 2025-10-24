@@ -124,27 +124,17 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
     // Read attribute values from builder.
     iban = pBuilder.iban;
     balance = pBuilder.balance;
-    if (pBuilder.authorizedPersons != null) {
-      authorizedPersons = pBuilder.authorizedPersons;
-      // As association is bidirectional we also have to set it in the other direction.
-      for (Person lNext : authorizedPersons) {
-        lNext.addToAccounts((Account) this);
-      }
-    }
-    else {
-      authorizedPersons = new HashSet<>();
+    authorizedPersons = (pBuilder.authorizedPersons == null) ? new HashSet<>() : pBuilder.authorizedPersons;
+    // As association is bidirectional we also have to set it in the other direction.
+    for (Person lNext : authorizedPersons) {
+      lNext.addToAccounts((Account) this);
     }
     // Bidirectional back reference is set up correctly as a builder is used.
     authorizedPersonsBackReferenceInitialized = true;
-    if (pBuilder.bookings != null) {
-      bookings = pBuilder.bookings;
-      // As association is bidirectional we also have to set it in the other direction.
-      for (Booking lNext : bookings) {
-        lNext.setAccount((Account) this);
-      }
-    }
-    else {
-      bookings = new HashSet<>();
+    bookings = (pBuilder.bookings == null) ? new HashSet<>() : pBuilder.bookings;
+    // As association is bidirectional we also have to set it in the other direction.
+    for (Booking lNext : bookings) {
+      lNext.setAccount((Account) this);
     }
     // Bidirectional back reference is set up correctly as a builder is used.
     bookingsBackReferenceInitialized = true;

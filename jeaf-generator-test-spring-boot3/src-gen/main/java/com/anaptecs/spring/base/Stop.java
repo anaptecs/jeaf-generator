@@ -7,7 +7,6 @@ package com.anaptecs.spring.base;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -34,12 +33,7 @@ public class Stop {
   protected Stop( Builder pBuilder ) {
     // Read attribute values from builder.
     name = pBuilder.name;
-    if (pBuilder.links != null) {
-      links = pBuilder.links;
-    }
-    else {
-      links = new ArrayList<>();
-    }
+    links = (pBuilder.links == null) ? List.of() : List.copyOf(pBuilder.links);
   }
 
   /**
@@ -155,8 +149,7 @@ public class Stop {
    * returned collection is unmodifiable.
    */
   public List<LinkObject> getLinks( ) {
-    // Return all LinkObject objects as unmodifiable collection.
-    return Collections.unmodifiableList(links);
+    return links;
   }
 
   @Override

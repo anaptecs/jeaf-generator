@@ -79,12 +79,7 @@ public class MultivaluedQueryParamsBean implements Serializable {
     intArray = pBuilder.intArray;
     strings = pBuilder.strings;
     integers = pBuilder.integers;
-    if (pBuilder.timeUnits != null) {
-      timeUnits = pBuilder.timeUnits;
-    }
-    else {
-      timeUnits = new HashSet<>();
-    }
+    timeUnits = (pBuilder.timeUnits == null) ? new HashSet<>() : pBuilder.timeUnits;
     timeUnitArray = pBuilder.timeUnitArray;
   }
 

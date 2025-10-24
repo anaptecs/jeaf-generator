@@ -343,7 +343,19 @@ cached String getCollectionTypeShort(uml::MultiplicityElement multiplicityElemen
     
 cached boolean isCollectionType(uml::Property propery) :
 	(propery.isMultivalued() && propery.association != null) || (propery.isMultivalued() && useArraysOnlyForPrimitives() && propery.type.isPrimitiveType() == false);
+	
+cached boolean isList(uml::Property property):
+	property.isMultivalued() && property.isOrdered && property.isUnique == false;
     
+cached boolean isSet(uml::Property property):
+	property.isMultivalued() && property.isOrdered == false && property.isUnique;
+	
+cached boolean isCollection(uml::Property property):
+	property.isMultivalued() && property.isOrdered == false && property.isUnique == false;
+	
+cached boolean isSortedSet(uml::Property property):
+	property.isMultivalued() && property.isOrdered && property.isUnique;
+
 cached String getEmptyCollectionOperation(uml::MultiplicityElement multiplicityElement) :
     JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.getEmptyCollectionOperation(org.eclipse.uml2.uml.MultiplicityElement);
 

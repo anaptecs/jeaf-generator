@@ -7,7 +7,6 @@ package com.anaptecs.spring.base.backward;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -45,12 +44,7 @@ public class SimpleAssociationBackwardCompatibility {
    */
   protected SimpleAssociationBackwardCompatibility( Builder pBuilder ) {
     // Read attribute values from builder.
-    if (pBuilder.newLinks != null) {
-      newLinks = pBuilder.newLinks;
-    }
-    else {
-      newLinks = new ArrayList<>();
-    }
+    newLinks = (pBuilder.newLinks == null) ? List.of() : List.copyOf(pBuilder.newLinks);
     newSingleLink = pBuilder.newSingleLink;
   }
 
@@ -212,8 +206,7 @@ public class SimpleAssociationBackwardCompatibility {
    * null and the returned collection is unmodifiable.
    */
   public List<SimpleBackwardCompatibility> getNewLinks( ) {
-    // Return all SimpleBackwardCompatibility objects as unmodifiable collection.
-    return Collections.unmodifiableList(newLinks);
+    return newLinks;
   }
 
   /**

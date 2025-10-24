@@ -243,15 +243,10 @@ public abstract class ProductBase extends Object implements ServiceObject, Ident
       objectID = null;
     }
     // Read attribute values from builder.
-    if (pBuilder.resellers != null) {
-      resellers = pBuilder.resellers;
-      // As association is bidirectional we also have to set it in the other direction.
-      for (Reseller lNext : resellers) {
-        lNext.addToProducts((Product) this);
-      }
-    }
-    else {
-      resellers = new HashSet<>();
+    resellers = (pBuilder.resellers == null) ? new HashSet<>() : pBuilder.resellers;
+    // As association is bidirectional we also have to set it in the other direction.
+    for (Reseller lNext : resellers) {
+      lNext.addToProducts((Product) this);
     }
     // Bidirectional back reference is set up correctly as a builder is used.
     resellersBackReferenceInitialized = true;
@@ -269,20 +264,10 @@ public abstract class ProductBase extends Object implements ServiceObject, Ident
     productID = pBuilder.productID;
     // "java.util.UUID"
     productIDXYZ = pBuilder.productIDXYZ;
-    if (pBuilder.supportedCurrencies != null) {
-      supportedCurrencies = pBuilder.supportedCurrencies;
-    }
-    else {
-      supportedCurrencies = new HashSet<>();
-    }
+    supportedCurrencies = (pBuilder.supportedCurrencies == null) ? new HashSet<>() : pBuilder.supportedCurrencies;
     // "com.anaptecs.jeaf.junit.openapi.base.CurrencyCode"
     supportedCurrenciesXYZ = pBuilder.supportedCurrenciesXYZ;
-    if (pBuilder.productCodes != null) {
-      productCodes = pBuilder.productCodes;
-    }
-    else {
-      productCodes = new HashSet<>();
-    }
+    productCodes = (pBuilder.productCodes == null) ? new HashSet<>() : pBuilder.productCodes;
     // "com.anaptecs.jeaf.junit.openapi.base.ProductCode"
     productCodesXYZ = pBuilder.productCodesXYZ;
     description = pBuilder.description;

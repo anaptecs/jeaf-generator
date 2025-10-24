@@ -76,19 +76,10 @@ public class ImmutableAssociationPOJO {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     yetAnotherAttribute = pBuilder.yetAnotherAttribute;
-    if (pBuilder.readonlyAssociation != null) {
-      readonlyAssociation = pBuilder.readonlyAssociation;
-    }
-    else {
-      readonlyAssociation = new TreeSet<>();
-    }
+    readonlyAssociation = (pBuilder.readonlyAssociation == null) ? Collections.emptySortedSet()
+        : Collections.unmodifiableSortedSet(pBuilder.readonlyAssociation);
     immutableChildPOJO = pBuilder.immutableChildPOJO;
-    if (pBuilder.deprecatedRefs != null) {
-      deprecatedRefs = pBuilder.deprecatedRefs;
-    }
-    else {
-      deprecatedRefs = new HashSet<>();
-    }
+    deprecatedRefs = (pBuilder.deprecatedRefs == null) ? new HashSet<>() : pBuilder.deprecatedRefs;
     deprecatedRef = pBuilder.deprecatedRef;
   }
 
@@ -309,8 +300,7 @@ public class ImmutableAssociationPOJO {
    * returns null and the returned collection is unmodifiable.
    */
   public SortedSet<ImmutablePOJO> getReadonlyAssociation( ) {
-    // Return all ImmutablePOJO objects as unmodifiable collection.
-    return Collections.unmodifiableSortedSet(readonlyAssociation);
+    return readonlyAssociation;
   }
 
   /**

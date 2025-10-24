@@ -144,28 +144,13 @@ public class POI extends Stop {
     theLink = pBuilder.theLink;
     // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
     theLinkXYZ = pBuilder.theLinkXYZ;
-    if (pBuilder.evenMoreLinks != null) {
-      evenMoreLinks = pBuilder.evenMoreLinks;
-    }
-    else {
-      evenMoreLinks = new HashSet<>();
-    }
+    evenMoreLinks = (pBuilder.evenMoreLinks == null) ? new HashSet<>() : pBuilder.evenMoreLinks;
     // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
     evenMoreLinksXYZ = pBuilder.evenMoreLinksXYZ;
-    if (pBuilder.stops != null) {
-      stops = pBuilder.stops;
-    }
-    else {
-      stops = new HashSet<>();
-    }
+    stops = (pBuilder.stops == null) ? new HashSet<>() : pBuilder.stops;
     // "com.anaptecs.jeaf.junit.openapi.base.UICStop"
     stopsXYZ = pBuilder.stopsXYZ;
-    if (pBuilder.bookingCodes != null) {
-      bookingCodes = pBuilder.bookingCodes;
-    }
-    else {
-      bookingCodes = new HashSet<>();
-    }
+    bookingCodes = (pBuilder.bookingCodes == null) ? new HashSet<>() : pBuilder.bookingCodes;
     // "com.anaptecs.jeaf.junit.openapi.base.BookingCode"
     bookingCodesXYZ = pBuilder.bookingCodesXYZ;
   }

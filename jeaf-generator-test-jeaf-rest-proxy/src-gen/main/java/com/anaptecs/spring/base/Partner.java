@@ -48,12 +48,7 @@ public class Partner implements Serializable {
     // Ensure that builder is not null.
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
-    if (pBuilder.postalAddresses != null) {
-      postalAddresses = pBuilder.postalAddresses;
-    }
-    else {
-      postalAddresses = new ArrayList<>();
-    }
+    postalAddresses = (pBuilder.postalAddresses == null) ? new ArrayList<>() : pBuilder.postalAddresses;
   }
 
   /**

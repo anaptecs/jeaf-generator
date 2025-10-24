@@ -60,12 +60,7 @@ public class PartnerContainer extends Object implements ServiceObject {
     // Ensure that builder is not null.
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
-    if (pBuilder.partners != null) {
-      partners = pBuilder.partners;
-    }
-    else {
-      partners = new ArrayList<>();
-    }
+    partners = (pBuilder.partners == null) ? new ArrayList<>() : pBuilder.partners;
     // "com.anaptecs.jeaf.junit.openapi.base.Partner"
     partnersXYZ = pBuilder.partnersXYZ;
   }

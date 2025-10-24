@@ -77,12 +77,7 @@ public class Partner extends Object implements ServiceObject, Identifiable<Servi
       objectID = null;
     }
     // Read attribute values from builder.
-    if (pBuilder.postalAddresses != null) {
-      postalAddresses = pBuilder.postalAddresses;
-    }
-    else {
-      postalAddresses = new ArrayList<>();
-    }
+    postalAddresses = (pBuilder.postalAddresses == null) ? new ArrayList<>() : pBuilder.postalAddresses;
     // "com.anaptecs.jeaf.junit.openapi.base.PostalAddress"
     postalAddressesXYZ = pBuilder.postalAddressesXYZ;
   }

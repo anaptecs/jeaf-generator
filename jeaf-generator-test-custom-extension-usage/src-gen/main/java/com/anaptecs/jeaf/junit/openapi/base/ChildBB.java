@@ -135,12 +135,7 @@ public class ChildBB extends ChildB {
     deprecatedAttribute = pBuilder.deprecatedAttribute;
     // "int"
     deprecatedAttributeXYZ = pBuilder.deprecatedAttributeXYZ;
-    if (pBuilder.deprecatedBs != null) {
-      deprecatedBs = pBuilder.deprecatedBs;
-    }
-    else {
-      deprecatedBs = new HashSet<>();
-    }
+    deprecatedBs = (pBuilder.deprecatedBs == null) ? new HashSet<>() : pBuilder.deprecatedBs;
     // "com.anaptecs.jeaf.junit.openapi.base.ChildB"
     deprecatedBsXYZ = pBuilder.deprecatedBsXYZ;
     deprecatedParent = pBuilder.deprecatedParent;

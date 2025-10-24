@@ -7,7 +7,6 @@ package com.anaptecs.spring.base;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -42,12 +41,7 @@ public class Booking {
     // Read attribute values from builder.
     bookingID = pBuilder.bookingID;
     customerName = pBuilder.customerName;
-    if (pBuilder.inventories != null) {
-      inventories = pBuilder.inventories;
-    }
-    else {
-      inventories = new ArrayList<>();
-    }
+    inventories = (pBuilder.inventories == null) ? List.of() : List.copyOf(pBuilder.inventories);
   }
 
   /**
@@ -209,8 +203,7 @@ public class Booking {
    * the returned collection is unmodifiable.
    */
   public List<InventoryType> getInventories( ) {
-    // Return all InventoryType objects as unmodifiable collection.
-    return Collections.unmodifiableList(inventories);
+    return inventories;
   }
 
   @Override

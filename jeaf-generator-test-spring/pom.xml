@@ -117,9 +117,35 @@
 		</dependency>
 
 		<dependency>
+			<groupId>com.anaptecs.jeaf.validation</groupId>
+			<artifactId>jeaf-validation-api-spring</artifactId>
+			<version>${jeaf.validation.api.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.anaptecs.jeaf.tools</groupId>
+			<artifactId>jeaf-tools-api</artifactId>
+			<version>${jeaf.tools.api.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.annotation</groupId>
+			<artifactId>javax.annotation-api</artifactId>
+			<version>${javax.annotation-api.version}</version>
+		</dependency>
+
+		<dependency>
 			<groupId>com.anaptecs.jeaf.x-fun</groupId>
 			<artifactId>jeaf-x-fun-default-runtime</artifactId>
 			<version>${jeaf.x-fun.impl.version}</version>
+			<type>pom</type>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.anaptecs.jeaf.json</groupId>
+			<artifactId>jeaf-json-impl-runtime</artifactId>
+			<version>${jeaf.json.impl.version}</version>
 			<type>pom</type>
 			<scope>test</scope>
 		</dependency>

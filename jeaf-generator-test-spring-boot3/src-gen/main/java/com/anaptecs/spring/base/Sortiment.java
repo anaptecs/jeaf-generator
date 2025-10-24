@@ -6,7 +6,6 @@
 package com.anaptecs.spring.base;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -31,15 +30,10 @@ public class Sortiment {
    */
   protected Sortiment( Builder pBuilder ) {
     // Read attribute values from builder.
-    if (pBuilder.products != null) {
-      products = pBuilder.products;
-      // As association is bidirectional we also have to set it in the other direction.
-      for (Product lNext : products) {
-        lNext.addToSortiments((Sortiment) this);
-      }
-    }
-    else {
-      products = new HashSet<>();
+    products = (pBuilder.products == null) ? Set.of() : Set.copyOf(pBuilder.products);
+    // As association is bidirectional we also have to set it in the other direction.
+    for (Product lNext : products) {
+      lNext.addToSortiments((Sortiment) this);
     }
     // Bidirectional back reference is set up correctly as a builder is used.
     productsBackReferenceInitialized = true;
@@ -139,8 +133,7 @@ public class Sortiment {
         lNext.addToSortiments((Sortiment) this);
       }
     }
-    // Return all Product objects as unmodifiable collection.
-    return Collections.unmodifiableSet(products);
+    return products;
   }
 
   @Override

@@ -90,18 +90,8 @@ public class Campaign implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     theLinkLink = pBuilder.theLinkLink;
-    if (pBuilder.moreLinkLinks != null) {
-      moreLinkLinks = pBuilder.moreLinkLinks;
-    }
-    else {
-      moreLinkLinks = new HashSet<>();
-    }
-    if (pBuilder.discountOfferLinks != null) {
-      discountOfferLinks = pBuilder.discountOfferLinks;
-    }
-    else {
-      discountOfferLinks = new ArrayList<>();
-    }
+    moreLinkLinks = (pBuilder.moreLinkLinks == null) ? new HashSet<>() : pBuilder.moreLinkLinks;
+    discountOfferLinks = (pBuilder.discountOfferLinks == null) ? new ArrayList<>() : pBuilder.discountOfferLinks;
   }
 
   /**

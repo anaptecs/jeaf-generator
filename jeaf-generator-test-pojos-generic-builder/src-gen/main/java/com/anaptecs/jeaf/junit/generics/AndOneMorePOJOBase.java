@@ -6,7 +6,6 @@
 package com.anaptecs.jeaf.junit.generics;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -62,19 +61,9 @@ public abstract class AndOneMorePOJOBase {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     genericProperty = pBuilder.genericProperty;
-    if (pBuilder.genericResponses != null) {
-      genericResponses = pBuilder.genericResponses;
-    }
-    else {
-      genericResponses = new HashSet<>();
-    }
+    genericResponses = (pBuilder.genericResponses == null) ? Set.of() : Set.copyOf(pBuilder.genericResponses);
     multiTemplateClassImpl = pBuilder.multiTemplateClassImpl;
-    if (pBuilder.many != null) {
-      many = pBuilder.many;
-    }
-    else {
-      many = new HashSet<>();
-    }
+    many = (pBuilder.many == null) ? Set.of() : Set.copyOf(pBuilder.many);
   }
 
   /**
@@ -242,8 +231,7 @@ public abstract class AndOneMorePOJOBase {
    * method never returns null and the returned collection is unmodifiable.
    */
   public Set<GenericResponsePOJO<MyBusinessObject>> getGenericResponses( ) {
-    // Return all DoSomethingResponse objects as unmodifiable collection.
-    return Collections.unmodifiableSet(genericResponses);
+    return genericResponses;
   }
 
   /**
@@ -263,8 +251,7 @@ public abstract class AndOneMorePOJOBase {
    * never returns null and the returned collection is unmodifiable.
    */
   public Set<MultiTemplateClass<Message, TemplateEnumTest>> getMany( ) {
-    // Return all MultiTemplateClassImpl objects as unmodifiable collection.
-    return Collections.unmodifiableSet(many);
+    return many;
   }
 
   /**

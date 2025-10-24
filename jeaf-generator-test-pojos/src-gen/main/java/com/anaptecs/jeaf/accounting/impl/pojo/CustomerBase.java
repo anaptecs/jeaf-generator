@@ -70,12 +70,7 @@ public abstract class CustomerBase extends Partner {
     name = pBuilder.name;
     firstName = pBuilder.firstName;
     email = pBuilder.email;
-    if (pBuilder.accounts != null) {
-      accounts = pBuilder.accounts;
-    }
-    else {
-      accounts = new HashSet<>();
-    }
+    accounts = (pBuilder.accounts == null) ? new HashSet<>() : pBuilder.accounts;
   }
 
   /**

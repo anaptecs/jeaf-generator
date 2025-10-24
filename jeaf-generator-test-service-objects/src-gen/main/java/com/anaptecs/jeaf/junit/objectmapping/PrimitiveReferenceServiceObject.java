@@ -78,24 +78,9 @@ public class PrimitiveReferenceServiceObject implements ServiceObject {
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
     aBoolean = pBuilder.aBoolean;
-    if (pBuilder.booleanSet != null) {
-      booleanSet = pBuilder.booleanSet;
-    }
-    else {
-      booleanSet = new HashSet<>();
-    }
-    if (pBuilder.buffers != null) {
-      buffers = pBuilder.buffers;
-    }
-    else {
-      buffers = new HashSet<>();
-    }
-    if (pBuilder.strings != null) {
-      strings = pBuilder.strings;
-    }
-    else {
-      strings = new HashSet<>();
-    }
+    booleanSet = (pBuilder.booleanSet == null) ? new HashSet<>() : pBuilder.booleanSet;
+    buffers = (pBuilder.buffers == null) ? new HashSet<>() : pBuilder.buffers;
+    strings = (pBuilder.strings == null) ? new HashSet<>() : pBuilder.strings;
     stringArray = pBuilder.stringArray;
   }
 

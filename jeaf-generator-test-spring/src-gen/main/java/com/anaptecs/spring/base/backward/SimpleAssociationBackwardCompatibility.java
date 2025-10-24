@@ -65,12 +65,7 @@ public class SimpleAssociationBackwardCompatibility {
    */
   protected SimpleAssociationBackwardCompatibility( Builder pBuilder ) {
     // Read attribute values from builder.
-    if (pBuilder.newLinks != null) {
-      newLinks = pBuilder.newLinks;
-    }
-    else {
-      newLinks = new ArrayList<>();
-    }
+    newLinks = (pBuilder.newLinks == null) ? new ArrayList<>() : pBuilder.newLinks;
     newSingleLink = pBuilder.newSingleLink;
   }
 

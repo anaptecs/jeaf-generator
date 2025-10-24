@@ -10,7 +10,6 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Calendar;
-import java.util.Collections;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Objects;
@@ -129,29 +128,14 @@ public class MultiValuedHeaderBeanParam {
     ints = pBuilder.ints;
     doubles = pBuilder.doubles;
     codes = pBuilder.codes;
-    if (pBuilder.stringCodeList != null) {
-      stringCodeList = pBuilder.stringCodeList;
-    }
-    else {
-      stringCodeList = new HashSet<>();
-    }
+    stringCodeList = (pBuilder.stringCodeList == null) ? Set.of() : Set.copyOf(pBuilder.stringCodeList);
     startDate = pBuilder.startDate;
     dates = pBuilder.dates;
-    if (pBuilder.timestamps != null) {
-      timestamps = pBuilder.timestamps;
-    }
-    else {
-      timestamps = new HashSet<>();
-    }
+    timestamps = (pBuilder.timestamps == null) ? Set.of() : Set.copyOf(pBuilder.timestamps);
     calendars = pBuilder.calendars;
     utilDates = pBuilder.utilDates;
     sqlTimestamps = pBuilder.sqlTimestamps;
-    if (pBuilder.timeUnits != null) {
-      timeUnits = pBuilder.timeUnits;
-    }
-    else {
-      timeUnits = new HashSet<>();
-    }
+    timeUnits = (pBuilder.timeUnits == null) ? Set.of() : Set.copyOf(pBuilder.timeUnits);
     timeUnitArray = pBuilder.timeUnitArray;
     base64 = pBuilder.base64;
   }
@@ -618,8 +602,7 @@ public class MultiValuedHeaderBeanParam {
    * the returned collection is unmodifiable.
    */
   public Set<StringCode> getStringCodeList( ) {
-    // Return all StringCode objects as unmodifiable collection.
-    return Collections.unmodifiableSet(stringCodeList);
+    return stringCodeList;
   }
 
   /**
@@ -655,8 +638,7 @@ public class MultiValuedHeaderBeanParam {
    * returned collection is unmodifiable.
    */
   public Set<LocalDateTime> getTimestamps( ) {
-    // Return all LocalDateTime objects as unmodifiable collection.
-    return Collections.unmodifiableSet(timestamps);
+    return timestamps;
   }
 
   /**
@@ -717,8 +699,7 @@ public class MultiValuedHeaderBeanParam {
    * returned collection is unmodifiable.
    */
   public Set<TimeUnit> getTimeUnits( ) {
-    // Return all TimeUnit objects as unmodifiable collection.
-    return Collections.unmodifiableSet(timeUnits);
+    return timeUnits;
   }
 
   /**

@@ -97,12 +97,7 @@ public class Booking implements ServiceObject {
       // As association is bidirectional we also have to set it in the other direction.
       token.setBooking((Booking) this);
     }
-    if (pBuilder.remitters != null) {
-      remitters = pBuilder.remitters;
-    }
-    else {
-      remitters = new HashSet<>();
-    }
+    remitters = (pBuilder.remitters == null) ? new HashSet<>() : pBuilder.remitters;
   }
 
   /**

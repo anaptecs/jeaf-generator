@@ -119,20 +119,10 @@ public class Campaign extends Object implements ServiceObject {
     theLink = pBuilder.theLink;
     // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
     theLinkXYZ = pBuilder.theLinkXYZ;
-    if (pBuilder.moreLinks != null) {
-      moreLinks = pBuilder.moreLinks;
-    }
-    else {
-      moreLinks = new HashSet<>();
-    }
+    moreLinks = (pBuilder.moreLinks == null) ? new HashSet<>() : pBuilder.moreLinks;
     // "com.anaptecs.jeaf.junit.openapi.base.LinkObject"
     moreLinksXYZ = pBuilder.moreLinksXYZ;
-    if (pBuilder.discountOffers != null) {
-      discountOffers = pBuilder.discountOffers;
-    }
-    else {
-      discountOffers = new ArrayList<>();
-    }
+    discountOffers = (pBuilder.discountOffers == null) ? new ArrayList<>() : pBuilder.discountOffers;
     // "com.anaptecs.jeaf.junit.openapi.base.DiscountOffer"
     discountOffersXYZ = pBuilder.discountOffersXYZ;
   }

@@ -40,12 +40,7 @@ public class PartnerContainer {
    */
   protected PartnerContainer( Builder pBuilder ) {
     // Read attribute values from builder.
-    if (pBuilder.partners != null) {
-      partners = pBuilder.partners;
-    }
-    else {
-      partners = new ArrayList<>();
-    }
+    partners = (pBuilder.partners == null) ? new ArrayList<>() : pBuilder.partners;
   }
 
   /**

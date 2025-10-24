@@ -17,6 +17,13 @@ import java.util.StringJoiner;
 
 import javax.xml.parsers.ParserConfigurationException;
 
+import com.anaptecs.jeaf.generator.ErrorCodes;
+import com.anaptecs.jeaf.tools.api.Tools;
+import com.anaptecs.jeaf.tools.api.xml.XMLTools;
+import com.anaptecs.jeaf.xfun.api.checks.Assert;
+import com.anaptecs.jeaf.xfun.api.checks.VerificationResult;
+import com.anaptecs.jeaf.xfun.api.errorhandling.JEAFSystemException;
+import com.anaptecs.jeaf.xfun.api.messages.MessageDataDTD;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
@@ -26,20 +33,12 @@ import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-import com.anaptecs.jeaf.generator.ErrorCodes;
-import com.anaptecs.jeaf.tools.api.Tools;
-import com.anaptecs.jeaf.tools.api.xml.XMLTools;
-import com.anaptecs.jeaf.xfun.api.checks.Assert;
-import com.anaptecs.jeaf.xfun.api.checks.VerificationResult;
-import com.anaptecs.jeaf.xfun.api.errorhandling.JEAFSystemException;
-import com.anaptecs.jeaf.xfun.api.messages.MessageDataDTD;
-
 /**
  * Class implements a converter that transform message data that is defined inside Excel into an XML file that contains
  * the data as message resources.
- * 
+ *
  * @author JEAF Development Team
- * @version JEAf Release 1.5.x
+ * @version JEAF Release 1.5.x
  */
 public class ExcelToMessageResourceConverter {
   private static final String CLASS_INFO_SHEET = "Class-Info";
@@ -76,13 +75,13 @@ public class ExcelToMessageResourceConverter {
 
   /**
    * Method converts the Excel file with the passed name into a JEAf X-Fun Message Resource.
-   * 
+   *
    * @param pExcelSource Excel file that should be transformed into a message resource.
    * @return {@link ConversionResult} Result of the transformation. This contains the DOM representation of the
    * generated message resource as well as information about errors and / or warnings that occurred during the
    * transformation. The method never returns null.
    */
-  public ConversionResult generateMessageResource( String pExcelSource ) {
+  public ConversionResult generateMessageResource(String pExcelSource) {
     VerificationResult lVerificationResult = new VerificationResult();
     Document lDocument = null;
     Workbook lWorkbook = null;
@@ -171,7 +170,7 @@ public class ExcelToMessageResourceConverter {
 
   /**
    * Method creates a ClassInfo element from the passed excel sheet.
-   * 
+   *
    * @param pDocument XML document that contains the created element. The parameter must not be null.
    * @param pSheet Object representing the sheet of the Excel file that contains the class information. The parameter
    * must not be null.
@@ -181,8 +180,8 @@ public class ExcelToMessageResourceConverter {
    * not be null.
    * @return {@link Element} XML element that was created. In case of errors the method will return null.
    */
-  private Element createClassInfo( Document pDocument, Sheet pSheet, String pSheetName,
-      VerificationResult pVerificationResult ) {
+  private Element createClassInfo(Document pDocument, Sheet pSheet, String pSheetName,
+      VerificationResult pVerificationResult) {
     Element lElement = pDocument.createElement(MessageDataDTD.CLASS_INFO);
 
     // Expecting that in column A Name of the field is defined and in column B its value
@@ -245,8 +244,8 @@ public class ExcelToMessageResourceConverter {
     }
   }
 
-  private Element createMessageFolder( Document pDocument, Sheet pSheet, String pSheetName,
-      VerificationResult pVerificationResult, Set<Integer> pUsedMessageIDs, Set<String> pUsedNames ) {
+  private Element createMessageFolder(Document pDocument, Sheet pSheet, String pSheetName,
+      VerificationResult pVerificationResult, Set<Integer> pUsedMessageIDs, Set<String> pUsedNames) {
 
     int lFirstRowNum = pSheet.getFirstRowNum();
     Row lHeaders = pSheet.getRow(lFirstRowNum);
@@ -437,7 +436,7 @@ public class ExcelToMessageResourceConverter {
     return lMessageFolder;
   }
 
-  private String getStringValueFromCell( Cell pCell ) {
+  private String getStringValueFromCell(Cell pCell) {
     // Check parameter.
     Assert.assertNotNull(pCell, "pCell");
     if (pCell.getCellType() == CellType.STRING) {

@@ -107,12 +107,7 @@ public class UICStop extends Stop implements IStop {
     priority = pBuilder.priority;
     code = pBuilder.code;
     index2 = pBuilder.index2;
-    if (pBuilder.inlineStopTypes != null) {
-      inlineStopTypes = pBuilder.inlineStopTypes;
-    }
-    else {
-      inlineStopTypes = new HashSet<>();
-    }
+    inlineStopTypes = (pBuilder.inlineStopTypes == null) ? new HashSet<>() : pBuilder.inlineStopTypes;
     inlineStopType = pBuilder.inlineStopType;
   }
 

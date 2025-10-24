@@ -94,12 +94,7 @@ public class Leg extends Object implements ServiceObject {
     stop = pBuilder.stop;
     // "com.anaptecs.jeaf.junit.openapi.base.PlaceRef"
     stopXYZ = pBuilder.stopXYZ;
-    if (pBuilder.stopovers != null) {
-      stopovers = pBuilder.stopovers;
-    }
-    else {
-      stopovers = new ArrayList<>();
-    }
+    stopovers = (pBuilder.stopovers == null) ? new ArrayList<>() : pBuilder.stopovers;
     // "com.anaptecs.jeaf.junit.openapi.base.PlaceRef"
     stopoversXYZ = pBuilder.stopoversXYZ;
   }

@@ -136,28 +136,13 @@ public class MultiValuedDataType extends Object implements ServiceObject {
     // Ensure that builder is not null.
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
     // Read attribute values from builder.
-    if (pBuilder.stringCodeHeader != null) {
-      stringCodeHeader = pBuilder.stringCodeHeader;
-    }
-    else {
-      stringCodeHeader = new ArrayList<>();
-    }
+    stringCodeHeader = (pBuilder.stringCodeHeader == null) ? new ArrayList<>() : pBuilder.stringCodeHeader;
     // "com.anaptecs.jeaf.junit.openapi.base.StringCode"
     stringCodeHeaderXYZ = pBuilder.stringCodeHeaderXYZ;
-    if (pBuilder.longCodeQueryParam != null) {
-      longCodeQueryParam = pBuilder.longCodeQueryParam;
-    }
-    else {
-      longCodeQueryParam = new ArrayList<>();
-    }
+    longCodeQueryParam = (pBuilder.longCodeQueryParam == null) ? new ArrayList<>() : pBuilder.longCodeQueryParam;
     // "com.anaptecs.jeaf.junit.openapi.base.LongCode"
     longCodeQueryParamXYZ = pBuilder.longCodeQueryParamXYZ;
-    if (pBuilder.literals != null) {
-      literals = pBuilder.literals;
-    }
-    else {
-      literals = new ArrayList<>();
-    }
+    literals = (pBuilder.literals == null) ? new ArrayList<>() : pBuilder.literals;
     // "com.anaptecs.jeaf.junit.openapi.base.BooleanLiteralsEnum"
     literalsXYZ = pBuilder.literalsXYZ;
     stringProperty = pBuilder.stringProperty;

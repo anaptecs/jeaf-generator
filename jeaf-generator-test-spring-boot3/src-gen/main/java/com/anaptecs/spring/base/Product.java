@@ -133,15 +133,10 @@ public class Product implements IProduct {
    */
   protected Product( Builder pBuilder ) {
     // Read attribute values from builder.
-    if (pBuilder.resellers != null) {
-      resellers = pBuilder.resellers;
-      // As association is bidirectional we also have to set it in the other direction.
-      for (Reseller lNext : resellers) {
-        lNext.addToProducts((Product) this);
-      }
-    }
-    else {
-      resellers = new HashSet<>();
+    resellers = (pBuilder.resellers == null) ? Set.of() : Set.copyOf(pBuilder.resellers);
+    // As association is bidirectional we also have to set it in the other direction.
+    for (Reseller lNext : resellers) {
+      lNext.addToProducts((Product) this);
     }
     // Bidirectional back reference is set up correctly as a builder is used.
     resellersBackReferenceInitialized = true;
@@ -149,18 +144,8 @@ public class Product implements IProduct {
     image = pBuilder.image;
     link = pBuilder.link;
     productID = pBuilder.productID;
-    if (pBuilder.supportedCurrencies != null) {
-      supportedCurrencies = pBuilder.supportedCurrencies;
-    }
-    else {
-      supportedCurrencies = new HashSet<>();
-    }
-    if (pBuilder.productCodes != null) {
-      productCodes = pBuilder.productCodes;
-    }
-    else {
-      productCodes = new HashSet<>();
-    }
+    supportedCurrencies = (pBuilder.supportedCurrencies == null) ? Set.of() : Set.copyOf(pBuilder.supportedCurrencies);
+    productCodes = (pBuilder.productCodes == null) ? Set.of() : Set.copyOf(pBuilder.productCodes);
     description = pBuilder.description;
     sortiments = new HashSet<>();
     uri = pBuilder.uri;
@@ -467,8 +452,7 @@ public class Product implements IProduct {
         lNext.addToProducts((Product) this);
       }
     }
-    // Return all Reseller objects as unmodifiable collection.
-    return Collections.unmodifiableSet(resellers);
+    return resellers;
   }
 
   /**
@@ -523,8 +507,7 @@ public class Product implements IProduct {
    * and the returned collection is unmodifiable.
    */
   public Set<CurrencyCode> getSupportedCurrencies( ) {
-    // Return all CurrencyCode objects as unmodifiable collection.
-    return Collections.unmodifiableSet(supportedCurrencies);
+    return supportedCurrencies;
   }
 
   /**
@@ -534,8 +517,7 @@ public class Product implements IProduct {
    * returned collection is unmodifiable.
    */
   public Set<ProductCode> getProductCodes( ) {
-    // Return all ProductCode objects as unmodifiable collection.
-    return Collections.unmodifiableSet(productCodes);
+    return productCodes;
   }
 
   /**

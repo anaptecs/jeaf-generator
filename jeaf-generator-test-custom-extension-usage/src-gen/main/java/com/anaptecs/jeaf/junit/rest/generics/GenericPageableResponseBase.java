@@ -57,12 +57,7 @@ public abstract class GenericPageableResponseBase<T> extends AbstractResponse<T>
     // Call constructor of super class.
     super(pBuilder);
     // Read attribute values from builder.
-    if (pBuilder.values != null) {
-      values = pBuilder.values;
-    }
-    else {
-      values = new ArrayList<>();
-    }
+    values = (pBuilder.values == null) ? new ArrayList<>() : pBuilder.values;
     // "T"
     valuesXYZ = pBuilder.valuesXYZ;
   }

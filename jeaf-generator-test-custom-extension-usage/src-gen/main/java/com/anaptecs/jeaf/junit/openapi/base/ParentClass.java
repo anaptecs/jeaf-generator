@@ -118,23 +118,13 @@ public class ParentClass extends Object implements ServiceObject {
     parentAttribute = pBuilder.parentAttribute;
     // "java.lang.String"
     parentAttributeXYZ = pBuilder.parentAttributeXYZ;
-    if (pBuilder.ibans != null) {
-      ibans = pBuilder.ibans;
-    }
-    else {
-      ibans = new HashSet<>();
-    }
+    ibans = (pBuilder.ibans == null) ? new HashSet<>() : pBuilder.ibans;
     // "com.anaptecs.jeaf.junit.openapi.base.IBAN"
     ibansXYZ = pBuilder.ibansXYZ;
     theBankAccount = pBuilder.theBankAccount;
     // "com.anaptecs.jeaf.junit.openapi.base.BankAccount"
     theBankAccountXYZ = pBuilder.theBankAccountXYZ;
-    if (pBuilder.legacyBankAccounts != null) {
-      legacyBankAccounts = pBuilder.legacyBankAccounts;
-    }
-    else {
-      legacyBankAccounts = new ArrayList<>();
-    }
+    legacyBankAccounts = (pBuilder.legacyBankAccounts == null) ? new ArrayList<>() : pBuilder.legacyBankAccounts;
     // "com.anaptecs.jeaf.junit.openapi.base.BankAccount"
     legacyBankAccountsXYZ = pBuilder.legacyBankAccountsXYZ;
   }
