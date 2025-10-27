@@ -40,6 +40,14 @@ public class BooleanCodeType implements Serializable {
   }
 
   /**
+   * Constructor is intended to be used by <code>of(...)</code> operation to efficiently create new objects by avoiding
+   * usage of builder.
+   */
+  private BooleanCodeType( boolean pCode ) {
+    code = pCode;
+  }
+
+  /**
    * Method returns a new builder.
    *
    * @return {@link Builder} New builder that can be used to create new BooleanCodeType objects.
@@ -55,6 +63,18 @@ public class BooleanCodeType implements Serializable {
     Builder lBuilder = builder();
     lBuilder.setCode(pCode);
     return lBuilder;
+  }
+
+  /**
+   * Convenience method to create new instance of class BooleanCodeType.
+   *
+   *
+   * @param pCode Value to which {@link #code} should be set.
+   *
+   * @return {@link BooleanCodeType}
+   */
+  public static BooleanCodeType of( boolean pCode ) {
+    return new BooleanCodeType(pCode);
   }
 
   /**

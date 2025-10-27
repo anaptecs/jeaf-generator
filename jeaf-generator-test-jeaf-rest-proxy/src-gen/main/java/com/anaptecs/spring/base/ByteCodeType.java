@@ -40,6 +40,14 @@ public class ByteCodeType implements Serializable {
   }
 
   /**
+   * Constructor is intended to be used by <code>of(...)</code> operation to efficiently create new objects by avoiding
+   * usage of builder.
+   */
+  private ByteCodeType( byte pCode ) {
+    code = pCode;
+  }
+
+  /**
    * Method returns a new builder.
    *
    * @return {@link Builder} New builder that can be used to create new ByteCodeType objects.
@@ -55,6 +63,18 @@ public class ByteCodeType implements Serializable {
     Builder lBuilder = builder();
     lBuilder.setCode(pCode);
     return lBuilder;
+  }
+
+  /**
+   * Convenience method to create new instance of class ByteCodeType.
+   *
+   *
+   * @param pCode Value to which {@link #code} should be set.
+   *
+   * @return {@link ByteCodeType}
+   */
+  public static ByteCodeType of( byte pCode ) {
+    return new ByteCodeType(pCode);
   }
 
   /**

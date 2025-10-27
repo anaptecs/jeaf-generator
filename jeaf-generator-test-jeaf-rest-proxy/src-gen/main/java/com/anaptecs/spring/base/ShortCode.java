@@ -41,6 +41,14 @@ public class ShortCode implements Serializable {
   }
 
   /**
+   * Constructor is intended to be used by <code>of(...)</code> operation to efficiently create new objects by avoiding
+   * usage of builder.
+   */
+  private ShortCode( Short pCode ) {
+    code = pCode;
+  }
+
+  /**
    * Method returns a new builder.
    *
    * @return {@link Builder} New builder that can be used to create new ShortCode objects.
@@ -56,6 +64,18 @@ public class ShortCode implements Serializable {
     Builder lBuilder = builder();
     lBuilder.setCode(pCode);
     return lBuilder;
+  }
+
+  /**
+   * Convenience method to create new instance of class ShortCode.
+   *
+   *
+   * @param pCode Value to which {@link #code} should be set.
+   *
+   * @return {@link ShortCode}
+   */
+  public static ShortCode of( Short pCode ) {
+    return new ShortCode(pCode);
   }
 
   /**

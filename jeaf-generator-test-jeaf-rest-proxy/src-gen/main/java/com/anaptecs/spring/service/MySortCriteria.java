@@ -42,6 +42,14 @@ public class MySortCriteria implements Serializable {
   }
 
   /**
+   * Constructor is intended to be used by <code>of(...)</code> operation to efficiently create new objects by avoiding
+   * usage of builder.
+   */
+  private MySortCriteria( String pValue ) {
+    value = pValue;
+  }
+
+  /**
    * Method returns a new builder.
    *
    * @return {@link Builder} New builder that can be used to create new MySortCriteria objects.
@@ -54,6 +62,16 @@ public class MySortCriteria implements Serializable {
     Builder lBuilder = builder();
     lBuilder.setValue(pValue);
     return lBuilder;
+  }
+
+  /**
+   * Convenience method to create new instance of class MySortCriteria.
+   *
+   * @param pValue Value to which {@link #value} should be set.
+   * @return {@link MySortCriteria}
+   */
+  public static MySortCriteria of( String pValue ) {
+    return new MySortCriteria(pValue);
   }
 
   /**

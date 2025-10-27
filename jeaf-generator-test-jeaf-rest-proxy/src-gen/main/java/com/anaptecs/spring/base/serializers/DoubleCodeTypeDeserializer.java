@@ -26,7 +26,7 @@ public class DoubleCodeTypeDeserializer extends JsonDeserializer<DoubleCodeType>
     JsonNode lNode = pParser.getCodec().readTree(pParser);
     if (lNode instanceof NumericNode) {
       NumericNode lNumericNode = (NumericNode) lNode;
-      return DoubleCodeType.builder().setCode(lNumericNode.doubleValue()).build();
+      return DoubleCodeType.of(lNumericNode.doubleValue());
     }
     // Node is not of expected type.
     else {

@@ -26,7 +26,7 @@ public class ByteCodeDeserializer extends JsonDeserializer<ByteCode> {
     JsonNode lNode = pParser.getCodec().readTree(pParser);
     if (lNode instanceof NumericNode) {
       NumericNode lNumericNode = (NumericNode) lNode;
-      return ByteCode.builder().setCode((byte) lNumericNode.intValue()).build();
+      return ByteCode.of((byte) lNumericNode.intValue());
     }
     // Node is not of expected type.
     else {

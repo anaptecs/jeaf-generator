@@ -26,7 +26,7 @@ public class LongCodeDeserializer extends JsonDeserializer<LongCode> {
     JsonNode lNode = pParser.getCodec().readTree(pParser);
     if (lNode instanceof NumericNode) {
       NumericNode lNumericNode = (NumericNode) lNode;
-      return LongCode.builder().setCode(lNumericNode.longValue()).build();
+      return LongCode.of(lNumericNode.longValue());
     }
     // Node is not of expected type.
     else {

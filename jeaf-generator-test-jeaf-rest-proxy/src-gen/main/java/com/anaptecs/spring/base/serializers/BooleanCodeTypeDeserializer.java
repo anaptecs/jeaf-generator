@@ -25,7 +25,7 @@ public class BooleanCodeTypeDeserializer extends JsonDeserializer<BooleanCodeTyp
     // Parse JSON content.
     JsonNode lNode = pParser.getCodec().readTree(pParser);
     if (lNode instanceof BooleanNode) {
-      return BooleanCodeType.builder().setCode(lNode.asBoolean()).build();
+      return BooleanCodeType.of(lNode.asBoolean());
     }
     // Node is not of expected type.
     else {

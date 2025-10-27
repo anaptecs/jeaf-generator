@@ -7,7 +7,6 @@
 package com.anaptecs.spring.base;
 
 public class DataTypeWithDerivedProperty extends DataTypeWithDerivedPropertyBase {
-
   /**
    * Default serial version UID.
    */
@@ -18,6 +17,14 @@ public class DataTypeWithDerivedProperty extends DataTypeWithDerivedPropertyBase
    */
   protected DataTypeWithDerivedProperty( DataTypeWithDerivedProperty.BuilderBase pBuilder ) {
     super(pBuilder);
+  }
+
+  /**
+   * Constructor is intended to be used by <code>of(...)</code> operation to efficiently create new objects by avoiding
+   * usage of builder.
+   */
+  DataTypeWithDerivedProperty( int pProperty ) {
+    super(pProperty);
   }
 
   /**
@@ -56,7 +63,6 @@ public class DataTypeWithDerivedProperty extends DataTypeWithDerivedPropertyBase
     protected Builder( DataTypeWithDerivedProperty pObject ) {
       super(pObject);
     }
-
   }
 
   /**
@@ -68,9 +74,6 @@ public class DataTypeWithDerivedProperty extends DataTypeWithDerivedPropertyBase
   @Override
   public String getDerivedProperty( ) {
     // TODO Implement method for derived property "derivedProperty".
-
     return null;
-
   }
-
 }

@@ -44,6 +44,14 @@ public abstract class ComplexBookingIDBase implements Serializable {
   }
 
   /**
+   * Constructor is intended to be used by <code>of(...)</code> operation to efficiently create new objects by avoiding
+   * usage of builder.
+   */
+  ComplexBookingIDBase( String pBookingID ) {
+    bookingID = pBookingID;
+  }
+
+  /**
    * Class implements builder to create a new instance of class ComplexBookingID. As the class has read only attributes
    * or associations instances can not be created directly. Instead this builder class has to be used.
    */
@@ -112,6 +120,16 @@ public abstract class ComplexBookingIDBase implements Serializable {
    */
   public String getBookingID( ) {
     return bookingID;
+  }
+
+  /**
+   * Convenience method to create new instance of class ComplexBookingID.
+   *
+   * @param pBookingID Value to which {@link #bookingID} should be set.
+   * @return {@link ComplexBookingID}
+   */
+  public static ComplexBookingID of( String pBookingID ) {
+    return new ComplexBookingID(pBookingID);
   }
 
   @Override

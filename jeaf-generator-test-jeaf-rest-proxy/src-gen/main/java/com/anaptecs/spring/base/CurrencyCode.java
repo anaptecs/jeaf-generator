@@ -51,6 +51,14 @@ public class CurrencyCode implements Serializable {
   }
 
   /**
+   * Constructor is intended to be used by <code>of(...)</code> operation to efficiently create new objects by avoiding
+   * usage of builder.
+   */
+  private CurrencyCode( String pCode ) {
+    code = pCode;
+  }
+
+  /**
    * Method returns a new builder.
    *
    * @return {@link Builder} New builder that can be used to create new CurrencyCode objects.
@@ -66,6 +74,18 @@ public class CurrencyCode implements Serializable {
     Builder lBuilder = builder();
     lBuilder.setCode(pCode);
     return lBuilder;
+  }
+
+  /**
+   * Convenience method to create new instance of class CurrencyCode.
+   *
+   *
+   * @param pCode Value to which {@link #code} should be set.
+   *
+   * @return {@link CurrencyCode}
+   */
+  public static CurrencyCode of( String pCode ) {
+    return new CurrencyCode(pCode);
   }
 
   /**

@@ -26,7 +26,7 @@ public class ShortCodeDeserializer extends JsonDeserializer<ShortCode> {
     JsonNode lNode = pParser.getCodec().readTree(pParser);
     if (lNode instanceof NumericNode) {
       NumericNode lNumericNode = (NumericNode) lNode;
-      return ShortCode.builder().setCode((short) lNumericNode.intValue()).build();
+      return ShortCode.of((short) lNumericNode.intValue());
     }
     // Node is not of expected type.
     else {

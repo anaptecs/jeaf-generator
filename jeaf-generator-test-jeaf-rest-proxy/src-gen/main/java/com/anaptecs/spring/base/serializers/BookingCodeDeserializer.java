@@ -25,7 +25,7 @@ public class BookingCodeDeserializer extends JsonDeserializer<BookingCode> {
     // Parse JSON content.
     JsonNode lNode = pParser.getCodec().readTree(pParser);
     if (lNode instanceof TextNode) {
-      return BookingCode.builder().setCode(lNode.asText()).build();
+      return BookingCode.of(lNode.asText());
     }
     // Node is not of expected type.
     else {

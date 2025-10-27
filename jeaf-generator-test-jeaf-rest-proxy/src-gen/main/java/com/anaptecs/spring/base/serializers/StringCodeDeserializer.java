@@ -25,7 +25,7 @@ public class StringCodeDeserializer extends JsonDeserializer<StringCode> {
     // Parse JSON content.
     JsonNode lNode = pParser.getCodec().readTree(pParser);
     if (lNode instanceof TextNode) {
-      return StringCode.builder().setCode(lNode.asText()).build();
+      return StringCode.of(lNode.asText());
     }
     // Node is not of expected type.
     else {
