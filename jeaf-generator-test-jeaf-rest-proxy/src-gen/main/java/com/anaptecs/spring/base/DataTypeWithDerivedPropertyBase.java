@@ -40,6 +40,14 @@ public abstract class DataTypeWithDerivedPropertyBase implements Serializable {
   }
 
   /**
+   * Constructor is intended to be used by <code>of(...)</code> operation to efficiently create new objects by avoiding
+   * usage of builder.
+   */
+  DataTypeWithDerivedPropertyBase( int pProperty ) {
+    property = pProperty;
+  }
+
+  /**
    * Class implements builder to create a new instance of class DataTypeWithDerivedProperty. As the class has read only
    * attributes or associations instances can not be created directly. Instead this builder class has to be used.
    */
@@ -118,6 +126,18 @@ public abstract class DataTypeWithDerivedPropertyBase implements Serializable {
   public void setProperty( int pProperty ) {
     // Assign value to attribute
     property = pProperty;
+  }
+
+  /**
+   * Convenience method to create new instance of class DataTypeWithDerivedProperty.
+   *
+   *
+   * @param pProperty Value to which {@link #property} should be set.
+   *
+   * @return {@link DataTypeWithDerivedProperty}
+   */
+  public static DataTypeWithDerivedProperty of( int pProperty ) {
+    return new DataTypeWithDerivedProperty(pProperty);
   }
 
   /**

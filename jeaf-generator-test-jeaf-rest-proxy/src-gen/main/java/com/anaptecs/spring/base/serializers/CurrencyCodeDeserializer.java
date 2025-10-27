@@ -25,7 +25,7 @@ public class CurrencyCodeDeserializer extends JsonDeserializer<CurrencyCode> {
     // Parse JSON content.
     JsonNode lNode = pParser.getCodec().readTree(pParser);
     if (lNode instanceof TextNode) {
-      return CurrencyCode.builder().setCode(lNode.asText()).build();
+      return CurrencyCode.of(lNode.asText());
     }
     // Node is not of expected type.
     else {

@@ -360,58 +360,72 @@
 «ENDDEFINE»
 
 «DEFINE GenerateOfForClass FOR uml::Class»
-    «IF this.generateOfOperationForClass() && this.isCompositeDataType() == false && isAbstract == false»
-	  /**
-	   * Convenience method to create new instance of class «name».
-	   * 
-       * «FOREACH this.getAllAttributesForOfOperation() AS attr»
-       *    @param «attr.asParameter()» Value to which {@link #«attr.name»} should be set. 
-       * «ENDFOREACH»
-	   * @return {@link «this.fqn()»}
-	   */
-	   «IF this.hasTemplateParameter()»@SuppressWarnings("unchecked")«ENDIF»
-	   public static «this.getTemplateParams()» «this.fqn()» of(
-		   «FOREACH this.getAllAttributesForOfOperation() AS attr SEPARATOR ", "»
-			   «IF attr.isSoftLink()»
-			     «IF attr.isMultivalued()»
-			         «attr.getCollectionType()»<«((JMM::SoftLink)attr).getMultivaluedJavaSoftLinkType()»>
-			     «ELSE»
-			         «((JMM::SoftLink)attr).getJavaSoftLinkType()»
-			     «ENDIF»
-			   «ELSEIF attr.association != null»
-				   «IF attr.isMultivalued()»
-				   «attr.fqn()»
+    «IF this.generateOfOperationForClass() && isAbstract == false»
+	  «IF this.isCompositeDataType()»
+	  	«IF this.isPOJO()»
+		  /**
+		   * Convenience method to create new instance of class «name».
+		   * 
+	       * @param «this.getCompositeDateTypePublicFieldName().asParameter()» Value to which {@link #«this.getCompositeDateTypePublicFieldName()»} should be set. 
+		   * @return {@link «this.fqn()»}
+		   */
+		   public static «this.fqn()» of(String «this.getCompositeDateTypePublicFieldName().asParameter()») {
+		   		return new «name»(«this.getCompositeDateTypePublicFieldName().asParameter()»);
+		   }
+	  	«ENDIF»
+	  «ELSE»
+		  /**
+		   * Convenience method to create new instance of class «name».
+		   * 
+	       * «FOREACH this.getAllAttributesForOfOperation() AS attr»
+	       *    @param «attr.asParameter()» Value to which {@link #«attr.name»} should be set. 
+	       * «ENDFOREACH»
+		   * @return {@link «this.fqn()»}
+		   */
+		   «IF this.hasTemplateParameter()»@SuppressWarnings("unchecked")«ENDIF»
+		   public static «this.getTemplateParams()» «this.fqn()» of(
+			   «FOREACH this.getAllAttributesForOfOperation() AS attr SEPARATOR ", "»
+				   «IF attr.isSoftLink()»
+				     «IF attr.isMultivalued()»
+				         «attr.getCollectionType()»<«((JMM::SoftLink)attr).getMultivaluedJavaSoftLinkType()»>
+				     «ELSE»
+				         «((JMM::SoftLink)attr).getJavaSoftLinkType()»
+				     «ENDIF»
+				   «ELSEIF attr.association != null»
+					   «IF attr.isMultivalued()»
+					   «attr.fqn()»
+					   «ELSE»
+					   «attr.type.fqn()»
+					   «ENDIF»
 				   «ELSE»
-				   «attr.type.fqn()»
+				       «attr.fqn()»
 				   «ENDIF»
+				   «IF attr.isSoftLink()»
+				       «attr.getSoftLinkPropertyName().asParameter()»
+				   «ELSE»
+				       «attr.asParameter()»
+				   «ENDIF»
+			   «ENDFOREACH») {
+		
+			   «IF this.isOpenAPIDataType() && this.generateOfOperationForClass()»
+			   	   return new «name»(
+			   	   		«FOREACH this.getAllAttributesForOfOperation() AS attr SEPARATOR ", "»
+			   	   		«attr.asParameter()»
+			   	   		«ENDFOREACH»
+			   	   );
 			   «ELSE»
-			       «attr.fqn()»
+				   var lBuilder = «name».builder();
+		           «FOREACH this.getAllAttributesForOfOperation() AS attr»
+		               «IF attr.isSoftLink()»
+		                   lBuilder.set«attr.getSoftLinkPropertyName().toFirstUpper()»(«attr.getSoftLinkPropertyName().asParameter()»);
+		               «ELSE»
+		                   lBuilder.«attr.asSetter()»(«attr.asParameter()»);
+		               «ENDIF»
+		           «ENDFOREACH»
+				   return «IF this.hasTemplateParameter()»(«this.fqn()») «ENDIF» lBuilder.build();
 			   «ENDIF»
-			   «IF attr.isSoftLink()»
-			       «attr.getSoftLinkPropertyName().asParameter()»
-			   «ELSE»
-			       «attr.asParameter()»
-			   «ENDIF»
-		   «ENDFOREACH») {
-	
-		   «IF this.isOpenAPIDataType() && this.generateOfOperationForClass()»
-		   	   return new «name»(
-		   	   		«FOREACH this.getAllAttributesForOfOperation() AS attr SEPARATOR ", "»
-		   	   		«attr.asParameter()»
-		   	   		«ENDFOREACH»
-		   	   );
-		   «ELSE»
-			   var lBuilder = «name».builder();
-	           «FOREACH this.getAllAttributesForOfOperation() AS attr»
-	               «IF attr.isSoftLink()»
-	                   lBuilder.set«attr.getSoftLinkPropertyName().toFirstUpper()»(«attr.getSoftLinkPropertyName().asParameter()»);
-	               «ELSE»
-	                   lBuilder.«attr.asSetter()»(«attr.asParameter()»);
-	               «ENDIF»
-	           «ENDFOREACH»
-			   return «IF this.hasTemplateParameter()»(«this.fqn()») «ENDIF» lBuilder.build();
-		   «ENDIF»
-	  }
+		  }
+    «ENDIF»
     «ENDIF»
 «ENDDEFINE»
 

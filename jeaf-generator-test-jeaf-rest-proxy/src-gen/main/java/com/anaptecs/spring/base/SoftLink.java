@@ -42,6 +42,14 @@ public class SoftLink implements Serializable {
   }
 
   /**
+   * Constructor is intended to be used by <code>of(...)</code> operation to efficiently create new objects by avoiding
+   * usage of builder.
+   */
+  private SoftLink( String pOpenID ) {
+    openID = pOpenID;
+  }
+
+  /**
    * Method returns a new builder.
    *
    * @return {@link Builder} New builder that can be used to create new SoftLink objects.
@@ -54,6 +62,16 @@ public class SoftLink implements Serializable {
     Builder lBuilder = builder();
     lBuilder.setOpenID(pOpenID);
     return lBuilder;
+  }
+
+  /**
+   * Convenience method to create new instance of class SoftLink.
+   *
+   * @param pOpenID Value to which {@link #openID} should be set.
+   * @return {@link SoftLink}
+   */
+  public static SoftLink of( String pOpenID ) {
+    return new SoftLink(pOpenID);
   }
 
   /**

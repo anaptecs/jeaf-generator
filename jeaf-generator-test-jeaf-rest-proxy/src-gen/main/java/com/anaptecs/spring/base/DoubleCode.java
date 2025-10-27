@@ -41,6 +41,14 @@ public class DoubleCode implements Serializable {
   }
 
   /**
+   * Constructor is intended to be used by <code>of(...)</code> operation to efficiently create new objects by avoiding
+   * usage of builder.
+   */
+  private DoubleCode( Double pCode ) {
+    code = pCode;
+  }
+
+  /**
    * Method returns a new builder.
    *
    * @return {@link Builder} New builder that can be used to create new DoubleCode objects.
@@ -56,6 +64,18 @@ public class DoubleCode implements Serializable {
     Builder lBuilder = builder();
     lBuilder.setCode(pCode);
     return lBuilder;
+  }
+
+  /**
+   * Convenience method to create new instance of class DoubleCode.
+   *
+   *
+   * @param pCode Value to which {@link #code} should be set.
+   *
+   * @return {@link DoubleCode}
+   */
+  public static DoubleCode of( Double pCode ) {
+    return new DoubleCode(pCode);
   }
 
   /**

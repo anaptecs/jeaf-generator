@@ -41,6 +41,14 @@ public class StringCodeType implements Serializable {
   }
 
   /**
+   * Constructor is intended to be used by <code>of(...)</code> operation to efficiently create new objects by avoiding
+   * usage of builder.
+   */
+  private StringCodeType( String pCode ) {
+    code = pCode;
+  }
+
+  /**
    * Method returns a new builder.
    *
    * @return {@link Builder} New builder that can be used to create new StringCodeType objects.
@@ -56,6 +64,18 @@ public class StringCodeType implements Serializable {
     Builder lBuilder = builder();
     lBuilder.setCode(pCode);
     return lBuilder;
+  }
+
+  /**
+   * Convenience method to create new instance of class StringCodeType.
+   *
+   *
+   * @param pCode Value to which {@link #code} should be set.
+   *
+   * @return {@link StringCodeType}
+   */
+  public static StringCodeType of( String pCode ) {
+    return new StringCodeType(pCode);
   }
 
   /**

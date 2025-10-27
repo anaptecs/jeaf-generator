@@ -41,6 +41,14 @@ public class AnotherDataType implements Serializable {
   }
 
   /**
+   * Constructor is intended to be used by <code>of(...)</code> operation to efficiently create new objects by avoiding
+   * usage of builder.
+   */
+  private AnotherDataType( String pData ) {
+    data = pData;
+  }
+
+  /**
    * Method returns a new builder.
    *
    * @return {@link Builder} New builder that can be used to create new AnotherDataType objects.
@@ -56,6 +64,18 @@ public class AnotherDataType implements Serializable {
     Builder lBuilder = builder();
     lBuilder.setData(pData);
     return lBuilder;
+  }
+
+  /**
+   * Convenience method to create new instance of class AnotherDataType.
+   *
+   *
+   * @param pData Value to which {@link #data} should be set.
+   *
+   * @return {@link AnotherDataType}
+   */
+  public static AnotherDataType of( String pData ) {
+    return new AnotherDataType(pData);
   }
 
   /**

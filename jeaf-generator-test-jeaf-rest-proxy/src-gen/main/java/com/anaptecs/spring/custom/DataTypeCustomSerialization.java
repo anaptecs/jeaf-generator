@@ -42,6 +42,14 @@ public class DataTypeCustomSerialization implements Serializable {
   }
 
   /**
+   * Constructor is intended to be used by <code>of(...)</code> operation to efficiently create new objects by avoiding
+   * usage of builder.
+   */
+  private DataTypeCustomSerialization( String pMagic ) {
+    magic = pMagic;
+  }
+
+  /**
    * Method returns a new builder.
    *
    * @return {@link Builder} New builder that can be used to create new DataTypeCustomSerialization objects.
@@ -54,6 +62,16 @@ public class DataTypeCustomSerialization implements Serializable {
     Builder lBuilder = builder();
     lBuilder.setMagic(pMagic);
     return lBuilder;
+  }
+
+  /**
+   * Convenience method to create new instance of class DataTypeCustomSerialization.
+   *
+   * @param pMagic Value to which {@link #magic} should be set.
+   * @return {@link DataTypeCustomSerialization}
+   */
+  public static DataTypeCustomSerialization of( String pMagic ) {
+    return new DataTypeCustomSerialization(pMagic);
   }
 
   /**

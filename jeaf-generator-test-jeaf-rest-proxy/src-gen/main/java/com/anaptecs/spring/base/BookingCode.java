@@ -41,6 +41,14 @@ public class BookingCode implements Serializable {
   }
 
   /**
+   * Constructor is intended to be used by <code>of(...)</code> operation to efficiently create new objects by avoiding
+   * usage of builder.
+   */
+  private BookingCode( String pCode ) {
+    code = pCode;
+  }
+
+  /**
    * Method returns a new builder.
    *
    * @return {@link Builder} New builder that can be used to create new BookingCode objects.
@@ -56,6 +64,18 @@ public class BookingCode implements Serializable {
     Builder lBuilder = builder();
     lBuilder.setCode(pCode);
     return lBuilder;
+  }
+
+  /**
+   * Convenience method to create new instance of class BookingCode.
+   *
+   *
+   * @param pCode Value to which {@link #code} should be set.
+   *
+   * @return {@link BookingCode}
+   */
+  public static BookingCode of( String pCode ) {
+    return new BookingCode(pCode);
   }
 
   /**

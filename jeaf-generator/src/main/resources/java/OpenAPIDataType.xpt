@@ -1,6 +1,7 @@
 «EXTENSION java::Naming»
 «EXTENSION java::GeneratorCommons»
 «EXTENSION java::OpenAPIFunctions»
+«EXTENSION java::Naming»
 «EXTENSION functions::SystemProperties»
 «EXTENSION functions::Builder»
 «EXTENSION functions::Class»
@@ -15,13 +16,18 @@
 	 * Constructor is intended to be used by <code>of(...)</code> operation to efficiently create new objects by avoiding usage of builder.
 	 */
 	«IF hasCustomImpl == false»private «ENDIF»«className»(
-	   «FOREACH this.getAllAttributesForOfOperation() AS attr SEPARATOR ", "»
-	   	   «attr.fqn()» «attr.asParameter()»
-	   «ENDFOREACH») {
-	   
-	   «FOREACH this.getAllAttributesForOfOperation() AS attr»
-	   «attr.name» = «attr.asParameter()»;
-	   «ENDFOREACH»
+	   «IF this.isCompositeDataType()»
+		   String «this.getCompositeDateTypePublicFieldName().asParameter()») {
+		   «this.getCompositeDateTypePublicFieldName()» = «this.getCompositeDateTypePublicFieldName().asParameter()»;
+	   «ELSE»
+		   «FOREACH this.getAllAttributesForOfOperation() AS attr SEPARATOR ", "»
+		   	   «attr.fqn()» «attr.asParameter()»
+		   «ENDFOREACH») {
+		   
+		   «FOREACH this.getAllAttributesForOfOperation() AS attr»
+		   «attr.name» = «attr.asParameter()»;
+		   «ENDFOREACH»
+	   «ENDIF»
 	}
 	«ENDIF»
 «ENDDEFINE»
@@ -32,12 +38,17 @@
 	 * Constructor is intended to be used by <code>of(...)</code> operation to efficiently create new objects by avoiding usage of builder.
 	 */
 	«name»(
-	   «FOREACH this.getAllAttributesForOfOperation() AS attr SEPARATOR ", "»
-	   	   «attr.fqn()» «attr.asParameter()»
-	   «ENDFOREACH») {
-	   super(	   
-	       «FOREACH this.getAllAttributesForOfOperation() AS attr SEPARATOR ", "»«attr.asParameter()»«ENDFOREACH»
+	   «IF this.isCompositeDataType()»
+		   String p«this.getCompositeDateTypePublicFieldName().toFirstUpper()») {
+		   super(p«this.getCompositeDateTypePublicFieldName().toFirstUpper()»);
+	   «ELSE»
+		   «FOREACH this.getAllAttributesForOfOperation() AS attr SEPARATOR ", "»
+		   	   «attr.fqn()» «attr.asParameter()»
+		   «ENDFOREACH») {
+		   super(	   
+		       «FOREACH this.getAllAttributesForOfOperation() AS attr SEPARATOR ", "»«attr.asParameter()»«ENDFOREACH»
 	   );
+	   «ENDIF»
 	}
 	«ENDIF»
 «ENDDEFINE»
