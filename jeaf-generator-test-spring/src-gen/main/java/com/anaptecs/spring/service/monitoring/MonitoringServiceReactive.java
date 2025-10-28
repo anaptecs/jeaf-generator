@@ -11,7 +11,7 @@ import reactor.core.publisher.Mono;
 public interface MonitoringServiceReactive {
   /**
    * <p/>
-   * <b>Authorized Roles:</b> <code>NO_ACCESS</code>
+   * <b>Authorized Roles:</b> <code>`NO_ACCESS`</code>
    *
    * @return {@link String}
    */
