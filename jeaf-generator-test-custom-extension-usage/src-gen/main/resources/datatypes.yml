@@ -11,6 +11,9 @@ info:
   license:
     name: Maven Custom License
     url: 'https://www.jeaf-generator.io/license'
+  x-hello: Hello World!
+  x-non-sense: This is grab ;-)
+
 paths:
   # OpenAPI standard requires to define at least 1 operation. This API however seems to be a pure type definition. 
   # So we define NOP operation here as workaround.

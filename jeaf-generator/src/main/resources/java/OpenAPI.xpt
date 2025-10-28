@@ -7,6 +7,8 @@
 «EXTENSION functions::OpenAPISpecReference»
 «EXTENSION functions::RESTOperation»
 
+«EXTENSION jeafgenerator::api::JEAFGeneratorExtensionAPI»
+«EXTENSION jeafgenerator::api::OpenAPISpecificationExtensionPoint»
 
 «IMPORT uml»
 «IMPORT JMM»
@@ -71,9 +73,14 @@ info:
     «IF this.getLicenseURL().length > 0 -»
     url: '«this.getLicenseURL()»'
     «ENDIF-»
-  «ENDIF-»    
-«IF this.clientDependency.supplier.typeSelect(OpenAPIServer).size > 0-»
+  «ENDIF-»
+  «IF getImplementedExtensionAPIVersion() >= 2-»
+  «FOREACH this.getOpenAPISpecInfoExtensionPropertyNames() AS name ITERATOR i -»
+  «name»: «this.getOpenAPISpecInfoExtensionPropertyValues().get(i.counter0)»
+  «ENDFOREACH-»
+  «ENDIF-»
 
+«IF this.clientDependency.supplier.typeSelect(OpenAPIServer).size > 0-»
 servers:
   «FOREACH this.clientDependency.supplier.typeSelect(OpenAPIServer).sortBy(e|e.name).sortBy(e|e.order) AS server-»
   - url: «server.url»
