@@ -1,6 +1,7 @@
 extension java::GeneratorCommons;
 extension functions::Reactive;
 extension functions::NamedElement;
+extension functions::DefaultOperation;
 
 
 cached boolean isJEAFService(uml::Element element):
@@ -17,8 +18,22 @@ cached List[JMM::JEAFService] getParentServices(JMM::JEAFService interface) :
     
 cached String getServiceName(JMM::JEAFService service, boolean reactive):
     if reactive
+    then service.getServiceInterfaceName() + "Reactive"
+    else service.getServiceInterfaceName();
+    
+private String getServiceInterfaceName(JMM::JEAFService service):
+	if service.requiresCustomerServiceBaseClass()
+	then service.name + "Base"
+	else service.name;
+	
+cached String getServiceCustomImplName(JMM::JEAFService service, boolean reactive):
+    if reactive
     then service.name + "Reactive"
     else service.name;
+	
+    
+cached boolean requiresCustomerServiceBaseClass(JMM::JEAFService interface):
+	interface.ownedOperation.selectFirst(e|e.isCustomDefaultImplementationType()) != null;
 
 cached String getServiceNameFQN(JMM::JEAFService service, boolean reactive):
     if reactive

@@ -43,6 +43,19 @@ public interface «this.getServiceName(reactive)» «IF this.getParentServices()
   «ENDIF»
 }
 «ENDFILE»
+
+«IF this.requiresCustomerServiceBaseClass()»
+«FILE packagePath() + "/" + this.getServiceCustomImplName(reactive) + ".java" src»
+«getFileHeader()»
+package «packageName()»;
+
+«EXPAND functions::Javadoc::JavadocForType»
+«EXPAND java::Helper::GenerateAnnotations-»
+public interface «this.getServiceCustomImplName(reactive)» extends «this.getServiceName(reactive)» {
+  // TODO: Add custom default implementation for your operations here.
+}
+«ENDFILE»
+«ENDIF»
 «ENDDEFINE»
 //*********************************************************\\
 //*********************************************************\\

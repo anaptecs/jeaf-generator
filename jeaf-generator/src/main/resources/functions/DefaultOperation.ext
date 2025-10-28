@@ -14,3 +14,9 @@ cached boolean throwsNotYetImplementedException(uml::Operation operation):
     if operation.isDefaultOperation()
     then operation.asDefaultOperation().operationType.name == "THROW_NOT_YET_IMPLMENTED_EXCEPTION"
     else false;
+    
+cached boolean isCustomDefaultImplementationType(uml::Operation operation):
+	if operation.isDefaultOperation()
+	then operation.asDefaultOperation().operationType.name == "CUSTOM_DEFAULT_IMPLEMENTATION"
+    else false; 
+	
