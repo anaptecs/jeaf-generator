@@ -28,8 +28,8 @@
     «EXPAND java::Helper::GenerateAnnotations FOR this.getReturnResult() -»    
     «EXPAND Validation::ValidationAnnotation FOR this.getReturnResult()»
     «EXPAND java::Helper::NotNullAnnotationForParameter("JEAFService") FOR this.getReturnResult()»
-    «IF this.isDefaultOperation()»default «ENDIF»«getReturnTypeName().getReactiveAwareTypeName(reactive)»  «name» («EXPAND ParameterSignature(true, "JEAFService")»)«getThrownExceptionsAsString()»
-    «IF this.isDefaultOperation()»
+    «IF this.isDefaultOperation() && this.isCustomDefaultImplementationType() == false»default «ENDIF»«getReturnTypeName().getReactiveAwareTypeName(reactive)»  «name» («EXPAND ParameterSignature(true, "JEAFService")»)«getThrownExceptionsAsString()»
+    «IF this.isDefaultOperation() && this.isCustomDefaultImplementationType() == false»
         «LET this.asDefaultOperation().operationType AS operationType»
 	        {
 	        «IF operationType.name == "THROW_NOT_YET_IMPLMENTED_EXCEPTION"»
