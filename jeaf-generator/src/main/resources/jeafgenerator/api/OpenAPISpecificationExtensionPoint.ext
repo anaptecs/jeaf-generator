@@ -1,0 +1,16 @@
+
+// Operation can be used to provide additional properties for the info section of a OpenAPI spec.
+// Here it is expected that the name of the property will be provided.
+// 
+// since: #2 of JEAF Generator Extension API  
+cached List[String] getOpenAPISpecInfoExtensionPropertyNames(JMM::OpenAPI3Specification spec):
+	{}.toList();
+	
+	
+
+// Operation can be used to provide additional properties for the info section of a OpenAPI spec.
+// Here it is expected that the value of the property will be provided.
+// 
+// since: #2 of JEAF Generator Extension API  
+cached List[String] getOpenAPISpecInfoExtensionPropertyValues(JMM::OpenAPI3Specification spec):
+	{}.toList();	

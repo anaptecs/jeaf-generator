@@ -1,0 +1,8 @@
+// Operation returns the version number of the JEAF Generator Extension API 
+// that might be implemented by custom extensions. Similar to JEAF Generator
+// Meta Model we follow here are very simple single number versioning schema.
+//
+// If nothing elese is mentioned in the release notes then the version of JEAF
+// Generator is compatible with any version of the extension API.
+int getImplementedExtensionAPIVersion():
+	2;
