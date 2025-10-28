@@ -200,7 +200,7 @@
 
 «DEFINE SecurityRolesComment FOR uml::Operation -»
     «IF generateSecurityAnnotation() && hasSecurityRoles() -»
-    <p/><b>Authorized Roles:</b> <code>«FOREACH this.getSecurityRolesForDocumentation() AS role SEPARATOR ", "»«role»«ENDFOREACH»</code>
+    <p/><b>Authorized Roles:</b> <code>«FOREACH this.getSecurityRolesForDocumentation() AS role SEPARATOR ", "»`«role»`«ENDFOREACH»</code>
     «ENDIF -» 
 «ENDDEFINE»
 

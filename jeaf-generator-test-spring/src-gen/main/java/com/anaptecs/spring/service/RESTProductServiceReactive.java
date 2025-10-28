@@ -47,7 +47,7 @@ public interface RESTProductServiceReactive {
   /**
    * Operation returns all available product.
    * <p/>
-   * <b>Authorized Roles:</b> <code>Customer, Sales Agent</code>
+   * <b>Authorized Roles:</b> <code>`Customer`, `Sales Agent`</code>
    *
    * @param pMaxResultSize
    * @return {@link List<Product>} My default comment
@@ -56,7 +56,7 @@ public interface RESTProductServiceReactive {
 
   /**
    * <p/>
-   * <b>Authorized Roles:</b> <code>Sales Agent</code>
+   * <b>Authorized Roles:</b> <code>`Sales Agent`</code>
    *
    * @param pProductID
    * @return {@link Product} My default comment
@@ -66,7 +66,7 @@ public interface RESTProductServiceReactive {
 
   /**
    * <p/>
-   * <b>Authorized Roles:</b> <code>Sales Agent</code>
+   * <b>Authorized Roles:</b> <code>`Sales Agent`</code>
    *
    * @param pProduct My default comment
    * @return boolean
@@ -75,7 +75,7 @@ public interface RESTProductServiceReactive {
 
   /**
    * <p/>
-   * <b>Authorized Roles:</b> <code>Sales Agent</code>
+   * <b>Authorized Roles:</b> <code>`Sales Agent`</code>
    *
    * @param pContext Default Comment
    * @return {@link Sortiment}
@@ -85,7 +85,7 @@ public interface RESTProductServiceReactive {
 
   /**
    * <p/>
-   * <b>Authorized Roles:</b> <code>Sales Agent</code>
+   * <b>Authorized Roles:</b> <code>`Sales Agent`</code>
    *
    * @param pChannelCode
    * @return {@link ChannelCode}
@@ -95,21 +95,21 @@ public interface RESTProductServiceReactive {
 
   /**
    * <p/>
-   * <b>Authorized Roles:</b> <code>Customer, Sales Agent</code>
+   * <b>Authorized Roles:</b> <code>`Customer`, `Sales Agent`</code>
    */
   @MyNotNullServiceParam
   Mono<Void> ping( );
 
   /**
    * <p/>
-   * <b>Authorized Roles:</b> <code>Sales Agent</code>
+   * <b>Authorized Roles:</b> <code>`Sales Agent`</code>
    */
   @MyNotNullServiceParam
   Mono<Void> testInit( );
 
   /**
    * <p/>
-   * <b>Authorized Roles:</b> <code>Sales Agent</code>
+   * <b>Authorized Roles:</b> <code>`Sales Agent`</code>
    *
    * @param pChannelCode
    * @return {@link List<CurrencyCode>}
@@ -118,7 +118,7 @@ public interface RESTProductServiceReactive {
 
   /**
    * <p/>
-   * <b>Authorized Roles:</b> <code>Sales Agent</code>
+   * <b>Authorized Roles:</b> <code>`Sales Agent`</code>
    *
    * @param pChannelCode
    * @return {@link List<CurrencyCode>}
@@ -127,7 +127,7 @@ public interface RESTProductServiceReactive {
 
   /**
    * <p/>
-   * <b>Authorized Roles:</b> <code>Sales Agent</code>
+   * <b>Authorized Roles:</b> <code>`Sales Agent`</code>
    *
    * @param pBigDecimalHeader
    * @param pIntCookieParam
@@ -140,7 +140,7 @@ public interface RESTProductServiceReactive {
 
   /**
    * <p/>
-   * <b>Authorized Roles:</b> <code>Sales Agent</code>
+   * <b>Authorized Roles:</b> <code>`Sales Agent`</code>
    *
    * @param pChannelType
    * @param pTimeUnit
@@ -152,7 +152,7 @@ public interface RESTProductServiceReactive {
 
   /**
    * <p/>
-   * <b>Authorized Roles:</b> <code>Sales Agent</code>
+   * <b>Authorized Roles:</b> <code>`Sales Agent`</code>
    *
    * @param pChannelType
    * @param pTimeUnit
@@ -164,7 +164,7 @@ public interface RESTProductServiceReactive {
 
   /**
    * <p/>
-   * <b>Authorized Roles:</b> <code>Sales Agent</code>
+   * <b>Authorized Roles:</b> <code>`Sales Agent`</code>
    *
    * @param pPath
    * @param pStartTimestamp
@@ -189,7 +189,7 @@ public interface RESTProductServiceReactive {
 
   /**
    * <p/>
-   * <b>Authorized Roles:</b> <code>Sales Agent</code>
+   * <b>Authorized Roles:</b> <code>`Sales Agent`</code>
    *
    * @param pPath
    * @param pQueryParams
@@ -200,7 +200,7 @@ public interface RESTProductServiceReactive {
 
   /**
    * <p/>
-   * <b>Authorized Roles:</b> <code>Sales Agent</code>
+   * <b>Authorized Roles:</b> <code>`Sales Agent`</code>
    *
    * @param pPath
    * @param pOffsetDateTime
@@ -225,7 +225,7 @@ public interface RESTProductServiceReactive {
 
   /**
    * <p/>
-   * <b>Authorized Roles:</b> <code>Sales Agent</code>
+   * <b>Authorized Roles:</b> <code>`Sales Agent`</code>
    *
    * @param pPath
    * @param pHeaderParams
@@ -236,7 +236,7 @@ public interface RESTProductServiceReactive {
 
   /**
    * <p/>
-   * <b>Authorized Roles:</b> <code>Sales Agent</code>
+   * <b>Authorized Roles:</b> <code>`Sales Agent`</code>
    *
    * @param pChannelTypeParam
    * @param pContext
@@ -247,7 +247,7 @@ public interface RESTProductServiceReactive {
 
   /**
    * <p/>
-   * <b>Authorized Roles:</b> <code>Sales Agent</code>
+   * <b>Authorized Roles:</b> <code>`Sales Agent`</code>
    *
    * @param query1
    * @param query2
@@ -258,7 +258,7 @@ public interface RESTProductServiceReactive {
 
   /**
    * <p/>
-   * <b>Authorized Roles:</b> <code>Sales Agent</code>
+   * <b>Authorized Roles:</b> <code>`Sales Agent`</code>
    *
    * @param pComplextBookingID
    * @return boolean
@@ -267,7 +267,7 @@ public interface RESTProductServiceReactive {
 
   /**
    * <p/>
-   * <b>Authorized Roles:</b> <code>Sales Agent</code>
+   * <b>Authorized Roles:</b> <code>`Sales Agent`</code>
    *
    * @param pBookingID
    * @param pBookingCode
@@ -280,7 +280,7 @@ public interface RESTProductServiceReactive {
 
   /**
    * <p/>
-   * <b>Authorized Roles:</b> <code>Sales Agent</code>
+   * <b>Authorized Roles:</b> <code>`Sales Agent`</code>
    *
    * @param pContext
    * @return {@link String}
@@ -290,7 +290,7 @@ public interface RESTProductServiceReactive {
 
   /**
    * <p/>
-   * <b>Authorized Roles:</b> <code>Sales Agent</code>
+   * <b>Authorized Roles:</b> <code>`Sales Agent`</code>
    *
    * @param pIntegerArray
    * @return {@link String}
@@ -300,7 +300,7 @@ public interface RESTProductServiceReactive {
 
   /**
    * <p/>
-   * <b>Authorized Roles:</b> <code>Sales Agent</code>
+   * <b>Authorized Roles:</b> <code>`Sales Agent`</code>
    *
    * @param pBookingCode
    * @return {@link String}
@@ -310,7 +310,7 @@ public interface RESTProductServiceReactive {
 
   /**
    * <p/>
-   * <b>Authorized Roles:</b> <code>Sales Agent</code>
+   * <b>Authorized Roles:</b> <code>`Sales Agent`</code>
    *
    * @param pBeanParam
    * @return {@link String}
@@ -320,7 +320,7 @@ public interface RESTProductServiceReactive {
 
   /**
    * <p/>
-   * <b>Authorized Roles:</b> <code>Sales Agent</code>
+   * <b>Authorized Roles:</b> <code>`Sales Agent`</code>
    *
    * @param pIntValues
    * @return {@link String}
@@ -330,7 +330,7 @@ public interface RESTProductServiceReactive {
 
   /**
    * <p/>
-   * <b>Authorized Roles:</b> <code>Sales Agent</code>
+   * <b>Authorized Roles:</b> <code>`Sales Agent`</code>
    *
    * @param pStrings
    * @return {@link String}
@@ -340,7 +340,7 @@ public interface RESTProductServiceReactive {
 
   /**
    * <p/>
-   * <b>Authorized Roles:</b> <code>Sales Agent</code>
+   * <b>Authorized Roles:</b> <code>`Sales Agent`</code>
    *
    * @param pIntegers
    * @return {@link String}
@@ -350,7 +350,7 @@ public interface RESTProductServiceReactive {
 
   /**
    * <p/>
-   * <b>Authorized Roles:</b> <code>Sales Agent</code>
+   * <b>Authorized Roles:</b> <code>`Sales Agent`</code>
    *
    * @param pBean
    * @return {@link String}
@@ -360,7 +360,7 @@ public interface RESTProductServiceReactive {
 
   /**
    * <p/>
-   * <b>Authorized Roles:</b> <code>Sales Agent</code>
+   * <b>Authorized Roles:</b> <code>`Sales Agent`</code>
    *
    * @param pCodes
    * @param pLongCodes
@@ -376,7 +376,7 @@ public interface RESTProductServiceReactive {
 
   /**
    * <p/>
-   * <b>Authorized Roles:</b> <code>Sales Agent</code>
+   * <b>Authorized Roles:</b> <code>`Sales Agent`</code>
    *
    * @param pQueryBean
    * @return {@link String}
@@ -386,7 +386,7 @@ public interface RESTProductServiceReactive {
 
   /**
    * <p/>
-   * <b>Authorized Roles:</b> <code>Sales Agent</code>
+   * <b>Authorized Roles:</b> <code>`Sales Agent`</code>
    *
    * @param pMultiValuedBean
    * @return {@link String}
@@ -397,7 +397,7 @@ public interface RESTProductServiceReactive {
 
   /**
    * <p/>
-   * <b>Authorized Roles:</b> <code>Sales Agent</code>
+   * <b>Authorized Roles:</b> <code>`Sales Agent`</code>
    *
    * @param pNames
    * @param pInts
@@ -416,7 +416,7 @@ public interface RESTProductServiceReactive {
 
   /**
    * <p/>
-   * <b>Authorized Roles:</b> <code>Sales Agent</code>
+   * <b>Authorized Roles:</b> <code>`Sales Agent`</code>
    *
    * @param pBookingID
    */
@@ -425,7 +425,7 @@ public interface RESTProductServiceReactive {
 
   /**
    * <p/>
-   * <b>Authorized Roles:</b> <code>Sales Agent</code>
+   * <b>Authorized Roles:</b> <code>`Sales Agent`</code>
    *
    * @param pBookingID
    */
@@ -434,7 +434,7 @@ public interface RESTProductServiceReactive {
 
   /**
    * <p/>
-   * <b>Authorized Roles:</b> <code>Sales Agent</code>
+   * <b>Authorized Roles:</b> <code>`Sales Agent`</code>
    *
    * @param pContext
    * @return {@link String}
@@ -444,7 +444,7 @@ public interface RESTProductServiceReactive {
 
   /**
    * <p/>
-   * <b>Authorized Roles:</b> <code>Sales Agent</code>
+   * <b>Authorized Roles:</b> <code>`Sales Agent`</code>
    *
    * @param pAnInt
    * @param pAnInteger

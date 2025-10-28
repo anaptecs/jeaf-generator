@@ -10,7 +10,7 @@ import com.anaptecs.annotations.MyNotNullServiceParam;
 public interface MonitoringService {
   /**
    * <p/>
-   * <b>Authorized Roles:</b> <code>NO_ACCESS</code>
+   * <b>Authorized Roles:</b> <code>`NO_ACCESS`</code>
    *
    * @return {@link String}
    */

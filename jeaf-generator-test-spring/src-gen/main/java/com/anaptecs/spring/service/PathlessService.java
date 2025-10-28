@@ -10,7 +10,7 @@ import com.anaptecs.annotations.MyNotNullServiceParam;
 public interface PathlessService {
   /**
    * <p/>
-   * <b>Authorized Roles:</b> <code>NO_ACCESS</code>
+   * <b>Authorized Roles:</b> <code>`NO_ACCESS`</code>
    *
    * @return {@link String}
    */
@@ -19,7 +19,7 @@ public interface PathlessService {
 
   /**
    * <p/>
-   * <b>Authorized Roles:</b> <code>NO_ACCESS</code>
+   * <b>Authorized Roles:</b> <code>`NO_ACCESS`</code>
    *
    * @param pHeaderBean
    * @param pTechContext
@@ -29,7 +29,7 @@ public interface PathlessService {
 
   /**
    * <p/>
-   * <b>Authorized Roles:</b> <code>NO_ACCESS</code>
+   * <b>Authorized Roles:</b> <code>`NO_ACCESS`</code>
    *
    * @param pQuery
    * @return {@link String}

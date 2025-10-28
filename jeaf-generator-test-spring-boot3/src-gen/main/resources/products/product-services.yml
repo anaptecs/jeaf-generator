@@ -1255,7 +1255,7 @@ paths:
       description: |
         Operation returns all available product.
         <br><br>
-        Authorized Roles: Customer, Sales Agent
+        Authorized Roles: `Customer`, `Sales Agent`
       operationId: rest.getProducts
       externalDocs:
         url: https://jeaf.anaptecs.de/link2
@@ -1284,7 +1284,7 @@ paths:
       description: |
         
         <br><br>
-        Authorized Roles: Sales Agent
+        Authorized Roles: `Sales Agent`
       operationId: rest.createProduct
       requestBody:
         description: |
@@ -1313,7 +1313,7 @@ paths:
       description: |
         
         <br><br>
-        Authorized Roles: Customer, Sales Agent
+        Authorized Roles: `Customer`, `Sales Agent`
       operationId: rest.ping
       responses:
         '204':
@@ -1329,7 +1329,7 @@ paths:
       description: |
         
         <br><br>
-        Authorized Roles: Sales Agent
+        Authorized Roles: `Sales Agent`
       operationId: rest.getProduct
       parameters:
         - name: id
@@ -1359,7 +1359,7 @@ paths:
       description: |
         
         <br><br>
-        Authorized Roles: Sales Agent
+        Authorized Roles: `Sales Agent`
       operationId: rest.getSortiment
       parameters:
         - name: token
@@ -1420,7 +1420,7 @@ paths:
       description: |
         
         <br><br>
-        Authorized Roles: Sales Agent
+        Authorized Roles: `Sales Agent`
       operationId: rest.createChannelCode
       requestBody:
         required: true
@@ -1454,7 +1454,7 @@ paths:
       description: |
         
         <br><br>
-        Authorized Roles: Sales Agent
+        Authorized Roles: `Sales Agent`
       operationId: testInit
       responses:
         '204':
@@ -1470,7 +1470,7 @@ paths:
       description: |
         
         <br><br>
-        Authorized Roles: Sales Agent
+        Authorized Roles: `Sales Agent`
       operationId: getSupportedCurrencies
       parameters:
         - name: channelCode
@@ -1511,7 +1511,7 @@ paths:
       description: |
         
         <br><br>
-        Authorized Roles: Sales Agent
+        Authorized Roles: `Sales Agent`
       operationId: getSupportedCurrenciesAsync
       parameters:
         - name: channelCode
@@ -1552,7 +1552,7 @@ paths:
       description: |
         
         <br><br>
-        Authorized Roles: Sales Agent
+        Authorized Roles: `Sales Agent`
       operationId: testParams
       parameters:
         - name: Big-Header
@@ -1593,7 +1593,7 @@ paths:
       description: |
         
         <br><br>
-        Authorized Roles: Sales Agent
+        Authorized Roles: `Sales Agent`
       operationId: testEnumParams
       parameters:
         - name: channelType
@@ -1625,7 +1625,7 @@ paths:
       description: |
         
         <br><br>
-        Authorized Roles: Sales Agent
+        Authorized Roles: `Sales Agent`
       operationId: testEnumHeaderParams
       parameters:
         - name: Channel-Type
@@ -1657,7 +1657,7 @@ paths:
       description: |
         
         <br><br>
-        Authorized Roles: Sales Agent
+        Authorized Roles: `Sales Agent`
       operationId: rest.testDateQueryParams
       parameters:
         - name: path
@@ -1757,7 +1757,7 @@ paths:
       description: |
         
         <br><br>
-        Authorized Roles: Sales Agent
+        Authorized Roles: `Sales Agent`
       operationId: rest.testDateQueryParamsBean
       parameters:
         - name: offsetDateTime
@@ -1850,7 +1850,7 @@ paths:
       description: |
         
         <br><br>
-        Authorized Roles: Sales Agent
+        Authorized Roles: `Sales Agent`
       operationId: rest.testDateHeaderParams
       parameters:
         - name: path
@@ -1950,7 +1950,7 @@ paths:
       description: |
         
         <br><br>
-        Authorized Roles: Sales Agent
+        Authorized Roles: `Sales Agent`
       operationId: rest.testDateHeaderParamsBean
       parameters:
         - name: Offset-Date-Time
@@ -2043,7 +2043,7 @@ paths:
       description: |
         
         <br><br>
-        Authorized Roles: Sales Agent
+        Authorized Roles: `Sales Agent`
       operationId: testCookieParams
       parameters:
         - name: token
@@ -2116,7 +2116,7 @@ paths:
       description: |
         
         <br><br>
-        Authorized Roles: Sales Agent
+        Authorized Roles: `Sales Agent`
       operationId: testOptionalQueryParams
       parameters:
         - name: query1
@@ -2147,7 +2147,7 @@ paths:
       description: |
         
         <br><br>
-        Authorized Roles: Sales Agent
+        Authorized Roles: `Sales Agent`
       operationId: processComplexBookingID
       parameters:
         - name: bookingID
@@ -2174,7 +2174,7 @@ paths:
       description: |
         
         <br><br>
-        Authorized Roles: Sales Agent
+        Authorized Roles: `Sales Agent`
       operationId: testDataTypesAsHeaderParam
       parameters:
         - name: BookingID
@@ -2214,7 +2214,7 @@ paths:
       description: |
         
         <br><br>
-        Authorized Roles: Sales Agent
+        Authorized Roles: `Sales Agent`
       operationId: testDataTypesAsHeaderBeanParam
       parameters:
         - name: bookingID
@@ -2256,7 +2256,7 @@ paths:
       description: |
         
         <br><br>
-        Authorized Roles: Sales Agent
+        Authorized Roles: `Sales Agent`
       operationId: testPrimitiveArrays
       requestBody:
         content:
@@ -2284,7 +2284,7 @@ paths:
       description: |
         
         <br><br>
-        Authorized Roles: Sales Agent
+        Authorized Roles: `Sales Agent`
       operationId: testDataTypeAsQueryParam
       parameters:
         - name: bookingCode
@@ -2311,7 +2311,7 @@ paths:
       description: |
         
         <br><br>
-        Authorized Roles: Sales Agent
+        Authorized Roles: `Sales Agent`
       operationId: testDataTypeAsBeanQueryParam
       parameters:
         - name: bookingCode
@@ -2352,7 +2352,7 @@ paths:
       description: |
         
         <br><br>
-        Authorized Roles: Sales Agent
+        Authorized Roles: `Sales Agent`
       operationId: testPrimitiveArrayAsQueryParam
       parameters:
         - name: intValues
@@ -2380,7 +2380,7 @@ paths:
       description: |
         
         <br><br>
-        Authorized Roles: Sales Agent
+        Authorized Roles: `Sales Agent`
       operationId: testSimpleTypesAsQueryParams
       parameters:
         - name: strings
@@ -2407,7 +2407,7 @@ paths:
       description: |
         
         <br><br>
-        Authorized Roles: Sales Agent
+        Authorized Roles: `Sales Agent`
       operationId: testPrimitiveWrapperArrayAsQueryParam
       parameters:
         - name: integers
@@ -2438,7 +2438,7 @@ paths:
       description: |
         
         <br><br>
-        Authorized Roles: Sales Agent
+        Authorized Roles: `Sales Agent`
       operationId: testMultivaluedQueryParamsBean
       parameters:
         - name: intArray
@@ -2491,7 +2491,7 @@ paths:
       description: |
         
         <br><br>
-        Authorized Roles: Sales Agent
+        Authorized Roles: `Sales Agent`
       operationId: testMulitvaluedDataTypeAsQueryParam
       parameters:
         - name: codes
@@ -2549,7 +2549,7 @@ paths:
       description: |
         
         <br><br>
-        Authorized Roles: Sales Agent
+        Authorized Roles: `Sales Agent`
       operationId: testMulitvaluedDataTypeAsBeanQueryParam
       parameters:
         - name: longCodes
@@ -2651,7 +2651,7 @@ paths:
       description: |
         
         <br><br>
-        Authorized Roles: Sales Agent
+        Authorized Roles: `Sales Agent`
       operationId: testMultiValuedHeaderFieldsInBeanParam
       parameters:
         - name: names
@@ -2764,7 +2764,7 @@ paths:
       description: |
         
         <br><br>
-        Authorized Roles: Sales Agent
+        Authorized Roles: `Sales Agent`
       operationId: testMultiValuedHeaderFields
       parameters:
         - name: names
@@ -2839,7 +2839,7 @@ paths:
       description: |
         
         <br><br>
-        Authorized Roles: Sales Agent
+        Authorized Roles: `Sales Agent`
       operationId: testBookingIDAsPathParam
       parameters:
         - name: bookingID
@@ -2862,7 +2862,7 @@ paths:
       description: |
         
         <br><br>
-        Authorized Roles: Sales Agent
+        Authorized Roles: `Sales Agent`
       operationId: testBookingIDAsHeaderParam
       parameters:
         - name: bookingID
@@ -2884,7 +2884,7 @@ paths:
       description: |
         
         <br><br>
-        Authorized Roles: Sales Agent
+        Authorized Roles: `Sales Agent`
       operationId: testContextWithPrimitives
       parameters:
         - name: aBoolean
@@ -2945,7 +2945,7 @@ paths:
       description: |
         
         <br><br>
-        Authorized Roles: Sales Agent
+        Authorized Roles: `Sales Agent`
       operationId: testPrimitivesAsParams
       parameters:
         - name: pAnInt
