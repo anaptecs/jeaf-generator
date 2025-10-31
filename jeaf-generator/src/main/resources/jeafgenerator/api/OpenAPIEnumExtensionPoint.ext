@@ -1,9 +1,43 @@
+// Target Output: OpenAPI
+// Description:
+//		Extension point can be used to add dynamic literals to enumeration
+//		definitions inside an  OpenAPI specification. 
+
+
+// Target Output: OpenAPI
+// since: #1
+// Description:
+//		Function returns an list of names for dynamic literals.
+//
+// Note:
+//		It's required that all lists returned by the function defined here have
+//		the same length
 
 cached List[String] getDynamicLiteralNames(JMM::OpenAPIEnumeration enum):
     {}.toList();
     
+
+// Target Output: OpenAPI
+// since: #1
+// Description:
+//		Function returns an list of description for dynamic literals.
+//
+// Note:
+//		It's required that all lists returned by the function defined here have
+//		the same length
+
 cached List[String] getDynamicLiteralDescriptions(JMM::OpenAPIEnumeration enum):
     {}.toList();
+
+
+// Target Output: OpenAPI
+// since: #1
+// Description:
+//		Function returns an list of deprecation flags for dynamic literals.
+//
+// Note:
+//		It's required that all lists returned by the function defined here have
+//		the same length
     
 cached List[boolean] getDynamicLiteralDeprecations(JMM::OpenAPIEnumeration enum):
     {}.toList();

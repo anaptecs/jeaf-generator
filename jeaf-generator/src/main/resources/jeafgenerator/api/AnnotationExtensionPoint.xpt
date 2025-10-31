@@ -1,4 +1,14 @@
 «IMPORT uml»
 
+// Target Output: Java
+// since: #1
+// Description:
+//		Extension Point can be used to add custom annotations to generated Java 
+//		code. It can be used for types (e.g. classes, enumerations) as well as 
+//		for other "Namedelements" like properties and operations. 
+//
+// Examples: 
+//		- Add custom deprecation annotation to a class or property
+
 «DEFINE GenerateCustomAnnotations FOR uml::NamedElement»
 «ENDDEFINE»

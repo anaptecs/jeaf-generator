@@ -1,11 +1,40 @@
 «IMPORT uml»
 «IMPORT JMM»
 
+// Target Output: Java
+// Description:
+//		Extension point can be used to customize generated classes for 
+//		stereotypes POJO and ServiceObject 
+
+
+// Target Output: Java
+// since: #1
+// Description:
+//		Extension point can be used to add custom code before a class declaration
+
 «DEFINE BeforeClassDeclaration FOR Class»
 «ENDDEFINE»
 
+
+// Target Output: Java
+// since: #1
+// Description:
+//		Extension point can be used to add a custom parent class in case that a 
+//		class does not have a base class in the UML model
+
 «DEFINE ParentClassDeclaration FOR Class»
 «ENDDEFINE»
+
+
+// Target Output: Java
+// since: #1
+// Description:
+//		Extension point can be used to adjust the interfaces that are implemented 
+//		by a class.
+//		
+// Parameters:
+//		interfaces: List of fully qualified names of the interfaces that are implemented by a 
+//		class according to the UML model
 
 «DEFINE ImplementInterfaces(List[String] interfaces) FOR Class»
 	«IF interfaces.isEmpty == false»
@@ -13,30 +42,114 @@
 	«ENDIF»
 «ENDDEFINE»
 
+
+// Target Output: Java
+// since: #1
+// Description:
+//		Extension point can be used to add custom code before a property 
+//		declaration of a POJO or ServiceObject
+//
+// Parameters:
+//		fqn: Fully qualified name of the type of the property
+
 «DEFINE BeforeClassPropertyDeclaration(String fqn) FOR Property»
 «ENDDEFINE»
+
+
+// Target Output: Java
+// since: #1
+// Description:
+//		Extension point can be used to add custom code after a property 
+//		declaration of a POJO or ServiceObject
+//
+// Parameters:
+//		fqn: Fully qualified name of the type of the property
 
 «DEFINE AfterClassPropertyDeclaration(String fqn) FOR Property»
 «ENDDEFINE»
 
+
+// Target Output: Java
+// since: #1
+// Description:
+//     Extension point can be used to add custom code constructor with builder
+//	   as parameter of POJO and ServiceObject
+//
+// Parameters:
+//		fqn: Fully qualified name of the type of the property
+//		builderParamName: Name of the parameter with the builder
+
 «DEFINE AfterBuilderConstructorPropertyInit(String fqn, String builderParamName) FOR Property»
 «ENDDEFINE»
+
+
+// Target Output: Java
+// since: #1
+// Description:
+//     Extension point can be used to add after accessor methods of a property
+//
+// Parameters:
+//		fqn: Fully qualified name of the type of the property
 
 «DEFINE AfterClassPropertyAccessors(String fqn) FOR Property»
 «ENDDEFINE»
 
+
+//
 // Property handling inside builders
+//
+
+
+// Target Output: Java
+// since: #1
+// Description:
+//		Extension point can be used to add custom code before a property 
+//		declaration inside a builder
+//
+// Parameters:
+//		fqn: Fully qualified name of the type of the property
+
 «DEFINE BeforeBuilderPropertyDeclaration(String fqn) FOR Property»
 «ENDDEFINE»
+
+
+// Target Output: Java
+// since: #1
+// Description:
+//		Extension point can be used to add custom code after a property 
+//		declaration inside a builder
+//
+// Parameters:
+//		fqn: Fully qualified name of the type of the property
 
 «DEFINE AfterBuilderPropertyDeclaration(String fqn) FOR Property»
 «ENDDEFINE»
 
+// Target Output: Java
+// since: #1
+// Description:
+//		Extension point can be used to add after accessor methods of a property
+//		inside a builder
+//
+// Parameters:
+//		fqn: Fully qualified name of the type of the property
+
 «DEFINE AfterBuilderPropertyAccessors(String fqn, String builderClassName) FOR Property»
 «ENDDEFINE»
 
+// Target Output: Java
+// since: #1
+// Description:
+//		Extension point can be used to add customer operations to a class
+
 «DEFINE CustomOperations FOR Class»
 «ENDDEFINE»
+
+// Target Output: Java
+// since: #1
+// Description:
+//		Extension point can be used to add customer operations to a builder of 
+//		class
 
 «DEFINE CustomBuilderOperations FOR Class»
 «ENDDEFINE»

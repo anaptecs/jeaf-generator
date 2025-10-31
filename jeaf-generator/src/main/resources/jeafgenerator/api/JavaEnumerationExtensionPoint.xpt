@@ -1,5 +1,13 @@
 «IMPORT uml»
 «IMPORT JMM»
 
+// Target Output: Java
+// since: #1
+// Description:
+//		Extension point can be used to add literals to an enumeration that are
+//		not present in the UML model (aka "dynamic literals"). It's also 
+//		supported that an enumeration has literals that are defined in the UML
+//		model and some others are added dynamically.
+
 «DEFINE AddDynamicLiterals FOR JEAFEnumeration»
 «ENDDEFINE»

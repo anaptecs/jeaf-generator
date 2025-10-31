@@ -1,15 +1,56 @@
 «IMPORT uml»
 «IMPORT JMM»
 
+// Target Output: Java
+// Description:
+//		Extension point can be used to customize generated service interfaces 
+
+
+// Target Output: Java
+// since: #1
+// Description:
+//		Extension point can be used to add custom code before a service 
+//		interface declaration
+
 «DEFINE BeforeServiceInterfaceDeclaration FOR JEAFService»
 «ENDDEFINE»
+
+
+// Target Output: Java
+// since: #1
+// Description:
+//		Extension point can be used to add custom code after a service 
+//		operation declaration
 
 «DEFINE AfterOperationDeclaration FOR JEAFService»
 «ENDDEFINE»
 
+
+// Target Output: Java
+// since: #1
+// Description:
+//		Extension point can be used to add a default implementation for a 
+//		service operation. This is only possible if the operation is tagged
+//		with stereotype "DefaultOperation" in the UML model
+//
+// Note:
+//		This operation is deprecated. Please use reactive variant directly below instead.
+
 «REM»Template is deprecated. Please use variant with paramater "reactive" instead.«ENDREM»
 «DEFINE ProvideDefaultImplementation FOR Operation»
 «ENDDEFINE»
+
+
+// Target Output: Java
+// since: #1
+// Description:
+//		Extension point can be used to add a default implementation for a 
+//		service operation. This is only possible if the operation is tagged
+//		with stereotype "DefaultOperation" in the UML model
+//
+// Parameters:
+//		reactive: Parameter defines if the service operation is generated in 
+//		reactive style or not.
 
 «DEFINE GenerateDefaultImplementation(boolean reactive) FOR Operation»
 «ENDDEFINE»
