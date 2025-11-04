@@ -33,7 +33,7 @@ import openapitools.JSON;
 @JsonPropertyOrder({
   BidirectA.JSON_PROPERTY_PARENT
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.17.0")
 public class BidirectA {
   public static final String JSON_PROPERTY_PARENT = "parent";
   @javax.annotation.Nonnull

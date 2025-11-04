@@ -34,7 +34,7 @@ import openapitools.JSON;
   MoneyAmount.JSON_PROPERTY_AMOUNT,
   MoneyAmount.JSON_PROPERTY_CURRENCY_CODE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.17.0")
 public class MoneyAmount {
   public static final String JSON_PROPERTY_AMOUNT = "amount";
   @javax.annotation.Nonnull

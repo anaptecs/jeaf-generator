@@ -33,7 +33,7 @@ import openapitools.JSON;
 @JsonPropertyOrder({
   Message.JSON_PROPERTY_TEXT
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.17.0")
 public class Message {
   public static final String JSON_PROPERTY_TEXT = "text";
   @javax.annotation.Nonnull

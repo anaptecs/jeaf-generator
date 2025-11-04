@@ -33,10 +33,10 @@ package «packageName()»;
 	  )«ENDIF»	  
 	«ENDFOREACH»
 	«IF this.hasDynamicLiterals»
-	   «EXPAND jeafgenerator::api::JavaEnumerationExtensionPoint::AddDynamicLiterals» 
+	   «EXPAND jeafgenerator::api::JavaEnumerationExtensionPoint::AddDynamicLiterals»
 	«ENDIF»
 	«IF extensibleEnum && this.hasUnknownLiteral() == false»
-	   «IF this.ownedLiteral.isEmpty == false»,«ENDIF»
+	    «IF this.ownedLiteral.isEmpty == false || this.hasDynamicLiterals»,«ENDIF»
 		/**
 		 * Literal UNKNOWN is used in case that an unknown literal of this enumeration is received e.g. via an external interface. 
 		 */
