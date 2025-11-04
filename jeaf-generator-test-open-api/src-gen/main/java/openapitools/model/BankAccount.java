@@ -33,7 +33,7 @@ import openapitools.JSON;
 @JsonPropertyOrder({
   BankAccount.JSON_PROPERTY_IBAN
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.17.0")
 public class BankAccount {
   public static final String JSON_PROPERTY_IBAN = "iban";
   @javax.annotation.Nonnull

@@ -41,7 +41,7 @@ import openapitools.JSON;
   Campaign.JSON_PROPERTY_MORE_LINK_I_DS,
   Campaign.JSON_PROPERTY_DISCOUNT_OFFER_I_DS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.16.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.17.0")
 public class Campaign {
   public static final String JSON_PROPERTY_THE_LINK_I_D = "theLinkID";
   @Deprecated
