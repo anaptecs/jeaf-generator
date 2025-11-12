@@ -24,6 +24,13 @@
 		<tag>HEAD</tag>
 	</scm>
 	
+	<distributionManagement>
+		<snapshotRepository>
+			<id>github</id>
+			<url>https://maven.pkg.github.com/anaptecs/jeaf-generator</url>
+		</snapshotRepository>
+	</distributionManagement>
+
 	<properties>
 		<!-- Properties for versions of JEAF Maven Plugins -->
 		<maven.jeaf-plugin.version>1.8.0</maven.jeaf-plugin.version>
