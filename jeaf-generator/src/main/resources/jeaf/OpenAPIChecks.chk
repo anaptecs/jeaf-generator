@@ -83,5 +83,7 @@ context Property if owner.asNamedElement().runChecks("OpenAPIType") && ignore() 
 // Check for missing dependencies between OpenAPI specs
 context Property if owner.asNamedElement().runChecks("OpenAPIType") && runOpenAPIDependencyCheck () && ignore() == false ERROR this.getErrorMessage("9171", {name, owner.asNamedElement().name, type.name, this.getOwnOpenAPISpecification().name, this.getReferencedOpenAPISpecification().name}): this.checkOpenAPIDependencies();
 
-// Check for types that do not belong to an openAPI specification at all.
-context Property if owner.asNamedElement().runChecks("OpenAPIType") && owner.isOpenAPIType() && runOpenAPIDependencyCheck () && ignore() == false ERROR this.getErrorMessage("9172", {name, owner.asNamedElement().name, type.name}): this.checkForOrphanedOpenAPITypes();
+// Check for types that do not belong to an OpenAPI specification at all.
+context Property if owner.asNamedElement().runChecks("OpenAPIType") && owner.isOpenAPIType() && this.getNearestPackage().getOwnOpenAPISpecification() != null &&runOpenAPIDependencyCheck () && ignore() == false ERROR this.getErrorMessage("9172", {name, owner.asNamedElement().name, type.name}): this.checkForOrphanedOpenAPITypes();
+//context Property if owner.asNamedElement().runChecks("OpenAPIType") && owner.isOpenAPIType() && runOpenAPIDependencyCheck () && ignore() == false ERROR this.getErrorMessage("9172", {name, owner.asNamedElement().name, type.name}): this.getOwnOpenAPISpecification() != null;
+
