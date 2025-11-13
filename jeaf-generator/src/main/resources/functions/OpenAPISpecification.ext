@@ -95,5 +95,8 @@ private List[OpenAPISpecReference] getRecursiveOpenAPIDependencies(List[OpenAPI3
 cached OpenAPI3Specification getOpenAPISpecFromDependency(OpenAPISpecReference dependency):
 	dependency.supplier.typeSelect(OpenAPI3Specification);
 	
+cached OpenAPI3Specification getOwnOpenAPISpecification(NamedElement element):
+    element.getNearestPackage().getOpenAPISpecificationForPackage();
     
-    
+cached OpenAPI3Specification getOpenAPISpecificationForPackage(Package package):
+    package.getRelationships().typeSelect(Dependency).client.typeSelect(OpenAPI3Specification).first();
