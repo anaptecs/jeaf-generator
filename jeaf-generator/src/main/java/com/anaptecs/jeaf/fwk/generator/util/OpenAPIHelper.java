@@ -106,6 +106,7 @@ public class OpenAPIHelper {
     basicTypes.put("java.time.OffsetTime", "string");
     basicTypes.put("java.time.Duration", "string");
     basicTypes.put(URI.class.getName(), "string");
+    basicTypes.put("java.nio.ByteBuffer", "string");
 
     // Format mappings for byte
     formatMapping.put("byte", "int32");
@@ -156,6 +157,7 @@ public class OpenAPIHelper {
     formatMapping.put("java.time.Duration", "duration");
 
     formatMapping.put(URI.class.getName(), "uri");
+    formatMapping.put("java.nio.ByteBuffer", "byte");
 
     // Content type mapping
     contentTypeMapping.put("APPLICATION_XML", "application/xml");
