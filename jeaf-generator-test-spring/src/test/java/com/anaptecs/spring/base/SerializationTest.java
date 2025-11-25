@@ -8,6 +8,7 @@ package com.anaptecs.spring.base;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.IOException;
+import java.nio.ByteBuffer;
 
 import com.anaptecs.jeaf.rest.composite.impl.kryo.KryoCompositeTypeConverter;
 import com.anaptecs.spring.base.backward.SimpleBackwardCompatibility;
@@ -111,4 +112,13 @@ public class SerializationTest {
     assertEquals("OLDVALUE", lReadObject.getDeprecatedProperty());
   }
 
+  @Test
+  void testByteBufferSerialization( ) throws JsonProcessingException {
+    ByteBuffer lByteBuffer = ByteBuffer.wrap(new byte[] { 0, 1, 2, 3, 4, 5, 127 });
+    String lJSON = objectMapper.writeValueAsString(lByteBuffer);
+    System.out.println(lJSON);
+
+    ByteBuffer lReadObject = objectMapper.readValue(lJSON, ByteBuffer.class);
+    assertEquals(lByteBuffer, lReadObject);
+  }
 }
