@@ -274,11 +274,19 @@ public class GeneratorMojo extends AbstractMojo {
   private boolean cleanResourceTestGen;
 
   /**
-   * Whitelist of packages for the JEAF Generator. Model elements of all packages that match with the white list will be
-   * handled by JEAF Generator.
+   * White list of packages for the JEAF Generator. Model elements of all packages that match with the white list will
+   * be handled by JEAF Generator.
    */
   @Parameter(required = false, defaultValue = " ")
   private List<String> packages;
+
+  /**
+   * Switch can be used to activate so called multi-module workflow. This mode is intended to be used for Maven
+   * multi-module projects. In such cases the check of the UML model will be done only once in order to improve overall
+   * performance of the Maven build.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean useMultiModuleWorkflow;
 
   /**
    * List of resource files that should be ignored when generating message constants classes from resource files.
@@ -1654,6 +1662,10 @@ public class GeneratorMojo extends AbstractMojo {
     lLog.info("Ignored resource files:                           " + lIgnoredResources);
     lLog.info(" ");
 
+    if (useMultiModuleWorkflow) {
+      lLog.info("Using multi-module workflow:                      " + useMultiModuleWorkflow);
+    }
+
     if (generateCustomConstraints) {
       lLog.info("Generate Custmom Constraints:                     " + generateCustomConstraints);
     }
@@ -2140,6 +2152,9 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty("list.custom.checkfiles", this.getCustomCheckFiles());
 
       System.setProperty("list.pkgs.whitelist", this.getPackageWhitelist());
+      System.setProperty(PROPERTY_PREFIX + "runAllChecks", this.runAllChecks().toString());
+      System.setProperty(PROPERTY_PREFIX + "skipModelChecks", this.skipModelChecks().toString());
+
       System.setProperty("switch.gen.custom.constraints", generateCustomConstraints.toString());
       System.setProperty("switch.gen.global.parts", generateGlobalParts.toString());
       System.setProperty("switch.gen.services", generateServiceInterfaces.toString());
@@ -2430,15 +2445,74 @@ public class GeneratorMojo extends AbstractMojo {
         // Execute oAW Workflow Runner. This will cause the UML generation to be executed.
         this.getLog().info("Starting code generation from UML model " + umlModelFile);
         WorkflowRunner lRunner = new WorkflowRunner();
-        lSuccessful = lRunner.run("workflow.oaw", null, lParams, null);
+
+        String lWorkflowFile = this.getWorkflowFile();
+        lSuccessful = lRunner.run(lWorkflowFile, null, lParams, null);
       }
     }
-    else
-
-    {
+    else {
       lSuccessful = true;
     }
     return lSuccessful;
+  }
+
+  private Boolean skipModelChecks( ) {
+    boolean lSkipModelChecks;
+    if (useMultiModuleWorkflow) {
+      if (this.isTopLevelModule()) {
+        lSkipModelChecks = false;
+      }
+      else {
+        lSkipModelChecks = true;
+      }
+    }
+    else {
+      lSkipModelChecks = false;
+    }
+    return lSkipModelChecks;
+  }
+
+  private Boolean runAllChecks( ) {
+    boolean lRunAllChecks;
+    if (useMultiModuleWorkflow) {
+      if (this.isTopLevelModule()) {
+        lRunAllChecks = true;
+      }
+      else {
+        lRunAllChecks = false;
+      }
+    }
+    else {
+      lRunAllChecks = false;
+    }
+    return lRunAllChecks;
+  }
+
+  private String getWorkflowFile( ) {
+    String lWorkflowFile;
+    if (useMultiModuleWorkflow) {
+      if (this.isTopLevelModule()) {
+        lWorkflowFile = "multi-module-parent-workflow.oaw";
+      }
+      else {
+        lWorkflowFile = "multi-module-workflow.oaw";
+      }
+    }
+    else {
+      lWorkflowFile = "default-workflow.oaw";
+    }
+    return lWorkflowFile;
+  }
+
+  private boolean isTopLevelModule( ) {
+    boolean lTopLevelModule;
+    if (mavenProject.getModules().size() > 0) {
+      lTopLevelModule = true;
+    }
+    else {
+      lTopLevelModule = false;
+    }
+    return lTopLevelModule;
   }
 
   private void preCheckXMIFiles(List<String> pUMLFiles) throws MojoFailureException {
@@ -2620,7 +2694,8 @@ public class GeneratorMojo extends AbstractMojo {
   }
 
   private boolean isUMLGenerationRequested( ) {
-    return generateCustomConstraints | generateServiceInterfaces | generateReactiveServiceInterfaces
+    return this.runAllChecks() | generateCustomConstraints | generateServiceInterfaces
+        | generateReactiveServiceInterfaces
         | generateServiceProxies | generateServiceProviderInterfaces | generateServiceProviderImpls
         | generateRESTResources | generateReactiveRESTResources | generateRESTServiceProxies
         | generateReactiveRESTServiceProxies | generateRESTServiceProxyConfigFile | generateActivityInterfaces

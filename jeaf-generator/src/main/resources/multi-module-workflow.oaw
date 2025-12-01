@@ -8,7 +8,9 @@
     </component>
     
     <!-- Execute checks -->    
-    <component class="org.openarchitectureware.check.CheckComponent">
+    
+    <!-- Run Generator -->
+    <component id="generator" class="org.openarchitectureware.xpand2.Generator" skipOnErrors="true">
         <metaModel id="UmlMM" class="oaw.uml2.UML2MetaModel"/>
         <metaModel id="${profile.name}" class="oaw.uml2.profile.ProfileMetaModel">
             <profile value="${profile.file}"/>
@@ -16,43 +18,9 @@
         <metaModel id="CustomProfile" class="oaw.uml2.profile.ProfileMetaModel">
             <profile value="${customprofile.file}"/>
         </metaModel>
-        
-        <checkFile value="jeaf::VersionCheck"/>
-        
-        <expression value="${output.slot}.eAllContents.union({${output.slot}})"/>
-    </component>
-
-    <component class="org.openarchitectureware.check.CheckComponent">
-		<metaModel idRef="UmlMM"/>
-		<metaModel idRef="${profile.name}"/>
-		<metaModel idRef="CustomProfile"/>
-        
-        <checkFile value="jeaf::JEAFChecks"/>
-        <checkFile value="entity::EntityChecks"/>
-        <checkFile value="java::ObjectMapperChecks"/>
-        <checkFile value="jeaf::ValidationChecks"/>
-        <checkFile value="jeaf::OpenAPIChecks"/>
-        
-        <expression value="${output.slot}.eAllContents.union({${output.slot}})"/>
-    </component>
-    
-    <!-- Execute custom checks -->
-    <component class="com.anaptecs.jeaf.fwk.generator.workflow.CustomChecksWorkflow">
-		<metaModel idRef="UmlMM"/>
-		<metaModel idRef="${profile.name}"/>
-		<metaModel idRef="CustomProfile"/>
-		
-        <expression value="${output.slot}.eAllContents.union({${output.slot}})"/>
-    </component>
-    
-    <!-- Run Generator -->
-    <component id="generator" class="org.openarchitectureware.xpand2.Generator" skipOnErrors="true">
-		<metaModel idRef="UmlMM"/>
-		<metaModel idRef="${profile.name}"/>
-		<metaModel idRef="CustomProfile"/>
 
 		<fileEncoding value="UTF-8"/>
-		<!-- Fuer jedes 'model' im slot model rufe Define 'Root' im template 'Root' auf -->
+		<!-- Call EXPAND to run "root" template for every model element -->
 		<expand value="${template.root} FOR ${output.slot}"/>
 		
 		<outlet name="src_gen" path="${path.src.gen}/" overwrite="true"/>
@@ -78,7 +46,7 @@
 		<metaModel idRef="CustomProfile"/>
 
 		<fileEncoding value="UTF-8"/>
-		<!-- Fuer jedes 'model' im slot model rufe Define 'Root' im template 'Root' auf -->
+		<!-- Call EXPAND to run "root" template for every model element -->
 		<expand value="OpenAPIRoot::Root FOR ${output.slot}"/>
 		
 		<outlet name="src_gen" path="${path.src.gen}/" overwrite="true"/>
