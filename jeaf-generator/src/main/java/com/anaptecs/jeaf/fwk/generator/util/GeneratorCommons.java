@@ -57,6 +57,8 @@ public class GeneratorCommons {
    * Constant defines the name of the system property which contains the package white list of the generator.
    */
   public static final String GENERATOR_WHITELIST_PROPERTY = "list.pkgs.whitelist";
+  
+  public static final String PROPERTY_PREFIX = "jeaf.generator.";
 
   /**
    * Constant defines the name of the system property which enables the generation of public parts from the model.
@@ -690,6 +692,14 @@ public class GeneratorCommons {
 
     // Return result of white list check.
     return lIsInWhitelist;
+  }
+  
+  public static boolean runAllChecks(){
+	return SystemProperties.getBooleanProperty(PROPERTY_PREFIX + "runAllChecks", true);
+  }
+
+  public static boolean skipModelChecks(){
+	return SystemProperties.getBooleanProperty(PROPERTY_PREFIX + "skipModelChecks", true);
   }
 
   /**
@@ -1608,67 +1618,74 @@ public class GeneratorCommons {
 
   public static boolean shouldStereotypeBeChecked(String pStereotype) {
     boolean lRunChecks;
-    if ("POJO".equals(pStereotype)) {
-      lRunChecks = generatePOJOs();
+    if(runAllChecks()){
+    	lRunChecks = true;
     }
-    else if ("OpenAPIType".equals(pStereotype)
-        || "OpenAPIDataType".equals(pStereotype)
-        || "OpenAPI3Specification".equals(pStereotype)
-        || "OpenAPIResponse".equals(pStereotype)) {
-      lRunChecks = generateOpenAPISpec();
-    }
-    // JEAFEnumeration
-    else if ("JEAFEnumeration".equals(pStereotype)) {
-      lRunChecks = generateServiceObjects() | generatePOJOs()
-          | generateDomainObjects();
-    }
-    // JEAFComponent
-    else if ("JEAFComponent".equals(pStereotype)) {
-      lRunChecks = generateComponentImplClasses()
-          | generateComponentRuntimeClasses();
-    }
-    // DomainObject
-    else if ("DomainObject".equals(pStereotype)) {
-      lRunChecks = generateDomainObjects();
-    }
-    // PersistentObject
-    else if ("PersistentObject".equals(pStereotype)
-        || "Role".equals(pStereotype)) {
-      lRunChecks = generatePersistentObjects();
-    }
-    // ServiceObject, QueryObject
-    else if ("ServiceObject".equals(pStereotype)
-        || "QueryObject".equals(pStereotype)) {
-      lRunChecks = generateServiceObjects();
-    }
-    // JEAFService
-    else if ("JEAFService".equals(pStereotype)) {
-      lRunChecks = generateServices() || generateServiceProxies();
-    }
-    // JEAFActivity
-    else if ("JEAFActivity".equals(pStereotype)) {
-      lRunChecks = generateActivityInterfaces() | generateActivityImpls();
-    }
-    // RESTOperation or REST params
-    else if ("RESTResource".equals(pStereotype)
-        || "RESTOperation".equals(pStereotype)
-        || "PathParam".equals(pStereotype)
-        || "QueryParam".equals(pStereotype)
-        || "HeaderParam".equals(pStereotype)
-        || "CookieParam".equals(pStereotype)) {
-      lRunChecks = generateRESTResources() | generateOpenAPISpec();
-    }
-    // In case of reports selected here, there is no filtering based on
-    // stereotype
-    else if (generateRESTDeprecationReport()
-        || generateJavaDeprecationReport()
-        || generateBreakingChangesReport()) {
-      lRunChecks = true;
+    else if(skipModelChecks()){
+    	lRunChecks = false;
     }
     else {
-      lRunChecks = true;
+	    if ("POJO".equals(pStereotype)) {
+	      lRunChecks = generatePOJOs();
+	    }
+	    else if ("OpenAPIType".equals(pStereotype)
+	        || "OpenAPIDataType".equals(pStereotype)
+	        || "OpenAPI3Specification".equals(pStereotype)
+	        || "OpenAPIResponse".equals(pStereotype)) {
+	      lRunChecks = generateOpenAPISpec();
+	    }
+	    // JEAFEnumeration
+	    else if ("JEAFEnumeration".equals(pStereotype)) {
+	      lRunChecks = generateServiceObjects() | generatePOJOs()
+	          | generateDomainObjects();
+	    }
+	    // JEAFComponent
+	    else if ("JEAFComponent".equals(pStereotype)) {
+	      lRunChecks = generateComponentImplClasses()
+	          | generateComponentRuntimeClasses();
+	    }
+	    // DomainObject
+	    else if ("DomainObject".equals(pStereotype)) {
+	      lRunChecks = generateDomainObjects();
+	    }
+	    // PersistentObject
+	    else if ("PersistentObject".equals(pStereotype)
+	        || "Role".equals(pStereotype)) {
+	      lRunChecks = generatePersistentObjects();
+	    }
+	    // ServiceObject, QueryObject
+	    else if ("ServiceObject".equals(pStereotype)
+	        || "QueryObject".equals(pStereotype)) {
+	      lRunChecks = generateServiceObjects();
+	    }
+	    // JEAFService
+	    else if ("JEAFService".equals(pStereotype)) {
+	      lRunChecks = generateServices() || generateServiceProxies();
+	    }
+	    // JEAFActivity
+	    else if ("JEAFActivity".equals(pStereotype)) {
+	      lRunChecks = generateActivityInterfaces() | generateActivityImpls();
+	    }
+	    // RESTOperation or REST params
+	    else if ("RESTResource".equals(pStereotype)
+	        || "RESTOperation".equals(pStereotype)
+	        || "PathParam".equals(pStereotype)
+	        || "QueryParam".equals(pStereotype)
+	        || "HeaderParam".equals(pStereotype)
+	        || "CookieParam".equals(pStereotype)) {
+	      lRunChecks = generateRESTResources() | generateOpenAPISpec();
+	    }
+	    // In case of reports selected here, there is no filtering based on
+	    // stereotype
+	    else if (generateRESTDeprecationReport()
+	        || generateJavaDeprecationReport()
+	        || generateBreakingChangesReport()) {
+	      lRunChecks = true;
+	    }
+	    else {
+	      lRunChecks = true;
+	    }
     }
-
     return lRunChecks;
   }
 
