@@ -45,8 +45,6 @@ import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.TypedElement;
 
 import com.anaptecs.jeaf.xfun.api.XFun;
-import com.anaptecs.jeaf.xfun.api.checks.Assert;
-import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.anaptecs.jeaf.xfun.api.config.Configuration;
 
 /**

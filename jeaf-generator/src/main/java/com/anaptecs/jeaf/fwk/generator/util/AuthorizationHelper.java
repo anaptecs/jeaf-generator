@@ -24,8 +24,6 @@ import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Relationship;
 import org.eclipse.uml2.uml.UseCase;
 
-import com.anaptecs.jeaf.xfun.api.checks.Check;
-
 /**
  * Class contains all helper method for the generation of JEAF Authorization mechanism.
  * 

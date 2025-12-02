@@ -1,7 +1,5 @@
 package com.anaptecs.jeaf.fwk.generator.util;
 
-import com.anaptecs.jeaf.xfun.api.checks.Assert;
-
 public class ObjectMappingInfo {
   private final boolean onCreate;
 

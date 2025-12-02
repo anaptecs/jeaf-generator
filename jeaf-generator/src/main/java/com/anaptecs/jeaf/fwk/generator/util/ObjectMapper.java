@@ -15,8 +15,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import javax.lang.model.element.TypeElement;
-
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Dependency;
