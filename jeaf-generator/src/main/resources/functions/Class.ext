@@ -37,7 +37,7 @@ cached boolean belongsToClassHierarchy(uml::Class class):
 	then false
 	else true; 
 	
-private List getSubclasses(uml::Class e) :
+cached List getSubclasses(uml::Class e) :
    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.getSubclasses(org.eclipse.uml2.uml.Class);
 	
     
