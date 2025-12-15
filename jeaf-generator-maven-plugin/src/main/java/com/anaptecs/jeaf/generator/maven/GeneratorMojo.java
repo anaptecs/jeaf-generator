@@ -525,6 +525,14 @@ public class GeneratorMojo extends AbstractMojo {
   private Boolean generatePOJOs;
 
   /**
+   * By default JEAF Generator does not allow type wildcards for classes using Java Generics. If you enable this switch
+   * then that there is no actual type defined in a template binding in the UML model then type wildcard
+   * <code><?></code> will be used.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean allowTypeWildcardsForGenerics;
+
+  /**
    * Switch defines if <code>equals()</code> and <code>hashCode()</code> should be generated for all kinds of POJOs and
    * ServiceObjects.
    */
@@ -1744,6 +1752,10 @@ public class GeneratorMojo extends AbstractMojo {
       lLog.info("Generate valueOf(...) for OpenAPI Data Types:     " + generateValueOfForOpenAPIDataTypes);
     }
 
+    if (allowTypeWildcardsForGenerics) {
+      lLog.info("Allow type wildcards for generics:                " + allowTypeWildcardsForGenerics);
+    }
+
     if (generateEqualsAndHashCode) {
       lLog.info("Generate equals() and hashCode():                 " + generateEqualsAndHashCode);
     }
@@ -2189,6 +2201,9 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty("switch.gen.service.objects", generateServiceObjects.toString());
       System.setProperty("switch.gen.exception.classes", generateExceptionClasses.toString());
       System.setProperty("switch.gen.pojos", generatePOJOs.toString());
+
+      System.setProperty(PROPERTY_PREFIX + "allowTypeWildcardsForGenerics",
+          allowTypeWildcardsForGenerics.toString());
 
       System.setProperty("switch.gen.equalsAndHashCode.all", generateEqualsAndHashCode.toString());
       System.setProperty("switch.gen.equalsAndHashCode.standard",

@@ -32,7 +32,10 @@ public class TemplateParameterHelper {
 
 			List<String> lTypeParamNames = new ArrayList<String>();
 			for (String lNext : lTemplateParamNames) {
-				lTypeParamNames.add(lMapping.get(lNext));
+				String lName = lMapping.get(lNext);
+				if(lName != null){
+					lTypeParamNames.add(lName);
+				}
 			}
 			return lTypeParamNames;
 
