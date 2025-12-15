@@ -344,7 +344,7 @@ This is the first line of the first comment
 
 | Name | Type | Multiplicity | Constraints | Description |
 |------|------|:------------:|-------------|-------------|
-| `hello` | `java.lang.String` | `1..1` |  |  |
+| `hello` | `java.lang.String` | `1..1` |  | <br><br>**Example(s):**<br>- `Hello`- `World!` |
 | `world` | `java.lang.Integer` | `1..1` | `@PositiveOrZero`<br> |  |
 
 <br>
