@@ -135,7 +135,9 @@ private cached String fqnForTemplateClass(uml::Class class):
     class.getGenericTypeForTemplate() + "<" + class.getTypeParameterName() + ">";
     
 cached String getTypeParameterName(uml::Class class):
-    class.javaGetTypeParameterName().toString(", ");
+    if class.javaGetTypeParameterName().size == 0
+    then "?"
+    else class.javaGetTypeParameterName().toString(", ");
     
 private List[String] javaGetTypeParameterName(uml:: Class class):
 	JAVA com.anaptecs.jeaf.fwk.generator.util.TemplateParameterHelper.getTypeParameterNames(org.eclipse.uml2.uml.Class);

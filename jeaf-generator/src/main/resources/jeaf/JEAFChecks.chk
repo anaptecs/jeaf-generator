@@ -69,7 +69,7 @@ context Operation if owner.asNamedElement().runChecks("POJO") && owner.isStereot
 // Checks for template bindings
 context Class if this.getNearestPackage().runChecks() && ignore() == false && templateBinding.isEmpty == false ERROR this.getErrorMessage("9168", {this.getNearestPackage().qualifiedName() + "." + this.name}): templateBinding.size == 1;
 context Class if this.getNearestPackage().runChecks() && ignore() == false && templateBinding.size == 1 ERROR this.getErrorMessage("9178", {this.getNearestPackage().qualifiedName() + "." + this.name}): templateBinding.parameterSubstitution.size > 0;
-context Class if this.getNearestPackage().runChecks() && ignore() == false && templateBinding.size == 1 ERROR this.getErrorMessage("9178", {this.getNearestPackage().qualifiedName() + "." + this.name}): templateBinding.parameterSubstitution.select(e|e.actual.size == 0).size == 0;
+context Class if this.getNearestPackage().runChecks() && ignore() == false && allowTypeWildcardsForGenerics() == false && templateBinding.size == 1 ERROR this.getErrorMessage("9178", {this.getNearestPackage().qualifiedName() + "." + this.name}): templateBinding.parameterSubstitution.select(e|e.actual.size == 0).size == 0;
 
 
 // Checks for stereotype DomainObject
