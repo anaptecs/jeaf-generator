@@ -9,7 +9,8 @@ import com.anaptecs.jeaf.xfun.api.checks.Check;
 
 public final class Entity {
   public static enum EntityType {
-    DISCOUNT_CAMPAIGN, DISCOUNT_OFFER("DISOFF", DataUnit.COUPON), UNKNOWN("N/A", DataUnit.UNKNOWN);
+    DISCOUNT_CAMPAIGN("CAMPGN", DataUnit.COUPON), DISCOUNT_OFFER("DISOFF", DataUnit.COUPON), UNKNOWN("N/A",
+        DataUnit.UNKNOWN);
 
     /**
      * Empty constructor is required for UNKNWON literal.

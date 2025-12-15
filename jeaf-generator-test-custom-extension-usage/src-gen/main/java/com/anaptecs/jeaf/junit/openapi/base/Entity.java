@@ -13,7 +13,7 @@ import com.anaptecs.jeaf.xfun.api.checks.Check;
 public final class Entity {
   public static enum EntityType {
     @JEAFCustomAnnotationTest
-    DISCOUNT_CAMPAIGN, @JEAFCustomAnnotationTest
+    DISCOUNT_CAMPAIGN("CAMPGN", DataUnit.COUPON), @JEAFCustomAnnotationTest
     DISCOUNT_OFFER("DISOFF", DataUnit.COUPON), @JEAFCustomAnnotationTest
     UNKNOWN("N/A", DataUnit.UNKNOWN);
 
