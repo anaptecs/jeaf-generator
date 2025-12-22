@@ -1424,7 +1424,7 @@ public class GeneratorMojo extends AbstractMojo {
 
   /**
    * Switch can be used to enforce that for optional primitive properties / parameters an explicit default value is
-   * enforced.
+   * defined in the UML model.
    */
   @Parameter(required = false, defaultValue = "false")
   private Boolean enforceExplicitDefaultValueForOptionalPrimitives;
