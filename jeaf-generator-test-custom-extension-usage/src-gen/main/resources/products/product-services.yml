@@ -4,8 +4,8 @@ info:
   title: Product Services
   version: 1.27.6-SNAPSHOT
   description: >-
-    This component represents the OpenAPI interface of the accounting service.
-    
+    This component represents the OpenAPI interface of the accounting service.<br>
+    <br>
     Dear Developers, please be aware that multi line comments can also be used.
   termsOfService: https://www.anaptecs.de/jeaf/TermsOfUse
   contact:
@@ -25,8 +25,8 @@ servers:
   - url: https://test-jeaf.anaptecs.de
   - url: https://jeaf.anaptecs.de
     description: >-
-      This is our lovely production environment
-      
+      This is our lovely production environment<br>
+      <br>
       It can stand any load, until it crashes ;-)
 
 tags:
@@ -243,7 +243,8 @@ paths:
         description: >-
           
           <br><br>
-          Breaking Change with 2.0: Parameter will be mandatory
+          **Breaking Change Notice (active with 2.0):**<br><br>
+          Parameter will be mandatory
         required: true
         content:
           application/json:
@@ -294,7 +295,8 @@ paths:
       description: >-
         
         <br><br>
-        Deprecated: This request is no longer supported. (since: 1.1.1, removed with: 2024-10-20)
+        **Deprecation Notice (since: 1.1.1, removed with: 2024-10-20):**<br><br>
+        This request is no longer supported.
       operationId: deprecatedOperation
       deprecated: true
       responses:
@@ -573,7 +575,8 @@ paths:
           description: >-
             
             <br><br>
-            Deprecated:  (since: , removed with: 2024-12-24)
+            **Deprecation Notice (since: , removed with: 2024-12-24):**<br><br>
+            
           required: true
           deprecated: true
           schema:
@@ -1146,7 +1149,8 @@ paths:
           description: >-
             
             <br><br>
-            Breaking Change with 2.0: Has to be in the past
+            **Breaking Change Notice (active with 2.0):**<br><br>
+            Has to be in the past
           required: true
           schema:
             type: string
@@ -2099,8 +2103,8 @@ components:
       type: object
       additionalProperties: false
       description: >-
-        Chännel
-        €
+        Chännel<br>
+        €<br>
         Ö
       required:
         - transactionAmount

@@ -338,7 +338,8 @@ components:
           description: >-
             The magic link.
             <br><br>
-            Deprecated: Please use "moreLinks" instead. (since: 2.3.1, removed with: 2.4)
+            **Deprecation Notice (since: 2.3.1, removed with: 2.4):**<br><br>
+            Please use "moreLinks" instead.
           type: integer
           format: int64
           deprecated: true
@@ -347,7 +348,8 @@ components:
           description: >-
             
             <br><br>
-            Deprecated: No good any more (since: 1.2, removed with: 3.0)
+            **Deprecation Notice (since: 1.2, removed with: 3.0):**<br><br>
+            No good any more
           type: array
           items:
             type: 
@@ -396,23 +398,56 @@ components:
     # com.anaptecs.jeaf.junit.openapi.base.ChannelType
     ChannelType:
       description: >-
+        Enumeration defines the different types of channels that are supported.
+        <br><br>
+        Alternate Name: `Kanal`
+        <br><br>
         
-        <br><br>
-        Alternate Name: Kanal
-        <br><br>
+        Enum Properties:
+        
+          - `code`: Code of the channel.<br>
+            <br>
+            Please be aware that properties for enumeration literals are not supported by OpenAPI. So, they are shown here only for documentation purposes.
+            <br>
+            
+        <br>
         Valid Values:
-        - COUNTER: counter
-            <br><br>
-            Alternate Name: BEDIENT (Properties: `code = "CNT"`)
-        - CALL_CENTER
-        - MOBILE
-        - TVM
-        - WEB: 
-            <br><br>
-            Breaking Change with 1.47.11: Added new literal (Properties: `code = "WEB"`)
-        - @Deprecated LEGACY_POS: 
-            <br><br>
-            Deprecated: I'm `DEPRECATED`. (since: , removed with: ) (Properties: `code = "PRISMA"`)
+        
+        - `COUNTER`: counter
+          <br><br>
+          Alternate Name: `BEDIENT`<br>
+          <br>
+          
+          Properties: `code = "CNT"`
+          <br><br>
+          
+        - `CALL_CENTER`
+          <br><br>
+          
+        - `MOBILE`
+          <br><br>
+          
+        - `TVM`
+          <br><br>
+          
+        - `WEB`: 
+          <br><br>
+          **Breaking Change Notice (active with 1.47.11):**<br><br>
+          Added new literal<br>
+          <br>
+          
+          Properties: `code = "WEB"`
+          <br><br>
+          
+        - <del>`LEGACY_POS`</del>: 
+          <br><br>
+          **Deprecation Notice (since: , removed with: ):**<br><br>
+          I'm `DEPRECATED`.<br>
+          <br>
+          
+          Properties: `code = "PRISMA"`
+          <br><br>
+          
       type: string
       enum:
         - 'COUNTER'
@@ -444,7 +479,8 @@ components:
       description: >-
         
         <br><br>
-        Deprecated: Please do not use this class any longer. There are better alternatives but I do not tell you which ones. May be `java.lang.Nothing` (since: 0.5, removed with: 2.0)
+        **Deprecation Notice (since: 0.5, removed with: 2.0):**<br><br>
+        Please do not use this class any longer. There are better alternatives but I do not tell you which ones. May be `java.lang.Nothing`
       deprecated: true
       allOf:
         - $ref: '#/components/schemas/ChildA'
@@ -457,8 +493,8 @@ components:
           properties:
             childAAAttribute:
               description: >-
-                Multi
-                line
+                Multi<br>
+                line<br>
                 docs
               type: integer
               format: int32
@@ -496,9 +532,9 @@ components:
     # com.anaptecs.jeaf.junit.openapi.base.ChildB
     ChildB:
       description: >-
-        Multi
-        line
-        class
+        Multi<br>
+        line<br>
+        class<br>
         comment
       allOf:
         - $ref: '#/components/schemas/ParentClass'
@@ -540,7 +576,8 @@ components:
               description: >-
                 
                 <br><br>
-                Deprecated: Please  keep `hands off`. (since: , removed with: )
+                **Deprecation Notice (since: , removed with: ):**<br><br>
+                Please  keep `hands off`.
               type: integer
               format: int32
               deprecated: true
@@ -611,7 +648,8 @@ components:
       description: >-
         
         <br><br>
-        Breaking Change with PI 17: Class was changed to an extensible enum. New literals will not be introduced before PI 17.
+        **Breaking Change Notice (active with PI 17):**<br><br>
+        Class was changed to an extensible enum. New literals will not be introduced before PI 17.
       type: string
       x-extensible-enum:
         - 'COMPLEX'
@@ -667,7 +705,8 @@ components:
       description: >-
         
         <br><br>
-        Deprecated: Hello `World`. (since: , removed with: )
+        **Deprecation Notice (since: , removed with: ):**<br><br>
+        Hello `World`.
       type: string
       deprecated: true
       enum:
@@ -735,9 +774,9 @@ components:
       type: object
       additionalProperties: false
       description: >-
-        Type represents a duration.
-         
-        NOVA 14 Mapping
+        Type represents a duration.<br>
+         <br>
+        NOVA 14 Mapping<br>
         * nova-base.xsd.Dauer
       required:
         - value
@@ -858,11 +897,19 @@ components:
     InventoryType:
       description: >-
         Valid Values:
-        - SBB
-        - SNCF
-        - DB: 
-            <br><br>
-            Breaking Change with 3.x: New literal will occur
+        
+        - `SBB`
+          <br><br>
+          
+        - `SNCF`
+          <br><br>
+          
+        - `DB`: 
+          <br><br>
+          **Breaking Change Notice (active with 3.x):**<br><br>
+          New literal will occur
+          <br><br>
+          
       type: string
       enum:
         - 'SBB'
@@ -913,9 +960,9 @@ components:
       type: object
       additionalProperties: false
       description: >-
-        Type represents an amount of money.
-               
-        NOVA 14 Mapping
+        Type represents an amount of money.<br>
+               <br>
+        NOVA 14 Mapping<br>
         * nova-base.xsd.GeldBetrag
       required:
         - amount
@@ -1062,7 +1109,8 @@ components:
               description: >-
                 
                 <br><br>
-                Breaking Change with 2024-12-24: New mandatory association is required to support upcoming features.
+                **Breaking Change Notice (active with 2024-12-24):**<br><br>
+                New mandatory association is required to support upcoming features.
               type: array
               items:
                 $ref: '#/components/schemas/UICStop'
@@ -1152,7 +1200,7 @@ components:
               description: >-
                 
                 <br><br>
-                Alternate Name: Vorname
+                Alternate Name: `Vorname`
               type: string
               nullable: false
             firstName:
@@ -1782,7 +1830,7 @@ components:
       description: >-
         Data type represents a product definition
         <br><br>
-        Alternate Name: Produkt
+        Alternate Name: `Produkt`
       required:
         - name
         - link
@@ -1868,7 +1916,8 @@ components:
           description: >-
             
             <br><br>
-            Breaking Change with 1.1: Maximum size will be increased.
+            **Breaking Change Notice (active with 1.1):**<br><br>
+            Maximum size will be increased.
           type: string
           minLength: 1
           maxLength: 32
@@ -1979,21 +2028,34 @@ components:
     # com.anaptecs.jeaf.junit.openapi.base.TimeUnit
     TimeUnit:
       description: >-
-        Enumeration represents time units.
-             
-        NOVA 14 Mapping
+        Enumeration represents time units.<br>
+             <br>
+        NOVA 14 Mapping<br>
         * nova-base.xsd.ZeitEinheit
         <br><br>
-        Alternate Name: Zeiteinheit
-        <br><br>
+        Alternate Name: `Zeiteinheit`
+        <br>
         Valid Values:
-        - MINUTE: Literal represents time unit "minutes".
-        - HOUR
-        - DAY
-        - WEEK: Literal represents time unit "weeks".
-            This is the comments second line ;-)
-        - MONTH
-        - YEAR
+        
+        - `MINUTE`: Literal represents time unit "minutes".
+          <br><br>
+          
+        - `HOUR`
+          <br><br>
+          
+        - `DAY`
+          <br><br>
+          
+        - `WEEK`: Literal represents time unit "weeks".<br>
+          This is the comments second line ;-)
+          <br><br>
+          
+        - `MONTH`
+          <br><br>
+          
+        - `YEAR`
+          <br><br>
+          
       type: string
       enum:
         - 'MINUTE'
@@ -2015,7 +2077,7 @@ components:
       description: >-
         
         <br><br>
-        Alternate Name: Haltestelle
+        Alternate Name: `Haltestelle`
       allOf:
         - $ref: '#/components/schemas/Stop'
         - type: object
@@ -2084,8 +2146,8 @@ components:
           properties:
             booking:
               description: >-
-                Internal ID
-                2nd line
+                Internal ID<br>
+                2nd line<br>
                 3rd line
               type: string
               nullable: false
@@ -2098,8 +2160,8 @@ components:
               nullable: true
             versionedObjectSoftLink:
               description: >-
-                soft link
-                2nd line
+                soft link<br>
+                2nd line<br>
                 3rd line
               type: string
               nullable: false
@@ -2110,13 +2172,15 @@ components:
             realBooking:
               # the real booking
               # 
-              # Breaking Change with 2.0: Association will be mandatory.
+              # **Breaking Change Notice (active with 2.0):**
+              # Association will be mandatory.
               $ref: '#/components/schemas/Booking'
             inventories:
               description: >-
                 
                 <br><br>
-                Breaking Change with 2.1: Association will required at least 1 object.
+                **Breaking Change Notice (active with 2.1):**<br><br>
+                Association will required at least 1 object.
               type: array
               items:
                 $ref: '#/components/schemas/InventoryType'
@@ -2141,15 +2205,15 @@ components:
           nullable: false
         complexBooking:
           description: >-
-            Internal ID
-            2nd line
+            Internal ID<br>
+            2nd line<br>
             3rd line
           type: string
           nullable: false
         complexBookings:
           description: >-
-            Internal ID
-            2nd line
+            Internal ID<br>
+            2nd line<br>
             3rd line
           type: array
           items:

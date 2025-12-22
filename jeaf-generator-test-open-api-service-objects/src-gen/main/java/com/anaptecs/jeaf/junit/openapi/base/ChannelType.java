@@ -10,6 +10,7 @@ import javax.validation.constraints.NotNull;
 import com.anaptecs.annotations.MyNotNullProperty;
 
 /**
+ * Enumeration defines the different types of channels that are supported.
  * <p/>
  * <b>Alternate Name:</b> <code>Kanal</code>
  *
@@ -53,11 +54,21 @@ public enum ChannelType {
     code = pCode;
   }
 
+  /**
+   * Code of the channel.<br/>
+   * <br/>
+   * Please be aware that properties for enumeration literals are not supported by OpenAPI. So, they are shown here only
+   * for documentation purposes.
+   */
   @NotNull
   private final String code;
 
   /**
    * Method returns attribute {@link #code}.<br/>
+   * Code of the channel.<br/>
+   * <br/>
+   * Please be aware that properties for enumeration literals are not supported by OpenAPI. So, they are shown here only
+   * for documentation purposes.
    *
    * @return {@link String} Value to which {@link #code} is set.
    */

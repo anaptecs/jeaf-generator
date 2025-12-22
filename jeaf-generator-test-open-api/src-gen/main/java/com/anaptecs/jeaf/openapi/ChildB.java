@@ -23,9 +23,9 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 /**
- * Multi line class comment 
+ * Multi&lt;br&gt; line&lt;br&gt; class&lt;br&gt; comment 
  */
-@Schema(description = "Multi line class comment ")
+@Schema(description = "Multi<br> line<br> class<br> comment ")
 
 public class ChildB extends ParentClass {
   @JsonProperty("childBAttribute")

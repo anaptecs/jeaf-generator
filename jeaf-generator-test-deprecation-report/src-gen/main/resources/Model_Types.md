@@ -94,7 +94,7 @@ CHStopPlace |   |  |
 Campaign |   |  |
 Channel |   |  |
 ChannelCode |   |  |
-ChannelType |  Kanal |  |
+ChannelType |  Kanal | Enumeration defines the different types of channels that are supported. |
 ChildA |   | single line class comment |
 ChildAA |   |  |
 ChildB |   | Multi<br>line<br>class<br>comment |
@@ -361,7 +361,7 @@ CHStopPlace |   |  |
 Campaign |   |  |
 Channel |   |  |
 ChannelCode |   |  |
-ChannelType |  Kanal |  |
+ChannelType |  Kanal | Enumeration defines the different types of channels that are supported. |
 ChildA |   | single line class comment |
 ChildAA |   |  |
 ChildB |   | Multi<br>line<br>class<br>comment |

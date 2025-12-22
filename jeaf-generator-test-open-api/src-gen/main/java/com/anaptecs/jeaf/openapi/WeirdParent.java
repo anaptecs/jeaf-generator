@@ -87,10 +87,10 @@ public class WeirdParent {
   }
 
    /**
-   * Internal ID 2nd line 3rd line 
+   * Internal ID&lt;br&gt; 2nd line&lt;br&gt; 3rd line 
    * @return complexBooking
   **/
-  @Schema(required = true, description = "Internal ID 2nd line 3rd line ")
+  @Schema(required = true, description = "Internal ID<br> 2nd line<br> 3rd line ")
   public String getComplexBooking() {
     return complexBooking;
   }
@@ -110,10 +110,10 @@ public class WeirdParent {
   }
 
    /**
-   * Internal ID 2nd line 3rd line 
+   * Internal ID&lt;br&gt; 2nd line&lt;br&gt; 3rd line 
    * @return complexBookings
   **/
-  @Schema(required = true, description = "Internal ID 2nd line 3rd line ")
+  @Schema(required = true, description = "Internal ID<br> 2nd line<br> 3rd line ")
   public List<String> getComplexBookings() {
     return complexBookings;
   }

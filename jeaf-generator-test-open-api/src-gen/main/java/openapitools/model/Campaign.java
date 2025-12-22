@@ -66,7 +66,7 @@ public class Campaign {
   }
 
   /**
-   * The magic link. &lt;br&gt;&lt;br&gt; Deprecated: Please use \&quot;moreLinks\&quot; instead. (since: 2.3.1, removed with: 2.4) 
+   * The magic link. &lt;br&gt;&lt;br&gt; **Deprecation Notice (since: 2.3.1, removed with: 2.4):**&lt;br&gt;&lt;br&gt; Please use \&quot;moreLinks\&quot; instead. 
    * @return theLinkID
    * @deprecated
    */
@@ -111,7 +111,7 @@ public class Campaign {
   }
 
   /**
-   *  &lt;br&gt;&lt;br&gt; Deprecated: No good any more (since: 1.2, removed with: 3.0) 
+   *  &lt;br&gt;&lt;br&gt; **Deprecation Notice (since: 1.2, removed with: 3.0):**&lt;br&gt;&lt;br&gt; No good any more 
    * @return moreLinkIDs
    * @deprecated
    */

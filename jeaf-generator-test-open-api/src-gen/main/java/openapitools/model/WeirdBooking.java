@@ -90,7 +90,7 @@ public class WeirdBooking extends WeirdParent {
   }
 
   /**
-   * Internal ID 2nd line 3rd line 
+   * Internal ID&lt;br&gt; 2nd line&lt;br&gt; 3rd line 
    * @return booking
    */
   @javax.annotation.Nonnull
@@ -160,7 +160,7 @@ public class WeirdBooking extends WeirdParent {
   }
 
   /**
-   * soft link 2nd line 3rd line 
+   * soft link&lt;br&gt; 2nd line&lt;br&gt; 3rd line 
    * @return versionedObjectSoftLink
    */
   @javax.annotation.Nonnull
@@ -243,7 +243,7 @@ public class WeirdBooking extends WeirdParent {
   }
 
   /**
-   *  &lt;br&gt;&lt;br&gt; Breaking Change with 2.1: Association will required at least 1 object. 
+   *  &lt;br&gt;&lt;br&gt; **Breaking Change Notice (active with 2.1):**&lt;br&gt;&lt;br&gt; Association will required at least 1 object. 
    * @return inventories
    */
   @javax.annotation.Nullable

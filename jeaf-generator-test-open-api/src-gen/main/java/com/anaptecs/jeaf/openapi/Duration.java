@@ -20,9 +20,9 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 /**
- * Type represents a duration.   NOVA 14 Mapping * nova-base.xsd.Dauer 
+ * Type represents a duration.&lt;br&gt;  &lt;br&gt; NOVA 14 Mapping&lt;br&gt; * nova-base.xsd.Dauer 
  */
-@Schema(description = "Type represents a duration.   NOVA 14 Mapping * nova-base.xsd.Dauer ")
+@Schema(description = "Type represents a duration.<br>  <br> NOVA 14 Mapping<br> * nova-base.xsd.Dauer ")
 
 public class Duration {
   @JsonProperty("value")

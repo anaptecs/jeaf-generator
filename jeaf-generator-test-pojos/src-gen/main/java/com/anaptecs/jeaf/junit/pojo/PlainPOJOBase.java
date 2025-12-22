@@ -31,6 +31,14 @@ public abstract class PlainPOJOBase {
    */
   public static final String WORLD = "world";
 
+  /**
+   * <br/>
+   * <b>Example(s):</b> <br/>
+   * <ul>
+   * <li><code>Hello</code></li>
+   * <li><code>World!</code></li>
+   * </ul>
+   */
   private String hello;
 
   @PositiveOrZero
@@ -56,6 +64,14 @@ public abstract class PlainPOJOBase {
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static abstract class BuilderBase {
+    /**
+     * <br/>
+     * <b>Example(s):</b> <br/>
+     * <ul>
+     * <li><code>Hello</code></li>
+     * <li><code>World!</code></li>
+     * </ul>
+     */
     private String hello;
 
     @PositiveOrZero

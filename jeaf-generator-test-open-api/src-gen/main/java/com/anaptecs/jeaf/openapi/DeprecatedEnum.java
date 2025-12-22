@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- *  &lt;br&gt;&lt;br&gt; Deprecated: Hello &#x60;World&#x60;. (since: , removed with: ) 
+ *  &lt;br&gt;&lt;br&gt; **Deprecation Notice (since: , removed with: ):**&lt;br&gt;&lt;br&gt; Hello &#x60;World&#x60;. 
  */
 public enum DeprecatedEnum {
   ONE("ONE"),
