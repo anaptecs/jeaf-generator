@@ -829,7 +829,7 @@ public class RESTProductServiceResource {
   @MyNotNullRESTParam
   public String testOptionalQueryParams(
       @RequestParam(name = "query1", required = false, defaultValue = "Just a default value") String query1,
-      @RequestParam(name = "query2", required = false) int query2 ) {
+      @RequestParam(name = "query2", required = false, defaultValue = "4711") int query2 ) {
     // Validate request parameter(s).
     validationExecutor.validateRequest(RESTProductService.class, query1, query2);
     // Delegate request to service.

@@ -505,7 +505,8 @@ public class ProductServiceResource {
   @Path("test-optional-query-params")
   @GET
   public javax.ws.rs.core.Response testOptionalQueryParams(
-      @QueryParam("query1") @DefaultValue("Just a default value") String query1, @QueryParam("query2") int query2 ) {
+      @QueryParam("query1") @DefaultValue("Just a default value") String query1,
+      @QueryParam("query2") @DefaultValue("4711") int query2 ) {
     // Delegate request to service.
     ProductService lService = this.getProductService();
     String lResult = lService.testOptionalQueryParams(query1, query2);

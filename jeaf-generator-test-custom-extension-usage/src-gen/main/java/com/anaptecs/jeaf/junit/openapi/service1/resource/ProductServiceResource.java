@@ -551,7 +551,7 @@ public class ProductServiceResource {
   @JEAFCustomAnnotationTest
   public javax.ws.rs.core.Response testOptionalQueryParams(
       @QueryParam("query1") @DefaultValue("Just a default value") @JEAFCustomAnnotationTest String query1,
-      @QueryParam("query2") @JEAFCustomAnnotationTest int query2 ) {
+      @QueryParam("query2") @DefaultValue("4711") @JEAFCustomAnnotationTest int query2 ) {
     // Delegate request to service.
     ProductService lService = this.getProductService();
     String lResult = lService.testOptionalQueryParams(query1, query2);

@@ -2,7 +2,7 @@ import uml;
 import JMM;
 
 extension java::Naming;
-extension entity::ModelProperties; 
+extension entity::ModelProperties;
 extension java::ActivityHelper;
 extension java::GeneratorCommons;
 extension java::OpenAPIFunctions;
@@ -69,8 +69,8 @@ context POJO if runChecks("POJO") && ignore() == false ERROR this.getErrorMessag
 context Property if owner.asNamedElement().runChecks("POJO") && owner.isStereotypeApplied("POJO") && ignore() == false  ERROR this.getErrorMessage("9170", {name, "property", owner.asNamedElement().fqn()}): this.isValidIdentifierName();
 context Operation if owner.asNamedElement().runChecks("POJO") && owner.isStereotypeApplied("POJO") && ignore() == false ERROR this.getErrorMessage("9170", {name, "operation", owner.asNamedElement().fqn()}): this.isValidIdentifierName();
 
-context Property if owner.asNamedElement().runChecks("POJO") && owner.isStereotypeApplied("POJO") && type != null && enforceExplicitDefaultValueForOptionalPrimitives() == true  && ignore() == false  ERROR   this.getErrorMessage("9179",   {owner.asNamedElement().fqn(), name}): !(type.isPrimitiveType() && this.lower == 0 && this.upper == 1 && this.hasDefaultValueForBasicTypeProperty() == false && this.hasDefaultValueForEnumProperty() == false);
-context Property if owner.asNamedElement().runChecks("POJO") && owner.isStereotypeApplied("POJO") && type != null && enforceExplicitDefaultValueForOptionalPrimitives() == false && ignore() == false  WARNING this.getWarningMessage("9179", {owner.asNamedElement().fqn(), name}): !(type.isPrimitiveType() && this.lower == 0 && this.upper == 1 && this.hasDefaultValueForBasicTypeProperty() == false && this.hasDefaultValueForEnumProperty() == false);
+context Property if owner.asNamedElement().runChecks("POJO") && owner.isStereotypeApplied("POJO") && type != null && enforceExplicitDefaultValueForOptionalPrimitives() == true  && ignore() == false  ERROR   this.getErrorMessage("9179",   {owner.asNamedElement().fqn(), name}): !(type.isPrimitiveType() && this.lower == 0 && this.upper == 1 && this.hasDefaultValueForBasicTypeProperty() == false);
+context Property if owner.asNamedElement().runChecks("POJO") && owner.isStereotypeApplied("POJO") && type != null && enforceExplicitDefaultValueForOptionalPrimitives() == false && ignore() == false  WARNING this.getWarningMessage("9179", {owner.asNamedElement().fqn(), name}): !(type.isPrimitiveType() && this.lower == 0 && this.upper == 1 && this.hasDefaultValueForBasicTypeProperty() == false);
 
 // Checks for template bindings
 context Class if this.getNearestPackage().runChecks() && ignore() == false && templateBinding.isEmpty == false ERROR this.getErrorMessage("9168", {this.getNearestPackage().qualifiedName() + "." + this.name}): templateBinding.size == 1;
