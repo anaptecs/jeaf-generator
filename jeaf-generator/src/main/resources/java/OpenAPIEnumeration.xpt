@@ -21,26 +21,42 @@
         «IF this.hasComment() -»
         «this.getCommentForOpenAPIDescription("        ")»
         «ENDIF-»
+        «IF this.ownedAttribute.isEmpty == false-»
+        <br><br>
+        
+        Enum Properties:
+        «FOREACH this.ownedAttribute AS property»
+          - `«property.name»`: «property.getCommentForOpenAPIDescription("            ")»
+            <br>
+            
+        «ENDFOREACH-»
+        «ENDIF-»
         «IF this.hasLiteralComment()-»
         «IF this.extensibleEnum == true-»
         «IF this.hasComment() -»
-        <br><br>
+        <br>
         «ENDIF-»
         Known Values:
         «ELSE-»
         «IF this.hasComment() -»
-        <br><br>
+        <br>
         «ENDIF-»
         Valid Values:
         «ENDIF-»
+        
         «FOREACH this.getPulicLiterals() AS literal-»
-        - «IF literal.isDeprecated() -»@Deprecated «ENDIF»«literal.getLiteralNameForOpenAPI()»«IF literal.hasComment()»: «literal.getCommentForOpenAPIDescription("            ")»«IF literal.getOrderedSlots().size > 0» (Properties: «FOREACH literal.getOrderedSlots() AS slot SEPARATOR ", "»`«slot.definingFeature.name» = «slot.getSlotValue()»`«ENDFOREACH»)«ENDIF»«ENDIF»
+        - «IF literal.isDeprecated() -»<del>«ENDIF»`«literal.getLiteralNameForOpenAPI()»`«IF literal.isDeprecated() -»</del>«ENDIF»«IF literal.hasComment()»: «literal.getCommentForOpenAPIDescription("          ")»«IF literal.getOrderedSlots().size > 0»<br>
+          <br>
+          
+          Properties: «FOREACH literal.getOrderedSlots() AS slot SEPARATOR ", "»`«slot.definingFeature.name» = «slot.getSlotValue()»`«ENDFOREACH»«ENDIF»«ENDIF»
+          <br><br>
+          
         «ENDFOREACH-»
         «IF this.hasDynamicLiterals -»
             «LET this.getDynamicLiteralDescriptions() AS descriptions -»
             «LET this.getDynamicLiteralDeprecations() AS deprecations -»
             «FOREACH this.getDynamicLiteralNames() AS dynamicLiteral ITERATOR iter -»
-        - «IF deprecations.size > iter.counter0 && deprecations.get(iter.counter0)»@Deprecated «ENDIF» «dynamicLiteral»«IF descriptions.size > iter.counter0 && descriptions.get(iter.counter0).length > 0»: «descriptions.get(iter.counter0)»«ENDIF»
+        - «IF deprecations.size > iter.counter0 && deprecations.get(iter.counter0)»<del>«ENDIF»«dynamicLiteral»«IF deprecations.size > iter.counter0 && deprecations.get(iter.counter0)»</del>«ENDIF»«IF descriptions.size > iter.counter0 && descriptions.get(iter.counter0).length > 0»: «descriptions.get(iter.counter0)»«ENDIF»
             «ENDFOREACH-»
             «ENDLET-»
             «ENDLET-»

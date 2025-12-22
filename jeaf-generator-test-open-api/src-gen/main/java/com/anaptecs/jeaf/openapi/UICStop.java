@@ -23,9 +23,9 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 /**
- *  &lt;br&gt;&lt;br&gt; Alternate Name: Haltestelle 
+ *  &lt;br&gt;&lt;br&gt; Alternate Name: &#x60;Haltestelle&#x60; 
  */
-@Schema(description = " <br><br> Alternate Name: Haltestelle ")
+@Schema(description = " <br><br> Alternate Name: `Haltestelle` ")
 
 public class UICStop extends Stop {
   @JsonProperty("uicCode")

@@ -29,7 +29,7 @@ import openapitools.JSON;
 
 
 /**
- * Type represents a duration.   NOVA 14 Mapping * nova-base.xsd.Dauer 
+ * Type represents a duration.&lt;br&gt;  &lt;br&gt; NOVA 14 Mapping&lt;br&gt; * nova-base.xsd.Dauer 
  */
 @JsonPropertyOrder({
   Duration.JSON_PROPERTY_VALUE,

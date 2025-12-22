@@ -22,9 +22,9 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 /**
- *  &lt;br&gt;&lt;br&gt; Deprecated: Please do not use this class any longer. There are better alternatives but I do not tell you which ones. May be &#x60;java.lang.Nothing&#x60; (since: 0.5, removed with: 2.0) 
+ *  &lt;br&gt;&lt;br&gt; **Deprecation Notice (since: 0.5, removed with: 2.0):**&lt;br&gt;&lt;br&gt; Please do not use this class any longer. There are better alternatives but I do not tell you which ones. May be &#x60;java.lang.Nothing&#x60; 
  */
-@Schema(description = " <br><br> Deprecated: Please do not use this class any longer. There are better alternatives but I do not tell you which ones. May be `java.lang.Nothing` (since: 0.5, removed with: 2.0) ")
+@Schema(description = " <br><br> **Deprecation Notice (since: 0.5, removed with: 2.0):**<br><br> Please do not use this class any longer. There are better alternatives but I do not tell you which ones. May be `java.lang.Nothing` ")
 
 public class ChildAA extends ChildA {
   @JsonProperty("childAAAttribute")
@@ -51,10 +51,10 @@ public class ChildAA extends ChildA {
   }
 
    /**
-   * Multi line docs 
+   * Multi&lt;br&gt; line&lt;br&gt; docs 
    * @return childAAAttribute
   **/
-  @Schema(required = true, description = "Multi line docs ")
+  @Schema(required = true, description = "Multi<br> line<br> docs ")
   public Integer getChildAAAttribute() {
     return childAAAttribute;
   }

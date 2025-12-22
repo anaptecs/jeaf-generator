@@ -254,12 +254,25 @@ components:
     ChannelType:
       description: |
         Valid Values:
-        - COUNTER
-        - CALL_CENTER
-        - MOBILE
-        - TVM
-        - WEB
-        - @Deprecated LEGACY_POS
+        
+        - `COUNTER`
+          <br><br>
+          
+        - `CALL_CENTER`
+          <br><br>
+          
+        - `MOBILE`
+          <br><br>
+          
+        - `TVM`
+          <br><br>
+          
+        - `WEB`
+          <br><br>
+          
+        - <del>`LEGACY_POS`</del>
+          <br><br>
+          
       type: string
       enum:
         - COUNTER
@@ -304,8 +317,8 @@ components:
           properties:
             childAAAttribute:
               description: |
-                Multi
-                line
+                Multi<br>
+                line<br>
                 docs
               type: integer
               format: int32
@@ -329,9 +342,9 @@ components:
     # com.anaptecs.spring.base.ChildB
     ChildB:
       description: |
-        Multi
-        line
-        class
+        Multi<br>
+        line<br>
+        class<br>
         comment
       allOf:
         - $ref: '#/components/schemas/ParentClass'
@@ -515,9 +528,9 @@ components:
       type: object
       additionalProperties: false
       description: |
-        Type represents a duration.
-         
-        NOVA 14 Mapping
+        Type represents a duration.<br>
+         <br>
+        NOVA 14 Mapping<br>
         * nova-base.xsd.Dauer
       required:
         - value
@@ -609,9 +622,9 @@ components:
       type: object
       additionalProperties: false
       description: |
-        Type represents an amount of money.
-               
-        NOVA 14 Mapping
+        Type represents an amount of money.<br>
+               <br>
+        NOVA 14 Mapping<br>
         * nova-base.xsd.GeldBetrag
       required:
         - amount
@@ -656,16 +669,16 @@ components:
           properties:
             myProperty:
               description: |
-                Hello World!
-                :koala:
-                
-                | Syntax      | Description |
-                | ----------- | ----------- |
-                | Header      | Title       |
-                | Paragraph   | Text        |
-                
-                Let's have an additional discussion about how much sense it makes to add :koala: to your documentation.
-                
+                Hello World!<br>
+                :koala:<br>
+                <br>
+                | Syntax      | Description |<br>
+                | ----------- | ----------- |<br>
+                | Header      | Title       |<br>
+                | Paragraph   | Text        |<br>
+                <br>
+                Let's have an additional discussion about how much sense it makes to add :koala: to your documentation.<br>
+                <br>
                 So far I think it is at least funny.
               type: string
               nullable: false
@@ -675,13 +688,13 @@ components:
       type: object
       additionalProperties: false
       description: |
-        Hello World!
-        :koala:
-        
-        
-        | Syntax      | Description |
-        | ----------- | ----------- |
-        | Header      | Title       |
+        Hello World!<br>
+        :koala:<br>
+        <br>
+        <br>
+        | Syntax      | Description |<br>
+        | ----------- | ----------- |<br>
+        | Header      | Title       |<br>
         | Paragraph   | Text        |
       discriminator:
         propertyName: objectType
@@ -1546,7 +1559,8 @@ components:
           description: |
             
             <br><br>
-            Deprecated: Wrong type. Switch to `newLink` instead. (since: 2.0, removed with: 3.0)
+            **Deprecation Notice (since: 2.0, removed with: 3.0):**<br><br>
+            Wrong type. Switch to `newLink` instead.
           deprecated: true
           type: array
           items:
@@ -1631,19 +1645,32 @@ components:
     # com.anaptecs.spring.base.TimeUnit
     TimeUnit:
       description: |
-        Enumeration represents time units.
-             
-        NOVA 14 Mapping
+        Enumeration represents time units.<br>
+             <br>
+        NOVA 14 Mapping<br>
         * nova-base.xsd.ZeitEinheit
-        <br><br>
+        <br>
         Valid Values:
-        - MINUTE: Literal represents time unit "minutes".
-        - HOUR
-        - DAY
-        - WEEK: Literal represents time unit "weeks".
-            This is the comments second line ;-)
-        - MONTH
-        - YEAR
+        
+        - `MINUTE`: Literal represents time unit "minutes".
+          <br><br>
+          
+        - `HOUR`
+          <br><br>
+          
+        - `DAY`
+          <br><br>
+          
+        - `WEEK`: Literal represents time unit "weeks".<br>
+          This is the comments second line ;-)
+          <br><br>
+          
+        - `MONTH`
+          <br><br>
+          
+        - `YEAR`
+          <br><br>
+          
       type: string
       enum:
         - MINUTE

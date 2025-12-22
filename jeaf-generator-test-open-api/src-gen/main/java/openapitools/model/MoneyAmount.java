@@ -28,7 +28,7 @@ import openapitools.JSON;
 
 
 /**
- * Type represents an amount of money.         NOVA 14 Mapping * nova-base.xsd.GeldBetrag 
+ * Type represents an amount of money.&lt;br&gt;        &lt;br&gt; NOVA 14 Mapping&lt;br&gt; * nova-base.xsd.GeldBetrag 
  */
 @JsonPropertyOrder({
   MoneyAmount.JSON_PROPERTY_AMOUNT,

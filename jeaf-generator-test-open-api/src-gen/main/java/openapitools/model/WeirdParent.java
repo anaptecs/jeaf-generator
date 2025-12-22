@@ -127,7 +127,7 @@ public class WeirdParent {
   }
 
   /**
-   * Internal ID 2nd line 3rd line 
+   * Internal ID&lt;br&gt; 2nd line&lt;br&gt; 3rd line 
    * @return complexBooking
    */
   @javax.annotation.Nonnull
@@ -160,7 +160,7 @@ public class WeirdParent {
   }
 
   /**
-   * Internal ID 2nd line 3rd line 
+   * Internal ID&lt;br&gt; 2nd line&lt;br&gt; 3rd line 
    * @return complexBookings
    */
   @javax.annotation.Nonnull

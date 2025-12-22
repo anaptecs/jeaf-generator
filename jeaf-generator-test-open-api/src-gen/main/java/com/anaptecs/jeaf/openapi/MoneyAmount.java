@@ -19,9 +19,9 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 /**
- * Type represents an amount of money.         NOVA 14 Mapping * nova-base.xsd.GeldBetrag 
+ * Type represents an amount of money.&lt;br&gt;        &lt;br&gt; NOVA 14 Mapping&lt;br&gt; * nova-base.xsd.GeldBetrag 
  */
-@Schema(description = "Type represents an amount of money.         NOVA 14 Mapping * nova-base.xsd.GeldBetrag ")
+@Schema(description = "Type represents an amount of money.<br>        <br> NOVA 14 Mapping<br> * nova-base.xsd.GeldBetrag ")
 
 public class MoneyAmount {
   @JsonProperty("amount")

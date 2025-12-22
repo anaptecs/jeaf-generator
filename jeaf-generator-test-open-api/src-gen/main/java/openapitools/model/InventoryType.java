@@ -26,7 +26,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Locale;
 
 /**
- * Valid Values: - SBB - SNCF - DB:      &lt;br&gt;&lt;br&gt;     Breaking Change with 3.x: New literal will occur 
+ * Valid Values:  - &#x60;SBB&#x60;   &lt;br&gt;&lt;br&gt;    - &#x60;SNCF&#x60;   &lt;br&gt;&lt;br&gt;    - &#x60;DB&#x60;:    &lt;br&gt;&lt;br&gt;   **Breaking Change Notice (active with 3.x):**&lt;br&gt;&lt;br&gt;   New literal will occur   &lt;br&gt;&lt;br&gt;    
  */
 public enum InventoryType {
   

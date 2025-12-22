@@ -26,7 +26,7 @@
 | `FaLsE` |  |
 
 ## ChannelType
-
+Enumeration defines the different types of channels that are supported.
 
 ### Literals
 

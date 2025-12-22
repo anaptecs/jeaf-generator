@@ -53,10 +53,10 @@ public class WeirdBooking extends WeirdParent {
   }
 
    /**
-   * Internal ID 2nd line 3rd line 
+   * Internal ID&lt;br&gt; 2nd line&lt;br&gt; 3rd line 
    * @return booking
   **/
-  @Schema(required = true, description = "Internal ID 2nd line 3rd line ")
+  @Schema(required = true, description = "Internal ID<br> 2nd line<br> 3rd line ")
   public String getBooking() {
     return booking;
   }
@@ -97,10 +97,10 @@ public class WeirdBooking extends WeirdParent {
   }
 
    /**
-   * soft link 2nd line 3rd line 
+   * soft link&lt;br&gt; 2nd line&lt;br&gt; 3rd line 
    * @return versionedObjectSoftLink
   **/
-  @Schema(required = true, description = "soft link 2nd line 3rd line ")
+  @Schema(required = true, description = "soft link<br> 2nd line<br> 3rd line ")
   public String getVersionedObjectSoftLink() {
     return versionedObjectSoftLink;
   }
@@ -159,10 +159,10 @@ public class WeirdBooking extends WeirdParent {
   }
 
    /**
-   *  &lt;br&gt;&lt;br&gt; Breaking Change with 2.1: Association will required at least 1 object. 
+   *  &lt;br&gt;&lt;br&gt; **Breaking Change Notice (active with 2.1):**&lt;br&gt;&lt;br&gt; Association will required at least 1 object. 
    * @return inventories
   **/
-  @Schema(description = " <br><br> Breaking Change with 2.1: Association will required at least 1 object. ")
+  @Schema(description = " <br><br> **Breaking Change Notice (active with 2.1):**<br><br> Association will required at least 1 object. ")
   public List<InventoryType> getInventories() {
     return inventories;
   }

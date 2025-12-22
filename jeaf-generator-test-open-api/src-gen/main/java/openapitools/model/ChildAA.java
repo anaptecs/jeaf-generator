@@ -39,7 +39,7 @@ import openapitools.JSON;
 
 
 /**
- *  &lt;br&gt;&lt;br&gt; Deprecated: Please do not use this class any longer. There are better alternatives but I do not tell you which ones. May be &#x60;java.lang.Nothing&#x60; (since: 0.5, removed with: 2.0) 
+ *  &lt;br&gt;&lt;br&gt; **Deprecation Notice (since: 0.5, removed with: 2.0):**&lt;br&gt;&lt;br&gt; Please do not use this class any longer. There are better alternatives but I do not tell you which ones. May be &#x60;java.lang.Nothing&#x60; 
  * @deprecated
  */
 @Deprecated
@@ -90,7 +90,7 @@ public class ChildAA extends ChildA {
   }
 
   /**
-   * Multi line docs 
+   * Multi&lt;br&gt; line&lt;br&gt; docs 
    * @return childAAAttribute
    */
   @javax.annotation.Nonnull

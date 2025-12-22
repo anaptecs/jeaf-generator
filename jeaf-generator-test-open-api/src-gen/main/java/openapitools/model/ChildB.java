@@ -39,7 +39,7 @@ import openapitools.JSON;
 
 
 /**
- * Multi line class comment 
+ * Multi&lt;br&gt; line&lt;br&gt; class&lt;br&gt; comment 
  */
 @JsonPropertyOrder({
   ChildB.JSON_PROPERTY_CHILD_B_ATTRIBUTE,
