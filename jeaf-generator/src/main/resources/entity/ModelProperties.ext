@@ -61,4 +61,9 @@ boolean hasDefaultValueForBasicTypeProperty(Property param):
   if param.getDefault().trim().length > 0
   then true
   else false;
+
+boolean hasDefaultValueForBasicTypeParameter(Parameter param):
+  if param.getDefault().trim().length > 0
+  then true
+  else false;
   

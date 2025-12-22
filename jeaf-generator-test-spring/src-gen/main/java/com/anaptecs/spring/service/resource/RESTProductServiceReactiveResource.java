@@ -876,7 +876,8 @@ public class RESTProductServiceReactiveResource {
   @MyNotNullRESTParam
   public Mono<String> testOptionalQueryParams(
       @RequestParam(name = "query1", required = false, defaultValue = "Just a default value") String query1,
-      @RequestParam(name = "query2", required = false) int query2, ServerWebExchange pServerWebExchange ) {
+      @RequestParam(name = "query2", required = false, defaultValue = "4711") int query2,
+      ServerWebExchange pServerWebExchange ) {
     return Mono.defer(( ) -> {
       // Validate request parameter(s).
       validationExecutor.validateRequest(RESTProductServiceReactive.class, query1, query2);

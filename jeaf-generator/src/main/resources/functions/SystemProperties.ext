@@ -98,6 +98,11 @@ cached boolean suppressNotRequiredNullableInOpenAPISpec():
 cached boolean implementCompareableForOpenAPIDataTypes():
    getBooleanSystemProperty("jeaf.generator.implementCompareableForOpenAPIDataTypes", false);
    
+cached boolean enforceExplicitDefaultValueForOptionalPrimitives():
+   getBooleanSystemProperty("jeaf.generator.enforceExplicitDefaultValueForOptionalPrimitives", false);
+   
+
+
 cached String openAPILiteralQuotationCharacter():
    getSystemProperty("jeaf.generator.openAPILiteralQuotationCharacter", ""); 
    
