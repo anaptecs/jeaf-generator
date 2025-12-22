@@ -41,6 +41,9 @@ context SoftLink if ((NamedElement) owner).runChecks("ServiceObject") && ignore(
 context ServiceObject if runChecks("ServiceObject") && ignore() == false ERROR this.getErrorMessage("9170", {name, "class", this.fqn()}): this.isValidIdentifierName();
 context Property if owner.asNamedElement().runChecks("ServiceObject") && owner.isStereotypeApplied("ServiceObject") && ignore() == false ERROR this.getErrorMessage("9170", {name, "property", owner.asNamedElement().fqn()}): this.isValidIdentifierName();
 
+context Property if owner.asNamedElement().runChecks("ServiceObject") && owner.isStereotypeApplied("ServiceObject") && type != null && enforceExplicitDefaultValueForOptionalPrimitives() == true  && ignore() == false  ERROR   this.getErrorMessage("9179",   {owner.asNamedElement().fqn(), name}): !(type.isPrimitiveType() && this.lower == 0 && this.upper == 1 && this.hasDefaultValueForBasicTypeProperty() == false && this.hasDefaultValueForEnumProperty() == false);
+context Property if owner.asNamedElement().runChecks("ServiceObject") && owner.isStereotypeApplied("ServiceObject") && type != null && enforceExplicitDefaultValueForOptionalPrimitives() == false && ignore() == false  WARNING this.getWarningMessage("9179", {owner.asNamedElement().fqn(), name}): !(type.isPrimitiveType() && this.lower == 0 && this.upper == 1 && this.hasDefaultValueForBasicTypeProperty() == false && this.hasDefaultValueForEnumProperty() == false);
+
 
 // Checks for stereotype POJO
 context POJO if runChecks("POJO") && ignore() == false ERROR this.getErrorMessage("9124", {"POJO", name}): ownedAttribute.select(e|e.isPropertySuppressed() == false).forAll( a | a.type != null);
@@ -65,6 +68,9 @@ context SoftLink if ((NamedElement) owner).runChecks("POJO") && ignore() == fals
 context POJO if runChecks("POJO") && ignore() == false ERROR this.getErrorMessage("9170", {name, "class", this.fqn()}): this.isValidIdentifierName();
 context Property if owner.asNamedElement().runChecks("POJO") && owner.isStereotypeApplied("POJO") && ignore() == false  ERROR this.getErrorMessage("9170", {name, "property", owner.asNamedElement().fqn()}): this.isValidIdentifierName();
 context Operation if owner.asNamedElement().runChecks("POJO") && owner.isStereotypeApplied("POJO") && ignore() == false ERROR this.getErrorMessage("9170", {name, "operation", owner.asNamedElement().fqn()}): this.isValidIdentifierName();
+
+context Property if owner.asNamedElement().runChecks("POJO") && owner.isStereotypeApplied("POJO") && type != null && enforceExplicitDefaultValueForOptionalPrimitives() == true  && ignore() == false  ERROR   this.getErrorMessage("9179",   {owner.asNamedElement().fqn(), name}): !(type.isPrimitiveType() && this.lower == 0 && this.upper == 1 && this.hasDefaultValueForBasicTypeProperty() == false && this.hasDefaultValueForEnumProperty() == false);
+context Property if owner.asNamedElement().runChecks("POJO") && owner.isStereotypeApplied("POJO") && type != null && enforceExplicitDefaultValueForOptionalPrimitives() == false && ignore() == false  WARNING this.getWarningMessage("9179", {owner.asNamedElement().fqn(), name}): !(type.isPrimitiveType() && this.lower == 0 && this.upper == 1 && this.hasDefaultValueForBasicTypeProperty() == false && this.hasDefaultValueForEnumProperty() == false);
 
 // Checks for template bindings
 context Class if this.getNearestPackage().runChecks() && ignore() == false && templateBinding.isEmpty == false ERROR this.getErrorMessage("9168", {this.getNearestPackage().qualifiedName() + "." + this.name}): templateBinding.size == 1;

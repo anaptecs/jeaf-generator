@@ -1423,6 +1423,13 @@ public class GeneratorMojo extends AbstractMojo {
   private Boolean generateBuilderWithAllMandatoryFields;
 
   /**
+   * Switch can be used to enforce that for optional primitive properties / parameters an explicit default value is
+   * enforced.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean enforceExplicitDefaultValueForOptionalPrimitives;
+
+  /**
    * Switch defines if errors during code generation should break the build. This feature is mainly intended for test
    * purposes of JEAF Generator itself.
    */
@@ -1672,6 +1679,7 @@ public class GeneratorMojo extends AbstractMojo {
 
     if (useMultiModuleWorkflow) {
       lLog.info("Using multi-module workflow:                      " + useMultiModuleWorkflow);
+      lLog.info("Running all checks:                               " + this.runAllChecks());
     }
 
     if (generateCustomConstraints) {
@@ -2077,6 +2085,12 @@ public class GeneratorMojo extends AbstractMojo {
       lLog.info("Generate builder with all manadatory fields:      " + generateBuilderWithAllMandatoryFields);
     }
 
+    if (enforceExplicitDefaultValueForOptionalPrimitives) {
+      lLog.info("Enforce explicit default value for optional");
+      lLog.info(
+          "primitve properties / parameters:                 " + enforceExplicitDefaultValueForOptionalPrimitives);
+    }
+
     if (enableDetailedToStringMethod) {
       lLog.info("Enable detailed toString():                       " + enableDetailedToStringMethod);
     }
@@ -2385,6 +2399,9 @@ public class GeneratorMojo extends AbstractMojo {
 
       System.setProperty("switch.gen.enable.builder.for.manadatory.fields",
           generateBuilderWithAllMandatoryFields.toString());
+
+      System.setProperty(PROPERTY_PREFIX + "enforceExplicitDefaultValueForOptionalPrimitives",
+          enforceExplicitDefaultValueForOptionalPrimitives.toString());
 
       System.setProperty("name.oid.row", peristentObjectsOIDRowName);
       System.setProperty("name.version.label.row", peristentObjectsVersionLabelRowName);
