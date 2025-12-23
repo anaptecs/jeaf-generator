@@ -16,7 +16,6 @@ package openapitools.model;
 import java.util.Objects;
 import java.util.Map;
 import java.util.HashMap;
-import java.util.Locale;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -37,7 +36,7 @@ import openapitools.JSON;
   Channel.JSON_PROPERTY_CODE,
   Channel.JSON_PROPERTY_SELF_SERVICE_CHANNEL
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.18.0")
 public class Channel {
   public static final String JSON_PROPERTY_CHANNEL_TYPE = "channelType";
   @javax.annotation.Nonnull

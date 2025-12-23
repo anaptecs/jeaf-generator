@@ -16,7 +16,6 @@ package openapitools.model;
 import java.util.Objects;
 import java.util.Map;
 import java.util.HashMap;
-import java.util.Locale;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -54,7 +53,7 @@ import openapitools.JSON;
   PrimitiveObjectWithRestrictions.JSON_PROPERTY_A_STRING,
   PrimitiveObjectWithRestrictions.JSON_PROPERTY_B_STRING
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.18.0")
 public class PrimitiveObjectWithRestrictions {
   public static final String JSON_PROPERTY_A_BOOLEAN = "aBoolean";
   @javax.annotation.Nonnull
