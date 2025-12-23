@@ -116,7 +116,7 @@
 «indentation»            deprecated: true
               «ENDIF-»
             «ENDIF-»
-            «IF attribute.isUnique-»
+            «IF ownerAttribute.isUnique-»
 «indentation»          uniqueItems: true
             «ENDIF-»
           «ENDIF-»
@@ -225,7 +225,7 @@
                   «IF attribute.isDeprecated() || param.isDeprecated() -»
 «indent»            deprecated: true
                   «ENDIF-»
-                  «IF attribute.isUnique-»
+                  «IF param.isUnique-»
 «indent»            uniqueItems: true
                   «ENDIF-»
                 «ENDIF-»

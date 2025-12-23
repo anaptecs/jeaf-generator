@@ -566,6 +566,9 @@ private cached boolean hasMultivaluedTemplateBinding(uml::Class class):
     then ((JMM::TemplateBindingMultiplicity) class.templateBinding.first()).multivalued
     else false;
     
+cached boolean isUniqueProperty(uml::Class class, uml::Property property):
+	class.isTemplateProperty(property) == false && property.isUnique;
+    
 List[String] detectMissingRESTPathParams(JMM::RESTOperation operation):
     javaDetectMissingRESTPathParams(operation.getRESTOperationPath(null),  operation.getAllRESTPathParamNames());
 

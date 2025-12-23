@@ -646,7 +646,6 @@ paths:
                   maxLength: 3
                   example: CHF
                 minItems: 1
-                uniqueItems: true
                 nullable: false
                 example: ["CHF", "EUR", "USD"]
       responses:
@@ -665,7 +664,6 @@ paths:
                   maxLength: 3
                   example: CHF
                 minItems: 1
-                uniqueItems: true
                 nullable: false
           headers:
             X-Global-Response-Header:
@@ -954,7 +952,6 @@ paths:
                   minLength: 3
                   maxLength: 3
                   example: CHF
-                uniqueItems: true
                 nullable: true
           headers:
             X-Global-Response-Header:
@@ -995,7 +992,6 @@ paths:
                   minLength: 3
                   maxLength: 3
                   example: CHF
-                uniqueItems: true
                 nullable: true
           headers:
             X-Global-Response-Header:
@@ -1404,7 +1400,6 @@ paths:
             items:
               type: number
               format: double
-            uniqueItems: true
             nullable: true
       responses:
         '200':
@@ -1437,7 +1432,6 @@ paths:
             items:
               type: number
               format: double
-            uniqueItems: true
             nullable: true
         - name: pEnums
           in: query
@@ -1479,7 +1473,6 @@ paths:
               type: string
               minLength: 32
               maxLength: 128
-            uniqueItems: true
             nullable: true
         - name: longCodeQueryParam
           in: query
@@ -1490,7 +1483,6 @@ paths:
             items:
               type: integer
               format: int64
-            uniqueItems: true
             nullable: true
         - name: literals
           in: query
@@ -1560,7 +1552,6 @@ paths:
               type: string
               minLength: 32
               maxLength: 128
-            uniqueItems: true
             nullable: true
         - name: longCodeQueryParam
           in: query
@@ -1571,7 +1562,6 @@ paths:
             items:
               type: integer
               format: int64
-            uniqueItems: true
             nullable: true
         - name: literals
           in: query
@@ -2026,7 +2016,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Offer'
-          uniqueItems: true
     # com.anaptecs.jeaf.junit.rest.generics.PagedBusinessObjects
     PagedBusinessObjects:
       type: object

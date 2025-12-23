@@ -137,7 +137,7 @@
               «IF attribute.isDeprecated() -»
           deprecated: true
               «ENDIF-»
-              «IF attribute.isUnique-»
+              «IF this.isUniqueProperty(attribute)-»
           uniqueItems: true
               «ENDIF-»
               «ELSE -»
@@ -162,7 +162,7 @@
               «IF attribute.isDeprecated() -»
           deprecated: true
               «ENDIF-»
-              «IF attribute.isUnique-»
+              «IF this.isUniqueProperty(attribute)-»
           uniqueItems: true
               «ENDIF-»
             «ENDIF-»
@@ -243,7 +243,7 @@
                 «ELSE-»
             $ref: «attribute.type.getOpenAPIType(spec)»
                 «ENDIF-»
-                «IF attribute.isUnique-»
+                «IF this.isUniqueProperty(attribute)-»
           uniqueItems: true
                 «ENDIF-»
               «ENDIF-»
@@ -356,7 +356,7 @@
               «IF attribute.isDeprecated() -»
               deprecated: true
               «ENDIF-»
-              «IF attribute.isUnique-»
+              «IF this.isUniqueProperty(attribute)-»
               uniqueItems: true
               «ENDIF-»
               «ELSE -»
@@ -381,7 +381,7 @@
               «IF attribute.isDeprecated() -»
                 deprecated: true
               «ENDIF-»
-              «IF attribute.isUnique-»
+              «IF this.isUniqueProperty(attribute)-»
               uniqueItems: true
               «ENDIF-»
             «ENDIF-»
@@ -435,7 +435,7 @@
               «ELSE-»
                 $ref: «attribute.type.getOpenAPIType(spec)»
               «ENDIF-»
-              «IF attribute.isUnique-»
+              «IF this.isUniqueProperty(attribute)-»
               uniqueItems: true
               «ENDIF-»
               «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("        ") FOR attribute-»

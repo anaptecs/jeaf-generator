@@ -599,7 +599,6 @@ paths:
                   examples:
                    - CHF
                 minItems: 1
-                uniqueItems: true
                 nullable: false
                 examples:
                  - ["CHF", "EUR", "USD"]
@@ -621,7 +620,6 @@ paths:
                    - CHF
                 minItems: 1
                 maxItems: 20
-                uniqueItems: true
                 nullable: false
           headers:
             X-Global-Response-Header:
@@ -1216,7 +1214,6 @@ paths:
             type: array
             items:
               type: string
-            uniqueItems: true
             nullable: true
       responses:
         '200':
@@ -1503,7 +1500,6 @@ paths:
                   maxLength: 3
                   examples:
                    - CHF
-                uniqueItems: true
                 nullable: true
     
         '400':
@@ -1545,7 +1541,6 @@ paths:
                   maxLength: 3
                   examples:
                    - CHF
-                uniqueItems: true
                 nullable: true
     
         '400':
@@ -2343,7 +2338,6 @@ paths:
             type: array
             items:
               type: string
-            uniqueItems: true
       responses:
         '200':
           description: |

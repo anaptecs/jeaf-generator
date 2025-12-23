@@ -26,8 +26,10 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 import openapitools.model.Booking;
 import openapitools.model.InventoryType;
@@ -64,7 +66,7 @@ public class WeirdBooking extends WeirdParent {
   private String booking;
 
   public static final String JSON_PROPERTY_ADDITIONAL_BOOKINGS = "additionalBookings";
-  private JsonNullable<Set<String>> additionalBookings = JsonNullable.<Set<String>>undefined();
+  private JsonNullable<List<String>> additionalBookings = JsonNullable.<List<String>>undefined();
 
   public static final String JSON_PROPERTY_VERSIONED_OBJECT_SOFT_LINK = "versionedObjectSoftLink";
   @javax.annotation.Nonnull
@@ -110,14 +112,14 @@ public class WeirdBooking extends WeirdParent {
   }
 
 
-  public WeirdBooking additionalBookings(@javax.annotation.Nullable Set<String> additionalBookings) {
-    this.additionalBookings = JsonNullable.<Set<String>>of(additionalBookings);
+  public WeirdBooking additionalBookings(@javax.annotation.Nullable List<String> additionalBookings) {
+    this.additionalBookings = JsonNullable.<List<String>>of(additionalBookings);
     return this;
   }
 
   public WeirdBooking addAdditionalBookingsItem(String additionalBookingsItem) {
     if (this.additionalBookings == null || !this.additionalBookings.isPresent()) {
-      this.additionalBookings = JsonNullable.<Set<String>>of(new LinkedHashSet<>());
+      this.additionalBookings = JsonNullable.<List<String>>of(new ArrayList<>());
     }
     try {
       this.additionalBookings.get().add(additionalBookingsItem);
@@ -134,24 +136,24 @@ public class WeirdBooking extends WeirdParent {
   @javax.annotation.Nullable
   @JsonIgnore
 
-  public Set<String> getAdditionalBookings() {
+  public List<String> getAdditionalBookings() {
         return additionalBookings.orElse(null);
   }
 
   @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_BOOKINGS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public JsonNullable<Set<String>> getAdditionalBookings_JsonNullable() {
+  public JsonNullable<List<String>> getAdditionalBookings_JsonNullable() {
     return additionalBookings;
   }
   
   @JsonProperty(JSON_PROPERTY_ADDITIONAL_BOOKINGS)
-  public void setAdditionalBookings_JsonNullable(JsonNullable<Set<String>> additionalBookings) {
+  public void setAdditionalBookings_JsonNullable(JsonNullable<List<String>> additionalBookings) {
     this.additionalBookings = additionalBookings;
   }
 
-  public void setAdditionalBookings(@javax.annotation.Nullable Set<String> additionalBookings) {
-    this.additionalBookings = JsonNullable.<Set<String>>of(additionalBookings);
+  public void setAdditionalBookings(@javax.annotation.Nullable List<String> additionalBookings) {
+    this.additionalBookings = JsonNullable.<List<String>>of(additionalBookings);
   }
 
 
