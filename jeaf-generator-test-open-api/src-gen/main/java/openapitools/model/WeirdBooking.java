@@ -25,9 +25,10 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import java.util.ArrayList;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.util.Arrays;
-import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Set;
 import openapitools.model.Booking;
 import openapitools.model.InventoryType;
 import openapitools.model.WeirdParent;
@@ -63,7 +64,7 @@ public class WeirdBooking extends WeirdParent {
   private String booking;
 
   public static final String JSON_PROPERTY_ADDITIONAL_BOOKINGS = "additionalBookings";
-  private JsonNullable<List<String>> additionalBookings = JsonNullable.<List<String>>undefined();
+  private JsonNullable<Set<String>> additionalBookings = JsonNullable.<Set<String>>undefined();
 
   public static final String JSON_PROPERTY_VERSIONED_OBJECT_SOFT_LINK = "versionedObjectSoftLink";
   @javax.annotation.Nonnull
@@ -79,7 +80,7 @@ public class WeirdBooking extends WeirdParent {
 
   public static final String JSON_PROPERTY_INVENTORIES = "inventories";
   @javax.annotation.Nullable
-  private List<InventoryType> inventories = new ArrayList<>();
+  private Set<InventoryType> inventories = new LinkedHashSet<>();
 
   public WeirdBooking() { 
   }
@@ -109,14 +110,14 @@ public class WeirdBooking extends WeirdParent {
   }
 
 
-  public WeirdBooking additionalBookings(@javax.annotation.Nullable List<String> additionalBookings) {
-    this.additionalBookings = JsonNullable.<List<String>>of(additionalBookings);
+  public WeirdBooking additionalBookings(@javax.annotation.Nullable Set<String> additionalBookings) {
+    this.additionalBookings = JsonNullable.<Set<String>>of(additionalBookings);
     return this;
   }
 
   public WeirdBooking addAdditionalBookingsItem(String additionalBookingsItem) {
     if (this.additionalBookings == null || !this.additionalBookings.isPresent()) {
-      this.additionalBookings = JsonNullable.<List<String>>of(new ArrayList<>());
+      this.additionalBookings = JsonNullable.<Set<String>>of(new LinkedHashSet<>());
     }
     try {
       this.additionalBookings.get().add(additionalBookingsItem);
@@ -133,24 +134,24 @@ public class WeirdBooking extends WeirdParent {
   @javax.annotation.Nullable
   @JsonIgnore
 
-  public List<String> getAdditionalBookings() {
+  public Set<String> getAdditionalBookings() {
         return additionalBookings.orElse(null);
   }
 
   @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_BOOKINGS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public JsonNullable<List<String>> getAdditionalBookings_JsonNullable() {
+  public JsonNullable<Set<String>> getAdditionalBookings_JsonNullable() {
     return additionalBookings;
   }
   
   @JsonProperty(JSON_PROPERTY_ADDITIONAL_BOOKINGS)
-  public void setAdditionalBookings_JsonNullable(JsonNullable<List<String>> additionalBookings) {
+  public void setAdditionalBookings_JsonNullable(JsonNullable<Set<String>> additionalBookings) {
     this.additionalBookings = additionalBookings;
   }
 
-  public void setAdditionalBookings(@javax.annotation.Nullable List<String> additionalBookings) {
-    this.additionalBookings = JsonNullable.<List<String>>of(additionalBookings);
+  public void setAdditionalBookings(@javax.annotation.Nullable Set<String> additionalBookings) {
+    this.additionalBookings = JsonNullable.<Set<String>>of(additionalBookings);
   }
 
 
@@ -229,14 +230,14 @@ public class WeirdBooking extends WeirdParent {
   }
 
 
-  public WeirdBooking inventories(@javax.annotation.Nullable List<InventoryType> inventories) {
+  public WeirdBooking inventories(@javax.annotation.Nullable Set<InventoryType> inventories) {
     this.inventories = inventories;
     return this;
   }
 
   public WeirdBooking addInventoriesItem(InventoryType inventoriesItem) {
     if (this.inventories == null) {
-      this.inventories = new ArrayList<>();
+      this.inventories = new LinkedHashSet<>();
     }
     this.inventories.add(inventoriesItem);
     return this;
@@ -250,14 +251,15 @@ public class WeirdBooking extends WeirdParent {
   @JsonProperty(value = JSON_PROPERTY_INVENTORIES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<InventoryType> getInventories() {
+  public Set<InventoryType> getInventories() {
     return inventories;
   }
 
 
+  @JsonDeserialize(as = LinkedHashSet.class)
   @JsonProperty(value = JSON_PROPERTY_INVENTORIES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setInventories(@javax.annotation.Nullable List<InventoryType> inventories) {
+  public void setInventories(@javax.annotation.Nullable Set<InventoryType> inventories) {
     this.inventories = inventories;
   }
 

@@ -22,9 +22,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -50,7 +53,7 @@ public class Campaign {
   public static final String JSON_PROPERTY_MORE_LINK_I_DS = "moreLinkIDs";
   @Deprecated
   @javax.annotation.Nonnull
-  private List<Long> moreLinkIDs = new ArrayList<>();
+  private Set<Long> moreLinkIDs = new LinkedHashSet<>();
 
   public static final String JSON_PROPERTY_DISCOUNT_OFFER_I_DS = "discountOfferIDs";
   @Deprecated
@@ -97,14 +100,14 @@ public class Campaign {
 
 
   @Deprecated
-  public Campaign moreLinkIDs(@javax.annotation.Nonnull List<Long> moreLinkIDs) {
+  public Campaign moreLinkIDs(@javax.annotation.Nonnull Set<Long> moreLinkIDs) {
     this.moreLinkIDs = moreLinkIDs;
     return this;
   }
 
   public Campaign addMoreLinkIDsItem(Long moreLinkIDsItem) {
     if (this.moreLinkIDs == null) {
-      this.moreLinkIDs = new ArrayList<>();
+      this.moreLinkIDs = new LinkedHashSet<>();
     }
     this.moreLinkIDs.add(moreLinkIDsItem);
     return this;
@@ -120,15 +123,16 @@ public class Campaign {
   @JsonProperty(value = JSON_PROPERTY_MORE_LINK_I_DS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public List<Long> getMoreLinkIDs() {
+  public Set<Long> getMoreLinkIDs() {
     return moreLinkIDs;
   }
 
 
   @Deprecated
+  @JsonDeserialize(as = LinkedHashSet.class)
   @JsonProperty(value = JSON_PROPERTY_MORE_LINK_I_DS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setMoreLinkIDs(@javax.annotation.Nonnull List<Long> moreLinkIDs) {
+  public void setMoreLinkIDs(@javax.annotation.Nonnull Set<Long> moreLinkIDs) {
     this.moreLinkIDs = moreLinkIDs;
   }
 

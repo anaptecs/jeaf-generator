@@ -116,6 +116,9 @@
 «indentation»            deprecated: true
               «ENDIF-»
             «ENDIF-»
+            «IF attribute.isUnique-»
+«indentation»          uniqueItems: true
+            «ENDIF-»
           «ENDIF-»
           «IF ownerAttribute.isNullable() == false || suppressNotRequiredNullableInOpenAPISpec() == false -»
 «indentation»          nullable: «ownerAttribute.isNullable()»
@@ -221,6 +224,9 @@
                   «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions(indent + "      ") FOR param-»
                   «IF attribute.isDeprecated() || param.isDeprecated() -»
 «indent»            deprecated: true
+                  «ENDIF-»
+                  «IF attribute.isUnique-»
+«indent»            uniqueItems: true
                   «ENDIF-»
                 «ENDIF-»
                 «ENDIF-»

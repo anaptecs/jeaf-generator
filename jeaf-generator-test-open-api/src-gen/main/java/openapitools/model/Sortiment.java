@@ -22,9 +22,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import java.util.ArrayList;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.util.Arrays;
-import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Set;
 import openapitools.model.Product;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import openapitools.JSON;
@@ -43,7 +44,7 @@ import openapitools.JSON;
 public class Sortiment {
   public static final String JSON_PROPERTY_PRODUCTS = "products";
   @javax.annotation.Nullable
-  private List<Product> products = new ArrayList<>();
+  private Set<Product> products = new LinkedHashSet<>();
 
   public static final String JSON_PROPERTY_VALUE = "value";
   @javax.annotation.Nonnull
@@ -56,19 +57,19 @@ public class Sortiment {
   public static final String JSON_PROPERTY_TYPES = "types";
   @Deprecated
   @javax.annotation.Nullable
-  private List<String> types = new ArrayList<>();
+  private Set<String> types = new LinkedHashSet<>();
 
   public Sortiment() { 
   }
 
-  public Sortiment products(@javax.annotation.Nullable List<Product> products) {
+  public Sortiment products(@javax.annotation.Nullable Set<Product> products) {
     this.products = products;
     return this;
   }
 
   public Sortiment addProductsItem(Product productsItem) {
     if (this.products == null) {
-      this.products = new ArrayList<>();
+      this.products = new LinkedHashSet<>();
     }
     this.products.add(productsItem);
     return this;
@@ -82,14 +83,15 @@ public class Sortiment {
   @JsonProperty(value = JSON_PROPERTY_PRODUCTS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<Product> getProducts() {
+  public Set<Product> getProducts() {
     return products;
   }
 
 
+  @JsonDeserialize(as = LinkedHashSet.class)
   @JsonProperty(value = JSON_PROPERTY_PRODUCTS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setProducts(@javax.annotation.Nullable List<Product> products) {
+  public void setProducts(@javax.annotation.Nullable Set<Product> products) {
     this.products = products;
   }
 
@@ -145,14 +147,14 @@ public class Sortiment {
 
 
   @Deprecated
-  public Sortiment types(@javax.annotation.Nullable List<String> types) {
+  public Sortiment types(@javax.annotation.Nullable Set<String> types) {
     this.types = types;
     return this;
   }
 
   public Sortiment addTypesItem(String typesItem) {
     if (this.types == null) {
-      this.types = new ArrayList<>();
+      this.types = new LinkedHashSet<>();
     }
     this.types.add(typesItem);
     return this;
@@ -168,15 +170,16 @@ public class Sortiment {
   @JsonProperty(value = JSON_PROPERTY_TYPES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<String> getTypes() {
+  public Set<String> getTypes() {
     return types;
   }
 
 
   @Deprecated
+  @JsonDeserialize(as = LinkedHashSet.class)
   @JsonProperty(value = JSON_PROPERTY_TYPES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTypes(@javax.annotation.Nullable List<String> types) {
+  public void setTypes(@javax.annotation.Nullable Set<String> types) {
     this.types = types;
   }
 

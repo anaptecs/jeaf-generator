@@ -25,9 +25,12 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 import openapitools.model.BankAccount;
 import openapitools.model.ChildB;
 import openapitools.model.ParentClass;
@@ -69,7 +72,7 @@ public class ChildBB extends ChildB {
   public static final String JSON_PROPERTY_DEPRECATED_BS = "deprecatedBs";
   @Deprecated
   @javax.annotation.Nullable
-  private List<ChildB> deprecatedBs = new ArrayList<>();
+  private Set<ChildB> deprecatedBs = new LinkedHashSet<>();
 
   public static final String JSON_PROPERTY_DEPRECATED_PARENT = "deprecatedParent";
   @javax.annotation.Nullable
@@ -136,14 +139,14 @@ public class ChildBB extends ChildB {
 
 
   @Deprecated
-  public ChildBB deprecatedBs(@javax.annotation.Nullable List<ChildB> deprecatedBs) {
+  public ChildBB deprecatedBs(@javax.annotation.Nullable Set<ChildB> deprecatedBs) {
     this.deprecatedBs = deprecatedBs;
     return this;
   }
 
   public ChildBB addDeprecatedBsItem(ChildB deprecatedBsItem) {
     if (this.deprecatedBs == null) {
-      this.deprecatedBs = new ArrayList<>();
+      this.deprecatedBs = new LinkedHashSet<>();
     }
     this.deprecatedBs.add(deprecatedBsItem);
     return this;
@@ -159,15 +162,16 @@ public class ChildBB extends ChildB {
   @JsonProperty(value = JSON_PROPERTY_DEPRECATED_BS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<ChildB> getDeprecatedBs() {
+  public Set<ChildB> getDeprecatedBs() {
     return deprecatedBs;
   }
 
 
   @Deprecated
+  @JsonDeserialize(as = LinkedHashSet.class)
   @JsonProperty(value = JSON_PROPERTY_DEPRECATED_BS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDeprecatedBs(@javax.annotation.Nullable List<ChildB> deprecatedBs) {
+  public void setDeprecatedBs(@javax.annotation.Nullable Set<ChildB> deprecatedBs) {
     this.deprecatedBs = deprecatedBs;
   }
 
