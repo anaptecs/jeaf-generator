@@ -22,9 +22,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import java.util.ArrayList;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.util.Arrays;
-import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Set;
 import openapitools.model.DoSomethingResponse;
 import openapitools.model.MultiTemplateClassImpl;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -48,7 +49,7 @@ public class AndOneMorePOJO {
 
   public static final String JSON_PROPERTY_GENERIC_RESPONSES = "genericResponses";
   @javax.annotation.Nullable
-  private List<DoSomethingResponse> genericResponses = new ArrayList<>();
+  private Set<DoSomethingResponse> genericResponses = new LinkedHashSet<>();
 
   public static final String JSON_PROPERTY_MULTI_TEMPLATE_CLASS_IMPL = "multiTemplateClassImpl";
   @javax.annotation.Nonnull
@@ -56,7 +57,7 @@ public class AndOneMorePOJO {
 
   public static final String JSON_PROPERTY_MANY = "many";
   @javax.annotation.Nullable
-  private List<MultiTemplateClassImpl> many = new ArrayList<>();
+  private Set<MultiTemplateClassImpl> many = new LinkedHashSet<>();
 
   public AndOneMorePOJO() { 
   }
@@ -86,14 +87,14 @@ public class AndOneMorePOJO {
   }
 
 
-  public AndOneMorePOJO genericResponses(@javax.annotation.Nullable List<DoSomethingResponse> genericResponses) {
+  public AndOneMorePOJO genericResponses(@javax.annotation.Nullable Set<DoSomethingResponse> genericResponses) {
     this.genericResponses = genericResponses;
     return this;
   }
 
   public AndOneMorePOJO addGenericResponsesItem(DoSomethingResponse genericResponsesItem) {
     if (this.genericResponses == null) {
-      this.genericResponses = new ArrayList<>();
+      this.genericResponses = new LinkedHashSet<>();
     }
     this.genericResponses.add(genericResponsesItem);
     return this;
@@ -107,14 +108,15 @@ public class AndOneMorePOJO {
   @JsonProperty(value = JSON_PROPERTY_GENERIC_RESPONSES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<DoSomethingResponse> getGenericResponses() {
+  public Set<DoSomethingResponse> getGenericResponses() {
     return genericResponses;
   }
 
 
+  @JsonDeserialize(as = LinkedHashSet.class)
   @JsonProperty(value = JSON_PROPERTY_GENERIC_RESPONSES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setGenericResponses(@javax.annotation.Nullable List<DoSomethingResponse> genericResponses) {
+  public void setGenericResponses(@javax.annotation.Nullable Set<DoSomethingResponse> genericResponses) {
     this.genericResponses = genericResponses;
   }
 
@@ -144,14 +146,14 @@ public class AndOneMorePOJO {
   }
 
 
-  public AndOneMorePOJO many(@javax.annotation.Nullable List<MultiTemplateClassImpl> many) {
+  public AndOneMorePOJO many(@javax.annotation.Nullable Set<MultiTemplateClassImpl> many) {
     this.many = many;
     return this;
   }
 
   public AndOneMorePOJO addManyItem(MultiTemplateClassImpl manyItem) {
     if (this.many == null) {
-      this.many = new ArrayList<>();
+      this.many = new LinkedHashSet<>();
     }
     this.many.add(manyItem);
     return this;
@@ -165,14 +167,15 @@ public class AndOneMorePOJO {
   @JsonProperty(value = JSON_PROPERTY_MANY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<MultiTemplateClassImpl> getMany() {
+  public Set<MultiTemplateClassImpl> getMany() {
     return many;
   }
 
 
+  @JsonDeserialize(as = LinkedHashSet.class)
   @JsonProperty(value = JSON_PROPERTY_MANY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMany(@javax.annotation.Nullable List<MultiTemplateClassImpl> many) {
+  public void setMany(@javax.annotation.Nullable Set<MultiTemplateClassImpl> many) {
     this.many = many;
   }
 

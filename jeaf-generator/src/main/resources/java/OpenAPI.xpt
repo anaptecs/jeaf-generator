@@ -163,7 +163,10 @@ components:
           «ENDIF-»
           «IF parameter.isRequiredProperty() -»
             nullable: false
-          «ENDIF-»          
+          «ENDIF-»
+          «IF parameter.isUnique-»
+          uniqueItems: true
+          «ENDIF-»
         «ENDIF-»
         «EXPAND java::OpenAPIHelper::GenerateExample("        ") FOR parameter -»
       «ELSE-»
@@ -369,6 +372,9 @@ components:
                     «IF property.isRequiredProperty() -»
               nullable: false
                     «ENDIF-»          
+                    «IF property.isUnique-»
+            uniqueItems: true
+                    «ENDIF-»
             	«ENDIF -»
                 «EXPAND java::OpenAPIHelper::GenerateExample("            ") FOR property -»
             «ELSE -»
@@ -383,6 +389,9 @@ components:
             «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("      ") FOR property-»
             items:
               $ref: «property.type.getOpenAPIType(this)»
+                «IF property.isUnique-»
+            uniqueItems: true
+                «ENDIF-»
                 «ENDIF-»
             «ENDIF-»
             «ENDIF-»
@@ -447,6 +456,9 @@ components:
               pattern: '«param.getPatternForParam()»'
                     «ENDIF-»
               «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("        ") FOR param-»
+                    «IF param.isUnique-»
+            uniqueItems: true
+                    «ENDIF-»
             	«ENDIF-»
                 «EXPAND java::OpenAPIHelper::GenerateExample("            ") FOR param -»
             «ELSE-»
@@ -461,6 +473,9 @@ components:
             «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("      ") FOR param-»
             items:
               $ref: «param.type.getOpenAPIType(this)»
+                    «IF param.isUnique-»
+            uniqueItems: true
+                    «ENDIF-»
                 «ENDIF-»
               «ENDIF-»
             «ENDIF-»
@@ -512,6 +527,9 @@ components:
                   «IF param.isDeprecated() -»
                 deprecated: true
                   «ENDIF-»                
+                  «IF param.isUnique-»
+              uniqueItems: true
+                  «ENDIF-»
                 «ENDIF-»
                 «EXPAND java::OpenAPIHelper::GenerateExample("              ") FOR param -»
               «ELSE-»
@@ -522,6 +540,9 @@ components:
               items:
                 $ref: «param.type.getOpenAPIType(this)»
               minItems: «param.getLower()»
+                    «IF param.isUnique-»
+              uniqueItems: true
+                    «ENDIF-»
                 «ENDIF-»
               «ENDIF-»
               «ENDIF-»
@@ -566,6 +587,9 @@ components:
                     «IF returnParam.hasPatternForParam() -»
                   pattern: '«returnParam.getPatternForParam()»'
                     «ENDIF-»
+                    «IF returnParam.isUnique-»
+                uniqueItems: true
+                    «ENDIF-»
                   «ENDIF-»
                   «EXPAND java::OpenAPIHelper::GenerateExample("                ") FOR returnParam -»
                 «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("          ") FOR returnParam-»
@@ -577,6 +601,9 @@ components:
                 items:
                   $ref: «returnParam.type.getOpenAPIType(this)»
                 «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("          ") FOR returnParam-»
+                    «IF returnParam.isUnique-»
+                uniqueItems: true
+                    «ENDIF-»
                   «ENDIF-»
                 «ENDIF-»
                 «ENDIF-»

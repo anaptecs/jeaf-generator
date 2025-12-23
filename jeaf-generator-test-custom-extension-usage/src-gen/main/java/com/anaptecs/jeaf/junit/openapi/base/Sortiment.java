@@ -5,13 +5,11 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Set;
 
 import javax.annotation.processing.Generated;
@@ -94,7 +92,7 @@ public class Sortiment extends Object implements ServiceObject {
   @ClassPropertyDeclaration
   @Deprecated
   @JEAFCustomAnnotationTest
-  private List<InlineSortimentType> types;
+  private Set<InlineSortimentType> types;
 
   // "com.anaptecs.jeaf.junit.openapi.base.InlineSortimentType"
   private int typesXYZ = 0;
@@ -108,7 +106,7 @@ public class Sortiment extends Object implements ServiceObject {
     // Bidirectional back reference is not yet set up correctly
     productsBackReferenceInitialized = false;
     value = 4711;
-    types = new ArrayList<>();
+    types = new HashSet<>();
   }
 
   /**
@@ -135,7 +133,7 @@ public class Sortiment extends Object implements ServiceObject {
     inlineSortimentType = pBuilder.inlineSortimentType;
     // "com.anaptecs.jeaf.junit.openapi.base.InlineSortimentType"
     inlineSortimentTypeXYZ = pBuilder.inlineSortimentTypeXYZ;
-    types = (pBuilder.types == null) ? new ArrayList<>() : pBuilder.types;
+    types = (pBuilder.types == null) ? new HashSet<>() : pBuilder.types;
     // "com.anaptecs.jeaf.junit.openapi.base.InlineSortimentType"
     typesXYZ = pBuilder.typesXYZ;
   }
@@ -186,7 +184,7 @@ public class Sortiment extends Object implements ServiceObject {
     @BuilderPropertyDeclaration
     @Deprecated
     @JEAFCustomAnnotationTest
-    private List<InlineSortimentType> types;
+    private Set<InlineSortimentType> types;
 
     // "com.anaptecs.jeaf.junit.openapi.base.InlineSortimentType"
     private int typesXYZ = 0;
@@ -296,10 +294,10 @@ public class Sortiment extends Object implements ServiceObject {
      */
     @Deprecated
     @JEAFCustomAnnotationTest
-    public Builder setTypes( List<InlineSortimentType> pTypes ) {
+    public Builder setTypes( Set<InlineSortimentType> pTypes ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pTypes != null) {
-        types = new ArrayList<InlineSortimentType>(pTypes);
+        types = new HashSet<InlineSortimentType>(pTypes);
       }
       else {
         types = null;
@@ -318,7 +316,7 @@ public class Sortiment extends Object implements ServiceObject {
     public Builder addToTypes( InlineSortimentType... pTypes ) {
       if (pTypes != null) {
         if (types == null) {
-          types = new ArrayList<InlineSortimentType>();
+          types = new HashSet<InlineSortimentType>();
         }
         types.addAll(Arrays.asList(pTypes));
       }
@@ -336,7 +334,7 @@ public class Sortiment extends Object implements ServiceObject {
     public Builder setTypes( InlineSortimentType... pTypes ) {
       // Copy the content of the passed array.
       if (pTypes != null) {
-        types = new ArrayList<InlineSortimentType>(Arrays.asList(pTypes));
+        types = new HashSet<InlineSortimentType>(Arrays.asList(pTypes));
       }
       else {
         types = null;
@@ -528,14 +526,14 @@ public class Sortiment extends Object implements ServiceObject {
   /**
    * Method returns association {@link #types}.<br/>
    *
-   * @return {@link List<InlineSortimentType>} Value to which {@link #types} is set. The method never returns null and
+   * @return {@link Set<InlineSortimentType>} Value to which {@link #types} is set. The method never returns null and
    * the returned collection is unmodifiable.
    */
   @Deprecated
   @JEAFCustomAnnotationTest
-  public List<InlineSortimentType> getTypes( ) {
+  public Set<InlineSortimentType> getTypes( ) {
     // Return all InlineSortimentType objects as unmodifiable collection.
-    return Collections.unmodifiableList(types);
+    return Collections.unmodifiableSet(types);
   }
 
   /**

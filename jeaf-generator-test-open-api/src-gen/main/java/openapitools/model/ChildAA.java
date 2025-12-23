@@ -25,9 +25,12 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 import openapitools.model.BankAccount;
 import openapitools.model.ChildA;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -64,11 +67,11 @@ public class ChildAA extends ChildA {
   private Integer childAAAttribute;
 
   public static final String JSON_PROPERTY_SIZED_ARRAY = "sizedArray";
-  private JsonNullable<List<Integer>> sizedArray = JsonNullable.<List<Integer>>undefined();
+  private JsonNullable<Set<Integer>> sizedArray = JsonNullable.<Set<Integer>>undefined();
 
   public static final String JSON_PROPERTY_REQUIRED_ARRAY = "requiredArray";
   @javax.annotation.Nonnull
-  private List<String> requiredArray = new ArrayList<>();
+  private Set<String> requiredArray = new LinkedHashSet<>();
 
   public static final String JSON_PROPERTY_BIG_INTEGER_CODE = "bigIntegerCode";
   @javax.annotation.Nonnull
@@ -79,7 +82,7 @@ public class ChildAA extends ChildA {
   private Integer integerCode;
 
   public static final String JSON_PROPERTY_CODES = "codes";
-  private JsonNullable<List<Integer>> codes = JsonNullable.<List<Integer>>undefined();
+  private JsonNullable<Set<Integer>> codes = JsonNullable.<Set<Integer>>undefined();
 
   public ChildAA() { 
   }
@@ -109,14 +112,14 @@ public class ChildAA extends ChildA {
   }
 
 
-  public ChildAA sizedArray(@javax.annotation.Nullable List<Integer> sizedArray) {
-    this.sizedArray = JsonNullable.<List<Integer>>of(sizedArray);
+  public ChildAA sizedArray(@javax.annotation.Nullable Set<Integer> sizedArray) {
+    this.sizedArray = JsonNullable.<Set<Integer>>of(sizedArray);
     return this;
   }
 
   public ChildAA addSizedArrayItem(Integer sizedArrayItem) {
     if (this.sizedArray == null || !this.sizedArray.isPresent()) {
-      this.sizedArray = JsonNullable.<List<Integer>>of(new ArrayList<>());
+      this.sizedArray = JsonNullable.<Set<Integer>>of(new LinkedHashSet<>());
     }
     try {
       this.sizedArray.get().add(sizedArrayItem);
@@ -133,35 +136,35 @@ public class ChildAA extends ChildA {
   @javax.annotation.Nullable
   @JsonIgnore
 
-  public List<Integer> getSizedArray() {
+  public Set<Integer> getSizedArray() {
         return sizedArray.orElse(null);
   }
 
   @JsonProperty(value = JSON_PROPERTY_SIZED_ARRAY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public JsonNullable<List<Integer>> getSizedArray_JsonNullable() {
+  public JsonNullable<Set<Integer>> getSizedArray_JsonNullable() {
     return sizedArray;
   }
   
   @JsonProperty(JSON_PROPERTY_SIZED_ARRAY)
-  public void setSizedArray_JsonNullable(JsonNullable<List<Integer>> sizedArray) {
+  public void setSizedArray_JsonNullable(JsonNullable<Set<Integer>> sizedArray) {
     this.sizedArray = sizedArray;
   }
 
-  public void setSizedArray(@javax.annotation.Nullable List<Integer> sizedArray) {
-    this.sizedArray = JsonNullable.<List<Integer>>of(sizedArray);
+  public void setSizedArray(@javax.annotation.Nullable Set<Integer> sizedArray) {
+    this.sizedArray = JsonNullable.<Set<Integer>>of(sizedArray);
   }
 
 
-  public ChildAA requiredArray(@javax.annotation.Nonnull List<String> requiredArray) {
+  public ChildAA requiredArray(@javax.annotation.Nonnull Set<String> requiredArray) {
     this.requiredArray = requiredArray;
     return this;
   }
 
   public ChildAA addRequiredArrayItem(String requiredArrayItem) {
     if (this.requiredArray == null) {
-      this.requiredArray = new ArrayList<>();
+      this.requiredArray = new LinkedHashSet<>();
     }
     this.requiredArray.add(requiredArrayItem);
     return this;
@@ -175,14 +178,15 @@ public class ChildAA extends ChildA {
   @JsonProperty(value = JSON_PROPERTY_REQUIRED_ARRAY, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public List<String> getRequiredArray() {
+  public Set<String> getRequiredArray() {
     return requiredArray;
   }
 
 
+  @JsonDeserialize(as = LinkedHashSet.class)
   @JsonProperty(value = JSON_PROPERTY_REQUIRED_ARRAY, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setRequiredArray(@javax.annotation.Nonnull List<String> requiredArray) {
+  public void setRequiredArray(@javax.annotation.Nonnull Set<String> requiredArray) {
     this.requiredArray = requiredArray;
   }
 
@@ -238,14 +242,14 @@ public class ChildAA extends ChildA {
   }
 
 
-  public ChildAA codes(@javax.annotation.Nullable List<Integer> codes) {
-    this.codes = JsonNullable.<List<Integer>>of(codes);
+  public ChildAA codes(@javax.annotation.Nullable Set<Integer> codes) {
+    this.codes = JsonNullable.<Set<Integer>>of(codes);
     return this;
   }
 
   public ChildAA addCodesItem(Integer codesItem) {
     if (this.codes == null || !this.codes.isPresent()) {
-      this.codes = JsonNullable.<List<Integer>>of(new ArrayList<>());
+      this.codes = JsonNullable.<Set<Integer>>of(new LinkedHashSet<>());
     }
     try {
       this.codes.get().add(codesItem);
@@ -262,24 +266,24 @@ public class ChildAA extends ChildA {
   @javax.annotation.Nullable
   @JsonIgnore
 
-  public List<Integer> getCodes() {
+  public Set<Integer> getCodes() {
         return codes.orElse(null);
   }
 
   @JsonProperty(value = JSON_PROPERTY_CODES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public JsonNullable<List<Integer>> getCodes_JsonNullable() {
+  public JsonNullable<Set<Integer>> getCodes_JsonNullable() {
     return codes;
   }
   
   @JsonProperty(JSON_PROPERTY_CODES)
-  public void setCodes_JsonNullable(JsonNullable<List<Integer>> codes) {
+  public void setCodes_JsonNullable(JsonNullable<Set<Integer>> codes) {
     this.codes = codes;
   }
 
-  public void setCodes(@javax.annotation.Nullable List<Integer> codes) {
-    this.codes = JsonNullable.<List<Integer>>of(codes);
+  public void setCodes(@javax.annotation.Nullable Set<Integer> codes) {
+    this.codes = JsonNullable.<Set<Integer>>of(codes);
   }
 
 

@@ -25,9 +25,12 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 import openapitools.model.BankAccount;
 import openapitools.model.ParentClass;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -57,23 +60,23 @@ import openapitools.JSON;
 
 public class ChildB extends ParentClass {
   public static final String JSON_PROPERTY_CHILD_B_ATTRIBUTE = "childBAttribute";
-  private JsonNullable<List<Boolean>> childBAttribute = JsonNullable.<List<Boolean>>undefined();
+  private JsonNullable<Set<Boolean>> childBAttribute = JsonNullable.<Set<Boolean>>undefined();
 
   public static final String JSON_PROPERTY_COMPOSITION = "composition";
   @javax.annotation.Nullable
-  private List<ParentClass> composition = new ArrayList<>();
+  private Set<ParentClass> composition = new LinkedHashSet<>();
 
   public ChildB() { 
   }
 
-  public ChildB childBAttribute(@javax.annotation.Nullable List<Boolean> childBAttribute) {
-    this.childBAttribute = JsonNullable.<List<Boolean>>of(childBAttribute);
+  public ChildB childBAttribute(@javax.annotation.Nullable Set<Boolean> childBAttribute) {
+    this.childBAttribute = JsonNullable.<Set<Boolean>>of(childBAttribute);
     return this;
   }
 
   public ChildB addChildBAttributeItem(Boolean childBAttributeItem) {
     if (this.childBAttribute == null || !this.childBAttribute.isPresent()) {
-      this.childBAttribute = JsonNullable.<List<Boolean>>of(new ArrayList<>());
+      this.childBAttribute = JsonNullable.<Set<Boolean>>of(new LinkedHashSet<>());
     }
     try {
       this.childBAttribute.get().add(childBAttributeItem);
@@ -90,35 +93,35 @@ public class ChildB extends ParentClass {
   @javax.annotation.Nullable
   @JsonIgnore
 
-  public List<Boolean> getChildBAttribute() {
+  public Set<Boolean> getChildBAttribute() {
         return childBAttribute.orElse(null);
   }
 
   @JsonProperty(value = JSON_PROPERTY_CHILD_B_ATTRIBUTE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public JsonNullable<List<Boolean>> getChildBAttribute_JsonNullable() {
+  public JsonNullable<Set<Boolean>> getChildBAttribute_JsonNullable() {
     return childBAttribute;
   }
   
   @JsonProperty(JSON_PROPERTY_CHILD_B_ATTRIBUTE)
-  public void setChildBAttribute_JsonNullable(JsonNullable<List<Boolean>> childBAttribute) {
+  public void setChildBAttribute_JsonNullable(JsonNullable<Set<Boolean>> childBAttribute) {
     this.childBAttribute = childBAttribute;
   }
 
-  public void setChildBAttribute(@javax.annotation.Nullable List<Boolean> childBAttribute) {
-    this.childBAttribute = JsonNullable.<List<Boolean>>of(childBAttribute);
+  public void setChildBAttribute(@javax.annotation.Nullable Set<Boolean> childBAttribute) {
+    this.childBAttribute = JsonNullable.<Set<Boolean>>of(childBAttribute);
   }
 
 
-  public ChildB composition(@javax.annotation.Nullable List<ParentClass> composition) {
+  public ChildB composition(@javax.annotation.Nullable Set<ParentClass> composition) {
     this.composition = composition;
     return this;
   }
 
   public ChildB addCompositionItem(ParentClass compositionItem) {
     if (this.composition == null) {
-      this.composition = new ArrayList<>();
+      this.composition = new LinkedHashSet<>();
     }
     this.composition.add(compositionItem);
     return this;
@@ -132,14 +135,15 @@ public class ChildB extends ParentClass {
   @JsonProperty(value = JSON_PROPERTY_COMPOSITION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<ParentClass> getComposition() {
+  public Set<ParentClass> getComposition() {
     return composition;
   }
 
 
+  @JsonDeserialize(as = LinkedHashSet.class)
   @JsonProperty(value = JSON_PROPERTY_COMPOSITION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setComposition(@javax.annotation.Nullable List<ParentClass> composition) {
+  public void setComposition(@javax.annotation.Nullable Set<ParentClass> composition) {
     this.composition = composition;
   }
 

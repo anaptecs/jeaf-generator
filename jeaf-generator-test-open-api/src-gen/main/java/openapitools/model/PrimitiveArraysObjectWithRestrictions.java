@@ -22,9 +22,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Set;
 import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -63,13 +63,13 @@ import openapitools.JSON;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.17.0")
 public class PrimitiveArraysObjectWithRestrictions {
   public static final String JSON_PROPERTY_A_BOOLEAN_ARRAY = "aBooleanArray";
-  private JsonNullable<List<Boolean>> aBooleanArray = JsonNullable.<List<Boolean>>undefined();
+  private JsonNullable<Set<Boolean>> aBooleanArray = JsonNullable.<Set<Boolean>>undefined();
 
   public static final String JSON_PROPERTY_B_BOOLEAN_ARRAY = "bBooleanArray";
-  private JsonNullable<List<Boolean>> bBooleanArray = JsonNullable.<List<Boolean>>undefined();
+  private JsonNullable<Set<Boolean>> bBooleanArray = JsonNullable.<Set<Boolean>>undefined();
 
   public static final String JSON_PROPERTY_C_BOOLEAN_ARRAY = "cBooleanArray";
-  private JsonNullable<List<Boolean>> cBooleanArray = JsonNullable.<List<Boolean>>undefined();
+  private JsonNullable<Set<Boolean>> cBooleanArray = JsonNullable.<Set<Boolean>>undefined();
 
   public static final String JSON_PROPERTY_A_BYTE_ARRAY = "aByteArray";
   private JsonNullable<byte[]> aByteArray = JsonNullable.<byte[]>undefined();
@@ -78,68 +78,68 @@ public class PrimitiveArraysObjectWithRestrictions {
   private JsonNullable<byte[]> bByteArray = JsonNullable.<byte[]>undefined();
 
   public static final String JSON_PROPERTY_A_SHORT_ARRAY = "aShortArray";
-  private JsonNullable<List<Integer>> aShortArray = JsonNullable.<List<Integer>>undefined();
+  private JsonNullable<Set<Integer>> aShortArray = JsonNullable.<Set<Integer>>undefined();
 
   public static final String JSON_PROPERTY_B_SHORT_ARRAY = "bShortArray";
-  private JsonNullable<List<Integer>> bShortArray = JsonNullable.<List<Integer>>undefined();
+  private JsonNullable<Set<Integer>> bShortArray = JsonNullable.<Set<Integer>>undefined();
 
   public static final String JSON_PROPERTY_A_INTEGER_ARRAY = "aIntegerArray";
-  private JsonNullable<List<Integer>> aIntegerArray = JsonNullable.<List<Integer>>undefined();
+  private JsonNullable<Set<Integer>> aIntegerArray = JsonNullable.<Set<Integer>>undefined();
 
   public static final String JSON_PROPERTY_B_INTEGER_ARRAY = "bIntegerArray";
-  private JsonNullable<List<Integer>> bIntegerArray = JsonNullable.<List<Integer>>undefined();
+  private JsonNullable<Set<Integer>> bIntegerArray = JsonNullable.<Set<Integer>>undefined();
 
   public static final String JSON_PROPERTY_C_INTEGER_ARRAY = "cIntegerArray";
-  private JsonNullable<List<Integer>> cIntegerArray = JsonNullable.<List<Integer>>undefined();
+  private JsonNullable<Set<Integer>> cIntegerArray = JsonNullable.<Set<Integer>>undefined();
 
   public static final String JSON_PROPERTY_A_LONG_ARRAY = "aLongArray";
   @javax.annotation.Nullable
-  private List<Long> aLongArray;
+  private Set<Long> aLongArray;
 
   public static final String JSON_PROPERTY_B_LONG_ARRAY = "bLongArray";
-  private JsonNullable<List<Long>> bLongArray = JsonNullable.<List<Long>>undefined();
+  private JsonNullable<Set<Long>> bLongArray = JsonNullable.<Set<Long>>undefined();
 
   public static final String JSON_PROPERTY_A_BIG_INTEGER_ARRAY = "aBigIntegerArray";
-  private JsonNullable<List<Long>> aBigIntegerArray = JsonNullable.<List<Long>>undefined();
+  private JsonNullable<Set<Long>> aBigIntegerArray = JsonNullable.<Set<Long>>undefined();
 
   public static final String JSON_PROPERTY_A_CHARACTER_ARRAY = "aCharacterArray";
-  private JsonNullable<List<String>> aCharacterArray = JsonNullable.<List<String>>undefined();
+  private JsonNullable<Set<String>> aCharacterArray = JsonNullable.<Set<String>>undefined();
 
   public static final String JSON_PROPERTY_B_CHARACTER_ARRAY = "bCharacterArray";
-  private JsonNullable<List<String>> bCharacterArray = JsonNullable.<List<String>>undefined();
+  private JsonNullable<Set<String>> bCharacterArray = JsonNullable.<Set<String>>undefined();
 
   public static final String JSON_PROPERTY_A_FLOAT_ARRAY = "aFloatArray";
-  private JsonNullable<List<Float>> aFloatArray = JsonNullable.<List<Float>>undefined();
+  private JsonNullable<Set<Float>> aFloatArray = JsonNullable.<Set<Float>>undefined();
 
   public static final String JSON_PROPERTY_B_FLOAT_ARRAY = "bFloatArray";
-  private JsonNullable<List<Float>> bFloatArray = JsonNullable.<List<Float>>undefined();
+  private JsonNullable<Set<Float>> bFloatArray = JsonNullable.<Set<Float>>undefined();
 
   public static final String JSON_PROPERTY_A_DOUBLE_ARRAY = "aDoubleArray";
-  private JsonNullable<List<Double>> aDoubleArray = JsonNullable.<List<Double>>undefined();
+  private JsonNullable<Set<Double>> aDoubleArray = JsonNullable.<Set<Double>>undefined();
 
   public static final String JSON_PROPERTY_B_DOUBLE_ARRAY = "bDoubleArray";
-  private JsonNullable<List<Double>> bDoubleArray = JsonNullable.<List<Double>>undefined();
+  private JsonNullable<Set<Double>> bDoubleArray = JsonNullable.<Set<Double>>undefined();
 
   public static final String JSON_PROPERTY_A_BIG_DECIMAL_ARRAY = "aBigDecimalArray";
-  private JsonNullable<List<Double>> aBigDecimalArray = JsonNullable.<List<Double>>undefined();
+  private JsonNullable<Set<Double>> aBigDecimalArray = JsonNullable.<Set<Double>>undefined();
 
   public static final String JSON_PROPERTY_A_STRING_ARRAY = "aStringArray";
-  private JsonNullable<List<String>> aStringArray = JsonNullable.<List<String>>undefined();
+  private JsonNullable<Set<String>> aStringArray = JsonNullable.<Set<String>>undefined();
 
   public static final String JSON_PROPERTY_B_STRING_ARRAY = "bStringArray";
-  private JsonNullable<List<String>> bStringArray = JsonNullable.<List<String>>undefined();
+  private JsonNullable<Set<String>> bStringArray = JsonNullable.<Set<String>>undefined();
 
   public PrimitiveArraysObjectWithRestrictions() { 
   }
 
-  public PrimitiveArraysObjectWithRestrictions aBooleanArray(@javax.annotation.Nullable List<Boolean> aBooleanArray) {
-    this.aBooleanArray = JsonNullable.<List<Boolean>>of(aBooleanArray);
+  public PrimitiveArraysObjectWithRestrictions aBooleanArray(@javax.annotation.Nullable Set<Boolean> aBooleanArray) {
+    this.aBooleanArray = JsonNullable.<Set<Boolean>>of(aBooleanArray);
     return this;
   }
 
   public PrimitiveArraysObjectWithRestrictions addABooleanArrayItem(Boolean aBooleanArrayItem) {
     if (this.aBooleanArray == null || !this.aBooleanArray.isPresent()) {
-      this.aBooleanArray = JsonNullable.<List<Boolean>>of(new ArrayList<>());
+      this.aBooleanArray = JsonNullable.<Set<Boolean>>of(new LinkedHashSet<>());
     }
     try {
       this.aBooleanArray.get().add(aBooleanArrayItem);
@@ -156,35 +156,35 @@ public class PrimitiveArraysObjectWithRestrictions {
   @javax.annotation.Nullable
   @JsonIgnore
 
-  public List<Boolean> getaBooleanArray() {
+  public Set<Boolean> getaBooleanArray() {
         return aBooleanArray.orElse(null);
   }
 
   @JsonProperty(value = JSON_PROPERTY_A_BOOLEAN_ARRAY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public JsonNullable<List<Boolean>> getaBooleanArray_JsonNullable() {
+  public JsonNullable<Set<Boolean>> getaBooleanArray_JsonNullable() {
     return aBooleanArray;
   }
   
   @JsonProperty(JSON_PROPERTY_A_BOOLEAN_ARRAY)
-  public void setaBooleanArray_JsonNullable(JsonNullable<List<Boolean>> aBooleanArray) {
+  public void setaBooleanArray_JsonNullable(JsonNullable<Set<Boolean>> aBooleanArray) {
     this.aBooleanArray = aBooleanArray;
   }
 
-  public void setaBooleanArray(@javax.annotation.Nullable List<Boolean> aBooleanArray) {
-    this.aBooleanArray = JsonNullable.<List<Boolean>>of(aBooleanArray);
+  public void setaBooleanArray(@javax.annotation.Nullable Set<Boolean> aBooleanArray) {
+    this.aBooleanArray = JsonNullable.<Set<Boolean>>of(aBooleanArray);
   }
 
 
-  public PrimitiveArraysObjectWithRestrictions bBooleanArray(@javax.annotation.Nullable List<Boolean> bBooleanArray) {
-    this.bBooleanArray = JsonNullable.<List<Boolean>>of(bBooleanArray);
+  public PrimitiveArraysObjectWithRestrictions bBooleanArray(@javax.annotation.Nullable Set<Boolean> bBooleanArray) {
+    this.bBooleanArray = JsonNullable.<Set<Boolean>>of(bBooleanArray);
     return this;
   }
 
   public PrimitiveArraysObjectWithRestrictions addBBooleanArrayItem(Boolean bBooleanArrayItem) {
     if (this.bBooleanArray == null || !this.bBooleanArray.isPresent()) {
-      this.bBooleanArray = JsonNullable.<List<Boolean>>of(new ArrayList<>());
+      this.bBooleanArray = JsonNullable.<Set<Boolean>>of(new LinkedHashSet<>());
     }
     try {
       this.bBooleanArray.get().add(bBooleanArrayItem);
@@ -201,35 +201,35 @@ public class PrimitiveArraysObjectWithRestrictions {
   @javax.annotation.Nullable
   @JsonIgnore
 
-  public List<Boolean> getbBooleanArray() {
+  public Set<Boolean> getbBooleanArray() {
         return bBooleanArray.orElse(null);
   }
 
   @JsonProperty(value = JSON_PROPERTY_B_BOOLEAN_ARRAY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public JsonNullable<List<Boolean>> getbBooleanArray_JsonNullable() {
+  public JsonNullable<Set<Boolean>> getbBooleanArray_JsonNullable() {
     return bBooleanArray;
   }
   
   @JsonProperty(JSON_PROPERTY_B_BOOLEAN_ARRAY)
-  public void setbBooleanArray_JsonNullable(JsonNullable<List<Boolean>> bBooleanArray) {
+  public void setbBooleanArray_JsonNullable(JsonNullable<Set<Boolean>> bBooleanArray) {
     this.bBooleanArray = bBooleanArray;
   }
 
-  public void setbBooleanArray(@javax.annotation.Nullable List<Boolean> bBooleanArray) {
-    this.bBooleanArray = JsonNullable.<List<Boolean>>of(bBooleanArray);
+  public void setbBooleanArray(@javax.annotation.Nullable Set<Boolean> bBooleanArray) {
+    this.bBooleanArray = JsonNullable.<Set<Boolean>>of(bBooleanArray);
   }
 
 
-  public PrimitiveArraysObjectWithRestrictions cBooleanArray(@javax.annotation.Nullable List<Boolean> cBooleanArray) {
-    this.cBooleanArray = JsonNullable.<List<Boolean>>of(cBooleanArray);
+  public PrimitiveArraysObjectWithRestrictions cBooleanArray(@javax.annotation.Nullable Set<Boolean> cBooleanArray) {
+    this.cBooleanArray = JsonNullable.<Set<Boolean>>of(cBooleanArray);
     return this;
   }
 
   public PrimitiveArraysObjectWithRestrictions addCBooleanArrayItem(Boolean cBooleanArrayItem) {
     if (this.cBooleanArray == null || !this.cBooleanArray.isPresent()) {
-      this.cBooleanArray = JsonNullable.<List<Boolean>>of(new ArrayList<>());
+      this.cBooleanArray = JsonNullable.<Set<Boolean>>of(new LinkedHashSet<>());
     }
     try {
       this.cBooleanArray.get().add(cBooleanArrayItem);
@@ -246,24 +246,24 @@ public class PrimitiveArraysObjectWithRestrictions {
   @javax.annotation.Nullable
   @JsonIgnore
 
-  public List<Boolean> getcBooleanArray() {
+  public Set<Boolean> getcBooleanArray() {
         return cBooleanArray.orElse(null);
   }
 
   @JsonProperty(value = JSON_PROPERTY_C_BOOLEAN_ARRAY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public JsonNullable<List<Boolean>> getcBooleanArray_JsonNullable() {
+  public JsonNullable<Set<Boolean>> getcBooleanArray_JsonNullable() {
     return cBooleanArray;
   }
   
   @JsonProperty(JSON_PROPERTY_C_BOOLEAN_ARRAY)
-  public void setcBooleanArray_JsonNullable(JsonNullable<List<Boolean>> cBooleanArray) {
+  public void setcBooleanArray_JsonNullable(JsonNullable<Set<Boolean>> cBooleanArray) {
     this.cBooleanArray = cBooleanArray;
   }
 
-  public void setcBooleanArray(@javax.annotation.Nullable List<Boolean> cBooleanArray) {
-    this.cBooleanArray = JsonNullable.<List<Boolean>>of(cBooleanArray);
+  public void setcBooleanArray(@javax.annotation.Nullable Set<Boolean> cBooleanArray) {
+    this.cBooleanArray = JsonNullable.<Set<Boolean>>of(cBooleanArray);
   }
 
 
@@ -333,14 +333,14 @@ public class PrimitiveArraysObjectWithRestrictions {
   }
 
 
-  public PrimitiveArraysObjectWithRestrictions aShortArray(@javax.annotation.Nullable List<Integer> aShortArray) {
-    this.aShortArray = JsonNullable.<List<Integer>>of(aShortArray);
+  public PrimitiveArraysObjectWithRestrictions aShortArray(@javax.annotation.Nullable Set<Integer> aShortArray) {
+    this.aShortArray = JsonNullable.<Set<Integer>>of(aShortArray);
     return this;
   }
 
   public PrimitiveArraysObjectWithRestrictions addAShortArrayItem(Integer aShortArrayItem) {
     if (this.aShortArray == null || !this.aShortArray.isPresent()) {
-      this.aShortArray = JsonNullable.<List<Integer>>of(new ArrayList<>());
+      this.aShortArray = JsonNullable.<Set<Integer>>of(new LinkedHashSet<>());
     }
     try {
       this.aShortArray.get().add(aShortArrayItem);
@@ -357,35 +357,35 @@ public class PrimitiveArraysObjectWithRestrictions {
   @javax.annotation.Nullable
   @JsonIgnore
 
-  public List<Integer> getaShortArray() {
+  public Set<Integer> getaShortArray() {
         return aShortArray.orElse(null);
   }
 
   @JsonProperty(value = JSON_PROPERTY_A_SHORT_ARRAY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public JsonNullable<List<Integer>> getaShortArray_JsonNullable() {
+  public JsonNullable<Set<Integer>> getaShortArray_JsonNullable() {
     return aShortArray;
   }
   
   @JsonProperty(JSON_PROPERTY_A_SHORT_ARRAY)
-  public void setaShortArray_JsonNullable(JsonNullable<List<Integer>> aShortArray) {
+  public void setaShortArray_JsonNullable(JsonNullable<Set<Integer>> aShortArray) {
     this.aShortArray = aShortArray;
   }
 
-  public void setaShortArray(@javax.annotation.Nullable List<Integer> aShortArray) {
-    this.aShortArray = JsonNullable.<List<Integer>>of(aShortArray);
+  public void setaShortArray(@javax.annotation.Nullable Set<Integer> aShortArray) {
+    this.aShortArray = JsonNullable.<Set<Integer>>of(aShortArray);
   }
 
 
-  public PrimitiveArraysObjectWithRestrictions bShortArray(@javax.annotation.Nullable List<Integer> bShortArray) {
-    this.bShortArray = JsonNullable.<List<Integer>>of(bShortArray);
+  public PrimitiveArraysObjectWithRestrictions bShortArray(@javax.annotation.Nullable Set<Integer> bShortArray) {
+    this.bShortArray = JsonNullable.<Set<Integer>>of(bShortArray);
     return this;
   }
 
   public PrimitiveArraysObjectWithRestrictions addBShortArrayItem(Integer bShortArrayItem) {
     if (this.bShortArray == null || !this.bShortArray.isPresent()) {
-      this.bShortArray = JsonNullable.<List<Integer>>of(new ArrayList<>());
+      this.bShortArray = JsonNullable.<Set<Integer>>of(new LinkedHashSet<>());
     }
     try {
       this.bShortArray.get().add(bShortArrayItem);
@@ -402,35 +402,35 @@ public class PrimitiveArraysObjectWithRestrictions {
   @javax.annotation.Nullable
   @JsonIgnore
 
-  public List<Integer> getbShortArray() {
+  public Set<Integer> getbShortArray() {
         return bShortArray.orElse(null);
   }
 
   @JsonProperty(value = JSON_PROPERTY_B_SHORT_ARRAY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public JsonNullable<List<Integer>> getbShortArray_JsonNullable() {
+  public JsonNullable<Set<Integer>> getbShortArray_JsonNullable() {
     return bShortArray;
   }
   
   @JsonProperty(JSON_PROPERTY_B_SHORT_ARRAY)
-  public void setbShortArray_JsonNullable(JsonNullable<List<Integer>> bShortArray) {
+  public void setbShortArray_JsonNullable(JsonNullable<Set<Integer>> bShortArray) {
     this.bShortArray = bShortArray;
   }
 
-  public void setbShortArray(@javax.annotation.Nullable List<Integer> bShortArray) {
-    this.bShortArray = JsonNullable.<List<Integer>>of(bShortArray);
+  public void setbShortArray(@javax.annotation.Nullable Set<Integer> bShortArray) {
+    this.bShortArray = JsonNullable.<Set<Integer>>of(bShortArray);
   }
 
 
-  public PrimitiveArraysObjectWithRestrictions aIntegerArray(@javax.annotation.Nullable List<Integer> aIntegerArray) {
-    this.aIntegerArray = JsonNullable.<List<Integer>>of(aIntegerArray);
+  public PrimitiveArraysObjectWithRestrictions aIntegerArray(@javax.annotation.Nullable Set<Integer> aIntegerArray) {
+    this.aIntegerArray = JsonNullable.<Set<Integer>>of(aIntegerArray);
     return this;
   }
 
   public PrimitiveArraysObjectWithRestrictions addAIntegerArrayItem(Integer aIntegerArrayItem) {
     if (this.aIntegerArray == null || !this.aIntegerArray.isPresent()) {
-      this.aIntegerArray = JsonNullable.<List<Integer>>of(new ArrayList<>());
+      this.aIntegerArray = JsonNullable.<Set<Integer>>of(new LinkedHashSet<>());
     }
     try {
       this.aIntegerArray.get().add(aIntegerArrayItem);
@@ -447,35 +447,35 @@ public class PrimitiveArraysObjectWithRestrictions {
   @javax.annotation.Nullable
   @JsonIgnore
 
-  public List<Integer> getaIntegerArray() {
+  public Set<Integer> getaIntegerArray() {
         return aIntegerArray.orElse(null);
   }
 
   @JsonProperty(value = JSON_PROPERTY_A_INTEGER_ARRAY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public JsonNullable<List<Integer>> getaIntegerArray_JsonNullable() {
+  public JsonNullable<Set<Integer>> getaIntegerArray_JsonNullable() {
     return aIntegerArray;
   }
   
   @JsonProperty(JSON_PROPERTY_A_INTEGER_ARRAY)
-  public void setaIntegerArray_JsonNullable(JsonNullable<List<Integer>> aIntegerArray) {
+  public void setaIntegerArray_JsonNullable(JsonNullable<Set<Integer>> aIntegerArray) {
     this.aIntegerArray = aIntegerArray;
   }
 
-  public void setaIntegerArray(@javax.annotation.Nullable List<Integer> aIntegerArray) {
-    this.aIntegerArray = JsonNullable.<List<Integer>>of(aIntegerArray);
+  public void setaIntegerArray(@javax.annotation.Nullable Set<Integer> aIntegerArray) {
+    this.aIntegerArray = JsonNullable.<Set<Integer>>of(aIntegerArray);
   }
 
 
-  public PrimitiveArraysObjectWithRestrictions bIntegerArray(@javax.annotation.Nullable List<Integer> bIntegerArray) {
-    this.bIntegerArray = JsonNullable.<List<Integer>>of(bIntegerArray);
+  public PrimitiveArraysObjectWithRestrictions bIntegerArray(@javax.annotation.Nullable Set<Integer> bIntegerArray) {
+    this.bIntegerArray = JsonNullable.<Set<Integer>>of(bIntegerArray);
     return this;
   }
 
   public PrimitiveArraysObjectWithRestrictions addBIntegerArrayItem(Integer bIntegerArrayItem) {
     if (this.bIntegerArray == null || !this.bIntegerArray.isPresent()) {
-      this.bIntegerArray = JsonNullable.<List<Integer>>of(new ArrayList<>());
+      this.bIntegerArray = JsonNullable.<Set<Integer>>of(new LinkedHashSet<>());
     }
     try {
       this.bIntegerArray.get().add(bIntegerArrayItem);
@@ -492,35 +492,35 @@ public class PrimitiveArraysObjectWithRestrictions {
   @javax.annotation.Nullable
   @JsonIgnore
 
-  public List<Integer> getbIntegerArray() {
+  public Set<Integer> getbIntegerArray() {
         return bIntegerArray.orElse(null);
   }
 
   @JsonProperty(value = JSON_PROPERTY_B_INTEGER_ARRAY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public JsonNullable<List<Integer>> getbIntegerArray_JsonNullable() {
+  public JsonNullable<Set<Integer>> getbIntegerArray_JsonNullable() {
     return bIntegerArray;
   }
   
   @JsonProperty(JSON_PROPERTY_B_INTEGER_ARRAY)
-  public void setbIntegerArray_JsonNullable(JsonNullable<List<Integer>> bIntegerArray) {
+  public void setbIntegerArray_JsonNullable(JsonNullable<Set<Integer>> bIntegerArray) {
     this.bIntegerArray = bIntegerArray;
   }
 
-  public void setbIntegerArray(@javax.annotation.Nullable List<Integer> bIntegerArray) {
-    this.bIntegerArray = JsonNullable.<List<Integer>>of(bIntegerArray);
+  public void setbIntegerArray(@javax.annotation.Nullable Set<Integer> bIntegerArray) {
+    this.bIntegerArray = JsonNullable.<Set<Integer>>of(bIntegerArray);
   }
 
 
-  public PrimitiveArraysObjectWithRestrictions cIntegerArray(@javax.annotation.Nullable List<Integer> cIntegerArray) {
-    this.cIntegerArray = JsonNullable.<List<Integer>>of(cIntegerArray);
+  public PrimitiveArraysObjectWithRestrictions cIntegerArray(@javax.annotation.Nullable Set<Integer> cIntegerArray) {
+    this.cIntegerArray = JsonNullable.<Set<Integer>>of(cIntegerArray);
     return this;
   }
 
   public PrimitiveArraysObjectWithRestrictions addCIntegerArrayItem(Integer cIntegerArrayItem) {
     if (this.cIntegerArray == null || !this.cIntegerArray.isPresent()) {
-      this.cIntegerArray = JsonNullable.<List<Integer>>of(new ArrayList<>());
+      this.cIntegerArray = JsonNullable.<Set<Integer>>of(new LinkedHashSet<>());
     }
     try {
       this.cIntegerArray.get().add(cIntegerArrayItem);
@@ -537,35 +537,35 @@ public class PrimitiveArraysObjectWithRestrictions {
   @javax.annotation.Nullable
   @JsonIgnore
 
-  public List<Integer> getcIntegerArray() {
+  public Set<Integer> getcIntegerArray() {
         return cIntegerArray.orElse(null);
   }
 
   @JsonProperty(value = JSON_PROPERTY_C_INTEGER_ARRAY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public JsonNullable<List<Integer>> getcIntegerArray_JsonNullable() {
+  public JsonNullable<Set<Integer>> getcIntegerArray_JsonNullable() {
     return cIntegerArray;
   }
   
   @JsonProperty(JSON_PROPERTY_C_INTEGER_ARRAY)
-  public void setcIntegerArray_JsonNullable(JsonNullable<List<Integer>> cIntegerArray) {
+  public void setcIntegerArray_JsonNullable(JsonNullable<Set<Integer>> cIntegerArray) {
     this.cIntegerArray = cIntegerArray;
   }
 
-  public void setcIntegerArray(@javax.annotation.Nullable List<Integer> cIntegerArray) {
-    this.cIntegerArray = JsonNullable.<List<Integer>>of(cIntegerArray);
+  public void setcIntegerArray(@javax.annotation.Nullable Set<Integer> cIntegerArray) {
+    this.cIntegerArray = JsonNullable.<Set<Integer>>of(cIntegerArray);
   }
 
 
-  public PrimitiveArraysObjectWithRestrictions aLongArray(@javax.annotation.Nullable List<Long> aLongArray) {
+  public PrimitiveArraysObjectWithRestrictions aLongArray(@javax.annotation.Nullable Set<Long> aLongArray) {
     this.aLongArray = aLongArray;
     return this;
   }
 
   public PrimitiveArraysObjectWithRestrictions addALongArrayItem(Long aLongArrayItem) {
     if (this.aLongArray == null) {
-      this.aLongArray = new ArrayList<>();
+      this.aLongArray = new LinkedHashSet<>();
     }
     this.aLongArray.add(aLongArrayItem);
     return this;
@@ -579,26 +579,26 @@ public class PrimitiveArraysObjectWithRestrictions {
   @JsonProperty(value = JSON_PROPERTY_A_LONG_ARRAY, required = false)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public List<Long> getaLongArray() {
+  public Set<Long> getaLongArray() {
     return aLongArray;
   }
 
 
   @JsonProperty(value = JSON_PROPERTY_A_LONG_ARRAY, required = false)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setaLongArray(@javax.annotation.Nullable List<Long> aLongArray) {
+  public void setaLongArray(@javax.annotation.Nullable Set<Long> aLongArray) {
     this.aLongArray = aLongArray;
   }
 
 
-  public PrimitiveArraysObjectWithRestrictions bLongArray(@javax.annotation.Nullable List<Long> bLongArray) {
-    this.bLongArray = JsonNullable.<List<Long>>of(bLongArray);
+  public PrimitiveArraysObjectWithRestrictions bLongArray(@javax.annotation.Nullable Set<Long> bLongArray) {
+    this.bLongArray = JsonNullable.<Set<Long>>of(bLongArray);
     return this;
   }
 
   public PrimitiveArraysObjectWithRestrictions addBLongArrayItem(Long bLongArrayItem) {
     if (this.bLongArray == null || !this.bLongArray.isPresent()) {
-      this.bLongArray = JsonNullable.<List<Long>>of(new ArrayList<>());
+      this.bLongArray = JsonNullable.<Set<Long>>of(new LinkedHashSet<>());
     }
     try {
       this.bLongArray.get().add(bLongArrayItem);
@@ -615,35 +615,35 @@ public class PrimitiveArraysObjectWithRestrictions {
   @javax.annotation.Nullable
   @JsonIgnore
 
-  public List<Long> getbLongArray() {
+  public Set<Long> getbLongArray() {
         return bLongArray.orElse(null);
   }
 
   @JsonProperty(value = JSON_PROPERTY_B_LONG_ARRAY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public JsonNullable<List<Long>> getbLongArray_JsonNullable() {
+  public JsonNullable<Set<Long>> getbLongArray_JsonNullable() {
     return bLongArray;
   }
   
   @JsonProperty(JSON_PROPERTY_B_LONG_ARRAY)
-  public void setbLongArray_JsonNullable(JsonNullable<List<Long>> bLongArray) {
+  public void setbLongArray_JsonNullable(JsonNullable<Set<Long>> bLongArray) {
     this.bLongArray = bLongArray;
   }
 
-  public void setbLongArray(@javax.annotation.Nullable List<Long> bLongArray) {
-    this.bLongArray = JsonNullable.<List<Long>>of(bLongArray);
+  public void setbLongArray(@javax.annotation.Nullable Set<Long> bLongArray) {
+    this.bLongArray = JsonNullable.<Set<Long>>of(bLongArray);
   }
 
 
-  public PrimitiveArraysObjectWithRestrictions aBigIntegerArray(@javax.annotation.Nullable List<Long> aBigIntegerArray) {
-    this.aBigIntegerArray = JsonNullable.<List<Long>>of(aBigIntegerArray);
+  public PrimitiveArraysObjectWithRestrictions aBigIntegerArray(@javax.annotation.Nullable Set<Long> aBigIntegerArray) {
+    this.aBigIntegerArray = JsonNullable.<Set<Long>>of(aBigIntegerArray);
     return this;
   }
 
   public PrimitiveArraysObjectWithRestrictions addABigIntegerArrayItem(Long aBigIntegerArrayItem) {
     if (this.aBigIntegerArray == null || !this.aBigIntegerArray.isPresent()) {
-      this.aBigIntegerArray = JsonNullable.<List<Long>>of(new ArrayList<>());
+      this.aBigIntegerArray = JsonNullable.<Set<Long>>of(new LinkedHashSet<>());
     }
     try {
       this.aBigIntegerArray.get().add(aBigIntegerArrayItem);
@@ -660,35 +660,35 @@ public class PrimitiveArraysObjectWithRestrictions {
   @javax.annotation.Nullable
   @JsonIgnore
 
-  public List<Long> getaBigIntegerArray() {
+  public Set<Long> getaBigIntegerArray() {
         return aBigIntegerArray.orElse(null);
   }
 
   @JsonProperty(value = JSON_PROPERTY_A_BIG_INTEGER_ARRAY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public JsonNullable<List<Long>> getaBigIntegerArray_JsonNullable() {
+  public JsonNullable<Set<Long>> getaBigIntegerArray_JsonNullable() {
     return aBigIntegerArray;
   }
   
   @JsonProperty(JSON_PROPERTY_A_BIG_INTEGER_ARRAY)
-  public void setaBigIntegerArray_JsonNullable(JsonNullable<List<Long>> aBigIntegerArray) {
+  public void setaBigIntegerArray_JsonNullable(JsonNullable<Set<Long>> aBigIntegerArray) {
     this.aBigIntegerArray = aBigIntegerArray;
   }
 
-  public void setaBigIntegerArray(@javax.annotation.Nullable List<Long> aBigIntegerArray) {
-    this.aBigIntegerArray = JsonNullable.<List<Long>>of(aBigIntegerArray);
+  public void setaBigIntegerArray(@javax.annotation.Nullable Set<Long> aBigIntegerArray) {
+    this.aBigIntegerArray = JsonNullable.<Set<Long>>of(aBigIntegerArray);
   }
 
 
-  public PrimitiveArraysObjectWithRestrictions aCharacterArray(@javax.annotation.Nullable List<String> aCharacterArray) {
-    this.aCharacterArray = JsonNullable.<List<String>>of(aCharacterArray);
+  public PrimitiveArraysObjectWithRestrictions aCharacterArray(@javax.annotation.Nullable Set<String> aCharacterArray) {
+    this.aCharacterArray = JsonNullable.<Set<String>>of(aCharacterArray);
     return this;
   }
 
   public PrimitiveArraysObjectWithRestrictions addACharacterArrayItem(String aCharacterArrayItem) {
     if (this.aCharacterArray == null || !this.aCharacterArray.isPresent()) {
-      this.aCharacterArray = JsonNullable.<List<String>>of(new ArrayList<>());
+      this.aCharacterArray = JsonNullable.<Set<String>>of(new LinkedHashSet<>());
     }
     try {
       this.aCharacterArray.get().add(aCharacterArrayItem);
@@ -705,35 +705,35 @@ public class PrimitiveArraysObjectWithRestrictions {
   @javax.annotation.Nullable
   @JsonIgnore
 
-  public List<String> getaCharacterArray() {
+  public Set<String> getaCharacterArray() {
         return aCharacterArray.orElse(null);
   }
 
   @JsonProperty(value = JSON_PROPERTY_A_CHARACTER_ARRAY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public JsonNullable<List<String>> getaCharacterArray_JsonNullable() {
+  public JsonNullable<Set<String>> getaCharacterArray_JsonNullable() {
     return aCharacterArray;
   }
   
   @JsonProperty(JSON_PROPERTY_A_CHARACTER_ARRAY)
-  public void setaCharacterArray_JsonNullable(JsonNullable<List<String>> aCharacterArray) {
+  public void setaCharacterArray_JsonNullable(JsonNullable<Set<String>> aCharacterArray) {
     this.aCharacterArray = aCharacterArray;
   }
 
-  public void setaCharacterArray(@javax.annotation.Nullable List<String> aCharacterArray) {
-    this.aCharacterArray = JsonNullable.<List<String>>of(aCharacterArray);
+  public void setaCharacterArray(@javax.annotation.Nullable Set<String> aCharacterArray) {
+    this.aCharacterArray = JsonNullable.<Set<String>>of(aCharacterArray);
   }
 
 
-  public PrimitiveArraysObjectWithRestrictions bCharacterArray(@javax.annotation.Nullable List<String> bCharacterArray) {
-    this.bCharacterArray = JsonNullable.<List<String>>of(bCharacterArray);
+  public PrimitiveArraysObjectWithRestrictions bCharacterArray(@javax.annotation.Nullable Set<String> bCharacterArray) {
+    this.bCharacterArray = JsonNullable.<Set<String>>of(bCharacterArray);
     return this;
   }
 
   public PrimitiveArraysObjectWithRestrictions addBCharacterArrayItem(String bCharacterArrayItem) {
     if (this.bCharacterArray == null || !this.bCharacterArray.isPresent()) {
-      this.bCharacterArray = JsonNullable.<List<String>>of(new ArrayList<>());
+      this.bCharacterArray = JsonNullable.<Set<String>>of(new LinkedHashSet<>());
     }
     try {
       this.bCharacterArray.get().add(bCharacterArrayItem);
@@ -750,35 +750,35 @@ public class PrimitiveArraysObjectWithRestrictions {
   @javax.annotation.Nullable
   @JsonIgnore
 
-  public List<String> getbCharacterArray() {
+  public Set<String> getbCharacterArray() {
         return bCharacterArray.orElse(null);
   }
 
   @JsonProperty(value = JSON_PROPERTY_B_CHARACTER_ARRAY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public JsonNullable<List<String>> getbCharacterArray_JsonNullable() {
+  public JsonNullable<Set<String>> getbCharacterArray_JsonNullable() {
     return bCharacterArray;
   }
   
   @JsonProperty(JSON_PROPERTY_B_CHARACTER_ARRAY)
-  public void setbCharacterArray_JsonNullable(JsonNullable<List<String>> bCharacterArray) {
+  public void setbCharacterArray_JsonNullable(JsonNullable<Set<String>> bCharacterArray) {
     this.bCharacterArray = bCharacterArray;
   }
 
-  public void setbCharacterArray(@javax.annotation.Nullable List<String> bCharacterArray) {
-    this.bCharacterArray = JsonNullable.<List<String>>of(bCharacterArray);
+  public void setbCharacterArray(@javax.annotation.Nullable Set<String> bCharacterArray) {
+    this.bCharacterArray = JsonNullable.<Set<String>>of(bCharacterArray);
   }
 
 
-  public PrimitiveArraysObjectWithRestrictions aFloatArray(@javax.annotation.Nullable List<Float> aFloatArray) {
-    this.aFloatArray = JsonNullable.<List<Float>>of(aFloatArray);
+  public PrimitiveArraysObjectWithRestrictions aFloatArray(@javax.annotation.Nullable Set<Float> aFloatArray) {
+    this.aFloatArray = JsonNullable.<Set<Float>>of(aFloatArray);
     return this;
   }
 
   public PrimitiveArraysObjectWithRestrictions addAFloatArrayItem(Float aFloatArrayItem) {
     if (this.aFloatArray == null || !this.aFloatArray.isPresent()) {
-      this.aFloatArray = JsonNullable.<List<Float>>of(new ArrayList<>());
+      this.aFloatArray = JsonNullable.<Set<Float>>of(new LinkedHashSet<>());
     }
     try {
       this.aFloatArray.get().add(aFloatArrayItem);
@@ -795,35 +795,35 @@ public class PrimitiveArraysObjectWithRestrictions {
   @javax.annotation.Nullable
   @JsonIgnore
 
-  public List<Float> getaFloatArray() {
+  public Set<Float> getaFloatArray() {
         return aFloatArray.orElse(null);
   }
 
   @JsonProperty(value = JSON_PROPERTY_A_FLOAT_ARRAY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public JsonNullable<List<Float>> getaFloatArray_JsonNullable() {
+  public JsonNullable<Set<Float>> getaFloatArray_JsonNullable() {
     return aFloatArray;
   }
   
   @JsonProperty(JSON_PROPERTY_A_FLOAT_ARRAY)
-  public void setaFloatArray_JsonNullable(JsonNullable<List<Float>> aFloatArray) {
+  public void setaFloatArray_JsonNullable(JsonNullable<Set<Float>> aFloatArray) {
     this.aFloatArray = aFloatArray;
   }
 
-  public void setaFloatArray(@javax.annotation.Nullable List<Float> aFloatArray) {
-    this.aFloatArray = JsonNullable.<List<Float>>of(aFloatArray);
+  public void setaFloatArray(@javax.annotation.Nullable Set<Float> aFloatArray) {
+    this.aFloatArray = JsonNullable.<Set<Float>>of(aFloatArray);
   }
 
 
-  public PrimitiveArraysObjectWithRestrictions bFloatArray(@javax.annotation.Nullable List<Float> bFloatArray) {
-    this.bFloatArray = JsonNullable.<List<Float>>of(bFloatArray);
+  public PrimitiveArraysObjectWithRestrictions bFloatArray(@javax.annotation.Nullable Set<Float> bFloatArray) {
+    this.bFloatArray = JsonNullable.<Set<Float>>of(bFloatArray);
     return this;
   }
 
   public PrimitiveArraysObjectWithRestrictions addBFloatArrayItem(Float bFloatArrayItem) {
     if (this.bFloatArray == null || !this.bFloatArray.isPresent()) {
-      this.bFloatArray = JsonNullable.<List<Float>>of(new ArrayList<>());
+      this.bFloatArray = JsonNullable.<Set<Float>>of(new LinkedHashSet<>());
     }
     try {
       this.bFloatArray.get().add(bFloatArrayItem);
@@ -840,35 +840,35 @@ public class PrimitiveArraysObjectWithRestrictions {
   @javax.annotation.Nullable
   @JsonIgnore
 
-  public List<Float> getbFloatArray() {
+  public Set<Float> getbFloatArray() {
         return bFloatArray.orElse(null);
   }
 
   @JsonProperty(value = JSON_PROPERTY_B_FLOAT_ARRAY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public JsonNullable<List<Float>> getbFloatArray_JsonNullable() {
+  public JsonNullable<Set<Float>> getbFloatArray_JsonNullable() {
     return bFloatArray;
   }
   
   @JsonProperty(JSON_PROPERTY_B_FLOAT_ARRAY)
-  public void setbFloatArray_JsonNullable(JsonNullable<List<Float>> bFloatArray) {
+  public void setbFloatArray_JsonNullable(JsonNullable<Set<Float>> bFloatArray) {
     this.bFloatArray = bFloatArray;
   }
 
-  public void setbFloatArray(@javax.annotation.Nullable List<Float> bFloatArray) {
-    this.bFloatArray = JsonNullable.<List<Float>>of(bFloatArray);
+  public void setbFloatArray(@javax.annotation.Nullable Set<Float> bFloatArray) {
+    this.bFloatArray = JsonNullable.<Set<Float>>of(bFloatArray);
   }
 
 
-  public PrimitiveArraysObjectWithRestrictions aDoubleArray(@javax.annotation.Nullable List<Double> aDoubleArray) {
-    this.aDoubleArray = JsonNullable.<List<Double>>of(aDoubleArray);
+  public PrimitiveArraysObjectWithRestrictions aDoubleArray(@javax.annotation.Nullable Set<Double> aDoubleArray) {
+    this.aDoubleArray = JsonNullable.<Set<Double>>of(aDoubleArray);
     return this;
   }
 
   public PrimitiveArraysObjectWithRestrictions addADoubleArrayItem(Double aDoubleArrayItem) {
     if (this.aDoubleArray == null || !this.aDoubleArray.isPresent()) {
-      this.aDoubleArray = JsonNullable.<List<Double>>of(new ArrayList<>());
+      this.aDoubleArray = JsonNullable.<Set<Double>>of(new LinkedHashSet<>());
     }
     try {
       this.aDoubleArray.get().add(aDoubleArrayItem);
@@ -885,35 +885,35 @@ public class PrimitiveArraysObjectWithRestrictions {
   @javax.annotation.Nullable
   @JsonIgnore
 
-  public List<Double> getaDoubleArray() {
+  public Set<Double> getaDoubleArray() {
         return aDoubleArray.orElse(null);
   }
 
   @JsonProperty(value = JSON_PROPERTY_A_DOUBLE_ARRAY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public JsonNullable<List<Double>> getaDoubleArray_JsonNullable() {
+  public JsonNullable<Set<Double>> getaDoubleArray_JsonNullable() {
     return aDoubleArray;
   }
   
   @JsonProperty(JSON_PROPERTY_A_DOUBLE_ARRAY)
-  public void setaDoubleArray_JsonNullable(JsonNullable<List<Double>> aDoubleArray) {
+  public void setaDoubleArray_JsonNullable(JsonNullable<Set<Double>> aDoubleArray) {
     this.aDoubleArray = aDoubleArray;
   }
 
-  public void setaDoubleArray(@javax.annotation.Nullable List<Double> aDoubleArray) {
-    this.aDoubleArray = JsonNullable.<List<Double>>of(aDoubleArray);
+  public void setaDoubleArray(@javax.annotation.Nullable Set<Double> aDoubleArray) {
+    this.aDoubleArray = JsonNullable.<Set<Double>>of(aDoubleArray);
   }
 
 
-  public PrimitiveArraysObjectWithRestrictions bDoubleArray(@javax.annotation.Nullable List<Double> bDoubleArray) {
-    this.bDoubleArray = JsonNullable.<List<Double>>of(bDoubleArray);
+  public PrimitiveArraysObjectWithRestrictions bDoubleArray(@javax.annotation.Nullable Set<Double> bDoubleArray) {
+    this.bDoubleArray = JsonNullable.<Set<Double>>of(bDoubleArray);
     return this;
   }
 
   public PrimitiveArraysObjectWithRestrictions addBDoubleArrayItem(Double bDoubleArrayItem) {
     if (this.bDoubleArray == null || !this.bDoubleArray.isPresent()) {
-      this.bDoubleArray = JsonNullable.<List<Double>>of(new ArrayList<>());
+      this.bDoubleArray = JsonNullable.<Set<Double>>of(new LinkedHashSet<>());
     }
     try {
       this.bDoubleArray.get().add(bDoubleArrayItem);
@@ -930,35 +930,35 @@ public class PrimitiveArraysObjectWithRestrictions {
   @javax.annotation.Nullable
   @JsonIgnore
 
-  public List<Double> getbDoubleArray() {
+  public Set<Double> getbDoubleArray() {
         return bDoubleArray.orElse(null);
   }
 
   @JsonProperty(value = JSON_PROPERTY_B_DOUBLE_ARRAY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public JsonNullable<List<Double>> getbDoubleArray_JsonNullable() {
+  public JsonNullable<Set<Double>> getbDoubleArray_JsonNullable() {
     return bDoubleArray;
   }
   
   @JsonProperty(JSON_PROPERTY_B_DOUBLE_ARRAY)
-  public void setbDoubleArray_JsonNullable(JsonNullable<List<Double>> bDoubleArray) {
+  public void setbDoubleArray_JsonNullable(JsonNullable<Set<Double>> bDoubleArray) {
     this.bDoubleArray = bDoubleArray;
   }
 
-  public void setbDoubleArray(@javax.annotation.Nullable List<Double> bDoubleArray) {
-    this.bDoubleArray = JsonNullable.<List<Double>>of(bDoubleArray);
+  public void setbDoubleArray(@javax.annotation.Nullable Set<Double> bDoubleArray) {
+    this.bDoubleArray = JsonNullable.<Set<Double>>of(bDoubleArray);
   }
 
 
-  public PrimitiveArraysObjectWithRestrictions aBigDecimalArray(@javax.annotation.Nullable List<Double> aBigDecimalArray) {
-    this.aBigDecimalArray = JsonNullable.<List<Double>>of(aBigDecimalArray);
+  public PrimitiveArraysObjectWithRestrictions aBigDecimalArray(@javax.annotation.Nullable Set<Double> aBigDecimalArray) {
+    this.aBigDecimalArray = JsonNullable.<Set<Double>>of(aBigDecimalArray);
     return this;
   }
 
   public PrimitiveArraysObjectWithRestrictions addABigDecimalArrayItem(Double aBigDecimalArrayItem) {
     if (this.aBigDecimalArray == null || !this.aBigDecimalArray.isPresent()) {
-      this.aBigDecimalArray = JsonNullable.<List<Double>>of(new ArrayList<>());
+      this.aBigDecimalArray = JsonNullable.<Set<Double>>of(new LinkedHashSet<>());
     }
     try {
       this.aBigDecimalArray.get().add(aBigDecimalArrayItem);
@@ -975,35 +975,35 @@ public class PrimitiveArraysObjectWithRestrictions {
   @javax.annotation.Nullable
   @JsonIgnore
 
-  public List<Double> getaBigDecimalArray() {
+  public Set<Double> getaBigDecimalArray() {
         return aBigDecimalArray.orElse(null);
   }
 
   @JsonProperty(value = JSON_PROPERTY_A_BIG_DECIMAL_ARRAY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public JsonNullable<List<Double>> getaBigDecimalArray_JsonNullable() {
+  public JsonNullable<Set<Double>> getaBigDecimalArray_JsonNullable() {
     return aBigDecimalArray;
   }
   
   @JsonProperty(JSON_PROPERTY_A_BIG_DECIMAL_ARRAY)
-  public void setaBigDecimalArray_JsonNullable(JsonNullable<List<Double>> aBigDecimalArray) {
+  public void setaBigDecimalArray_JsonNullable(JsonNullable<Set<Double>> aBigDecimalArray) {
     this.aBigDecimalArray = aBigDecimalArray;
   }
 
-  public void setaBigDecimalArray(@javax.annotation.Nullable List<Double> aBigDecimalArray) {
-    this.aBigDecimalArray = JsonNullable.<List<Double>>of(aBigDecimalArray);
+  public void setaBigDecimalArray(@javax.annotation.Nullable Set<Double> aBigDecimalArray) {
+    this.aBigDecimalArray = JsonNullable.<Set<Double>>of(aBigDecimalArray);
   }
 
 
-  public PrimitiveArraysObjectWithRestrictions aStringArray(@javax.annotation.Nullable List<String> aStringArray) {
-    this.aStringArray = JsonNullable.<List<String>>of(aStringArray);
+  public PrimitiveArraysObjectWithRestrictions aStringArray(@javax.annotation.Nullable Set<String> aStringArray) {
+    this.aStringArray = JsonNullable.<Set<String>>of(aStringArray);
     return this;
   }
 
   public PrimitiveArraysObjectWithRestrictions addAStringArrayItem(String aStringArrayItem) {
     if (this.aStringArray == null || !this.aStringArray.isPresent()) {
-      this.aStringArray = JsonNullable.<List<String>>of(new ArrayList<>());
+      this.aStringArray = JsonNullable.<Set<String>>of(new LinkedHashSet<>());
     }
     try {
       this.aStringArray.get().add(aStringArrayItem);
@@ -1020,35 +1020,35 @@ public class PrimitiveArraysObjectWithRestrictions {
   @javax.annotation.Nullable
   @JsonIgnore
 
-  public List<String> getaStringArray() {
+  public Set<String> getaStringArray() {
         return aStringArray.orElse(null);
   }
 
   @JsonProperty(value = JSON_PROPERTY_A_STRING_ARRAY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public JsonNullable<List<String>> getaStringArray_JsonNullable() {
+  public JsonNullable<Set<String>> getaStringArray_JsonNullable() {
     return aStringArray;
   }
   
   @JsonProperty(JSON_PROPERTY_A_STRING_ARRAY)
-  public void setaStringArray_JsonNullable(JsonNullable<List<String>> aStringArray) {
+  public void setaStringArray_JsonNullable(JsonNullable<Set<String>> aStringArray) {
     this.aStringArray = aStringArray;
   }
 
-  public void setaStringArray(@javax.annotation.Nullable List<String> aStringArray) {
-    this.aStringArray = JsonNullable.<List<String>>of(aStringArray);
+  public void setaStringArray(@javax.annotation.Nullable Set<String> aStringArray) {
+    this.aStringArray = JsonNullable.<Set<String>>of(aStringArray);
   }
 
 
-  public PrimitiveArraysObjectWithRestrictions bStringArray(@javax.annotation.Nullable List<String> bStringArray) {
-    this.bStringArray = JsonNullable.<List<String>>of(bStringArray);
+  public PrimitiveArraysObjectWithRestrictions bStringArray(@javax.annotation.Nullable Set<String> bStringArray) {
+    this.bStringArray = JsonNullable.<Set<String>>of(bStringArray);
     return this;
   }
 
   public PrimitiveArraysObjectWithRestrictions addBStringArrayItem(String bStringArrayItem) {
     if (this.bStringArray == null || !this.bStringArray.isPresent()) {
-      this.bStringArray = JsonNullable.<List<String>>of(new ArrayList<>());
+      this.bStringArray = JsonNullable.<Set<String>>of(new LinkedHashSet<>());
     }
     try {
       this.bStringArray.get().add(bStringArrayItem);
@@ -1065,24 +1065,24 @@ public class PrimitiveArraysObjectWithRestrictions {
   @javax.annotation.Nullable
   @JsonIgnore
 
-  public List<String> getbStringArray() {
+  public Set<String> getbStringArray() {
         return bStringArray.orElse(null);
   }
 
   @JsonProperty(value = JSON_PROPERTY_B_STRING_ARRAY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public JsonNullable<List<String>> getbStringArray_JsonNullable() {
+  public JsonNullable<Set<String>> getbStringArray_JsonNullable() {
     return bStringArray;
   }
   
   @JsonProperty(JSON_PROPERTY_B_STRING_ARRAY)
-  public void setbStringArray_JsonNullable(JsonNullable<List<String>> bStringArray) {
+  public void setbStringArray_JsonNullable(JsonNullable<Set<String>> bStringArray) {
     this.bStringArray = bStringArray;
   }
 
-  public void setbStringArray(@javax.annotation.Nullable List<String> bStringArray) {
-    this.bStringArray = JsonNullable.<List<String>>of(bStringArray);
+  public void setbStringArray(@javax.annotation.Nullable Set<String> bStringArray) {
+    this.bStringArray = JsonNullable.<Set<String>>of(bStringArray);
   }
 
 

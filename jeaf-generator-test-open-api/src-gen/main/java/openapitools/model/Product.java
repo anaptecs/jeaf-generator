@@ -22,10 +22,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.net.URI;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Set;
 import openapitools.model.Reseller;
 import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -53,7 +54,7 @@ import openapitools.JSON;
 public class Product {
   public static final String JSON_PROPERTY_RESELLERS = "resellers";
   @javax.annotation.Nullable
-  private List<Reseller> resellers = new ArrayList<>();
+  private Set<Reseller> resellers = new LinkedHashSet<>();
 
   public static final String JSON_PROPERTY_NAME = "name";
   @javax.annotation.Nonnull
@@ -72,11 +73,11 @@ public class Product {
 
   public static final String JSON_PROPERTY_SUPPORTED_CURRENCIES = "supportedCurrencies";
   @javax.annotation.Nonnull
-  private List<String> supportedCurrencies = new ArrayList<>();
+  private Set<String> supportedCurrencies = new LinkedHashSet<>();
 
   public static final String JSON_PROPERTY_PRODUCT_CODES = "productCodes";
   @javax.annotation.Nonnull
-  private List<Integer> productCodes = new ArrayList<>();
+  private Set<Integer> productCodes = new LinkedHashSet<>();
 
   public static final String JSON_PROPERTY_DESCRIPTION = "description";
   @Deprecated
@@ -90,14 +91,14 @@ public class Product {
   public Product() { 
   }
 
-  public Product resellers(@javax.annotation.Nullable List<Reseller> resellers) {
+  public Product resellers(@javax.annotation.Nullable Set<Reseller> resellers) {
     this.resellers = resellers;
     return this;
   }
 
   public Product addResellersItem(Reseller resellersItem) {
     if (this.resellers == null) {
-      this.resellers = new ArrayList<>();
+      this.resellers = new LinkedHashSet<>();
     }
     this.resellers.add(resellersItem);
     return this;
@@ -111,14 +112,15 @@ public class Product {
   @JsonProperty(value = JSON_PROPERTY_RESELLERS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<Reseller> getResellers() {
+  public Set<Reseller> getResellers() {
     return resellers;
   }
 
 
+  @JsonDeserialize(as = LinkedHashSet.class)
   @JsonProperty(value = JSON_PROPERTY_RESELLERS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setResellers(@javax.annotation.Nullable List<Reseller> resellers) {
+  public void setResellers(@javax.annotation.Nullable Set<Reseller> resellers) {
     this.resellers = resellers;
   }
 
@@ -231,14 +233,14 @@ public class Product {
   }
 
 
-  public Product supportedCurrencies(@javax.annotation.Nonnull List<String> supportedCurrencies) {
+  public Product supportedCurrencies(@javax.annotation.Nonnull Set<String> supportedCurrencies) {
     this.supportedCurrencies = supportedCurrencies;
     return this;
   }
 
   public Product addSupportedCurrenciesItem(String supportedCurrenciesItem) {
     if (this.supportedCurrencies == null) {
-      this.supportedCurrencies = new ArrayList<>();
+      this.supportedCurrencies = new LinkedHashSet<>();
     }
     this.supportedCurrencies.add(supportedCurrenciesItem);
     return this;
@@ -252,26 +254,27 @@ public class Product {
   @JsonProperty(value = JSON_PROPERTY_SUPPORTED_CURRENCIES, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public List<String> getSupportedCurrencies() {
+  public Set<String> getSupportedCurrencies() {
     return supportedCurrencies;
   }
 
 
+  @JsonDeserialize(as = LinkedHashSet.class)
   @JsonProperty(value = JSON_PROPERTY_SUPPORTED_CURRENCIES, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setSupportedCurrencies(@javax.annotation.Nonnull List<String> supportedCurrencies) {
+  public void setSupportedCurrencies(@javax.annotation.Nonnull Set<String> supportedCurrencies) {
     this.supportedCurrencies = supportedCurrencies;
   }
 
 
-  public Product productCodes(@javax.annotation.Nonnull List<Integer> productCodes) {
+  public Product productCodes(@javax.annotation.Nonnull Set<Integer> productCodes) {
     this.productCodes = productCodes;
     return this;
   }
 
   public Product addProductCodesItem(Integer productCodesItem) {
     if (this.productCodes == null) {
-      this.productCodes = new ArrayList<>();
+      this.productCodes = new LinkedHashSet<>();
     }
     this.productCodes.add(productCodesItem);
     return this;
@@ -285,14 +288,15 @@ public class Product {
   @JsonProperty(value = JSON_PROPERTY_PRODUCT_CODES, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public List<Integer> getProductCodes() {
+  public Set<Integer> getProductCodes() {
     return productCodes;
   }
 
 
+  @JsonDeserialize(as = LinkedHashSet.class)
   @JsonProperty(value = JSON_PROPERTY_PRODUCT_CODES, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setProductCodes(@javax.annotation.Nonnull List<Integer> productCodes) {
+  public void setProductCodes(@javax.annotation.Nonnull Set<Integer> productCodes) {
     this.productCodes = productCodes;
   }
 

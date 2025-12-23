@@ -5,13 +5,11 @@
  */
 package com.anaptecs.spring.base;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 
@@ -47,7 +45,7 @@ public abstract class ResellerBase {
    */
   public static final String LANGUAGE = "language";
 
-  private List<Channel> channels;
+  private Set<Channel> channels;
 
   /**
    * Attribute is required for correct handling of bidirectional associations in case of deserialization.
@@ -75,7 +73,7 @@ public abstract class ResellerBase {
    */
   protected ResellerBase( BuilderBase pBuilder ) {
     // Read attribute values from builder.
-    channels = (pBuilder.channels == null) ? new ArrayList<>() : pBuilder.channels;
+    channels = (pBuilder.channels == null) ? new HashSet<>() : pBuilder.channels;
     // As association is bidirectional we also have to set it in the other direction.
     for (Channel lNext : channels) {
       lNext.setReseller((Reseller) this);
@@ -94,7 +92,7 @@ public abstract class ResellerBase {
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static abstract class BuilderBase {
-    private List<Channel> channels;
+    private Set<Channel> channels;
 
     @NotBlank
     @Size(min = 0, max = 32)
@@ -126,10 +124,10 @@ public abstract class ResellerBase {
      * @param pChannels Collection to which {@link #channels} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setChannels( List<Channel> pChannels ) {
+    public BuilderBase setChannels( Set<Channel> pChannels ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pChannels != null) {
-        channels = new ArrayList<Channel>(pChannels);
+        channels = new HashSet<Channel>(pChannels);
       }
       else {
         channels = null;
@@ -146,7 +144,7 @@ public abstract class ResellerBase {
     public BuilderBase addToChannels( Channel... pChannels ) {
       if (pChannels != null) {
         if (channels == null) {
-          channels = new ArrayList<Channel>();
+          channels = new HashSet<Channel>();
         }
         channels.addAll(Arrays.asList(pChannels));
       }
@@ -192,10 +190,10 @@ public abstract class ResellerBase {
   /**
    * Method returns association {@link #channels}.<br/>
    *
-   * @return {@link List<Channel>} Value to which {@link #channels} is set. The method never returns null and the
+   * @return {@link Set<Channel>} Value to which {@link #channels} is set. The method never returns null and the
    * returned collection is unmodifiable.
    */
-  public List<Channel> getChannels( ) {
+  public Set<Channel> getChannels( ) {
     // Due to restrictions in JSON serialization / deserialization bi-directional associations need a special handling
     // after an object was deserialized.
     if (channelsBackReferenceInitialized == false) {
@@ -205,7 +203,7 @@ public abstract class ResellerBase {
       }
     }
     // Return all Channel objects as unmodifiable collection.
-    return Collections.unmodifiableList(channels);
+    return Collections.unmodifiableSet(channels);
   }
 
   /**
@@ -374,7 +372,7 @@ public abstract class ResellerBase {
    *
    * @return {@link Reseller}
    */
-  public static Reseller of( List<Channel> pChannels, String pName, Locale pLanguage ) {
+  public static Reseller of( Set<Channel> pChannels, String pName, Locale pLanguage ) {
     var lBuilder = Reseller.builder();
     lBuilder.setChannels(pChannels);
     lBuilder.setName(pName);

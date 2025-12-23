@@ -1743,6 +1743,7 @@ paths:
             items:
               type: string
               format: date-time
+            uniqueItems: true
       responses:
         '204':
           description: |
@@ -1936,6 +1937,7 @@ paths:
             items:
               type: string
               format: date-time
+            uniqueItems: true
       responses:
         '204':
           description: |
@@ -2267,6 +2269,7 @@ paths:
               items:
                 type: integer
                 format: int32
+              uniqueItems: true
       responses:
         '200':
           description: |
@@ -2363,6 +2366,7 @@ paths:
             items:
               type: integer
               format: int32
+            uniqueItems: true
       responses:
         '200':
           description: |
@@ -2421,6 +2425,7 @@ paths:
               type: integer
               format: int32
               minItems: 1
+            uniqueItems: true
       responses:
         '200':
           description: |
@@ -2449,12 +2454,14 @@ paths:
             items:
               type: integer
               format: int32
+            uniqueItems: true
         - name: strings
           in: query
           schema:
             type: array
             items:
               type: string
+            uniqueItems: true
         - name: integers
           in: query
           schema:
@@ -2462,18 +2469,21 @@ paths:
             items:
               type: integer
               format: int32
+            uniqueItems: true
         - name: timeUnits
           in: query
           schema:
             type: array
             items:
               $ref: '../base/product-base.yml#/components/schemas/TimeUnit'
+            uniqueItems: true
         - name: timeUnitArray
           in: query
           schema:
             type: array
             items:
               $ref: '../base/product-base.yml#/components/schemas/TimeUnit'
+            uniqueItems: true
       responses:
         '200':
           description: |
@@ -2510,6 +2520,7 @@ paths:
               type: integer
               format: int64
             minItems: 1
+            uniqueItems: true
             nullable: false
         - name: bookingIDs
           in: query
@@ -2532,6 +2543,7 @@ paths:
             items:
               type: string
               format: date
+            uniqueItems: true
       responses:
         '200':
           description: |
@@ -2560,12 +2572,14 @@ paths:
             items:
               type: integer
               format: int64
+            uniqueItems: true
         - name: codes
           in: query
           schema:
             type: array
             items:
               $ref: '../base/product-base.yml#/components/schemas/IntegerCodeType'
+            uniqueItems: true
         - name: doubleCodes
           in: query
           schema:
@@ -2573,18 +2587,21 @@ paths:
             items:
               type: number
               format: double
+            uniqueItems: true
         - name: bookingIDs
           in: query
           schema:
             type: array
             items:
               type: string
+            uniqueItems: true
         - name: bookingIDsArray
           in: query
           schema:
             type: array
             items:
               type: string
+            uniqueItems: true
         - name: offsetDateTime
           in: query
           required: true
@@ -2627,6 +2644,7 @@ paths:
             items:
               type: string
               format: time
+            uniqueItems: true
         - name: startTimestamps
           in: query
           schema:
@@ -2634,6 +2652,7 @@ paths:
             items:
               type: string
               format: date-time
+            uniqueItems: true
       responses:
         '200':
           description: |
@@ -2661,6 +2680,7 @@ paths:
             type: array
             items:
               type: string
+            uniqueItems: true
         - name: ints
           in: header
           required: true
@@ -2671,6 +2691,7 @@ paths:
               type: integer
               format: int32
               nullable: false
+            uniqueItems: true
         - name: doubles
           in: header
           schema:
@@ -2678,18 +2699,21 @@ paths:
             items:
               type: number
               format: double
+            uniqueItems: true
         - name: codes
           in: header
           schema:
             type: array
             items:
               type: string
+            uniqueItems: true
         - name: stringCodeList
           in: header
           schema:
             type: array
             items:
               type: string
+            uniqueItems: true
         - name: startDate
           in: header
           schema:
@@ -2702,6 +2726,7 @@ paths:
             items:
               type: string
               format: date
+            uniqueItems: true
         - name: timestamps
           in: header
           schema:
@@ -2709,6 +2734,7 @@ paths:
             items:
               type: string
               format: date-time
+            uniqueItems: true
         - name: calendars
           in: header
           schema:
@@ -2716,6 +2742,7 @@ paths:
             items:
               type: string
               format: date-time
+            uniqueItems: true
         - name: utilDates
           in: header
           schema:
@@ -2723,6 +2750,7 @@ paths:
             items:
               type: string
               format: date-time
+            uniqueItems: true
         - name: sqlTimestamps
           in: header
           schema:
@@ -2730,18 +2758,21 @@ paths:
             items:
               type: string
               format: date-time
+            uniqueItems: true
         - name: timeUnits
           in: header
           schema:
             type: array
             items:
               $ref: '../base/product-base.yml#/components/schemas/TimeUnit'
+            uniqueItems: true
         - name: timeUnitArray
           in: header
           schema:
             type: array
             items:
               $ref: '../base/product-base.yml#/components/schemas/TimeUnit'
+            uniqueItems: true
         - name: base64
           in: header
           schema:
@@ -2774,6 +2805,7 @@ paths:
             type: array
             items:
               type: string
+            uniqueItems: true
         - name: ints
           in: header
           required: true
@@ -2784,6 +2816,7 @@ paths:
               type: integer
               format: int32
               minItems: 1
+            uniqueItems: true
         - name: doubles
           in: header
           schema:
@@ -2791,12 +2824,14 @@ paths:
             items:
               type: number
               format: double
+            uniqueItems: true
         - name: codes
           in: header
           schema:
             type: array
             items:
               type: string
+            uniqueItems: true
             nullable: true
         - name: startDate
           in: header
@@ -2810,6 +2845,7 @@ paths:
             items:
               type: string
               format: date-time
+            uniqueItems: true
         - name: times
           in: header
           schema:
@@ -2817,6 +2853,7 @@ paths:
             items:
               type: string
               format: time
+            uniqueItems: true
         - name: BASE_64
           in: header
           schema:

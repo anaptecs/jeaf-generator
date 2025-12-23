@@ -25,9 +25,12 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 import openapitools.model.LinkObject;
 import openapitools.model.Stop;
 import openapitools.model.UICStop;
@@ -68,15 +71,15 @@ public class POI extends Stop {
 
   public static final String JSON_PROPERTY_EVEN_MORE_LINK_I_DS = "evenMoreLinkIDs";
   @Deprecated
-  private JsonNullable<List<String>> evenMoreLinkIDs = JsonNullable.<List<String>>undefined();
+  private JsonNullable<Set<String>> evenMoreLinkIDs = JsonNullable.<Set<String>>undefined();
 
   public static final String JSON_PROPERTY_STOPS = "stops";
   @javax.annotation.Nonnull
-  private List<UICStop> stops = new ArrayList<>();
+  private Set<UICStop> stops = new LinkedHashSet<>();
 
   public static final String JSON_PROPERTY_BOOKING_CODES = "bookingCodes";
   @javax.annotation.Nonnull
-  private List<String> bookingCodes = new ArrayList<>();
+  private Set<String> bookingCodes = new LinkedHashSet<>();
 
   public POI() { 
   }
@@ -136,14 +139,14 @@ public class POI extends Stop {
 
 
   @Deprecated
-  public POI evenMoreLinkIDs(@javax.annotation.Nullable List<String> evenMoreLinkIDs) {
-    this.evenMoreLinkIDs = JsonNullable.<List<String>>of(evenMoreLinkIDs);
+  public POI evenMoreLinkIDs(@javax.annotation.Nullable Set<String> evenMoreLinkIDs) {
+    this.evenMoreLinkIDs = JsonNullable.<Set<String>>of(evenMoreLinkIDs);
     return this;
   }
 
   public POI addEvenMoreLinkIDsItem(String evenMoreLinkIDsItem) {
     if (this.evenMoreLinkIDs == null || !this.evenMoreLinkIDs.isPresent()) {
-      this.evenMoreLinkIDs = JsonNullable.<List<String>>of(new ArrayList<>());
+      this.evenMoreLinkIDs = JsonNullable.<Set<String>>of(new LinkedHashSet<>());
     }
     try {
       this.evenMoreLinkIDs.get().add(evenMoreLinkIDsItem);
@@ -162,36 +165,36 @@ public class POI extends Stop {
   @javax.annotation.Nullable
   @JsonIgnore
 
-  public List<String> getEvenMoreLinkIDs() {
+  public Set<String> getEvenMoreLinkIDs() {
         return evenMoreLinkIDs.orElse(null);
   }
 
   @JsonProperty(value = JSON_PROPERTY_EVEN_MORE_LINK_I_DS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public JsonNullable<List<String>> getEvenMoreLinkIDs_JsonNullable() {
+  public JsonNullable<Set<String>> getEvenMoreLinkIDs_JsonNullable() {
     return evenMoreLinkIDs;
   }
   
   @JsonProperty(JSON_PROPERTY_EVEN_MORE_LINK_I_DS)
-  public void setEvenMoreLinkIDs_JsonNullable(JsonNullable<List<String>> evenMoreLinkIDs) {
+  public void setEvenMoreLinkIDs_JsonNullable(JsonNullable<Set<String>> evenMoreLinkIDs) {
     this.evenMoreLinkIDs = evenMoreLinkIDs;
   }
 
   @Deprecated
-  public void setEvenMoreLinkIDs(@javax.annotation.Nullable List<String> evenMoreLinkIDs) {
-    this.evenMoreLinkIDs = JsonNullable.<List<String>>of(evenMoreLinkIDs);
+  public void setEvenMoreLinkIDs(@javax.annotation.Nullable Set<String> evenMoreLinkIDs) {
+    this.evenMoreLinkIDs = JsonNullable.<Set<String>>of(evenMoreLinkIDs);
   }
 
 
-  public POI stops(@javax.annotation.Nonnull List<UICStop> stops) {
+  public POI stops(@javax.annotation.Nonnull Set<UICStop> stops) {
     this.stops = stops;
     return this;
   }
 
   public POI addStopsItem(UICStop stopsItem) {
     if (this.stops == null) {
-      this.stops = new ArrayList<>();
+      this.stops = new LinkedHashSet<>();
     }
     this.stops.add(stopsItem);
     return this;
@@ -205,26 +208,27 @@ public class POI extends Stop {
   @JsonProperty(value = JSON_PROPERTY_STOPS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public List<UICStop> getStops() {
+  public Set<UICStop> getStops() {
     return stops;
   }
 
 
+  @JsonDeserialize(as = LinkedHashSet.class)
   @JsonProperty(value = JSON_PROPERTY_STOPS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setStops(@javax.annotation.Nonnull List<UICStop> stops) {
+  public void setStops(@javax.annotation.Nonnull Set<UICStop> stops) {
     this.stops = stops;
   }
 
 
-  public POI bookingCodes(@javax.annotation.Nonnull List<String> bookingCodes) {
+  public POI bookingCodes(@javax.annotation.Nonnull Set<String> bookingCodes) {
     this.bookingCodes = bookingCodes;
     return this;
   }
 
   public POI addBookingCodesItem(String bookingCodesItem) {
     if (this.bookingCodes == null) {
-      this.bookingCodes = new ArrayList<>();
+      this.bookingCodes = new LinkedHashSet<>();
     }
     this.bookingCodes.add(bookingCodesItem);
     return this;
@@ -238,14 +242,15 @@ public class POI extends Stop {
   @JsonProperty(value = JSON_PROPERTY_BOOKING_CODES, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public List<String> getBookingCodes() {
+  public Set<String> getBookingCodes() {
     return bookingCodes;
   }
 
 
+  @JsonDeserialize(as = LinkedHashSet.class)
   @JsonProperty(value = JSON_PROPERTY_BOOKING_CODES, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setBookingCodes(@javax.annotation.Nonnull List<String> bookingCodes) {
+  public void setBookingCodes(@javax.annotation.Nonnull Set<String> bookingCodes) {
     this.bookingCodes = bookingCodes;
   }
 

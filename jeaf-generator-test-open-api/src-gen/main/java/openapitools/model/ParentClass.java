@@ -27,7 +27,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 import openapitools.model.BankAccount;
 import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -70,7 +72,7 @@ public class ParentClass {
   private String parentAttribute;
 
   public static final String JSON_PROPERTY_IBANS = "ibans";
-  private JsonNullable<List<String>> ibans = JsonNullable.<List<String>>undefined();
+  private JsonNullable<Set<String>> ibans = JsonNullable.<Set<String>>undefined();
 
   public static final String JSON_PROPERTY_THE_BANK_ACCOUNT = "theBankAccount";
   @javax.annotation.Nullable
@@ -134,14 +136,14 @@ public class ParentClass {
   }
 
 
-  public ParentClass ibans(@javax.annotation.Nullable List<String> ibans) {
-    this.ibans = JsonNullable.<List<String>>of(ibans);
+  public ParentClass ibans(@javax.annotation.Nullable Set<String> ibans) {
+    this.ibans = JsonNullable.<Set<String>>of(ibans);
     return this;
   }
 
   public ParentClass addIbansItem(String ibansItem) {
     if (this.ibans == null || !this.ibans.isPresent()) {
-      this.ibans = JsonNullable.<List<String>>of(new ArrayList<>());
+      this.ibans = JsonNullable.<Set<String>>of(new LinkedHashSet<>());
     }
     try {
       this.ibans.get().add(ibansItem);
@@ -158,24 +160,24 @@ public class ParentClass {
   @javax.annotation.Nullable
   @JsonIgnore
 
-  public List<String> getIbans() {
+  public Set<String> getIbans() {
         return ibans.orElse(null);
   }
 
   @JsonProperty(value = JSON_PROPERTY_IBANS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public JsonNullable<List<String>> getIbans_JsonNullable() {
+  public JsonNullable<Set<String>> getIbans_JsonNullable() {
     return ibans;
   }
   
   @JsonProperty(JSON_PROPERTY_IBANS)
-  public void setIbans_JsonNullable(JsonNullable<List<String>> ibans) {
+  public void setIbans_JsonNullable(JsonNullable<Set<String>> ibans) {
     this.ibans = ibans;
   }
 
-  public void setIbans(@javax.annotation.Nullable List<String> ibans) {
-    this.ibans = JsonNullable.<List<String>>of(ibans);
+  public void setIbans(@javax.annotation.Nullable Set<String> ibans) {
+    this.ibans = JsonNullable.<Set<String>>of(ibans);
   }
 
 

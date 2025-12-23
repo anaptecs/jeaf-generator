@@ -22,9 +22,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Set;
 import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -43,20 +43,20 @@ import openapitools.JSON;
 public class DiscountOffer {
   public static final String JSON_PROPERTY_CAMPAIGN_I_DS = "campaignIDs";
   @Deprecated
-  private JsonNullable<List<String>> campaignIDs = JsonNullable.<List<String>>undefined();
+  private JsonNullable<Set<String>> campaignIDs = JsonNullable.<Set<String>>undefined();
 
   public DiscountOffer() { 
   }
 
   @Deprecated
-  public DiscountOffer campaignIDs(@javax.annotation.Nullable List<String> campaignIDs) {
-    this.campaignIDs = JsonNullable.<List<String>>of(campaignIDs);
+  public DiscountOffer campaignIDs(@javax.annotation.Nullable Set<String> campaignIDs) {
+    this.campaignIDs = JsonNullable.<Set<String>>of(campaignIDs);
     return this;
   }
 
   public DiscountOffer addCampaignIDsItem(String campaignIDsItem) {
     if (this.campaignIDs == null || !this.campaignIDs.isPresent()) {
-      this.campaignIDs = JsonNullable.<List<String>>of(new ArrayList<>());
+      this.campaignIDs = JsonNullable.<Set<String>>of(new LinkedHashSet<>());
     }
     try {
       this.campaignIDs.get().add(campaignIDsItem);
@@ -75,25 +75,25 @@ public class DiscountOffer {
   @javax.annotation.Nullable
   @JsonIgnore
 
-  public List<String> getCampaignIDs() {
+  public Set<String> getCampaignIDs() {
         return campaignIDs.orElse(null);
   }
 
   @JsonProperty(value = JSON_PROPERTY_CAMPAIGN_I_DS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public JsonNullable<List<String>> getCampaignIDs_JsonNullable() {
+  public JsonNullable<Set<String>> getCampaignIDs_JsonNullable() {
     return campaignIDs;
   }
   
   @JsonProperty(JSON_PROPERTY_CAMPAIGN_I_DS)
-  public void setCampaignIDs_JsonNullable(JsonNullable<List<String>> campaignIDs) {
+  public void setCampaignIDs_JsonNullable(JsonNullable<Set<String>> campaignIDs) {
     this.campaignIDs = campaignIDs;
   }
 
   @Deprecated
-  public void setCampaignIDs(@javax.annotation.Nullable List<String> campaignIDs) {
-    this.campaignIDs = JsonNullable.<List<String>>of(campaignIDs);
+  public void setCampaignIDs(@javax.annotation.Nullable Set<String> campaignIDs) {
+    this.campaignIDs = JsonNullable.<Set<String>>of(campaignIDs);
   }
 
 

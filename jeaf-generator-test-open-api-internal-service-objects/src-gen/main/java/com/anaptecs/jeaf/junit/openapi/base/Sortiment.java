@@ -5,12 +5,10 @@
  */
 package com.anaptecs.jeaf.junit.openapi.base;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -52,7 +50,7 @@ public class Sortiment implements ServiceObject {
 
   @Deprecated
   @JsonSetter(nulls = Nulls.SKIP)
-  private List<InlineSortimentType> types;
+  private Set<InlineSortimentType> types;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
@@ -63,7 +61,7 @@ public class Sortiment implements ServiceObject {
     // Bidirectional back reference is not yet set up correctly
     productsBackReferenceInitialized = false;
     value = 4711;
-    types = new ArrayList<>();
+    types = new HashSet<>();
   }
 
   /**
@@ -84,7 +82,7 @@ public class Sortiment implements ServiceObject {
     productsBackReferenceInitialized = true;
     value = pBuilder.value;
     inlineSortimentType = pBuilder.inlineSortimentType;
-    types = (pBuilder.types == null) ? new ArrayList<>() : pBuilder.types;
+    types = (pBuilder.types == null) ? new HashSet<>() : pBuilder.types;
   }
 
   /**
@@ -135,7 +133,7 @@ public class Sortiment implements ServiceObject {
     private InlineSortimentType inlineSortimentType;
 
     @Deprecated
-    private List<InlineSortimentType> types;
+    private Set<InlineSortimentType> types;
 
     /**
      * Use {@link Sortiment#builder()} instead of private constructor to create new builder.
@@ -219,10 +217,10 @@ public class Sortiment implements ServiceObject {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
-    public Builder setTypes( List<InlineSortimentType> pTypes ) {
+    public Builder setTypes( Set<InlineSortimentType> pTypes ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pTypes != null) {
-        types = new ArrayList<InlineSortimentType>(pTypes);
+        types = new HashSet<InlineSortimentType>(pTypes);
       }
       else {
         types = null;
@@ -240,7 +238,7 @@ public class Sortiment implements ServiceObject {
     public Builder addToTypes( InlineSortimentType... pTypes ) {
       if (pTypes != null) {
         if (types == null) {
-          types = new ArrayList<InlineSortimentType>();
+          types = new HashSet<InlineSortimentType>();
         }
         types.addAll(Arrays.asList(pTypes));
       }
@@ -257,7 +255,7 @@ public class Sortiment implements ServiceObject {
     public Builder setTypes( InlineSortimentType... pTypes ) {
       // Copy the content of the passed array.
       if (pTypes != null) {
-        types = new ArrayList<InlineSortimentType>(Arrays.asList(pTypes));
+        types = new HashSet<InlineSortimentType>(Arrays.asList(pTypes));
       }
       else {
         types = null;
@@ -406,11 +404,11 @@ public class Sortiment implements ServiceObject {
   /**
    * Method returns association {@link #types}.<br/>
    *
-   * @return {@link List<InlineSortimentType>} Value to which {@link #types} is set. The method never returns null and
+   * @return {@link Set<InlineSortimentType>} Value to which {@link #types} is set. The method never returns null and
    * the returned collection is modifiable.
    */
   @Deprecated
-  public List<InlineSortimentType> getTypes( ) {
+  public Set<InlineSortimentType> getTypes( ) {
     // Return all InlineSortimentType objects directly without any protection against modification.
     return types;
   }

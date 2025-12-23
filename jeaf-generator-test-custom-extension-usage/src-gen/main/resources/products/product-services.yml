@@ -1417,6 +1417,7 @@ paths:
             items:
               type: integer
               format: int32
+            uniqueItems: true
       responses:
         '201':
           description: >-
@@ -1746,6 +1747,7 @@ paths:
               type: integer
               format: int32
               maximum: 4711
+            uniqueItems: true
             nullable: true
         - name: byte-code
           in: query

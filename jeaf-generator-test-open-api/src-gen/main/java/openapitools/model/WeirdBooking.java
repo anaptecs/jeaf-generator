@@ -25,9 +25,12 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 import openapitools.model.Booking;
 import openapitools.model.InventoryType;
 import openapitools.model.WeirdParent;
@@ -79,7 +82,7 @@ public class WeirdBooking extends WeirdParent {
 
   public static final String JSON_PROPERTY_INVENTORIES = "inventories";
   @javax.annotation.Nullable
-  private List<InventoryType> inventories = new ArrayList<>();
+  private Set<InventoryType> inventories = new LinkedHashSet<>();
 
   public WeirdBooking() { 
   }
@@ -229,14 +232,14 @@ public class WeirdBooking extends WeirdParent {
   }
 
 
-  public WeirdBooking inventories(@javax.annotation.Nullable List<InventoryType> inventories) {
+  public WeirdBooking inventories(@javax.annotation.Nullable Set<InventoryType> inventories) {
     this.inventories = inventories;
     return this;
   }
 
   public WeirdBooking addInventoriesItem(InventoryType inventoriesItem) {
     if (this.inventories == null) {
-      this.inventories = new ArrayList<>();
+      this.inventories = new LinkedHashSet<>();
     }
     this.inventories.add(inventoriesItem);
     return this;
@@ -250,14 +253,15 @@ public class WeirdBooking extends WeirdParent {
   @JsonProperty(value = JSON_PROPERTY_INVENTORIES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<InventoryType> getInventories() {
+  public Set<InventoryType> getInventories() {
     return inventories;
   }
 
 
+  @JsonDeserialize(as = LinkedHashSet.class)
   @JsonProperty(value = JSON_PROPERTY_INVENTORIES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setInventories(@javax.annotation.Nullable List<InventoryType> inventories) {
+  public void setInventories(@javax.annotation.Nullable Set<InventoryType> inventories) {
     this.inventories = inventories;
   }
 

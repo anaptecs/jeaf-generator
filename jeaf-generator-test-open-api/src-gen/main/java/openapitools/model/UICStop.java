@@ -25,9 +25,12 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 import openapitools.model.LinkObject;
 import openapitools.model.Stop;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -106,7 +109,7 @@ public class UICStop extends Stop {
 
   public static final String JSON_PROPERTY_INLINE_STOP_TYPES = "inlineStopTypes";
   @javax.annotation.Nonnull
-  private List<InlineStopTypesEnum> inlineStopTypes = new ArrayList<>();
+  private Set<InlineStopTypesEnum> inlineStopTypes = new LinkedHashSet<>();
 
   /**
    * Gets or Sets inlineStopType
@@ -256,14 +259,14 @@ public class UICStop extends Stop {
   }
 
 
-  public UICStop inlineStopTypes(@javax.annotation.Nonnull List<InlineStopTypesEnum> inlineStopTypes) {
+  public UICStop inlineStopTypes(@javax.annotation.Nonnull Set<InlineStopTypesEnum> inlineStopTypes) {
     this.inlineStopTypes = inlineStopTypes;
     return this;
   }
 
   public UICStop addInlineStopTypesItem(InlineStopTypesEnum inlineStopTypesItem) {
     if (this.inlineStopTypes == null) {
-      this.inlineStopTypes = new ArrayList<>();
+      this.inlineStopTypes = new LinkedHashSet<>();
     }
     this.inlineStopTypes.add(inlineStopTypesItem);
     return this;
@@ -277,14 +280,15 @@ public class UICStop extends Stop {
   @JsonProperty(value = JSON_PROPERTY_INLINE_STOP_TYPES, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public List<InlineStopTypesEnum> getInlineStopTypes() {
+  public Set<InlineStopTypesEnum> getInlineStopTypes() {
     return inlineStopTypes;
   }
 
 
+  @JsonDeserialize(as = LinkedHashSet.class)
   @JsonProperty(value = JSON_PROPERTY_INLINE_STOP_TYPES, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setInlineStopTypes(@javax.annotation.Nonnull List<InlineStopTypesEnum> inlineStopTypes) {
+  public void setInlineStopTypes(@javax.annotation.Nonnull Set<InlineStopTypesEnum> inlineStopTypes) {
     this.inlineStopTypes = inlineStopTypes;
   }
 

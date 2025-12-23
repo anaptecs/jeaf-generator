@@ -25,9 +25,10 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import java.util.ArrayList;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.util.Arrays;
-import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Set;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import openapitools.JSON;
 
@@ -66,7 +67,7 @@ public class WeirdParent {
 
   public static final String JSON_PROPERTY_COMPLEX_BOOKINGS = "complexBookings";
   @javax.annotation.Nonnull
-  private List<String> complexBookings = new ArrayList<>();
+  private Set<String> complexBookings = new LinkedHashSet<>();
 
   public WeirdParent() { 
   }
@@ -146,14 +147,14 @@ public class WeirdParent {
   }
 
 
-  public WeirdParent complexBookings(@javax.annotation.Nonnull List<String> complexBookings) {
+  public WeirdParent complexBookings(@javax.annotation.Nonnull Set<String> complexBookings) {
     this.complexBookings = complexBookings;
     return this;
   }
 
   public WeirdParent addComplexBookingsItem(String complexBookingsItem) {
     if (this.complexBookings == null) {
-      this.complexBookings = new ArrayList<>();
+      this.complexBookings = new LinkedHashSet<>();
     }
     this.complexBookings.add(complexBookingsItem);
     return this;
@@ -167,14 +168,15 @@ public class WeirdParent {
   @JsonProperty(value = JSON_PROPERTY_COMPLEX_BOOKINGS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public List<String> getComplexBookings() {
+  public Set<String> getComplexBookings() {
     return complexBookings;
   }
 
 
+  @JsonDeserialize(as = LinkedHashSet.class)
   @JsonProperty(value = JSON_PROPERTY_COMPLEX_BOOKINGS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setComplexBookings(@javax.annotation.Nonnull List<String> complexBookings) {
+  public void setComplexBookings(@javax.annotation.Nonnull Set<String> complexBookings) {
     this.complexBookings = complexBookings;
   }
 

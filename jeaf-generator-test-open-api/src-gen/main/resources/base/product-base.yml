@@ -202,12 +202,14 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/DoSomethingResponse'
+          uniqueItems: true
         multiTemplateClassImpl:
           $ref: '#/components/schemas/MultiTemplateClassImpl'
         many:
           type: array
           items:
             $ref: '#/components/schemas/MultiTemplateClassImpl'
+          uniqueItems: true
 
     # com.anaptecs.jeaf.junit.openapi.base.BankAccount
     BankAccount:
@@ -352,6 +354,7 @@ components:
             type: integer
             format: int64
           deprecated: true
+          uniqueItems: true
           nullable: false
         discountOfferIDs:
           type: array
@@ -500,12 +503,14 @@ components:
                 format: int32
               minItems: 10
               maxItems: 100
+              uniqueItems: true
               nullable: true
             requiredArray:
               type: array
               items:
                 type: string
               minItems: 1
+              uniqueItems: true
               nullable: false
             bigIntegerCode:
               type: integer
@@ -520,6 +525,7 @@ components:
                 type: integer
                 format: int32
                 minimum: 1234
+              uniqueItems: true
               nullable: true
 
     # com.anaptecs.jeaf.junit.openapi.base.ChildB
@@ -542,6 +548,7 @@ components:
                 type: boolean
               minItems: 11
               maxItems: 42
+              uniqueItems: true
               nullable: true
             composition:
               description: |
@@ -549,6 +556,7 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/ParentClass'
+              uniqueItems: true
 
     # com.anaptecs.jeaf.junit.openapi.base.ChildBB
     ChildBB:
@@ -579,6 +587,7 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/ChildB'
+              uniqueItems: true
             deprecatedParent:
               # Property "deprecatedParent" is marked as deprecated. However OpenAPI does not support to mark references to complex types as deprecated.
               $ref: '#/components/schemas/ParentClass'
@@ -604,10 +613,12 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/BooleanCodeType'
+          uniqueItems: true
         shortCodeTypeAssociation:
           type: array
           items:
             $ref: '#/components/schemas/ShortCodeType'
+          uniqueItems: true
           minItems: 1
         stringCode:
           $ref: '#/components/schemas/StringCodeType'
@@ -739,6 +750,7 @@ components:
           items:
             type: string
           deprecated: true
+          uniqueItems: true
           nullable: true
 
     # com.anaptecs.jeaf.junit.generics.DoSomethingResponse
@@ -1089,6 +1101,7 @@ components:
               items:
                 type: string
               deprecated: true
+              uniqueItems: true
               nullable: true
             stops:
               description: |
@@ -1099,6 +1112,7 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/UICStop'
+              uniqueItems: true
               minItems: 2
               maxItems: 42
             bookingCodes:
@@ -1108,6 +1122,7 @@ components:
                 minLength: 3
                 maxLength: 5
               minItems: 1
+              uniqueItems: true
               nullable: false
 
     # com.anaptecs.jeaf.junit.openapi.base.ParentClass
@@ -1131,6 +1146,7 @@ components:
           items:
             type: string
             pattern: '^DE\d{2}\s?([0-9a-zA-Z]{4}\s?){4}[0-9a-zA-Z]{2}$'
+          uniqueItems: true
           nullable: true
         theBankAccount:
           # I would like to document references to other types.
@@ -1244,16 +1260,19 @@ components:
           type: array
           items:
             type: boolean
+          uniqueItems: true
           nullable: true
         bBooleanArray:
           type: array
           items:
             type: boolean
+          uniqueItems: true
           nullable: true
         cBooleanArray:
           type: array
           items:
             type: boolean
+          uniqueItems: true
           nullable: true
         aByteArray:
           type: string
@@ -1268,104 +1287,122 @@ components:
           items:
             type: integer
             format: int32
+          uniqueItems: true
           nullable: true
         bShortArray:
           type: array
           items:
             type: integer
             format: int32
+          uniqueItems: true
           nullable: true
         aIntegerArray:
           type: array
           items:
             type: integer
             format: int32
+          uniqueItems: true
           nullable: true
         bIntegerArray:
           type: array
           items:
             type: integer
             format: int32
+          uniqueItems: true
           nullable: true
         cIntegerArray:
           type: array
           items:
             type: integer
             format: int32
+          uniqueItems: true
           nullable: true
         aLongArray:
           type: array
           items:
             type: integer
             format: int64
+          uniqueItems: true
           nullable: true
         bLongArray:
           type: array
           items:
             type: integer
             format: int64
+          uniqueItems: true
           nullable: true
         aBigIntegerArray:
           type: array
           items:
             type: integer
             format: int64
+          uniqueItems: true
           nullable: true
         aCharacterArray:
           type: array
           items:
             type: string
+          uniqueItems: true
           nullable: true
         bCharacterArray:
           type: array
           items:
             type: string
+          uniqueItems: true
           nullable: true
         aFloatArray:
           type: array
           items:
             type: number
             format: float
+          uniqueItems: true
           nullable: true
         bFloatArray:
           type: array
           items:
             type: number
             format: float
+          uniqueItems: true
           nullable: true
         aDoubleArray:
           type: array
           items:
             type: number
             format: double
+          uniqueItems: true
           nullable: true
         bDoubleArray:
           type: array
           items:
             type: number
             format: double
+          uniqueItems: true
           nullable: true
         aBigDecimalArray:
           type: array
           items:
             type: number
             format: double
+          uniqueItems: true
           nullable: true
         aStringArray:
           type: array
           items:
             type: string
+          uniqueItems: true
           nullable: true
         bStringArray:
           type: array
           items:
             type: string
+          uniqueItems: true
           nullable: true
         cStringArray:
           type: array
           items:
             type: string
           minItems: 1
+          uniqueItems: true
           nullable: false
 
     # com.anaptecs.jeaf.junit.openapi.base.PrimitiveArraysObjectWithRestrictions
@@ -1379,16 +1416,19 @@ components:
           type: array
           items:
             type: boolean
+          uniqueItems: true
           nullable: true
         bBooleanArray:
           type: array
           items:
             type: boolean
+          uniqueItems: true
           nullable: true
         cBooleanArray:
           type: array
           items:
             type: boolean
+          uniqueItems: true
           nullable: true
         aByteArray:
           type: string
@@ -1404,30 +1444,35 @@ components:
           items:
             type: integer
             format: int32
+          uniqueItems: true
           nullable: true
         bShortArray:
           type: array
           items:
             type: integer
             format: int32
+          uniqueItems: true
           nullable: true
         aIntegerArray:
           type: array
           items:
             type: integer
             format: int32
+          uniqueItems: true
           nullable: true
         bIntegerArray:
           type: array
           items:
             type: integer
             format: int32
+          uniqueItems: true
           nullable: true
         cIntegerArray:
           type: array
           items:
             type: integer
             format: int32
+          uniqueItems: true
           nullable: true
         aLongArray:
           type: array
@@ -1435,40 +1480,47 @@ components:
             type: integer
             format: int64
           minItems: 1
+          uniqueItems: true
           nullable: true
         bLongArray:
           type: array
           items:
             type: integer
             format: int64
+          uniqueItems: true
           nullable: true
         aBigIntegerArray:
           type: array
           items:
             type: integer
             format: int64
+          uniqueItems: true
           nullable: true
         aCharacterArray:
           type: array
           items:
             type: string
+          uniqueItems: true
           nullable: true
         bCharacterArray:
           type: array
           items:
             type: string
+          uniqueItems: true
           nullable: true
         aFloatArray:
           type: array
           items:
             type: number
             format: float
+          uniqueItems: true
           nullable: true
         bFloatArray:
           type: array
           items:
             type: number
             format: float
+          uniqueItems: true
           nullable: true
         aDoubleArray:
           type: array
@@ -1477,28 +1529,33 @@ components:
             format: double
           minItems: 4
           maxItems: 12
+          uniqueItems: true
           nullable: true
         bDoubleArray:
           type: array
           items:
             type: number
             format: double
+          uniqueItems: true
           nullable: true
         aBigDecimalArray:
           type: array
           items:
             type: number
             format: double
+          uniqueItems: true
           nullable: true
         aStringArray:
           type: array
           items:
             type: string
+          uniqueItems: true
           nullable: true
         bStringArray:
           type: array
           items:
             type: string
+          uniqueItems: true
           nullable: true
 
     # com.anaptecs.jeaf.junit.openapi.base.PrimitiveObject
@@ -1795,6 +1852,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Reseller'
+          uniqueItems: true
         name:
           type: string
           minLength: 12
@@ -1824,11 +1882,13 @@ components:
             example: CHF
           minItems: 7
           maxItems: 42
+          uniqueItems: true
           nullable: false
         productCodes:
           type: array
           items:
             $ref: '#/components/schemas/ProductCode'
+          uniqueItems: true
           minItems: 1
         description:
           type: string
@@ -1887,6 +1947,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Product'
+          uniqueItems: true
         value:
           type: integer
           format: int32
@@ -1904,6 +1965,8 @@ components:
             x-extensible-enum:
               - B2C_SORTIMENT
               - EMPLOYEE_SORTIMENT
+          uniqueItems: true
+            
           deprecated: true
 
     # com.anaptecs.jeaf.junit.openapi.base.Stop
@@ -2072,6 +2135,8 @@ components:
                 enum:
                   - REAL_STOP
                   - VIRTUAL_STOP
+              uniqueItems: true
+            
             inlineStopType:
               type: string
               enum:
@@ -2137,6 +2202,7 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/InventoryType'
+              uniqueItems: true
 
     # com.anaptecs.jeaf.junit.openapi.base.WeirdParent
     WeirdParent:
@@ -2171,5 +2237,6 @@ components:
           type: array
           items:
             type: string
+          uniqueItems: true
           nullable: false
 

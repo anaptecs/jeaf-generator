@@ -137,6 +137,9 @@
               «IF attribute.isDeprecated() -»
           deprecated: true
               «ENDIF-»
+              «IF this.isUniqueProperty(attribute)-»
+          uniqueItems: true
+              «ENDIF-»
               «ELSE -»
           type: array
           items:
@@ -158,6 +161,9 @@
             «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("    ") FOR attribute-»              
               «IF attribute.isDeprecated() -»
           deprecated: true
+              «ENDIF-»
+              «IF this.isUniqueProperty(attribute)-»
+          uniqueItems: true
               «ENDIF-»
             «ENDIF-»
            «ENDIF-»
@@ -236,6 +242,9 @@
                     «ENDIF-»
                 «ELSE-»
             $ref: «attribute.type.getOpenAPIType(spec)»
+                «ENDIF-»
+                «IF this.isUniqueProperty(attribute)-»
+          uniqueItems: true
                 «ENDIF-»
               «ENDIF-»
           «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("    ") FOR attribute-»
@@ -347,6 +356,9 @@
               «IF attribute.isDeprecated() -»
               deprecated: true
               «ENDIF-»
+              «IF this.isUniqueProperty(attribute)-»
+              uniqueItems: true
+              «ENDIF-»
               «ELSE -»
               type: array
               items:
@@ -368,6 +380,9 @@
               «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("        ") FOR attribute-»              
               «IF attribute.isDeprecated() -»
                 deprecated: true
+              «ENDIF-»
+              «IF this.isUniqueProperty(attribute)-»
+              uniqueItems: true
               «ENDIF-»
             «ENDIF-»
            «ENDIF-»
@@ -419,6 +434,9 @@
                 «ENDFOREACH-»
               «ELSE-»
                 $ref: «attribute.type.getOpenAPIType(spec)»
+              «ENDIF-»
+              «IF this.isUniqueProperty(attribute)-»
+              uniqueItems: true
               «ENDIF-»
               «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("        ") FOR attribute-»
             «ENDIF-»

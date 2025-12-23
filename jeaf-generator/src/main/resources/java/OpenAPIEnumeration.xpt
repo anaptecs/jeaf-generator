@@ -133,6 +133,9 @@
 «indentation»              - «openAPILiteralQuotationCharacter()»«dynamicLiteral»«openAPILiteralQuotationCharacter()»
 	          «ENDFOREACH-»
             «ENDIF-»
+            «IF ownerAttribute.isUnique-»
+«indentation»          uniqueItems: true
+            «ENDIF»
           «ENDIF-»
           «IF ownerAttribute.isDeprecated() -»
 «indentation»          deprecated: true

@@ -22,9 +22,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import java.util.ArrayList;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.util.Arrays;
-import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Set;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import openapitools.JSON;
 
@@ -47,11 +48,11 @@ public class CodeTypeUsageTest {
 
   public static final String JSON_PROPERTY_BOOLEAN_CODE_ASSOCIATION = "booleanCodeAssociation";
   @javax.annotation.Nullable
-  private List<Boolean> booleanCodeAssociation = new ArrayList<>();
+  private Set<Boolean> booleanCodeAssociation = new LinkedHashSet<>();
 
   public static final String JSON_PROPERTY_SHORT_CODE_TYPE_ASSOCIATION = "shortCodeTypeAssociation";
   @javax.annotation.Nonnull
-  private List<Integer> shortCodeTypeAssociation = new ArrayList<>();
+  private Set<Integer> shortCodeTypeAssociation = new LinkedHashSet<>();
 
   public static final String JSON_PROPERTY_STRING_CODE = "stringCode";
   @javax.annotation.Nonnull
@@ -89,14 +90,14 @@ public class CodeTypeUsageTest {
   }
 
 
-  public CodeTypeUsageTest booleanCodeAssociation(@javax.annotation.Nullable List<Boolean> booleanCodeAssociation) {
+  public CodeTypeUsageTest booleanCodeAssociation(@javax.annotation.Nullable Set<Boolean> booleanCodeAssociation) {
     this.booleanCodeAssociation = booleanCodeAssociation;
     return this;
   }
 
   public CodeTypeUsageTest addBooleanCodeAssociationItem(Boolean booleanCodeAssociationItem) {
     if (this.booleanCodeAssociation == null) {
-      this.booleanCodeAssociation = new ArrayList<>();
+      this.booleanCodeAssociation = new LinkedHashSet<>();
     }
     this.booleanCodeAssociation.add(booleanCodeAssociationItem);
     return this;
@@ -110,26 +111,27 @@ public class CodeTypeUsageTest {
   @JsonProperty(value = JSON_PROPERTY_BOOLEAN_CODE_ASSOCIATION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<Boolean> getBooleanCodeAssociation() {
+  public Set<Boolean> getBooleanCodeAssociation() {
     return booleanCodeAssociation;
   }
 
 
+  @JsonDeserialize(as = LinkedHashSet.class)
   @JsonProperty(value = JSON_PROPERTY_BOOLEAN_CODE_ASSOCIATION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setBooleanCodeAssociation(@javax.annotation.Nullable List<Boolean> booleanCodeAssociation) {
+  public void setBooleanCodeAssociation(@javax.annotation.Nullable Set<Boolean> booleanCodeAssociation) {
     this.booleanCodeAssociation = booleanCodeAssociation;
   }
 
 
-  public CodeTypeUsageTest shortCodeTypeAssociation(@javax.annotation.Nonnull List<Integer> shortCodeTypeAssociation) {
+  public CodeTypeUsageTest shortCodeTypeAssociation(@javax.annotation.Nonnull Set<Integer> shortCodeTypeAssociation) {
     this.shortCodeTypeAssociation = shortCodeTypeAssociation;
     return this;
   }
 
   public CodeTypeUsageTest addShortCodeTypeAssociationItem(Integer shortCodeTypeAssociationItem) {
     if (this.shortCodeTypeAssociation == null) {
-      this.shortCodeTypeAssociation = new ArrayList<>();
+      this.shortCodeTypeAssociation = new LinkedHashSet<>();
     }
     this.shortCodeTypeAssociation.add(shortCodeTypeAssociationItem);
     return this;
@@ -143,14 +145,15 @@ public class CodeTypeUsageTest {
   @JsonProperty(value = JSON_PROPERTY_SHORT_CODE_TYPE_ASSOCIATION, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public List<Integer> getShortCodeTypeAssociation() {
+  public Set<Integer> getShortCodeTypeAssociation() {
     return shortCodeTypeAssociation;
   }
 
 
+  @JsonDeserialize(as = LinkedHashSet.class)
   @JsonProperty(value = JSON_PROPERTY_SHORT_CODE_TYPE_ASSOCIATION, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setShortCodeTypeAssociation(@javax.annotation.Nonnull List<Integer> shortCodeTypeAssociation) {
+  public void setShortCodeTypeAssociation(@javax.annotation.Nonnull Set<Integer> shortCodeTypeAssociation) {
     this.shortCodeTypeAssociation = shortCodeTypeAssociation;
   }
 
