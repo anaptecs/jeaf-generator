@@ -2059,5 +2059,36 @@ components:
           nullable: false
         sale:
           $ref: '../base/product-base.yml#/components/schemas/Channel'
+    # com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkPartner
+    SoftLinkPartner:
+      type: object
+      additionalProperties: false
+      required:
+        - longLinkIDs
+        - derivedSoftLinkID
+      properties:
+        theBackLinkID:
+          type: string
+          nullable: true
+        childLinkIDs:
+          type: array
+          items:
+            type: string
+          uniqueItems: true
+          nullable: true
+        longLinkIDs:
+          type: array
+          items:
+            type: integer
+            format: int64
+          nullable: false
+        derivedSoftLinkID:
+          type: string
+          nullable: false
+        theDerivedSoftLinkIDs:
+          type: array
+          items:
+            type: string
+          nullable: true
 
       

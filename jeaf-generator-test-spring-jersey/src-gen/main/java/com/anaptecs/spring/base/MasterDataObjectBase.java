@@ -19,8 +19,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @JsonPropertyOrder(
-    value = { "dataUnits", "entity", "objectID", "internalProperty", "derivedProperty", "derivedDataUnits",
-      "derivedEntity", "derivedArray", "derivedBoolean", "derivedInt", "derivedString" })
+    value = { "dataUnits", "entity", "objectID", "internalProperty", "derivedDataUnits", "derivedEntity" })
 @JsonDeserialize(builder = MasterDataObject.Builder.class)
 public abstract class MasterDataObjectBase {
   /**
