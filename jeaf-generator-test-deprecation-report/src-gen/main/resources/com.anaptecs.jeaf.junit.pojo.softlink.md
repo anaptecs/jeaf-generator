@@ -76,6 +76,9 @@
 | `theBackLink` | [`SoftLinkParent`](#softlinkparent) | `0..1` |  |  |
 | `childLinks` | [`SoftLinkChildA`](#softlinkchilda) | `0..*` |  |  |
 | `longLinks` | [`SoftLinkChildA`](#softlinkchilda) | `1..*` |  |  |
+| `derivedSoftLink` | [`SoftLinkParent`](#softlinkparent) | `1..1` | `derived` |  |
+| `theDerivedSoftLinks` | [`SoftLinkParent`](#softlinkparent) | `0..*` | `derived` |  |
+| `javaOnlyDerivedSoftLink` | [`SoftLinkChildA`](#softlinkchilda) | `0..1` | `derived` |  |
 
 <br>
 
