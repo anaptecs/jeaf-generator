@@ -27,9 +27,7 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
-@JsonPropertyOrder(
-    value = { "theBackLink", "childLinks", "longLinks", "derivedSoftLink", "theDerivedSoftLinks",
-      "javaOnlyDerivedSoftLink" })
+@JsonPropertyOrder(value = { "theBackLink", "childLinks", "longLinks", "derivedSoftLink", "theDerivedSoftLinks" })
 @JsonDeserialize(builder = SoftLinkPartner.Builder.class)
 public abstract class SoftLinkPartnerBase {
   /**

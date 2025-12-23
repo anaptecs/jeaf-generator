@@ -45,7 +45,7 @@
 		«ENDIF»
 	    «IF this.hasAddToJSONProperty() || this.hasPropertyWithBckwardCompatibility()»
 	        @com.fasterxml.jackson.annotation.JsonPropertyOrder(value = {
-	           «FOREACH this.getAllPropertiesFromHierarchy().select(e|e.isTransient() == false) AS property SEPARATOR ", "»"«property.name»"«ENDFOREACH»
+	           «FOREACH this.getAllPropertiesFromHierarchy().select(e|e.isTransient() == false && (e.isDerived == false || ( e.isDerived && e.isAddToJSON()))) AS property SEPARATOR ", "»"«property.name»"«ENDFOREACH»
 	        })
 	    «ENDIF»
 	    «IF this.isAbstract == false && this.isOpenAPIDataType() == false && this.hasCustomSerialization() == false && this.hasTemplateParameter() == false && this.isPOJO()»
