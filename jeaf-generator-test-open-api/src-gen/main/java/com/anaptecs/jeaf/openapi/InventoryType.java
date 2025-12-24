@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * Valid Values:  - &#x60;SBB&#x60;   &lt;br&gt;&lt;br&gt;    - &#x60;SNCF&#x60;   &lt;br&gt;&lt;br&gt;    - &#x60;DB&#x60;:    &lt;br&gt;&lt;br&gt;   **Breaking Change Notice (active with 3.x):**&lt;br&gt;&lt;br&gt;   New literal will occur   &lt;br&gt;&lt;br&gt;    
+ * &lt;br&gt; Valid Values:  - &#x60;SBB&#x60;   &lt;br&gt;&lt;br&gt;    - &#x60;SNCF&#x60;   &lt;br&gt;&lt;br&gt;    - &#x60;DB&#x60;:    &lt;br&gt;&lt;br&gt;   **Breaking Change Notice (active with 3.x):**&lt;br&gt;&lt;br&gt;   New literal will occur   &lt;br&gt;&lt;br&gt;    
  */
 public enum InventoryType {
   SBB("SBB"),
