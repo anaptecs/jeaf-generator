@@ -36,11 +36,13 @@
         «IF this.hasComment() -»
         <br>
         «ENDIF-»
+        <br>
         Known Values:
         «ELSE-»
         «IF this.hasComment() -»
         <br>
         «ENDIF-»
+        <br>
         Valid Values:
         «ENDIF-»
         
