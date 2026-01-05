@@ -17,6 +17,7 @@ extension functions::RESTOperation;
 extension jeafgenerator::api::OpenAPIEnumExtensionPoint;
 extension functions::AddToJSON;
 extension functions::JEAFEnumeration;
+extension entity::ModelProperties;
 
 cached boolean hasOpenAPITypes(JMM::OpenAPI3Specification spec):
 	getOpenAPITypes(spec).size > 0;
@@ -603,3 +604,24 @@ private List[JMM::OpenAPITag] getOpenAPITagsForOperationOnly(JMM::RESTOperation 
     
 private List[JMM::OpenAPITag] getOpenAPITagsForInterface(uml::Interface interface):
     interface.getTargetDirectedRelationships().source.typeSelect(JMM::OpenAPITag).sortBy(e|e.name);
+
+boolean hasRESTDefaultValueForBasicTypeParameter(uml::Parameter param):
+  if param.hasDefaultValueForBasicTypeParameter()
+  then true
+  else 
+  	if param.isRequired() == false && param.type.isPrimitiveType() && param.type.isByteType() == false && param.isMultivalued() == false
+  	then true
+  	else false;
+  	
+String getRESTDefaultValueForBasicTypeParameter(uml::Parameter param):
+if param.hasDefaultValueForBasicTypeParameter()
+  then param.getDefaultValueForBasicType()
+  else 
+  	if param.isRequired() == false && param.type.isPrimitiveType() && param.type.isByteType() == false && param.isMultivalued() == false
+  	then param.type.getJavaDefaultValue();
+		
+cached String getJavaDefaultValue(uml::Type type):
+	if type.isBooleanType()
+	then "false"
+	else "0";
+	

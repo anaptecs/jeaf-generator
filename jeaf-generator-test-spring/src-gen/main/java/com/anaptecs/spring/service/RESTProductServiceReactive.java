@@ -31,7 +31,7 @@ import com.anaptecs.spring.base.ChannelCode;
 import com.anaptecs.spring.base.ChannelType;
 import com.anaptecs.spring.base.Context;
 import com.anaptecs.spring.base.CurrencyCode;
-import com.anaptecs.spring.base.DoubleCode;
+import com.anaptecs.spring.base.DoubleCodeType;
 import com.anaptecs.spring.base.ExtensibleEnum;
 import com.anaptecs.spring.base.IntegerCodeType;
 import com.anaptecs.spring.base.LongCode;
@@ -275,8 +275,7 @@ public interface RESTProductServiceReactive {
    * @return {@link String}
    */
   @MyNotNullServiceParam
-  Mono<String> testDataTypesAsHeaderParam( @MyNotNullServiceParam BookingID pBookingID,
-      @MyNotNullServiceParam BookingCode pBookingCode, @MyNotNullServiceParam DoubleCode pDoubleCode );
+  Mono<String> testDataTypesAsHeaderParam( BookingID pBookingID, BookingCode pBookingCode, DoubleCodeType pDoubleCode );
 
   /**
    * <p/>

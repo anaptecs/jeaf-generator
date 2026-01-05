@@ -411,7 +411,7 @@ public class «this.getResourceName(reactive)» {
 		  				}
 		  			«ELSE»
 		  				«IF attribute.isMultivalued() == false»
-		  					«IF attribute.type.attribute().select(e|e.isStatic == false).first().type.isPrimitiveType() == false»
+		  					«IF attribute.isRequiredProperty() == false»
 			  					if(«attribute.asParameter()»AsBasicType != null) {
 			  					  «beanParam.name.toLocalVar()»Builder.«attribute.asSetter()»(«attribute.type.fqn()».builder().set«attribute.type.attribute().select(e|e.isStatic == false).first().name.toFirstUpper()»(«attribute.asParameter()»AsBasicType).build());
 			  					}
@@ -580,7 +580,7 @@ public class «this.getResourceName(reactive)» {
 	    		«ENDIF»
 	    	«ELSE»
 	    		«IF basicParam.isMultivalued() == false»
-                    «IF basicParam.type.isPrimitiveType() == false»
+                    «IF basicParam.isRequired() == false»
 	                    «basicParam.type.fqn()» «basicParam.name»;
 	                    if («basicParam.name»AsBasicType != null) {
 		    			  «basicParam.name» = «basicParam.type.fqn()».builder().set«basicParam.type.attribute().select(e|e.isStatic == false).first().name.toFirstUpper()»(«basicParam.name»AsBasicType).build();
@@ -608,7 +608,7 @@ public class «this.getResourceName(reactive)» {
 	  «ENDIF»
 	  
 	  «IF this.hasDateParameters()»
-	  // Convert date types into real objects.
+	  // Convert date type(s) into real objects.
 	  	«FOREACH this.getDateParameters() AS dateParam»
   			«IF dateParam.isMultivalued() == false»
 	  			«dateParam.type.fqn()» «dateParam.name»;
@@ -878,7 +878,17 @@ public class «this.getResourceName(reactive)» {
 	  	«IF ((JMM::OpenAPIDataType) this.type).compositeDataType»
 	  		String«IF this.isMultivalued()»[]«ENDIF» «this.name»AsBasicType
 	  	«ELSE»
-	  		«this.type.attribute().select(e|e.isStatic == false).first().fqn()»«IF this.isMultivalued()»[]«ENDIF» «this.name»AsBasicType
+  			«LET this.type.attribute().select(e|e.isStatic == false).first() AS dataTypeParam»
+	  			«IF this.isMultivalued()»
+	  				«dataTypeParam.fqn()»[] «name»AsBasicType
+	  			«ELSE»
+	  				«IF dataTypeParam.type.isPrimitiveType() && this.isRequired() == false»
+	  					«dataTypeParam.type.getWrapperTypeQualifiedName()» «name»AsBasicType
+	  				«ELSE»
+	  					«dataTypeParam.fqn()» «name»AsBasicType
+	  				«ENDIF»
+	  			«ENDIF»
+  			«ENDLET»
 	  	«ENDIF»
 	«ELSE»
 	  	«this.getTypeName()» «this.name»
@@ -891,16 +901,16 @@ public class «this.getResourceName(reactive)» {
 
 «DEFINE SpringRESTParameterDefinition(boolean reactive) FOR Parameter»
   «IF this.isPathParam() -»
-  @org.springframework.web.bind.annotation.PathVariable(name = "«EXPAND java::OpenAPI::RESTParamName FOR this»", required = «this.isRequired()» «IF this.isParamJEAFEnumeration() && this.hasDefaultValueForEnum()», defaultValue = "«this.getDefaultValueForEnum()»"«ENDIF» «IF (this.type.isBasicType() || this.type.isPrimitiveType()) && this.hasDefaultValueForBasicType()», defaultValue = "«this.getDefaultValueForBasicType()»"«ENDIF»)
+  @org.springframework.web.bind.annotation.PathVariable(name = "«EXPAND java::OpenAPI::RESTParamName FOR this»", required = «this.isRequired()» «IF this.isParamJEAFEnumeration() && this.hasDefaultValueForEnum()», defaultValue = "«this.getDefaultValueForEnum()»"«ENDIF» «IF (this.type.isBasicType() || this.type.isPrimitiveType()) && this.hasRESTDefaultValueForBasicTypeParameter()», defaultValue = "«this.getRESTDefaultValueForBasicTypeParameter()»"«ENDIF»)
   «ENDIF-»
   «IF this.isHeaderParam() -»
-  @org.springframework.web.bind.annotation.RequestHeader(name = "«EXPAND java::OpenAPI::RESTParamName FOR this»", required = «this.isRequired()»«IF this.isParamJEAFEnumeration() && this.hasDefaultValueForEnum()», defaultValue = "«this.getDefaultValueForEnum()»"«ENDIF» «IF (this.type.isBasicType() || this.type.isPrimitiveType()) && this.hasDefaultValueForBasicType()», defaultValue = "«this.getDefaultValueForBasicType()»"«ENDIF»)
+  @org.springframework.web.bind.annotation.RequestHeader(name = "«EXPAND java::OpenAPI::RESTParamName FOR this»", required = «this.isRequired()»«IF this.isParamJEAFEnumeration() && this.hasDefaultValueForEnum()», defaultValue = "«this.getDefaultValueForEnum()»"«ENDIF» «IF (this.type.isBasicType() || this.type.isPrimitiveType()) && this.hasRESTDefaultValueForBasicTypeParameter()», defaultValue = "«this.getRESTDefaultValueForBasicTypeParameter()»"«ENDIF»)
   «ENDIF-»
   «IF this.isQueryParam() -»
-  @org.springframework.web.bind.annotation.RequestParam(name = "«EXPAND java::OpenAPI::RESTParamName FOR this»", required = «this.isRequired()»«IF this.isParamJEAFEnumeration() && this.hasDefaultValueForEnum()», defaultValue = "«this.getDefaultValueForEnum()»"«ENDIF» «IF (this.type.isBasicType() || this.type.isPrimitiveType()) && this.hasDefaultValueForBasicType()», defaultValue = "«this.getDefaultValueForBasicType()»"«ENDIF»)
+  @org.springframework.web.bind.annotation.RequestParam(name = "«EXPAND java::OpenAPI::RESTParamName FOR this»", required = «this.isRequired()»«IF this.isParamJEAFEnumeration() && this.hasDefaultValueForEnum()», defaultValue = "«this.getDefaultValueForEnum()»"«ENDIF» «IF (this.type.isBasicType() || this.type.isPrimitiveType()) && this.hasRESTDefaultValueForBasicTypeParameter()», defaultValue = "«this.getRESTDefaultValueForBasicTypeParameter()»"«ENDIF»)
   «ENDIF-»
   «IF this.isCookieParam() -»
-  @org.springframework.web.bind.annotation.CookieValue(name = "«EXPAND java::OpenAPI::RESTParamName FOR this»", required = «this.isRequired()»«IF this.isParamJEAFEnumeration() && this.hasDefaultValueForEnum()», defaultValue = "«this.getDefaultValueForEnum()»"«ENDIF» «IF (this.type.isBasicType() || this.type.isPrimitiveType()) && this.hasDefaultValueForBasicType()», defaultValue = "«this.getDefaultValueForBasicType()»"«ENDIF»)
+  @org.springframework.web.bind.annotation.CookieValue(name = "«EXPAND java::OpenAPI::RESTParamName FOR this»", required = «this.isRequired()»«IF this.isParamJEAFEnumeration() && this.hasDefaultValueForEnum()», defaultValue = "«this.getDefaultValueForEnum()»"«ENDIF» «IF (this.type.isBasicType() || this.type.isPrimitiveType()) && this.hasRESTDefaultValueForBasicTypeParameter()», defaultValue = "«this.getRESTDefaultValueForBasicTypeParameter()»"«ENDIF»)
   «ENDIF-»
   «IF this.isBeanParam() -»
   	«EXPAND ProcessBeanParam FOR ((Class)this.type)»
@@ -916,7 +926,17 @@ public class «this.getResourceName(reactive)» {
 	  	«IF ((JMM::OpenAPIDataType) this.type).compositeDataType»
 	  		String«IF this.isMultivalued()»[]«ENDIF» «name»AsBasicType
 	  	«ELSE»
-  			«this.type.attribute().select(e|e.isStatic == false).first().fqn()»«IF this.isMultivalued()»[]«ENDIF» «name»AsBasicType
+  			«LET this.type.attribute().select(e|e.isStatic == false).first() AS dataTypeParam»
+	  			«IF this.isMultivalued()»
+	  				«dataTypeParam.fqn()»[] «name»AsBasicType
+	  			«ELSE»
+	  				«IF dataTypeParam.type.isPrimitiveType() && this.isRequired() == false»
+	  					«dataTypeParam.type.getWrapperTypeQualifiedName()» «name»AsBasicType
+	  				«ELSE»
+	  					«dataTypeParam.fqn()» «name»AsBasicType
+	  				«ENDIF»
+	  			«ENDIF»
+  			«ENDLET»
 	  	«ENDIF»
 	  «ELSE»
 	  	«IF this.type.isAnyDateType()»
@@ -933,9 +953,17 @@ public class «this.getResourceName(reactive)» {
 	  		   «name»AsString
 	  		«ELSE»
 	  		   «IF this.isRequestBody()»
-	  		   «this.getTypeName().getReactiveAwareTypeName(reactive)» «name»
+                   «IF this.isMultivalued() || this.isRequired()|| reactive»
+	  		           «this.getTypeName().getReactiveAwareTypeName(reactive)» «name»
+                   «ELSE»
+                       «this.type.getWrapperTypeQualifiedName()» «name»
+                   «ENDIF»
 	  		   «ELSE»
-               «this.getTypeName()» «name»
+                   «IF this.isMultivalued() || this.isRequired()»
+               	       «this.getTypeName()» «name»
+                   «ELSE»
+                       «this.type.getWrapperTypeQualifiedName()» «name»
+                   «ENDIF»
 	  		   «ENDIF»
 	  		«ENDIF»
 	  	«ENDIF»
@@ -967,7 +995,17 @@ public class «this.getResourceName(reactive)» {
 	  	«IF ((JMM::OpenAPIDataType) this.type).compositeDataType»
 	  		String«IF this.isMultivalued()»[]«ENDIF» «this.asParameter()»AsBasicType
 	  	«ELSE»
-	  		«this.type.attribute().select(e|e.isStatic == false).first().fqn()»«IF this.isMultivalued()»[]«ENDIF» «this.asParameter()»AsBasicType
+  		    «LET this.type.attribute().select(e|e.isStatic == false).first() AS dataTypeProperty»
+		  		«IF this.isMultivalued()»
+		  		    «dataTypeProperty.fqn()»«IF this.isMultivalued()»[]«ENDIF» «this.asParameter()»AsBasicType
+		  		«ELSE»
+		  		    «IF dataTypeProperty.type.isPrimitiveType() && this.isRequiredProperty() == false»
+		  		    	«dataTypeProperty.type.getWrapperTypeQualifiedName()» «this.asParameter()»AsBasicType
+		  		    «ELSE»
+		  		    	«dataTypeProperty.fqn()» «this.asParameter()»AsBasicType
+		  		    «ENDIF»
+		  		«ENDIF»
+  		    «ENDLET»
 	  	«ENDIF»
 	  «ELSE»
 	  	«IF this.type.isAnyDateType()»
@@ -977,7 +1015,7 @@ public class «this.getResourceName(reactive)» {
             «IF type.isPrimitiveType() && type.isByteType() && this.isMultivalued()»
                String «this.asParameter()»
             «ELSE»
-	  		   «this.fqn()» «this.asParameter()»
+	  		   «this.getWrapperTypeAwareQualifiedName()» «this.asParameter()»
 	  		«ENDIF»
 	  	«ENDIF»
 	  «ENDIF»

@@ -92,7 +92,7 @@
 | `testDataTypeAsBeanQueryParam(QueryBeanParam)` | `/rest-products/testDataTypeAsBeanQueryParam [GET]` |
 | `testDataTypeAsQueryParam(BookingCode)` | `/rest-products/testDataTypeAsQueryParam [GET]` |
 | `testDataTypesAsHeaderBeanParam(AdvancedHeader)` | `/rest-products/dataTypesInBeanHeader [GET]` |
-| `testDataTypesAsHeaderParam(BookingID, BookingCode, DoubleCode)` | `/rest-products/dataTypesInHeader [GET]` |
+| `testDataTypesAsHeaderParam(BookingID, BookingCode, DoubleCodeType)` | `/rest-products/dataTypesInHeader [GET]` |
 | `testDateHeaderParams(String, OffsetDateTime, OffsetTime, LocalDateTime, LocalTime, LocalDate, Calendar, Date, Timestamp, Time, Date, Date)` | `/rest-products/test-date-header-params/{path} [GET]` |
 | `testDateHeaderParamsBean(String, DateHeaderParamsBean)` | `/rest-products/test-date-header-params-beans/{path} [GET]` |
 | `testDateQueryParams(String, OffsetDateTime, OffsetTime, LocalDateTime, LocalTime, LocalDate, Calendar, Date, Timestamp, Time, Date, Calendar)` | `/rest-products/test-date-query-params/{path} [GET]` |

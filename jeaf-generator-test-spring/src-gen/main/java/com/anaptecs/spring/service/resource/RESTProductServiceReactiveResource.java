@@ -52,6 +52,7 @@ import com.anaptecs.spring.base.ChannelType;
 import com.anaptecs.spring.base.Context;
 import com.anaptecs.spring.base.CurrencyCode;
 import com.anaptecs.spring.base.DoubleCode;
+import com.anaptecs.spring.base.DoubleCodeType;
 import com.anaptecs.spring.base.ExtensibleEnum;
 import com.anaptecs.spring.base.IntegerCodeType;
 import com.anaptecs.spring.base.LongCode;
@@ -124,7 +125,8 @@ public class RESTProductServiceReactiveResource {
   @PreAuthorize("hasAnyRole('Customer', 'Sales Agent')")
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(method = { RequestMethod.GET })
-  public Mono<List<Product>> getProducts( @RequestParam(name = "maxResult", required = false) int pMaxResultSize,
+  public Mono<List<Product>> getProducts(
+      @RequestParam(name = "maxResult", required = false, defaultValue = "0") Integer pMaxResultSize,
       ServerWebExchange pServerWebExchange ) {
     return Mono.defer(( ) -> {
       // Validate request parameter(s).
@@ -275,13 +277,7 @@ public class RESTProductServiceReactiveResource {
       @PathVariable(name = "channelCode", required = true) @MyNotNullRESTParam String pChannelCodeAsBasicType,
       ServerWebExchange pServerWebExchange ) {
     // Convert basic type parameters into "real" objects.
-    ChannelCode pChannelCode;
-    if (pChannelCodeAsBasicType != null) {
-      pChannelCode = ChannelCode.builder().setCode(pChannelCodeAsBasicType).build();
-    }
-    else {
-      pChannelCode = null;
-    }
+    ChannelCode pChannelCode = ChannelCode.builder().setCode(pChannelCodeAsBasicType).build();
     return Mono.defer(( ) -> {
       // Validate request parameter(s).
       validationExecutor.validateRequest(RESTProductServiceReactive.class, pChannelCode);
@@ -302,13 +298,7 @@ public class RESTProductServiceReactiveResource {
       @PathVariable(name = "channelCode", required = true) @MyNotNullRESTParam String pChannelCodeAsBasicType,
       ServerWebExchange pServerWebExchange ) {
     // Convert basic type parameters into "real" objects.
-    ChannelCode pChannelCode;
-    if (pChannelCodeAsBasicType != null) {
-      pChannelCode = ChannelCode.builder().setCode(pChannelCodeAsBasicType).build();
-    }
-    else {
-      pChannelCode = null;
-    }
+    ChannelCode pChannelCode = ChannelCode.builder().setCode(pChannelCodeAsBasicType).build();
     return Mono.defer(( ) -> {
       // Validate request parameter(s).
       validationExecutor.validateRequest(RESTProductServiceReactive.class, pChannelCode);
@@ -404,7 +394,7 @@ public class RESTProductServiceReactiveResource {
       @RequestParam(name = "sqlDate", required = true) @MyNotNullRESTParam String pSQLDateAsBasicType,
       @RequestParam(name = "calendars", required = false) String[] pCalendarsAsBasicType,
       ServerWebExchange pServerWebExchange ) {
-    // Convert date types into real objects.
+    // Convert date type(s) into real objects.
     OffsetDateTime pStartTimestamp;
     if (pStartTimestampAsBasicType != null) {
       pStartTimestamp = OffsetDateTime.parse(pStartTimestampAsBasicType);
@@ -624,7 +614,7 @@ public class RESTProductServiceReactiveResource {
       @RequestHeader(name = "SQL-Date", required = true) @MyNotNullRESTParam String pSQLDateAsBasicType,
       @RequestHeader(name = "util-dates", required = false) String[] pUtilDatesAsBasicType,
       ServerWebExchange pServerWebExchange ) {
-    // Convert date types into real objects.
+    // Convert date type(s) into real objects.
     OffsetDateTime pOffsetDateTime;
     if (pOffsetDateTimeAsBasicType != null) {
       pOffsetDateTime = OffsetDateTime.parse(pOffsetDateTimeAsBasicType);
@@ -876,7 +866,7 @@ public class RESTProductServiceReactiveResource {
   @MyNotNullRESTParam
   public Mono<String> testOptionalQueryParams(
       @RequestParam(name = "query1", required = false, defaultValue = "Just a default value") String query1,
-      @RequestParam(name = "query2", required = false, defaultValue = "4711") int query2,
+      @RequestParam(name = "query2", required = false, defaultValue = "4711") Integer query2,
       ServerWebExchange pServerWebExchange ) {
     return Mono.defer(( ) -> {
       // Validate request parameter(s).
@@ -918,9 +908,9 @@ public class RESTProductServiceReactiveResource {
   @RequestMapping(path = "dataTypesInHeader", method = { RequestMethod.GET })
   @MyNotNullRESTParam
   public Mono<String> testDataTypesAsHeaderParam(
-      @RequestHeader(name = "BookingID", required = true) @MyNotNullRESTParam String pBookingIDAsBasicType,
-      @RequestHeader(name = "BookingCode", required = true) @MyNotNullRESTParam String pBookingCodeAsBasicType,
-      @RequestHeader(name = "DoubleCode", required = true) @MyNotNullRESTParam Double pDoubleCodeAsBasicType,
+      @RequestHeader(name = "BookingID", required = false) String pBookingIDAsBasicType,
+      @RequestHeader(name = "BookingCode", required = false) String pBookingCodeAsBasicType,
+      @RequestHeader(name = "DoubleCode", required = false) Double pDoubleCodeAsBasicType,
       ServerWebExchange pServerWebExchange ) {
     // Convert basic type parameters into "real" objects.
     BookingID pBookingID = this.deserializeCompositeDataType(pBookingIDAsBasicType, BookingID.class);
@@ -931,9 +921,9 @@ public class RESTProductServiceReactiveResource {
     else {
       pBookingCode = null;
     }
-    DoubleCode pDoubleCode;
+    DoubleCodeType pDoubleCode;
     if (pDoubleCodeAsBasicType != null) {
-      pDoubleCode = DoubleCode.builder().setCode(pDoubleCodeAsBasicType).build();
+      pDoubleCode = DoubleCodeType.builder().setCode(pDoubleCodeAsBasicType).build();
     }
     else {
       pDoubleCode = null;
@@ -956,9 +946,9 @@ public class RESTProductServiceReactiveResource {
   @RequestMapping(path = "dataTypesInBeanHeader", method = { RequestMethod.GET })
   @MyNotNullRESTParam
   public Mono<String> testDataTypesAsHeaderBeanParam(
-      @RequestHeader(name = "bookingID", required = true) @MyNotNullRESTParam String pBookingIDAsBasicType,
-      @RequestHeader(name = "bookingCode", required = true) @MyNotNullRESTParam String pBookingCodeAsBasicType,
-      @RequestHeader(name = "DoubleCode", required = true) @MyNotNullRESTParam Double pDoubleCodeAsBasicType,
+      @RequestHeader(name = "bookingID", required = false) String pBookingIDAsBasicType,
+      @RequestHeader(name = "bookingCode", required = false) String pBookingCodeAsBasicType,
+      @RequestHeader(name = "DoubleCode", required = false) Double pDoubleCodeAsBasicType,
       ServerWebExchange pServerWebExchange ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
@@ -973,7 +963,7 @@ public class RESTProductServiceReactiveResource {
     }
     // Handle bean parameter pContext.doubleCode
     if (pDoubleCodeAsBasicType != null) {
-      lContextBuilder.setDoubleCode(DoubleCode.builder().setCode(pDoubleCodeAsBasicType).build());
+      lContextBuilder.setDoubleCode(DoubleCodeType.builder().setCode(pDoubleCodeAsBasicType).build());
     }
     AdvancedHeader pContext = lContextBuilder.build();
     return Mono.defer(( ) -> {
@@ -1016,13 +1006,7 @@ public class RESTProductServiceReactiveResource {
       @RequestParam(name = "bookingCode", required = true) @MyNotNullRESTParam String pBookingCodeAsBasicType,
       ServerWebExchange pServerWebExchange ) {
     // Convert basic type parameters into "real" objects.
-    BookingCode pBookingCode;
-    if (pBookingCodeAsBasicType != null) {
-      pBookingCode = BookingCode.builder().setCode(pBookingCodeAsBasicType).build();
-    }
-    else {
-      pBookingCode = null;
-    }
+    BookingCode pBookingCode = BookingCode.builder().setCode(pBookingCodeAsBasicType).build();
     return Mono.defer(( ) -> {
       // Validate request parameter(s).
       validationExecutor.validateRequest(RESTProductServiceReactive.class, pBookingCode);
@@ -1049,9 +1033,7 @@ public class RESTProductServiceReactiveResource {
     // service interface but "only" our REST controller.
     var lBeanParamBuilder = QueryBeanParam.builder();
     // Handle bean parameter pBeanParam.bookingCode
-    if (pBookingCodeAsBasicType != null) {
-      lBeanParamBuilder.setBookingCode(BookingCode.builder().setCode(pBookingCodeAsBasicType).build());
-    }
+    lBeanParamBuilder.setBookingCode(BookingCode.builder().setCode(pBookingCodeAsBasicType).build());
     lBeanParamBuilder.setMaxResults(pMaxResults);
     // Handle bean parameter pBeanParam.sortCriteria
     if (pSortCriteriaAsBasicType != null) {
@@ -1209,7 +1191,7 @@ public class RESTProductServiceReactiveResource {
     else {
       pBookingIDs = Collections.emptyList();
     }
-    // Convert date types into real objects.
+    // Convert date type(s) into real objects.
     List<OffsetDateTime> pTimestamps;
     if (pTimestampsAsBasicType != null) {
       pTimestamps = new ArrayList<OffsetDateTime>();
@@ -1507,7 +1489,7 @@ public class RESTProductServiceReactiveResource {
     else {
       pCodes = Collections.emptySet();
     }
-    // Convert date types into real objects.
+    // Convert date type(s) into real objects.
     OffsetDateTime pStartDate;
     if (pStartDateAsBasicType != null) {
       pStartDate = OffsetDateTime.parse(pStartDateAsBasicType);

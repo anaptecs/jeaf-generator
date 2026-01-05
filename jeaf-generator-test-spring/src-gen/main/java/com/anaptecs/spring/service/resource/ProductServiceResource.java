@@ -508,9 +508,7 @@ public class ProductServiceResource {
     lParentBuilder.setNovaKey(pNovaKey);
     lParentBuilder.setTkID(pTkID);
     // Handle bean parameter pParent.code
-    if (pCodeAsBasicType != null) {
-      lParentBuilder.setCode(DoubleCode.builder().setCode(pCodeAsBasicType).build());
-    }
+    lParentBuilder.setCode(DoubleCode.builder().setCode(pCodeAsBasicType).build());
     ParentBeanParamType pParent = lParentBuilder.build();
     // Validate request parameter(s).
     validationExecutor.validateRequest(ProductService.class, pParent);
@@ -539,9 +537,7 @@ public class ProductServiceResource {
     lChildBuilder.setNovaKey(pNovaKey);
     lChildBuilder.setTkID(pTkID);
     // Handle bean parameter pChild.code
-    if (pCodeAsBasicType != null) {
-      lChildBuilder.setCode(DoubleCode.builder().setCode(pCodeAsBasicType).build());
-    }
+    lChildBuilder.setCode(DoubleCode.builder().setCode(pCodeAsBasicType).build());
     lChildBuilder.setChildProperty(pChildProperty);
     ChildBeanParameterType pChild = lChildBuilder.build();
     // Validate request parameter(s).
@@ -573,7 +569,7 @@ public class ProductServiceResource {
       @RequestParam(name = "sqlTimestamp", required = true) @MyNotNullRESTParam String pSQLTimestampAsBasicType,
       @RequestParam(name = "sqlTime", required = true) @MyNotNullRESTParam String pSQLTimeAsBasicType,
       @RequestParam(name = "sqlDate", required = true) @MyNotNullRESTParam String pSQLDateAsBasicType ) {
-    // Convert date types into real objects.
+    // Convert date type(s) into real objects.
     OffsetDateTime pStartTimestamp;
     if (pStartTimestampAsBasicType != null) {
       pStartTimestamp = OffsetDateTime.parse(pStartTimestampAsBasicType);
@@ -764,7 +760,7 @@ public class ProductServiceResource {
       @RequestHeader(name = "SQL-Timestamp", required = true) @MyNotNullRESTParam String pSQLTimestampAsBasicType,
       @RequestHeader(name = "SQL-Time", required = true) @MyNotNullRESTParam String pSQLTimeAsBasicType,
       @RequestHeader(name = "SQL-Date", required = true) @MyNotNullRESTParam String pSQLDateAsBasicType ) {
-    // Convert date types into real objects.
+    // Convert date type(s) into real objects.
     OffsetDateTime pOffsetDateTime;
     if (pOffsetDateTimeAsBasicType != null) {
       pOffsetDateTime = OffsetDateTime.parse(pOffsetDateTimeAsBasicType);
