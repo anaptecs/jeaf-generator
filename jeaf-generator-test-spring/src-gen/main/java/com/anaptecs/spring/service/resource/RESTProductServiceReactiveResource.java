@@ -909,7 +909,7 @@ public class RESTProductServiceReactiveResource {
   public Mono<String> testDataTypesAsHeaderParam(
       @RequestHeader(name = "BookingID", required = false) String pBookingIDAsBasicType,
       @RequestHeader(name = "BookingCode", required = false) String pBookingCodeAsBasicType,
-      @RequestHeader(name = "DoubleCode", required = false) double pDoubleCodeAsBasicType,
+      @RequestHeader(name = "DoubleCode", required = false) Double pDoubleCodeAsBasicType,
       ServerWebExchange pServerWebExchange ) {
     // Convert basic type parameters into "real" objects.
     BookingID pBookingID = this.deserializeCompositeDataType(pBookingIDAsBasicType, BookingID.class);
@@ -920,7 +920,13 @@ public class RESTProductServiceReactiveResource {
     else {
       pBookingCode = null;
     }
-    DoubleCodeType pDoubleCode = DoubleCodeType.builder().setCode(pDoubleCodeAsBasicType).build();
+    DoubleCodeType pDoubleCode;
+    if (pDoubleCodeAsBasicType != null) {
+      pDoubleCode = DoubleCodeType.builder().setCode(pDoubleCodeAsBasicType).build();
+    }
+    else {
+      pDoubleCode = null;
+    }
     return Mono.defer(( ) -> {
       // Validate request parameter(s).
       validationExecutor.validateRequest(RESTProductServiceReactive.class, pBookingID, pBookingCode, pDoubleCode);
@@ -941,7 +947,7 @@ public class RESTProductServiceReactiveResource {
   public Mono<String> testDataTypesAsHeaderBeanParam(
       @RequestHeader(name = "bookingID", required = false) String pBookingIDAsBasicType,
       @RequestHeader(name = "bookingCode", required = false) String pBookingCodeAsBasicType,
-      @RequestHeader(name = "DoubleCode", required = false) double pDoubleCodeAsBasicType,
+      @RequestHeader(name = "DoubleCode", required = false) Double pDoubleCodeAsBasicType,
       ServerWebExchange pServerWebExchange ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
@@ -955,7 +961,9 @@ public class RESTProductServiceReactiveResource {
       lContextBuilder.setBookingCode(BookingCode.builder().setCode(pBookingCodeAsBasicType).build());
     }
     // Handle bean parameter pContext.doubleCode
-    lContextBuilder.setDoubleCode(DoubleCodeType.builder().setCode(pDoubleCodeAsBasicType).build());
+    if (pDoubleCodeAsBasicType != null) {
+      lContextBuilder.setDoubleCode(DoubleCodeType.builder().setCode(pDoubleCodeAsBasicType).build());
+    }
     AdvancedHeader pContext = lContextBuilder.build();
     return Mono.defer(( ) -> {
       // Validate request parameter(s).
@@ -1024,9 +1032,7 @@ public class RESTProductServiceReactiveResource {
     // service interface but "only" our REST controller.
     var lBeanParamBuilder = QueryBeanParam.builder();
     // Handle bean parameter pBeanParam.bookingCode
-    if (pBookingCodeAsBasicType != null) {
-      lBeanParamBuilder.setBookingCode(BookingCode.builder().setCode(pBookingCodeAsBasicType).build());
-    }
+    lBeanParamBuilder.setBookingCode(BookingCode.builder().setCode(pBookingCodeAsBasicType).build());
     lBeanParamBuilder.setMaxResults(pMaxResults);
     // Handle bean parameter pBeanParam.sortCriteria
     if (pSortCriteriaAsBasicType != null) {

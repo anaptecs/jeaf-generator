@@ -508,9 +508,7 @@ public class ProductServiceResource {
     lParentBuilder.setNovaKey(pNovaKey);
     lParentBuilder.setTkID(pTkID);
     // Handle bean parameter pParent.code
-    if (pCodeAsBasicType != null) {
-      lParentBuilder.setCode(DoubleCode.builder().setCode(pCodeAsBasicType).build());
-    }
+    lParentBuilder.setCode(DoubleCode.builder().setCode(pCodeAsBasicType).build());
     ParentBeanParamType pParent = lParentBuilder.build();
     // Validate request parameter(s).
     validationExecutor.validateRequest(ProductService.class, pParent);
@@ -539,9 +537,7 @@ public class ProductServiceResource {
     lChildBuilder.setNovaKey(pNovaKey);
     lChildBuilder.setTkID(pTkID);
     // Handle bean parameter pChild.code
-    if (pCodeAsBasicType != null) {
-      lChildBuilder.setCode(DoubleCode.builder().setCode(pCodeAsBasicType).build());
-    }
+    lChildBuilder.setCode(DoubleCode.builder().setCode(pCodeAsBasicType).build());
     lChildBuilder.setChildProperty(pChildProperty);
     ChildBeanParameterType pChild = lChildBuilder.build();
     // Validate request parameter(s).

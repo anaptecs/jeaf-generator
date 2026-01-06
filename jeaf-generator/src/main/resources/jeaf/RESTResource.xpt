@@ -414,7 +414,7 @@ public class «this.getResourceName(reactive)» {
 		  			«ELSE»
 		  				«LET attribute.type.attribute().select(e|e.isStatic == false).first() AS dataTypeProperty»
 			  				«IF attribute.isMultivalued() == false»
-			  					«IF dataTypeProperty.type.isPrimitiveType() == false»
+			  					«IF attribute.isRequiredProperty() == false»
 				  					if(«attribute.asParameter()»AsBasicType != null) {
 				  					  «beanParam.name.toLocalVar()»Builder.«attribute.asSetter()»(«attribute.type.fqn()».builder().«dataTypeProperty.asSetter()»(«attribute.asParameter()»AsBasicType).build());
 				  					}
@@ -585,7 +585,7 @@ public class «this.getResourceName(reactive)» {
 	    	«ELSE»
 	    		«LET basicParam.type.attribute().select(e|e.isStatic == false).first() AS dataTypeProperty»
 		    		«IF basicParam.isMultivalued() == false»
-	                    «IF basicParam.isRequired() || dataTypeProperty.type.isPrimitiveType()»
+	                    «IF basicParam.isRequired()»
 	                        «basicParam.type.fqn()» «basicParam.name» = «basicParam.type.fqn()».builder().«dataTypeProperty.asSetter()»(«basicParam.name»AsBasicType).build();
 	                    «ELSE»
 		                    «basicParam.type.fqn()» «basicParam.name»;
@@ -923,7 +923,11 @@ public class «this.getResourceName(reactive)» {
 	  		String«IF this.isMultivalued()»[]«ENDIF» «name»AsBasicType
 	  	«ELSE»
   			«LET this.type.attribute().select(e|e.isStatic == false).first() AS dataTypeProperty»
-  				«dataTypeProperty.fqn()»«IF this.isMultivalued()»[]«ENDIF» «name»AsBasicType
+  				«IF this.isRequired() == false && this.isMultivalued() == false && dataTypeProperty.type.isPrimitiveType()»
+  					«dataTypeProperty.getWrapperTypeAwareQualifiedName()» «name»AsBasicType
+  				«ELSE»
+	  				«dataTypeProperty.fqn()»«IF this.isMultivalued()»[]«ENDIF» «name»AsBasicType
+  				«ENDIF»
   			«ENDLET»
 	  	«ENDIF»
 	  «ELSE»
@@ -975,7 +979,13 @@ public class «this.getResourceName(reactive)» {
 	  	«IF ((JMM::OpenAPIDataType) this.type).compositeDataType»
 	  		String«IF this.isMultivalued()»[]«ENDIF» «this.asParameter()»AsBasicType
 	  	«ELSE»
-	  		«this.type.attribute().select(e|e.isStatic == false).first().fqn()»«IF this.isMultivalued()»[]«ENDIF» «this.asParameter()»AsBasicType
+	  		«LET this.type.attribute().select(e|e.isStatic == false).first() AS dataTypeProperty»
+		  		«IF this.isRequiredProperty() == false && this.isMultivalued() == false && dataTypeProperty.type.isPrimitiveType()»
+		  			«dataTypeProperty.getWrapperTypeAwareQualifiedName()» «this.asParameter()»AsBasicType
+		  		«ELSE»
+			  		«dataTypeProperty.fqn()»«IF this.isMultivalued()»[]«ENDIF» «this.asParameter()»AsBasicType
+		  		«ENDIF»
+	  		«ENDLET»
 	  	«ENDIF»
 	  «ELSE»
 	  	«IF this.type.isAnyDateType()»
