@@ -39,3 +39,34 @@ private String getReactiveParameterName(uml::Parameter parameter):
     then parameter.name + "Body"
     else parameter.name;
     
+cached String getWrapperTypeQualifiedName(uml::Type type):
+  if type.isPrimitiveType() == false
+  then type.fqn()
+  else
+  	if type.isByteType()
+  	then "java.lang.Byte"
+  	else
+  	  if type.isShortType()
+  	  then "java.lang.Short"
+  	  else
+  	    if type.isIntegerType()
+  	    then "java.lang.Integer"
+  	    else
+  	      if type.isLongType()
+  	      then "java.lang.Long"
+  	      else
+  	        if type.isFloatType()
+  	        then "java.lang.Float"
+  	        else
+  	          if type.isDoubleType()
+  	          then "java.lang.Double"
+  	          else
+  	            if type.isCharacterType()
+  	            then "java.lang.Character"
+  	            else
+  	              if type.isBooleanType()
+  	              then "java.lang.Boolean"
+  	              else "Unknown primitive type"; 
+
+cached String getWrapperTypeAwareQualifiedName(uml::Property property):
+	property.type.getWrapperTypeQualifiedName();

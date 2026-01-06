@@ -279,30 +279,32 @@ public class «this.getResourceName(reactive)» {
 			    	«ENDIF»
 	    		«ENDIF»
 	    	«ELSE»
-	    		«IF basicParam.isMultivalued() == false»
-	    			«IF basicParam.type.isPrimitiveType() == false»
-		    			«basicParam.type.fqn()» «basicParam.name»;
-		    			if («basicParam.name»AsBasicType != null) {
-		    			  «basicParam.name» = «basicParam.type.fqn()».builder().«basicParam.type.attribute().select(e|e.isStatic == false).first().asSetter()»(«basicParam.name»AsBasicType).build();
-		    			}
-	                    else {
-	                      «basicParam.name» = null;
-	                    }
-                    «ELSE»
-                        «basicParam.type.fqn()» «basicParam.name» = «basicParam.type.fqn()».builder().«basicParam.type.attribute().select(e|e.isStatic == false).first().asSetter()»(«basicParam.name»AsBasicType).build(); 
-                    «ENDIF»
-	    		«ELSE»
-	    			«basicParam.getCollectionType()»<«basicParam.type.fqn()»> «basicParam.name»;
-				    if («basicParam.name»AsBasicType != null) {
-				      «basicParam.name» = new «basicParam.getCollectionImplType()»<«basicParam.type.fqn()»>();
-				      for («basicParam.type.attribute().select(e|e.isStatic == false).first().fqn()» lNext : «basicParam.name»AsBasicType) {
-				        «basicParam.name».add(«basicParam.type.fqn()».builder().«basicParam.type.attribute().select(e|e.isStatic == false).first().asSetter()»(lNext).build());
-				      }
-				    }
-				    else {
-				      «basicParam.name» = «basicParam.getEmptyCollectionOperation()»;
-				    }
-	    		«ENDIF»
+	    		«LET basicParam.type.attribute().select(e|e.isStatic == false).first() AS dataTypeProperty»
+		    		«IF basicParam.isMultivalued() == false»
+		    			«IF basicParam.isRequired()»
+	                        «basicParam.type.fqn()» «basicParam.name» = «basicParam.type.fqn()».builder().«dataTypeProperty.asSetter()»(«basicParam.name»AsBasicType).build(); 
+	                    «ELSE»
+			    			«basicParam.type.fqn()» «basicParam.name»;
+			    			if («basicParam.name»AsBasicType != null) {
+			    			  «basicParam.name» = «basicParam.type.fqn()».builder().«dataTypeProperty.asSetter()»(«basicParam.name»AsBasicType).build();
+			    			}
+		                    else {
+		                      «basicParam.name» = null;
+		                    }
+	                    «ENDIF»
+		    		«ELSE»
+		    			«basicParam.getCollectionType()»<«basicParam.type.fqn()»> «basicParam.name»;
+					    if («basicParam.name»AsBasicType != null) {
+					      «basicParam.name» = new «basicParam.getCollectionImplType()»<«basicParam.type.fqn()»>();
+					      for («dataTypeProperty.fqn()» lNext : «basicParam.name»AsBasicType) {
+					        «basicParam.name».add(«basicParam.type.fqn()».builder().«dataTypeProperty.asSetter()»(lNext).build());
+					      }
+					    }
+					    else {
+					      «basicParam.name» = «basicParam.getEmptyCollectionOperation()»;
+					    }
+		    		«ENDIF»
+	    		«ENDLET»
 	    	«ENDIF»
 	  	«ENDFOREACH»
 	  «ENDIF»
@@ -410,30 +412,32 @@ public class «this.getResourceName(reactive)» {
 		  				«ENDIF»
 		  				}
 		  			«ELSE»
-		  				«IF attribute.isMultivalued() == false»
-		  					«IF attribute.type.attribute().select(e|e.isStatic == false).first().type.isPrimitiveType() == false»
+		  				«LET attribute.type.attribute().select(e|e.isStatic == false).first() AS dataTypeProperty»
+			  				«IF attribute.isMultivalued() == false»
+			  					«IF attribute.isRequiredProperty() == false»
+				  					if(«attribute.asParameter()»AsBasicType != null) {
+				  					  «beanParam.name.toLocalVar()»Builder.«attribute.asSetter()»(«attribute.type.fqn()».builder().«dataTypeProperty.asSetter()»(«attribute.asParameter()»AsBasicType).build());
+				  					}
+			  					«ELSE»
+			  					   «beanParam.name.toLocalVar()»Builder.«attribute.asSetter()»(«attribute.type.fqn()».builder().«dataTypeProperty.asSetter()»(«attribute.asParameter()»AsBasicType).build());
+			  					«ENDIF»
+			  				«ELSE»
 			  					if(«attribute.asParameter()»AsBasicType != null) {
-			  					  «beanParam.name.toLocalVar()»Builder.«attribute.asSetter()»(«attribute.type.fqn()».builder().set«attribute.type.attribute().select(e|e.isStatic == false).first().name.toFirstUpper()»(«attribute.asParameter()»AsBasicType).build());
+			  					«IF attribute.isCollectionType()»
+			  						«attribute.getCollectionType()»<«attribute.type.fqn()»> «attribute.asLocalVar()»  = new «attribute.getCollectionImplType()»<«attribute.type.fqn()»>();
+			  						for(«dataTypeProperty.fqn()» lNext :  «attribute.asParameter()»AsBasicType) {
+			  							«attribute.asLocalVar()».add(«attribute.type.fqn()».builder().«dataTypeProperty.asSetter()»(lNext).build());
+			  						}
+			  					«ELSE»
+			  						«attribute.type.fqn()»[] «attribute.asLocalVar()»  = new «attribute.type.fqn()»[«attribute.asParameter()»AsBasicType.length];
+			  						for(int i = 0; i < «attribute.asParameter()»AsBasicType.length; i++) {
+			  							«attribute.asLocalVar()»[i] = «attribute.type.fqn()».builder().«dataTypeProperty.asSetter()»(«attribute.asParameter()»AsBasicType[i]).build();
+			  						}
+			  					«ENDIF»
+			  						«beanParam.name.toLocalVar()»Builder.«attribute.asSetter()»(«attribute.asLocalVar()»);
 			  					}
-		  					«ELSE»
-		  					   «beanParam.name.toLocalVar()»Builder.«attribute.asSetter()»(«attribute.type.fqn()».builder().set«attribute.type.attribute().select(e|e.isStatic == false).first().name.toFirstUpper()»(«attribute.asParameter()»AsBasicType).build());
-		  					«ENDIF»
-		  				«ELSE»
-		  					if(«attribute.asParameter()»AsBasicType != null) {
-		  					«IF attribute.isCollectionType()»
-		  						«attribute.getCollectionType()»<«attribute.type.fqn()»> «attribute.asLocalVar()»  = new «attribute.getCollectionImplType()»<«attribute.type.fqn()»>();
-		  						for(«attribute.type.attribute().select(e|e.isStatic == false).first().fqn()» lNext :  «attribute.asParameter()»AsBasicType) {
-		  							«attribute.asLocalVar()».add(«attribute.type.fqn()».builder().set«attribute.type.attribute().select(e|e.isStatic == false).first().name.toFirstUpper()»(lNext).build());
-		  						}
-		  					«ELSE»
-		  						«attribute.type.fqn()»[] «attribute.asLocalVar()»  = new «attribute.type.fqn()»[«attribute.asParameter()»AsBasicType.length];
-		  						for(int i = 0; i < «attribute.asParameter()»AsBasicType.length; i++) {
-		  							«attribute.asLocalVar()»[i] = «attribute.type.fqn()».builder().set«attribute.type.attribute().select(e|e.isStatic == false).first().name.toFirstUpper()»(«attribute.asParameter()»AsBasicType[i]).build();
-		  						}
-		  					«ENDIF»
-		  						«beanParam.name.toLocalVar()»Builder.«attribute.asSetter()»(«attribute.asLocalVar()»);
-		  					}
-		  				«ENDIF»
+			  				«ENDIF»
+		  				«ENDLET»
 		  			«ENDIF»
 		  		«ELSE»
 		  			«IF attribute.type.isAnyDateType()»
@@ -579,30 +583,32 @@ public class «this.getResourceName(reactive)» {
 	    			«ENDIF»
 	    		«ENDIF»
 	    	«ELSE»
-	    		«IF basicParam.isMultivalued() == false»
-                    «IF basicParam.type.isPrimitiveType() == false»
-	                    «basicParam.type.fqn()» «basicParam.name»;
-	                    if («basicParam.name»AsBasicType != null) {
-		    			  «basicParam.name» = «basicParam.type.fqn()».builder().set«basicParam.type.attribute().select(e|e.isStatic == false).first().name.toFirstUpper()»(«basicParam.name»AsBasicType).build();
-	                    }
-	                    else {
-	                      «basicParam.name» = null;
-	                    }
-                    «ELSE»
-                        «basicParam.type.fqn()» «basicParam.name» = «basicParam.type.fqn()».builder().set«basicParam.type.attribute().select(e|e.isStatic == false).first().name.toFirstUpper()»(«basicParam.name»AsBasicType).build();
-                    «ENDIF»
-	    		«ELSE»
-	    			«basicParam.getCollectionType()»<«basicParam.type.fqn()»> «basicParam.name»;
-				    if («basicParam.name»AsBasicType != null) {
-				      «basicParam.name» = new «basicParam.getCollectionImplType()»<«basicParam.type.fqn()»>();
-				      for («basicParam.type.attribute().select(e|e.isStatic == false).first().fqn()» lNext : «basicParam.name»AsBasicType) {
-				        «basicParam.name».add(«basicParam.type.fqn()».builder().«basicParam.type.attribute().select(e|e.isStatic == false).first().asSetter()»(lNext).build());
-				      }
-				    }
-				    else {
-				      «basicParam.name» = «basicParam.getEmptyCollectionOperation()»;
-				    }
-	    		«ENDIF»
+	    		«LET basicParam.type.attribute().select(e|e.isStatic == false).first() AS dataTypeProperty»
+		    		«IF basicParam.isMultivalued() == false»
+	                    «IF basicParam.isRequired()»
+	                        «basicParam.type.fqn()» «basicParam.name» = «basicParam.type.fqn()».builder().«dataTypeProperty.asSetter()»(«basicParam.name»AsBasicType).build();
+	                    «ELSE»
+		                    «basicParam.type.fqn()» «basicParam.name»;
+		                    if («basicParam.name»AsBasicType != null) {
+			    			  «basicParam.name» = «basicParam.type.fqn()».builder().«dataTypeProperty.asSetter()»(«basicParam.name»AsBasicType).build();
+		                    }
+		                    else {
+		                      «basicParam.name» = null;
+		                    }
+	                    «ENDIF»
+		    		«ELSE»
+		    			«basicParam.getCollectionType()»<«basicParam.type.fqn()»> «basicParam.name»;
+					    if («basicParam.name»AsBasicType != null) {
+					      «basicParam.name» = new «basicParam.getCollectionImplType()»<«basicParam.type.fqn()»>();
+					      for («dataTypeProperty.fqn()» lNext : «basicParam.name»AsBasicType) {
+					        «basicParam.name».add(«basicParam.type.fqn()».builder().«dataTypeProperty.asSetter()»(lNext).build());
+					      }
+					    }
+					    else {
+					      «basicParam.name» = «basicParam.getEmptyCollectionOperation()»;
+					    }
+		    		«ENDIF»
+	    		«ENDLET»
 	    	«ENDIF»
 	  	«ENDFOREACH»
 	  «ENDIF»
@@ -878,7 +884,13 @@ public class «this.getResourceName(reactive)» {
 	  	«IF ((JMM::OpenAPIDataType) this.type).compositeDataType»
 	  		String«IF this.isMultivalued()»[]«ENDIF» «this.name»AsBasicType
 	  	«ELSE»
-	  		«this.type.attribute().select(e|e.isStatic == false).first().fqn()»«IF this.isMultivalued()»[]«ENDIF» «this.name»AsBasicType
+	  		«LET this.type.attribute().select(e|e.isStatic == false).first() AS dataTypeProperty»
+	  			«IF this.isRequired() == false && this.isMultivalued() == false && dataTypeProperty.type.isPrimitiveType()»
+	  				«dataTypeProperty.getWrapperTypeAwareQualifiedName()» «this.name»AsBasicType
+	  			«ELSE»
+		  			«dataTypeProperty.fqn()»«IF this.isMultivalued()»[]«ENDIF» «this.name»AsBasicType
+		  		«ENDIF»
+	  		«ENDLET»
 	  	«ENDIF»
 	«ELSE»
 	  	«this.getTypeName()» «this.name»
@@ -916,7 +928,13 @@ public class «this.getResourceName(reactive)» {
 	  	«IF ((JMM::OpenAPIDataType) this.type).compositeDataType»
 	  		String«IF this.isMultivalued()»[]«ENDIF» «name»AsBasicType
 	  	«ELSE»
-  			«this.type.attribute().select(e|e.isStatic == false).first().fqn()»«IF this.isMultivalued()»[]«ENDIF» «name»AsBasicType
+  			«LET this.type.attribute().select(e|e.isStatic == false).first() AS dataTypeProperty»
+  				«IF this.isRequired() == false && this.isMultivalued() == false && dataTypeProperty.type.isPrimitiveType()»
+  					«dataTypeProperty.getWrapperTypeAwareQualifiedName()» «name»AsBasicType
+  				«ELSE»
+	  				«dataTypeProperty.fqn()»«IF this.isMultivalued()»[]«ENDIF» «name»AsBasicType
+  				«ENDIF»
+  			«ENDLET»
 	  	«ENDIF»
 	  «ELSE»
 	  	«IF this.type.isAnyDateType()»
@@ -967,7 +985,13 @@ public class «this.getResourceName(reactive)» {
 	  	«IF ((JMM::OpenAPIDataType) this.type).compositeDataType»
 	  		String«IF this.isMultivalued()»[]«ENDIF» «this.asParameter()»AsBasicType
 	  	«ELSE»
-	  		«this.type.attribute().select(e|e.isStatic == false).first().fqn()»«IF this.isMultivalued()»[]«ENDIF» «this.asParameter()»AsBasicType
+	  		«LET this.type.attribute().select(e|e.isStatic == false).first() AS dataTypeProperty»
+		  		«IF this.isRequiredProperty() == false && this.isMultivalued() == false && dataTypeProperty.type.isPrimitiveType()»
+		  			«dataTypeProperty.getWrapperTypeAwareQualifiedName()» «this.asParameter()»AsBasicType
+		  		«ELSE»
+			  		«dataTypeProperty.fqn()»«IF this.isMultivalued()»[]«ENDIF» «this.asParameter()»AsBasicType
+		  		«ENDIF»
+	  		«ENDLET»
 	  	«ENDIF»
 	  «ELSE»
 	  	«IF this.type.isAnyDateType()»

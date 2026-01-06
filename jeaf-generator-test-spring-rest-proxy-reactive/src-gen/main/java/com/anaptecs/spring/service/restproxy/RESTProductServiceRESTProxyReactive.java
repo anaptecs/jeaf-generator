@@ -40,6 +40,7 @@ import com.anaptecs.spring.base.ChannelType;
 import com.anaptecs.spring.base.Context;
 import com.anaptecs.spring.base.CurrencyCode;
 import com.anaptecs.spring.base.DoubleCode;
+import com.anaptecs.spring.base.DoubleCodeType;
 import com.anaptecs.spring.base.ExtensibleEnum;
 import com.anaptecs.spring.base.IntegerCodeType;
 import com.anaptecs.spring.base.LongCode;
@@ -905,7 +906,7 @@ public class RESTProductServiceRESTProxyReactive implements RESTProductServiceRe
    */
   @Override
   public Mono<String> testDataTypesAsHeaderParam( BookingID pBookingID, BookingCode pBookingCode,
-      DoubleCode pDoubleCode ) {
+      DoubleCodeType pDoubleCode ) {
     // Validate request parameter(s).
     validationExecutor.validateRequest(RESTProductService.class, pBookingID, pBookingCode, pDoubleCode);
     // Create builder for GET request

@@ -51,6 +51,7 @@ import com.anaptecs.spring.base.ChannelType;
 import com.anaptecs.spring.base.Context;
 import com.anaptecs.spring.base.CurrencyCode;
 import com.anaptecs.spring.base.DoubleCode;
+import com.anaptecs.spring.base.DoubleCodeType;
 import com.anaptecs.spring.base.ExtensibleEnum;
 import com.anaptecs.spring.base.IntegerCodeType;
 import com.anaptecs.spring.base.LongCode;
@@ -257,13 +258,7 @@ public class RESTProductServiceResource {
   public List<CurrencyCode> getSupportedCurrencies(
       @PathVariable(name = "channelCode", required = true) @MyNotNullRESTParam String pChannelCodeAsBasicType ) {
     // Convert basic type parameters into "real" objects.
-    ChannelCode pChannelCode;
-    if (pChannelCodeAsBasicType != null) {
-      pChannelCode = ChannelCode.builder().setCode(pChannelCodeAsBasicType).build();
-    }
-    else {
-      pChannelCode = null;
-    }
+    ChannelCode pChannelCode = ChannelCode.builder().setCode(pChannelCodeAsBasicType).build();
     // Validate request parameter(s).
     validationExecutor.validateRequest(RESTProductService.class, pChannelCode);
     // Delegate request to service.
@@ -282,13 +277,7 @@ public class RESTProductServiceResource {
   public List<CurrencyCode> getSupportedCurrenciesAsync(
       @PathVariable(name = "channelCode", required = true) @MyNotNullRESTParam String pChannelCodeAsBasicType ) {
     // Convert basic type parameters into "real" objects.
-    ChannelCode pChannelCode;
-    if (pChannelCodeAsBasicType != null) {
-      pChannelCode = ChannelCode.builder().setCode(pChannelCodeAsBasicType).build();
-    }
-    else {
-      pChannelCode = null;
-    }
+    ChannelCode pChannelCode = ChannelCode.builder().setCode(pChannelCodeAsBasicType).build();
     // Validate request parameter(s).
     validationExecutor.validateRequest(RESTProductService.class, pChannelCode);
     // Delegate request to service.
@@ -867,9 +856,9 @@ public class RESTProductServiceResource {
   @RequestMapping(path = "dataTypesInHeader", method = { RequestMethod.GET })
   @MyNotNullRESTParam
   public String testDataTypesAsHeaderParam(
-      @RequestHeader(name = "BookingID", required = true) @MyNotNullRESTParam String pBookingIDAsBasicType,
-      @RequestHeader(name = "BookingCode", required = true) @MyNotNullRESTParam String pBookingCodeAsBasicType,
-      @RequestHeader(name = "DoubleCode", required = true) @MyNotNullRESTParam Double pDoubleCodeAsBasicType ) {
+      @RequestHeader(name = "BookingID", required = false) String pBookingIDAsBasicType,
+      @RequestHeader(name = "BookingCode", required = false) String pBookingCodeAsBasicType,
+      @RequestHeader(name = "DoubleCode", required = false) Double pDoubleCodeAsBasicType ) {
     // Convert basic type parameters into "real" objects.
     BookingID pBookingID = this.deserializeCompositeDataType(pBookingIDAsBasicType, BookingID.class);
     BookingCode pBookingCode;
@@ -879,9 +868,9 @@ public class RESTProductServiceResource {
     else {
       pBookingCode = null;
     }
-    DoubleCode pDoubleCode;
+    DoubleCodeType pDoubleCode;
     if (pDoubleCodeAsBasicType != null) {
-      pDoubleCode = DoubleCode.builder().setCode(pDoubleCodeAsBasicType).build();
+      pDoubleCode = DoubleCodeType.builder().setCode(pDoubleCodeAsBasicType).build();
     }
     else {
       pDoubleCode = null;
@@ -903,9 +892,9 @@ public class RESTProductServiceResource {
   @RequestMapping(path = "dataTypesInBeanHeader", method = { RequestMethod.GET })
   @MyNotNullRESTParam
   public String testDataTypesAsHeaderBeanParam(
-      @RequestHeader(name = "bookingID", required = true) @MyNotNullRESTParam String pBookingIDAsBasicType,
-      @RequestHeader(name = "bookingCode", required = true) @MyNotNullRESTParam String pBookingCodeAsBasicType,
-      @RequestHeader(name = "DoubleCode", required = true) @MyNotNullRESTParam Double pDoubleCodeAsBasicType ) {
+      @RequestHeader(name = "bookingID", required = false) String pBookingIDAsBasicType,
+      @RequestHeader(name = "bookingCode", required = false) String pBookingCodeAsBasicType,
+      @RequestHeader(name = "DoubleCode", required = false) Double pDoubleCodeAsBasicType ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
     var lContextBuilder = AdvancedHeader.builder();
@@ -919,7 +908,7 @@ public class RESTProductServiceResource {
     }
     // Handle bean parameter pContext.doubleCode
     if (pDoubleCodeAsBasicType != null) {
-      lContextBuilder.setDoubleCode(DoubleCode.builder().setCode(pDoubleCodeAsBasicType).build());
+      lContextBuilder.setDoubleCode(DoubleCodeType.builder().setCode(pDoubleCodeAsBasicType).build());
     }
     AdvancedHeader pContext = lContextBuilder.build();
     // Validate request parameter(s).
@@ -958,13 +947,7 @@ public class RESTProductServiceResource {
   public String testDataTypeAsQueryParam(
       @RequestParam(name = "bookingCode", required = true) @MyNotNullRESTParam String pBookingCodeAsBasicType ) {
     // Convert basic type parameters into "real" objects.
-    BookingCode pBookingCode;
-    if (pBookingCodeAsBasicType != null) {
-      pBookingCode = BookingCode.builder().setCode(pBookingCodeAsBasicType).build();
-    }
-    else {
-      pBookingCode = null;
-    }
+    BookingCode pBookingCode = BookingCode.builder().setCode(pBookingCodeAsBasicType).build();
     // Validate request parameter(s).
     validationExecutor.validateRequest(RESTProductService.class, pBookingCode);
     // Delegate request to service.
@@ -989,9 +972,7 @@ public class RESTProductServiceResource {
     // service interface but "only" our REST controller.
     var lBeanParamBuilder = QueryBeanParam.builder();
     // Handle bean parameter pBeanParam.bookingCode
-    if (pBookingCodeAsBasicType != null) {
-      lBeanParamBuilder.setBookingCode(BookingCode.builder().setCode(pBookingCodeAsBasicType).build());
-    }
+    lBeanParamBuilder.setBookingCode(BookingCode.builder().setCode(pBookingCodeAsBasicType).build());
     lBeanParamBuilder.setMaxResults(pMaxResults);
     // Handle bean parameter pBeanParam.sortCriteria
     if (pSortCriteriaAsBasicType != null) {

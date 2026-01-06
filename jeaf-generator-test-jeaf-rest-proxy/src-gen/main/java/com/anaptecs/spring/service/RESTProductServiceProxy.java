@@ -40,7 +40,7 @@ import com.anaptecs.spring.base.ChannelCode;
 import com.anaptecs.spring.base.ChannelType;
 import com.anaptecs.spring.base.Context;
 import com.anaptecs.spring.base.CurrencyCode;
-import com.anaptecs.spring.base.DoubleCode;
+import com.anaptecs.spring.base.DoubleCodeType;
 import com.anaptecs.spring.base.ExtensibleEnum;
 import com.anaptecs.spring.base.IntegerCodeType;
 import com.anaptecs.spring.base.LongCode;
@@ -349,9 +349,10 @@ public final class RESTProductServiceProxy extends ServiceProxy implements RESTP
    * Generated proxy implementation for method
    * {@link com.anaptecs.spring.service.RESTProductService#testDataTypesAsHeaderParam}
    */
-  public String testDataTypesAsHeaderParam( BookingID pBookingID, BookingCode pBookingCode, DoubleCode pDoubleCode ) {
+  public String testDataTypesAsHeaderParam( BookingID pBookingID, BookingCode pBookingCode,
+      DoubleCodeType pDoubleCode ) {
     try {
-      Command lCommand = new TestDataTypesAsHeaderParam_BookingID_BookingCode_DoubleCode_RESTProductService_Command(
+      Command lCommand = new TestDataTypesAsHeaderParam_BookingID_BookingCode_DoubleCodeType_RESTProductService_Command(
           pBookingID, pBookingCode, pDoubleCode);
       return (String) this.executeCommand(lCommand);
     }
@@ -2771,7 +2772,7 @@ final class ProcessComplexBookingID_ComplexBookingID_RESTProductService_Command 
 /**
  * Generated command class for service method "testDataTypesAsHeaderParam".
  */
-final class TestDataTypesAsHeaderParam_BookingID_BookingCode_DoubleCode_RESTProductService_Command extends Command {
+final class TestDataTypesAsHeaderParam_BookingID_BookingCode_DoubleCodeType_RESTProductService_Command extends Command {
   /**
    * Default serial version uid.
    */
@@ -2797,12 +2798,12 @@ final class TestDataTypesAsHeaderParam_BookingID_BookingCode_DoubleCode_RESTProd
   static {
     try {
       SERVICE_METHOD = RESTProductService.class.getMethod("testDataTypesAsHeaderParam", BookingID.class,
-          BookingCode.class, DoubleCode.class);
+          BookingCode.class, DoubleCodeType.class);
     }
     catch (NoSuchMethodException e) {
       throw new JEAFSystemException(MessageConstants.SERVICE_METHOD_DOES_NOT_EXIST, e,
           RESTProductService.class.getName(),
-          "testDataTypesAsHeaderParam(BookingID.class, BookingCode.class, DoubleCode.class)");
+          "testDataTypesAsHeaderParam(BookingID.class, BookingCode.class, DoubleCodeType.class)");
     }
   }
 
@@ -2819,7 +2820,7 @@ final class TestDataTypesAsHeaderParam_BookingID_BookingCode_DoubleCode_RESTProd
   /**
    * Attribute transports the method parameter "pDoubleCode" to the service implementation via the service channel.
    */
-  private final DoubleCode doubleCode;
+  private final DoubleCodeType doubleCode;
 
   /**
    * Initialize object. All parameters from method "testDataTypesAsHeaderParam" have to be passed as parameters to this
@@ -2827,10 +2828,10 @@ final class TestDataTypesAsHeaderParam_BookingID_BookingCode_DoubleCode_RESTProd
    *
    * @param pBookingID BookingID
    * @param pBookingCode BookingCode
-   * @param pDoubleCode DoubleCode
+   * @param pDoubleCode DoubleCodeType
    */
-  TestDataTypesAsHeaderParam_BookingID_BookingCode_DoubleCode_RESTProductService_Command( BookingID pBookingID,
-      BookingCode pBookingCode, DoubleCode pDoubleCode ) {
+  TestDataTypesAsHeaderParam_BookingID_BookingCode_DoubleCodeType_RESTProductService_Command( BookingID pBookingID,
+      BookingCode pBookingCode, DoubleCodeType pDoubleCode ) {
     super(RESTProductService.class);
     bookingID = pBookingID;
     bookingCode = pBookingCode;

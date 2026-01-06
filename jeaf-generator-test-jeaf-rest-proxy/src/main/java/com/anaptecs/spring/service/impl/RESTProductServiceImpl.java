@@ -1,7 +1,7 @@
 
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
- * 
+ *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.spring.service.impl;
@@ -32,7 +32,7 @@ import com.anaptecs.spring.base.ChannelCode;
 import com.anaptecs.spring.base.ChannelType;
 import com.anaptecs.spring.base.Context;
 import com.anaptecs.spring.base.CurrencyCode;
-import com.anaptecs.spring.base.DoubleCode;
+import com.anaptecs.spring.base.DoubleCodeType;
 import com.anaptecs.spring.base.ExtensibleEnum;
 import com.anaptecs.spring.base.IntegerCodeType;
 import com.anaptecs.spring.base.LongCode;
@@ -69,75 +69,76 @@ final class RESTProductServiceImpl extends RESTProductServiceImplBase {
   /**
    * Method checks the current state of the service. Therefore JEAF defines three different check levels: internal
    * Checks, infrastructure checks and external checks. For further details about the check levels {@see CheckLevel}.
-   * 
+   *
    * @param pLevel Check level on which the check should be performed. The parameter is never null.
    * @return {@link HealthCheckResult} Object describing the result of the check. The method may return null. This means
    * that the service does not implement any checks. In order to use as less memory as possible the method should use
    * the constant {@link HealthCheckResult#CHECK_OK} if no errors or warnings occurred during the check.
    */
-  public HealthCheckResult check( CheckLevel pLevel ) {
+  @Override
+  public HealthCheckResult check(CheckLevel pLevel) {
     return null;
   }
 
   /**
    * Operation returns all available product.
-   * 
-   * 
+   *
+   *
    * @param pMaxResultSize
    * @return {@link Product}
    */
 
   @Override
-  public List<Product> getProducts( int pMaxResultSize ) {
+  public List<Product> getProducts(int pMaxResultSize) {
     return proxy.getProducts(pMaxResultSize);
   }
 
   /**
-   * 
+   *
    * @param pProductID
    * @return {@link Product}
    */
 
   @Override
-  public Product getProduct( String pProductID ) {
+  public Product getProduct(String pProductID) {
     return proxy.getProduct(pProductID);
   }
 
   /**
-   * 
+   *
    * @param pProduct
    * @return {@link Boolean}
    */
 
   @Override
-  public boolean createProduct( Product pProduct ) {
+  public boolean createProduct(Product pProduct) {
     return proxy.createProduct(pProduct);
   }
 
   /**
-   * 
+   *
    * @param pContext
    * @return {@link Sortiment}
    */
 
   @Override
-  public Sortiment getSortiment( Context pContext ) {
+  public Sortiment getSortiment(Context pContext) {
     return proxy.getSortiment(pContext);
   }
 
   /**
-   * 
+   *
    * @param pChannelCode
    * @return {@link ChannelCode}
    */
 
   @Override
-  public ChannelCode createChannelCode( String pChannelCode ) {
+  public ChannelCode createChannelCode(String pChannelCode) {
     return proxy.createChannelCode(pChannelCode);
   }
 
   /**
-  * 
+  *
   */
 
   @Override
@@ -146,7 +147,7 @@ final class RESTProductServiceImpl extends RESTProductServiceImplBase {
   }
 
   /**
-  * 
+  *
   */
 
   @Override
@@ -155,29 +156,29 @@ final class RESTProductServiceImpl extends RESTProductServiceImplBase {
   }
 
   /**
-   * 
+   *
    * @param pChannelCode
    * @return {@link CurrencyCode}
    */
 
   @Override
-  public List<CurrencyCode> getSupportedCurrencies( ChannelCode pChannelCode ) {
+  public List<CurrencyCode> getSupportedCurrencies(ChannelCode pChannelCode) {
     return proxy.getSupportedCurrencies(pChannelCode);
   }
 
   /**
-   * 
+   *
    * @param pChannelCode
    * @return {@link CurrencyCode}
    */
 
   @Override
-  public List<CurrencyCode> getSupportedCurrenciesAsync( ChannelCode pChannelCode ) {
+  public List<CurrencyCode> getSupportedCurrenciesAsync(ChannelCode pChannelCode) {
     return proxy.getSupportedCurrenciesAsync(pChannelCode);
   }
 
   /**
-   * 
+   *
    * @param pBigDecimalHeader
    * @param pIntCookieParam
    * @param pLocaleQueryParam
@@ -185,148 +186,148 @@ final class RESTProductServiceImpl extends RESTProductServiceImplBase {
    */
 
   @Override
-  public String testParams( BigDecimal pBigDecimalHeader, int pIntCookieParam, Locale pLocaleQueryParam ) {
+  public String testParams(BigDecimal pBigDecimalHeader, int pIntCookieParam, Locale pLocaleQueryParam) {
     return proxy.testParams(pBigDecimalHeader, pIntCookieParam, pLocaleQueryParam);
   }
 
   @Override
-  public void testEnumParams( ChannelType pChannelType, TimeUnit pTimeUnit, ExtensibleEnum pExtensibleEnum ) {
+  public void testEnumParams(ChannelType pChannelType, TimeUnit pTimeUnit, ExtensibleEnum pExtensibleEnum) {
     proxy.testEnumParams(pChannelType, pTimeUnit, pExtensibleEnum);
   }
 
   @Override
-  public void testEnumHeaderParams( ChannelType pChannelType, TimeUnit pTimeUnit, ExtensibleEnum pExtensibleEnum ) {
+  public void testEnumHeaderParams(ChannelType pChannelType, TimeUnit pTimeUnit, ExtensibleEnum pExtensibleEnum) {
     proxy.testEnumHeaderParams(pChannelType, pTimeUnit, pExtensibleEnum);
   }
 
   @Override
-  public void testDateQueryParams( String pPath, OffsetDateTime pStartTimestamp, OffsetTime pStartTime,
+  public void testDateQueryParams(String pPath, OffsetDateTime pStartTimestamp, OffsetTime pStartTime,
       LocalDateTime pLocalStartTimestamp, LocalTime pLocalStartTime, LocalDate pLocalStartDate, Calendar pCalendar,
-      Date pUtilDate, Timestamp pSQLTimestamp, Time pSQLTime, java.sql.Date pSQLDate, Set<Calendar> pCalendars ) {
+      Date pUtilDate, Timestamp pSQLTimestamp, Time pSQLTime, java.sql.Date pSQLDate, Set<Calendar> pCalendars) {
 
     proxy.testDateQueryParams(pPath, pStartTimestamp, pStartTime, pLocalStartTimestamp, pLocalStartTime,
         pLocalStartDate, pCalendar, pUtilDate, pSQLTimestamp, pSQLTime, pSQLDate, pCalendars);
   }
 
   @Override
-  public void testDateQueryParamsBean( String pPath, DateQueryParamsBean pQueryParams ) {
+  public void testDateQueryParamsBean(String pPath, DateQueryParamsBean pQueryParams) {
     proxy.testDateQueryParamsBean(pPath, pQueryParams);
   }
 
   @Override
-  public void testDateHeaderParams( String pPath, OffsetDateTime pOffsetDateTime, OffsetTime pOffsetTime,
+  public void testDateHeaderParams(String pPath, OffsetDateTime pOffsetDateTime, OffsetTime pOffsetTime,
       LocalDateTime pLocalDateTime, LocalTime pLocalTime, LocalDate pLocalDate, Calendar pCalendar, Date pUtilDate,
-      Timestamp pSQLTimestamp, Time pSQLTime, java.sql.Date pSQLDate, Set<Date> pUtilDates ) {
+      Timestamp pSQLTimestamp, Time pSQLTime, java.sql.Date pSQLDate, Set<Date> pUtilDates) {
 
     proxy.testDateHeaderParams(pPath, pOffsetDateTime, pOffsetTime, pLocalDateTime, pLocalTime, pLocalDate, pCalendar,
         pUtilDate, pSQLTimestamp, pSQLTime, pSQLDate, pUtilDates);
   }
 
   @Override
-  public void testDateHeaderParamsBean( String pPath, DateHeaderParamsBean pHeaderParams ) {
+  public void testDateHeaderParamsBean(String pPath, DateHeaderParamsBean pHeaderParams) {
     proxy.testDateHeaderParamsBean(pPath, pHeaderParams);
 
   }
 
   @Override
-  public void testCookieParams( ChannelType pChannelType, SpecialContext pContext ) {
+  public void testCookieParams(ChannelType pChannelType, SpecialContext pContext) {
     proxy.testCookieParams(pChannelType, pContext);
   }
 
   @Override
-  public String testOptionalQueryParams( String pQuery1, int pQuery2 ) {
+  public String testOptionalQueryParams(String pQuery1, int pQuery2) {
     return null;
   }
 
   @Override
-  public boolean processComplexBookingID( ComplexBookingID pComplextBookingID ) {
+  public boolean processComplexBookingID(ComplexBookingID pComplextBookingID) {
     return false;
   }
 
   @Override
-  public String testDataTypesAsHeaderParam( BookingID pBookingID, BookingCode pBookingCode, DoubleCode pDoubleCode ) {
+  public String testDataTypesAsHeaderParam(BookingID pBookingID, BookingCode pBookingCode, DoubleCodeType pDoubleCode) {
     return null;
   }
 
   @Override
-  public String testDataTypesAsHeaderBeanParam( AdvancedHeader pContext ) {
+  public String testDataTypesAsHeaderBeanParam(AdvancedHeader pContext) {
     return null;
   }
 
   @Override
-  public String testPrimitiveArrays( int[] pIntegerArray ) {
+  public String testPrimitiveArrays(int[] pIntegerArray) {
     return null;
   }
 
   @Override
-  public String testDataTypeAsQueryParam( BookingCode pBookingCode ) {
+  public String testDataTypeAsQueryParam(BookingCode pBookingCode) {
     return pBookingCode.getCode();
   }
 
   @Override
-  public String testDataTypeAsBeanQueryParam( QueryBeanParam pBeanParam ) {
+  public String testDataTypeAsBeanQueryParam(QueryBeanParam pBeanParam) {
     return pBeanParam.getBookingCode().getCode();
   }
 
   @Override
-  public String testPrimitiveArrayAsQueryParam( int[] pIntValues ) {
+  public String testPrimitiveArrayAsQueryParam(int[] pIntValues) {
     return Arrays.toString(pIntValues);
   }
 
   @Override
-  public String testSimpleTypesAsQueryParams( List<String> pStrings ) {
+  public String testSimpleTypesAsQueryParams(List<String> pStrings) {
     return pStrings.toString();
   }
 
   @Override
-  public String testPrimitiveWrapperArrayAsQueryParam( Set<Integer> pIntegers ) {
+  public String testPrimitiveWrapperArrayAsQueryParam(Set<Integer> pIntegers) {
     return pIntegers.toString();
   }
 
   @Override
-  public String testMultivaluedQueryParamsBean( MultivaluedQueryParamsBean pBean ) {
+  public String testMultivaluedQueryParamsBean(MultivaluedQueryParamsBean pBean) {
     return null;
   }
 
   @Override
-  public String testMulitvaluedDataTypeAsQueryParam( List<IntegerCodeType> pCodes, Set<LongCode> pLongCodes,
-      List<BookingID> pBookingIDs, List<OffsetDateTime> pTimestamps, SortedSet<LocalDate> pLocalDates ) {
+  public String testMulitvaluedDataTypeAsQueryParam(List<IntegerCodeType> pCodes, Set<LongCode> pLongCodes,
+      List<BookingID> pBookingIDs, List<OffsetDateTime> pTimestamps, SortedSet<LocalDate> pLocalDates) {
     return null;
   }
 
   @Override
-  public String testMulitvaluedDataTypeAsBeanQueryParam( DataTypesQueryBean pQueryBean ) {
+  public String testMulitvaluedDataTypeAsBeanQueryParam(DataTypesQueryBean pQueryBean) {
     return null;
   }
 
   @Override
-  public String testMultiValuedHeaderFieldsInBeanParam( MultiValuedHeaderBeanParam pMultiValuedBean ) {
+  public String testMultiValuedHeaderFieldsInBeanParam(MultiValuedHeaderBeanParam pMultiValuedBean) {
     return null;
   }
 
   @Override
-  public String testMultiValuedHeaderFields( Set<String> pNames, int[] pInts, Set<Double> pDoubles,
+  public String testMultiValuedHeaderFields(Set<String> pNames, int[] pInts, Set<Double> pDoubles,
       Set<StringCode> pCodes, OffsetDateTime pStartDate, Set<OffsetDateTime> pTimestamps, Set<OffsetTime> pTimes,
-      byte[] pBase64 ) {
+      byte[] pBase64) {
     return null;
   }
 
   @Override
-  public void testBookingIDAsPathParam( BookingID pBookingID ) {
+  public void testBookingIDAsPathParam(BookingID pBookingID) {
   }
 
   @Override
-  public void testBookingIDAsHeaderParam( BookingID pBookingID ) {
+  public void testBookingIDAsHeaderParam(BookingID pBookingID) {
   }
 
   @Override
-  public String testContextWithPrimitives( ContextWithPrimitives pContext ) {
+  public String testContextWithPrimitives(ContextWithPrimitives pContext) {
     return null;
   }
 
   @Override
-  public String testPrimitivesAsParams( int pInt, Integer pInteger, boolean pBoolean, Boolean pBooleanWrapper,
-      long pLong, Long pVeryLong ) {
+  public String testPrimitivesAsParams(int pInt, Integer pInteger, boolean pBoolean, Boolean pBooleanWrapper,
+      long pLong, Long pVeryLong) {
     return null;
   }
 }

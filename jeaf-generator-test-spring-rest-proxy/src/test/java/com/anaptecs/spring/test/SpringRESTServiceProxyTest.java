@@ -23,6 +23,7 @@ import java.util.concurrent.TimeUnit;
 import com.anaptecs.spring.base.BookingCode;
 import com.anaptecs.spring.base.BookingID;
 import com.anaptecs.spring.base.DoubleCode;
+import com.anaptecs.spring.base.DoubleCodeType;
 import com.anaptecs.spring.base.IntegerCodeType;
 import com.anaptecs.spring.base.LongCode;
 import com.anaptecs.spring.base.Product;
@@ -59,7 +60,7 @@ public class SpringRESTServiceProxyTest {
 
   public static final BookingCode BOOKING_CODE = BookingCode.builder().setCode("4711-0815").build();
 
-  public static final DoubleCode DOUBLE_CODE = DoubleCode.builder().setCode(3.14159).build();
+  public static final DoubleCodeType DOUBLE_CODE = DoubleCodeType.builder().setCode(3.14159).build();
 
   public static final String DATA_TYPE_RESPONSE = "123456_EXT-0987654321_4711-0815_3.14159";
 

@@ -7,11 +7,10 @@ package com.anaptecs.spring.service;
 
 import java.util.Objects;
 
-import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.anaptecs.spring.base.BookingCode;
 import com.anaptecs.spring.base.BookingID;
-import com.anaptecs.spring.base.DoubleCode;
+import com.anaptecs.spring.base.DoubleCodeType;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
@@ -44,7 +43,7 @@ public class AdvancedHeader {
 
   private BookingCode bookingCode;
 
-  private DoubleCode doubleCode;
+  private DoubleCodeType doubleCode;
 
   /**
    * Initialize object using the passed builder.
@@ -71,19 +70,10 @@ public class AdvancedHeader {
    * Convenience method to create new instance of class AdvancedHeader.
    *
    *
-   * @param pBookingID Value to which {@link #bookingID} should be set.
-   *
-   * @param pBookingCode Value to which {@link #bookingCode} should be set.
-   *
-   * @param pDoubleCode Value to which {@link #doubleCode} should be set.
-   *
    * @return {@link AdvancedHeader}
    */
-  public static AdvancedHeader of( BookingID pBookingID, BookingCode pBookingCode, DoubleCode pDoubleCode ) {
+  public static AdvancedHeader of( ) {
     var lBuilder = AdvancedHeader.builder();
-    lBuilder.setBookingID(pBookingID);
-    lBuilder.setBookingCode(pBookingCode);
-    lBuilder.setDoubleCode(pDoubleCode);
     return lBuilder.build();
   }
 
@@ -106,7 +96,7 @@ public class AdvancedHeader {
 
     private BookingCode bookingCode;
 
-    private DoubleCode doubleCode;
+    private DoubleCodeType doubleCode;
 
     /**
      * Use {@link AdvancedHeader#builder()} instead of private constructor to create new builder.
@@ -152,7 +142,7 @@ public class AdvancedHeader {
      * @param pBookingID Value to which {@link #bookingID} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setBookingID( @MyNotNullProperty BookingID pBookingID ) {
+    public Builder setBookingID( BookingID pBookingID ) {
       // Assign value to attribute
       bookingID = pBookingID;
       return this;
@@ -164,7 +154,7 @@ public class AdvancedHeader {
      * @param pBookingCode Value to which {@link #bookingCode} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setBookingCode( @MyNotNullProperty BookingCode pBookingCode ) {
+    public Builder setBookingCode( BookingCode pBookingCode ) {
       // Assign value to attribute
       bookingCode = pBookingCode;
       return this;
@@ -176,7 +166,7 @@ public class AdvancedHeader {
      * @param pDoubleCode Value to which {@link #doubleCode} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setDoubleCode( @MyNotNullProperty DoubleCode pDoubleCode ) {
+    public Builder setDoubleCode( DoubleCodeType pDoubleCode ) {
       // Assign value to attribute
       doubleCode = pDoubleCode;
       return this;
@@ -200,7 +190,6 @@ public class AdvancedHeader {
    *
    * @return {@link BookingID} Value to which {@link #bookingID} is set.
    */
-  @MyNotNullProperty
   public BookingID getBookingID( ) {
     return bookingID;
   }
@@ -210,7 +199,7 @@ public class AdvancedHeader {
    *
    * @param pBookingID Value to which {@link #bookingID} should be set.
    */
-  public void setBookingID( @MyNotNullProperty BookingID pBookingID ) {
+  public void setBookingID( BookingID pBookingID ) {
     // Assign value to attribute
     bookingID = pBookingID;
   }
@@ -220,7 +209,6 @@ public class AdvancedHeader {
    *
    * @return {@link BookingCode} Value to which {@link #bookingCode} is set.
    */
-  @MyNotNullProperty
   public BookingCode getBookingCode( ) {
     return bookingCode;
   }
@@ -230,7 +218,7 @@ public class AdvancedHeader {
    *
    * @param pBookingCode Value to which {@link #bookingCode} should be set.
    */
-  public void setBookingCode( @MyNotNullProperty BookingCode pBookingCode ) {
+  public void setBookingCode( BookingCode pBookingCode ) {
     // Assign value to attribute
     bookingCode = pBookingCode;
   }
@@ -238,10 +226,9 @@ public class AdvancedHeader {
   /**
    * Method returns attribute {@link #doubleCode}.<br/>
    *
-   * @return {@link DoubleCode} Value to which {@link #doubleCode} is set.
+   * @return {@link DoubleCodeType} Value to which {@link #doubleCode} is set.
    */
-  @MyNotNullProperty
-  public DoubleCode getDoubleCode( ) {
+  public DoubleCodeType getDoubleCode( ) {
     return doubleCode;
   }
 
@@ -250,7 +237,7 @@ public class AdvancedHeader {
    *
    * @param pDoubleCode Value to which {@link #doubleCode} should be set.
    */
-  public void setDoubleCode( @MyNotNullProperty DoubleCode pDoubleCode ) {
+  public void setDoubleCode( DoubleCodeType pDoubleCode ) {
     // Assign value to attribute
     doubleCode = pDoubleCode;
   }

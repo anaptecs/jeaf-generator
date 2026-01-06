@@ -2182,23 +2182,18 @@ paths:
       parameters:
         - name: BookingID
           in: header
-          required: true
           schema:
             type: string
-            nullable: false
+            nullable: true
         - name: BookingCode
           in: header
-          required: true
           schema:
             type: string
-            nullable: false
+            nullable: true
         - name: DoubleCode
           in: header
-          required: true
           schema:
-            type: number
-            format: double
-            nullable: false
+            $ref: '../base/product-base.yml#/components/schemas/DoubleCodeType' 
       responses:
         '200':
           description: |
@@ -2222,25 +2217,18 @@ paths:
       parameters:
         - name: bookingID
           in: header
-          required: true
           schema:
             type: string
-            nullable: false
             examples:
              - BOOK-12345
         - name: bookingCode
           in: header
-          required: true
           schema:
             type: string
-            nullable: false
         - name: DoubleCode
           in: header
-          required: true
           schema:
-            type: number
-            format: double
-            nullable: false
+            $ref: '../base/product-base.yml#/components/schemas/DoubleCodeType' 
       responses:
         '200':
           description: |

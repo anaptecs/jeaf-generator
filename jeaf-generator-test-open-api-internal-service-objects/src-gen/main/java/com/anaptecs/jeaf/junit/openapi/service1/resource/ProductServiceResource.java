@@ -415,13 +415,7 @@ public class ProductServiceResource {
   @GET
   public javax.ws.rs.core.Response getSupportedCurrencies( @PathParam("channelCode") String pChannelCodeAsBasicType ) {
     // Convert basic type parameters into "real" objects.
-    ChannelCode pChannelCode;
-    if (pChannelCodeAsBasicType != null) {
-      pChannelCode = ChannelCode.builder().setCode(pChannelCodeAsBasicType).build();
-    }
-    else {
-      pChannelCode = null;
-    }
+    ChannelCode pChannelCode = ChannelCode.builder().setCode(pChannelCodeAsBasicType).build();
     // Delegate request to service.
     ProductService lService = this.getProductService();
     List<CurrencyCode> lResult = lService.getSupportedCurrencies(pChannelCode);
@@ -708,13 +702,7 @@ public class ProductServiceResource {
   public javax.ws.rs.core.Response testDataTypeWithRestrition( @PathParam("string-code") String pStringCodeAsBasicType,
       @QueryParam("short-codes") short[] pShortCodesAsBasicType, @QueryParam("byte-code") Byte pJustAByte ) {
     // Convert basic type parameters into "real" objects.
-    StringCode pStringCode;
-    if (pStringCodeAsBasicType != null) {
-      pStringCode = StringCode.builder().setCode(pStringCodeAsBasicType).build();
-    }
-    else {
-      pStringCode = null;
-    }
+    StringCode pStringCode = StringCode.builder().setCode(pStringCodeAsBasicType).build();
     Set<ShortCode> pShortCodes;
     if (pShortCodesAsBasicType != null) {
       pShortCodes = new HashSet<ShortCode>();

@@ -55,7 +55,7 @@ import com.anaptecs.spring.base.ChannelCode;
 import com.anaptecs.spring.base.ChannelType;
 import com.anaptecs.spring.base.Context;
 import com.anaptecs.spring.base.CurrencyCode;
-import com.anaptecs.spring.base.DoubleCode;
+import com.anaptecs.spring.base.DoubleCodeType;
 import com.anaptecs.spring.base.ExtensibleEnum;
 import com.anaptecs.spring.base.IntegerCodeType;
 import com.anaptecs.spring.base.LongCode;
@@ -194,13 +194,7 @@ public class RESTProductServiceResource {
   @GET
   public Response getSupportedCurrencies( @PathParam("channelCode") String pChannelCodeAsBasicType ) {
     // Convert basic type parameters into "real" objects.
-    ChannelCode pChannelCode;
-    if (pChannelCodeAsBasicType != null) {
-      pChannelCode = ChannelCode.builder().setCode(pChannelCodeAsBasicType).build();
-    }
-    else {
-      pChannelCode = null;
-    }
+    ChannelCode pChannelCode = ChannelCode.builder().setCode(pChannelCodeAsBasicType).build();
     // Delegate request to service.
     RESTProductService lService = this.getRESTProductService();
     List<CurrencyCode> lResult = lService.getSupportedCurrencies(pChannelCode);
@@ -421,9 +415,9 @@ public class RESTProductServiceResource {
     else {
       pBookingCode = null;
     }
-    DoubleCode pDoubleCode;
+    DoubleCodeType pDoubleCode;
     if (pDoubleCodeAsBasicType != null) {
-      pDoubleCode = DoubleCode.builder().setCode(pDoubleCodeAsBasicType).build();
+      pDoubleCode = DoubleCodeType.builder().setCode(pDoubleCodeAsBasicType).build();
     }
     else {
       pDoubleCode = null;
@@ -465,13 +459,7 @@ public class RESTProductServiceResource {
   @GET
   public Response testDataTypeAsQueryParam( @QueryParam("bookingCode") String pBookingCodeAsBasicType ) {
     // Convert basic type parameters into "real" objects.
-    BookingCode pBookingCode;
-    if (pBookingCodeAsBasicType != null) {
-      pBookingCode = BookingCode.builder().setCode(pBookingCodeAsBasicType).build();
-    }
-    else {
-      pBookingCode = null;
-    }
+    BookingCode pBookingCode = BookingCode.builder().setCode(pBookingCodeAsBasicType).build();
     // Delegate request to service.
     RESTProductService lService = this.getRESTProductService();
     String lResult = lService.testDataTypeAsQueryParam(pBookingCode);
