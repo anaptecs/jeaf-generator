@@ -424,7 +424,7 @@ public class RESTProductServiceResource {
   @GET
   public Response testDataTypesAsHeaderParam( @HeaderParam("BookingID") String pBookingIDAsBasicType,
       @HeaderParam("BookingCode") String pBookingCodeAsBasicType,
-      @HeaderParam("DoubleCode") double pDoubleCodeAsBasicType ) {
+      @HeaderParam("DoubleCode") Double pDoubleCodeAsBasicType ) {
     // Convert basic type parameters into "real" objects.
     BookingID pBookingID = this.deserializeCompositeDataType(pBookingIDAsBasicType, BookingID.class);
     BookingCode pBookingCode;
@@ -434,7 +434,13 @@ public class RESTProductServiceResource {
     else {
       pBookingCode = null;
     }
-    DoubleCodeType pDoubleCode = DoubleCodeType.builder().setCode(pDoubleCodeAsBasicType).build();
+    DoubleCodeType pDoubleCode;
+    if (pDoubleCodeAsBasicType != null) {
+      pDoubleCode = DoubleCodeType.builder().setCode(pDoubleCodeAsBasicType).build();
+    }
+    else {
+      pDoubleCode = null;
+    }
     // Delegate request to service.
     String lResult = rESTProductService.testDataTypesAsHeaderParam(pBookingID, pBookingCode, pDoubleCode);
     // Validate response and return it.

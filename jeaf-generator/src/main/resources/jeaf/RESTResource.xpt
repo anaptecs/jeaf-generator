@@ -281,7 +281,7 @@ public class «this.getResourceName(reactive)» {
 	    	«ELSE»
 	    		«LET basicParam.type.attribute().select(e|e.isStatic == false).first() AS dataTypeProperty»
 		    		«IF basicParam.isMultivalued() == false»
-		    			«IF basicParam.isRequired() || dataTypeProperty.type.isPrimitiveType()»
+		    			«IF basicParam.isRequired()»
 	                        «basicParam.type.fqn()» «basicParam.name» = «basicParam.type.fqn()».builder().«dataTypeProperty.asSetter()»(«basicParam.name»AsBasicType).build(); 
 	                    «ELSE»
 			    			«basicParam.type.fqn()» «basicParam.name»;
@@ -884,7 +884,13 @@ public class «this.getResourceName(reactive)» {
 	  	«IF ((JMM::OpenAPIDataType) this.type).compositeDataType»
 	  		String«IF this.isMultivalued()»[]«ENDIF» «this.name»AsBasicType
 	  	«ELSE»
-	  		«this.type.attribute().select(e|e.isStatic == false).first().fqn()»«IF this.isMultivalued()»[]«ENDIF» «this.name»AsBasicType
+	  		«LET this.type.attribute().select(e|e.isStatic == false).first() AS dataTypeProperty»
+	  			«IF this.isRequired() == false && this.isMultivalued() == false && dataTypeProperty.type.isPrimitiveType()»
+	  				«dataTypeProperty.getWrapperTypeAwareQualifiedName()» «this.name»AsBasicType
+	  			«ELSE»
+		  			«dataTypeProperty.fqn()»«IF this.isMultivalued()»[]«ENDIF» «this.name»AsBasicType
+		  		«ENDIF»
+	  		«ENDLET»
 	  	«ENDIF»
 	«ELSE»
 	  	«this.getTypeName()» «this.name»
