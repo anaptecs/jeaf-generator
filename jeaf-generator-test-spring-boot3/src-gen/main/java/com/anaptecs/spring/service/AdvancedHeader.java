@@ -9,7 +9,7 @@ import java.util.Objects;
 
 import com.anaptecs.spring.base.BookingCode;
 import com.anaptecs.spring.base.BookingID;
-import com.anaptecs.spring.base.DoubleCode;
+import com.anaptecs.spring.base.DoubleCodeType;
 
 public class AdvancedHeader {
   /**
@@ -40,7 +40,7 @@ public class AdvancedHeader {
 
   private final BookingCode bookingCode;
 
-  private final DoubleCode doubleCode;
+  private final DoubleCodeType doubleCode;
 
   /**
    * Initialize object using the passed builder.
@@ -67,19 +67,10 @@ public class AdvancedHeader {
    * Convenience method to create new instance of class AdvancedHeader.
    *
    *
-   * @param pBookingID Value to which {@link #bookingID} should be set.
-   *
-   * @param pBookingCode Value to which {@link #bookingCode} should be set.
-   *
-   * @param pDoubleCode Value to which {@link #doubleCode} should be set.
-   *
    * @return {@link AdvancedHeader}
    */
-  public static AdvancedHeader of( BookingID pBookingID, BookingCode pBookingCode, DoubleCode pDoubleCode ) {
+  public static AdvancedHeader of( ) {
     var lBuilder = AdvancedHeader.builder();
-    lBuilder.setBookingID(pBookingID);
-    lBuilder.setBookingCode(pBookingCode);
-    lBuilder.setDoubleCode(pDoubleCode);
     return lBuilder.build();
   }
 
@@ -100,7 +91,7 @@ public class AdvancedHeader {
 
     private BookingCode bookingCode;
 
-    private DoubleCode doubleCode;
+    private DoubleCodeType doubleCode;
 
     /**
      * Use {@link AdvancedHeader#builder()} instead of private constructor to create new builder.
@@ -150,7 +141,7 @@ public class AdvancedHeader {
      * @param pDoubleCode Value to which {@link #doubleCode} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setDoubleCode( DoubleCode pDoubleCode ) {
+    public Builder setDoubleCode( DoubleCodeType pDoubleCode ) {
       // Assign value to attribute
       doubleCode = pDoubleCode;
       return this;
@@ -188,9 +179,9 @@ public class AdvancedHeader {
   /**
    * Method returns attribute {@link #doubleCode}.<br/>
    *
-   * @return {@link DoubleCode} Value to which {@link #doubleCode} is set.
+   * @return {@link DoubleCodeType} Value to which {@link #doubleCode} is set.
    */
-  public DoubleCode getDoubleCode( ) {
+  public DoubleCodeType getDoubleCode( ) {
     return doubleCode;
   }
 

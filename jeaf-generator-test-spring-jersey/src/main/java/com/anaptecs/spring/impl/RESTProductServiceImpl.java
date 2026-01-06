@@ -31,17 +31,15 @@ import java.util.SortedSet;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 
-import org.springframework.stereotype.Service;
-
 import com.anaptecs.spring.base.BookingCode;
 import com.anaptecs.spring.base.BookingID;
 import com.anaptecs.spring.base.ChannelCode;
 import com.anaptecs.spring.base.ChannelType;
-import com.anaptecs.spring.composite.ComplexBookingID;
 import com.anaptecs.spring.base.ComplexBookingType;
 import com.anaptecs.spring.base.Context;
 import com.anaptecs.spring.base.CurrencyCode;
 import com.anaptecs.spring.base.DoubleCode;
+import com.anaptecs.spring.base.DoubleCodeType;
 import com.anaptecs.spring.base.ExtensibleEnum;
 import com.anaptecs.spring.base.IntegerCodeType;
 import com.anaptecs.spring.base.InventoryType;
@@ -52,6 +50,7 @@ import com.anaptecs.spring.base.Sortiment;
 import com.anaptecs.spring.base.SpecialContext;
 import com.anaptecs.spring.base.StringCode;
 import com.anaptecs.spring.base.TimeUnit;
+import com.anaptecs.spring.composite.ComplexBookingID;
 import com.anaptecs.spring.service.AdvancedHeader;
 import com.anaptecs.spring.service.ContextWithPrimitives;
 import com.anaptecs.spring.service.DataTypesQueryBean;
@@ -61,12 +60,13 @@ import com.anaptecs.spring.service.MultiValuedHeaderBeanParam;
 import com.anaptecs.spring.service.MultivaluedQueryParamsBean;
 import com.anaptecs.spring.service.QueryBeanParam;
 import com.anaptecs.spring.service.RESTProductService;
+import org.springframework.stereotype.Service;
 
 @Service
 public class RESTProductServiceImpl implements RESTProductService {
 
   @Override
-  public List<Product> getProducts( int pMaxResultSize ) {
+  public List<Product> getProducts(int pMaxResultSize) {
     Builder lBuilder = Product.builder();
     lBuilder.setName("Cool Product");
 
@@ -77,8 +77,8 @@ public class RESTProductServiceImpl implements RESTProductService {
   }
 
   @Override
-  public Product getProduct( @NotEmpty
-  String pProductID ) {
+  public Product getProduct(@NotEmpty
+  String pProductID) {
     Product lProduct;
     if (pProductID.endsWith("12345")) {
       lProduct = Product.builder().setName("Cool Product").setUri("https://products.anaptecs.de/123456789").build();
@@ -93,18 +93,18 @@ public class RESTProductServiceImpl implements RESTProductService {
   }
 
   @Override
-  public boolean createProduct( Product pProduct ) {
+  public boolean createProduct(Product pProduct) {
     return true;
   }
 
   @Override
-  public Sortiment getSortiment( Context pContext ) {
+  public Sortiment getSortiment(Context pContext) {
     return null;
   }
 
   @Override
-  public ChannelCode createChannelCode( @NotBlank
-  String pChannelCode ) {
+  public ChannelCode createChannelCode(@NotBlank
+  String pChannelCode) {
     return ChannelCode.builder().setCode(pChannelCode).build();
   }
 
@@ -117,7 +117,7 @@ public class RESTProductServiceImpl implements RESTProductService {
   }
 
   @Override
-  public List<CurrencyCode> getSupportedCurrencies( ChannelCode pChannelCode ) {
+  public List<CurrencyCode> getSupportedCurrencies(ChannelCode pChannelCode) {
     List<CurrencyCode> lCurrencies = new ArrayList<>();
     lCurrencies.add(CurrencyCode.builder().setCode("EUR").build());
     lCurrencies.add(CurrencyCode.builder().setCode("CHF").build());
@@ -125,7 +125,7 @@ public class RESTProductServiceImpl implements RESTProductService {
   }
 
   @Override
-  public List<CurrencyCode> getSupportedCurrenciesAsync( ChannelCode pChannelCode ) {
+  public List<CurrencyCode> getSupportedCurrenciesAsync(ChannelCode pChannelCode) {
     List<CurrencyCode> lCurrencies = new ArrayList<>();
     lCurrencies.add(CurrencyCode.builder().setCode("EUR").build());
     lCurrencies.add(CurrencyCode.builder().setCode("CHF").build());
@@ -134,7 +134,7 @@ public class RESTProductServiceImpl implements RESTProductService {
   }
 
   @Override
-  public String testParams( BigDecimal pBigDecimalHeader, int pIntCookieParam, Locale pLocaleQueryParam ) {
+  public String testParams(BigDecimal pBigDecimalHeader, int pIntCookieParam, Locale pLocaleQueryParam) {
     // BigDecimal.valueOf(3.1423), 9999, Locale.GERMANY
     if (BigDecimal.valueOf(3.1423).equals(pBigDecimalHeader) && pIntCookieParam == 9999
         && Locale.GERMANY.equals(pLocaleQueryParam)) {
@@ -146,17 +146,17 @@ public class RESTProductServiceImpl implements RESTProductService {
   }
 
   @Override
-  public void testEnumParams( ChannelType pChannelType, TimeUnit pTimeUnit, ExtensibleEnum pExtensibleEnum ) {
+  public void testEnumParams(ChannelType pChannelType, TimeUnit pTimeUnit, ExtensibleEnum pExtensibleEnum) {
   }
 
   @Override
-  public void testEnumHeaderParams( ChannelType pChannelType, TimeUnit pTimeUnit, ExtensibleEnum pExtensibleEnum ) {
+  public void testEnumHeaderParams(ChannelType pChannelType, TimeUnit pTimeUnit, ExtensibleEnum pExtensibleEnum) {
   }
 
   @Override
-  public void testDateQueryParams( String pPath, OffsetDateTime pStartTimestamp, OffsetTime pStartTime,
+  public void testDateQueryParams(String pPath, OffsetDateTime pStartTimestamp, OffsetTime pStartTime,
       LocalDateTime pLocalStartTimestamp, LocalTime pLocalStartTime, LocalDate pLocalStartDate, Calendar pCalendar,
-      Date pUtilDate, Timestamp pSQLTimestamp, Time pSQLTime, java.sql.Date pSQLDate, Set<Calendar> pCalendars ) {
+      Date pUtilDate, Timestamp pSQLTimestamp, Time pSQLTime, java.sql.Date pSQLDate, Set<Calendar> pCalendars) {
 
     if (pPath.equals("2")) {
       assertEquals("2022-03-17T13:22:12.453+01:00",
@@ -177,7 +177,7 @@ public class RESTProductServiceImpl implements RESTProductService {
   }
 
   @Override
-  public void testDateQueryParamsBean( String pPath, DateQueryParamsBean pQueryParams ) {
+  public void testDateQueryParamsBean(String pPath, DateQueryParamsBean pQueryParams) {
     if (pPath.equals("1")) {
       assertEquals("2022-03-17T13:22:12.453+01:00",
           new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(pQueryParams.getCalendar().getTime()));
@@ -197,13 +197,13 @@ public class RESTProductServiceImpl implements RESTProductService {
   }
 
   @Override
-  public void testDateHeaderParams( String pPath, OffsetDateTime pOffsetDateTime, OffsetTime pOffsetTime,
+  public void testDateHeaderParams(String pPath, OffsetDateTime pOffsetDateTime, OffsetTime pOffsetTime,
       LocalDateTime pLocalDateTime, LocalTime pLocalTime, LocalDate pLocalDate, Calendar pCalendar, Date pUtilDate,
-      Timestamp pSQLTimestamp, Time pSQLTime, java.sql.Date pSQLDate, Set<Date> pUtilDates ) {
+      Timestamp pSQLTimestamp, Time pSQLTime, java.sql.Date pSQLDate, Set<Date> pUtilDates) {
   }
 
   @Override
-  public void testDateHeaderParamsBean( String pPath, DateHeaderParamsBean pHeaderParams ) {
+  public void testDateHeaderParamsBean(String pPath, DateHeaderParamsBean pHeaderParams) {
     if (pPath.equals("1")) {
       assertEquals("2022-03-17T13:22:12.453+01:00",
           new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(pHeaderParams.getCalendar().getTime()));
@@ -223,16 +223,16 @@ public class RESTProductServiceImpl implements RESTProductService {
   }
 
   @Override
-  public void testCookieParams( ChannelType pChannelType, SpecialContext pContext ) {
+  public void testCookieParams(ChannelType pChannelType, SpecialContext pContext) {
   }
 
   @Override
-  public String testOptionalQueryParams( String pQuery1, int pQuery2 ) {
+  public String testOptionalQueryParams(String pQuery1, int pQuery2) {
     return null;
   }
 
   @Override
-  public boolean processComplexBookingID( ComplexBookingID pComplextBookingID ) {
+  public boolean processComplexBookingID(ComplexBookingID pComplextBookingID) {
     assertEquals(123456789, pComplextBookingID.getInternalID());
     assertEquals(ComplexBookingType.VERY_COMPLEX, pComplextBookingID.getComplexBookingType());
 
@@ -251,58 +251,58 @@ public class RESTProductServiceImpl implements RESTProductService {
   }
 
   @Override
-  public String testDataTypesAsHeaderParam( BookingID pBookingID, BookingCode pBookingCode, DoubleCode pDoubleCode ) {
+  public String testDataTypesAsHeaderParam(BookingID pBookingID, BookingCode pBookingCode, DoubleCodeType pDoubleCode) {
     return null;
   }
 
   @Override
-  public String testDataTypesAsHeaderBeanParam( AdvancedHeader pContext ) {
+  public String testDataTypesAsHeaderBeanParam(AdvancedHeader pContext) {
     return null;
   }
 
   @Override
-  public String testPrimitiveArrays( int[] pIntegerArray ) {
+  public String testPrimitiveArrays(int[] pIntegerArray) {
     return null;
   }
 
   @Override
-  public String testDataTypeAsQueryParam( BookingCode pBookingCode ) {
+  public String testDataTypeAsQueryParam(BookingCode pBookingCode) {
     return pBookingCode.getCode();
   }
 
   @Override
-  public String testDataTypeAsBeanQueryParam( QueryBeanParam pBeanParam ) {
+  public String testDataTypeAsBeanQueryParam(QueryBeanParam pBeanParam) {
     return pBeanParam.getBookingCode().getCode();
   }
 
   @Override
-  public String testPrimitiveArrayAsQueryParam( int[] pIntValues ) {
+  public String testPrimitiveArrayAsQueryParam(int[] pIntValues) {
     return pIntValues.toString();
   }
 
   @Override
-  public String testSimpleTypesAsQueryParams( List<String> pStrings ) {
+  public String testSimpleTypesAsQueryParams(List<String> pStrings) {
     return pStrings.toString();
   }
 
   @Override
-  public String testPrimitiveWrapperArrayAsQueryParam( Set<Integer> pIntegers ) {
+  public String testPrimitiveWrapperArrayAsQueryParam(Set<Integer> pIntegers) {
     return pIntegers.toString();
   }
 
   @Override
-  public String testMultivaluedQueryParamsBean( MultivaluedQueryParamsBean pBean ) {
+  public String testMultivaluedQueryParamsBean(MultivaluedQueryParamsBean pBean) {
     return null;
   }
 
   @Override
-  public String testMulitvaluedDataTypeAsQueryParam( List<IntegerCodeType> pCodes, Set<LongCode> pLongCodes,
-      List<BookingID> pBookingIDs, List<OffsetDateTime> pTimestamps, SortedSet<LocalDate> pLocalDates ) {
+  public String testMulitvaluedDataTypeAsQueryParam(List<IntegerCodeType> pCodes, Set<LongCode> pLongCodes,
+      List<BookingID> pBookingIDs, List<OffsetDateTime> pTimestamps, SortedSet<LocalDate> pLocalDates) {
     return null;
   }
 
   @Override
-  public String testMulitvaluedDataTypeAsBeanQueryParam( DataTypesQueryBean pQueryBean ) {
+  public String testMulitvaluedDataTypeAsBeanQueryParam(DataTypesQueryBean pQueryBean) {
     String lResult = "";
     for (IntegerCodeType lNext : pQueryBean.getCodes()) {
       lResult = lResult + lNext.getCode() + ".";
@@ -318,7 +318,7 @@ public class RESTProductServiceImpl implements RESTProductService {
   }
 
   @Override
-  public String testMultiValuedHeaderFieldsInBeanParam( MultiValuedHeaderBeanParam pMultiValuedBean ) {
+  public String testMultiValuedHeaderFieldsInBeanParam(MultiValuedHeaderBeanParam pMultiValuedBean) {
     String lCodes = "";
     for (StringCode lNext : pMultiValuedBean.getCodes()) {
       lCodes = lCodes + "-" + lNext.getCode();
@@ -340,9 +340,9 @@ public class RESTProductServiceImpl implements RESTProductService {
   }
 
   @Override
-  public String testMultiValuedHeaderFields( Set<String> pNames, int[] pInts, Set<Double> pDoubles,
+  public String testMultiValuedHeaderFields(Set<String> pNames, int[] pInts, Set<Double> pDoubles,
       Set<StringCode> pCodes, OffsetDateTime pStartDate, Set<OffsetDateTime> pTimestamps, Set<OffsetTime> pTimes,
-      byte[] pBase64 ) {
+      byte[] pBase64) {
     String lCodes = "";
     for (StringCode lNext : pCodes) {
       lCodes = lCodes + "-" + lNext.getCode();
@@ -353,7 +353,7 @@ public class RESTProductServiceImpl implements RESTProductService {
   }
 
   @Override
-  public void testBookingIDAsPathParam( BookingID pBookingID ) {
+  public void testBookingIDAsPathParam(BookingID pBookingID) {
     assertEquals("4711-0815", pBookingID.getBookingCode().getCode());
     assertEquals("EXT-123-987", pBookingID.getExternalRefID());
     assertEquals("REF-555999", pBookingID.getReferenceID());
@@ -362,7 +362,7 @@ public class RESTProductServiceImpl implements RESTProductService {
   }
 
   @Override
-  public void testBookingIDAsHeaderParam( BookingID pBookingID ) {
+  public void testBookingIDAsHeaderParam(BookingID pBookingID) {
     assertEquals("4711-0815", pBookingID.getBookingCode().getCode());
     assertEquals("EXT-123-987", pBookingID.getExternalRefID());
     assertEquals("REF-555999", pBookingID.getReferenceID());
@@ -371,13 +371,13 @@ public class RESTProductServiceImpl implements RESTProductService {
   }
 
   @Override
-  public String testContextWithPrimitives( ContextWithPrimitives pContext ) {
+  public String testContextWithPrimitives(ContextWithPrimitives pContext) {
     return null;
   }
 
   @Override
-  public String testPrimitivesAsParams( int pAnInt, Integer pAnInteger, boolean pABoolean, Boolean pBooleanWrapper,
-      long pALong, Long pVeryLong ) {
+  public String testPrimitivesAsParams(int pAnInt, Integer pAnInteger, boolean pABoolean, Boolean pBooleanWrapper,
+      long pALong, Long pVeryLong) {
     return null;
   }
 

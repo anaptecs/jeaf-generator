@@ -42,6 +42,7 @@ import com.anaptecs.spring.base.ChannelType;
 import com.anaptecs.spring.base.Context;
 import com.anaptecs.spring.base.CurrencyCode;
 import com.anaptecs.spring.base.DoubleCode;
+import com.anaptecs.spring.base.DoubleCodeType;
 import com.anaptecs.spring.base.ExtensibleEnum;
 import com.anaptecs.spring.base.IntegerCodeType;
 import com.anaptecs.spring.base.LongCode;
@@ -824,7 +825,8 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
    * @return {@link String}
    */
   @Override
-  public String testDataTypesAsHeaderParam( BookingID pBookingID, BookingCode pBookingCode, DoubleCode pDoubleCode ) {
+  public String testDataTypesAsHeaderParam( BookingID pBookingID, BookingCode pBookingCode,
+      DoubleCodeType pDoubleCode ) {
     // Create builder for GET request
     RESTRequest.Builder lRequestBuilder =
         RESTRequest.builder(RESTProductService.class, HttpMethod.GET, ContentType.JSON);
