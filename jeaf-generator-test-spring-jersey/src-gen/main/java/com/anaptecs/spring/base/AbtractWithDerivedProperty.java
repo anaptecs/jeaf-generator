@@ -6,8 +6,12 @@
 package com.anaptecs.spring.base;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "objectType", visible = true)
+@JsonSubTypes({ @JsonSubTypes.Type(value = DerivedClassImpl.class, name = "DerivedClassImpl") })
 public abstract class AbtractWithDerivedProperty {
   /**
    * Initialize object using the passed builder.
@@ -37,6 +41,13 @@ public abstract class AbtractWithDerivedProperty {
     protected Builder( AbtractWithDerivedProperty pObject ) {
     }
   }
+
+  /**
+   * Method returns attribute {@link #derivedProperty}.<br/>
+   *
+   * @return {@link String} Value to which {@link #derivedProperty} is set.
+   */
+  public abstract String getDerivedProperty( );
 
   /**
    * Method returns a StringBuilder that can be used to create a String representation of this object. The returned

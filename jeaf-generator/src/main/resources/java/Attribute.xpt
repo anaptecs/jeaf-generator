@@ -146,6 +146,7 @@
 	@com.fasterxml.jackson.annotation.JsonGetter
 	«ENDIF»
     «EXPAND java::Helper::NotNullAnnotationForProperty»
+    «EXPAND java::Helper::OverrideAnnotation»
 	«IF this.isInternalProperty() == false»public«ENDIF» «this.fqn()» «asGetter()»() {
 	    «IF this.owner.isEnumeration() && this.isMultivalued()»
 	    	return «asInstanceVar()»;
@@ -456,6 +457,7 @@
 	@com.fasterxml.jackson.annotation.JsonGetter
 	«ENDIF»
     «EXPAND java::Helper::NotNullAnnotationForProperty»
+    «EXPAND java::Helper::OverrideAnnotation»
 	«IF this.isInternalProperty() == false»public«ENDIF» «type.fqn()» «asGetter()» () {
     «IF ((NamedElement)this.owner).isPersistentObject()»
     «asInstanceVar()» = this.unproxy(«asInstanceVar()»);«ENDIF»
@@ -544,6 +546,7 @@
 	@com.fasterxml.jackson.annotation.JsonGetter
 	«ENDIF»
     «EXPAND java::Helper::NotNullAnnotationForProperty»
+    «EXPAND java::Helper::OverrideAnnotation»
 	«IF this.isInternalProperty() == false»public«ENDIF» «this.fqn()» «asGetter()» () {
 	    «IF this.generateBackwardCompatibility() == false»
 		    «IF this.isTransientBidirectionalBackReference()»

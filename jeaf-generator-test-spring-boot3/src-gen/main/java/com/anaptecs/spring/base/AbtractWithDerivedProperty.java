@@ -33,6 +33,13 @@ public abstract class AbtractWithDerivedProperty {
     }
   }
 
+  /**
+   * Method returns attribute {@link #derivedProperty}.<br/>
+   *
+   * @return {@link String} Value to which {@link #derivedProperty} is set.
+   */
+  public abstract String getDerivedProperty( );
+
   @Override
   public int hashCode( ) {
     return 1;
