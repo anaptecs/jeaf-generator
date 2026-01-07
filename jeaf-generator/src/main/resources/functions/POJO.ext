@@ -25,5 +25,8 @@ cached boolean requiresCustomImplementationForClass(uml::Class class):
 	else false;
 
 cached boolean requiresCustomImplementationForPOJO(JMM::POJO pojo):
-	!(pojo.ownedOperation.size == 0 && pojo.hasCustomImplementation == false && pojo.hasDerivedProperties() == false && (pojo.compositeDataTypeCustomSerialization == false || (pojo.compositeDataTypeCustomSerialization == true && pojo.generateInternalViewOfCompositeDataType() == false)));
+	// In case of abstract pojo classes derived properties doe not lead to a custom class unless it is explicity defined using tagged value "hasCustomImplementation"
+	if pojo.isAbstract
+	then !(pojo.ownedOperation.size == 0 && pojo.hasCustomImplementation == false                                         && (pojo.compositeDataTypeCustomSerialization == false || (pojo.compositeDataTypeCustomSerialization == true && pojo.generateInternalViewOfCompositeDataType() == false)))
+	else !(pojo.ownedOperation.size == 0 && pojo.hasCustomImplementation == false && pojo.hasDerivedProperties() == false && (pojo.compositeDataTypeCustomSerialization == false || (pojo.compositeDataTypeCustomSerialization == true && pojo.generateInternalViewOfCompositeDataType() == false)));
 	
