@@ -5,10 +5,15 @@
  */
 package com.anaptecs.spring.base;
 
+import com.anaptecs.annotations.MyNotNullProperty;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "objectType", visible = true)
+@JsonSubTypes({ @JsonSubTypes.Type(value = DerivedClassImpl.class, name = "DerivedClassImpl") })
 @JsonAutoDetect(
     fieldVisibility = JsonAutoDetect.Visibility.ANY,
     getterVisibility = JsonAutoDetect.Visibility.NONE,
@@ -21,7 +26,7 @@ public abstract class AbtractWithDerivedProperty {
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected AbtractWithDerivedProperty( Builder pBuilder ) {
+  protected AbtractWithDerivedProperty( AbtractWithDerivedPropertyBuilder<?, ?> pBuilder ) {
     // Read attribute values from builder.
   }
 
@@ -30,20 +35,33 @@ public abstract class AbtractWithDerivedProperty {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
-  public static abstract class Builder {
+  public static abstract class AbtractWithDerivedPropertyBuilder<T extends AbtractWithDerivedProperty, B extends AbtractWithDerivedPropertyBuilder<T, B>> {
     /**
      * Use {@link AbtractWithDerivedProperty#builder()} instead of private constructor to create new builder.
      */
-    protected Builder( ) {
+    protected AbtractWithDerivedPropertyBuilder( ) {
     }
 
     /**
      * Use {@link AbtractWithDerivedProperty#builder(AbtractWithDerivedProperty)} instead of private constructor to
      * create new builder.
      */
-    protected Builder( AbtractWithDerivedProperty pObject ) {
+    protected AbtractWithDerivedPropertyBuilder( AbtractWithDerivedProperty pObject ) {
     }
+
+    /**
+     * Method returns instance of this builder. Operation is part of generic builder pattern.
+     */
+    protected abstract B self( );
   }
+
+  /**
+   * Method returns attribute {@link #derivedProperty}.<br/>
+   *
+   * @return {@link String} Value to which {@link #derivedProperty} is set.
+   */
+  @MyNotNullProperty
+  public abstract String getDerivedProperty( );
 
   @Override
   public int hashCode( ) {

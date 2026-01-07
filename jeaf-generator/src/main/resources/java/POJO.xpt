@@ -145,6 +145,7 @@
 					«ENDIF»
 
 					«EXPAND java::Helper::GenerateCustomHeadersOperations»
+					«EXPAND java::Attribute::AbstractGetterForDerivedProperty FOREACH this.getDerivedProperties()»
 					«EXPAND jeafgenerator::api::ClassExtensionPoint::CustomOperations»
 					«EXPAND java::Helper::GenerateEqualsHashCode(name)»
 					«EXPAND java::Helper::GenerateCompareTo»

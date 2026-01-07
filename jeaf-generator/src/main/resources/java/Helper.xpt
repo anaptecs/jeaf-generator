@@ -654,3 +654,9 @@
         «ENDIF -»
     «ENDIF -»
 «ENDDEFINE»
+
+«DEFINE OverrideAnnotation FOR uml::Property»
+	«IF this.isStereotypeApplied("Override")»
+	@Override
+	«ENDIF»
+«ENDDEFINE»

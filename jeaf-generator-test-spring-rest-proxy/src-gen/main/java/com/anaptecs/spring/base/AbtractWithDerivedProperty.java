@@ -34,6 +34,13 @@ public abstract class AbtractWithDerivedProperty {
   }
 
   /**
+   * Method returns attribute {@link #derivedProperty}.<br/>
+   *
+   * @return {@link String} Value to which {@link #derivedProperty} is set.
+   */
+  public abstract String getDerivedProperty( );
+
+  /**
    * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
