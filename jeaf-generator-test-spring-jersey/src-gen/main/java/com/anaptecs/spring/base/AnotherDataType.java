@@ -10,7 +10,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-public class AnotherDataType {
+public class AnotherDataType implements Comparable<AnotherDataType> {
   /**
    * Constant for the name of attribute "data".
    */
@@ -135,6 +135,11 @@ public class AnotherDataType {
       lEquals = Objects.equals(data, ((AnotherDataType) pOtherObject).getData());
     }
     return lEquals;
+  }
+
+  @Override
+  public int compareTo( AnotherDataType pOther ) {
+    return this.getData().compareTo(pOther.getData());
   }
 
   /**

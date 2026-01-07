@@ -15,7 +15,7 @@ import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-public class AnotherDataType implements Serializable {
+public class AnotherDataType implements Serializable, Comparable<AnotherDataType> {
   /**
    * Default serial version UID.
    */
@@ -175,6 +175,11 @@ public class AnotherDataType implements Serializable {
       lEquals = Objects.equals(data, ((AnotherDataType) pOtherObject).getData());
     }
     return lEquals;
+  }
+
+  @Override
+  public int compareTo( AnotherDataType pOther ) {
+    return this.getData().compareTo(pOther.getData());
   }
 
   /**
