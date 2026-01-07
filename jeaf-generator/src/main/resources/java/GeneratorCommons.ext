@@ -384,7 +384,7 @@ cached String implementComparableIfRequired(uml::Class class):
     
     
 cached boolean shouldImplementComparable(uml::Class class):
-    if class.isStereotypeApplied("OpenAPIDataType") && implementCompareableForOpenAPIDataTypes() && !class.asOpenAPIDataType().compositeDataType
+    if class.isStereotypeApplied("OpenAPIDataType") && (implementCompareableForOpenAPIDataTypes() || class.asOpenAPIDataType().implementComparable) && !class.asOpenAPIDataType().compositeDataType
     then true
     else false;
     
