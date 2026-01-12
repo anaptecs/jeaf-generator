@@ -59,7 +59,7 @@
 		<spring.boot3.version>3.5.7</spring.boot3.version>
         <spring.boot4.version>4.0.1</spring.boot4.version>
 		<spring.core6.version>6.2.12</spring.core6.version>
-		<spring.security7.version>6.5.6</spring.security7.version>
+		<spring.security6.version>6.5.6</spring.security6.version>
 		<jakartaee-api.version>11.0.0</jakartaee-api.version>
 		<jakarta.ws.version>3.1.0</jakarta.ws.version>
 		<reactor-core.version>3.8.1</reactor-core.version>
@@ -110,6 +110,7 @@
 		<module>jeaf-generator-test-open-api-dependent-spec</module>
 		<module>jeaf-generator-test-open-api</module>
 		<module>jeaf-generator-test-open-api-service-objects</module>
+    	<module>jeaf-generator-test-open-api-service-objects-jackson3</module>
 		<module>jeaf-generator-test-open-api-internal-service-objects</module>
 		
 		<!-- Needs to be fixed with JEAF-3119 -->
@@ -119,7 +120,6 @@
 		
 		<module>jeaf-generator-test-jeaf-rest-proxy</module>
 		<module>jeaf-generator-test-spring-boot3</module>
-        <module>jeaf-generator-test-spring-boot4</module>
 		<module>jeaf-generator-test-spring</module>
 		<module>jeaf-generator-test-spring-jersey</module>
 		<module>jeaf-generator-test-spring-rest-proxy</module>
@@ -136,7 +136,7 @@
 			<properties>
 				<spring.boot3.version>3.5.0</spring.boot3.version>
 				<spring.core6.version>6.2.7</spring.core6.version>
-				<spring.security7.version>5.7.10</spring.security7.version>
+				<spring.security6.version>5.7.10</spring.security6.version>
 			</properties>
 		</profile>
 	</profiles>

@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.anaptecs.jeaf.generator</groupId>
+		<artifactId>jeaf-generator-project</artifactId>
+		<version>1.28.1-SNAPSHOT</version>
+	</parent>
+
+	<name>JEAF Generator Test OpenAPI Service Objects (Jackson 3)</name>
+	<artifactId>jeaf-generator-test-open-api-service-objects-jackson3</artifactId>
+	<packaging>jar</packaging>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.anaptecs.jeaf.core</groupId>
+			<artifactId>jeaf-core-api</artifactId>
+			<version>${jeaf.core.api.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.anaptecs.jeaf.json</groupId>
+			<artifactId>jeaf-json-api</artifactId>
+		    <version>${jeaf.json.api.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>${javaee-api.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-databind</artifactId>
+		    <version>${jackson2.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.anaptecs.jeaf.workload</groupId>
+			<artifactId>jeaf-workload-rest-api</artifactId>
+			<version>${jeaf.workload.api.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.anaptecs.jeaf.x-fun</groupId>
+			<artifactId>jeaf-x-fun-default-runtime</artifactId>
+			<version>${jeaf.x-fun.impl.version}</version>
+			<type>pom</type>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.anaptecs.jeaf.json</groupId>
+			<artifactId>jeaf-json-impl-runtime</artifactId>
+		    <version>${jeaf.json.impl.version}</version>
+		    <type>pom</type>
+		    <scope>test</scope>
+		</dependency>
+
+
+		<dependency>
+			<groupId>com.anaptecs.jeaf.json</groupId>
+			<artifactId>jeaf-json-impl</artifactId>
+		    <version>${jeaf.json.impl.version}</version>
+		    <scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.anaptecs.jeaf.rest</groupId>
+			<artifactId>jeaf-rest-composite-type-api</artifactId>
+			<version>${jeaf.rest.api.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.anaptecs.jeaf.rest</groupId>
+			<artifactId>jeaf-rest-composite-type-impl-kryo-jeaf</artifactId>
+			<version>${jeaf.rest.impl.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.anaptecs.jeaf.uml</groupId>
+			<artifactId>jeaf-uml-test-model</artifactId>
+			<version>${jeaf.test.model.version}</version>
+			<type>zip</type>
+			<scope>provided</scope>
+		</dependency>
+		
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>com.anaptecs.jeaf.generator</groupId>
+				<artifactId>jeaf-generator-maven-plugin</artifactId>
+				<version>${project.version}</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>Generator</goal>
+						</goals>
+						<phase>generate-sources</phase>
+					</execution>
+				</executions>
+				<configuration>
+					<!-- Define input files and directories where output should be write to. -->
+					<modelArtifactGroupID>com.anaptecs.jeaf.uml</modelArtifactGroupID>
+					<modelArtifactArtifactID>jeaf-uml-test-model</modelArtifactArtifactID>
+					<modelArtifactXMIPath>xmi</modelArtifactXMIPath>
+
+					<umlModelFile>JEAF_Test.uml</umlModelFile>
+					<sourceDirectory>${project.basedir}/src-gen/main/java</sourceDirectory>
+					<sourceGenDirectory>${project.basedir}/src-gen/main/java</sourceGenDirectory>
+					<resourceDirectory>${project.basedir}/src-gen/main/resources</resourceDirectory>
+					<resourceGenDirectory>${project.basedir}/src-gen/main/resources</resourceGenDirectory>
+
+					<!-- Configure behavior concerning existing files in src-gen and res-gen directory. It is strongly recommended to clean directories before generating new files. -->
+					<cleanSourceGen>true</cleanSourceGen>
+					<cleanResourceGen>true</cleanResourceGen>
+
+					<!-- Define whitelist of package in UML model generator should take care when generating code. -->
+					<packages>
+						<package>com.anaptecs.jeaf.junit.openapi</package>
+						<package>com.anaptecs.jeaf.junit.rest.generics</package>
+					</packages>
+
+					<!-- Define what should be generated. By default nothing is generated. -->
+					<generateServiceObjects>true</generateServiceObjects>
+					<generateEqualsAndHashCodeForCompositeDataTypes>true</generateEqualsAndHashCodeForCompositeDataTypes>
+					<generateEqualsAndHashCodeForOpenAPIDataTypes>true</generateEqualsAndHashCodeForOpenAPIDataTypes>
+					<generateServiceInterfaces>true</generateServiceInterfaces>
+					<generateRESTResources>true</generateRESTResources>
+					<generateJAXRSAnnotations>true</generateJAXRSAnnotations>
+					<generateJacksonAnnotations>true</generateJacksonAnnotations>
+					<enableSemVerForJSON>false</enableSemVerForJSON>
+					<generateConstantsForAttributeNames>false</generateConstantsForAttributeNames>
+					<generateJSONSerializers>true</generateJSONSerializers>
+					<generateValidAnnotationForClasses>true</generateValidAnnotationForClasses>
+					<generateValidationAnnotationsForAssociationsFromMultiplicity>true</generateValidationAnnotationsForAssociationsFromMultiplicity>
+					<generateValidationAnnotationsForAttributesFromMultiplicity>true</generateValidationAnnotationsForAttributesFromMultiplicity>
+					<generateHeavyExtensibleEnums>true</generateHeavyExtensibleEnums>
+					
+					<generatePublicObjectView>true</generatePublicObjectView>
+					<enableDetailedToStringMethod>true</enableDetailedToStringMethod>
+					<suppressTechnicalHeaders>true</suppressTechnicalHeaders>
+					
+					<generateOfOperation>true</generateOfOperation>
+					<generateValueOfForOpenAPIDataTypes>false</generateValueOfForOpenAPIDataTypes>
+
+					<disableImmutabilityOfBinaryData>true</disableImmutabilityOfBinaryData>
+					<disableImmutabilityOfArrays>true</disableImmutabilityOfArrays>
+					<disableImmutabilityOfCollections>true</disableImmutabilityOfCollections>
+					
+					<javaGenericSoftLinkType>com.anaptecs.jeaf.junit.openapi.base.SoftLink</javaGenericSoftLinkType>
+					<softLinkSuffix>ID</softLinkSuffix>
+					
+					<!-- NotNull / NotEmpty congfiguration for properties -->
+					<generateNotNullAnnotationForSingleValuedProperties>true</generateNotNullAnnotationForSingleValuedProperties>
+					<notNullAnnotationNameForSingleValuedProperties>com.anaptecs.annotations.MyNotNullProperty</notNullAnnotationNameForSingleValuedProperties>
+					<generateNotEmptyAnnotationForMultiValuedProperties>true</generateNotEmptyAnnotationForMultiValuedProperties>
+					<notEmptyAnnotationNameForMultiValuedProperties>com.anaptecs.annotations.MyNotEmptyProperty</notEmptyAnnotationNameForMultiValuedProperties>
+					
+					<!-- NotNull / NotEmpty congfiguration for services -->
+					<generateNotNullAnnotationForSingleValuedServiceParameters>true</generateNotNullAnnotationForSingleValuedServiceParameters>
+					<notNullAnnotationNameForSingleValuedServiceParameters>com.anaptecs.annotations.MyNotNullServiceParam</notNullAnnotationNameForSingleValuedServiceParameters>
+					<generateNotEmptyAnnotationForMultiValuedServiceParameters>true</generateNotEmptyAnnotationForMultiValuedServiceParameters>
+					<notEmptyAnnotationNameForMultiValuedServiceParameters>com.anaptecs.annotations.MyNotEmptyServiceParam</notEmptyAnnotationNameForMultiValuedServiceParameters>
+
+					<!-- NotNull / NotEmpty congfiguration for REST -->
+					<generateNotNullAnnotationForSingleValuedRESTParameters>true</generateNotNullAnnotationForSingleValuedRESTParameters>
+					<notNullAnnotationNameForSingleValuedRESTParameters>com.anaptecs.annotations.MyNotNullRESTParam</notNullAnnotationNameForSingleValuedRESTParameters>
+					<generateNotEmptyAnnotationForMultiValuedRESTParameters>true</generateNotEmptyAnnotationForMultiValuedRESTParameters>
+					<notEmptyAnnotationNameForMultiValuedRESTParameters>com.anaptecs.annotations.MyNotEmptyRESTParam</notEmptyAnnotationNameForMultiValuedRESTParameters>
+
+					<!-- Define information that are written to file headers -->
+					<fileHeaderCompany>anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany</fileHeaderCompany>
+					<fileHeaderAuthor>JEAF Generator</fileHeaderAuthor>
+					<fileHeaderCopyright>Copyright 2004 - 2021. All rights reserved.</fileHeaderCopyright>
+					<fileHeaderVersion>JEAF Release 1.6.x</fileHeaderVersion>
+
+					<!-- Define code formatting style -->
+					<!-- <conventionFile>anaptecs_code_guideline.xml</conventionFile> -->
+				</configuration>
+			</plugin>
+
+			<!-- 
+			     JEAF Maven Plugin will generate JEAF configuration files. Besides executing the plugin during build no 
+			     specific configurations are required to use JEAF X-Fun. 
+			-->
+			<plugin>
+				<groupId>com.anaptecs.jeaf.maven</groupId>
+				<artifactId>jeaf-maven-plugin</artifactId>
+				<version>${maven.jeaf-plugin.version}</version>
+				<executions>
+					<!-- Cleanup run. All existing generated files will be deleted before they will be generated again. -->
+					<execution>
+						<id>Clean</id>
+						<goals>
+							<goal>GenerateJEAFConfig</goal>
+						</goals>
+						<phase>clean</phase>
+						<configuration>
+							<resourceGenDirectory>${basedir}/src-gen/test/resources</resourceGenDirectory>
+							<cleanMetaInfDirectory>true</cleanMetaInfDirectory>
+							<cleanOnly>true</cleanOnly>
+						</configuration>
+					</execution>
+
+					<!-- Generate configuration files. -->
+					<execution>
+						<id>GenerateConfigs</id>
+						<goals>
+							<goal>GenerateJEAFConfig</goal>
+						</goals>
+						<configuration>
+							<testResourceGenDirectory>${basedir}/src-gen/test/resources</testResourceGenDirectory>
+							<testTargetDirectory>${basedir}/target/test-classes</testTargetDirectory>
+
+							<!-- As we are only working with JEAF X-Fun we also limit configuration detection to X-Fun -->
+							<explicitConfigurationDetection>
+								<detectXFunConfigs>true</detectXFunConfigs>
+								<detectToolsConfigs>true</detectToolsConfigs>
+								<detectJSONConfigs>true</detectJSONConfigs>
+							</explicitConfigurationDetection>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>
